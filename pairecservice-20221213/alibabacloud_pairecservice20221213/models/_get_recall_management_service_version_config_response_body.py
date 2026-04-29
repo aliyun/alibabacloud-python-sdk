@@ -116,6 +116,7 @@ class GetRecallManagementServiceVersionConfigResponseBodyRecallConfig(DaraModel)
         name: str = None,
         operators: List[main_models.GetRecallManagementServiceVersionConfigResponseBodyRecallConfigOperators] = None,
         priority: int = None,
+        recall_management_service_version_config_id: str = None,
         recall_management_table_id: str = None,
         recall_type: str = None,
         sort_fields: str = None,
@@ -131,6 +132,7 @@ class GetRecallManagementServiceVersionConfigResponseBodyRecallConfig(DaraModel)
         self.name = name
         self.operators = operators
         self.priority = priority
+        self.recall_management_service_version_config_id = recall_management_service_version_config_id
         self.recall_management_table_id = recall_management_table_id
         self.recall_type = recall_type
         self.sort_fields = sort_fields
@@ -176,6 +178,9 @@ class GetRecallManagementServiceVersionConfigResponseBodyRecallConfig(DaraModel)
 
         if self.priority is not None:
             result['Priority'] = self.priority
+
+        if self.recall_management_service_version_config_id is not None:
+            result['RecallManagementServiceVersionConfigId'] = self.recall_management_service_version_config_id
 
         if self.recall_management_table_id is not None:
             result['RecallManagementTableId'] = self.recall_management_table_id
@@ -225,6 +230,9 @@ class GetRecallManagementServiceVersionConfigResponseBodyRecallConfig(DaraModel)
 
         if m.get('Priority') is not None:
             self.priority = m.get('Priority')
+
+        if m.get('RecallManagementServiceVersionConfigId') is not None:
+            self.recall_management_service_version_config_id = m.get('RecallManagementServiceVersionConfigId')
 
         if m.get('RecallManagementTableId') is not None:
             self.recall_management_table_id = m.get('RecallManagementTableId')

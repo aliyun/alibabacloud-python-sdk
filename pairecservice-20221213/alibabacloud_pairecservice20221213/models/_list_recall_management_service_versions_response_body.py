@@ -63,13 +63,13 @@ class ListRecallManagementServiceVersionsResponseBodyRecallManagementServiceVers
         self,
         gmt_create_time: str = None,
         gmt_modified_time: str = None,
-        is_default: str = None,
+        is_effective: bool = None,
         name: str = None,
         recall_management_service_version_id: str = None,
     ):
         self.gmt_create_time = gmt_create_time
         self.gmt_modified_time = gmt_modified_time
-        self.is_default = is_default
+        self.is_effective = is_effective
         self.name = name
         self.recall_management_service_version_id = recall_management_service_version_id
 
@@ -87,8 +87,8 @@ class ListRecallManagementServiceVersionsResponseBodyRecallManagementServiceVers
         if self.gmt_modified_time is not None:
             result['GmtModifiedTime'] = self.gmt_modified_time
 
-        if self.is_default is not None:
-            result['IsDefault'] = self.is_default
+        if self.is_effective is not None:
+            result['IsEffective'] = self.is_effective
 
         if self.name is not None:
             result['Name'] = self.name
@@ -106,8 +106,8 @@ class ListRecallManagementServiceVersionsResponseBodyRecallManagementServiceVers
         if m.get('GmtModifiedTime') is not None:
             self.gmt_modified_time = m.get('GmtModifiedTime')
 
-        if m.get('IsDefault') is not None:
-            self.is_default = m.get('IsDefault')
+        if m.get('IsEffective') is not None:
+            self.is_effective = m.get('IsEffective')
 
         if m.get('Name') is not None:
             self.name = m.get('Name')

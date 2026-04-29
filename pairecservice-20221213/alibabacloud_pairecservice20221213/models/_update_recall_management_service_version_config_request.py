@@ -10,13 +10,11 @@ from darabonba.model import DaraModel
 class UpdateRecallManagementServiceVersionConfigRequest(DaraModel):
     def __init__(
         self,
-        region_id: str = None,
         config_type: str = None,
         instance_id: str = None,
         merge_config: main_models.UpdateRecallManagementServiceVersionConfigRequestMergeConfig = None,
         recall_config: main_models.UpdateRecallManagementServiceVersionConfigRequestRecallConfig = None,
     ):
-        self.region_id = region_id
         self.config_type = config_type
         self.instance_id = instance_id
         self.merge_config = merge_config
@@ -33,9 +31,6 @@ class UpdateRecallManagementServiceVersionConfigRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
-
         if self.config_type is not None:
             result['ConfigType'] = self.config_type
 
@@ -52,9 +47,6 @@ class UpdateRecallManagementServiceVersionConfigRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
-
         if m.get('ConfigType') is not None:
             self.config_type = m.get('ConfigType')
 
@@ -216,13 +208,13 @@ class UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperators(Dar
         feature_config: main_models.UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperatorsFeatureConfig = None,
         filter_config: main_models.UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperatorsFilterConfig = None,
         join_config: main_models.UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperatorsJoinConfig = None,
-        operators_type: str = None,
+        operator_type: str = None,
         trigger_config: main_models.UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperatorsTriggerConfig = None,
     ):
         self.feature_config = feature_config
         self.filter_config = filter_config
         self.join_config = join_config
-        self.operators_type = operators_type
+        self.operator_type = operator_type
         self.trigger_config = trigger_config
 
     def validate(self):
@@ -249,8 +241,8 @@ class UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperators(Dar
         if self.join_config is not None:
             result['JoinConfig'] = self.join_config.to_map()
 
-        if self.operators_type is not None:
-            result['OperatorsType'] = self.operators_type
+        if self.operator_type is not None:
+            result['OperatorType'] = self.operator_type
 
         if self.trigger_config is not None:
             result['TriggerConfig'] = self.trigger_config.to_map()
@@ -271,8 +263,8 @@ class UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperators(Dar
             temp_model = main_models.UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperatorsJoinConfig()
             self.join_config = temp_model.from_map(m.get('JoinConfig'))
 
-        if m.get('OperatorsType') is not None:
-            self.operators_type = m.get('OperatorsType')
+        if m.get('OperatorType') is not None:
+            self.operator_type = m.get('OperatorType')
 
         if m.get('TriggerConfig') is not None:
             temp_model = main_models.UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperatorsTriggerConfig()
@@ -284,8 +276,8 @@ class UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperatorsTrig
     def __init__(
         self,
         field: str = None,
-        field_quantity_limit: str = None,
-        is_rand_sort: str = None,
+        field_quantity_limit: int = None,
+        is_rand_sort: bool = None,
         sort_field: str = None,
     ):
         self.field = field
@@ -335,7 +327,7 @@ class UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperatorsJoin
     def __init__(
         self,
         field: str = None,
-        output_fields: str = None,
+        output_fields: List[str] = None,
         recall_management_table_id: str = None,
     ):
         self.field = field

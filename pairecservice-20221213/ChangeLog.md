@@ -1,3 +1,33 @@
+2026-04-29 Version: 7.0.0
+- Support API ExportRecallManagementTable.
+- Support API QueryRecallManagementTableRecords.
+- Update API CreateRecallManagementServiceVersion: update request parameters body.Configs.RecallConfigs.$.Operators.$.TriggerConfig.FieldQuantityLimit' type has changed.
+- Update API CreateRecallManagementServiceVersion: update request parameters body.Configs.RecallConfigs.$.Operators.$.TriggerConfig.FieldQuantityLimit' format has changed.
+- Update API CreateRecallManagementServiceVersion: update request parameters body.Configs.RecallConfigs.$.Operators.$.TriggerConfig.IsRandSort' type has changed.
+- Update API CreateRecallManagementServiceVersionConfig: update request parameters body.RecallConfig.Operators.$.TriggerConfig.FieldQuantityLimit' type has changed.
+- Update API CreateRecallManagementServiceVersionConfig: update request parameters body.RecallConfig.Operators.$.TriggerConfig.FieldQuantityLimit' format has changed.
+- Update API CreateRecallManagementServiceVersionConfig: update request parameters body.RecallConfig.Operators.$.TriggerConfig.IsRandSort' type has changed.
+- Update API GetRecallManagementServiceVersion: update response parameters Body.Configs.RecallConfigs.$.Operators.$.TriggerConfig.FieldQuantityLimit' type has changed.
+- Update API GetRecallManagementServiceVersion: update response parameters Body.Configs.RecallConfigs.$.Operators.$.TriggerConfig.FieldQuantityLimit' format has changed.
+- Update API GetRecallManagementServiceVersion: update response parameters Body.Configs.RecallConfigs.$.Operators.$.TriggerConfig.IsRandSort' type has changed.
+- Update API GetRecallManagementServiceVersion: delete response parameters Body.IsDefault.
+- Update API GetRecallManagementServiceVersionConfig: add response parameters Body.RecallConfig.RecallManagementServiceVersionConfigId.
+- Update API GetTableMeta: add response parameters Body.ResourceType.
+- Update API GetTableMeta: add response parameters Body.ResourceUri.
+- Update API ListRecallManagementServiceVersions: add response parameters Body.RecallManagementServiceVersions.$.IsEffective.
+- Update API ListRecallManagementServiceVersions: delete response parameters Body.RecallManagementServiceVersions.$.IsDefault.
+- Update API ListTableMetas: add response parameters Body.TableMetas.$.ResourceType.
+- Update API ListTableMetas: add response parameters Body.TableMetas.$.ResourceUri.
+- Update API UpdateRecallManagementServiceVersionConfig: add request parameters body.RecallConfig.Operators.$.OperatorType.
+- Update API UpdateRecallManagementServiceVersionConfig: change request The number of host parameters has changed.
+- Update API UpdateRecallManagementServiceVersionConfig: update request parameters body.RecallConfig.Operators.$.JoinConfig.OutputFields' type has changed.
+- Update API UpdateRecallManagementServiceVersionConfig: delete request parameters body.RecallConfig.Operators.$.OperatorsType.
+- Update API UpdateRecallManagementServiceVersionConfig: update request parameters body.RecallConfig.Operators.$.TriggerConfig.FieldQuantityLimit' type has changed.
+- Update API UpdateRecallManagementServiceVersionConfig: update request parameters body.RecallConfig.Operators.$.TriggerConfig.FieldQuantityLimit' format has changed.
+- Update API UpdateRecallManagementServiceVersionConfig: update request parameters body.RecallConfig.Operators.$.TriggerConfig.IsRandSort' type has changed.
+- Update API UpdateRecallManagementTable: add request parameters body.Fields.
+
+
 2026-04-22 Version: 6.1.2
 - Update API CreateRecallManagementServiceVersion: add request parameters body.Configs.RecallConfigs.$.SortFields.
 - Update API CreateRecallManagementServiceVersionConfig: add request parameters body.RecallConfig.SortFields.

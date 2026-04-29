@@ -21,6 +21,8 @@ class GetTableMetaResponseBody(DaraModel):
         name: str = None,
         request_id: str = None,
         resource_id: str = None,
+        resource_type: str = None,
+        resource_uri: str = None,
         table_meta_id: str = None,
         table_name: str = None,
         type: str = None,
@@ -37,6 +39,8 @@ class GetTableMetaResponseBody(DaraModel):
         self.name = name
         self.request_id = request_id
         self.resource_id = resource_id
+        self.resource_type = resource_type
+        self.resource_uri = resource_uri
         self.table_meta_id = table_meta_id
         self.table_name = table_name
         self.type = type
@@ -87,6 +91,12 @@ class GetTableMetaResponseBody(DaraModel):
 
         if self.resource_id is not None:
             result['ResourceId'] = self.resource_id
+
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+
+        if self.resource_uri is not None:
+            result['ResourceUri'] = self.resource_uri
 
         if self.table_meta_id is not None:
             result['TableMetaId'] = self.table_meta_id
@@ -139,6 +149,12 @@ class GetTableMetaResponseBody(DaraModel):
 
         if m.get('ResourceId') is not None:
             self.resource_id = m.get('ResourceId')
+
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+
+        if m.get('ResourceUri') is not None:
+            self.resource_uri = m.get('ResourceUri')
 
         if m.get('TableMetaId') is not None:
             self.table_meta_id = m.get('TableMetaId')

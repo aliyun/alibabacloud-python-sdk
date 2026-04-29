@@ -201,6 +201,9 @@ from ._delete_traffic_control_task_response import DeleteTrafficControlTaskRespo
 from ._deploy_traffic_control_task_code_request import DeployTrafficControlTaskCodeRequest
 from ._deploy_traffic_control_task_code_response_body import DeployTrafficControlTaskCodeResponseBody
 from ._deploy_traffic_control_task_code_response import DeployTrafficControlTaskCodeResponse
+from ._export_recall_management_table_request import ExportRecallManagementTableRequest
+from ._export_recall_management_table_response_body import ExportRecallManagementTableResponseBody
+from ._export_recall_management_table_response import ExportRecallManagementTableResponse
 from ._generate_algorithm_customization_script_request import GenerateAlgorithmCustomizationScriptRequest
 from ._generate_algorithm_customization_script_response_body import GenerateAlgorithmCustomizationScriptResponseBody
 from ._generate_algorithm_customization_script_response import GenerateAlgorithmCustomizationScriptResponse
@@ -439,6 +442,9 @@ from ._push_resource_rule_response import PushResourceRuleResponse
 from ._query_data_diagnosis_statistics_request import QueryDataDiagnosisStatisticsRequest
 from ._query_data_diagnosis_statistics_response_body import QueryDataDiagnosisStatisticsResponseBody
 from ._query_data_diagnosis_statistics_response import QueryDataDiagnosisStatisticsResponse
+from ._query_recall_management_table_records_request import QueryRecallManagementTableRecordsRequest
+from ._query_recall_management_table_records_response_body import QueryRecallManagementTableRecordsResponseBody
+from ._query_recall_management_table_records_response import QueryRecallManagementTableRecordsResponse
 from ._query_sample_consistency_job_difference_request import QuerySampleConsistencyJobDifferenceRequest
 from ._query_sample_consistency_job_difference_response_body import QuerySampleConsistencyJobDifferenceResponseBody
 from ._query_sample_consistency_job_difference_response import QuerySampleConsistencyJobDifferenceResponse
@@ -680,6 +686,7 @@ from ._update_recall_management_service_version_config_request import UpdateReca
 from ._update_recall_management_service_version_config_request import UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperatorsTriggerConfig
 from ._update_recall_management_service_version_config_request import UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperators
 from ._update_recall_management_service_version_config_request import UpdateRecallManagementServiceVersionConfigRequestRecallConfig
+from ._update_recall_management_table_request import UpdateRecallManagementTableRequestFields
 from ._update_scene_request import UpdateSceneRequestFlows
 from ._update_table_meta_request import UpdateTableMetaRequestFields
 from ._update_traffic_control_task_request import UpdateTrafficControlTaskRequestTrafficControlTargets
@@ -886,6 +893,9 @@ __all__ = [
     DeployTrafficControlTaskCodeRequest,
     DeployTrafficControlTaskCodeResponseBody,
     DeployTrafficControlTaskCodeResponse,
+    ExportRecallManagementTableRequest,
+    ExportRecallManagementTableResponseBody,
+    ExportRecallManagementTableResponse,
     GenerateAlgorithmCustomizationScriptRequest,
     GenerateAlgorithmCustomizationScriptResponseBody,
     GenerateAlgorithmCustomizationScriptResponse,
@@ -1124,6 +1134,9 @@ __all__ = [
     QueryDataDiagnosisStatisticsRequest,
     QueryDataDiagnosisStatisticsResponseBody,
     QueryDataDiagnosisStatisticsResponse,
+    QueryRecallManagementTableRecordsRequest,
+    QueryRecallManagementTableRecordsResponseBody,
+    QueryRecallManagementTableRecordsResponse,
     QuerySampleConsistencyJobDifferenceRequest,
     QuerySampleConsistencyJobDifferenceResponseBody,
     QuerySampleConsistencyJobDifferenceResponse,
@@ -1365,6 +1378,7 @@ __all__ = [
     UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperatorsTriggerConfig,
     UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperators,
     UpdateRecallManagementServiceVersionConfigRequestRecallConfig,
+    UpdateRecallManagementTableRequestFields,
     UpdateSceneRequestFlows,
     UpdateTableMetaRequestFields,
     UpdateTrafficControlTaskRequestTrafficControlTargets,

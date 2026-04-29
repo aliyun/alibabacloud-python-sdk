@@ -6237,6 +6237,102 @@ class Client(OpenApiClient):
         headers = {}
         return await self.deploy_traffic_control_task_code_with_options_async(traffic_control_task_id, request, headers, runtime)
 
+    def export_recall_management_table_with_options(
+        self,
+        recall_management_table_id: str,
+        request: main_models.ExportRecallManagementTableRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ExportRecallManagementTableResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.maxcompute_project_name):
+            body['MaxcomputeProjectName'] = request.maxcompute_project_name
+        if not DaraCore.is_null(request.maxcompute_schema):
+            body['MaxcomputeSchema'] = request.maxcompute_schema
+        if not DaraCore.is_null(request.maxcompute_table_name):
+            body['MaxcomputeTableName'] = request.maxcompute_table_name
+        if not DaraCore.is_null(request.partitions):
+            body['Partitions'] = request.partitions
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ExportRecallManagementTable',
+            version = '2022-12-13',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/recallmanagementtables/{DaraURL.percent_encode(recall_management_table_id)}/action/export',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ExportRecallManagementTableResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def export_recall_management_table_with_options_async(
+        self,
+        recall_management_table_id: str,
+        request: main_models.ExportRecallManagementTableRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ExportRecallManagementTableResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.maxcompute_project_name):
+            body['MaxcomputeProjectName'] = request.maxcompute_project_name
+        if not DaraCore.is_null(request.maxcompute_schema):
+            body['MaxcomputeSchema'] = request.maxcompute_schema
+        if not DaraCore.is_null(request.maxcompute_table_name):
+            body['MaxcomputeTableName'] = request.maxcompute_table_name
+        if not DaraCore.is_null(request.partitions):
+            body['Partitions'] = request.partitions
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ExportRecallManagementTable',
+            version = '2022-12-13',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/recallmanagementtables/{DaraURL.percent_encode(recall_management_table_id)}/action/export',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ExportRecallManagementTableResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def export_recall_management_table(
+        self,
+        recall_management_table_id: str,
+        request: main_models.ExportRecallManagementTableRequest,
+    ) -> main_models.ExportRecallManagementTableResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.export_recall_management_table_with_options(recall_management_table_id, request, headers, runtime)
+
+    async def export_recall_management_table_async(
+        self,
+        recall_management_table_id: str,
+        request: main_models.ExportRecallManagementTableRequest,
+    ) -> main_models.ExportRecallManagementTableResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.export_recall_management_table_with_options_async(recall_management_table_id, request, headers, runtime)
+
     def generate_algorithm_customization_script_with_options(
         self,
         algorithm_customization_id: str,
@@ -13041,6 +13137,94 @@ class Client(OpenApiClient):
         headers = {}
         return await self.query_data_diagnosis_statistics_with_options_async(data_diagnosis_id, request, headers, runtime)
 
+    def query_recall_management_table_records_with_options(
+        self,
+        recall_management_table_id: str,
+        request: main_models.QueryRecallManagementTableRecordsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryRecallManagementTableRecordsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.primary_keys):
+            query['PrimaryKeys'] = request.primary_keys
+        if not DaraCore.is_null(request.recall_management_table_version_id):
+            query['RecallManagementTableVersionId'] = request.recall_management_table_version_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryRecallManagementTableRecords',
+            version = '2022-12-13',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/recallmanagementtables/{DaraURL.percent_encode(recall_management_table_id)}/queryrecords',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryRecallManagementTableRecordsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_recall_management_table_records_with_options_async(
+        self,
+        recall_management_table_id: str,
+        request: main_models.QueryRecallManagementTableRecordsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryRecallManagementTableRecordsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.primary_keys):
+            query['PrimaryKeys'] = request.primary_keys
+        if not DaraCore.is_null(request.recall_management_table_version_id):
+            query['RecallManagementTableVersionId'] = request.recall_management_table_version_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryRecallManagementTableRecords',
+            version = '2022-12-13',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/recallmanagementtables/{DaraURL.percent_encode(recall_management_table_id)}/queryrecords',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryRecallManagementTableRecordsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_recall_management_table_records(
+        self,
+        recall_management_table_id: str,
+        request: main_models.QueryRecallManagementTableRecordsRequest,
+    ) -> main_models.QueryRecallManagementTableRecordsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.query_recall_management_table_records_with_options(recall_management_table_id, request, headers, runtime)
+
+    async def query_recall_management_table_records_async(
+        self,
+        recall_management_table_id: str,
+        request: main_models.QueryRecallManagementTableRecordsRequest,
+    ) -> main_models.QueryRecallManagementTableRecordsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.query_recall_management_table_records_with_options_async(recall_management_table_id, request, headers, runtime)
+
     def query_sample_consistency_job_difference_with_options(
         self,
         sample_consistency_job_id: str,
@@ -15995,9 +16179,6 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.UpdateRecallManagementServiceVersionConfigResponse:
         request.validate()
-        query = {}
-        if not DaraCore.is_null(request.region_id):
-            query['RegionId'] = request.region_id
         body = {}
         if not DaraCore.is_null(request.config_type):
             body['ConfigType'] = request.config_type
@@ -16009,7 +16190,6 @@ class Client(OpenApiClient):
             body['RecallConfig'] = request.recall_config
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -16038,9 +16218,6 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.UpdateRecallManagementServiceVersionConfigResponse:
         request.validate()
-        query = {}
-        if not DaraCore.is_null(request.region_id):
-            query['RegionId'] = request.region_id
         body = {}
         if not DaraCore.is_null(request.config_type):
             body['ConfigType'] = request.config_type
@@ -16052,7 +16229,6 @@ class Client(OpenApiClient):
             body['RecallConfig'] = request.recall_config
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -16106,6 +16282,8 @@ class Client(OpenApiClient):
             body['EnableDataSizeFluctuationThreshold'] = request.enable_data_size_fluctuation_threshold
         if not DaraCore.is_null(request.enable_row_count_fluctuation_threshold):
             body['EnableRowCountFluctuationThreshold'] = request.enable_row_count_fluctuation_threshold
+        if not DaraCore.is_null(request.fields):
+            body['Fields'] = request.fields
         if not DaraCore.is_null(request.index_version_id):
             body['IndexVersionId'] = request.index_version_id
         if not DaraCore.is_null(request.instance_id):
@@ -16151,6 +16329,8 @@ class Client(OpenApiClient):
             body['EnableDataSizeFluctuationThreshold'] = request.enable_data_size_fluctuation_threshold
         if not DaraCore.is_null(request.enable_row_count_fluctuation_threshold):
             body['EnableRowCountFluctuationThreshold'] = request.enable_row_count_fluctuation_threshold
+        if not DaraCore.is_null(request.fields):
+            body['Fields'] = request.fields
         if not DaraCore.is_null(request.index_version_id):
             body['IndexVersionId'] = request.index_version_id
         if not DaraCore.is_null(request.instance_id):

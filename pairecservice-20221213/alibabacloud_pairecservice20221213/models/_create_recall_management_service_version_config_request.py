@@ -276,8 +276,8 @@ class CreateRecallManagementServiceVersionConfigRequestRecallConfigOperatorsTrig
     def __init__(
         self,
         field: str = None,
-        field_quantity_limit: str = None,
-        is_rand_sort: str = None,
+        field_quantity_limit: int = None,
+        is_rand_sort: bool = None,
         sort_field: str = None,
     ):
         self.field = field

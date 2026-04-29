@@ -13,7 +13,6 @@ class GetRecallManagementServiceVersionResponseBody(DaraModel):
         configs: main_models.GetRecallManagementServiceVersionResponseBodyConfigs = None,
         gmt_create_time: str = None,
         gmt_modified_time: str = None,
-        is_default: str = None,
         is_effective: bool = None,
         name: str = None,
         recall_management_service_version_id: str = None,
@@ -22,7 +21,6 @@ class GetRecallManagementServiceVersionResponseBody(DaraModel):
         self.configs = configs
         self.gmt_create_time = gmt_create_time
         self.gmt_modified_time = gmt_modified_time
-        self.is_default = is_default
         self.is_effective = is_effective
         self.name = name
         self.recall_management_service_version_id = recall_management_service_version_id
@@ -46,9 +44,6 @@ class GetRecallManagementServiceVersionResponseBody(DaraModel):
 
         if self.gmt_modified_time is not None:
             result['GmtModifiedTime'] = self.gmt_modified_time
-
-        if self.is_default is not None:
-            result['IsDefault'] = self.is_default
 
         if self.is_effective is not None:
             result['IsEffective'] = self.is_effective
@@ -75,9 +70,6 @@ class GetRecallManagementServiceVersionResponseBody(DaraModel):
 
         if m.get('GmtModifiedTime') is not None:
             self.gmt_modified_time = m.get('GmtModifiedTime')
-
-        if m.get('IsDefault') is not None:
-            self.is_default = m.get('IsDefault')
 
         if m.get('IsEffective') is not None:
             self.is_effective = m.get('IsEffective')
@@ -360,8 +352,8 @@ class GetRecallManagementServiceVersionResponseBodyConfigsRecallConfigsOperators
     def __init__(
         self,
         field: str = None,
-        field_quantity_limit: str = None,
-        is_rand_sort: str = None,
+        field_quantity_limit: int = None,
+        is_rand_sort: bool = None,
         sort_field: str = None,
     ):
         self.field = field
