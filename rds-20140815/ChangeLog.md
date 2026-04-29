@@ -1,3 +1,7 @@
+2026-04-29 Version: 15.9.0
+- Support API DescribeDBInstanceSwitchLog.
+
+
 2026-04-14 Version: 15.8.2
 - Update API DescribeRCDisks: add request parameters Status.
 - Update API RunRCInstances: add request parameters BusinessInfo.

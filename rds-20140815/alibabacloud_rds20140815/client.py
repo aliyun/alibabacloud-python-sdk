@@ -14101,6 +14101,112 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_dbinstance_security_group_rule_with_options_async(request, runtime)
 
+    def describe_dbinstance_switch_log_with_options(
+        self,
+        request: main_models.DescribeDBInstanceSwitchLogRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeDBInstanceSwitchLogResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeDBInstanceSwitchLog',
+            version = '2014-08-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeDBInstanceSwitchLogResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_dbinstance_switch_log_with_options_async(
+        self,
+        request: main_models.DescribeDBInstanceSwitchLogRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeDBInstanceSwitchLogResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeDBInstanceSwitchLog',
+            version = '2014-08-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeDBInstanceSwitchLogResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_dbinstance_switch_log(
+        self,
+        request: main_models.DescribeDBInstanceSwitchLogRequest,
+    ) -> main_models.DescribeDBInstanceSwitchLogResponse:
+        runtime = RuntimeOptions()
+        return self.describe_dbinstance_switch_log_with_options(request, runtime)
+
+    async def describe_dbinstance_switch_log_async(
+        self,
+        request: main_models.DescribeDBInstanceSwitchLogRequest,
+    ) -> main_models.DescribeDBInstanceSwitchLogResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_dbinstance_switch_log_with_options_async(request, runtime)
+
     def describe_dbinstance_tdewith_options(
         self,
         request: main_models.DescribeDBInstanceTDERequest,
