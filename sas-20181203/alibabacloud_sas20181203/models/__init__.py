@@ -64,6 +64,9 @@ from ._add_tag_with_uuid_response import AddTagWithUuidResponse
 from ._add_uninstall_clients_by_uuids_request import AddUninstallClientsByUuidsRequest
 from ._add_uninstall_clients_by_uuids_response_body import AddUninstallClientsByUuidsResponseBody
 from ._add_uninstall_clients_by_uuids_response import AddUninstallClientsByUuidsResponse
+from ._add_unknown_threat_detect_process_request import AddUnknownThreatDetectProcessRequest
+from ._add_unknown_threat_detect_process_response_body import AddUnknownThreatDetectProcessResponseBody
+from ._add_unknown_threat_detect_process_response import AddUnknownThreatDetectProcessResponse
 from ._add_vpc_honey_pot_request import AddVpcHoneyPotRequest
 from ._add_vpc_honey_pot_response_body import AddVpcHoneyPotResponseBody
 from ._add_vpc_honey_pot_response import AddVpcHoneyPotResponse
@@ -284,6 +287,9 @@ from ._create_uni_backup_policy_response import CreateUniBackupPolicyResponse
 from ._create_uni_restore_plan_request import CreateUniRestorePlanRequest
 from ._create_uni_restore_plan_response_body import CreateUniRestorePlanResponseBody
 from ._create_uni_restore_plan_response import CreateUniRestorePlanResponse
+from ._create_unknown_threat_detect_strategy_request import CreateUnknownThreatDetectStrategyRequest
+from ._create_unknown_threat_detect_strategy_response_body import CreateUnknownThreatDetectStrategyResponseBody
+from ._create_unknown_threat_detect_strategy_response import CreateUnknownThreatDetectStrategyResponse
 from ._create_user_setting_request import CreateUserSettingRequest
 from ._create_user_setting_response_body import CreateUserSettingResponseBody
 from ._create_user_setting_response import CreateUserSettingResponse
@@ -452,6 +458,12 @@ from ._delete_tag_with_uuid_response import DeleteTagWithUuidResponse
 from ._delete_uni_backup_policy_request import DeleteUniBackupPolicyRequest
 from ._delete_uni_backup_policy_response_body import DeleteUniBackupPolicyResponseBody
 from ._delete_uni_backup_policy_response import DeleteUniBackupPolicyResponse
+from ._delete_unknown_threat_detect_process_request import DeleteUnknownThreatDetectProcessRequest
+from ._delete_unknown_threat_detect_process_response_body import DeleteUnknownThreatDetectProcessResponseBody
+from ._delete_unknown_threat_detect_process_response import DeleteUnknownThreatDetectProcessResponse
+from ._delete_unknown_threat_detect_strategy_request import DeleteUnknownThreatDetectStrategyRequest
+from ._delete_unknown_threat_detect_strategy_response_body import DeleteUnknownThreatDetectStrategyResponseBody
+from ._delete_unknown_threat_detect_strategy_response import DeleteUnknownThreatDetectStrategyResponse
 from ._delete_vpc_honey_pot_request import DeleteVpcHoneyPotRequest
 from ._delete_vpc_honey_pot_response_body import DeleteVpcHoneyPotResponseBody
 from ._delete_vpc_honey_pot_response import DeleteVpcHoneyPotResponse
@@ -1749,6 +1761,9 @@ from ._get_switch_region_detail_response_body import GetSwitchRegionDetailRespon
 from ._get_switch_region_detail_response import GetSwitchRegionDetailResponse
 from ._get_tenant_check_available_response_body import GetTenantCheckAvailableResponseBody
 from ._get_tenant_check_available_response import GetTenantCheckAvailableResponse
+from ._get_unknown_threat_detect_statistic_request import GetUnknownThreatDetectStatisticRequest
+from ._get_unknown_threat_detect_statistic_response_body import GetUnknownThreatDetectStatisticResponseBody
+from ._get_unknown_threat_detect_statistic_response import GetUnknownThreatDetectStatisticResponse
 from ._get_user_lang_response_body import GetUserLangResponseBody
 from ._get_user_lang_response import GetUserLangResponse
 from ._get_valid_deduct_instances_request import GetValidDeductInstancesRequest
@@ -1771,6 +1786,9 @@ from ._grant_switch_agreement_response import GrantSwitchAgreementResponse
 from ._handle_malicious_files_request import HandleMaliciousFilesRequest
 from ._handle_malicious_files_response_body import HandleMaliciousFilesResponseBody
 from ._handle_malicious_files_response import HandleMaliciousFilesResponse
+from ._handle_object_scan_event_request import HandleObjectScanEventRequest
+from ._handle_object_scan_event_response_body import HandleObjectScanEventResponseBody
+from ._handle_object_scan_event_response import HandleObjectScanEventResponse
 from ._handle_security_events_request import HandleSecurityEventsRequest
 from ._handle_security_events_response_body import HandleSecurityEventsResponseBody
 from ._handle_security_events_response import HandleSecurityEventsResponse
@@ -1780,6 +1798,9 @@ from ._handle_similar_malicious_files_response import HandleSimilarMaliciousFile
 from ._handle_similar_security_events_request import HandleSimilarSecurityEventsRequest
 from ._handle_similar_security_events_response_body import HandleSimilarSecurityEventsResponseBody
 from ._handle_similar_security_events_response import HandleSimilarSecurityEventsResponse
+from ._handle_unknown_threat_detect_event_request import HandleUnknownThreatDetectEventRequest
+from ._handle_unknown_threat_detect_event_response_body import HandleUnknownThreatDetectEventResponseBody
+from ._handle_unknown_threat_detect_event_response import HandleUnknownThreatDetectEventResponse
 from ._ignore_check_items_request import IgnoreCheckItemsRequest
 from ._ignore_check_items_response_body import IgnoreCheckItemsResponseBody
 from ._ignore_check_items_response import IgnoreCheckItemsResponse
@@ -2125,6 +2146,18 @@ from ._list_uni_backup_record_response import ListUniBackupRecordResponse
 from ._list_uninstall_aegis_machines_request import ListUninstallAegisMachinesRequest
 from ._list_uninstall_aegis_machines_response_body import ListUninstallAegisMachinesResponseBody
 from ._list_uninstall_aegis_machines_response import ListUninstallAegisMachinesResponse
+from ._list_unknown_threat_detect_event_request import ListUnknownThreatDetectEventRequest
+from ._list_unknown_threat_detect_event_response_body import ListUnknownThreatDetectEventResponseBody
+from ._list_unknown_threat_detect_event_response import ListUnknownThreatDetectEventResponse
+from ._list_unknown_threat_detect_machine_request import ListUnknownThreatDetectMachineRequest
+from ._list_unknown_threat_detect_machine_response_body import ListUnknownThreatDetectMachineResponseBody
+from ._list_unknown_threat_detect_machine_response import ListUnknownThreatDetectMachineResponse
+from ._list_unknown_threat_detect_process_request import ListUnknownThreatDetectProcessRequest
+from ._list_unknown_threat_detect_process_response_body import ListUnknownThreatDetectProcessResponseBody
+from ._list_unknown_threat_detect_process_response import ListUnknownThreatDetectProcessResponse
+from ._list_unknown_threat_detect_strategy_request import ListUnknownThreatDetectStrategyRequest
+from ._list_unknown_threat_detect_strategy_response_body import ListUnknownThreatDetectStrategyResponseBody
+from ._list_unknown_threat_detect_strategy_response import ListUnknownThreatDetectStrategyResponse
 from ._list_user_vpc_request import ListUserVpcRequest
 from ._list_user_vpc_response_body import ListUserVpcResponseBody
 from ._list_user_vpc_response import ListUserVpcResponse
@@ -2422,6 +2455,9 @@ from ._operate_suspicious_target_config_response import OperateSuspiciousTargetC
 from ._operate_switch_status_request import OperateSwitchStatusRequest
 from ._operate_switch_status_response_body import OperateSwitchStatusResponseBody
 from ._operate_switch_status_response import OperateSwitchStatusResponse
+from ._operate_unknown_threat_detect_machine_request import OperateUnknownThreatDetectMachineRequest
+from ._operate_unknown_threat_detect_machine_response_body import OperateUnknownThreatDetectMachineResponseBody
+from ._operate_unknown_threat_detect_machine_response import OperateUnknownThreatDetectMachineResponse
 from ._operate_virus_events_request import OperateVirusEventsRequest
 from ._operate_virus_events_response_body import OperateVirusEventsResponseBody
 from ._operate_virus_events_response import OperateVirusEventsResponse
@@ -2713,6 +2749,12 @@ from ._update_strict_event_name_response import UpdateStrictEventNameResponse
 from ._update_target_list_by_batch_request import UpdateTargetListByBatchRequest
 from ._update_target_list_by_batch_response_body import UpdateTargetListByBatchResponseBody
 from ._update_target_list_by_batch_response import UpdateTargetListByBatchResponse
+from ._update_unknown_threat_detect_process_request import UpdateUnknownThreatDetectProcessRequest
+from ._update_unknown_threat_detect_process_response_body import UpdateUnknownThreatDetectProcessResponseBody
+from ._update_unknown_threat_detect_process_response import UpdateUnknownThreatDetectProcessResponse
+from ._update_unknown_threat_detect_strategy_request import UpdateUnknownThreatDetectStrategyRequest
+from ._update_unknown_threat_detect_strategy_response_body import UpdateUnknownThreatDetectStrategyResponseBody
+from ._update_unknown_threat_detect_strategy_response import UpdateUnknownThreatDetectStrategyResponse
 from ._update_white_list_request import UpdateWhiteListRequest
 from ._update_white_list_response_body import UpdateWhiteListResponseBody
 from ._update_white_list_response import UpdateWhiteListResponse
@@ -2760,6 +2802,8 @@ from ._add_private_registry_response_body import AddPrivateRegistryResponseBodyD
 from ._add_sas_container_web_defense_rule_request import AddSasContainerWebDefenseRuleRequestPathConfDTOList
 from ._add_sas_module_trial_response_body import AddSasModuleTrialResponseBodyDataTrialRecordList
 from ._add_sas_module_trial_response_body import AddSasModuleTrialResponseBodyData
+from ._add_unknown_threat_detect_process_request import AddUnknownThreatDetectProcessRequestProcessList
+from ._add_unknown_threat_detect_process_response_body import AddUnknownThreatDetectProcessResponseBodyIdList
 from ._advance_security_event_operations_response_body import AdvanceSecurityEventOperationsResponseBodySecurityEventOperationsResponseMarkField
 from ._advance_security_event_operations_response_body import AdvanceSecurityEventOperationsResponseBodySecurityEventOperationsResponseMarkFieldsSource
 from ._advance_security_event_operations_response_body import AdvanceSecurityEventOperationsResponseBodySecurityEventOperationsResponse
@@ -3462,12 +3506,14 @@ from ._get_supported_modules_response_body import GetSupportedModulesResponseBod
 from ._get_switch_region_detail_response_body import GetSwitchRegionDetailResponseBodyDataRegionStatus
 from ._get_switch_region_detail_response_body import GetSwitchRegionDetailResponseBodyData
 from ._get_tenant_check_available_response_body import GetTenantCheckAvailableResponseBodyData
+from ._get_unknown_threat_detect_statistic_response_body import GetUnknownThreatDetectStatisticResponseBodyData
 from ._get_user_lang_response_body import GetUserLangResponseBodySasUserLang
 from ._get_valid_deduct_instances_response_body import GetValidDeductInstancesResponseBodyDataDeductPackageList
 from ._get_valid_deduct_instances_response_body import GetValidDeductInstancesResponseBodyData
 from ._get_virus_scan_config_response_body import GetVirusScanConfigResponseBodyData
 from ._get_virus_scan_latest_task_statistic_response_body import GetVirusScanLatestTaskStatisticResponseBodyData
 from ._get_vul_whitelist_response_body import GetVulWhitelistResponseBodyVulWhitelist
+from ._handle_object_scan_event_request import HandleObjectScanEventRequestRuleConditionList
 from ._handle_security_events_response_body import HandleSecurityEventsResponseBodyHandleSecurityEventsResponse
 from ._ignore_check_items_request import IgnoreCheckItemsRequestCheckAndRiskTypeList
 from ._ignore_check_items_request import IgnoreCheckItemsRequestContainerItems
@@ -3720,6 +3766,14 @@ from ._list_unfinished_once_task_response_body import ListUnfinishedOnceTaskResp
 from ._list_uni_backup_record_response_body import ListUniBackupRecordResponseBodyPageInfo
 from ._list_uni_backup_record_response_body import ListUniBackupRecordResponseBodyUniBackupRecordList
 from ._list_uninstall_aegis_machines_response_body import ListUninstallAegisMachinesResponseBodyMachineList
+from ._list_unknown_threat_detect_event_response_body import ListUnknownThreatDetectEventResponseBodyData
+from ._list_unknown_threat_detect_event_response_body import ListUnknownThreatDetectEventResponseBodyPageInfo
+from ._list_unknown_threat_detect_machine_response_body import ListUnknownThreatDetectMachineResponseBodyData
+from ._list_unknown_threat_detect_machine_response_body import ListUnknownThreatDetectMachineResponseBodyPageInfo
+from ._list_unknown_threat_detect_process_response_body import ListUnknownThreatDetectProcessResponseBodyData
+from ._list_unknown_threat_detect_process_response_body import ListUnknownThreatDetectProcessResponseBodyPageInfo
+from ._list_unknown_threat_detect_strategy_response_body import ListUnknownThreatDetectStrategyResponseBodyData
+from ._list_unknown_threat_detect_strategy_response_body import ListUnknownThreatDetectStrategyResponseBodyPageInfo
 from ._list_user_vpc_response_body import ListUserVpcResponseBodyUserVpcInfos
 from ._list_uuids_by_web_path_response_body import ListUuidsByWebPathResponseBodyList
 from ._list_uuids_by_web_path_response_body import ListUuidsByWebPathResponseBodyPageInfo
@@ -3882,6 +3936,9 @@ __all__ = [
     AddUninstallClientsByUuidsRequest,
     AddUninstallClientsByUuidsResponseBody,
     AddUninstallClientsByUuidsResponse,
+    AddUnknownThreatDetectProcessRequest,
+    AddUnknownThreatDetectProcessResponseBody,
+    AddUnknownThreatDetectProcessResponse,
     AddVpcHoneyPotRequest,
     AddVpcHoneyPotResponseBody,
     AddVpcHoneyPotResponse,
@@ -4102,6 +4159,9 @@ __all__ = [
     CreateUniRestorePlanRequest,
     CreateUniRestorePlanResponseBody,
     CreateUniRestorePlanResponse,
+    CreateUnknownThreatDetectStrategyRequest,
+    CreateUnknownThreatDetectStrategyResponseBody,
+    CreateUnknownThreatDetectStrategyResponse,
     CreateUserSettingRequest,
     CreateUserSettingResponseBody,
     CreateUserSettingResponse,
@@ -4270,6 +4330,12 @@ __all__ = [
     DeleteUniBackupPolicyRequest,
     DeleteUniBackupPolicyResponseBody,
     DeleteUniBackupPolicyResponse,
+    DeleteUnknownThreatDetectProcessRequest,
+    DeleteUnknownThreatDetectProcessResponseBody,
+    DeleteUnknownThreatDetectProcessResponse,
+    DeleteUnknownThreatDetectStrategyRequest,
+    DeleteUnknownThreatDetectStrategyResponseBody,
+    DeleteUnknownThreatDetectStrategyResponse,
     DeleteVpcHoneyPotRequest,
     DeleteVpcHoneyPotResponseBody,
     DeleteVpcHoneyPotResponse,
@@ -5567,6 +5633,9 @@ __all__ = [
     GetSwitchRegionDetailResponse,
     GetTenantCheckAvailableResponseBody,
     GetTenantCheckAvailableResponse,
+    GetUnknownThreatDetectStatisticRequest,
+    GetUnknownThreatDetectStatisticResponseBody,
+    GetUnknownThreatDetectStatisticResponse,
     GetUserLangResponseBody,
     GetUserLangResponse,
     GetValidDeductInstancesRequest,
@@ -5589,6 +5658,9 @@ __all__ = [
     HandleMaliciousFilesRequest,
     HandleMaliciousFilesResponseBody,
     HandleMaliciousFilesResponse,
+    HandleObjectScanEventRequest,
+    HandleObjectScanEventResponseBody,
+    HandleObjectScanEventResponse,
     HandleSecurityEventsRequest,
     HandleSecurityEventsResponseBody,
     HandleSecurityEventsResponse,
@@ -5598,6 +5670,9 @@ __all__ = [
     HandleSimilarSecurityEventsRequest,
     HandleSimilarSecurityEventsResponseBody,
     HandleSimilarSecurityEventsResponse,
+    HandleUnknownThreatDetectEventRequest,
+    HandleUnknownThreatDetectEventResponseBody,
+    HandleUnknownThreatDetectEventResponse,
     IgnoreCheckItemsRequest,
     IgnoreCheckItemsResponseBody,
     IgnoreCheckItemsResponse,
@@ -5943,6 +6018,18 @@ __all__ = [
     ListUninstallAegisMachinesRequest,
     ListUninstallAegisMachinesResponseBody,
     ListUninstallAegisMachinesResponse,
+    ListUnknownThreatDetectEventRequest,
+    ListUnknownThreatDetectEventResponseBody,
+    ListUnknownThreatDetectEventResponse,
+    ListUnknownThreatDetectMachineRequest,
+    ListUnknownThreatDetectMachineResponseBody,
+    ListUnknownThreatDetectMachineResponse,
+    ListUnknownThreatDetectProcessRequest,
+    ListUnknownThreatDetectProcessResponseBody,
+    ListUnknownThreatDetectProcessResponse,
+    ListUnknownThreatDetectStrategyRequest,
+    ListUnknownThreatDetectStrategyResponseBody,
+    ListUnknownThreatDetectStrategyResponse,
     ListUserVpcRequest,
     ListUserVpcResponseBody,
     ListUserVpcResponse,
@@ -6240,6 +6327,9 @@ __all__ = [
     OperateSwitchStatusRequest,
     OperateSwitchStatusResponseBody,
     OperateSwitchStatusResponse,
+    OperateUnknownThreatDetectMachineRequest,
+    OperateUnknownThreatDetectMachineResponseBody,
+    OperateUnknownThreatDetectMachineResponse,
     OperateVirusEventsRequest,
     OperateVirusEventsResponseBody,
     OperateVirusEventsResponse,
@@ -6531,6 +6621,12 @@ __all__ = [
     UpdateTargetListByBatchRequest,
     UpdateTargetListByBatchResponseBody,
     UpdateTargetListByBatchResponse,
+    UpdateUnknownThreatDetectProcessRequest,
+    UpdateUnknownThreatDetectProcessResponseBody,
+    UpdateUnknownThreatDetectProcessResponse,
+    UpdateUnknownThreatDetectStrategyRequest,
+    UpdateUnknownThreatDetectStrategyResponseBody,
+    UpdateUnknownThreatDetectStrategyResponse,
     UpdateWhiteListRequest,
     UpdateWhiteListResponseBody,
     UpdateWhiteListResponse,
@@ -6578,6 +6674,8 @@ __all__ = [
     AddSasContainerWebDefenseRuleRequestPathConfDTOList,
     AddSasModuleTrialResponseBodyDataTrialRecordList,
     AddSasModuleTrialResponseBodyData,
+    AddUnknownThreatDetectProcessRequestProcessList,
+    AddUnknownThreatDetectProcessResponseBodyIdList,
     AdvanceSecurityEventOperationsResponseBodySecurityEventOperationsResponseMarkField,
     AdvanceSecurityEventOperationsResponseBodySecurityEventOperationsResponseMarkFieldsSource,
     AdvanceSecurityEventOperationsResponseBodySecurityEventOperationsResponse,
@@ -7280,12 +7378,14 @@ __all__ = [
     GetSwitchRegionDetailResponseBodyDataRegionStatus,
     GetSwitchRegionDetailResponseBodyData,
     GetTenantCheckAvailableResponseBodyData,
+    GetUnknownThreatDetectStatisticResponseBodyData,
     GetUserLangResponseBodySasUserLang,
     GetValidDeductInstancesResponseBodyDataDeductPackageList,
     GetValidDeductInstancesResponseBodyData,
     GetVirusScanConfigResponseBodyData,
     GetVirusScanLatestTaskStatisticResponseBodyData,
     GetVulWhitelistResponseBodyVulWhitelist,
+    HandleObjectScanEventRequestRuleConditionList,
     HandleSecurityEventsResponseBodyHandleSecurityEventsResponse,
     IgnoreCheckItemsRequestCheckAndRiskTypeList,
     IgnoreCheckItemsRequestContainerItems,
@@ -7538,6 +7638,14 @@ __all__ = [
     ListUniBackupRecordResponseBodyPageInfo,
     ListUniBackupRecordResponseBodyUniBackupRecordList,
     ListUninstallAegisMachinesResponseBodyMachineList,
+    ListUnknownThreatDetectEventResponseBodyData,
+    ListUnknownThreatDetectEventResponseBodyPageInfo,
+    ListUnknownThreatDetectMachineResponseBodyData,
+    ListUnknownThreatDetectMachineResponseBodyPageInfo,
+    ListUnknownThreatDetectProcessResponseBodyData,
+    ListUnknownThreatDetectProcessResponseBodyPageInfo,
+    ListUnknownThreatDetectStrategyResponseBodyData,
+    ListUnknownThreatDetectStrategyResponseBodyPageInfo,
     ListUserVpcResponseBodyUserVpcInfos,
     ListUuidsByWebPathResponseBodyList,
     ListUuidsByWebPathResponseBodyPageInfo,

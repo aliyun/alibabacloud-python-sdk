@@ -1,3 +1,7 @@
+2026-04-29 Version: 9.2.0
+- Support API HandleObjectScanEvent.
+
+
 2026-04-08 Version: 9.1.3
 - Update API DescribeVulExportInfo: add request parameters ResourceDirectoryAccountId.
 - Update API ExportVul: add request parameters ResourceDirectoryAccountId.

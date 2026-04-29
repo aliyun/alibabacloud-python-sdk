@@ -1913,6 +1913,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.add_uninstall_clients_by_uuids_with_options_async(request, runtime)
 
+    def add_unknown_threat_detect_process_with_options(
+        self,
+        request: main_models.AddUnknownThreatDetectProcessRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddUnknownThreatDetectProcessResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.event_id_list):
+            query['EventIdList'] = request.event_id_list
+        if not DaraCore.is_null(request.process_list):
+            query['ProcessList'] = request.process_list
+        if not DaraCore.is_null(request.uuid_list):
+            query['UuidList'] = request.uuid_list
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddUnknownThreatDetectProcess',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddUnknownThreatDetectProcessResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_unknown_threat_detect_process_with_options_async(
+        self,
+        request: main_models.AddUnknownThreatDetectProcessRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddUnknownThreatDetectProcessResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.event_id_list):
+            query['EventIdList'] = request.event_id_list
+        if not DaraCore.is_null(request.process_list):
+            query['ProcessList'] = request.process_list
+        if not DaraCore.is_null(request.uuid_list):
+            query['UuidList'] = request.uuid_list
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddUnknownThreatDetectProcess',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddUnknownThreatDetectProcessResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_unknown_threat_detect_process(
+        self,
+        request: main_models.AddUnknownThreatDetectProcessRequest,
+    ) -> main_models.AddUnknownThreatDetectProcessResponse:
+        runtime = RuntimeOptions()
+        return self.add_unknown_threat_detect_process_with_options(request, runtime)
+
+    async def add_unknown_threat_detect_process_async(
+        self,
+        request: main_models.AddUnknownThreatDetectProcessRequest,
+    ) -> main_models.AddUnknownThreatDetectProcessResponse:
+        runtime = RuntimeOptions()
+        return await self.add_unknown_threat_detect_process_with_options_async(request, runtime)
+
     def add_vpc_honey_pot_with_options(
         self,
         request: main_models.AddVpcHoneyPotRequest,
@@ -8127,6 +8205,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_uni_restore_plan_with_options_async(request, runtime)
 
+    def create_unknown_threat_detect_strategy_with_options(
+        self,
+        request: main_models.CreateUnknownThreatDetectStrategyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateUnknownThreatDetectStrategyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.asset_selection_type):
+            query['AssetSelectionType'] = request.asset_selection_type
+        if not DaraCore.is_null(request.duration_days_after_init):
+            query['DurationDaysAfterInit'] = request.duration_days_after_init
+        if not DaraCore.is_null(request.duration_days_after_stop):
+            query['DurationDaysAfterStop'] = request.duration_days_after_stop
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.study_mode):
+            query['StudyMode'] = request.study_mode
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateUnknownThreatDetectStrategy',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateUnknownThreatDetectStrategyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_unknown_threat_detect_strategy_with_options_async(
+        self,
+        request: main_models.CreateUnknownThreatDetectStrategyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateUnknownThreatDetectStrategyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.asset_selection_type):
+            query['AssetSelectionType'] = request.asset_selection_type
+        if not DaraCore.is_null(request.duration_days_after_init):
+            query['DurationDaysAfterInit'] = request.duration_days_after_init
+        if not DaraCore.is_null(request.duration_days_after_stop):
+            query['DurationDaysAfterStop'] = request.duration_days_after_stop
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.study_mode):
+            query['StudyMode'] = request.study_mode
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateUnknownThreatDetectStrategy',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateUnknownThreatDetectStrategyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_unknown_threat_detect_strategy(
+        self,
+        request: main_models.CreateUnknownThreatDetectStrategyRequest,
+    ) -> main_models.CreateUnknownThreatDetectStrategyResponse:
+        runtime = RuntimeOptions()
+        return self.create_unknown_threat_detect_strategy_with_options(request, runtime)
+
+    async def create_unknown_threat_detect_strategy_async(
+        self,
+        request: main_models.CreateUnknownThreatDetectStrategyRequest,
+    ) -> main_models.CreateUnknownThreatDetectStrategyResponse:
+        runtime = RuntimeOptions()
+        return await self.create_unknown_threat_detect_strategy_with_options_async(request, runtime)
+
     def create_user_setting_with_options(
         self,
         request: main_models.CreateUserSettingRequest,
@@ -12230,6 +12394,146 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteUniBackupPolicyResponse:
         runtime = RuntimeOptions()
         return await self.delete_uni_backup_policy_with_options_async(request, runtime)
+
+    def delete_unknown_threat_detect_process_with_options(
+        self,
+        request: main_models.DeleteUnknownThreatDetectProcessRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteUnknownThreatDetectProcessResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.process_id_list):
+            query['ProcessIdList'] = request.process_id_list
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteUnknownThreatDetectProcess',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteUnknownThreatDetectProcessResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_unknown_threat_detect_process_with_options_async(
+        self,
+        request: main_models.DeleteUnknownThreatDetectProcessRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteUnknownThreatDetectProcessResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.process_id_list):
+            query['ProcessIdList'] = request.process_id_list
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteUnknownThreatDetectProcess',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteUnknownThreatDetectProcessResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_unknown_threat_detect_process(
+        self,
+        request: main_models.DeleteUnknownThreatDetectProcessRequest,
+    ) -> main_models.DeleteUnknownThreatDetectProcessResponse:
+        runtime = RuntimeOptions()
+        return self.delete_unknown_threat_detect_process_with_options(request, runtime)
+
+    async def delete_unknown_threat_detect_process_async(
+        self,
+        request: main_models.DeleteUnknownThreatDetectProcessRequest,
+    ) -> main_models.DeleteUnknownThreatDetectProcessResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_unknown_threat_detect_process_with_options_async(request, runtime)
+
+    def delete_unknown_threat_detect_strategy_with_options(
+        self,
+        request: main_models.DeleteUnknownThreatDetectStrategyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteUnknownThreatDetectStrategyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.id_list):
+            query['IdList'] = request.id_list
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteUnknownThreatDetectStrategy',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteUnknownThreatDetectStrategyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_unknown_threat_detect_strategy_with_options_async(
+        self,
+        request: main_models.DeleteUnknownThreatDetectStrategyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteUnknownThreatDetectStrategyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.id_list):
+            query['IdList'] = request.id_list
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteUnknownThreatDetectStrategy',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteUnknownThreatDetectStrategyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_unknown_threat_detect_strategy(
+        self,
+        request: main_models.DeleteUnknownThreatDetectStrategyRequest,
+    ) -> main_models.DeleteUnknownThreatDetectStrategyResponse:
+        runtime = RuntimeOptions()
+        return self.delete_unknown_threat_detect_strategy_with_options(request, runtime)
+
+    async def delete_unknown_threat_detect_strategy_async(
+        self,
+        request: main_models.DeleteUnknownThreatDetectStrategyRequest,
+    ) -> main_models.DeleteUnknownThreatDetectStrategyResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_unknown_threat_detect_strategy_with_options_async(request, runtime)
 
     def delete_vpc_honey_pot_with_options(
         self,
@@ -47649,6 +47953,66 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_tenant_check_available_with_options_async(runtime)
 
+    def get_unknown_threat_detect_statistic_with_options(
+        self,
+        request: main_models.GetUnknownThreatDetectStatisticRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetUnknownThreatDetectStatisticResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'GetUnknownThreatDetectStatistic',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetUnknownThreatDetectStatisticResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_unknown_threat_detect_statistic_with_options_async(
+        self,
+        request: main_models.GetUnknownThreatDetectStatisticRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetUnknownThreatDetectStatisticResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'GetUnknownThreatDetectStatistic',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetUnknownThreatDetectStatisticResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_unknown_threat_detect_statistic(
+        self,
+        request: main_models.GetUnknownThreatDetectStatisticRequest,
+    ) -> main_models.GetUnknownThreatDetectStatisticResponse:
+        runtime = RuntimeOptions()
+        return self.get_unknown_threat_detect_statistic_with_options(request, runtime)
+
+    async def get_unknown_threat_detect_statistic_async(
+        self,
+        request: main_models.GetUnknownThreatDetectStatisticRequest,
+    ) -> main_models.GetUnknownThreatDetectStatisticResponse:
+        runtime = RuntimeOptions()
+        return await self.get_unknown_threat_detect_statistic_with_options_async(request, runtime)
+
     def get_user_lang_with_options(
         self,
         runtime: RuntimeOptions,
@@ -48209,6 +48573,100 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.handle_malicious_files_with_options_async(request, runtime)
 
+    def handle_object_scan_event_with_options(
+        self,
+        request: main_models.HandleObjectScanEventRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.HandleObjectScanEventResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.batch_type):
+            query['BatchType'] = request.batch_type
+        if not DaraCore.is_null(request.event_id):
+            query['EventId'] = request.event_id
+        if not DaraCore.is_null(request.event_id_list):
+            query['EventIdList'] = request.event_id_list
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.remark):
+            query['Remark'] = request.remark
+        if not DaraCore.is_null(request.rule_condition_list):
+            query['RuleConditionList'] = request.rule_condition_list
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'HandleObjectScanEvent',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.HandleObjectScanEventResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def handle_object_scan_event_with_options_async(
+        self,
+        request: main_models.HandleObjectScanEventRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.HandleObjectScanEventResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.batch_type):
+            query['BatchType'] = request.batch_type
+        if not DaraCore.is_null(request.event_id):
+            query['EventId'] = request.event_id
+        if not DaraCore.is_null(request.event_id_list):
+            query['EventIdList'] = request.event_id_list
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.remark):
+            query['Remark'] = request.remark
+        if not DaraCore.is_null(request.rule_condition_list):
+            query['RuleConditionList'] = request.rule_condition_list
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'HandleObjectScanEvent',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.HandleObjectScanEventResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def handle_object_scan_event(
+        self,
+        request: main_models.HandleObjectScanEventRequest,
+    ) -> main_models.HandleObjectScanEventResponse:
+        runtime = RuntimeOptions()
+        return self.handle_object_scan_event_with_options(request, runtime)
+
+    async def handle_object_scan_event_async(
+        self,
+        request: main_models.HandleObjectScanEventRequest,
+    ) -> main_models.HandleObjectScanEventResponse:
+        runtime = RuntimeOptions()
+        return await self.handle_object_scan_event_with_options_async(request, runtime)
+
     def handle_security_events_with_options(
         self,
         request: main_models.HandleSecurityEventsRequest,
@@ -48486,6 +48944,80 @@ class Client(OpenApiClient):
     ) -> main_models.HandleSimilarSecurityEventsResponse:
         runtime = RuntimeOptions()
         return await self.handle_similar_security_events_with_options_async(request, runtime)
+
+    def handle_unknown_threat_detect_event_with_options(
+        self,
+        request: main_models.HandleUnknownThreatDetectEventRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.HandleUnknownThreatDetectEventResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.event_id_list):
+            query['EventIdList'] = request.event_id_list
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'HandleUnknownThreatDetectEvent',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.HandleUnknownThreatDetectEventResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def handle_unknown_threat_detect_event_with_options_async(
+        self,
+        request: main_models.HandleUnknownThreatDetectEventRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.HandleUnknownThreatDetectEventResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.event_id_list):
+            query['EventIdList'] = request.event_id_list
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'HandleUnknownThreatDetectEvent',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.HandleUnknownThreatDetectEventResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def handle_unknown_threat_detect_event(
+        self,
+        request: main_models.HandleUnknownThreatDetectEventRequest,
+    ) -> main_models.HandleUnknownThreatDetectEventResponse:
+        runtime = RuntimeOptions()
+        return self.handle_unknown_threat_detect_event_with_options(request, runtime)
+
+    async def handle_unknown_threat_detect_event_async(
+        self,
+        request: main_models.HandleUnknownThreatDetectEventRequest,
+    ) -> main_models.HandleUnknownThreatDetectEventResponse:
+        runtime = RuntimeOptions()
+        return await self.handle_unknown_threat_detect_event_with_options_async(request, runtime)
 
     def ignore_check_items_with_options(
         self,
@@ -58101,6 +58633,398 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_uninstall_aegis_machines_with_options_async(request, runtime)
 
+    def list_unknown_threat_detect_event_with_options(
+        self,
+        request: main_models.ListUnknownThreatDetectEventRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListUnknownThreatDetectEventResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.hash_key):
+            query['HashKey'] = request.hash_key
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.parent_process_path):
+            query['ParentProcessPath'] = request.parent_process_path
+        if not DaraCore.is_null(request.process_path):
+            query['ProcessPath'] = request.process_path
+        if not DaraCore.is_null(request.remark):
+            query['Remark'] = request.remark
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        if not DaraCore.is_null(request.uuid):
+            query['Uuid'] = request.uuid
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListUnknownThreatDetectEvent',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListUnknownThreatDetectEventResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_unknown_threat_detect_event_with_options_async(
+        self,
+        request: main_models.ListUnknownThreatDetectEventRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListUnknownThreatDetectEventResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.hash_key):
+            query['HashKey'] = request.hash_key
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.parent_process_path):
+            query['ParentProcessPath'] = request.parent_process_path
+        if not DaraCore.is_null(request.process_path):
+            query['ProcessPath'] = request.process_path
+        if not DaraCore.is_null(request.remark):
+            query['Remark'] = request.remark
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        if not DaraCore.is_null(request.uuid):
+            query['Uuid'] = request.uuid
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListUnknownThreatDetectEvent',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListUnknownThreatDetectEventResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_unknown_threat_detect_event(
+        self,
+        request: main_models.ListUnknownThreatDetectEventRequest,
+    ) -> main_models.ListUnknownThreatDetectEventResponse:
+        runtime = RuntimeOptions()
+        return self.list_unknown_threat_detect_event_with_options(request, runtime)
+
+    async def list_unknown_threat_detect_event_async(
+        self,
+        request: main_models.ListUnknownThreatDetectEventRequest,
+    ) -> main_models.ListUnknownThreatDetectEventResponse:
+        runtime = RuntimeOptions()
+        return await self.list_unknown_threat_detect_event_with_options_async(request, runtime)
+
+    def list_unknown_threat_detect_machine_with_options(
+        self,
+        request: main_models.ListUnknownThreatDetectMachineRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListUnknownThreatDetectMachineResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.remark):
+            query['Remark'] = request.remark
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        if not DaraCore.is_null(request.study_mode):
+            query['StudyMode'] = request.study_mode
+        if not DaraCore.is_null(request.study_time_end):
+            query['StudyTimeEnd'] = request.study_time_end
+        if not DaraCore.is_null(request.study_time_start):
+            query['StudyTimeStart'] = request.study_time_start
+        if not DaraCore.is_null(request.uuid):
+            query['Uuid'] = request.uuid
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListUnknownThreatDetectMachine',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListUnknownThreatDetectMachineResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_unknown_threat_detect_machine_with_options_async(
+        self,
+        request: main_models.ListUnknownThreatDetectMachineRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListUnknownThreatDetectMachineResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.remark):
+            query['Remark'] = request.remark
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        if not DaraCore.is_null(request.study_mode):
+            query['StudyMode'] = request.study_mode
+        if not DaraCore.is_null(request.study_time_end):
+            query['StudyTimeEnd'] = request.study_time_end
+        if not DaraCore.is_null(request.study_time_start):
+            query['StudyTimeStart'] = request.study_time_start
+        if not DaraCore.is_null(request.uuid):
+            query['Uuid'] = request.uuid
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListUnknownThreatDetectMachine',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListUnknownThreatDetectMachineResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_unknown_threat_detect_machine(
+        self,
+        request: main_models.ListUnknownThreatDetectMachineRequest,
+    ) -> main_models.ListUnknownThreatDetectMachineResponse:
+        runtime = RuntimeOptions()
+        return self.list_unknown_threat_detect_machine_with_options(request, runtime)
+
+    async def list_unknown_threat_detect_machine_async(
+        self,
+        request: main_models.ListUnknownThreatDetectMachineRequest,
+    ) -> main_models.ListUnknownThreatDetectMachineResponse:
+        runtime = RuntimeOptions()
+        return await self.list_unknown_threat_detect_machine_with_options_async(request, runtime)
+
+    def list_unknown_threat_detect_process_with_options(
+        self,
+        request: main_models.ListUnknownThreatDetectProcessRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListUnknownThreatDetectProcessResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.analyze_result):
+            query['AnalyzeResult'] = request.analyze_result
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.first_time_end):
+            query['FirstTimeEnd'] = request.first_time_end
+        if not DaraCore.is_null(request.first_time_start):
+            query['FirstTimeStart'] = request.first_time_start
+        if not DaraCore.is_null(request.md_5):
+            query['Md5'] = request.md_5
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.path):
+            query['Path'] = request.path
+        if not DaraCore.is_null(request.process_path):
+            query['ProcessPath'] = request.process_path
+        if not DaraCore.is_null(request.remark):
+            query['Remark'] = request.remark
+        if not DaraCore.is_null(request.sha_256):
+            query['Sha256'] = request.sha_256
+        if not DaraCore.is_null(request.uuid):
+            query['Uuid'] = request.uuid
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListUnknownThreatDetectProcess',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListUnknownThreatDetectProcessResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_unknown_threat_detect_process_with_options_async(
+        self,
+        request: main_models.ListUnknownThreatDetectProcessRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListUnknownThreatDetectProcessResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.analyze_result):
+            query['AnalyzeResult'] = request.analyze_result
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.first_time_end):
+            query['FirstTimeEnd'] = request.first_time_end
+        if not DaraCore.is_null(request.first_time_start):
+            query['FirstTimeStart'] = request.first_time_start
+        if not DaraCore.is_null(request.md_5):
+            query['Md5'] = request.md_5
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.path):
+            query['Path'] = request.path
+        if not DaraCore.is_null(request.process_path):
+            query['ProcessPath'] = request.process_path
+        if not DaraCore.is_null(request.remark):
+            query['Remark'] = request.remark
+        if not DaraCore.is_null(request.sha_256):
+            query['Sha256'] = request.sha_256
+        if not DaraCore.is_null(request.uuid):
+            query['Uuid'] = request.uuid
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListUnknownThreatDetectProcess',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListUnknownThreatDetectProcessResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_unknown_threat_detect_process(
+        self,
+        request: main_models.ListUnknownThreatDetectProcessRequest,
+    ) -> main_models.ListUnknownThreatDetectProcessResponse:
+        runtime = RuntimeOptions()
+        return self.list_unknown_threat_detect_process_with_options(request, runtime)
+
+    async def list_unknown_threat_detect_process_async(
+        self,
+        request: main_models.ListUnknownThreatDetectProcessRequest,
+    ) -> main_models.ListUnknownThreatDetectProcessResponse:
+        runtime = RuntimeOptions()
+        return await self.list_unknown_threat_detect_process_with_options_async(request, runtime)
+
+    def list_unknown_threat_detect_strategy_with_options(
+        self,
+        request: main_models.ListUnknownThreatDetectStrategyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListUnknownThreatDetectStrategyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.id):
+            query['Id'] = request.id
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.study_mode):
+            query['StudyMode'] = request.study_mode
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListUnknownThreatDetectStrategy',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListUnknownThreatDetectStrategyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_unknown_threat_detect_strategy_with_options_async(
+        self,
+        request: main_models.ListUnknownThreatDetectStrategyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListUnknownThreatDetectStrategyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.id):
+            query['Id'] = request.id
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.study_mode):
+            query['StudyMode'] = request.study_mode
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListUnknownThreatDetectStrategy',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListUnknownThreatDetectStrategyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_unknown_threat_detect_strategy(
+        self,
+        request: main_models.ListUnknownThreatDetectStrategyRequest,
+    ) -> main_models.ListUnknownThreatDetectStrategyResponse:
+        runtime = RuntimeOptions()
+        return self.list_unknown_threat_detect_strategy_with_options(request, runtime)
+
+    async def list_unknown_threat_detect_strategy_async(
+        self,
+        request: main_models.ListUnknownThreatDetectStrategyRequest,
+    ) -> main_models.ListUnknownThreatDetectStrategyResponse:
+        runtime = RuntimeOptions()
+        return await self.list_unknown_threat_detect_strategy_with_options_async(request, runtime)
+
     def list_user_vpc_with_options(
         self,
         request: main_models.ListUserVpcRequest,
@@ -66351,6 +67275,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.operate_switch_status_with_options_async(request, runtime)
 
+    def operate_unknown_threat_detect_machine_with_options(
+        self,
+        request: main_models.OperateUnknownThreatDetectMachineRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.OperateUnknownThreatDetectMachineResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.operate_type):
+            query['OperateType'] = request.operate_type
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        if not DaraCore.is_null(request.uuid_list):
+            query['UuidList'] = request.uuid_list
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'OperateUnknownThreatDetectMachine',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.OperateUnknownThreatDetectMachineResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def operate_unknown_threat_detect_machine_with_options_async(
+        self,
+        request: main_models.OperateUnknownThreatDetectMachineRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.OperateUnknownThreatDetectMachineResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.operate_type):
+            query['OperateType'] = request.operate_type
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        if not DaraCore.is_null(request.uuid_list):
+            query['UuidList'] = request.uuid_list
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'OperateUnknownThreatDetectMachine',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.OperateUnknownThreatDetectMachineResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def operate_unknown_threat_detect_machine(
+        self,
+        request: main_models.OperateUnknownThreatDetectMachineRequest,
+    ) -> main_models.OperateUnknownThreatDetectMachineResponse:
+        runtime = RuntimeOptions()
+        return self.operate_unknown_threat_detect_machine_with_options(request, runtime)
+
+    async def operate_unknown_threat_detect_machine_async(
+        self,
+        request: main_models.OperateUnknownThreatDetectMachineRequest,
+    ) -> main_models.OperateUnknownThreatDetectMachineResponse:
+        runtime = RuntimeOptions()
+        return await self.operate_unknown_threat_detect_machine_with_options_async(request, runtime)
+
     def operate_virus_events_with_options(
         self,
         request: main_models.OperateVirusEventsRequest,
@@ -74270,6 +75272,166 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateTargetListByBatchResponse:
         runtime = RuntimeOptions()
         return await self.update_target_list_by_batch_with_options_async(request, runtime)
+
+    def update_unknown_threat_detect_process_with_options(
+        self,
+        request: main_models.UpdateUnknownThreatDetectProcessRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateUnknownThreatDetectProcessResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.process_id):
+            query['ProcessId'] = request.process_id
+        if not DaraCore.is_null(request.remark):
+            query['Remark'] = request.remark
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateUnknownThreatDetectProcess',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateUnknownThreatDetectProcessResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_unknown_threat_detect_process_with_options_async(
+        self,
+        request: main_models.UpdateUnknownThreatDetectProcessRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateUnknownThreatDetectProcessResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.process_id):
+            query['ProcessId'] = request.process_id
+        if not DaraCore.is_null(request.remark):
+            query['Remark'] = request.remark
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateUnknownThreatDetectProcess',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateUnknownThreatDetectProcessResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_unknown_threat_detect_process(
+        self,
+        request: main_models.UpdateUnknownThreatDetectProcessRequest,
+    ) -> main_models.UpdateUnknownThreatDetectProcessResponse:
+        runtime = RuntimeOptions()
+        return self.update_unknown_threat_detect_process_with_options(request, runtime)
+
+    async def update_unknown_threat_detect_process_async(
+        self,
+        request: main_models.UpdateUnknownThreatDetectProcessRequest,
+    ) -> main_models.UpdateUnknownThreatDetectProcessResponse:
+        runtime = RuntimeOptions()
+        return await self.update_unknown_threat_detect_process_with_options_async(request, runtime)
+
+    def update_unknown_threat_detect_strategy_with_options(
+        self,
+        request: main_models.UpdateUnknownThreatDetectStrategyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateUnknownThreatDetectStrategyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.duration_days_after_init):
+            query['DurationDaysAfterInit'] = request.duration_days_after_init
+        if not DaraCore.is_null(request.duration_days_after_stop):
+            query['DurationDaysAfterStop'] = request.duration_days_after_stop
+        if not DaraCore.is_null(request.id):
+            query['Id'] = request.id
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.study_mode):
+            query['StudyMode'] = request.study_mode
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateUnknownThreatDetectStrategy',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateUnknownThreatDetectStrategyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_unknown_threat_detect_strategy_with_options_async(
+        self,
+        request: main_models.UpdateUnknownThreatDetectStrategyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateUnknownThreatDetectStrategyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.duration_days_after_init):
+            query['DurationDaysAfterInit'] = request.duration_days_after_init
+        if not DaraCore.is_null(request.duration_days_after_stop):
+            query['DurationDaysAfterStop'] = request.duration_days_after_stop
+        if not DaraCore.is_null(request.id):
+            query['Id'] = request.id
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.study_mode):
+            query['StudyMode'] = request.study_mode
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateUnknownThreatDetectStrategy',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateUnknownThreatDetectStrategyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_unknown_threat_detect_strategy(
+        self,
+        request: main_models.UpdateUnknownThreatDetectStrategyRequest,
+    ) -> main_models.UpdateUnknownThreatDetectStrategyResponse:
+        runtime = RuntimeOptions()
+        return self.update_unknown_threat_detect_strategy_with_options(request, runtime)
+
+    async def update_unknown_threat_detect_strategy_async(
+        self,
+        request: main_models.UpdateUnknownThreatDetectStrategyRequest,
+    ) -> main_models.UpdateUnknownThreatDetectStrategyResponse:
+        runtime = RuntimeOptions()
+        return await self.update_unknown_threat_detect_strategy_with_options_async(request, runtime)
 
     def update_white_list_with_options(
         self,
