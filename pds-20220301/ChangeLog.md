@@ -1,3 +1,7 @@
+2026-04-29 Version: 5.1.0
+- Support API ArchiveFiles.
+
+
 2026-04-28 Version: 5.0.0
 - Support API PunishFile.
 - Update API CreateDomain: add request parameters body.store_redundancy_type.

@@ -129,6 +129,9 @@ from ._add_group_member_response import AddGroupMemberResponse
 from ._add_story_files_request import AddStoryFilesRequest
 from ._add_story_files_response_body import AddStoryFilesResponseBody
 from ._add_story_files_response import AddStoryFilesResponse
+from ._archive_files_request import ArchiveFilesRequest
+from ._archive_files_response_body import ArchiveFilesResponseBody
+from ._archive_files_response import ArchiveFilesResponse
 from ._assign_role_request import AssignRoleRequest
 from ._assign_role_response import AssignRoleResponse
 from ._audit_log_export_request import AuditLogExportRequest
@@ -590,6 +593,9 @@ __all__ = [
     AddStoryFilesRequest,
     AddStoryFilesResponseBody,
     AddStoryFilesResponse,
+    ArchiveFilesRequest,
+    ArchiveFilesResponseBody,
+    ArchiveFilesResponse,
     AssignRoleRequest,
     AssignRoleResponse,
     AuditLogExportRequest,

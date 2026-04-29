@@ -195,6 +195,94 @@ class Client(OpenApiClient):
         headers = {}
         return await self.add_story_files_with_options_async(request, headers, runtime)
 
+    def archive_files_with_options(
+        self,
+        request: main_models.ArchiveFilesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ArchiveFilesResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.drive_id):
+            body['drive_id'] = request.drive_id
+        if not DaraCore.is_null(request.file_ids):
+            body['file_ids'] = request.file_ids
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.share_id):
+            body['share_id'] = request.share_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ArchiveFiles',
+            version = '2022-03-01',
+            protocol = 'HTTPS',
+            pathname = f'/v2/file/archive_files',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ArchiveFilesResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def archive_files_with_options_async(
+        self,
+        request: main_models.ArchiveFilesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ArchiveFilesResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.drive_id):
+            body['drive_id'] = request.drive_id
+        if not DaraCore.is_null(request.file_ids):
+            body['file_ids'] = request.file_ids
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.share_id):
+            body['share_id'] = request.share_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ArchiveFiles',
+            version = '2022-03-01',
+            protocol = 'HTTPS',
+            pathname = f'/v2/file/archive_files',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ArchiveFilesResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def archive_files(
+        self,
+        request: main_models.ArchiveFilesRequest,
+    ) -> main_models.ArchiveFilesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.archive_files_with_options(request, headers, runtime)
+
+    async def archive_files_async(
+        self,
+        request: main_models.ArchiveFilesRequest,
+    ) -> main_models.ArchiveFilesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.archive_files_with_options_async(request, headers, runtime)
+
     def assign_role_with_options(
         self,
         request: main_models.AssignRoleRequest,
