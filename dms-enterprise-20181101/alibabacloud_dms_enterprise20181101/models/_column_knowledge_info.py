@@ -12,6 +12,7 @@ class ColumnKnowledgeInfo(DaraModel):
         column_name: str = None,
         column_type: str = None,
         description: str = None,
+        level: int = None,
         position: int = None,
     ):
         # User-edited business knowledge content, which can be modified via the EditMetaKnowledgeAsset API.
@@ -24,6 +25,7 @@ class ColumnKnowledgeInfo(DaraModel):
         self.column_type = column_type
         # Field description in the CREATE TABLE statement.
         self.description = description
+        self.level = level
         # The field order in the CREATE TABLE statement.
         self.position = position
 
@@ -50,6 +52,9 @@ class ColumnKnowledgeInfo(DaraModel):
         if self.description is not None:
             result['Description'] = self.description
 
+        if self.level is not None:
+            result['Level'] = self.level
+
         if self.position is not None:
             result['Position'] = self.position
 
@@ -71,6 +76,9 @@ class ColumnKnowledgeInfo(DaraModel):
 
         if m.get('Description') is not None:
             self.description = m.get('Description')
+
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
 
         if m.get('Position') is not None:
             self.position = m.get('Position')

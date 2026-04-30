@@ -1,3 +1,9 @@
+2026-04-30 Version: 2.7.0
+- Support API GetTableColumnList.
+- Support API GetTableInstructions.
+- Support API SearchTableAssetKnowledge.
+
+
 2026-04-23 Version: 2.6.0
 - Support API CheckInventoryJob.
 - Support API ConfirmInventoryKnowledge.

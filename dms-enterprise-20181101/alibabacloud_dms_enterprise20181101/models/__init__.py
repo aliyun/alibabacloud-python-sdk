@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from ._async_task_vo import AsyncTaskVO
 from ._column_knowledge_info import ColumnKnowledgeInfo
+from ._column_knowledge_vo import ColumnKnowledgeVO
 from ._dlcatalog import DLCatalog
 from ._dlcolumn import DLColumn
 from ._dldatabase import DLDatabase
@@ -32,7 +33,9 @@ from ._project_details_lite_vo import ProjectDetailsLiteVO
 from ._skill_info_do import SkillInfoDO
 from ._sts_apply_vo import StsApplyVO
 from ._sts_token_vo import StsTokenVO
+from ._table_instructions_vo import TableInstructionsVO
 from ._table_knowledge_info import TableKnowledgeInfo
+from ._table_knowledge_vo import TableKnowledgeVO
 from ._tee_evidence_vo import TeeEvidenceVO
 from ._users_details_vo import UsersDetailsVO
 from ._open_struct_dltable_input import OpenStructDLTableInput
@@ -531,6 +534,9 @@ from ._get_struct_sync_job_detail_response import GetStructSyncJobDetailResponse
 from ._get_struct_sync_order_detail_request import GetStructSyncOrderDetailRequest
 from ._get_struct_sync_order_detail_response_body import GetStructSyncOrderDetailResponseBody
 from ._get_struct_sync_order_detail_response import GetStructSyncOrderDetailResponse
+from ._get_table_column_list_request import GetTableColumnListRequest
+from ._get_table_column_list_response_body import GetTableColumnListResponseBody
+from ._get_table_column_list_response import GetTableColumnListResponse
 from ._get_table_dbtopology_request import GetTableDBTopologyRequest
 from ._get_table_dbtopology_response_body import GetTableDBTopologyResponseBody
 from ._get_table_dbtopology_response import GetTableDBTopologyResponse
@@ -540,6 +546,9 @@ from ._get_table_design_project_flow_response import GetTableDesignProjectFlowRe
 from ._get_table_design_project_info_request import GetTableDesignProjectInfoRequest
 from ._get_table_design_project_info_response_body import GetTableDesignProjectInfoResponseBody
 from ._get_table_design_project_info_response import GetTableDesignProjectInfoResponse
+from ._get_table_instructions_request import GetTableInstructionsRequest
+from ._get_table_instructions_response_body import GetTableInstructionsResponseBody
+from ._get_table_instructions_response import GetTableInstructionsResponse
 from ._get_table_knowledge_info_request import GetTableKnowledgeInfoRequest
 from ._get_table_knowledge_info_response_body import GetTableKnowledgeInfoResponseBody
 from ._get_table_knowledge_info_response import GetTableKnowledgeInfoResponse
@@ -904,6 +913,9 @@ from ._search_inventory_knowledge_response import SearchInventoryKnowledgeRespon
 from ._search_table_request import SearchTableRequest
 from ._search_table_response_body import SearchTableResponseBody
 from ._search_table_response import SearchTableResponse
+from ._search_table_asset_knowledge_request import SearchTableAssetKnowledgeRequest
+from ._search_table_asset_knowledge_response_body import SearchTableAssetKnowledgeResponseBody
+from ._search_table_asset_knowledge_response import SearchTableAssetKnowledgeResponse
 from ._search_table_knowledge_request import SearchTableKnowledgeRequest
 from ._search_table_knowledge_response_body import SearchTableKnowledgeResponseBody
 from ._search_table_knowledge_response import SearchTableKnowledgeResponse
@@ -1411,6 +1423,7 @@ from ._search_table_response_body import SearchTableResponseBodySearchTableListS
 from ._search_table_response_body import SearchTableResponseBodySearchTableListSearchTableOwnerNameList
 from ._search_table_response_body import SearchTableResponseBodySearchTableListSearchTable
 from ._search_table_response_body import SearchTableResponseBodySearchTableList
+from ._search_table_asset_knowledge_response_body import SearchTableAssetKnowledgeResponseBodyData
 from ._search_table_knowledge_response_body import SearchTableKnowledgeResponseBodyData
 from ._search_workspace_roles_response_body import SearchWorkspaceRolesResponseBodyData
 from ._simply_add_instance_response_body import SimplyAddInstanceResponseBodyInstance
@@ -1424,6 +1437,7 @@ from ._update_task_flow_relations_request import UpdateTaskFlowRelationsRequestE
 __all__ = [
     AsyncTaskVO,
     ColumnKnowledgeInfo,
+    ColumnKnowledgeVO,
     DLCatalog,
     DLColumn,
     DLDatabase,
@@ -1452,7 +1466,9 @@ __all__ = [
     SkillInfoDO,
     StsApplyVO,
     StsTokenVO,
+    TableInstructionsVO,
     TableKnowledgeInfo,
+    TableKnowledgeVO,
     TeeEvidenceVO,
     UsersDetailsVO,
     OpenStructDLTableInput,
@@ -1951,6 +1967,9 @@ __all__ = [
     GetStructSyncOrderDetailRequest,
     GetStructSyncOrderDetailResponseBody,
     GetStructSyncOrderDetailResponse,
+    GetTableColumnListRequest,
+    GetTableColumnListResponseBody,
+    GetTableColumnListResponse,
     GetTableDBTopologyRequest,
     GetTableDBTopologyResponseBody,
     GetTableDBTopologyResponse,
@@ -1960,6 +1979,9 @@ __all__ = [
     GetTableDesignProjectInfoRequest,
     GetTableDesignProjectInfoResponseBody,
     GetTableDesignProjectInfoResponse,
+    GetTableInstructionsRequest,
+    GetTableInstructionsResponseBody,
+    GetTableInstructionsResponse,
     GetTableKnowledgeInfoRequest,
     GetTableKnowledgeInfoResponseBody,
     GetTableKnowledgeInfoResponse,
@@ -2324,6 +2346,9 @@ __all__ = [
     SearchTableRequest,
     SearchTableResponseBody,
     SearchTableResponse,
+    SearchTableAssetKnowledgeRequest,
+    SearchTableAssetKnowledgeResponseBody,
+    SearchTableAssetKnowledgeResponse,
     SearchTableKnowledgeRequest,
     SearchTableKnowledgeResponseBody,
     SearchTableKnowledgeResponse,
@@ -2831,6 +2856,7 @@ __all__ = [
     SearchTableResponseBodySearchTableListSearchTableOwnerNameList,
     SearchTableResponseBodySearchTableListSearchTable,
     SearchTableResponseBodySearchTableList,
+    SearchTableAssetKnowledgeResponseBodyData,
     SearchTableKnowledgeResponseBodyData,
     SearchWorkspaceRolesResponseBodyData,
     SimplyAddInstanceResponseBodyInstance,

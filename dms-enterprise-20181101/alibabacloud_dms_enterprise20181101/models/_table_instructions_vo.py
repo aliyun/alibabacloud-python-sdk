@@ -2,63 +2,49 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List
-
-from alibabacloud_dms_enterprise20181101 import models as main_models
 from darabonba.model import DaraModel
 
-class TableKnowledgeInfo(DaraModel):
+class TableInstructionsVO(DaraModel):
     def __init__(
         self,
+        asset_created_gmt: str = None,
         asset_description: str = None,
         asset_modified_gmt: str = None,
-        column_list: List[main_models.ColumnKnowledgeInfo] = None,
-        description: str = None,
-        level: int = None,
+        db_id: int = None,
+        db_type: str = None,
         summary: str = None,
         table_name: str = None,
     ):
-        # Table usage instructions, which are not editable in OpenAPI.
+        self.asset_created_gmt = asset_created_gmt
         self.asset_description = asset_description
-        # Last modified time.
         self.asset_modified_gmt = asset_modified_gmt
-        # The columns of the table.
-        self.column_list = column_list
-        # Table description in the CREAT TABLE statement.
-        self.description = description
-        self.level = level
-        # Table business description, which can be edited via EditMetaKnowledgeAsset.
+        self.db_id = db_id
+        self.db_type = db_type
         self.summary = summary
-        # The table name.
         self.table_name = table_name
 
     def validate(self):
-        if self.column_list:
-            for v1 in self.column_list:
-                 if v1:
-                    v1.validate()
+        pass
 
     def to_map(self):
         result = dict()
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.asset_created_gmt is not None:
+            result['AssetCreatedGmt'] = self.asset_created_gmt
+
         if self.asset_description is not None:
             result['AssetDescription'] = self.asset_description
 
         if self.asset_modified_gmt is not None:
             result['AssetModifiedGmt'] = self.asset_modified_gmt
 
-        result['ColumnList'] = []
-        if self.column_list is not None:
-            for k1 in self.column_list:
-                result['ColumnList'].append(k1.to_map() if k1 else None)
+        if self.db_id is not None:
+            result['DbId'] = self.db_id
 
-        if self.description is not None:
-            result['Description'] = self.description
-
-        if self.level is not None:
-            result['Level'] = self.level
+        if self.db_type is not None:
+            result['DbType'] = self.db_type
 
         if self.summary is not None:
             result['Summary'] = self.summary
@@ -70,23 +56,20 @@ class TableKnowledgeInfo(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AssetCreatedGmt') is not None:
+            self.asset_created_gmt = m.get('AssetCreatedGmt')
+
         if m.get('AssetDescription') is not None:
             self.asset_description = m.get('AssetDescription')
 
         if m.get('AssetModifiedGmt') is not None:
             self.asset_modified_gmt = m.get('AssetModifiedGmt')
 
-        self.column_list = []
-        if m.get('ColumnList') is not None:
-            for k1 in m.get('ColumnList'):
-                temp_model = main_models.ColumnKnowledgeInfo()
-                self.column_list.append(temp_model.from_map(k1))
+        if m.get('DbId') is not None:
+            self.db_id = m.get('DbId')
 
-        if m.get('Description') is not None:
-            self.description = m.get('Description')
-
-        if m.get('Level') is not None:
-            self.level = m.get('Level')
+        if m.get('DbType') is not None:
+            self.db_type = m.get('DbType')
 
         if m.get('Summary') is not None:
             self.summary = m.get('Summary')
