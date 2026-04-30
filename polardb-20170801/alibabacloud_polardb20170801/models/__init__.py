@@ -82,6 +82,9 @@ from ._close_dbcluster_migration_response import CloseDBClusterMigrationResponse
 from ._continue_dbcluster_migration_request import ContinueDBClusterMigrationRequest
 from ._continue_dbcluster_migration_response_body import ContinueDBClusterMigrationResponseBody
 from ._continue_dbcluster_migration_response import ContinueDBClusterMigrationResponse
+from ._create_aidbcluster_request import CreateAIDBClusterRequest
+from ._create_aidbcluster_response_body import CreateAIDBClusterResponseBody
+from ._create_aidbcluster_response import CreateAIDBClusterResponse
 from ._create_aidbcluster_dataset_request import CreateAIDBClusterDatasetRequest
 from ._create_aidbcluster_dataset_response_body import CreateAIDBClusterDatasetResponseBody
 from ._create_aidbcluster_dataset_response import CreateAIDBClusterDatasetResponse
@@ -1159,6 +1162,7 @@ from ._add_polar_fs_path_mapping_request import AddPolarFsPathMappingRequestCust
 from ._add_polar_fs_quota_request import AddPolarFsQuotaRequestQuotas
 from ._bind_polar_claw_agent_response_body import BindPolarClawAgentResponseBodyBinding
 from ._check_polar_fs_quota_consistency_response_body import CheckPolarFsQuotaConsistencyResponseBodyQuotaItem
+from ._create_aidbcluster_request import CreateAIDBClusterRequestTimeSlices
 from ._create_ainodes_request import CreateAINodesRequestDBNodes
 from ._create_application_request import CreateApplicationRequestComponents
 from ._create_application_request import CreateApplicationRequestEndpoints
@@ -1567,6 +1571,9 @@ __all__ = [
     ContinueDBClusterMigrationRequest,
     ContinueDBClusterMigrationResponseBody,
     ContinueDBClusterMigrationResponse,
+    CreateAIDBClusterRequest,
+    CreateAIDBClusterResponseBody,
+    CreateAIDBClusterResponse,
     CreateAIDBClusterDatasetRequest,
     CreateAIDBClusterDatasetResponseBody,
     CreateAIDBClusterDatasetResponse,
@@ -2644,6 +2651,7 @@ __all__ = [
     AddPolarFsQuotaRequestQuotas,
     BindPolarClawAgentResponseBodyBinding,
     CheckPolarFsQuotaConsistencyResponseBodyQuotaItem,
+    CreateAIDBClusterRequestTimeSlices,
     CreateAINodesRequestDBNodes,
     CreateApplicationRequestComponents,
     CreateApplicationRequestEndpoints,

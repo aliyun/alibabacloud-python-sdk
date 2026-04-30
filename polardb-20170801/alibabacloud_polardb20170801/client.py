@@ -2391,6 +2391,200 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.continue_dbcluster_migration_with_options_async(request, runtime)
 
+    def create_aidbcluster_with_options(
+        self,
+        request: main_models.CreateAIDBClusterRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAIDBClusterResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.ack_admin):
+            query['AckAdmin'] = request.ack_admin
+        if not DaraCore.is_null(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not DaraCore.is_null(request.auto_use_coupon):
+            query['AutoUseCoupon'] = request.auto_use_coupon
+        if not DaraCore.is_null(request.dbcluster_description):
+            query['DBClusterDescription'] = request.dbcluster_description
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.dbnode_class):
+            query['DBNodeClass'] = request.dbnode_class
+        if not DaraCore.is_null(request.extension):
+            query['Extension'] = request.extension
+        if not DaraCore.is_null(request.inference_engine):
+            query['InferenceEngine'] = request.inference_engine
+        if not DaraCore.is_null(request.kube_cluster_id):
+            query['KubeClusterId'] = request.kube_cluster_id
+        if not DaraCore.is_null(request.kube_config):
+            query['KubeConfig'] = request.kube_config
+        if not DaraCore.is_null(request.kube_management):
+            query['KubeManagement'] = request.kube_management
+        if not DaraCore.is_null(request.kube_type):
+            query['KubeType'] = request.kube_type
+        if not DaraCore.is_null(request.kubernetes_config):
+            query['KubernetesConfig'] = request.kubernetes_config
+        if not DaraCore.is_null(request.management_mode):
+            query['ManagementMode'] = request.management_mode
+        if not DaraCore.is_null(request.mode_name):
+            query['ModeName'] = request.mode_name
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.password):
+            query['Password'] = request.password
+        if not DaraCore.is_null(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not DaraCore.is_null(request.period):
+            query['Period'] = request.period
+        if not DaraCore.is_null(request.promotion_code):
+            query['PromotionCode'] = request.promotion_code
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.security_group_id):
+            query['SecurityGroupId'] = request.security_group_id
+        if not DaraCore.is_null(request.storage_space):
+            query['StorageSpace'] = request.storage_space
+        if not DaraCore.is_null(request.storage_type):
+            query['StorageType'] = request.storage_type
+        if not DaraCore.is_null(request.time_slices):
+            query['TimeSlices'] = request.time_slices
+        if not DaraCore.is_null(request.used_time):
+            query['UsedTime'] = request.used_time
+        if not DaraCore.is_null(request.vpcid):
+            query['VPCId'] = request.vpcid
+        if not DaraCore.is_null(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not DaraCore.is_null(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAIDBCluster',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAIDBClusterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_aidbcluster_with_options_async(
+        self,
+        request: main_models.CreateAIDBClusterRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAIDBClusterResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.ack_admin):
+            query['AckAdmin'] = request.ack_admin
+        if not DaraCore.is_null(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not DaraCore.is_null(request.auto_use_coupon):
+            query['AutoUseCoupon'] = request.auto_use_coupon
+        if not DaraCore.is_null(request.dbcluster_description):
+            query['DBClusterDescription'] = request.dbcluster_description
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.dbnode_class):
+            query['DBNodeClass'] = request.dbnode_class
+        if not DaraCore.is_null(request.extension):
+            query['Extension'] = request.extension
+        if not DaraCore.is_null(request.inference_engine):
+            query['InferenceEngine'] = request.inference_engine
+        if not DaraCore.is_null(request.kube_cluster_id):
+            query['KubeClusterId'] = request.kube_cluster_id
+        if not DaraCore.is_null(request.kube_config):
+            query['KubeConfig'] = request.kube_config
+        if not DaraCore.is_null(request.kube_management):
+            query['KubeManagement'] = request.kube_management
+        if not DaraCore.is_null(request.kube_type):
+            query['KubeType'] = request.kube_type
+        if not DaraCore.is_null(request.kubernetes_config):
+            query['KubernetesConfig'] = request.kubernetes_config
+        if not DaraCore.is_null(request.management_mode):
+            query['ManagementMode'] = request.management_mode
+        if not DaraCore.is_null(request.mode_name):
+            query['ModeName'] = request.mode_name
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.password):
+            query['Password'] = request.password
+        if not DaraCore.is_null(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not DaraCore.is_null(request.period):
+            query['Period'] = request.period
+        if not DaraCore.is_null(request.promotion_code):
+            query['PromotionCode'] = request.promotion_code
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.security_group_id):
+            query['SecurityGroupId'] = request.security_group_id
+        if not DaraCore.is_null(request.storage_space):
+            query['StorageSpace'] = request.storage_space
+        if not DaraCore.is_null(request.storage_type):
+            query['StorageType'] = request.storage_type
+        if not DaraCore.is_null(request.time_slices):
+            query['TimeSlices'] = request.time_slices
+        if not DaraCore.is_null(request.used_time):
+            query['UsedTime'] = request.used_time
+        if not DaraCore.is_null(request.vpcid):
+            query['VPCId'] = request.vpcid
+        if not DaraCore.is_null(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not DaraCore.is_null(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAIDBCluster',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAIDBClusterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_aidbcluster(
+        self,
+        request: main_models.CreateAIDBClusterRequest,
+    ) -> main_models.CreateAIDBClusterResponse:
+        runtime = RuntimeOptions()
+        return self.create_aidbcluster_with_options(request, runtime)
+
+    async def create_aidbcluster_async(
+        self,
+        request: main_models.CreateAIDBClusterRequest,
+    ) -> main_models.CreateAIDBClusterResponse:
+        runtime = RuntimeOptions()
+        return await self.create_aidbcluster_with_options_async(request, runtime)
+
     def create_aidbcluster_dataset_with_options(
         self,
         request: main_models.CreateAIDBClusterDatasetRequest,
