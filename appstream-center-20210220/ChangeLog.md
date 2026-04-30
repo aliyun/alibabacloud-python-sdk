@@ -1,3 +1,10 @@
+2026-04-30 Version: 1.3.2
+- Update API FindIdpListByLoginIdentifier: add response parameters Body.OfficeSiteInfo.PreferVpcAccess.
+- Update API FindIdpListByLoginIdentifier: add response parameters Body.OfficeSiteInfo.VpcAccessAddress.
+- Update API FindIdpListByLoginIdentifier: add response parameters Body.TenantAliasInfo.PreferVpcAccess.
+- Update API FindIdpListByLoginIdentifier: add response parameters Body.TenantAliasInfo.VpcAccessAddress.
+
+
 2026-04-09 Version: 1.3.1
 - Update API GetStsToken: add response parameters Body.StsTokenModel.EndUserId.
 - Update API GetStsToken: add response parameters Body.StsTokenModel.LoginToken.

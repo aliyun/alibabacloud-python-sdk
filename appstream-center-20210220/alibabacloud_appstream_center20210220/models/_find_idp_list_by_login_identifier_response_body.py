@@ -92,10 +92,14 @@ class FindIdpListByLoginIdentifierResponseBodyTenantAliasInfo(DaraModel):
     def __init__(
         self,
         access_type: str = None,
+        prefer_vpc_access: bool = None,
         tenant_alias: str = None,
+        vpc_access_address: str = None,
     ):
         self.access_type = access_type
+        self.prefer_vpc_access = prefer_vpc_access
         self.tenant_alias = tenant_alias
+        self.vpc_access_address = vpc_access_address
 
     def validate(self):
         pass
@@ -108,8 +112,14 @@ class FindIdpListByLoginIdentifierResponseBodyTenantAliasInfo(DaraModel):
         if self.access_type is not None:
             result['AccessType'] = self.access_type
 
+        if self.prefer_vpc_access is not None:
+            result['PreferVpcAccess'] = self.prefer_vpc_access
+
         if self.tenant_alias is not None:
             result['TenantAlias'] = self.tenant_alias
+
+        if self.vpc_access_address is not None:
+            result['VpcAccessAddress'] = self.vpc_access_address
 
         return result
 
@@ -118,8 +128,14 @@ class FindIdpListByLoginIdentifierResponseBodyTenantAliasInfo(DaraModel):
         if m.get('AccessType') is not None:
             self.access_type = m.get('AccessType')
 
+        if m.get('PreferVpcAccess') is not None:
+            self.prefer_vpc_access = m.get('PreferVpcAccess')
+
         if m.get('TenantAlias') is not None:
             self.tenant_alias = m.get('TenantAlias')
+
+        if m.get('VpcAccessAddress') is not None:
+            self.vpc_access_address = m.get('VpcAccessAddress')
 
         return self
 
@@ -128,15 +144,19 @@ class FindIdpListByLoginIdentifierResponseBodyOfficeSiteInfo(DaraModel):
         self,
         access_type: str = None,
         office_site_id: str = None,
+        prefer_vpc_access: bool = None,
         provider_id: str = None,
         region_id: str = None,
         sso_service_url: str = None,
+        vpc_access_address: str = None,
     ):
         self.access_type = access_type
         self.office_site_id = office_site_id
+        self.prefer_vpc_access = prefer_vpc_access
         self.provider_id = provider_id
         self.region_id = region_id
         self.sso_service_url = sso_service_url
+        self.vpc_access_address = vpc_access_address
 
     def validate(self):
         pass
@@ -152,6 +172,9 @@ class FindIdpListByLoginIdentifierResponseBodyOfficeSiteInfo(DaraModel):
         if self.office_site_id is not None:
             result['OfficeSiteId'] = self.office_site_id
 
+        if self.prefer_vpc_access is not None:
+            result['PreferVpcAccess'] = self.prefer_vpc_access
+
         if self.provider_id is not None:
             result['ProviderId'] = self.provider_id
 
@@ -160,6 +183,9 @@ class FindIdpListByLoginIdentifierResponseBodyOfficeSiteInfo(DaraModel):
 
         if self.sso_service_url is not None:
             result['SsoServiceUrl'] = self.sso_service_url
+
+        if self.vpc_access_address is not None:
+            result['VpcAccessAddress'] = self.vpc_access_address
 
         return result
 
@@ -171,6 +197,9 @@ class FindIdpListByLoginIdentifierResponseBodyOfficeSiteInfo(DaraModel):
         if m.get('OfficeSiteId') is not None:
             self.office_site_id = m.get('OfficeSiteId')
 
+        if m.get('PreferVpcAccess') is not None:
+            self.prefer_vpc_access = m.get('PreferVpcAccess')
+
         if m.get('ProviderId') is not None:
             self.provider_id = m.get('ProviderId')
 
@@ -179,6 +208,9 @@ class FindIdpListByLoginIdentifierResponseBodyOfficeSiteInfo(DaraModel):
 
         if m.get('SsoServiceUrl') is not None:
             self.sso_service_url = m.get('SsoServiceUrl')
+
+        if m.get('VpcAccessAddress') is not None:
+            self.vpc_access_address = m.get('VpcAccessAddress')
 
         return self
 
