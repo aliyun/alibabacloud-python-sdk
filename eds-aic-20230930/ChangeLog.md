@@ -3,6 +3,11 @@
 - Support API ModifyJVSInstance.
 
 
+2026-04-30 Version: 4.25.0
+- Support API DescribeJVSInstance.
+- Support API ModifyJVSInstance.
+
+
 2026-04-17 Version: 4.24.0
 - Support API CancelAgentTask.
 - Update API CreateCloudPhoneNode: add request parameters PaidCallBackUrl.
