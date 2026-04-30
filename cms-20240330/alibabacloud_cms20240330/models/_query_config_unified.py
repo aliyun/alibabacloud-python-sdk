@@ -15,6 +15,7 @@ class QueryConfigUnified(DaraModel):
         entity_fields: List[main_models.UmodelEntityField] = None,
         entity_filters: List[main_models.UmodelEntityFilter] = None,
         entity_type: str = None,
+        expr: str = None,
         filter_list: List[main_models.ApmFilterConfig] = None,
         label_filters: List[main_models.UmodelLabelFilter] = None,
         measure_list: List[main_models.ApmMeasureConfig] = None,
@@ -34,6 +35,7 @@ class QueryConfigUnified(DaraModel):
         self.entity_filters = entity_filters
         # 实体类型
         self.entity_type = entity_type
+        self.expr = expr
         # APM 过滤条件列表
         self.filter_list = filter_list
         # 标签过滤条件
@@ -99,6 +101,9 @@ class QueryConfigUnified(DaraModel):
         if self.entity_type is not None:
             result['entityType'] = self.entity_type
 
+        if self.expr is not None:
+            result['expr'] = self.expr
+
         result['filterList'] = []
         if self.filter_list is not None:
             for k1 in self.filter_list:
@@ -153,6 +158,9 @@ class QueryConfigUnified(DaraModel):
 
         if m.get('entityType') is not None:
             self.entity_type = m.get('entityType')
+
+        if m.get('expr') is not None:
+            self.expr = m.get('expr')
 
         self.filter_list = []
         if m.get('filterList') is not None:
