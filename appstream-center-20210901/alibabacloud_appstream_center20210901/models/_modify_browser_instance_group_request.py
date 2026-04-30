@@ -221,6 +221,7 @@ class ModifyBrowserInstanceGroupRequestPolicy(DaraModel):
         clipboard_policy: main_models.ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy = None,
         disconnect_keep_session: str = None,
         disconnect_keep_session_time: int = None,
+        file_manager: str = None,
         html_5file_transfer: str = None,
         no_operation_disconnect: str = None,
         no_operation_disconnect_time: int = None,
@@ -240,6 +241,7 @@ class ModifyBrowserInstanceGroupRequestPolicy(DaraModel):
         self.disconnect_keep_session = disconnect_keep_session
         # The session persistence duration.
         self.disconnect_keep_session_time = disconnect_keep_session_time
+        self.file_manager = file_manager
         # The file transfer policy on the web client.
         self.html_5file_transfer = html_5file_transfer
         self.no_operation_disconnect = no_operation_disconnect
@@ -279,6 +281,9 @@ class ModifyBrowserInstanceGroupRequestPolicy(DaraModel):
         if self.disconnect_keep_session_time is not None:
             result['DisconnectKeepSessionTime'] = self.disconnect_keep_session_time
 
+        if self.file_manager is not None:
+            result['FileManager'] = self.file_manager
+
         if self.html_5file_transfer is not None:
             result['Html5FileTransfer'] = self.html_5file_transfer
 
@@ -313,6 +318,9 @@ class ModifyBrowserInstanceGroupRequestPolicy(DaraModel):
 
         if m.get('DisconnectKeepSessionTime') is not None:
             self.disconnect_keep_session_time = m.get('DisconnectKeepSessionTime')
+
+        if m.get('FileManager') is not None:
+            self.file_manager = m.get('FileManager')
 
         if m.get('Html5FileTransfer') is not None:
             self.html_5file_transfer = m.get('Html5FileTransfer')
@@ -420,8 +428,16 @@ class ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy(DaraModel):
         file_clipboard: str = None,
         rich_text_clipboard: str = None,
         rich_text_clipboard_limit: int = None,
+        rich_text_clipboard_read_limit: int = None,
+        rich_text_clipboard_read_size_unit: str = None,
         rich_text_clipboard_size_unit: str = None,
+        rich_text_clipboard_write_limit: int = None,
+        rich_text_clipboard_write_size_unit: str = None,
         text_clipboard: str = None,
+        text_clipboard_read_limit: int = None,
+        text_clipboard_read_size_unit: str = None,
+        text_clipboard_write_limit: int = None,
+        text_clipboard_write_size_unit: str = None,
     ):
         # The clipboard policy.
         # 
@@ -463,7 +479,11 @@ class ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy(DaraModel):
         # *   off: Blocks copying in both directions.
         self.rich_text_clipboard = rich_text_clipboard
         self.rich_text_clipboard_limit = rich_text_clipboard_limit
+        self.rich_text_clipboard_read_limit = rich_text_clipboard_read_limit
+        self.rich_text_clipboard_read_size_unit = rich_text_clipboard_read_size_unit
         self.rich_text_clipboard_size_unit = rich_text_clipboard_size_unit
+        self.rich_text_clipboard_write_limit = rich_text_clipboard_write_limit
+        self.rich_text_clipboard_write_size_unit = rich_text_clipboard_write_size_unit
         # The text clipboard policy.
         # 
         # Valid values:
@@ -473,6 +493,10 @@ class ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy(DaraModel):
         # *   write: Allows copying from the cloud browser to the local device.
         # *   off: Blocks copying in both directions.
         self.text_clipboard = text_clipboard
+        self.text_clipboard_read_limit = text_clipboard_read_limit
+        self.text_clipboard_read_size_unit = text_clipboard_read_size_unit
+        self.text_clipboard_write_limit = text_clipboard_write_limit
+        self.text_clipboard_write_size_unit = text_clipboard_write_size_unit
 
     def validate(self):
         pass
@@ -506,11 +530,35 @@ class ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy(DaraModel):
         if self.rich_text_clipboard_limit is not None:
             result['RichTextClipboardLimit'] = self.rich_text_clipboard_limit
 
+        if self.rich_text_clipboard_read_limit is not None:
+            result['RichTextClipboardReadLimit'] = self.rich_text_clipboard_read_limit
+
+        if self.rich_text_clipboard_read_size_unit is not None:
+            result['RichTextClipboardReadSizeUnit'] = self.rich_text_clipboard_read_size_unit
+
         if self.rich_text_clipboard_size_unit is not None:
             result['RichTextClipboardSizeUnit'] = self.rich_text_clipboard_size_unit
 
+        if self.rich_text_clipboard_write_limit is not None:
+            result['RichTextClipboardWriteLimit'] = self.rich_text_clipboard_write_limit
+
+        if self.rich_text_clipboard_write_size_unit is not None:
+            result['RichTextClipboardWriteSizeUnit'] = self.rich_text_clipboard_write_size_unit
+
         if self.text_clipboard is not None:
             result['TextClipboard'] = self.text_clipboard
+
+        if self.text_clipboard_read_limit is not None:
+            result['TextClipboardReadLimit'] = self.text_clipboard_read_limit
+
+        if self.text_clipboard_read_size_unit is not None:
+            result['TextClipboardReadSizeUnit'] = self.text_clipboard_read_size_unit
+
+        if self.text_clipboard_write_limit is not None:
+            result['TextClipboardWriteLimit'] = self.text_clipboard_write_limit
+
+        if self.text_clipboard_write_size_unit is not None:
+            result['TextClipboardWriteSizeUnit'] = self.text_clipboard_write_size_unit
 
         return result
 
@@ -540,11 +588,35 @@ class ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy(DaraModel):
         if m.get('RichTextClipboardLimit') is not None:
             self.rich_text_clipboard_limit = m.get('RichTextClipboardLimit')
 
+        if m.get('RichTextClipboardReadLimit') is not None:
+            self.rich_text_clipboard_read_limit = m.get('RichTextClipboardReadLimit')
+
+        if m.get('RichTextClipboardReadSizeUnit') is not None:
+            self.rich_text_clipboard_read_size_unit = m.get('RichTextClipboardReadSizeUnit')
+
         if m.get('RichTextClipboardSizeUnit') is not None:
             self.rich_text_clipboard_size_unit = m.get('RichTextClipboardSizeUnit')
 
+        if m.get('RichTextClipboardWriteLimit') is not None:
+            self.rich_text_clipboard_write_limit = m.get('RichTextClipboardWriteLimit')
+
+        if m.get('RichTextClipboardWriteSizeUnit') is not None:
+            self.rich_text_clipboard_write_size_unit = m.get('RichTextClipboardWriteSizeUnit')
+
         if m.get('TextClipboard') is not None:
             self.text_clipboard = m.get('TextClipboard')
+
+        if m.get('TextClipboardReadLimit') is not None:
+            self.text_clipboard_read_limit = m.get('TextClipboardReadLimit')
+
+        if m.get('TextClipboardReadSizeUnit') is not None:
+            self.text_clipboard_read_size_unit = m.get('TextClipboardReadSizeUnit')
+
+        if m.get('TextClipboardWriteLimit') is not None:
+            self.text_clipboard_write_limit = m.get('TextClipboardWriteLimit')
+
+        if m.get('TextClipboardWriteSizeUnit') is not None:
+            self.text_clipboard_write_size_unit = m.get('TextClipboardWriteSizeUnit')
 
         return self
 

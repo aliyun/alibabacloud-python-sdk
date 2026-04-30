@@ -1,3 +1,15 @@
+2026-04-30 Version: 5.0.1
+- Update API ModifyBrowserInstanceGroup: add request parameters Policy.FileManager.
+- Update API ModifyBrowserInstanceGroup: add request parameters Policy.ClipboardPolicy.RichTextClipboardReadLimit.
+- Update API ModifyBrowserInstanceGroup: add request parameters Policy.ClipboardPolicy.RichTextClipboardReadSizeUnit.
+- Update API ModifyBrowserInstanceGroup: add request parameters Policy.ClipboardPolicy.RichTextClipboardWriteLimit.
+- Update API ModifyBrowserInstanceGroup: add request parameters Policy.ClipboardPolicy.RichTextClipboardWriteSizeUnit.
+- Update API ModifyBrowserInstanceGroup: add request parameters Policy.ClipboardPolicy.TextClipboardReadLimit.
+- Update API ModifyBrowserInstanceGroup: add request parameters Policy.ClipboardPolicy.TextClipboardReadSizeUnit.
+- Update API ModifyBrowserInstanceGroup: add request parameters Policy.ClipboardPolicy.TextClipboardWriteLimit.
+- Update API ModifyBrowserInstanceGroup: add request parameters Policy.ClipboardPolicy.TextClipboardWriteSizeUnit.
+
+
 2026-04-25 Version: 5.0.0
 - Update API ModifyBrowserInstanceGroup: update request parameters BrowserConfig.CookiesSync' type has changed.
 
