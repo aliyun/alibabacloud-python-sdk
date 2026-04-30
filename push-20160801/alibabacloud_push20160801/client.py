@@ -1177,6 +1177,8 @@ class Client(OpenApiClient):
             query['AndroidRenderStyle'] = request.android_render_style
         if not DaraCore.is_null(request.android_target_user_type):
             query['AndroidTargetUserType'] = request.android_target_user_type
+        if not DaraCore.is_null(request.android_vivo_live_message):
+            query['AndroidVivoLiveMessage'] = request.android_vivo_live_message
         if not DaraCore.is_null(request.android_vivo_push_mode):
             query['AndroidVivoPushMode'] = request.android_vivo_push_mode
         if not DaraCore.is_null(request.android_vivo_receipt_id):
@@ -1441,6 +1443,8 @@ class Client(OpenApiClient):
             query['AndroidRenderStyle'] = request.android_render_style
         if not DaraCore.is_null(request.android_target_user_type):
             query['AndroidTargetUserType'] = request.android_target_user_type
+        if not DaraCore.is_null(request.android_vivo_live_message):
+            query['AndroidVivoLiveMessage'] = request.android_vivo_live_message
         if not DaraCore.is_null(request.android_vivo_push_mode):
             query['AndroidVivoPushMode'] = request.android_vivo_push_mode
         if not DaraCore.is_null(request.android_vivo_receipt_id):

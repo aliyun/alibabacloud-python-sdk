@@ -962,10 +962,12 @@ class PushTaskNotificationAndroidOptionsVivo(DaraModel):
         self,
         category: str = None,
         importance: int = None,
+        live_message: str = None,
         receipt_id: str = None,
     ):
         self.category = category
         self.importance = importance
+        self.live_message = live_message
         self.receipt_id = receipt_id
 
     def validate(self):
@@ -982,6 +984,9 @@ class PushTaskNotificationAndroidOptionsVivo(DaraModel):
         if self.importance is not None:
             result['Importance'] = self.importance
 
+        if self.live_message is not None:
+            result['LiveMessage'] = self.live_message
+
         if self.receipt_id is not None:
             result['ReceiptId'] = self.receipt_id
 
@@ -994,6 +999,9 @@ class PushTaskNotificationAndroidOptionsVivo(DaraModel):
 
         if m.get('Importance') is not None:
             self.importance = m.get('Importance')
+
+        if m.get('LiveMessage') is not None:
+            self.live_message = m.get('LiveMessage')
 
         if m.get('ReceiptId') is not None:
             self.receipt_id = m.get('ReceiptId')

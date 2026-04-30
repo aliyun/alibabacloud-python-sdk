@@ -56,6 +56,7 @@ class PushRequest(DaraModel):
         android_remind: bool = None,
         android_render_style: int = None,
         android_target_user_type: int = None,
+        android_vivo_live_message: str = None,
         android_vivo_push_mode: int = None,
         android_vivo_receipt_id: str = None,
         android_xiao_mi_activity: str = None,
@@ -173,6 +174,7 @@ class PushRequest(DaraModel):
         self.android_remind = android_remind
         self.android_render_style = android_render_style
         self.android_target_user_type = android_target_user_type
+        self.android_vivo_live_message = android_vivo_live_message
         self.android_vivo_push_mode = android_vivo_push_mode
         self.android_vivo_receipt_id = android_vivo_receipt_id
         self.android_xiao_mi_activity = android_xiao_mi_activity
@@ -396,6 +398,9 @@ class PushRequest(DaraModel):
 
         if self.android_target_user_type is not None:
             result['AndroidTargetUserType'] = self.android_target_user_type
+
+        if self.android_vivo_live_message is not None:
+            result['AndroidVivoLiveMessage'] = self.android_vivo_live_message
 
         if self.android_vivo_push_mode is not None:
             result['AndroidVivoPushMode'] = self.android_vivo_push_mode
@@ -748,6 +753,9 @@ class PushRequest(DaraModel):
 
         if m.get('AndroidTargetUserType') is not None:
             self.android_target_user_type = m.get('AndroidTargetUserType')
+
+        if m.get('AndroidVivoLiveMessage') is not None:
+            self.android_vivo_live_message = m.get('AndroidVivoLiveMessage')
 
         if m.get('AndroidVivoPushMode') is not None:
             self.android_vivo_push_mode = m.get('AndroidVivoPushMode')

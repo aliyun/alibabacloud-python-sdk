@@ -1,3 +1,8 @@
+2026-04-30 Version: 2.1.4
+- Update API MassPush: add request parameters PushTask.$.AndroidVivoLiveMessage.
+- Update API Push: add request parameters AndroidVivoLiveMessage.
+
+
 2026-01-22 Version: 2.1.3
 - Update API MassPush: add request parameters PushTask.$.AndroidHuaweiBusinessType.
 - Update API Push: add request parameters AndroidHuaweiBusinessType.
