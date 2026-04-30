@@ -1,3 +1,8 @@
+2026-04-30 Version: 2.7.0
+- Support API GetCatalogAssetDetails.
+- Support API ListCatalogAssets.
+
+
 2026-02-27 Version: 2.6.0
 - Support API AddDataServiceAppMember.
 - Support API CreateDataServiceApp.

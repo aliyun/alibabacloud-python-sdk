@@ -8268,6 +8268,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_biz_unit_info_with_options_async(request, runtime)
 
+    def get_catalog_asset_details_with_options(
+        self,
+        tmp_req: main_models.GetCatalogAssetDetailsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetCatalogAssetDetailsResponse:
+        tmp_req.validate()
+        request = main_models.GetCatalogAssetDetailsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.get_catalog_asset_details_query):
+            request.get_catalog_asset_details_query_shrink = Utils.array_to_string_with_specified_style(tmp_req.get_catalog_asset_details_query, 'GetCatalogAssetDetailsQuery', 'json')
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not DaraCore.is_null(request.get_catalog_asset_details_query_shrink):
+            body['GetCatalogAssetDetailsQuery'] = request.get_catalog_asset_details_query_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetCatalogAssetDetails',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetCatalogAssetDetailsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_catalog_asset_details_with_options_async(
+        self,
+        tmp_req: main_models.GetCatalogAssetDetailsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetCatalogAssetDetailsResponse:
+        tmp_req.validate()
+        request = main_models.GetCatalogAssetDetailsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.get_catalog_asset_details_query):
+            request.get_catalog_asset_details_query_shrink = Utils.array_to_string_with_specified_style(tmp_req.get_catalog_asset_details_query, 'GetCatalogAssetDetailsQuery', 'json')
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not DaraCore.is_null(request.get_catalog_asset_details_query_shrink):
+            body['GetCatalogAssetDetailsQuery'] = request.get_catalog_asset_details_query_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetCatalogAssetDetails',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetCatalogAssetDetailsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_catalog_asset_details(
+        self,
+        request: main_models.GetCatalogAssetDetailsRequest,
+    ) -> main_models.GetCatalogAssetDetailsResponse:
+        runtime = RuntimeOptions()
+        return self.get_catalog_asset_details_with_options(request, runtime)
+
+    async def get_catalog_asset_details_async(
+        self,
+        request: main_models.GetCatalogAssetDetailsRequest,
+    ) -> main_models.GetCatalogAssetDetailsResponse:
+        runtime = RuntimeOptions()
+        return await self.get_catalog_asset_details_with_options_async(request, runtime)
+
     def get_check_connectivity_jobs_with_options(
         self,
         request: main_models.GetCheckConnectivityJobsRequest,
@@ -15533,6 +15619,92 @@ class Client(OpenApiClient):
     ) -> main_models.ListBizUnitsResponse:
         runtime = RuntimeOptions()
         return await self.list_biz_units_with_options_async(request, runtime)
+
+    def list_catalog_assets_with_options(
+        self,
+        tmp_req: main_models.ListCatalogAssetsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListCatalogAssetsResponse:
+        tmp_req.validate()
+        request = main_models.ListCatalogAssetsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.list_catalog_assets_query):
+            request.list_catalog_assets_query_shrink = Utils.array_to_string_with_specified_style(tmp_req.list_catalog_assets_query, 'ListCatalogAssetsQuery', 'json')
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not DaraCore.is_null(request.list_catalog_assets_query_shrink):
+            body['ListCatalogAssetsQuery'] = request.list_catalog_assets_query_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListCatalogAssets',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListCatalogAssetsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_catalog_assets_with_options_async(
+        self,
+        tmp_req: main_models.ListCatalogAssetsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListCatalogAssetsResponse:
+        tmp_req.validate()
+        request = main_models.ListCatalogAssetsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.list_catalog_assets_query):
+            request.list_catalog_assets_query_shrink = Utils.array_to_string_with_specified_style(tmp_req.list_catalog_assets_query, 'ListCatalogAssetsQuery', 'json')
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not DaraCore.is_null(request.list_catalog_assets_query_shrink):
+            body['ListCatalogAssetsQuery'] = request.list_catalog_assets_query_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListCatalogAssets',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListCatalogAssetsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_catalog_assets(
+        self,
+        request: main_models.ListCatalogAssetsRequest,
+    ) -> main_models.ListCatalogAssetsResponse:
+        runtime = RuntimeOptions()
+        return self.list_catalog_assets_with_options(request, runtime)
+
+    async def list_catalog_assets_async(
+        self,
+        request: main_models.ListCatalogAssetsRequest,
+    ) -> main_models.ListCatalogAssetsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_catalog_assets_with_options_async(request, runtime)
 
     def list_compute_sources_with_options(
         self,

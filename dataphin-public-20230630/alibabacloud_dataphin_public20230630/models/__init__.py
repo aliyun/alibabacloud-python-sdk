@@ -365,6 +365,10 @@ from ._get_biz_metric_by_name_response import GetBizMetricByNameResponse
 from ._get_biz_unit_info_request import GetBizUnitInfoRequest
 from ._get_biz_unit_info_response_body import GetBizUnitInfoResponseBody
 from ._get_biz_unit_info_response import GetBizUnitInfoResponse
+from ._get_catalog_asset_details_request import GetCatalogAssetDetailsRequest
+from ._get_catalog_asset_details_shrink_request import GetCatalogAssetDetailsShrinkRequest
+from ._get_catalog_asset_details_response_body import GetCatalogAssetDetailsResponseBody
+from ._get_catalog_asset_details_response import GetCatalogAssetDetailsResponse
 from ._get_check_connectivity_jobs_request import GetCheckConnectivityJobsRequest
 from ._get_check_connectivity_jobs_response_body import GetCheckConnectivityJobsResponseBody
 from ._get_check_connectivity_jobs_response import GetCheckConnectivityJobsResponse
@@ -662,6 +666,10 @@ from ._list_biz_entities_response import ListBizEntitiesResponse
 from ._list_biz_units_request import ListBizUnitsRequest
 from ._list_biz_units_response_body import ListBizUnitsResponseBody
 from ._list_biz_units_response import ListBizUnitsResponse
+from ._list_catalog_assets_request import ListCatalogAssetsRequest
+from ._list_catalog_assets_shrink_request import ListCatalogAssetsShrinkRequest
+from ._list_catalog_assets_response_body import ListCatalogAssetsResponseBody
+from ._list_catalog_assets_response import ListCatalogAssetsResponse
 from ._list_compute_sources_request import ListComputeSourcesRequest
 from ._list_compute_sources_shrink_request import ListComputeSourcesShrinkRequest
 from ._list_compute_sources_response_body import ListComputeSourcesResponseBody
@@ -1320,6 +1328,19 @@ from ._get_biz_unit_info_response_body import GetBizUnitInfoResponseBodyBizUnitI
 from ._get_biz_unit_info_response_body import GetBizUnitInfoResponseBodyBizUnitInfoDataLeaderList
 from ._get_biz_unit_info_response_body import GetBizUnitInfoResponseBodyBizUnitInfoEnvList
 from ._get_biz_unit_info_response_body import GetBizUnitInfoResponseBodyBizUnitInfo
+from ._get_catalog_asset_details_request import GetCatalogAssetDetailsRequestGetCatalogAssetDetailsQuery
+from ._get_catalog_asset_details_response_body import GetCatalogAssetDetailsResponseBodyDataColumnsAssociatedEntity
+from ._get_catalog_asset_details_response_body import GetCatalogAssetDetailsResponseBodyDataColumnsStandards
+from ._get_catalog_asset_details_response_body import GetCatalogAssetDetailsResponseBodyDataColumns
+from ._get_catalog_asset_details_response_body import GetCatalogAssetDetailsResponseBodyDataCustomAttributes
+from ._get_catalog_asset_details_response_body import GetCatalogAssetDetailsResponseBodyDataDirectories
+from ._get_catalog_asset_details_response_body import GetCatalogAssetDetailsResponseBodyDataFirstOnShelveUser
+from ._get_catalog_asset_details_response_body import GetCatalogAssetDetailsResponseBodyDataLastOnShelveUser
+from ._get_catalog_asset_details_response_body import GetCatalogAssetDetailsResponseBodyDataOwner
+from ._get_catalog_asset_details_response_body import GetCatalogAssetDetailsResponseBodyDataSimpleNodeInfosOwners
+from ._get_catalog_asset_details_response_body import GetCatalogAssetDetailsResponseBodyDataSimpleNodeInfosProject
+from ._get_catalog_asset_details_response_body import GetCatalogAssetDetailsResponseBodyDataSimpleNodeInfos
+from ._get_catalog_asset_details_response_body import GetCatalogAssetDetailsResponseBodyData
 from ._get_check_connectivity_jobs_response_body import GetCheckConnectivityJobsResponseBodyData
 from ._get_cluster_queue_info_by_env_response_body import GetClusterQueueInfoByEnvResponseBodyData
 from ._get_compute_source_response_body import GetComputeSourceResponseBodyComputeSourceInfo
@@ -1593,6 +1614,10 @@ from ._list_biz_entities_response_body import ListBizEntitiesResponseBodyPageRes
 from ._list_biz_units_response_body import ListBizUnitsResponseBodyDataBizUnitListAccountList
 from ._list_biz_units_response_body import ListBizUnitsResponseBodyDataBizUnitList
 from ._list_biz_units_response_body import ListBizUnitsResponseBodyData
+from ._list_catalog_assets_request import ListCatalogAssetsRequestListCatalogAssetsQuery
+from ._list_catalog_assets_response_body import ListCatalogAssetsResponseBodyDataAssetListDirectories
+from ._list_catalog_assets_response_body import ListCatalogAssetsResponseBodyDataAssetList
+from ._list_catalog_assets_response_body import ListCatalogAssetsResponseBodyData
 from ._list_compute_sources_request import ListComputeSourcesRequestListQuery
 from ._list_compute_sources_response_body import ListComputeSourcesResponseBodyPageResultComputeSourceList
 from ._list_compute_sources_response_body import ListComputeSourcesResponseBodyPageResult
@@ -2319,6 +2344,10 @@ __all__ = [
     GetBizUnitInfoRequest,
     GetBizUnitInfoResponseBody,
     GetBizUnitInfoResponse,
+    GetCatalogAssetDetailsRequest,
+    GetCatalogAssetDetailsShrinkRequest,
+    GetCatalogAssetDetailsResponseBody,
+    GetCatalogAssetDetailsResponse,
     GetCheckConnectivityJobsRequest,
     GetCheckConnectivityJobsResponseBody,
     GetCheckConnectivityJobsResponse,
@@ -2616,6 +2645,10 @@ __all__ = [
     ListBizUnitsRequest,
     ListBizUnitsResponseBody,
     ListBizUnitsResponse,
+    ListCatalogAssetsRequest,
+    ListCatalogAssetsShrinkRequest,
+    ListCatalogAssetsResponseBody,
+    ListCatalogAssetsResponse,
     ListComputeSourcesRequest,
     ListComputeSourcesShrinkRequest,
     ListComputeSourcesResponseBody,
@@ -3274,6 +3307,19 @@ __all__ = [
     GetBizUnitInfoResponseBodyBizUnitInfoDataLeaderList,
     GetBizUnitInfoResponseBodyBizUnitInfoEnvList,
     GetBizUnitInfoResponseBodyBizUnitInfo,
+    GetCatalogAssetDetailsRequestGetCatalogAssetDetailsQuery,
+    GetCatalogAssetDetailsResponseBodyDataColumnsAssociatedEntity,
+    GetCatalogAssetDetailsResponseBodyDataColumnsStandards,
+    GetCatalogAssetDetailsResponseBodyDataColumns,
+    GetCatalogAssetDetailsResponseBodyDataCustomAttributes,
+    GetCatalogAssetDetailsResponseBodyDataDirectories,
+    GetCatalogAssetDetailsResponseBodyDataFirstOnShelveUser,
+    GetCatalogAssetDetailsResponseBodyDataLastOnShelveUser,
+    GetCatalogAssetDetailsResponseBodyDataOwner,
+    GetCatalogAssetDetailsResponseBodyDataSimpleNodeInfosOwners,
+    GetCatalogAssetDetailsResponseBodyDataSimpleNodeInfosProject,
+    GetCatalogAssetDetailsResponseBodyDataSimpleNodeInfos,
+    GetCatalogAssetDetailsResponseBodyData,
     GetCheckConnectivityJobsResponseBodyData,
     GetClusterQueueInfoByEnvResponseBodyData,
     GetComputeSourceResponseBodyComputeSourceInfo,
@@ -3547,6 +3593,10 @@ __all__ = [
     ListBizUnitsResponseBodyDataBizUnitListAccountList,
     ListBizUnitsResponseBodyDataBizUnitList,
     ListBizUnitsResponseBodyData,
+    ListCatalogAssetsRequestListCatalogAssetsQuery,
+    ListCatalogAssetsResponseBodyDataAssetListDirectories,
+    ListCatalogAssetsResponseBodyDataAssetList,
+    ListCatalogAssetsResponseBodyData,
     ListComputeSourcesRequestListQuery,
     ListComputeSourcesResponseBodyPageResultComputeSourceList,
     ListComputeSourcesResponseBodyPageResult,
