@@ -15,7 +15,6 @@ class RunAgentTaskRequest(DaraModel):
         timeout_seconds: int = None,
         user_prompt: str = None,
     ):
-        # This parameter is required.
         self.biz_region_id = biz_region_id
         # This parameter is required.
         self.instance_ids = instance_ids

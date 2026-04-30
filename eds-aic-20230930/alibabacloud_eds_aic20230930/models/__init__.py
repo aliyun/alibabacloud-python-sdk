@@ -114,6 +114,9 @@ from ._describe_image_list_response import DescribeImageListResponse
 from ._describe_invocations_request import DescribeInvocationsRequest
 from ._describe_invocations_response_body import DescribeInvocationsResponseBody
 from ._describe_invocations_response import DescribeInvocationsResponse
+from ._describe_jvsinstance_request import DescribeJVSInstanceRequest
+from ._describe_jvsinstance_response_body import DescribeJVSInstanceResponseBody
+from ._describe_jvsinstance_response import DescribeJVSInstanceResponse
 from ._describe_key_pairs_request import DescribeKeyPairsRequest
 from ._describe_key_pairs_response_body import DescribeKeyPairsResponseBody
 from ._describe_key_pairs_response import DescribeKeyPairsResponse
@@ -214,6 +217,9 @@ from ._modify_display_config_response import ModifyDisplayConfigResponse
 from ._modify_instance_charge_type_request import ModifyInstanceChargeTypeRequest
 from ._modify_instance_charge_type_response_body import ModifyInstanceChargeTypeResponseBody
 from ._modify_instance_charge_type_response import ModifyInstanceChargeTypeResponse
+from ._modify_jvsinstance_request import ModifyJVSInstanceRequest
+from ._modify_jvsinstance_response_body import ModifyJVSInstanceResponseBody
+from ._modify_jvsinstance_response import ModifyJVSInstanceResponse
 from ._modify_key_pair_name_request import ModifyKeyPairNameRequest
 from ._modify_key_pair_name_response_body import ModifyKeyPairNameResponseBody
 from ._modify_key_pair_name_response import ModifyKeyPairNameResponse
@@ -367,6 +373,9 @@ from ._describe_image_list_request import DescribeImageListRequestImageBizTags
 from ._describe_image_list_response_body import DescribeImageListResponseBodyDataImageBizTags
 from ._describe_image_list_response_body import DescribeImageListResponseBodyData
 from ._describe_invocations_response_body import DescribeInvocationsResponseBodyData
+from ._describe_jvsinstance_response_body import DescribeJVSInstanceResponseBodyDataCreditConfig
+from ._describe_jvsinstance_response_body import DescribeJVSInstanceResponseBodyDataUsedCredit
+from ._describe_jvsinstance_response_body import DescribeJVSInstanceResponseBodyData
 from ._describe_key_pairs_response_body import DescribeKeyPairsResponseBodyData
 from ._describe_metric_last_response_body import DescribeMetricLastResponseBodyMetricTotalModelMetricModelListDataPoints
 from ._describe_metric_last_response_body import DescribeMetricLastResponseBodyMetricTotalModelMetricModelListProcessLastInfos
@@ -401,6 +410,7 @@ from ._list_policy_groups_response_body import ListPolicyGroupsResponseBodyPolic
 from ._list_tag_resources_request import ListTagResourcesRequestTag
 from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResources
 from ._modify_display_config_request import ModifyDisplayConfigRequestDisplayConfig
+from ._modify_jvsinstance_request import ModifyJVSInstanceRequestCreditConfig
 from ._modify_policy_group_request import ModifyPolicyGroupRequestNetRedirectPolicyRules
 from ._modify_policy_group_request import ModifyPolicyGroupRequestNetRedirectPolicy
 from ._modify_policy_group_request import ModifyPolicyGroupRequestWatermark
@@ -536,6 +546,9 @@ __all__ = [
     DescribeInvocationsRequest,
     DescribeInvocationsResponseBody,
     DescribeInvocationsResponse,
+    DescribeJVSInstanceRequest,
+    DescribeJVSInstanceResponseBody,
+    DescribeJVSInstanceResponse,
     DescribeKeyPairsRequest,
     DescribeKeyPairsResponseBody,
     DescribeKeyPairsResponse,
@@ -636,6 +649,9 @@ __all__ = [
     ModifyInstanceChargeTypeRequest,
     ModifyInstanceChargeTypeResponseBody,
     ModifyInstanceChargeTypeResponse,
+    ModifyJVSInstanceRequest,
+    ModifyJVSInstanceResponseBody,
+    ModifyJVSInstanceResponse,
     ModifyKeyPairNameRequest,
     ModifyKeyPairNameResponseBody,
     ModifyKeyPairNameResponse,
@@ -789,6 +805,9 @@ __all__ = [
     DescribeImageListResponseBodyDataImageBizTags,
     DescribeImageListResponseBodyData,
     DescribeInvocationsResponseBodyData,
+    DescribeJVSInstanceResponseBodyDataCreditConfig,
+    DescribeJVSInstanceResponseBodyDataUsedCredit,
+    DescribeJVSInstanceResponseBodyData,
     DescribeKeyPairsResponseBodyData,
     DescribeMetricLastResponseBodyMetricTotalModelMetricModelListDataPoints,
     DescribeMetricLastResponseBodyMetricTotalModelMetricModelListProcessLastInfos,
@@ -823,6 +842,7 @@ __all__ = [
     ListTagResourcesRequestTag,
     ListTagResourcesResponseBodyTagResources,
     ModifyDisplayConfigRequestDisplayConfig,
+    ModifyJVSInstanceRequestCreditConfig,
     ModifyPolicyGroupRequestNetRedirectPolicyRules,
     ModifyPolicyGroupRequestNetRedirectPolicy,
     ModifyPolicyGroupRequestWatermark,

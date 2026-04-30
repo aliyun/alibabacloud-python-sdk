@@ -3358,6 +3358,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_invocations_with_options_async(request, runtime)
 
+    def describe_jvsinstance_with_options(
+        self,
+        request: main_models.DescribeJVSInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeJVSInstanceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeJVSInstance',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeJVSInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_jvsinstance_with_options_async(
+        self,
+        request: main_models.DescribeJVSInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeJVSInstanceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeJVSInstance',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeJVSInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_jvsinstance(
+        self,
+        request: main_models.DescribeJVSInstanceRequest,
+    ) -> main_models.DescribeJVSInstanceResponse:
+        runtime = RuntimeOptions()
+        return self.describe_jvsinstance_with_options(request, runtime)
+
+    async def describe_jvsinstance_async(
+        self,
+        request: main_models.DescribeJVSInstanceRequest,
+    ) -> main_models.DescribeJVSInstanceResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_jvsinstance_with_options_async(request, runtime)
+
     def describe_key_pairs_with_options(
         self,
         request: main_models.DescribeKeyPairsRequest,
@@ -6139,6 +6217,88 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyInstanceChargeTypeResponse:
         runtime = RuntimeOptions()
         return await self.modify_instance_charge_type_with_options_async(request, runtime)
+
+    def modify_jvsinstance_with_options(
+        self,
+        request: main_models.ModifyJVSInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyJVSInstanceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.apply_to_all):
+            query['ApplyToAll'] = request.apply_to_all
+        if not DaraCore.is_null(request.credit_config):
+            query['CreditConfig'] = request.credit_config
+        if not DaraCore.is_null(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not DaraCore.is_null(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyJVSInstance',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyJVSInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_jvsinstance_with_options_async(
+        self,
+        request: main_models.ModifyJVSInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyJVSInstanceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.apply_to_all):
+            query['ApplyToAll'] = request.apply_to_all
+        if not DaraCore.is_null(request.credit_config):
+            query['CreditConfig'] = request.credit_config
+        if not DaraCore.is_null(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not DaraCore.is_null(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyJVSInstance',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyJVSInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_jvsinstance(
+        self,
+        request: main_models.ModifyJVSInstanceRequest,
+    ) -> main_models.ModifyJVSInstanceResponse:
+        runtime = RuntimeOptions()
+        return self.modify_jvsinstance_with_options(request, runtime)
+
+    async def modify_jvsinstance_async(
+        self,
+        request: main_models.ModifyJVSInstanceRequest,
+    ) -> main_models.ModifyJVSInstanceResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_jvsinstance_with_options_async(request, runtime)
 
     def modify_key_pair_name_with_options(
         self,
