@@ -1,3 +1,6 @@
+2026-04-30 Version: 4.1.3
+- Generated python 2022-04-30 for Nlb.
+
 2026-01-14 Version: 4.1.2
 - Update API CreateServerGroup: add request parameters IpVersionAffinityMode.
 - Update API ListServerGroups: add response parameters Body.ServerGroups.$.IpVersionAffinityMode.
