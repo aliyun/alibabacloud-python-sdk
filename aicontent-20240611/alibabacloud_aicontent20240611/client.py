@@ -3931,6 +3931,94 @@ class Client(OpenApiClient):
         headers = {}
         return await self.model_router_chat_completions_with_options_async(request, headers, runtime)
 
+    def model_router_configure_client_balance_with_options(
+        self,
+        id: str,
+        request: main_models.ModelRouterConfigureClientBalanceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterConfigureClientBalanceResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.balance_type):
+            body['balanceType'] = request.balance_type
+        if not DaraCore.is_null(request.enable_balance):
+            body['enableBalance'] = request.enable_balance
+        if not DaraCore.is_null(request.initial_balance):
+            body['initialBalance'] = request.initial_balance
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterConfigureClientBalance',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/clients/{DaraURL.percent_encode(id)}/balance',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterConfigureClientBalanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def model_router_configure_client_balance_with_options_async(
+        self,
+        id: str,
+        request: main_models.ModelRouterConfigureClientBalanceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterConfigureClientBalanceResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.balance_type):
+            body['balanceType'] = request.balance_type
+        if not DaraCore.is_null(request.enable_balance):
+            body['enableBalance'] = request.enable_balance
+        if not DaraCore.is_null(request.initial_balance):
+            body['initialBalance'] = request.initial_balance
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterConfigureClientBalance',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/clients/{DaraURL.percent_encode(id)}/balance',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterConfigureClientBalanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def model_router_configure_client_balance(
+        self,
+        id: str,
+        request: main_models.ModelRouterConfigureClientBalanceRequest,
+    ) -> main_models.ModelRouterConfigureClientBalanceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.model_router_configure_client_balance_with_options(id, request, headers, runtime)
+
+    async def model_router_configure_client_balance_async(
+        self,
+        id: str,
+        request: main_models.ModelRouterConfigureClientBalanceRequest,
+    ) -> main_models.ModelRouterConfigureClientBalanceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.model_router_configure_client_balance_with_options_async(id, request, headers, runtime)
+
     def model_router_copy_api_key_with_options(
         self,
         id: str,
@@ -4072,6 +4160,94 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.model_router_create_api_key_with_options_async(request, headers, runtime)
+
+    def model_router_create_balance_transaction_with_options(
+        self,
+        id: str,
+        request: main_models.ModelRouterCreateBalanceTransactionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterCreateBalanceTransactionResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.amount):
+            body['amount'] = request.amount
+        if not DaraCore.is_null(request.remark):
+            body['remark'] = request.remark
+        if not DaraCore.is_null(request.type):
+            body['type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterCreateBalanceTransaction',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/clients/{DaraURL.percent_encode(id)}/balance/transactions',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterCreateBalanceTransactionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def model_router_create_balance_transaction_with_options_async(
+        self,
+        id: str,
+        request: main_models.ModelRouterCreateBalanceTransactionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterCreateBalanceTransactionResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.amount):
+            body['amount'] = request.amount
+        if not DaraCore.is_null(request.remark):
+            body['remark'] = request.remark
+        if not DaraCore.is_null(request.type):
+            body['type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterCreateBalanceTransaction',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/clients/{DaraURL.percent_encode(id)}/balance/transactions',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterCreateBalanceTransactionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def model_router_create_balance_transaction(
+        self,
+        id: str,
+        request: main_models.ModelRouterCreateBalanceTransactionRequest,
+    ) -> main_models.ModelRouterCreateBalanceTransactionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.model_router_create_balance_transaction_with_options(id, request, headers, runtime)
+
+    async def model_router_create_balance_transaction_async(
+        self,
+        id: str,
+        request: main_models.ModelRouterCreateBalanceTransactionRequest,
+    ) -> main_models.ModelRouterCreateBalanceTransactionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.model_router_create_balance_transaction_with_options_async(id, request, headers, runtime)
 
     def model_router_create_billing_rule_with_options(
         self,
@@ -4736,6 +4912,174 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.model_router_delete_model_with_options_async(id, headers, runtime)
+
+    def model_router_get_client_balance_with_options(
+        self,
+        id: str,
+        request: main_models.ModelRouterGetClientBalanceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterGetClientBalanceResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterGetClientBalance',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/clients/{DaraURL.percent_encode(id)}/balance',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterGetClientBalanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def model_router_get_client_balance_with_options_async(
+        self,
+        id: str,
+        request: main_models.ModelRouterGetClientBalanceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterGetClientBalanceResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterGetClientBalance',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/clients/{DaraURL.percent_encode(id)}/balance',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterGetClientBalanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def model_router_get_client_balance(
+        self,
+        id: str,
+        request: main_models.ModelRouterGetClientBalanceRequest,
+    ) -> main_models.ModelRouterGetClientBalanceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.model_router_get_client_balance_with_options(id, request, headers, runtime)
+
+    async def model_router_get_client_balance_async(
+        self,
+        id: str,
+        request: main_models.ModelRouterGetClientBalanceRequest,
+    ) -> main_models.ModelRouterGetClientBalanceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.model_router_get_client_balance_with_options_async(id, request, headers, runtime)
+
+    def model_router_get_client_balance_logs_with_options(
+        self,
+        id: str,
+        request: main_models.ModelRouterGetClientBalanceLogsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterGetClientBalanceLogsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.change_type):
+            query['changeType'] = request.change_type
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.page):
+            query['page'] = request.page
+        if not DaraCore.is_null(request.size):
+            query['size'] = request.size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterGetClientBalanceLogs',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/clients/{DaraURL.percent_encode(id)}/balance/logs',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterGetClientBalanceLogsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def model_router_get_client_balance_logs_with_options_async(
+        self,
+        id: str,
+        request: main_models.ModelRouterGetClientBalanceLogsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterGetClientBalanceLogsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.change_type):
+            query['changeType'] = request.change_type
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.page):
+            query['page'] = request.page
+        if not DaraCore.is_null(request.size):
+            query['size'] = request.size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterGetClientBalanceLogs',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/clients/{DaraURL.percent_encode(id)}/balance/logs',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterGetClientBalanceLogsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def model_router_get_client_balance_logs(
+        self,
+        id: str,
+        request: main_models.ModelRouterGetClientBalanceLogsRequest,
+    ) -> main_models.ModelRouterGetClientBalanceLogsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.model_router_get_client_balance_logs_with_options(id, request, headers, runtime)
+
+    async def model_router_get_client_balance_logs_async(
+        self,
+        id: str,
+        request: main_models.ModelRouterGetClientBalanceLogsRequest,
+    ) -> main_models.ModelRouterGetClientBalanceLogsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.model_router_get_client_balance_logs_with_options_async(id, request, headers, runtime)
 
     def model_router_query_api_key_with_options(
         self,
@@ -6838,6 +7182,94 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.model_router_query_usage_breakdown_with_options_async(request, headers, runtime)
+
+    def model_router_save_flow_config_with_options(
+        self,
+        request: main_models.ModelRouterSaveFlowConfigRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterSaveFlowConfigResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.model_id):
+            body['modelId'] = request.model_id
+        if not DaraCore.is_null(request.rpm):
+            body['rpm'] = request.rpm
+        if not DaraCore.is_null(request.smooth_flow_enabled):
+            body['smoothFlowEnabled'] = request.smooth_flow_enabled
+        if not DaraCore.is_null(request.tpm):
+            body['tpm'] = request.tpm
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterSaveFlowConfig',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/flow-config',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterSaveFlowConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def model_router_save_flow_config_with_options_async(
+        self,
+        request: main_models.ModelRouterSaveFlowConfigRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterSaveFlowConfigResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.model_id):
+            body['modelId'] = request.model_id
+        if not DaraCore.is_null(request.rpm):
+            body['rpm'] = request.rpm
+        if not DaraCore.is_null(request.smooth_flow_enabled):
+            body['smoothFlowEnabled'] = request.smooth_flow_enabled
+        if not DaraCore.is_null(request.tpm):
+            body['tpm'] = request.tpm
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterSaveFlowConfig',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/flow-config',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterSaveFlowConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def model_router_save_flow_config(
+        self,
+        request: main_models.ModelRouterSaveFlowConfigRequest,
+    ) -> main_models.ModelRouterSaveFlowConfigResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.model_router_save_flow_config_with_options(request, headers, runtime)
+
+    async def model_router_save_flow_config_async(
+        self,
+        request: main_models.ModelRouterSaveFlowConfigRequest,
+    ) -> main_models.ModelRouterSaveFlowConfigResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.model_router_save_flow_config_with_options_async(request, headers, runtime)
 
     def model_router_update_billing_rule_with_options(
         self,

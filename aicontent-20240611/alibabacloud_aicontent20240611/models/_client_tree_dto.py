@@ -12,6 +12,7 @@ class ClientTreeDTO(DaraModel):
         self,
         address: str = None,
         allowed_models: str = None,
+        balance: main_models.ClientBalanceDTO = None,
         children: List[main_models.ClientTreeDTO] = None,
         client_uuid: str = None,
         contact: str = None,
@@ -28,6 +29,7 @@ class ClientTreeDTO(DaraModel):
     ):
         self.address = address
         self.allowed_models = allowed_models
+        self.balance = balance
         self.children = children
         self.client_uuid = client_uuid
         self.contact = contact
@@ -43,6 +45,8 @@ class ClientTreeDTO(DaraModel):
         self.remark = remark
 
     def validate(self):
+        if self.balance:
+            self.balance.validate()
         if self.children:
             for v1 in self.children:
                  if v1:
@@ -58,6 +62,9 @@ class ClientTreeDTO(DaraModel):
 
         if self.allowed_models is not None:
             result['allowedModels'] = self.allowed_models
+
+        if self.balance is not None:
+            result['balance'] = self.balance.to_map()
 
         result['children'] = []
         if self.children is not None:
@@ -109,6 +116,10 @@ class ClientTreeDTO(DaraModel):
 
         if m.get('allowedModels') is not None:
             self.allowed_models = m.get('allowedModels')
+
+        if m.get('balance') is not None:
+            temp_model = main_models.ClientBalanceDTO()
+            self.balance = temp_model.from_map(m.get('balance'))
 
         self.children = []
         if m.get('children') is not None:

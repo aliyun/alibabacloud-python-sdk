@@ -1,3 +1,10 @@
+2026-04-30 Version: 7.3.0
+- Support API ModelRouterConfigureClientBalance.
+- Support API ModelRouterCreateBalanceTransaction.
+- Support API ModelRouterGetClientBalance.
+- Support API ModelRouterGetClientBalanceLogs.
+
+
 2026-04-27 Version: 7.2.0
 - Support API ModelRouterQueryBillingCostBreakdown.
 - Support API ModelRouterQueryUsageBreakdown.
