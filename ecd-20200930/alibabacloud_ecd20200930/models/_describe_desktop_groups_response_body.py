@@ -109,6 +109,7 @@ class DescribeDesktopGroupsResponseBodyDesktopGroups(DaraModel):
         policy_group_name: str = None,
         policy_group_name_list: List[str] = None,
         protocol_type: str = None,
+        qos_rule_id: str = None,
         ratio_threshold: float = None,
         reset_type: int = None,
         simple_user_group_id: str = None,
@@ -274,6 +275,7 @@ class DescribeDesktopGroupsResponseBodyDesktopGroups(DaraModel):
         # 
         #     <!-- -->
         self.protocol_type = protocol_type
+        self.qos_rule_id = qos_rule_id
         # The threshold for the ratio of connected sessions, which triggers automatic scaling of cloud computers within the multi-session many-to-many share. To calculate the ratio of connected sessions, use the following formula:
         # 
         # `Ratio of connected sessions = Number of connected sessions/(Total number of cloud computers × Maximum number of sessions allowed for each cloud computer) × 100%`
@@ -476,6 +478,9 @@ class DescribeDesktopGroupsResponseBodyDesktopGroups(DaraModel):
         if self.protocol_type is not None:
             result['ProtocolType'] = self.protocol_type
 
+        if self.qos_rule_id is not None:
+            result['QosRuleId'] = self.qos_rule_id
+
         if self.ratio_threshold is not None:
             result['RatioThreshold'] = self.ratio_threshold
 
@@ -661,6 +666,9 @@ class DescribeDesktopGroupsResponseBodyDesktopGroups(DaraModel):
 
         if m.get('ProtocolType') is not None:
             self.protocol_type = m.get('ProtocolType')
+
+        if m.get('QosRuleId') is not None:
+            self.qos_rule_id = m.get('QosRuleId')
 
         if m.get('RatioThreshold') is not None:
             self.ratio_threshold = m.get('RatioThreshold')

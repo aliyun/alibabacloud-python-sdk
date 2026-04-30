@@ -899,6 +899,7 @@ from ._create_desktops_request import CreateDesktopsRequestBundleModels
 from ._create_desktops_request import CreateDesktopsRequestDesktopAttachment
 from ._create_desktops_request import CreateDesktopsRequestDesktopTimers
 from ._create_desktops_request import CreateDesktopsRequestMonthDesktopSetting
+from ._create_desktops_request import CreateDesktopsRequestPurchaseOptions
 from ._create_desktops_request import CreateDesktopsRequestTag
 from ._create_desktops_request import CreateDesktopsRequestUserCommands
 from ._create_desktops_shrink_request import CreateDesktopsShrinkRequestBundleModels
@@ -2047,6 +2048,7 @@ __all__ = [
     CreateDesktopsRequestDesktopAttachment,
     CreateDesktopsRequestDesktopTimers,
     CreateDesktopsRequestMonthDesktopSetting,
+    CreateDesktopsRequestPurchaseOptions,
     CreateDesktopsRequestTag,
     CreateDesktopsRequestUserCommands,
     CreateDesktopsShrinkRequestBundleModels,

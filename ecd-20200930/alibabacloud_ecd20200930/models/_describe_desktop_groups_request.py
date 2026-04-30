@@ -27,6 +27,7 @@ class DescribeDesktopGroupsRequest(DaraModel):
         period_unit: str = None,
         policy_group_id: str = None,
         protocol_type: str = None,
+        qos_rule_id: str = None,
         region_id: str = None,
         status: int = None,
         tag: List[main_models.DescribeDesktopGroupsRequestTag] = None,
@@ -109,6 +110,7 @@ class DescribeDesktopGroupsRequest(DaraModel):
         # 
         #     <!-- -->
         self.protocol_type = protocol_type
+        self.qos_rule_id = qos_rule_id
         # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the regions supported by WUYING Workspace.
         # 
         # This parameter is required.
@@ -186,6 +188,9 @@ class DescribeDesktopGroupsRequest(DaraModel):
         if self.protocol_type is not None:
             result['ProtocolType'] = self.protocol_type
 
+        if self.qos_rule_id is not None:
+            result['QosRuleId'] = self.qos_rule_id
+
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
@@ -251,6 +256,9 @@ class DescribeDesktopGroupsRequest(DaraModel):
 
         if m.get('ProtocolType') is not None:
             self.protocol_type = m.get('ProtocolType')
+
+        if m.get('QosRuleId') is not None:
+            self.qos_rule_id = m.get('QosRuleId')
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')

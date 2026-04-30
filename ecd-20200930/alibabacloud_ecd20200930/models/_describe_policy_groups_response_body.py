@@ -126,6 +126,7 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(DaraModel):
         domain_resolve_rule_type: str = None,
         eds_count: int = None,
         end_user_apply_admin_coordinate: str = None,
+        end_user_count: str = None,
         end_user_group_coordinate: str = None,
         external_drive: str = None,
         file_migrate: str = None,
@@ -162,6 +163,8 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(DaraModel):
         name: str = None,
         net_redirect: str = None,
         net_redirect_rule: List[main_models.DescribePolicyGroupsResponseBodyDescribePolicyGroupsNetRedirectRule] = None,
+        network_printer: str = None,
+        organization_count: str = None,
         policy_group_id: str = None,
         policy_group_type: str = None,
         policy_status: str = None,
@@ -343,6 +346,7 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(DaraModel):
         # *   off
         # *   on
         self.end_user_apply_admin_coordinate = end_user_apply_admin_coordinate
+        self.end_user_count = end_user_count
         # Indicates whether the User Stream Collaboration switch is turned on.
         # 
         # Valid values:
@@ -462,6 +466,8 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(DaraModel):
         # 
         # >  This parameter is in invitational preview for specific users and not available to the public.
         self.net_redirect_rule = net_redirect_rule
+        self.network_printer = network_printer
+        self.organization_count = organization_count
         # The ID of the cloud computer policy.
         self.policy_group_id = policy_group_id
         # The type of the cloud computer policy.
@@ -917,6 +923,9 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(DaraModel):
         if self.end_user_apply_admin_coordinate is not None:
             result['EndUserApplyAdminCoordinate'] = self.end_user_apply_admin_coordinate
 
+        if self.end_user_count is not None:
+            result['EndUserCount'] = self.end_user_count
+
         if self.end_user_group_coordinate is not None:
             result['EndUserGroupCoordinate'] = self.end_user_group_coordinate
 
@@ -1026,6 +1035,12 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(DaraModel):
         if self.net_redirect_rule is not None:
             for k1 in self.net_redirect_rule:
                 result['NetRedirectRule'].append(k1.to_map() if k1 else None)
+
+        if self.network_printer is not None:
+            result['NetworkPrinter'] = self.network_printer
+
+        if self.organization_count is not None:
+            result['OrganizationCount'] = self.organization_count
 
         if self.policy_group_id is not None:
             result['PolicyGroupId'] = self.policy_group_id
@@ -1365,6 +1380,9 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(DaraModel):
         if m.get('EndUserApplyAdminCoordinate') is not None:
             self.end_user_apply_admin_coordinate = m.get('EndUserApplyAdminCoordinate')
 
+        if m.get('EndUserCount') is not None:
+            self.end_user_count = m.get('EndUserCount')
+
         if m.get('EndUserGroupCoordinate') is not None:
             self.end_user_group_coordinate = m.get('EndUserGroupCoordinate')
 
@@ -1475,6 +1493,12 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(DaraModel):
             for k1 in m.get('NetRedirectRule'):
                 temp_model = main_models.DescribePolicyGroupsResponseBodyDescribePolicyGroupsNetRedirectRule()
                 self.net_redirect_rule.append(temp_model.from_map(k1))
+
+        if m.get('NetworkPrinter') is not None:
+            self.network_printer = m.get('NetworkPrinter')
+
+        if m.get('OrganizationCount') is not None:
+            self.organization_count = m.get('OrganizationCount')
 
         if m.get('PolicyGroupId') is not None:
             self.policy_group_id = m.get('PolicyGroupId')

@@ -54,6 +54,7 @@ class DescribeQosRulesResponseBodyQosRules(DaraModel):
     def __init__(
         self,
         desktop_count: str = None,
+        desktop_group_count: int = None,
         download: str = None,
         network_package_id: str = None,
         qos_rule_id: str = None,
@@ -61,6 +62,7 @@ class DescribeQosRulesResponseBodyQosRules(DaraModel):
         upload: str = None,
     ):
         self.desktop_count = desktop_count
+        self.desktop_group_count = desktop_group_count
         self.download = download
         self.network_package_id = network_package_id
         self.qos_rule_id = qos_rule_id
@@ -77,6 +79,9 @@ class DescribeQosRulesResponseBodyQosRules(DaraModel):
             result = _map
         if self.desktop_count is not None:
             result['DesktopCount'] = self.desktop_count
+
+        if self.desktop_group_count is not None:
+            result['DesktopGroupCount'] = self.desktop_group_count
 
         if self.download is not None:
             result['Download'] = self.download
@@ -99,6 +104,9 @@ class DescribeQosRulesResponseBodyQosRules(DaraModel):
         m = m or dict()
         if m.get('DesktopCount') is not None:
             self.desktop_count = m.get('DesktopCount')
+
+        if m.get('DesktopGroupCount') is not None:
+            self.desktop_group_count = m.get('DesktopGroupCount')
 
         if m.get('Download') is not None:
             self.download = m.get('Download')

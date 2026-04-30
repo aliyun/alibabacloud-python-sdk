@@ -1,3 +1,14 @@
+2026-04-30 Version: 4.24.4
+- Update API CreateADConnectorOfficeSite: add request parameters AccessAttribute.
+- Update API CreateSimpleOfficeSite: add request parameters AccessAttribute.
+- Update API DescribeNASFileSystems: add response parameters Body.FileSystems.$.ProductType.
+- Update API DescribeNASFileSystems: add response parameters Body.FileSystems.$.SizeQuota.
+- Update API DescribeOfficeSites: add response parameters Body.OfficeSites.$.AccessAttribute.
+- Update API DescribePolicyGroups: add response parameters Body.DescribePolicyGroups.$.EndUserCount.
+- Update API DescribePolicyGroups: add response parameters Body.DescribePolicyGroups.$.NetworkPrinter.
+- Update API DescribePolicyGroups: add response parameters Body.DescribePolicyGroups.$.OrganizationCount.
+
+
 2026-04-21 Version: 4.24.2
 - Update API CreateConfigGroup: add request parameters ConfigTimers.$.SegmentTimers.$.VerificationNotificationTime.
 - Update API CreateConfigGroup: add request parameters ConfigTimers.$.SegmentTimers.$.VerificationTime.

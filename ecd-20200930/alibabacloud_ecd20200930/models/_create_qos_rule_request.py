@@ -10,6 +10,7 @@ class CreateQosRuleRequest(DaraModel):
     def __init__(
         self,
         auth_android_id: List[str] = None,
+        auth_desktop_group_id: List[str] = None,
         auth_desktop_id: List[str] = None,
         download: int = None,
         network_package_id: str = None,
@@ -17,6 +18,7 @@ class CreateQosRuleRequest(DaraModel):
         upload: int = None,
     ):
         self.auth_android_id = auth_android_id
+        self.auth_desktop_group_id = auth_desktop_group_id
         self.auth_desktop_id = auth_desktop_id
         # This parameter is required.
         self.download = download
@@ -37,6 +39,9 @@ class CreateQosRuleRequest(DaraModel):
             result = _map
         if self.auth_android_id is not None:
             result['AuthAndroidId'] = self.auth_android_id
+
+        if self.auth_desktop_group_id is not None:
+            result['AuthDesktopGroupId'] = self.auth_desktop_group_id
 
         if self.auth_desktop_id is not None:
             result['AuthDesktopId'] = self.auth_desktop_id
@@ -59,6 +64,9 @@ class CreateQosRuleRequest(DaraModel):
         m = m or dict()
         if m.get('AuthAndroidId') is not None:
             self.auth_android_id = m.get('AuthAndroidId')
+
+        if m.get('AuthDesktopGroupId') is not None:
+            self.auth_desktop_group_id = m.get('AuthDesktopGroupId')
 
         if m.get('AuthDesktopId') is not None:
             self.auth_desktop_id = m.get('AuthDesktopId')

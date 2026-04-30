@@ -9,6 +9,7 @@ from darabonba.model import DaraModel
 class CreateSimpleOfficeSiteRequest(DaraModel):
     def __init__(
         self,
+        access_attribute: str = None,
         account_type: str = None,
         authority_host: str = None,
         bandwidth: int = None,
@@ -31,6 +32,7 @@ class CreateSimpleOfficeSiteRequest(DaraModel):
         verify_code: str = None,
         vpc_type: str = None,
     ):
+        self.access_attribute = access_attribute
         self.account_type = account_type
         self.authority_host = authority_host
         # The maximum public bandwidth. Value range: 10 to 200. Unit: Mbit/s. This parameter is available if you set `EnableInternetAccess` to `true`.
@@ -134,6 +136,9 @@ class CreateSimpleOfficeSiteRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.access_attribute is not None:
+            result['AccessAttribute'] = self.access_attribute
+
         if self.account_type is not None:
             result['AccountType'] = self.account_type
 
@@ -201,6 +206,9 @@ class CreateSimpleOfficeSiteRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessAttribute') is not None:
+            self.access_attribute = m.get('AccessAttribute')
+
         if m.get('AccountType') is not None:
             self.account_type = m.get('AccountType')
 

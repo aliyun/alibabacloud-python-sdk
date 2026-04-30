@@ -34,6 +34,7 @@ class CreateDesktopsShrinkRequest(DaraModel):
         period_unit: str = None,
         policy_group_id: str = None,
         promotion_id: str = None,
+        purchase_options_shrink: str = None,
         qos_rule_id: str = None,
         region_id: str = None,
         reseller_owner_uid: int = None,
@@ -161,6 +162,7 @@ class CreateDesktopsShrinkRequest(DaraModel):
         self.policy_group_id = policy_group_id
         # The ID of the sales promotion.
         self.promotion_id = promotion_id
+        self.purchase_options_shrink = purchase_options_shrink
         self.qos_rule_id = qos_rule_id
         # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
         # 
@@ -314,6 +316,9 @@ class CreateDesktopsShrinkRequest(DaraModel):
         if self.promotion_id is not None:
             result['PromotionId'] = self.promotion_id
 
+        if self.purchase_options_shrink is not None:
+            result['PurchaseOptions'] = self.purchase_options_shrink
+
         if self.qos_rule_id is not None:
             result['QosRuleId'] = self.qos_rule_id
 
@@ -445,6 +450,9 @@ class CreateDesktopsShrinkRequest(DaraModel):
 
         if m.get('PromotionId') is not None:
             self.promotion_id = m.get('PromotionId')
+
+        if m.get('PurchaseOptions') is not None:
+            self.purchase_options_shrink = m.get('PurchaseOptions')
 
         if m.get('QosRuleId') is not None:
             self.qos_rule_id = m.get('QosRuleId')

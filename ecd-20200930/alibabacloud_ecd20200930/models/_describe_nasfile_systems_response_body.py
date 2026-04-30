@@ -81,9 +81,11 @@ class DescribeNASFileSystemsResponseBodyFileSystems(DaraModel):
         office_site_id: str = None,
         office_site_name: str = None,
         office_sites: List[main_models.DescribeNASFileSystemsResponseBodyFileSystemsOfficeSites] = None,
+        product_type: str = None,
         profile_compatible: bool = None,
         region_id: str = None,
         scene: str = None,
+        size_quota: int = None,
         storage_type: str = None,
         support_acl: bool = None,
         zone_id: str = None,
@@ -138,6 +140,7 @@ class DescribeNASFileSystemsResponseBodyFileSystems(DaraModel):
         self.office_site_name = office_site_name
         # The office networks.
         self.office_sites = office_sites
+        self.product_type = product_type
         # Indicates whether the User Profile Management (UPM) feature is supported.
         self.profile_compatible = profile_compatible
         # The ID of the region.
@@ -149,6 +152,7 @@ class DescribeNASFileSystemsResponseBodyFileSystems(DaraModel):
         # *   Upm: the UPM-supported NAS file system.
         # *   ShareNas: the shared NAS file system.
         self.scene = scene
+        self.size_quota = size_quota
         # The storage type of the NAS file system. Valid values:
         # 
         # *   Capacity
@@ -235,6 +239,9 @@ class DescribeNASFileSystemsResponseBodyFileSystems(DaraModel):
             for k1 in self.office_sites:
                 result['OfficeSites'].append(k1.to_map() if k1 else None)
 
+        if self.product_type is not None:
+            result['ProductType'] = self.product_type
+
         if self.profile_compatible is not None:
             result['ProfileCompatible'] = self.profile_compatible
 
@@ -243,6 +250,9 @@ class DescribeNASFileSystemsResponseBodyFileSystems(DaraModel):
 
         if self.scene is not None:
             result['Scene'] = self.scene
+
+        if self.size_quota is not None:
+            result['SizeQuota'] = self.size_quota
 
         if self.storage_type is not None:
             result['StorageType'] = self.storage_type
@@ -317,6 +327,9 @@ class DescribeNASFileSystemsResponseBodyFileSystems(DaraModel):
                 temp_model = main_models.DescribeNASFileSystemsResponseBodyFileSystemsOfficeSites()
                 self.office_sites.append(temp_model.from_map(k1))
 
+        if m.get('ProductType') is not None:
+            self.product_type = m.get('ProductType')
+
         if m.get('ProfileCompatible') is not None:
             self.profile_compatible = m.get('ProfileCompatible')
 
@@ -325,6 +338,9 @@ class DescribeNASFileSystemsResponseBodyFileSystems(DaraModel):
 
         if m.get('Scene') is not None:
             self.scene = m.get('Scene')
+
+        if m.get('SizeQuota') is not None:
+            self.size_quota = m.get('SizeQuota')
 
         if m.get('StorageType') is not None:
             self.storage_type = m.get('StorageType')

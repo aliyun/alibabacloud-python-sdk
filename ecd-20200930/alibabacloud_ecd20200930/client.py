@@ -2616,6 +2616,8 @@ class Client(OpenApiClient):
     ) -> main_models.CreateADConnectorOfficeSiteResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.access_attribute):
+            query['AccessAttribute'] = request.access_attribute
         if not DaraCore.is_null(request.ad_hostname):
             query['AdHostname'] = request.ad_hostname
         if not DaraCore.is_null(request.backup_dchostname):
@@ -2688,6 +2690,8 @@ class Client(OpenApiClient):
     ) -> main_models.CreateADConnectorOfficeSiteResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.access_attribute):
+            query['AccessAttribute'] = request.access_attribute
         if not DaraCore.is_null(request.ad_hostname):
             query['AdHostname'] = request.ad_hostname
         if not DaraCore.is_null(request.backup_dchostname):
@@ -4823,6 +4827,8 @@ class Client(OpenApiClient):
         Utils.convert(tmp_req, request)
         if not DaraCore.is_null(tmp_req.desktop_attachment):
             request.desktop_attachment_shrink = Utils.array_to_string_with_specified_style(tmp_req.desktop_attachment, 'DesktopAttachment', 'json')
+        if not DaraCore.is_null(tmp_req.purchase_options):
+            request.purchase_options_shrink = Utils.array_to_string_with_specified_style(tmp_req.purchase_options, 'PurchaseOptions', 'json')
         query = {}
         if not DaraCore.is_null(request.amount):
             query['Amount'] = request.amount
@@ -4872,6 +4878,8 @@ class Client(OpenApiClient):
             query['PolicyGroupId'] = request.policy_group_id
         if not DaraCore.is_null(request.promotion_id):
             query['PromotionId'] = request.promotion_id
+        if not DaraCore.is_null(request.purchase_options_shrink):
+            query['PurchaseOptions'] = request.purchase_options_shrink
         if not DaraCore.is_null(request.qos_rule_id):
             query['QosRuleId'] = request.qos_rule_id
         if not DaraCore.is_null(request.region_id):
@@ -4931,6 +4939,8 @@ class Client(OpenApiClient):
         Utils.convert(tmp_req, request)
         if not DaraCore.is_null(tmp_req.desktop_attachment):
             request.desktop_attachment_shrink = Utils.array_to_string_with_specified_style(tmp_req.desktop_attachment, 'DesktopAttachment', 'json')
+        if not DaraCore.is_null(tmp_req.purchase_options):
+            request.purchase_options_shrink = Utils.array_to_string_with_specified_style(tmp_req.purchase_options, 'PurchaseOptions', 'json')
         query = {}
         if not DaraCore.is_null(request.amount):
             query['Amount'] = request.amount
@@ -4980,6 +4990,8 @@ class Client(OpenApiClient):
             query['PolicyGroupId'] = request.policy_group_id
         if not DaraCore.is_null(request.promotion_id):
             query['PromotionId'] = request.promotion_id
+        if not DaraCore.is_null(request.purchase_options_shrink):
+            query['PurchaseOptions'] = request.purchase_options_shrink
         if not DaraCore.is_null(request.qos_rule_id):
             query['QosRuleId'] = request.qos_rule_id
         if not DaraCore.is_null(request.region_id):
@@ -6184,6 +6196,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.auth_android_id):
             query['AuthAndroidId'] = request.auth_android_id
+        if not DaraCore.is_null(request.auth_desktop_group_id):
+            query['AuthDesktopGroupId'] = request.auth_desktop_group_id
         if not DaraCore.is_null(request.auth_desktop_id):
             query['AuthDesktopId'] = request.auth_desktop_id
         if not DaraCore.is_null(request.download):
@@ -6222,6 +6236,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.auth_android_id):
             query['AuthAndroidId'] = request.auth_android_id
+        if not DaraCore.is_null(request.auth_desktop_group_id):
+            query['AuthDesktopGroupId'] = request.auth_desktop_group_id
         if not DaraCore.is_null(request.auth_desktop_id):
             query['AuthDesktopId'] = request.auth_desktop_id
         if not DaraCore.is_null(request.download):
@@ -6542,6 +6558,8 @@ class Client(OpenApiClient):
     ) -> main_models.CreateSimpleOfficeSiteResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.access_attribute):
+            query['AccessAttribute'] = request.access_attribute
         if not DaraCore.is_null(request.account_type):
             query['AccountType'] = request.account_type
         if not DaraCore.is_null(request.authority_host):
@@ -6610,6 +6628,8 @@ class Client(OpenApiClient):
     ) -> main_models.CreateSimpleOfficeSiteResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.access_attribute):
+            query['AccessAttribute'] = request.access_attribute
         if not DaraCore.is_null(request.account_type):
             query['AccountType'] = request.account_type
         if not DaraCore.is_null(request.authority_host):
@@ -10830,6 +10850,8 @@ class Client(OpenApiClient):
             query['PolicyGroupId'] = request.policy_group_id
         if not DaraCore.is_null(request.protocol_type):
             query['ProtocolType'] = request.protocol_type
+        if not DaraCore.is_null(request.qos_rule_id):
+            query['QosRuleId'] = request.qos_rule_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.status):
@@ -10896,6 +10918,8 @@ class Client(OpenApiClient):
             query['PolicyGroupId'] = request.policy_group_id
         if not DaraCore.is_null(request.protocol_type):
             query['ProtocolType'] = request.protocol_type
+        if not DaraCore.is_null(request.qos_rule_id):
+            query['QosRuleId'] = request.qos_rule_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.status):
@@ -23542,12 +23566,16 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.auth_android_id):
             query['AuthAndroidId'] = request.auth_android_id
+        if not DaraCore.is_null(request.auth_desktop_group_id):
+            query['AuthDesktopGroupId'] = request.auth_desktop_group_id
         if not DaraCore.is_null(request.auth_desktop_id):
             query['AuthDesktopId'] = request.auth_desktop_id
         if not DaraCore.is_null(request.qos_rule_id):
             query['QosRuleId'] = request.qos_rule_id
         if not DaraCore.is_null(request.revoke_android_id):
             query['RevokeAndroidId'] = request.revoke_android_id
+        if not DaraCore.is_null(request.revoke_desktop_group_id):
+            query['RevokeDesktopGroupId'] = request.revoke_desktop_group_id
         if not DaraCore.is_null(request.revoke_desktop_id):
             query['RevokeDesktopId'] = request.revoke_desktop_id
         req = open_api_util_models.OpenApiRequest(
@@ -23578,12 +23606,16 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.auth_android_id):
             query['AuthAndroidId'] = request.auth_android_id
+        if not DaraCore.is_null(request.auth_desktop_group_id):
+            query['AuthDesktopGroupId'] = request.auth_desktop_group_id
         if not DaraCore.is_null(request.auth_desktop_id):
             query['AuthDesktopId'] = request.auth_desktop_id
         if not DaraCore.is_null(request.qos_rule_id):
             query['QosRuleId'] = request.qos_rule_id
         if not DaraCore.is_null(request.revoke_android_id):
             query['RevokeAndroidId'] = request.revoke_android_id
+        if not DaraCore.is_null(request.revoke_desktop_group_id):
+            query['RevokeDesktopGroupId'] = request.revoke_desktop_group_id
         if not DaraCore.is_null(request.revoke_desktop_id):
             query['RevokeDesktopId'] = request.revoke_desktop_id
         req = open_api_util_models.OpenApiRequest(

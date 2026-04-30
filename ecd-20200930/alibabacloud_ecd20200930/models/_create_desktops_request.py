@@ -34,6 +34,7 @@ class CreateDesktopsRequest(DaraModel):
         period_unit: str = None,
         policy_group_id: str = None,
         promotion_id: str = None,
+        purchase_options: main_models.CreateDesktopsRequestPurchaseOptions = None,
         qos_rule_id: str = None,
         region_id: str = None,
         reseller_owner_uid: int = None,
@@ -161,6 +162,7 @@ class CreateDesktopsRequest(DaraModel):
         self.policy_group_id = policy_group_id
         # The ID of the sales promotion.
         self.promotion_id = promotion_id
+        self.purchase_options = purchase_options
         self.qos_rule_id = qos_rule_id
         # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
         # 
@@ -226,6 +228,8 @@ class CreateDesktopsRequest(DaraModel):
                     v1.validate()
         if self.month_desktop_setting:
             self.month_desktop_setting.validate()
+        if self.purchase_options:
+            self.purchase_options.validate()
         if self.tag:
             for v1 in self.tag:
                  if v1:
@@ -315,6 +319,9 @@ class CreateDesktopsRequest(DaraModel):
 
         if self.promotion_id is not None:
             result['PromotionId'] = self.promotion_id
+
+        if self.purchase_options is not None:
+            result['PurchaseOptions'] = self.purchase_options.to_map()
 
         if self.qos_rule_id is not None:
             result['QosRuleId'] = self.qos_rule_id
@@ -448,6 +455,10 @@ class CreateDesktopsRequest(DaraModel):
 
         if m.get('PromotionId') is not None:
             self.promotion_id = m.get('PromotionId')
+
+        if m.get('PurchaseOptions') is not None:
+            temp_model = main_models.CreateDesktopsRequestPurchaseOptions()
+            self.purchase_options = temp_model.from_map(m.get('PurchaseOptions'))
 
         if m.get('QosRuleId') is not None:
             self.qos_rule_id = m.get('QosRuleId')
@@ -626,6 +637,33 @@ class CreateDesktopsRequestTag(DaraModel):
 
         if m.get('Value') is not None:
             self.value = m.get('Value')
+
+        return self
+
+class CreateDesktopsRequestPurchaseOptions(DaraModel):
+    def __init__(
+        self,
+        monthly_credits: int = None,
+    ):
+        self.monthly_credits = monthly_credits
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.monthly_credits is not None:
+            result['MonthlyCredits'] = self.monthly_credits
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MonthlyCredits') is not None:
+            self.monthly_credits = m.get('MonthlyCredits')
 
         return self
 

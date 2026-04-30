@@ -75,6 +75,7 @@ class DescribeOfficeSitesResponseBodyOfficeSites(DaraModel):
         self,
         adconnectors: List[main_models.DescribeOfficeSitesResponseBodyOfficeSitesADConnectors] = None,
         accelerator_id: str = None,
+        access_attribute: str = None,
         account_type: str = None,
         ad_hostname: str = None,
         authority_host: str = None,
@@ -144,6 +145,7 @@ class DescribeOfficeSitesResponseBodyOfficeSites(DaraModel):
         self.adconnectors = adconnectors
         # The ID of the GA instance.
         self.accelerator_id = accelerator_id
+        self.access_attribute = access_attribute
         self.account_type = account_type
         # The hostname of the domain controller. The hostname must comply with the hostname naming convention of Windows.
         self.ad_hostname = ad_hostname
@@ -361,6 +363,9 @@ class DescribeOfficeSitesResponseBodyOfficeSites(DaraModel):
         if self.accelerator_id is not None:
             result['AcceleratorId'] = self.accelerator_id
 
+        if self.access_attribute is not None:
+            result['AccessAttribute'] = self.access_attribute
+
         if self.account_type is not None:
             result['AccountType'] = self.account_type
 
@@ -569,6 +574,9 @@ class DescribeOfficeSitesResponseBodyOfficeSites(DaraModel):
 
         if m.get('AcceleratorId') is not None:
             self.accelerator_id = m.get('AcceleratorId')
+
+        if m.get('AccessAttribute') is not None:
+            self.access_attribute = m.get('AccessAttribute')
 
         if m.get('AccountType') is not None:
             self.account_type = m.get('AccountType')

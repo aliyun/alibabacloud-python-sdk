@@ -9,6 +9,7 @@ from darabonba.model import DaraModel
 class CreateADConnectorOfficeSiteRequest(DaraModel):
     def __init__(
         self,
+        access_attribute: str = None,
         ad_hostname: str = None,
         backup_dchostname: str = None,
         backup_dns: str = None,
@@ -33,6 +34,7 @@ class CreateADConnectorOfficeSiteRequest(DaraModel):
         v_switch_id: List[str] = None,
         verify_code: str = None,
     ):
+        self.access_attribute = access_attribute
         # The hostname of the domain controller. The hostname must comply with the naming conventions for Windows hosts.
         self.ad_hostname = ad_hostname
         # The hostname of the backup domain controller.
@@ -161,6 +163,9 @@ class CreateADConnectorOfficeSiteRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.access_attribute is not None:
+            result['AccessAttribute'] = self.access_attribute
+
         if self.ad_hostname is not None:
             result['AdHostname'] = self.ad_hostname
 
@@ -234,6 +239,9 @@ class CreateADConnectorOfficeSiteRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessAttribute') is not None:
+            self.access_attribute = m.get('AccessAttribute')
+
         if m.get('AdHostname') is not None:
             self.ad_hostname = m.get('AdHostname')
 
