@@ -87,6 +87,8 @@ class Client(OpenApiClient):
             body['Param'] = request.param
         if not DaraCore.is_null(request.product_type):
             body['ProductType'] = request.product_type
+        if not DaraCore.is_null(request.require_uuid_validation):
+            body['RequireUuidValidation'] = request.require_uuid_validation
         if not DaraCore.is_null(request.resource_id):
             body['ResourceId'] = request.resource_id
         if not DaraCore.is_null(request.session_id):
@@ -163,6 +165,8 @@ class Client(OpenApiClient):
             body['Param'] = request.param
         if not DaraCore.is_null(request.product_type):
             body['ProductType'] = request.product_type
+        if not DaraCore.is_null(request.require_uuid_validation):
+            body['RequireUuidValidation'] = request.require_uuid_validation
         if not DaraCore.is_null(request.resource_id):
             body['ResourceId'] = request.resource_id
         if not DaraCore.is_null(request.session_id):

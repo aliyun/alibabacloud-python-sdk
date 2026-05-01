@@ -27,6 +27,7 @@ class GetConnectionTicketRequest(DaraModel):
         login_token: str = None,
         param: str = None,
         product_type: str = None,
+        require_uuid_validation: bool = None,
         resource_id: str = None,
         session_id: str = None,
         task_id: str = None,
@@ -54,6 +55,7 @@ class GetConnectionTicketRequest(DaraModel):
         self.param = param
         # This parameter is required.
         self.product_type = product_type
+        self.require_uuid_validation = require_uuid_validation
         self.resource_id = resource_id
         self.session_id = session_id
         self.task_id = task_id
@@ -127,6 +129,9 @@ class GetConnectionTicketRequest(DaraModel):
 
         if self.product_type is not None:
             result['ProductType'] = self.product_type
+
+        if self.require_uuid_validation is not None:
+            result['RequireUuidValidation'] = self.require_uuid_validation
 
         if self.resource_id is not None:
             result['ResourceId'] = self.resource_id
@@ -206,6 +211,9 @@ class GetConnectionTicketRequest(DaraModel):
 
         if m.get('ProductType') is not None:
             self.product_type = m.get('ProductType')
+
+        if m.get('RequireUuidValidation') is not None:
+            self.require_uuid_validation = m.get('RequireUuidValidation')
 
         if m.get('ResourceId') is not None:
             self.resource_id = m.get('ResourceId')

@@ -1,3 +1,7 @@
+2026-05-01 Version: 2.0.6
+- Update API GetConnectionTicket: add request parameters RequireUuidValidation.
+
+
 2026-04-14 Version: 2.0.5
 - Update API Unbind: add request parameters AppInstancePersistentId.
 
