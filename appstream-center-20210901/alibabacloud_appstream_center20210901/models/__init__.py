@@ -9,6 +9,15 @@ from ._authorize_instance_group_request import AuthorizeInstanceGroupRequest
 from ._authorize_instance_group_shrink_request import AuthorizeInstanceGroupShrinkRequest
 from ._authorize_instance_group_response_body import AuthorizeInstanceGroupResponseBody
 from ._authorize_instance_group_response import AuthorizeInstanceGroupResponse
+from ._config_resource_group_model_template_request import ConfigResourceGroupModelTemplateRequest
+from ._config_resource_group_model_template_response_body import ConfigResourceGroupModelTemplateResponseBody
+from ._config_resource_group_model_template_response import ConfigResourceGroupModelTemplateResponse
+from ._config_runtime_channel_request import ConfigRuntimeChannelRequest
+from ._config_runtime_channel_response_body import ConfigRuntimeChannelResponseBody
+from ._config_runtime_channel_response import ConfigRuntimeChannelResponse
+from ._config_runtime_model_template_request import ConfigRuntimeModelTemplateRequest
+from ._config_runtime_model_template_response_body import ConfigRuntimeModelTemplateResponseBody
+from ._config_runtime_model_template_response import ConfigRuntimeModelTemplateResponse
 from ._create_app_instance_group_request import CreateAppInstanceGroupRequest
 from ._create_app_instance_group_shrink_request import CreateAppInstanceGroupShrinkRequest
 from ._create_app_instance_group_response_body import CreateAppInstanceGroupResponseBody
@@ -19,6 +28,9 @@ from ._create_image_by_instance_response import CreateImageByInstanceResponse
 from ._create_image_from_app_instance_group_request import CreateImageFromAppInstanceGroupRequest
 from ._create_image_from_app_instance_group_response_body import CreateImageFromAppInstanceGroupResponseBody
 from ._create_image_from_app_instance_group_response import CreateImageFromAppInstanceGroupResponse
+from ._create_model_template_request import CreateModelTemplateRequest
+from ._create_model_template_response_body import CreateModelTemplateResponseBody
+from ._create_model_template_response import CreateModelTemplateResponse
 from ._create_wuying_server_request import CreateWuyingServerRequest
 from ._create_wuying_server_response_body import CreateWuyingServerResponseBody
 from ._create_wuying_server_response import CreateWuyingServerResponse
@@ -55,6 +67,12 @@ from ._get_resource_price_response import GetResourcePriceResponse
 from ._get_resource_renew_price_request import GetResourceRenewPriceRequest
 from ._get_resource_renew_price_response_body import GetResourceRenewPriceResponseBody
 from ._get_resource_renew_price_response import GetResourceRenewPriceResponse
+from ._get_runtime_channel_request import GetRuntimeChannelRequest
+from ._get_runtime_channel_response_body import GetRuntimeChannelResponseBody
+from ._get_runtime_channel_response import GetRuntimeChannelResponse
+from ._get_runtime_model_config_request import GetRuntimeModelConfigRequest
+from ._get_runtime_model_config_response_body import GetRuntimeModelConfigResponseBody
+from ._get_runtime_model_config_response import GetRuntimeModelConfigResponse
 from ._list_app_instance_group_request import ListAppInstanceGroupRequest
 from ._list_app_instance_group_response_body import ListAppInstanceGroupResponseBody
 from ._list_app_instance_group_response import ListAppInstanceGroupResponse
@@ -67,9 +85,15 @@ from ._list_authorized_user_groups_response import ListAuthorizedUserGroupsRespo
 from ._list_bind_info_request import ListBindInfoRequest
 from ._list_bind_info_response_body import ListBindInfoResponseBody
 from ._list_bind_info_response import ListBindInfoResponse
+from ._list_desktop_agent_runtime_request import ListDesktopAgentRuntimeRequest
+from ._list_desktop_agent_runtime_response_body import ListDesktopAgentRuntimeResponseBody
+from ._list_desktop_agent_runtime_response import ListDesktopAgentRuntimeResponse
 from ._list_image_request import ListImageRequest
 from ._list_image_response_body import ListImageResponseBody
 from ._list_image_response import ListImageResponse
+from ._list_model_template_resource_group_request import ListModelTemplateResourceGroupRequest
+from ._list_model_template_resource_group_response_body import ListModelTemplateResourceGroupResponseBody
+from ._list_model_template_resource_group_response import ListModelTemplateResourceGroupResponse
 from ._list_node_instance_type_request import ListNodeInstanceTypeRequest
 from ._list_node_instance_type_response_body import ListNodeInstanceTypeResponseBody
 from ._list_node_instance_type_response import ListNodeInstanceTypeResponse
@@ -125,6 +149,15 @@ from ._modify_wuying_server_attribute_response import ModifyWuyingServerAttribut
 from ._page_list_app_instance_group_user_request import PageListAppInstanceGroupUserRequest
 from ._page_list_app_instance_group_user_response_body import PageListAppInstanceGroupUserResponseBody
 from ._page_list_app_instance_group_user_response import PageListAppInstanceGroupUserResponse
+from ._remove_resource_group_model_template_request import RemoveResourceGroupModelTemplateRequest
+from ._remove_resource_group_model_template_response_body import RemoveResourceGroupModelTemplateResponseBody
+from ._remove_resource_group_model_template_response import RemoveResourceGroupModelTemplateResponse
+from ._remove_runtime_channel_request import RemoveRuntimeChannelRequest
+from ._remove_runtime_channel_response_body import RemoveRuntimeChannelResponseBody
+from ._remove_runtime_channel_response import RemoveRuntimeChannelResponse
+from ._remove_runtime_model_template_request import RemoveRuntimeModelTemplateRequest
+from ._remove_runtime_model_template_response_body import RemoveRuntimeModelTemplateResponseBody
+from ._remove_runtime_model_template_response import RemoveRuntimeModelTemplateResponse
 from ._renew_app_instance_group_request import RenewAppInstanceGroupRequest
 from ._renew_app_instance_group_shrink_request import RenewAppInstanceGroupShrinkRequest
 from ._renew_app_instance_group_response_body import RenewAppInstanceGroupResponseBody
@@ -160,6 +193,7 @@ from ._update_wuying_server_image_request import UpdateWuyingServerImageRequest
 from ._update_wuying_server_image_response_body import UpdateWuyingServerImageResponseBody
 from ._update_wuying_server_image_response import UpdateWuyingServerImageResponse
 from ._authorize_instance_group_request import AuthorizeInstanceGroupRequestUserMeta
+from ._config_runtime_model_template_response_body import ConfigRuntimeModelTemplateResponseBodyData
 from ._create_app_instance_group_request import CreateAppInstanceGroupRequestNetworkDomainRules
 from ._create_app_instance_group_request import CreateAppInstanceGroupRequestNetworkRoutes
 from ._create_app_instance_group_request import CreateAppInstanceGroupRequestNetwork
@@ -176,6 +210,7 @@ from ._create_app_instance_group_request import CreateAppInstanceGroupRequestVid
 from ._create_app_instance_group_response_body import CreateAppInstanceGroupResponseBodyAppInstanceGroupModel
 from ._create_image_by_instance_request import CreateImageByInstanceRequestTagList
 from ._create_image_by_instance_response_body import CreateImageByInstanceResponseBodyData
+from ._create_model_template_response_body import CreateModelTemplateResponseBodyData
 from ._create_wuying_server_request import CreateWuyingServerRequestDataDisk
 from ._create_wuying_server_response_body import CreateWuyingServerResponseBodyData
 from ._delete_app_instances_response_body import DeleteAppInstancesResponseBodyDeleteAppInstanceModels
@@ -199,6 +234,11 @@ from ._get_resource_renew_price_response_body import GetResourceRenewPriceRespon
 from ._get_resource_renew_price_response_body import GetResourceRenewPriceResponseBodyDataPrice
 from ._get_resource_renew_price_response_body import GetResourceRenewPriceResponseBodyDataRules
 from ._get_resource_renew_price_response_body import GetResourceRenewPriceResponseBodyData
+from ._get_runtime_channel_response_body import GetRuntimeChannelResponseBodyData
+from ._get_runtime_model_config_response_body import GetRuntimeModelConfigResponseBodyDataModelProviderListLlmInfoListInferenceMetadata
+from ._get_runtime_model_config_response_body import GetRuntimeModelConfigResponseBodyDataModelProviderListLlmInfoList
+from ._get_runtime_model_config_response_body import GetRuntimeModelConfigResponseBodyDataModelProviderList
+from ._get_runtime_model_config_response_body import GetRuntimeModelConfigResponseBodyData
 from ._list_app_instance_group_request import ListAppInstanceGroupRequestTag
 from ._list_app_instance_group_response_body import ListAppInstanceGroupResponseBodyAppInstanceGroupModelsApps
 from ._list_app_instance_group_response_body import ListAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePoolRecurrenceSchedulesTimerPeriods
@@ -212,12 +252,18 @@ from ._list_app_instances_response_body import ListAppInstancesResponseBodyAppIn
 from ._list_app_instances_response_body import ListAppInstancesResponseBodyAppInstanceModels
 from ._list_authorized_user_groups_response_body import ListAuthorizedUserGroupsResponseBodyUserGroups
 from ._list_bind_info_response_body import ListBindInfoResponseBodyBindInfoModels
+from ._list_desktop_agent_runtime_response_body import ListDesktopAgentRuntimeResponseBodyDataAgentImInfo
+from ._list_desktop_agent_runtime_response_body import ListDesktopAgentRuntimeResponseBodyDataAgentInstanceInfoList
+from ._list_desktop_agent_runtime_response_body import ListDesktopAgentRuntimeResponseBodyDataResourceGroup
+from ._list_desktop_agent_runtime_response_body import ListDesktopAgentRuntimeResponseBodyDataRiskInfo
+from ._list_desktop_agent_runtime_response_body import ListDesktopAgentRuntimeResponseBodyData
 from ._list_image_request import ListImageRequestTagList
 from ._list_image_response_body import ListImageResponseBodyDataAppList
 from ._list_image_response_body import ListImageResponseBodyDataImageRegionDistributeList
 from ._list_image_response_body import ListImageResponseBodyDataSnapshotList
 from ._list_image_response_body import ListImageResponseBodyDataTagList
 from ._list_image_response_body import ListImageResponseBodyData
+from ._list_model_template_resource_group_response_body import ListModelTemplateResourceGroupResponseBodyData
 from ._list_node_instance_type_response_body import ListNodeInstanceTypeResponseBodyNodeInstanceTypeModels
 from ._list_nodes_response_body import ListNodesResponseBodyNodeModels
 from ._list_ota_task_response_body import ListOtaTaskResponseBodyTaskList
@@ -255,6 +301,8 @@ from ._modify_node_pool_amount_response_body import ModifyNodePoolAmountResponse
 from ._modify_node_pool_attribute_request import ModifyNodePoolAttributeRequestNodePoolStrategyRecurrenceSchedulesTimerPeriods
 from ._modify_node_pool_attribute_request import ModifyNodePoolAttributeRequestNodePoolStrategyRecurrenceSchedules
 from ._modify_node_pool_attribute_request import ModifyNodePoolAttributeRequestNodePoolStrategy
+from ._remove_resource_group_model_template_response_body import RemoveResourceGroupModelTemplateResponseBodyData
+from ._remove_runtime_model_template_response_body import RemoveRuntimeModelTemplateResponseBodyData
 from ._tag_cloud_resources_request import TagCloudResourcesRequestTags
 from ._tag_cloud_resources_response_body import TagCloudResourcesResponseBodyFailedResourcesTags
 from ._tag_cloud_resources_response_body import TagCloudResourcesResponseBodyFailedResources
@@ -269,6 +317,15 @@ __all__ = [
     AuthorizeInstanceGroupShrinkRequest,
     AuthorizeInstanceGroupResponseBody,
     AuthorizeInstanceGroupResponse,
+    ConfigResourceGroupModelTemplateRequest,
+    ConfigResourceGroupModelTemplateResponseBody,
+    ConfigResourceGroupModelTemplateResponse,
+    ConfigRuntimeChannelRequest,
+    ConfigRuntimeChannelResponseBody,
+    ConfigRuntimeChannelResponse,
+    ConfigRuntimeModelTemplateRequest,
+    ConfigRuntimeModelTemplateResponseBody,
+    ConfigRuntimeModelTemplateResponse,
     CreateAppInstanceGroupRequest,
     CreateAppInstanceGroupShrinkRequest,
     CreateAppInstanceGroupResponseBody,
@@ -279,6 +336,9 @@ __all__ = [
     CreateImageFromAppInstanceGroupRequest,
     CreateImageFromAppInstanceGroupResponseBody,
     CreateImageFromAppInstanceGroupResponse,
+    CreateModelTemplateRequest,
+    CreateModelTemplateResponseBody,
+    CreateModelTemplateResponse,
     CreateWuyingServerRequest,
     CreateWuyingServerResponseBody,
     CreateWuyingServerResponse,
@@ -315,6 +375,12 @@ __all__ = [
     GetResourceRenewPriceRequest,
     GetResourceRenewPriceResponseBody,
     GetResourceRenewPriceResponse,
+    GetRuntimeChannelRequest,
+    GetRuntimeChannelResponseBody,
+    GetRuntimeChannelResponse,
+    GetRuntimeModelConfigRequest,
+    GetRuntimeModelConfigResponseBody,
+    GetRuntimeModelConfigResponse,
     ListAppInstanceGroupRequest,
     ListAppInstanceGroupResponseBody,
     ListAppInstanceGroupResponse,
@@ -327,9 +393,15 @@ __all__ = [
     ListBindInfoRequest,
     ListBindInfoResponseBody,
     ListBindInfoResponse,
+    ListDesktopAgentRuntimeRequest,
+    ListDesktopAgentRuntimeResponseBody,
+    ListDesktopAgentRuntimeResponse,
     ListImageRequest,
     ListImageResponseBody,
     ListImageResponse,
+    ListModelTemplateResourceGroupRequest,
+    ListModelTemplateResourceGroupResponseBody,
+    ListModelTemplateResourceGroupResponse,
     ListNodeInstanceTypeRequest,
     ListNodeInstanceTypeResponseBody,
     ListNodeInstanceTypeResponse,
@@ -385,6 +457,15 @@ __all__ = [
     PageListAppInstanceGroupUserRequest,
     PageListAppInstanceGroupUserResponseBody,
     PageListAppInstanceGroupUserResponse,
+    RemoveResourceGroupModelTemplateRequest,
+    RemoveResourceGroupModelTemplateResponseBody,
+    RemoveResourceGroupModelTemplateResponse,
+    RemoveRuntimeChannelRequest,
+    RemoveRuntimeChannelResponseBody,
+    RemoveRuntimeChannelResponse,
+    RemoveRuntimeModelTemplateRequest,
+    RemoveRuntimeModelTemplateResponseBody,
+    RemoveRuntimeModelTemplateResponse,
     RenewAppInstanceGroupRequest,
     RenewAppInstanceGroupShrinkRequest,
     RenewAppInstanceGroupResponseBody,
@@ -420,6 +501,7 @@ __all__ = [
     UpdateWuyingServerImageResponseBody,
     UpdateWuyingServerImageResponse,
     AuthorizeInstanceGroupRequestUserMeta,
+    ConfigRuntimeModelTemplateResponseBodyData,
     CreateAppInstanceGroupRequestNetworkDomainRules,
     CreateAppInstanceGroupRequestNetworkRoutes,
     CreateAppInstanceGroupRequestNetwork,
@@ -436,6 +518,7 @@ __all__ = [
     CreateAppInstanceGroupResponseBodyAppInstanceGroupModel,
     CreateImageByInstanceRequestTagList,
     CreateImageByInstanceResponseBodyData,
+    CreateModelTemplateResponseBodyData,
     CreateWuyingServerRequestDataDisk,
     CreateWuyingServerResponseBodyData,
     DeleteAppInstancesResponseBodyDeleteAppInstanceModels,
@@ -459,6 +542,11 @@ __all__ = [
     GetResourceRenewPriceResponseBodyDataPrice,
     GetResourceRenewPriceResponseBodyDataRules,
     GetResourceRenewPriceResponseBodyData,
+    GetRuntimeChannelResponseBodyData,
+    GetRuntimeModelConfigResponseBodyDataModelProviderListLlmInfoListInferenceMetadata,
+    GetRuntimeModelConfigResponseBodyDataModelProviderListLlmInfoList,
+    GetRuntimeModelConfigResponseBodyDataModelProviderList,
+    GetRuntimeModelConfigResponseBodyData,
     ListAppInstanceGroupRequestTag,
     ListAppInstanceGroupResponseBodyAppInstanceGroupModelsApps,
     ListAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePoolRecurrenceSchedulesTimerPeriods,
@@ -472,12 +560,18 @@ __all__ = [
     ListAppInstancesResponseBodyAppInstanceModels,
     ListAuthorizedUserGroupsResponseBodyUserGroups,
     ListBindInfoResponseBodyBindInfoModels,
+    ListDesktopAgentRuntimeResponseBodyDataAgentImInfo,
+    ListDesktopAgentRuntimeResponseBodyDataAgentInstanceInfoList,
+    ListDesktopAgentRuntimeResponseBodyDataResourceGroup,
+    ListDesktopAgentRuntimeResponseBodyDataRiskInfo,
+    ListDesktopAgentRuntimeResponseBodyData,
     ListImageRequestTagList,
     ListImageResponseBodyDataAppList,
     ListImageResponseBodyDataImageRegionDistributeList,
     ListImageResponseBodyDataSnapshotList,
     ListImageResponseBodyDataTagList,
     ListImageResponseBodyData,
+    ListModelTemplateResourceGroupResponseBodyData,
     ListNodeInstanceTypeResponseBodyNodeInstanceTypeModels,
     ListNodesResponseBodyNodeModels,
     ListOtaTaskResponseBodyTaskList,
@@ -515,6 +609,8 @@ __all__ = [
     ModifyNodePoolAttributeRequestNodePoolStrategyRecurrenceSchedulesTimerPeriods,
     ModifyNodePoolAttributeRequestNodePoolStrategyRecurrenceSchedules,
     ModifyNodePoolAttributeRequestNodePoolStrategy,
+    RemoveResourceGroupModelTemplateResponseBodyData,
+    RemoveRuntimeModelTemplateResponseBodyData,
     TagCloudResourcesRequestTags,
     TagCloudResourcesResponseBodyFailedResourcesTags,
     TagCloudResourcesResponseBodyFailedResources,

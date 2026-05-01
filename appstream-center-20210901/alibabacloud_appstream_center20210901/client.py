@@ -241,6 +241,256 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.authorize_instance_group_with_options_async(request, runtime)
 
+    def config_resource_group_model_template_with_options(
+        self,
+        request: main_models.ConfigResourceGroupModelTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ConfigResourceGroupModelTemplateResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.model_template_id):
+            body['ModelTemplateId'] = request.model_template_id
+        if not DaraCore.is_null(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ConfigResourceGroupModelTemplate',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ConfigResourceGroupModelTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def config_resource_group_model_template_with_options_async(
+        self,
+        request: main_models.ConfigResourceGroupModelTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ConfigResourceGroupModelTemplateResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.model_template_id):
+            body['ModelTemplateId'] = request.model_template_id
+        if not DaraCore.is_null(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ConfigResourceGroupModelTemplate',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ConfigResourceGroupModelTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def config_resource_group_model_template(
+        self,
+        request: main_models.ConfigResourceGroupModelTemplateRequest,
+    ) -> main_models.ConfigResourceGroupModelTemplateResponse:
+        runtime = RuntimeOptions()
+        return self.config_resource_group_model_template_with_options(request, runtime)
+
+    async def config_resource_group_model_template_async(
+        self,
+        request: main_models.ConfigResourceGroupModelTemplateRequest,
+    ) -> main_models.ConfigResourceGroupModelTemplateResponse:
+        runtime = RuntimeOptions()
+        return await self.config_resource_group_model_template_with_options_async(request, runtime)
+
+    def config_runtime_channel_with_options(
+        self,
+        request: main_models.ConfigRuntimeChannelRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ConfigRuntimeChannelResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_platform):
+            query['AgentPlatform'] = request.agent_platform
+        body = {}
+        if not DaraCore.is_null(request.agent_provider):
+            body['AgentProvider'] = request.agent_provider
+        if not DaraCore.is_null(request.code):
+            body['Code'] = request.code
+        if not DaraCore.is_null(request.config):
+            body['Config'] = request.config
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.runtime_ids):
+            body['RuntimeIds'] = request.runtime_ids
+        if not DaraCore.is_null(request.runtime_type):
+            body['RuntimeType'] = request.runtime_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ConfigRuntimeChannel',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ConfigRuntimeChannelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def config_runtime_channel_with_options_async(
+        self,
+        request: main_models.ConfigRuntimeChannelRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ConfigRuntimeChannelResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_platform):
+            query['AgentPlatform'] = request.agent_platform
+        body = {}
+        if not DaraCore.is_null(request.agent_provider):
+            body['AgentProvider'] = request.agent_provider
+        if not DaraCore.is_null(request.code):
+            body['Code'] = request.code
+        if not DaraCore.is_null(request.config):
+            body['Config'] = request.config
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.runtime_ids):
+            body['RuntimeIds'] = request.runtime_ids
+        if not DaraCore.is_null(request.runtime_type):
+            body['RuntimeType'] = request.runtime_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ConfigRuntimeChannel',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ConfigRuntimeChannelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def config_runtime_channel(
+        self,
+        request: main_models.ConfigRuntimeChannelRequest,
+    ) -> main_models.ConfigRuntimeChannelResponse:
+        runtime = RuntimeOptions()
+        return self.config_runtime_channel_with_options(request, runtime)
+
+    async def config_runtime_channel_async(
+        self,
+        request: main_models.ConfigRuntimeChannelRequest,
+    ) -> main_models.ConfigRuntimeChannelResponse:
+        runtime = RuntimeOptions()
+        return await self.config_runtime_channel_with_options_async(request, runtime)
+
+    def config_runtime_model_template_with_options(
+        self,
+        request: main_models.ConfigRuntimeModelTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ConfigRuntimeModelTemplateResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.model_template_id):
+            body['ModelTemplateId'] = request.model_template_id
+        if not DaraCore.is_null(request.runtime_ids):
+            body['RuntimeIds'] = request.runtime_ids
+        if not DaraCore.is_null(request.runtime_type):
+            body['RuntimeType'] = request.runtime_type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ConfigRuntimeModelTemplate',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ConfigRuntimeModelTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def config_runtime_model_template_with_options_async(
+        self,
+        request: main_models.ConfigRuntimeModelTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ConfigRuntimeModelTemplateResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.model_template_id):
+            body['ModelTemplateId'] = request.model_template_id
+        if not DaraCore.is_null(request.runtime_ids):
+            body['RuntimeIds'] = request.runtime_ids
+        if not DaraCore.is_null(request.runtime_type):
+            body['RuntimeType'] = request.runtime_type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ConfigRuntimeModelTemplate',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ConfigRuntimeModelTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def config_runtime_model_template(
+        self,
+        request: main_models.ConfigRuntimeModelTemplateRequest,
+    ) -> main_models.ConfigRuntimeModelTemplateResponse:
+        runtime = RuntimeOptions()
+        return self.config_runtime_model_template_with_options(request, runtime)
+
+    async def config_runtime_model_template_async(
+        self,
+        request: main_models.ConfigRuntimeModelTemplateRequest,
+    ) -> main_models.ConfigRuntimeModelTemplateResponse:
+        runtime = RuntimeOptions()
+        return await self.config_runtime_model_template_with_options_async(request, runtime)
+
     def create_app_instance_group_with_options(
         self,
         tmp_req: main_models.CreateAppInstanceGroupRequest,
@@ -646,6 +896,92 @@ class Client(OpenApiClient):
     ) -> main_models.CreateImageFromAppInstanceGroupResponse:
         runtime = RuntimeOptions()
         return await self.create_image_from_app_instance_group_with_options_async(request, runtime)
+
+    def create_model_template_with_options(
+        self,
+        request: main_models.CreateModelTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateModelTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_platform):
+            query['AgentPlatform'] = request.agent_platform
+        if not DaraCore.is_null(request.agent_provider):
+            query['AgentProvider'] = request.agent_provider
+        if not DaraCore.is_null(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateModelTemplate',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateModelTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_model_template_with_options_async(
+        self,
+        request: main_models.CreateModelTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateModelTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_platform):
+            query['AgentPlatform'] = request.agent_platform
+        if not DaraCore.is_null(request.agent_provider):
+            query['AgentProvider'] = request.agent_provider
+        if not DaraCore.is_null(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateModelTemplate',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateModelTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_model_template(
+        self,
+        request: main_models.CreateModelTemplateRequest,
+    ) -> main_models.CreateModelTemplateResponse:
+        runtime = RuntimeOptions()
+        return self.create_model_template_with_options(request, runtime)
+
+    async def create_model_template_async(
+        self,
+        request: main_models.CreateModelTemplateRequest,
+    ) -> main_models.CreateModelTemplateResponse:
+        runtime = RuntimeOptions()
+        return await self.create_model_template_with_options_async(request, runtime)
 
     def create_wuying_server_with_options(
         self,
@@ -1707,6 +2043,178 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_resource_renew_price_with_options_async(request, runtime)
 
+    def get_runtime_channel_with_options(
+        self,
+        request: main_models.GetRuntimeChannelRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetRuntimeChannelResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_platform):
+            query['AgentPlatform'] = request.agent_platform
+        if not DaraCore.is_null(request.agent_provider):
+            query['AgentProvider'] = request.agent_provider
+        if not DaraCore.is_null(request.include_risk_info):
+            query['IncludeRiskInfo'] = request.include_risk_info
+        if not DaraCore.is_null(request.runtime_id):
+            query['RuntimeId'] = request.runtime_id
+        if not DaraCore.is_null(request.runtime_type):
+            query['RuntimeType'] = request.runtime_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetRuntimeChannel',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetRuntimeChannelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_runtime_channel_with_options_async(
+        self,
+        request: main_models.GetRuntimeChannelRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetRuntimeChannelResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_platform):
+            query['AgentPlatform'] = request.agent_platform
+        if not DaraCore.is_null(request.agent_provider):
+            query['AgentProvider'] = request.agent_provider
+        if not DaraCore.is_null(request.include_risk_info):
+            query['IncludeRiskInfo'] = request.include_risk_info
+        if not DaraCore.is_null(request.runtime_id):
+            query['RuntimeId'] = request.runtime_id
+        if not DaraCore.is_null(request.runtime_type):
+            query['RuntimeType'] = request.runtime_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetRuntimeChannel',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetRuntimeChannelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_runtime_channel(
+        self,
+        request: main_models.GetRuntimeChannelRequest,
+    ) -> main_models.GetRuntimeChannelResponse:
+        runtime = RuntimeOptions()
+        return self.get_runtime_channel_with_options(request, runtime)
+
+    async def get_runtime_channel_async(
+        self,
+        request: main_models.GetRuntimeChannelRequest,
+    ) -> main_models.GetRuntimeChannelResponse:
+        runtime = RuntimeOptions()
+        return await self.get_runtime_channel_with_options_async(request, runtime)
+
+    def get_runtime_model_config_with_options(
+        self,
+        request: main_models.GetRuntimeModelConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetRuntimeModelConfigResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_platform):
+            query['AgentPlatform'] = request.agent_platform
+        if not DaraCore.is_null(request.agent_provider):
+            query['AgentProvider'] = request.agent_provider
+        if not DaraCore.is_null(request.include_risk_info):
+            query['IncludeRiskInfo'] = request.include_risk_info
+        if not DaraCore.is_null(request.runtime_id):
+            query['RuntimeId'] = request.runtime_id
+        if not DaraCore.is_null(request.runtime_type):
+            query['RuntimeType'] = request.runtime_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetRuntimeModelConfig',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetRuntimeModelConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_runtime_model_config_with_options_async(
+        self,
+        request: main_models.GetRuntimeModelConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetRuntimeModelConfigResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_platform):
+            query['AgentPlatform'] = request.agent_platform
+        if not DaraCore.is_null(request.agent_provider):
+            query['AgentProvider'] = request.agent_provider
+        if not DaraCore.is_null(request.include_risk_info):
+            query['IncludeRiskInfo'] = request.include_risk_info
+        if not DaraCore.is_null(request.runtime_id):
+            query['RuntimeId'] = request.runtime_id
+        if not DaraCore.is_null(request.runtime_type):
+            query['RuntimeType'] = request.runtime_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetRuntimeModelConfig',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetRuntimeModelConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_runtime_model_config(
+        self,
+        request: main_models.GetRuntimeModelConfigRequest,
+    ) -> main_models.GetRuntimeModelConfigResponse:
+        runtime = RuntimeOptions()
+        return self.get_runtime_model_config_with_options(request, runtime)
+
+    async def get_runtime_model_config_async(
+        self,
+        request: main_models.GetRuntimeModelConfigRequest,
+    ) -> main_models.GetRuntimeModelConfigResponse:
+        runtime = RuntimeOptions()
+        return await self.get_runtime_model_config_with_options_async(request, runtime)
+
     def list_app_instance_group_with_options(
         self,
         request: main_models.ListAppInstanceGroupRequest,
@@ -2119,6 +2627,148 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_bind_info_with_options_async(request, runtime)
 
+    def list_desktop_agent_runtime_with_options(
+        self,
+        request: main_models.ListDesktopAgentRuntimeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDesktopAgentRuntimeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_instance_statuses):
+            query['AgentInstanceStatuses'] = request.agent_instance_statuses
+        if not DaraCore.is_null(request.agent_instance_versions):
+            query['AgentInstanceVersions'] = request.agent_instance_versions
+        if not DaraCore.is_null(request.agent_platform):
+            query['AgentPlatform'] = request.agent_platform
+        if not DaraCore.is_null(request.agent_provider):
+            query['AgentProvider'] = request.agent_provider
+        if not DaraCore.is_null(request.auth_users):
+            query['AuthUsers'] = request.auth_users
+        if not DaraCore.is_null(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not DaraCore.is_null(request.channel_configure):
+            query['ChannelConfigure'] = request.channel_configure
+        if not DaraCore.is_null(request.deployment_source):
+            query['DeploymentSource'] = request.deployment_source
+        if not DaraCore.is_null(request.desktop_ids):
+            query['DesktopIds'] = request.desktop_ids
+        if not DaraCore.is_null(request.desktop_names):
+            query['DesktopNames'] = request.desktop_names
+        if not DaraCore.is_null(request.desktop_statuses):
+            query['DesktopStatuses'] = request.desktop_statuses
+        if not DaraCore.is_null(request.has_auth_user):
+            query['HasAuthUser'] = request.has_auth_user
+        if not DaraCore.is_null(request.has_risk):
+            query['HasRisk'] = request.has_risk
+        if not DaraCore.is_null(request.include_risk_info):
+            query['IncludeRiskInfo'] = request.include_risk_info
+        if not DaraCore.is_null(request.model_configure):
+            query['ModelConfigure'] = request.model_configure
+        if not DaraCore.is_null(request.model_template_id):
+            query['ModelTemplateId'] = request.model_template_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDesktopAgentRuntime',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDesktopAgentRuntimeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_desktop_agent_runtime_with_options_async(
+        self,
+        request: main_models.ListDesktopAgentRuntimeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDesktopAgentRuntimeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_instance_statuses):
+            query['AgentInstanceStatuses'] = request.agent_instance_statuses
+        if not DaraCore.is_null(request.agent_instance_versions):
+            query['AgentInstanceVersions'] = request.agent_instance_versions
+        if not DaraCore.is_null(request.agent_platform):
+            query['AgentPlatform'] = request.agent_platform
+        if not DaraCore.is_null(request.agent_provider):
+            query['AgentProvider'] = request.agent_provider
+        if not DaraCore.is_null(request.auth_users):
+            query['AuthUsers'] = request.auth_users
+        if not DaraCore.is_null(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not DaraCore.is_null(request.channel_configure):
+            query['ChannelConfigure'] = request.channel_configure
+        if not DaraCore.is_null(request.deployment_source):
+            query['DeploymentSource'] = request.deployment_source
+        if not DaraCore.is_null(request.desktop_ids):
+            query['DesktopIds'] = request.desktop_ids
+        if not DaraCore.is_null(request.desktop_names):
+            query['DesktopNames'] = request.desktop_names
+        if not DaraCore.is_null(request.desktop_statuses):
+            query['DesktopStatuses'] = request.desktop_statuses
+        if not DaraCore.is_null(request.has_auth_user):
+            query['HasAuthUser'] = request.has_auth_user
+        if not DaraCore.is_null(request.has_risk):
+            query['HasRisk'] = request.has_risk
+        if not DaraCore.is_null(request.include_risk_info):
+            query['IncludeRiskInfo'] = request.include_risk_info
+        if not DaraCore.is_null(request.model_configure):
+            query['ModelConfigure'] = request.model_configure
+        if not DaraCore.is_null(request.model_template_id):
+            query['ModelTemplateId'] = request.model_template_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDesktopAgentRuntime',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDesktopAgentRuntimeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_desktop_agent_runtime(
+        self,
+        request: main_models.ListDesktopAgentRuntimeRequest,
+    ) -> main_models.ListDesktopAgentRuntimeResponse:
+        runtime = RuntimeOptions()
+        return self.list_desktop_agent_runtime_with_options(request, runtime)
+
+    async def list_desktop_agent_runtime_async(
+        self,
+        request: main_models.ListDesktopAgentRuntimeRequest,
+    ) -> main_models.ListDesktopAgentRuntimeResponse:
+        runtime = RuntimeOptions()
+        return await self.list_desktop_agent_runtime_with_options_async(request, runtime)
+
     def list_image_with_options(
         self,
         request: main_models.ListImageRequest,
@@ -2272,6 +2922,88 @@ class Client(OpenApiClient):
     ) -> main_models.ListImageResponse:
         runtime = RuntimeOptions()
         return await self.list_image_with_options_async(request, runtime)
+
+    def list_model_template_resource_group_with_options(
+        self,
+        request: main_models.ListModelTemplateResourceGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListModelTemplateResourceGroupResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.model_template_id):
+            query['ModelTemplateId'] = request.model_template_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.resource_group_ids):
+            query['ResourceGroupIds'] = request.resource_group_ids
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListModelTemplateResourceGroup',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListModelTemplateResourceGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_model_template_resource_group_with_options_async(
+        self,
+        request: main_models.ListModelTemplateResourceGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListModelTemplateResourceGroupResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.model_template_id):
+            query['ModelTemplateId'] = request.model_template_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.resource_group_ids):
+            query['ResourceGroupIds'] = request.resource_group_ids
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListModelTemplateResourceGroup',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListModelTemplateResourceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_model_template_resource_group(
+        self,
+        request: main_models.ListModelTemplateResourceGroupRequest,
+    ) -> main_models.ListModelTemplateResourceGroupResponse:
+        runtime = RuntimeOptions()
+        return self.list_model_template_resource_group_with_options(request, runtime)
+
+    async def list_model_template_resource_group_async(
+        self,
+        request: main_models.ListModelTemplateResourceGroupRequest,
+    ) -> main_models.ListModelTemplateResourceGroupResponse:
+        runtime = RuntimeOptions()
+        return await self.list_model_template_resource_group_with_options_async(request, runtime)
 
     def list_node_instance_type_with_options(
         self,
@@ -3826,6 +4558,244 @@ class Client(OpenApiClient):
     ) -> main_models.PageListAppInstanceGroupUserResponse:
         runtime = RuntimeOptions()
         return await self.page_list_app_instance_group_user_with_options_async(request, runtime)
+
+    def remove_resource_group_model_template_with_options(
+        self,
+        request: main_models.RemoveResourceGroupModelTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RemoveResourceGroupModelTemplateResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.model_template_id):
+            body['ModelTemplateId'] = request.model_template_id
+        if not DaraCore.is_null(request.resource_group_ids):
+            body['ResourceGroupIds'] = request.resource_group_ids
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'RemoveResourceGroupModelTemplate',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RemoveResourceGroupModelTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def remove_resource_group_model_template_with_options_async(
+        self,
+        request: main_models.RemoveResourceGroupModelTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RemoveResourceGroupModelTemplateResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.model_template_id):
+            body['ModelTemplateId'] = request.model_template_id
+        if not DaraCore.is_null(request.resource_group_ids):
+            body['ResourceGroupIds'] = request.resource_group_ids
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'RemoveResourceGroupModelTemplate',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RemoveResourceGroupModelTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def remove_resource_group_model_template(
+        self,
+        request: main_models.RemoveResourceGroupModelTemplateRequest,
+    ) -> main_models.RemoveResourceGroupModelTemplateResponse:
+        runtime = RuntimeOptions()
+        return self.remove_resource_group_model_template_with_options(request, runtime)
+
+    async def remove_resource_group_model_template_async(
+        self,
+        request: main_models.RemoveResourceGroupModelTemplateRequest,
+    ) -> main_models.RemoveResourceGroupModelTemplateResponse:
+        runtime = RuntimeOptions()
+        return await self.remove_resource_group_model_template_with_options_async(request, runtime)
+
+    def remove_runtime_channel_with_options(
+        self,
+        request: main_models.RemoveRuntimeChannelRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RemoveRuntimeChannelResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_platform):
+            body['AgentPlatform'] = request.agent_platform
+        if not DaraCore.is_null(request.agent_provider):
+            body['AgentProvider'] = request.agent_provider
+        if not DaraCore.is_null(request.code):
+            body['Code'] = request.code
+        if not DaraCore.is_null(request.runtime_ids):
+            body['RuntimeIds'] = request.runtime_ids
+        if not DaraCore.is_null(request.runtime_type):
+            body['RuntimeType'] = request.runtime_type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'RemoveRuntimeChannel',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RemoveRuntimeChannelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def remove_runtime_channel_with_options_async(
+        self,
+        request: main_models.RemoveRuntimeChannelRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RemoveRuntimeChannelResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_platform):
+            body['AgentPlatform'] = request.agent_platform
+        if not DaraCore.is_null(request.agent_provider):
+            body['AgentProvider'] = request.agent_provider
+        if not DaraCore.is_null(request.code):
+            body['Code'] = request.code
+        if not DaraCore.is_null(request.runtime_ids):
+            body['RuntimeIds'] = request.runtime_ids
+        if not DaraCore.is_null(request.runtime_type):
+            body['RuntimeType'] = request.runtime_type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'RemoveRuntimeChannel',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RemoveRuntimeChannelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def remove_runtime_channel(
+        self,
+        request: main_models.RemoveRuntimeChannelRequest,
+    ) -> main_models.RemoveRuntimeChannelResponse:
+        runtime = RuntimeOptions()
+        return self.remove_runtime_channel_with_options(request, runtime)
+
+    async def remove_runtime_channel_async(
+        self,
+        request: main_models.RemoveRuntimeChannelRequest,
+    ) -> main_models.RemoveRuntimeChannelResponse:
+        runtime = RuntimeOptions()
+        return await self.remove_runtime_channel_with_options_async(request, runtime)
+
+    def remove_runtime_model_template_with_options(
+        self,
+        request: main_models.RemoveRuntimeModelTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RemoveRuntimeModelTemplateResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.model_template_id):
+            body['ModelTemplateId'] = request.model_template_id
+        if not DaraCore.is_null(request.runtime_ids):
+            body['RuntimeIds'] = request.runtime_ids
+        if not DaraCore.is_null(request.runtime_type):
+            body['RuntimeType'] = request.runtime_type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'RemoveRuntimeModelTemplate',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RemoveRuntimeModelTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def remove_runtime_model_template_with_options_async(
+        self,
+        request: main_models.RemoveRuntimeModelTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RemoveRuntimeModelTemplateResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.model_template_id):
+            body['ModelTemplateId'] = request.model_template_id
+        if not DaraCore.is_null(request.runtime_ids):
+            body['RuntimeIds'] = request.runtime_ids
+        if not DaraCore.is_null(request.runtime_type):
+            body['RuntimeType'] = request.runtime_type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'RemoveRuntimeModelTemplate',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RemoveRuntimeModelTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def remove_runtime_model_template(
+        self,
+        request: main_models.RemoveRuntimeModelTemplateRequest,
+    ) -> main_models.RemoveRuntimeModelTemplateResponse:
+        runtime = RuntimeOptions()
+        return self.remove_runtime_model_template_with_options(request, runtime)
+
+    async def remove_runtime_model_template_async(
+        self,
+        request: main_models.RemoveRuntimeModelTemplateRequest,
+    ) -> main_models.RemoveRuntimeModelTemplateResponse:
+        runtime = RuntimeOptions()
+        return await self.remove_runtime_model_template_with_options_async(request, runtime)
 
     def renew_app_instance_group_with_options(
         self,

@@ -1,3 +1,17 @@
+2026-05-01 Version: 5.1.0
+- Support API ConfigResourceGroupModelTemplate.
+- Support API ConfigRuntimeChannel.
+- Support API ConfigRuntimeModelTemplate.
+- Support API CreateModelTemplate.
+- Support API GetRuntimeChannel.
+- Support API GetRuntimeModelConfig.
+- Support API ListDesktopAgentRuntime.
+- Support API ListModelTemplateResourceGroup.
+- Support API RemoveResourceGroupModelTemplate.
+- Support API RemoveRuntimeChannel.
+- Support API RemoveRuntimeModelTemplate.
+
+
 2026-04-30 Version: 5.0.1
 - Update API ModifyBrowserInstanceGroup: add request parameters Policy.FileManager.
 - Update API ModifyBrowserInstanceGroup: add request parameters Policy.ClipboardPolicy.RichTextClipboardReadLimit.
