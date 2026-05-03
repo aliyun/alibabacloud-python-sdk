@@ -27,6 +27,7 @@ class FilterUsersRequest(DaraModel):
         owner_type: str = None,
         property_filter_param: List[main_models.FilterUsersRequestPropertyFilterParam] = None,
         property_key_value_filter_param: List[main_models.FilterUsersRequestPropertyKeyValueFilterParam] = None,
+        show_extras: Dict[str, str] = None,
         status: int = None,
     ):
         self.business_channel = business_channel
@@ -101,6 +102,7 @@ class FilterUsersRequest(DaraModel):
         self.property_filter_param = property_filter_param
         # The list of property names and property values.
         self.property_key_value_filter_param = property_key_value_filter_param
+        self.show_extras = show_extras
         # The status.
         self.status = status
 
@@ -176,6 +178,9 @@ class FilterUsersRequest(DaraModel):
             for k1 in self.property_key_value_filter_param:
                 result['PropertyKeyValueFilterParam'].append(k1.to_map() if k1 else None)
 
+        if self.show_extras is not None:
+            result['ShowExtras'] = self.show_extras
+
         if self.status is not None:
             result['Status'] = self.status
 
@@ -240,6 +245,9 @@ class FilterUsersRequest(DaraModel):
             for k1 in m.get('PropertyKeyValueFilterParam'):
                 temp_model = main_models.FilterUsersRequestPropertyKeyValueFilterParam()
                 self.property_key_value_filter_param.append(temp_model.from_map(k1))
+
+        if m.get('ShowExtras') is not None:
+            self.show_extras = m.get('ShowExtras')
 
         if m.get('Status') is not None:
             self.status = m.get('Status')

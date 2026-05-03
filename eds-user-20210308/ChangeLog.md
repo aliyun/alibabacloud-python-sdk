@@ -1,3 +1,7 @@
+2026-05-03 Version: 2.0.3
+- Update API DescribeUser: add response parameters Body.User.NickName.
+
+
 2026-03-19 Version: 2.0.1
 - Update API CreateResourceGroup: add request parameters EnableAliyunResourceGroup.
 

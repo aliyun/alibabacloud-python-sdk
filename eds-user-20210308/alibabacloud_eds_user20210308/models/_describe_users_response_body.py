@@ -480,11 +480,16 @@ class DescribeUsersResponseBodyUsersExtras(DaraModel):
     def __init__(
         self,
         assigned_resource_count: Dict[str, Any] = None,
+        resource_policy_list: List[main_models.DescribeUsersResponseBodyUsersExtrasResourcePolicyList] = None,
     ):
         self.assigned_resource_count = assigned_resource_count
+        self.resource_policy_list = resource_policy_list
 
     def validate(self):
-        pass
+        if self.resource_policy_list:
+            for v1 in self.resource_policy_list:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -494,12 +499,58 @@ class DescribeUsersResponseBodyUsersExtras(DaraModel):
         if self.assigned_resource_count is not None:
             result['AssignedResourceCount'] = self.assigned_resource_count
 
+        result['ResourcePolicyList'] = []
+        if self.resource_policy_list is not None:
+            for k1 in self.resource_policy_list:
+                result['ResourcePolicyList'].append(k1.to_map() if k1 else None)
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('AssignedResourceCount') is not None:
             self.assigned_resource_count = m.get('AssignedResourceCount')
+
+        self.resource_policy_list = []
+        if m.get('ResourcePolicyList') is not None:
+            for k1 in m.get('ResourcePolicyList'):
+                temp_model = main_models.DescribeUsersResponseBodyUsersExtrasResourcePolicyList()
+                self.resource_policy_list.append(temp_model.from_map(k1))
+
+        return self
+
+class DescribeUsersResponseBodyUsersExtrasResourcePolicyList(DaraModel):
+    def __init__(
+        self,
+        policy_id: str = None,
+        policy_name: str = None,
+    ):
+        self.policy_id = policy_id
+        self.policy_name = policy_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.policy_id is not None:
+            result['PolicyId'] = self.policy_id
+
+        if self.policy_name is not None:
+            result['PolicyName'] = self.policy_name
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PolicyId') is not None:
+            self.policy_id = m.get('PolicyId')
+
+        if m.get('PolicyName') is not None:
+            self.policy_name = m.get('PolicyName')
 
         return self
 

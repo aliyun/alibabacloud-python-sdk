@@ -1323,6 +1323,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.business_channel):
             query['BusinessChannel'] = request.business_channel
+        if not DaraCore.is_null(request.include_org_ids):
+            query['IncludeOrgIds'] = request.include_org_ids
         if not DaraCore.is_null(request.max_results):
             query['MaxResults'] = request.max_results
         if not DaraCore.is_null(request.next_token):
@@ -1365,6 +1367,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.business_channel):
             query['BusinessChannel'] = request.business_channel
+        if not DaraCore.is_null(request.include_org_ids):
+            query['IncludeOrgIds'] = request.include_org_ids
         if not DaraCore.is_null(request.max_results):
             query['MaxResults'] = request.max_results
         if not DaraCore.is_null(request.next_token):
@@ -1505,6 +1509,84 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeResourceGroupsResponse:
         runtime = RuntimeOptions()
         return await self.describe_resource_groups_with_options_async(request, runtime)
+
+    def describe_user_with_options(
+        self,
+        request: main_models.DescribeUserRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeUserResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.business_channel):
+            query['BusinessChannel'] = request.business_channel
+        if not DaraCore.is_null(request.end_user_id):
+            query['EndUserId'] = request.end_user_id
+        if not DaraCore.is_null(request.require_extra_attributes):
+            query['RequireExtraAttributes'] = request.require_extra_attributes
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeUser',
+            version = '2021-03-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeUserResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_user_with_options_async(
+        self,
+        request: main_models.DescribeUserRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeUserResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.business_channel):
+            query['BusinessChannel'] = request.business_channel
+        if not DaraCore.is_null(request.end_user_id):
+            query['EndUserId'] = request.end_user_id
+        if not DaraCore.is_null(request.require_extra_attributes):
+            query['RequireExtraAttributes'] = request.require_extra_attributes
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeUser',
+            version = '2021-03-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_user(
+        self,
+        request: main_models.DescribeUserRequest,
+    ) -> main_models.DescribeUserResponse:
+        runtime = RuntimeOptions()
+        return self.describe_user_with_options(request, runtime)
+
+    async def describe_user_async(
+        self,
+        request: main_models.DescribeUserRequest,
+    ) -> main_models.DescribeUserResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_user_with_options_async(request, runtime)
 
     def describe_users_with_options(
         self,
@@ -1711,6 +1793,8 @@ class Client(OpenApiClient):
             query['PropertyFilterParam'] = request.property_filter_param
         if not DaraCore.is_null(request.property_key_value_filter_param):
             query['PropertyKeyValueFilterParam'] = request.property_key_value_filter_param
+        if not DaraCore.is_null(request.show_extras):
+            query['ShowExtras'] = request.show_extras
         if not DaraCore.is_null(request.status):
             query['Status'] = request.status
         req = open_api_util_models.OpenApiRequest(
@@ -1779,6 +1863,8 @@ class Client(OpenApiClient):
             query['PropertyFilterParam'] = request.property_filter_param
         if not DaraCore.is_null(request.property_key_value_filter_param):
             query['PropertyKeyValueFilterParam'] = request.property_key_value_filter_param
+        if not DaraCore.is_null(request.show_extras):
+            query['ShowExtras'] = request.show_extras
         if not DaraCore.is_null(request.status):
             query['Status'] = request.status
         req = open_api_util_models.OpenApiRequest(

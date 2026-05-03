@@ -2,12 +2,15 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
 from darabonba.model import DaraModel
 
 class DescribeOrgsShrinkRequest(DaraModel):
     def __init__(
         self,
         business_channel: str = None,
+        include_org_ids: List[str] = None,
         max_results: int = None,
         next_token: str = None,
         org_name: str = None,
@@ -15,6 +18,7 @@ class DescribeOrgsShrinkRequest(DaraModel):
         show_extras_shrink: str = None,
     ):
         self.business_channel = business_channel
+        self.include_org_ids = include_org_ids
         # The maximum number of entries to return. Valid values: 1 to 100.\\
         # Default value: 100.
         self.max_results = max_results
@@ -37,6 +41,9 @@ class DescribeOrgsShrinkRequest(DaraModel):
         if self.business_channel is not None:
             result['BusinessChannel'] = self.business_channel
 
+        if self.include_org_ids is not None:
+            result['IncludeOrgIds'] = self.include_org_ids
+
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
 
@@ -58,6 +65,9 @@ class DescribeOrgsShrinkRequest(DaraModel):
         m = m or dict()
         if m.get('BusinessChannel') is not None:
             self.business_channel = m.get('BusinessChannel')
+
+        if m.get('IncludeOrgIds') is not None:
+            self.include_org_ids = m.get('IncludeOrgIds')
 
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')

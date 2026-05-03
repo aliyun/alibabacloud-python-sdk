@@ -57,6 +57,9 @@ from ._describe_orgs_response import DescribeOrgsResponse
 from ._describe_resource_groups_request import DescribeResourceGroupsRequest
 from ._describe_resource_groups_response_body import DescribeResourceGroupsResponseBody
 from ._describe_resource_groups_response import DescribeResourceGroupsResponse
+from ._describe_user_request import DescribeUserRequest
+from ._describe_user_response_body import DescribeUserResponseBody
+from ._describe_user_response import DescribeUserResponse
 from ._describe_users_request import DescribeUsersRequest
 from ._describe_users_shrink_request import DescribeUsersShrinkRequest
 from ._describe_users_response_body import DescribeUsersResponseBody
@@ -157,11 +160,16 @@ from ._describe_groups_response_body import DescribeGroupsResponseBodyGroups
 from ._describe_mfa_devices_response_body import DescribeMfaDevicesResponseBodyMfaDevicesAdUser
 from ._describe_mfa_devices_response_body import DescribeMfaDevicesResponseBodyMfaDevices
 from ._describe_org_by_layer_response_body import DescribeOrgByLayerResponseBodyOrgs
+from ._describe_orgs_response_body import DescribeOrgsResponseBodyOrgsResourcePolicyList
 from ._describe_orgs_response_body import DescribeOrgsResponseBodyOrgs
 from ._describe_resource_groups_response_body import DescribeResourceGroupsResponseBodyResourceGroupAppRules
 from ._describe_resource_groups_response_body import DescribeResourceGroupsResponseBodyResourceGroupPolicies
 from ._describe_resource_groups_response_body import DescribeResourceGroupsResponseBodyResourceGroupTimers
 from ._describe_resource_groups_response_body import DescribeResourceGroupsResponseBodyResourceGroup
+from ._describe_user_response_body import DescribeUserResponseBodyUserExternalInfo
+from ._describe_user_response_body import DescribeUserResponseBodyUserProperties
+from ._describe_user_response_body import DescribeUserResponseBodyUser
+from ._describe_users_response_body import DescribeUsersResponseBodyUsersExtrasResourcePolicyList
 from ._describe_users_response_body import DescribeUsersResponseBodyUsersExtras
 from ._describe_users_response_body import DescribeUsersResponseBodyUsersGroups
 from ._describe_users_response_body import DescribeUsersResponseBodyUsersOrgs
@@ -175,6 +183,7 @@ from ._filter_users_shrink_request import FilterUsersShrinkRequestPropertyKeyVal
 from ._filter_users_response_body import FilterUsersResponseBodyUsersExternalInfo
 from ._filter_users_response_body import FilterUsersResponseBodyUsersGroups
 from ._filter_users_response_body import FilterUsersResponseBodyUsersOrgList
+from ._filter_users_response_body import FilterUsersResponseBodyUsersResourcePolicyList
 from ._filter_users_response_body import FilterUsersResponseBodyUsersSupportLoginIdps
 from ._filter_users_response_body import FilterUsersResponseBodyUsersUserSetPropertiesModelsPropertyValues
 from ._filter_users_response_body import FilterUsersResponseBodyUsersUserSetPropertiesModels
@@ -254,6 +263,9 @@ __all__ = [
     DescribeResourceGroupsRequest,
     DescribeResourceGroupsResponseBody,
     DescribeResourceGroupsResponse,
+    DescribeUserRequest,
+    DescribeUserResponseBody,
+    DescribeUserResponse,
     DescribeUsersRequest,
     DescribeUsersShrinkRequest,
     DescribeUsersResponseBody,
@@ -354,11 +366,16 @@ __all__ = [
     DescribeMfaDevicesResponseBodyMfaDevicesAdUser,
     DescribeMfaDevicesResponseBodyMfaDevices,
     DescribeOrgByLayerResponseBodyOrgs,
+    DescribeOrgsResponseBodyOrgsResourcePolicyList,
     DescribeOrgsResponseBodyOrgs,
     DescribeResourceGroupsResponseBodyResourceGroupAppRules,
     DescribeResourceGroupsResponseBodyResourceGroupPolicies,
     DescribeResourceGroupsResponseBodyResourceGroupTimers,
     DescribeResourceGroupsResponseBodyResourceGroup,
+    DescribeUserResponseBodyUserExternalInfo,
+    DescribeUserResponseBodyUserProperties,
+    DescribeUserResponseBodyUser,
+    DescribeUsersResponseBodyUsersExtrasResourcePolicyList,
     DescribeUsersResponseBodyUsersExtras,
     DescribeUsersResponseBodyUsersGroups,
     DescribeUsersResponseBodyUsersOrgs,
@@ -372,6 +389,7 @@ __all__ = [
     FilterUsersResponseBodyUsersExternalInfo,
     FilterUsersResponseBodyUsersGroups,
     FilterUsersResponseBodyUsersOrgList,
+    FilterUsersResponseBodyUsersResourcePolicyList,
     FilterUsersResponseBodyUsersSupportLoginIdps,
     FilterUsersResponseBodyUsersUserSetPropertiesModelsPropertyValues,
     FilterUsersResponseBodyUsersUserSetPropertiesModels,
