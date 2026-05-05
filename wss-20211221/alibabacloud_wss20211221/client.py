@@ -130,6 +130,256 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_multi_order_with_options_async(request, runtime)
 
+    def describe_credit_package_agents_with_options(
+        self,
+        request: main_models.DescribeCreditPackageAgentsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeCreditPackageAgentsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_ids):
+            query['AgentIds'] = request.agent_ids
+        if not DaraCore.is_null(request.agent_type):
+            query['AgentType'] = request.agent_type
+        if not DaraCore.is_null(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeCreditPackageAgents',
+            version = '2021-12-21',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeCreditPackageAgentsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_credit_package_agents_with_options_async(
+        self,
+        request: main_models.DescribeCreditPackageAgentsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeCreditPackageAgentsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_ids):
+            query['AgentIds'] = request.agent_ids
+        if not DaraCore.is_null(request.agent_type):
+            query['AgentType'] = request.agent_type
+        if not DaraCore.is_null(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeCreditPackageAgents',
+            version = '2021-12-21',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeCreditPackageAgentsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_credit_package_agents(
+        self,
+        request: main_models.DescribeCreditPackageAgentsRequest,
+    ) -> main_models.DescribeCreditPackageAgentsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_credit_package_agents_with_options(request, runtime)
+
+    async def describe_credit_package_agents_async(
+        self,
+        request: main_models.DescribeCreditPackageAgentsRequest,
+    ) -> main_models.DescribeCreditPackageAgentsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_credit_package_agents_with_options_async(request, runtime)
+
+    def describe_credit_usage_info_with_options(
+        self,
+        request: main_models.DescribeCreditUsageInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeCreditUsageInfoResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not DaraCore.is_null(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not DaraCore.is_null(request.usage_type):
+            query['UsageType'] = request.usage_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeCreditUsageInfo',
+            version = '2021-12-21',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeCreditUsageInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_credit_usage_info_with_options_async(
+        self,
+        request: main_models.DescribeCreditUsageInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeCreditUsageInfoResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not DaraCore.is_null(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not DaraCore.is_null(request.usage_type):
+            query['UsageType'] = request.usage_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeCreditUsageInfo',
+            version = '2021-12-21',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeCreditUsageInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_credit_usage_info(
+        self,
+        request: main_models.DescribeCreditUsageInfoRequest,
+    ) -> main_models.DescribeCreditUsageInfoResponse:
+        runtime = RuntimeOptions()
+        return self.describe_credit_usage_info_with_options(request, runtime)
+
+    async def describe_credit_usage_info_async(
+        self,
+        request: main_models.DescribeCreditUsageInfoRequest,
+    ) -> main_models.DescribeCreditUsageInfoResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_credit_usage_info_with_options_async(request, runtime)
+
+    def describe_deduction_statistic_with_options(
+        self,
+        request: main_models.DescribeDeductionStatisticRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeDeductionStatisticResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not DaraCore.is_null(request.periods):
+            query['Periods'] = request.periods
+        if not DaraCore.is_null(request.resource_types):
+            query['ResourceTypes'] = request.resource_types
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeDeductionStatistic',
+            version = '2021-12-21',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeDeductionStatisticResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_deduction_statistic_with_options_async(
+        self,
+        request: main_models.DescribeDeductionStatisticRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeDeductionStatisticResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not DaraCore.is_null(request.periods):
+            query['Periods'] = request.periods
+        if not DaraCore.is_null(request.resource_types):
+            query['ResourceTypes'] = request.resource_types
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeDeductionStatistic',
+            version = '2021-12-21',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeDeductionStatisticResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_deduction_statistic(
+        self,
+        request: main_models.DescribeDeductionStatisticRequest,
+    ) -> main_models.DescribeDeductionStatisticResponse:
+        runtime = RuntimeOptions()
+        return self.describe_deduction_statistic_with_options(request, runtime)
+
+    async def describe_deduction_statistic_async(
+        self,
+        request: main_models.DescribeDeductionStatisticRequest,
+    ) -> main_models.DescribeDeductionStatisticResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_deduction_statistic_with_options_async(request, runtime)
+
     def describe_delivery_address_with_options(
         self,
         runtime: RuntimeOptions,
@@ -445,3 +695,85 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyInstancePropertiesResponse:
         runtime = RuntimeOptions()
         return await self.modify_instance_properties_with_options_async(request, runtime)
+
+    def set_agent_credit_quota_with_options(
+        self,
+        request: main_models.SetAgentCreditQuotaRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SetAgentCreditQuotaResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_ids):
+            query['AgentIds'] = request.agent_ids
+        if not DaraCore.is_null(request.agent_type):
+            query['AgentType'] = request.agent_type
+        if not DaraCore.is_null(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not DaraCore.is_null(request.credit_quota):
+            query['CreditQuota'] = request.credit_quota
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SetAgentCreditQuota',
+            version = '2021-12-21',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SetAgentCreditQuotaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def set_agent_credit_quota_with_options_async(
+        self,
+        request: main_models.SetAgentCreditQuotaRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SetAgentCreditQuotaResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_ids):
+            query['AgentIds'] = request.agent_ids
+        if not DaraCore.is_null(request.agent_type):
+            query['AgentType'] = request.agent_type
+        if not DaraCore.is_null(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not DaraCore.is_null(request.credit_quota):
+            query['CreditQuota'] = request.credit_quota
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SetAgentCreditQuota',
+            version = '2021-12-21',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SetAgentCreditQuotaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def set_agent_credit_quota(
+        self,
+        request: main_models.SetAgentCreditQuotaRequest,
+    ) -> main_models.SetAgentCreditQuotaResponse:
+        runtime = RuntimeOptions()
+        return self.set_agent_credit_quota_with_options(request, runtime)
+
+    async def set_agent_credit_quota_async(
+        self,
+        request: main_models.SetAgentCreditQuotaRequest,
+    ) -> main_models.SetAgentCreditQuotaResponse:
+        runtime = RuntimeOptions()
+        return await self.set_agent_credit_quota_with_options_async(request, runtime)

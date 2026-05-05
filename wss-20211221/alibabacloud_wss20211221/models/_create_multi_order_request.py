@@ -74,6 +74,7 @@ class CreateMultiOrderRequestOrderItems(DaraModel):
         auto_renew: bool = None,
         buy_change: bool = None,
         components: List[main_models.CreateMultiOrderRequestOrderItemsComponents] = None,
+        instance_ids: List[str] = None,
         period: int = None,
         period_unit: str = None,
         promotion_id: str = None,
@@ -85,6 +86,7 @@ class CreateMultiOrderRequestOrderItems(DaraModel):
         self.auto_renew = auto_renew
         self.buy_change = buy_change
         self.components = components
+        self.instance_ids = instance_ids
         self.period = period
         self.period_unit = period_unit
         self.promotion_id = promotion_id
@@ -119,6 +121,9 @@ class CreateMultiOrderRequestOrderItems(DaraModel):
         if self.components is not None:
             for k1 in self.components:
                 result['Components'].append(k1.to_map() if k1 else None)
+
+        if self.instance_ids is not None:
+            result['InstanceIds'] = self.instance_ids
 
         if self.period is not None:
             result['Period'] = self.period
@@ -156,6 +161,9 @@ class CreateMultiOrderRequestOrderItems(DaraModel):
             for k1 in m.get('Components'):
                 temp_model = main_models.CreateMultiOrderRequestOrderItemsComponents()
                 self.components.append(temp_model.from_map(k1))
+
+        if m.get('InstanceIds') is not None:
+            self.instance_ids = m.get('InstanceIds')
 
         if m.get('Period') is not None:
             self.period = m.get('Period')

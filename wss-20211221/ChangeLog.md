@@ -1,3 +1,11 @@
+2026-05-05 Version: 1.4.0
+- Support API DescribeCreditPackageAgents.
+- Support API DescribeCreditUsageInfo.
+- Support API DescribeDeductionStatistic.
+- Support API SetAgentCreditQuota.
+- Update API CreateMultiOrder: add request parameters OrderItems.$.InstanceIds.
+
+
 2026-03-21 Version: 1.3.5
 - Update API DescribePackageDeductions: add response parameters Body.TotalUsedTimeDecimal.
 - Update API DescribePackageDeductions: add response parameters Body.Deductions.$.UsedTimeDecimal.

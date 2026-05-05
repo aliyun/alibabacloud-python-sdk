@@ -6,6 +6,15 @@ from ._create_multi_order_request import CreateMultiOrderRequest
 from ._create_multi_order_shrink_request import CreateMultiOrderShrinkRequest
 from ._create_multi_order_response_body import CreateMultiOrderResponseBody
 from ._create_multi_order_response import CreateMultiOrderResponse
+from ._describe_credit_package_agents_request import DescribeCreditPackageAgentsRequest
+from ._describe_credit_package_agents_response_body import DescribeCreditPackageAgentsResponseBody
+from ._describe_credit_package_agents_response import DescribeCreditPackageAgentsResponse
+from ._describe_credit_usage_info_request import DescribeCreditUsageInfoRequest
+from ._describe_credit_usage_info_response_body import DescribeCreditUsageInfoResponseBody
+from ._describe_credit_usage_info_response import DescribeCreditUsageInfoResponse
+from ._describe_deduction_statistic_request import DescribeDeductionStatisticRequest
+from ._describe_deduction_statistic_response_body import DescribeDeductionStatisticResponseBody
+from ._describe_deduction_statistic_response import DescribeDeductionStatisticResponse
 from ._describe_delivery_address_response_body import DescribeDeliveryAddressResponseBody
 from ._describe_delivery_address_response import DescribeDeliveryAddressResponse
 from ._describe_multi_price_request import DescribeMultiPriceRequest
@@ -17,10 +26,22 @@ from ._describe_package_deductions_response import DescribePackageDeductionsResp
 from ._modify_instance_properties_request import ModifyInstancePropertiesRequest
 from ._modify_instance_properties_response_body import ModifyInstancePropertiesResponseBody
 from ._modify_instance_properties_response import ModifyInstancePropertiesResponse
+from ._set_agent_credit_quota_request import SetAgentCreditQuotaRequest
+from ._set_agent_credit_quota_response_body import SetAgentCreditQuotaResponseBody
+from ._set_agent_credit_quota_response import SetAgentCreditQuotaResponse
 from ._create_multi_order_request import CreateMultiOrderRequestOrderItemsComponents
 from ._create_multi_order_request import CreateMultiOrderRequestOrderItems
 from ._create_multi_order_shrink_request import CreateMultiOrderShrinkRequestOrderItemsComponents
 from ._create_multi_order_shrink_request import CreateMultiOrderShrinkRequestOrderItems
+from ._describe_credit_package_agents_response_body import DescribeCreditPackageAgentsResponseBodyAgents
+from ._describe_credit_usage_info_response_body import DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfoCreditTrendList
+from ._describe_credit_usage_info_response_body import DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo
+from ._describe_credit_usage_info_response_body import DescribeCreditUsageInfoResponseBodyUsageInfoList
+from ._describe_deduction_statistic_request import DescribeDeductionStatisticRequestPeriods
+from ._describe_deduction_statistic_response_body import DescribeDeductionStatisticResponseBodyDataAvailableCorePackages
+from ._describe_deduction_statistic_response_body import DescribeDeductionStatisticResponseBodyDataDeductions
+from ._describe_deduction_statistic_response_body import DescribeDeductionStatisticResponseBodyDataUsages
+from ._describe_deduction_statistic_response_body import DescribeDeductionStatisticResponseBodyData
 from ._describe_delivery_address_response_body import DescribeDeliveryAddressResponseBodyAddressesArea
 from ._describe_delivery_address_response_body import DescribeDeliveryAddressResponseBodyAddressesCity
 from ._describe_delivery_address_response_body import DescribeDeliveryAddressResponseBodyAddressesProvince
@@ -42,6 +63,15 @@ __all__ = [
     CreateMultiOrderShrinkRequest,
     CreateMultiOrderResponseBody,
     CreateMultiOrderResponse,
+    DescribeCreditPackageAgentsRequest,
+    DescribeCreditPackageAgentsResponseBody,
+    DescribeCreditPackageAgentsResponse,
+    DescribeCreditUsageInfoRequest,
+    DescribeCreditUsageInfoResponseBody,
+    DescribeCreditUsageInfoResponse,
+    DescribeDeductionStatisticRequest,
+    DescribeDeductionStatisticResponseBody,
+    DescribeDeductionStatisticResponse,
     DescribeDeliveryAddressResponseBody,
     DescribeDeliveryAddressResponse,
     DescribeMultiPriceRequest,
@@ -53,10 +83,22 @@ __all__ = [
     ModifyInstancePropertiesRequest,
     ModifyInstancePropertiesResponseBody,
     ModifyInstancePropertiesResponse,
+    SetAgentCreditQuotaRequest,
+    SetAgentCreditQuotaResponseBody,
+    SetAgentCreditQuotaResponse,
     CreateMultiOrderRequestOrderItemsComponents,
     CreateMultiOrderRequestOrderItems,
     CreateMultiOrderShrinkRequestOrderItemsComponents,
     CreateMultiOrderShrinkRequestOrderItems,
+    DescribeCreditPackageAgentsResponseBodyAgents,
+    DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfoCreditTrendList,
+    DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo,
+    DescribeCreditUsageInfoResponseBodyUsageInfoList,
+    DescribeDeductionStatisticRequestPeriods,
+    DescribeDeductionStatisticResponseBodyDataAvailableCorePackages,
+    DescribeDeductionStatisticResponseBodyDataDeductions,
+    DescribeDeductionStatisticResponseBodyDataUsages,
+    DescribeDeductionStatisticResponseBodyData,
     DescribeDeliveryAddressResponseBodyAddressesArea,
     DescribeDeliveryAddressResponseBodyAddressesCity,
     DescribeDeliveryAddressResponseBodyAddressesProvince,

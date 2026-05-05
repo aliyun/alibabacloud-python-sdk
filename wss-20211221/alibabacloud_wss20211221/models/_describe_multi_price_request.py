@@ -71,6 +71,7 @@ class DescribeMultiPriceRequestOrderItems(DaraModel):
         self,
         amount: int = None,
         components: List[main_models.DescribeMultiPriceRequestOrderItemsComponents] = None,
+        data: str = None,
         instance_ids: List[str] = None,
         period: int = None,
         period_unit: str = None,
@@ -81,6 +82,7 @@ class DescribeMultiPriceRequestOrderItems(DaraModel):
     ):
         self.amount = amount
         self.components = components
+        self.data = data
         self.instance_ids = instance_ids
         self.period = period
         self.period_unit = period_unit
@@ -107,6 +109,9 @@ class DescribeMultiPriceRequestOrderItems(DaraModel):
         if self.components is not None:
             for k1 in self.components:
                 result['Components'].append(k1.to_map() if k1 else None)
+
+        if self.data is not None:
+            result['Data'] = self.data
 
         if self.instance_ids is not None:
             result['InstanceIds'] = self.instance_ids
@@ -141,6 +146,9 @@ class DescribeMultiPriceRequestOrderItems(DaraModel):
             for k1 in m.get('Components'):
                 temp_model = main_models.DescribeMultiPriceRequestOrderItemsComponents()
                 self.components.append(temp_model.from_map(k1))
+
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
 
         if m.get('InstanceIds') is not None:
             self.instance_ids = m.get('InstanceIds')
