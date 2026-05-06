@@ -2,6 +2,8 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
 from alibabacloud_bailianvoicebot20250101 import models as main_models
 from darabonba.model import DaraModel
 
@@ -174,12 +176,14 @@ class GetApplicationResponseBodyDataPublishedVersion(DaraModel):
     def __init__(
         self,
         interaction_config: main_models.GetApplicationResponseBodyDataPublishedVersionInteractionConfig = None,
+        rag_config: main_models.GetApplicationResponseBodyDataPublishedVersionRagConfig = None,
         script_profile: main_models.GetApplicationResponseBodyDataPublishedVersionScriptProfile = None,
         synthesizer_config: main_models.GetApplicationResponseBodyDataPublishedVersionSynthesizerConfig = None,
         transcriber_config: main_models.GetApplicationResponseBodyDataPublishedVersionTranscriberConfig = None,
         version_id: str = None,
     ):
         self.interaction_config = interaction_config
+        self.rag_config = rag_config
         self.script_profile = script_profile
         self.synthesizer_config = synthesizer_config
         self.transcriber_config = transcriber_config
@@ -188,6 +192,8 @@ class GetApplicationResponseBodyDataPublishedVersion(DaraModel):
     def validate(self):
         if self.interaction_config:
             self.interaction_config.validate()
+        if self.rag_config:
+            self.rag_config.validate()
         if self.script_profile:
             self.script_profile.validate()
         if self.synthesizer_config:
@@ -202,6 +208,9 @@ class GetApplicationResponseBodyDataPublishedVersion(DaraModel):
             result = _map
         if self.interaction_config is not None:
             result['InteractionConfig'] = self.interaction_config.to_map()
+
+        if self.rag_config is not None:
+            result['RagConfig'] = self.rag_config.to_map()
 
         if self.script_profile is not None:
             result['ScriptProfile'] = self.script_profile.to_map()
@@ -222,6 +231,10 @@ class GetApplicationResponseBodyDataPublishedVersion(DaraModel):
         if m.get('InteractionConfig') is not None:
             temp_model = main_models.GetApplicationResponseBodyDataPublishedVersionInteractionConfig()
             self.interaction_config = temp_model.from_map(m.get('InteractionConfig'))
+
+        if m.get('RagConfig') is not None:
+            temp_model = main_models.GetApplicationResponseBodyDataPublishedVersionRagConfig()
+            self.rag_config = temp_model.from_map(m.get('RagConfig'))
 
         if m.get('ScriptProfile') is not None:
             temp_model = main_models.GetApplicationResponseBodyDataPublishedVersionScriptProfile()
@@ -446,6 +459,65 @@ class GetApplicationResponseBodyDataPublishedVersionScriptProfileAgentProfile(Da
 
         return self
 
+class GetApplicationResponseBodyDataPublishedVersionRagConfig(DaraModel):
+    def __init__(
+        self,
+        enabled: bool = None,
+        knowledge_base_ids: List[str] = None,
+        max_content_length: int = None,
+        rag_engine: str = None,
+        top_n: int = None,
+    ):
+        self.enabled = enabled
+        self.knowledge_base_ids = knowledge_base_ids
+        self.max_content_length = max_content_length
+        self.rag_engine = rag_engine
+        self.top_n = top_n
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+
+        if self.knowledge_base_ids is not None:
+            result['KnowledgeBaseIds'] = self.knowledge_base_ids
+
+        if self.max_content_length is not None:
+            result['MaxContentLength'] = self.max_content_length
+
+        if self.rag_engine is not None:
+            result['RagEngine'] = self.rag_engine
+
+        if self.top_n is not None:
+            result['TopN'] = self.top_n
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+
+        if m.get('KnowledgeBaseIds') is not None:
+            self.knowledge_base_ids = m.get('KnowledgeBaseIds')
+
+        if m.get('MaxContentLength') is not None:
+            self.max_content_length = m.get('MaxContentLength')
+
+        if m.get('RagEngine') is not None:
+            self.rag_engine = m.get('RagEngine')
+
+        if m.get('TopN') is not None:
+            self.top_n = m.get('TopN')
+
+        return self
+
 class GetApplicationResponseBodyDataPublishedVersionInteractionConfig(DaraModel):
     def __init__(
         self,
@@ -506,12 +578,14 @@ class GetApplicationResponseBodyDataDraftVersion(DaraModel):
     def __init__(
         self,
         interaction_config: main_models.GetApplicationResponseBodyDataDraftVersionInteractionConfig = None,
+        rag_config: main_models.GetApplicationResponseBodyDataDraftVersionRagConfig = None,
         script_profile: main_models.GetApplicationResponseBodyDataDraftVersionScriptProfile = None,
         synthesizer_config: main_models.GetApplicationResponseBodyDataDraftVersionSynthesizerConfig = None,
         transcriber_config: main_models.GetApplicationResponseBodyDataDraftVersionTranscriberConfig = None,
         version_id: str = None,
     ):
         self.interaction_config = interaction_config
+        self.rag_config = rag_config
         self.script_profile = script_profile
         self.synthesizer_config = synthesizer_config
         self.transcriber_config = transcriber_config
@@ -520,6 +594,8 @@ class GetApplicationResponseBodyDataDraftVersion(DaraModel):
     def validate(self):
         if self.interaction_config:
             self.interaction_config.validate()
+        if self.rag_config:
+            self.rag_config.validate()
         if self.script_profile:
             self.script_profile.validate()
         if self.synthesizer_config:
@@ -534,6 +610,9 @@ class GetApplicationResponseBodyDataDraftVersion(DaraModel):
             result = _map
         if self.interaction_config is not None:
             result['InteractionConfig'] = self.interaction_config.to_map()
+
+        if self.rag_config is not None:
+            result['RagConfig'] = self.rag_config.to_map()
 
         if self.script_profile is not None:
             result['ScriptProfile'] = self.script_profile.to_map()
@@ -554,6 +633,10 @@ class GetApplicationResponseBodyDataDraftVersion(DaraModel):
         if m.get('InteractionConfig') is not None:
             temp_model = main_models.GetApplicationResponseBodyDataDraftVersionInteractionConfig()
             self.interaction_config = temp_model.from_map(m.get('InteractionConfig'))
+
+        if m.get('RagConfig') is not None:
+            temp_model = main_models.GetApplicationResponseBodyDataDraftVersionRagConfig()
+            self.rag_config = temp_model.from_map(m.get('RagConfig'))
 
         if m.get('ScriptProfile') is not None:
             temp_model = main_models.GetApplicationResponseBodyDataDraftVersionScriptProfile()
@@ -775,6 +858,65 @@ class GetApplicationResponseBodyDataDraftVersionScriptProfileAgentProfile(DaraMo
 
         if m.get('ScriptProfileTemplateId') is not None:
             self.script_profile_template_id = m.get('ScriptProfileTemplateId')
+
+        return self
+
+class GetApplicationResponseBodyDataDraftVersionRagConfig(DaraModel):
+    def __init__(
+        self,
+        enabled: bool = None,
+        knowledge_base_ids: List[str] = None,
+        max_content_length: int = None,
+        rag_engine: str = None,
+        top_n: int = None,
+    ):
+        self.enabled = enabled
+        self.knowledge_base_ids = knowledge_base_ids
+        self.max_content_length = max_content_length
+        self.rag_engine = rag_engine
+        self.top_n = top_n
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+
+        if self.knowledge_base_ids is not None:
+            result['KnowledgeBaseIds'] = self.knowledge_base_ids
+
+        if self.max_content_length is not None:
+            result['MaxContentLength'] = self.max_content_length
+
+        if self.rag_engine is not None:
+            result['RagEngine'] = self.rag_engine
+
+        if self.top_n is not None:
+            result['TopN'] = self.top_n
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+
+        if m.get('KnowledgeBaseIds') is not None:
+            self.knowledge_base_ids = m.get('KnowledgeBaseIds')
+
+        if m.get('MaxContentLength') is not None:
+            self.max_content_length = m.get('MaxContentLength')
+
+        if m.get('RagEngine') is not None:
+            self.rag_engine = m.get('RagEngine')
+
+        if m.get('TopN') is not None:
+            self.top_n = m.get('TopN')
 
         return self
 

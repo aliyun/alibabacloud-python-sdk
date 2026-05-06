@@ -10,6 +10,7 @@ class CreateApplicationVersionShrinkRequest(DaraModel):
         application_id: str = None,
         business_unit_id: str = None,
         interaction_config_shrink: str = None,
+        rag_config_shrink: str = None,
         script_profile_shrink: str = None,
         source_version_id: str = None,
         synthesizer_config_shrink: str = None,
@@ -20,6 +21,7 @@ class CreateApplicationVersionShrinkRequest(DaraModel):
         # This parameter is required.
         self.business_unit_id = business_unit_id
         self.interaction_config_shrink = interaction_config_shrink
+        self.rag_config_shrink = rag_config_shrink
         self.script_profile_shrink = script_profile_shrink
         self.source_version_id = source_version_id
         self.synthesizer_config_shrink = synthesizer_config_shrink
@@ -41,6 +43,9 @@ class CreateApplicationVersionShrinkRequest(DaraModel):
 
         if self.interaction_config_shrink is not None:
             result['InteractionConfig'] = self.interaction_config_shrink
+
+        if self.rag_config_shrink is not None:
+            result['RagConfig'] = self.rag_config_shrink
 
         if self.script_profile_shrink is not None:
             result['ScriptProfile'] = self.script_profile_shrink
@@ -66,6 +71,9 @@ class CreateApplicationVersionShrinkRequest(DaraModel):
 
         if m.get('InteractionConfig') is not None:
             self.interaction_config_shrink = m.get('InteractionConfig')
+
+        if m.get('RagConfig') is not None:
+            self.rag_config_shrink = m.get('RagConfig')
 
         if m.get('ScriptProfile') is not None:
             self.script_profile_shrink = m.get('ScriptProfile')

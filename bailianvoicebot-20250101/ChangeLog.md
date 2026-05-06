@@ -1,3 +1,29 @@
+2026-05-06 Version: 1.4.0
+- Support API CreateVocabulary.
+- Support API CreateVoiceAccessProfile.
+- Support API DeleteVocabulary.
+- Support API DeleteVoiceAccessProfile.
+- Support API DisableSubscription.
+- Support API ExportVocabulary.
+- Support API GetSubscription.
+- Support API GetVocabulary.
+- Support API ImportVocabulary.
+- Support API ListBackgroundMusics.
+- Support API ListCloneVoiceModels.
+- Support API ListNluModels.
+- Support API ListVocabulary.
+- Support API ListVoiceAccessProfile.
+- Support API ListVoiceEngines.
+- Support API PreviewVoice.
+- Support API UpdateSubscription.
+- Support API UpdateVocabulary.
+- Support API UpdateVoiceAccessProfile.
+- Update API CreateApplicationVersion: add request parameters RagConfig.
+- Update API GetApplication: add response parameters Body.Data.DraftVersion.RagConfig.
+- Update API GetApplication: add response parameters Body.Data.PublishedVersion.RagConfig.
+- Update API UpdateApplicationVersion: add request parameters RagConfig.
+
+
 2026-04-21 Version: 1.3.0
 - Support API ListVoices.
 

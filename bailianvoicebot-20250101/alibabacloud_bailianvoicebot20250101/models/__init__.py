@@ -18,6 +18,14 @@ from ._create_clone_voice_response import CreateCloneVoiceResponse
 from ._create_variable_request import CreateVariableRequest
 from ._create_variable_response_body import CreateVariableResponseBody
 from ._create_variable_response import CreateVariableResponse
+from ._create_vocabulary_request import CreateVocabularyRequest
+from ._create_vocabulary_shrink_request import CreateVocabularyShrinkRequest
+from ._create_vocabulary_response_body import CreateVocabularyResponseBody
+from ._create_vocabulary_response import CreateVocabularyResponse
+from ._create_voice_access_profile_request import CreateVoiceAccessProfileRequest
+from ._create_voice_access_profile_shrink_request import CreateVoiceAccessProfileShrinkRequest
+from ._create_voice_access_profile_response_body import CreateVoiceAccessProfileResponseBody
+from ._create_voice_access_profile_response import CreateVoiceAccessProfileResponse
 from ._delete_application_request import DeleteApplicationRequest
 from ._delete_application_response_body import DeleteApplicationResponseBody
 from ._delete_application_response import DeleteApplicationResponse
@@ -27,6 +35,19 @@ from ._delete_clone_voice_response import DeleteCloneVoiceResponse
 from ._delete_variable_request import DeleteVariableRequest
 from ._delete_variable_response_body import DeleteVariableResponseBody
 from ._delete_variable_response import DeleteVariableResponse
+from ._delete_vocabulary_request import DeleteVocabularyRequest
+from ._delete_vocabulary_response_body import DeleteVocabularyResponseBody
+from ._delete_vocabulary_response import DeleteVocabularyResponse
+from ._delete_voice_access_profile_request import DeleteVoiceAccessProfileRequest
+from ._delete_voice_access_profile_response_body import DeleteVoiceAccessProfileResponseBody
+from ._delete_voice_access_profile_response import DeleteVoiceAccessProfileResponse
+from ._disable_subscription_request import DisableSubscriptionRequest
+from ._disable_subscription_response_body import DisableSubscriptionResponseBody
+from ._disable_subscription_response import DisableSubscriptionResponse
+from ._export_vocabulary_request import ExportVocabularyRequest
+from ._export_vocabulary_shrink_request import ExportVocabularyShrinkRequest
+from ._export_vocabulary_response_body import ExportVocabularyResponseBody
+from ._export_vocabulary_response import ExportVocabularyResponse
 from ._generate_file_upload_params_request import GenerateFileUploadParamsRequest
 from ._generate_file_upload_params_response_body import GenerateFileUploadParamsResponseBody
 from ._generate_file_upload_params_response import GenerateFileUploadParamsResponse
@@ -36,18 +57,49 @@ from ._get_application_response import GetApplicationResponse
 from ._get_data_channel_credential_request import GetDataChannelCredentialRequest
 from ._get_data_channel_credential_response_body import GetDataChannelCredentialResponseBody
 from ._get_data_channel_credential_response import GetDataChannelCredentialResponse
+from ._get_subscription_request import GetSubscriptionRequest
+from ._get_subscription_response_body import GetSubscriptionResponseBody
+from ._get_subscription_response import GetSubscriptionResponse
+from ._get_vocabulary_request import GetVocabularyRequest
+from ._get_vocabulary_response_body import GetVocabularyResponseBody
+from ._get_vocabulary_response import GetVocabularyResponse
+from ._import_vocabulary_request import ImportVocabularyRequest
+from ._import_vocabulary_response_body import ImportVocabularyResponseBody
+from ._import_vocabulary_response import ImportVocabularyResponse
 from ._list_applications_request import ListApplicationsRequest
 from ._list_applications_response_body import ListApplicationsResponseBody
 from ._list_applications_response import ListApplicationsResponse
+from ._list_background_musics_request import ListBackgroundMusicsRequest
+from ._list_background_musics_response_body import ListBackgroundMusicsResponseBody
+from ._list_background_musics_response import ListBackgroundMusicsResponse
 from ._list_clone_voice_request import ListCloneVoiceRequest
 from ._list_clone_voice_response_body import ListCloneVoiceResponseBody
 from ._list_clone_voice_response import ListCloneVoiceResponse
+from ._list_clone_voice_models_request import ListCloneVoiceModelsRequest
+from ._list_clone_voice_models_response_body import ListCloneVoiceModelsResponseBody
+from ._list_clone_voice_models_response import ListCloneVoiceModelsResponse
+from ._list_nlu_models_request import ListNluModelsRequest
+from ._list_nlu_models_response_body import ListNluModelsResponseBody
+from ._list_nlu_models_response import ListNluModelsResponse
 from ._list_variable_request import ListVariableRequest
 from ._list_variable_response_body import ListVariableResponseBody
 from ._list_variable_response import ListVariableResponse
+from ._list_vocabulary_request import ListVocabularyRequest
+from ._list_vocabulary_response_body import ListVocabularyResponseBody
+from ._list_vocabulary_response import ListVocabularyResponse
+from ._list_voice_access_profile_request import ListVoiceAccessProfileRequest
+from ._list_voice_access_profile_response_body import ListVoiceAccessProfileResponseBody
+from ._list_voice_access_profile_response import ListVoiceAccessProfileResponse
+from ._list_voice_engines_request import ListVoiceEnginesRequest
+from ._list_voice_engines_response_body import ListVoiceEnginesResponseBody
+from ._list_voice_engines_response import ListVoiceEnginesResponse
 from ._list_voices_request import ListVoicesRequest
 from ._list_voices_response_body import ListVoicesResponseBody
 from ._list_voices_response import ListVoicesResponse
+from ._preview_voice_request import PreviewVoiceRequest
+from ._preview_voice_shrink_request import PreviewVoiceShrinkRequest
+from ._preview_voice_response_body import PreviewVoiceResponseBody
+from ._preview_voice_response import PreviewVoiceResponse
 from ._publish_application_version_request import PublishApplicationVersionRequest
 from ._publish_application_version_response_body import PublishApplicationVersionResponseBody
 from ._publish_application_version_response import PublishApplicationVersionResponse
@@ -61,20 +113,35 @@ from ._update_application_version_response import UpdateApplicationVersionRespon
 from ._update_clone_voice_request import UpdateCloneVoiceRequest
 from ._update_clone_voice_response_body import UpdateCloneVoiceResponseBody
 from ._update_clone_voice_response import UpdateCloneVoiceResponse
+from ._update_subscription_request import UpdateSubscriptionRequest
+from ._update_subscription_shrink_request import UpdateSubscriptionShrinkRequest
+from ._update_subscription_response_body import UpdateSubscriptionResponseBody
+from ._update_subscription_response import UpdateSubscriptionResponse
 from ._update_variable_request import UpdateVariableRequest
 from ._update_variable_response_body import UpdateVariableResponseBody
 from ._update_variable_response import UpdateVariableResponse
+from ._update_vocabulary_request import UpdateVocabularyRequest
+from ._update_vocabulary_shrink_request import UpdateVocabularyShrinkRequest
+from ._update_vocabulary_response_body import UpdateVocabularyResponseBody
+from ._update_vocabulary_response import UpdateVocabularyResponse
+from ._update_voice_access_profile_request import UpdateVoiceAccessProfileRequest
+from ._update_voice_access_profile_shrink_request import UpdateVoiceAccessProfileShrinkRequest
+from ._update_voice_access_profile_response_body import UpdateVoiceAccessProfileResponseBody
+from ._update_voice_access_profile_response import UpdateVoiceAccessProfileResponse
 from ._bridge_web_call_response_body import BridgeWebCallResponseBodyData
 from ._create_application_version_request import CreateApplicationVersionRequestInteractionConfigSilenceDetectionConfig
 from ._create_application_version_request import CreateApplicationVersionRequestInteractionConfig
+from ._create_application_version_request import CreateApplicationVersionRequestRagConfig
 from ._create_application_version_request import CreateApplicationVersionRequestScriptProfileAgentProfile
 from ._create_application_version_request import CreateApplicationVersionRequestScriptProfile
 from ._create_application_version_request import CreateApplicationVersionRequestSynthesizerConfig
 from ._create_application_version_request import CreateApplicationVersionRequestTranscriberConfig
 from ._create_clone_voice_response_body import CreateCloneVoiceResponseBodyData
+from ._create_voice_access_profile_request import CreateVoiceAccessProfileRequestProfile
 from ._generate_file_upload_params_response_body import GenerateFileUploadParamsResponseBodyData
 from ._get_application_response_body import GetApplicationResponseBodyDataDraftVersionInteractionConfigSilenceDetectionConfig
 from ._get_application_response_body import GetApplicationResponseBodyDataDraftVersionInteractionConfig
+from ._get_application_response_body import GetApplicationResponseBodyDataDraftVersionRagConfig
 from ._get_application_response_body import GetApplicationResponseBodyDataDraftVersionScriptProfileAgentProfile
 from ._get_application_response_body import GetApplicationResponseBodyDataDraftVersionScriptProfile
 from ._get_application_response_body import GetApplicationResponseBodyDataDraftVersionSynthesizerConfig
@@ -82,6 +149,7 @@ from ._get_application_response_body import GetApplicationResponseBodyDataDraftV
 from ._get_application_response_body import GetApplicationResponseBodyDataDraftVersion
 from ._get_application_response_body import GetApplicationResponseBodyDataPublishedVersionInteractionConfigSilenceDetectionConfig
 from ._get_application_response_body import GetApplicationResponseBodyDataPublishedVersionInteractionConfig
+from ._get_application_response_body import GetApplicationResponseBodyDataPublishedVersionRagConfig
 from ._get_application_response_body import GetApplicationResponseBodyDataPublishedVersionScriptProfileAgentProfile
 from ._get_application_response_body import GetApplicationResponseBodyDataPublishedVersionScriptProfile
 from ._get_application_response_body import GetApplicationResponseBodyDataPublishedVersionSynthesizerConfig
@@ -89,20 +157,38 @@ from ._get_application_response_body import GetApplicationResponseBodyDataPublis
 from ._get_application_response_body import GetApplicationResponseBodyDataPublishedVersion
 from ._get_application_response_body import GetApplicationResponseBodyData
 from ._get_data_channel_credential_response_body import GetDataChannelCredentialResponseBodyData
+from ._get_subscription_response_body import GetSubscriptionResponseBodyDataEventList
+from ._get_subscription_response_body import GetSubscriptionResponseBodyData
+from ._get_vocabulary_response_body import GetVocabularyResponseBodyData
 from ._list_applications_response_body import ListApplicationsResponseBodyDataApplications
 from ._list_applications_response_body import ListApplicationsResponseBodyData
+from ._list_background_musics_response_body import ListBackgroundMusicsResponseBodyDataBackgroundMusics
+from ._list_background_musics_response_body import ListBackgroundMusicsResponseBodyData
 from ._list_clone_voice_response_body import ListCloneVoiceResponseBodyDataCloneVoices
 from ._list_clone_voice_response_body import ListCloneVoiceResponseBodyData
+from ._list_clone_voice_models_response_body import ListCloneVoiceModelsResponseBodyDataCloneVoiceModels
+from ._list_clone_voice_models_response_body import ListCloneVoiceModelsResponseBodyData
+from ._list_nlu_models_response_body import ListNluModelsResponseBodyData
 from ._list_variable_response_body import ListVariableResponseBodyDataVariables
 from ._list_variable_response_body import ListVariableResponseBodyData
+from ._list_vocabulary_response_body import ListVocabularyResponseBodyDataVocabularies
+from ._list_vocabulary_response_body import ListVocabularyResponseBodyData
+from ._list_voice_access_profile_response_body import ListVoiceAccessProfileResponseBodyDataVoiceAccessProfilesProfile
+from ._list_voice_access_profile_response_body import ListVoiceAccessProfileResponseBodyDataVoiceAccessProfiles
+from ._list_voice_access_profile_response_body import ListVoiceAccessProfileResponseBodyData
+from ._list_voice_engines_response_body import ListVoiceEnginesResponseBodyDataVoiceEngines
+from ._list_voice_engines_response_body import ListVoiceEnginesResponseBodyData
 from ._list_voices_response_body import ListVoicesResponseBodyDataVoices
 from ._list_voices_response_body import ListVoicesResponseBodyData
+from ._preview_voice_request import PreviewVoiceRequestParams
 from ._update_application_version_request import UpdateApplicationVersionRequestInteractionConfigSilenceDetectionConfig
 from ._update_application_version_request import UpdateApplicationVersionRequestInteractionConfig
+from ._update_application_version_request import UpdateApplicationVersionRequestRagConfig
 from ._update_application_version_request import UpdateApplicationVersionRequestScriptProfileAgentProfile
 from ._update_application_version_request import UpdateApplicationVersionRequestScriptProfile
 from ._update_application_version_request import UpdateApplicationVersionRequestSynthesizerConfig
 from ._update_application_version_request import UpdateApplicationVersionRequestTranscriberConfig
+from ._update_voice_access_profile_request import UpdateVoiceAccessProfileRequestProfile
 
 __all__ = [
     BridgeWebCallRequest,
@@ -121,6 +207,14 @@ __all__ = [
     CreateVariableRequest,
     CreateVariableResponseBody,
     CreateVariableResponse,
+    CreateVocabularyRequest,
+    CreateVocabularyShrinkRequest,
+    CreateVocabularyResponseBody,
+    CreateVocabularyResponse,
+    CreateVoiceAccessProfileRequest,
+    CreateVoiceAccessProfileShrinkRequest,
+    CreateVoiceAccessProfileResponseBody,
+    CreateVoiceAccessProfileResponse,
     DeleteApplicationRequest,
     DeleteApplicationResponseBody,
     DeleteApplicationResponse,
@@ -130,6 +224,19 @@ __all__ = [
     DeleteVariableRequest,
     DeleteVariableResponseBody,
     DeleteVariableResponse,
+    DeleteVocabularyRequest,
+    DeleteVocabularyResponseBody,
+    DeleteVocabularyResponse,
+    DeleteVoiceAccessProfileRequest,
+    DeleteVoiceAccessProfileResponseBody,
+    DeleteVoiceAccessProfileResponse,
+    DisableSubscriptionRequest,
+    DisableSubscriptionResponseBody,
+    DisableSubscriptionResponse,
+    ExportVocabularyRequest,
+    ExportVocabularyShrinkRequest,
+    ExportVocabularyResponseBody,
+    ExportVocabularyResponse,
     GenerateFileUploadParamsRequest,
     GenerateFileUploadParamsResponseBody,
     GenerateFileUploadParamsResponse,
@@ -139,18 +246,49 @@ __all__ = [
     GetDataChannelCredentialRequest,
     GetDataChannelCredentialResponseBody,
     GetDataChannelCredentialResponse,
+    GetSubscriptionRequest,
+    GetSubscriptionResponseBody,
+    GetSubscriptionResponse,
+    GetVocabularyRequest,
+    GetVocabularyResponseBody,
+    GetVocabularyResponse,
+    ImportVocabularyRequest,
+    ImportVocabularyResponseBody,
+    ImportVocabularyResponse,
     ListApplicationsRequest,
     ListApplicationsResponseBody,
     ListApplicationsResponse,
+    ListBackgroundMusicsRequest,
+    ListBackgroundMusicsResponseBody,
+    ListBackgroundMusicsResponse,
     ListCloneVoiceRequest,
     ListCloneVoiceResponseBody,
     ListCloneVoiceResponse,
+    ListCloneVoiceModelsRequest,
+    ListCloneVoiceModelsResponseBody,
+    ListCloneVoiceModelsResponse,
+    ListNluModelsRequest,
+    ListNluModelsResponseBody,
+    ListNluModelsResponse,
     ListVariableRequest,
     ListVariableResponseBody,
     ListVariableResponse,
+    ListVocabularyRequest,
+    ListVocabularyResponseBody,
+    ListVocabularyResponse,
+    ListVoiceAccessProfileRequest,
+    ListVoiceAccessProfileResponseBody,
+    ListVoiceAccessProfileResponse,
+    ListVoiceEnginesRequest,
+    ListVoiceEnginesResponseBody,
+    ListVoiceEnginesResponse,
     ListVoicesRequest,
     ListVoicesResponseBody,
     ListVoicesResponse,
+    PreviewVoiceRequest,
+    PreviewVoiceShrinkRequest,
+    PreviewVoiceResponseBody,
+    PreviewVoiceResponse,
     PublishApplicationVersionRequest,
     PublishApplicationVersionResponseBody,
     PublishApplicationVersionResponse,
@@ -164,20 +302,35 @@ __all__ = [
     UpdateCloneVoiceRequest,
     UpdateCloneVoiceResponseBody,
     UpdateCloneVoiceResponse,
+    UpdateSubscriptionRequest,
+    UpdateSubscriptionShrinkRequest,
+    UpdateSubscriptionResponseBody,
+    UpdateSubscriptionResponse,
     UpdateVariableRequest,
     UpdateVariableResponseBody,
     UpdateVariableResponse,
+    UpdateVocabularyRequest,
+    UpdateVocabularyShrinkRequest,
+    UpdateVocabularyResponseBody,
+    UpdateVocabularyResponse,
+    UpdateVoiceAccessProfileRequest,
+    UpdateVoiceAccessProfileShrinkRequest,
+    UpdateVoiceAccessProfileResponseBody,
+    UpdateVoiceAccessProfileResponse,
     BridgeWebCallResponseBodyData,
     CreateApplicationVersionRequestInteractionConfigSilenceDetectionConfig,
     CreateApplicationVersionRequestInteractionConfig,
+    CreateApplicationVersionRequestRagConfig,
     CreateApplicationVersionRequestScriptProfileAgentProfile,
     CreateApplicationVersionRequestScriptProfile,
     CreateApplicationVersionRequestSynthesizerConfig,
     CreateApplicationVersionRequestTranscriberConfig,
     CreateCloneVoiceResponseBodyData,
+    CreateVoiceAccessProfileRequestProfile,
     GenerateFileUploadParamsResponseBodyData,
     GetApplicationResponseBodyDataDraftVersionInteractionConfigSilenceDetectionConfig,
     GetApplicationResponseBodyDataDraftVersionInteractionConfig,
+    GetApplicationResponseBodyDataDraftVersionRagConfig,
     GetApplicationResponseBodyDataDraftVersionScriptProfileAgentProfile,
     GetApplicationResponseBodyDataDraftVersionScriptProfile,
     GetApplicationResponseBodyDataDraftVersionSynthesizerConfig,
@@ -185,6 +338,7 @@ __all__ = [
     GetApplicationResponseBodyDataDraftVersion,
     GetApplicationResponseBodyDataPublishedVersionInteractionConfigSilenceDetectionConfig,
     GetApplicationResponseBodyDataPublishedVersionInteractionConfig,
+    GetApplicationResponseBodyDataPublishedVersionRagConfig,
     GetApplicationResponseBodyDataPublishedVersionScriptProfileAgentProfile,
     GetApplicationResponseBodyDataPublishedVersionScriptProfile,
     GetApplicationResponseBodyDataPublishedVersionSynthesizerConfig,
@@ -192,18 +346,36 @@ __all__ = [
     GetApplicationResponseBodyDataPublishedVersion,
     GetApplicationResponseBodyData,
     GetDataChannelCredentialResponseBodyData,
+    GetSubscriptionResponseBodyDataEventList,
+    GetSubscriptionResponseBodyData,
+    GetVocabularyResponseBodyData,
     ListApplicationsResponseBodyDataApplications,
     ListApplicationsResponseBodyData,
+    ListBackgroundMusicsResponseBodyDataBackgroundMusics,
+    ListBackgroundMusicsResponseBodyData,
     ListCloneVoiceResponseBodyDataCloneVoices,
     ListCloneVoiceResponseBodyData,
+    ListCloneVoiceModelsResponseBodyDataCloneVoiceModels,
+    ListCloneVoiceModelsResponseBodyData,
+    ListNluModelsResponseBodyData,
     ListVariableResponseBodyDataVariables,
     ListVariableResponseBodyData,
+    ListVocabularyResponseBodyDataVocabularies,
+    ListVocabularyResponseBodyData,
+    ListVoiceAccessProfileResponseBodyDataVoiceAccessProfilesProfile,
+    ListVoiceAccessProfileResponseBodyDataVoiceAccessProfiles,
+    ListVoiceAccessProfileResponseBodyData,
+    ListVoiceEnginesResponseBodyDataVoiceEngines,
+    ListVoiceEnginesResponseBodyData,
     ListVoicesResponseBodyDataVoices,
     ListVoicesResponseBodyData,
+    PreviewVoiceRequestParams,
     UpdateApplicationVersionRequestInteractionConfigSilenceDetectionConfig,
     UpdateApplicationVersionRequestInteractionConfig,
+    UpdateApplicationVersionRequestRagConfig,
     UpdateApplicationVersionRequestScriptProfileAgentProfile,
     UpdateApplicationVersionRequestScriptProfile,
     UpdateApplicationVersionRequestSynthesizerConfig,
-    UpdateApplicationVersionRequestTranscriberConfig
+    UpdateApplicationVersionRequestTranscriberConfig,
+    UpdateVoiceAccessProfileRequestProfile
 ]

@@ -1,0 +1,41 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from darabonba.model import DaraModel
+
+class DeleteVoiceAccessProfileRequest(DaraModel):
+    def __init__(
+        self,
+        access_profile_id: str = None,
+        business_unit_id: str = None,
+    ):
+        self.access_profile_id = access_profile_id
+        self.business_unit_id = business_unit_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.access_profile_id is not None:
+            result['AccessProfileId'] = self.access_profile_id
+
+        if self.business_unit_id is not None:
+            result['BusinessUnitId'] = self.business_unit_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessProfileId') is not None:
+            self.access_profile_id = m.get('AccessProfileId')
+
+        if m.get('BusinessUnitId') is not None:
+            self.business_unit_id = m.get('BusinessUnitId')
+
+        return self
+

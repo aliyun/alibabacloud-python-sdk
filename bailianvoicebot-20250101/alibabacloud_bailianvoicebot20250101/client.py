@@ -238,6 +238,8 @@ class Client(OpenApiClient):
         Utils.convert(tmp_req, request)
         if not DaraCore.is_null(tmp_req.interaction_config):
             request.interaction_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.interaction_config, 'InteractionConfig', 'json')
+        if not DaraCore.is_null(tmp_req.rag_config):
+            request.rag_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.rag_config, 'RagConfig', 'json')
         if not DaraCore.is_null(tmp_req.script_profile):
             request.script_profile_shrink = Utils.array_to_string_with_specified_style(tmp_req.script_profile, 'ScriptProfile', 'json')
         if not DaraCore.is_null(tmp_req.synthesizer_config):
@@ -251,6 +253,8 @@ class Client(OpenApiClient):
             query['BusinessUnitId'] = request.business_unit_id
         if not DaraCore.is_null(request.interaction_config_shrink):
             query['InteractionConfig'] = request.interaction_config_shrink
+        if not DaraCore.is_null(request.rag_config_shrink):
+            query['RagConfig'] = request.rag_config_shrink
         if not DaraCore.is_null(request.script_profile_shrink):
             query['ScriptProfile'] = request.script_profile_shrink
         if not DaraCore.is_null(request.source_version_id):
@@ -288,6 +292,8 @@ class Client(OpenApiClient):
         Utils.convert(tmp_req, request)
         if not DaraCore.is_null(tmp_req.interaction_config):
             request.interaction_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.interaction_config, 'InteractionConfig', 'json')
+        if not DaraCore.is_null(tmp_req.rag_config):
+            request.rag_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.rag_config, 'RagConfig', 'json')
         if not DaraCore.is_null(tmp_req.script_profile):
             request.script_profile_shrink = Utils.array_to_string_with_specified_style(tmp_req.script_profile, 'ScriptProfile', 'json')
         if not DaraCore.is_null(tmp_req.synthesizer_config):
@@ -301,6 +307,8 @@ class Client(OpenApiClient):
             query['BusinessUnitId'] = request.business_unit_id
         if not DaraCore.is_null(request.interaction_config_shrink):
             query['InteractionConfig'] = request.interaction_config_shrink
+        if not DaraCore.is_null(request.rag_config_shrink):
+            query['RagConfig'] = request.rag_config_shrink
         if not DaraCore.is_null(request.script_profile_shrink):
             query['ScriptProfile'] = request.script_profile_shrink
         if not DaraCore.is_null(request.source_version_id):
@@ -501,6 +509,182 @@ class Client(OpenApiClient):
     ) -> main_models.CreateVariableResponse:
         runtime = RuntimeOptions()
         return await self.create_variable_with_options_async(request, runtime)
+
+    def create_vocabulary_with_options(
+        self,
+        tmp_req: main_models.CreateVocabularyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateVocabularyResponse:
+        tmp_req.validate()
+        request = main_models.CreateVocabularyShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.words):
+            request.words_shrink = Utils.array_to_string_with_specified_style(tmp_req.words, 'Words', 'json')
+        body = {}
+        if not DaraCore.is_null(request.business_unit_id):
+            body['BusinessUnitId'] = request.business_unit_id
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.words_shrink):
+            body['Words'] = request.words_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateVocabulary',
+            version = '2025-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateVocabularyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_vocabulary_with_options_async(
+        self,
+        tmp_req: main_models.CreateVocabularyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateVocabularyResponse:
+        tmp_req.validate()
+        request = main_models.CreateVocabularyShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.words):
+            request.words_shrink = Utils.array_to_string_with_specified_style(tmp_req.words, 'Words', 'json')
+        body = {}
+        if not DaraCore.is_null(request.business_unit_id):
+            body['BusinessUnitId'] = request.business_unit_id
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.words_shrink):
+            body['Words'] = request.words_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateVocabulary',
+            version = '2025-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateVocabularyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_vocabulary(
+        self,
+        request: main_models.CreateVocabularyRequest,
+    ) -> main_models.CreateVocabularyResponse:
+        runtime = RuntimeOptions()
+        return self.create_vocabulary_with_options(request, runtime)
+
+    async def create_vocabulary_async(
+        self,
+        request: main_models.CreateVocabularyRequest,
+    ) -> main_models.CreateVocabularyResponse:
+        runtime = RuntimeOptions()
+        return await self.create_vocabulary_with_options_async(request, runtime)
+
+    def create_voice_access_profile_with_options(
+        self,
+        tmp_req: main_models.CreateVoiceAccessProfileRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateVoiceAccessProfileResponse:
+        tmp_req.validate()
+        request = main_models.CreateVoiceAccessProfileShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.profile):
+            request.profile_shrink = Utils.array_to_string_with_specified_style(tmp_req.profile, 'Profile', 'json')
+        body = {}
+        if not DaraCore.is_null(request.business_unit_id):
+            body['BusinessUnitId'] = request.business_unit_id
+        if not DaraCore.is_null(request.nls_engine):
+            body['NlsEngine'] = request.nls_engine
+        if not DaraCore.is_null(request.profile_shrink):
+            body['Profile'] = request.profile_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateVoiceAccessProfile',
+            version = '2025-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateVoiceAccessProfileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_voice_access_profile_with_options_async(
+        self,
+        tmp_req: main_models.CreateVoiceAccessProfileRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateVoiceAccessProfileResponse:
+        tmp_req.validate()
+        request = main_models.CreateVoiceAccessProfileShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.profile):
+            request.profile_shrink = Utils.array_to_string_with_specified_style(tmp_req.profile, 'Profile', 'json')
+        body = {}
+        if not DaraCore.is_null(request.business_unit_id):
+            body['BusinessUnitId'] = request.business_unit_id
+        if not DaraCore.is_null(request.nls_engine):
+            body['NlsEngine'] = request.nls_engine
+        if not DaraCore.is_null(request.profile_shrink):
+            body['Profile'] = request.profile_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateVoiceAccessProfile',
+            version = '2025-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateVoiceAccessProfileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_voice_access_profile(
+        self,
+        request: main_models.CreateVoiceAccessProfileRequest,
+    ) -> main_models.CreateVoiceAccessProfileResponse:
+        runtime = RuntimeOptions()
+        return self.create_voice_access_profile_with_options(request, runtime)
+
+    async def create_voice_access_profile_async(
+        self,
+        request: main_models.CreateVoiceAccessProfileRequest,
+    ) -> main_models.CreateVoiceAccessProfileResponse:
+        runtime = RuntimeOptions()
+        return await self.create_voice_access_profile_with_options_async(request, runtime)
 
     def delete_application_with_options(
         self,
@@ -723,6 +907,306 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteVariableResponse:
         runtime = RuntimeOptions()
         return await self.delete_variable_with_options_async(request, runtime)
+
+    def delete_vocabulary_with_options(
+        self,
+        request: main_models.DeleteVocabularyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteVocabularyResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.business_unit_id):
+            body['BusinessUnitId'] = request.business_unit_id
+        if not DaraCore.is_null(request.vocabulary_id):
+            body['VocabularyId'] = request.vocabulary_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteVocabulary',
+            version = '2025-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteVocabularyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_vocabulary_with_options_async(
+        self,
+        request: main_models.DeleteVocabularyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteVocabularyResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.business_unit_id):
+            body['BusinessUnitId'] = request.business_unit_id
+        if not DaraCore.is_null(request.vocabulary_id):
+            body['VocabularyId'] = request.vocabulary_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteVocabulary',
+            version = '2025-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteVocabularyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_vocabulary(
+        self,
+        request: main_models.DeleteVocabularyRequest,
+    ) -> main_models.DeleteVocabularyResponse:
+        runtime = RuntimeOptions()
+        return self.delete_vocabulary_with_options(request, runtime)
+
+    async def delete_vocabulary_async(
+        self,
+        request: main_models.DeleteVocabularyRequest,
+    ) -> main_models.DeleteVocabularyResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_vocabulary_with_options_async(request, runtime)
+
+    def delete_voice_access_profile_with_options(
+        self,
+        request: main_models.DeleteVoiceAccessProfileRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteVoiceAccessProfileResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.access_profile_id):
+            body['AccessProfileId'] = request.access_profile_id
+        if not DaraCore.is_null(request.business_unit_id):
+            body['BusinessUnitId'] = request.business_unit_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteVoiceAccessProfile',
+            version = '2025-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteVoiceAccessProfileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_voice_access_profile_with_options_async(
+        self,
+        request: main_models.DeleteVoiceAccessProfileRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteVoiceAccessProfileResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.access_profile_id):
+            body['AccessProfileId'] = request.access_profile_id
+        if not DaraCore.is_null(request.business_unit_id):
+            body['BusinessUnitId'] = request.business_unit_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteVoiceAccessProfile',
+            version = '2025-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteVoiceAccessProfileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_voice_access_profile(
+        self,
+        request: main_models.DeleteVoiceAccessProfileRequest,
+    ) -> main_models.DeleteVoiceAccessProfileResponse:
+        runtime = RuntimeOptions()
+        return self.delete_voice_access_profile_with_options(request, runtime)
+
+    async def delete_voice_access_profile_async(
+        self,
+        request: main_models.DeleteVoiceAccessProfileRequest,
+    ) -> main_models.DeleteVoiceAccessProfileResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_voice_access_profile_with_options_async(request, runtime)
+
+    def disable_subscription_with_options(
+        self,
+        request: main_models.DisableSubscriptionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DisableSubscriptionResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.business_unit_id):
+            body['BusinessUnitId'] = request.business_unit_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DisableSubscription',
+            version = '2025-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DisableSubscriptionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def disable_subscription_with_options_async(
+        self,
+        request: main_models.DisableSubscriptionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DisableSubscriptionResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.business_unit_id):
+            body['BusinessUnitId'] = request.business_unit_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DisableSubscription',
+            version = '2025-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DisableSubscriptionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def disable_subscription(
+        self,
+        request: main_models.DisableSubscriptionRequest,
+    ) -> main_models.DisableSubscriptionResponse:
+        runtime = RuntimeOptions()
+        return self.disable_subscription_with_options(request, runtime)
+
+    async def disable_subscription_async(
+        self,
+        request: main_models.DisableSubscriptionRequest,
+    ) -> main_models.DisableSubscriptionResponse:
+        runtime = RuntimeOptions()
+        return await self.disable_subscription_with_options_async(request, runtime)
+
+    def export_vocabulary_with_options(
+        self,
+        tmp_req: main_models.ExportVocabularyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ExportVocabularyResponse:
+        tmp_req.validate()
+        request = main_models.ExportVocabularyShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.vocabulary_ids):
+            request.vocabulary_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.vocabulary_ids, 'VocabularyIds', 'json')
+        body = {}
+        if not DaraCore.is_null(request.business_unit_id):
+            body['BusinessUnitId'] = request.business_unit_id
+        if not DaraCore.is_null(request.vocabulary_ids_shrink):
+            body['VocabularyIds'] = request.vocabulary_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ExportVocabulary',
+            version = '2025-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ExportVocabularyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def export_vocabulary_with_options_async(
+        self,
+        tmp_req: main_models.ExportVocabularyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ExportVocabularyResponse:
+        tmp_req.validate()
+        request = main_models.ExportVocabularyShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.vocabulary_ids):
+            request.vocabulary_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.vocabulary_ids, 'VocabularyIds', 'json')
+        body = {}
+        if not DaraCore.is_null(request.business_unit_id):
+            body['BusinessUnitId'] = request.business_unit_id
+        if not DaraCore.is_null(request.vocabulary_ids_shrink):
+            body['VocabularyIds'] = request.vocabulary_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ExportVocabulary',
+            version = '2025-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ExportVocabularyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def export_vocabulary(
+        self,
+        request: main_models.ExportVocabularyRequest,
+    ) -> main_models.ExportVocabularyResponse:
+        runtime = RuntimeOptions()
+        return self.export_vocabulary_with_options(request, runtime)
+
+    async def export_vocabulary_async(
+        self,
+        request: main_models.ExportVocabularyRequest,
+    ) -> main_models.ExportVocabularyResponse:
+        runtime = RuntimeOptions()
+        return await self.export_vocabulary_with_options_async(request, runtime)
 
     def generate_file_upload_params_with_options(
         self,
@@ -950,6 +1434,224 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_data_channel_credential_with_options_async(request, runtime)
 
+    def get_subscription_with_options(
+        self,
+        request: main_models.GetSubscriptionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetSubscriptionResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.business_unit_id):
+            body['BusinessUnitId'] = request.business_unit_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetSubscription',
+            version = '2025-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetSubscriptionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_subscription_with_options_async(
+        self,
+        request: main_models.GetSubscriptionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetSubscriptionResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.business_unit_id):
+            body['BusinessUnitId'] = request.business_unit_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetSubscription',
+            version = '2025-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetSubscriptionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_subscription(
+        self,
+        request: main_models.GetSubscriptionRequest,
+    ) -> main_models.GetSubscriptionResponse:
+        runtime = RuntimeOptions()
+        return self.get_subscription_with_options(request, runtime)
+
+    async def get_subscription_async(
+        self,
+        request: main_models.GetSubscriptionRequest,
+    ) -> main_models.GetSubscriptionResponse:
+        runtime = RuntimeOptions()
+        return await self.get_subscription_with_options_async(request, runtime)
+
+    def get_vocabulary_with_options(
+        self,
+        request: main_models.GetVocabularyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetVocabularyResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.business_unit_id):
+            body['BusinessUnitId'] = request.business_unit_id
+        if not DaraCore.is_null(request.vocabulary_id):
+            body['VocabularyId'] = request.vocabulary_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetVocabulary',
+            version = '2025-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetVocabularyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_vocabulary_with_options_async(
+        self,
+        request: main_models.GetVocabularyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetVocabularyResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.business_unit_id):
+            body['BusinessUnitId'] = request.business_unit_id
+        if not DaraCore.is_null(request.vocabulary_id):
+            body['VocabularyId'] = request.vocabulary_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetVocabulary',
+            version = '2025-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetVocabularyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_vocabulary(
+        self,
+        request: main_models.GetVocabularyRequest,
+    ) -> main_models.GetVocabularyResponse:
+        runtime = RuntimeOptions()
+        return self.get_vocabulary_with_options(request, runtime)
+
+    async def get_vocabulary_async(
+        self,
+        request: main_models.GetVocabularyRequest,
+    ) -> main_models.GetVocabularyResponse:
+        runtime = RuntimeOptions()
+        return await self.get_vocabulary_with_options_async(request, runtime)
+
+    def import_vocabulary_with_options(
+        self,
+        request: main_models.ImportVocabularyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ImportVocabularyResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.business_unit_id):
+            body['BusinessUnitId'] = request.business_unit_id
+        if not DaraCore.is_null(request.file_key):
+            body['FileKey'] = request.file_key
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ImportVocabulary',
+            version = '2025-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ImportVocabularyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def import_vocabulary_with_options_async(
+        self,
+        request: main_models.ImportVocabularyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ImportVocabularyResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.business_unit_id):
+            body['BusinessUnitId'] = request.business_unit_id
+        if not DaraCore.is_null(request.file_key):
+            body['FileKey'] = request.file_key
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ImportVocabulary',
+            version = '2025-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ImportVocabularyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def import_vocabulary(
+        self,
+        request: main_models.ImportVocabularyRequest,
+    ) -> main_models.ImportVocabularyResponse:
+        runtime = RuntimeOptions()
+        return self.import_vocabulary_with_options(request, runtime)
+
+    async def import_vocabulary_async(
+        self,
+        request: main_models.ImportVocabularyRequest,
+    ) -> main_models.ImportVocabularyResponse:
+        runtime = RuntimeOptions()
+        return await self.import_vocabulary_with_options_async(request, runtime)
+
     def list_applications_with_options(
         self,
         request: main_models.ListApplicationsRequest,
@@ -1031,6 +1733,84 @@ class Client(OpenApiClient):
     ) -> main_models.ListApplicationsResponse:
         runtime = RuntimeOptions()
         return await self.list_applications_with_options_async(request, runtime)
+
+    def list_background_musics_with_options(
+        self,
+        request: main_models.ListBackgroundMusicsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListBackgroundMusicsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.business_unit_id):
+            body['BusinessUnitId'] = request.business_unit_id
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListBackgroundMusics',
+            version = '2025-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListBackgroundMusicsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_background_musics_with_options_async(
+        self,
+        request: main_models.ListBackgroundMusicsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListBackgroundMusicsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.business_unit_id):
+            body['BusinessUnitId'] = request.business_unit_id
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListBackgroundMusics',
+            version = '2025-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListBackgroundMusicsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_background_musics(
+        self,
+        request: main_models.ListBackgroundMusicsRequest,
+    ) -> main_models.ListBackgroundMusicsResponse:
+        runtime = RuntimeOptions()
+        return self.list_background_musics_with_options(request, runtime)
+
+    async def list_background_musics_async(
+        self,
+        request: main_models.ListBackgroundMusicsRequest,
+    ) -> main_models.ListBackgroundMusicsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_background_musics_with_options_async(request, runtime)
 
     def list_clone_voice_with_options(
         self,
@@ -1114,6 +1894,150 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_clone_voice_with_options_async(request, runtime)
 
+    def list_clone_voice_models_with_options(
+        self,
+        request: main_models.ListCloneVoiceModelsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListCloneVoiceModelsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListCloneVoiceModels',
+            version = '2025-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListCloneVoiceModelsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_clone_voice_models_with_options_async(
+        self,
+        request: main_models.ListCloneVoiceModelsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListCloneVoiceModelsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListCloneVoiceModels',
+            version = '2025-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListCloneVoiceModelsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_clone_voice_models(
+        self,
+        request: main_models.ListCloneVoiceModelsRequest,
+    ) -> main_models.ListCloneVoiceModelsResponse:
+        runtime = RuntimeOptions()
+        return self.list_clone_voice_models_with_options(request, runtime)
+
+    async def list_clone_voice_models_async(
+        self,
+        request: main_models.ListCloneVoiceModelsRequest,
+    ) -> main_models.ListCloneVoiceModelsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_clone_voice_models_with_options_async(request, runtime)
+
+    def list_nlu_models_with_options(
+        self,
+        request: main_models.ListNluModelsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListNluModelsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.business_unit_id):
+            body['BusinessUnitId'] = request.business_unit_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListNluModels',
+            version = '2025-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListNluModelsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_nlu_models_with_options_async(
+        self,
+        request: main_models.ListNluModelsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListNluModelsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.business_unit_id):
+            body['BusinessUnitId'] = request.business_unit_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListNluModels',
+            version = '2025-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListNluModelsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_nlu_models(
+        self,
+        request: main_models.ListNluModelsRequest,
+    ) -> main_models.ListNluModelsResponse:
+        runtime = RuntimeOptions()
+        return self.list_nlu_models_with_options(request, runtime)
+
+    async def list_nlu_models_async(
+        self,
+        request: main_models.ListNluModelsRequest,
+    ) -> main_models.ListNluModelsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_nlu_models_with_options_async(request, runtime)
+
     def list_variable_with_options(
         self,
         request: main_models.ListVariableRequest,
@@ -1195,6 +2119,240 @@ class Client(OpenApiClient):
     ) -> main_models.ListVariableResponse:
         runtime = RuntimeOptions()
         return await self.list_variable_with_options_async(request, runtime)
+
+    def list_vocabulary_with_options(
+        self,
+        request: main_models.ListVocabularyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListVocabularyResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.business_unit_id):
+            body['BusinessUnitId'] = request.business_unit_id
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListVocabulary',
+            version = '2025-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListVocabularyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_vocabulary_with_options_async(
+        self,
+        request: main_models.ListVocabularyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListVocabularyResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.business_unit_id):
+            body['BusinessUnitId'] = request.business_unit_id
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListVocabulary',
+            version = '2025-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListVocabularyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_vocabulary(
+        self,
+        request: main_models.ListVocabularyRequest,
+    ) -> main_models.ListVocabularyResponse:
+        runtime = RuntimeOptions()
+        return self.list_vocabulary_with_options(request, runtime)
+
+    async def list_vocabulary_async(
+        self,
+        request: main_models.ListVocabularyRequest,
+    ) -> main_models.ListVocabularyResponse:
+        runtime = RuntimeOptions()
+        return await self.list_vocabulary_with_options_async(request, runtime)
+
+    def list_voice_access_profile_with_options(
+        self,
+        request: main_models.ListVoiceAccessProfileRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListVoiceAccessProfileResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.business_unit_id):
+            body['BusinessUnitId'] = request.business_unit_id
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListVoiceAccessProfile',
+            version = '2025-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListVoiceAccessProfileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_voice_access_profile_with_options_async(
+        self,
+        request: main_models.ListVoiceAccessProfileRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListVoiceAccessProfileResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.business_unit_id):
+            body['BusinessUnitId'] = request.business_unit_id
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListVoiceAccessProfile',
+            version = '2025-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListVoiceAccessProfileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_voice_access_profile(
+        self,
+        request: main_models.ListVoiceAccessProfileRequest,
+    ) -> main_models.ListVoiceAccessProfileResponse:
+        runtime = RuntimeOptions()
+        return self.list_voice_access_profile_with_options(request, runtime)
+
+    async def list_voice_access_profile_async(
+        self,
+        request: main_models.ListVoiceAccessProfileRequest,
+    ) -> main_models.ListVoiceAccessProfileResponse:
+        runtime = RuntimeOptions()
+        return await self.list_voice_access_profile_with_options_async(request, runtime)
+
+    def list_voice_engines_with_options(
+        self,
+        request: main_models.ListVoiceEnginesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListVoiceEnginesResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListVoiceEngines',
+            version = '2025-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListVoiceEnginesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_voice_engines_with_options_async(
+        self,
+        request: main_models.ListVoiceEnginesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListVoiceEnginesResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListVoiceEngines',
+            version = '2025-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListVoiceEnginesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_voice_engines(
+        self,
+        request: main_models.ListVoiceEnginesRequest,
+    ) -> main_models.ListVoiceEnginesResponse:
+        runtime = RuntimeOptions()
+        return self.list_voice_engines_with_options(request, runtime)
+
+    async def list_voice_engines_async(
+        self,
+        request: main_models.ListVoiceEnginesRequest,
+    ) -> main_models.ListVoiceEnginesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_voice_engines_with_options_async(request, runtime)
 
     def list_voices_with_options(
         self,
@@ -1281,6 +2439,108 @@ class Client(OpenApiClient):
     ) -> main_models.ListVoicesResponse:
         runtime = RuntimeOptions()
         return await self.list_voices_with_options_async(request, runtime)
+
+    def preview_voice_with_options(
+        self,
+        tmp_req: main_models.PreviewVoiceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.PreviewVoiceResponse:
+        tmp_req.validate()
+        request = main_models.PreviewVoiceShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.params):
+            request.params_shrink = Utils.array_to_string_with_specified_style(tmp_req.params, 'Params', 'json')
+        body = {}
+        if not DaraCore.is_null(request.business_unit_id):
+            body['BusinessUnitId'] = request.business_unit_id
+        if not DaraCore.is_null(request.model):
+            body['Model'] = request.model
+        if not DaraCore.is_null(request.nls_access_type):
+            body['NlsAccessType'] = request.nls_access_type
+        if not DaraCore.is_null(request.nls_engine):
+            body['NlsEngine'] = request.nls_engine
+        if not DaraCore.is_null(request.params_shrink):
+            body['Params'] = request.params_shrink
+        if not DaraCore.is_null(request.text):
+            body['Text'] = request.text
+        if not DaraCore.is_null(request.voice):
+            body['Voice'] = request.voice
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'PreviewVoice',
+            version = '2025-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.PreviewVoiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def preview_voice_with_options_async(
+        self,
+        tmp_req: main_models.PreviewVoiceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.PreviewVoiceResponse:
+        tmp_req.validate()
+        request = main_models.PreviewVoiceShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.params):
+            request.params_shrink = Utils.array_to_string_with_specified_style(tmp_req.params, 'Params', 'json')
+        body = {}
+        if not DaraCore.is_null(request.business_unit_id):
+            body['BusinessUnitId'] = request.business_unit_id
+        if not DaraCore.is_null(request.model):
+            body['Model'] = request.model
+        if not DaraCore.is_null(request.nls_access_type):
+            body['NlsAccessType'] = request.nls_access_type
+        if not DaraCore.is_null(request.nls_engine):
+            body['NlsEngine'] = request.nls_engine
+        if not DaraCore.is_null(request.params_shrink):
+            body['Params'] = request.params_shrink
+        if not DaraCore.is_null(request.text):
+            body['Text'] = request.text
+        if not DaraCore.is_null(request.voice):
+            body['Voice'] = request.voice
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'PreviewVoice',
+            version = '2025-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.PreviewVoiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def preview_voice(
+        self,
+        request: main_models.PreviewVoiceRequest,
+    ) -> main_models.PreviewVoiceResponse:
+        runtime = RuntimeOptions()
+        return self.preview_voice_with_options(request, runtime)
+
+    async def preview_voice_async(
+        self,
+        request: main_models.PreviewVoiceRequest,
+    ) -> main_models.PreviewVoiceResponse:
+        runtime = RuntimeOptions()
+        return await self.preview_voice_with_options_async(request, runtime)
 
     def publish_application_version_with_options(
         self,
@@ -1456,6 +2716,8 @@ class Client(OpenApiClient):
         Utils.convert(tmp_req, request)
         if not DaraCore.is_null(tmp_req.interaction_config):
             request.interaction_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.interaction_config, 'InteractionConfig', 'json')
+        if not DaraCore.is_null(tmp_req.rag_config):
+            request.rag_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.rag_config, 'RagConfig', 'json')
         if not DaraCore.is_null(tmp_req.script_profile):
             request.script_profile_shrink = Utils.array_to_string_with_specified_style(tmp_req.script_profile, 'ScriptProfile', 'json')
         if not DaraCore.is_null(tmp_req.synthesizer_config):
@@ -1469,6 +2731,8 @@ class Client(OpenApiClient):
             query['BusinessUnitId'] = request.business_unit_id
         if not DaraCore.is_null(request.interaction_config_shrink):
             query['InteractionConfig'] = request.interaction_config_shrink
+        if not DaraCore.is_null(request.rag_config_shrink):
+            query['RagConfig'] = request.rag_config_shrink
         if not DaraCore.is_null(request.script_profile_shrink):
             query['ScriptProfile'] = request.script_profile_shrink
         if not DaraCore.is_null(request.synthesizer_config_shrink):
@@ -1506,6 +2770,8 @@ class Client(OpenApiClient):
         Utils.convert(tmp_req, request)
         if not DaraCore.is_null(tmp_req.interaction_config):
             request.interaction_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.interaction_config, 'InteractionConfig', 'json')
+        if not DaraCore.is_null(tmp_req.rag_config):
+            request.rag_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.rag_config, 'RagConfig', 'json')
         if not DaraCore.is_null(tmp_req.script_profile):
             request.script_profile_shrink = Utils.array_to_string_with_specified_style(tmp_req.script_profile, 'ScriptProfile', 'json')
         if not DaraCore.is_null(tmp_req.synthesizer_config):
@@ -1519,6 +2785,8 @@ class Client(OpenApiClient):
             query['BusinessUnitId'] = request.business_unit_id
         if not DaraCore.is_null(request.interaction_config_shrink):
             query['InteractionConfig'] = request.interaction_config_shrink
+        if not DaraCore.is_null(request.rag_config_shrink):
+            query['RagConfig'] = request.rag_config_shrink
         if not DaraCore.is_null(request.script_profile_shrink):
             query['ScriptProfile'] = request.script_profile_shrink
         if not DaraCore.is_null(request.synthesizer_config_shrink):
@@ -1638,6 +2906,116 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.update_clone_voice_with_options_async(request, runtime)
 
+    def update_subscription_with_options(
+        self,
+        tmp_req: main_models.UpdateSubscriptionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateSubscriptionResponse:
+        tmp_req.validate()
+        request = main_models.UpdateSubscriptionShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.event_subscriptions):
+            request.event_subscriptions_shrink = Utils.array_to_string_with_specified_style(tmp_req.event_subscriptions, 'EventSubscriptions', 'json')
+        body = {}
+        if not DaraCore.is_null(request.business_unit_id):
+            body['BusinessUnitId'] = request.business_unit_id
+        if not DaraCore.is_null(request.endpoint):
+            body['Endpoint'] = request.endpoint
+        if not DaraCore.is_null(request.event_subscriptions_shrink):
+            body['EventSubscriptions'] = request.event_subscriptions_shrink
+        if not DaraCore.is_null(request.mq_instance_id):
+            body['MqInstanceId'] = request.mq_instance_id
+        if not DaraCore.is_null(request.mq_type):
+            body['MqType'] = request.mq_type
+        if not DaraCore.is_null(request.password):
+            body['Password'] = request.password
+        if not DaraCore.is_null(request.producer_id):
+            body['ProducerId'] = request.producer_id
+        if not DaraCore.is_null(request.topic):
+            body['Topic'] = request.topic
+        if not DaraCore.is_null(request.user_name):
+            body['UserName'] = request.user_name
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateSubscription',
+            version = '2025-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateSubscriptionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_subscription_with_options_async(
+        self,
+        tmp_req: main_models.UpdateSubscriptionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateSubscriptionResponse:
+        tmp_req.validate()
+        request = main_models.UpdateSubscriptionShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.event_subscriptions):
+            request.event_subscriptions_shrink = Utils.array_to_string_with_specified_style(tmp_req.event_subscriptions, 'EventSubscriptions', 'json')
+        body = {}
+        if not DaraCore.is_null(request.business_unit_id):
+            body['BusinessUnitId'] = request.business_unit_id
+        if not DaraCore.is_null(request.endpoint):
+            body['Endpoint'] = request.endpoint
+        if not DaraCore.is_null(request.event_subscriptions_shrink):
+            body['EventSubscriptions'] = request.event_subscriptions_shrink
+        if not DaraCore.is_null(request.mq_instance_id):
+            body['MqInstanceId'] = request.mq_instance_id
+        if not DaraCore.is_null(request.mq_type):
+            body['MqType'] = request.mq_type
+        if not DaraCore.is_null(request.password):
+            body['Password'] = request.password
+        if not DaraCore.is_null(request.producer_id):
+            body['ProducerId'] = request.producer_id
+        if not DaraCore.is_null(request.topic):
+            body['Topic'] = request.topic
+        if not DaraCore.is_null(request.user_name):
+            body['UserName'] = request.user_name
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateSubscription',
+            version = '2025-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateSubscriptionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_subscription(
+        self,
+        request: main_models.UpdateSubscriptionRequest,
+    ) -> main_models.UpdateSubscriptionResponse:
+        runtime = RuntimeOptions()
+        return self.update_subscription_with_options(request, runtime)
+
+    async def update_subscription_async(
+        self,
+        request: main_models.UpdateSubscriptionRequest,
+    ) -> main_models.UpdateSubscriptionResponse:
+        runtime = RuntimeOptions()
+        return await self.update_subscription_with_options_async(request, runtime)
+
     def update_variable_with_options(
         self,
         request: main_models.UpdateVariableRequest,
@@ -1719,3 +3097,187 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateVariableResponse:
         runtime = RuntimeOptions()
         return await self.update_variable_with_options_async(request, runtime)
+
+    def update_vocabulary_with_options(
+        self,
+        tmp_req: main_models.UpdateVocabularyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateVocabularyResponse:
+        tmp_req.validate()
+        request = main_models.UpdateVocabularyShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.words):
+            request.words_shrink = Utils.array_to_string_with_specified_style(tmp_req.words, 'Words', 'json')
+        body = {}
+        if not DaraCore.is_null(request.business_unit_id):
+            body['BusinessUnitId'] = request.business_unit_id
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.vocabulary_id):
+            body['VocabularyId'] = request.vocabulary_id
+        if not DaraCore.is_null(request.words_shrink):
+            body['Words'] = request.words_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateVocabulary',
+            version = '2025-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateVocabularyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_vocabulary_with_options_async(
+        self,
+        tmp_req: main_models.UpdateVocabularyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateVocabularyResponse:
+        tmp_req.validate()
+        request = main_models.UpdateVocabularyShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.words):
+            request.words_shrink = Utils.array_to_string_with_specified_style(tmp_req.words, 'Words', 'json')
+        body = {}
+        if not DaraCore.is_null(request.business_unit_id):
+            body['BusinessUnitId'] = request.business_unit_id
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.vocabulary_id):
+            body['VocabularyId'] = request.vocabulary_id
+        if not DaraCore.is_null(request.words_shrink):
+            body['Words'] = request.words_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateVocabulary',
+            version = '2025-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateVocabularyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_vocabulary(
+        self,
+        request: main_models.UpdateVocabularyRequest,
+    ) -> main_models.UpdateVocabularyResponse:
+        runtime = RuntimeOptions()
+        return self.update_vocabulary_with_options(request, runtime)
+
+    async def update_vocabulary_async(
+        self,
+        request: main_models.UpdateVocabularyRequest,
+    ) -> main_models.UpdateVocabularyResponse:
+        runtime = RuntimeOptions()
+        return await self.update_vocabulary_with_options_async(request, runtime)
+
+    def update_voice_access_profile_with_options(
+        self,
+        tmp_req: main_models.UpdateVoiceAccessProfileRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateVoiceAccessProfileResponse:
+        tmp_req.validate()
+        request = main_models.UpdateVoiceAccessProfileShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.profile):
+            request.profile_shrink = Utils.array_to_string_with_specified_style(tmp_req.profile, 'Profile', 'json')
+        body = {}
+        if not DaraCore.is_null(request.access_profile_id):
+            body['AccessProfileId'] = request.access_profile_id
+        if not DaraCore.is_null(request.business_unit_id):
+            body['BusinessUnitId'] = request.business_unit_id
+        if not DaraCore.is_null(request.nls_engine):
+            body['NlsEngine'] = request.nls_engine
+        if not DaraCore.is_null(request.profile_shrink):
+            body['Profile'] = request.profile_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateVoiceAccessProfile',
+            version = '2025-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateVoiceAccessProfileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_voice_access_profile_with_options_async(
+        self,
+        tmp_req: main_models.UpdateVoiceAccessProfileRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateVoiceAccessProfileResponse:
+        tmp_req.validate()
+        request = main_models.UpdateVoiceAccessProfileShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.profile):
+            request.profile_shrink = Utils.array_to_string_with_specified_style(tmp_req.profile, 'Profile', 'json')
+        body = {}
+        if not DaraCore.is_null(request.access_profile_id):
+            body['AccessProfileId'] = request.access_profile_id
+        if not DaraCore.is_null(request.business_unit_id):
+            body['BusinessUnitId'] = request.business_unit_id
+        if not DaraCore.is_null(request.nls_engine):
+            body['NlsEngine'] = request.nls_engine
+        if not DaraCore.is_null(request.profile_shrink):
+            body['Profile'] = request.profile_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateVoiceAccessProfile',
+            version = '2025-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateVoiceAccessProfileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_voice_access_profile(
+        self,
+        request: main_models.UpdateVoiceAccessProfileRequest,
+    ) -> main_models.UpdateVoiceAccessProfileResponse:
+        runtime = RuntimeOptions()
+        return self.update_voice_access_profile_with_options(request, runtime)
+
+    async def update_voice_access_profile_async(
+        self,
+        request: main_models.UpdateVoiceAccessProfileRequest,
+    ) -> main_models.UpdateVoiceAccessProfileResponse:
+        runtime = RuntimeOptions()
+        return await self.update_voice_access_profile_with_options_async(request, runtime)
