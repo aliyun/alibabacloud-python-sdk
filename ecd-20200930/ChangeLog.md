@@ -3,6 +3,11 @@
 - Support API QueryHistoryAvgMetricList.
 
 
+2026-05-06 Version: 4.25.0
+- Support API DescribeOnlineUserCount.
+- Support API QueryHistoryAvgMetricList.
+
+
 2026-04-30 Version: 4.24.4
 - Update API CreateADConnectorOfficeSite: add request parameters AccessAttribute.
 - Update API CreateSimpleOfficeSite: add request parameters AccessAttribute.
