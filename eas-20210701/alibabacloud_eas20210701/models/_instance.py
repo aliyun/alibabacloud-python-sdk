@@ -9,6 +9,7 @@ from darabonba.model import DaraModel
 class Instance(DaraModel):
     def __init__(
         self,
+        create_time: str = None,
         current_amount: float = None,
         detached: bool = None,
         external_ip: str = None,
@@ -40,6 +41,7 @@ class Instance(DaraModel):
         total_processes: int = None,
         zone: str = None,
     ):
+        self.create_time = create_time
         # The current hourly price of the spot instance.
         self.current_amount = current_amount
         self.detached = detached
@@ -114,6 +116,9 @@ class Instance(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+
         if self.current_amount is not None:
             result['CurrentAmount'] = self.current_amount
 
@@ -208,6 +213,9 @@ class Instance(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+
         if m.get('CurrentAmount') is not None:
             self.current_amount = m.get('CurrentAmount')
 
