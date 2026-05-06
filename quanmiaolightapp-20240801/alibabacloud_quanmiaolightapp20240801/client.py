@@ -1546,14 +1546,20 @@ class Client(OpenApiClient):
     def run_essay_correction_with_sse(
         self,
         workspace_id: str,
-        request: main_models.RunEssayCorrectionRequest,
+        tmp_req: main_models.RunEssayCorrectionRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> Generator[main_models.RunEssayCorrectionResponse, None, None]:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.RunEssayCorrectionShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.dimensions):
+            request.dimensions_shrink = Utils.array_to_string_with_specified_style(tmp_req.dimensions, 'dimensions', 'json')
         body = {}
         if not DaraCore.is_null(request.answer):
             body['answer'] = request.answer
+        if not DaraCore.is_null(request.dimensions_shrink):
+            body['dimensions'] = request.dimensions_shrink
         if not DaraCore.is_null(request.grade):
             body['grade'] = request.grade
         if not DaraCore.is_null(request.model_id):
@@ -1598,14 +1604,20 @@ class Client(OpenApiClient):
     async def run_essay_correction_with_sse_async(
         self,
         workspace_id: str,
-        request: main_models.RunEssayCorrectionRequest,
+        tmp_req: main_models.RunEssayCorrectionRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> AsyncGenerator[main_models.RunEssayCorrectionResponse, None, None]:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.RunEssayCorrectionShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.dimensions):
+            request.dimensions_shrink = Utils.array_to_string_with_specified_style(tmp_req.dimensions, 'dimensions', 'json')
         body = {}
         if not DaraCore.is_null(request.answer):
             body['answer'] = request.answer
+        if not DaraCore.is_null(request.dimensions_shrink):
+            body['dimensions'] = request.dimensions_shrink
         if not DaraCore.is_null(request.grade):
             body['grade'] = request.grade
         if not DaraCore.is_null(request.model_id):
@@ -1650,14 +1662,20 @@ class Client(OpenApiClient):
     def run_essay_correction_with_options(
         self,
         workspace_id: str,
-        request: main_models.RunEssayCorrectionRequest,
+        tmp_req: main_models.RunEssayCorrectionRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.RunEssayCorrectionResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.RunEssayCorrectionShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.dimensions):
+            request.dimensions_shrink = Utils.array_to_string_with_specified_style(tmp_req.dimensions, 'dimensions', 'json')
         body = {}
         if not DaraCore.is_null(request.answer):
             body['answer'] = request.answer
+        if not DaraCore.is_null(request.dimensions_shrink):
+            body['dimensions'] = request.dimensions_shrink
         if not DaraCore.is_null(request.grade):
             body['grade'] = request.grade
         if not DaraCore.is_null(request.model_id):
@@ -1693,14 +1711,20 @@ class Client(OpenApiClient):
     async def run_essay_correction_with_options_async(
         self,
         workspace_id: str,
-        request: main_models.RunEssayCorrectionRequest,
+        tmp_req: main_models.RunEssayCorrectionRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.RunEssayCorrectionResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.RunEssayCorrectionShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.dimensions):
+            request.dimensions_shrink = Utils.array_to_string_with_specified_style(tmp_req.dimensions, 'dimensions', 'json')
         body = {}
         if not DaraCore.is_null(request.answer):
             body['answer'] = request.answer
+        if not DaraCore.is_null(request.dimensions_shrink):
+            body['dimensions'] = request.dimensions_shrink
         if not DaraCore.is_null(request.grade):
             body['grade'] = request.grade
         if not DaraCore.is_null(request.model_id):
@@ -5161,9 +5185,13 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.SubmitEssayCorrectionTaskShrinkRequest()
         Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.dimensions):
+            request.dimensions_shrink = Utils.array_to_string_with_specified_style(tmp_req.dimensions, 'dimensions', 'json')
         if not DaraCore.is_null(tmp_req.tasks):
             request.tasks_shrink = Utils.array_to_string_with_specified_style(tmp_req.tasks, 'tasks', 'json')
         body = {}
+        if not DaraCore.is_null(request.dimensions_shrink):
+            body['dimensions'] = request.dimensions_shrink
         if not DaraCore.is_null(request.grade):
             body['grade'] = request.grade
         if not DaraCore.is_null(request.model_id):
@@ -5208,9 +5236,13 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.SubmitEssayCorrectionTaskShrinkRequest()
         Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.dimensions):
+            request.dimensions_shrink = Utils.array_to_string_with_specified_style(tmp_req.dimensions, 'dimensions', 'json')
         if not DaraCore.is_null(tmp_req.tasks):
             request.tasks_shrink = Utils.array_to_string_with_specified_style(tmp_req.tasks, 'tasks', 'json')
         body = {}
+        if not DaraCore.is_null(request.dimensions_shrink):
+            body['dimensions'] = request.dimensions_shrink
         if not DaraCore.is_null(request.grade):
             body['grade'] = request.grade
         if not DaraCore.is_null(request.model_id):

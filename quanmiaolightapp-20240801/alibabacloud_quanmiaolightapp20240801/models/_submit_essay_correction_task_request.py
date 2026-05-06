@@ -10,6 +10,7 @@ from darabonba.model import DaraModel
 class SubmitEssayCorrectionTaskRequest(DaraModel):
     def __init__(
         self,
+        dimensions: List[main_models.SubmitEssayCorrectionTaskRequestDimensions] = None,
         grade: str = None,
         model_id: str = None,
         other_review_points: str = None,
@@ -18,6 +19,7 @@ class SubmitEssayCorrectionTaskRequest(DaraModel):
         tasks: List[main_models.SubmitEssayCorrectionTaskRequestTasks] = None,
         total_score: int = None,
     ):
+        self.dimensions = dimensions
         self.grade = grade
         self.model_id = model_id
         self.other_review_points = other_review_points
@@ -27,6 +29,10 @@ class SubmitEssayCorrectionTaskRequest(DaraModel):
         self.total_score = total_score
 
     def validate(self):
+        if self.dimensions:
+            for v1 in self.dimensions:
+                 if v1:
+                    v1.validate()
         if self.tasks:
             for v1 in self.tasks:
                  if v1:
@@ -37,6 +43,11 @@ class SubmitEssayCorrectionTaskRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        result['dimensions'] = []
+        if self.dimensions is not None:
+            for k1 in self.dimensions:
+                result['dimensions'].append(k1.to_map() if k1 else None)
+
         if self.grade is not None:
             result['grade'] = self.grade
 
@@ -64,6 +75,12 @@ class SubmitEssayCorrectionTaskRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.dimensions = []
+        if m.get('dimensions') is not None:
+            for k1 in m.get('dimensions'):
+                temp_model = main_models.SubmitEssayCorrectionTaskRequestDimensions()
+                self.dimensions.append(temp_model.from_map(k1))
+
         if m.get('grade') is not None:
             self.grade = m.get('grade')
 
@@ -162,6 +179,49 @@ class SubmitEssayCorrectionTaskRequestTasks(DaraModel):
 
         if m.get('totalScore') is not None:
             self.total_score = m.get('totalScore')
+
+        return self
+
+class SubmitEssayCorrectionTaskRequestDimensions(DaraModel):
+    def __init__(
+        self,
+        max_score: int = None,
+        name: str = None,
+        rubric: str = None,
+    ):
+        self.max_score = max_score
+        self.name = name
+        self.rubric = rubric
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.max_score is not None:
+            result['maxScore'] = self.max_score
+
+        if self.name is not None:
+            result['name'] = self.name
+
+        if self.rubric is not None:
+            result['rubric'] = self.rubric
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('maxScore') is not None:
+            self.max_score = m.get('maxScore')
+
+        if m.get('name') is not None:
+            self.name = m.get('name')
+
+        if m.get('rubric') is not None:
+            self.rubric = m.get('rubric')
 
         return self
 

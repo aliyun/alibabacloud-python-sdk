@@ -1,3 +1,15 @@
+2026-05-06 Version: 2.13.9
+- Update API GetEssayCorrectionTask: add response parameters Body.data.results.$.dimensionResults.
+- Update API GetEssayCorrectionTask: add response parameters Body.data.results.$.errorCode.
+- Update API GetEssayCorrectionTask: add response parameters Body.data.results.$.errorMessage.
+- Update API GetEssayCorrectionTask: add response parameters Body.data.results.$.overallComment.
+- Update API RunEssayCorrection: add request parameters dimensions.
+- Update API RunEssayCorrection: add response parameters Body.payload.output.dimensionResults.
+- Update API RunEssayCorrection: add response parameters Body.payload.output.overallComment.
+- Update API RunEssayCorrection: add response parameters Body.payload.output.reasoningContent.
+- Update API SubmitEssayCorrectionTask: add request parameters dimensions.
+
+
 2026-03-18 Version: 2.13.8
 - Update API RunEnterpriseVocAnalysis: add request parameters positiveFilter.
 - Update API SubmitEnterpriseVocAnalysisTask: add request parameters batchTask.

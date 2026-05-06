@@ -2,6 +2,8 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
 from alibabacloud_quanmiaolightapp20240801 import models as main_models
 from darabonba.model import DaraModel
 
@@ -140,20 +142,40 @@ class RunEssayCorrectionResponseBodyPayloadUsage(DaraModel):
 class RunEssayCorrectionResponseBodyPayloadOutput(DaraModel):
     def __init__(
         self,
+        dimension_results: List[main_models.RunEssayCorrectionResponseBodyPayloadOutputDimensionResults] = None,
+        overall_comment: str = None,
+        reasoning_content: str = None,
         score: int = None,
         text: str = None,
     ):
+        self.dimension_results = dimension_results
+        self.overall_comment = overall_comment
+        self.reasoning_content = reasoning_content
         self.score = score
         self.text = text
 
     def validate(self):
-        pass
+        if self.dimension_results:
+            for v1 in self.dimension_results:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
         _map = super().to_map()
         if _map is not None:
             result = _map
+        result['dimensionResults'] = []
+        if self.dimension_results is not None:
+            for k1 in self.dimension_results:
+                result['dimensionResults'].append(k1.to_map() if k1 else None)
+
+        if self.overall_comment is not None:
+            result['overallComment'] = self.overall_comment
+
+        if self.reasoning_content is not None:
+            result['reasoningContent'] = self.reasoning_content
+
         if self.score is not None:
             result['score'] = self.score
 
@@ -164,11 +186,74 @@ class RunEssayCorrectionResponseBodyPayloadOutput(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.dimension_results = []
+        if m.get('dimensionResults') is not None:
+            for k1 in m.get('dimensionResults'):
+                temp_model = main_models.RunEssayCorrectionResponseBodyPayloadOutputDimensionResults()
+                self.dimension_results.append(temp_model.from_map(k1))
+
+        if m.get('overallComment') is not None:
+            self.overall_comment = m.get('overallComment')
+
+        if m.get('reasoningContent') is not None:
+            self.reasoning_content = m.get('reasoningContent')
+
         if m.get('score') is not None:
             self.score = m.get('score')
 
         if m.get('text') is not None:
             self.text = m.get('text')
+
+        return self
+
+class RunEssayCorrectionResponseBodyPayloadOutputDimensionResults(DaraModel):
+    def __init__(
+        self,
+        analysis: str = None,
+        max_score: float = None,
+        name: str = None,
+        score: float = None,
+    ):
+        self.analysis = analysis
+        self.max_score = max_score
+        self.name = name
+        self.score = score
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.analysis is not None:
+            result['analysis'] = self.analysis
+
+        if self.max_score is not None:
+            result['maxScore'] = self.max_score
+
+        if self.name is not None:
+            result['name'] = self.name
+
+        if self.score is not None:
+            result['score'] = self.score
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('analysis') is not None:
+            self.analysis = m.get('analysis')
+
+        if m.get('maxScore') is not None:
+            self.max_score = m.get('maxScore')
+
+        if m.get('name') is not None:
+            self.name = m.get('name')
+
+        if m.get('score') is not None:
+            self.score = m.get('score')
 
         return self
 

@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class SubmitEssayCorrectionTaskShrinkRequest(DaraModel):
     def __init__(
         self,
+        dimensions_shrink: str = None,
         grade: str = None,
         model_id: str = None,
         other_review_points: str = None,
@@ -15,6 +16,7 @@ class SubmitEssayCorrectionTaskShrinkRequest(DaraModel):
         tasks_shrink: str = None,
         total_score: int = None,
     ):
+        self.dimensions_shrink = dimensions_shrink
         self.grade = grade
         self.model_id = model_id
         self.other_review_points = other_review_points
@@ -31,6 +33,9 @@ class SubmitEssayCorrectionTaskShrinkRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.dimensions_shrink is not None:
+            result['dimensions'] = self.dimensions_shrink
+
         if self.grade is not None:
             result['grade'] = self.grade
 
@@ -56,6 +61,9 @@ class SubmitEssayCorrectionTaskShrinkRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('dimensions') is not None:
+            self.dimensions_shrink = m.get('dimensions')
+
         if m.get('grade') is not None:
             self.grade = m.get('grade')
 

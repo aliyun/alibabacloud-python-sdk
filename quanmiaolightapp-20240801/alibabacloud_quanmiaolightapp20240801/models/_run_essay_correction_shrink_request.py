@@ -2,16 +2,13 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List
-
-from alibabacloud_quanmiaolightapp20240801 import models as main_models
 from darabonba.model import DaraModel
 
-class RunEssayCorrectionRequest(DaraModel):
+class RunEssayCorrectionShrinkRequest(DaraModel):
     def __init__(
         self,
         answer: str = None,
-        dimensions: List[main_models.RunEssayCorrectionRequestDimensions] = None,
+        dimensions_shrink: str = None,
         grade: str = None,
         model_id: str = None,
         other_review_points: str = None,
@@ -20,7 +17,7 @@ class RunEssayCorrectionRequest(DaraModel):
         total_score: int = None,
     ):
         self.answer = answer
-        self.dimensions = dimensions
+        self.dimensions_shrink = dimensions_shrink
         self.grade = grade
         self.model_id = model_id
         self.other_review_points = other_review_points
@@ -29,10 +26,7 @@ class RunEssayCorrectionRequest(DaraModel):
         self.total_score = total_score
 
     def validate(self):
-        if self.dimensions:
-            for v1 in self.dimensions:
-                 if v1:
-                    v1.validate()
+        pass
 
     def to_map(self):
         result = dict()
@@ -42,10 +36,8 @@ class RunEssayCorrectionRequest(DaraModel):
         if self.answer is not None:
             result['answer'] = self.answer
 
-        result['dimensions'] = []
-        if self.dimensions is not None:
-            for k1 in self.dimensions:
-                result['dimensions'].append(k1.to_map() if k1 else None)
+        if self.dimensions_shrink is not None:
+            result['dimensions'] = self.dimensions_shrink
 
         if self.grade is not None:
             result['grade'] = self.grade
@@ -72,11 +64,8 @@ class RunEssayCorrectionRequest(DaraModel):
         if m.get('answer') is not None:
             self.answer = m.get('answer')
 
-        self.dimensions = []
         if m.get('dimensions') is not None:
-            for k1 in m.get('dimensions'):
-                temp_model = main_models.RunEssayCorrectionRequestDimensions()
-                self.dimensions.append(temp_model.from_map(k1))
+            self.dimensions_shrink = m.get('dimensions')
 
         if m.get('grade') is not None:
             self.grade = m.get('grade')
@@ -95,49 +84,6 @@ class RunEssayCorrectionRequest(DaraModel):
 
         if m.get('totalScore') is not None:
             self.total_score = m.get('totalScore')
-
-        return self
-
-class RunEssayCorrectionRequestDimensions(DaraModel):
-    def __init__(
-        self,
-        max_score: int = None,
-        name: str = None,
-        rubric: str = None,
-    ):
-        self.max_score = max_score
-        self.name = name
-        self.rubric = rubric
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        _map = super().to_map()
-        if _map is not None:
-            result = _map
-        if self.max_score is not None:
-            result['maxScore'] = self.max_score
-
-        if self.name is not None:
-            result['name'] = self.name
-
-        if self.rubric is not None:
-            result['rubric'] = self.rubric
-
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('maxScore') is not None:
-            self.max_score = m.get('maxScore')
-
-        if m.get('name') is not None:
-            self.name = m.get('name')
-
-        if m.get('rubric') is not None:
-            self.rubric = m.get('rubric')
 
         return self
 

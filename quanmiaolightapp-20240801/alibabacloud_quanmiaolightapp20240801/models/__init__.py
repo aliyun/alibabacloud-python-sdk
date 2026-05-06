@@ -53,6 +53,7 @@ from ._run_enterprise_voc_analysis_shrink_request import RunEnterpriseVocAnalysi
 from ._run_enterprise_voc_analysis_response_body import RunEnterpriseVocAnalysisResponseBody
 from ._run_enterprise_voc_analysis_response import RunEnterpriseVocAnalysisResponse
 from ._run_essay_correction_request import RunEssayCorrectionRequest
+from ._run_essay_correction_shrink_request import RunEssayCorrectionShrinkRequest
 from ._run_essay_correction_response_body import RunEssayCorrectionResponseBody
 from ._run_essay_correction_response import RunEssayCorrectionResponse
 from ._run_hot_topic_chat_request import RunHotTopicChatRequest
@@ -155,6 +156,7 @@ from ._get_enterprise_voc_analysis_task_response_body import GetEnterpriseVocAna
 from ._get_enterprise_voc_analysis_task_response_body import GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverview
 from ._get_enterprise_voc_analysis_task_response_body import GetEnterpriseVocAnalysisTaskResponseBodyDataUsage
 from ._get_enterprise_voc_analysis_task_response_body import GetEnterpriseVocAnalysisTaskResponseBodyData
+from ._get_essay_correction_task_response_body import GetEssayCorrectionTaskResponseBodyDataResultsDimensionResults
 from ._get_essay_correction_task_response_body import GetEssayCorrectionTaskResponseBodyDataResults
 from ._get_essay_correction_task_response_body import GetEssayCorrectionTaskResponseBodyData
 from ._get_file_content_response_body import GetFileContentResponseBodyData
@@ -219,7 +221,9 @@ from ._run_enterprise_voc_analysis_response_body import RunEnterpriseVocAnalysis
 from ._run_enterprise_voc_analysis_response_body import RunEnterpriseVocAnalysisResponseBodyPayloadOutput
 from ._run_enterprise_voc_analysis_response_body import RunEnterpriseVocAnalysisResponseBodyPayloadUsage
 from ._run_enterprise_voc_analysis_response_body import RunEnterpriseVocAnalysisResponseBodyPayload
+from ._run_essay_correction_request import RunEssayCorrectionRequestDimensions
 from ._run_essay_correction_response_body import RunEssayCorrectionResponseBodyHeader
+from ._run_essay_correction_response_body import RunEssayCorrectionResponseBodyPayloadOutputDimensionResults
 from ._run_essay_correction_response_body import RunEssayCorrectionResponseBodyPayloadOutput
 from ._run_essay_correction_response_body import RunEssayCorrectionResponseBodyPayloadUsage
 from ._run_essay_correction_response_body import RunEssayCorrectionResponseBodyPayload
@@ -331,6 +335,7 @@ from ._submit_enterprise_voc_analysis_task_request import SubmitEnterpriseVocAna
 from ._submit_enterprise_voc_analysis_task_request import SubmitEnterpriseVocAnalysisTaskRequestFilterTags
 from ._submit_enterprise_voc_analysis_task_request import SubmitEnterpriseVocAnalysisTaskRequestTags
 from ._submit_enterprise_voc_analysis_task_response_body import SubmitEnterpriseVocAnalysisTaskResponseBodyData
+from ._submit_essay_correction_task_request import SubmitEssayCorrectionTaskRequestDimensions
 from ._submit_essay_correction_task_request import SubmitEssayCorrectionTaskRequestTasks
 from ._submit_essay_correction_task_response_body import SubmitEssayCorrectionTaskResponseBodyData
 from ._submit_tag_mining_analysis_task_request import SubmitTagMiningAnalysisTaskRequestTags
@@ -403,6 +408,7 @@ __all__ = [
     RunEnterpriseVocAnalysisResponseBody,
     RunEnterpriseVocAnalysisResponse,
     RunEssayCorrectionRequest,
+    RunEssayCorrectionShrinkRequest,
     RunEssayCorrectionResponseBody,
     RunEssayCorrectionResponse,
     RunHotTopicChatRequest,
@@ -505,6 +511,7 @@ __all__ = [
     GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverview,
     GetEnterpriseVocAnalysisTaskResponseBodyDataUsage,
     GetEnterpriseVocAnalysisTaskResponseBodyData,
+    GetEssayCorrectionTaskResponseBodyDataResultsDimensionResults,
     GetEssayCorrectionTaskResponseBodyDataResults,
     GetEssayCorrectionTaskResponseBodyData,
     GetFileContentResponseBodyData,
@@ -569,7 +576,9 @@ __all__ = [
     RunEnterpriseVocAnalysisResponseBodyPayloadOutput,
     RunEnterpriseVocAnalysisResponseBodyPayloadUsage,
     RunEnterpriseVocAnalysisResponseBodyPayload,
+    RunEssayCorrectionRequestDimensions,
     RunEssayCorrectionResponseBodyHeader,
+    RunEssayCorrectionResponseBodyPayloadOutputDimensionResults,
     RunEssayCorrectionResponseBodyPayloadOutput,
     RunEssayCorrectionResponseBodyPayloadUsage,
     RunEssayCorrectionResponseBodyPayload,
@@ -681,6 +690,7 @@ __all__ = [
     SubmitEnterpriseVocAnalysisTaskRequestFilterTags,
     SubmitEnterpriseVocAnalysisTaskRequestTags,
     SubmitEnterpriseVocAnalysisTaskResponseBodyData,
+    SubmitEssayCorrectionTaskRequestDimensions,
     SubmitEssayCorrectionTaskRequestTasks,
     SubmitEssayCorrectionTaskResponseBodyData,
     SubmitTagMiningAnalysisTaskRequestTags,

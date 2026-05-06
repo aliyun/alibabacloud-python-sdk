@@ -143,17 +143,29 @@ class GetEssayCorrectionTaskResponseBodyDataResults(DaraModel):
     def __init__(
         self,
         custom_id: str = None,
+        dimension_results: List[main_models.GetEssayCorrectionTaskResponseBodyDataResultsDimensionResults] = None,
+        error_code: str = None,
+        error_message: str = None,
+        overall_comment: str = None,
         result: str = None,
         score: int = None,
         usage: main_models.ModelUsage = None,
     ):
         # xxx
         self.custom_id = custom_id
+        self.dimension_results = dimension_results
+        self.error_code = error_code
+        self.error_message = error_message
+        self.overall_comment = overall_comment
         self.result = result
         self.score = score
         self.usage = usage
 
     def validate(self):
+        if self.dimension_results:
+            for v1 in self.dimension_results:
+                 if v1:
+                    v1.validate()
         if self.usage:
             self.usage.validate()
 
@@ -164,6 +176,20 @@ class GetEssayCorrectionTaskResponseBodyDataResults(DaraModel):
             result = _map
         if self.custom_id is not None:
             result['customId'] = self.custom_id
+
+        result['dimensionResults'] = []
+        if self.dimension_results is not None:
+            for k1 in self.dimension_results:
+                result['dimensionResults'].append(k1.to_map() if k1 else None)
+
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+
+        if self.overall_comment is not None:
+            result['overallComment'] = self.overall_comment
 
         if self.result is not None:
             result['result'] = self.result
@@ -181,6 +207,21 @@ class GetEssayCorrectionTaskResponseBodyDataResults(DaraModel):
         if m.get('customId') is not None:
             self.custom_id = m.get('customId')
 
+        self.dimension_results = []
+        if m.get('dimensionResults') is not None:
+            for k1 in m.get('dimensionResults'):
+                temp_model = main_models.GetEssayCorrectionTaskResponseBodyDataResultsDimensionResults()
+                self.dimension_results.append(temp_model.from_map(k1))
+
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+
+        if m.get('overallComment') is not None:
+            self.overall_comment = m.get('overallComment')
+
         if m.get('result') is not None:
             self.result = m.get('result')
 
@@ -190,6 +231,57 @@ class GetEssayCorrectionTaskResponseBodyDataResults(DaraModel):
         if m.get('usage') is not None:
             temp_model = main_models.ModelUsage()
             self.usage = temp_model.from_map(m.get('usage'))
+
+        return self
+
+class GetEssayCorrectionTaskResponseBodyDataResultsDimensionResults(DaraModel):
+    def __init__(
+        self,
+        analysis: str = None,
+        max_score: float = None,
+        name: str = None,
+        score: float = None,
+    ):
+        self.analysis = analysis
+        self.max_score = max_score
+        self.name = name
+        self.score = score
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.analysis is not None:
+            result['analysis'] = self.analysis
+
+        if self.max_score is not None:
+            result['maxScore'] = self.max_score
+
+        if self.name is not None:
+            result['name'] = self.name
+
+        if self.score is not None:
+            result['score'] = self.score
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('analysis') is not None:
+            self.analysis = m.get('analysis')
+
+        if m.get('maxScore') is not None:
+            self.max_score = m.get('maxScore')
+
+        if m.get('name') is not None:
+            self.name = m.get('name')
+
+        if m.get('score') is not None:
+            self.score = m.get('score')
 
         return self
 
