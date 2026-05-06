@@ -12,7 +12,6 @@ class ListTagResourcesRequest(DaraModel):
         self,
         max_item: int = None,
         next_token: str = None,
-        owner_id: int = None,
         region_id: str = None,
         resource_id: List[str] = None,
         resource_type: str = None,
@@ -25,7 +24,6 @@ class ListTagResourcesRequest(DaraModel):
         # 
         # >  This parameter is not required for the first request. If not all results are returned in one query, you can specify the token that is obtained from the previous query as the value of **NextToken**.
         self.next_token = next_token
-        self.owner_id = owner_id
         # The ID of the region where the resources reside.
         # 
         # This parameter is required.
@@ -57,9 +55,6 @@ class ListTagResourcesRequest(DaraModel):
         if self.next_token is not None:
             result['NextToken'] = self.next_token
 
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
@@ -86,9 +81,6 @@ class ListTagResourcesRequest(DaraModel):
 
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
-
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')

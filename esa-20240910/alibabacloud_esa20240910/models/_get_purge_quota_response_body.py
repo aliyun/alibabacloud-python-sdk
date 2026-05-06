@@ -8,15 +8,19 @@ class GetPurgeQuotaResponseBody(DaraModel):
     def __init__(
         self,
         quota: str = None,
+        quota_30day: str = None,
         request_id: str = None,
         usage: str = None,
+        usage_30day: str = None,
     ):
         # The total quota.
         self.quota = quota
+        self.quota_30day = quota_30day
         # The request ID.
         self.request_id = request_id
         # The quota usage.
         self.usage = usage
+        self.usage_30day = usage_30day
 
     def validate(self):
         pass
@@ -29,11 +33,17 @@ class GetPurgeQuotaResponseBody(DaraModel):
         if self.quota is not None:
             result['Quota'] = self.quota
 
+        if self.quota_30day is not None:
+            result['Quota30Day'] = self.quota_30day
+
         if self.request_id is not None:
             result['RequestId'] = self.request_id
 
         if self.usage is not None:
             result['Usage'] = self.usage
+
+        if self.usage_30day is not None:
+            result['Usage30Day'] = self.usage_30day
 
         return result
 
@@ -42,11 +52,17 @@ class GetPurgeQuotaResponseBody(DaraModel):
         if m.get('Quota') is not None:
             self.quota = m.get('Quota')
 
+        if m.get('Quota30Day') is not None:
+            self.quota_30day = m.get('Quota30Day')
+
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
 
         if m.get('Usage') is not None:
             self.usage = m.get('Usage')
+
+        if m.get('Usage30Day') is not None:
+            self.usage_30day = m.get('Usage30Day')
 
         return self
 

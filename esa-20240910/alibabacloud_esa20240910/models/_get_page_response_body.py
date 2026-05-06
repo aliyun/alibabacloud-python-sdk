@@ -2,6 +2,8 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
 from darabonba.model import DaraModel
 
 class GetPageResponseBody(DaraModel):
@@ -14,6 +16,7 @@ class GetPageResponseBody(DaraModel):
         kind: str = None,
         name: str = None,
         request_id: str = None,
+        site_ids: List[int] = None,
         update_time: str = None,
     ):
         # The Base64-encoded content of the error page. The content type is specified by the Content-Type field.
@@ -36,6 +39,7 @@ class GetPageResponseBody(DaraModel):
         self.name = name
         # The request ID.
         self.request_id = request_id
+        self.site_ids = site_ids
         # The time when the custom error page was last modified.
         self.update_time = update_time
 
@@ -68,6 +72,9 @@ class GetPageResponseBody(DaraModel):
         if self.request_id is not None:
             result['RequestId'] = self.request_id
 
+        if self.site_ids is not None:
+            result['SiteIds'] = self.site_ids
+
         if self.update_time is not None:
             result['UpdateTime'] = self.update_time
 
@@ -95,6 +102,9 @@ class GetPageResponseBody(DaraModel):
 
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+
+        if m.get('SiteIds') is not None:
+            self.site_ids = m.get('SiteIds')
 
         if m.get('UpdateTime') is not None:
             self.update_time = m.get('UpdateTime')

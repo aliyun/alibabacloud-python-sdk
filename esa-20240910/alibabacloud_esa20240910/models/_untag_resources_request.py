@@ -10,7 +10,6 @@ class UntagResourcesRequest(DaraModel):
     def __init__(
         self,
         all: bool = None,
-        owner_id: int = None,
         region_id: str = None,
         resource_id: List[str] = None,
         resource_type: str = None,
@@ -24,7 +23,6 @@ class UntagResourcesRequest(DaraModel):
         # 
         # Default value: **false**.
         self.all = all
-        self.owner_id = owner_id
         # The ID of the region where the resources reside. Set the value to **cn-hangzhou**.
         # 
         # This parameter is required.
@@ -52,9 +50,6 @@ class UntagResourcesRequest(DaraModel):
         if self.all is not None:
             result['All'] = self.all
 
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
@@ -76,9 +71,6 @@ class UntagResourcesRequest(DaraModel):
         m = m or dict()
         if m.get('All') is not None:
             self.all = m.get('All')
-
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')

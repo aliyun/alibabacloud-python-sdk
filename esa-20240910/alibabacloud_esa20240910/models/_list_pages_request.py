@@ -55,8 +55,10 @@ class ListPagesRequest(DaraModel):
 class ListPagesRequestQueryArgs(DaraModel):
     def __init__(
         self,
+        content_type: str = None,
         name_description_like: str = None,
     ):
+        self.content_type = content_type
         self.name_description_like = name_description_like
 
     def validate(self):
@@ -67,6 +69,9 @@ class ListPagesRequestQueryArgs(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.content_type is not None:
+            result['ContentType'] = self.content_type
+
         if self.name_description_like is not None:
             result['NameDescriptionLike'] = self.name_description_like
 
@@ -74,6 +79,9 @@ class ListPagesRequestQueryArgs(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ContentType') is not None:
+            self.content_type = m.get('ContentType')
+
         if m.get('NameDescriptionLike') is not None:
             self.name_description_like = m.get('NameDescriptionLike')
 

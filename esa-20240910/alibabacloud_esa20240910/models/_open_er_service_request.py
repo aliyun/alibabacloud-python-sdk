@@ -7,10 +7,8 @@ from darabonba.model import DaraModel
 class OpenErServiceRequest(DaraModel):
     def __init__(
         self,
-        owner_id: int = None,
         security_token: str = None,
     ):
-        self.owner_id = owner_id
         self.security_token = security_token
 
     def validate(self):
@@ -21,9 +19,6 @@ class OpenErServiceRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-
         if self.security_token is not None:
             result['SecurityToken'] = self.security_token
 
@@ -31,9 +26,6 @@ class OpenErServiceRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
-
         if m.get('SecurityToken') is not None:
             self.security_token = m.get('SecurityToken')
 

@@ -15,6 +15,7 @@ class GetTransportLayerApplicationResponseBody(DaraModel):
         cross_border_optimization: str = None,
         ip_access_rule: str = None,
         ipv_6: str = None,
+        keep_alive_protection: str = None,
         record_name: str = None,
         request_id: str = None,
         rules: List[main_models.GetTransportLayerApplicationResponseBodyRules] = None,
@@ -35,6 +36,7 @@ class GetTransportLayerApplicationResponseBody(DaraModel):
         self.ip_access_rule = ip_access_rule
         # Ipv6 switch
         self.ipv_6 = ipv_6
+        self.keep_alive_protection = keep_alive_protection
         # Query Transport Layer Acceleration Application
         self.record_name = record_name
         # Id of the request
@@ -86,6 +88,9 @@ class GetTransportLayerApplicationResponseBody(DaraModel):
         if self.ipv_6 is not None:
             result['Ipv6'] = self.ipv_6
 
+        if self.keep_alive_protection is not None:
+            result['KeepAliveProtection'] = self.keep_alive_protection
+
         if self.record_name is not None:
             result['RecordName'] = self.record_name
 
@@ -132,6 +137,9 @@ class GetTransportLayerApplicationResponseBody(DaraModel):
 
         if m.get('Ipv6') is not None:
             self.ipv_6 = m.get('Ipv6')
+
+        if m.get('KeepAliveProtection') is not None:
+            self.keep_alive_protection = m.get('KeepAliveProtection')
 
         if m.get('RecordName') is not None:
             self.record_name = m.get('RecordName')

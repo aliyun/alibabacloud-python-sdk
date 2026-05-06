@@ -102,6 +102,7 @@ class ListSiteRoutesResponseBodyConfigs(DaraModel):
         rule: str = None,
         sequence: int = None,
         site_version: int = None,
+        timeout: str = None,
     ):
         # The bypass mode. Valid values:
         # 
@@ -136,6 +137,7 @@ class ListSiteRoutesResponseBodyConfigs(DaraModel):
         self.sequence = sequence
         # The version number of the website.
         self.site_version = site_version
+        self.timeout = timeout
 
     def validate(self):
         pass
@@ -178,6 +180,9 @@ class ListSiteRoutesResponseBodyConfigs(DaraModel):
         if self.site_version is not None:
             result['SiteVersion'] = self.site_version
 
+        if self.timeout is not None:
+            result['Timeout'] = self.timeout
+
         return result
 
     def from_map(self, m: dict = None):
@@ -214,6 +219,9 @@ class ListSiteRoutesResponseBodyConfigs(DaraModel):
 
         if m.get('SiteVersion') is not None:
             self.site_version = m.get('SiteVersion')
+
+        if m.get('Timeout') is not None:
+            self.timeout = m.get('Timeout')
 
         return self
 

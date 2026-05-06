@@ -2,6 +2,8 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
 from darabonba.model import DaraModel
 
 class CreatePageRequest(DaraModel):
@@ -11,6 +13,7 @@ class CreatePageRequest(DaraModel):
         content_type: str = None,
         description: str = None,
         name: str = None,
+        site_ids: List[int] = None,
     ):
         # The Base64-encoded page content. Example: "PGh0bWw+aGVsbG8gcGFnZTwvaHRtbD4=", which indicates "hello page".
         self.content = content
@@ -27,6 +30,7 @@ class CreatePageRequest(DaraModel):
         # 
         # This parameter is required.
         self.name = name
+        self.site_ids = site_ids
 
     def validate(self):
         pass
@@ -48,6 +52,9 @@ class CreatePageRequest(DaraModel):
         if self.name is not None:
             result['Name'] = self.name
 
+        if self.site_ids is not None:
+            result['SiteIds'] = self.site_ids
+
         return result
 
     def from_map(self, m: dict = None):
@@ -63,6 +70,9 @@ class CreatePageRequest(DaraModel):
 
         if m.get('Name') is not None:
             self.name = m.get('Name')
+
+        if m.get('SiteIds') is not None:
+            self.site_ids = m.get('SiteIds')
 
         return self
 

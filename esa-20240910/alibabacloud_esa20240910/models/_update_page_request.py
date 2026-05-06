@@ -2,6 +2,8 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
 from darabonba.model import DaraModel
 
 class UpdatePageRequest(DaraModel):
@@ -12,6 +14,7 @@ class UpdatePageRequest(DaraModel):
         description: str = None,
         id: int = None,
         name: str = None,
+        site_ids: List[int] = None,
     ):
         # The Base64-encoded content of the error page. The content type is specified by the Content-Type field.
         # 
@@ -36,6 +39,7 @@ class UpdatePageRequest(DaraModel):
         # 
         # This parameter is required.
         self.name = name
+        self.site_ids = site_ids
 
     def validate(self):
         pass
@@ -60,6 +64,9 @@ class UpdatePageRequest(DaraModel):
         if self.name is not None:
             result['Name'] = self.name
 
+        if self.site_ids is not None:
+            result['SiteIds'] = self.site_ids
+
         return result
 
     def from_map(self, m: dict = None):
@@ -78,6 +85,9 @@ class UpdatePageRequest(DaraModel):
 
         if m.get('Name') is not None:
             self.name = m.get('Name')
+
+        if m.get('SiteIds') is not None:
+            self.site_ids = m.get('SiteIds')
 
         return self
 

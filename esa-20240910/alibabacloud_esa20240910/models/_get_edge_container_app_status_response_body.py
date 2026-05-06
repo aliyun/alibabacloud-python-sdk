@@ -107,7 +107,6 @@ class GetEdgeContainerAppStatusResponseBodyAppStatus(DaraModel):
         self.publish_type = publish_type
         # The release version of the application.
         self.publishing_version = publishing_version
-        # The regions to which the version is released.
         self.regions = regions
         # The time when the last rollback was performed.
         self.rollback_time = rollback_time

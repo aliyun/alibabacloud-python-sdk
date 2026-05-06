@@ -10,7 +10,6 @@ class BlockObjectRequest(DaraModel):
     def __init__(
         self,
         content: List[str] = None,
-        extension: str = None,
         maxage: int = None,
         site_id: int = None,
         type: str = None,
@@ -19,8 +18,6 @@ class BlockObjectRequest(DaraModel):
         # 
         # This parameter is required.
         self.content = content
-        # The blocking period that you can extend. Set the value to 2year.
-        self.extension = extension
         # The period of time during which the URL is blocked. Unit: seconds. Specify this parameter if Type is set to block.
         self.maxage = maxage
         # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
@@ -46,9 +43,6 @@ class BlockObjectRequest(DaraModel):
         if self.content is not None:
             result['Content'] = self.content
 
-        if self.extension is not None:
-            result['Extension'] = self.extension
-
         if self.maxage is not None:
             result['Maxage'] = self.maxage
 
@@ -64,9 +58,6 @@ class BlockObjectRequest(DaraModel):
         m = m or dict()
         if m.get('Content') is not None:
             self.content = m.get('Content')
-
-        if m.get('Extension') is not None:
-            self.extension = m.get('Extension')
 
         if m.get('Maxage') is not None:
             self.maxage = m.get('Maxage')

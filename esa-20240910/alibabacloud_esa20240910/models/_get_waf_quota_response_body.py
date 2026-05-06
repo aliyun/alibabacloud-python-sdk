@@ -54,6 +54,7 @@ class GetWafQuotaResponseBodyQuota(DaraModel):
         managed_rules_group: main_models.GetWafQuotaResponseBodyQuotaManagedRulesGroup = None,
         page: main_models.GetWafQuotaResponseBodyQuotaPage = None,
         scene_policy: main_models.GetWafQuotaResponseBodyQuotaScenePolicy = None,
+        slider_captcha_page: main_models.GetWafQuotaResponseBodyQuotaSliderCaptchaPage = None,
     ):
         self.captcha = captcha
         # Quota information related to custom lists.
@@ -64,6 +65,7 @@ class GetWafQuotaResponseBodyQuota(DaraModel):
         self.page = page
         # Quota information related to scene protection.
         self.scene_policy = scene_policy
+        self.slider_captcha_page = slider_captcha_page
 
     def validate(self):
         if self.captcha:
@@ -76,6 +78,8 @@ class GetWafQuotaResponseBodyQuota(DaraModel):
             self.page.validate()
         if self.scene_policy:
             self.scene_policy.validate()
+        if self.slider_captcha_page:
+            self.slider_captcha_page.validate()
 
     def to_map(self):
         result = dict()
@@ -96,6 +100,9 @@ class GetWafQuotaResponseBodyQuota(DaraModel):
 
         if self.scene_policy is not None:
             result['ScenePolicy'] = self.scene_policy.to_map()
+
+        if self.slider_captcha_page is not None:
+            result['SliderCaptchaPage'] = self.slider_captcha_page.to_map()
 
         return result
 
@@ -120,6 +127,47 @@ class GetWafQuotaResponseBodyQuota(DaraModel):
         if m.get('ScenePolicy') is not None:
             temp_model = main_models.GetWafQuotaResponseBodyQuotaScenePolicy()
             self.scene_policy = temp_model.from_map(m.get('ScenePolicy'))
+
+        if m.get('SliderCaptchaPage') is not None:
+            temp_model = main_models.GetWafQuotaResponseBodyQuotaSliderCaptchaPage()
+            self.slider_captcha_page = temp_model.from_map(m.get('SliderCaptchaPage'))
+
+        return self
+
+class GetWafQuotaResponseBodyQuotaSliderCaptchaPage(DaraModel):
+    def __init__(
+        self,
+        enable: bool = None,
+        number_total: main_models.WafQuotaInteger = None,
+    ):
+        self.enable = enable
+        self.number_total = number_total
+
+    def validate(self):
+        if self.number_total:
+            self.number_total.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.enable is not None:
+            result['Enable'] = self.enable
+
+        if self.number_total is not None:
+            result['NumberTotal'] = self.number_total.to_map()
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+
+        if m.get('NumberTotal') is not None:
+            temp_model = main_models.WafQuotaInteger()
+            self.number_total = temp_model.from_map(m.get('NumberTotal'))
 
         return self
 

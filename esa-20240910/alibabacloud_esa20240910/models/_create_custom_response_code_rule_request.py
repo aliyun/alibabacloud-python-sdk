@@ -17,8 +17,12 @@ class CreateCustomResponseCodeRuleRequest(DaraModel):
         site_version: int = None,
     ):
         # Response page.
+        # 
+        # This parameter is required.
         self.page_id = page_id
         # Response code.
+        # 
+        # This parameter is required.
         self.return_code = return_code
         # The content of the rule. A conditional expression is used to match a user request. You do not need to set this parameter when you add global configuration. Use cases:
         # 

@@ -12,7 +12,6 @@ class SetCertificateRequest(DaraModel):
         id: str = None,
         key_server_id: str = None,
         name: str = None,
-        owner_id: int = None,
         private_key: str = None,
         region: str = None,
         security_token: str = None,
@@ -28,7 +27,6 @@ class SetCertificateRequest(DaraModel):
         self.key_server_id = key_server_id
         # The certificate name.
         self.name = name
-        self.owner_id = owner_id
         # The private key of the certificate.
         self.private_key = private_key
         # The region.
@@ -69,9 +67,6 @@ class SetCertificateRequest(DaraModel):
         if self.name is not None:
             result['Name'] = self.name
 
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-
         if self.private_key is not None:
             result['PrivateKey'] = self.private_key
 
@@ -105,9 +100,6 @@ class SetCertificateRequest(DaraModel):
 
         if m.get('Name') is not None:
             self.name = m.get('Name')
-
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
 
         if m.get('PrivateKey') is not None:
             self.private_key = m.get('PrivateKey')

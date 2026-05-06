@@ -159,6 +159,7 @@ from ._create_origin_rule_request import CreateOriginRuleRequest
 from ._create_origin_rule_response_body import CreateOriginRuleResponseBody
 from ._create_origin_rule_response import CreateOriginRuleResponse
 from ._create_page_request import CreatePageRequest
+from ._create_page_shrink_request import CreatePageShrinkRequest
 from ._create_page_response_body import CreatePageResponseBody
 from ._create_page_response import CreatePageResponse
 from ._create_record_request import CreateRecordRequest
@@ -306,6 +307,9 @@ from ._delete_https_basic_configuration_response import DeleteHttpsBasicConfigur
 from ._delete_image_transform_request import DeleteImageTransformRequest
 from ._delete_image_transform_response_body import DeleteImageTransformResponseBody
 from ._delete_image_transform_response import DeleteImageTransformResponse
+from ._delete_keyless_server_request import DeleteKeylessServerRequest
+from ._delete_keyless_server_response_body import DeleteKeylessServerResponseBody
+from ._delete_keyless_server_response import DeleteKeylessServerResponse
 from ._delete_kv_request import DeleteKvRequest
 from ._delete_kv_response_body import DeleteKvResponseBody
 from ._delete_kv_response import DeleteKvResponse
@@ -449,6 +453,9 @@ from ._describe_purge_tasks_response import DescribePurgeTasksResponse
 from ._describe_rate_plan_instance_status_request import DescribeRatePlanInstanceStatusRequest
 from ._describe_rate_plan_instance_status_response_body import DescribeRatePlanInstanceStatusResponseBody
 from ._describe_rate_plan_instance_status_response import DescribeRatePlanInstanceStatusResponse
+from ._describe_rate_plan_price_request import DescribeRatePlanPriceRequest
+from ._describe_rate_plan_price_response_body import DescribeRatePlanPriceResponseBody
+from ._describe_rate_plan_price_response import DescribeRatePlanPriceResponse
 from ._describe_site_logs_request import DescribeSiteLogsRequest
 from ._describe_site_logs_response_body import DescribeSiteLogsResponseBody
 from ._describe_site_logs_response import DescribeSiteLogsResponse
@@ -479,6 +486,9 @@ from ._export_records_response import ExportRecordsResponse
 from ._get_api_schema_usage_request import GetApiSchemaUsageRequest
 from ._get_api_schema_usage_response_body import GetApiSchemaUsageResponseBody
 from ._get_api_schema_usage_response import GetApiSchemaUsageResponse
+from ._get_automatic_frequency_control_config_request import GetAutomaticFrequencyControlConfigRequest
+from ._get_automatic_frequency_control_config_response_body import GetAutomaticFrequencyControlConfigResponseBody
+from ._get_automatic_frequency_control_config_response import GetAutomaticFrequencyControlConfigResponse
 from ._get_cache_reserve_specification_response_body import GetCacheReserveSpecificationResponseBody
 from ._get_cache_reserve_specification_response import GetCacheReserveSpecificationResponse
 from ._get_cache_rule_request import GetCacheRuleRequest
@@ -496,6 +506,9 @@ from ._get_certificate_quota_response import GetCertificateQuotaResponse
 from ._get_client_ca_certificate_request import GetClientCaCertificateRequest
 from ._get_client_ca_certificate_response_body import GetClientCaCertificateResponseBody
 from ._get_client_ca_certificate_response import GetClientCaCertificateResponse
+from ._get_client_ca_certificate_hostnames_request import GetClientCaCertificateHostnamesRequest
+from ._get_client_ca_certificate_hostnames_response_body import GetClientCaCertificateHostnamesResponseBody
+from ._get_client_ca_certificate_hostnames_response import GetClientCaCertificateHostnamesResponse
 from ._get_client_certificate_request import GetClientCertificateRequest
 from ._get_client_certificate_response_body import GetClientCertificateResponseBody
 from ._get_client_certificate_response import GetClientCertificateResponse
@@ -580,6 +593,9 @@ from ._get_ipv_6response import GetIPv6Response
 from ._get_image_transform_request import GetImageTransformRequest
 from ._get_image_transform_response_body import GetImageTransformResponseBody
 from ._get_image_transform_response import GetImageTransformResponse
+from ._get_keyless_server_request import GetKeylessServerRequest
+from ._get_keyless_server_response_body import GetKeylessServerResponseBody
+from ._get_keyless_server_response import GetKeylessServerResponse
 from ._get_kv_request import GetKvRequest
 from ._get_kv_response_body import GetKvResponseBody
 from ._get_kv_response import GetKvResponse
@@ -624,6 +640,9 @@ from ._get_origin_rule_response import GetOriginRuleResponse
 from ._get_page_request import GetPageRequest
 from ._get_page_response_body import GetPageResponseBody
 from ._get_page_response import GetPageResponse
+from ._get_performance_data_collection_request import GetPerformanceDataCollectionRequest
+from ._get_performance_data_collection_response_body import GetPerformanceDataCollectionResponseBody
+from ._get_performance_data_collection_response import GetPerformanceDataCollectionResponse
 from ._get_purge_quota_request import GetPurgeQuotaRequest
 from ._get_purge_quota_response_body import GetPurgeQuotaResponseBody
 from ._get_purge_quota_response import GetPurgeQuotaResponse
@@ -756,6 +775,9 @@ from ._list_custom_hostnames_response import ListCustomHostnamesResponse
 from ._list_custom_response_code_rules_request import ListCustomResponseCodeRulesRequest
 from ._list_custom_response_code_rules_response_body import ListCustomResponseCodeRulesResponseBody
 from ._list_custom_response_code_rules_response import ListCustomResponseCodeRulesResponse
+from ._list_ddo_sinstances_request import ListDDoSInstancesRequest
+from ._list_ddo_sinstances_response_body import ListDDoSInstancesResponseBody
+from ._list_ddo_sinstances_response import ListDDoSInstancesResponse
 from ._list_esaipinfo_request import ListESAIPInfoRequest
 from ._list_esaipinfo_response_body import ListESAIPInfoResponseBody
 from ._list_esaipinfo_response import ListESAIPInfoResponse
@@ -806,6 +828,9 @@ from ._list_instance_quotas_response import ListInstanceQuotasResponse
 from ._list_instance_quotas_with_usage_request import ListInstanceQuotasWithUsageRequest
 from ._list_instance_quotas_with_usage_response_body import ListInstanceQuotasWithUsageResponseBody
 from ._list_instance_quotas_with_usage_response import ListInstanceQuotasWithUsageResponse
+from ._list_keyless_servers_request import ListKeylessServersRequest
+from ._list_keyless_servers_response_body import ListKeylessServersResponseBody
+from ._list_keyless_servers_response import ListKeylessServersResponse
 from ._list_kvs_request import ListKvsRequest
 from ._list_kvs_response_body import ListKvsResponseBody
 from ._list_kvs_response import ListKvsResponse
@@ -976,6 +1001,9 @@ from ._put_kv_with_high_capacity_response import PutKvWithHighCapacityResponse
 from ._rebuild_edge_container_app_staging_env_request import RebuildEdgeContainerAppStagingEnvRequest
 from ._rebuild_edge_container_app_staging_env_response_body import RebuildEdgeContainerAppStagingEnvResponseBody
 from ._rebuild_edge_container_app_staging_env_response import RebuildEdgeContainerAppStagingEnvResponse
+from ._release_instance_request import ReleaseInstanceRequest
+from ._release_instance_response_body import ReleaseInstanceResponseBody
+from ._release_instance_response import ReleaseInstanceResponse
 from ._reset_scheduled_preload_job_request import ResetScheduledPreloadJobRequest
 from ._reset_scheduled_preload_job_response_body import ResetScheduledPreloadJobResponseBody
 from ._reset_scheduled_preload_job_response import ResetScheduledPreloadJobResponse
@@ -985,9 +1013,16 @@ from ._revoke_client_certificate_response import RevokeClientCertificateResponse
 from ._rollback_edge_container_app_version_request import RollbackEdgeContainerAppVersionRequest
 from ._rollback_edge_container_app_version_response_body import RollbackEdgeContainerAppVersionResponseBody
 from ._rollback_edge_container_app_version_response import RollbackEdgeContainerAppVersionResponse
+from ._set_automatic_frequency_control_config_request import SetAutomaticFrequencyControlConfigRequest
+from ._set_automatic_frequency_control_config_response_body import SetAutomaticFrequencyControlConfigResponseBody
+from ._set_automatic_frequency_control_config_response import SetAutomaticFrequencyControlConfigResponse
 from ._set_certificate_request import SetCertificateRequest
 from ._set_certificate_response_body import SetCertificateResponseBody
 from ._set_certificate_response import SetCertificateResponse
+from ._set_client_ca_certificate_hostnames_request import SetClientCaCertificateHostnamesRequest
+from ._set_client_ca_certificate_hostnames_shrink_request import SetClientCaCertificateHostnamesShrinkRequest
+from ._set_client_ca_certificate_hostnames_response_body import SetClientCaCertificateHostnamesResponseBody
+from ._set_client_ca_certificate_hostnames_response import SetClientCaCertificateHostnamesResponse
 from ._set_client_certificate_hostnames_request import SetClientCertificateHostnamesRequest
 from ._set_client_certificate_hostnames_shrink_request import SetClientCertificateHostnamesShrinkRequest
 from ._set_client_certificate_hostnames_response_body import SetClientCertificateHostnamesResponseBody
@@ -1007,6 +1042,9 @@ from ._set_http_ddo_sattack_rule_action_response import SetHttpDDoSAttackRuleAct
 from ._set_http_ddo_sattack_rule_status_request import SetHttpDDoSAttackRuleStatusRequest
 from ._set_http_ddo_sattack_rule_status_response_body import SetHttpDDoSAttackRuleStatusResponseBody
 from ._set_http_ddo_sattack_rule_status_response import SetHttpDDoSAttackRuleStatusResponse
+from ._set_keyless_server_request import SetKeylessServerRequest
+from ._set_keyless_server_response_body import SetKeylessServerResponseBody
+from ._set_keyless_server_response import SetKeylessServerResponse
 from ._set_origin_client_certificate_hostnames_request import SetOriginClientCertificateHostnamesRequest
 from ._set_origin_client_certificate_hostnames_shrink_request import SetOriginClientCertificateHostnamesShrinkRequest
 from ._set_origin_client_certificate_hostnames_response_body import SetOriginClientCertificateHostnamesResponseBody
@@ -1116,8 +1154,12 @@ from ._update_origin_rule_request import UpdateOriginRuleRequest
 from ._update_origin_rule_response_body import UpdateOriginRuleResponseBody
 from ._update_origin_rule_response import UpdateOriginRuleResponse
 from ._update_page_request import UpdatePageRequest
+from ._update_page_shrink_request import UpdatePageShrinkRequest
 from ._update_page_response_body import UpdatePageResponseBody
 from ._update_page_response import UpdatePageResponse
+from ._update_performance_data_collection_request import UpdatePerformanceDataCollectionRequest
+from ._update_performance_data_collection_response_body import UpdatePerformanceDataCollectionResponseBody
+from ._update_performance_data_collection_response import UpdatePerformanceDataCollectionResponse
 from ._update_rate_plan_spec_request import UpdateRatePlanSpecRequest
 from ._update_rate_plan_spec_response_body import UpdateRatePlanSpecResponseBody
 from ._update_rate_plan_spec_response import UpdateRatePlanSpecResponse
@@ -1262,6 +1304,7 @@ from ._waf_site_settings import WafSiteSettingsBotManagementVerifiedBots
 from ._waf_site_settings import WafSiteSettingsBotManagement
 from ._waf_site_settings import WafSiteSettingsClientIpIdentifier
 from ._waf_site_settings import WafSiteSettingsDisableSecurityModule
+from ._waf_site_settings import WafSiteSettingsRequestBodyInspection
 from ._waf_site_settings import WafSiteSettingsSecurityLevel
 from ._waf_timer import WafTimerPeriods
 from ._waf_timer import WafTimerWeeklyPeriodsDailyPeriods
@@ -1326,6 +1369,11 @@ from ._describe_http_ddo_sintelligent_acl_rules_response_body import DescribeHtt
 from ._describe_http_ddo_sintelligent_rate_limit_rules_response_body import DescribeHttpDDoSIntelligentRateLimitRulesResponseBodyRuleInfos
 from ._describe_preload_tasks_response_body import DescribePreloadTasksResponseBodyTasks
 from ._describe_purge_tasks_response_body import DescribePurgeTasksResponseBodyTasks
+from ._describe_rate_plan_price_response_body import DescribeRatePlanPriceResponseBodyPriceModelRatePlanPlanPriceList
+from ._describe_rate_plan_price_response_body import DescribeRatePlanPriceResponseBodyPriceModelRatePlan
+from ._describe_rate_plan_price_response_body import DescribeRatePlanPriceResponseBodyPriceModelRuleRuleList
+from ._describe_rate_plan_price_response_body import DescribeRatePlanPriceResponseBodyPriceModelRule
+from ._describe_rate_plan_price_response_body import DescribeRatePlanPriceResponseBodyPriceModel
 from ._describe_site_logs_response_body import DescribeSiteLogsResponseBodySiteLogDetailsLogInfos
 from ._describe_site_logs_response_body import DescribeSiteLogsResponseBodySiteLogDetailsPageInfos
 from ._describe_site_logs_response_body import DescribeSiteLogsResponseBodySiteLogDetails
@@ -1421,6 +1469,7 @@ from ._get_waf_quota_response_body import GetWafQuotaResponseBodyQuotaList
 from ._get_waf_quota_response_body import GetWafQuotaResponseBodyQuotaManagedRulesGroup
 from ._get_waf_quota_response_body import GetWafQuotaResponseBodyQuotaPage
 from ._get_waf_quota_response_body import GetWafQuotaResponseBodyQuotaScenePolicy
+from ._get_waf_quota_response_body import GetWafQuotaResponseBodyQuotaSliderCaptchaPage
 from ._get_waf_quota_response_body import GetWafQuotaResponseBodyQuota
 from ._list_cache_reserve_instances_response_body import ListCacheReserveInstancesResponseBodyInstanceInfo
 from ._list_cache_rules_response_body import ListCacheRulesResponseBodyConfigs
@@ -1433,6 +1482,7 @@ from ._list_client_certificates_response_body import ListClientCertificatesRespo
 from ._list_compression_rules_response_body import ListCompressionRulesResponseBodyConfigs
 from ._list_custom_hostnames_response_body import ListCustomHostnamesResponseBodyHostnames
 from ._list_custom_response_code_rules_response_body import ListCustomResponseCodeRulesResponseBodyConfigs
+from ._list_ddo_sinstances_response_body import ListDDoSInstancesResponseBodyInstanceInfo
 from ._list_esaipinfo_response_body import ListESAIPInfoResponseBodyContent
 from ._list_edge_container_app_image_secrets_response_body import ListEdgeContainerAppImageSecretsResponseBodyImageSecretList
 from ._list_edge_container_app_records_response_body import ListEdgeContainerAppRecordsResponseBodyRecords
@@ -1458,6 +1508,7 @@ from ._list_image_transforms_response_body import ListImageTransformsResponseBod
 from ._list_instance_quotas_response_body import ListInstanceQuotasResponseBodyQuotas
 from ._list_instance_quotas_with_usage_response_body import ListInstanceQuotasWithUsageResponseBodyQuotasSiteUsage
 from ._list_instance_quotas_with_usage_response_body import ListInstanceQuotasWithUsageResponseBodyQuotas
+from ._list_keyless_servers_response_body import ListKeylessServersResponseBodyResult
 from ._list_kvs_response_body import ListKvsResponseBodyKeys
 from ._list_lists_request import ListListsRequestQueryArgs
 from ._list_lists_response_body import ListListsResponseBodyLists
@@ -1710,6 +1761,7 @@ __all__ = [
     CreateOriginRuleResponseBody,
     CreateOriginRuleResponse,
     CreatePageRequest,
+    CreatePageShrinkRequest,
     CreatePageResponseBody,
     CreatePageResponse,
     CreateRecordRequest,
@@ -1857,6 +1909,9 @@ __all__ = [
     DeleteImageTransformRequest,
     DeleteImageTransformResponseBody,
     DeleteImageTransformResponse,
+    DeleteKeylessServerRequest,
+    DeleteKeylessServerResponseBody,
+    DeleteKeylessServerResponse,
     DeleteKvRequest,
     DeleteKvResponseBody,
     DeleteKvResponse,
@@ -2000,6 +2055,9 @@ __all__ = [
     DescribeRatePlanInstanceStatusRequest,
     DescribeRatePlanInstanceStatusResponseBody,
     DescribeRatePlanInstanceStatusResponse,
+    DescribeRatePlanPriceRequest,
+    DescribeRatePlanPriceResponseBody,
+    DescribeRatePlanPriceResponse,
     DescribeSiteLogsRequest,
     DescribeSiteLogsResponseBody,
     DescribeSiteLogsResponse,
@@ -2030,6 +2088,9 @@ __all__ = [
     GetApiSchemaUsageRequest,
     GetApiSchemaUsageResponseBody,
     GetApiSchemaUsageResponse,
+    GetAutomaticFrequencyControlConfigRequest,
+    GetAutomaticFrequencyControlConfigResponseBody,
+    GetAutomaticFrequencyControlConfigResponse,
     GetCacheReserveSpecificationResponseBody,
     GetCacheReserveSpecificationResponse,
     GetCacheRuleRequest,
@@ -2047,6 +2108,9 @@ __all__ = [
     GetClientCaCertificateRequest,
     GetClientCaCertificateResponseBody,
     GetClientCaCertificateResponse,
+    GetClientCaCertificateHostnamesRequest,
+    GetClientCaCertificateHostnamesResponseBody,
+    GetClientCaCertificateHostnamesResponse,
     GetClientCertificateRequest,
     GetClientCertificateResponseBody,
     GetClientCertificateResponse,
@@ -2131,6 +2195,9 @@ __all__ = [
     GetImageTransformRequest,
     GetImageTransformResponseBody,
     GetImageTransformResponse,
+    GetKeylessServerRequest,
+    GetKeylessServerResponseBody,
+    GetKeylessServerResponse,
     GetKvRequest,
     GetKvResponseBody,
     GetKvResponse,
@@ -2175,6 +2242,9 @@ __all__ = [
     GetPageRequest,
     GetPageResponseBody,
     GetPageResponse,
+    GetPerformanceDataCollectionRequest,
+    GetPerformanceDataCollectionResponseBody,
+    GetPerformanceDataCollectionResponse,
     GetPurgeQuotaRequest,
     GetPurgeQuotaResponseBody,
     GetPurgeQuotaResponse,
@@ -2307,6 +2377,9 @@ __all__ = [
     ListCustomResponseCodeRulesRequest,
     ListCustomResponseCodeRulesResponseBody,
     ListCustomResponseCodeRulesResponse,
+    ListDDoSInstancesRequest,
+    ListDDoSInstancesResponseBody,
+    ListDDoSInstancesResponse,
     ListESAIPInfoRequest,
     ListESAIPInfoResponseBody,
     ListESAIPInfoResponse,
@@ -2357,6 +2430,9 @@ __all__ = [
     ListInstanceQuotasWithUsageRequest,
     ListInstanceQuotasWithUsageResponseBody,
     ListInstanceQuotasWithUsageResponse,
+    ListKeylessServersRequest,
+    ListKeylessServersResponseBody,
+    ListKeylessServersResponse,
     ListKvsRequest,
     ListKvsResponseBody,
     ListKvsResponse,
@@ -2527,6 +2603,9 @@ __all__ = [
     RebuildEdgeContainerAppStagingEnvRequest,
     RebuildEdgeContainerAppStagingEnvResponseBody,
     RebuildEdgeContainerAppStagingEnvResponse,
+    ReleaseInstanceRequest,
+    ReleaseInstanceResponseBody,
+    ReleaseInstanceResponse,
     ResetScheduledPreloadJobRequest,
     ResetScheduledPreloadJobResponseBody,
     ResetScheduledPreloadJobResponse,
@@ -2536,9 +2615,16 @@ __all__ = [
     RollbackEdgeContainerAppVersionRequest,
     RollbackEdgeContainerAppVersionResponseBody,
     RollbackEdgeContainerAppVersionResponse,
+    SetAutomaticFrequencyControlConfigRequest,
+    SetAutomaticFrequencyControlConfigResponseBody,
+    SetAutomaticFrequencyControlConfigResponse,
     SetCertificateRequest,
     SetCertificateResponseBody,
     SetCertificateResponse,
+    SetClientCaCertificateHostnamesRequest,
+    SetClientCaCertificateHostnamesShrinkRequest,
+    SetClientCaCertificateHostnamesResponseBody,
+    SetClientCaCertificateHostnamesResponse,
     SetClientCertificateHostnamesRequest,
     SetClientCertificateHostnamesShrinkRequest,
     SetClientCertificateHostnamesResponseBody,
@@ -2558,6 +2644,9 @@ __all__ = [
     SetHttpDDoSAttackRuleStatusRequest,
     SetHttpDDoSAttackRuleStatusResponseBody,
     SetHttpDDoSAttackRuleStatusResponse,
+    SetKeylessServerRequest,
+    SetKeylessServerResponseBody,
+    SetKeylessServerResponse,
     SetOriginClientCertificateHostnamesRequest,
     SetOriginClientCertificateHostnamesShrinkRequest,
     SetOriginClientCertificateHostnamesResponseBody,
@@ -2667,8 +2756,12 @@ __all__ = [
     UpdateOriginRuleResponseBody,
     UpdateOriginRuleResponse,
     UpdatePageRequest,
+    UpdatePageShrinkRequest,
     UpdatePageResponseBody,
     UpdatePageResponse,
+    UpdatePerformanceDataCollectionRequest,
+    UpdatePerformanceDataCollectionResponseBody,
+    UpdatePerformanceDataCollectionResponse,
     UpdateRatePlanSpecRequest,
     UpdateRatePlanSpecResponseBody,
     UpdateRatePlanSpecResponse,
@@ -2813,6 +2906,7 @@ __all__ = [
     WafSiteSettingsBotManagement,
     WafSiteSettingsClientIpIdentifier,
     WafSiteSettingsDisableSecurityModule,
+    WafSiteSettingsRequestBodyInspection,
     WafSiteSettingsSecurityLevel,
     WafTimerPeriods,
     WafTimerWeeklyPeriodsDailyPeriods,
@@ -2877,6 +2971,11 @@ __all__ = [
     DescribeHttpDDoSIntelligentRateLimitRulesResponseBodyRuleInfos,
     DescribePreloadTasksResponseBodyTasks,
     DescribePurgeTasksResponseBodyTasks,
+    DescribeRatePlanPriceResponseBodyPriceModelRatePlanPlanPriceList,
+    DescribeRatePlanPriceResponseBodyPriceModelRatePlan,
+    DescribeRatePlanPriceResponseBodyPriceModelRuleRuleList,
+    DescribeRatePlanPriceResponseBodyPriceModelRule,
+    DescribeRatePlanPriceResponseBodyPriceModel,
     DescribeSiteLogsResponseBodySiteLogDetailsLogInfos,
     DescribeSiteLogsResponseBodySiteLogDetailsPageInfos,
     DescribeSiteLogsResponseBodySiteLogDetails,
@@ -2972,6 +3071,7 @@ __all__ = [
     GetWafQuotaResponseBodyQuotaManagedRulesGroup,
     GetWafQuotaResponseBodyQuotaPage,
     GetWafQuotaResponseBodyQuotaScenePolicy,
+    GetWafQuotaResponseBodyQuotaSliderCaptchaPage,
     GetWafQuotaResponseBodyQuota,
     ListCacheReserveInstancesResponseBodyInstanceInfo,
     ListCacheRulesResponseBodyConfigs,
@@ -2984,6 +3084,7 @@ __all__ = [
     ListCompressionRulesResponseBodyConfigs,
     ListCustomHostnamesResponseBodyHostnames,
     ListCustomResponseCodeRulesResponseBodyConfigs,
+    ListDDoSInstancesResponseBodyInstanceInfo,
     ListESAIPInfoResponseBodyContent,
     ListEdgeContainerAppImageSecretsResponseBodyImageSecretList,
     ListEdgeContainerAppRecordsResponseBodyRecords,
@@ -3009,6 +3110,7 @@ __all__ = [
     ListInstanceQuotasResponseBodyQuotas,
     ListInstanceQuotasWithUsageResponseBodyQuotasSiteUsage,
     ListInstanceQuotasWithUsageResponseBodyQuotas,
+    ListKeylessServersResponseBodyResult,
     ListKvsResponseBodyKeys,
     ListListsRequestQueryArgs,
     ListListsResponseBodyLists,

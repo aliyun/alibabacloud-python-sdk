@@ -15,6 +15,7 @@ class CreateRoutineRouteRequest(DaraModel):
         rule: str = None,
         sequence: int = None,
         site_id: int = None,
+        timeout: str = None,
     ):
         # Bypass mode Valid values:
         # 
@@ -45,6 +46,7 @@ class CreateRoutineRouteRequest(DaraModel):
         # 
         # This parameter is required.
         self.site_id = site_id
+        self.timeout = timeout
 
     def validate(self):
         pass
@@ -78,6 +80,9 @@ class CreateRoutineRouteRequest(DaraModel):
         if self.site_id is not None:
             result['SiteId'] = self.site_id
 
+        if self.timeout is not None:
+            result['Timeout'] = self.timeout
+
         return result
 
     def from_map(self, m: dict = None):
@@ -105,6 +110,9 @@ class CreateRoutineRouteRequest(DaraModel):
 
         if m.get('SiteId') is not None:
             self.site_id = m.get('SiteId')
+
+        if m.get('Timeout') is not None:
+            self.timeout = m.get('Timeout')
 
         return self
 

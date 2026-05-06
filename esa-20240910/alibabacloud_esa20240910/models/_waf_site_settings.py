@@ -16,14 +16,21 @@ class WafSiteSettings(DaraModel):
         bot_management: main_models.WafSiteSettingsBotManagement = None,
         client_ip_identifier: main_models.WafSiteSettingsClientIpIdentifier = None,
         disable_security_module: main_models.WafSiteSettingsDisableSecurityModule = None,
+        request_body_inspection: main_models.WafSiteSettingsRequestBodyInspection = None,
         security_level: main_models.WafSiteSettingsSecurityLevel = None,
     ):
+        # Adds a bot protection header.
         self.add_bot_protection_headers = add_bot_protection_headers
+        # Adds security request header.
         self.add_security_headers = add_security_headers
         self.bandwidth_abuse_protection = bandwidth_abuse_protection
+        # Bot management.
         self.bot_management = bot_management
+        # Identifies the IP address of the client.
         self.client_ip_identifier = client_ip_identifier
         self.disable_security_module = disable_security_module
+        self.request_body_inspection = request_body_inspection
+        # The security level.
         self.security_level = security_level
 
     def validate(self):
@@ -39,6 +46,8 @@ class WafSiteSettings(DaraModel):
             self.client_ip_identifier.validate()
         if self.disable_security_module:
             self.disable_security_module.validate()
+        if self.request_body_inspection:
+            self.request_body_inspection.validate()
         if self.security_level:
             self.security_level.validate()
 
@@ -64,6 +73,9 @@ class WafSiteSettings(DaraModel):
 
         if self.disable_security_module is not None:
             result['DisableSecurityModule'] = self.disable_security_module.to_map()
+
+        if self.request_body_inspection is not None:
+            result['RequestBodyInspection'] = self.request_body_inspection.to_map()
 
         if self.security_level is not None:
             result['SecurityLevel'] = self.security_level.to_map()
@@ -96,6 +108,10 @@ class WafSiteSettings(DaraModel):
             temp_model = main_models.WafSiteSettingsDisableSecurityModule()
             self.disable_security_module = temp_model.from_map(m.get('DisableSecurityModule'))
 
+        if m.get('RequestBodyInspection') is not None:
+            temp_model = main_models.WafSiteSettingsRequestBodyInspection()
+            self.request_body_inspection = temp_model.from_map(m.get('RequestBodyInspection'))
+
         if m.get('SecurityLevel') is not None:
             temp_model = main_models.WafSiteSettingsSecurityLevel()
             self.security_level = temp_model.from_map(m.get('SecurityLevel'))
@@ -107,6 +123,16 @@ class WafSiteSettingsSecurityLevel(DaraModel):
         self,
         value: str = None,
     ):
+        # The security level value.
+        # 
+        # Enumerated values:
+        # 
+        # *   high: high.
+        # *   low: low.
+        # *   under_attack: I am under attack.
+        # *   medium: medium.
+        # *   essentially_off: essentially off.
+        # *   off: completely off.
         self.value = value
 
     def validate(self):
@@ -126,6 +152,49 @@ class WafSiteSettingsSecurityLevel(DaraModel):
         m = m or dict()
         if m.get('Value') is not None:
             self.value = m.get('Value')
+
+        return self
+
+class WafSiteSettingsRequestBodyInspection(DaraModel):
+    def __init__(
+        self,
+        action: str = None,
+        id: int = None,
+        size_limit: str = None,
+    ):
+        self.action = action
+        self.id = id
+        self.size_limit = size_limit
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.action is not None:
+            result['Action'] = self.action
+
+        if self.id is not None:
+            result['Id'] = self.id
+
+        if self.size_limit is not None:
+            result['SizeLimit'] = self.size_limit
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Action') is not None:
+            self.action = m.get('Action')
+
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+
+        if m.get('SizeLimit') is not None:
+            self.size_limit = m.get('SizeLimit')
 
         return self
 
@@ -162,7 +231,14 @@ class WafSiteSettingsClientIpIdentifier(DaraModel):
         headers: List[str] = None,
         mode: str = None,
     ):
+        # Specify headers.
         self.headers = headers
+        # Identifies the mode.
+        # 
+        # Enumerated values:
+        # 
+        # *   headers: specifies the headers.
+        # *   connection_ip: the IP address for establishing a connection.
         self.mode = mode
 
     def validate(self):
@@ -200,10 +276,15 @@ class WafSiteSettingsBotManagement(DaraModel):
         likely_bots: main_models.WafSiteSettingsBotManagementLikelyBots = None,
         verified_bots: main_models.WafSiteSettingsBotManagementVerifiedBots = None,
     ):
+        # Definite Bots
         self.definite_bots = definite_bots
+        # Takes effect on static resource requests.
         self.effect_on_static = effect_on_static
+        # JavaScript detection.
         self.jsdetection = jsdetection
+        # Likely Bots
         self.likely_bots = likely_bots
+        # Verified Bots
         self.verified_bots = verified_bots
 
     def validate(self):
@@ -270,7 +351,9 @@ class WafSiteSettingsBotManagementVerifiedBots(DaraModel):
         action: str = None,
         id: int = None,
     ):
+        # The action that you want to perform on requests that match the rule.
         self.action = action
+        # The rule ID.
         self.id = id
 
     def validate(self):
@@ -305,7 +388,9 @@ class WafSiteSettingsBotManagementLikelyBots(DaraModel):
         action: str = None,
         id: int = None,
     ):
+        # The action that you want to perform on requests that match the rule.
         self.action = action
+        # The rule ID.
         self.id = id
 
     def validate(self):
@@ -339,6 +424,7 @@ class WafSiteSettingsBotManagementJSDetection(DaraModel):
         self,
         enable: bool = None,
     ):
+        # Indicates whether the parameter is enabled.
         self.enable = enable
 
     def validate(self):
@@ -366,6 +452,7 @@ class WafSiteSettingsBotManagementEffectOnStatic(DaraModel):
         self,
         enable: bool = None,
     ):
+        # Indicates whether the parameter is enabled.
         self.enable = enable
 
     def validate(self):
@@ -394,7 +481,9 @@ class WafSiteSettingsBotManagementDefiniteBots(DaraModel):
         action: str = None,
         id: int = None,
     ):
+        # The action that you want to perform on requests that match the rule.
         self.action = action
+        # The rule ID.
         self.id = id
 
     def validate(self):
@@ -471,6 +560,7 @@ class WafSiteSettingsAddSecurityHeaders(DaraModel):
         self,
         enable: bool = None,
     ):
+        # Indicates whether the parameter is enabled.
         self.enable = enable
 
     def validate(self):
@@ -498,6 +588,7 @@ class WafSiteSettingsAddBotProtectionHeaders(DaraModel):
         self,
         enable: bool = None,
     ):
+        # Indicates whether the parameter is enabled.
         self.enable = enable
 
     def validate(self):

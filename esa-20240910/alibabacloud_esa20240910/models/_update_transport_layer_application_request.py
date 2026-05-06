@@ -14,6 +14,7 @@ class UpdateTransportLayerApplicationRequest(DaraModel):
         cross_border_optimization: str = None,
         ip_access_rule: str = None,
         ipv_6: str = None,
+        keep_alive_protection: str = None,
         rules: List[main_models.UpdateTransportLayerApplicationRequestRules] = None,
         site_id: int = None,
         static_ip: str = None,
@@ -34,6 +35,7 @@ class UpdateTransportLayerApplicationRequest(DaraModel):
         self.ip_access_rule = ip_access_rule
         # IPv6 switch.
         self.ipv_6 = ipv_6
+        self.keep_alive_protection = keep_alive_protection
         # Forwarding rule list. Details of each rule. Except for the comment, all other parameters are required.
         self.rules = rules
         # Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
@@ -65,6 +67,9 @@ class UpdateTransportLayerApplicationRequest(DaraModel):
         if self.ipv_6 is not None:
             result['Ipv6'] = self.ipv_6
 
+        if self.keep_alive_protection is not None:
+            result['KeepAliveProtection'] = self.keep_alive_protection
+
         result['Rules'] = []
         if self.rules is not None:
             for k1 in self.rules:
@@ -91,6 +96,9 @@ class UpdateTransportLayerApplicationRequest(DaraModel):
 
         if m.get('Ipv6') is not None:
             self.ipv_6 = m.get('Ipv6')
+
+        if m.get('KeepAliveProtection') is not None:
+            self.keep_alive_protection = m.get('KeepAliveProtection')
 
         self.rules = []
         if m.get('Rules') is not None:

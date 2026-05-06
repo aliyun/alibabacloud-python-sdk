@@ -11,6 +11,8 @@ class GetPurgeQuotaRequest(DaraModel):
         type: str = None,
     ):
         # The website ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the ID.
+        # 
+        # This parameter is required.
         self.site_id = site_id
         # The type of the purge task. Valid values:
         # 
@@ -20,6 +22,8 @@ class GetPurgeQuotaRequest(DaraModel):
         # *   **ignoreParams**: purges the cache by URL with specific parameters ignored.
         # *   **hostname**: purges the cache by hostname.
         # *   **purgeall**: purges all cache.
+        # 
+        # This parameter is required.
         self.type = type
 
     def validate(self):
