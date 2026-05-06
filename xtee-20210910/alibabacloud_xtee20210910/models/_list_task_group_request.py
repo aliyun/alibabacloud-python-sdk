@@ -4,35 +4,23 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class DescribeListPocRequest(DaraModel):
+class ListTaskGroupRequest(DaraModel):
     def __init__(
         self,
         current_page: int = None,
         lang: str = None,
         page_size: int = None,
         reg_id: str = None,
-        task_name: str = None,
-        task_status: str = None,
+        sample_name: str = None,
+        task_group_name: str = None,
         type: str = None,
     ):
-        # Current page number.
         self.current_page = current_page
-        # Sets the language type for requests and received messages, with a default value of **zh**. Values:
-        # - **zh**: Chinese
-        # - **en**: English
         self.lang = lang
-        # Page size.
         self.page_size = page_size
-        # Region code
         self.reg_id = reg_id
-        # Task name.
-        self.task_name = task_name
-        # The status of the import task. Valid values:
-        # 
-        # *   DOING
-        # *   FINISH
-        self.task_status = task_status
-        # Type
+        self.sample_name = sample_name
+        self.task_group_name = task_group_name
         self.type = type
 
     def validate(self):
@@ -55,11 +43,11 @@ class DescribeListPocRequest(DaraModel):
         if self.reg_id is not None:
             result['RegId'] = self.reg_id
 
-        if self.task_name is not None:
-            result['TaskName'] = self.task_name
+        if self.sample_name is not None:
+            result['SampleName'] = self.sample_name
 
-        if self.task_status is not None:
-            result['TaskStatus'] = self.task_status
+        if self.task_group_name is not None:
+            result['TaskGroupName'] = self.task_group_name
 
         if self.type is not None:
             result['Type'] = self.type
@@ -80,11 +68,11 @@ class DescribeListPocRequest(DaraModel):
         if m.get('RegId') is not None:
             self.reg_id = m.get('RegId')
 
-        if m.get('TaskName') is not None:
-            self.task_name = m.get('TaskName')
+        if m.get('SampleName') is not None:
+            self.sample_name = m.get('SampleName')
 
-        if m.get('TaskStatus') is not None:
-            self.task_status = m.get('TaskStatus')
+        if m.get('TaskGroupName') is not None:
+            self.task_group_name = m.get('TaskGroupName')
 
         if m.get('Type') is not None:
             self.type = m.get('Type')

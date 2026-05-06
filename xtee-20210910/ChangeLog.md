@@ -1,3 +1,21 @@
+2026-05-06 Version: 2.3.0
+- Support API CancelSubTask.
+- Support API CheckSampleName.
+- Support API CheckTaskGroupName.
+- Support API CreatePocSample.
+- Support API CreateTaskGroup.
+- Support API DeleteSample.
+- Support API DownloadSampleFile.
+- Support API DownloadSubTaskResult.
+- Support API GetSampleDetail.
+- Support API GetSubTaskResult.
+- Support API ListSample.
+- Support API ListTaskGroup.
+- Support API MergeDownload.
+- Support API SearchSample.
+- Support API UploadSampleFile.
+
+
 2026-01-19 Version: 2.2.1
 - Update API DescribeListPoc: add request parameters TaskName.
 - Update API DescribeListPoc: add request parameters TaskStatus.

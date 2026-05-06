@@ -14,6 +14,9 @@ from ._batch_delete_sample_data_response import BatchDeleteSampleDataResponse
 from ._bind_variable_request import BindVariableRequest
 from ._bind_variable_response_body import BindVariableResponseBody
 from ._bind_variable_response import BindVariableResponse
+from ._cancel_sub_task_request import CancelSubTaskRequest
+from ._cancel_sub_task_response_body import CancelSubTaskResponseBody
+from ._cancel_sub_task_response import CancelSubTaskResponse
 from ._check_copy_rule_variable_request import CheckCopyRuleVariableRequest
 from ._check_copy_rule_variable_response_body import CheckCopyRuleVariableResponseBody
 from ._check_copy_rule_variable_response import CheckCopyRuleVariableResponse
@@ -26,6 +29,12 @@ from ._check_expression_variable_limit_response import CheckExpressionVariableLi
 from ._check_field_limit_request import CheckFieldLimitRequest
 from ._check_field_limit_response_body import CheckFieldLimitResponseBody
 from ._check_field_limit_response import CheckFieldLimitResponse
+from ._check_sample_name_request import CheckSampleNameRequest
+from ._check_sample_name_response_body import CheckSampleNameResponseBody
+from ._check_sample_name_response import CheckSampleNameResponse
+from ._check_task_group_name_request import CheckTaskGroupNameRequest
+from ._check_task_group_name_response_body import CheckTaskGroupNameResponseBody
+from ._check_task_group_name_response import CheckTaskGroupNameResponse
 from ._check_usage_variable_request import CheckUsageVariableRequest
 from ._check_usage_variable_response_body import CheckUsageVariableResponseBody
 from ._check_usage_variable_response import CheckUsageVariableResponse
@@ -65,6 +74,9 @@ from ._create_model_response import CreateModelResponse
 from ._create_poc_ev_request import CreatePocEvRequest
 from ._create_poc_ev_response_body import CreatePocEvResponseBody
 from ._create_poc_ev_response import CreatePocEvResponse
+from ._create_poc_sample_request import CreatePocSampleRequest
+from ._create_poc_sample_response_body import CreatePocSampleResponseBody
+from ._create_poc_sample_response import CreatePocSampleResponse
 from ._create_query_variable_request import CreateQueryVariableRequest
 from ._create_query_variable_response_body import CreateQueryVariableResponseBody
 from ._create_query_variable_response import CreateQueryVariableResponse
@@ -92,6 +104,9 @@ from ._create_sample_data_response import CreateSampleDataResponse
 from ._create_simulation_task_request import CreateSimulationTaskRequest
 from ._create_simulation_task_response_body import CreateSimulationTaskResponseBody
 from ._create_simulation_task_response import CreateSimulationTaskResponse
+from ._create_task_group_request import CreateTaskGroupRequest
+from ._create_task_group_response_body import CreateTaskGroupResponseBody
+from ._create_task_group_response import CreateTaskGroupResponse
 from ._deep_copy_rule_request import DeepCopyRuleRequest
 from ._deep_copy_rule_response_body import DeepCopyRuleResponseBody
 from ._deep_copy_rule_response import DeepCopyRuleResponse
@@ -128,6 +143,9 @@ from ._delete_query_variable_response import DeleteQueryVariableResponse
 from ._delete_rule_request import DeleteRuleRequest
 from ._delete_rule_response_body import DeleteRuleResponseBody
 from ._delete_rule_response import DeleteRuleResponse
+from ._delete_sample_request import DeleteSampleRequest
+from ._delete_sample_response_body import DeleteSampleResponseBody
+from ._delete_sample_response import DeleteSampleResponse
 from ._delete_sample_batch_request import DeleteSampleBatchRequest
 from ._delete_sample_batch_response_body import DeleteSampleBatchResponseBody
 from ._delete_sample_batch_response import DeleteSampleBatchResponse
@@ -680,15 +698,27 @@ from ._describe_variable_version_detail_response import DescribeVariableVersionD
 from ._describe_version_page_list_request import DescribeVersionPageListRequest
 from ._describe_version_page_list_response_body import DescribeVersionPageListResponseBody
 from ._describe_version_page_list_response import DescribeVersionPageListResponse
+from ._download_sample_file_request import DownloadSampleFileRequest
+from ._download_sample_file_response_body import DownloadSampleFileResponseBody
+from ._download_sample_file_response import DownloadSampleFileResponse
 from ._download_smaple_batch_request import DownloadSmapleBatchRequest
 from ._download_smaple_batch_response_body import DownloadSmapleBatchResponseBody
 from ._download_smaple_batch_response import DownloadSmapleBatchResponse
+from ._download_sub_task_result_request import DownloadSubTaskResultRequest
+from ._download_sub_task_result_response_body import DownloadSubTaskResultResponseBody
+from ._download_sub_task_result_response import DownloadSubTaskResultResponse
 from ._expression_test_request import ExpressionTestRequest
 from ._expression_test_response_body import ExpressionTestResponseBody
 from ._expression_test_response import ExpressionTestResponse
 from ._file_upload_request import FileUploadRequest
 from ._file_upload_response_body import FileUploadResponseBody
 from ._file_upload_response import FileUploadResponse
+from ._get_sample_detail_request import GetSampleDetailRequest
+from ._get_sample_detail_response_body import GetSampleDetailResponseBody
+from ._get_sample_detail_response import GetSampleDetailResponse
+from ._get_sub_task_result_request import GetSubTaskResultRequest
+from ._get_sub_task_result_response_body import GetSubTaskResultResponseBody
+from ._get_sub_task_result_response import GetSubTaskResultResponse
 from ._import_field_request import ImportFieldRequest
 from ._import_field_response_body import ImportFieldResponseBody
 from ._import_field_response import ImportFieldResponse
@@ -698,9 +728,18 @@ from ._import_name_list_response import ImportNameListResponse
 from ._import_template_event_request import ImportTemplateEventRequest
 from ._import_template_event_response_body import ImportTemplateEventResponseBody
 from ._import_template_event_response import ImportTemplateEventResponse
+from ._list_sample_request import ListSampleRequest
+from ._list_sample_response_body import ListSampleResponseBody
+from ._list_sample_response import ListSampleResponse
+from ._list_task_group_request import ListTaskGroupRequest
+from ._list_task_group_response_body import ListTaskGroupResponseBody
+from ._list_task_group_response import ListTaskGroupResponse
 from ._list_variable_define_request import ListVariableDefineRequest
 from ._list_variable_define_response_body import ListVariableDefineResponseBody
 from ._list_variable_define_response import ListVariableDefineResponse
+from ._merge_download_request import MergeDownloadRequest
+from ._merge_download_response_body import MergeDownloadResponseBody
+from ._merge_download_response import MergeDownloadResponse
 from ._model_delete_request import ModelDeleteRequest
 from ._model_delete_response_body import ModelDeleteResponseBody
 from ._model_delete_response import ModelDeleteResponse
@@ -779,6 +818,9 @@ from ._save_analysis_column_response import SaveAnalysisColumnResponse
 from ._save_by_pass_or_shunt_event_request import SaveByPassOrShuntEventRequest
 from ._save_by_pass_or_shunt_event_response_body import SaveByPassOrShuntEventResponseBody
 from ._save_by_pass_or_shunt_event_response import SaveByPassOrShuntEventResponse
+from ._search_sample_request import SearchSampleRequest
+from ._search_sample_response_body import SearchSampleResponseBody
+from ._search_sample_response import SearchSampleResponse
 from ._start_or_stop_by_pass_shunt_event_request import StartOrStopByPassShuntEventRequest
 from ._start_or_stop_by_pass_shunt_event_response_body import StartOrStopByPassShuntEventResponseBody
 from ._start_or_stop_by_pass_shunt_event_response import StartOrStopByPassShuntEventResponse
@@ -836,6 +878,9 @@ from ._update_sample_batch_response import UpdateSampleBatchResponse
 from ._upload_file_check_request import UploadFileCheckRequest
 from ._upload_file_check_response_body import UploadFileCheckResponseBody
 from ._upload_file_check_response import UploadFileCheckResponse
+from ._upload_sample_file_request import UploadSampleFileRequest
+from ._upload_sample_file_response_body import UploadSampleFileResponseBody
+from ._upload_sample_file_response import UploadSampleFileResponse
 from ._check_copy_rule_variable_response_body import CheckCopyRuleVariableResponseBodyResultObjectMessage
 from ._check_copy_rule_variable_response_body import CheckCopyRuleVariableResponseBodyResultObject
 from ._compare_copy_rule_variable_response_body import CompareCopyRuleVariableResponseBodyResultObjectCustVariableList
@@ -849,7 +894,9 @@ from ._compare_rule_response_body import CompareRuleResponseBodyResultObjectNewR
 from ._compare_rule_response_body import CompareRuleResponseBodyResultObjectOldRule
 from ._compare_rule_response_body import CompareRuleResponseBodyResultObject
 from ._create_analysis_export_task_response_body import CreateAnalysisExportTaskResponseBodyResultObject
+from ._create_poc_sample_response_body import CreatePocSampleResponseBodyResultObject
 from ._create_sample_response_body import CreateSampleResponseBodyResultObject
+from ._create_task_group_response_body import CreateTaskGroupResponseBodyResultObject
 from ._deep_copy_rule_response_body import DeepCopyRuleResponseBodyResultObject
 from ._describe_advance_search_left_variable_list_response_body import DescribeAdvanceSearchLeftVariableListResponseBodyResultObject
 from ._describe_advance_search_page_list_response_body import DescribeAdvanceSearchPageListResponseBodyResultObjectHeader
@@ -1085,11 +1132,29 @@ from ._describe_variable_list_response_body import DescribeVariableListResponseB
 from ._describe_variable_scene_list_response_body import DescribeVariableSceneListResponseBodyResultObject
 from ._describe_variable_version_detail_response_body import DescribeVariableVersionDetailResponseBodyResultObject
 from ._describe_version_page_list_response_body import DescribeVersionPageListResponseBodyResultObject
+from ._download_sample_file_response_body import DownloadSampleFileResponseBodyResultObject
 from ._download_smaple_batch_response_body import DownloadSmapleBatchResponseBodyResultObject
+from ._download_sub_task_result_response_body import DownloadSubTaskResultResponseBodyResultObject
+from ._get_sample_detail_response_body import GetSampleDetailResponseBodyResultObjectColumnStats
+from ._get_sample_detail_response_body import GetSampleDetailResponseBodyResultObjectPreviewData
+from ._get_sample_detail_response_body import GetSampleDetailResponseBodyResultObject
+from ._get_sub_task_result_response_body import GetSubTaskResultResponseBodyResultObjectConfig
+from ._get_sub_task_result_response_body import GetSubTaskResultResponseBodyResultObjectFileCol
+from ._get_sub_task_result_response_body import GetSubTaskResultResponseBodyResultObjectFile
+from ._get_sub_task_result_response_body import GetSubTaskResultResponseBodyResultObjectLog
+from ._get_sub_task_result_response_body import GetSubTaskResultResponseBodyResultObject
 from ._import_field_response_body import ImportFieldResponseBodyResultObject
+from ._list_sample_response_body import ListSampleResponseBodyResultObject
+from ._list_task_group_response_body import ListTaskGroupResponseBodyResultObjectSubTaskList
+from ._list_task_group_response_body import ListTaskGroupResponseBodyResultObject
+from ._merge_download_response_body import MergeDownloadResponseBodyResultObject
 from ._modify_cust_variable_response_body import ModifyCustVariableResponseBodyResultObject
 from ._query_auth_rule_detail_by_rule_id_response_body import QueryAuthRuleDetailByRuleIdResponseBodyResultObject
+from ._search_sample_response_body import SearchSampleResponseBodyResultObject
 from ._upload_file_check_response_body import UploadFileCheckResponseBodyResultObject
+from ._upload_sample_file_response_body import UploadSampleFileResponseBodyResultObjectColumnStats
+from ._upload_sample_file_response_body import UploadSampleFileResponseBodyResultObjectPreviewData
+from ._upload_sample_file_response_body import UploadSampleFileResponseBodyResultObject
 
 __all__ = [
     AddSampleDataByCsvRequest,
@@ -1104,6 +1169,9 @@ __all__ = [
     BindVariableRequest,
     BindVariableResponseBody,
     BindVariableResponse,
+    CancelSubTaskRequest,
+    CancelSubTaskResponseBody,
+    CancelSubTaskResponse,
     CheckCopyRuleVariableRequest,
     CheckCopyRuleVariableResponseBody,
     CheckCopyRuleVariableResponse,
@@ -1116,6 +1184,12 @@ __all__ = [
     CheckFieldLimitRequest,
     CheckFieldLimitResponseBody,
     CheckFieldLimitResponse,
+    CheckSampleNameRequest,
+    CheckSampleNameResponseBody,
+    CheckSampleNameResponse,
+    CheckTaskGroupNameRequest,
+    CheckTaskGroupNameResponseBody,
+    CheckTaskGroupNameResponse,
     CheckUsageVariableRequest,
     CheckUsageVariableResponseBody,
     CheckUsageVariableResponse,
@@ -1155,6 +1229,9 @@ __all__ = [
     CreatePocEvRequest,
     CreatePocEvResponseBody,
     CreatePocEvResponse,
+    CreatePocSampleRequest,
+    CreatePocSampleResponseBody,
+    CreatePocSampleResponse,
     CreateQueryVariableRequest,
     CreateQueryVariableResponseBody,
     CreateQueryVariableResponse,
@@ -1182,6 +1259,9 @@ __all__ = [
     CreateSimulationTaskRequest,
     CreateSimulationTaskResponseBody,
     CreateSimulationTaskResponse,
+    CreateTaskGroupRequest,
+    CreateTaskGroupResponseBody,
+    CreateTaskGroupResponse,
     DeepCopyRuleRequest,
     DeepCopyRuleResponseBody,
     DeepCopyRuleResponse,
@@ -1218,6 +1298,9 @@ __all__ = [
     DeleteRuleRequest,
     DeleteRuleResponseBody,
     DeleteRuleResponse,
+    DeleteSampleRequest,
+    DeleteSampleResponseBody,
+    DeleteSampleResponse,
     DeleteSampleBatchRequest,
     DeleteSampleBatchResponseBody,
     DeleteSampleBatchResponse,
@@ -1770,15 +1853,27 @@ __all__ = [
     DescribeVersionPageListRequest,
     DescribeVersionPageListResponseBody,
     DescribeVersionPageListResponse,
+    DownloadSampleFileRequest,
+    DownloadSampleFileResponseBody,
+    DownloadSampleFileResponse,
     DownloadSmapleBatchRequest,
     DownloadSmapleBatchResponseBody,
     DownloadSmapleBatchResponse,
+    DownloadSubTaskResultRequest,
+    DownloadSubTaskResultResponseBody,
+    DownloadSubTaskResultResponse,
     ExpressionTestRequest,
     ExpressionTestResponseBody,
     ExpressionTestResponse,
     FileUploadRequest,
     FileUploadResponseBody,
     FileUploadResponse,
+    GetSampleDetailRequest,
+    GetSampleDetailResponseBody,
+    GetSampleDetailResponse,
+    GetSubTaskResultRequest,
+    GetSubTaskResultResponseBody,
+    GetSubTaskResultResponse,
     ImportFieldRequest,
     ImportFieldResponseBody,
     ImportFieldResponse,
@@ -1788,9 +1883,18 @@ __all__ = [
     ImportTemplateEventRequest,
     ImportTemplateEventResponseBody,
     ImportTemplateEventResponse,
+    ListSampleRequest,
+    ListSampleResponseBody,
+    ListSampleResponse,
+    ListTaskGroupRequest,
+    ListTaskGroupResponseBody,
+    ListTaskGroupResponse,
     ListVariableDefineRequest,
     ListVariableDefineResponseBody,
     ListVariableDefineResponse,
+    MergeDownloadRequest,
+    MergeDownloadResponseBody,
+    MergeDownloadResponse,
     ModelDeleteRequest,
     ModelDeleteResponseBody,
     ModelDeleteResponse,
@@ -1869,6 +1973,9 @@ __all__ = [
     SaveByPassOrShuntEventRequest,
     SaveByPassOrShuntEventResponseBody,
     SaveByPassOrShuntEventResponse,
+    SearchSampleRequest,
+    SearchSampleResponseBody,
+    SearchSampleResponse,
     StartOrStopByPassShuntEventRequest,
     StartOrStopByPassShuntEventResponseBody,
     StartOrStopByPassShuntEventResponse,
@@ -1926,6 +2033,9 @@ __all__ = [
     UploadFileCheckRequest,
     UploadFileCheckResponseBody,
     UploadFileCheckResponse,
+    UploadSampleFileRequest,
+    UploadSampleFileResponseBody,
+    UploadSampleFileResponse,
     CheckCopyRuleVariableResponseBodyResultObjectMessage,
     CheckCopyRuleVariableResponseBodyResultObject,
     CompareCopyRuleVariableResponseBodyResultObjectCustVariableList,
@@ -1939,7 +2049,9 @@ __all__ = [
     CompareRuleResponseBodyResultObjectOldRule,
     CompareRuleResponseBodyResultObject,
     CreateAnalysisExportTaskResponseBodyResultObject,
+    CreatePocSampleResponseBodyResultObject,
     CreateSampleResponseBodyResultObject,
+    CreateTaskGroupResponseBodyResultObject,
     DeepCopyRuleResponseBodyResultObject,
     DescribeAdvanceSearchLeftVariableListResponseBodyResultObject,
     DescribeAdvanceSearchPageListResponseBodyResultObjectHeader,
@@ -2175,9 +2287,27 @@ __all__ = [
     DescribeVariableSceneListResponseBodyResultObject,
     DescribeVariableVersionDetailResponseBodyResultObject,
     DescribeVersionPageListResponseBodyResultObject,
+    DownloadSampleFileResponseBodyResultObject,
     DownloadSmapleBatchResponseBodyResultObject,
+    DownloadSubTaskResultResponseBodyResultObject,
+    GetSampleDetailResponseBodyResultObjectColumnStats,
+    GetSampleDetailResponseBodyResultObjectPreviewData,
+    GetSampleDetailResponseBodyResultObject,
+    GetSubTaskResultResponseBodyResultObjectConfig,
+    GetSubTaskResultResponseBodyResultObjectFileCol,
+    GetSubTaskResultResponseBodyResultObjectFile,
+    GetSubTaskResultResponseBodyResultObjectLog,
+    GetSubTaskResultResponseBodyResultObject,
     ImportFieldResponseBodyResultObject,
+    ListSampleResponseBodyResultObject,
+    ListTaskGroupResponseBodyResultObjectSubTaskList,
+    ListTaskGroupResponseBodyResultObject,
+    MergeDownloadResponseBodyResultObject,
     ModifyCustVariableResponseBodyResultObject,
     QueryAuthRuleDetailByRuleIdResponseBodyResultObject,
-    UploadFileCheckResponseBodyResultObject
+    SearchSampleResponseBodyResultObject,
+    UploadFileCheckResponseBodyResultObject,
+    UploadSampleFileResponseBodyResultObjectColumnStats,
+    UploadSampleFileResponseBodyResultObjectPreviewData,
+    UploadSampleFileResponseBodyResultObject
 ]

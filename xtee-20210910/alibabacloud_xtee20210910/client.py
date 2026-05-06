@@ -416,6 +416,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.bind_variable_with_options_async(request, runtime)
 
+    def cancel_sub_task_with_options(
+        self,
+        request: main_models.CancelSubTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CancelSubTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.reg_id):
+            query['RegId'] = request.reg_id
+        if not DaraCore.is_null(request.sub_task_id):
+            query['SubTaskId'] = request.sub_task_id
+        if not DaraCore.is_null(request.tab):
+            query['Tab'] = request.tab
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CancelSubTask',
+            version = '2021-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CancelSubTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cancel_sub_task_with_options_async(
+        self,
+        request: main_models.CancelSubTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CancelSubTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.reg_id):
+            query['RegId'] = request.reg_id
+        if not DaraCore.is_null(request.sub_task_id):
+            query['SubTaskId'] = request.sub_task_id
+        if not DaraCore.is_null(request.tab):
+            query['Tab'] = request.tab
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CancelSubTask',
+            version = '2021-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CancelSubTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cancel_sub_task(
+        self,
+        request: main_models.CancelSubTaskRequest,
+    ) -> main_models.CancelSubTaskResponse:
+        runtime = RuntimeOptions()
+        return self.cancel_sub_task_with_options(request, runtime)
+
+    async def cancel_sub_task_async(
+        self,
+        request: main_models.CancelSubTaskRequest,
+    ) -> main_models.CancelSubTaskResponse:
+        runtime = RuntimeOptions()
+        return await self.cancel_sub_task_with_options_async(request, runtime)
+
     def check_copy_rule_variable_with_options(
         self,
         request: main_models.CheckCopyRuleVariableRequest,
@@ -735,6 +817,162 @@ class Client(OpenApiClient):
     ) -> main_models.CheckFieldLimitResponse:
         runtime = RuntimeOptions()
         return await self.check_field_limit_with_options_async(request, runtime)
+
+    def check_sample_name_with_options(
+        self,
+        request: main_models.CheckSampleNameRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CheckSampleNameResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.reg_id):
+            query['RegId'] = request.reg_id
+        if not DaraCore.is_null(request.sample_name):
+            query['SampleName'] = request.sample_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CheckSampleName',
+            version = '2021-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CheckSampleNameResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def check_sample_name_with_options_async(
+        self,
+        request: main_models.CheckSampleNameRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CheckSampleNameResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.reg_id):
+            query['RegId'] = request.reg_id
+        if not DaraCore.is_null(request.sample_name):
+            query['SampleName'] = request.sample_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CheckSampleName',
+            version = '2021-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CheckSampleNameResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def check_sample_name(
+        self,
+        request: main_models.CheckSampleNameRequest,
+    ) -> main_models.CheckSampleNameResponse:
+        runtime = RuntimeOptions()
+        return self.check_sample_name_with_options(request, runtime)
+
+    async def check_sample_name_async(
+        self,
+        request: main_models.CheckSampleNameRequest,
+    ) -> main_models.CheckSampleNameResponse:
+        runtime = RuntimeOptions()
+        return await self.check_sample_name_with_options_async(request, runtime)
+
+    def check_task_group_name_with_options(
+        self,
+        request: main_models.CheckTaskGroupNameRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CheckTaskGroupNameResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.reg_id):
+            query['RegId'] = request.reg_id
+        if not DaraCore.is_null(request.task_group_name):
+            query['TaskGroupName'] = request.task_group_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CheckTaskGroupName',
+            version = '2021-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CheckTaskGroupNameResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def check_task_group_name_with_options_async(
+        self,
+        request: main_models.CheckTaskGroupNameRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CheckTaskGroupNameResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.reg_id):
+            query['RegId'] = request.reg_id
+        if not DaraCore.is_null(request.task_group_name):
+            query['TaskGroupName'] = request.task_group_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CheckTaskGroupName',
+            version = '2021-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CheckTaskGroupNameResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def check_task_group_name(
+        self,
+        request: main_models.CheckTaskGroupNameRequest,
+    ) -> main_models.CheckTaskGroupNameResponse:
+        runtime = RuntimeOptions()
+        return self.check_task_group_name_with_options(request, runtime)
+
+    async def check_task_group_name_async(
+        self,
+        request: main_models.CheckTaskGroupNameRequest,
+    ) -> main_models.CheckTaskGroupNameResponse:
+        runtime = RuntimeOptions()
+        return await self.check_task_group_name_with_options_async(request, runtime)
 
     def check_usage_variable_with_options(
         self,
@@ -2018,6 +2256,104 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_poc_ev_with_options_async(request, runtime)
 
+    def create_poc_sample_with_options(
+        self,
+        request: main_models.CreatePocSampleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreatePocSampleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.file_name):
+            query['FileName'] = request.file_name
+        if not DaraCore.is_null(request.file_url):
+            query['FileUrl'] = request.file_url
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.reg_id):
+            query['RegId'] = request.reg_id
+        if not DaraCore.is_null(request.remark):
+            query['Remark'] = request.remark
+        if not DaraCore.is_null(request.sample_name):
+            query['SampleName'] = request.sample_name
+        if not DaraCore.is_null(request.tab):
+            query['Tab'] = request.tab
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreatePocSample',
+            version = '2021-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreatePocSampleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_poc_sample_with_options_async(
+        self,
+        request: main_models.CreatePocSampleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreatePocSampleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.file_name):
+            query['FileName'] = request.file_name
+        if not DaraCore.is_null(request.file_url):
+            query['FileUrl'] = request.file_url
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.reg_id):
+            query['RegId'] = request.reg_id
+        if not DaraCore.is_null(request.remark):
+            query['Remark'] = request.remark
+        if not DaraCore.is_null(request.sample_name):
+            query['SampleName'] = request.sample_name
+        if not DaraCore.is_null(request.tab):
+            query['Tab'] = request.tab
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreatePocSample',
+            version = '2021-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreatePocSampleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_poc_sample(
+        self,
+        request: main_models.CreatePocSampleRequest,
+    ) -> main_models.CreatePocSampleResponse:
+        runtime = RuntimeOptions()
+        return self.create_poc_sample_with_options(request, runtime)
+
+    async def create_poc_sample_async(
+        self,
+        request: main_models.CreatePocSampleRequest,
+    ) -> main_models.CreatePocSampleResponse:
+        runtime = RuntimeOptions()
+        return await self.create_poc_sample_with_options_async(request, runtime)
+
     def create_query_variable_with_options(
         self,
         request: main_models.CreateQueryVariableRequest,
@@ -2935,6 +3271,108 @@ class Client(OpenApiClient):
     ) -> main_models.CreateSimulationTaskResponse:
         runtime = RuntimeOptions()
         return await self.create_simulation_task_with_options_async(request, runtime)
+
+    def create_task_group_with_options(
+        self,
+        request: main_models.CreateTaskGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateTaskGroupResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.reg_id):
+            query['RegId'] = request.reg_id
+        if not DaraCore.is_null(request.sample_ids):
+            query['SampleIds'] = request.sample_ids
+        if not DaraCore.is_null(request.scenes):
+            query['Scenes'] = request.scenes
+        if not DaraCore.is_null(request.service_codes):
+            query['ServiceCodes'] = request.service_codes
+        if not DaraCore.is_null(request.service_names):
+            query['ServiceNames'] = request.service_names
+        if not DaraCore.is_null(request.tab):
+            query['Tab'] = request.tab
+        if not DaraCore.is_null(request.task_group_name):
+            query['TaskGroupName'] = request.task_group_name
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateTaskGroup',
+            version = '2021-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateTaskGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_task_group_with_options_async(
+        self,
+        request: main_models.CreateTaskGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateTaskGroupResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.reg_id):
+            query['RegId'] = request.reg_id
+        if not DaraCore.is_null(request.sample_ids):
+            query['SampleIds'] = request.sample_ids
+        if not DaraCore.is_null(request.scenes):
+            query['Scenes'] = request.scenes
+        if not DaraCore.is_null(request.service_codes):
+            query['ServiceCodes'] = request.service_codes
+        if not DaraCore.is_null(request.service_names):
+            query['ServiceNames'] = request.service_names
+        if not DaraCore.is_null(request.tab):
+            query['Tab'] = request.tab
+        if not DaraCore.is_null(request.task_group_name):
+            query['TaskGroupName'] = request.task_group_name
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateTaskGroup',
+            version = '2021-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateTaskGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_task_group(
+        self,
+        request: main_models.CreateTaskGroupRequest,
+    ) -> main_models.CreateTaskGroupResponse:
+        runtime = RuntimeOptions()
+        return self.create_task_group_with_options(request, runtime)
+
+    async def create_task_group_async(
+        self,
+        request: main_models.CreateTaskGroupRequest,
+    ) -> main_models.CreateTaskGroupResponse:
+        runtime = RuntimeOptions()
+        return await self.create_task_group_with_options_async(request, runtime)
 
     def deep_copy_rule_with_options(
         self,
@@ -3931,6 +4369,84 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteRuleResponse:
         runtime = RuntimeOptions()
         return await self.delete_rule_with_options_async(request, runtime)
+
+    def delete_sample_with_options(
+        self,
+        request: main_models.DeleteSampleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteSampleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.reg_id):
+            query['RegId'] = request.reg_id
+        if not DaraCore.is_null(request.sample_id):
+            query['SampleId'] = request.sample_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteSample',
+            version = '2021-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteSampleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_sample_with_options_async(
+        self,
+        request: main_models.DeleteSampleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteSampleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.reg_id):
+            query['RegId'] = request.reg_id
+        if not DaraCore.is_null(request.sample_id):
+            query['SampleId'] = request.sample_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteSample',
+            version = '2021-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteSampleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_sample(
+        self,
+        request: main_models.DeleteSampleRequest,
+    ) -> main_models.DeleteSampleResponse:
+        runtime = RuntimeOptions()
+        return self.delete_sample_with_options(request, runtime)
+
+    async def delete_sample_async(
+        self,
+        request: main_models.DeleteSampleRequest,
+    ) -> main_models.DeleteSampleResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_sample_with_options_async(request, runtime)
 
     def delete_sample_batch_with_options(
         self,
@@ -19456,6 +19972,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_version_page_list_with_options_async(request, runtime)
 
+    def download_sample_file_with_options(
+        self,
+        request: main_models.DownloadSampleFileRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DownloadSampleFileResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.reg_id):
+            query['RegId'] = request.reg_id
+        if not DaraCore.is_null(request.sample_id):
+            query['SampleId'] = request.sample_id
+        if not DaraCore.is_null(request.tab):
+            query['Tab'] = request.tab
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DownloadSampleFile',
+            version = '2021-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DownloadSampleFileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def download_sample_file_with_options_async(
+        self,
+        request: main_models.DownloadSampleFileRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DownloadSampleFileResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.reg_id):
+            query['RegId'] = request.reg_id
+        if not DaraCore.is_null(request.sample_id):
+            query['SampleId'] = request.sample_id
+        if not DaraCore.is_null(request.tab):
+            query['Tab'] = request.tab
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DownloadSampleFile',
+            version = '2021-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DownloadSampleFileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def download_sample_file(
+        self,
+        request: main_models.DownloadSampleFileRequest,
+    ) -> main_models.DownloadSampleFileResponse:
+        runtime = RuntimeOptions()
+        return self.download_sample_file_with_options(request, runtime)
+
+    async def download_sample_file_async(
+        self,
+        request: main_models.DownloadSampleFileRequest,
+    ) -> main_models.DownloadSampleFileResponse:
+        runtime = RuntimeOptions()
+        return await self.download_sample_file_with_options_async(request, runtime)
+
     def download_smaple_batch_with_options(
         self,
         request: main_models.DownloadSmapleBatchRequest,
@@ -19533,6 +20131,84 @@ class Client(OpenApiClient):
     ) -> main_models.DownloadSmapleBatchResponse:
         runtime = RuntimeOptions()
         return await self.download_smaple_batch_with_options_async(request, runtime)
+
+    def download_sub_task_result_with_options(
+        self,
+        request: main_models.DownloadSubTaskResultRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DownloadSubTaskResultResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.reg_id):
+            query['RegId'] = request.reg_id
+        if not DaraCore.is_null(request.sub_task_id):
+            query['SubTaskId'] = request.sub_task_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DownloadSubTaskResult',
+            version = '2021-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DownloadSubTaskResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def download_sub_task_result_with_options_async(
+        self,
+        request: main_models.DownloadSubTaskResultRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DownloadSubTaskResultResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.reg_id):
+            query['RegId'] = request.reg_id
+        if not DaraCore.is_null(request.sub_task_id):
+            query['SubTaskId'] = request.sub_task_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DownloadSubTaskResult',
+            version = '2021-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DownloadSubTaskResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def download_sub_task_result(
+        self,
+        request: main_models.DownloadSubTaskResultRequest,
+    ) -> main_models.DownloadSubTaskResultResponse:
+        runtime = RuntimeOptions()
+        return self.download_sub_task_result_with_options(request, runtime)
+
+    async def download_sub_task_result_async(
+        self,
+        request: main_models.DownloadSubTaskResultRequest,
+    ) -> main_models.DownloadSubTaskResultResponse:
+        runtime = RuntimeOptions()
+        return await self.download_sub_task_result_with_options_async(request, runtime)
 
     def expression_test_with_options(
         self,
@@ -19709,6 +20385,162 @@ class Client(OpenApiClient):
     ) -> main_models.FileUploadResponse:
         runtime = RuntimeOptions()
         return await self.file_upload_with_options_async(request, runtime)
+
+    def get_sample_detail_with_options(
+        self,
+        request: main_models.GetSampleDetailRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetSampleDetailResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.reg_id):
+            query['RegId'] = request.reg_id
+        if not DaraCore.is_null(request.sample_id):
+            query['SampleId'] = request.sample_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetSampleDetail',
+            version = '2021-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetSampleDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_sample_detail_with_options_async(
+        self,
+        request: main_models.GetSampleDetailRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetSampleDetailResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.reg_id):
+            query['RegId'] = request.reg_id
+        if not DaraCore.is_null(request.sample_id):
+            query['SampleId'] = request.sample_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetSampleDetail',
+            version = '2021-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetSampleDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_sample_detail(
+        self,
+        request: main_models.GetSampleDetailRequest,
+    ) -> main_models.GetSampleDetailResponse:
+        runtime = RuntimeOptions()
+        return self.get_sample_detail_with_options(request, runtime)
+
+    async def get_sample_detail_async(
+        self,
+        request: main_models.GetSampleDetailRequest,
+    ) -> main_models.GetSampleDetailResponse:
+        runtime = RuntimeOptions()
+        return await self.get_sample_detail_with_options_async(request, runtime)
+
+    def get_sub_task_result_with_options(
+        self,
+        request: main_models.GetSubTaskResultRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetSubTaskResultResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.reg_id):
+            query['RegId'] = request.reg_id
+        if not DaraCore.is_null(request.sub_task_id):
+            query['SubTaskId'] = request.sub_task_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetSubTaskResult',
+            version = '2021-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetSubTaskResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_sub_task_result_with_options_async(
+        self,
+        request: main_models.GetSubTaskResultRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetSubTaskResultResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.reg_id):
+            query['RegId'] = request.reg_id
+        if not DaraCore.is_null(request.sub_task_id):
+            query['SubTaskId'] = request.sub_task_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetSubTaskResult',
+            version = '2021-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetSubTaskResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_sub_task_result(
+        self,
+        request: main_models.GetSubTaskResultRequest,
+    ) -> main_models.GetSubTaskResultResponse:
+        runtime = RuntimeOptions()
+        return self.get_sub_task_result_with_options(request, runtime)
+
+    async def get_sub_task_result_async(
+        self,
+        request: main_models.GetSubTaskResultRequest,
+    ) -> main_models.GetSubTaskResultResponse:
+        runtime = RuntimeOptions()
+        return await self.get_sub_task_result_with_options_async(request, runtime)
 
     def import_field_with_options(
         self,
@@ -19972,6 +20804,202 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.import_template_event_with_options_async(request, runtime)
 
+    def list_sample_with_options(
+        self,
+        request: main_models.ListSampleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListSampleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.reg_id):
+            query['RegId'] = request.reg_id
+        if not DaraCore.is_null(request.sample_name):
+            query['SampleName'] = request.sample_name
+        if not DaraCore.is_null(request.tab):
+            query['Tab'] = request.tab
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
+        if not DaraCore.is_null(request.upload_time_end):
+            query['UploadTimeEnd'] = request.upload_time_end
+        if not DaraCore.is_null(request.upload_time_start):
+            query['UploadTimeStart'] = request.upload_time_start
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListSample',
+            version = '2021-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListSampleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_sample_with_options_async(
+        self,
+        request: main_models.ListSampleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListSampleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.reg_id):
+            query['RegId'] = request.reg_id
+        if not DaraCore.is_null(request.sample_name):
+            query['SampleName'] = request.sample_name
+        if not DaraCore.is_null(request.tab):
+            query['Tab'] = request.tab
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
+        if not DaraCore.is_null(request.upload_time_end):
+            query['UploadTimeEnd'] = request.upload_time_end
+        if not DaraCore.is_null(request.upload_time_start):
+            query['UploadTimeStart'] = request.upload_time_start
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListSample',
+            version = '2021-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListSampleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_sample(
+        self,
+        request: main_models.ListSampleRequest,
+    ) -> main_models.ListSampleResponse:
+        runtime = RuntimeOptions()
+        return self.list_sample_with_options(request, runtime)
+
+    async def list_sample_async(
+        self,
+        request: main_models.ListSampleRequest,
+    ) -> main_models.ListSampleResponse:
+        runtime = RuntimeOptions()
+        return await self.list_sample_with_options_async(request, runtime)
+
+    def list_task_group_with_options(
+        self,
+        request: main_models.ListTaskGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListTaskGroupResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.reg_id):
+            query['RegId'] = request.reg_id
+        if not DaraCore.is_null(request.sample_name):
+            query['SampleName'] = request.sample_name
+        if not DaraCore.is_null(request.task_group_name):
+            query['TaskGroupName'] = request.task_group_name
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListTaskGroup',
+            version = '2021-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListTaskGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_task_group_with_options_async(
+        self,
+        request: main_models.ListTaskGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListTaskGroupResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.reg_id):
+            query['RegId'] = request.reg_id
+        if not DaraCore.is_null(request.sample_name):
+            query['SampleName'] = request.sample_name
+        if not DaraCore.is_null(request.task_group_name):
+            query['TaskGroupName'] = request.task_group_name
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListTaskGroup',
+            version = '2021-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListTaskGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_task_group(
+        self,
+        request: main_models.ListTaskGroupRequest,
+    ) -> main_models.ListTaskGroupResponse:
+        runtime = RuntimeOptions()
+        return self.list_task_group_with_options(request, runtime)
+
+    async def list_task_group_async(
+        self,
+        request: main_models.ListTaskGroupRequest,
+    ) -> main_models.ListTaskGroupResponse:
+        runtime = RuntimeOptions()
+        return await self.list_task_group_with_options_async(request, runtime)
+
     def list_variable_define_with_options(
         self,
         request: main_models.ListVariableDefineRequest,
@@ -20093,6 +21121,84 @@ class Client(OpenApiClient):
     ) -> main_models.ListVariableDefineResponse:
         runtime = RuntimeOptions()
         return await self.list_variable_define_with_options_async(request, runtime)
+
+    def merge_download_with_options(
+        self,
+        request: main_models.MergeDownloadRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.MergeDownloadResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.reg_id):
+            query['RegId'] = request.reg_id
+        if not DaraCore.is_null(request.sub_task_ids):
+            query['SubTaskIds'] = request.sub_task_ids
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'MergeDownload',
+            version = '2021-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.MergeDownloadResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def merge_download_with_options_async(
+        self,
+        request: main_models.MergeDownloadRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.MergeDownloadResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.reg_id):
+            query['RegId'] = request.reg_id
+        if not DaraCore.is_null(request.sub_task_ids):
+            query['SubTaskIds'] = request.sub_task_ids
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'MergeDownload',
+            version = '2021-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.MergeDownloadResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def merge_download(
+        self,
+        request: main_models.MergeDownloadRequest,
+    ) -> main_models.MergeDownloadResponse:
+        runtime = RuntimeOptions()
+        return self.merge_download_with_options(request, runtime)
+
+    async def merge_download_async(
+        self,
+        request: main_models.MergeDownloadRequest,
+    ) -> main_models.MergeDownloadResponse:
+        runtime = RuntimeOptions()
+        return await self.merge_download_with_options_async(request, runtime)
 
     def model_delete_with_options(
         self,
@@ -22314,6 +23420,100 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.save_by_pass_or_shunt_event_with_options_async(request, runtime)
 
+    def search_sample_with_options(
+        self,
+        request: main_models.SearchSampleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SearchSampleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.keyword):
+            query['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.reg_id):
+            query['RegId'] = request.reg_id
+        if not DaraCore.is_null(request.tab):
+            query['Tab'] = request.tab
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
+        if not DaraCore.is_null(request.upload_time_end):
+            query['UploadTimeEnd'] = request.upload_time_end
+        if not DaraCore.is_null(request.upload_time_start):
+            query['UploadTimeStart'] = request.upload_time_start
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SearchSample',
+            version = '2021-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SearchSampleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def search_sample_with_options_async(
+        self,
+        request: main_models.SearchSampleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SearchSampleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.keyword):
+            query['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.reg_id):
+            query['RegId'] = request.reg_id
+        if not DaraCore.is_null(request.tab):
+            query['Tab'] = request.tab
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
+        if not DaraCore.is_null(request.upload_time_end):
+            query['UploadTimeEnd'] = request.upload_time_end
+        if not DaraCore.is_null(request.upload_time_start):
+            query['UploadTimeStart'] = request.upload_time_start
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SearchSample',
+            version = '2021-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SearchSampleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def search_sample(
+        self,
+        request: main_models.SearchSampleRequest,
+    ) -> main_models.SearchSampleResponse:
+        runtime = RuntimeOptions()
+        return self.search_sample_with_options(request, runtime)
+
+    async def search_sample_async(
+        self,
+        request: main_models.SearchSampleRequest,
+    ) -> main_models.SearchSampleResponse:
+        runtime = RuntimeOptions()
+        return await self.search_sample_with_options_async(request, runtime)
+
     def start_or_stop_by_pass_shunt_event_with_options(
         self,
         request: main_models.StartOrStopByPassShuntEventRequest,
@@ -24039,3 +25239,93 @@ class Client(OpenApiClient):
     ) -> main_models.UploadFileCheckResponse:
         runtime = RuntimeOptions()
         return await self.upload_file_check_with_options_async(request, runtime)
+
+    def upload_sample_file_with_options(
+        self,
+        request: main_models.UploadSampleFileRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UploadSampleFileResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.file_name):
+            query['FileName'] = request.file_name
+        if not DaraCore.is_null(request.file_url):
+            query['FileUrl'] = request.file_url
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.reg_id):
+            query['RegId'] = request.reg_id
+        if not DaraCore.is_null(request.tab):
+            query['Tab'] = request.tab
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UploadSampleFile',
+            version = '2021-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UploadSampleFileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def upload_sample_file_with_options_async(
+        self,
+        request: main_models.UploadSampleFileRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UploadSampleFileResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.file_name):
+            query['FileName'] = request.file_name
+        if not DaraCore.is_null(request.file_url):
+            query['FileUrl'] = request.file_url
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.reg_id):
+            query['RegId'] = request.reg_id
+        if not DaraCore.is_null(request.tab):
+            query['Tab'] = request.tab
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UploadSampleFile',
+            version = '2021-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UploadSampleFileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def upload_sample_file(
+        self,
+        request: main_models.UploadSampleFileRequest,
+    ) -> main_models.UploadSampleFileResponse:
+        runtime = RuntimeOptions()
+        return self.upload_sample_file_with_options(request, runtime)
+
+    async def upload_sample_file_async(
+        self,
+        request: main_models.UploadSampleFileRequest,
+    ) -> main_models.UploadSampleFileResponse:
+        runtime = RuntimeOptions()
+        return await self.upload_sample_file_with_options_async(request, runtime)
