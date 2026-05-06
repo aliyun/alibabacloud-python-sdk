@@ -241,6 +241,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.authorize_instance_group_with_options_async(request, runtime)
 
+    def batch_create_llm_templates_with_options(
+        self,
+        request: main_models.BatchCreateLlmTemplatesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchCreateLlmTemplatesResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.llm_template_items):
+            body['LlmTemplateItems'] = request.llm_template_items
+        if not DaraCore.is_null(request.model_template_id):
+            body['ModelTemplateId'] = request.model_template_id
+        if not DaraCore.is_null(request.provider_template_id):
+            body['ProviderTemplateId'] = request.provider_template_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'BatchCreateLlmTemplates',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchCreateLlmTemplatesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_create_llm_templates_with_options_async(
+        self,
+        request: main_models.BatchCreateLlmTemplatesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchCreateLlmTemplatesResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.llm_template_items):
+            body['LlmTemplateItems'] = request.llm_template_items
+        if not DaraCore.is_null(request.model_template_id):
+            body['ModelTemplateId'] = request.model_template_id
+        if not DaraCore.is_null(request.provider_template_id):
+            body['ProviderTemplateId'] = request.provider_template_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'BatchCreateLlmTemplates',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchCreateLlmTemplatesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_create_llm_templates(
+        self,
+        request: main_models.BatchCreateLlmTemplatesRequest,
+    ) -> main_models.BatchCreateLlmTemplatesResponse:
+        runtime = RuntimeOptions()
+        return self.batch_create_llm_templates_with_options(request, runtime)
+
+    async def batch_create_llm_templates_async(
+        self,
+        request: main_models.BatchCreateLlmTemplatesRequest,
+    ) -> main_models.BatchCreateLlmTemplatesResponse:
+        runtime = RuntimeOptions()
+        return await self.batch_create_llm_templates_with_options_async(request, runtime)
+
     def config_resource_group_model_template_with_options(
         self,
         request: main_models.ConfigResourceGroupModelTemplateRequest,
@@ -897,6 +975,112 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_image_from_app_instance_group_with_options_async(request, runtime)
 
+    def create_model_provider_template_with_options(
+        self,
+        request: main_models.CreateModelProviderTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateModelProviderTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_platform):
+            query['AgentPlatform'] = request.agent_platform
+        if not DaraCore.is_null(request.agent_provider):
+            query['AgentProvider'] = request.agent_provider
+        if not DaraCore.is_null(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not DaraCore.is_null(request.config):
+            query['Config'] = request.config
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.enable_wuying_proxy):
+            query['EnableWuyingProxy'] = request.enable_wuying_proxy
+        if not DaraCore.is_null(request.model_template_id):
+            query['ModelTemplateId'] = request.model_template_id
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.provider_name):
+            query['ProviderName'] = request.provider_name
+        if not DaraCore.is_null(request.provider_type):
+            query['ProviderType'] = request.provider_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateModelProviderTemplate',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateModelProviderTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_model_provider_template_with_options_async(
+        self,
+        request: main_models.CreateModelProviderTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateModelProviderTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_platform):
+            query['AgentPlatform'] = request.agent_platform
+        if not DaraCore.is_null(request.agent_provider):
+            query['AgentProvider'] = request.agent_provider
+        if not DaraCore.is_null(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not DaraCore.is_null(request.config):
+            query['Config'] = request.config
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.enable_wuying_proxy):
+            query['EnableWuyingProxy'] = request.enable_wuying_proxy
+        if not DaraCore.is_null(request.model_template_id):
+            query['ModelTemplateId'] = request.model_template_id
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.provider_name):
+            query['ProviderName'] = request.provider_name
+        if not DaraCore.is_null(request.provider_type):
+            query['ProviderType'] = request.provider_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateModelProviderTemplate',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateModelProviderTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_model_provider_template(
+        self,
+        request: main_models.CreateModelProviderTemplateRequest,
+    ) -> main_models.CreateModelProviderTemplateResponse:
+        runtime = RuntimeOptions()
+        return self.create_model_provider_template_with_options(request, runtime)
+
+    async def create_model_provider_template_async(
+        self,
+        request: main_models.CreateModelProviderTemplateRequest,
+    ) -> main_models.CreateModelProviderTemplateResponse:
+        runtime = RuntimeOptions()
+        return await self.create_model_provider_template_with_options_async(request, runtime)
+
     def create_model_template_with_options(
         self,
         request: main_models.CreateModelTemplateRequest,
@@ -1383,6 +1567,216 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.delete_image_with_options_async(request, runtime)
 
+    def delete_llm_template_with_options(
+        self,
+        request: main_models.DeleteLlmTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteLlmTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.llm_template_id):
+            query['LlmTemplateId'] = request.llm_template_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteLlmTemplate',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteLlmTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_llm_template_with_options_async(
+        self,
+        request: main_models.DeleteLlmTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteLlmTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.llm_template_id):
+            query['LlmTemplateId'] = request.llm_template_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteLlmTemplate',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteLlmTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_llm_template(
+        self,
+        request: main_models.DeleteLlmTemplateRequest,
+    ) -> main_models.DeleteLlmTemplateResponse:
+        runtime = RuntimeOptions()
+        return self.delete_llm_template_with_options(request, runtime)
+
+    async def delete_llm_template_async(
+        self,
+        request: main_models.DeleteLlmTemplateRequest,
+    ) -> main_models.DeleteLlmTemplateResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_llm_template_with_options_async(request, runtime)
+
+    def delete_model_provider_template_with_options(
+        self,
+        request: main_models.DeleteModelProviderTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteModelProviderTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.provider_template_id):
+            query['ProviderTemplateId'] = request.provider_template_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteModelProviderTemplate',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteModelProviderTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_model_provider_template_with_options_async(
+        self,
+        request: main_models.DeleteModelProviderTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteModelProviderTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.provider_template_id):
+            query['ProviderTemplateId'] = request.provider_template_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteModelProviderTemplate',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteModelProviderTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_model_provider_template(
+        self,
+        request: main_models.DeleteModelProviderTemplateRequest,
+    ) -> main_models.DeleteModelProviderTemplateResponse:
+        runtime = RuntimeOptions()
+        return self.delete_model_provider_template_with_options(request, runtime)
+
+    async def delete_model_provider_template_async(
+        self,
+        request: main_models.DeleteModelProviderTemplateRequest,
+    ) -> main_models.DeleteModelProviderTemplateResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_model_provider_template_with_options_async(request, runtime)
+
+    def delete_model_template_with_options(
+        self,
+        request: main_models.DeleteModelTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteModelTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.model_template_id):
+            query['ModelTemplateId'] = request.model_template_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteModelTemplate',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteModelTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_model_template_with_options_async(
+        self,
+        request: main_models.DeleteModelTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteModelTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.model_template_id):
+            query['ModelTemplateId'] = request.model_template_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteModelTemplate',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteModelTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_model_template(
+        self,
+        request: main_models.DeleteModelTemplateRequest,
+    ) -> main_models.DeleteModelTemplateResponse:
+        runtime = RuntimeOptions()
+        return self.delete_model_template_with_options(request, runtime)
+
+    async def delete_model_template_async(
+        self,
+        request: main_models.DeleteModelTemplateRequest,
+    ) -> main_models.DeleteModelTemplateResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_model_template_with_options_async(request, runtime)
+
     def delete_wuying_server_with_options(
         self,
         request: main_models.DeleteWuyingServerRequest,
@@ -1792,6 +2186,76 @@ class Client(OpenApiClient):
     ) -> main_models.GetDebugAppInstanceResponse:
         runtime = RuntimeOptions()
         return await self.get_debug_app_instance_with_options_async(request, runtime)
+
+    def get_model_provider_template_with_options(
+        self,
+        request: main_models.GetModelProviderTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetModelProviderTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.provider_template_id):
+            query['ProviderTemplateId'] = request.provider_template_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetModelProviderTemplate',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetModelProviderTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_model_provider_template_with_options_async(
+        self,
+        request: main_models.GetModelProviderTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetModelProviderTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.provider_template_id):
+            query['ProviderTemplateId'] = request.provider_template_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetModelProviderTemplate',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetModelProviderTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_model_provider_template(
+        self,
+        request: main_models.GetModelProviderTemplateRequest,
+    ) -> main_models.GetModelProviderTemplateResponse:
+        runtime = RuntimeOptions()
+        return self.get_model_provider_template_with_options(request, runtime)
+
+    async def get_model_provider_template_async(
+        self,
+        request: main_models.GetModelProviderTemplateRequest,
+    ) -> main_models.GetModelProviderTemplateResponse:
+        runtime = RuntimeOptions()
+        return await self.get_model_provider_template_with_options_async(request, runtime)
 
     def get_ota_task_by_task_id_with_options(
         self,
@@ -2923,6 +3387,210 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_image_with_options_async(request, runtime)
 
+    def list_llm_templates_with_options(
+        self,
+        tmp_req: main_models.ListLlmTemplatesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListLlmTemplatesResponse:
+        tmp_req.validate()
+        request = main_models.ListLlmTemplatesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.llm_template_ids):
+            request.llm_template_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.llm_template_ids, 'LlmTemplateIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.llm_code):
+            query['LlmCode'] = request.llm_code
+        if not DaraCore.is_null(request.llm_template_ids_shrink):
+            query['LlmTemplateIds'] = request.llm_template_ids_shrink
+        if not DaraCore.is_null(request.model_template_id):
+            query['ModelTemplateId'] = request.model_template_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.provider_template_id):
+            query['ProviderTemplateId'] = request.provider_template_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListLlmTemplates',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListLlmTemplatesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_llm_templates_with_options_async(
+        self,
+        tmp_req: main_models.ListLlmTemplatesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListLlmTemplatesResponse:
+        tmp_req.validate()
+        request = main_models.ListLlmTemplatesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.llm_template_ids):
+            request.llm_template_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.llm_template_ids, 'LlmTemplateIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.llm_code):
+            query['LlmCode'] = request.llm_code
+        if not DaraCore.is_null(request.llm_template_ids_shrink):
+            query['LlmTemplateIds'] = request.llm_template_ids_shrink
+        if not DaraCore.is_null(request.model_template_id):
+            query['ModelTemplateId'] = request.model_template_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.provider_template_id):
+            query['ProviderTemplateId'] = request.provider_template_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListLlmTemplates',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListLlmTemplatesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_llm_templates(
+        self,
+        request: main_models.ListLlmTemplatesRequest,
+    ) -> main_models.ListLlmTemplatesResponse:
+        runtime = RuntimeOptions()
+        return self.list_llm_templates_with_options(request, runtime)
+
+    async def list_llm_templates_async(
+        self,
+        request: main_models.ListLlmTemplatesRequest,
+    ) -> main_models.ListLlmTemplatesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_llm_templates_with_options_async(request, runtime)
+
+    def list_model_provider_templates_with_options(
+        self,
+        tmp_req: main_models.ListModelProviderTemplatesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListModelProviderTemplatesResponse:
+        tmp_req.validate()
+        request = main_models.ListModelProviderTemplatesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.provider_template_ids):
+            request.provider_template_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.provider_template_ids, 'ProviderTemplateIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.agent_platform):
+            query['AgentPlatform'] = request.agent_platform
+        if not DaraCore.is_null(request.agent_provider):
+            query['AgentProvider'] = request.agent_provider
+        if not DaraCore.is_null(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not DaraCore.is_null(request.model_template_id):
+            query['ModelTemplateId'] = request.model_template_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.provider_name):
+            query['ProviderName'] = request.provider_name
+        if not DaraCore.is_null(request.provider_template_ids_shrink):
+            query['ProviderTemplateIds'] = request.provider_template_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListModelProviderTemplates',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListModelProviderTemplatesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_model_provider_templates_with_options_async(
+        self,
+        tmp_req: main_models.ListModelProviderTemplatesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListModelProviderTemplatesResponse:
+        tmp_req.validate()
+        request = main_models.ListModelProviderTemplatesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.provider_template_ids):
+            request.provider_template_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.provider_template_ids, 'ProviderTemplateIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.agent_platform):
+            query['AgentPlatform'] = request.agent_platform
+        if not DaraCore.is_null(request.agent_provider):
+            query['AgentProvider'] = request.agent_provider
+        if not DaraCore.is_null(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not DaraCore.is_null(request.model_template_id):
+            query['ModelTemplateId'] = request.model_template_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.provider_name):
+            query['ProviderName'] = request.provider_name
+        if not DaraCore.is_null(request.provider_template_ids_shrink):
+            query['ProviderTemplateIds'] = request.provider_template_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListModelProviderTemplates',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListModelProviderTemplatesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_model_provider_templates(
+        self,
+        request: main_models.ListModelProviderTemplatesRequest,
+    ) -> main_models.ListModelProviderTemplatesResponse:
+        runtime = RuntimeOptions()
+        return self.list_model_provider_templates_with_options(request, runtime)
+
+    async def list_model_provider_templates_async(
+        self,
+        request: main_models.ListModelProviderTemplatesRequest,
+    ) -> main_models.ListModelProviderTemplatesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_model_provider_templates_with_options_async(request, runtime)
+
     def list_model_template_resource_group_with_options(
         self,
         request: main_models.ListModelTemplateResourceGroupRequest,
@@ -3004,6 +3672,108 @@ class Client(OpenApiClient):
     ) -> main_models.ListModelTemplateResourceGroupResponse:
         runtime = RuntimeOptions()
         return await self.list_model_template_resource_group_with_options_async(request, runtime)
+
+    def list_model_templates_with_options(
+        self,
+        tmp_req: main_models.ListModelTemplatesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListModelTemplatesResponse:
+        tmp_req.validate()
+        request = main_models.ListModelTemplatesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.model_template_id_list):
+            request.model_template_id_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.model_template_id_list, 'ModelTemplateIdList', 'json')
+        query = {}
+        if not DaraCore.is_null(request.agent_platform):
+            query['AgentPlatform'] = request.agent_platform
+        if not DaraCore.is_null(request.agent_provider):
+            query['AgentProvider'] = request.agent_provider
+        if not DaraCore.is_null(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not DaraCore.is_null(request.has_model):
+            query['HasModel'] = request.has_model
+        if not DaraCore.is_null(request.model_template_id_list_shrink):
+            query['ModelTemplateIdList'] = request.model_template_id_list_shrink
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListModelTemplates',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListModelTemplatesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_model_templates_with_options_async(
+        self,
+        tmp_req: main_models.ListModelTemplatesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListModelTemplatesResponse:
+        tmp_req.validate()
+        request = main_models.ListModelTemplatesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.model_template_id_list):
+            request.model_template_id_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.model_template_id_list, 'ModelTemplateIdList', 'json')
+        query = {}
+        if not DaraCore.is_null(request.agent_platform):
+            query['AgentPlatform'] = request.agent_platform
+        if not DaraCore.is_null(request.agent_provider):
+            query['AgentProvider'] = request.agent_provider
+        if not DaraCore.is_null(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not DaraCore.is_null(request.has_model):
+            query['HasModel'] = request.has_model
+        if not DaraCore.is_null(request.model_template_id_list_shrink):
+            query['ModelTemplateIdList'] = request.model_template_id_list_shrink
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListModelTemplates',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListModelTemplatesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_model_templates(
+        self,
+        request: main_models.ListModelTemplatesRequest,
+    ) -> main_models.ListModelTemplatesResponse:
+        runtime = RuntimeOptions()
+        return self.list_model_templates_with_options(request, runtime)
+
+    async def list_model_templates_async(
+        self,
+        request: main_models.ListModelTemplatesRequest,
+    ) -> main_models.ListModelTemplatesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_model_templates_with_options_async(request, runtime)
 
     def list_node_instance_type_with_options(
         self,
@@ -5644,6 +6414,186 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateAppInstanceGroupImageResponse:
         runtime = RuntimeOptions()
         return await self.update_app_instance_group_image_with_options_async(request, runtime)
+
+    def update_model_provider_template_with_options(
+        self,
+        tmp_req: main_models.UpdateModelProviderTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateModelProviderTemplateResponse:
+        tmp_req.validate()
+        request = main_models.UpdateModelProviderTemplateShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.config):
+            request.config_shrink = Utils.array_to_string_with_specified_style(tmp_req.config, 'Config', 'json')
+        query = {}
+        if not DaraCore.is_null(request.config_shrink):
+            query['Config'] = request.config_shrink
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.enable_wuying_proxy):
+            body['EnableWuyingProxy'] = request.enable_wuying_proxy
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.provider_template_id):
+            body['ProviderTemplateId'] = request.provider_template_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateModelProviderTemplate',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateModelProviderTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_model_provider_template_with_options_async(
+        self,
+        tmp_req: main_models.UpdateModelProviderTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateModelProviderTemplateResponse:
+        tmp_req.validate()
+        request = main_models.UpdateModelProviderTemplateShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.config):
+            request.config_shrink = Utils.array_to_string_with_specified_style(tmp_req.config, 'Config', 'json')
+        query = {}
+        if not DaraCore.is_null(request.config_shrink):
+            query['Config'] = request.config_shrink
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.enable_wuying_proxy):
+            body['EnableWuyingProxy'] = request.enable_wuying_proxy
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.provider_template_id):
+            body['ProviderTemplateId'] = request.provider_template_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateModelProviderTemplate',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateModelProviderTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_model_provider_template(
+        self,
+        request: main_models.UpdateModelProviderTemplateRequest,
+    ) -> main_models.UpdateModelProviderTemplateResponse:
+        runtime = RuntimeOptions()
+        return self.update_model_provider_template_with_options(request, runtime)
+
+    async def update_model_provider_template_async(
+        self,
+        request: main_models.UpdateModelProviderTemplateRequest,
+    ) -> main_models.UpdateModelProviderTemplateResponse:
+        runtime = RuntimeOptions()
+        return await self.update_model_provider_template_with_options_async(request, runtime)
+
+    def update_model_template_with_options(
+        self,
+        request: main_models.UpdateModelTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateModelTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.config):
+            query['Config'] = request.config
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.model_template_id):
+            query['ModelTemplateId'] = request.model_template_id
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateModelTemplate',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateModelTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_model_template_with_options_async(
+        self,
+        request: main_models.UpdateModelTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateModelTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.config):
+            query['Config'] = request.config
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.model_template_id):
+            query['ModelTemplateId'] = request.model_template_id
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateModelTemplate',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateModelTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_model_template(
+        self,
+        request: main_models.UpdateModelTemplateRequest,
+    ) -> main_models.UpdateModelTemplateResponse:
+        runtime = RuntimeOptions()
+        return self.update_model_template_with_options(request, runtime)
+
+    async def update_model_template_async(
+        self,
+        request: main_models.UpdateModelTemplateRequest,
+    ) -> main_models.UpdateModelTemplateResponse:
+        runtime = RuntimeOptions()
+        return await self.update_model_template_with_options_async(request, runtime)
 
     def update_wuying_server_image_with_options(
         self,

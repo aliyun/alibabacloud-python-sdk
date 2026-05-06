@@ -9,6 +9,9 @@ from ._authorize_instance_group_request import AuthorizeInstanceGroupRequest
 from ._authorize_instance_group_shrink_request import AuthorizeInstanceGroupShrinkRequest
 from ._authorize_instance_group_response_body import AuthorizeInstanceGroupResponseBody
 from ._authorize_instance_group_response import AuthorizeInstanceGroupResponse
+from ._batch_create_llm_templates_request import BatchCreateLlmTemplatesRequest
+from ._batch_create_llm_templates_response_body import BatchCreateLlmTemplatesResponseBody
+from ._batch_create_llm_templates_response import BatchCreateLlmTemplatesResponse
 from ._config_resource_group_model_template_request import ConfigResourceGroupModelTemplateRequest
 from ._config_resource_group_model_template_response_body import ConfigResourceGroupModelTemplateResponseBody
 from ._config_resource_group_model_template_response import ConfigResourceGroupModelTemplateResponse
@@ -28,6 +31,9 @@ from ._create_image_by_instance_response import CreateImageByInstanceResponse
 from ._create_image_from_app_instance_group_request import CreateImageFromAppInstanceGroupRequest
 from ._create_image_from_app_instance_group_response_body import CreateImageFromAppInstanceGroupResponseBody
 from ._create_image_from_app_instance_group_response import CreateImageFromAppInstanceGroupResponse
+from ._create_model_provider_template_request import CreateModelProviderTemplateRequest
+from ._create_model_provider_template_response_body import CreateModelProviderTemplateResponseBody
+from ._create_model_provider_template_response import CreateModelProviderTemplateResponse
 from ._create_model_template_request import CreateModelTemplateRequest
 from ._create_model_template_response_body import CreateModelTemplateResponseBody
 from ._create_model_template_response import CreateModelTemplateResponse
@@ -43,6 +49,15 @@ from ._delete_app_instances_response import DeleteAppInstancesResponse
 from ._delete_image_request import DeleteImageRequest
 from ._delete_image_response_body import DeleteImageResponseBody
 from ._delete_image_response import DeleteImageResponse
+from ._delete_llm_template_request import DeleteLlmTemplateRequest
+from ._delete_llm_template_response_body import DeleteLlmTemplateResponseBody
+from ._delete_llm_template_response import DeleteLlmTemplateResponse
+from ._delete_model_provider_template_request import DeleteModelProviderTemplateRequest
+from ._delete_model_provider_template_response_body import DeleteModelProviderTemplateResponseBody
+from ._delete_model_provider_template_response import DeleteModelProviderTemplateResponse
+from ._delete_model_template_request import DeleteModelTemplateRequest
+from ._delete_model_template_response_body import DeleteModelTemplateResponseBody
+from ._delete_model_template_response import DeleteModelTemplateResponse
 from ._delete_wuying_server_request import DeleteWuyingServerRequest
 from ._delete_wuying_server_response_body import DeleteWuyingServerResponseBody
 from ._delete_wuying_server_response import DeleteWuyingServerResponse
@@ -58,6 +73,9 @@ from ._get_connection_ticket_response import GetConnectionTicketResponse
 from ._get_debug_app_instance_request import GetDebugAppInstanceRequest
 from ._get_debug_app_instance_response_body import GetDebugAppInstanceResponseBody
 from ._get_debug_app_instance_response import GetDebugAppInstanceResponse
+from ._get_model_provider_template_request import GetModelProviderTemplateRequest
+from ._get_model_provider_template_response_body import GetModelProviderTemplateResponseBody
+from ._get_model_provider_template_response import GetModelProviderTemplateResponse
 from ._get_ota_task_by_task_id_request import GetOtaTaskByTaskIdRequest
 from ._get_ota_task_by_task_id_response_body import GetOtaTaskByTaskIdResponseBody
 from ._get_ota_task_by_task_id_response import GetOtaTaskByTaskIdResponse
@@ -91,9 +109,21 @@ from ._list_desktop_agent_runtime_response import ListDesktopAgentRuntimeRespons
 from ._list_image_request import ListImageRequest
 from ._list_image_response_body import ListImageResponseBody
 from ._list_image_response import ListImageResponse
+from ._list_llm_templates_request import ListLlmTemplatesRequest
+from ._list_llm_templates_shrink_request import ListLlmTemplatesShrinkRequest
+from ._list_llm_templates_response_body import ListLlmTemplatesResponseBody
+from ._list_llm_templates_response import ListLlmTemplatesResponse
+from ._list_model_provider_templates_request import ListModelProviderTemplatesRequest
+from ._list_model_provider_templates_shrink_request import ListModelProviderTemplatesShrinkRequest
+from ._list_model_provider_templates_response_body import ListModelProviderTemplatesResponseBody
+from ._list_model_provider_templates_response import ListModelProviderTemplatesResponse
 from ._list_model_template_resource_group_request import ListModelTemplateResourceGroupRequest
 from ._list_model_template_resource_group_response_body import ListModelTemplateResourceGroupResponseBody
 from ._list_model_template_resource_group_response import ListModelTemplateResourceGroupResponse
+from ._list_model_templates_request import ListModelTemplatesRequest
+from ._list_model_templates_shrink_request import ListModelTemplatesShrinkRequest
+from ._list_model_templates_response_body import ListModelTemplatesResponseBody
+from ._list_model_templates_response import ListModelTemplatesResponse
 from ._list_node_instance_type_request import ListNodeInstanceTypeRequest
 from ._list_node_instance_type_response_body import ListNodeInstanceTypeResponseBody
 from ._list_node_instance_type_response import ListNodeInstanceTypeResponse
@@ -189,10 +219,20 @@ from ._untag_cloud_resources_response import UntagCloudResourcesResponse
 from ._update_app_instance_group_image_request import UpdateAppInstanceGroupImageRequest
 from ._update_app_instance_group_image_response_body import UpdateAppInstanceGroupImageResponseBody
 from ._update_app_instance_group_image_response import UpdateAppInstanceGroupImageResponse
+from ._update_model_provider_template_request import UpdateModelProviderTemplateRequest
+from ._update_model_provider_template_shrink_request import UpdateModelProviderTemplateShrinkRequest
+from ._update_model_provider_template_response_body import UpdateModelProviderTemplateResponseBody
+from ._update_model_provider_template_response import UpdateModelProviderTemplateResponse
+from ._update_model_template_request import UpdateModelTemplateRequest
+from ._update_model_template_response_body import UpdateModelTemplateResponseBody
+from ._update_model_template_response import UpdateModelTemplateResponse
 from ._update_wuying_server_image_request import UpdateWuyingServerImageRequest
 from ._update_wuying_server_image_response_body import UpdateWuyingServerImageResponseBody
 from ._update_wuying_server_image_response import UpdateWuyingServerImageResponse
 from ._authorize_instance_group_request import AuthorizeInstanceGroupRequestUserMeta
+from ._batch_create_llm_templates_request import BatchCreateLlmTemplatesRequestLlmTemplateItems
+from ._batch_create_llm_templates_response_body import BatchCreateLlmTemplatesResponseBodyDataSkippedItems
+from ._batch_create_llm_templates_response_body import BatchCreateLlmTemplatesResponseBodyData
 from ._config_runtime_model_template_response_body import ConfigRuntimeModelTemplateResponseBodyData
 from ._create_app_instance_group_request import CreateAppInstanceGroupRequestNetworkDomainRules
 from ._create_app_instance_group_request import CreateAppInstanceGroupRequestNetworkRoutes
@@ -210,6 +250,7 @@ from ._create_app_instance_group_request import CreateAppInstanceGroupRequestVid
 from ._create_app_instance_group_response_body import CreateAppInstanceGroupResponseBodyAppInstanceGroupModel
 from ._create_image_by_instance_request import CreateImageByInstanceRequestTagList
 from ._create_image_by_instance_response_body import CreateImageByInstanceResponseBodyData
+from ._create_model_provider_template_response_body import CreateModelProviderTemplateResponseBodyData
 from ._create_model_template_response_body import CreateModelTemplateResponseBodyData
 from ._create_wuying_server_request import CreateWuyingServerRequestDataDisk
 from ._create_wuying_server_response_body import CreateWuyingServerResponseBodyData
@@ -222,6 +263,7 @@ from ._get_app_instance_group_response_body import GetAppInstanceGroupResponseBo
 from ._get_app_instance_group_response_body import GetAppInstanceGroupResponseBodyAppInstanceGroupModelsOtaInfo
 from ._get_app_instance_group_response_body import GetAppInstanceGroupResponseBodyAppInstanceGroupModelsTags
 from ._get_app_instance_group_response_body import GetAppInstanceGroupResponseBodyAppInstanceGroupModels
+from ._get_model_provider_template_response_body import GetModelProviderTemplateResponseBodyData
 from ._get_resource_price_response_body import GetResourcePriceResponseBodyPriceListPricePromotions
 from ._get_resource_price_response_body import GetResourcePriceResponseBodyPriceListPrice
 from ._get_resource_price_response_body import GetResourcePriceResponseBodyPriceListRules
@@ -263,7 +305,10 @@ from ._list_image_response_body import ListImageResponseBodyDataImageRegionDistr
 from ._list_image_response_body import ListImageResponseBodyDataSnapshotList
 from ._list_image_response_body import ListImageResponseBodyDataTagList
 from ._list_image_response_body import ListImageResponseBodyData
+from ._list_llm_templates_response_body import ListLlmTemplatesResponseBodyData
+from ._list_model_provider_templates_response_body import ListModelProviderTemplatesResponseBodyData
 from ._list_model_template_resource_group_response_body import ListModelTemplateResourceGroupResponseBodyData
+from ._list_model_templates_response_body import ListModelTemplatesResponseBodyData
 from ._list_node_instance_type_response_body import ListNodeInstanceTypeResponseBodyNodeInstanceTypeModels
 from ._list_nodes_response_body import ListNodesResponseBodyNodeModels
 from ._list_ota_task_response_body import ListOtaTaskResponseBodyTaskList
@@ -308,6 +353,7 @@ from ._tag_cloud_resources_response_body import TagCloudResourcesResponseBodyFai
 from ._tag_cloud_resources_response_body import TagCloudResourcesResponseBodyFailedResources
 from ._untag_cloud_resources_response_body import UntagCloudResourcesResponseBodyFailedResourcesTags
 from ._untag_cloud_resources_response_body import UntagCloudResourcesResponseBodyFailedResources
+from ._update_model_provider_template_request import UpdateModelProviderTemplateRequestConfig
 
 __all__ = [
     ApproveOtaTaskRequest,
@@ -317,6 +363,9 @@ __all__ = [
     AuthorizeInstanceGroupShrinkRequest,
     AuthorizeInstanceGroupResponseBody,
     AuthorizeInstanceGroupResponse,
+    BatchCreateLlmTemplatesRequest,
+    BatchCreateLlmTemplatesResponseBody,
+    BatchCreateLlmTemplatesResponse,
     ConfigResourceGroupModelTemplateRequest,
     ConfigResourceGroupModelTemplateResponseBody,
     ConfigResourceGroupModelTemplateResponse,
@@ -336,6 +385,9 @@ __all__ = [
     CreateImageFromAppInstanceGroupRequest,
     CreateImageFromAppInstanceGroupResponseBody,
     CreateImageFromAppInstanceGroupResponse,
+    CreateModelProviderTemplateRequest,
+    CreateModelProviderTemplateResponseBody,
+    CreateModelProviderTemplateResponse,
     CreateModelTemplateRequest,
     CreateModelTemplateResponseBody,
     CreateModelTemplateResponse,
@@ -351,6 +403,15 @@ __all__ = [
     DeleteImageRequest,
     DeleteImageResponseBody,
     DeleteImageResponse,
+    DeleteLlmTemplateRequest,
+    DeleteLlmTemplateResponseBody,
+    DeleteLlmTemplateResponse,
+    DeleteModelProviderTemplateRequest,
+    DeleteModelProviderTemplateResponseBody,
+    DeleteModelProviderTemplateResponse,
+    DeleteModelTemplateRequest,
+    DeleteModelTemplateResponseBody,
+    DeleteModelTemplateResponse,
     DeleteWuyingServerRequest,
     DeleteWuyingServerResponseBody,
     DeleteWuyingServerResponse,
@@ -366,6 +427,9 @@ __all__ = [
     GetDebugAppInstanceRequest,
     GetDebugAppInstanceResponseBody,
     GetDebugAppInstanceResponse,
+    GetModelProviderTemplateRequest,
+    GetModelProviderTemplateResponseBody,
+    GetModelProviderTemplateResponse,
     GetOtaTaskByTaskIdRequest,
     GetOtaTaskByTaskIdResponseBody,
     GetOtaTaskByTaskIdResponse,
@@ -399,9 +463,21 @@ __all__ = [
     ListImageRequest,
     ListImageResponseBody,
     ListImageResponse,
+    ListLlmTemplatesRequest,
+    ListLlmTemplatesShrinkRequest,
+    ListLlmTemplatesResponseBody,
+    ListLlmTemplatesResponse,
+    ListModelProviderTemplatesRequest,
+    ListModelProviderTemplatesShrinkRequest,
+    ListModelProviderTemplatesResponseBody,
+    ListModelProviderTemplatesResponse,
     ListModelTemplateResourceGroupRequest,
     ListModelTemplateResourceGroupResponseBody,
     ListModelTemplateResourceGroupResponse,
+    ListModelTemplatesRequest,
+    ListModelTemplatesShrinkRequest,
+    ListModelTemplatesResponseBody,
+    ListModelTemplatesResponse,
     ListNodeInstanceTypeRequest,
     ListNodeInstanceTypeResponseBody,
     ListNodeInstanceTypeResponse,
@@ -497,10 +573,20 @@ __all__ = [
     UpdateAppInstanceGroupImageRequest,
     UpdateAppInstanceGroupImageResponseBody,
     UpdateAppInstanceGroupImageResponse,
+    UpdateModelProviderTemplateRequest,
+    UpdateModelProviderTemplateShrinkRequest,
+    UpdateModelProviderTemplateResponseBody,
+    UpdateModelProviderTemplateResponse,
+    UpdateModelTemplateRequest,
+    UpdateModelTemplateResponseBody,
+    UpdateModelTemplateResponse,
     UpdateWuyingServerImageRequest,
     UpdateWuyingServerImageResponseBody,
     UpdateWuyingServerImageResponse,
     AuthorizeInstanceGroupRequestUserMeta,
+    BatchCreateLlmTemplatesRequestLlmTemplateItems,
+    BatchCreateLlmTemplatesResponseBodyDataSkippedItems,
+    BatchCreateLlmTemplatesResponseBodyData,
     ConfigRuntimeModelTemplateResponseBodyData,
     CreateAppInstanceGroupRequestNetworkDomainRules,
     CreateAppInstanceGroupRequestNetworkRoutes,
@@ -518,6 +604,7 @@ __all__ = [
     CreateAppInstanceGroupResponseBodyAppInstanceGroupModel,
     CreateImageByInstanceRequestTagList,
     CreateImageByInstanceResponseBodyData,
+    CreateModelProviderTemplateResponseBodyData,
     CreateModelTemplateResponseBodyData,
     CreateWuyingServerRequestDataDisk,
     CreateWuyingServerResponseBodyData,
@@ -530,6 +617,7 @@ __all__ = [
     GetAppInstanceGroupResponseBodyAppInstanceGroupModelsOtaInfo,
     GetAppInstanceGroupResponseBodyAppInstanceGroupModelsTags,
     GetAppInstanceGroupResponseBodyAppInstanceGroupModels,
+    GetModelProviderTemplateResponseBodyData,
     GetResourcePriceResponseBodyPriceListPricePromotions,
     GetResourcePriceResponseBodyPriceListPrice,
     GetResourcePriceResponseBodyPriceListRules,
@@ -571,7 +659,10 @@ __all__ = [
     ListImageResponseBodyDataSnapshotList,
     ListImageResponseBodyDataTagList,
     ListImageResponseBodyData,
+    ListLlmTemplatesResponseBodyData,
+    ListModelProviderTemplatesResponseBodyData,
     ListModelTemplateResourceGroupResponseBodyData,
+    ListModelTemplatesResponseBodyData,
     ListNodeInstanceTypeResponseBodyNodeInstanceTypeModels,
     ListNodesResponseBodyNodeModels,
     ListOtaTaskResponseBodyTaskList,
@@ -615,5 +706,6 @@ __all__ = [
     TagCloudResourcesResponseBodyFailedResourcesTags,
     TagCloudResourcesResponseBodyFailedResources,
     UntagCloudResourcesResponseBodyFailedResourcesTags,
-    UntagCloudResourcesResponseBodyFailedResources
+    UntagCloudResourcesResponseBodyFailedResources,
+    UpdateModelProviderTemplateRequestConfig
 ]

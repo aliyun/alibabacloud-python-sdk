@@ -1,3 +1,17 @@
+2026-05-06 Version: 5.2.0
+- Support API BatchCreateLlmTemplates.
+- Support API CreateModelProviderTemplate.
+- Support API DeleteLlmTemplate.
+- Support API DeleteModelProviderTemplate.
+- Support API DeleteModelTemplate.
+- Support API GetModelProviderTemplate.
+- Support API ListLlmTemplates.
+- Support API ListModelProviderTemplates.
+- Support API ListModelTemplates.
+- Support API UpdateModelProviderTemplate.
+- Support API UpdateModelTemplate.
+
+
 2026-05-01 Version: 5.1.0
 - Support API ConfigResourceGroupModelTemplate.
 - Support API ConfigRuntimeChannel.
