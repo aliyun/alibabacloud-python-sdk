@@ -433,6 +433,9 @@ from ._describe_network_packages_response import DescribeNetworkPackagesResponse
 from ._describe_office_sites_request import DescribeOfficeSitesRequest
 from ._describe_office_sites_response_body import DescribeOfficeSitesResponseBody
 from ._describe_office_sites_response import DescribeOfficeSitesResponse
+from ._describe_online_user_count_request import DescribeOnlineUserCountRequest
+from ._describe_online_user_count_response_body import DescribeOnlineUserCountResponseBody
+from ._describe_online_user_count_response import DescribeOnlineUserCountResponse
 from ._describe_policy_groups_request import DescribePolicyGroupsRequest
 from ._describe_policy_groups_response_body import DescribePolicyGroupsResponseBody
 from ._describe_policy_groups_response import DescribePolicyGroupsResponse
@@ -749,6 +752,10 @@ from ._move_cds_file_response import MoveCdsFileResponse
 from ._query_history_active_user_count_request import QueryHistoryActiveUserCountRequest
 from ._query_history_active_user_count_response_body import QueryHistoryActiveUserCountResponseBody
 from ._query_history_active_user_count_response import QueryHistoryActiveUserCountResponse
+from ._query_history_avg_metric_list_request import QueryHistoryAvgMetricListRequest
+from ._query_history_avg_metric_list_shrink_request import QueryHistoryAvgMetricListShrinkRequest
+from ._query_history_avg_metric_list_response_body import QueryHistoryAvgMetricListResponseBody
+from ._query_history_avg_metric_list_response import QueryHistoryAvgMetricListResponse
 from ._query_history_metric_distribution_request import QueryHistoryMetricDistributionRequest
 from ._query_history_metric_distribution_response_body import QueryHistoryMetricDistributionResponseBody
 from ._query_history_metric_distribution_response import QueryHistoryMetricDistributionResponse
@@ -1136,6 +1143,9 @@ from ._modify_timer_group_request import ModifyTimerGroupRequestConfigTimersSegm
 from ._modify_timer_group_request import ModifyTimerGroupRequestConfigTimers
 from ._move_cds_file_response_body import MoveCdsFileResponseBodyMoveCdsFileModel
 from ._query_history_active_user_count_response_body import QueryHistoryActiveUserCountResponseBodyActiveUserCount
+from ._query_history_avg_metric_list_request import QueryHistoryAvgMetricListRequestRange
+from ._query_history_avg_metric_list_response_body import QueryHistoryAvgMetricListResponseBodyAvgMetricListSessions
+from ._query_history_avg_metric_list_response_body import QueryHistoryAvgMetricListResponseBodyAvgMetricList
 from ._query_history_metric_distribution_request import QueryHistoryMetricDistributionRequestRanges
 from ._query_history_metric_distribution_response_body import QueryHistoryMetricDistributionResponseBodyDistributionList
 from ._rebuild_desktops_response_body import RebuildDesktopsResponseBodyRebuildResults
@@ -1582,6 +1592,9 @@ __all__ = [
     DescribeOfficeSitesRequest,
     DescribeOfficeSitesResponseBody,
     DescribeOfficeSitesResponse,
+    DescribeOnlineUserCountRequest,
+    DescribeOnlineUserCountResponseBody,
+    DescribeOnlineUserCountResponse,
     DescribePolicyGroupsRequest,
     DescribePolicyGroupsResponseBody,
     DescribePolicyGroupsResponse,
@@ -1898,6 +1911,10 @@ __all__ = [
     QueryHistoryActiveUserCountRequest,
     QueryHistoryActiveUserCountResponseBody,
     QueryHistoryActiveUserCountResponse,
+    QueryHistoryAvgMetricListRequest,
+    QueryHistoryAvgMetricListShrinkRequest,
+    QueryHistoryAvgMetricListResponseBody,
+    QueryHistoryAvgMetricListResponse,
     QueryHistoryMetricDistributionRequest,
     QueryHistoryMetricDistributionResponseBody,
     QueryHistoryMetricDistributionResponse,
@@ -2285,6 +2302,9 @@ __all__ = [
     ModifyTimerGroupRequestConfigTimers,
     MoveCdsFileResponseBodyMoveCdsFileModel,
     QueryHistoryActiveUserCountResponseBodyActiveUserCount,
+    QueryHistoryAvgMetricListRequestRange,
+    QueryHistoryAvgMetricListResponseBodyAvgMetricListSessions,
+    QueryHistoryAvgMetricListResponseBodyAvgMetricList,
     QueryHistoryMetricDistributionRequestRanges,
     QueryHistoryMetricDistributionResponseBodyDistributionList,
     RebuildDesktopsResponseBodyRebuildResults,

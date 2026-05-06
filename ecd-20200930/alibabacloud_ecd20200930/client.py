@@ -14301,6 +14301,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_office_sites_with_options_async(request, runtime)
 
+    def describe_online_user_count_with_options(
+        self,
+        request: main_models.DescribeOnlineUserCountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeOnlineUserCountResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not DaraCore.is_null(request.office_site_id):
+            query['OfficeSiteId'] = request.office_site_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.search_region_id):
+            query['SearchRegionId'] = request.search_region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeOnlineUserCount',
+            version = '2020-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeOnlineUserCountResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_online_user_count_with_options_async(
+        self,
+        request: main_models.DescribeOnlineUserCountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeOnlineUserCountResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not DaraCore.is_null(request.office_site_id):
+            query['OfficeSiteId'] = request.office_site_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.search_region_id):
+            query['SearchRegionId'] = request.search_region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeOnlineUserCount',
+            version = '2020-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeOnlineUserCountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_online_user_count(
+        self,
+        request: main_models.DescribeOnlineUserCountRequest,
+    ) -> main_models.DescribeOnlineUserCountResponse:
+        runtime = RuntimeOptions()
+        return self.describe_online_user_count_with_options(request, runtime)
+
+    async def describe_online_user_count_async(
+        self,
+        request: main_models.DescribeOnlineUserCountRequest,
+    ) -> main_models.DescribeOnlineUserCountResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_online_user_count_with_options_async(request, runtime)
+
     def describe_policy_groups_with_options(
         self,
         request: main_models.DescribePolicyGroupsRequest,
@@ -24558,6 +24640,112 @@ class Client(OpenApiClient):
     ) -> main_models.QueryHistoryActiveUserCountResponse:
         runtime = RuntimeOptions()
         return await self.query_history_active_user_count_with_options_async(request, runtime)
+
+    def query_history_avg_metric_list_with_options(
+        self,
+        tmp_req: main_models.QueryHistoryAvgMetricListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryHistoryAvgMetricListResponse:
+        tmp_req.validate()
+        request = main_models.QueryHistoryAvgMetricListShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.range):
+            request.range_shrink = Utils.array_to_string_with_specified_style(tmp_req.range, 'Range', 'json')
+        query = {}
+        if not DaraCore.is_null(request.data_date):
+            query['DataDate'] = request.data_date
+        if not DaraCore.is_null(request.desktop_id):
+            query['DesktopId'] = request.desktop_id
+        if not DaraCore.is_null(request.metric_name):
+            query['MetricName'] = request.metric_name
+        if not DaraCore.is_null(request.page_num):
+            query['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.range_shrink):
+            query['Range'] = request.range_shrink
+        if not DaraCore.is_null(request.resource_region_id):
+            query['ResourceRegionId'] = request.resource_region_id
+        if not DaraCore.is_null(request.sort_type):
+            query['SortType'] = request.sort_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryHistoryAvgMetricList',
+            version = '2020-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryHistoryAvgMetricListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_history_avg_metric_list_with_options_async(
+        self,
+        tmp_req: main_models.QueryHistoryAvgMetricListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryHistoryAvgMetricListResponse:
+        tmp_req.validate()
+        request = main_models.QueryHistoryAvgMetricListShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.range):
+            request.range_shrink = Utils.array_to_string_with_specified_style(tmp_req.range, 'Range', 'json')
+        query = {}
+        if not DaraCore.is_null(request.data_date):
+            query['DataDate'] = request.data_date
+        if not DaraCore.is_null(request.desktop_id):
+            query['DesktopId'] = request.desktop_id
+        if not DaraCore.is_null(request.metric_name):
+            query['MetricName'] = request.metric_name
+        if not DaraCore.is_null(request.page_num):
+            query['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.range_shrink):
+            query['Range'] = request.range_shrink
+        if not DaraCore.is_null(request.resource_region_id):
+            query['ResourceRegionId'] = request.resource_region_id
+        if not DaraCore.is_null(request.sort_type):
+            query['SortType'] = request.sort_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryHistoryAvgMetricList',
+            version = '2020-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryHistoryAvgMetricListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_history_avg_metric_list(
+        self,
+        request: main_models.QueryHistoryAvgMetricListRequest,
+    ) -> main_models.QueryHistoryAvgMetricListResponse:
+        runtime = RuntimeOptions()
+        return self.query_history_avg_metric_list_with_options(request, runtime)
+
+    async def query_history_avg_metric_list_async(
+        self,
+        request: main_models.QueryHistoryAvgMetricListRequest,
+    ) -> main_models.QueryHistoryAvgMetricListResponse:
+        runtime = RuntimeOptions()
+        return await self.query_history_avg_metric_list_with_options_async(request, runtime)
 
     def query_history_metric_distribution_with_options(
         self,
