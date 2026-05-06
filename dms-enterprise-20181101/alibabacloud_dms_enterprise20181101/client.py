@@ -14107,6 +14107,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_table_instructions_with_options_async(request, runtime)
 
+    def get_table_knowledge_details_with_options(
+        self,
+        request: main_models.GetTableKnowledgeDetailsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetTableKnowledgeDetailsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.db_id):
+            query['DbId'] = request.db_id
+        if not DaraCore.is_null(request.table_name):
+            query['TableName'] = request.table_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetTableKnowledgeDetails',
+            version = '2018-11-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetTableKnowledgeDetailsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_table_knowledge_details_with_options_async(
+        self,
+        request: main_models.GetTableKnowledgeDetailsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetTableKnowledgeDetailsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.db_id):
+            query['DbId'] = request.db_id
+        if not DaraCore.is_null(request.table_name):
+            query['TableName'] = request.table_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetTableKnowledgeDetails',
+            version = '2018-11-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetTableKnowledgeDetailsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_table_knowledge_details(
+        self,
+        request: main_models.GetTableKnowledgeDetailsRequest,
+    ) -> main_models.GetTableKnowledgeDetailsResponse:
+        runtime = RuntimeOptions()
+        return self.get_table_knowledge_details_with_options(request, runtime)
+
+    async def get_table_knowledge_details_async(
+        self,
+        request: main_models.GetTableKnowledgeDetailsRequest,
+    ) -> main_models.GetTableKnowledgeDetailsResponse:
+        runtime = RuntimeOptions()
+        return await self.get_table_knowledge_details_with_options_async(request, runtime)
+
     def get_table_knowledge_info_with_options(
         self,
         request: main_models.GetTableKnowledgeInfoRequest,

@@ -549,6 +549,9 @@ from ._get_table_design_project_info_response import GetTableDesignProjectInfoRe
 from ._get_table_instructions_request import GetTableInstructionsRequest
 from ._get_table_instructions_response_body import GetTableInstructionsResponseBody
 from ._get_table_instructions_response import GetTableInstructionsResponse
+from ._get_table_knowledge_details_request import GetTableKnowledgeDetailsRequest
+from ._get_table_knowledge_details_response_body import GetTableKnowledgeDetailsResponseBody
+from ._get_table_knowledge_details_response import GetTableKnowledgeDetailsResponse
 from ._get_table_knowledge_info_request import GetTableKnowledgeInfoRequest
 from ._get_table_knowledge_info_response_body import GetTableKnowledgeInfoResponseBody
 from ._get_table_knowledge_info_response import GetTableKnowledgeInfoResponse
@@ -1982,6 +1985,9 @@ __all__ = [
     GetTableInstructionsRequest,
     GetTableInstructionsResponseBody,
     GetTableInstructionsResponse,
+    GetTableKnowledgeDetailsRequest,
+    GetTableKnowledgeDetailsResponseBody,
+    GetTableKnowledgeDetailsResponse,
     GetTableKnowledgeInfoRequest,
     GetTableKnowledgeInfoResponseBody,
     GetTableKnowledgeInfoResponse,

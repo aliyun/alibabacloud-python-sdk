@@ -1,3 +1,7 @@
+2026-05-06 Version: 2.8.0
+- Support API GetTableKnowledgeDetails.
+
+
 2026-04-30 Version: 2.7.0
 - Support API GetTableColumnList.
 - Support API GetTableInstructions.
