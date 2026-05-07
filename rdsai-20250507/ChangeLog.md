@@ -1,3 +1,8 @@
+2026-05-07 Version: 3.3.0
+- Support API GetAvailableLLMModels.
+- Support API ListLLMTokenUsage.
+
+
 2026-04-29 Version: 3.2.0
 - Support API UpdateMOQuotaAlertThreshold.
 - Update API DescribeModelOperator: add response parameters Body.Data.PrefixCacheEnabled.

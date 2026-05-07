@@ -2590,6 +2590,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.enable_agent_runtime_with_options_async(request, runtime)
 
+    def get_available_llmmodels_with_options(
+        self,
+        request: main_models.GetAvailableLLMModelsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAvailableLLMModelsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAvailableLLMModels',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAvailableLLMModelsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_available_llmmodels_with_options_async(
+        self,
+        request: main_models.GetAvailableLLMModelsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAvailableLLMModelsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAvailableLLMModels',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAvailableLLMModelsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_available_llmmodels(
+        self,
+        request: main_models.GetAvailableLLMModelsRequest,
+    ) -> main_models.GetAvailableLLMModelsResponse:
+        runtime = RuntimeOptions()
+        return self.get_available_llmmodels_with_options(request, runtime)
+
+    async def get_available_llmmodels_async(
+        self,
+        request: main_models.GetAvailableLLMModelsRequest,
+    ) -> main_models.GetAvailableLLMModelsResponse:
+        runtime = RuntimeOptions()
+        return await self.get_available_llmmodels_with_options_async(request, runtime)
+
     def get_conversations_with_options(
         self,
         request: main_models.GetConversationsRequest,
@@ -3487,6 +3565,92 @@ class Client(OpenApiClient):
     async def list_custom_agent_tools_async(self) -> main_models.ListCustomAgentToolsResponse:
         runtime = RuntimeOptions()
         return await self.list_custom_agent_tools_with_options_async(runtime)
+
+    def list_llmtoken_usage_with_options(
+        self,
+        request: main_models.ListLLMTokenUsageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListLLMTokenUsageResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.model):
+            query['Model'] = request.model
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListLLMTokenUsage',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListLLMTokenUsageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_llmtoken_usage_with_options_async(
+        self,
+        request: main_models.ListLLMTokenUsageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListLLMTokenUsageResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.model):
+            query['Model'] = request.model
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListLLMTokenUsage',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListLLMTokenUsageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_llmtoken_usage(
+        self,
+        request: main_models.ListLLMTokenUsageRequest,
+    ) -> main_models.ListLLMTokenUsageResponse:
+        runtime = RuntimeOptions()
+        return self.list_llmtoken_usage_with_options(request, runtime)
+
+    async def list_llmtoken_usage_async(
+        self,
+        request: main_models.ListLLMTokenUsageRequest,
+    ) -> main_models.ListLLMTokenUsageResponse:
+        runtime = RuntimeOptions()
+        return await self.list_llmtoken_usage_with_options_async(request, runtime)
 
     def list_scheduled_tasks_with_options(
         self,
