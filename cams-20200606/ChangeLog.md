@@ -1,3 +1,6 @@
+2026-05-07 Version: 5.1.1
+- Generated python 2020-06-06 for cams.
+
 2026-04-28 Version: 5.1.0
 - Support API SyncBusinessAppHistory.
 - Update API QueryChatappBindWaba: add response parameters Body.Data.IsOnBizApp.
