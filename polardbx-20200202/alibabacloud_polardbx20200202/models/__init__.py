@@ -368,6 +368,9 @@ from ._restart_dbinstance_response import RestartDBInstanceResponse
 from ._restart_data_import_task_request import RestartDataImportTaskRequest
 from ._restart_data_import_task_response_body import RestartDataImportTaskResponseBody
 from ._restart_data_import_task_response import RestartDataImportTaskResponse
+from ._restore_dbinstance_request import RestoreDBInstanceRequest
+from ._restore_dbinstance_response_body import RestoreDBInstanceResponseBody
+from ._restore_dbinstance_response import RestoreDBInstanceResponse
 from ._skip_current_step_request import SkipCurrentStepRequest
 from ._skip_current_step_response_body import SkipCurrentStepResponseBody
 from ._skip_current_step_response import SkipCurrentStepResponse
@@ -923,6 +926,9 @@ __all__ = [
     RestartDataImportTaskRequest,
     RestartDataImportTaskResponseBody,
     RestartDataImportTaskResponse,
+    RestoreDBInstanceRequest,
+    RestoreDBInstanceResponseBody,
+    RestoreDBInstanceResponse,
     SkipCurrentStepRequest,
     SkipCurrentStepResponseBody,
     SkipCurrentStepResponse,

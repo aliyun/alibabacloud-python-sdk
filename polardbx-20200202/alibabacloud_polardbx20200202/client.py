@@ -10203,6 +10203,196 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.restart_data_import_task_with_options_async(request, runtime)
 
+    def restore_dbinstance_with_options(
+        self,
+        request: main_models.RestoreDBInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RestoreDBInstanceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not DaraCore.is_null(request.backup_set_id):
+            query['BackupSetId'] = request.backup_set_id
+        if not DaraCore.is_null(request.backup_set_region):
+            query['BackupSetRegion'] = request.backup_set_region
+        if not DaraCore.is_null(request.cnnode_count):
+            query['CNNodeCount'] = request.cnnode_count
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.clone_instance_name):
+            query['CloneInstanceName'] = request.clone_instance_name
+        if not DaraCore.is_null(request.cn_class):
+            query['CnClass'] = request.cn_class
+        if not DaraCore.is_null(request.dbnode_class):
+            query['DBNodeClass'] = request.dbnode_class
+        if not DaraCore.is_null(request.dbnode_count):
+            query['DBNodeCount'] = request.dbnode_count
+        if not DaraCore.is_null(request.dnnode_count):
+            query['DNNodeCount'] = request.dnnode_count
+        if not DaraCore.is_null(request.dn_class):
+            query['DnClass'] = request.dn_class
+        if not DaraCore.is_null(request.engine_version):
+            query['EngineVersion'] = request.engine_version
+        if not DaraCore.is_null(request.gdn_role):
+            query['GdnRole'] = request.gdn_role
+        if not DaraCore.is_null(request.network_type):
+            query['NetworkType'] = request.network_type
+        if not DaraCore.is_null(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not DaraCore.is_null(request.period):
+            query['Period'] = request.period
+        if not DaraCore.is_null(request.primary_zone):
+            query['PrimaryZone'] = request.primary_zone
+        if not DaraCore.is_null(request.recovery_type_code):
+            query['RecoveryTypeCode'] = request.recovery_type_code
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.restore_time):
+            query['RestoreTime'] = request.restore_time
+        if not DaraCore.is_null(request.secondary_zone):
+            query['SecondaryZone'] = request.secondary_zone
+        if not DaraCore.is_null(request.series):
+            query['Series'] = request.series
+        if not DaraCore.is_null(request.source_instance_region):
+            query['SourceInstanceRegion'] = request.source_instance_region
+        if not DaraCore.is_null(request.storage_type):
+            query['StorageType'] = request.storage_type
+        if not DaraCore.is_null(request.tertiary_zone):
+            query['TertiaryZone'] = request.tertiary_zone
+        if not DaraCore.is_null(request.topology_type):
+            query['TopologyType'] = request.topology_type
+        if not DaraCore.is_null(request.used_time):
+            query['UsedTime'] = request.used_time
+        if not DaraCore.is_null(request.vpcid):
+            query['VPCId'] = request.vpcid
+        if not DaraCore.is_null(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not DaraCore.is_null(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RestoreDBInstance',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RestoreDBInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def restore_dbinstance_with_options_async(
+        self,
+        request: main_models.RestoreDBInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RestoreDBInstanceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not DaraCore.is_null(request.backup_set_id):
+            query['BackupSetId'] = request.backup_set_id
+        if not DaraCore.is_null(request.backup_set_region):
+            query['BackupSetRegion'] = request.backup_set_region
+        if not DaraCore.is_null(request.cnnode_count):
+            query['CNNodeCount'] = request.cnnode_count
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.clone_instance_name):
+            query['CloneInstanceName'] = request.clone_instance_name
+        if not DaraCore.is_null(request.cn_class):
+            query['CnClass'] = request.cn_class
+        if not DaraCore.is_null(request.dbnode_class):
+            query['DBNodeClass'] = request.dbnode_class
+        if not DaraCore.is_null(request.dbnode_count):
+            query['DBNodeCount'] = request.dbnode_count
+        if not DaraCore.is_null(request.dnnode_count):
+            query['DNNodeCount'] = request.dnnode_count
+        if not DaraCore.is_null(request.dn_class):
+            query['DnClass'] = request.dn_class
+        if not DaraCore.is_null(request.engine_version):
+            query['EngineVersion'] = request.engine_version
+        if not DaraCore.is_null(request.gdn_role):
+            query['GdnRole'] = request.gdn_role
+        if not DaraCore.is_null(request.network_type):
+            query['NetworkType'] = request.network_type
+        if not DaraCore.is_null(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not DaraCore.is_null(request.period):
+            query['Period'] = request.period
+        if not DaraCore.is_null(request.primary_zone):
+            query['PrimaryZone'] = request.primary_zone
+        if not DaraCore.is_null(request.recovery_type_code):
+            query['RecoveryTypeCode'] = request.recovery_type_code
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.restore_time):
+            query['RestoreTime'] = request.restore_time
+        if not DaraCore.is_null(request.secondary_zone):
+            query['SecondaryZone'] = request.secondary_zone
+        if not DaraCore.is_null(request.series):
+            query['Series'] = request.series
+        if not DaraCore.is_null(request.source_instance_region):
+            query['SourceInstanceRegion'] = request.source_instance_region
+        if not DaraCore.is_null(request.storage_type):
+            query['StorageType'] = request.storage_type
+        if not DaraCore.is_null(request.tertiary_zone):
+            query['TertiaryZone'] = request.tertiary_zone
+        if not DaraCore.is_null(request.topology_type):
+            query['TopologyType'] = request.topology_type
+        if not DaraCore.is_null(request.used_time):
+            query['UsedTime'] = request.used_time
+        if not DaraCore.is_null(request.vpcid):
+            query['VPCId'] = request.vpcid
+        if not DaraCore.is_null(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not DaraCore.is_null(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RestoreDBInstance',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RestoreDBInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def restore_dbinstance(
+        self,
+        request: main_models.RestoreDBInstanceRequest,
+    ) -> main_models.RestoreDBInstanceResponse:
+        runtime = RuntimeOptions()
+        return self.restore_dbinstance_with_options(request, runtime)
+
+    async def restore_dbinstance_async(
+        self,
+        request: main_models.RestoreDBInstanceRequest,
+    ) -> main_models.RestoreDBInstanceResponse:
+        runtime = RuntimeOptions()
+        return await self.restore_dbinstance_with_options_async(request, runtime)
+
     def skip_current_step_with_options(
         self,
         request: main_models.SkipCurrentStepRequest,

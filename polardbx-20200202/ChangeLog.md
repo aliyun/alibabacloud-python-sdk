@@ -1,3 +1,7 @@
+2026-05-07 Version: 3.3.0
+- Support API RestoreDBInstance.
+
+
 2026-04-08 Version: 3.2.0
 - Support API CreateMem0.
 - Support API DeleteMem0.
