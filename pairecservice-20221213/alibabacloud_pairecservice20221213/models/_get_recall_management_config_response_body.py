@@ -63,12 +63,16 @@ class GetRecallManagementConfigResponseBodyNetworkConfigs(DaraModel):
     def __init__(
         self,
         private_link_address: str = None,
+        public_endpoint: str = None,
         status: str = None,
+        token: str = None,
         vpc_id: str = None,
         vswitch_ids: Dict[str, str] = None,
     ):
         self.private_link_address = private_link_address
+        self.public_endpoint = public_endpoint
         self.status = status
+        self.token = token
         self.vpc_id = vpc_id
         self.vswitch_ids = vswitch_ids
 
@@ -83,8 +87,14 @@ class GetRecallManagementConfigResponseBodyNetworkConfigs(DaraModel):
         if self.private_link_address is not None:
             result['PrivateLinkAddress'] = self.private_link_address
 
+        if self.public_endpoint is not None:
+            result['PublicEndpoint'] = self.public_endpoint
+
         if self.status is not None:
             result['Status'] = self.status
+
+        if self.token is not None:
+            result['Token'] = self.token
 
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
@@ -99,8 +109,14 @@ class GetRecallManagementConfigResponseBodyNetworkConfigs(DaraModel):
         if m.get('PrivateLinkAddress') is not None:
             self.private_link_address = m.get('PrivateLinkAddress')
 
+        if m.get('PublicEndpoint') is not None:
+            self.public_endpoint = m.get('PublicEndpoint')
+
         if m.get('Status') is not None:
             self.status = m.get('Status')
+
+        if m.get('Token') is not None:
+            self.token = m.get('Token')
 
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')

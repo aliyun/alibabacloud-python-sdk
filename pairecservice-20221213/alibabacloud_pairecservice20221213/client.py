@@ -2968,6 +2968,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.configs):
             body['Configs'] = request.configs
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.source_recall_management_service_version_id):
             body['SourceRecallManagementServiceVersionId'] = request.source_recall_management_service_version_id
         req = open_api_util_models.OpenApiRequest(
@@ -3001,6 +3003,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.configs):
             body['Configs'] = request.configs
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.source_recall_management_service_version_id):
             body['SourceRecallManagementServiceVersionId'] = request.source_recall_management_service_version_id
         req = open_api_util_models.OpenApiRequest(
@@ -4622,6 +4626,8 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteEngineConfigResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.delete_all):
+            query['DeleteAll'] = request.delete_all
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         req = open_api_util_models.OpenApiRequest(
@@ -4653,6 +4659,8 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteEngineConfigResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.delete_all):
+            query['DeleteAll'] = request.delete_all
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         req = open_api_util_models.OpenApiRequest(

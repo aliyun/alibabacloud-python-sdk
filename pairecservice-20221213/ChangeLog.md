@@ -1,3 +1,10 @@
+2026-05-07 Version: 7.0.1
+- Update API CreateRecallManagementServiceVersion: add request parameters body.InstanceId.
+- Update API DeleteEngineConfig: add request parameters DeleteAll.
+- Update API GetRecallManagementConfig: add response parameters Body.NetworkConfigs.$.PublicEndpoint.
+- Update API GetRecallManagementConfig: add response parameters Body.NetworkConfigs.$.Token.
+
+
 2026-04-29 Version: 7.0.0
 - Support API ExportRecallManagementTable.
 - Support API QueryRecallManagementTableRecords.

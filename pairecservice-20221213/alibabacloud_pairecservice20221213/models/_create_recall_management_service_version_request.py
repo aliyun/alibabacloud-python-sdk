@@ -11,9 +11,11 @@ class CreateRecallManagementServiceVersionRequest(DaraModel):
     def __init__(
         self,
         configs: main_models.CreateRecallManagementServiceVersionRequestConfigs = None,
+        instance_id: str = None,
         source_recall_management_service_version_id: str = None,
     ):
         self.configs = configs
+        self.instance_id = instance_id
         self.source_recall_management_service_version_id = source_recall_management_service_version_id
 
     def validate(self):
@@ -28,6 +30,9 @@ class CreateRecallManagementServiceVersionRequest(DaraModel):
         if self.configs is not None:
             result['Configs'] = self.configs.to_map()
 
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+
         if self.source_recall_management_service_version_id is not None:
             result['SourceRecallManagementServiceVersionId'] = self.source_recall_management_service_version_id
 
@@ -38,6 +43,9 @@ class CreateRecallManagementServiceVersionRequest(DaraModel):
         if m.get('Configs') is not None:
             temp_model = main_models.CreateRecallManagementServiceVersionRequestConfigs()
             self.configs = temp_model.from_map(m.get('Configs'))
+
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
 
         if m.get('SourceRecallManagementServiceVersionId') is not None:
             self.source_recall_management_service_version_id = m.get('SourceRecallManagementServiceVersionId')
