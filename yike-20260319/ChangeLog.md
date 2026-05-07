@@ -1,3 +1,7 @@
+2026-05-07 Version: 1.3.1
+- Update API GetYikeStoryboardJob: add response parameters Body.JobResult.SrtFileUrl.
+
+
 2026-04-24 Version: 1.3.0
 - Support API GetYikeVoiceNarratorJob.
 - Support API SubmitYikeVoiceNarratorJob.

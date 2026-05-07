@@ -75,6 +75,7 @@ class GetYikeStoryboardJobResponseBodyJobResult(DaraModel):
         exception_storyboard_ids: str = None,
         failure_shot_list: str = None,
         output_url: str = None,
+        srt_file_url: str = None,
         storyboard_info_list: str = None,
         success_storyboard_ids: str = None,
         success_storyboard_list: str = None,
@@ -82,6 +83,7 @@ class GetYikeStoryboardJobResponseBodyJobResult(DaraModel):
         self.exception_storyboard_ids = exception_storyboard_ids
         self.failure_shot_list = failure_shot_list
         self.output_url = output_url
+        self.srt_file_url = srt_file_url
         self.storyboard_info_list = storyboard_info_list
         self.success_storyboard_ids = success_storyboard_ids
         self.success_storyboard_list = success_storyboard_list
@@ -102,6 +104,9 @@ class GetYikeStoryboardJobResponseBodyJobResult(DaraModel):
 
         if self.output_url is not None:
             result['OutputUrl'] = self.output_url
+
+        if self.srt_file_url is not None:
+            result['SrtFileUrl'] = self.srt_file_url
 
         if self.storyboard_info_list is not None:
             result['StoryboardInfoList'] = self.storyboard_info_list
@@ -124,6 +129,9 @@ class GetYikeStoryboardJobResponseBodyJobResult(DaraModel):
 
         if m.get('OutputUrl') is not None:
             self.output_url = m.get('OutputUrl')
+
+        if m.get('SrtFileUrl') is not None:
+            self.srt_file_url = m.get('SrtFileUrl')
 
         if m.get('StoryboardInfoList') is not None:
             self.storyboard_info_list = m.get('StoryboardInfoList')
