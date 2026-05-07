@@ -11,8 +11,10 @@ class CreateUploadVideoRequest(DaraModel):
         cate_id: int = None,
         cover_url: str = None,
         description: str = None,
+        enable_first_frame_cover: bool = None,
         file_name: str = None,
         file_size: int = None,
+        generate_thumbnail: bool = None,
         reference_id: str = None,
         storage_location: str = None,
         tags: str = None,
@@ -36,6 +38,7 @@ class CreateUploadVideoRequest(DaraModel):
         # *   The value can be up to 1,024 characters in length.
         # *   The value must be encoded in UTF-8.
         self.description = description
+        self.enable_first_frame_cover = enable_first_frame_cover
         # The name of the source file.
         # 
         # *   The name must contain a file name extension, which is not case-sensitive.
@@ -45,6 +48,7 @@ class CreateUploadVideoRequest(DaraModel):
         self.file_name = file_name
         # The size of the source file. Unit: bytes.
         self.file_size = file_size
+        self.generate_thumbnail = generate_thumbnail
         self.reference_id = reference_id
         # The storage address. Perform the following operations to obtain the storage address: Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose **Configuration Management** > **Media Management** > **Storage**. On the Storage page, view the storage address.
         # 
@@ -105,11 +109,17 @@ class CreateUploadVideoRequest(DaraModel):
         if self.description is not None:
             result['Description'] = self.description
 
+        if self.enable_first_frame_cover is not None:
+            result['EnableFirstFrameCover'] = self.enable_first_frame_cover
+
         if self.file_name is not None:
             result['FileName'] = self.file_name
 
         if self.file_size is not None:
             result['FileSize'] = self.file_size
+
+        if self.generate_thumbnail is not None:
+            result['GenerateThumbnail'] = self.generate_thumbnail
 
         if self.reference_id is not None:
             result['ReferenceId'] = self.reference_id
@@ -148,11 +158,17 @@ class CreateUploadVideoRequest(DaraModel):
         if m.get('Description') is not None:
             self.description = m.get('Description')
 
+        if m.get('EnableFirstFrameCover') is not None:
+            self.enable_first_frame_cover = m.get('EnableFirstFrameCover')
+
         if m.get('FileName') is not None:
             self.file_name = m.get('FileName')
 
         if m.get('FileSize') is not None:
             self.file_size = m.get('FileSize')
+
+        if m.get('GenerateThumbnail') is not None:
+            self.generate_thumbnail = m.get('GenerateThumbnail')
 
         if m.get('ReferenceId') is not None:
             self.reference_id = m.get('ReferenceId')

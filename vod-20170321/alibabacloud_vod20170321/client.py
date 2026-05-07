@@ -1797,10 +1797,14 @@ class Client(OpenApiClient):
             query['CoverURL'] = request.cover_url
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
+        if not DaraCore.is_null(request.enable_first_frame_cover):
+            query['EnableFirstFrameCover'] = request.enable_first_frame_cover
         if not DaraCore.is_null(request.file_name):
             query['FileName'] = request.file_name
         if not DaraCore.is_null(request.file_size):
             query['FileSize'] = request.file_size
+        if not DaraCore.is_null(request.generate_thumbnail):
+            query['GenerateThumbnail'] = request.generate_thumbnail
         if not DaraCore.is_null(request.reference_id):
             query['ReferenceId'] = request.reference_id
         if not DaraCore.is_null(request.storage_location):
@@ -1849,10 +1853,14 @@ class Client(OpenApiClient):
             query['CoverURL'] = request.cover_url
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
+        if not DaraCore.is_null(request.enable_first_frame_cover):
+            query['EnableFirstFrameCover'] = request.enable_first_frame_cover
         if not DaraCore.is_null(request.file_name):
             query['FileName'] = request.file_name
         if not DaraCore.is_null(request.file_size):
             query['FileSize'] = request.file_size
+        if not DaraCore.is_null(request.generate_thumbnail):
+            query['GenerateThumbnail'] = request.generate_thumbnail
         if not DaraCore.is_null(request.reference_id):
             query['ReferenceId'] = request.reference_id
         if not DaraCore.is_null(request.storage_location):
@@ -12035,6 +12043,10 @@ class Client(OpenApiClient):
     ) -> main_models.RegisterMediaResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.enable_first_frame_cover):
+            query['EnableFirstFrameCover'] = request.enable_first_frame_cover
+        if not DaraCore.is_null(request.generate_thumbnail):
+            query['GenerateThumbnail'] = request.generate_thumbnail
         if not DaraCore.is_null(request.register_metadatas):
             query['RegisterMetadatas'] = request.register_metadatas
         if not DaraCore.is_null(request.template_group_id):
@@ -12069,6 +12081,10 @@ class Client(OpenApiClient):
     ) -> main_models.RegisterMediaResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.enable_first_frame_cover):
+            query['EnableFirstFrameCover'] = request.enable_first_frame_cover
+        if not DaraCore.is_null(request.generate_thumbnail):
+            query['GenerateThumbnail'] = request.generate_thumbnail
         if not DaraCore.is_null(request.register_metadatas):
             query['RegisterMetadatas'] = request.register_metadatas
         if not DaraCore.is_null(request.template_group_id):
@@ -15321,6 +15337,10 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.app_id):
             query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.enable_first_frame_cover):
+            query['EnableFirstFrameCover'] = request.enable_first_frame_cover
+        if not DaraCore.is_null(request.generate_thumbnail):
+            query['GenerateThumbnail'] = request.generate_thumbnail
         if not DaraCore.is_null(request.session_id):
             query['SessionId'] = request.session_id
         if not DaraCore.is_null(request.storage_location):
@@ -15363,6 +15383,10 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.app_id):
             query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.enable_first_frame_cover):
+            query['EnableFirstFrameCover'] = request.enable_first_frame_cover
+        if not DaraCore.is_null(request.generate_thumbnail):
+            query['GenerateThumbnail'] = request.generate_thumbnail
         if not DaraCore.is_null(request.session_id):
             query['SessionId'] = request.session_id
         if not DaraCore.is_null(request.storage_location):

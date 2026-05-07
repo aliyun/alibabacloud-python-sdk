@@ -7,11 +7,15 @@ from darabonba.model import DaraModel
 class RegisterMediaRequest(DaraModel):
     def __init__(
         self,
+        enable_first_frame_cover: bool = None,
+        generate_thumbnail: bool = None,
         register_metadatas: str = None,
         template_group_id: str = None,
         user_data: str = None,
         workflow_id: str = None,
     ):
+        self.enable_first_frame_cover = enable_first_frame_cover
+        self.generate_thumbnail = generate_thumbnail
         # The metadata of the media files. The value must be a JSON string. You can specify the metadata for up to 10 media files at a time. For more information about the metadata of media files, see the **RegisterMetadata** section of this topic.
         # 
         # This parameter is required.
@@ -45,6 +49,12 @@ class RegisterMediaRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.enable_first_frame_cover is not None:
+            result['EnableFirstFrameCover'] = self.enable_first_frame_cover
+
+        if self.generate_thumbnail is not None:
+            result['GenerateThumbnail'] = self.generate_thumbnail
+
         if self.register_metadatas is not None:
             result['RegisterMetadatas'] = self.register_metadatas
 
@@ -61,6 +71,12 @@ class RegisterMediaRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('EnableFirstFrameCover') is not None:
+            self.enable_first_frame_cover = m.get('EnableFirstFrameCover')
+
+        if m.get('GenerateThumbnail') is not None:
+            self.generate_thumbnail = m.get('GenerateThumbnail')
+
         if m.get('RegisterMetadatas') is not None:
             self.register_metadatas = m.get('RegisterMetadatas')
 

@@ -1,3 +1,12 @@
+2026-05-07 Version: 3.10.3
+- Update API CreateUploadVideo: add request parameters EnableFirstFrameCover.
+- Update API CreateUploadVideo: add request parameters GenerateThumbnail.
+- Update API RegisterMedia: add request parameters EnableFirstFrameCover.
+- Update API RegisterMedia: add request parameters GenerateThumbnail.
+- Update API UploadMediaByURL: add request parameters EnableFirstFrameCover.
+- Update API UploadMediaByURL: add request parameters GenerateThumbnail.
+
+
 2026-04-23 Version: 3.10.2
 - Update API DescribeVodDomainCertificateInfo: add request parameters HeraApiAutoVersion.
 
