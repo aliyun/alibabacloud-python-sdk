@@ -1,3 +1,10 @@
+2026-05-07 Version: 1.43.1
+- Update API RunBookBrainmap: add request parameters ResponseFormat.
+- Update API RunBookIntroduction: add request parameters CleanCache.
+- Update API RunBookIntroduction: add response parameters Body.Payload.Output.Introductions.$.Blocks.
+- Update API RunDocBrainmap: add request parameters ResponseFormat.
+
+
 2026-04-22 Version: 1.43.0
 - Support API InitiatePptCreationV2.
 - Support API ListEnterprisePptTemplates.

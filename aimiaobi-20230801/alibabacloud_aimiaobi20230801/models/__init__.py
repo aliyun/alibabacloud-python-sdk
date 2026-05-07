@@ -1047,6 +1047,7 @@ from ._run_book_brainmap_response_body import RunBookBrainmapResponseBodyPayload
 from ._run_book_brainmap_response_body import RunBookBrainmapResponseBodyPayloadUsage
 from ._run_book_brainmap_response_body import RunBookBrainmapResponseBodyPayload
 from ._run_book_introduction_response_body import RunBookIntroductionResponseBodyHeader
+from ._run_book_introduction_response_body import RunBookIntroductionResponseBodyPayloadOutputIntroductionsBlocks
 from ._run_book_introduction_response_body import RunBookIntroductionResponseBodyPayloadOutputIntroductions
 from ._run_book_introduction_response_body import RunBookIntroductionResponseBodyPayloadOutput
 from ._run_book_introduction_response_body import RunBookIntroductionResponseBodyPayloadUsage
@@ -2431,6 +2432,7 @@ __all__ = [
     RunBookBrainmapResponseBodyPayloadUsage,
     RunBookBrainmapResponseBodyPayload,
     RunBookIntroductionResponseBodyHeader,
+    RunBookIntroductionResponseBodyPayloadOutputIntroductionsBlocks,
     RunBookIntroductionResponseBodyPayloadOutputIntroductions,
     RunBookIntroductionResponseBodyPayloadOutput,
     RunBookIntroductionResponseBodyPayloadUsage,

@@ -7,12 +7,14 @@ from darabonba.model import DaraModel
 class RunBookIntroductionRequest(DaraModel):
     def __init__(
         self,
+        clean_cache: bool = None,
         doc_id: str = None,
         key_point_prompt: str = None,
         session_id: str = None,
         summary_prompt: str = None,
         workspace_id: str = None,
     ):
+        self.clean_cache = clean_cache
         # This parameter is required.
         self.doc_id = doc_id
         self.key_point_prompt = key_point_prompt
@@ -30,6 +32,9 @@ class RunBookIntroductionRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.clean_cache is not None:
+            result['CleanCache'] = self.clean_cache
+
         if self.doc_id is not None:
             result['DocId'] = self.doc_id
 
@@ -49,6 +54,9 @@ class RunBookIntroductionRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CleanCache') is not None:
+            self.clean_cache = m.get('CleanCache')
+
         if m.get('DocId') is not None:
             self.doc_id = m.get('DocId')
 

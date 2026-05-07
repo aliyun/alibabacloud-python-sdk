@@ -13179,6 +13179,8 @@ class Client(OpenApiClient):
             body['NodeNumber'] = request.node_number
         if not DaraCore.is_null(request.prompt):
             body['Prompt'] = request.prompt
+        if not DaraCore.is_null(request.response_format):
+            body['ResponseFormat'] = request.response_format
         if not DaraCore.is_null(request.session_id):
             body['SessionId'] = request.session_id
         if not DaraCore.is_null(request.word_number):
@@ -13228,6 +13230,8 @@ class Client(OpenApiClient):
             body['NodeNumber'] = request.node_number
         if not DaraCore.is_null(request.prompt):
             body['Prompt'] = request.prompt
+        if not DaraCore.is_null(request.response_format):
+            body['ResponseFormat'] = request.response_format
         if not DaraCore.is_null(request.session_id):
             body['SessionId'] = request.session_id
         if not DaraCore.is_null(request.word_number):
@@ -13277,6 +13281,8 @@ class Client(OpenApiClient):
             body['NodeNumber'] = request.node_number
         if not DaraCore.is_null(request.prompt):
             body['Prompt'] = request.prompt
+        if not DaraCore.is_null(request.response_format):
+            body['ResponseFormat'] = request.response_format
         if not DaraCore.is_null(request.session_id):
             body['SessionId'] = request.session_id
         if not DaraCore.is_null(request.word_number):
@@ -13317,6 +13323,8 @@ class Client(OpenApiClient):
             body['NodeNumber'] = request.node_number
         if not DaraCore.is_null(request.prompt):
             body['Prompt'] = request.prompt
+        if not DaraCore.is_null(request.response_format):
+            body['ResponseFormat'] = request.response_format
         if not DaraCore.is_null(request.session_id):
             body['SessionId'] = request.session_id
         if not DaraCore.is_null(request.word_number):
@@ -13363,6 +13371,8 @@ class Client(OpenApiClient):
     ) -> Generator[main_models.RunBookIntroductionResponse, None, None]:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.clean_cache):
+            body['CleanCache'] = request.clean_cache
         if not DaraCore.is_null(request.doc_id):
             body['DocId'] = request.doc_id
         if not DaraCore.is_null(request.key_point_prompt):
@@ -13408,6 +13418,8 @@ class Client(OpenApiClient):
     ) -> AsyncGenerator[main_models.RunBookIntroductionResponse, None, None]:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.clean_cache):
+            body['CleanCache'] = request.clean_cache
         if not DaraCore.is_null(request.doc_id):
             body['DocId'] = request.doc_id
         if not DaraCore.is_null(request.key_point_prompt):
@@ -13453,6 +13465,8 @@ class Client(OpenApiClient):
     ) -> main_models.RunBookIntroductionResponse:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.clean_cache):
+            body['CleanCache'] = request.clean_cache
         if not DaraCore.is_null(request.doc_id):
             body['DocId'] = request.doc_id
         if not DaraCore.is_null(request.key_point_prompt):
@@ -13489,6 +13503,8 @@ class Client(OpenApiClient):
     ) -> main_models.RunBookIntroductionResponse:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.clean_cache):
+            body['CleanCache'] = request.clean_cache
         if not DaraCore.is_null(request.doc_id):
             body['DocId'] = request.doc_id
         if not DaraCore.is_null(request.key_point_prompt):
@@ -14693,6 +14709,8 @@ class Client(OpenApiClient):
             body['NodeNumber'] = request.node_number
         if not DaraCore.is_null(request.prompt):
             body['Prompt'] = request.prompt
+        if not DaraCore.is_null(request.response_format):
+            body['ResponseFormat'] = request.response_format
         if not DaraCore.is_null(request.session_id):
             body['SessionId'] = request.session_id
         if not DaraCore.is_null(request.word_number):
@@ -14746,6 +14764,8 @@ class Client(OpenApiClient):
             body['NodeNumber'] = request.node_number
         if not DaraCore.is_null(request.prompt):
             body['Prompt'] = request.prompt
+        if not DaraCore.is_null(request.response_format):
+            body['ResponseFormat'] = request.response_format
         if not DaraCore.is_null(request.session_id):
             body['SessionId'] = request.session_id
         if not DaraCore.is_null(request.word_number):
@@ -14799,6 +14819,8 @@ class Client(OpenApiClient):
             body['NodeNumber'] = request.node_number
         if not DaraCore.is_null(request.prompt):
             body['Prompt'] = request.prompt
+        if not DaraCore.is_null(request.response_format):
+            body['ResponseFormat'] = request.response_format
         if not DaraCore.is_null(request.session_id):
             body['SessionId'] = request.session_id
         if not DaraCore.is_null(request.word_number):
@@ -14843,6 +14865,8 @@ class Client(OpenApiClient):
             body['NodeNumber'] = request.node_number
         if not DaraCore.is_null(request.prompt):
             body['Prompt'] = request.prompt
+        if not DaraCore.is_null(request.response_format):
+            body['ResponseFormat'] = request.response_format
         if not DaraCore.is_null(request.session_id):
             body['SessionId'] = request.session_id
         if not DaraCore.is_null(request.word_number):

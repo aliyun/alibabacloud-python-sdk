@@ -12,6 +12,7 @@ class RunDocBrainmapRequest(DaraModel):
         model_name: str = None,
         node_number: int = None,
         prompt: str = None,
+        response_format: int = None,
         session_id: str = None,
         word_number: int = None,
         workspace_id: str = None,
@@ -23,10 +24,10 @@ class RunDocBrainmapRequest(DaraModel):
         self.model_name = model_name
         self.node_number = node_number
         self.prompt = prompt
+        self.response_format = response_format
         # This parameter is required.
         self.session_id = session_id
         self.word_number = word_number
-        # This parameter is required.
         self.workspace_id = workspace_id
         self.reference_content = reference_content
 
@@ -52,6 +53,9 @@ class RunDocBrainmapRequest(DaraModel):
 
         if self.prompt is not None:
             result['Prompt'] = self.prompt
+
+        if self.response_format is not None:
+            result['ResponseFormat'] = self.response_format
 
         if self.session_id is not None:
             result['SessionId'] = self.session_id
@@ -83,6 +87,9 @@ class RunDocBrainmapRequest(DaraModel):
 
         if m.get('Prompt') is not None:
             self.prompt = m.get('Prompt')
+
+        if m.get('ResponseFormat') is not None:
+            self.response_format = m.get('ResponseFormat')
 
         if m.get('SessionId') is not None:
             self.session_id = m.get('SessionId')

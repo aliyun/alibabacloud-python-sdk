@@ -11,6 +11,7 @@ class RunBookBrainmapRequest(DaraModel):
         doc_id: str = None,
         node_number: int = None,
         prompt: str = None,
+        response_format: int = None,
         session_id: str = None,
         word_number: int = None,
         workspace_id: str = None,
@@ -20,6 +21,7 @@ class RunBookBrainmapRequest(DaraModel):
         self.doc_id = doc_id
         self.node_number = node_number
         self.prompt = prompt
+        self.response_format = response_format
         # This parameter is required.
         self.session_id = session_id
         self.word_number = word_number
@@ -46,6 +48,9 @@ class RunBookBrainmapRequest(DaraModel):
         if self.prompt is not None:
             result['Prompt'] = self.prompt
 
+        if self.response_format is not None:
+            result['ResponseFormat'] = self.response_format
+
         if self.session_id is not None:
             result['SessionId'] = self.session_id
 
@@ -70,6 +75,9 @@ class RunBookBrainmapRequest(DaraModel):
 
         if m.get('Prompt') is not None:
             self.prompt = m.get('Prompt')
+
+        if m.get('ResponseFormat') is not None:
+            self.response_format = m.get('ResponseFormat')
 
         if m.get('SessionId') is not None:
             self.session_id = m.get('SessionId')

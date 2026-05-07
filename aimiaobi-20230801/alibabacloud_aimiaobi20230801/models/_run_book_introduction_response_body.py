@@ -193,20 +193,30 @@ class RunBookIntroductionResponseBodyPayloadOutput(DaraModel):
 class RunBookIntroductionResponseBodyPayloadOutputIntroductions(DaraModel):
     def __init__(
         self,
+        blocks: List[main_models.RunBookIntroductionResponseBodyPayloadOutputIntroductionsBlocks] = None,
         summary: str = None,
         title: str = None,
     ):
+        self.blocks = blocks
         self.summary = summary
         self.title = title
 
     def validate(self):
-        pass
+        if self.blocks:
+            for v1 in self.blocks:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
         _map = super().to_map()
         if _map is not None:
             result = _map
+        result['Blocks'] = []
+        if self.blocks is not None:
+            for k1 in self.blocks:
+                result['Blocks'].append(k1.to_map() if k1 else None)
+
         if self.summary is not None:
             result['Summary'] = self.summary
 
@@ -217,11 +227,92 @@ class RunBookIntroductionResponseBodyPayloadOutputIntroductions(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.blocks = []
+        if m.get('Blocks') is not None:
+            for k1 in m.get('Blocks'):
+                temp_model = main_models.RunBookIntroductionResponseBodyPayloadOutputIntroductionsBlocks()
+                self.blocks.append(temp_model.from_map(k1))
+
         if m.get('Summary') is not None:
             self.summary = m.get('Summary')
 
         if m.get('Title') is not None:
             self.title = m.get('Title')
+
+        return self
+
+class RunBookIntroductionResponseBodyPayloadOutputIntroductionsBlocks(DaraModel):
+    def __init__(
+        self,
+        begin_time: int = None,
+        end_time: int = None,
+        height: int = None,
+        page_id: int = None,
+        width: int = None,
+        x: int = None,
+        y: int = None,
+    ):
+        self.begin_time = begin_time
+        self.end_time = end_time
+        self.height = height
+        self.page_id = page_id
+        self.width = width
+        self.x = x
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.begin_time is not None:
+            result['BeginTime'] = self.begin_time
+
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+
+        if self.height is not None:
+            result['Height'] = self.height
+
+        if self.page_id is not None:
+            result['PageId'] = self.page_id
+
+        if self.width is not None:
+            result['Width'] = self.width
+
+        if self.x is not None:
+            result['X'] = self.x
+
+        if self.y is not None:
+            result['Y'] = self.y
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BeginTime') is not None:
+            self.begin_time = m.get('BeginTime')
+
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+
+        if m.get('PageId') is not None:
+            self.page_id = m.get('PageId')
+
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+
+        if m.get('X') is not None:
+            self.x = m.get('X')
+
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
 
         return self
 
