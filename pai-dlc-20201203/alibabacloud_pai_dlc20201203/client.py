@@ -258,6 +258,102 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_job_with_options_async(request, headers, runtime)
 
+    def create_job_template_with_options(
+        self,
+        request: main_models.CreateJobTemplateRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateJobTemplateResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.constraints):
+            body['Constraints'] = request.constraints
+        if not DaraCore.is_null(request.content):
+            body['Content'] = request.content
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.metadata):
+            body['Metadata'] = request.metadata
+        if not DaraCore.is_null(request.template_name):
+            body['TemplateName'] = request.template_name
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateJobTemplate',
+            version = '2020-12-03',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/jobtemplates',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateJobTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_job_template_with_options_async(
+        self,
+        request: main_models.CreateJobTemplateRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateJobTemplateResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.constraints):
+            body['Constraints'] = request.constraints
+        if not DaraCore.is_null(request.content):
+            body['Content'] = request.content
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.metadata):
+            body['Metadata'] = request.metadata
+        if not DaraCore.is_null(request.template_name):
+            body['TemplateName'] = request.template_name
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateJobTemplate',
+            version = '2020-12-03',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/jobtemplates',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateJobTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_job_template(
+        self,
+        request: main_models.CreateJobTemplateRequest,
+    ) -> main_models.CreateJobTemplateResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_job_template_with_options(request, headers, runtime)
+
+    async def create_job_template_async(
+        self,
+        request: main_models.CreateJobTemplateRequest,
+    ) -> main_models.CreateJobTemplateResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_job_template_with_options_async(request, headers, runtime)
+
     def create_tensorboard_with_options(
         self,
         request: main_models.CreateTensorboardRequest,
@@ -481,6 +577,78 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.delete_job_with_options_async(job_id, request, headers, runtime)
+
+    def delete_job_template_with_options(
+        self,
+        template_id: str,
+        request: main_models.DeleteJobTemplateRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteJobTemplateResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteJobTemplate',
+            version = '2020-12-03',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/jobtemplates/{DaraURL.percent_encode(template_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteJobTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_job_template_with_options_async(
+        self,
+        template_id: str,
+        request: main_models.DeleteJobTemplateRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteJobTemplateResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteJobTemplate',
+            version = '2020-12-03',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/jobtemplates/{DaraURL.percent_encode(template_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteJobTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_job_template(
+        self,
+        template_id: str,
+        request: main_models.DeleteJobTemplateRequest,
+    ) -> main_models.DeleteJobTemplateResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_job_template_with_options(template_id, request, headers, runtime)
+
+    async def delete_job_template_async(
+        self,
+        template_id: str,
+        request: main_models.DeleteJobTemplateRequest,
+    ) -> main_models.DeleteJobTemplateResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_job_template_with_options_async(template_id, request, headers, runtime)
 
     def delete_tensorboard_with_options(
         self,
@@ -997,6 +1165,86 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.get_job_sanity_check_result_with_options_async(job_id, request, headers, runtime)
+
+    def get_job_template_with_options(
+        self,
+        template_id: str,
+        request: main_models.GetJobTemplateRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetJobTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.version):
+            query['Version'] = request.version
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetJobTemplate',
+            version = '2020-12-03',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/jobtemplates/{DaraURL.percent_encode(template_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetJobTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_job_template_with_options_async(
+        self,
+        template_id: str,
+        request: main_models.GetJobTemplateRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetJobTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.version):
+            query['Version'] = request.version
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetJobTemplate',
+            version = '2020-12-03',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/jobtemplates/{DaraURL.percent_encode(template_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetJobTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_job_template(
+        self,
+        template_id: str,
+        request: main_models.GetJobTemplateRequest,
+    ) -> main_models.GetJobTemplateResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_job_template_with_options(template_id, request, headers, runtime)
+
+    async def get_job_template_async(
+        self,
+        template_id: str,
+        request: main_models.GetJobTemplateRequest,
+    ) -> main_models.GetJobTemplateResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_job_template_with_options_async(template_id, request, headers, runtime)
 
     def get_pod_events_with_options(
         self,
@@ -1798,6 +2046,110 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_job_sanity_check_results_with_options_async(job_id, request, headers, runtime)
 
+    def list_job_templates_with_options(
+        self,
+        request: main_models.ListJobTemplatesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListJobTemplatesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.order):
+            query['Order'] = request.order
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not DaraCore.is_null(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not DaraCore.is_null(request.template_name):
+            query['TemplateName'] = request.template_name
+        if not DaraCore.is_null(request.user_id):
+            query['UserId'] = request.user_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListJobTemplates',
+            version = '2020-12-03',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/jobtemplates',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListJobTemplatesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_job_templates_with_options_async(
+        self,
+        request: main_models.ListJobTemplatesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListJobTemplatesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.order):
+            query['Order'] = request.order
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not DaraCore.is_null(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not DaraCore.is_null(request.template_name):
+            query['TemplateName'] = request.template_name
+        if not DaraCore.is_null(request.user_id):
+            query['UserId'] = request.user_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListJobTemplates',
+            version = '2020-12-03',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/jobtemplates',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListJobTemplatesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_job_templates(
+        self,
+        request: main_models.ListJobTemplatesRequest,
+    ) -> main_models.ListJobTemplatesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_job_templates_with_options(request, headers, runtime)
+
+    async def list_job_templates_async(
+        self,
+        request: main_models.ListJobTemplatesRequest,
+    ) -> main_models.ListJobTemplatesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_job_templates_with_options_async(request, headers, runtime)
+
     def list_jobs_with_options(
         self,
         tmp_req: main_models.ListJobsRequest,
@@ -2174,6 +2526,86 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_tensorboards_with_options_async(request, headers, runtime)
 
+    def set_job_template_default_version_with_options(
+        self,
+        template_id: str,
+        request: main_models.SetJobTemplateDefaultVersionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.SetJobTemplateDefaultVersionResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.version):
+            body['Version'] = request.version
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SetJobTemplateDefaultVersion',
+            version = '2020-12-03',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/jobtemplates/{DaraURL.percent_encode(template_id)}/defaultversion',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SetJobTemplateDefaultVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def set_job_template_default_version_with_options_async(
+        self,
+        template_id: str,
+        request: main_models.SetJobTemplateDefaultVersionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.SetJobTemplateDefaultVersionResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.version):
+            body['Version'] = request.version
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SetJobTemplateDefaultVersion',
+            version = '2020-12-03',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/jobtemplates/{DaraURL.percent_encode(template_id)}/defaultversion',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SetJobTemplateDefaultVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def set_job_template_default_version(
+        self,
+        template_id: str,
+        request: main_models.SetJobTemplateDefaultVersionRequest,
+    ) -> main_models.SetJobTemplateDefaultVersionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.set_job_template_default_version_with_options(template_id, request, headers, runtime)
+
+    async def set_job_template_default_version_async(
+        self,
+        template_id: str,
+        request: main_models.SetJobTemplateDefaultVersionRequest,
+    ) -> main_models.SetJobTemplateDefaultVersionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.set_job_template_default_version_with_options_async(template_id, request, headers, runtime)
+
     def start_tensorboard_with_options(
         self,
         tensorboard_id: str,
@@ -2497,6 +2929,110 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.update_job_with_options_async(job_id, request, headers, runtime)
+
+    def update_job_template_with_options(
+        self,
+        template_id: str,
+        request: main_models.UpdateJobTemplateRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateJobTemplateResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.constraints):
+            body['Constraints'] = request.constraints
+        if not DaraCore.is_null(request.content):
+            body['Content'] = request.content
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.metadata):
+            body['Metadata'] = request.metadata
+        if not DaraCore.is_null(request.set_as_default):
+            body['SetAsDefault'] = request.set_as_default
+        if not DaraCore.is_null(request.template_name):
+            body['TemplateName'] = request.template_name
+        if not DaraCore.is_null(request.version):
+            body['version'] = request.version
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateJobTemplate',
+            version = '2020-12-03',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/jobtemplates/{DaraURL.percent_encode(template_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateJobTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_job_template_with_options_async(
+        self,
+        template_id: str,
+        request: main_models.UpdateJobTemplateRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateJobTemplateResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.constraints):
+            body['Constraints'] = request.constraints
+        if not DaraCore.is_null(request.content):
+            body['Content'] = request.content
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.metadata):
+            body['Metadata'] = request.metadata
+        if not DaraCore.is_null(request.set_as_default):
+            body['SetAsDefault'] = request.set_as_default
+        if not DaraCore.is_null(request.template_name):
+            body['TemplateName'] = request.template_name
+        if not DaraCore.is_null(request.version):
+            body['version'] = request.version
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateJobTemplate',
+            version = '2020-12-03',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/jobtemplates/{DaraURL.percent_encode(template_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateJobTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_job_template(
+        self,
+        template_id: str,
+        request: main_models.UpdateJobTemplateRequest,
+    ) -> main_models.UpdateJobTemplateResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_job_template_with_options(template_id, request, headers, runtime)
+
+    async def update_job_template_async(
+        self,
+        template_id: str,
+        request: main_models.UpdateJobTemplateRequest,
+    ) -> main_models.UpdateJobTemplateResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_job_template_with_options_async(template_id, request, headers, runtime)
 
     def update_tensorboard_with_options(
         self,

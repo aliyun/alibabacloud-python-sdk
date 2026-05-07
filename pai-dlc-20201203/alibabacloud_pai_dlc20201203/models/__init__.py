@@ -73,12 +73,18 @@ from ._workspace import Workspace
 from ._create_job_request import CreateJobRequest
 from ._create_job_response_body import CreateJobResponseBody
 from ._create_job_response import CreateJobResponse
+from ._create_job_template_request import CreateJobTemplateRequest
+from ._create_job_template_response_body import CreateJobTemplateResponseBody
+from ._create_job_template_response import CreateJobTemplateResponse
 from ._create_tensorboard_request import CreateTensorboardRequest
 from ._create_tensorboard_response_body import CreateTensorboardResponseBody
 from ._create_tensorboard_response import CreateTensorboardResponse
 from ._delete_job_request import DeleteJobRequest
 from ._delete_job_response_body import DeleteJobResponseBody
 from ._delete_job_response import DeleteJobResponse
+from ._delete_job_template_request import DeleteJobTemplateRequest
+from ._delete_job_template_response_body import DeleteJobTemplateResponseBody
+from ._delete_job_template_response import DeleteJobTemplateResponse
 from ._delete_tensorboard_request import DeleteTensorboardRequest
 from ._delete_tensorboard_response_body import DeleteTensorboardResponseBody
 from ._delete_tensorboard_response import DeleteTensorboardResponse
@@ -97,6 +103,9 @@ from ._get_job_metrics_response import GetJobMetricsResponse
 from ._get_job_sanity_check_result_request import GetJobSanityCheckResultRequest
 from ._get_job_sanity_check_result_response_body import GetJobSanityCheckResultResponseBody
 from ._get_job_sanity_check_result_response import GetJobSanityCheckResultResponse
+from ._get_job_template_request import GetJobTemplateRequest
+from ._get_job_template_response_body import GetJobTemplateResponseBody
+from ._get_job_template_response import GetJobTemplateResponse
 from ._get_pod_events_request import GetPodEventsRequest
 from ._get_pod_events_response_body import GetPodEventsResponseBody
 from ._get_pod_events_response import GetPodEventsResponse
@@ -123,6 +132,9 @@ from ._list_ecs_specs_response import ListEcsSpecsResponse
 from ._list_job_sanity_check_results_request import ListJobSanityCheckResultsRequest
 from ._list_job_sanity_check_results_response_body import ListJobSanityCheckResultsResponseBody
 from ._list_job_sanity_check_results_response import ListJobSanityCheckResultsResponse
+from ._list_job_templates_request import ListJobTemplatesRequest
+from ._list_job_templates_response_body import ListJobTemplatesResponseBody
+from ._list_job_templates_response import ListJobTemplatesResponse
 from ._list_jobs_request import ListJobsRequest
 from ._list_jobs_shrink_request import ListJobsShrinkRequest
 from ._list_jobs_response_body import ListJobsResponseBody
@@ -130,6 +142,9 @@ from ._list_jobs_response import ListJobsResponse
 from ._list_tensorboards_request import ListTensorboardsRequest
 from ._list_tensorboards_response_body import ListTensorboardsResponseBody
 from ._list_tensorboards_response import ListTensorboardsResponse
+from ._set_job_template_default_version_request import SetJobTemplateDefaultVersionRequest
+from ._set_job_template_default_version_response_body import SetJobTemplateDefaultVersionResponseBody
+from ._set_job_template_default_version_response import SetJobTemplateDefaultVersionResponse
 from ._start_tensorboard_request import StartTensorboardRequest
 from ._start_tensorboard_response_body import StartTensorboardResponseBody
 from ._start_tensorboard_response import StartTensorboardResponse
@@ -142,6 +157,9 @@ from ._stop_tensorboard_response import StopTensorboardResponse
 from ._update_job_request import UpdateJobRequest
 from ._update_job_response_body import UpdateJobResponseBody
 from ._update_job_response import UpdateJobResponse
+from ._update_job_template_request import UpdateJobTemplateRequest
+from ._update_job_template_response_body import UpdateJobTemplateResponseBody
+from ._update_job_template_response import UpdateJobTemplateResponse
 from ._update_tensorboard_request import UpdateTensorboardRequest
 from ._update_tensorboard_response_body import UpdateTensorboardResponseBody
 from ._update_tensorboard_response import UpdateTensorboardResponse
@@ -164,6 +182,8 @@ from ._get_job_response_body import GetJobResponseBodyPods
 from ._get_job_response_body import GetJobResponseBodyRestartRecordDetailErrorInfoList
 from ._get_job_response_body import GetJobResponseBodyRestartRecord
 from ._get_job_response_body import GetJobResponseBodyUserVpc
+from ._get_job_template_response_body import GetJobTemplateResponseBodyVersions
+from ._list_job_templates_response_body import ListJobTemplatesResponseBodyJobTemplates
 
 __all__ = [
     AIMasterMessage,
@@ -237,12 +257,18 @@ __all__ = [
     CreateJobRequest,
     CreateJobResponseBody,
     CreateJobResponse,
+    CreateJobTemplateRequest,
+    CreateJobTemplateResponseBody,
+    CreateJobTemplateResponse,
     CreateTensorboardRequest,
     CreateTensorboardResponseBody,
     CreateTensorboardResponse,
     DeleteJobRequest,
     DeleteJobResponseBody,
     DeleteJobResponse,
+    DeleteJobTemplateRequest,
+    DeleteJobTemplateResponseBody,
+    DeleteJobTemplateResponse,
     DeleteTensorboardRequest,
     DeleteTensorboardResponseBody,
     DeleteTensorboardResponse,
@@ -261,6 +287,9 @@ __all__ = [
     GetJobSanityCheckResultRequest,
     GetJobSanityCheckResultResponseBody,
     GetJobSanityCheckResultResponse,
+    GetJobTemplateRequest,
+    GetJobTemplateResponseBody,
+    GetJobTemplateResponse,
     GetPodEventsRequest,
     GetPodEventsResponseBody,
     GetPodEventsResponse,
@@ -287,6 +316,9 @@ __all__ = [
     ListJobSanityCheckResultsRequest,
     ListJobSanityCheckResultsResponseBody,
     ListJobSanityCheckResultsResponse,
+    ListJobTemplatesRequest,
+    ListJobTemplatesResponseBody,
+    ListJobTemplatesResponse,
     ListJobsRequest,
     ListJobsShrinkRequest,
     ListJobsResponseBody,
@@ -294,6 +326,9 @@ __all__ = [
     ListTensorboardsRequest,
     ListTensorboardsResponseBody,
     ListTensorboardsResponse,
+    SetJobTemplateDefaultVersionRequest,
+    SetJobTemplateDefaultVersionResponseBody,
+    SetJobTemplateDefaultVersionResponse,
     StartTensorboardRequest,
     StartTensorboardResponseBody,
     StartTensorboardResponse,
@@ -306,6 +341,9 @@ __all__ = [
     UpdateJobRequest,
     UpdateJobResponseBody,
     UpdateJobResponse,
+    UpdateJobTemplateRequest,
+    UpdateJobTemplateResponseBody,
+    UpdateJobTemplateResponse,
     UpdateTensorboardRequest,
     UpdateTensorboardResponseBody,
     UpdateTensorboardResponse,
@@ -327,5 +365,7 @@ __all__ = [
     GetJobResponseBodyPods,
     GetJobResponseBodyRestartRecordDetailErrorInfoList,
     GetJobResponseBodyRestartRecord,
-    GetJobResponseBodyUserVpc
+    GetJobResponseBodyUserVpc,
+    GetJobTemplateResponseBodyVersions,
+    ListJobTemplatesResponseBodyJobTemplates
 ]

@@ -1,3 +1,12 @@
+2026-05-07 Version: 1.7.0
+- Support API CreateJobTemplate.
+- Support API DeleteJobTemplate.
+- Support API GetJobTemplate.
+- Support API ListJobTemplates.
+- Support API SetJobTemplateDefaultVersion.
+- Support API UpdateJobTemplate.
+
+
 2026-04-28 Version: 1.6.14
 - Generated python 2020-12-03 for pai-dlc.
 
