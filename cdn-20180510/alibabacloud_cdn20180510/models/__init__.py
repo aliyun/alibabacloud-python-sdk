@@ -417,6 +417,9 @@ from ._disable_realtime_log_delivery_response import DisableRealtimeLogDeliveryR
 from ._enable_realtime_log_delivery_request import EnableRealtimeLogDeliveryRequest
 from ._enable_realtime_log_delivery_response_body import EnableRealtimeLogDeliveryResponseBody
 from ._enable_realtime_log_delivery_response import EnableRealtimeLogDeliveryResponse
+from ._generate_cdn_diagnose_request import GenerateCdnDiagnoseRequest
+from ._generate_cdn_diagnose_response_body import GenerateCdnDiagnoseResponseBody
+from ._generate_cdn_diagnose_response import GenerateCdnDiagnoseResponse
 from ._get_gray_domain_function_request import GetGrayDomainFunctionRequest
 from ._get_gray_domain_function_response_body import GetGrayDomainFunctionResponseBody
 from ._get_gray_domain_function_response import GetGrayDomainFunctionResponse
@@ -1198,6 +1201,9 @@ __all__ = [
     EnableRealtimeLogDeliveryRequest,
     EnableRealtimeLogDeliveryResponseBody,
     EnableRealtimeLogDeliveryResponse,
+    GenerateCdnDiagnoseRequest,
+    GenerateCdnDiagnoseResponseBody,
+    GenerateCdnDiagnoseResponse,
     GetGrayDomainFunctionRequest,
     GetGrayDomainFunctionResponseBody,
     GetGrayDomainFunctionResponse,

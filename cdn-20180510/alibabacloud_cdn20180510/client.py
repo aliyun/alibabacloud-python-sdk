@@ -10969,6 +10969,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.enable_realtime_log_delivery_with_options_async(request, runtime)
 
+    def generate_cdn_diagnose_with_options(
+        self,
+        request: main_models.GenerateCdnDiagnoseRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GenerateCdnDiagnoseResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.url):
+            query['Url'] = request.url
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GenerateCdnDiagnose',
+            version = '2018-05-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GenerateCdnDiagnoseResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def generate_cdn_diagnose_with_options_async(
+        self,
+        request: main_models.GenerateCdnDiagnoseRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GenerateCdnDiagnoseResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.url):
+            query['Url'] = request.url
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GenerateCdnDiagnose',
+            version = '2018-05-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GenerateCdnDiagnoseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def generate_cdn_diagnose(
+        self,
+        request: main_models.GenerateCdnDiagnoseRequest,
+    ) -> main_models.GenerateCdnDiagnoseResponse:
+        runtime = RuntimeOptions()
+        return self.generate_cdn_diagnose_with_options(request, runtime)
+
+    async def generate_cdn_diagnose_async(
+        self,
+        request: main_models.GenerateCdnDiagnoseRequest,
+    ) -> main_models.GenerateCdnDiagnoseResponse:
+        runtime = RuntimeOptions()
+        return await self.generate_cdn_diagnose_with_options_async(request, runtime)
+
     def get_gray_domain_function_with_options(
         self,
         request: main_models.GetGrayDomainFunctionRequest,

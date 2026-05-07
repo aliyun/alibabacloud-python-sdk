@@ -1,3 +1,7 @@
+2026-05-07 Version: 9.1.0
+- Support API GenerateCdnDiagnose.
+
+
 2026-03-24 Version: 9.0.0
 - Update API DescribeDomainVerifyData: update response parameters Body.Content' type has changed.
 
