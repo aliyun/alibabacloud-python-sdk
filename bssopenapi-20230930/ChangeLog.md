@@ -1,3 +1,8 @@
+2026-05-07 Version: 1.6.5
+- Update API DescribeCoupon: add request parameters IncludeShare.
+- Update API DescribeCoupon: add request parameters ProductCode.
+
+
 2026-03-30 Version: 1.6.4
 - Update API DescribeCoupon: add request parameters CouponTemplateIdList.
 

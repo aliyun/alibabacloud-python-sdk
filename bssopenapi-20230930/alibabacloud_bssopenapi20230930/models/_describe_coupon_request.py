@@ -20,10 +20,12 @@ class DescribeCouponRequest(DaraModel):
         effective_start_time: int = None,
         expire_end_date: int = None,
         expire_start_date: int = None,
+        include_share: bool = None,
         max_results: int = None,
         nbid: str = None,
         next_token: str = None,
         page_size: int = None,
+        product_code: str = None,
         status: str = None,
     ):
         self.coupon_id = coupon_id
@@ -37,11 +39,13 @@ class DescribeCouponRequest(DaraModel):
         self.effective_start_time = effective_start_time
         self.expire_end_date = expire_end_date
         self.expire_start_date = expire_start_date
+        self.include_share = include_share
         self.max_results = max_results
         self.nbid = nbid
         self.next_token = next_token
         # This parameter is required.
         self.page_size = page_size
+        self.product_code = product_code
         self.status = status
 
     def validate(self):
@@ -87,6 +91,9 @@ class DescribeCouponRequest(DaraModel):
         if self.expire_start_date is not None:
             result['ExpireStartDate'] = self.expire_start_date
 
+        if self.include_share is not None:
+            result['IncludeShare'] = self.include_share
+
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
 
@@ -98,6 +105,9 @@ class DescribeCouponRequest(DaraModel):
 
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+
+        if self.product_code is not None:
+            result['ProductCode'] = self.product_code
 
         if self.status is not None:
             result['Status'] = self.status
@@ -139,6 +149,9 @@ class DescribeCouponRequest(DaraModel):
         if m.get('ExpireStartDate') is not None:
             self.expire_start_date = m.get('ExpireStartDate')
 
+        if m.get('IncludeShare') is not None:
+            self.include_share = m.get('IncludeShare')
+
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')
 
@@ -150,6 +163,9 @@ class DescribeCouponRequest(DaraModel):
 
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+
+        if m.get('ProductCode') is not None:
+            self.product_code = m.get('ProductCode')
 
         if m.get('Status') is not None:
             self.status = m.get('Status')

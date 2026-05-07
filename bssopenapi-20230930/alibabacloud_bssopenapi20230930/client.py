@@ -1413,6 +1413,8 @@ class Client(OpenApiClient):
             query['ExpireEndDate'] = request.expire_end_date
         if not DaraCore.is_null(request.expire_start_date):
             query['ExpireStartDate'] = request.expire_start_date
+        if not DaraCore.is_null(request.include_share):
+            query['IncludeShare'] = request.include_share
         if not DaraCore.is_null(request.max_results):
             query['MaxResults'] = request.max_results
         if not DaraCore.is_null(request.nbid):
@@ -1421,6 +1423,8 @@ class Client(OpenApiClient):
             query['NextToken'] = request.next_token
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.product_code):
+            query['ProductCode'] = request.product_code
         if not DaraCore.is_null(request.status):
             query['Status'] = request.status
         req = open_api_util_models.OpenApiRequest(
@@ -1475,6 +1479,8 @@ class Client(OpenApiClient):
             query['ExpireEndDate'] = request.expire_end_date
         if not DaraCore.is_null(request.expire_start_date):
             query['ExpireStartDate'] = request.expire_start_date
+        if not DaraCore.is_null(request.include_share):
+            query['IncludeShare'] = request.include_share
         if not DaraCore.is_null(request.max_results):
             query['MaxResults'] = request.max_results
         if not DaraCore.is_null(request.nbid):
@@ -1483,6 +1489,8 @@ class Client(OpenApiClient):
             query['NextToken'] = request.next_token
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.product_code):
+            query['ProductCode'] = request.product_code
         if not DaraCore.is_null(request.status):
             query['Status'] = request.status
         req = open_api_util_models.OpenApiRequest(
