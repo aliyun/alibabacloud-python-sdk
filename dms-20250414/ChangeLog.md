@@ -1,3 +1,12 @@
+2026-05-07 Version: 1.10.7
+- Update API CreateDataAgentWorkspace: add request parameters IsSessionShareEnabled.
+- Update API CreateDataAgentWorkspace: add response parameters Body.Data.IsSessionShareEnabled.
+- Update API GetDataAgentWorkspaceInfo: add response parameters Body.Data.IsSessionShareEnabled.
+- Update API ListDataAgentWorkspace: add response parameters Body.Data.Content.$.IsSessionShareEnabled.
+- Update API UpdateDataAgentSpaceInfo: add request parameters IsSessionShareEnabled.
+- Update API UpdateDataAgentSpaceInfo: add response parameters Body.Data.IsSessionShareEnabled.
+
+
 2026-04-28 Version: 1.10.6
 - Update API ListDataCenterDatabase: add response parameters Body.Data.$.DownloadLink.
 - Update API ListDataCenterDatabase: add response parameters Body.Data.$.IntranetDownloadLink.

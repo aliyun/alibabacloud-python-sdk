@@ -871,6 +871,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.dmsunit):
             query['DMSUnit'] = request.dmsunit
+        if not DaraCore.is_null(request.is_session_share_enabled):
+            query['IsSessionShareEnabled'] = request.is_session_share_enabled
         if not DaraCore.is_null(request.workspace_desc):
             query['WorkspaceDesc'] = request.workspace_desc
         if not DaraCore.is_null(request.workspace_name):
@@ -903,6 +905,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.dmsunit):
             query['DMSUnit'] = request.dmsunit
+        if not DaraCore.is_null(request.is_session_share_enabled):
+            query['IsSessionShareEnabled'] = request.is_session_share_enabled
         if not DaraCore.is_null(request.workspace_desc):
             query['WorkspaceDesc'] = request.workspace_desc
         if not DaraCore.is_null(request.workspace_name):
@@ -5583,6 +5587,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.dmsunit):
             query['DMSUnit'] = request.dmsunit
+        if not DaraCore.is_null(request.is_session_share_enabled):
+            query['IsSessionShareEnabled'] = request.is_session_share_enabled
         if not DaraCore.is_null(request.workspace_desc):
             query['WorkspaceDesc'] = request.workspace_desc
         if not DaraCore.is_null(request.workspace_id):
@@ -5617,6 +5623,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.dmsunit):
             query['DMSUnit'] = request.dmsunit
+        if not DaraCore.is_null(request.is_session_share_enabled):
+            query['IsSessionShareEnabled'] = request.is_session_share_enabled
         if not DaraCore.is_null(request.workspace_desc):
             query['WorkspaceDesc'] = request.workspace_desc
         if not DaraCore.is_null(request.workspace_id):

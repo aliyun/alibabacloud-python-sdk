@@ -71,6 +71,7 @@ class GetDataAgentWorkspaceInfoResponseBodyData(DaraModel):
         self,
         create_time: str = None,
         creator: str = None,
+        is_session_share_enabled: bool = None,
         modify_time: str = None,
         role_name: str = None,
         total_member: str = None,
@@ -81,6 +82,7 @@ class GetDataAgentWorkspaceInfoResponseBodyData(DaraModel):
     ):
         self.create_time = create_time
         self.creator = creator
+        self.is_session_share_enabled = is_session_share_enabled
         self.modify_time = modify_time
         self.role_name = role_name
         self.total_member = total_member
@@ -102,6 +104,9 @@ class GetDataAgentWorkspaceInfoResponseBodyData(DaraModel):
 
         if self.creator is not None:
             result['Creator'] = self.creator
+
+        if self.is_session_share_enabled is not None:
+            result['IsSessionShareEnabled'] = self.is_session_share_enabled
 
         if self.modify_time is not None:
             result['ModifyTime'] = self.modify_time
@@ -133,6 +138,9 @@ class GetDataAgentWorkspaceInfoResponseBodyData(DaraModel):
 
         if m.get('Creator') is not None:
             self.creator = m.get('Creator')
+
+        if m.get('IsSessionShareEnabled') is not None:
+            self.is_session_share_enabled = m.get('IsSessionShareEnabled')
 
         if m.get('ModifyTime') is not None:
             self.modify_time = m.get('ModifyTime')

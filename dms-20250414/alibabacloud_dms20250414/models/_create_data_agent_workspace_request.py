@@ -8,10 +8,12 @@ class CreateDataAgentWorkspaceRequest(DaraModel):
     def __init__(
         self,
         dmsunit: str = None,
+        is_session_share_enabled: bool = None,
         workspace_desc: str = None,
         workspace_name: str = None,
     ):
         self.dmsunit = dmsunit
+        self.is_session_share_enabled = is_session_share_enabled
         self.workspace_desc = workspace_desc
         self.workspace_name = workspace_name
 
@@ -26,6 +28,9 @@ class CreateDataAgentWorkspaceRequest(DaraModel):
         if self.dmsunit is not None:
             result['DMSUnit'] = self.dmsunit
 
+        if self.is_session_share_enabled is not None:
+            result['IsSessionShareEnabled'] = self.is_session_share_enabled
+
         if self.workspace_desc is not None:
             result['WorkspaceDesc'] = self.workspace_desc
 
@@ -38,6 +43,9 @@ class CreateDataAgentWorkspaceRequest(DaraModel):
         m = m or dict()
         if m.get('DMSUnit') is not None:
             self.dmsunit = m.get('DMSUnit')
+
+        if m.get('IsSessionShareEnabled') is not None:
+            self.is_session_share_enabled = m.get('IsSessionShareEnabled')
 
         if m.get('WorkspaceDesc') is not None:
             self.workspace_desc = m.get('WorkspaceDesc')

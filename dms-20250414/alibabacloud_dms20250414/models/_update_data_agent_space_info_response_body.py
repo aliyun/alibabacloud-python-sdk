@@ -72,6 +72,7 @@ class UpdateDataAgentSpaceInfoResponseBodyData(DaraModel):
         create_time: str = None,
         creator: str = None,
         description: str = None,
+        is_session_share_enabled: bool = None,
         modify_time: str = None,
         role_name: str = None,
         total_member: str = None,
@@ -82,6 +83,7 @@ class UpdateDataAgentSpaceInfoResponseBodyData(DaraModel):
         self.create_time = create_time
         self.creator = creator
         self.description = description
+        self.is_session_share_enabled = is_session_share_enabled
         self.modify_time = modify_time
         self.role_name = role_name
         self.total_member = total_member
@@ -105,6 +107,9 @@ class UpdateDataAgentSpaceInfoResponseBodyData(DaraModel):
 
         if self.description is not None:
             result['Description'] = self.description
+
+        if self.is_session_share_enabled is not None:
+            result['IsSessionShareEnabled'] = self.is_session_share_enabled
 
         if self.modify_time is not None:
             result['ModifyTime'] = self.modify_time
@@ -136,6 +141,9 @@ class UpdateDataAgentSpaceInfoResponseBodyData(DaraModel):
 
         if m.get('Description') is not None:
             self.description = m.get('Description')
+
+        if m.get('IsSessionShareEnabled') is not None:
+            self.is_session_share_enabled = m.get('IsSessionShareEnabled')
 
         if m.get('ModifyTime') is not None:
             self.modify_time = m.get('ModifyTime')
