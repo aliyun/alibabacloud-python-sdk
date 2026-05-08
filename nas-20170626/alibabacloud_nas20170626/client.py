@@ -8715,6 +8715,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.access_group_name):
             query['AccessGroupName'] = request.access_group_name
+        if not DaraCore.is_null(request.access_point_access_only):
+            query['AccessPointAccessOnly'] = request.access_point_access_only
         if not DaraCore.is_null(request.dual_stack_mount_target_domain):
             query['DualStackMountTargetDomain'] = request.dual_stack_mount_target_domain
         if not DaraCore.is_null(request.file_system_id):
@@ -8751,6 +8753,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.access_group_name):
             query['AccessGroupName'] = request.access_group_name
+        if not DaraCore.is_null(request.access_point_access_only):
+            query['AccessPointAccessOnly'] = request.access_point_access_only
         if not DaraCore.is_null(request.dual_stack_mount_target_domain):
             query['DualStackMountTargetDomain'] = request.dual_stack_mount_target_domain
         if not DaraCore.is_null(request.file_system_id):

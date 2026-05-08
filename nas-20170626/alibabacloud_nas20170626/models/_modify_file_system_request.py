@@ -70,6 +70,7 @@ class ModifyFileSystemRequestOptions(DaraModel):
         self,
         enable_abe: bool = None,
         enable_oplock: bool = None,
+        vsc_access_point_access_only: bool = None,
     ):
         self.enable_abe = enable_abe
         # Specifies whether to enable the oplock feature. Valid values:
@@ -79,6 +80,7 @@ class ModifyFileSystemRequestOptions(DaraModel):
         # 
         # >  Only Server Message Block (SMB) file systems support this feature.
         self.enable_oplock = enable_oplock
+        self.vsc_access_point_access_only = vsc_access_point_access_only
 
     def validate(self):
         pass
@@ -94,6 +96,9 @@ class ModifyFileSystemRequestOptions(DaraModel):
         if self.enable_oplock is not None:
             result['EnableOplock'] = self.enable_oplock
 
+        if self.vsc_access_point_access_only is not None:
+            result['VscAccessPointAccessOnly'] = self.vsc_access_point_access_only
+
         return result
 
     def from_map(self, m: dict = None):
@@ -103,6 +108,9 @@ class ModifyFileSystemRequestOptions(DaraModel):
 
         if m.get('EnableOplock') is not None:
             self.enable_oplock = m.get('EnableOplock')
+
+        if m.get('VscAccessPointAccessOnly') is not None:
+            self.vsc_access_point_access_only = m.get('VscAccessPointAccessOnly')
 
         return self
 

@@ -1,3 +1,10 @@
+2026-05-08 Version: 3.4.1
+- Update API DescribeFileSystems: add response parameters Body.FileSystems.$.Options.VscAccessPointAccessOnly.
+- Update API DescribeMountTargets: add response parameters Body.MountTargets.$.AccessPointAccessOnly.
+- Update API ModifyFileSystem: add request parameters Options.VscAccessPointAccessOnly.
+- Update API ModifyMountTarget: add request parameters AccessPointAccessOnly.
+
+
 2026-04-01 Version: 3.4.0
 - Support API DescribeLifecyclePolicyLogs.
 - Support API StartLifecyclePolicyExecution.

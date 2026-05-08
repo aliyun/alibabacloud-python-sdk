@@ -8,6 +8,7 @@ class ModifyMountTargetRequest(DaraModel):
     def __init__(
         self,
         access_group_name: str = None,
+        access_point_access_only: bool = None,
         dual_stack_mount_target_domain: str = None,
         file_system_id: str = None,
         mount_target_domain: str = None,
@@ -15,6 +16,7 @@ class ModifyMountTargetRequest(DaraModel):
     ):
         # The name of the permission group that is attached to the mount target.
         self.access_group_name = access_group_name
+        self.access_point_access_only = access_point_access_only
         # The dual-stack (IPv4 and IPv6) domain name of the mount target.
         # 
         # >  Only Extreme NAS file systems that reside in the Chinese mainland support IPv6.
@@ -49,6 +51,9 @@ class ModifyMountTargetRequest(DaraModel):
         if self.access_group_name is not None:
             result['AccessGroupName'] = self.access_group_name
 
+        if self.access_point_access_only is not None:
+            result['AccessPointAccessOnly'] = self.access_point_access_only
+
         if self.dual_stack_mount_target_domain is not None:
             result['DualStackMountTargetDomain'] = self.dual_stack_mount_target_domain
 
@@ -67,6 +72,9 @@ class ModifyMountTargetRequest(DaraModel):
         m = m or dict()
         if m.get('AccessGroupName') is not None:
             self.access_group_name = m.get('AccessGroupName')
+
+        if m.get('AccessPointAccessOnly') is not None:
+            self.access_point_access_only = m.get('AccessPointAccessOnly')
 
         if m.get('DualStackMountTargetDomain') is not None:
             self.dual_stack_mount_target_domain = m.get('DualStackMountTargetDomain')

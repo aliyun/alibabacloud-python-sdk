@@ -111,6 +111,7 @@ class DescribeMountTargetsResponseBodyMountTargetsMountTarget(DaraModel):
     def __init__(
         self,
         access_group: str = None,
+        access_point_access_only: bool = None,
         client_master_nodes: main_models.DescribeMountTargetsResponseBodyMountTargetsMountTargetClientMasterNodes = None,
         dual_stack_mount_target_domain: str = None,
         ipversion: str = None,
@@ -122,6 +123,7 @@ class DescribeMountTargetsResponseBodyMountTargetsMountTarget(DaraModel):
         vsw_id: str = None,
     ):
         self.access_group = access_group
+        self.access_point_access_only = access_point_access_only
         self.client_master_nodes = client_master_nodes
         self.dual_stack_mount_target_domain = dual_stack_mount_target_domain
         self.ipversion = ipversion
@@ -145,6 +147,9 @@ class DescribeMountTargetsResponseBodyMountTargetsMountTarget(DaraModel):
             result = _map
         if self.access_group is not None:
             result['AccessGroup'] = self.access_group
+
+        if self.access_point_access_only is not None:
+            result['AccessPointAccessOnly'] = self.access_point_access_only
 
         if self.client_master_nodes is not None:
             result['ClientMasterNodes'] = self.client_master_nodes.to_map()
@@ -179,6 +184,9 @@ class DescribeMountTargetsResponseBodyMountTargetsMountTarget(DaraModel):
         m = m or dict()
         if m.get('AccessGroup') is not None:
             self.access_group = m.get('AccessGroup')
+
+        if m.get('AccessPointAccessOnly') is not None:
+            self.access_point_access_only = m.get('AccessPointAccessOnly')
 
         if m.get('ClientMasterNodes') is not None:
             temp_model = main_models.DescribeMountTargetsResponseBodyMountTargetsMountTargetClientMasterNodes()
