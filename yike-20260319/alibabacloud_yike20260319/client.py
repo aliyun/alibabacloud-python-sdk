@@ -1909,6 +1909,8 @@ class Client(OpenApiClient):
             query['AspectRatio'] = request.aspect_ratio
         if not DaraCore.is_null(request.exec_mode):
             query['ExecMode'] = request.exec_mode
+        if not DaraCore.is_null(request.keep_origin_dialogue):
+            query['KeepOriginDialogue'] = request.keep_origin_dialogue
         if not DaraCore.is_null(request.model_params):
             query['ModelParams'] = request.model_params
         if not DaraCore.is_null(request.narration_voice_id):
@@ -1965,6 +1967,8 @@ class Client(OpenApiClient):
             query['AspectRatio'] = request.aspect_ratio
         if not DaraCore.is_null(request.exec_mode):
             query['ExecMode'] = request.exec_mode
+        if not DaraCore.is_null(request.keep_origin_dialogue):
+            query['KeepOriginDialogue'] = request.keep_origin_dialogue
         if not DaraCore.is_null(request.model_params):
             query['ModelParams'] = request.model_params
         if not DaraCore.is_null(request.narration_voice_id):

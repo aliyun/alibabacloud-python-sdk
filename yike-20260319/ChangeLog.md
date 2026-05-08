@@ -1,3 +1,7 @@
+2026-05-08 Version: 1.4.1
+- Update API SubmitYikeStoryboardJob: add request parameters KeepOriginDialogue.
+
+
 2026-05-08 Version: 1.4.0
 - Support API AddYikeProductionMembers.
 - Support API ListYikeWorkspaces.

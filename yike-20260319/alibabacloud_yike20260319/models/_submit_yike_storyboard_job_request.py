@@ -10,6 +10,7 @@ class SubmitYikeStoryboardJobRequest(DaraModel):
         aspect_ratio: str = None,
         exec_mode: str = None,
         file_url: str = None,
+        keep_origin_dialogue: bool = None,
         model_params: str = None,
         narration_voice_id: str = None,
         resolution: str = None,
@@ -25,6 +26,7 @@ class SubmitYikeStoryboardJobRequest(DaraModel):
         self.aspect_ratio = aspect_ratio
         self.exec_mode = exec_mode
         self.file_url = file_url
+        self.keep_origin_dialogue = keep_origin_dialogue
         self.model_params = model_params
         self.narration_voice_id = narration_voice_id
         self.resolution = resolution
@@ -53,6 +55,9 @@ class SubmitYikeStoryboardJobRequest(DaraModel):
 
         if self.file_url is not None:
             result['FileURL'] = self.file_url
+
+        if self.keep_origin_dialogue is not None:
+            result['KeepOriginDialogue'] = self.keep_origin_dialogue
 
         if self.model_params is not None:
             result['ModelParams'] = self.model_params
@@ -99,6 +104,9 @@ class SubmitYikeStoryboardJobRequest(DaraModel):
 
         if m.get('FileURL') is not None:
             self.file_url = m.get('FileURL')
+
+        if m.get('KeepOriginDialogue') is not None:
+            self.keep_origin_dialogue = m.get('KeepOriginDialogue')
 
         if m.get('ModelParams') is not None:
             self.model_params = m.get('ModelParams')
