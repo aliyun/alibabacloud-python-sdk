@@ -1,3 +1,11 @@
+2026-05-08 Version: 9.1.0
+- Support API CreatePipeline.
+- Support API DeletePipeline.
+- Support API GetPipeline.
+- Support API ListPipelines.
+- Support API UpdatePipeline.
+
+
 2026-04-30 Version: 9.0.1
 - Generated python 2024-03-30 for Cms.
 

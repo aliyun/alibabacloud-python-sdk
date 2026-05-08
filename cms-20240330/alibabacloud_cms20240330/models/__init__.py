@@ -146,6 +146,9 @@ from ._create_integration_policy_response import CreateIntegrationPolicyResponse
 from ._create_memory_store_request import CreateMemoryStoreRequest
 from ._create_memory_store_response_body import CreateMemoryStoreResponseBody
 from ._create_memory_store_response import CreateMemoryStoreResponse
+from ._create_pipeline_request import CreatePipelineRequest
+from ._create_pipeline_response_body import CreatePipelineResponseBody
+from ._create_pipeline_response import CreatePipelineResponse
 from ._create_prometheus_instance_request import CreatePrometheusInstanceRequest
 from ._create_prometheus_instance_response_body import CreatePrometheusInstanceResponseBody
 from ._create_prometheus_instance_response import CreatePrometheusInstanceResponse
@@ -203,6 +206,9 @@ from ._delete_memory_response import DeleteMemoryResponse
 from ._delete_memory_store_request import DeleteMemoryStoreRequest
 from ._delete_memory_store_response_body import DeleteMemoryStoreResponseBody
 from ._delete_memory_store_response import DeleteMemoryStoreResponse
+from ._delete_pipeline_request import DeletePipelineRequest
+from ._delete_pipeline_response_body import DeletePipelineResponseBody
+from ._delete_pipeline_response import DeletePipelineResponse
 from ._delete_prometheus_instance_request import DeletePrometheusInstanceRequest
 from ._delete_prometheus_instance_response_body import DeletePrometheusInstanceResponseBody
 from ._delete_prometheus_instance_response import DeletePrometheusInstanceResponse
@@ -294,6 +300,9 @@ from ._get_memory_history_response import GetMemoryHistoryResponse
 from ._get_memory_store_request import GetMemoryStoreRequest
 from ._get_memory_store_response_body import GetMemoryStoreResponseBody
 from ._get_memory_store_response import GetMemoryStoreResponse
+from ._get_pipeline_request import GetPipelineRequest
+from ._get_pipeline_response_body import GetPipelineResponseBody
+from ._get_pipeline_response import GetPipelineResponse
 from ._get_prometheus_instance_request import GetPrometheusInstanceRequest
 from ._get_prometheus_instance_response_body import GetPrometheusInstanceResponseBody
 from ._get_prometheus_instance_response import GetPrometheusInstanceResponse
@@ -389,6 +398,9 @@ from ._list_integration_policy_storage_requirements_response import ListIntegrat
 from ._list_memory_stores_request import ListMemoryStoresRequest
 from ._list_memory_stores_response_body import ListMemoryStoresResponseBody
 from ._list_memory_stores_response import ListMemoryStoresResponse
+from ._list_pipelines_request import ListPipelinesRequest
+from ._list_pipelines_response_body import ListPipelinesResponseBody
+from ._list_pipelines_response import ListPipelinesResponse
 from ._list_prometheus_dashboards_request import ListPrometheusDashboardsRequest
 from ._list_prometheus_dashboards_response_body import ListPrometheusDashboardsResponseBody
 from ._list_prometheus_dashboards_response import ListPrometheusDashboardsResponse
@@ -467,6 +479,9 @@ from ._update_memory_store_response import UpdateMemoryStoreResponse
 from ._update_notify_strategy_request import UpdateNotifyStrategyRequest
 from ._update_notify_strategy_response_body import UpdateNotifyStrategyResponseBody
 from ._update_notify_strategy_response import UpdateNotifyStrategyResponse
+from ._update_pipeline_request import UpdatePipelineRequest
+from ._update_pipeline_response_body import UpdatePipelineResponseBody
+from ._update_pipeline_response import UpdatePipelineResponse
 from ._update_prometheus_instance_request import UpdatePrometheusInstanceRequest
 from ._update_prometheus_instance_response_body import UpdatePrometheusInstanceResponseBody
 from ._update_prometheus_instance_response import UpdatePrometheusInstanceResponse
@@ -564,6 +579,15 @@ from ._create_integration_policy_request import CreateIntegrationPolicyRequestEn
 from ._create_integration_policy_request import CreateIntegrationPolicyRequestTags
 from ._create_integration_policy_response_body import CreateIntegrationPolicyResponseBodyPolicy
 from ._create_memory_store_request import CreateMemoryStoreRequestTraceSourceConfig
+from ._create_pipeline_request import CreatePipelineRequestExecutePolicyRunOnce
+from ._create_pipeline_request import CreatePipelineRequestExecutePolicyScheduled
+from ._create_pipeline_request import CreatePipelineRequestExecutePolicy
+from ._create_pipeline_request import CreatePipelineRequestPipelineNodes
+from ._create_pipeline_request import CreatePipelineRequestPipeline
+from ._create_pipeline_request import CreatePipelineRequestSinkDataset
+from ._create_pipeline_request import CreatePipelineRequestSink
+from ._create_pipeline_request import CreatePipelineRequestSourceLogstore
+from ._create_pipeline_request import CreatePipelineRequestSource
 from ._create_prometheus_instance_request import CreatePrometheusInstanceRequestTags
 from ._create_prometheus_view_request import CreatePrometheusViewRequestPrometheusInstances
 from ._create_prometheus_view_request import CreatePrometheusViewRequestTags
@@ -615,6 +639,15 @@ from ._get_memory_history_response_body import GetMemoryHistoryResponseBodyResul
 from ._get_memory_history_response_body import GetMemoryHistoryResponseBodyResults
 from ._get_memory_store_response_body import GetMemoryStoreResponseBodyShortTermStorage
 from ._get_memory_store_response_body import GetMemoryStoreResponseBodyTraceSourceConfig
+from ._get_pipeline_response_body import GetPipelineResponseBodyExecutePolicyRunOnce
+from ._get_pipeline_response_body import GetPipelineResponseBodyExecutePolicyScheduled
+from ._get_pipeline_response_body import GetPipelineResponseBodyExecutePolicy
+from ._get_pipeline_response_body import GetPipelineResponseBodyPipelineNodes
+from ._get_pipeline_response_body import GetPipelineResponseBodyPipeline
+from ._get_pipeline_response_body import GetPipelineResponseBodySinkDataset
+from ._get_pipeline_response_body import GetPipelineResponseBodySink
+from ._get_pipeline_response_body import GetPipelineResponseBodySourceLogstore
+from ._get_pipeline_response_body import GetPipelineResponseBodySource
 from ._get_prometheus_instance_response_body import GetPrometheusInstanceResponseBodyPrometheusInstanceTags
 from ._get_prometheus_instance_response_body import GetPrometheusInstanceResponseBodyPrometheusInstance
 from ._get_prometheus_view_response_body import GetPrometheusViewResponseBodyPrometheusViewPrometheusInstances
@@ -693,6 +726,7 @@ from ._list_integration_policy_storage_requirements_response_body import ListInt
 from ._list_integration_policy_storage_requirements_response_body import ListIntegrationPolicyStorageRequirementsResponseBodyStorageRequirementsStatus
 from ._list_integration_policy_storage_requirements_response_body import ListIntegrationPolicyStorageRequirementsResponseBodyStorageRequirements
 from ._list_memory_stores_response_body import ListMemoryStoresResponseBodyMemoryStores
+from ._list_pipelines_response_body import ListPipelinesResponseBodyPipelines
 from ._list_prometheus_dashboards_response_body import ListPrometheusDashboardsResponseBodyPrometheusDashboards
 from ._list_prometheus_instances_request import ListPrometheusInstancesRequestTag
 from ._list_prometheus_instances_response_body import ListPrometheusInstancesResponseBodyPrometheusInstances
@@ -708,6 +742,15 @@ from ._search_memories_response_body import SearchMemoriesResponseBodyResults
 from ._update_agg_task_group_request import UpdateAggTaskGroupRequestTags
 from ._update_delivery_task_request import UpdateDeliveryTaskRequestSinkList
 from ._update_integration_policy_request import UpdateIntegrationPolicyRequestTags
+from ._update_pipeline_request import UpdatePipelineRequestExecutePolicyRunOnce
+from ._update_pipeline_request import UpdatePipelineRequestExecutePolicyScheduled
+from ._update_pipeline_request import UpdatePipelineRequestExecutePolicy
+from ._update_pipeline_request import UpdatePipelineRequestPipelineNodes
+from ._update_pipeline_request import UpdatePipelineRequestPipeline
+from ._update_pipeline_request import UpdatePipelineRequestSinkDataset
+from ._update_pipeline_request import UpdatePipelineRequestSink
+from ._update_pipeline_request import UpdatePipelineRequestSourceLogstore
+from ._update_pipeline_request import UpdatePipelineRequestSource
 from ._update_prometheus_view_request import UpdatePrometheusViewRequestPrometheusInstances
 
 __all__ = [
@@ -855,6 +898,9 @@ __all__ = [
     CreateMemoryStoreRequest,
     CreateMemoryStoreResponseBody,
     CreateMemoryStoreResponse,
+    CreatePipelineRequest,
+    CreatePipelineResponseBody,
+    CreatePipelineResponse,
     CreatePrometheusInstanceRequest,
     CreatePrometheusInstanceResponseBody,
     CreatePrometheusInstanceResponse,
@@ -912,6 +958,9 @@ __all__ = [
     DeleteMemoryStoreRequest,
     DeleteMemoryStoreResponseBody,
     DeleteMemoryStoreResponse,
+    DeletePipelineRequest,
+    DeletePipelineResponseBody,
+    DeletePipelineResponse,
     DeletePrometheusInstanceRequest,
     DeletePrometheusInstanceResponseBody,
     DeletePrometheusInstanceResponse,
@@ -1003,6 +1052,9 @@ __all__ = [
     GetMemoryStoreRequest,
     GetMemoryStoreResponseBody,
     GetMemoryStoreResponse,
+    GetPipelineRequest,
+    GetPipelineResponseBody,
+    GetPipelineResponse,
     GetPrometheusInstanceRequest,
     GetPrometheusInstanceResponseBody,
     GetPrometheusInstanceResponse,
@@ -1098,6 +1150,9 @@ __all__ = [
     ListMemoryStoresRequest,
     ListMemoryStoresResponseBody,
     ListMemoryStoresResponse,
+    ListPipelinesRequest,
+    ListPipelinesResponseBody,
+    ListPipelinesResponse,
     ListPrometheusDashboardsRequest,
     ListPrometheusDashboardsResponseBody,
     ListPrometheusDashboardsResponse,
@@ -1176,6 +1231,9 @@ __all__ = [
     UpdateNotifyStrategyRequest,
     UpdateNotifyStrategyResponseBody,
     UpdateNotifyStrategyResponse,
+    UpdatePipelineRequest,
+    UpdatePipelineResponseBody,
+    UpdatePipelineResponse,
     UpdatePrometheusInstanceRequest,
     UpdatePrometheusInstanceResponseBody,
     UpdatePrometheusInstanceResponse,
@@ -1273,6 +1331,15 @@ __all__ = [
     CreateIntegrationPolicyRequestTags,
     CreateIntegrationPolicyResponseBodyPolicy,
     CreateMemoryStoreRequestTraceSourceConfig,
+    CreatePipelineRequestExecutePolicyRunOnce,
+    CreatePipelineRequestExecutePolicyScheduled,
+    CreatePipelineRequestExecutePolicy,
+    CreatePipelineRequestPipelineNodes,
+    CreatePipelineRequestPipeline,
+    CreatePipelineRequestSinkDataset,
+    CreatePipelineRequestSink,
+    CreatePipelineRequestSourceLogstore,
+    CreatePipelineRequestSource,
     CreatePrometheusInstanceRequestTags,
     CreatePrometheusViewRequestPrometheusInstances,
     CreatePrometheusViewRequestTags,
@@ -1324,6 +1391,15 @@ __all__ = [
     GetMemoryHistoryResponseBodyResults,
     GetMemoryStoreResponseBodyShortTermStorage,
     GetMemoryStoreResponseBodyTraceSourceConfig,
+    GetPipelineResponseBodyExecutePolicyRunOnce,
+    GetPipelineResponseBodyExecutePolicyScheduled,
+    GetPipelineResponseBodyExecutePolicy,
+    GetPipelineResponseBodyPipelineNodes,
+    GetPipelineResponseBodyPipeline,
+    GetPipelineResponseBodySinkDataset,
+    GetPipelineResponseBodySink,
+    GetPipelineResponseBodySourceLogstore,
+    GetPipelineResponseBodySource,
     GetPrometheusInstanceResponseBodyPrometheusInstanceTags,
     GetPrometheusInstanceResponseBodyPrometheusInstance,
     GetPrometheusViewResponseBodyPrometheusViewPrometheusInstances,
@@ -1402,6 +1478,7 @@ __all__ = [
     ListIntegrationPolicyStorageRequirementsResponseBodyStorageRequirementsStatus,
     ListIntegrationPolicyStorageRequirementsResponseBodyStorageRequirements,
     ListMemoryStoresResponseBodyMemoryStores,
+    ListPipelinesResponseBodyPipelines,
     ListPrometheusDashboardsResponseBodyPrometheusDashboards,
     ListPrometheusInstancesRequestTag,
     ListPrometheusInstancesResponseBodyPrometheusInstances,
@@ -1417,5 +1494,14 @@ __all__ = [
     UpdateAggTaskGroupRequestTags,
     UpdateDeliveryTaskRequestSinkList,
     UpdateIntegrationPolicyRequestTags,
+    UpdatePipelineRequestExecutePolicyRunOnce,
+    UpdatePipelineRequestExecutePolicyScheduled,
+    UpdatePipelineRequestExecutePolicy,
+    UpdatePipelineRequestPipelineNodes,
+    UpdatePipelineRequestPipeline,
+    UpdatePipelineRequestSinkDataset,
+    UpdatePipelineRequestSink,
+    UpdatePipelineRequestSourceLogstore,
+    UpdatePipelineRequestSource,
     UpdatePrometheusViewRequestPrometheusInstances
 ]

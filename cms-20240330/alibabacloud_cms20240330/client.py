@@ -1231,6 +1231,106 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_memory_store_with_options_async(workspace, request, headers, runtime)
 
+    def create_pipeline_with_options(
+        self,
+        workspace: str,
+        request: main_models.CreatePipelineRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreatePipelineResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.execute_policy):
+            body['executePolicy'] = request.execute_policy
+        if not DaraCore.is_null(request.pipeline):
+            body['pipeline'] = request.pipeline
+        if not DaraCore.is_null(request.pipeline_name):
+            body['pipelineName'] = request.pipeline_name
+        if not DaraCore.is_null(request.sink):
+            body['sink'] = request.sink
+        if not DaraCore.is_null(request.source):
+            body['source'] = request.source
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreatePipeline',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/pipeline',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreatePipelineResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_pipeline_with_options_async(
+        self,
+        workspace: str,
+        request: main_models.CreatePipelineRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreatePipelineResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.execute_policy):
+            body['executePolicy'] = request.execute_policy
+        if not DaraCore.is_null(request.pipeline):
+            body['pipeline'] = request.pipeline
+        if not DaraCore.is_null(request.pipeline_name):
+            body['pipelineName'] = request.pipeline_name
+        if not DaraCore.is_null(request.sink):
+            body['sink'] = request.sink
+        if not DaraCore.is_null(request.source):
+            body['source'] = request.source
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreatePipeline',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/pipeline',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreatePipelineResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_pipeline(
+        self,
+        workspace: str,
+        request: main_models.CreatePipelineRequest,
+    ) -> main_models.CreatePipelineResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_pipeline_with_options(workspace, request, headers, runtime)
+
+    async def create_pipeline_async(
+        self,
+        workspace: str,
+        request: main_models.CreatePipelineRequest,
+    ) -> main_models.CreatePipelineResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_pipeline_with_options_async(workspace, request, headers, runtime)
+
     def create_prometheus_instance_with_options(
         self,
         request: main_models.CreatePrometheusInstanceRequest,
@@ -2820,6 +2920,82 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.delete_memory_store_with_options_async(workspace, memory_store_name, request, headers, runtime)
+
+    def delete_pipeline_with_options(
+        self,
+        workspace: str,
+        pipeline_name: str,
+        request: main_models.DeletePipelineRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeletePipelineResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeletePipeline',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/pipeline/{DaraURL.percent_encode(pipeline_name)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeletePipelineResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_pipeline_with_options_async(
+        self,
+        workspace: str,
+        pipeline_name: str,
+        request: main_models.DeletePipelineRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeletePipelineResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeletePipeline',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/pipeline/{DaraURL.percent_encode(pipeline_name)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeletePipelineResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_pipeline(
+        self,
+        workspace: str,
+        pipeline_name: str,
+        request: main_models.DeletePipelineRequest,
+    ) -> main_models.DeletePipelineResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_pipeline_with_options(workspace, pipeline_name, request, headers, runtime)
+
+    async def delete_pipeline_async(
+        self,
+        workspace: str,
+        pipeline_name: str,
+        request: main_models.DeletePipelineRequest,
+    ) -> main_models.DeletePipelineResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_pipeline_with_options_async(workspace, pipeline_name, request, headers, runtime)
 
     def delete_prometheus_instance_with_options(
         self,
@@ -5212,6 +5388,82 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.get_memory_store_with_options_async(workspace, memory_store_name, request, headers, runtime)
+
+    def get_pipeline_with_options(
+        self,
+        workspace: str,
+        pipeline_name: str,
+        request: main_models.GetPipelineRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetPipelineResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetPipeline',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/pipeline/{DaraURL.percent_encode(pipeline_name)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetPipelineResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_pipeline_with_options_async(
+        self,
+        workspace: str,
+        pipeline_name: str,
+        request: main_models.GetPipelineRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetPipelineResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetPipeline',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/pipeline/{DaraURL.percent_encode(pipeline_name)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetPipelineResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_pipeline(
+        self,
+        workspace: str,
+        pipeline_name: str,
+        request: main_models.GetPipelineRequest,
+    ) -> main_models.GetPipelineResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_pipeline_with_options(workspace, pipeline_name, request, headers, runtime)
+
+    async def get_pipeline_async(
+        self,
+        workspace: str,
+        pipeline_name: str,
+        request: main_models.GetPipelineRequest,
+    ) -> main_models.GetPipelineResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_pipeline_with_options_async(workspace, pipeline_name, request, headers, runtime)
 
     def get_prometheus_instance_with_options(
         self,
@@ -7821,6 +8073,94 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_memory_stores_with_options_async(workspace, request, headers, runtime)
 
+    def list_pipelines_with_options(
+        self,
+        workspace: str,
+        request: main_models.ListPipelinesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListPipelinesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.pipeline_name):
+            query['pipelineName'] = request.pipeline_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListPipelines',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/pipeline',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListPipelinesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_pipelines_with_options_async(
+        self,
+        workspace: str,
+        request: main_models.ListPipelinesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListPipelinesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.pipeline_name):
+            query['pipelineName'] = request.pipeline_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListPipelines',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/pipeline',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListPipelinesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_pipelines(
+        self,
+        workspace: str,
+        request: main_models.ListPipelinesRequest,
+    ) -> main_models.ListPipelinesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_pipelines_with_options(workspace, request, headers, runtime)
+
+    async def list_pipelines_async(
+        self,
+        workspace: str,
+        request: main_models.ListPipelinesRequest,
+    ) -> main_models.ListPipelinesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_pipelines_with_options_async(workspace, request, headers, runtime)
+
     def list_prometheus_dashboards_with_options(
         self,
         prometheus_instance_id: str,
@@ -10198,6 +10538,106 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.update_notify_strategy_with_options_async(notify_strategy_id, request, headers, runtime)
+
+    def update_pipeline_with_options(
+        self,
+        workspace: str,
+        pipeline_name: str,
+        request: main_models.UpdatePipelineRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdatePipelineResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.execute_policy):
+            body['executePolicy'] = request.execute_policy
+        if not DaraCore.is_null(request.pipeline):
+            body['pipeline'] = request.pipeline
+        if not DaraCore.is_null(request.sink):
+            body['sink'] = request.sink
+        if not DaraCore.is_null(request.source):
+            body['source'] = request.source
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdatePipeline',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/pipeline/{DaraURL.percent_encode(pipeline_name)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdatePipelineResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_pipeline_with_options_async(
+        self,
+        workspace: str,
+        pipeline_name: str,
+        request: main_models.UpdatePipelineRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdatePipelineResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.execute_policy):
+            body['executePolicy'] = request.execute_policy
+        if not DaraCore.is_null(request.pipeline):
+            body['pipeline'] = request.pipeline
+        if not DaraCore.is_null(request.sink):
+            body['sink'] = request.sink
+        if not DaraCore.is_null(request.source):
+            body['source'] = request.source
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdatePipeline',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/pipeline/{DaraURL.percent_encode(pipeline_name)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdatePipelineResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_pipeline(
+        self,
+        workspace: str,
+        pipeline_name: str,
+        request: main_models.UpdatePipelineRequest,
+    ) -> main_models.UpdatePipelineResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_pipeline_with_options(workspace, pipeline_name, request, headers, runtime)
+
+    async def update_pipeline_async(
+        self,
+        workspace: str,
+        pipeline_name: str,
+        request: main_models.UpdatePipelineRequest,
+    ) -> main_models.UpdatePipelineResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_pipeline_with_options_async(workspace, pipeline_name, request, headers, runtime)
 
     def update_prometheus_instance_with_options(
         self,
