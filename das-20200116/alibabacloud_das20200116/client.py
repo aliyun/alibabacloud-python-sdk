@@ -163,6 +163,174 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.add_hdminstance_with_options_async(request, runtime)
 
+    def chat_with_sse(
+        self,
+        request: main_models.ChatRequest,
+        runtime: RuntimeOptions,
+    ) -> Generator[main_models.ChatResponse, None, None]:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_id):
+            query['AgentId'] = request.agent_id
+        if not DaraCore.is_null(request.message):
+            query['Message'] = request.message
+        if not DaraCore.is_null(request.session_id):
+            query['SessionId'] = request.session_id
+        if not DaraCore.is_null(request.summary):
+            query['Summary'] = request.summary
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'Chat',
+            version = '2020-01-16',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        sse_resp = self.call_sseapi(params, req, runtime)
+        for resp in sse_resp:
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.ChatResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
+
+    async def chat_with_sse_async(
+        self,
+        request: main_models.ChatRequest,
+        runtime: RuntimeOptions,
+    ) -> AsyncGenerator[main_models.ChatResponse, None, None]:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_id):
+            query['AgentId'] = request.agent_id
+        if not DaraCore.is_null(request.message):
+            query['Message'] = request.message
+        if not DaraCore.is_null(request.session_id):
+            query['SessionId'] = request.session_id
+        if not DaraCore.is_null(request.summary):
+            query['Summary'] = request.summary
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'Chat',
+            version = '2020-01-16',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        sse_resp = self.call_sseapi_async(params, req, runtime)
+        async for resp in sse_resp:
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.ChatResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
+
+    def chat_with_options(
+        self,
+        request: main_models.ChatRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ChatResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_id):
+            query['AgentId'] = request.agent_id
+        if not DaraCore.is_null(request.message):
+            query['Message'] = request.message
+        if not DaraCore.is_null(request.session_id):
+            query['SessionId'] = request.session_id
+        if not DaraCore.is_null(request.summary):
+            query['Summary'] = request.summary
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'Chat',
+            version = '2020-01-16',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ChatResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def chat_with_options_async(
+        self,
+        request: main_models.ChatRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ChatResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_id):
+            query['AgentId'] = request.agent_id
+        if not DaraCore.is_null(request.message):
+            query['Message'] = request.message
+        if not DaraCore.is_null(request.session_id):
+            query['SessionId'] = request.session_id
+        if not DaraCore.is_null(request.summary):
+            query['Summary'] = request.summary
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'Chat',
+            version = '2020-01-16',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ChatResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def chat(
+        self,
+        request: main_models.ChatRequest,
+    ) -> main_models.ChatResponse:
+        runtime = RuntimeOptions()
+        return self.chat_with_options(request, runtime)
+
+    async def chat_async(
+        self,
+        request: main_models.ChatRequest,
+    ) -> main_models.ChatResponse:
+        runtime = RuntimeOptions()
+        return await self.chat_with_options_async(request, runtime)
+
     def create_cache_analysis_job_with_options(
         self,
         request: main_models.CreateCacheAnalysisJobRequest,
@@ -5689,104 +5857,6 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_deadlock_histogram_with_options_async(request, runtime)
 
-    def get_endpoint_switch_task_with_options(
-        self,
-        request: main_models.GetEndpointSwitchTaskRequest,
-        runtime: RuntimeOptions,
-    ) -> main_models.GetEndpointSwitchTaskResponse:
-        request.validate()
-        query = {}
-        if not DaraCore.is_null(request.task_id):
-            query['TaskId'] = request.task_id
-        if not DaraCore.is_null(request.uid):
-            query['Uid'] = request.uid
-        if not DaraCore.is_null(request.user_id):
-            query['UserId'] = request.user_id
-        if not DaraCore.is_null(request.context):
-            query['__context'] = request.context
-        if not DaraCore.is_null(request.access_key):
-            query['accessKey'] = request.access_key
-        if not DaraCore.is_null(request.signature):
-            query['signature'] = request.signature
-        if not DaraCore.is_null(request.skip_auth):
-            query['skipAuth'] = request.skip_auth
-        if not DaraCore.is_null(request.timestamp):
-            query['timestamp'] = request.timestamp
-        req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
-        )
-        params = open_api_util_models.Params(
-            action = 'GetEndpointSwitchTask',
-            version = '2020-01-16',
-            protocol = 'HTTPS',
-            pathname = '/',
-            method = 'POST',
-            auth_type = 'AK',
-            style = 'RPC',
-            req_body_type = 'formData',
-            body_type = 'json'
-        )
-        return DaraCore.from_map(
-            main_models.GetEndpointSwitchTaskResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def get_endpoint_switch_task_with_options_async(
-        self,
-        request: main_models.GetEndpointSwitchTaskRequest,
-        runtime: RuntimeOptions,
-    ) -> main_models.GetEndpointSwitchTaskResponse:
-        request.validate()
-        query = {}
-        if not DaraCore.is_null(request.task_id):
-            query['TaskId'] = request.task_id
-        if not DaraCore.is_null(request.uid):
-            query['Uid'] = request.uid
-        if not DaraCore.is_null(request.user_id):
-            query['UserId'] = request.user_id
-        if not DaraCore.is_null(request.context):
-            query['__context'] = request.context
-        if not DaraCore.is_null(request.access_key):
-            query['accessKey'] = request.access_key
-        if not DaraCore.is_null(request.signature):
-            query['signature'] = request.signature
-        if not DaraCore.is_null(request.skip_auth):
-            query['skipAuth'] = request.skip_auth
-        if not DaraCore.is_null(request.timestamp):
-            query['timestamp'] = request.timestamp
-        req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
-        )
-        params = open_api_util_models.Params(
-            action = 'GetEndpointSwitchTask',
-            version = '2020-01-16',
-            protocol = 'HTTPS',
-            pathname = '/',
-            method = 'POST',
-            auth_type = 'AK',
-            style = 'RPC',
-            req_body_type = 'formData',
-            body_type = 'json'
-        )
-        return DaraCore.from_map(
-            main_models.GetEndpointSwitchTaskResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def get_endpoint_switch_task(
-        self,
-        request: main_models.GetEndpointSwitchTaskRequest,
-    ) -> main_models.GetEndpointSwitchTaskResponse:
-        runtime = RuntimeOptions()
-        return self.get_endpoint_switch_task_with_options(request, runtime)
-
-    async def get_endpoint_switch_task_async(
-        self,
-        request: main_models.GetEndpointSwitchTaskRequest,
-    ) -> main_models.GetEndpointSwitchTaskResponse:
-        runtime = RuntimeOptions()
-        return await self.get_endpoint_switch_task_with_options_async(request, runtime)
-
     def get_error_request_sample_with_options(
         self,
         request: main_models.GetErrorRequestSampleRequest,
@@ -6276,198 +6346,6 @@ class Client(OpenApiClient):
     ) -> main_models.GetFullRequestStatResultByInstanceIdResponse:
         runtime = RuntimeOptions()
         return await self.get_full_request_stat_result_by_instance_id_with_options_async(request, runtime)
-
-    def get_hdmaliyun_resource_sync_result_with_options(
-        self,
-        request: main_models.GetHDMAliyunResourceSyncResultRequest,
-        runtime: RuntimeOptions,
-    ) -> main_models.GetHDMAliyunResourceSyncResultResponse:
-        request.validate()
-        query = {}
-        if not DaraCore.is_null(request.task_id):
-            query['TaskId'] = request.task_id
-        if not DaraCore.is_null(request.uid):
-            query['Uid'] = request.uid
-        if not DaraCore.is_null(request.user_id):
-            query['UserId'] = request.user_id
-        if not DaraCore.is_null(request.context):
-            query['__context'] = request.context
-        if not DaraCore.is_null(request.access_key):
-            query['accessKey'] = request.access_key
-        if not DaraCore.is_null(request.signature):
-            query['signature'] = request.signature
-        if not DaraCore.is_null(request.skip_auth):
-            query['skipAuth'] = request.skip_auth
-        if not DaraCore.is_null(request.timestamp):
-            query['timestamp'] = request.timestamp
-        req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
-        )
-        params = open_api_util_models.Params(
-            action = 'GetHDMAliyunResourceSyncResult',
-            version = '2020-01-16',
-            protocol = 'HTTPS',
-            pathname = '/',
-            method = 'POST',
-            auth_type = 'AK',
-            style = 'RPC',
-            req_body_type = 'formData',
-            body_type = 'json'
-        )
-        return DaraCore.from_map(
-            main_models.GetHDMAliyunResourceSyncResultResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def get_hdmaliyun_resource_sync_result_with_options_async(
-        self,
-        request: main_models.GetHDMAliyunResourceSyncResultRequest,
-        runtime: RuntimeOptions,
-    ) -> main_models.GetHDMAliyunResourceSyncResultResponse:
-        request.validate()
-        query = {}
-        if not DaraCore.is_null(request.task_id):
-            query['TaskId'] = request.task_id
-        if not DaraCore.is_null(request.uid):
-            query['Uid'] = request.uid
-        if not DaraCore.is_null(request.user_id):
-            query['UserId'] = request.user_id
-        if not DaraCore.is_null(request.context):
-            query['__context'] = request.context
-        if not DaraCore.is_null(request.access_key):
-            query['accessKey'] = request.access_key
-        if not DaraCore.is_null(request.signature):
-            query['signature'] = request.signature
-        if not DaraCore.is_null(request.skip_auth):
-            query['skipAuth'] = request.skip_auth
-        if not DaraCore.is_null(request.timestamp):
-            query['timestamp'] = request.timestamp
-        req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
-        )
-        params = open_api_util_models.Params(
-            action = 'GetHDMAliyunResourceSyncResult',
-            version = '2020-01-16',
-            protocol = 'HTTPS',
-            pathname = '/',
-            method = 'POST',
-            auth_type = 'AK',
-            style = 'RPC',
-            req_body_type = 'formData',
-            body_type = 'json'
-        )
-        return DaraCore.from_map(
-            main_models.GetHDMAliyunResourceSyncResultResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def get_hdmaliyun_resource_sync_result(
-        self,
-        request: main_models.GetHDMAliyunResourceSyncResultRequest,
-    ) -> main_models.GetHDMAliyunResourceSyncResultResponse:
-        runtime = RuntimeOptions()
-        return self.get_hdmaliyun_resource_sync_result_with_options(request, runtime)
-
-    async def get_hdmaliyun_resource_sync_result_async(
-        self,
-        request: main_models.GetHDMAliyunResourceSyncResultRequest,
-    ) -> main_models.GetHDMAliyunResourceSyncResultResponse:
-        runtime = RuntimeOptions()
-        return await self.get_hdmaliyun_resource_sync_result_with_options_async(request, runtime)
-
-    def get_hdmlast_aliyun_resource_sync_result_with_options(
-        self,
-        request: main_models.GetHDMLastAliyunResourceSyncResultRequest,
-        runtime: RuntimeOptions,
-    ) -> main_models.GetHDMLastAliyunResourceSyncResultResponse:
-        request.validate()
-        query = {}
-        if not DaraCore.is_null(request.uid):
-            query['Uid'] = request.uid
-        if not DaraCore.is_null(request.user_id):
-            query['UserId'] = request.user_id
-        if not DaraCore.is_null(request.context):
-            query['__context'] = request.context
-        if not DaraCore.is_null(request.access_key):
-            query['accessKey'] = request.access_key
-        if not DaraCore.is_null(request.signature):
-            query['signature'] = request.signature
-        if not DaraCore.is_null(request.skip_auth):
-            query['skipAuth'] = request.skip_auth
-        if not DaraCore.is_null(request.timestamp):
-            query['timestamp'] = request.timestamp
-        req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
-        )
-        params = open_api_util_models.Params(
-            action = 'GetHDMLastAliyunResourceSyncResult',
-            version = '2020-01-16',
-            protocol = 'HTTPS',
-            pathname = '/',
-            method = 'POST',
-            auth_type = 'AK',
-            style = 'RPC',
-            req_body_type = 'formData',
-            body_type = 'json'
-        )
-        return DaraCore.from_map(
-            main_models.GetHDMLastAliyunResourceSyncResultResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def get_hdmlast_aliyun_resource_sync_result_with_options_async(
-        self,
-        request: main_models.GetHDMLastAliyunResourceSyncResultRequest,
-        runtime: RuntimeOptions,
-    ) -> main_models.GetHDMLastAliyunResourceSyncResultResponse:
-        request.validate()
-        query = {}
-        if not DaraCore.is_null(request.uid):
-            query['Uid'] = request.uid
-        if not DaraCore.is_null(request.user_id):
-            query['UserId'] = request.user_id
-        if not DaraCore.is_null(request.context):
-            query['__context'] = request.context
-        if not DaraCore.is_null(request.access_key):
-            query['accessKey'] = request.access_key
-        if not DaraCore.is_null(request.signature):
-            query['signature'] = request.signature
-        if not DaraCore.is_null(request.skip_auth):
-            query['skipAuth'] = request.skip_auth
-        if not DaraCore.is_null(request.timestamp):
-            query['timestamp'] = request.timestamp
-        req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
-        )
-        params = open_api_util_models.Params(
-            action = 'GetHDMLastAliyunResourceSyncResult',
-            version = '2020-01-16',
-            protocol = 'HTTPS',
-            pathname = '/',
-            method = 'POST',
-            auth_type = 'AK',
-            style = 'RPC',
-            req_body_type = 'formData',
-            body_type = 'json'
-        )
-        return DaraCore.from_map(
-            main_models.GetHDMLastAliyunResourceSyncResultResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def get_hdmlast_aliyun_resource_sync_result(
-        self,
-        request: main_models.GetHDMLastAliyunResourceSyncResultRequest,
-    ) -> main_models.GetHDMLastAliyunResourceSyncResultResponse:
-        runtime = RuntimeOptions()
-        return self.get_hdmlast_aliyun_resource_sync_result_with_options(request, runtime)
-
-    async def get_hdmlast_aliyun_resource_sync_result_async(
-        self,
-        request: main_models.GetHDMLastAliyunResourceSyncResultRequest,
-    ) -> main_models.GetHDMLastAliyunResourceSyncResultResponse:
-        runtime = RuntimeOptions()
-        return await self.get_hdmlast_aliyun_resource_sync_result_with_options_async(request, runtime)
 
     def get_instance_group_inspect_report_detail_with_options(
         self,

@@ -1,3 +1,10 @@
+2026-05-08 Version: 3.0.0
+- Support API Chat.
+- Delete API GetEndpointSwitchTask.
+- Delete API GetHDMAliyunResourceSyncResult.
+- Delete API GetHDMLastAliyunResourceSyncResult.
+
+
 2026-03-24 Version: 2.12.2
 - Update API DescribeSlowLogRecords: add response parameters Body.Data.Logs.$.Fail.
 - Update API DescribeSlowLogRecords: add response parameters Body.Data.Logs.$.Params.

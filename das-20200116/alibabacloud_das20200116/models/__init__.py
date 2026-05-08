@@ -9,6 +9,9 @@ from ._data_value import DataValue
 from ._add_hdminstance_request import AddHDMInstanceRequest
 from ._add_hdminstance_response_body import AddHDMInstanceResponseBody
 from ._add_hdminstance_response import AddHDMInstanceResponse
+from ._chat_request import ChatRequest
+from ._chat_response_body import ChatResponseBody
+from ._chat_response import ChatResponse
 from ._create_cache_analysis_job_request import CreateCacheAnalysisJobRequest
 from ._create_cache_analysis_job_response_body import CreateCacheAnalysisJobResponseBody
 from ._create_cache_analysis_job_response import CreateCacheAnalysisJobResponse
@@ -201,9 +204,6 @@ from ._get_dead_lock_history_response import GetDeadLockHistoryResponse
 from ._get_deadlock_histogram_request import GetDeadlockHistogramRequest
 from ._get_deadlock_histogram_response_body import GetDeadlockHistogramResponseBody
 from ._get_deadlock_histogram_response import GetDeadlockHistogramResponse
-from ._get_endpoint_switch_task_request import GetEndpointSwitchTaskRequest
-from ._get_endpoint_switch_task_response_body import GetEndpointSwitchTaskResponseBody
-from ._get_endpoint_switch_task_response import GetEndpointSwitchTaskResponse
 from ._get_error_request_sample_request import GetErrorRequestSampleRequest
 from ._get_error_request_sample_response_body import GetErrorRequestSampleResponseBody
 from ._get_error_request_sample_response import GetErrorRequestSampleResponse
@@ -219,12 +219,6 @@ from ._get_full_request_sample_by_instance_id_response import GetFullRequestSamp
 from ._get_full_request_stat_result_by_instance_id_request import GetFullRequestStatResultByInstanceIdRequest
 from ._get_full_request_stat_result_by_instance_id_response_body import GetFullRequestStatResultByInstanceIdResponseBody
 from ._get_full_request_stat_result_by_instance_id_response import GetFullRequestStatResultByInstanceIdResponse
-from ._get_hdmaliyun_resource_sync_result_request import GetHDMAliyunResourceSyncResultRequest
-from ._get_hdmaliyun_resource_sync_result_response_body import GetHDMAliyunResourceSyncResultResponseBody
-from ._get_hdmaliyun_resource_sync_result_response import GetHDMAliyunResourceSyncResultResponse
-from ._get_hdmlast_aliyun_resource_sync_result_request import GetHDMLastAliyunResourceSyncResultRequest
-from ._get_hdmlast_aliyun_resource_sync_result_response_body import GetHDMLastAliyunResourceSyncResultResponseBody
-from ._get_hdmlast_aliyun_resource_sync_result_response import GetHDMLastAliyunResourceSyncResultResponse
 from ._get_instance_group_inspect_report_detail_request import GetInstanceGroupInspectReportDetailRequest
 from ._get_instance_group_inspect_report_detail_response_body import GetInstanceGroupInspectReportDetailResponseBody
 from ._get_instance_group_inspect_report_detail_response import GetInstanceGroupInspectReportDetailResponse
@@ -475,7 +469,6 @@ from ._get_dead_lock_detail_list_response_body import GetDeadLockDetailListRespo
 from ._get_dead_lock_detail_list_response_body import GetDeadLockDetailListResponseBodyDataList
 from ._get_dead_lock_detail_list_response_body import GetDeadLockDetailListResponseBodyData
 from ._get_deadlock_histogram_response_body import GetDeadlockHistogramResponseBodyData
-from ._get_endpoint_switch_task_response_body import GetEndpointSwitchTaskResponseBodyData
 from ._get_error_request_sample_response_body import GetErrorRequestSampleResponseBodyData
 from ._get_event_subscription_response_body import GetEventSubscriptionResponseBodyDataContactGroups
 from ._get_event_subscription_response_body import GetEventSubscriptionResponseBodyDataContacts
@@ -486,12 +479,6 @@ from ._get_full_request_sample_by_instance_id_response_body import GetFullReques
 from ._get_full_request_stat_result_by_instance_id_response_body import GetFullRequestStatResultByInstanceIdResponseBodyDataResultList
 from ._get_full_request_stat_result_by_instance_id_response_body import GetFullRequestStatResultByInstanceIdResponseBodyDataResult
 from ._get_full_request_stat_result_by_instance_id_response_body import GetFullRequestStatResultByInstanceIdResponseBodyData
-from ._get_hdmaliyun_resource_sync_result_response_body import GetHDMAliyunResourceSyncResultResponseBodyDataSubResultsResourceSyncSubResult
-from ._get_hdmaliyun_resource_sync_result_response_body import GetHDMAliyunResourceSyncResultResponseBodyDataSubResults
-from ._get_hdmaliyun_resource_sync_result_response_body import GetHDMAliyunResourceSyncResultResponseBodyData
-from ._get_hdmlast_aliyun_resource_sync_result_response_body import GetHDMLastAliyunResourceSyncResultResponseBodyDataSubResultsResourceSyncSubResult
-from ._get_hdmlast_aliyun_resource_sync_result_response_body import GetHDMLastAliyunResourceSyncResultResponseBodyDataSubResults
-from ._get_hdmlast_aliyun_resource_sync_result_response_body import GetHDMLastAliyunResourceSyncResultResponseBodyData
 from ._get_instance_group_inspect_report_detail_response_body import GetInstanceGroupInspectReportDetailResponseBodyData
 from ._get_instance_group_inspect_report_list_response_body import GetInstanceGroupInspectReportListResponseBodyData
 from ._get_instance_inspections_response_body import GetInstanceInspectionsResponseBodyDataListAutoFunction
@@ -583,6 +570,9 @@ __all__ = [
     AddHDMInstanceRequest,
     AddHDMInstanceResponseBody,
     AddHDMInstanceResponse,
+    ChatRequest,
+    ChatResponseBody,
+    ChatResponse,
     CreateCacheAnalysisJobRequest,
     CreateCacheAnalysisJobResponseBody,
     CreateCacheAnalysisJobResponse,
@@ -775,9 +765,6 @@ __all__ = [
     GetDeadlockHistogramRequest,
     GetDeadlockHistogramResponseBody,
     GetDeadlockHistogramResponse,
-    GetEndpointSwitchTaskRequest,
-    GetEndpointSwitchTaskResponseBody,
-    GetEndpointSwitchTaskResponse,
     GetErrorRequestSampleRequest,
     GetErrorRequestSampleResponseBody,
     GetErrorRequestSampleResponse,
@@ -793,12 +780,6 @@ __all__ = [
     GetFullRequestStatResultByInstanceIdRequest,
     GetFullRequestStatResultByInstanceIdResponseBody,
     GetFullRequestStatResultByInstanceIdResponse,
-    GetHDMAliyunResourceSyncResultRequest,
-    GetHDMAliyunResourceSyncResultResponseBody,
-    GetHDMAliyunResourceSyncResultResponse,
-    GetHDMLastAliyunResourceSyncResultRequest,
-    GetHDMLastAliyunResourceSyncResultResponseBody,
-    GetHDMLastAliyunResourceSyncResultResponse,
     GetInstanceGroupInspectReportDetailRequest,
     GetInstanceGroupInspectReportDetailResponseBody,
     GetInstanceGroupInspectReportDetailResponse,
@@ -1049,7 +1030,6 @@ __all__ = [
     GetDeadLockDetailListResponseBodyDataList,
     GetDeadLockDetailListResponseBodyData,
     GetDeadlockHistogramResponseBodyData,
-    GetEndpointSwitchTaskResponseBodyData,
     GetErrorRequestSampleResponseBodyData,
     GetEventSubscriptionResponseBodyDataContactGroups,
     GetEventSubscriptionResponseBodyDataContacts,
@@ -1060,12 +1040,6 @@ __all__ = [
     GetFullRequestStatResultByInstanceIdResponseBodyDataResultList,
     GetFullRequestStatResultByInstanceIdResponseBodyDataResult,
     GetFullRequestStatResultByInstanceIdResponseBodyData,
-    GetHDMAliyunResourceSyncResultResponseBodyDataSubResultsResourceSyncSubResult,
-    GetHDMAliyunResourceSyncResultResponseBodyDataSubResults,
-    GetHDMAliyunResourceSyncResultResponseBodyData,
-    GetHDMLastAliyunResourceSyncResultResponseBodyDataSubResultsResourceSyncSubResult,
-    GetHDMLastAliyunResourceSyncResultResponseBodyDataSubResults,
-    GetHDMLastAliyunResourceSyncResultResponseBodyData,
     GetInstanceGroupInspectReportDetailResponseBodyData,
     GetInstanceGroupInspectReportListResponseBodyData,
     GetInstanceInspectionsResponseBodyDataListAutoFunction,
