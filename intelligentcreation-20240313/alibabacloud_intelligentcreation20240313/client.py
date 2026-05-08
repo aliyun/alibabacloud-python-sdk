@@ -11,7 +11,6 @@ from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi.utils import Utils
 from darabonba.core import DaraCore as DaraCore
-from darabonba.core import DaraCore
 from darabonba.runtime import RuntimeOptions
 from darabonba.url import Url as DaraURL
 
@@ -1135,6 +1134,90 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.create_aicoach_task_with_options_async(request, headers, runtime)
+
+    def create_aicoach_task_report_with_options(
+        self,
+        request: main_models.CreateAICoachTaskReportRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAICoachTaskReportResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.dialogue_list):
+            body['dialogueList'] = request.dialogue_list
+        if not DaraCore.is_null(request.idempotent_id):
+            body['idempotentId'] = request.idempotent_id
+        if not DaraCore.is_null(request.task_id):
+            body['taskId'] = request.task_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAICoachTaskReport',
+            version = '2024-03-13',
+            protocol = 'HTTPS',
+            pathname = f'/yic/yic-console/openService/v1/aicoach/startSessionReport',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAICoachTaskReportResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_aicoach_task_report_with_options_async(
+        self,
+        request: main_models.CreateAICoachTaskReportRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAICoachTaskReportResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.dialogue_list):
+            body['dialogueList'] = request.dialogue_list
+        if not DaraCore.is_null(request.idempotent_id):
+            body['idempotentId'] = request.idempotent_id
+        if not DaraCore.is_null(request.task_id):
+            body['taskId'] = request.task_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAICoachTaskReport',
+            version = '2024-03-13',
+            protocol = 'HTTPS',
+            pathname = f'/yic/yic-console/openService/v1/aicoach/startSessionReport',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAICoachTaskReportResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_aicoach_task_report(
+        self,
+        request: main_models.CreateAICoachTaskReportRequest,
+    ) -> main_models.CreateAICoachTaskReportResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_aicoach_task_report_with_options(request, headers, runtime)
+
+    async def create_aicoach_task_report_async(
+        self,
+        request: main_models.CreateAICoachTaskReportRequest,
+    ) -> main_models.CreateAICoachTaskReportResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_aicoach_task_report_with_options_async(request, headers, runtime)
 
     def create_aicoach_task_session_with_options(
         self,
@@ -3629,17 +3712,17 @@ class Client(OpenApiClient):
         )
         sse_resp = self.call_sseapi(params, req, runtime)
         for resp in sse_resp:
-            data = json.loads(resp.event.data)
-            yield  DaraCore.from_map(
-                main_models.InteractTextResponse(),
-                {
-                'statusCode': resp.status_code,
-                'headers': resp.headers,
-                'body': DaraCore.merge({
-                    'RequestId': resp.event.id,
-                    'Message': resp.event.event
-                }, data)
-            })
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.InteractTextResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
 
     async def interact_text_with_sse_async(
         self,
@@ -3672,17 +3755,17 @@ class Client(OpenApiClient):
         )
         sse_resp = self.call_sseapi_async(params, req, runtime)
         async for resp in sse_resp:
-            data = json.loads(resp.event.data)
-            yield  DaraCore.from_map(
-                main_models.InteractTextResponse(),
-                {
-                'statusCode': resp.status_code,
-                'headers': resp.headers,
-                'body': DaraCore.merge({
-                    'RequestId': resp.event.id,
-                    'Message': resp.event.event
-                }, data)
-            })
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.InteractTextResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
 
     def interact_text_with_options(
         self,
@@ -5194,17 +5277,17 @@ class Client(OpenApiClient):
         )
         sse_resp = self.call_sseapi(params, req, runtime)
         for resp in sse_resp:
-            data = json.loads(resp.event.data)
-            yield  DaraCore.from_map(
-                main_models.QueryTextStreamResponse(),
-                {
-                'statusCode': resp.status_code,
-                'headers': resp.headers,
-                'body': DaraCore.merge({
-                    'RequestId': resp.event.id,
-                    'Message': resp.event.event
-                }, data)
-            })
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.QueryTextStreamResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
 
     async def query_text_stream_with_sse_async(
         self,
@@ -5228,17 +5311,17 @@ class Client(OpenApiClient):
         )
         sse_resp = self.call_sseapi_async(params, req, runtime)
         async for resp in sse_resp:
-            data = json.loads(resp.event.data)
-            yield  DaraCore.from_map(
-                main_models.QueryTextStreamResponse(),
-                {
-                'statusCode': resp.status_code,
-                'headers': resp.headers,
-                'body': DaraCore.merge({
-                    'RequestId': resp.event.id,
-                    'Message': resp.event.event
-                }, data)
-            })
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.QueryTextStreamResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
 
     def query_text_stream_with_options(
         self,
@@ -5771,17 +5854,17 @@ class Client(OpenApiClient):
         )
         sse_resp = self.call_sseapi(params, req, runtime)
         for resp in sse_resp:
-            data = json.loads(resp.event.data)
-            yield  DaraCore.from_map(
-                main_models.SendSdkStreamMessageResponse(),
-                {
-                'statusCode': resp.status_code,
-                'headers': resp.headers,
-                'body': DaraCore.merge({
-                    'RequestId': resp.event.id,
-                    'Message': resp.event.event
-                }, data)
-            })
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.SendSdkStreamMessageResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
 
     async def send_sdk_stream_message_with_sse_async(
         self,
@@ -5818,17 +5901,17 @@ class Client(OpenApiClient):
         )
         sse_resp = self.call_sseapi_async(params, req, runtime)
         async for resp in sse_resp:
-            data = json.loads(resp.event.data)
-            yield  DaraCore.from_map(
-                main_models.SendSdkStreamMessageResponse(),
-                {
-                'statusCode': resp.status_code,
-                'headers': resp.headers,
-                'body': DaraCore.merge({
-                    'RequestId': resp.event.id,
-                    'Message': resp.event.event
-                }, data)
-            })
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.SendSdkStreamMessageResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
 
     def send_sdk_stream_message_with_options(
         self,

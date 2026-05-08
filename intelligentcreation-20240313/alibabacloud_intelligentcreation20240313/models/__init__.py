@@ -70,6 +70,9 @@ from ._count_text_response import CountTextResponse
 from ._create_aicoach_task_request import CreateAICoachTaskRequest
 from ._create_aicoach_task_response_body import CreateAICoachTaskResponseBody
 from ._create_aicoach_task_response import CreateAICoachTaskResponse
+from ._create_aicoach_task_report_request import CreateAICoachTaskReportRequest
+from ._create_aicoach_task_report_response_body import CreateAICoachTaskReportResponseBody
+from ._create_aicoach_task_report_response import CreateAICoachTaskReportResponse
 from ._create_aicoach_task_session_request import CreateAICoachTaskSessionRequest
 from ._create_aicoach_task_session_response_body import CreateAICoachTaskSessionResponseBody
 from ._create_aicoach_task_session_response import CreateAICoachTaskSessionResponse
@@ -250,6 +253,7 @@ from ._batch_get_video_clip_task_response_body import BatchGetVideoClipTaskRespo
 from ._batch_query_individuation_text_response_body import BatchQueryIndividuationTextResponseBodyTextList
 from ._build_aicoach_script_record_response_body import BuildAICoachScriptRecordResponseBodyData
 from ._count_text_response_body import CountTextResponseBodyCountTextCmdList
+from ._create_aicoach_task_report_request import CreateAICoachTaskReportRequestDialogueList
 from ._create_aicoach_task_session_response_body import CreateAICoachTaskSessionResponseBodyScriptInfo
 from ._get_aicoach_assessment_point_response_body import GetAICoachAssessmentPointResponseBodyAnswerListAnswerValuesKeywordValues
 from ._get_aicoach_assessment_point_response_body import GetAICoachAssessmentPointResponseBodyAnswerListAnswerValuesScoringRules
@@ -389,6 +393,9 @@ __all__ = [
     CreateAICoachTaskRequest,
     CreateAICoachTaskResponseBody,
     CreateAICoachTaskResponse,
+    CreateAICoachTaskReportRequest,
+    CreateAICoachTaskReportResponseBody,
+    CreateAICoachTaskReportResponse,
     CreateAICoachTaskSessionRequest,
     CreateAICoachTaskSessionResponseBody,
     CreateAICoachTaskSessionResponse,
@@ -569,6 +576,7 @@ __all__ = [
     BatchQueryIndividuationTextResponseBodyTextList,
     BuildAICoachScriptRecordResponseBodyData,
     CountTextResponseBodyCountTextCmdList,
+    CreateAICoachTaskReportRequestDialogueList,
     CreateAICoachTaskSessionResponseBodyScriptInfo,
     GetAICoachAssessmentPointResponseBodyAnswerListAnswerValuesKeywordValues,
     GetAICoachAssessmentPointResponseBodyAnswerListAnswerValuesScoringRules,

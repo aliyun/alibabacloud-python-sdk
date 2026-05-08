@@ -1,3 +1,7 @@
+2026-05-08 Version: 2.18.0
+- Support API CreateAICoachTaskReport.
+
+
 2026-01-28 Version: 2.17.0
 - Support API BatchDeletePracticeTask.
 

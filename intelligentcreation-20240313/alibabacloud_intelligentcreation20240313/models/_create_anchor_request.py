@@ -15,12 +15,14 @@ class CreateAnchorRequest(DaraModel):
         use_scene: str = None,
         video_oss_key: str = None,
     ):
+        # 类型
         self.anchor_category = anchor_category
         self.anchor_material_name = anchor_material_name
         self.cover_url = cover_url
         self.digital_human_type = digital_human_type
         self.gender = gender
         self.use_scene = use_scene
+        # 视频文件osskey
         self.video_oss_key = video_oss_key
 
     def validate(self):
