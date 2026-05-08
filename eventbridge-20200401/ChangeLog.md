@@ -1,3 +1,6 @@
+2026-05-08 Version: 8.0.10
+- Generated python 2020-04-01 for eventbridge.
+
 2026-04-21 Version: 8.0.9
 - Update API CreateEventStreaming: add request parameters Sink.SinkApacheKafkaParameters.DynamicTopic.
 - Update API CreateEventStreaming: add request parameters Sink.SinkApacheKafkaParameters.SslKeyPassword.

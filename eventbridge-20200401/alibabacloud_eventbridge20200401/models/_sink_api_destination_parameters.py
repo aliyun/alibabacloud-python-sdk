@@ -12,11 +12,13 @@ class SinkApiDestinationParameters(DaraModel):
         header_parameters: main_models.SinkApiDestinationParametersHeaderParameters = None,
         name: str = None,
         query_string_parameters: main_models.SinkApiDestinationParametersQueryStringParameters = None,
+        timeout: int = None,
     ):
         self.body_parameters = body_parameters
         self.header_parameters = header_parameters
         self.name = name
         self.query_string_parameters = query_string_parameters
+        self.timeout = timeout
 
     def validate(self):
         if self.body_parameters:
@@ -43,6 +45,9 @@ class SinkApiDestinationParameters(DaraModel):
         if self.query_string_parameters is not None:
             result['QueryStringParameters'] = self.query_string_parameters.to_map()
 
+        if self.timeout is not None:
+            result['Timeout'] = self.timeout
+
         return result
 
     def from_map(self, m: dict = None):
@@ -61,6 +66,9 @@ class SinkApiDestinationParameters(DaraModel):
         if m.get('QueryStringParameters') is not None:
             temp_model = main_models.SinkApiDestinationParametersQueryStringParameters()
             self.query_string_parameters = temp_model.from_map(m.get('QueryStringParameters'))
+
+        if m.get('Timeout') is not None:
+            self.timeout = m.get('Timeout')
 
         return self
 
