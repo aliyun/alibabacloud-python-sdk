@@ -1,3 +1,10 @@
+2026-05-08 Version: 2.7.2
+- Update API AddLiveStreamMerge: add request parameters SelectAppName.
+- Update API AddLiveStreamMerge: add request parameters SelectStreamName.
+- Update API AddLiveStreamMerge: add request parameters SwitchMode.
+- Update API DescribeLiveStreamMerge: add response parameters Body.LiveStreamMergeList.$.SwitchMode.
+
+
 2026-02-10 Version: 2.7.1
 - Update API DescribeLiveInteractionMetricData: add request parameters ChannelId.
 

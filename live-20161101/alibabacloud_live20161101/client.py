@@ -2838,10 +2838,16 @@ class Client(OpenApiClient):
             query['Protocol'] = request.protocol
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.select_app_name):
+            query['SelectAppName'] = request.select_app_name
+        if not DaraCore.is_null(request.select_stream_name):
+            query['SelectStreamName'] = request.select_stream_name
         if not DaraCore.is_null(request.start_time):
             query['StartTime'] = request.start_time
         if not DaraCore.is_null(request.stream_name):
             query['StreamName'] = request.stream_name
+        if not DaraCore.is_null(request.switch_mode):
+            query['SwitchMode'] = request.switch_mode
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -2892,10 +2898,16 @@ class Client(OpenApiClient):
             query['Protocol'] = request.protocol
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.select_app_name):
+            query['SelectAppName'] = request.select_app_name
+        if not DaraCore.is_null(request.select_stream_name):
+            query['SelectStreamName'] = request.select_stream_name
         if not DaraCore.is_null(request.start_time):
             query['StartTime'] = request.start_time
         if not DaraCore.is_null(request.stream_name):
             query['StreamName'] = request.stream_name
+        if not DaraCore.is_null(request.switch_mode):
+            query['SwitchMode'] = request.switch_mode
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )

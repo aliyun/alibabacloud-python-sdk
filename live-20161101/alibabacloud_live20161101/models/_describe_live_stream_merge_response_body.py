@@ -98,6 +98,7 @@ class DescribeLiveStreamMergeResponseBodyLiveStreamMergeListLiveStreamMerge(Dara
         start_time: str = None,
         stream_name: str = None,
         stream_using: str = None,
+        switch_mode: str = None,
     ):
         self.app_name = app_name
         self.app_using = app_using
@@ -114,6 +115,7 @@ class DescribeLiveStreamMergeResponseBodyLiveStreamMergeListLiveStreamMerge(Dara
         self.start_time = start_time
         self.stream_name = stream_name
         self.stream_using = stream_using
+        self.switch_mode = switch_mode
 
     def validate(self):
         pass
@@ -168,6 +170,9 @@ class DescribeLiveStreamMergeResponseBodyLiveStreamMergeListLiveStreamMerge(Dara
         if self.stream_using is not None:
             result['StreamUsing'] = self.stream_using
 
+        if self.switch_mode is not None:
+            result['SwitchMode'] = self.switch_mode
+
         return result
 
     def from_map(self, m: dict = None):
@@ -216,6 +221,9 @@ class DescribeLiveStreamMergeResponseBodyLiveStreamMergeListLiveStreamMerge(Dara
 
         if m.get('StreamUsing') is not None:
             self.stream_using = m.get('StreamUsing')
+
+        if m.get('SwitchMode') is not None:
+            self.switch_mode = m.get('SwitchMode')
 
         return self
 

@@ -19,8 +19,11 @@ class AddLiveStreamMergeRequest(DaraModel):
         owner_id: int = None,
         protocol: str = None,
         region_id: str = None,
+        select_app_name: str = None,
+        select_stream_name: str = None,
         start_time: str = None,
         stream_name: str = None,
+        switch_mode: str = None,
     ):
         # The name of the application that generates the output stream. The value must be the same as the application name in the ingest URL of the output stream. Otherwise, the configuration does not take effect. You cannot set the value to an asterisk (\\*).
         # 
@@ -63,6 +66,8 @@ class AddLiveStreamMergeRequest(DaraModel):
         # *   **rtc**
         self.protocol = protocol
         self.region_id = region_id
+        self.select_app_name = select_app_name
+        self.select_stream_name = select_stream_name
         # The start time of the stream mixing.
         # 
         # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
@@ -73,6 +78,7 @@ class AddLiveStreamMergeRequest(DaraModel):
         # 
         # This parameter is required.
         self.stream_name = stream_name
+        self.switch_mode = switch_mode
 
     def validate(self):
         pass
@@ -118,11 +124,20 @@ class AddLiveStreamMergeRequest(DaraModel):
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
+        if self.select_app_name is not None:
+            result['SelectAppName'] = self.select_app_name
+
+        if self.select_stream_name is not None:
+            result['SelectStreamName'] = self.select_stream_name
+
         if self.start_time is not None:
             result['StartTime'] = self.start_time
 
         if self.stream_name is not None:
             result['StreamName'] = self.stream_name
+
+        if self.switch_mode is not None:
+            result['SwitchMode'] = self.switch_mode
 
         return result
 
@@ -164,11 +179,20 @@ class AddLiveStreamMergeRequest(DaraModel):
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
 
+        if m.get('SelectAppName') is not None:
+            self.select_app_name = m.get('SelectAppName')
+
+        if m.get('SelectStreamName') is not None:
+            self.select_stream_name = m.get('SelectStreamName')
+
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
 
         if m.get('StreamName') is not None:
             self.stream_name = m.get('StreamName')
+
+        if m.get('SwitchMode') is not None:
+            self.switch_mode = m.get('SwitchMode')
 
         return self
 
