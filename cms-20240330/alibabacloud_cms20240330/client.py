@@ -41,6 +41,98 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return Utils.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def add_contexts_with_options(
+        self,
+        workspace: str,
+        context_store_name: str,
+        request: main_models.AddContextsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.AddContextsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.context_type):
+            body['contextType'] = request.context_type
+        if not DaraCore.is_null(request.items):
+            body['items'] = request.items
+        if not DaraCore.is_null(request.memory_type):
+            body['memoryType'] = request.memory_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddContexts',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/contextstore/{DaraURL.percent_encode(context_store_name)}/context',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddContextsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_contexts_with_options_async(
+        self,
+        workspace: str,
+        context_store_name: str,
+        request: main_models.AddContextsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.AddContextsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.context_type):
+            body['contextType'] = request.context_type
+        if not DaraCore.is_null(request.items):
+            body['items'] = request.items
+        if not DaraCore.is_null(request.memory_type):
+            body['memoryType'] = request.memory_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddContexts',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/contextstore/{DaraURL.percent_encode(context_store_name)}/context',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddContextsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_contexts(
+        self,
+        workspace: str,
+        context_store_name: str,
+        request: main_models.AddContextsRequest,
+    ) -> main_models.AddContextsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.add_contexts_with_options(workspace, context_store_name, request, headers, runtime)
+
+    async def add_contexts_async(
+        self,
+        workspace: str,
+        context_store_name: str,
+        request: main_models.AddContextsRequest,
+    ) -> main_models.AddContextsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.add_contexts_with_options_async(workspace, context_store_name, request, headers, runtime)
+
     def add_memories_with_options(
         self,
         workspace: str,
@@ -762,6 +854,186 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.create_cloud_resource_with_options_async(headers, runtime)
+
+    def create_context_store_with_options(
+        self,
+        workspace: str,
+        request: main_models.CreateContextStoreRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateContextStoreResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.config):
+            body['config'] = request.config
+        if not DaraCore.is_null(request.context_store_name):
+            body['contextStoreName'] = request.context_store_name
+        if not DaraCore.is_null(request.context_type):
+            body['contextType'] = request.context_type
+        if not DaraCore.is_null(request.dataset):
+            body['dataset'] = request.dataset
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateContextStore',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/contextstore',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateContextStoreResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_context_store_with_options_async(
+        self,
+        workspace: str,
+        request: main_models.CreateContextStoreRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateContextStoreResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.config):
+            body['config'] = request.config
+        if not DaraCore.is_null(request.context_store_name):
+            body['contextStoreName'] = request.context_store_name
+        if not DaraCore.is_null(request.context_type):
+            body['contextType'] = request.context_type
+        if not DaraCore.is_null(request.dataset):
+            body['dataset'] = request.dataset
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateContextStore',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/contextstore',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateContextStoreResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_context_store(
+        self,
+        workspace: str,
+        request: main_models.CreateContextStoreRequest,
+    ) -> main_models.CreateContextStoreResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_context_store_with_options(workspace, request, headers, runtime)
+
+    async def create_context_store_async(
+        self,
+        workspace: str,
+        request: main_models.CreateContextStoreRequest,
+    ) -> main_models.CreateContextStoreResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_context_store_with_options_async(workspace, request, headers, runtime)
+
+    def create_context_store_apikey_with_options(
+        self,
+        workspace: str,
+        context_store_name: str,
+        request: main_models.CreateContextStoreAPIKeyRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateContextStoreAPIKeyResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateContextStoreAPIKey',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/contextstore/{DaraURL.percent_encode(context_store_name)}/apikey',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateContextStoreAPIKeyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_context_store_apikey_with_options_async(
+        self,
+        workspace: str,
+        context_store_name: str,
+        request: main_models.CreateContextStoreAPIKeyRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateContextStoreAPIKeyResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateContextStoreAPIKey',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/contextstore/{DaraURL.percent_encode(context_store_name)}/apikey',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateContextStoreAPIKeyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_context_store_apikey(
+        self,
+        workspace: str,
+        context_store_name: str,
+        request: main_models.CreateContextStoreAPIKeyRequest,
+    ) -> main_models.CreateContextStoreAPIKeyResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_context_store_apikey_with_options(workspace, context_store_name, request, headers, runtime)
+
+    async def create_context_store_apikey_async(
+        self,
+        workspace: str,
+        context_store_name: str,
+        request: main_models.CreateContextStoreAPIKeyRequest,
+    ) -> main_models.CreateContextStoreAPIKeyResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_context_store_apikey_with_options_async(workspace, context_store_name, request, headers, runtime)
 
     def create_dataset_with_options(
         self,
@@ -2368,6 +2640,330 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.delete_cloud_resource_with_options_async(headers, runtime)
+
+    def delete_context_with_options(
+        self,
+        workspace: str,
+        context_store_name: str,
+        context_id: str,
+        request: main_models.DeleteContextRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteContextResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteContext',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/contextstore/{DaraURL.percent_encode(context_store_name)}/context/{DaraURL.percent_encode(context_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteContextResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_context_with_options_async(
+        self,
+        workspace: str,
+        context_store_name: str,
+        context_id: str,
+        request: main_models.DeleteContextRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteContextResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteContext',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/contextstore/{DaraURL.percent_encode(context_store_name)}/context/{DaraURL.percent_encode(context_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteContextResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_context(
+        self,
+        workspace: str,
+        context_store_name: str,
+        context_id: str,
+        request: main_models.DeleteContextRequest,
+    ) -> main_models.DeleteContextResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_context_with_options(workspace, context_store_name, context_id, request, headers, runtime)
+
+    async def delete_context_async(
+        self,
+        workspace: str,
+        context_store_name: str,
+        context_id: str,
+        request: main_models.DeleteContextRequest,
+    ) -> main_models.DeleteContextResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_context_with_options_async(workspace, context_store_name, context_id, request, headers, runtime)
+
+    def delete_context_store_with_options(
+        self,
+        workspace: str,
+        context_store_name: str,
+        request: main_models.DeleteContextStoreRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteContextStoreResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteContextStore',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/contextstore/{DaraURL.percent_encode(context_store_name)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteContextStoreResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_context_store_with_options_async(
+        self,
+        workspace: str,
+        context_store_name: str,
+        request: main_models.DeleteContextStoreRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteContextStoreResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteContextStore',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/contextstore/{DaraURL.percent_encode(context_store_name)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteContextStoreResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_context_store(
+        self,
+        workspace: str,
+        context_store_name: str,
+        request: main_models.DeleteContextStoreRequest,
+    ) -> main_models.DeleteContextStoreResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_context_store_with_options(workspace, context_store_name, request, headers, runtime)
+
+    async def delete_context_store_async(
+        self,
+        workspace: str,
+        context_store_name: str,
+        request: main_models.DeleteContextStoreRequest,
+    ) -> main_models.DeleteContextStoreResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_context_store_with_options_async(workspace, context_store_name, request, headers, runtime)
+
+    def delete_context_store_apikey_with_options(
+        self,
+        workspace: str,
+        context_store_name: str,
+        name: str,
+        request: main_models.DeleteContextStoreAPIKeyRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteContextStoreAPIKeyResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteContextStoreAPIKey',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/contextstore/{DaraURL.percent_encode(context_store_name)}/apikey/{DaraURL.percent_encode(name)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteContextStoreAPIKeyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_context_store_apikey_with_options_async(
+        self,
+        workspace: str,
+        context_store_name: str,
+        name: str,
+        request: main_models.DeleteContextStoreAPIKeyRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteContextStoreAPIKeyResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteContextStoreAPIKey',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/contextstore/{DaraURL.percent_encode(context_store_name)}/apikey/{DaraURL.percent_encode(name)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteContextStoreAPIKeyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_context_store_apikey(
+        self,
+        workspace: str,
+        context_store_name: str,
+        name: str,
+        request: main_models.DeleteContextStoreAPIKeyRequest,
+    ) -> main_models.DeleteContextStoreAPIKeyResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_context_store_apikey_with_options(workspace, context_store_name, name, request, headers, runtime)
+
+    async def delete_context_store_apikey_async(
+        self,
+        workspace: str,
+        context_store_name: str,
+        name: str,
+        request: main_models.DeleteContextStoreAPIKeyRequest,
+    ) -> main_models.DeleteContextStoreAPIKeyResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_context_store_apikey_with_options_async(workspace, context_store_name, name, request, headers, runtime)
+
+    def delete_contexts_with_options(
+        self,
+        workspace: str,
+        context_store_name: str,
+        request: main_models.DeleteContextsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteContextsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.context_ids):
+            query['contextIds'] = request.context_ids
+        if not DaraCore.is_null(request.filter):
+            query['filter'] = request.filter
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteContexts',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/contextstore/{DaraURL.percent_encode(context_store_name)}/context',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteContextsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_contexts_with_options_async(
+        self,
+        workspace: str,
+        context_store_name: str,
+        request: main_models.DeleteContextsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteContextsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.context_ids):
+            query['contextIds'] = request.context_ids
+        if not DaraCore.is_null(request.filter):
+            query['filter'] = request.filter
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteContexts',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/contextstore/{DaraURL.percent_encode(context_store_name)}/context',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteContextsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_contexts(
+        self,
+        workspace: str,
+        context_store_name: str,
+        request: main_models.DeleteContextsRequest,
+    ) -> main_models.DeleteContextsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_contexts_with_options(workspace, context_store_name, request, headers, runtime)
+
+    async def delete_contexts_async(
+        self,
+        workspace: str,
+        context_store_name: str,
+        request: main_models.DeleteContextsRequest,
+    ) -> main_models.DeleteContextsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_contexts_with_options_async(workspace, context_store_name, request, headers, runtime)
 
     def delete_dataset_with_options(
         self,
@@ -4574,6 +5170,170 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.get_cms_service_with_options_async(request, headers, runtime)
+
+    def get_context_with_options(
+        self,
+        workspace: str,
+        context_store_name: str,
+        context_id: str,
+        request: main_models.GetContextRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetContextResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.formatted):
+            query['formatted'] = request.formatted
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetContext',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/contextstore/{DaraURL.percent_encode(context_store_name)}/context/{DaraURL.percent_encode(context_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetContextResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_context_with_options_async(
+        self,
+        workspace: str,
+        context_store_name: str,
+        context_id: str,
+        request: main_models.GetContextRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetContextResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.formatted):
+            query['formatted'] = request.formatted
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetContext',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/contextstore/{DaraURL.percent_encode(context_store_name)}/context/{DaraURL.percent_encode(context_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetContextResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_context(
+        self,
+        workspace: str,
+        context_store_name: str,
+        context_id: str,
+        request: main_models.GetContextRequest,
+    ) -> main_models.GetContextResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_context_with_options(workspace, context_store_name, context_id, request, headers, runtime)
+
+    async def get_context_async(
+        self,
+        workspace: str,
+        context_store_name: str,
+        context_id: str,
+        request: main_models.GetContextRequest,
+    ) -> main_models.GetContextResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_context_with_options_async(workspace, context_store_name, context_id, request, headers, runtime)
+
+    def get_context_store_with_options(
+        self,
+        workspace: str,
+        context_store_name: str,
+        request: main_models.GetContextStoreRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetContextStoreResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetContextStore',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/contextstore/{DaraURL.percent_encode(context_store_name)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetContextStoreResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_context_store_with_options_async(
+        self,
+        workspace: str,
+        context_store_name: str,
+        request: main_models.GetContextStoreRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetContextStoreResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetContextStore',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/contextstore/{DaraURL.percent_encode(context_store_name)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetContextStoreResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_context_store(
+        self,
+        workspace: str,
+        context_store_name: str,
+        request: main_models.GetContextStoreRequest,
+    ) -> main_models.GetContextStoreResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_context_store_with_options(workspace, context_store_name, request, headers, runtime)
+
+    async def get_context_store_async(
+        self,
+        workspace: str,
+        context_store_name: str,
+        request: main_models.GetContextStoreRequest,
+    ) -> main_models.GetContextStoreResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_context_store_with_options_async(workspace, context_store_name, request, headers, runtime)
 
     def get_dataset_with_options(
         self,
@@ -7061,6 +7821,186 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_contacts_with_options_async(request, headers, runtime)
 
+    def list_context_store_apikeys_with_options(
+        self,
+        workspace: str,
+        context_store_name: str,
+        request: main_models.ListContextStoreAPIKeysRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListContextStoreAPIKeysResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListContextStoreAPIKeys',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/contextstore/{DaraURL.percent_encode(context_store_name)}/apikey',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListContextStoreAPIKeysResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_context_store_apikeys_with_options_async(
+        self,
+        workspace: str,
+        context_store_name: str,
+        request: main_models.ListContextStoreAPIKeysRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListContextStoreAPIKeysResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListContextStoreAPIKeys',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/contextstore/{DaraURL.percent_encode(context_store_name)}/apikey',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListContextStoreAPIKeysResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_context_store_apikeys(
+        self,
+        workspace: str,
+        context_store_name: str,
+        request: main_models.ListContextStoreAPIKeysRequest,
+    ) -> main_models.ListContextStoreAPIKeysResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_context_store_apikeys_with_options(workspace, context_store_name, request, headers, runtime)
+
+    async def list_context_store_apikeys_async(
+        self,
+        workspace: str,
+        context_store_name: str,
+        request: main_models.ListContextStoreAPIKeysRequest,
+    ) -> main_models.ListContextStoreAPIKeysResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_context_store_apikeys_with_options_async(workspace, context_store_name, request, headers, runtime)
+
+    def list_context_stores_with_options(
+        self,
+        workspace: str,
+        request: main_models.ListContextStoresRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListContextStoresResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.context_store_name):
+            query['contextStoreName'] = request.context_store_name
+        if not DaraCore.is_null(request.context_type):
+            query['contextType'] = request.context_type
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListContextStores',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/contextstore',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListContextStoresResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_context_stores_with_options_async(
+        self,
+        workspace: str,
+        request: main_models.ListContextStoresRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListContextStoresResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.context_store_name):
+            query['contextStoreName'] = request.context_store_name
+        if not DaraCore.is_null(request.context_type):
+            query['contextType'] = request.context_type
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListContextStores',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/contextstore',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListContextStoresResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_context_stores(
+        self,
+        workspace: str,
+        request: main_models.ListContextStoresRequest,
+    ) -> main_models.ListContextStoresResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_context_stores_with_options(workspace, request, headers, runtime)
+
+    async def list_context_stores_async(
+        self,
+        workspace: str,
+        request: main_models.ListContextStoresRequest,
+    ) -> main_models.ListContextStoresResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_context_stores_with_options_async(workspace, request, headers, runtime)
+
     def list_datasets_with_options(
         self,
         workspace: str,
@@ -9157,6 +10097,110 @@ class Client(OpenApiClient):
         headers = {}
         return await self.query_alert_rules_with_options_async(request, headers, runtime)
 
+    def search_context_with_options(
+        self,
+        workspace: str,
+        context_store_name: str,
+        request: main_models.SearchContextRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.SearchContextResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.filter):
+            body['filter'] = request.filter
+        if not DaraCore.is_null(request.formatted):
+            body['formatted'] = request.formatted
+        if not DaraCore.is_null(request.limit):
+            body['limit'] = request.limit
+        if not DaraCore.is_null(request.query):
+            body['query'] = request.query
+        if not DaraCore.is_null(request.retrieval_option):
+            body['retrievalOption'] = request.retrieval_option
+        if not DaraCore.is_null(request.threshold):
+            body['threshold'] = request.threshold
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SearchContext',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/contextstore/{DaraURL.percent_encode(context_store_name)}/context/search',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SearchContextResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def search_context_with_options_async(
+        self,
+        workspace: str,
+        context_store_name: str,
+        request: main_models.SearchContextRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.SearchContextResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.filter):
+            body['filter'] = request.filter
+        if not DaraCore.is_null(request.formatted):
+            body['formatted'] = request.formatted
+        if not DaraCore.is_null(request.limit):
+            body['limit'] = request.limit
+        if not DaraCore.is_null(request.query):
+            body['query'] = request.query
+        if not DaraCore.is_null(request.retrieval_option):
+            body['retrievalOption'] = request.retrieval_option
+        if not DaraCore.is_null(request.threshold):
+            body['threshold'] = request.threshold
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SearchContext',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/contextstore/{DaraURL.percent_encode(context_store_name)}/context/search',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SearchContextResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def search_context(
+        self,
+        workspace: str,
+        context_store_name: str,
+        request: main_models.SearchContextRequest,
+    ) -> main_models.SearchContextResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.search_context_with_options(workspace, context_store_name, request, headers, runtime)
+
+    async def search_context_async(
+        self,
+        workspace: str,
+        context_store_name: str,
+        request: main_models.SearchContextRequest,
+    ) -> main_models.SearchContextResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.search_context_with_options_async(workspace, context_store_name, request, headers, runtime)
+
     def search_memories_with_options(
         self,
         workspace: str,
@@ -9980,6 +11024,206 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.update_biz_trace_with_options_async(biz_trace_id, request, headers, runtime)
+
+    def update_context_with_options(
+        self,
+        workspace: str,
+        context_store_name: str,
+        context_id: str,
+        request: main_models.UpdateContextRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateContextResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.content):
+            body['content'] = request.content
+        if not DaraCore.is_null(request.experience):
+            body['experience'] = request.experience
+        if not DaraCore.is_null(request.metadata):
+            body['metadata'] = request.metadata
+        if not DaraCore.is_null(request.payload):
+            body['payload'] = request.payload
+        if not DaraCore.is_null(request.trigger_condition):
+            body['triggerCondition'] = request.trigger_condition
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateContext',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/contextstore/{DaraURL.percent_encode(context_store_name)}/context/{DaraURL.percent_encode(context_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateContextResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_context_with_options_async(
+        self,
+        workspace: str,
+        context_store_name: str,
+        context_id: str,
+        request: main_models.UpdateContextRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateContextResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.content):
+            body['content'] = request.content
+        if not DaraCore.is_null(request.experience):
+            body['experience'] = request.experience
+        if not DaraCore.is_null(request.metadata):
+            body['metadata'] = request.metadata
+        if not DaraCore.is_null(request.payload):
+            body['payload'] = request.payload
+        if not DaraCore.is_null(request.trigger_condition):
+            body['triggerCondition'] = request.trigger_condition
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateContext',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/contextstore/{DaraURL.percent_encode(context_store_name)}/context/{DaraURL.percent_encode(context_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateContextResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_context(
+        self,
+        workspace: str,
+        context_store_name: str,
+        context_id: str,
+        request: main_models.UpdateContextRequest,
+    ) -> main_models.UpdateContextResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_context_with_options(workspace, context_store_name, context_id, request, headers, runtime)
+
+    async def update_context_async(
+        self,
+        workspace: str,
+        context_store_name: str,
+        context_id: str,
+        request: main_models.UpdateContextRequest,
+    ) -> main_models.UpdateContextResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_context_with_options_async(workspace, context_store_name, context_id, request, headers, runtime)
+
+    def update_context_store_with_options(
+        self,
+        workspace: str,
+        context_store_name: str,
+        request: main_models.UpdateContextStoreRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateContextStoreResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.config):
+            body['config'] = request.config
+        if not DaraCore.is_null(request.context_type):
+            body['contextType'] = request.context_type
+        if not DaraCore.is_null(request.dataset):
+            body['dataset'] = request.dataset
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateContextStore',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/contextstore/{DaraURL.percent_encode(context_store_name)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateContextStoreResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_context_store_with_options_async(
+        self,
+        workspace: str,
+        context_store_name: str,
+        request: main_models.UpdateContextStoreRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateContextStoreResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.config):
+            body['config'] = request.config
+        if not DaraCore.is_null(request.context_type):
+            body['contextType'] = request.context_type
+        if not DaraCore.is_null(request.dataset):
+            body['dataset'] = request.dataset
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateContextStore',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/contextstore/{DaraURL.percent_encode(context_store_name)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateContextStoreResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_context_store(
+        self,
+        workspace: str,
+        context_store_name: str,
+        request: main_models.UpdateContextStoreRequest,
+    ) -> main_models.UpdateContextStoreResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_context_store_with_options(workspace, context_store_name, request, headers, runtime)
+
+    async def update_context_store_async(
+        self,
+        workspace: str,
+        context_store_name: str,
+        request: main_models.UpdateContextStoreRequest,
+    ) -> main_models.UpdateContextStoreResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_context_store_with_options_async(workspace, context_store_name, request, headers, runtime)
 
     def update_dataset_with_options(
         self,

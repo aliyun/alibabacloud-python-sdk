@@ -111,6 +111,9 @@ from ._umodel_entity_filter import UmodelEntityFilter
 from ._umodel_label_filter import UmodelLabelFilter
 from ._uuid_filter import UuidFilter
 from ._workspace_filter_setting import WorkspaceFilterSetting
+from ._add_contexts_request import AddContextsRequest
+from ._add_contexts_response_body import AddContextsResponseBody
+from ._add_contexts_response import AddContextsResponse
 from ._add_memories_request import AddMemoriesRequest
 from ._add_memories_response_body import AddMemoriesResponseBody
 from ._add_memories_response import AddMemoriesResponse
@@ -131,6 +134,12 @@ from ._create_biz_trace_response_body import CreateBizTraceResponseBody
 from ._create_biz_trace_response import CreateBizTraceResponse
 from ._create_cloud_resource_response_body import CreateCloudResourceResponseBody
 from ._create_cloud_resource_response import CreateCloudResourceResponse
+from ._create_context_store_request import CreateContextStoreRequest
+from ._create_context_store_response_body import CreateContextStoreResponseBody
+from ._create_context_store_response import CreateContextStoreResponse
+from ._create_context_store_apikey_request import CreateContextStoreAPIKeyRequest
+from ._create_context_store_apikey_response_body import CreateContextStoreAPIKeyResponseBody
+from ._create_context_store_apikey_response import CreateContextStoreAPIKeyResponse
 from ._create_dataset_request import CreateDatasetRequest
 from ._create_dataset_response_body import CreateDatasetResponseBody
 from ._create_dataset_response import CreateDatasetResponse
@@ -185,6 +194,18 @@ from ._delete_biz_trace_response_body import DeleteBizTraceResponseBody
 from ._delete_biz_trace_response import DeleteBizTraceResponse
 from ._delete_cloud_resource_response_body import DeleteCloudResourceResponseBody
 from ._delete_cloud_resource_response import DeleteCloudResourceResponse
+from ._delete_context_request import DeleteContextRequest
+from ._delete_context_response_body import DeleteContextResponseBody
+from ._delete_context_response import DeleteContextResponse
+from ._delete_context_store_request import DeleteContextStoreRequest
+from ._delete_context_store_response_body import DeleteContextStoreResponseBody
+from ._delete_context_store_response import DeleteContextStoreResponse
+from ._delete_context_store_apikey_request import DeleteContextStoreAPIKeyRequest
+from ._delete_context_store_apikey_response_body import DeleteContextStoreAPIKeyResponseBody
+from ._delete_context_store_apikey_response import DeleteContextStoreAPIKeyResponse
+from ._delete_contexts_request import DeleteContextsRequest
+from ._delete_contexts_response_body import DeleteContextsResponseBody
+from ._delete_contexts_response import DeleteContextsResponse
 from ._delete_dataset_request import DeleteDatasetRequest
 from ._delete_dataset_response_body import DeleteDatasetResponseBody
 from ._delete_dataset_response import DeleteDatasetResponse
@@ -269,6 +290,11 @@ from ._get_cloud_resource_data_response import GetCloudResourceDataResponse
 from ._get_cms_service_request import GetCmsServiceRequest
 from ._get_cms_service_response_body import GetCmsServiceResponseBody
 from ._get_cms_service_response import GetCmsServiceResponse
+from ._get_context_request import GetContextRequest
+from ._get_context_response import GetContextResponse
+from ._get_context_store_request import GetContextStoreRequest
+from ._get_context_store_response_body import GetContextStoreResponseBody
+from ._get_context_store_response import GetContextStoreResponse
 from ._get_dataset_request import GetDatasetRequest
 from ._get_dataset_response_body import GetDatasetResponseBody
 from ._get_dataset_response import GetDatasetResponse
@@ -363,6 +389,12 @@ from ._list_contacts_request import ListContactsRequest
 from ._list_contacts_shrink_request import ListContactsShrinkRequest
 from ._list_contacts_response_body import ListContactsResponseBody
 from ._list_contacts_response import ListContactsResponse
+from ._list_context_store_apikeys_request import ListContextStoreAPIKeysRequest
+from ._list_context_store_apikeys_response_body import ListContextStoreAPIKeysResponseBody
+from ._list_context_store_apikeys_response import ListContextStoreAPIKeysResponse
+from ._list_context_stores_request import ListContextStoresRequest
+from ._list_context_stores_response_body import ListContextStoresResponseBody
+from ._list_context_stores_response import ListContextStoresResponse
 from ._list_datasets_request import ListDatasetsRequest
 from ._list_datasets_response_body import ListDatasetsResponseBody
 from ._list_datasets_response import ListDatasetsResponse
@@ -436,6 +468,9 @@ from ._put_workspace_response import PutWorkspaceResponse
 from ._query_alert_rules_request import QueryAlertRulesRequest
 from ._query_alert_rules_shrink_request import QueryAlertRulesShrinkRequest
 from ._query_alert_rules_response import QueryAlertRulesResponse
+from ._search_context_request import SearchContextRequest
+from ._search_context_response_body import SearchContextResponseBody
+from ._search_context_response import SearchContextResponse
 from ._search_memories_request import SearchMemoriesRequest
 from ._search_memories_response_body import SearchMemoriesResponseBody
 from ._search_memories_response import SearchMemoriesResponse
@@ -461,6 +496,11 @@ from ._update_alert_webhook_response import UpdateAlertWebhookResponse
 from ._update_biz_trace_request import UpdateBizTraceRequest
 from ._update_biz_trace_response_body import UpdateBizTraceResponseBody
 from ._update_biz_trace_response import UpdateBizTraceResponse
+from ._update_context_request import UpdateContextRequest
+from ._update_context_response import UpdateContextResponse
+from ._update_context_store_request import UpdateContextStoreRequest
+from ._update_context_store_response_body import UpdateContextStoreResponseBody
+from ._update_context_store_response import UpdateContextStoreResponse
 from ._update_dataset_request import UpdateDatasetRequest
 from ._update_dataset_response_body import UpdateDatasetResponseBody
 from ._update_dataset_response import UpdateDatasetResponse
@@ -568,11 +608,16 @@ from ._notify_strategy_for_view import NotifyStrategyForViewRoutesEffectTimeRang
 from ._notify_strategy_for_view import NotifyStrategyForViewRoutes
 from ._subscription_for_modify import SubscriptionForModifyPushingSetting
 from ._subscription_for_view import SubscriptionForViewPushingSetting
+from ._add_contexts_request import AddContextsRequestItems
+from ._add_contexts_response_body import AddContextsResponseBodyResults
 from ._add_memories_request import AddMemoriesRequestMessages
 from ._add_memories_response_body import AddMemoriesResponseBodyResults
 from ._create_addon_release_response_body import CreateAddonReleaseResponseBodyReleaseConditions
 from ._create_addon_release_response_body import CreateAddonReleaseResponseBodyRelease
 from ._create_agg_task_group_request import CreateAggTaskGroupRequestTags
+from ._create_context_store_request import CreateContextStoreRequestConfigSource
+from ._create_context_store_request import CreateContextStoreRequestConfig
+from ._create_context_store_request import CreateContextStoreRequestDataset
 from ._create_delivery_task_request import CreateDeliveryTaskRequestSinkList
 from ._create_delivery_task_request import CreateDeliveryTaskRequestTags
 from ._create_integration_policy_request import CreateIntegrationPolicyRequestEntityGroup
@@ -616,6 +661,10 @@ from ._get_addon_schema_response_body import GetAddonSchemaResponseBodyFieldsVal
 from ._get_addon_schema_response_body import GetAddonSchemaResponseBodyFields
 from ._get_agg_task_group_response_body import GetAggTaskGroupResponseBodyAggTaskGroupTags
 from ._get_agg_task_group_response_body import GetAggTaskGroupResponseBodyAggTaskGroup
+from ._get_context_store_response_body import GetContextStoreResponseBodyConfigInnerSource
+from ._get_context_store_response_body import GetContextStoreResponseBodyConfigSource
+from ._get_context_store_response_body import GetContextStoreResponseBodyConfig
+from ._get_context_store_response_body import GetContextStoreResponseBodyDataset
 from ._get_delivery_task_response_body import GetDeliveryTaskResponseBodyDeliveryTaskExtraInfo
 from ._get_delivery_task_response_body import GetDeliveryTaskResponseBodyDeliveryTaskSinkList
 from ._get_delivery_task_response_body import GetDeliveryTaskResponseBodyDeliveryTaskTags
@@ -685,6 +734,8 @@ from ._list_alert_robots_response_body import ListAlertRobotsResponseBodyRobots
 from ._list_alert_webhooks_response_body import ListAlertWebhooksResponseBodyWebhooks
 from ._list_contact_groups_response_body import ListContactGroupsResponseBodyContactGroups
 from ._list_contacts_response_body import ListContactsResponseBodyContacts
+from ._list_context_store_apikeys_response_body import ListContextStoreAPIKeysResponseBodyResults
+from ._list_context_stores_response_body import ListContextStoresResponseBodyResults
 from ._list_datasets_response_body import ListDatasetsResponseBodyDatasets
 from ._list_delivery_tasks_request import ListDeliveryTasksRequestTag
 from ._list_delivery_tasks_response_body import ListDeliveryTasksResponseBodyDeliveryTasksExtraInfo
@@ -740,6 +791,9 @@ from ._list_workspaces_response_body import ListWorkspacesResponseBodyWorkspaces
 from ._search_memories_response_body import SearchMemoriesResponseBodyRelations
 from ._search_memories_response_body import SearchMemoriesResponseBodyResults
 from ._update_agg_task_group_request import UpdateAggTaskGroupRequestTags
+from ._update_context_store_request import UpdateContextStoreRequestConfigSource
+from ._update_context_store_request import UpdateContextStoreRequestConfig
+from ._update_context_store_request import UpdateContextStoreRequestDataset
 from ._update_delivery_task_request import UpdateDeliveryTaskRequestSinkList
 from ._update_integration_policy_request import UpdateIntegrationPolicyRequestTags
 from ._update_pipeline_request import UpdatePipelineRequestExecutePolicyRunOnce
@@ -863,6 +917,9 @@ __all__ = [
     UmodelLabelFilter,
     UuidFilter,
     WorkspaceFilterSetting,
+    AddContextsRequest,
+    AddContextsResponseBody,
+    AddContextsResponse,
     AddMemoriesRequest,
     AddMemoriesResponseBody,
     AddMemoriesResponse,
@@ -883,6 +940,12 @@ __all__ = [
     CreateBizTraceResponse,
     CreateCloudResourceResponseBody,
     CreateCloudResourceResponse,
+    CreateContextStoreRequest,
+    CreateContextStoreResponseBody,
+    CreateContextStoreResponse,
+    CreateContextStoreAPIKeyRequest,
+    CreateContextStoreAPIKeyResponseBody,
+    CreateContextStoreAPIKeyResponse,
     CreateDatasetRequest,
     CreateDatasetResponseBody,
     CreateDatasetResponse,
@@ -937,6 +1000,18 @@ __all__ = [
     DeleteBizTraceResponse,
     DeleteCloudResourceResponseBody,
     DeleteCloudResourceResponse,
+    DeleteContextRequest,
+    DeleteContextResponseBody,
+    DeleteContextResponse,
+    DeleteContextStoreRequest,
+    DeleteContextStoreResponseBody,
+    DeleteContextStoreResponse,
+    DeleteContextStoreAPIKeyRequest,
+    DeleteContextStoreAPIKeyResponseBody,
+    DeleteContextStoreAPIKeyResponse,
+    DeleteContextsRequest,
+    DeleteContextsResponseBody,
+    DeleteContextsResponse,
     DeleteDatasetRequest,
     DeleteDatasetResponseBody,
     DeleteDatasetResponse,
@@ -1021,6 +1096,11 @@ __all__ = [
     GetCmsServiceRequest,
     GetCmsServiceResponseBody,
     GetCmsServiceResponse,
+    GetContextRequest,
+    GetContextResponse,
+    GetContextStoreRequest,
+    GetContextStoreResponseBody,
+    GetContextStoreResponse,
     GetDatasetRequest,
     GetDatasetResponseBody,
     GetDatasetResponse,
@@ -1115,6 +1195,12 @@ __all__ = [
     ListContactsShrinkRequest,
     ListContactsResponseBody,
     ListContactsResponse,
+    ListContextStoreAPIKeysRequest,
+    ListContextStoreAPIKeysResponseBody,
+    ListContextStoreAPIKeysResponse,
+    ListContextStoresRequest,
+    ListContextStoresResponseBody,
+    ListContextStoresResponse,
     ListDatasetsRequest,
     ListDatasetsResponseBody,
     ListDatasetsResponse,
@@ -1188,6 +1274,9 @@ __all__ = [
     QueryAlertRulesRequest,
     QueryAlertRulesShrinkRequest,
     QueryAlertRulesResponse,
+    SearchContextRequest,
+    SearchContextResponseBody,
+    SearchContextResponse,
     SearchMemoriesRequest,
     SearchMemoriesResponseBody,
     SearchMemoriesResponse,
@@ -1213,6 +1302,11 @@ __all__ = [
     UpdateBizTraceRequest,
     UpdateBizTraceResponseBody,
     UpdateBizTraceResponse,
+    UpdateContextRequest,
+    UpdateContextResponse,
+    UpdateContextStoreRequest,
+    UpdateContextStoreResponseBody,
+    UpdateContextStoreResponse,
     UpdateDatasetRequest,
     UpdateDatasetResponseBody,
     UpdateDatasetResponse,
@@ -1320,11 +1414,16 @@ __all__ = [
     NotifyStrategyForViewRoutes,
     SubscriptionForModifyPushingSetting,
     SubscriptionForViewPushingSetting,
+    AddContextsRequestItems,
+    AddContextsResponseBodyResults,
     AddMemoriesRequestMessages,
     AddMemoriesResponseBodyResults,
     CreateAddonReleaseResponseBodyReleaseConditions,
     CreateAddonReleaseResponseBodyRelease,
     CreateAggTaskGroupRequestTags,
+    CreateContextStoreRequestConfigSource,
+    CreateContextStoreRequestConfig,
+    CreateContextStoreRequestDataset,
     CreateDeliveryTaskRequestSinkList,
     CreateDeliveryTaskRequestTags,
     CreateIntegrationPolicyRequestEntityGroup,
@@ -1368,6 +1467,10 @@ __all__ = [
     GetAddonSchemaResponseBodyFields,
     GetAggTaskGroupResponseBodyAggTaskGroupTags,
     GetAggTaskGroupResponseBodyAggTaskGroup,
+    GetContextStoreResponseBodyConfigInnerSource,
+    GetContextStoreResponseBodyConfigSource,
+    GetContextStoreResponseBodyConfig,
+    GetContextStoreResponseBodyDataset,
     GetDeliveryTaskResponseBodyDeliveryTaskExtraInfo,
     GetDeliveryTaskResponseBodyDeliveryTaskSinkList,
     GetDeliveryTaskResponseBodyDeliveryTaskTags,
@@ -1437,6 +1540,8 @@ __all__ = [
     ListAlertWebhooksResponseBodyWebhooks,
     ListContactGroupsResponseBodyContactGroups,
     ListContactsResponseBodyContacts,
+    ListContextStoreAPIKeysResponseBodyResults,
+    ListContextStoresResponseBodyResults,
     ListDatasetsResponseBodyDatasets,
     ListDeliveryTasksRequestTag,
     ListDeliveryTasksResponseBodyDeliveryTasksExtraInfo,
@@ -1492,6 +1597,9 @@ __all__ = [
     SearchMemoriesResponseBodyRelations,
     SearchMemoriesResponseBodyResults,
     UpdateAggTaskGroupRequestTags,
+    UpdateContextStoreRequestConfigSource,
+    UpdateContextStoreRequestConfig,
+    UpdateContextStoreRequestDataset,
     UpdateDeliveryTaskRequestSinkList,
     UpdateIntegrationPolicyRequestTags,
     UpdatePipelineRequestExecutePolicyRunOnce,

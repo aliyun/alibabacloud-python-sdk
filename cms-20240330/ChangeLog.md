@@ -1,3 +1,20 @@
+2026-05-08 Version: 9.2.0
+- Support API AddContexts.
+- Support API CreateContextStore.
+- Support API CreateContextStoreAPIKey.
+- Support API DeleteContext.
+- Support API DeleteContextStore.
+- Support API DeleteContextStoreAPIKey.
+- Support API DeleteContexts.
+- Support API GetContext.
+- Support API GetContextStore.
+- Support API ListContextStoreAPIKeys.
+- Support API ListContextStores.
+- Support API SearchContext.
+- Support API UpdateContext.
+- Support API UpdateContextStore.
+
+
 2026-05-08 Version: 9.1.0
 - Support API CreatePipeline.
 - Support API DeletePipeline.
