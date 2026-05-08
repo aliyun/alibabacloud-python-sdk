@@ -1,3 +1,8 @@
+2026-05-08 Version: 1.2.0
+- Support API QueryQwenConferenceSgTicketPop.
+- Support API QueryQwenConferenceSgTicketSearchPop.
+
+
 2025-09-22 Version: 1.1.1
 - Update API FindGuestTicketRecord: add response parameters Body.Data.$.TicketReceiveDates.
 - Update API QueryAllActivityInfo: add response parameters Body.AccessDeniedDetail.
