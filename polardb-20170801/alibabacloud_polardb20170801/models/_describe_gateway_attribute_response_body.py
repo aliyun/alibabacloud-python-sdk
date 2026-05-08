@@ -12,16 +12,19 @@ class DescribeGatewayAttributeResponseBody(DaraModel):
         self,
         class_code: str = None,
         create_time: str = None,
+        current_version: str = None,
         db_type: str = None,
         endpoints: List[main_models.DescribeGatewayAttributeResponseBodyEndpoints] = None,
         expire_time: str = None,
         expired: bool = None,
         gw_cluster_id: str = None,
         gw_description: str = None,
+        latest_version: str = None,
         modify_time: str = None,
         pay_type: str = None,
         region_id: str = None,
         request_id: str = None,
+        running_version: str = None,
         security_iparrays: List[main_models.DescribeGatewayAttributeResponseBodySecurityIPArrays] = None,
         status: str = None,
         v_switch_id: str = None,
@@ -29,17 +32,20 @@ class DescribeGatewayAttributeResponseBody(DaraModel):
     ):
         self.class_code = class_code
         self.create_time = create_time
+        self.current_version = current_version
         self.db_type = db_type
         self.endpoints = endpoints
         self.expire_time = expire_time
         self.expired = expired
         self.gw_cluster_id = gw_cluster_id
         self.gw_description = gw_description
+        self.latest_version = latest_version
         self.modify_time = modify_time
         self.pay_type = pay_type
         self.region_id = region_id
         # Id of the request
         self.request_id = request_id
+        self.running_version = running_version
         self.security_iparrays = security_iparrays
         self.status = status
         self.v_switch_id = v_switch_id
@@ -66,6 +72,9 @@ class DescribeGatewayAttributeResponseBody(DaraModel):
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
 
+        if self.current_version is not None:
+            result['CurrentVersion'] = self.current_version
+
         if self.db_type is not None:
             result['DbType'] = self.db_type
 
@@ -86,6 +95,9 @@ class DescribeGatewayAttributeResponseBody(DaraModel):
         if self.gw_description is not None:
             result['GwDescription'] = self.gw_description
 
+        if self.latest_version is not None:
+            result['LatestVersion'] = self.latest_version
+
         if self.modify_time is not None:
             result['ModifyTime'] = self.modify_time
 
@@ -97,6 +109,9 @@ class DescribeGatewayAttributeResponseBody(DaraModel):
 
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+
+        if self.running_version is not None:
+            result['RunningVersion'] = self.running_version
 
         result['SecurityIPArrays'] = []
         if self.security_iparrays is not None:
@@ -122,6 +137,9 @@ class DescribeGatewayAttributeResponseBody(DaraModel):
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
 
+        if m.get('CurrentVersion') is not None:
+            self.current_version = m.get('CurrentVersion')
+
         if m.get('DbType') is not None:
             self.db_type = m.get('DbType')
 
@@ -143,6 +161,9 @@ class DescribeGatewayAttributeResponseBody(DaraModel):
         if m.get('GwDescription') is not None:
             self.gw_description = m.get('GwDescription')
 
+        if m.get('LatestVersion') is not None:
+            self.latest_version = m.get('LatestVersion')
+
         if m.get('ModifyTime') is not None:
             self.modify_time = m.get('ModifyTime')
 
@@ -154,6 +175,9 @@ class DescribeGatewayAttributeResponseBody(DaraModel):
 
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+
+        if m.get('RunningVersion') is not None:
+            self.running_version = m.get('RunningVersion')
 
         self.security_iparrays = []
         if m.get('SecurityIPArrays') is not None:

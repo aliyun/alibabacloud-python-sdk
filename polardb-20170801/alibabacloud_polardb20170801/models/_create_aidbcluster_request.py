@@ -13,6 +13,7 @@ class CreateAIDBClusterRequest(DaraModel):
         ack_admin: str = None,
         auto_renew: str = None,
         auto_use_coupon: bool = None,
+        client_token: str = None,
         dbcluster_description: str = None,
         dbcluster_id: str = None,
         dbnode_class: str = None,
@@ -46,6 +47,7 @@ class CreateAIDBClusterRequest(DaraModel):
         self.ack_admin = ack_admin
         self.auto_renew = auto_renew
         self.auto_use_coupon = auto_use_coupon
+        self.client_token = client_token
         self.dbcluster_description = dbcluster_description
         self.dbcluster_id = dbcluster_id
         # This parameter is required.
@@ -71,7 +73,6 @@ class CreateAIDBClusterRequest(DaraModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # This parameter is required.
         self.security_group_id = security_group_id
         self.storage_space = storage_space
         # This parameter is required.
@@ -103,6 +104,9 @@ class CreateAIDBClusterRequest(DaraModel):
 
         if self.auto_use_coupon is not None:
             result['AutoUseCoupon'] = self.auto_use_coupon
+
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
 
         if self.dbcluster_description is not None:
             result['DBClusterDescription'] = self.dbcluster_description
@@ -205,6 +209,9 @@ class CreateAIDBClusterRequest(DaraModel):
 
         if m.get('AutoUseCoupon') is not None:
             self.auto_use_coupon = m.get('AutoUseCoupon')
+
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
 
         if m.get('DBClusterDescription') is not None:
             self.dbcluster_description = m.get('DBClusterDescription')

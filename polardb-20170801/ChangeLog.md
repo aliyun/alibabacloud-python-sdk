@@ -1,3 +1,10 @@
+2026-05-08 Version: 6.17.1
+- Update API CreateAIDBCluster: add request parameters ClientToken.
+- Update API DescribeGatewayAttribute: add response parameters Body.CurrentVersion.
+- Update API DescribeGatewayAttribute: add response parameters Body.LatestVersion.
+- Update API DescribeGatewayAttribute: add response parameters Body.RunningVersion.
+
+
 2026-04-30 Version: 6.17.0
 - Support API CreateAIDBCluster.
 

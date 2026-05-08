@@ -2404,6 +2404,8 @@ class Client(OpenApiClient):
             query['AutoRenew'] = request.auto_renew
         if not DaraCore.is_null(request.auto_use_coupon):
             query['AutoUseCoupon'] = request.auto_use_coupon
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.dbcluster_description):
             query['DBClusterDescription'] = request.dbcluster_description
         if not DaraCore.is_null(request.dbcluster_id):
@@ -2494,6 +2496,8 @@ class Client(OpenApiClient):
             query['AutoRenew'] = request.auto_renew
         if not DaraCore.is_null(request.auto_use_coupon):
             query['AutoUseCoupon'] = request.auto_use_coupon
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.dbcluster_description):
             query['DBClusterDescription'] = request.dbcluster_description
         if not DaraCore.is_null(request.dbcluster_id):
