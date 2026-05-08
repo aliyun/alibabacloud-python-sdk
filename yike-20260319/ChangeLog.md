@@ -1,3 +1,10 @@
+2026-05-08 Version: 1.4.0
+- Support API AddYikeProductionMembers.
+- Support API ListYikeWorkspaces.
+- Support API UpdateYikeProduction.
+- Support API UpdateYikeProductionMemberAuth.
+
+
 2026-05-07 Version: 1.3.1
 - Update API GetYikeStoryboardJob: add response parameters Body.JobResult.SrtFileUrl.
 

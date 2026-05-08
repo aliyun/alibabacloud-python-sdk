@@ -2,6 +2,9 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from ._add_yike_production_members_request import AddYikeProductionMembersRequest
+from ._add_yike_production_members_response_body import AddYikeProductionMembersResponseBody
+from ._add_yike_production_members_response import AddYikeProductionMembersResponse
 from ._add_yike_user_credit_request import AddYikeUserCreditRequest
 from ._add_yike_user_credit_response_body import AddYikeUserCreditResponseBody
 from ._add_yike_user_credit_response import AddYikeUserCreditResponse
@@ -50,6 +53,9 @@ from ._list_yike_asset_folders_response import ListYikeAssetFoldersResponse
 from ._list_yike_productions_request import ListYikeProductionsRequest
 from ._list_yike_productions_response_body import ListYikeProductionsResponseBody
 from ._list_yike_productions_response import ListYikeProductionsResponse
+from ._list_yike_workspaces_request import ListYikeWorkspacesRequest
+from ._list_yike_workspaces_response_body import ListYikeWorkspacesResponseBody
+from ._list_yike_workspaces_response import ListYikeWorkspacesResponse
 from ._precheck_yike_aiapp_job_request import PrecheckYikeAIAppJobRequest
 from ._precheck_yike_aiapp_job_response_body import PrecheckYikeAIAppJobResponseBody
 from ._precheck_yike_aiapp_job_response import PrecheckYikeAIAppJobResponse
@@ -77,6 +83,12 @@ from ._submit_yike_storyboard_job_response import SubmitYikeStoryboardJobRespons
 from ._submit_yike_voice_narrator_job_request import SubmitYikeVoiceNarratorJobRequest
 from ._submit_yike_voice_narrator_job_response_body import SubmitYikeVoiceNarratorJobResponseBody
 from ._submit_yike_voice_narrator_job_response import SubmitYikeVoiceNarratorJobResponse
+from ._update_yike_production_request import UpdateYikeProductionRequest
+from ._update_yike_production_response_body import UpdateYikeProductionResponseBody
+from ._update_yike_production_response import UpdateYikeProductionResponse
+from ._update_yike_production_member_auth_request import UpdateYikeProductionMemberAuthRequest
+from ._update_yike_production_member_auth_response_body import UpdateYikeProductionMemberAuthResponseBody
+from ._update_yike_production_member_auth_response import UpdateYikeProductionMemberAuthResponse
 from ._batch_get_yike_aiapp_job_response_body import BatchGetYikeAIAppJobResponseBodyJobListResultAudioResult
 from ._batch_get_yike_aiapp_job_response_body import BatchGetYikeAIAppJobResponseBodyJobListResultImageResult
 from ._batch_get_yike_aiapp_job_response_body import BatchGetYikeAIAppJobResponseBodyJobListResultVideoResult
@@ -106,9 +118,13 @@ from ._get_yike_user_response_body import GetYikeUserResponseBodyUserInfo
 from ._get_yike_voice_narrator_job_response_body import GetYikeVoiceNarratorJobResponseBodyJobResult
 from ._list_yike_asset_folders_response_body import ListYikeAssetFoldersResponseBodyFolderList
 from ._list_yike_productions_response_body import ListYikeProductionsResponseBodyProductionList
+from ._list_yike_workspaces_response_body import ListYikeWorkspacesResponseBodyWorkspaceList
 from ._precheck_yike_aiapp_job_response_body import PrecheckYikeAIAppJobResponseBodyResult
 
 __all__ = [
+    AddYikeProductionMembersRequest,
+    AddYikeProductionMembersResponseBody,
+    AddYikeProductionMembersResponse,
     AddYikeUserCreditRequest,
     AddYikeUserCreditResponseBody,
     AddYikeUserCreditResponse,
@@ -157,6 +173,9 @@ __all__ = [
     ListYikeProductionsRequest,
     ListYikeProductionsResponseBody,
     ListYikeProductionsResponse,
+    ListYikeWorkspacesRequest,
+    ListYikeWorkspacesResponseBody,
+    ListYikeWorkspacesResponse,
     PrecheckYikeAIAppJobRequest,
     PrecheckYikeAIAppJobResponseBody,
     PrecheckYikeAIAppJobResponse,
@@ -184,6 +203,12 @@ __all__ = [
     SubmitYikeVoiceNarratorJobRequest,
     SubmitYikeVoiceNarratorJobResponseBody,
     SubmitYikeVoiceNarratorJobResponse,
+    UpdateYikeProductionRequest,
+    UpdateYikeProductionResponseBody,
+    UpdateYikeProductionResponse,
+    UpdateYikeProductionMemberAuthRequest,
+    UpdateYikeProductionMemberAuthResponseBody,
+    UpdateYikeProductionMemberAuthResponse,
     BatchGetYikeAIAppJobResponseBodyJobListResultAudioResult,
     BatchGetYikeAIAppJobResponseBodyJobListResultImageResult,
     BatchGetYikeAIAppJobResponseBodyJobListResultVideoResult,
@@ -213,5 +238,6 @@ __all__ = [
     GetYikeVoiceNarratorJobResponseBodyJobResult,
     ListYikeAssetFoldersResponseBodyFolderList,
     ListYikeProductionsResponseBodyProductionList,
+    ListYikeWorkspacesResponseBodyWorkspaceList,
     PrecheckYikeAIAppJobResponseBodyResult
 ]
