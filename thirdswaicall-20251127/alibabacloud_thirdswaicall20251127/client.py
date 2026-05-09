@@ -40,6 +40,76 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return Utils.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def query_task_concurrency_with_options(
+        self,
+        request: main_models.QueryTaskConcurrencyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryTaskConcurrencyResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.task_id):
+            body['TaskId'] = request.task_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryTaskConcurrency',
+            version = '2025-11-27',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryTaskConcurrencyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_task_concurrency_with_options_async(
+        self,
+        request: main_models.QueryTaskConcurrencyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryTaskConcurrencyResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.task_id):
+            body['TaskId'] = request.task_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryTaskConcurrency',
+            version = '2025-11-27',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryTaskConcurrencyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_task_concurrency(
+        self,
+        request: main_models.QueryTaskConcurrencyRequest,
+    ) -> main_models.QueryTaskConcurrencyResponse:
+        runtime = RuntimeOptions()
+        return self.query_task_concurrency_with_options(request, runtime)
+
+    async def query_task_concurrency_async(
+        self,
+        request: main_models.QueryTaskConcurrencyRequest,
+    ) -> main_models.QueryTaskConcurrencyResponse:
+        runtime = RuntimeOptions()
+        return await self.query_task_concurrency_with_options_async(request, runtime)
+
     def read_outbound_task_call_list_with_options(
         self,
         tmp_req: main_models.ReadOutboundTaskCallListRequest,

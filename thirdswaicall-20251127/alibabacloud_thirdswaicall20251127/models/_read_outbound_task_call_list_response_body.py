@@ -357,8 +357,6 @@ class ReadOutboundTaskCallListResponseBodyRecords(DaraModel):
 
         return self
 
-
-
 class ReadOutboundTaskCallListResponseBodyRecordsDialogueList(DaraModel):
     def __init__(
         self,

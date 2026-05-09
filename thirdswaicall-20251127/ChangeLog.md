@@ -1,3 +1,7 @@
+2026-05-09 Version: 1.1.0
+- Support API QueryTaskConcurrency.
+
+
 2026-05-08 Version: 1.0.3
 - Generated python 2025-11-27 for ThirdswAicall.
 
