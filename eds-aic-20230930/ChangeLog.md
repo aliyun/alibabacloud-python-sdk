@@ -1,3 +1,7 @@
+2026-05-09 Version: 4.25.1
+- Update API DescribeSpec: add request parameters ChargeType.
+
+
 2026-04-30 Version: 4.25.0
 - Support API DescribeJVSInstance.
 - Support API ModifyJVSInstance.

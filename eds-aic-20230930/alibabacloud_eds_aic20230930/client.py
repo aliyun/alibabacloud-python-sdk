@@ -3903,6 +3903,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.biz_region_id):
             query['BizRegionId'] = request.biz_region_id
+        if not DaraCore.is_null(request.charge_type):
+            query['ChargeType'] = request.charge_type
         if not DaraCore.is_null(request.matrix_spec):
             query['MatrixSpec'] = request.matrix_spec
         if not DaraCore.is_null(request.max_results):
@@ -3945,6 +3947,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.biz_region_id):
             query['BizRegionId'] = request.biz_region_id
+        if not DaraCore.is_null(request.charge_type):
+            query['ChargeType'] = request.charge_type
         if not DaraCore.is_null(request.matrix_spec):
             query['MatrixSpec'] = request.matrix_spec
         if not DaraCore.is_null(request.max_results):

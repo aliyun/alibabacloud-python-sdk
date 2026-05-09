@@ -10,6 +10,7 @@ class DescribeSpecRequest(DaraModel):
     def __init__(
         self,
         biz_region_id: str = None,
+        charge_type: str = None,
         matrix_spec: str = None,
         max_results: int = None,
         next_token: str = None,
@@ -19,6 +20,7 @@ class DescribeSpecRequest(DaraModel):
         spec_type: str = None,
     ):
         self.biz_region_id = biz_region_id
+        self.charge_type = charge_type
         # The matrix specification.
         # 
         # Valid values:
@@ -54,6 +56,9 @@ class DescribeSpecRequest(DaraModel):
         if self.biz_region_id is not None:
             result['BizRegionId'] = self.biz_region_id
 
+        if self.charge_type is not None:
+            result['ChargeType'] = self.charge_type
+
         if self.matrix_spec is not None:
             result['MatrixSpec'] = self.matrix_spec
 
@@ -81,6 +86,9 @@ class DescribeSpecRequest(DaraModel):
         m = m or dict()
         if m.get('BizRegionId') is not None:
             self.biz_region_id = m.get('BizRegionId')
+
+        if m.get('ChargeType') is not None:
+            self.charge_type = m.get('ChargeType')
 
         if m.get('MatrixSpec') is not None:
             self.matrix_spec = m.get('MatrixSpec')
