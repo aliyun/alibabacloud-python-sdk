@@ -58,6 +58,8 @@ from ._instance_event_item import InstanceEventItem
 from ._instance_info import InstanceInfo
 from ._instance_lifecycle_config import InstanceLifecycleConfig
 from ._job_config import JobConfig
+from ._juice_fs_config import JuiceFsConfig
+from ._juice_fs_mount_config import JuiceFsMountConfig
 from ._key import Key
 from ._layer import Layer
 from ._lifecycle_hook import LifecycleHook
@@ -342,6 +344,8 @@ __all__ = [
     InstanceInfo,
     InstanceLifecycleConfig,
     JobConfig,
+    JuiceFsConfig,
+    JuiceFsMountConfig,
     Key,
     Layer,
     LifecycleHook,

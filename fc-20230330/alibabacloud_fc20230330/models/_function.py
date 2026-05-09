@@ -34,6 +34,7 @@ class Function(DaraModel):
         instance_lifecycle_config: main_models.InstanceLifecycleConfig = None,
         internet_access: bool = None,
         invocation_restriction: main_models.FunctionRestriction = None,
+        juice_fs_config: main_models.JuiceFsConfig = None,
         last_modified_time: str = None,
         last_update_status: str = None,
         last_update_status_reason: str = None,
@@ -100,6 +101,7 @@ class Function(DaraModel):
         # Specifies whether to allow the function to access the Internet. Default value: true.
         self.internet_access = internet_access
         self.invocation_restriction = invocation_restriction
+        self.juice_fs_config = juice_fs_config
         # The last time the function was updated.
         self.last_modified_time = last_modified_time
         # The status of the most recent update that was executed on the function. The initial value for this parameter is Successful once the function has been successfully created. Valid values: Successful, Failed, and InProgress.
@@ -155,6 +157,8 @@ class Function(DaraModel):
             self.instance_lifecycle_config.validate()
         if self.invocation_restriction:
             self.invocation_restriction.validate()
+        if self.juice_fs_config:
+            self.juice_fs_config.validate()
         if self.layers:
             for v1 in self.layers:
                  if v1:
@@ -254,6 +258,9 @@ class Function(DaraModel):
 
         if self.invocation_restriction is not None:
             result['invocationRestriction'] = self.invocation_restriction.to_map()
+
+        if self.juice_fs_config is not None:
+            result['juiceFsConfig'] = self.juice_fs_config.to_map()
 
         if self.last_modified_time is not None:
             result['lastModifiedTime'] = self.last_modified_time
@@ -409,6 +416,10 @@ class Function(DaraModel):
         if m.get('invocationRestriction') is not None:
             temp_model = main_models.FunctionRestriction()
             self.invocation_restriction = temp_model.from_map(m.get('invocationRestriction'))
+
+        if m.get('juiceFsConfig') is not None:
+            temp_model = main_models.JuiceFsConfig()
+            self.juice_fs_config = temp_model.from_map(m.get('juiceFsConfig'))
 
         if m.get('lastModifiedTime') is not None:
             self.last_modified_time = m.get('lastModifiedTime')

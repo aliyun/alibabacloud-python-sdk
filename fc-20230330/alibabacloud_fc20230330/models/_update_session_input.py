@@ -9,6 +9,7 @@ class UpdateSessionInput(DaraModel):
     def __init__(
         self,
         disable_session_id_reuse: bool = None,
+        juice_fs_config: main_models.JuiceFsConfig = None,
         nas_config: main_models.NASConfig = None,
         oss_mount_config: main_models.OSSMountConfig = None,
         polar_fs_config: main_models.PolarFsConfig = None,
@@ -16,6 +17,7 @@ class UpdateSessionInput(DaraModel):
         session_ttlin_seconds: int = None,
     ):
         self.disable_session_id_reuse = disable_session_id_reuse
+        self.juice_fs_config = juice_fs_config
         self.nas_config = nas_config
         self.oss_mount_config = oss_mount_config
         self.polar_fs_config = polar_fs_config
@@ -23,6 +25,8 @@ class UpdateSessionInput(DaraModel):
         self.session_ttlin_seconds = session_ttlin_seconds
 
     def validate(self):
+        if self.juice_fs_config:
+            self.juice_fs_config.validate()
         if self.nas_config:
             self.nas_config.validate()
         if self.oss_mount_config:
@@ -37,6 +41,9 @@ class UpdateSessionInput(DaraModel):
             result = _map
         if self.disable_session_id_reuse is not None:
             result['disableSessionIdReuse'] = self.disable_session_id_reuse
+
+        if self.juice_fs_config is not None:
+            result['juiceFsConfig'] = self.juice_fs_config.to_map()
 
         if self.nas_config is not None:
             result['nasConfig'] = self.nas_config.to_map()
@@ -59,6 +66,10 @@ class UpdateSessionInput(DaraModel):
         m = m or dict()
         if m.get('disableSessionIdReuse') is not None:
             self.disable_session_id_reuse = m.get('disableSessionIdReuse')
+
+        if m.get('juiceFsConfig') is not None:
+            temp_model = main_models.JuiceFsConfig()
+            self.juice_fs_config = temp_model.from_map(m.get('juiceFsConfig'))
 
         if m.get('nasConfig') is not None:
             temp_model = main_models.NASConfig()

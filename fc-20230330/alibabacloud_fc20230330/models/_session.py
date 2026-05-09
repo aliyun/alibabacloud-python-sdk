@@ -12,6 +12,7 @@ class Session(DaraModel):
         created_time: str = None,
         disable_session_id_reuse: bool = None,
         function_name: str = None,
+        juice_fs_config: main_models.JuiceFsConfig = None,
         last_modified_time: str = None,
         nas_config: main_models.NASConfig = None,
         oss_mount_config: main_models.OSSMountConfig = None,
@@ -30,6 +31,7 @@ class Session(DaraModel):
         self.disable_session_id_reuse = disable_session_id_reuse
         # The name of the function to which the session belongs.
         self.function_name = function_name
+        self.juice_fs_config = juice_fs_config
         # The time when the session was last updated.
         self.last_modified_time = last_modified_time
         # The File Storage NAS (NAS) configuration. Once configured, the instance associated with the session can access designated NAS resources.
@@ -50,6 +52,8 @@ class Session(DaraModel):
         self.session_ttlin_seconds = session_ttlin_seconds
 
     def validate(self):
+        if self.juice_fs_config:
+            self.juice_fs_config.validate()
         if self.nas_config:
             self.nas_config.validate()
         if self.oss_mount_config:
@@ -73,6 +77,9 @@ class Session(DaraModel):
 
         if self.function_name is not None:
             result['functionName'] = self.function_name
+
+        if self.juice_fs_config is not None:
+            result['juiceFsConfig'] = self.juice_fs_config.to_map()
 
         if self.last_modified_time is not None:
             result['lastModifiedTime'] = self.last_modified_time
@@ -119,6 +126,10 @@ class Session(DaraModel):
 
         if m.get('functionName') is not None:
             self.function_name = m.get('functionName')
+
+        if m.get('juiceFsConfig') is not None:
+            temp_model = main_models.JuiceFsConfig()
+            self.juice_fs_config = temp_model.from_map(m.get('juiceFsConfig'))
 
         if m.get('lastModifiedTime') is not None:
             self.last_modified_time = m.get('lastModifiedTime')
