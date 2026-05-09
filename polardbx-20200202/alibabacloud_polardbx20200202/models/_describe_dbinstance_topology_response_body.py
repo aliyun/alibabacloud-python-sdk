@@ -255,6 +255,7 @@ class DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems(DaraM
         disk_size: int = None,
         engine: str = None,
         engine_version: str = None,
+        instance_cluster_name: str = None,
         lock_mode: int = None,
         lock_reason: str = None,
         maintain_end_time: str = None,
@@ -263,6 +264,7 @@ class DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems(DaraM
         max_iops: int = None,
         node_class: str = None,
         phy_instance_name: str = None,
+        read_type: str = None,
         region: str = None,
         role: str = None,
         status: str = None,
@@ -284,6 +286,7 @@ class DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems(DaraM
         self.disk_size = disk_size
         self.engine = engine
         self.engine_version = engine_version
+        self.instance_cluster_name = instance_cluster_name
         self.lock_mode = lock_mode
         self.lock_reason = lock_reason
         self.maintain_end_time = maintain_end_time
@@ -292,6 +295,7 @@ class DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems(DaraM
         self.max_iops = max_iops
         self.node_class = node_class
         self.phy_instance_name = phy_instance_name
+        self.read_type = read_type
         self.region = region
         self.role = role
         self.status = status
@@ -362,6 +366,9 @@ class DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems(DaraM
         if self.engine_version is not None:
             result['EngineVersion'] = self.engine_version
 
+        if self.instance_cluster_name is not None:
+            result['InstanceClusterName'] = self.instance_cluster_name
+
         if self.lock_mode is not None:
             result['LockMode'] = self.lock_mode
 
@@ -385,6 +392,9 @@ class DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems(DaraM
 
         if self.phy_instance_name is not None:
             result['PhyInstanceName'] = self.phy_instance_name
+
+        if self.read_type is not None:
+            result['ReadType'] = self.read_type
 
         if self.region is not None:
             result['Region'] = self.region
@@ -456,6 +466,9 @@ class DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems(DaraM
         if m.get('EngineVersion') is not None:
             self.engine_version = m.get('EngineVersion')
 
+        if m.get('InstanceClusterName') is not None:
+            self.instance_cluster_name = m.get('InstanceClusterName')
+
         if m.get('LockMode') is not None:
             self.lock_mode = m.get('LockMode')
 
@@ -479,6 +492,9 @@ class DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems(DaraM
 
         if m.get('PhyInstanceName') is not None:
             self.phy_instance_name = m.get('PhyInstanceName')
+
+        if m.get('ReadType') is not None:
+            self.read_type = m.get('ReadType')
 
         if m.get('Region') is not None:
             self.region = m.get('Region')

@@ -4,24 +4,20 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class ModifyDBInstanceVipRequest(DaraModel):
+class CreateSubCNInstanceRequest(DaraModel):
     def __init__(
         self,
         dbinstance_name: str = None,
-        instance_cluster_name: str = None,
+        is_auto_create: bool = None,
+        read_type: str = None,
         region_id: str = None,
-        v_switch_id: str = None,
-        vpc_id: str = None,
     ):
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
-        self.instance_cluster_name = instance_cluster_name
+        self.is_auto_create = is_auto_create
+        self.read_type = read_type
         # This parameter is required.
         self.region_id = region_id
-        # This parameter is required.
-        self.v_switch_id = v_switch_id
-        # This parameter is required.
-        self.vpc_id = vpc_id
 
     def validate(self):
         pass
@@ -34,17 +30,14 @@ class ModifyDBInstanceVipRequest(DaraModel):
         if self.dbinstance_name is not None:
             result['DBInstanceName'] = self.dbinstance_name
 
-        if self.instance_cluster_name is not None:
-            result['InstanceClusterName'] = self.instance_cluster_name
+        if self.is_auto_create is not None:
+            result['IsAutoCreate'] = self.is_auto_create
+
+        if self.read_type is not None:
+            result['ReadType'] = self.read_type
 
         if self.region_id is not None:
             result['RegionId'] = self.region_id
-
-        if self.v_switch_id is not None:
-            result['VSwitchId'] = self.v_switch_id
-
-        if self.vpc_id is not None:
-            result['VpcId'] = self.vpc_id
 
         return result
 
@@ -53,17 +46,14 @@ class ModifyDBInstanceVipRequest(DaraModel):
         if m.get('DBInstanceName') is not None:
             self.dbinstance_name = m.get('DBInstanceName')
 
-        if m.get('InstanceClusterName') is not None:
-            self.instance_cluster_name = m.get('InstanceClusterName')
+        if m.get('IsAutoCreate') is not None:
+            self.is_auto_create = m.get('IsAutoCreate')
+
+        if m.get('ReadType') is not None:
+            self.read_type = m.get('ReadType')
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
-
-        if m.get('VSwitchId') is not None:
-            self.v_switch_id = m.get('VSwitchId')
-
-        if m.get('VpcId') is not None:
-            self.vpc_id = m.get('VpcId')
 
         return self
 

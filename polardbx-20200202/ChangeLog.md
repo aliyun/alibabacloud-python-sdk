@@ -1,3 +1,15 @@
+2026-05-09 Version: 3.4.0
+- Support API CreateGdnStandbyMember.
+- Support API CreateSubCNInstance.
+- Support API DeleteSubCNInstance.
+- Support API DescribeDBInstanceEndpoint.
+- Support API UpdateCustinsParam.
+- Update API AllocateInstancePublicConnection: add request parameters InstanceClusterName.
+- Update API DescribeDBInstanceTopology: add response parameters Body.Data.LogicInstanceTopology.Items.$.InstanceClusterName.
+- Update API DescribeDBInstanceTopology: add response parameters Body.Data.LogicInstanceTopology.Items.$.ReadType.
+- Update API ModifyDBInstanceVip: add request parameters InstanceClusterName.
+
+
 2026-05-07 Version: 3.3.0
 - Support API RestoreDBInstance.
 

@@ -9,6 +9,7 @@ class AllocateInstancePublicConnectionRequest(DaraModel):
         self,
         connection_string_prefix: str = None,
         dbinstance_name: str = None,
+        instance_cluster_name: str = None,
         owner_account: str = None,
         owner_id: int = None,
         port: str = None,
@@ -20,6 +21,7 @@ class AllocateInstancePublicConnectionRequest(DaraModel):
         self.connection_string_prefix = connection_string_prefix
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
+        self.instance_cluster_name = instance_cluster_name
         self.owner_account = owner_account
         self.owner_id = owner_id
         # This parameter is required.
@@ -41,6 +43,9 @@ class AllocateInstancePublicConnectionRequest(DaraModel):
 
         if self.dbinstance_name is not None:
             result['DBInstanceName'] = self.dbinstance_name
+
+        if self.instance_cluster_name is not None:
+            result['InstanceClusterName'] = self.instance_cluster_name
 
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
@@ -69,6 +74,9 @@ class AllocateInstancePublicConnectionRequest(DaraModel):
 
         if m.get('DBInstanceName') is not None:
             self.dbinstance_name = m.get('DBInstanceName')
+
+        if m.get('InstanceClusterName') is not None:
+            self.instance_cluster_name = m.get('InstanceClusterName')
 
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')

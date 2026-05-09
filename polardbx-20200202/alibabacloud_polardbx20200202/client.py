@@ -258,6 +258,8 @@ class Client(OpenApiClient):
             query['ConnectionStringPrefix'] = request.connection_string_prefix
         if not DaraCore.is_null(request.dbinstance_name):
             query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.instance_cluster_name):
+            query['InstanceClusterName'] = request.instance_cluster_name
         if not DaraCore.is_null(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not DaraCore.is_null(request.owner_id):
@@ -300,6 +302,8 @@ class Client(OpenApiClient):
             query['ConnectionStringPrefix'] = request.connection_string_prefix
         if not DaraCore.is_null(request.dbinstance_name):
             query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.instance_cluster_name):
+            query['InstanceClusterName'] = request.instance_cluster_name
         if not DaraCore.is_null(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not DaraCore.is_null(request.owner_id):
@@ -1661,6 +1665,168 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_gdn_instance_with_options_async(request, runtime)
 
+    def create_gdn_standby_member_with_options(
+        self,
+        request: main_models.CreateGdnStandbyMemberRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateGdnStandbyMemberResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not DaraCore.is_null(request.cnnode_count):
+            query['CNNodeCount'] = request.cnnode_count
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.clone_instance_name):
+            query['CloneInstanceName'] = request.clone_instance_name
+        if not DaraCore.is_null(request.cn_class):
+            query['CnClass'] = request.cn_class
+        if not DaraCore.is_null(request.dnnode_count):
+            query['DNNodeCount'] = request.dnnode_count
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.dn_class):
+            query['DnClass'] = request.dn_class
+        if not DaraCore.is_null(request.engine_version):
+            query['EngineVersion'] = request.engine_version
+        if not DaraCore.is_null(request.network_type):
+            query['NetworkType'] = request.network_type
+        if not DaraCore.is_null(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not DaraCore.is_null(request.period):
+            query['Period'] = request.period
+        if not DaraCore.is_null(request.primary_zone):
+            query['PrimaryZone'] = request.primary_zone
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.secondary_zone):
+            query['SecondaryZone'] = request.secondary_zone
+        if not DaraCore.is_null(request.series):
+            query['Series'] = request.series
+        if not DaraCore.is_null(request.source_instance_region):
+            query['SourceInstanceRegion'] = request.source_instance_region
+        if not DaraCore.is_null(request.storage_type):
+            query['StorageType'] = request.storage_type
+        if not DaraCore.is_null(request.tertiary_zone):
+            query['TertiaryZone'] = request.tertiary_zone
+        if not DaraCore.is_null(request.topology_type):
+            query['TopologyType'] = request.topology_type
+        if not DaraCore.is_null(request.used_time):
+            query['UsedTime'] = request.used_time
+        if not DaraCore.is_null(request.vpcid):
+            query['VPCId'] = request.vpcid
+        if not DaraCore.is_null(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateGdnStandbyMember',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateGdnStandbyMemberResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_gdn_standby_member_with_options_async(
+        self,
+        request: main_models.CreateGdnStandbyMemberRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateGdnStandbyMemberResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not DaraCore.is_null(request.cnnode_count):
+            query['CNNodeCount'] = request.cnnode_count
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.clone_instance_name):
+            query['CloneInstanceName'] = request.clone_instance_name
+        if not DaraCore.is_null(request.cn_class):
+            query['CnClass'] = request.cn_class
+        if not DaraCore.is_null(request.dnnode_count):
+            query['DNNodeCount'] = request.dnnode_count
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.dn_class):
+            query['DnClass'] = request.dn_class
+        if not DaraCore.is_null(request.engine_version):
+            query['EngineVersion'] = request.engine_version
+        if not DaraCore.is_null(request.network_type):
+            query['NetworkType'] = request.network_type
+        if not DaraCore.is_null(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not DaraCore.is_null(request.period):
+            query['Period'] = request.period
+        if not DaraCore.is_null(request.primary_zone):
+            query['PrimaryZone'] = request.primary_zone
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.secondary_zone):
+            query['SecondaryZone'] = request.secondary_zone
+        if not DaraCore.is_null(request.series):
+            query['Series'] = request.series
+        if not DaraCore.is_null(request.source_instance_region):
+            query['SourceInstanceRegion'] = request.source_instance_region
+        if not DaraCore.is_null(request.storage_type):
+            query['StorageType'] = request.storage_type
+        if not DaraCore.is_null(request.tertiary_zone):
+            query['TertiaryZone'] = request.tertiary_zone
+        if not DaraCore.is_null(request.topology_type):
+            query['TopologyType'] = request.topology_type
+        if not DaraCore.is_null(request.used_time):
+            query['UsedTime'] = request.used_time
+        if not DaraCore.is_null(request.vpcid):
+            query['VPCId'] = request.vpcid
+        if not DaraCore.is_null(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateGdnStandbyMember',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateGdnStandbyMemberResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_gdn_standby_member(
+        self,
+        request: main_models.CreateGdnStandbyMemberRequest,
+    ) -> main_models.CreateGdnStandbyMemberResponse:
+        runtime = RuntimeOptions()
+        return self.create_gdn_standby_member_with_options(request, runtime)
+
+    async def create_gdn_standby_member_async(
+        self,
+        request: main_models.CreateGdnStandbyMemberRequest,
+    ) -> main_models.CreateGdnStandbyMemberResponse:
+        runtime = RuntimeOptions()
+        return await self.create_gdn_standby_member_with_options_async(request, runtime)
+
     def create_mem_0with_options(
         self,
         request: main_models.CreateMem0Request,
@@ -2122,6 +2288,88 @@ class Client(OpenApiClient):
     ) -> main_models.CreateStructureImportTaskResponse:
         runtime = RuntimeOptions()
         return await self.create_structure_import_task_with_options_async(request, runtime)
+
+    def create_sub_cninstance_with_options(
+        self,
+        request: main_models.CreateSubCNInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateSubCNInstanceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.is_auto_create):
+            query['IsAutoCreate'] = request.is_auto_create
+        if not DaraCore.is_null(request.read_type):
+            query['ReadType'] = request.read_type
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateSubCNInstance',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateSubCNInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_sub_cninstance_with_options_async(
+        self,
+        request: main_models.CreateSubCNInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateSubCNInstanceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.is_auto_create):
+            query['IsAutoCreate'] = request.is_auto_create
+        if not DaraCore.is_null(request.read_type):
+            query['ReadType'] = request.read_type
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateSubCNInstance',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateSubCNInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_sub_cninstance(
+        self,
+        request: main_models.CreateSubCNInstanceRequest,
+    ) -> main_models.CreateSubCNInstanceResponse:
+        runtime = RuntimeOptions()
+        return self.create_sub_cninstance_with_options(request, runtime)
+
+    async def create_sub_cninstance_async(
+        self,
+        request: main_models.CreateSubCNInstanceRequest,
+    ) -> main_models.CreateSubCNInstanceResponse:
+        runtime = RuntimeOptions()
+        return await self.create_sub_cninstance_with_options_async(request, runtime)
 
     def create_super_account_with_options(
         self,
@@ -2824,6 +3072,80 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteMem0Response:
         runtime = RuntimeOptions()
         return await self.delete_mem_0with_options_async(request, runtime)
+
+    def delete_sub_cninstance_with_options(
+        self,
+        request: main_models.DeleteSubCNInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteSubCNInstanceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteSubCNInstance',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteSubCNInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_sub_cninstance_with_options_async(
+        self,
+        request: main_models.DeleteSubCNInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteSubCNInstanceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteSubCNInstance',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteSubCNInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_sub_cninstance(
+        self,
+        request: main_models.DeleteSubCNInstanceRequest,
+    ) -> main_models.DeleteSubCNInstanceResponse:
+        runtime = RuntimeOptions()
+        return self.delete_sub_cninstance_with_options(request, runtime)
+
+    async def delete_sub_cninstance_async(
+        self,
+        request: main_models.DeleteSubCNInstanceRequest,
+    ) -> main_models.DeleteSubCNInstanceResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_sub_cninstance_with_options_async(request, runtime)
 
     def describe_account_list_with_options(
         self,
@@ -4504,6 +4826,88 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeDBInstanceConfigResponse:
         runtime = RuntimeOptions()
         return await self.describe_dbinstance_config_with_options_async(request, runtime)
+
+    def describe_dbinstance_endpoint_with_options(
+        self,
+        request: main_models.DescribeDBInstanceEndpointRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeDBInstanceEndpointResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeDBInstanceEndpoint',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeDBInstanceEndpointResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_dbinstance_endpoint_with_options_async(
+        self,
+        request: main_models.DescribeDBInstanceEndpointRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeDBInstanceEndpointResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeDBInstanceEndpoint',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeDBInstanceEndpointResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_dbinstance_endpoint(
+        self,
+        request: main_models.DescribeDBInstanceEndpointRequest,
+    ) -> main_models.DescribeDBInstanceEndpointResponse:
+        runtime = RuntimeOptions()
+        return self.describe_dbinstance_endpoint_with_options(request, runtime)
+
+    async def describe_dbinstance_endpoint_async(
+        self,
+        request: main_models.DescribeDBInstanceEndpointRequest,
+    ) -> main_models.DescribeDBInstanceEndpointResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_dbinstance_endpoint_with_options_async(request, runtime)
 
     def describe_dbinstance_hawith_options(
         self,
@@ -9130,6 +9534,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.dbinstance_name):
             query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.instance_cluster_name):
+            query['InstanceClusterName'] = request.instance_cluster_name
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.v_switch_id):
@@ -9164,6 +9570,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.dbinstance_name):
             query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.instance_cluster_name):
+            query['InstanceClusterName'] = request.instance_cluster_name
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.v_switch_id):
@@ -11270,6 +11678,88 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateBackupPolicyResponse:
         runtime = RuntimeOptions()
         return await self.update_backup_policy_with_options_async(request, runtime)
+
+    def update_custins_param_with_options(
+        self,
+        request: main_models.UpdateCustinsParamRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateCustinsParamResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.value):
+            query['Value'] = request.value
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateCustinsParam',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateCustinsParamResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_custins_param_with_options_async(
+        self,
+        request: main_models.UpdateCustinsParamRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateCustinsParamResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.value):
+            query['Value'] = request.value
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateCustinsParam',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateCustinsParamResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_custins_param(
+        self,
+        request: main_models.UpdateCustinsParamRequest,
+    ) -> main_models.UpdateCustinsParamResponse:
+        runtime = RuntimeOptions()
+        return self.update_custins_param_with_options(request, runtime)
+
+    async def update_custins_param_async(
+        self,
+        request: main_models.UpdateCustinsParamRequest,
+    ) -> main_models.UpdateCustinsParamResponse:
+        runtime = RuntimeOptions()
+        return await self.update_custins_param_with_options_async(request, runtime)
 
     def update_dbinstance_sslwith_options(
         self,

@@ -54,6 +54,9 @@ from ._create_data_import_task_response import CreateDataImportTaskResponse
 from ._create_gdn_instance_request import CreateGdnInstanceRequest
 from ._create_gdn_instance_response_body import CreateGdnInstanceResponseBody
 from ._create_gdn_instance_response import CreateGdnInstanceResponse
+from ._create_gdn_standby_member_request import CreateGdnStandbyMemberRequest
+from ._create_gdn_standby_member_response_body import CreateGdnStandbyMemberResponseBody
+from ._create_gdn_standby_member_response import CreateGdnStandbyMemberResponse
 from ._create_mem_0request import CreateMem0Request
 from ._create_mem_0response_body import CreateMem0ResponseBody
 from ._create_mem_0response import CreateMem0Response
@@ -69,6 +72,9 @@ from ._create_storage_pool_response import CreateStoragePoolResponse
 from ._create_structure_import_task_request import CreateStructureImportTaskRequest
 from ._create_structure_import_task_response_body import CreateStructureImportTaskResponseBody
 from ._create_structure_import_task_response import CreateStructureImportTaskResponse
+from ._create_sub_cninstance_request import CreateSubCNInstanceRequest
+from ._create_sub_cninstance_response_body import CreateSubCNInstanceResponseBody
+from ._create_sub_cninstance_response import CreateSubCNInstanceResponse
 from ._create_super_account_request import CreateSuperAccountRequest
 from ._create_super_account_response_body import CreateSuperAccountResponseBody
 from ._create_super_account_response import CreateSuperAccountResponse
@@ -96,6 +102,9 @@ from ._delete_gdn_instance_response import DeleteGdnInstanceResponse
 from ._delete_mem_0request import DeleteMem0Request
 from ._delete_mem_0response_body import DeleteMem0ResponseBody
 from ._delete_mem_0response import DeleteMem0Response
+from ._delete_sub_cninstance_request import DeleteSubCNInstanceRequest
+from ._delete_sub_cninstance_response_body import DeleteSubCNInstanceResponseBody
+from ._delete_sub_cninstance_response import DeleteSubCNInstanceResponse
 from ._describe_account_list_request import DescribeAccountListRequest
 from ._describe_account_list_response_body import DescribeAccountListResponseBody
 from ._describe_account_list_response import DescribeAccountListResponse
@@ -162,6 +171,9 @@ from ._describe_dbinstance_attribute_response import DescribeDBInstanceAttribute
 from ._describe_dbinstance_config_request import DescribeDBInstanceConfigRequest
 from ._describe_dbinstance_config_response_body import DescribeDBInstanceConfigResponseBody
 from ._describe_dbinstance_config_response import DescribeDBInstanceConfigResponse
+from ._describe_dbinstance_endpoint_request import DescribeDBInstanceEndpointRequest
+from ._describe_dbinstance_endpoint_response_body import DescribeDBInstanceEndpointResponseBody
+from ._describe_dbinstance_endpoint_response import DescribeDBInstanceEndpointResponse
 from ._describe_dbinstance_harequest import DescribeDBInstanceHARequest
 from ._describe_dbinstance_haresponse_body import DescribeDBInstanceHAResponseBody
 from ._describe_dbinstance_haresponse import DescribeDBInstanceHAResponse
@@ -398,6 +410,9 @@ from ._untag_resources_response import UntagResourcesResponse
 from ._update_backup_policy_request import UpdateBackupPolicyRequest
 from ._update_backup_policy_response_body import UpdateBackupPolicyResponseBody
 from ._update_backup_policy_response import UpdateBackupPolicyResponse
+from ._update_custins_param_request import UpdateCustinsParamRequest
+from ._update_custins_param_response_body import UpdateCustinsParamResponseBody
+from ._update_custins_param_response import UpdateCustinsParamResponse
 from ._update_dbinstance_sslrequest import UpdateDBInstanceSSLRequest
 from ._update_dbinstance_sslresponse_body import UpdateDBInstanceSSLResponseBody
 from ._update_dbinstance_sslresponse import UpdateDBInstanceSSLResponse
@@ -427,8 +442,10 @@ from ._create_mem_0response_body import CreateMem0ResponseBodyData
 from ._create_rpl_inspection_task_response_body import CreateRplInspectionTaskResponseBodyData
 from ._create_sqlevaluate_task_response_body import CreateSQLEvaluateTaskResponseBodyData
 from ._create_structure_import_task_response_body import CreateStructureImportTaskResponseBodyData
+from ._create_sub_cninstance_response_body import CreateSubCNInstanceResponseBodyData
 from ._delete_gdn_instance_response_body import DeleteGdnInstanceResponseBodyData
 from ._delete_mem_0response_body import DeleteMem0ResponseBodyData
+from ._delete_sub_cninstance_response_body import DeleteSubCNInstanceResponseBodyData
 from ._describe_account_list_response_body import DescribeAccountListResponseBodyData
 from ._describe_active_operation_maintain_conf_response_body import DescribeActiveOperationMaintainConfResponseBodyConfig
 from ._describe_active_operation_tasks_response_body import DescribeActiveOperationTasksResponseBodyItems
@@ -463,6 +480,10 @@ from ._describe_dbinstance_attribute_response_body import DescribeDBInstanceAttr
 from ._describe_dbinstance_attribute_response_body import DescribeDBInstanceAttributeResponseBodyDBInstanceTagSet
 from ._describe_dbinstance_attribute_response_body import DescribeDBInstanceAttributeResponseBodyDBInstance
 from ._describe_dbinstance_config_response_body import DescribeDBInstanceConfigResponseBodyData
+from ._describe_dbinstance_endpoint_response_body import DescribeDBInstanceEndpointResponseBodyDataItemsEndpoint
+from ._describe_dbinstance_endpoint_response_body import DescribeDBInstanceEndpointResponseBodyDataItemsRealServer
+from ._describe_dbinstance_endpoint_response_body import DescribeDBInstanceEndpointResponseBodyDataItems
+from ._describe_dbinstance_endpoint_response_body import DescribeDBInstanceEndpointResponseBodyData
 from ._describe_dbinstance_haresponse_body import DescribeDBInstanceHAResponseBodyData
 from ._describe_dbinstance_sslresponse_body import DescribeDBInstanceSSLResponseBodyData
 from ._describe_dbinstance_tderesponse_body import DescribeDBInstanceTDEResponseBodyData
@@ -552,6 +573,7 @@ from ._submit_sql_flashback_task_response_body import SubmitSqlFlashbackTaskResp
 from ._switch_gdn_member_role_response_body import SwitchGdnMemberRoleResponseBodyData
 from ._tag_resources_request import TagResourcesRequestTag
 from ._update_backup_policy_response_body import UpdateBackupPolicyResponseBodyData
+from ._update_custins_param_response_body import UpdateCustinsParamResponseBodyData
 from ._update_dbinstance_sslresponse_body import UpdateDBInstanceSSLResponseBodyData
 from ._update_dbinstance_tderesponse_body import UpdateDBInstanceTDEResponseBodyData
 from ._upgrade_cdcversion_response_body import UpgradeCDCVersionResponseBodyDataTaskList
@@ -612,6 +634,9 @@ __all__ = [
     CreateGdnInstanceRequest,
     CreateGdnInstanceResponseBody,
     CreateGdnInstanceResponse,
+    CreateGdnStandbyMemberRequest,
+    CreateGdnStandbyMemberResponseBody,
+    CreateGdnStandbyMemberResponse,
     CreateMem0Request,
     CreateMem0ResponseBody,
     CreateMem0Response,
@@ -627,6 +652,9 @@ __all__ = [
     CreateStructureImportTaskRequest,
     CreateStructureImportTaskResponseBody,
     CreateStructureImportTaskResponse,
+    CreateSubCNInstanceRequest,
+    CreateSubCNInstanceResponseBody,
+    CreateSubCNInstanceResponse,
     CreateSuperAccountRequest,
     CreateSuperAccountResponseBody,
     CreateSuperAccountResponse,
@@ -654,6 +682,9 @@ __all__ = [
     DeleteMem0Request,
     DeleteMem0ResponseBody,
     DeleteMem0Response,
+    DeleteSubCNInstanceRequest,
+    DeleteSubCNInstanceResponseBody,
+    DeleteSubCNInstanceResponse,
     DescribeAccountListRequest,
     DescribeAccountListResponseBody,
     DescribeAccountListResponse,
@@ -720,6 +751,9 @@ __all__ = [
     DescribeDBInstanceConfigRequest,
     DescribeDBInstanceConfigResponseBody,
     DescribeDBInstanceConfigResponse,
+    DescribeDBInstanceEndpointRequest,
+    DescribeDBInstanceEndpointResponseBody,
+    DescribeDBInstanceEndpointResponse,
     DescribeDBInstanceHARequest,
     DescribeDBInstanceHAResponseBody,
     DescribeDBInstanceHAResponse,
@@ -956,6 +990,9 @@ __all__ = [
     UpdateBackupPolicyRequest,
     UpdateBackupPolicyResponseBody,
     UpdateBackupPolicyResponse,
+    UpdateCustinsParamRequest,
+    UpdateCustinsParamResponseBody,
+    UpdateCustinsParamResponse,
     UpdateDBInstanceSSLRequest,
     UpdateDBInstanceSSLResponseBody,
     UpdateDBInstanceSSLResponse,
@@ -985,8 +1022,10 @@ __all__ = [
     CreateRplInspectionTaskResponseBodyData,
     CreateSQLEvaluateTaskResponseBodyData,
     CreateStructureImportTaskResponseBodyData,
+    CreateSubCNInstanceResponseBodyData,
     DeleteGdnInstanceResponseBodyData,
     DeleteMem0ResponseBodyData,
+    DeleteSubCNInstanceResponseBodyData,
     DescribeAccountListResponseBodyData,
     DescribeActiveOperationMaintainConfResponseBodyConfig,
     DescribeActiveOperationTasksResponseBodyItems,
@@ -1021,6 +1060,10 @@ __all__ = [
     DescribeDBInstanceAttributeResponseBodyDBInstanceTagSet,
     DescribeDBInstanceAttributeResponseBodyDBInstance,
     DescribeDBInstanceConfigResponseBodyData,
+    DescribeDBInstanceEndpointResponseBodyDataItemsEndpoint,
+    DescribeDBInstanceEndpointResponseBodyDataItemsRealServer,
+    DescribeDBInstanceEndpointResponseBodyDataItems,
+    DescribeDBInstanceEndpointResponseBodyData,
     DescribeDBInstanceHAResponseBodyData,
     DescribeDBInstanceSSLResponseBodyData,
     DescribeDBInstanceTDEResponseBodyData,
@@ -1110,6 +1153,7 @@ __all__ = [
     SwitchGdnMemberRoleResponseBodyData,
     TagResourcesRequestTag,
     UpdateBackupPolicyResponseBodyData,
+    UpdateCustinsParamResponseBodyData,
     UpdateDBInstanceSSLResponseBodyData,
     UpdateDBInstanceTDEResponseBodyData,
     UpgradeCDCVersionResponseBodyDataTaskList,
