@@ -99,6 +99,7 @@ class DescribeSandboxTemplatesResponseBodySandboxTemplates(DaraModel):
         description: str = None,
         enable_vpc_access: str = None,
         name: str = None,
+        replicas: int = None,
         template_id: str = None,
     ):
         self.default_cpu = default_cpu
@@ -106,6 +107,7 @@ class DescribeSandboxTemplatesResponseBodySandboxTemplates(DaraModel):
         self.description = description
         self.enable_vpc_access = enable_vpc_access
         self.name = name
+        self.replicas = replicas
         self.template_id = template_id
 
     def validate(self):
@@ -131,6 +133,9 @@ class DescribeSandboxTemplatesResponseBodySandboxTemplates(DaraModel):
         if self.name is not None:
             result['Name'] = self.name
 
+        if self.replicas is not None:
+            result['Replicas'] = self.replicas
+
         if self.template_id is not None:
             result['TemplateId'] = self.template_id
 
@@ -152,6 +157,9 @@ class DescribeSandboxTemplatesResponseBodySandboxTemplates(DaraModel):
 
         if m.get('Name') is not None:
             self.name = m.get('Name')
+
+        if m.get('Replicas') is not None:
+            self.replicas = m.get('Replicas')
 
         if m.get('TemplateId') is not None:
             self.template_id = m.get('TemplateId')

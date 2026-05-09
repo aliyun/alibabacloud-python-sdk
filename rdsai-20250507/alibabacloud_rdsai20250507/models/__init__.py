@@ -141,6 +141,10 @@ from ._list_scheduled_tasks_response import ListScheduledTasksResponse
 from ._list_skill_request import ListSkillRequest
 from ._list_skill_response_body import ListSkillResponseBody
 from ._list_skill_response import ListSkillResponse
+from ._modify_app_instance_request import ModifyAppInstanceRequest
+from ._modify_app_instance_shrink_request import ModifyAppInstanceShrinkRequest
+from ._modify_app_instance_response_body import ModifyAppInstanceResponseBody
+from ._modify_app_instance_response import ModifyAppInstanceResponse
 from ._modify_instance_auth_config_request import ModifyInstanceAuthConfigRequest
 from ._modify_instance_auth_config_shrink_request import ModifyInstanceAuthConfigShrinkRequest
 from ._modify_instance_auth_config_response_body import ModifyInstanceAuthConfigResponseBody
@@ -258,6 +262,8 @@ from ._list_custom_agent_tools_response_body import ListCustomAgentToolsResponse
 from ._list_llmtoken_usage_response_body import ListLLMTokenUsageResponseBodyTokenUsages
 from ._list_scheduled_tasks_response_body import ListScheduledTasksResponseBodySchedules
 from ._list_skill_response_body import ListSkillResponseBodyData
+from ._modify_app_instance_request import ModifyAppInstanceRequestComponents
+from ._modify_app_instance_response_body import ModifyAppInstanceResponseBodyComponents
 from ._modify_instance_auth_config_request import ModifyInstanceAuthConfigRequestConfigList
 from ._modify_instance_ragconfig_request import ModifyInstanceRAGConfigRequestConfigList
 from ._modify_instance_storage_config_request import ModifyInstanceStorageConfigRequestConfigList
@@ -410,6 +416,10 @@ __all__ = [
     ListSkillRequest,
     ListSkillResponseBody,
     ListSkillResponse,
+    ModifyAppInstanceRequest,
+    ModifyAppInstanceShrinkRequest,
+    ModifyAppInstanceResponseBody,
+    ModifyAppInstanceResponse,
     ModifyInstanceAuthConfigRequest,
     ModifyInstanceAuthConfigShrinkRequest,
     ModifyInstanceAuthConfigResponseBody,
@@ -527,6 +537,8 @@ __all__ = [
     ListLLMTokenUsageResponseBodyTokenUsages,
     ListScheduledTasksResponseBodySchedules,
     ListSkillResponseBodyData,
+    ModifyAppInstanceRequestComponents,
+    ModifyAppInstanceResponseBodyComponents,
     ModifyInstanceAuthConfigRequestConfigList,
     ModifyInstanceRAGConfigRequestConfigList,
     ModifyInstanceStorageConfigRequestConfigList,

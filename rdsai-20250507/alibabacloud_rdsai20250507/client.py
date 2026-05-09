@@ -3808,6 +3808,96 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_skill_with_options_async(request, runtime)
 
+    def modify_app_instance_with_options(
+        self,
+        tmp_req: main_models.ModifyAppInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyAppInstanceResponse:
+        tmp_req.validate()
+        request = main_models.ModifyAppInstanceShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.components):
+            request.components_shrink = Utils.array_to_string_with_specified_style(tmp_req.components, 'Components', 'json')
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.components_shrink):
+            query['Components'] = request.components_shrink
+        if not DaraCore.is_null(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyAppInstance',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyAppInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_app_instance_with_options_async(
+        self,
+        tmp_req: main_models.ModifyAppInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyAppInstanceResponse:
+        tmp_req.validate()
+        request = main_models.ModifyAppInstanceShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.components):
+            request.components_shrink = Utils.array_to_string_with_specified_style(tmp_req.components, 'Components', 'json')
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.components_shrink):
+            query['Components'] = request.components_shrink
+        if not DaraCore.is_null(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyAppInstance',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyAppInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_app_instance(
+        self,
+        request: main_models.ModifyAppInstanceRequest,
+    ) -> main_models.ModifyAppInstanceResponse:
+        runtime = RuntimeOptions()
+        return self.modify_app_instance_with_options(request, runtime)
+
+    async def modify_app_instance_async(
+        self,
+        request: main_models.ModifyAppInstanceRequest,
+    ) -> main_models.ModifyAppInstanceResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_app_instance_with_options_async(request, runtime)
+
     def modify_instance_auth_config_with_options(
         self,
         tmp_req: main_models.ModifyInstanceAuthConfigRequest,

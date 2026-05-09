@@ -1,3 +1,8 @@
+2026-05-09 Version: 3.4.0
+- Support API ModifyAppInstance.
+- Update API DescribeSandboxTemplates: add response parameters Body.SandboxTemplates.$.Replicas.
+
+
 2026-05-07 Version: 3.3.0
 - Support API GetAvailableLLMModels.
 - Support API ListLLMTokenUsage.
