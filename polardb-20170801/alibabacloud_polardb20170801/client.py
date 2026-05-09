@@ -3753,6 +3753,100 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_backup_with_options_async(request, runtime)
 
+    def create_batch_task_with_options(
+        self,
+        tmp_req: main_models.CreateBatchTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateBatchTaskResponse:
+        tmp_req.validate()
+        request = main_models.CreateBatchTaskShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.instance_ids):
+            request.instance_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.instance_ids, 'InstanceIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.instance_ids_shrink):
+            query['InstanceIds'] = request.instance_ids_shrink
+        if not DaraCore.is_null(request.param):
+            query['Param'] = request.param
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.task_name):
+            query['TaskName'] = request.task_name
+        if not DaraCore.is_null(request.task_type):
+            query['TaskType'] = request.task_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateBatchTask',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateBatchTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_batch_task_with_options_async(
+        self,
+        tmp_req: main_models.CreateBatchTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateBatchTaskResponse:
+        tmp_req.validate()
+        request = main_models.CreateBatchTaskShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.instance_ids):
+            request.instance_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.instance_ids, 'InstanceIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.instance_ids_shrink):
+            query['InstanceIds'] = request.instance_ids_shrink
+        if not DaraCore.is_null(request.param):
+            query['Param'] = request.param
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.task_name):
+            query['TaskName'] = request.task_name
+        if not DaraCore.is_null(request.task_type):
+            query['TaskType'] = request.task_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateBatchTask',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateBatchTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_batch_task(
+        self,
+        request: main_models.CreateBatchTaskRequest,
+    ) -> main_models.CreateBatchTaskResponse:
+        runtime = RuntimeOptions()
+        return self.create_batch_task_with_options(request, runtime)
+
+    async def create_batch_task_async(
+        self,
+        request: main_models.CreateBatchTaskRequest,
+    ) -> main_models.CreateBatchTaskResponse:
+        runtime = RuntimeOptions()
+        return await self.create_batch_task_with_options_async(request, runtime)
+
     def create_budget_policy_with_options(
         self,
         request: main_models.CreateBudgetPolicyRequest,
@@ -13664,6 +13758,174 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeBackupsResponse:
         runtime = RuntimeOptions()
         return await self.describe_backups_with_options_async(request, runtime)
+
+    def describe_batch_task_with_options(
+        self,
+        request: main_models.DescribeBatchTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeBatchTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.batch_id):
+            query['BatchId'] = request.batch_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeBatchTask',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeBatchTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_batch_task_with_options_async(
+        self,
+        request: main_models.DescribeBatchTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeBatchTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.batch_id):
+            query['BatchId'] = request.batch_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeBatchTask',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeBatchTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_batch_task(
+        self,
+        request: main_models.DescribeBatchTaskRequest,
+    ) -> main_models.DescribeBatchTaskResponse:
+        runtime = RuntimeOptions()
+        return self.describe_batch_task_with_options(request, runtime)
+
+    async def describe_batch_task_async(
+        self,
+        request: main_models.DescribeBatchTaskRequest,
+    ) -> main_models.DescribeBatchTaskResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_batch_task_with_options_async(request, runtime)
+
+    def describe_batch_tasks_with_options(
+        self,
+        tmp_req: main_models.DescribeBatchTasksRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeBatchTasksResponse:
+        tmp_req.validate()
+        request = main_models.DescribeBatchTasksShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.status):
+            request.status_shrink = Utils.array_to_string_with_specified_style(tmp_req.status, 'Status', 'json')
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.status_shrink):
+            query['Status'] = request.status_shrink
+        if not DaraCore.is_null(request.task_type):
+            query['TaskType'] = request.task_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeBatchTasks',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeBatchTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_batch_tasks_with_options_async(
+        self,
+        tmp_req: main_models.DescribeBatchTasksRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeBatchTasksResponse:
+        tmp_req.validate()
+        request = main_models.DescribeBatchTasksShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.status):
+            request.status_shrink = Utils.array_to_string_with_specified_style(tmp_req.status, 'Status', 'json')
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.status_shrink):
+            query['Status'] = request.status_shrink
+        if not DaraCore.is_null(request.task_type):
+            query['TaskType'] = request.task_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeBatchTasks',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeBatchTasksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_batch_tasks(
+        self,
+        request: main_models.DescribeBatchTasksRequest,
+    ) -> main_models.DescribeBatchTasksResponse:
+        runtime = RuntimeOptions()
+        return self.describe_batch_tasks_with_options(request, runtime)
+
+    async def describe_batch_tasks_async(
+        self,
+        request: main_models.DescribeBatchTasksRequest,
+    ) -> main_models.DescribeBatchTasksResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_batch_tasks_with_options_async(request, runtime)
 
     def describe_budget_policies_with_options(
         self,

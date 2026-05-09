@@ -1,3 +1,9 @@
+2026-05-09 Version: 6.18.0
+- Support API CreateBatchTask.
+- Support API DescribeBatchTask.
+- Support API DescribeBatchTasks.
+
+
 2026-05-08 Version: 6.17.1
 - Update API CreateAIDBCluster: add request parameters ClientToken.
 - Update API DescribeGatewayAttribute: add response parameters Body.CurrentVersion.

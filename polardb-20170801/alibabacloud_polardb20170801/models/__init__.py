@@ -116,6 +116,10 @@ from ._create_application_prompt_response import CreateApplicationPromptResponse
 from ._create_backup_request import CreateBackupRequest
 from ._create_backup_response_body import CreateBackupResponseBody
 from ._create_backup_response import CreateBackupResponse
+from ._create_batch_task_request import CreateBatchTaskRequest
+from ._create_batch_task_shrink_request import CreateBatchTaskShrinkRequest
+from ._create_batch_task_response_body import CreateBatchTaskResponseBody
+from ._create_batch_task_response import CreateBatchTaskResponse
 from ._create_budget_policy_request import CreateBudgetPolicyRequest
 from ._create_budget_policy_response_body import CreateBudgetPolicyResponseBody
 from ._create_budget_policy_response import CreateBudgetPolicyResponse
@@ -426,6 +430,13 @@ from ._describe_backup_tasks_response import DescribeBackupTasksResponse
 from ._describe_backups_request import DescribeBackupsRequest
 from ._describe_backups_response_body import DescribeBackupsResponseBody
 from ._describe_backups_response import DescribeBackupsResponse
+from ._describe_batch_task_request import DescribeBatchTaskRequest
+from ._describe_batch_task_response_body import DescribeBatchTaskResponseBody
+from ._describe_batch_task_response import DescribeBatchTaskResponse
+from ._describe_batch_tasks_request import DescribeBatchTasksRequest
+from ._describe_batch_tasks_shrink_request import DescribeBatchTasksShrinkRequest
+from ._describe_batch_tasks_response_body import DescribeBatchTasksResponseBody
+from ._describe_batch_tasks_response import DescribeBatchTasksResponse
 from ._describe_budget_policies_request import DescribeBudgetPoliciesRequest
 from ._describe_budget_policies_response_body import DescribeBudgetPoliciesResponseBody
 from ._describe_budget_policies_response import DescribeBudgetPoliciesResponse
@@ -1259,6 +1270,8 @@ from ._describe_backup_tasks_response_body import DescribeBackupTasksResponseBod
 from ._describe_backup_tasks_response_body import DescribeBackupTasksResponseBodyItems
 from ._describe_backups_response_body import DescribeBackupsResponseBodyItemsBackup
 from ._describe_backups_response_body import DescribeBackupsResponseBodyItems
+from ._describe_batch_task_response_body import DescribeBatchTaskResponseBodySubTasks
+from ._describe_batch_tasks_response_body import DescribeBatchTasksResponseBodyTaskList
 from ._describe_budget_policies_response_body import DescribeBudgetPoliciesResponseBodyItems
 from ._describe_character_set_name_response_body import DescribeCharacterSetNameResponseBodyCharacterSetNameItems
 from ._describe_class_list_response_body import DescribeClassListResponseBodyItems
@@ -1605,6 +1618,10 @@ __all__ = [
     CreateBackupRequest,
     CreateBackupResponseBody,
     CreateBackupResponse,
+    CreateBatchTaskRequest,
+    CreateBatchTaskShrinkRequest,
+    CreateBatchTaskResponseBody,
+    CreateBatchTaskResponse,
     CreateBudgetPolicyRequest,
     CreateBudgetPolicyResponseBody,
     CreateBudgetPolicyResponse,
@@ -1915,6 +1932,13 @@ __all__ = [
     DescribeBackupsRequest,
     DescribeBackupsResponseBody,
     DescribeBackupsResponse,
+    DescribeBatchTaskRequest,
+    DescribeBatchTaskResponseBody,
+    DescribeBatchTaskResponse,
+    DescribeBatchTasksRequest,
+    DescribeBatchTasksShrinkRequest,
+    DescribeBatchTasksResponseBody,
+    DescribeBatchTasksResponse,
     DescribeBudgetPoliciesRequest,
     DescribeBudgetPoliciesResponseBody,
     DescribeBudgetPoliciesResponse,
@@ -2748,6 +2772,8 @@ __all__ = [
     DescribeBackupTasksResponseBodyItems,
     DescribeBackupsResponseBodyItemsBackup,
     DescribeBackupsResponseBodyItems,
+    DescribeBatchTaskResponseBodySubTasks,
+    DescribeBatchTasksResponseBodyTaskList,
     DescribeBudgetPoliciesResponseBodyItems,
     DescribeCharacterSetNameResponseBodyCharacterSetNameItems,
     DescribeClassListResponseBodyItems,
