@@ -19,6 +19,7 @@ from ._debugger_config import DebuggerConfig
 from ._debugger_job import DebuggerJob
 from ._debugger_job_issue import DebuggerJobIssue
 from ._debugger_result import DebuggerResult
+from ._download_job_result import DownloadJobResult
 from ._ecs_spec import EcsSpec
 from ._env_var import EnvVar
 from ._event_info import EventInfo
@@ -203,6 +204,7 @@ __all__ = [
     DebuggerJob,
     DebuggerJobIssue,
     DebuggerResult,
+    DownloadJobResult,
     EcsSpec,
     EnvVar,
     EventInfo,

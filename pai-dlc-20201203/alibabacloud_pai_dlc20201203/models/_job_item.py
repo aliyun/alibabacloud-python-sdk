@@ -50,6 +50,7 @@ class JobItem(DaraModel):
         resource_quota_name: str = None,
         resource_type: str = None,
         restart_times: str = None,
+        scheduling_strategy: str = None,
         settings: main_models.JobSettings = None,
         status: str = None,
         status_history: List[main_models.StatusTransitionItem] = None,
@@ -162,6 +163,7 @@ class JobItem(DaraModel):
         self.resource_type = resource_type
         # The number of job restarts.
         self.restart_times = restart_times
+        self.scheduling_strategy = scheduling_strategy
         # The extra parameters of the job.
         self.settings = settings
         # The job status. Valid values:
@@ -367,6 +369,9 @@ class JobItem(DaraModel):
         if self.restart_times is not None:
             result['RestartTimes'] = self.restart_times
 
+        if self.scheduling_strategy is not None:
+            result['SchedulingStrategy'] = self.scheduling_strategy
+
         if self.settings is not None:
             result['Settings'] = self.settings.to_map()
 
@@ -564,6 +569,9 @@ class JobItem(DaraModel):
 
         if m.get('RestartTimes') is not None:
             self.restart_times = m.get('RestartTimes')
+
+        if m.get('SchedulingStrategy') is not None:
+            self.scheduling_strategy = m.get('SchedulingStrategy')
 
         if m.get('Settings') is not None:
             temp_model = main_models.JobSettings()

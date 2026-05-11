@@ -126,6 +126,8 @@ class Client(OpenApiClient):
             body['Priority'] = request.priority
         if not DaraCore.is_null(request.resource_id):
             body['ResourceId'] = request.resource_id
+        if not DaraCore.is_null(request.scheduling_strategy):
+            body['SchedulingStrategy'] = request.scheduling_strategy
         if not DaraCore.is_null(request.settings):
             body['Settings'] = request.settings
         if not DaraCore.is_null(request.success_policy):
@@ -204,6 +206,8 @@ class Client(OpenApiClient):
             body['Priority'] = request.priority
         if not DaraCore.is_null(request.resource_id):
             body['ResourceId'] = request.resource_id
+        if not DaraCore.is_null(request.scheduling_strategy):
+            body['SchedulingStrategy'] = request.scheduling_strategy
         if not DaraCore.is_null(request.settings):
             body['Settings'] = request.settings
         if not DaraCore.is_null(request.success_policy):

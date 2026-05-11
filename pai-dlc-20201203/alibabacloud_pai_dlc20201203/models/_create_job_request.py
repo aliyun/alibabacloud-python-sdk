@@ -26,6 +26,7 @@ class CreateJobRequest(DaraModel):
         options: str = None,
         priority: int = None,
         resource_id: str = None,
+        scheduling_strategy: str = None,
         settings: main_models.JobSettings = None,
         success_policy: str = None,
         template_id: str = None,
@@ -106,6 +107,7 @@ class CreateJobRequest(DaraModel):
         # *   If you leave this parameter empty, the job is submitted to a public resource group.
         # *   If a resource quota is bound to the current workspace, you can specify the resource quota ID. For more information about how to query the resource quota ID, see [Manage resource quotas](https://help.aliyun.com/document_detail/2651299.html).
         self.resource_id = resource_id
+        self.scheduling_strategy = scheduling_strategy
         # The additional parameter configurations of the job.
         self.settings = settings
         # The policy that is used to check whether a distributed multi-node job is successful. Only TensorFlow distributed multi-node jobs are supported.
@@ -213,6 +215,9 @@ class CreateJobRequest(DaraModel):
         if self.resource_id is not None:
             result['ResourceId'] = self.resource_id
 
+        if self.scheduling_strategy is not None:
+            result['SchedulingStrategy'] = self.scheduling_strategy
+
         if self.settings is not None:
             result['Settings'] = self.settings.to_map()
 
@@ -303,6 +308,9 @@ class CreateJobRequest(DaraModel):
 
         if m.get('ResourceId') is not None:
             self.resource_id = m.get('ResourceId')
+
+        if m.get('SchedulingStrategy') is not None:
+            self.scheduling_strategy = m.get('SchedulingStrategy')
 
         if m.get('Settings') is not None:
             temp_model = main_models.JobSettings()

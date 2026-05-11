@@ -1,3 +1,8 @@
+2026-05-11 Version: 1.7.1
+- Update API CreateJob: add request parameters body.SchedulingStrategy.
+- Update API GetJob: add response parameters Body.SchedulingStrategy.
+
+
 2026-05-07 Version: 1.7.0
 - Support API CreateJobTemplate.
 - Support API DeleteJobTemplate.
