@@ -11,6 +11,7 @@ class CreateResourceGroupRequest(DaraModel):
         enable_aliyun_resource_group: bool = None,
         is_resource_group_with_office_site: int = None,
         platform: str = None,
+        resource_classification: str = None,
         resource_group_name: str = None,
     ):
         self.business_channel = business_channel
@@ -21,6 +22,7 @@ class CreateResourceGroupRequest(DaraModel):
         # 
         # *   This parameter is not publicly available in other platforms.
         self.platform = platform
+        self.resource_classification = resource_classification
         # The name of the resource group.
         self.resource_group_name = resource_group_name
 
@@ -44,6 +46,9 @@ class CreateResourceGroupRequest(DaraModel):
         if self.platform is not None:
             result['Platform'] = self.platform
 
+        if self.resource_classification is not None:
+            result['ResourceClassification'] = self.resource_classification
+
         if self.resource_group_name is not None:
             result['ResourceGroupName'] = self.resource_group_name
 
@@ -62,6 +67,9 @@ class CreateResourceGroupRequest(DaraModel):
 
         if m.get('Platform') is not None:
             self.platform = m.get('Platform')
+
+        if m.get('ResourceClassification') is not None:
+            self.resource_classification = m.get('ResourceClassification')
 
         if m.get('ResourceGroupName') is not None:
             self.resource_group_name = m.get('ResourceGroupName')

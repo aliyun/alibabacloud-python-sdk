@@ -609,6 +609,8 @@ class Client(OpenApiClient):
             query['IsResourceGroupWithOfficeSite'] = request.is_resource_group_with_office_site
         if not DaraCore.is_null(request.platform):
             query['Platform'] = request.platform
+        if not DaraCore.is_null(request.resource_classification):
+            query['ResourceClassification'] = request.resource_classification
         if not DaraCore.is_null(request.resource_group_name):
             query['ResourceGroupName'] = request.resource_group_name
         req = open_api_util_models.OpenApiRequest(
@@ -645,6 +647,8 @@ class Client(OpenApiClient):
             query['IsResourceGroupWithOfficeSite'] = request.is_resource_group_with_office_site
         if not DaraCore.is_null(request.platform):
             query['Platform'] = request.platform
+        if not DaraCore.is_null(request.resource_classification):
+            query['ResourceClassification'] = request.resource_classification
         if not DaraCore.is_null(request.resource_group_name):
             query['ResourceGroupName'] = request.resource_group_name
         req = open_api_util_models.OpenApiRequest(
@@ -1431,6 +1435,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not DaraCore.is_null(request.platform):
             query['Platform'] = request.platform
+        if not DaraCore.is_null(request.resource_classification):
+            query['ResourceClassification'] = request.resource_classification
         if not DaraCore.is_null(request.resource_group_ids):
             query['ResourceGroupIds'] = request.resource_group_ids
         if not DaraCore.is_null(request.resource_group_name):
@@ -1473,6 +1479,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not DaraCore.is_null(request.platform):
             query['Platform'] = request.platform
+        if not DaraCore.is_null(request.resource_classification):
+            query['ResourceClassification'] = request.resource_classification
         if not DaraCore.is_null(request.resource_group_ids):
             query['ResourceGroupIds'] = request.resource_group_ids
         if not DaraCore.is_null(request.resource_group_name):

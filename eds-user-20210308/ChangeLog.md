@@ -1,3 +1,8 @@
+2026-05-11 Version: 2.0.4
+- Update API CreateResourceGroup: add request parameters ResourceClassification.
+- Update API DescribeResourceGroups: add request parameters ResourceClassification.
+
+
 2026-05-03 Version: 2.0.3
 - Update API DescribeUser: add response parameters Body.User.NickName.
 

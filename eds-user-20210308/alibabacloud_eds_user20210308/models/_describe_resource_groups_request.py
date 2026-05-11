@@ -15,6 +15,7 @@ class DescribeResourceGroupsRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
         platform: str = None,
+        resource_classification: str = None,
         resource_group_ids: List[str] = None,
         resource_group_name: str = None,
     ):
@@ -30,6 +31,7 @@ class DescribeResourceGroupsRequest(DaraModel):
         # 
         # *   This parameter is not publicly available on other platforms.
         self.platform = platform
+        self.resource_classification = resource_classification
         # The IDs of the resource groups that you want to query.
         self.resource_group_ids = resource_group_ids
         # The name of the resource group.
@@ -61,6 +63,9 @@ class DescribeResourceGroupsRequest(DaraModel):
         if self.platform is not None:
             result['Platform'] = self.platform
 
+        if self.resource_classification is not None:
+            result['ResourceClassification'] = self.resource_classification
+
         if self.resource_group_ids is not None:
             result['ResourceGroupIds'] = self.resource_group_ids
 
@@ -88,6 +93,9 @@ class DescribeResourceGroupsRequest(DaraModel):
 
         if m.get('Platform') is not None:
             self.platform = m.get('Platform')
+
+        if m.get('ResourceClassification') is not None:
+            self.resource_classification = m.get('ResourceClassification')
 
         if m.get('ResourceGroupIds') is not None:
             self.resource_group_ids = m.get('ResourceGroupIds')
