@@ -1,3 +1,10 @@
+2026-05-11 Version: 6.14.0
+- Support API CreateServiceRollout.
+- Support API DeleteServiceRollout.
+- Support API DescribeServiceRollout.
+- Support API UpdateServiceRollout.
+
+
 2026-05-06 Version: 6.13.5
 - Generated python 2021-07-01 for eas.
 

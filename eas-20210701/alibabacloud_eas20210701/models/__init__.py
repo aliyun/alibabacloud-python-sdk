@@ -68,6 +68,9 @@ from ._create_service_instance_token_response import CreateServiceInstanceTokenR
 from ._create_service_mirror_request import CreateServiceMirrorRequest
 from ._create_service_mirror_response_body import CreateServiceMirrorResponseBody
 from ._create_service_mirror_response import CreateServiceMirrorResponse
+from ._create_service_rollout_request import CreateServiceRolloutRequest
+from ._create_service_rollout_response_body import CreateServiceRolloutResponseBody
+from ._create_service_rollout_response import CreateServiceRolloutResponse
 from ._create_virtual_resource_request import CreateVirtualResourceRequest
 from ._create_virtual_resource_response_body import CreateVirtualResourceResponseBody
 from ._create_virtual_resource_response import CreateVirtualResourceResponse
@@ -130,6 +133,9 @@ from ._delete_service_label_response import DeleteServiceLabelResponse
 from ._delete_service_mirror_request import DeleteServiceMirrorRequest
 from ._delete_service_mirror_response_body import DeleteServiceMirrorResponseBody
 from ._delete_service_mirror_response import DeleteServiceMirrorResponse
+from ._delete_service_rollout_request import DeleteServiceRolloutRequest
+from ._delete_service_rollout_response_body import DeleteServiceRolloutResponseBody
+from ._delete_service_rollout_response import DeleteServiceRolloutResponse
 from ._delete_virtual_resource_request import DeleteVirtualResourceRequest
 from ._delete_virtual_resource_response_body import DeleteVirtualResourceResponseBody
 from ._delete_virtual_resource_response import DeleteVirtualResourceResponse
@@ -188,6 +194,9 @@ from ._describe_service_log_response import DescribeServiceLogResponse
 from ._describe_service_mirror_request import DescribeServiceMirrorRequest
 from ._describe_service_mirror_response_body import DescribeServiceMirrorResponseBody
 from ._describe_service_mirror_response import DescribeServiceMirrorResponse
+from ._describe_service_rollout_request import DescribeServiceRolloutRequest
+from ._describe_service_rollout_response_body import DescribeServiceRolloutResponseBody
+from ._describe_service_rollout_response import DescribeServiceRolloutResponse
 from ._describe_service_signed_url_request import DescribeServiceSignedUrlRequest
 from ._describe_service_signed_url_response_body import DescribeServiceSignedUrlResponseBody
 from ._describe_service_signed_url_response import DescribeServiceSignedUrlResponse
@@ -336,6 +345,9 @@ from ._update_service_label_response import UpdateServiceLabelResponse
 from ._update_service_mirror_request import UpdateServiceMirrorRequest
 from ._update_service_mirror_response_body import UpdateServiceMirrorResponseBody
 from ._update_service_mirror_response import UpdateServiceMirrorResponse
+from ._update_service_rollout_request import UpdateServiceRolloutRequest
+from ._update_service_rollout_response_body import UpdateServiceRolloutResponseBody
+from ._update_service_rollout_response import UpdateServiceRolloutResponse
 from ._update_service_safety_lock_request import UpdateServiceSafetyLockRequest
 from ._update_service_safety_lock_response_body import UpdateServiceSafetyLockResponseBody
 from ._update_service_safety_lock_response import UpdateServiceSafetyLockResponse
@@ -359,6 +371,8 @@ from ._create_service_auto_scaler_request import CreateServiceAutoScalerRequestB
 from ._create_service_auto_scaler_request import CreateServiceAutoScalerRequestBehavior
 from ._create_service_auto_scaler_request import CreateServiceAutoScalerRequestScaleStrategies
 from ._create_service_cron_scaler_request import CreateServiceCronScalerRequestScaleJobs
+from ._create_service_rollout_request import CreateServiceRolloutRequestBatch
+from ._create_service_rollout_request import CreateServiceRolloutRequestPartition
 from ._create_virtual_resource_request import CreateVirtualResourceRequestResources
 from ._delete_acl_policy_request import DeleteAclPolicyRequestAclPolicyList
 from ._delete_gateway_intranet_linked_vpc_peer_request import DeleteGatewayIntranetLinkedVpcPeerRequestPeerVpcs
@@ -374,6 +388,11 @@ from ._describe_service_diagnosis_response_body import DescribeServiceDiagnosisR
 from ._describe_service_endpoints_response_body import DescribeServiceEndpointsResponseBodyEndpoints
 from ._describe_service_event_response_body import DescribeServiceEventResponseBodyEvents
 from ._describe_service_instance_diagnosis_response_body import DescribeServiceInstanceDiagnosisResponseBodyDiagnosis
+from ._describe_service_rollout_response_body import DescribeServiceRolloutResponseBodyRolloutStatus
+from ._describe_service_rollout_response_body import DescribeServiceRolloutResponseBodyRolloutStrategyBatch
+from ._describe_service_rollout_response_body import DescribeServiceRolloutResponseBodyRolloutStrategyPartition
+from ._describe_service_rollout_response_body import DescribeServiceRolloutResponseBodyRolloutStrategy
+from ._describe_service_rollout_response_body import DescribeServiceRolloutResponseBodyRollout
 from ._describe_spot_discount_history_response_body import DescribeSpotDiscountHistoryResponseBodySpotDiscounts
 from ._describe_virtual_resource_response_body import DescribeVirtualResourceResponseBodyResources
 from ._detach_gateway_domain_request import DetachGatewayDomainRequestCustomDomain
@@ -401,6 +420,8 @@ from ._update_service_auto_scaler_request import UpdateServiceAutoScalerRequestB
 from ._update_service_auto_scaler_request import UpdateServiceAutoScalerRequestBehavior
 from ._update_service_auto_scaler_request import UpdateServiceAutoScalerRequestScaleStrategies
 from ._update_service_cron_scaler_request import UpdateServiceCronScalerRequestScaleJobs
+from ._update_service_rollout_request import UpdateServiceRolloutRequestBatch
+from ._update_service_rollout_request import UpdateServiceRolloutRequestPartition
 from ._update_virtual_resource_request import UpdateVirtualResourceRequestResources
 
 __all__ = [
@@ -470,6 +491,9 @@ __all__ = [
     CreateServiceMirrorRequest,
     CreateServiceMirrorResponseBody,
     CreateServiceMirrorResponse,
+    CreateServiceRolloutRequest,
+    CreateServiceRolloutResponseBody,
+    CreateServiceRolloutResponse,
     CreateVirtualResourceRequest,
     CreateVirtualResourceResponseBody,
     CreateVirtualResourceResponse,
@@ -532,6 +556,9 @@ __all__ = [
     DeleteServiceMirrorRequest,
     DeleteServiceMirrorResponseBody,
     DeleteServiceMirrorResponse,
+    DeleteServiceRolloutRequest,
+    DeleteServiceRolloutResponseBody,
+    DeleteServiceRolloutResponse,
     DeleteVirtualResourceRequest,
     DeleteVirtualResourceResponseBody,
     DeleteVirtualResourceResponse,
@@ -590,6 +617,9 @@ __all__ = [
     DescribeServiceMirrorRequest,
     DescribeServiceMirrorResponseBody,
     DescribeServiceMirrorResponse,
+    DescribeServiceRolloutRequest,
+    DescribeServiceRolloutResponseBody,
+    DescribeServiceRolloutResponse,
     DescribeServiceSignedUrlRequest,
     DescribeServiceSignedUrlResponseBody,
     DescribeServiceSignedUrlResponse,
@@ -738,6 +768,9 @@ __all__ = [
     UpdateServiceMirrorRequest,
     UpdateServiceMirrorResponseBody,
     UpdateServiceMirrorResponse,
+    UpdateServiceRolloutRequest,
+    UpdateServiceRolloutResponseBody,
+    UpdateServiceRolloutResponse,
     UpdateServiceSafetyLockRequest,
     UpdateServiceSafetyLockResponseBody,
     UpdateServiceSafetyLockResponse,
@@ -761,6 +794,8 @@ __all__ = [
     CreateServiceAutoScalerRequestBehavior,
     CreateServiceAutoScalerRequestScaleStrategies,
     CreateServiceCronScalerRequestScaleJobs,
+    CreateServiceRolloutRequestBatch,
+    CreateServiceRolloutRequestPartition,
     CreateVirtualResourceRequestResources,
     DeleteAclPolicyRequestAclPolicyList,
     DeleteGatewayIntranetLinkedVpcPeerRequestPeerVpcs,
@@ -776,6 +811,11 @@ __all__ = [
     DescribeServiceEndpointsResponseBodyEndpoints,
     DescribeServiceEventResponseBodyEvents,
     DescribeServiceInstanceDiagnosisResponseBodyDiagnosis,
+    DescribeServiceRolloutResponseBodyRolloutStatus,
+    DescribeServiceRolloutResponseBodyRolloutStrategyBatch,
+    DescribeServiceRolloutResponseBodyRolloutStrategyPartition,
+    DescribeServiceRolloutResponseBodyRolloutStrategy,
+    DescribeServiceRolloutResponseBodyRollout,
     DescribeSpotDiscountHistoryResponseBodySpotDiscounts,
     DescribeVirtualResourceResponseBodyResources,
     DetachGatewayDomainRequestCustomDomain,
@@ -803,5 +843,7 @@ __all__ = [
     UpdateServiceAutoScalerRequestBehavior,
     UpdateServiceAutoScalerRequestScaleStrategies,
     UpdateServiceCronScalerRequestScaleJobs,
+    UpdateServiceRolloutRequestBatch,
+    UpdateServiceRolloutRequestPartition,
     UpdateVirtualResourceRequestResources
 ]

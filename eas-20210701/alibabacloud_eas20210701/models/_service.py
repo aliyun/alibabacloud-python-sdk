@@ -61,6 +61,7 @@ class Service(DaraModel):
         traffic_state: str = None,
         update_time: str = None,
         weight: int = None,
+        workload_type: str = None,
         workspace_id: str = None,
     ):
         # The token that is used to access the service.
@@ -187,6 +188,7 @@ class Service(DaraModel):
         self.update_time = update_time
         # The weight of the service in canary release.
         self.weight = weight
+        self.workload_type = workload_type
         # The ID of the workspace to which the service belongs.
         self.workspace_id = workspace_id
 
@@ -358,6 +360,9 @@ class Service(DaraModel):
         if self.weight is not None:
             result['Weight'] = self.weight
 
+        if self.workload_type is not None:
+            result['WorkloadType'] = self.workload_type
+
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
 
@@ -521,6 +526,9 @@ class Service(DaraModel):
 
         if m.get('Weight') is not None:
             self.weight = m.get('Weight')
+
+        if m.get('WorkloadType') is not None:
+            self.workload_type = m.get('WorkloadType')
 
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')

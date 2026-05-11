@@ -1764,6 +1764,98 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_service_mirror_with_options_async(cluster_id, service_name, request, headers, runtime)
 
+    def create_service_rollout_with_options(
+        self,
+        cluster_id: str,
+        service_name: str,
+        request: main_models.CreateServiceRolloutRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateServiceRolloutResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.batch):
+            body['Batch'] = request.batch
+        if not DaraCore.is_null(request.partition):
+            body['Partition'] = request.partition
+        if not DaraCore.is_null(request.paused):
+            body['Paused'] = request.paused
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateServiceRollout',
+            version = '2021-07-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/services/{DaraURL.percent_encode(cluster_id)}/{DaraURL.percent_encode(service_name)}/rollout',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateServiceRolloutResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_service_rollout_with_options_async(
+        self,
+        cluster_id: str,
+        service_name: str,
+        request: main_models.CreateServiceRolloutRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateServiceRolloutResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.batch):
+            body['Batch'] = request.batch
+        if not DaraCore.is_null(request.partition):
+            body['Partition'] = request.partition
+        if not DaraCore.is_null(request.paused):
+            body['Paused'] = request.paused
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateServiceRollout',
+            version = '2021-07-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/services/{DaraURL.percent_encode(cluster_id)}/{DaraURL.percent_encode(service_name)}/rollout',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateServiceRolloutResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_service_rollout(
+        self,
+        cluster_id: str,
+        service_name: str,
+        request: main_models.CreateServiceRolloutRequest,
+    ) -> main_models.CreateServiceRolloutResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_service_rollout_with_options(cluster_id, service_name, request, headers, runtime)
+
+    async def create_service_rollout_async(
+        self,
+        cluster_id: str,
+        service_name: str,
+        request: main_models.CreateServiceRolloutRequest,
+    ) -> main_models.CreateServiceRolloutResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_service_rollout_with_options_async(cluster_id, service_name, request, headers, runtime)
+
     def create_virtual_resource_with_options(
         self,
         request: main_models.CreateVirtualResourceRequest,
@@ -3384,6 +3476,82 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_service_mirror_with_options_async(cluster_id, service_name, request, headers, runtime)
 
+    def delete_service_rollout_with_options(
+        self,
+        cluster_id: str,
+        service_name: str,
+        request: main_models.DeleteServiceRolloutRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteServiceRolloutResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteServiceRollout',
+            version = '2021-07-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/services/{DaraURL.percent_encode(cluster_id)}/{DaraURL.percent_encode(service_name)}/rollout',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteServiceRolloutResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_service_rollout_with_options_async(
+        self,
+        cluster_id: str,
+        service_name: str,
+        request: main_models.DeleteServiceRolloutRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteServiceRolloutResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteServiceRollout',
+            version = '2021-07-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/services/{DaraURL.percent_encode(cluster_id)}/{DaraURL.percent_encode(service_name)}/rollout',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteServiceRolloutResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_service_rollout(
+        self,
+        cluster_id: str,
+        service_name: str,
+        request: main_models.DeleteServiceRolloutRequest,
+    ) -> main_models.DeleteServiceRolloutResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_service_rollout_with_options(cluster_id, service_name, request, headers, runtime)
+
+    async def delete_service_rollout_async(
+        self,
+        cluster_id: str,
+        service_name: str,
+        request: main_models.DeleteServiceRolloutRequest,
+    ) -> main_models.DeleteServiceRolloutResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_service_rollout_with_options_async(cluster_id, service_name, request, headers, runtime)
+
     def delete_virtual_resource_with_options(
         self,
         cluster_id: str,
@@ -4981,6 +5149,82 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.describe_service_mirror_with_options_async(cluster_id, service_name, request, headers, runtime)
+
+    def describe_service_rollout_with_options(
+        self,
+        cluster_id: str,
+        service_name: str,
+        request: main_models.DescribeServiceRolloutRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeServiceRolloutResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeServiceRollout',
+            version = '2021-07-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/services/{DaraURL.percent_encode(cluster_id)}/{DaraURL.percent_encode(service_name)}/rollout',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeServiceRolloutResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_service_rollout_with_options_async(
+        self,
+        cluster_id: str,
+        service_name: str,
+        request: main_models.DescribeServiceRolloutRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeServiceRolloutResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeServiceRollout',
+            version = '2021-07-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/services/{DaraURL.percent_encode(cluster_id)}/{DaraURL.percent_encode(service_name)}/rollout',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeServiceRolloutResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_service_rollout(
+        self,
+        cluster_id: str,
+        service_name: str,
+        request: main_models.DescribeServiceRolloutRequest,
+    ) -> main_models.DescribeServiceRolloutResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.describe_service_rollout_with_options(cluster_id, service_name, request, headers, runtime)
+
+    async def describe_service_rollout_async(
+        self,
+        cluster_id: str,
+        service_name: str,
+        request: main_models.DescribeServiceRolloutRequest,
+    ) -> main_models.DescribeServiceRolloutResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.describe_service_rollout_with_options_async(cluster_id, service_name, request, headers, runtime)
 
     def describe_service_signed_url_with_options(
         self,
@@ -9459,6 +9703,98 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.update_service_mirror_with_options_async(cluster_id, service_name, request, headers, runtime)
+
+    def update_service_rollout_with_options(
+        self,
+        cluster_id: str,
+        service_name: str,
+        request: main_models.UpdateServiceRolloutRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateServiceRolloutResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.batch):
+            body['Batch'] = request.batch
+        if not DaraCore.is_null(request.partition):
+            body['Partition'] = request.partition
+        if not DaraCore.is_null(request.paused):
+            body['Paused'] = request.paused
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateServiceRollout',
+            version = '2021-07-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/services/{DaraURL.percent_encode(cluster_id)}/{DaraURL.percent_encode(service_name)}/rollout',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateServiceRolloutResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_service_rollout_with_options_async(
+        self,
+        cluster_id: str,
+        service_name: str,
+        request: main_models.UpdateServiceRolloutRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateServiceRolloutResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.batch):
+            body['Batch'] = request.batch
+        if not DaraCore.is_null(request.partition):
+            body['Partition'] = request.partition
+        if not DaraCore.is_null(request.paused):
+            body['Paused'] = request.paused
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateServiceRollout',
+            version = '2021-07-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/services/{DaraURL.percent_encode(cluster_id)}/{DaraURL.percent_encode(service_name)}/rollout',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateServiceRolloutResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_service_rollout(
+        self,
+        cluster_id: str,
+        service_name: str,
+        request: main_models.UpdateServiceRolloutRequest,
+    ) -> main_models.UpdateServiceRolloutResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_service_rollout_with_options(cluster_id, service_name, request, headers, runtime)
+
+    async def update_service_rollout_async(
+        self,
+        cluster_id: str,
+        service_name: str,
+        request: main_models.UpdateServiceRolloutRequest,
+    ) -> main_models.UpdateServiceRolloutResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_service_rollout_with_options_async(cluster_id, service_name, request, headers, runtime)
 
     def update_service_safety_lock_with_options(
         self,
