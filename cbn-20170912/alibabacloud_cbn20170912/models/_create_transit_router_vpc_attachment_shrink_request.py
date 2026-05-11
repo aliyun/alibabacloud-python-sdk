@@ -15,6 +15,7 @@ class CreateTransitRouterVpcAttachmentShrinkRequest(DaraModel):
         charge_type: str = None,
         client_token: str = None,
         dry_run: bool = None,
+        options_shrink: str = None,
         owner_account: str = None,
         owner_id: int = None,
         region_id: str = None,
@@ -49,6 +50,7 @@ class CreateTransitRouterVpcAttachmentShrinkRequest(DaraModel):
         # *   **false** (default): performs a dry run and sends the request.
         # *   **true**: performs a dry run. The system checks the required parameters and request syntax. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
         self.dry_run = dry_run
+        self.options_shrink = options_shrink
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the region where the VPC is deployed.
@@ -118,6 +120,9 @@ class CreateTransitRouterVpcAttachmentShrinkRequest(DaraModel):
         if self.dry_run is not None:
             result['DryRun'] = self.dry_run
 
+        if self.options_shrink is not None:
+            result['Options'] = self.options_shrink
+
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
 
@@ -179,6 +184,9 @@ class CreateTransitRouterVpcAttachmentShrinkRequest(DaraModel):
 
         if m.get('DryRun') is not None:
             self.dry_run = m.get('DryRun')
+
+        if m.get('Options') is not None:
+            self.options_shrink = m.get('Options')
 
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')

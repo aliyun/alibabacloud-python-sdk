@@ -3162,6 +3162,8 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.CreateTransitRouterVpcAttachmentShrinkRequest()
         Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.options):
+            request.options_shrink = Utils.array_to_string_with_specified_style(tmp_req.options, 'Options', 'json')
         if not DaraCore.is_null(tmp_req.transit_router_vpcattachment_options):
             request.transit_router_vpcattachment_options_shrink = Utils.array_to_string_with_specified_style(tmp_req.transit_router_vpcattachment_options, 'TransitRouterVPCAttachmentOptions', 'json')
         query = {}
@@ -3175,6 +3177,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.dry_run):
             query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.options_shrink):
+            query['Options'] = request.options_shrink
         if not DaraCore.is_null(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not DaraCore.is_null(request.owner_id):
@@ -3228,6 +3232,8 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.CreateTransitRouterVpcAttachmentShrinkRequest()
         Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.options):
+            request.options_shrink = Utils.array_to_string_with_specified_style(tmp_req.options, 'Options', 'json')
         if not DaraCore.is_null(tmp_req.transit_router_vpcattachment_options):
             request.transit_router_vpcattachment_options_shrink = Utils.array_to_string_with_specified_style(tmp_req.transit_router_vpcattachment_options, 'TransitRouterVPCAttachmentOptions', 'json')
         query = {}
@@ -3241,6 +3247,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.dry_run):
             query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.options_shrink):
+            query['Options'] = request.options_shrink
         if not DaraCore.is_null(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not DaraCore.is_null(request.owner_id):
@@ -15792,6 +15800,8 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.UpdateTransitRouterVpcAttachmentAttributeShrinkRequest()
         Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.options):
+            request.options_shrink = Utils.array_to_string_with_specified_style(tmp_req.options, 'Options', 'json')
         if not DaraCore.is_null(tmp_req.transit_router_vpcattachment_options):
             request.transit_router_vpcattachment_options_shrink = Utils.array_to_string_with_specified_style(tmp_req.transit_router_vpcattachment_options, 'TransitRouterVPCAttachmentOptions', 'json')
         query = {}
@@ -15801,6 +15811,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.dry_run):
             query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.options_shrink):
+            query['Options'] = request.options_shrink
         if not DaraCore.is_null(request.order_type):
             query['OrderType'] = request.order_type
         if not DaraCore.is_null(request.owner_account):
@@ -15846,6 +15858,8 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.UpdateTransitRouterVpcAttachmentAttributeShrinkRequest()
         Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.options):
+            request.options_shrink = Utils.array_to_string_with_specified_style(tmp_req.options, 'Options', 'json')
         if not DaraCore.is_null(tmp_req.transit_router_vpcattachment_options):
             request.transit_router_vpcattachment_options_shrink = Utils.array_to_string_with_specified_style(tmp_req.transit_router_vpcattachment_options, 'TransitRouterVPCAttachmentOptions', 'json')
         query = {}
@@ -15855,6 +15869,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.dry_run):
             query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.options_shrink):
+            query['Options'] = request.options_shrink
         if not DaraCore.is_null(request.order_type):
             query['OrderType'] = request.order_type
         if not DaraCore.is_null(request.owner_account):

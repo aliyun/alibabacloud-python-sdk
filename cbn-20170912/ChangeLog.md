@@ -1,3 +1,9 @@
+2026-05-11 Version: 1.3.8
+- Update API CreateTransitRouterVpcAttachment: add request parameters Options.
+- Update API ListTransitRouterVpcAttachments: add response parameters Body.TransitRouterAttachments.$.Options.
+- Update API UpdateTransitRouterVpcAttachmentAttribute: add request parameters Options.
+
+
 2026-04-20 Version: 1.3.7
 - Update API CreateCenInterRegionTrafficQosPolicy: add request parameters ConsoleDryRun.
 

@@ -15,6 +15,7 @@ class CreateTransitRouterVpcAttachmentRequest(DaraModel):
         charge_type: str = None,
         client_token: str = None,
         dry_run: bool = None,
+        options: main_models.CreateTransitRouterVpcAttachmentRequestOptions = None,
         owner_account: str = None,
         owner_id: int = None,
         region_id: str = None,
@@ -49,6 +50,7 @@ class CreateTransitRouterVpcAttachmentRequest(DaraModel):
         # *   **false** (default): performs a dry run and sends the request.
         # *   **true**: performs a dry run. The system checks the required parameters and request syntax. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
         self.dry_run = dry_run
+        self.options = options
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the region where the VPC is deployed.
@@ -89,6 +91,8 @@ class CreateTransitRouterVpcAttachmentRequest(DaraModel):
         self.zone_mappings = zone_mappings
 
     def validate(self):
+        if self.options:
+            self.options.validate()
         if self.tag:
             for v1 in self.tag:
                  if v1:
@@ -117,6 +121,9 @@ class CreateTransitRouterVpcAttachmentRequest(DaraModel):
 
         if self.dry_run is not None:
             result['DryRun'] = self.dry_run
+
+        if self.options is not None:
+            result['Options'] = self.options.to_map()
 
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
@@ -179,6 +186,10 @@ class CreateTransitRouterVpcAttachmentRequest(DaraModel):
 
         if m.get('DryRun') is not None:
             self.dry_run = m.get('DryRun')
+
+        if m.get('Options') is not None:
+            temp_model = main_models.CreateTransitRouterVpcAttachmentRequestOptions()
+            self.options = temp_model.from_map(m.get('Options'))
 
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
@@ -316,6 +327,41 @@ class CreateTransitRouterVpcAttachmentRequestTag(DaraModel):
 
         if m.get('Value') is not None:
             self.value = m.get('Value')
+
+        return self
+
+class CreateTransitRouterVpcAttachmentRequestOptions(DaraModel):
+    def __init__(
+        self,
+        appliance_mode_support: str = None,
+        ipv_6support: str = None,
+    ):
+        self.appliance_mode_support = appliance_mode_support
+        self.ipv_6support = ipv_6support
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.appliance_mode_support is not None:
+            result['ApplianceModeSupport'] = self.appliance_mode_support
+
+        if self.ipv_6support is not None:
+            result['Ipv6Support'] = self.ipv_6support
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplianceModeSupport') is not None:
+            self.appliance_mode_support = m.get('ApplianceModeSupport')
+
+        if m.get('Ipv6Support') is not None:
+            self.ipv_6support = m.get('Ipv6Support')
 
         return self
 

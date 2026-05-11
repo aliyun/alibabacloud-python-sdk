@@ -10,6 +10,7 @@ class UpdateTransitRouterVpcAttachmentAttributeShrinkRequest(DaraModel):
         auto_publish_route_enabled: bool = None,
         client_token: str = None,
         dry_run: bool = None,
+        options_shrink: str = None,
         order_type: str = None,
         owner_account: str = None,
         owner_id: int = None,
@@ -36,6 +37,7 @@ class UpdateTransitRouterVpcAttachmentAttributeShrinkRequest(DaraModel):
         # *   **false** (default): performs a dry run and sends the request.
         # *   **true**: performs a dry run. The system checks the required parameters and request syntax. If the request fails the dry run, an error message is returned. If the request passes the dry run, the system returns the ID of the request.
         self.dry_run = dry_run
+        self.options_shrink = options_shrink
         self.order_type = order_type
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -72,6 +74,9 @@ class UpdateTransitRouterVpcAttachmentAttributeShrinkRequest(DaraModel):
 
         if self.dry_run is not None:
             result['DryRun'] = self.dry_run
+
+        if self.options_shrink is not None:
+            result['Options'] = self.options_shrink
 
         if self.order_type is not None:
             result['OrderType'] = self.order_type
@@ -112,6 +117,9 @@ class UpdateTransitRouterVpcAttachmentAttributeShrinkRequest(DaraModel):
 
         if m.get('DryRun') is not None:
             self.dry_run = m.get('DryRun')
+
+        if m.get('Options') is not None:
+            self.options_shrink = m.get('Options')
 
         if m.get('OrderType') is not None:
             self.order_type = m.get('OrderType')

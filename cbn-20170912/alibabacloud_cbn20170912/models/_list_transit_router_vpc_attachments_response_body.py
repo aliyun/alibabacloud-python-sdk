@@ -90,6 +90,7 @@ class ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachments(DaraMo
         charge_type: str = None,
         creation_time: str = None,
         managed_service: str = None,
+        options: main_models.ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachmentsOptions = None,
         order_type: str = None,
         resource_type: str = None,
         status: str = None,
@@ -120,6 +121,7 @@ class ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachments(DaraMo
         # The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
         self.creation_time = creation_time
         self.managed_service = managed_service
+        self.options = options
         # The entity that pays the fees of the network instance. Valid values:
         # 
         # *   **PayByCenOwner**: the Alibaba Cloud account that owns the CEN instance.
@@ -157,6 +159,8 @@ class ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachments(DaraMo
         self.zone_mappings = zone_mappings
 
     def validate(self):
+        if self.options:
+            self.options.validate()
         if self.tags:
             for v1 in self.tags:
                  if v1:
@@ -185,6 +189,9 @@ class ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachments(DaraMo
 
         if self.managed_service is not None:
             result['ManagedService'] = self.managed_service
+
+        if self.options is not None:
+            result['Options'] = self.options.to_map()
 
         if self.order_type is not None:
             result['OrderType'] = self.order_type
@@ -247,6 +254,10 @@ class ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachments(DaraMo
 
         if m.get('ManagedService') is not None:
             self.managed_service = m.get('ManagedService')
+
+        if m.get('Options') is not None:
+            temp_model = main_models.ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachmentsOptions()
+            self.options = temp_model.from_map(m.get('Options'))
 
         if m.get('OrderType') is not None:
             self.order_type = m.get('OrderType')
@@ -375,6 +386,41 @@ class ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachmentsTags(Da
 
         if m.get('Value') is not None:
             self.value = m.get('Value')
+
+        return self
+
+class ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachmentsOptions(DaraModel):
+    def __init__(
+        self,
+        appliance_mode_support: str = None,
+        ipv_6support: str = None,
+    ):
+        self.appliance_mode_support = appliance_mode_support
+        self.ipv_6support = ipv_6support
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.appliance_mode_support is not None:
+            result['ApplianceModeSupport'] = self.appliance_mode_support
+
+        if self.ipv_6support is not None:
+            result['Ipv6Support'] = self.ipv_6support
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplianceModeSupport') is not None:
+            self.appliance_mode_support = m.get('ApplianceModeSupport')
+
+        if m.get('Ipv6Support') is not None:
+            self.ipv_6support = m.get('Ipv6Support')
 
         return self
 
