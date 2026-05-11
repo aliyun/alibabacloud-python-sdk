@@ -1567,19 +1567,12 @@ class GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditions(
         operators: main_models.GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsOperators = None,
         rid: str = None,
     ):
-        # 检测范围
         self.check_range = check_range
-        # 条件id，可能是db中的主键，也可能是转换成的a, b, c
         self.cid = cid
-        # 排除
         self.exclusion = exclusion
-        # 在db中的主键
         self.id = id
-        # Lambda表达式：例如:a&&b
         self.lambda_ = lambda_
-        # 算子列表
         self.operators = operators
-        # 条件所属的规则id
         self.rid = rid
 
     def validate(self):
@@ -1687,15 +1680,10 @@ class GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsO
         param: main_models.GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsOperatorsOperatorParam = None,
         type: str = None,
     ):
-        # 主键id
         self.id = id
-        # 算子名
         self.name = name
-        # 可能是主键id，也可能是前端生成的id
         self.oid = oid
-        # 算子参数
         self.param = param
-        # 算子类别
         self.type = type
 
     def validate(self):
@@ -1777,63 +1765,34 @@ class GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsO
         target: int = None,
         threshold: float = None,
     ):
-        # 语速检测，是否计算整个对话平均语速，默认false
         self.average = average
-        # 时长算子，时长计算开始类型，录音开始，还是某句对话开始
         self.begin_type = begin_type
-        # 区分大小写
         self.case_sensitive = case_sensitive
-        # 静音检测：要不要检测第一句话
         self.check_first_sentence = check_first_sentence
-        # 检测方式，1 相邻句能量波动 2 最大能量跨度 默认1
         self.check_type = check_type
-        # 大于，还是小于，gt/lt
         self.compare_operator = compare_operator
-        # 是否单句话匹配；
         self.context_chat_match = context_chat_match
-        # 抢话算子 延时时长
         self.delay_time = delay_time
-        # 时长算子，时长计算结束类型，录音结束，还是某句对话结束
         self.end_type = end_type
-        # 上下文重复算子：排除掉某些对话
         self.excludes = excludes
-        # 流程节点前置条件参数
         self.flow_node_prerequisite_param = flow_node_prerequisite_param
-        # 上下文重复算子：检测当前句的前from句是否有重复；0表示前面的所有句
         self.from_ = from_
-        # from_end
         self.from_end = from_end
-        # 上下文重复算子：重复几次
         self.hit_time = hit_time
-        # 生效句子， true单个句子，false多个句子
         self.in_sentence = in_sentence
-        # 意图模型检查参数
         self.intent_model_check_parm = intent_model_check_parm
-        # interval代表区间范围开始
         self.interval = interval
-        # intervalEnd 代表区间范围结束
         self.interval_end = interval_end
-        # 关键字扩展
         self.keyword_extension = keyword_extension
-        # 匹配到的关键字数量
         self.keyword_match_size = keyword_match_size
-        # 关键词
         self.keywords = keywords
-        # 能量值变化，默认3, 1~9
         self.max_emotion_change_value = max_emotion_change_value
-        # 句子中最少字数，小于此字数的句子不检查
         self.min_word_size = min_word_size
-        # true表示取不同角色相邻的两句话，false表示取不同角色的第一句话比较响应时间（默认）
         self.near_dialogue = near_dialogue
-        # 排除的正则表达式
         self.not_regex = not_regex
-        # 语句
         self.phrase = phrase
-        # 正则表达式
         self.regex = regex
-        # target
         self.target = target
-        # 阈值
         self.threshold = threshold
 
     def validate(self):
@@ -2068,9 +2027,7 @@ class GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsO
         intents: main_models.GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsOperatorsOperatorParamIntentModelCheckParmIntents = None,
         model_scene: str = None,
     ):
-        # 引用的意图模型
         self.intents = intents
-        # 模型应用的场景 AGENT:客户场景、CUSTOMER:客服场景 (CUSTOMER: 客户场景, AGENT: 坐席场景)
         self.model_scene = model_scene
 
     def validate(self):
@@ -2142,9 +2099,7 @@ class GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsO
         id: int = None,
         name: str = None,
     ):
-        # 意图模型ID
         self.id = id
-        # 意图模型名称
         self.name = name
 
     def validate(self):
@@ -2180,11 +2135,8 @@ class GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsO
         node_match_status: int = None,
         node_name: str = None,
     ):
-        # 节点id
         self.node_id = node_id
-        # 节点匹配状态。
         self.node_match_status = node_match_status
-        # 冗余的节点名称
         self.node_name = node_name
 
     def validate(self):
@@ -2257,17 +2209,11 @@ class GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsC
         role_id: int = None,
         time_range: main_models.GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsCheckRangeTimeRange = None,
     ):
-        # false: 相对位置; 会结合anchor以及角色来决定句子位置
         self.absolute = absolute
-        # true: 每句话都必须满足条件；
         self.all_sentences_satisfy = all_sentences_satisfy
-        # 前置后置条件
         self.anchor = anchor
-        # 相对范围
         self.range = range
-        # 对应 RoleType.type
         self.role = role
-        # 对应 RoleType.id
         self.role_id = role_id
         self.time_range = time_range
 
@@ -2376,9 +2322,7 @@ class GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsC
         from_: int = None,
         to: int = None,
     ):
-        # 对话开始索引
         self.from_ = from_
-        # 对话结束索引
         self.to = to
 
     def validate(self):
@@ -2414,11 +2358,8 @@ class GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsC
         hit_time: int = None,
         location: str = None,
     ):
-        # 条件ID
         self.cid = cid
-        # 命中次数
         self.hit_time = hit_time
-        # 位置
         self.location = location
 
     def validate(self):

@@ -10,6 +10,7 @@ class CreateUserRequest(DaraModel):
         base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
         self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 

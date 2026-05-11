@@ -24,6 +24,7 @@ class GraphFlowNode(DaraModel):
         self.conditions = conditions
         self.content = content
         self.id = id
+        # index
         self.index = index
         self.name = name
         self.next_nodes = next_nodes

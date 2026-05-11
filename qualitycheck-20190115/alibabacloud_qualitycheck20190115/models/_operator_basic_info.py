@@ -159,11 +159,13 @@ class OperatorBasicInfoParam(DaraModel):
         self.context_chat_match = context_chat_match
         self.customer_param = customer_param
         self.delay_time = delay_time
+        # different_role
         self.different_role = different_role
         self.dimensions = dimensions
         self.end_type = end_type
         self.excludes = excludes
         self.from_ = from_
+        # from_end
         self.from_end = from_end
         self.hit_condition = hit_condition
         self.hit_time = hit_time
@@ -198,11 +200,14 @@ class OperatorBasicInfoParam(DaraModel):
         self.similarity_threshold = similarity_threshold
         self.similarly_sentences = similarly_sentences
         self.synonyms = synonyms
+        # target
         self.target = target
+        # target_role
         self.target_role = target_role
         self.threshold = threshold
         self.use_eas_algorithm = use_eas_algorithm
         self.velocity = velocity
+        # velocityInMint
         self.velocity_in_mint = velocity_in_mint
 
     def validate(self):

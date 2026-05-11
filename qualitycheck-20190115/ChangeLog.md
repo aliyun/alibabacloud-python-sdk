@@ -1,3 +1,12 @@
+2026-05-11 Version: 8.5.6
+- Update API UploadDataSync: add response parameters Body.Data.$.Rules.$.LlmResponse.
+- Update API UploadDataSync: add response parameters Body.Data.$.Rules.$.Hit.$.HitKeyWords.$.CustomizeCode.
+- Update API UploadDataSync: add response parameters Body.Data.$.Rules.$.Hit.$.HitKeyWords.$.IsMatch.
+- Update API UploadDataSyncForLLM: add response parameters Body.Data.$.Rules.$.LlmResponse.
+- Update API UploadDataSyncForLLM: add response parameters Body.Data.$.Rules.$.Hit.$.HitKeyWords.$.CustomizeCode.
+- Update API UploadDataSyncForLLM: add response parameters Body.Data.$.Rules.$.Hit.$.HitKeyWords.$.IsMatch.
+
+
 2026-01-28 Version: 8.5.5
 - Update API UploadDataSync: add response parameters Body.Data.$.TyxmPlusCount.
 - Update API UploadDataSync: add response parameters Body.Data.$.TyxmTurboCount.

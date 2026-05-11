@@ -196,11 +196,13 @@ class UploadDataSyncForLLMResponseBodyDataResultInfoRulesRuleHitInfo(DaraModel):
         self,
         condition_info: main_models.UploadDataSyncForLLMResponseBodyDataResultInfoRulesRuleHitInfoConditionInfo = None,
         hit: main_models.UploadDataSyncForLLMResponseBodyDataResultInfoRulesRuleHitInfoHit = None,
+        llm_response: str = None,
         rid: str = None,
         tid: str = None,
     ):
         self.condition_info = condition_info
         self.hit = hit
+        self.llm_response = llm_response
         self.rid = rid
         self.tid = tid
 
@@ -221,6 +223,9 @@ class UploadDataSyncForLLMResponseBodyDataResultInfoRulesRuleHitInfo(DaraModel):
         if self.hit is not None:
             result['Hit'] = self.hit.to_map()
 
+        if self.llm_response is not None:
+            result['LlmResponse'] = self.llm_response
+
         if self.rid is not None:
             result['Rid'] = self.rid
 
@@ -238,6 +243,9 @@ class UploadDataSyncForLLMResponseBodyDataResultInfoRulesRuleHitInfo(DaraModel):
         if m.get('Hit') is not None:
             temp_model = main_models.UploadDataSyncForLLMResponseBodyDataResultInfoRulesRuleHitInfoHit()
             self.hit = temp_model.from_map(m.get('Hit'))
+
+        if m.get('LlmResponse') is not None:
+            self.llm_response = m.get('LlmResponse')
 
         if m.get('Rid') is not None:
             self.rid = m.get('Rid')
@@ -438,13 +446,17 @@ class UploadDataSyncForLLMResponseBodyDataResultInfoRulesRuleHitInfoHitCondition
 class UploadDataSyncForLLMResponseBodyDataResultInfoRulesRuleHitInfoHitConditionHitInfoHitKeyWordsHitKeyWord(DaraModel):
     def __init__(
         self,
+        customize_code: str = None,
         from_: int = None,
+        is_match: bool = None,
         pid: int = None,
         tid: str = None,
         to: int = None,
         val: str = None,
     ):
+        self.customize_code = customize_code
         self.from_ = from_
+        self.is_match = is_match
         self.pid = pid
         self.tid = tid
         self.to = to
@@ -458,8 +470,14 @@ class UploadDataSyncForLLMResponseBodyDataResultInfoRulesRuleHitInfoHitCondition
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.customize_code is not None:
+            result['CustomizeCode'] = self.customize_code
+
         if self.from_ is not None:
             result['From'] = self.from_
+
+        if self.is_match is not None:
+            result['IsMatch'] = self.is_match
 
         if self.pid is not None:
             result['Pid'] = self.pid
@@ -477,8 +495,14 @@ class UploadDataSyncForLLMResponseBodyDataResultInfoRulesRuleHitInfoHitCondition
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CustomizeCode') is not None:
+            self.customize_code = m.get('CustomizeCode')
+
         if m.get('From') is not None:
             self.from_ = m.get('From')
+
+        if m.get('IsMatch') is not None:
+            self.is_match = m.get('IsMatch')
 
         if m.get('Pid') is not None:
             self.pid = m.get('Pid')

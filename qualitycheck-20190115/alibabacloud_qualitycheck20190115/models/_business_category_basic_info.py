@@ -14,6 +14,7 @@ class BusinessCategoryBasicInfo(DaraModel):
     ):
         self.bid = bid
         self.name = name
+        # originalId
         self.original_id = original_id
         self.service_type = service_type
 
