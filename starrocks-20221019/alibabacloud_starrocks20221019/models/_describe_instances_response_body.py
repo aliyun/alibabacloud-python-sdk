@@ -94,6 +94,7 @@ class DescribeInstancesResponseBodyData(DaraModel):
     def __init__(
         self,
         acl_id: str = None,
+        ai_function_instance_id: str = None,
         architecture: str = None,
         begin_time: int = None,
         enable_ai_function: bool = None,
@@ -126,6 +127,7 @@ class DescribeInstancesResponseBodyData(DaraModel):
         vpc_id: str = None,
     ):
         self.acl_id = acl_id
+        self.ai_function_instance_id = ai_function_instance_id
         self.architecture = architecture
         self.begin_time = begin_time
         self.enable_ai_function = enable_ai_function
@@ -175,6 +177,9 @@ class DescribeInstancesResponseBodyData(DaraModel):
             result = _map
         if self.acl_id is not None:
             result['AclId'] = self.acl_id
+
+        if self.ai_function_instance_id is not None:
+            result['AiFunctionInstanceId'] = self.ai_function_instance_id
 
         if self.architecture is not None:
             result['Architecture'] = self.architecture
@@ -276,6 +281,9 @@ class DescribeInstancesResponseBodyData(DaraModel):
         m = m or dict()
         if m.get('AclId') is not None:
             self.acl_id = m.get('AclId')
+
+        if m.get('AiFunctionInstanceId') is not None:
+            self.ai_function_instance_id = m.get('AiFunctionInstanceId')
 
         if m.get('Architecture') is not None:
             self.architecture = m.get('Architecture')

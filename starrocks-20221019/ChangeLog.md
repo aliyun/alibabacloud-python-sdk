@@ -1,3 +1,8 @@
+2026-05-11 Version: 1.6.1
+- Update API DescribeInstances: add response parameters Body.Data.$.AiFunctionInstanceId.
+- Update API GetInstanceFeatureGate: add response parameters Body.Data.supportCompactionServiceWhiteList.
+
+
 2026-04-23 Version: 1.6.0
 - Support API ListSSLDetails.
 

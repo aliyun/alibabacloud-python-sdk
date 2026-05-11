@@ -116,6 +116,7 @@ class GetInstanceFeatureGateResponseBodyData(DaraModel):
         support_multi_az: bool = None,
         use_compute_node: bool = None,
         support_compaction_service: bool = None,
+        support_compaction_service_white_list: bool = None,
     ):
         self.console_control_restart = console_control_restart
         self.enable_manage_mv = enable_manage_mv
@@ -137,6 +138,8 @@ class GetInstanceFeatureGateResponseBodyData(DaraModel):
         self.support_multi_az = support_multi_az
         self.use_compute_node = use_compute_node
         self.support_compaction_service = support_compaction_service
+        # 是否支持Compaction Service白名单功能
+        self.support_compaction_service_white_list = support_compaction_service_white_list
 
     def validate(self):
         pass
@@ -206,6 +209,9 @@ class GetInstanceFeatureGateResponseBodyData(DaraModel):
         if self.support_compaction_service is not None:
             result['supportCompactionService'] = self.support_compaction_service
 
+        if self.support_compaction_service_white_list is not None:
+            result['supportCompactionServiceWhiteList'] = self.support_compaction_service_white_list
+
         return result
 
     def from_map(self, m: dict = None):
@@ -269,6 +275,9 @@ class GetInstanceFeatureGateResponseBodyData(DaraModel):
 
         if m.get('supportCompactionService') is not None:
             self.support_compaction_service = m.get('supportCompactionService')
+
+        if m.get('supportCompactionServiceWhiteList') is not None:
+            self.support_compaction_service_white_list = m.get('supportCompactionServiceWhiteList')
 
         return self
 
