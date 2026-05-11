@@ -1,3 +1,18 @@
+2026-05-11 Version: 2.0.0
+- Delete API GenerateUploadUrl.
+- Update API DescribeTTSConfig: add response parameters Body.TtsOverrides.
+- Update API ExportConversationDetails: add request parameters DebugConversation.
+- Update API GetAsrConfig: add response parameters Body.Data.AppKey.
+- Update API GetAsrConfig: add response parameters Body.Data.AsrOverrides.
+- Update API GetAsrConfig: add response parameters Body.Data.NlsServiceType.
+- Update API ListConversations: add request parameters DebugConversation.
+- Update API ModifyAsrConfig: add request parameters AppKey.
+- Update API ModifyAsrConfig: add request parameters AsrOverrides.
+- Update API ModifyAsrConfig: add request parameters NlsServiceType.
+- Update API ModifyTTSConfig: add request parameters PitchRate.
+- Update API ModifyTTSConfig: add request parameters TtsOverrides.
+
+
 2025-02-21 Version: 1.0.8
 - Generated python 2018-06-12 for VoiceNavigator.
 
