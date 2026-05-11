@@ -48,26 +48,25 @@ class GetPoolResponseBodyPoolInfo(DaraModel):
     def __init__(
         self,
         create_time: str = None,
-        exector_usage: int = None,
+        executor_usage: int = None,
         is_default: bool = None,
-        max_exector_num: int = None,
+        max_executor_num: int = None,
         pool_name: str = None,
         priority: int = None,
         reason: str = None,
+        scheduling_policy_id: str = None,
         status: str = None,
         update_time: str = None,
     ):
         # The time when the resource pool is created.
         self.create_time = create_time
-        # The usage of execution nodes that are running in a resource pool.
-        self.exector_usage = exector_usage
+        self.executor_usage = executor_usage
         # Indices whether the resource pool is the default resource pool. Valid values:
         # 
         # *   **true**
         # *   **false**
         self.is_default = is_default
-        # The maximum number of execution nodes that can run concurrently in a resource pool.
-        self.max_exector_num = max_exector_num
+        self.max_executor_num = max_executor_num
         # The name of the resource group.
         # 
         # *   The value can be up to 15 characters in length.
@@ -80,6 +79,7 @@ class GetPoolResponseBodyPoolInfo(DaraModel):
         self.priority = priority
         # The cause of the error.
         self.reason = reason
+        self.scheduling_policy_id = scheduling_policy_id
         # The status of the resource pool. Valid values:
         # 
         # *   Creating: The resource pool is being created.
@@ -102,14 +102,14 @@ class GetPoolResponseBodyPoolInfo(DaraModel):
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
 
-        if self.exector_usage is not None:
-            result['ExectorUsage'] = self.exector_usage
+        if self.executor_usage is not None:
+            result['ExecutorUsage'] = self.executor_usage
 
         if self.is_default is not None:
             result['IsDefault'] = self.is_default
 
-        if self.max_exector_num is not None:
-            result['MaxExectorNum'] = self.max_exector_num
+        if self.max_executor_num is not None:
+            result['MaxExecutorNum'] = self.max_executor_num
 
         if self.pool_name is not None:
             result['PoolName'] = self.pool_name
@@ -119,6 +119,9 @@ class GetPoolResponseBodyPoolInfo(DaraModel):
 
         if self.reason is not None:
             result['Reason'] = self.reason
+
+        if self.scheduling_policy_id is not None:
+            result['SchedulingPolicyId'] = self.scheduling_policy_id
 
         if self.status is not None:
             result['Status'] = self.status
@@ -133,14 +136,14 @@ class GetPoolResponseBodyPoolInfo(DaraModel):
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
 
-        if m.get('ExectorUsage') is not None:
-            self.exector_usage = m.get('ExectorUsage')
+        if m.get('ExecutorUsage') is not None:
+            self.executor_usage = m.get('ExecutorUsage')
 
         if m.get('IsDefault') is not None:
             self.is_default = m.get('IsDefault')
 
-        if m.get('MaxExectorNum') is not None:
-            self.max_exector_num = m.get('MaxExectorNum')
+        if m.get('MaxExecutorNum') is not None:
+            self.max_executor_num = m.get('MaxExecutorNum')
 
         if m.get('PoolName') is not None:
             self.pool_name = m.get('PoolName')
@@ -150,6 +153,9 @@ class GetPoolResponseBodyPoolInfo(DaraModel):
 
         if m.get('Reason') is not None:
             self.reason = m.get('Reason')
+
+        if m.get('SchedulingPolicyId') is not None:
+            self.scheduling_policy_id = m.get('SchedulingPolicyId')
 
         if m.get('Status') is not None:
             self.status = m.get('Status')

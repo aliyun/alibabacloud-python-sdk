@@ -56,6 +56,9 @@ from ._get_image_response import GetImageResponse
 from ._get_job_request import GetJobRequest
 from ._get_job_response_body import GetJobResponseBody
 from ._get_job_response import GetJobResponse
+from ._get_job_record_duration_request import GetJobRecordDurationRequest
+from ._get_job_record_duration_response_body import GetJobRecordDurationResponseBody
+from ._get_job_record_duration_response import GetJobRecordDurationResponse
 from ._get_pool_request import GetPoolRequest
 from ._get_pool_response_body import GetPoolResponseBody
 from ._get_pool_response import GetPoolResponse
@@ -108,6 +111,9 @@ from ._un_tag_resources_response import UnTagResourcesResponse
 from ._update_action_plan_request import UpdateActionPlanRequest
 from ._update_action_plan_response_body import UpdateActionPlanResponseBody
 from ._update_action_plan_response import UpdateActionPlanResponse
+from ._update_job_record_duration_request import UpdateJobRecordDurationRequest
+from ._update_job_record_duration_response_body import UpdateJobRecordDurationResponseBody
+from ._update_job_record_duration_response import UpdateJobRecordDurationResponse
 from ._update_pool_request import UpdatePoolRequest
 from ._update_pool_shrink_request import UpdatePoolShrinkRequest
 from ._update_pool_response_body import UpdatePoolResponseBody
@@ -253,6 +259,9 @@ __all__ = [
     GetJobRequest,
     GetJobResponseBody,
     GetJobResponse,
+    GetJobRecordDurationRequest,
+    GetJobRecordDurationResponseBody,
+    GetJobRecordDurationResponse,
     GetPoolRequest,
     GetPoolResponseBody,
     GetPoolResponse,
@@ -305,6 +314,9 @@ __all__ = [
     UpdateActionPlanRequest,
     UpdateActionPlanResponseBody,
     UpdateActionPlanResponse,
+    UpdateJobRecordDurationRequest,
+    UpdateJobRecordDurationResponseBody,
+    UpdateJobRecordDurationResponse,
     UpdatePoolRequest,
     UpdatePoolShrinkRequest,
     UpdatePoolResponseBody,

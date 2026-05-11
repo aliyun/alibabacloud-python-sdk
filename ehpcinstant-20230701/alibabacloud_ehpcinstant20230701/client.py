@@ -395,6 +395,8 @@ class Client(OpenApiClient):
             query['Priority'] = request.priority
         if not DaraCore.is_null(request.resource_limits_shrink):
             query['ResourceLimits'] = request.resource_limits_shrink
+        if not DaraCore.is_null(request.scheduling_policy_id):
+            query['SchedulingPolicyId'] = request.scheduling_policy_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -431,6 +433,8 @@ class Client(OpenApiClient):
             query['Priority'] = request.priority
         if not DaraCore.is_null(request.resource_limits_shrink):
             query['ResourceLimits'] = request.resource_limits_shrink
+        if not DaraCore.is_null(request.scheduling_policy_id):
+            query['SchedulingPolicyId'] = request.scheduling_policy_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -1353,6 +1357,66 @@ class Client(OpenApiClient):
     ) -> main_models.GetJobResponse:
         runtime = RuntimeOptions()
         return await self.get_job_with_options_async(request, runtime)
+
+    def get_job_record_duration_with_options(
+        self,
+        request: main_models.GetJobRecordDurationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetJobRecordDurationResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'GetJobRecordDuration',
+            version = '2023-07-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetJobRecordDurationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_job_record_duration_with_options_async(
+        self,
+        request: main_models.GetJobRecordDurationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetJobRecordDurationResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'GetJobRecordDuration',
+            version = '2023-07-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetJobRecordDurationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_job_record_duration(
+        self,
+        request: main_models.GetJobRecordDurationRequest,
+    ) -> main_models.GetJobRecordDurationResponse:
+        runtime = RuntimeOptions()
+        return self.get_job_record_duration_with_options(request, runtime)
+
+    async def get_job_record_duration_async(
+        self,
+        request: main_models.GetJobRecordDurationRequest,
+    ) -> main_models.GetJobRecordDurationResponse:
+        runtime = RuntimeOptions()
+        return await self.get_job_record_duration_with_options_async(request, runtime)
 
     def get_pool_with_options(
         self,
@@ -2612,6 +2676,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.update_action_plan_with_options_async(request, runtime)
 
+    def update_job_record_duration_with_options(
+        self,
+        request: main_models.UpdateJobRecordDurationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateJobRecordDurationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.job_record_duration):
+            query['JobRecordDuration'] = request.job_record_duration
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateJobRecordDuration',
+            version = '2023-07-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateJobRecordDurationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_job_record_duration_with_options_async(
+        self,
+        request: main_models.UpdateJobRecordDurationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateJobRecordDurationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.job_record_duration):
+            query['JobRecordDuration'] = request.job_record_duration
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateJobRecordDuration',
+            version = '2023-07-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateJobRecordDurationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_job_record_duration(
+        self,
+        request: main_models.UpdateJobRecordDurationRequest,
+    ) -> main_models.UpdateJobRecordDurationResponse:
+        runtime = RuntimeOptions()
+        return self.update_job_record_duration_with_options(request, runtime)
+
+    async def update_job_record_duration_async(
+        self,
+        request: main_models.UpdateJobRecordDurationRequest,
+    ) -> main_models.UpdateJobRecordDurationResponse:
+        runtime = RuntimeOptions()
+        return await self.update_job_record_duration_with_options_async(request, runtime)
+
     def update_pool_with_options(
         self,
         tmp_req: main_models.UpdatePoolRequest,
@@ -2629,6 +2763,8 @@ class Client(OpenApiClient):
             query['Priority'] = request.priority
         if not DaraCore.is_null(request.resource_limits_shrink):
             query['ResourceLimits'] = request.resource_limits_shrink
+        if not DaraCore.is_null(request.scheduling_policy_id):
+            query['SchedulingPolicyId'] = request.scheduling_policy_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -2665,6 +2801,8 @@ class Client(OpenApiClient):
             query['Priority'] = request.priority
         if not DaraCore.is_null(request.resource_limits_shrink):
             query['ResourceLimits'] = request.resource_limits_shrink
+        if not DaraCore.is_null(request.scheduling_policy_id):
+            query['SchedulingPolicyId'] = request.scheduling_policy_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )

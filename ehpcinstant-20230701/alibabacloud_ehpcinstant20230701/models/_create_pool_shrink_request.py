@@ -10,6 +10,7 @@ class CreatePoolShrinkRequest(DaraModel):
         pool_name: str = None,
         priority: int = None,
         resource_limits_shrink: str = None,
+        scheduling_policy_id: str = None,
     ):
         # The name of the resource pool.
         # 
@@ -25,6 +26,7 @@ class CreatePoolShrinkRequest(DaraModel):
         self.priority = priority
         # The quota of resources that users are allowed to concurrently use in a resource pool.
         self.resource_limits_shrink = resource_limits_shrink
+        self.scheduling_policy_id = scheduling_policy_id
 
     def validate(self):
         pass
@@ -43,6 +45,9 @@ class CreatePoolShrinkRequest(DaraModel):
         if self.resource_limits_shrink is not None:
             result['ResourceLimits'] = self.resource_limits_shrink
 
+        if self.scheduling_policy_id is not None:
+            result['SchedulingPolicyId'] = self.scheduling_policy_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -55,6 +60,9 @@ class CreatePoolShrinkRequest(DaraModel):
 
         if m.get('ResourceLimits') is not None:
             self.resource_limits_shrink = m.get('ResourceLimits')
+
+        if m.get('SchedulingPolicyId') is not None:
+            self.scheduling_policy_id = m.get('SchedulingPolicyId')
 
         return self
 

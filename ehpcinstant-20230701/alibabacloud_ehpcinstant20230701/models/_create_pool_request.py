@@ -11,6 +11,7 @@ class CreatePoolRequest(DaraModel):
         pool_name: str = None,
         priority: int = None,
         resource_limits: main_models.CreatePoolRequestResourceLimits = None,
+        scheduling_policy_id: str = None,
     ):
         # The name of the resource pool.
         # 
@@ -26,6 +27,7 @@ class CreatePoolRequest(DaraModel):
         self.priority = priority
         # The quota of resources that users are allowed to concurrently use in a resource pool.
         self.resource_limits = resource_limits
+        self.scheduling_policy_id = scheduling_policy_id
 
     def validate(self):
         if self.resource_limits:
@@ -45,6 +47,9 @@ class CreatePoolRequest(DaraModel):
         if self.resource_limits is not None:
             result['ResourceLimits'] = self.resource_limits.to_map()
 
+        if self.scheduling_policy_id is not None:
+            result['SchedulingPolicyId'] = self.scheduling_policy_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -59,15 +64,17 @@ class CreatePoolRequest(DaraModel):
             temp_model = main_models.CreatePoolRequestResourceLimits()
             self.resource_limits = temp_model.from_map(m.get('ResourceLimits'))
 
+        if m.get('SchedulingPolicyId') is not None:
+            self.scheduling_policy_id = m.get('SchedulingPolicyId')
+
         return self
 
 class CreatePoolRequestResourceLimits(DaraModel):
     def __init__(
         self,
-        max_exector_num: int = None,
+        max_executor_num: int = None,
     ):
-        # The maximum number of concurrent execution nodes in a resource pool.
-        self.max_exector_num = max_exector_num
+        self.max_executor_num = max_executor_num
 
     def validate(self):
         pass
@@ -77,15 +84,15 @@ class CreatePoolRequestResourceLimits(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.max_exector_num is not None:
-            result['MaxExectorNum'] = self.max_exector_num
+        if self.max_executor_num is not None:
+            result['MaxExecutorNum'] = self.max_executor_num
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('MaxExectorNum') is not None:
-            self.max_exector_num = m.get('MaxExectorNum')
+        if m.get('MaxExecutorNum') is not None:
+            self.max_executor_num = m.get('MaxExecutorNum')
 
         return self
 

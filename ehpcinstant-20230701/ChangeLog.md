@@ -1,3 +1,25 @@
+2026-05-11 Version: 4.0.0
+- Support API GetJobRecordDuration.
+- Support API UpdateJobRecordDuration.
+- Update API CreatePool: add request parameters SchedulingPolicyId.
+- Update API CreatePool: add request parameters ResourceLimits.MaxExecutorNum.
+- Update API CreatePool: delete request parameters ResourceLimits.MaxExectorNum.
+- Update API GetJob: add response parameters Body.JobInfo.DeploymentPolicy.Pool.
+- Update API GetPool: add response parameters Body.PoolInfo.ExecutorUsage.
+- Update API GetPool: add response parameters Body.PoolInfo.MaxExecutorNum.
+- Update API GetPool: add response parameters Body.PoolInfo.SchedulingPolicyId.
+- Update API GetPool: delete response parameters Body.PoolInfo.ExectorUsage.
+- Update API GetPool: delete response parameters Body.PoolInfo.MaxExectorNum.
+- Update API ListPools: add response parameters Body.PoolList.$.CreateTime.
+- Update API ListPools: add response parameters Body.PoolList.$.MaxExecutorNum.
+- Update API ListPools: add response parameters Body.PoolList.$.SchedulingPolicyId.
+- Update API ListPools: add response parameters Body.PoolList.$.UpdateTime.
+- Update API ListPools: delete response parameters Body.PoolList.$.MaxExectorNum.
+- Update API UpdatePool: add request parameters SchedulingPolicyId.
+- Update API UpdatePool: add request parameters ResourceLimits.MaxExecutorNum.
+- Update API UpdatePool: delete request parameters ResourceLimits.MaxExectorNum.
+
+
 2026-02-11 Version: 3.5.3
 - Update API CreateJob: add request parameters Tasks.$.TaskSpec.TaskExecutor.$.Container.ImageRegistryOptions.
 

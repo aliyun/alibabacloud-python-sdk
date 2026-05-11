@@ -900,6 +900,7 @@ class GetJobResponseBodyJobInfoDeploymentPolicy(DaraModel):
         allocation_spec: str = None,
         level: str = None,
         network: main_models.GetJobResponseBodyJobInfoDeploymentPolicyNetwork = None,
+        pool: str = None,
         tags: List[main_models.GetJobResponseBodyJobInfoDeploymentPolicyTags] = None,
     ):
         # The type of the resource. Only Dedicated is supported. You must enable a whitelist.
@@ -913,6 +914,7 @@ class GetJobResponseBodyJobInfoDeploymentPolicy(DaraModel):
         self.level = level
         # The network configuration information.
         self.network = network
+        self.pool = pool
         # The list of job tags.
         self.tags = tags
 
@@ -938,6 +940,9 @@ class GetJobResponseBodyJobInfoDeploymentPolicy(DaraModel):
         if self.network is not None:
             result['Network'] = self.network.to_map()
 
+        if self.pool is not None:
+            result['Pool'] = self.pool
+
         result['Tags'] = []
         if self.tags is not None:
             for k1 in self.tags:
@@ -956,6 +961,9 @@ class GetJobResponseBodyJobInfoDeploymentPolicy(DaraModel):
         if m.get('Network') is not None:
             temp_model = main_models.GetJobResponseBodyJobInfoDeploymentPolicyNetwork()
             self.network = temp_model.from_map(m.get('Network'))
+
+        if m.get('Pool') is not None:
+            self.pool = m.get('Pool')
 
         self.tags = []
         if m.get('Tags') is not None:
