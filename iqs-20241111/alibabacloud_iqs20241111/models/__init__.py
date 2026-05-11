@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 from ._aisearch_query import AISearchQuery
+from ._agent_base_query import AgentBaseQuery
+from ._common_agent_query import CommonAgentQuery
 from ._generic_search_result import GenericSearchResult
 from ._get_iqs_usage_result import GetIqsUsageResult
 from ._global_page_item import GlobalPageItem
@@ -27,6 +29,7 @@ from ._multimodal_search_output import MultimodalSearchOutput
 from ._omni_search_query import OmniSearchQuery
 from ._omni_search_result import OmniSearchResult
 from ._query_context import QueryContext
+from ._query_result import QueryResult
 from ._read_page_body import ReadPageBody
 from ._read_page_item import ReadPageItem
 from ._read_page_scrape_body import ReadPageScrapeBody
@@ -50,6 +53,8 @@ from ._weibo_item import WeiboItem
 from ._ai_search_request import AiSearchRequest
 from ._ai_search_response_body import AiSearchResponseBody
 from ._ai_search_response import AiSearchResponse
+from ._common_query_by_scene_request import CommonQueryBySceneRequest
+from ._common_query_by_scene_response import CommonQueryBySceneResponse
 from ._generic_advanced_search_request import GenericAdvancedSearchRequest
 from ._generic_advanced_search_response import GenericAdvancedSearchResponse
 from ._generic_search_request import GenericSearchRequest
@@ -79,6 +84,9 @@ from ._get_iqs_usage_result import GetIqsUsageResultRecords
 from ._global_query_context import GlobalQueryContextOriginalQuery
 from ._query_context import QueryContextOriginalQuery
 from ._query_context import QueryContextRewrite
+from ._query_result import QueryResultDataImages
+from ._query_result import QueryResultDataMetadata
+from ._query_result import QueryResultData
 from ._read_page_body import ReadPageBodyReadability
 from ._read_page_scrape_body import ReadPageScrapeBodyReadability
 from ._ai_search_response_body import AiSearchResponseBodyHeaderQueryContextOriginalQuery
@@ -88,6 +96,8 @@ from ._ai_search_response_body import AiSearchResponseBodyHeader
 
 __all__ = [
     AISearchQuery,
+    AgentBaseQuery,
+    CommonAgentQuery,
     GenericSearchResult,
     GetIqsUsageResult,
     GlobalPageItem,
@@ -112,6 +122,7 @@ __all__ = [
     OmniSearchQuery,
     OmniSearchResult,
     QueryContext,
+    QueryResult,
     ReadPageBody,
     ReadPageItem,
     ReadPageScrapeBody,
@@ -135,6 +146,8 @@ __all__ = [
     AiSearchRequest,
     AiSearchResponseBody,
     AiSearchResponse,
+    CommonQueryBySceneRequest,
+    CommonQueryBySceneResponse,
     GenericAdvancedSearchRequest,
     GenericAdvancedSearchResponse,
     GenericSearchRequest,
@@ -164,6 +177,9 @@ __all__ = [
     GlobalQueryContextOriginalQuery,
     QueryContextOriginalQuery,
     QueryContextRewrite,
+    QueryResultDataImages,
+    QueryResultDataMetadata,
+    QueryResultData,
     ReadPageBodyReadability,
     ReadPageScrapeBodyReadability,
     AiSearchResponseBodyHeaderQueryContextOriginalQuery,

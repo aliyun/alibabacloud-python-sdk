@@ -228,6 +228,76 @@ class Client(OpenApiClient):
         headers = {}
         return await self.ai_search_with_options_async(request, headers, runtime)
 
+    def common_query_by_scene_with_options(
+        self,
+        request: main_models.CommonQueryBySceneRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CommonQueryBySceneResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CommonQueryByScene',
+            version = '2024-11-11',
+            protocol = 'HTTPS',
+            pathname = f'/amap-function-call-agent/iqs-agent-service/v2/nl/common',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CommonQueryBySceneResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def common_query_by_scene_with_options_async(
+        self,
+        request: main_models.CommonQueryBySceneRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CommonQueryBySceneResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CommonQueryByScene',
+            version = '2024-11-11',
+            protocol = 'HTTPS',
+            pathname = f'/amap-function-call-agent/iqs-agent-service/v2/nl/common',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CommonQueryBySceneResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def common_query_by_scene(
+        self,
+        request: main_models.CommonQueryBySceneRequest,
+    ) -> main_models.CommonQueryBySceneResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.common_query_by_scene_with_options(request, headers, runtime)
+
+    async def common_query_by_scene_async(
+        self,
+        request: main_models.CommonQueryBySceneRequest,
+    ) -> main_models.CommonQueryBySceneResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.common_query_by_scene_with_options_async(request, headers, runtime)
+
     def generic_advanced_search_with_options(
         self,
         request: main_models.GenericAdvancedSearchRequest,

@@ -1,3 +1,7 @@
+2026-05-11 Version: 1.9.0
+- Support API CommonQueryByScene.
+
+
 2026-04-21 Version: 1.8.0
 - Support API MedicalAnswer.
 - Support API MedicalKnowledge.
