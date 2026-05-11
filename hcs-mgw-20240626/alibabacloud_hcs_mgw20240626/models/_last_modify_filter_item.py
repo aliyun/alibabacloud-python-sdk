@@ -12,6 +12,7 @@ class LastModifyFilterItem(DaraModel):
         self,
         time_filter: List[main_models.TimeFilter] = None,
     ):
+        # The time filters.
         self.time_filter = time_filter
 
     def validate(self):

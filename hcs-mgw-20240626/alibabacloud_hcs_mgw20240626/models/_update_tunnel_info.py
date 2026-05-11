@@ -11,7 +11,9 @@ class UpdateTunnelInfo(DaraModel):
         tags: str = None,
         tunnel_qos: main_models.TunnelQos = None,
     ):
+        # The tags.
         self.tags = tags
+        # The throttling settings of the tunnel.
         self.tunnel_qos = tunnel_qos
 
     def validate(self):

@@ -11,8 +11,11 @@ class CreateReportInfo(DaraModel):
         runtime_id: int = None,
         version: str = None,
     ):
+        # The task name.
         self.job_name = job_name
+        # The execution ID of the task.
         self.runtime_id = runtime_id
+        # The task ID.
         self.version = version
 
     def validate(self):

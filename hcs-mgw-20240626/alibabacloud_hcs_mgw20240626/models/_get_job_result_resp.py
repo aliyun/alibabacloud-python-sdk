@@ -25,22 +25,38 @@ class GetJobResultResp(DaraModel):
         total_object_size: int = None,
         version: str = None,
     ):
+        # The type of the data address created based on the files that failed to be migrated. This parameter is required if you create a data address.
         self.address_type = address_type
+        # The number of files that are migrated. The number includes the number of files that are successfully migrated and the number of files that are skipped.
         self.copied_object_count = copied_object_count
+        # The data size of files that are migrated.
         self.copied_object_size = copied_object_size
+        # The number of files that failed to be migrated.
         self.failed_object_count = failed_object_count
+        # The AccessKey ID that is used to access the bucket in which the inventory list of files that failed to be migrated resides. This parameter is required if you create a data address.
         self.inv_access_id = inv_access_id
+        # The AccessKey secret that is used to access the bucket in which the inventory list of files that failed to be migrated resides. This parameter is required if you create a data address.
         self.inv_access_secret = inv_access_secret
+        # The name of the bucket in which the inventory list of files that failed to be migrated resides. This parameter is required if you create a data address.
         self.inv_bucket = inv_bucket
+        # The domain name of the bucket in which the inventory list of files that failed to be migrated resides. This parameter is required if you create a data address.
         self.inv_domain = inv_domain
+        # The type of the bucket in which the inventory list of files that failed to be migrated resides. This parameter is required if you create a data address.
         self.inv_location = inv_location
+        # The inventory list of files that failed to be migrated. This parameter is required if you create a data address.
         self.inv_path = inv_path
+        # The region ID of the bucket in which the inventory list of files that failed to be migrated resides. This parameter is required if you create a data address.
         self.inv_region_id = inv_region_id
+        # Indicates whether the files that failed to be migrated can be migrated again.\\
+        # Valid values: NoNeed, Ready, and NotReady.
         self.ready_retry = ready_retry
         self.skipped_object_count = skipped_object_count
         self.skipped_object_size = skipped_object_size
+        # The total number of files.
         self.total_object_count = total_object_count
+        # The total data size of files.
         self.total_object_size = total_object_size
+        # The task ID.
         self.version = version
 
     def validate(self):

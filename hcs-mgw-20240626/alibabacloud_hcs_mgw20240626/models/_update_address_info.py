@@ -9,6 +9,7 @@ class UpdateAddressInfo(DaraModel):
         self,
         agent_list: str = None,
     ):
+        # The agents.
         self.agent_list = agent_list
 
     def validate(self):

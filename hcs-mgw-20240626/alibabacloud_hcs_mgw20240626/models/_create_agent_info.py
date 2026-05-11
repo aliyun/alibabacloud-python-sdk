@@ -13,13 +13,26 @@ class CreateAgentInfo(DaraModel):
         tags: str = None,
         tunnel_id: str = None,
     ):
+        # The method that is used to access the agent.\\
+        # Valid values: public and vpc.
+        # 
         # This parameter is required.
         self.agent_endpoint = agent_endpoint
+        # The deployment mode of the agent.\\
+        # Set the value to default, which specifies the independent process mode.
+        # 
         # This parameter is required.
         self.deploy_method = deploy_method
+        # The name of the agent.\\
+        # The name can contain lowercase letters, digits, hyphens (-), and underscores (_). The name must be 3 to 63 characters in length. The name is case-sensitive and encoded in UTF-8. The name cannot start with a hyphen (-) or an underscore (_). You must specify a name.
+        # 
         # This parameter is required.
         self.name = name
+        # The tags in the key:value format.\\
+        # The value can contain letters, digits, hyphens (-), underscores (_), and commas (,). The value can be up to 1,024 characters in length.
         self.tags = tags
+        # The tunnel ID.
+        # 
         # This parameter is required.
         self.tunnel_id = tunnel_id
 

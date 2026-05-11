@@ -28,24 +28,52 @@ class CreateJobInfo(DaraModel):
         with_storage_class: bool = None,
     ):
         self.appendable_to_normal = appendable_to_normal
+        # The audit method.
         self.audit = audit
+        # Indicates whether the Target attribute value of the symbolic links at the source data address is converted. You can convert the Target attribute value of the symbolic links at the source data address in one of the following scenarios: The source data address is an Object Storage Service (OSS) data address and the destination data address is a local data address. The source data address is a local data address and the destination data address is an OSS data address. The source data address is a local data address and the destination data address is another local data address. This ensures that the symbolic links at the destination data address can point to their objects as expected.
         self.convert_symlink_target = convert_symlink_target
+        # Specifies whether to create a migration report.
         self.create_report = create_report
+        # The name of the destination data address.
+        # 
         # This parameter is required.
         self.dest_address = dest_address
+        # Specifies whether to enable multi-version migration. Multi-version migration is not supported.
         self.enable_multi_versioning = enable_multi_versioning
+        # The filtering rule.
         self.filter_rule = filter_rule
+        # The throttling settings of the task.
         self.import_qos = import_qos
+        # The task name.\\
+        # The name can contain lowercase letters, digits, hyphens (-), and underscores (_). The name must be 3 to 63 characters in length. The name is case-sensitive and encoded in UTF-8. The name cannot start with a hyphen (-) or an underscore (_). You must specify a name.
+        # 
         # This parameter is required.
         self.name = name
+        # The file overwriting mode.\\
+        # Valid values: never and always.
+        # 
         # This parameter is required.
         self.overwrite_mode = overwrite_mode
+        # The ID of the parent task. When you create a subtask to migrate a file that failed to be migrated, you can specify the ID of the parent task.
         self.parent_version = parent_version
+        # The scheduling rule.
         self.schedule_rule = schedule_rule
+        # The name of the source data address.
+        # 
         # This parameter is required.
         self.src_address = src_address
+        # The tags in the key:value format.\\
+        # The value can contain letters, digits, hyphens (-), underscores (_), and commas (,). The value can be up to 1,024 characters in length.
         self.tags = tags
         self.target_storage_class = target_storage_class
+        # The file transfer mode.\\
+        # Valid values: all and lastmodified. all: transfers the full data of files. lastmodified: transfers the incremental data of files.\\
+        # Valid values if OverwriteMode and TransferMode are used together:
+        # 
+        # *   A combination of always and all indicates that all files are forcefully overwritten.
+        # *   A combination of always and lastmodified indicates that files are overwritten based on the last modification time.
+        # *   A combination of never and all indicates that the files with the same name are not overwritten.
+        # 
         # This parameter is required.
         self.transfer_mode = transfer_mode
         self.with_last_modify_time = with_last_modify_time

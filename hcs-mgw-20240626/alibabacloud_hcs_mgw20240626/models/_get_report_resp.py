@@ -22,19 +22,34 @@ class GetReportResp(DaraModel):
         total_count: int = None,
         total_list_prefix: str = None,
     ):
+        # The number of files that are migrated.
         self.copied_count = copied_count
+        # The error message.
         self.error_message = error_message
+        # The number of files that failed to be migrated.
         self.failed_count = failed_count
+        # The path of files that failed to be migrated.
         self.failed_list_prefix = failed_list_prefix
+        # The time when the task was created.
         self.job_create_time = job_create_time
+        # The time when the task ended.
         self.job_end_time = job_end_time
+        # The task duration.
         self.job_execute_time = job_execute_time
+        # The time when the migration report was created.
         self.report_create_time = report_create_time
+        # The time when the migration report was generated.
         self.report_end_time = report_end_time
+        # The number of files that are skipped.
         self.skipped_count = skipped_count
+        # The path of files that are skipped.
         self.skipped_list_prefix = skipped_list_prefix
+        # The state of the migration report.\\
+        # Valid values: Running, NotExist, Finished, and Failed.
         self.status = status
+        # The total number of files.
         self.total_count = total_count
+        # The path of files.
         self.total_list_prefix = total_list_prefix
 
     def validate(self):

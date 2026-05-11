@@ -15,11 +15,17 @@ class GetTunnelResp(DaraModel):
         tunnel_id: str = None,
         tunnel_qos: main_models.TunnelQos = None,
     ):
+        # The time when the tunnel was created.
         self.create_time = create_time
+        # The time when the tunnel was last modified.
         self.modify_time = modify_time
+        # The tunnel owner.
         self.owner = owner
+        # The tags.
         self.tags = tags
+        # The tunnel ID.
         self.tunnel_id = tunnel_id
+        # The throttling settings of the tunnel.
         self.tunnel_qos = tunnel_qos
 
     def validate(self):

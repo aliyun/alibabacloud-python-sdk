@@ -10,7 +10,9 @@ class ImportQos(DaraModel):
         max_band_width: int = None,
         max_import_task_qps: int = None,
     ):
+        # The maximum bandwidth. Unit: bit/s.
         self.max_band_width = max_band_width
+        # The number of files that are migrated per second.
         self.max_import_task_qps = max_import_task_qps
 
     def validate(self):

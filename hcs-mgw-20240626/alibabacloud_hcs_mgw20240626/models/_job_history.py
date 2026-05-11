@@ -26,23 +26,42 @@ class JobHistory(DaraModel):
         total_count: int = None,
         total_size: int = None,
     ):
+        # The ID of the task status change.
         self.commit_id = commit_id
+        # The number of files that are migrated. The number includes the number of files that are successfully migrated and the number of files that are skipped.
         self.copied_count = copied_count
+        # The data size of files that are migrated. Unit: bytes.
         self.copied_size = copied_size
+        # The time when the current state ended.
         self.end_time = end_time
+        # The number of files that failed to be migrated.
         self.failed_count = failed_count
+        # The task ID.
         self.job_version = job_version
+        # The state of data listing.\\
+        # Valid values: Listing and Finished.
         self.list_status = list_status
+        # The error message.
         self.message = message
+        # The task name.
         self.name = name
+        # The operator.\\
+        # Valid values: user and system.
         self.operator = operator
+        # The execution ID of the task.
         self.runtime_id = runtime_id
+        # The runtime state.\\
+        # Valid values: Normal and Interrupt.
         self.runtime_state = runtime_state
         self.skipped_count = skipped_count
         self.skipped_size = skipped_size
+        # The time when the current state started.
         self.start_time = start_time
+        # The task state.
         self.status = status
+        # The total number of files.
         self.total_count = total_count
+        # The total data size of files. Unit: bytes.
         self.total_size = total_size
 
     def validate(self):

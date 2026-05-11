@@ -18,15 +18,25 @@ class GetAgentResp(DaraModel):
         tunnel_id: str = None,
         version: str = None,
     ):
+        # The security code of the agent.
         self.activation_key = activation_key
+        # The method that is used to access the agent.
         self.agent_endpoint = agent_endpoint
+        # The time when the agent was created.
         self.create_time = create_time
+        # The deployment mode of the agent.
         self.deploy_method = deploy_method
+        # The time when the agent was last modified.
         self.modify_time = modify_time
+        # The agent name.
         self.name = name
+        # The agent owner.
         self.owner = owner
+        # The tags.
         self.tags = tags
+        # The tunnel ID.
         self.tunnel_id = tunnel_id
+        # The agent ID.
         self.version = version
 
     def validate(self):

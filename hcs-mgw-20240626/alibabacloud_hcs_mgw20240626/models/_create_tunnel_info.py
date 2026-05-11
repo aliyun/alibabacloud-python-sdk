@@ -11,7 +11,10 @@ class CreateTunnelInfo(DaraModel):
         tags: str = None,
         tunnel_qos: main_models.TunnelQos = None,
     ):
+        # The tags in the key:value format.\\
+        # The value can contain letters, digits, hyphens (-), underscores (_), and commas (,). The value can be up to 1,024 characters in length.
         self.tags = tags
+        # The throttling settings of the tunnel.
         self.tunnel_qos = tunnel_qos
 
     def validate(self):

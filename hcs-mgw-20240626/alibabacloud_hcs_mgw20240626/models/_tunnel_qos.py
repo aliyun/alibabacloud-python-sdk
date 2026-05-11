@@ -10,7 +10,11 @@ class TunnelQos(DaraModel):
         max_bandwidth: int = None,
         max_qps: int = None,
     ):
+        # The maximum bandwidth of the tunnel. Unit: byte/s.\\
+        # Valid values: values greater than or equal to 10485760. Default value: 0. The default value indicates that the bandwidth of the tunnel is not limited.
         self.max_bandwidth = max_bandwidth
+        # The maximum queries per second (QPS) of the tunnel.\\
+        # Valid values: values greater than or equal to 0. Default value: 0. The default value indicates that the QPS of the tunnel is not limited.
         self.max_qps = max_qps
 
     def validate(self):

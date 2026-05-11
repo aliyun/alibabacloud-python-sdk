@@ -19,15 +19,25 @@ class GetAddressResp(DaraModel):
         verify_time: str = None,
         version: str = None,
     ):
+        # The details of the data address.
         self.address_detail = address_detail
+        # The time when the data address was created.
         self.create_time = create_time
+        # The time when the data address was last modified.
         self.modify_time = modify_time
+        # The name of the data address.
         self.name = name
+        # The owner of the data address.
         self.owner = owner
+        # The state of the data address.
         self.status = status
+        # The tags.
         self.tags = tags
+        # The verification result of the data address.
         self.verify_result = verify_result
+        # The time when the data address was verified.
         self.verify_time = verify_time
+        # The ID of the data address.
         self.version = version
 
     def validate(self):

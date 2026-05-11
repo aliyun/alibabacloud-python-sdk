@@ -11,6 +11,7 @@ class KeyFilterItem(DaraModel):
         self,
         regex: List[str] = None,
     ):
+        # The regular expressions.
         self.regex = regex
 
     def validate(self):

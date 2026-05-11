@@ -11,8 +11,11 @@ class ScheduleRule(DaraModel):
         start_cron_expression: str = None,
         suspend_cron_expression: str = None,
     ):
+        # The maximum number of times that the migration task is automatically scheduled. Each time the migration task is run, the execution ID increases by one until the task is run the specified number of times. The task is automatically scheduled based on the specified start time and pause time. The task is no longer automatically scheduled after the task is run the specified number of times. However, you can still manually start the task.
         self.max_schedule_count = max_schedule_count
+        # The time when the migration task started. You can use a CRON expression to specify the time. The interval at which the migration task is run is at least 1 hour.
         self.start_cron_expression = start_cron_expression
+        # The time when the migration task paused. You can use a CRON expression to specify the time. The interval at which the migration task is run is at least 1 hour.
         self.suspend_cron_expression = suspend_cron_expression
 
     def validate(self):

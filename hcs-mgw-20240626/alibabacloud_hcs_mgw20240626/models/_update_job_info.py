@@ -11,7 +11,10 @@ class UpdateJobInfo(DaraModel):
         import_qos: main_models.ImportQos = None,
         status: str = None,
     ):
+        # The throttling settings of the task.
         self.import_qos = import_qos
+        # The task state.\\
+        # Valid values: IMPORT_JOB_LAUNCHING, IMPORT_JOB_SUSPEND, and IMPORT_JOB_CLOSING.
         self.status = status
 
     def validate(self):

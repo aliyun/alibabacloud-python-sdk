@@ -34,26 +34,64 @@ class GetJobResp(DaraModel):
         with_storage_class: bool = None,
     ):
         self.appendable_to_normal = appendable_to_normal
+        # The audit method.
         self.audit = audit
+        # Indicates whether the Target attribute value of the symbolic links at the source data address is converted.
         self.convert_symlink_target = convert_symlink_target
+        # Indicates whether a migration report is created.
         self.create_report = create_report
+        # The time when the task was created.
         self.create_time = create_time
+        # The name of the destination data address.
         self.dest_address = dest_address
+        # Indicates whether multi-version migration is enabled.
         self.enable_multi_versioning = enable_multi_versioning
+        # The filtering rule.
         self.filter_rule = filter_rule
+        # The throttling settings of the task.
         self.import_qos = import_qos
+        # The time when the task was modified.
         self.modify_time = modify_time
+        # The task name.
         self.name = name
+        # The file overwriting mode.
         self.overwrite_mode = overwrite_mode
+        # The task owner.
         self.owner = owner
+        # The name of the parent task.
         self.parent_name = parent_name
+        # The ID of the parent task.
         self.parent_version = parent_version
+        # The scheduling rule.
         self.schedule_rule = schedule_rule
+        # The name of the source data address.
         self.src_address = src_address
+        # The task state. Valid values:
+        # 
+        # IMPORT_JOB_BEGIN: The task is created.
+        # 
+        # IMPORT_JOB_LAUNCHING: The task is being started.
+        # 
+        # IMPORT_JOB_PREPARING: The system is preparing for the task.
+        # 
+        # IMPORT_JOB_DOING: The task is running.
+        # 
+        # IMPORT_JOB_SUSPEND: The task is paused.
+        # 
+        # IMPORT_JOB_CLOSING: The task is being closed.
+        # 
+        # IMPORT_JOB_FINISHED: The task is complete.
+        # 
+        # IMPORT_JOB_INTERRUPTED: The task is abnormally interrupted.
+        # 
+        # IMPORT_JOB_CONFIRMED: The task is complete and the user has confirmed the data integrity and consistency.
         self.status = status
+        # The tags.
         self.tags = tags
         self.target_storage_class = target_storage_class
+        # The file transfer mode.
         self.transfer_mode = transfer_mode
+        # The task ID.
         self.version = version
         self.with_last_modify_time = with_last_modify_time
         self.with_storage_class = with_storage_class

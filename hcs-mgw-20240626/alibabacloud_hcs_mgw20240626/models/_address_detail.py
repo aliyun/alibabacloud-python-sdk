@@ -28,28 +28,51 @@ class AddressDetail(DaraModel):
         region_id: str = None,
         role: str = None,
     ):
+        # The AccessKey ID that is used to access the bucket.
+        # 
         # This parameter is required.
         self.access_id = access_id
+        # The AccessKey secret that is used to access the bucket.
+        # 
         # This parameter is required.
         self.access_secret = access_secret
+        # The type of the data address.
+        # 
         # This parameter is required.
         self.address_type = address_type
+        # The associated agents. If you want to access data over an Express Connect circuit or a VPN gateway, you must associate agents.
         self.agent_list = agent_list
+        # The bucket name.
+        # 
         # This parameter is required.
         self.bucket = bucket
         self.data_type = data_type
+        # The domain name of the bucket.
+        # 
         # This parameter is required.
         self.domain = domain
+        # The AccessKey ID that is used to access the bucket in which the inventory list resides.
         self.inv_access_id = inv_access_id
+        # The AccessKey secret that is used to access the bucket in which the inventory list resides.
         self.inv_access_secret = inv_access_secret
+        # The name of the bucket in which the inventory list resides.
         self.inv_bucket = inv_bucket
+        # The domain name of the bucket in which the inventory list resides.
         self.inv_domain = inv_domain
+        # The type of the bucket in which the inventory list resides.\\
+        # Valid values: oss, s3, and cos.
         self.inv_location = inv_location
+        # The inventory list. You must specify the file name and file name extension of the inventory list.
         self.inv_path = inv_path
+        # The region ID of the bucket in which the inventory list resides. If the bucket in which the inventory list resides is an OSS bucket, you must specify the ID of the region in which the inventory list resides. You do not need to specify the domain name of the inventory list.
         self.inv_region_id = inv_region_id
+        # The role that is used to migrate data for the bucket in which the inventory list resides. If the bucket in which the inventory list resides is an OSS bucket, you must specify a role. You do not need to specify an AccessKey pair that is used to access the bucket.
         self.inv_role = inv_role
+        # The bucket prefix.
         self.prefix = prefix
+        # The region ID of the bucket. If the bucket is an OSS bucket, you must specify the ID of the region in which the bucket resides. You do not need to specify the domain name of the bucket.
         self.region_id = region_id
+        # The role that is used to migrate data. If the bucket is an Object Storage Service (OSS) bucket, you must specify a role. You do not need to specify an AccessKey pair that is used to access the bucket.
         self.role = role
 
     def validate(self):

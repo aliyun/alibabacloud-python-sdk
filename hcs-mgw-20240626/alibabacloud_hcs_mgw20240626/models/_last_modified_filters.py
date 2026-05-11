@@ -11,7 +11,9 @@ class LastModifiedFilters(DaraModel):
         excludes: main_models.LastModifyFilterItem = None,
         includes: main_models.LastModifyFilterItem = None,
     ):
+        # The excluded file modification time.
         self.excludes = excludes
+        # The included file modification time.
         self.includes = includes
 
     def validate(self):

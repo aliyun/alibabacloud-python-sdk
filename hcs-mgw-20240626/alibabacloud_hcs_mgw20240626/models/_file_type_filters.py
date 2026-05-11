@@ -10,7 +10,9 @@ class FileTypeFilters(DaraModel):
         exclude_dir: bool = None,
         exclude_symlink: bool = None,
     ):
+        # Specifies whether to filter out files in directories.
         self.exclude_dir = exclude_dir
+        # Specifies whether to filter out symbolic links.
         self.exclude_symlink = exclude_symlink
 
     def validate(self):

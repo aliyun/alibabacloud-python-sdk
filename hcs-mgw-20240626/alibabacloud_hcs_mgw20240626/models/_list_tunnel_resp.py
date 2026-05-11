@@ -14,8 +14,16 @@ class ListTunnelResp(DaraModel):
         next_marker: str = None,
         truncated: bool = None,
     ):
+        # The queried tunnels.
         self.import_tunnel = import_tunnel
+        # The position from which the next list operation starts.
         self.next_marker = next_marker
+        # Indicates whether the queried results are truncated.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # *   false
         self.truncated = truncated
 
     def validate(self):

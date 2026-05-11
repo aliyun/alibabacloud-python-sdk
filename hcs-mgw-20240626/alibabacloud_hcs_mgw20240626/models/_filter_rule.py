@@ -12,8 +12,11 @@ class FilterRule(DaraModel):
         key_filters: main_models.KeyFilters = None,
         last_modified_filters: main_models.LastModifiedFilters = None,
     ):
+        # The filter based on the file type.
         self.file_type_filters = file_type_filters
+        # The filter based on the file name.
         self.key_filters = key_filters
+        # The filter based on the file modification time.
         self.last_modified_filters = last_modified_filters
 
     def validate(self):

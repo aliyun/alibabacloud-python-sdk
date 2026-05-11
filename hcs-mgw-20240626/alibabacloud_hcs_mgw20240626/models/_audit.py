@@ -9,6 +9,7 @@ class Audit(DaraModel):
         self,
         log_mode: str = None,
     ):
+        # Specifies whether to push migration logs to Simple Log Service (SLS). To push migration logs to SLS, you must create the AliyunOSSImportSlsAuditRole role and grant the required permissions to the role. Valid values: off, basic, and detail. off: does not push migration logs. basic: pushes only migration failure logs. detail: pushes migration success logs and migration failure logs.
         self.log_mode = log_mode
 
     def validate(self):

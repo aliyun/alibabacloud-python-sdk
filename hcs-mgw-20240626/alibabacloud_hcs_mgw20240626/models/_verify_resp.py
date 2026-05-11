@@ -11,8 +11,11 @@ class VerifyResp(DaraModel):
         error_msg: str = None,
         http_code: str = None,
     ):
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_msg = error_msg
+        # The HTTP status code.
         self.http_code = http_code
 
     def validate(self):

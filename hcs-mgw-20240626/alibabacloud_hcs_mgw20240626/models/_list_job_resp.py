@@ -14,8 +14,11 @@ class ListJobResp(DaraModel):
         next_marker: str = None,
         truncated: bool = None,
     ):
+        # The queried tasks.
         self.import_job = import_job
+        # The position from which the next list operation starts.
         self.next_marker = next_marker
+        # Indicates whether the queried results are truncated.
         self.truncated = truncated
 
     def validate(self):

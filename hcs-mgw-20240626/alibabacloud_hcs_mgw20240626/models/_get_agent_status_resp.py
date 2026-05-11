@@ -13,6 +13,8 @@ class GetAgentStatusResp(DaraModel):
     ):
         self.agent_ip = agent_ip
         self.agent_version = agent_version
+        # The agent state.\\
+        # Valid values: OK, Disconnected, and NoResponse.
         self.status = status
 
     def validate(self):

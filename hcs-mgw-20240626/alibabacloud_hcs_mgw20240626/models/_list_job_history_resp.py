@@ -14,8 +14,11 @@ class ListJobHistoryResp(DaraModel):
         next_marker: str = None,
         truncated: str = None,
     ):
+        # The execution history of migration tasks.
         self.job_history = job_history
+        # The position from which the next list operation starts.
         self.next_marker = next_marker
+        # Indicates whether the queried results are truncated.
         self.truncated = truncated
 
     def validate(self):

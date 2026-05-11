@@ -12,9 +12,13 @@ class VerifyAddressResp(DaraModel):
         status: str = None,
         verify_time: str = None,
     ):
+        # Data verification error code.
         self.error_code = error_code
+        # Data validation error message.
         self.error_message = error_message
+        # The status of the data address verification.
         self.status = status
+        # The time when the data address is verified.
         self.verify_time = verify_time
 
     def validate(self):
