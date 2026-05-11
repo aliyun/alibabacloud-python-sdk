@@ -13,6 +13,7 @@ from alibabacloud_tea_openapi.utils import Utils
 from darabonba.core import DaraCore as DaraCore
 from darabonba.runtime import RuntimeOptions
 from darabonba.url import Url as DaraURL
+from darabonba.utils.stream import Stream as DaraStream
 
 """
 """
@@ -521,6 +522,86 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_thread_with_options_async(name, request, headers, runtime)
 
+    def create_ticket_with_options(
+        self,
+        request: main_models.CreateTicketRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateTicketResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.access_token_expiration_time):
+            query['accessTokenExpirationTime'] = request.access_token_expiration_time
+        if not DaraCore.is_null(request.expiration_time):
+            query['expirationTime'] = request.expiration_time
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateTicket',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = f'/tickets',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateTicketResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_ticket_with_options_async(
+        self,
+        request: main_models.CreateTicketRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateTicketResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.access_token_expiration_time):
+            query['accessTokenExpirationTime'] = request.access_token_expiration_time
+        if not DaraCore.is_null(request.expiration_time):
+            query['expirationTime'] = request.expiration_time
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateTicket',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = f'/tickets',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateTicketResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_ticket(
+        self,
+        request: main_models.CreateTicketRequest,
+    ) -> main_models.CreateTicketResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_ticket_with_options(request, headers, runtime)
+
+    async def create_ticket_async(
+        self,
+        request: main_models.CreateTicketRequest,
+    ) -> main_models.CreateTicketResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_ticket_with_options_async(request, headers, runtime)
+
     def delete_digital_employee_with_options(
         self,
         name: str,
@@ -744,6 +825,102 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.delete_thread_with_options_async(name, thread_id, request, headers, runtime)
+
+    def get_artifact_with_options(
+        self,
+        name: str,
+        request: main_models.GetArtifactRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetArtifactResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.artifact_path):
+            query['artifactPath'] = request.artifact_path
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetArtifact',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = f'/digitalEmployee/{DaraURL.percent_encode(name)}/artifact',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'binary'
+        )
+        res = main_models.GetArtifactResponse()
+        tmp = self.call_api(params, req, runtime)
+        if not DaraCore.is_null(tmp.get("body")):
+            resp_body = DaraStream.to_readable(tmp.get("body"))
+            res.body = resp_body
+        if not DaraCore.is_null(tmp.get("headers")):
+            resp_headers = tmp.get("headers")
+            res.headers = Utils.stringify_map_value(resp_headers)
+        if not DaraCore.is_null(tmp.get("statusCode")):
+            status_code = int(tmp.get("statusCode"))
+            res.status_code = status_code
+        return res
+
+    async def get_artifact_with_options_async(
+        self,
+        name: str,
+        request: main_models.GetArtifactRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetArtifactResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.artifact_path):
+            query['artifactPath'] = request.artifact_path
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetArtifact',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = f'/digitalEmployee/{DaraURL.percent_encode(name)}/artifact',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'binary'
+        )
+        res = main_models.GetArtifactResponse()
+        tmp = await self.call_api_async(params, req, runtime)
+        if not DaraCore.is_null(tmp.get("body")):
+            resp_body = DaraStream.to_readable(tmp.get("body"))
+            res.body = resp_body
+        if not DaraCore.is_null(tmp.get("headers")):
+            resp_headers = tmp.get("headers")
+            res.headers = Utils.stringify_map_value(resp_headers)
+        if not DaraCore.is_null(tmp.get("statusCode")):
+            status_code = int(tmp.get("statusCode"))
+            res.status_code = status_code
+        return res
+
+    def get_artifact(
+        self,
+        name: str,
+        request: main_models.GetArtifactRequest,
+    ) -> main_models.GetArtifactResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_artifact_with_options(name, request, headers, runtime)
+
+    async def get_artifact_async(
+        self,
+        name: str,
+        request: main_models.GetArtifactRequest,
+    ) -> main_models.GetArtifactResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_artifact_with_options_async(name, request, headers, runtime)
 
     def get_digital_employee_with_options(
         self,
@@ -1064,6 +1241,94 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.get_thread_data_with_options_async(name, thread_id, request, headers, runtime)
+
+    def list_artifacts_with_options(
+        self,
+        name: str,
+        request: main_models.ListArtifactsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListArtifactsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.artifact_path):
+            query['artifactPath'] = request.artifact_path
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListArtifacts',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = f'/digitalEmployee/{DaraURL.percent_encode(name)}/artifacts',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListArtifactsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_artifacts_with_options_async(
+        self,
+        name: str,
+        request: main_models.ListArtifactsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListArtifactsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.artifact_path):
+            query['artifactPath'] = request.artifact_path
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListArtifacts',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = f'/digitalEmployee/{DaraURL.percent_encode(name)}/artifacts',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListArtifactsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_artifacts(
+        self,
+        name: str,
+        request: main_models.ListArtifactsRequest,
+    ) -> main_models.ListArtifactsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_artifacts_with_options(name, request, headers, runtime)
+
+    async def list_artifacts_async(
+        self,
+        name: str,
+        request: main_models.ListArtifactsRequest,
+    ) -> main_models.ListArtifactsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_artifacts_with_options_async(name, request, headers, runtime)
 
     def list_digital_employee_skill_versions_with_options(
         self,

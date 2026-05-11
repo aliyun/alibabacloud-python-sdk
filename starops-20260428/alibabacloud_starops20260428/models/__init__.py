@@ -15,6 +15,9 @@ from ._create_digital_employee_skill_response import CreateDigitalEmployeeSkillR
 from ._create_thread_request import CreateThreadRequest
 from ._create_thread_response_body import CreateThreadResponseBody
 from ._create_thread_response import CreateThreadResponse
+from ._create_ticket_request import CreateTicketRequest
+from ._create_ticket_response_body import CreateTicketResponseBody
+from ._create_ticket_response import CreateTicketResponse
 from ._delete_digital_employee_request import DeleteDigitalEmployeeRequest
 from ._delete_digital_employee_response_body import DeleteDigitalEmployeeResponseBody
 from ._delete_digital_employee_response import DeleteDigitalEmployeeResponse
@@ -24,6 +27,8 @@ from ._delete_digital_employee_skill_response import DeleteDigitalEmployeeSkillR
 from ._delete_thread_request import DeleteThreadRequest
 from ._delete_thread_response_body import DeleteThreadResponseBody
 from ._delete_thread_response import DeleteThreadResponse
+from ._get_artifact_request import GetArtifactRequest
+from ._get_artifact_response import GetArtifactResponse
 from ._get_digital_employee_request import GetDigitalEmployeeRequest
 from ._get_digital_employee_response_body import GetDigitalEmployeeResponseBody
 from ._get_digital_employee_response import GetDigitalEmployeeResponse
@@ -36,6 +41,9 @@ from ._get_thread_response import GetThreadResponse
 from ._get_thread_data_request import GetThreadDataRequest
 from ._get_thread_data_response_body import GetThreadDataResponseBody
 from ._get_thread_data_response import GetThreadDataResponse
+from ._list_artifacts_request import ListArtifactsRequest
+from ._list_artifacts_response_body import ListArtifactsResponseBody
+from ._list_artifacts_response import ListArtifactsResponse
 from ._list_digital_employee_skill_versions_request import ListDigitalEmployeeSkillVersionsRequest
 from ._list_digital_employee_skill_versions_response_body import ListDigitalEmployeeSkillVersionsResponseBody
 from ._list_digital_employee_skill_versions_response import ListDigitalEmployeeSkillVersionsResponse
@@ -72,6 +80,7 @@ from ._get_digital_employee_skill_response_body import GetDigitalEmployeeSkillRe
 from ._get_thread_response_body import GetThreadResponseBodyVariables
 from ._get_thread_data_response_body import GetThreadDataResponseBodyDataMessages
 from ._get_thread_data_response_body import GetThreadDataResponseBodyData
+from ._list_artifacts_response_body import ListArtifactsResponseBodyArtifacts
 from ._list_digital_employee_skill_versions_response_body import ListDigitalEmployeeSkillVersionsResponseBodyData
 from ._list_digital_employee_skills_response_body import ListDigitalEmployeeSkillsResponseBodySkills
 from ._list_digital_employees_response_body import ListDigitalEmployeesResponseBodyDigitalEmployeesKnowledgesBailian
@@ -98,6 +107,9 @@ __all__ = [
     CreateThreadRequest,
     CreateThreadResponseBody,
     CreateThreadResponse,
+    CreateTicketRequest,
+    CreateTicketResponseBody,
+    CreateTicketResponse,
     DeleteDigitalEmployeeRequest,
     DeleteDigitalEmployeeResponseBody,
     DeleteDigitalEmployeeResponse,
@@ -107,6 +119,8 @@ __all__ = [
     DeleteThreadRequest,
     DeleteThreadResponseBody,
     DeleteThreadResponse,
+    GetArtifactRequest,
+    GetArtifactResponse,
     GetDigitalEmployeeRequest,
     GetDigitalEmployeeResponseBody,
     GetDigitalEmployeeResponse,
@@ -119,6 +133,9 @@ __all__ = [
     GetThreadDataRequest,
     GetThreadDataResponseBody,
     GetThreadDataResponse,
+    ListArtifactsRequest,
+    ListArtifactsResponseBody,
+    ListArtifactsResponse,
     ListDigitalEmployeeSkillVersionsRequest,
     ListDigitalEmployeeSkillVersionsResponseBody,
     ListDigitalEmployeeSkillVersionsResponse,
@@ -155,6 +172,7 @@ __all__ = [
     GetThreadResponseBodyVariables,
     GetThreadDataResponseBodyDataMessages,
     GetThreadDataResponseBodyData,
+    ListArtifactsResponseBodyArtifacts,
     ListDigitalEmployeeSkillVersionsResponseBodyData,
     ListDigitalEmployeeSkillsResponseBodySkills,
     ListDigitalEmployeesResponseBodyDigitalEmployeesKnowledgesBailian,
