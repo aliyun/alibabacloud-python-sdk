@@ -87,6 +87,8 @@ class ListDesktopAgentRuntimeResponseBodyData(DaraModel):
         desktop_status: str = None,
         has_auth_user: bool = None,
         model_configure: bool = None,
+        os_type: str = None,
+        qr_code_configuring_list: List[str] = None,
         region_id: str = None,
         resource_group: main_models.ListDesktopAgentRuntimeResponseBodyDataResourceGroup = None,
         resource_id: str = None,
@@ -102,6 +104,8 @@ class ListDesktopAgentRuntimeResponseBodyData(DaraModel):
         self.desktop_status = desktop_status
         self.has_auth_user = has_auth_user
         self.model_configure = model_configure
+        self.os_type = os_type
+        self.qr_code_configuring_list = qr_code_configuring_list
         self.region_id = region_id
         self.resource_group = resource_group
         self.resource_id = resource_id
@@ -156,6 +160,12 @@ class ListDesktopAgentRuntimeResponseBodyData(DaraModel):
         if self.model_configure is not None:
             result['ModelConfigure'] = self.model_configure
 
+        if self.os_type is not None:
+            result['OsType'] = self.os_type
+
+        if self.qr_code_configuring_list is not None:
+            result['QrCodeConfiguringList'] = self.qr_code_configuring_list
+
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
@@ -205,6 +215,12 @@ class ListDesktopAgentRuntimeResponseBodyData(DaraModel):
 
         if m.get('ModelConfigure') is not None:
             self.model_configure = m.get('ModelConfigure')
+
+        if m.get('OsType') is not None:
+            self.os_type = m.get('OsType')
+
+        if m.get('QrCodeConfiguringList') is not None:
+            self.qr_code_configuring_list = m.get('QrCodeConfiguringList')
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')

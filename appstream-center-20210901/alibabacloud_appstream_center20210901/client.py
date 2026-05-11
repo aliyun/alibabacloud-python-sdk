@@ -399,16 +399,17 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.ConfigRuntimeChannelResponse:
         request.validate()
-        query = {}
-        if not DaraCore.is_null(request.agent_platform):
-            query['AgentPlatform'] = request.agent_platform
         body = {}
+        if not DaraCore.is_null(request.agent_platform):
+            body['AgentPlatform'] = request.agent_platform
         if not DaraCore.is_null(request.agent_provider):
             body['AgentProvider'] = request.agent_provider
         if not DaraCore.is_null(request.code):
             body['Code'] = request.code
         if not DaraCore.is_null(request.config):
             body['Config'] = request.config
+        if not DaraCore.is_null(request.config_mode):
+            body['ConfigMode'] = request.config_mode
         if not DaraCore.is_null(request.name):
             body['Name'] = request.name
         if not DaraCore.is_null(request.runtime_ids):
@@ -416,7 +417,6 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(request.runtime_type):
             body['RuntimeType'] = request.runtime_type
         req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -441,16 +441,17 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.ConfigRuntimeChannelResponse:
         request.validate()
-        query = {}
-        if not DaraCore.is_null(request.agent_platform):
-            query['AgentPlatform'] = request.agent_platform
         body = {}
+        if not DaraCore.is_null(request.agent_platform):
+            body['AgentPlatform'] = request.agent_platform
         if not DaraCore.is_null(request.agent_provider):
             body['AgentProvider'] = request.agent_provider
         if not DaraCore.is_null(request.code):
             body['Code'] = request.code
         if not DaraCore.is_null(request.config):
             body['Config'] = request.config
+        if not DaraCore.is_null(request.config_mode):
+            body['ConfigMode'] = request.config_mode
         if not DaraCore.is_null(request.name):
             body['Name'] = request.name
         if not DaraCore.is_null(request.runtime_ids):
@@ -458,7 +459,6 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(request.runtime_type):
             body['RuntimeType'] = request.runtime_type
         req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -3136,6 +3136,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.resource_ids):
+            query['ResourceIds'] = request.resource_ids
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -3200,6 +3202,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.resource_ids):
+            query['ResourceIds'] = request.resource_ids
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )

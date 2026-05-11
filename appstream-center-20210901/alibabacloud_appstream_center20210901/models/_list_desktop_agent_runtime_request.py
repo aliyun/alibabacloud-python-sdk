@@ -28,6 +28,7 @@ class ListDesktopAgentRuntimeRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
         resource_group_id: str = None,
+        resource_ids: List[str] = None,
     ):
         self.agent_instance_statuses = agent_instance_statuses
         self.agent_instance_versions = agent_instance_versions
@@ -49,6 +50,7 @@ class ListDesktopAgentRuntimeRequest(DaraModel):
         self.page_number = page_number
         self.page_size = page_size
         self.resource_group_id = resource_group_id
+        self.resource_ids = resource_ids
 
     def validate(self):
         pass
@@ -115,6 +117,9 @@ class ListDesktopAgentRuntimeRequest(DaraModel):
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
 
+        if self.resource_ids is not None:
+            result['ResourceIds'] = self.resource_ids
+
         return result
 
     def from_map(self, m: dict = None):
@@ -175,6 +180,9 @@ class ListDesktopAgentRuntimeRequest(DaraModel):
 
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
+
+        if m.get('ResourceIds') is not None:
+            self.resource_ids = m.get('ResourceIds')
 
         return self
 

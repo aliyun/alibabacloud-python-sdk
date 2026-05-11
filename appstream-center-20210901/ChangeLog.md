@@ -1,3 +1,14 @@
+2026-05-11 Version: 5.2.1
+- Update API ConfigRuntimeChannel: add request parameters ConfigMode.
+- Update API GetRuntimeChannel: add response parameters Body.Data.$.AvatarUrl.
+- Update API GetRuntimeChannel: add response parameters Body.Data.$.ConfigMode.
+- Update API GetRuntimeChannel: add response parameters Body.Data.$.QrCodeNotifyUrl.
+- Update API GetRuntimeChannel: add response parameters Body.Data.$.QrCodeStatus.
+- Update API ListDesktopAgentRuntime: add request parameters ResourceIds.
+- Update API ListDesktopAgentRuntime: add response parameters Body.Data.$.OsType.
+- Update API ListDesktopAgentRuntime: add response parameters Body.Data.$.QrCodeConfiguringList.
+
+
 2026-05-06 Version: 5.2.0
 - Support API BatchCreateLlmTemplates.
 - Support API CreateModelProviderTemplate.

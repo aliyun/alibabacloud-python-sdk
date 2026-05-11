@@ -13,6 +13,7 @@ class ConfigRuntimeChannelRequest(DaraModel):
         agent_provider: str = None,
         code: str = None,
         config: str = None,
+        config_mode: str = None,
         name: str = None,
         runtime_ids: List[str] = None,
         runtime_type: str = None,
@@ -24,6 +25,7 @@ class ConfigRuntimeChannelRequest(DaraModel):
         self.code = code
         # This parameter is required.
         self.config = config
+        self.config_mode = config_mode
         self.name = name
         # This parameter is required.
         self.runtime_ids = runtime_ids
@@ -50,6 +52,9 @@ class ConfigRuntimeChannelRequest(DaraModel):
         if self.config is not None:
             result['Config'] = self.config
 
+        if self.config_mode is not None:
+            result['ConfigMode'] = self.config_mode
+
         if self.name is not None:
             result['Name'] = self.name
 
@@ -74,6 +79,9 @@ class ConfigRuntimeChannelRequest(DaraModel):
 
         if m.get('Config') is not None:
             self.config = m.get('Config')
+
+        if m.get('ConfigMode') is not None:
+            self.config_mode = m.get('ConfigMode')
 
         if m.get('Name') is not None:
             self.name = m.get('Name')

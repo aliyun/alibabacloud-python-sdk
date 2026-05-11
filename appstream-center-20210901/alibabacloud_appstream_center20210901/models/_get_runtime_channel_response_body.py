@@ -61,13 +61,21 @@ class GetRuntimeChannelResponseBody(DaraModel):
 class GetRuntimeChannelResponseBodyData(DaraModel):
     def __init__(
         self,
+        avatar_url: str = None,
         code: str = None,
         config: str = None,
+        config_mode: str = None,
+        qr_code_notify_url: str = None,
+        qr_code_status: str = None,
         risk_type: str = None,
         status: str = None,
     ):
+        self.avatar_url = avatar_url
         self.code = code
         self.config = config
+        self.config_mode = config_mode
+        self.qr_code_notify_url = qr_code_notify_url
+        self.qr_code_status = qr_code_status
         self.risk_type = risk_type
         self.status = status
 
@@ -79,11 +87,23 @@ class GetRuntimeChannelResponseBodyData(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.avatar_url is not None:
+            result['AvatarUrl'] = self.avatar_url
+
         if self.code is not None:
             result['Code'] = self.code
 
         if self.config is not None:
             result['Config'] = self.config
+
+        if self.config_mode is not None:
+            result['ConfigMode'] = self.config_mode
+
+        if self.qr_code_notify_url is not None:
+            result['QrCodeNotifyUrl'] = self.qr_code_notify_url
+
+        if self.qr_code_status is not None:
+            result['QrCodeStatus'] = self.qr_code_status
 
         if self.risk_type is not None:
             result['RiskType'] = self.risk_type
@@ -95,11 +115,23 @@ class GetRuntimeChannelResponseBodyData(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AvatarUrl') is not None:
+            self.avatar_url = m.get('AvatarUrl')
+
         if m.get('Code') is not None:
             self.code = m.get('Code')
 
         if m.get('Config') is not None:
             self.config = m.get('Config')
+
+        if m.get('ConfigMode') is not None:
+            self.config_mode = m.get('ConfigMode')
+
+        if m.get('QrCodeNotifyUrl') is not None:
+            self.qr_code_notify_url = m.get('QrCodeNotifyUrl')
+
+        if m.get('QrCodeStatus') is not None:
+            self.qr_code_status = m.get('QrCodeStatus')
 
         if m.get('RiskType') is not None:
             self.risk_type = m.get('RiskType')
