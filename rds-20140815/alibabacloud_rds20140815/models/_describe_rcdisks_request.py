@@ -11,6 +11,7 @@ class DescribeRCDisksRequest(DaraModel):
     def __init__(
         self,
         disk_ids: str = None,
+        disk_type: str = None,
         instance_id: str = None,
         page_number: int = None,
         page_size: int = None,
@@ -20,6 +21,7 @@ class DescribeRCDisksRequest(DaraModel):
     ):
         # The disk ID. The value is a JSON array that consists of up to 100 disk IDs. Separate the disk IDs with commas (,). Format: `["Disk ID1","Disk ID2"]`.
         self.disk_ids = disk_ids
+        self.disk_type = disk_type
         # The instance ID.
         self.instance_id = instance_id
         # The page number.
@@ -48,6 +50,9 @@ class DescribeRCDisksRequest(DaraModel):
         if self.disk_ids is not None:
             result['DiskIds'] = self.disk_ids
 
+        if self.disk_type is not None:
+            result['DiskType'] = self.disk_type
+
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
 
@@ -74,6 +79,9 @@ class DescribeRCDisksRequest(DaraModel):
         m = m or dict()
         if m.get('DiskIds') is not None:
             self.disk_ids = m.get('DiskIds')
+
+        if m.get('DiskType') is not None:
+            self.disk_type = m.get('DiskType')
 
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')

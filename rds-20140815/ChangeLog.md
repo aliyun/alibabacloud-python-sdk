@@ -1,3 +1,7 @@
+2026-05-12 Version: 15.9.1
+- Update API DescribeRCDisks: add request parameters DiskType.
+
+
 2026-04-29 Version: 15.9.0
 - Support API DescribeDBInstanceSwitchLog.
 
