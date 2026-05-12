@@ -13,6 +13,7 @@ class CreateAutoProvisioningGroupShrinkRequest(DaraModel):
         launch_configuration: main_models.CreateAutoProvisioningGroupShrinkRequestLaunchConfiguration = None,
         auto_provisioning_group_name: str = None,
         auto_provisioning_group_type: str = None,
+        candidate_options: main_models.CreateAutoProvisioningGroupShrinkRequestCandidateOptions = None,
         client_token: str = None,
         data_disk_config: List[main_models.CreateAutoProvisioningGroupShrinkRequestDataDiskConfig] = None,
         default_target_capacity_type: str = None,
@@ -58,6 +59,7 @@ class CreateAutoProvisioningGroupShrinkRequest(DaraModel):
         # 
         # Default value: maintain.
         self.auto_provisioning_group_type = auto_provisioning_group_type
+        self.candidate_options = candidate_options
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The information of data disks on the instance.
@@ -186,6 +188,8 @@ class CreateAutoProvisioningGroupShrinkRequest(DaraModel):
     def validate(self):
         if self.launch_configuration:
             self.launch_configuration.validate()
+        if self.candidate_options:
+            self.candidate_options.validate()
         if self.data_disk_config:
             for v1 in self.data_disk_config:
                  if v1:
@@ -218,6 +222,9 @@ class CreateAutoProvisioningGroupShrinkRequest(DaraModel):
 
         if self.auto_provisioning_group_type is not None:
             result['AutoProvisioningGroupType'] = self.auto_provisioning_group_type
+
+        if self.candidate_options is not None:
+            result['CandidateOptions'] = self.candidate_options.to_map()
 
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
@@ -339,6 +346,10 @@ class CreateAutoProvisioningGroupShrinkRequest(DaraModel):
 
         if m.get('AutoProvisioningGroupType') is not None:
             self.auto_provisioning_group_type = m.get('AutoProvisioningGroupType')
+
+        if m.get('CandidateOptions') is not None:
+            temp_model = main_models.CreateAutoProvisioningGroupShrinkRequestCandidateOptions()
+            self.candidate_options = temp_model.from_map(m.get('CandidateOptions'))
 
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
@@ -790,6 +801,41 @@ class CreateAutoProvisioningGroupShrinkRequestDataDiskConfig(DaraModel):
         m = m or dict()
         if m.get('DiskCategory') is not None:
             self.disk_category = m.get('DiskCategory')
+
+        return self
+
+class CreateAutoProvisioningGroupShrinkRequestCandidateOptions(DaraModel):
+    def __init__(
+        self,
+        evaluate: bool = None,
+        timeout_minutes: int = None,
+    ):
+        self.evaluate = evaluate
+        self.timeout_minutes = timeout_minutes
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.evaluate is not None:
+            result['Evaluate'] = self.evaluate
+
+        if self.timeout_minutes is not None:
+            result['TimeoutMinutes'] = self.timeout_minutes
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Evaluate') is not None:
+            self.evaluate = m.get('Evaluate')
+
+        if m.get('TimeoutMinutes') is not None:
+            self.timeout_minutes = m.get('TimeoutMinutes')
 
         return self
 

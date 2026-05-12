@@ -1,3 +1,6 @@
+2026-05-12 Version: 7.7.6
+- Generated python 2014-05-26 for Ecs.
+
 2026-04-24 Version: 7.7.4
 - Update API DescribeImagePipelineExecutions: add response parameters Body.ImagePipelineExecution.$.ErrorCode.
 - Update API DescribeImagePipelineExecutions: add response parameters Body.ImagePipelineExecution.$.ErrorInfo.

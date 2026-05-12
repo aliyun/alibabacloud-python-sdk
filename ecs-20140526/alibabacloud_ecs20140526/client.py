@@ -3442,6 +3442,8 @@ class Client(OpenApiClient):
             query['AutoProvisioningGroupName'] = request.auto_provisioning_group_name
         if not DaraCore.is_null(request.auto_provisioning_group_type):
             query['AutoProvisioningGroupType'] = request.auto_provisioning_group_type
+        if not DaraCore.is_null(request.candidate_options):
+            query['CandidateOptions'] = request.candidate_options
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.data_disk_config):
@@ -3544,6 +3546,8 @@ class Client(OpenApiClient):
             query['AutoProvisioningGroupName'] = request.auto_provisioning_group_name
         if not DaraCore.is_null(request.auto_provisioning_group_type):
             query['AutoProvisioningGroupType'] = request.auto_provisioning_group_type
+        if not DaraCore.is_null(request.candidate_options):
+            query['CandidateOptions'] = request.candidate_options
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.data_disk_config):
@@ -12896,6 +12900,8 @@ class Client(OpenApiClient):
             query['AutoProvisioningGroupName'] = request.auto_provisioning_group_name
         if not DaraCore.is_null(request.auto_provisioning_group_status):
             query['AutoProvisioningGroupStatus'] = request.auto_provisioning_group_status
+        if not DaraCore.is_null(request.auto_provisioning_group_types):
+            query['AutoProvisioningGroupTypes'] = request.auto_provisioning_group_types
         if not DaraCore.is_null(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not DaraCore.is_null(request.owner_id):
@@ -12946,6 +12952,8 @@ class Client(OpenApiClient):
             query['AutoProvisioningGroupName'] = request.auto_provisioning_group_name
         if not DaraCore.is_null(request.auto_provisioning_group_status):
             query['AutoProvisioningGroupStatus'] = request.auto_provisioning_group_status
+        if not DaraCore.is_null(request.auto_provisioning_group_types):
+            query['AutoProvisioningGroupTypes'] = request.auto_provisioning_group_types
         if not DaraCore.is_null(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not DaraCore.is_null(request.owner_id):

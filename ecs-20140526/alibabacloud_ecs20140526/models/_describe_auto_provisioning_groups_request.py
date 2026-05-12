@@ -13,6 +13,7 @@ class DescribeAutoProvisioningGroupsRequest(DaraModel):
         auto_provisioning_group_id: List[str] = None,
         auto_provisioning_group_name: str = None,
         auto_provisioning_group_status: List[str] = None,
+        auto_provisioning_group_types: List[str] = None,
         owner_account: str = None,
         owner_id: int = None,
         page_number: int = None,
@@ -29,6 +30,7 @@ class DescribeAutoProvisioningGroupsRequest(DaraModel):
         self.auto_provisioning_group_name = auto_provisioning_group_name
         # The status of the auto provisioning group.
         self.auto_provisioning_group_status = auto_provisioning_group_status
+        self.auto_provisioning_group_types = auto_provisioning_group_types
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The page number.
@@ -74,6 +76,9 @@ class DescribeAutoProvisioningGroupsRequest(DaraModel):
         if self.auto_provisioning_group_status is not None:
             result['AutoProvisioningGroupStatus'] = self.auto_provisioning_group_status
 
+        if self.auto_provisioning_group_types is not None:
+            result['AutoProvisioningGroupTypes'] = self.auto_provisioning_group_types
+
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
 
@@ -115,6 +120,9 @@ class DescribeAutoProvisioningGroupsRequest(DaraModel):
 
         if m.get('AutoProvisioningGroupStatus') is not None:
             self.auto_provisioning_group_status = m.get('AutoProvisioningGroupStatus')
+
+        if m.get('AutoProvisioningGroupTypes') is not None:
+            self.auto_provisioning_group_types = m.get('AutoProvisioningGroupTypes')
 
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')

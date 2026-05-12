@@ -93,6 +93,7 @@ class CreateAutoProvisioningGroupResponseBodyLaunchResultsLaunchResult(DaraModel
     def __init__(
         self,
         amount: int = None,
+        candidate_evaluate_level: str = None,
         error_code: str = None,
         error_msg: str = None,
         instance_ids: main_models.CreateAutoProvisioningGroupResponseBodyLaunchResultsLaunchResultInstanceIds = None,
@@ -101,6 +102,7 @@ class CreateAutoProvisioningGroupResponseBodyLaunchResultsLaunchResult(DaraModel
         zone_id: str = None,
     ):
         self.amount = amount
+        self.candidate_evaluate_level = candidate_evaluate_level
         self.error_code = error_code
         self.error_msg = error_msg
         self.instance_ids = instance_ids
@@ -119,6 +121,9 @@ class CreateAutoProvisioningGroupResponseBodyLaunchResultsLaunchResult(DaraModel
             result = _map
         if self.amount is not None:
             result['Amount'] = self.amount
+
+        if self.candidate_evaluate_level is not None:
+            result['CandidateEvaluateLevel'] = self.candidate_evaluate_level
 
         if self.error_code is not None:
             result['ErrorCode'] = self.error_code
@@ -144,6 +149,9 @@ class CreateAutoProvisioningGroupResponseBodyLaunchResultsLaunchResult(DaraModel
         m = m or dict()
         if m.get('Amount') is not None:
             self.amount = m.get('Amount')
+
+        if m.get('CandidateEvaluateLevel') is not None:
+            self.candidate_evaluate_level = m.get('CandidateEvaluateLevel')
 
         if m.get('ErrorCode') is not None:
             self.error_code = m.get('ErrorCode')

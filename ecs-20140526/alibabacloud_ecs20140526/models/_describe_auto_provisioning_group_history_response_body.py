@@ -206,11 +206,156 @@ class DescribeAutoProvisioningGroupHistoryResponseBodyAutoProvisioningGroupHisto
 class DescribeAutoProvisioningGroupHistoryResponseBodyAutoProvisioningGroupHistoriesAutoProvisioningGroupHistoryActivityDetailsActivityDetail(DaraModel):
     def __init__(
         self,
+        created_instance_ids: main_models.DescribeAutoProvisioningGroupHistoryResponseBodyAutoProvisioningGroupHistoriesAutoProvisioningGroupHistoryActivityDetailsActivityDetailCreatedInstanceIds = None,
+        destroyed_instance_ids: main_models.DescribeAutoProvisioningGroupHistoryResponseBodyAutoProvisioningGroupHistoriesAutoProvisioningGroupHistoryActivityDetailsActivityDetailDestroyedInstanceIds = None,
         detail: str = None,
+        error_messages: main_models.DescribeAutoProvisioningGroupHistoryResponseBodyAutoProvisioningGroupHistoriesAutoProvisioningGroupHistoryActivityDetailsActivityDetailErrorMessages = None,
         status: str = None,
     ):
+        self.created_instance_ids = created_instance_ids
+        self.destroyed_instance_ids = destroyed_instance_ids
         self.detail = detail
+        self.error_messages = error_messages
         self.status = status
+
+    def validate(self):
+        if self.created_instance_ids:
+            self.created_instance_ids.validate()
+        if self.destroyed_instance_ids:
+            self.destroyed_instance_ids.validate()
+        if self.error_messages:
+            self.error_messages.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.created_instance_ids is not None:
+            result['CreatedInstanceIds'] = self.created_instance_ids.to_map()
+
+        if self.destroyed_instance_ids is not None:
+            result['DestroyedInstanceIds'] = self.destroyed_instance_ids.to_map()
+
+        if self.detail is not None:
+            result['Detail'] = self.detail
+
+        if self.error_messages is not None:
+            result['ErrorMessages'] = self.error_messages.to_map()
+
+        if self.status is not None:
+            result['Status'] = self.status
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreatedInstanceIds') is not None:
+            temp_model = main_models.DescribeAutoProvisioningGroupHistoryResponseBodyAutoProvisioningGroupHistoriesAutoProvisioningGroupHistoryActivityDetailsActivityDetailCreatedInstanceIds()
+            self.created_instance_ids = temp_model.from_map(m.get('CreatedInstanceIds'))
+
+        if m.get('DestroyedInstanceIds') is not None:
+            temp_model = main_models.DescribeAutoProvisioningGroupHistoryResponseBodyAutoProvisioningGroupHistoriesAutoProvisioningGroupHistoryActivityDetailsActivityDetailDestroyedInstanceIds()
+            self.destroyed_instance_ids = temp_model.from_map(m.get('DestroyedInstanceIds'))
+
+        if m.get('Detail') is not None:
+            self.detail = m.get('Detail')
+
+        if m.get('ErrorMessages') is not None:
+            temp_model = main_models.DescribeAutoProvisioningGroupHistoryResponseBodyAutoProvisioningGroupHistoriesAutoProvisioningGroupHistoryActivityDetailsActivityDetailErrorMessages()
+            self.error_messages = temp_model.from_map(m.get('ErrorMessages'))
+
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+
+        return self
+
+class DescribeAutoProvisioningGroupHistoryResponseBodyAutoProvisioningGroupHistoriesAutoProvisioningGroupHistoryActivityDetailsActivityDetailErrorMessages(DaraModel):
+    def __init__(
+        self,
+        error_message: List[main_models.DescribeAutoProvisioningGroupHistoryResponseBodyAutoProvisioningGroupHistoriesAutoProvisioningGroupHistoryActivityDetailsActivityDetailErrorMessagesErrorMessage] = None,
+    ):
+        self.error_message = error_message
+
+    def validate(self):
+        if self.error_message:
+            for v1 in self.error_message:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        result['ErrorMessage'] = []
+        if self.error_message is not None:
+            for k1 in self.error_message:
+                result['ErrorMessage'].append(k1.to_map() if k1 else None)
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.error_message = []
+        if m.get('ErrorMessage') is not None:
+            for k1 in m.get('ErrorMessage'):
+                temp_model = main_models.DescribeAutoProvisioningGroupHistoryResponseBodyAutoProvisioningGroupHistoriesAutoProvisioningGroupHistoryActivityDetailsActivityDetailErrorMessagesErrorMessage()
+                self.error_message.append(temp_model.from_map(k1))
+
+        return self
+
+class DescribeAutoProvisioningGroupHistoryResponseBodyAutoProvisioningGroupHistoriesAutoProvisioningGroupHistoryActivityDetailsActivityDetailErrorMessagesErrorMessage(DaraModel):
+    def __init__(
+        self,
+        code: str = None,
+        failed_instance_ids: main_models.DescribeAutoProvisioningGroupHistoryResponseBodyAutoProvisioningGroupHistoriesAutoProvisioningGroupHistoryActivityDetailsActivityDetailErrorMessagesErrorMessageFailedInstanceIds = None,
+        message: str = None,
+    ):
+        self.code = code
+        self.failed_instance_ids = failed_instance_ids
+        self.message = message
+
+    def validate(self):
+        if self.failed_instance_ids:
+            self.failed_instance_ids.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.code is not None:
+            result['Code'] = self.code
+
+        if self.failed_instance_ids is not None:
+            result['FailedInstanceIds'] = self.failed_instance_ids.to_map()
+
+        if self.message is not None:
+            result['Message'] = self.message
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+
+        if m.get('FailedInstanceIds') is not None:
+            temp_model = main_models.DescribeAutoProvisioningGroupHistoryResponseBodyAutoProvisioningGroupHistoriesAutoProvisioningGroupHistoryActivityDetailsActivityDetailErrorMessagesErrorMessageFailedInstanceIds()
+            self.failed_instance_ids = temp_model.from_map(m.get('FailedInstanceIds'))
+
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+
+        return self
+
+class DescribeAutoProvisioningGroupHistoryResponseBodyAutoProvisioningGroupHistoriesAutoProvisioningGroupHistoryActivityDetailsActivityDetailErrorMessagesErrorMessageFailedInstanceIds(DaraModel):
+    def __init__(
+        self,
+        failed_instance_id: List[str] = None,
+    ):
+        self.failed_instance_id = failed_instance_id
 
     def validate(self):
         pass
@@ -220,21 +365,69 @@ class DescribeAutoProvisioningGroupHistoryResponseBodyAutoProvisioningGroupHisto
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.detail is not None:
-            result['Detail'] = self.detail
-
-        if self.status is not None:
-            result['Status'] = self.status
+        if self.failed_instance_id is not None:
+            result['FailedInstanceId'] = self.failed_instance_id
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Detail') is not None:
-            self.detail = m.get('Detail')
+        if m.get('FailedInstanceId') is not None:
+            self.failed_instance_id = m.get('FailedInstanceId')
 
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
+        return self
+
+class DescribeAutoProvisioningGroupHistoryResponseBodyAutoProvisioningGroupHistoriesAutoProvisioningGroupHistoryActivityDetailsActivityDetailDestroyedInstanceIds(DaraModel):
+    def __init__(
+        self,
+        destroyed_instance_id: List[str] = None,
+    ):
+        self.destroyed_instance_id = destroyed_instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.destroyed_instance_id is not None:
+            result['DestroyedInstanceId'] = self.destroyed_instance_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DestroyedInstanceId') is not None:
+            self.destroyed_instance_id = m.get('DestroyedInstanceId')
+
+        return self
+
+class DescribeAutoProvisioningGroupHistoryResponseBodyAutoProvisioningGroupHistoriesAutoProvisioningGroupHistoryActivityDetailsActivityDetailCreatedInstanceIds(DaraModel):
+    def __init__(
+        self,
+        created_instance_id: List[str] = None,
+    ):
+        self.created_instance_id = created_instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.created_instance_id is not None:
+            result['CreatedInstanceId'] = self.created_instance_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreatedInstanceId') is not None:
+            self.created_instance_id = m.get('CreatedInstanceId')
 
         return self
 

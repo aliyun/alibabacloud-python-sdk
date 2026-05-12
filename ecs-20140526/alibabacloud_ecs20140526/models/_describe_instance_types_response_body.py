@@ -778,12 +778,14 @@ class DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeCpuOptions(DaraM
         core: int = None,
         core_factor: int = None,
         hyper_threading_adjustable: bool = None,
+        nested_virtualization_support: str = None,
         supported_topology_types: main_models.DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeCpuOptionsSupportedTopologyTypes = None,
         threads_per_core: int = None,
     ):
         self.core = core
         self.core_factor = core_factor
         self.hyper_threading_adjustable = hyper_threading_adjustable
+        self.nested_virtualization_support = nested_virtualization_support
         self.supported_topology_types = supported_topology_types
         self.threads_per_core = threads_per_core
 
@@ -805,6 +807,9 @@ class DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeCpuOptions(DaraM
         if self.hyper_threading_adjustable is not None:
             result['HyperThreadingAdjustable'] = self.hyper_threading_adjustable
 
+        if self.nested_virtualization_support is not None:
+            result['NestedVirtualizationSupport'] = self.nested_virtualization_support
+
         if self.supported_topology_types is not None:
             result['SupportedTopologyTypes'] = self.supported_topology_types.to_map()
 
@@ -823,6 +828,9 @@ class DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeCpuOptions(DaraM
 
         if m.get('HyperThreadingAdjustable') is not None:
             self.hyper_threading_adjustable = m.get('HyperThreadingAdjustable')
+
+        if m.get('NestedVirtualizationSupport') is not None:
+            self.nested_virtualization_support = m.get('NestedVirtualizationSupport')
 
         if m.get('SupportedTopologyTypes') is not None:
             temp_model = main_models.DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeCpuOptionsSupportedTopologyTypes()

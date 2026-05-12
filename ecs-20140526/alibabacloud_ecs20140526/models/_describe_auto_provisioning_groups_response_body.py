@@ -113,6 +113,8 @@ class DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvis
         auto_provisioning_group_id: str = None,
         auto_provisioning_group_name: str = None,
         auto_provisioning_group_type: str = None,
+        candidate_options: main_models.DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroupCandidateOptions = None,
+        capacity_specification: main_models.DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroupCapacitySpecification = None,
         creation_time: str = None,
         excess_capacity_termination_policy: str = None,
         launch_template_configs: main_models.DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroupLaunchTemplateConfigs = None,
@@ -125,6 +127,7 @@ class DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvis
         spot_options: main_models.DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroupSpotOptions = None,
         state: str = None,
         status: str = None,
+        suspended_processes: main_models.DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroupSuspendedProcesses = None,
         tags: main_models.DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroupTags = None,
         target_capacity_specification: main_models.DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroupTargetCapacitySpecification = None,
         terminate_instances: bool = None,
@@ -135,6 +138,8 @@ class DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvis
         self.auto_provisioning_group_id = auto_provisioning_group_id
         self.auto_provisioning_group_name = auto_provisioning_group_name
         self.auto_provisioning_group_type = auto_provisioning_group_type
+        self.candidate_options = candidate_options
+        self.capacity_specification = capacity_specification
         self.creation_time = creation_time
         self.excess_capacity_termination_policy = excess_capacity_termination_policy
         self.launch_template_configs = launch_template_configs
@@ -147,6 +152,7 @@ class DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvis
         self.spot_options = spot_options
         self.state = state
         self.status = status
+        self.suspended_processes = suspended_processes
         self.tags = tags
         self.target_capacity_specification = target_capacity_specification
         self.terminate_instances = terminate_instances
@@ -155,12 +161,18 @@ class DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvis
         self.valid_until = valid_until
 
     def validate(self):
+        if self.candidate_options:
+            self.candidate_options.validate()
+        if self.capacity_specification:
+            self.capacity_specification.validate()
         if self.launch_template_configs:
             self.launch_template_configs.validate()
         if self.pay_as_you_go_options:
             self.pay_as_you_go_options.validate()
         if self.spot_options:
             self.spot_options.validate()
+        if self.suspended_processes:
+            self.suspended_processes.validate()
         if self.tags:
             self.tags.validate()
         if self.target_capacity_specification:
@@ -179,6 +191,12 @@ class DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvis
 
         if self.auto_provisioning_group_type is not None:
             result['AutoProvisioningGroupType'] = self.auto_provisioning_group_type
+
+        if self.candidate_options is not None:
+            result['CandidateOptions'] = self.candidate_options.to_map()
+
+        if self.capacity_specification is not None:
+            result['CapacitySpecification'] = self.capacity_specification.to_map()
 
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
@@ -216,6 +234,9 @@ class DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvis
         if self.status is not None:
             result['Status'] = self.status
 
+        if self.suspended_processes is not None:
+            result['SuspendedProcesses'] = self.suspended_processes.to_map()
+
         if self.tags is not None:
             result['Tags'] = self.tags.to_map()
 
@@ -246,6 +267,14 @@ class DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvis
 
         if m.get('AutoProvisioningGroupType') is not None:
             self.auto_provisioning_group_type = m.get('AutoProvisioningGroupType')
+
+        if m.get('CandidateOptions') is not None:
+            temp_model = main_models.DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroupCandidateOptions()
+            self.candidate_options = temp_model.from_map(m.get('CandidateOptions'))
+
+        if m.get('CapacitySpecification') is not None:
+            temp_model = main_models.DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroupCapacitySpecification()
+            self.capacity_specification = temp_model.from_map(m.get('CapacitySpecification'))
 
         if m.get('CreationTime') is not None:
             self.creation_time = m.get('CreationTime')
@@ -285,6 +314,10 @@ class DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvis
 
         if m.get('Status') is not None:
             self.status = m.get('Status')
+
+        if m.get('SuspendedProcesses') is not None:
+            temp_model = main_models.DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroupSuspendedProcesses()
+            self.suspended_processes = temp_model.from_map(m.get('SuspendedProcesses'))
 
         if m.get('Tags') is not None:
             temp_model = main_models.DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroupTags()
@@ -426,6 +459,33 @@ class DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvis
 
         if m.get('TagValue') is not None:
             self.tag_value = m.get('TagValue')
+
+        return self
+
+class DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroupSuspendedProcesses(DaraModel):
+    def __init__(
+        self,
+        suspended_process: List[str] = None,
+    ):
+        self.suspended_process = suspended_process
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.suspended_process is not None:
+            result['SuspendedProcess'] = self.suspended_process
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SuspendedProcess') is not None:
+            self.suspended_process = m.get('SuspendedProcess')
 
         return self
 
@@ -590,6 +650,84 @@ class DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvis
 
         if m.get('WeightedCapacity') is not None:
             self.weighted_capacity = m.get('WeightedCapacity')
+
+        return self
+
+class DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroupCapacitySpecification(DaraModel):
+    def __init__(
+        self,
+        pay_as_you_go_capacity: float = None,
+        pre_paid_capacity: float = None,
+        spot_capacity: float = None,
+        total_capacity: float = None,
+    ):
+        self.pay_as_you_go_capacity = pay_as_you_go_capacity
+        self.pre_paid_capacity = pre_paid_capacity
+        self.spot_capacity = spot_capacity
+        self.total_capacity = total_capacity
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.pay_as_you_go_capacity is not None:
+            result['PayAsYouGoCapacity'] = self.pay_as_you_go_capacity
+
+        if self.pre_paid_capacity is not None:
+            result['PrePaidCapacity'] = self.pre_paid_capacity
+
+        if self.spot_capacity is not None:
+            result['SpotCapacity'] = self.spot_capacity
+
+        if self.total_capacity is not None:
+            result['TotalCapacity'] = self.total_capacity
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PayAsYouGoCapacity') is not None:
+            self.pay_as_you_go_capacity = m.get('PayAsYouGoCapacity')
+
+        if m.get('PrePaidCapacity') is not None:
+            self.pre_paid_capacity = m.get('PrePaidCapacity')
+
+        if m.get('SpotCapacity') is not None:
+            self.spot_capacity = m.get('SpotCapacity')
+
+        if m.get('TotalCapacity') is not None:
+            self.total_capacity = m.get('TotalCapacity')
+
+        return self
+
+class DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroupCandidateOptions(DaraModel):
+    def __init__(
+        self,
+        timeout_minutes: int = None,
+    ):
+        self.timeout_minutes = timeout_minutes
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.timeout_minutes is not None:
+            result['TimeoutMinutes'] = self.timeout_minutes
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TimeoutMinutes') is not None:
+            self.timeout_minutes = m.get('TimeoutMinutes')
 
         return self
 
