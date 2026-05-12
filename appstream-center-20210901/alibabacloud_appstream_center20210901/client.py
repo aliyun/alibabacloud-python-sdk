@@ -1847,6 +1847,100 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.delete_wuying_server_with_options_async(request, runtime)
 
+    def deliver_to_user_sls_with_options(
+        self,
+        request: main_models.DeliverToUserSlsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeliverToUserSlsResponse:
+        request.validate()
+        body = {}
+        body_flat = {}
+        if not DaraCore.is_null(request.delivery_scopes):
+            body_flat['DeliveryScopes'] = request.delivery_scopes
+        if not DaraCore.is_null(request.existed_project_name):
+            body['ExistedProjectName'] = request.existed_project_name
+        if not DaraCore.is_null(request.log_store_name):
+            body['LogStoreName'] = request.log_store_name
+        if not DaraCore.is_null(request.project_name):
+            body['ProjectName'] = request.project_name
+        if not DaraCore.is_null(request.sls_region_id):
+            body['SlsRegionId'] = request.sls_region_id
+        if not DaraCore.is_null(request.ttl):
+            body['Ttl'] = request.ttl
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeliverToUserSls',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeliverToUserSlsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def deliver_to_user_sls_with_options_async(
+        self,
+        request: main_models.DeliverToUserSlsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeliverToUserSlsResponse:
+        request.validate()
+        body = {}
+        body_flat = {}
+        if not DaraCore.is_null(request.delivery_scopes):
+            body_flat['DeliveryScopes'] = request.delivery_scopes
+        if not DaraCore.is_null(request.existed_project_name):
+            body['ExistedProjectName'] = request.existed_project_name
+        if not DaraCore.is_null(request.log_store_name):
+            body['LogStoreName'] = request.log_store_name
+        if not DaraCore.is_null(request.project_name):
+            body['ProjectName'] = request.project_name
+        if not DaraCore.is_null(request.sls_region_id):
+            body['SlsRegionId'] = request.sls_region_id
+        if not DaraCore.is_null(request.ttl):
+            body['Ttl'] = request.ttl
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeliverToUserSls',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeliverToUserSlsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def deliver_to_user_sls(
+        self,
+        request: main_models.DeliverToUserSlsRequest,
+    ) -> main_models.DeliverToUserSlsResponse:
+        runtime = RuntimeOptions()
+        return self.deliver_to_user_sls_with_options(request, runtime)
+
+    async def deliver_to_user_sls_async(
+        self,
+        request: main_models.DeliverToUserSlsRequest,
+    ) -> main_models.DeliverToUserSlsResponse:
+        runtime = RuntimeOptions()
+        return await self.deliver_to_user_sls_with_options_async(request, runtime)
+
     def describe_wuying_server_eip_info_with_options(
         self,
         request: main_models.DescribeWuyingServerEipInfoRequest,

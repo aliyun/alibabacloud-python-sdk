@@ -61,6 +61,9 @@ from ._delete_model_template_response import DeleteModelTemplateResponse
 from ._delete_wuying_server_request import DeleteWuyingServerRequest
 from ._delete_wuying_server_response_body import DeleteWuyingServerResponseBody
 from ._delete_wuying_server_response import DeleteWuyingServerResponse
+from ._deliver_to_user_sls_request import DeliverToUserSlsRequest
+from ._deliver_to_user_sls_response_body import DeliverToUserSlsResponseBody
+from ._deliver_to_user_sls_response import DeliverToUserSlsResponse
 from ._describe_wuying_server_eip_info_request import DescribeWuyingServerEipInfoRequest
 from ._describe_wuying_server_eip_info_response_body import DescribeWuyingServerEipInfoResponseBody
 from ._describe_wuying_server_eip_info_response import DescribeWuyingServerEipInfoResponse
@@ -255,6 +258,7 @@ from ._create_model_template_response_body import CreateModelTemplateResponseBod
 from ._create_wuying_server_request import CreateWuyingServerRequestDataDisk
 from ._create_wuying_server_response_body import CreateWuyingServerResponseBodyData
 from ._delete_app_instances_response_body import DeleteAppInstancesResponseBodyDeleteAppInstanceModels
+from ._deliver_to_user_sls_request import DeliverToUserSlsRequestDeliveryScopes
 from ._describe_wuying_server_eip_info_response_body import DescribeWuyingServerEipInfoResponseBodyEipInfoModel
 from ._get_app_instance_group_response_body import GetAppInstanceGroupResponseBodyAppInstanceGroupModelsApps
 from ._get_app_instance_group_response_body import GetAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePoolRecurrenceSchedulesTimerPeriods
@@ -415,6 +419,9 @@ __all__ = [
     DeleteWuyingServerRequest,
     DeleteWuyingServerResponseBody,
     DeleteWuyingServerResponse,
+    DeliverToUserSlsRequest,
+    DeliverToUserSlsResponseBody,
+    DeliverToUserSlsResponse,
     DescribeWuyingServerEipInfoRequest,
     DescribeWuyingServerEipInfoResponseBody,
     DescribeWuyingServerEipInfoResponse,
@@ -609,6 +616,7 @@ __all__ = [
     CreateWuyingServerRequestDataDisk,
     CreateWuyingServerResponseBodyData,
     DeleteAppInstancesResponseBodyDeleteAppInstanceModels,
+    DeliverToUserSlsRequestDeliveryScopes,
     DescribeWuyingServerEipInfoResponseBodyEipInfoModel,
     GetAppInstanceGroupResponseBodyAppInstanceGroupModelsApps,
     GetAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePoolRecurrenceSchedulesTimerPeriods,

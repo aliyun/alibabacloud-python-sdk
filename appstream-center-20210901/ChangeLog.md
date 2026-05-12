@@ -1,3 +1,7 @@
+2026-05-12 Version: 5.3.0
+- Support API DeliverToUserSls.
+
+
 2026-05-11 Version: 5.2.1
 - Update API ConfigRuntimeChannel: add request parameters ConfigMode.
 - Update API GetRuntimeChannel: add response parameters Body.Data.$.AvatarUrl.
