@@ -85,6 +85,7 @@ class ListTransitRouterVbrAttachmentsResponseBodyTransitRouterAttachments(DaraMo
         auto_publish_route_enabled: bool = None,
         cen_id: str = None,
         creation_time: str = None,
+        managed_service: str = None,
         order_type: str = None,
         resource_type: str = None,
         status: str = None,
@@ -108,6 +109,7 @@ class ListTransitRouterVbrAttachmentsResponseBodyTransitRouterAttachments(DaraMo
         # 
         # The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
         self.creation_time = creation_time
+        self.managed_service = managed_service
         # The entity that pays the fees of the network instance. Valid values:
         # 
         # *   **PayByCenOwner**: the Alibaba Cloud account that owns the CEN instance.
@@ -164,6 +166,9 @@ class ListTransitRouterVbrAttachmentsResponseBodyTransitRouterAttachments(DaraMo
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
 
+        if self.managed_service is not None:
+            result['ManagedService'] = self.managed_service
+
         if self.order_type is not None:
             result['OrderType'] = self.order_type
 
@@ -211,6 +216,9 @@ class ListTransitRouterVbrAttachmentsResponseBodyTransitRouterAttachments(DaraMo
 
         if m.get('CreationTime') is not None:
             self.creation_time = m.get('CreationTime')
+
+        if m.get('ManagedService') is not None:
+            self.managed_service = m.get('ManagedService')
 
         if m.get('OrderType') is not None:
             self.order_type = m.get('OrderType')

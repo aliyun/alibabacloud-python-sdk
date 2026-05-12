@@ -1,3 +1,7 @@
+2026-05-12 Version: 1.3.9
+- Update API ListTransitRouterVbrAttachments: add response parameters Body.TransitRouterAttachments.$.ManagedService.
+
+
 2026-05-11 Version: 1.3.8
 - Update API CreateTransitRouterVpcAttachment: add request parameters Options.
 - Update API ListTransitRouterVpcAttachments: add response parameters Body.TransitRouterAttachments.$.Options.
