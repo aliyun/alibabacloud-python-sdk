@@ -10,10 +10,12 @@ from darabonba.model import DaraModel
 class DescribeClusterTasksResponseBody(DaraModel):
     def __init__(
         self,
+        next_token: str = None,
         page_info: main_models.DescribeClusterTasksResponseBodyPageInfo = None,
         request_id: str = None,
         tasks: List[main_models.DescribeClusterTasksResponseBodyTasks] = None,
     ):
+        self.next_token = next_token
         # The pagination information.
         self.page_info = page_info
         # The request ID.
@@ -34,6 +36,9 @@ class DescribeClusterTasksResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.next_token is not None:
+            result['next_token'] = self.next_token
+
         if self.page_info is not None:
             result['page_info'] = self.page_info.to_map()
 
@@ -49,6 +54,9 @@ class DescribeClusterTasksResponseBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('next_token') is not None:
+            self.next_token = m.get('next_token')
+
         if m.get('page_info') is not None:
             temp_model = main_models.DescribeClusterTasksResponseBodyPageInfo()
             self.page_info = temp_model.from_map(m.get('page_info'))

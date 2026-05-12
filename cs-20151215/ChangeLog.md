@@ -1,3 +1,19 @@
+2026-05-12 Version: 6.6.1
+- Update API DescribeClusterEvents: add request parameters max_results.
+- Update API DescribeClusterEvents: add request parameters next_token.
+- Update API DescribeClusterEvents: add response parameters Body.next_token.
+- Update API DescribeClusterTasks: add request parameters max_results.
+- Update API DescribeClusterTasks: add request parameters next_token.
+- Update API DescribeClusterTasks: add response parameters Body.next_token.
+- Update API DescribeEvents: add request parameters max_results.
+- Update API DescribeEvents: add request parameters next_token.
+- Update API DescribeEvents: add response parameters Body.next_token.
+- Update API DescribeEventsForRegion: add request parameters max_results.
+- Update API DescribeEventsForRegion: add request parameters next_token.
+- Update API DescribeEventsForRegion: add response parameters Body.next_token.
+- Update API DescribeTaskInfo: add response parameters Body.outputs.
+
+
 2026-02-27 Version: 6.6.0
 - Support API UpdateKMSEncryption.
 

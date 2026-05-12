@@ -13,7 +13,9 @@ class ListClusterAddonInstanceResourcesResponseBody(DaraModel):
         helm_release: main_models.ListClusterAddonInstanceResourcesResponseBodyHelmRelease = None,
         kubernetes_objects: List[main_models.ListClusterAddonInstanceResourcesResponseBodyKubernetesObjects] = None,
     ):
+        # Information about the Helm release instance corresponding to the add-on.
         self.helm_release = helm_release
+        # A list of Kubernetes objects associated with the add-on.
         self.kubernetes_objects = kubernetes_objects
 
     def validate(self):
@@ -62,10 +64,15 @@ class ListClusterAddonInstanceResourcesResponseBodyKubernetesObjects(DaraModel):
         namespace: str = None,
         version: str = None,
     ):
+        # The Kubernetes API group to which the object belongs.
         self.group = group
+        # The Kubernetes API type to which the object belongs.
         self.kind = kind
+        # The name of the Kubernetes object.
         self.name = name
+        # The namespace to which the object belongs.
         self.namespace = namespace
+        # The Kubernetes API version to which the object belongs.
         self.version = version
 
     def validate(self):
@@ -120,9 +127,13 @@ class ListClusterAddonInstanceResourcesResponseBodyHelmRelease(DaraModel):
         namespace: str = None,
         release_name: str = None,
     ):
+        # The name of the Helm chart.
         self.chart_name = chart_name
+        # The version of the Helm chart.
         self.chart_version = chart_version
+        # The namespace where the Helm release is located.
         self.namespace = namespace
+        # The name of the Helm release instance.
         self.release_name = release_name
 
     def validate(self):

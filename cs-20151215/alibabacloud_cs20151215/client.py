@@ -3968,6 +3968,10 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeClusterEventsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['max_results'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['next_token'] = request.next_token
         if not DaraCore.is_null(request.page_number):
             query['page_number'] = request.page_number
         if not DaraCore.is_null(request.page_size):
@@ -4003,6 +4007,10 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeClusterEventsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['max_results'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['next_token'] = request.next_token
         if not DaraCore.is_null(request.page_number):
             query['page_number'] = request.page_number
         if not DaraCore.is_null(request.page_size):
@@ -4448,6 +4456,10 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeClusterTasksResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['max_results'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['next_token'] = request.next_token
         if not DaraCore.is_null(request.page_number):
             query['page_number'] = request.page_number
         if not DaraCore.is_null(request.page_size):
@@ -4481,6 +4493,10 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeClusterTasksResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['max_results'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['next_token'] = request.next_token
         if not DaraCore.is_null(request.page_number):
             query['page_number'] = request.page_number
         if not DaraCore.is_null(request.page_size):
@@ -5059,6 +5075,10 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.cluster_id):
             query['cluster_id'] = request.cluster_id
+        if not DaraCore.is_null(request.max_results):
+            query['max_results'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['next_token'] = request.next_token
         if not DaraCore.is_null(request.page_number):
             query['page_number'] = request.page_number
         if not DaraCore.is_null(request.page_size):
@@ -5095,6 +5115,10 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.cluster_id):
             query['cluster_id'] = request.cluster_id
+        if not DaraCore.is_null(request.max_results):
+            query['max_results'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['next_token'] = request.next_token
         if not DaraCore.is_null(request.page_number):
             query['page_number'] = request.page_number
         if not DaraCore.is_null(request.page_size):
@@ -5148,6 +5172,10 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.cluster_id):
             query['cluster_id'] = request.cluster_id
+        if not DaraCore.is_null(request.max_results):
+            query['max_results'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['next_token'] = request.next_token
         if not DaraCore.is_null(request.page_number):
             query['page_number'] = request.page_number
         if not DaraCore.is_null(request.page_size):
@@ -5183,6 +5211,10 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.cluster_id):
             query['cluster_id'] = request.cluster_id
+        if not DaraCore.is_null(request.max_results):
+            query['max_results'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['next_token'] = request.next_token
         if not DaraCore.is_null(request.page_number):
             query['page_number'] = request.page_number
         if not DaraCore.is_null(request.page_size):

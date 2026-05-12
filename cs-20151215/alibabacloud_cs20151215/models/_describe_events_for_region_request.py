@@ -8,11 +8,15 @@ class DescribeEventsForRegionRequest(DaraModel):
     def __init__(
         self,
         cluster_id: str = None,
+        max_results: int = None,
+        next_token: str = None,
         page_number: int = None,
         page_size: int = None,
     ):
         # The cluster ID.
         self.cluster_id = cluster_id
+        self.max_results = max_results
+        self.next_token = next_token
         # The number of pages.
         self.page_number = page_number
         # The number of records on each page.
@@ -29,6 +33,12 @@ class DescribeEventsForRegionRequest(DaraModel):
         if self.cluster_id is not None:
             result['cluster_id'] = self.cluster_id
 
+        if self.max_results is not None:
+            result['max_results'] = self.max_results
+
+        if self.next_token is not None:
+            result['next_token'] = self.next_token
+
         if self.page_number is not None:
             result['page_number'] = self.page_number
 
@@ -41,6 +51,12 @@ class DescribeEventsForRegionRequest(DaraModel):
         m = m or dict()
         if m.get('cluster_id') is not None:
             self.cluster_id = m.get('cluster_id')
+
+        if m.get('max_results') is not None:
+            self.max_results = m.get('max_results')
+
+        if m.get('next_token') is not None:
+            self.next_token = m.get('next_token')
 
         if m.get('page_number') is not None:
             self.page_number = m.get('page_number')

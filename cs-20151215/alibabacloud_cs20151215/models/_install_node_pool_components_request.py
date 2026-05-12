@@ -14,8 +14,11 @@ class InstallNodePoolComponentsRequest(DaraModel):
         node_names: List[str] = None,
         rolling_policy: main_models.InstallNodePoolComponentsRequestRollingPolicy = None,
     ):
+        # A list of node components to be installed.
         self.components = components
+        # A list of specific node names where the component should be installed. If not specified, the component will be installed on all nodes in the node pool.
         self.node_names = node_names
+        # Configuration for the rolling update process.
         self.rolling_policy = rolling_policy
 
     def validate(self):
@@ -68,8 +71,11 @@ class InstallNodePoolComponentsRequestRollingPolicy(DaraModel):
         max_parallelism: int = None,
         pause_policy: str = None,
     ):
+        # The time interval between update batches, in seconds.
         self.batch_interval = batch_interval
+        # The maximum number of nodes that can be updated concurrently in each batch. Default: 1.
         self.max_parallelism = max_parallelism
+        # The strategy for automatic pausing during the update process. Valid values: NotPause, FirstBatchPause, EveryBatchPause.
         self.pause_policy = pause_policy
 
     def validate(self):
@@ -111,9 +117,13 @@ class InstallNodePoolComponentsRequestComponents(DaraModel):
         name: str = None,
         version: str = None,
     ):
+        # The configuration details for the component.
         self.config = config
+        # The name of the component.
+        # 
         # This parameter is required.
         self.name = name
+        # The version of the component.
         self.version = version
 
     def validate(self):
@@ -155,6 +165,7 @@ class InstallNodePoolComponentsRequestComponentsConfig(DaraModel):
         self,
         custom_config: Dict[str, str] = None,
     ):
+        # Custom parameters for the component.
         self.custom_config = custom_config
 
     def validate(self):

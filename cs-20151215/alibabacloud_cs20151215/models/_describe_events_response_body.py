@@ -11,10 +11,12 @@ class DescribeEventsResponseBody(DaraModel):
     def __init__(
         self,
         events: List[main_models.DescribeEventsResponseBodyEvents] = None,
+        next_token: str = None,
         page_info: main_models.DescribeEventsResponseBodyPageInfo = None,
     ):
         # The details of the events.
         self.events = events
+        self.next_token = next_token
         # The pagination information.
         self.page_info = page_info
 
@@ -36,6 +38,9 @@ class DescribeEventsResponseBody(DaraModel):
             for k1 in self.events:
                 result['events'].append(k1.to_map() if k1 else None)
 
+        if self.next_token is not None:
+            result['next_token'] = self.next_token
+
         if self.page_info is not None:
             result['page_info'] = self.page_info.to_map()
 
@@ -48,6 +53,9 @@ class DescribeEventsResponseBody(DaraModel):
             for k1 in m.get('events'):
                 temp_model = main_models.DescribeEventsResponseBodyEvents()
                 self.events.append(temp_model.from_map(k1))
+
+        if m.get('next_token') is not None:
+            self.next_token = m.get('next_token')
 
         if m.get('page_info') is not None:
             temp_model = main_models.DescribeEventsResponseBodyPageInfo()
