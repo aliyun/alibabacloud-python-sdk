@@ -2003,6 +2003,8 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeMOTokenUsageDetailResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.api_key):
+            query['ApiKey'] = request.api_key
         if not DaraCore.is_null(request.consumer_name):
             query['ConsumerName'] = request.consumer_name
         if not DaraCore.is_null(request.end_time):
@@ -2045,6 +2047,8 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeMOTokenUsageDetailResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.api_key):
+            query['ApiKey'] = request.api_key
         if not DaraCore.is_null(request.consumer_name):
             query['ConsumerName'] = request.consumer_name
         if not DaraCore.is_null(request.end_time):

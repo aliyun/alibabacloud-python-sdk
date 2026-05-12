@@ -79,15 +79,19 @@ class DescribeMOTokenUsageDetailResponseBodyRecords(DaraModel):
     def __init__(
         self,
         consumer_name: str = None,
+        input_tokens: float = None,
         instance_id: str = None,
         model: str = None,
+        output_tokens: float = None,
         region: str = None,
         request_time: str = None,
         total_tokens: float = None,
     ):
         self.consumer_name = consumer_name
+        self.input_tokens = input_tokens
         self.instance_id = instance_id
         self.model = model
+        self.output_tokens = output_tokens
         self.region = region
         self.request_time = request_time
         self.total_tokens = total_tokens
@@ -103,11 +107,17 @@ class DescribeMOTokenUsageDetailResponseBodyRecords(DaraModel):
         if self.consumer_name is not None:
             result['ConsumerName'] = self.consumer_name
 
+        if self.input_tokens is not None:
+            result['InputTokens'] = self.input_tokens
+
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
 
         if self.model is not None:
             result['Model'] = self.model
+
+        if self.output_tokens is not None:
+            result['OutputTokens'] = self.output_tokens
 
         if self.region is not None:
             result['Region'] = self.region
@@ -125,11 +135,17 @@ class DescribeMOTokenUsageDetailResponseBodyRecords(DaraModel):
         if m.get('ConsumerName') is not None:
             self.consumer_name = m.get('ConsumerName')
 
+        if m.get('InputTokens') is not None:
+            self.input_tokens = m.get('InputTokens')
+
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
 
         if m.get('Model') is not None:
             self.model = m.get('Model')
+
+        if m.get('OutputTokens') is not None:
+            self.output_tokens = m.get('OutputTokens')
 
         if m.get('Region') is not None:
             self.region = m.get('Region')

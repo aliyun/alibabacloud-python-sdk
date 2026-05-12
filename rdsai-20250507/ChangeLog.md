@@ -1,3 +1,9 @@
+2026-05-12 Version: 3.4.1
+- Update API DescribeMOTokenUsageDetail: add request parameters ApiKey.
+- Update API DescribeMOTokenUsageDetail: add response parameters Body.Records.$.InputTokens.
+- Update API DescribeMOTokenUsageDetail: add response parameters Body.Records.$.OutputTokens.
+
+
 2026-05-09 Version: 3.4.0
 - Support API ModifyAppInstance.
 - Update API DescribeSandboxTemplates: add response parameters Body.SandboxTemplates.$.Replicas.

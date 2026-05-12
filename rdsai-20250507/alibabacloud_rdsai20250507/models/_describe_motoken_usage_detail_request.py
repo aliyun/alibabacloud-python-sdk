@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class DescribeMOTokenUsageDetailRequest(DaraModel):
     def __init__(
         self,
+        api_key: str = None,
         consumer_name: str = None,
         end_time: str = None,
         instance_id: str = None,
@@ -16,6 +17,7 @@ class DescribeMOTokenUsageDetailRequest(DaraModel):
         region: str = None,
         start_time: str = None,
     ):
+        self.api_key = api_key
         self.consumer_name = consumer_name
         self.end_time = end_time
         # This parameter is required.
@@ -34,6 +36,9 @@ class DescribeMOTokenUsageDetailRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.api_key is not None:
+            result['ApiKey'] = self.api_key
+
         if self.consumer_name is not None:
             result['ConsumerName'] = self.consumer_name
 
@@ -62,6 +67,9 @@ class DescribeMOTokenUsageDetailRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ApiKey') is not None:
+            self.api_key = m.get('ApiKey')
+
         if m.get('ConsumerName') is not None:
             self.consumer_name = m.get('ConsumerName')
 
