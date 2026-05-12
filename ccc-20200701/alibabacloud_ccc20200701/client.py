@@ -1383,6 +1383,8 @@ class Client(OpenApiClient):
     ) -> main_models.AssignUsersResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.async_):
+            query['Async'] = request.async_
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.ram_id_list):
@@ -1419,6 +1421,8 @@ class Client(OpenApiClient):
     ) -> main_models.AssignUsersResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.async_):
+            query['Async'] = request.async_
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.ram_id_list):

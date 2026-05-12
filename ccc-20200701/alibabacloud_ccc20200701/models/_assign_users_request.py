@@ -7,12 +7,14 @@ from darabonba.model import DaraModel
 class AssignUsersRequest(DaraModel):
     def __init__(
         self,
+        async_: bool = None,
         instance_id: str = None,
         ram_id_list: str = None,
         role_id: str = None,
         skill_level_list: str = None,
         work_mode: str = None,
     ):
+        self.async_ = async_
         # This parameter is required.
         self.instance_id = instance_id
         # This parameter is required.
@@ -31,6 +33,9 @@ class AssignUsersRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.async_ is not None:
+            result['Async'] = self.async_
+
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
 
@@ -50,6 +55,9 @@ class AssignUsersRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Async') is not None:
+            self.async_ = m.get('Async')
+
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
 
