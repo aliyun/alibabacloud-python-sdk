@@ -12,17 +12,26 @@ class DescribeInstanceModificationPriceRequest(DaraModel):
         self,
         system_disk: main_models.DescribeInstanceModificationPriceRequestSystemDisk = None,
         data_disk: List[main_models.DescribeInstanceModificationPriceRequestDataDisk] = None,
+        end_time: str = None,
+        isp: str = None,
+        image_id: str = None,
         instance_id: str = None,
         instance_type: str = None,
+        internet_charge_type: str = None,
+        internet_max_bandwidth_out: int = None,
         owner_account: str = None,
         owner_id: int = None,
         region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        start_time: str = None,
     ):
         self.system_disk = system_disk
         # The information about data disks.
         self.data_disk = data_disk
+        self.end_time = end_time
+        self.isp = isp
+        self.image_id = image_id
         # The ID of the instance for which you want to query pricing information for a configuration upgrade.
         # 
         # This parameter is required.
@@ -31,6 +40,8 @@ class DescribeInstanceModificationPriceRequest(DaraModel):
         # 
         # > When you call the DescribeInstanceModificationPrice operation, you must specify at least one of the following parameters: `InstanceType` and `DataDisk.N.*`.
         self.instance_type = instance_type
+        self.internet_charge_type = internet_charge_type
+        self.internet_max_bandwidth_out = internet_max_bandwidth_out
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
@@ -39,6 +50,7 @@ class DescribeInstanceModificationPriceRequest(DaraModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        self.start_time = start_time
 
     def validate(self):
         if self.system_disk:
@@ -61,11 +73,26 @@ class DescribeInstanceModificationPriceRequest(DaraModel):
             for k1 in self.data_disk:
                 result['DataDisk'].append(k1.to_map() if k1 else None)
 
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+
+        if self.isp is not None:
+            result['ISP'] = self.isp
+
+        if self.image_id is not None:
+            result['ImageId'] = self.image_id
+
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
 
         if self.instance_type is not None:
             result['InstanceType'] = self.instance_type
+
+        if self.internet_charge_type is not None:
+            result['InternetChargeType'] = self.internet_charge_type
+
+        if self.internet_max_bandwidth_out is not None:
+            result['InternetMaxBandwidthOut'] = self.internet_max_bandwidth_out
 
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
@@ -82,6 +109,9 @@ class DescribeInstanceModificationPriceRequest(DaraModel):
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
 
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+
         return result
 
     def from_map(self, m: dict = None):
@@ -96,11 +126,26 @@ class DescribeInstanceModificationPriceRequest(DaraModel):
                 temp_model = main_models.DescribeInstanceModificationPriceRequestDataDisk()
                 self.data_disk.append(temp_model.from_map(k1))
 
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+
+        if m.get('ISP') is not None:
+            self.isp = m.get('ISP')
+
+        if m.get('ImageId') is not None:
+            self.image_id = m.get('ImageId')
+
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
 
         if m.get('InstanceType') is not None:
             self.instance_type = m.get('InstanceType')
+
+        if m.get('InternetChargeType') is not None:
+            self.internet_charge_type = m.get('InternetChargeType')
+
+        if m.get('InternetMaxBandwidthOut') is not None:
+            self.internet_max_bandwidth_out = m.get('InternetMaxBandwidthOut')
 
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
@@ -117,12 +162,16 @@ class DescribeInstanceModificationPriceRequest(DaraModel):
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
 
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+
         return self
 
 class DescribeInstanceModificationPriceRequestDataDisk(DaraModel):
     def __init__(
         self,
         category: str = None,
+        disk_id: str = None,
         performance_level: str = None,
         size: int = None,
     ):
@@ -137,6 +186,7 @@ class DescribeInstanceModificationPriceRequestDataDisk(DaraModel):
         # 
         # >  When you call the DescribeInstanceModificationPrice operation, you must specify at least one of the following parameters: `InstanceType` and `DataDisk.N.*`.
         self.category = category
+        self.disk_id = disk_id
         # The performance level of data disk N that is an enhanced SSD (ESSD). The value of N must be the same as that in `DataDisk.N.Category` when DataDisk.N.Category is set to cloud_essd. Valid values:
         # 
         # *   PL0: A single ESSD can deliver up to 10,000 random read/write IOPS.
@@ -177,6 +227,55 @@ class DescribeInstanceModificationPriceRequestDataDisk(DaraModel):
         if self.category is not None:
             result['Category'] = self.category
 
+        if self.disk_id is not None:
+            result['DiskId'] = self.disk_id
+
+        if self.performance_level is not None:
+            result['PerformanceLevel'] = self.performance_level
+
+        if self.size is not None:
+            result['Size'] = self.size
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+
+        if m.get('DiskId') is not None:
+            self.disk_id = m.get('DiskId')
+
+        if m.get('PerformanceLevel') is not None:
+            self.performance_level = m.get('PerformanceLevel')
+
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+
+        return self
+
+class DescribeInstanceModificationPriceRequestSystemDisk(DaraModel):
+    def __init__(
+        self,
+        category: str = None,
+        performance_level: str = None,
+        size: int = None,
+    ):
+        self.category = category
+        self.performance_level = performance_level
+        self.size = size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.category is not None:
+            result['Category'] = self.category
+
         if self.performance_level is not None:
             result['PerformanceLevel'] = self.performance_level
 
@@ -195,41 +294,6 @@ class DescribeInstanceModificationPriceRequestDataDisk(DaraModel):
 
         if m.get('Size') is not None:
             self.size = m.get('Size')
-
-        return self
-
-class DescribeInstanceModificationPriceRequestSystemDisk(DaraModel):
-    def __init__(
-        self,
-        category: str = None,
-    ):
-        # The category of the system disk. You must specify this parameter only when you upgrade a non-I/O optimized instance of a retired instance type to an I/O optimized instance of an available instance type. For more information about instance types, see [Instance families](https://help.aliyun.com/document_detail/25378.html) and [Retired instance types](https://help.aliyun.com/document_detail/55263.html).
-        # 
-        # Valid values:
-        # 
-        # *   cloud_efficiency: ultra disk
-        # *   cloud_ssd: standard SSD
-        # 
-        # This parameter is empty by default.
-        self.category = category
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        _map = super().to_map()
-        if _map is not None:
-            result = _map
-        if self.category is not None:
-            result['Category'] = self.category
-
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Category') is not None:
-            self.category = m.get('Category')
 
         return self
 

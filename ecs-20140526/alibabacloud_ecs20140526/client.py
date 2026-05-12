@@ -18254,10 +18254,20 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.data_disk):
             query['DataDisk'] = request.data_disk
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.isp):
+            query['ISP'] = request.isp
+        if not DaraCore.is_null(request.image_id):
+            query['ImageId'] = request.image_id
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.instance_type):
             query['InstanceType'] = request.instance_type
+        if not DaraCore.is_null(request.internet_charge_type):
+            query['InternetChargeType'] = request.internet_charge_type
+        if not DaraCore.is_null(request.internet_max_bandwidth_out):
+            query['InternetMaxBandwidthOut'] = request.internet_max_bandwidth_out
         if not DaraCore.is_null(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not DaraCore.is_null(request.owner_id):
@@ -18268,6 +18278,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not DaraCore.is_null(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
         if not DaraCore.is_null(request.system_disk):
             query['SystemDisk'] = request.system_disk
         req = open_api_util_models.OpenApiRequest(
@@ -18298,10 +18310,20 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.data_disk):
             query['DataDisk'] = request.data_disk
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.isp):
+            query['ISP'] = request.isp
+        if not DaraCore.is_null(request.image_id):
+            query['ImageId'] = request.image_id
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.instance_type):
             query['InstanceType'] = request.instance_type
+        if not DaraCore.is_null(request.internet_charge_type):
+            query['InternetChargeType'] = request.internet_charge_type
+        if not DaraCore.is_null(request.internet_max_bandwidth_out):
+            query['InternetMaxBandwidthOut'] = request.internet_max_bandwidth_out
         if not DaraCore.is_null(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not DaraCore.is_null(request.owner_id):
@@ -18312,6 +18334,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not DaraCore.is_null(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
         if not DaraCore.is_null(request.system_disk):
             query['SystemDisk'] = request.system_disk
         req = open_api_util_models.OpenApiRequest(

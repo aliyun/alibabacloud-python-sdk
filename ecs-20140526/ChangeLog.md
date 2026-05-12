@@ -1,3 +1,15 @@
+2026-05-12 Version: 7.7.7
+- Update API DescribeInstanceModificationPrice: add request parameters EndTime.
+- Update API DescribeInstanceModificationPrice: add request parameters ISP.
+- Update API DescribeInstanceModificationPrice: add request parameters ImageId.
+- Update API DescribeInstanceModificationPrice: add request parameters InternetChargeType.
+- Update API DescribeInstanceModificationPrice: add request parameters InternetMaxBandwidthOut.
+- Update API DescribeInstanceModificationPrice: add request parameters StartTime.
+- Update API DescribeInstanceModificationPrice: add request parameters SystemDisk.
+- Update API DescribeInstanceModificationPrice: add request parameters DataDisk.$.DiskId.
+- Update API DescribeInstanceModificationPrice: add response parameters Body.PriceInfo.RelatedPrice.
+
+
 2026-05-12 Version: 7.7.6
 - Generated python 2014-05-26 for Ecs.
 
