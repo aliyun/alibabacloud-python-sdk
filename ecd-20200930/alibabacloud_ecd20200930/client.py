@@ -11560,6 +11560,8 @@ class Client(OpenApiClient):
             query['DesktopGroupIdForModify'] = request.desktop_group_id_for_modify
         if not DaraCore.is_null(request.desktop_id_for_modify):
             query['DesktopIdForModify'] = request.desktop_id_for_modify
+        if not DaraCore.is_null(request.desktop_scenario):
+            query['DesktopScenario'] = request.desktop_scenario
         if not DaraCore.is_null(request.desktop_type_id):
             query['DesktopTypeId'] = request.desktop_type_id
         if not DaraCore.is_null(request.desktop_type_id_list):
@@ -11628,6 +11630,8 @@ class Client(OpenApiClient):
             query['DesktopGroupIdForModify'] = request.desktop_group_id_for_modify
         if not DaraCore.is_null(request.desktop_id_for_modify):
             query['DesktopIdForModify'] = request.desktop_id_for_modify
+        if not DaraCore.is_null(request.desktop_scenario):
+            query['DesktopScenario'] = request.desktop_scenario
         if not DaraCore.is_null(request.desktop_type_id):
             query['DesktopTypeId'] = request.desktop_type_id
         if not DaraCore.is_null(request.desktop_type_id_list):

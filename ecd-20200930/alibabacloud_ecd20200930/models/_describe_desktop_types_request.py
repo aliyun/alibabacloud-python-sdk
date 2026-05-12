@@ -14,6 +14,7 @@ class DescribeDesktopTypesRequest(DaraModel):
         cpu_count: int = None,
         desktop_group_id_for_modify: str = None,
         desktop_id_for_modify: str = None,
+        desktop_scenario: str = None,
         desktop_type_id: str = None,
         desktop_type_id_list: List[str] = None,
         gpu_count: float = None,
@@ -40,6 +41,7 @@ class DescribeDesktopTypesRequest(DaraModel):
         self.desktop_group_id_for_modify = desktop_group_id_for_modify
         # The ID of the cloud computer when you change instance types of cloud computers. If you specify this parameter, the information about whether the instance type is compatible with the cloud computer is included in the response.
         self.desktop_id_for_modify = desktop_id_for_modify
+        self.desktop_scenario = desktop_scenario
         # The specification ID.
         # 
         # >  If both `InstanceTypeFamily` and `DesktopTypeId` are empty, all cloud computer specifications will be queried.
@@ -159,6 +161,9 @@ class DescribeDesktopTypesRequest(DaraModel):
         if self.desktop_id_for_modify is not None:
             result['DesktopIdForModify'] = self.desktop_id_for_modify
 
+        if self.desktop_scenario is not None:
+            result['DesktopScenario'] = self.desktop_scenario
+
         if self.desktop_type_id is not None:
             result['DesktopTypeId'] = self.desktop_type_id
 
@@ -225,6 +230,9 @@ class DescribeDesktopTypesRequest(DaraModel):
 
         if m.get('DesktopIdForModify') is not None:
             self.desktop_id_for_modify = m.get('DesktopIdForModify')
+
+        if m.get('DesktopScenario') is not None:
+            self.desktop_scenario = m.get('DesktopScenario')
 
         if m.get('DesktopTypeId') is not None:
             self.desktop_type_id = m.get('DesktopTypeId')
