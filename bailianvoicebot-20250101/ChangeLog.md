@@ -1,3 +1,18 @@
+2026-05-12 Version: 1.4.1
+- Update API CreateApplicationVersion: add request parameters SynthesizerConfig.Model.
+- Update API CreateApplicationVersion: add request parameters SynthesizerConfig.NlsAccessProfile.
+- Update API CreateApplicationVersion: add request parameters SynthesizerConfig.PronRules.
+- Update API GetApplication: add response parameters Body.Data.DraftVersion.SynthesizerConfig.Model.
+- Update API GetApplication: add response parameters Body.Data.DraftVersion.SynthesizerConfig.NlsAccessProfile.
+- Update API GetApplication: add response parameters Body.Data.DraftVersion.SynthesizerConfig.PronRules.
+- Update API GetApplication: add response parameters Body.Data.PublishedVersion.SynthesizerConfig.Model.
+- Update API GetApplication: add response parameters Body.Data.PublishedVersion.SynthesizerConfig.NlsAccessProfile.
+- Update API GetApplication: add response parameters Body.Data.PublishedVersion.SynthesizerConfig.PronRules.
+- Update API UpdateApplicationVersion: add request parameters SynthesizerConfig.Model.
+- Update API UpdateApplicationVersion: add request parameters SynthesizerConfig.NlsAccessProfile.
+- Update API UpdateApplicationVersion: add request parameters SynthesizerConfig.PronRules.
+
+
 2026-05-06 Version: 1.4.0
 - Support API CreateVocabulary.
 - Support API CreateVoiceAccessProfile.

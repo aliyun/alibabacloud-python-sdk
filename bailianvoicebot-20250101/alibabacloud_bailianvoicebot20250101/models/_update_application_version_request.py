@@ -146,28 +146,45 @@ class UpdateApplicationVersionRequestTranscriberConfig(DaraModel):
 class UpdateApplicationVersionRequestSynthesizerConfig(DaraModel):
     def __init__(
         self,
+        model: str = None,
+        nls_access_profile: main_models.UpdateApplicationVersionRequestSynthesizerConfigNlsAccessProfile = None,
         nls_access_type: str = None,
         nls_engine: str = None,
         pitch_rate: int = None,
+        pron_rules: List[main_models.UpdateApplicationVersionRequestSynthesizerConfigPronRules] = None,
         speech_rate: int = None,
         voice: str = None,
         volume: int = None,
     ):
+        self.model = model
+        self.nls_access_profile = nls_access_profile
         self.nls_access_type = nls_access_type
         self.nls_engine = nls_engine
         self.pitch_rate = pitch_rate
+        self.pron_rules = pron_rules
         self.speech_rate = speech_rate
         self.voice = voice
         self.volume = volume
 
     def validate(self):
-        pass
+        if self.nls_access_profile:
+            self.nls_access_profile.validate()
+        if self.pron_rules:
+            for v1 in self.pron_rules:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.model is not None:
+            result['Model'] = self.model
+
+        if self.nls_access_profile is not None:
+            result['NlsAccessProfile'] = self.nls_access_profile.to_map()
+
         if self.nls_access_type is not None:
             result['NlsAccessType'] = self.nls_access_type
 
@@ -176,6 +193,11 @@ class UpdateApplicationVersionRequestSynthesizerConfig(DaraModel):
 
         if self.pitch_rate is not None:
             result['PitchRate'] = self.pitch_rate
+
+        result['PronRules'] = []
+        if self.pron_rules is not None:
+            for k1 in self.pron_rules:
+                result['PronRules'].append(k1.to_map() if k1 else None)
 
         if self.speech_rate is not None:
             result['SpeechRate'] = self.speech_rate
@@ -190,6 +212,13 @@ class UpdateApplicationVersionRequestSynthesizerConfig(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Model') is not None:
+            self.model = m.get('Model')
+
+        if m.get('NlsAccessProfile') is not None:
+            temp_model = main_models.UpdateApplicationVersionRequestSynthesizerConfigNlsAccessProfile()
+            self.nls_access_profile = temp_model.from_map(m.get('NlsAccessProfile'))
+
         if m.get('NlsAccessType') is not None:
             self.nls_access_type = m.get('NlsAccessType')
 
@@ -199,6 +228,12 @@ class UpdateApplicationVersionRequestSynthesizerConfig(DaraModel):
         if m.get('PitchRate') is not None:
             self.pitch_rate = m.get('PitchRate')
 
+        self.pron_rules = []
+        if m.get('PronRules') is not None:
+            for k1 in m.get('PronRules'):
+                temp_model = main_models.UpdateApplicationVersionRequestSynthesizerConfigPronRules()
+                self.pron_rules.append(temp_model.from_map(k1))
+
         if m.get('SpeechRate') is not None:
             self.speech_rate = m.get('SpeechRate')
 
@@ -207,6 +242,68 @@ class UpdateApplicationVersionRequestSynthesizerConfig(DaraModel):
 
         if m.get('Volume') is not None:
             self.volume = m.get('Volume')
+
+        return self
+
+class UpdateApplicationVersionRequestSynthesizerConfigPronRules(DaraModel):
+    def __init__(
+        self,
+        pattern: str = None,
+        replacement: str = None,
+    ):
+        self.pattern = pattern
+        self.replacement = replacement
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.pattern is not None:
+            result['Pattern'] = self.pattern
+
+        if self.replacement is not None:
+            result['Replacement'] = self.replacement
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Pattern') is not None:
+            self.pattern = m.get('Pattern')
+
+        if m.get('Replacement') is not None:
+            self.replacement = m.get('Replacement')
+
+        return self
+
+class UpdateApplicationVersionRequestSynthesizerConfigNlsAccessProfile(DaraModel):
+    def __init__(
+        self,
+        access_profile_id: str = None,
+    ):
+        self.access_profile_id = access_profile_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.access_profile_id is not None:
+            result['AccessProfileId'] = self.access_profile_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessProfileId') is not None:
+            self.access_profile_id = m.get('AccessProfileId')
 
         return self
 
