@@ -1,3 +1,10 @@
+2026-05-12 Version: 2.1.2
+- Update API CreateRepoSyncRule: add request parameters LinkId.
+- Update API ListRepoSyncRule: add response parameters Body.SyncRules.$.LinkId.
+- Update API ListRepoSyncTask: add response parameters Body.SyncTasks.$.LinkId.
+- Update API ListRepoSyncTask: add response parameters Body.SyncTasks.$.ModifiedTime.
+
+
 2026-01-23 Version: 2.1.1
 - Update API ListRepoBuildRule: add response parameters Body.BuildRules.$.DestArtifactType.
 

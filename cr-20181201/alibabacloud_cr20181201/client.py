@@ -1617,6 +1617,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.link_id):
+            query['LinkId'] = request.link_id
         if not DaraCore.is_null(request.namespace_name):
             query['NamespaceName'] = request.namespace_name
         if not DaraCore.is_null(request.repo_name):
@@ -1669,6 +1671,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.link_id):
+            query['LinkId'] = request.link_id
         if not DaraCore.is_null(request.namespace_name):
             query['NamespaceName'] = request.namespace_name
         if not DaraCore.is_null(request.repo_name):

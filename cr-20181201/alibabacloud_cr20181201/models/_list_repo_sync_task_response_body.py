@@ -105,7 +105,9 @@ class ListRepoSyncTaskResponseBodySyncTasks(DaraModel):
         custom_link: bool = None,
         image_from: main_models.ListRepoSyncTaskResponseBodySyncTasksImageFrom = None,
         image_to: main_models.ListRepoSyncTaskResponseBodySyncTasksImageTo = None,
+        link_id: str = None,
         modifed_time: int = None,
+        modified_time: int = None,
         sync_batch_task_id: str = None,
         sync_rule_id: str = None,
         sync_task_id: str = None,
@@ -129,8 +131,10 @@ class ListRepoSyncTaskResponseBodySyncTasks(DaraModel):
         self.image_from = image_from
         # The information about the destination image.
         self.image_to = image_to
+        self.link_id = link_id
         # The time when the synchronization task was last modified.
         self.modifed_time = modifed_time
+        self.modified_time = modified_time
         # The ID of the image synchronization batch tasks, which is the same as the value of SyncRecordId in the request.
         # 
         # >  If an image meets multiple synchronization rules and multiple synchronization tasks are generated for the image, these synchronization tasks use the same SyncBatchTaskId.
@@ -190,8 +194,14 @@ class ListRepoSyncTaskResponseBodySyncTasks(DaraModel):
         if self.image_to is not None:
             result['ImageTo'] = self.image_to.to_map()
 
+        if self.link_id is not None:
+            result['LinkId'] = self.link_id
+
         if self.modifed_time is not None:
             result['ModifedTime'] = self.modifed_time
+
+        if self.modified_time is not None:
+            result['ModifiedTime'] = self.modified_time
 
         if self.sync_batch_task_id is not None:
             result['SyncBatchTaskId'] = self.sync_batch_task_id
@@ -235,8 +245,14 @@ class ListRepoSyncTaskResponseBodySyncTasks(DaraModel):
             temp_model = main_models.ListRepoSyncTaskResponseBodySyncTasksImageTo()
             self.image_to = temp_model.from_map(m.get('ImageTo'))
 
+        if m.get('LinkId') is not None:
+            self.link_id = m.get('LinkId')
+
         if m.get('ModifedTime') is not None:
             self.modifed_time = m.get('ModifedTime')
+
+        if m.get('ModifiedTime') is not None:
+            self.modified_time = m.get('ModifiedTime')
 
         if m.get('SyncBatchTaskId') is not None:
             self.sync_batch_task_id = m.get('SyncBatchTaskId')

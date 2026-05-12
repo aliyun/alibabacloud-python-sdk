@@ -8,6 +8,7 @@ class CreateRepoSyncRuleRequest(DaraModel):
     def __init__(
         self,
         instance_id: str = None,
+        link_id: str = None,
         namespace_name: str = None,
         repo_name: str = None,
         repo_name_filter: str = None,
@@ -25,6 +26,7 @@ class CreateRepoSyncRuleRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
+        self.link_id = link_id
         # The namespace name of the source instance.
         # 
         # This parameter is required.
@@ -85,6 +87,9 @@ class CreateRepoSyncRuleRequest(DaraModel):
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
 
+        if self.link_id is not None:
+            result['LinkId'] = self.link_id
+
         if self.namespace_name is not None:
             result['NamespaceName'] = self.namespace_name
 
@@ -127,6 +132,9 @@ class CreateRepoSyncRuleRequest(DaraModel):
         m = m or dict()
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+
+        if m.get('LinkId') is not None:
+            self.link_id = m.get('LinkId')
 
         if m.get('NamespaceName') is not None:
             self.namespace_name = m.get('NamespaceName')

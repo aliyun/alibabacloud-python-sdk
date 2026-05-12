@@ -102,6 +102,7 @@ class ListRepoSyncRuleResponseBodySyncRules(DaraModel):
         self,
         create_time: int = None,
         cross_user: bool = None,
+        link_id: str = None,
         local_instance_id: str = None,
         local_namespace_name: str = None,
         local_region_id: str = None,
@@ -128,6 +129,7 @@ class ListRepoSyncRuleResponseBodySyncRules(DaraModel):
         # 
         # Default value: `false`.
         self.cross_user = cross_user
+        self.link_id = link_id
         # The ID of the source instance.
         self.local_instance_id = local_instance_id
         # The name of the namespace in the source instance.
@@ -186,6 +188,9 @@ class ListRepoSyncRuleResponseBodySyncRules(DaraModel):
         if self.cross_user is not None:
             result['CrossUser'] = self.cross_user
 
+        if self.link_id is not None:
+            result['LinkId'] = self.link_id
+
         if self.local_instance_id is not None:
             result['LocalInstanceId'] = self.local_instance_id
 
@@ -243,6 +248,9 @@ class ListRepoSyncRuleResponseBodySyncRules(DaraModel):
 
         if m.get('CrossUser') is not None:
             self.cross_user = m.get('CrossUser')
+
+        if m.get('LinkId') is not None:
+            self.link_id = m.get('LinkId')
 
         if m.get('LocalInstanceId') is not None:
             self.local_instance_id = m.get('LocalInstanceId')
