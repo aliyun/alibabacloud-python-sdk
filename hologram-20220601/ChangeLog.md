@@ -1,3 +1,8 @@
+2026-05-12 Version: 1.8.1
+- Update API GrantTablePermission: add request parameters body.columnNames.
+- Update API RevokeTablePermission: add request parameters body.columnNames.
+
+
 2026-04-20 Version: 1.8.0
 - Support API CreateUser.
 - Support API DropUser.

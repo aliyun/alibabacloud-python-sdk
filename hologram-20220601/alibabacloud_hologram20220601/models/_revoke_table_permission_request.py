@@ -10,6 +10,7 @@ class RevokeTablePermissionRequest(DaraModel):
     def __init__(
         self,
         all_table: bool = None,
+        column_names: List[str] = None,
         database_name: str = None,
         privileges: List[str] = None,
         schema_name: str = None,
@@ -17,6 +18,7 @@ class RevokeTablePermissionRequest(DaraModel):
         user_name: str = None,
     ):
         self.all_table = all_table
+        self.column_names = column_names
         self.database_name = database_name
         self.privileges = privileges
         self.schema_name = schema_name
@@ -33,6 +35,9 @@ class RevokeTablePermissionRequest(DaraModel):
             result = _map
         if self.all_table is not None:
             result['allTable'] = self.all_table
+
+        if self.column_names is not None:
+            result['columnNames'] = self.column_names
 
         if self.database_name is not None:
             result['databaseName'] = self.database_name
@@ -55,6 +60,9 @@ class RevokeTablePermissionRequest(DaraModel):
         m = m or dict()
         if m.get('allTable') is not None:
             self.all_table = m.get('allTable')
+
+        if m.get('columnNames') is not None:
+            self.column_names = m.get('columnNames')
 
         if m.get('databaseName') is not None:
             self.database_name = m.get('databaseName')

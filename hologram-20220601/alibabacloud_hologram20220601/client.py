@@ -1436,6 +1436,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.all_table):
             body['allTable'] = request.all_table
+        if not DaraCore.is_null(request.column_names):
+            body['columnNames'] = request.column_names
         if not DaraCore.is_null(request.database_name):
             body['databaseName'] = request.database_name
         if not DaraCore.is_null(request.privileges):
@@ -1477,6 +1479,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.all_table):
             body['allTable'] = request.all_table
+        if not DaraCore.is_null(request.column_names):
+            body['columnNames'] = request.column_names
         if not DaraCore.is_null(request.database_name):
             body['databaseName'] = request.database_name
         if not DaraCore.is_null(request.privileges):
@@ -2632,6 +2636,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.all_table):
             body['allTable'] = request.all_table
+        if not DaraCore.is_null(request.column_names):
+            body['columnNames'] = request.column_names
         if not DaraCore.is_null(request.database_name):
             body['databaseName'] = request.database_name
         if not DaraCore.is_null(request.privileges):
@@ -2673,6 +2679,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.all_table):
             body['allTable'] = request.all_table
+        if not DaraCore.is_null(request.column_names):
+            body['columnNames'] = request.column_names
         if not DaraCore.is_null(request.database_name):
             body['databaseName'] = request.database_name
         if not DaraCore.is_null(request.privileges):
