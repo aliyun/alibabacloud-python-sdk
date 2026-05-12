@@ -1,3 +1,14 @@
+2026-05-12 Version: 3.0.1
+- Update API CreateImageTransform: add request parameters AutoAvif.
+- Update API CreateImageTransform: add request parameters AutoWebp.
+- Update API GetImageTransform: add response parameters Body.AutoAvif.
+- Update API GetImageTransform: add response parameters Body.AutoWebp.
+- Update API ListImageTransforms: add response parameters Body.Configs.$.AutoAvif.
+- Update API ListImageTransforms: add response parameters Body.Configs.$.AutoWebp.
+- Update API UpdateImageTransform: add request parameters AutoAvif.
+- Update API UpdateImageTransform: add request parameters AutoWebp.
+
+
 2026-05-06 Version: 3.0.0
 - Support API DeleteKeylessServer.
 - Support API DescribeRatePlanPrice.

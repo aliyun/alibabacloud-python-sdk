@@ -7,6 +7,8 @@ from darabonba.model import DaraModel
 class GetImageTransformResponseBody(DaraModel):
     def __init__(
         self,
+        auto_avif: str = None,
+        auto_webp: str = None,
         config_id: int = None,
         config_type: str = None,
         enable: str = None,
@@ -17,6 +19,8 @@ class GetImageTransformResponseBody(DaraModel):
         sequence: int = None,
         site_version: int = None,
     ):
+        self.auto_avif = auto_avif
+        self.auto_webp = auto_webp
         # Configuration ID.
         self.config_id = config_id
         # Configuration type. Possible values:
@@ -52,6 +56,12 @@ class GetImageTransformResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.auto_avif is not None:
+            result['AutoAvif'] = self.auto_avif
+
+        if self.auto_webp is not None:
+            result['AutoWebp'] = self.auto_webp
+
         if self.config_id is not None:
             result['ConfigId'] = self.config_id
 
@@ -83,6 +93,12 @@ class GetImageTransformResponseBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AutoAvif') is not None:
+            self.auto_avif = m.get('AutoAvif')
+
+        if m.get('AutoWebp') is not None:
+            self.auto_webp = m.get('AutoWebp')
+
         if m.get('ConfigId') is not None:
             self.config_id = m.get('ConfigId')
 

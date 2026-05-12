@@ -3660,6 +3660,10 @@ class Client(OpenApiClient):
     ) -> main_models.CreateImageTransformResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.auto_avif):
+            query['AutoAvif'] = request.auto_avif
+        if not DaraCore.is_null(request.auto_webp):
+            query['AutoWebp'] = request.auto_webp
         if not DaraCore.is_null(request.enable):
             query['Enable'] = request.enable
         if not DaraCore.is_null(request.rule):
@@ -3700,6 +3704,10 @@ class Client(OpenApiClient):
     ) -> main_models.CreateImageTransformResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.auto_avif):
+            query['AutoAvif'] = request.auto_avif
+        if not DaraCore.is_null(request.auto_webp):
+            query['AutoWebp'] = request.auto_webp
         if not DaraCore.is_null(request.enable):
             query['Enable'] = request.enable
         if not DaraCore.is_null(request.rule):
@@ -28648,6 +28656,10 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateImageTransformResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.auto_avif):
+            query['AutoAvif'] = request.auto_avif
+        if not DaraCore.is_null(request.auto_webp):
+            query['AutoWebp'] = request.auto_webp
         if not DaraCore.is_null(request.config_id):
             query['ConfigId'] = request.config_id
         if not DaraCore.is_null(request.enable):
@@ -28688,6 +28700,10 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateImageTransformResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.auto_avif):
+            query['AutoAvif'] = request.auto_avif
+        if not DaraCore.is_null(request.auto_webp):
+            query['AutoWebp'] = request.auto_webp
         if not DaraCore.is_null(request.config_id):
             query['ConfigId'] = request.config_id
         if not DaraCore.is_null(request.enable):

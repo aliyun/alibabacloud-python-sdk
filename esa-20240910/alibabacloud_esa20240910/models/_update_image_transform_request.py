@@ -7,6 +7,8 @@ from darabonba.model import DaraModel
 class UpdateImageTransformRequest(DaraModel):
     def __init__(
         self,
+        auto_avif: str = None,
+        auto_webp: str = None,
         config_id: int = None,
         enable: str = None,
         rule: str = None,
@@ -15,6 +17,8 @@ class UpdateImageTransformRequest(DaraModel):
         sequence: int = None,
         site_id: int = None,
     ):
+        self.auto_avif = auto_avif
+        self.auto_webp = auto_webp
         # Configuration ID. It can be obtained by calling the [ListImageTransforms](https://help.aliyun.com/document_detail/2869056.html) interface.
         # 
         # This parameter is required.
@@ -48,6 +52,12 @@ class UpdateImageTransformRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.auto_avif is not None:
+            result['AutoAvif'] = self.auto_avif
+
+        if self.auto_webp is not None:
+            result['AutoWebp'] = self.auto_webp
+
         if self.config_id is not None:
             result['ConfigId'] = self.config_id
 
@@ -73,6 +83,12 @@ class UpdateImageTransformRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AutoAvif') is not None:
+            self.auto_avif = m.get('AutoAvif')
+
+        if m.get('AutoWebp') is not None:
+            self.auto_webp = m.get('AutoWebp')
+
         if m.get('ConfigId') is not None:
             self.config_id = m.get('ConfigId')
 

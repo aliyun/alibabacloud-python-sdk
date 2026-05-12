@@ -7,6 +7,8 @@ from darabonba.model import DaraModel
 class CreateImageTransformRequest(DaraModel):
     def __init__(
         self,
+        auto_avif: str = None,
+        auto_webp: str = None,
         enable: str = None,
         rule: str = None,
         rule_enable: str = None,
@@ -15,6 +17,8 @@ class CreateImageTransformRequest(DaraModel):
         site_id: int = None,
         site_version: int = None,
     ):
+        self.auto_avif = auto_avif
+        self.auto_webp = auto_webp
         # Indicates whether image transformation is enabled. Possible values:
         # - on: Enabled.
         # - off: Disabled.
@@ -45,6 +49,12 @@ class CreateImageTransformRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.auto_avif is not None:
+            result['AutoAvif'] = self.auto_avif
+
+        if self.auto_webp is not None:
+            result['AutoWebp'] = self.auto_webp
+
         if self.enable is not None:
             result['Enable'] = self.enable
 
@@ -70,6 +80,12 @@ class CreateImageTransformRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AutoAvif') is not None:
+            self.auto_avif = m.get('AutoAvif')
+
+        if m.get('AutoWebp') is not None:
+            self.auto_webp = m.get('AutoWebp')
+
         if m.get('Enable') is not None:
             self.enable = m.get('Enable')
 
