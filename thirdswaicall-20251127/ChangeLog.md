@@ -1,3 +1,8 @@
+2026-05-12 Version: 1.1.1
+- Update API QueryTaskConcurrency: add response parameters Body.Data.AvailableConcurrency.
+- Update API QueryTaskConcurrency: add response parameters Body.Data.MaxConcurrency.
+
+
 2026-05-09 Version: 1.1.0
 - Support API QueryTaskConcurrency.
 

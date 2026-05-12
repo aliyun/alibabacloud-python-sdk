@@ -88,9 +88,13 @@ class QueryTaskConcurrencyResponseBody(DaraModel):
 class QueryTaskConcurrencyResponseBodyData(DaraModel):
     def __init__(
         self,
+        available_concurrency: int = None,
         current_concurrency: int = None,
+        max_concurrency: int = None,
     ):
+        self.available_concurrency = available_concurrency
         self.current_concurrency = current_concurrency
+        self.max_concurrency = max_concurrency
 
     def validate(self):
         pass
@@ -100,15 +104,27 @@ class QueryTaskConcurrencyResponseBodyData(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.available_concurrency is not None:
+            result['AvailableConcurrency'] = self.available_concurrency
+
         if self.current_concurrency is not None:
             result['CurrentConcurrency'] = self.current_concurrency
+
+        if self.max_concurrency is not None:
+            result['MaxConcurrency'] = self.max_concurrency
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AvailableConcurrency') is not None:
+            self.available_concurrency = m.get('AvailableConcurrency')
+
         if m.get('CurrentConcurrency') is not None:
             self.current_concurrency = m.get('CurrentConcurrency')
+
+        if m.get('MaxConcurrency') is not None:
+            self.max_concurrency = m.get('MaxConcurrency')
 
         return self
 
