@@ -11,12 +11,14 @@ class ListThreadsRequest(DaraModel):
     def __init__(
         self,
         filter: List[main_models.ListThreadsRequestFilter] = None,
+        include_mission: bool = None,
         max_results: int = None,
         next_token: str = None,
         status: str = None,
         thread_id: str = None,
     ):
         self.filter = filter
+        self.include_mission = include_mission
         self.max_results = max_results
         self.next_token = next_token
         self.status = status
@@ -37,6 +39,9 @@ class ListThreadsRequest(DaraModel):
         if self.filter is not None:
             for k1 in self.filter:
                 result['filter'].append(k1.to_map() if k1 else None)
+
+        if self.include_mission is not None:
+            result['includeMission'] = self.include_mission
 
         if self.max_results is not None:
             result['maxResults'] = self.max_results
@@ -59,6 +64,9 @@ class ListThreadsRequest(DaraModel):
             for k1 in m.get('filter'):
                 temp_model = main_models.ListThreadsRequestFilter()
                 self.filter.append(temp_model.from_map(k1))
+
+        if m.get('includeMission') is not None:
+            self.include_mission = m.get('includeMission')
 
         if m.get('maxResults') is not None:
             self.max_results = m.get('maxResults')

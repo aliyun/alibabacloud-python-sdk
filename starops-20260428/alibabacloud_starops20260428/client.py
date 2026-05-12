@@ -1617,6 +1617,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.filter_shrink):
             query['filter'] = request.filter_shrink
+        if not DaraCore.is_null(request.include_mission):
+            query['includeMission'] = request.include_mission
         if not DaraCore.is_null(request.max_results):
             query['maxResults'] = request.max_results
         if not DaraCore.is_null(request.next_token):
@@ -1660,6 +1662,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.filter_shrink):
             query['filter'] = request.filter_shrink
+        if not DaraCore.is_null(request.include_mission):
+            query['includeMission'] = request.include_mission
         if not DaraCore.is_null(request.max_results):
             query['maxResults'] = request.max_results
         if not DaraCore.is_null(request.next_token):

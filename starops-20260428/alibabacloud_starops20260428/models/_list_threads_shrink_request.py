@@ -8,12 +8,14 @@ class ListThreadsShrinkRequest(DaraModel):
     def __init__(
         self,
         filter_shrink: str = None,
+        include_mission: bool = None,
         max_results: int = None,
         next_token: str = None,
         status: str = None,
         thread_id: str = None,
     ):
         self.filter_shrink = filter_shrink
+        self.include_mission = include_mission
         self.max_results = max_results
         self.next_token = next_token
         self.status = status
@@ -29,6 +31,9 @@ class ListThreadsShrinkRequest(DaraModel):
             result = _map
         if self.filter_shrink is not None:
             result['filter'] = self.filter_shrink
+
+        if self.include_mission is not None:
+            result['includeMission'] = self.include_mission
 
         if self.max_results is not None:
             result['maxResults'] = self.max_results
@@ -48,6 +53,9 @@ class ListThreadsShrinkRequest(DaraModel):
         m = m or dict()
         if m.get('filter') is not None:
             self.filter_shrink = m.get('filter')
+
+        if m.get('includeMission') is not None:
+            self.include_mission = m.get('includeMission')
 
         if m.get('maxResults') is not None:
             self.max_results = m.get('maxResults')

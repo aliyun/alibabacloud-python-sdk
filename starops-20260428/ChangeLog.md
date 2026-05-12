@@ -1,3 +1,7 @@
+2026-05-12 Version: 1.1.1
+- Update API ListThreads: add request parameters includeMission.
+
+
 2026-05-11 Version: 1.1.0
 - Support API CreateTicket.
 - Support API GetArtifact.
