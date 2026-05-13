@@ -8,6 +8,7 @@ class ListAppInstanceDomainsRequest(DaraModel):
     def __init__(
         self,
         biz_id: str = None,
+        domain_keyword: str = None,
         max_results: int = None,
         next_token: str = None,
         order_column: str = None,
@@ -17,6 +18,7 @@ class ListAppInstanceDomainsRequest(DaraModel):
     ):
         # Business ID
         self.biz_id = biz_id
+        self.domain_keyword = domain_keyword
         # Number of results per query.
         # 
         # Range: 10~100. Default value: 20.
@@ -43,6 +45,9 @@ class ListAppInstanceDomainsRequest(DaraModel):
         if self.biz_id is not None:
             result['BizId'] = self.biz_id
 
+        if self.domain_keyword is not None:
+            result['DomainKeyword'] = self.domain_keyword
+
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
 
@@ -67,6 +72,9 @@ class ListAppInstanceDomainsRequest(DaraModel):
         m = m or dict()
         if m.get('BizId') is not None:
             self.biz_id = m.get('BizId')
+
+        if m.get('DomainKeyword') is not None:
+            self.domain_keyword = m.get('DomainKeyword')
 
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')

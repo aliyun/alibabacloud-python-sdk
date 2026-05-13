@@ -1,3 +1,7 @@
+2026-05-13 Version: 2.20.2
+- Update API ListAppInstanceDomains: add request parameters DomainKeyword.
+
+
 2026-04-20 Version: 2.20.1
 - Update API GetAppInstanceForPartner: add response parameters Body.Module.AppServiceList.$.Profile.UpgradeStatus.
 - Update API GetAppInstanceForPartner: add response parameters Body.Module.Profile.UpgradeStatus.

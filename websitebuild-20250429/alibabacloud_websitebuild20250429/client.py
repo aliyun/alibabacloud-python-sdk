@@ -2869,6 +2869,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.biz_id):
             query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.domain_keyword):
+            query['DomainKeyword'] = request.domain_keyword
         if not DaraCore.is_null(request.max_results):
             query['MaxResults'] = request.max_results
         if not DaraCore.is_null(request.next_token):
@@ -2909,6 +2911,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.biz_id):
             query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.domain_keyword):
+            query['DomainKeyword'] = request.domain_keyword
         if not DaraCore.is_null(request.max_results):
             query['MaxResults'] = request.max_results
         if not DaraCore.is_null(request.next_token):
