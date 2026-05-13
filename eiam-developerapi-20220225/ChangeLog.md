@@ -1,3 +1,8 @@
+2026-05-13 Version: 1.7.1
+- Update API CreateUserExclusiveCredential: add request parameters body.credentialExternalId.
+- Update API ObtainCredential: add response parameters Body.credentialExternalId.
+
+
 2026-04-09 Version: 1.7.0
 - Support API CreateUserExclusiveCredential.
 

@@ -9,6 +9,7 @@ class CreateUserExclusiveCredentialRequest(DaraModel):
     def __init__(
         self,
         credential_content: main_models.CreateUserExclusiveCredentialRequestCredentialContent = None,
+        credential_external_id: str = None,
         credential_identifier: str = None,
         credential_name: str = None,
         credential_scenario_label: str = None,
@@ -17,6 +18,7 @@ class CreateUserExclusiveCredentialRequest(DaraModel):
     ):
         # This parameter is required.
         self.credential_content = credential_content
+        self.credential_external_id = credential_external_id
         # This parameter is required.
         self.credential_identifier = credential_identifier
         # This parameter is required.
@@ -37,6 +39,9 @@ class CreateUserExclusiveCredentialRequest(DaraModel):
             result = _map
         if self.credential_content is not None:
             result['credentialContent'] = self.credential_content.to_map()
+
+        if self.credential_external_id is not None:
+            result['credentialExternalId'] = self.credential_external_id
 
         if self.credential_identifier is not None:
             result['credentialIdentifier'] = self.credential_identifier
@@ -60,6 +65,9 @@ class CreateUserExclusiveCredentialRequest(DaraModel):
         if m.get('credentialContent') is not None:
             temp_model = main_models.CreateUserExclusiveCredentialRequestCredentialContent()
             self.credential_content = temp_model.from_map(m.get('credentialContent'))
+
+        if m.get('credentialExternalId') is not None:
+            self.credential_external_id = m.get('credentialExternalId')
 
         if m.get('credentialIdentifier') is not None:
             self.credential_identifier = m.get('credentialIdentifier')

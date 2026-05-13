@@ -594,6 +594,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.credential_content):
             body['credentialContent'] = request.credential_content
+        if not DaraCore.is_null(request.credential_external_id):
+            body['credentialExternalId'] = request.credential_external_id
         if not DaraCore.is_null(request.credential_identifier):
             body['credentialIdentifier'] = request.credential_identifier
         if not DaraCore.is_null(request.credential_name):
@@ -640,6 +642,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.credential_content):
             body['credentialContent'] = request.credential_content
+        if not DaraCore.is_null(request.credential_external_id):
+            body['credentialExternalId'] = request.credential_external_id
         if not DaraCore.is_null(request.credential_identifier):
             body['credentialIdentifier'] = request.credential_identifier
         if not DaraCore.is_null(request.credential_name):
