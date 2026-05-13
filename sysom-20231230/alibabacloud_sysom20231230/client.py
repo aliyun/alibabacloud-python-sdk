@@ -536,6 +536,90 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_alert_strategy_with_options_async(request, headers, runtime)
 
+    def create_cluster_vpc_endpoint_connection_with_options(
+        self,
+        request: main_models.CreateClusterVpcEndpointConnectionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateClusterVpcEndpointConnectionResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.cluster_id):
+            body['clusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.dry_run):
+            body['dryRun'] = request.dry_run
+        if not DaraCore.is_null(request.region):
+            body['region'] = request.region
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateClusterVpcEndpointConnection',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/k8sProxy/access/createClusterVpcEndpointConnection',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateClusterVpcEndpointConnectionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_cluster_vpc_endpoint_connection_with_options_async(
+        self,
+        request: main_models.CreateClusterVpcEndpointConnectionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateClusterVpcEndpointConnectionResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.cluster_id):
+            body['clusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.dry_run):
+            body['dryRun'] = request.dry_run
+        if not DaraCore.is_null(request.region):
+            body['region'] = request.region
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateClusterVpcEndpointConnection',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/k8sProxy/access/createClusterVpcEndpointConnection',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateClusterVpcEndpointConnectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_cluster_vpc_endpoint_connection(
+        self,
+        request: main_models.CreateClusterVpcEndpointConnectionRequest,
+    ) -> main_models.CreateClusterVpcEndpointConnectionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_cluster_vpc_endpoint_connection_with_options(request, headers, runtime)
+
+    async def create_cluster_vpc_endpoint_connection_async(
+        self,
+        request: main_models.CreateClusterVpcEndpointConnectionRequest,
+    ) -> main_models.CreateClusterVpcEndpointConnectionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_cluster_vpc_endpoint_connection_with_options_async(request, headers, runtime)
+
     def create_instance_inspection_with_options(
         self,
         request: main_models.CreateInstanceInspectionRequest,

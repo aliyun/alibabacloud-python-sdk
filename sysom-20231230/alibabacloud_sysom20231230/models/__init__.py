@@ -17,6 +17,9 @@ from ._create_alert_destination_response import CreateAlertDestinationResponse
 from ._create_alert_strategy_request import CreateAlertStrategyRequest
 from ._create_alert_strategy_response_body import CreateAlertStrategyResponseBody
 from ._create_alert_strategy_response import CreateAlertStrategyResponse
+from ._create_cluster_vpc_endpoint_connection_request import CreateClusterVpcEndpointConnectionRequest
+from ._create_cluster_vpc_endpoint_connection_response_body import CreateClusterVpcEndpointConnectionResponseBody
+from ._create_cluster_vpc_endpoint_connection_response import CreateClusterVpcEndpointConnectionResponse
 from ._create_instance_inspection_request import CreateInstanceInspectionRequest
 from ._create_instance_inspection_response_body import CreateInstanceInspectionResponseBody
 from ._create_instance_inspection_response import CreateInstanceInspectionResponse
@@ -222,6 +225,7 @@ from ._create_alert_destination_request import CreateAlertDestinationRequestPara
 from ._create_alert_destination_response_body import CreateAlertDestinationResponseBodyDataParams
 from ._create_alert_destination_response_body import CreateAlertDestinationResponseBodyData
 from ._create_alert_strategy_request import CreateAlertStrategyRequestStrategy
+from ._create_cluster_vpc_endpoint_connection_response_body import CreateClusterVpcEndpointConnectionResponseBodyData
 from ._create_vmcore_diagnosis_task_response_body import CreateVmcoreDiagnosisTaskResponseBodyData
 from ._describe_metric_list_response_body import DescribeMetricListResponseBodyData
 from ._get_abnormal_events_count_response_body import GetAbnormalEventsCountResponseBodyData
@@ -318,6 +322,9 @@ __all__ = [
     CreateAlertStrategyRequest,
     CreateAlertStrategyResponseBody,
     CreateAlertStrategyResponse,
+    CreateClusterVpcEndpointConnectionRequest,
+    CreateClusterVpcEndpointConnectionResponseBody,
+    CreateClusterVpcEndpointConnectionResponse,
     CreateInstanceInspectionRequest,
     CreateInstanceInspectionResponseBody,
     CreateInstanceInspectionResponse,
@@ -523,6 +530,7 @@ __all__ = [
     CreateAlertDestinationResponseBodyDataParams,
     CreateAlertDestinationResponseBodyData,
     CreateAlertStrategyRequestStrategy,
+    CreateClusterVpcEndpointConnectionResponseBodyData,
     CreateVmcoreDiagnosisTaskResponseBodyData,
     DescribeMetricListResponseBodyData,
     GetAbnormalEventsCountResponseBodyData,

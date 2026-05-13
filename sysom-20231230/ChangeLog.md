@@ -1,3 +1,7 @@
+2026-05-13 Version: 1.18.0
+- Support API CreateClusterVpcEndpointConnection.
+
+
 2026-04-28 Version: 1.17.0
 - Support API CreateInstanceInspection.
 - Support API GetInspectionReport.
