@@ -805,10 +805,12 @@ class ModifyScalingConfigurationRequestResourcePoolOptions(DaraModel):
     def __init__(
         self,
         private_pool_ids: List[str] = None,
+        private_pool_tags: List[main_models.ModifyScalingConfigurationRequestResourcePoolOptionsPrivatePoolTags] = None,
         strategy: str = None,
     ):
         # The IDs of private pools. The ID of a private pool is the same as that of the elasticity assurance or capacity reservation for which the private pool is generated. You can specify the IDs of only targeted private pools for this parameter.
         self.private_pool_ids = private_pool_ids
+        self.private_pool_tags = private_pool_tags
         # The resource pool used for instance creation, which can be the public pool or a private pool associated with any active elasticity assurance or capacity reservation. Valid values:
         # 
         # *   PrivatePoolFirst: prioritizes private pools. When this option is set along with ResourcePoolOptions.PrivatePoolIds, the specified private pools are used first. If you leave ResourcePoolOptions.PrivatePoolIds empty or if the specified private pools lack sufficient capacity, the system will automatically use available open private pools instead. If no matching private pools are available, the system defaults to the public pool.
@@ -819,7 +821,10 @@ class ModifyScalingConfigurationRequestResourcePoolOptions(DaraModel):
         self.strategy = strategy
 
     def validate(self):
-        pass
+        if self.private_pool_tags:
+            for v1 in self.private_pool_tags:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -828,6 +833,11 @@ class ModifyScalingConfigurationRequestResourcePoolOptions(DaraModel):
             result = _map
         if self.private_pool_ids is not None:
             result['PrivatePoolIds'] = self.private_pool_ids
+
+        result['PrivatePoolTags'] = []
+        if self.private_pool_tags is not None:
+            for k1 in self.private_pool_tags:
+                result['PrivatePoolTags'].append(k1.to_map() if k1 else None)
 
         if self.strategy is not None:
             result['Strategy'] = self.strategy
@@ -839,8 +849,49 @@ class ModifyScalingConfigurationRequestResourcePoolOptions(DaraModel):
         if m.get('PrivatePoolIds') is not None:
             self.private_pool_ids = m.get('PrivatePoolIds')
 
+        self.private_pool_tags = []
+        if m.get('PrivatePoolTags') is not None:
+            for k1 in m.get('PrivatePoolTags'):
+                temp_model = main_models.ModifyScalingConfigurationRequestResourcePoolOptionsPrivatePoolTags()
+                self.private_pool_tags.append(temp_model.from_map(k1))
+
         if m.get('Strategy') is not None:
             self.strategy = m.get('Strategy')
+
+        return self
+
+class ModifyScalingConfigurationRequestResourcePoolOptionsPrivatePoolTags(DaraModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.key is not None:
+            result['Key'] = self.key
+
+        if self.value is not None:
+            result['Value'] = self.value
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
 
         return self
 

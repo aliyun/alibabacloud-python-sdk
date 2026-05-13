@@ -1,3 +1,9 @@
+2026-05-13 Version: 1.13.2
+- Update API CreateScalingConfiguration: add request parameters ResourcePoolOptions.PrivatePoolTags.
+- Update API DescribeScalingConfigurations: add response parameters Body.ScalingConfigurations.$.ResourcePoolOptions.PrivatePoolTags.
+- Update API ModifyScalingConfiguration: add request parameters ResourcePoolOptions.PrivatePoolTags.
+
+
 2026-04-20 Version: 1.13.1
 - Update API DescribeScalingConfigurations: add response parameters Body.ScalingConfigurations.$.CpuOptions.
 
