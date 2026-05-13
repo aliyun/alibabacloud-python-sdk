@@ -50,6 +50,12 @@ from ._create_tair_instance_response import CreateTairInstanceResponse
 from ._create_tair_kvcache_vnode_request import CreateTairKVCacheVNodeRequest
 from ._create_tair_kvcache_vnode_response_body import CreateTairKVCacheVNodeResponseBody
 from ._create_tair_kvcache_vnode_response import CreateTairKVCacheVNodeResponse
+from ._create_tair_skv_ddb_table_request import CreateTairSkvDdbTableRequest
+from ._create_tair_skv_ddb_table_response_body import CreateTairSkvDdbTableResponseBody
+from ._create_tair_skv_ddb_table_response import CreateTairSkvDdbTableResponse
+from ._create_tair_skv_ddb_workspace_request import CreateTairSkvDdbWorkspaceRequest
+from ._create_tair_skv_ddb_workspace_response_body import CreateTairSkvDdbWorkspaceResponseBody
+from ._create_tair_skv_ddb_workspace_response import CreateTairSkvDdbWorkspaceResponse
 from ._delete_account_request import DeleteAccountRequest
 from ._delete_account_response_body import DeleteAccountResponseBody
 from ._delete_account_response import DeleteAccountResponse
@@ -254,6 +260,15 @@ from ._describe_tair_kvcache_infer_instance_attribute_response import DescribeTa
 from ._describe_tair_kvcache_infer_instances_request import DescribeTairKVCacheInferInstancesRequest
 from ._describe_tair_kvcache_infer_instances_response_body import DescribeTairKVCacheInferInstancesResponseBody
 from ._describe_tair_kvcache_infer_instances_response import DescribeTairKVCacheInferInstancesResponse
+from ._describe_tair_skv_ddb_table_request import DescribeTairSkvDdbTableRequest
+from ._describe_tair_skv_ddb_table_response_body import DescribeTairSkvDdbTableResponseBody
+from ._describe_tair_skv_ddb_table_response import DescribeTairSkvDdbTableResponse
+from ._describe_tair_skv_ddb_table_schema_request import DescribeTairSkvDdbTableSchemaRequest
+from ._describe_tair_skv_ddb_table_schema_response_body import DescribeTairSkvDdbTableSchemaResponseBody
+from ._describe_tair_skv_ddb_table_schema_response import DescribeTairSkvDdbTableSchemaResponse
+from ._describe_task_detail_request import DescribeTaskDetailRequest
+from ._describe_task_detail_response_body import DescribeTaskDetailResponseBody
+from ._describe_task_detail_response import DescribeTaskDetailResponse
 from ._describe_zones_request import DescribeZonesRequest
 from ._describe_zones_response_body import DescribeZonesResponseBody
 from ._describe_zones_response import DescribeZonesResponse
@@ -632,6 +647,8 @@ from ._describe_tair_kvcache_infer_instances_response_body import DescribeTairKV
 from ._describe_tair_kvcache_infer_instances_response_body import DescribeTairKVCacheInferInstancesResponseBodyInstancesTairInferInstanceDTOTags
 from ._describe_tair_kvcache_infer_instances_response_body import DescribeTairKVCacheInferInstancesResponseBodyInstancesTairInferInstanceDTO
 from ._describe_tair_kvcache_infer_instances_response_body import DescribeTairKVCacheInferInstancesResponseBodyInstances
+from ._describe_tair_skv_ddb_table_response_body import DescribeTairSkvDdbTableResponseBodyTablesTable
+from ._describe_tair_skv_ddb_table_response_body import DescribeTairSkvDdbTableResponseBodyTables
 from ._describe_zones_response_body import DescribeZonesResponseBodyZonesKVStoreZone
 from ._describe_zones_response_body import DescribeZonesResponseBodyZones
 from ._list_tag_resources_request import ListTagResourcesRequestTag
@@ -690,6 +707,12 @@ __all__ = [
     CreateTairKVCacheVNodeRequest,
     CreateTairKVCacheVNodeResponseBody,
     CreateTairKVCacheVNodeResponse,
+    CreateTairSkvDdbTableRequest,
+    CreateTairSkvDdbTableResponseBody,
+    CreateTairSkvDdbTableResponse,
+    CreateTairSkvDdbWorkspaceRequest,
+    CreateTairSkvDdbWorkspaceResponseBody,
+    CreateTairSkvDdbWorkspaceResponse,
     DeleteAccountRequest,
     DeleteAccountResponseBody,
     DeleteAccountResponse,
@@ -894,6 +917,15 @@ __all__ = [
     DescribeTairKVCacheInferInstancesRequest,
     DescribeTairKVCacheInferInstancesResponseBody,
     DescribeTairKVCacheInferInstancesResponse,
+    DescribeTairSkvDdbTableRequest,
+    DescribeTairSkvDdbTableResponseBody,
+    DescribeTairSkvDdbTableResponse,
+    DescribeTairSkvDdbTableSchemaRequest,
+    DescribeTairSkvDdbTableSchemaResponseBody,
+    DescribeTairSkvDdbTableSchemaResponse,
+    DescribeTaskDetailRequest,
+    DescribeTaskDetailResponseBody,
+    DescribeTaskDetailResponse,
     DescribeZonesRequest,
     DescribeZonesResponseBody,
     DescribeZonesResponse,
@@ -1272,6 +1304,8 @@ __all__ = [
     DescribeTairKVCacheInferInstancesResponseBodyInstancesTairInferInstanceDTOTags,
     DescribeTairKVCacheInferInstancesResponseBodyInstancesTairInferInstanceDTO,
     DescribeTairKVCacheInferInstancesResponseBodyInstances,
+    DescribeTairSkvDdbTableResponseBodyTablesTable,
+    DescribeTairSkvDdbTableResponseBodyTables,
     DescribeZonesResponseBodyZonesKVStoreZone,
     DescribeZonesResponseBodyZones,
     ListTagResourcesRequestTag,

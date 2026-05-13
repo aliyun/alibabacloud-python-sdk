@@ -4,15 +4,16 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class SwitchInstanceHAResponseBody(DaraModel):
+class DescribeTairSkvDdbTableSchemaResponseBody(DaraModel):
     def __init__(
         self,
         request_id: str = None,
-        task_id: str = None,
+        schema: str = None,
+        ttl_spec: str = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
-        self.task_id = task_id
+        self.schema = schema
+        self.ttl_spec = ttl_spec
 
     def validate(self):
         pass
@@ -25,8 +26,11 @@ class SwitchInstanceHAResponseBody(DaraModel):
         if self.request_id is not None:
             result['RequestId'] = self.request_id
 
-        if self.task_id is not None:
-            result['TaskId'] = self.task_id
+        if self.schema is not None:
+            result['Schema'] = self.schema
+
+        if self.ttl_spec is not None:
+            result['TtlSpec'] = self.ttl_spec
 
         return result
 
@@ -35,8 +39,11 @@ class SwitchInstanceHAResponseBody(DaraModel):
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
 
-        if m.get('TaskId') is not None:
-            self.task_id = m.get('TaskId')
+        if m.get('Schema') is not None:
+            self.schema = m.get('Schema')
+
+        if m.get('TtlSpec') is not None:
+            self.ttl_spec = m.get('TtlSpec')
 
         return self
 

@@ -153,6 +153,7 @@ class DescribeInstancesResponseBodyInstancesKVStoreInstance(DaraModel):
         user_name: str = None,
         v_switch_id: str = None,
         vpc_id: str = None,
+        workspace_id: str = None,
         zone_id: str = None,
     ):
         self.architecture_type = architecture_type
@@ -198,6 +199,7 @@ class DescribeInstancesResponseBodyInstancesKVStoreInstance(DaraModel):
         self.user_name = user_name
         self.v_switch_id = v_switch_id
         self.vpc_id = vpc_id
+        self.workspace_id = workspace_id
         self.zone_id = zone_id
 
     def validate(self):
@@ -338,6 +340,9 @@ class DescribeInstancesResponseBodyInstancesKVStoreInstance(DaraModel):
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
 
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+
         if self.zone_id is not None:
             result['ZoneId'] = self.zone_id
 
@@ -474,6 +479,9 @@ class DescribeInstancesResponseBodyInstancesKVStoreInstance(DaraModel):
 
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
+
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
 
         if m.get('ZoneId') is not None:
             self.zone_id = m.get('ZoneId')

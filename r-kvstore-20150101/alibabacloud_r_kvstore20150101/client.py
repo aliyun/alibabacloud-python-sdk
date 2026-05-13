@@ -2171,6 +2171,254 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_tair_kvcache_vnode_with_options_async(request, runtime)
 
+    def create_tair_skv_ddb_table_with_options(
+        self,
+        request: main_models.CreateTairSkvDdbTableRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateTairSkvDdbTableResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.backup_id):
+            query['BackupId'] = request.backup_id
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.instance_type):
+            query['InstanceType'] = request.instance_type
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.schema):
+            query['Schema'] = request.schema
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not DaraCore.is_null(request.src_dbinstance_id):
+            query['SrcDBInstanceId'] = request.src_dbinstance_id
+        if not DaraCore.is_null(request.table_name):
+            query['TableName'] = request.table_name
+        if not DaraCore.is_null(request.ttl_spec):
+            query['TtlSpec'] = request.ttl_spec
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateTairSkvDdbTable',
+            version = '2015-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateTairSkvDdbTableResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_tair_skv_ddb_table_with_options_async(
+        self,
+        request: main_models.CreateTairSkvDdbTableRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateTairSkvDdbTableResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.backup_id):
+            query['BackupId'] = request.backup_id
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.instance_type):
+            query['InstanceType'] = request.instance_type
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.schema):
+            query['Schema'] = request.schema
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not DaraCore.is_null(request.src_dbinstance_id):
+            query['SrcDBInstanceId'] = request.src_dbinstance_id
+        if not DaraCore.is_null(request.table_name):
+            query['TableName'] = request.table_name
+        if not DaraCore.is_null(request.ttl_spec):
+            query['TtlSpec'] = request.ttl_spec
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateTairSkvDdbTable',
+            version = '2015-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateTairSkvDdbTableResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_tair_skv_ddb_table(
+        self,
+        request: main_models.CreateTairSkvDdbTableRequest,
+    ) -> main_models.CreateTairSkvDdbTableResponse:
+        runtime = RuntimeOptions()
+        return self.create_tair_skv_ddb_table_with_options(request, runtime)
+
+    async def create_tair_skv_ddb_table_async(
+        self,
+        request: main_models.CreateTairSkvDdbTableRequest,
+    ) -> main_models.CreateTairSkvDdbTableResponse:
+        runtime = RuntimeOptions()
+        return await self.create_tair_skv_ddb_table_with_options_async(request, runtime)
+
+    def create_tair_skv_ddb_workspace_with_options(
+        self,
+        request: main_models.CreateTairSkvDdbWorkspaceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateTairSkvDdbWorkspaceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.instance_type):
+            query['InstanceType'] = request.instance_type
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.password):
+            query['Password'] = request.password
+        if not DaraCore.is_null(request.port):
+            query['Port'] = request.port
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not DaraCore.is_null(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not DaraCore.is_null(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not DaraCore.is_null(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateTairSkvDdbWorkspace',
+            version = '2015-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateTairSkvDdbWorkspaceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_tair_skv_ddb_workspace_with_options_async(
+        self,
+        request: main_models.CreateTairSkvDdbWorkspaceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateTairSkvDdbWorkspaceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.instance_type):
+            query['InstanceType'] = request.instance_type
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.password):
+            query['Password'] = request.password
+        if not DaraCore.is_null(request.port):
+            query['Port'] = request.port
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not DaraCore.is_null(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not DaraCore.is_null(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not DaraCore.is_null(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateTairSkvDdbWorkspace',
+            version = '2015-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateTairSkvDdbWorkspaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_tair_skv_ddb_workspace(
+        self,
+        request: main_models.CreateTairSkvDdbWorkspaceRequest,
+    ) -> main_models.CreateTairSkvDdbWorkspaceResponse:
+        runtime = RuntimeOptions()
+        return self.create_tair_skv_ddb_workspace_with_options(request, runtime)
+
+    async def create_tair_skv_ddb_workspace_async(
+        self,
+        request: main_models.CreateTairSkvDdbWorkspaceRequest,
+    ) -> main_models.CreateTairSkvDdbWorkspaceResponse:
+        runtime = RuntimeOptions()
+        return await self.create_tair_skv_ddb_workspace_with_options_async(request, runtime)
+
     def delete_account_with_options(
         self,
         request: main_models.DeleteAccountRequest,
@@ -9030,6 +9278,264 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeTairKVCacheInferInstancesResponse:
         runtime = RuntimeOptions()
         return await self.describe_tair_kvcache_infer_instances_with_options_async(request, runtime)
+
+    def describe_tair_skv_ddb_table_with_options(
+        self,
+        request: main_models.DescribeTairSkvDdbTableRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeTairSkvDdbTableResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeTairSkvDdbTable',
+            version = '2015-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeTairSkvDdbTableResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_tair_skv_ddb_table_with_options_async(
+        self,
+        request: main_models.DescribeTairSkvDdbTableRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeTairSkvDdbTableResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeTairSkvDdbTable',
+            version = '2015-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeTairSkvDdbTableResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_tair_skv_ddb_table(
+        self,
+        request: main_models.DescribeTairSkvDdbTableRequest,
+    ) -> main_models.DescribeTairSkvDdbTableResponse:
+        runtime = RuntimeOptions()
+        return self.describe_tair_skv_ddb_table_with_options(request, runtime)
+
+    async def describe_tair_skv_ddb_table_async(
+        self,
+        request: main_models.DescribeTairSkvDdbTableRequest,
+    ) -> main_models.DescribeTairSkvDdbTableResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_tair_skv_ddb_table_with_options_async(request, runtime)
+
+    def describe_tair_skv_ddb_table_schema_with_options(
+        self,
+        request: main_models.DescribeTairSkvDdbTableSchemaRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeTairSkvDdbTableSchemaResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.backup_id):
+            query['BackupId'] = request.backup_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeTairSkvDdbTableSchema',
+            version = '2015-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeTairSkvDdbTableSchemaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_tair_skv_ddb_table_schema_with_options_async(
+        self,
+        request: main_models.DescribeTairSkvDdbTableSchemaRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeTairSkvDdbTableSchemaResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.backup_id):
+            query['BackupId'] = request.backup_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeTairSkvDdbTableSchema',
+            version = '2015-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeTairSkvDdbTableSchemaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_tair_skv_ddb_table_schema(
+        self,
+        request: main_models.DescribeTairSkvDdbTableSchemaRequest,
+    ) -> main_models.DescribeTairSkvDdbTableSchemaResponse:
+        runtime = RuntimeOptions()
+        return self.describe_tair_skv_ddb_table_schema_with_options(request, runtime)
+
+    async def describe_tair_skv_ddb_table_schema_async(
+        self,
+        request: main_models.DescribeTairSkvDdbTableSchemaRequest,
+    ) -> main_models.DescribeTairSkvDdbTableSchemaResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_tair_skv_ddb_table_schema_with_options_async(request, runtime)
+
+    def describe_task_detail_with_options(
+        self,
+        request: main_models.DescribeTaskDetailRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeTaskDetailResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeTaskDetail',
+            version = '2015-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeTaskDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_task_detail_with_options_async(
+        self,
+        request: main_models.DescribeTaskDetailRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeTaskDetailResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeTaskDetail',
+            version = '2015-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeTaskDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_task_detail(
+        self,
+        request: main_models.DescribeTaskDetailRequest,
+    ) -> main_models.DescribeTaskDetailResponse:
+        runtime = RuntimeOptions()
+        return self.describe_task_detail_with_options(request, runtime)
+
+    async def describe_task_detail_async(
+        self,
+        request: main_models.DescribeTaskDetailRequest,
+    ) -> main_models.DescribeTaskDetailResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_task_detail_with_options_async(request, runtime)
 
     def describe_zones_with_options(
         self,

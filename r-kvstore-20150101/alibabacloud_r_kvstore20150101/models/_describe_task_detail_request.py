@@ -4,14 +4,15 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class SwitchInstanceHAResponseBody(DaraModel):
+class DescribeTaskDetailRequest(DaraModel):
     def __init__(
         self,
-        request_id: str = None,
+        instance_id: str = None,
         task_id: str = None,
     ):
-        # The ID of the request.
-        self.request_id = request_id
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
         self.task_id = task_id
 
     def validate(self):
@@ -22,8 +23,8 @@ class SwitchInstanceHAResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
 
         if self.task_id is not None:
             result['TaskId'] = self.task_id
@@ -32,8 +33,8 @@ class SwitchInstanceHAResponseBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
 
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')

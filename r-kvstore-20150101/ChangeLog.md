@@ -1,3 +1,13 @@
+2026-05-13 Version: 6.3.0
+- Support API CreateTairSkvDdbTable.
+- Support API CreateTairSkvDdbWorkspace.
+- Support API DescribeTairSkvDdbTable.
+- Support API DescribeTairSkvDdbTableSchema.
+- Support API DescribeTaskDetail.
+- Update API DescribeInstances: add response parameters Body.Instances.$.WorkspaceId.
+- Update API SwitchInstanceHA: add response parameters Body.TaskId.
+
+
 2026-03-05 Version: 6.2.2
 - Update API CreateInstance: add request parameters InstanceEndpointType.
 - Update API CreateTairInstance: add request parameters InstanceEndpointType.
