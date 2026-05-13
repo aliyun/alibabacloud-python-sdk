@@ -3312,6 +3312,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_notebook_task_status_with_options_async(request, runtime)
 
+    def get_workspace_code_publish_setting_with_options(
+        self,
+        request: main_models.GetWorkspaceCodePublishSettingRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetWorkspaceCodePublishSettingResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetWorkspaceCodePublishSetting',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetWorkspaceCodePublishSettingResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_workspace_code_publish_setting_with_options_async(
+        self,
+        request: main_models.GetWorkspaceCodePublishSettingRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetWorkspaceCodePublishSettingResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetWorkspaceCodePublishSetting',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetWorkspaceCodePublishSettingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_workspace_code_publish_setting(
+        self,
+        request: main_models.GetWorkspaceCodePublishSettingRequest,
+    ) -> main_models.GetWorkspaceCodePublishSettingResponse:
+        runtime = RuntimeOptions()
+        return self.get_workspace_code_publish_setting_with_options(request, runtime)
+
+    async def get_workspace_code_publish_setting_async(
+        self,
+        request: main_models.GetWorkspaceCodePublishSettingRequest,
+    ) -> main_models.GetWorkspaceCodePublishSettingResponse:
+        runtime = RuntimeOptions()
+        return await self.get_workspace_code_publish_setting_with_options_async(request, runtime)
+
     def list_airflows_with_options(
         self,
         request: main_models.ListAirflowsRequest,
@@ -5472,6 +5542,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.send_chat_message_with_options_async(request, runtime)
 
+    def set_workspace_code_publish_setting_with_options(
+        self,
+        request: main_models.SetWorkspaceCodePublishSettingRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SetWorkspaceCodePublishSettingResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        body = {}
+        if not DaraCore.is_null(request.config):
+            body['Config'] = request.config
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SetWorkspaceCodePublishSetting',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SetWorkspaceCodePublishSettingResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def set_workspace_code_publish_setting_with_options_async(
+        self,
+        request: main_models.SetWorkspaceCodePublishSettingRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SetWorkspaceCodePublishSettingResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        body = {}
+        if not DaraCore.is_null(request.config):
+            body['Config'] = request.config
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SetWorkspaceCodePublishSetting',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SetWorkspaceCodePublishSettingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def set_workspace_code_publish_setting(
+        self,
+        request: main_models.SetWorkspaceCodePublishSettingRequest,
+    ) -> main_models.SetWorkspaceCodePublishSettingResponse:
+        runtime = RuntimeOptions()
+        return self.set_workspace_code_publish_setting_with_options(request, runtime)
+
+    async def set_workspace_code_publish_setting_async(
+        self,
+        request: main_models.SetWorkspaceCodePublishSettingRequest,
+    ) -> main_models.SetWorkspaceCodePublishSettingResponse:
+        runtime = RuntimeOptions()
+        return await self.set_workspace_code_publish_setting_with_options_async(request, runtime)
+
     def update_airflow_with_options(
         self,
         request: main_models.UpdateAirflowRequest,
@@ -6157,3 +6305,229 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateDataLakeTableResponse:
         runtime = RuntimeOptions()
         return await self.update_data_lake_table_with_options_async(request, runtime)
+
+    def workspace_action_log_with_options(
+        self,
+        request: main_models.WorkspaceActionLogRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.WorkspaceActionLogResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.key):
+            query['Key'] = request.key
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'WorkspaceActionLog',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.WorkspaceActionLogResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def workspace_action_log_with_options_async(
+        self,
+        request: main_models.WorkspaceActionLogRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.WorkspaceActionLogResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.key):
+            query['Key'] = request.key
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'WorkspaceActionLog',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.WorkspaceActionLogResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def workspace_action_log(
+        self,
+        request: main_models.WorkspaceActionLogRequest,
+    ) -> main_models.WorkspaceActionLogResponse:
+        runtime = RuntimeOptions()
+        return self.workspace_action_log_with_options(request, runtime)
+
+    async def workspace_action_log_async(
+        self,
+        request: main_models.WorkspaceActionLogRequest,
+    ) -> main_models.WorkspaceActionLogResponse:
+        runtime = RuntimeOptions()
+        return await self.workspace_action_log_with_options_async(request, runtime)
+
+    def workspace_action_status_with_options(
+        self,
+        request: main_models.WorkspaceActionStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.WorkspaceActionStatusResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.key):
+            query['Key'] = request.key
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'WorkspaceActionStatus',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.WorkspaceActionStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def workspace_action_status_with_options_async(
+        self,
+        request: main_models.WorkspaceActionStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.WorkspaceActionStatusResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.key):
+            query['Key'] = request.key
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'WorkspaceActionStatus',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.WorkspaceActionStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def workspace_action_status(
+        self,
+        request: main_models.WorkspaceActionStatusRequest,
+    ) -> main_models.WorkspaceActionStatusResponse:
+        runtime = RuntimeOptions()
+        return self.workspace_action_status_with_options(request, runtime)
+
+    async def workspace_action_status_async(
+        self,
+        request: main_models.WorkspaceActionStatusRequest,
+    ) -> main_models.WorkspaceActionStatusResponse:
+        runtime = RuntimeOptions()
+        return await self.workspace_action_status_with_options_async(request, runtime)
+
+    def workspace_code_publish_with_options(
+        self,
+        request: main_models.WorkspaceCodePublishRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.WorkspaceCodePublishResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        body = {}
+        if not DaraCore.is_null(request.config):
+            body['Config'] = request.config
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'WorkspaceCodePublish',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.WorkspaceCodePublishResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def workspace_code_publish_with_options_async(
+        self,
+        request: main_models.WorkspaceCodePublishRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.WorkspaceCodePublishResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        body = {}
+        if not DaraCore.is_null(request.config):
+            body['Config'] = request.config
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'WorkspaceCodePublish',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.WorkspaceCodePublishResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def workspace_code_publish(
+        self,
+        request: main_models.WorkspaceCodePublishRequest,
+    ) -> main_models.WorkspaceCodePublishResponse:
+        runtime = RuntimeOptions()
+        return self.workspace_code_publish_with_options(request, runtime)
+
+    async def workspace_code_publish_async(
+        self,
+        request: main_models.WorkspaceCodePublishRequest,
+    ) -> main_models.WorkspaceCodePublishResponse:
+        runtime = RuntimeOptions()
+        return await self.workspace_code_publish_with_options_async(request, runtime)

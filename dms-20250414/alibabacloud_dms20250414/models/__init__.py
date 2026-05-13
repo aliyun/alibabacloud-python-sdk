@@ -153,6 +153,9 @@ from ._get_notebook_and_submit_task_response import GetNotebookAndSubmitTaskResp
 from ._get_notebook_task_status_request import GetNotebookTaskStatusRequest
 from ._get_notebook_task_status_response_body import GetNotebookTaskStatusResponseBody
 from ._get_notebook_task_status_response import GetNotebookTaskStatusResponse
+from ._get_workspace_code_publish_setting_request import GetWorkspaceCodePublishSettingRequest
+from ._get_workspace_code_publish_setting_response_body import GetWorkspaceCodePublishSettingResponseBody
+from ._get_workspace_code_publish_setting_response import GetWorkspaceCodePublishSettingResponse
 from ._list_airflows_request import ListAirflowsRequest
 from ._list_airflows_response_body import ListAirflowsResponseBody
 from ._list_airflows_response import ListAirflowsResponse
@@ -222,6 +225,9 @@ from ._send_chat_message_request import SendChatMessageRequest
 from ._send_chat_message_shrink_request import SendChatMessageShrinkRequest
 from ._send_chat_message_response_body import SendChatMessageResponseBody
 from ._send_chat_message_response import SendChatMessageResponse
+from ._set_workspace_code_publish_setting_request import SetWorkspaceCodePublishSettingRequest
+from ._set_workspace_code_publish_setting_response_body import SetWorkspaceCodePublishSettingResponseBody
+from ._set_workspace_code_publish_setting_response import SetWorkspaceCodePublishSettingResponse
 from ._update_airflow_request import UpdateAirflowRequest
 from ._update_airflow_response_body import UpdateAirflowResponseBody
 from ._update_airflow_response import UpdateAirflowResponse
@@ -247,6 +253,15 @@ from ._update_data_lake_table_request import UpdateDataLakeTableRequest
 from ._update_data_lake_table_shrink_request import UpdateDataLakeTableShrinkRequest
 from ._update_data_lake_table_response_body import UpdateDataLakeTableResponseBody
 from ._update_data_lake_table_response import UpdateDataLakeTableResponse
+from ._workspace_action_log_request import WorkspaceActionLogRequest
+from ._workspace_action_log_response_body import WorkspaceActionLogResponseBody
+from ._workspace_action_log_response import WorkspaceActionLogResponse
+from ._workspace_action_status_request import WorkspaceActionStatusRequest
+from ._workspace_action_status_response_body import WorkspaceActionStatusResponseBody
+from ._workspace_action_status_response import WorkspaceActionStatusResponse
+from ._workspace_code_publish_request import WorkspaceCodePublishRequest
+from ._workspace_code_publish_response_body import WorkspaceCodePublishResponseBody
+from ._workspace_code_publish_response import WorkspaceCodePublishResponse
 from ._open_claw_instance_vo import OpenClawInstanceVOImageInfo
 from ._add_user_to_data_agent_workspace_response_body import AddUserToDataAgentWorkspaceResponseBodyData
 from ._create_airflow_response_body import CreateAirflowResponseBodyRoot
@@ -282,6 +297,8 @@ from ._get_airflow_response_body import GetAirflowResponseBodyRoot
 from ._get_data_agent_sub_account_info_response_body import GetDataAgentSubAccountInfoResponseBodyData
 from ._get_data_agent_workspace_info_response_body import GetDataAgentWorkspaceInfoResponseBodyData
 from ._get_notebook_task_status_response_body import GetNotebookTaskStatusResponseBodyData
+from ._get_workspace_code_publish_setting_response_body import GetWorkspaceCodePublishSettingResponseBodyDataRepos
+from ._get_workspace_code_publish_setting_response_body import GetWorkspaceCodePublishSettingResponseBodyData
 from ._list_airflows_response_body import ListAirflowsResponseBodyRootList
 from ._list_airflows_response_body import ListAirflowsResponseBodyRoot
 from ._list_custom_agent_response_body import ListCustomAgentResponseBodyDataContentCallbackConfig
@@ -317,6 +334,8 @@ from ._send_chat_message_response_body import SendChatMessageResponseBodyData
 from ._update_airflow_response_body import UpdateAirflowResponseBodyRoot
 from ._update_data_agent_space_info_response_body import UpdateDataAgentSpaceInfoResponseBodyData
 from ._update_data_agent_workspace_member_role_response_body import UpdateDataAgentWorkspaceMemberRoleResponseBodyData
+from ._workspace_action_status_response_body import WorkspaceActionStatusResponseBodyData
+from ._workspace_code_publish_response_body import WorkspaceCodePublishResponseBodyData
 
 __all__ = [
     AgentServiceOrderSummaryVO,
@@ -470,6 +489,9 @@ __all__ = [
     GetNotebookTaskStatusRequest,
     GetNotebookTaskStatusResponseBody,
     GetNotebookTaskStatusResponse,
+    GetWorkspaceCodePublishSettingRequest,
+    GetWorkspaceCodePublishSettingResponseBody,
+    GetWorkspaceCodePublishSettingResponse,
     ListAirflowsRequest,
     ListAirflowsResponseBody,
     ListAirflowsResponse,
@@ -539,6 +561,9 @@ __all__ = [
     SendChatMessageShrinkRequest,
     SendChatMessageResponseBody,
     SendChatMessageResponse,
+    SetWorkspaceCodePublishSettingRequest,
+    SetWorkspaceCodePublishSettingResponseBody,
+    SetWorkspaceCodePublishSettingResponse,
     UpdateAirflowRequest,
     UpdateAirflowResponseBody,
     UpdateAirflowResponse,
@@ -564,6 +589,15 @@ __all__ = [
     UpdateDataLakeTableShrinkRequest,
     UpdateDataLakeTableResponseBody,
     UpdateDataLakeTableResponse,
+    WorkspaceActionLogRequest,
+    WorkspaceActionLogResponseBody,
+    WorkspaceActionLogResponse,
+    WorkspaceActionStatusRequest,
+    WorkspaceActionStatusResponseBody,
+    WorkspaceActionStatusResponse,
+    WorkspaceCodePublishRequest,
+    WorkspaceCodePublishResponseBody,
+    WorkspaceCodePublishResponse,
     OpenClawInstanceVOImageInfo,
     AddUserToDataAgentWorkspaceResponseBodyData,
     CreateAirflowResponseBodyRoot,
@@ -599,6 +633,8 @@ __all__ = [
     GetDataAgentSubAccountInfoResponseBodyData,
     GetDataAgentWorkspaceInfoResponseBodyData,
     GetNotebookTaskStatusResponseBodyData,
+    GetWorkspaceCodePublishSettingResponseBodyDataRepos,
+    GetWorkspaceCodePublishSettingResponseBodyData,
     ListAirflowsResponseBodyRootList,
     ListAirflowsResponseBodyRoot,
     ListCustomAgentResponseBodyDataContentCallbackConfig,
@@ -633,5 +669,7 @@ __all__ = [
     SendChatMessageResponseBodyData,
     UpdateAirflowResponseBodyRoot,
     UpdateDataAgentSpaceInfoResponseBodyData,
-    UpdateDataAgentWorkspaceMemberRoleResponseBodyData
+    UpdateDataAgentWorkspaceMemberRoleResponseBodyData,
+    WorkspaceActionStatusResponseBodyData,
+    WorkspaceCodePublishResponseBodyData
 ]

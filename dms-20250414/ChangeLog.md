@@ -1,3 +1,11 @@
+2026-05-13 Version: 1.11.0
+- Support API GetWorkspaceCodePublishSetting.
+- Support API SetWorkspaceCodePublishSetting.
+- Support API WorkspaceActionLog.
+- Support API WorkspaceActionStatus.
+- Support API WorkspaceCodePublish.
+
+
 2026-05-13 Version: 1.10.8
 - Update API ListFileUpload: add request parameters DownloadLinkExpire.
 
