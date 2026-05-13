@@ -169,9 +169,11 @@ class GetPipelineResponseBodySourceLogstore(DaraModel):
         self,
         logstore: str = None,
         project: str = None,
+        query: str = None,
     ):
         self.logstore = logstore
         self.project = project
+        self.query = query
 
     def validate(self):
         pass
@@ -187,6 +189,9 @@ class GetPipelineResponseBodySourceLogstore(DaraModel):
         if self.project is not None:
             result['project'] = self.project
 
+        if self.query is not None:
+            result['query'] = self.query
+
         return result
 
     def from_map(self, m: dict = None):
@@ -196,6 +201,9 @@ class GetPipelineResponseBodySourceLogstore(DaraModel):
 
         if m.get('project') is not None:
             self.project = m.get('project')
+
+        if m.get('query') is not None:
+            self.query = m.get('query')
 
         return self
 

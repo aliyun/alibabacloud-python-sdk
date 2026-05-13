@@ -4209,6 +4209,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.labels):
             request.labels_shrink = Utils.array_to_string_with_specified_style(tmp_req.labels, 'labels', 'json')
         query = {}
+        if not DaraCore.is_null(request.keywords):
+            query['keywords'] = request.keywords
         if not DaraCore.is_null(request.labels_shrink):
             query['labels'] = request.labels_shrink
         if not DaraCore.is_null(request.meta_format):
@@ -4253,6 +4255,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.labels):
             request.labels_shrink = Utils.array_to_string_with_specified_style(tmp_req.labels, 'labels', 'json')
         query = {}
+        if not DaraCore.is_null(request.keywords):
+            query['keywords'] = request.keywords
         if not DaraCore.is_null(request.labels_shrink):
             query['labels'] = request.labels_shrink
         if not DaraCore.is_null(request.meta_format):

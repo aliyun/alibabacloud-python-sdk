@@ -82,6 +82,7 @@ class DescribeMetricMetaListResponseBodyResources(DaraModel):
         dimension_description: List[main_models.DescribeMetricMetaListResponseBodyResourcesDimensionDescription] = None,
         dimensions: List[str] = None,
         labels: Dict[str, str] = None,
+        meta_format: str = None,
         metric_name: str = None,
         namespace: str = None,
         periods: str = None,
@@ -93,6 +94,7 @@ class DescribeMetricMetaListResponseBodyResources(DaraModel):
         self.dimension_description = dimension_description
         self.dimensions = dimensions
         self.labels = labels
+        self.meta_format = meta_format
         self.metric_name = metric_name
         self.namespace = namespace
         self.periods = periods
@@ -124,6 +126,9 @@ class DescribeMetricMetaListResponseBodyResources(DaraModel):
 
         if self.labels is not None:
             result['labels'] = self.labels
+
+        if self.meta_format is not None:
+            result['metaFormat'] = self.meta_format
 
         if self.metric_name is not None:
             result['metricName'] = self.metric_name
@@ -161,6 +166,9 @@ class DescribeMetricMetaListResponseBodyResources(DaraModel):
 
         if m.get('labels') is not None:
             self.labels = m.get('labels')
+
+        if m.get('metaFormat') is not None:
+            self.meta_format = m.get('metaFormat')
 
         if m.get('metricName') is not None:
             self.metric_name = m.get('metricName')

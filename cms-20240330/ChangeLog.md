@@ -1,3 +1,9 @@
+2026-05-13 Version: 9.2.1
+- Update API DescribeMetricMetaList: add request parameters keywords.
+- Update API DescribeMetricMetaList: add response parameters Body.resources.$.metaFormat.
+- Update API GetPipeline: add response parameters Body.source.logstore.query.
+
+
 2026-05-08 Version: 9.2.0
 - Support API AddContexts.
 - Support API CreateContextStore.

@@ -10,6 +10,7 @@ from darabonba.model import DaraModel
 class DescribeMetricMetaListRequest(DaraModel):
     def __init__(
         self,
+        keywords: str = None,
         labels: List[main_models.DescribeMetricMetaListRequestLabels] = None,
         meta_format: str = None,
         metric_name: str = None,
@@ -17,6 +18,7 @@ class DescribeMetricMetaListRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        self.keywords = keywords
         self.labels = labels
         self.meta_format = meta_format
         self.metric_name = metric_name
@@ -35,6 +37,9 @@ class DescribeMetricMetaListRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.keywords is not None:
+            result['keywords'] = self.keywords
+
         result['labels'] = []
         if self.labels is not None:
             for k1 in self.labels:
@@ -59,6 +64,9 @@ class DescribeMetricMetaListRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('keywords') is not None:
+            self.keywords = m.get('keywords')
+
         self.labels = []
         if m.get('labels') is not None:
             for k1 in m.get('labels'):

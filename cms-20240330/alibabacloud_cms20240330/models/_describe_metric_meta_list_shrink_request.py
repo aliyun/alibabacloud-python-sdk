@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class DescribeMetricMetaListShrinkRequest(DaraModel):
     def __init__(
         self,
+        keywords: str = None,
         labels_shrink: str = None,
         meta_format: str = None,
         metric_name: str = None,
@@ -14,6 +15,7 @@ class DescribeMetricMetaListShrinkRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        self.keywords = keywords
         self.labels_shrink = labels_shrink
         self.meta_format = meta_format
         self.metric_name = metric_name
@@ -29,6 +31,9 @@ class DescribeMetricMetaListShrinkRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.keywords is not None:
+            result['keywords'] = self.keywords
+
         if self.labels_shrink is not None:
             result['labels'] = self.labels_shrink
 
@@ -51,6 +56,9 @@ class DescribeMetricMetaListShrinkRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('keywords') is not None:
+            self.keywords = m.get('keywords')
+
         if m.get('labels') is not None:
             self.labels_shrink = m.get('labels')
 
