@@ -1,3 +1,20 @@
+2026-05-13 Version: 4.25.2
+- Update API DescribeCenterPolicyList: add response parameters Body.DescribePolicyGroups.$.AdminKeyboardOnFullScreen.
+- Update API DescribeCenterPolicyList: add response parameters Body.DescribePolicyGroups.$.AdminKeyboardOnWindows.
+- Update API DescribeCenterPolicyList: add response parameters Body.DescribePolicyGroups.$.AdminMonitor.
+- Update API DescribeCenterPolicyList: add response parameters Body.DescribePolicyGroups.$.ClientCreateSnapshot.
+- Update API DescribeCenterPolicyList: add response parameters Body.DescribePolicyGroups.$.CpuOverload.
+- Update API DescribeCenterPolicyList: add response parameters Body.DescribePolicyGroups.$.DiskOverload.
+- Update API DescribeCenterPolicyList: add response parameters Body.DescribePolicyGroups.$.EndUserCount.
+- Update API DescribeCenterPolicyList: add response parameters Body.DescribePolicyGroups.$.ExternalDrive.
+- Update API DescribeCenterPolicyList: add response parameters Body.DescribePolicyGroups.$.KeyboardControl.
+- Update API DescribeCenterPolicyList: add response parameters Body.DescribePolicyGroups.$.KmsServer.
+- Update API DescribeCenterPolicyList: add response parameters Body.DescribePolicyGroups.$.KmsServerConfig.
+- Update API DescribeCenterPolicyList: add response parameters Body.DescribePolicyGroups.$.MemoryOverload.
+- Update API DescribeCenterPolicyList: add response parameters Body.DescribePolicyGroups.$.NetworkPrinter.
+- Update API DescribeCenterPolicyList: add response parameters Body.DescribePolicyGroups.$.OrganizationCount.
+
+
 2026-05-12 Version: 4.25.1
 - Update API DescribeDesktopTypes: add request parameters DesktopScenario.
 

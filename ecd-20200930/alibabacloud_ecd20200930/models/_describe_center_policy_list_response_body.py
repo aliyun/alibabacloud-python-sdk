@@ -66,11 +66,15 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
         self,
         academic_proxy: str = None,
         admin_access: str = None,
+        admin_keyboard_on_full_screen: str = None,
+        admin_keyboard_on_windows: str = None,
+        admin_monitor: int = None,
         app_content_protection: str = None,
         authorize_access_policy_rules: List[main_models.DescribeCenterPolicyListResponseBodyDescribePolicyGroupsAuthorizeAccessPolicyRules] = None,
         authorize_security_policy_rules: List[main_models.DescribeCenterPolicyListResponseBodyDescribePolicyGroupsAuthorizeSecurityPolicyRules] = None,
         camera_redirect: str = None,
         client_control_menu: str = None,
+        client_create_snapshot: str = None,
         client_hibernate: str = None,
         client_restart: str = None,
         client_shutdown: str = None,
@@ -79,6 +83,7 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
         color_enhancement: str = None,
         cpd_drive_clipboard: str = None,
         cpu_down_grade_duration: int = None,
+        cpu_overload: str = None,
         cpu_processors: List[str] = None,
         cpu_protected_mode: str = None,
         cpu_rate_limit: int = None,
@@ -90,12 +95,15 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
         device_rules: List[main_models.DescribeCenterPolicyListResponseBodyDescribePolicyGroupsDeviceRules] = None,
         disconnect_keep_session: str = None,
         disconnect_keep_session_time: int = None,
+        disk_overload: str = None,
         display_mode: str = None,
         domain_register_value: str = None,
         domain_resolve_rule: List[main_models.DescribeCenterPolicyListResponseBodyDescribePolicyGroupsDomainResolveRule] = None,
         domain_resolve_rule_type: str = None,
         end_user_apply_admin_coordinate: str = None,
+        end_user_count: str = None,
         end_user_group_coordinate: str = None,
+        external_drive: str = None,
         file_transfer_address: str = None,
         file_transfer_speed: str = None,
         file_transfer_speed_location: str = None,
@@ -108,9 +116,13 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
         html_5file_transfer: str = None,
         internet_communication_protocol: str = None,
         internet_printer: str = None,
+        keyboard_control: str = None,
+        kms_server: str = None,
+        kms_server_config: str = None,
         local_drive: str = None,
         max_reconnect_time: int = None,
         memory_down_grade_duration: int = None,
+        memory_overload: str = None,
         memory_processors: List[str] = None,
         memory_protected_mode: str = None,
         memory_rate_limit: int = None,
@@ -126,8 +138,10 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
         name: str = None,
         net_redirect: str = None,
         net_redirect_rule: List[main_models.DescribeCenterPolicyListResponseBodyDescribePolicyGroupsNetRedirectRule] = None,
+        network_printer: str = None,
         no_operation_disconnect: str = None,
         no_operation_disconnect_time: int = None,
+        organization_count: str = None,
         policy_group_id: str = None,
         policy_group_type: str = None,
         policy_status: str = None,
@@ -193,6 +207,9 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
         # 
         # >  This parameter is in private preview and only available to specific users.
         self.admin_access = admin_access
+        self.admin_keyboard_on_full_screen = admin_keyboard_on_full_screen
+        self.admin_keyboard_on_windows = admin_keyboard_on_windows
+        self.admin_monitor = admin_monitor
         # Indicates whether anti-screenshot is enabled.
         self.app_content_protection = app_content_protection
         # The client IP address whitelists.
@@ -202,6 +219,7 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
         # Indicates whether on-premises webcam redirection is enabled.
         self.camera_redirect = camera_redirect
         self.client_control_menu = client_control_menu
+        self.client_create_snapshot = client_create_snapshot
         self.client_hibernate = client_hibernate
         self.client_restart = client_restart
         self.client_shutdown = client_shutdown
@@ -214,6 +232,7 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
         self.cpd_drive_clipboard = cpd_drive_clipboard
         # The CPU underclocking duration. Valid values: 30 to 120. Unit: seconds.
         self.cpu_down_grade_duration = cpu_down_grade_duration
+        self.cpu_overload = cpu_overload
         # The CPU processors.
         self.cpu_processors = cpu_processors
         # The CPU spike protection policy.
@@ -240,6 +259,7 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
         # 
         # >  This parameter applies only to cloud application policies.
         self.disconnect_keep_session_time = disconnect_keep_session_time
+        self.disk_overload = disk_overload
         # The display mode.
         self.display_mode = display_mode
         # The field where the domain resolution policy is applied.
@@ -250,8 +270,10 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
         self.domain_resolve_rule_type = domain_resolve_rule_type
         # Indicates whether end users are allowed to request administrator help.
         self.end_user_apply_admin_coordinate = end_user_apply_admin_coordinate
+        self.end_user_count = end_user_count
         # Indicates whether end users in the same office network can share cloud computers.
         self.end_user_group_coordinate = end_user_group_coordinate
+        self.external_drive = external_drive
         self.file_transfer_address = file_transfer_address
         self.file_transfer_speed = file_transfer_speed
         self.file_transfer_speed_location = file_transfer_speed_location
@@ -268,12 +290,16 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
         # The network communication protocol.
         self.internet_communication_protocol = internet_communication_protocol
         self.internet_printer = internet_printer
+        self.keyboard_control = keyboard_control
+        self.kms_server = kms_server
+        self.kms_server_config = kms_server_config
         # The read/write permissions on the on-premises drive.
         self.local_drive = local_drive
         # The maximum duration to retry reconnecting to cloud computers after an unexpected disconnection (non-human causes). Valid values: 30 to 7200. Unit: seconds.
         self.max_reconnect_time = max_reconnect_time
         # The memory underclocking duration per process. Valid values: 30 to 120. Unit: seconds.
         self.memory_down_grade_duration = memory_down_grade_duration
+        self.memory_overload = memory_overload
         # The memory processors.
         self.memory_processors = memory_processors
         # The memory spike protection policy.
@@ -307,6 +333,7 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
         # 
         # >  This parameter is in private preview and only available to specific users.
         self.net_redirect_rule = net_redirect_rule
+        self.network_printer = network_printer
         # Indicates whether a disconnection is enforced upon inactivity.
         # 
         # >  This parameter applies only to cloud application policies.
@@ -315,6 +342,7 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
         # 
         # >  This parameter applies only to cloud application policies.
         self.no_operation_disconnect_time = no_operation_disconnect_time
+        self.organization_count = organization_count
         # The policy ID.
         self.policy_group_id = policy_group_id
         # The type of the policy.
@@ -475,6 +503,15 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
         if self.admin_access is not None:
             result['AdminAccess'] = self.admin_access
 
+        if self.admin_keyboard_on_full_screen is not None:
+            result['AdminKeyboardOnFullScreen'] = self.admin_keyboard_on_full_screen
+
+        if self.admin_keyboard_on_windows is not None:
+            result['AdminKeyboardOnWindows'] = self.admin_keyboard_on_windows
+
+        if self.admin_monitor is not None:
+            result['AdminMonitor'] = self.admin_monitor
+
         if self.app_content_protection is not None:
             result['AppContentProtection'] = self.app_content_protection
 
@@ -493,6 +530,9 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
 
         if self.client_control_menu is not None:
             result['ClientControlMenu'] = self.client_control_menu
+
+        if self.client_create_snapshot is not None:
+            result['ClientCreateSnapshot'] = self.client_create_snapshot
 
         if self.client_hibernate is not None:
             result['ClientHibernate'] = self.client_hibernate
@@ -519,6 +559,9 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
 
         if self.cpu_down_grade_duration is not None:
             result['CpuDownGradeDuration'] = self.cpu_down_grade_duration
+
+        if self.cpu_overload is not None:
+            result['CpuOverload'] = self.cpu_overload
 
         if self.cpu_processors is not None:
             result['CpuProcessors'] = self.cpu_processors
@@ -557,6 +600,9 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
         if self.disconnect_keep_session_time is not None:
             result['DisconnectKeepSessionTime'] = self.disconnect_keep_session_time
 
+        if self.disk_overload is not None:
+            result['DiskOverload'] = self.disk_overload
+
         if self.display_mode is not None:
             result['DisplayMode'] = self.display_mode
 
@@ -574,8 +620,14 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
         if self.end_user_apply_admin_coordinate is not None:
             result['EndUserApplyAdminCoordinate'] = self.end_user_apply_admin_coordinate
 
+        if self.end_user_count is not None:
+            result['EndUserCount'] = self.end_user_count
+
         if self.end_user_group_coordinate is not None:
             result['EndUserGroupCoordinate'] = self.end_user_group_coordinate
+
+        if self.external_drive is not None:
+            result['ExternalDrive'] = self.external_drive
 
         if self.file_transfer_address is not None:
             result['FileTransferAddress'] = self.file_transfer_address
@@ -613,6 +665,15 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
         if self.internet_printer is not None:
             result['InternetPrinter'] = self.internet_printer
 
+        if self.keyboard_control is not None:
+            result['KeyboardControl'] = self.keyboard_control
+
+        if self.kms_server is not None:
+            result['KmsServer'] = self.kms_server
+
+        if self.kms_server_config is not None:
+            result['KmsServerConfig'] = self.kms_server_config
+
         if self.local_drive is not None:
             result['LocalDrive'] = self.local_drive
 
@@ -621,6 +682,9 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
 
         if self.memory_down_grade_duration is not None:
             result['MemoryDownGradeDuration'] = self.memory_down_grade_duration
+
+        if self.memory_overload is not None:
+            result['MemoryOverload'] = self.memory_overload
 
         if self.memory_processors is not None:
             result['MemoryProcessors'] = self.memory_processors
@@ -669,11 +733,17 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
             for k1 in self.net_redirect_rule:
                 result['NetRedirectRule'].append(k1.to_map() if k1 else None)
 
+        if self.network_printer is not None:
+            result['NetworkPrinter'] = self.network_printer
+
         if self.no_operation_disconnect is not None:
             result['NoOperationDisconnect'] = self.no_operation_disconnect
 
         if self.no_operation_disconnect_time is not None:
             result['NoOperationDisconnectTime'] = self.no_operation_disconnect_time
+
+        if self.organization_count is not None:
+            result['OrganizationCount'] = self.organization_count
 
         if self.policy_group_id is not None:
             result['PolicyGroupId'] = self.policy_group_id
@@ -864,6 +934,15 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
         if m.get('AdminAccess') is not None:
             self.admin_access = m.get('AdminAccess')
 
+        if m.get('AdminKeyboardOnFullScreen') is not None:
+            self.admin_keyboard_on_full_screen = m.get('AdminKeyboardOnFullScreen')
+
+        if m.get('AdminKeyboardOnWindows') is not None:
+            self.admin_keyboard_on_windows = m.get('AdminKeyboardOnWindows')
+
+        if m.get('AdminMonitor') is not None:
+            self.admin_monitor = m.get('AdminMonitor')
+
         if m.get('AppContentProtection') is not None:
             self.app_content_protection = m.get('AppContentProtection')
 
@@ -884,6 +963,9 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
 
         if m.get('ClientControlMenu') is not None:
             self.client_control_menu = m.get('ClientControlMenu')
+
+        if m.get('ClientCreateSnapshot') is not None:
+            self.client_create_snapshot = m.get('ClientCreateSnapshot')
 
         if m.get('ClientHibernate') is not None:
             self.client_hibernate = m.get('ClientHibernate')
@@ -911,6 +993,9 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
 
         if m.get('CpuDownGradeDuration') is not None:
             self.cpu_down_grade_duration = m.get('CpuDownGradeDuration')
+
+        if m.get('CpuOverload') is not None:
+            self.cpu_overload = m.get('CpuOverload')
 
         if m.get('CpuProcessors') is not None:
             self.cpu_processors = m.get('CpuProcessors')
@@ -951,6 +1036,9 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
         if m.get('DisconnectKeepSessionTime') is not None:
             self.disconnect_keep_session_time = m.get('DisconnectKeepSessionTime')
 
+        if m.get('DiskOverload') is not None:
+            self.disk_overload = m.get('DiskOverload')
+
         if m.get('DisplayMode') is not None:
             self.display_mode = m.get('DisplayMode')
 
@@ -969,8 +1057,14 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
         if m.get('EndUserApplyAdminCoordinate') is not None:
             self.end_user_apply_admin_coordinate = m.get('EndUserApplyAdminCoordinate')
 
+        if m.get('EndUserCount') is not None:
+            self.end_user_count = m.get('EndUserCount')
+
         if m.get('EndUserGroupCoordinate') is not None:
             self.end_user_group_coordinate = m.get('EndUserGroupCoordinate')
+
+        if m.get('ExternalDrive') is not None:
+            self.external_drive = m.get('ExternalDrive')
 
         if m.get('FileTransferAddress') is not None:
             self.file_transfer_address = m.get('FileTransferAddress')
@@ -1008,6 +1102,15 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
         if m.get('InternetPrinter') is not None:
             self.internet_printer = m.get('InternetPrinter')
 
+        if m.get('KeyboardControl') is not None:
+            self.keyboard_control = m.get('KeyboardControl')
+
+        if m.get('KmsServer') is not None:
+            self.kms_server = m.get('KmsServer')
+
+        if m.get('KmsServerConfig') is not None:
+            self.kms_server_config = m.get('KmsServerConfig')
+
         if m.get('LocalDrive') is not None:
             self.local_drive = m.get('LocalDrive')
 
@@ -1016,6 +1119,9 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
 
         if m.get('MemoryDownGradeDuration') is not None:
             self.memory_down_grade_duration = m.get('MemoryDownGradeDuration')
+
+        if m.get('MemoryOverload') is not None:
+            self.memory_overload = m.get('MemoryOverload')
 
         if m.get('MemoryProcessors') is not None:
             self.memory_processors = m.get('MemoryProcessors')
@@ -1065,11 +1171,17 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
                 temp_model = main_models.DescribeCenterPolicyListResponseBodyDescribePolicyGroupsNetRedirectRule()
                 self.net_redirect_rule.append(temp_model.from_map(k1))
 
+        if m.get('NetworkPrinter') is not None:
+            self.network_printer = m.get('NetworkPrinter')
+
         if m.get('NoOperationDisconnect') is not None:
             self.no_operation_disconnect = m.get('NoOperationDisconnect')
 
         if m.get('NoOperationDisconnectTime') is not None:
             self.no_operation_disconnect_time = m.get('NoOperationDisconnectTime')
+
+        if m.get('OrganizationCount') is not None:
+            self.organization_count = m.get('OrganizationCount')
 
         if m.get('PolicyGroupId') is not None:
             self.policy_group_id = m.get('PolicyGroupId')
