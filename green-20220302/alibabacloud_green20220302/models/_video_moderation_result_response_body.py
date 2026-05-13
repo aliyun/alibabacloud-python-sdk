@@ -314,6 +314,7 @@ class VideoModerationResultResponseBodyDataFrameResultFramesResults(DaraModel):
         result: List[main_models.VideoModerationResultResponseBodyDataFrameResultFramesResultsResult] = None,
         service: str = None,
         text_in_image: Dict[str, Any] = None,
+        vl_content: main_models.VideoModerationResultResponseBodyDataFrameResultFramesResultsVlContent = None,
     ):
         # If a custom image library is hit, information about the custom image library is returned.
         self.custom_image = custom_image
@@ -327,6 +328,7 @@ class VideoModerationResultResponseBodyDataFrameResultFramesResults(DaraModel):
         self.service = service
         # The information about the text hit in the image is returned.
         self.text_in_image = text_in_image
+        self.vl_content = vl_content
 
     def validate(self):
         if self.custom_image:
@@ -345,6 +347,8 @@ class VideoModerationResultResponseBodyDataFrameResultFramesResults(DaraModel):
             for v1 in self.result:
                  if v1:
                     v1.validate()
+        if self.vl_content:
+            self.vl_content.validate()
 
     def to_map(self):
         result = dict()
@@ -376,6 +380,9 @@ class VideoModerationResultResponseBodyDataFrameResultFramesResults(DaraModel):
 
         if self.text_in_image is not None:
             result['TextInImage'] = self.text_in_image
+
+        if self.vl_content is not None:
+            result['VlContent'] = self.vl_content.to_map()
 
         return result
 
@@ -410,6 +417,37 @@ class VideoModerationResultResponseBodyDataFrameResultFramesResults(DaraModel):
 
         if m.get('TextInImage') is not None:
             self.text_in_image = m.get('TextInImage')
+
+        if m.get('VlContent') is not None:
+            temp_model = main_models.VideoModerationResultResponseBodyDataFrameResultFramesResultsVlContent()
+            self.vl_content = temp_model.from_map(m.get('VlContent'))
+
+        return self
+
+class VideoModerationResultResponseBodyDataFrameResultFramesResultsVlContent(DaraModel):
+    def __init__(
+        self,
+        output_text: str = None,
+    ):
+        self.output_text = output_text
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.output_text is not None:
+            result['OutputText'] = self.output_text
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OutputText') is not None:
+            self.output_text = m.get('OutputText')
 
         return self
 
