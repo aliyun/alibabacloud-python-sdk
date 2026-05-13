@@ -1,3 +1,7 @@
+2026-05-13 Version: 1.9.1
+- Update API QueryExportDomainExpireSnatchs: add request parameters DataSources.
+
+
 2026-04-29 Version: 1.9.0
 - Support API UpdateProxyPrice.
 

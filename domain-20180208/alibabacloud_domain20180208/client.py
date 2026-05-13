@@ -2120,13 +2120,19 @@ class Client(OpenApiClient):
 
     def query_export_domain_expire_snatchs_with_options(
         self,
-        request: main_models.QueryExportDomainExpireSnatchsRequest,
+        tmp_req: main_models.QueryExportDomainExpireSnatchsRequest,
         runtime: RuntimeOptions,
     ) -> main_models.QueryExportDomainExpireSnatchsResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.QueryExportDomainExpireSnatchsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.data_sources):
+            request.data_sources_shrink = Utils.array_to_string_with_specified_style(tmp_req.data_sources, 'DataSources', 'json')
         query = {}
         if not DaraCore.is_null(request.current_id):
             query['CurrentId'] = request.current_id
+        if not DaraCore.is_null(request.data_sources_shrink):
+            query['DataSources'] = request.data_sources_shrink
         if not DaraCore.is_null(request.max_results):
             query['MaxResults'] = request.max_results
         if not DaraCore.is_null(request.next_token):
@@ -2154,13 +2160,19 @@ class Client(OpenApiClient):
 
     async def query_export_domain_expire_snatchs_with_options_async(
         self,
-        request: main_models.QueryExportDomainExpireSnatchsRequest,
+        tmp_req: main_models.QueryExportDomainExpireSnatchsRequest,
         runtime: RuntimeOptions,
     ) -> main_models.QueryExportDomainExpireSnatchsResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.QueryExportDomainExpireSnatchsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.data_sources):
+            request.data_sources_shrink = Utils.array_to_string_with_specified_style(tmp_req.data_sources, 'DataSources', 'json')
         query = {}
         if not DaraCore.is_null(request.current_id):
             query['CurrentId'] = request.current_id
+        if not DaraCore.is_null(request.data_sources_shrink):
+            query['DataSources'] = request.data_sources_shrink
         if not DaraCore.is_null(request.max_results):
             query['MaxResults'] = request.max_results
         if not DaraCore.is_null(request.next_token):

@@ -2,22 +2,20 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List
-
 from darabonba.model import DaraModel
 
-class QueryExportDomainExpireSnatchsRequest(DaraModel):
+class QueryExportDomainExpireSnatchsShrinkRequest(DaraModel):
     def __init__(
         self,
         current_id: int = None,
-        data_sources: List[str] = None,
+        data_sources_shrink: str = None,
         max_results: int = None,
         next_token: str = None,
         page_size: int = None,
     ):
         # This parameter is required.
         self.current_id = current_id
-        self.data_sources = data_sources
+        self.data_sources_shrink = data_sources_shrink
         self.max_results = max_results
         # This parameter is required.
         self.next_token = next_token
@@ -35,8 +33,8 @@ class QueryExportDomainExpireSnatchsRequest(DaraModel):
         if self.current_id is not None:
             result['CurrentId'] = self.current_id
 
-        if self.data_sources is not None:
-            result['DataSources'] = self.data_sources
+        if self.data_sources_shrink is not None:
+            result['DataSources'] = self.data_sources_shrink
 
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
@@ -55,7 +53,7 @@ class QueryExportDomainExpireSnatchsRequest(DaraModel):
             self.current_id = m.get('CurrentId')
 
         if m.get('DataSources') is not None:
-            self.data_sources = m.get('DataSources')
+            self.data_sources_shrink = m.get('DataSources')
 
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')

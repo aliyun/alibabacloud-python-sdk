@@ -87,6 +87,7 @@ from ._query_export_auction_detail_request import QueryExportAuctionDetailReques
 from ._query_export_auction_detail_response_body import QueryExportAuctionDetailResponseBody
 from ._query_export_auction_detail_response import QueryExportAuctionDetailResponse
 from ._query_export_domain_expire_snatchs_request import QueryExportDomainExpireSnatchsRequest
+from ._query_export_domain_expire_snatchs_shrink_request import QueryExportDomainExpireSnatchsShrinkRequest
 from ._query_export_domain_expire_snatchs_response_body import QueryExportDomainExpireSnatchsResponseBody
 from ._query_export_domain_expire_snatchs_response import QueryExportDomainExpireSnatchsResponse
 from ._query_purchased_domains_request import QueryPurchasedDomainsRequest
@@ -239,6 +240,7 @@ __all__ = [
     QueryExportAuctionDetailResponseBody,
     QueryExportAuctionDetailResponse,
     QueryExportDomainExpireSnatchsRequest,
+    QueryExportDomainExpireSnatchsShrinkRequest,
     QueryExportDomainExpireSnatchsResponseBody,
     QueryExportDomainExpireSnatchsResponse,
     QueryPurchasedDomainsRequest,
