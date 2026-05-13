@@ -5271,12 +5271,18 @@ class Client(OpenApiClient):
     ) -> main_models.ModelRouterQueryBillingCostBreakdownResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.client_id):
+            query['clientId'] = request.client_id
         if not DaraCore.is_null(request.end_time):
             query['endTime'] = request.end_time
         if not DaraCore.is_null(request.granularity):
             query['granularity'] = request.granularity
         if not DaraCore.is_null(request.max_results):
             query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.model_id):
+            query['modelId'] = request.model_id
+        if not DaraCore.is_null(request.model_types):
+            query['modelTypes'] = request.model_types
         if not DaraCore.is_null(request.next_token):
             query['nextToken'] = request.next_token
         if not DaraCore.is_null(request.page):
@@ -5313,12 +5319,18 @@ class Client(OpenApiClient):
     ) -> main_models.ModelRouterQueryBillingCostBreakdownResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.client_id):
+            query['clientId'] = request.client_id
         if not DaraCore.is_null(request.end_time):
             query['endTime'] = request.end_time
         if not DaraCore.is_null(request.granularity):
             query['granularity'] = request.granularity
         if not DaraCore.is_null(request.max_results):
             query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.model_id):
+            query['modelId'] = request.model_id
+        if not DaraCore.is_null(request.model_types):
+            query['modelTypes'] = request.model_types
         if not DaraCore.is_null(request.next_token):
             query['nextToken'] = request.next_token
         if not DaraCore.is_null(request.page):

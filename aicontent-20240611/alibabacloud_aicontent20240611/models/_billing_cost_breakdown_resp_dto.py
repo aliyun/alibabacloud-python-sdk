@@ -10,12 +10,14 @@ from darabonba.model import DaraModel
 class BillingCostBreakdownRespDTO(DaraModel):
     def __init__(
         self,
+        columns: List[main_models.MetricDefRespDTO] = None,
         granularity: str = None,
         page: int = None,
         page_size: int = None,
         rows: List[main_models.BillingCostBreakdownRowDTO] = None,
         total: int = None,
     ):
+        self.columns = columns
         self.granularity = granularity
         self.page = page
         self.page_size = page_size
@@ -23,6 +25,10 @@ class BillingCostBreakdownRespDTO(DaraModel):
         self.total = total
 
     def validate(self):
+        if self.columns:
+            for v1 in self.columns:
+                 if v1:
+                    v1.validate()
         if self.rows:
             for v1 in self.rows:
                  if v1:
@@ -33,6 +39,11 @@ class BillingCostBreakdownRespDTO(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        result['columns'] = []
+        if self.columns is not None:
+            for k1 in self.columns:
+                result['columns'].append(k1.to_map() if k1 else None)
+
         if self.granularity is not None:
             result['granularity'] = self.granularity
 
@@ -54,6 +65,12 @@ class BillingCostBreakdownRespDTO(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.columns = []
+        if m.get('columns') is not None:
+            for k1 in m.get('columns'):
+                temp_model = main_models.MetricDefRespDTO()
+                self.columns.append(temp_model.from_map(k1))
+
         if m.get('granularity') is not None:
             self.granularity = m.get('granularity')
 
