@@ -212,6 +212,9 @@ from ._create_virtual_border_router_response import CreateVirtualBorderRouterRes
 from ._create_vpc_request import CreateVpcRequest
 from ._create_vpc_response_body import CreateVpcResponseBody
 from ._create_vpc_response import CreateVpcResponse
+from ._create_vsc_request import CreateVscRequest
+from ._create_vsc_response_body import CreateVscResponseBody
+from ._create_vsc_response import CreateVscResponse
 from ._deactivate_router_interface_request import DeactivateRouterInterfaceRequest
 from ._deactivate_router_interface_response_body import DeactivateRouterInterfaceResponseBody
 from ._deactivate_router_interface_response import DeactivateRouterInterfaceResponse
@@ -326,6 +329,9 @@ from ._delete_virtual_border_router_response import DeleteVirtualBorderRouterRes
 from ._delete_vpc_request import DeleteVpcRequest
 from ._delete_vpc_response_body import DeleteVpcResponseBody
 from ._delete_vpc_response import DeleteVpcResponse
+from ._delete_vsc_request import DeleteVscRequest
+from ._delete_vsc_response_body import DeleteVscResponseBody
+from ._delete_vsc_response import DeleteVscResponse
 from ._deregister_managed_instance_request import DeregisterManagedInstanceRequest
 from ._deregister_managed_instance_response_body import DeregisterManagedInstanceResponseBody
 from ._deregister_managed_instance_response import DeregisterManagedInstanceResponse
@@ -699,6 +705,9 @@ from ._describe_virtual_border_routers_for_physical_connection_response import D
 from ._describe_vpcs_request import DescribeVpcsRequest
 from ._describe_vpcs_response_body import DescribeVpcsResponseBody
 from ._describe_vpcs_response import DescribeVpcsResponse
+from ._describe_vscs_request import DescribeVscsRequest
+from ._describe_vscs_response_body import DescribeVscsResponseBody
+from ._describe_vscs_response import DescribeVscsResponse
 from ._describe_zones_request import DescribeZonesRequest
 from ._describe_zones_response_body import DescribeZonesResponseBody
 from ._describe_zones_response import DescribeZonesResponse
@@ -1273,6 +1282,7 @@ from ._create_simulated_system_events_response_body import CreateSimulatedSystem
 from ._create_snapshot_request import CreateSnapshotRequestTag
 from ._create_snapshot_group_request import CreateSnapshotGroupRequestTag
 from ._create_storage_set_request import CreateStorageSetRequestTag
+from ._create_vsc_request import CreateVscRequestTag
 from ._delete_activation_response_body import DeleteActivationResponseBodyActivation
 from ._delete_launch_template_response_body import DeleteLaunchTemplateResponseBodyLaunchTemplateVersionNumbers
 from ._delete_launch_template_version_response_body import DeleteLaunchTemplateVersionResponseBodyLaunchTemplateVersionsLaunchTemplateVersion
@@ -1920,6 +1930,9 @@ from ._describe_vpcs_response_body import DescribeVpcsResponseBodyVpcsVpcUserCid
 from ._describe_vpcs_response_body import DescribeVpcsResponseBodyVpcsVpcVSwitchIds
 from ._describe_vpcs_response_body import DescribeVpcsResponseBodyVpcsVpc
 from ._describe_vpcs_response_body import DescribeVpcsResponseBodyVpcs
+from ._describe_vscs_request import DescribeVscsRequestTag
+from ._describe_vscs_response_body import DescribeVscsResponseBodyVscsTags
+from ._describe_vscs_response_body import DescribeVscsResponseBodyVscs
 from ._describe_zones_response_body import DescribeZonesResponseBodyZonesZoneAvailableDedicatedHostTypes
 from ._describe_zones_response_body import DescribeZonesResponseBodyZonesZoneAvailableDiskCategories
 from ._describe_zones_response_body import DescribeZonesResponseBodyZonesZoneAvailableInstanceTypes
@@ -2265,6 +2278,9 @@ __all__ = [
     CreateVpcRequest,
     CreateVpcResponseBody,
     CreateVpcResponse,
+    CreateVscRequest,
+    CreateVscResponseBody,
+    CreateVscResponse,
     DeactivateRouterInterfaceRequest,
     DeactivateRouterInterfaceResponseBody,
     DeactivateRouterInterfaceResponse,
@@ -2379,6 +2395,9 @@ __all__ = [
     DeleteVpcRequest,
     DeleteVpcResponseBody,
     DeleteVpcResponse,
+    DeleteVscRequest,
+    DeleteVscResponseBody,
+    DeleteVscResponse,
     DeregisterManagedInstanceRequest,
     DeregisterManagedInstanceResponseBody,
     DeregisterManagedInstanceResponse,
@@ -2752,6 +2771,9 @@ __all__ = [
     DescribeVpcsRequest,
     DescribeVpcsResponseBody,
     DescribeVpcsResponse,
+    DescribeVscsRequest,
+    DescribeVscsResponseBody,
+    DescribeVscsResponse,
     DescribeZonesRequest,
     DescribeZonesResponseBody,
     DescribeZonesResponse,
@@ -3326,6 +3348,7 @@ __all__ = [
     CreateSnapshotRequestTag,
     CreateSnapshotGroupRequestTag,
     CreateStorageSetRequestTag,
+    CreateVscRequestTag,
     DeleteActivationResponseBodyActivation,
     DeleteLaunchTemplateResponseBodyLaunchTemplateVersionNumbers,
     DeleteLaunchTemplateVersionResponseBodyLaunchTemplateVersionsLaunchTemplateVersion,
@@ -3973,6 +3996,9 @@ __all__ = [
     DescribeVpcsResponseBodyVpcsVpcVSwitchIds,
     DescribeVpcsResponseBodyVpcsVpc,
     DescribeVpcsResponseBodyVpcs,
+    DescribeVscsRequestTag,
+    DescribeVscsResponseBodyVscsTags,
+    DescribeVscsResponseBodyVscs,
     DescribeZonesResponseBodyZonesZoneAvailableDedicatedHostTypes,
     DescribeZonesResponseBodyZonesZoneAvailableDiskCategories,
     DescribeZonesResponseBodyZonesZoneAvailableInstanceTypes,

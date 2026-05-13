@@ -1,3 +1,9 @@
+2026-05-13 Version: 7.8.0
+- Support API CreateVsc.
+- Support API DeleteVsc.
+- Support API DescribeVscs.
+
+
 2026-05-12 Version: 7.7.7
 - Update API DescribeInstanceModificationPrice: add request parameters EndTime.
 - Update API DescribeInstanceModificationPrice: add request parameters ISP.

@@ -8775,6 +8775,124 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_vpc_with_options_async(request, runtime)
 
+    def create_vsc_with_options(
+        self,
+        request: main_models.CreateVscRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateVscResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.tag):
+            query['Tag'] = request.tag
+        if not DaraCore.is_null(request.vsc_name):
+            query['VscName'] = request.vsc_name
+        if not DaraCore.is_null(request.vsc_type):
+            query['VscType'] = request.vsc_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateVsc',
+            version = '2014-05-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateVscResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_vsc_with_options_async(
+        self,
+        request: main_models.CreateVscRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateVscResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.tag):
+            query['Tag'] = request.tag
+        if not DaraCore.is_null(request.vsc_name):
+            query['VscName'] = request.vsc_name
+        if not DaraCore.is_null(request.vsc_type):
+            query['VscType'] = request.vsc_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateVsc',
+            version = '2014-05-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateVscResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_vsc(
+        self,
+        request: main_models.CreateVscRequest,
+    ) -> main_models.CreateVscResponse:
+        runtime = RuntimeOptions()
+        return self.create_vsc_with_options(request, runtime)
+
+    async def create_vsc_async(
+        self,
+        request: main_models.CreateVscRequest,
+    ) -> main_models.CreateVscResponse:
+        runtime = RuntimeOptions()
+        return await self.create_vsc_with_options_async(request, runtime)
+
     def deactivate_router_interface_with_options(
         self,
         request: main_models.DeactivateRouterInterfaceRequest,
@@ -12274,6 +12392,104 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteVpcResponse:
         runtime = RuntimeOptions()
         return await self.delete_vpc_with_options_async(request, runtime)
+
+    def delete_vsc_with_options(
+        self,
+        request: main_models.DeleteVscRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteVscResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.vsc_id):
+            query['VscId'] = request.vsc_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteVsc',
+            version = '2014-05-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteVscResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_vsc_with_options_async(
+        self,
+        request: main_models.DeleteVscRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteVscResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.vsc_id):
+            query['VscId'] = request.vsc_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteVsc',
+            version = '2014-05-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteVscResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_vsc(
+        self,
+        request: main_models.DeleteVscRequest,
+    ) -> main_models.DeleteVscResponse:
+        runtime = RuntimeOptions()
+        return self.delete_vsc_with_options(request, runtime)
+
+    async def delete_vsc_async(
+        self,
+        request: main_models.DeleteVscRequest,
+    ) -> main_models.DeleteVscResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_vsc_with_options_async(request, runtime)
 
     def deregister_managed_instance_with_options(
         self,
@@ -26198,6 +26414,120 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeVpcsResponse:
         runtime = RuntimeOptions()
         return await self.describe_vpcs_with_options_async(request, runtime)
+
+    def describe_vscs_with_options(
+        self,
+        request: main_models.DescribeVscsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeVscsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        if not DaraCore.is_null(request.tag):
+            query['Tag'] = request.tag
+        if not DaraCore.is_null(request.vsc_ids):
+            query['VscIds'] = request.vsc_ids
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeVscs',
+            version = '2014-05-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeVscsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_vscs_with_options_async(
+        self,
+        request: main_models.DescribeVscsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeVscsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        if not DaraCore.is_null(request.tag):
+            query['Tag'] = request.tag
+        if not DaraCore.is_null(request.vsc_ids):
+            query['VscIds'] = request.vsc_ids
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeVscs',
+            version = '2014-05-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeVscsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_vscs(
+        self,
+        request: main_models.DescribeVscsRequest,
+    ) -> main_models.DescribeVscsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_vscs_with_options(request, runtime)
+
+    async def describe_vscs_async(
+        self,
+        request: main_models.DescribeVscsRequest,
+    ) -> main_models.DescribeVscsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_vscs_with_options_async(request, runtime)
 
     def describe_zones_with_options(
         self,
