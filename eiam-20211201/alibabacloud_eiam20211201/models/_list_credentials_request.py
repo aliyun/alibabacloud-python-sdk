@@ -10,6 +10,7 @@ from darabonba.model import DaraModel
 class ListCredentialsRequest(DaraModel):
     def __init__(
         self,
+        credential_external_ids: List[str] = None,
         credential_ids: List[str] = None,
         credential_sharing_scopes: List[str] = None,
         credential_types: List[str] = None,
@@ -19,6 +20,7 @@ class ListCredentialsRequest(DaraModel):
         next_token: str = None,
         statuses: List[str] = None,
     ):
+        self.credential_external_ids = credential_external_ids
         self.credential_ids = credential_ids
         self.credential_sharing_scopes = credential_sharing_scopes
         self.credential_types = credential_types
@@ -44,6 +46,9 @@ class ListCredentialsRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.credential_external_ids is not None:
+            result['CredentialExternalIds'] = self.credential_external_ids
+
         if self.credential_ids is not None:
             result['CredentialIds'] = self.credential_ids
 
@@ -74,6 +79,9 @@ class ListCredentialsRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CredentialExternalIds') is not None:
+            self.credential_external_ids = m.get('CredentialExternalIds')
+
         if m.get('CredentialIds') is not None:
             self.credential_ids = m.get('CredentialIds')
 

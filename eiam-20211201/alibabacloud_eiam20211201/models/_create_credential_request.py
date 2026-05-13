@@ -10,6 +10,7 @@ class CreateCredentialRequest(DaraModel):
         self,
         client_token: str = None,
         credential_content: main_models.CreateCredentialRequestCredentialContent = None,
+        credential_external_id: str = None,
         credential_identifier: str = None,
         credential_name: str = None,
         credential_scenario_label: str = None,
@@ -29,6 +30,7 @@ class CreateCredentialRequest(DaraModel):
         # 
         # This parameter is required.
         self.credential_content = credential_content
+        self.credential_external_id = credential_external_id
         # 凭据标识。
         # 
         # This parameter is required.
@@ -71,6 +73,9 @@ class CreateCredentialRequest(DaraModel):
         if self.credential_content is not None:
             result['CredentialContent'] = self.credential_content.to_map()
 
+        if self.credential_external_id is not None:
+            result['CredentialExternalId'] = self.credential_external_id
+
         if self.credential_identifier is not None:
             result['CredentialIdentifier'] = self.credential_identifier
 
@@ -111,6 +116,9 @@ class CreateCredentialRequest(DaraModel):
         if m.get('CredentialContent') is not None:
             temp_model = main_models.CreateCredentialRequestCredentialContent()
             self.credential_content = temp_model.from_map(m.get('CredentialContent'))
+
+        if m.get('CredentialExternalId') is not None:
+            self.credential_external_id = m.get('CredentialExternalId')
 
         if m.get('CredentialIdentifier') is not None:
             self.credential_identifier = m.get('CredentialIdentifier')

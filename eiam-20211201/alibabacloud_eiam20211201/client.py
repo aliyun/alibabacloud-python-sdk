@@ -2713,6 +2713,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.credential_content):
             query['CredentialContent'] = request.credential_content
+        if not DaraCore.is_null(request.credential_external_id):
+            query['CredentialExternalId'] = request.credential_external_id
         if not DaraCore.is_null(request.credential_identifier):
             query['CredentialIdentifier'] = request.credential_identifier
         if not DaraCore.is_null(request.credential_name):
@@ -2763,6 +2765,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.credential_content):
             query['CredentialContent'] = request.credential_content
+        if not DaraCore.is_null(request.credential_external_id):
+            query['CredentialExternalId'] = request.credential_external_id
         if not DaraCore.is_null(request.credential_identifier):
             query['CredentialIdentifier'] = request.credential_identifier
         if not DaraCore.is_null(request.credential_name):
@@ -17377,6 +17381,8 @@ class Client(OpenApiClient):
     ) -> main_models.ListCredentialsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.credential_external_ids):
+            query['CredentialExternalIds'] = request.credential_external_ids
         if not DaraCore.is_null(request.credential_ids):
             query['CredentialIds'] = request.credential_ids
         if not DaraCore.is_null(request.credential_sharing_scopes):
@@ -17419,6 +17425,8 @@ class Client(OpenApiClient):
     ) -> main_models.ListCredentialsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.credential_external_ids):
+            query['CredentialExternalIds'] = request.credential_external_ids
         if not DaraCore.is_null(request.credential_ids):
             query['CredentialIds'] = request.credential_ids
         if not DaraCore.is_null(request.credential_sharing_scopes):

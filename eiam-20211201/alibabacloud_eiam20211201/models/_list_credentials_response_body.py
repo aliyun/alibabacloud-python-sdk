@@ -82,6 +82,7 @@ class ListCredentialsResponseBodyCredentials(DaraModel):
         create_time: int = None,
         credential_content: main_models.ListCredentialsResponseBodyCredentialsCredentialContent = None,
         credential_creation_type: str = None,
+        credential_external_id: str = None,
         credential_id: str = None,
         credential_identifier: str = None,
         credential_name: str = None,
@@ -102,6 +103,7 @@ class ListCredentialsResponseBodyCredentials(DaraModel):
         self.credential_content = credential_content
         # 凭据的创建类型。
         self.credential_creation_type = credential_creation_type
+        self.credential_external_id = credential_external_id
         # 凭据ID。
         self.credential_id = credential_id
         # 凭据标识
@@ -144,6 +146,9 @@ class ListCredentialsResponseBodyCredentials(DaraModel):
 
         if self.credential_creation_type is not None:
             result['CredentialCreationType'] = self.credential_creation_type
+
+        if self.credential_external_id is not None:
+            result['CredentialExternalId'] = self.credential_external_id
 
         if self.credential_id is not None:
             result['CredentialId'] = self.credential_id
@@ -197,6 +202,9 @@ class ListCredentialsResponseBodyCredentials(DaraModel):
 
         if m.get('CredentialCreationType') is not None:
             self.credential_creation_type = m.get('CredentialCreationType')
+
+        if m.get('CredentialExternalId') is not None:
+            self.credential_external_id = m.get('CredentialExternalId')
 
         if m.get('CredentialId') is not None:
             self.credential_id = m.get('CredentialId')
