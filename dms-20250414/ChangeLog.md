@@ -1,3 +1,7 @@
+2026-05-13 Version: 1.10.8
+- Update API ListFileUpload: add request parameters DownloadLinkExpire.
+
+
 2026-05-07 Version: 1.10.7
 - Update API CreateDataAgentWorkspace: add request parameters IsSessionShareEnabled.
 - Update API CreateDataAgentWorkspace: add response parameters Body.Data.IsSessionShareEnabled.

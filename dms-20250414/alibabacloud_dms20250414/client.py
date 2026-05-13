@@ -4953,6 +4953,8 @@ class Client(OpenApiClient):
             query['CallFrom'] = request.call_from
         if not DaraCore.is_null(request.dms_unit):
             query['DmsUnit'] = request.dms_unit
+        if not DaraCore.is_null(request.download_link_expire):
+            query['DownloadLinkExpire'] = request.download_link_expire
         if not DaraCore.is_null(request.file_category):
             query['FileCategory'] = request.file_category
         if not DaraCore.is_null(request.file_from):
@@ -4995,6 +4997,8 @@ class Client(OpenApiClient):
             query['CallFrom'] = request.call_from
         if not DaraCore.is_null(request.dms_unit):
             query['DmsUnit'] = request.dms_unit
+        if not DaraCore.is_null(request.download_link_expire):
+            query['DownloadLinkExpire'] = request.download_link_expire
         if not DaraCore.is_null(request.file_category):
             query['FileCategory'] = request.file_category
         if not DaraCore.is_null(request.file_from):

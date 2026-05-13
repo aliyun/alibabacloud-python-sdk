@@ -9,6 +9,7 @@ class ListFileUploadRequest(DaraModel):
         self,
         call_from: str = None,
         dms_unit: str = None,
+        download_link_expire: int = None,
         file_category: str = None,
         file_from: str = None,
         file_id: str = None,
@@ -18,6 +19,7 @@ class ListFileUploadRequest(DaraModel):
     ):
         self.call_from = call_from
         self.dms_unit = dms_unit
+        self.download_link_expire = download_link_expire
         self.file_category = file_category
         self.file_from = file_from
         self.file_id = file_id
@@ -38,6 +40,9 @@ class ListFileUploadRequest(DaraModel):
 
         if self.dms_unit is not None:
             result['DmsUnit'] = self.dms_unit
+
+        if self.download_link_expire is not None:
+            result['DownloadLinkExpire'] = self.download_link_expire
 
         if self.file_category is not None:
             result['FileCategory'] = self.file_category
@@ -66,6 +71,9 @@ class ListFileUploadRequest(DaraModel):
 
         if m.get('DmsUnit') is not None:
             self.dms_unit = m.get('DmsUnit')
+
+        if m.get('DownloadLinkExpire') is not None:
+            self.download_link_expire = m.get('DownloadLinkExpire')
 
         if m.get('FileCategory') is not None:
             self.file_category = m.get('FileCategory')
