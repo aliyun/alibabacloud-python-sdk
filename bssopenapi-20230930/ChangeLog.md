@@ -1,3 +1,11 @@
+2026-05-14 Version: 1.7.0
+- Support API CheckBudgetNameExists.
+- Support API CreateBudget.
+- Support API DescribeBudget.
+- Support API DescribeBudgets.
+- Support API UpdateBudget.
+
+
 2026-05-07 Version: 1.6.5
 - Update API DescribeCoupon: add request parameters IncludeShare.
 - Update API DescribeCoupon: add request parameters ProductCode.

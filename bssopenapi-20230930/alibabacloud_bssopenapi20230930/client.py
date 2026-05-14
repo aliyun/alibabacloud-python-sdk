@@ -448,6 +448,230 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.check_account_exist_with_options_async(request, runtime)
 
+    def check_budget_name_exists_with_options(
+        self,
+        request: main_models.CheckBudgetNameExistsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CheckBudgetNameExistsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.nbid):
+            query['Nbid'] = request.nbid
+        body = {}
+        if not DaraCore.is_null(request.budget_name):
+            body['BudgetName'] = request.budget_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CheckBudgetNameExists',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CheckBudgetNameExistsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def check_budget_name_exists_with_options_async(
+        self,
+        request: main_models.CheckBudgetNameExistsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CheckBudgetNameExistsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.nbid):
+            query['Nbid'] = request.nbid
+        body = {}
+        if not DaraCore.is_null(request.budget_name):
+            body['BudgetName'] = request.budget_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CheckBudgetNameExists',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CheckBudgetNameExistsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def check_budget_name_exists(
+        self,
+        request: main_models.CheckBudgetNameExistsRequest,
+    ) -> main_models.CheckBudgetNameExistsResponse:
+        runtime = RuntimeOptions()
+        return self.check_budget_name_exists_with_options(request, runtime)
+
+    async def check_budget_name_exists_async(
+        self,
+        request: main_models.CheckBudgetNameExistsRequest,
+    ) -> main_models.CheckBudgetNameExistsResponse:
+        runtime = RuntimeOptions()
+        return await self.check_budget_name_exists_with_options_async(request, runtime)
+
+    def create_budget_with_options(
+        self,
+        tmp_req: main_models.CreateBudgetRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateBudgetResponse:
+        tmp_req.validate()
+        request = main_models.CreateBudgetShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.cycle_quota):
+            request.cycle_quota_shrink = Utils.array_to_string_with_specified_style(tmp_req.cycle_quota, 'CycleQuota', 'json')
+        if not DaraCore.is_null(tmp_req.ec_id_account_ids):
+            request.ec_id_account_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.ec_id_account_ids, 'EcIdAccountIds', 'json')
+        if not DaraCore.is_null(tmp_req.query_filter):
+            request.query_filter_shrink = Utils.array_to_string_with_specified_style(tmp_req.query_filter, 'QueryFilter', 'json')
+        if not DaraCore.is_null(tmp_req.warn_confs):
+            request.warn_confs_shrink = Utils.array_to_string_with_specified_style(tmp_req.warn_confs, 'WarnConfs', 'json')
+        query = {}
+        if not DaraCore.is_null(request.ec_id_account_ids_shrink):
+            query['EcIdAccountIds'] = request.ec_id_account_ids_shrink
+        if not DaraCore.is_null(request.nbid):
+            query['Nbid'] = request.nbid
+        body = {}
+        if not DaraCore.is_null(request.budget_name):
+            body['BudgetName'] = request.budget_name
+        if not DaraCore.is_null(request.budget_type):
+            body['BudgetType'] = request.budget_type
+        if not DaraCore.is_null(request.comment):
+            body['Comment'] = request.comment
+        if not DaraCore.is_null(request.cycle_end_period):
+            body['CycleEndPeriod'] = request.cycle_end_period
+        if not DaraCore.is_null(request.cycle_quota_shrink):
+            body['CycleQuota'] = request.cycle_quota_shrink
+        if not DaraCore.is_null(request.cycle_start_period):
+            body['CycleStartPeriod'] = request.cycle_start_period
+        if not DaraCore.is_null(request.cycle_type):
+            body['CycleType'] = request.cycle_type
+        if not DaraCore.is_null(request.metric):
+            body['Metric'] = request.metric
+        if not DaraCore.is_null(request.query_filter_shrink):
+            body['QueryFilter'] = request.query_filter_shrink
+        if not DaraCore.is_null(request.quota):
+            body['Quota'] = request.quota
+        if not DaraCore.is_null(request.quota_type):
+            body['QuotaType'] = request.quota_type
+        if not DaraCore.is_null(request.warn_confs_shrink):
+            body['WarnConfs'] = request.warn_confs_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateBudget',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateBudgetResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_budget_with_options_async(
+        self,
+        tmp_req: main_models.CreateBudgetRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateBudgetResponse:
+        tmp_req.validate()
+        request = main_models.CreateBudgetShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.cycle_quota):
+            request.cycle_quota_shrink = Utils.array_to_string_with_specified_style(tmp_req.cycle_quota, 'CycleQuota', 'json')
+        if not DaraCore.is_null(tmp_req.ec_id_account_ids):
+            request.ec_id_account_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.ec_id_account_ids, 'EcIdAccountIds', 'json')
+        if not DaraCore.is_null(tmp_req.query_filter):
+            request.query_filter_shrink = Utils.array_to_string_with_specified_style(tmp_req.query_filter, 'QueryFilter', 'json')
+        if not DaraCore.is_null(tmp_req.warn_confs):
+            request.warn_confs_shrink = Utils.array_to_string_with_specified_style(tmp_req.warn_confs, 'WarnConfs', 'json')
+        query = {}
+        if not DaraCore.is_null(request.ec_id_account_ids_shrink):
+            query['EcIdAccountIds'] = request.ec_id_account_ids_shrink
+        if not DaraCore.is_null(request.nbid):
+            query['Nbid'] = request.nbid
+        body = {}
+        if not DaraCore.is_null(request.budget_name):
+            body['BudgetName'] = request.budget_name
+        if not DaraCore.is_null(request.budget_type):
+            body['BudgetType'] = request.budget_type
+        if not DaraCore.is_null(request.comment):
+            body['Comment'] = request.comment
+        if not DaraCore.is_null(request.cycle_end_period):
+            body['CycleEndPeriod'] = request.cycle_end_period
+        if not DaraCore.is_null(request.cycle_quota_shrink):
+            body['CycleQuota'] = request.cycle_quota_shrink
+        if not DaraCore.is_null(request.cycle_start_period):
+            body['CycleStartPeriod'] = request.cycle_start_period
+        if not DaraCore.is_null(request.cycle_type):
+            body['CycleType'] = request.cycle_type
+        if not DaraCore.is_null(request.metric):
+            body['Metric'] = request.metric
+        if not DaraCore.is_null(request.query_filter_shrink):
+            body['QueryFilter'] = request.query_filter_shrink
+        if not DaraCore.is_null(request.quota):
+            body['Quota'] = request.quota
+        if not DaraCore.is_null(request.quota_type):
+            body['QuotaType'] = request.quota_type
+        if not DaraCore.is_null(request.warn_confs_shrink):
+            body['WarnConfs'] = request.warn_confs_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateBudget',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateBudgetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_budget(
+        self,
+        request: main_models.CreateBudgetRequest,
+    ) -> main_models.CreateBudgetResponse:
+        runtime = RuntimeOptions()
+        return self.create_budget_with_options(request, runtime)
+
+    async def create_budget_async(
+        self,
+        request: main_models.CreateBudgetRequest,
+    ) -> main_models.CreateBudgetResponse:
+        runtime = RuntimeOptions()
+        return await self.create_budget_with_options_async(request, runtime)
+
     def create_cost_center_with_options(
         self,
         tmp_req: main_models.CreateCostCenterRequest,
@@ -1379,6 +1603,178 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteReportDefinitionResponse:
         runtime = RuntimeOptions()
         return await self.delete_report_definition_with_options_async(request, runtime)
+
+    def describe_budget_with_options(
+        self,
+        request: main_models.DescribeBudgetRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeBudgetResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.nbid):
+            query['Nbid'] = request.nbid
+        body = {}
+        if not DaraCore.is_null(request.budget_name):
+            body['BudgetName'] = request.budget_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeBudget',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeBudgetResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_budget_with_options_async(
+        self,
+        request: main_models.DescribeBudgetRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeBudgetResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.nbid):
+            query['Nbid'] = request.nbid
+        body = {}
+        if not DaraCore.is_null(request.budget_name):
+            body['BudgetName'] = request.budget_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeBudget',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeBudgetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_budget(
+        self,
+        request: main_models.DescribeBudgetRequest,
+    ) -> main_models.DescribeBudgetResponse:
+        runtime = RuntimeOptions()
+        return self.describe_budget_with_options(request, runtime)
+
+    async def describe_budget_async(
+        self,
+        request: main_models.DescribeBudgetRequest,
+    ) -> main_models.DescribeBudgetResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_budget_with_options_async(request, runtime)
+
+    def describe_budgets_with_options(
+        self,
+        request: main_models.DescribeBudgetsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeBudgetsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.nbid):
+            query['Nbid'] = request.nbid
+        body = {}
+        if not DaraCore.is_null(request.budget_name):
+            body['BudgetName'] = request.budget_name
+        if not DaraCore.is_null(request.budget_type):
+            body['BudgetType'] = request.budget_type
+        if not DaraCore.is_null(request.expire_status):
+            body['ExpireStatus'] = request.expire_status
+        if not DaraCore.is_null(request.page_no):
+            body['PageNo'] = request.page_no
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeBudgets',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeBudgetsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_budgets_with_options_async(
+        self,
+        request: main_models.DescribeBudgetsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeBudgetsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.nbid):
+            query['Nbid'] = request.nbid
+        body = {}
+        if not DaraCore.is_null(request.budget_name):
+            body['BudgetName'] = request.budget_name
+        if not DaraCore.is_null(request.budget_type):
+            body['BudgetType'] = request.budget_type
+        if not DaraCore.is_null(request.expire_status):
+            body['ExpireStatus'] = request.expire_status
+        if not DaraCore.is_null(request.page_no):
+            body['PageNo'] = request.page_no
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeBudgets',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeBudgetsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_budgets(
+        self,
+        request: main_models.DescribeBudgetsRequest,
+    ) -> main_models.DescribeBudgetsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_budgets_with_options(request, runtime)
+
+    async def describe_budgets_async(
+        self,
+        request: main_models.DescribeBudgetsRequest,
+    ) -> main_models.DescribeBudgetsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_budgets_with_options_async(request, runtime)
 
     def describe_coupon_with_options(
         self,
@@ -4219,3 +4615,153 @@ class Client(OpenApiClient):
     ) -> main_models.SetSavingPlanUserDeductRuleResponse:
         runtime = RuntimeOptions()
         return await self.set_saving_plan_user_deduct_rule_with_options_async(request, runtime)
+
+    def update_budget_with_options(
+        self,
+        tmp_req: main_models.UpdateBudgetRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateBudgetResponse:
+        tmp_req.validate()
+        request = main_models.UpdateBudgetShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.cycle_quota):
+            request.cycle_quota_shrink = Utils.array_to_string_with_specified_style(tmp_req.cycle_quota, 'CycleQuota', 'json')
+        if not DaraCore.is_null(tmp_req.ec_id_account_ids):
+            request.ec_id_account_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.ec_id_account_ids, 'EcIdAccountIds', 'json')
+        if not DaraCore.is_null(tmp_req.query_filter):
+            request.query_filter_shrink = Utils.array_to_string_with_specified_style(tmp_req.query_filter, 'QueryFilter', 'json')
+        if not DaraCore.is_null(tmp_req.warn_confs):
+            request.warn_confs_shrink = Utils.array_to_string_with_specified_style(tmp_req.warn_confs, 'WarnConfs', 'json')
+        query = {}
+        if not DaraCore.is_null(request.ec_id_account_ids_shrink):
+            query['EcIdAccountIds'] = request.ec_id_account_ids_shrink
+        if not DaraCore.is_null(request.nbid):
+            query['Nbid'] = request.nbid
+        body = {}
+        if not DaraCore.is_null(request.budget_name):
+            body['BudgetName'] = request.budget_name
+        if not DaraCore.is_null(request.budget_type):
+            body['BudgetType'] = request.budget_type
+        if not DaraCore.is_null(request.comment):
+            body['Comment'] = request.comment
+        if not DaraCore.is_null(request.cycle_end_period):
+            body['CycleEndPeriod'] = request.cycle_end_period
+        if not DaraCore.is_null(request.cycle_quota_shrink):
+            body['CycleQuota'] = request.cycle_quota_shrink
+        if not DaraCore.is_null(request.cycle_start_period):
+            body['CycleStartPeriod'] = request.cycle_start_period
+        if not DaraCore.is_null(request.cycle_type):
+            body['CycleType'] = request.cycle_type
+        if not DaraCore.is_null(request.metric):
+            body['Metric'] = request.metric
+        if not DaraCore.is_null(request.original_budget_name):
+            body['OriginalBudgetName'] = request.original_budget_name
+        if not DaraCore.is_null(request.query_filter_shrink):
+            body['QueryFilter'] = request.query_filter_shrink
+        if not DaraCore.is_null(request.quota):
+            body['Quota'] = request.quota
+        if not DaraCore.is_null(request.quota_type):
+            body['QuotaType'] = request.quota_type
+        if not DaraCore.is_null(request.warn_confs_shrink):
+            body['WarnConfs'] = request.warn_confs_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateBudget',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateBudgetResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_budget_with_options_async(
+        self,
+        tmp_req: main_models.UpdateBudgetRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateBudgetResponse:
+        tmp_req.validate()
+        request = main_models.UpdateBudgetShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.cycle_quota):
+            request.cycle_quota_shrink = Utils.array_to_string_with_specified_style(tmp_req.cycle_quota, 'CycleQuota', 'json')
+        if not DaraCore.is_null(tmp_req.ec_id_account_ids):
+            request.ec_id_account_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.ec_id_account_ids, 'EcIdAccountIds', 'json')
+        if not DaraCore.is_null(tmp_req.query_filter):
+            request.query_filter_shrink = Utils.array_to_string_with_specified_style(tmp_req.query_filter, 'QueryFilter', 'json')
+        if not DaraCore.is_null(tmp_req.warn_confs):
+            request.warn_confs_shrink = Utils.array_to_string_with_specified_style(tmp_req.warn_confs, 'WarnConfs', 'json')
+        query = {}
+        if not DaraCore.is_null(request.ec_id_account_ids_shrink):
+            query['EcIdAccountIds'] = request.ec_id_account_ids_shrink
+        if not DaraCore.is_null(request.nbid):
+            query['Nbid'] = request.nbid
+        body = {}
+        if not DaraCore.is_null(request.budget_name):
+            body['BudgetName'] = request.budget_name
+        if not DaraCore.is_null(request.budget_type):
+            body['BudgetType'] = request.budget_type
+        if not DaraCore.is_null(request.comment):
+            body['Comment'] = request.comment
+        if not DaraCore.is_null(request.cycle_end_period):
+            body['CycleEndPeriod'] = request.cycle_end_period
+        if not DaraCore.is_null(request.cycle_quota_shrink):
+            body['CycleQuota'] = request.cycle_quota_shrink
+        if not DaraCore.is_null(request.cycle_start_period):
+            body['CycleStartPeriod'] = request.cycle_start_period
+        if not DaraCore.is_null(request.cycle_type):
+            body['CycleType'] = request.cycle_type
+        if not DaraCore.is_null(request.metric):
+            body['Metric'] = request.metric
+        if not DaraCore.is_null(request.original_budget_name):
+            body['OriginalBudgetName'] = request.original_budget_name
+        if not DaraCore.is_null(request.query_filter_shrink):
+            body['QueryFilter'] = request.query_filter_shrink
+        if not DaraCore.is_null(request.quota):
+            body['Quota'] = request.quota
+        if not DaraCore.is_null(request.quota_type):
+            body['QuotaType'] = request.quota_type
+        if not DaraCore.is_null(request.warn_confs_shrink):
+            body['WarnConfs'] = request.warn_confs_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateBudget',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateBudgetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_budget(
+        self,
+        request: main_models.UpdateBudgetRequest,
+    ) -> main_models.UpdateBudgetResponse:
+        runtime = RuntimeOptions()
+        return self.update_budget_with_options(request, runtime)
+
+    async def update_budget_async(
+        self,
+        request: main_models.UpdateBudgetRequest,
+    ) -> main_models.UpdateBudgetResponse:
+        runtime = RuntimeOptions()
+        return await self.update_budget_with_options_async(request, runtime)
