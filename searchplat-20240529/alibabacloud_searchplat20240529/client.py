@@ -1526,6 +1526,90 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_image_object_detection_with_options_async(workspace_name, service_id, request, headers, runtime)
 
+    def get_jina_ai_reader_with_options(
+        self,
+        workspace_name: str,
+        service_id: str,
+        request: main_models.GetJinaAiReaderRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetJinaAiReaderResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.url):
+            body['url'] = request.url
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetJinaAiReader',
+            version = '2024-05-29',
+            protocol = 'HTTPS',
+            pathname = f'/v3/openapi/workspaces/{workspace_name}/jina-ai-reader/{service_id}',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetJinaAiReaderResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def get_jina_ai_reader_with_options_async(
+        self,
+        workspace_name: str,
+        service_id: str,
+        request: main_models.GetJinaAiReaderRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetJinaAiReaderResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.url):
+            body['url'] = request.url
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetJinaAiReader',
+            version = '2024-05-29',
+            protocol = 'HTTPS',
+            pathname = f'/v3/openapi/workspaces/{workspace_name}/jina-ai-reader/{service_id}',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetJinaAiReaderResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def get_jina_ai_reader(
+        self,
+        workspace_name: str,
+        service_id: str,
+        request: main_models.GetJinaAiReaderRequest,
+    ) -> main_models.GetJinaAiReaderResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_jina_ai_reader_with_options(workspace_name, service_id, request, headers, runtime)
+
+    async def get_jina_ai_reader_async(
+        self,
+        workspace_name: str,
+        service_id: str,
+        request: main_models.GetJinaAiReaderRequest,
+    ) -> main_models.GetJinaAiReaderResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_jina_ai_reader_with_options_async(workspace_name, service_id, request, headers, runtime)
+
     def get_memory_with_options(
         self,
         workspace_name: str,

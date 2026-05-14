@@ -53,6 +53,9 @@ from ._get_image_analyze_task_status_response import GetImageAnalyzeTaskStatusRe
 from ._get_image_object_detection_request import GetImageObjectDetectionRequest
 from ._get_image_object_detection_response_body import GetImageObjectDetectionResponseBody
 from ._get_image_object_detection_response import GetImageObjectDetectionResponse
+from ._get_jina_ai_reader_request import GetJinaAiReaderRequest
+from ._get_jina_ai_reader_response_body import GetJinaAiReaderResponseBody
+from ._get_jina_ai_reader_response import GetJinaAiReaderResponse
 from ._get_memory_request import GetMemoryRequest
 from ._get_memory_response_body import GetMemoryResponseBody
 from ._get_memory_response import GetMemoryResponse
@@ -160,6 +163,8 @@ from ._get_image_object_detection_response_body import GetImageObjectDetectionRe
 from ._get_image_object_detection_response_body import GetImageObjectDetectionResponseBodyResultObjects
 from ._get_image_object_detection_response_body import GetImageObjectDetectionResponseBodyResult
 from ._get_image_object_detection_response_body import GetImageObjectDetectionResponseBodyUsage
+from ._get_jina_ai_reader_response_body import GetJinaAiReaderResponseBodyResult
+from ._get_jina_ai_reader_response_body import GetJinaAiReaderResponseBodyUsage
 from ._get_memory_response_body import GetMemoryResponseBodyResult
 from ._get_memory_health_response_body import GetMemoryHealthResponseBodyResult
 from ._get_memory_skill_response_body import GetMemorySkillResponseBodyResult
@@ -267,6 +272,9 @@ __all__ = [
     GetImageObjectDetectionRequest,
     GetImageObjectDetectionResponseBody,
     GetImageObjectDetectionResponse,
+    GetJinaAiReaderRequest,
+    GetJinaAiReaderResponseBody,
+    GetJinaAiReaderResponse,
     GetMemoryRequest,
     GetMemoryResponseBody,
     GetMemoryResponse,
@@ -374,6 +382,8 @@ __all__ = [
     GetImageObjectDetectionResponseBodyResultObjects,
     GetImageObjectDetectionResponseBodyResult,
     GetImageObjectDetectionResponseBodyUsage,
+    GetJinaAiReaderResponseBodyResult,
+    GetJinaAiReaderResponseBodyUsage,
     GetMemoryResponseBodyResult,
     GetMemoryHealthResponseBodyResult,
     GetMemorySkillResponseBodyResult,
