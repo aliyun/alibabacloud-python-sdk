@@ -5,26 +5,53 @@ from __future__ import annotations
 from ._change_resource_group_request import ChangeResourceGroupRequest
 from ._change_resource_group_response_body import ChangeResourceGroupResponseBody
 from ._change_resource_group_response import ChangeResourceGroupResponse
+from ._create_database_request import CreateDatabaseRequest
+from ._create_database_response_body import CreateDatabaseResponseBody
+from ._create_database_response import CreateDatabaseResponse
+from ._create_external_database_request import CreateExternalDatabaseRequest
+from ._create_external_database_response_body import CreateExternalDatabaseResponseBody
+from ._create_external_database_response import CreateExternalDatabaseResponse
 from ._create_holo_warehouse_request import CreateHoloWarehouseRequest
 from ._create_holo_warehouse_response_body import CreateHoloWarehouseResponseBody
 from ._create_holo_warehouse_response import CreateHoloWarehouseResponse
 from ._create_instance_request import CreateInstanceRequest
 from ._create_instance_response_body import CreateInstanceResponseBody
 from ._create_instance_response import CreateInstanceResponse
+from ._create_model_service_request import CreateModelServiceRequest
+from ._create_model_service_response_body import CreateModelServiceResponseBody
+from ._create_model_service_response import CreateModelServiceResponse
 from ._create_user_request import CreateUserRequest
 from ._create_user_response_body import CreateUserResponseBody
 from ._create_user_response import CreateUserResponse
+from ._create_warehouse_request import CreateWarehouseRequest
+from ._create_warehouse_response_body import CreateWarehouseResponseBody
+from ._create_warehouse_response import CreateWarehouseResponse
+from ._create_warehouse_schedule_task_request import CreateWarehouseScheduleTaskRequest
+from ._create_warehouse_schedule_task_response_body import CreateWarehouseScheduleTaskResponseBody
+from ._create_warehouse_schedule_task_response import CreateWarehouseScheduleTaskResponse
 from ._delete_holo_warehouse_request import DeleteHoloWarehouseRequest
 from ._delete_holo_warehouse_response_body import DeleteHoloWarehouseResponseBody
 from ._delete_holo_warehouse_response import DeleteHoloWarehouseResponse
 from ._delete_instance_request import DeleteInstanceRequest
 from ._delete_instance_response_body import DeleteInstanceResponseBody
 from ._delete_instance_response import DeleteInstanceResponse
+from ._delete_model_resource_request import DeleteModelResourceRequest
+from ._delete_model_resource_response_body import DeleteModelResourceResponseBody
+from ._delete_model_resource_response import DeleteModelResourceResponse
+from ._delete_model_service_request import DeleteModelServiceRequest
+from ._delete_model_service_response_body import DeleteModelServiceResponseBody
+from ._delete_model_service_response import DeleteModelServiceResponse
+from ._delete_warehouse_schedule_task_request import DeleteWarehouseScheduleTaskRequest
+from ._delete_warehouse_schedule_task_response_body import DeleteWarehouseScheduleTaskResponseBody
+from ._delete_warehouse_schedule_task_response import DeleteWarehouseScheduleTaskResponse
 from ._disable_hive_access_request import DisableHiveAccessRequest
 from ._disable_hive_access_response_body import DisableHiveAccessResponseBody
 from ._disable_hive_access_response import DisableHiveAccessResponse
 from ._disable_sslresponse_body import DisableSSLResponseBody
 from ._disable_sslresponse import DisableSSLResponse
+from ._disable_warehouse_auto_scale_request import DisableWarehouseAutoScaleRequest
+from ._disable_warehouse_auto_scale_response_body import DisableWarehouseAutoScaleResponseBody
+from ._disable_warehouse_auto_scale_response import DisableWarehouseAutoScaleResponse
 from ._drop_user_request import DropUserRequest
 from ._drop_user_response_body import DropUserResponseBody
 from ._drop_user_response import DropUserResponse
@@ -33,10 +60,16 @@ from ._enable_hive_access_response_body import EnableHiveAccessResponseBody
 from ._enable_hive_access_response import EnableHiveAccessResponse
 from ._enable_sslresponse_body import EnableSSLResponseBody
 from ._enable_sslresponse import EnableSSLResponse
+from ._enable_warehouse_auto_scale_request import EnableWarehouseAutoScaleRequest
+from ._enable_warehouse_auto_scale_response_body import EnableWarehouseAutoScaleResponseBody
+from ._enable_warehouse_auto_scale_response import EnableWarehouseAutoScaleResponse
 from ._get_certificate_attribute_response_body import GetCertificateAttributeResponseBody
 from ._get_certificate_attribute_response import GetCertificateAttributeResponse
 from ._get_instance_response_body import GetInstanceResponseBody
 from ._get_instance_response import GetInstanceResponse
+from ._get_instance_model_request import GetInstanceModelRequest
+from ._get_instance_model_response_body import GetInstanceModelResponseBody
+from ._get_instance_model_response import GetInstanceModelResponse
 from ._get_root_certificate_response_body import GetRootCertificateResponseBody
 from ._get_root_certificate_response import GetRootCertificateResponse
 from ._get_warehouse_detail_response_body import GetWarehouseDetailResponseBody
@@ -56,9 +89,21 @@ from ._list_backup_data_response import ListBackupDataResponse
 from ._list_databases_request import ListDatabasesRequest
 from ._list_databases_response_body import ListDatabasesResponseBody
 from ._list_databases_response import ListDatabasesResponse
+from ._list_instance_model_request import ListInstanceModelRequest
+from ._list_instance_model_response_body import ListInstanceModelResponseBody
+from ._list_instance_model_response import ListInstanceModelResponse
 from ._list_instances_request import ListInstancesRequest
 from ._list_instances_response_body import ListInstancesResponseBody
 from ._list_instances_response import ListInstancesResponse
+from ._list_model_catalog_request import ListModelCatalogRequest
+from ._list_model_catalog_response_body import ListModelCatalogResponseBody
+from ._list_model_catalog_response import ListModelCatalogResponse
+from ._list_warehouse_schedule_event_request import ListWarehouseScheduleEventRequest
+from ._list_warehouse_schedule_event_response_body import ListWarehouseScheduleEventResponseBody
+from ._list_warehouse_schedule_event_response import ListWarehouseScheduleEventResponse
+from ._list_warehouse_schedule_task_request import ListWarehouseScheduleTaskRequest
+from ._list_warehouse_schedule_task_response_body import ListWarehouseScheduleTaskResponseBody
+from ._list_warehouse_schedule_task_response import ListWarehouseScheduleTaskResponse
 from ._list_warehouses_response_body import ListWarehousesResponseBody
 from ._list_warehouses_response import ListWarehousesResponse
 from ._rebalance_holo_warehouse_request import RebalanceHoloWarehouseRequest
@@ -108,19 +153,32 @@ from ._update_instance_name_response import UpdateInstanceNameResponse
 from ._update_instance_network_type_request import UpdateInstanceNetworkTypeRequest
 from ._update_instance_network_type_response_body import UpdateInstanceNetworkTypeResponseBody
 from ._update_instance_network_type_response import UpdateInstanceNetworkTypeResponse
+from ._update_model_service_request import UpdateModelServiceRequest
+from ._update_model_service_response_body import UpdateModelServiceResponseBody
+from ._update_model_service_response import UpdateModelServiceResponse
+from ._update_warehouse_schedule_task_request import UpdateWarehouseScheduleTaskRequest
+from ._update_warehouse_schedule_task_response_body import UpdateWarehouseScheduleTaskResponseBody
+from ._update_warehouse_schedule_task_response import UpdateWarehouseScheduleTaskResponse
+from ._create_external_database_request import CreateExternalDatabaseRequestExternalConfig
 from ._create_instance_response_body import CreateInstanceResponseBodyData
 from ._get_certificate_attribute_response_body import GetCertificateAttributeResponseBodyCertificateAttributeDto
 from ._get_instance_response_body import GetInstanceResponseBodyInstanceEndpoints
 from ._get_instance_response_body import GetInstanceResponseBodyInstanceTags
 from ._get_instance_response_body import GetInstanceResponseBodyInstance
+from ._get_instance_model_response_body import GetInstanceModelResponseBodyModelServiceList
 from ._get_warehouse_detail_response_body import GetWarehouseDetailResponseBodyWarehouseDetailWarehouseList
 from ._get_warehouse_detail_response_body import GetWarehouseDetailResponseBodyWarehouseDetail
 from ._list_backup_data_response_body import ListBackupDataResponseBodyBackupDataList
 from ._list_databases_response_body import ListDatabasesResponseBodyDatabaseList
+from ._list_instance_model_response_body import ListInstanceModelResponseBodyInstanceModelList
 from ._list_instances_request import ListInstancesRequestTag
 from ._list_instances_response_body import ListInstancesResponseBodyInstanceListEndpoints
 from ._list_instances_response_body import ListInstancesResponseBodyInstanceListTags
 from ._list_instances_response_body import ListInstancesResponseBodyInstanceList
+from ._list_model_catalog_response_body import ListModelCatalogResponseBodyModelList
+from ._list_warehouse_schedule_event_response_body import ListWarehouseScheduleEventResponseBodyEventList
+from ._list_warehouse_schedule_task_response_body import ListWarehouseScheduleTaskResponseBodyScheduleTaskListPlans
+from ._list_warehouse_schedule_task_response_body import ListWarehouseScheduleTaskResponseBodyScheduleTaskList
 from ._list_warehouses_response_body import ListWarehousesResponseBodyWarehouseList
 from ._renew_instance_response_body import RenewInstanceResponseBodyData
 from ._scale_instance_response_body import ScaleInstanceResponseBodyData
@@ -129,26 +187,53 @@ __all__ = [
     ChangeResourceGroupRequest,
     ChangeResourceGroupResponseBody,
     ChangeResourceGroupResponse,
+    CreateDatabaseRequest,
+    CreateDatabaseResponseBody,
+    CreateDatabaseResponse,
+    CreateExternalDatabaseRequest,
+    CreateExternalDatabaseResponseBody,
+    CreateExternalDatabaseResponse,
     CreateHoloWarehouseRequest,
     CreateHoloWarehouseResponseBody,
     CreateHoloWarehouseResponse,
     CreateInstanceRequest,
     CreateInstanceResponseBody,
     CreateInstanceResponse,
+    CreateModelServiceRequest,
+    CreateModelServiceResponseBody,
+    CreateModelServiceResponse,
     CreateUserRequest,
     CreateUserResponseBody,
     CreateUserResponse,
+    CreateWarehouseRequest,
+    CreateWarehouseResponseBody,
+    CreateWarehouseResponse,
+    CreateWarehouseScheduleTaskRequest,
+    CreateWarehouseScheduleTaskResponseBody,
+    CreateWarehouseScheduleTaskResponse,
     DeleteHoloWarehouseRequest,
     DeleteHoloWarehouseResponseBody,
     DeleteHoloWarehouseResponse,
     DeleteInstanceRequest,
     DeleteInstanceResponseBody,
     DeleteInstanceResponse,
+    DeleteModelResourceRequest,
+    DeleteModelResourceResponseBody,
+    DeleteModelResourceResponse,
+    DeleteModelServiceRequest,
+    DeleteModelServiceResponseBody,
+    DeleteModelServiceResponse,
+    DeleteWarehouseScheduleTaskRequest,
+    DeleteWarehouseScheduleTaskResponseBody,
+    DeleteWarehouseScheduleTaskResponse,
     DisableHiveAccessRequest,
     DisableHiveAccessResponseBody,
     DisableHiveAccessResponse,
     DisableSSLResponseBody,
     DisableSSLResponse,
+    DisableWarehouseAutoScaleRequest,
+    DisableWarehouseAutoScaleResponseBody,
+    DisableWarehouseAutoScaleResponse,
     DropUserRequest,
     DropUserResponseBody,
     DropUserResponse,
@@ -157,10 +242,16 @@ __all__ = [
     EnableHiveAccessResponse,
     EnableSSLResponseBody,
     EnableSSLResponse,
+    EnableWarehouseAutoScaleRequest,
+    EnableWarehouseAutoScaleResponseBody,
+    EnableWarehouseAutoScaleResponse,
     GetCertificateAttributeResponseBody,
     GetCertificateAttributeResponse,
     GetInstanceResponseBody,
     GetInstanceResponse,
+    GetInstanceModelRequest,
+    GetInstanceModelResponseBody,
+    GetInstanceModelResponse,
     GetRootCertificateResponseBody,
     GetRootCertificateResponse,
     GetWarehouseDetailResponseBody,
@@ -180,9 +271,21 @@ __all__ = [
     ListDatabasesRequest,
     ListDatabasesResponseBody,
     ListDatabasesResponse,
+    ListInstanceModelRequest,
+    ListInstanceModelResponseBody,
+    ListInstanceModelResponse,
     ListInstancesRequest,
     ListInstancesResponseBody,
     ListInstancesResponse,
+    ListModelCatalogRequest,
+    ListModelCatalogResponseBody,
+    ListModelCatalogResponse,
+    ListWarehouseScheduleEventRequest,
+    ListWarehouseScheduleEventResponseBody,
+    ListWarehouseScheduleEventResponse,
+    ListWarehouseScheduleTaskRequest,
+    ListWarehouseScheduleTaskResponseBody,
+    ListWarehouseScheduleTaskResponse,
     ListWarehousesResponseBody,
     ListWarehousesResponse,
     RebalanceHoloWarehouseRequest,
@@ -232,19 +335,32 @@ __all__ = [
     UpdateInstanceNetworkTypeRequest,
     UpdateInstanceNetworkTypeResponseBody,
     UpdateInstanceNetworkTypeResponse,
+    UpdateModelServiceRequest,
+    UpdateModelServiceResponseBody,
+    UpdateModelServiceResponse,
+    UpdateWarehouseScheduleTaskRequest,
+    UpdateWarehouseScheduleTaskResponseBody,
+    UpdateWarehouseScheduleTaskResponse,
+    CreateExternalDatabaseRequestExternalConfig,
     CreateInstanceResponseBodyData,
     GetCertificateAttributeResponseBodyCertificateAttributeDto,
     GetInstanceResponseBodyInstanceEndpoints,
     GetInstanceResponseBodyInstanceTags,
     GetInstanceResponseBodyInstance,
+    GetInstanceModelResponseBodyModelServiceList,
     GetWarehouseDetailResponseBodyWarehouseDetailWarehouseList,
     GetWarehouseDetailResponseBodyWarehouseDetail,
     ListBackupDataResponseBodyBackupDataList,
     ListDatabasesResponseBodyDatabaseList,
+    ListInstanceModelResponseBodyInstanceModelList,
     ListInstancesRequestTag,
     ListInstancesResponseBodyInstanceListEndpoints,
     ListInstancesResponseBodyInstanceListTags,
     ListInstancesResponseBodyInstanceList,
+    ListModelCatalogResponseBodyModelList,
+    ListWarehouseScheduleEventResponseBodyEventList,
+    ListWarehouseScheduleTaskResponseBodyScheduleTaskListPlans,
+    ListWarehouseScheduleTaskResponseBodyScheduleTaskList,
     ListWarehousesResponseBodyWarehouseList,
     RenewInstanceResponseBodyData,
     ScaleInstanceResponseBodyData

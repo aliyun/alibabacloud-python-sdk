@@ -71,8 +71,6 @@ class CreateInstanceResponseBody(DaraModel):
 
         return self
 
-
-
 class CreateInstanceResponseBodyData(DaraModel):
     def __init__(
         self,

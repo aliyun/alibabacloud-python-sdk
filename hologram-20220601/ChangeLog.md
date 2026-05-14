@@ -1,3 +1,23 @@
+2026-05-14 Version: 1.9.0
+- Support API CreateDatabase.
+- Support API CreateExternalDatabase.
+- Support API CreateModelService.
+- Support API CreateWarehouse.
+- Support API CreateWarehouseScheduleTask.
+- Support API DeleteModelResource.
+- Support API DeleteModelService.
+- Support API DeleteWarehouseScheduleTask.
+- Support API DisableWarehouseAutoScale.
+- Support API EnableWarehouseAutoScale.
+- Support API GetInstanceModel.
+- Support API ListInstanceModel.
+- Support API ListModelCatalog.
+- Support API ListWarehouseScheduleEvent.
+- Support API ListWarehouseScheduleTask.
+- Support API UpdateModelService.
+- Support API UpdateWarehouseScheduleTask.
+
+
 2026-05-12 Version: 1.8.1
 - Update API GrantTablePermission: add request parameters body.columnNames.
 - Update API RevokeTablePermission: add request parameters body.columnNames.
