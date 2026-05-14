@@ -16,6 +16,7 @@ class UploadPartInfo(DaraModel):
         parallel_sha_256ctx: main_models.UploadPartInfoParallelSha256Ctx = None,
         part_number: int = None,
         part_size: int = None,
+        upload_form_info: main_models.UploadFormInfo = None,
         upload_url: str = None,
     ):
         # This parameter is discontinued.
@@ -32,6 +33,7 @@ class UploadPartInfo(DaraModel):
         self.part_number = part_number
         # This parameter is discontinued.
         self.part_size = part_size
+        self.upload_form_info = upload_form_info
         # The upload URL. By default, the validity period of the URL is 15 minutes. If the URL expires, you must call the GetUploadUrl operation to obtain another URL. If the intelligent domain name feature is enabled, the internal_upload_url value is returned within the parameter based on the request.
         # 
         # This parameter is required.
@@ -42,6 +44,8 @@ class UploadPartInfo(DaraModel):
             self.parallel_sha_1ctx.validate()
         if self.parallel_sha_256ctx:
             self.parallel_sha_256ctx.validate()
+        if self.upload_form_info:
+            self.upload_form_info.validate()
 
     def to_map(self):
         result = dict()
@@ -65,6 +69,9 @@ class UploadPartInfo(DaraModel):
 
         if self.part_size is not None:
             result['part_size'] = self.part_size
+
+        if self.upload_form_info is not None:
+            result['upload_form_info'] = self.upload_form_info.to_map()
 
         if self.upload_url is not None:
             result['upload_url'] = self.upload_url
@@ -92,6 +99,10 @@ class UploadPartInfo(DaraModel):
 
         if m.get('part_size') is not None:
             self.part_size = m.get('part_size')
+
+        if m.get('upload_form_info') is not None:
+            temp_model = main_models.UploadFormInfo()
+            self.upload_form_info = temp_model.from_map(m.get('upload_form_info'))
 
         if m.get('upload_url') is not None:
             self.upload_url = m.get('upload_url')

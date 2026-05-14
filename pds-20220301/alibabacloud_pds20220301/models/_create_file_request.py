@@ -28,6 +28,7 @@ class CreateFileRequest(DaraModel):
         share_id: str = None,
         size: int = None,
         type: str = None,
+        upload_type: str = None,
         user_tags: List[main_models.UserTag] = None,
     ):
         # The processing method that is used if the file that you want to create has the same name as an existing file in the cloud. Valid values:
@@ -82,6 +83,7 @@ class CreateFileRequest(DaraModel):
         # 
         # This parameter is required.
         self.type = type
+        self.upload_type = upload_type
         # The custom tags. You can specify up to 1,000 tags.
         self.user_tags = user_tags
 
@@ -156,6 +158,9 @@ class CreateFileRequest(DaraModel):
         if self.type is not None:
             result['type'] = self.type
 
+        if self.upload_type is not None:
+            result['upload_type'] = self.upload_type
+
         result['user_tags'] = []
         if self.user_tags is not None:
             for k1 in self.user_tags:
@@ -221,6 +226,9 @@ class CreateFileRequest(DaraModel):
 
         if m.get('type') is not None:
             self.type = m.get('type')
+
+        if m.get('upload_type') is not None:
+            self.upload_type = m.get('upload_type')
 
         self.user_tags = []
         if m.get('user_tags') is not None:

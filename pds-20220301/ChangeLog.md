@@ -1,3 +1,7 @@
+2026-05-14 Version: 5.1.2
+- Update API CreateFile: add request parameters body.upload_type.
+
+
 2026-04-30 Version: 5.1.1
 - Generated python 2022-03-01 for pds.
 

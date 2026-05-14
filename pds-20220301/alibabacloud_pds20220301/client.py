@@ -1423,6 +1423,8 @@ class Client(OpenApiClient):
             body['size'] = request.size
         if not DaraCore.is_null(request.type):
             body['type'] = request.type
+        if not DaraCore.is_null(request.upload_type):
+            body['upload_type'] = request.upload_type
         if not DaraCore.is_null(request.user_tags):
             body['user_tags'] = request.user_tags
         req = open_api_util_models.OpenApiRequest(
@@ -1489,6 +1491,8 @@ class Client(OpenApiClient):
             body['size'] = request.size
         if not DaraCore.is_null(request.type):
             body['type'] = request.type
+        if not DaraCore.is_null(request.upload_type):
+            body['upload_type'] = request.upload_type
         if not DaraCore.is_null(request.user_tags):
             body['user_tags'] = request.user_tags
         req = open_api_util_models.OpenApiRequest(
