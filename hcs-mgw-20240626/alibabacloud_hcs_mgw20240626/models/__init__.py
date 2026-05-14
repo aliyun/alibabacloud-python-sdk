@@ -18,6 +18,7 @@ from ._get_job_resp import GetJobResp
 from ._get_job_result_resp import GetJobResultResp
 from ._get_report_resp import GetReportResp
 from ._get_tunnel_resp import GetTunnelResp
+from ._hdfs_auth_config import HdfsAuthConfig
 from ._import_qos import ImportQos
 from ._job_history import JobHistory
 from ._key_filter_item import KeyFilterItem
@@ -111,6 +112,7 @@ __all__ = [
     GetJobResultResp,
     GetReportResp,
     GetTunnelResp,
+    HdfsAuthConfig,
     ImportQos,
     JobHistory,
     KeyFilterItem,

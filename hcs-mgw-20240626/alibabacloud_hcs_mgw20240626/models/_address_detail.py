@@ -2,6 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from alibabacloud_hcs_mgw20240626 import models as main_models
 from darabonba.model import DaraModel
 
 
@@ -16,6 +17,7 @@ class AddressDetail(DaraModel):
         bucket: str = None,
         data_type: str = None,
         domain: str = None,
+        hdfs_auth_config: main_models.HdfsAuthConfig = None,
         inv_access_id: str = None,
         inv_access_secret: str = None,
         inv_bucket: str = None,
@@ -51,6 +53,7 @@ class AddressDetail(DaraModel):
         # 
         # This parameter is required.
         self.domain = domain
+        self.hdfs_auth_config = hdfs_auth_config
         # The AccessKey ID that is used to access the bucket in which the inventory list resides.
         self.inv_access_id = inv_access_id
         # The AccessKey secret that is used to access the bucket in which the inventory list resides.
@@ -76,7 +79,8 @@ class AddressDetail(DaraModel):
         self.role = role
 
     def validate(self):
-        pass
+        if self.hdfs_auth_config:
+            self.hdfs_auth_config.validate()
 
     def to_map(self):
         result = dict()
@@ -103,6 +107,9 @@ class AddressDetail(DaraModel):
 
         if self.domain is not None:
             result['Domain'] = self.domain
+
+        if self.hdfs_auth_config is not None:
+            result['HdfsAuthConfig'] = self.hdfs_auth_config.to_map()
 
         if self.inv_access_id is not None:
             result['InvAccessId'] = self.inv_access_id
@@ -161,6 +168,10 @@ class AddressDetail(DaraModel):
 
         if m.get('Domain') is not None:
             self.domain = m.get('Domain')
+
+        if m.get('HdfsAuthConfig') is not None:
+            temp_model = main_models.HdfsAuthConfig()
+            self.hdfs_auth_config = temp_model.from_map(m.get('HdfsAuthConfig'))
 
         if m.get('InvAccessId') is not None:
             self.inv_access_id = m.get('InvAccessId')
