@@ -23,6 +23,7 @@ class GetProjectResponseBody(DaraModel):
         online_datasource_type: str = None,
         owner: str = None,
         request_id: str = None,
+        workspace_id: str = None,
     ):
         self.description = description
         self.feature_entity_count = feature_entity_count
@@ -40,6 +41,7 @@ class GetProjectResponseBody(DaraModel):
         self.online_datasource_type = online_datasource_type
         self.owner = owner
         self.request_id = request_id
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -97,6 +99,9 @@ class GetProjectResponseBody(DaraModel):
         if self.request_id is not None:
             result['RequestId'] = self.request_id
 
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -148,6 +153,9 @@ class GetProjectResponseBody(DaraModel):
 
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
 
         return self
 

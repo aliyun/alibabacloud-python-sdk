@@ -3185,6 +3185,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.join_ids):
             request.join_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.join_ids, 'JoinIds', 'json')
         query = {}
+        if not DaraCore.is_null(request.config):
+            query['Config'] = request.config
         if not DaraCore.is_null(request.join_ids_shrink):
             query['JoinIds'] = request.join_ids_shrink
         req = open_api_util_models.OpenApiRequest(
@@ -3221,6 +3223,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.join_ids):
             request.join_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.join_ids, 'JoinIds', 'json')
         query = {}
+        if not DaraCore.is_null(request.config):
+            query['Config'] = request.config
         if not DaraCore.is_null(request.join_ids_shrink):
             query['JoinIds'] = request.join_ids_shrink
         req = open_api_util_models.OpenApiRequest(

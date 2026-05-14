@@ -1,3 +1,9 @@
+2026-05-14 Version: 6.1.1
+- Update API GetProject: add response parameters Body.WorkspaceId.
+- Update API ListFeatureViewOnlineFeatures: add request parameters Config.
+- Update API ListProjects: add response parameters Body.Projects.$.WorkspaceId.
+
+
 2026-04-29 Version: 6.1.0
 - Support API UpdateFeatureView.
 - Update API CreateFeatureView: add request parameters body.Fields.$.Transform.$.Input.$.Modality.
