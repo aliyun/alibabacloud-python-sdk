@@ -1,3 +1,9 @@
+2026-05-14 Version: 1.44.0
+- Support API GetPptInfo.
+- Update API InitiatePptCreationV2: add request parameters PptTitle.
+- Update API InitiatePptCreationV2: add response parameters Body.Data.Alert.
+
+
 2026-05-07 Version: 1.43.1
 - Update API RunBookBrainmap: add request parameters ResponseFormat.
 - Update API RunBookIntroduction: add request parameters CleanCache.

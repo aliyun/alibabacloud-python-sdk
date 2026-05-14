@@ -7510,6 +7510,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_ppt_config_with_options_async(request, runtime)
 
+    def get_ppt_info_with_options(
+        self,
+        request: main_models.GetPptInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetPptInfoResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.task_id):
+            body['TaskId'] = request.task_id
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetPptInfo',
+            version = '2023-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetPptInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_ppt_info_with_options_async(
+        self,
+        request: main_models.GetPptInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetPptInfoResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.task_id):
+            body['TaskId'] = request.task_id
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetPptInfo',
+            version = '2023-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetPptInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_ppt_info(
+        self,
+        request: main_models.GetPptInfoRequest,
+    ) -> main_models.GetPptInfoResponse:
+        runtime = RuntimeOptions()
+        return self.get_ppt_info_with_options(request, runtime)
+
+    async def get_ppt_info_async(
+        self,
+        request: main_models.GetPptInfoRequest,
+    ) -> main_models.GetPptInfoResponse:
+        runtime = RuntimeOptions()
+        return await self.get_ppt_info_with_options_async(request, runtime)
+
     def get_ppt_template_selector_with_options(
         self,
         request: main_models.GetPptTemplateSelectorRequest,
@@ -8303,6 +8377,8 @@ class Client(OpenApiClient):
             body['PptTemplateId'] = request.ppt_template_id
         if not DaraCore.is_null(request.ppt_template_type):
             body['PptTemplateType'] = request.ppt_template_type
+        if not DaraCore.is_null(request.ppt_title):
+            body['PptTitle'] = request.ppt_title
         if not DaraCore.is_null(request.process_type):
             body['ProcessType'] = request.process_type
         if not DaraCore.is_null(request.task_id):
@@ -8345,6 +8421,8 @@ class Client(OpenApiClient):
             body['PptTemplateId'] = request.ppt_template_id
         if not DaraCore.is_null(request.ppt_template_type):
             body['PptTemplateType'] = request.ppt_template_type
+        if not DaraCore.is_null(request.ppt_title):
+            body['PptTitle'] = request.ppt_title
         if not DaraCore.is_null(request.process_type):
             body['ProcessType'] = request.process_type
         if not DaraCore.is_null(request.task_id):

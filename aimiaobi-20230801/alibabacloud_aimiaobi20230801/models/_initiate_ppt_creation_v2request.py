@@ -12,6 +12,7 @@ class InitiatePptCreationV2Request(DaraModel):
         outline: str = None,
         ppt_template_id: int = None,
         ppt_template_type: int = None,
+        ppt_title: str = None,
         process_type: int = None,
         task_id: str = None,
         workspace_id: str = None,
@@ -21,6 +22,7 @@ class InitiatePptCreationV2Request(DaraModel):
         self.outline = outline
         self.ppt_template_id = ppt_template_id
         self.ppt_template_type = ppt_template_type
+        self.ppt_title = ppt_title
         self.process_type = process_type
         # This parameter is required.
         self.task_id = task_id
@@ -49,6 +51,9 @@ class InitiatePptCreationV2Request(DaraModel):
         if self.ppt_template_type is not None:
             result['PptTemplateType'] = self.ppt_template_type
 
+        if self.ppt_title is not None:
+            result['PptTitle'] = self.ppt_title
+
         if self.process_type is not None:
             result['ProcessType'] = self.process_type
 
@@ -76,6 +81,9 @@ class InitiatePptCreationV2Request(DaraModel):
 
         if m.get('PptTemplateType') is not None:
             self.ppt_template_type = m.get('PptTemplateType')
+
+        if m.get('PptTitle') is not None:
+            self.ppt_title = m.get('PptTitle')
 
         if m.get('ProcessType') is not None:
             self.process_type = m.get('ProcessType')

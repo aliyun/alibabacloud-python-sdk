@@ -2,14 +2,16 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
 from alibabacloud_aimiaobi20230801 import models as main_models
 from darabonba.model import DaraModel
 
-class InitiatePptCreationV2ResponseBody(DaraModel):
+class GetPptInfoResponseBody(DaraModel):
     def __init__(
         self,
         code: str = None,
-        data: main_models.InitiatePptCreationV2ResponseBodyData = None,
+        data: main_models.GetPptInfoResponseBodyData = None,
         http_status_code: int = None,
         message: str = None,
         request_id: str = None,
@@ -58,7 +60,7 @@ class InitiatePptCreationV2ResponseBody(DaraModel):
             self.code = m.get('Code')
 
         if m.get('Data') is not None:
-            temp_model = main_models.InitiatePptCreationV2ResponseBodyData()
+            temp_model = main_models.GetPptInfoResponseBodyData()
             self.data = temp_model.from_map(m.get('Data'))
 
         if m.get('HttpStatusCode') is not None:
@@ -75,24 +77,22 @@ class InitiatePptCreationV2ResponseBody(DaraModel):
 
         return self
 
-class InitiatePptCreationV2ResponseBodyData(DaraModel):
+class GetPptInfoResponseBodyData(DaraModel):
     def __init__(
         self,
-        alert: str = None,
-        app_key: str = None,
+        export_file_link: List[str] = None,
         export_task_id: str = None,
-        ppt_artifact_cover: str = None,
         ppt_artifact_id: str = None,
         ppt_process_id: str = None,
-        signature: str = None,
+        query: str = None,
+        task_id: str = None,
     ):
-        self.alert = alert
-        self.app_key = app_key
+        self.export_file_link = export_file_link
         self.export_task_id = export_task_id
-        self.ppt_artifact_cover = ppt_artifact_cover
         self.ppt_artifact_id = ppt_artifact_id
         self.ppt_process_id = ppt_process_id
-        self.signature = signature
+        self.query = query
+        self.task_id = task_id
 
     def validate(self):
         pass
@@ -102,17 +102,11 @@ class InitiatePptCreationV2ResponseBodyData(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.alert is not None:
-            result['Alert'] = self.alert
-
-        if self.app_key is not None:
-            result['AppKey'] = self.app_key
+        if self.export_file_link is not None:
+            result['ExportFileLink'] = self.export_file_link
 
         if self.export_task_id is not None:
             result['ExportTaskId'] = self.export_task_id
-
-        if self.ppt_artifact_cover is not None:
-            result['PptArtifactCover'] = self.ppt_artifact_cover
 
         if self.ppt_artifact_id is not None:
             result['PptArtifactId'] = self.ppt_artifact_id
@@ -120,24 +114,21 @@ class InitiatePptCreationV2ResponseBodyData(DaraModel):
         if self.ppt_process_id is not None:
             result['PptProcessId'] = self.ppt_process_id
 
-        if self.signature is not None:
-            result['Signature'] = self.signature
+        if self.query is not None:
+            result['Query'] = self.query
+
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Alert') is not None:
-            self.alert = m.get('Alert')
-
-        if m.get('AppKey') is not None:
-            self.app_key = m.get('AppKey')
+        if m.get('ExportFileLink') is not None:
+            self.export_file_link = m.get('ExportFileLink')
 
         if m.get('ExportTaskId') is not None:
             self.export_task_id = m.get('ExportTaskId')
-
-        if m.get('PptArtifactCover') is not None:
-            self.ppt_artifact_cover = m.get('PptArtifactCover')
 
         if m.get('PptArtifactId') is not None:
             self.ppt_artifact_id = m.get('PptArtifactId')
@@ -145,8 +136,11 @@ class InitiatePptCreationV2ResponseBodyData(DaraModel):
         if m.get('PptProcessId') is not None:
             self.ppt_process_id = m.get('PptProcessId')
 
-        if m.get('Signature') is not None:
-            self.signature = m.get('Signature')
+        if m.get('Query') is not None:
+            self.query = m.get('Query')
+
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
 
         return self
 

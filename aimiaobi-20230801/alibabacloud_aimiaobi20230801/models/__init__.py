@@ -302,6 +302,9 @@ from ._get_ppt_artifact_export_result_response import GetPptArtifactExportResult
 from ._get_ppt_config_request import GetPptConfigRequest
 from ._get_ppt_config_response_body import GetPptConfigResponseBody
 from ._get_ppt_config_response import GetPptConfigResponse
+from ._get_ppt_info_request import GetPptInfoRequest
+from ._get_ppt_info_response_body import GetPptInfoResponseBody
+from ._get_ppt_info_response import GetPptInfoResponse
 from ._get_ppt_template_selector_request import GetPptTemplateSelectorRequest
 from ._get_ppt_template_selector_response_body import GetPptTemplateSelectorResponseBody
 from ._get_ppt_template_selector_response import GetPptTemplateSelectorResponse
@@ -885,6 +888,7 @@ from ._get_ppt_artifact_response_body import GetPptArtifactResponseBodyDataFileA
 from ._get_ppt_artifact_response_body import GetPptArtifactResponseBodyData
 from ._get_ppt_artifact_export_result_response_body import GetPptArtifactExportResultResponseBodyData
 from ._get_ppt_config_response_body import GetPptConfigResponseBodyData
+from ._get_ppt_info_response_body import GetPptInfoResponseBodyData
 from ._get_ppt_template_selector_response_body import GetPptTemplateSelectorResponseBodyDataCareer
 from ._get_ppt_template_selector_response_body import GetPptTemplateSelectorResponseBodyDataColour
 from ._get_ppt_template_selector_response_body import GetPptTemplateSelectorResponseBodyDataSuitScene
@@ -1687,6 +1691,9 @@ __all__ = [
     GetPptConfigRequest,
     GetPptConfigResponseBody,
     GetPptConfigResponse,
+    GetPptInfoRequest,
+    GetPptInfoResponseBody,
+    GetPptInfoResponse,
     GetPptTemplateSelectorRequest,
     GetPptTemplateSelectorResponseBody,
     GetPptTemplateSelectorResponse,
@@ -2270,6 +2277,7 @@ __all__ = [
     GetPptArtifactResponseBodyData,
     GetPptArtifactExportResultResponseBodyData,
     GetPptConfigResponseBodyData,
+    GetPptInfoResponseBodyData,
     GetPptTemplateSelectorResponseBodyDataCareer,
     GetPptTemplateSelectorResponseBodyDataColour,
     GetPptTemplateSelectorResponseBodyDataSuitScene,
