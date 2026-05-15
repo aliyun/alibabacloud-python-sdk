@@ -22608,6 +22608,344 @@ class Client(OpenApiClient):
         headers = main_models.ListWorkspacesHeaders()
         return await self.list_workspaces_with_options_async(request, headers, runtime)
 
+    def meeting_flash_minutes_with_options(
+        self,
+        tmp_req: main_models.MeetingFlashMinutesRequest,
+        tmp_header: main_models.MeetingFlashMinutesHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.MeetingFlashMinutesResponse:
+        tmp_req.validate()
+        request = main_models.MeetingFlashMinutesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        headers = main_models.MeetingFlashMinutesShrinkHeaders()
+        Utils.convert(tmp_header, headers)
+        if not DaraCore.is_null(tmp_header.account_context):
+            headers.account_context_shrink = Utils.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not DaraCore.is_null(tmp_req.tenant_context):
+            request.tenant_context_shrink = Utils.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not DaraCore.is_null(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not DaraCore.is_null(request.conference_id):
+            body['conferenceId'] = request.conference_id
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.account_context_shrink):
+            real_headers['AccountContext'] = DaraCore.to_json_string(headers.account_context_shrink)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'MeetingFlashMinutes',
+            version = '2023-04-26',
+            protocol = 'HTTPS',
+            pathname = f'/dingtalk/v1/minutes/meetingFlashMinutes',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.MeetingFlashMinutesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def meeting_flash_minutes_with_options_async(
+        self,
+        tmp_req: main_models.MeetingFlashMinutesRequest,
+        tmp_header: main_models.MeetingFlashMinutesHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.MeetingFlashMinutesResponse:
+        tmp_req.validate()
+        request = main_models.MeetingFlashMinutesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        headers = main_models.MeetingFlashMinutesShrinkHeaders()
+        Utils.convert(tmp_header, headers)
+        if not DaraCore.is_null(tmp_header.account_context):
+            headers.account_context_shrink = Utils.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not DaraCore.is_null(tmp_req.tenant_context):
+            request.tenant_context_shrink = Utils.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not DaraCore.is_null(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not DaraCore.is_null(request.conference_id):
+            body['conferenceId'] = request.conference_id
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.account_context_shrink):
+            real_headers['AccountContext'] = DaraCore.to_json_string(headers.account_context_shrink)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'MeetingFlashMinutes',
+            version = '2023-04-26',
+            protocol = 'HTTPS',
+            pathname = f'/dingtalk/v1/minutes/meetingFlashMinutes',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.MeetingFlashMinutesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def meeting_flash_minutes(
+        self,
+        request: main_models.MeetingFlashMinutesRequest,
+    ) -> main_models.MeetingFlashMinutesResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.MeetingFlashMinutesHeaders()
+        return self.meeting_flash_minutes_with_options(request, headers, runtime)
+
+    async def meeting_flash_minutes_async(
+        self,
+        request: main_models.MeetingFlashMinutesRequest,
+    ) -> main_models.MeetingFlashMinutesResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.MeetingFlashMinutesHeaders()
+        return await self.meeting_flash_minutes_with_options_async(request, headers, runtime)
+
+    def mute_all_with_options(
+        self,
+        tmp_req: main_models.MuteAllRequest,
+        tmp_header: main_models.MuteAllHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.MuteAllResponse:
+        tmp_req.validate()
+        request = main_models.MuteAllShrinkRequest()
+        Utils.convert(tmp_req, request)
+        headers = main_models.MuteAllShrinkHeaders()
+        Utils.convert(tmp_header, headers)
+        if not DaraCore.is_null(tmp_header.account_context):
+            headers.account_context_shrink = Utils.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not DaraCore.is_null(tmp_req.tenant_context):
+            request.tenant_context_shrink = Utils.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not DaraCore.is_null(request.force_mute):
+            body['ForceMute'] = request.force_mute
+        if not DaraCore.is_null(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not DaraCore.is_null(request.conference_id):
+            body['conferenceId'] = request.conference_id
+        if not DaraCore.is_null(request.mute_action):
+            body['muteAction'] = request.mute_action
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.account_context_shrink):
+            real_headers['AccountContext'] = DaraCore.to_json_string(headers.account_context_shrink)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'MuteAll',
+            version = '2023-04-26',
+            protocol = 'HTTPS',
+            pathname = f'/dingtalk/v1/ysp/muteAll',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.MuteAllResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def mute_all_with_options_async(
+        self,
+        tmp_req: main_models.MuteAllRequest,
+        tmp_header: main_models.MuteAllHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.MuteAllResponse:
+        tmp_req.validate()
+        request = main_models.MuteAllShrinkRequest()
+        Utils.convert(tmp_req, request)
+        headers = main_models.MuteAllShrinkHeaders()
+        Utils.convert(tmp_header, headers)
+        if not DaraCore.is_null(tmp_header.account_context):
+            headers.account_context_shrink = Utils.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not DaraCore.is_null(tmp_req.tenant_context):
+            request.tenant_context_shrink = Utils.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not DaraCore.is_null(request.force_mute):
+            body['ForceMute'] = request.force_mute
+        if not DaraCore.is_null(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not DaraCore.is_null(request.conference_id):
+            body['conferenceId'] = request.conference_id
+        if not DaraCore.is_null(request.mute_action):
+            body['muteAction'] = request.mute_action
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.account_context_shrink):
+            real_headers['AccountContext'] = DaraCore.to_json_string(headers.account_context_shrink)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'MuteAll',
+            version = '2023-04-26',
+            protocol = 'HTTPS',
+            pathname = f'/dingtalk/v1/ysp/muteAll',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.MuteAllResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def mute_all(
+        self,
+        request: main_models.MuteAllRequest,
+    ) -> main_models.MuteAllResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.MuteAllHeaders()
+        return self.mute_all_with_options(request, headers, runtime)
+
+    async def mute_all_async(
+        self,
+        request: main_models.MuteAllRequest,
+    ) -> main_models.MuteAllResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.MuteAllHeaders()
+        return await self.mute_all_with_options_async(request, headers, runtime)
+
+    def mute_members_with_options(
+        self,
+        tmp_req: main_models.MuteMembersRequest,
+        tmp_header: main_models.MuteMembersHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.MuteMembersResponse:
+        tmp_req.validate()
+        request = main_models.MuteMembersShrinkRequest()
+        Utils.convert(tmp_req, request)
+        headers = main_models.MuteMembersShrinkHeaders()
+        Utils.convert(tmp_header, headers)
+        if not DaraCore.is_null(tmp_header.account_context):
+            headers.account_context_shrink = Utils.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not DaraCore.is_null(tmp_req.tenant_context):
+            request.tenant_context_shrink = Utils.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        if not DaraCore.is_null(tmp_req.user_ids):
+            request.user_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.user_ids, 'UserIds', 'json')
+        body = {}
+        if not DaraCore.is_null(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not DaraCore.is_null(request.user_ids_shrink):
+            body['UserIds'] = request.user_ids_shrink
+        if not DaraCore.is_null(request.conference_id):
+            body['conferenceId'] = request.conference_id
+        if not DaraCore.is_null(request.mute_action):
+            body['muteAction'] = request.mute_action
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.account_context_shrink):
+            real_headers['AccountContext'] = DaraCore.to_json_string(headers.account_context_shrink)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'MuteMembers',
+            version = '2023-04-26',
+            protocol = 'HTTPS',
+            pathname = f'/dingtalk/v1/ysp/muteMembers',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.MuteMembersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def mute_members_with_options_async(
+        self,
+        tmp_req: main_models.MuteMembersRequest,
+        tmp_header: main_models.MuteMembersHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.MuteMembersResponse:
+        tmp_req.validate()
+        request = main_models.MuteMembersShrinkRequest()
+        Utils.convert(tmp_req, request)
+        headers = main_models.MuteMembersShrinkHeaders()
+        Utils.convert(tmp_header, headers)
+        if not DaraCore.is_null(tmp_header.account_context):
+            headers.account_context_shrink = Utils.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not DaraCore.is_null(tmp_req.tenant_context):
+            request.tenant_context_shrink = Utils.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        if not DaraCore.is_null(tmp_req.user_ids):
+            request.user_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.user_ids, 'UserIds', 'json')
+        body = {}
+        if not DaraCore.is_null(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not DaraCore.is_null(request.user_ids_shrink):
+            body['UserIds'] = request.user_ids_shrink
+        if not DaraCore.is_null(request.conference_id):
+            body['conferenceId'] = request.conference_id
+        if not DaraCore.is_null(request.mute_action):
+            body['muteAction'] = request.mute_action
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.account_context_shrink):
+            real_headers['AccountContext'] = DaraCore.to_json_string(headers.account_context_shrink)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'MuteMembers',
+            version = '2023-04-26',
+            protocol = 'HTTPS',
+            pathname = f'/dingtalk/v1/ysp/muteMembers',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.MuteMembersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def mute_members(
+        self,
+        request: main_models.MuteMembersRequest,
+    ) -> main_models.MuteMembersResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.MuteMembersHeaders()
+        return self.mute_members_with_options(request, headers, runtime)
+
+    async def mute_members_async(
+        self,
+        request: main_models.MuteMembersRequest,
+    ) -> main_models.MuteMembersResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.MuteMembersHeaders()
+        return await self.mute_members_with_options_async(request, headers, runtime)
+
     def patch_event_with_options(
         self,
         tmp_req: main_models.PatchEventRequest,

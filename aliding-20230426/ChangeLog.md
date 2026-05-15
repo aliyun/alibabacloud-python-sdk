@@ -1,3 +1,10 @@
+2026-05-15 Version: 2.51.0
+- Support API MeetingFlashMinutes.
+- Support API MuteAll.
+- Support API MuteMembers.
+- Update API InvokeAssistant: add response parameters Body.messages.$.content.aguiContent.
+
+
 2026-04-15 Version: 2.50.0
 - Support API BatchQueryGroupMember.
 - Support API GetScencegroupFileDownloadurl.

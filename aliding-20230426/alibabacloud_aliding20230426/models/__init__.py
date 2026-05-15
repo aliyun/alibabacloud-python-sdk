@@ -1086,6 +1086,24 @@ from ._list_workspaces_request import ListWorkspacesRequest
 from ._list_workspaces_shrink_request import ListWorkspacesShrinkRequest
 from ._list_workspaces_response_body import ListWorkspacesResponseBody
 from ._list_workspaces_response import ListWorkspacesResponse
+from ._meeting_flash_minutes_headers import MeetingFlashMinutesHeaders
+from ._meeting_flash_minutes_shrink_headers import MeetingFlashMinutesShrinkHeaders
+from ._meeting_flash_minutes_request import MeetingFlashMinutesRequest
+from ._meeting_flash_minutes_shrink_request import MeetingFlashMinutesShrinkRequest
+from ._meeting_flash_minutes_response_body import MeetingFlashMinutesResponseBody
+from ._meeting_flash_minutes_response import MeetingFlashMinutesResponse
+from ._mute_all_headers import MuteAllHeaders
+from ._mute_all_shrink_headers import MuteAllShrinkHeaders
+from ._mute_all_request import MuteAllRequest
+from ._mute_all_shrink_request import MuteAllShrinkRequest
+from ._mute_all_response_body import MuteAllResponseBody
+from ._mute_all_response import MuteAllResponse
+from ._mute_members_headers import MuteMembersHeaders
+from ._mute_members_shrink_headers import MuteMembersShrinkHeaders
+from ._mute_members_request import MuteMembersRequest
+from ._mute_members_shrink_request import MuteMembersShrinkRequest
+from ._mute_members_response_body import MuteMembersResponseBody
+from ._mute_members_response import MuteMembersResponse
 from ._patch_event_headers import PatchEventHeaders
 from ._patch_event_shrink_headers import PatchEventShrinkHeaders
 from ._patch_event_request import PatchEventRequest
@@ -2249,6 +2267,8 @@ from ._invoke_assistant_request import InvokeAssistantRequestMessagesContentStru
 from ._invoke_assistant_request import InvokeAssistantRequestMessagesContentText
 from ._invoke_assistant_request import InvokeAssistantRequestMessagesContent
 from ._invoke_assistant_request import InvokeAssistantRequestMessages
+from ._invoke_assistant_response_body import InvokeAssistantResponseBodyMessagesContentAguiContentAguiEventList
+from ._invoke_assistant_response_body import InvokeAssistantResponseBodyMessagesContentAguiContent
 from ._invoke_assistant_response_body import InvokeAssistantResponseBodyMessagesContentCardCallback
 from ._invoke_assistant_response_body import InvokeAssistantResponseBodyMessagesContentDingCard
 from ._invoke_assistant_response_body import InvokeAssistantResponseBodyMessagesContentDingNormalCardCardData
@@ -2393,6 +2413,16 @@ from ._list_workspaces_headers import ListWorkspacesHeadersAccountContext
 from ._list_workspaces_request import ListWorkspacesRequestTenantContext
 from ._list_workspaces_response_body import ListWorkspacesResponseBodyWorkspacesIcon
 from ._list_workspaces_response_body import ListWorkspacesResponseBodyWorkspaces
+from ._meeting_flash_minutes_headers import MeetingFlashMinutesHeadersAccountContext
+from ._meeting_flash_minutes_request import MeetingFlashMinutesRequestTenantContext
+from ._meeting_flash_minutes_response_body import MeetingFlashMinutesResponseBodyBasicInfo
+from ._meeting_flash_minutes_response_body import MeetingFlashMinutesResponseBodyTodosDingtalkTodoListExecutorList
+from ._meeting_flash_minutes_response_body import MeetingFlashMinutesResponseBodyTodosDingtalkTodoList
+from ._meeting_flash_minutes_response_body import MeetingFlashMinutesResponseBodyTodos
+from ._mute_all_headers import MuteAllHeadersAccountContext
+from ._mute_all_request import MuteAllRequestTenantContext
+from ._mute_members_headers import MuteMembersHeadersAccountContext
+from ._mute_members_request import MuteMembersRequestTenantContext
 from ._patch_event_headers import PatchEventHeadersAccountContext
 from ._patch_event_request import PatchEventRequestAttendees
 from ._patch_event_request import PatchEventRequestCardInstances
@@ -3762,6 +3792,24 @@ __all__ = [
     ListWorkspacesShrinkRequest,
     ListWorkspacesResponseBody,
     ListWorkspacesResponse,
+    MeetingFlashMinutesHeaders,
+    MeetingFlashMinutesShrinkHeaders,
+    MeetingFlashMinutesRequest,
+    MeetingFlashMinutesShrinkRequest,
+    MeetingFlashMinutesResponseBody,
+    MeetingFlashMinutesResponse,
+    MuteAllHeaders,
+    MuteAllShrinkHeaders,
+    MuteAllRequest,
+    MuteAllShrinkRequest,
+    MuteAllResponseBody,
+    MuteAllResponse,
+    MuteMembersHeaders,
+    MuteMembersShrinkHeaders,
+    MuteMembersRequest,
+    MuteMembersShrinkRequest,
+    MuteMembersResponseBody,
+    MuteMembersResponse,
     PatchEventHeaders,
     PatchEventShrinkHeaders,
     PatchEventRequest,
@@ -4925,6 +4973,8 @@ __all__ = [
     InvokeAssistantRequestMessagesContentText,
     InvokeAssistantRequestMessagesContent,
     InvokeAssistantRequestMessages,
+    InvokeAssistantResponseBodyMessagesContentAguiContentAguiEventList,
+    InvokeAssistantResponseBodyMessagesContentAguiContent,
     InvokeAssistantResponseBodyMessagesContentCardCallback,
     InvokeAssistantResponseBodyMessagesContentDingCard,
     InvokeAssistantResponseBodyMessagesContentDingNormalCardCardData,
@@ -5069,6 +5119,16 @@ __all__ = [
     ListWorkspacesRequestTenantContext,
     ListWorkspacesResponseBodyWorkspacesIcon,
     ListWorkspacesResponseBodyWorkspaces,
+    MeetingFlashMinutesHeadersAccountContext,
+    MeetingFlashMinutesRequestTenantContext,
+    MeetingFlashMinutesResponseBodyBasicInfo,
+    MeetingFlashMinutesResponseBodyTodosDingtalkTodoListExecutorList,
+    MeetingFlashMinutesResponseBodyTodosDingtalkTodoList,
+    MeetingFlashMinutesResponseBodyTodos,
+    MuteAllHeadersAccountContext,
+    MuteAllRequestTenantContext,
+    MuteMembersHeadersAccountContext,
+    MuteMembersRequestTenantContext,
     PatchEventHeadersAccountContext,
     PatchEventRequestAttendees,
     PatchEventRequestCardInstances,

@@ -621,6 +621,7 @@ class InvokeAssistantResponseBodyMessagesContentStructPartsDataPart(DaraModel):
 class InvokeAssistantResponseBodyMessagesContent(DaraModel):
     def __init__(
         self,
+        agui_content: main_models.InvokeAssistantResponseBodyMessagesContentAguiContent = None,
         card_callback: main_models.InvokeAssistantResponseBodyMessagesContentCardCallback = None,
         ding_card: main_models.InvokeAssistantResponseBodyMessagesContentDingCard = None,
         ding_normal_card: main_models.InvokeAssistantResponseBodyMessagesContentDingNormalCard = None,
@@ -629,6 +630,7 @@ class InvokeAssistantResponseBodyMessagesContent(DaraModel):
         text: main_models.InvokeAssistantResponseBodyMessagesContentText = None,
         type: str = None,
     ):
+        self.agui_content = agui_content
         self.card_callback = card_callback
         self.ding_card = ding_card
         self.ding_normal_card = ding_normal_card
@@ -639,6 +641,8 @@ class InvokeAssistantResponseBodyMessagesContent(DaraModel):
         self.type = type
 
     def validate(self):
+        if self.agui_content:
+            self.agui_content.validate()
         if self.card_callback:
             self.card_callback.validate()
         if self.ding_card:
@@ -657,6 +661,9 @@ class InvokeAssistantResponseBodyMessagesContent(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.agui_content is not None:
+            result['aguiContent'] = self.agui_content.to_map()
+
         if self.card_callback is not None:
             result['cardCallback'] = self.card_callback.to_map()
 
@@ -682,6 +689,10 @@ class InvokeAssistantResponseBodyMessagesContent(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('aguiContent') is not None:
+            temp_model = main_models.InvokeAssistantResponseBodyMessagesContentAguiContent()
+            self.agui_content = temp_model.from_map(m.get('aguiContent'))
+
         if m.get('cardCallback') is not None:
             temp_model = main_models.InvokeAssistantResponseBodyMessagesContentCardCallback()
             self.card_callback = temp_model.from_map(m.get('cardCallback'))
@@ -1490,6 +1501,108 @@ class InvokeAssistantResponseBodyMessagesContentCardCallback(DaraModel):
 
         if m.get('relatedMessageId') is not None:
             self.related_message_id = m.get('relatedMessageId')
+
+        return self
+
+class InvokeAssistantResponseBodyMessagesContentAguiContent(DaraModel):
+    def __init__(
+        self,
+        agui_event_list: List[main_models.InvokeAssistantResponseBodyMessagesContentAguiContentAguiEventList] = None,
+    ):
+        self.agui_event_list = agui_event_list
+
+    def validate(self):
+        if self.agui_event_list:
+            for v1 in self.agui_event_list:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        result['aguiEventList'] = []
+        if self.agui_event_list is not None:
+            for k1 in self.agui_event_list:
+                result['aguiEventList'].append(k1.to_map() if k1 else None)
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.agui_event_list = []
+        if m.get('aguiEventList') is not None:
+            for k1 in m.get('aguiEventList'):
+                temp_model = main_models.InvokeAssistantResponseBodyMessagesContentAguiContentAguiEventList()
+                self.agui_event_list.append(temp_model.from_map(k1))
+
+        return self
+
+class InvokeAssistantResponseBodyMessagesContentAguiContentAguiEventList(DaraModel):
+    def __init__(
+        self,
+        activity_type: str = None,
+        content: Any = None,
+        message_id: str = None,
+        replace: bool = None,
+        timestamp: int = None,
+        type: str = None,
+    ):
+        self.activity_type = activity_type
+        self.content = content
+        self.message_id = message_id
+        self.replace = replace
+        self.timestamp = timestamp
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.activity_type is not None:
+            result['activityType'] = self.activity_type
+
+        if self.content is not None:
+            result['content'] = self.content
+
+        if self.message_id is not None:
+            result['messageId'] = self.message_id
+
+        if self.replace is not None:
+            result['replace'] = self.replace
+
+        if self.timestamp is not None:
+            result['timestamp'] = self.timestamp
+
+        if self.type is not None:
+            result['type'] = self.type
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('activityType') is not None:
+            self.activity_type = m.get('activityType')
+
+        if m.get('content') is not None:
+            self.content = m.get('content')
+
+        if m.get('messageId') is not None:
+            self.message_id = m.get('messageId')
+
+        if m.get('replace') is not None:
+            self.replace = m.get('replace')
+
+        if m.get('timestamp') is not None:
+            self.timestamp = m.get('timestamp')
+
+        if m.get('type') is not None:
+            self.type = m.get('type')
 
         return self
 
