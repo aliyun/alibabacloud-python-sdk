@@ -1,3 +1,17 @@
+2026-05-15 Version: 2.8.3
+- Update API CreateParameterSet: add request parameters body.parameters.$.secret.
+- Update API CreateTask: add request parameters body.parameterSetIds.
+- Update API GetJob: add response parameters Body.job.allParameters.
+- Update API GetParameterSet: add response parameters Body.parameterSet.parameters.$.secret.
+- Update API GetStackDeployments: add response parameters Body.deployments.$.parameters.$.sensitive.
+- Update API ListParameterSets: add request parameters kmsKeyId.
+- Update API ListParameterSets: add response parameters Body.parameterSets.$.parameters.$.secret.
+- Update API ListStackConfigs: add response parameters Body.configs.$.componentConfig.variable.$.sensitive.
+- Update API ListStacks: add request parameters kmsKeyId.
+- Update API ListTasks: add request parameters kmsKeyId.
+- Update API UpdateParameterSetAttribute: add request parameters body.parameters.$.secret.
+
+
 2026-04-21 Version: 2.8.2
 - Update API ListResourceTypes: add response parameters Body.resourceTypes.$.resourceType.
 

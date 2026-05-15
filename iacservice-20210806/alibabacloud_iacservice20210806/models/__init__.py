@@ -322,6 +322,7 @@ from ._get_detect_config_response_body import GetDetectConfigResponseBodyDetectC
 from ._get_group_response_body import GetGroupResponseBodyGroupNotifyConfig
 from ._get_group_response_body import GetGroupResponseBodyGroupTriggerConfig
 from ._get_group_response_body import GetGroupResponseBodyGroup
+from ._get_job_response_body import GetJobResponseBodyJobAllParameters
 from ._get_job_response_body import GetJobResponseBodyJobAssertCheckDetail
 from ._get_job_response_body import GetJobResponseBodyJobConfig
 from ._get_job_response_body import GetJobResponseBodyJob
@@ -751,6 +752,7 @@ __all__ = [
     GetGroupResponseBodyGroupNotifyConfig,
     GetGroupResponseBodyGroupTriggerConfig,
     GetGroupResponseBodyGroup,
+    GetJobResponseBodyJobAllParameters,
     GetJobResponseBodyJobAssertCheckDetail,
     GetJobResponseBodyJobConfig,
     GetJobResponseBodyJob,

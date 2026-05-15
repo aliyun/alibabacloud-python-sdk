@@ -428,11 +428,13 @@ class ListStackConfigsResponseBodyConfigsComponentConfigVariable(DaraModel):
         default: str = None,
         description: str = None,
         name: str = None,
+        sensitive: bool = None,
         type: str = None,
     ):
         self.default = default
         self.description = description
         self.name = name
+        self.sensitive = sensitive
         self.type = type
 
     def validate(self):
@@ -452,6 +454,9 @@ class ListStackConfigsResponseBodyConfigsComponentConfigVariable(DaraModel):
         if self.name is not None:
             result['name'] = self.name
 
+        if self.sensitive is not None:
+            result['sensitive'] = self.sensitive
+
         if self.type is not None:
             result['type'] = self.type
 
@@ -467,6 +472,9 @@ class ListStackConfigsResponseBodyConfigsComponentConfigVariable(DaraModel):
 
         if m.get('name') is not None:
             self.name = m.get('name')
+
+        if m.get('sensitive') is not None:
+            self.sensitive = m.get('sensitive')
 
         if m.get('type') is not None:
             self.type = m.get('type')

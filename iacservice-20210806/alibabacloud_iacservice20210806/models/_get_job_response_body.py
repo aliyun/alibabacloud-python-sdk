@@ -47,6 +47,7 @@ class GetJobResponseBody(DaraModel):
 class GetJobResponseBodyJob(DaraModel):
     def __init__(
         self,
+        all_parameters: List[main_models.GetJobResponseBodyJobAllParameters] = None,
         assert_check_detail: List[main_models.GetJobResponseBodyJobAssertCheckDetail] = None,
         config: main_models.GetJobResponseBodyJobConfig = None,
         create_time: str = None,
@@ -67,6 +68,7 @@ class GetJobResponseBodyJob(DaraModel):
         task_type: str = None,
         terraform_provider_version: str = None,
     ):
+        self.all_parameters = all_parameters
         self.assert_check_detail = assert_check_detail
         self.config = config
         self.create_time = create_time
@@ -88,6 +90,10 @@ class GetJobResponseBodyJob(DaraModel):
         self.terraform_provider_version = terraform_provider_version
 
     def validate(self):
+        if self.all_parameters:
+            for v1 in self.all_parameters:
+                 if v1:
+                    v1.validate()
         if self.assert_check_detail:
             for v1 in self.assert_check_detail:
                  if v1:
@@ -104,6 +110,11 @@ class GetJobResponseBodyJob(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        result['allParameters'] = []
+        if self.all_parameters is not None:
+            for k1 in self.all_parameters:
+                result['allParameters'].append(k1.to_map() if k1 else None)
+
         result['assertCheckDetail'] = []
         if self.assert_check_detail is not None:
             for k1 in self.assert_check_detail:
@@ -169,6 +180,12 @@ class GetJobResponseBodyJob(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.all_parameters = []
+        if m.get('allParameters') is not None:
+            for k1 in m.get('allParameters'):
+                temp_model = main_models.GetJobResponseBodyJobAllParameters()
+                self.all_parameters.append(temp_model.from_map(k1))
+
         self.assert_check_detail = []
         if m.get('assertCheckDetail') is not None:
             for k1 in m.get('assertCheckDetail'):
@@ -350,6 +367,49 @@ class GetJobResponseBodyJobAssertCheckDetail(DaraModel):
 
         if m.get('type') is not None:
             self.type = m.get('type')
+
+        return self
+
+class GetJobResponseBodyJobAllParameters(DaraModel):
+    def __init__(
+        self,
+        name: str = None,
+        secret: bool = None,
+        value: str = None,
+    ):
+        self.name = name
+        self.secret = secret
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.name is not None:
+            result['name'] = self.name
+
+        if self.secret is not None:
+            result['secret'] = self.secret
+
+        if self.value is not None:
+            result['value'] = self.value
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('name') is not None:
+            self.name = m.get('name')
+
+        if m.get('secret') is not None:
+            self.secret = m.get('secret')
+
+        if m.get('value') is not None:
+            self.value = m.get('value')
 
         return self
 

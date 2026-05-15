@@ -9,6 +9,7 @@ class ListTasksShrinkRequest(DaraModel):
         self,
         group_id: str = None,
         keyword: str = None,
+        kms_key_id: str = None,
         module_id: str = None,
         page_number: int = None,
         page_size: int = None,
@@ -19,6 +20,7 @@ class ListTasksShrinkRequest(DaraModel):
     ):
         self.group_id = group_id
         self.keyword = keyword
+        self.kms_key_id = kms_key_id
         self.module_id = module_id
         self.page_number = page_number
         self.page_size = page_size
@@ -40,6 +42,9 @@ class ListTasksShrinkRequest(DaraModel):
 
         if self.keyword is not None:
             result['keyword'] = self.keyword
+
+        if self.kms_key_id is not None:
+            result['kmsKeyId'] = self.kms_key_id
 
         if self.module_id is not None:
             result['moduleId'] = self.module_id
@@ -71,6 +76,9 @@ class ListTasksShrinkRequest(DaraModel):
 
         if m.get('keyword') is not None:
             self.keyword = m.get('keyword')
+
+        if m.get('kmsKeyId') is not None:
+            self.kms_key_id = m.get('kmsKeyId')
 
         if m.get('moduleId') is not None:
             self.module_id = m.get('moduleId')

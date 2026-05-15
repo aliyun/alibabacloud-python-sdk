@@ -381,12 +381,14 @@ class GetStackDeploymentsResponseBodyDeploymentsParameters(DaraModel):
         default_value: str = None,
         description: str = None,
         name: str = None,
+        sensitive: bool = None,
         type: str = None,
         value: str = None,
     ):
         self.default_value = default_value
         self.description = description
         self.name = name
+        self.sensitive = sensitive
         self.type = type
         self.value = value
 
@@ -407,6 +409,9 @@ class GetStackDeploymentsResponseBodyDeploymentsParameters(DaraModel):
         if self.name is not None:
             result['name'] = self.name
 
+        if self.sensitive is not None:
+            result['sensitive'] = self.sensitive
+
         if self.type is not None:
             result['type'] = self.type
 
@@ -425,6 +430,9 @@ class GetStackDeploymentsResponseBodyDeploymentsParameters(DaraModel):
 
         if m.get('name') is not None:
             self.name = m.get('name')
+
+        if m.get('sensitive') is not None:
+            self.sensitive = m.get('sensitive')
 
         if m.get('type') is not None:
             self.type = m.get('type')

@@ -8,6 +8,7 @@ class ListStacksRequest(DaraModel):
     def __init__(
         self,
         keyword: str = None,
+        kms_key_id: str = None,
         max_results: int = None,
         next_token: str = None,
         page_number: int = None,
@@ -15,6 +16,7 @@ class ListStacksRequest(DaraModel):
         status: str = None,
     ):
         self.keyword = keyword
+        self.kms_key_id = kms_key_id
         self.max_results = max_results
         self.next_token = next_token
         self.page_number = page_number
@@ -31,6 +33,9 @@ class ListStacksRequest(DaraModel):
             result = _map
         if self.keyword is not None:
             result['keyword'] = self.keyword
+
+        if self.kms_key_id is not None:
+            result['kmsKeyId'] = self.kms_key_id
 
         if self.max_results is not None:
             result['maxResults'] = self.max_results
@@ -53,6 +58,9 @@ class ListStacksRequest(DaraModel):
         m = m or dict()
         if m.get('keyword') is not None:
             self.keyword = m.get('keyword')
+
+        if m.get('kmsKeyId') is not None:
+            self.kms_key_id = m.get('kmsKeyId')
 
         if m.get('maxResults') is not None:
             self.max_results = m.get('maxResults')

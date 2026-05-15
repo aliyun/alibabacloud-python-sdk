@@ -1754,6 +1754,8 @@ class Client(OpenApiClient):
             body['moduleVersion'] = request.module_version
         if not DaraCore.is_null(request.name):
             body['name'] = request.name
+        if not DaraCore.is_null(request.parameter_set_ids):
+            body['parameterSetIds'] = request.parameter_set_ids
         if not DaraCore.is_null(request.protection_strategy):
             body['protectionStrategy'] = request.protection_strategy
         if not DaraCore.is_null(request.ram_role):
@@ -1814,6 +1816,8 @@ class Client(OpenApiClient):
             body['moduleVersion'] = request.module_version
         if not DaraCore.is_null(request.name):
             body['name'] = request.name
+        if not DaraCore.is_null(request.parameter_set_ids):
+            body['parameterSetIds'] = request.parameter_set_ids
         if not DaraCore.is_null(request.protection_strategy):
             body['protectionStrategy'] = request.protection_strategy
         if not DaraCore.is_null(request.ram_role):
@@ -5850,6 +5854,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.keyword):
             query['keyword'] = request.keyword
+        if not DaraCore.is_null(request.kms_key_id):
+            query['kmsKeyId'] = request.kms_key_id
         if not DaraCore.is_null(request.page_number):
             query['pageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
@@ -5884,6 +5890,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.keyword):
             query['keyword'] = request.keyword
+        if not DaraCore.is_null(request.kms_key_id):
+            query['kmsKeyId'] = request.kms_key_id
         if not DaraCore.is_null(request.page_number):
             query['pageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
@@ -6894,6 +6902,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.keyword):
             query['keyword'] = request.keyword
+        if not DaraCore.is_null(request.kms_key_id):
+            query['kmsKeyId'] = request.kms_key_id
         if not DaraCore.is_null(request.max_results):
             query['maxResults'] = request.max_results
         if not DaraCore.is_null(request.next_token):
@@ -6934,6 +6944,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.keyword):
             query['keyword'] = request.keyword
+        if not DaraCore.is_null(request.kms_key_id):
+            query['kmsKeyId'] = request.kms_key_id
         if not DaraCore.is_null(request.max_results):
             query['maxResults'] = request.max_results
         if not DaraCore.is_null(request.next_token):
@@ -6996,6 +7008,8 @@ class Client(OpenApiClient):
             query['groupId'] = request.group_id
         if not DaraCore.is_null(request.keyword):
             query['keyword'] = request.keyword
+        if not DaraCore.is_null(request.kms_key_id):
+            query['kmsKeyId'] = request.kms_key_id
         if not DaraCore.is_null(request.module_id):
             query['moduleId'] = request.module_id
         if not DaraCore.is_null(request.page_number):
@@ -7046,6 +7060,8 @@ class Client(OpenApiClient):
             query['groupId'] = request.group_id
         if not DaraCore.is_null(request.keyword):
             query['keyword'] = request.keyword
+        if not DaraCore.is_null(request.kms_key_id):
+            query['kmsKeyId'] = request.kms_key_id
         if not DaraCore.is_null(request.module_id):
             query['moduleId'] = request.module_id
         if not DaraCore.is_null(request.page_number):

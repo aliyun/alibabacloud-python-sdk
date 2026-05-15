@@ -175,11 +175,13 @@ class GetParameterSetResponseBodyParameterSetParameters(DaraModel):
     def __init__(
         self,
         name: str = None,
+        secret: bool = None,
         status: str = None,
         type: str = None,
         value: Any = None,
     ):
         self.name = name
+        self.secret = secret
         self.status = status
         self.type = type
         self.value = value
@@ -194,6 +196,9 @@ class GetParameterSetResponseBodyParameterSetParameters(DaraModel):
             result = _map
         if self.name is not None:
             result['name'] = self.name
+
+        if self.secret is not None:
+            result['secret'] = self.secret
 
         if self.status is not None:
             result['status'] = self.status
@@ -210,6 +215,9 @@ class GetParameterSetResponseBodyParameterSetParameters(DaraModel):
         m = m or dict()
         if m.get('name') is not None:
             self.name = m.get('name')
+
+        if m.get('secret') is not None:
+            self.secret = m.get('secret')
 
         if m.get('status') is not None:
             self.status = m.get('status')

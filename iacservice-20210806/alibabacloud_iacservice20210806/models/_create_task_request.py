@@ -19,6 +19,7 @@ class CreateTaskRequest(DaraModel):
         module_id: str = None,
         module_version: str = None,
         name: str = None,
+        parameter_set_ids: List[str] = None,
         protection_strategy: List[str] = None,
         ram_role: str = None,
         skip_property_validation: bool = None,
@@ -40,6 +41,7 @@ class CreateTaskRequest(DaraModel):
         self.module_version = module_version
         # This parameter is required.
         self.name = name
+        self.parameter_set_ids = parameter_set_ids
         self.protection_strategy = protection_strategy
         self.ram_role = ram_role
         self.skip_property_validation = skip_property_validation
@@ -89,6 +91,9 @@ class CreateTaskRequest(DaraModel):
 
         if self.name is not None:
             result['name'] = self.name
+
+        if self.parameter_set_ids is not None:
+            result['parameterSetIds'] = self.parameter_set_ids
 
         if self.protection_strategy is not None:
             result['protectionStrategy'] = self.protection_strategy
@@ -144,6 +149,9 @@ class CreateTaskRequest(DaraModel):
 
         if m.get('name') is not None:
             self.name = m.get('name')
+
+        if m.get('parameterSetIds') is not None:
+            self.parameter_set_ids = m.get('parameterSetIds')
 
         if m.get('protectionStrategy') is not None:
             self.protection_strategy = m.get('protectionStrategy')

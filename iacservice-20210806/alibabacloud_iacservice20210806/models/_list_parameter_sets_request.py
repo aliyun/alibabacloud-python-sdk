@@ -8,10 +8,12 @@ class ListParameterSetsRequest(DaraModel):
     def __init__(
         self,
         keyword: str = None,
+        kms_key_id: str = None,
         page_number: int = None,
         page_size: int = None,
     ):
         self.keyword = keyword
+        self.kms_key_id = kms_key_id
         self.page_number = page_number
         self.page_size = page_size
 
@@ -26,6 +28,9 @@ class ListParameterSetsRequest(DaraModel):
         if self.keyword is not None:
             result['keyword'] = self.keyword
 
+        if self.kms_key_id is not None:
+            result['kmsKeyId'] = self.kms_key_id
+
         if self.page_number is not None:
             result['pageNumber'] = self.page_number
 
@@ -38,6 +43,9 @@ class ListParameterSetsRequest(DaraModel):
         m = m or dict()
         if m.get('keyword') is not None:
             self.keyword = m.get('keyword')
+
+        if m.get('kmsKeyId') is not None:
+            self.kms_key_id = m.get('kmsKeyId')
 
         if m.get('pageNumber') is not None:
             self.page_number = m.get('pageNumber')
