@@ -10,6 +10,7 @@ from darabonba.model import DaraModel
 class CreateInstanceRequest(DaraModel):
     def __init__(
         self,
+        auth_model: str = None,
         auto_renew: bool = None,
         auto_renew_period: int = None,
         client_token: str = None,
@@ -18,6 +19,7 @@ class CreateInstanceRequest(DaraModel):
         instance_name: str = None,
         instance_type: str = None,
         kms_key_id: str = None,
+        listener_mode: str = None,
         max_connections: int = None,
         max_eip_tps: int = None,
         max_private_tps: int = None,
@@ -29,13 +31,18 @@ class CreateInstanceRequest(DaraModel):
         renew_status: str = None,
         renewal_duration_unit: str = None,
         resource_group_id: str = None,
+        security_group_id: str = None,
         serverless_charge_type: str = None,
+        serverless_switch: bool = None,
         storage_size: int = None,
         support_eip: bool = None,
         support_tracing: bool = None,
         tags: List[main_models.CreateInstanceRequestTags] = None,
         tracing_storage_time: int = None,
+        vpc_id: str = None,
+        vswitch_ids: List[str] = None,
     ):
+        self.auth_model = auth_model
         # Specifies whether to enable auto-renewal. Valid values:
         # 
         # *   true: enables auto-renewal.
@@ -68,6 +75,7 @@ class CreateInstanceRequest(DaraModel):
         # *   The key must be used for encryption and decryption.
         # *   After the key is expired or deleted, you cannot read or write data and exceptions can occur in the ApsaraMQ for RabbitMQ instance.
         self.kms_key_id = kms_key_id
+        self.listener_mode = listener_mode
         # The maximum number of connections that can be established to the instance.
         # 
         # Configure this parameter based on the values provided on the [ApsaraMQ for RocketMQ buy page](https://common-buy.aliyun.com/?commodityCode=ons_onsproxy_pre).
@@ -116,10 +124,13 @@ class CreateInstanceRequest(DaraModel):
         self.renewal_duration_unit = renewal_duration_unit
         # The ID of the resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
+        # This parameter is required.
+        self.security_group_id = security_group_id
         # The billing method of the serverless instance. Valid value:
         # 
         # *   onDemand: You are charged based on your actual usage.
         self.serverless_charge_type = serverless_charge_type
+        self.serverless_switch = serverless_switch
         # The storage capacity. Unit: GB. Valid values:
         # 
         # *   Professional Edition and Enterprise Edition instances: Set the value to 0.
@@ -153,6 +164,10 @@ class CreateInstanceRequest(DaraModel):
         # 
         # This parameter is valid only if you set SupportTracing to true.
         self.tracing_storage_time = tracing_storage_time
+        # This parameter is required.
+        self.vpc_id = vpc_id
+        # This parameter is required.
+        self.vswitch_ids = vswitch_ids
 
     def validate(self):
         if self.tags:
@@ -165,6 +180,9 @@ class CreateInstanceRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.auth_model is not None:
+            result['AuthModel'] = self.auth_model
+
         if self.auto_renew is not None:
             result['AutoRenew'] = self.auto_renew
 
@@ -188,6 +206,9 @@ class CreateInstanceRequest(DaraModel):
 
         if self.kms_key_id is not None:
             result['KmsKeyId'] = self.kms_key_id
+
+        if self.listener_mode is not None:
+            result['ListenerMode'] = self.listener_mode
 
         if self.max_connections is not None:
             result['MaxConnections'] = self.max_connections
@@ -222,8 +243,14 @@ class CreateInstanceRequest(DaraModel):
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
 
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
+
         if self.serverless_charge_type is not None:
             result['ServerlessChargeType'] = self.serverless_charge_type
+
+        if self.serverless_switch is not None:
+            result['ServerlessSwitch'] = self.serverless_switch
 
         if self.storage_size is not None:
             result['StorageSize'] = self.storage_size
@@ -242,10 +269,19 @@ class CreateInstanceRequest(DaraModel):
         if self.tracing_storage_time is not None:
             result['TracingStorageTime'] = self.tracing_storage_time
 
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+
+        if self.vswitch_ids is not None:
+            result['VswitchIds'] = self.vswitch_ids
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AuthModel') is not None:
+            self.auth_model = m.get('AuthModel')
+
         if m.get('AutoRenew') is not None:
             self.auto_renew = m.get('AutoRenew')
 
@@ -269,6 +305,9 @@ class CreateInstanceRequest(DaraModel):
 
         if m.get('KmsKeyId') is not None:
             self.kms_key_id = m.get('KmsKeyId')
+
+        if m.get('ListenerMode') is not None:
+            self.listener_mode = m.get('ListenerMode')
 
         if m.get('MaxConnections') is not None:
             self.max_connections = m.get('MaxConnections')
@@ -303,8 +342,14 @@ class CreateInstanceRequest(DaraModel):
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
 
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
+
         if m.get('ServerlessChargeType') is not None:
             self.serverless_charge_type = m.get('ServerlessChargeType')
+
+        if m.get('ServerlessSwitch') is not None:
+            self.serverless_switch = m.get('ServerlessSwitch')
 
         if m.get('StorageSize') is not None:
             self.storage_size = m.get('StorageSize')
@@ -323,6 +368,12 @@ class CreateInstanceRequest(DaraModel):
 
         if m.get('TracingStorageTime') is not None:
             self.tracing_storage_time = m.get('TracingStorageTime')
+
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+
+        if m.get('VswitchIds') is not None:
+            self.vswitch_ids = m.get('VswitchIds')
 
         return self
 

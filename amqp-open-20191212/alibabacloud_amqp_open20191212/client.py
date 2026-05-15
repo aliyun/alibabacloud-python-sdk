@@ -336,7 +336,11 @@ class Client(OpenApiClient):
         Utils.convert(tmp_req, request)
         if not DaraCore.is_null(tmp_req.tags):
             request.tags_shrink = Utils.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        if not DaraCore.is_null(tmp_req.vswitch_ids):
+            request.vswitch_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.vswitch_ids, 'VswitchIds', 'json')
         query = {}
+        if not DaraCore.is_null(request.auth_model):
+            query['AuthModel'] = request.auth_model
         if not DaraCore.is_null(request.auto_renew):
             query['AutoRenew'] = request.auto_renew
         if not DaraCore.is_null(request.auto_renew_period):
@@ -353,6 +357,8 @@ class Client(OpenApiClient):
             query['InstanceType'] = request.instance_type
         if not DaraCore.is_null(request.kms_key_id):
             query['KmsKeyId'] = request.kms_key_id
+        if not DaraCore.is_null(request.listener_mode):
+            query['ListenerMode'] = request.listener_mode
         if not DaraCore.is_null(request.max_connections):
             query['MaxConnections'] = request.max_connections
         if not DaraCore.is_null(request.max_eip_tps):
@@ -375,8 +381,12 @@ class Client(OpenApiClient):
             query['RenewalDurationUnit'] = request.renewal_duration_unit
         if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.security_group_id):
+            query['SecurityGroupId'] = request.security_group_id
         if not DaraCore.is_null(request.serverless_charge_type):
             query['ServerlessChargeType'] = request.serverless_charge_type
+        if not DaraCore.is_null(request.serverless_switch):
+            query['ServerlessSwitch'] = request.serverless_switch
         if not DaraCore.is_null(request.storage_size):
             query['StorageSize'] = request.storage_size
         if not DaraCore.is_null(request.support_eip):
@@ -387,6 +397,10 @@ class Client(OpenApiClient):
             query['Tags'] = request.tags_shrink
         if not DaraCore.is_null(request.tracing_storage_time):
             query['TracingStorageTime'] = request.tracing_storage_time
+        if not DaraCore.is_null(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not DaraCore.is_null(request.vswitch_ids_shrink):
+            query['VswitchIds'] = request.vswitch_ids_shrink
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -416,7 +430,11 @@ class Client(OpenApiClient):
         Utils.convert(tmp_req, request)
         if not DaraCore.is_null(tmp_req.tags):
             request.tags_shrink = Utils.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        if not DaraCore.is_null(tmp_req.vswitch_ids):
+            request.vswitch_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.vswitch_ids, 'VswitchIds', 'json')
         query = {}
+        if not DaraCore.is_null(request.auth_model):
+            query['AuthModel'] = request.auth_model
         if not DaraCore.is_null(request.auto_renew):
             query['AutoRenew'] = request.auto_renew
         if not DaraCore.is_null(request.auto_renew_period):
@@ -433,6 +451,8 @@ class Client(OpenApiClient):
             query['InstanceType'] = request.instance_type
         if not DaraCore.is_null(request.kms_key_id):
             query['KmsKeyId'] = request.kms_key_id
+        if not DaraCore.is_null(request.listener_mode):
+            query['ListenerMode'] = request.listener_mode
         if not DaraCore.is_null(request.max_connections):
             query['MaxConnections'] = request.max_connections
         if not DaraCore.is_null(request.max_eip_tps):
@@ -455,8 +475,12 @@ class Client(OpenApiClient):
             query['RenewalDurationUnit'] = request.renewal_duration_unit
         if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.security_group_id):
+            query['SecurityGroupId'] = request.security_group_id
         if not DaraCore.is_null(request.serverless_charge_type):
             query['ServerlessChargeType'] = request.serverless_charge_type
+        if not DaraCore.is_null(request.serverless_switch):
+            query['ServerlessSwitch'] = request.serverless_switch
         if not DaraCore.is_null(request.storage_size):
             query['StorageSize'] = request.storage_size
         if not DaraCore.is_null(request.support_eip):
@@ -467,6 +491,10 @@ class Client(OpenApiClient):
             query['Tags'] = request.tags_shrink
         if not DaraCore.is_null(request.tracing_storage_time):
             query['TracingStorageTime'] = request.tracing_storage_time
+        if not DaraCore.is_null(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not DaraCore.is_null(request.vswitch_ids_shrink):
+            query['VswitchIds'] = request.vswitch_ids_shrink
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )

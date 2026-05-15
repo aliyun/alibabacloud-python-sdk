@@ -56,6 +56,7 @@ class GetInstanceResponseBodyData(DaraModel):
         instance_name: str = None,
         instance_type: str = None,
         kms_key_id: str = None,
+        listener_mode: str = None,
         max_connections: int = None,
         max_eip_tps: int = None,
         max_queue: int = None,
@@ -67,12 +68,16 @@ class GetInstanceResponseBodyData(DaraModel):
         provisioned_capacity: int = None,
         public_endpoint: str = None,
         resource_group_id: str = None,
+        security_group_id: str = None,
+        serverless_switch: bool = None,
         status: str = None,
         storage_size: int = None,
         support_eip: bool = None,
         support_tracing: bool = None,
         tags: List[main_models.GetInstanceResponseBodyDataTags] = None,
         tracing_storage_time: int = None,
+        vpc_id: str = None,
+        vswitch_ids: List[str] = None,
     ):
         self.auto_renew_instance = auto_renew_instance
         self.classic_endpoint = classic_endpoint
@@ -83,6 +88,7 @@ class GetInstanceResponseBodyData(DaraModel):
         self.instance_name = instance_name
         self.instance_type = instance_type
         self.kms_key_id = kms_key_id
+        self.listener_mode = listener_mode
         self.max_connections = max_connections
         self.max_eip_tps = max_eip_tps
         self.max_queue = max_queue
@@ -94,12 +100,16 @@ class GetInstanceResponseBodyData(DaraModel):
         self.provisioned_capacity = provisioned_capacity
         self.public_endpoint = public_endpoint
         self.resource_group_id = resource_group_id
+        self.security_group_id = security_group_id
+        self.serverless_switch = serverless_switch
         self.status = status
         self.storage_size = storage_size
         self.support_eip = support_eip
         self.support_tracing = support_tracing
         self.tags = tags
         self.tracing_storage_time = tracing_storage_time
+        self.vpc_id = vpc_id
+        self.vswitch_ids = vswitch_ids
 
     def validate(self):
         if self.tags:
@@ -139,6 +149,9 @@ class GetInstanceResponseBodyData(DaraModel):
         if self.kms_key_id is not None:
             result['KmsKeyId'] = self.kms_key_id
 
+        if self.listener_mode is not None:
+            result['ListenerMode'] = self.listener_mode
+
         if self.max_connections is not None:
             result['MaxConnections'] = self.max_connections
 
@@ -172,6 +185,12 @@ class GetInstanceResponseBodyData(DaraModel):
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
 
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
+
+        if self.serverless_switch is not None:
+            result['ServerlessSwitch'] = self.serverless_switch
+
         if self.status is not None:
             result['Status'] = self.status
 
@@ -191,6 +210,12 @@ class GetInstanceResponseBodyData(DaraModel):
 
         if self.tracing_storage_time is not None:
             result['TracingStorageTime'] = self.tracing_storage_time
+
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+
+        if self.vswitch_ids is not None:
+            result['VswitchIds'] = self.vswitch_ids
 
         return result
 
@@ -222,6 +247,9 @@ class GetInstanceResponseBodyData(DaraModel):
 
         if m.get('KmsKeyId') is not None:
             self.kms_key_id = m.get('KmsKeyId')
+
+        if m.get('ListenerMode') is not None:
+            self.listener_mode = m.get('ListenerMode')
 
         if m.get('MaxConnections') is not None:
             self.max_connections = m.get('MaxConnections')
@@ -256,6 +284,12 @@ class GetInstanceResponseBodyData(DaraModel):
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
 
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
+
+        if m.get('ServerlessSwitch') is not None:
+            self.serverless_switch = m.get('ServerlessSwitch')
+
         if m.get('Status') is not None:
             self.status = m.get('Status')
 
@@ -276,6 +310,12 @@ class GetInstanceResponseBodyData(DaraModel):
 
         if m.get('TracingStorageTime') is not None:
             self.tracing_storage_time = m.get('TracingStorageTime')
+
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+
+        if m.get('VswitchIds') is not None:
+            self.vswitch_ids = m.get('VswitchIds')
 
         return self
 
