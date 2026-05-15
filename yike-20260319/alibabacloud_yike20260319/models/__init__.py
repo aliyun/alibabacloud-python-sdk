@@ -35,6 +35,9 @@ from ._get_yike_aiapp_job_response import GetYikeAIAppJobResponse
 from ._get_yike_asset_media_info_request import GetYikeAssetMediaInfoRequest
 from ._get_yike_asset_media_info_response_body import GetYikeAssetMediaInfoResponseBody
 from ._get_yike_asset_media_info_response import GetYikeAssetMediaInfoResponse
+from ._get_yike_prompt_expansion_voice_fix_job_request import GetYikePromptExpansionVoiceFixJobRequest
+from ._get_yike_prompt_expansion_voice_fix_job_response_body import GetYikePromptExpansionVoiceFixJobResponseBody
+from ._get_yike_prompt_expansion_voice_fix_job_response import GetYikePromptExpansionVoiceFixJobResponse
 from ._get_yike_storyboard_job_request import GetYikeStoryboardJobRequest
 from ._get_yike_storyboard_job_response_body import GetYikeStoryboardJobResponseBody
 from ._get_yike_storyboard_job_response import GetYikeStoryboardJobResponse
@@ -77,6 +80,9 @@ from ._sub_yike_user_credit_response import SubYikeUserCreditResponse
 from ._submit_yike_aiapp_job_request import SubmitYikeAIAppJobRequest
 from ._submit_yike_aiapp_job_response_body import SubmitYikeAIAppJobResponseBody
 from ._submit_yike_aiapp_job_response import SubmitYikeAIAppJobResponse
+from ._submit_yike_prompt_expansion_voice_fix_job_request import SubmitYikePromptExpansionVoiceFixJobRequest
+from ._submit_yike_prompt_expansion_voice_fix_job_response_body import SubmitYikePromptExpansionVoiceFixJobResponseBody
+from ._submit_yike_prompt_expansion_voice_fix_job_response import SubmitYikePromptExpansionVoiceFixJobResponse
 from ._submit_yike_storyboard_job_request import SubmitYikeStoryboardJobRequest
 from ._submit_yike_storyboard_job_response_body import SubmitYikeStoryboardJobResponseBody
 from ._submit_yike_storyboard_job_response import SubmitYikeStoryboardJobResponse
@@ -112,6 +118,7 @@ from ._get_yike_asset_media_info_response_body import GetYikeAssetMediaInfoRespo
 from ._get_yike_asset_media_info_response_body import GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoList
 from ._get_yike_asset_media_info_response_body import GetYikeAssetMediaInfoResponseBodyMediaInfoMediaBasicInfo
 from ._get_yike_asset_media_info_response_body import GetYikeAssetMediaInfoResponseBodyMediaInfo
+from ._get_yike_prompt_expansion_voice_fix_job_response_body import GetYikePromptExpansionVoiceFixJobResponseBodyJobResult
 from ._get_yike_storyboard_job_response_body import GetYikeStoryboardJobResponseBodyJobParams
 from ._get_yike_storyboard_job_response_body import GetYikeStoryboardJobResponseBodyJobResult
 from ._get_yike_user_response_body import GetYikeUserResponseBodyUserInfo
@@ -155,6 +162,9 @@ __all__ = [
     GetYikeAssetMediaInfoRequest,
     GetYikeAssetMediaInfoResponseBody,
     GetYikeAssetMediaInfoResponse,
+    GetYikePromptExpansionVoiceFixJobRequest,
+    GetYikePromptExpansionVoiceFixJobResponseBody,
+    GetYikePromptExpansionVoiceFixJobResponse,
     GetYikeStoryboardJobRequest,
     GetYikeStoryboardJobResponseBody,
     GetYikeStoryboardJobResponse,
@@ -197,6 +207,9 @@ __all__ = [
     SubmitYikeAIAppJobRequest,
     SubmitYikeAIAppJobResponseBody,
     SubmitYikeAIAppJobResponse,
+    SubmitYikePromptExpansionVoiceFixJobRequest,
+    SubmitYikePromptExpansionVoiceFixJobResponseBody,
+    SubmitYikePromptExpansionVoiceFixJobResponse,
     SubmitYikeStoryboardJobRequest,
     SubmitYikeStoryboardJobResponseBody,
     SubmitYikeStoryboardJobResponse,
@@ -232,6 +245,7 @@ __all__ = [
     GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoList,
     GetYikeAssetMediaInfoResponseBodyMediaInfoMediaBasicInfo,
     GetYikeAssetMediaInfoResponseBodyMediaInfo,
+    GetYikePromptExpansionVoiceFixJobResponseBodyJobResult,
     GetYikeStoryboardJobResponseBodyJobParams,
     GetYikeStoryboardJobResponseBodyJobResult,
     GetYikeUserResponseBodyUserInfo,

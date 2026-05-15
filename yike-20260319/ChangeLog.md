@@ -1,3 +1,8 @@
+2026-05-15 Version: 1.5.0
+- Support API GetYikePromptExpansionVoiceFixJob.
+- Support API SubmitYikePromptExpansionVoiceFixJob.
+
+
 2026-05-08 Version: 1.4.1
 - Update API SubmitYikeStoryboardJob: add request parameters KeepOriginDialogue.
 

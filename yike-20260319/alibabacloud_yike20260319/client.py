@@ -850,6 +850,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_yike_asset_media_info_with_options_async(request, runtime)
 
+    def get_yike_prompt_expansion_voice_fix_job_with_options(
+        self,
+        request: main_models.GetYikePromptExpansionVoiceFixJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetYikePromptExpansionVoiceFixJobResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.job_id):
+            body['JobId'] = request.job_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetYikePromptExpansionVoiceFixJob',
+            version = '2026-03-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetYikePromptExpansionVoiceFixJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_yike_prompt_expansion_voice_fix_job_with_options_async(
+        self,
+        request: main_models.GetYikePromptExpansionVoiceFixJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetYikePromptExpansionVoiceFixJobResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.job_id):
+            body['JobId'] = request.job_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetYikePromptExpansionVoiceFixJob',
+            version = '2026-03-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetYikePromptExpansionVoiceFixJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_yike_prompt_expansion_voice_fix_job(
+        self,
+        request: main_models.GetYikePromptExpansionVoiceFixJobRequest,
+    ) -> main_models.GetYikePromptExpansionVoiceFixJobResponse:
+        runtime = RuntimeOptions()
+        return self.get_yike_prompt_expansion_voice_fix_job_with_options(request, runtime)
+
+    async def get_yike_prompt_expansion_voice_fix_job_async(
+        self,
+        request: main_models.GetYikePromptExpansionVoiceFixJobRequest,
+    ) -> main_models.GetYikePromptExpansionVoiceFixJobResponse:
+        runtime = RuntimeOptions()
+        return await self.get_yike_prompt_expansion_voice_fix_job_with_options_async(request, runtime)
+
     def get_yike_storyboard_job_with_options(
         self,
         request: main_models.GetYikeStoryboardJobRequest,
@@ -1897,6 +1967,80 @@ class Client(OpenApiClient):
     ) -> main_models.SubmitYikeAIAppJobResponse:
         runtime = RuntimeOptions()
         return await self.submit_yike_aiapp_job_with_options_async(request, runtime)
+
+    def submit_yike_prompt_expansion_voice_fix_job_with_options(
+        self,
+        request: main_models.SubmitYikePromptExpansionVoiceFixJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitYikePromptExpansionVoiceFixJobResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.job_params):
+            body['JobParams'] = request.job_params
+        if not DaraCore.is_null(request.user_data):
+            body['UserData'] = request.user_data
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitYikePromptExpansionVoiceFixJob',
+            version = '2026-03-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitYikePromptExpansionVoiceFixJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_yike_prompt_expansion_voice_fix_job_with_options_async(
+        self,
+        request: main_models.SubmitYikePromptExpansionVoiceFixJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitYikePromptExpansionVoiceFixJobResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.job_params):
+            body['JobParams'] = request.job_params
+        if not DaraCore.is_null(request.user_data):
+            body['UserData'] = request.user_data
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitYikePromptExpansionVoiceFixJob',
+            version = '2026-03-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitYikePromptExpansionVoiceFixJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_yike_prompt_expansion_voice_fix_job(
+        self,
+        request: main_models.SubmitYikePromptExpansionVoiceFixJobRequest,
+    ) -> main_models.SubmitYikePromptExpansionVoiceFixJobResponse:
+        runtime = RuntimeOptions()
+        return self.submit_yike_prompt_expansion_voice_fix_job_with_options(request, runtime)
+
+    async def submit_yike_prompt_expansion_voice_fix_job_async(
+        self,
+        request: main_models.SubmitYikePromptExpansionVoiceFixJobRequest,
+    ) -> main_models.SubmitYikePromptExpansionVoiceFixJobResponse:
+        runtime = RuntimeOptions()
+        return await self.submit_yike_prompt_expansion_voice_fix_job_with_options_async(request, runtime)
 
     def submit_yike_storyboard_job_with_options(
         self,
