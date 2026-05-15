@@ -1,3 +1,11 @@
+2026-05-15 Version: 5.7.0
+- Support API CreateIMBot.
+- Support API DeleteIMBot.
+- Support API GetIMBot.
+- Support API ListIMBots.
+- Support API UpdateIMBot.
+
+
 2026-04-24 Version: 5.6.4
 - Generated python 2025-09-10 for AgentRun.
 

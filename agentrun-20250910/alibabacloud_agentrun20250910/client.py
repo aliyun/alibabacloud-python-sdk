@@ -763,6 +763,76 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_flow_endpoint_with_options_async(flow_name, request, headers, runtime)
 
+    def create_imbot_with_options(
+        self,
+        request: main_models.CreateIMBotRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateIMBotResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateIMBot',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/agents/im-bots',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateIMBotResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_imbot_with_options_async(
+        self,
+        request: main_models.CreateIMBotRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateIMBotResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateIMBot',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/agents/im-bots',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateIMBotResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_imbot(
+        self,
+        request: main_models.CreateIMBotRequest,
+    ) -> main_models.CreateIMBotResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_imbot_with_options(request, headers, runtime)
+
+    async def create_imbot_async(
+        self,
+        request: main_models.CreateIMBotRequest,
+    ) -> main_models.CreateIMBotResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_imbot_with_options_async(request, headers, runtime)
+
     def create_knowledge_base_with_options(
         self,
         request: main_models.CreateKnowledgeBaseRequest,
@@ -1946,6 +2016,78 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.delete_flow_version_with_options_async(flow_name, flow_version, request, headers, runtime)
+
+    def delete_imbot_with_options(
+        self,
+        im_bot_id: str,
+        request: main_models.DeleteIMBotRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteIMBotResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteIMBot',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/agents/im-bots/{DaraURL.percent_encode(im_bot_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteIMBotResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_imbot_with_options_async(
+        self,
+        im_bot_id: str,
+        request: main_models.DeleteIMBotRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteIMBotResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteIMBot',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/agents/im-bots/{DaraURL.percent_encode(im_bot_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteIMBotResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_imbot(
+        self,
+        im_bot_id: str,
+        request: main_models.DeleteIMBotRequest,
+    ) -> main_models.DeleteIMBotResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_imbot_with_options(im_bot_id, request, headers, runtime)
+
+    async def delete_imbot_async(
+        self,
+        im_bot_id: str,
+        request: main_models.DeleteIMBotRequest,
+    ) -> main_models.DeleteIMBotResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_imbot_with_options_async(im_bot_id, request, headers, runtime)
 
     def delete_knowledge_base_with_options(
         self,
@@ -3268,6 +3410,78 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.get_flow_version_with_options_async(flow_name, flow_version, request, headers, runtime)
+
+    def get_imbot_with_options(
+        self,
+        im_bot_id: str,
+        request: main_models.GetIMBotRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetIMBotResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetIMBot',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/agents/im-bots/{DaraURL.percent_encode(im_bot_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetIMBotResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_imbot_with_options_async(
+        self,
+        im_bot_id: str,
+        request: main_models.GetIMBotRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetIMBotResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetIMBot',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/agents/im-bots/{DaraURL.percent_encode(im_bot_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetIMBotResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_imbot(
+        self,
+        im_bot_id: str,
+        request: main_models.GetIMBotRequest,
+    ) -> main_models.GetIMBotResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_imbot_with_options(im_bot_id, request, headers, runtime)
+
+    async def get_imbot_async(
+        self,
+        im_bot_id: str,
+        request: main_models.GetIMBotRequest,
+    ) -> main_models.GetIMBotResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_imbot_with_options_async(im_bot_id, request, headers, runtime)
 
     def get_knowledge_base_with_options(
         self,
@@ -4786,6 +5000,102 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.list_flows_with_options_async(request, headers, runtime)
+
+    def list_imbots_with_options(
+        self,
+        request: main_models.ListIMBotsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListIMBotsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_runtime_id):
+            query['agentRuntimeId'] = request.agent_runtime_id
+        if not DaraCore.is_null(request.bot_biz_type):
+            query['botBizType'] = request.bot_biz_type
+        if not DaraCore.is_null(request.bot_name):
+            query['botName'] = request.bot_name
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.status):
+            query['status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListIMBots',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/agents/im-bots',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListIMBotsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_imbots_with_options_async(
+        self,
+        request: main_models.ListIMBotsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListIMBotsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_runtime_id):
+            query['agentRuntimeId'] = request.agent_runtime_id
+        if not DaraCore.is_null(request.bot_biz_type):
+            query['botBizType'] = request.bot_biz_type
+        if not DaraCore.is_null(request.bot_name):
+            query['botName'] = request.bot_name
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.status):
+            query['status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListIMBots',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/agents/im-bots',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListIMBotsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_imbots(
+        self,
+        request: main_models.ListIMBotsRequest,
+    ) -> main_models.ListIMBotsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_imbots_with_options(request, headers, runtime)
+
+    async def list_imbots_async(
+        self,
+        request: main_models.ListIMBotsRequest,
+    ) -> main_models.ListIMBotsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_imbots_with_options_async(request, headers, runtime)
 
     def list_knowledge_bases_with_options(
         self,
@@ -6584,6 +6894,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.update_flow_endpoint_with_options_async(flow_name, flow_endpoint_name, request, headers, runtime)
+
+    def update_imbot_with_options(
+        self,
+        im_bot_id: str,
+        request: main_models.UpdateIMBotRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateIMBotResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateIMBot',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/agents/im-bots/{DaraURL.percent_encode(im_bot_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateIMBotResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_imbot_with_options_async(
+        self,
+        im_bot_id: str,
+        request: main_models.UpdateIMBotRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateIMBotResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateIMBot',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/agents/im-bots/{DaraURL.percent_encode(im_bot_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateIMBotResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_imbot(
+        self,
+        im_bot_id: str,
+        request: main_models.UpdateIMBotRequest,
+    ) -> main_models.UpdateIMBotResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_imbot_with_options(im_bot_id, request, headers, runtime)
+
+    async def update_imbot_async(
+        self,
+        im_bot_id: str,
+        request: main_models.UpdateIMBotRequest,
+    ) -> main_models.UpdateIMBotResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_imbot_with_options_async(im_bot_id, request, headers, runtime)
 
     def update_knowledge_base_with_options(
         self,

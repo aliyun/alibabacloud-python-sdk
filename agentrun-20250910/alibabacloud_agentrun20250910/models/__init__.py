@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from ._access_denied_detail import AccessDeniedDetail
 from ._agent_endpoint_config import AgentEndpointConfig
+from ._agent_resource import AgentResource
 from ._agent_runtime import AgentRuntime
 from ._agent_runtime_endpoint import AgentRuntimeEndpoint
 from ._agent_runtime_endpoint_result import AgentRuntimeEndpointResult
@@ -45,6 +46,8 @@ from ._code_interpreter_session_config import CodeInterpreterSessionConfig
 from ._code_interpreter_session_list_out import CodeInterpreterSessionListOut
 from ._code_interpreter_session_out import CodeInterpreterSessionOut
 from ._common_result import CommonResult
+from ._consumer_apikey import ConsumerAPIKey
+from ._consumer_apikey_result import ConsumerAPIKeyResult
 from ._container_configuration import ContainerConfiguration
 from ._convert_flow_dsldata import ConvertFlowDSLData
 from ._convert_flow_dslinput import ConvertFlowDSLInput
@@ -55,6 +58,9 @@ from ._create_agent_runtime_version_input import CreateAgentRuntimeVersionInput
 from ._create_apig_llmmodel_input import CreateApigLLMModelInput
 from ._create_browser_input import CreateBrowserInput
 from ._create_code_interpreter_input import CreateCodeInterpreterInput
+from ._create_consumer_apikey_input import CreateConsumerAPIKeyInput
+from ._create_consumer_apikey_output import CreateConsumerAPIKeyOutput
+from ._create_consumer_apikey_result import CreateConsumerAPIKeyResult
 from ._create_credential_input import CreateCredentialInput
 from ._create_credential_output import CreateCredentialOutput
 from ._create_custom_domain_input import CreateCustomDomainInput
@@ -67,9 +73,11 @@ from ._create_gateway_target_input import CreateGatewayTargetInput
 from ._create_imbot_input import CreateIMBotInput
 from ._create_knowledge_base_input import CreateKnowledgeBaseInput
 from ._create_memory_collection_input import CreateMemoryCollectionInput
+from ._create_model_connection_input import CreateModelConnectionInput
 from ._create_model_input import CreateModelInput
 from ._create_model_proxy_input import CreateModelProxyInput
 from ._create_model_service_input import CreateModelServiceInput
+from ._create_rate_limit_rule_input import CreateRateLimitRuleInput
 from ._create_sandbox_input import CreateSandboxInput
 from ._create_template_input import CreateTemplateInput
 from ._create_tool_data import CreateToolData
@@ -135,6 +143,8 @@ from ._knowledge_base_result import KnowledgeBaseResult
 from ._llmapiconfiguration import LLMAPIConfiguration
 from ._llmconfig import LLMConfig
 from ._llmdeploy_config import LLMDeployConfig
+from ._list_agent_resources_output import ListAgentResourcesOutput
+from ._list_agent_resources_result import ListAgentResourcesResult
 from ._list_agent_runtime_endpoints_input import ListAgentRuntimeEndpointsInput
 from ._list_agent_runtime_endpoints_output import ListAgentRuntimeEndpointsOutput
 from ._list_agent_runtime_endpoints_result import ListAgentRuntimeEndpointsResult
@@ -152,6 +162,8 @@ from ._list_code_interpreter_session_result import ListCodeInterpreterSessionRes
 from ._list_code_interpreters_input import ListCodeInterpretersInput
 from ._list_code_interpreters_output import ListCodeInterpretersOutput
 from ._list_code_interpreters_result import ListCodeInterpretersResult
+from ._list_consumer_apikeys_output import ListConsumerAPIKeysOutput
+from ._list_consumer_apikeys_result import ListConsumerAPIKeysResult
 from ._list_credentials_output import ListCredentialsOutput
 from ._list_credentials_result import ListCredentialsResult
 from ._list_custom_domains_output import ListCustomDomainsOutput
@@ -173,10 +185,14 @@ from ._list_knowledge_bases_output import ListKnowledgeBasesOutput
 from ._list_knowledge_bases_result import ListKnowledgeBasesResult
 from ._list_memory_collections_output import ListMemoryCollectionsOutput
 from ._list_memory_collections_result import ListMemoryCollectionsResult
+from ._list_model_connections_output import ListModelConnectionsOutput
+from ._list_model_connections_result import ListModelConnectionsResult
 from ._list_model_proxies_output import ListModelProxiesOutput
 from ._list_model_proxies_result import ListModelProxiesResult
 from ._list_model_services_output import ListModelServicesOutput
 from ._list_model_services_result import ListModelServicesResult
+from ._list_rate_limit_rules_output import ListRateLimitRulesOutput
+from ._list_rate_limit_rules_result import ListRateLimitRulesResult
 from ._list_sandboxes_output import ListSandboxesOutput
 from ._list_sandboxes_result import ListSandboxesResult
 from ._list_templates_output import ListTemplatesOutput
@@ -201,6 +217,10 @@ from ._mcp_proxy_configuration import McpProxyConfiguration
 from ._memory_collection import MemoryCollection
 from ._memory_collection_result import MemoryCollectionResult
 from ._model import Model
+from ._model_connection import ModelConnection
+from ._model_connection_consumer_apikey import ModelConnectionConsumerAPIKey
+from ._model_connection_provider_settings import ModelConnectionProviderSettings
+from ._model_connection_result import ModelConnectionResult
 from ._model_features import ModelFeatures
 from ._model_info_config import ModelInfoConfig
 from ._model_parameter_rule import ModelParameterRule
@@ -226,6 +246,8 @@ from ._provider_settings import ProviderSettings
 from ._proxy_config import ProxyConfig
 from ._publish_flow_version_input import PublishFlowVersionInput
 from ._publish_runtime_version_input import PublishRuntimeVersionInput
+from ._rate_limit_rule import RateLimitRule
+from ._rate_limit_rule_result import RateLimitRuleResult
 from ._recording_configuration import RecordingConfiguration
 from ._register_service_input import RegisterServiceInput
 from ._registry_auth_config import RegistryAuthConfig
@@ -267,6 +289,7 @@ from ._trigger_config import TriggerConfig
 from ._update_agent_runtime_endpoint_input import UpdateAgentRuntimeEndpointInput
 from ._update_agent_runtime_input import UpdateAgentRuntimeInput
 from ._update_apig_llmmodel_input import UpdateApigLLMModelInput
+from ._update_consumer_apikey_input import UpdateConsumerAPIKeyInput
 from ._update_credential_input import UpdateCredentialInput
 from ._update_credential_output import UpdateCredentialOutput
 from ._update_custom_domain_input import UpdateCustomDomainInput
@@ -279,9 +302,11 @@ from ._update_funagent_input import UpdateFunagentInput
 from ._update_imbot_input import UpdateIMBotInput
 from ._update_knowledge_base_input import UpdateKnowledgeBaseInput
 from ._update_memory_collection_input import UpdateMemoryCollectionInput
+from ._update_model_connection_input import UpdateModelConnectionInput
 from ._update_model_input import UpdateModelInput
 from ._update_model_proxy_input import UpdateModelProxyInput
 from ._update_model_service_input import UpdateModelServiceInput
+from ._update_rate_limit_rule_input import UpdateRateLimitRuleInput
 from ._update_target_configuration_input import UpdateTargetConfigurationInput
 from ._update_template_input import UpdateTemplateInput
 from ._update_tool_data import UpdateToolData
@@ -292,6 +317,7 @@ from ._update_workspace_input import UpdateWorkspaceInput
 from ._vector_store_config import VectorStoreConfig
 from ._version_weight import VersionWeight
 from ._view_port_configuration import ViewPortConfiguration
+from ._window_limit import WindowLimit
 from ._workspace import Workspace
 from ._workspace_permission_evaluate_result import WorkspacePermissionEvaluateResult
 from ._workspace_permission_item import WorkspacePermissionItem
@@ -316,6 +342,8 @@ from ._create_flow_request import CreateFlowRequest
 from ._create_flow_response import CreateFlowResponse
 from ._create_flow_endpoint_request import CreateFlowEndpointRequest
 from ._create_flow_endpoint_response import CreateFlowEndpointResponse
+from ._create_imbot_request import CreateIMBotRequest
+from ._create_imbot_response import CreateIMBotResponse
 from ._create_knowledge_base_request import CreateKnowledgeBaseRequest
 from ._create_knowledge_base_response import CreateKnowledgeBaseResponse
 from ._create_memory_collection_request import CreateMemoryCollectionRequest
@@ -344,6 +372,8 @@ from ._delete_flow_endpoint_request import DeleteFlowEndpointRequest
 from ._delete_flow_endpoint_response import DeleteFlowEndpointResponse
 from ._delete_flow_version_request import DeleteFlowVersionRequest
 from ._delete_flow_version_response import DeleteFlowVersionResponse
+from ._delete_imbot_request import DeleteIMBotRequest
+from ._delete_imbot_response import DeleteIMBotResponse
 from ._delete_knowledge_base_response import DeleteKnowledgeBaseResponse
 from ._delete_memory_collection_response import DeleteMemoryCollectionResponse
 from ._delete_model_proxy_response import DeleteModelProxyResponse
@@ -370,6 +400,8 @@ from ._get_flow_endpoint_request import GetFlowEndpointRequest
 from ._get_flow_endpoint_response import GetFlowEndpointResponse
 from ._get_flow_version_request import GetFlowVersionRequest
 from ._get_flow_version_response import GetFlowVersionResponse
+from ._get_imbot_request import GetIMBotRequest
+from ._get_imbot_response import GetIMBotResponse
 from ._get_knowledge_base_response import GetKnowledgeBaseResponse
 from ._get_memory_collection_response import GetMemoryCollectionResponse
 from ._get_model_proxy_response import GetModelProxyResponse
@@ -399,6 +431,8 @@ from ._list_flow_versions_request import ListFlowVersionsRequest
 from ._list_flow_versions_response import ListFlowVersionsResponse
 from ._list_flows_request import ListFlowsRequest
 from ._list_flows_response import ListFlowsResponse
+from ._list_imbots_request import ListIMBotsRequest
+from ._list_imbots_response import ListIMBotsResponse
 from ._list_knowledge_bases_request import ListKnowledgeBasesRequest
 from ._list_knowledge_bases_response import ListKnowledgeBasesResponse
 from ._list_memory_collections_request import ListMemoryCollectionsRequest
@@ -440,6 +474,8 @@ from ._update_flow_draft_request import UpdateFlowDraftRequest
 from ._update_flow_draft_response import UpdateFlowDraftResponse
 from ._update_flow_endpoint_request import UpdateFlowEndpointRequest
 from ._update_flow_endpoint_response import UpdateFlowEndpointResponse
+from ._update_imbot_request import UpdateIMBotRequest
+from ._update_imbot_response import UpdateIMBotResponse
 from ._update_knowledge_base_request import UpdateKnowledgeBaseRequest
 from ._update_knowledge_base_response import UpdateKnowledgeBaseResponse
 from ._update_memory_collection_request import UpdateMemoryCollectionRequest
@@ -456,6 +492,7 @@ from ._update_workspace_request import UpdateWorkspaceRequest
 from ._update_workspace_response import UpdateWorkspaceResponse
 from ._update_workspace_discovery_endpoints_request import UpdateWorkspaceDiscoveryEndpointsRequest
 from ._update_workspace_discovery_endpoints_response import UpdateWorkspaceDiscoveryEndpointsResponse
+from ._agent_resource import AgentResourceLatestVersion
 from ._convert_flow_dsldata import ConvertFlowDSLDataConversionPlanIssues
 from ._convert_flow_dsldata import ConvertFlowDSLDataConversionPlanSummary
 from ._convert_flow_dsldata import ConvertFlowDSLDataConversionPlan
@@ -464,6 +501,7 @@ from ._convert_flow_dsldata import ConvertFlowDSLDataPluginErrors
 from ._convert_flow_dsldata import ConvertFlowDSLDataToolsetInstallations
 from ._convert_flow_dslinput import ConvertFlowDSLInputDslSource
 from ._convert_flow_dslinput import ConvertFlowDSLInputOptions
+from ._create_model_connection_input import CreateModelConnectionInputConsumerApiKeys
 from ._credential_public_config import CredentialPublicConfigRemoteConfig
 from ._credential_public_config import CredentialPublicConfigUsers
 from ._embedder_config import EmbedderConfigConfig
@@ -475,6 +513,7 @@ from ._proxy_config import ProxyConfigPoliciesTokenRateLimiter
 from ._proxy_config import ProxyConfigPolicies
 from ._template import TemplateMcpOptions
 from ._template import TemplateMcpState
+from ._update_model_connection_input import UpdateModelConnectionInputConsumerApiKeys
 from ._vector_store_config import VectorStoreConfigConfig
 from ._vector_store_config import VectorStoreConfigMysqlConfig
 from ._get_access_token_response_body import GetAccessTokenResponseBodyData
@@ -484,6 +523,7 @@ from ._list_model_providers_response_body import ListModelProvidersResponseBodyD
 __all__ = [
     AccessDeniedDetail,
     AgentEndpointConfig,
+    AgentResource,
     AgentRuntime,
     AgentRuntimeEndpoint,
     AgentRuntimeEndpointResult,
@@ -525,6 +565,8 @@ __all__ = [
     CodeInterpreterSessionListOut,
     CodeInterpreterSessionOut,
     CommonResult,
+    ConsumerAPIKey,
+    ConsumerAPIKeyResult,
     ContainerConfiguration,
     ConvertFlowDSLData,
     ConvertFlowDSLInput,
@@ -535,6 +577,9 @@ __all__ = [
     CreateApigLLMModelInput,
     CreateBrowserInput,
     CreateCodeInterpreterInput,
+    CreateConsumerAPIKeyInput,
+    CreateConsumerAPIKeyOutput,
+    CreateConsumerAPIKeyResult,
     CreateCredentialInput,
     CreateCredentialOutput,
     CreateCustomDomainInput,
@@ -547,9 +592,11 @@ __all__ = [
     CreateIMBotInput,
     CreateKnowledgeBaseInput,
     CreateMemoryCollectionInput,
+    CreateModelConnectionInput,
     CreateModelInput,
     CreateModelProxyInput,
     CreateModelServiceInput,
+    CreateRateLimitRuleInput,
     CreateSandboxInput,
     CreateTemplateInput,
     CreateToolData,
@@ -615,6 +662,8 @@ __all__ = [
     LLMAPIConfiguration,
     LLMConfig,
     LLMDeployConfig,
+    ListAgentResourcesOutput,
+    ListAgentResourcesResult,
     ListAgentRuntimeEndpointsInput,
     ListAgentRuntimeEndpointsOutput,
     ListAgentRuntimeEndpointsResult,
@@ -632,6 +681,8 @@ __all__ = [
     ListCodeInterpretersInput,
     ListCodeInterpretersOutput,
     ListCodeInterpretersResult,
+    ListConsumerAPIKeysOutput,
+    ListConsumerAPIKeysResult,
     ListCredentialsOutput,
     ListCredentialsResult,
     ListCustomDomainsOutput,
@@ -653,10 +704,14 @@ __all__ = [
     ListKnowledgeBasesResult,
     ListMemoryCollectionsOutput,
     ListMemoryCollectionsResult,
+    ListModelConnectionsOutput,
+    ListModelConnectionsResult,
     ListModelProxiesOutput,
     ListModelProxiesResult,
     ListModelServicesOutput,
     ListModelServicesResult,
+    ListRateLimitRulesOutput,
+    ListRateLimitRulesResult,
     ListSandboxesOutput,
     ListSandboxesResult,
     ListTemplatesOutput,
@@ -681,6 +736,10 @@ __all__ = [
     MemoryCollection,
     MemoryCollectionResult,
     Model,
+    ModelConnection,
+    ModelConnectionConsumerAPIKey,
+    ModelConnectionProviderSettings,
+    ModelConnectionResult,
     ModelFeatures,
     ModelInfoConfig,
     ModelParameterRule,
@@ -706,6 +765,8 @@ __all__ = [
     ProxyConfig,
     PublishFlowVersionInput,
     PublishRuntimeVersionInput,
+    RateLimitRule,
+    RateLimitRuleResult,
     RecordingConfiguration,
     RegisterServiceInput,
     RegistryAuthConfig,
@@ -747,6 +808,7 @@ __all__ = [
     UpdateAgentRuntimeEndpointInput,
     UpdateAgentRuntimeInput,
     UpdateApigLLMModelInput,
+    UpdateConsumerAPIKeyInput,
     UpdateCredentialInput,
     UpdateCredentialOutput,
     UpdateCustomDomainInput,
@@ -759,9 +821,11 @@ __all__ = [
     UpdateIMBotInput,
     UpdateKnowledgeBaseInput,
     UpdateMemoryCollectionInput,
+    UpdateModelConnectionInput,
     UpdateModelInput,
     UpdateModelProxyInput,
     UpdateModelServiceInput,
+    UpdateRateLimitRuleInput,
     UpdateTargetConfigurationInput,
     UpdateTemplateInput,
     UpdateToolData,
@@ -772,6 +836,7 @@ __all__ = [
     VectorStoreConfig,
     VersionWeight,
     ViewPortConfiguration,
+    WindowLimit,
     Workspace,
     WorkspacePermissionEvaluateResult,
     WorkspacePermissionItem,
@@ -796,6 +861,8 @@ __all__ = [
     CreateFlowResponse,
     CreateFlowEndpointRequest,
     CreateFlowEndpointResponse,
+    CreateIMBotRequest,
+    CreateIMBotResponse,
     CreateKnowledgeBaseRequest,
     CreateKnowledgeBaseResponse,
     CreateMemoryCollectionRequest,
@@ -824,6 +891,8 @@ __all__ = [
     DeleteFlowEndpointResponse,
     DeleteFlowVersionRequest,
     DeleteFlowVersionResponse,
+    DeleteIMBotRequest,
+    DeleteIMBotResponse,
     DeleteKnowledgeBaseResponse,
     DeleteMemoryCollectionResponse,
     DeleteModelProxyResponse,
@@ -850,6 +919,8 @@ __all__ = [
     GetFlowEndpointResponse,
     GetFlowVersionRequest,
     GetFlowVersionResponse,
+    GetIMBotRequest,
+    GetIMBotResponse,
     GetKnowledgeBaseResponse,
     GetMemoryCollectionResponse,
     GetModelProxyResponse,
@@ -879,6 +950,8 @@ __all__ = [
     ListFlowVersionsResponse,
     ListFlowsRequest,
     ListFlowsResponse,
+    ListIMBotsRequest,
+    ListIMBotsResponse,
     ListKnowledgeBasesRequest,
     ListKnowledgeBasesResponse,
     ListMemoryCollectionsRequest,
@@ -920,6 +993,8 @@ __all__ = [
     UpdateFlowDraftResponse,
     UpdateFlowEndpointRequest,
     UpdateFlowEndpointResponse,
+    UpdateIMBotRequest,
+    UpdateIMBotResponse,
     UpdateKnowledgeBaseRequest,
     UpdateKnowledgeBaseResponse,
     UpdateMemoryCollectionRequest,
@@ -936,6 +1011,7 @@ __all__ = [
     UpdateWorkspaceResponse,
     UpdateWorkspaceDiscoveryEndpointsRequest,
     UpdateWorkspaceDiscoveryEndpointsResponse,
+    AgentResourceLatestVersion,
     ConvertFlowDSLDataConversionPlanIssues,
     ConvertFlowDSLDataConversionPlanSummary,
     ConvertFlowDSLDataConversionPlan,
@@ -944,6 +1020,7 @@ __all__ = [
     ConvertFlowDSLDataToolsetInstallations,
     ConvertFlowDSLInputDslSource,
     ConvertFlowDSLInputOptions,
+    CreateModelConnectionInputConsumerApiKeys,
     CredentialPublicConfigRemoteConfig,
     CredentialPublicConfigUsers,
     EmbedderConfigConfig,
@@ -955,6 +1032,7 @@ __all__ = [
     ProxyConfigPolicies,
     TemplateMcpOptions,
     TemplateMcpState,
+    UpdateModelConnectionInputConsumerApiKeys,
     VectorStoreConfigConfig,
     VectorStoreConfigMysqlConfig,
     GetAccessTokenResponseBodyData,

@@ -381,8 +381,6 @@ class ConvertFlowDSLDataConversionPlanSummary(DaraModel):
 
         return self
 
-
-
 class ConvertFlowDSLDataConversionPlanIssues(DaraModel):
     def __init__(
         self,
