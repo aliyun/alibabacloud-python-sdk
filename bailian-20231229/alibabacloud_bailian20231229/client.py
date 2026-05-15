@@ -143,6 +143,8 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.AddFileShrinkRequest()
         Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.parser_config):
+            request.parser_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.parser_config, 'ParserConfig', 'json')
         if not DaraCore.is_null(tmp_req.tags):
             request.tags_shrink = Utils.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         body = {}
@@ -156,6 +158,8 @@ class Client(OpenApiClient):
             body['OriginalFileUrl'] = request.original_file_url
         if not DaraCore.is_null(request.parser):
             body['Parser'] = request.parser
+        if not DaraCore.is_null(request.parser_config_shrink):
+            body['ParserConfig'] = request.parser_config_shrink
         if not DaraCore.is_null(request.tags_shrink):
             body['Tags'] = request.tags_shrink
         req = open_api_util_models.OpenApiRequest(
@@ -188,6 +192,8 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.AddFileShrinkRequest()
         Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.parser_config):
+            request.parser_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.parser_config, 'ParserConfig', 'json')
         if not DaraCore.is_null(tmp_req.tags):
             request.tags_shrink = Utils.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         body = {}
@@ -201,6 +207,8 @@ class Client(OpenApiClient):
             body['OriginalFileUrl'] = request.original_file_url
         if not DaraCore.is_null(request.parser):
             body['Parser'] = request.parser
+        if not DaraCore.is_null(request.parser_config_shrink):
+            body['ParserConfig'] = request.parser_config_shrink
         if not DaraCore.is_null(request.tags_shrink):
             body['Tags'] = request.tags_shrink
         req = open_api_util_models.OpenApiRequest(
@@ -636,6 +644,98 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.apply_temp_storage_lease_with_options_async(workspace_id, request, headers, runtime)
+
+    def batch_update_file_tag_with_options(
+        self,
+        workspace_id: str,
+        tmp_req: main_models.BatchUpdateFileTagRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchUpdateFileTagResponse:
+        tmp_req.validate()
+        request = main_models.BatchUpdateFileTagShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.file_infos):
+            request.file_infos_shrink = Utils.array_to_string_with_specified_style(tmp_req.file_infos, 'FileInfos', 'json')
+        body = {}
+        if not DaraCore.is_null(request.file_infos_shrink):
+            body['FileInfos'] = request.file_infos_shrink
+        if not DaraCore.is_null(request.update_mode):
+            body['UpdateMode'] = request.update_mode
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'BatchUpdateFileTag',
+            version = '2023-12-29',
+            protocol = 'HTTPS',
+            pathname = f'/{DaraURL.percent_encode(workspace_id)}/datacenter/batchupdatetag',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchUpdateFileTagResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_update_file_tag_with_options_async(
+        self,
+        workspace_id: str,
+        tmp_req: main_models.BatchUpdateFileTagRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchUpdateFileTagResponse:
+        tmp_req.validate()
+        request = main_models.BatchUpdateFileTagShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.file_infos):
+            request.file_infos_shrink = Utils.array_to_string_with_specified_style(tmp_req.file_infos, 'FileInfos', 'json')
+        body = {}
+        if not DaraCore.is_null(request.file_infos_shrink):
+            body['FileInfos'] = request.file_infos_shrink
+        if not DaraCore.is_null(request.update_mode):
+            body['UpdateMode'] = request.update_mode
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'BatchUpdateFileTag',
+            version = '2023-12-29',
+            protocol = 'HTTPS',
+            pathname = f'/{DaraURL.percent_encode(workspace_id)}/datacenter/batchupdatetag',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchUpdateFileTagResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_update_file_tag(
+        self,
+        workspace_id: str,
+        request: main_models.BatchUpdateFileTagRequest,
+    ) -> main_models.BatchUpdateFileTagResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.batch_update_file_tag_with_options(workspace_id, request, headers, runtime)
+
+    async def batch_update_file_tag_async(
+        self,
+        workspace_id: str,
+        request: main_models.BatchUpdateFileTagRequest,
+    ) -> main_models.BatchUpdateFileTagResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.batch_update_file_tag_with_options_async(workspace_id, request, headers, runtime)
 
     def change_parse_setting_with_options(
         self,

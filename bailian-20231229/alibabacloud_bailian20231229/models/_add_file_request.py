@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import List
 
+from alibabacloud_bailian20231229 import models as main_models
 from darabonba.model import DaraModel
 
 class AddFileRequest(DaraModel):
@@ -14,6 +15,7 @@ class AddFileRequest(DaraModel):
         lease_id: str = None,
         original_file_url: str = None,
         parser: str = None,
+        parser_config: main_models.AddFileRequestParserConfig = None,
         tags: List[str] = None,
     ):
         # The primary key ID of the category to which the document is uploaded. This parameter corresponds to the `CategoryId` returned by the [AddCategory](https://www.alibabacloud.com/help/eh/model-studio/developer-reference/api-bailian-2023-12-29-addcategory) operation. You can also click the ID icon next to the category name on the Unstructured Data tab of the [Application Data](https://modelstudio.console.alibabacloud.com/#/data-center) page to view the ID. You can set the parameter to default, which specifies the Default Category created by the system.
@@ -35,11 +37,13 @@ class AddFileRequest(DaraModel):
         # 
         # This parameter is required.
         self.parser = parser
+        self.parser_config = parser_config
         # A list of tags associated with the document. The default value is null, which means no tags. You can specify up to 10 tags.
         self.tags = tags
 
     def validate(self):
-        pass
+        if self.parser_config:
+            self.parser_config.validate()
 
     def to_map(self):
         result = dict()
@@ -60,6 +64,9 @@ class AddFileRequest(DaraModel):
 
         if self.parser is not None:
             result['Parser'] = self.parser
+
+        if self.parser_config is not None:
+            result['ParserConfig'] = self.parser_config.to_map()
 
         if self.tags is not None:
             result['Tags'] = self.tags
@@ -83,8 +90,47 @@ class AddFileRequest(DaraModel):
         if m.get('Parser') is not None:
             self.parser = m.get('Parser')
 
+        if m.get('ParserConfig') is not None:
+            temp_model = main_models.AddFileRequestParserConfig()
+            self.parser_config = temp_model.from_map(m.get('ParserConfig'))
+
         if m.get('Tags') is not None:
             self.tags = m.get('Tags')
+
+        return self
+
+class AddFileRequestParserConfig(DaraModel):
+    def __init__(
+        self,
+        model_name: str = None,
+        model_prompt: str = None,
+    ):
+        self.model_name = model_name
+        self.model_prompt = model_prompt
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.model_name is not None:
+            result['ModelName'] = self.model_name
+
+        if self.model_prompt is not None:
+            result['ModelPrompt'] = self.model_prompt
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ModelName') is not None:
+            self.model_name = m.get('ModelName')
+
+        if m.get('ModelPrompt') is not None:
+            self.model_prompt = m.get('ModelPrompt')
 
         return self
 

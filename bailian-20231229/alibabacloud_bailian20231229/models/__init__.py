@@ -23,6 +23,10 @@ from ._apply_file_upload_lease_response import ApplyFileUploadLeaseResponse
 from ._apply_temp_storage_lease_request import ApplyTempStorageLeaseRequest
 from ._apply_temp_storage_lease_response_body import ApplyTempStorageLeaseResponseBody
 from ._apply_temp_storage_lease_response import ApplyTempStorageLeaseResponse
+from ._batch_update_file_tag_request import BatchUpdateFileTagRequest
+from ._batch_update_file_tag_shrink_request import BatchUpdateFileTagShrinkRequest
+from ._batch_update_file_tag_response_body import BatchUpdateFileTagResponseBody
+from ._batch_update_file_tag_response import BatchUpdateFileTagResponse
 from ._change_parse_setting_request import ChangeParseSettingRequest
 from ._change_parse_setting_shrink_request import ChangeParseSettingShrinkRequest
 from ._change_parse_setting_response_body import ChangeParseSettingResponseBody
@@ -181,6 +185,7 @@ from ._update_table_from_authorized_oss_request import UpdateTableFromAuthorized
 from ._update_table_from_authorized_oss_response_body import UpdateTableFromAuthorizedOssResponseBody
 from ._update_table_from_authorized_oss_response import UpdateTableFromAuthorizedOssResponse
 from ._add_category_response_body import AddCategoryResponseBodyData
+from ._add_file_request import AddFileRequestParserConfig
 from ._add_file_response_body import AddFileResponseBodyData
 from ._add_files_from_authorized_oss_request import AddFilesFromAuthorizedOssRequestFileDetails
 from ._add_files_from_authorized_oss_response_body import AddFilesFromAuthorizedOssResponseBodyDataAddFileResultList
@@ -191,6 +196,9 @@ from ._apply_file_upload_lease_response_body import ApplyFileUploadLeaseResponse
 from ._apply_file_upload_lease_response_body import ApplyFileUploadLeaseResponseBodyData
 from ._apply_temp_storage_lease_response_body import ApplyTempStorageLeaseResponseBodyDataParam
 from ._apply_temp_storage_lease_response_body import ApplyTempStorageLeaseResponseBodyData
+from ._batch_update_file_tag_request import BatchUpdateFileTagRequestFileInfos
+from ._batch_update_file_tag_response_body import BatchUpdateFileTagResponseBodyDataUpdateFileTagResultList
+from ._batch_update_file_tag_response_body import BatchUpdateFileTagResponseBodyData
 from ._change_parse_setting_request import ChangeParseSettingRequestParserConfig
 from ._change_parse_setting_response_body import ChangeParseSettingResponseBodyData
 from ._create_and_pulish_agent_request import CreateAndPulishAgentRequestApplicationConfigHistoryConfig
@@ -302,6 +310,10 @@ __all__ = [
     ApplyTempStorageLeaseRequest,
     ApplyTempStorageLeaseResponseBody,
     ApplyTempStorageLeaseResponse,
+    BatchUpdateFileTagRequest,
+    BatchUpdateFileTagShrinkRequest,
+    BatchUpdateFileTagResponseBody,
+    BatchUpdateFileTagResponse,
     ChangeParseSettingRequest,
     ChangeParseSettingShrinkRequest,
     ChangeParseSettingResponseBody,
@@ -460,6 +472,7 @@ __all__ = [
     UpdateTableFromAuthorizedOssResponseBody,
     UpdateTableFromAuthorizedOssResponse,
     AddCategoryResponseBodyData,
+    AddFileRequestParserConfig,
     AddFileResponseBodyData,
     AddFilesFromAuthorizedOssRequestFileDetails,
     AddFilesFromAuthorizedOssResponseBodyDataAddFileResultList,
@@ -470,6 +483,9 @@ __all__ = [
     ApplyFileUploadLeaseResponseBodyData,
     ApplyTempStorageLeaseResponseBodyDataParam,
     ApplyTempStorageLeaseResponseBodyData,
+    BatchUpdateFileTagRequestFileInfos,
+    BatchUpdateFileTagResponseBodyDataUpdateFileTagResultList,
+    BatchUpdateFileTagResponseBodyData,
     ChangeParseSettingRequestParserConfig,
     ChangeParseSettingResponseBodyData,
     CreateAndPulishAgentRequestApplicationConfigHistoryConfig,

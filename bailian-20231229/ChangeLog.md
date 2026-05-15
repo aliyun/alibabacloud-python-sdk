@@ -1,3 +1,8 @@
+2026-05-15 Version: 2.10.0
+- Support API BatchUpdateFileTag.
+- Update API AddFile: add request parameters ParserConfig.
+
+
 2026-04-20 Version: 2.9.1
 - Update API AddCategory: add request parameters ConnectorId.
 

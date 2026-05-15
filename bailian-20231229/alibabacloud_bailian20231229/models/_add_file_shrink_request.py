@@ -12,6 +12,7 @@ class AddFileShrinkRequest(DaraModel):
         lease_id: str = None,
         original_file_url: str = None,
         parser: str = None,
+        parser_config_shrink: str = None,
         tags_shrink: str = None,
     ):
         # The primary key ID of the category to which the document is uploaded. This parameter corresponds to the `CategoryId` returned by the [AddCategory](https://www.alibabacloud.com/help/eh/model-studio/developer-reference/api-bailian-2023-12-29-addcategory) operation. You can also click the ID icon next to the category name on the Unstructured Data tab of the [Application Data](https://modelstudio.console.alibabacloud.com/#/data-center) page to view the ID. You can set the parameter to default, which specifies the Default Category created by the system.
@@ -33,6 +34,7 @@ class AddFileShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.parser = parser
+        self.parser_config_shrink = parser_config_shrink
         # A list of tags associated with the document. The default value is null, which means no tags. You can specify up to 10 tags.
         self.tags_shrink = tags_shrink
 
@@ -59,6 +61,9 @@ class AddFileShrinkRequest(DaraModel):
         if self.parser is not None:
             result['Parser'] = self.parser
 
+        if self.parser_config_shrink is not None:
+            result['ParserConfig'] = self.parser_config_shrink
+
         if self.tags_shrink is not None:
             result['Tags'] = self.tags_shrink
 
@@ -80,6 +85,9 @@ class AddFileShrinkRequest(DaraModel):
 
         if m.get('Parser') is not None:
             self.parser = m.get('Parser')
+
+        if m.get('ParserConfig') is not None:
+            self.parser_config_shrink = m.get('ParserConfig')
 
         if m.get('Tags') is not None:
             self.tags_shrink = m.get('Tags')
