@@ -1,3 +1,7 @@
+2026-05-15 Version: 1.44.1
+- Update API GetDocInfo: add response parameters Body.Data.PageInfo.
+
+
 2026-05-14 Version: 1.44.0
 - Support API GetPptInfo.
 - Update API InitiatePptCreationV2: add request parameters PptTitle.

@@ -83,6 +83,7 @@ class GetDocInfoResponseBodyData(DaraModel):
         doc_name: str = None,
         doc_type: str = None,
         file_url: str = None,
+        page_info: main_models.GetDocInfoResponseBodyDataPageInfo = None,
         status: int = None,
         status_message: str = None,
         video_contents: List[str] = None,
@@ -91,12 +92,14 @@ class GetDocInfoResponseBodyData(DaraModel):
         self.doc_name = doc_name
         self.doc_type = doc_type
         self.file_url = file_url
+        self.page_info = page_info
         self.status = status
         self.status_message = status_message
         self.video_contents = video_contents
 
     def validate(self):
-        pass
+        if self.page_info:
+            self.page_info.validate()
 
     def to_map(self):
         result = dict()
@@ -114,6 +117,9 @@ class GetDocInfoResponseBodyData(DaraModel):
 
         if self.file_url is not None:
             result['FileUrl'] = self.file_url
+
+        if self.page_info is not None:
+            result['PageInfo'] = self.page_info.to_map()
 
         if self.status is not None:
             result['Status'] = self.status
@@ -140,6 +146,10 @@ class GetDocInfoResponseBodyData(DaraModel):
         if m.get('FileUrl') is not None:
             self.file_url = m.get('FileUrl')
 
+        if m.get('PageInfo') is not None:
+            temp_model = main_models.GetDocInfoResponseBodyDataPageInfo()
+            self.page_info = temp_model.from_map(m.get('PageInfo'))
+
         if m.get('Status') is not None:
             self.status = m.get('Status')
 
@@ -148,6 +158,41 @@ class GetDocInfoResponseBodyData(DaraModel):
 
         if m.get('VideoContents') is not None:
             self.video_contents = m.get('VideoContents')
+
+        return self
+
+class GetDocInfoResponseBodyDataPageInfo(DaraModel):
+    def __init__(
+        self,
+        height: int = None,
+        width: int = None,
+    ):
+        self.height = height
+        self.width = width
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.height is not None:
+            result['Height'] = self.height
+
+        if self.width is not None:
+            result['Width'] = self.width
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
 
         return self
 
