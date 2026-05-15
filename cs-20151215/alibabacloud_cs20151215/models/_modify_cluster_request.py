@@ -15,6 +15,7 @@ class ModifyClusterRequest(DaraModel):
         api_server_eip: bool = None,
         api_server_eip_id: str = None,
         cluster_name: str = None,
+        cluster_spec: str = None,
         control_plane_config: main_models.ModifyClusterRequestControlPlaneConfig = None,
         control_plane_endpoints_config: main_models.ModifyClusterRequestControlPlaneEndpointsConfig = None,
         deletion_protection: bool = None,
@@ -45,6 +46,7 @@ class ModifyClusterRequest(DaraModel):
         # 
         # The cluster name must be 1 to 63 characters in length, and can contain digits, letters, and hyphens (-). The cluster name cannot start with a hyphen (-).
         self.cluster_name = cluster_name
+        self.cluster_spec = cluster_spec
         # The control plane configurations of an ACK dedicated cluster.
         self.control_plane_config = control_plane_config
         self.control_plane_endpoints_config = control_plane_endpoints_config
@@ -153,6 +155,9 @@ class ModifyClusterRequest(DaraModel):
         if self.cluster_name is not None:
             result['cluster_name'] = self.cluster_name
 
+        if self.cluster_spec is not None:
+            result['cluster_spec'] = self.cluster_spec
+
         if self.control_plane_config is not None:
             result['control_plane_config'] = self.control_plane_config.to_map()
 
@@ -214,6 +219,9 @@ class ModifyClusterRequest(DaraModel):
 
         if m.get('cluster_name') is not None:
             self.cluster_name = m.get('cluster_name')
+
+        if m.get('cluster_spec') is not None:
+            self.cluster_spec = m.get('cluster_spec')
 
         if m.get('control_plane_config') is not None:
             temp_model = main_models.ModifyClusterRequestControlPlaneConfig()

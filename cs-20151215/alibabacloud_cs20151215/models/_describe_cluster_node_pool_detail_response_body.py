@@ -12,6 +12,7 @@ class DescribeClusterNodePoolDetailResponseBody(DaraModel):
         self,
         auto_mode: main_models.DescribeClusterNodePoolDetailResponseBodyAutoMode = None,
         auto_scaling: main_models.DescribeClusterNodePoolDetailResponseBodyAutoScaling = None,
+        eflo_node_group: main_models.DescribeClusterNodePoolDetailResponseBodyEfloNodeGroup = None,
         host_network: bool = None,
         interconnect_config: main_models.DescribeClusterNodePoolDetailResponseBodyInterconnectConfig = None,
         interconnect_mode: str = None,
@@ -29,6 +30,7 @@ class DescribeClusterNodePoolDetailResponseBody(DaraModel):
         self.auto_mode = auto_mode
         # The auto scaling configuration of the node pool.
         self.auto_scaling = auto_scaling
+        self.eflo_node_group = eflo_node_group
         # Indicates whether the pods in the edge node pool can use the host network.
         # 
         # `true`: sets to host network.
@@ -74,6 +76,8 @@ class DescribeClusterNodePoolDetailResponseBody(DaraModel):
             self.auto_mode.validate()
         if self.auto_scaling:
             self.auto_scaling.validate()
+        if self.eflo_node_group:
+            self.eflo_node_group.validate()
         if self.interconnect_config:
             self.interconnect_config.validate()
         if self.kubernetes_config:
@@ -105,6 +109,9 @@ class DescribeClusterNodePoolDetailResponseBody(DaraModel):
 
         if self.auto_scaling is not None:
             result['auto_scaling'] = self.auto_scaling.to_map()
+
+        if self.eflo_node_group is not None:
+            result['eflo_node_group'] = self.eflo_node_group.to_map()
 
         if self.host_network is not None:
             result['host_network'] = self.host_network
@@ -158,6 +165,10 @@ class DescribeClusterNodePoolDetailResponseBody(DaraModel):
         if m.get('auto_scaling') is not None:
             temp_model = main_models.DescribeClusterNodePoolDetailResponseBodyAutoScaling()
             self.auto_scaling = temp_model.from_map(m.get('auto_scaling'))
+
+        if m.get('eflo_node_group') is not None:
+            temp_model = main_models.DescribeClusterNodePoolDetailResponseBodyEfloNodeGroup()
+            self.eflo_node_group = temp_model.from_map(m.get('eflo_node_group'))
 
         if m.get('host_network') is not None:
             self.host_network = m.get('host_network')
@@ -1868,6 +1879,41 @@ class DescribeClusterNodePoolDetailResponseBodyInterconnectConfig(DaraModel):
 
         if m.get('improved_period') is not None:
             self.improved_period = m.get('improved_period')
+
+        return self
+
+class DescribeClusterNodePoolDetailResponseBodyEfloNodeGroup(DaraModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        group_id: str = None,
+    ):
+        self.cluster_id = cluster_id
+        self.group_id = group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.cluster_id is not None:
+            result['cluster_id'] = self.cluster_id
+
+        if self.group_id is not None:
+            result['group_id'] = self.group_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cluster_id') is not None:
+            self.cluster_id = m.get('cluster_id')
+
+        if m.get('group_id') is not None:
+            self.group_id = m.get('group_id')
 
         return self
 

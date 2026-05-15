@@ -8780,6 +8780,8 @@ class Client(OpenApiClient):
             body['api_server_eip_id'] = request.api_server_eip_id
         if not DaraCore.is_null(request.cluster_name):
             body['cluster_name'] = request.cluster_name
+        if not DaraCore.is_null(request.cluster_spec):
+            body['cluster_spec'] = request.cluster_spec
         if not DaraCore.is_null(request.control_plane_config):
             body['control_plane_config'] = request.control_plane_config
         if not DaraCore.is_null(request.control_plane_endpoints_config):
@@ -8847,6 +8849,8 @@ class Client(OpenApiClient):
             body['api_server_eip_id'] = request.api_server_eip_id
         if not DaraCore.is_null(request.cluster_name):
             body['cluster_name'] = request.cluster_name
+        if not DaraCore.is_null(request.cluster_spec):
+            body['cluster_spec'] = request.cluster_spec
         if not DaraCore.is_null(request.control_plane_config):
             body['control_plane_config'] = request.control_plane_config
         if not DaraCore.is_null(request.control_plane_endpoints_config):
