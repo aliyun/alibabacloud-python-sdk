@@ -113,12 +113,14 @@ class ListProjectRolesResponseBodyPagingInfoProjectRoles(DaraModel):
     def __init__(
         self,
         code: str = None,
+        module_permissions: List[main_models.ListProjectRolesResponseBodyPagingInfoProjectRolesModulePermissions] = None,
         name: str = None,
         project_id: int = None,
         type: str = None,
     ):
         # The code of the role in the DataWorks workspace.
         self.code = code
+        self.module_permissions = module_permissions
         # The name of the role.
         self.name = name
         # The DataWorks workspace ID.
@@ -127,7 +129,10 @@ class ListProjectRolesResponseBodyPagingInfoProjectRoles(DaraModel):
         self.type = type
 
     def validate(self):
-        pass
+        if self.module_permissions:
+            for v1 in self.module_permissions:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -136,6 +141,11 @@ class ListProjectRolesResponseBodyPagingInfoProjectRoles(DaraModel):
             result = _map
         if self.code is not None:
             result['Code'] = self.code
+
+        result['ModulePermissions'] = []
+        if self.module_permissions is not None:
+            for k1 in self.module_permissions:
+                result['ModulePermissions'].append(k1.to_map() if k1 else None)
 
         if self.name is not None:
             result['Name'] = self.name
@@ -153,6 +163,12 @@ class ListProjectRolesResponseBodyPagingInfoProjectRoles(DaraModel):
         if m.get('Code') is not None:
             self.code = m.get('Code')
 
+        self.module_permissions = []
+        if m.get('ModulePermissions') is not None:
+            for k1 in m.get('ModulePermissions'):
+                temp_model = main_models.ListProjectRolesResponseBodyPagingInfoProjectRolesModulePermissions()
+                self.module_permissions.append(temp_model.from_map(k1))
+
         if m.get('Name') is not None:
             self.name = m.get('Name')
 
@@ -161,6 +177,49 @@ class ListProjectRolesResponseBodyPagingInfoProjectRoles(DaraModel):
 
         if m.get('Type') is not None:
             self.type = m.get('Type')
+
+        return self
+
+class ListProjectRolesResponseBodyPagingInfoProjectRolesModulePermissions(DaraModel):
+    def __init__(
+        self,
+        module_id: int = None,
+        module_name: str = None,
+        permission_type: str = None,
+    ):
+        self.module_id = module_id
+        self.module_name = module_name
+        self.permission_type = permission_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.module_id is not None:
+            result['ModuleId'] = self.module_id
+
+        if self.module_name is not None:
+            result['ModuleName'] = self.module_name
+
+        if self.permission_type is not None:
+            result['PermissionType'] = self.permission_type
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ModuleId') is not None:
+            self.module_id = m.get('ModuleId')
+
+        if m.get('ModuleName') is not None:
+            self.module_name = m.get('ModuleName')
+
+        if m.get('PermissionType') is not None:
+            self.permission_type = m.get('PermissionType')
 
         return self
 

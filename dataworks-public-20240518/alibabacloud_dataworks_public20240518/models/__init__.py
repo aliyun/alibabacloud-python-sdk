@@ -165,6 +165,10 @@ from ._create_project_member_request import CreateProjectMemberRequest
 from ._create_project_member_shrink_request import CreateProjectMemberShrinkRequest
 from ._create_project_member_response_body import CreateProjectMemberResponseBody
 from ._create_project_member_response import CreateProjectMemberResponse
+from ._create_project_role_request import CreateProjectRoleRequest
+from ._create_project_role_shrink_request import CreateProjectRoleShrinkRequest
+from ._create_project_role_response_body import CreateProjectRoleResponseBody
+from ._create_project_role_response import CreateProjectRoleResponse
 from ._create_resource_request import CreateResourceRequest
 from ._create_resource_advance_request import CreateResourceAdvanceRequest
 from ._create_resource_response_body import CreateResourceResponseBody
@@ -275,6 +279,9 @@ from ._delete_project_response import DeleteProjectResponse
 from ._delete_project_member_request import DeleteProjectMemberRequest
 from ._delete_project_member_response_body import DeleteProjectMemberResponseBody
 from ._delete_project_member_response import DeleteProjectMemberResponse
+from ._delete_project_role_request import DeleteProjectRoleRequest
+from ._delete_project_role_response_body import DeleteProjectRoleResponseBody
+from ._delete_project_role_response import DeleteProjectRoleResponse
 from ._delete_resource_request import DeleteResourceRequest
 from ._delete_resource_response_body import DeleteResourceResponseBody
 from ._delete_resource_response import DeleteResourceResponse
@@ -930,6 +937,10 @@ from ._update_parameter_response import UpdateParameterResponse
 from ._update_project_request import UpdateProjectRequest
 from ._update_project_response_body import UpdateProjectResponseBody
 from ._update_project_response import UpdateProjectResponse
+from ._update_project_role_request import UpdateProjectRoleRequest
+from ._update_project_role_shrink_request import UpdateProjectRoleShrinkRequest
+from ._update_project_role_response_body import UpdateProjectRoleResponseBody
+from ._update_project_role_response import UpdateProjectRoleResponse
 from ._update_resource_request import UpdateResourceRequest
 from ._update_resource_advance_request import UpdateResourceAdvanceRequest
 from ._update_resource_response_body import UpdateResourceResponseBody
@@ -1094,6 +1105,7 @@ from ._create_data_quality_scan_run_request import CreateDataQualityScanRunReque
 from ._create_dataset_request import CreateDatasetRequestInitVersion
 from ._create_parameter_request import CreateParameterRequestProperties
 from ._create_project_request import CreateProjectRequestAliyunResourceTags
+from ._create_project_role_request import CreateProjectRoleRequestModulePermissions
 from ._create_resource_group_request import CreateResourceGroupRequestAliyunResourceTags
 from ._create_resource_group_response_body import CreateResourceGroupResponseBodyResourceGroupOrder
 from ._create_workflow_instances_request import CreateWorkflowInstancesRequestDefaultRunPropertiesAlert
@@ -1260,6 +1272,7 @@ from ._get_project_response_body import GetProjectResponseBodyProjectAliyunResou
 from ._get_project_response_body import GetProjectResponseBodyProject
 from ._get_project_member_response_body import GetProjectMemberResponseBodyProjectMemberRoles
 from ._get_project_member_response_body import GetProjectMemberResponseBodyProjectMember
+from ._get_project_role_response_body import GetProjectRoleResponseBodyProjectRoleModulePermissions
 from ._get_project_role_response_body import GetProjectRoleResponseBodyProjectRole
 from ._get_rerun_workflow_instances_result_response_body import GetRerunWorkflowInstancesResultResponseBodyResult
 from ._get_resource_response_body import GetResourceResponseBodyResource
@@ -1549,6 +1562,7 @@ from ._list_pipeline_runs_response_body import ListPipelineRunsResponseBodyPagin
 from ._list_project_members_response_body import ListProjectMembersResponseBodyPagingInfoProjectMembersRoles
 from ._list_project_members_response_body import ListProjectMembersResponseBodyPagingInfoProjectMembers
 from ._list_project_members_response_body import ListProjectMembersResponseBodyPagingInfo
+from ._list_project_roles_response_body import ListProjectRolesResponseBodyPagingInfoProjectRolesModulePermissions
 from ._list_project_roles_response_body import ListProjectRolesResponseBodyPagingInfoProjectRoles
 from ._list_project_roles_response_body import ListProjectRolesResponseBodyPagingInfo
 from ._list_projects_request import ListProjectsRequestAliyunResourceTags
@@ -1694,6 +1708,7 @@ from ._update_data_quality_scan_request import UpdateDataQualityScanRequestParam
 from ._update_data_quality_scan_request import UpdateDataQualityScanRequestRuntimeResource
 from ._update_data_quality_scan_request import UpdateDataQualityScanRequestTrigger
 from ._update_parameter_request import UpdateParameterRequestProperties
+from ._update_project_role_request import UpdateProjectRoleRequestModulePermissions
 from ._update_task_request import UpdateTaskRequestDataSource
 from ._update_task_request import UpdateTaskRequestDependencies
 from ._update_task_request import UpdateTaskRequestInputsVariables
@@ -1889,6 +1904,10 @@ __all__ = [
     CreateProjectMemberShrinkRequest,
     CreateProjectMemberResponseBody,
     CreateProjectMemberResponse,
+    CreateProjectRoleRequest,
+    CreateProjectRoleShrinkRequest,
+    CreateProjectRoleResponseBody,
+    CreateProjectRoleResponse,
     CreateResourceRequest,
     CreateResourceAdvanceRequest,
     CreateResourceResponseBody,
@@ -1999,6 +2018,9 @@ __all__ = [
     DeleteProjectMemberRequest,
     DeleteProjectMemberResponseBody,
     DeleteProjectMemberResponse,
+    DeleteProjectRoleRequest,
+    DeleteProjectRoleResponseBody,
+    DeleteProjectRoleResponse,
     DeleteResourceRequest,
     DeleteResourceResponseBody,
     DeleteResourceResponse,
@@ -2654,6 +2676,10 @@ __all__ = [
     UpdateProjectRequest,
     UpdateProjectResponseBody,
     UpdateProjectResponse,
+    UpdateProjectRoleRequest,
+    UpdateProjectRoleShrinkRequest,
+    UpdateProjectRoleResponseBody,
+    UpdateProjectRoleResponse,
     UpdateResourceRequest,
     UpdateResourceAdvanceRequest,
     UpdateResourceResponseBody,
@@ -2818,6 +2844,7 @@ __all__ = [
     CreateDatasetRequestInitVersion,
     CreateParameterRequestProperties,
     CreateProjectRequestAliyunResourceTags,
+    CreateProjectRoleRequestModulePermissions,
     CreateResourceGroupRequestAliyunResourceTags,
     CreateResourceGroupResponseBodyResourceGroupOrder,
     CreateWorkflowInstancesRequestDefaultRunPropertiesAlert,
@@ -2984,6 +3011,7 @@ __all__ = [
     GetProjectResponseBodyProject,
     GetProjectMemberResponseBodyProjectMemberRoles,
     GetProjectMemberResponseBodyProjectMember,
+    GetProjectRoleResponseBodyProjectRoleModulePermissions,
     GetProjectRoleResponseBodyProjectRole,
     GetRerunWorkflowInstancesResultResponseBodyResult,
     GetResourceResponseBodyResource,
@@ -3273,6 +3301,7 @@ __all__ = [
     ListProjectMembersResponseBodyPagingInfoProjectMembersRoles,
     ListProjectMembersResponseBodyPagingInfoProjectMembers,
     ListProjectMembersResponseBodyPagingInfo,
+    ListProjectRolesResponseBodyPagingInfoProjectRolesModulePermissions,
     ListProjectRolesResponseBodyPagingInfoProjectRoles,
     ListProjectRolesResponseBodyPagingInfo,
     ListProjectsRequestAliyunResourceTags,
@@ -3418,6 +3447,7 @@ __all__ = [
     UpdateDataQualityScanRequestRuntimeResource,
     UpdateDataQualityScanRequestTrigger,
     UpdateParameterRequestProperties,
+    UpdateProjectRoleRequestModulePermissions,
     UpdateTaskRequestDataSource,
     UpdateTaskRequestDependencies,
     UpdateTaskRequestInputsVariables,

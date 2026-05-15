@@ -1,3 +1,9 @@
+2026-05-15 Version: 8.4.0
+- Support API CreateProjectRole.
+- Support API DeleteProjectRole.
+- Support API UpdateProjectRole.
+
+
 2026-04-24 Version: 8.3.0
 - Support API AssociateProjectToImage.
 - Support API DissociateProjectFromImage.

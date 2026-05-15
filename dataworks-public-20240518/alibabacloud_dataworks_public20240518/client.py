@@ -4046,6 +4046,100 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_project_member_with_options_async(request, runtime)
 
+    def create_project_role_with_options(
+        self,
+        tmp_req: main_models.CreateProjectRoleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateProjectRoleResponse:
+        tmp_req.validate()
+        request = main_models.CreateProjectRoleShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.module_permissions):
+            request.module_permissions_shrink = Utils.array_to_string_with_specified_style(tmp_req.module_permissions, 'ModulePermissions', 'json')
+        query = {}
+        if not DaraCore.is_null(request.module_permissions_shrink):
+            query['ModulePermissions'] = request.module_permissions_shrink
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateProjectRole',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateProjectRoleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_project_role_with_options_async(
+        self,
+        tmp_req: main_models.CreateProjectRoleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateProjectRoleResponse:
+        tmp_req.validate()
+        request = main_models.CreateProjectRoleShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.module_permissions):
+            request.module_permissions_shrink = Utils.array_to_string_with_specified_style(tmp_req.module_permissions, 'ModulePermissions', 'json')
+        query = {}
+        if not DaraCore.is_null(request.module_permissions_shrink):
+            query['ModulePermissions'] = request.module_permissions_shrink
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateProjectRole',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateProjectRoleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_project_role(
+        self,
+        request: main_models.CreateProjectRoleRequest,
+    ) -> main_models.CreateProjectRoleResponse:
+        runtime = RuntimeOptions()
+        return self.create_project_role_with_options(request, runtime)
+
+    async def create_project_role_async(
+        self,
+        request: main_models.CreateProjectRoleRequest,
+    ) -> main_models.CreateProjectRoleResponse:
+        runtime = RuntimeOptions()
+        return await self.create_project_role_with_options_async(request, runtime)
+
     def create_resource_with_options(
         self,
         request: main_models.CreateResourceRequest,
@@ -7111,6 +7205,80 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteProjectMemberResponse:
         runtime = RuntimeOptions()
         return await self.delete_project_member_with_options_async(request, runtime)
+
+    def delete_project_role_with_options(
+        self,
+        request: main_models.DeleteProjectRoleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteProjectRoleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.code):
+            query['Code'] = request.code
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteProjectRole',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteProjectRoleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_project_role_with_options_async(
+        self,
+        request: main_models.DeleteProjectRoleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteProjectRoleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.code):
+            query['Code'] = request.code
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteProjectRole',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteProjectRoleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_project_role(
+        self,
+        request: main_models.DeleteProjectRoleRequest,
+    ) -> main_models.DeleteProjectRoleResponse:
+        runtime = RuntimeOptions()
+        return self.delete_project_role_with_options(request, runtime)
+
+    async def delete_project_role_async(
+        self,
+        request: main_models.DeleteProjectRoleRequest,
+    ) -> main_models.DeleteProjectRoleResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_project_role_with_options_async(request, runtime)
 
     def delete_resource_with_options(
         self,
@@ -23569,6 +23737,100 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateProjectResponse:
         runtime = RuntimeOptions()
         return await self.update_project_with_options_async(request, runtime)
+
+    def update_project_role_with_options(
+        self,
+        tmp_req: main_models.UpdateProjectRoleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateProjectRoleResponse:
+        tmp_req.validate()
+        request = main_models.UpdateProjectRoleShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.module_permissions):
+            request.module_permissions_shrink = Utils.array_to_string_with_specified_style(tmp_req.module_permissions, 'ModulePermissions', 'json')
+        query = {}
+        if not DaraCore.is_null(request.code):
+            query['Code'] = request.code
+        if not DaraCore.is_null(request.module_permissions_shrink):
+            query['ModulePermissions'] = request.module_permissions_shrink
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateProjectRole',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateProjectRoleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_project_role_with_options_async(
+        self,
+        tmp_req: main_models.UpdateProjectRoleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateProjectRoleResponse:
+        tmp_req.validate()
+        request = main_models.UpdateProjectRoleShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.module_permissions):
+            request.module_permissions_shrink = Utils.array_to_string_with_specified_style(tmp_req.module_permissions, 'ModulePermissions', 'json')
+        query = {}
+        if not DaraCore.is_null(request.code):
+            query['Code'] = request.code
+        if not DaraCore.is_null(request.module_permissions_shrink):
+            query['ModulePermissions'] = request.module_permissions_shrink
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateProjectRole',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateProjectRoleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_project_role(
+        self,
+        request: main_models.UpdateProjectRoleRequest,
+    ) -> main_models.UpdateProjectRoleResponse:
+        runtime = RuntimeOptions()
+        return self.update_project_role_with_options(request, runtime)
+
+    async def update_project_role_async(
+        self,
+        request: main_models.UpdateProjectRoleRequest,
+    ) -> main_models.UpdateProjectRoleResponse:
+        runtime = RuntimeOptions()
+        return await self.update_project_role_with_options_async(request, runtime)
 
     def update_resource_with_options(
         self,

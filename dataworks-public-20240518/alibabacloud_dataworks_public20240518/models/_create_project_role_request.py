@@ -7,66 +7,20 @@ from typing import List
 from alibabacloud_dataworks_public20240518 import models as main_models
 from darabonba.model import DaraModel
 
-class GetProjectRoleResponseBody(DaraModel):
+class CreateProjectRoleRequest(DaraModel):
     def __init__(
         self,
-        project_role: main_models.GetProjectRoleResponseBodyProjectRole = None,
-        request_id: str = None,
-    ):
-        # The role in the DataWorks workspace.
-        self.project_role = project_role
-        # The request ID.
-        self.request_id = request_id
-
-    def validate(self):
-        if self.project_role:
-            self.project_role.validate()
-
-    def to_map(self):
-        result = dict()
-        _map = super().to_map()
-        if _map is not None:
-            result = _map
-        if self.project_role is not None:
-            result['ProjectRole'] = self.project_role.to_map()
-
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ProjectRole') is not None:
-            temp_model = main_models.GetProjectRoleResponseBodyProjectRole()
-            self.project_role = temp_model.from_map(m.get('ProjectRole'))
-
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-
-        return self
-
-class GetProjectRoleResponseBodyProjectRole(DaraModel):
-    def __init__(
-        self,
-        code: str = None,
-        module_permissions: List[main_models.GetProjectRoleResponseBodyProjectRoleModulePermissions] = None,
+        client_token: str = None,
+        module_permissions: List[main_models.CreateProjectRoleRequestModulePermissions] = None,
         name: str = None,
         project_id: int = None,
-        type: str = None,
     ):
-        # The code of the role in the DataWorks workspace.
-        self.code = code
+        self.client_token = client_token
         self.module_permissions = module_permissions
-        # The name of the role in the DataWorks workspace.
+        # This parameter is required.
         self.name = name
-        # The DataWorks workspace ID.
+        # This parameter is required.
         self.project_id = project_id
-        # The type of the role in the DataWorks workspace. Valid values:
-        # 
-        # *   UserCustom: user-defined role
-        # *   System: system role
-        self.type = type
 
     def validate(self):
         if self.module_permissions:
@@ -79,8 +33,8 @@ class GetProjectRoleResponseBodyProjectRole(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.code is not None:
-            result['Code'] = self.code
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
 
         result['ModulePermissions'] = []
         if self.module_permissions is not None:
@@ -93,20 +47,17 @@ class GetProjectRoleResponseBodyProjectRole(DaraModel):
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
 
-        if self.type is not None:
-            result['Type'] = self.type
-
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
 
         self.module_permissions = []
         if m.get('ModulePermissions') is not None:
             for k1 in m.get('ModulePermissions'):
-                temp_model = main_models.GetProjectRoleResponseBodyProjectRoleModulePermissions()
+                temp_model = main_models.CreateProjectRoleRequestModulePermissions()
                 self.module_permissions.append(temp_model.from_map(k1))
 
         if m.get('Name') is not None:
@@ -115,20 +66,15 @@ class GetProjectRoleResponseBodyProjectRole(DaraModel):
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')
 
-        if m.get('Type') is not None:
-            self.type = m.get('Type')
-
         return self
 
-class GetProjectRoleResponseBodyProjectRoleModulePermissions(DaraModel):
+class CreateProjectRoleRequestModulePermissions(DaraModel):
     def __init__(
         self,
         module_id: int = None,
-        module_name: str = None,
         permission_type: str = None,
     ):
         self.module_id = module_id
-        self.module_name = module_name
         self.permission_type = permission_type
 
     def validate(self):
@@ -142,9 +88,6 @@ class GetProjectRoleResponseBodyProjectRoleModulePermissions(DaraModel):
         if self.module_id is not None:
             result['ModuleId'] = self.module_id
 
-        if self.module_name is not None:
-            result['ModuleName'] = self.module_name
-
         if self.permission_type is not None:
             result['PermissionType'] = self.permission_type
 
@@ -154,9 +97,6 @@ class GetProjectRoleResponseBodyProjectRoleModulePermissions(DaraModel):
         m = m or dict()
         if m.get('ModuleId') is not None:
             self.module_id = m.get('ModuleId')
-
-        if m.get('ModuleName') is not None:
-            self.module_name = m.get('ModuleName')
 
         if m.get('PermissionType') is not None:
             self.permission_type = m.get('PermissionType')
