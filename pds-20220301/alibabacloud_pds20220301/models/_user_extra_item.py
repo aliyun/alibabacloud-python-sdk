@@ -24,6 +24,7 @@ class UserExtraItem(DaraModel):
         expired_at: int = None,
         is_sync: bool = None,
         last_login_time: int = None,
+        last_refresh_token_time: int = None,
         need_change_password_next_login: bool = None,
         nick_name: str = None,
         parent_group: List[main_models.BaseDriveResponse] = None,
@@ -52,6 +53,7 @@ class UserExtraItem(DaraModel):
         self.expired_at = expired_at
         self.is_sync = is_sync
         self.last_login_time = last_login_time
+        self.last_refresh_token_time = last_refresh_token_time
         self.need_change_password_next_login = need_change_password_next_login
         self.nick_name = nick_name
         self.parent_group = parent_group
@@ -130,6 +132,9 @@ class UserExtraItem(DaraModel):
 
         if self.last_login_time is not None:
             result['last_login_time'] = self.last_login_time
+
+        if self.last_refresh_token_time is not None:
+            result['last_refresh_token_time'] = self.last_refresh_token_time
 
         if self.need_change_password_next_login is not None:
             result['need_change_password_next_login'] = self.need_change_password_next_login
@@ -223,6 +228,9 @@ class UserExtraItem(DaraModel):
 
         if m.get('last_login_time') is not None:
             self.last_login_time = m.get('last_login_time')
+
+        if m.get('last_refresh_token_time') is not None:
+            self.last_refresh_token_time = m.get('last_refresh_token_time')
 
         if m.get('need_change_password_next_login') is not None:
             self.need_change_password_next_login = m.get('need_change_password_next_login')

@@ -16,6 +16,8 @@ class User(DaraModel):
         description: str = None,
         domain_id: str = None,
         email: str = None,
+        last_login_time: int = None,
+        last_refresh_token_time: int = None,
         nick_name: str = None,
         phone: str = None,
         role: str = None,
@@ -39,6 +41,8 @@ class User(DaraModel):
         self.domain_id = domain_id
         # The email address of the user.
         self.email = email
+        self.last_login_time = last_login_time
+        self.last_refresh_token_time = last_refresh_token_time
         # The nickname of the user.
         self.nick_name = nick_name
         # The mobile number of the user.
@@ -92,6 +96,12 @@ class User(DaraModel):
         if self.email is not None:
             result['email'] = self.email
 
+        if self.last_login_time is not None:
+            result['last_login_time'] = self.last_login_time
+
+        if self.last_refresh_token_time is not None:
+            result['last_refresh_token_time'] = self.last_refresh_token_time
+
         if self.nick_name is not None:
             result['nick_name'] = self.nick_name
 
@@ -140,6 +150,12 @@ class User(DaraModel):
 
         if m.get('email') is not None:
             self.email = m.get('email')
+
+        if m.get('last_login_time') is not None:
+            self.last_login_time = m.get('last_login_time')
+
+        if m.get('last_refresh_token_time') is not None:
+            self.last_refresh_token_time = m.get('last_refresh_token_time')
 
         if m.get('nick_name') is not None:
             self.nick_name = m.get('nick_name')
