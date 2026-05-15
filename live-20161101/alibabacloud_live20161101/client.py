@@ -2520,18 +2520,30 @@ class Client(OpenApiClient):
             query['ComposeVodTranscodeGroupId'] = request.compose_vod_transcode_group_id
         if not DaraCore.is_null(request.cycle_duration):
             query['CycleDuration'] = request.cycle_duration
+        if not DaraCore.is_null(request.delay_time):
+            query['DelayTime'] = request.delay_time
         if not DaraCore.is_null(request.domain_name):
             query['DomainName'] = request.domain_name
+        if not DaraCore.is_null(request.format_config):
+            query['FormatConfig'] = request.format_config
         if not DaraCore.is_null(request.on_demand):
             query['OnDemand'] = request.on_demand
         if not DaraCore.is_null(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.record_content):
+            query['RecordContent'] = request.record_content
+        if not DaraCore.is_null(request.record_format):
+            query['RecordFormat'] = request.record_format
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.space_id):
+            query['SpaceId'] = request.space_id
         if not DaraCore.is_null(request.storage_location):
             query['StorageLocation'] = request.storage_location
         if not DaraCore.is_null(request.stream_name):
             query['StreamName'] = request.stream_name
+        if not DaraCore.is_null(request.transcode_templates):
+            query['TranscodeTemplates'] = request.transcode_templates
         if not DaraCore.is_null(request.vod_transcode_group_id):
             query['VodTranscodeGroupId'] = request.vod_transcode_group_id
         req = open_api_util_models.OpenApiRequest(
@@ -2568,18 +2580,30 @@ class Client(OpenApiClient):
             query['ComposeVodTranscodeGroupId'] = request.compose_vod_transcode_group_id
         if not DaraCore.is_null(request.cycle_duration):
             query['CycleDuration'] = request.cycle_duration
+        if not DaraCore.is_null(request.delay_time):
+            query['DelayTime'] = request.delay_time
         if not DaraCore.is_null(request.domain_name):
             query['DomainName'] = request.domain_name
+        if not DaraCore.is_null(request.format_config):
+            query['FormatConfig'] = request.format_config
         if not DaraCore.is_null(request.on_demand):
             query['OnDemand'] = request.on_demand
         if not DaraCore.is_null(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.record_content):
+            query['RecordContent'] = request.record_content
+        if not DaraCore.is_null(request.record_format):
+            query['RecordFormat'] = request.record_format
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.space_id):
+            query['SpaceId'] = request.space_id
         if not DaraCore.is_null(request.storage_location):
             query['StorageLocation'] = request.storage_location
         if not DaraCore.is_null(request.stream_name):
             query['StreamName'] = request.stream_name
+        if not DaraCore.is_null(request.transcode_templates):
+            query['TranscodeTemplates'] = request.transcode_templates
         if not DaraCore.is_null(request.vod_transcode_group_id):
             query['VodTranscodeGroupId'] = request.vod_transcode_group_id
         req = open_api_util_models.OpenApiRequest(
@@ -18724,6 +18748,8 @@ class Client(OpenApiClient):
             query['StartTime'] = request.start_time
         if not DaraCore.is_null(request.status):
             query['Status'] = request.status
+        if not DaraCore.is_null(request.storage_type):
+            query['StorageType'] = request.storage_type
         if not DaraCore.is_null(request.stream_name):
             query['StreamName'] = request.stream_name
         req = open_api_util_models.OpenApiRequest(
@@ -18770,6 +18796,8 @@ class Client(OpenApiClient):
             query['StartTime'] = request.start_time
         if not DaraCore.is_null(request.status):
             query['Status'] = request.status
+        if not DaraCore.is_null(request.storage_type):
+            query['StorageType'] = request.storage_type
         if not DaraCore.is_null(request.stream_name):
             query['StreamName'] = request.stream_name
         req = open_api_util_models.OpenApiRequest(
@@ -37908,16 +37936,24 @@ class Client(OpenApiClient):
             query['ComposeVodTranscodeGroupId'] = request.compose_vod_transcode_group_id
         if not DaraCore.is_null(request.cycle_duration):
             query['CycleDuration'] = request.cycle_duration
+        if not DaraCore.is_null(request.delay_time):
+            query['DelayTime'] = request.delay_time
         if not DaraCore.is_null(request.domain_name):
             query['DomainName'] = request.domain_name
+        if not DaraCore.is_null(request.format_config):
+            query['FormatConfig'] = request.format_config
         if not DaraCore.is_null(request.on_demand):
             query['OnDemand'] = request.on_demand
         if not DaraCore.is_null(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.record_format):
+            query['RecordFormat'] = request.record_format
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.stream_name):
             query['StreamName'] = request.stream_name
+        if not DaraCore.is_null(request.transcode_templates):
+            query['TranscodeTemplates'] = request.transcode_templates
         if not DaraCore.is_null(request.vod_transcode_group_id):
             query['VodTranscodeGroupId'] = request.vod_transcode_group_id
         req = open_api_util_models.OpenApiRequest(
@@ -37954,16 +37990,24 @@ class Client(OpenApiClient):
             query['ComposeVodTranscodeGroupId'] = request.compose_vod_transcode_group_id
         if not DaraCore.is_null(request.cycle_duration):
             query['CycleDuration'] = request.cycle_duration
+        if not DaraCore.is_null(request.delay_time):
+            query['DelayTime'] = request.delay_time
         if not DaraCore.is_null(request.domain_name):
             query['DomainName'] = request.domain_name
+        if not DaraCore.is_null(request.format_config):
+            query['FormatConfig'] = request.format_config
         if not DaraCore.is_null(request.on_demand):
             query['OnDemand'] = request.on_demand
         if not DaraCore.is_null(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.record_format):
+            query['RecordFormat'] = request.record_format
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.stream_name):
             query['StreamName'] = request.stream_name
+        if not DaraCore.is_null(request.transcode_templates):
+            query['TranscodeTemplates'] = request.transcode_templates
         if not DaraCore.is_null(request.vod_transcode_group_id):
             query['VodTranscodeGroupId'] = request.vod_transcode_group_id
         req = open_api_util_models.OpenApiRequest(

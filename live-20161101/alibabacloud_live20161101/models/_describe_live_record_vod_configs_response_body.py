@@ -115,10 +115,16 @@ class DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodC
         compose_vod_transcode_group_id: str = None,
         create_time: str = None,
         cycle_duration: int = None,
+        delay_time: int = None,
         domain_name: str = None,
+        format_config: bool = None,
         on_demand: int = None,
+        record_content: str = None,
+        record_format_list: main_models.DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodConfigRecordFormatList = None,
+        space_id: str = None,
         storage_location: str = None,
         stream_name: str = None,
+        transcode_templates: str = None,
         vod_transcode_group_id: str = None,
     ):
         self.app_name = app_name
@@ -126,14 +132,21 @@ class DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodC
         self.compose_vod_transcode_group_id = compose_vod_transcode_group_id
         self.create_time = create_time
         self.cycle_duration = cycle_duration
+        self.delay_time = delay_time
         self.domain_name = domain_name
+        self.format_config = format_config
         self.on_demand = on_demand
+        self.record_content = record_content
+        self.record_format_list = record_format_list
+        self.space_id = space_id
         self.storage_location = storage_location
         self.stream_name = stream_name
+        self.transcode_templates = transcode_templates
         self.vod_transcode_group_id = vod_transcode_group_id
 
     def validate(self):
-        pass
+        if self.record_format_list:
+            self.record_format_list.validate()
 
     def to_map(self):
         result = dict()
@@ -155,17 +168,35 @@ class DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodC
         if self.cycle_duration is not None:
             result['CycleDuration'] = self.cycle_duration
 
+        if self.delay_time is not None:
+            result['DelayTime'] = self.delay_time
+
         if self.domain_name is not None:
             result['DomainName'] = self.domain_name
 
+        if self.format_config is not None:
+            result['FormatConfig'] = self.format_config
+
         if self.on_demand is not None:
             result['OnDemand'] = self.on_demand
+
+        if self.record_content is not None:
+            result['RecordContent'] = self.record_content
+
+        if self.record_format_list is not None:
+            result['RecordFormatList'] = self.record_format_list.to_map()
+
+        if self.space_id is not None:
+            result['SpaceId'] = self.space_id
 
         if self.storage_location is not None:
             result['StorageLocation'] = self.storage_location
 
         if self.stream_name is not None:
             result['StreamName'] = self.stream_name
+
+        if self.transcode_templates is not None:
+            result['TranscodeTemplates'] = self.transcode_templates
 
         if self.vod_transcode_group_id is not None:
             result['VodTranscodeGroupId'] = self.vod_transcode_group_id
@@ -189,11 +220,27 @@ class DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodC
         if m.get('CycleDuration') is not None:
             self.cycle_duration = m.get('CycleDuration')
 
+        if m.get('DelayTime') is not None:
+            self.delay_time = m.get('DelayTime')
+
         if m.get('DomainName') is not None:
             self.domain_name = m.get('DomainName')
 
+        if m.get('FormatConfig') is not None:
+            self.format_config = m.get('FormatConfig')
+
         if m.get('OnDemand') is not None:
             self.on_demand = m.get('OnDemand')
+
+        if m.get('RecordContent') is not None:
+            self.record_content = m.get('RecordContent')
+
+        if m.get('RecordFormatList') is not None:
+            temp_model = main_models.DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodConfigRecordFormatList()
+            self.record_format_list = temp_model.from_map(m.get('RecordFormatList'))
+
+        if m.get('SpaceId') is not None:
+            self.space_id = m.get('SpaceId')
 
         if m.get('StorageLocation') is not None:
             self.storage_location = m.get('StorageLocation')
@@ -201,8 +248,121 @@ class DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodC
         if m.get('StreamName') is not None:
             self.stream_name = m.get('StreamName')
 
+        if m.get('TranscodeTemplates') is not None:
+            self.transcode_templates = m.get('TranscodeTemplates')
+
         if m.get('VodTranscodeGroupId') is not None:
             self.vod_transcode_group_id = m.get('VodTranscodeGroupId')
+
+        return self
+
+class DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodConfigRecordFormatList(DaraModel):
+    def __init__(
+        self,
+        record_format: List[main_models.DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodConfigRecordFormatListRecordFormat] = None,
+    ):
+        self.record_format = record_format
+
+    def validate(self):
+        if self.record_format:
+            for v1 in self.record_format:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        result['RecordFormat'] = []
+        if self.record_format is not None:
+            for k1 in self.record_format:
+                result['RecordFormat'].append(k1.to_map() if k1 else None)
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.record_format = []
+        if m.get('RecordFormat') is not None:
+            for k1 in m.get('RecordFormat'):
+                temp_model = main_models.DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodConfigRecordFormatListRecordFormat()
+                self.record_format.append(temp_model.from_map(k1))
+
+        return self
+
+class DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodConfigRecordFormatListRecordFormat(DaraModel):
+    def __init__(
+        self,
+        auto_compose: str = None,
+        format: str = None,
+        process_method: str = None,
+        process_template_id: str = None,
+        slice_duration: int = None,
+        tags: str = None,
+        video_process: str = None,
+    ):
+        self.auto_compose = auto_compose
+        self.format = format
+        self.process_method = process_method
+        self.process_template_id = process_template_id
+        self.slice_duration = slice_duration
+        self.tags = tags
+        self.video_process = video_process
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.auto_compose is not None:
+            result['AutoCompose'] = self.auto_compose
+
+        if self.format is not None:
+            result['Format'] = self.format
+
+        if self.process_method is not None:
+            result['ProcessMethod'] = self.process_method
+
+        if self.process_template_id is not None:
+            result['ProcessTemplateId'] = self.process_template_id
+
+        if self.slice_duration is not None:
+            result['SliceDuration'] = self.slice_duration
+
+        if self.tags is not None:
+            result['Tags'] = self.tags
+
+        if self.video_process is not None:
+            result['VideoProcess'] = self.video_process
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AutoCompose') is not None:
+            self.auto_compose = m.get('AutoCompose')
+
+        if m.get('Format') is not None:
+            self.format = m.get('Format')
+
+        if m.get('ProcessMethod') is not None:
+            self.process_method = m.get('ProcessMethod')
+
+        if m.get('ProcessTemplateId') is not None:
+            self.process_template_id = m.get('ProcessTemplateId')
+
+        if m.get('SliceDuration') is not None:
+            self.slice_duration = m.get('SliceDuration')
+
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
+
+        if m.get('VideoProcess') is not None:
+            self.video_process = m.get('VideoProcess')
 
         return self
 

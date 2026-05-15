@@ -16,6 +16,7 @@ class DescribeLiveRecordNotifyRecordsRequest(DaraModel):
         region_id: str = None,
         start_time: str = None,
         status: str = None,
+        storage_type: str = None,
         stream_name: str = None,
     ):
         # The name of the application to which the live stream belongs.
@@ -49,6 +50,7 @@ class DescribeLiveRecordNotifyRecordsRequest(DaraModel):
         # *   success
         # *   failed
         self.status = status
+        self.storage_type = storage_type
         # The name of the live stream.
         self.stream_name = stream_name
 
@@ -87,6 +89,9 @@ class DescribeLiveRecordNotifyRecordsRequest(DaraModel):
         if self.status is not None:
             result['Status'] = self.status
 
+        if self.storage_type is not None:
+            result['StorageType'] = self.storage_type
+
         if self.stream_name is not None:
             result['StreamName'] = self.stream_name
 
@@ -120,6 +125,9 @@ class DescribeLiveRecordNotifyRecordsRequest(DaraModel):
 
         if m.get('Status') is not None:
             self.status = m.get('Status')
+
+        if m.get('StorageType') is not None:
+            self.storage_type = m.get('StorageType')
 
         if m.get('StreamName') is not None:
             self.stream_name = m.get('StreamName')

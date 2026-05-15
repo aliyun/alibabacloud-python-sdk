@@ -1,3 +1,22 @@
+2026-05-15 Version: 2.7.4
+- Update API AddLiveRecordVodConfig: add request parameters DelayTime.
+- Update API AddLiveRecordVodConfig: add request parameters FormatConfig.
+- Update API AddLiveRecordVodConfig: add request parameters RecordContent.
+- Update API AddLiveRecordVodConfig: add request parameters RecordFormat.
+- Update API AddLiveRecordVodConfig: add request parameters SpaceId.
+- Update API AddLiveRecordVodConfig: add request parameters TranscodeTemplates.
+- Update API DescribeLiveRecordVodConfigs: add response parameters Body.LiveRecordVodConfigs.$.DelayTime.
+- Update API DescribeLiveRecordVodConfigs: add response parameters Body.LiveRecordVodConfigs.$.FormatConfig.
+- Update API DescribeLiveRecordVodConfigs: add response parameters Body.LiveRecordVodConfigs.$.RecordContent.
+- Update API DescribeLiveRecordVodConfigs: add response parameters Body.LiveRecordVodConfigs.$.RecordFormatList.
+- Update API DescribeLiveRecordVodConfigs: add response parameters Body.LiveRecordVodConfigs.$.SpaceId.
+- Update API DescribeLiveRecordVodConfigs: add response parameters Body.LiveRecordVodConfigs.$.TranscodeTemplates.
+- Update API UpdateLiveRecordVodConfig: add request parameters DelayTime.
+- Update API UpdateLiveRecordVodConfig: add request parameters FormatConfig.
+- Update API UpdateLiveRecordVodConfig: add request parameters RecordFormat.
+- Update API UpdateLiveRecordVodConfig: add request parameters TranscodeTemplates.
+
+
 2026-05-08 Version: 2.7.2
 - Update API AddLiveStreamMerge: add request parameters SelectAppName.
 - Update API AddLiveStreamMerge: add request parameters SelectStreamName.

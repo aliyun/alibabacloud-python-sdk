@@ -119,6 +119,7 @@ class DescribeLiveRecordNotifyRecordsResponseBodyCallbackList(DaraModel):
         notify_time: str = None,
         notify_type: str = None,
         notify_url: str = None,
+        storage_type: str = None,
         stream_name: str = None,
     ):
         # The name of the application to which the live stream belongs.
@@ -150,6 +151,7 @@ class DescribeLiveRecordNotifyRecordsResponseBodyCallbackList(DaraModel):
         self.notify_type = notify_type
         # The recording callback URL.
         self.notify_url = notify_url
+        self.storage_type = storage_type
         # The name of the live stream.
         self.stream_name = stream_name
 
@@ -191,6 +193,9 @@ class DescribeLiveRecordNotifyRecordsResponseBodyCallbackList(DaraModel):
         if self.notify_url is not None:
             result['NotifyUrl'] = self.notify_url
 
+        if self.storage_type is not None:
+            result['StorageType'] = self.storage_type
+
         if self.stream_name is not None:
             result['StreamName'] = self.stream_name
 
@@ -227,6 +232,9 @@ class DescribeLiveRecordNotifyRecordsResponseBodyCallbackList(DaraModel):
 
         if m.get('NotifyUrl') is not None:
             self.notify_url = m.get('NotifyUrl')
+
+        if m.get('StorageType') is not None:
+            self.storage_type = m.get('StorageType')
 
         if m.get('StreamName') is not None:
             self.stream_name = m.get('StreamName')

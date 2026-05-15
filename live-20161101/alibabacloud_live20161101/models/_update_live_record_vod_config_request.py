@@ -2,6 +2,9 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
+from alibabacloud_live20161101 import models as main_models
 from darabonba.model import DaraModel
 
 class UpdateLiveRecordVodConfigRequest(DaraModel):
@@ -11,11 +14,15 @@ class UpdateLiveRecordVodConfigRequest(DaraModel):
         auto_compose: str = None,
         compose_vod_transcode_group_id: str = None,
         cycle_duration: int = None,
+        delay_time: int = None,
         domain_name: str = None,
+        format_config: bool = None,
         on_demand: int = None,
         owner_id: int = None,
+        record_format: List[main_models.UpdateLiveRecordVodConfigRequestRecordFormat] = None,
         region_id: str = None,
         stream_name: str = None,
+        transcode_templates: List[str] = None,
         vod_transcode_group_id: str = None,
     ):
         # The name of the application to which the live stream belongs. You can view the application name on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page of the ApsaraVideo Live console.
@@ -33,26 +40,31 @@ class UpdateLiveRecordVodConfigRequest(DaraModel):
         self.compose_vod_transcode_group_id = compose_vod_transcode_group_id
         # The recording cycle. Unit: seconds. Valid values: **300 to 21600**. Default value: **3600**.
         self.cycle_duration = cycle_duration
+        self.delay_time = delay_time
         # The main streaming domain.
         # 
         # This parameter is required.
         self.domain_name = domain_name
+        self.format_config = format_config
         # Specifies whether to enable on-demand recording. Valid values:
         # 
         # *   **0** (default): disables on-demand recording.
         # *   **1**: enables on-demand recording by using the HTTP callback method.
         self.on_demand = on_demand
         self.owner_id = owner_id
+        self.record_format = record_format
         self.region_id = region_id
         # The name of the live stream. You can view the stream name on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page of the ApsaraVideo Live console.
         self.stream_name = stream_name
+        self.transcode_templates = transcode_templates
         # The ID of the transcoding template group in ApsaraVideo VOD.
-        # 
-        # This parameter is required.
         self.vod_transcode_group_id = vod_transcode_group_id
 
     def validate(self):
-        pass
+        if self.record_format:
+            for v1 in self.record_format:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -71,8 +83,14 @@ class UpdateLiveRecordVodConfigRequest(DaraModel):
         if self.cycle_duration is not None:
             result['CycleDuration'] = self.cycle_duration
 
+        if self.delay_time is not None:
+            result['DelayTime'] = self.delay_time
+
         if self.domain_name is not None:
             result['DomainName'] = self.domain_name
+
+        if self.format_config is not None:
+            result['FormatConfig'] = self.format_config
 
         if self.on_demand is not None:
             result['OnDemand'] = self.on_demand
@@ -80,11 +98,19 @@ class UpdateLiveRecordVodConfigRequest(DaraModel):
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
 
+        result['RecordFormat'] = []
+        if self.record_format is not None:
+            for k1 in self.record_format:
+                result['RecordFormat'].append(k1.to_map() if k1 else None)
+
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
         if self.stream_name is not None:
             result['StreamName'] = self.stream_name
+
+        if self.transcode_templates is not None:
+            result['TranscodeTemplates'] = self.transcode_templates
 
         if self.vod_transcode_group_id is not None:
             result['VodTranscodeGroupId'] = self.vod_transcode_group_id
@@ -105,8 +131,14 @@ class UpdateLiveRecordVodConfigRequest(DaraModel):
         if m.get('CycleDuration') is not None:
             self.cycle_duration = m.get('CycleDuration')
 
+        if m.get('DelayTime') is not None:
+            self.delay_time = m.get('DelayTime')
+
         if m.get('DomainName') is not None:
             self.domain_name = m.get('DomainName')
+
+        if m.get('FormatConfig') is not None:
+            self.format_config = m.get('FormatConfig')
 
         if m.get('OnDemand') is not None:
             self.on_demand = m.get('OnDemand')
@@ -114,14 +146,98 @@ class UpdateLiveRecordVodConfigRequest(DaraModel):
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
 
+        self.record_format = []
+        if m.get('RecordFormat') is not None:
+            for k1 in m.get('RecordFormat'):
+                temp_model = main_models.UpdateLiveRecordVodConfigRequestRecordFormat()
+                self.record_format.append(temp_model.from_map(k1))
+
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
 
         if m.get('StreamName') is not None:
             self.stream_name = m.get('StreamName')
 
+        if m.get('TranscodeTemplates') is not None:
+            self.transcode_templates = m.get('TranscodeTemplates')
+
         if m.get('VodTranscodeGroupId') is not None:
             self.vod_transcode_group_id = m.get('VodTranscodeGroupId')
+
+        return self
+
+class UpdateLiveRecordVodConfigRequestRecordFormat(DaraModel):
+    def __init__(
+        self,
+        auto_compose: str = None,
+        format: str = None,
+        process_method: str = None,
+        process_template_id: str = None,
+        slice_duration: int = None,
+        tags: str = None,
+        video_process: str = None,
+    ):
+        self.auto_compose = auto_compose
+        self.format = format
+        self.process_method = process_method
+        self.process_template_id = process_template_id
+        self.slice_duration = slice_duration
+        self.tags = tags
+        self.video_process = video_process
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.auto_compose is not None:
+            result['AutoCompose'] = self.auto_compose
+
+        if self.format is not None:
+            result['Format'] = self.format
+
+        if self.process_method is not None:
+            result['ProcessMethod'] = self.process_method
+
+        if self.process_template_id is not None:
+            result['ProcessTemplateId'] = self.process_template_id
+
+        if self.slice_duration is not None:
+            result['SliceDuration'] = self.slice_duration
+
+        if self.tags is not None:
+            result['Tags'] = self.tags
+
+        if self.video_process is not None:
+            result['VideoProcess'] = self.video_process
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AutoCompose') is not None:
+            self.auto_compose = m.get('AutoCompose')
+
+        if m.get('Format') is not None:
+            self.format = m.get('Format')
+
+        if m.get('ProcessMethod') is not None:
+            self.process_method = m.get('ProcessMethod')
+
+        if m.get('ProcessTemplateId') is not None:
+            self.process_template_id = m.get('ProcessTemplateId')
+
+        if m.get('SliceDuration') is not None:
+            self.slice_duration = m.get('SliceDuration')
+
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
+
+        if m.get('VideoProcess') is not None:
+            self.video_process = m.get('VideoProcess')
 
         return self
 
