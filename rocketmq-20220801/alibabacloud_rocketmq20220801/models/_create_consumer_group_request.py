@@ -10,6 +10,7 @@ class CreateConsumerGroupRequest(DaraModel):
         self,
         consume_retry_policy: main_models.CreateConsumerGroupRequestConsumeRetryPolicy = None,
         delivery_order_type: str = None,
+        exclusive: bool = None,
         max_receive_tps: int = None,
         message_model: str = None,
         remark: str = None,
@@ -28,6 +29,7 @@ class CreateConsumerGroupRequest(DaraModel):
         # 
         # This parameter is required.
         self.delivery_order_type = delivery_order_type
+        self.exclusive = exclusive
         # The maximum number of messages that can be processed by consumers per second.
         self.max_receive_tps = max_receive_tps
         self.message_model = message_model
@@ -49,6 +51,9 @@ class CreateConsumerGroupRequest(DaraModel):
 
         if self.delivery_order_type is not None:
             result['deliveryOrderType'] = self.delivery_order_type
+
+        if self.exclusive is not None:
+            result['exclusive'] = self.exclusive
 
         if self.max_receive_tps is not None:
             result['maxReceiveTps'] = self.max_receive_tps
@@ -72,6 +77,9 @@ class CreateConsumerGroupRequest(DaraModel):
 
         if m.get('deliveryOrderType') is not None:
             self.delivery_order_type = m.get('deliveryOrderType')
+
+        if m.get('exclusive') is not None:
+            self.exclusive = m.get('exclusive')
 
         if m.get('maxReceiveTps') is not None:
             self.max_receive_tps = m.get('maxReceiveTps')

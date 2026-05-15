@@ -105,6 +105,7 @@ class GetConsumerGroupResponseBodyData(DaraModel):
         consumer_group_id: str = None,
         create_time: str = None,
         delivery_order_type: str = None,
+        exclusive: bool = None,
         instance_id: str = None,
         max_receive_tps: int = None,
         message_model: str = None,
@@ -127,6 +128,7 @@ class GetConsumerGroupResponseBodyData(DaraModel):
         # *   Concurrently: concurrent delivery
         # *   Orderly: ordered delivery
         self.delivery_order_type = delivery_order_type
+        self.exclusive = exclusive
         # The ID of the instance.
         self.instance_id = instance_id
         # Maximum received message tps
@@ -168,6 +170,9 @@ class GetConsumerGroupResponseBodyData(DaraModel):
         if self.delivery_order_type is not None:
             result['deliveryOrderType'] = self.delivery_order_type
 
+        if self.exclusive is not None:
+            result['exclusive'] = self.exclusive
+
         if self.instance_id is not None:
             result['instanceId'] = self.instance_id
 
@@ -208,6 +213,9 @@ class GetConsumerGroupResponseBodyData(DaraModel):
 
         if m.get('deliveryOrderType') is not None:
             self.delivery_order_type = m.get('deliveryOrderType')
+
+        if m.get('exclusive') is not None:
+            self.exclusive = m.get('exclusive')
 
         if m.get('instanceId') is not None:
             self.instance_id = m.get('instanceId')

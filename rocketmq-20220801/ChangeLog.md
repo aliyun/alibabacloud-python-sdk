@@ -1,3 +1,8 @@
+2026-05-15 Version: 5.0.7
+- Update API CreateConsumerGroup: add request parameters body.exclusive.
+- Update API GetConsumerGroup: add response parameters Body.data.exclusive.
+
+
 2026-04-22 Version: 5.0.6
 - Update API CreateInstanceAccount: add request parameters body.remark.
 - Update API GetInstanceAccount: add response parameters Body.data.remark.

@@ -223,6 +223,8 @@ class Client(OpenApiClient):
             body['consumeRetryPolicy'] = request.consume_retry_policy
         if not DaraCore.is_null(request.delivery_order_type):
             body['deliveryOrderType'] = request.delivery_order_type
+        if not DaraCore.is_null(request.exclusive):
+            body['exclusive'] = request.exclusive
         if not DaraCore.is_null(request.max_receive_tps):
             body['maxReceiveTps'] = request.max_receive_tps
         if not DaraCore.is_null(request.message_model):
@@ -265,6 +267,8 @@ class Client(OpenApiClient):
             body['consumeRetryPolicy'] = request.consume_retry_policy
         if not DaraCore.is_null(request.delivery_order_type):
             body['deliveryOrderType'] = request.delivery_order_type
+        if not DaraCore.is_null(request.exclusive):
+            body['exclusive'] = request.exclusive
         if not DaraCore.is_null(request.max_receive_tps):
             body['maxReceiveTps'] = request.max_receive_tps
         if not DaraCore.is_null(request.message_model):
