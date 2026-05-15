@@ -14,6 +14,7 @@ class ExportRecallManagementTableRequest(DaraModel):
         maxcompute_schema: str = None,
         maxcompute_table_name: str = None,
         partitions: Dict[str, str] = None,
+        recall_management_table_version_id: str = None,
     ):
         self.instance_id = instance_id
         self.maxcompute_project_name = maxcompute_project_name
@@ -21,6 +22,7 @@ class ExportRecallManagementTableRequest(DaraModel):
         self.maxcompute_schema = maxcompute_schema
         self.maxcompute_table_name = maxcompute_table_name
         self.partitions = partitions
+        self.recall_management_table_version_id = recall_management_table_version_id
 
     def validate(self):
         pass
@@ -45,6 +47,9 @@ class ExportRecallManagementTableRequest(DaraModel):
         if self.partitions is not None:
             result['Partitions'] = self.partitions
 
+        if self.recall_management_table_version_id is not None:
+            result['RecallManagementTableVersionId'] = self.recall_management_table_version_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -63,6 +68,9 @@ class ExportRecallManagementTableRequest(DaraModel):
 
         if m.get('Partitions') is not None:
             self.partitions = m.get('Partitions')
+
+        if m.get('RecallManagementTableVersionId') is not None:
+            self.recall_management_table_version_id = m.get('RecallManagementTableVersionId')
 
         return self
 

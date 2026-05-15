@@ -1,3 +1,7 @@
+2026-05-15 Version: 7.0.2
+- Update API ExportRecallManagementTable: add request parameters body.RecallManagementTableVersionId.
+
+
 2026-05-07 Version: 7.0.1
 - Update API CreateRecallManagementServiceVersion: add request parameters body.InstanceId.
 - Update API DeleteEngineConfig: add request parameters DeleteAll.

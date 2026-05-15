@@ -6264,6 +6264,8 @@ class Client(OpenApiClient):
             body['MaxcomputeTableName'] = request.maxcompute_table_name
         if not DaraCore.is_null(request.partitions):
             body['Partitions'] = request.partitions
+        if not DaraCore.is_null(request.recall_management_table_version_id):
+            body['RecallManagementTableVersionId'] = request.recall_management_table_version_id
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             body = Utils.parse_to_map(body)
@@ -6303,6 +6305,8 @@ class Client(OpenApiClient):
             body['MaxcomputeTableName'] = request.maxcompute_table_name
         if not DaraCore.is_null(request.partitions):
             body['Partitions'] = request.partitions
+        if not DaraCore.is_null(request.recall_management_table_version_id):
+            body['RecallManagementTableVersionId'] = request.recall_management_table_version_id
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             body = Utils.parse_to_map(body)
