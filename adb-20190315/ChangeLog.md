@@ -1,3 +1,7 @@
+2026-05-15 Version: 5.0.12
+- Update API ModifyDBClusterShardNumber: add request parameters IsRollback.
+
+
 2026-05-08 Version: 5.0.11
 - Update API DescribeSQLPatterns: add request parameters SqlPatternHash.
 

@@ -12397,6 +12397,8 @@ class Client(OpenApiClient):
             query['DBClusterId'] = request.dbcluster_id
         if not DaraCore.is_null(request.dry_run):
             query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.is_rollback):
+            query['IsRollback'] = request.is_rollback
         if not DaraCore.is_null(request.new_shard_number):
             query['NewShardNumber'] = request.new_shard_number
         if not DaraCore.is_null(request.owner_account):
@@ -12443,6 +12445,8 @@ class Client(OpenApiClient):
             query['DBClusterId'] = request.dbcluster_id
         if not DaraCore.is_null(request.dry_run):
             query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.is_rollback):
+            query['IsRollback'] = request.is_rollback
         if not DaraCore.is_null(request.new_shard_number):
             query['NewShardNumber'] = request.new_shard_number
         if not DaraCore.is_null(request.owner_account):

@@ -9,6 +9,7 @@ class ModifyDBClusterShardNumberRequest(DaraModel):
         self,
         dbcluster_id: str = None,
         dry_run: bool = None,
+        is_rollback: bool = None,
         new_shard_number: int = None,
         owner_account: str = None,
         owner_id: int = None,
@@ -29,6 +30,7 @@ class ModifyDBClusterShardNumberRequest(DaraModel):
         # *   true: sends a request to check whether the cluster meets the prerequisites for changing the number of shards and whether the desired number of shards is valid, but **does not** perform the change operation.
         # *   false (default): sends a request to perform a check and trigger the change operation.
         self.dry_run = dry_run
+        self.is_rollback = is_rollback
         # The desired number of shards.
         self.new_shard_number = new_shard_number
         self.owner_account = owner_account
@@ -61,6 +63,9 @@ class ModifyDBClusterShardNumberRequest(DaraModel):
 
         if self.dry_run is not None:
             result['DryRun'] = self.dry_run
+
+        if self.is_rollback is not None:
+            result['IsRollback'] = self.is_rollback
 
         if self.new_shard_number is not None:
             result['NewShardNumber'] = self.new_shard_number
@@ -95,6 +100,9 @@ class ModifyDBClusterShardNumberRequest(DaraModel):
 
         if m.get('DryRun') is not None:
             self.dry_run = m.get('DryRun')
+
+        if m.get('IsRollback') is not None:
+            self.is_rollback = m.get('IsRollback')
 
         if m.get('NewShardNumber') is not None:
             self.new_shard_number = m.get('NewShardNumber')
