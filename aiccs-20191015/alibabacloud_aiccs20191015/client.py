@@ -1314,8 +1314,6 @@ class Client(OpenApiClient):
             query['AgentId'] = request.agent_id
         if not DaraCore.is_null(request.application_code):
             query['ApplicationCode'] = request.application_code
-        if not DaraCore.is_null(request.application_name):
-            query['ApplicationName'] = request.application_name
         if not DaraCore.is_null(request.call_day_shrink):
             query['CallDay'] = request.call_day_shrink
         if not DaraCore.is_null(request.call_retry_interval):
@@ -1390,8 +1388,6 @@ class Client(OpenApiClient):
             query['AgentId'] = request.agent_id
         if not DaraCore.is_null(request.application_code):
             query['ApplicationCode'] = request.application_code
-        if not DaraCore.is_null(request.application_name):
-            query['ApplicationName'] = request.application_name
         if not DaraCore.is_null(request.call_day_shrink):
             query['CallDay'] = request.call_day_shrink
         if not DaraCore.is_null(request.call_retry_interval):
@@ -10517,6 +10513,96 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.page_query_agent_list_with_options_async(request, runtime)
 
+    def page_query_agent_list_new_with_options(
+        self,
+        request: main_models.PageQueryAgentListNewRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.PageQueryAgentListNewResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_id):
+            query['AgentId'] = request.agent_id
+        if not DaraCore.is_null(request.agent_name):
+            query['AgentName'] = request.agent_name
+        if not DaraCore.is_null(request.is_available):
+            query['IsAvailable'] = request.is_available
+        if not DaraCore.is_null(request.page_index):
+            query['PageIndex'] = request.page_index
+        if not DaraCore.is_null(request.page_no):
+            query['PageNo'] = request.page_no
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'PageQueryAgentListNew',
+            version = '2019-10-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.PageQueryAgentListNewResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def page_query_agent_list_new_with_options_async(
+        self,
+        request: main_models.PageQueryAgentListNewRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.PageQueryAgentListNewResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_id):
+            query['AgentId'] = request.agent_id
+        if not DaraCore.is_null(request.agent_name):
+            query['AgentName'] = request.agent_name
+        if not DaraCore.is_null(request.is_available):
+            query['IsAvailable'] = request.is_available
+        if not DaraCore.is_null(request.page_index):
+            query['PageIndex'] = request.page_index
+        if not DaraCore.is_null(request.page_no):
+            query['PageNo'] = request.page_no
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'PageQueryAgentListNew',
+            version = '2019-10-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.PageQueryAgentListNewResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def page_query_agent_list_new(
+        self,
+        request: main_models.PageQueryAgentListNewRequest,
+    ) -> main_models.PageQueryAgentListNewResponse:
+        runtime = RuntimeOptions()
+        return self.page_query_agent_list_new_with_options(request, runtime)
+
+    async def page_query_agent_list_new_async(
+        self,
+        request: main_models.PageQueryAgentListNewRequest,
+    ) -> main_models.PageQueryAgentListNewResponse:
+        runtime = RuntimeOptions()
+        return await self.page_query_agent_list_new_with_options_async(request, runtime)
+
     def query_ai_call_detail_page_with_options(
         self,
         tmp_req: main_models.QueryAiCallDetailPageRequest,
@@ -10944,6 +11030,84 @@ class Client(OpenApiClient):
     ) -> main_models.QueryAiVoiceAgentDetailResponse:
         runtime = RuntimeOptions()
         return await self.query_ai_voice_agent_detail_with_options_async(request, runtime)
+
+    def query_ai_voice_agent_detail_new_with_options(
+        self,
+        request: main_models.QueryAiVoiceAgentDetailNewRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryAiVoiceAgentDetailNewResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_id):
+            query['AgentId'] = request.agent_id
+        if not DaraCore.is_null(request.branch_id):
+            query['BranchId'] = request.branch_id
+        if not DaraCore.is_null(request.version_id):
+            query['VersionId'] = request.version_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryAiVoiceAgentDetailNew',
+            version = '2019-10-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryAiVoiceAgentDetailNewResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_ai_voice_agent_detail_new_with_options_async(
+        self,
+        request: main_models.QueryAiVoiceAgentDetailNewRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryAiVoiceAgentDetailNewResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_id):
+            query['AgentId'] = request.agent_id
+        if not DaraCore.is_null(request.branch_id):
+            query['BranchId'] = request.branch_id
+        if not DaraCore.is_null(request.version_id):
+            query['VersionId'] = request.version_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryAiVoiceAgentDetailNew',
+            version = '2019-10-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryAiVoiceAgentDetailNewResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_ai_voice_agent_detail_new(
+        self,
+        request: main_models.QueryAiVoiceAgentDetailNewRequest,
+    ) -> main_models.QueryAiVoiceAgentDetailNewResponse:
+        runtime = RuntimeOptions()
+        return self.query_ai_voice_agent_detail_new_with_options(request, runtime)
+
+    async def query_ai_voice_agent_detail_new_async(
+        self,
+        request: main_models.QueryAiVoiceAgentDetailNewRequest,
+    ) -> main_models.QueryAiVoiceAgentDetailNewResponse:
+        runtime = RuntimeOptions()
+        return await self.query_ai_voice_agent_detail_new_with_options_async(request, runtime)
 
     def query_conversation_detail_info_with_options(
         self,

@@ -9,7 +9,6 @@ class CreateAiCallTaskShrinkRequest(DaraModel):
         self,
         agent_id: str = None,
         application_code: str = None,
-        application_name: str = None,
         call_day_shrink: str = None,
         call_retry_interval: int = None,
         call_retry_reason_shrink: str = None,
@@ -31,7 +30,6 @@ class CreateAiCallTaskShrinkRequest(DaraModel):
     ):
         self.agent_id = agent_id
         self.application_code = application_code
-        self.application_name = application_name
         # This parameter is required.
         self.call_day_shrink = call_day_shrink
         self.call_retry_interval = call_retry_interval
@@ -68,9 +66,6 @@ class CreateAiCallTaskShrinkRequest(DaraModel):
 
         if self.application_code is not None:
             result['ApplicationCode'] = self.application_code
-
-        if self.application_name is not None:
-            result['ApplicationName'] = self.application_name
 
         if self.call_day_shrink is not None:
             result['CallDay'] = self.call_day_shrink
@@ -135,9 +130,6 @@ class CreateAiCallTaskShrinkRequest(DaraModel):
 
         if m.get('ApplicationCode') is not None:
             self.application_code = m.get('ApplicationCode')
-
-        if m.get('ApplicationName') is not None:
-            self.application_name = m.get('ApplicationName')
 
         if m.get('CallDay') is not None:
             self.call_day_shrink = m.get('CallDay')

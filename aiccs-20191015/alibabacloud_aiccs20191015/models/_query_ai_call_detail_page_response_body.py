@@ -140,6 +140,7 @@ class QueryAiCallDetailPageResponseBodyDataList(DaraModel):
         self,
         batch_id: str = None,
         branch_id: int = None,
+        branch_name: str = None,
         branch_version_id: int = None,
         call_result: str = None,
         called_number: str = None,
@@ -157,9 +158,12 @@ class QueryAiCallDetailPageResponseBodyDataList(DaraModel):
         recording_file_path: str = None,
         status: int = None,
         task_id: str = None,
+        version_name: str = None,
+        version_no: int = None,
     ):
         self.batch_id = batch_id
         self.branch_id = branch_id
+        self.branch_name = branch_name
         self.branch_version_id = branch_version_id
         self.call_result = call_result
         self.called_number = called_number
@@ -177,6 +181,8 @@ class QueryAiCallDetailPageResponseBodyDataList(DaraModel):
         self.recording_file_path = recording_file_path
         self.status = status
         self.task_id = task_id
+        self.version_name = version_name
+        self.version_no = version_no
 
     def validate(self):
         pass
@@ -191,6 +197,9 @@ class QueryAiCallDetailPageResponseBodyDataList(DaraModel):
 
         if self.branch_id is not None:
             result['BranchId'] = self.branch_id
+
+        if self.branch_name is not None:
+            result['BranchName'] = self.branch_name
 
         if self.branch_version_id is not None:
             result['BranchVersionId'] = self.branch_version_id
@@ -243,6 +252,12 @@ class QueryAiCallDetailPageResponseBodyDataList(DaraModel):
         if self.task_id is not None:
             result['TaskId'] = self.task_id
 
+        if self.version_name is not None:
+            result['VersionName'] = self.version_name
+
+        if self.version_no is not None:
+            result['VersionNo'] = self.version_no
+
         return result
 
     def from_map(self, m: dict = None):
@@ -252,6 +267,9 @@ class QueryAiCallDetailPageResponseBodyDataList(DaraModel):
 
         if m.get('BranchId') is not None:
             self.branch_id = m.get('BranchId')
+
+        if m.get('BranchName') is not None:
+            self.branch_name = m.get('BranchName')
 
         if m.get('BranchVersionId') is not None:
             self.branch_version_id = m.get('BranchVersionId')
@@ -303,6 +321,12 @@ class QueryAiCallDetailPageResponseBodyDataList(DaraModel):
 
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')
+
+        if m.get('VersionName') is not None:
+            self.version_name = m.get('VersionName')
+
+        if m.get('VersionNo') is not None:
+            self.version_no = m.get('VersionNo')
 
         return self
 

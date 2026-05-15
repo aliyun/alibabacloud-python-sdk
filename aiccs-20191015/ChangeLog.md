@@ -1,3 +1,12 @@
+2026-05-15 Version: 4.0.0
+- Support API PageQueryAgentListNew.
+- Support API QueryAiVoiceAgentDetailNew.
+- Update API CreateAiCallTask: delete request parameters ApplicationName.
+- Update API QueryAiCallDetailPage: add response parameters Body.Data.List.$.BranchName.
+- Update API QueryAiCallDetailPage: add response parameters Body.Data.List.$.VersionName.
+- Update API QueryAiCallDetailPage: add response parameters Body.Data.List.$.VersionNo.
+
+
 2026-02-04 Version: 3.4.2
 - Update API CancelAiCallDetails: add request parameters EncryptionType.
 - Update API CreateAiCallTask: add request parameters ApplicationCode.
