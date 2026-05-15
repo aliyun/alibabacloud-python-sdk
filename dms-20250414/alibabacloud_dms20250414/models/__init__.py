@@ -19,6 +19,7 @@ from ._dlstorage_descriptor import DLStorageDescriptor
 from ._dltable import DLTable
 from ._dltable_input import DLTableInput
 from ._dltablebase_info import DLTablebaseInfo
+from ._data_mount_info import DataMountInfo
 from ._dms_knowledge_search_order_info_do import DmsKnowledgeSearchOrderInfoDO
 from ._foreign_instance import ForeignInstance
 from ._foreign_instance_cred_info import ForeignInstanceCredInfo
@@ -49,7 +50,12 @@ from ._batch_update_data_lake_partitions_request import BatchUpdateDataLakeParti
 from ._batch_update_data_lake_partitions_shrink_request import BatchUpdateDataLakePartitionsShrinkRequest
 from ._batch_update_data_lake_partitions_response_body import BatchUpdateDataLakePartitionsResponseBody
 from ._batch_update_data_lake_partitions_response import BatchUpdateDataLakePartitionsResponse
+from ._config_airflow_request import ConfigAirflowRequest
+from ._config_airflow_shrink_request import ConfigAirflowShrinkRequest
+from ._config_airflow_response_body import ConfigAirflowResponseBody
+from ._config_airflow_response import ConfigAirflowResponse
 from ._create_airflow_request import CreateAirflowRequest
+from ._create_airflow_shrink_request import CreateAirflowShrinkRequest
 from ._create_airflow_response_body import CreateAirflowResponseBody
 from ._create_airflow_response import CreateAirflowResponse
 from ._create_airflow_login_token_request import CreateAirflowLoginTokenRequest
@@ -59,6 +65,9 @@ from ._create_custom_agent_request import CreateCustomAgentRequest
 from ._create_custom_agent_shrink_request import CreateCustomAgentShrinkRequest
 from ._create_custom_agent_response_body import CreateCustomAgentResponseBody
 from ._create_custom_agent_response import CreateCustomAgentResponse
+from ._create_data_agent_knowledge_base_request import CreateDataAgentKnowledgeBaseRequest
+from ._create_data_agent_knowledge_base_response_body import CreateDataAgentKnowledgeBaseResponseBody
+from ._create_data_agent_knowledge_base_response import CreateDataAgentKnowledgeBaseResponse
 from ._create_data_agent_session_request import CreateDataAgentSessionRequest
 from ._create_data_agent_session_shrink_request import CreateDataAgentSessionShrinkRequest
 from ._create_data_agent_session_response_body import CreateDataAgentSessionResponseBody
@@ -88,6 +97,9 @@ from ._delete_airflow_response import DeleteAirflowResponse
 from ._delete_custom_agent_request import DeleteCustomAgentRequest
 from ._delete_custom_agent_response_body import DeleteCustomAgentResponseBody
 from ._delete_custom_agent_response import DeleteCustomAgentResponse
+from ._delete_data_agent_knowledge_base_request import DeleteDataAgentKnowledgeBaseRequest
+from ._delete_data_agent_knowledge_base_response_body import DeleteDataAgentKnowledgeBaseResponseBody
+from ._delete_data_agent_knowledge_base_response import DeleteDataAgentKnowledgeBaseResponse
 from ._delete_data_agent_workspace_request import DeleteDataAgentWorkspaceRequest
 from ._delete_data_agent_workspace_response_body import DeleteDataAgentWorkspaceResponseBody
 from ._delete_data_agent_workspace_response import DeleteDataAgentWorkspaceResponse
@@ -116,6 +128,9 @@ from ._describe_data_agent_session_response import DescribeDataAgentSessionRespo
 from ._describe_file_upload_signature_request import DescribeFileUploadSignatureRequest
 from ._describe_file_upload_signature_response_body import DescribeFileUploadSignatureResponseBody
 from ._describe_file_upload_signature_response import DescribeFileUploadSignatureResponse
+from ._describe_knowledge_base_stats_request import DescribeKnowledgeBaseStatsRequest
+from ._describe_knowledge_base_stats_response_body import DescribeKnowledgeBaseStatsResponseBody
+from ._describe_knowledge_base_stats_response import DescribeKnowledgeBaseStatsResponse
 from ._file_upload_callback_request import FileUploadCallbackRequest
 from ._file_upload_callback_response_body import FileUploadCallbackResponseBody
 from ._file_upload_callback_response import FileUploadCallbackResponse
@@ -156,6 +171,12 @@ from ._get_notebook_task_status_response import GetNotebookTaskStatusResponse
 from ._get_workspace_code_publish_setting_request import GetWorkspaceCodePublishSettingRequest
 from ._get_workspace_code_publish_setting_response_body import GetWorkspaceCodePublishSettingResponseBody
 from ._get_workspace_code_publish_setting_response import GetWorkspaceCodePublishSettingResponse
+from ._get_workspace_quota_request import GetWorkspaceQuotaRequest
+from ._get_workspace_quota_response_body import GetWorkspaceQuotaResponseBody
+from ._get_workspace_quota_response import GetWorkspaceQuotaResponse
+from ._list_airflow_versions_request import ListAirflowVersionsRequest
+from ._list_airflow_versions_response_body import ListAirflowVersionsResponseBody
+from ._list_airflow_versions_response import ListAirflowVersionsResponse
 from ._list_airflows_request import ListAirflowsRequest
 from ._list_airflows_response_body import ListAirflowsResponseBody
 from ._list_airflows_response import ListAirflowsResponse
@@ -218,6 +239,9 @@ from ._modify_custom_agent_response import ModifyCustomAgentResponse
 from ._operate_custom_agent_request import OperateCustomAgentRequest
 from ._operate_custom_agent_response_body import OperateCustomAgentResponseBody
 from ._operate_custom_agent_response import OperateCustomAgentResponse
+from ._redeploy_airflow_request import RedeployAirflowRequest
+from ._redeploy_airflow_response_body import RedeployAirflowResponseBody
+from ._redeploy_airflow_response import RedeployAirflowResponse
 from ._remove_user_to_data_agent_workspace_request import RemoveUserToDataAgentWorkspaceRequest
 from ._remove_user_to_data_agent_workspace_response_body import RemoveUserToDataAgentWorkspaceResponseBody
 from ._remove_user_to_data_agent_workspace_response import RemoveUserToDataAgentWorkspaceResponse
@@ -228,7 +252,11 @@ from ._send_chat_message_response import SendChatMessageResponse
 from ._set_workspace_code_publish_setting_request import SetWorkspaceCodePublishSettingRequest
 from ._set_workspace_code_publish_setting_response_body import SetWorkspaceCodePublishSettingResponseBody
 from ._set_workspace_code_publish_setting_response import SetWorkspaceCodePublishSettingResponse
+from ._set_workspace_quota_request import SetWorkspaceQuotaRequest
+from ._set_workspace_quota_response_body import SetWorkspaceQuotaResponseBody
+from ._set_workspace_quota_response import SetWorkspaceQuotaResponse
 from ._update_airflow_request import UpdateAirflowRequest
+from ._update_airflow_shrink_request import UpdateAirflowShrinkRequest
 from ._update_airflow_response_body import UpdateAirflowResponseBody
 from ._update_airflow_response import UpdateAirflowResponse
 from ._update_data_agent_space_info_request import UpdateDataAgentSpaceInfoRequest
@@ -264,6 +292,7 @@ from ._workspace_code_publish_response_body import WorkspaceCodePublishResponseB
 from ._workspace_code_publish_response import WorkspaceCodePublishResponse
 from ._open_claw_instance_vo import OpenClawInstanceVOImageInfo
 from ._add_user_to_data_agent_workspace_response_body import AddUserToDataAgentWorkspaceResponseBodyData
+from ._config_airflow_response_body import ConfigAirflowResponseBodyRoot
 from ._create_airflow_response_body import CreateAirflowResponseBodyRoot
 from ._create_airflow_login_token_response_body import CreateAirflowLoginTokenResponseBodyData
 from ._create_custom_agent_request import CreateCustomAgentRequestCallbackConfig
@@ -275,6 +304,7 @@ from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDat
 from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDataKnowledgeConfigList
 from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDataScheduleTaskConfig
 from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyData
+from ._create_data_agent_knowledge_base_response_body import CreateDataAgentKnowledgeBaseResponseBodyData
 from ._create_data_agent_session_request import CreateDataAgentSessionRequestSessionConfig
 from ._create_data_agent_session_response_body import CreateDataAgentSessionResponseBodyDataSessionConfig
 from ._create_data_agent_session_response_body import CreateDataAgentSessionResponseBodyData
@@ -282,6 +312,7 @@ from ._create_data_agent_workspace_response_body import CreateDataAgentWorkspace
 from ._delete_airflow_response_body import DeleteAirflowResponseBodyRootResponses
 from ._delete_airflow_response_body import DeleteAirflowResponseBodyRoot
 from ._delete_custom_agent_response_body import DeleteCustomAgentResponseBodyData
+from ._delete_data_agent_knowledge_base_response_body import DeleteDataAgentKnowledgeBaseResponseBodyData
 from ._delete_file_upload_response_body import DeleteFileUploadResponseBodyData
 from ._describe_custom_agent_response_body import DescribeCustomAgentResponseBodyDataCallbackConfig
 from ._describe_custom_agent_response_body import DescribeCustomAgentResponseBodyDataExecutionConfig
@@ -292,6 +323,7 @@ from ._describe_data_agent_session_response_body import DescribeDataAgentSession
 from ._describe_data_agent_session_response_body import DescribeDataAgentSessionResponseBodyDataSessionConfig
 from ._describe_data_agent_session_response_body import DescribeDataAgentSessionResponseBodyData
 from ._describe_file_upload_signature_response_body import DescribeFileUploadSignatureResponseBodyData
+from ._describe_knowledge_base_stats_response_body import DescribeKnowledgeBaseStatsResponseBodyData
 from ._file_upload_callback_response_body import FileUploadCallbackResponseBodyData
 from ._get_airflow_response_body import GetAirflowResponseBodyRoot
 from ._get_data_agent_sub_account_info_response_body import GetDataAgentSubAccountInfoResponseBodyData
@@ -299,6 +331,7 @@ from ._get_data_agent_workspace_info_response_body import GetDataAgentWorkspaceI
 from ._get_notebook_task_status_response_body import GetNotebookTaskStatusResponseBodyData
 from ._get_workspace_code_publish_setting_response_body import GetWorkspaceCodePublishSettingResponseBodyDataRepos
 from ._get_workspace_code_publish_setting_response_body import GetWorkspaceCodePublishSettingResponseBodyData
+from ._get_workspace_quota_response_body import GetWorkspaceQuotaResponseBodyData
 from ._list_airflows_response_body import ListAirflowsResponseBodyRootList
 from ._list_airflows_response_body import ListAirflowsResponseBodyRoot
 from ._list_custom_agent_response_body import ListCustomAgentResponseBodyDataContentCallbackConfig
@@ -331,6 +364,7 @@ from ._send_chat_message_request import SendChatMessageRequestDataSource
 from ._send_chat_message_request import SendChatMessageRequestDataSources
 from ._send_chat_message_request import SendChatMessageRequestSessionConfig
 from ._send_chat_message_response_body import SendChatMessageResponseBodyData
+from ._set_workspace_quota_response_body import SetWorkspaceQuotaResponseBodyData
 from ._update_airflow_response_body import UpdateAirflowResponseBodyRoot
 from ._update_data_agent_space_info_response_body import UpdateDataAgentSpaceInfoResponseBodyData
 from ._update_data_agent_workspace_member_role_response_body import UpdateDataAgentWorkspaceMemberRoleResponseBodyData
@@ -355,6 +389,7 @@ __all__ = [
     DLTable,
     DLTableInput,
     DLTablebaseInfo,
+    DataMountInfo,
     DmsKnowledgeSearchOrderInfoDO,
     ForeignInstance,
     ForeignInstanceCredInfo,
@@ -385,7 +420,12 @@ __all__ = [
     BatchUpdateDataLakePartitionsShrinkRequest,
     BatchUpdateDataLakePartitionsResponseBody,
     BatchUpdateDataLakePartitionsResponse,
+    ConfigAirflowRequest,
+    ConfigAirflowShrinkRequest,
+    ConfigAirflowResponseBody,
+    ConfigAirflowResponse,
     CreateAirflowRequest,
+    CreateAirflowShrinkRequest,
     CreateAirflowResponseBody,
     CreateAirflowResponse,
     CreateAirflowLoginTokenRequest,
@@ -395,6 +435,9 @@ __all__ = [
     CreateCustomAgentShrinkRequest,
     CreateCustomAgentResponseBody,
     CreateCustomAgentResponse,
+    CreateDataAgentKnowledgeBaseRequest,
+    CreateDataAgentKnowledgeBaseResponseBody,
+    CreateDataAgentKnowledgeBaseResponse,
     CreateDataAgentSessionRequest,
     CreateDataAgentSessionShrinkRequest,
     CreateDataAgentSessionResponseBody,
@@ -424,6 +467,9 @@ __all__ = [
     DeleteCustomAgentRequest,
     DeleteCustomAgentResponseBody,
     DeleteCustomAgentResponse,
+    DeleteDataAgentKnowledgeBaseRequest,
+    DeleteDataAgentKnowledgeBaseResponseBody,
+    DeleteDataAgentKnowledgeBaseResponse,
     DeleteDataAgentWorkspaceRequest,
     DeleteDataAgentWorkspaceResponseBody,
     DeleteDataAgentWorkspaceResponse,
@@ -452,6 +498,9 @@ __all__ = [
     DescribeFileUploadSignatureRequest,
     DescribeFileUploadSignatureResponseBody,
     DescribeFileUploadSignatureResponse,
+    DescribeKnowledgeBaseStatsRequest,
+    DescribeKnowledgeBaseStatsResponseBody,
+    DescribeKnowledgeBaseStatsResponse,
     FileUploadCallbackRequest,
     FileUploadCallbackResponseBody,
     FileUploadCallbackResponse,
@@ -492,6 +541,12 @@ __all__ = [
     GetWorkspaceCodePublishSettingRequest,
     GetWorkspaceCodePublishSettingResponseBody,
     GetWorkspaceCodePublishSettingResponse,
+    GetWorkspaceQuotaRequest,
+    GetWorkspaceQuotaResponseBody,
+    GetWorkspaceQuotaResponse,
+    ListAirflowVersionsRequest,
+    ListAirflowVersionsResponseBody,
+    ListAirflowVersionsResponse,
     ListAirflowsRequest,
     ListAirflowsResponseBody,
     ListAirflowsResponse,
@@ -554,6 +609,9 @@ __all__ = [
     OperateCustomAgentRequest,
     OperateCustomAgentResponseBody,
     OperateCustomAgentResponse,
+    RedeployAirflowRequest,
+    RedeployAirflowResponseBody,
+    RedeployAirflowResponse,
     RemoveUserToDataAgentWorkspaceRequest,
     RemoveUserToDataAgentWorkspaceResponseBody,
     RemoveUserToDataAgentWorkspaceResponse,
@@ -564,7 +622,11 @@ __all__ = [
     SetWorkspaceCodePublishSettingRequest,
     SetWorkspaceCodePublishSettingResponseBody,
     SetWorkspaceCodePublishSettingResponse,
+    SetWorkspaceQuotaRequest,
+    SetWorkspaceQuotaResponseBody,
+    SetWorkspaceQuotaResponse,
     UpdateAirflowRequest,
+    UpdateAirflowShrinkRequest,
     UpdateAirflowResponseBody,
     UpdateAirflowResponse,
     UpdateDataAgentSpaceInfoRequest,
@@ -600,6 +662,7 @@ __all__ = [
     WorkspaceCodePublishResponse,
     OpenClawInstanceVOImageInfo,
     AddUserToDataAgentWorkspaceResponseBodyData,
+    ConfigAirflowResponseBodyRoot,
     CreateAirflowResponseBodyRoot,
     CreateAirflowLoginTokenResponseBodyData,
     CreateCustomAgentRequestCallbackConfig,
@@ -611,6 +674,7 @@ __all__ = [
     CreateCustomAgentResponseBodyDataKnowledgeConfigList,
     CreateCustomAgentResponseBodyDataScheduleTaskConfig,
     CreateCustomAgentResponseBodyData,
+    CreateDataAgentKnowledgeBaseResponseBodyData,
     CreateDataAgentSessionRequestSessionConfig,
     CreateDataAgentSessionResponseBodyDataSessionConfig,
     CreateDataAgentSessionResponseBodyData,
@@ -618,6 +682,7 @@ __all__ = [
     DeleteAirflowResponseBodyRootResponses,
     DeleteAirflowResponseBodyRoot,
     DeleteCustomAgentResponseBodyData,
+    DeleteDataAgentKnowledgeBaseResponseBodyData,
     DeleteFileUploadResponseBodyData,
     DescribeCustomAgentResponseBodyDataCallbackConfig,
     DescribeCustomAgentResponseBodyDataExecutionConfig,
@@ -628,6 +693,7 @@ __all__ = [
     DescribeDataAgentSessionResponseBodyDataSessionConfig,
     DescribeDataAgentSessionResponseBodyData,
     DescribeFileUploadSignatureResponseBodyData,
+    DescribeKnowledgeBaseStatsResponseBodyData,
     FileUploadCallbackResponseBodyData,
     GetAirflowResponseBodyRoot,
     GetDataAgentSubAccountInfoResponseBodyData,
@@ -635,6 +701,7 @@ __all__ = [
     GetNotebookTaskStatusResponseBodyData,
     GetWorkspaceCodePublishSettingResponseBodyDataRepos,
     GetWorkspaceCodePublishSettingResponseBodyData,
+    GetWorkspaceQuotaResponseBodyData,
     ListAirflowsResponseBodyRootList,
     ListAirflowsResponseBodyRoot,
     ListCustomAgentResponseBodyDataContentCallbackConfig,
@@ -667,6 +734,7 @@ __all__ = [
     SendChatMessageRequestDataSources,
     SendChatMessageRequestSessionConfig,
     SendChatMessageResponseBodyData,
+    SetWorkspaceQuotaResponseBodyData,
     UpdateAirflowResponseBodyRoot,
     UpdateDataAgentSpaceInfoResponseBodyData,
     UpdateDataAgentWorkspaceMemberRoleResponseBodyData,

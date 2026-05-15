@@ -2,16 +2,23 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
+from alibabacloud_dms20250414 import models as main_models
 from darabonba.model import DaraModel
 
 class CreateAirflowRequest(DaraModel):
     def __init__(
         self,
         airflow_name: str = None,
+        airflow_version: str = None,
         app_spec: str = None,
         client_token: str = None,
         dags_dir: str = None,
+        data_mount_info_list: List[main_models.DataMountInfo] = None,
         description: str = None,
+        enable_serverless: bool = None,
+        graceful_shutdown_timeout: int = None,
         oss_bucket_name: str = None,
         oss_path: str = None,
         plugins_dir: str = None,
@@ -26,12 +33,15 @@ class CreateAirflowRequest(DaraModel):
     ):
         # This parameter is required.
         self.airflow_name = airflow_name
+        self.airflow_version = airflow_version
         # This parameter is required.
         self.app_spec = app_spec
         self.client_token = client_token
         self.dags_dir = dags_dir
-        # This parameter is required.
+        self.data_mount_info_list = data_mount_info_list
         self.description = description
+        self.enable_serverless = enable_serverless
+        self.graceful_shutdown_timeout = graceful_shutdown_timeout
         # This parameter is required.
         self.oss_bucket_name = oss_bucket_name
         # This parameter is required.
@@ -51,11 +61,13 @@ class CreateAirflowRequest(DaraModel):
         self.worker_serverless_replicas = worker_serverless_replicas
         # This parameter is required.
         self.workspace_id = workspace_id
-        # This parameter is required.
         self.zone_id = zone_id
 
     def validate(self):
-        pass
+        if self.data_mount_info_list:
+            for v1 in self.data_mount_info_list:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -64,6 +76,9 @@ class CreateAirflowRequest(DaraModel):
             result = _map
         if self.airflow_name is not None:
             result['AirflowName'] = self.airflow_name
+
+        if self.airflow_version is not None:
+            result['AirflowVersion'] = self.airflow_version
 
         if self.app_spec is not None:
             result['AppSpec'] = self.app_spec
@@ -74,8 +89,19 @@ class CreateAirflowRequest(DaraModel):
         if self.dags_dir is not None:
             result['DagsDir'] = self.dags_dir
 
+        result['DataMountInfoList'] = []
+        if self.data_mount_info_list is not None:
+            for k1 in self.data_mount_info_list:
+                result['DataMountInfoList'].append(k1.to_map() if k1 else None)
+
         if self.description is not None:
             result['Description'] = self.description
+
+        if self.enable_serverless is not None:
+            result['EnableServerless'] = self.enable_serverless
+
+        if self.graceful_shutdown_timeout is not None:
+            result['GracefulShutdownTimeout'] = self.graceful_shutdown_timeout
 
         if self.oss_bucket_name is not None:
             result['OssBucketName'] = self.oss_bucket_name
@@ -117,6 +143,9 @@ class CreateAirflowRequest(DaraModel):
         if m.get('AirflowName') is not None:
             self.airflow_name = m.get('AirflowName')
 
+        if m.get('AirflowVersion') is not None:
+            self.airflow_version = m.get('AirflowVersion')
+
         if m.get('AppSpec') is not None:
             self.app_spec = m.get('AppSpec')
 
@@ -126,8 +155,20 @@ class CreateAirflowRequest(DaraModel):
         if m.get('DagsDir') is not None:
             self.dags_dir = m.get('DagsDir')
 
+        self.data_mount_info_list = []
+        if m.get('DataMountInfoList') is not None:
+            for k1 in m.get('DataMountInfoList'):
+                temp_model = main_models.DataMountInfo()
+                self.data_mount_info_list.append(temp_model.from_map(k1))
+
         if m.get('Description') is not None:
             self.description = m.get('Description')
+
+        if m.get('EnableServerless') is not None:
+            self.enable_serverless = m.get('EnableServerless')
+
+        if m.get('GracefulShutdownTimeout') is not None:
+            self.graceful_shutdown_timeout = m.get('GracefulShutdownTimeout')
 
         if m.get('OssBucketName') is not None:
             self.oss_bucket_name = m.get('OssBucketName')

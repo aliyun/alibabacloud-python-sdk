@@ -2,6 +2,8 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
 from alibabacloud_dms20250414 import models as main_models
 from darabonba.model import DaraModel
 
@@ -87,12 +89,17 @@ class CreateAirflowResponseBodyRoot(DaraModel):
         self,
         airflow_id: str = None,
         airflow_name: str = None,
+        airflow_version: str = None,
         app_spec: str = None,
         app_type: str = None,
+        custom_airflow_cfg: List[str] = None,
         dags_dir: str = None,
+        data_mount_info_list: List[main_models.DataMountInfo] = None,
         deploy_error_msg: str = None,
         description: str = None,
+        enable_serverless: bool = None,
         gmt_created: str = None,
+        graceful_shutdown_timeout: int = None,
         oss_bucket_name: str = None,
         oss_path: str = None,
         plugins_dir: str = None,
@@ -108,12 +115,17 @@ class CreateAirflowResponseBodyRoot(DaraModel):
     ):
         self.airflow_id = airflow_id
         self.airflow_name = airflow_name
+        self.airflow_version = airflow_version
         self.app_spec = app_spec
         self.app_type = app_type
+        self.custom_airflow_cfg = custom_airflow_cfg
         self.dags_dir = dags_dir
+        self.data_mount_info_list = data_mount_info_list
         self.deploy_error_msg = deploy_error_msg
         self.description = description
+        self.enable_serverless = enable_serverless
         self.gmt_created = gmt_created
+        self.graceful_shutdown_timeout = graceful_shutdown_timeout
         self.oss_bucket_name = oss_bucket_name
         self.oss_path = oss_path
         self.plugins_dir = plugins_dir
@@ -129,7 +141,10 @@ class CreateAirflowResponseBodyRoot(DaraModel):
         self.zone_id = zone_id
 
     def validate(self):
-        pass
+        if self.data_mount_info_list:
+            for v1 in self.data_mount_info_list:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -142,14 +157,25 @@ class CreateAirflowResponseBodyRoot(DaraModel):
         if self.airflow_name is not None:
             result['AirflowName'] = self.airflow_name
 
+        if self.airflow_version is not None:
+            result['AirflowVersion'] = self.airflow_version
+
         if self.app_spec is not None:
             result['AppSpec'] = self.app_spec
 
         if self.app_type is not None:
             result['AppType'] = self.app_type
 
+        if self.custom_airflow_cfg is not None:
+            result['CustomAirflowCfg'] = self.custom_airflow_cfg
+
         if self.dags_dir is not None:
             result['DagsDir'] = self.dags_dir
+
+        result['DataMountInfoList'] = []
+        if self.data_mount_info_list is not None:
+            for k1 in self.data_mount_info_list:
+                result['DataMountInfoList'].append(k1.to_map() if k1 else None)
 
         if self.deploy_error_msg is not None:
             result['DeployErrorMsg'] = self.deploy_error_msg
@@ -157,8 +183,14 @@ class CreateAirflowResponseBodyRoot(DaraModel):
         if self.description is not None:
             result['Description'] = self.description
 
+        if self.enable_serverless is not None:
+            result['EnableServerless'] = self.enable_serverless
+
         if self.gmt_created is not None:
             result['GmtCreated'] = self.gmt_created
+
+        if self.graceful_shutdown_timeout is not None:
+            result['GracefulShutdownTimeout'] = self.graceful_shutdown_timeout
 
         if self.oss_bucket_name is not None:
             result['OssBucketName'] = self.oss_bucket_name
@@ -206,14 +238,26 @@ class CreateAirflowResponseBodyRoot(DaraModel):
         if m.get('AirflowName') is not None:
             self.airflow_name = m.get('AirflowName')
 
+        if m.get('AirflowVersion') is not None:
+            self.airflow_version = m.get('AirflowVersion')
+
         if m.get('AppSpec') is not None:
             self.app_spec = m.get('AppSpec')
 
         if m.get('AppType') is not None:
             self.app_type = m.get('AppType')
 
+        if m.get('CustomAirflowCfg') is not None:
+            self.custom_airflow_cfg = m.get('CustomAirflowCfg')
+
         if m.get('DagsDir') is not None:
             self.dags_dir = m.get('DagsDir')
+
+        self.data_mount_info_list = []
+        if m.get('DataMountInfoList') is not None:
+            for k1 in m.get('DataMountInfoList'):
+                temp_model = main_models.DataMountInfo()
+                self.data_mount_info_list.append(temp_model.from_map(k1))
 
         if m.get('DeployErrorMsg') is not None:
             self.deploy_error_msg = m.get('DeployErrorMsg')
@@ -221,8 +265,14 @@ class CreateAirflowResponseBodyRoot(DaraModel):
         if m.get('Description') is not None:
             self.description = m.get('Description')
 
+        if m.get('EnableServerless') is not None:
+            self.enable_serverless = m.get('EnableServerless')
+
         if m.get('GmtCreated') is not None:
             self.gmt_created = m.get('GmtCreated')
+
+        if m.get('GracefulShutdownTimeout') is not None:
+            self.graceful_shutdown_timeout = m.get('GracefulShutdownTimeout')
 
         if m.get('OssBucketName') is not None:
             self.oss_bucket_name = m.get('OssBucketName')

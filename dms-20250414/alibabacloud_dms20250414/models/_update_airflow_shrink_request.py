@@ -2,12 +2,9 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List
-
-from alibabacloud_dms20250414 import models as main_models
 from darabonba.model import DaraModel
 
-class UpdateAirflowRequest(DaraModel):
+class UpdateAirflowShrinkRequest(DaraModel):
     def __init__(
         self,
         airflow_id: str = None,
@@ -15,7 +12,7 @@ class UpdateAirflowRequest(DaraModel):
         app_spec: str = None,
         client_token: str = None,
         dags_dir: str = None,
-        data_mount_info_list: List[main_models.DataMountInfo] = None,
+        data_mount_info_list_shrink: str = None,
         description: str = None,
         enable_serverless: bool = None,
         graceful_shutdown_timeout: int = None,
@@ -31,7 +28,7 @@ class UpdateAirflowRequest(DaraModel):
         self.app_spec = app_spec
         self.client_token = client_token
         self.dags_dir = dags_dir
-        self.data_mount_info_list = data_mount_info_list
+        self.data_mount_info_list_shrink = data_mount_info_list_shrink
         self.description = description
         self.enable_serverless = enable_serverless
         self.graceful_shutdown_timeout = graceful_shutdown_timeout
@@ -43,10 +40,7 @@ class UpdateAirflowRequest(DaraModel):
         self.workspace_id = workspace_id
 
     def validate(self):
-        if self.data_mount_info_list:
-            for v1 in self.data_mount_info_list:
-                 if v1:
-                    v1.validate()
+        pass
 
     def to_map(self):
         result = dict()
@@ -68,10 +62,8 @@ class UpdateAirflowRequest(DaraModel):
         if self.dags_dir is not None:
             result['DagsDir'] = self.dags_dir
 
-        result['DataMountInfoList'] = []
-        if self.data_mount_info_list is not None:
-            for k1 in self.data_mount_info_list:
-                result['DataMountInfoList'].append(k1.to_map() if k1 else None)
+        if self.data_mount_info_list_shrink is not None:
+            result['DataMountInfoList'] = self.data_mount_info_list_shrink
 
         if self.description is not None:
             result['Description'] = self.description
@@ -116,11 +108,8 @@ class UpdateAirflowRequest(DaraModel):
         if m.get('DagsDir') is not None:
             self.dags_dir = m.get('DagsDir')
 
-        self.data_mount_info_list = []
         if m.get('DataMountInfoList') is not None:
-            for k1 in m.get('DataMountInfoList'):
-                temp_model = main_models.DataMountInfo()
-                self.data_mount_info_list.append(temp_model.from_map(k1))
+            self.data_mount_info_list_shrink = m.get('DataMountInfoList')
 
         if m.get('Description') is not None:
             self.description = m.get('Description')

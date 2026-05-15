@@ -430,23 +430,121 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.batch_update_data_lake_partitions_with_options_async(request, runtime)
 
+    def config_airflow_with_options(
+        self,
+        tmp_req: main_models.ConfigAirflowRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ConfigAirflowResponse:
+        tmp_req.validate()
+        request = main_models.ConfigAirflowShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.custom_airflow_cfg):
+            request.custom_airflow_cfg_shrink = Utils.array_to_string_with_specified_style(tmp_req.custom_airflow_cfg, 'CustomAirflowCfg', 'simple')
+        query = {}
+        if not DaraCore.is_null(request.airflow_id):
+            query['AirflowId'] = request.airflow_id
+        if not DaraCore.is_null(request.custom_airflow_cfg_shrink):
+            query['CustomAirflowCfg'] = request.custom_airflow_cfg_shrink
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ConfigAirflow',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ConfigAirflowResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def config_airflow_with_options_async(
+        self,
+        tmp_req: main_models.ConfigAirflowRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ConfigAirflowResponse:
+        tmp_req.validate()
+        request = main_models.ConfigAirflowShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.custom_airflow_cfg):
+            request.custom_airflow_cfg_shrink = Utils.array_to_string_with_specified_style(tmp_req.custom_airflow_cfg, 'CustomAirflowCfg', 'simple')
+        query = {}
+        if not DaraCore.is_null(request.airflow_id):
+            query['AirflowId'] = request.airflow_id
+        if not DaraCore.is_null(request.custom_airflow_cfg_shrink):
+            query['CustomAirflowCfg'] = request.custom_airflow_cfg_shrink
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ConfigAirflow',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ConfigAirflowResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def config_airflow(
+        self,
+        request: main_models.ConfigAirflowRequest,
+    ) -> main_models.ConfigAirflowResponse:
+        runtime = RuntimeOptions()
+        return self.config_airflow_with_options(request, runtime)
+
+    async def config_airflow_async(
+        self,
+        request: main_models.ConfigAirflowRequest,
+    ) -> main_models.ConfigAirflowResponse:
+        runtime = RuntimeOptions()
+        return await self.config_airflow_with_options_async(request, runtime)
+
     def create_airflow_with_options(
         self,
-        request: main_models.CreateAirflowRequest,
+        tmp_req: main_models.CreateAirflowRequest,
         runtime: RuntimeOptions,
     ) -> main_models.CreateAirflowResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.CreateAirflowShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.data_mount_info_list):
+            request.data_mount_info_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.data_mount_info_list, 'DataMountInfoList', 'json')
         query = {}
         if not DaraCore.is_null(request.airflow_name):
             query['AirflowName'] = request.airflow_name
+        if not DaraCore.is_null(request.airflow_version):
+            query['AirflowVersion'] = request.airflow_version
         if not DaraCore.is_null(request.app_spec):
             query['AppSpec'] = request.app_spec
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.dags_dir):
             query['DagsDir'] = request.dags_dir
+        if not DaraCore.is_null(request.data_mount_info_list_shrink):
+            query['DataMountInfoList'] = request.data_mount_info_list_shrink
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
+        if not DaraCore.is_null(request.enable_serverless):
+            query['EnableServerless'] = request.enable_serverless
+        if not DaraCore.is_null(request.graceful_shutdown_timeout):
+            query['GracefulShutdownTimeout'] = request.graceful_shutdown_timeout
         if not DaraCore.is_null(request.oss_bucket_name):
             query['OssBucketName'] = request.oss_bucket_name
         if not DaraCore.is_null(request.oss_path):
@@ -490,21 +588,33 @@ class Client(OpenApiClient):
 
     async def create_airflow_with_options_async(
         self,
-        request: main_models.CreateAirflowRequest,
+        tmp_req: main_models.CreateAirflowRequest,
         runtime: RuntimeOptions,
     ) -> main_models.CreateAirflowResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.CreateAirflowShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.data_mount_info_list):
+            request.data_mount_info_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.data_mount_info_list, 'DataMountInfoList', 'json')
         query = {}
         if not DaraCore.is_null(request.airflow_name):
             query['AirflowName'] = request.airflow_name
+        if not DaraCore.is_null(request.airflow_version):
+            query['AirflowVersion'] = request.airflow_version
         if not DaraCore.is_null(request.app_spec):
             query['AppSpec'] = request.app_spec
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.dags_dir):
             query['DagsDir'] = request.dags_dir
+        if not DaraCore.is_null(request.data_mount_info_list_shrink):
+            query['DataMountInfoList'] = request.data_mount_info_list_shrink
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
+        if not DaraCore.is_null(request.enable_serverless):
+            query['EnableServerless'] = request.enable_serverless
+        if not DaraCore.is_null(request.graceful_shutdown_timeout):
+            query['GracefulShutdownTimeout'] = request.graceful_shutdown_timeout
         if not DaraCore.is_null(request.oss_bucket_name):
             query['OssBucketName'] = request.oss_bucket_name
         if not DaraCore.is_null(request.oss_path):
@@ -767,6 +877,92 @@ class Client(OpenApiClient):
     ) -> main_models.CreateCustomAgentResponse:
         runtime = RuntimeOptions()
         return await self.create_custom_agent_with_options_async(request, runtime)
+
+    def create_data_agent_knowledge_base_with_options(
+        self,
+        request: main_models.CreateDataAgentKnowledgeBaseRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateDataAgentKnowledgeBaseResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dmsunit):
+            query['DMSUnit'] = request.dmsunit
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.from_kb_uuid):
+            query['FromKbUuid'] = request.from_kb_uuid
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateDataAgentKnowledgeBase',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateDataAgentKnowledgeBaseResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_data_agent_knowledge_base_with_options_async(
+        self,
+        request: main_models.CreateDataAgentKnowledgeBaseRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateDataAgentKnowledgeBaseResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dmsunit):
+            query['DMSUnit'] = request.dmsunit
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.from_kb_uuid):
+            query['FromKbUuid'] = request.from_kb_uuid
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateDataAgentKnowledgeBase',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateDataAgentKnowledgeBaseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_data_agent_knowledge_base(
+        self,
+        request: main_models.CreateDataAgentKnowledgeBaseRequest,
+    ) -> main_models.CreateDataAgentKnowledgeBaseResponse:
+        runtime = RuntimeOptions()
+        return self.create_data_agent_knowledge_base_with_options(request, runtime)
+
+    async def create_data_agent_knowledge_base_async(
+        self,
+        request: main_models.CreateDataAgentKnowledgeBaseRequest,
+    ) -> main_models.CreateDataAgentKnowledgeBaseResponse:
+        runtime = RuntimeOptions()
+        return await self.create_data_agent_knowledge_base_with_options_async(request, runtime)
 
     def create_data_agent_session_with_options(
         self,
@@ -1504,6 +1700,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.delete_custom_agent_with_options_async(request, runtime)
 
+    def delete_data_agent_knowledge_base_with_options(
+        self,
+        request: main_models.DeleteDataAgentKnowledgeBaseRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteDataAgentKnowledgeBaseResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dmsunit):
+            query['DMSUnit'] = request.dmsunit
+        if not DaraCore.is_null(request.kb_uuid):
+            query['KbUuid'] = request.kb_uuid
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteDataAgentKnowledgeBase',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteDataAgentKnowledgeBaseResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_data_agent_knowledge_base_with_options_async(
+        self,
+        request: main_models.DeleteDataAgentKnowledgeBaseRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteDataAgentKnowledgeBaseResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dmsunit):
+            query['DMSUnit'] = request.dmsunit
+        if not DaraCore.is_null(request.kb_uuid):
+            query['KbUuid'] = request.kb_uuid
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteDataAgentKnowledgeBase',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteDataAgentKnowledgeBaseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_data_agent_knowledge_base(
+        self,
+        request: main_models.DeleteDataAgentKnowledgeBaseRequest,
+    ) -> main_models.DeleteDataAgentKnowledgeBaseResponse:
+        runtime = RuntimeOptions()
+        return self.delete_data_agent_knowledge_base_with_options(request, runtime)
+
+    async def delete_data_agent_knowledge_base_async(
+        self,
+        request: main_models.DeleteDataAgentKnowledgeBaseRequest,
+    ) -> main_models.DeleteDataAgentKnowledgeBaseResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_data_agent_knowledge_base_with_options_async(request, runtime)
+
     def delete_data_agent_workspace_with_options(
         self,
         request: main_models.DeleteDataAgentWorkspaceRequest,
@@ -2237,6 +2511,76 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeFileUploadSignatureResponse:
         runtime = RuntimeOptions()
         return await self.describe_file_upload_signature_with_options_async(request, runtime)
+
+    def describe_knowledge_base_stats_with_options(
+        self,
+        request: main_models.DescribeKnowledgeBaseStatsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeKnowledgeBaseStatsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.kb_uuid):
+            query['KbUuid'] = request.kb_uuid
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeKnowledgeBaseStats',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeKnowledgeBaseStatsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_knowledge_base_stats_with_options_async(
+        self,
+        request: main_models.DescribeKnowledgeBaseStatsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeKnowledgeBaseStatsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.kb_uuid):
+            query['KbUuid'] = request.kb_uuid
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeKnowledgeBaseStats',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeKnowledgeBaseStatsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_knowledge_base_stats(
+        self,
+        request: main_models.DescribeKnowledgeBaseStatsRequest,
+    ) -> main_models.DescribeKnowledgeBaseStatsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_knowledge_base_stats_with_options(request, runtime)
+
+    async def describe_knowledge_base_stats_async(
+        self,
+        request: main_models.DescribeKnowledgeBaseStatsRequest,
+    ) -> main_models.DescribeKnowledgeBaseStatsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_knowledge_base_stats_with_options_async(request, runtime)
 
     def file_upload_callback_with_options(
         self,
@@ -3381,6 +3725,146 @@ class Client(OpenApiClient):
     ) -> main_models.GetWorkspaceCodePublishSettingResponse:
         runtime = RuntimeOptions()
         return await self.get_workspace_code_publish_setting_with_options_async(request, runtime)
+
+    def get_workspace_quota_with_options(
+        self,
+        request: main_models.GetWorkspaceQuotaRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetWorkspaceQuotaResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetWorkspaceQuota',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetWorkspaceQuotaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_workspace_quota_with_options_async(
+        self,
+        request: main_models.GetWorkspaceQuotaRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetWorkspaceQuotaResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetWorkspaceQuota',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetWorkspaceQuotaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_workspace_quota(
+        self,
+        request: main_models.GetWorkspaceQuotaRequest,
+    ) -> main_models.GetWorkspaceQuotaResponse:
+        runtime = RuntimeOptions()
+        return self.get_workspace_quota_with_options(request, runtime)
+
+    async def get_workspace_quota_async(
+        self,
+        request: main_models.GetWorkspaceQuotaRequest,
+    ) -> main_models.GetWorkspaceQuotaResponse:
+        runtime = RuntimeOptions()
+        return await self.get_workspace_quota_with_options_async(request, runtime)
+
+    def list_airflow_versions_with_options(
+        self,
+        request: main_models.ListAirflowVersionsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAirflowVersionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAirflowVersions',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAirflowVersionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_airflow_versions_with_options_async(
+        self,
+        request: main_models.ListAirflowVersionsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAirflowVersionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAirflowVersions',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAirflowVersionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_airflow_versions(
+        self,
+        request: main_models.ListAirflowVersionsRequest,
+    ) -> main_models.ListAirflowVersionsResponse:
+        runtime = RuntimeOptions()
+        return self.list_airflow_versions_with_options(request, runtime)
+
+    async def list_airflow_versions_async(
+        self,
+        request: main_models.ListAirflowVersionsRequest,
+    ) -> main_models.ListAirflowVersionsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_airflow_versions_with_options_async(request, runtime)
 
     def list_airflows_with_options(
         self,
@@ -5334,6 +5818,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.operate_custom_agent_with_options_async(request, runtime)
 
+    def redeploy_airflow_with_options(
+        self,
+        request: main_models.RedeployAirflowRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RedeployAirflowResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.airflow_id):
+            query['AirflowId'] = request.airflow_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RedeployAirflow',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RedeployAirflowResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def redeploy_airflow_with_options_async(
+        self,
+        request: main_models.RedeployAirflowRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RedeployAirflowResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.airflow_id):
+            query['AirflowId'] = request.airflow_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RedeployAirflow',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RedeployAirflowResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def redeploy_airflow(
+        self,
+        request: main_models.RedeployAirflowRequest,
+    ) -> main_models.RedeployAirflowResponse:
+        runtime = RuntimeOptions()
+        return self.redeploy_airflow_with_options(request, runtime)
+
+    async def redeploy_airflow_async(
+        self,
+        request: main_models.RedeployAirflowRequest,
+    ) -> main_models.RedeployAirflowResponse:
+        runtime = RuntimeOptions()
+        return await self.redeploy_airflow_with_options_async(request, runtime)
+
     def remove_user_to_data_agent_workspace_with_options(
         self,
         request: main_models.RemoveUserToDataAgentWorkspaceRequest,
@@ -5620,12 +6178,102 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.set_workspace_code_publish_setting_with_options_async(request, runtime)
 
+    def set_workspace_quota_with_options(
+        self,
+        request: main_models.SetWorkspaceQuotaRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SetWorkspaceQuotaResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.cu_quota):
+            query['CuQuota'] = request.cu_quota
+        if not DaraCore.is_null(request.region):
+            query['Region'] = request.region
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SetWorkspaceQuota',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SetWorkspaceQuotaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def set_workspace_quota_with_options_async(
+        self,
+        request: main_models.SetWorkspaceQuotaRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SetWorkspaceQuotaResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.cu_quota):
+            query['CuQuota'] = request.cu_quota
+        if not DaraCore.is_null(request.region):
+            query['Region'] = request.region
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SetWorkspaceQuota',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SetWorkspaceQuotaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def set_workspace_quota(
+        self,
+        request: main_models.SetWorkspaceQuotaRequest,
+    ) -> main_models.SetWorkspaceQuotaResponse:
+        runtime = RuntimeOptions()
+        return self.set_workspace_quota_with_options(request, runtime)
+
+    async def set_workspace_quota_async(
+        self,
+        request: main_models.SetWorkspaceQuotaRequest,
+    ) -> main_models.SetWorkspaceQuotaResponse:
+        runtime = RuntimeOptions()
+        return await self.set_workspace_quota_with_options_async(request, runtime)
+
     def update_airflow_with_options(
         self,
-        request: main_models.UpdateAirflowRequest,
+        tmp_req: main_models.UpdateAirflowRequest,
         runtime: RuntimeOptions,
     ) -> main_models.UpdateAirflowResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.UpdateAirflowShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.data_mount_info_list):
+            request.data_mount_info_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.data_mount_info_list, 'DataMountInfoList', 'json')
         query = {}
         if not DaraCore.is_null(request.airflow_id):
             query['AirflowId'] = request.airflow_id
@@ -5637,8 +6285,14 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.dags_dir):
             query['DagsDir'] = request.dags_dir
+        if not DaraCore.is_null(request.data_mount_info_list_shrink):
+            query['DataMountInfoList'] = request.data_mount_info_list_shrink
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
+        if not DaraCore.is_null(request.enable_serverless):
+            query['EnableServerless'] = request.enable_serverless
+        if not DaraCore.is_null(request.graceful_shutdown_timeout):
+            query['GracefulShutdownTimeout'] = request.graceful_shutdown_timeout
         if not DaraCore.is_null(request.plugins_dir):
             query['PluginsDir'] = request.plugins_dir
         if not DaraCore.is_null(request.requirement_file):
@@ -5670,10 +6324,14 @@ class Client(OpenApiClient):
 
     async def update_airflow_with_options_async(
         self,
-        request: main_models.UpdateAirflowRequest,
+        tmp_req: main_models.UpdateAirflowRequest,
         runtime: RuntimeOptions,
     ) -> main_models.UpdateAirflowResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.UpdateAirflowShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.data_mount_info_list):
+            request.data_mount_info_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.data_mount_info_list, 'DataMountInfoList', 'json')
         query = {}
         if not DaraCore.is_null(request.airflow_id):
             query['AirflowId'] = request.airflow_id
@@ -5685,8 +6343,14 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.dags_dir):
             query['DagsDir'] = request.dags_dir
+        if not DaraCore.is_null(request.data_mount_info_list_shrink):
+            query['DataMountInfoList'] = request.data_mount_info_list_shrink
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
+        if not DaraCore.is_null(request.enable_serverless):
+            query['EnableServerless'] = request.enable_serverless
+        if not DaraCore.is_null(request.graceful_shutdown_timeout):
+            query['GracefulShutdownTimeout'] = request.graceful_shutdown_timeout
         if not DaraCore.is_null(request.plugins_dir):
             query['PluginsDir'] = request.plugins_dir
         if not DaraCore.is_null(request.requirement_file):
