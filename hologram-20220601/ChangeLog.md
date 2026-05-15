@@ -1,3 +1,10 @@
+2026-05-15 Version: 1.10.0
+- Support API DisableExecuteStatement.
+- Support API EnableExecuteStatement.
+- Support API ExecuteStatement.
+- Support API GetExecuteStatementEnabled.
+
+
 2026-05-14 Version: 1.9.0
 - Support API CreateDatabase.
 - Support API CreateExternalDatabase.

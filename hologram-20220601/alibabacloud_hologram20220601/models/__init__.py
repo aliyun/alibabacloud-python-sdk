@@ -44,6 +44,9 @@ from ._delete_model_service_response import DeleteModelServiceResponse
 from ._delete_warehouse_schedule_task_request import DeleteWarehouseScheduleTaskRequest
 from ._delete_warehouse_schedule_task_response_body import DeleteWarehouseScheduleTaskResponseBody
 from ._delete_warehouse_schedule_task_response import DeleteWarehouseScheduleTaskResponse
+from ._disable_execute_statement_request import DisableExecuteStatementRequest
+from ._disable_execute_statement_response_body import DisableExecuteStatementResponseBody
+from ._disable_execute_statement_response import DisableExecuteStatementResponse
 from ._disable_hive_access_request import DisableHiveAccessRequest
 from ._disable_hive_access_response_body import DisableHiveAccessResponseBody
 from ._disable_hive_access_response import DisableHiveAccessResponse
@@ -55,6 +58,9 @@ from ._disable_warehouse_auto_scale_response import DisableWarehouseAutoScaleRes
 from ._drop_user_request import DropUserRequest
 from ._drop_user_response_body import DropUserResponseBody
 from ._drop_user_response import DropUserResponse
+from ._enable_execute_statement_request import EnableExecuteStatementRequest
+from ._enable_execute_statement_response_body import EnableExecuteStatementResponseBody
+from ._enable_execute_statement_response import EnableExecuteStatementResponse
 from ._enable_hive_access_request import EnableHiveAccessRequest
 from ._enable_hive_access_response_body import EnableHiveAccessResponseBody
 from ._enable_hive_access_response import EnableHiveAccessResponse
@@ -63,8 +69,14 @@ from ._enable_sslresponse import EnableSSLResponse
 from ._enable_warehouse_auto_scale_request import EnableWarehouseAutoScaleRequest
 from ._enable_warehouse_auto_scale_response_body import EnableWarehouseAutoScaleResponseBody
 from ._enable_warehouse_auto_scale_response import EnableWarehouseAutoScaleResponse
+from ._execute_statement_request import ExecuteStatementRequest
+from ._execute_statement_response_body import ExecuteStatementResponseBody
+from ._execute_statement_response import ExecuteStatementResponse
 from ._get_certificate_attribute_response_body import GetCertificateAttributeResponseBody
 from ._get_certificate_attribute_response import GetCertificateAttributeResponse
+from ._get_execute_statement_enabled_request import GetExecuteStatementEnabledRequest
+from ._get_execute_statement_enabled_response_body import GetExecuteStatementEnabledResponseBody
+from ._get_execute_statement_enabled_response import GetExecuteStatementEnabledResponse
 from ._get_instance_response_body import GetInstanceResponseBody
 from ._get_instance_response import GetInstanceResponse
 from ._get_instance_model_request import GetInstanceModelRequest
@@ -161,6 +173,9 @@ from ._update_warehouse_schedule_task_response_body import UpdateWarehouseSchedu
 from ._update_warehouse_schedule_task_response import UpdateWarehouseScheduleTaskResponse
 from ._create_external_database_request import CreateExternalDatabaseRequestExternalConfig
 from ._create_instance_response_body import CreateInstanceResponseBodyData
+from ._execute_statement_response_body import ExecuteStatementResponseBodyDataResultsColumnMetadata
+from ._execute_statement_response_body import ExecuteStatementResponseBodyDataResults
+from ._execute_statement_response_body import ExecuteStatementResponseBodyData
 from ._get_certificate_attribute_response_body import GetCertificateAttributeResponseBodyCertificateAttributeDto
 from ._get_instance_response_body import GetInstanceResponseBodyInstanceEndpoints
 from ._get_instance_response_body import GetInstanceResponseBodyInstanceTags
@@ -226,6 +241,9 @@ __all__ = [
     DeleteWarehouseScheduleTaskRequest,
     DeleteWarehouseScheduleTaskResponseBody,
     DeleteWarehouseScheduleTaskResponse,
+    DisableExecuteStatementRequest,
+    DisableExecuteStatementResponseBody,
+    DisableExecuteStatementResponse,
     DisableHiveAccessRequest,
     DisableHiveAccessResponseBody,
     DisableHiveAccessResponse,
@@ -237,6 +255,9 @@ __all__ = [
     DropUserRequest,
     DropUserResponseBody,
     DropUserResponse,
+    EnableExecuteStatementRequest,
+    EnableExecuteStatementResponseBody,
+    EnableExecuteStatementResponse,
     EnableHiveAccessRequest,
     EnableHiveAccessResponseBody,
     EnableHiveAccessResponse,
@@ -245,8 +266,14 @@ __all__ = [
     EnableWarehouseAutoScaleRequest,
     EnableWarehouseAutoScaleResponseBody,
     EnableWarehouseAutoScaleResponse,
+    ExecuteStatementRequest,
+    ExecuteStatementResponseBody,
+    ExecuteStatementResponse,
     GetCertificateAttributeResponseBody,
     GetCertificateAttributeResponse,
+    GetExecuteStatementEnabledRequest,
+    GetExecuteStatementEnabledResponseBody,
+    GetExecuteStatementEnabledResponse,
     GetInstanceResponseBody,
     GetInstanceResponse,
     GetInstanceModelRequest,
@@ -343,6 +370,9 @@ __all__ = [
     UpdateWarehouseScheduleTaskResponse,
     CreateExternalDatabaseRequestExternalConfig,
     CreateInstanceResponseBodyData,
+    ExecuteStatementResponseBodyDataResultsColumnMetadata,
+    ExecuteStatementResponseBodyDataResults,
+    ExecuteStatementResponseBodyData,
     GetCertificateAttributeResponseBodyCertificateAttributeDto,
     GetInstanceResponseBodyInstanceEndpoints,
     GetInstanceResponseBodyInstanceTags,

@@ -1341,6 +1341,78 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_warehouse_schedule_task_with_options_async(instance_id, request, headers, runtime)
 
+    def disable_execute_statement_with_options(
+        self,
+        instance_id: str,
+        request: main_models.DisableExecuteStatementRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DisableExecuteStatementResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DisableExecuteStatement',
+            version = '2022-06-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/instances/{DaraURL.percent_encode(instance_id)}/disableExecuteStatement',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DisableExecuteStatementResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def disable_execute_statement_with_options_async(
+        self,
+        instance_id: str,
+        request: main_models.DisableExecuteStatementRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DisableExecuteStatementResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DisableExecuteStatement',
+            version = '2022-06-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/instances/{DaraURL.percent_encode(instance_id)}/disableExecuteStatement',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DisableExecuteStatementResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def disable_execute_statement(
+        self,
+        instance_id: str,
+        request: main_models.DisableExecuteStatementRequest,
+    ) -> main_models.DisableExecuteStatementResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.disable_execute_statement_with_options(instance_id, request, headers, runtime)
+
+    async def disable_execute_statement_async(
+        self,
+        instance_id: str,
+        request: main_models.DisableExecuteStatementRequest,
+    ) -> main_models.DisableExecuteStatementResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.disable_execute_statement_with_options_async(instance_id, request, headers, runtime)
+
     def disable_hive_access_with_options(
         self,
         instance_id: str,
@@ -1651,6 +1723,78 @@ class Client(OpenApiClient):
         headers = {}
         return await self.drop_user_with_options_async(instance_id, request, headers, runtime)
 
+    def enable_execute_statement_with_options(
+        self,
+        instance_id: str,
+        request: main_models.EnableExecuteStatementRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.EnableExecuteStatementResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'EnableExecuteStatement',
+            version = '2022-06-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/instances/{DaraURL.percent_encode(instance_id)}/enableExecuteStatement',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EnableExecuteStatementResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def enable_execute_statement_with_options_async(
+        self,
+        instance_id: str,
+        request: main_models.EnableExecuteStatementRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.EnableExecuteStatementResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'EnableExecuteStatement',
+            version = '2022-06-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/instances/{DaraURL.percent_encode(instance_id)}/enableExecuteStatement',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EnableExecuteStatementResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def enable_execute_statement(
+        self,
+        instance_id: str,
+        request: main_models.EnableExecuteStatementRequest,
+    ) -> main_models.EnableExecuteStatementResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.enable_execute_statement_with_options(instance_id, request, headers, runtime)
+
+    async def enable_execute_statement_async(
+        self,
+        instance_id: str,
+        request: main_models.EnableExecuteStatementRequest,
+    ) -> main_models.EnableExecuteStatementResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.enable_execute_statement_with_options_async(instance_id, request, headers, runtime)
+
     def enable_hive_access_with_options(
         self,
         instance_id: str,
@@ -1881,6 +2025,106 @@ class Client(OpenApiClient):
         headers = {}
         return await self.enable_warehouse_auto_scale_with_options_async(instance_id, request, headers, runtime)
 
+    def execute_statement_with_options(
+        self,
+        instance_id: str,
+        request: main_models.ExecuteStatementRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ExecuteStatementResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.db_name):
+            body['dbName'] = request.db_name
+        if not DaraCore.is_null(request.max_bytes):
+            body['maxBytes'] = request.max_bytes
+        if not DaraCore.is_null(request.max_rows):
+            body['maxRows'] = request.max_rows
+        if not DaraCore.is_null(request.parameters):
+            body['parameters'] = request.parameters
+        if not DaraCore.is_null(request.query_timeout):
+            body['queryTimeout'] = request.query_timeout
+        if not DaraCore.is_null(request.sql):
+            body['sql'] = request.sql
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ExecuteStatement',
+            version = '2022-06-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/instances/{DaraURL.percent_encode(instance_id)}/executeStatement',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ExecuteStatementResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def execute_statement_with_options_async(
+        self,
+        instance_id: str,
+        request: main_models.ExecuteStatementRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ExecuteStatementResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.db_name):
+            body['dbName'] = request.db_name
+        if not DaraCore.is_null(request.max_bytes):
+            body['maxBytes'] = request.max_bytes
+        if not DaraCore.is_null(request.max_rows):
+            body['maxRows'] = request.max_rows
+        if not DaraCore.is_null(request.parameters):
+            body['parameters'] = request.parameters
+        if not DaraCore.is_null(request.query_timeout):
+            body['queryTimeout'] = request.query_timeout
+        if not DaraCore.is_null(request.sql):
+            body['sql'] = request.sql
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ExecuteStatement',
+            version = '2022-06-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/instances/{DaraURL.percent_encode(instance_id)}/executeStatement',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ExecuteStatementResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def execute_statement(
+        self,
+        instance_id: str,
+        request: main_models.ExecuteStatementRequest,
+    ) -> main_models.ExecuteStatementResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.execute_statement_with_options(instance_id, request, headers, runtime)
+
+    async def execute_statement_async(
+        self,
+        instance_id: str,
+        request: main_models.ExecuteStatementRequest,
+    ) -> main_models.ExecuteStatementResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.execute_statement_with_options_async(instance_id, request, headers, runtime)
+
     def get_certificate_attribute_with_options(
         self,
         instance_id: str,
@@ -1946,6 +2190,78 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.get_certificate_attribute_with_options_async(instance_id, headers, runtime)
+
+    def get_execute_statement_enabled_with_options(
+        self,
+        instance_id: str,
+        request: main_models.GetExecuteStatementEnabledRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetExecuteStatementEnabledResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetExecuteStatementEnabled',
+            version = '2022-06-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/instances/{DaraURL.percent_encode(instance_id)}/executeStatementEnabled',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetExecuteStatementEnabledResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_execute_statement_enabled_with_options_async(
+        self,
+        instance_id: str,
+        request: main_models.GetExecuteStatementEnabledRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetExecuteStatementEnabledResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetExecuteStatementEnabled',
+            version = '2022-06-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/instances/{DaraURL.percent_encode(instance_id)}/executeStatementEnabled',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetExecuteStatementEnabledResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_execute_statement_enabled(
+        self,
+        instance_id: str,
+        request: main_models.GetExecuteStatementEnabledRequest,
+    ) -> main_models.GetExecuteStatementEnabledResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_execute_statement_enabled_with_options(instance_id, request, headers, runtime)
+
+    async def get_execute_statement_enabled_async(
+        self,
+        instance_id: str,
+        request: main_models.GetExecuteStatementEnabledRequest,
+    ) -> main_models.GetExecuteStatementEnabledResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_execute_statement_enabled_with_options_async(instance_id, request, headers, runtime)
 
     def get_instance_with_options(
         self,
