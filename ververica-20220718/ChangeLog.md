@@ -1,3 +1,6 @@
+2026-05-15 Version: 1.10.2
+- Generated python 2022-07-18 for ververica.
+
 2026-03-02 Version: 1.10.1
 - Update API GetEvents: add request parameters deploymentName.
 - Update API GetFolder: add request parameters rootType.

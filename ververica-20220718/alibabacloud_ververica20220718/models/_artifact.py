@@ -8,11 +8,13 @@ from darabonba.model import DaraModel
 class Artifact(DaraModel):
     def __init__(
         self,
+        cdc_yaml_artifact: main_models.CdcYamlArtifact = None,
         jar_artifact: main_models.JarArtifact = None,
         kind: str = None,
         python_artifact: main_models.PythonArtifact = None,
         sql_artifact: main_models.SqlArtifact = None,
     ):
+        self.cdc_yaml_artifact = cdc_yaml_artifact
         # The information required for the SQL deployment.
         self.jar_artifact = jar_artifact
         # The type of the deployment. This parameter is required and cannot be modified after the deployment is created.
@@ -27,6 +29,8 @@ class Artifact(DaraModel):
         self.sql_artifact = sql_artifact
 
     def validate(self):
+        if self.cdc_yaml_artifact:
+            self.cdc_yaml_artifact.validate()
         if self.jar_artifact:
             self.jar_artifact.validate()
         if self.python_artifact:
@@ -39,6 +43,9 @@ class Artifact(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.cdc_yaml_artifact is not None:
+            result['cdcYamlArtifact'] = self.cdc_yaml_artifact.to_map()
+
         if self.jar_artifact is not None:
             result['jarArtifact'] = self.jar_artifact.to_map()
 
@@ -55,6 +62,10 @@ class Artifact(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('cdcYamlArtifact') is not None:
+            temp_model = main_models.CdcYamlArtifact()
+            self.cdc_yaml_artifact = temp_model.from_map(m.get('cdcYamlArtifact'))
+
         if m.get('jarArtifact') is not None:
             temp_model = main_models.JarArtifact()
             self.jar_artifact = temp_model.from_map(m.get('jarArtifact'))

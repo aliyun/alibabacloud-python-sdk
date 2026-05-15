@@ -13,6 +13,7 @@ from ._batch_resource_setting import BatchResourceSetting
 from ._brief_deployment_target import BriefDeploymentTarget
 from ._brief_resource_setting import BriefResourceSetting
 from ._catalog import Catalog
+from ._cdc_yaml_artifact import CdcYamlArtifact
 from ._cell import Cell
 from ._connector import Connector
 from ._create_udf_artifact_result import CreateUdfArtifactResult
@@ -471,6 +472,7 @@ __all__ = [
     BriefDeploymentTarget,
     BriefResourceSetting,
     Catalog,
+    CdcYamlArtifact,
     Cell,
     Connector,
     CreateUdfArtifactResult,
