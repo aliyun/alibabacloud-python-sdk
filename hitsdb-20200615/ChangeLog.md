@@ -1,3 +1,8 @@
+2026-05-15 Version: 4.16.1
+- Update API CreateAdditionalVpcLink: add request parameters AdditionalAliBid.
+- Update API CreateAdditionalVpcLink: add request parameters AdditionalAliUid.
+
+
 2026-04-17 Version: 4.16.0
 - Support API CheckCreateLindormV2Instance.
 - Support API CreateAdditionalVpcLink.

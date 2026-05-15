@@ -369,6 +369,10 @@ class Client(OpenApiClient):
     ) -> main_models.CreateAdditionalVpcLinkResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.additional_ali_bid):
+            query['AdditionalAliBid'] = request.additional_ali_bid
+        if not DaraCore.is_null(request.additional_ali_uid):
+            query['AdditionalAliUid'] = request.additional_ali_uid
         if not DaraCore.is_null(request.additional_vpc_id):
             query['AdditionalVpcId'] = request.additional_vpc_id
         if not DaraCore.is_null(request.additional_vswitch_id):
@@ -405,6 +409,10 @@ class Client(OpenApiClient):
     ) -> main_models.CreateAdditionalVpcLinkResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.additional_ali_bid):
+            query['AdditionalAliBid'] = request.additional_ali_bid
+        if not DaraCore.is_null(request.additional_ali_uid):
+            query['AdditionalAliUid'] = request.additional_ali_uid
         if not DaraCore.is_null(request.additional_vpc_id):
             query['AdditionalVpcId'] = request.additional_vpc_id
         if not DaraCore.is_null(request.additional_vswitch_id):

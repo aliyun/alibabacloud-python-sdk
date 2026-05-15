@@ -7,12 +7,16 @@ from darabonba.model import DaraModel
 class CreateAdditionalVpcLinkRequest(DaraModel):
     def __init__(
         self,
+        additional_ali_bid: str = None,
+        additional_ali_uid: str = None,
         additional_vpc_id: str = None,
         additional_vswitch_id: str = None,
         instance_id: str = None,
         region_id: str = None,
         security_token: str = None,
     ):
+        self.additional_ali_bid = additional_ali_bid
+        self.additional_ali_uid = additional_ali_uid
         # This parameter is required.
         self.additional_vpc_id = additional_vpc_id
         # This parameter is required.
@@ -30,6 +34,12 @@ class CreateAdditionalVpcLinkRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.additional_ali_bid is not None:
+            result['AdditionalAliBid'] = self.additional_ali_bid
+
+        if self.additional_ali_uid is not None:
+            result['AdditionalAliUid'] = self.additional_ali_uid
+
         if self.additional_vpc_id is not None:
             result['AdditionalVpcId'] = self.additional_vpc_id
 
@@ -49,6 +59,12 @@ class CreateAdditionalVpcLinkRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AdditionalAliBid') is not None:
+            self.additional_ali_bid = m.get('AdditionalAliBid')
+
+        if m.get('AdditionalAliUid') is not None:
+            self.additional_ali_uid = m.get('AdditionalAliUid')
+
         if m.get('AdditionalVpcId') is not None:
             self.additional_vpc_id = m.get('AdditionalVpcId')
 
