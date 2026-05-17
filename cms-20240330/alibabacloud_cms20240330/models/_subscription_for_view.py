@@ -10,6 +10,7 @@ from darabonba.model import DaraModel
 class SubscriptionForView(DaraModel):
     def __init__(
         self,
+        agent_config: main_models.SubscriptionForViewAgentConfig = None,
         create_time: str = None,
         description: str = None,
         enable: bool = None,
@@ -18,12 +19,14 @@ class SubscriptionForView(DaraModel):
         pushing_setting: main_models.SubscriptionForViewPushingSetting = None,
         subscription_id: str = None,
         subscription_name: str = None,
+        subscription_type: str = None,
         sync_from_type: str = None,
         update_time: str = None,
         user_id: str = None,
         workspace: str = None,
         workspace_filter_setting: main_models.WorkspaceFilterSetting = None,
     ):
+        self.agent_config = agent_config
         # Create Time.
         self.create_time = create_time
         # Description.
@@ -42,6 +45,7 @@ class SubscriptionForView(DaraModel):
         # 
         # This parameter is required.
         self.subscription_name = subscription_name
+        self.subscription_type = subscription_type
         self.sync_from_type = sync_from_type
         # Update Time.
         self.update_time = update_time
@@ -52,6 +56,8 @@ class SubscriptionForView(DaraModel):
         self.workspace_filter_setting = workspace_filter_setting
 
     def validate(self):
+        if self.agent_config:
+            self.agent_config.validate()
         if self.filter_setting:
             self.filter_setting.validate()
         if self.pushing_setting:
@@ -64,6 +70,9 @@ class SubscriptionForView(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.agent_config is not None:
+            result['agentConfig'] = self.agent_config.to_map()
+
         if self.create_time is not None:
             result['createTime'] = self.create_time
 
@@ -88,6 +97,9 @@ class SubscriptionForView(DaraModel):
         if self.subscription_name is not None:
             result['subscriptionName'] = self.subscription_name
 
+        if self.subscription_type is not None:
+            result['subscriptionType'] = self.subscription_type
+
         if self.sync_from_type is not None:
             result['syncFromType'] = self.sync_from_type
 
@@ -107,6 +119,10 @@ class SubscriptionForView(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('agentConfig') is not None:
+            temp_model = main_models.SubscriptionForViewAgentConfig()
+            self.agent_config = temp_model.from_map(m.get('agentConfig'))
+
         if m.get('createTime') is not None:
             self.create_time = m.get('createTime')
 
@@ -132,6 +148,9 @@ class SubscriptionForView(DaraModel):
 
         if m.get('subscriptionName') is not None:
             self.subscription_name = m.get('subscriptionName')
+
+        if m.get('subscriptionType') is not None:
+            self.subscription_type = m.get('subscriptionType')
 
         if m.get('syncFromType') is not None:
             self.sync_from_type = m.get('syncFromType')
@@ -203,6 +222,49 @@ class SubscriptionForViewPushingSetting(DaraModel):
 
         if m.get('templateUuid') is not None:
             self.template_uuid = m.get('templateUuid')
+
+        return self
+
+class SubscriptionForViewAgentConfig(DaraModel):
+    def __init__(
+        self,
+        agent_uuid: str = None,
+        routes: List[main_models.NotifyRouteForSubscription] = None,
+    ):
+        self.agent_uuid = agent_uuid
+        self.routes = routes
+
+    def validate(self):
+        if self.routes:
+            for v1 in self.routes:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.agent_uuid is not None:
+            result['agentUuid'] = self.agent_uuid
+
+        result['routes'] = []
+        if self.routes is not None:
+            for k1 in self.routes:
+                result['routes'].append(k1.to_map() if k1 else None)
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('agentUuid') is not None:
+            self.agent_uuid = m.get('agentUuid')
+
+        self.routes = []
+        if m.get('routes') is not None:
+            for k1 in m.get('routes'):
+                temp_model = main_models.NotifyRouteForSubscription()
+                self.routes.append(temp_model.from_map(k1))
 
         return self
 

@@ -10,6 +10,7 @@ from darabonba.model import DaraModel
 class SubscriptionForModify(DaraModel):
     def __init__(
         self,
+        agent_config: main_models.SubscriptionForModifyAgentConfig = None,
         description: str = None,
         filter_setting: main_models.FilterSetting = None,
         notify_strategy_id: str = None,
@@ -17,6 +18,7 @@ class SubscriptionForModify(DaraModel):
         subscription_name: str = None,
         workspace_filter_setting: main_models.WorkspaceFilterSetting = None,
     ):
+        self.agent_config = agent_config
         # Description.
         self.description = description
         # Filtering settings.
@@ -32,6 +34,8 @@ class SubscriptionForModify(DaraModel):
         self.workspace_filter_setting = workspace_filter_setting
 
     def validate(self):
+        if self.agent_config:
+            self.agent_config.validate()
         if self.filter_setting:
             self.filter_setting.validate()
         if self.pushing_setting:
@@ -44,6 +48,9 @@ class SubscriptionForModify(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.agent_config is not None:
+            result['agentConfig'] = self.agent_config.to_map()
+
         if self.description is not None:
             result['description'] = self.description
 
@@ -66,6 +73,10 @@ class SubscriptionForModify(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('agentConfig') is not None:
+            temp_model = main_models.SubscriptionForModifyAgentConfig()
+            self.agent_config = temp_model.from_map(m.get('agentConfig'))
+
         if m.get('description') is not None:
             self.description = m.get('description')
 
@@ -141,6 +152,49 @@ class SubscriptionForModifyPushingSetting(DaraModel):
 
         if m.get('templateUuid') is not None:
             self.template_uuid = m.get('templateUuid')
+
+        return self
+
+class SubscriptionForModifyAgentConfig(DaraModel):
+    def __init__(
+        self,
+        agent_uuid: str = None,
+        routes: List[main_models.NotifyRouteForSubscription] = None,
+    ):
+        self.agent_uuid = agent_uuid
+        self.routes = routes
+
+    def validate(self):
+        if self.routes:
+            for v1 in self.routes:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.agent_uuid is not None:
+            result['agentUuid'] = self.agent_uuid
+
+        result['routes'] = []
+        if self.routes is not None:
+            for k1 in self.routes:
+                result['routes'].append(k1.to_map() if k1 else None)
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('agentUuid') is not None:
+            self.agent_uuid = m.get('agentUuid')
+
+        self.routes = []
+        if m.get('routes') is not None:
+            for k1 in m.get('routes'):
+                temp_model = main_models.NotifyRouteForSubscription()
+                self.routes.append(temp_model.from_map(k1))
 
         return self
 

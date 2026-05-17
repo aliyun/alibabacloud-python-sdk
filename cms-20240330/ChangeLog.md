@@ -1,3 +1,6 @@
+2026-05-17 Version: 9.2.2
+- Generated python 2024-03-30 for Cms.
+
 2026-05-13 Version: 9.2.1
 - Update API DescribeMetricMetaList: add request parameters keywords.
 - Update API DescribeMetricMetaList: add response parameters Body.resources.$.metaFormat.

@@ -79,11 +79,13 @@ from ._manage_alert_rules_result import ManageAlertRulesResult
 from ._manage_alert_rules_unified_action_input import ManageAlertRulesUnifiedActionInput
 from ._merge_contact import MergeContact
 from ._merge_contact_group import MergeContactGroup
+from ._merge_oncall_schedule import MergeOncallSchedule
 from ._merge_robot import MergeRobot
 from ._merge_webhook import MergeWebhook
 from ._model_parameters import ModelParameters
 from ._notify_channel import NotifyChannel
 from ._notify_config_unified import NotifyConfigUnified
+from ._notify_route_for_subscription import NotifyRouteForSubscription
 from ._notify_strategy_for_modify import NotifyStrategyForModify
 from ._notify_strategy_for_view import NotifyStrategyForView
 from ._pagination import Pagination
@@ -592,6 +594,8 @@ from ._incident_note_struct import IncidentNoteStructOperator
 from ._maintain_window_for_modify import MaintainWindowForModifyEffectTimeRange
 from ._maintain_window_for_view import MaintainWindowForViewEffectTimeRange
 from ._merge_robot import MergeRobotExtend
+from ._notify_route_for_subscription import NotifyRouteForSubscriptionChannels
+from ._notify_route_for_subscription import NotifyRouteForSubscriptionEffectTimeRange
 from ._notify_strategy_for_modify import NotifyStrategyForModifyCustomTemplateEntries
 from ._notify_strategy_for_modify import NotifyStrategyForModifyGroupingSetting
 from ._notify_strategy_for_modify import NotifyStrategyForModifyPushingSetting
@@ -606,7 +610,9 @@ from ._notify_strategy_for_view import NotifyStrategyForViewRepeatNotifySetting
 from ._notify_strategy_for_view import NotifyStrategyForViewRoutesChannels
 from ._notify_strategy_for_view import NotifyStrategyForViewRoutesEffectTimeRange
 from ._notify_strategy_for_view import NotifyStrategyForViewRoutes
+from ._subscription_for_modify import SubscriptionForModifyAgentConfig
 from ._subscription_for_modify import SubscriptionForModifyPushingSetting
+from ._subscription_for_view import SubscriptionForViewAgentConfig
 from ._subscription_for_view import SubscriptionForViewPushingSetting
 from ._add_contexts_request import AddContextsRequestItems
 from ._add_contexts_response_body import AddContextsResponseBodyResults
@@ -885,11 +891,13 @@ __all__ = [
     ManageAlertRulesUnifiedActionInput,
     MergeContact,
     MergeContactGroup,
+    MergeOncallSchedule,
     MergeRobot,
     MergeWebhook,
     ModelParameters,
     NotifyChannel,
     NotifyConfigUnified,
+    NotifyRouteForSubscription,
     NotifyStrategyForModify,
     NotifyStrategyForView,
     Pagination,
@@ -1398,6 +1406,8 @@ __all__ = [
     MaintainWindowForModifyEffectTimeRange,
     MaintainWindowForViewEffectTimeRange,
     MergeRobotExtend,
+    NotifyRouteForSubscriptionChannels,
+    NotifyRouteForSubscriptionEffectTimeRange,
     NotifyStrategyForModifyCustomTemplateEntries,
     NotifyStrategyForModifyGroupingSetting,
     NotifyStrategyForModifyPushingSetting,
@@ -1412,7 +1422,9 @@ __all__ = [
     NotifyStrategyForViewRoutesChannels,
     NotifyStrategyForViewRoutesEffectTimeRange,
     NotifyStrategyForViewRoutes,
+    SubscriptionForModifyAgentConfig,
     SubscriptionForModifyPushingSetting,
+    SubscriptionForViewAgentConfig,
     SubscriptionForViewPushingSetting,
     AddContextsRequestItems,
     AddContextsResponseBodyResults,
