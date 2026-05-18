@@ -31,7 +31,6 @@ class DescribeMonitorGroupInstancesResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The information about the resources in the application group.
         self.resources = resources
         # Indicates whether the request was successful.
         self.success = success
@@ -146,15 +145,10 @@ class DescribeMonitorGroupInstancesResponseBodyResourcesResource(DaraModel):
         instance_name: str = None,
         region_id: str = None,
     ):
-        # The abbreviation of the service name.
         self.category = category
-        # The resource ID.
         self.id = id
-        # The instance ID.
         self.instance_id = instance_id
-        # The instance name.
         self.instance_name = instance_name
-        # The ID of the region where the instance resides.
         self.region_id = region_id
 
     def validate(self):

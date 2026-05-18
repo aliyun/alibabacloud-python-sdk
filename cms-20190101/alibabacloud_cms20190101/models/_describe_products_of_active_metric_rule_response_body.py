@@ -17,7 +17,6 @@ class DescribeProductsOfActiveMetricRuleResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The information about the services for which one-click alert is enabled.
         self.all_product_init_metric_rule_list = all_product_init_metric_rule_list
         # The HTTP status code.
         # 
@@ -140,9 +139,7 @@ class DescribeProductsOfActiveMetricRuleResponseBodyAllProductInitMetricRuleList
         alert_init_config_list: main_models.DescribeProductsOfActiveMetricRuleResponseBodyAllProductInitMetricRuleListAllProductInitMetricRuleAlertInitConfigList = None,
         product: str = None,
     ):
-        # The initial alert rules that are generated after one-click alert is enabled for a service.
         self.alert_init_config_list = alert_init_config_list
-        # The abbreviation of the service name.
         self.product = product
 
     def validate(self):
@@ -220,71 +217,13 @@ class DescribeProductsOfActiveMetricRuleResponseBodyAllProductInitMetricRuleList
         statistics: str = None,
         threshold: str = None,
     ):
-        # The operator that is used to compare the metric value with the threshold for Warn-level alerts.
-        # 
-        # Valid values:
-        # 
-        # *   LessThanThreshold: less than the threshold
-        # 
-        # *   GreaterThanLastWeek: greater than the metric value at the same time last week
-        # 
-        # *   LessThanOrEqualToThreshold: less than or equal to the threshold
-        # 
-        # *   NotEqualToThreshold: does not equal to the threshold
-        # 
-        # *   GreaterThanLastPeriod: greater than the metric value in the last monitoring cycle
-        # 
-        # *   GreaterThanYesterday: greater than the metric value at the same time yesterday
-        # 
-        # *   LessThanYesterday: less than the metric value at the same time yesterday
-        # 
-        # *   LessThanLastWeek: less than the metric value at the same time last week
-        # 
-        # *   GreaterThanOrEqualToThreshold: greater than or equal to the threshold
-        # 
-        # *   GreaterThanThreshold: greater than the threshold
-        # 
-        # *   LessThanLastPeriod: less than the metric value in the last monitoring cycle
         self.comparison_operator = comparison_operator
-        # The consecutive number of times for which the metric value meets the alert condition before an alert is triggered.
         self.evaluation_count = evaluation_count
-        # The alert level.
-        # 
-        # Valid values:
-        # 
-        # *   INFO
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   WARN
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   CRITICAL
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
         self.level = level
-        # The metric name. For more information, see [Appendix 1: Metrics](https://help.aliyun.com/document_detail/163515.html).
         self.metric_name = metric_name
-        # The namespace of the service. For more information, see [Appendix 1: Metrics](https://help.aliyun.com/document_detail/163515.html).
         self.namespace = namespace
-        # The aggregation period of monitoring data. Unit: minutes. For more information, see [Appendix 1: Metrics](https://help.aliyun.com/document_detail/163515.html).
         self.period = period
-        # The method used to calculate metric values that trigger alerts. For more information, see [Appendix 1: Metrics](https://help.aliyun.com/document_detail/163515.html).
         self.statistics = statistics
-        # The alert threshold.
         self.threshold = threshold
 
     def validate(self):

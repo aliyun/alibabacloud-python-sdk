@@ -31,7 +31,6 @@ class DescribeProjectMetaResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The details of the cloud service.
         self.resources = resources
         # Indicates whether the request was successful. Valid values: true: The request was successful. false: The request failed.
         self.success = success
@@ -144,18 +143,8 @@ class DescribeProjectMetaResponseBodyResourcesResource(DaraModel):
         labels: str = None,
         namespace: str = None,
     ):
-        # The description.
         self.description = description
-        # The tags. Tags are used to filter services.
-        # 
-        # Tags are returned in the following format: `[{"name":"Tag key","value":"Tag value"}, {"name":"Tag key","value":"Tag value"}]`. The following tags are commonly used:
-        # 
-        # *   alertUnit: the unit of the metric value in alerts. If the unit is small, the original metric value may be too large. In this case, you can use the `alertUnit` tag to specify an appropriate unit. This tag is used in CloudMonitor.
-        # *   minAlertPeriod: the minimum time interval to report a new alert. The interval at which monitoring data is reported. The value is usually 1 minute.
-        # *   metricCategory: the service specification. Example: kvstore_sharding. Some Alibaba Cloud services have multiple specifications that are defined in the same namespace. This parameter is used to identify the specifications.
-        # *   is_alarm: indicates whether an alert rule can be configured. We recommend that you do not use the special tags in the CloudMonitor console.
         self.labels = labels
-        # The namespace of the cloud service. Format: `acs_Service name abbreviation`. For more information about namespaces, see [Appendix 1: Metrics](https://help.aliyun.com/document_detail/163515.html).
         self.namespace = namespace
 
     def validate(self):

@@ -20,7 +20,6 @@ class DescribeContactListByContactGroupResponseBody(DaraModel):
         # 
         # >  The status code 200 indicates that the request was successful.
         self.code = code
-        # The alert contacts that receive alert notifications.
         self.contacts = contacts
         # The returned message.
         self.message = message
@@ -122,19 +121,10 @@ class DescribeContactListByContactGroupResponseBodyContactsContact(DaraModel):
         name: str = None,
         update_time: int = None,
     ):
-        # The alert notification methods.
         self.channels = channels
-        # The time when the alert contact was created.
-        # 
-        # Unit: milliseconds.
         self.create_time = create_time
-        # The description of the alert contact.
         self.desc = desc
-        # The name of the alert contact.
         self.name = name
-        # The time when the alert contact was modified.
-        # 
-        # Unit: milliseconds.
         self.update_time = update_time
 
     def validate(self):
@@ -191,17 +181,9 @@ class DescribeContactListByContactGroupResponseBodyContactsContactChannels(DaraM
         mail: str = None,
         sms: str = None,
     ):
-        # The TradeManager ID of the alert contact.
-        # 
-        # >  This parameter can be returned only on the China site (aliyun.com).
         self.ali_im = ali_im
-        # The webhook URL of the DingTalk chatbot.
         self.ding_web_hook = ding_web_hook
-        # The email address of the alert contact.
         self.mail = mail
-        # The mobile number of the alert contact.
-        # 
-        # >  This parameter can be returned only on the China site (aliyun.com).
         self.sms = sms
 
     def validate(self):

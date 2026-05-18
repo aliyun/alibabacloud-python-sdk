@@ -29,7 +29,6 @@ class DescribeUnhealthyHostAvailabilityResponseBody(DaraModel):
         # *   true
         # *   false
         self.success = success
-        # The unhealthy instances that are detected by the specified availability monitoring tasks.
         self.unhealthy_list = unhealthy_list
 
     def validate(self):
@@ -119,7 +118,6 @@ class DescribeUnhealthyHostAvailabilityResponseBodyUnhealthyListNodeTaskInstance
         id: int = None,
         instance_list: main_models.DescribeUnhealthyHostAvailabilityResponseBodyUnhealthyListNodeTaskInstanceInstanceList = None,
     ):
-        # The ID of the availability monitoring task.
         self.id = id
         self.instance_list = instance_list
 

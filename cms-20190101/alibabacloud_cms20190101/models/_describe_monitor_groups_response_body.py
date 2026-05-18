@@ -31,7 +31,6 @@ class DescribeMonitorGroupsResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The resources that are associated with the application group.
         self.resources = resources
         # Indicates whether the request was successful. Valid values:
         # 
@@ -159,38 +158,20 @@ class DescribeMonitorGroupsResponseBodyResourcesResource(DaraModel):
         template_infos: main_models.DescribeMonitorGroupsResponseBodyResourcesResourceTemplateInfos = None,
         type: str = None,
     ):
-        # The URL of the ACK cluster from which the application group is synchronized.
         self.bind_url = bind_url
-        # The alert contact groups.
         self.contact_groups = contact_groups
-        # The ID of the tag rule.
         self.dynamic_tag_rule_id = dynamic_tag_rule_id
-        # The timestamp when the application group was created. Unit: milliseconds.
         self.gmt_create = gmt_create
-        # The timestamp when the application group was modified. Unit: milliseconds.
         self.gmt_modified = gmt_modified
-        # The tag key that is created for the application group by using the tag rule.
         self.group_founder_tag_key = group_founder_tag_key
-        # The tag value that is created for the application group by using the tag rule.
         self.group_founder_tag_value = group_founder_tag_value
-        # The ID of the application group.
         self.group_id = group_id
-        # The name of the application group.
         self.group_name = group_name
-        # The resource ID.
         self.resource_group_id = resource_group_id
-        # The ID of the Alibaba Cloud service.
         self.service_id = service_id
-        # The tags that are attached to the application group.
         self.tags = tags
-        # The ID of the template.
         self.template_ids = template_ids
         self.template_infos = template_infos
-        # The type of the application group. Valid values:
-        # 
-        # *   custom: a self-managed application group
-        # *   ehpc_cluster: an application group that is synchronized from an E-HPC cluster
-        # *   kubernetes: an application group that is synchronized from an ACK cluster
         self.type = type
 
     def validate(self):
@@ -454,9 +435,7 @@ class DescribeMonitorGroupsResponseBodyResourcesResourceTagsTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the application group.
         self.key = key
-        # The tag value of the application group.
         self.value = value
 
     def validate(self):
@@ -525,7 +504,6 @@ class DescribeMonitorGroupsResponseBodyResourcesResourceContactGroupsContactGrou
         self,
         name: str = None,
     ):
-        # The name of the alert contact group.
         self.name = name
 
     def validate(self):

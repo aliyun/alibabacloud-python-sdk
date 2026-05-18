@@ -21,7 +21,6 @@ class DescribeContactListResponseBody(DaraModel):
         # 
         # >  The status code 200 indicates that the request was successful.
         self.code = code
-        # The alert contacts.
         self.contacts = contacts
         # The error message returned.
         self.message = message
@@ -134,30 +133,13 @@ class DescribeContactListResponseBodyContactsContact(DaraModel):
         name: str = None,
         update_time: int = None,
     ):
-        # The alert notification method.
         self.channels = channels
-        # The status of the alert notification method. Valid values: PENDING and OK.
-        # 
-        # The email address must be activated after it is added as the value specified for the alert notification method. The value PENDING indicates that the email address is not activated. The value OK indicates that the email address is activated.
         self.channels_state = channels_state
-        # None.
         self.contact_groups = contact_groups
-        # The timestamp when the alert contact was created.
-        # 
-        # Unit: milliseconds.
         self.create_time = create_time
-        # The description.
         self.desc = desc
-        # The language in which the alert information is displayed. Valid values:
-        # 
-        # *   zh-cn: simplified Chinese
-        # *   en: English
         self.lang = lang
-        # The name of the alert contact.
         self.name = name
-        # The timestamp when the alert contact was updated.
-        # 
-        # Unit: milliseconds.
         self.update_time = update_time
 
     def validate(self):
@@ -265,27 +247,9 @@ class DescribeContactListResponseBodyContactsContactChannelsState(DaraModel):
         mail: str = None,
         sms: str = None,
     ):
-        # The status of the TradeManager ID.
-        # 
-        # Valid value: OK. The value OK indicates that the TradeManager ID is valid and can receive alert notifications.
-        # 
-        # >  This parameter applies only to the Alibaba Cloud China site (aliyun.com).
         self.ali_im = ali_im
-        # The status of the DingTalk chatbot.
-        # 
-        # Valid value: OK. The value OK indicates that the DingTalk chatbot is normal and alert notifications can be received in a DingTalk group.
         self.ding_web_hook = ding_web_hook
-        # The status of the email address. Valid values:
-        # 
-        # *   PENDING: The phone number is not activated. Alert notifications can be sent to the phone number by using text messages only after the phone number is activated.
-        # *   OK: The phone number is activated and can receive alert notifications.
         self.mail = mail
-        # The status of the phone number. Valid values:
-        # 
-        # *   PENDING: The phone number is not activated. Alert notifications can be sent to the phone number by using text messages only after the phone number is activated.
-        # *   OK: The phone number is activated and can receive alert notifications.
-        # 
-        # >  This parameter applies only to the Alibaba Cloud China site (aliyun.com).
         self.sms = sms
 
     def validate(self):
@@ -334,13 +298,9 @@ class DescribeContactListResponseBodyContactsContactChannels(DaraModel):
         mail: str = None,
         sms: str = None,
     ):
-        # The TradeManager ID of the alert contact.
         self.ali_im = ali_im
-        # The webhook URL of the DingTalk chatbot.
         self.ding_web_hook = ding_web_hook
-        # The email address of the alert contact.
         self.mail = mail
-        # The phone number of the alert contac.
         self.sms = sms
 
     def validate(self):

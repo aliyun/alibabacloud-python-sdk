@@ -11,8 +11,11 @@ class Matcher(DaraModel):
         operator: str = None,
         value: str = None,
     ):
+        # The name of the metric dimension.
         self.label = label
+        # The matching mode of the metric dimension. Only EQUALS is supported. Default value: EQUALS.
         self.operator = operator
+        # The value of the metric dimension.
         self.value = value
 
     def validate(self):

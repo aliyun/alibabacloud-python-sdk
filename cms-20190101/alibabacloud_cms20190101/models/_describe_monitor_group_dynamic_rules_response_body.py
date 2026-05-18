@@ -24,7 +24,6 @@ class DescribeMonitorGroupDynamicRulesResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The resources that are associated with the application group.
         self.resource = resource
         # Indicates whether the request was successful. Valid values:
         # 
@@ -120,18 +119,8 @@ class DescribeMonitorGroupDynamicRulesResponseBodyResourceResource(DaraModel):
         filter_relation: str = None,
         filters: main_models.DescribeMonitorGroupDynamicRulesResponseBodyResourceResourceFilters = None,
     ):
-        # The type of the cloud service to which the dynamic rule belongs. Valid values:
-        # 
-        # *   ecs: Elastic Compute Service (ECS)
-        # *   rds: ApsaraDB RDS
-        # *   slb: Server Load Balancer (SLB)
         self.category = category
-        # The filter condition. Valid values:
-        # 
-        # *   and: queries the instances that meet all alert rules.
-        # *   or: queries the instances that meet any alert rule.
         self.filter_relation = filter_relation
-        # The dynamic rules of the application group.
         self.filters = filters
 
     def validate(self):
@@ -210,15 +199,8 @@ class DescribeMonitorGroupDynamicRulesResponseBodyResourceResourceFiltersFilter(
         name: str = None,
         value: str = None,
     ):
-        # The method that is used to filter the instances. Valid values:
-        # 
-        # *   contains: contains
-        # *   startWith: starts with a prefix
-        # *   endWith: ends with a suffix
         self.function = function
-        # The instance name.
         self.name = name
-        # The value of the dynamic rule.
         self.value = value
 
     def validate(self):

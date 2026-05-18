@@ -29,7 +29,6 @@ class DescribeGroupMonitoringAgentProcessResponseBody(DaraModel):
         self.page_number = page_number
         # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # The process monitoring tasks.
         self.processes = processes
         # The request ID.
         self.request_id = request_id
@@ -147,23 +146,11 @@ class DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcess(DaraModel)
         match_express_filter_relation: str = None,
         process_name: str = None,
     ):
-        # The alert rule configurations.
         self.alert_config = alert_config
-        # The ID of the application group.
         self.group_id = group_id
-        # The ID of the process monitoring task.
         self.id = id
-        # The matching conditions.
-        # 
-        # >  Only the instances that meet the conditional expressions are monitored by the process monitoring task.
         self.match_express = match_express
-        # The logical operator used between conditional expressions that are used to match instances. Valid values:
-        # 
-        # *   all
-        # *   and
-        # *   or
         self.match_express_filter_relation = match_express_filter_relation
-        # The process name.
         self.process_name = process_name
 
     def validate(self):
@@ -263,22 +250,8 @@ class DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessMatchExpres
         name: str = None,
         value: str = None,
     ):
-        # The matching condition. Valid values:
-        # 
-        # *   all (default): matches all
-        # *   startWith: starts with a prefix
-        # *   endWith: ends with a suffix
-        # *   contains: contains
-        # *   notContains: excludes
-        # *   equals: equals
-        # 
-        # >  The matched instances are monitored by the process monitoring task.
         self.function = function
-        # The criteria based on which the instances are matched.
-        # 
-        # >  Set the value to `name`. The value name indicates that the instances are matched based on the instance name.
         self.name = name
-        # The keyword used to match the instance name.
         self.value = value
 
     def validate(self):
@@ -362,45 +335,15 @@ class DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessAlertConfig
         times: str = None,
         webhook: str = None,
     ):
-        # The comparison operator that is used to compare the metric value with the threshold. Valid values:
-        # 
-        # *   GreaterThanOrEqualToThreshold: greater than or equal to the threshold
-        # *   GreaterThanThreshold: greater than the threshold
-        # *   LessThanOrEqualToThreshold: less than or equal to the threshold
-        # *   LessThanThreshold: less than the threshold
-        # *   NotEqualToThreshold: not equal to the threshold
-        # *   GreaterThanYesterday: greater than the metric value at the same time yesterday.
-        # *   LessThanYesterday: less than the metric value at the same time yesterday
-        # *   GreaterThanLastWeek: greater than the metric value at the same time last week
-        # *   LessThanLastWeek: less than the metric value at the same time last week
-        # *   GreaterThanLastPeriod: greater than the metric value in the last monitoring cycle
-        # *   LessThanLastPeriod: less than the metric value in the last monitoring cycle
         self.comparison_operator = comparison_operator
-        # The time period during which the alert rule is effective.
         self.effective_interval = effective_interval
-        # The level of the alert. Valid values:
-        # 
-        # *   critical
-        # *   warn
-        # *   Info
         self.escalations_level = escalations_level
-        # The time period during which the alert rule is ineffective.
         self.no_effective_interval = no_effective_interval
-        # The mute period during which new alert notifications are not sent even if the trigger conditions are met. Unit: seconds. Minimum value: 3600, which is equivalent to one hour. Default value: 86400, which is equivalent to one day.
-        # 
-        # >  Only one alert notification is sent during each mute period even if the metric value exceeds the alert threshold several times.
         self.silence_time = silence_time
-        # The method used to calculate metric values that trigger alerts.
         self.statistics = statistics
-        # The resources for which alerts are triggered.
         self.target_list = target_list
-        # The alert threshold.
         self.threshold = threshold
-        # The number of times for which the threshold can be consecutively exceeded.
-        # 
-        # >  A metric triggers an alert only after the metric value reaches the threshold consecutively for the specified times.
         self.times = times
-        # The callback URL to which a POST request is sent when an alert is triggered based on the alert rule.
         self.webhook = webhook
 
     def validate(self):
@@ -522,33 +465,9 @@ class DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessAlertConfig
         json_parmas: str = None,
         level: str = None,
     ):
-        # The Alibaba Cloud Resource Name (ARN) of the resource. Format: acs:{Service name abbreviation}:{regionId}:{userId}:/{Resource type}/{Resource name}/message. Example: acs:mns:cn-hangzhou:120886317861\\*\\*\\*\\*:/queues/test123/message. Fields:
-        # 
-        # *   {Service name abbreviation}: the abbreviation of the service name. Set the value to Simple Message Queue (formerly MNS) (SMQ).
-        # 
-        # *   {userId}: the ID of the Alibaba Cloud account.
-        # 
-        # *   {regionId}: the region ID of the SMQ queue or topic.
-        # 
-        # *   {Resource type}: the type of the resource for which alerts are triggered. Valid values:
-        # 
-        #     *   **queues**
-        #     *   **topics**
-        # 
-        # *   {Resource name}: the resource name.
-        # 
-        #     *   If the resource type is **queues**, the resource name is the queue name.
-        #     *   If the resource type is **topics**, the resource name is the topic name.
         self.arn = arn
-        # The ID of the resource for which alerts are triggered.
         self.id = id
-        # The parameters of the alert callback. The parameters are in the JSON format.
         self.json_parmas = json_parmas
-        # The alert level. Valid values:
-        # 
-        # *   INFO
-        # *   WARN
-        # *   CRITICAL
         self.level = level
 
     def validate(self):

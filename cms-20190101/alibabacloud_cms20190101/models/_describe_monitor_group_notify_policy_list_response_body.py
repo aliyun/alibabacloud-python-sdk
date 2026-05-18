@@ -23,7 +23,6 @@ class DescribeMonitorGroupNotifyPolicyListResponseBody(DaraModel):
         self.code = code
         # The error message.
         self.message = message
-        # The returned policies.
         self.notify_policy_list = notify_policy_list
         # The request ID.
         self.request_id = request_id
@@ -131,19 +130,10 @@ class DescribeMonitorGroupNotifyPolicyListResponseBodyNotifyPolicyListNotifyPoli
         start_time: int = None,
         type: str = None,
     ):
-        # The end of the time range to query.
-        # 
-        # Unit: milliseconds.
         self.end_time = end_time
-        # The ID of the application group.
         self.group_id = group_id
-        # The policy ID.
         self.id = id
-        # The beginning of the time range to query.
-        # 
-        # Unit: milliseconds.
         self.start_time = start_time
-        # The policy type.
         self.type = type
 
     def validate(self):

@@ -31,7 +31,6 @@ class DescribeSiteMonitorListResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The site monitoring tasks that are returned.
         self.site_monitors = site_monitors
         # Indicates whether the request was successful. Valid values:
         # 
@@ -154,31 +153,15 @@ class DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitor(DaraModel):
         task_type: str = None,
         update_time: str = None,
     ):
-        # The URL or IP address that is monitored by the site monitoring task.
         self.address = address
-        # The detection point type. Valid values:
-        # 
-        # *   PC
-        # *   MOBILE
         self.agent_group = agent_group
-        # The time when the site monitoring task was created.
         self.create_time = create_time
-        # The interval at which detection requests are sent. Unit: minutes.
         self.interval = interval
-        # The extended options of the site monitoring task. The options vary based on the specified protocol. For more information, see [CreateSiteMonitor](https://help.aliyun.com/document_detail/115048.html).
         self.options_json = options_json
-        # The ID of the site monitoring task.
         self.task_id = task_id
-        # The name of the site monitoring task.
         self.task_name = task_name
-        # The task status. Valid values:
-        # 
-        # *   1: The task is enabled.
-        # *   2: The task is disabled.
         self.task_state = task_state
-        # The protocol that is used by the site monitoring task. Valid values: HTTP, PING, TCP, UDP, DNS, SMTP, POP3, and FTP.
         self.task_type = task_type
-        # The time when the site monitoring task was updated.
         self.update_time = update_time
 
     def validate(self):
@@ -291,125 +274,35 @@ class DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJson(Dara
         unfollow_redirect: bool = None,
         username: str = None,
     ):
-        # The acceptable status code.
-        # 
-        # >  We recommend that you configure assertions.
         self.acceptable_response_code = acceptable_response_code
-        # The assertions.
         self.assertions = assertions
-        # The number of retries after a DNS failure occurred.
         self.attempts = attempts
-        # Indicates whether the security authentication feature is enabled. Valid values:
-        # 
-        # *   0: The feature is enabled.
-        # *   1: The feature is disabled.
         self.authentication = authentication
-        # Indicates whether the certificate is verified. Valid values:
-        # 
-        # *   false (default): The certificate is not verified.
-        # *   true: The certificate is verified.
         self.cert_verify = cert_verify
-        # The cookie of the HTTP request.
         self.cookie = cookie
-        # Indicates whether MTR is automatically used to diagnose network issues if a task fails. Valid values:
-        # 
-        # *   false (default): MTR is not automatically used to diagnose network issues if a task fails.
-        # *   true: MTR is automatically used to diagnose network issues if a task fails.
         self.diagnosis_mtr = diagnosis_mtr
-        # Indicates whether ping requests are automatically sent to detect network latency if a detection task fails. Valid values:
-        # 
-        # *   false (default): Ping requests are not automatically sent to detect network latency if a detection task fails.
-        # *   true: Ping requests are automatically sent to detect network latency if a detection task fails.
         self.diagnosis_ping = diagnosis_ping
-        # The relationship between the list of expected aliases or IP addresses and the list of DNS results. Valid values:
-        # 
-        # *   IN_DNS: The list of expected values is a subset of the list of DNS results.
-        # *   DNS_IN: The list of DNS results is a subset of the list of expected values.
-        # *   EQUAL: The list of DNS results is the same as the list of expected values.
-        # *   ANY: The list of DNS results intersects with the list of expected values.
         self.dns_match_rule = dns_match_rule
-        # The domain name or IP address of the DNS server.
         self.dns_server = dns_server
-        # The type of the DNS record. This parameter is returned only if the TaskType parameter is set to DNS. Valid values:
-        # 
-        # *   A (default): a record that specifies an IP address related to the specified host name or domain name.
-        # *   CNAME: a record that maps multiple domain names to a domain name.
-        # *   NS: a record that specifies a DNS server used to parse domain names.
-        # *   MX: a record that links domain names to the address of a mail server.
-        # *   TXT: a record that stores the text information of host name or domain names. The text must be 1 to 512 bytes in length. The TXT record serves as a Sender Policy Framework (SPF) record to fight against spam.
-        # *   AAAA: a record that maps a domain name to the relevant IPv6 address.
         self.dns_type = dns_type
-        # Indicates whether the DNS server of the carrier is used.
-        # 
-        # *   true (default): The DNS server of the carrier is used.
-        # *   false: The DNS server of the carrier is not used. The default DNS server or the specified DNS server is used.
         self.enable_operator_dns = enable_operator_dns
-        # The packet loss rate.
-        # 
-        # >  This parameter is returned only if the TaskType parameter is set to PING.
         self.failure_rate = failure_rate
-        # The header of the HTTP request. An HTTP header is a key-value pair in which the key and the value are separated by a colon (:). The format is `key1:value1`. Each HTTP header occupies a line.
         self.header = header
-        # The HTTP request method. Valid values:
-        # 
-        # *   get
-        # *   post
-        # *   head
         self.http_method = http_method
-        # Indicates whether the password is decoded by using the Base64 algorithm. Valid values:
-        # 
-        # *   true: The password is decoded by using the Base64 algorithm.
-        # *   false (default): The password is not decoded by using the Base64 algorithm.
         self.is_base_64encode = is_base_64encode
-        # Indicates whether the alert rule is included. Valid values:
-        # 
-        # *   0: The alert rule is included.
-        # *   1: The alert rule is not included.
         self.match_rule = match_rule
-        # The password of the SMTP, POP3, or FTP protocol.
         self.password = password
-        # The number of hops for the PING protocol.
         self.ping_num = ping_num
-        # The port number of the TCP, UDP, SMTP, or POP3 protocol.
         self.port = port
-        # The protocol type of DNS detection. Valid values:
-        # 
-        # *   udp (default)
-        # *   tcp
-        # *   tcp-tls
         self.protocol = protocol
-        # Indicates whether the PROXY protocol is enabled. Valid values:
-        # 
-        # *   false (default): The PROXY protocol is disabled.
-        # *   true: The PROXY protocol is enabled.
         self.proxy_protocol = proxy_protocol
-        # The content of the HTTP request.
         self.request_content = request_content
-        # The format of the HTTP request. Valid values:
-        # 
-        # *   hex: hexadecimal
-        # *   txt: text
         self.request_format = request_format
-        # The response to the HTTP request.
-        # 
-        # *   Hexadecimal format: If the request content is a byte string and cannot be represented in printable characters, you can convert the byte string to printable characters in the hexadecimal format. If you convert the byte string to printable characters in the hexadecimal format, one byte is converted to two hexadecimal characters. For example, (byte)1 is converted to `01` and (byte)27 is converted to `1B`. If the request content is a binary array in the Java format, for example, `{(byte)1, (byte)27}`, you can convert the binary array to `011b` or `011B`. Hexadecimal characters are not case-sensitive in site monitoring tasks. You can enter `011B` in the request content and set the request_format parameter to hex.
-        # *   Text format: Common text refers to strings that consist of printable characters.
         self.response_content = response_content
-        # The format of the HTTP response. Valid values:
-        # 
-        # *   hex: hexadecimal
-        # *   txt: text
         self.response_format = response_format
-        # The number of times a failed detection request is retried.
         self.retry_delay = retry_delay
-        # The timeout period. Unit: milliseconds.
         self.time_out = time_out
-        # Indicates whether redirects are followed if the status code 301 or 302 is returned. Valid values:
-        # 
-        # *   true: Redirects are not followed.
-        # *   false (default): Redirects are followed.
         self.unfollow_redirect = unfollow_redirect
-        # The username of the FTP, SMTP, or POP3 protocol.
         self.username = username
 
     def validate(self):
@@ -651,32 +544,9 @@ class DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJsonAsser
         target: str = None,
         type: str = None,
     ):
-        # The comparison operator of the assertion. Valid values:
-        # 
-        # *   contains: contains
-        # *   doesNotContain: does not contain
-        # *   matches: matches regular expressions
-        # *   doesNotMatch: does not match regular expressions
-        # *   is: equal to a numeric value or matches a character
-        # *   isNot: not equal to
-        # *   lessThan: less than
-        # *   moreThan: greater than
         self.operator = operator
-        # The parsing path of the assertion.
-        # 
-        # *   If the assertion type is `body_json`, the path is `json path`.
-        # *   If the assertion type is `body_xml`, the path is `xml path`.
         self.property = property
-        # The numeric value or character used for matching.
         self.target = target
-        # The assertion type. Valid values:
-        # 
-        # *   response_time: checks whether the response time meets expectations.
-        # *   status_code: checks whether the HTTP status code meets expectations.
-        # *   header: checks whether the fields in the response header meet expectations.
-        # *   body_text: checks whether the content in the response body meets expectations by using text matching.
-        # *   body_json: checks whether the content in the response body meets expectations by using JSON parsing (JSONPath).
-        # *   body_xml: checks whether the content in the response body meets expectations by using XML parsing (XPath).
         self.type = type
 
     def validate(self):

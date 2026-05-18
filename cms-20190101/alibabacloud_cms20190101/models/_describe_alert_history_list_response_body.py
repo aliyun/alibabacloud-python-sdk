@@ -17,7 +17,6 @@ class DescribeAlertHistoryListResponseBody(DaraModel):
         success: bool = None,
         total: str = None,
     ):
-        # The details of historical alerts.
         self.alarm_history_list = alarm_history_list
         # The status code.
         # 
@@ -147,61 +146,26 @@ class DescribeAlertHistoryListResponseBodyAlarmHistoryListAlarmHistory(DaraModel
         value: str = None,
         webhooks: str = None,
     ):
-        # The timestamp when the alert was triggered. Unit: milliseconds.
         self.alert_time = alert_time
-        # The TradeManager IDs of the alert contacts.
-        # 
-        # > This parameter is valid only on the China site (aliyun.com).
         self.contact_aliims = contact_aliims
-        # The alert contact groups.
         self.contact_groups = contact_groups
-        # The email addresses of the alert contacts.
         self.contact_mails = contact_mails
-        # The mobile numbers of the alert contacts.
-        # 
-        # > This parameter is valid only on the China site (aliyun.com).
         self.contact_smses = contact_smses
-        # The alert contacts that receive alert notifications.
         self.contacts = contacts
-        # The resources that are monitored.
         self.dimensions = dimensions
-        # The consecutive number of times for which the metric value meets the alert condition before an alert is triggered.
         self.evaluation_count = evaluation_count
-        # The expression that is used to trigger alerts.
         self.expression = expression
-        # The ID of the application group.
         self.group_id = group_id
-        # The instance name.
         self.instance_name = instance_name
-        # The duration of the alert. Unit: milliseconds.
         self.last_time = last_time
-        # The severity level and notification methods of the alert. Valid values:
-        # 
-        # *   P4: Alert notifications are sent by using emails and DingTalk chatbots.
-        # *   OK: No alert is generated.
         self.level = level
-        # The metric name.
         self.metric_name = metric_name
-        # The namespace of the cloud service.
         self.namespace = namespace
-        # The ID of the alert rule.
         self.rule_id = rule_id
-        # The name of the alert rule.
         self.rule_name = rule_name
-        # The alert status. Valid values:
-        # 
-        # *   ALARM: Alerts are triggered.
-        # *   OK: No alerts are triggered.
         self.state = state
-        # Indicates whether alerts are muted. Valid values:
-        # 
-        # *   2 (default): Alerts are muted and are not triggered within the mute period, even if the condition specified in the alert rule is met.
-        # *   0: Alerts are triggered or cleared.
-        # *   1: The alert rule is ineffective.
         self.status = status
-        # The threshold of the metric value to trigger or clear an alert.
         self.value = value
-        # The callback URL.
         self.webhooks = webhooks
 
     def validate(self):

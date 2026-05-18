@@ -29,7 +29,6 @@ class RemoveTagsResponseBody(DaraModel):
         # *   true
         # *   false
         self.success = success
-        # The deleted tags.
         self.tag = tag
 
     def validate(self):

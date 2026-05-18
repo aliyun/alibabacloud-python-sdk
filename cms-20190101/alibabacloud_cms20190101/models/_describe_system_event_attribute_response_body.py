@@ -26,7 +26,6 @@ class DescribeSystemEventAttributeResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the call is successful. Valid values: True: The call is successful. false: The call fails.
         self.success = success
-        # The details of the event.
         self.system_events = system_events
 
     def validate(self):
@@ -125,33 +124,16 @@ class DescribeSystemEventAttributeResponseBodySystemEventsSystemEvent(DaraModel)
         status: str = None,
         time: int = None,
     ):
-        # The details of the event.
         self.content = content
-        # The ID of the application group.
         self.group_id = group_id
-        # The event ID.
         self.id = id
-        # The instance name.
         self.instance_name = instance_name
-        # The level of the event. Valid values:
-        # 
-        # *   CRITICAL
-        # *   WARN
-        # *   INFO
         self.level = level
-        # The event name.
         self.name = name
-        # The abbreviation of the service name.
         self.product = product
-        # The region ID.
         self.region_id = region_id
-        # The resource ID.
         self.resource_id = resource_id
-        # The status of the event.
         self.status = status
-        # The time when the event occurred. The value is a timestamp.
-        # 
-        # Unit: milliseconds.
         self.time = time
 
     def validate(self):

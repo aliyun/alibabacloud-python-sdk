@@ -23,7 +23,6 @@ class DescribeSiteMonitorAttributeResponseBody(DaraModel):
         self.code = code
         # The returned message.
         self.message = message
-        # The alert rules that are configured for the site monitoring task.
         self.metric_rules = metric_rules
         # The request ID.
         self.request_id = request_id
@@ -115,7 +114,6 @@ class DescribeSiteMonitorAttributeResponseBodySiteMonitors(DaraModel):
         self.custom_schedule = custom_schedule
         # The interval at which the site monitoring task is executed. Unit: minutes. Valid values: 1, 5, 15, 30, and 60.
         self.interval = interval
-        # The information of detection points. The information includes the carriers that provide the detection points and the cities where the detection points reside.
         self.isp_cities = isp_cities
         # The extended options of the site monitoring task. The options vary based on the specified protocol. For more information, see [CreateSiteMonitor](https://help.aliyun.com/document_detail/115048.html).
         self.option_json = option_json
@@ -348,18 +346,13 @@ class DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson(DaraModel):
         username: str = None,
         wait_time_after_completion: int = None,
     ):
-        # The assertions.
         self.assertions = assertions
         # The number of retries after a DNS failure occurred.
         self.attempts = attempts
         self.auth_info = auth_info
-        # The blocked URLs. Wildcards are supported in paths.
         self.blocked_url_list = blocked_url_list
-        # The custom headers. Format: {"key": "somekey", "value":"somevalue"}.
         self.browser_headers = browser_headers
-        # The custom hosts. Format: {"key": "somekey", "value":"somevalue"}.
         self.browser_hosts = browser_hosts
-        # The browser information.
         self.browser_info = browser_info
         # Indicates whether certificate errors are ignored. Valid values:
         # - false: Certificate errors are not ignored.
@@ -404,9 +397,7 @@ class DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson(DaraModel):
         # Indicates whether the WebSocket task is allowed to return no response or return an empty response. Default value: false. Valid values: false and true.
         self.empty_message = empty_message
         self.enable_packet_capture = enable_packet_capture
-        # The string that is expected to exist on the page.
         self.expect_exist_string = expect_exist_string
-        # The string that is not expected to exist on the page.
         self.expect_non_exist_string = expect_non_exist_string
         # The domain name or alias to be parsed.
         # 
@@ -463,7 +454,6 @@ class DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson(DaraModel):
         self.protocol = protocol
         # Indicates whether the Quick UDP Internet Connections (QUIC) protocol is used for browser detection. Valid values: true false Default value: false.
         self.quic_enabled = quic_enabled
-        # The sites for which the QUIC protocol is forcibly used.
         self.quic_target = quic_target
         # The content of the HTTP request.
         self.request_content = request_content
@@ -495,11 +485,9 @@ class DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson(DaraModel):
         self.time_out = time_out
         self.trace_region = trace_region
         self.trace_type = trace_type
-        # The traffic hijacking blacklist. When redirection occurs, if the URL of the resource loaded by the browser matches the expression in the blacklist, traffic hijacking is considered to have occurred.
         self.traffic_hijack_element_blacklist = traffic_hijack_element_blacklist
         # When redirection occurs, if the browser loads more than the specified number of resources, traffic hijacking is considered to have occurred. If you set the value to 0, no validation is performed. Default value: 0.
         self.traffic_hijack_element_count = traffic_hijack_element_count
-        # The traffic hijacking whitelist. When redirection occurs, if the URL of the resource loaded by the browser does not match any expression in the whitelist, traffic hijacking is considered to have occurred.
         self.traffic_hijack_element_whitelist = traffic_hijack_element_whitelist
         self.use_private_crt = use_private_crt
         self.use_ssl = use_ssl
@@ -1471,9 +1459,7 @@ class DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonBrowserInfoB
         browser: str = None,
         device: str = None,
     ):
-        # The browser type.
         self.browser = browser
-        # The device type.
         self.device = device
 
     def validate(self):
@@ -1818,29 +1804,9 @@ class DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonAssertionsAs
         target: str = None,
         type: str = None,
     ):
-        # The operator. Valid values:
-        # - contains: contains
-        # - doesNotContain: does not contain
-        # - matches: matches a regular expression
-        # - doesNotMatch: does not match a regular expression
-        # - is: equal to
-        # - isNot: not equal to
-        # - lessThan: less than
-        # - moreThan: greater than
         self.operator = operator
-        # The path to the assertion.
-        # - If the assertion type is body_json, the path is json path.
-        # - If the assertion type is body_xml, the path is xml path.
         self.property = property
-        # The value or character to which the condition of the assertion is compared.
         self.target = target
-        # The assertion type. Valid values:
-        # - response_time: checks whether the response time meets expectations.
-        # - status_code: checks whether the HTTP status code meets expectations.
-        # - header: checks whether the fields in the response header meet expectations.
-        # - body_text: check whether the content in the response body meets expectations by using text matching.
-        # - body_json: check whether the content in the response body meets expectations by using JSON parsing (JSONPath).
-        # - body_xml: check whether the content in the response body meets expectations by using XML parsing (XPath).
         self.type = type
 
     def validate(self):
@@ -1925,15 +1891,10 @@ class DescribeSiteMonitorAttributeResponseBodySiteMonitorsIspCitiesIspCity(DaraM
         isp_name: str = None,
         type: str = None,
     ):
-        # The city ID.
         self.city = city
-        # The city name.
         self.city_name = city_name
-        # The carrier ID.
         self.isp = isp
-        # The carrier name.
         self.isp_name = isp_name
-        # The network type of the detection point. Valid values: IDC, LASTMILE, and MOBILE.
         self.type = type
 
     def validate(self):
@@ -1988,7 +1949,6 @@ class DescribeSiteMonitorAttributeResponseBodySiteMonitorsCustomSchedule(DaraMod
         start_hour: int = None,
         time_zone: str = None,
     ):
-        # The days in a week.
         self.days = days
         # The end time of the detection. Unit: hours.
         self.end_hour = end_hour
@@ -2119,70 +2079,21 @@ class DescribeSiteMonitorAttributeResponseBodyMetricRulesMetricRule(DaraModel):
         statistics: str = None,
         threshold: str = None,
     ):
-        # Indicates whether the alert rule is enabled. Valid values:
-        # 
-        # *   true: The alert rule is enabled.
-        # *   false: The alert rule is disabled.
         self.action_enable = action_enable
-        # The alert contact group to which alert notifications are sent.
         self.alarm_actions = alarm_actions
-        # The operator that is used to compare the metric value with the threshold in the alert rule. Valid values:
-        # 
-        # *   `>=`
-        # *   `>`
-        # *   `<=`
-        # *   `<`
-        # *   `=`
-        # *   `!=`
-        # *   GreaterThanYesterday: greater than the metric value at the same time yesterday
-        # *   LessThanYesterday: less than the metric value at the same time yesterday
-        # *   GreaterThanLastWeek: greater than the metric value at the same time last week
-        # *   LessThanLastWeek: less than the metric value at the same time last week
-        # *   GreaterThanLastPeriod: greater than the metric value in the last monitoring cycle
-        # *   LessThanLastPeriod: less than the metric value in the last monitoring cycle
         self.comparison_operator = comparison_operator
-        # The dimension of the alert rule.
         self.dimensions = dimensions
-        # The consecutive number of times for which the metric value meets the alert condition before an alert is triggered.
         self.evaluation_count = evaluation_count
-        # The expression that is used to trigger alerts.
         self.expression = expression
-        # The alert severity. Valid values:
-        # 
-        # *   1: critical
-        # *   2: warning
-        # *   3: information
         self.level = level
-        # The metric name.
         self.metric_name = metric_name
-        # The namespace of the cloud service.
-        # 
-        # The value is in the following format: acs_service name.
         self.namespace = namespace
-        # The alert contact group that receives alert notifications.
         self.ok_actions = ok_actions
-        # The time interval. The value is the same as the interval at which metric data is reported. Unit: seconds.
-        # 
-        # >  If you specify a statistical period for the alert rule, data is queried based on the statistical period.
         self.period = period
-        # The ID of the alert rule.
         self.rule_id = rule_id
-        # The name of the alert rule.
         self.rule_name = rule_name
-        # The alert status. Valid values:
-        # 
-        # *   OK: The alert rule has no active alerts.
-        # *   ALARM: The alert rule has active alerts.
         self.state_value = state_value
-        # The statistical method of the alert rule. Valid values:
-        # 
-        # *   Availability: the percentage of available detection points
-        # *   AvailableNumber: the number of available detection points
-        # *   ErrorCodeMaximum: a status code for an alert
-        # *   ErrorCodeMinimum: all status codes for a set of alerts
-        # *   Average: response time
         self.statistics = statistics
-        # The alert threshold.
         self.threshold = threshold
 
     def validate(self):

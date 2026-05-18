@@ -514,11 +514,31 @@ class CreateGroupMetricRulesRequestGroupMetricRulesEscalationsWarn(DaraModel):
         threshold: str = None,
         times: int = None,
     ):
+        # The comparison operator that is used to compare the metric value with the threshold. Valid values of N: 1 to 200. Valid value: 
+        # 
+        # - GreaterThanOrEqualToThreshold: greater than or equal to the threshold
+        # - GreaterThanThreshold: greater than the threshold
+        # - LessThanOrEqualToThreshold: less than or equal to the threshold
+        # - LessThanThreshold: less than the threshold
+        # - NotEqualToThreshold: not equal to the threshold
+        # - GreaterThanYesterday: greater than the metric value at the same time yesterday
+        # - LessThanYesterday: less than the metric value at the same time yesterday
+        # - GreaterThanLastWeek: greater than the metric value at the same time last week
+        # - LessThanLastWeek: less than the metric value at the same time last week
+        # - GreaterThanLastPeriod: greater than the metric value in the last monitoring cycle
+        # - LessThanLastPeriod: less than the metric value in the last monitoring cycle
         self.comparison_operator = comparison_operator
         self.n = n
         self.pre_condition = pre_condition
+        # The statistical methods for Warn-level alerts. Separate multiple statistical methods with commas (,). Valid values of N: 1 to 200. Valid value: 
+        # 
+        # - Average: the average value
+        # - Minimum: the minimum value
+        # - Maximum: the maximum value
         self.statistics = statistics
+        # The threshold for Warn-level alerts. Valid values of N: 1 to 200.
         self.threshold = threshold
+        # The consecutive number of times for which the metric value meets the alert condition before a Warn-level alert is triggered. Valid values of N: 1 to 200.
         self.times = times
 
     def validate(self):
@@ -581,11 +601,31 @@ class CreateGroupMetricRulesRequestGroupMetricRulesEscalationsInfo(DaraModel):
         threshold: str = None,
         times: int = None,
     ):
+        # The comparison operator that is used to compare the metric value with the threshold. Valid values of N: 1 to 200. Valid value: 
+        # 
+        # - GreaterThanOrEqualToThreshold: greater than or equal to the threshold
+        # - GreaterThanThreshold: greater than the threshold
+        # - LessThanOrEqualToThreshold: less than or equal to the threshold
+        # - LessThanThreshold: less than the threshold
+        # - NotEqualToThreshold: not equal to the threshold
+        # - GreaterThanYesterday: greater than the metric value at the same time yesterday
+        # - LessThanYesterday: less than the metric value at the same time yesterday
+        # - GreaterThanLastWeek: greater than the metric value at the same time last week
+        # - LessThanLastWeek: less than the metric value at the same time last week
+        # - GreaterThanLastPeriod: greater than the metric value in the last monitoring cycle
+        # - LessThanLastPeriod: less than the metric value in the last monitoring cycle
         self.comparison_operator = comparison_operator
         self.n = n
         self.pre_condition = pre_condition
+        # The statistical methods for Info-level alerts. Separate multiple statistical methods with commas (,). Valid values of N: 1 to 200. Valid value: 
+        # 
+        # - Average: the average value
+        # - Minimum: the minimum value
+        # - Maximum: the maximum value
         self.statistics = statistics
+        # The threshold for Info-level alerts. Valid values of N: 1 to 200.
         self.threshold = threshold
+        # The consecutive number of times for which the metric value meets the alert condition before an Info-level alert is triggered. Valid values of N: 1 to 200.
         self.times = times
 
     def validate(self):
@@ -648,11 +688,31 @@ class CreateGroupMetricRulesRequestGroupMetricRulesEscalationsCritical(DaraModel
         threshold: str = None,
         times: int = None,
     ):
+        # The comparison operator that is used to compare the metric value with the threshold. Valid values of N: 1 to 200. Valid value: 
+        # 
+        # - GreaterThanOrEqualToThreshold: greater than or equal to the threshold
+        # - GreaterThanThreshold: greater than the threshold
+        # - LessThanOrEqualToThreshold: less than or equal to the threshold
+        # - LessThanThreshold: less than the threshold
+        # - NotEqualToThreshold: not equal to the threshold
+        # - GreaterThanYesterday: greater than the metric value at the same time yesterday
+        # - LessThanYesterday: less than the metric value at the same time yesterday
+        # - GreaterThanLastWeek: greater than the metric value at the same time last week
+        # - LessThanLastWeek: less than the metric value at the same time last week
+        # - GreaterThanLastPeriod: greater than the metric value in the last monitoring cycle
+        # - LessThanLastPeriod: less than the metric value in the last monitoring cycle
         self.comparison_operator = comparison_operator
         self.n = n
         self.pre_condition = pre_condition
+        # The statistical methods for Critical-level alerts. Separate multiple statistical methods with commas (,). Valid values of N: 1 to 200. Valid value: 
+        # 
+        # - Average: the average value
+        # - Minimum: the minimum value
+        # - Maximum: the maximum value
         self.statistics = statistics
+        # The threshold for Critical-level alerts. Valid values of N: 1 to 200.
         self.threshold = threshold
+        # The consecutive number of times for which the metric value meets the alert condition before a Critical-level alert is triggered. Valid values of N: 1 to 200.
         self.times = times
 
     def validate(self):

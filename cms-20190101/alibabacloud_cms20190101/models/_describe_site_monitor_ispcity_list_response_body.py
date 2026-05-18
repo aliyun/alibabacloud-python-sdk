@@ -20,7 +20,6 @@ class DescribeSiteMonitorISPCityListResponseBody(DaraModel):
         # 
         # > The status code 200 indicates that the request was successful.
         self.code = code
-        # The queried detection points.
         self.isp_city_list = isp_city_list
         # The returned message.
         self.message = message
@@ -136,27 +135,18 @@ class DescribeSiteMonitorISPCityListResponseBodyIspCityListIspCity(DaraModel):
     ):
         self.area_en = area_en
         self.area_zh_c_n = area_zh_c_n
-        # The city ID.
         self.city = city
         self.city_name_en = city_name_en
         self.city_name_zh_c_n = city_name_zh_c_n
-        # The country name.
-        # 
-        # > This parameter is valid only on the China site (aliyun.com).
         self.country = country
         self.country_en = country_en
         self.country_zh_c_n = country_zh_c_n
-        # The IP address pool.
         self.ippool = ippool
-        # The number of IPv4 probes.
         self.ipv4probe_count = ipv4probe_count
-        # The number of IPv6 probes.
         self.ipv6probe_count = ipv6probe_count
-        # The carrier ID.
         self.isp = isp
         self.isp_name_en = isp_name_en
         self.isp_name_zh_c_n = isp_name_zh_c_n
-        # The province name.
         self.region = region
         self.region_en = region_en
         self.region_zh_c_n = region_zh_c_n

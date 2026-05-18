@@ -21,9 +21,6 @@ class CreateSiteMonitorResponseBody(DaraModel):
         # 
         # > The status code 200 indicates that the request was successful.
         self.code = code
-        # The returned result.
-        # 
-        # If a site monitoring task is created, the result is returned. If a site monitoring task fails to be created, no result is returned.
         self.create_result_list = create_result_list
         # The result of the site monitoring task.
         self.data = data
@@ -97,7 +94,6 @@ class CreateSiteMonitorResponseBodyData(DaraModel):
         self,
         attach_alert_result: main_models.CreateSiteMonitorResponseBodyDataAttachAlertResult = None,
     ):
-        # The result that is returned after you associate the existing alert rule with the site monitoring task.
         self.attach_alert_result = attach_alert_result
 
     def validate(self):
@@ -166,20 +162,10 @@ class CreateSiteMonitorResponseBodyDataAttachAlertResultContact(DaraModel):
         rule_id: str = None,
         success: str = None,
     ):
-        # The status code that is returned after you associate the existing alert rule with the site monitoring task.
-        # 
-        # >  The status code 200 indicates that the request was successful.
         self.code = code
-        # The message that is returned after you associate the existing alert rule with the site monitoring task.
         self.message = message
-        # The ID of the request that was sent to associate the existing alert rule with the site monitoring task.
         self.request_id = request_id
-        # The ID of the alert rule.
         self.rule_id = rule_id
-        # Indicates whether the existing alert rule was associated with the site monitoring task. Valid values:
-        # 
-        # *   true
-        # *   false
         self.success = success
 
     def validate(self):
@@ -267,9 +253,7 @@ class CreateSiteMonitorResponseBodyCreateResultListCreateResultList(DaraModel):
         task_id: str = None,
         task_name: str = None,
     ):
-        # The ID of the site monitoring task.
         self.task_id = task_id
-        # The name of the site monitoring task.
         self.task_name = task_name
 
     def validate(self):

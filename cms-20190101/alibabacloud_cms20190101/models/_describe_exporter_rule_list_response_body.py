@@ -22,7 +22,6 @@ class DescribeExporterRuleListResponseBody(DaraModel):
         # 
         # > The status code 200 indicates that the request was successful. Other status codes indicate that the request failed.
         self.code = code
-        # The details of the data export rules.
         self.datapoints = datapoints
         # The returned message.
         self.message = message
@@ -144,29 +143,14 @@ class DescribeExporterRuleListResponseBodyDatapointsDatapoint(DaraModel):
         rule_name: str = None,
         target_windows: str = None,
     ):
-        # The time when the rule was created. The value is a UNIX timestamp.
         self.create_time = create_time
-        # The description of the rule.
         self.describe = describe
-        # The associated dimensions.
         self.dimension = dimension
         self.dst_name = dst_name
-        # Indicates whether the rule is enabled.
         self.enabled = enabled
-        # The name of the metric.
-        # 
-        # > For more information, see [DescribeMetricMetaList](https://help.aliyun.com/document_detail/98846.html) or [Appendix 1: Metrics](https://help.aliyun.com/document_detail/28619.html).
         self.metric_name = metric_name
-        # The namespace of the service.
-        # 
-        # > For more information, see [DescribeMetricMetaList](https://help.aliyun.com/document_detail/98846.html) or [Appendix 1: Metrics](https://help.aliyun.com/document_detail/28619.html).
         self.namespace = namespace
-        # The name of the data export rule.
         self.rule_name = rule_name
-        # The time window of the exported data.\\
-        # Multiple windows are separated with commas (,).
-        # 
-        # > Data in a time window of less than 60 seconds cannot be exported.
         self.target_windows = target_windows
 
     def validate(self):

@@ -20,7 +20,6 @@ class DescribeCustomEventCountResponseBody(DaraModel):
         # 
         # >  The status code 200 indicates that the request was successful.
         self.code = code
-        # The details of the custom event.
         self.custom_event_counts = custom_event_counts
         # The returned message. If the request was successful, a success message is returned. If the request failed, an error message is returned.
         self.message = message
@@ -117,13 +116,8 @@ class DescribeCustomEventCountResponseBodyCustomEventCountsCustomEventCount(Dara
         num: int = None,
         time: int = None,
     ):
-        # The event name.
         self.name = name
-        # The number of times that the custom event occurred.
         self.num = num
-        # The time when the event occurred.
-        # 
-        # This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.time = time
 
     def validate(self):

@@ -26,7 +26,6 @@ class DescribeSystemEventHistogramResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values: true: The request was successful. false: The request failed.
         self.success = success
-        # The information about the number of times the system event occurred during each interval of a time period.
         self.system_event_histograms = system_event_histograms
 
     def validate(self):
@@ -117,15 +116,8 @@ class DescribeSystemEventHistogramResponseBodySystemEventHistogramsSystemEventHi
         end_time: int = None,
         start_time: int = None,
     ):
-        # The number of times the system event occurred.
         self.count = count
-        # The end time.
-        # 
-        # This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.end_time = end_time
-        # The start time.
-        # 
-        # This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.start_time = start_time
 
     def validate(self):

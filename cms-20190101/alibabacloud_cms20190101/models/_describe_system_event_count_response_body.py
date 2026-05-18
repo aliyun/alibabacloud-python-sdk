@@ -31,7 +31,6 @@ class DescribeSystemEventCountResponseBody(DaraModel):
         # *   true
         # *   false
         self.success = success
-        # The details of the system event.
         self.system_event_counts = system_event_counts
 
     def validate(self):
@@ -130,31 +129,16 @@ class DescribeSystemEventCountResponseBodySystemEventCountsSystemEventCount(Dara
         status: str = None,
         time: int = None,
     ):
-        # The description of the system event.
         self.content = content
-        # The ID of the application group.
         self.group_id = group_id
-        # The name of the instance.
         self.instance_name = instance_name
-        # The level of the system event. Valid values:
-        # 
-        # *   Critical
-        # *   Warn
-        # *   Info
         self.level = level
-        # The name of the system event.
         self.name = name
-        # The number of times that the system event has occurred.
         self.num = num
-        # The name of the cloud service in which the system event occurred.
         self.product = product
-        # The region ID.
         self.region_id = region_id
-        # The resource ID.
         self.resource_id = resource_id
-        # The status of the system event.
         self.status = status
-        # The time when the system event occurred. The value is a timestamp. Unit: milliseconds.
         self.time = time
 
     def validate(self):

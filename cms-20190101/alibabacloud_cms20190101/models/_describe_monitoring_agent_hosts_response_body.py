@@ -24,7 +24,6 @@ class DescribeMonitoringAgentHostsResponseBody(DaraModel):
         # 
         # > The status code 200 indicates that the call is successful.
         self.code = code
-        # The information about the hosts.
         self.hosts = hosts
         # The error message.
         self.message = message
@@ -167,40 +166,19 @@ class DescribeMonitoringAgentHostsResponseBodyHostsHost(DaraModel):
         serial_number: str = None,
         is_aliyun_host: bool = None,
     ):
-        # The version of the CloudMonitor agent.
         self.agent_version = agent_version
-        # The ID of the Alibaba Cloud account.
         self.ali_uid = ali_uid
-        # The elastic IP address (EIP) of the host.
         self.eip_address = eip_address
-        # The ID of the EIP.
         self.eip_id = eip_id
-        # The name of the host.
         self.host_name = host_name
-        # The ID of the instance.
         self.instance_id = instance_id
-        # The type of the ECS instance.
         self.instance_type_family = instance_type_family
-        # The IP address of the host.
-        # 
-        # > Multiple IP addresses are separated with commas (,).
         self.ip_group = ip_group
-        # The IP address of the Network Address Translation (NAT) gateway.
         self.nat_ip = nat_ip
-        # The network type.
         self.network_type = network_type
-        # The operating system.
         self.operating_system = operating_system
-        # The ID of the region.
         self.region = region
-        # The serial number of the host. A host that is not provided by Alibaba Cloud has a serial number instead of an instance ID.
-        # 
-        # > This parameter can be used to accurately search for a monitored host.
         self.serial_number = serial_number
-        # Indicates whether the host is provided by Alibaba Cloud. Valid values:
-        # 
-        # *   true: The host is provided by Alibaba Cloud.
-        # *   false: The host is not provided by Alibaba Cloud.
         self.is_aliyun_host = is_aliyun_host
 
     def validate(self):

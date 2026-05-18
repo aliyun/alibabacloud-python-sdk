@@ -20,7 +20,6 @@ class PutResourceMetricRulesResponseBody(DaraModel):
         # 
         # >  The status code 200 indicates that the request was successful.
         self.code = code
-        # The alert rules that failed to be created for the resource.
         self.failed_list_result = failed_list_result
         # The error message returned.
         self.message = message
@@ -119,9 +118,7 @@ class PutResourceMetricRulesResponseBodyFailedListResultTarget(DaraModel):
         result: main_models.PutResourceMetricRulesResponseBodyFailedListResultTargetResult = None,
         rule_id: str = None,
     ):
-        # The alert rule that failed to be created.
         self.result = result
-        # The ID of the alert rule.
         self.rule_id = rule_id
 
     def validate(self):
@@ -159,14 +156,8 @@ class PutResourceMetricRulesResponseBodyFailedListResultTargetResult(DaraModel):
         message: str = None,
         success: bool = None,
     ):
-        # The response code.
         self.code = code
-        # The error message returned.
         self.message = message
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   true
-        # *   false
         self.success = success
 
     def validate(self):

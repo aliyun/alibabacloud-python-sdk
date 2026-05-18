@@ -85,7 +85,6 @@ class DeleteMetricRuleTargetsResponseBodyFailIds(DaraModel):
         self,
         target_ids: main_models.DeleteMetricRuleTargetsResponseBodyFailIdsTargetIds = None,
     ):
-        # The IDs of the resources that failed to be deleted.
         self.target_ids = target_ids
 
     def validate(self):

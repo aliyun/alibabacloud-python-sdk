@@ -25,7 +25,6 @@ class DescribeMetricMetaListResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The configuration of the metrics in the resources.
         self.resources = resources
         # Indicates whether the request was successful. Valid values:
         # 
@@ -134,32 +133,13 @@ class DescribeMetricMetaListResponseBodyResourcesResource(DaraModel):
         statistics: str = None,
         unit: str = None,
     ):
-        # The metric description.
         self.description = description
-        # The monitoring dimensions of the resource. Multiple monitoring dimensions are separated with commas (,).
         self.dimensions = dimensions
-        # The tags of the metric, including one or more JSON strings.
-        # 
-        # Format: `[{"name":"tag key","value":"tag value"}]`. The `name` can be repeated. The following tags are available:
-        # 
-        # *   metricCategory: the category of the metric.
-        # *   alertEnable: indicates whether to report alerts for the metric.
-        # *   alertUnit: the unit of the metric in the alerts.
-        # *   unitFactor: the factor for metric unit conversion.
-        # *   minAlertPeriod: the minimum interval at which the alert is reported.
-        # *   productCategory: the category of the service.
         self.labels = labels
-        # The metric name.
         self.metric_name = metric_name
-        # The namespace of the cloud service.
         self.namespace = namespace
-        # The statistical periods of the metric. Multiple statistical periods are separated with commas (,).
-        # 
-        # Unit: seconds.
         self.periods = periods
-        # The statistical method. Multiple statistical methods are separated with commas (,).
         self.statistics = statistics
-        # The unit of the metric.
         self.unit = unit
 
     def validate(self):

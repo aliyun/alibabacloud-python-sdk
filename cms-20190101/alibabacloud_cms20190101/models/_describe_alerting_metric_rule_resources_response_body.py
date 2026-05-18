@@ -25,7 +25,6 @@ class DescribeAlertingMetricRuleResourcesResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The resources that are associated with the alert rule.
         self.resources = resources
         # Indicates whether the request was successful. Valid values:
         # 
@@ -144,55 +143,23 @@ class DescribeAlertingMetricRuleResourcesResponseBodyResourcesResource(DaraModel
         statistics: str = None,
         threshold: str = None,
     ):
-        # The dimensions based on which the resources are queried.
         self.dimensions = dimensions
-        # Indicates whether the alert rule is enabled. Valid values:
-        # 
-        # *   true: The alert rule is enabled.
-        # *   false: The alert rule is disabled.
         self.enable = enable
-        # The alert rule based on which the alert is triggered.
         self.escalation = escalation
-        # The ID of the application group.
-        # 
-        # >  If the alert rule is associated with an application group, the ID of the application group is returned in this parameter.
         self.group_id = group_id
-        # The time when the last alert was triggered for the resource based on the alert rule. The value is a timestamp.
-        # 
-        # Unit: milliseconds.
         self.last_alert_time = last_alert_time
-        # The time when the alert rule was last modified. The value is a timestamp.
-        # 
-        # Unit: milliseconds.
         self.last_modify_time = last_modify_time
-        # The severity level and notification methods of the alert. Valid values:
-        # 
-        # *   4: Alert notifications are sent by using emails and DingTalk chatbots.
-        # *   OK: No alert is generated.
         self.level = level
-        # The metric name.
         self.metric_name = metric_name
-        # The metric value that triggered the alert based on the alert rule. The value is a JSON string.
         self.metric_values = metric_values
-        # The namespace of the cloud service.
         self.namespace = namespace
-        # The type of the cloud service.
         self.product_category = product_category
-        # The resources that are monitored.
         self.resource = resource
-        # The consecutive number of times for which the metric value meets the alert condition before an alert is triggered.
         self.retry_times = retry_times
-        # The ID of the alert rule.
         self.rule_id = rule_id
-        # The name of the alert rule.
         self.rule_name = rule_name
-        # The time when the resource was associated with the alert rule. The value is a timestamp.
-        # 
-        # Unit: milliseconds.
         self.start_time = start_time
-        # The method used to calculate the metric values that trigger alerts.
         self.statistics = statistics
-        # The alert threshold.
         self.threshold = threshold
 
     def validate(self):
@@ -368,56 +335,15 @@ class DescribeAlertingMetricRuleResourcesResponseBodyResourcesResourceEscalation
         threshold: str = None,
         times: int = None,
     ):
-        # The operator that is used to compare the metric value with the threshold. Valid values:
-        # 
-        # *   GreaterThanOrEqualToThreshold: greater than or equal to the threshold
-        # *   GreaterThanThreshold: greater than the threshold
-        # *   LessThanOrEqualToThreshold: less than or equal to the threshold
-        # *   LessThanThreshold: less than the threshold
-        # *   NotEqualToThreshold: not equal to the threshold
-        # *   GreaterThanYesterday: greater than the metric value at the same time yesterday
-        # *   LessThanYesterday: less than the metric value at the same time yesterday
-        # *   GreaterThanLastWeek: greater than the metric value at the same time last week
-        # *   LessThanLastWeek: less than the metric value at the same time last week
-        # *   GreaterThanLastPeriod: greater than the metric value in the last monitoring cycle
-        # *   LessThanLastPeriod: less than the metric value in the last monitoring cycle
         self.comparison_operator = comparison_operator
-        # The description of the alert rule.
-        # 
-        # >  This parameter indicates the content of the alert rule. If the metric value meets the alert condition, an alert is triggered.
         self.expression = expression
-        # The description of the multi-metric alert rule.
         self.expression_list = expression_list
-        # The relationship between multiple metrics. Valid values:
-        # 
-        # *   &&: If all metrics meet the alert conditions, CloudMonitor sends alert notifications.
-        # *   ||: If one of the metrics meets the alert conditions, CloudMonitor sends alert notifications.
         self.expression_list_join = expression_list_join
-        # The trigger conditions that are created by using expressions. You can use expressions to create trigger conditions in the following scenarios:
-        # 
-        # *   Set an alert blacklist for specific resources. For example, if you specify `$instanceId != \\"i-io8kfvcpp7x5****\\" ``&&`` $Average > 50`, no alert is triggered when the `average metric value` of the `i-io8kfvcpp7x5****` instance exceeds 50.
-        # *   Set a special alert threshold for a specified instance in the rule. For example, if you specify `$Average > ($instanceId == \\"i-io8kfvcpp7x5****\\"? 80: 50)`, an alert is triggered when the `average metric value` of the `i-io8kfvcpp7x5****` instance exceeds 80 or the `average metric value` of other instances exceeds 50.
-        # *   Limit the number of instances whose metric values exceed the threshold. For example, if you specify `count($Average > 20) > 3`, an alert is triggered only when the `average metric value` of more than three instances exceeds 20.
         self.expression_raw = expression_raw
-        # The severity level and notification methods of the alert. Valid values:
-        # 
-        # *   4: Alert notifications are sent by using emails and DingTalk chatbots.
-        # *   OK: No alert is generated.
         self.level = level
-        # The operator that is used to compare the metric value with the threshold. Valid values:
-        # 
-        # *   `>=`
-        # *   `=`
-        # *   `<=`
-        # *   `>`
-        # *   `<`
-        # *   `!=`
         self.pre_condition = pre_condition
-        # This parameter is deprecated.
         self.tag = tag
-        # The alert threshold.
         self.threshold = threshold
-        # The consecutive number of times for which the metric value meets the alert condition before an alert is triggered.
         self.times = times
 
     def validate(self):
@@ -540,31 +466,10 @@ class DescribeAlertingMetricRuleResourcesResponseBodyResourcesResourceEscalation
         statistics: str = None,
         threshold: str = None,
     ):
-        # The operator that is used to compare the metric value with the threshold. Valid values:
-        # 
-        # *   GreaterThanOrEqualToThreshold: greater than or equal to the threshold
-        # *   GreaterThanThreshold: greater than the threshold
-        # *   LessThanOrEqualToThreshold: less than or equal to the threshold
-        # *   LessThanThreshold: less than the threshold
-        # *   NotEqualToThreshold: not equal to the threshold
-        # *   GreaterThanYesterday: greater than the metric value at the same time yesterday
-        # *   LessThanYesterday: less than the metric value at the same time yesterday
-        # *   GreaterThanLastWeek: greater than the metric value at the same time last week
-        # *   LessThanLastWeek: less than the metric value at the same time last week
-        # *   GreaterThanLastPeriod: greater than the metric value in the last monitoring cycle
-        # *   LessThanLastPeriod: less than the metric value in the last monitoring cycle
         self.comparison_operator = comparison_operator
-        # The metric name.
         self.metric_name = metric_name
-        # The statistical period of the metric. Unit: seconds. The default value is the interval at which the monitoring data of the metric is collected.
         self.period = period
-        # The statistical method of the alert level. Valid values:
-        # 
-        # *   Maximum
-        # *   Minimum
-        # *   Average
         self.statistics = statistics
-        # The alert threshold.
         self.threshold = threshold
 
     def validate(self):

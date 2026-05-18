@@ -22,7 +22,6 @@ class DescribeExporterOutputListResponseBody(DaraModel):
         # 
         # > The status code 200 indicates that the request was successful. Other status codes indicate that the request failed.
         self.code = code
-        # The configuration sets for exporting monitoring data.
         self.datapoints = datapoints
         # The returned message.
         self.message = message
@@ -139,15 +138,9 @@ class DescribeExporterOutputListResponseBodyDatapointsDatapoint(DaraModel):
         dest_name: str = None,
         dest_type: str = None,
     ):
-        # The JSON object that contains the details about the destination to which the monitoring data is exported.
         self.config_json = config_json
-        # The time when the configuration set was created. The value is a UNIX timestamp.
         self.create_time = create_time
-        # The name of the configuration set.
         self.dest_name = dest_name
-        # The service to which the monitoring data is exported.
-        # 
-        # > Only Log Service is supported. More services will be supported in the future.
         self.dest_type = dest_type
 
     def validate(self):
@@ -198,13 +191,9 @@ class DescribeExporterOutputListResponseBodyDatapointsDatapointConfigJson(DaraMo
         logstore: str = None,
         project: str = None,
     ):
-        # The AccessKey ID.
         self.ak = ak
-        # The Log Service endpoint to which the monitoring data is exported.
         self.endpoint = endpoint
-        # The Logstore.
         self.logstore = logstore
-        # The Log Service project to which the monitoring data is exported.
         self.project = project
 
     def validate(self):

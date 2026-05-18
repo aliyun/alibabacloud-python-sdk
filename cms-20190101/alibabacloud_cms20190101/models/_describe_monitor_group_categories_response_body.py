@@ -86,7 +86,6 @@ class DescribeMonitorGroupCategoriesResponseBodyMonitorGroupCategories(DaraModel
     ):
         # The ID of the application group.
         self.group_id = group_id
-        # The cloud services to which the resources in the application group belong and the number of resources that belong to the cloud service.
         self.monitor_group_category = monitor_group_category
 
     def validate(self):
@@ -158,11 +157,7 @@ class DescribeMonitorGroupCategoriesResponseBodyMonitorGroupCategoriesMonitorGro
         category: str = None,
         count: int = None,
     ):
-        # The abbreviation of the cloud service name.
-        # 
-        # >  For more information about how to obtain the abbreviation of a cloud service name, see `metricCategory` in the response parameter `Labels` of the [DescribeProjectMeta](https://help.aliyun.com/document_detail/114916.html) operation.
         self.category = category
-        # The number of resources that belong to the cloud service.
         self.count = count
 
     def validate(self):

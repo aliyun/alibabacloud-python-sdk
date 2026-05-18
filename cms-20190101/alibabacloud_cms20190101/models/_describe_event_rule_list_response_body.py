@@ -21,7 +21,6 @@ class DescribeEventRuleListResponseBody(DaraModel):
         # 
         # >  The status code 200 indicates that the request was successful.
         self.code = code
-        # The event-triggered alert rule.
         self.event_rules = event_rules
         # The error message returned.
         self.message = message
@@ -133,25 +132,12 @@ class DescribeEventRuleListResponseBodyEventRulesEventRule(DaraModel):
         silence_time: int = None,
         state: str = None,
     ):
-        # The description of the event-triggered alert rule.
         self.description = description
-        # The mode of the event-triggered alert rule.
         self.event_pattern = event_pattern
-        # The type of the event-triggered alert rule. Valid values:
-        # 
-        # *   SYSTEM: system event-triggered alert rule
-        # *   CUSTOM: custom event-triggered alert rule
         self.event_type = event_type
-        # The ID of the application group.
         self.group_id = group_id
-        # The name of the event-triggered alert rule.
         self.name = name
-        # The mute period during which new alert notifications are not sent even if the trigger conditions are met.
         self.silence_time = silence_time
-        # The status of the event-triggered alert rule. Valid values:
-        # 
-        # *   ENABLED
-        # *   DISABLED
         self.state = state
 
     def validate(self):
@@ -258,19 +244,12 @@ class DescribeEventRuleListResponseBodyEventRulesEventRuleEventPatternEventPatte
         product: str = None,
         sqlfilter: str = None,
     ):
-        # The custom filter conditions.
         self.custom_filters = custom_filters
-        # The types of the event-triggered alert rules.
         self.event_type_list = event_type_list
-        # The keyword for filtering.
         self.keyword_filter = keyword_filter
-        # The levels of the event-triggered alerts.
         self.level_list = level_list
-        # The event names.
         self.name_list = name_list
-        # The abbreviation of the Alibaba Cloud service name.
         self.product = product
-        # Indicates that logs are filtered based on the specified SQL statement. If the specified conditions are met, an alert is triggered.
         self.sqlfilter = sqlfilter
 
     def validate(self):
@@ -400,12 +379,7 @@ class DescribeEventRuleListResponseBodyEventRulesEventRuleEventPatternEventPatte
         keywords: main_models.DescribeEventRuleListResponseBodyEventRulesEventRuleEventPatternEventPatternKeywordFilterKeywords = None,
         relation: str = None,
     ):
-        # The keywords that are used to match events.
         self.keywords = keywords
-        # The relationship between multiple keywords in a condition. Valid values:
-        # 
-        # *   OR: The relationship between keywords is OR.
-        # *   NOT: The keyword is excluded. The value NOT indicates that all events that do not contain the keywords are matched.
         self.relation = relation
 
     def validate(self):

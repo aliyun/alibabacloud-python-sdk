@@ -30,7 +30,6 @@ class DescribeHostAvailabilityListResponseBody(DaraModel):
         # *   true
         # *   false
         self.success = success
-        # The details of the availability monitoring tasks.
         self.task_list = task_list
         # The total number of returned entries.
         self.total = total
@@ -136,35 +135,15 @@ class DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfig(DaraModel):
         task_scope: str = None,
         task_type: str = None,
     ):
-        # The configurations of the alert rule.
         self.alert_config = alert_config
-        # Indicates whether the availability monitoring task is disabled. Valid values:
-        # 
-        # *   true: The availability monitoring task is disabled.
-        # *   false: The availability monitoring task is enabled.
         self.disabled = disabled
-        # The ID of the application group.
         self.group_id = group_id
-        # The name of the application group.
         self.group_name = group_name
-        # The ID of the availability monitoring task.
         self.id = id
-        # The ECS instances that are monitored.
         self.instances = instances
-        # The name of the availability monitoring task.
         self.task_name = task_name
-        # The optional parameters of the availability monitoring task.
         self.task_option = task_option
-        # The range of instances that are monitored by the availability monitoring task. Valid values:
-        # 
-        # *   GROUP: All ECS instances in the application group are monitored.
-        # *   GROUP_SPEC_INSTANCE: Specified ECS instances in the application group are monitored.
         self.task_scope = task_scope
-        # The task type. Valid values:
-        # 
-        # *   PING
-        # *   TELNET
-        # *   HTTP
         self.task_type = task_type
 
     def validate(self):
@@ -261,28 +240,13 @@ class DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigTaskOption(D
         interval: int = None,
         telnet_or_ping_host: str = None,
     ):
-        # The response to the HTTP request.
         self.http_keyword = http_keyword
-        # The HTTP request method. Valid values:
-        # 
-        # *   GET
-        # *   POST
-        # *   HEAD
         self.http_method = http_method
-        # The method to trigger an alert. The alert can be triggered based on whether the specified alert rule is included in the response body. Valid values:
-        # 
-        # *   true: If the HTTP response body includes the alert rule, an alert is triggered.
-        # *   false: If the HTTP response does not include the alert rule, an alert is triggered.
         self.http_negative = http_negative
-        # The content of the HTTP POST request.
         self.http_post_content = http_post_content
-        # The character set that is used in the HTTP response.
         self.http_response_charset = http_response_charset
-        # The URI that you want to monitor. If the TaskType parameter is set to HTTP, this parameter is required.
         self.http_uri = http_uri
-        # The interval at which detection requests are sent. Unit: seconds.
         self.interval = interval
-        # The domain name or IP address that you want to monitor.
         self.telnet_or_ping_host = telnet_or_ping_host
 
     def validate(self):
@@ -385,33 +349,12 @@ class DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigAlertConfig(
         target_list: main_models.DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigAlertConfigTargetList = None,
         web_hook: str = None,
     ):
-        # The end of the time period during which the alert rule is effective. Valid values: 0 to 23.
-        # 
-        # For example, if the `AlertConfig.StartTime` parameter is set to 0 and the `AlertConfig.EndTime` parameter is set to 22, the alert rule is effective from 00:00:00 to 22:00:00.
-        # 
-        # >  Alert notifications are sent based on the specified threshold only if the alert rule is effective.
         self.end_time = end_time
-        # The trigger conditions of the alert rule.
         self.escalation_list = escalation_list
-        # The alert notification methods. Valid values:
-        # 
-        # *   2: Alert notifications are sent by using emails and DingTalk chatbots.
-        # *   1: Alert notifications are sent by using emails and DingTalk chatbots.
-        # *   0: Alert notifications are sent by using emails and DingTalk chatbots.
         self.notify_type = notify_type
-        # The mute period during which new alerts are not sent even if the trigger conditions are met. Unit: seconds. Default value: 86400.
         self.silence_time = silence_time
-        # The beginning of the time period during which the alert rule is effective. Valid values: 0 to 23.
-        # 
-        # For example, if the `AlertConfig.StartTime` parameter is set to 0 and the `AlertConfig.EndTime` parameter is set to 22, the alert rule is effective from 00:00:00 to 22:00:00.
-        # 
-        # >  Alert notifications are sent based on the specified threshold only if the alert rule is effective.
         self.start_time = start_time
-        # The monitored resources.
         self.target_list = target_list
-        # The callback URL.
-        # 
-        # CloudMonitor pushes an alert notification to the specified callback URL by sending an HTTP POST request. Only the HTTP protocol is supported.
         self.web_hook = web_hook
 
     def validate(self):
@@ -518,25 +461,9 @@ class DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigAlertConfigT
         json_params: str = None,
         level: str = None,
     ):
-        # The Alibaba Cloud Resource Name (ARN) of the function.
-        # 
-        # Format: `arn:acs:${Service}:${Region}:${Account}:${ResourceType}/${ResourceId}`. Fields:
-        # 
-        # *   Service: the service code
-        # *   Region: the region ID
-        # *   Account: the ID of the Alibaba Cloud account
-        # *   ResourceType: the resource type
-        # *   ResourceId: the resource ID.
         self.arn = arn
-        # The ID of the resource that triggers the alert.
         self.id = id
-        # The JSON-formatted parameters of the alert callback.
         self.json_params = json_params
-        # The alert level. Valid values:
-        # 
-        # *   INFO
-        # *   WARN
-        # *   CRITICAL
         self.level = level
 
     def validate(self):
@@ -621,33 +548,10 @@ class DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigAlertConfigE
         times: str = None,
         value: str = None,
     ):
-        # The method used to calculate metric values that trigger alerts. Valid values:
-        # 
-        # *   Value: the value of the HTTP status code
-        # *   Average: the average HTTP response time
-        # *   Value: the value of the Telnet status code
-        # *   TelnetLatency: the average Telnet response time
-        # *   Average: the average Ping packet loss rate
         self.aggregate = aggregate
-        # The name of the metric. Valid values:
-        # 
-        # *   HttpStatus
-        # *   HttpLatency
-        # *   TelnetStatus
-        # *   TelnetLatency
-        # *   PingLostRate
         self.metric_name = metric_name
-        # The comparison operator that is used in the alert rule. Valid values:
-        # 
-        # *   `>`
-        # *   `>=`
-        # *   `<`
-        # *   `<=`
-        # *   `=`
         self.operator = operator
-        # The consecutive number of times for which the metric value is measured before an alert is triggered.
         self.times = times
-        # The alert threshold.
         self.value = value
 
     def validate(self):

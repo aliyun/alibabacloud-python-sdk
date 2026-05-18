@@ -20,7 +20,6 @@ class DescribeSystemEventMetaListResponseBody(DaraModel):
         # 
         # >  The status code 200 indicates that the request was successful.
         self.code = code
-        # The queried meta information.
         self.data = data
         # The returned message.
         self.message = message
@@ -125,28 +124,13 @@ class DescribeSystemEventMetaListResponseBodyDataResource(DaraModel):
         status: str = None,
         status_desc: str = None,
     ):
-        # The type of the system event. Valid values:
-        # 
-        # *   StatusNotification: fault notifications
-        # *   Exception: exceptions
-        # *   Maintenance: O\\&M
         self.event_type = event_type
-        # The alert level. Valid values:
-        # 
-        # *   CRITICAL
-        # *   WARN
-        # *   INFO
         self.level = level
-        # The name of the system event.
         self.name = name
-        # The description of the event name.
         self.name_desc = name_desc
         self.name_desc_en = name_desc_en
-        # The abbreviation of the service name.
         self.product = product
-        # The status of the system event.
         self.status = status
-        # The description of the event status.
         self.status_desc = status_desc
 
     def validate(self):

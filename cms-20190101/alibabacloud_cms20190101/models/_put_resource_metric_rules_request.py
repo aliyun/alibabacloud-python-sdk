@@ -64,6 +64,7 @@ class PutResourceMetricRulesRequestRules(DaraModel):
         resources: str = None,
         rule_id: str = None,
         rule_name: str = None,
+        send_ok: bool = None,
         silence_time: int = None,
         webhook: str = None,
     ):
@@ -156,6 +157,7 @@ class PutResourceMetricRulesRequestRules(DaraModel):
         # 
         # This parameter is required.
         self.rule_name = rule_name
+        self.send_ok = send_ok
         # The mute period during which new alert notifications are not sent even if the trigger conditions are met.
         # 
         # Unit: seconds. Default value: 86400.
@@ -226,6 +228,9 @@ class PutResourceMetricRulesRequestRules(DaraModel):
         if self.rule_name is not None:
             result['RuleName'] = self.rule_name
 
+        if self.send_ok is not None:
+            result['SendOK'] = self.send_ok
+
         if self.silence_time is not None:
             result['SilenceTime'] = self.silence_time
 
@@ -281,6 +286,9 @@ class PutResourceMetricRulesRequestRules(DaraModel):
 
         if m.get('RuleName') is not None:
             self.rule_name = m.get('RuleName')
+
+        if m.get('SendOK') is not None:
+            self.send_ok = m.get('SendOK')
 
         if m.get('SilenceTime') is not None:
             self.silence_time = m.get('SilenceTime')
@@ -390,11 +398,46 @@ class PutResourceMetricRulesRequestRulesEscalationsWarn(DaraModel):
         threshold: str = None,
         times: int = None,
     ):
+        # The operator that is used to compare the metric value with the threshold for Warn-level alerts. Valid values:
+        # 
+        # *   GreaterThanOrEqualToThreshold: greater than or equal to the threshold
+        # *   GreaterThanThreshold: greater than the threshold
+        # *   LessThanOrEqualToThreshold: less than or equal to the threshold
+        # *   LessThanThreshold: less than the threshold
+        # *   NotEqualToThreshold: not equal to the threshold
+        # *   EqualToThreshold: equal to the threshold
+        # *   GreaterThanYesterday: greater than the metric value at the same time yesterday
+        # *   LessThanYesterday: less than the metric value at the same time yesterday
+        # *   GreaterThanLastWeek: greater than the metric value at the same time last week
+        # *   LessThanLastWeek: less than the metric value at the same time last week
+        # *   GreaterThanLastPeriod: greater than the metric value in the last monitoring cycle
+        # *   LessThanLastPeriod: less than the metric value in the last monitoring cycle
+        # 
+        # Valid values of N: 1 to 500.
+        # 
+        # >  You must select at least one of the Critical, Warn, and Info alert levels and specify the Statistics, ComparisonOperator, Threshold, and Times parameters for each alert level.
         self.comparison_operator = comparison_operator
         self.n = n
         self.pre_condition = pre_condition
+        # The statistical methods for Warn-level alerts.
+        # 
+        # Valid values of N: 1 to 500.
+        # 
+        # The value of this parameter is determined by the `Statistics` column corresponding to the `MetricName` parameter of the specified cloud service. The value of this parameter can be Maximum, Minimum, or Average. For more information about how to obtain the value of this parameter, see [Appendix 1: Metrics](https://help.aliyun.com/document_detail/163515.html).
+        # 
+        # >  You must select at least one of the Critical, Warn, and Info alert levels and specify the Statistics, ComparisonOperator, Threshold, and Times parameters for each alert level.
         self.statistics = statistics
+        # The threshold for Warn-level alerts.
+        # 
+        # Valid values of N: 1 to 500.
+        # 
+        # >  You must select at least one of the Critical, Warn, and Info alert levels and specify the Statistics, ComparisonOperator, Threshold, and Times parameters for each alert level.
         self.threshold = threshold
+        # The consecutive number of times for which the metric value meets the alert condition before a Warn-level alert is triggered.
+        # 
+        # Valid values of N: 1 to 500.
+        # 
+        # >  You must select at least one of the Critical, Warn, and Info alert levels and specify the Statistics, ComparisonOperator, Threshold, and Times parameters for each alert level.
         self.times = times
 
     def validate(self):
@@ -457,11 +500,44 @@ class PutResourceMetricRulesRequestRulesEscalationsInfo(DaraModel):
         threshold: str = None,
         times: int = None,
     ):
+        # The operator that is used to compare the metric value with the threshold for Info-level alerts. Valid values:
+        # 
+        # *   GreaterThanOrEqualToThreshold: greater than or equal to the threshold
+        # *   GreaterThanThreshold: greater than the threshold
+        # *   LessThanOrEqualToThreshold: less than or equal to the threshold
+        # *   LessThanThreshold: less than the threshold
+        # *   NotEqualToThreshold: not equal to the threshold
+        # *   EqualToThreshold: equal to the threshold
+        # *   GreaterThanYesterday: greater than the metric value at the same time yesterday
+        # *   LessThanYesterday: less than the metric value at the same time yesterday
+        # *   GreaterThanLastWeek: greater than the metric value at the same time last week
+        # *   LessThanLastWeek: less than the metric value at the same time last week
+        # *   GreaterThanLastPeriod: greater than the metric value in the last monitoring cycle
+        # *   LessThanLastPeriod: less than the metric value in the last monitoring cycle
+        # 
+        # Valid values of N: 1 to 500.
+        # 
+        # >  You must select at least one of the Critical, Warn, and Info alert levels and specify the Statistics, ComparisonOperator, Threshold, and Times parameters for each alert level.
         self.comparison_operator = comparison_operator
         self.n = n
         self.pre_condition = pre_condition
+        # The statistical methods for Info-level alerts.
+        # 
+        # Valid values of N: 1 to 500.
+        # 
+        # The value of this parameter is determined by the `Statistics` column corresponding to the `MetricName` parameter of the specified cloud service. The value of this parameter can be Maximum, Minimum, or Average. For more information about how to obtain the value of this parameter, see [Appendix 1: Metrics](https://help.aliyun.com/document_detail/163515.html).
+        # 
+        # >  You must select at least one of the Critical, Warn, and Info alert levels and specify the Statistics, ComparisonOperator, Threshold, and Times parameters for each alert level.
         self.statistics = statistics
+        # The threshold for Info-level alerts.
+        # 
+        # >  You must select at least one of the Critical, Warn, and Info alert levels and specify the Statistics, ComparisonOperator, Threshold, and Times parameters for each alert level.
         self.threshold = threshold
+        # The consecutive number of times for which the metric value meets the alert condition before an Info-level alert is triggered.
+        # 
+        # Valid values of N: 1 to 500.
+        # 
+        # >  You must select at least one of the Critical, Warn, and Info alert levels and specify the Statistics, ComparisonOperator, Threshold, and Times parameters for each alert level.
         self.times = times
 
     def validate(self):
@@ -524,11 +600,46 @@ class PutResourceMetricRulesRequestRulesEscalationsCritical(DaraModel):
         threshold: str = None,
         times: int = None,
     ):
+        # The operator that is used to compare the metric value with the threshold for Critical-level alerts. Valid values:
+        # 
+        # *   GreaterThanOrEqualToThreshold: greater than or equal to the threshold
+        # *   GreaterThanThreshold: greater than the threshold
+        # *   LessThanOrEqualToThreshold: less than or equal to the threshold
+        # *   LessThanThreshold: less than the threshold
+        # *   NotEqualToThreshold: not equal to the threshold
+        # *   EqualToThreshold: equal to the threshold
+        # *   GreaterThanYesterday: greater than the metric value at the same time yesterday
+        # *   LessThanYesterday: less than the metric value at the same time yesterday
+        # *   GreaterThanLastWeek: greater than the metric value at the same time last week
+        # *   LessThanLastWeek: less than the metric value at the same time last week
+        # *   GreaterThanLastPeriod: greater than the metric value in the last monitoring cycle
+        # *   LessThanLastPeriod: less than the metric value in the last monitoring cycle
+        # 
+        # Valid values of N: 1 to 500.
+        # 
+        # >  You must select at least one of the Critical, Warn, and Info alert levels and specify the Statistics, ComparisonOperator, Threshold, and Times parameters for each alert level.
         self.comparison_operator = comparison_operator
         self.n = n
         self.pre_condition = pre_condition
+        # The statistical methods for Critical-level alerts.
+        # 
+        # Valid values of N: 1 to 500.
+        # 
+        # The value of this parameter is determined by the `Statistics` column corresponding to the `MetricName` parameter of the specified cloud service. The value of this parameter can be Maximum, Minimum, or Average. For more information about how to obtain the value of this parameter, see [Appendix 1: Metrics](https://help.aliyun.com/document_detail/163515.html).
+        # 
+        # >  You must select at least one of the Critical, Warn, and Info alert levels and specify the Statistics, ComparisonOperator, Threshold, and Times parameters for each alert level.
         self.statistics = statistics
+        # The threshold for Critical-level alerts.
+        # 
+        # Valid values of N: 1 to 500.
+        # 
+        # >  You must select at least one of the Critical, Warn, and Info alert levels and specify the Statistics, ComparisonOperator, Threshold, and Times parameters for each alert level.
         self.threshold = threshold
+        # The consecutive number of times for which the metric value meets the alert condition before a Critical-level alert is triggered.
+        # 
+        # Valid values of N: 1 to 500.
+        # 
+        # >  You must select at least one of the Critical, Warn, and Info alert levels and specify the Statistics, ComparisonOperator, Threshold, and Times parameters for each alert level.
         self.times = times
 
     def validate(self):

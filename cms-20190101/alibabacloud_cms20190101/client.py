@@ -13151,6 +13151,8 @@ class Client(OpenApiClient):
             query['RuleId'] = request.rule_id
         if not DaraCore.is_null(request.rule_name):
             query['RuleName'] = request.rule_name
+        if not DaraCore.is_null(request.send_ok):
+            query['SendOK'] = request.send_ok
         if not DaraCore.is_null(request.silence_time):
             query['SilenceTime'] = request.silence_time
         if not DaraCore.is_null(request.webhook):
@@ -13219,6 +13221,8 @@ class Client(OpenApiClient):
             query['RuleId'] = request.rule_id
         if not DaraCore.is_null(request.rule_name):
             query['RuleName'] = request.rule_name
+        if not DaraCore.is_null(request.send_ok):
+            query['SendOK'] = request.send_ok
         if not DaraCore.is_null(request.silence_time):
             query['SilenceTime'] = request.silence_time
         if not DaraCore.is_null(request.webhook):

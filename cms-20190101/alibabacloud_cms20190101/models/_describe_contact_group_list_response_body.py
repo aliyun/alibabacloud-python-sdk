@@ -20,9 +20,7 @@ class DescribeContactGroupListResponseBody(DaraModel):
     ):
         # Status code. Note that 200 indicates success.
         self.code = code
-        # List of alarm contact groups.
         self.contact_group_list = contact_group_list
-        # List of alarm contact groups.
         self.contact_groups = contact_groups
         # Return message.
         self.message = message
@@ -171,23 +169,12 @@ class DescribeContactGroupListResponseBodyContactGroupListContactGroup(DaraModel
         name: str = None,
         update_time: int = None,
     ):
-        # List of contacts.
         self.contacts = contacts
-        # Creation time.
         self.create_time = create_time
-        # Description information of the alarm contact group.
         self.describe = describe
-        # Indicates whether the weekly report subscription function is enabled. Values:
-        # 
-        # - true: Yes.
-        # 
-        # - false: No.
         self.enable_subscribed = enable_subscribed
-        # Indicates whether the weekly report function is enabled.
         self.enabled_weekly_report = enabled_weekly_report
-        # Name.
         self.name = name
-        # Update time.
         self.update_time = update_time
 
     def validate(self):

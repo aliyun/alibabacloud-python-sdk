@@ -10,7 +10,9 @@ class Dimension(DaraModel):
         label: str = None,
         value: str = None,
     ):
+        # The name of the metric dimension.
         self.label = label
+        # The value of the metric dimension.
         self.value = value
 
     def validate(self):

@@ -19,13 +19,23 @@ class MetricStat(DaraModel):
         period: int = None,
         timestamp: int = None,
     ):
+        # The additional information about the monitored object (instance).
         self.associated = associated
+        # The dimension information that is used to identify the monitored object (instance).
         self.dimensions = dimensions
+        # The recorded time of the monitoring data. Unit: milliseconds. For non-raw data (aggregated data), the value of LogTime is NULL.
         self.log_time = log_time
+        # The measured value of the metric. The parameter contains multiple values by default.
         self.measurements = measurements
+        # The metric that is used to monitor the cloud service.
         self.metric = metric
+        # The namespace of the cloud service.
         self.namespace = namespace
+        # The time interval based on which the metric value is measured.
+        # 
+        # Unit: seconds.
         self.period = period
+        # The timestamp of the monitoring data. Unit: milliseconds.
         self.timestamp = timestamp
 
     def validate(self):

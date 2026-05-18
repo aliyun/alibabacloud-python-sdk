@@ -24,7 +24,6 @@ class CreateGroupMetricRulesResponseBody(DaraModel):
         self.message = message
         # The ID of the request.
         self.request_id = request_id
-        # The details of the alert rules.
         self.resources = resources
         # Indicates whether the call is successful. Valid value:
         # 
@@ -122,20 +121,10 @@ class CreateGroupMetricRulesResponseBodyResourcesAlertResult(DaraModel):
         rule_name: str = None,
         success: bool = None,
     ):
-        # The status code that is returned for the alert rule.
-        # 
-        # >  The status code 200 indicates that the call is successful.
         self.code = code
-        # The error message that is returned for the alert rule.
         self.message = message
-        # The ID of the alert rule.
         self.rule_id = rule_id
-        # The name of the alert rule.
         self.rule_name = rule_name
-        # Indicates whether the alert rule was created. Valid value:
-        # 
-        # - true: The alert rule was created.
-        # - false: The alert rule failed to be created.
         self.success = success
 
     def validate(self):

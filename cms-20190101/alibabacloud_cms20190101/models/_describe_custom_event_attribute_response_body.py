@@ -20,7 +20,6 @@ class DescribeCustomEventAttributeResponseBody(DaraModel):
         # 
         # >  The status code 200 indicates that the request was successful.
         self.code = code
-        # The event details.
         self.custom_events = custom_events
         # The returned message.
         self.message = message
@@ -122,17 +121,10 @@ class DescribeCustomEventAttributeResponseBodyCustomEventsCustomEvent(DaraModel)
         name: str = None,
         time: str = None,
     ):
-        # The content of the event.
         self.content = content
-        # The ID of the application group.
         self.group_id = group_id
-        # The event ID.
         self.id = id
-        # The event name.
         self.name = name
-        # The time when the event occurred.
-        # 
-        # This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.time = time
 
     def validate(self):

@@ -20,7 +20,6 @@ class DescribeCustomEventHistogramResponseBody(DaraModel):
         # 
         # >  The status code 200 indicates that the request was successful.
         self.code = code
-        # The information about the number of times that the custom event occurred during each interval of the specified time period.
         self.event_histograms = event_histograms
         # The returned message. If the request was successful, a success message is returned. If the request failed, an error message is returned.
         self.message = message
@@ -117,15 +116,8 @@ class DescribeCustomEventHistogramResponseBodyEventHistogramsEventHistogram(Dara
         end_time: int = None,
         start_time: int = None,
     ):
-        # The information about the number of times that the custom event occurred during an interval of the specified time period.
         self.count = count
-        # The end time.
-        # 
-        # This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.end_time = end_time
-        # The start time.
-        # 
-        # This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.start_time = start_time
 
     def validate(self):

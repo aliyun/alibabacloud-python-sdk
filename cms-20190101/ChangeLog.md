@@ -1,3 +1,8 @@
+2026-05-18 Version: 4.0.9
+- Update API PutResourceMetricRule: add request parameters SendOK.
+- Update API PutResourceMetricRules: add request parameters Rules.$.SendOK.
+
+
 2026-01-30 Version: 4.0.8
 - Update API DescribeSiteMonitorAttribute: add response parameters Body.SiteMonitors.OptionJson.max_tls_version.
 - Update API DescribeSiteMonitorAttribute: add response parameters Body.SiteMonitors.OptionJson.server_name.

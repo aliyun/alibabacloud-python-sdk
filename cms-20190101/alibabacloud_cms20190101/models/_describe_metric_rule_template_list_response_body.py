@@ -30,7 +30,6 @@ class DescribeMetricRuleTemplateListResponseBody(DaraModel):
         # *   true
         # *   false
         self.success = success
-        # The queried alert templates.
         self.templates = templates
         # The total number of entries returned.
         self.total = total
@@ -133,25 +132,12 @@ class DescribeMetricRuleTemplateListResponseBodyTemplatesTemplate(DaraModel):
         rest_version: int = None,
         template_id: int = None,
     ):
-        # The history of applying the alert templates to application groups.
         self.apply_histories = apply_histories
-        # The description of the alert template.
         self.description = description
-        # The timestamp when the alert template was created.
-        # 
-        # Unit: milliseconds.
         self.gmt_create = gmt_create
-        # The timestamp when the alert template was modified.
-        # 
-        # Unit: milliseconds.
         self.gmt_modified = gmt_modified
-        # The name of the alert template.
         self.name = name
-        # The version of the alert template.
-        # 
-        # Default value: 0.
         self.rest_version = rest_version
-        # The ID of the alert template.
         self.template_id = template_id
 
     def validate(self):
@@ -254,13 +240,8 @@ class DescribeMetricRuleTemplateListResponseBodyTemplatesTemplateApplyHistoriesA
         group_id: int = None,
         group_name: str = None,
     ):
-        # The timestamp when the alert template was applied to the application group.
-        # 
-        # Unit: milliseconds.
         self.apply_time = apply_time
-        # The ID of the application group.
         self.group_id = group_id
-        # The name of the application group.
         self.group_name = group_name
 
     def validate(self):

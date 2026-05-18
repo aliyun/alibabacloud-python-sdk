@@ -24,21 +24,15 @@ class DescribeEventRuleTargetListResponseBody(DaraModel):
         # 
         # >  The status code 200 indicates that the call was successful.
         self.code = code
-        # The information about the recipients if alert notifications are sent to the alert contacts of an alert contact group.
         self.contact_parameters = contact_parameters
-        # The information about the recipients in Function Compute.
         self.fc_parameters = fc_parameters
         # The error message.
         self.message = message
-        # The notifications of Simple Message Queue (formerly MNS) (SMQ).
         self.mns_parameters = mns_parameters
-        # The information about the recipients in OpenAPI Explorer.
         self.open_api_parameters = open_api_parameters
         # The ID of the request.
         self.request_id = request_id
-        # The information about the recipients in Log Service.
         self.sls_parameters = sls_parameters
-        # The information about the recipients if alert notifications are sent by sending a request to a callback URL.
         self.webhook_parameters = webhook_parameters
 
     def validate(self):
@@ -169,13 +163,9 @@ class DescribeEventRuleTargetListResponseBodyWebhookParametersWebhookParameter(D
         protocol: str = None,
         url: str = None,
     ):
-        # The ID of the recipient.
         self.id = id
-        # The HTTP request method. Valid values: GET and POST.
         self.method = method
-        # The protocol type.
         self.protocol = protocol
-        # The callback URL.
         self.url = url
 
     def validate(self):
@@ -260,23 +250,10 @@ class DescribeEventRuleTargetListResponseBodySlsParametersSlsParameter(DaraModel
         project: str = None,
         region: str = None,
     ):
-        # The ARN of the Log Service Logstore. 
-        # 
-        # Format: `arn:acs:${Service}:${Region}:${Account}:${ResourceType}/${ResourceId}`. Fields: 
-        # 
-        # - Service: the code of an Alibaba Cloud service
-        # - Region: the region ID
-        # - Account: the ID of an Alibaba Cloud account
-        # - ResourceType: the resource type
-        # - ResourceId: the resource ID
         self.arn = arn
-        # The ID of the recipient.
         self.id = id
-        # The name of the Logstore.
         self.log_store = log_store
-        # The name of the project.
         self.project = project
-        # The ID of the region where the Log Service project resides.
         self.region = region
 
     def validate(self):
@@ -369,34 +346,12 @@ class DescribeEventRuleTargetListResponseBodyOpenApiParametersOpenApiParameters(
         role: str = None,
         version: str = None,
     ):
-        # The name of the API operation.
         self.action = action
-        # The ARN of the API operation. 
-        # 
-        # Format: `arn:acs:${Service}:${Region}:${Account}:${ResourceType}/${ResourceId}`. Fields: 
-        # 
-        # - Service: the code of an Alibaba Cloud service
-        # - Region: the region ID
-        # - Account: the ID of an Alibaba Cloud account
-        # - ResourceType: the resource type
-        # - ResourceId: the resource ID The ARN of the Log Service Logstore. 
-        # 
-        # Format: `arn:acs:${Service}:${Region}:${Account}:${ResourceType}/${ResourceId}`. Fields:
-        # - Service: the code of an Alibaba Cloud service
-        # - Region: the region ID
-        # - Account: the ID of an Alibaba Cloud account
-        # - ResourceType: the resource type
-        # - ResourceId: the resource ID
         self.arn = arn
-        # The ID of the recipient.
         self.id = id
-        # The ID of the cloud service to which the API operation belongs.
         self.product = product
-        # The region where the resource resides.
         self.region = region
-        # The name of the role.
         self.role = role
-        # The version of the API.
         self.version = version
 
     def validate(self):
@@ -499,23 +454,10 @@ class DescribeEventRuleTargetListResponseBodyMnsParametersMnsParameter(DaraModel
         region: str = None,
         topic: str = None,
     ):
-        # The ARN of the MNS queue. 
-        # 
-        # Format: `arn:acs:${Service}:${Region}:${Account}:${ResourceType}/${ResourceId}`. Fields: 
-        # 
-        # - Service: the code of an Alibaba Cloud service
-        # - Region: the region ID
-        # - Account: the ID of an Alibaba Cloud account
-        # - ResourceType: the resource type
-        # - ResourceId: the resource ID
         self.arn = arn
-        # The ID of the recipient.
         self.id = id
-        # The name of the SMQ queue.
         self.queue = queue
-        # The region for SMQ.
         self.region = region
-        # The SMQ topic.
         self.topic = topic
 
     def validate(self):
@@ -606,23 +548,10 @@ class DescribeEventRuleTargetListResponseBodyFcParametersFCParameter(DaraModel):
         region: str = None,
         service_name: str = None,
     ):
-        # The Alibaba Cloud Resource Name (ARN) of the function. 
-        # 
-        # Format: `arn:acs:${Service}:${Region}:${Account}:${ResourceType}/${ResourceId}`. Fields: 
-        # 
-        # - Service: the code of an Alibaba Cloud service
-        # - Region: the region ID
-        # - Account: the ID of an Alibaba Cloud account
-        # - ResourceType: the resource type
-        # - ResourceId: the resource ID
         self.arn = arn
-        # The name of the function.
         self.function_name = function_name
-        # The ID of the recipient.
         self.id = id
-        # The region where Function Compute is deployed.
         self.region = region
-        # The name of the Function Compute service.
         self.service_name = service_name
 
     def validate(self):
@@ -711,13 +640,8 @@ class DescribeEventRuleTargetListResponseBodyContactParametersContactParameter(D
         id: str = None,
         level: str = None,
     ):
-        # The name of the alert group.
         self.contact_group_name = contact_group_name
-        # The ID of the recipient.
         self.id = id
-        # The alert notification methods. Valid values:
-        # 
-        # 4: Alert notifications are sent by using DingTalk chatbots and emails.
         self.level = level
 
     def validate(self):

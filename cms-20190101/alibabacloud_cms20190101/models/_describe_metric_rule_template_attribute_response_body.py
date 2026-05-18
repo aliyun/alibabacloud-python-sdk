@@ -87,7 +87,6 @@ class DescribeMetricRuleTemplateAttributeResponseBodyResource(DaraModel):
         rest_version: str = None,
         template_id: str = None,
     ):
-        # The queried alert templates.
         self.alert_templates = alert_templates
         # The description of the alert template.
         self.description = description
@@ -193,28 +192,15 @@ class DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplatesAlert
         silence_time: int = None,
         webhook: str = None,
     ):
-        # The abbreviation of the Alibaba Cloud service name.
         self.category = category
-        # The threshold and the alert level.
         self.escalations = escalations
-        # The tags of the alert template.
         self.labels = labels
-        # The metric name.
         self.metric_name = metric_name
-        # The namespace of the Alibaba Cloud service.
         self.namespace = namespace
-        # The method that is used to handle alerts when no monitoring data is found. Valid values:
-        # 
-        # *   KEEP_LAST_STATE (default): No operation is performed.
-        # *   INSUFFICIENT_DATA: An alert whose content is "Insufficient data" is triggered.
-        # *   OK: The status is considered normal.
         self.no_data_policy = no_data_policy
-        # The name of the alert rule.
         self.rule_name = rule_name
-        # The dimension of the alert. It is an extended field.
         self.selector = selector
         self.silence_time = silence_time
-        # The callback URL to which a request is sent when an alert is triggered.
         self.webhook = webhook
 
     def validate(self):
@@ -337,9 +323,7 @@ class DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplatesAlert
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the alert template.
         self.key = key
-        # The tag value of the alert template.
         self.value = value
 
     def validate(self):
@@ -375,11 +359,8 @@ class DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplatesAlert
         info: main_models.DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplatesAlertTemplateEscalationsInfo = None,
         warn: main_models.DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplatesAlertTemplateEscalationsWarn = None,
     ):
-        # The conditions for triggering Critical-level alerts.
         self.critical = critical
-        # The conditions for triggering Info-level alerts.
         self.info = info
-        # The conditions for triggering Warn-level alerts.
         self.warn = warn
 
     def validate(self):
@@ -430,27 +411,9 @@ class DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplatesAlert
         threshold: str = None,
         times: int = None,
     ):
-        # The comparison operator that is used to compare the metric value with the threshold for Warn-level alerts. Valid values:
-        # 
-        # *   GreaterThanOrEqualToThreshold: greater than or equal to the threshold
-        # *   GreaterThanThreshold: greater than the threshold
-        # *   LessThanOrEqualToThreshold: less than or equal to the threshold
-        # *   LessThanThreshold: less than the threshold
-        # *   NotEqualToThreshold: not equal to the threshold
-        # *   GreaterThanYesterday: greater than the metric value at the same time yesterday
-        # *   LessThanYesterday: less than the metric value at the same time yesterday
-        # *   GreaterThanLastWeek: greater than the metric value at the same time last week
-        # *   LessThanLastWeek: less than the metric value at the same time last week
-        # *   GreaterThanLastPeriod: greater than the metric value in the last monitoring cycle
-        # *   LessThanLastPeriod: less than the metric value in the last monitoring cycle
         self.comparison_operator = comparison_operator
-        # The statistical method for Warn-level alerts.
-        # 
-        # The value of the `Statistics` parameter varies with the cloud service. For more information, see [Appendix 1: Metrics](https://help.aliyun.com/document_detail/163515.html).
         self.statistics = statistics
-        # The threshold for Warn-level alerts.
         self.threshold = threshold
-        # The consecutive number of times for which the metric value meets the alert condition before a Warn-level alert is triggered.
         self.times = times
 
     def validate(self):
@@ -499,27 +462,9 @@ class DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplatesAlert
         threshold: str = None,
         times: int = None,
     ):
-        # The comparison operator that is used to compare the metric value with the threshold for Info-level alerts. Valid values:
-        # 
-        # *   GreaterThanOrEqualToThreshold: greater than or equal to the threshold
-        # *   GreaterThanThreshold: greater than the threshold
-        # *   LessThanOrEqualToThreshold: less than or equal to the threshold
-        # *   LessThanThreshold: less than the threshold
-        # *   NotEqualToThreshold: not equal to the threshold
-        # *   GreaterThanYesterday: greater than the metric value at the same time yesterday
-        # *   LessThanYesterday: less than the metric value at the same time yesterday
-        # *   GreaterThanLastWeek: greater than the metric value at the same time last week
-        # *   LessThanLastWeek: less than the metric value at the same time last week
-        # *   GreaterThanLastPeriod: greater than the metric value in the last monitoring cycle
-        # *   LessThanLastPeriod: less than the metric value in the last monitoring cycle
         self.comparison_operator = comparison_operator
-        # The statistical method for Info-level alerts.
-        # 
-        # The value of the `Statistics` parameter varies with the cloud service. For more information, see [Appendix 1: Metrics](https://help.aliyun.com/document_detail/163515.html).
         self.statistics = statistics
-        # The threshold for Info-level alerts.
         self.threshold = threshold
-        # The consecutive number of times for which the metric value meets the alert condition before an Info-level alert is triggered.
         self.times = times
 
     def validate(self):
@@ -568,27 +513,9 @@ class DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplatesAlert
         threshold: str = None,
         times: int = None,
     ):
-        # The comparison operator that is used to compare the metric value with the threshold for Critical-level alerts. Valid values:
-        # 
-        # *   GreaterThanOrEqualToThreshold: greater than or equal to the threshold
-        # *   GreaterThanThreshold: greater than the threshold
-        # *   LessThanOrEqualToThreshold: less than or equal to the threshold
-        # *   LessThanThreshold: less than the threshold
-        # *   NotEqualToThreshold: not equal to the threshold
-        # *   GreaterThanYesterday: greater than the metric value at the same time yesterday
-        # *   LessThanYesterday: less than the metric value at the same time yesterday
-        # *   GreaterThanLastWeek: greater than the metric value at the same time last week
-        # *   LessThanLastWeek: less than the metric value at the same time last week
-        # *   GreaterThanLastPeriod: greater than the metric value in the last monitoring cycle
-        # *   LessThanLastPeriod: less than the metric value in the last monitoring cycle
         self.comparison_operator = comparison_operator
-        # The statistical method for Critical-level alerts.
-        # 
-        # The value of the `Statistics` parameter varies with the cloud service. For more information, see [Appendix 1: Metrics](https://help.aliyun.com/document_detail/163515.html).
         self.statistics = statistics
-        # The threshold for Critical-level alerts.
         self.threshold = threshold
-        # The consecutive number of times for which the metric value meets the alert condition before a Critical-level alert is triggered.
         self.times = times
 
     def validate(self):

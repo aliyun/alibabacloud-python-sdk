@@ -23,11 +23,8 @@ class PutEventRuleTargetsResponseBody(DaraModel):
         # 
         # >  The status code 200 indicates that the request was successful.
         self.code = code
-        # This parameter is returned if the specified alert contact groups in the request failed to be created or modified.
         self.failed_contact_parameters = failed_contact_parameters
-        # This parameter is returned if the specified functions in the request failed to be created or modified in Function Compute.
         self.failed_fc_parameters = failed_fc_parameters
-        # This parameter is returned if the specified queues in the request failed to be created or modified in SMQ.
         self.failed_mns_parameters = failed_mns_parameters
         # The number of resources that failed to be created or modified.
         self.failed_parameter_count = failed_parameter_count
@@ -150,11 +147,8 @@ class PutEventRuleTargetsResponseBodyFailedMnsParametersMnsParameter(DaraModel):
         queue: str = None,
         region: str = None,
     ):
-        # The ID of the recipient.
         self.id = id
-        # The name of the MNS queue.
         self.queue = queue
-        # The region ID.
         self.region = region
 
     def validate(self):
@@ -232,13 +226,9 @@ class PutEventRuleTargetsResponseBodyFailedFcParametersFcParameter(DaraModel):
         region: str = None,
         service_name: str = None,
     ):
-        # The name of the function.
         self.function_name = function_name
-        # The ID of the recipient.
         self.id = id
-        # The region ID.
         self.region = region
-        # The name of the Function Compute service.
         self.service_name = service_name
 
     def validate(self):
@@ -321,13 +311,8 @@ class PutEventRuleTargetsResponseBodyFailedContactParametersContactParameter(Dar
         id: int = None,
         level: str = None,
     ):
-        # The name of the alert contact group.
         self.contact_group_name = contact_group_name
-        # The ID of the recipient.
         self.id = id
-        # The alert notification methods. Valid values:
-        # 
-        # 4: Alert notifications are sent by using DingTalk and emails.
         self.level = level
 
     def validate(self):

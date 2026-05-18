@@ -81,7 +81,6 @@ class DeleteMonitorGroupResponseBodyGroup(DaraModel):
         contact_groups: main_models.DeleteMonitorGroupResponseBodyGroupContactGroups = None,
         group_name: str = None,
     ):
-        # The alert groups that receive alert notifications for the application group.
         self.contact_groups = contact_groups
         # The name of the application group.
         self.group_name = group_name
@@ -154,7 +153,6 @@ class DeleteMonitorGroupResponseBodyGroupContactGroupsContactGroup(DaraModel):
         self,
         name: str = None,
     ):
-        # The name of the alert group.
         self.name = name
 
     def validate(self):

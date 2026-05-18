@@ -31,7 +31,6 @@ class DescribeMonitorGroupInstanceAttributeResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The resources that are associated with the application group.
         self.resources = resources
         # Indicates whether the request was successful. Valid values:
         # 
@@ -153,23 +152,14 @@ class DescribeMonitorGroupInstanceAttributeResponseBodyResourcesResource(DaraMod
         tags: main_models.DescribeMonitorGroupInstanceAttributeResponseBodyResourcesResourceTags = None,
         vpc: main_models.DescribeMonitorGroupInstanceAttributeResponseBodyResourcesResourceVpc = None,
     ):
-        # The name of the cloud service.
         self.category = category
-        # The resource description.
         self.desc = desc
-        # The dimensions of the resource that is associated with the application group.
         self.dimension = dimension
-        # The instance ID.
         self.instance_id = instance_id
-        # The instance name.
         self.instance_name = instance_name
-        # The network type.
         self.network_type = network_type
-        # The region.
         self.region = region
-        # The tag of the resource.
         self.tags = tags
-        # The VPC description.
         self.vpc = vpc
 
     def validate(self):
@@ -254,9 +244,7 @@ class DescribeMonitorGroupInstanceAttributeResponseBodyResourcesResourceVpc(Dara
         vpc_instance_id: str = None,
         vswitch_instance_id: str = None,
     ):
-        # The VPC ID.
         self.vpc_instance_id = vpc_instance_id
-        # The vSwitch ID.
         self.vswitch_instance_id = vswitch_instance_id
 
     def validate(self):
@@ -326,9 +314,7 @@ class DescribeMonitorGroupInstanceAttributeResponseBodyResourcesResourceTagsTag(
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
         self.key = key
-        # The tag value.
         self.value = value
 
     def validate(self):
@@ -363,9 +349,7 @@ class DescribeMonitorGroupInstanceAttributeResponseBodyResourcesResourceRegion(D
         availability_zone: str = None,
         region_id: str = None,
     ):
-        # The zone.
         self.availability_zone = availability_zone
-        # The region ID.
         self.region_id = region_id
 
     def validate(self):

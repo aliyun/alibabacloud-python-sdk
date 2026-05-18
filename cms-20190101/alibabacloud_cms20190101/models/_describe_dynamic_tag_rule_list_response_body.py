@@ -36,7 +36,6 @@ class DescribeDynamicTagRuleListResponseBody(DaraModel):
         # *   true: The call was successful.
         # *   false: The call failed.
         self.success = success
-        # The tag rules of application groups.
         self.tag_group_list = tag_group_list
         # The total number of returned entries.
         self.total = total
@@ -153,30 +152,14 @@ class DescribeDynamicTagRuleListResponseBodyTagGroupListTagGroup(DaraModel):
         tag_value_blacklist: main_models.DescribeDynamicTagRuleListResponseBodyTagGroupListTagGroupTagValueBlacklist = None,
         template_id_list: main_models.DescribeDynamicTagRuleListResponseBodyTagGroupListTagGroupTemplateIdList = None,
     ):
-        # The alert contact group.
         self.contact_group_list = contact_group_list
-        # The ID of the tag rule.
         self.dynamic_tag_rule_id = dynamic_tag_rule_id
-        # The conditional expressions used to create an application group based on the tag.
         self.match_express = match_express
-        # The logical operator that is used between conditional expressions. Valid values:
-        # 
-        # *   `and`
-        # *   `or`
-        # 
-        # >  Only one logical operator can be used in a request.
         self.match_express_filter_relation = match_express_filter_relation
-        # The ID of the region to which the tags belong.
         self.region_id = region_id
-        # The status of adding instances that meet the tag rule to the application group. Valid values:
-        # 
-        # *   `RUNNING`
-        # *   `FINISH`
         self.status = status
-        # The tag key.
         self.tag_key = tag_key
         self.tag_value_blacklist = tag_value_blacklist
-        # The IDs of the alert templates.
         self.template_id_list = template_id_list
 
     def validate(self):
@@ -354,20 +337,8 @@ class DescribeDynamicTagRuleListResponseBodyTagGroupListTagGroupMatchExpressMatc
         tag_value: str = None,
         tag_value_match_function: str = None,
     ):
-        # The tag key.
         self.tag_key = tag_key
-        # The tag value.
-        # 
-        # The `TagValue` and `TagValueMatchFunction` parameters must be used in pairs.
         self.tag_value = tag_value
-        # The method that is used to match tag values. Valid values:
-        # 
-        # *   all: includes all
-        # *   startWith: starts with a prefix
-        # *   endWith: ends with a suffix
-        # *   contains: contains
-        # *   notContains: does not contain
-        # *   equals: equals
         self.tag_value_match_function = tag_value_match_function
 
     def validate(self):

@@ -170,7 +170,6 @@ class DescribeEventRuleAttributeResponseBodyResultEventPattern(DaraModel):
         sqlfilter: str = None,
         status_list: main_models.DescribeEventRuleAttributeResponseBodyResultEventPatternStatusList = None,
     ):
-        # The types of the event-triggered alert rules.
         self.event_type_list = event_type_list
         # The keyword for filtering.
         self.keyword_filter_obj = keyword_filter_obj
@@ -339,7 +338,6 @@ class DescribeEventRuleAttributeResponseBodyResultEventPatternKeywordFilterObj(D
         keywords: main_models.DescribeEventRuleAttributeResponseBodyResultEventPatternKeywordFilterObjKeywords = None,
         relation: str = None,
     ):
-        # The keywords that are used to match events.
         self.keywords = keywords
         # The relationship between multiple keywords in a condition. Valid values:
         # 

@@ -22,7 +22,6 @@ class DescribeMonitoringAgentProcessesResponseBody(DaraModel):
         self.code = code
         # The returned message.
         self.message = message
-        # The information about the processes.
         self.node_processes = node_processes
         # The request ID.
         self.request_id = request_id
@@ -123,19 +122,11 @@ class DescribeMonitoringAgentProcessesResponseBodyNodeProcessesNodeProcess(DaraM
         process_name: str = None,
         process_user: str = None,
     ):
-        # The command used to obtain the number of processes. Valid value: `number`.
-        # 
-        # >  The `number` command obtains the number of processes that match the condition.
         self.command = command
-        # The ID of the application group.
         self.group_id = group_id
-        # The ID of the instance.
         self.instance_id = instance_id
-        # The ID of the process.
         self.process_id = process_id
-        # The name of the process.
         self.process_name = process_name
-        # The user who launched the process.
         self.process_user = process_user
 
     def validate(self):
