@@ -7,7 +7,7 @@ from darabonba.model import DaraModel
 class PageQueryAgentListNewRequest(DaraModel):
     def __init__(
         self,
-        agent_id: int = None,
+        agent_id: str = None,
         agent_name: str = None,
         is_available: bool = None,
         page_index: int = None,

@@ -7,10 +7,11 @@ from darabonba.model import DaraModel
 class QueryAiVoiceAgentDetailNewRequest(DaraModel):
     def __init__(
         self,
-        agent_id: int = None,
-        branch_id: int = None,
-        version_id: int = None,
+        agent_id: str = None,
+        branch_id: str = None,
+        version_id: str = None,
     ):
+        # This parameter is required.
         self.agent_id = agent_id
         self.branch_id = branch_id
         self.version_id = version_id

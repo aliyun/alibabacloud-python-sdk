@@ -2,7 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List
+from typing import List, Dict
 
 from alibabacloud_aiccs20191015 import models as main_models
 from darabonba.model import DaraModel
@@ -548,7 +548,7 @@ class QueryAiVoiceAgentDetailNewResponseBodyDataSummaryConfigCallResultTagConfig
     def __init__(
         self,
         default_tag: main_models.QueryAiVoiceAgentDetailNewResponseBodyDataSummaryConfigCallResultTagConfigDefaultTag = None,
-        mapping_tag: main_models.QueryAiVoiceAgentDetailNewResponseBodyDataSummaryConfigCallResultTagConfigMappingTag = None,
+        mapping_tag: Dict[str, str] = None,
     ):
         self.default_tag = default_tag
         self.mapping_tag = mapping_tag
@@ -556,8 +556,6 @@ class QueryAiVoiceAgentDetailNewResponseBodyDataSummaryConfigCallResultTagConfig
     def validate(self):
         if self.default_tag:
             self.default_tag.validate()
-        if self.mapping_tag:
-            self.mapping_tag.validate()
 
     def to_map(self):
         result = dict()
@@ -568,7 +566,7 @@ class QueryAiVoiceAgentDetailNewResponseBodyDataSummaryConfigCallResultTagConfig
             result['DefaultTag'] = self.default_tag.to_map()
 
         if self.mapping_tag is not None:
-            result['MappingTag'] = self.mapping_tag.to_map()
+            result['MappingTag'] = self.mapping_tag
 
         return result
 
@@ -579,43 +577,7 @@ class QueryAiVoiceAgentDetailNewResponseBodyDataSummaryConfigCallResultTagConfig
             self.default_tag = temp_model.from_map(m.get('DefaultTag'))
 
         if m.get('MappingTag') is not None:
-            temp_model = main_models.QueryAiVoiceAgentDetailNewResponseBodyDataSummaryConfigCallResultTagConfigMappingTag()
-            self.mapping_tag = temp_model.from_map(m.get('MappingTag'))
-
-        return self
-
-class QueryAiVoiceAgentDetailNewResponseBodyDataSummaryConfigCallResultTagConfigMappingTag(DaraModel):
-    def __init__(
-        self,
-        desc: str = None,
-        tag: str = None,
-    ):
-        self.desc = desc
-        self.tag = tag
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        _map = super().to_map()
-        if _map is not None:
-            result = _map
-        if self.desc is not None:
-            result['Desc'] = self.desc
-
-        if self.tag is not None:
-            result['Tag'] = self.tag
-
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Desc') is not None:
-            self.desc = m.get('Desc')
-
-        if m.get('Tag') is not None:
-            self.tag = m.get('Tag')
+            self.mapping_tag = m.get('MappingTag')
 
         return self
 

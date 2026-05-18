@@ -1,3 +1,15 @@
+2026-05-18 Version: 5.0.0
+- Update API PageQueryAgentListNew: update request parameters AgentId' type has changed.
+- Update API PageQueryAgentListNew: update request parameters AgentId' format has changed.
+- Update API QueryAiVoiceAgentDetailNew: update request parameters AgentId' type has changed.
+- Update API QueryAiVoiceAgentDetailNew: update request parameters AgentId' format has changed.
+- Update API QueryAiVoiceAgentDetailNew: update request parameters BranchId' type has changed.
+- Update API QueryAiVoiceAgentDetailNew: update request parameters BranchId' format has changed.
+- Update API QueryAiVoiceAgentDetailNew: update request parameters VersionId' type has changed.
+- Update API QueryAiVoiceAgentDetailNew: update request parameters VersionId' format has changed.
+- Update API QueryAiVoiceAgentDetailNew: delete response parameters Body.Data.SummaryConfig.CallResultTagConfig.MappingTag.
+
+
 2026-05-15 Version: 4.0.0
 - Support API PageQueryAgentListNew.
 - Support API QueryAiVoiceAgentDetailNew.
