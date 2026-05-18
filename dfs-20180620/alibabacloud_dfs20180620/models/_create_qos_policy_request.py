@@ -1,0 +1,108 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from typing import List
+
+from darabonba.model import DaraModel
+
+class CreateQosPolicyRequest(DaraModel):
+    def __init__(
+        self,
+        description: str = None,
+        federation_id: str = None,
+        file_system_id: str = None,
+        flow_ids: List[int] = None,
+        input_region_id: str = None,
+        max_ioband_width: int = None,
+        max_iops: int = None,
+        max_meta_qps: int = None,
+        req_tags: List[str] = None,
+        zone_ids: List[str] = None,
+    ):
+        self.description = description
+        self.federation_id = federation_id
+        self.file_system_id = file_system_id
+        self.flow_ids = flow_ids
+        # This parameter is required.
+        self.input_region_id = input_region_id
+        self.max_ioband_width = max_ioband_width
+        self.max_iops = max_iops
+        self.max_meta_qps = max_meta_qps
+        self.req_tags = req_tags
+        self.zone_ids = zone_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.description is not None:
+            result['Description'] = self.description
+
+        if self.federation_id is not None:
+            result['FederationId'] = self.federation_id
+
+        if self.file_system_id is not None:
+            result['FileSystemId'] = self.file_system_id
+
+        if self.flow_ids is not None:
+            result['FlowIds'] = self.flow_ids
+
+        if self.input_region_id is not None:
+            result['InputRegionId'] = self.input_region_id
+
+        if self.max_ioband_width is not None:
+            result['MaxIOBandWidth'] = self.max_ioband_width
+
+        if self.max_iops is not None:
+            result['MaxIOps'] = self.max_iops
+
+        if self.max_meta_qps is not None:
+            result['MaxMetaQps'] = self.max_meta_qps
+
+        if self.req_tags is not None:
+            result['ReqTags'] = self.req_tags
+
+        if self.zone_ids is not None:
+            result['ZoneIds'] = self.zone_ids
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+
+        if m.get('FederationId') is not None:
+            self.federation_id = m.get('FederationId')
+
+        if m.get('FileSystemId') is not None:
+            self.file_system_id = m.get('FileSystemId')
+
+        if m.get('FlowIds') is not None:
+            self.flow_ids = m.get('FlowIds')
+
+        if m.get('InputRegionId') is not None:
+            self.input_region_id = m.get('InputRegionId')
+
+        if m.get('MaxIOBandWidth') is not None:
+            self.max_ioband_width = m.get('MaxIOBandWidth')
+
+        if m.get('MaxIOps') is not None:
+            self.max_iops = m.get('MaxIOps')
+
+        if m.get('MaxMetaQps') is not None:
+            self.max_meta_qps = m.get('MaxMetaQps')
+
+        if m.get('ReqTags') is not None:
+            self.req_tags = m.get('ReqTags')
+
+        if m.get('ZoneIds') is not None:
+            self.zone_ids = m.get('ZoneIds')
+
+        return self
+

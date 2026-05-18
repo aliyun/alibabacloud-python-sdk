@@ -1,3 +1,7 @@
+2026-05-18 Version: 2.1.0
+- Support API DetachVscFromMountPoints.
+
+
 2025-12-03 Version: 2.0.0
 - Support API AttachVscToMountPoints.
 - Support API CreateQosPolicy.
