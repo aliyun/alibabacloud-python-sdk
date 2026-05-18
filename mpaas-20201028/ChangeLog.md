@@ -1,3 +1,8 @@
+2026-05-18 Version: 3.3.0
+- Support API CheckUserAuthToMscene.
+- Update API GetGameReviewByStatus: add response parameters Body.ResultContent.Content.$.TargetDetail.PublishStatusDesc.
+
+
 2026-04-15 Version: 3.2.0
 - Support API CreatePayOrderToMsence.
 - Support API GetAuthTokenToMsence.

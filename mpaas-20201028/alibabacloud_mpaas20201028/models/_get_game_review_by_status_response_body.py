@@ -323,6 +323,7 @@ class GetGameReviewByStatusResponseBodyResultContentContentTargetDetail(DaraMode
         mini_program_name: str = None,
         mini_resource_id: int = None,
         publish_status: int = None,
+        publish_status_desc: str = None,
         qr_code_url: str = None,
         review_target_type: str = None,
         sub_type: int = None,
@@ -340,6 +341,7 @@ class GetGameReviewByStatusResponseBodyResultContentContentTargetDetail(DaraMode
         self.mini_program_name = mini_program_name
         self.mini_resource_id = mini_resource_id
         self.publish_status = publish_status
+        self.publish_status_desc = publish_status_desc
         self.qr_code_url = qr_code_url
         self.review_target_type = review_target_type
         self.sub_type = sub_type
@@ -386,6 +388,9 @@ class GetGameReviewByStatusResponseBodyResultContentContentTargetDetail(DaraMode
 
         if self.publish_status is not None:
             result['PublishStatus'] = self.publish_status
+
+        if self.publish_status_desc is not None:
+            result['PublishStatusDesc'] = self.publish_status_desc
 
         if self.qr_code_url is not None:
             result['QrCodeUrl'] = self.qr_code_url
@@ -438,6 +443,9 @@ class GetGameReviewByStatusResponseBodyResultContentContentTargetDetail(DaraMode
 
         if m.get('PublishStatus') is not None:
             self.publish_status = m.get('PublishStatus')
+
+        if m.get('PublishStatusDesc') is not None:
+            self.publish_status_desc = m.get('PublishStatusDesc')
 
         if m.get('QrCodeUrl') is not None:
             self.qr_code_url = m.get('QrCodeUrl')

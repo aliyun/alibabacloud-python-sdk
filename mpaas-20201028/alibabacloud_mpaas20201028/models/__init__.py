@@ -20,6 +20,9 @@ from ._change_mcube_public_task_status_response import ChangeMcubePublicTaskStat
 from ._change_mds_cube_task_status_request import ChangeMdsCubeTaskStatusRequest
 from ._change_mds_cube_task_status_response_body import ChangeMdsCubeTaskStatusResponseBody
 from ._change_mds_cube_task_status_response import ChangeMdsCubeTaskStatusResponse
+from ._check_user_auth_to_mscene_request import CheckUserAuthToMsceneRequest
+from ._check_user_auth_to_mscene_response_body import CheckUserAuthToMsceneResponseBody
+from ._check_user_auth_to_mscene_response import CheckUserAuthToMsceneResponse
 from ._copy_mcdp_group_request import CopyMcdpGroupRequest
 from ._copy_mcdp_group_response_body import CopyMcdpGroupResponseBody
 from ._copy_mcdp_group_response import CopyMcdpGroupResponse
@@ -396,6 +399,7 @@ from ._change_mcube_nebula_task_status_response_body import ChangeMcubeNebulaTas
 from ._change_mcube_public_task_status_response_body import ChangeMcubePublicTaskStatusResponseBodyResultContent
 from ._change_mds_cube_task_status_response_body import ChangeMdsCubeTaskStatusResponseBodyResultContentData
 from ._change_mds_cube_task_status_response_body import ChangeMdsCubeTaskStatusResponseBodyResultContent
+from ._check_user_auth_to_mscene_response_body import CheckUserAuthToMsceneResponseBodyMpaasUserAuthCheckResponse
 from ._copy_mcdp_group_response_body import CopyMcdpGroupResponseBodyResultContent
 from ._create_link_response_body import CreateLinkResponseBodyResultContent
 from ._create_mcdp_group_response_body import CreateMcdpGroupResponseBodyResultContent
@@ -656,6 +660,9 @@ __all__ = [
     ChangeMdsCubeTaskStatusRequest,
     ChangeMdsCubeTaskStatusResponseBody,
     ChangeMdsCubeTaskStatusResponse,
+    CheckUserAuthToMsceneRequest,
+    CheckUserAuthToMsceneResponseBody,
+    CheckUserAuthToMsceneResponse,
     CopyMcdpGroupRequest,
     CopyMcdpGroupResponseBody,
     CopyMcdpGroupResponse,
@@ -1032,6 +1039,7 @@ __all__ = [
     ChangeMcubePublicTaskStatusResponseBodyResultContent,
     ChangeMdsCubeTaskStatusResponseBodyResultContentData,
     ChangeMdsCubeTaskStatusResponseBodyResultContent,
+    CheckUserAuthToMsceneResponseBodyMpaasUserAuthCheckResponse,
     CopyMcdpGroupResponseBodyResultContent,
     CreateLinkResponseBodyResultContent,
     CreateMcdpGroupResponseBodyResultContent,

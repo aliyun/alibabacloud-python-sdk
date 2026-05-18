@@ -628,6 +628,100 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.change_mds_cube_task_status_with_options_async(request, runtime)
 
+    def check_user_auth_to_mscene_with_options(
+        self,
+        request: main_models.CheckUserAuthToMsceneRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CheckUserAuthToMsceneResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.app_id):
+            body['AppId'] = request.app_id
+        if not DaraCore.is_null(request.auth_token):
+            body['AuthToken'] = request.auth_token
+        if not DaraCore.is_null(request.mini_program_id):
+            body['MiniProgramId'] = request.mini_program_id
+        if not DaraCore.is_null(request.open_uid):
+            body['OpenUid'] = request.open_uid
+        if not DaraCore.is_null(request.platform_id):
+            body['PlatformId'] = request.platform_id
+        if not DaraCore.is_null(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CheckUserAuthToMscene',
+            version = '2020-10-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CheckUserAuthToMsceneResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def check_user_auth_to_mscene_with_options_async(
+        self,
+        request: main_models.CheckUserAuthToMsceneRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CheckUserAuthToMsceneResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.app_id):
+            body['AppId'] = request.app_id
+        if not DaraCore.is_null(request.auth_token):
+            body['AuthToken'] = request.auth_token
+        if not DaraCore.is_null(request.mini_program_id):
+            body['MiniProgramId'] = request.mini_program_id
+        if not DaraCore.is_null(request.open_uid):
+            body['OpenUid'] = request.open_uid
+        if not DaraCore.is_null(request.platform_id):
+            body['PlatformId'] = request.platform_id
+        if not DaraCore.is_null(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CheckUserAuthToMscene',
+            version = '2020-10-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CheckUserAuthToMsceneResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def check_user_auth_to_mscene(
+        self,
+        request: main_models.CheckUserAuthToMsceneRequest,
+    ) -> main_models.CheckUserAuthToMsceneResponse:
+        runtime = RuntimeOptions()
+        return self.check_user_auth_to_mscene_with_options(request, runtime)
+
+    async def check_user_auth_to_mscene_async(
+        self,
+        request: main_models.CheckUserAuthToMsceneRequest,
+    ) -> main_models.CheckUserAuthToMsceneResponse:
+        runtime = RuntimeOptions()
+        return await self.check_user_auth_to_mscene_with_options_async(request, runtime)
+
     def copy_mcdp_group_with_options(
         self,
         request: main_models.CopyMcdpGroupRequest,
