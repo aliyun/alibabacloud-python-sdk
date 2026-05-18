@@ -1,3 +1,10 @@
+2026-05-18 Version: 10.0.0
+- Update API DsgDesensPlanAddOrUpdate: add request parameters DesensRules.$.emptyNotDesens.
+- Update API DsgDesensPlanAddOrUpdate: delete request parameters DesensRules.$.emptyNotDesesn.
+- Update API DsgQuerySensResult: add request parameters endDate.
+- Update API DsgQuerySensResult: add request parameters startDate.
+
+
 2026-04-07 Version: 9.0.0
 - Support API DsgQueryDesensStatusList.
 - Support API DsgUpdateDesensStatusList.

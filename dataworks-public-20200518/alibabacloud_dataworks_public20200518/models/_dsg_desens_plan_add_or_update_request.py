@@ -57,7 +57,7 @@ class DsgDesensPlanAddOrUpdateRequestDesensRules(DaraModel):
         scene_ids: List[int] = None,
         status: int = None,
         columns: List[main_models.DsgDesensPlanAddOrUpdateRequestDesensRulesColumns] = None,
-        empty_not_desesn: bool = None,
+        empty_not_desens: bool = None,
     ):
         # Specifies whether to add a watermark. Valid values:
         # 
@@ -90,7 +90,7 @@ class DsgDesensPlanAddOrUpdateRequestDesensRules(DaraModel):
         # *   1: effective
         self.status = status
         self.columns = columns
-        self.empty_not_desesn = empty_not_desesn
+        self.empty_not_desens = empty_not_desens
 
     def validate(self):
         if self.desens_plan:
@@ -134,8 +134,8 @@ class DsgDesensPlanAddOrUpdateRequestDesensRules(DaraModel):
             for k1 in self.columns:
                 result['columns'].append(k1.to_map() if k1 else None)
 
-        if self.empty_not_desesn is not None:
-            result['emptyNotDesesn'] = self.empty_not_desesn
+        if self.empty_not_desens is not None:
+            result['emptyNotDesens'] = self.empty_not_desens
 
         return result
 
@@ -172,8 +172,8 @@ class DsgDesensPlanAddOrUpdateRequestDesensRules(DaraModel):
                 temp_model = main_models.DsgDesensPlanAddOrUpdateRequestDesensRulesColumns()
                 self.columns.append(temp_model.from_map(k1))
 
-        if m.get('emptyNotDesesn') is not None:
-            self.empty_not_desesn = m.get('emptyNotDesesn')
+        if m.get('emptyNotDesens') is not None:
+            self.empty_not_desens = m.get('emptyNotDesens')
 
         return self
 

@@ -22,6 +22,8 @@ class DsgQuerySensResultRequest(DaraModel):
         sensitive_name: str = None,
         table: str = None,
         tenant_id: str = None,
+        end_date: str = None,
+        start_date: str = None,
     ):
         # The name of the field.
         self.col = col
@@ -65,9 +67,9 @@ class DsgQuerySensResultRequest(DaraModel):
         # The name of the table.
         self.table = table
         # The tenant ID. To obtain the tenant ID, perform the following steps: Log on to the [DataWorks console](https://workbench.data.aliyun.com/console). Find your workspace and go to the DataStudio page. On the DataStudio page, click the logon username in the upper-right corner and click User Info in the Menu section.
-        # 
-        # This parameter is required.
         self.tenant_id = tenant_id
+        self.end_date = end_date
+        self.start_date = start_date
 
     def validate(self):
         pass
@@ -122,6 +124,12 @@ class DsgQuerySensResultRequest(DaraModel):
         if self.tenant_id is not None:
             result['TenantId'] = self.tenant_id
 
+        if self.end_date is not None:
+            result['endDate'] = self.end_date
+
+        if self.start_date is not None:
+            result['startDate'] = self.start_date
+
         return result
 
     def from_map(self, m: dict = None):
@@ -170,6 +178,12 @@ class DsgQuerySensResultRequest(DaraModel):
 
         if m.get('TenantId') is not None:
             self.tenant_id = m.get('TenantId')
+
+        if m.get('endDate') is not None:
+            self.end_date = m.get('endDate')
+
+        if m.get('startDate') is not None:
+            self.start_date = m.get('startDate')
 
         return self
 
