@@ -590,6 +590,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.api_passthrough_shrink):
             query['ApiPassthrough'] = request.api_passthrough_shrink
+        if not DaraCore.is_null(request.cert_max_time):
+            query['CertMaxTime'] = request.cert_max_time
         if not DaraCore.is_null(request.csr):
             query['Csr'] = request.csr
         if not DaraCore.is_null(request.instance_id):
@@ -632,6 +634,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.api_passthrough_shrink):
             query['ApiPassthrough'] = request.api_passthrough_shrink
+        if not DaraCore.is_null(request.cert_max_time):
+            query['CertMaxTime'] = request.cert_max_time
         if not DaraCore.is_null(request.csr):
             query['Csr'] = request.csr
         if not DaraCore.is_null(request.instance_id):
@@ -1152,6 +1156,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.algorithm):
             query['Algorithm'] = request.algorithm
+        if not DaraCore.is_null(request.cert_max_time):
+            query['CertMaxTime'] = request.cert_max_time
         if not DaraCore.is_null(request.common_name):
             query['CommonName'] = request.common_name
         if not DaraCore.is_null(request.country_code):
@@ -1212,6 +1218,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.algorithm):
             query['Algorithm'] = request.algorithm
+        if not DaraCore.is_null(request.cert_max_time):
+            query['CertMaxTime'] = request.cert_max_time
         if not DaraCore.is_null(request.common_name):
             query['CommonName'] = request.common_name
         if not DaraCore.is_null(request.country_code):

@@ -1,3 +1,8 @@
+2026-05-18 Version: 2.0.2
+- Update API CreateExternalCACertificate: add request parameters CertMaxTime.
+- Update API CreateSubCACertificate: add request parameters CertMaxTime.
+
+
 2026-04-01 Version: 2.0.1
 - Update API DescribePcaAndExternalCACertificateList: add request parameters Identifiers.
 - Update API DescribePcaAndExternalCACertificateList: add request parameters KeyWord.

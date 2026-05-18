@@ -11,6 +11,7 @@ class CreateExternalCACertificateShrinkRequest(DaraModel):
     def __init__(
         self,
         api_passthrough_shrink: str = None,
+        cert_max_time: int = None,
         csr: str = None,
         instance_id: str = None,
         resource_group_id: str = None,
@@ -18,6 +19,7 @@ class CreateExternalCACertificateShrinkRequest(DaraModel):
         validity: str = None,
     ):
         self.api_passthrough_shrink = api_passthrough_shrink
+        self.cert_max_time = cert_max_time
         self.csr = csr
         self.instance_id = instance_id
         self.resource_group_id = resource_group_id
@@ -37,6 +39,9 @@ class CreateExternalCACertificateShrinkRequest(DaraModel):
             result = _map
         if self.api_passthrough_shrink is not None:
             result['ApiPassthrough'] = self.api_passthrough_shrink
+
+        if self.cert_max_time is not None:
+            result['CertMaxTime'] = self.cert_max_time
 
         if self.csr is not None:
             result['Csr'] = self.csr
@@ -61,6 +66,9 @@ class CreateExternalCACertificateShrinkRequest(DaraModel):
         m = m or dict()
         if m.get('ApiPassthrough') is not None:
             self.api_passthrough_shrink = m.get('ApiPassthrough')
+
+        if m.get('CertMaxTime') is not None:
+            self.cert_max_time = m.get('CertMaxTime')
 
         if m.get('Csr') is not None:
             self.csr = m.get('Csr')

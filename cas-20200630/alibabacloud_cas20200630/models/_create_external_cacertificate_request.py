@@ -11,6 +11,7 @@ class CreateExternalCACertificateRequest(DaraModel):
     def __init__(
         self,
         api_passthrough: main_models.CreateExternalCACertificateRequestApiPassthrough = None,
+        cert_max_time: int = None,
         csr: str = None,
         instance_id: str = None,
         resource_group_id: str = None,
@@ -18,6 +19,7 @@ class CreateExternalCACertificateRequest(DaraModel):
         validity: str = None,
     ):
         self.api_passthrough = api_passthrough
+        self.cert_max_time = cert_max_time
         self.csr = csr
         self.instance_id = instance_id
         self.resource_group_id = resource_group_id
@@ -39,6 +41,9 @@ class CreateExternalCACertificateRequest(DaraModel):
             result = _map
         if self.api_passthrough is not None:
             result['ApiPassthrough'] = self.api_passthrough.to_map()
+
+        if self.cert_max_time is not None:
+            result['CertMaxTime'] = self.cert_max_time
 
         if self.csr is not None:
             result['Csr'] = self.csr
@@ -64,6 +69,9 @@ class CreateExternalCACertificateRequest(DaraModel):
         if m.get('ApiPassthrough') is not None:
             temp_model = main_models.CreateExternalCACertificateRequestApiPassthrough()
             self.api_passthrough = temp_model.from_map(m.get('ApiPassthrough'))
+
+        if m.get('CertMaxTime') is not None:
+            self.cert_max_time = m.get('CertMaxTime')
 
         if m.get('Csr') is not None:
             self.csr = m.get('Csr')

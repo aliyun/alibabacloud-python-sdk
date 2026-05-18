@@ -11,6 +11,7 @@ class CreateSubCACertificateRequest(DaraModel):
     def __init__(
         self,
         algorithm: str = None,
+        cert_max_time: int = None,
         client_token: str = None,
         common_name: str = None,
         country_code: str = None,
@@ -41,6 +42,7 @@ class CreateSubCACertificateRequest(DaraModel):
         # 
         # This parameter is required.
         self.algorithm = algorithm
+        self.cert_max_time = cert_max_time
         self.client_token = client_token
         # The common name or abbreviation of the organization. The value can contain letters.
         # 
@@ -106,6 +108,9 @@ class CreateSubCACertificateRequest(DaraModel):
         if self.algorithm is not None:
             result['Algorithm'] = self.algorithm
 
+        if self.cert_max_time is not None:
+            result['CertMaxTime'] = self.cert_max_time
+
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
 
@@ -159,6 +164,9 @@ class CreateSubCACertificateRequest(DaraModel):
         m = m or dict()
         if m.get('Algorithm') is not None:
             self.algorithm = m.get('Algorithm')
+
+        if m.get('CertMaxTime') is not None:
+            self.cert_max_time = m.get('CertMaxTime')
 
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
