@@ -513,11 +513,9 @@ class Client(OpenApiClient):
     def delete_job_with_options(
         self,
         job_id: str,
-        request: main_models.DeleteJobRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteJobResponse:
-        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -540,11 +538,9 @@ class Client(OpenApiClient):
     async def delete_job_with_options_async(
         self,
         job_id: str,
-        request: main_models.DeleteJobRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteJobResponse:
-        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -567,20 +563,18 @@ class Client(OpenApiClient):
     def delete_job(
         self,
         job_id: str,
-        request: main_models.DeleteJobRequest,
     ) -> main_models.DeleteJobResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.delete_job_with_options(job_id, request, headers, runtime)
+        return self.delete_job_with_options(job_id, headers, runtime)
 
     async def delete_job_async(
         self,
         job_id: str,
-        request: main_models.DeleteJobRequest,
     ) -> main_models.DeleteJobResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.delete_job_with_options_async(job_id, request, headers, runtime)
+        return await self.delete_job_with_options_async(job_id, headers, runtime)
 
     def delete_job_template_with_options(
         self,
@@ -2693,11 +2687,9 @@ class Client(OpenApiClient):
     def stop_job_with_options(
         self,
         job_id: str,
-        request: main_models.StopJobRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.StopJobResponse:
-        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -2720,11 +2712,9 @@ class Client(OpenApiClient):
     async def stop_job_with_options_async(
         self,
         job_id: str,
-        request: main_models.StopJobRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.StopJobResponse:
-        request.validate()
         req = open_api_util_models.OpenApiRequest(
             headers = headers
         )
@@ -2747,20 +2737,18 @@ class Client(OpenApiClient):
     def stop_job(
         self,
         job_id: str,
-        request: main_models.StopJobRequest,
     ) -> main_models.StopJobResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.stop_job_with_options(job_id, request, headers, runtime)
+        return self.stop_job_with_options(job_id, headers, runtime)
 
     async def stop_job_async(
         self,
         job_id: str,
-        request: main_models.StopJobRequest,
     ) -> main_models.StopJobResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.stop_job_with_options_async(job_id, request, headers, runtime)
+        return await self.stop_job_with_options_async(job_id, headers, runtime)
 
     def stop_tensorboard_with_options(
         self,

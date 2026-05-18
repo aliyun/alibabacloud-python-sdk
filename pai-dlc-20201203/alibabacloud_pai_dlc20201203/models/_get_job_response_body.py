@@ -613,6 +613,7 @@ class GetJobResponseBodyRestartRecord(DaraModel):
         reason: str = None,
         restart_duration_in_sec: int = None,
         restart_fail_reason: str = None,
+        restart_level_type: str = None,
         restart_status: str = None,
         trigger_id: str = None,
     ):
@@ -623,6 +624,7 @@ class GetJobResponseBodyRestartRecord(DaraModel):
         self.reason = reason
         self.restart_duration_in_sec = restart_duration_in_sec
         self.restart_fail_reason = restart_fail_reason
+        self.restart_level_type = restart_level_type
         self.restart_status = restart_status
         self.trigger_id = trigger_id
 
@@ -660,6 +662,9 @@ class GetJobResponseBodyRestartRecord(DaraModel):
         if self.restart_fail_reason is not None:
             result['RestartFailReason'] = self.restart_fail_reason
 
+        if self.restart_level_type is not None:
+            result['RestartLevelType'] = self.restart_level_type
+
         if self.restart_status is not None:
             result['RestartStatus'] = self.restart_status
 
@@ -693,6 +698,9 @@ class GetJobResponseBodyRestartRecord(DaraModel):
 
         if m.get('RestartFailReason') is not None:
             self.restart_fail_reason = m.get('RestartFailReason')
+
+        if m.get('RestartLevelType') is not None:
+            self.restart_level_type = m.get('RestartLevelType')
 
         if m.get('RestartStatus') is not None:
             self.restart_status = m.get('RestartStatus')
