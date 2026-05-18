@@ -298,6 +298,7 @@ class DescribeBackupPolicyResponseBodyAdvancedDataPoliciesAdvancedDataPolicy(Dar
         retention_value: str = None,
         src_region: str = None,
         src_type: str = None,
+        storage_class: str = None,
     ):
         self.auto_created = auto_created
         self.bak_type = bak_type
@@ -314,6 +315,7 @@ class DescribeBackupPolicyResponseBodyAdvancedDataPoliciesAdvancedDataPolicy(Dar
         self.retention_value = retention_value
         self.src_region = src_region
         self.src_type = src_type
+        self.storage_class = storage_class
 
     def validate(self):
         pass
@@ -368,6 +370,9 @@ class DescribeBackupPolicyResponseBodyAdvancedDataPoliciesAdvancedDataPolicy(Dar
         if self.src_type is not None:
             result['SrcType'] = self.src_type
 
+        if self.storage_class is not None:
+            result['StorageClass'] = self.storage_class
+
         return result
 
     def from_map(self, m: dict = None):
@@ -416,6 +421,9 @@ class DescribeBackupPolicyResponseBodyAdvancedDataPoliciesAdvancedDataPolicy(Dar
 
         if m.get('SrcType') is not None:
             self.src_type = m.get('SrcType')
+
+        if m.get('StorageClass') is not None:
+            self.storage_class = m.get('StorageClass')
 
         return self
 

@@ -28,6 +28,9 @@ from ._apply_application_prompts_request import ApplyApplicationPromptsRequest
 from ._apply_application_prompts_shrink_request import ApplyApplicationPromptsShrinkRequest
 from ._apply_application_prompts_response_body import ApplyApplicationPromptsResponseBody
 from ._apply_application_prompts_response import ApplyApplicationPromptsResponse
+from ._approve_polar_claw_device_pair_request import ApprovePolarClawDevicePairRequest
+from ._approve_polar_claw_device_pair_response_body import ApprovePolarClawDevicePairResponseBody
+from ._approve_polar_claw_device_pair_response import ApprovePolarClawDevicePairResponse
 from ._attach_application_polar_fsrequest import AttachApplicationPolarFSRequest
 from ._attach_application_polar_fsresponse_body import AttachApplicationPolarFSResponseBody
 from ._attach_application_polar_fsresponse import AttachApplicationPolarFSResponse
@@ -397,6 +400,9 @@ from ._describe_application_parameters_request import DescribeApplicationParamet
 from ._describe_application_parameters_shrink_request import DescribeApplicationParametersShrinkRequest
 from ._describe_application_parameters_response_body import DescribeApplicationParametersResponseBody
 from ._describe_application_parameters_response import DescribeApplicationParametersResponse
+from ._describe_application_performance_request import DescribeApplicationPerformanceRequest
+from ._describe_application_performance_response_body import DescribeApplicationPerformanceResponseBody
+from ._describe_application_performance_response import DescribeApplicationPerformanceResponse
 from ._describe_application_prompts_request import DescribeApplicationPromptsRequest
 from ._describe_application_prompts_response_body import DescribeApplicationPromptsResponseBody
 from ._describe_application_prompts_response import DescribeApplicationPromptsResponse
@@ -692,6 +698,9 @@ from ._describe_polar_claw_mcpservers_response import DescribePolarClawMCPServer
 from ._describe_polar_claw_plugins_request import DescribePolarClawPluginsRequest
 from ._describe_polar_claw_plugins_response_body import DescribePolarClawPluginsResponseBody
 from ._describe_polar_claw_plugins_response import DescribePolarClawPluginsResponse
+from ._describe_polar_claw_task_request import DescribePolarClawTaskRequest
+from ._describe_polar_claw_task_response_body import DescribePolarClawTaskResponseBody
+from ._describe_polar_claw_task_response import DescribePolarClawTaskResponse
 from ._describe_polar_fs_attribute_request import DescribePolarFsAttributeRequest
 from ._describe_polar_fs_attribute_response_body import DescribePolarFsAttributeResponseBody
 from ._describe_polar_fs_attribute_response import DescribePolarFsAttributeResponse
@@ -701,6 +710,9 @@ from ._describe_polar_fs_objects_response import DescribePolarFsObjectsResponse
 from ._describe_polar_fs_quota_request import DescribePolarFsQuotaRequest
 from ._describe_polar_fs_quota_response_body import DescribePolarFsQuotaResponseBody
 from ._describe_polar_fs_quota_response import DescribePolarFsQuotaResponse
+from ._describe_polar_fs_quota_list_request import DescribePolarFsQuotaListRequest
+from ._describe_polar_fs_quota_list_response_body import DescribePolarFsQuotaListResponseBody
+from ._describe_polar_fs_quota_list_response import DescribePolarFsQuotaListResponse
 from ._describe_polar_sqlcollector_policy_request import DescribePolarSQLCollectorPolicyRequest
 from ._describe_polar_sqlcollector_policy_response_body import DescribePolarSQLCollectorPolicyResponseBody
 from ._describe_polar_sqlcollector_policy_response import DescribePolarSQLCollectorPolicyResponse
@@ -830,12 +842,18 @@ from ._list_polar_claw_bindings_request import ListPolarClawBindingsRequest
 from ._list_polar_claw_bindings_shrink_request import ListPolarClawBindingsShrinkRequest
 from ._list_polar_claw_bindings_response_body import ListPolarClawBindingsResponseBody
 from ._list_polar_claw_bindings_response import ListPolarClawBindingsResponse
+from ._list_polar_claw_device_pairs_request import ListPolarClawDevicePairsRequest
+from ._list_polar_claw_device_pairs_response_body import ListPolarClawDevicePairsResponseBody
+from ._list_polar_claw_device_pairs_response import ListPolarClawDevicePairsResponse
 from ._list_tag_resources_request import ListTagResourcesRequest
 from ._list_tag_resources_response_body import ListTagResourcesResponseBody
 from ._list_tag_resources_response import ListTagResourcesResponse
 from ._list_tag_resources_for_region_request import ListTagResourcesForRegionRequest
 from ._list_tag_resources_for_region_response_body import ListTagResourcesForRegionResponseBody
 from ._list_tag_resources_for_region_response import ListTagResourcesForRegionResponse
+from ._login_polar_claw_channel_request import LoginPolarClawChannelRequest
+from ._login_polar_claw_channel_response_body import LoginPolarClawChannelResponseBody
+from ._login_polar_claw_channel_response import LoginPolarClawChannelResponse
 from ._manually_start_dbcluster_request import ManuallyStartDBClusterRequest
 from ._manually_start_dbcluster_response_body import ManuallyStartDBClusterResponseBody
 from ._manually_start_dbcluster_response import ManuallyStartDBClusterResponse
@@ -1065,6 +1083,9 @@ from ._reactivate_dbcluster_backup_response import ReactivateDBClusterBackupResp
 from ._refresh_dbcluster_storage_usage_request import RefreshDBClusterStorageUsageRequest
 from ._refresh_dbcluster_storage_usage_response_body import RefreshDBClusterStorageUsageResponseBody
 from ._refresh_dbcluster_storage_usage_response import RefreshDBClusterStorageUsageResponse
+from ._reject_polar_claw_device_pair_request import RejectPolarClawDevicePairRequest
+from ._reject_polar_claw_device_pair_response_body import RejectPolarClawDevicePairResponseBody
+from ._reject_polar_claw_device_pair_response import RejectPolarClawDevicePairResponse
 from ._remove_application_environment_variables_request import RemoveApplicationEnvironmentVariablesRequest
 from ._remove_application_environment_variables_shrink_request import RemoveApplicationEnvironmentVariablesShrinkRequest
 from ._remove_application_environment_variables_response_body import RemoveApplicationEnvironmentVariablesResponseBody
@@ -1072,6 +1093,9 @@ from ._remove_application_environment_variables_response import RemoveApplicatio
 from ._remove_dbcluster_from_gdnrequest import RemoveDBClusterFromGDNRequest
 from ._remove_dbcluster_from_gdnresponse_body import RemoveDBClusterFromGDNResponseBody
 from ._remove_dbcluster_from_gdnresponse import RemoveDBClusterFromGDNResponse
+from ._remove_polar_claw_device_pair_request import RemovePolarClawDevicePairRequest
+from ._remove_polar_claw_device_pair_response_body import RemovePolarClawDevicePairResponseBody
+from ._remove_polar_claw_device_pair_response import RemovePolarClawDevicePairResponse
 from ._remove_polar_claw_mcpserver_request import RemovePolarClawMCPServerRequest
 from ._remove_polar_claw_mcpserver_response_body import RemovePolarClawMCPServerResponseBody
 from ._remove_polar_claw_mcpserver_response import RemovePolarClawMCPServerResponse
@@ -1171,6 +1195,7 @@ from ._upgrade_polar_claw_skills_response_body import UpgradePolarClawSkillsResp
 from ._upgrade_polar_claw_skills_response import UpgradePolarClawSkillsResponse
 from ._add_polar_fs_path_mapping_request import AddPolarFsPathMappingRequestCustomBucketPathList
 from ._add_polar_fs_quota_request import AddPolarFsQuotaRequestQuotas
+from ._approve_polar_claw_device_pair_response_body import ApprovePolarClawDevicePairResponseBodyDevice
 from ._bind_polar_claw_agent_response_body import BindPolarClawAgentResponseBodyBinding
 from ._check_polar_fs_quota_consistency_response_body import CheckPolarFsQuotaConsistencyResponseBodyQuotaItem
 from ._create_aidbcluster_request import CreateAIDBClusterRequestTimeSlices
@@ -1249,6 +1274,10 @@ from ._describe_application_parameters_response_body import DescribeApplicationP
 from ._describe_application_parameters_response_body import DescribeApplicationParametersResponseBodyParametersComponentParametersParameters
 from ._describe_application_parameters_response_body import DescribeApplicationParametersResponseBodyParametersComponentParameters
 from ._describe_application_parameters_response_body import DescribeApplicationParametersResponseBodyParameters
+from ._describe_application_performance_response_body import DescribeApplicationPerformanceResponseBodyPerformanceKeysPerformanceItemPointsPerformanceItemValue
+from ._describe_application_performance_response_body import DescribeApplicationPerformanceResponseBodyPerformanceKeysPerformanceItemPoints
+from ._describe_application_performance_response_body import DescribeApplicationPerformanceResponseBodyPerformanceKeysPerformanceItem
+from ._describe_application_performance_response_body import DescribeApplicationPerformanceResponseBodyPerformanceKeys
 from ._describe_application_prompts_response_body import DescribeApplicationPromptsResponseBodyItems
 from ._describe_application_serverless_conf_response_body import DescribeApplicationServerlessConfResponseBodyServerlessConfItems
 from ._describe_applications_request import DescribeApplicationsRequestTag
@@ -1432,11 +1461,14 @@ from ._describe_polar_claw_cron_jobs_response_body import DescribePolarClawCronJ
 from ._describe_polar_claw_cron_jobs_response_body import DescribePolarClawCronJobsResponseBodyJobs
 from ._describe_polar_claw_plugins_response_body import DescribePolarClawPluginsResponseBodyDiagnostics
 from ._describe_polar_claw_plugins_response_body import DescribePolarClawPluginsResponseBodyPlugins
+from ._describe_polar_claw_task_response_body import DescribePolarClawTaskResponseBodyTaskError
+from ._describe_polar_claw_task_response_body import DescribePolarClawTaskResponseBodyTask
 from ._describe_polar_fs_attribute_response_body import DescribePolarFsAttributeResponseBodyCustomBucketPathList
 from ._describe_polar_fs_attribute_response_body import DescribePolarFsAttributeResponseBodyMountInfo
 from ._describe_polar_fs_objects_response_body import DescribePolarFsObjectsResponseBodyItems
 from ._describe_polar_fs_quota_response_body import DescribePolarFsQuotaResponseBodyPolicyItems
 from ._describe_polar_fs_quota_response_body import DescribePolarFsQuotaResponseBodyQuotaItems
+from ._describe_polar_fs_quota_list_response_body import DescribePolarFsQuotaListResponseBodyQuotaItems
 from ._describe_rate_limit_policy_response_body import DescribeRateLimitPolicyResponseBodyItems
 from ._describe_rds_vswitchs_response_body import DescribeRdsVSwitchsResponseBodyVSwitchesVSwitch
 from ._describe_rds_vswitchs_response_body import DescribeRdsVSwitchsResponseBodyVSwitches
@@ -1470,6 +1502,8 @@ from ._get_polar_agent_response_body import GetPolarAgentResponseBodyFunctionCal
 from ._get_polar_agent_response_body import GetPolarAgentResponseBodyUiFunctionCall
 from ._list_orders_response_body import ListOrdersResponseBodyOrderList
 from ._list_polar_claw_bindings_response_body import ListPolarClawBindingsResponseBodyBindings
+from ._list_polar_claw_device_pairs_response_body import ListPolarClawDevicePairsResponseBodyPaired
+from ._list_polar_claw_device_pairs_response_body import ListPolarClawDevicePairsResponseBodyPending
 from ._list_tag_resources_request import ListTagResourcesRequestTag
 from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResourcesTagResource
 from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResources
@@ -1530,6 +1564,9 @@ __all__ = [
     ApplyApplicationPromptsShrinkRequest,
     ApplyApplicationPromptsResponseBody,
     ApplyApplicationPromptsResponse,
+    ApprovePolarClawDevicePairRequest,
+    ApprovePolarClawDevicePairResponseBody,
+    ApprovePolarClawDevicePairResponse,
     AttachApplicationPolarFSRequest,
     AttachApplicationPolarFSResponseBody,
     AttachApplicationPolarFSResponse,
@@ -1899,6 +1936,9 @@ __all__ = [
     DescribeApplicationParametersShrinkRequest,
     DescribeApplicationParametersResponseBody,
     DescribeApplicationParametersResponse,
+    DescribeApplicationPerformanceRequest,
+    DescribeApplicationPerformanceResponseBody,
+    DescribeApplicationPerformanceResponse,
     DescribeApplicationPromptsRequest,
     DescribeApplicationPromptsResponseBody,
     DescribeApplicationPromptsResponse,
@@ -2194,6 +2234,9 @@ __all__ = [
     DescribePolarClawPluginsRequest,
     DescribePolarClawPluginsResponseBody,
     DescribePolarClawPluginsResponse,
+    DescribePolarClawTaskRequest,
+    DescribePolarClawTaskResponseBody,
+    DescribePolarClawTaskResponse,
     DescribePolarFsAttributeRequest,
     DescribePolarFsAttributeResponseBody,
     DescribePolarFsAttributeResponse,
@@ -2203,6 +2246,9 @@ __all__ = [
     DescribePolarFsQuotaRequest,
     DescribePolarFsQuotaResponseBody,
     DescribePolarFsQuotaResponse,
+    DescribePolarFsQuotaListRequest,
+    DescribePolarFsQuotaListResponseBody,
+    DescribePolarFsQuotaListResponse,
     DescribePolarSQLCollectorPolicyRequest,
     DescribePolarSQLCollectorPolicyResponseBody,
     DescribePolarSQLCollectorPolicyResponse,
@@ -2332,12 +2378,18 @@ __all__ = [
     ListPolarClawBindingsShrinkRequest,
     ListPolarClawBindingsResponseBody,
     ListPolarClawBindingsResponse,
+    ListPolarClawDevicePairsRequest,
+    ListPolarClawDevicePairsResponseBody,
+    ListPolarClawDevicePairsResponse,
     ListTagResourcesRequest,
     ListTagResourcesResponseBody,
     ListTagResourcesResponse,
     ListTagResourcesForRegionRequest,
     ListTagResourcesForRegionResponseBody,
     ListTagResourcesForRegionResponse,
+    LoginPolarClawChannelRequest,
+    LoginPolarClawChannelResponseBody,
+    LoginPolarClawChannelResponse,
     ManuallyStartDBClusterRequest,
     ManuallyStartDBClusterResponseBody,
     ManuallyStartDBClusterResponse,
@@ -2567,6 +2619,9 @@ __all__ = [
     RefreshDBClusterStorageUsageRequest,
     RefreshDBClusterStorageUsageResponseBody,
     RefreshDBClusterStorageUsageResponse,
+    RejectPolarClawDevicePairRequest,
+    RejectPolarClawDevicePairResponseBody,
+    RejectPolarClawDevicePairResponse,
     RemoveApplicationEnvironmentVariablesRequest,
     RemoveApplicationEnvironmentVariablesShrinkRequest,
     RemoveApplicationEnvironmentVariablesResponseBody,
@@ -2574,6 +2629,9 @@ __all__ = [
     RemoveDBClusterFromGDNRequest,
     RemoveDBClusterFromGDNResponseBody,
     RemoveDBClusterFromGDNResponse,
+    RemovePolarClawDevicePairRequest,
+    RemovePolarClawDevicePairResponseBody,
+    RemovePolarClawDevicePairResponse,
     RemovePolarClawMCPServerRequest,
     RemovePolarClawMCPServerResponseBody,
     RemovePolarClawMCPServerResponse,
@@ -2673,6 +2731,7 @@ __all__ = [
     UpgradePolarClawSkillsResponse,
     AddPolarFsPathMappingRequestCustomBucketPathList,
     AddPolarFsQuotaRequestQuotas,
+    ApprovePolarClawDevicePairResponseBodyDevice,
     BindPolarClawAgentResponseBodyBinding,
     CheckPolarFsQuotaConsistencyResponseBodyQuotaItem,
     CreateAIDBClusterRequestTimeSlices,
@@ -2751,6 +2810,10 @@ __all__ = [
     DescribeApplicationParametersResponseBodyParametersComponentParametersParameters,
     DescribeApplicationParametersResponseBodyParametersComponentParameters,
     DescribeApplicationParametersResponseBodyParameters,
+    DescribeApplicationPerformanceResponseBodyPerformanceKeysPerformanceItemPointsPerformanceItemValue,
+    DescribeApplicationPerformanceResponseBodyPerformanceKeysPerformanceItemPoints,
+    DescribeApplicationPerformanceResponseBodyPerformanceKeysPerformanceItem,
+    DescribeApplicationPerformanceResponseBodyPerformanceKeys,
     DescribeApplicationPromptsResponseBodyItems,
     DescribeApplicationServerlessConfResponseBodyServerlessConfItems,
     DescribeApplicationsRequestTag,
@@ -2934,11 +2997,14 @@ __all__ = [
     DescribePolarClawCronJobsResponseBodyJobs,
     DescribePolarClawPluginsResponseBodyDiagnostics,
     DescribePolarClawPluginsResponseBodyPlugins,
+    DescribePolarClawTaskResponseBodyTaskError,
+    DescribePolarClawTaskResponseBodyTask,
     DescribePolarFsAttributeResponseBodyCustomBucketPathList,
     DescribePolarFsAttributeResponseBodyMountInfo,
     DescribePolarFsObjectsResponseBodyItems,
     DescribePolarFsQuotaResponseBodyPolicyItems,
     DescribePolarFsQuotaResponseBodyQuotaItems,
+    DescribePolarFsQuotaListResponseBodyQuotaItems,
     DescribeRateLimitPolicyResponseBodyItems,
     DescribeRdsVSwitchsResponseBodyVSwitchesVSwitch,
     DescribeRdsVSwitchsResponseBodyVSwitches,
@@ -2972,6 +3038,8 @@ __all__ = [
     GetPolarAgentResponseBodyUiFunctionCall,
     ListOrdersResponseBodyOrderList,
     ListPolarClawBindingsResponseBodyBindings,
+    ListPolarClawDevicePairsResponseBodyPaired,
+    ListPolarClawDevicePairsResponseBodyPending,
     ListTagResourcesRequestTag,
     ListTagResourcesResponseBodyTagResourcesTagResource,
     ListTagResourcesResponseBodyTagResources,

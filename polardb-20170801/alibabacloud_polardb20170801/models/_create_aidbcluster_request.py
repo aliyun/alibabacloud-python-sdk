@@ -75,7 +75,6 @@ class CreateAIDBClusterRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         self.security_group_id = security_group_id
         self.storage_space = storage_space
-        # This parameter is required.
         self.storage_type = storage_type
         self.time_slices = time_slices
         self.used_time = used_time
