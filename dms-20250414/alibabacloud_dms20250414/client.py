@@ -2208,6 +2208,166 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.delete_data_lake_table_with_options_async(request, runtime)
 
+    def delete_document_with_options(
+        self,
+        request: main_models.DeleteDocumentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteDocumentResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.document_name):
+            body['DocumentName'] = request.document_name
+        if not DaraCore.is_null(request.kb_uuid):
+            body['KbUuid'] = request.kb_uuid
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteDocument',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteDocumentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_document_with_options_async(
+        self,
+        request: main_models.DeleteDocumentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteDocumentResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.document_name):
+            body['DocumentName'] = request.document_name
+        if not DaraCore.is_null(request.kb_uuid):
+            body['KbUuid'] = request.kb_uuid
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteDocument',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteDocumentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_document(
+        self,
+        request: main_models.DeleteDocumentRequest,
+    ) -> main_models.DeleteDocumentResponse:
+        runtime = RuntimeOptions()
+        return self.delete_document_with_options(request, runtime)
+
+    async def delete_document_async(
+        self,
+        request: main_models.DeleteDocumentRequest,
+    ) -> main_models.DeleteDocumentResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_document_with_options_async(request, runtime)
+
+    def delete_document_chunks_with_options(
+        self,
+        tmp_req: main_models.DeleteDocumentChunksRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteDocumentChunksResponse:
+        tmp_req.validate()
+        request = main_models.DeleteDocumentChunksShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.chunk_ids):
+            request.chunk_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.chunk_ids, 'ChunkIds', 'json')
+        body = {}
+        if not DaraCore.is_null(request.chunk_ids_shrink):
+            body['ChunkIds'] = request.chunk_ids_shrink
+        if not DaraCore.is_null(request.document_name):
+            body['DocumentName'] = request.document_name
+        if not DaraCore.is_null(request.kb_uuid):
+            body['KbUuid'] = request.kb_uuid
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteDocumentChunks',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteDocumentChunksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_document_chunks_with_options_async(
+        self,
+        tmp_req: main_models.DeleteDocumentChunksRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteDocumentChunksResponse:
+        tmp_req.validate()
+        request = main_models.DeleteDocumentChunksShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.chunk_ids):
+            request.chunk_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.chunk_ids, 'ChunkIds', 'json')
+        body = {}
+        if not DaraCore.is_null(request.chunk_ids_shrink):
+            body['ChunkIds'] = request.chunk_ids_shrink
+        if not DaraCore.is_null(request.document_name):
+            body['DocumentName'] = request.document_name
+        if not DaraCore.is_null(request.kb_uuid):
+            body['KbUuid'] = request.kb_uuid
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteDocumentChunks',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteDocumentChunksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_document_chunks(
+        self,
+        request: main_models.DeleteDocumentChunksRequest,
+    ) -> main_models.DeleteDocumentChunksResponse:
+        runtime = RuntimeOptions()
+        return self.delete_document_chunks_with_options(request, runtime)
+
+    async def delete_document_chunks_async(
+        self,
+        request: main_models.DeleteDocumentChunksRequest,
+    ) -> main_models.DeleteDocumentChunksResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_document_chunks_with_options_async(request, runtime)
+
     def delete_file_upload_with_options(
         self,
         request: main_models.DeleteFileUploadRequest,
@@ -2438,6 +2598,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_data_agent_session_with_options_async(request, runtime)
 
+    def describe_document_with_options(
+        self,
+        request: main_models.DescribeDocumentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeDocumentResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.document_name):
+            body['DocumentName'] = request.document_name
+        if not DaraCore.is_null(request.kb_uuid):
+            body['KbUuid'] = request.kb_uuid
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeDocument',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeDocumentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_document_with_options_async(
+        self,
+        request: main_models.DescribeDocumentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeDocumentResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.document_name):
+            body['DocumentName'] = request.document_name
+        if not DaraCore.is_null(request.kb_uuid):
+            body['KbUuid'] = request.kb_uuid
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeDocument',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeDocumentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_document(
+        self,
+        request: main_models.DescribeDocumentRequest,
+    ) -> main_models.DescribeDocumentResponse:
+        runtime = RuntimeOptions()
+        return self.describe_document_with_options(request, runtime)
+
+    async def describe_document_async(
+        self,
+        request: main_models.DescribeDocumentRequest,
+    ) -> main_models.DescribeDocumentResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_document_with_options_async(request, runtime)
+
     def describe_file_upload_signature_with_options(
         self,
         request: main_models.DescribeFileUploadSignatureRequest,
@@ -2581,6 +2815,76 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeKnowledgeBaseStatsResponse:
         runtime = RuntimeOptions()
         return await self.describe_knowledge_base_stats_with_options_async(request, runtime)
+
+    def describe_knowledge_base_upload_signature_with_options(
+        self,
+        request: main_models.DescribeKnowledgeBaseUploadSignatureRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeKnowledgeBaseUploadSignatureResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.kb_uuid):
+            query['KbUuid'] = request.kb_uuid
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeKnowledgeBaseUploadSignature',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeKnowledgeBaseUploadSignatureResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_knowledge_base_upload_signature_with_options_async(
+        self,
+        request: main_models.DescribeKnowledgeBaseUploadSignatureRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeKnowledgeBaseUploadSignatureResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.kb_uuid):
+            query['KbUuid'] = request.kb_uuid
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeKnowledgeBaseUploadSignature',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeKnowledgeBaseUploadSignatureResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_knowledge_base_upload_signature(
+        self,
+        request: main_models.DescribeKnowledgeBaseUploadSignatureRequest,
+    ) -> main_models.DescribeKnowledgeBaseUploadSignatureResponse:
+        runtime = RuntimeOptions()
+        return self.describe_knowledge_base_upload_signature_with_options(request, runtime)
+
+    async def describe_knowledge_base_upload_signature_async(
+        self,
+        request: main_models.DescribeKnowledgeBaseUploadSignatureRequest,
+    ) -> main_models.DescribeKnowledgeBaseUploadSignatureResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_knowledge_base_upload_signature_with_options_async(request, runtime)
 
     def file_upload_callback_with_options(
         self,
@@ -5496,6 +5800,194 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_data_lake_tablebase_info_with_options_async(request, runtime)
 
+    def list_document_chunks_with_options(
+        self,
+        request: main_models.ListDocumentChunksRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDocumentChunksResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.chunk_title_pattern):
+            body['ChunkTitlePattern'] = request.chunk_title_pattern
+        if not DaraCore.is_null(request.document_name):
+            body['DocumentName'] = request.document_name
+        if not DaraCore.is_null(request.kb_uuid):
+            body['KbUuid'] = request.kb_uuid
+        if not DaraCore.is_null(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.sort_field_name):
+            body['SortFieldName'] = request.sort_field_name
+        if not DaraCore.is_null(request.sort_order):
+            body['SortOrder'] = request.sort_order
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDocumentChunks',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDocumentChunksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_document_chunks_with_options_async(
+        self,
+        request: main_models.ListDocumentChunksRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDocumentChunksResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.chunk_title_pattern):
+            body['ChunkTitlePattern'] = request.chunk_title_pattern
+        if not DaraCore.is_null(request.document_name):
+            body['DocumentName'] = request.document_name
+        if not DaraCore.is_null(request.kb_uuid):
+            body['KbUuid'] = request.kb_uuid
+        if not DaraCore.is_null(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.sort_field_name):
+            body['SortFieldName'] = request.sort_field_name
+        if not DaraCore.is_null(request.sort_order):
+            body['SortOrder'] = request.sort_order
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDocumentChunks',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDocumentChunksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_document_chunks(
+        self,
+        request: main_models.ListDocumentChunksRequest,
+    ) -> main_models.ListDocumentChunksResponse:
+        runtime = RuntimeOptions()
+        return self.list_document_chunks_with_options(request, runtime)
+
+    async def list_document_chunks_async(
+        self,
+        request: main_models.ListDocumentChunksRequest,
+    ) -> main_models.ListDocumentChunksResponse:
+        runtime = RuntimeOptions()
+        return await self.list_document_chunks_with_options_async(request, runtime)
+
+    def list_documents_with_options(
+        self,
+        request: main_models.ListDocumentsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDocumentsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.filters):
+            body['Filters'] = request.filters
+        if not DaraCore.is_null(request.kb_uuid):
+            body['KbUuid'] = request.kb_uuid
+        if not DaraCore.is_null(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.name_pattern):
+            body['NamePattern'] = request.name_pattern
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.sort_field_name):
+            body['SortFieldName'] = request.sort_field_name
+        if not DaraCore.is_null(request.sort_order):
+            body['SortOrder'] = request.sort_order
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDocuments',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDocumentsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_documents_with_options_async(
+        self,
+        request: main_models.ListDocumentsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDocumentsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.filters):
+            body['Filters'] = request.filters
+        if not DaraCore.is_null(request.kb_uuid):
+            body['KbUuid'] = request.kb_uuid
+        if not DaraCore.is_null(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.name_pattern):
+            body['NamePattern'] = request.name_pattern
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.sort_field_name):
+            body['SortFieldName'] = request.sort_field_name
+        if not DaraCore.is_null(request.sort_order):
+            body['SortOrder'] = request.sort_order
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDocuments',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDocumentsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_documents(
+        self,
+        request: main_models.ListDocumentsRequest,
+    ) -> main_models.ListDocumentsResponse:
+        runtime = RuntimeOptions()
+        return self.list_documents_with_options(request, runtime)
+
+    async def list_documents_async(
+        self,
+        request: main_models.ListDocumentsRequest,
+    ) -> main_models.ListDocumentsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_documents_with_options_async(request, runtime)
+
     def list_file_upload_with_options(
         self,
         request: main_models.ListFileUploadRequest,
@@ -5597,6 +6089,100 @@ class Client(OpenApiClient):
     ) -> main_models.ListFileUploadResponse:
         runtime = RuntimeOptions()
         return await self.list_file_upload_with_options_async(request, runtime)
+
+    def list_knowledge_bases_with_options(
+        self,
+        request: main_models.ListKnowledgeBasesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListKnowledgeBasesResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.filters):
+            body['Filters'] = request.filters
+        if not DaraCore.is_null(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.name_pattern):
+            body['NamePattern'] = request.name_pattern
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.sort_field_name):
+            body['SortFieldName'] = request.sort_field_name
+        if not DaraCore.is_null(request.sort_order):
+            body['SortOrder'] = request.sort_order
+        if not DaraCore.is_null(request.tag):
+            body['Tag'] = request.tag
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListKnowledgeBases',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListKnowledgeBasesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_knowledge_bases_with_options_async(
+        self,
+        request: main_models.ListKnowledgeBasesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListKnowledgeBasesResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.filters):
+            body['Filters'] = request.filters
+        if not DaraCore.is_null(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.name_pattern):
+            body['NamePattern'] = request.name_pattern
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.sort_field_name):
+            body['SortFieldName'] = request.sort_field_name
+        if not DaraCore.is_null(request.sort_order):
+            body['SortOrder'] = request.sort_order
+        if not DaraCore.is_null(request.tag):
+            body['Tag'] = request.tag
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListKnowledgeBases',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListKnowledgeBasesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_knowledge_bases(
+        self,
+        request: main_models.ListKnowledgeBasesRequest,
+    ) -> main_models.ListKnowledgeBasesResponse:
+        runtime = RuntimeOptions()
+        return self.list_knowledge_bases_with_options(request, runtime)
+
+    async def list_knowledge_bases_async(
+        self,
+        request: main_models.ListKnowledgeBasesRequest,
+    ) -> main_models.ListKnowledgeBasesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_knowledge_bases_with_options_async(request, runtime)
 
     def modify_custom_agent_with_options(
         self,
@@ -6969,6 +7555,362 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateDataLakeTableResponse:
         runtime = RuntimeOptions()
         return await self.update_data_lake_table_with_options_async(request, runtime)
+
+    def update_document_with_options(
+        self,
+        request: main_models.UpdateDocumentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateDocumentResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.document_name):
+            body['DocumentName'] = request.document_name
+        if not DaraCore.is_null(request.kb_uuid):
+            body['KbUuid'] = request.kb_uuid
+        if not DaraCore.is_null(request.new_description):
+            body['NewDescription'] = request.new_description
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateDocument',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateDocumentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_document_with_options_async(
+        self,
+        request: main_models.UpdateDocumentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateDocumentResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.document_name):
+            body['DocumentName'] = request.document_name
+        if not DaraCore.is_null(request.kb_uuid):
+            body['KbUuid'] = request.kb_uuid
+        if not DaraCore.is_null(request.new_description):
+            body['NewDescription'] = request.new_description
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateDocument',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateDocumentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_document(
+        self,
+        request: main_models.UpdateDocumentRequest,
+    ) -> main_models.UpdateDocumentResponse:
+        runtime = RuntimeOptions()
+        return self.update_document_with_options(request, runtime)
+
+    async def update_document_async(
+        self,
+        request: main_models.UpdateDocumentRequest,
+    ) -> main_models.UpdateDocumentResponse:
+        runtime = RuntimeOptions()
+        return await self.update_document_with_options_async(request, runtime)
+
+    def update_knowledge_base_with_options(
+        self,
+        request: main_models.UpdateKnowledgeBaseRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateKnowledgeBaseResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.kb_uuid):
+            query['KbUuid'] = request.kb_uuid
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateKnowledgeBase',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateKnowledgeBaseResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_knowledge_base_with_options_async(
+        self,
+        request: main_models.UpdateKnowledgeBaseRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateKnowledgeBaseResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.kb_uuid):
+            query['KbUuid'] = request.kb_uuid
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateKnowledgeBase',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateKnowledgeBaseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_knowledge_base(
+        self,
+        request: main_models.UpdateKnowledgeBaseRequest,
+    ) -> main_models.UpdateKnowledgeBaseResponse:
+        runtime = RuntimeOptions()
+        return self.update_knowledge_base_with_options(request, runtime)
+
+    async def update_knowledge_base_async(
+        self,
+        request: main_models.UpdateKnowledgeBaseRequest,
+    ) -> main_models.UpdateKnowledgeBaseResponse:
+        runtime = RuntimeOptions()
+        return await self.update_knowledge_base_with_options_async(request, runtime)
+
+    def upload_document_with_options(
+        self,
+        tmp_req: main_models.UploadDocumentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UploadDocumentResponse:
+        tmp_req.validate()
+        request = main_models.UploadDocumentShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.separators):
+            request.separators_shrink = Utils.array_to_string_with_specified_style(tmp_req.separators, 'Separators', 'json')
+        body = {}
+        if not DaraCore.is_null(request.chunk_overlap):
+            body['ChunkOverlap'] = request.chunk_overlap
+        if not DaraCore.is_null(request.chunk_size):
+            body['ChunkSize'] = request.chunk_size
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.document_loader_name):
+            body['DocumentLoaderName'] = request.document_loader_name
+        if not DaraCore.is_null(request.file_name):
+            body['FileName'] = request.file_name
+        if not DaraCore.is_null(request.kb_uuid):
+            body['KbUuid'] = request.kb_uuid
+        if not DaraCore.is_null(request.location):
+            body['Location'] = request.location
+        if not DaraCore.is_null(request.separators_shrink):
+            body['Separators'] = request.separators_shrink
+        if not DaraCore.is_null(request.splitter_model):
+            body['SplitterModel'] = request.splitter_model
+        if not DaraCore.is_null(request.text_splitter_name):
+            body['TextSplitterName'] = request.text_splitter_name
+        if not DaraCore.is_null(request.vl_enhance):
+            body['VlEnhance'] = request.vl_enhance
+        if not DaraCore.is_null(request.zh_title_enhance):
+            body['ZhTitleEnhance'] = request.zh_title_enhance
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UploadDocument',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UploadDocumentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def upload_document_with_options_async(
+        self,
+        tmp_req: main_models.UploadDocumentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UploadDocumentResponse:
+        tmp_req.validate()
+        request = main_models.UploadDocumentShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.separators):
+            request.separators_shrink = Utils.array_to_string_with_specified_style(tmp_req.separators, 'Separators', 'json')
+        body = {}
+        if not DaraCore.is_null(request.chunk_overlap):
+            body['ChunkOverlap'] = request.chunk_overlap
+        if not DaraCore.is_null(request.chunk_size):
+            body['ChunkSize'] = request.chunk_size
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.document_loader_name):
+            body['DocumentLoaderName'] = request.document_loader_name
+        if not DaraCore.is_null(request.file_name):
+            body['FileName'] = request.file_name
+        if not DaraCore.is_null(request.kb_uuid):
+            body['KbUuid'] = request.kb_uuid
+        if not DaraCore.is_null(request.location):
+            body['Location'] = request.location
+        if not DaraCore.is_null(request.separators_shrink):
+            body['Separators'] = request.separators_shrink
+        if not DaraCore.is_null(request.splitter_model):
+            body['SplitterModel'] = request.splitter_model
+        if not DaraCore.is_null(request.text_splitter_name):
+            body['TextSplitterName'] = request.text_splitter_name
+        if not DaraCore.is_null(request.vl_enhance):
+            body['VlEnhance'] = request.vl_enhance
+        if not DaraCore.is_null(request.zh_title_enhance):
+            body['ZhTitleEnhance'] = request.zh_title_enhance
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UploadDocument',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UploadDocumentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def upload_document(
+        self,
+        request: main_models.UploadDocumentRequest,
+    ) -> main_models.UploadDocumentResponse:
+        runtime = RuntimeOptions()
+        return self.upload_document_with_options(request, runtime)
+
+    async def upload_document_async(
+        self,
+        request: main_models.UploadDocumentRequest,
+    ) -> main_models.UploadDocumentResponse:
+        runtime = RuntimeOptions()
+        return await self.upload_document_with_options_async(request, runtime)
+
+    def upsert_document_chunks_with_options(
+        self,
+        request: main_models.UpsertDocumentChunksRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpsertDocumentChunksResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.chunks):
+            body['Chunks'] = request.chunks
+        if not DaraCore.is_null(request.document_name):
+            body['DocumentName'] = request.document_name
+        if not DaraCore.is_null(request.kb_uuid):
+            body['KbUuid'] = request.kb_uuid
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpsertDocumentChunks',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpsertDocumentChunksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def upsert_document_chunks_with_options_async(
+        self,
+        request: main_models.UpsertDocumentChunksRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpsertDocumentChunksResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.chunks):
+            body['Chunks'] = request.chunks
+        if not DaraCore.is_null(request.document_name):
+            body['DocumentName'] = request.document_name
+        if not DaraCore.is_null(request.kb_uuid):
+            body['KbUuid'] = request.kb_uuid
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpsertDocumentChunks',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpsertDocumentChunksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def upsert_document_chunks(
+        self,
+        request: main_models.UpsertDocumentChunksRequest,
+    ) -> main_models.UpsertDocumentChunksResponse:
+        runtime = RuntimeOptions()
+        return self.upsert_document_chunks_with_options(request, runtime)
+
+    async def upsert_document_chunks_async(
+        self,
+        request: main_models.UpsertDocumentChunksRequest,
+    ) -> main_models.UpsertDocumentChunksResponse:
+        runtime = RuntimeOptions()
+        return await self.upsert_document_chunks_with_options_async(request, runtime)
 
     def workspace_action_log_with_options(
         self,

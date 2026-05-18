@@ -116,6 +116,13 @@ from ._delete_data_lake_partition_response import DeleteDataLakePartitionRespons
 from ._delete_data_lake_table_request import DeleteDataLakeTableRequest
 from ._delete_data_lake_table_response_body import DeleteDataLakeTableResponseBody
 from ._delete_data_lake_table_response import DeleteDataLakeTableResponse
+from ._delete_document_request import DeleteDocumentRequest
+from ._delete_document_response_body import DeleteDocumentResponseBody
+from ._delete_document_response import DeleteDocumentResponse
+from ._delete_document_chunks_request import DeleteDocumentChunksRequest
+from ._delete_document_chunks_shrink_request import DeleteDocumentChunksShrinkRequest
+from ._delete_document_chunks_response_body import DeleteDocumentChunksResponseBody
+from ._delete_document_chunks_response import DeleteDocumentChunksResponse
 from ._delete_file_upload_request import DeleteFileUploadRequest
 from ._delete_file_upload_response_body import DeleteFileUploadResponseBody
 from ._delete_file_upload_response import DeleteFileUploadResponse
@@ -125,12 +132,18 @@ from ._describe_custom_agent_response import DescribeCustomAgentResponse
 from ._describe_data_agent_session_request import DescribeDataAgentSessionRequest
 from ._describe_data_agent_session_response_body import DescribeDataAgentSessionResponseBody
 from ._describe_data_agent_session_response import DescribeDataAgentSessionResponse
+from ._describe_document_request import DescribeDocumentRequest
+from ._describe_document_response_body import DescribeDocumentResponseBody
+from ._describe_document_response import DescribeDocumentResponse
 from ._describe_file_upload_signature_request import DescribeFileUploadSignatureRequest
 from ._describe_file_upload_signature_response_body import DescribeFileUploadSignatureResponseBody
 from ._describe_file_upload_signature_response import DescribeFileUploadSignatureResponse
 from ._describe_knowledge_base_stats_request import DescribeKnowledgeBaseStatsRequest
 from ._describe_knowledge_base_stats_response_body import DescribeKnowledgeBaseStatsResponseBody
 from ._describe_knowledge_base_stats_response import DescribeKnowledgeBaseStatsResponse
+from ._describe_knowledge_base_upload_signature_request import DescribeKnowledgeBaseUploadSignatureRequest
+from ._describe_knowledge_base_upload_signature_response_body import DescribeKnowledgeBaseUploadSignatureResponseBody
+from ._describe_knowledge_base_upload_signature_response import DescribeKnowledgeBaseUploadSignatureResponse
 from ._file_upload_callback_request import FileUploadCallbackRequest
 from ._file_upload_callback_response_body import FileUploadCallbackResponseBody
 from ._file_upload_callback_response import FileUploadCallbackResponse
@@ -229,9 +242,18 @@ from ._list_data_lake_table_name_response import ListDataLakeTableNameResponse
 from ._list_data_lake_tablebase_info_request import ListDataLakeTablebaseInfoRequest
 from ._list_data_lake_tablebase_info_response_body import ListDataLakeTablebaseInfoResponseBody
 from ._list_data_lake_tablebase_info_response import ListDataLakeTablebaseInfoResponse
+from ._list_document_chunks_request import ListDocumentChunksRequest
+from ._list_document_chunks_response_body import ListDocumentChunksResponseBody
+from ._list_document_chunks_response import ListDocumentChunksResponse
+from ._list_documents_request import ListDocumentsRequest
+from ._list_documents_response_body import ListDocumentsResponseBody
+from ._list_documents_response import ListDocumentsResponse
 from ._list_file_upload_request import ListFileUploadRequest
 from ._list_file_upload_response_body import ListFileUploadResponseBody
 from ._list_file_upload_response import ListFileUploadResponse
+from ._list_knowledge_bases_request import ListKnowledgeBasesRequest
+from ._list_knowledge_bases_response_body import ListKnowledgeBasesResponseBody
+from ._list_knowledge_bases_response import ListKnowledgeBasesResponse
 from ._modify_custom_agent_request import ModifyCustomAgentRequest
 from ._modify_custom_agent_shrink_request import ModifyCustomAgentShrinkRequest
 from ._modify_custom_agent_response_body import ModifyCustomAgentResponseBody
@@ -281,6 +303,19 @@ from ._update_data_lake_table_request import UpdateDataLakeTableRequest
 from ._update_data_lake_table_shrink_request import UpdateDataLakeTableShrinkRequest
 from ._update_data_lake_table_response_body import UpdateDataLakeTableResponseBody
 from ._update_data_lake_table_response import UpdateDataLakeTableResponse
+from ._update_document_request import UpdateDocumentRequest
+from ._update_document_response_body import UpdateDocumentResponseBody
+from ._update_document_response import UpdateDocumentResponse
+from ._update_knowledge_base_request import UpdateKnowledgeBaseRequest
+from ._update_knowledge_base_response_body import UpdateKnowledgeBaseResponseBody
+from ._update_knowledge_base_response import UpdateKnowledgeBaseResponse
+from ._upload_document_request import UploadDocumentRequest
+from ._upload_document_shrink_request import UploadDocumentShrinkRequest
+from ._upload_document_response_body import UploadDocumentResponseBody
+from ._upload_document_response import UploadDocumentResponse
+from ._upsert_document_chunks_request import UpsertDocumentChunksRequest
+from ._upsert_document_chunks_response_body import UpsertDocumentChunksResponseBody
+from ._upsert_document_chunks_response import UpsertDocumentChunksResponse
 from ._workspace_action_log_request import WorkspaceActionLogRequest
 from ._workspace_action_log_response_body import WorkspaceActionLogResponseBody
 from ._workspace_action_log_response import WorkspaceActionLogResponse
@@ -322,8 +357,10 @@ from ._describe_custom_agent_response_body import DescribeCustomAgentResponseBod
 from ._describe_data_agent_session_response_body import DescribeDataAgentSessionResponseBodyDataChatHistoryLocations
 from ._describe_data_agent_session_response_body import DescribeDataAgentSessionResponseBodyDataSessionConfig
 from ._describe_data_agent_session_response_body import DescribeDataAgentSessionResponseBodyData
+from ._describe_document_response_body import DescribeDocumentResponseBodyData
 from ._describe_file_upload_signature_response_body import DescribeFileUploadSignatureResponseBodyData
 from ._describe_knowledge_base_stats_response_body import DescribeKnowledgeBaseStatsResponseBodyData
+from ._describe_knowledge_base_upload_signature_response_body import DescribeKnowledgeBaseUploadSignatureResponseBodyData
 from ._file_upload_callback_response_body import FileUploadCallbackResponseBodyData
 from ._get_airflow_response_body import GetAirflowResponseBodyRoot
 from ._get_data_agent_sub_account_info_response_body import GetDataAgentSubAccountInfoResponseBodyData
@@ -486,6 +523,13 @@ __all__ = [
     DeleteDataLakeTableRequest,
     DeleteDataLakeTableResponseBody,
     DeleteDataLakeTableResponse,
+    DeleteDocumentRequest,
+    DeleteDocumentResponseBody,
+    DeleteDocumentResponse,
+    DeleteDocumentChunksRequest,
+    DeleteDocumentChunksShrinkRequest,
+    DeleteDocumentChunksResponseBody,
+    DeleteDocumentChunksResponse,
     DeleteFileUploadRequest,
     DeleteFileUploadResponseBody,
     DeleteFileUploadResponse,
@@ -495,12 +539,18 @@ __all__ = [
     DescribeDataAgentSessionRequest,
     DescribeDataAgentSessionResponseBody,
     DescribeDataAgentSessionResponse,
+    DescribeDocumentRequest,
+    DescribeDocumentResponseBody,
+    DescribeDocumentResponse,
     DescribeFileUploadSignatureRequest,
     DescribeFileUploadSignatureResponseBody,
     DescribeFileUploadSignatureResponse,
     DescribeKnowledgeBaseStatsRequest,
     DescribeKnowledgeBaseStatsResponseBody,
     DescribeKnowledgeBaseStatsResponse,
+    DescribeKnowledgeBaseUploadSignatureRequest,
+    DescribeKnowledgeBaseUploadSignatureResponseBody,
+    DescribeKnowledgeBaseUploadSignatureResponse,
     FileUploadCallbackRequest,
     FileUploadCallbackResponseBody,
     FileUploadCallbackResponse,
@@ -599,9 +649,18 @@ __all__ = [
     ListDataLakeTablebaseInfoRequest,
     ListDataLakeTablebaseInfoResponseBody,
     ListDataLakeTablebaseInfoResponse,
+    ListDocumentChunksRequest,
+    ListDocumentChunksResponseBody,
+    ListDocumentChunksResponse,
+    ListDocumentsRequest,
+    ListDocumentsResponseBody,
+    ListDocumentsResponse,
     ListFileUploadRequest,
     ListFileUploadResponseBody,
     ListFileUploadResponse,
+    ListKnowledgeBasesRequest,
+    ListKnowledgeBasesResponseBody,
+    ListKnowledgeBasesResponse,
     ModifyCustomAgentRequest,
     ModifyCustomAgentShrinkRequest,
     ModifyCustomAgentResponseBody,
@@ -651,6 +710,19 @@ __all__ = [
     UpdateDataLakeTableShrinkRequest,
     UpdateDataLakeTableResponseBody,
     UpdateDataLakeTableResponse,
+    UpdateDocumentRequest,
+    UpdateDocumentResponseBody,
+    UpdateDocumentResponse,
+    UpdateKnowledgeBaseRequest,
+    UpdateKnowledgeBaseResponseBody,
+    UpdateKnowledgeBaseResponse,
+    UploadDocumentRequest,
+    UploadDocumentShrinkRequest,
+    UploadDocumentResponseBody,
+    UploadDocumentResponse,
+    UpsertDocumentChunksRequest,
+    UpsertDocumentChunksResponseBody,
+    UpsertDocumentChunksResponse,
     WorkspaceActionLogRequest,
     WorkspaceActionLogResponseBody,
     WorkspaceActionLogResponse,
@@ -692,8 +764,10 @@ __all__ = [
     DescribeDataAgentSessionResponseBodyDataChatHistoryLocations,
     DescribeDataAgentSessionResponseBodyDataSessionConfig,
     DescribeDataAgentSessionResponseBodyData,
+    DescribeDocumentResponseBodyData,
     DescribeFileUploadSignatureResponseBodyData,
     DescribeKnowledgeBaseStatsResponseBodyData,
+    DescribeKnowledgeBaseUploadSignatureResponseBodyData,
     FileUploadCallbackResponseBodyData,
     GetAirflowResponseBodyRoot,
     GetDataAgentSubAccountInfoResponseBodyData,

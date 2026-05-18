@@ -1,3 +1,17 @@
+2026-05-18 Version: 1.13.0
+- Support API DeleteDocument.
+- Support API DeleteDocumentChunks.
+- Support API DescribeDocument.
+- Support API DescribeKnowledgeBaseUploadSignature.
+- Support API ListDocumentChunks.
+- Support API ListDocuments.
+- Support API ListKnowledgeBases.
+- Support API UpdateDocument.
+- Support API UpdateKnowledgeBase.
+- Support API UploadDocument.
+- Support API UpsertDocumentChunks.
+
+
 2026-05-15 Version: 1.12.0
 - Support API ConfigAirflow.
 - Support API CreateDataAgentKnowledgeBase.
