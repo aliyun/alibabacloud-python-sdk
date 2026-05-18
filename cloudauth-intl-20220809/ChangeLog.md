@@ -1,3 +1,8 @@
+2026-05-18 Version: 3.19.0
+- Support API FaceLivenessV2.
+- Support API FaceVerifyIntl.
+
+
 2026-04-24 Version: 3.18.3
 - Update API FaceCompare: add request parameters FaceQualityCheck.
 - Update API FaceCompare: add response parameters Body.Result.ExtFaceInfo.

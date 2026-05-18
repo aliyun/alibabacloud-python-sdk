@@ -1,0 +1,237 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from alibabacloud_cloudauth_intl20220809 import models as main_models
+from darabonba.model import DaraModel
+
+class FaceVerifyIntlResponseBody(DaraModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        result: main_models.FaceVerifyIntlResponseBodyResult = None,
+    ):
+        self.code = code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.result = result
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.code is not None:
+            result['Code'] = self.code
+
+        if self.message is not None:
+            result['Message'] = self.message
+
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+
+        if m.get('Result') is not None:
+            temp_model = main_models.FaceVerifyIntlResponseBodyResult()
+            self.result = temp_model.from_map(m.get('Result'))
+
+        return self
+
+class FaceVerifyIntlResponseBodyResult(DaraModel):
+    def __init__(
+        self,
+        duplicate_face: str = None,
+        ext_face_info: main_models.FaceVerifyIntlResponseBodyResultExtFaceInfo = None,
+        face_age: int = None,
+        face_attack: str = None,
+        face_attack_score: float = None,
+        face_comparison_score: float = None,
+        face_gender: str = None,
+        face_passed: str = None,
+        face_registration_id: str = None,
+        face_registration_result: int = None,
+        sub_code: str = None,
+        transaction_id: str = None,
+    ):
+        self.duplicate_face = duplicate_face
+        self.ext_face_info = ext_face_info
+        self.face_age = face_age
+        self.face_attack = face_attack
+        self.face_attack_score = face_attack_score
+        self.face_comparison_score = face_comparison_score
+        self.face_gender = face_gender
+        self.face_passed = face_passed
+        self.face_registration_id = face_registration_id
+        self.face_registration_result = face_registration_result
+        self.sub_code = sub_code
+        self.transaction_id = transaction_id
+
+    def validate(self):
+        if self.ext_face_info:
+            self.ext_face_info.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.duplicate_face is not None:
+            result['DuplicateFace'] = self.duplicate_face
+
+        if self.ext_face_info is not None:
+            result['ExtFaceInfo'] = self.ext_face_info.to_map()
+
+        if self.face_age is not None:
+            result['FaceAge'] = self.face_age
+
+        if self.face_attack is not None:
+            result['FaceAttack'] = self.face_attack
+
+        if self.face_attack_score is not None:
+            result['FaceAttackScore'] = self.face_attack_score
+
+        if self.face_comparison_score is not None:
+            result['FaceComparisonScore'] = self.face_comparison_score
+
+        if self.face_gender is not None:
+            result['FaceGender'] = self.face_gender
+
+        if self.face_passed is not None:
+            result['FacePassed'] = self.face_passed
+
+        if self.face_registration_id is not None:
+            result['FaceRegistrationId'] = self.face_registration_id
+
+        if self.face_registration_result is not None:
+            result['FaceRegistrationResult'] = self.face_registration_result
+
+        if self.sub_code is not None:
+            result['SubCode'] = self.sub_code
+
+        if self.transaction_id is not None:
+            result['TransactionId'] = self.transaction_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DuplicateFace') is not None:
+            self.duplicate_face = m.get('DuplicateFace')
+
+        if m.get('ExtFaceInfo') is not None:
+            temp_model = main_models.FaceVerifyIntlResponseBodyResultExtFaceInfo()
+            self.ext_face_info = temp_model.from_map(m.get('ExtFaceInfo'))
+
+        if m.get('FaceAge') is not None:
+            self.face_age = m.get('FaceAge')
+
+        if m.get('FaceAttack') is not None:
+            self.face_attack = m.get('FaceAttack')
+
+        if m.get('FaceAttackScore') is not None:
+            self.face_attack_score = m.get('FaceAttackScore')
+
+        if m.get('FaceComparisonScore') is not None:
+            self.face_comparison_score = m.get('FaceComparisonScore')
+
+        if m.get('FaceGender') is not None:
+            self.face_gender = m.get('FaceGender')
+
+        if m.get('FacePassed') is not None:
+            self.face_passed = m.get('FacePassed')
+
+        if m.get('FaceRegistrationId') is not None:
+            self.face_registration_id = m.get('FaceRegistrationId')
+
+        if m.get('FaceRegistrationResult') is not None:
+            self.face_registration_result = m.get('FaceRegistrationResult')
+
+        if m.get('SubCode') is not None:
+            self.sub_code = m.get('SubCode')
+
+        if m.get('TransactionId') is not None:
+            self.transaction_id = m.get('TransactionId')
+
+        return self
+
+class FaceVerifyIntlResponseBodyResultExtFaceInfo(DaraModel):
+    def __init__(
+        self,
+        face_quality_score: float = None,
+        illumination_score: float = None,
+        ka_occlusion_score: float = None,
+        occlusion_score: float = None,
+        sharpness_score: float = None,
+    ):
+        self.face_quality_score = face_quality_score
+        self.illumination_score = illumination_score
+        self.ka_occlusion_score = ka_occlusion_score
+        self.occlusion_score = occlusion_score
+        self.sharpness_score = sharpness_score
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.face_quality_score is not None:
+            result['FaceQualityScore'] = self.face_quality_score
+
+        if self.illumination_score is not None:
+            result['IlluminationScore'] = self.illumination_score
+
+        if self.ka_occlusion_score is not None:
+            result['KaOcclusionScore'] = self.ka_occlusion_score
+
+        if self.occlusion_score is not None:
+            result['OcclusionScore'] = self.occlusion_score
+
+        if self.sharpness_score is not None:
+            result['SharpnessScore'] = self.sharpness_score
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FaceQualityScore') is not None:
+            self.face_quality_score = m.get('FaceQualityScore')
+
+        if m.get('IlluminationScore') is not None:
+            self.illumination_score = m.get('IlluminationScore')
+
+        if m.get('KaOcclusionScore') is not None:
+            self.ka_occlusion_score = m.get('KaOcclusionScore')
+
+        if m.get('OcclusionScore') is not None:
+            self.occlusion_score = m.get('OcclusionScore')
+
+        if m.get('SharpnessScore') is not None:
+            self.sharpness_score = m.get('SharpnessScore')
+
+        return self
+

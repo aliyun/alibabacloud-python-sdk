@@ -95,6 +95,14 @@ from ._face_guard_risk_response import FaceGuardRiskResponse
 from ._face_liveness_request import FaceLivenessRequest
 from ._face_liveness_response_body import FaceLivenessResponseBody
 from ._face_liveness_response import FaceLivenessResponse
+from ._face_liveness_v2request import FaceLivenessV2Request
+from ._face_liveness_v2advance_request import FaceLivenessV2AdvanceRequest
+from ._face_liveness_v2response_body import FaceLivenessV2ResponseBody
+from ._face_liveness_v2response import FaceLivenessV2Response
+from ._face_verify_intl_request import FaceVerifyIntlRequest
+from ._face_verify_intl_advance_request import FaceVerifyIntlAdvanceRequest
+from ._face_verify_intl_response_body import FaceVerifyIntlResponseBody
+from ._face_verify_intl_response import FaceVerifyIntlResponse
 from ._fraud_result_call_back_request import FraudResultCallBackRequest
 from ._fraud_result_call_back_response_body import FraudResultCallBackResponseBody
 from ._fraud_result_call_back_response import FraudResultCallBackResponse
@@ -165,6 +173,10 @@ from ._face_duplication_check_intl_response_body import FaceDuplicationCheckIntl
 from ._face_guard_risk_response_body import FaceGuardRiskResponseBodyResult
 from ._face_liveness_response_body import FaceLivenessResponseBodyResultExtFaceInfo
 from ._face_liveness_response_body import FaceLivenessResponseBodyResult
+from ._face_liveness_v2response_body import FaceLivenessV2ResponseBodyResultExtFaceInfo
+from ._face_liveness_v2response_body import FaceLivenessV2ResponseBodyResult
+from ._face_verify_intl_response_body import FaceVerifyIntlResponseBodyResultExtFaceInfo
+from ._face_verify_intl_response_body import FaceVerifyIntlResponseBodyResult
 from ._id_2meta_period_verify_intl_response_body import Id2MetaPeriodVerifyIntlResponseBodyResult
 from ._id_2meta_verify_intl_response_body import Id2MetaVerifyIntlResponseBodyResult
 from ._initialize_response_body import InitializeResponseBodyResult
@@ -270,6 +282,14 @@ __all__ = [
     FaceLivenessRequest,
     FaceLivenessResponseBody,
     FaceLivenessResponse,
+    FaceLivenessV2Request,
+    FaceLivenessV2AdvanceRequest,
+    FaceLivenessV2ResponseBody,
+    FaceLivenessV2Response,
+    FaceVerifyIntlRequest,
+    FaceVerifyIntlAdvanceRequest,
+    FaceVerifyIntlResponseBody,
+    FaceVerifyIntlResponse,
     FraudResultCallBackRequest,
     FraudResultCallBackResponseBody,
     FraudResultCallBackResponse,
@@ -340,6 +360,10 @@ __all__ = [
     FaceGuardRiskResponseBodyResult,
     FaceLivenessResponseBodyResultExtFaceInfo,
     FaceLivenessResponseBodyResult,
+    FaceLivenessV2ResponseBodyResultExtFaceInfo,
+    FaceLivenessV2ResponseBodyResult,
+    FaceVerifyIntlResponseBodyResultExtFaceInfo,
+    FaceVerifyIntlResponseBodyResult,
     Id2MetaPeriodVerifyIntlResponseBodyResult,
     Id2MetaVerifyIntlResponseBodyResult,
     InitializeResponseBodyResult,
