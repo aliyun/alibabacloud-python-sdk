@@ -1,3 +1,8 @@
+2026-05-18 Version: 3.4.0
+- Support API BatchUpdateNoticeStatus.
+- Update API GetUserCertificateDetail: add response parameters Body.CertSha2.
+
+
 2026-04-21 Version: 3.3.6
 - Generated python 2020-04-07 for cas.
 

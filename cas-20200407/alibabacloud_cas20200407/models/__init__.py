@@ -8,6 +8,9 @@ from ._add_cloud_access_response import AddCloudAccessResponse
 from ._apply_certificate_request import ApplyCertificateRequest
 from ._apply_certificate_response_body import ApplyCertificateResponseBody
 from ._apply_certificate_response import ApplyCertificateResponse
+from ._batch_update_notice_status_request import BatchUpdateNoticeStatusRequest
+from ._batch_update_notice_status_response_body import BatchUpdateNoticeStatusResponseBody
+from ._batch_update_notice_status_response import BatchUpdateNoticeStatusResponse
 from ._cancel_certificate_for_package_request_request import CancelCertificateForPackageRequestRequest
 from ._cancel_certificate_for_package_request_response_body import CancelCertificateForPackageRequestResponseBody
 from ._cancel_certificate_for_package_request_response import CancelCertificateForPackageRequestResponse
@@ -244,6 +247,9 @@ __all__ = [
     ApplyCertificateRequest,
     ApplyCertificateResponseBody,
     ApplyCertificateResponse,
+    BatchUpdateNoticeStatusRequest,
+    BatchUpdateNoticeStatusResponseBody,
+    BatchUpdateNoticeStatusResponse,
     CancelCertificateForPackageRequestRequest,
     CancelCertificateForPackageRequestResponseBody,
     CancelCertificateForPackageRequestResponse,

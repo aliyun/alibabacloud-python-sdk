@@ -15,6 +15,7 @@ class GetUserCertificateDetailResponseBody(DaraModel):
         cert: str = None,
         cert_chain: List[main_models.GetUserCertificateDetailResponseBodyCertChain] = None,
         cert_identifier: str = None,
+        cert_sha_2: str = None,
         city: str = None,
         common: str = None,
         country: str = None,
@@ -56,6 +57,7 @@ class GetUserCertificateDetailResponseBody(DaraModel):
         self.cert_chain = cert_chain
         # The certificate identifier. The value is in the "Certificate ID-cn-hangzhou" format. For example, if the ID of the certificate is 123, the value of CertIdentifier is 123-cn-hangzhou.
         self.cert_identifier = cert_identifier
+        self.cert_sha_2 = cert_sha_2
         # The city of the company or organization to which the certificate purchaser belongs.
         self.city = city
         # The primary domain name that is bound to the certificate.
@@ -144,6 +146,9 @@ class GetUserCertificateDetailResponseBody(DaraModel):
 
         if self.cert_identifier is not None:
             result['CertIdentifier'] = self.cert_identifier
+
+        if self.cert_sha_2 is not None:
+            result['CertSha2'] = self.cert_sha_2
 
         if self.city is not None:
             result['City'] = self.city
@@ -249,6 +254,9 @@ class GetUserCertificateDetailResponseBody(DaraModel):
 
         if m.get('CertIdentifier') is not None:
             self.cert_identifier = m.get('CertIdentifier')
+
+        if m.get('CertSha2') is not None:
+            self.cert_sha_2 = m.get('CertSha2')
 
         if m.get('City') is not None:
             self.city = m.get('City')

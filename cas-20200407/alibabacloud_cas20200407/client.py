@@ -241,6 +241,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.apply_certificate_with_options_async(request, runtime)
 
+    def batch_update_notice_status_with_options(
+        self,
+        request: main_models.BatchUpdateNoticeStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchUpdateNoticeStatusResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.ids):
+            query['Ids'] = request.ids
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.notice_biz):
+            query['NoticeBiz'] = request.notice_biz
+        if not DaraCore.is_null(request.notice_status):
+            query['NoticeStatus'] = request.notice_status
+        if not DaraCore.is_null(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'BatchUpdateNoticeStatus',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchUpdateNoticeStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_update_notice_status_with_options_async(
+        self,
+        request: main_models.BatchUpdateNoticeStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchUpdateNoticeStatusResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.ids):
+            query['Ids'] = request.ids
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.notice_biz):
+            query['NoticeBiz'] = request.notice_biz
+        if not DaraCore.is_null(request.notice_status):
+            query['NoticeStatus'] = request.notice_status
+        if not DaraCore.is_null(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'BatchUpdateNoticeStatus',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchUpdateNoticeStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_update_notice_status(
+        self,
+        request: main_models.BatchUpdateNoticeStatusRequest,
+    ) -> main_models.BatchUpdateNoticeStatusResponse:
+        runtime = RuntimeOptions()
+        return self.batch_update_notice_status_with_options(request, runtime)
+
+    async def batch_update_notice_status_async(
+        self,
+        request: main_models.BatchUpdateNoticeStatusRequest,
+    ) -> main_models.BatchUpdateNoticeStatusResponse:
+        runtime = RuntimeOptions()
+        return await self.batch_update_notice_status_with_options_async(request, runtime)
+
     def cancel_certificate_for_package_request_with_options(
         self,
         request: main_models.CancelCertificateForPackageRequestRequest,
