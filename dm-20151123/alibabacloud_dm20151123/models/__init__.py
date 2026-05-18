@@ -56,6 +56,9 @@ from ._create_receiver_response import CreateReceiverResponse
 from ._create_tag_request import CreateTagRequest
 from ._create_tag_response_body import CreateTagResponseBody
 from ._create_tag_response import CreateTagResponse
+from ._create_template_request import CreateTemplateRequest
+from ._create_template_response_body import CreateTemplateResponseBody
+from ._create_template_response import CreateTemplateResponse
 from ._create_user_suppression_request import CreateUserSuppressionRequest
 from ._create_user_suppression_response_body import CreateUserSuppressionResponseBody
 from ._create_user_suppression_response import CreateUserSuppressionResponse
@@ -340,6 +343,9 @@ __all__ = [
     CreateTagRequest,
     CreateTagResponseBody,
     CreateTagResponse,
+    CreateTemplateRequest,
+    CreateTemplateResponseBody,
+    CreateTemplateResponse,
     CreateUserSuppressionRequest,
     CreateUserSuppressionResponseBody,
     CreateUserSuppressionResponse,

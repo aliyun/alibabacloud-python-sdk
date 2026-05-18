@@ -1721,6 +1721,120 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_tag_with_options_async(request, runtime)
 
+    def create_template_with_options(
+        self,
+        request: main_models.CreateTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.from_type):
+            query['FromType'] = request.from_type
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.remark):
+            query['Remark'] = request.remark
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.sms_content):
+            query['SmsContent'] = request.sms_content
+        if not DaraCore.is_null(request.sms_type):
+            query['SmsType'] = request.sms_type
+        if not DaraCore.is_null(request.template_name):
+            query['TemplateName'] = request.template_name
+        if not DaraCore.is_null(request.template_nick_name):
+            query['TemplateNickName'] = request.template_nick_name
+        if not DaraCore.is_null(request.template_subject):
+            query['TemplateSubject'] = request.template_subject
+        if not DaraCore.is_null(request.template_text):
+            query['TemplateText'] = request.template_text
+        if not DaraCore.is_null(request.template_type):
+            query['TemplateType'] = request.template_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateTemplate',
+            version = '2015-11-23',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_template_with_options_async(
+        self,
+        request: main_models.CreateTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.from_type):
+            query['FromType'] = request.from_type
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.remark):
+            query['Remark'] = request.remark
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.sms_content):
+            query['SmsContent'] = request.sms_content
+        if not DaraCore.is_null(request.sms_type):
+            query['SmsType'] = request.sms_type
+        if not DaraCore.is_null(request.template_name):
+            query['TemplateName'] = request.template_name
+        if not DaraCore.is_null(request.template_nick_name):
+            query['TemplateNickName'] = request.template_nick_name
+        if not DaraCore.is_null(request.template_subject):
+            query['TemplateSubject'] = request.template_subject
+        if not DaraCore.is_null(request.template_text):
+            query['TemplateText'] = request.template_text
+        if not DaraCore.is_null(request.template_type):
+            query['TemplateType'] = request.template_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateTemplate',
+            version = '2015-11-23',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_template(
+        self,
+        request: main_models.CreateTemplateRequest,
+    ) -> main_models.CreateTemplateResponse:
+        runtime = RuntimeOptions()
+        return self.create_template_with_options(request, runtime)
+
+    async def create_template_async(
+        self,
+        request: main_models.CreateTemplateRequest,
+    ) -> main_models.CreateTemplateResponse:
+        runtime = RuntimeOptions()
+        return await self.create_template_with_options_async(request, runtime)
+
     def create_user_suppression_with_options(
         self,
         request: main_models.CreateUserSuppressionRequest,

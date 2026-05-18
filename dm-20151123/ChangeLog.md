@@ -1,3 +1,7 @@
+2026-05-18 Version: 1.10.0
+- Support API CreateTemplate.
+
+
 2026-04-16 Version: 1.9.2
 - Update API ConfigSetCreate: add request parameters IsPublicChannelBackoff.
 - Update API ConfigSetDetail: add response parameters Body.Detail.IsPublicChannelBackoff.
