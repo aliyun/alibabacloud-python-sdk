@@ -10,6 +10,7 @@ class DescribeSDGShrinkRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
         sdgids_shrink: str = None,
+        same_disk_id: bool = None,
     ):
         # The page number.
         self.page_number = page_number
@@ -19,6 +20,7 @@ class DescribeSDGShrinkRequest(DaraModel):
         self.page_size = page_size
         # The IDs of SDGs that you want to query. By default, all SDGs are queried.
         self.sdgids_shrink = sdgids_shrink
+        self.same_disk_id = same_disk_id
 
     def validate(self):
         pass
@@ -37,6 +39,9 @@ class DescribeSDGShrinkRequest(DaraModel):
         if self.sdgids_shrink is not None:
             result['SDGIds'] = self.sdgids_shrink
 
+        if self.same_disk_id is not None:
+            result['SameDiskId'] = self.same_disk_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -49,6 +54,9 @@ class DescribeSDGShrinkRequest(DaraModel):
 
         if m.get('SDGIds') is not None:
             self.sdgids_shrink = m.get('SDGIds')
+
+        if m.get('SameDiskId') is not None:
+            self.same_disk_id = m.get('SameDiskId')
 
         return self
 

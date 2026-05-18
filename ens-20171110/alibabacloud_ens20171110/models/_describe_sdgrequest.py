@@ -12,6 +12,7 @@ class DescribeSDGRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
         sdgids: List[str] = None,
+        same_disk_id: bool = None,
     ):
         # The page number.
         self.page_number = page_number
@@ -21,6 +22,7 @@ class DescribeSDGRequest(DaraModel):
         self.page_size = page_size
         # The IDs of SDGs that you want to query. By default, all SDGs are queried.
         self.sdgids = sdgids
+        self.same_disk_id = same_disk_id
 
     def validate(self):
         pass
@@ -39,6 +41,9 @@ class DescribeSDGRequest(DaraModel):
         if self.sdgids is not None:
             result['SDGIds'] = self.sdgids
 
+        if self.same_disk_id is not None:
+            result['SameDiskId'] = self.same_disk_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -51,6 +56,9 @@ class DescribeSDGRequest(DaraModel):
 
         if m.get('SDGIds') is not None:
             self.sdgids = m.get('SDGIds')
+
+        if m.get('SameDiskId') is not None:
+            self.same_disk_id = m.get('SameDiskId')
 
         return self
 

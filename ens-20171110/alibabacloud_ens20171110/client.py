@@ -15331,6 +15331,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not DaraCore.is_null(request.sdgids_shrink):
             query['SDGIds'] = request.sdgids_shrink
+        if not DaraCore.is_null(request.same_disk_id):
+            query['SameDiskId'] = request.same_disk_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -15367,6 +15369,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not DaraCore.is_null(request.sdgids_shrink):
             query['SDGIds'] = request.sdgids_shrink
+        if not DaraCore.is_null(request.same_disk_id):
+            query['SameDiskId'] = request.same_disk_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -24469,6 +24473,8 @@ class Client(OpenApiClient):
             query['DataDisk'] = request.data_disk_shrink
         if not DaraCore.is_null(request.deletion_protection):
             query['DeletionProtection'] = request.deletion_protection
+        if not DaraCore.is_null(request.deployment_set_id):
+            query['DeploymentSetId'] = request.deployment_set_id
         if not DaraCore.is_null(request.ens_region_id):
             query['EnsRegionId'] = request.ens_region_id
         if not DaraCore.is_null(request.host_name):
@@ -24591,6 +24597,8 @@ class Client(OpenApiClient):
             query['DataDisk'] = request.data_disk_shrink
         if not DaraCore.is_null(request.deletion_protection):
             query['DeletionProtection'] = request.deletion_protection
+        if not DaraCore.is_null(request.deployment_set_id):
+            query['DeploymentSetId'] = request.deployment_set_id
         if not DaraCore.is_null(request.ens_region_id):
             query['EnsRegionId'] = request.ens_region_id
         if not DaraCore.is_null(request.host_name):

@@ -18,6 +18,7 @@ class RunInstancesRequest(DaraModel):
         carrier: str = None,
         data_disk: List[main_models.RunInstancesRequestDataDisk] = None,
         deletion_protection: bool = None,
+        deployment_set_id: str = None,
         ens_region_id: str = None,
         host_name: str = None,
         image_id: str = None,
@@ -87,6 +88,7 @@ class RunInstancesRequest(DaraModel):
         # The specifications of data disks.
         self.data_disk = data_disk
         self.deletion_protection = deletion_protection
+        self.deployment_set_id = deployment_set_id
         # The ID of the node.
         # 
         # >  This parameter is required if ScheduleAreaLevel is set to Region and is not available if ScheduleAreaLevel is set to other values.
@@ -263,6 +265,9 @@ class RunInstancesRequest(DaraModel):
         if self.deletion_protection is not None:
             result['DeletionProtection'] = self.deletion_protection
 
+        if self.deployment_set_id is not None:
+            result['DeploymentSetId'] = self.deployment_set_id
+
         if self.ens_region_id is not None:
             result['EnsRegionId'] = self.ens_region_id
 
@@ -403,6 +408,9 @@ class RunInstancesRequest(DaraModel):
 
         if m.get('DeletionProtection') is not None:
             self.deletion_protection = m.get('DeletionProtection')
+
+        if m.get('DeploymentSetId') is not None:
+            self.deployment_set_id = m.get('DeploymentSetId')
 
         if m.get('EnsRegionId') is not None:
             self.ens_region_id = m.get('EnsRegionId')
