@@ -108,6 +108,9 @@ from ._get_instance_detail_response import GetInstanceDetailResponse
 from ._get_instance_summary_request import GetInstanceSummaryRequest
 from ._get_instance_summary_response_body import GetInstanceSummaryResponseBody
 from ._get_instance_summary_response import GetInstanceSummaryResponse
+from ._get_matched_resources_request import GetMatchedResourcesRequest
+from ._get_matched_resources_response_body import GetMatchedResourcesResponseBody
+from ._get_matched_resources_response import GetMatchedResourcesResponse
 from ._get_risk_count_response_body import GetRiskCountResponseBody
 from ._get_risk_count_response import GetRiskCountResponse
 from ._get_task_attribute_request import GetTaskAttributeRequest
@@ -347,6 +350,9 @@ __all__ = [
     GetInstanceSummaryRequest,
     GetInstanceSummaryResponseBody,
     GetInstanceSummaryResponse,
+    GetMatchedResourcesRequest,
+    GetMatchedResourcesResponseBody,
+    GetMatchedResourcesResponse,
     GetRiskCountResponseBody,
     GetRiskCountResponse,
     GetTaskAttributeRequest,

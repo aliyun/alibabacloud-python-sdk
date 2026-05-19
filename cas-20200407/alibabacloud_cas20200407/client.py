@@ -2849,6 +2849,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_instance_summary_with_options_async(request, runtime)
 
+    def get_matched_resources_with_options(
+        self,
+        request: main_models.GetMatchedResourcesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetMatchedResourcesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cert_ids):
+            query['CertIds'] = request.cert_ids
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.resource_scope):
+            query['ResourceScope'] = request.resource_scope
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetMatchedResources',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetMatchedResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_matched_resources_with_options_async(
+        self,
+        request: main_models.GetMatchedResourcesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetMatchedResourcesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cert_ids):
+            query['CertIds'] = request.cert_ids
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.resource_scope):
+            query['ResourceScope'] = request.resource_scope
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetMatchedResources',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetMatchedResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_matched_resources(
+        self,
+        request: main_models.GetMatchedResourcesRequest,
+    ) -> main_models.GetMatchedResourcesResponse:
+        runtime = RuntimeOptions()
+        return self.get_matched_resources_with_options(request, runtime)
+
+    async def get_matched_resources_async(
+        self,
+        request: main_models.GetMatchedResourcesRequest,
+    ) -> main_models.GetMatchedResourcesResponse:
+        runtime = RuntimeOptions()
+        return await self.get_matched_resources_with_options_async(request, runtime)
+
     def get_risk_count_with_options(
         self,
         runtime: RuntimeOptions,
