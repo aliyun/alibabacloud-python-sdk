@@ -1,3 +1,7 @@
+2026-05-19 Version: 1.8.0
+- Support API QueryCostByCostCenter.
+
+
 2026-05-14 Version: 1.7.0
 - Support API CheckBudgetNameExists.
 - Support API CreateBudget.

@@ -3904,6 +3904,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.pay_order_with_options_async(request, runtime)
 
+    def query_cost_by_cost_center_with_options(
+        self,
+        request: main_models.QueryCostByCostCenterRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryCostByCostCenterResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.billing_month):
+            query['BillingMonth'] = request.billing_month
+        if not DaraCore.is_null(request.display_zero_amount_bills):
+            query['DisplayZeroAmountBills'] = request.display_zero_amount_bills
+        if not DaraCore.is_null(request.group_by_cost_center_level):
+            query['GroupByCostCenterLevel'] = request.group_by_cost_center_level
+        if not DaraCore.is_null(request.metrics):
+            query['Metrics'] = request.metrics
+        if not DaraCore.is_null(request.owner_account_id):
+            query['OwnerAccountId'] = request.owner_account_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryCostByCostCenter',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryCostByCostCenterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_cost_by_cost_center_with_options_async(
+        self,
+        request: main_models.QueryCostByCostCenterRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryCostByCostCenterResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.billing_month):
+            query['BillingMonth'] = request.billing_month
+        if not DaraCore.is_null(request.display_zero_amount_bills):
+            query['DisplayZeroAmountBills'] = request.display_zero_amount_bills
+        if not DaraCore.is_null(request.group_by_cost_center_level):
+            query['GroupByCostCenterLevel'] = request.group_by_cost_center_level
+        if not DaraCore.is_null(request.metrics):
+            query['Metrics'] = request.metrics
+        if not DaraCore.is_null(request.owner_account_id):
+            query['OwnerAccountId'] = request.owner_account_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryCostByCostCenter',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryCostByCostCenterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_cost_by_cost_center(
+        self,
+        request: main_models.QueryCostByCostCenterRequest,
+    ) -> main_models.QueryCostByCostCenterResponse:
+        runtime = RuntimeOptions()
+        return self.query_cost_by_cost_center_with_options(request, runtime)
+
+    async def query_cost_by_cost_center_async(
+        self,
+        request: main_models.QueryCostByCostCenterRequest,
+    ) -> main_models.QueryCostByCostCenterResponse:
+        runtime = RuntimeOptions()
+        return await self.query_cost_by_cost_center_with_options_async(request, runtime)
+
     def query_cost_center_with_options(
         self,
         tmp_req: main_models.QueryCostCenterRequest,
