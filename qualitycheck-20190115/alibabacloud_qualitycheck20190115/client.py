@@ -2,7 +2,9 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import Dict
+import json
+
+from typing import Dict, Generator, AsyncGenerator
 
 from alibabacloud_qualitycheck20190115 import models as main_models
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
@@ -5389,6 +5391,182 @@ class Client(OpenApiClient):
     ) -> main_models.RevertAssignedSessionGroupResponse:
         runtime = RuntimeOptions()
         return await self.revert_assigned_session_group_with_options_async(request, runtime)
+
+    def run_completion_message_with_sse(
+        self,
+        tmp_req: main_models.RunCompletionMessageRequest,
+        runtime: RuntimeOptions,
+    ) -> Generator[main_models.RunCompletionMessageResponse, None, None]:
+        tmp_req.validate()
+        request = main_models.RunCompletionMessageShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.messages):
+            request.messages_shrink = Utils.array_to_string_with_specified_style(tmp_req.messages, 'Messages', 'json')
+        body = {}
+        if not DaraCore.is_null(request.messages_shrink):
+            body['Messages'] = request.messages_shrink
+        if not DaraCore.is_null(request.model_code):
+            body['ModelCode'] = request.model_code
+        if not DaraCore.is_null(request.stream):
+            body['Stream'] = request.stream
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'RunCompletionMessage',
+            version = '2019-01-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        sse_resp = self.call_sseapi(params, req, runtime)
+        for resp in sse_resp:
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.RunCompletionMessageResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
+
+    async def run_completion_message_with_sse_async(
+        self,
+        tmp_req: main_models.RunCompletionMessageRequest,
+        runtime: RuntimeOptions,
+    ) -> AsyncGenerator[main_models.RunCompletionMessageResponse, None, None]:
+        tmp_req.validate()
+        request = main_models.RunCompletionMessageShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.messages):
+            request.messages_shrink = Utils.array_to_string_with_specified_style(tmp_req.messages, 'Messages', 'json')
+        body = {}
+        if not DaraCore.is_null(request.messages_shrink):
+            body['Messages'] = request.messages_shrink
+        if not DaraCore.is_null(request.model_code):
+            body['ModelCode'] = request.model_code
+        if not DaraCore.is_null(request.stream):
+            body['Stream'] = request.stream
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'RunCompletionMessage',
+            version = '2019-01-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        sse_resp = self.call_sseapi_async(params, req, runtime)
+        async for resp in sse_resp:
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.RunCompletionMessageResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
+
+    def run_completion_message_with_options(
+        self,
+        tmp_req: main_models.RunCompletionMessageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RunCompletionMessageResponse:
+        tmp_req.validate()
+        request = main_models.RunCompletionMessageShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.messages):
+            request.messages_shrink = Utils.array_to_string_with_specified_style(tmp_req.messages, 'Messages', 'json')
+        body = {}
+        if not DaraCore.is_null(request.messages_shrink):
+            body['Messages'] = request.messages_shrink
+        if not DaraCore.is_null(request.model_code):
+            body['ModelCode'] = request.model_code
+        if not DaraCore.is_null(request.stream):
+            body['Stream'] = request.stream
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'RunCompletionMessage',
+            version = '2019-01-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RunCompletionMessageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def run_completion_message_with_options_async(
+        self,
+        tmp_req: main_models.RunCompletionMessageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RunCompletionMessageResponse:
+        tmp_req.validate()
+        request = main_models.RunCompletionMessageShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.messages):
+            request.messages_shrink = Utils.array_to_string_with_specified_style(tmp_req.messages, 'Messages', 'json')
+        body = {}
+        if not DaraCore.is_null(request.messages_shrink):
+            body['Messages'] = request.messages_shrink
+        if not DaraCore.is_null(request.model_code):
+            body['ModelCode'] = request.model_code
+        if not DaraCore.is_null(request.stream):
+            body['Stream'] = request.stream
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'RunCompletionMessage',
+            version = '2019-01-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RunCompletionMessageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def run_completion_message(
+        self,
+        request: main_models.RunCompletionMessageRequest,
+    ) -> main_models.RunCompletionMessageResponse:
+        runtime = RuntimeOptions()
+        return self.run_completion_message_with_options(request, runtime)
+
+    async def run_completion_message_async(
+        self,
+        request: main_models.RunCompletionMessageRequest,
+    ) -> main_models.RunCompletionMessageResponse:
+        runtime = RuntimeOptions()
+        return await self.run_completion_message_with_options_async(request, runtime)
 
     def save_config_data_set_with_options(
         self,

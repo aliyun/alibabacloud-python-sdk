@@ -1,3 +1,7 @@
+2026-05-19 Version: 9.1.0
+- Support API RunCompletionMessage.
+
+
 2026-05-19 Version: 9.0.0
 - Update API UploadDataSyncForLLM: delete response parameters Body.Data.$.Rules.$.LlmResponse.
 

@@ -221,6 +221,10 @@ from ._revert_assigned_session_response import RevertAssignedSessionResponse
 from ._revert_assigned_session_group_request import RevertAssignedSessionGroupRequest
 from ._revert_assigned_session_group_response_body import RevertAssignedSessionGroupResponseBody
 from ._revert_assigned_session_group_response import RevertAssignedSessionGroupResponse
+from ._run_completion_message_request import RunCompletionMessageRequest
+from ._run_completion_message_shrink_request import RunCompletionMessageShrinkRequest
+from ._run_completion_message_response_body import RunCompletionMessageResponseBody
+from ._run_completion_message_response import RunCompletionMessageResponse
 from ._save_config_data_set_request import SaveConfigDataSetRequest
 from ._save_config_data_set_response_body import SaveConfigDataSetResponseBody
 from ._save_config_data_set_response import SaveConfigDataSetResponse
@@ -556,6 +560,8 @@ from ._list_warning_strategy_config_response_body import ListWarningStrategyConf
 from ._list_warning_strategy_config_response_body import ListWarningStrategyConfigResponseBodyData
 from ._revert_assigned_session_response_body import RevertAssignedSessionResponseBodyMessages
 from ._revert_assigned_session_group_response_body import RevertAssignedSessionGroupResponseBodyMessages
+from ._run_completion_message_request import RunCompletionMessageRequestMessages
+from ._run_completion_message_response_body import RunCompletionMessageResponseBodyData
 from ._sync_quality_check_response_body import SyncQualityCheckResponseBodyDataRulesHitHitKeyWords
 from ._sync_quality_check_response_body import SyncQualityCheckResponseBodyDataRulesHitPhrase
 from ._sync_quality_check_response_body import SyncQualityCheckResponseBodyDataRulesHit
@@ -830,6 +836,10 @@ __all__ = [
     RevertAssignedSessionGroupRequest,
     RevertAssignedSessionGroupResponseBody,
     RevertAssignedSessionGroupResponse,
+    RunCompletionMessageRequest,
+    RunCompletionMessageShrinkRequest,
+    RunCompletionMessageResponseBody,
+    RunCompletionMessageResponse,
     SaveConfigDataSetRequest,
     SaveConfigDataSetResponseBody,
     SaveConfigDataSetResponse,
@@ -1165,6 +1175,8 @@ __all__ = [
     ListWarningStrategyConfigResponseBodyData,
     RevertAssignedSessionResponseBodyMessages,
     RevertAssignedSessionGroupResponseBodyMessages,
+    RunCompletionMessageRequestMessages,
+    RunCompletionMessageResponseBodyData,
     SyncQualityCheckResponseBodyDataRulesHitHitKeyWords,
     SyncQualityCheckResponseBodyDataRulesHitPhrase,
     SyncQualityCheckResponseBodyDataRulesHit,
