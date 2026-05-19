@@ -36,6 +36,7 @@ class GetAICoachScriptResponseBody(DaraModel):
         name: str = None,
         opening_remarks: str = None,
         order_ack_flag: bool = None,
+        point_covered_flag: bool = None,
         point_deduction_rule_list: List[main_models.GetAICoachScriptResponseBodyPointDeductionRuleList] = None,
         points: List[main_models.GetAICoachScriptResponseBodyPoints] = None,
         request_id: str = None,
@@ -78,6 +79,7 @@ class GetAICoachScriptResponseBody(DaraModel):
         self.name = name
         self.opening_remarks = opening_remarks
         self.order_ack_flag = order_ack_flag
+        self.point_covered_flag = point_covered_flag
         self.point_deduction_rule_list = point_deduction_rule_list
         self.points = points
         self.request_id = request_id
@@ -210,6 +212,9 @@ class GetAICoachScriptResponseBody(DaraModel):
 
         if self.order_ack_flag is not None:
             result['orderAckFlag'] = self.order_ack_flag
+
+        if self.point_covered_flag is not None:
+            result['pointCoveredFlag'] = self.point_covered_flag
 
         result['pointDeductionRuleList'] = []
         if self.point_deduction_rule_list is not None:
@@ -351,6 +356,9 @@ class GetAICoachScriptResponseBody(DaraModel):
 
         if m.get('orderAckFlag') is not None:
             self.order_ack_flag = m.get('orderAckFlag')
+
+        if m.get('pointCoveredFlag') is not None:
+            self.point_covered_flag = m.get('pointCoveredFlag')
 
         self.point_deduction_rule_list = []
         if m.get('pointDeductionRuleList') is not None:
@@ -670,6 +678,7 @@ class GetAICoachScriptResponseBodyPoints(DaraModel):
         name: str = None,
         point_id: str = None,
         question_description: str = None,
+        script_point_id: str = None,
         sort_no: int = None,
         weight: int = None,
     ):
@@ -678,6 +687,7 @@ class GetAICoachScriptResponseBodyPoints(DaraModel):
         self.name = name
         self.point_id = point_id
         self.question_description = question_description
+        self.script_point_id = script_point_id
         self.sort_no = sort_no
         self.weight = weight
 
@@ -709,6 +719,9 @@ class GetAICoachScriptResponseBodyPoints(DaraModel):
         if self.question_description is not None:
             result['questionDescription'] = self.question_description
 
+        if self.script_point_id is not None:
+            result['scriptPointId'] = self.script_point_id
+
         if self.sort_no is not None:
             result['sortNo'] = self.sort_no
 
@@ -736,6 +749,9 @@ class GetAICoachScriptResponseBodyPoints(DaraModel):
 
         if m.get('questionDescription') is not None:
             self.question_description = m.get('questionDescription')
+
+        if m.get('scriptPointId') is not None:
+            self.script_point_id = m.get('scriptPointId')
 
         if m.get('sortNo') is not None:
             self.sort_no = m.get('sortNo')

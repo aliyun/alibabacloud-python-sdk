@@ -1,3 +1,8 @@
+2026-05-19 Version: 2.18.1
+- Update API GetAICoachScript: add response parameters Body.pointCoveredFlag.
+- Update API GetAICoachScript: add response parameters Body.points.$.scriptPointId.
+
+
 2026-05-08 Version: 2.18.0
 - Support API CreateAICoachTaskReport.
 
