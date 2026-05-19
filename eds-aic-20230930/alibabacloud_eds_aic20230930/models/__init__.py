@@ -234,6 +234,9 @@ from ._modify_system_property_template_response import ModifySystemPropertyTempl
 from ._operate_app_request import OperateAppRequest
 from ._operate_app_response_body import OperateAppResponseBody
 from ._operate_app_response import OperateAppResponse
+from ._pause_agent_task_request import PauseAgentTaskRequest
+from ._pause_agent_task_response_body import PauseAgentTaskResponseBody
+from ._pause_agent_task_response import PauseAgentTaskResponse
 from ._reboot_android_instances_in_group_request import RebootAndroidInstancesInGroupRequest
 from ._reboot_android_instances_in_group_response_body import RebootAndroidInstancesInGroupResponseBody
 from ._reboot_android_instances_in_group_response import RebootAndroidInstancesInGroupResponse
@@ -255,6 +258,9 @@ from ._renew_cloud_phone_nodes_response import RenewCloudPhoneNodesResponse
 from ._reset_android_instances_in_group_request import ResetAndroidInstancesInGroupRequest
 from ._reset_android_instances_in_group_response_body import ResetAndroidInstancesInGroupResponseBody
 from ._reset_android_instances_in_group_response import ResetAndroidInstancesInGroupResponse
+from ._resume_agent_task_request import ResumeAgentTaskRequest
+from ._resume_agent_task_response_body import ResumeAgentTaskResponseBody
+from ._resume_agent_task_response import ResumeAgentTaskResponse
 from ._run_agent_task_request import RunAgentTaskRequest
 from ._run_agent_task_response_body import RunAgentTaskResponseBody
 from ._run_agent_task_response import RunAgentTaskResponse
@@ -416,6 +422,7 @@ from ._modify_policy_group_request import ModifyPolicyGroupRequestNetRedirectPol
 from ._modify_policy_group_request import ModifyPolicyGroupRequestWatermark
 from ._modify_system_property_template_request import ModifySystemPropertyTemplateRequestSystemPropertyInfoCustomPropertyInfos
 from ._modify_system_property_template_request import ModifySystemPropertyTemplateRequestSystemPropertyInfo
+from ._pause_agent_task_response_body import PauseAgentTaskResponseBodyTasks
 from ._reboot_android_instances_in_group_response_body import RebootAndroidInstancesInGroupResponseBodyTasksChildTasks
 from ._reboot_android_instances_in_group_response_body import RebootAndroidInstancesInGroupResponseBodyTasks
 from ._recover_android_instance_response_body import RecoverAndroidInstanceResponseBodyData
@@ -423,6 +430,7 @@ from ._recover_app_response_body import RecoverAppResponseBodyData
 from ._recovery_file_response_body import RecoveryFileResponseBodyData
 from ._reset_android_instances_in_group_response_body import ResetAndroidInstancesInGroupResponseBodyTasksChildTasks
 from ._reset_android_instances_in_group_response_body import ResetAndroidInstancesInGroupResponseBodyTasks
+from ._resume_agent_task_response_body import ResumeAgentTaskResponseBodyTasks
 from ._run_agent_task_response_body import RunAgentTaskResponseBodyTasks
 from ._run_command_response_body import RunCommandResponseBodyRunCommandInfos
 from ._run_sync_command_response_body import RunSyncCommandResponseBodyData
@@ -666,6 +674,9 @@ __all__ = [
     OperateAppRequest,
     OperateAppResponseBody,
     OperateAppResponse,
+    PauseAgentTaskRequest,
+    PauseAgentTaskResponseBody,
+    PauseAgentTaskResponse,
     RebootAndroidInstancesInGroupRequest,
     RebootAndroidInstancesInGroupResponseBody,
     RebootAndroidInstancesInGroupResponse,
@@ -687,6 +698,9 @@ __all__ = [
     ResetAndroidInstancesInGroupRequest,
     ResetAndroidInstancesInGroupResponseBody,
     ResetAndroidInstancesInGroupResponse,
+    ResumeAgentTaskRequest,
+    ResumeAgentTaskResponseBody,
+    ResumeAgentTaskResponse,
     RunAgentTaskRequest,
     RunAgentTaskResponseBody,
     RunAgentTaskResponse,
@@ -848,6 +862,7 @@ __all__ = [
     ModifyPolicyGroupRequestWatermark,
     ModifySystemPropertyTemplateRequestSystemPropertyInfoCustomPropertyInfos,
     ModifySystemPropertyTemplateRequestSystemPropertyInfo,
+    PauseAgentTaskResponseBodyTasks,
     RebootAndroidInstancesInGroupResponseBodyTasksChildTasks,
     RebootAndroidInstancesInGroupResponseBodyTasks,
     RecoverAndroidInstanceResponseBodyData,
@@ -855,6 +870,7 @@ __all__ = [
     RecoveryFileResponseBodyData,
     ResetAndroidInstancesInGroupResponseBodyTasksChildTasks,
     ResetAndroidInstancesInGroupResponseBodyTasks,
+    ResumeAgentTaskResponseBodyTasks,
     RunAgentTaskResponseBodyTasks,
     RunCommandResponseBodyRunCommandInfos,
     RunSyncCommandResponseBodyData,

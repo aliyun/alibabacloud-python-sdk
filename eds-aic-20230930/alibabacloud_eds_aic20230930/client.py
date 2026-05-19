@@ -6672,6 +6672,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.operate_app_with_options_async(request, runtime)
 
+    def pause_agent_task_with_options(
+        self,
+        request: main_models.PauseAgentTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.PauseAgentTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.task_ids):
+            query['TaskIds'] = request.task_ids
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'PauseAgentTask',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.PauseAgentTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def pause_agent_task_with_options_async(
+        self,
+        request: main_models.PauseAgentTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.PauseAgentTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.task_ids):
+            query['TaskIds'] = request.task_ids
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'PauseAgentTask',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.PauseAgentTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def pause_agent_task(
+        self,
+        request: main_models.PauseAgentTaskRequest,
+    ) -> main_models.PauseAgentTaskResponse:
+        runtime = RuntimeOptions()
+        return self.pause_agent_task_with_options(request, runtime)
+
+    async def pause_agent_task_async(
+        self,
+        request: main_models.PauseAgentTaskRequest,
+    ) -> main_models.PauseAgentTaskResponse:
+        runtime = RuntimeOptions()
+        return await self.pause_agent_task_with_options_async(request, runtime)
+
     def reboot_android_instances_in_group_with_options(
         self,
         request: main_models.RebootAndroidInstancesInGroupRequest,
@@ -7285,6 +7355,80 @@ class Client(OpenApiClient):
     ) -> main_models.ResetAndroidInstancesInGroupResponse:
         runtime = RuntimeOptions()
         return await self.reset_android_instances_in_group_with_options_async(request, runtime)
+
+    def resume_agent_task_with_options(
+        self,
+        request: main_models.ResumeAgentTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ResumeAgentTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.additional_prompt):
+            query['AdditionalPrompt'] = request.additional_prompt
+        if not DaraCore.is_null(request.task_ids):
+            query['TaskIds'] = request.task_ids
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ResumeAgentTask',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ResumeAgentTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def resume_agent_task_with_options_async(
+        self,
+        request: main_models.ResumeAgentTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ResumeAgentTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.additional_prompt):
+            query['AdditionalPrompt'] = request.additional_prompt
+        if not DaraCore.is_null(request.task_ids):
+            query['TaskIds'] = request.task_ids
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ResumeAgentTask',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ResumeAgentTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def resume_agent_task(
+        self,
+        request: main_models.ResumeAgentTaskRequest,
+    ) -> main_models.ResumeAgentTaskResponse:
+        runtime = RuntimeOptions()
+        return self.resume_agent_task_with_options(request, runtime)
+
+    async def resume_agent_task_async(
+        self,
+        request: main_models.ResumeAgentTaskRequest,
+    ) -> main_models.ResumeAgentTaskResponse:
+        runtime = RuntimeOptions()
+        return await self.resume_agent_task_with_options_async(request, runtime)
 
     def run_agent_task_with_options(
         self,
