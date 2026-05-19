@@ -11,6 +11,7 @@ class CreateEmbodiedAIPlatformShrinkRequest(DaraModel):
         device_count: int = None,
         platform_name: str = None,
         ray_config_shrink: str = None,
+        ray_train_config_shrink: str = None,
         region_id: str = None,
         webserver_spec_name: str = None,
     ):
@@ -20,6 +21,7 @@ class CreateEmbodiedAIPlatformShrinkRequest(DaraModel):
         # This parameter is required.
         self.platform_name = platform_name
         self.ray_config_shrink = ray_config_shrink
+        self.ray_train_config_shrink = ray_train_config_shrink
         # This parameter is required.
         self.region_id = region_id
         self.webserver_spec_name = webserver_spec_name
@@ -44,6 +46,9 @@ class CreateEmbodiedAIPlatformShrinkRequest(DaraModel):
         if self.ray_config_shrink is not None:
             result['RayConfig'] = self.ray_config_shrink
 
+        if self.ray_train_config_shrink is not None:
+            result['RayTrainConfig'] = self.ray_train_config_shrink
+
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
@@ -65,6 +70,9 @@ class CreateEmbodiedAIPlatformShrinkRequest(DaraModel):
 
         if m.get('RayConfig') is not None:
             self.ray_config_shrink = m.get('RayConfig')
+
+        if m.get('RayTrainConfig') is not None:
+            self.ray_train_config_shrink = m.get('RayTrainConfig')
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')

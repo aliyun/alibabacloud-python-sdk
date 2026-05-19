@@ -1,3 +1,9 @@
+2026-05-19 Version: 1.8.1
+- Update API CreateEmbodiedAIPlatform: add request parameters RayTrainConfig.
+- Update API DescribeEmbodiedAIPlatforms: add response parameters Body.Platforms.$.RayTrainConfig.
+- Update API ModifyEmbodiedAIPlatform: add request parameters RayTrainConfig.
+
+
 2026-04-22 Version: 1.8.0
 - Support API DescribeEapDeviceResourceAllocation.
 - Update API CreateEmbodiedAIPlatform: add request parameters DeviceCount.

@@ -142,6 +142,8 @@ class Client(OpenApiClient):
         Utils.convert(tmp_req, request)
         if not DaraCore.is_null(tmp_req.ray_config):
             request.ray_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.ray_config, 'RayConfig', 'json')
+        if not DaraCore.is_null(tmp_req.ray_train_config):
+            request.ray_train_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.ray_train_config, 'RayTrainConfig', 'json')
         query = {}
         if not DaraCore.is_null(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
@@ -151,6 +153,8 @@ class Client(OpenApiClient):
             query['PlatformName'] = request.platform_name
         if not DaraCore.is_null(request.ray_config_shrink):
             query['RayConfig'] = request.ray_config_shrink
+        if not DaraCore.is_null(request.ray_train_config_shrink):
+            query['RayTrainConfig'] = request.ray_train_config_shrink
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.webserver_spec_name):
@@ -184,6 +188,8 @@ class Client(OpenApiClient):
         Utils.convert(tmp_req, request)
         if not DaraCore.is_null(tmp_req.ray_config):
             request.ray_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.ray_config, 'RayConfig', 'json')
+        if not DaraCore.is_null(tmp_req.ray_train_config):
+            request.ray_train_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.ray_train_config, 'RayTrainConfig', 'json')
         query = {}
         if not DaraCore.is_null(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
@@ -193,6 +199,8 @@ class Client(OpenApiClient):
             query['PlatformName'] = request.platform_name
         if not DaraCore.is_null(request.ray_config_shrink):
             query['RayConfig'] = request.ray_config_shrink
+        if not DaraCore.is_null(request.ray_train_config_shrink):
+            query['RayTrainConfig'] = request.ray_train_config_shrink
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.webserver_spec_name):
@@ -1002,6 +1010,8 @@ class Client(OpenApiClient):
         Utils.convert(tmp_req, request)
         if not DaraCore.is_null(tmp_req.ray_config):
             request.ray_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.ray_config, 'RayConfig', 'json')
+        if not DaraCore.is_null(tmp_req.ray_train_config):
+            request.ray_train_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.ray_train_config, 'RayTrainConfig', 'json')
         query = {}
         if not DaraCore.is_null(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
@@ -1011,6 +1021,8 @@ class Client(OpenApiClient):
             query['PlatformName'] = request.platform_name
         if not DaraCore.is_null(request.ray_config_shrink):
             query['RayConfig'] = request.ray_config_shrink
+        if not DaraCore.is_null(request.ray_train_config_shrink):
+            query['RayTrainConfig'] = request.ray_train_config_shrink
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.webserver_spec_name):
@@ -1044,6 +1056,8 @@ class Client(OpenApiClient):
         Utils.convert(tmp_req, request)
         if not DaraCore.is_null(tmp_req.ray_config):
             request.ray_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.ray_config, 'RayConfig', 'json')
+        if not DaraCore.is_null(tmp_req.ray_train_config):
+            request.ray_train_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.ray_train_config, 'RayTrainConfig', 'json')
         query = {}
         if not DaraCore.is_null(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
@@ -1053,6 +1067,8 @@ class Client(OpenApiClient):
             query['PlatformName'] = request.platform_name
         if not DaraCore.is_null(request.ray_config_shrink):
             query['RayConfig'] = request.ray_config_shrink
+        if not DaraCore.is_null(request.ray_train_config_shrink):
+            query['RayTrainConfig'] = request.ray_train_config_shrink
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.webserver_spec_name):

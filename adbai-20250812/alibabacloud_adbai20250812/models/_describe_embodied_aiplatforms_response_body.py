@@ -98,6 +98,7 @@ class DescribeEmbodiedAIPlatformsResponseBodyPlatforms(DaraModel):
         oss_bucket_name: str = None,
         platform_name: str = None,
         ray_config: main_models.DescribeEmbodiedAIPlatformsResponseBodyPlatformsRayConfig = None,
+        ray_train_config: main_models.DescribeEmbodiedAIPlatformsResponseBodyPlatformsRayTrainConfig = None,
         state: str = None,
     ):
         self.create_time = create_time
@@ -105,6 +106,7 @@ class DescribeEmbodiedAIPlatformsResponseBodyPlatforms(DaraModel):
         self.oss_bucket_name = oss_bucket_name
         self.platform_name = platform_name
         self.ray_config = ray_config
+        self.ray_train_config = ray_train_config
         self.state = state
 
     def validate(self):
@@ -112,6 +114,8 @@ class DescribeEmbodiedAIPlatformsResponseBodyPlatforms(DaraModel):
             self.eap_config.validate()
         if self.ray_config:
             self.ray_config.validate()
+        if self.ray_train_config:
+            self.ray_train_config.validate()
 
     def to_map(self):
         result = dict()
@@ -132,6 +136,9 @@ class DescribeEmbodiedAIPlatformsResponseBodyPlatforms(DaraModel):
 
         if self.ray_config is not None:
             result['RayConfig'] = self.ray_config.to_map()
+
+        if self.ray_train_config is not None:
+            result['RayTrainConfig'] = self.ray_train_config.to_map()
 
         if self.state is not None:
             result['State'] = self.state
@@ -157,8 +164,181 @@ class DescribeEmbodiedAIPlatformsResponseBodyPlatforms(DaraModel):
             temp_model = main_models.DescribeEmbodiedAIPlatformsResponseBodyPlatformsRayConfig()
             self.ray_config = temp_model.from_map(m.get('RayConfig'))
 
+        if m.get('RayTrainConfig') is not None:
+            temp_model = main_models.DescribeEmbodiedAIPlatformsResponseBodyPlatformsRayTrainConfig()
+            self.ray_train_config = temp_model.from_map(m.get('RayTrainConfig'))
+
         if m.get('State') is not None:
             self.state = m.get('State')
+
+        return self
+
+class DescribeEmbodiedAIPlatformsResponseBodyPlatformsRayTrainConfig(DaraModel):
+    def __init__(
+        self,
+        cpu_acu: int = None,
+        gpu_specs: List[main_models.DescribeEmbodiedAIPlatformsResponseBodyPlatformsRayTrainConfigGpuSpecs] = None,
+        terminal_config: main_models.DescribeEmbodiedAIPlatformsResponseBodyPlatformsRayTrainConfigTerminalConfig = None,
+    ):
+        self.cpu_acu = cpu_acu
+        self.gpu_specs = gpu_specs
+        self.terminal_config = terminal_config
+
+    def validate(self):
+        if self.gpu_specs:
+            for v1 in self.gpu_specs:
+                 if v1:
+                    v1.validate()
+        if self.terminal_config:
+            self.terminal_config.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.cpu_acu is not None:
+            result['CpuAcu'] = self.cpu_acu
+
+        result['GpuSpecs'] = []
+        if self.gpu_specs is not None:
+            for k1 in self.gpu_specs:
+                result['GpuSpecs'].append(k1.to_map() if k1 else None)
+
+        if self.terminal_config is not None:
+            result['TerminalConfig'] = self.terminal_config.to_map()
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CpuAcu') is not None:
+            self.cpu_acu = m.get('CpuAcu')
+
+        self.gpu_specs = []
+        if m.get('GpuSpecs') is not None:
+            for k1 in m.get('GpuSpecs'):
+                temp_model = main_models.DescribeEmbodiedAIPlatformsResponseBodyPlatformsRayTrainConfigGpuSpecs()
+                self.gpu_specs.append(temp_model.from_map(k1))
+
+        if m.get('TerminalConfig') is not None:
+            temp_model = main_models.DescribeEmbodiedAIPlatformsResponseBodyPlatformsRayTrainConfigTerminalConfig()
+            self.terminal_config = temp_model.from_map(m.get('TerminalConfig'))
+
+        return self
+
+class DescribeEmbodiedAIPlatformsResponseBodyPlatformsRayTrainConfigTerminalConfig(DaraModel):
+    def __init__(
+        self,
+        acr_config: main_models.DescribeEmbodiedAIPlatformsResponseBodyPlatformsRayTrainConfigTerminalConfigAcrConfig = None,
+    ):
+        self.acr_config = acr_config
+
+    def validate(self):
+        if self.acr_config:
+            self.acr_config.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.acr_config is not None:
+            result['AcrConfig'] = self.acr_config.to_map()
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcrConfig') is not None:
+            temp_model = main_models.DescribeEmbodiedAIPlatformsResponseBodyPlatformsRayTrainConfigTerminalConfigAcrConfig()
+            self.acr_config = temp_model.from_map(m.get('AcrConfig'))
+
+        return self
+
+class DescribeEmbodiedAIPlatformsResponseBodyPlatformsRayTrainConfigTerminalConfigAcrConfig(DaraModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        namespaces: List[str] = None,
+        registry: str = None,
+    ):
+        self.instance_id = instance_id
+        self.namespaces = namespaces
+        self.registry = registry
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+
+        if self.namespaces is not None:
+            result['Namespaces'] = self.namespaces
+
+        if self.registry is not None:
+            result['Registry'] = self.registry
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+
+        if m.get('Namespaces') is not None:
+            self.namespaces = m.get('Namespaces')
+
+        if m.get('Registry') is not None:
+            self.registry = m.get('Registry')
+
+        return self
+
+class DescribeEmbodiedAIPlatformsResponseBodyPlatformsRayTrainConfigGpuSpecs(DaraModel):
+    def __init__(
+        self,
+        allocate_unit: str = None,
+        count: int = None,
+        spec_name: str = None,
+    ):
+        self.allocate_unit = allocate_unit
+        self.count = count
+        self.spec_name = spec_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.allocate_unit is not None:
+            result['AllocateUnit'] = self.allocate_unit
+
+        if self.count is not None:
+            result['Count'] = self.count
+
+        if self.spec_name is not None:
+            result['SpecName'] = self.spec_name
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AllocateUnit') is not None:
+            self.allocate_unit = m.get('AllocateUnit')
+
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+
+        if m.get('SpecName') is not None:
+            self.spec_name = m.get('SpecName')
 
         return self
 
