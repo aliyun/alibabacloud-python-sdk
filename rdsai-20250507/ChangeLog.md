@@ -1,3 +1,9 @@
+2026-05-19 Version: 3.4.2
+- Update API DescribeMOTokenUsageDetail: add request parameters Cursor.
+- Update API DescribeMOTokenUsageDetail: add response parameters Body.NextCursor.
+- Update API GetModelOperatorOrder: add response parameters Body.Data.InstanceList.$.ChargeType.
+
+
 2026-05-12 Version: 3.4.1
 - Update API DescribeMOTokenUsageDetail: add request parameters ApiKey.
 - Update API DescribeMOTokenUsageDetail: add response parameters Body.Records.$.InputTokens.

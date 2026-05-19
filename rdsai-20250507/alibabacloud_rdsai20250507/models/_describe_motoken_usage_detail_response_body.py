@@ -10,12 +10,14 @@ from darabonba.model import DaraModel
 class DescribeMOTokenUsageDetailResponseBody(DaraModel):
     def __init__(
         self,
+        next_cursor: str = None,
         page: int = None,
         page_size: int = None,
         records: List[main_models.DescribeMOTokenUsageDetailResponseBodyRecords] = None,
         request_id: str = None,
         total_count: int = None,
     ):
+        self.next_cursor = next_cursor
         self.page = page
         self.page_size = page_size
         self.records = records
@@ -34,6 +36,9 @@ class DescribeMOTokenUsageDetailResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.next_cursor is not None:
+            result['NextCursor'] = self.next_cursor
+
         if self.page is not None:
             result['Page'] = self.page
 
@@ -55,6 +60,9 @@ class DescribeMOTokenUsageDetailResponseBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('NextCursor') is not None:
+            self.next_cursor = m.get('NextCursor')
+
         if m.get('Page') is not None:
             self.page = m.get('Page')
 

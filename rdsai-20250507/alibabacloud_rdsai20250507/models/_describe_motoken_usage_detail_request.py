@@ -9,6 +9,7 @@ class DescribeMOTokenUsageDetailRequest(DaraModel):
         self,
         api_key: str = None,
         consumer_name: str = None,
+        cursor: str = None,
         end_time: str = None,
         instance_id: str = None,
         model: str = None,
@@ -19,6 +20,7 @@ class DescribeMOTokenUsageDetailRequest(DaraModel):
     ):
         self.api_key = api_key
         self.consumer_name = consumer_name
+        self.cursor = cursor
         self.end_time = end_time
         # This parameter is required.
         self.instance_id = instance_id
@@ -41,6 +43,9 @@ class DescribeMOTokenUsageDetailRequest(DaraModel):
 
         if self.consumer_name is not None:
             result['ConsumerName'] = self.consumer_name
+
+        if self.cursor is not None:
+            result['Cursor'] = self.cursor
 
         if self.end_time is not None:
             result['EndTime'] = self.end_time
@@ -72,6 +77,9 @@ class DescribeMOTokenUsageDetailRequest(DaraModel):
 
         if m.get('ConsumerName') is not None:
             self.consumer_name = m.get('ConsumerName')
+
+        if m.get('Cursor') is not None:
+            self.cursor = m.get('Cursor')
 
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')

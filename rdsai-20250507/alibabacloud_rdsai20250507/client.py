@@ -2007,6 +2007,8 @@ class Client(OpenApiClient):
             query['ApiKey'] = request.api_key
         if not DaraCore.is_null(request.consumer_name):
             query['ConsumerName'] = request.consumer_name
+        if not DaraCore.is_null(request.cursor):
+            query['Cursor'] = request.cursor
         if not DaraCore.is_null(request.end_time):
             query['EndTime'] = request.end_time
         if not DaraCore.is_null(request.instance_id):
@@ -2051,6 +2053,8 @@ class Client(OpenApiClient):
             query['ApiKey'] = request.api_key
         if not DaraCore.is_null(request.consumer_name):
             query['ConsumerName'] = request.consumer_name
+        if not DaraCore.is_null(request.cursor):
+            query['Cursor'] = request.cursor
         if not DaraCore.is_null(request.end_time):
             query['EndTime'] = request.end_time
         if not DaraCore.is_null(request.instance_id):

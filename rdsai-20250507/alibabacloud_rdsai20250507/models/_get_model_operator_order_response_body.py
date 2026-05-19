@@ -112,12 +112,14 @@ class GetModelOperatorOrderResponseBodyData(DaraModel):
 class GetModelOperatorOrderResponseBodyDataInstanceList(DaraModel):
     def __init__(
         self,
+        charge_type: str = None,
         end_time: int = None,
         instance_class: str = None,
         instance_id: str = None,
         start_time: int = None,
         status: str = None,
     ):
+        self.charge_type = charge_type
         # The instance end time (format: Timestamp).
         self.end_time = end_time
         # instance type
@@ -137,6 +139,9 @@ class GetModelOperatorOrderResponseBodyDataInstanceList(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.charge_type is not None:
+            result['ChargeType'] = self.charge_type
+
         if self.end_time is not None:
             result['EndTime'] = self.end_time
 
@@ -156,6 +161,9 @@ class GetModelOperatorOrderResponseBodyDataInstanceList(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ChargeType') is not None:
+            self.charge_type = m.get('ChargeType')
+
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
 
