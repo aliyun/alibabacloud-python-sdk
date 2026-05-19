@@ -13,6 +13,7 @@ class DescribeApplicationAttributeResponseBody(DaraModel):
         application_id: str = None,
         application_type: str = None,
         architecture: str = None,
+        can_disable_snat: bool = None,
         components: List[main_models.DescribeApplicationAttributeResponseBodyComponents] = None,
         creation_time: str = None,
         dbcluster_id: str = None,
@@ -27,6 +28,7 @@ class DescribeApplicationAttributeResponseBody(DaraModel):
         maintain_start_time: str = None,
         mem_application_attribute: main_models.DescribeApplicationAttributeResponseBodyMemApplicationAttribute = None,
         minor_version: str = None,
+        nat_gateway_id: str = None,
         pay_type: str = None,
         polar_claw_saa_sapplication_attribute: main_models.DescribeApplicationAttributeResponseBodyPolarClawSaaSApplicationAttribute = None,
         polar_fsinstance_id: str = None,
@@ -35,6 +37,7 @@ class DescribeApplicationAttributeResponseBody(DaraModel):
         security_groups: List[main_models.DescribeApplicationAttributeResponseBodySecurityGroups] = None,
         security_iparrays: List[main_models.DescribeApplicationAttributeResponseBodySecurityIPArrays] = None,
         serverless_type: str = None,
+        snat_status: str = None,
         status: str = None,
         storages: List[main_models.DescribeApplicationAttributeResponseBodyStorages] = None,
         upgrade_available: str = None,
@@ -46,6 +49,7 @@ class DescribeApplicationAttributeResponseBody(DaraModel):
         self.application_id = application_id
         self.application_type = application_type
         self.architecture = architecture
+        self.can_disable_snat = can_disable_snat
         self.components = components
         self.creation_time = creation_time
         self.dbcluster_id = dbcluster_id
@@ -60,6 +64,7 @@ class DescribeApplicationAttributeResponseBody(DaraModel):
         self.maintain_start_time = maintain_start_time
         self.mem_application_attribute = mem_application_attribute
         self.minor_version = minor_version
+        self.nat_gateway_id = nat_gateway_id
         self.pay_type = pay_type
         self.polar_claw_saa_sapplication_attribute = polar_claw_saa_sapplication_attribute
         self.polar_fsinstance_id = polar_fsinstance_id
@@ -68,6 +73,7 @@ class DescribeApplicationAttributeResponseBody(DaraModel):
         self.security_groups = security_groups
         self.security_iparrays = security_iparrays
         self.serverless_type = serverless_type
+        self.snat_status = snat_status
         self.status = status
         self.storages = storages
         self.upgrade_available = upgrade_available
@@ -118,6 +124,9 @@ class DescribeApplicationAttributeResponseBody(DaraModel):
         if self.architecture is not None:
             result['Architecture'] = self.architecture
 
+        if self.can_disable_snat is not None:
+            result['CanDisableSnat'] = self.can_disable_snat
+
         result['Components'] = []
         if self.components is not None:
             for k1 in self.components:
@@ -164,6 +173,9 @@ class DescribeApplicationAttributeResponseBody(DaraModel):
         if self.minor_version is not None:
             result['MinorVersion'] = self.minor_version
 
+        if self.nat_gateway_id is not None:
+            result['NatGatewayId'] = self.nat_gateway_id
+
         if self.pay_type is not None:
             result['PayType'] = self.pay_type
 
@@ -191,6 +203,9 @@ class DescribeApplicationAttributeResponseBody(DaraModel):
 
         if self.serverless_type is not None:
             result['ServerlessType'] = self.serverless_type
+
+        if self.snat_status is not None:
+            result['SnatStatus'] = self.snat_status
 
         if self.status is not None:
             result['Status'] = self.status
@@ -227,6 +242,9 @@ class DescribeApplicationAttributeResponseBody(DaraModel):
 
         if m.get('Architecture') is not None:
             self.architecture = m.get('Architecture')
+
+        if m.get('CanDisableSnat') is not None:
+            self.can_disable_snat = m.get('CanDisableSnat')
 
         self.components = []
         if m.get('Components') is not None:
@@ -277,6 +295,9 @@ class DescribeApplicationAttributeResponseBody(DaraModel):
         if m.get('MinorVersion') is not None:
             self.minor_version = m.get('MinorVersion')
 
+        if m.get('NatGatewayId') is not None:
+            self.nat_gateway_id = m.get('NatGatewayId')
+
         if m.get('PayType') is not None:
             self.pay_type = m.get('PayType')
 
@@ -307,6 +328,9 @@ class DescribeApplicationAttributeResponseBody(DaraModel):
 
         if m.get('ServerlessType') is not None:
             self.serverless_type = m.get('ServerlessType')
+
+        if m.get('SnatStatus') is not None:
+            self.snat_status = m.get('SnatStatus')
 
         if m.get('Status') is not None:
             self.status = m.get('Status')

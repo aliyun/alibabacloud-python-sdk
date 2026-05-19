@@ -22408,6 +22408,10 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
         if not DaraCore.is_null(request.polar_fs_instance_id):
             query['PolarFsInstanceId'] = request.polar_fs_instance_id
         if not DaraCore.is_null(request.quota_mode):
@@ -22442,6 +22446,10 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
         if not DaraCore.is_null(request.polar_fs_instance_id):
             query['PolarFsInstanceId'] = request.polar_fs_instance_id
         if not DaraCore.is_null(request.quota_mode):
