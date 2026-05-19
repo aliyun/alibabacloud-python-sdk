@@ -196,8 +196,10 @@ class SubmitDocTranslateTaskRequestExtTerminologies(DaraModel):
 class SubmitDocTranslateTaskRequestExtConfig(DaraModel):
     def __init__(
         self,
+        is_bilingual: bool = None,
         skip_img_trans: bool = None,
     ):
+        self.is_bilingual = is_bilingual
         self.skip_img_trans = skip_img_trans
 
     def validate(self):
@@ -208,6 +210,9 @@ class SubmitDocTranslateTaskRequestExtConfig(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.is_bilingual is not None:
+            result['isBilingual'] = self.is_bilingual
+
         if self.skip_img_trans is not None:
             result['skipImgTrans'] = self.skip_img_trans
 
@@ -215,6 +220,9 @@ class SubmitDocTranslateTaskRequestExtConfig(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('isBilingual') is not None:
+            self.is_bilingual = m.get('isBilingual')
+
         if m.get('skipImgTrans') is not None:
             self.skip_img_trans = m.get('skipImgTrans')
 

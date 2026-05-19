@@ -1,3 +1,7 @@
+2026-05-19 Version: 2.1.7
+- Update API SubmitDocTranslateTask: add request parameters ext.config.isBilingual.
+
+
 2026-04-15 Version: 2.1.6
 - Update API BatchTranslate: add request parameters ext.langDetect.
 - Update API BatchTranslateForHtml: add request parameters ext.langDetect.
