@@ -57,6 +57,8 @@ class DescribeResourceLogStatusResponseBodyResult(DaraModel):
         self,
         resource: str = None,
         status: bool = None,
+        trace_config: main_models.DescribeResourceLogStatusResponseBodyResultTraceConfig = None,
+        trace_status: bool = None,
     ):
         # The protected object.
         self.resource = resource
@@ -65,9 +67,12 @@ class DescribeResourceLogStatusResponseBodyResult(DaraModel):
         # *   **true:** The log collection feature is enabled.
         # *   **false:** The log collection feature is disabled.
         self.status = status
+        self.trace_config = trace_config
+        self.trace_status = trace_status
 
     def validate(self):
-        pass
+        if self.trace_config:
+            self.trace_config.validate()
 
     def to_map(self):
         result = dict()
@@ -80,6 +85,12 @@ class DescribeResourceLogStatusResponseBodyResult(DaraModel):
         if self.status is not None:
             result['Status'] = self.status
 
+        if self.trace_config is not None:
+            result['TraceConfig'] = self.trace_config.to_map()
+
+        if self.trace_status is not None:
+            result['TraceStatus'] = self.trace_status
+
         return result
 
     def from_map(self, m: dict = None):
@@ -89,6 +100,48 @@ class DescribeResourceLogStatusResponseBodyResult(DaraModel):
 
         if m.get('Status') is not None:
             self.status = m.get('Status')
+
+        if m.get('TraceConfig') is not None:
+            temp_model = main_models.DescribeResourceLogStatusResponseBodyResultTraceConfig()
+            self.trace_config = temp_model.from_map(m.get('TraceConfig'))
+
+        if m.get('TraceStatus') is not None:
+            self.trace_status = m.get('TraceStatus')
+
+        return self
+
+class DescribeResourceLogStatusResponseBodyResultTraceConfig(DaraModel):
+    def __init__(
+        self,
+        rate_per_mille: int = None,
+        workspace: str = None,
+    ):
+        self.rate_per_mille = rate_per_mille
+        self.workspace = workspace
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.rate_per_mille is not None:
+            result['RatePerMille'] = self.rate_per_mille
+
+        if self.workspace is not None:
+            result['Workspace'] = self.workspace
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RatePerMille') is not None:
+            self.rate_per_mille = m.get('RatePerMille')
+
+        if m.get('Workspace') is not None:
+            self.workspace = m.get('Workspace')
 
         return self
 

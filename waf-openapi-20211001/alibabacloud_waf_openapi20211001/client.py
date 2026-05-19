@@ -6227,6 +6227,8 @@ class Client(OpenApiClient):
             query['RuleAction'] = request.rule_action
         if not DaraCore.is_null(request.rule_id):
             query['RuleId'] = request.rule_id
+        if not DaraCore.is_null(request.rule_ids):
+            query['RuleIds'] = request.rule_ids
         if not DaraCore.is_null(request.rule_name):
             query['RuleName'] = request.rule_name
         if not DaraCore.is_null(request.rule_status):
@@ -6279,6 +6281,8 @@ class Client(OpenApiClient):
             query['RuleAction'] = request.rule_action
         if not DaraCore.is_null(request.rule_id):
             query['RuleId'] = request.rule_id
+        if not DaraCore.is_null(request.rule_ids):
+            query['RuleIds'] = request.rule_ids
         if not DaraCore.is_null(request.rule_name):
             query['RuleName'] = request.rule_name
         if not DaraCore.is_null(request.rule_status):
@@ -21164,10 +21168,14 @@ class Client(OpenApiClient):
 
     def modify_resource_log_status_with_options(
         self,
-        request: main_models.ModifyResourceLogStatusRequest,
+        tmp_req: main_models.ModifyResourceLogStatusRequest,
         runtime: RuntimeOptions,
     ) -> main_models.ModifyResourceLogStatusResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.ModifyResourceLogStatusShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.trace_config):
+            request.trace_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.trace_config, 'TraceConfig', 'json')
         query = {}
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
@@ -21179,6 +21187,10 @@ class Client(OpenApiClient):
             query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
         if not DaraCore.is_null(request.status):
             query['Status'] = request.status
+        if not DaraCore.is_null(request.trace_config_shrink):
+            query['TraceConfig'] = request.trace_config_shrink
+        if not DaraCore.is_null(request.trace_status):
+            query['TraceStatus'] = request.trace_status
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -21200,10 +21212,14 @@ class Client(OpenApiClient):
 
     async def modify_resource_log_status_with_options_async(
         self,
-        request: main_models.ModifyResourceLogStatusRequest,
+        tmp_req: main_models.ModifyResourceLogStatusRequest,
         runtime: RuntimeOptions,
     ) -> main_models.ModifyResourceLogStatusResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.ModifyResourceLogStatusShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.trace_config):
+            request.trace_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.trace_config, 'TraceConfig', 'json')
         query = {}
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
@@ -21215,6 +21231,10 @@ class Client(OpenApiClient):
             query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
         if not DaraCore.is_null(request.status):
             query['Status'] = request.status
+        if not DaraCore.is_null(request.trace_config_shrink):
+            query['TraceConfig'] = request.trace_config_shrink
+        if not DaraCore.is_null(request.trace_status):
+            query['TraceStatus'] = request.trace_status
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )

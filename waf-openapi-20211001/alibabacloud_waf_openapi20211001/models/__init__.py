@@ -704,6 +704,7 @@ from ._modify_resource_log_field_config_request import ModifyResourceLogFieldCon
 from ._modify_resource_log_field_config_response_body import ModifyResourceLogFieldConfigResponseBody
 from ._modify_resource_log_field_config_response import ModifyResourceLogFieldConfigResponse
 from ._modify_resource_log_status_request import ModifyResourceLogStatusRequest
+from ._modify_resource_log_status_shrink_request import ModifyResourceLogStatusShrinkRequest
 from ._modify_resource_log_status_response_body import ModifyResourceLogStatusResponseBody
 from ._modify_resource_log_status_response import ModifyResourceLogStatusResponse
 from ._modify_template_resources_request import ModifyTemplateResourcesRequest
@@ -874,6 +875,7 @@ from ._describe_product_instances_response_body import DescribeProductInstancesR
 from ._describe_related_defense_rules_response_body import DescribeRelatedDefenseRulesResponseBodyRules
 from ._describe_resource_instance_certs_response_body import DescribeResourceInstanceCertsResponseBodyCerts
 from ._describe_resource_log_delivery_status_response_body import DescribeResourceLogDeliveryStatusResponseBodyLogConfigs
+from ._describe_resource_log_status_response_body import DescribeResourceLogStatusResponseBodyResultTraceConfig
 from ._describe_resource_log_status_response_body import DescribeResourceLogStatusResponseBodyResult
 from ._describe_response_code_trend_graph_response_body import DescribeResponseCodeTrendGraphResponseBodyResponseCodes
 from ._describe_rule_groups_response_body import DescribeRuleGroupsResponseBodyRuleGroups
@@ -943,6 +945,7 @@ from ._modify_domain_request import ModifyDomainRequestRedirectBackendPorts
 from ._modify_domain_request import ModifyDomainRequestRedirectRequestHeaders
 from ._modify_domain_request import ModifyDomainRequestRedirect
 from ._modify_domain_response_body import ModifyDomainResponseBodyDomainInfo
+from ._modify_resource_log_status_request import ModifyResourceLogStatusRequestTraceConfig
 from ._tag_resources_request import TagResourcesRequestTag
 from ._verify_domain_owner_response_body import VerifyDomainOwnerResponseBodyVerifyResult
 
@@ -1649,6 +1652,7 @@ __all__ = [
     ModifyResourceLogFieldConfigResponseBody,
     ModifyResourceLogFieldConfigResponse,
     ModifyResourceLogStatusRequest,
+    ModifyResourceLogStatusShrinkRequest,
     ModifyResourceLogStatusResponseBody,
     ModifyResourceLogStatusResponse,
     ModifyTemplateResourcesRequest,
@@ -1819,6 +1823,7 @@ __all__ = [
     DescribeRelatedDefenseRulesResponseBodyRules,
     DescribeResourceInstanceCertsResponseBodyCerts,
     DescribeResourceLogDeliveryStatusResponseBodyLogConfigs,
+    DescribeResourceLogStatusResponseBodyResultTraceConfig,
     DescribeResourceLogStatusResponseBodyResult,
     DescribeResponseCodeTrendGraphResponseBodyResponseCodes,
     DescribeRuleGroupsResponseBodyRuleGroups,
@@ -1888,6 +1893,7 @@ __all__ = [
     ModifyDomainRequestRedirectRequestHeaders,
     ModifyDomainRequestRedirect,
     ModifyDomainResponseBodyDomainInfo,
+    ModifyResourceLogStatusRequestTraceConfig,
     TagResourcesRequestTag,
     VerifyDomainOwnerResponseBodyVerifyResult
 ]

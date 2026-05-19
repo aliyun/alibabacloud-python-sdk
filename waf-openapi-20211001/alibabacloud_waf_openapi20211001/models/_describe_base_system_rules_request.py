@@ -2,6 +2,8 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
 from darabonba.model import DaraModel
 
 class DescribeBaseSystemRulesRequest(DaraModel):
@@ -17,6 +19,7 @@ class DescribeBaseSystemRulesRequest(DaraModel):
         risk_level: str = None,
         rule_action: str = None,
         rule_id: int = None,
+        rule_ids: List[int] = None,
         rule_name: str = None,
         rule_status: int = None,
         template_id: int = None,
@@ -32,6 +35,7 @@ class DescribeBaseSystemRulesRequest(DaraModel):
         self.risk_level = risk_level
         self.rule_action = rule_action
         self.rule_id = rule_id
+        self.rule_ids = rule_ids
         self.rule_name = rule_name
         self.rule_status = rule_status
         self.template_id = template_id
@@ -73,6 +77,9 @@ class DescribeBaseSystemRulesRequest(DaraModel):
 
         if self.rule_id is not None:
             result['RuleId'] = self.rule_id
+
+        if self.rule_ids is not None:
+            result['RuleIds'] = self.rule_ids
 
         if self.rule_name is not None:
             result['RuleName'] = self.rule_name
@@ -116,6 +123,9 @@ class DescribeBaseSystemRulesRequest(DaraModel):
 
         if m.get('RuleId') is not None:
             self.rule_id = m.get('RuleId')
+
+        if m.get('RuleIds') is not None:
+            self.rule_ids = m.get('RuleIds')
 
         if m.get('RuleName') is not None:
             self.rule_name = m.get('RuleName')

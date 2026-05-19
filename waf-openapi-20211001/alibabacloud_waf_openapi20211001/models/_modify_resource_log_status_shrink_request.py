@@ -2,10 +2,9 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from alibabacloud_waf_openapi20211001 import models as main_models
 from darabonba.model import DaraModel
 
-class ModifyResourceLogStatusRequest(DaraModel):
+class ModifyResourceLogStatusShrinkRequest(DaraModel):
     def __init__(
         self,
         instance_id: str = None,
@@ -13,7 +12,7 @@ class ModifyResourceLogStatusRequest(DaraModel):
         resource: str = None,
         resource_manager_resource_group_id: str = None,
         status: bool = None,
-        trace_config: main_models.ModifyResourceLogStatusRequestTraceConfig = None,
+        trace_config_shrink: str = None,
         trace_status: bool = None,
     ):
         # The ID of the Web Application Firewall (WAF) instance.
@@ -40,12 +39,11 @@ class ModifyResourceLogStatusRequest(DaraModel):
         # 
         # This parameter is required.
         self.status = status
-        self.trace_config = trace_config
+        self.trace_config_shrink = trace_config_shrink
         self.trace_status = trace_status
 
     def validate(self):
-        if self.trace_config:
-            self.trace_config.validate()
+        pass
 
     def to_map(self):
         result = dict()
@@ -67,8 +65,8 @@ class ModifyResourceLogStatusRequest(DaraModel):
         if self.status is not None:
             result['Status'] = self.status
 
-        if self.trace_config is not None:
-            result['TraceConfig'] = self.trace_config.to_map()
+        if self.trace_config_shrink is not None:
+            result['TraceConfig'] = self.trace_config_shrink
 
         if self.trace_status is not None:
             result['TraceStatus'] = self.trace_status
@@ -93,46 +91,10 @@ class ModifyResourceLogStatusRequest(DaraModel):
             self.status = m.get('Status')
 
         if m.get('TraceConfig') is not None:
-            temp_model = main_models.ModifyResourceLogStatusRequestTraceConfig()
-            self.trace_config = temp_model.from_map(m.get('TraceConfig'))
+            self.trace_config_shrink = m.get('TraceConfig')
 
         if m.get('TraceStatus') is not None:
             self.trace_status = m.get('TraceStatus')
-
-        return self
-
-class ModifyResourceLogStatusRequestTraceConfig(DaraModel):
-    def __init__(
-        self,
-        rate_per_mille: int = None,
-        workspace: str = None,
-    ):
-        self.rate_per_mille = rate_per_mille
-        self.workspace = workspace
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        _map = super().to_map()
-        if _map is not None:
-            result = _map
-        if self.rate_per_mille is not None:
-            result['RatePerMille'] = self.rate_per_mille
-
-        if self.workspace is not None:
-            result['Workspace'] = self.workspace
-
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RatePerMille') is not None:
-            self.rate_per_mille = m.get('RatePerMille')
-
-        if m.get('Workspace') is not None:
-            self.workspace = m.get('Workspace')
 
         return self
 

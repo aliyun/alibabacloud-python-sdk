@@ -1,3 +1,7 @@
+2026-05-19 Version: 7.7.2
+- Update API DescribeBaseSystemRules: add request parameters RuleIds.
+
+
 2026-03-31 Version: 7.7.0
 - Support API DescribeUserTraffic.
 
