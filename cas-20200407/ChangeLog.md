@@ -2,6 +2,10 @@
 - Support API GetMatchedResources.
 
 
+2026-05-19 Version: 3.5.0
+- Support API GetMatchedResources.
+
+
 2026-05-18 Version: 3.4.0
 - Support API BatchUpdateNoticeStatus.
 - Update API GetUserCertificateDetail: add response parameters Body.CertSha2.
