@@ -1,3 +1,8 @@
+2026-05-19 Version: 9.2.0
+- Support API DescribeCdnDiagnoseReport.
+- Support API DescribeCdnTaskList.
+
+
 2026-05-07 Version: 9.1.0
 - Support API GenerateCdnDiagnose.
 

@@ -109,6 +109,9 @@ from ._describe_cdn_deleted_domains_response import DescribeCdnDeletedDomainsRes
 from ._describe_cdn_deliver_list_request import DescribeCdnDeliverListRequest
 from ._describe_cdn_deliver_list_response_body import DescribeCdnDeliverListResponseBody
 from ._describe_cdn_deliver_list_response import DescribeCdnDeliverListResponse
+from ._describe_cdn_diagnose_report_request import DescribeCdnDiagnoseReportRequest
+from ._describe_cdn_diagnose_report_response_body import DescribeCdnDiagnoseReportResponseBody
+from ._describe_cdn_diagnose_report_response import DescribeCdnDiagnoseReportResponse
 from ._describe_cdn_domain_atoa_logs_request import DescribeCdnDomainAtoaLogsRequest
 from ._describe_cdn_domain_atoa_logs_response_body import DescribeCdnDomainAtoaLogsResponseBody
 from ._describe_cdn_domain_atoa_logs_response import DescribeCdnDomainAtoaLogsResponse
@@ -168,6 +171,9 @@ from ._describe_cdn_service_response_body import DescribeCdnServiceResponseBody
 from ._describe_cdn_service_response import DescribeCdnServiceResponse
 from ._describe_cdn_sub_list_response_body import DescribeCdnSubListResponseBody
 from ._describe_cdn_sub_list_response import DescribeCdnSubListResponse
+from ._describe_cdn_task_list_request import DescribeCdnTaskListRequest
+from ._describe_cdn_task_list_response_body import DescribeCdnTaskListResponseBody
+from ._describe_cdn_task_list_response import DescribeCdnTaskListResponse
 from ._describe_cdn_types_request import DescribeCdnTypesRequest
 from ._describe_cdn_types_response_body import DescribeCdnTypesResponseBody
 from ._describe_cdn_types_response import DescribeCdnTypesResponse
@@ -543,6 +549,10 @@ from ._describe_cdn_deliver_list_response_body import DescribeCdnDeliverListResp
 from ._describe_cdn_deliver_list_response_body import DescribeCdnDeliverListResponseBodyContentDataReports
 from ._describe_cdn_deliver_list_response_body import DescribeCdnDeliverListResponseBodyContentData
 from ._describe_cdn_deliver_list_response_body import DescribeCdnDeliverListResponseBodyContent
+from ._describe_cdn_diagnose_report_response_body import DescribeCdnDiagnoseReportResponseBodyContentClientInfo
+from ._describe_cdn_diagnose_report_response_body import DescribeCdnDiagnoseReportResponseBodyContentReportL1Tengine
+from ._describe_cdn_diagnose_report_response_body import DescribeCdnDiagnoseReportResponseBodyContentReport
+from ._describe_cdn_diagnose_report_response_body import DescribeCdnDiagnoseReportResponseBodyContent
 from ._describe_cdn_domain_atoa_logs_response_body import DescribeCdnDomainAtoaLogsResponseBodyDomainLogDetailsDomainLogDetailLogInfosLogInfoDetail
 from ._describe_cdn_domain_atoa_logs_response_body import DescribeCdnDomainAtoaLogsResponseBodyDomainLogDetailsDomainLogDetailLogInfos
 from ._describe_cdn_domain_atoa_logs_response_body import DescribeCdnDomainAtoaLogsResponseBodyDomainLogDetailsDomainLogDetailPageInfos
@@ -595,6 +605,8 @@ from ._describe_cdn_service_response_body import DescribeCdnServiceResponseBodyO
 from ._describe_cdn_service_response_body import DescribeCdnServiceResponseBodyOperationLocks
 from ._describe_cdn_sub_list_response_body import DescribeCdnSubListResponseBodyContentData
 from ._describe_cdn_sub_list_response_body import DescribeCdnSubListResponseBodyContent
+from ._describe_cdn_task_list_response_body import DescribeCdnTaskListResponseBodyContentList
+from ._describe_cdn_task_list_response_body import DescribeCdnTaskListResponseBodyContent
 from ._describe_cdn_types_response_body import DescribeCdnTypesResponseBodyCdnTypesCdnType
 from ._describe_cdn_types_response_body import DescribeCdnTypesResponseBodyCdnTypes
 from ._describe_cdn_user_bill_history_response_body import DescribeCdnUserBillHistoryResponseBodyBillHistoryDataBillHistoryDataItemBillingDataBillingDataItem
@@ -893,6 +905,9 @@ __all__ = [
     DescribeCdnDeliverListRequest,
     DescribeCdnDeliverListResponseBody,
     DescribeCdnDeliverListResponse,
+    DescribeCdnDiagnoseReportRequest,
+    DescribeCdnDiagnoseReportResponseBody,
+    DescribeCdnDiagnoseReportResponse,
     DescribeCdnDomainAtoaLogsRequest,
     DescribeCdnDomainAtoaLogsResponseBody,
     DescribeCdnDomainAtoaLogsResponse,
@@ -952,6 +967,9 @@ __all__ = [
     DescribeCdnServiceResponse,
     DescribeCdnSubListResponseBody,
     DescribeCdnSubListResponse,
+    DescribeCdnTaskListRequest,
+    DescribeCdnTaskListResponseBody,
+    DescribeCdnTaskListResponse,
     DescribeCdnTypesRequest,
     DescribeCdnTypesResponseBody,
     DescribeCdnTypesResponse,
@@ -1327,6 +1345,10 @@ __all__ = [
     DescribeCdnDeliverListResponseBodyContentDataReports,
     DescribeCdnDeliverListResponseBodyContentData,
     DescribeCdnDeliverListResponseBodyContent,
+    DescribeCdnDiagnoseReportResponseBodyContentClientInfo,
+    DescribeCdnDiagnoseReportResponseBodyContentReportL1Tengine,
+    DescribeCdnDiagnoseReportResponseBodyContentReport,
+    DescribeCdnDiagnoseReportResponseBodyContent,
     DescribeCdnDomainAtoaLogsResponseBodyDomainLogDetailsDomainLogDetailLogInfosLogInfoDetail,
     DescribeCdnDomainAtoaLogsResponseBodyDomainLogDetailsDomainLogDetailLogInfos,
     DescribeCdnDomainAtoaLogsResponseBodyDomainLogDetailsDomainLogDetailPageInfos,
@@ -1379,6 +1401,8 @@ __all__ = [
     DescribeCdnServiceResponseBodyOperationLocks,
     DescribeCdnSubListResponseBodyContentData,
     DescribeCdnSubListResponseBodyContent,
+    DescribeCdnTaskListResponseBodyContentList,
+    DescribeCdnTaskListResponseBodyContent,
     DescribeCdnTypesResponseBodyCdnTypesCdnType,
     DescribeCdnTypesResponseBodyCdnTypes,
     DescribeCdnUserBillHistoryResponseBodyBillHistoryDataBillHistoryDataItemBillingDataBillingDataItem,

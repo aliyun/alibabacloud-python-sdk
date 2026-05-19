@@ -2889,6 +2889,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_cdn_deliver_list_with_options_async(request, runtime)
 
+    def describe_cdn_diagnose_report_with_options(
+        self,
+        request: main_models.DescribeCdnDiagnoseReportRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeCdnDiagnoseReportResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.task_id):
+            query['TaskId'] = request.task_id
+        if not DaraCore.is_null(request.trace_id):
+            query['TraceId'] = request.trace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeCdnDiagnoseReport',
+            version = '2018-05-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeCdnDiagnoseReportResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_cdn_diagnose_report_with_options_async(
+        self,
+        request: main_models.DescribeCdnDiagnoseReportRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeCdnDiagnoseReportResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.task_id):
+            query['TaskId'] = request.task_id
+        if not DaraCore.is_null(request.trace_id):
+            query['TraceId'] = request.trace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeCdnDiagnoseReport',
+            version = '2018-05-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeCdnDiagnoseReportResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_cdn_diagnose_report(
+        self,
+        request: main_models.DescribeCdnDiagnoseReportRequest,
+    ) -> main_models.DescribeCdnDiagnoseReportResponse:
+        runtime = RuntimeOptions()
+        return self.describe_cdn_diagnose_report_with_options(request, runtime)
+
+    async def describe_cdn_diagnose_report_async(
+        self,
+        request: main_models.DescribeCdnDiagnoseReportRequest,
+    ) -> main_models.DescribeCdnDiagnoseReportResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_cdn_diagnose_report_with_options_async(request, runtime)
+
     def describe_cdn_domain_atoa_logs_with_options(
         self,
         request: main_models.DescribeCdnDomainAtoaLogsRequest,
@@ -4448,6 +4522,108 @@ class Client(OpenApiClient):
     async def describe_cdn_sub_list_async(self) -> main_models.DescribeCdnSubListResponse:
         runtime = RuntimeOptions()
         return await self.describe_cdn_sub_list_with_options_async(runtime)
+
+    def describe_cdn_task_list_with_options(
+        self,
+        request: main_models.DescribeCdnTaskListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeCdnTaskListResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_ip):
+            query['ClientIp'] = request.client_ip
+        if not DaraCore.is_null(request.diagnose_id):
+            query['DiagnoseId'] = request.diagnose_id
+        if not DaraCore.is_null(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.task_id):
+            query['TaskId'] = request.task_id
+        if not DaraCore.is_null(request.trace_id):
+            query['TraceId'] = request.trace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeCdnTaskList',
+            version = '2018-05-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeCdnTaskListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_cdn_task_list_with_options_async(
+        self,
+        request: main_models.DescribeCdnTaskListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeCdnTaskListResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_ip):
+            query['ClientIp'] = request.client_ip
+        if not DaraCore.is_null(request.diagnose_id):
+            query['DiagnoseId'] = request.diagnose_id
+        if not DaraCore.is_null(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.task_id):
+            query['TaskId'] = request.task_id
+        if not DaraCore.is_null(request.trace_id):
+            query['TraceId'] = request.trace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeCdnTaskList',
+            version = '2018-05-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeCdnTaskListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_cdn_task_list(
+        self,
+        request: main_models.DescribeCdnTaskListRequest,
+    ) -> main_models.DescribeCdnTaskListResponse:
+        runtime = RuntimeOptions()
+        return self.describe_cdn_task_list_with_options(request, runtime)
+
+    async def describe_cdn_task_list_async(
+        self,
+        request: main_models.DescribeCdnTaskListRequest,
+    ) -> main_models.DescribeCdnTaskListResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_cdn_task_list_with_options_async(request, runtime)
 
     def describe_cdn_types_with_options(
         self,
