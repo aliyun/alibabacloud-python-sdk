@@ -196,13 +196,11 @@ class UploadDataSyncForLLMResponseBodyDataResultInfoRulesRuleHitInfo(DaraModel):
         self,
         condition_info: main_models.UploadDataSyncForLLMResponseBodyDataResultInfoRulesRuleHitInfoConditionInfo = None,
         hit: main_models.UploadDataSyncForLLMResponseBodyDataResultInfoRulesRuleHitInfoHit = None,
-        llm_response: str = None,
         rid: str = None,
         tid: str = None,
     ):
         self.condition_info = condition_info
         self.hit = hit
-        self.llm_response = llm_response
         self.rid = rid
         self.tid = tid
 
@@ -223,9 +221,6 @@ class UploadDataSyncForLLMResponseBodyDataResultInfoRulesRuleHitInfo(DaraModel):
         if self.hit is not None:
             result['Hit'] = self.hit.to_map()
 
-        if self.llm_response is not None:
-            result['LlmResponse'] = self.llm_response
-
         if self.rid is not None:
             result['Rid'] = self.rid
 
@@ -243,9 +238,6 @@ class UploadDataSyncForLLMResponseBodyDataResultInfoRulesRuleHitInfo(DaraModel):
         if m.get('Hit') is not None:
             temp_model = main_models.UploadDataSyncForLLMResponseBodyDataResultInfoRulesRuleHitInfoHit()
             self.hit = temp_model.from_map(m.get('Hit'))
-
-        if m.get('LlmResponse') is not None:
-            self.llm_response = m.get('LlmResponse')
 
         if m.get('Rid') is not None:
             self.rid = m.get('Rid')

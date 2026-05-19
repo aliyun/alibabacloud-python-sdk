@@ -1,3 +1,7 @@
+2026-05-19 Version: 9.0.0
+- Update API UploadDataSyncForLLM: delete response parameters Body.Data.$.Rules.$.LlmResponse.
+
+
 2026-05-11 Version: 8.5.6
 - Update API UploadDataSync: add response parameters Body.Data.$.Rules.$.LlmResponse.
 - Update API UploadDataSync: add response parameters Body.Data.$.Rules.$.Hit.$.HitKeyWords.$.CustomizeCode.
