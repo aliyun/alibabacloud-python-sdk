@@ -31,6 +31,9 @@ from ._add_container_defense_rule_response import AddContainerDefenseRuleRespons
 from ._add_container_plugin_rule_request import AddContainerPluginRuleRequest
 from ._add_container_plugin_rule_response_body import AddContainerPluginRuleResponseBody
 from ._add_container_plugin_rule_response import AddContainerPluginRuleResponse
+from ._add_file_protect_bind_machine_request import AddFileProtectBindMachineRequest
+from ._add_file_protect_bind_machine_response_body import AddFileProtectBindMachineResponseBody
+from ._add_file_protect_bind_machine_response import AddFileProtectBindMachineResponse
 from ._add_idc_probe_request import AddIdcProbeRequest
 from ._add_idc_probe_response_body import AddIdcProbeResponseBody
 from ._add_idc_probe_response import AddIdcProbeResponse
@@ -187,6 +190,9 @@ from ._create_file_detect_response import CreateFileDetectResponse
 from ._create_file_detect_upload_url_request import CreateFileDetectUploadUrlRequest
 from ._create_file_detect_upload_url_response_body import CreateFileDetectUploadUrlResponseBody
 from ._create_file_detect_upload_url_response import CreateFileDetectUploadUrlResponse
+from ._create_file_protect_client_rule_request import CreateFileProtectClientRuleRequest
+from ._create_file_protect_client_rule_response_body import CreateFileProtectClientRuleResponseBody
+from ._create_file_protect_client_rule_response import CreateFileProtectClientRuleResponse
 from ._create_file_protect_rule_request import CreateFileProtectRuleRequest
 from ._create_file_protect_rule_response_body import CreateFileProtectRuleResponseBody
 from ._create_file_protect_rule_response import CreateFileProtectRuleResponse
@@ -362,6 +368,9 @@ from ._delete_cycle_task_response import DeleteCycleTaskResponse
 from ._delete_ding_talk_request import DeleteDingTalkRequest
 from ._delete_ding_talk_response_body import DeleteDingTalkResponseBody
 from ._delete_ding_talk_response import DeleteDingTalkResponse
+from ._delete_file_protect_client_rule_request import DeleteFileProtectClientRuleRequest
+from ._delete_file_protect_client_rule_response_body import DeleteFileProtectClientRuleResponseBody
+from ._delete_file_protect_client_rule_response import DeleteFileProtectClientRuleResponse
 from ._delete_file_protect_rule_request import DeleteFileProtectRuleRequest
 from ._delete_file_protect_rule_response_body import DeleteFileProtectRuleResponseBody
 from ._delete_file_protect_rule_response import DeleteFileProtectRuleResponse
@@ -1596,6 +1605,18 @@ from ._get_file_detect_report_response import GetFileDetectReportResponse
 from ._get_file_detect_result_request import GetFileDetectResultRequest
 from ._get_file_detect_result_response_body import GetFileDetectResultResponseBody
 from ._get_file_detect_result_response import GetFileDetectResultResponse
+from ._get_file_protect_client_event_request import GetFileProtectClientEventRequest
+from ._get_file_protect_client_event_response_body import GetFileProtectClientEventResponseBody
+from ._get_file_protect_client_event_response import GetFileProtectClientEventResponse
+from ._get_file_protect_client_event_dashboard_request import GetFileProtectClientEventDashboardRequest
+from ._get_file_protect_client_event_dashboard_response_body import GetFileProtectClientEventDashboardResponseBody
+from ._get_file_protect_client_event_dashboard_response import GetFileProtectClientEventDashboardResponse
+from ._get_file_protect_client_rule_request import GetFileProtectClientRuleRequest
+from ._get_file_protect_client_rule_response_body import GetFileProtectClientRuleResponseBody
+from ._get_file_protect_client_rule_response import GetFileProtectClientRuleResponse
+from ._get_file_protect_client_rule_dashboard_request import GetFileProtectClientRuleDashboardRequest
+from ._get_file_protect_client_rule_dashboard_response_body import GetFileProtectClientRuleDashboardResponseBody
+from ._get_file_protect_client_rule_dashboard_response import GetFileProtectClientRuleDashboardResponse
 from ._get_file_protect_dashboard_response_body import GetFileProtectDashboardResponseBody
 from ._get_file_protect_dashboard_response import GetFileProtectDashboardResponse
 from ._get_file_protect_event_request import GetFileProtectEventRequest
@@ -1976,6 +1997,18 @@ from ._list_criteria_strategy_response import ListCriteriaStrategyResponse
 from ._list_dockerhub_image_request import ListDockerhubImageRequest
 from ._list_dockerhub_image_response_body import ListDockerhubImageResponseBody
 from ._list_dockerhub_image_response import ListDockerhubImageResponse
+from ._list_file_protect_bind_machine_request import ListFileProtectBindMachineRequest
+from ._list_file_protect_bind_machine_response_body import ListFileProtectBindMachineResponseBody
+from ._list_file_protect_bind_machine_response import ListFileProtectBindMachineResponse
+from ._list_file_protect_client_event_request import ListFileProtectClientEventRequest
+from ._list_file_protect_client_event_response_body import ListFileProtectClientEventResponseBody
+from ._list_file_protect_client_event_response import ListFileProtectClientEventResponse
+from ._list_file_protect_client_rule_request import ListFileProtectClientRuleRequest
+from ._list_file_protect_client_rule_response_body import ListFileProtectClientRuleResponseBody
+from ._list_file_protect_client_rule_response import ListFileProtectClientRuleResponse
+from ._list_file_protect_client_rule_file_type_request import ListFileProtectClientRuleFileTypeRequest
+from ._list_file_protect_client_rule_file_type_response_body import ListFileProtectClientRuleFileTypeResponseBody
+from ._list_file_protect_client_rule_file_type_response import ListFileProtectClientRuleFileTypeResponse
 from ._list_file_protect_event_request import ListFileProtectEventRequest
 from ._list_file_protect_event_response_body import ListFileProtectEventResponseBody
 from ._list_file_protect_event_response import ListFileProtectEventResponse
@@ -2670,6 +2703,15 @@ from ._update_common_switch_config_response import UpdateCommonSwitchConfigRespo
 from ._update_customize_report_status_request import UpdateCustomizeReportStatusRequest
 from ._update_customize_report_status_response_body import UpdateCustomizeReportStatusResponseBody
 from ._update_customize_report_status_response import UpdateCustomizeReportStatusResponse
+from ._update_file_protect_client_event_request import UpdateFileProtectClientEventRequest
+from ._update_file_protect_client_event_response_body import UpdateFileProtectClientEventResponseBody
+from ._update_file_protect_client_event_response import UpdateFileProtectClientEventResponse
+from ._update_file_protect_client_rule_request import UpdateFileProtectClientRuleRequest
+from ._update_file_protect_client_rule_response_body import UpdateFileProtectClientRuleResponseBody
+from ._update_file_protect_client_rule_response import UpdateFileProtectClientRuleResponse
+from ._update_file_protect_client_rule_status_request import UpdateFileProtectClientRuleStatusRequest
+from ._update_file_protect_client_rule_status_response_body import UpdateFileProtectClientRuleStatusResponseBody
+from ._update_file_protect_client_rule_status_response import UpdateFileProtectClientRuleStatusResponse
 from ._update_file_protect_event_status_request import UpdateFileProtectEventStatusRequest
 from ._update_file_protect_event_status_response_body import UpdateFileProtectEventStatusResponseBody
 from ._update_file_protect_event_status_response import UpdateFileProtectEventStatusResponse
@@ -3412,6 +3454,13 @@ from ._get_dockerhub_image_risk_statistic_response_body import GetDockerhubImage
 from ._get_file_detect_api_invoke_info_response_body import GetFileDetectApiInvokeInfoResponseBodyData
 from ._get_file_detect_report_response_body import GetFileDetectReportResponseBodyData
 from ._get_file_detect_result_response_body import GetFileDetectResultResponseBodyResultList
+from ._get_file_protect_client_event_response_body import GetFileProtectClientEventResponseBodyData
+from ._get_file_protect_client_event_dashboard_response_body import GetFileProtectClientEventDashboardResponseBodyDataFilePathStats
+from ._get_file_protect_client_event_dashboard_response_body import GetFileProtectClientEventDashboardResponseBodyDataFileTypeStats
+from ._get_file_protect_client_event_dashboard_response_body import GetFileProtectClientEventDashboardResponseBodyDataProcessNameStats
+from ._get_file_protect_client_event_dashboard_response_body import GetFileProtectClientEventDashboardResponseBodyData
+from ._get_file_protect_client_rule_response_body import GetFileProtectClientRuleResponseBodyData
+from ._get_file_protect_client_rule_dashboard_response_body import GetFileProtectClientRuleDashboardResponseBodyData
 from ._get_file_protect_dashboard_response_body import GetFileProtectDashboardResponseBodyData
 from ._get_file_protect_event_response_body import GetFileProtectEventResponseBodyData
 from ._get_file_protect_rule_response_body import GetFileProtectRuleResponseBodyData
@@ -3626,6 +3675,11 @@ from ._list_container_defense_rule_response_body import ListContainerDefenseRule
 from ._list_container_defense_rule_clusters_response_body import ListContainerDefenseRuleClustersResponseBodyClusterList
 from ._list_criteria_strategy_response_body import ListCriteriaStrategyResponseBodyData
 from ._list_dockerhub_image_response_body import ListDockerhubImageResponseBodyImageList
+from ._list_file_protect_bind_machine_response_body import ListFileProtectBindMachineResponseBodyPageInfo
+from ._list_file_protect_client_event_response_body import ListFileProtectClientEventResponseBodyEventList
+from ._list_file_protect_client_event_response_body import ListFileProtectClientEventResponseBodyPageInfo
+from ._list_file_protect_client_rule_response_body import ListFileProtectClientRuleResponseBodyFileProtectList
+from ._list_file_protect_client_rule_response_body import ListFileProtectClientRuleResponseBodyPageInfo
 from ._list_file_protect_event_response_body import ListFileProtectEventResponseBodyEventList
 from ._list_file_protect_event_response_body import ListFileProtectEventResponseBodyPageInfo
 from ._list_file_protect_plugin_status_response_body import ListFileProtectPluginStatusResponseBodyData
@@ -3903,6 +3957,9 @@ __all__ = [
     AddContainerPluginRuleRequest,
     AddContainerPluginRuleResponseBody,
     AddContainerPluginRuleResponse,
+    AddFileProtectBindMachineRequest,
+    AddFileProtectBindMachineResponseBody,
+    AddFileProtectBindMachineResponse,
     AddIdcProbeRequest,
     AddIdcProbeResponseBody,
     AddIdcProbeResponse,
@@ -4059,6 +4116,9 @@ __all__ = [
     CreateFileDetectUploadUrlRequest,
     CreateFileDetectUploadUrlResponseBody,
     CreateFileDetectUploadUrlResponse,
+    CreateFileProtectClientRuleRequest,
+    CreateFileProtectClientRuleResponseBody,
+    CreateFileProtectClientRuleResponse,
     CreateFileProtectRuleRequest,
     CreateFileProtectRuleResponseBody,
     CreateFileProtectRuleResponse,
@@ -4234,6 +4294,9 @@ __all__ = [
     DeleteDingTalkRequest,
     DeleteDingTalkResponseBody,
     DeleteDingTalkResponse,
+    DeleteFileProtectClientRuleRequest,
+    DeleteFileProtectClientRuleResponseBody,
+    DeleteFileProtectClientRuleResponse,
     DeleteFileProtectRuleRequest,
     DeleteFileProtectRuleResponseBody,
     DeleteFileProtectRuleResponse,
@@ -5468,6 +5531,18 @@ __all__ = [
     GetFileDetectResultRequest,
     GetFileDetectResultResponseBody,
     GetFileDetectResultResponse,
+    GetFileProtectClientEventRequest,
+    GetFileProtectClientEventResponseBody,
+    GetFileProtectClientEventResponse,
+    GetFileProtectClientEventDashboardRequest,
+    GetFileProtectClientEventDashboardResponseBody,
+    GetFileProtectClientEventDashboardResponse,
+    GetFileProtectClientRuleRequest,
+    GetFileProtectClientRuleResponseBody,
+    GetFileProtectClientRuleResponse,
+    GetFileProtectClientRuleDashboardRequest,
+    GetFileProtectClientRuleDashboardResponseBody,
+    GetFileProtectClientRuleDashboardResponse,
     GetFileProtectDashboardResponseBody,
     GetFileProtectDashboardResponse,
     GetFileProtectEventRequest,
@@ -5848,6 +5923,18 @@ __all__ = [
     ListDockerhubImageRequest,
     ListDockerhubImageResponseBody,
     ListDockerhubImageResponse,
+    ListFileProtectBindMachineRequest,
+    ListFileProtectBindMachineResponseBody,
+    ListFileProtectBindMachineResponse,
+    ListFileProtectClientEventRequest,
+    ListFileProtectClientEventResponseBody,
+    ListFileProtectClientEventResponse,
+    ListFileProtectClientRuleRequest,
+    ListFileProtectClientRuleResponseBody,
+    ListFileProtectClientRuleResponse,
+    ListFileProtectClientRuleFileTypeRequest,
+    ListFileProtectClientRuleFileTypeResponseBody,
+    ListFileProtectClientRuleFileTypeResponse,
     ListFileProtectEventRequest,
     ListFileProtectEventResponseBody,
     ListFileProtectEventResponse,
@@ -6542,6 +6629,15 @@ __all__ = [
     UpdateCustomizeReportStatusRequest,
     UpdateCustomizeReportStatusResponseBody,
     UpdateCustomizeReportStatusResponse,
+    UpdateFileProtectClientEventRequest,
+    UpdateFileProtectClientEventResponseBody,
+    UpdateFileProtectClientEventResponse,
+    UpdateFileProtectClientRuleRequest,
+    UpdateFileProtectClientRuleResponseBody,
+    UpdateFileProtectClientRuleResponse,
+    UpdateFileProtectClientRuleStatusRequest,
+    UpdateFileProtectClientRuleStatusResponseBody,
+    UpdateFileProtectClientRuleStatusResponse,
     UpdateFileProtectEventStatusRequest,
     UpdateFileProtectEventStatusResponseBody,
     UpdateFileProtectEventStatusResponse,
@@ -7284,6 +7380,13 @@ __all__ = [
     GetFileDetectApiInvokeInfoResponseBodyData,
     GetFileDetectReportResponseBodyData,
     GetFileDetectResultResponseBodyResultList,
+    GetFileProtectClientEventResponseBodyData,
+    GetFileProtectClientEventDashboardResponseBodyDataFilePathStats,
+    GetFileProtectClientEventDashboardResponseBodyDataFileTypeStats,
+    GetFileProtectClientEventDashboardResponseBodyDataProcessNameStats,
+    GetFileProtectClientEventDashboardResponseBodyData,
+    GetFileProtectClientRuleResponseBodyData,
+    GetFileProtectClientRuleDashboardResponseBodyData,
     GetFileProtectDashboardResponseBodyData,
     GetFileProtectEventResponseBodyData,
     GetFileProtectRuleResponseBodyData,
@@ -7498,6 +7601,11 @@ __all__ = [
     ListContainerDefenseRuleClustersResponseBodyClusterList,
     ListCriteriaStrategyResponseBodyData,
     ListDockerhubImageResponseBodyImageList,
+    ListFileProtectBindMachineResponseBodyPageInfo,
+    ListFileProtectClientEventResponseBodyEventList,
+    ListFileProtectClientEventResponseBodyPageInfo,
+    ListFileProtectClientRuleResponseBodyFileProtectList,
+    ListFileProtectClientRuleResponseBodyPageInfo,
     ListFileProtectEventResponseBodyEventList,
     ListFileProtectEventResponseBodyPageInfo,
     ListFileProtectPluginStatusResponseBodyData,

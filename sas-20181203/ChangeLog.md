@@ -1,3 +1,20 @@
+2026-05-19 Version: 9.3.0
+- Support API AddFileProtectBindMachine.
+- Support API CreateFileProtectClientRule.
+- Support API DeleteFileProtectClientRule.
+- Support API GetFileProtectClientEvent.
+- Support API GetFileProtectClientEventDashboard.
+- Support API GetFileProtectClientRule.
+- Support API GetFileProtectClientRuleDashboard.
+- Support API ListFileProtectBindMachine.
+- Support API ListFileProtectClientEvent.
+- Support API ListFileProtectClientRule.
+- Support API ListFileProtectClientRuleFileType.
+- Support API UpdateFileProtectClientEvent.
+- Support API UpdateFileProtectClientRule.
+- Support API UpdateFileProtectClientRuleStatus.
+
+
 2026-04-29 Version: 9.2.0
 - Support API HandleObjectScanEvent.
 

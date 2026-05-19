@@ -951,6 +951,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.add_container_plugin_rule_with_options_async(request, runtime)
 
+    def add_file_protect_bind_machine_with_options(
+        self,
+        request: main_models.AddFileProtectBindMachineRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddFileProtectBindMachineResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.alert_uuids):
+            query['AlertUuids'] = request.alert_uuids
+        if not DaraCore.is_null(request.block_uuids):
+            query['BlockUuids'] = request.block_uuids
+        if not DaraCore.is_null(request.none_uuids):
+            query['NoneUuids'] = request.none_uuids
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddFileProtectBindMachine',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddFileProtectBindMachineResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_file_protect_bind_machine_with_options_async(
+        self,
+        request: main_models.AddFileProtectBindMachineRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddFileProtectBindMachineResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.alert_uuids):
+            query['AlertUuids'] = request.alert_uuids
+        if not DaraCore.is_null(request.block_uuids):
+            query['BlockUuids'] = request.block_uuids
+        if not DaraCore.is_null(request.none_uuids):
+            query['NoneUuids'] = request.none_uuids
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddFileProtectBindMachine',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddFileProtectBindMachineResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_file_protect_bind_machine(
+        self,
+        request: main_models.AddFileProtectBindMachineRequest,
+    ) -> main_models.AddFileProtectBindMachineResponse:
+        runtime = RuntimeOptions()
+        return self.add_file_protect_bind_machine_with_options(request, runtime)
+
+    async def add_file_protect_bind_machine_async(
+        self,
+        request: main_models.AddFileProtectBindMachineRequest,
+    ) -> main_models.AddFileProtectBindMachineResponse:
+        runtime = RuntimeOptions()
+        return await self.add_file_protect_bind_machine_with_options_async(request, runtime)
+
     def add_idc_probe_with_options(
         self,
         request: main_models.AddIdcProbeRequest,
@@ -5240,6 +5318,124 @@ class Client(OpenApiClient):
     ) -> main_models.CreateFileDetectUploadUrlResponse:
         runtime = RuntimeOptions()
         return await self.create_file_detect_upload_url_with_options_async(request, runtime)
+
+    def create_file_protect_client_rule_with_options(
+        self,
+        request: main_models.CreateFileProtectClientRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateFileProtectClientRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.alert_level):
+            query['AlertLevel'] = request.alert_level
+        if not DaraCore.is_null(request.exclude_users):
+            query['ExcludeUsers'] = request.exclude_users
+        if not DaraCore.is_null(request.file_ops):
+            query['FileOps'] = request.file_ops
+        if not DaraCore.is_null(request.file_paths):
+            query['FilePaths'] = request.file_paths
+        if not DaraCore.is_null(request.file_types):
+            query['FileTypes'] = request.file_types
+        if not DaraCore.is_null(request.platform):
+            query['Platform'] = request.platform
+        if not DaraCore.is_null(request.proc_paths):
+            query['ProcPaths'] = request.proc_paths
+        if not DaraCore.is_null(request.rule_action):
+            query['RuleAction'] = request.rule_action
+        if not DaraCore.is_null(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        if not DaraCore.is_null(request.switch_id):
+            query['SwitchId'] = request.switch_id
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateFileProtectClientRule',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateFileProtectClientRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_file_protect_client_rule_with_options_async(
+        self,
+        request: main_models.CreateFileProtectClientRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateFileProtectClientRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.alert_level):
+            query['AlertLevel'] = request.alert_level
+        if not DaraCore.is_null(request.exclude_users):
+            query['ExcludeUsers'] = request.exclude_users
+        if not DaraCore.is_null(request.file_ops):
+            query['FileOps'] = request.file_ops
+        if not DaraCore.is_null(request.file_paths):
+            query['FilePaths'] = request.file_paths
+        if not DaraCore.is_null(request.file_types):
+            query['FileTypes'] = request.file_types
+        if not DaraCore.is_null(request.platform):
+            query['Platform'] = request.platform
+        if not DaraCore.is_null(request.proc_paths):
+            query['ProcPaths'] = request.proc_paths
+        if not DaraCore.is_null(request.rule_action):
+            query['RuleAction'] = request.rule_action
+        if not DaraCore.is_null(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        if not DaraCore.is_null(request.switch_id):
+            query['SwitchId'] = request.switch_id
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateFileProtectClientRule',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateFileProtectClientRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_file_protect_client_rule(
+        self,
+        request: main_models.CreateFileProtectClientRuleRequest,
+    ) -> main_models.CreateFileProtectClientRuleResponse:
+        runtime = RuntimeOptions()
+        return self.create_file_protect_client_rule_with_options(request, runtime)
+
+    async def create_file_protect_client_rule_async(
+        self,
+        request: main_models.CreateFileProtectClientRuleRequest,
+    ) -> main_models.CreateFileProtectClientRuleResponse:
+        runtime = RuntimeOptions()
+        return await self.create_file_protect_client_rule_with_options_async(request, runtime)
 
     def create_file_protect_rule_with_options(
         self,
@@ -10066,6 +10262,100 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteDingTalkResponse:
         runtime = RuntimeOptions()
         return await self.delete_ding_talk_with_options_async(request, runtime)
+
+    def delete_file_protect_client_rule_with_options(
+        self,
+        request: main_models.DeleteFileProtectClientRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteFileProtectClientRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.alert_level):
+            query['AlertLevel'] = request.alert_level
+        if not DaraCore.is_null(request.exclude_id_list):
+            query['ExcludeIdList'] = request.exclude_id_list
+        if not DaraCore.is_null(request.id_list):
+            query['IdList'] = request.id_list
+        if not DaraCore.is_null(request.platform):
+            query['Platform'] = request.platform
+        if not DaraCore.is_null(request.rule_action):
+            query['RuleAction'] = request.rule_action
+        if not DaraCore.is_null(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not DaraCore.is_null(request.select_all):
+            query['SelectAll'] = request.select_all
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteFileProtectClientRule',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteFileProtectClientRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_file_protect_client_rule_with_options_async(
+        self,
+        request: main_models.DeleteFileProtectClientRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteFileProtectClientRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.alert_level):
+            query['AlertLevel'] = request.alert_level
+        if not DaraCore.is_null(request.exclude_id_list):
+            query['ExcludeIdList'] = request.exclude_id_list
+        if not DaraCore.is_null(request.id_list):
+            query['IdList'] = request.id_list
+        if not DaraCore.is_null(request.platform):
+            query['Platform'] = request.platform
+        if not DaraCore.is_null(request.rule_action):
+            query['RuleAction'] = request.rule_action
+        if not DaraCore.is_null(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not DaraCore.is_null(request.select_all):
+            query['SelectAll'] = request.select_all
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteFileProtectClientRule',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteFileProtectClientRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_file_protect_client_rule(
+        self,
+        request: main_models.DeleteFileProtectClientRuleRequest,
+    ) -> main_models.DeleteFileProtectClientRuleResponse:
+        runtime = RuntimeOptions()
+        return self.delete_file_protect_client_rule_with_options(request, runtime)
+
+    async def delete_file_protect_client_rule_async(
+        self,
+        request: main_models.DeleteFileProtectClientRuleRequest,
+    ) -> main_models.DeleteFileProtectClientRuleResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_file_protect_client_rule_with_options_async(request, runtime)
 
     def delete_file_protect_rule_with_options(
         self,
@@ -43873,6 +44163,284 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_file_detect_result_with_options_async(request, runtime)
 
+    def get_file_protect_client_event_with_options(
+        self,
+        request: main_models.GetFileProtectClientEventRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetFileProtectClientEventResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetFileProtectClientEvent',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetFileProtectClientEventResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_file_protect_client_event_with_options_async(
+        self,
+        request: main_models.GetFileProtectClientEventRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetFileProtectClientEventResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetFileProtectClientEvent',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetFileProtectClientEventResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_file_protect_client_event(
+        self,
+        request: main_models.GetFileProtectClientEventRequest,
+    ) -> main_models.GetFileProtectClientEventResponse:
+        runtime = RuntimeOptions()
+        return self.get_file_protect_client_event_with_options(request, runtime)
+
+    async def get_file_protect_client_event_async(
+        self,
+        request: main_models.GetFileProtectClientEventRequest,
+    ) -> main_models.GetFileProtectClientEventResponse:
+        runtime = RuntimeOptions()
+        return await self.get_file_protect_client_event_with_options_async(request, runtime)
+
+    def get_file_protect_client_event_dashboard_with_options(
+        self,
+        request: main_models.GetFileProtectClientEventDashboardRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetFileProtectClientEventDashboardResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetFileProtectClientEventDashboard',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetFileProtectClientEventDashboardResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_file_protect_client_event_dashboard_with_options_async(
+        self,
+        request: main_models.GetFileProtectClientEventDashboardRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetFileProtectClientEventDashboardResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetFileProtectClientEventDashboard',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetFileProtectClientEventDashboardResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_file_protect_client_event_dashboard(
+        self,
+        request: main_models.GetFileProtectClientEventDashboardRequest,
+    ) -> main_models.GetFileProtectClientEventDashboardResponse:
+        runtime = RuntimeOptions()
+        return self.get_file_protect_client_event_dashboard_with_options(request, runtime)
+
+    async def get_file_protect_client_event_dashboard_async(
+        self,
+        request: main_models.GetFileProtectClientEventDashboardRequest,
+    ) -> main_models.GetFileProtectClientEventDashboardResponse:
+        runtime = RuntimeOptions()
+        return await self.get_file_protect_client_event_dashboard_with_options_async(request, runtime)
+
+    def get_file_protect_client_rule_with_options(
+        self,
+        request: main_models.GetFileProtectClientRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetFileProtectClientRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.id):
+            query['Id'] = request.id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetFileProtectClientRule',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetFileProtectClientRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_file_protect_client_rule_with_options_async(
+        self,
+        request: main_models.GetFileProtectClientRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetFileProtectClientRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.id):
+            query['Id'] = request.id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetFileProtectClientRule',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetFileProtectClientRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_file_protect_client_rule(
+        self,
+        request: main_models.GetFileProtectClientRuleRequest,
+    ) -> main_models.GetFileProtectClientRuleResponse:
+        runtime = RuntimeOptions()
+        return self.get_file_protect_client_rule_with_options(request, runtime)
+
+    async def get_file_protect_client_rule_async(
+        self,
+        request: main_models.GetFileProtectClientRuleRequest,
+    ) -> main_models.GetFileProtectClientRuleResponse:
+        runtime = RuntimeOptions()
+        return await self.get_file_protect_client_rule_with_options_async(request, runtime)
+
+    def get_file_protect_client_rule_dashboard_with_options(
+        self,
+        request: main_models.GetFileProtectClientRuleDashboardRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetFileProtectClientRuleDashboardResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'GetFileProtectClientRuleDashboard',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetFileProtectClientRuleDashboardResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_file_protect_client_rule_dashboard_with_options_async(
+        self,
+        request: main_models.GetFileProtectClientRuleDashboardRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetFileProtectClientRuleDashboardResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'GetFileProtectClientRuleDashboard',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetFileProtectClientRuleDashboardResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_file_protect_client_rule_dashboard(
+        self,
+        request: main_models.GetFileProtectClientRuleDashboardRequest,
+    ) -> main_models.GetFileProtectClientRuleDashboardResponse:
+        runtime = RuntimeOptions()
+        return self.get_file_protect_client_rule_dashboard_with_options(request, runtime)
+
+    async def get_file_protect_client_rule_dashboard_async(
+        self,
+        request: main_models.GetFileProtectClientRuleDashboardRequest,
+    ) -> main_models.GetFileProtectClientRuleDashboardResponse:
+        runtime = RuntimeOptions()
+        return await self.get_file_protect_client_rule_dashboard_with_options_async(request, runtime)
+
     def get_file_protect_dashboard_with_options(
         self,
         runtime: RuntimeOptions,
@@ -53952,6 +54520,288 @@ class Client(OpenApiClient):
     ) -> main_models.ListDockerhubImageResponse:
         runtime = RuntimeOptions()
         return await self.list_dockerhub_image_with_options_async(request, runtime)
+
+    def list_file_protect_bind_machine_with_options(
+        self,
+        request: main_models.ListFileProtectBindMachineRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListFileProtectBindMachineResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListFileProtectBindMachine',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListFileProtectBindMachineResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_file_protect_bind_machine_with_options_async(
+        self,
+        request: main_models.ListFileProtectBindMachineRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListFileProtectBindMachineResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListFileProtectBindMachine',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListFileProtectBindMachineResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_file_protect_bind_machine(
+        self,
+        request: main_models.ListFileProtectBindMachineRequest,
+    ) -> main_models.ListFileProtectBindMachineResponse:
+        runtime = RuntimeOptions()
+        return self.list_file_protect_bind_machine_with_options(request, runtime)
+
+    async def list_file_protect_bind_machine_async(
+        self,
+        request: main_models.ListFileProtectBindMachineRequest,
+    ) -> main_models.ListFileProtectBindMachineResponse:
+        runtime = RuntimeOptions()
+        return await self.list_file_protect_bind_machine_with_options_async(request, runtime)
+
+    def list_file_protect_client_event_with_options(
+        self,
+        request: main_models.ListFileProtectClientEventRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListFileProtectClientEventResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListFileProtectClientEvent',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListFileProtectClientEventResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_file_protect_client_event_with_options_async(
+        self,
+        request: main_models.ListFileProtectClientEventRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListFileProtectClientEventResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListFileProtectClientEvent',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListFileProtectClientEventResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_file_protect_client_event(
+        self,
+        request: main_models.ListFileProtectClientEventRequest,
+    ) -> main_models.ListFileProtectClientEventResponse:
+        runtime = RuntimeOptions()
+        return self.list_file_protect_client_event_with_options(request, runtime)
+
+    async def list_file_protect_client_event_async(
+        self,
+        request: main_models.ListFileProtectClientEventRequest,
+    ) -> main_models.ListFileProtectClientEventResponse:
+        runtime = RuntimeOptions()
+        return await self.list_file_protect_client_event_with_options_async(request, runtime)
+
+    def list_file_protect_client_rule_with_options(
+        self,
+        request: main_models.ListFileProtectClientRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListFileProtectClientRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.alert_level):
+            query['AlertLevel'] = request.alert_level
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.platform):
+            query['Platform'] = request.platform
+        if not DaraCore.is_null(request.rule_action):
+            query['RuleAction'] = request.rule_action
+        if not DaraCore.is_null(request.rule_name):
+            query['RuleName'] = request.rule_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListFileProtectClientRule',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListFileProtectClientRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_file_protect_client_rule_with_options_async(
+        self,
+        request: main_models.ListFileProtectClientRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListFileProtectClientRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.alert_level):
+            query['AlertLevel'] = request.alert_level
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.platform):
+            query['Platform'] = request.platform
+        if not DaraCore.is_null(request.rule_action):
+            query['RuleAction'] = request.rule_action
+        if not DaraCore.is_null(request.rule_name):
+            query['RuleName'] = request.rule_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListFileProtectClientRule',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListFileProtectClientRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_file_protect_client_rule(
+        self,
+        request: main_models.ListFileProtectClientRuleRequest,
+    ) -> main_models.ListFileProtectClientRuleResponse:
+        runtime = RuntimeOptions()
+        return self.list_file_protect_client_rule_with_options(request, runtime)
+
+    async def list_file_protect_client_rule_async(
+        self,
+        request: main_models.ListFileProtectClientRuleRequest,
+    ) -> main_models.ListFileProtectClientRuleResponse:
+        runtime = RuntimeOptions()
+        return await self.list_file_protect_client_rule_with_options_async(request, runtime)
+
+    def list_file_protect_client_rule_file_type_with_options(
+        self,
+        request: main_models.ListFileProtectClientRuleFileTypeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListFileProtectClientRuleFileTypeResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'ListFileProtectClientRuleFileType',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListFileProtectClientRuleFileTypeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_file_protect_client_rule_file_type_with_options_async(
+        self,
+        request: main_models.ListFileProtectClientRuleFileTypeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListFileProtectClientRuleFileTypeResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'ListFileProtectClientRuleFileType',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListFileProtectClientRuleFileTypeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_file_protect_client_rule_file_type(
+        self,
+        request: main_models.ListFileProtectClientRuleFileTypeRequest,
+    ) -> main_models.ListFileProtectClientRuleFileTypeResponse:
+        runtime = RuntimeOptions()
+        return self.list_file_protect_client_rule_file_type_with_options(request, runtime)
+
+    async def list_file_protect_client_rule_file_type_async(
+        self,
+        request: main_models.ListFileProtectClientRuleFileTypeRequest,
+    ) -> main_models.ListFileProtectClientRuleFileTypeResponse:
+        runtime = RuntimeOptions()
+        return await self.list_file_protect_client_rule_file_type_with_options_async(request, runtime)
 
     def list_file_protect_event_with_options(
         self,
@@ -72960,6 +73810,348 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateCustomizeReportStatusResponse:
         runtime = RuntimeOptions()
         return await self.update_customize_report_status_with_options_async(request, runtime)
+
+    def update_file_protect_client_event_with_options(
+        self,
+        request: main_models.UpdateFileProtectClientEventRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateFileProtectClientEventResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.alert_levels):
+            query['AlertLevels'] = request.alert_levels
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.exclude_id_list):
+            query['ExcludeIdList'] = request.exclude_id_list
+        if not DaraCore.is_null(request.file_path):
+            query['FilePath'] = request.file_path
+        if not DaraCore.is_null(request.id_list):
+            query['IdList'] = request.id_list
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.internet_ip):
+            query['InternetIp'] = request.internet_ip
+        if not DaraCore.is_null(request.intranet_ip):
+            query['IntranetIp'] = request.intranet_ip
+        if not DaraCore.is_null(request.new_status):
+            query['NewStatus'] = request.new_status
+        if not DaraCore.is_null(request.operation):
+            query['Operation'] = request.operation
+        if not DaraCore.is_null(request.proc_path):
+            query['ProcPath'] = request.proc_path
+        if not DaraCore.is_null(request.remark):
+            query['Remark'] = request.remark
+        if not DaraCore.is_null(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not DaraCore.is_null(request.select_all):
+            query['SelectAll'] = request.select_all
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        if not DaraCore.is_null(request.uuid):
+            query['Uuid'] = request.uuid
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateFileProtectClientEvent',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateFileProtectClientEventResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_file_protect_client_event_with_options_async(
+        self,
+        request: main_models.UpdateFileProtectClientEventRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateFileProtectClientEventResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.alert_levels):
+            query['AlertLevels'] = request.alert_levels
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.exclude_id_list):
+            query['ExcludeIdList'] = request.exclude_id_list
+        if not DaraCore.is_null(request.file_path):
+            query['FilePath'] = request.file_path
+        if not DaraCore.is_null(request.id_list):
+            query['IdList'] = request.id_list
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.internet_ip):
+            query['InternetIp'] = request.internet_ip
+        if not DaraCore.is_null(request.intranet_ip):
+            query['IntranetIp'] = request.intranet_ip
+        if not DaraCore.is_null(request.new_status):
+            query['NewStatus'] = request.new_status
+        if not DaraCore.is_null(request.operation):
+            query['Operation'] = request.operation
+        if not DaraCore.is_null(request.proc_path):
+            query['ProcPath'] = request.proc_path
+        if not DaraCore.is_null(request.remark):
+            query['Remark'] = request.remark
+        if not DaraCore.is_null(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not DaraCore.is_null(request.select_all):
+            query['SelectAll'] = request.select_all
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        if not DaraCore.is_null(request.uuid):
+            query['Uuid'] = request.uuid
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateFileProtectClientEvent',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateFileProtectClientEventResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_file_protect_client_event(
+        self,
+        request: main_models.UpdateFileProtectClientEventRequest,
+    ) -> main_models.UpdateFileProtectClientEventResponse:
+        runtime = RuntimeOptions()
+        return self.update_file_protect_client_event_with_options(request, runtime)
+
+    async def update_file_protect_client_event_async(
+        self,
+        request: main_models.UpdateFileProtectClientEventRequest,
+    ) -> main_models.UpdateFileProtectClientEventResponse:
+        runtime = RuntimeOptions()
+        return await self.update_file_protect_client_event_with_options_async(request, runtime)
+
+    def update_file_protect_client_rule_with_options(
+        self,
+        request: main_models.UpdateFileProtectClientRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateFileProtectClientRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.alert_level):
+            query['AlertLevel'] = request.alert_level
+        if not DaraCore.is_null(request.exclude_users):
+            query['ExcludeUsers'] = request.exclude_users
+        if not DaraCore.is_null(request.file_ops):
+            query['FileOps'] = request.file_ops
+        if not DaraCore.is_null(request.file_paths):
+            query['FilePaths'] = request.file_paths
+        if not DaraCore.is_null(request.file_types):
+            query['FileTypes'] = request.file_types
+        if not DaraCore.is_null(request.id):
+            query['Id'] = request.id
+        if not DaraCore.is_null(request.proc_paths):
+            query['ProcPaths'] = request.proc_paths
+        if not DaraCore.is_null(request.rule_action):
+            query['RuleAction'] = request.rule_action
+        if not DaraCore.is_null(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateFileProtectClientRule',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateFileProtectClientRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_file_protect_client_rule_with_options_async(
+        self,
+        request: main_models.UpdateFileProtectClientRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateFileProtectClientRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.alert_level):
+            query['AlertLevel'] = request.alert_level
+        if not DaraCore.is_null(request.exclude_users):
+            query['ExcludeUsers'] = request.exclude_users
+        if not DaraCore.is_null(request.file_ops):
+            query['FileOps'] = request.file_ops
+        if not DaraCore.is_null(request.file_paths):
+            query['FilePaths'] = request.file_paths
+        if not DaraCore.is_null(request.file_types):
+            query['FileTypes'] = request.file_types
+        if not DaraCore.is_null(request.id):
+            query['Id'] = request.id
+        if not DaraCore.is_null(request.proc_paths):
+            query['ProcPaths'] = request.proc_paths
+        if not DaraCore.is_null(request.rule_action):
+            query['RuleAction'] = request.rule_action
+        if not DaraCore.is_null(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateFileProtectClientRule',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateFileProtectClientRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_file_protect_client_rule(
+        self,
+        request: main_models.UpdateFileProtectClientRuleRequest,
+    ) -> main_models.UpdateFileProtectClientRuleResponse:
+        runtime = RuntimeOptions()
+        return self.update_file_protect_client_rule_with_options(request, runtime)
+
+    async def update_file_protect_client_rule_async(
+        self,
+        request: main_models.UpdateFileProtectClientRuleRequest,
+    ) -> main_models.UpdateFileProtectClientRuleResponse:
+        runtime = RuntimeOptions()
+        return await self.update_file_protect_client_rule_with_options_async(request, runtime)
+
+    def update_file_protect_client_rule_status_with_options(
+        self,
+        request: main_models.UpdateFileProtectClientRuleStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateFileProtectClientRuleStatusResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.alert_level):
+            query['AlertLevel'] = request.alert_level
+        if not DaraCore.is_null(request.exclude_id_list):
+            query['ExcludeIdList'] = request.exclude_id_list
+        if not DaraCore.is_null(request.id_list):
+            query['IdList'] = request.id_list
+        if not DaraCore.is_null(request.platform):
+            query['Platform'] = request.platform
+        if not DaraCore.is_null(request.rule_action):
+            query['RuleAction'] = request.rule_action
+        if not DaraCore.is_null(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not DaraCore.is_null(request.select_all):
+            query['SelectAll'] = request.select_all
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateFileProtectClientRuleStatus',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateFileProtectClientRuleStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_file_protect_client_rule_status_with_options_async(
+        self,
+        request: main_models.UpdateFileProtectClientRuleStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateFileProtectClientRuleStatusResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.alert_level):
+            query['AlertLevel'] = request.alert_level
+        if not DaraCore.is_null(request.exclude_id_list):
+            query['ExcludeIdList'] = request.exclude_id_list
+        if not DaraCore.is_null(request.id_list):
+            query['IdList'] = request.id_list
+        if not DaraCore.is_null(request.platform):
+            query['Platform'] = request.platform
+        if not DaraCore.is_null(request.rule_action):
+            query['RuleAction'] = request.rule_action
+        if not DaraCore.is_null(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not DaraCore.is_null(request.select_all):
+            query['SelectAll'] = request.select_all
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateFileProtectClientRuleStatus',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateFileProtectClientRuleStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_file_protect_client_rule_status(
+        self,
+        request: main_models.UpdateFileProtectClientRuleStatusRequest,
+    ) -> main_models.UpdateFileProtectClientRuleStatusResponse:
+        runtime = RuntimeOptions()
+        return self.update_file_protect_client_rule_status_with_options(request, runtime)
+
+    async def update_file_protect_client_rule_status_async(
+        self,
+        request: main_models.UpdateFileProtectClientRuleStatusRequest,
+    ) -> main_models.UpdateFileProtectClientRuleStatusResponse:
+        runtime = RuntimeOptions()
+        return await self.update_file_protect_client_rule_status_with_options_async(request, runtime)
 
     def update_file_protect_event_status_with_options(
         self,
