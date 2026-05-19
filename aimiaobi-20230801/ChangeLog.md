@@ -1,3 +1,7 @@
+2026-05-19 Version: 1.44.2
+- Update API GetPptInfo: add response parameters Body.Data.PptArtifactCover.
+
+
 2026-05-15 Version: 1.44.1
 - Update API GetDocInfo: add response parameters Body.Data.PageInfo.
 

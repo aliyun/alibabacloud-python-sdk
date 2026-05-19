@@ -82,6 +82,7 @@ class GetPptInfoResponseBodyData(DaraModel):
         self,
         export_file_link: List[str] = None,
         export_task_id: str = None,
+        ppt_artifact_cover: str = None,
         ppt_artifact_id: str = None,
         ppt_process_id: str = None,
         query: str = None,
@@ -89,6 +90,7 @@ class GetPptInfoResponseBodyData(DaraModel):
     ):
         self.export_file_link = export_file_link
         self.export_task_id = export_task_id
+        self.ppt_artifact_cover = ppt_artifact_cover
         self.ppt_artifact_id = ppt_artifact_id
         self.ppt_process_id = ppt_process_id
         self.query = query
@@ -107,6 +109,9 @@ class GetPptInfoResponseBodyData(DaraModel):
 
         if self.export_task_id is not None:
             result['ExportTaskId'] = self.export_task_id
+
+        if self.ppt_artifact_cover is not None:
+            result['PptArtifactCover'] = self.ppt_artifact_cover
 
         if self.ppt_artifact_id is not None:
             result['PptArtifactId'] = self.ppt_artifact_id
@@ -129,6 +134,9 @@ class GetPptInfoResponseBodyData(DaraModel):
 
         if m.get('ExportTaskId') is not None:
             self.export_task_id = m.get('ExportTaskId')
+
+        if m.get('PptArtifactCover') is not None:
+            self.ppt_artifact_cover = m.get('PptArtifactCover')
 
         if m.get('PptArtifactId') is not None:
             self.ppt_artifact_id = m.get('PptArtifactId')
