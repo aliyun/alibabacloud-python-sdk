@@ -114,6 +114,9 @@ from ._get_domain_info_for_partner_response import GetDomainInfoForPartnerRespon
 from ._get_icp_filing_info_for_partner_request import GetIcpFilingInfoForPartnerRequest
 from ._get_icp_filing_info_for_partner_response_body import GetIcpFilingInfoForPartnerResponseBody
 from ._get_icp_filing_info_for_partner_response import GetIcpFilingInfoForPartnerResponse
+from ._get_llm_proxy_config_for_admin_request import GetLlmProxyConfigForAdminRequest
+from ._get_llm_proxy_config_for_admin_response_body import GetLlmProxyConfigForAdminResponseBody
+from ._get_llm_proxy_config_for_admin_response import GetLlmProxyConfigForAdminResponse
 from ._get_user_access_token_for_partner_request import GetUserAccessTokenForPartnerRequest
 from ._get_user_access_token_for_partner_response_body import GetUserAccessTokenForPartnerResponseBody
 from ._get_user_access_token_for_partner_response import GetUserAccessTokenForPartnerResponse
@@ -299,6 +302,7 @@ from ._get_create_logo_task_response_body import GetCreateLogoTaskResponseBodyTa
 from ._get_domain_info_for_partner_response_body import GetDomainInfoForPartnerResponseBodyDataOwnership
 from ._get_domain_info_for_partner_response_body import GetDomainInfoForPartnerResponseBodyData
 from ._get_icp_filing_info_for_partner_response_body import GetIcpFilingInfoForPartnerResponseBodyData
+from ._get_llm_proxy_config_for_admin_response_body import GetLlmProxyConfigForAdminResponseBodyModule
 from ._get_user_access_token_for_partner_response_body import GetUserAccessTokenForPartnerResponseBodyModule
 from ._get_user_tmp_identity_for_partner_response_body import GetUserTmpIdentityForPartnerResponseBodyDataCredentials
 from ._get_user_tmp_identity_for_partner_response_body import GetUserTmpIdentityForPartnerResponseBodyData
@@ -471,6 +475,9 @@ __all__ = [
     GetIcpFilingInfoForPartnerRequest,
     GetIcpFilingInfoForPartnerResponseBody,
     GetIcpFilingInfoForPartnerResponse,
+    GetLlmProxyConfigForAdminRequest,
+    GetLlmProxyConfigForAdminResponseBody,
+    GetLlmProxyConfigForAdminResponse,
     GetUserAccessTokenForPartnerRequest,
     GetUserAccessTokenForPartnerResponseBody,
     GetUserAccessTokenForPartnerResponse,
@@ -656,6 +663,7 @@ __all__ = [
     GetDomainInfoForPartnerResponseBodyDataOwnership,
     GetDomainInfoForPartnerResponseBodyData,
     GetIcpFilingInfoForPartnerResponseBodyData,
+    GetLlmProxyConfigForAdminResponseBodyModule,
     GetUserAccessTokenForPartnerResponseBodyModule,
     GetUserTmpIdentityForPartnerResponseBodyDataCredentials,
     GetUserTmpIdentityForPartnerResponseBodyData,

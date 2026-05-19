@@ -2350,6 +2350,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_icp_filing_info_for_partner_with_options_async(request, runtime)
 
+    def get_llm_proxy_config_for_admin_with_options(
+        self,
+        request: main_models.GetLlmProxyConfigForAdminRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetLlmProxyConfigForAdminResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.capability):
+            query['Capability'] = request.capability
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetLlmProxyConfigForAdmin',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetLlmProxyConfigForAdminResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_llm_proxy_config_for_admin_with_options_async(
+        self,
+        request: main_models.GetLlmProxyConfigForAdminRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetLlmProxyConfigForAdminResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.capability):
+            query['Capability'] = request.capability
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetLlmProxyConfigForAdmin',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetLlmProxyConfigForAdminResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_llm_proxy_config_for_admin(
+        self,
+        request: main_models.GetLlmProxyConfigForAdminRequest,
+    ) -> main_models.GetLlmProxyConfigForAdminResponse:
+        runtime = RuntimeOptions()
+        return self.get_llm_proxy_config_for_admin_with_options(request, runtime)
+
+    async def get_llm_proxy_config_for_admin_async(
+        self,
+        request: main_models.GetLlmProxyConfigForAdminRequest,
+    ) -> main_models.GetLlmProxyConfigForAdminResponse:
+        runtime = RuntimeOptions()
+        return await self.get_llm_proxy_config_for_admin_with_options_async(request, runtime)
+
     def get_user_access_token_for_partner_with_options(
         self,
         request: main_models.GetUserAccessTokenForPartnerRequest,

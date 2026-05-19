@@ -1,3 +1,7 @@
+2026-05-19 Version: 2.21.0
+- Support API GetLlmProxyConfigForAdmin.
+
+
 2026-05-13 Version: 2.20.2
 - Update API ListAppInstanceDomains: add request parameters DomainKeyword.
 
