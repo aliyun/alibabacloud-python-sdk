@@ -1,3 +1,9 @@
+2026-05-19 Version: 1.5.1
+- Update API GetYikePromptExpansionVoiceFixJob: add response parameters Body.EndTime.
+- Update API GetYikePromptExpansionVoiceFixJob: add response parameters Body.ErrorMessage.
+- Update API GetYikePromptExpansionVoiceFixJob: add response parameters Body.StartTime.
+
+
 2026-05-15 Version: 1.5.0
 - Support API GetYikePromptExpansionVoiceFixJob.
 - Support API SubmitYikePromptExpansionVoiceFixJob.

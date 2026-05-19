@@ -10,21 +10,27 @@ from darabonba.model import DaraModel
 class GetYikePromptExpansionVoiceFixJobResponseBody(DaraModel):
     def __init__(
         self,
+        end_time: str = None,
         error_code: str = None,
+        error_message: str = None,
         job_id: str = None,
         job_params: str = None,
         job_result: List[main_models.GetYikePromptExpansionVoiceFixJobResponseBodyJobResult] = None,
         job_status: str = None,
         request_id: str = None,
+        start_time: str = None,
         user_data: str = None,
     ):
+        self.end_time = end_time
         self.error_code = error_code
+        self.error_message = error_message
         self.job_id = job_id
         self.job_params = job_params
         self.job_result = job_result
         self.job_status = job_status
         # RequestId
         self.request_id = request_id
+        self.start_time = start_time
         self.user_data = user_data
 
     def validate(self):
@@ -38,8 +44,14 @@ class GetYikePromptExpansionVoiceFixJobResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+
         if self.error_code is not None:
             result['ErrorCode'] = self.error_code
+
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
 
         if self.job_id is not None:
             result['JobId'] = self.job_id
@@ -58,6 +70,9 @@ class GetYikePromptExpansionVoiceFixJobResponseBody(DaraModel):
         if self.request_id is not None:
             result['RequestId'] = self.request_id
 
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+
         if self.user_data is not None:
             result['UserData'] = self.user_data
 
@@ -65,8 +80,14 @@ class GetYikePromptExpansionVoiceFixJobResponseBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+
         if m.get('ErrorCode') is not None:
             self.error_code = m.get('ErrorCode')
+
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
 
         if m.get('JobId') is not None:
             self.job_id = m.get('JobId')
@@ -85,6 +106,9 @@ class GetYikePromptExpansionVoiceFixJobResponseBody(DaraModel):
 
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
 
         if m.get('UserData') is not None:
             self.user_data = m.get('UserData')
