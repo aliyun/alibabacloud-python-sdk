@@ -20,14 +20,14 @@ class GetUserRequest(DaraModel):
         if _map is not None:
             result = _map
         if self.scene_type is not None:
-            result['SceneType'] = self.scene_type
+            result['scene_type'] = self.scene_type
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SceneType') is not None:
-            self.scene_type = m.get('SceneType')
+        if m.get('scene_type') is not None:
+            self.scene_type = m.get('scene_type')
 
         return self
 
