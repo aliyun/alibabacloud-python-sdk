@@ -14,17 +14,14 @@ class GetCreditInfoResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Result Code:
-        # - 200 OK
-        # - 1109 System Error
+        # success
         self.code = code
-        # The data returned.
+        # The Credit Line of Sub Account
         self.data = data
-        # Message Information
-        self.message = message
-        # Request ID, Alibaba Cloud will track errors with this.
-        self.request_id = request_id
         # Candidate Value: True/False, which indicates whether the current API call itself is successful. It does not guarantee the success of subsequent business operations.
+        self.message = message
+        self.request_id = request_id
+        # The Credit have been consumed by Sub Account, and haven\\"t be paid.
         self.success = success
 
     def validate(self):
@@ -86,31 +83,36 @@ class GetCreditInfoResponseBodyData(DaraModel):
         zero_credit_shutdown_policy: str = None,
         new_buy_status: str = None,
     ):
-        # The Credit Control status, Value Range:</br>
-        # 1. normal - Sub Account status is running as usual.
-        # 2. arrearsNotShutdown - Sub Account status is running as usual, but have outstanding bill(s).
-        # 3. shutdown -  Sub Account status is down.
-        self.account_status = account_status
         # Percentage value, when the available credit limit is lower than this credit limit percentage, a notification E-mail will be sent to the main account.
+        self.account_status = account_status
+        # Manage order operation.
+        # - ban：Ban the new purchase action.
+        # - normal：The account could raise new purchase order as usual.
         self.alarm_threshold = alarm_threshold
-        # The Credit available to consume.
-        self.available_credit = available_credit
-        # Obtain total unpaid amount on demo bill before simulated deduction.
-        self.consumed_undeducted_value = consumed_undeducted_value
-        # The Credit Line of Sub Account
-        self.credit_line = credit_line
-        # The Credit have been consumed by Sub Account, and haven\\"t be paid.
-        self.outstanding_balance = outstanding_balance
-        self.paygfreeze_status = paygfreeze_status
         # The systematic controlling policy for resource management, specifically when the available Credit of Sub Account falls to 0 or less.</br>
         # 
         # - 1: delayStop. The account have Shutdown-delay Privilege,  After Shutdown-delay Credit is ran out, Alibaba Cloud will take over resources and keep the instance for 15 days. In addition, the instance will be released if Sub Account failed to pay the bill within these 15 days.</br>
         # - 2: noStop. Partner will manually manage Shutdown Status for Sub Account. Meanwhile, System would not manage the resource\\"s life-circle of Sub Account.</br>
         # - 3: immediatelyStop. Once valid quota of Sub Account falls below 0 and be identified as defaulting account, it will trigger the instance shutdown immediately.</br>
+        self.available_credit = available_credit
+        # Consumed & Undeducted Value（Amount consumption at the current point in time and for which the quota has not been deducted）
+        self.consumed_undeducted_value = consumed_undeducted_value
+        # The Credit available to consume.
+        self.credit_line = credit_line
+        # The Credit Control status, Value Range:</br>
+        # 1. normal - Sub Account status is running as usual.
+        # 2. arrearsNotShutdown - Sub Account status is running as usual, but have outstanding bill(s).
+        # 3. shutdown -  Sub Account status is down.
+        self.outstanding_balance = outstanding_balance
+        # PAYG Freeze Status
+        # 
+        # freeze：freeze
+        # 
+        # normal：normal
+        self.paygfreeze_status = paygfreeze_status
+        # Obtain total unpaid amount on demo bill before simulated deduction.
         self.zero_credit_shutdown_policy = zero_credit_shutdown_policy
-        # Manage order operation.
-        # - ban：Ban the new purchase action.
-        # - normal：The account could raise new purchase order as usual.
+        # Request ID, Alibaba Cloud will track errors with this.
         self.new_buy_status = new_buy_status
 
     def validate(self):

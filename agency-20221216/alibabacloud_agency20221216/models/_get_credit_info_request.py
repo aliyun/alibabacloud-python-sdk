@@ -9,7 +9,7 @@ class GetCreditInfoRequest(DaraModel):
         self,
         uid: int = None,
     ):
-        # Sub Account UID
+        # Message Information
         # 
         # This parameter is required.
         self.uid = uid

@@ -2168,6 +2168,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.invite_sub_account_with_options_async(request, runtime)
 
+    def invite_sub_reseller_with_options(
+        self,
+        request: main_models.InviteSubResellerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.InviteSubResellerResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.account_info_list):
+            query['AccountInfoList'] = request.account_info_list
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'InviteSubReseller',
+            version = '2022-12-16',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.InviteSubResellerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def invite_sub_reseller_with_options_async(
+        self,
+        request: main_models.InviteSubResellerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.InviteSubResellerResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.account_info_list):
+            query['AccountInfoList'] = request.account_info_list
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'InviteSubReseller',
+            version = '2022-12-16',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.InviteSubResellerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def invite_sub_reseller(
+        self,
+        request: main_models.InviteSubResellerRequest,
+    ) -> main_models.InviteSubResellerResponse:
+        runtime = RuntimeOptions()
+        return self.invite_sub_reseller_with_options(request, runtime)
+
+    async def invite_sub_reseller_async(
+        self,
+        request: main_models.InviteSubResellerRequest,
+    ) -> main_models.InviteSubResellerResponse:
+        runtime = RuntimeOptions()
+        return await self.invite_sub_reseller_with_options_async(request, runtime)
+
     def issue_coupon_for_customer_with_options(
         self,
         request: main_models.IssueCouponForCustomerRequest,

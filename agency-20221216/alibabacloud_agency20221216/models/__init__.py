@@ -85,6 +85,9 @@ from ._get_unassociated_customer_response import GetUnassociatedCustomerResponse
 from ._invite_sub_account_request import InviteSubAccountRequest
 from ._invite_sub_account_response_body import InviteSubAccountResponseBody
 from ._invite_sub_account_response import InviteSubAccountResponse
+from ._invite_sub_reseller_request import InviteSubResellerRequest
+from ._invite_sub_reseller_response_body import InviteSubResellerResponseBody
+from ._invite_sub_reseller_response import InviteSubResellerResponse
 from ._issue_coupon_for_customer_request import IssueCouponForCustomerRequest
 from ._issue_coupon_for_customer_response_body import IssueCouponForCustomerResponseBody
 from ._issue_coupon_for_customer_response import IssueCouponForCustomerResponse
@@ -154,6 +157,9 @@ from ._invite_sub_account_request import InviteSubAccountRequestAccountInfoList
 from ._invite_sub_account_response_body import InviteSubAccountResponseBodyResultsResultResult
 from ._invite_sub_account_response_body import InviteSubAccountResponseBodyResultsResult
 from ._invite_sub_account_response_body import InviteSubAccountResponseBodyResults
+from ._invite_sub_reseller_request import InviteSubResellerRequestAccountInfoList
+from ._invite_sub_reseller_response_body import InviteSubResellerResponseBodyResultsResult
+from ._invite_sub_reseller_response_body import InviteSubResellerResponseBodyResults
 from ._issue_coupon_for_customer_response_body import IssueCouponForCustomerResponseBodyData
 from ._list_coupon_usage_response_body import ListCouponUsageResponseBodyData
 from ._list_coupon_usage_response_body import ListCouponUsageResponseBodyPageInfo
@@ -246,6 +252,9 @@ __all__ = [
     InviteSubAccountRequest,
     InviteSubAccountResponseBody,
     InviteSubAccountResponse,
+    InviteSubResellerRequest,
+    InviteSubResellerResponseBody,
+    InviteSubResellerResponse,
     IssueCouponForCustomerRequest,
     IssueCouponForCustomerResponseBody,
     IssueCouponForCustomerResponse,
@@ -315,6 +324,9 @@ __all__ = [
     InviteSubAccountResponseBodyResultsResultResult,
     InviteSubAccountResponseBodyResultsResult,
     InviteSubAccountResponseBodyResults,
+    InviteSubResellerRequestAccountInfoList,
+    InviteSubResellerResponseBodyResultsResult,
+    InviteSubResellerResponseBodyResults,
     IssueCouponForCustomerResponseBodyData,
     ListCouponUsageResponseBodyData,
     ListCouponUsageResponseBodyPageInfo,
