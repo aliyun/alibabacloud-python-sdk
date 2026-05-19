@@ -391,6 +391,7 @@ class ModifyInstanceAttributeRequestCpuOptions(DaraModel):
         core: int = None,
         threads_per_core: int = None,
         topology_type: str = None,
+        nested_virtualization: str = None,
     ):
         # The number of CPU cores. This parameter cannot be specified but only uses its default value.
         self.core = core
@@ -412,6 +413,7 @@ class ModifyInstanceAttributeRequestCpuOptions(DaraModel):
         # 
         # >  This parameter is supported only for specific instance families. For information about the supported instance families, see [View and modify CPU topologies](https://help.aliyun.com/document_detail/2636059.html).
         self.topology_type = topology_type
+        self.nested_virtualization = nested_virtualization
 
     def validate(self):
         pass
@@ -430,6 +432,9 @@ class ModifyInstanceAttributeRequestCpuOptions(DaraModel):
         if self.topology_type is not None:
             result['TopologyType'] = self.topology_type
 
+        if self.nested_virtualization is not None:
+            result['NestedVirtualization'] = self.nested_virtualization
+
         return result
 
     def from_map(self, m: dict = None):
@@ -442,6 +447,9 @@ class ModifyInstanceAttributeRequestCpuOptions(DaraModel):
 
         if m.get('TopologyType') is not None:
             self.topology_type = m.get('TopologyType')
+
+        if m.get('NestedVirtualization') is not None:
+            self.nested_virtualization = m.get('NestedVirtualization')
 
         return self
 

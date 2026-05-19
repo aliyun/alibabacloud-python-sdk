@@ -2238,6 +2238,7 @@ class RunInstancesRequestCpuOptions(DaraModel):
         numa: str = None,
         threads_per_core: int = None,
         topology_type: str = None,
+        nested_virtualization: str = None,
     ):
         # The number of CPU cores.
         self.core = core
@@ -2257,6 +2258,7 @@ class RunInstancesRequestCpuOptions(DaraModel):
         # 
         # >  This parameter is supported only for specific instance families. For more information about the supported instance families, see [View and modify the CPU topology](https://help.aliyun.com/document_detail/2636059.html).
         self.topology_type = topology_type
+        self.nested_virtualization = nested_virtualization
 
     def validate(self):
         pass
@@ -2278,6 +2280,9 @@ class RunInstancesRequestCpuOptions(DaraModel):
         if self.topology_type is not None:
             result['TopologyType'] = self.topology_type
 
+        if self.nested_virtualization is not None:
+            result['NestedVirtualization'] = self.nested_virtualization
+
         return result
 
     def from_map(self, m: dict = None):
@@ -2293,6 +2298,9 @@ class RunInstancesRequestCpuOptions(DaraModel):
 
         if m.get('TopologyType') is not None:
             self.topology_type = m.get('TopologyType')
+
+        if m.get('NestedVirtualization') is not None:
+            self.nested_virtualization = m.get('NestedVirtualization')
 
         return self
 

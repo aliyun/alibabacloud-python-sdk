@@ -1,3 +1,8 @@
+2026-05-19 Version: 7.8.1
+- Update API ModifyInstanceAttribute: add request parameters CpuOptions.
+- Update API RunInstances: add request parameters CpuOptions.
+
+
 2026-05-13 Version: 7.8.0
 - Support API CreateVsc.
 - Support API DeleteVsc.
