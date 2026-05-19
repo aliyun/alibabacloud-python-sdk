@@ -6,6 +6,14 @@
 - Update API DescribePolarFsQuotaList: add request parameters PageSize.
 
 
+2026-05-19 Version: 6.19.1
+- Update API DescribeApplicationAttribute: add response parameters Body.CanDisableSnat.
+- Update API DescribeApplicationAttribute: add response parameters Body.NatGatewayId.
+- Update API DescribeApplicationAttribute: add response parameters Body.SnatStatus.
+- Update API DescribePolarFsQuotaList: add request parameters PageNumber.
+- Update API DescribePolarFsQuotaList: add request parameters PageSize.
+
+
 2026-05-18 Version: 6.19.0
 - Support API DescribePolarFsQuotaList.
 
