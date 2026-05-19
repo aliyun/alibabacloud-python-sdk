@@ -40,6 +40,12 @@ from ._check_resource_measure_response import CheckResourceMeasureResponse
 from ._check_user_resource_measure_request import CheckUserResourceMeasureRequest
 from ._check_user_resource_measure_response_body import CheckUserResourceMeasureResponseBody
 from ._check_user_resource_measure_response import CheckUserResourceMeasureResponse
+from ._create_aistaff_chat_request import CreateAIStaffChatRequest
+from ._create_aistaff_chat_response_body import CreateAIStaffChatResponseBody
+from ._create_aistaff_chat_response import CreateAIStaffChatResponse
+from ._create_aistaff_conversation_request import CreateAIStaffConversationRequest
+from ._create_aistaff_conversation_response_body import CreateAIStaffConversationResponseBody
+from ._create_aistaff_conversation_response import CreateAIStaffConversationResponse
 from ._create_app_assistant_agent_request import CreateAppAssistantAgentRequest
 from ._create_app_assistant_agent_response_body import CreateAppAssistantAgentResponseBody
 from ._create_app_assistant_agent_response import CreateAppAssistantAgentResponse
@@ -126,6 +132,12 @@ from ._get_user_tmp_identity_for_partner_response import GetUserTmpIdentityForPa
 from ._introspect_app_instance_ticket_for_preview_request import IntrospectAppInstanceTicketForPreviewRequest
 from ._introspect_app_instance_ticket_for_preview_response_body import IntrospectAppInstanceTicketForPreviewResponseBody
 from ._introspect_app_instance_ticket_for_preview_response import IntrospectAppInstanceTicketForPreviewResponse
+from ._list_aistaff_chat_events_request import ListAIStaffChatEventsRequest
+from ._list_aistaff_chat_events_response_body import ListAIStaffChatEventsResponseBody
+from ._list_aistaff_chat_events_response import ListAIStaffChatEventsResponse
+from ._list_aistaff_chat_messages_request import ListAIStaffChatMessagesRequest
+from ._list_aistaff_chat_messages_response_body import ListAIStaffChatMessagesResponseBody
+from ._list_aistaff_chat_messages_response import ListAIStaffChatMessagesResponse
 from ._list_app_assistant_agents_request import ListAppAssistantAgentsRequest
 from ._list_app_assistant_agents_response_body import ListAppAssistantAgentsResponseBody
 from ._list_app_assistant_agents_response import ListAppAssistantAgentsResponse
@@ -262,6 +274,8 @@ from ._batch_check_resource_measure_response_body import BatchCheckResourceMeasu
 from ._bind_app_domain_response_body import BindAppDomainResponseBodyModule
 from ._check_resource_measure_response_body import CheckResourceMeasureResponseBodyModule
 from ._check_user_resource_measure_response_body import CheckUserResourceMeasureResponseBodyModule
+from ._create_aistaff_chat_request import CreateAIStaffChatRequestMessages
+from ._create_aistaff_conversation_response_body import CreateAIStaffConversationResponseBodyModule
 from ._create_app_assistant_agent_response_body import CreateAppAssistantAgentResponseBodyModuleCredential
 from ._create_app_assistant_agent_response_body import CreateAppAssistantAgentResponseBodyModuleEmbedConfig
 from ._create_app_assistant_agent_response_body import CreateAppAssistantAgentResponseBodyModule
@@ -307,6 +321,10 @@ from ._get_user_access_token_for_partner_response_body import GetUserAccessToken
 from ._get_user_tmp_identity_for_partner_response_body import GetUserTmpIdentityForPartnerResponseBodyDataCredentials
 from ._get_user_tmp_identity_for_partner_response_body import GetUserTmpIdentityForPartnerResponseBodyData
 from ._introspect_app_instance_ticket_for_preview_response_body import IntrospectAppInstanceTicketForPreviewResponseBodyModule
+from ._list_aistaff_chat_events_response_body import ListAIStaffChatEventsResponseBodyModuleEvents
+from ._list_aistaff_chat_events_response_body import ListAIStaffChatEventsResponseBodyModule
+from ._list_aistaff_chat_messages_response_body import ListAIStaffChatMessagesResponseBodyModuleMessages
+from ._list_aistaff_chat_messages_response_body import ListAIStaffChatMessagesResponseBodyModule
 from ._list_app_assistant_agents_response_body import ListAppAssistantAgentsResponseBodyModuleCredential
 from ._list_app_assistant_agents_response_body import ListAppAssistantAgentsResponseBodyModuleEmbedConfig
 from ._list_app_assistant_agents_response_body import ListAppAssistantAgentsResponseBodyModule
@@ -401,6 +419,12 @@ __all__ = [
     CheckUserResourceMeasureRequest,
     CheckUserResourceMeasureResponseBody,
     CheckUserResourceMeasureResponse,
+    CreateAIStaffChatRequest,
+    CreateAIStaffChatResponseBody,
+    CreateAIStaffChatResponse,
+    CreateAIStaffConversationRequest,
+    CreateAIStaffConversationResponseBody,
+    CreateAIStaffConversationResponse,
     CreateAppAssistantAgentRequest,
     CreateAppAssistantAgentResponseBody,
     CreateAppAssistantAgentResponse,
@@ -487,6 +511,12 @@ __all__ = [
     IntrospectAppInstanceTicketForPreviewRequest,
     IntrospectAppInstanceTicketForPreviewResponseBody,
     IntrospectAppInstanceTicketForPreviewResponse,
+    ListAIStaffChatEventsRequest,
+    ListAIStaffChatEventsResponseBody,
+    ListAIStaffChatEventsResponse,
+    ListAIStaffChatMessagesRequest,
+    ListAIStaffChatMessagesResponseBody,
+    ListAIStaffChatMessagesResponse,
     ListAppAssistantAgentsRequest,
     ListAppAssistantAgentsResponseBody,
     ListAppAssistantAgentsResponse,
@@ -623,6 +653,8 @@ __all__ = [
     BindAppDomainResponseBodyModule,
     CheckResourceMeasureResponseBodyModule,
     CheckUserResourceMeasureResponseBodyModule,
+    CreateAIStaffChatRequestMessages,
+    CreateAIStaffConversationResponseBodyModule,
     CreateAppAssistantAgentResponseBodyModuleCredential,
     CreateAppAssistantAgentResponseBodyModuleEmbedConfig,
     CreateAppAssistantAgentResponseBodyModule,
@@ -668,6 +700,10 @@ __all__ = [
     GetUserTmpIdentityForPartnerResponseBodyDataCredentials,
     GetUserTmpIdentityForPartnerResponseBodyData,
     IntrospectAppInstanceTicketForPreviewResponseBodyModule,
+    ListAIStaffChatEventsResponseBodyModuleEvents,
+    ListAIStaffChatEventsResponseBodyModule,
+    ListAIStaffChatMessagesResponseBodyModuleMessages,
+    ListAIStaffChatMessagesResponseBodyModule,
     ListAppAssistantAgentsResponseBodyModuleCredential,
     ListAppAssistantAgentsResponseBodyModuleEmbedConfig,
     ListAppAssistantAgentsResponseBodyModule,

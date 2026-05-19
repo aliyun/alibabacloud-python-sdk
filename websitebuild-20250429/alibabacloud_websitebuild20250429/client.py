@@ -9,6 +9,7 @@ from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi.utils import Utils
 from alibabacloud_websitebuild20250429 import models as main_models
 from darabonba.core import DaraCore as DaraCore
+from darabonba.core import DaraCore
 from darabonba.runtime import RuntimeOptions
 
 """
@@ -489,6 +490,166 @@ class Client(OpenApiClient):
     ) -> main_models.CheckUserResourceMeasureResponse:
         runtime = RuntimeOptions()
         return await self.check_user_resource_measure_with_options_async(request, runtime)
+
+    def create_aistaff_chat_with_options(
+        self,
+        request: main_models.CreateAIStaffChatRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAIStaffChatResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.biz_id):
+            body['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.chat_id):
+            body['ChatId'] = request.chat_id
+        if not DaraCore.is_null(request.conversation_id):
+            body['ConversationId'] = request.conversation_id
+        if not DaraCore.is_null(request.messages):
+            body['Messages'] = request.messages
+        body_flat = {}
+        if not DaraCore.is_null(request.meta_data):
+            body_flat['MetaData'] = request.meta_data
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAIStaffChat',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAIStaffChatResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_aistaff_chat_with_options_async(
+        self,
+        request: main_models.CreateAIStaffChatRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAIStaffChatResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.biz_id):
+            body['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.chat_id):
+            body['ChatId'] = request.chat_id
+        if not DaraCore.is_null(request.conversation_id):
+            body['ConversationId'] = request.conversation_id
+        if not DaraCore.is_null(request.messages):
+            body['Messages'] = request.messages
+        body_flat = {}
+        if not DaraCore.is_null(request.meta_data):
+            body_flat['MetaData'] = request.meta_data
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAIStaffChat',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAIStaffChatResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_aistaff_chat(
+        self,
+        request: main_models.CreateAIStaffChatRequest,
+    ) -> main_models.CreateAIStaffChatResponse:
+        runtime = RuntimeOptions()
+        return self.create_aistaff_chat_with_options(request, runtime)
+
+    async def create_aistaff_chat_async(
+        self,
+        request: main_models.CreateAIStaffChatRequest,
+    ) -> main_models.CreateAIStaffChatResponse:
+        runtime = RuntimeOptions()
+        return await self.create_aistaff_chat_with_options_async(request, runtime)
+
+    def create_aistaff_conversation_with_options(
+        self,
+        request: main_models.CreateAIStaffConversationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAIStaffConversationResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.text):
+            body['Text'] = request.text
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAIStaffConversation',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAIStaffConversationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_aistaff_conversation_with_options_async(
+        self,
+        request: main_models.CreateAIStaffConversationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAIStaffConversationResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.text):
+            body['Text'] = request.text
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAIStaffConversation',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAIStaffConversationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_aistaff_conversation(
+        self,
+        request: main_models.CreateAIStaffConversationRequest,
+    ) -> main_models.CreateAIStaffConversationResponse:
+        runtime = RuntimeOptions()
+        return self.create_aistaff_conversation_with_options(request, runtime)
+
+    async def create_aistaff_conversation_async(
+        self,
+        request: main_models.CreateAIStaffConversationRequest,
+    ) -> main_models.CreateAIStaffConversationResponse:
+        runtime = RuntimeOptions()
+        return await self.create_aistaff_conversation_with_options_async(request, runtime)
 
     def create_app_assistant_agent_with_options(
         self,
@@ -2657,6 +2818,178 @@ class Client(OpenApiClient):
     ) -> main_models.IntrospectAppInstanceTicketForPreviewResponse:
         runtime = RuntimeOptions()
         return await self.introspect_app_instance_ticket_for_preview_with_options_async(request, runtime)
+
+    def list_aistaff_chat_events_with_options(
+        self,
+        request: main_models.ListAIStaffChatEventsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAIStaffChatEventsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        body = {}
+        if not DaraCore.is_null(request.chat_id):
+            body['ChatId'] = request.chat_id
+        if not DaraCore.is_null(request.conversation_id):
+            body['ConversationId'] = request.conversation_id
+        if not DaraCore.is_null(request.last_event_id):
+            body['LastEventId'] = request.last_event_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAIStaffChatEvents',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAIStaffChatEventsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_aistaff_chat_events_with_options_async(
+        self,
+        request: main_models.ListAIStaffChatEventsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAIStaffChatEventsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        body = {}
+        if not DaraCore.is_null(request.chat_id):
+            body['ChatId'] = request.chat_id
+        if not DaraCore.is_null(request.conversation_id):
+            body['ConversationId'] = request.conversation_id
+        if not DaraCore.is_null(request.last_event_id):
+            body['LastEventId'] = request.last_event_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAIStaffChatEvents',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAIStaffChatEventsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_aistaff_chat_events(
+        self,
+        request: main_models.ListAIStaffChatEventsRequest,
+    ) -> main_models.ListAIStaffChatEventsResponse:
+        runtime = RuntimeOptions()
+        return self.list_aistaff_chat_events_with_options(request, runtime)
+
+    async def list_aistaff_chat_events_async(
+        self,
+        request: main_models.ListAIStaffChatEventsRequest,
+    ) -> main_models.ListAIStaffChatEventsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_aistaff_chat_events_with_options_async(request, runtime)
+
+    def list_aistaff_chat_messages_with_options(
+        self,
+        request: main_models.ListAIStaffChatMessagesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAIStaffChatMessagesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        body = {}
+        if not DaraCore.is_null(request.conversation_id):
+            body['ConversationId'] = request.conversation_id
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.start_create_time):
+            body['StartCreateTime'] = request.start_create_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAIStaffChatMessages',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAIStaffChatMessagesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_aistaff_chat_messages_with_options_async(
+        self,
+        request: main_models.ListAIStaffChatMessagesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAIStaffChatMessagesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        body = {}
+        if not DaraCore.is_null(request.conversation_id):
+            body['ConversationId'] = request.conversation_id
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.start_create_time):
+            body['StartCreateTime'] = request.start_create_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAIStaffChatMessages',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAIStaffChatMessagesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_aistaff_chat_messages(
+        self,
+        request: main_models.ListAIStaffChatMessagesRequest,
+    ) -> main_models.ListAIStaffChatMessagesResponse:
+        runtime = RuntimeOptions()
+        return self.list_aistaff_chat_messages_with_options(request, runtime)
+
+    async def list_aistaff_chat_messages_async(
+        self,
+        request: main_models.ListAIStaffChatMessagesRequest,
+    ) -> main_models.ListAIStaffChatMessagesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_aistaff_chat_messages_with_options_async(request, runtime)
 
     def list_app_assistant_agents_with_options(
         self,
