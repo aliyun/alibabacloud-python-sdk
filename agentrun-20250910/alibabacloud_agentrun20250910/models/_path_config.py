@@ -10,6 +10,8 @@ class PathConfig(DaraModel):
     def __init__(
         self,
         agent_runtime_endpoint_name: str = None,
+        compatible_protocol: str = None,
+        flow_endpoint_name: str = None,
         methods: List[str] = None,
         path: str = None,
         remove_base_path_on_forward: bool = None,
@@ -18,6 +20,10 @@ class PathConfig(DaraModel):
     ):
         # agent runtime 版本（仅当 resourceType 为 runtime 时有效）
         self.agent_runtime_endpoint_name = agent_runtime_endpoint_name
+        # 兼容协议，指定后端响应格式转换。仅当 resourceType 为 flow 时必填：native 表示 FnF 原生调用；openai、dify-workflow、dify-chatflow 为对应兼容 API。
+        self.compatible_protocol = compatible_protocol
+        # Flow 版本/别名（仅当 resourceType 为 flow 时有效，默认 Default）
+        self.flow_endpoint_name = flow_endpoint_name
         # 支持的方法有：HEAD, GET, POST, PUT, DELETE, PATCH, OPTIONS
         self.methods = methods
         # 此条路由规则对应的请求路径。
@@ -38,6 +44,12 @@ class PathConfig(DaraModel):
             result = _map
         if self.agent_runtime_endpoint_name is not None:
             result['agentRuntimeEndpointName'] = self.agent_runtime_endpoint_name
+
+        if self.compatible_protocol is not None:
+            result['compatibleProtocol'] = self.compatible_protocol
+
+        if self.flow_endpoint_name is not None:
+            result['flowEndpointName'] = self.flow_endpoint_name
 
         if self.methods is not None:
             result['methods'] = self.methods
@@ -60,6 +72,12 @@ class PathConfig(DaraModel):
         m = m or dict()
         if m.get('agentRuntimeEndpointName') is not None:
             self.agent_runtime_endpoint_name = m.get('agentRuntimeEndpointName')
+
+        if m.get('compatibleProtocol') is not None:
+            self.compatible_protocol = m.get('compatibleProtocol')
+
+        if m.get('flowEndpointName') is not None:
+            self.flow_endpoint_name = m.get('flowEndpointName')
 
         if m.get('methods') is not None:
             self.methods = m.get('methods')

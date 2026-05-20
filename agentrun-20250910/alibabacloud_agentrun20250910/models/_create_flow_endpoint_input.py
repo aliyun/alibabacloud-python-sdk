@@ -11,12 +11,15 @@ class CreateFlowEndpointInput(DaraModel):
     def __init__(
         self,
         description: str = None,
+        disable_public_network_access: bool = None,
         flow_endpoint_name: str = None,
         routing_configuration: List[main_models.FlowEndpointRoutingConfig] = None,
         target_version: str = None,
     ):
         # 工作流端点的描述信息
         self.description = description
+        # 是否禁用该端点的公网访问。创建时未指定则从父工作流继承
+        self.disable_public_network_access = disable_public_network_access
         # 工作流端点的唯一标识名称
         # 
         # This parameter is required.
@@ -40,6 +43,9 @@ class CreateFlowEndpointInput(DaraModel):
         if self.description is not None:
             result['description'] = self.description
 
+        if self.disable_public_network_access is not None:
+            result['disablePublicNetworkAccess'] = self.disable_public_network_access
+
         if self.flow_endpoint_name is not None:
             result['flowEndpointName'] = self.flow_endpoint_name
 
@@ -57,6 +63,9 @@ class CreateFlowEndpointInput(DaraModel):
         m = m or dict()
         if m.get('description') is not None:
             self.description = m.get('description')
+
+        if m.get('disablePublicNetworkAccess') is not None:
+            self.disable_public_network_access = m.get('disablePublicNetworkAccess')
 
         if m.get('flowEndpointName') is not None:
             self.flow_endpoint_name = m.get('flowEndpointName')

@@ -10,6 +10,7 @@ class CreateFlowInput(DaraModel):
         self,
         definition: str = None,
         description: str = None,
+        disable_public_network_access: bool = None,
         environment_configuration: main_models.EnvironmentConfiguration = None,
         execution_role_arn: str = None,
         external_storage_location: str = None,
@@ -23,6 +24,8 @@ class CreateFlowInput(DaraModel):
         self.definition = definition
         # 工作流的描述信息，用于说明该工作流的用途和功能
         self.description = description
+        # 是否禁用该工作流的公网访问，作为工作流级别的默认策略。当 FlowEndpoint 未指定时，将继承此值
+        self.disable_public_network_access = disable_public_network_access
         # 工作流的环境变量配置，包含一组命名变量列表
         self.environment_configuration = environment_configuration
         # 为工作流提供访问云服务权限的执行角色ARN
@@ -61,6 +64,9 @@ class CreateFlowInput(DaraModel):
         if self.description is not None:
             result['description'] = self.description
 
+        if self.disable_public_network_access is not None:
+            result['disablePublicNetworkAccess'] = self.disable_public_network_access
+
         if self.environment_configuration is not None:
             result['environmentConfiguration'] = self.environment_configuration.to_map()
 
@@ -94,6 +100,9 @@ class CreateFlowInput(DaraModel):
 
         if m.get('description') is not None:
             self.description = m.get('description')
+
+        if m.get('disablePublicNetworkAccess') is not None:
+            self.disable_public_network_access = m.get('disablePublicNetworkAccess')
 
         if m.get('environmentConfiguration') is not None:
             temp_model = main_models.EnvironmentConfiguration()

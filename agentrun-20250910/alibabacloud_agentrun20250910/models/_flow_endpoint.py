@@ -12,6 +12,7 @@ class FlowEndpoint(DaraModel):
         self,
         created_at: str = None,
         description: str = None,
+        disable_public_network_access: bool = None,
         flow_endpoint_arn: str = None,
         flow_endpoint_id: str = None,
         flow_endpoint_name: str = None,
@@ -24,6 +25,8 @@ class FlowEndpoint(DaraModel):
         self.created_at = created_at
         # 工作流端点的描述信息
         self.description = description
+        # 是否禁用该端点的公网访问
+        self.disable_public_network_access = disable_public_network_access
         # 工作流端点的全局唯一资源名称
         self.flow_endpoint_arn = flow_endpoint_arn
         # 工作流端点的唯一标识符
@@ -55,6 +58,9 @@ class FlowEndpoint(DaraModel):
 
         if self.description is not None:
             result['description'] = self.description
+
+        if self.disable_public_network_access is not None:
+            result['disablePublicNetworkAccess'] = self.disable_public_network_access
 
         if self.flow_endpoint_arn is not None:
             result['flowEndpointArn'] = self.flow_endpoint_arn
@@ -88,6 +94,9 @@ class FlowEndpoint(DaraModel):
 
         if m.get('description') is not None:
             self.description = m.get('description')
+
+        if m.get('disablePublicNetworkAccess') is not None:
+            self.disable_public_network_access = m.get('disablePublicNetworkAccess')
 
         if m.get('flowEndpointArn') is not None:
             self.flow_endpoint_arn = m.get('flowEndpointArn')

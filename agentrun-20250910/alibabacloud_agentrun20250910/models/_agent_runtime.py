@@ -22,6 +22,7 @@ class AgentRuntime(DaraModel):
         credential_name: str = None,
         description: str = None,
         disk_size: int = None,
+        edition: str = None,
         enable_session_isolation: bool = None,
         environment_variables: Dict[str, str] = None,
         execution_role_arn: str = None,
@@ -66,6 +67,7 @@ class AgentRuntime(DaraModel):
         # 智能体运行时的描述信息，说明该运行时的用途和功能
         self.description = description
         self.disk_size = disk_size
+        self.edition = edition
         # 是否启用会话隔离，启用后每个会话将在独立的环境中运行
         self.enable_session_isolation = enable_session_isolation
         # 智能体运行时的环境变量配置
@@ -164,6 +166,9 @@ class AgentRuntime(DaraModel):
 
         if self.disk_size is not None:
             result['diskSize'] = self.disk_size
+
+        if self.edition is not None:
+            result['edition'] = self.edition
 
         if self.enable_session_isolation is not None:
             result['enableSessionIsolation'] = self.enable_session_isolation
@@ -266,6 +271,9 @@ class AgentRuntime(DaraModel):
 
         if m.get('diskSize') is not None:
             self.disk_size = m.get('diskSize')
+
+        if m.get('edition') is not None:
+            self.edition = m.get('edition')
 
         if m.get('enableSessionIsolation') is not None:
             self.enable_session_isolation = m.get('enableSessionIsolation')
