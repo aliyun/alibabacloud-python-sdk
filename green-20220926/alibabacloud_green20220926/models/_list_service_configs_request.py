@@ -8,12 +8,14 @@ class ListServiceConfigsRequest(DaraModel):
     def __init__(
         self,
         classify: str = None,
+        protection_type: str = None,
         region_id: str = None,
         resource_type: str = None,
         use_status: str = None,
     ):
         # Category.
         self.classify = classify
+        self.protection_type = protection_type
         # Region ID.
         self.region_id = region_id
         # Resource type.
@@ -32,6 +34,9 @@ class ListServiceConfigsRequest(DaraModel):
         if self.classify is not None:
             result['Classify'] = self.classify
 
+        if self.protection_type is not None:
+            result['ProtectionType'] = self.protection_type
+
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
@@ -47,6 +52,9 @@ class ListServiceConfigsRequest(DaraModel):
         m = m or dict()
         if m.get('Classify') is not None:
             self.classify = m.get('Classify')
+
+        if m.get('ProtectionType') is not None:
+            self.protection_type = m.get('ProtectionType')
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')

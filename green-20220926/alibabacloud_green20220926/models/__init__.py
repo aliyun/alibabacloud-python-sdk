@@ -36,6 +36,9 @@ from ._create_answer_lib_response import CreateAnswerLibResponse
 from ._create_callback_request import CreateCallbackRequest
 from ._create_callback_response_body import CreateCallbackResponseBody
 from ._create_callback_response import CreateCallbackResponse
+from ._create_image_lib_request import CreateImageLibRequest
+from ._create_image_lib_response_body import CreateImageLibResponseBody
+from ._create_image_lib_response import CreateImageLibResponse
 from ._create_online_test_request import CreateOnlineTestRequest
 from ._create_online_test_response_body import CreateOnlineTestResponseBody
 from ._create_online_test_response import CreateOnlineTestResponse
@@ -290,6 +293,7 @@ from ._add_keywords_response_body import AddKeywordsResponseBodyData
 from ._add_keywords_to_lib_response_body import AddKeywordsToLibResponseBodyDataKeywordsResult
 from ._add_keywords_to_lib_response_body import AddKeywordsToLibResponseBodyData
 from ._create_answer_lib_response_body import CreateAnswerLibResponseBodyResult
+from ._create_image_lib_response_body import CreateImageLibResponseBodyData
 from ._describe_online_test_result_response_body import DescribeOnlineTestResultResponseBodyAudioData
 from ._describe_online_test_result_response_body import DescribeOnlineTestResultResponseBodyFrameData
 from ._describe_online_test_result_response_body import DescribeOnlineTestResultResponseBodySummaryList
@@ -394,6 +398,9 @@ __all__ = [
     CreateCallbackRequest,
     CreateCallbackResponseBody,
     CreateCallbackResponse,
+    CreateImageLibRequest,
+    CreateImageLibResponseBody,
+    CreateImageLibResponse,
     CreateOnlineTestRequest,
     CreateOnlineTestResponseBody,
     CreateOnlineTestResponse,
@@ -648,6 +655,7 @@ __all__ = [
     AddKeywordsToLibResponseBodyDataKeywordsResult,
     AddKeywordsToLibResponseBodyData,
     CreateAnswerLibResponseBodyResult,
+    CreateImageLibResponseBodyData,
     DescribeOnlineTestResultResponseBodyAudioData,
     DescribeOnlineTestResultResponseBodyFrameData,
     DescribeOnlineTestResultResponseBodySummaryList,

@@ -1,3 +1,7 @@
+2026-05-20 Version: 1.8.0
+- Support API CreateImageLib.
+
+
 2026-04-22 Version: 1.7.0
 - Support API DescribeOssV2Result.
 - Support API MarkOssV2Result.
