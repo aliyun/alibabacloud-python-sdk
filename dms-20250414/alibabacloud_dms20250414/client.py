@@ -2901,6 +2901,8 @@ class Client(OpenApiClient):
             query['FileSize'] = request.file_size
         if not DaraCore.is_null(request.filename):
             query['Filename'] = request.filename
+        if not DaraCore.is_null(request.oss_bucket):
+            query['OssBucket'] = request.oss_bucket
         if not DaraCore.is_null(request.upload_location):
             query['UploadLocation'] = request.upload_location
         req = open_api_util_models.OpenApiRequest(
@@ -2937,6 +2939,8 @@ class Client(OpenApiClient):
             query['FileSize'] = request.file_size
         if not DaraCore.is_null(request.filename):
             query['Filename'] = request.filename
+        if not DaraCore.is_null(request.oss_bucket):
+            query['OssBucket'] = request.oss_bucket
         if not DaraCore.is_null(request.upload_location):
             query['UploadLocation'] = request.upload_location
         req = open_api_util_models.OpenApiRequest(

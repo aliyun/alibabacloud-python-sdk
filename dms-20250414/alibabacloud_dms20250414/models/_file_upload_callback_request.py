@@ -11,6 +11,7 @@ class FileUploadCallbackRequest(DaraModel):
         dms_unit: str = None,
         file_size: int = None,
         filename: str = None,
+        oss_bucket: str = None,
         upload_location: str = None,
     ):
         self.call_from = call_from
@@ -18,6 +19,7 @@ class FileUploadCallbackRequest(DaraModel):
         self.file_size = file_size
         # This parameter is required.
         self.filename = filename
+        self.oss_bucket = oss_bucket
         # This parameter is required.
         self.upload_location = upload_location
 
@@ -41,6 +43,9 @@ class FileUploadCallbackRequest(DaraModel):
         if self.filename is not None:
             result['Filename'] = self.filename
 
+        if self.oss_bucket is not None:
+            result['OssBucket'] = self.oss_bucket
+
         if self.upload_location is not None:
             result['UploadLocation'] = self.upload_location
 
@@ -59,6 +64,9 @@ class FileUploadCallbackRequest(DaraModel):
 
         if m.get('Filename') is not None:
             self.filename = m.get('Filename')
+
+        if m.get('OssBucket') is not None:
+            self.oss_bucket = m.get('OssBucket')
 
         if m.get('UploadLocation') is not None:
             self.upload_location = m.get('UploadLocation')

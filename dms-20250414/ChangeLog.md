@@ -1,3 +1,7 @@
+2026-05-20 Version: 1.13.1
+- Update API FileUploadCallback: add request parameters OssBucket.
+
+
 2026-05-18 Version: 1.13.0
 - Support API DeleteDocument.
 - Support API DeleteDocumentChunks.

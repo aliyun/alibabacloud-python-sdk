@@ -4,6 +4,15 @@ from __future__ import annotations
 
 from ._agent_service_order_summary_vo import AgentServiceOrderSummaryVO
 from ._agent_service_order_vo import AgentServiceOrderVO
+from ._agentic_catalog import AgenticCatalog
+from ._agentic_database import AgenticDatabase
+from ._agentic_database_engine_meta import AgenticDatabaseEngineMeta
+from ._agentic_database_object import AgenticDatabaseObject
+from ._agentic_table_base_info import AgenticTableBaseInfo
+from ._agentic_table_column import AgenticTableColumn
+from ._agentic_table_column_engine_meta import AgenticTableColumnEngineMeta
+from ._agentic_table_engine_meta import AgenticTableEngineMeta
+from ._agentic_table_index import AgenticTableIndex
 from ._dlcatalog import DLCatalog
 from ._dlcolumn import DLColumn
 from ._dldatabase import DLDatabase
@@ -411,6 +420,15 @@ from ._workspace_code_publish_response_body import WorkspaceCodePublishResponseB
 __all__ = [
     AgentServiceOrderSummaryVO,
     AgentServiceOrderVO,
+    AgenticCatalog,
+    AgenticDatabase,
+    AgenticDatabaseEngineMeta,
+    AgenticDatabaseObject,
+    AgenticTableBaseInfo,
+    AgenticTableColumn,
+    AgenticTableColumnEngineMeta,
+    AgenticTableEngineMeta,
+    AgenticTableIndex,
     DLCatalog,
     DLColumn,
     DLDatabase,
