@@ -178,13 +178,17 @@ class GetInstanceLicenseResponseBodyLicenseInstanceLicenseDetail(DaraModel):
         conditional_access_policy_license_status: str = None,
         m_2m_application_license_status: str = None,
         m_2m_application_quota: int = None,
+        mim_application_license_status: str = None,
         network_access_endpoint_quota: int = None,
+        prepaid_active_user_number: int = None,
         user_quota: int = None,
     ):
         self.conditional_access_policy_license_status = conditional_access_policy_license_status
         self.m_2m_application_license_status = m_2m_application_license_status
         self.m_2m_application_quota = m_2m_application_quota
+        self.mim_application_license_status = mim_application_license_status
         self.network_access_endpoint_quota = network_access_endpoint_quota
+        self.prepaid_active_user_number = prepaid_active_user_number
         self.user_quota = user_quota
 
     def validate(self):
@@ -204,8 +208,14 @@ class GetInstanceLicenseResponseBodyLicenseInstanceLicenseDetail(DaraModel):
         if self.m_2m_application_quota is not None:
             result['M2mApplicationQuota'] = self.m_2m_application_quota
 
+        if self.mim_application_license_status is not None:
+            result['MimApplicationLicenseStatus'] = self.mim_application_license_status
+
         if self.network_access_endpoint_quota is not None:
             result['NetworkAccessEndpointQuota'] = self.network_access_endpoint_quota
+
+        if self.prepaid_active_user_number is not None:
+            result['PrepaidActiveUserNumber'] = self.prepaid_active_user_number
 
         if self.user_quota is not None:
             result['UserQuota'] = self.user_quota
@@ -223,8 +233,14 @@ class GetInstanceLicenseResponseBodyLicenseInstanceLicenseDetail(DaraModel):
         if m.get('M2mApplicationQuota') is not None:
             self.m_2m_application_quota = m.get('M2mApplicationQuota')
 
+        if m.get('MimApplicationLicenseStatus') is not None:
+            self.mim_application_license_status = m.get('MimApplicationLicenseStatus')
+
         if m.get('NetworkAccessEndpointQuota') is not None:
             self.network_access_endpoint_quota = m.get('NetworkAccessEndpointQuota')
+
+        if m.get('PrepaidActiveUserNumber') is not None:
+            self.prepaid_active_user_number = m.get('PrepaidActiveUserNumber')
 
         if m.get('UserQuota') is not None:
             self.user_quota = m.get('UserQuota')

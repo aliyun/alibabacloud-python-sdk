@@ -1,3 +1,8 @@
+2026-05-20 Version: 2.15.10
+- Update API GetInstanceLicense: add response parameters Body.License.InstanceLicenseDetail.MimApplicationLicenseStatus.
+- Update API GetInstanceLicense: add response parameters Body.License.InstanceLicenseDetail.PrepaidActiveUserNumber.
+
+
 2026-05-13 Version: 2.15.9
 - Update API CreateCredential: add request parameters CredentialExternalId.
 - Update API GetCredential: add response parameters Body.Credential.CredentialExternalId.
