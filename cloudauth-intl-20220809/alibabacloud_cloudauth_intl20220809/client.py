@@ -5054,6 +5054,8 @@ class Client(OpenApiClient):
             query['Model'] = request.model
         if not DaraCore.is_null(request.ocr):
             query['Ocr'] = request.ocr
+        if not DaraCore.is_null(request.ocr_value_standard):
+            query['OcrValueStandard'] = request.ocr_value_standard
         if not DaraCore.is_null(request.pages):
             query['Pages'] = request.pages
         if not DaraCore.is_null(request.procedure_priority):
@@ -5196,6 +5198,8 @@ class Client(OpenApiClient):
             query['Model'] = request.model
         if not DaraCore.is_null(request.ocr):
             query['Ocr'] = request.ocr
+        if not DaraCore.is_null(request.ocr_value_standard):
+            query['OcrValueStandard'] = request.ocr_value_standard
         if not DaraCore.is_null(request.pages):
             query['Pages'] = request.pages
         if not DaraCore.is_null(request.procedure_priority):

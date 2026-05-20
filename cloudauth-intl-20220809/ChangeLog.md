@@ -1,3 +1,7 @@
+2026-05-20 Version: 3.19.1
+- Update API Initialize: add request parameters OcrValueStandard.
+
+
 2026-05-18 Version: 3.19.0
 - Support API FaceLivenessV2.
 - Support API FaceVerifyIntl.

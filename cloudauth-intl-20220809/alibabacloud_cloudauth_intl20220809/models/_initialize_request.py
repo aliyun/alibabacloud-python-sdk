@@ -44,6 +44,7 @@ class InitializeRequest(DaraModel):
         mobile: str = None,
         model: str = None,
         ocr: str = None,
+        ocr_value_standard: str = None,
         pages: str = None,
         procedure_priority: str = None,
         product_code: str = None,
@@ -187,6 +188,7 @@ class InitializeRequest(DaraModel):
         self.model = model
         # Whether to enable OCR. (IDV product input parameter)
         self.ocr = ocr
+        self.ocr_value_standard = ocr_value_standard
         # Page configuration for collection, multiple pages are connected using commas. Value range:
         # - **01**: Front side of the document
         # 
@@ -375,6 +377,9 @@ class InitializeRequest(DaraModel):
         if self.ocr is not None:
             result['Ocr'] = self.ocr
 
+        if self.ocr_value_standard is not None:
+            result['OcrValueStandard'] = self.ocr_value_standard
+
         if self.pages is not None:
             result['Pages'] = self.pages
 
@@ -543,6 +548,9 @@ class InitializeRequest(DaraModel):
 
         if m.get('Ocr') is not None:
             self.ocr = m.get('Ocr')
+
+        if m.get('OcrValueStandard') is not None:
+            self.ocr_value_standard = m.get('OcrValueStandard')
 
         if m.get('Pages') is not None:
             self.pages = m.get('Pages')
