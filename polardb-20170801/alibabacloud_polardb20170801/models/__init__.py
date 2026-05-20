@@ -736,6 +736,9 @@ from ._describe_sqlrate_limiting_rules_response import DescribeSQLRateLimitingRu
 from ._describe_schedule_tasks_request import DescribeScheduleTasksRequest
 from ._describe_schedule_tasks_response_body import DescribeScheduleTasksResponseBody
 from ._describe_schedule_tasks_response import DescribeScheduleTasksResponse
+from ._describe_shared_backups_request import DescribeSharedBackupsRequest
+from ._describe_shared_backups_response_body import DescribeSharedBackupsResponseBody
+from ._describe_shared_backups_response import DescribeSharedBackupsResponse
 from ._describe_slow_log_records_request import DescribeSlowLogRecordsRequest
 from ._describe_slow_log_records_response_body import DescribeSlowLogRecordsResponseBody
 from ._describe_slow_log_records_response import DescribeSlowLogRecordsResponse
@@ -1485,6 +1488,7 @@ from ._describe_resource_packages_response_body import DescribeResourcePackagesR
 from ._describe_sqlrate_limiting_rules_response_body import DescribeSQLRateLimitingRulesResponseBodyData
 from ._describe_schedule_tasks_response_body import DescribeScheduleTasksResponseBodyDataTimerInfos
 from ._describe_schedule_tasks_response_body import DescribeScheduleTasksResponseBodyData
+from ._describe_shared_backups_response_body import DescribeSharedBackupsResponseBodyItems
 from ._describe_slow_log_records_response_body import DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord
 from ._describe_slow_log_records_response_body import DescribeSlowLogRecordsResponseBodyItems
 from ._describe_slow_logs_response_body import DescribeSlowLogsResponseBodyItemsSQLSlowLog
@@ -2272,6 +2276,9 @@ __all__ = [
     DescribeScheduleTasksRequest,
     DescribeScheduleTasksResponseBody,
     DescribeScheduleTasksResponse,
+    DescribeSharedBackupsRequest,
+    DescribeSharedBackupsResponseBody,
+    DescribeSharedBackupsResponse,
     DescribeSlowLogRecordsRequest,
     DescribeSlowLogRecordsResponseBody,
     DescribeSlowLogRecordsResponse,
@@ -3021,6 +3028,7 @@ __all__ = [
     DescribeSQLRateLimitingRulesResponseBodyData,
     DescribeScheduleTasksResponseBodyDataTimerInfos,
     DescribeScheduleTasksResponseBodyData,
+    DescribeSharedBackupsResponseBodyItems,
     DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord,
     DescribeSlowLogRecordsResponseBodyItems,
     DescribeSlowLogsResponseBodyItemsSQLSlowLog,

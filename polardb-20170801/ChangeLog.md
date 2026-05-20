@@ -1,3 +1,7 @@
+2026-05-20 Version: 6.20.0
+- Support API DescribeSharedBackups.
+
+
 2026-05-19 Version: 6.19.1
 - Update API DescribeApplicationAttribute: add response parameters Body.CanDisableSnat.
 - Update API DescribeApplicationAttribute: add response parameters Body.NatGatewayId.

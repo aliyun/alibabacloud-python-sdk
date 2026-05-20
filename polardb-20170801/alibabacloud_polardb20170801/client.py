@@ -23201,6 +23201,120 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_schedule_tasks_with_options_async(request, runtime)
 
+    def describe_shared_backups_with_options(
+        self,
+        request: main_models.DescribeSharedBackupsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeSharedBackupsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.backup_id):
+            query['BackupId'] = request.backup_id
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.dbtype):
+            query['DBType'] = request.dbtype
+        if not DaraCore.is_null(request.dbversion):
+            query['DBVersion'] = request.dbversion
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.share_type):
+            query['ShareType'] = request.share_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeSharedBackups',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeSharedBackupsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_shared_backups_with_options_async(
+        self,
+        request: main_models.DescribeSharedBackupsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeSharedBackupsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.backup_id):
+            query['BackupId'] = request.backup_id
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.dbtype):
+            query['DBType'] = request.dbtype
+        if not DaraCore.is_null(request.dbversion):
+            query['DBVersion'] = request.dbversion
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.share_type):
+            query['ShareType'] = request.share_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeSharedBackups',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeSharedBackupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_shared_backups(
+        self,
+        request: main_models.DescribeSharedBackupsRequest,
+    ) -> main_models.DescribeSharedBackupsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_shared_backups_with_options(request, runtime)
+
+    async def describe_shared_backups_async(
+        self,
+        request: main_models.DescribeSharedBackupsRequest,
+    ) -> main_models.DescribeSharedBackupsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_shared_backups_with_options_async(request, runtime)
+
     def describe_slow_log_records_with_options(
         self,
         request: main_models.DescribeSlowLogRecordsRequest,
