@@ -1,3 +1,7 @@
+2026-05-20 Version: 1.9.0
+- Support API DeleteBudget.
+
+
 2026-05-19 Version: 1.8.0
 - Support API QueryCostByCostCenter.
 

@@ -1268,6 +1268,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_report_definition_with_options_async(request, runtime)
 
+    def delete_budget_with_options(
+        self,
+        request: main_models.DeleteBudgetRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteBudgetResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.nbid):
+            query['Nbid'] = request.nbid
+        body = {}
+        if not DaraCore.is_null(request.budget_name):
+            body['BudgetName'] = request.budget_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteBudget',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteBudgetResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_budget_with_options_async(
+        self,
+        request: main_models.DeleteBudgetRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteBudgetResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.nbid):
+            query['Nbid'] = request.nbid
+        body = {}
+        if not DaraCore.is_null(request.budget_name):
+            body['BudgetName'] = request.budget_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteBudget',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteBudgetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_budget(
+        self,
+        request: main_models.DeleteBudgetRequest,
+    ) -> main_models.DeleteBudgetResponse:
+        runtime = RuntimeOptions()
+        return self.delete_budget_with_options(request, runtime)
+
+    async def delete_budget_async(
+        self,
+        request: main_models.DeleteBudgetRequest,
+    ) -> main_models.DeleteBudgetResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_budget_with_options_async(request, runtime)
+
     def delete_cost_center_with_options(
         self,
         request: main_models.DeleteCostCenterRequest,
