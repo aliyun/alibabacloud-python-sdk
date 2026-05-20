@@ -7,6 +7,8 @@ from darabonba.model import DaraModel
 class ModelRouterQueryUsageBreakdownRequest(DaraModel):
     def __init__(
         self,
+        api_key_id: int = None,
+        client_id: int = None,
         end_time: int = None,
         granularity: str = None,
         max_results: int = None,
@@ -15,6 +17,8 @@ class ModelRouterQueryUsageBreakdownRequest(DaraModel):
         page_size: int = None,
         start_time: int = None,
     ):
+        self.api_key_id = api_key_id
+        self.client_id = client_id
         # This parameter is required.
         self.end_time = end_time
         # This parameter is required.
@@ -34,6 +38,12 @@ class ModelRouterQueryUsageBreakdownRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.api_key_id is not None:
+            result['apiKeyId'] = self.api_key_id
+
+        if self.client_id is not None:
+            result['clientId'] = self.client_id
+
         if self.end_time is not None:
             result['endTime'] = self.end_time
 
@@ -59,6 +69,12 @@ class ModelRouterQueryUsageBreakdownRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('apiKeyId') is not None:
+            self.api_key_id = m.get('apiKeyId')
+
+        if m.get('clientId') is not None:
+            self.client_id = m.get('clientId')
+
         if m.get('endTime') is not None:
             self.end_time = m.get('endTime')
 

@@ -1,3 +1,13 @@
+2026-05-20 Version: 7.3.3
+- Update API ModelRouterQueryBillingCostBreakdown: add request parameters apiKeyId.
+- Update API ModelRouterQueryCostModelDetail: add request parameters apiKeyId.
+- Update API ModelRouterQueryCostModelList: add request parameters apiKeyId.
+- Update API ModelRouterQueryCostOverviewMetrics: add request parameters apiKeyId.
+- Update API ModelRouterQueryCostTrendMetrics: add request parameters apiKeyId.
+- Update API ModelRouterQueryUsageBreakdown: add request parameters apiKeyId.
+- Update API ModelRouterQueryUsageBreakdown: add request parameters clientId.
+
+
 2026-05-13 Version: 7.3.2
 - Update API ModelRouterQueryBillingCostBreakdown: add request parameters clientId.
 - Update API ModelRouterQueryBillingCostBreakdown: add request parameters modelId.

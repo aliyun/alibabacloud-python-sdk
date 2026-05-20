@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class ModelRouterQueryCostModelListRequest(DaraModel):
     def __init__(
         self,
+        api_key_id: int = None,
         client_id: int = None,
         end_time: int = None,
         granularity: str = None,
@@ -16,6 +17,7 @@ class ModelRouterQueryCostModelListRequest(DaraModel):
         search: str = None,
         start_time: int = None,
     ):
+        self.api_key_id = api_key_id
         self.client_id = client_id
         # This parameter is required.
         self.end_time = end_time
@@ -36,6 +38,9 @@ class ModelRouterQueryCostModelListRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.api_key_id is not None:
+            result['apiKeyId'] = self.api_key_id
+
         if self.client_id is not None:
             result['clientId'] = self.client_id
 
@@ -64,6 +69,9 @@ class ModelRouterQueryCostModelListRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('apiKeyId') is not None:
+            self.api_key_id = m.get('apiKeyId')
+
         if m.get('clientId') is not None:
             self.client_id = m.get('clientId')
 

@@ -10,6 +10,8 @@ from darabonba.model import DaraModel
 class UsageBreakdownRowDTO(DaraModel):
     def __init__(
         self,
+        api_key_id: int = None,
+        api_key_name: str = None,
         client_id: int = None,
         client_name: str = None,
         metrics: List[main_models.MetricKVPairDTO] = None,
@@ -19,6 +21,8 @@ class UsageBreakdownRowDTO(DaraModel):
         model_type: str = None,
         summary_time: int = None,
     ):
+        self.api_key_id = api_key_id
+        self.api_key_name = api_key_name
         self.client_id = client_id
         self.client_name = client_name
         self.metrics = metrics
@@ -39,6 +43,12 @@ class UsageBreakdownRowDTO(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.api_key_id is not None:
+            result['apiKeyId'] = self.api_key_id
+
+        if self.api_key_name is not None:
+            result['apiKeyName'] = self.api_key_name
+
         if self.client_id is not None:
             result['clientId'] = self.client_id
 
@@ -69,6 +79,12 @@ class UsageBreakdownRowDTO(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('apiKeyId') is not None:
+            self.api_key_id = m.get('apiKeyId')
+
+        if m.get('apiKeyName') is not None:
+            self.api_key_name = m.get('apiKeyName')
+
         if m.get('clientId') is not None:
             self.client_id = m.get('clientId')
 

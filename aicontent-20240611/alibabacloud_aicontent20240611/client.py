@@ -5271,6 +5271,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModelRouterQueryBillingCostBreakdownResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.api_key_id):
+            query['apiKeyId'] = request.api_key_id
         if not DaraCore.is_null(request.client_id):
             query['clientId'] = request.client_id
         if not DaraCore.is_null(request.end_time):
@@ -5319,6 +5321,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModelRouterQueryBillingCostBreakdownResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.api_key_id):
+            query['apiKeyId'] = request.api_key_id
         if not DaraCore.is_null(request.client_id):
             query['clientId'] = request.client_id
         if not DaraCore.is_null(request.end_time):
@@ -5945,6 +5949,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModelRouterQueryCostModelDetailResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.api_key_id):
+            query['apiKeyId'] = request.api_key_id
         if not DaraCore.is_null(request.client_id):
             query['clientId'] = request.client_id
         if not DaraCore.is_null(request.end_time):
@@ -5991,6 +5997,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModelRouterQueryCostModelDetailResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.api_key_id):
+            query['apiKeyId'] = request.api_key_id
         if not DaraCore.is_null(request.client_id):
             query['clientId'] = request.client_id
         if not DaraCore.is_null(request.end_time):
@@ -6053,6 +6061,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModelRouterQueryCostModelListResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.api_key_id):
+            query['apiKeyId'] = request.api_key_id
         if not DaraCore.is_null(request.client_id):
             query['clientId'] = request.client_id
         if not DaraCore.is_null(request.end_time):
@@ -6097,6 +6107,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModelRouterQueryCostModelListResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.api_key_id):
+            query['apiKeyId'] = request.api_key_id
         if not DaraCore.is_null(request.client_id):
             query['clientId'] = request.client_id
         if not DaraCore.is_null(request.end_time):
@@ -6157,6 +6169,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModelRouterQueryCostOverviewMetricsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.api_key_id):
+            query['apiKeyId'] = request.api_key_id
         if not DaraCore.is_null(request.client_id):
             query['clientId'] = request.client_id
         if not DaraCore.is_null(request.end_time):
@@ -6199,6 +6213,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModelRouterQueryCostOverviewMetricsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.api_key_id):
+            query['apiKeyId'] = request.api_key_id
         if not DaraCore.is_null(request.client_id):
             query['clientId'] = request.client_id
         if not DaraCore.is_null(request.end_time):
@@ -6257,6 +6273,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModelRouterQueryCostTrendMetricsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.api_key_id):
+            query['apiKeyId'] = request.api_key_id
         if not DaraCore.is_null(request.client_id):
             query['clientId'] = request.client_id
         if not DaraCore.is_null(request.end_time):
@@ -6299,6 +6317,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModelRouterQueryCostTrendMetricsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.api_key_id):
+            query['apiKeyId'] = request.api_key_id
         if not DaraCore.is_null(request.client_id):
             query['clientId'] = request.client_id
         if not DaraCore.is_null(request.end_time):
@@ -7103,6 +7123,10 @@ class Client(OpenApiClient):
     ) -> main_models.ModelRouterQueryUsageBreakdownResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.api_key_id):
+            query['apiKeyId'] = request.api_key_id
+        if not DaraCore.is_null(request.client_id):
+            query['clientId'] = request.client_id
         if not DaraCore.is_null(request.end_time):
             query['endTime'] = request.end_time
         if not DaraCore.is_null(request.granularity):
@@ -7145,6 +7169,10 @@ class Client(OpenApiClient):
     ) -> main_models.ModelRouterQueryUsageBreakdownResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.api_key_id):
+            query['apiKeyId'] = request.api_key_id
+        if not DaraCore.is_null(request.client_id):
+            query['clientId'] = request.client_id
         if not DaraCore.is_null(request.end_time):
             query['endTime'] = request.end_time
         if not DaraCore.is_null(request.granularity):

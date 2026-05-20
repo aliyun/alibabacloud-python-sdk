@@ -10,6 +10,8 @@ from darabonba.model import DaraModel
 class BillingCostBreakdownRowDTO(DaraModel):
     def __init__(
         self,
+        api_key_id: int = None,
+        api_key_name: str = None,
         billing_type: str = None,
         client_id: int = None,
         client_name: str = None,
@@ -23,6 +25,8 @@ class BillingCostBreakdownRowDTO(DaraModel):
         tiers: List[main_models.BillingBillTierDTO] = None,
         values: str = None,
     ):
+        self.api_key_id = api_key_id
+        self.api_key_name = api_key_name
         self.billing_type = billing_type
         self.client_id = client_id
         self.client_name = client_name
@@ -47,6 +51,12 @@ class BillingCostBreakdownRowDTO(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.api_key_id is not None:
+            result['apiKeyId'] = self.api_key_id
+
+        if self.api_key_name is not None:
+            result['apiKeyName'] = self.api_key_name
+
         if self.billing_type is not None:
             result['billingType'] = self.billing_type
 
@@ -89,6 +99,12 @@ class BillingCostBreakdownRowDTO(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('apiKeyId') is not None:
+            self.api_key_id = m.get('apiKeyId')
+
+        if m.get('apiKeyName') is not None:
+            self.api_key_name = m.get('apiKeyName')
+
         if m.get('billingType') is not None:
             self.billing_type = m.get('billingType')
 
