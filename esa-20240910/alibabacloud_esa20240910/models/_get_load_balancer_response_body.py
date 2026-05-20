@@ -527,12 +527,14 @@ class GetLoadBalancerResponseBodyAdaptiveRouting(DaraModel):
     def __init__(
         self,
         failover_across_pools: bool = None,
+        origin_level_retry: bool = None,
     ):
         # Whether to fail over across pools.
         # 
         # - true: Yes.
         # - false: No.
         self.failover_across_pools = failover_across_pools
+        self.origin_level_retry = origin_level_retry
 
     def validate(self):
         pass
@@ -545,12 +547,18 @@ class GetLoadBalancerResponseBodyAdaptiveRouting(DaraModel):
         if self.failover_across_pools is not None:
             result['FailoverAcrossPools'] = self.failover_across_pools
 
+        if self.origin_level_retry is not None:
+            result['OriginLevelRetry'] = self.origin_level_retry
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('FailoverAcrossPools') is not None:
             self.failover_across_pools = m.get('FailoverAcrossPools')
+
+        if m.get('OriginLevelRetry') is not None:
+            self.origin_level_retry = m.get('OriginLevelRetry')
 
         return self
 

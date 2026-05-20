@@ -12475,6 +12475,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_site_top_data_with_options_async(request, runtime)
 
+    def describe_trace_diagnose_report_with_options(
+        self,
+        request: main_models.DescribeTraceDiagnoseReportRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeTraceDiagnoseReportResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.task_id):
+            query['TaskId'] = request.task_id
+        if not DaraCore.is_null(request.trace_id):
+            query['TraceId'] = request.trace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeTraceDiagnoseReport',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeTraceDiagnoseReportResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_trace_diagnose_report_with_options_async(
+        self,
+        request: main_models.DescribeTraceDiagnoseReportRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeTraceDiagnoseReportResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.task_id):
+            query['TaskId'] = request.task_id
+        if not DaraCore.is_null(request.trace_id):
+            query['TraceId'] = request.trace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeTraceDiagnoseReport',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeTraceDiagnoseReportResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_trace_diagnose_report(
+        self,
+        request: main_models.DescribeTraceDiagnoseReportRequest,
+    ) -> main_models.DescribeTraceDiagnoseReportResponse:
+        runtime = RuntimeOptions()
+        return self.describe_trace_diagnose_report_with_options(request, runtime)
+
+    async def describe_trace_diagnose_report_async(
+        self,
+        request: main_models.DescribeTraceDiagnoseReportRequest,
+    ) -> main_models.DescribeTraceDiagnoseReportResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_trace_diagnose_report_with_options_async(request, runtime)
+
     def describe_url_observation_data_with_options(
         self,
         request: main_models.DescribeUrlObservationDataRequest,
@@ -12860,6 +12934,76 @@ class Client(OpenApiClient):
     ) -> main_models.ExportRecordsResponse:
         runtime = RuntimeOptions()
         return await self.export_records_with_options_async(request, runtime)
+
+    def generate_trace_diagnose_with_options(
+        self,
+        request: main_models.GenerateTraceDiagnoseRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GenerateTraceDiagnoseResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.url):
+            query['Url'] = request.url
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GenerateTraceDiagnose',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GenerateTraceDiagnoseResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def generate_trace_diagnose_with_options_async(
+        self,
+        request: main_models.GenerateTraceDiagnoseRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GenerateTraceDiagnoseResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.url):
+            query['Url'] = request.url
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GenerateTraceDiagnose',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GenerateTraceDiagnoseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def generate_trace_diagnose(
+        self,
+        request: main_models.GenerateTraceDiagnoseRequest,
+    ) -> main_models.GenerateTraceDiagnoseResponse:
+        runtime = RuntimeOptions()
+        return self.generate_trace_diagnose_with_options(request, runtime)
+
+    async def generate_trace_diagnose_async(
+        self,
+        request: main_models.GenerateTraceDiagnoseRequest,
+    ) -> main_models.GenerateTraceDiagnoseResponse:
+        runtime = RuntimeOptions()
+        return await self.generate_trace_diagnose_with_options_async(request, runtime)
 
     def get_api_schema_usage_with_options(
         self,
@@ -22772,6 +22916,108 @@ class Client(OpenApiClient):
     ) -> main_models.ListTagResourcesResponse:
         runtime = RuntimeOptions()
         return await self.list_tag_resources_with_options_async(request, runtime)
+
+    def list_trace_tasks_with_options(
+        self,
+        request: main_models.ListTraceTasksRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListTraceTasksResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_ip):
+            query['ClientIp'] = request.client_ip
+        if not DaraCore.is_null(request.diagnose_id):
+            query['DiagnoseId'] = request.diagnose_id
+        if not DaraCore.is_null(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.task_id):
+            query['TaskId'] = request.task_id
+        if not DaraCore.is_null(request.trace_id):
+            query['TraceId'] = request.trace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListTraceTasks',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListTraceTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_trace_tasks_with_options_async(
+        self,
+        request: main_models.ListTraceTasksRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListTraceTasksResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_ip):
+            query['ClientIp'] = request.client_ip
+        if not DaraCore.is_null(request.diagnose_id):
+            query['DiagnoseId'] = request.diagnose_id
+        if not DaraCore.is_null(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.task_id):
+            query['TaskId'] = request.task_id
+        if not DaraCore.is_null(request.trace_id):
+            query['TraceId'] = request.trace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListTraceTasks',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListTraceTasksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_trace_tasks(
+        self,
+        request: main_models.ListTraceTasksRequest,
+    ) -> main_models.ListTraceTasksResponse:
+        runtime = RuntimeOptions()
+        return self.list_trace_tasks_with_options(request, runtime)
+
+    async def list_trace_tasks_async(
+        self,
+        request: main_models.ListTraceTasksRequest,
+    ) -> main_models.ListTraceTasksResponse:
+        runtime = RuntimeOptions()
+        return await self.list_trace_tasks_with_options_async(request, runtime)
 
     def list_transport_layer_applications_with_options(
         self,

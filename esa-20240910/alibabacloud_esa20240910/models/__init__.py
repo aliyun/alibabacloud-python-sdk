@@ -467,6 +467,9 @@ from ._describe_site_top_data_request import DescribeSiteTopDataRequest
 from ._describe_site_top_data_shrink_request import DescribeSiteTopDataShrinkRequest
 from ._describe_site_top_data_response_body import DescribeSiteTopDataResponseBody
 from ._describe_site_top_data_response import DescribeSiteTopDataResponse
+from ._describe_trace_diagnose_report_request import DescribeTraceDiagnoseReportRequest
+from ._describe_trace_diagnose_report_response_body import DescribeTraceDiagnoseReportResponseBody
+from ._describe_trace_diagnose_report_response import DescribeTraceDiagnoseReportResponse
 from ._describe_url_observation_data_request import DescribeUrlObservationDataRequest
 from ._describe_url_observation_data_response_body import DescribeUrlObservationDataResponseBody
 from ._describe_url_observation_data_response import DescribeUrlObservationDataResponse
@@ -483,6 +486,9 @@ from ._enable_custom_scene_policy_response import EnableCustomScenePolicyRespons
 from ._export_records_request import ExportRecordsRequest
 from ._export_records_response_body import ExportRecordsResponseBody
 from ._export_records_response import ExportRecordsResponse
+from ._generate_trace_diagnose_request import GenerateTraceDiagnoseRequest
+from ._generate_trace_diagnose_response_body import GenerateTraceDiagnoseResponseBody
+from ._generate_trace_diagnose_response import GenerateTraceDiagnoseResponse
 from ._get_api_schema_usage_request import GetApiSchemaUsageRequest
 from ._get_api_schema_usage_response_body import GetApiSchemaUsageResponseBody
 from ._get_api_schema_usage_response import GetApiSchemaUsageResponse
@@ -911,6 +917,9 @@ from ._list_sites_response import ListSitesResponse
 from ._list_tag_resources_request import ListTagResourcesRequest
 from ._list_tag_resources_response_body import ListTagResourcesResponseBody
 from ._list_tag_resources_response import ListTagResourcesResponse
+from ._list_trace_tasks_request import ListTraceTasksRequest
+from ._list_trace_tasks_response_body import ListTraceTasksResponseBody
+from ._list_trace_tasks_response import ListTraceTasksResponse
 from ._list_transport_layer_applications_request import ListTransportLayerApplicationsRequest
 from ._list_transport_layer_applications_response_body import ListTransportLayerApplicationsResponseBody
 from ._list_transport_layer_applications_response import ListTransportLayerApplicationsResponse
@@ -1384,6 +1393,8 @@ from ._describe_site_time_series_data_response_body import DescribeSiteTimeSerie
 from ._describe_site_top_data_request import DescribeSiteTopDataRequestFields
 from ._describe_site_top_data_response_body import DescribeSiteTopDataResponseBodyDataDetailData
 from ._describe_site_top_data_response_body import DescribeSiteTopDataResponseBodyData
+from ._describe_trace_diagnose_report_response_body import DescribeTraceDiagnoseReportResponseBodyClientInfo
+from ._describe_trace_diagnose_report_response_body import DescribeTraceDiagnoseReportResponseBodyReport
 from ._describe_url_observation_data_response_body import DescribeUrlObservationDataResponseBodyUrlDetailData
 from ._get_api_schema_usage_response_body import GetApiSchemaUsageResponseBodyUsages
 from ._get_certificate_response_body import GetCertificateResponseBodyResultDCV
@@ -1553,6 +1564,7 @@ from ._list_sites_request import ListSitesRequestTagFilter
 from ._list_sites_response_body import ListSitesResponseBodySites
 from ._list_tag_resources_request import ListTagResourcesRequestTag
 from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResources
+from ._list_trace_tasks_response_body import ListTraceTasksResponseBodyList
 from ._list_transport_layer_applications_response_body import ListTransportLayerApplicationsResponseBodyApplicationsRules
 from ._list_transport_layer_applications_response_body import ListTransportLayerApplicationsResponseBodyApplicationsStaticIpV4List
 from ._list_transport_layer_applications_response_body import ListTransportLayerApplicationsResponseBodyApplications
@@ -2069,6 +2081,9 @@ __all__ = [
     DescribeSiteTopDataShrinkRequest,
     DescribeSiteTopDataResponseBody,
     DescribeSiteTopDataResponse,
+    DescribeTraceDiagnoseReportRequest,
+    DescribeTraceDiagnoseReportResponseBody,
+    DescribeTraceDiagnoseReportResponse,
     DescribeUrlObservationDataRequest,
     DescribeUrlObservationDataResponseBody,
     DescribeUrlObservationDataResponse,
@@ -2085,6 +2100,9 @@ __all__ = [
     ExportRecordsRequest,
     ExportRecordsResponseBody,
     ExportRecordsResponse,
+    GenerateTraceDiagnoseRequest,
+    GenerateTraceDiagnoseResponseBody,
+    GenerateTraceDiagnoseResponse,
     GetApiSchemaUsageRequest,
     GetApiSchemaUsageResponseBody,
     GetApiSchemaUsageResponse,
@@ -2513,6 +2531,9 @@ __all__ = [
     ListTagResourcesRequest,
     ListTagResourcesResponseBody,
     ListTagResourcesResponse,
+    ListTraceTasksRequest,
+    ListTraceTasksResponseBody,
+    ListTraceTasksResponse,
     ListTransportLayerApplicationsRequest,
     ListTransportLayerApplicationsResponseBody,
     ListTransportLayerApplicationsResponse,
@@ -2986,6 +3007,8 @@ __all__ = [
     DescribeSiteTopDataRequestFields,
     DescribeSiteTopDataResponseBodyDataDetailData,
     DescribeSiteTopDataResponseBodyData,
+    DescribeTraceDiagnoseReportResponseBodyClientInfo,
+    DescribeTraceDiagnoseReportResponseBodyReport,
     DescribeUrlObservationDataResponseBodyUrlDetailData,
     GetApiSchemaUsageResponseBodyUsages,
     GetCertificateResponseBodyResultDCV,
@@ -3155,6 +3178,7 @@ __all__ = [
     ListSitesResponseBodySites,
     ListTagResourcesRequestTag,
     ListTagResourcesResponseBodyTagResources,
+    ListTraceTasksResponseBodyList,
     ListTransportLayerApplicationsResponseBodyApplicationsRules,
     ListTransportLayerApplicationsResponseBodyApplicationsStaticIpV4List,
     ListTransportLayerApplicationsResponseBodyApplications,
