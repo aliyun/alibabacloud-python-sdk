@@ -4071,6 +4071,8 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.RetrieveShrinkRequest()
         Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.extra):
+            request.extra_shrink = Utils.array_to_string_with_specified_style(tmp_req.extra, 'Extra', 'json')
         if not DaraCore.is_null(tmp_req.images):
             request.images_shrink = Utils.array_to_string_with_specified_style(tmp_req.images, 'Images', 'simple')
         if not DaraCore.is_null(tmp_req.query_history):
@@ -4088,6 +4090,8 @@ class Client(OpenApiClient):
             query['EnableReranking'] = request.enable_reranking
         if not DaraCore.is_null(request.enable_rewrite):
             query['EnableRewrite'] = request.enable_rewrite
+        if not DaraCore.is_null(request.extra_shrink):
+            query['Extra'] = request.extra_shrink
         if not DaraCore.is_null(request.images_shrink):
             query['Images'] = request.images_shrink
         if not DaraCore.is_null(request.index_id):
@@ -4140,6 +4144,8 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.RetrieveShrinkRequest()
         Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.extra):
+            request.extra_shrink = Utils.array_to_string_with_specified_style(tmp_req.extra, 'Extra', 'json')
         if not DaraCore.is_null(tmp_req.images):
             request.images_shrink = Utils.array_to_string_with_specified_style(tmp_req.images, 'Images', 'simple')
         if not DaraCore.is_null(tmp_req.query_history):
@@ -4157,6 +4163,8 @@ class Client(OpenApiClient):
             query['EnableReranking'] = request.enable_reranking
         if not DaraCore.is_null(request.enable_rewrite):
             query['EnableRewrite'] = request.enable_rewrite
+        if not DaraCore.is_null(request.extra_shrink):
+            query['Extra'] = request.extra_shrink
         if not DaraCore.is_null(request.images_shrink):
             query['Images'] = request.images_shrink
         if not DaraCore.is_null(request.index_id):
@@ -4231,6 +4239,8 @@ class Client(OpenApiClient):
             request.category_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.category_ids, 'CategoryIds', 'json')
         if not DaraCore.is_null(tmp_req.document_ids):
             request.document_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.document_ids, 'DocumentIds', 'json')
+        if not DaraCore.is_null(tmp_req.extra):
+            request.extra_shrink = Utils.array_to_string_with_specified_style(tmp_req.extra, 'Extra', 'json')
         query = {}
         if not DaraCore.is_null(request.category_ids_shrink):
             query['CategoryIds'] = request.category_ids_shrink
@@ -4242,6 +4252,8 @@ class Client(OpenApiClient):
             query['DocumentIds'] = request.document_ids_shrink
         if not DaraCore.is_null(request.enable_headers):
             query['EnableHeaders'] = request.enable_headers
+        if not DaraCore.is_null(request.extra_shrink):
+            query['Extra'] = request.extra_shrink
         if not DaraCore.is_null(request.index_id):
             query['IndexId'] = request.index_id
         if not DaraCore.is_null(request.overlap_size):
@@ -4284,6 +4296,8 @@ class Client(OpenApiClient):
             request.category_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.category_ids, 'CategoryIds', 'json')
         if not DaraCore.is_null(tmp_req.document_ids):
             request.document_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.document_ids, 'DocumentIds', 'json')
+        if not DaraCore.is_null(tmp_req.extra):
+            request.extra_shrink = Utils.array_to_string_with_specified_style(tmp_req.extra, 'Extra', 'json')
         query = {}
         if not DaraCore.is_null(request.category_ids_shrink):
             query['CategoryIds'] = request.category_ids_shrink
@@ -4295,6 +4309,8 @@ class Client(OpenApiClient):
             query['DocumentIds'] = request.document_ids_shrink
         if not DaraCore.is_null(request.enable_headers):
             query['EnableHeaders'] = request.enable_headers
+        if not DaraCore.is_null(request.extra_shrink):
+            query['Extra'] = request.extra_shrink
         if not DaraCore.is_null(request.index_id):
             query['IndexId'] = request.index_id
         if not DaraCore.is_null(request.overlap_size):

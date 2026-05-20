@@ -10,6 +10,7 @@ class RetrieveShrinkRequest(DaraModel):
         dense_similarity_top_k: int = None,
         enable_reranking: bool = None,
         enable_rewrite: bool = None,
+        extra_shrink: str = None,
         images_shrink: str = None,
         index_id: str = None,
         query: str = None,
@@ -40,6 +41,7 @@ class RetrieveShrinkRequest(DaraModel):
         # 
         # Default value: false.
         self.enable_rewrite = enable_rewrite
+        self.extra_shrink = extra_shrink
         self.images_shrink = images_shrink
         # The primary key ID of the knowledge base, which is the `Data.Id` parameter returned by the [CreateIndex](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation.
         # 
@@ -89,6 +91,9 @@ class RetrieveShrinkRequest(DaraModel):
         if self.enable_rewrite is not None:
             result['EnableRewrite'] = self.enable_rewrite
 
+        if self.extra_shrink is not None:
+            result['Extra'] = self.extra_shrink
+
         if self.images_shrink is not None:
             result['Images'] = self.images_shrink
 
@@ -134,6 +139,9 @@ class RetrieveShrinkRequest(DaraModel):
 
         if m.get('EnableRewrite') is not None:
             self.enable_rewrite = m.get('EnableRewrite')
+
+        if m.get('Extra') is not None:
+            self.extra_shrink = m.get('Extra')
 
         if m.get('Images') is not None:
             self.images_shrink = m.get('Images')

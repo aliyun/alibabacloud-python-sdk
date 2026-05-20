@@ -12,6 +12,7 @@ class SubmitIndexAddDocumentsJobShrinkRequest(DaraModel):
         chunk_size: int = None,
         document_ids_shrink: str = None,
         enable_headers: bool = None,
+        extra_shrink: str = None,
         index_id: str = None,
         overlap_size: int = None,
         separator: str = None,
@@ -24,6 +25,7 @@ class SubmitIndexAddDocumentsJobShrinkRequest(DaraModel):
         # The list of the primary key IDs of the documents.
         self.document_ids_shrink = document_ids_shrink
         self.enable_headers = enable_headers
+        self.extra_shrink = extra_shrink
         # The primary key ID of the knowledge base, which is the `Data.Id` parameter returned by the [CreateIndex](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation.
         # 
         # This parameter is required.
@@ -63,6 +65,9 @@ class SubmitIndexAddDocumentsJobShrinkRequest(DaraModel):
         if self.enable_headers is not None:
             result['EnableHeaders'] = self.enable_headers
 
+        if self.extra_shrink is not None:
+            result['Extra'] = self.extra_shrink
+
         if self.index_id is not None:
             result['IndexId'] = self.index_id
 
@@ -93,6 +98,9 @@ class SubmitIndexAddDocumentsJobShrinkRequest(DaraModel):
 
         if m.get('EnableHeaders') is not None:
             self.enable_headers = m.get('EnableHeaders')
+
+        if m.get('Extra') is not None:
+            self.extra_shrink = m.get('Extra')
 
         if m.get('IndexId') is not None:
             self.index_id = m.get('IndexId')

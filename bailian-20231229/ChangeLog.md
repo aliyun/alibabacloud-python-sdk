@@ -1,3 +1,8 @@
+2026-05-20 Version: 2.10.1
+- Update API Retrieve: add request parameters Extra.
+- Update API SubmitIndexAddDocumentsJob: add request parameters Extra.
+
+
 2026-05-15 Version: 2.10.0
 - Support API BatchUpdateFileTag.
 - Update API AddFile: add request parameters ParserConfig.

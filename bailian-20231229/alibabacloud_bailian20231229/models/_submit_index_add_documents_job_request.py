@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import List
 
+from alibabacloud_bailian20231229 import models as main_models
 from darabonba.model import DaraModel
 
 class SubmitIndexAddDocumentsJobRequest(DaraModel):
@@ -14,6 +15,7 @@ class SubmitIndexAddDocumentsJobRequest(DaraModel):
         chunk_size: int = None,
         document_ids: List[str] = None,
         enable_headers: bool = None,
+        extra: main_models.SubmitIndexAddDocumentsJobRequestExtra = None,
         index_id: str = None,
         overlap_size: int = None,
         separator: str = None,
@@ -26,6 +28,7 @@ class SubmitIndexAddDocumentsJobRequest(DaraModel):
         # The list of the primary key IDs of the documents.
         self.document_ids = document_ids
         self.enable_headers = enable_headers
+        self.extra = extra
         # The primary key ID of the knowledge base, which is the `Data.Id` parameter returned by the [CreateIndex](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation.
         # 
         # This parameter is required.
@@ -43,7 +46,8 @@ class SubmitIndexAddDocumentsJobRequest(DaraModel):
         self.source_type = source_type
 
     def validate(self):
-        pass
+        if self.extra:
+            self.extra.validate()
 
     def to_map(self):
         result = dict()
@@ -64,6 +68,9 @@ class SubmitIndexAddDocumentsJobRequest(DaraModel):
 
         if self.enable_headers is not None:
             result['EnableHeaders'] = self.enable_headers
+
+        if self.extra is not None:
+            result['Extra'] = self.extra.to_map()
 
         if self.index_id is not None:
             result['IndexId'] = self.index_id
@@ -96,6 +103,10 @@ class SubmitIndexAddDocumentsJobRequest(DaraModel):
         if m.get('EnableHeaders') is not None:
             self.enable_headers = m.get('EnableHeaders')
 
+        if m.get('Extra') is not None:
+            temp_model = main_models.SubmitIndexAddDocumentsJobRequestExtra()
+            self.extra = temp_model.from_map(m.get('Extra'))
+
         if m.get('IndexId') is not None:
             self.index_id = m.get('IndexId')
 
@@ -107,6 +118,33 @@ class SubmitIndexAddDocumentsJobRequest(DaraModel):
 
         if m.get('SourceType') is not None:
             self.source_type = m.get('SourceType')
+
+        return self
+
+class SubmitIndexAddDocumentsJobRequestExtra(DaraModel):
+    def __init__(
+        self,
+        unique_id: str = None,
+    ):
+        self.unique_id = unique_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.unique_id is not None:
+            result['uniqueId'] = self.unique_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('uniqueId') is not None:
+            self.unique_id = m.get('uniqueId')
 
         return self
 

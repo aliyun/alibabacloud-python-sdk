@@ -13,6 +13,7 @@ class RetrieveRequest(DaraModel):
         dense_similarity_top_k: int = None,
         enable_reranking: bool = None,
         enable_rewrite: bool = None,
+        extra: main_models.RetrieveRequestExtra = None,
         images: List[str] = None,
         index_id: str = None,
         query: str = None,
@@ -43,6 +44,7 @@ class RetrieveRequest(DaraModel):
         # 
         # Default value: false.
         self.enable_rewrite = enable_rewrite
+        self.extra = extra
         self.images = images
         # The primary key ID of the knowledge base, which is the `Data.Id` parameter returned by the [CreateIndex](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation.
         # 
@@ -76,6 +78,8 @@ class RetrieveRequest(DaraModel):
         self.sparse_similarity_top_k = sparse_similarity_top_k
 
     def validate(self):
+        if self.extra:
+            self.extra.validate()
         if self.query_history:
             for v1 in self.query_history:
                  if v1:
@@ -102,6 +106,9 @@ class RetrieveRequest(DaraModel):
 
         if self.enable_rewrite is not None:
             result['EnableRewrite'] = self.enable_rewrite
+
+        if self.extra is not None:
+            result['Extra'] = self.extra.to_map()
 
         if self.images is not None:
             result['Images'] = self.images
@@ -154,6 +161,10 @@ class RetrieveRequest(DaraModel):
 
         if m.get('EnableRewrite') is not None:
             self.enable_rewrite = m.get('EnableRewrite')
+
+        if m.get('Extra') is not None:
+            temp_model = main_models.RetrieveRequestExtra()
+            self.extra = temp_model.from_map(m.get('Extra'))
 
         if m.get('Images') is not None:
             self.images = m.get('Images')
@@ -310,6 +321,33 @@ class RetrieveRequestQueryHistory(DaraModel):
 
         if m.get('role') is not None:
             self.role = m.get('role')
+
+        return self
+
+class RetrieveRequestExtra(DaraModel):
+    def __init__(
+        self,
+        unique_id: str = None,
+    ):
+        self.unique_id = unique_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.unique_id is not None:
+            result['uniqueId'] = self.unique_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('uniqueId') is not None:
+            self.unique_id = m.get('uniqueId')
 
         return self
 

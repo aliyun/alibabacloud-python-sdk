@@ -259,11 +259,13 @@ from ._list_published_agent_response_body import ListPublishedAgentResponseBodyD
 from ._list_published_agent_response_body import ListPublishedAgentResponseBodyDataListApplicationConfig
 from ._list_published_agent_response_body import ListPublishedAgentResponseBodyDataList
 from ._list_published_agent_response_body import ListPublishedAgentResponseBodyData
+from ._retrieve_request import RetrieveRequestExtra
 from ._retrieve_request import RetrieveRequestQueryHistory
 from ._retrieve_request import RetrieveRequestRerank
 from ._retrieve_request import RetrieveRequestRewrite
 from ._retrieve_response_body import RetrieveResponseBodyDataNodes
 from ._retrieve_response_body import RetrieveResponseBodyData
+from ._submit_index_add_documents_job_request import SubmitIndexAddDocumentsJobRequestExtra
 from ._submit_index_add_documents_job_response_body import SubmitIndexAddDocumentsJobResponseBodyData
 from ._submit_index_job_response_body import SubmitIndexJobResponseBodyData
 from ._update_and_publish_agent_request import UpdateAndPublishAgentRequestApplicationConfigHistoryConfig
@@ -546,11 +548,13 @@ __all__ = [
     ListPublishedAgentResponseBodyDataListApplicationConfig,
     ListPublishedAgentResponseBodyDataList,
     ListPublishedAgentResponseBodyData,
+    RetrieveRequestExtra,
     RetrieveRequestQueryHistory,
     RetrieveRequestRerank,
     RetrieveRequestRewrite,
     RetrieveResponseBodyDataNodes,
     RetrieveResponseBodyData,
+    SubmitIndexAddDocumentsJobRequestExtra,
     SubmitIndexAddDocumentsJobResponseBodyData,
     SubmitIndexJobResponseBodyData,
     UpdateAndPublishAgentRequestApplicationConfigHistoryConfig,
