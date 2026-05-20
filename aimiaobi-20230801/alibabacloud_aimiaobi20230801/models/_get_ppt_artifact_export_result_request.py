@@ -8,9 +8,11 @@ class GetPptArtifactExportResultRequest(DaraModel):
     def __init__(
         self,
         export_task_id: str = None,
+        external_user_id: str = None,
         workspace_id: str = None,
     ):
         self.export_task_id = export_task_id
+        self.external_user_id = external_user_id
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -24,6 +26,9 @@ class GetPptArtifactExportResultRequest(DaraModel):
         if self.export_task_id is not None:
             result['ExportTaskId'] = self.export_task_id
 
+        if self.external_user_id is not None:
+            result['ExternalUserId'] = self.external_user_id
+
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
 
@@ -33,6 +38,9 @@ class GetPptArtifactExportResultRequest(DaraModel):
         m = m or dict()
         if m.get('ExportTaskId') is not None:
             self.export_task_id = m.get('ExportTaskId')
+
+        if m.get('ExternalUserId') is not None:
+            self.external_user_id = m.get('ExternalUserId')
 
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')

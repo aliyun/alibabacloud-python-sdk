@@ -1,3 +1,9 @@
+2026-05-20 Version: 1.44.3
+- Update API ExportPptArtifact: add request parameters ExternalUserId.
+- Update API GetPptArtifactExportResult: add request parameters ExternalUserId.
+- Update API GetPptInfo: add request parameters ExternalUserId.
+
+
 2026-05-19 Version: 1.44.2
 - Update API GetPptInfo: add response parameters Body.Data.PptArtifactCover.
 

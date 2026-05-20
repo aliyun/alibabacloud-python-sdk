@@ -7,9 +7,11 @@ from darabonba.model import DaraModel
 class GetPptInfoRequest(DaraModel):
     def __init__(
         self,
+        external_user_id: str = None,
         task_id: str = None,
         workspace_id: str = None,
     ):
+        self.external_user_id = external_user_id
         self.task_id = task_id
         self.workspace_id = workspace_id
 
@@ -21,6 +23,9 @@ class GetPptInfoRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.external_user_id is not None:
+            result['ExternalUserId'] = self.external_user_id
+
         if self.task_id is not None:
             result['TaskId'] = self.task_id
 
@@ -31,6 +36,9 @@ class GetPptInfoRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ExternalUserId') is not None:
+            self.external_user_id = m.get('ExternalUserId')
+
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')
 

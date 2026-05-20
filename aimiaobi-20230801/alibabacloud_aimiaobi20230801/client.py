@@ -4005,6 +4005,8 @@ class Client(OpenApiClient):
             body['Edit'] = request.edit
         if not DaraCore.is_null(request.export_file_type):
             body['ExportFileType'] = request.export_file_type
+        if not DaraCore.is_null(request.external_user_id):
+            body['ExternalUserId'] = request.external_user_id
         if not DaraCore.is_null(request.ppt_artifact_id):
             body['PptArtifactId'] = request.ppt_artifact_id
         if not DaraCore.is_null(request.workspace_id):
@@ -4041,6 +4043,8 @@ class Client(OpenApiClient):
             body['Edit'] = request.edit
         if not DaraCore.is_null(request.export_file_type):
             body['ExportFileType'] = request.export_file_type
+        if not DaraCore.is_null(request.external_user_id):
+            body['ExternalUserId'] = request.external_user_id
         if not DaraCore.is_null(request.ppt_artifact_id):
             body['PptArtifactId'] = request.ppt_artifact_id
         if not DaraCore.is_null(request.workspace_id):
@@ -7371,6 +7375,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.export_task_id):
             body['ExportTaskId'] = request.export_task_id
+        if not DaraCore.is_null(request.external_user_id):
+            body['ExternalUserId'] = request.external_user_id
         if not DaraCore.is_null(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
@@ -7401,6 +7407,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.export_task_id):
             body['ExportTaskId'] = request.export_task_id
+        if not DaraCore.is_null(request.external_user_id):
+            body['ExternalUserId'] = request.external_user_id
         if not DaraCore.is_null(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
@@ -7517,6 +7525,8 @@ class Client(OpenApiClient):
     ) -> main_models.GetPptInfoResponse:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.external_user_id):
+            body['ExternalUserId'] = request.external_user_id
         if not DaraCore.is_null(request.task_id):
             body['TaskId'] = request.task_id
         if not DaraCore.is_null(request.workspace_id):
@@ -7547,6 +7557,8 @@ class Client(OpenApiClient):
     ) -> main_models.GetPptInfoResponse:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.external_user_id):
+            body['ExternalUserId'] = request.external_user_id
         if not DaraCore.is_null(request.task_id):
             body['TaskId'] = request.task_id
         if not DaraCore.is_null(request.workspace_id):

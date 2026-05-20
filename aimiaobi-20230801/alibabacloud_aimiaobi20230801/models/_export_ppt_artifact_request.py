@@ -9,12 +9,14 @@ class ExportPptArtifactRequest(DaraModel):
         self,
         edit: bool = None,
         export_file_type: str = None,
+        external_user_id: str = None,
         ppt_artifact_id: int = None,
         workspace_id: str = None,
         zip: bool = None,
     ):
         self.edit = edit
         self.export_file_type = export_file_type
+        self.external_user_id = external_user_id
         # This parameter is required.
         self.ppt_artifact_id = ppt_artifact_id
         self.workspace_id = workspace_id
@@ -34,6 +36,9 @@ class ExportPptArtifactRequest(DaraModel):
         if self.export_file_type is not None:
             result['ExportFileType'] = self.export_file_type
 
+        if self.external_user_id is not None:
+            result['ExternalUserId'] = self.external_user_id
+
         if self.ppt_artifact_id is not None:
             result['PptArtifactId'] = self.ppt_artifact_id
 
@@ -52,6 +57,9 @@ class ExportPptArtifactRequest(DaraModel):
 
         if m.get('ExportFileType') is not None:
             self.export_file_type = m.get('ExportFileType')
+
+        if m.get('ExternalUserId') is not None:
+            self.external_user_id = m.get('ExternalUserId')
 
         if m.get('PptArtifactId') is not None:
             self.ppt_artifact_id = m.get('PptArtifactId')
