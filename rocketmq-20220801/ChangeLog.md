@@ -1,3 +1,8 @@
+2026-05-20 Version: 5.0.8
+- Update API GetInstance: add response parameters Body.data.autoRenew.
+- Update API GetInstance: add response parameters Body.data.autoRenewPeriod.
+
+
 2026-05-15 Version: 5.0.7
 - Update API CreateConsumerGroup: add request parameters body.exclusive.
 - Update API GetConsumerGroup: add response parameters Body.data.exclusive.

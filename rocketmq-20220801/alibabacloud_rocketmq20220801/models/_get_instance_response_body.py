@@ -105,6 +105,8 @@ class GetInstanceResponseBodyData(DaraModel):
         self,
         account_info: main_models.GetInstanceResponseBodyDataAccountInfo = None,
         acl_info: main_models.GetInstanceResponseBodyDataAclInfo = None,
+        auto_renew: bool = None,
+        auto_renew_period: int = None,
         bid: str = None,
         commodity_code: str = None,
         create_time: str = None,
@@ -136,6 +138,8 @@ class GetInstanceResponseBodyData(DaraModel):
         self.account_info = account_info
         # The information about access control.
         self.acl_info = acl_info
+        self.auto_renew = auto_renew
+        self.auto_renew_period = auto_renew_period
         # The business ID (BID) of the commodity.
         self.bid = bid
         # The commodity code of the instance. The commodity code of a ApsaraMQ for RocketMQ 5.0 instance has a similar format as ons_rmqsub_public_cn.
@@ -246,6 +250,12 @@ class GetInstanceResponseBodyData(DaraModel):
         if self.acl_info is not None:
             result['aclInfo'] = self.acl_info.to_map()
 
+        if self.auto_renew is not None:
+            result['autoRenew'] = self.auto_renew
+
+        if self.auto_renew_period is not None:
+            result['autoRenewPeriod'] = self.auto_renew_period
+
         if self.bid is not None:
             result['bid'] = self.bid
 
@@ -339,6 +349,12 @@ class GetInstanceResponseBodyData(DaraModel):
         if m.get('aclInfo') is not None:
             temp_model = main_models.GetInstanceResponseBodyDataAclInfo()
             self.acl_info = temp_model.from_map(m.get('aclInfo'))
+
+        if m.get('autoRenew') is not None:
+            self.auto_renew = m.get('autoRenew')
+
+        if m.get('autoRenewPeriod') is not None:
+            self.auto_renew_period = m.get('autoRenewPeriod')
 
         if m.get('bid') is not None:
             self.bid = m.get('bid')
