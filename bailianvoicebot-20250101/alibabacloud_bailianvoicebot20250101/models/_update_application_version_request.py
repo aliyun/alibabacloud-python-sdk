@@ -111,11 +111,111 @@ class UpdateApplicationVersionRequest(DaraModel):
 class UpdateApplicationVersionRequestTranscriberConfig(DaraModel):
     def __init__(
         self,
+        correction_rules: List[main_models.UpdateApplicationVersionRequestTranscriberConfigCorrectionRules] = None,
+        customization_id: str = None,
+        end_silence_timeout: int = None,
+        model: str = None,
+        nls_access_profile: main_models.UpdateApplicationVersionRequestTranscriberConfigNlsAccessProfile = None,
         nls_access_type: str = None,
         nls_engine: str = None,
+        speech_noise_threshold: int = None,
+        vocabulary_id: str = None,
     ):
+        self.correction_rules = correction_rules
+        self.customization_id = customization_id
+        self.end_silence_timeout = end_silence_timeout
+        self.model = model
+        self.nls_access_profile = nls_access_profile
         self.nls_access_type = nls_access_type
         self.nls_engine = nls_engine
+        self.speech_noise_threshold = speech_noise_threshold
+        self.vocabulary_id = vocabulary_id
+
+    def validate(self):
+        if self.correction_rules:
+            for v1 in self.correction_rules:
+                 if v1:
+                    v1.validate()
+        if self.nls_access_profile:
+            self.nls_access_profile.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        result['CorrectionRules'] = []
+        if self.correction_rules is not None:
+            for k1 in self.correction_rules:
+                result['CorrectionRules'].append(k1.to_map() if k1 else None)
+
+        if self.customization_id is not None:
+            result['CustomizationId'] = self.customization_id
+
+        if self.end_silence_timeout is not None:
+            result['EndSilenceTimeout'] = self.end_silence_timeout
+
+        if self.model is not None:
+            result['Model'] = self.model
+
+        if self.nls_access_profile is not None:
+            result['NlsAccessProfile'] = self.nls_access_profile.to_map()
+
+        if self.nls_access_type is not None:
+            result['NlsAccessType'] = self.nls_access_type
+
+        if self.nls_engine is not None:
+            result['NlsEngine'] = self.nls_engine
+
+        if self.speech_noise_threshold is not None:
+            result['SpeechNoiseThreshold'] = self.speech_noise_threshold
+
+        if self.vocabulary_id is not None:
+            result['VocabularyId'] = self.vocabulary_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.correction_rules = []
+        if m.get('CorrectionRules') is not None:
+            for k1 in m.get('CorrectionRules'):
+                temp_model = main_models.UpdateApplicationVersionRequestTranscriberConfigCorrectionRules()
+                self.correction_rules.append(temp_model.from_map(k1))
+
+        if m.get('CustomizationId') is not None:
+            self.customization_id = m.get('CustomizationId')
+
+        if m.get('EndSilenceTimeout') is not None:
+            self.end_silence_timeout = m.get('EndSilenceTimeout')
+
+        if m.get('Model') is not None:
+            self.model = m.get('Model')
+
+        if m.get('NlsAccessProfile') is not None:
+            temp_model = main_models.UpdateApplicationVersionRequestTranscriberConfigNlsAccessProfile()
+            self.nls_access_profile = temp_model.from_map(m.get('NlsAccessProfile'))
+
+        if m.get('NlsAccessType') is not None:
+            self.nls_access_type = m.get('NlsAccessType')
+
+        if m.get('NlsEngine') is not None:
+            self.nls_engine = m.get('NlsEngine')
+
+        if m.get('SpeechNoiseThreshold') is not None:
+            self.speech_noise_threshold = m.get('SpeechNoiseThreshold')
+
+        if m.get('VocabularyId') is not None:
+            self.vocabulary_id = m.get('VocabularyId')
+
+        return self
+
+class UpdateApplicationVersionRequestTranscriberConfigNlsAccessProfile(DaraModel):
+    def __init__(
+        self,
+        access_profile_id: str = None,
+    ):
+        self.access_profile_id = access_profile_id
 
     def validate(self):
         pass
@@ -125,21 +225,50 @@ class UpdateApplicationVersionRequestTranscriberConfig(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.nls_access_type is not None:
-            result['NlsAccessType'] = self.nls_access_type
-
-        if self.nls_engine is not None:
-            result['NlsEngine'] = self.nls_engine
+        if self.access_profile_id is not None:
+            result['AccessProfileId'] = self.access_profile_id
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('NlsAccessType') is not None:
-            self.nls_access_type = m.get('NlsAccessType')
+        if m.get('AccessProfileId') is not None:
+            self.access_profile_id = m.get('AccessProfileId')
 
-        if m.get('NlsEngine') is not None:
-            self.nls_engine = m.get('NlsEngine')
+        return self
+
+class UpdateApplicationVersionRequestTranscriberConfigCorrectionRules(DaraModel):
+    def __init__(
+        self,
+        pattern: str = None,
+        replacement: str = None,
+    ):
+        self.pattern = pattern
+        self.replacement = replacement
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.pattern is not None:
+            result['Pattern'] = self.pattern
+
+        if self.replacement is not None:
+            result['Replacement'] = self.replacement
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Pattern') is not None:
+            self.pattern = m.get('Pattern')
+
+        if m.get('Replacement') is not None:
+            self.replacement = m.get('Replacement')
 
         return self
 

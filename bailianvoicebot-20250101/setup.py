@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_bailianvoicebot20250101.
 
-Created on 12/05/2026
+Created on 20/05/2026
 
 @author: Alibaba Cloud SDK
 """

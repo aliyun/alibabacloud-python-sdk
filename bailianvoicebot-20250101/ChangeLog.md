@@ -1,3 +1,34 @@
+2026-05-20 Version: 1.4.2
+- Update API CreateApplicationVersion: add request parameters TranscriberConfig.CorrectionRules.
+- Update API CreateApplicationVersion: add request parameters TranscriberConfig.CustomizationId.
+- Update API CreateApplicationVersion: add request parameters TranscriberConfig.EndSilenceTimeout.
+- Update API CreateApplicationVersion: add request parameters TranscriberConfig.Model.
+- Update API CreateApplicationVersion: add request parameters TranscriberConfig.NlsAccessProfile.
+- Update API CreateApplicationVersion: add request parameters TranscriberConfig.SpeechNoiseThreshold.
+- Update API CreateApplicationVersion: add request parameters TranscriberConfig.VocabularyId.
+- Update API GetApplication: add response parameters Body.Data.DraftVersion.TranscriberConfig.CorrectionRules.
+- Update API GetApplication: add response parameters Body.Data.DraftVersion.TranscriberConfig.CustomizationId.
+- Update API GetApplication: add response parameters Body.Data.DraftVersion.TranscriberConfig.EndSilenceTimeout.
+- Update API GetApplication: add response parameters Body.Data.DraftVersion.TranscriberConfig.Model.
+- Update API GetApplication: add response parameters Body.Data.DraftVersion.TranscriberConfig.NlsAccessProfile.
+- Update API GetApplication: add response parameters Body.Data.DraftVersion.TranscriberConfig.SpeechNoiseThreshold.
+- Update API GetApplication: add response parameters Body.Data.DraftVersion.TranscriberConfig.VocabularyId.
+- Update API GetApplication: add response parameters Body.Data.PublishedVersion.TranscriberConfig.CorrectionRules.
+- Update API GetApplication: add response parameters Body.Data.PublishedVersion.TranscriberConfig.CustomizationId.
+- Update API GetApplication: add response parameters Body.Data.PublishedVersion.TranscriberConfig.EndSilenceTimeout.
+- Update API GetApplication: add response parameters Body.Data.PublishedVersion.TranscriberConfig.Model.
+- Update API GetApplication: add response parameters Body.Data.PublishedVersion.TranscriberConfig.NlsAccessProfile.
+- Update API GetApplication: add response parameters Body.Data.PublishedVersion.TranscriberConfig.SpeechNoiseThreshold.
+- Update API GetApplication: add response parameters Body.Data.PublishedVersion.TranscriberConfig.VocabularyId.
+- Update API UpdateApplicationVersion: add request parameters TranscriberConfig.CorrectionRules.
+- Update API UpdateApplicationVersion: add request parameters TranscriberConfig.CustomizationId.
+- Update API UpdateApplicationVersion: add request parameters TranscriberConfig.EndSilenceTimeout.
+- Update API UpdateApplicationVersion: add request parameters TranscriberConfig.Model.
+- Update API UpdateApplicationVersion: add request parameters TranscriberConfig.NlsAccessProfile.
+- Update API UpdateApplicationVersion: add request parameters TranscriberConfig.SpeechNoiseThreshold.
+- Update API UpdateApplicationVersion: add request parameters TranscriberConfig.VocabularyId.
+
+
 2026-05-12 Version: 1.4.1
 - Update API CreateApplicationVersion: add request parameters SynthesizerConfig.Model.
 - Update API CreateApplicationVersion: add request parameters SynthesizerConfig.NlsAccessProfile.
