@@ -1,3 +1,7 @@
+2026-05-21 Version: 2.5.0
+- Support API ListNodeTypes.
+
+
 2026-03-20 Version: 2.4.5
 - Generated python 2022-01-12 for PaiStudio.
 

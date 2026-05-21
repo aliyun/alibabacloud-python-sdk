@@ -20,6 +20,7 @@ from ._condition_expression import ConditionExpression
 from ._data_source import DataSource
 from ._ecs_spec import EcsSpec
 from ._eni_cache_config import EniCacheConfig
+from ._event import Event
 from ._features import Features
 from ._forward_info import ForwardInfo
 from ._gpuinfo import GPUInfo
@@ -51,6 +52,7 @@ from ._node_view_metric import NodeViewMetric
 from ._oversold_usage_config import OversoldUsageConfig
 from ._permission import Permission
 from ._queue_info import QueueInfo
+from ._queue_meta import QueueMeta
 from ._quota import Quota
 from ._quota_cluster import QuotaCluster
 from ._quota_config import QuotaConfig
@@ -92,6 +94,7 @@ from ._user_quota_permission import UserQuotaPermission
 from ._user_view_metric import UserViewMetric
 from ._user_vpc import UserVpc
 from ._workload_details import WorkloadDetails
+from ._workload_info import WorkloadInfo
 from ._workspace_id_name import WorkspaceIdName
 from ._workspace_spec import WorkspaceSpec
 from ._workspace_specs import WorkspaceSpecs
@@ -181,6 +184,9 @@ from ._list_algorithm_versions_response import ListAlgorithmVersionsResponse
 from ._list_algorithms_request import ListAlgorithmsRequest
 from ._list_algorithms_response_body import ListAlgorithmsResponseBody
 from ._list_algorithms_response import ListAlgorithmsResponse
+from ._list_node_types_request import ListNodeTypesRequest
+from ._list_node_types_response_body import ListNodeTypesResponseBody
+from ._list_node_types_response import ListNodeTypesResponse
 from ._list_nodes_request import ListNodesRequest
 from ._list_nodes_shrink_request import ListNodesShrinkRequest
 from ._list_nodes_response_body import ListNodesResponseBody
@@ -345,6 +351,7 @@ __all__ = [
     DataSource,
     EcsSpec,
     EniCacheConfig,
+    Event,
     Features,
     ForwardInfo,
     GPUInfo,
@@ -376,6 +383,7 @@ __all__ = [
     OversoldUsageConfig,
     Permission,
     QueueInfo,
+    QueueMeta,
     Quota,
     QuotaCluster,
     QuotaConfig,
@@ -417,6 +425,7 @@ __all__ = [
     UserViewMetric,
     UserVpc,
     WorkloadDetails,
+    WorkloadInfo,
     WorkspaceIdName,
     WorkspaceSpec,
     WorkspaceSpecs,
@@ -506,6 +515,9 @@ __all__ = [
     ListAlgorithmsRequest,
     ListAlgorithmsResponseBody,
     ListAlgorithmsResponse,
+    ListNodeTypesRequest,
+    ListNodeTypesResponseBody,
+    ListNodeTypesResponse,
     ListNodesRequest,
     ListNodesShrinkRequest,
     ListNodesResponseBody,

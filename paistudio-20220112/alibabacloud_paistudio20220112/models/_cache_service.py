@@ -12,6 +12,7 @@ class CacheService(DaraModel):
         self,
         cache_infos: List[main_models.CacheInfo] = None,
         cache_service_id: str = None,
+        cluster_id: str = None,
         created_by: str = None,
         gmt_created: str = None,
         network_type: str = None,
@@ -25,6 +26,7 @@ class CacheService(DaraModel):
     ):
         self.cache_infos = cache_infos
         self.cache_service_id = cache_service_id
+        self.cluster_id = cluster_id
         self.created_by = created_by
         self.gmt_created = gmt_created
         self.network_type = network_type
@@ -56,6 +58,9 @@ class CacheService(DaraModel):
 
         if self.cache_service_id is not None:
             result['CacheServiceId'] = self.cache_service_id
+
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
 
         if self.created_by is not None:
             result['CreatedBy'] = self.created_by
@@ -99,6 +104,9 @@ class CacheService(DaraModel):
 
         if m.get('CacheServiceId') is not None:
             self.cache_service_id = m.get('CacheServiceId')
+
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
 
         if m.get('CreatedBy') is not None:
             self.created_by = m.get('CreatedBy')
