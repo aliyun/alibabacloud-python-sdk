@@ -1,3 +1,7 @@
+2026-05-21 Version: 1.6.1
+- Update API ListMultiAccountResourceGroups: add response parameters Body.ResourceGroups.$.Tags.
+
+
 2026-02-26 Version: 1.6.0
 - Support API BatchGetResourceConfigurations.
 

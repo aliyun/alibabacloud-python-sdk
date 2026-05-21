@@ -11,7 +11,7 @@ class GetDeliveryChannelStatisticsResponseBody(DaraModel):
         delivery_channel_statistics: main_models.GetDeliveryChannelStatisticsResponseBodyDeliveryChannelStatistics = None,
         request_id: str = None,
     ):
-        # The statistics of the delivery channel.
+        # The statistics on the delivery channel.
         self.delivery_channel_statistics = delivery_channel_statistics
         # The request ID.
         self.request_id = request_id
@@ -56,9 +56,9 @@ class GetDeliveryChannelStatisticsResponseBodyDeliveryChannelStatistics(DaraMode
         self.delivery_channel_id = delivery_channel_id
         # The name of the delivery channel.
         self.delivery_channel_name = delivery_channel_name
-        # The last time a resource configuration change was delivered.
+        # The last delivery time of resource configuration change events.
         self.latest_change_delivery_time = latest_change_delivery_time
-        # The last time a scheduled resource snapshot was delivered.
+        # The last delivery time of scheduled resource snapshots.
         self.latest_snapshot_delivery_time = latest_snapshot_delivery_time
 
     def validate(self):

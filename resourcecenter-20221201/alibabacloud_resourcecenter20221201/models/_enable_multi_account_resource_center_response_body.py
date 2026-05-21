@@ -10,7 +10,12 @@ class EnableMultiAccountResourceCenterResponseBody(DaraModel):
         request_id: str = None,
         status: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The status of the feature. Valid values:
+        # 
+        # *   Pending: The feature is being enabled.
+        # *   Enabled: The feature is enabled.
         self.status = status
 
     def validate(self):

@@ -12,19 +12,19 @@ class GetMultiAccountResourceConfigurationRequest(DaraModel):
         resource_region_id: str = None,
         resource_type: str = None,
     ):
-        # The ID of the management account or member.
+        # The ID of the management account or member of the resource directory.
         # 
         # This parameter is required.
         self.account_id = account_id
-        # The resource ID.
+        # The ID of the resource.
         # 
         # This parameter is required.
         self.resource_id = resource_id
-        # The ID of the region where the resource resides.
+        # The region ID of the resource.
         # 
         # This parameter is required.
         self.resource_region_id = resource_region_id
-        # The resource type.
+        # The type of the resource.
         # 
         # This parameter is required.
         self.resource_type = resource_type

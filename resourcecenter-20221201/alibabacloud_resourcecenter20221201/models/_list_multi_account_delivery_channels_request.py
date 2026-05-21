@@ -10,7 +10,7 @@ class ListMultiAccountDeliveryChannelsRequest(DaraModel):
         max_results: int = None,
         next_token: str = None,
     ):
-        # The number of entries per page.
+        # The maximum number of entries per page.
         # 
         # Valid values: 1 to 100.
         # 
@@ -18,7 +18,7 @@ class ListMultiAccountDeliveryChannelsRequest(DaraModel):
         self.max_results = max_results
         # The pagination token that is used in the next request to retrieve a new page of results.
         # 
-        # If the number of returned entries exceeds the `MaxResults` value, the entries are truncated and this token is returned. To fetch the remaining entries, pass this token in the subsequent request.
+        # If the total number of entries returned for the current request exceeds the value of the MaxResults parameter, the entries are truncated. In this case, you can use the token to initiate another request and obtain the remaining entries.
         self.next_token = next_token
 
     def validate(self):

@@ -9,9 +9,9 @@ class GetSavedQueryRequest(DaraModel):
         self,
         query_id: str = None,
     ):
-        # The ID of the template.
+        # The template ID.
         # 
-        # > You can call the [ListSavedQueries](~~ListSavedQueries~~) operation to obtain the ID of the template.
+        # >  You can call the [ListSavedQueries](~~ListSavedQueries~~) operation to query the ID.
         # 
         # This parameter is required.
         self.query_id = query_id

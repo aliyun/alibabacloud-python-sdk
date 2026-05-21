@@ -11,10 +11,18 @@ class GetResourceConfigurationRequest(DaraModel):
         resource_region_id: str = None,
         resource_type: str = None,
     ):
+        # The ID of the resource.
+        # 
         # This parameter is required.
         self.resource_id = resource_id
+        # The region ID of the resource.
+        # 
         # This parameter is required.
         self.resource_region_id = resource_region_id
+        # The type of the resource.
+        # 
+        # For more information about the resource types supported by Resource Center, see [Services that work with Resource Center](https://help.aliyun.com/document_detail/477798.html).
+        # 
         # This parameter is required.
         self.resource_type = resource_type
 

@@ -16,17 +16,15 @@ class UpdateSavedQueryRequest(DaraModel):
         # 
         # The description must be 1 to 256 characters in length.
         self.description = description
-        # The expression of the template.
+        # The query statement in the template.
         self.expression = expression
         # The name of the template.
         # 
-        # - The name must be 1 to 64 characters in length.
-        # 
-        # - It can contain letters, digits, underscores (_), and hyphens (-).
-        # 
-        # - It must be globally unique.
+        # *   The name must be 1 to 64 characters in length.
+        # *   The name can contain letters, digits, underscores (_), and hyphens (-).
+        # *   The name must be unique.
         self.name = name
-        # The ID of the template.
+        # The template ID.
         # 
         # This parameter is required.
         self.query_id = query_id

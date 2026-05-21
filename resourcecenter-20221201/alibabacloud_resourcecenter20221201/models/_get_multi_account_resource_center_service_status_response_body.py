@@ -11,8 +11,17 @@ class GetMultiAccountResourceCenterServiceStatusResponseBody(DaraModel):
         request_id: str = None,
         service_status: str = None,
     ):
+        # The initialization status of the feature. Valid values:
+        # 
+        # *   Pending: The feature is being initialized.
+        # *   Finished: The feature is initialized.
         self.initial_status = initial_status
+        # The ID of the request.
         self.request_id = request_id
+        # The status of the feature. Valid values:
+        # 
+        # *   Enabled: The feature is enabled.
+        # *   Disabled: The feature is disabled.
         self.service_status = service_status
 
     def validate(self):

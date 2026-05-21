@@ -17,13 +17,26 @@ class ListResourceRelationshipsRequest(DaraModel):
         resource_id: str = None,
         resource_type: str = None,
     ):
+        # The maximum number of entries per page.
+        # 
+        # Valid values: 1 to 500.
+        # 
+        # Default value: 20.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results.
         self.next_token = next_token
+        # The region ID of the resource.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The filter conditions for resources associated with the resource.
         self.related_resource_filter = related_resource_filter
+        # The ID of the resource.
+        # 
         # This parameter is required.
         self.resource_id = resource_id
+        # The type of the resource.
+        # 
         # This parameter is required.
         self.resource_type = resource_type
 
@@ -92,8 +105,11 @@ class ListResourceRelationshipsRequestRelatedResourceFilter(DaraModel):
         match_type: str = None,
         value: List[str] = None,
     ):
+        # The key of the filter condition. For more information, see `Supported filter parameters`.
         self.key = key
+        # The matching method.
         self.match_type = match_type
+        # The values of the filter condition.
         self.value = value
 
     def validate(self):

@@ -17,11 +17,11 @@ class GetResourceCountsResponseBody(DaraModel):
     ):
         # The filter conditions.
         self.filters = filters
-        # The dimension by which the queried resources are grouped.
+        # The dimension by which resources are queried.
         self.group_by_key = group_by_key
         # The request ID.
         self.request_id = request_id
-        # The list of resource counts.
+        # The numbers of resources.
         self.resource_counts = resource_counts
 
     def validate(self):

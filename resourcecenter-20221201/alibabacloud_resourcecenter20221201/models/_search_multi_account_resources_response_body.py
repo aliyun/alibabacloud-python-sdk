@@ -21,21 +21,18 @@ class SearchMultiAccountResourcesResponseBody(DaraModel):
         self.filters = filters
         # The maximum number of entries returned per page.
         self.max_results = max_results
-        # The token to retrieve the next page of results.
+        # The pagination token that is used in the next request to retrieve a new page of results.
         self.next_token = next_token
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The information about the resources.
         self.resources = resources
-        # The scope of accounts in which the resources were searched. Valid values:
+        # The search scope.
         # 
-        # - The ID of the resource directory. This indicates that resources were searched in the management account and all member accounts of the resource directory.
-        # 
-        # - The ID of the Root folder. This indicates that resources were searched in all member accounts under the Root folder and its subfolders.
-        # 
-        # - The ID of a folder. This indicates that resources were searched in all member accounts under the folder.
-        # 
-        # - The ID of a member account. This indicates that resources were searched in the member account.
+        # *   ID of a resource directory: Resources within the management account and all members of the resource directory are searched.
+        # *   ID of the Root folder: Resources within all members in the Root folder and the subfolders of the Root folder are searched.
+        # *   ID of a folder: Resources within all members in the folder are searched.
+        # *   ID of a member: Resources within the member are searched.
         self.scope = scope
 
     def validate(self):
@@ -121,19 +118,19 @@ class SearchMultiAccountResourcesResponseBodyResources(DaraModel):
         tags: List[main_models.SearchMultiAccountResourcesResponseBodyResourcesTags] = None,
         zone_id: str = None,
     ):
-        # The ID of the management account or a member account of the resource directory.
+        # The ID of the management account or member of the resource directory.
         self.account_id = account_id
         # The time when the resource was created.
         # 
-        # > Whether this parameter is returned depends on the Alibaba Cloud service that manages the resource.
+        # >  Whether this parameter is returned is determined by the Alibaba Cloud service to which the resource belongs.
         self.create_time = create_time
         # The time when the resource expires.
         self.expire_time = expire_time
-        # The attributes of the IP addresses.
+        # The attributes of the IP address.
         self.ip_address_attributes = ip_address_attributes
         # The IP addresses.
         # 
-        # > Whether this parameter is returned depends on the Alibaba Cloud service that manages the resource.
+        # >  Whether this parameter is returned is determined by the Alibaba Cloud service to which the resource belongs.
         self.ip_addresses = ip_addresses
         # The region ID.
         self.region_id = region_id
@@ -149,7 +146,7 @@ class SearchMultiAccountResourcesResponseBodyResources(DaraModel):
         self.tags = tags
         # The zone ID.
         # 
-        # > Whether this parameter is returned depends on the Alibaba Cloud service that manages the resource.
+        # >  Whether this parameter is returned is determined by the Alibaba Cloud service to which the resource belongs.
         self.zone_id = zone_id
 
     def validate(self):
@@ -261,9 +258,9 @@ class SearchMultiAccountResourcesResponseBodyResourcesTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
+        # The key of tag N.
         self.key = key
-        # The tag value.
+        # The value of tag N.
         self.value = value
 
     def validate(self):
@@ -303,11 +300,10 @@ class SearchMultiAccountResourcesResponseBodyResourcesIpAddressAttributes(DaraMo
         self.ip_address = ip_address
         # The network type. Valid values:
         # 
-        # - **Public**: Internet.
-        # 
-        # - **Private**: Private network.
+        # *   **Public**: the Internet
+        # *   **Private**: internal network
         self.network_type = network_type
-        # The IP address version.
+        # The version.
         self.version = version
 
     def validate(self):
@@ -351,7 +347,7 @@ class SearchMultiAccountResourcesResponseBodyFilters(DaraModel):
     ):
         # The key of the filter condition.
         self.key = key
-        # The matching method.
+        # The matching mode.
         self.match_type = match_type
         # The values of the filter condition.
         self.values = values

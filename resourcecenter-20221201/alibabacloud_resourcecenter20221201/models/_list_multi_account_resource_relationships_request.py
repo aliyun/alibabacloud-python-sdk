@@ -18,15 +18,35 @@ class ListMultiAccountResourceRelationshipsRequest(DaraModel):
         resource_type: str = None,
         scope: str = None,
     ):
+        # The maximum number of entries per page.
+        # 
+        # Valid values: 1 to 500.
+        # 
+        # Default value: 20.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results.
         self.next_token = next_token
+        # The region ID of the resource.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The filter conditions for resources associated with the resource.
         self.related_resource_filter = related_resource_filter
+        # The ID of the resource.
+        # 
         # This parameter is required.
         self.resource_id = resource_id
+        # The type of the resource.
+        # 
         # This parameter is required.
         self.resource_type = resource_type
+        # The search scope. Valid values:
+        # 
+        # *   ID of a resource directory: Resources within the management account and all members of the resource directory are searched. You can call the [GetResourceDirectory](https://help.aliyun.com/document_detail/159995.html) operation to query the ID.
+        # *   ID of the Root folder: Resources within all members in the Root folder and the subfolders of the Root folder are searched. You can call the [ListFoldersForParent](https://help.aliyun.com/document_detail/159997.html) operation to query the ID.
+        # *   ID of a folder: Resources within all members in the folder are searched. You can call the [ListFoldersForParent](https://help.aliyun.com/document_detail/159997.html) operation to query the ID.
+        # *   ID of a member: Resources within the member are searched. You can call the [ListAccounts](https://help.aliyun.com/document_detail/160016.html) operation to query the ID.
+        # 
         # This parameter is required.
         self.scope = scope
 
@@ -101,8 +121,11 @@ class ListMultiAccountResourceRelationshipsRequestRelatedResourceFilter(DaraMode
         match_type: str = None,
         value: List[str] = None,
     ):
+        # The key of the filter condition. For more information, see `Supported filter parameters`.
         self.key = key
+        # The matching method.
         self.match_type = match_type
+        # The values of the filter condition.
         self.value = value
 
     def validate(self):

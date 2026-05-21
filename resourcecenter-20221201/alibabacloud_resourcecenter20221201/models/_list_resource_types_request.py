@@ -15,9 +15,8 @@ class ListResourceTypesRequest(DaraModel):
     ):
         # The language of the response. Valid values:
         # 
-        # - zh-CN: Chinese
-        # 
-        # - en-US: English
+        # *   zh-CN: Chinese
+        # *   en-US: English
         self.accept_language = accept_language
         # The query conditions.
         self.query = query

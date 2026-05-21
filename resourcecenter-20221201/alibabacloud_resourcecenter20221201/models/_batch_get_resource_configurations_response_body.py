@@ -13,9 +13,7 @@ class BatchGetResourceConfigurationsResponseBody(DaraModel):
         request_id: str = None,
         resources: List[main_models.BatchGetResourceConfigurationsResponseBodyResources] = None,
     ):
-        # The request ID.
         self.request_id = request_id
-        # The list of resources.
         self.resources = resources
 
     def validate(self):
@@ -69,33 +67,18 @@ class BatchGetResourceConfigurationsResponseBodyResources(DaraModel):
         tags: List[main_models.BatchGetResourceConfigurationsResponseBodyResourcesTags] = None,
         zone_id: str = None,
     ):
-        # The ID of the Alibaba Cloud account.
         self.account_id = account_id
-        # The details of the resource configuration.
         self.configuration = configuration
-        # The time when the resource was created.
         self.create_time = create_time
-        # The expiration time of the resource.
         self.expire_time = expire_time
-        # The properties of the IP addresses.
         self.ip_address_attributes = ip_address_attributes
-        # The IP addresses.
-        # 
-        # > Whether this parameter is returned depends on the Alibaba Cloud service to which the resource belongs.
         self.ip_addresses = ip_addresses
-        # The region ID of the resource.
         self.region_id = region_id
-        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The resource ID.
         self.resource_id = resource_id
-        # The resource name.
         self.resource_name = resource_name
-        # The resource type.
         self.resource_type = resource_type
-        # The tags.
         self.tags = tags
-        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -213,9 +196,7 @@ class BatchGetResourceConfigurationsResponseBodyResourcesTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
         self.key = key
-        # The tag value.
         self.value = value
 
     def validate(self):
@@ -251,15 +232,8 @@ class BatchGetResourceConfigurationsResponseBodyResourcesIpAddressAttributes(Dar
         network_type: str = None,
         version: str = None,
     ):
-        # The IP address.
         self.ip_address = ip_address
-        # The network type. Valid values:
-        # 
-        # - **Public**: Internet.
-        # 
-        # - **Private**: Private network.
         self.network_type = network_type
-        # The version of the IP address.
         self.version = version
 
     def validate(self):

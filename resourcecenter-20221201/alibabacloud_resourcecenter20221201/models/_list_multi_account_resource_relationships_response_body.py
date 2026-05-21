@@ -16,10 +16,20 @@ class ListMultiAccountResourceRelationshipsResponseBody(DaraModel):
         resource_relationships: List[main_models.ListMultiAccountResourceRelationshipsResponseBodyResourceRelationships] = None,
         scope: str = None,
     ):
+        # The maximum number of entries per page.
         self.max_results = max_results
+        # A pagination token. It can be used in the next request to retrieve a new page of results.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The resource relationships.
         self.resource_relationships = resource_relationships
+        # The search scope. Valid values:
+        # 
+        # *   ID of a resource directory: Resources within the management account and all members of the resource directory are searched.
+        # *   ID of the Root folder: Resources within all members in the Root folder and the subfolders of the Root folder are searched.
+        # *   ID of a folder: Resources within all members in the folder are searched.
+        # *   ID of a member: Resources within the member are searched.
         self.scope = scope
 
     def validate(self):
@@ -85,12 +95,19 @@ class ListMultiAccountResourceRelationshipsResponseBodyResourceRelationships(Dar
         resource_id: str = None,
         resource_type: str = None,
     ):
+        # The ID of the management account or member.
         self.account_id = account_id
+        # The region ID of the resource.
         self.region_id = region_id
+        # The ID of the associated resource.
         self.related_resource_id = related_resource_id
+        # The region ID of the associated resource.
         self.related_resource_region_id = related_resource_region_id
+        # The type of the associated resource.
         self.related_resource_type = related_resource_type
+        # The ID of the resource.
         self.resource_id = resource_id
+        # The type of the resource.
         self.resource_type = resource_type
 
     def validate(self):

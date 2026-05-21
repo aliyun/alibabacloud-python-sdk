@@ -13,11 +13,26 @@ class ListTagValuesRequest(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The matching mode. Valid values:
+        # 
+        # *   Equals: equal match
+        # *   Prefix: match by prefix
         self.match_type = match_type
+        # The maximum number of entries to return on each page.
+        # 
+        # Valid values: 1 to 100.
+        # 
+        # Default value: 20.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results.
+        # 
+        # If the total number of entries returned for the current request exceeds the value of the `MaxResults` parameter, the entries are truncated. In this case, you can use the `token` to initiate another request and obtain the remaining entries.
         self.next_token = next_token
+        # The tag key.
+        # 
         # This parameter is required.
         self.tag_key = tag_key
+        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):

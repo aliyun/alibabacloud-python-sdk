@@ -15,9 +15,9 @@ class ListSavedQueriesResponseBody(DaraModel):
         request_id: str = None,
         saved_queries: List[main_models.ListSavedQueriesResponseBodySavedQueries] = None,
     ):
-        # The maximum number of entries returned on each page.
+        # The maximum number of entries per page.
         self.max_results = max_results
-        # A pagination token. It can be used in the next request to retrieve a new page of results.
+        # The pagination token that is used in the next request to retrieve a new page of results.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -83,11 +83,11 @@ class ListSavedQueriesResponseBodySavedQueries(DaraModel):
         self.create_time = create_time
         # The description of the template.
         self.description = description
-        # The name of the template.
+        # The template name.
         self.name = name
-        # The ID of the template.
+        # The template ID.
         self.query_id = query_id
-        # The time when the template was last updated. The time is displayed in UTC.
+        # The time when the template was updated. The time is displayed in UTC.
         self.update_time = update_time
 
     def validate(self):
