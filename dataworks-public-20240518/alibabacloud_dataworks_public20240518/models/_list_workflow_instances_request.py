@@ -10,6 +10,7 @@ class ListWorkflowInstancesRequest(DaraModel):
     def __init__(
         self,
         biz_date: int = None,
+        env_type: str = None,
         filter: str = None,
         ids: List[int] = None,
         name: str = None,
@@ -27,6 +28,7 @@ class ListWorkflowInstancesRequest(DaraModel):
         # 
         # This parameter is required.
         self.biz_date = biz_date
+        self.env_type = env_type
         self.filter = filter
         # The IDs of the workflow instances. You can query multiple instances at a time by instance ID.
         self.ids = ids
@@ -77,6 +79,9 @@ class ListWorkflowInstancesRequest(DaraModel):
         if self.biz_date is not None:
             result['BizDate'] = self.biz_date
 
+        if self.env_type is not None:
+            result['EnvType'] = self.env_type
+
         if self.filter is not None:
             result['Filter'] = self.filter
 
@@ -119,6 +124,9 @@ class ListWorkflowInstancesRequest(DaraModel):
         m = m or dict()
         if m.get('BizDate') is not None:
             self.biz_date = m.get('BizDate')
+
+        if m.get('EnvType') is not None:
+            self.env_type = m.get('EnvType')
 
         if m.get('Filter') is not None:
             self.filter = m.get('Filter')

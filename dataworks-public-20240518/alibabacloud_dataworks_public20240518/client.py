@@ -18399,6 +18399,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.biz_date):
             body['BizDate'] = request.biz_date
+        if not DaraCore.is_null(request.env_type):
+            body['EnvType'] = request.env_type
         if not DaraCore.is_null(request.filter):
             body['Filter'] = request.filter
         if not DaraCore.is_null(request.ids_shrink):
@@ -18457,6 +18459,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.biz_date):
             body['BizDate'] = request.biz_date
+        if not DaraCore.is_null(request.env_type):
+            body['EnvType'] = request.env_type
         if not DaraCore.is_null(request.filter):
             body['Filter'] = request.filter
         if not DaraCore.is_null(request.ids_shrink):

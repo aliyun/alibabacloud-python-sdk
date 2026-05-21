@@ -1,3 +1,7 @@
+2026-05-21 Version: 8.4.1
+- Update API ListWorkflowInstances: add request parameters EnvType.
+
+
 2026-05-15 Version: 8.4.0
 - Support API CreateProjectRole.
 - Support API DeleteProjectRole.
