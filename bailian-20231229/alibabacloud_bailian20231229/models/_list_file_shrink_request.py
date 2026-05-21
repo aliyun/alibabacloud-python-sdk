@@ -2,15 +2,13 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List
-
 from darabonba.model import DaraModel
 
-class ListFileRequest(DaraModel):
+class ListFileShrinkRequest(DaraModel):
     def __init__(
         self,
         category_id: str = None,
-        file_ids: List[str] = None,
+        file_ids_shrink: str = None,
         file_name: str = None,
         max_results: int = None,
         next_token: str = None,
@@ -19,7 +17,7 @@ class ListFileRequest(DaraModel):
         # 
         # This parameter is required.
         self.category_id = category_id
-        self.file_ids = file_ids
+        self.file_ids_shrink = file_ids_shrink
         self.file_name = file_name
         self.max_results = max_results
         self.next_token = next_token
@@ -35,8 +33,8 @@ class ListFileRequest(DaraModel):
         if self.category_id is not None:
             result['CategoryId'] = self.category_id
 
-        if self.file_ids is not None:
-            result['FileIds'] = self.file_ids
+        if self.file_ids_shrink is not None:
+            result['FileIds'] = self.file_ids_shrink
 
         if self.file_name is not None:
             result['FileName'] = self.file_name
@@ -55,7 +53,7 @@ class ListFileRequest(DaraModel):
             self.category_id = m.get('CategoryId')
 
         if m.get('FileIds') is not None:
-            self.file_ids = m.get('FileIds')
+            self.file_ids_shrink = m.get('FileIds')
 
         if m.get('FileName') is not None:
             self.file_name = m.get('FileName')

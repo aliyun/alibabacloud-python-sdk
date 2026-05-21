@@ -1,3 +1,10 @@
+2026-05-21 Version: 2.11.0
+- Support API AddConnector.
+- Support API GetConnector.
+- Update API ListCategory: add request parameters ConnectorId.
+- Update API ListFile: add request parameters FileIds.
+
+
 2026-05-20 Version: 2.10.1
 - Update API Retrieve: add request parameters Extra.
 - Update API SubmitIndexAddDocumentsJob: add request parameters Extra.

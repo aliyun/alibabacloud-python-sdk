@@ -9,6 +9,7 @@ class ListCategoryRequest(DaraModel):
         self,
         category_name: str = None,
         category_type: str = None,
+        connector_id: str = None,
         max_results: int = None,
         next_token: str = None,
         parent_category_id: str = None,
@@ -16,6 +17,7 @@ class ListCategoryRequest(DaraModel):
         self.category_name = category_name
         # This parameter is required.
         self.category_type = category_type
+        self.connector_id = connector_id
         self.max_results = max_results
         self.next_token = next_token
         self.parent_category_id = parent_category_id
@@ -33,6 +35,9 @@ class ListCategoryRequest(DaraModel):
 
         if self.category_type is not None:
             result['CategoryType'] = self.category_type
+
+        if self.connector_id is not None:
+            result['ConnectorId'] = self.connector_id
 
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
@@ -52,6 +57,9 @@ class ListCategoryRequest(DaraModel):
 
         if m.get('CategoryType') is not None:
             self.category_type = m.get('CategoryType')
+
+        if m.get('ConnectorId') is not None:
+            self.connector_id = m.get('ConnectorId')
 
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')

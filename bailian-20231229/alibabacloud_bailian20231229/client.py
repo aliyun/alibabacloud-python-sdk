@@ -133,6 +133,106 @@ class Client(OpenApiClient):
         headers = {}
         return await self.add_category_with_options_async(workspace_id, request, headers, runtime)
 
+    def add_connector_with_options(
+        self,
+        workspace_id: str,
+        tmp_req: main_models.AddConnectorRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.AddConnectorResponse:
+        tmp_req.validate()
+        request = main_models.AddConnectorShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.file_connector_config):
+            request.file_connector_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.file_connector_config, 'FileConnectorConfig', 'json')
+        body = {}
+        if not DaraCore.is_null(request.connector_name):
+            body['ConnectorName'] = request.connector_name
+        if not DaraCore.is_null(request.connector_type):
+            body['ConnectorType'] = request.connector_type
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.file_connector_config_shrink):
+            body['FileConnectorConfig'] = request.file_connector_config_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddConnector',
+            version = '2023-12-29',
+            protocol = 'HTTPS',
+            pathname = f'/{DaraURL.percent_encode(workspace_id)}/datacenter/connector',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddConnectorResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_connector_with_options_async(
+        self,
+        workspace_id: str,
+        tmp_req: main_models.AddConnectorRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.AddConnectorResponse:
+        tmp_req.validate()
+        request = main_models.AddConnectorShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.file_connector_config):
+            request.file_connector_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.file_connector_config, 'FileConnectorConfig', 'json')
+        body = {}
+        if not DaraCore.is_null(request.connector_name):
+            body['ConnectorName'] = request.connector_name
+        if not DaraCore.is_null(request.connector_type):
+            body['ConnectorType'] = request.connector_type
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.file_connector_config_shrink):
+            body['FileConnectorConfig'] = request.file_connector_config_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddConnector',
+            version = '2023-12-29',
+            protocol = 'HTTPS',
+            pathname = f'/{DaraURL.percent_encode(workspace_id)}/datacenter/connector',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddConnectorResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_connector(
+        self,
+        workspace_id: str,
+        request: main_models.AddConnectorRequest,
+    ) -> main_models.AddConnectorResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.add_connector_with_options(workspace_id, request, headers, runtime)
+
+    async def add_connector_async(
+        self,
+        workspace_id: str,
+        request: main_models.AddConnectorRequest,
+    ) -> main_models.AddConnectorResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.add_connector_with_options_async(workspace_id, request, headers, runtime)
+
     def add_file_with_options(
         self,
         workspace_id: str,
@@ -2469,6 +2569,90 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_available_parser_types_with_options_async(workspace_id, request, headers, runtime)
 
+    def get_connector_with_options(
+        self,
+        workspace_id: str,
+        request: main_models.GetConnectorRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetConnectorResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.connector_id):
+            query['ConnectorId'] = request.connector_id
+        if not DaraCore.is_null(request.connector_name):
+            query['ConnectorName'] = request.connector_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetConnector',
+            version = '2023-12-29',
+            protocol = 'HTTPS',
+            pathname = f'/{DaraURL.percent_encode(workspace_id)}/datacenter/connector',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetConnectorResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_connector_with_options_async(
+        self,
+        workspace_id: str,
+        request: main_models.GetConnectorRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetConnectorResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.connector_id):
+            query['ConnectorId'] = request.connector_id
+        if not DaraCore.is_null(request.connector_name):
+            query['ConnectorName'] = request.connector_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetConnector',
+            version = '2023-12-29',
+            protocol = 'HTTPS',
+            pathname = f'/{DaraURL.percent_encode(workspace_id)}/datacenter/connector',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetConnectorResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_connector(
+        self,
+        workspace_id: str,
+        request: main_models.GetConnectorRequest,
+    ) -> main_models.GetConnectorResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_connector_with_options(workspace_id, request, headers, runtime)
+
+    async def get_connector_async(
+        self,
+        workspace_id: str,
+        request: main_models.GetConnectorRequest,
+    ) -> main_models.GetConnectorResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_connector_with_options_async(workspace_id, request, headers, runtime)
+
     def get_index_job_status_with_options(
         self,
         workspace_id: str,
@@ -3150,6 +3334,8 @@ class Client(OpenApiClient):
             body['CategoryName'] = request.category_name
         if not DaraCore.is_null(request.category_type):
             body['CategoryType'] = request.category_type
+        if not DaraCore.is_null(request.connector_id):
+            body['ConnectorId'] = request.connector_id
         if not DaraCore.is_null(request.max_results):
             body['MaxResults'] = request.max_results
         if not DaraCore.is_null(request.next_token):
@@ -3189,6 +3375,8 @@ class Client(OpenApiClient):
             body['CategoryName'] = request.category_name
         if not DaraCore.is_null(request.category_type):
             body['CategoryType'] = request.category_type
+        if not DaraCore.is_null(request.connector_id):
+            body['ConnectorId'] = request.connector_id
         if not DaraCore.is_null(request.max_results):
             body['MaxResults'] = request.max_results
         if not DaraCore.is_null(request.next_token):
@@ -3336,14 +3524,20 @@ class Client(OpenApiClient):
     def list_file_with_options(
         self,
         workspace_id: str,
-        request: main_models.ListFileRequest,
+        tmp_req: main_models.ListFileRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.ListFileResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.ListFileShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.file_ids):
+            request.file_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.file_ids, 'FileIds', 'json')
         query = {}
         if not DaraCore.is_null(request.category_id):
             query['CategoryId'] = request.category_id
+        if not DaraCore.is_null(request.file_ids_shrink):
+            query['FileIds'] = request.file_ids_shrink
         if not DaraCore.is_null(request.file_name):
             query['FileName'] = request.file_name
         if not DaraCore.is_null(request.max_results):
@@ -3373,14 +3567,20 @@ class Client(OpenApiClient):
     async def list_file_with_options_async(
         self,
         workspace_id: str,
-        request: main_models.ListFileRequest,
+        tmp_req: main_models.ListFileRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.ListFileResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.ListFileShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.file_ids):
+            request.file_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.file_ids, 'FileIds', 'json')
         query = {}
         if not DaraCore.is_null(request.category_id):
             query['CategoryId'] = request.category_id
+        if not DaraCore.is_null(request.file_ids_shrink):
+            query['FileIds'] = request.file_ids_shrink
         if not DaraCore.is_null(request.file_name):
             query['FileName'] = request.file_name
         if not DaraCore.is_null(request.max_results):

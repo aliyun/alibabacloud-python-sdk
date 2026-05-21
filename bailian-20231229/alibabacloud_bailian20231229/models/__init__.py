@@ -5,6 +5,10 @@ from __future__ import annotations
 from ._add_category_request import AddCategoryRequest
 from ._add_category_response_body import AddCategoryResponseBody
 from ._add_category_response import AddCategoryResponse
+from ._add_connector_request import AddConnectorRequest
+from ._add_connector_shrink_request import AddConnectorShrinkRequest
+from ._add_connector_response_body import AddConnectorResponseBody
+from ._add_connector_response import AddConnectorResponse
 from ._add_file_request import AddFileRequest
 from ._add_file_shrink_request import AddFileShrinkRequest
 from ._add_file_response_body import AddFileResponseBody
@@ -89,6 +93,9 @@ from ._get_alipay_url_response import GetAlipayUrlResponse
 from ._get_available_parser_types_request import GetAvailableParserTypesRequest
 from ._get_available_parser_types_response_body import GetAvailableParserTypesResponseBody
 from ._get_available_parser_types_response import GetAvailableParserTypesResponse
+from ._get_connector_request import GetConnectorRequest
+from ._get_connector_response_body import GetConnectorResponseBody
+from ._get_connector_response import GetConnectorResponse
 from ._get_index_job_status_request import GetIndexJobStatusRequest
 from ._get_index_job_status_response_body import GetIndexJobStatusResponseBody
 from ._get_index_job_status_response import GetIndexJobStatusResponse
@@ -120,6 +127,7 @@ from ._list_chunks_request import ListChunksRequest
 from ._list_chunks_response_body import ListChunksResponseBody
 from ._list_chunks_response import ListChunksResponse
 from ._list_file_request import ListFileRequest
+from ._list_file_shrink_request import ListFileShrinkRequest
 from ._list_file_response_body import ListFileResponseBody
 from ._list_file_response import ListFileResponse
 from ._list_index_documents_request import ListIndexDocumentsRequest
@@ -185,6 +193,8 @@ from ._update_table_from_authorized_oss_request import UpdateTableFromAuthorized
 from ._update_table_from_authorized_oss_response_body import UpdateTableFromAuthorizedOssResponseBody
 from ._update_table_from_authorized_oss_response import UpdateTableFromAuthorizedOssResponse
 from ._add_category_response_body import AddCategoryResponseBodyData
+from ._add_connector_request import AddConnectorRequestFileConnectorConfig
+from ._add_connector_response_body import AddConnectorResponseBodyData
 from ._add_file_request import AddFileRequestParserConfig
 from ._add_file_response_body import AddFileResponseBodyData
 from ._add_files_from_authorized_oss_request import AddFilesFromAuthorizedOssRequestFileDetails
@@ -221,6 +231,7 @@ from ._get_alipay_transfer_status_response_body import GetAlipayTransferStatusRe
 from ._get_alipay_url_response_body import GetAlipayUrlResponseBodyData
 from ._get_available_parser_types_response_body import GetAvailableParserTypesResponseBodyDataParserList
 from ._get_available_parser_types_response_body import GetAvailableParserTypesResponseBodyData
+from ._get_connector_response_body import GetConnectorResponseBodyData
 from ._get_index_job_status_response_body import GetIndexJobStatusResponseBodyDataDocuments
 from ._get_index_job_status_response_body import GetIndexJobStatusResponseBodyData
 from ._get_parse_settings_response_body import GetParseSettingsResponseBodyDataParserConfig
@@ -294,6 +305,10 @@ __all__ = [
     AddCategoryRequest,
     AddCategoryResponseBody,
     AddCategoryResponse,
+    AddConnectorRequest,
+    AddConnectorShrinkRequest,
+    AddConnectorResponseBody,
+    AddConnectorResponse,
     AddFileRequest,
     AddFileShrinkRequest,
     AddFileResponseBody,
@@ -378,6 +393,9 @@ __all__ = [
     GetAvailableParserTypesRequest,
     GetAvailableParserTypesResponseBody,
     GetAvailableParserTypesResponse,
+    GetConnectorRequest,
+    GetConnectorResponseBody,
+    GetConnectorResponse,
     GetIndexJobStatusRequest,
     GetIndexJobStatusResponseBody,
     GetIndexJobStatusResponse,
@@ -409,6 +427,7 @@ __all__ = [
     ListChunksResponseBody,
     ListChunksResponse,
     ListFileRequest,
+    ListFileShrinkRequest,
     ListFileResponseBody,
     ListFileResponse,
     ListIndexDocumentsRequest,
@@ -474,6 +493,8 @@ __all__ = [
     UpdateTableFromAuthorizedOssResponseBody,
     UpdateTableFromAuthorizedOssResponse,
     AddCategoryResponseBodyData,
+    AddConnectorRequestFileConnectorConfig,
+    AddConnectorResponseBodyData,
     AddFileRequestParserConfig,
     AddFileResponseBodyData,
     AddFilesFromAuthorizedOssRequestFileDetails,
@@ -510,6 +531,7 @@ __all__ = [
     GetAlipayUrlResponseBodyData,
     GetAvailableParserTypesResponseBodyDataParserList,
     GetAvailableParserTypesResponseBodyData,
+    GetConnectorResponseBodyData,
     GetIndexJobStatusResponseBodyDataDocuments,
     GetIndexJobStatusResponseBodyData,
     GetParseSettingsResponseBodyDataParserConfig,
