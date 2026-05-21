@@ -21905,6 +21905,72 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_pages_with_options_async(request, runtime)
 
+    def list_postpaid_rate_plan_instances_with_options(
+        self,
+        request: main_models.ListPostpaidRatePlanInstancesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListPostpaidRatePlanInstancesResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListPostpaidRatePlanInstances',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListPostpaidRatePlanInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_postpaid_rate_plan_instances_with_options_async(
+        self,
+        request: main_models.ListPostpaidRatePlanInstancesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListPostpaidRatePlanInstancesResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListPostpaidRatePlanInstances',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListPostpaidRatePlanInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_postpaid_rate_plan_instances(
+        self,
+        request: main_models.ListPostpaidRatePlanInstancesRequest,
+    ) -> main_models.ListPostpaidRatePlanInstancesResponse:
+        runtime = RuntimeOptions()
+        return self.list_postpaid_rate_plan_instances_with_options(request, runtime)
+
+    async def list_postpaid_rate_plan_instances_async(
+        self,
+        request: main_models.ListPostpaidRatePlanInstancesRequest,
+    ) -> main_models.ListPostpaidRatePlanInstancesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_postpaid_rate_plan_instances_with_options_async(request, runtime)
+
     def list_records_with_options(
         self,
         request: main_models.ListRecordsRequest,

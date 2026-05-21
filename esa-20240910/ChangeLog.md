@@ -1,3 +1,7 @@
+2026-05-21 Version: 3.2.0
+- Support API ListPostpaidRatePlanInstances.
+
+
 2026-05-20 Version: 3.1.0
 - Support API DescribeTraceDiagnoseReport.
 - Support API GenerateTraceDiagnose.

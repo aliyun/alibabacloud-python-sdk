@@ -875,6 +875,9 @@ from ._list_pages_request import ListPagesRequest
 from ._list_pages_shrink_request import ListPagesShrinkRequest
 from ._list_pages_response_body import ListPagesResponseBody
 from ._list_pages_response import ListPagesResponse
+from ._list_postpaid_rate_plan_instances_request import ListPostpaidRatePlanInstancesRequest
+from ._list_postpaid_rate_plan_instances_response_body import ListPostpaidRatePlanInstancesResponseBody
+from ._list_postpaid_rate_plan_instances_response import ListPostpaidRatePlanInstancesResponse
 from ._list_records_request import ListRecordsRequest
 from ._list_records_response_body import ListRecordsResponseBody
 from ._list_records_response import ListRecordsResponse
@@ -1546,6 +1549,8 @@ from ._list_origin_pools_response_body import ListOriginPoolsResponseBodyOriginP
 from ._list_origin_rules_response_body import ListOriginRulesResponseBodyConfigs
 from ._list_pages_request import ListPagesRequestQueryArgs
 from ._list_pages_response_body import ListPagesResponseBodyPages
+from ._list_postpaid_rate_plan_instances_response_body import ListPostpaidRatePlanInstancesResponseBodyInstanceInfoSites
+from ._list_postpaid_rate_plan_instances_response_body import ListPostpaidRatePlanInstancesResponseBodyInstanceInfo
 from ._list_records_response_body import ListRecordsResponseBodyRecordsAuthConf
 from ._list_records_response_body import ListRecordsResponseBodyRecordsData
 from ._list_records_response_body import ListRecordsResponseBodyRecords
@@ -2489,6 +2494,9 @@ __all__ = [
     ListPagesShrinkRequest,
     ListPagesResponseBody,
     ListPagesResponse,
+    ListPostpaidRatePlanInstancesRequest,
+    ListPostpaidRatePlanInstancesResponseBody,
+    ListPostpaidRatePlanInstancesResponse,
     ListRecordsRequest,
     ListRecordsResponseBody,
     ListRecordsResponse,
@@ -3160,6 +3168,8 @@ __all__ = [
     ListOriginRulesResponseBodyConfigs,
     ListPagesRequestQueryArgs,
     ListPagesResponseBodyPages,
+    ListPostpaidRatePlanInstancesResponseBodyInstanceInfoSites,
+    ListPostpaidRatePlanInstancesResponseBodyInstanceInfo,
     ListRecordsResponseBodyRecordsAuthConf,
     ListRecordsResponseBodyRecordsData,
     ListRecordsResponseBodyRecords,
