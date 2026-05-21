@@ -14,6 +14,7 @@ class CreateApplicationVersionShrinkRequest(DaraModel):
         script_profile_shrink: str = None,
         source_version_id: str = None,
         synthesizer_config_shrink: str = None,
+        tool_config_shrink: str = None,
         transcriber_config_shrink: str = None,
     ):
         # This parameter is required.
@@ -25,6 +26,7 @@ class CreateApplicationVersionShrinkRequest(DaraModel):
         self.script_profile_shrink = script_profile_shrink
         self.source_version_id = source_version_id
         self.synthesizer_config_shrink = synthesizer_config_shrink
+        self.tool_config_shrink = tool_config_shrink
         self.transcriber_config_shrink = transcriber_config_shrink
 
     def validate(self):
@@ -56,6 +58,9 @@ class CreateApplicationVersionShrinkRequest(DaraModel):
         if self.synthesizer_config_shrink is not None:
             result['SynthesizerConfig'] = self.synthesizer_config_shrink
 
+        if self.tool_config_shrink is not None:
+            result['ToolConfig'] = self.tool_config_shrink
+
         if self.transcriber_config_shrink is not None:
             result['TranscriberConfig'] = self.transcriber_config_shrink
 
@@ -83,6 +88,9 @@ class CreateApplicationVersionShrinkRequest(DaraModel):
 
         if m.get('SynthesizerConfig') is not None:
             self.synthesizer_config_shrink = m.get('SynthesizerConfig')
+
+        if m.get('ToolConfig') is not None:
+            self.tool_config_shrink = m.get('ToolConfig')
 
         if m.get('TranscriberConfig') is not None:
             self.transcriber_config_shrink = m.get('TranscriberConfig')

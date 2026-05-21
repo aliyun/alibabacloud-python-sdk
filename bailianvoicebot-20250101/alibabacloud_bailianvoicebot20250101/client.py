@@ -244,6 +244,8 @@ class Client(OpenApiClient):
             request.script_profile_shrink = Utils.array_to_string_with_specified_style(tmp_req.script_profile, 'ScriptProfile', 'json')
         if not DaraCore.is_null(tmp_req.synthesizer_config):
             request.synthesizer_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.synthesizer_config, 'SynthesizerConfig', 'json')
+        if not DaraCore.is_null(tmp_req.tool_config):
+            request.tool_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.tool_config, 'ToolConfig', 'json')
         if not DaraCore.is_null(tmp_req.transcriber_config):
             request.transcriber_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.transcriber_config, 'TranscriberConfig', 'json')
         query = {}
@@ -261,6 +263,8 @@ class Client(OpenApiClient):
             query['SourceVersionId'] = request.source_version_id
         if not DaraCore.is_null(request.synthesizer_config_shrink):
             query['SynthesizerConfig'] = request.synthesizer_config_shrink
+        if not DaraCore.is_null(request.tool_config_shrink):
+            query['ToolConfig'] = request.tool_config_shrink
         if not DaraCore.is_null(request.transcriber_config_shrink):
             query['TranscriberConfig'] = request.transcriber_config_shrink
         req = open_api_util_models.OpenApiRequest(
@@ -298,6 +302,8 @@ class Client(OpenApiClient):
             request.script_profile_shrink = Utils.array_to_string_with_specified_style(tmp_req.script_profile, 'ScriptProfile', 'json')
         if not DaraCore.is_null(tmp_req.synthesizer_config):
             request.synthesizer_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.synthesizer_config, 'SynthesizerConfig', 'json')
+        if not DaraCore.is_null(tmp_req.tool_config):
+            request.tool_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.tool_config, 'ToolConfig', 'json')
         if not DaraCore.is_null(tmp_req.transcriber_config):
             request.transcriber_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.transcriber_config, 'TranscriberConfig', 'json')
         query = {}
@@ -315,6 +321,8 @@ class Client(OpenApiClient):
             query['SourceVersionId'] = request.source_version_id
         if not DaraCore.is_null(request.synthesizer_config_shrink):
             query['SynthesizerConfig'] = request.synthesizer_config_shrink
+        if not DaraCore.is_null(request.tool_config_shrink):
+            query['ToolConfig'] = request.tool_config_shrink
         if not DaraCore.is_null(request.transcriber_config_shrink):
             query['TranscriberConfig'] = request.transcriber_config_shrink
         req = open_api_util_models.OpenApiRequest(
@@ -2722,6 +2730,8 @@ class Client(OpenApiClient):
             request.script_profile_shrink = Utils.array_to_string_with_specified_style(tmp_req.script_profile, 'ScriptProfile', 'json')
         if not DaraCore.is_null(tmp_req.synthesizer_config):
             request.synthesizer_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.synthesizer_config, 'SynthesizerConfig', 'json')
+        if not DaraCore.is_null(tmp_req.tool_config):
+            request.tool_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.tool_config, 'ToolConfig', 'json')
         if not DaraCore.is_null(tmp_req.transcriber_config):
             request.transcriber_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.transcriber_config, 'TranscriberConfig', 'json')
         query = {}
@@ -2737,6 +2747,8 @@ class Client(OpenApiClient):
             query['ScriptProfile'] = request.script_profile_shrink
         if not DaraCore.is_null(request.synthesizer_config_shrink):
             query['SynthesizerConfig'] = request.synthesizer_config_shrink
+        if not DaraCore.is_null(request.tool_config_shrink):
+            query['ToolConfig'] = request.tool_config_shrink
         if not DaraCore.is_null(request.transcriber_config_shrink):
             query['TranscriberConfig'] = request.transcriber_config_shrink
         if not DaraCore.is_null(request.version_id):
@@ -2776,6 +2788,8 @@ class Client(OpenApiClient):
             request.script_profile_shrink = Utils.array_to_string_with_specified_style(tmp_req.script_profile, 'ScriptProfile', 'json')
         if not DaraCore.is_null(tmp_req.synthesizer_config):
             request.synthesizer_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.synthesizer_config, 'SynthesizerConfig', 'json')
+        if not DaraCore.is_null(tmp_req.tool_config):
+            request.tool_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.tool_config, 'ToolConfig', 'json')
         if not DaraCore.is_null(tmp_req.transcriber_config):
             request.transcriber_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.transcriber_config, 'TranscriberConfig', 'json')
         query = {}
@@ -2791,6 +2805,8 @@ class Client(OpenApiClient):
             query['ScriptProfile'] = request.script_profile_shrink
         if not DaraCore.is_null(request.synthesizer_config_shrink):
             query['SynthesizerConfig'] = request.synthesizer_config_shrink
+        if not DaraCore.is_null(request.tool_config_shrink):
+            query['ToolConfig'] = request.tool_config_shrink
         if not DaraCore.is_null(request.transcriber_config_shrink):
             query['TranscriberConfig'] = request.transcriber_config_shrink
         if not DaraCore.is_null(request.version_id):

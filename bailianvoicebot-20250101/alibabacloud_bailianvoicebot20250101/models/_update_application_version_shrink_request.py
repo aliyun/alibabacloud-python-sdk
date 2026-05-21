@@ -13,6 +13,7 @@ class UpdateApplicationVersionShrinkRequest(DaraModel):
         rag_config_shrink: str = None,
         script_profile_shrink: str = None,
         synthesizer_config_shrink: str = None,
+        tool_config_shrink: str = None,
         transcriber_config_shrink: str = None,
         version_id: str = None,
     ):
@@ -25,6 +26,7 @@ class UpdateApplicationVersionShrinkRequest(DaraModel):
         # This parameter is required.
         self.script_profile_shrink = script_profile_shrink
         self.synthesizer_config_shrink = synthesizer_config_shrink
+        self.tool_config_shrink = tool_config_shrink
         self.transcriber_config_shrink = transcriber_config_shrink
         # This parameter is required.
         self.version_id = version_id
@@ -55,6 +57,9 @@ class UpdateApplicationVersionShrinkRequest(DaraModel):
         if self.synthesizer_config_shrink is not None:
             result['SynthesizerConfig'] = self.synthesizer_config_shrink
 
+        if self.tool_config_shrink is not None:
+            result['ToolConfig'] = self.tool_config_shrink
+
         if self.transcriber_config_shrink is not None:
             result['TranscriberConfig'] = self.transcriber_config_shrink
 
@@ -82,6 +87,9 @@ class UpdateApplicationVersionShrinkRequest(DaraModel):
 
         if m.get('SynthesizerConfig') is not None:
             self.synthesizer_config_shrink = m.get('SynthesizerConfig')
+
+        if m.get('ToolConfig') is not None:
+            self.tool_config_shrink = m.get('ToolConfig')
 
         if m.get('TranscriberConfig') is not None:
             self.transcriber_config_shrink = m.get('TranscriberConfig')
