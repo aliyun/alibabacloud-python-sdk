@@ -5882,6 +5882,8 @@ class Client(OpenApiClient):
     ) -> main_models.ListHttpApiRoutesResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.backend_service_name):
+            query['backendServiceName'] = request.backend_service_name
         if not DaraCore.is_null(request.consumer_authorization_rule_id):
             query['consumerAuthorizationRuleId'] = request.consumer_authorization_rule_id
         if not DaraCore.is_null(request.deploy_statuses):
@@ -5939,6 +5941,8 @@ class Client(OpenApiClient):
     ) -> main_models.ListHttpApiRoutesResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.backend_service_name):
+            query['backendServiceName'] = request.backend_service_name
         if not DaraCore.is_null(request.consumer_authorization_rule_id):
             query['consumerAuthorizationRuleId'] = request.consumer_authorization_rule_id
         if not DaraCore.is_null(request.deploy_statuses):

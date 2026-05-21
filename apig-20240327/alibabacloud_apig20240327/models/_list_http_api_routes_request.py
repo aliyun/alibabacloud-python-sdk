@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class ListHttpApiRoutesRequest(DaraModel):
     def __init__(
         self,
+        backend_service_name: str = None,
         consumer_authorization_rule_id: str = None,
         deploy_statuses: str = None,
         domain_id: str = None,
@@ -22,6 +23,7 @@ class ListHttpApiRoutesRequest(DaraModel):
         with_consumer_info_by_id: str = None,
         with_plugin_attachment_by_plugin_id: str = None,
     ):
+        self.backend_service_name = backend_service_name
         # The string that is used to filter routes based on consumer authentication rules. Only authorized APIs are returned.
         self.consumer_authorization_rule_id = consumer_authorization_rule_id
         # The deployment state of the route.
@@ -69,6 +71,9 @@ class ListHttpApiRoutesRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.backend_service_name is not None:
+            result['backendServiceName'] = self.backend_service_name
+
         if self.consumer_authorization_rule_id is not None:
             result['consumerAuthorizationRuleId'] = self.consumer_authorization_rule_id
 
@@ -115,6 +120,9 @@ class ListHttpApiRoutesRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('backendServiceName') is not None:
+            self.backend_service_name = m.get('backendServiceName')
+
         if m.get('consumerAuthorizationRuleId') is not None:
             self.consumer_authorization_rule_id = m.get('consumerAuthorizationRuleId')
 

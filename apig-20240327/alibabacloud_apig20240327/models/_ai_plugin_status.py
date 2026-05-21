@@ -2,14 +2,14 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import Dict
+from typing import List, Dict, Any
 
 from darabonba.model import DaraModel
 
 class AiPluginStatus(DaraModel):
     def __init__(
         self,
-        error_logs: Dict[str, str] = None,
+        error_logs: List[Dict[str, Any]] = None,
         plugin_id: str = None,
         service_healthy: bool = None,
     ):

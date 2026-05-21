@@ -15,6 +15,8 @@ class HttpApiDeployConfig(DaraModel):
         builtin_route_names: List[str] = None,
         custom_domain_ids: List[str] = None,
         custom_domain_infos: List[main_models.HttpApiDeployConfigCustomDomainInfos] = None,
+        env_domain_ids: List[str] = None,
+        env_domain_infos: List[main_models.HttpApiDeployConfigEnvDomainInfos] = None,
         environment_id: str = None,
         gateway_id: str = None,
         gateway_info: main_models.GatewayInfo = None,
@@ -34,6 +36,8 @@ class HttpApiDeployConfig(DaraModel):
         self.custom_domain_ids = custom_domain_ids
         # The information about the custom domain names.
         self.custom_domain_infos = custom_domain_infos
+        self.env_domain_ids = env_domain_ids
+        self.env_domain_infos = env_domain_infos
         # The environment ID.
         self.environment_id = environment_id
         # The instance ID.
@@ -56,6 +60,10 @@ class HttpApiDeployConfig(DaraModel):
     def validate(self):
         if self.custom_domain_infos:
             for v1 in self.custom_domain_infos:
+                 if v1:
+                    v1.validate()
+        if self.env_domain_infos:
+            for v1 in self.env_domain_infos:
                  if v1:
                     v1.validate()
         if self.gateway_info:
@@ -98,6 +106,14 @@ class HttpApiDeployConfig(DaraModel):
         if self.custom_domain_infos is not None:
             for k1 in self.custom_domain_infos:
                 result['customDomainInfos'].append(k1.to_map() if k1 else None)
+
+        if self.env_domain_ids is not None:
+            result['envDomainIds'] = self.env_domain_ids
+
+        result['envDomainInfos'] = []
+        if self.env_domain_infos is not None:
+            for k1 in self.env_domain_infos:
+                result['envDomainInfos'].append(k1.to_map() if k1 else None)
 
         if self.environment_id is not None:
             result['environmentId'] = self.environment_id
@@ -153,6 +169,15 @@ class HttpApiDeployConfig(DaraModel):
             for k1 in m.get('customDomainInfos'):
                 temp_model = main_models.HttpApiDeployConfigCustomDomainInfos()
                 self.custom_domain_infos.append(temp_model.from_map(k1))
+
+        if m.get('envDomainIds') is not None:
+            self.env_domain_ids = m.get('envDomainIds')
+
+        self.env_domain_infos = []
+        if m.get('envDomainInfos') is not None:
+            for k1 in m.get('envDomainInfos'):
+                temp_model = main_models.HttpApiDeployConfigEnvDomainInfos()
+                self.env_domain_infos.append(temp_model.from_map(k1))
 
         if m.get('environmentId') is not None:
             self.environment_id = m.get('environmentId')
@@ -434,6 +459,49 @@ class HttpApiDeployConfigServiceConfigsObservabilityRouteConfig(DaraModel):
 
         if m.get('rateLimit') is not None:
             self.rate_limit = m.get('rateLimit')
+
+        return self
+
+class HttpApiDeployConfigEnvDomainInfos(DaraModel):
+    def __init__(
+        self,
+        domain_id: str = None,
+        name: str = None,
+        protocol: str = None,
+    ):
+        self.domain_id = domain_id
+        self.name = name
+        self.protocol = protocol
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.domain_id is not None:
+            result['domainId'] = self.domain_id
+
+        if self.name is not None:
+            result['name'] = self.name
+
+        if self.protocol is not None:
+            result['protocol'] = self.protocol
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('domainId') is not None:
+            self.domain_id = m.get('domainId')
+
+        if m.get('name') is not None:
+            self.name = m.get('name')
+
+        if m.get('protocol') is not None:
+            self.protocol = m.get('protocol')
 
         return self
 

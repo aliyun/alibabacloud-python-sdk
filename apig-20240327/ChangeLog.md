@@ -1,3 +1,6 @@
+2026-05-21 Version: 7.0.3
+- Generated python 2024-03-27 for APIG.
+
 2026-04-21 Version: 7.0.1
 - Update API DeployHttpApi: add response parameters Body.data.
 

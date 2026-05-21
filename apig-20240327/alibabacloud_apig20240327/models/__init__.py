@@ -439,6 +439,7 @@ from ._http_api_api_info import HttpApiApiInfoIngressInfoEnvironmentInfo
 from ._http_api_api_info import HttpApiApiInfoIngressInfoK8sClusterInfo
 from ._http_api_api_info import HttpApiApiInfoIngressInfo
 from ._http_api_deploy_config import HttpApiDeployConfigCustomDomainInfos
+from ._http_api_deploy_config import HttpApiDeployConfigEnvDomainInfos
 from ._http_api_deploy_config import HttpApiDeployConfigServiceConfigsObservabilityRouteConfig
 from ._http_api_deploy_config import HttpApiDeployConfigServiceConfigs
 from ._http_api_deploy_config import HttpApiDeployConfigSubDomains
@@ -1087,6 +1088,7 @@ __all__ = [
     HttpApiApiInfoIngressInfoK8sClusterInfo,
     HttpApiApiInfoIngressInfo,
     HttpApiDeployConfigCustomDomainInfos,
+    HttpApiDeployConfigEnvDomainInfos,
     HttpApiDeployConfigServiceConfigsObservabilityRouteConfig,
     HttpApiDeployConfigServiceConfigs,
     HttpApiDeployConfigSubDomains,
