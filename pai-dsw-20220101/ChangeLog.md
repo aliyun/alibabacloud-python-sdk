@@ -1,3 +1,9 @@
+2026-05-21 Version: 2.3.10
+- Update API GetInstanceEvents: add request parameters Offset.
+- Update API GetInstanceEvents: add request parameters Reverse.
+- Update API GetInstanceEvents: add response parameters Body.TotalCount.
+
+
 2026-03-02 Version: 2.3.7
 - Generated python 2022-01-01 for pai-dsw.
 

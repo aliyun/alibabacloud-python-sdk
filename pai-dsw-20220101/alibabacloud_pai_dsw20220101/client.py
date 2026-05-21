@@ -665,6 +665,174 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_sanity_check_task_with_options_async(check_type, request, headers, runtime)
 
+    def create_temp_file_with_options(
+        self,
+        request: main_models.CreateTempFileRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateTempFileResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.capacity):
+            body['Capacity'] = request.capacity
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.prefix):
+            body['Prefix'] = request.prefix
+        if not DaraCore.is_null(request.task_id):
+            body['TaskId'] = request.task_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateTempFile',
+            version = '2022-01-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/tempfiles',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateTempFileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_temp_file_with_options_async(
+        self,
+        request: main_models.CreateTempFileRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateTempFileResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.capacity):
+            body['Capacity'] = request.capacity
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.prefix):
+            body['Prefix'] = request.prefix
+        if not DaraCore.is_null(request.task_id):
+            body['TaskId'] = request.task_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateTempFile',
+            version = '2022-01-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/tempfiles',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateTempFileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_temp_file(
+        self,
+        request: main_models.CreateTempFileRequest,
+    ) -> main_models.CreateTempFileResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_temp_file_with_options(request, headers, runtime)
+
+    async def create_temp_file_async(
+        self,
+        request: main_models.CreateTempFileRequest,
+    ) -> main_models.CreateTempFileResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_temp_file_with_options_async(request, headers, runtime)
+
+    def create_temp_file_task_with_options(
+        self,
+        request: main_models.CreateTempFileTaskRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateTempFileTaskResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateTempFileTask',
+            version = '2022-01-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/tempfiletasks',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateTempFileTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_temp_file_task_with_options_async(
+        self,
+        request: main_models.CreateTempFileTaskRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateTempFileTaskResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateTempFileTask',
+            version = '2022-01-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/tempfiletasks',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateTempFileTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_temp_file_task(
+        self,
+        request: main_models.CreateTempFileTaskRequest,
+    ) -> main_models.CreateTempFileTaskResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_temp_file_task_with_options(request, headers, runtime)
+
+    async def create_temp_file_task_async(
+        self,
+        request: main_models.CreateTempFileTaskRequest,
+    ) -> main_models.CreateTempFileTaskResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_temp_file_task_with_options_async(request, headers, runtime)
+
     def delete_idle_instance_culler_with_options(
         self,
         instance_id: str,
@@ -1089,6 +1257,214 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_instances_with_options_async(request, headers, runtime)
 
+    def delete_temp_file_with_options(
+        self,
+        temp_file_id: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteTempFileResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteTempFile',
+            version = '2022-01-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/tempfiles/{DaraURL.percent_encode(temp_file_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteTempFileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_temp_file_with_options_async(
+        self,
+        temp_file_id: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteTempFileResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteTempFile',
+            version = '2022-01-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/tempfiles/{DaraURL.percent_encode(temp_file_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteTempFileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_temp_file(
+        self,
+        temp_file_id: str,
+    ) -> main_models.DeleteTempFileResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_temp_file_with_options(temp_file_id, headers, runtime)
+
+    async def delete_temp_file_async(
+        self,
+        temp_file_id: str,
+    ) -> main_models.DeleteTempFileResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_temp_file_with_options_async(temp_file_id, headers, runtime)
+
+    def delete_temp_file_task_with_options(
+        self,
+        temp_file_task_id: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteTempFileTaskResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteTempFileTask',
+            version = '2022-01-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/tempfiletasks/{DaraURL.percent_encode(temp_file_task_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteTempFileTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_temp_file_task_with_options_async(
+        self,
+        temp_file_task_id: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteTempFileTaskResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteTempFileTask',
+            version = '2022-01-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/tempfiletasks/{DaraURL.percent_encode(temp_file_task_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteTempFileTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_temp_file_task(
+        self,
+        temp_file_task_id: str,
+    ) -> main_models.DeleteTempFileTaskResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_temp_file_task_with_options(temp_file_task_id, headers, runtime)
+
+    async def delete_temp_file_task_async(
+        self,
+        temp_file_task_id: str,
+    ) -> main_models.DeleteTempFileTaskResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_temp_file_task_with_options_async(temp_file_task_id, headers, runtime)
+
+    def delete_temp_file_tasks_with_options(
+        self,
+        request: main_models.DeleteTempFileTasksRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteTempFileTasksResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.temp_file_task_ids):
+            body['TempFileTaskIds'] = request.temp_file_task_ids
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteTempFileTasks',
+            version = '2022-01-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/batch/tempfiletasks/delete',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteTempFileTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_temp_file_tasks_with_options_async(
+        self,
+        request: main_models.DeleteTempFileTasksRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteTempFileTasksResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.temp_file_task_ids):
+            body['TempFileTaskIds'] = request.temp_file_task_ids
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteTempFileTasks',
+            version = '2022-01-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/batch/tempfiletasks/delete',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteTempFileTasksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_temp_file_tasks(
+        self,
+        request: main_models.DeleteTempFileTasksRequest,
+    ) -> main_models.DeleteTempFileTasksResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_temp_file_tasks_with_options(request, headers, runtime)
+
+    async def delete_temp_file_tasks_async(
+        self,
+        request: main_models.DeleteTempFileTasksRequest,
+    ) -> main_models.DeleteTempFileTasksResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_temp_file_tasks_with_options_async(request, headers, runtime)
+
     def get_idle_instance_culler_with_options(
         self,
         instance_id: str,
@@ -1254,6 +1630,10 @@ class Client(OpenApiClient):
             query['EventLevel'] = request.event_level
         if not DaraCore.is_null(request.max_events_num):
             query['MaxEventsNum'] = request.max_events_num
+        if not DaraCore.is_null(request.offset):
+            query['Offset'] = request.offset
+        if not DaraCore.is_null(request.reverse):
+            query['Reverse'] = request.reverse
         if not DaraCore.is_null(request.start_time):
             query['StartTime'] = request.start_time
         if not DaraCore.is_null(request.token):
@@ -1293,6 +1673,10 @@ class Client(OpenApiClient):
             query['EventLevel'] = request.event_level
         if not DaraCore.is_null(request.max_events_num):
             query['MaxEventsNum'] = request.max_events_num
+        if not DaraCore.is_null(request.offset):
+            query['Offset'] = request.offset
+        if not DaraCore.is_null(request.reverse):
+            query['Reverse'] = request.reverse
         if not DaraCore.is_null(request.start_time):
             query['StartTime'] = request.start_time
         if not DaraCore.is_null(request.token):
@@ -1942,6 +2326,138 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.get_sanity_check_task_with_options_async(check_type, task_id, request, headers, runtime)
+
+    def get_temp_file_with_options(
+        self,
+        temp_file_id: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetTempFileResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetTempFile',
+            version = '2022-01-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/tempfiles/{DaraURL.percent_encode(temp_file_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetTempFileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_temp_file_with_options_async(
+        self,
+        temp_file_id: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetTempFileResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetTempFile',
+            version = '2022-01-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/tempfiles/{DaraURL.percent_encode(temp_file_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetTempFileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_temp_file(
+        self,
+        temp_file_id: str,
+    ) -> main_models.GetTempFileResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_temp_file_with_options(temp_file_id, headers, runtime)
+
+    async def get_temp_file_async(
+        self,
+        temp_file_id: str,
+    ) -> main_models.GetTempFileResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_temp_file_with_options_async(temp_file_id, headers, runtime)
+
+    def get_temp_file_task_with_options(
+        self,
+        temp_file_task_id: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetTempFileTaskResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetTempFileTask',
+            version = '2022-01-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/tempfiletasks/{DaraURL.percent_encode(temp_file_task_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetTempFileTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_temp_file_task_with_options_async(
+        self,
+        temp_file_task_id: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetTempFileTaskResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetTempFileTask',
+            version = '2022-01-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/tempfiletasks/{DaraURL.percent_encode(temp_file_task_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetTempFileTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_temp_file_task(
+        self,
+        temp_file_task_id: str,
+    ) -> main_models.GetTempFileTaskResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_temp_file_task_with_options(temp_file_task_id, headers, runtime)
+
+    async def get_temp_file_task_async(
+        self,
+        temp_file_task_id: str,
+    ) -> main_models.GetTempFileTaskResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_temp_file_task_with_options_async(temp_file_task_id, headers, runtime)
 
     def get_token_with_options(
         self,
@@ -2753,6 +3269,110 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_system_logs_with_options_async(request, headers, runtime)
 
+    def list_temp_files_with_options(
+        self,
+        request: main_models.ListTempFilesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListTempFilesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.delimiter):
+            query['Delimiter'] = request.delimiter
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.order):
+            query['Order'] = request.order
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.prefix):
+            query['Prefix'] = request.prefix
+        if not DaraCore.is_null(request.sort_by):
+            query['SortBy'] = request.sort_by
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListTempFiles',
+            version = '2022-01-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/tempfiles',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListTempFilesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_temp_files_with_options_async(
+        self,
+        request: main_models.ListTempFilesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListTempFilesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.delimiter):
+            query['Delimiter'] = request.delimiter
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.order):
+            query['Order'] = request.order
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.prefix):
+            query['Prefix'] = request.prefix
+        if not DaraCore.is_null(request.sort_by):
+            query['SortBy'] = request.sort_by
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListTempFiles',
+            version = '2022-01-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/tempfiles',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListTempFilesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_temp_files(
+        self,
+        request: main_models.ListTempFilesRequest,
+    ) -> main_models.ListTempFilesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_temp_files_with_options(request, headers, runtime)
+
+    async def list_temp_files_async(
+        self,
+        request: main_models.ListTempFilesRequest,
+    ) -> main_models.ListTempFilesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_temp_files_with_options_async(request, headers, runtime)
+
     def start_instance_with_options(
         self,
         instance_id: str,
@@ -3266,3 +3886,167 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.update_instance_labels_with_options_async(instance_id, request, headers, runtime)
+
+    def update_temp_file_with_options(
+        self,
+        temp_file_id: str,
+        request: main_models.UpdateTempFileRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateTempFileResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.gmt_expired_time):
+            body['GmtExpiredTime'] = request.gmt_expired_time
+        if not DaraCore.is_null(request.status):
+            body['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateTempFile',
+            version = '2022-01-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/tempfiles/{DaraURL.percent_encode(temp_file_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateTempFileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_temp_file_with_options_async(
+        self,
+        temp_file_id: str,
+        request: main_models.UpdateTempFileRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateTempFileResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.gmt_expired_time):
+            body['GmtExpiredTime'] = request.gmt_expired_time
+        if not DaraCore.is_null(request.status):
+            body['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateTempFile',
+            version = '2022-01-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/tempfiles/{DaraURL.percent_encode(temp_file_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateTempFileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_temp_file(
+        self,
+        temp_file_id: str,
+        request: main_models.UpdateTempFileRequest,
+    ) -> main_models.UpdateTempFileResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_temp_file_with_options(temp_file_id, request, headers, runtime)
+
+    async def update_temp_file_async(
+        self,
+        temp_file_id: str,
+        request: main_models.UpdateTempFileRequest,
+    ) -> main_models.UpdateTempFileResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_temp_file_with_options_async(temp_file_id, request, headers, runtime)
+
+    def update_temp_file_task_with_options(
+        self,
+        temp_file_task_id: str,
+        request: main_models.UpdateTempFileTaskRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateTempFileTaskResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.gmt_expired_time):
+            body['GmtExpiredTime'] = request.gmt_expired_time
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateTempFileTask',
+            version = '2022-01-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/tempfiletasks/{DaraURL.percent_encode(temp_file_task_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateTempFileTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_temp_file_task_with_options_async(
+        self,
+        temp_file_task_id: str,
+        request: main_models.UpdateTempFileTaskRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateTempFileTaskResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.gmt_expired_time):
+            body['GmtExpiredTime'] = request.gmt_expired_time
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateTempFileTask',
+            version = '2022-01-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/tempfiletasks/{DaraURL.percent_encode(temp_file_task_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateTempFileTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_temp_file_task(
+        self,
+        temp_file_task_id: str,
+        request: main_models.UpdateTempFileTaskRequest,
+    ) -> main_models.UpdateTempFileTaskResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_temp_file_task_with_options(temp_file_task_id, request, headers, runtime)
+
+    async def update_temp_file_task_async(
+        self,
+        temp_file_task_id: str,
+        request: main_models.UpdateTempFileTaskRequest,
+    ) -> main_models.UpdateTempFileTaskResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_temp_file_task_with_options_async(temp_file_task_id, request, headers, runtime)

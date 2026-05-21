@@ -2,47 +2,22 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List
-
 from darabonba.model import DaraModel
 
-class GetInstanceEventsResponseBody(DaraModel):
+class DeleteTempFileTasksResponseBody(DaraModel):
     def __init__(
         self,
         code: str = None,
-        events: List[str] = None,
         http_status_code: int = None,
-        instance_id: str = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
-        total_count: int = None,
     ):
-        # The status code. Valid values:
-        # 
-        # *   InternalError: an internal error. All errors, except for parameter validation errors, are classified as internal errors.
-        # *   ValidationError: a parameter validation error.
         self.code = code
-        # The events.
-        self.events = events
-        # The HTTP status code. Valid values:
-        # 
-        # *   400: One or more parameters are invalid.
-        # *   404: The instance does not exist.
-        # *   200: The request is normal.
         self.http_status_code = http_status_code
-        # The instance ID.
-        self.instance_id = instance_id
-        # The response message.
         self.message = message
-        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
-        # 
-        # *   true
-        # *   false
         self.success = success
-        self.total_count = total_count
 
     def validate(self):
         pass
@@ -55,14 +30,8 @@ class GetInstanceEventsResponseBody(DaraModel):
         if self.code is not None:
             result['Code'] = self.code
 
-        if self.events is not None:
-            result['Events'] = self.events
-
         if self.http_status_code is not None:
             result['HttpStatusCode'] = self.http_status_code
-
-        if self.instance_id is not None:
-            result['InstanceId'] = self.instance_id
 
         if self.message is not None:
             result['Message'] = self.message
@@ -73,9 +42,6 @@ class GetInstanceEventsResponseBody(DaraModel):
         if self.success is not None:
             result['Success'] = self.success
 
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
-
         return result
 
     def from_map(self, m: dict = None):
@@ -83,14 +49,8 @@ class GetInstanceEventsResponseBody(DaraModel):
         if m.get('Code') is not None:
             self.code = m.get('Code')
 
-        if m.get('Events') is not None:
-            self.events = m.get('Events')
-
         if m.get('HttpStatusCode') is not None:
             self.http_status_code = m.get('HttpStatusCode')
-
-        if m.get('InstanceId') is not None:
-            self.instance_id = m.get('InstanceId')
 
         if m.get('Message') is not None:
             self.message = m.get('Message')
@@ -100,9 +60,6 @@ class GetInstanceEventsResponseBody(DaraModel):
 
         if m.get('Success') is not None:
             self.success = m.get('Success')
-
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
 
         return self
 

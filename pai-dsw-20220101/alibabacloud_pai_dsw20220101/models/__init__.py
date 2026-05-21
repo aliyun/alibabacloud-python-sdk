@@ -29,6 +29,12 @@ from ._create_instance_snapshot_response import CreateInstanceSnapshotResponse
 from ._create_sanity_check_task_request import CreateSanityCheckTaskRequest
 from ._create_sanity_check_task_response_body import CreateSanityCheckTaskResponseBody
 from ._create_sanity_check_task_response import CreateSanityCheckTaskResponse
+from ._create_temp_file_request import CreateTempFileRequest
+from ._create_temp_file_response_body import CreateTempFileResponseBody
+from ._create_temp_file_response import CreateTempFileResponse
+from ._create_temp_file_task_request import CreateTempFileTaskRequest
+from ._create_temp_file_task_response_body import CreateTempFileTaskResponseBody
+from ._create_temp_file_task_response import CreateTempFileTaskResponse
 from ._delete_idle_instance_culler_response_body import DeleteIdleInstanceCullerResponseBody
 from ._delete_idle_instance_culler_response import DeleteIdleInstanceCullerResponse
 from ._delete_instance_response_body import DeleteInstanceResponseBody
@@ -43,6 +49,13 @@ from ._delete_instance_snapshot_response import DeleteInstanceSnapshotResponse
 from ._delete_instances_request import DeleteInstancesRequest
 from ._delete_instances_response_body import DeleteInstancesResponseBody
 from ._delete_instances_response import DeleteInstancesResponse
+from ._delete_temp_file_response_body import DeleteTempFileResponseBody
+from ._delete_temp_file_response import DeleteTempFileResponse
+from ._delete_temp_file_task_response_body import DeleteTempFileTaskResponseBody
+from ._delete_temp_file_task_response import DeleteTempFileTaskResponse
+from ._delete_temp_file_tasks_request import DeleteTempFileTasksRequest
+from ._delete_temp_file_tasks_response_body import DeleteTempFileTasksResponseBody
+from ._delete_temp_file_tasks_response import DeleteTempFileTasksResponse
 from ._get_idle_instance_culler_response_body import GetIdleInstanceCullerResponseBody
 from ._get_idle_instance_culler_response import GetIdleInstanceCullerResponse
 from ._get_instance_request import GetInstanceRequest
@@ -70,6 +83,10 @@ from ._get_resource_group_statistics_response import GetResourceGroupStatisticsR
 from ._get_sanity_check_task_request import GetSanityCheckTaskRequest
 from ._get_sanity_check_task_response_body import GetSanityCheckTaskResponseBody
 from ._get_sanity_check_task_response import GetSanityCheckTaskResponse
+from ._get_temp_file_response_body import GetTempFileResponseBody
+from ._get_temp_file_response import GetTempFileResponse
+from ._get_temp_file_task_response_body import GetTempFileTaskResponseBody
+from ._get_temp_file_task_response import GetTempFileTaskResponse
 from ._get_token_request import GetTokenRequest
 from ._get_token_response_body import GetTokenResponseBody
 from ._get_token_response import GetTokenResponse
@@ -94,6 +111,9 @@ from ._list_instances_response import ListInstancesResponse
 from ._list_system_logs_request import ListSystemLogsRequest
 from ._list_system_logs_response_body import ListSystemLogsResponseBody
 from ._list_system_logs_response import ListSystemLogsResponse
+from ._list_temp_files_request import ListTempFilesRequest
+from ._list_temp_files_response_body import ListTempFilesResponseBody
+from ._list_temp_files_response import ListTempFilesResponse
 from ._start_instance_response_body import StartInstanceResponseBody
 from ._start_instance_response import StartInstanceResponse
 from ._stop_instance_request import StopInstanceRequest
@@ -108,6 +128,12 @@ from ._update_instance_response import UpdateInstanceResponse
 from ._update_instance_labels_request import UpdateInstanceLabelsRequest
 from ._update_instance_labels_response_body import UpdateInstanceLabelsResponseBody
 from ._update_instance_labels_response import UpdateInstanceLabelsResponse
+from ._update_temp_file_request import UpdateTempFileRequest
+from ._update_temp_file_response_body import UpdateTempFileResponseBody
+from ._update_temp_file_response import UpdateTempFileResponse
+from ._update_temp_file_task_request import UpdateTempFileTaskRequest
+from ._update_temp_file_task_response_body import UpdateTempFileTaskResponseBody
+from ._update_temp_file_task_response import UpdateTempFileTaskResponse
 from ._credential_config import CredentialConfigConfigsRolesUserInfo
 from ._credential_config import CredentialConfigConfigsRoles
 from ._credential_config import CredentialConfigConfigs
@@ -170,6 +196,8 @@ from ._list_instances_response_body import ListInstancesResponseBodyInstancesTag
 from ._list_instances_response_body import ListInstancesResponseBodyInstancesUserVpc
 from ._list_instances_response_body import ListInstancesResponseBodyInstances
 from ._list_system_logs_response_body import ListSystemLogsResponseBodySystemLogs
+from ._list_temp_files_response_body import ListTempFilesResponseBodyQuota
+from ._list_temp_files_response_body import ListTempFilesResponseBodyTempFiles
 from ._update_instance_request import UpdateInstanceRequestAffinityCPU
 from ._update_instance_request import UpdateInstanceRequestAffinity
 from ._update_instance_request import UpdateInstanceRequestAssignNodeSpec
@@ -210,6 +238,12 @@ __all__ = [
     CreateSanityCheckTaskRequest,
     CreateSanityCheckTaskResponseBody,
     CreateSanityCheckTaskResponse,
+    CreateTempFileRequest,
+    CreateTempFileResponseBody,
+    CreateTempFileResponse,
+    CreateTempFileTaskRequest,
+    CreateTempFileTaskResponseBody,
+    CreateTempFileTaskResponse,
     DeleteIdleInstanceCullerResponseBody,
     DeleteIdleInstanceCullerResponse,
     DeleteInstanceResponseBody,
@@ -224,6 +258,13 @@ __all__ = [
     DeleteInstancesRequest,
     DeleteInstancesResponseBody,
     DeleteInstancesResponse,
+    DeleteTempFileResponseBody,
+    DeleteTempFileResponse,
+    DeleteTempFileTaskResponseBody,
+    DeleteTempFileTaskResponse,
+    DeleteTempFileTasksRequest,
+    DeleteTempFileTasksResponseBody,
+    DeleteTempFileTasksResponse,
     GetIdleInstanceCullerResponseBody,
     GetIdleInstanceCullerResponse,
     GetInstanceRequest,
@@ -251,6 +292,10 @@ __all__ = [
     GetSanityCheckTaskRequest,
     GetSanityCheckTaskResponseBody,
     GetSanityCheckTaskResponse,
+    GetTempFileResponseBody,
+    GetTempFileResponse,
+    GetTempFileTaskResponseBody,
+    GetTempFileTaskResponse,
     GetTokenRequest,
     GetTokenResponseBody,
     GetTokenResponse,
@@ -275,6 +320,9 @@ __all__ = [
     ListSystemLogsRequest,
     ListSystemLogsResponseBody,
     ListSystemLogsResponse,
+    ListTempFilesRequest,
+    ListTempFilesResponseBody,
+    ListTempFilesResponse,
     StartInstanceResponseBody,
     StartInstanceResponse,
     StopInstanceRequest,
@@ -289,6 +337,12 @@ __all__ = [
     UpdateInstanceLabelsRequest,
     UpdateInstanceLabelsResponseBody,
     UpdateInstanceLabelsResponse,
+    UpdateTempFileRequest,
+    UpdateTempFileResponseBody,
+    UpdateTempFileResponse,
+    UpdateTempFileTaskRequest,
+    UpdateTempFileTaskResponseBody,
+    UpdateTempFileTaskResponse,
     CredentialConfigConfigsRolesUserInfo,
     CredentialConfigConfigsRoles,
     CredentialConfigConfigs,
@@ -351,6 +405,8 @@ __all__ = [
     ListInstancesResponseBodyInstancesUserVpc,
     ListInstancesResponseBodyInstances,
     ListSystemLogsResponseBodySystemLogs,
+    ListTempFilesResponseBodyQuota,
+    ListTempFilesResponseBodyTempFiles,
     UpdateInstanceRequestAffinityCPU,
     UpdateInstanceRequestAffinity,
     UpdateInstanceRequestAssignNodeSpec,

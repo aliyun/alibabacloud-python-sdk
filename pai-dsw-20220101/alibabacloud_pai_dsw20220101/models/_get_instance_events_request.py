@@ -10,6 +10,8 @@ class GetInstanceEventsRequest(DaraModel):
         end_time: str = None,
         event_level: str = None,
         max_events_num: int = None,
+        offset: int = None,
+        reverse: bool = None,
         start_time: str = None,
         token: str = None,
     ):
@@ -18,6 +20,8 @@ class GetInstanceEventsRequest(DaraModel):
         self.event_level = event_level
         # The maximum number of events. Default value: 2000.
         self.max_events_num = max_events_num
+        self.offset = offset
+        self.reverse = reverse
         # The beginning of the time range to query.
         self.start_time = start_time
         # The token used to share the URL.
@@ -40,6 +44,12 @@ class GetInstanceEventsRequest(DaraModel):
         if self.max_events_num is not None:
             result['MaxEventsNum'] = self.max_events_num
 
+        if self.offset is not None:
+            result['Offset'] = self.offset
+
+        if self.reverse is not None:
+            result['Reverse'] = self.reverse
+
         if self.start_time is not None:
             result['StartTime'] = self.start_time
 
@@ -58,6 +68,12 @@ class GetInstanceEventsRequest(DaraModel):
 
         if m.get('MaxEventsNum') is not None:
             self.max_events_num = m.get('MaxEventsNum')
+
+        if m.get('Offset') is not None:
+            self.offset = m.get('Offset')
+
+        if m.get('Reverse') is not None:
+            self.reverse = m.get('Reverse')
 
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')

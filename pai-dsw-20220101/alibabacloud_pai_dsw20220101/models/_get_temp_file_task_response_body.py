@@ -2,47 +2,37 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List
-
 from darabonba.model import DaraModel
 
-class GetInstanceEventsResponseBody(DaraModel):
+class GetTempFileTaskResponseBody(DaraModel):
     def __init__(
         self,
         code: str = None,
-        events: List[str] = None,
+        gmt_create_time: str = None,
+        gmt_expired_time: str = None,
+        gmt_modified_time: str = None,
         http_status_code: int = None,
         instance_id: str = None,
         message: str = None,
+        owner_id: str = None,
         request_id: str = None,
         success: bool = None,
-        total_count: int = None,
+        user_id: str = None,
+        uuid: str = None,
     ):
-        # The status code. Valid values:
-        # 
-        # *   InternalError: an internal error. All errors, except for parameter validation errors, are classified as internal errors.
-        # *   ValidationError: a parameter validation error.
         self.code = code
-        # The events.
-        self.events = events
-        # The HTTP status code. Valid values:
-        # 
-        # *   400: One or more parameters are invalid.
-        # *   404: The instance does not exist.
-        # *   200: The request is normal.
+        self.gmt_create_time = gmt_create_time
+        self.gmt_expired_time = gmt_expired_time
+        self.gmt_modified_time = gmt_modified_time
         self.http_status_code = http_status_code
-        # The instance ID.
         self.instance_id = instance_id
-        # The response message.
         self.message = message
-        # The request ID.
+        # Owner Id
+        self.owner_id = owner_id
         self.request_id = request_id
-        # Indicates whether the request was successful.
-        # 
-        # *   true
-        # *   false
         self.success = success
-        self.total_count = total_count
+        self.user_id = user_id
+        self.uuid = uuid
 
     def validate(self):
         pass
@@ -55,8 +45,14 @@ class GetInstanceEventsResponseBody(DaraModel):
         if self.code is not None:
             result['Code'] = self.code
 
-        if self.events is not None:
-            result['Events'] = self.events
+        if self.gmt_create_time is not None:
+            result['GmtCreateTime'] = self.gmt_create_time
+
+        if self.gmt_expired_time is not None:
+            result['GmtExpiredTime'] = self.gmt_expired_time
+
+        if self.gmt_modified_time is not None:
+            result['GmtModifiedTime'] = self.gmt_modified_time
 
         if self.http_status_code is not None:
             result['HttpStatusCode'] = self.http_status_code
@@ -67,14 +63,20 @@ class GetInstanceEventsResponseBody(DaraModel):
         if self.message is not None:
             result['Message'] = self.message
 
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+
         if self.request_id is not None:
             result['RequestId'] = self.request_id
 
         if self.success is not None:
             result['Success'] = self.success
 
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+
+        if self.uuid is not None:
+            result['Uuid'] = self.uuid
 
         return result
 
@@ -83,8 +85,14 @@ class GetInstanceEventsResponseBody(DaraModel):
         if m.get('Code') is not None:
             self.code = m.get('Code')
 
-        if m.get('Events') is not None:
-            self.events = m.get('Events')
+        if m.get('GmtCreateTime') is not None:
+            self.gmt_create_time = m.get('GmtCreateTime')
+
+        if m.get('GmtExpiredTime') is not None:
+            self.gmt_expired_time = m.get('GmtExpiredTime')
+
+        if m.get('GmtModifiedTime') is not None:
+            self.gmt_modified_time = m.get('GmtModifiedTime')
 
         if m.get('HttpStatusCode') is not None:
             self.http_status_code = m.get('HttpStatusCode')
@@ -95,14 +103,20 @@ class GetInstanceEventsResponseBody(DaraModel):
         if m.get('Message') is not None:
             self.message = m.get('Message')
 
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
 
         if m.get('Success') is not None:
             self.success = m.get('Success')
 
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+
+        if m.get('Uuid') is not None:
+            self.uuid = m.get('Uuid')
 
         return self
 
