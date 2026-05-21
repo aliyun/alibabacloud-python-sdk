@@ -1,3 +1,7 @@
+2026-05-21 Version: 7.8.0
+- Support API DescribePostpayBills.
+
+
 2026-05-19 Version: 7.7.2
 - Update API DescribeBaseSystemRules: add request parameters RuleIds.
 
