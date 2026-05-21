@@ -1,3 +1,6 @@
+2026-05-21 Version: 1.6.1
+- Generated python 2026-03-19 for Yike.
+
 2026-05-21 Version: 1.6.0
 - Support API GetYikeAgentJob.
 - Support API SubmitYikeAvatarNarratorJob.
