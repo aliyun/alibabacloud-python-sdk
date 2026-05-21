@@ -1,3 +1,6 @@
+2026-05-21 Version: 2.11.1
+- Generated python 2023-12-29 for bailian.
+
 2026-05-21 Version: 2.11.0
 - Support API AddConnector.
 - Support API GetConnector.
