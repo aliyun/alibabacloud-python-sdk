@@ -15,6 +15,7 @@ class WebSearchRequest(DaraModel):
         limit: int = None,
         query: str = None,
         region: str = None,
+        search_type: str = None,
         start_time: str = None,
     ):
         self.end_time = end_time
@@ -23,6 +24,7 @@ class WebSearchRequest(DaraModel):
         self.limit = limit
         self.query = query
         self.region = region
+        self.search_type = search_type
         self.start_time = start_time
 
     def validate(self):
@@ -51,6 +53,9 @@ class WebSearchRequest(DaraModel):
         if self.region is not None:
             result['region'] = self.region
 
+        if self.search_type is not None:
+            result['searchType'] = self.search_type
+
         if self.start_time is not None:
             result['startTime'] = self.start_time
 
@@ -75,6 +80,9 @@ class WebSearchRequest(DaraModel):
 
         if m.get('region') is not None:
             self.region = m.get('region')
+
+        if m.get('searchType') is not None:
+            self.search_type = m.get('searchType')
 
         if m.get('startTime') is not None:
             self.start_time = m.get('startTime')

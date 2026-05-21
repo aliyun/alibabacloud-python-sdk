@@ -156,8 +156,6 @@ class WebSearchResponseBodyDataResult(DaraModel):
 
         return self
 
-
-
 class WebSearchResponseBodyDataResultSource(DaraModel):
     def __init__(
         self,

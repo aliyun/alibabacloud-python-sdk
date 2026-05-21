@@ -40,6 +40,166 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return Utils.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def open_dataset_import_data_with_options(
+        self,
+        request: main_models.OpenDatasetImportDataRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.OpenDatasetImportDataResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.dataset_id):
+            body['datasetId'] = request.dataset_id
+        if not DaraCore.is_null(request.records):
+            body['records'] = request.records
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'OpenDatasetImportData',
+            version = '2026-04-24',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/dataset/open/upsert',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.OpenDatasetImportDataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def open_dataset_import_data_with_options_async(
+        self,
+        request: main_models.OpenDatasetImportDataRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.OpenDatasetImportDataResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.dataset_id):
+            body['datasetId'] = request.dataset_id
+        if not DaraCore.is_null(request.records):
+            body['records'] = request.records
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'OpenDatasetImportData',
+            version = '2026-04-24',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/dataset/open/upsert',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.OpenDatasetImportDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def open_dataset_import_data(
+        self,
+        request: main_models.OpenDatasetImportDataRequest,
+    ) -> main_models.OpenDatasetImportDataResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.open_dataset_import_data_with_options(request, headers, runtime)
+
+    async def open_dataset_import_data_async(
+        self,
+        request: main_models.OpenDatasetImportDataRequest,
+    ) -> main_models.OpenDatasetImportDataResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.open_dataset_import_data_with_options_async(request, headers, runtime)
+
+    def open_dataset_resource_url_with_options(
+        self,
+        request: main_models.OpenDatasetResourceUrlRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.OpenDatasetResourceUrlResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.dataset_id):
+            body['datasetId'] = request.dataset_id
+        if not DaraCore.is_null(request.primary_key):
+            body['primaryKey'] = request.primary_key
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'OpenDatasetResourceUrl',
+            version = '2026-04-24',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/dataset/open/resources',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.OpenDatasetResourceUrlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def open_dataset_resource_url_with_options_async(
+        self,
+        request: main_models.OpenDatasetResourceUrlRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.OpenDatasetResourceUrlResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.dataset_id):
+            body['datasetId'] = request.dataset_id
+        if not DaraCore.is_null(request.primary_key):
+            body['primaryKey'] = request.primary_key
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'OpenDatasetResourceUrl',
+            version = '2026-04-24',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/dataset/open/resources',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.OpenDatasetResourceUrlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def open_dataset_resource_url(
+        self,
+        request: main_models.OpenDatasetResourceUrlRequest,
+    ) -> main_models.OpenDatasetResourceUrlResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.open_dataset_resource_url_with_options(request, headers, runtime)
+
+    async def open_dataset_resource_url_async(
+        self,
+        request: main_models.OpenDatasetResourceUrlRequest,
+    ) -> main_models.OpenDatasetResourceUrlResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.open_dataset_resource_url_with_options_async(request, headers, runtime)
+
     def web_search_with_options(
         self,
         request: main_models.WebSearchRequest,
@@ -60,6 +220,8 @@ class Client(OpenApiClient):
             body['query'] = request.query
         if not DaraCore.is_null(request.region):
             body['region'] = request.region
+        if not DaraCore.is_null(request.search_type):
+            body['searchType'] = request.search_type
         if not DaraCore.is_null(request.start_time):
             body['startTime'] = request.start_time
         req = open_api_util_models.OpenApiRequest(
@@ -102,6 +264,8 @@ class Client(OpenApiClient):
             body['query'] = request.query
         if not DaraCore.is_null(request.region):
             body['region'] = request.region
+        if not DaraCore.is_null(request.search_type):
+            body['searchType'] = request.search_type
         if not DaraCore.is_null(request.start_time):
             body['startTime'] = request.start_time
         req = open_api_util_models.OpenApiRequest(
