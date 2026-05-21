@@ -1,3 +1,8 @@
+2026-05-21 Version: 1.10.0
+- Support API QueryMonthlySlaList.
+- Support API SubmitSlaCouponApply.
+
+
 2026-05-20 Version: 1.9.0
 - Support API DeleteBudget.
 

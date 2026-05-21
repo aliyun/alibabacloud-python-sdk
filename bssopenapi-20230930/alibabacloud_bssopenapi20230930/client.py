@@ -4428,6 +4428,108 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.query_cost_center_share_rule_with_options_async(request, runtime)
 
+    def query_monthly_sla_list_with_options(
+        self,
+        request: main_models.QueryMonthlySlaListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryMonthlySlaListResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.ec_id_account_ids):
+            query['EcIdAccountIds'] = request.ec_id_account_ids
+        if not DaraCore.is_null(request.nbid):
+            query['Nbid'] = request.nbid
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        body = {}
+        if not DaraCore.is_null(request.instance_ids):
+            body['InstanceIds'] = request.instance_ids
+        if not DaraCore.is_null(request.months):
+            body['Months'] = request.months
+        if not DaraCore.is_null(request.pay_statuses):
+            body['PayStatuses'] = request.pay_statuses
+        if not DaraCore.is_null(request.product_codes):
+            body['ProductCodes'] = request.product_codes
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryMonthlySlaList',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryMonthlySlaListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_monthly_sla_list_with_options_async(
+        self,
+        request: main_models.QueryMonthlySlaListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryMonthlySlaListResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.ec_id_account_ids):
+            query['EcIdAccountIds'] = request.ec_id_account_ids
+        if not DaraCore.is_null(request.nbid):
+            query['Nbid'] = request.nbid
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        body = {}
+        if not DaraCore.is_null(request.instance_ids):
+            body['InstanceIds'] = request.instance_ids
+        if not DaraCore.is_null(request.months):
+            body['Months'] = request.months
+        if not DaraCore.is_null(request.pay_statuses):
+            body['PayStatuses'] = request.pay_statuses
+        if not DaraCore.is_null(request.product_codes):
+            body['ProductCodes'] = request.product_codes
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryMonthlySlaList',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryMonthlySlaListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_monthly_sla_list(
+        self,
+        request: main_models.QueryMonthlySlaListRequest,
+    ) -> main_models.QueryMonthlySlaListResponse:
+        runtime = RuntimeOptions()
+        return self.query_monthly_sla_list_with_options(request, runtime)
+
+    async def query_monthly_sla_list_async(
+        self,
+        request: main_models.QueryMonthlySlaListRequest,
+    ) -> main_models.QueryMonthlySlaListResponse:
+        runtime = RuntimeOptions()
+        return await self.query_monthly_sla_list_with_options_async(request, runtime)
+
     def save_cost_center_share_rule_with_options(
         self,
         tmp_req: main_models.SaveCostCenterShareRuleRequest,
@@ -4779,6 +4881,92 @@ class Client(OpenApiClient):
     ) -> main_models.SetSavingPlanUserDeductRuleResponse:
         runtime = RuntimeOptions()
         return await self.set_saving_plan_user_deduct_rule_with_options_async(request, runtime)
+
+    def submit_sla_coupon_apply_with_options(
+        self,
+        request: main_models.SubmitSlaCouponApplyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitSlaCouponApplyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.ec_id_account_ids):
+            query['EcIdAccountIds'] = request.ec_id_account_ids
+        if not DaraCore.is_null(request.nbid):
+            query['Nbid'] = request.nbid
+        body = {}
+        if not DaraCore.is_null(request.damaged_ids):
+            body['DamagedIds'] = request.damaged_ids
+        if not DaraCore.is_null(request.month):
+            body['Month'] = request.month
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitSlaCouponApply',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitSlaCouponApplyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_sla_coupon_apply_with_options_async(
+        self,
+        request: main_models.SubmitSlaCouponApplyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitSlaCouponApplyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.ec_id_account_ids):
+            query['EcIdAccountIds'] = request.ec_id_account_ids
+        if not DaraCore.is_null(request.nbid):
+            query['Nbid'] = request.nbid
+        body = {}
+        if not DaraCore.is_null(request.damaged_ids):
+            body['DamagedIds'] = request.damaged_ids
+        if not DaraCore.is_null(request.month):
+            body['Month'] = request.month
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitSlaCouponApply',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitSlaCouponApplyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_sla_coupon_apply(
+        self,
+        request: main_models.SubmitSlaCouponApplyRequest,
+    ) -> main_models.SubmitSlaCouponApplyResponse:
+        runtime = RuntimeOptions()
+        return self.submit_sla_coupon_apply_with_options(request, runtime)
+
+    async def submit_sla_coupon_apply_async(
+        self,
+        request: main_models.SubmitSlaCouponApplyRequest,
+    ) -> main_models.SubmitSlaCouponApplyResponse:
+        runtime = RuntimeOptions()
+        return await self.submit_sla_coupon_apply_with_options_async(request, runtime)
 
     def update_budget_with_options(
         self,
