@@ -1,3 +1,13 @@
+2026-05-22 Version: 7.3.1
+- Update API GetServiceInstance: add response parameters Body.GrantedPermission.
+- Update API GetServiceInstance: add response parameters Body.PolicyNames.
+- Update API ListServiceInstances: add response parameters Body.ServiceInstances.$.GrantedPermission.
+- Update API ListServiceInstances: add response parameters Body.ServiceInstances.$.PolicyNames.
+- Update API ListServiceUsages: add request parameters RegionId.
+- Update API RejectServiceUsage: add request parameters RegionId.
+- Update API UpdateService: add request parameters IsDefault.
+
+
 2025-09-18 Version: 7.3.0
 - Support API CreateOpsNotice.
 - Support API GetOpsNotice.

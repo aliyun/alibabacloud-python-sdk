@@ -1,0 +1,506 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from typing import List
+
+from alibabacloud_computenestsupplier20210521 import models as main_models
+from darabonba.model import DaraModel
+
+class UpdateArtifactRequest(DaraModel):
+    def __init__(
+        self,
+        artifact_build_property: main_models.UpdateArtifactRequestArtifactBuildProperty = None,
+        artifact_id: str = None,
+        artifact_property: main_models.UpdateArtifactRequestArtifactProperty = None,
+        client_token: str = None,
+        description: str = None,
+        permission_type: str = None,
+        support_region_ids: List[str] = None,
+        version_name: str = None,
+    ):
+        # The build properties of the artifact, utilized for hosting and building the deployment package.
+        self.artifact_build_property = artifact_build_property
+        # The ID of the deployment package.
+        # 
+        # This parameter is required.
+        self.artifact_id = artifact_id
+        # The properties of the deployment package.
+        self.artifact_property = artifact_property
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        self.client_token = client_token
+        # The description of the deployment package.
+        self.description = description
+        # Permission fields are applicable to container image artifact and Helm Chart artifact. They can only change from Automatic to Public. Options:
+        # 
+        # Public
+        # 
+        # Automatic
+        self.permission_type = permission_type
+        # The IDs of the regions that support the deployment package.
+        self.support_region_ids = support_region_ids
+        # The version name of the deployment package.
+        self.version_name = version_name
+
+    def validate(self):
+        if self.artifact_build_property:
+            self.artifact_build_property.validate()
+        if self.artifact_property:
+            self.artifact_property.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.artifact_build_property is not None:
+            result['ArtifactBuildProperty'] = self.artifact_build_property.to_map()
+
+        if self.artifact_id is not None:
+            result['ArtifactId'] = self.artifact_id
+
+        if self.artifact_property is not None:
+            result['ArtifactProperty'] = self.artifact_property.to_map()
+
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+
+        if self.description is not None:
+            result['Description'] = self.description
+
+        if self.permission_type is not None:
+            result['PermissionType'] = self.permission_type
+
+        if self.support_region_ids is not None:
+            result['SupportRegionIds'] = self.support_region_ids
+
+        if self.version_name is not None:
+            result['VersionName'] = self.version_name
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ArtifactBuildProperty') is not None:
+            temp_model = main_models.UpdateArtifactRequestArtifactBuildProperty()
+            self.artifact_build_property = temp_model.from_map(m.get('ArtifactBuildProperty'))
+
+        if m.get('ArtifactId') is not None:
+            self.artifact_id = m.get('ArtifactId')
+
+        if m.get('ArtifactProperty') is not None:
+            temp_model = main_models.UpdateArtifactRequestArtifactProperty()
+            self.artifact_property = temp_model.from_map(m.get('ArtifactProperty'))
+
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+
+        if m.get('PermissionType') is not None:
+            self.permission_type = m.get('PermissionType')
+
+        if m.get('SupportRegionIds') is not None:
+            self.support_region_ids = m.get('SupportRegionIds')
+
+        if m.get('VersionName') is not None:
+            self.version_name = m.get('VersionName')
+
+        return self
+
+class UpdateArtifactRequestArtifactProperty(DaraModel):
+    def __init__(
+        self,
+        commodity_code: str = None,
+        commodity_version: str = None,
+        image_id: str = None,
+        region_id: str = None,
+        repo_id: str = None,
+        repo_name: str = None,
+        repo_type: str = None,
+        tag: str = None,
+        url: str = None,
+    ):
+        # The commodity code of the service in Alibaba Cloud Marketplace.
+        # 
+        # >  This parameter is available only if the deployment package is an image.
+        self.commodity_code = commodity_code
+        # The commodity version of the service in Alibaba Cloud Marketplace.
+        # 
+        # >  This parameter is available only if the deployment package is an image.
+        self.commodity_version = commodity_version
+        # The image ID.
+        # 
+        # >  This parameter is available only if the deployment package is an image.
+        self.image_id = image_id
+        # The region ID.
+        # 
+        # >  This parameter is available only if the deployment package is an image.
+        self.region_id = region_id
+        # The ID of the Container Registry  repository.
+        # >  This parameter is available only if the deployment package is a container image or of the Helm chart type.
+        self.repo_id = repo_id
+        # The name of the Container Registry repository.
+        # >  This parameter is available only if the deployment package is a container image or of the Helm chart type.
+        self.repo_name = repo_name
+        # The type of the repository.Valid values:
+        # 
+        # *   `Public`: a public repository.
+        # *   `Private`: a private repository.
+        # >  This parameter is available only if the deployment package is a container image or of the Helm chart type.
+        self.repo_type = repo_type
+        # The version tag of the image repository.
+        # 
+        # >  This parameter is available only if the deployment package is a container image or of the Helm chart type.
+        self.tag = tag
+        # The URL of the deployment package object.
+        # 
+        # 
+        # > Note This parameter is available only if the deployment package is an file.
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.commodity_code is not None:
+            result['CommodityCode'] = self.commodity_code
+
+        if self.commodity_version is not None:
+            result['CommodityVersion'] = self.commodity_version
+
+        if self.image_id is not None:
+            result['ImageId'] = self.image_id
+
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+
+        if self.repo_id is not None:
+            result['RepoId'] = self.repo_id
+
+        if self.repo_name is not None:
+            result['RepoName'] = self.repo_name
+
+        if self.repo_type is not None:
+            result['RepoType'] = self.repo_type
+
+        if self.tag is not None:
+            result['Tag'] = self.tag
+
+        if self.url is not None:
+            result['Url'] = self.url
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CommodityCode') is not None:
+            self.commodity_code = m.get('CommodityCode')
+
+        if m.get('CommodityVersion') is not None:
+            self.commodity_version = m.get('CommodityVersion')
+
+        if m.get('ImageId') is not None:
+            self.image_id = m.get('ImageId')
+
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+
+        if m.get('RepoId') is not None:
+            self.repo_id = m.get('RepoId')
+
+        if m.get('RepoName') is not None:
+            self.repo_name = m.get('RepoName')
+
+        if m.get('RepoType') is not None:
+            self.repo_type = m.get('RepoType')
+
+        if m.get('Tag') is not None:
+            self.tag = m.get('Tag')
+
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+
+        return self
+
+class UpdateArtifactRequestArtifactBuildProperty(DaraModel):
+    def __init__(
+        self,
+        build_args: List[main_models.UpdateArtifactRequestArtifactBuildPropertyBuildArgs] = None,
+        code_repo: main_models.UpdateArtifactRequestArtifactBuildPropertyCodeRepo = None,
+        command_content: str = None,
+        command_type: str = None,
+        dockerfile_path: str = None,
+        enable_gpu: bool = None,
+        region_id: str = None,
+        source_container_image: str = None,
+        source_image_id: str = None,
+        system_disk_size: int = None,
+    ):
+        # The build arguments used during the image build process.
+        # 
+        # >  This parameter is available only if the ArtifactBuildType is Dockerfile type.
+        self.build_args = build_args
+        # The address of the code repository.
+        # 
+        # >  This parameter is available only if the ArtifactBuildType is Dockerfile or Buildpacks type.
+        self.code_repo = code_repo
+        # The command content.
+        # 
+        # >  This parameter is available only if the deployment package is a ecs image type.
+        self.command_content = command_content
+        # The command type. Valid values:
+        # 
+        # *   RunBatScript: batch command, applicable to Windows instances.
+        # *   RunPowerShellScript: PowerShell command, applicable to Windows instances.
+        # *   RunShellScript: shell command, applicable to Linux instances.
+        # 
+        # >  This parameter is available only if the deployment package is a ecs image type.
+        self.command_type = command_type
+        # The relative path to the Dockerfile within the code repository.
+        # 
+        # >  This parameter is available only if the ArtifactBuildType is Dockerfile type.
+        self.dockerfile_path = dockerfile_path
+        # Whether GPU is required. CPU instance is used by default.
+        self.enable_gpu = enable_gpu
+        # The region ID where the source mirror image is located.
+        # 
+        # >  This parameter is available only if the deployment package is a ecs image type.
+        self.region_id = region_id
+        # The pull location of the source container image. This is used for the command docker pull ${SourceContainerImage}.
+        # 
+        # >  This parameter is available only if the ArtifactBuildType is ContainerImage type.
+        self.source_container_image = source_container_image
+        # The source image id. Supported Types:
+        # 
+        # - Image ID: Pass the Image ID of the Ecs image directly.
+        # 
+        # - OOS Common Parameter Name: Obtain the corresponding Image ID automatically by using the OOS common parameter name.
+        # 
+        # >  This parameter is available only if the deployment package is a ecs image type.
+        self.source_image_id = source_image_id
+        # The size of the system disk. Unit: GiB.
+        # 
+        # >  The system disk must be at least as large as the image.
+        self.system_disk_size = system_disk_size
+
+    def validate(self):
+        if self.build_args:
+            for v1 in self.build_args:
+                 if v1:
+                    v1.validate()
+        if self.code_repo:
+            self.code_repo.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        result['BuildArgs'] = []
+        if self.build_args is not None:
+            for k1 in self.build_args:
+                result['BuildArgs'].append(k1.to_map() if k1 else None)
+
+        if self.code_repo is not None:
+            result['CodeRepo'] = self.code_repo.to_map()
+
+        if self.command_content is not None:
+            result['CommandContent'] = self.command_content
+
+        if self.command_type is not None:
+            result['CommandType'] = self.command_type
+
+        if self.dockerfile_path is not None:
+            result['DockerfilePath'] = self.dockerfile_path
+
+        if self.enable_gpu is not None:
+            result['EnableGpu'] = self.enable_gpu
+
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+
+        if self.source_container_image is not None:
+            result['SourceContainerImage'] = self.source_container_image
+
+        if self.source_image_id is not None:
+            result['SourceImageId'] = self.source_image_id
+
+        if self.system_disk_size is not None:
+            result['SystemDiskSize'] = self.system_disk_size
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.build_args = []
+        if m.get('BuildArgs') is not None:
+            for k1 in m.get('BuildArgs'):
+                temp_model = main_models.UpdateArtifactRequestArtifactBuildPropertyBuildArgs()
+                self.build_args.append(temp_model.from_map(k1))
+
+        if m.get('CodeRepo') is not None:
+            temp_model = main_models.UpdateArtifactRequestArtifactBuildPropertyCodeRepo()
+            self.code_repo = temp_model.from_map(m.get('CodeRepo'))
+
+        if m.get('CommandContent') is not None:
+            self.command_content = m.get('CommandContent')
+
+        if m.get('CommandType') is not None:
+            self.command_type = m.get('CommandType')
+
+        if m.get('DockerfilePath') is not None:
+            self.dockerfile_path = m.get('DockerfilePath')
+
+        if m.get('EnableGpu') is not None:
+            self.enable_gpu = m.get('EnableGpu')
+
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+
+        if m.get('SourceContainerImage') is not None:
+            self.source_container_image = m.get('SourceContainerImage')
+
+        if m.get('SourceImageId') is not None:
+            self.source_image_id = m.get('SourceImageId')
+
+        if m.get('SystemDiskSize') is not None:
+            self.system_disk_size = m.get('SystemDiskSize')
+
+        return self
+
+class UpdateArtifactRequestArtifactBuildPropertyCodeRepo(DaraModel):
+    def __init__(
+        self,
+        branch: str = None,
+        endpoint: str = None,
+        org_id: str = None,
+        owner: str = None,
+        platform: str = None,
+        repo_id: int = None,
+        repo_name: str = None,
+    ):
+        # The name of the branch in the code repository.
+        self.branch = branch
+        # The endpoint. 
+        # The URL address used to access the privately deployed GitLab instance.
+        self.endpoint = endpoint
+        # The organization ID.
+        self.org_id = org_id
+        # The owner of the code repository.
+        # 
+        # >  This parameter is available only if the git repository is private.
+        self.owner = owner
+        # The platform type. Valid values:
+        # 
+        # - github
+        # 
+        # - gitee
+        # 
+        # - gitlab
+        # 
+        # - codeup
+        self.platform = platform
+        # The repository ID.
+        self.repo_id = repo_id
+        # The name of the repository.
+        self.repo_name = repo_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.branch is not None:
+            result['Branch'] = self.branch
+
+        if self.endpoint is not None:
+            result['Endpoint'] = self.endpoint
+
+        if self.org_id is not None:
+            result['OrgId'] = self.org_id
+
+        if self.owner is not None:
+            result['Owner'] = self.owner
+
+        if self.platform is not None:
+            result['Platform'] = self.platform
+
+        if self.repo_id is not None:
+            result['RepoId'] = self.repo_id
+
+        if self.repo_name is not None:
+            result['RepoName'] = self.repo_name
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Branch') is not None:
+            self.branch = m.get('Branch')
+
+        if m.get('Endpoint') is not None:
+            self.endpoint = m.get('Endpoint')
+
+        if m.get('OrgId') is not None:
+            self.org_id = m.get('OrgId')
+
+        if m.get('Owner') is not None:
+            self.owner = m.get('Owner')
+
+        if m.get('Platform') is not None:
+            self.platform = m.get('Platform')
+
+        if m.get('RepoId') is not None:
+            self.repo_id = m.get('RepoId')
+
+        if m.get('RepoName') is not None:
+            self.repo_name = m.get('RepoName')
+
+        return self
+
+class UpdateArtifactRequestArtifactBuildPropertyBuildArgs(DaraModel):
+    def __init__(
+        self,
+        argument_name: str = None,
+        argument_value: str = None,
+    ):
+        # The name of a specific build argument.
+        self.argument_name = argument_name
+        # The value of a specific build argument.
+        self.argument_value = argument_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.argument_name is not None:
+            result['ArgumentName'] = self.argument_name
+
+        if self.argument_value is not None:
+            result['ArgumentValue'] = self.argument_value
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ArgumentName') is not None:
+            self.argument_name = m.get('ArgumentName')
+
+        if m.get('ArgumentValue') is not None:
+            self.argument_value = m.get('ArgumentValue')
+
+        return self
+
