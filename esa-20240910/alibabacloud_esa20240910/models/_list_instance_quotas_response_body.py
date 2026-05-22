@@ -15,17 +15,9 @@ class ListInstanceQuotasResponseBody(DaraModel):
         request_id: str = None,
         status: str = None,
     ):
-        # The plan ID.
         self.instance_id = instance_id
-        # The quotas in the plan.
         self.quotas = quotas
-        # The request ID.
         self.request_id = request_id
-        # The plan status. Valid values:
-        # 
-        # *   online: The plan is in service.
-        # *   offline: The plan has expired within an allowable period. In this state, the plan is unavailable.
-        # *   disable: The plan is released.
         self.status = status
 
     def validate(self):
@@ -81,17 +73,8 @@ class ListInstanceQuotasResponseBodyQuotas(DaraModel):
         quota_value: str = None,
         quota_value_type: str = None,
     ):
-        # The quota name.
         self.quota_name = quota_name
-        # The quota value.
         self.quota_value = quota_value
-        # The threshold type of the quota. Valid values:
-        # 
-        # *   value: enumerates the values of the quota.
-        # *   bool: specifies whether the quota is available.
-        # *   num: the upper limit of the quota.
-        # *   range: the value range for the quota.
-        # *   custom: other types than the preceding four quota threshold types.
         self.quota_value_type = quota_value_type
 
     def validate(self):

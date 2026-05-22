@@ -21,47 +21,18 @@ class GetNetworkOptimizationResponseBody(DaraModel):
         upload_max_filesize: str = None,
         websocket: str = None,
     ):
-        # Configuration ID.
         self.config_id = config_id
-        # Configuration type, which can be used to query global or rule configurations. Value range:
-        # 
-        # - global: Query global configuration.
-        # - rule: Query rule configuration.
         self.config_type = config_type
-        # Whether to enable GRPC, default is disabled. Value range:
-        # - on: Enable
-        # - off: Disable
         self.grpc = grpc
-        # Whether to enable HTTP2 origin, default is disabled. Value range:
-        # 
-        # - on: Enable
-        # - off: Disable
         self.http_2origin = http_2origin
-        # Request ID.
         self.request_id = request_id
-        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
-        # - Match all incoming requests: Set the value to true
-        # - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         self.rule = rule
-        # Rule switch. This parameter is not required when adding a global configuration. Value range:
-        # - on: Enable.
-        # - off: Disable.
         self.rule_enable = rule_enable
-        # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
-        # Rule execution order. The smaller the value, the higher the priority.
         self.sequence = sequence
-        # Site configuration version number. For sites with version management enabled, this parameter can specify the effective site version, defaulting to version 0.
         self.site_version = site_version
-        # Whether to enable smart routing service, default is disabled. Value range:
-        # - on: Enable
-        # - off: Disable
         self.smart_routing = smart_routing
-        # Maximum upload file size in MB, with a range from 100 to 500.
         self.upload_max_filesize = upload_max_filesize
-        # Whether to enable Websocket, default is enabled. Value range:
-        # - on: Enable
-        # - off: Disable
         self.websocket = websocket
 
     def validate(self):

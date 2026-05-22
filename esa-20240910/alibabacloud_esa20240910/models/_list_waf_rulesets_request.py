@@ -15,17 +15,11 @@ class ListWafRulesetsRequest(DaraModel):
         site_id: int = None,
         site_version: int = None,
     ):
-        # Page number, specifying the current page number for paginated queries.
         self.page_number = page_number
-        # Page size, specifying the number of records per page for paginated queries.
         self.page_size = page_size
-        # WAF operation phase, specifying the rule set phase to query.
         self.phase = phase
-        # Query parameters, passed in JSON format, containing various filtering conditions.
         self.query_args = query_args
-        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
         self.site_id = site_id
-        # Site version.
         self.site_version = site_version
 
     def validate(self):
@@ -88,13 +82,9 @@ class ListWafRulesetsRequestQueryArgs(DaraModel):
         name_like: str = None,
         order_by: str = None,
     ):
-        # Fuzzy search for rule set ID, rule set name, rule ID, and rule name.
         self.any_like = any_like
-        # Whether to sort in descending order.
         self.desc = desc
-        # Fuzzy search for rule set name.
         self.name_like = name_like
-        # Specify the column to sort by.
         self.order_by = order_by
 
     def validate(self):

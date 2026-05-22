@@ -11,14 +11,9 @@ class UpdateSiteDeliveryTaskStatusRequest(DaraModel):
         site_id: int = None,
         task_name: str = None,
     ):
-        # Specifies whether to enable the delivery task.
-        # 
         # This parameter is required.
         self.method = method
-        # The website ID.
         self.site_id = site_id
-        # The name of the delivery task.
-        # 
         # This parameter is required.
         self.task_name = task_name
 

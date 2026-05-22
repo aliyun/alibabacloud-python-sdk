@@ -17,17 +17,11 @@ class CreateScheduledPreloadExecutionsResponseBody(DaraModel):
         success_executions: List[main_models.CreateScheduledPreloadExecutionsResponseBodySuccessExecutions] = None,
         total_count: int = None,
     ):
-        # The information about prefetch plans that failed to be created.
         self.failed_executions = failed_executions
-        # The information about plan failures.
         self.failed_messages = failed_messages
-        # The request ID.
         self.request_id = request_id
-        # The number of prefetch plans that are created.
         self.success_count = success_count
-        # The information about created prefetch plans.
         self.success_executions = success_executions
-        # The total number of new plans requested.
         self.total_count = total_count
 
     def validate(self):
@@ -109,27 +103,13 @@ class CreateScheduledPreloadExecutionsResponseBodySuccessExecutions(DaraModel):
         start_time: str = None,
         status: str = None,
     ):
-        # The ID of the Alibaba Cloud account.
         self.ali_uid = ali_uid
-        # The end time of the prefetch plans.
         self.end_time = end_time
-        # The ID of the prefetch plan.
         self.id = id
-        # The time interval between each batch execution. Unit: seconds.
         self.interval = interval
-        # The ID of the prefetch task.
         self.job_id = job_id
-        # The number of URLs prefetched in each batch.
         self.slice_len = slice_len
-        # The start time of the prefetch plans.
         self.start_time = start_time
-        # The status of the prefetch plan. Valid values:
-        # 
-        # *   **waiting**
-        # *   **running**
-        # *   **finished**
-        # *   **failed**
-        # *   **stopped**
         self.status = status
 
     def validate(self):
@@ -206,27 +186,13 @@ class CreateScheduledPreloadExecutionsResponseBodyFailedExecutions(DaraModel):
         start_time: str = None,
         status: str = None,
     ):
-        # The ID of the Alibaba Cloud account.
         self.ali_uid = ali_uid
-        # The end time of the prefetch plans.
         self.end_time = end_time
-        # The ID of the prefetch plan.
         self.id = id
-        # The time interval between each batch execution. Unit: seconds.
         self.interval = interval
-        # The ID of the prefetch task.
         self.job_id = job_id
-        # The number of URLs prefetched in each batch.
         self.slice_len = slice_len
-        # The start time of the prefetch plans.
         self.start_time = start_time
-        # The status of the prefetch plan. Valid values:
-        # 
-        # *   **waiting**
-        # *   **running**
-        # *   **finished**
-        # *   **failed**
-        # *   **stopped**
         self.status = status
 
     def validate(self):

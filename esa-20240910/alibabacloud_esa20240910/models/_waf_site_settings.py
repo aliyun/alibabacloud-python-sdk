@@ -19,18 +19,13 @@ class WafSiteSettings(DaraModel):
         request_body_inspection: main_models.WafSiteSettingsRequestBodyInspection = None,
         security_level: main_models.WafSiteSettingsSecurityLevel = None,
     ):
-        # Adds a bot protection header.
         self.add_bot_protection_headers = add_bot_protection_headers
-        # Adds security request header.
         self.add_security_headers = add_security_headers
         self.bandwidth_abuse_protection = bandwidth_abuse_protection
-        # Bot management.
         self.bot_management = bot_management
-        # Identifies the IP address of the client.
         self.client_ip_identifier = client_ip_identifier
         self.disable_security_module = disable_security_module
         self.request_body_inspection = request_body_inspection
-        # The security level.
         self.security_level = security_level
 
     def validate(self):
@@ -123,16 +118,6 @@ class WafSiteSettingsSecurityLevel(DaraModel):
         self,
         value: str = None,
     ):
-        # The security level value.
-        # 
-        # Enumerated values:
-        # 
-        # *   high: high.
-        # *   low: low.
-        # *   under_attack: I am under attack.
-        # *   medium: medium.
-        # *   essentially_off: essentially off.
-        # *   off: completely off.
         self.value = value
 
     def validate(self):
@@ -231,14 +216,7 @@ class WafSiteSettingsClientIpIdentifier(DaraModel):
         headers: List[str] = None,
         mode: str = None,
     ):
-        # Specify headers.
         self.headers = headers
-        # Identifies the mode.
-        # 
-        # Enumerated values:
-        # 
-        # *   headers: specifies the headers.
-        # *   connection_ip: the IP address for establishing a connection.
         self.mode = mode
 
     def validate(self):
@@ -276,15 +254,10 @@ class WafSiteSettingsBotManagement(DaraModel):
         likely_bots: main_models.WafSiteSettingsBotManagementLikelyBots = None,
         verified_bots: main_models.WafSiteSettingsBotManagementVerifiedBots = None,
     ):
-        # Definite Bots
         self.definite_bots = definite_bots
-        # Takes effect on static resource requests.
         self.effect_on_static = effect_on_static
-        # JavaScript detection.
         self.jsdetection = jsdetection
-        # Likely Bots
         self.likely_bots = likely_bots
-        # Verified Bots
         self.verified_bots = verified_bots
 
     def validate(self):
@@ -351,9 +324,7 @@ class WafSiteSettingsBotManagementVerifiedBots(DaraModel):
         action: str = None,
         id: int = None,
     ):
-        # The action that you want to perform on requests that match the rule.
         self.action = action
-        # The rule ID.
         self.id = id
 
     def validate(self):
@@ -388,9 +359,7 @@ class WafSiteSettingsBotManagementLikelyBots(DaraModel):
         action: str = None,
         id: int = None,
     ):
-        # The action that you want to perform on requests that match the rule.
         self.action = action
-        # The rule ID.
         self.id = id
 
     def validate(self):
@@ -424,7 +393,6 @@ class WafSiteSettingsBotManagementJSDetection(DaraModel):
         self,
         enable: bool = None,
     ):
-        # Indicates whether the parameter is enabled.
         self.enable = enable
 
     def validate(self):
@@ -452,7 +420,6 @@ class WafSiteSettingsBotManagementEffectOnStatic(DaraModel):
         self,
         enable: bool = None,
     ):
-        # Indicates whether the parameter is enabled.
         self.enable = enable
 
     def validate(self):
@@ -481,9 +448,7 @@ class WafSiteSettingsBotManagementDefiniteBots(DaraModel):
         action: str = None,
         id: int = None,
     ):
-        # The action that you want to perform on requests that match the rule.
         self.action = action
-        # The rule ID.
         self.id = id
 
     def validate(self):
@@ -560,7 +525,6 @@ class WafSiteSettingsAddSecurityHeaders(DaraModel):
         self,
         enable: bool = None,
     ):
-        # Indicates whether the parameter is enabled.
         self.enable = enable
 
     def validate(self):
@@ -588,7 +552,6 @@ class WafSiteSettingsAddBotProtectionHeaders(DaraModel):
         self,
         enable: bool = None,
     ):
-        # Indicates whether the parameter is enabled.
         self.enable = enable
 
     def validate(self):

@@ -15,25 +15,13 @@ class ListOriginRulesRequest(DaraModel):
         site_id: int = None,
         site_version: int = None,
     ):
-        # Configuration ID.
         self.config_id = config_id
-        # Configuration type, which can be used to query global or rule configurations. Value range:
-        # - global: Query global configuration.
-        # - rule: Query rule configuration.
-        # 
-        # This parameter is optional; if not provided, it does not distinguish between global and rule configurations.
         self.config_type = config_type
-        # Page number, defaulting to 1 if not provided.
         self.page_number = page_number
-        # Number of items per page, with a maximum of 500. Defaults to 500 if not provided.
         self.page_size = page_size
-        # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
-        # Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
-        # 
         # This parameter is required.
         self.site_id = site_id
-        # Version number of the site. For sites with version management enabled, this parameter can specify the version of the site for which the configuration is effective, defaulting to version 0.
         self.site_version = site_version
 
     def validate(self):

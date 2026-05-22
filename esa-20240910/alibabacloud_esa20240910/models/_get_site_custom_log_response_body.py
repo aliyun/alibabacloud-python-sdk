@@ -16,15 +16,10 @@ class GetSiteCustomLogResponseBody(DaraModel):
         request_id: str = None,
         site_id: int = None,
     ):
-        # The ID of the custom log field configuration.
         self.config_id = config_id
-        # Indicates whether the custom configuration exists.
         self.is_exist = is_exist
-        # The custom fields.
         self.log_custom_field = log_custom_field
-        # The request ID.
         self.request_id = request_id
-        # The website ID.
         self.site_id = site_id
 
     def validate(self):
@@ -80,11 +75,8 @@ class GetSiteCustomLogResponseBodyLogCustomField(DaraModel):
         request_headers: List[str] = None,
         response_headers: List[str] = None,
     ):
-        # The cookie fields.
         self.cookies = cookies
-        # The request header fields.
         self.request_headers = request_headers
-        # The response header fields.
         self.response_headers = response_headers
 
     def validate(self):

@@ -10,9 +10,7 @@ class GetWafBotAppKeyResponseBody(DaraModel):
         app_key: str = None,
         request_id: str = None,
     ):
-        # Application key.
         self.app_key = app_key
-        # Request ID.
         self.request_id = request_id
 
     def validate(self):

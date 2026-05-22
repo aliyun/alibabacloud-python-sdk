@@ -17,21 +17,13 @@ class WafBatchRuleShared(DaraModel):
         name: str = None,
         target: str = None,
     ):
-        # The action that you want WAF to perform on requests that match the rule.
         self.action = action
-        # The extended action configurations.
         self.actions = actions
-        # Specifies the cross-domain website ID.
         self.cross_site_id = cross_site_id
-        # The expression.
         self.expression = expression
-        # The matching rule.
         self.match = match
-        # Web SDK integration method: automatic integration (automatic) or manual integration (manual).
         self.mode = mode
-        # The ruleset name.
         self.name = name
-        # Protection type: web or app.
         self.target = target
 
     def validate(self):
@@ -106,7 +98,6 @@ class WafBatchRuleSharedActions(DaraModel):
         self,
         response: main_models.WafBatchRuleSharedActionsResponse = None,
     ):
-        # The custom response.
         self.response = response
 
     def validate(self):
@@ -139,9 +130,7 @@ class WafBatchRuleSharedActionsResponse(DaraModel):
         code: int = None,
         id: int = None,
     ):
-        # The custom response code.
         self.code = code
-        # The ID of the custom response page.
         self.id = id
 
     def validate(self):

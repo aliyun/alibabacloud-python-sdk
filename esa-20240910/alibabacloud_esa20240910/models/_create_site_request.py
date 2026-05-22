@@ -13,28 +13,14 @@ class CreateSiteRequest(DaraModel):
         resource_group_id: str = None,
         site_name: str = None,
     ):
-        # The DNS setup. Valid values:
-        # 
-        # *   **NS**
-        # *   **CNAME**
-        # 
         # This parameter is required.
         self.access_type = access_type
-        # The service location. Valid values:
-        # 
-        # *   **domestic**: the Chinese mainland
-        # *   **global**: global
-        # *   **overseas**: outside the Chinese mainland
-        # 
         # This parameter is required.
         self.coverage = coverage
-        # The instance ID, which can be obtained by calling the [ListUserRatePlanInstances](https://help.aliyun.com/document_detail/2852398.html) operation. Specify at least one of the instance ID and website ID. If you specify both of them, the instance ID is used.
-        # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the resource group. If you leave this parameter empty, the system uses the default resource group ID.
         self.resource_group_id = resource_group_id
-        # The website name.
+        # 记录名称
         # 
         # This parameter is required.
         self.site_name = site_name

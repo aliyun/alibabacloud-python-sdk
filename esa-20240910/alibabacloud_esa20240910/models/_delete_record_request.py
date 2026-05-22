@@ -10,8 +10,6 @@ class DeleteRecordRequest(DaraModel):
         record_id: int = None,
         security_token: str = None,
     ):
-        # The record ID, which can be obtained by calling [ListRecords](https://help.aliyun.com/document_detail/2850265.html).
-        # 
         # This parameter is required.
         self.record_id = record_id
         self.security_token = security_token

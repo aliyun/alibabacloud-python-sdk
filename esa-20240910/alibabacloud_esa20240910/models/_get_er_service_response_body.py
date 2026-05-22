@@ -11,20 +11,8 @@ class GetErServiceResponseBody(DaraModel):
         request_id: str = None,
         status: str = None,
     ):
-        # The billing mode. Valid values:
-        # 
-        # *   er_paymode: billed for customers on the China site.
-        # *   er_freemode: free for customers on the China site.
-        # *   er_paymodeintl: billed for customers on the International site.
-        # *   err_freemodeintl: free for customers on the International site
         self.plan_name = plan_name
-        # The request ID.
         self.request_id = request_id
-        # The service status. Valid values:
-        # 
-        # *   Creating
-        # *   Running
-        # *   NotOpened
         self.status = status
 
     def validate(self):

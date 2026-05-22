@@ -17,17 +17,11 @@ class ListLoadBalancerRegionsResponseBody(DaraModel):
         total_count: int = None,
         total_page: int = None,
     ):
-        # Page number
         self.page_number = page_number
-        # Number of records per page
         self.page_size = page_size
-        # List of region information
         self.regions = regions
-        # Request ID
         self.request_id = request_id
-        # Total number of records
         self.total_count = total_count
-        # Total number of pages
         self.total_page = total_page
 
     def validate(self):
@@ -96,13 +90,9 @@ class ListLoadBalancerRegionsResponseBodyRegions(DaraModel):
         region_en_name: str = None,
         sub_regions: List[main_models.ListLoadBalancerRegionsResponseBodyRegionsSubRegions] = None,
     ):
-        # Primary region Chinese full name
         self.region_cn_name = region_cn_name
-        # Primary region code
         self.region_code = region_code
-        # Primary region English full name
         self.region_en_name = region_en_name
-        # List of secondary region information
         self.sub_regions = sub_regions
 
     def validate(self):
@@ -158,11 +148,8 @@ class ListLoadBalancerRegionsResponseBodyRegionsSubRegions(DaraModel):
         sub_region_code: str = None,
         sub_region_en_name: str = None,
     ):
-        # Secondary region Chinese full name
         self.sub_region_cn_name = sub_region_cn_name
-        # Secondary region code
         self.sub_region_code = sub_region_code
-        # Secondary region English full name
         self.sub_region_en_name = sub_region_en_name
 
     def validate(self):

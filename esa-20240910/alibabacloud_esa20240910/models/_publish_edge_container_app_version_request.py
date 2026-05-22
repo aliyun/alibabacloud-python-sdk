@@ -19,38 +19,16 @@ class PublishEdgeContainerAppVersionRequest(DaraModel):
         start_time: str = None,
         version_id: str = None,
     ):
-        # The application ID.
-        # 
         # This parameter is required.
         self.app_id = app_id
-        # Specifies whether to fully release the version. This parameter takes effect only when PublishType is set to region.
         self.full_release = full_release
-        # The release percentage. Valid values: 1 to 100. Default value: 100.
         self.percentage = percentage
-        # The environment to which you want to release the version. Valid values:
-        # 
-        # *   prod: the production environment.
-        # *   staging: the staging environment.
-        # 
         # This parameter is required.
         self.publish_env = publish_env
-        # Specifies how the version is released. Valid values:
-        # 
-        # *   percentage: releases the version by percentage.
-        # *   region: releases the version by region.
-        # 
-        # If you do not specify this parameter, the version is released by percentage by default.
         self.publish_type = publish_type
-        # The regions to which the version is released.
         self.regions = regions
-        # The remarks. This parameter is empty by default.
         self.remarks = remarks
-        # The time when the application version starts to be released. If you do not specify this parameter, the current time is used by default.
-        # 
-        # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.start_time = start_time
-        # The version ID.
-        # 
         # This parameter is required.
         self.version_id = version_id
 

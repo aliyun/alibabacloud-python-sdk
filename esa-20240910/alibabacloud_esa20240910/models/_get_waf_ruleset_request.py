@@ -11,11 +11,8 @@ class GetWafRulesetRequest(DaraModel):
         phase: str = None,
         site_id: int = None,
     ):
-        # The ID of the WAF ruleset, which can be obtained by calling the ListWafRulesets interface.
         self.id = id
-        # The WAF operation phase, specifying the phase of the ruleset to query.
         self.phase = phase
-        # The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
         self.site_id = site_id
 
     def validate(self):

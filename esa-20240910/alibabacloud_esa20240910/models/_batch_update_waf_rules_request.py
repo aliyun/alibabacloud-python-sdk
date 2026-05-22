@@ -17,19 +17,12 @@ class BatchUpdateWafRulesRequest(DaraModel):
         site_id: int = None,
         site_version: int = None,
     ):
-        # The configurations of rules.
         self.configs = configs
-        # The WAF rule category.
         self.phase = phase
-        # The ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2878359.html) operation.
         self.ruleset_id = ruleset_id
-        # The configurations shared by multiple rules.
         self.shared = shared
-        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
-        # 
         # This parameter is required.
         self.site_id = site_id
-        # The version of the website.
         self.site_version = site_version
 
     def validate(self):

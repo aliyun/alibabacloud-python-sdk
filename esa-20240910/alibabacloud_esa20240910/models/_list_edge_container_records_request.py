@@ -13,21 +13,10 @@ class ListEdgeContainerRecordsRequest(DaraModel):
         record_name: str = None,
         site_id: int = None,
     ):
-        # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page. Default value: **500**.
         self.page_size = page_size
-        # The match mode to filter the record names:
-        # 
-        # *   **fuzzy**
-        # *   **prefix**
-        # *   **suffix**
-        # *   **exact** (default)
         self.record_match_type = record_match_type
-        # The record name.
         self.record_name = record_name
-        # The website ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the ID.
-        # 
         # This parameter is required.
         self.site_id = site_id
 

@@ -11,11 +11,8 @@ class SetHttpDDoSAttackProtectionResponseBody(DaraModel):
         request_id: str = None,
         site_id: int = None,
     ):
-        # The level of HTTP DDoS attack protection.
         self.global_mode = global_mode
-        # The request ID.
         self.request_id = request_id
-        # The website ID.
         self.site_id = site_id
 
     def validate(self):

@@ -13,9 +13,7 @@ class DescribeSiteLogsResponseBody(DaraModel):
         request_id: str = None,
         site_log_details: List[main_models.DescribeSiteLogsResponseBodySiteLogDetails] = None,
     ):
-        # The request ID.
         self.request_id = request_id
-        # The information about the website log files.
         self.site_log_details = site_log_details
 
     def validate(self):
@@ -61,15 +59,10 @@ class DescribeSiteLogsResponseBodySiteLogDetails(DaraModel):
         site_id: int = None,
         site_name: str = None,
     ):
-        # The total number of entries returned on the current page.
         self.log_count = log_count
-        # The details of the website log files.
         self.log_infos = log_infos
-        # Pagination information.
         self.page_infos = page_infos
-        # The website ID.
         self.site_id = site_id
-        # The website name.
         self.site_name = site_name
 
     def validate(self):
@@ -134,11 +127,8 @@ class DescribeSiteLogsResponseBodySiteLogDetailsPageInfos(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The page number returned.
         self.page_index = page_index
-        # The number of entries per page. Default value: **300**. Valid values: **1 to 1000**.
         self.page_size = page_size
-        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -182,17 +172,10 @@ class DescribeSiteLogsResponseBodySiteLogDetailsLogInfos(DaraModel):
         log_size: int = None,
         start_time: str = None,
     ):
-        # The end time.
         self.end_time = end_time
-        # The name of the log file.
         self.log_name = log_name
-        # The log path.
-        # 
-        # >  Take note of the Expires field (expiration timestamp) in this parameter. If the log download URL expires, you must reobtain the URL.
         self.log_path = log_path
-        # The size of the log file. Unit: bytes.
         self.log_size = log_size
-        # The create time.
         self.start_time = start_time
 
     def validate(self):

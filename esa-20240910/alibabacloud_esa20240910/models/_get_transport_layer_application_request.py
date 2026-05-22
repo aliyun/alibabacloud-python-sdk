@@ -10,12 +10,8 @@ class GetTransportLayerApplicationRequest(DaraModel):
         application_id: int = None,
         site_id: int = None,
     ):
-        # Number of forwarding rules contained in the transport layer acceleration application.
-        # 
         # This parameter is required.
         self.application_id = application_id
-        # Transport layer application ID.
-        # 
         # This parameter is required.
         self.site_id = site_id
 

@@ -19,28 +19,13 @@ class UpdateImageTransformRequest(DaraModel):
     ):
         self.auto_avif = auto_avif
         self.auto_webp = auto_webp
-        # Configuration ID. It can be obtained by calling the [ListImageTransforms](https://help.aliyun.com/document_detail/2869056.html) interface.
-        # 
         # This parameter is required.
         self.config_id = config_id
-        # Indicates whether to enable image transformation. Possible values:
-        # 
-        # - on: Enable.
-        # - off: Disable.
         self.enable = enable
-        # Rule content, used to match user requests with conditional expressions. This parameter is not required when adding a global configuration. There are two usage scenarios:
-        # - To match all incoming requests: Set the value to true.
-        # - To match specific requests: Set the value to a custom expression, for example: (http.host eq "video.example.com")
         self.rule = rule
-        # Rule switch. This parameter is not required when adding a global configuration. Possible values:
-        # - on: Enable.
-        # - off: Disable.
         self.rule_enable = rule_enable
-        # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
         self.sequence = sequence
-        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
-        # 
         # This parameter is required.
         self.site_id = site_id
 

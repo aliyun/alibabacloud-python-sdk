@@ -13,28 +13,14 @@ class CreateWaitingRoomRuleRequest(DaraModel):
         site_id: int = None,
         waiting_room_id: str = None,
     ):
-        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
-        # - Match all incoming requests: Set the value to true
-        # - Match specific requests: Set the value to a custom expression, for example: (http.host eq "video.example.com")
-        # 
         # This parameter is required.
         self.rule = rule
-        # Rule switch. This parameter is not required when adding a global configuration. Value range:
-        # - on: Enable.
-        # - off: Disable.
-        # 
         # This parameter is required.
         self.rule_enable = rule_enable
-        # Rule name. This parameter is not required when adding a global configuration.
-        # 
         # This parameter is required.
         self.rule_name = rule_name
-        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
-        # 
         # This parameter is required.
         self.site_id = site_id
-        # The ID of the waiting room to bypass.
-        # 
         # This parameter is required.
         self.waiting_room_id = waiting_room_id
 

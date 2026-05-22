@@ -21,54 +21,22 @@ class CreateSiteDeliveryTaskShrinkRequest(DaraModel):
         sls_delivery_shrink: str = None,
         task_name: str = None,
     ):
-        # The log category. Valid values:
-        # 
-        # *   **dcdn_log_access_l1** (default): access logs.
-        # *   **dcdn_log_er**: Edge Routine logs.
-        # *   **dcdn_log_waf**: firewall logs.
-        # *   **dcdn_log_ipa**: TCP/UDP proxy logs.
-        # 
         # This parameter is required.
         self.business_type = business_type
-        # The data center. Valid values:
-        # 
-        # *   cn: the Chinese mainland.
-        # *   oversea: outside the Chinese mainland.
         self.data_center = data_center
-        # The destination of the delivery. Valid values:
-        # 
-        # *   sls: Alibaba Cloud Simple Log Service (SLS).
-        # *   http: HTTP server.
-        # *   aws3: Amazon Simple Storage Service (S3).
-        # *   oss: Alibaba Cloud Object Storage Service (OSS).
-        # *   kafka: Kafka.
-        # *   aws3cmpt: S3-compatible storage service.
-        # 
         # This parameter is required.
         self.delivery_type = delivery_type
-        # The discard rate. Default value: 0.
         self.discard_rate = discard_rate
-        # The log fields, which are separated by commas (,).
-        # 
         # This parameter is required.
         self.field_name = field_name
         self.filter_ver = filter_ver
-        # The configurations for delivery to an HTTP server.
         self.http_delivery_shrink = http_delivery_shrink
-        # The configurations for delivery to Kafka.
         self.kafka_delivery_shrink = kafka_delivery_shrink
-        # The configurations for delivery to OSS.
         self.oss_delivery_shrink = oss_delivery_shrink
-        # The configurations for delivery to Amazon S3 or an S3-compatible service.
         self.s_3delivery_shrink = s_3delivery_shrink
-        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
-        # 
         # This parameter is required.
         self.site_id = site_id
-        # The configurations for delivery to SLS.
         self.sls_delivery_shrink = sls_delivery_shrink
-        # The name of the delivery task.
-        # 
         # This parameter is required.
         self.task_name = task_name
 

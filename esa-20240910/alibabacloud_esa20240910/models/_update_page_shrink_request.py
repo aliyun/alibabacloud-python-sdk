@@ -14,27 +14,14 @@ class UpdatePageShrinkRequest(DaraModel):
         name: str = None,
         site_ids_shrink: str = None,
     ):
-        # The Base64-encoded content of the error page. The content type is specified by the Content-Type field.
-        # 
         # This parameter is required.
         self.content = content
-        # The Content-Type field in the HTTP header. Valid values:
-        # 
-        # *   text/html
-        # *   application/json
-        # 
         # This parameter is required.
         self.content_type = content_type
-        # The description of the custom error page.
-        # 
         # This parameter is required.
         self.description = description
-        # The ID of the custom error page, which can be obtained by calling the [ListPages](https://help.aliyun.com/document_detail/2850223.html) operation.
-        # 
         # This parameter is required.
         self.id = id
-        # The name of the custom error page.
-        # 
         # This parameter is required.
         self.name = name
         self.site_ids_shrink = site_ids_shrink

@@ -17,17 +17,11 @@ class ListHttpResponseHeaderModificationRulesResponseBody(DaraModel):
         total_count: int = None,
         total_page: int = None,
     ):
-        # List of modified HTTP response headers.
         self.configs = configs
-        # Page number.
         self.page_number = page_number
-        # Page size.
         self.page_size = page_size
-        # Request ID.
         self.request_id = request_id
-        # Total count.
         self.total_count = total_count
-        # Total pages.
         self.total_page = total_page
 
     def validate(self):
@@ -100,27 +94,13 @@ class ListHttpResponseHeaderModificationRulesResponseBodyConfigs(DaraModel):
         sequence: int = None,
         site_version: int = None,
     ):
-        # Configuration ID.
         self.config_id = config_id
-        # Configuration type. Possible values:
-        # - global: Global configuration.
-        # - rule: Rule configuration.
         self.config_type = config_type
-        # Modify response headers, supporting add, delete, and modify operations.
         self.response_header_modification = response_header_modification
-        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
-        # - Match all incoming requests: Set the value to true
-        # - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         self.rule = rule
-        # Rule switch. This parameter is not required when adding a global configuration. Possible values:
-        # - on: Enable.
-        # - off: Disable.
         self.rule_enable = rule_enable
-        # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
-        # Rule execution order. The smaller the value, the higher the priority.
         self.sequence = sequence
-        # Version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the effective version of the configuration, with the default being version 0.
         self.site_version = site_version
 
     def validate(self):
@@ -201,15 +181,9 @@ class ListHttpResponseHeaderModificationRulesResponseBodyConfigsResponseHeaderMo
         type: str = None,
         value: str = None,
     ):
-        # Name of the response header.
         self.name = name
-        # Operation type. The value range is as follows:
-        # - add: Add.
-        # - del: Delete
-        # - modify: Modify.
         self.operation = operation
         self.type = type
-        # Response header value.
         self.value = value
 
     def validate(self):

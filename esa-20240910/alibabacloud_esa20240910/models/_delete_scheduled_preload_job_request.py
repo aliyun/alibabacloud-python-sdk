@@ -9,8 +9,6 @@ class DeleteScheduledPreloadJobRequest(DaraModel):
         self,
         id: str = None,
     ):
-        # The ID of the scheduled prefetch task.
-        # 
         # This parameter is required.
         self.id = id
 

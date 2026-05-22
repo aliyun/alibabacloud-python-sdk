@@ -9,8 +9,6 @@ class ListESAIPInfoRequest(DaraModel):
         self,
         vip_info: str = None,
     ):
-        # You can enter IPv4 or IPv6 addresses. Separate multiple IP addresses with commas (,). You can enter up to 20 IP addresses at a time.
-        # 
         # This parameter is required.
         self.vip_info = vip_info
 

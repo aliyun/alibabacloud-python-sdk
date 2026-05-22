@@ -11,11 +11,8 @@ class GetEdgeContainerAppLogRiverResponseBody(DaraModel):
         request_id: str = None,
         stdout: bool = None,
     ):
-        # The log path of the container. It must be an absolute path that starts with a forward slash (/). You can use asterisks (\\*) and question marks (?) as wildcards.
         self.path = path
-        # The request ID.
         self.request_id = request_id
-        # Indicates whether the standard output of the container is collected.
         self.stdout = stdout
 
     def validate(self):

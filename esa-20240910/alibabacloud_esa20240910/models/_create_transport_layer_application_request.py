@@ -19,28 +19,14 @@ class CreateTransportLayerApplicationRequest(DaraModel):
         site_id: int = None,
         static_ip: str = None,
     ):
-        # Whether to enable China mainland network access optimization, default is disabled. Value range:
-        # - on: Enabled.
-        # - off: Disabled.
         self.cross_border_optimization = cross_border_optimization
-        # IP access rule switch. When enabled, the WAF\\"s IP access rules apply to the transport layer application.
-        # 
-        # - on: Enabled.
-        # - off: Disabled.
         self.ip_access_rule = ip_access_rule
-        # IPv6 switch.
         self.ipv_6 = ipv_6
         self.keep_alive_protection = keep_alive_protection
-        # Domain name of the transport layer application.
-        # 
         # This parameter is required.
         self.record_name = record_name
-        # List of forwarding rules.
-        # 
         # This parameter is required.
         self.rules = rules
-        # Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
-        # 
         # This parameter is required.
         self.site_id = site_id
         self.static_ip = static_ip
@@ -126,50 +112,17 @@ class CreateTransportLayerApplicationRequestRules(DaraModel):
         source_port: str = None,
         source_type: str = None,
     ):
-        # Client IP pass-through protocol, supporting:
-        # - **off**: No pass-through.
-        # - **PPv1**: PROXY Protocol v1, supports client IP pass-through for TCP protocol.
-        # - **PPv2**: PROXY Protocol v2, supports client IP pass-through for TCP and UDP protocols.
-        # - **SPP**: Simple Proxy Protocol, supports client IP pass-through for UDP protocol.
-        # 
         # This parameter is required.
         self.client_ippass_through_mode = client_ippass_through_mode
-        # Comment information for the rule (optional).
         self.comment = comment
-        # Edge port. Supports:
-        # 
-        # - A single port, such as 80.
-        # - Port range, such as 81-85, representing ports 81, 82, 83, 84, and 85.
-        # - Combination of ports and port ranges, separated by commas, such as 80,81-85,90, representing ports 80, 81, 82, 83, 84, 85, and 90.
-        # 
-        # Edge ports within a single rule and between multiple rules must not overlap.
-        # 
         # This parameter is required.
         self.edge_port = edge_port
-        # Forwarding rule protocol, with values:
-        # 
-        # - TCP: TCP protocol.
-        # - UDP: UDP protocol.
-        # 
         # This parameter is required.
         self.protocol = protocol
-        # Specific value of the origin, which needs to match the origin type.
-        # 
         # This parameter is required.
         self.source = source
-        # Origin port. Supports:
-        # 
-        # - A single port, when the origin port is a single port, any valid combination of edge ports is supported.
-        # - Port range, only when the edge port is a port range, the origin port can be set to a port range, and the size of the range must match that of the edge port. For example, if the edge port is 90-93, the origin port cannot be set to 81-85 because the origin port range is 5 and the edge port range is 3, which do not match.
-        # 
         # This parameter is required.
         self.source_port = source_port
-        # Origin type, supporting:
-        # - **ip**: IP address.
-        # - **domain**: Domain name.
-        # - **OP**: Origin pool.
-        # - **LB**: Load balancer.
-        # 
         # This parameter is required.
         self.source_type = source_type
 

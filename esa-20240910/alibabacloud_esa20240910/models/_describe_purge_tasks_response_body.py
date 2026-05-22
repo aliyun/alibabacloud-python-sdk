@@ -16,15 +16,10 @@ class DescribePurgeTasksResponseBody(DaraModel):
         tasks: List[main_models.DescribePurgeTasksResponseBodyTasks] = None,
         total_count: int = None,
     ):
-        # The page number.
         self.page_number = page_number
-        # The number of entries per page.
         self.page_size = page_size
-        # The request ID.
         self.request_id = request_id
-        # The tasks.
         self.tasks = tasks
-        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -90,30 +85,12 @@ class DescribePurgeTasksResponseBodyTasks(DaraModel):
         task_id: str = None,
         type: str = None,
     ):
-        # The purged content.
         self.content = content
-        # The time when the task was created.
         self.create_time = create_time
-        # The error description returned when the purge task failed.
         self.description = description
-        # The progress of the task, in percentage.
         self.process = process
-        # The task status.
-        # 
-        # *   **Complete**: The task is complete.
-        # *   **Refreshing**: The task is in progress.
-        # *   **Failed**: The task failed.
         self.status = status
-        # The task ID.
         self.task_id = task_id
-        # The type of the purge task. Valid values:
-        # 
-        # *   **file** (default): purges the cache by file.
-        # *   **cachetag**: purges the cache by cache tag.
-        # *   **directory**: purges the cache by directory.
-        # *   **ignoreParams**: purges the cache by URL with specified parameters ignored.
-        # *   **hostname**: purges the cache by hostname.
-        # *   **purgeall**: purges all cache.
         self.type = type
 
     def validate(self):

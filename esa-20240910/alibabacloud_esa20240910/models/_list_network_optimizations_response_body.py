@@ -17,17 +17,11 @@ class ListNetworkOptimizationsResponseBody(DaraModel):
         total_count: int = None,
         total_page: int = None,
     ):
-        # Response body configurations.
         self.configs = configs
-        # The current page number.
         self.page_number = page_number
-        # The size of the page.
         self.page_size = page_size
-        # Request ID.
         self.request_id = request_id
-        # Total number of records.
         self.total_count = total_count
-        # Total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -104,45 +98,17 @@ class ListNetworkOptimizationsResponseBodyConfigs(DaraModel):
         upload_max_filesize: str = None,
         websocket: str = None,
     ):
-        # Configuration ID.
         self.config_id = config_id
-        # Configuration type, which can be used to query global or rule-based configurations. The value range is as follows:
-        # 
-        # - global: Query global configuration.
-        # - rule: Query rule-based configuration.
         self.config_type = config_type
-        # Whether to enable GRPC, default is off. The value range is:
-        # - on: enabled.
-        # - off: disabled.
         self.grpc = grpc
-        # Whether to enable HTTP2 origin, defaulting to off. The value range is as follows:
-        # 
-        # - on: Enabled.
-        # - off: Disabled.
         self.http_2origin = http_2origin
-        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
-        # - Match all incoming requests: Set the value to true
-        # - Match specific requests: Set the value to a custom expression, e.g., (http.host eq \\"video.example.com\\")
         self.rule = rule
-        # Rule switch. This parameter is not required when adding a global configuration. The value range is as follows:
-        # - on: Enabled.
-        # - off: Disabled.
         self.rule_enable = rule_enable
-        # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
-        # Rule execution order. The smaller the value, the higher the priority.
         self.sequence = sequence
-        # Site configuration version number. For sites with version management enabled, this parameter can specify the site version for which the configuration takes effect, defaulting to version 0.
         self.site_version = site_version
-        # Whether to enable smart routing service, defaulting to off. The value range is as follows:
-        # - on: Enabled.
-        # - off: Disabled.
         self.smart_routing = smart_routing
-        # Maximum file size for upload, in MB. The value range is 100 to 500.
         self.upload_max_filesize = upload_max_filesize
-        # Whether to enable Websocket, enabled by default. Value range: 
-        # - on: Enabled. 
-        # - off: Disabled.
         self.websocket = websocket
 
     def validate(self):

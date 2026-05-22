@@ -13,14 +13,9 @@ class SetClientCertificateHostnamesRequest(DaraModel):
         id: str = None,
         site_id: int = None,
     ):
-        # The domain names to associate.
-        # 
         # This parameter is required.
         self.hostnames = hostnames
-        # The ID of the client CA certificate.
         self.id = id
-        # The website ID.
-        # 
         # This parameter is required.
         self.site_id = site_id
 

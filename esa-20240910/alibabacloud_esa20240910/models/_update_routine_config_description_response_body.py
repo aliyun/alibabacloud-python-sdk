@@ -10,9 +10,7 @@ class UpdateRoutineConfigDescriptionResponseBody(DaraModel):
         request_id: str = None,
         status: str = None,
     ):
-        # The request ID.
         self.request_id = request_id
-        # Indicates whether the operation is successful.
         self.status = status
 
     def validate(self):

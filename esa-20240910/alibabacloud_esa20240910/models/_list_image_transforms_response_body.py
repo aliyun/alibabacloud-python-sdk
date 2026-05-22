@@ -17,17 +17,11 @@ class ListImageTransformsResponseBody(DaraModel):
         total_count: int = None,
         total_page: int = None,
     ):
-        # Configuration list.
         self.configs = configs
-        # Current page number.
         self.page_number = page_number
-        # Page size. Range: **1~500**, default is **500**.
         self.page_size = page_size
-        # Request ID.
         self.request_id = request_id
-        # Total number of records.
         self.total_count = total_count
-        # Total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -104,30 +98,13 @@ class ListImageTransformsResponseBodyConfigs(DaraModel):
     ):
         self.auto_avif = auto_avif
         self.auto_webp = auto_webp
-        # Configuration ID.
         self.config_id = config_id
-        # Configuration type. Possible values:
-        # - global: Global configuration;
-        # - rule: Rule configuration;
         self.config_type = config_type
-        # Switch. Possible values:
-        # 
-        # - **on**: Enabled.
-        # - **off**: Disabled.
         self.enable = enable
-        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
-        # - Match all incoming requests: Set the value to true
-        # - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         self.rule = rule
-        # Rule switch. This parameter is not required when adding a global configuration. Possible values:
-        # - on: Enabled.
-        # - off: Disabled.
         self.rule_enable = rule_enable
-        # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
-        # Rule execution order. The smaller the value, the higher the priority.
         self.sequence = sequence
-        # Site configuration version number. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration takes effect. The default value is version 0.
         self.site_version = site_version
 
     def validate(self):

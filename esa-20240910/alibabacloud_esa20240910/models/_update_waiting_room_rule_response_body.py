@@ -9,7 +9,6 @@ class UpdateWaitingRoomRuleResponseBody(DaraModel):
         self,
         request_id: str = None,
     ):
-        # Request ID, used for tracking the progress of request processing.
         self.request_id = request_id
 
     def validate(self):

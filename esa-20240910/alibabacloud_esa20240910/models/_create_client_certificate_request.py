@@ -12,16 +12,10 @@ class CreateClientCertificateRequest(DaraModel):
         site_id: int = None,
         validity_days: int = None,
     ):
-        # The certificate signing request (CSR).
         self.csr = csr
-        # The type of the private key algorithm.
         self.pkey_type = pkey_type
-        # The website ID.
-        # 
         # This parameter is required.
         self.site_id = site_id
-        # The validity period of the certificate. Unit: day.
-        # 
         # This parameter is required.
         self.validity_days = validity_days
 

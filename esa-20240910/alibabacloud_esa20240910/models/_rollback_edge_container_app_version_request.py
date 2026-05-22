@@ -13,16 +13,11 @@ class RollbackEdgeContainerAppVersionRequest(DaraModel):
         used_percent: bool = None,
         version_id: str = None,
     ):
-        # The application ID.
-        # 
         # This parameter is required.
         self.app_id = app_id
         self.percentage = percentage
-        # The remarks.
         self.remarks = remarks
         self.used_percent = used_percent
-        # The ID of version that you want to roll back.
-        # 
         # This parameter is required.
         self.version_id = version_id
 

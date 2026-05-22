@@ -11,15 +11,10 @@ class CreateEdgeContainerAppRecordRequest(DaraModel):
         record_name: str = None,
         site_id: int = None,
     ):
-        # The application ID.
-        # 
         # This parameter is required.
         self.app_id = app_id
-        # The associated domain name.
-        # 
         # This parameter is required.
         self.record_name = record_name
-        # The website ID.
         self.site_id = site_id
 
     def validate(self):

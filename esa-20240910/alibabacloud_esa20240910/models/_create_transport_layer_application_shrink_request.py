@@ -16,28 +16,14 @@ class CreateTransportLayerApplicationShrinkRequest(DaraModel):
         site_id: int = None,
         static_ip: str = None,
     ):
-        # Whether to enable China mainland network access optimization, default is disabled. Value range:
-        # - on: Enabled.
-        # - off: Disabled.
         self.cross_border_optimization = cross_border_optimization
-        # IP access rule switch. When enabled, the WAF\\"s IP access rules apply to the transport layer application.
-        # 
-        # - on: Enabled.
-        # - off: Disabled.
         self.ip_access_rule = ip_access_rule
-        # IPv6 switch.
         self.ipv_6 = ipv_6
         self.keep_alive_protection = keep_alive_protection
-        # Domain name of the transport layer application.
-        # 
         # This parameter is required.
         self.record_name = record_name
-        # List of forwarding rules.
-        # 
         # This parameter is required.
         self.rules_shrink = rules_shrink
-        # Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
-        # 
         # This parameter is required.
         self.site_id = site_id
         self.static_ip = static_ip

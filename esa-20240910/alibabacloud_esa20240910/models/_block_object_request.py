@@ -14,21 +14,11 @@ class BlockObjectRequest(DaraModel):
         site_id: int = None,
         type: str = None,
     ):
-        # The content to block.
-        # 
         # This parameter is required.
         self.content = content
-        # The period of time during which the URL is blocked. Unit: seconds. Specify this parameter if Type is set to block.
         self.maxage = maxage
-        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
-        # 
         # This parameter is required.
         self.site_id = site_id
-        # The type. Valid values:
-        # 
-        # *   **block**
-        # *   **unblock**
-        # 
         # This parameter is required.
         self.type = type
 

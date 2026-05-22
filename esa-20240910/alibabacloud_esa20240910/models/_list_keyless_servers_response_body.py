@@ -109,7 +109,6 @@ class ListKeylessServersResponseBodyResult(DaraModel):
         self.client_private_key = client_private_key
         self.create_time = create_time
         self.host = host
-        # Keyless server ID。
         self.id = id
         self.name = name
         self.port = port

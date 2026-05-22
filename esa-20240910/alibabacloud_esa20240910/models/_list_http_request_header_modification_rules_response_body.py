@@ -17,17 +17,11 @@ class ListHttpRequestHeaderModificationRulesResponseBody(DaraModel):
         total_count: int = None,
         total_page: int = None,
     ):
-        # List of HTTP request header modification configurations.
         self.configs = configs
-        # Page number. Default value: **1**.
         self.page_number = page_number
-        # Page size, default **500**, with a range of **1~500**.
         self.page_size = page_size
-        # Request ID.
         self.request_id = request_id
-        # Total number of items.
         self.total_count = total_count
-        # Total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -100,27 +94,13 @@ class ListHttpRequestHeaderModificationRulesResponseBodyConfigs(DaraModel):
         sequence: int = None,
         site_version: int = None,
     ):
-        # Configuration ID.
         self.config_id = config_id
-        # Configuration type. Possible values:
-        # - global: Global configuration;
-        # - rule: Rule configuration;
         self.config_type = config_type
-        # Modify request headers, supporting add, delete, and modify operations.
         self.request_header_modification = request_header_modification
-        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
-        # - Match all incoming requests: Set the value to true
-        # - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         self.rule = rule
-        # Rule switch. This parameter is not required when adding a global configuration. Possible values:
-        # - on: Enable.
-        # - off: Disable.
         self.rule_enable = rule_enable
-        # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
-        # Rule execution order. The smaller the value, the higher the priority.
         self.sequence = sequence
-        # Version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the effective version of the configuration, defaulting to version 0.
         self.site_version = site_version
 
     def validate(self):
@@ -201,16 +181,9 @@ class ListHttpRequestHeaderModificationRulesResponseBodyConfigsRequestHeaderModi
         type: str = None,
         value: str = None,
     ):
-        # The name of the request header.
         self.name = name
-        # The operation type. The value range is as follows:
-        # 
-        # - add: Add.
-        # - del: Delete.
-        # - modify: Modify.
         self.operation = operation
         self.type = type
-        # The value of the request header.
         self.value = value
 
     def validate(self):

@@ -17,17 +17,11 @@ class ListRewriteUrlRulesResponseBody(DaraModel):
         total_count: int = None,
         total_page: int = None,
     ):
-        # List of rewrite URL configurations.
         self.configs = configs
-        # The current page number.
         self.page_number = page_number
-        # The size of the page.
         self.page_size = page_size
-        # Request ID.
         self.request_id = request_id
-        # The total number of items.
         self.total_count = total_count
-        # Total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -103,37 +97,16 @@ class ListRewriteUrlRulesResponseBodyConfigs(DaraModel):
         site_version: int = None,
         uri: str = None,
     ):
-        # Configuration ID.
         self.config_id = config_id
-        # Configuration type. Value range:
-        # - global: Global configuration;
-        # - rule: Rule configuration;
         self.config_type = config_type
-        # The rewritten query string.
         self.query_string = query_string
-        # Query string rewrite type. Value range:
-        # - static: Static mode.
-        # - dynamic: Dynamic mode.
         self.rewrite_query_string_type = rewrite_query_string_type
-        # URI rewrite type. Value range:
-        # - static: Static mode.
-        # - dynamic: Dynamic mode.
         self.rewrite_uri_type = rewrite_uri_type
-        # Rule content, using conditional expressions to match user requests. Not required when adding a global configuration. There are two usage scenarios:
-        # - Match all incoming requests: Set the value to true
-        # - Match specific requests: Set the value to a custom expression, e.g., (http.host eq \\"video.example.com\\")
         self.rule = rule
-        # Rule switch. Not required when adding a global configuration. Value range:
-        # - on: Enabled.
-        # - off: Disabled.
         self.rule_enable = rule_enable
-        # Rule name. Not required when adding a global configuration.
         self.rule_name = rule_name
-        # Rule execution order. The smaller the value, the higher the priority.
         self.sequence = sequence
-        # Version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the effective version of the configuration, defaulting to version 0.
         self.site_version = site_version
-        # Target URI after rewriting.
         self.uri = uri
 
     def validate(self):

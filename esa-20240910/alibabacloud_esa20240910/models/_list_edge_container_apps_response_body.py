@@ -16,15 +16,10 @@ class ListEdgeContainerAppsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The queried applications.
         self.apps = apps
-        # The page number. Default value: **1**. Valid values: 1 to 65535.
         self.page_number = page_number
-        # The number of entries per page. Valid values: 1 to 500.
         self.page_size = page_size
-        # The request ID.
         self.request_id = request_id
-        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -97,40 +92,19 @@ class ListEdgeContainerAppsResponseBodyApps(DaraModel):
         update_time: str = None,
         version_count: int = None,
     ):
-        # The application ID.
         self.app_id = app_id
-        # The time when the version was created.
         self.create_time = create_time
-        # The domain name associated with the application.
         self.domain_name = domain_name
-        # The type of the gateway. Valid values:
-        # 
-        # *   l7: Layer 7 gateway.
-        # *   l4: Layer 4 gateway.
         self.gateway_type = gateway_type
-        # The information about health checks.
         self.health_check = health_check
-        # The application name.
         self.name = name
-        # The progress of the application creation task in percentage.
         self.percentage = percentage
-        # Indicates whether QUIC is enabled.
         self.quic_cid = quic_cid
-        # The remarks.
         self.remarks = remarks
-        # The server port. Valid values: 1 to 65535.
         self.service_port = service_port
-        # The status of the application. Valid values:
-        # 
-        # *   creating: The application is being created.
-        # *   failed: The application failed to be created.
-        # *   created: The application is created.
         self.status = status
-        # The backend port, which is also the service port of the application. Valid values: 1 to 65535.
         self.target_port = target_port
-        # The time when the application was last modified. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
         self.update_time = update_time
-        # The number of versions of the application.
         self.version_count = version_count
 
     def validate(self):
@@ -247,28 +221,15 @@ class ListEdgeContainerAppsResponseBodyAppsHealthCheck(DaraModel):
         type: str = None,
         uri: str = None,
     ):
-        # The number of consecutive failed health checks for an application to be considered unhealthy.
         self.fail_times = fail_times
-        # The domain name that is used for health checks.
         self.host = host
-        # The range of health check status codes that indicate successful health checks.
         self.http_code = http_code
-        # The interval between health checks. Unit: seconds.
         self.interval = interval
-        # The HTTP method used for health checks.
         self.method = method
-        # The health check port.
         self.port = port
-        # The number of consecutive successful health checks for an application to be considered healthy.
         self.succ_times = succ_times
-        # The timeout period of health checks. Unit: seconds.
         self.timeout = timeout
-        # The type of health checks. Valid values:
-        # 
-        # *   l7
-        # *   l4
         self.type = type
-        # The health check URL.
         self.uri = uri
 
     def validate(self):

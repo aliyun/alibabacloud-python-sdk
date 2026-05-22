@@ -21,31 +21,14 @@ class GetImageTransformResponseBody(DaraModel):
     ):
         self.auto_avif = auto_avif
         self.auto_webp = auto_webp
-        # Configuration ID.
         self.config_id = config_id
-        # Configuration type. Possible values:
-        # - global: Global configuration;
-        # - rule: Rule-based configuration;
         self.config_type = config_type
-        # Whether to enable image transformation. Possible values:
-        # - on: Enabled.
-        # - off: Disabled.
         self.enable = enable
-        # Request ID.
         self.request_id = request_id
-        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
-        # - Match all incoming requests: Set the value to true
-        # - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         self.rule = rule
-        # Rule switch. This parameter is not required when adding a global configuration. Possible values:
-        # - on: Enabled.
-        # - off: Disabled.
         self.rule_enable = rule_enable
-        # Rule name. This parameter does not need to be set when adding global configuration.
         self.rule_name = rule_name
-        # Rule execution order. The smaller the value, the higher the priority.
         self.sequence = sequence
-        # The version number of the site configuration. For sites with version management enabled, this parameter can specify the effective version of the site, defaulting to version 0.
         self.site_version = site_version
 
     def validate(self):

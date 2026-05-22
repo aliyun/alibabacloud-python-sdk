@@ -12,9 +12,7 @@ class GetEdgeContainerLogsResponseBody(DaraModel):
         items: List[str] = None,
         request_id: str = None,
     ):
-        # The logs.
         self.items = items
-        # The request ID.
         self.request_id = request_id
 
     def validate(self):

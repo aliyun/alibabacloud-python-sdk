@@ -12,20 +12,12 @@ class UpdateListShrinkRequest(DaraModel):
         items_shrink: str = None,
         name: str = None,
     ):
-        # The new description of the list.
-        # 
         # This parameter is required.
         self.description = description
-        # The ID of the custom list, which can be obtained by calling the [ListLists](https://help.aliyun.com/document_detail/2850217.html) operation.
-        # 
         # This parameter is required.
         self.id = id
-        # The items in the updated list. The value is a JSON array.
-        # 
         # This parameter is required.
         self.items_shrink = items_shrink
-        # The new name of the list.
-        # 
         # This parameter is required.
         self.name = name
 

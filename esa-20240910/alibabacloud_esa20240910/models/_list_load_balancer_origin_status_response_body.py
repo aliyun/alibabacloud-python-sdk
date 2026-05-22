@@ -13,9 +13,7 @@ class ListLoadBalancerOriginStatusResponseBody(DaraModel):
         origin_status: List[main_models.ListLoadBalancerOriginStatusResponseBodyOriginStatus] = None,
         request_id: str = None,
     ):
-        # List of origin statuses under the load balancer.
         self.origin_status = origin_status
-        # Request ID, used for tracking the request.
         self.request_id = request_id
 
     def validate(self):
@@ -62,21 +60,11 @@ class ListLoadBalancerOriginStatusResponseBodyOriginStatus(DaraModel):
         reason: str = None,
         status: str = None,
     ):
-        # ID of the load balancer.
         self.load_balancer_id = load_balancer_id
-        # ID of the origin.
         self.origin_id = origin_id
-        # ID of the source address pool.
         self.pool_id = pool_id
-        # The origin pool to which the source belongs, under this load balancer. Only \\"default_pool\\" (default address pool) will be displayed; other types will return an empty string.
         self.pool_type = pool_type
-        # Reason for the probe failure.
         self.reason = reason
-        # Status of the origin:
-        # - Healthy(healthy): The probe result is available.
-        # - Unhealthy(unhealthy): The probe result is unavailable.
-        # - Unknown(unknown): Unknown, the monitor has not yet probed.
-        # - Undetected(undetected): The load balancer to which the origin belongs is not bound to a monitor.
         self.status = status
 
     def validate(self):

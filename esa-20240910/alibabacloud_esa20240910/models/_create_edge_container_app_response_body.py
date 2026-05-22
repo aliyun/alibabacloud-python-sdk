@@ -10,9 +10,7 @@ class CreateEdgeContainerAppResponseBody(DaraModel):
         app_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the application that is created.
         self.app_id = app_id
-        # The request ID.
         self.request_id = request_id
 
     def validate(self):

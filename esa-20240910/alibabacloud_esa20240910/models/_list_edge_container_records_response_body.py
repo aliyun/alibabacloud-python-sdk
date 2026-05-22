@@ -16,15 +16,10 @@ class ListEdgeContainerRecordsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The page number.
         self.page_number = page_number
-        # The number of entries per page.
         self.page_size = page_size
-        # The records.
         self.records = records
-        # Id of the request
         self.request_id = request_id
-        # The total number of records returned.
         self.total_count = total_count
 
     def validate(self):
@@ -89,17 +84,11 @@ class ListEdgeContainerRecordsResponseBodyRecords(DaraModel):
         site_name: str = None,
         update_time: str = None,
     ):
-        # The time when the record was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.create_time = create_time
-        # The CNAME. If you use CNAME setup when you add your website to ESA, the value is the CNAME that you configured.
         self.record_cname = record_cname
-        # The record name.
         self.record_name = record_name
-        # The website ID.
         self.site_id = site_id
-        # The website name.
         self.site_name = site_name
-        # The time when the record was updated. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.update_time = update_time
 
     def validate(self):

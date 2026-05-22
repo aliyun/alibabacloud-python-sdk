@@ -16,30 +16,14 @@ class UpdateCustomResponseCodeRuleRequest(DaraModel):
         sequence: int = None,
         site_id: int = None,
     ):
-        # The ID of the configuration.
-        # 
         # This parameter is required.
         self.config_id = config_id
-        # Response page.
         self.page_id = page_id
-        # The response code.
         self.return_code = return_code
-        # The content of the rule. A conditional expression is used to match a user request. You do not need to set this parameter when you add global configurations. Use cases:
-        # 
-        # *   true: Match all incoming requests.
-        # *   Set the value to a custom expression, for example, (http.host eq "video.example.com"): Match the specified request.
         self.rule = rule
-        # Specifies whether to enable the rule. Valid values: You do not need to set this parameter when you add global configurations. Valid values:
-        # 
-        # *   on
-        # *   off
         self.rule_enable = rule_enable
-        # The rule name. You do not need to set this parameter when you add global configurations.
         self.rule_name = rule_name
-        # The order in which the rule is executed. A smaller value gives priority to the rule.
         self.sequence = sequence
-        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
-        # 
         # This parameter is required.
         self.site_id = site_id
 

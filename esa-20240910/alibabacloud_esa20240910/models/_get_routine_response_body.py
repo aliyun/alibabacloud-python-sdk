@@ -17,16 +17,11 @@ class GetRoutineResponseBody(DaraModel):
         has_assets: bool = None,
         request_id: str = None,
     ):
-        # The time when the routine was created.
         self.create_time = create_time
-        # The default record name to access.
         self.default_related_record = default_related_record
-        # The description of the routine.
         self.description = description
-        # The information about the environments.
         self.envs = envs
         self.has_assets = has_assets
-        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -94,7 +89,6 @@ class GetRoutineResponseBodyEnvs(DaraModel):
         env: str = None,
     ):
         self.code_deploy = code_deploy
-        # The environment type.
         self.env = env
 
     def validate(self):

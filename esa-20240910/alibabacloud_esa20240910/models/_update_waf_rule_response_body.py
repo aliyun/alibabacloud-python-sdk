@@ -10,9 +10,7 @@ class UpdateWafRuleResponseBody(DaraModel):
         id: int = None,
         request_id: str = None,
     ):
-        # WAF rule ID, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2878257.html) interface.
         self.id = id
-        # Request ID.
         self.request_id = request_id
 
     def validate(self):

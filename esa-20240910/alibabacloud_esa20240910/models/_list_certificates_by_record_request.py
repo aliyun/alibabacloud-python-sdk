@@ -12,17 +12,11 @@ class ListCertificatesByRecordRequest(DaraModel):
         site_id: int = None,
         valid_only: bool = None,
     ):
-        # Specifies whether to return the certificate details. 0 indicates that the certificate details are not returned. 1 indicates that the certificate details are returned.
         self.detail = detail
-        # The record name.
-        # 
         # This parameter is required.
         self.record_name = record_name
-        # The website ID, which can be obtained by calling the [ListSites](~~ListSites~~) operation.
-        # 
         # This parameter is required.
         self.site_id = site_id
-        # Specifies whether to return only valid certificates. 0 indicates that all matched certificates are returned. 1 indicates that only valid certificates are returned.
         self.valid_only = valid_only
 
     def validate(self):

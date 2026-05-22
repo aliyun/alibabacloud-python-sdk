@@ -11,12 +11,8 @@ class ListClientCertificatesRequest(DaraModel):
         page_size: int = None,
         site_id: int = None,
     ):
-        # The page number.
         self.page_number = page_number
-        # The number of entries per page.
         self.page_size = page_size
-        # The website ID.
-        # 
         # This parameter is required.
         self.site_id = site_id
 

@@ -15,17 +15,9 @@ class ListInstanceQuotasWithUsageResponseBody(DaraModel):
         request_id: str = None,
         status: str = None,
     ):
-        # The plan ID.[](~~2850189~~)
         self.instance_id = instance_id
-        # The quotas and their actual usage in the plan.
         self.quotas = quotas
-        # The request ID.
         self.request_id = request_id
-        # The plan status. Valid values:
-        # 
-        # *   online: The plan is in service.
-        # *   offline: The plan has expired within an allowable period. In this state, the plan is unavailable.
-        # *   disable: The plan is released.
         self.status = status
 
     def validate(self):
@@ -82,13 +74,9 @@ class ListInstanceQuotasWithUsageResponseBodyQuotas(DaraModel):
         site_usage: List[main_models.ListInstanceQuotasWithUsageResponseBodyQuotasSiteUsage] = None,
         usage: str = None,
     ):
-        # The quota name.
         self.quota_name = quota_name
-        # The quota value.
         self.quota_value = quota_value
-        # The usage of the quota in each website associated with the plan.
         self.site_usage = site_usage
-        # The quota usage.
         self.usage = usage
 
     def validate(self):
@@ -144,11 +132,8 @@ class ListInstanceQuotasWithUsageResponseBodyQuotasSiteUsage(DaraModel):
         site_name: str = None,
         site_usage: str = None,
     ):
-        # The website ID.
         self.site_id = site_id
-        # The website name.
         self.site_name = site_name
-        # The quota usage of the website.
         self.site_usage = site_usage
 
     def validate(self):

@@ -10,12 +10,8 @@ class DeleteWaitingRoomEventRequest(DaraModel):
         site_id: int = None,
         waiting_room_event_id: int = None,
     ):
-        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
-        # 
         # This parameter is required.
         self.site_id = site_id
-        # The ID of the waiting room event.
-        # 
         # This parameter is required.
         self.waiting_room_event_id = waiting_room_event_id
 

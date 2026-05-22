@@ -18,29 +18,16 @@ class SetCertificateRequest(DaraModel):
         site_id: int = None,
         type: str = None,
     ):
-        # The certificate ID on Certificate Management Service.
         self.cas_id = cas_id
-        # The certificate content.
         self.certificate = certificate
-        # The certificate ID on ESA.
         self.id = id
         self.key_server_id = key_server_id
-        # The certificate name.
         self.name = name
-        # The private key of the certificate.
         self.private_key = private_key
-        # The region.
         self.region = region
         self.security_token = security_token
-        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
-        # 
         # This parameter is required.
         self.site_id = site_id
-        # The certificate type. Valid values:
-        # 
-        # *   cas: a certificate purchased by using Certificate Management Service.
-        # *   upload: a custom certificate that you upload.
-        # 
         # This parameter is required.
         self.type = type
 

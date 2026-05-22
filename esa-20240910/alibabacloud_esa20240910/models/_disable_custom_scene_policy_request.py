@@ -9,8 +9,6 @@ class DisableCustomScenePolicyRequest(DaraModel):
         self,
         policy_id: int = None,
     ):
-        # The policy ID, which can be obtained by calling the [DescribeCustomScenePolicies](https://help.aliyun.com/document_detail/2850508.html) operation.
-        # 
         # This parameter is required.
         self.policy_id = policy_id
 

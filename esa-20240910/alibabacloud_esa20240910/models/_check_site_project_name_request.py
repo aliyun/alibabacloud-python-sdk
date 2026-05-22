@@ -10,11 +10,8 @@ class CheckSiteProjectNameRequest(DaraModel):
         project_name: str = None,
         site_id: int = None,
     ):
-        # The name of the real-time log delivery task.
-        # 
         # This parameter is required.
         self.project_name = project_name
-        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         self.site_id = site_id
 
     def validate(self):

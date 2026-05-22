@@ -10,12 +10,8 @@ class GetCertificateQuotaRequest(DaraModel):
         site_id: int = None,
         type: str = None,
     ):
-        # Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
-        # 
         # This parameter is required.
         self.site_id = site_id
-        # Certificate Quota type.
-        # 
         # This parameter is required.
         self.type = type
 

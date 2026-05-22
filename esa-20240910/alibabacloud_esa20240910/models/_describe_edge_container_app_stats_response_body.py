@@ -20,22 +20,14 @@ class DescribeEdgeContainerAppStatsResponseBody(DaraModel):
         points: List[main_models.DescribeEdgeContainerAppStatsResponseBodyPoints] = None,
         request_id: str = None,
     ):
-        # Average CPU limit ratio
         self.cpu_usage_seconds_quota_rate_avg = cpu_usage_seconds_quota_rate_avg
-        # Average number of CPU cores
         self.cpu_usage_seconds_total_avg = cpu_usage_seconds_total_avg
-        # Average read IO
         self.fs_reads_bytes_avg_avg = fs_reads_bytes_avg_avg
-        # Average write IO
         self.fs_writes_bytes_avg_avg = fs_writes_bytes_avg_avg
-        # Average memory usage
         self.memory_rss_avg = memory_rss_avg
-        # Average memory limit proportion
         self.memory_rss_quota_rate_avg = memory_rss_quota_rate_avg
-        # Average PodReady rate
         self.pod_ready_rate_avg = pod_ready_rate_avg
         self.points = points
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):

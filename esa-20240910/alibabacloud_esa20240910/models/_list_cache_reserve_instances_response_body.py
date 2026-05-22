@@ -17,17 +17,11 @@ class ListCacheReserveInstancesResponseBody(DaraModel):
         total_count: int = None,
         total_page: int = None,
     ):
-        # The cache reserve instances.
         self.instance_info = instance_info
-        # Page number. Default value: **1**.
         self.page_number = page_number
-        # Page size, default **500**, range: **1~500**.
         self.page_size = page_size
-        # Request ID.
         self.request_id = request_id
-        # Total count.
         self.total_count = total_count
-        # Total pages.
         self.total_page = total_page
 
     def validate(self):
@@ -100,25 +94,13 @@ class ListCacheReserveInstancesResponseBodyInstanceInfo(DaraModel):
         instance_id: str = None,
         status: str = None,
     ):
-        # Cache reserve capacity. Unit: GB.
         self.cache_reserve_capacity = cache_reserve_capacity
-        # Cache reserve usage region.
         self.cache_reserve_region = cache_reserve_region
         self.charge_type = charge_type
-        # Instance purchase time.
         self.create_time = create_time
-        # Duration of the instance purchase, unit: months.
         self.duration = duration
-        # Instance expiration time.
         self.expire_time = expire_time
-        # Instance ID.
         self.instance_id = instance_id
-        # The status of the cache reserve instance. Valid values:
-        # 
-        # *   **online**: The instance is in service.
-        # *   **offline**: The instance has expired within an allowable period. In this state, it is unavailable.
-        # *   **disable**: The instance has been released.
-        # *   **overdue**: The instance has been stopped due to overdue payments.
         self.status = status
 
     def validate(self):

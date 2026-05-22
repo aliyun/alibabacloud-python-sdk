@@ -9,8 +9,6 @@ class DeactivateVersionManagementRequest(DaraModel):
         self,
         site_id: int = None,
     ):
-        # The website ID, which can be obtained by calling the [ListSites](~~ListSites~~) operation.
-        # 
         # This parameter is required.
         self.site_id = site_id
 

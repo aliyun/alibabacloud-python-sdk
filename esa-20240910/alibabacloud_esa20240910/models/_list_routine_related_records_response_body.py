@@ -16,15 +16,10 @@ class ListRoutineRelatedRecordsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page.
         self.page_size = page_size
-        # The list of records associated with the edge function.
         self.related_records = related_records
-        # The request ID.
         self.request_id = request_id
-        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -87,13 +82,9 @@ class ListRoutineRelatedRecordsResponseBodyRelatedRecords(DaraModel):
         site_id: int = None,
         site_name: str = None,
     ):
-        # The record ID of the domain name.
         self.record_id = record_id
-        # The name of the record.
         self.record_name = record_name
-        # The website ID.
         self.site_id = site_id
-        # The website name.
         self.site_name = site_name
 
     def validate(self):

@@ -25,34 +25,16 @@ class GetTransportLayerApplicationResponseBody(DaraModel):
         static_ip_v4list: List[main_models.GetTransportLayerApplicationResponseBodyStaticIpV4List] = None,
         status: str = None,
     ):
-        # Specific value of the origin, which needs to match the type of the origin.
         self.application_id = application_id
-        # Whether to enable China mainland network access optimization, default is off. Value range:
-        # - on: Enabled.
-        # - off: Disabled.
         self.cname = cname
         self.cross_border_optimization = cross_border_optimization
-        # #/components/schemas/WafRuleMatch2
         self.ip_access_rule = ip_access_rule
-        # Ipv6 switch
         self.ipv_6 = ipv_6
         self.keep_alive_protection = keep_alive_protection
-        # Query Transport Layer Acceleration Application
         self.record_name = record_name
-        # Id of the request
         self.request_id = request_id
-        # Edge port. Supports:
-        # 
-        # - A single port, such as 80.
-        # - Port range, such as 81-85, representing ports 81, 82, 83, 84, 85.
-        # - Combination of ports and port ranges, separated by commas, for example 80,81-85,90, representing ports 80, 81, 82, 83, 84, 85, 90.
         self.rules = rules
-        # Forwarding rule protocol, with values:
-        # 
-        # - TCP: TCP protocol.
-        # - UDP: UDP protocol.
         self.rules_count = rules_count
-        # Details of the forwarding rule.
         self.site_id = site_id
         self.static_ip = static_ip
         self.static_ip_v4list = static_ip_v4list
@@ -220,34 +202,13 @@ class GetTransportLayerApplicationResponseBodyRules(DaraModel):
         source_port: str = None,
         source_type: str = None,
     ):
-        # The domain name of the transport layer application.
         self.client_ippass_through_mode = client_ippass_through_mode
-        # Switch for IP access rules. When turned on, the IP access rules in WAF take effect on the transport layer application.
-        # 
-        # - on: Turned on.
-        # - off: Turned off.
         self.comment = comment
-        # Comment information of the rule.
         self.edge_port = edge_port
-        # Client IP pass-through protocol, supporting:
-        # - **off**: No pass-through.
-        # - **PPv1**: PROXY Protocol v1, supports client IP pass-through for TCP protocol.
-        # - **PPv2**: PROXY Protocol v2, supports client IP pass-through for TCP and UDP protocols.
-        # - **SPP**: Simple Proxy Protocol, supports client IP pass-through for UDP protocol.
         self.protocol = protocol
-        # Status of the transport layer application
-        # 
-        # - **deploying**: Deploying. In this state, modification and deletion are not allowed.
-        # - **active**: Active.
         self.rule_id = rule_id
-        # Origin port. Supports:
-        # 
-        # - A single port, when the origin port is a single port, any valid edge port combination is supported.
-        # - Port range, only when the edge port is a port range, the origin port can be set as a port range and the size of the range must be consistent with the edge port. For example, if the edge port is 90-93, the origin port cannot be set to 81-85 because the origin port range is 5 and the edge port range is 3, which are inconsistent.
         self.source = source
-        # The CNAME domain corresponding to the transport layer acceleration application. This field is not empty only when the site is accessed via CNAME.
         self.source_port = source_port
-        # Rule ID.
         self.source_type = source_type
 
     def validate(self):

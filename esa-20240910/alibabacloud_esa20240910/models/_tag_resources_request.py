@@ -18,27 +18,17 @@ class TagResourcesRequest(DaraModel):
         tag: List[main_models.TagResourcesRequestTag] = None,
     ):
         self.owner_id = owner_id
-        # The region ID. Valid values:
-        # 
-        # *   China site (aliyun.com): cn-hangzhou
-        # *   International site (alibabacloud.com): ap-southeast-1
+        # 要创建并绑定标签的资源所在的地域ID。
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The resource ID. Enter a website ID or DNS record ID.
+        # 资源ID,最多 50个子项
         # 
         # This parameter is required.
         self.resource_id = resource_id
-        # The type of the resource. Valid values:
-        # 
-        # *   Site: **site**
-        # *   DNS records: **record**
-        # 
         # This parameter is required.
         self.resource_type = resource_type
         self.security_token = security_token
-        # The tags that you want to add to the resource. You can enter up to 20 tags.
-        # 
         # This parameter is required.
         self.tag = tag
 
@@ -106,11 +96,11 @@ class TagResourcesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag keys.
+        # 标签键
         # 
         # This parameter is required.
         self.key = key
-        # The tag value.
+        # 标签值
         # 
         # This parameter is required.
         self.value = value

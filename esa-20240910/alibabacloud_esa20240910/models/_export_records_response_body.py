@@ -10,9 +10,7 @@ class ExportRecordsResponseBody(DaraModel):
         content: str = None,
         request_id: str = None,
     ):
-        # The exported DNS records.
         self.content = content
-        # The request ID.
         self.request_id = request_id
 
     def validate(self):

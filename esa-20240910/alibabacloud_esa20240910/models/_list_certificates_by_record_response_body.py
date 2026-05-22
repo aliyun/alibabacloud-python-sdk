@@ -16,15 +16,10 @@ class ListCertificatesByRecordResponseBody(DaraModel):
         site_name: str = None,
         total_count: int = None,
     ):
-        # The request ID.
         self.request_id = request_id
-        # The queried certificates.
         self.result = result
-        # The website ID,
         self.site_id = site_id
-        # The website name.
         self.site_name = site_name
-        # The total number of records that you specified.
         self.total_count = total_count
 
     def validate(self):
@@ -88,15 +83,10 @@ class ListCertificatesByRecordResponseBodyResult(DaraModel):
         record_name: str = None,
         status: str = None,
     ):
-        # The number of certificates that are being requested.
         self.applyling_count = applyling_count
-        # The certificates that match the specified records.
         self.certificates = certificates
-        # The number of certificates that match the specified records.
         self.count = count
-        # The name of the record.
         self.record_name = record_name
-        # Certificate configuration status. Possible values: none; configured; applying; failed.
         self.status = status
 
     def validate(self):
@@ -174,42 +164,24 @@ class ListCertificatesByRecordResponseBodyResultCertificates(DaraModel):
         type: str = None,
         update_time: str = None,
     ):
-        # The certificate ID on Certificate Management Service.
         self.cas_id = cas_id
-        # The Common Name of the certificate.
         self.common_name = common_name
-        # The creation time.
         self.create_time = create_time
-        # The SHA-256 fingerprint of the certificate.
         self.fingerprint_sha_256 = fingerprint_sha_256
-        # The ID of the certificate.
         self.id = id
-        # The certificate authority (CA) that issued the certificate.
         self.issuer = issuer
-        # The Common Name of the certificate issuer.
         self.issuer_cn = issuer_cn
         self.key_server_id = key_server_id
-        # The certificate name.
         self.name = name
-        # The time when the certificate expires.
         self.not_after = not_after
-        # The time when the certificate takes effect.
         self.not_before = not_before
-        # The public key algorithm of the certificate.
         self.pub_alg = pub_alg
-        # The region where the certificate is stored.
         self.region = region
-        # The Subject Alternative Name (SAN) of the certificate.
         self.san = san
-        # The serial number of the certificate.
         self.serial_number = serial_number
-        # The signature algorithm of the certificate.
         self.sig_alg = sig_alg
-        # The status of the certificate.
         self.status = status
-        # The type of the SSL certificate. Valid values:
         self.type = type
-        # The update time.
         self.update_time = update_time
 
     def validate(self):

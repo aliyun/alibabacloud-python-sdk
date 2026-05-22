@@ -12,11 +12,8 @@ class ListListsRequest(DaraModel):
         page_size: int = None,
         query_args: main_models.ListListsRequestQueryArgs = None,
     ):
-        # The page number.
         self.page_number = page_number
-        # The number of entries per page.
         self.page_size = page_size
-        # The query arguments in the JSON format, which contain filter conditions.
         self.query_args = query_args
 
     def validate(self):
@@ -65,21 +62,13 @@ class ListListsRequestQueryArgs(DaraModel):
         name_like: str = None,
         order_by: str = None,
     ):
-        # Specifies whether to sort the returned data in descending order.
         self.desc = desc
-        # The list description for fuzzy search.
         self.description_like = description_like
-        # The list ID for fuzzy search.
         self.id_like = id_like
-        # The list content for fuzzy search.
         self.item_like = item_like
-        # The type of the custom list.
         self.kind = kind
-        # The list name and content for fuzzy search.
         self.name_item_like = name_item_like
-        # The list name for fuzzy search.
         self.name_like = name_like
-        # The column by which you want to sort the returned data.
         self.order_by = order_by
 
     def validate(self):

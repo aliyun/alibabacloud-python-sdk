@@ -9,8 +9,6 @@ class GetUserDeliveryTaskRequest(DaraModel):
         self,
         task_name: str = None,
     ):
-        # The name of the delivery task.
-        # 
         # This parameter is required.
         self.task_name = task_name
 

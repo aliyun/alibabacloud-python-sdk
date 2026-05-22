@@ -10,9 +10,7 @@ class CreateLoadBalancerResponseBody(DaraModel):
         id: int = None,
         request_id: str = None,
     ):
-        # Load balancer ID.
         self.id = id
-        # Request ID.
         self.request_id = request_id
 
     def validate(self):

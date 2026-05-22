@@ -13,19 +13,10 @@ class CreatePageShrinkRequest(DaraModel):
         name: str = None,
         site_ids_shrink: str = None,
     ):
-        # The Base64-encoded page content. Example: "PGh0bWw+aGVsbG8gcGFnZTwvaHRtbD4=", which indicates "hello page".
         self.content = content
-        # The Content-Type field in the HTTP header. Valid values:
-        # 
-        # *   text/html
-        # *   application/json
-        # 
         # This parameter is required.
         self.content_type = content_type
-        # The description of the page.
         self.description = description
-        # The name of the custom error page.
-        # 
         # This parameter is required.
         self.name = name
         self.site_ids_shrink = site_ids_shrink

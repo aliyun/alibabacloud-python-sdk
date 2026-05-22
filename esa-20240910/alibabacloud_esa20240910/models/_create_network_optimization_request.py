@@ -19,40 +19,17 @@ class CreateNetworkOptimizationRequest(DaraModel):
         upload_max_filesize: str = None,
         websocket: str = None,
     ):
-        # Whether to enable GRPC, disabled by default. Possible values:
-        # - on: Enable
-        # - off: Disable
         self.grpc = grpc
-        # Whether to enable HTTP2 origin, disabled by default. Possible values:
-        # - on: Enable
-        # - off: Disable
         self.http_2origin = http_2origin
-        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
-        # - Match all incoming requests: Set the value to true
-        # - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         self.rule = rule
-        # Rule switch. This parameter is not required when adding a global configuration. Possible values:
-        # - on: Enable.
-        # - off: Disable.
         self.rule_enable = rule_enable
-        # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
         self.sequence = sequence
-        # Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) API.
-        # 
         # This parameter is required.
         self.site_id = site_id
-        # The version number of the site configuration. For sites with version management enabled, this parameter can specify the effective version of the configuration, defaulting to version 0.
         self.site_version = site_version
-        # Whether to enable smart routing service, disabled by default. Possible values:
-        # - on: Enable
-        # - off: Disable
         self.smart_routing = smart_routing
-        # Maximum upload file size in MB, range: 100～500.
         self.upload_max_filesize = upload_max_filesize
-        # Whether to enable Websocket, enabled by default. Possible values:
-        # - on: Enable
-        # - off: Disable
         self.websocket = websocket
 
     def validate(self):

@@ -15,13 +15,9 @@ class CreateRoutineCodeDeploymentResponseBody(DaraModel):
         request_id: str = None,
         strategy: str = None,
     ):
-        # The configuration list of the phased release version number.
         self.code_versions = code_versions
-        # The deployment record ID.
         self.deployment_id = deployment_id
-        # The request ID.
         self.request_id = request_id
-        # The phased release policy. The constant string is "percentage".
         self.strategy = strategy
 
     def validate(self):
@@ -76,9 +72,7 @@ class CreateRoutineCodeDeploymentResponseBodyCodeVersions(DaraModel):
         code_version: str = None,
         percentage: int = None,
     ):
-        # The version of the code.
         self.code_version = code_version
-        # The phased release ratio.
         self.percentage = percentage
 
     def validate(self):

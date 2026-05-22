@@ -10,12 +10,8 @@ class GetEdgeContainerLogsRequest(DaraModel):
         app_id: str = None,
         lines: int = None,
     ):
-        # The application ID, which can be obtained by calling the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) operation.
-        # 
         # This parameter is required.
         self.app_id = app_id
-        # The number of log entries to output.
-        # 
         # This parameter is required.
         self.lines = lines
 

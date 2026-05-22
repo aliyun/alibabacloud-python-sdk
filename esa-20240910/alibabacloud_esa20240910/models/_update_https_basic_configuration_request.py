@@ -24,63 +24,23 @@ class UpdateHttpsBasicConfigurationRequest(DaraModel):
         tls_12: str = None,
         tls_13: str = None,
     ):
-        # Custom cipher suite, indicating the specific encryption algorithm selected when CiphersuiteGroup is set to custom.
         self.ciphersuite = ciphersuite
-        # Cipher suite group. Default is all cipher suites. Value range:
-        # - all: All cipher suites.
-        # - strict: Strong cipher suites.
-        # - custom: Custom cipher suites.
         self.ciphersuite_group = ciphersuite_group
-        # Configuration ID.
-        # 
         # This parameter is required.
         self.config_id = config_id
-        # Whether to enable HTTP2. Default is enabled. Value range:
-        # - on: Enable.
-        # - off: Disable.
         self.http_2 = http_2
-        # Whether to enable HTTP3. Default is enabled. Value range:
-        # - on: Enable.
-        # - off: Disable.
         self.http_3 = http_3
-        # Whether to enable HTTPS. Default is enabled. Value range:
-        # - on: Enable.
-        # - off: Disable.
         self.https = https
-        # Whether to enable OCSP. Default is disabled. Value range:
-        # - on: Enable.
-        # - off: Disable.
         self.ocsp_stapling = ocsp_stapling
-        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
-        # - Match all incoming requests: Set the value to true
-        # - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         self.rule = rule
-        # Rule switch. This parameter is not required when adding a global configuration. Value range:
-        # - on: Enable.
-        # - off: Disable.
         self.rule_enable = rule_enable
-        # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
         self.sequence = sequence
-        # Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
-        # 
         # This parameter is required.
         self.site_id = site_id
-        # Whether to enable TLS1.0. Default is disabled. Value range:
-        # - on: Enable.
-        # - off: Disable.
         self.tls_10 = tls_10
-        # Whether to enable TLS1.1. Default is disabled. Value range:
-        # - on: Enable.
-        # - off: Disable.
         self.tls_11 = tls_11
-        # Whether to enable TLS1.2. Default is disabled. Value range:
-        # - on: Enable.
-        # - off: Disable.
         self.tls_12 = tls_12
-        # Whether to enable TLS1.3. Default is disabled. Value range:
-        # - on: Enable.
-        # - off: Disable.
         self.tls_13 = tls_13
 
     def validate(self):

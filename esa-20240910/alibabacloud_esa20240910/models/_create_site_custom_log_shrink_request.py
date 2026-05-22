@@ -12,13 +12,9 @@ class CreateSiteCustomLogShrinkRequest(DaraModel):
         response_headers_shrink: str = None,
         site_id: int = None,
     ):
-        # The cookie fields.
         self.cookies_shrink = cookies_shrink
-        # The request header fields.
         self.request_headers_shrink = request_headers_shrink
-        # The response header fields.
         self.response_headers_shrink = response_headers_shrink
-        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         self.site_id = site_id
 
     def validate(self):

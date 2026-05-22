@@ -16,15 +16,10 @@ class ListUserDeliveryTasksResponseBody(DaraModel):
         tasks: List[main_models.ListUserDeliveryTasksResponseBodyTasks] = None,
         total_count: int = None,
     ):
-        # The page number returned.
         self.page_number = page_number
-        # The number of entries per page.
         self.page_size = page_size
-        # The request ID.
         self.request_id = request_id
-        # The delivery tasks.
         self.tasks = tasks
-        # The total number of delivery tasks.
         self.total_count = total_count
 
     def validate(self):
@@ -88,18 +83,10 @@ class ListUserDeliveryTasksResponseBodyTasks(DaraModel):
         status: str = None,
         task_name: str = None,
     ):
-        # The log category.
         self.business_type = business_type
-        # The data center. Valid values:
-        # 
-        # 1.  cn: the Chinese mainland.
-        # 2.  sg: outside the Chinese mainland.
         self.data_center = data_center
-        # The delivery destination.
         self.delivery_type = delivery_type
-        # The status of the delivery task.
         self.status = status
-        # The name of the delivery task.
         self.task_name = task_name
 
     def validate(self):

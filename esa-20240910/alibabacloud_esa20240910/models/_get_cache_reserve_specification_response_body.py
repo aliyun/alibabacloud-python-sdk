@@ -13,11 +13,8 @@ class GetCacheReserveSpecificationResponseBody(DaraModel):
         cache_reserve_region: List[str] = None,
         request_id: str = None,
     ):
-        # List of cache retention capacity specifications.
         self.cache_reserve_capacity = cache_reserve_capacity
-        # List of cache retention region specifications.
         self.cache_reserve_region = cache_reserve_region
-        # Request ID.
         self.request_id = request_id
 
     def validate(self):

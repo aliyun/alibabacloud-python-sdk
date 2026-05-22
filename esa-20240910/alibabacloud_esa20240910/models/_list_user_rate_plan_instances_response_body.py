@@ -17,17 +17,11 @@ class ListUserRatePlanInstancesResponseBody(DaraModel):
         total_count: int = None,
         total_page: int = None,
     ):
-        # The queried plans.
         self.instance_info = instance_info
-        # The page number.
         self.page_number = page_number
-        # The number of entries per page.
         self.page_size = page_size
-        # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
         self.total_count = total_count
-        # The total number of pages returned.
         self.total_page = total_page
 
     def validate(self):
@@ -117,54 +111,29 @@ class ListUserRatePlanInstancesResponseBodyInstanceInfo(DaraModel):
         status: str = None,
         subscribe_type: str = None,
     ):
-        # The billing method. Valid values:
-        # 
-        # *   PREPAY: subscription.
-        # *   POSTPAY: pay-as-you-go.
         self.billing_mode = billing_mode
         self.bot_instance_level = bot_instance_level
         self.bot_request = bot_request
-        # The service locations for the websites that can be associated with the plan. Multiple values are separated by commas (,). Valid values:
-        # 
-        # *   domestic: the Chinese mainland.
-        # *   overseas: outside the Chinese mainland.
-        # *   global: global.
         self.coverages = coverages
-        # The time when the plan was purchased.
         self.create_time = create_time
         self.crossborder_traffic = crossborder_traffic
         self.ddos_burstable_domestic_protection = ddos_burstable_domestic_protection
         self.ddos_burstable_overseas_protection = ddos_burstable_overseas_protection
         self.ddos_instance_level = ddos_instance_level
-        # The subscription duration of the plan. Unit: month.
         self.duration = duration
         self.edge_routine_rquest = edge_routine_rquest
         self.edge_waf_request = edge_waf_request
-        # The time when the plan expires.
         self.expire_time = expire_time
-        # The plan ID.
         self.instance_id = instance_id
         self.layer_4traffic = layer_4traffic
         self.layer_4traffic_intl = layer_4traffic_intl
-        # The plan name.
         self.plan_name = plan_name
         self.plan_traffic = plan_traffic
-        # The plan type. Valid values:
-        # 
-        # *   normal
-        # *   enterprise
         self.plan_type = plan_type
-        # The maximum number of websites that can be associated with the plan.
         self.site_quota = site_quota
-        # The websites that have been associated with the plan.
         self.sites = sites
         self.smart_routing_request = smart_routing_request
         self.static_request = static_request
-        # The plan status. Valid values:
-        # 
-        # *   online: The plan is in service.
-        # *   offline: The plan has expired within an allowable period. In this state, the plan is unavailable.
-        # *   disable: The plan is released.
         self.status = status
         self.subscribe_type = subscribe_type
 
@@ -347,16 +316,8 @@ class ListUserRatePlanInstancesResponseBodyInstanceInfoSites(DaraModel):
         site_name: str = None,
         site_status: str = None,
     ):
-        # The website ID.
         self.site_id = site_id
-        # The website name.
         self.site_name = site_name
-        # The website status. Valid values:
-        # 
-        # *   pending: The website is to be configured.
-        # *   active: The website is active.
-        # *   offline: The website is suspended.
-        # *   moved: The website has been added and verified by another Alibaba Cloud account.
         self.site_status = site_status
 
     def validate(self):

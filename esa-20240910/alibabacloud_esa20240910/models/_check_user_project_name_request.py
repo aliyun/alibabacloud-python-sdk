@@ -9,8 +9,6 @@ class CheckUserProjectNameRequest(DaraModel):
         self,
         project_name: str = None,
     ):
-        # The name of the real-time log delivery task.
-        # 
         # This parameter is required.
         self.project_name = project_name
 

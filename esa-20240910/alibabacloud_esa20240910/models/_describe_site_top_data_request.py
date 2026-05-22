@@ -17,27 +17,12 @@ class DescribeSiteTopDataRequest(DaraModel):
         site_id: str = None,
         start_time: str = None,
     ):
-        # The end of the time range to query.
-        # 
-        # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-        # 
-        # >  The end time must be later than the start time.
         self.end_time = end_time
-        # The metrics to query.
-        # 
         # This parameter is required.
         self.fields = fields
-        # The time interval between the data entries to return. Unit: seconds.
         self.interval = interval
-        # The number of top-ranking data entries to query.
         self.limit = limit
-        # The website ID, which can be obtained by calling the [ListSites](~~ListSites~~) operation.
-        # 
-        # If you do not specify this parameter, the system returns data by account.
         self.site_id = site_id
-        # The beginning of the time range to query.
-        # 
-        # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.start_time = start_time
 
     def validate(self):
@@ -104,9 +89,7 @@ class DescribeSiteTopDataRequestFields(DaraModel):
         dimension: List[str] = None,
         field_name: str = None,
     ):
-        # The dimensions at which you want to query data.
         self.dimension = dimension
-        # The metric name.
         self.field_name = field_name
 
     def validate(self):

@@ -10,12 +10,8 @@ class GetCompressionRuleRequest(DaraModel):
         config_id: int = None,
         site_id: int = None,
     ):
-        # Configuration ID, which can be obtained by calling the [ListCompressionRules](https://help.aliyun.com/document_detail/2867498.html) interface.
-        # 
         # This parameter is required.
         self.config_id = config_id
-        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
-        # 
         # This parameter is required.
         self.site_id = site_id
 

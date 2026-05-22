@@ -19,36 +19,15 @@ class ListUserRatePlanInstancesRequest(DaraModel):
         status: str = None,
         subscribe_type: str = None,
     ):
-        # Specifies whether to query only the plans that have remaining quota for associating websites. Valid values:
-        # 
-        # *   true: queries only the plans that have remaining quota for associating websites.
-        # *   false: queries all plans in your account.
         self.check_remaining_site_quota = check_remaining_site_quota
-        # The plan ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         self.instance_id = instance_id
-        # The page number. Valid values: **1** to **100000**. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page.
         self.page_size = page_size
         self.plan_name_en = plan_name_en
         self.plan_type = plan_type
         self.remaining_expire_days = remaining_expire_days
-        # The sorting field. By default, the queried plans are sorted by purchase time. Valid values:
-        # 
-        # *   CreateTime: the time when the plans were purchased.
-        # *   ExpireTime: the time when the plans expire.
         self.sort_by = sort_by
-        # The order in which you want to sort the query results. Default value: desc. Valid values:
-        # 
-        # *   asc: in ascending order.
-        # *   desc: in descending order.
         self.sort_order = sort_order
-        # The plan status. Valid values:
-        # 
-        # *   online: The plan is in service.
-        # *   offline: The plan has expired within an allowable period. In this state, the plan is unavailable.
-        # *   disable: The plan is released.
-        # *   overdue: The plan is stopped due to overdue payments.
         self.status = status
         self.subscribe_type = subscribe_type
 

@@ -13,12 +13,8 @@ class BatchCreateRecordsRequest(DaraModel):
         record_list: List[main_models.BatchCreateRecordsRequestRecordList] = None,
         site_id: int = None,
     ):
-        # The list of DNS records to be created.
-        # 
         # This parameter is required.
         self.record_list = record_list
-        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
-        # 
         # This parameter is required.
         self.site_id = site_id
 
@@ -69,43 +65,16 @@ class BatchCreateRecordsRequestRecordList(DaraModel):
         type: str = None,
     ):
         self.auth_conf = auth_conf
-        # The business scenario of the record for acceleration. Valid values:
-        # 
-        # *   **image_video**
-        # *   **api**
-        # *   **web**
         self.biz_name = biz_name
-        # The DNS information of the record. Enter fields based on the record type.
-        # 
         # This parameter is required.
         self.data = data
-        # Specifies whether to proxy the record. Only CNAME and A/AAAA records can be proxied. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
-        # 
         # This parameter is required.
         self.proxied = proxied
-        # The record name.
-        # 
         # This parameter is required.
         self.record_name = record_name
-        # The origin type for the CNAME record. This parameter is required when you add a CNAME record. Valid values:
-        # 
-        # *   **OSS**: OSS bucket.
-        # *   **S3**: S3 bucket.
-        # *   **LB**: load balancer.
-        # *   **OP**: origin pool.
-        # *   **Domain**: domain name.
-        # 
-        # If you do not pass this parameter or if you leave its value empty, Domain is used by default.
         self.source_type = source_type
-        # The TTL of the record. Unit: seconds. If the value is 1, the TTL of the record is determined by the system.
-        # 
         # This parameter is required.
         self.ttl = ttl
-        # The DNS type of the record.
-        # 
         # This parameter is required.
         self.type = type
 
@@ -194,33 +163,19 @@ class BatchCreateRecordsRequestRecordListData(DaraModel):
         value: str = None,
         weight: int = None,
     ):
-        # The encryption algorithm used for the record. Valid values: 0 to 255. Applicable to CERT and SSHFP records.
         self.algorithm = algorithm
-        # The public key of the certificate. Applicable to CERT, SMIMEA, and TLSA records.
         self.certificate = certificate
-        # The public key fingerprint of the record. Applicable to SSHFP records.
         self.fingerprint = fingerprint
-        # The Flag for a CAA record indicates its priority and how it is processed. Valid values: 0 to 255.
         self.flag = flag
-        # The public key identification for the record. Valid values: 0 to 65535. Applicable to CERT records.
         self.key_tag = key_tag
-        # The algorithm policy used to match or validate the certificate. Valid values: 0 to 255. Applicable to SMIMEA, and TLSA records.
         self.matching_type = matching_type
-        # The port of the record. Valid values: 0 to 65535. Exclusive to SRV records.
         self.port = port
-        # The priority of the record. Valid values: 0 to 65535. A smaller value indicates a higher priority. This parameter is required when you add MX, SRV, and URI records.
         self.priority = priority
-        # The type of certificate or public key. Valid values: 0 to 255. Applicable to SMIMEA and TLSA records.
         self.selector = selector
-        # The tag of a CAA record, which indicates its specific type and purpose, such as issue, issuewild, and iodef.
         self.tag = tag
-        # The certificate type of the record (in CERT records), or the public key type (in SSHFP records).
         self.type = type
-        # The usage identifier of the record. Valid values: 0 to 255. Applicable to SMIMEA and TLSA records.
         self.usage = usage
-        # The record value or part of the record content. A/AAAA: the IP address being pointed to. CNAME: the target domain name being pointed to. MX: valid target mail server domain name. TXT: valid text string. CAA: valid certificate authority domain name. SRV: valid target host domain name. URI: valid URI string.
         self.value = value
-        # The weight of the record. Valid values: 0 to 65,535. Applicable to SRV and URI records.
         self.weight = weight
 
     def validate(self):

@@ -20,39 +20,14 @@ class GetEdgeContainerStagingDeployStatusResponseBody(DaraModel):
         scheduled: str = None,
         vips: List[str] = None,
     ):
-        # Indicates whether the container is ready.
-        # 
-        # *   ok
-        # *   unready
         self.containers_ready = containers_ready
-        # The time when the container was created. The value is a timestamp.
         self.creation_timestamp = creation_timestamp
-        # The initialization status of the container.
-        # 
-        # *   ok
-        # *   unready
         self.initialized = initialized
-        # The status of the container in the staging environment.
-        # 
-        # *   NoContainer: created.
-        # *   Running: running.
-        # *   Failed: abnormal.
         self.phase = phase
-        # The details of container restart.
         self.pod_restart_state = pod_restart_state
-        # Indicates whether domain names are associated with the container.
-        # 
-        # *   ok
-        # *   unready
         self.ready = ready
-        # The request ID.
         self.request_id = request_id
-        # The scheduling status of the container.
-        # 
-        # *   ok
-        # *   unready
         self.scheduled = scheduled
-        # The virtual IP addresses.
         self.vips = vips
 
     def validate(self):
@@ -131,9 +106,7 @@ class GetEdgeContainerStagingDeployStatusResponseBodyPodRestartState(DaraModel):
         last_terminated_reason: str = None,
         restart_count: int = None,
     ):
-        # The reason for the last restart.
         self.last_terminated_reason = last_terminated_reason
-        # The number of times that the container restarted.
         self.restart_count = restart_count
 
     def validate(self):

@@ -9,13 +9,6 @@ class GetRealtimeDeliveryFieldRequest(DaraModel):
         self,
         business_type: str = None,
     ):
-        # The log category. Valid values:
-        # 
-        # *   **dcdn_log_access_l1** (default): access logs.
-        # *   **dcdn_log_er**: Edge Routine logs.
-        # *   **dcdn_log_waf**: firewall logs.
-        # *   **dcdn_log_ipa**: TCP/UDP proxy logs.
-        # 
         # This parameter is required.
         self.business_type = business_type
 

@@ -12,13 +12,9 @@ class GetWafFilterRequest(DaraModel):
         target: str = None,
         type: str = None,
     ):
-        # The WAF rule category to which the filter conditions to query belong.
         self.phase = phase
-        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         self.site_id = site_id
-        # The condition for matching incoming requests.
         self.target = target
-        # The rule type.
         self.type = type
 
     def validate(self):

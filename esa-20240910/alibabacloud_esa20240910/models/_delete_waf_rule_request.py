@@ -11,15 +11,10 @@ class DeleteWafRuleRequest(DaraModel):
         site_id: int = None,
         site_version: int = None,
     ):
-        # ID of the WAF rule, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2878257.html) interface.
-        # 
         # This parameter is required.
         self.id = id
-        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
-        # 
         # This parameter is required.
         self.site_id = site_id
-        # Site version.
         self.site_version = site_version
 
     def validate(self):

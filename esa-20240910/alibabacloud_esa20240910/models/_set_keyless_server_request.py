@@ -22,7 +22,6 @@ class SetKeylessServerRequest(DaraModel):
         self.client_private_key = client_private_key
         # This parameter is required.
         self.host = host
-        # Keyless server ID。
         self.id = id
         # This parameter is required.
         self.name = name

@@ -12,18 +12,9 @@ class ListUploadTasksRequest(DaraModel):
         start_time: str = None,
         type: str = None,
     ):
-        # The time when the task ends. Specify the time in the YYYY-MM-DDThh:mm:ssZ format.
         self.end_time = end_time
-        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         self.site_id = site_id
-        # The time when the task starts. Specify the time in the YYYY-MM-DDThh:mm:ssZ format.
         self.start_time = start_time
-        # The task type. Valid values:
-        # 
-        # *   **file**: purges the cache by file URL.
-        # *   **preload**: prefetches files.
-        # *   **directory**: purges the cache by directory.
-        # *   **ignoreparams**: purges the cache by URL with specified parameters ignored.
         self.type = type
 
     def validate(self):

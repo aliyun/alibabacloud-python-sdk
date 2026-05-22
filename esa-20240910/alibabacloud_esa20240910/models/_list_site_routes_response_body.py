@@ -17,17 +17,11 @@ class ListSiteRoutesResponseBody(DaraModel):
         total_count: int = None,
         total_page: int = None,
     ):
-        # The returned configurations.
         self.configs = configs
-        # The page number of the returned page.
         self.page_number = page_number
-        # The number of entries per page.
         self.page_size = page_size
-        # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
         self.total_count = total_count
-        # The total number of pages returned.
         self.total_page = total_page
 
     def validate(self):
@@ -104,38 +98,16 @@ class ListSiteRoutesResponseBodyConfigs(DaraModel):
         site_version: int = None,
         timeout: str = None,
     ):
-        # The bypass mode. Valid values:
-        # 
-        # *   on
-        # *   off
         self.bypass = bypass
-        # The configuration ID.
         self.config_id = config_id
-        # The configuration type to query. Valid values:
-        # 
-        # *   global: global configurations.
-        # *   rule: queries rule configurations.
         self.config_type = config_type
         self.fallback = fallback
-        # The configuration mode. Specifies whether to check the image used by the instance supports hot migration. Valid values:
-        # 
-        # *   simple: Simple Mode
-        # *   custom: Custom Mode
         self.mode = mode
-        # The route switch. Valid values:
-        # 
-        # *   on
-        # *   off
         self.route_enable = route_enable
-        # The route name.
         self.route_name = route_name
-        # The function name.
         self.routine_name = routine_name
-        # The rule content.
         self.rule = rule
-        # The order in which the rule is executed.
         self.sequence = sequence
-        # The version number of the website.
         self.site_version = site_version
         self.timeout = timeout
 

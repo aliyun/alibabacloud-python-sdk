@@ -10,12 +10,8 @@ class GetOriginRuleRequest(DaraModel):
         config_id: int = None,
         site_id: int = None,
     ):
-        # The ID of the configuration. You can call the [ListSiteRoutes](https://help.aliyun.com/document_detail/2866989.html) operation to obtain the ID.
-        # 
         # This parameter is required.
         self.config_id = config_id
-        # The website ID, which can be obtained by calling the [ListSites](~~ListSites~~) operation.
-        # 
         # This parameter is required.
         self.site_id = site_id
 

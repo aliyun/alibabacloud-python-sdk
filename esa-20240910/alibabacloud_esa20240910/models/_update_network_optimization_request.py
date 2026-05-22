@@ -19,42 +19,18 @@ class UpdateNetworkOptimizationRequest(DaraModel):
         upload_max_filesize: str = None,
         websocket: str = None,
     ):
-        # Configuration ID.
-        # 
         # This parameter is required.
         self.config_id = config_id
-        # Whether to enable GRPC, default is disabled. Possible values:
-        # - on: Enable
-        # - off: Disable
         self.grpc = grpc
-        # Whether to enable HTTP2 origin, default is disabled. Possible values:
-        # - on: Enable
-        # - off: Disable
         self.http_2origin = http_2origin
-        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
-        # - Match all incoming requests: Set the value to true
-        # - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         self.rule = rule
-        # Rule switch. This parameter is not required when adding a global configuration. Possible values:
-        # - on: Enable.
-        # - off: Disable.
         self.rule_enable = rule_enable
-        # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
         self.sequence = sequence
-        # Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) API.
-        # 
         # This parameter is required.
         self.site_id = site_id
-        # Whether to enable the smart routing service, default is disabled. Possible values:
-        # - on: Enable
-        # - off: Disable
         self.smart_routing = smart_routing
-        # Maximum upload file size, in MB, with a range of 100 to 500.
         self.upload_max_filesize = upload_max_filesize
-        # Whether to enable Websocket, default is enabled. Possible values:
-        # - on: Enable
-        # - off: Disable
         self.websocket = websocket
 
     def validate(self):

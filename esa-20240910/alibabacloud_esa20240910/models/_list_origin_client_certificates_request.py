@@ -11,12 +11,8 @@ class ListOriginClientCertificatesRequest(DaraModel):
         page_size: int = None,
         site_id: int = None,
     ):
-        # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page.
         self.page_size = page_size
-        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
-        # 
         # This parameter is required.
         self.site_id = site_id
 

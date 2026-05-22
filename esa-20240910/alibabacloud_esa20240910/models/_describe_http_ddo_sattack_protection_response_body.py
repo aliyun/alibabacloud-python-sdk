@@ -11,16 +11,8 @@ class DescribeHttpDDoSAttackProtectionResponseBody(DaraModel):
         request_id: str = None,
         site_id: int = None,
     ):
-        # The level of HTTP DDoS attack protection. Valid values:
-        # 
-        # *   **very weak**: very loose.
-        # *   **weak**: loose.
-        # *   **default**: normal.
-        # *   **hard**: strict.
         self.global_mode = global_mode
-        # The request ID.
         self.request_id = request_id
-        # The website ID.
         self.site_id = site_id
 
     def validate(self):

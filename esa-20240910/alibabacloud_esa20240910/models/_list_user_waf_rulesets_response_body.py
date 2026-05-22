@@ -20,7 +20,6 @@ class ListUserWafRulesetsResponseBody(DaraModel):
         self.instance_usage = instance_usage
         self.page_number = page_number
         self.page_size = page_size
-        # Id of the request
         self.request_id = request_id
         self.rulesets = rulesets
         self.total_count = total_count

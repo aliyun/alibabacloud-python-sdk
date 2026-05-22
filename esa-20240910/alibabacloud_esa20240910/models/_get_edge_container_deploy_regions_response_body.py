@@ -12,9 +12,7 @@ class GetEdgeContainerDeployRegionsResponseBody(DaraModel):
         regions: List[str] = None,
         request_id: str = None,
     ):
-        # The regions.
         self.regions = regions
-        # The request ID.
         self.request_id = request_id
 
     def validate(self):

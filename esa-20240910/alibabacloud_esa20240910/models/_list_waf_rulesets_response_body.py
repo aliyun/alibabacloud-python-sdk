@@ -18,19 +18,12 @@ class ListWafRulesetsResponseBody(DaraModel):
         site_usage: int = None,
         total_count: int = None,
     ):
-        # Number of WAF rule sets used by the instance in this WAF operation phase.
         self.instance_usage = instance_usage
-        # Current page number.
         self.page_number = page_number
-        # Page size.
         self.page_size = page_size
-        # Request ID.
         self.request_id = request_id
-        # List of rule set information, containing detailed information about the rule sets.
         self.rulesets = rulesets
-        # Number of WAF rule sets used by the site in this WAF operation phase.
         self.site_usage = site_usage
-        # Total number of filtered records.
         self.total_count = total_count
 
     def validate(self):
@@ -109,21 +102,13 @@ class ListWafRulesetsResponseBodyRulesets(DaraModel):
         types: List[str] = None,
         update_time: str = None,
     ):
-        # List of match objects.
         self.fields = fields
-        # ID of the WAF rule set.
         self.id = id
-        # Name of the rule set.
         self.name = name
-        # WAF operation phase.
         self.phase = phase
-        # Status of the rule set.
         self.status = status
-        # Protection target type in http_bot.
         self.target = target
-        # List of rule types.
         self.types = types
-        # Last modification time of the rule set.
         self.update_time = update_time
 
     def validate(self):

@@ -14,11 +14,8 @@ class ListScheduledPreloadJobsResponseBody(DaraModel):
         request_id: str = None,
         total_count: str = None,
     ):
-        # The list of the prefetch tasks.
         self.jobs = jobs
-        # The request ID.
         self.request_id = request_id
-        # The total number of tasks returned.
         self.total_count = total_count
 
     def validate(self):
@@ -80,34 +77,20 @@ class ListScheduledPreloadJobsResponseBodyJobs(DaraModel):
         url_count: int = None,
         url_submitted: int = None,
     ):
-        # The ID of the Alibaba Cloud account.
         self.ali_uid = ali_uid
-        # The time when the task was created.
         self.created_at = created_at
-        # The domain names to be prefetched.
         self.domains = domains
-        # The error message that is returned.
         self.error_info = error_info
         self.execution_count = execution_count
-        # The URL of the OSS object that stores a list of URLs that failed the conditional check for prefetching.
         self.failed_file_oss = failed_file_oss
-        # The ID of the URL list file, which can be used during downloads.
         self.file_id = file_id
-        # The ID of the prefetch task.
         self.id = id
-        # The method to submit the URLs to be prefetched.
         self.insert_way = insert_way
-        # The task name.
         self.name = name
-        # The website ID.
         self.site_id = site_id
-        # The number of submitted prefetch tasks.
         self.task_submitted = task_submitted
-        # The task type. Valid values: refresh and preload.
         self.task_type = task_type
-        # The total number of URLs.
         self.url_count = url_count
-        # The number of submitted URLs.
         self.url_submitted = url_submitted
 
     def validate(self):

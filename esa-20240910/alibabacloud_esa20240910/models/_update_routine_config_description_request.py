@@ -10,10 +10,7 @@ class UpdateRoutineConfigDescriptionRequest(DaraModel):
         description: str = None,
         name: str = None,
     ):
-        # The routine description.
         self.description = description
-        # The routine name.
-        # 
         # This parameter is required.
         self.name = name
 

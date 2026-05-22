@@ -9,8 +9,6 @@ class DeleteRoutineRequest(DaraModel):
         self,
         name: str = None,
     ):
-        # The routine name.
-        # 
         # This parameter is required.
         self.name = name
 

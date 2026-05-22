@@ -17,17 +17,11 @@ class DescribeDDoSAllEventListResponseBody(DaraModel):
         site_id: int = None,
         total_count: int = None,
     ):
-        # The DDoS attack events.
         self.data_list = data_list
-        # The page number.
         self.page_number = page_number
-        # The number of entries per page.
         self.page_size = page_size
-        # The request ID.
         self.request_id = request_id
-        # The website ID.
         self.site_id = site_id
-        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -104,35 +98,17 @@ class DescribeDDoSAllEventListResponseBodyDataList(DaraModel):
         target: str = None,
         target_id: str = None,
     ):
-        # The peak of volumetric attacks. Unit: bit/s.
         self.bps = bps
         self.coverage = coverage
-        # The peak of connection flood attacks. Unit: connections per seconds (CPS).
         self.cps = cps
-        # The time when the DDoS attack ends.
-        # 
-        # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.end_time = end_time
-        # The attack event ID.
         self.event_id = event_id
         self.event_result = event_result
-        # The type of DDoS attacks that was queried. Valid values:
-        # 
-        # *   **web-cc**: web resource exhaustion attacks.
-        # *   **cc**: connection flood attacks.
-        # *   **traffic**: volumetric attacks.
         self.event_type = event_type
-        # The peak of volumetric attacks. Unit: packets per second (PPS).
         self.pps = pps
-        # The peak QPS of web resource exhaustion attacks.
         self.qps = qps
-        # The time when the DDoS attack starts.
-        # 
-        # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.start_time = start_time
-        # The attack target.
         self.target = target
-        # The ID of the web resource exhaustion attack target.
         self.target_id = target_id
 
     def validate(self):

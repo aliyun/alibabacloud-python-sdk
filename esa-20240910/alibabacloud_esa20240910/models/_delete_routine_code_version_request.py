@@ -10,12 +10,8 @@ class DeleteRoutineCodeVersionRequest(DaraModel):
         code_version: str = None,
         name: str = None,
     ):
-        # The code version.
-        # 
         # This parameter is required.
         self.code_version = code_version
-        # The routine name.
-        # 
         # This parameter is required.
         self.name = name
 

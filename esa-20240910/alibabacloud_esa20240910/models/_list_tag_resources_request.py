@@ -18,24 +18,17 @@ class ListTagResourcesRequest(DaraModel):
         security_token: str = None,
         tag: List[main_models.ListTagResourcesRequestTag] = None,
     ):
-        # The maximum number of tags to return.
         self.max_item = max_item
-        # The pagination token that is used in the next request to retrieve a new page of results.
-        # 
-        # >  This parameter is not required for the first request. If not all results are returned in one query, you can specify the token that is obtained from the previous query as the value of **NextToken**.
         self.next_token = next_token
-        # The ID of the region where the resources reside.
+        # 要创建并绑定标签的资源所在的地域ID。
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The website ID.
+        # 资源ID,最多 50个子项
         self.resource_id = resource_id
-        # The resource type.
-        # 
         # This parameter is required.
         self.resource_type = resource_type
         self.security_token = security_token
-        # A list of tags. You can enter up to 20 tags.
         self.tag = tag
 
     def validate(self):
@@ -108,9 +101,9 @@ class ListTagResourcesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
+        # 标签键
         self.key = key
-        # The tag value.
+        # 标签值
         self.value = value
 
     def validate(self):

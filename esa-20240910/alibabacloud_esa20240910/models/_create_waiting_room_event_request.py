@@ -28,97 +28,35 @@ class CreateWaitingRoomEventRequest(DaraModel):
         waiting_room_id: str = None,
         waiting_room_type: str = None,
     ):
-        # The content of the custom waiting room page. You must specify this parameter if you set WaitingRoomType to custom. The content must be Base64-encoded.
         self.custom_page_html = custom_page_html
-        # The description of the waiting room.
         self.description = description
-        # Specifies whether to disable session renewal. Valid values:
-        # 
-        # *   on
-        # *   off
         self.disable_session_renewal_enable = disable_session_renewal_enable
-        # Specifies whether to enable the waiting room. Valid values:
-        # 
-        # *   on
-        # *   off
-        # 
         # This parameter is required.
         self.enable = enable
-        # The end time of the event. This value is a UNIX timestamp.
-        # 
         # This parameter is required.
         self.end_time = end_time
-        # Specifies whether to enable JSON response. If you set this parameter to on, a JSON body is returned for requests to the waiting room with the header Accept: application/json. Valid values:
-        # 
-        # *   on
-        # *   off
         self.json_response_enable = json_response_enable
-        # The language of the waiting room page. You must specify this parameter if you set WaitingRoomType to default. Valid values:
-        # 
-        # *   enus: English.
-        # *   zhcn: Simplified Chinese.
-        # *   zhhk: Traditional Chinese.
         self.language = language
-        # The name of the waiting room event.
-        # 
         # This parameter is required.
         self.name = name
-        # The maximum number of new users per minute.
-        # 
         # This parameter is required.
         self.new_users_per_minute = new_users_per_minute
-        # Specifies whether to enable pre-queuing.
-        # 
-        # *   on
-        # *   off
         self.pre_queue_enable = pre_queue_enable
-        # The start time for pre-queuing.
         self.pre_queue_start_time = pre_queue_start_time
-        # The queuing method. Valid values:
-        # 
-        # *   random: Users gain access to the origin randomly, regardless of the arrival time.
-        # *   fifo: Users gain access to the origin in order of arrival.
-        # *   passthrough: Users pass through the waiting room and go straight to the origin.
-        # *   reject-all: Users are blocked from reaching the origin.
-        # 
         # This parameter is required.
         self.queuing_method = queuing_method
-        # The HTTP status code to return while a user is in the queue. Valid values:
-        # 
-        # *   200
-        # *   202
-        # *   429
-        # 
         # This parameter is required.
         self.queuing_status_code = queuing_status_code
-        # Specifies whether to enable random queuing.
-        # 
-        # *   on
-        # *   off
         self.random_pre_queue_enable = random_pre_queue_enable
-        # The maximum duration for which a session remains valid after a user leaves the origin. Unit: minutes.
-        # 
         # This parameter is required.
         self.session_duration = session_duration
-        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
-        # 
         # This parameter is required.
         self.site_id = site_id
-        # The start time of the event. This value is a UNIX timestamp.
-        # 
         # This parameter is required.
         self.start_time = start_time
-        # The maximum number of active users.
-        # 
         # This parameter is required.
         self.total_active_users = total_active_users
-        # The ID of the waiting room, which can be obtained by calling the [ListWaitingRooms](https://help.aliyun.com/document_detail/2850279.html) operation.
         self.waiting_room_id = waiting_room_id
-        # The type of the waiting room. Valid values:
-        # 
-        # *   default
-        # *   custom
-        # 
         # This parameter is required.
         self.waiting_room_type = waiting_room_type
 

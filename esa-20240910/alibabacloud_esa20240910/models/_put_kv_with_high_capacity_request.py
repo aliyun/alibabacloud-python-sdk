@@ -11,16 +11,10 @@ class PutKvWithHighCapacityRequest(DaraModel):
         namespace: str = None,
         url: str = None,
     ):
-        # The key name. The name can be up to 512 characters in length and cannot contain spaces or backslashes (\\\\).
-        # 
         # This parameter is required.
         self.key = key
-        # The name of the namespace that you specify when you call the [CreateKvNamespace](https://help.aliyun.com/document_detail/2850317.html) operation.
-        # 
         # This parameter is required.
         self.namespace = namespace
-        # The download URL of the key-value pair that you want to upload. This parameter is automatically filled in when you use the SDK to call the operation.
-        # 
         # This parameter is required.
         self.url = url
 

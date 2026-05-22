@@ -18,19 +18,12 @@ class ListUserRoutinesResponseBody(DaraModel):
         total_count: int = None,
         used_routine_number: int = None,
     ):
-        # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page.
         self.page_size = page_size
-        # The maximum number of functions supported by the billing plan.
         self.quota_routine_number = quota_routine_number
-        # The request ID.
         self.request_id = request_id
-        # The functions.
         self.routines = routines
-        # The total count.
         self.total_count = total_count
-        # The number of functions that were already created.
         self.used_routine_number = used_routine_number
 
     def validate(self):
@@ -106,15 +99,10 @@ class ListUserRoutinesResponseBodyRoutines(DaraModel):
         has_assets: bool = None,
         routine_name: str = None,
     ):
-        # The time when the function was created.
         self.create_time = create_time
-        # The default record name to access.
         self.default_related_record = default_related_record
-        # The function description.
         self.description = description
-        # Specifies whether to include the Assets file tag.
         self.has_assets = has_assets
-        # The function name.
         self.routine_name = routine_name
 
     def validate(self):

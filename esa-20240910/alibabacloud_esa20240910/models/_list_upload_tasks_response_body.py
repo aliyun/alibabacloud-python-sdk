@@ -13,9 +13,7 @@ class ListUploadTasksResponseBody(DaraModel):
         request_id: str = None,
         tasks: List[main_models.ListUploadTasksResponseBodyTasks] = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
-        # The file upload tasks.
         self.tasks = tasks
 
     def validate(self):
@@ -63,33 +61,12 @@ class ListUploadTasksResponseBodyTasks(DaraModel):
         upload_id: str = None,
         upload_task_name: str = None,
     ):
-        # The time when the task was created.
         self.create_time = create_time
-        # The error message returned when the file upload task failed.
         self.description = description
-        # The error code. Multiple error codes are separated by commas (,).
-        # 
-        # *   **InvalidUrl**: The URL format is incorrect.
-        # *   **InvalidDomain**: The domain ownership fails to be verified.
-        # *   **QuotaExcess**: The quota limit has been reached.
-        # *   **OtherErrors**: Other errors.
         self.error_code = error_code
-        # The task status.
-        # 
-        # *   **Complete**: The task is complete.
-        # *   **Refreshing**: The task is in progress.
-        # *   **Failed**: The task failed.
         self.status = status
-        # The task type. Valid values:
-        # 
-        # *   **file**: purges the cache by file URL.
-        # *   **preload**: prefetches files.
-        # *   **directory**: purges the cache by directory.
-        # *   **ignoreparams**: purges the cache by URL with specified parameters ignored.
         self.type = type
-        # The ID of the file upload task.
         self.upload_id = upload_id
-        # The name of the file upload task.
         self.upload_task_name = upload_task_name
 
     def validate(self):

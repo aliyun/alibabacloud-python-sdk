@@ -12,9 +12,7 @@ class GetSiteCurrentNSResponseBody(DaraModel):
         nslist: List[str] = None,
         request_id: str = None,
     ):
-        # The nameservers of the website.
         self.nslist = nslist
-        # The request ID.
         self.request_id = request_id
 
     def validate(self):

@@ -14,11 +14,8 @@ class ListScheduledPreloadExecutionsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The information about prefetch plans returned.
         self.executions = executions
-        # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -73,27 +70,13 @@ class ListScheduledPreloadExecutionsResponseBodyExecutions(DaraModel):
         start_time: str = None,
         status: str = None,
     ):
-        # The ID of the Alibaba Cloud account.
         self.ali_uid = ali_uid
-        # The end time of the prefetch plan.
         self.end_time = end_time
-        # The ID of the prefetch plan.
         self.id = id
-        # The time interval between each batch execution in the plan. Unit: seconds.
         self.interval = interval
-        # The ID of the prefetch task.
         self.job_id = job_id
-        # The number of URLs prefetched in each batch.
         self.slice_len = slice_len
-        # The start time of the prefetch plan.
         self.start_time = start_time
-        # The status of the prefetch plan. Valid values:
-        # 
-        # *   **waiting**
-        # *   **running**
-        # *   **finished**
-        # *   **failed**
-        # *   **stopped**
         self.status = status
 
     def validate(self):

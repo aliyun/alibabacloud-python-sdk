@@ -23,7 +23,6 @@ class DescribeEdgeContainerAppStatsRequest(DaraModel):
         self.isp = isp
         self.locate = locate
         self.start_time = start_time
-        # The tenant ID.
         self.tenant = tenant
 
     def validate(self):

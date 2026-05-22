@@ -20,29 +20,14 @@ class GetHttpResponseHeaderModificationRuleResponseBody(DaraModel):
         sequence: int = None,
         site_version: int = None,
     ):
-        # Configuration ID.
         self.config_id = config_id
-        # Configuration type, with the following values:
-        # - global: Global configuration.
-        # - rule: Rule-based configuration.
         self.config_type = config_type
-        # Request ID.
         self.request_id = request_id
-        # Modify response headers, supporting add, delete, and modify operations.
         self.response_header_modification = response_header_modification
-        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
-        # - Match all incoming requests: Set the value to true
-        # - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         self.rule = rule
-        # Rule switch. This parameter is not required when adding a global configuration. Possible values are:
-        # - on: Enabled.
-        # - off: Disabled.
         self.rule_enable = rule_enable
-        # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
-        # Rule execution order. The smaller the value, the higher the priority.
         self.sequence = sequence
-        # The version number of the site configuration. For sites that have enabled configuration version management, you can use this parameter to specify the effective version of the site configuration, defaulting to version 0.
         self.site_version = site_version
 
     def validate(self):
@@ -129,16 +114,9 @@ class GetHttpResponseHeaderModificationRuleResponseBodyResponseHeaderModificatio
         type: str = None,
         value: str = None,
     ):
-        # Response header name.
         self.name = name
-        # Operation method. Possible values are:
-        # 
-        # - add: Add.
-        # - del: Delete
-        # - modify: Modify.
         self.operation = operation
         self.type = type
-        # Response header value.
         self.value = value
 
     def validate(self):

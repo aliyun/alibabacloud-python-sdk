@@ -11,9 +11,7 @@ class GetSiteWafSettingsResponseBody(DaraModel):
         request_id: str = None,
         settings: main_models.WafSiteSettings = None,
     ):
-        # Request ID.
         self.request_id = request_id
-        # Details of site WAF configuration.
         self.settings = settings
 
     def validate(self):

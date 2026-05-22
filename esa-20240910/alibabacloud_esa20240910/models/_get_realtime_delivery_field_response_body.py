@@ -13,9 +13,7 @@ class GetRealtimeDeliveryFieldResponseBody(DaraModel):
         field_content: Dict[str, main_models.FieldContentValue] = None,
         request_id: str = None,
     ):
-        # The fields returned.
         self.field_content = field_content
-        # The request ID.
         self.request_id = request_id
 
     def validate(self):

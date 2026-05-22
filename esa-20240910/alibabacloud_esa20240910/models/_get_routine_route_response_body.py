@@ -21,44 +21,17 @@ class GetRoutineRouteResponseBody(DaraModel):
         site_version: int = None,
         timeout: str = None,
     ):
-        # Bypass mode. Valid values:
-        # 
-        # *   on
-        # *   off
         self.bypass = bypass
-        # The configuration ID.
         self.config_id = config_id
-        # The configuration type to query. Valid values:
-        # 
-        # *   global: global configurations.
-        # *   rule: queries rule configurations.
         self.config_type = config_type
-        # The exception origin fetch switch. After you turn on this switch, if a function exception occurs, such as CPU usage exceeding the upper limit, requests are sent back to the origin. Valid values:
-        # 
-        # *   on
-        # *   off
         self.fallback = fallback
-        # The configuration mode. Valid values: Valid values:
-        # 
-        # *   simple
-        # *   custom
         self.mode = mode
-        # The request ID.
         self.request_id = request_id
-        # The routing switch. Valid values:
-        # 
-        # *   on
-        # *   off
         self.route_enable = route_enable
-        # The route name.
         self.route_name = route_name
-        # The function name.
         self.routine_name = routine_name
-        # The rule content.
         self.rule = rule
-        # The order in which the rule is executed.
         self.sequence = sequence
-        # The version number of the website.
         self.site_version = site_version
         self.timeout = timeout
 

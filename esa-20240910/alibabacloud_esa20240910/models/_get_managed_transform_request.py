@@ -10,11 +10,8 @@ class GetManagedTransformRequest(DaraModel):
         site_id: int = None,
         site_version: int = None,
     ):
-        # Site ID, which can be obtained by calling [ListSites](https://help.aliyun.com/document_detail/2850189.html).
-        # 
         # This parameter is required.
         self.site_id = site_id
-        # The version number of the site. For sites with version management enabled, you can use this parameter to specify the effective version of the configuration, defaulting to version 0.
         self.site_version = site_version
 
     def validate(self):

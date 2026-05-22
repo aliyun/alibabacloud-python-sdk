@@ -22,45 +22,19 @@ class GetVideoProcessingResponseBody(DaraModel):
         site_version: int = None,
         video_seek_enable: str = None,
     ):
-        # The configuration ID.
         self.config_id = config_id
-        # The type of the configuration. Valid values:
-        # 
-        # *   global: global configuration.
-        # *   rule: rule configuration.
         self.config_type = config_type
-        # The custom end parameter for FLV files.
         self.flv_seek_end = flv_seek_end
-        # The custom start parameter for FLV files.
         self.flv_seek_start = flv_seek_start
-        # FLV Seeking Valid values:
-        # 
-        # *   by_byte: Seek by byte.
-        # *   by_time: Seek by time.
         self.flv_video_seek_mode = flv_video_seek_mode
-        # Customize the mp4 end parameter.
         self.mp_4seek_end = mp_4seek_end
-        # Customize the mp4 start parameter.
         self.mp_4seek_start = mp_4seek_start
-        # The request ID.
         self.request_id = request_id
-        # The rule content.
         self.rule = rule
-        # Indicates whether the rule is enabled. Valid values:
-        # 
-        # *   on
-        # *   off
         self.rule_enable = rule_enable
-        # The name of the scaling rule.
         self.rule_name = rule_name
-        # The order in which the rule is executed. A smaller value gives priority to the rule.
         self.sequence = sequence
-        # The version number of the website configurations.
         self.site_version = site_version
-        # Video seeking. Valid values:
-        # 
-        # *   on
-        # *   off
         self.video_seek_enable = video_seek_enable
 
     def validate(self):

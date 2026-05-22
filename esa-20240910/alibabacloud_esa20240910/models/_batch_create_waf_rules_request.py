@@ -17,22 +17,12 @@ class BatchCreateWafRulesRequest(DaraModel):
         site_id: int = None,
         site_version: int = None,
     ):
-        # A list of configurations for each rule, specifying detailed configurations for each rule.
         self.configs = configs
-        # WAF rule type, with values:
-        # 
-        # - **http_anti_scan**: Scan protection.
-        # - **http_bot**: Bots.
         self.phase = phase
-        # Ruleset ID.
         self.ruleset_id = ruleset_id
-        # Shared configuration for multiple rules, specifying common attributes of multiple rules.
         self.shared = shared
-        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
-        # 
         # This parameter is required.
         self.site_id = site_id
-        # Site version.
         self.site_version = site_version
 
     def validate(self):

@@ -10,12 +10,7 @@ class GetSiteNameExclusiveResponseBody(DaraModel):
         enable: str = None,
         request_id: str = None,
     ):
-        # Indicates whether site hold is enabled. Valid values:
-        # 
-        # *   on
-        # *   off
         self.enable = enable
-        # The request ID.
         self.request_id = request_id
 
     def validate(self):

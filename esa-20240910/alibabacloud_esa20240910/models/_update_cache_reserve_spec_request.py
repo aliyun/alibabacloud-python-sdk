@@ -12,15 +12,9 @@ class UpdateCacheReserveSpecRequest(DaraModel):
         instance_id: str = None,
         target_quota_gb: int = None,
     ):
-        # Automatic payment.
         self.auto_pay = auto_pay
-        # Billing type. Valid values:
-        # - PREPAY
-        # - POSTPAY
         self.charge_type = charge_type
-        # Instance ID.
         self.instance_id = instance_id
-        # Cache requested size, in GB.
         self.target_quota_gb = target_quota_gb
 
     def validate(self):

@@ -15,33 +15,16 @@ class UpdateCustomScenePolicyRequest(DaraModel):
         start_time: str = None,
         template: str = None,
     ):
-        # The time when the policy expires.
-        # 
-        # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-        # 
         # This parameter is required.
         self.end_time = end_time
-        # The policy name.
-        # 
         # This parameter is required.
         self.name = name
-        # The IDs of the websites that you want to associate with the policy. Separate multiple IDs with commas (,).
         self.objects = objects
-        # The policy ID, which can be obtained by calling the [DescribeCustomScenePolicies](https://help.aliyun.com/document_detail/2850508.html) operation.
-        # 
         # This parameter is required.
         self.policy_id = policy_id
         self.site_ids = site_ids
-        # The time when the policy takes effect.
-        # 
-        # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-        # 
         # This parameter is required.
         self.start_time = start_time
-        # The name of the policy template. Valid value:
-        # 
-        # *   **promotion**: major events.
-        # 
         # This parameter is required.
         self.template = template
 

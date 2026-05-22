@@ -15,29 +15,14 @@ class CreateHttpIncomingResponseHeaderModificationRuleShrinkRequest(DaraModel):
         site_id: int = None,
         site_version: int = None,
     ):
-        # The configurations of modifying response headers. You can add, delete, or modify a response header.
-        # 
         # This parameter is required.
         self.response_header_modification_shrink = response_header_modification_shrink
-        # The content of the rule. A conditional expression is used to match a user request. You do not need to set this parameter when you add global configuration. Use cases:
-        # 
-        # *   true: Match all incoming requests.
-        # *   Set the value to a custom expression, for example: (http.host eq "video.example.com"): Match the specified request
         self.rule = rule
-        # Specifies whether to enable the rule. Valid values: You do not need to set this parameter when you add global configuration. Valid values:
-        # 
-        # *   on
-        # *   off
         self.rule_enable = rule_enable
-        # The rule name. You do not need to set this parameter when you add global configuration.
         self.rule_name = rule_name
-        # The order in which the rule is executed. A smaller value gives priority to the rule.
         self.sequence = sequence
-        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
-        # 
         # This parameter is required.
         self.site_id = site_id
-        # The version number of the website configurations. You can use this parameter to specify a version of your website to apply the feature settings. By default, version 0 is used.
         self.site_version = site_version
 
     def validate(self):

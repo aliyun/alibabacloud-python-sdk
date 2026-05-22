@@ -16,15 +16,10 @@ class ListSiteDeliveryTasksResponseBody(DaraModel):
         tasks: List[main_models.ListSiteDeliveryTasksResponseBodyTasks] = None,
         total_count: int = None,
     ):
-        # The page number. Default value: 0.
         self.page_number = page_number
-        # The number of entries per page. Valid values: **1 to 500**. Default value: **20**.
         self.page_size = page_size
-        # The request ID.
         self.request_id = request_id
-        # The delivery tasks.
         self.tasks = tasks
-        # The total number of log delivery tasks.
         self.total_count = total_count
 
     def validate(self):
@@ -88,33 +83,10 @@ class ListSiteDeliveryTasksResponseBodyTasks(DaraModel):
         status: str = None,
         task_name: str = None,
     ):
-        # The log category. Valid values:
-        # 
-        # *   dcdn_log_access_l1 (default): access logs.
-        # *   dcdn_log_er: Edge Routine logs.
-        # *   dcdn_log_waf: firewall logs.
-        # *   dcdn_log_ipa: TCP/UDP proxy logs.
         self.business_type = business_type
-        # The data center. Valid values:
-        # 
-        # *   cn: the Chinese mainland.
-        # *   sg: outside the Chinese mainland.
         self.data_center = data_center
-        # The destination of the delivery. Valid values:
-        # 
-        # 1.  sls: Alibaba Cloud Simple Log Service (SLS).
-        # 2.  http: HTTP server.
-        # 3.  aws3: Amazon Simple Storage Service (S3).
-        # 4.  oss: Alibaba Cloud Object Storage Service (OSS).
-        # 5.  kafka: Kafka.
-        # 6.  aws3cmpt: S3-compatible storage service.
         self.delivery_type = delivery_type
-        # The status of the delivery task.
-        # 
-        # *   **online**
-        # *   **offline**
         self.status = status
-        # The name of the delivery task.
         self.task_name = task_name
 
     def validate(self):
