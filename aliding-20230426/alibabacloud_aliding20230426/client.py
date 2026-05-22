@@ -18478,6 +18478,112 @@ class Client(OpenApiClient):
         headers = main_models.GetUserIdHeaders()
         return await self.get_user_id_with_options_async(request, headers, runtime)
 
+    def get_user_id_by_open_dingtalk_id_with_options(
+        self,
+        tmp_req: main_models.GetUserIdByOpenDingtalkIdRequest,
+        tmp_header: main_models.GetUserIdByOpenDingtalkIdHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetUserIdByOpenDingtalkIdResponse:
+        tmp_req.validate()
+        request = main_models.GetUserIdByOpenDingtalkIdShrinkRequest()
+        Utils.convert(tmp_req, request)
+        headers = main_models.GetUserIdByOpenDingtalkIdShrinkHeaders()
+        Utils.convert(tmp_header, headers)
+        if not DaraCore.is_null(tmp_header.account_context):
+            headers.account_context_shrink = Utils.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not DaraCore.is_null(tmp_req.tenant_context):
+            request.tenant_context_shrink = Utils.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not DaraCore.is_null(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not DaraCore.is_null(request.open_dingtalk_id):
+            body['openDingtalkId'] = request.open_dingtalk_id
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.account_context_shrink):
+            real_headers['AccountContext'] = DaraCore.to_json_string(headers.account_context_shrink)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetUserIdByOpenDingtalkId',
+            version = '2023-04-26',
+            protocol = 'HTTPS',
+            pathname = f'/dingtalk/v1/im/getUserIdByOpenDingtalkId',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetUserIdByOpenDingtalkIdResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_user_id_by_open_dingtalk_id_with_options_async(
+        self,
+        tmp_req: main_models.GetUserIdByOpenDingtalkIdRequest,
+        tmp_header: main_models.GetUserIdByOpenDingtalkIdHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetUserIdByOpenDingtalkIdResponse:
+        tmp_req.validate()
+        request = main_models.GetUserIdByOpenDingtalkIdShrinkRequest()
+        Utils.convert(tmp_req, request)
+        headers = main_models.GetUserIdByOpenDingtalkIdShrinkHeaders()
+        Utils.convert(tmp_header, headers)
+        if not DaraCore.is_null(tmp_header.account_context):
+            headers.account_context_shrink = Utils.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not DaraCore.is_null(tmp_req.tenant_context):
+            request.tenant_context_shrink = Utils.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not DaraCore.is_null(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not DaraCore.is_null(request.open_dingtalk_id):
+            body['openDingtalkId'] = request.open_dingtalk_id
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.account_context_shrink):
+            real_headers['AccountContext'] = DaraCore.to_json_string(headers.account_context_shrink)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetUserIdByOpenDingtalkId',
+            version = '2023-04-26',
+            protocol = 'HTTPS',
+            pathname = f'/dingtalk/v1/im/getUserIdByOpenDingtalkId',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetUserIdByOpenDingtalkIdResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_user_id_by_open_dingtalk_id(
+        self,
+        request: main_models.GetUserIdByOpenDingtalkIdRequest,
+    ) -> main_models.GetUserIdByOpenDingtalkIdResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.GetUserIdByOpenDingtalkIdHeaders()
+        return self.get_user_id_by_open_dingtalk_id_with_options(request, headers, runtime)
+
+    async def get_user_id_by_open_dingtalk_id_async(
+        self,
+        request: main_models.GetUserIdByOpenDingtalkIdRequest,
+    ) -> main_models.GetUserIdByOpenDingtalkIdResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.GetUserIdByOpenDingtalkIdHeaders()
+        return await self.get_user_id_by_open_dingtalk_id_with_options_async(request, headers, runtime)
+
     def get_user_id_by_org_id_and_staff_id_with_options(
         self,
         tmp_req: main_models.GetUserIdByOrgIdAndStaffIdRequest,

@@ -898,6 +898,12 @@ from ._get_user_id_request import GetUserIdRequest
 from ._get_user_id_shrink_request import GetUserIdShrinkRequest
 from ._get_user_id_response_body import GetUserIdResponseBody
 from ._get_user_id_response import GetUserIdResponse
+from ._get_user_id_by_open_dingtalk_id_headers import GetUserIdByOpenDingtalkIdHeaders
+from ._get_user_id_by_open_dingtalk_id_shrink_headers import GetUserIdByOpenDingtalkIdShrinkHeaders
+from ._get_user_id_by_open_dingtalk_id_request import GetUserIdByOpenDingtalkIdRequest
+from ._get_user_id_by_open_dingtalk_id_shrink_request import GetUserIdByOpenDingtalkIdShrinkRequest
+from ._get_user_id_by_open_dingtalk_id_response_body import GetUserIdByOpenDingtalkIdResponseBody
+from ._get_user_id_by_open_dingtalk_id_response import GetUserIdByOpenDingtalkIdResponse
 from ._get_user_id_by_org_id_and_staff_id_headers import GetUserIdByOrgIdAndStaffIdHeaders
 from ._get_user_id_by_org_id_and_staff_id_shrink_headers import GetUserIdByOrgIdAndStaffIdShrinkHeaders
 from ._get_user_id_by_org_id_and_staff_id_request import GetUserIdByOrgIdAndStaffIdRequest
@@ -2210,6 +2216,8 @@ from ._get_user_response_body import GetUserResponseBodyUnionEmpExtUnionEmpMapLi
 from ._get_user_response_body import GetUserResponseBodyUnionEmpExt
 from ._get_user_id_headers import GetUserIdHeadersAccountContext
 from ._get_user_id_request import GetUserIdRequestTenantContext
+from ._get_user_id_by_open_dingtalk_id_headers import GetUserIdByOpenDingtalkIdHeadersAccountContext
+from ._get_user_id_by_open_dingtalk_id_request import GetUserIdByOpenDingtalkIdRequestTenantContext
 from ._get_user_id_by_org_id_and_staff_id_headers import GetUserIdByOrgIdAndStaffIdHeadersAccountContext
 from ._get_user_id_by_org_id_and_staff_id_request import GetUserIdByOrgIdAndStaffIdRequestTenantContext
 from ._get_user_latest_plan_headers import GetUserLatestPlanHeadersAccountContext
@@ -3604,6 +3612,12 @@ __all__ = [
     GetUserIdShrinkRequest,
     GetUserIdResponseBody,
     GetUserIdResponse,
+    GetUserIdByOpenDingtalkIdHeaders,
+    GetUserIdByOpenDingtalkIdShrinkHeaders,
+    GetUserIdByOpenDingtalkIdRequest,
+    GetUserIdByOpenDingtalkIdShrinkRequest,
+    GetUserIdByOpenDingtalkIdResponseBody,
+    GetUserIdByOpenDingtalkIdResponse,
     GetUserIdByOrgIdAndStaffIdHeaders,
     GetUserIdByOrgIdAndStaffIdShrinkHeaders,
     GetUserIdByOrgIdAndStaffIdRequest,
@@ -4916,6 +4930,8 @@ __all__ = [
     GetUserResponseBodyUnionEmpExt,
     GetUserIdHeadersAccountContext,
     GetUserIdRequestTenantContext,
+    GetUserIdByOpenDingtalkIdHeadersAccountContext,
+    GetUserIdByOpenDingtalkIdRequestTenantContext,
     GetUserIdByOrgIdAndStaffIdHeadersAccountContext,
     GetUserIdByOrgIdAndStaffIdRequestTenantContext,
     GetUserLatestPlanHeadersAccountContext,
