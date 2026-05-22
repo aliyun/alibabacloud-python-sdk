@@ -1,3 +1,7 @@
+2026-05-22 Version: 2.3.1
+- Update API DescribeRequestHit: add response parameters Body.resultObject.ruleHitRecords.$.ruleType.
+
+
 2026-05-06 Version: 2.3.0
 - Support API CancelSubTask.
 - Support API CheckSampleName.

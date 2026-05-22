@@ -156,6 +156,7 @@ class DescribeRequestHitResponseBodyResultObjectRuleHitRecords(DaraModel):
         rule_name: str = None,
         rule_snapshot_id: str = None,
         rule_status: str = None,
+        rule_type: str = None,
     ):
         # Duration
         self.cost = cost
@@ -173,6 +174,7 @@ class DescribeRequestHitResponseBodyResultObjectRuleHitRecords(DaraModel):
         self.rule_snapshot_id = rule_snapshot_id
         # Policy status
         self.rule_status = rule_status
+        self.rule_type = rule_type
 
     def validate(self):
         pass
@@ -206,6 +208,9 @@ class DescribeRequestHitResponseBodyResultObjectRuleHitRecords(DaraModel):
         if self.rule_status is not None:
             result['ruleStatus'] = self.rule_status
 
+        if self.rule_type is not None:
+            result['ruleType'] = self.rule_type
+
         return result
 
     def from_map(self, m: dict = None):
@@ -233,6 +238,9 @@ class DescribeRequestHitResponseBodyResultObjectRuleHitRecords(DaraModel):
 
         if m.get('ruleStatus') is not None:
             self.rule_status = m.get('ruleStatus')
+
+        if m.get('ruleType') is not None:
+            self.rule_type = m.get('ruleType')
 
         return self
 
