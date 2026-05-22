@@ -19,6 +19,7 @@ class CreateAgentRuntimeInput(DaraModel):
         credential_id: str = None,
         credential_name: str = None,
         description: str = None,
+        disable_session_affinity: bool = None,
         disk_size: int = None,
         edition: str = None,
         enable_session_isolation: bool = None,
@@ -62,6 +63,8 @@ class CreateAgentRuntimeInput(DaraModel):
         self.credential_name = credential_name
         # 智能体运行时的描述信息，用于说明该运行时的用途和功能
         self.description = description
+        # 是否禁用会话亲和性。默认为 false（即默认启用会话亲和），设置为 true 时关闭会话亲和
+        self.disable_session_affinity = disable_session_affinity
         self.disk_size = disk_size
         self.edition = edition
         # 是否启用会话隔离，启用后每个会话将在独立的环境中运行
@@ -156,6 +159,9 @@ class CreateAgentRuntimeInput(DaraModel):
         if self.description is not None:
             result['description'] = self.description
 
+        if self.disable_session_affinity is not None:
+            result['disableSessionAffinity'] = self.disable_session_affinity
+
         if self.disk_size is not None:
             result['diskSize'] = self.disk_size
 
@@ -246,6 +252,9 @@ class CreateAgentRuntimeInput(DaraModel):
 
         if m.get('description') is not None:
             self.description = m.get('description')
+
+        if m.get('disableSessionAffinity') is not None:
+            self.disable_session_affinity = m.get('disableSessionAffinity')
 
         if m.get('diskSize') is not None:
             self.disk_size = m.get('diskSize')
