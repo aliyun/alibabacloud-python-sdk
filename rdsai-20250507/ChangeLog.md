@@ -1,3 +1,11 @@
+2026-05-22 Version: 3.4.3
+- Update API GetMessages: add response parameters Body.Data.$.GenerationFinishedAt.
+- Update API GetMessages: add response parameters Body.Data.$.GenerationStartedAt.
+- Update API GetMessages: add response parameters Body.Data.$.GenerationStatus.
+- Update API GetMessages: add response parameters Body.Data.$.LastSentEntryId.
+- Update API GetMessages: add response parameters Body.Data.$.StreamKey.
+
+
 2026-05-19 Version: 3.4.2
 - Update API DescribeMOTokenUsageDetail: add request parameters Cursor.
 - Update API DescribeMOTokenUsageDetail: add response parameters Body.NextCursor.

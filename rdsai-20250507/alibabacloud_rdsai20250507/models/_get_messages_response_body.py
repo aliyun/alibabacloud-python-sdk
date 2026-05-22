@@ -78,9 +78,14 @@ class GetMessagesResponseBodyData(DaraModel):
         created_at: str = None,
         events: List[main_models.GetMessagesResponseBodyDataEvents] = None,
         feedback: str = None,
+        generation_finished_at: str = None,
+        generation_started_at: str = None,
+        generation_status: str = None,
         id: str = None,
+        last_sent_entry_id: str = None,
         query: str = None,
         retriever_resources: List[Any] = None,
+        stream_key: str = None,
     ):
         # The response to the query.
         self.answer = answer
@@ -91,12 +96,17 @@ class GetMessagesResponseBodyData(DaraModel):
         self.events = events
         # The feedback.
         self.feedback = feedback
+        self.generation_finished_at = generation_finished_at
+        self.generation_started_at = generation_started_at
+        self.generation_status = generation_status
         # The message ID.
         self.id = id
+        self.last_sent_entry_id = last_sent_entry_id
         # The query statement.
         self.query = query
         # The retriever resources.
         self.retriever_resources = retriever_resources
+        self.stream_key = stream_key
 
     def validate(self):
         if self.events:
@@ -126,14 +136,29 @@ class GetMessagesResponseBodyData(DaraModel):
         if self.feedback is not None:
             result['Feedback'] = self.feedback
 
+        if self.generation_finished_at is not None:
+            result['GenerationFinishedAt'] = self.generation_finished_at
+
+        if self.generation_started_at is not None:
+            result['GenerationStartedAt'] = self.generation_started_at
+
+        if self.generation_status is not None:
+            result['GenerationStatus'] = self.generation_status
+
         if self.id is not None:
             result['Id'] = self.id
+
+        if self.last_sent_entry_id is not None:
+            result['LastSentEntryId'] = self.last_sent_entry_id
 
         if self.query is not None:
             result['Query'] = self.query
 
         if self.retriever_resources is not None:
             result['RetrieverResources'] = self.retriever_resources
+
+        if self.stream_key is not None:
+            result['StreamKey'] = self.stream_key
 
         return result
 
@@ -157,14 +182,29 @@ class GetMessagesResponseBodyData(DaraModel):
         if m.get('Feedback') is not None:
             self.feedback = m.get('Feedback')
 
+        if m.get('GenerationFinishedAt') is not None:
+            self.generation_finished_at = m.get('GenerationFinishedAt')
+
+        if m.get('GenerationStartedAt') is not None:
+            self.generation_started_at = m.get('GenerationStartedAt')
+
+        if m.get('GenerationStatus') is not None:
+            self.generation_status = m.get('GenerationStatus')
+
         if m.get('Id') is not None:
             self.id = m.get('Id')
+
+        if m.get('LastSentEntryId') is not None:
+            self.last_sent_entry_id = m.get('LastSentEntryId')
 
         if m.get('Query') is not None:
             self.query = m.get('Query')
 
         if m.get('RetrieverResources') is not None:
             self.retriever_resources = m.get('RetrieverResources')
+
+        if m.get('StreamKey') is not None:
+            self.stream_key = m.get('StreamKey')
 
         return self
 
