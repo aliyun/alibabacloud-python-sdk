@@ -1,3 +1,7 @@
+2026-05-22 Version: 3.4.1
+- Update API DeleteSubCNInstance: add request parameters InstanceClusterName.
+
+
 2026-05-09 Version: 3.4.0
 - Support API CreateGdnStandbyMember.
 - Support API CreateSubCNInstance.

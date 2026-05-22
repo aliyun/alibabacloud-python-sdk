@@ -8,10 +8,12 @@ class DeleteSubCNInstanceRequest(DaraModel):
     def __init__(
         self,
         dbinstance_name: str = None,
+        instance_cluster_name: str = None,
         region_id: str = None,
     ):
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
+        self.instance_cluster_name = instance_cluster_name
         # This parameter is required.
         self.region_id = region_id
 
@@ -26,6 +28,9 @@ class DeleteSubCNInstanceRequest(DaraModel):
         if self.dbinstance_name is not None:
             result['DBInstanceName'] = self.dbinstance_name
 
+        if self.instance_cluster_name is not None:
+            result['InstanceClusterName'] = self.instance_cluster_name
+
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
@@ -35,6 +40,9 @@ class DeleteSubCNInstanceRequest(DaraModel):
         m = m or dict()
         if m.get('DBInstanceName') is not None:
             self.dbinstance_name = m.get('DBInstanceName')
+
+        if m.get('InstanceClusterName') is not None:
+            self.instance_cluster_name = m.get('InstanceClusterName')
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
