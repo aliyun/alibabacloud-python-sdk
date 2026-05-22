@@ -18,12 +18,23 @@ class DescribeSiteTimeSeriesDataResponseBody(DaraModel):
         start_time: str = None,
         summarized_data: List[main_models.DescribeSiteTimeSeriesDataResponseBodySummarizedData] = None,
     ):
+        # Returned data.
         self.data = data
+        # The end time for fetching the data.
+        # 
+        # The date format follows ISO8601 notation and uses UTC+0, formatted as yyyy-MM-ddTHH:mm:ssZ.
         self.end_time = end_time
+        # The granularity of the data, in seconds.
         self.interval = interval
+        # The request ID.
         self.request_id = request_id
+        # The sampling rate, in %.
         self.sampling_rate = sampling_rate
+        # The start time for fetching the data.
+        # 
+        # The date format follows ISO8601 notation and uses UTC+0, formatted as yyyy-MM-ddTHH:mm:ssZ.
         self.start_time = start_time
+        # Aggregated query data.
         self.summarized_data = summarized_data
 
     def validate(self):
@@ -108,10 +119,15 @@ class DescribeSiteTimeSeriesDataResponseBodySummarizedData(DaraModel):
         field_name: str = None,
         value: Any = None,
     ):
+        # The aggregation method used.
         self.agg_method = agg_method
+        # The dimension of the aggregated data being queried.
         self.dimension_name = dimension_name
+        # The value of the aggregated dimension being queried.
         self.dimension_value = dimension_value
+        # The value of the aggregated metric being queried.
         self.field_name = field_name
+        # The aggregated value.
         self.value = value
 
     def validate(self):
@@ -166,9 +182,13 @@ class DescribeSiteTimeSeriesDataResponseBodyData(DaraModel):
         dimension_value: str = None,
         field_name: str = None,
     ):
+        # Returned data.
         self.detail_data = detail_data
+        # Query dimension.
         self.dimension_name = dimension_name
+        # Query dimension value.
         self.dimension_value = dimension_value
+        # Query metric value.
         self.field_name = field_name
 
     def validate(self):
@@ -223,7 +243,9 @@ class DescribeSiteTimeSeriesDataResponseBodyDataDetailData(DaraModel):
         time_stamp: str = None,
         value: Any = None,
     ):
+        # Start timestamp of the time slice.
         self.time_stamp = time_stamp
+        # Value.
         self.value = value
 
     def validate(self):

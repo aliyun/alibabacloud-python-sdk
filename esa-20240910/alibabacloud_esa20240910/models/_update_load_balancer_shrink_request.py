@@ -25,22 +25,45 @@ class UpdateLoadBalancerShrinkRequest(DaraModel):
         sub_region_pools: Any = None,
         ttl: int = None,
     ):
+        # Configuration for fallback across pools.
         self.adaptive_routing_shrink = adaptive_routing_shrink
+        # List of default pool IDs.
         self.default_pools_shrink = default_pools_shrink
+        # Detailed description of the load balancer, for easier management and identification.
         self.description = description
+        # Whether the load balancer is enabled.
+        # 
+        # - true: Enabled.
+        # - false: Not enabled.
         self.enabled = enabled
+        # Fallback pool ID, where traffic will be directed when all other pools are unavailable.
         self.fallback_pool = fallback_pool
+        # Load balancer ID, which can be obtained by calling the [ListLoadBalancers](https://help.aliyun.com/document_detail/2868897.html) API.
+        # 
         # This parameter is required.
         self.id = id
+        # Monitor configuration for health checks.
         self.monitor_shrink = monitor_shrink
+        # Weighted round-robin configuration, used to control the traffic distribution weights among different pools.
         self.random_steering_shrink = random_steering_shrink
+        # Address pool corresponding to the primary region.
         self.region_pools = region_pools
+        # Rule configuration list, used to define behavior overrides under specific conditions.
         self.rules_shrink = rules_shrink
+        # Session persistence, with possible values:
+        # - off: Not enabled.
+        # - ip: Session persistence by IP.
+        # - cookie: Session persistence by cookie.
         self.session_affinity = session_affinity
+        # Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+        # 
         # This parameter is required.
         self.site_id = site_id
+        # Load balancing policy.
         self.steering_policy = steering_policy
+        # Address pool corresponding to the secondary region. When multiple secondary regions share the same address pool, the regions can be concatenated with commas as the key.
         self.sub_region_pools = sub_region_pools
+        # TTL value, the time-to-live for DNS records, with a default of 30 and a range of 10-600.
         self.ttl = ttl
 
     def validate(self):

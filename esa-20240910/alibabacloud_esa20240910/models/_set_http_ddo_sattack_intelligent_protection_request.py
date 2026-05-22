@@ -11,10 +11,24 @@ class SetHttpDDoSAttackIntelligentProtectionRequest(DaraModel):
         ai_template: str = None,
         site_id: int = None,
     ):
+        # The mode of smart HTTP DDoS protection. Valid values:
+        # 
+        # *   **observe**: alert.
+        # *   **defense**: block.
+        # 
         # This parameter is required.
         self.ai_mode = ai_mode
+        # The level of smart HTTP DDoS protection. Valid values:
+        # 
+        # *   **level0**: very loose.
+        # *   **level30**: loose.
+        # *   **level60**: normal.
+        # *   **level90**: strict.
+        # 
         # This parameter is required.
         self.ai_template = ai_template
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # 
         # This parameter is required.
         self.site_id = site_id
 

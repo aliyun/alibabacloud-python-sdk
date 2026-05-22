@@ -13,7 +13,9 @@ class ListWafPhasesResponseBody(DaraModel):
         phases: List[main_models.ListWafPhasesResponseBodyPhases] = None,
         request_id: str = None,
     ):
+        # List of WAF operation phases.
         self.phases = phases
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -56,7 +58,9 @@ class ListWafPhasesResponseBodyPhases(DaraModel):
         phase: str = None,
         rulesets: List[main_models.ListWafPhasesResponseBodyPhasesRulesets] = None,
     ):
+        # Name of the WAF operation phase.
         self.phase = phase
+        # List of WAF rulesets.
         self.rulesets = rulesets
 
     def validate(self):
@@ -101,9 +105,13 @@ class ListWafPhasesResponseBodyPhasesRulesets(DaraModel):
         rules: List[main_models.WafRuleConfig] = None,
         shared: main_models.WafBatchRuleShared = None,
     ):
+        # ID of the WAF ruleset.
         self.id = id
+        # Name of the WAF ruleset.
         self.name = name
+        # List of rule configurations in the WAF ruleset.
         self.rules = rules
+        # Shared configuration for rules in the WAF ruleset.
         self.shared = shared
 
     def validate(self):

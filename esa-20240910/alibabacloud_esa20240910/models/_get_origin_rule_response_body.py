@@ -32,29 +32,90 @@ class GetOriginRuleResponseBody(DaraModel):
         sequence: int = None,
         site_version: int = None,
     ):
+        # The configuration ID.
         self.config_id = config_id
+        # The configuration type to query. Valid values:
+        # 
+        # *   global: global configurations.
+        # *   rule: rule configurations.
         self.config_type = config_type
+        # The hostname that overrides the resolved hostname of an incoming request.
         self.dns_record = dns_record
+        # 302 follow switch. Valid values:
+        # 
+        # *   on
+        # *   off
         self.follow_302enable = follow_302enable
+        # The maximum number of 302 follow times. Valid values: 1 to 5.
         self.follow_302max_tries = follow_302max_tries
+        # Retains the original request parameters switch. Valid values:
+        # 
+        # *   on
+        # *   off
         self.follow_302retain_args = follow_302retain_args
+        # Retain the original request header switch. Valid values:
+        # 
+        # *   on
+        # *   off
         self.follow_302retain_header = follow_302retain_header
+        # Target Host
         self.follow_302target_host = follow_302target_host
+        # The Host header in origin requests.
         self.origin_host = origin_host
+        # The origin port that is accessed when the HTTP protocol is used to back to the origin.
         self.origin_http_port = origin_http_port
+        # The origin port that is accessed when the HTTPS protocol is used to back to the origin.
         self.origin_https_port = origin_https_port
+        # The MTLS switch. Valid values:
+        # 
+        # *   on
+        # *   off
         self.origin_mtls = origin_mtls
+        # The read timeout period (in seconds) on the origin.
         self.origin_read_timeout = origin_read_timeout
+        # The protocol used for origin requests. Valid values:
+        # 
+        # *   http: HTTP.
+        # *   https: HTTPS.
+        # *   follow: follows the protocol used by the client.
         self.origin_scheme = origin_scheme
+        # The SNI in origin requests.
         self.origin_sni = origin_sni
+        # The origin certificate verification switch. Valid values:
+        # 
+        # *   on
+        # *   off
         self.origin_verify = origin_verify
+        # Use range requests to download an object from the source. Valid values:
+        # 
+        # *   on
+        # *   off
+        # *   force: enables range origin fetch by force.
         self.range = range
+        # The size of the range part. Valid values:
+        # 
+        # *   512KB
+        # *   1MB
+        # *   2MB
+        # *   4MB
         self.range_chunk_size = range_chunk_size
+        # Request ID.
         self.request_id = request_id
+        # The content of the rule. A conditional expression is used to match a user request. You do not need to set this parameter when you add global configuration. Use cases:
+        # 
+        # *   true: Match all incoming requests.
+        # *   Set the value to a custom expression, for example, (http.host eq "video.example.com"): Match the specified request.
         self.rule = rule
+        # Specifies whether to enable the rule. Valid values: You do not need to set this parameter when you add global configuration. Valid values:
+        # 
+        # *   on
+        # *   off
         self.rule_enable = rule_enable
+        # The rule name. You do not need to set this parameter when you add global configurations.
         self.rule_name = rule_name
+        # The rule execution order. The smaller the value, the higher the priority.
         self.sequence = sequence
+        # The version number of the configurations. You can use this parameter to specify a version of your website to apply the feature settings. By default, version 0 is used.
         self.site_version = site_version
 
     def validate(self):

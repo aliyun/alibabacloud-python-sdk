@@ -13,7 +13,9 @@ class FieldContentValue(DaraModel):
         sort_order: int = None,
         field_list: List[main_models.FieldContentValueFieldList] = None,
     ):
+        # The sequence number of the fields.
         self.sort_order = sort_order
+        # The fields.
         self.field_list = field_list
 
     def validate(self):
@@ -61,12 +63,19 @@ class FieldContentValueFieldList(DaraModel):
         sort_order: int = None,
         is_default: bool = None,
     ):
+        # The field name.
         self.field_name = field_name
+        # The description of the field in English.
         self.description = description
+        # The description of the field in Chinese.
         self.description_cn = description_cn
+        # The category of the field.
         self.category = category
+        # The data type of the field.
         self.data_type = data_type
+        # The sequence number of the field.
         self.sort_order = sort_order
+        # Indicates whether the field is available by default.
         self.is_default = is_default
 
     def validate(self):

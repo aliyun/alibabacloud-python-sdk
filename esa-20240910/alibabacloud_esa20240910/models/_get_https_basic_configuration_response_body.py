@@ -25,22 +25,67 @@ class GetHttpsBasicConfigurationResponseBody(DaraModel):
         tls_12: str = None,
         tls_13: str = None,
     ):
+        # Custom cipher suite, indicating the specific encryption algorithm selected when CiphersuiteGroup is set to custom.
         self.ciphersuite = ciphersuite
+        # Cipher suite group, default is all cipher suites. Value range:
+        # 
+        # - all: All cipher suites.
+        # - strict: Strong cipher suites.
+        # - custom: Custom cipher suites.
         self.ciphersuite_group = ciphersuite_group
+        # Configuration ID.
         self.config_id = config_id
+        # Configuration type, which can be used to query global or rule configurations. Value range:
+        # - global: Query global configuration;
+        # - rule: Query rule configuration;
         self.config_type = config_type
+        # Whether to enable HTTP2, default is enabled. Value range:
+        # 
+        # - on: Enable.
+        # - off: Disable.
         self.http_2 = http_2
+        # Whether to enable HTTP3, which is enabled by default. The value can be:
+        # - on: Enabled. 
+        # - off: Disabled.
         self.http_3 = http_3
+        # Whether to enable HTTPS, default is enabled. Value range:
+        # 
+        # - on: Enable.
+        # - off: Disable.
         self.https = https
+        # Whether to enable OCSP, default is disabled. Value range:
+        # 
+        # - on: Enable.
+        # - off: Disable.
         self.ocsp_stapling = ocsp_stapling
+        # Request ID.
         self.request_id = request_id
+        # Matching rule content.
         self.rule = rule
+        # Rule switch. Value range:
+        # 
+        # - on: Enable.
+        # - off: Disable.
         self.rule_enable = rule_enable
+        # Rule name.
         self.rule_name = rule_name
+        # Rule execution sequence.
         self.sequence = sequence
+        # Whether to enable TLS1.0, default is disabled. Value range:
+        # - on: Enable.
+        # - off: Disable.
         self.tls_10 = tls_10
+        # Whether to enable TLS1.1, default is disabled. Value range:
+        # - on: Enable.
+        # - off: Disable.
         self.tls_11 = tls_11
+        # Whether to enable TLS1.2, default is disabled. Value range:
+        # - on: Enable.
+        # - off: Disable.
         self.tls_12 = tls_12
+        # Whether to enable TLS1.3, default is disabled. Value range:
+        # - on: Enable.
+        # - off: Disable.
         self.tls_13 = tls_13
 
     def validate(self):

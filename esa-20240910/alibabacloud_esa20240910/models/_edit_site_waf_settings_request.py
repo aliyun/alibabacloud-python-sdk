@@ -12,8 +12,11 @@ class EditSiteWafSettingsRequest(DaraModel):
         site_id: int = None,
         site_version: int = None,
     ):
+        # WAF configuration information for the site, passed in JSON format.
         self.settings = settings
+        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
         self.site_id = site_id
+        # Site version.
         self.site_version = site_version
 
     def validate(self):

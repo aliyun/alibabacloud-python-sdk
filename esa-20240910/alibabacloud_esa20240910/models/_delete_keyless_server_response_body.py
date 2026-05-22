@@ -12,6 +12,7 @@ class DeleteKeylessServerResponseBody(DaraModel):
         site_id: int = None,
         site_name: str = None,
     ):
+        # Keyless server ID。
         self.id = id
         self.request_id = request_id
         self.site_id = site_id

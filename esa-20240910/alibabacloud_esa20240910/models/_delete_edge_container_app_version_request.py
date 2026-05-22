@@ -10,8 +10,12 @@ class DeleteEdgeContainerAppVersionRequest(DaraModel):
         app_id: str = None,
         version_id: str = None,
     ):
+        # The application ID, which can be obtained by calling the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) operation.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The ID of the version that you want to delete. To obtain the version ID, call the [ListEdgeContainerAppVersions](~~ListEdgeContainerAppVersions~~) operation.
+        # 
         # This parameter is required.
         self.version_id = version_id
 

@@ -12,9 +12,13 @@ class GetRoutineCodeVersionResponseBody(DaraModel):
         request_id: str = None,
         routine_code: str = None,
     ):
+        # The description of the code version.
         self.code_description = code_description
+        # The time when the version was created.
         self.create_time = create_time
+        # The request ID.
         self.request_id = request_id
+        # The code content.
         self.routine_code = routine_code
 
     def validate(self):

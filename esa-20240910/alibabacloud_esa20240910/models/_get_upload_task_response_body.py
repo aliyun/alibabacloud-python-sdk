@@ -11,8 +11,18 @@ class GetUploadTaskResponseBody(DaraModel):
         request_id: str = None,
         status: str = None,
     ):
+        # The error message returned when the file upload task failed.
         self.description = description
+        # The request ID.
         self.request_id = request_id
+        # The task status.
+        # 
+        # *   **INIT**: The task is being initialized.
+        # *   **activacted**: The task is activated.
+        # *   **running**: The task is running.
+        # *   **success**: The task is successful.
+        # *   **partial**: The task is partially successful.
+        # *   **fail**: The task failed.
         self.status = status
 
     def validate(self):

@@ -10,7 +10,12 @@ class GetCnameFlatteningResponseBody(DaraModel):
         flatten_mode: str = None,
         request_id: str = None,
     ):
+        # The CNAME flattening mode. Valid values:
+        # 
+        # *   flatten_all: flattens all CNAMEs.
+        # *   flatten_all (default): flattens only the root domain.
         self.flatten_mode = flatten_mode
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

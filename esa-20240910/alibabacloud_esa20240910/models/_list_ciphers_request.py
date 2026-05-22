@@ -9,6 +9,8 @@ class ListCiphersRequest(DaraModel):
         self,
         ciphers_group: str = None,
     ):
+        # The name of the cipher suite group, which can be: all, strict, custom.
+        # 
         # This parameter is required.
         self.ciphers_group = ciphers_group
 

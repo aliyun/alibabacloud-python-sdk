@@ -17,11 +17,17 @@ class ListCompressionRulesResponseBody(DaraModel):
         total_count: int = None,
         total_page: int = None,
     ):
+        # List of compression rule configurations.
         self.configs = configs
+        # Current page number.
         self.page_number = page_number
+        # Page size.
         self.page_size = page_size
+        # Request ID.
         self.request_id = request_id
+        # Total number of items.
         self.total_count = total_count
+        # Total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -96,15 +102,35 @@ class ListCompressionRulesResponseBodyConfigs(DaraModel):
         site_version: int = None,
         zstd: str = None,
     ):
+        # Brotli compression. Possible values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.brotli = brotli
+        # Configuration ID.
         self.config_id = config_id
+        # Configuration type. Possible values:
+        # - global: Global configuration.
+        # - rule: Rule-based configuration.
         self.config_type = config_type
+        # Gzip compression. Possible values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.gzip = gzip
+        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
+        # - Match all incoming requests: Set the value to true
+        # - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         self.rule = rule
+        # Rule switch. This parameter is not required when adding a global configuration. Possible values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.rule_enable = rule_enable
+        # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
+        # Rule execution order. The smaller the value, the higher the priority.
         self.sequence = sequence
+        # Version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the effective version of the site configuration, defaulting to version 0.
         self.site_version = site_version
+        # Zstd compression. Value range: - on: Enable. - off: Disable.
         self.zstd = zstd
 
     def validate(self):

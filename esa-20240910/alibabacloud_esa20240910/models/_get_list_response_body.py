@@ -17,17 +17,21 @@ class GetListResponseBody(DaraModel):
         request_id: str = None,
         update_time: str = None,
     ):
-        # 自定义响应页面描述
+        # The description of the custom list.
         self.description = description
-        # 自定义响应页面ID
+        # The ID of the custom list.[](~~2850217~~)
         self.id = id
+        # The items in the custom list, which are displayed as an array.
         self.items = items
+        # The type of the custom list.
         self.kind = kind
-        # 自定义响应页面名称
+        # The name of the custom list.
         # 
         # This parameter is required.
         self.name = name
+        # The request ID.
         self.request_id = request_id
+        # The time when the custom list was last modified.
         self.update_time = update_time
 
     def validate(self):

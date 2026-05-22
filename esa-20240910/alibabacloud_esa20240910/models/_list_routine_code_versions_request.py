@@ -12,10 +12,15 @@ class ListRoutineCodeVersionsRequest(DaraModel):
         page_size: int = None,
         search_key_word: str = None,
     ):
+        # The function name.
+        # 
         # This parameter is required.
         self.name = name
+        # The page number of the returned page. Default value: 1. Valid values: 1 and 2.
         self.page_number = page_number
+        # The number of entries per page. Valid values: 1 to 20.
         self.page_size = page_size
+        # The keyword used for fuzzy search.
         self.search_key_word = search_key_word
 
     def validate(self):

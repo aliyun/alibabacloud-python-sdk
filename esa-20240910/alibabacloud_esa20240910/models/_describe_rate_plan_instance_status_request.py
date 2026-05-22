@@ -9,6 +9,7 @@ class DescribeRatePlanInstanceStatusRequest(DaraModel):
         self,
         instance_id: str = None,
     ):
+        # The instance ID, which can be obtained by calling the [ListUserRatePlanInstances](~~ListUserRatePlanInstances~~) operation.
         self.instance_id = instance_id
 
     def validate(self):

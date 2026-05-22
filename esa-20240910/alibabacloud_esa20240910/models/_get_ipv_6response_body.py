@@ -11,8 +11,13 @@ class GetIPv6ResponseBody(DaraModel):
         region: str = None,
         request_id: str = None,
     ):
+        # Indicates whether IPv6 is enabled. Valid values:
+        # 
+        # *   **on**
+        # *   **off**
         self.enable = enable
         self.region = region
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

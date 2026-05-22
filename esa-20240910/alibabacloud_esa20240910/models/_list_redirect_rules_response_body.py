@@ -17,11 +17,17 @@ class ListRedirectRulesResponseBody(DaraModel):
         total_count: int = None,
         total_page: int = None,
     ):
+        # List of redirect configurations.
         self.configs = configs
+        # Current page number.
         self.page_number = page_number
+        # Page size.
         self.page_size = page_size
+        # Request ID.
         self.request_id = request_id
+        # Total number of items.
         self.total_count = total_count
+        # Total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -97,16 +103,42 @@ class ListRedirectRulesResponseBodyConfigs(DaraModel):
         target_url: str = None,
         type: str = None,
     ):
+        # Configuration ID.
         self.config_id = config_id
+        # Configuration type. Possible values:
+        # - global: Global configuration.
+        # - rule: Rule configuration.
         self.config_type = config_type
+        # Preserve query string. Value range:
+        # - on: enabled.
+        # - off: disabled.
         self.reserve_query_string = reserve_query_string
+        # Rule content, using conditional expressions to match user requests. This parameter does not need to be set when adding a global configuration. There are two usage scenarios:
+        # - Match all incoming requests: Set the value to true
+        # - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         self.rule = rule
+        # Rule switch. This parameter does not need to be set when adding a global configuration. Possible values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.rule_enable = rule_enable
+        # Rule name. This parameter does not need to be set when adding a global configuration.
         self.rule_name = rule_name
+        # Rule execution order. The smaller the value, the higher the priority.
         self.sequence = sequence
+        # Version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the effective version of the site configuration, with the default being version 0.
         self.site_version = site_version
+        # Response status code used by the node to respond to the client with the redirect address. Possible values:
+        # - 301
+        # - 302
+        # - 303
+        # - 307
+        # - 308
         self.status_code = status_code
+        # Target URL after redirection.
         self.target_url = target_url
+        # Redirect type. Possible values:
+        # - static: Static mode.
+        # - dynamic: Dynamic mode.
         self.type = type
 
     def validate(self):

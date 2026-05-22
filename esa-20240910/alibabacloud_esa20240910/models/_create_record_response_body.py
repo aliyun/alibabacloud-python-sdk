@@ -10,7 +10,9 @@ class CreateRecordResponseBody(DaraModel):
         record_id: int = None,
         request_id: str = None,
     ):
+        # The record ID.
         self.record_id = record_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

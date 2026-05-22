@@ -11,6 +11,7 @@ class DeleteSiteRequest(DaraModel):
         site_id: int = None,
     ):
         self.security_token = security_token
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         self.site_id = site_id
 
     def validate(self):

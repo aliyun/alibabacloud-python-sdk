@@ -16,10 +16,19 @@ class DescribeSiteTopDataResponseBody(DaraModel):
         sampling_rate: float = None,
         start_time: str = None,
     ):
+        # The returned data.
         self.data = data
+        # The end of the time range during which data was queried.
+        # 
+        # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.end_time = end_time
+        # The request ID.
         self.request_id = request_id
+        # The sampling rate.
         self.sampling_rate = sampling_rate
+        # The beginning of the time range during which data was queried.
+        # 
+        # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.start_time = start_time
 
     def validate(self):
@@ -81,8 +90,11 @@ class DescribeSiteTopDataResponseBodyData(DaraModel):
         dimension_name: str = None,
         field_name: str = None,
     ):
+        # The returned data.
         self.detail_data = detail_data
+        # The dimension at which data was queried.
         self.dimension_name = dimension_name
+        # The metric name.
         self.field_name = field_name
 
     def validate(self):
@@ -131,7 +143,9 @@ class DescribeSiteTopDataResponseBodyDataDetailData(DaraModel):
         dimension_value: str = None,
         value: Any = None,
     ):
+        # The dimension value.
         self.dimension_value = dimension_value
+        # The queried numeric value.
         self.value = value
 
     def validate(self):

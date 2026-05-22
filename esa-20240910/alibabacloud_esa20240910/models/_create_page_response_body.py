@@ -10,7 +10,9 @@ class CreatePageResponseBody(DaraModel):
         id: int = None,
         request_id: str = None,
     ):
+        # The ID of the custom error page.[](~~2850223~~)
         self.id = id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

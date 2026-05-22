@@ -10,8 +10,12 @@ class GetHttpsApplicationConfigurationRequest(DaraModel):
         config_id: int = None,
         site_id: int = None,
     ):
+        # ConfigId of the configuration, which can be obtained by calling the [listHttpsApplicationConfigurations](https://help.aliyun.com/document_detail/2869087.html) interface.
+        # 
         # This parameter is required.
         self.config_id = config_id
+        # Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+        # 
         # This parameter is required.
         self.site_id = site_id
 

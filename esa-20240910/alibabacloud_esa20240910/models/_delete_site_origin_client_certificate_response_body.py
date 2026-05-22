@@ -12,9 +12,13 @@ class DeleteSiteOriginClientCertificateResponseBody(DaraModel):
         site_id: int = None,
         site_name: str = None,
     ):
+        # The certificate ID on ESA.
         self.id = id
+        # The request ID.
         self.request_id = request_id
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         self.site_id = site_id
+        # The website name.
         self.site_name = site_name
 
     def validate(self):

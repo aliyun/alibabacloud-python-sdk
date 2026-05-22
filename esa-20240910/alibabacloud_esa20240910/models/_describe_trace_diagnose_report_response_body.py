@@ -38,6 +38,7 @@ class DescribeTraceDiagnoseReportResponseBody(DaraModel):
         self.expire_time = expire_time
         self.remain_diagnose_times = remain_diagnose_times
         self.report = report
+        # Id of the request
         self.request_id = request_id
         self.state = state
         self.status = status

@@ -10,8 +10,12 @@ class DeleteOriginPoolRequest(DaraModel):
         id: int = None,
         site_id: int = None,
     ):
+        # The ID of the origin address pool, which can be obtained by calling the [ListOriginPools](https://help.aliyun.com/document_detail/2863947.html) API.
+        # 
         # This parameter is required.
         self.id = id
+        # The site ID, which can be obtained by calling the [ListSites](~~ListSites~~) API.
+        # 
         # This parameter is required.
         self.site_id = site_id
 

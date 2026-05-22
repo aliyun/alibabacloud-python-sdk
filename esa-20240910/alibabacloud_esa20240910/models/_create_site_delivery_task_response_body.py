@@ -12,9 +12,16 @@ class CreateSiteDeliveryTaskResponseBody(DaraModel):
         site_id: int = None,
         task_name: str = None,
     ):
+        # The data center. Valid values:
+        # 
+        # *   cn: the Chinese mainland.
+        # *   oversea: outside the Chinese mainland.
         self.data_center = data_center
+        # The request ID.
         self.request_id = request_id
+        # The website ID.[](~~2850189~~)
         self.site_id = site_id
+        # The name of the delivery task.
         self.task_name = task_name
 
     def validate(self):

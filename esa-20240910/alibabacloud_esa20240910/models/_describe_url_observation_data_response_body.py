@@ -15,9 +15,15 @@ class DescribeUrlObservationDataResponseBody(DaraModel):
         start_time: str = None,
         url_detail_data: List[main_models.DescribeUrlObservationDataResponseBodyUrlDetailData] = None,
     ):
+        # The end of the time range during which data was queried.
+        # 
+        # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. The time must be in UTC.
         self.end_time = end_time
+        # The request ID.
         self.request_id = request_id
+        # The create time. The time is in the yyyy-MM-ddTHH:mm:ssZ format.
         self.start_time = start_time
+        # The objects that are returned.
         self.url_detail_data = url_detail_data
 
     def validate(self):
@@ -79,14 +85,23 @@ class DescribeUrlObservationDataResponseBodyUrlDetailData(DaraModel):
         ttfb: float = None,
         url: str = None,
     ):
+        # Measures the maximum layout mutation score for every unexpected layout change that occurs throughout the life of the page.
         self.cls = cls
+        # The platform of the device.
         self.client_platform = client_platform
+        # The country or region to which the IP address belongs.
         self.country = country
+        # Measures the time between when the page is loaded and when any part of the page\\"s content is rendered on the screen. Unit: ms.
         self.fcp = fcp
+        # Measures the time between when the user first interacts with the page and when the browser is actually able to start processing an event handler in response to that interaction. Unit: ms.
         self.fid = fid
+        # Measures the responsiveness of the page, or how long it takes for the page to respond to user input visibly. Unit: ms.
         self.inp = inp
+        # Reports the rendering time of the largest image or text block visible in the viewport. Unit: ms.
         self.lcp = lcp
+        # This metric measures the time between when a resource initiates a request and when the first byte of the response starts to arrive. Unit: ms.
         self.ttfb = ttfb
+        # The URL of the web page to monitor.
         self.url = url
 
     def validate(self):

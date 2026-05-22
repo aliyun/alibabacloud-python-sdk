@@ -20,17 +20,41 @@ class GetRewriteUrlRuleResponseBody(DaraModel):
         site_version: int = None,
         uri: str = None,
     ):
+        # Configuration ID.
         self.config_id = config_id
+        # Configuration type. Possible values:
+        # - global: Global configuration;
+        # - rule: Rule-based configuration;
         self.config_type = config_type
+        # The rewritten query string.
         self.query_string = query_string
+        # Request ID.
         self.request_id = request_id
+        # Query string rewrite type. Possible values:
+        # 
+        # - static: Static mode.
+        # - dynamic: Dynamic mode.
         self.rewrite_query_string_type = rewrite_query_string_type
+        # URI rewrite type. Possible values:
+        # 
+        # - static: Static mode.
+        # - dynamic: Dynamic mode.
         self.rewrite_uri_type = rewrite_uri_type
+        # Rule content, using conditional expressions to match user requests. This parameter does not need to be set when adding a global configuration. There are two usage scenarios:
+        # - Match all incoming requests: Set the value to true
+        # - Match specific requests: Set the value to a custom expression, e.g., (http.host eq \\"video.example.com\\")
         self.rule = rule
+        # Rule switch. This parameter does not need to be set when adding a global configuration. Possible values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.rule_enable = rule_enable
+        # Rule name. This parameter does not need to be set when adding a global configuration.
         self.rule_name = rule_name
+        # Rule execution order. The smaller the value, the higher the priority for execution.
         self.sequence = sequence
+        # The version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the effective version of the site, defaulting to version 0.
         self.site_version = site_version
+        # The target URI after rewriting.
         self.uri = uri
 
     def validate(self):

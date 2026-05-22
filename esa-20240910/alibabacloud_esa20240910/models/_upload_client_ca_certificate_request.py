@@ -11,9 +11,14 @@ class UploadClientCaCertificateRequest(DaraModel):
         name: str = None,
         site_id: int = None,
     ):
+        # The certificate content.
+        # 
         # This parameter is required.
         self.certificate = certificate
+        # The certificate name.
         self.name = name
+        # The website ID.
+        # 
         # This parameter is required.
         self.site_id = site_id
 

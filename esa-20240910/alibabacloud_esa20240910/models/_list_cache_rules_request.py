@@ -15,13 +15,25 @@ class ListCacheRulesRequest(DaraModel):
         site_id: int = None,
         site_version: int = None,
     ):
+        # Configuration ID.
         self.config_id = config_id
+        # Configuration type, which can be used to query global or rule-based configurations. Possible values:
+        # - global: Query global configuration.
+        # - rule: Query rule-based configuration.
+        # 
+        # This parameter is optional; if not provided, it will not distinguish between global and rule-based configurations.
         self.config_type = config_type
+        # Page number, defaulting to 1 if not provided.
         self.page_number = page_number
+        # Number of items per page, with a maximum of 500. Defaults to 500 if not provided.
         self.page_size = page_size
+        # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
+        # Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+        # 
         # This parameter is required.
         self.site_id = site_id
+        # Site version number. For sites with version management enabled, this parameter can specify the site version for which the configuration takes effect, defaulting to version 0.
         self.site_version = site_version
 
     def validate(self):

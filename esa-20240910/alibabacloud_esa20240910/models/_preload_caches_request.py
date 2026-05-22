@@ -13,8 +13,11 @@ class PreloadCachesRequest(DaraModel):
         headers: Dict[str, str] = None,
         site_id: int = None,
     ):
+        # The files to be prefetched.
         self.content = content
+        # By default, prefetch requests include the Accept-Encoding:gzip header. If you want a prefetch request to include other headers or implement multi-replica prefetch, you can specify a custom prefetch header by configuring the Headers parameter.
         self.headers = headers
+        # The website ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the ID.
         self.site_id = site_id
 
     def validate(self):

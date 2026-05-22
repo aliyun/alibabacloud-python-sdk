@@ -16,10 +16,15 @@ class UpdateEdgeContainerAppResourceReserveRequest(DaraModel):
         forever: bool = None,
         reserve_set: List[main_models.UpdateEdgeContainerAppResourceReserveRequestReserveSet] = None,
     ):
+        # The application ID, which can be obtained by calling the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) operation.
         self.app_id = app_id
+        # The end time of the reservation. The input time is UTC. It takes +8 hours to enter Beijing time. For example, if the current time is 2006-01-02 06:04:05, you need to enter "2006-01-02T14:04:05Z".
         self.duration_time = duration_time
+        # Whether to enable resource reservation.
         self.enable = enable
+        # Whether to permanently enable the reservation. Once it is enabled, you are not allowed to set the reservation deadline.
         self.forever = forever
+        # Reserved resource list.
         self.reserve_set = reserve_set
 
     def validate(self):
@@ -81,8 +86,57 @@ class UpdateEdgeContainerAppResourceReserveRequestReserveSet(DaraModel):
         region: str = None,
         replicas: int = None,
     ):
+        # The ISP. The following types are supported. You do not need to enter the ISP in regions outside the Chinese mainland:
+        # 
+        # *   China Mobile: cmcc
+        # *   China Telecom: chinanet
+        # *   China Unicom: unicom
         self.isp = isp
+        # Information about the region. The Chinese mainland supports the input of regions and special administrative regions, and the regions outside the Chinese mainland support the input of countries. The following is the corresponding parameter mapping:
+        # 
+        # Chinese mainland:
+        # 
+        # *   East China: huadong
+        # *   South China: huanan
+        # *   Central China: huazhong
+        # *   North China: huabei
+        # *   Northwest China: xibei
+        # *   Southwest China: xinan
+        # *   Northeast China: dongbei
+        # 
+        # Special Administrative Regions and overseas:
+        # 
+        # *   Taiwan, China: tw
+        # *   Macau, China: mo
+        # *   Hong Kong, China: hk
+        # *   Japan: jp
+        # *   United States: us
+        # *   Thailand: th
+        # *   Korea: kr
+        # *   Russia: ru
+        # *   Singapore: sg
+        # *   France: fr
+        # *   Spain: es
+        # *   Italy: it
+        # *   Sweden: se
+        # *   UAE: ae
+        # *   Indonesia: id
+        # *   Chile: cl
+        # *   Philippines: ph
+        # *   Malaysia: my
+        # *   Vietnam: vn
+        # *   Argentina: AR
+        # *   Australia: au
+        # *   Brazil: br
+        # *   Colombia: co
+        # *   Germany: de
+        # *   UK: GB
+        # *   Peru: pe
+        # *   Saudi Arabia: sa
+        # *   Netherlands: nl
+        # *   South Africa: za
         self.region = region
+        # The number of container replicas.
         self.replicas = replicas
 
     def validate(self):

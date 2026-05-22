@@ -11,8 +11,11 @@ class PutKvWithHighCapacityResponseBody(DaraModel):
         request_id: str = None,
         value: str = None,
     ):
+        # The length of the value in the key-value pair.
         self.length = length
+        # The request ID.
         self.request_id = request_id
+        # The content of the key. If the content has more than 256 characters in length, the system displays the first 100 and the last 100 characters, and omits the middle part.
         self.value = value
 
     def validate(self):

@@ -12,10 +12,24 @@ class DescribeDDoSBpsListRequest(DaraModel):
         site_id: int = None,
         start_time: str = None,
     ):
+        # Protection area, defaulting to global if not filled. When specified, the values are as follows:
+        # 
+        # - domestic: Mainland China.
+        # 
+        # - overseas: Global (excluding Mainland China).
+        # 
+        # - global: Global.
         self.coverage = coverage
+        # The end time for fetching data. In ISO8601 format, using UTC+0, formatted as: yyyy-MM-ddTHH:mm:ssZ.
+        # 
+        # The end time must be later than the start time, and the span between start and end times should not exceed 31 days.
         self.end_time = end_time
+        # Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) API.
+        # 
         # This parameter is required.
         self.site_id = site_id
+        # The start time for fetching data, in ISO8601 format, using UTC+0, formatted as: yyyy-MM-ddTHH:mm:ssZ.
+        # 
         # This parameter is required.
         self.start_time = start_time
 

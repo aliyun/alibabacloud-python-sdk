@@ -16,14 +16,25 @@ class ListWafRulesRequest(DaraModel):
         site_id: int = None,
         site_version: int = None,
     ):
+        # Query page number, used for pagination.
         self.page_number = page_number
+        # Query page size, used for pagination.
         self.page_size = page_size
+        # WAF rule type. Values:
+        # 
+        # - http_anti_scan: Scan protection
+        # - http_bot: Bots
+        # 
         # This parameter is required.
         self.phase = phase
+        # Query filter conditions.
         self.query_args = query_args
         self.ruleset_id = ruleset_id
+        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+        # 
         # This parameter is required.
         self.site_id = site_id
+        # Site version.
         self.site_version = site_version
 
     def validate(self):
@@ -95,12 +106,19 @@ class ListWafRulesRequestQueryArgs(DaraModel):
         order_by: str = None,
         status: str = None,
     ):
+        # Fuzzy search for values in IP access control.
         self.config_value_like = config_value_like
+        # Whether to reverse the sorting result.
         self.desc = desc
+        # Exact query for WAF rule ID.
         self.id = id
+        # Fuzzy query for WAF rule ID or name.
         self.id_name_like = id_name_like
+        # Fuzzy query for WAF rule name.
         self.name_like = name_like
+        # Sort the returned list by the specified column.
         self.order_by = order_by
+        # Exact query for WAF rule status.
         self.status = status
 
     def validate(self):

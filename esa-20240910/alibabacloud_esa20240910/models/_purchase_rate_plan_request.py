@@ -20,15 +20,36 @@ class PurchaseRatePlanRequest(DaraModel):
         type: str = None,
     ):
         self.amount = amount
+        # Specifies whether to enable auto payment.
         self.auto_pay = auto_pay
+        # Auto-renewal:
+        # - true: Enable auto-renewal.
+        # - false: Disable auto-renewal.
         self.auto_renew = auto_renew
         self.channel = channel
+        # The billing method. Valid values:
+        # 
+        # *   PREPAY: subscription.
+        # *   POSTPAY: pay-as-you-go.
         self.charge_type = charge_type
+        # The service location. Valid values:
+        # 
+        # *   domestic: the Chinese mainland.
+        # *   global: global.
+        # *   overseas: outside the Chinese mainland.
         self.coverage = coverage
+        # Subscription period (in months).
         self.period = period
+        # Package code.
         self.plan_code = plan_code
+        # Package name.
         self.plan_name = plan_name
+        # Site name.
         self.site_name = site_name
+        # The DNS setup option for the website. Valid values:
+        # 
+        # *   NS
+        # *   CNAME
         self.type = type
 
     def validate(self):

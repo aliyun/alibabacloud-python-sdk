@@ -11,7 +11,9 @@ class ListPagesShrinkRequest(DaraModel):
         page_size: int = None,
         query_args_shrink: str = None,
     ):
+        # The page number. Valid values: **1 to 100000**. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Default value: 20.
         self.page_size = page_size
         self.query_args_shrink = query_args_shrink
 

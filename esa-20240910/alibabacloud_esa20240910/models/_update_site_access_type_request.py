@@ -10,8 +10,15 @@ class UpdateSiteAccessTypeRequest(DaraModel):
         access_type: str = None,
         site_id: int = None,
     ):
+        # The new DNS setup of the website. Valid values:
+        # 
+        # *   **NS**
+        # *   **CNAME**
+        # 
         # This parameter is required.
         self.access_type = access_type
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # 
         # This parameter is required.
         self.site_id = site_id
 

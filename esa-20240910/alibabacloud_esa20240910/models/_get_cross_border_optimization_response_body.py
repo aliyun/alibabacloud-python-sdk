@@ -10,7 +10,12 @@ class GetCrossBorderOptimizationResponseBody(DaraModel):
         enable: str = None,
         request_id: str = None,
     ):
+        # Whether to enable Chinese mainland network access optimization. By default, it is disabled. Valid values:
+        # 
+        # *   on
+        # *   off
         self.enable = enable
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

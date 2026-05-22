@@ -12,11 +12,18 @@ class UploadSiteOriginClientCertificateRequest(DaraModel):
         private_key: str = None,
         site_id: int = None,
     ):
+        # The certificate content.
+        # 
         # This parameter is required.
         self.certificate = certificate
+        # The certificate name.
         self.name = name
+        # The private key of the certificate.
+        # 
         # This parameter is required.
         self.private_key = private_key
+        # Site ID.
+        # 
         # This parameter is required.
         self.site_id = site_id
 

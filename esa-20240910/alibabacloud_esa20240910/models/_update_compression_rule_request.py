@@ -17,16 +17,36 @@ class UpdateCompressionRuleRequest(DaraModel):
         site_id: int = None,
         zstd: str = None,
     ):
+        # Brotli compression. Value range:
+        # - on: Enable.
+        # - off: Disable.
         self.brotli = brotli
+        # Configuration ID. It can be obtained by calling the [ListCompressionRules](~~ListCompressionRules~~) interface.
+        # 
         # This parameter is required.
         self.config_id = config_id
+        # Gzip compression. Value range:
+        # - on: Enable.
+        # - off: Disable.
         self.gzip = gzip
+        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
+        # - To match all incoming requests: Set the value to true
+        # - To match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         self.rule = rule
+        # Rule switch. This parameter is not required when adding a global configuration. Value range:
+        # - on: Enable.
+        # - off: Disable.
         self.rule_enable = rule_enable
+        # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
         self.sequence = sequence
+        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+        # 
         # This parameter is required.
         self.site_id = site_id
+        # Zstd compression. Value range:
+        # - on: Enable.
+        # - off: Disable.
         self.zstd = zstd
 
     def validate(self):

@@ -10,8 +10,12 @@ class DeleteOriginClientCertificateRequest(DaraModel):
         id: str = None,
         site_id: int = None,
     ):
+        # The certificate ID.
+        # 
         # This parameter is required.
         self.id = id
+        # The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
+        # 
         # This parameter is required.
         self.site_id = site_id
 

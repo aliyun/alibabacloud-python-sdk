@@ -16,10 +16,19 @@ class DescribeDDoSBpsListResponseBody(DaraModel):
         request_id: str = None,
         start_time: str = None,
     ):
+        # The interval between each piece of data, in seconds.
+        # 
+        # Generated based on the interval between StartTime and EndTime: less than 1 hour, 60s; 1 hour or more but less than 1 day, 300s; 1 day or more but less than a week, 1800s; 1 week or more, 3600s.
         self.data_interval = data_interval
+        # A list of network bandwidth data for each time interval.
         self.data_module = data_module
+        # The end time for fetching data. In ISO8601 format, using UTC+0, formatted as: yyyy-MM-ddTHH:mm:ssZ.
+        # 
+        # The end time must be later than the start time, and the span between start and end times should not exceed 31 days.
         self.end_time = end_time
+        # Request ID.
         self.request_id = request_id
+        # The start time for fetching data. In ISO8601 format, using UTC, formatted as: YYYY-MM-DDThh:mm:ssZ.
         self.start_time = start_time
 
     def validate(self):
@@ -85,12 +94,19 @@ class DescribeDDoSBpsListResponseBodyDataModule(DaraModel):
         total_bps: int = None,
         total_pps: int = None,
     ):
+        # Attack bandwidth, in bps.
         self.attack_bps = attack_bps
+        # Attack PPS.
         self.attack_pps = attack_pps
+        # Normal business bandwidth, in bps.
         self.normal_bps = normal_bps
+        # Normal business PPS.
         self.normal_pps = normal_pps
+        # The timestamp of this data, in ISO8601 format, using UTC+0, formatted as: yyyy-MM-ddTHH:mm:ssZ.
         self.time_stamp = time_stamp
+        # Total bandwidth, in bps.
         self.total_bps = total_bps
+        # Total PPS.
         self.total_pps = total_pps
 
     def validate(self):

@@ -13,7 +13,11 @@ class ListESAIPInfoResponseBody(DaraModel):
         content: List[main_models.ListESAIPInfoResponseBodyContent] = None,
         request_id: str = None,
     ):
+        # The objects that are returned.
         self.content = content
+        # The request ID.
+        # 
+        # Example D03F9502-6653-127C-8A5F-0647197\\*\\*\\*\\*\\*
         self.request_id = request_id
 
     def validate(self):
@@ -56,7 +60,12 @@ class ListESAIPInfoResponseBodyContent(DaraModel):
         cdn_ip: str = None,
         ip: str = None,
     ):
+        # Whether the IP address in the parameter belongs to ESA POPs.
+        # 
+        # *   **true**
+        # *   **false**
         self.cdn_ip = cdn_ip
+        # The IP addresses.
         self.ip = ip
 
     def validate(self):

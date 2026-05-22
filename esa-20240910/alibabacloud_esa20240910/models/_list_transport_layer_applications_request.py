@@ -13,10 +13,21 @@ class ListTransportLayerApplicationsRequest(DaraModel):
         record_name: str = None,
         site_id: int = None,
     ):
+        # Query type for the transport layer application host record, supporting the following 4 types, with exact query as the default.
+        # 
+        # - fuzzy: Fuzzy query.
+        # - exact: Exact query.
+        # - prefix: Prefix match query.
+        # - suffix: Suffix match query.
         self.match_type = match_type
+        # Page number set for pagination. Starting value: 1. Default value: 1.
         self.page_number = page_number
+        # Page size. The maximum value is 500.
         self.page_size = page_size
+        # Host record of the transport layer application.
         self.record_name = record_name
+        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
+        # 
         # This parameter is required.
         self.site_id = site_id
 

@@ -18,12 +18,19 @@ class WafRuleMatch2(DaraModel):
         match_value: Any = None,
         negate: bool = None,
     ):
+        # Transforms input to lowercase to ensure case-insensitivity.
         self.convert_to_lower = convert_to_lower
+        # The details of logical databases.
         self.criteria = criteria
+        # The logical judgment.
         self.logic = logic
+        # The matching operator.
         self.match_operator = match_operator
+        # The matching type.
         self.match_type = match_type
+        # The value of the matching condition.
         self.match_value = match_value
+        # Converts a value or condition to its opposite.
         self.negate = negate
 
     def validate(self):
@@ -101,12 +108,19 @@ class WafRuleMatch2Criteria(DaraModel):
         match_value: Any = None,
         negate: bool = None,
     ):
+        # Transforms input to lowercase to ensure case-insensitivity.
         self.convert_to_lower = convert_to_lower
+        # The details of logical databases.
         self.criteria = criteria
+        # The logical judgment.
         self.logic = logic
+        # The matching operator.
         self.match_operator = match_operator
+        # The matching type.
         self.match_type = match_type
+        # The value of the matching condition.
         self.match_value = match_value
+        # Converts a value or condition to its opposite.
         self.negate = negate
 
     def validate(self):
@@ -184,12 +198,19 @@ class WafRuleMatch2CriteriaCriteria(DaraModel):
         match_value: Any = None,
         negate: bool = None,
     ):
+        # Transforms input to lowercase to ensure case-insensitivity.
         self.convert_to_lower = convert_to_lower
+        # The details of logical databases.
         self.criteria = criteria
+        # The logical judgment.
         self.logic = logic
+        # The matching operator.
         self.match_operator = match_operator
+        # The matching type.
         self.match_type = match_type
+        # The value of the matching condition.
         self.match_value = match_value
+        # Converts a value or condition to its opposite.
         self.negate = negate
 
     def validate(self):
@@ -265,10 +286,15 @@ class WafRuleMatch2CriteriaCriteriaCriteria(DaraModel):
         match_value: Any = None,
         negate: bool = None,
     ):
+        # Transforms input to lowercase to ensure case-insensitivity.
         self.convert_to_lower = convert_to_lower
+        # The matching operator.
         self.match_operator = match_operator
+        # The matching type.
         self.match_type = match_type
+        # The value of the matching condition.
         self.match_value = match_value
+        # Converts a value or condition to its opposite.
         self.negate = negate
 
     def validate(self):

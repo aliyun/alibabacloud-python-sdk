@@ -13,11 +13,17 @@ class UpdateScheduledPreloadExecutionRequest(DaraModel):
         slice_len: int = None,
         start_time: str = None,
     ):
+        # The end time of the prefetch plan.
         self.end_time = end_time
+        # The ID of the prefetch plan.
+        # 
         # This parameter is required.
         self.id = id
+        # The time interval between each batch execution. Unit: seconds.
         self.interval = interval
+        # The number of URLs prefetched in each batch.
         self.slice_len = slice_len
+        # The start time of the prefetch plan.
         self.start_time = start_time
 
     def validate(self):

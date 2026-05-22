@@ -10,7 +10,9 @@ class CommitRoutineStagingCodeResponseBody(DaraModel):
         code_version: str = None,
         request_id: str = None,
     ):
+        # The version number of the newly generated code.
         self.code_version = code_version
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

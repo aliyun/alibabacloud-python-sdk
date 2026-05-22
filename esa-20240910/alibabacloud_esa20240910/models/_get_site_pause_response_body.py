@@ -10,7 +10,12 @@ class GetSitePauseResponseBody(DaraModel):
         paused: bool = None,
         request_id: str = None,
     ):
+        # Indicates whether ESA is paused on the website. Valid values:
+        # 
+        # *   true
+        # *   false
         self.paused = paused
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

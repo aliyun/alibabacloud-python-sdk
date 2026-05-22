@@ -9,6 +9,7 @@ class ResetScheduledPreloadJobRequest(DaraModel):
         self,
         id: str = None,
     ):
+        # The ID of the scheduled prefetch task.
         self.id = id
 
     def validate(self):

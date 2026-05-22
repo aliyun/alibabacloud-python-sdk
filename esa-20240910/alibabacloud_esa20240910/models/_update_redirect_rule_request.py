@@ -18,17 +18,43 @@ class UpdateRedirectRuleRequest(DaraModel):
         target_url: str = None,
         type: str = None,
     ):
+        # Configuration ID. It can be obtained by calling the [ListRedirectRules](https://help.aliyun.com/document_detail/2867474.html) interface.
+        # 
         # This parameter is required.
         self.config_id = config_id
+        # Preserve query string. Value range:
+        # - on: Enable.
+        # - off: Disable.
         self.reserve_query_string = reserve_query_string
+        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
+        # - Match all incoming requests: Set the value to true
+        # - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         self.rule = rule
+        # Rule switch. This parameter is not required when adding a global configuration. Value range:
+        # - on: Enable.
+        # - off: Disable.
         self.rule_enable = rule_enable
+        # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
         self.sequence = sequence
+        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+        # 
         # This parameter is required.
         self.site_id = site_id
+        # The response status code used by the node to respond with the redirect address to the client. Value range:
+        # 
+        # - 301
+        # - 302
+        # - 303
+        # - 307
+        # - 308
         self.status_code = status_code
+        # The target URL after redirection.
         self.target_url = target_url
+        # Redirect type. Value range:
+        # 
+        # - static: Static mode.
+        # - dynamic: Dynamic mode.
         self.type = type
 
     def validate(self):

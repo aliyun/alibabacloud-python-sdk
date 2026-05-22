@@ -12,9 +12,19 @@ class ListSiteDeliveryTasksRequest(DaraModel):
         page_size: int = None,
         site_id: int = None,
     ):
+        # The log category. Valid values:
+        # 
+        # *   dcdn_log_access_l1 (default): access logs.
+        # *   dcdn_log_er: Edge Routine logs.
+        # *   dcdn_log_waf: firewall logs.
+        # *   dcdn_log_ipa: TCP/UDP proxy logs.
         self.business_type = business_type
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Default value: 20.
         self.page_size = page_size
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # 
         # This parameter is required.
         self.site_id = site_id
 

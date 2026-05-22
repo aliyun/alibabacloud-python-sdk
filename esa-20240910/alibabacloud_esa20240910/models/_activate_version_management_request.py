@@ -9,6 +9,8 @@ class ActivateVersionManagementRequest(DaraModel):
         self,
         site_id: int = None,
     ):
+        # Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) API.
+        # 
         # This parameter is required.
         self.site_id = site_id
 

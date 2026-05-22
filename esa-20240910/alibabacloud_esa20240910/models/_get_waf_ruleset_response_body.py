@@ -19,20 +19,25 @@ class GetWafRulesetResponseBody(DaraModel):
         status: str = None,
         update_time: str = None,
     ):
-        # 自定义响应页面ID
+        # Ruleset ID.
         self.id = id
-        # 自定义响应页面名称
+        # Ruleset name.
         # 
         # This parameter is required.
         self.name = name
-        # 自定义响应页面内容类型
+        # The WAF operation phase applicable to the ruleset.
         # 
         # This parameter is required.
         self.phase = phase
+        # Request ID.
         self.request_id = request_id
+        # List of rule configurations in the ruleset.
         self.rules = rules
+        # Shared configurations for the rules in the ruleset.
         self.shared = shared
+        # Ruleset status.
         self.status = status
+        # The last modified time of the ruleset.
         self.update_time = update_time
 
     def validate(self):

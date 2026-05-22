@@ -18,19 +18,49 @@ class CreateRedirectRuleRequest(DaraModel):
         target_url: str = None,
         type: str = None,
     ):
+        # Preserve query string. Value range:
+        # 
+        # - on: Enabled.
+        # - off: Disabled.
+        # 
         # This parameter is required.
         self.reserve_query_string = reserve_query_string
+        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
+        # - To match all incoming requests: Set the value to true
+        # - To match specific requests: Set the value to a custom expression, e.g., (http.host eq \\"video.example.com\\")
         self.rule = rule
+        # Rule switch. This parameter is not required when adding a global configuration. Value range:
+        # - on: Enabled.
+        # - off: Disabled.
         self.rule_enable = rule_enable
+        # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
         self.sequence = sequence
+        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+        # 
         # This parameter is required.
         self.site_id = site_id
+        # Version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the version of the site for which the configuration will take effect. The default is version 0.
         self.site_version = site_version
+        # Response status code used by the node to respond to the client with the redirect address. Value range:
+        # 
+        # - 301
+        # - 302
+        # - 303
+        # - 307
+        # - 308
+        # 
         # This parameter is required.
         self.status_code = status_code
+        # Target URL after redirection.
+        # 
         # This parameter is required.
         self.target_url = target_url
+        # Redirect type. Value range:
+        # 
+        # - static: Static mode.
+        # - dynamic: Dynamic mode.
+        # 
         # This parameter is required.
         self.type = type
 

@@ -16,10 +16,15 @@ class ListEdgeContainerAppRecordsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The details about the associated domain names.
         self.records = records
+        # The request ID.
         self.request_id = request_id
+        # The number of domain names that are associated with the specified application.
         self.total_count = total_count
 
     def validate(self):
@@ -87,14 +92,23 @@ class ListEdgeContainerAppRecordsResponseBodyRecords(DaraModel):
         site_id: int = None,
         update_time: str = None,
     ):
+        # The application ID.
         self.app_id = app_id
+        # The CNAME of the associated domain name.
         self.cname = cname
+        # The configuration ID of the associated domain name.
         self.config_id = config_id
+        # The time when the domain name was added. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
         self.create_time = create_time
+        # The record ID of the associated domain name.
         self.record_id = record_id
+        # The associated domain name.
         self.record_name = record_name
+        # The scheduling domain ID of the associated domain name.
         self.schemd_id = schemd_id
+        # The website ID.
         self.site_id = site_id
+        # The time when the scheduling domain ID or CNAME was last modified. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
         self.update_time = update_time
 
     def validate(self):

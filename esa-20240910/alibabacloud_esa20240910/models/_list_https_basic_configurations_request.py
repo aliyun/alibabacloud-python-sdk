@@ -14,11 +14,22 @@ class ListHttpsBasicConfigurationsRequest(DaraModel):
         rule_name: str = None,
         site_id: int = None,
     ):
+        # Configuration ID.
         self.config_id = config_id
+        # Configuration type, which can be used to query global or rule configurations. Value range:
+        # - global: Query global configuration.
+        # - rule: Query rule configuration.
+        # 
+        # This parameter is optional. If not provided, it does not distinguish between global and rule configurations.
         self.config_type = config_type
+        # Page number, default is 1 if not provided.
         self.page_number = page_number
+        # Number of items per page, maximum is 500, default is 500 if not provided.
         self.page_size = page_size
+        # Rule name, which can be used to find the rule with the specified name.
         self.rule_name = rule_name
+        # Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+        # 
         # This parameter is required.
         self.site_id = site_id
 

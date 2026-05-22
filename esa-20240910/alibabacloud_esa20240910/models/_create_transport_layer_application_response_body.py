@@ -10,7 +10,9 @@ class CreateTransportLayerApplicationResponseBody(DaraModel):
         application_id: int = None,
         request_id: str = None,
     ):
+        # Layer 4 application ID
         self.application_id = application_id
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):

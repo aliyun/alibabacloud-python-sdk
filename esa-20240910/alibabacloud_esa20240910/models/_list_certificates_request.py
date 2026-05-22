@@ -13,11 +13,17 @@ class ListCertificatesRequest(DaraModel):
         site_id: int = None,
         valid_only: bool = None,
     ):
+        # The keyword that is used for the search.
         self.keyword = keyword
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The website ID, which can be obtained by calling the [ListSites](~~ListSites~~) operation.
+        # 
         # This parameter is required.
         self.site_id = site_id
+        # Specifies whether to return only valid certificates.
         self.valid_only = valid_only
 
     def validate(self):

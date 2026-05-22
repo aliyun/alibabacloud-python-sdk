@@ -9,6 +9,8 @@ class CheckSiteNameRequest(DaraModel):
         self,
         site_name: str = None,
     ):
+        # The website name.
+        # 
         # This parameter is required.
         self.site_name = site_name
 

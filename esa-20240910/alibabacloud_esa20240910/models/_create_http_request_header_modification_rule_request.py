@@ -18,14 +18,26 @@ class CreateHttpRequestHeaderModificationRuleRequest(DaraModel):
         site_id: int = None,
         site_version: int = None,
     ):
+        # Modify request headers, supporting add, delete, and modify operations.
+        # 
         # This parameter is required.
         self.request_header_modification = request_header_modification
+        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
+        # - To match all incoming requests: Set the value to true
+        # - To match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         self.rule = rule
+        # Rule switch. This parameter is not required when adding a global configuration. Possible values:
+        # - on: Enable.
+        # - off: Disable.
         self.rule_enable = rule_enable
+        # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
         self.sequence = sequence
+        # Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+        # 
         # This parameter is required.
         self.site_id = site_id
+        # Version number of the site configuration. For sites with version management enabled, this parameter can specify the version to which the configuration applies, defaulting to version 0.
         self.site_version = site_version
 
     def validate(self):
@@ -100,11 +112,20 @@ class CreateHttpRequestHeaderModificationRuleRequestRequestHeaderModification(Da
         type: str = None,
         value: str = None,
     ):
+        # Request header name.
+        # 
         # This parameter is required.
         self.name = name
+        # Operation type. Possible values:
+        # 
+        # - add: Add.
+        # - del: Delete
+        # - modify: Modify.
+        # 
         # This parameter is required.
         self.operation = operation
         self.type = type
+        # Request header value.
         self.value = value
 
     def validate(self):

@@ -9,6 +9,7 @@ class HttpDeliveryHeaderParamValue(DaraModel):
         self,
         static_value: str = None,
     ):
+        # The static variable.
         self.static_value = static_value
 
     def validate(self):

@@ -10,8 +10,12 @@ class BatchPutKvShrinkRequest(DaraModel):
         kv_list_shrink: str = None,
         namespace: str = None,
     ):
+        # The key-value pairs that you want to configure at a time. The total size can be up to 2 MB (2 × 1000 × 1000).
+        # 
         # This parameter is required.
         self.kv_list_shrink = kv_list_shrink
+        # The name of the namespace that you specify when you call the [CreateKvNamespace](https://help.aliyun.com/document_detail/2850317.html) operation.
+        # 
         # This parameter is required.
         self.namespace = namespace
 

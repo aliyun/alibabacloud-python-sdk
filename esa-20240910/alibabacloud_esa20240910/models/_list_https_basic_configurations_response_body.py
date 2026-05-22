@@ -17,11 +17,17 @@ class ListHttpsBasicConfigurationsResponseBody(DaraModel):
         total_count: int = None,
         total_page: int = None,
     ):
+        # Response body configuration.
         self.configs = configs
+        # Current page number.
         self.page_number = page_number
+        # Page size.
         self.page_size = page_size
+        # Request ID.
         self.request_id = request_id
+        # Total number of records.
         self.total_count = total_count
+        # Total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -102,21 +108,62 @@ class ListHttpsBasicConfigurationsResponseBodyConfigs(DaraModel):
         tls_12: str = None,
         tls_13: str = None,
     ):
+        # Custom ciphersuite, indicating the specific encryption algorithm selected when CiphersuiteGroup is set to custom.
         self.ciphersuite = ciphersuite
+        # Ciphersuite group, defaults to enabling all ciphersuites. Value range:
+        # - all: all ciphersuites.
+        # - strict: strong ciphersuites.
+        # - custom: custom ciphersuites.
         self.ciphersuite_group = ciphersuite_group
+        # Configuration ID.
         self.config_id = config_id
+        # Configuration type, which can be used to query global or rule configurations. Value range:
+        # - global: Query global configuration.
+        # - rule: Query rule configuration.
         self.config_type = config_type
+        # Whether to enable HTTP2, default is on. Value range:
+        # - on: enabled.
+        # - off: disabled.
         self.http_2 = http_2
+        # Whether to enable HTTP3, default is on. Value range:
+        # - on: enabled.
+        # - off: disabled.
         self.http_3 = http_3
+        # Whether to enable HTTPS, default is enabled. Value range:
+        # - on: Enable.
+        # - off: Disable.
         self.https = https
+        # Whether to enable OCSP, default is off. Value range:
+        # - on: enabled.
+        # - off: disabled.
         self.ocsp_stapling = ocsp_stapling
+        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
+        # - Match all incoming requests: Set the value to true.
+        # - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         self.rule = rule
+        # Rule switch. This parameter is not required when adding a global configuration. Value range:
+        # - on: Enable.
+        # - off: Disable.
         self.rule_enable = rule_enable
+        # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
+        # Rule execution order. The smaller the value, the higher the priority.
         self.sequence = sequence
+        # Whether to enable TLS1.0, default is disabled. Value range:
+        # - on: Enable.
+        # - off: Disable.
         self.tls_10 = tls_10
+        # Whether to enable TLS1.1, default is disabled. Value range:
+        # - on: Enable.
+        # - off: Disable.
         self.tls_11 = tls_11
+        # Whether to enable TLS1.2, default is disabled. Value range:
+        # - on: Enable.
+        # - off: Disable.
         self.tls_12 = tls_12
+        # Whether to enable TLS1.3, default is disabled. Value range:
+        # - on: Enable.
+        # - off: Disable.
         self.tls_13 = tls_13
 
     def validate(self):

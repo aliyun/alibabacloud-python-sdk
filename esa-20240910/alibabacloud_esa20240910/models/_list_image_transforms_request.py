@@ -15,13 +15,25 @@ class ListImageTransformsRequest(DaraModel):
         site_id: int = None,
         site_version: int = None,
     ):
+        # Configuration ID. Can be obtained by calling the [ListImageTransforms](https://help.aliyun.com/document_detail/2869056.html) interface.
         self.config_id = config_id
+        # Configuration type, which can be used to query global or rule configurations. Possible values:
+        # - global: Query global configuration;
+        # - rule: Query rule configuration;
+        # 
+        # This parameter is optional. If not provided, it will not distinguish between global and rule configurations.
         self.config_type = config_type
+        # Page number. The default value is 1 if not provided.
         self.page_number = page_number
+        # Number of items per page. The maximum value is 500, and the default value is 500 if not provided.
         self.page_size = page_size
+        # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
+        # Site ID. Can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+        # 
         # This parameter is required.
         self.site_id = site_id
+        # Site version number. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration takes effect. The default value is version 0.
         self.site_version = site_version
 
     def validate(self):

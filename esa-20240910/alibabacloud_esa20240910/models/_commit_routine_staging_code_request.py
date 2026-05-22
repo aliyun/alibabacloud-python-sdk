@@ -10,7 +10,10 @@ class CommitRoutineStagingCodeRequest(DaraModel):
         code_description: str = None,
         name: str = None,
     ):
+        # The description of the code version.
         self.code_description = code_description
+        # The routine name.
+        # 
         # This parameter is required.
         self.name = name
 

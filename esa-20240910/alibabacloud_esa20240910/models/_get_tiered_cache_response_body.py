@@ -10,7 +10,13 @@ class GetTieredCacheResponseBody(DaraModel):
         cache_architecture_mode: str = None,
         request_id: str = None,
     ):
+        # Multi-level cache architecture mode. Possible values:
+        # - edge: Edge cache layer.
+        # - edge_smart: Edge cache layer + intelligent cache layer.
+        # - edge_regional: Edge cache layer + regional cache layer.
+        # - edge_regional_smart: Edge cache layer + regional cache layer + intelligent cache layer.
         self.cache_architecture_mode = cache_architecture_mode
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):

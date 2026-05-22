@@ -12,9 +12,13 @@ class DeleteClientCaCertificateResponseBody(DaraModel):
         site_id: int = None,
         site_name: str = None,
     ):
+        # The certificate ID.
         self.id = id
+        # The request ID.
         self.request_id = request_id
+        # The website ID.
         self.site_id = site_id
+        # The website name.
         self.site_name = site_name
 
     def validate(self):

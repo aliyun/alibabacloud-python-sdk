@@ -9,6 +9,8 @@ class GetIPv6Request(DaraModel):
         self,
         site_id: int = None,
     ):
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # 
         # This parameter is required.
         self.site_id = site_id
 

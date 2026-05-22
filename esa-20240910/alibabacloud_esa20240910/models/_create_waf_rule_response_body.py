@@ -11,8 +11,11 @@ class CreateWafRuleResponseBody(DaraModel):
         request_id: str = None,
         ruleset_id: int = None,
     ):
+        # The ID of the WAF rule, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2878257.html) API.
         self.id = id
+        # Request ID.
         self.request_id = request_id
+        # ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2878359.html) interface.
         self.ruleset_id = ruleset_id
 
     def validate(self):

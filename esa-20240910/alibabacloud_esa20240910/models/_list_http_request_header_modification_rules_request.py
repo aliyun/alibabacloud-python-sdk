@@ -15,13 +15,23 @@ class ListHttpRequestHeaderModificationRulesRequest(DaraModel):
         site_id: int = None,
         site_version: int = None,
     ):
+        # Configuration ID, which can be obtained by calling the [ListHttpRequestHeaderModificationRules](https://help.aliyun.com/document_detail/2867483.html) API.
         self.config_id = config_id
+        # Configuration type, which can be used to query global or rule configurations. Possible values:
+        # - global: Query global configuration;
+        # - rule: Query rule configuration;
         self.config_type = config_type
+        # Page number, defaulting to 1 if not provided.
         self.page_number = page_number
+        # Number of items per page, with a maximum of 500. Defaults to 500 if not provided.
         self.page_size = page_size
+        # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
+        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
+        # 
         # This parameter is required.
         self.site_id = site_id
+        # Version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the effective version of the configuration, defaulting to version 0.
         self.site_version = site_version
 
     def validate(self):

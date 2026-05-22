@@ -15,14 +15,25 @@ class ListWafRulesShrinkRequest(DaraModel):
         site_id: int = None,
         site_version: int = None,
     ):
+        # Query page number, used for pagination.
         self.page_number = page_number
+        # Query page size, used for pagination.
         self.page_size = page_size
+        # WAF rule type. Values:
+        # 
+        # - http_anti_scan: Scan protection
+        # - http_bot: Bots
+        # 
         # This parameter is required.
         self.phase = phase
+        # Query filter conditions.
         self.query_args_shrink = query_args_shrink
         self.ruleset_id = ruleset_id
+        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+        # 
         # This parameter is required.
         self.site_id = site_id
+        # Site version.
         self.site_version = site_version
 
     def validate(self):

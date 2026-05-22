@@ -11,8 +11,11 @@ class DescribeCustomScenePoliciesRequest(DaraModel):
         page_size: int = None,
         policy_id: int = None,
     ):
+        # The number of the page to return. Valid values: **1 to 100000**.
         self.page_number = page_number
+        # The number of entries per page. Default value: **10**. Valid values: **5**, **10**, or **20**.
         self.page_size = page_size
+        # The rule ID.
         self.policy_id = policy_id
 
     def validate(self):

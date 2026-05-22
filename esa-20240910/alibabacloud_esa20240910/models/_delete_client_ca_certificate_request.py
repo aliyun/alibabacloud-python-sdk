@@ -10,8 +10,12 @@ class DeleteClientCaCertificateRequest(DaraModel):
         id: str = None,
         site_id: int = None,
     ):
+        # The certificate ID.
+        # 
         # This parameter is required.
         self.id = id
+        # The website ID.
+        # 
         # This parameter is required.
         self.site_id = site_id
 

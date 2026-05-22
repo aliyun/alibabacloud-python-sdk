@@ -21,16 +21,37 @@ class ListWafManagedRulesRequest(DaraModel):
         query_args: main_models.ListWafManagedRulesRequestQueryArgs = None,
         site_id: int = None,
     ):
+        # Attack type of the vulnerability protection event. Values:
+        # - SQL injection
+        # - Cross-site scripting
+        # - Code execution
+        # - CRLF
+        # - Local file inclusion
+        # - Remote file inclusion
+        # - Webshell
+        # - Cross-site request forgery
+        # - Other
+        # - SEMA
+        # 
         # This parameter is required.
         self.attack_type = attack_type
+        # ID of the WAF rule.
         self.id = id
         self.instance_id = instance_id
+        # Language type, which will be used to return the response. Value range:
+        # 
+        # - **en**: English.
+        # - **zh**: Chinese.
         self.language = language
         self.managed_ruleset = managed_ruleset
+        # Query page number.
         self.page_number = page_number
+        # Query page size.
         self.page_size = page_size
         self.protection_level = protection_level
+        # Query conditions.
         self.query_args = query_args
+        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
         self.site_id = site_id
 
     def validate(self):
@@ -120,9 +141,13 @@ class ListWafManagedRulesRequestQueryArgs(DaraModel):
         protection_levels: List[int] = None,
         status: str = None,
     ):
+        # Action.
         self.action = action
+        # Fuzzy search for rule ID or rule name.
         self.id_name_like = id_name_like
+        # List of rule protection levels.
         self.protection_levels = protection_levels
+        # Status.
         self.status = status
 
     def validate(self):

@@ -14,11 +14,24 @@ class ListOriginPoolsRequest(DaraModel):
         page_size: int = None,
         site_id: int = None,
     ):
+        # Type of name match query, supporting the following two types, with exact match as the default.
+        # 
+        # - fuzzy: Fuzzy query.
+        # - exact: Exact query.
         self.match_type = match_type
+        # Name of the origin pool.
         self.name = name
+        # Sorting, supports ascending and descending order by ID, default is descending by ID, which is positively correlated with creation time.
+        # 
+        # - -id: Sort by ID in descending order.
+        # - id: Sort by ID in ascending order.
         self.order_by = order_by
+        # Page number, default value is 1.
         self.page_number = page_number
+        # Page size, an integer greater than 0, with a maximum of 500. If the value exceeds 500, it will be set to 500.
         self.page_size = page_size
+        # Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) API.
+        # 
         # This parameter is required.
         self.site_id = site_id
 

@@ -10,7 +10,9 @@ class CreateUrlObservationResponseBody(DaraModel):
         config_id: int = None,
         request_id: str = None,
     ):
+        # The configuration ID.
         self.config_id = config_id
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):

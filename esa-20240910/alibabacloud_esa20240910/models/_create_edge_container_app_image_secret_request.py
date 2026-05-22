@@ -12,12 +12,20 @@ class CreateEdgeContainerAppImageSecretRequest(DaraModel):
         registry: str = None,
         username: str = None,
     ):
+        # Application ID, which can be obtained using the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) interface.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # Image repository password.
+        # 
         # This parameter is required.
         self.password = password
+        # Image repository address.
+        # 
         # This parameter is required.
         self.registry = registry
+        # Image repository username.
+        # 
         # This parameter is required.
         self.username = username
 

@@ -20,17 +20,44 @@ class GetRedirectRuleResponseBody(DaraModel):
         target_url: str = None,
         type: str = None,
     ):
+        # Configuration ID.
         self.config_id = config_id
+        # Configuration type. Possible values:
+        # - global: Global configuration.
+        # - rule: Rule-based configuration.
         self.config_type = config_type
+        # Request ID.
         self.request_id = request_id
+        # Preserve query string. Possible values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.reserve_query_string = reserve_query_string
+        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
+        # - Match all incoming requests: Set the value to true
+        # - Match specific requests: Set the value to a custom expression, e.g., (http.host eq \\"video.example.com\\")
         self.rule = rule
+        # Rule switch. This parameter is not required when adding a global configuration. Possible values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.rule_enable = rule_enable
+        # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
+        # Rule execution order. The smaller the value, the higher the priority.
         self.sequence = sequence
+        # The version number of the site configuration. For sites with version management enabled, this parameter can specify the effective version of the site, defaulting to version 0.
         self.site_version = site_version
+        # Response status code used by the node to respond to the client with the redirect address. Possible values:
+        # - 301
+        # - 302
+        # - 303
+        # - 307
+        # - 308
         self.status_code = status_code
+        # Target URL after redirection.
         self.target_url = target_url
+        # Redirect type. Possible values:
+        # - static: Static mode.
+        # - dynamic: Dynamic mode.
         self.type = type
 
     def validate(self):

@@ -9,6 +9,7 @@ class UpdateCacheRuleResponseBody(DaraModel):
         self,
         request_id: str = None,
     ):
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):

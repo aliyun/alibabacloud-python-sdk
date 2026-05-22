@@ -12,12 +12,20 @@ class CreateRoutineCodeDeploymentShrinkRequest(DaraModel):
         name: str = None,
         strategy: str = None,
     ):
+        # The configuration list of phased release version numbers. A maximum of two versions are supported, and the sum of the total proportions is equal to 100.
+        # 
         # This parameter is required.
         self.code_versions_shrink = code_versions_shrink
+        # The name of the environment. Only supports test environment `staging` or production environment `production`.
+        # 
         # This parameter is required.
         self.env = env
+        # The function name.
+        # 
         # This parameter is required.
         self.name = name
+        # The deployment policy. Valid value: percentage.
+        # 
         # This parameter is required.
         self.strategy = strategy
 

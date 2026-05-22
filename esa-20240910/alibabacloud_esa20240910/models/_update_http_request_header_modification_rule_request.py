@@ -18,13 +18,25 @@ class UpdateHttpRequestHeaderModificationRuleRequest(DaraModel):
         sequence: int = None,
         site_id: int = None,
     ):
+        # Configuration ID. It can be obtained by calling the [ListHttpRequestHeaderModificationRules](https://help.aliyun.com/document_detail/2867483.html) API.
+        # 
         # This parameter is required.
         self.config_id = config_id
+        # Modify request headers, supporting add, delete, and modify operations.
         self.request_header_modification = request_header_modification
+        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
+        # - To match all incoming requests: Set the value to true
+        # - To match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         self.rule = rule
+        # Rule switch. This parameter is not required when adding a global configuration. Possible values:
+        # - on: Enable.
+        # - off: Disable.
         self.rule_enable = rule_enable
+        # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
         self.sequence = sequence
+        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
+        # 
         # This parameter is required.
         self.site_id = site_id
 
@@ -100,11 +112,20 @@ class UpdateHttpRequestHeaderModificationRuleRequestRequestHeaderModification(Da
         type: str = None,
         value: str = None,
     ):
+        # Request header name.
+        # 
         # This parameter is required.
         self.name = name
+        # Operation method. Possible values:
+        # 
+        # - add: Add.
+        # - del: Delete
+        # - modify: Modify.
+        # 
         # This parameter is required.
         self.operation = operation
         self.type = type
+        # Request header value.
         self.value = value
 
     def validate(self):

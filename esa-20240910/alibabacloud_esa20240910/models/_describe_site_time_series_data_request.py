@@ -16,11 +16,27 @@ class DescribeSiteTimeSeriesDataRequest(DaraModel):
         site_id: str = None,
         start_time: str = None,
     ):
+        # The end time for obtaining data.
+        # 
+        # The date format follows ISO8601 notation and uses UTC+0 time, in the format yyyy-MM-ddTHH:mm:ssZ.
+        # 
+        # > The end time must be later than the start time.
         self.end_time = end_time
+        # Query metrics.
+        # 
         # This parameter is required.
         self.fields = fields
+        # The time granularity for querying data, in seconds.
+        # 
+        # Depending on the maximum time span of a single query, this parameter supports values of 60 (1 minute), 300 (5 minutes), 3600 (1 hour), and 86400 (1 day). For details, see the **Supported Query Time Granularities**.
         self.interval = interval
+        # Site ID. Obtain the site ID by calling the [ListSites](~~ListSites~~) interface.
+        # 
+        # If this parameter is empty, user-level data will be queried.
         self.site_id = site_id
+        # The start time for obtaining data.
+        # 
+        # The date format follows ISO8601 notation and uses UTC+0 time, in the format yyyy-MM-ddTHH:mm:ssZ.
         self.start_time = start_time
 
     def validate(self):
@@ -81,7 +97,11 @@ class DescribeSiteTimeSeriesDataRequestFields(DaraModel):
         dimension: List[str] = None,
         field_name: str = None,
     ):
+        # Query dimension.
         self.dimension = dimension
+        # Query metric value.
+        # 
+        # > For specific dimensions, see [Data Analysis Field Description](https://help.aliyun.com/document_detail/2878520.html).
         self.field_name = field_name
 
     def validate(self):

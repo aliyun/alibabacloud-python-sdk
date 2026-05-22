@@ -10,6 +10,8 @@ class DeleteKeylessServerRequest(DaraModel):
         id: str = None,
         site_id: int = None,
     ):
+        # Keyless server ID。
+        # 
         # This parameter is required.
         self.id = id
         # This parameter is required.

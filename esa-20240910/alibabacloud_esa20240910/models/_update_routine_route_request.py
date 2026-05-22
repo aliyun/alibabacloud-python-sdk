@@ -18,15 +18,35 @@ class UpdateRoutineRouteRequest(DaraModel):
         site_id: int = None,
         timeout: str = None,
     ):
+        # Bypass mode. Valid values:
+        # 
+        # *   on
+        # *   off
         self.bypass = bypass
+        # The ID of the configuration.
+        # 
         # This parameter is required.
         self.config_id = config_id
+        # The exception origin switch. After you turn on this switch, if a function exception occurs, such as CPU usage exceeding the upper limit, requests are sent to the origin. Valid values:
+        # 
+        # *   on
+        # *   off
         self.fallback = fallback
+        # The routing switch. Valid values:
+        # 
+        # *   on
+        # *   off
         self.route_enable = route_enable
+        # The name of the route.
         self.route_name = route_name
+        # The name of the function.
         self.routine_name = routine_name
+        # The content of the rule.
         self.rule = rule
+        # The order in which the rule is executed.
         self.sequence = sequence
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # 
         # This parameter is required.
         self.site_id = site_id
         self.timeout = timeout

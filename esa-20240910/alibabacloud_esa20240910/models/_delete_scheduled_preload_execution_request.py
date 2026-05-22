@@ -9,6 +9,8 @@ class DeleteScheduledPreloadExecutionRequest(DaraModel):
         self,
         id: str = None,
     ):
+        # The ID of the prefetch plan.
+        # 
         # This parameter is required.
         self.id = id
 

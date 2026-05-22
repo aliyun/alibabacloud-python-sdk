@@ -11,9 +11,14 @@ class PublishRoutineCodeVersionRequest(DaraModel):
         env: str = None,
         name: str = None,
     ):
+        # The code version to be released.
         self.code_version = code_version
+        # The environment name.
+        # 
         # This parameter is required.
         self.env = env
+        # The routine name.
+        # 
         # This parameter is required.
         self.name = name
 

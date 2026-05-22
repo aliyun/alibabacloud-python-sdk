@@ -30,28 +30,57 @@ class CreateOriginRuleRequest(DaraModel):
         site_id: int = None,
         site_version: int = None,
     ):
+        # Rewrite the DNS resolution record for the origin request.
         self.dns_record = dns_record
         self.follow_302enable = follow_302enable
         self.follow_302max_tries = follow_302max_tries
         self.follow_302retain_args = follow_302retain_args
         self.follow_302retain_header = follow_302retain_header
         self.follow_302target_host = follow_302target_host
+        # The HOST carried in the origin request.
         self.origin_host = origin_host
+        # Port of the origin server when using the HTTP protocol for origin requests.
         self.origin_http_port = origin_http_port
+        # Port of the origin server when using the HTTPS protocol for origin requests.
         self.origin_https_port = origin_https_port
+        # mTLS switch. Possible values:
+        # - on: Enable.
+        # - off: Disable.
         self.origin_mtls = origin_mtls
         self.origin_read_timeout = origin_read_timeout
+        # Protocol used for the origin request. Possible values:
+        # - http: Use HTTP protocol for origin requests.
+        # - https: Use HTTPS protocol for origin requests.
+        # - follow: Follow the client\\"s protocol for origin requests.
         self.origin_scheme = origin_scheme
+        # SNI carried in the origin request.
         self.origin_sni = origin_sni
+        # Origin certificate verification switch. Possible values:
+        # - on: Enable.
+        # - off: Disable.
         self.origin_verify = origin_verify
+        # Use range chunking for origin downloads. Possible values:
+        # - on: Enable
+        # - off: Disable
+        # - force: Force
         self.range = range
         self.range_chunk_size = range_chunk_size
+        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding global configurations. There are two usage scenarios:
+        # - Match all incoming requests: Set the value to true
+        # - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         self.rule = rule
+        # Rule switch. This parameter is not required when adding global configurations. Possible values:
+        # - on: Enable.
+        # - off: Disable.
         self.rule_enable = rule_enable
+        # Rule name. This parameter is not required when adding global configurations.
         self.rule_name = rule_name
         self.sequence = sequence
+        # Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+        # 
         # This parameter is required.
         self.site_id = site_id
+        # Version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the version of the site where the configuration takes effect. The default is version 0.
         self.site_version = site_version
 
     def validate(self):

@@ -17,11 +17,17 @@ class ListOriginRulesResponseBody(DaraModel):
         total_count: int = None,
         total_page: int = None,
     ):
+        # Response body configuration.
         self.configs = configs
+        # Current page number.
         self.page_number = page_number
+        # Page size.
         self.page_size = page_size
+        # Request ID.
         self.request_id = request_id
+        # Total number of records.
         self.total_count = total_count
+        # Total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -109,28 +115,60 @@ class ListOriginRulesResponseBodyConfigs(DaraModel):
         sequence: int = None,
         site_version: int = None,
     ):
+        # Configuration ID.
         self.config_id = config_id
+        # Configuration type, which can be used to query global or rule configurations. Value range:
+        # - global: Query global configuration.
+        # - rule: Query rule configuration.
         self.config_type = config_type
+        # Rewrite the DNS resolution record for the origin request.
         self.dns_record = dns_record
         self.follow_302enable = follow_302enable
         self.follow_302max_tries = follow_302max_tries
         self.follow_302retain_args = follow_302retain_args
         self.follow_302retain_header = follow_302retain_header
         self.follow_302target_host = follow_302target_host
+        # HOST carried in the origin request.
         self.origin_host = origin_host
+        # The port of the origin server to access when using the HTTP protocol for origin requests.
         self.origin_http_port = origin_http_port
+        # The port of the origin server to access when using the HTTPS protocol for origin requests.
         self.origin_https_port = origin_https_port
+        # mTLS switch. Value range:
+        # - on: Enable.
+        # - off: Disable.
         self.origin_mtls = origin_mtls
         self.origin_read_timeout = origin_read_timeout
+        # Protocol used for the origin request. Value range:
+        # - http: Use HTTP protocol for origin.
+        # - https: Use HTTPS protocol for origin.
+        # - follow: Follow the client\\"s protocol for origin.
         self.origin_scheme = origin_scheme
+        # SNI carried in the back-to-origin request.
         self.origin_sni = origin_sni
+        # Origin certificate verification switch. Value range:
+        # - on: Enable.
+        # - off: Disable.
         self.origin_verify = origin_verify
+        # Use range slicing to download files from the origin. Value range:
+        # - on: Enable
+        # - off: Disable
+        # - force: Force
         self.range = range
         self.range_chunk_size = range_chunk_size
+        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
+        # - Match all incoming requests: Set the value to true
+        # - Match specific requests: Set the value to a custom expression, e.g., (http.host eq \\"video.example.com\\")
         self.rule = rule
+        # Rule switch. This parameter is not required when adding a global configuration. Value range:
+        # - on: Enabled.
+        # - off: Disabled.
         self.rule_enable = rule_enable
+        # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
+        # Rule execution order. The smaller the value, the higher the priority.
         self.sequence = sequence
+        # Version number of the site configuration. For sites with version management enabled, this parameter can specify the version of the site for which the configuration is effective, defaulting to version 0.
         self.site_version = site_version
 
     def validate(self):

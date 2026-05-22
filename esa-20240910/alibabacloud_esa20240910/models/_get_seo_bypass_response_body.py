@@ -10,7 +10,12 @@ class GetSeoBypassResponseBody(DaraModel):
         enable: str = None,
         request_id: str = None,
     ):
+        # The status of the feature. Valid values:
+        # 
+        # *   **on**
+        # *   **off**
         self.enable = enable
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

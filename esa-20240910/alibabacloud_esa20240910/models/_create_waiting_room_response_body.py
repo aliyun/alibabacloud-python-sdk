@@ -10,6 +10,7 @@ class CreateWaitingRoomResponseBody(DaraModel):
         request_id: str = None,
         waiting_room_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
         self.waiting_room_id = waiting_room_id
 

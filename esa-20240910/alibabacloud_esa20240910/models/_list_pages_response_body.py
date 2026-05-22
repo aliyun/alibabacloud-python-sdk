@@ -17,11 +17,17 @@ class ListPagesResponseBody(DaraModel):
         total_count: int = None,
         usage: int = None,
     ):
+        # The page number returned.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The custom error pages. Each element in the array contains error page-specific information.
         self.pages = pages
+        # The request ID.
         self.request_id = request_id
+        # The number of custom error pages after filtering.
         self.total_count = total_count
+        # The number of custom error pages that you created.
         self.usage = usage
 
     def validate(self):
@@ -93,19 +99,23 @@ class ListPagesResponseBodyPages(DaraModel):
         name: str = None,
         update_time: str = None,
     ):
-        # 自定义响应页面内容BASE64编码
+        # The Base64-encoded content of the error page. The content type is specified by the Content-Type field.
         # 
         # This parameter is required.
         self.content = content
-        # 自定义响应页面内容类型
+        # The Content-Type field in the HTTP header.
         # 
         # This parameter is required.
         self.content_type = content_type
-        # 自定义响应页面描述
+        # The description of the custom error page.
         self.description = description
+        # The ID of the custom error page.[](~~2850223~~)
         self.id = id
+        # The type of the custom error page.
         self.kind = kind
+        # The name of the custom error page.
         self.name = name
+        # The time when the custom error page was last modified.
         self.update_time = update_time
 
     def validate(self):

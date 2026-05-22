@@ -18,16 +18,36 @@ class CreateRewriteUrlRuleRequest(DaraModel):
         site_version: int = None,
         uri: str = None,
     ):
+        # The query string after rewriting.
         self.query_string = query_string
+        # Query string rewrite type. Value range:
+        # 
+        # - static: static mode.
+        # - dynamic: dynamic mode.
         self.rewrite_query_string_type = rewrite_query_string_type
+        # URI rewrite type. Value range:
+        # 
+        # - static: static mode.
+        # - dynamic: dynamic mode.
         self.rewrite_uri_type = rewrite_uri_type
+        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
+        # - Match all incoming requests: set the value to true
+        # - Match specific requests: set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         self.rule = rule
+        # Rule switch. This parameter is not required when adding a global configuration. Value range:
+        # - on: enable.
+        # - off: disable.
         self.rule_enable = rule_enable
+        # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
         self.sequence = sequence
+        # Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+        # 
         # This parameter is required.
         self.site_id = site_id
+        # The version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the effective version of the site configuration, defaulting to version 0.
         self.site_version = site_version
+        # The target URI after rewriting.
         self.uri = uri
 
     def validate(self):

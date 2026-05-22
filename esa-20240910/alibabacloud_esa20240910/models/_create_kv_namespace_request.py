@@ -10,7 +10,10 @@ class CreateKvNamespaceRequest(DaraModel):
         description: str = None,
         namespace: str = None,
     ):
+        # The description of the namespace.
         self.description = description
+        # The name of the namespace.
+        # 
         # This parameter is required.
         self.namespace = namespace
 

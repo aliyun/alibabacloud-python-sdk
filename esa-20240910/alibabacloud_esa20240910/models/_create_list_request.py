@@ -14,9 +14,14 @@ class CreateListRequest(DaraModel):
         kind: str = None,
         name: str = None,
     ):
+        # The description of the list that you want to create.
         self.description = description
+        # The items in the list that you want to create.
         self.items = items
+        # The type of the list that you want to create.
         self.kind = kind
+        # The name of the list that you want to create.
+        # 
         # This parameter is required.
         self.name = name
 

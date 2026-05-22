@@ -13,8 +13,11 @@ class ListWafTemplateRulesShrinkRequest(DaraModel):
         site_id: int = None,
     ):
         self.instance_id = instance_id
+        # WAF operation phase, used to filter template rules for a specific phase.
         self.phase = phase
+        # Query parameters, used to filter template rules based on conditions such as rule type.
         self.query_args_shrink = query_args_shrink
+        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
         self.site_id = site_id
 
     def validate(self):

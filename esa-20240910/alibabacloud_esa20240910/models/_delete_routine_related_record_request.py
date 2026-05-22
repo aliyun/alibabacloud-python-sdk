@@ -12,12 +12,20 @@ class DeleteRoutineRelatedRecordRequest(DaraModel):
         record_name: str = None,
         site_id: int = None,
     ):
+        # The routine name.
+        # 
         # This parameter is required.
         self.name = name
+        # The record ID.
+        # 
         # This parameter is required.
         self.record_id = record_id
+        # The record name.
+        # 
         # This parameter is required.
         self.record_name = record_name
+        # The website ID.
+        # 
         # This parameter is required.
         self.site_id = site_id
 

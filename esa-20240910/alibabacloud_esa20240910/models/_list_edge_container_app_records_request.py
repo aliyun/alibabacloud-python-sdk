@@ -14,12 +14,25 @@ class ListEdgeContainerAppRecordsRequest(DaraModel):
         page_size: int = None,
         search_key: str = None,
     ):
+        # The application ID, which can be obtained by calling the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) operation.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The sorting field. Valid values:
+        # 
+        # *   CreateTime: the time when the domain name was associated.
+        # *   CreateTime: the time when the domain name was last modified.
         self.order_key = order_key
+        # The order in which you want to sort the query results. Valid values:
+        # 
+        # *   ASC: in ascending order.
+        # *   DESC: in descending order.
         self.order_type = order_type
+        # The page number. Valid values: **1** to **100000**. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Default value: 20. Valid values: 1 to 500.
         self.page_size = page_size
+        # The keyword that is used for the search.
         self.search_key = search_key
 
     def validate(self):

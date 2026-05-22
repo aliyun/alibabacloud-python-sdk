@@ -12,9 +12,15 @@ class GetCacheTagResponseBody(DaraModel):
         site_version: int = None,
         tag_name: str = None,
     ):
+        # Whether to ignore case. Possible values:
+        # - on: Enabled, ignores case.
+        # - off: Disabled, does not ignore case.
         self.case_insensitive = case_insensitive
+        # Request ID.
         self.request_id = request_id
+        # Version number of the site.
         self.site_version = site_version
+        # Custom CacheTag name.
         self.tag_name = tag_name
 
     def validate(self):

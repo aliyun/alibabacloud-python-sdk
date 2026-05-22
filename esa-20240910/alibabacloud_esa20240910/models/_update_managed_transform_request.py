@@ -13,11 +13,22 @@ class UpdateManagedTransformRequest(DaraModel):
         site_id: int = None,
         site_version: int = None,
     ):
+        # Specifies whether to include the header that indicates the geographical location of a client in an origin request. Valid values:
+        # 
+        # *   on
+        # *   off
         self.add_client_geolocation_header = add_client_geolocation_header
+        # Specifies whether to include the "ali-real-client-ip" header that indicates the client\\"s real IP address in an origin request. Valid values:
+        # 
+        # *   on
+        # *   off
         self.add_real_client_ip_header = add_real_client_ip_header
         self.real_client_ip_header_name = real_client_ip_header_name
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # 
         # This parameter is required.
         self.site_id = site_id
+        # The version number of the website. You can use this parameter to specify a version of your website to apply the feature settings. By default, version 0 is used.
         self.site_version = site_version
 
     def validate(self):

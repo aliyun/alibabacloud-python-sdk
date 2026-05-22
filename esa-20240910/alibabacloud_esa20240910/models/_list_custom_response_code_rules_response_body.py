@@ -17,11 +17,17 @@ class ListCustomResponseCodeRulesResponseBody(DaraModel):
         total_count: int = None,
         total_page: int = None,
     ):
+        # Modifies the list of response code configurations.
         self.configs = configs
+        # The number of the returned page. Default value: **1**.
         self.page_number = page_number
+        # The number of entries per page. Default value: 500. Valid values: 1 to 500.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
+        # The total number of pages returned.
         self.total_page = total_page
 
     def validate(self):
@@ -95,14 +101,32 @@ class ListCustomResponseCodeRulesResponseBodyConfigs(DaraModel):
         sequence: int = None,
         site_version: int = None,
     ):
+        # The configuration ID.
         self.config_id = config_id
+        # The configuration type. Valid values:
+        # 
+        # *   global: global configuration.
+        # *   rule: rule configuration.
         self.config_type = config_type
+        # Response page.
         self.page_id = page_id
+        # Response code
         self.return_code = return_code
+        # The content of the rule. A conditional expression is used to match a user request. You do not need to set this parameter when you add global configuration. Use cases:
+        # 
+        # *   true: Match all incoming requests.
+        # *   Set the value to a custom expression, for example, (http.host eq "video.example.com"): Match the specified request.
         self.rule = rule
+        # Specifies whether to enable the rule. Valid values: You do not need to set this parameter when you add global configuration. Valid values:
+        # 
+        # *   on
+        # *   off
         self.rule_enable = rule_enable
+        # The rule name. You do not need to set this parameter when you add global configuration.
         self.rule_name = rule_name
+        # The order in which the rule is executed. A smaller value gives priority to the rule.
         self.sequence = sequence
+        # The version number of the website configurations. You can use this parameter to specify a version of your website to apply the feature settings. By default, version 0 is used.
         self.site_version = site_version
 
     def validate(self):

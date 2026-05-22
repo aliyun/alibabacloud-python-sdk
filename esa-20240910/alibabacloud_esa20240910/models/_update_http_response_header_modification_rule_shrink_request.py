@@ -15,13 +15,25 @@ class UpdateHttpResponseHeaderModificationRuleShrinkRequest(DaraModel):
         sequence: int = None,
         site_id: int = None,
     ):
+        # Configuration ID. It can be obtained by calling the [ListHttpResponseHeaderModificationRules](https://help.aliyun.com/document_detail/2867483.html) interface.
+        # 
         # This parameter is required.
         self.config_id = config_id
+        # Modify response headers, supporting three operation methods: add, delete, and modify.
         self.response_header_modification_shrink = response_header_modification_shrink
+        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
+        # - Match all incoming requests: Set the value to true
+        # - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         self.rule = rule
+        # Rule switch. This parameter is not required when adding a global configuration. Value range:
+        # - on: Enable.
+        # - off: Disable.
         self.rule_enable = rule_enable
+        # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
         self.sequence = sequence
+        # Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+        # 
         # This parameter is required.
         self.site_id = site_id
 

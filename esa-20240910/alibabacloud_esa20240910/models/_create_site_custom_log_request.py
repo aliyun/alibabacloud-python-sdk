@@ -14,9 +14,13 @@ class CreateSiteCustomLogRequest(DaraModel):
         response_headers: List[str] = None,
         site_id: int = None,
     ):
+        # The cookie fields.
         self.cookies = cookies
+        # The request header fields.
         self.request_headers = request_headers
+        # The response header fields.
         self.response_headers = response_headers
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         self.site_id = site_id
 
     def validate(self):

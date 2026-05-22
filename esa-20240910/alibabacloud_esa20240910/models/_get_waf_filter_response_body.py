@@ -13,7 +13,9 @@ class GetWafFilterResponseBody(DaraModel):
         filter: main_models.GetWafFilterResponseBodyFilter = None,
         request_id: str = None,
     ):
+        # The returned match conditions.
         self.filter = filter
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -52,9 +54,13 @@ class GetWafFilterResponseBodyFilter(DaraModel):
         target: str = None,
         type: str = None,
     ):
+        # The matched objects and related properties.
         self.fields = fields
+        # The WAF rule category.
         self.phase = phase
+        # The condition for matching incoming requests.
         self.target = target
+        # The rule type.
         self.type = type
 
     def validate(self):
@@ -116,12 +122,18 @@ class GetWafFilterResponseBodyFilterFields(DaraModel):
         sub_tip: str = None,
     ):
         self.enable = enable
+        # The field for matched objects in the system.
         self.key = key
+        # The label of the matched object.
         self.label = label
+        # The logical conditions.
         self.logics = logics
         self.min_plan = min_plan
+        # The selector, which defines how to select a matched object.
         self.selector = selector
+        # Indicates whether the matched object contains a subfield.
         self.sub = sub
+        # The tip on how to enter a subfield.
         self.sub_tip = sub_tip
 
     def validate(self):
@@ -203,7 +215,9 @@ class GetWafFilterResponseBodyFilterFieldsSelector(DaraModel):
         data: List[main_models.GetWafFilterResponseBodyFilterFieldsSelectorData] = None,
         kind: str = None,
     ):
+        # The data. This parameter is available only when the value of the Kind parameter is data.
         self.data = data
+        # The type of selector. Valid values: data and others.
         self.kind = kind
 
     def validate(self):
@@ -246,7 +260,9 @@ class GetWafFilterResponseBodyFilterFieldsSelectorData(DaraModel):
         label: str = None,
         value: str = None,
     ):
+        # The label of the data.
         self.label = label
+        # The value of the data.
         self.value = value
 
     def validate(self):
@@ -289,15 +305,33 @@ class GetWafFilterResponseBodyFilterFieldsLogics(DaraModel):
         type: str = None,
         validator: main_models.GetWafFilterResponseBodyFilterFieldsLogicsValidator = None,
     ):
+        # A custom attribute. For example, this parameter can specify whether the value is case-sensitive.
         self.attributes = attributes
         self.enable = enable
+        # The type of the value input box. Valid values:
+        # 
+        # *   select:single
+        # *   select:multi
+        # *   input:single
+        # *   input:multi
         self.kind = kind
         self.min_plan = min_plan
+        # Indicates whether the match result is inverted.
         self.negative = negative
+        # The displayed matching characters.
         self.operator = operator
+        # The matching characters in the system.
         self.symbol = symbol
+        # The tip on how to enter a valid value that is required by the rules.
         self.tip = tip
+        # The type of the value. Valid values:
+        # 
+        # *   integer
+        # *   integer_slice
+        # *   string
+        # *   string_slice
         self.type = type
+        # The validator, which defines the validation rules for a value.
         self.validator = validator
 
     def validate(self):
@@ -384,9 +418,13 @@ class GetWafFilterResponseBodyFilterFieldsLogicsValidator(DaraModel):
         pattern: str = None,
         range: main_models.WafQuotaInteger = None,
     ):
+        # The error message when the validation fails.
         self.err_msg = err_msg
+        # The length of the value.
         self.length = length
+        # The regular expression pattern of the value, which is used to validate strings.
         self.pattern = pattern
+        # The range of the value, which is used to validate numbers.
         self.range = range
 
     def validate(self):

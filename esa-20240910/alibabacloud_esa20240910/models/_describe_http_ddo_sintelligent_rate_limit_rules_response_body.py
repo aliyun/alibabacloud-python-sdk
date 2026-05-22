@@ -18,6 +18,7 @@ class DescribeHttpDDoSIntelligentRateLimitRulesResponseBody(DaraModel):
     ):
         self.page_number = page_number
         self.page_size = page_size
+        # Id of the request
         self.request_id = request_id
         self.rule_infos = rule_infos
         self.total_count = total_count

@@ -20,17 +20,48 @@ class ListSitesShrinkRequest(DaraModel):
         status: str = None,
         tag_filter_shrink: str = None,
     ):
+        # The DNS setup. Valid values:
+        # 
+        # *   **NS**
+        # *   **CNAME**
         self.access_type = access_type
+        # The service location. Valid values:
+        # 
+        # *   **domestic**: the Chinese mainland
+        # *   **global**: global
+        # *   **overseas**: outside the Chinese mainland
         self.coverage = coverage
+        # Specifies whether to query only websites on Enterprise plans. Valid values: **true and false**.
         self.only_enterprise = only_enterprise
+        # Sorting field. By default, it sorts by creation time, supporting the following options:
+        # - gmtCreate: website creation time
+        # - visitTime: website visit time
         self.order_by = order_by
+        # The page number. Default value: **1**.
         self.page_number = page_number
+        # The number of entries per page. Default value: **500**.
         self.page_size = page_size
+        # The plan type. Valid values:
+        # 
+        # *   **basicplan**: Entrance
+        # *   **standardplan**: Pro
+        # *   **advancedplan**: Premium
+        # *   **enterpriseplan**: Enterprise
         self.plan_subscribe_type = plan_subscribe_type
+        # The ID of the resource group. This parameter specifies a filter condition for the query.
         self.resource_group_id = resource_group_id
+        # The website name. This parameter specifies a filter condition for the query.
         self.site_name = site_name
+        # The match mode to search for the website name. Default value: exact. Valid values:
+        # 
+        # *   **prefix**: match by prefix.
+        # *   **suffix**: match by suffix.
+        # *   **exact**: exact match.
+        # *   **fuzzy**: fuzzy match.
         self.site_search_type = site_search_type
+        # The website status. This parameter specifies a filter condition for the query.
         self.status = status
+        # The tag filtering rule.
         self.tag_filter_shrink = tag_filter_shrink
 
     def validate(self):

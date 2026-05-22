@@ -11,7 +11,9 @@ class GetEdgeContainerAppResponseBody(DaraModel):
         app: main_models.GetEdgeContainerAppResponseBodyApp = None,
         request_id: str = None,
     ):
+        # The basic information about the application.
         self.app = app
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -59,18 +61,38 @@ class GetEdgeContainerAppResponseBodyApp(DaraModel):
         update_time: str = None,
         version_count: int = None,
     ):
+        # The application ID.
         self.app_id = app_id
+        # The time when the application was created.
         self.create_time = create_time
+        # The domain name that is associated with the application. If no domain name is associated with the application, the value is an empty string.
         self.domain_name = domain_name
+        # The type of the gateway. Valid values:
+        # 
+        # *   l7: Layer 7 gateway.
+        # *   l4: Layer 4 gateway.
         self.gateway_type = gateway_type
+        # The information about health checks.
         self.health_check = health_check
+        # The application name.
         self.name = name
+        # Indicates whether QUIC is enabled.
         self.quic_cid = quic_cid
+        # The remarks about the application.
         self.remarks = remarks
+        # The server port. Valid values: 1 to 65535.
         self.service_port = service_port
+        # The status of the application. Valid values:
+        # 
+        # *   creating: The application is being created.
+        # *   failed: The application failed to be created.
+        # *   created: The application is created.
         self.status = status
+        # The backend port, which is also the service port of the application. Valid values: 1 to 65535.
         self.target_port = target_port
+        # The time when the application was last modified. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
         self.update_time = update_time
+        # The number of versions of the application.
         self.version_count = version_count
 
     def validate(self):
@@ -181,15 +203,28 @@ class GetEdgeContainerAppResponseBodyAppHealthCheck(DaraModel):
         type: str = None,
         uri: str = None,
     ):
+        # The number of consecutive failed health checks required for an application to be considered as unhealthy.
         self.fail_times = fail_times
+        # The domain name that is used for health checks.
         self.host = host
+        # The range of health check status codes that indicate successful health checks.
         self.http_code = http_code
+        # The interval between health checks. Unit: seconds.
         self.interval = interval
+        # The HTTP method that the health check request uses.
         self.method = method
+        # The health check port.
         self.port = port
+        # The number of consecutive successful health checks required for an application to be considered as healthy.
         self.succ_times = succ_times
+        # The timeout period of the health check. Unit: seconds.
         self.timeout = timeout
+        # The health check type. Valid values:
+        # 
+        # *   l7
+        # *   l4
         self.type = type
+        # The health check URL.
         self.uri = uri
 
     def validate(self):

@@ -14,9 +14,14 @@ class UpdateRatePlanSpecRequest(DaraModel):
         target_plan_code: str = None,
         target_plan_name: str = None,
     ):
+        # Specifies whether to enable auto payment.
         self.auto_pay = auto_pay
         self.charge_type = charge_type
         self.instance_id = instance_id
+        # The specification update type. Valid values:
+        # 
+        # *   DOWNGRADE
+        # *   UPGRADE
         self.order_type = order_type
         self.target_plan_code = target_plan_code
         self.target_plan_name = target_plan_name

@@ -10,8 +10,15 @@ class UpdateCrossBorderOptimizationRequest(DaraModel):
         enable: str = None,
         site_id: int = None,
     ):
+        # Whether to enable Chinese mainland network access optimization. By default, it is disabled. Valid values:
+        # 
+        # *   on
+        # *   off
+        # 
         # This parameter is required.
         self.enable = enable
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # 
         # This parameter is required.
         self.site_id = site_id
 

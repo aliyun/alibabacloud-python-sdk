@@ -10,7 +10,9 @@ class DisableCustomScenePolicyResponseBody(DaraModel):
         policy_id: int = None,
         request_id: str = None,
     ):
+        # The ID of the disabled policy.
         self.policy_id = policy_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

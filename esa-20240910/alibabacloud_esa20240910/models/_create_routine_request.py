@@ -11,8 +11,11 @@ class CreateRoutineRequest(DaraModel):
         has_assets: bool = None,
         name: str = None,
     ):
+        # The routine description.
         self.description = description
         self.has_assets = has_assets
+        # The routine name, which must be unique in the same account.
+        # 
         # This parameter is required.
         self.name = name
 

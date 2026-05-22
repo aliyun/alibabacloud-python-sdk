@@ -13,7 +13,9 @@ class GetSiteResponseBody(DaraModel):
         request_id: str = None,
         site_model: main_models.GetSiteResponseBodySiteModel = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The queried website information.
         self.site_model = site_model
 
     def validate(self):
@@ -66,23 +68,52 @@ class GetSiteResponseBodySiteModel(DaraModel):
         verify_code: str = None,
         version_management: bool = None,
     ):
+        # The DNS setup option for the website. Valid values:
+        # 
+        # *   **NS**
+        # *   **CNAME**
         self.access_type = access_type
+        # The CNAME of the website domain. If you use CNAME setup when you add your website to ESA, the value is the CNAME that you configured then.
         self.cname_zone = cname_zone
+        # The service location. Valid values:
+        # 
+        # *   **domestic**: the Chinese mainland.
+        # *   **global**: global.
+        # *   **overseas**: outside the Chinese mainland.
         self.coverage = coverage
+        # The time when the WEBsite was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format and is displayed in UTC.
         self.create_time = create_time
+        # The plan ID.
         self.instance_id = instance_id
+        # The nameservers assigned to the website domain. They are separated by commas (,).
         self.name_server_list = name_server_list
         self.offline_reason = offline_reason
+        # The plan name.
         self.plan_name = plan_name
+        # The specification of the plan associated with the website.
         self.plan_spec_name = plan_spec_name
+        # The ID of your Alibaba Cloud resource group.
         self.resource_group_id = resource_group_id
+        # The website ID.
         self.site_id = site_id
+        # The website name.
         self.site_name = site_name
+        # The website status. Valid values:
+        # 
+        # *   **pending**: The website is to be configured.
+        # *   **active**: The website is active.
+        # *   **offline**: The website is suspended.
+        # *   **moved**: The website has been added and verified by another Alibaba Cloud account.
         self.status = status
+        # The tags of the website.
         self.tags = tags
+        # The time when the WEBsite was updated. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format and is displayed in UTC.
         self.update_time = update_time
+        # The information about custom nameservers of the website domain. The key is a custom nameserver name, and the value is the IP address of the custom nameserver. Multiple IP addresses are separated by commas (,).
         self.vanity_nslist = vanity_nslist
+        # The code that is used to verify the website domain ownership. As part of the verification TXT record, this parameter is returned for websites that use CNAME setup.
         self.verify_code = verify_code
+        # The status of version management. If true is returned, version management is enabled for the website.
         self.version_management = version_management
 
     def validate(self):

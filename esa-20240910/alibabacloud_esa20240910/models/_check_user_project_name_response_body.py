@@ -12,9 +12,16 @@ class CheckUserProjectNameResponseBody(DaraModel):
         project_name: str = None,
         request_id: str = None,
     ):
+        # Indicates whether the name is valid. Valid values:
+        # 
+        # *   **true**
+        # *   **false**
         self.check = check
+        # The reason why the name passed or failed the check.
         self.description = description
+        # The name of the real-time log delivery task.
         self.project_name = project_name
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

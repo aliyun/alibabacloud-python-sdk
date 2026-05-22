@@ -10,7 +10,12 @@ class GetDevelopmentModeResponseBody(DaraModel):
         enable: str = None,
         request_id: str = None,
     ):
+        # Switch. Values:
+        # 
+        # - **on**: Enabled.
+        # - **off**: Disabled.
         self.enable = enable
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):

@@ -10,8 +10,12 @@ class BatchDeleteKvWithHighCapacityRequest(DaraModel):
         namespace: str = None,
         url: str = None,
     ):
+        # The name of the namespace that you specify when you call the [CreateKvNamespace](https://help.aliyun.com/document_detail/2850317.html) operation.
+        # 
         # This parameter is required.
         self.namespace = namespace
+        # The download URL of the key-value pairs that you want to delete. This parameter is automatically filled in when you use the SDK to call the operation.
+        # 
         # This parameter is required.
         self.url = url
 

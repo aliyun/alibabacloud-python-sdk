@@ -18,14 +18,26 @@ class CreateHttpResponseHeaderModificationRuleRequest(DaraModel):
         site_id: int = None,
         site_version: int = None,
     ):
+        # Modify response headers, supporting add, delete, and modify operations.
+        # 
         # This parameter is required.
         self.response_header_modification = response_header_modification
+        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
+        # - To match all incoming requests: Set the value to true
+        # - To match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         self.rule = rule
+        # Rule switch. This parameter is not required when adding a global configuration. Possible values:
+        # - on: Enable.
+        # - off: Disable.
         self.rule_enable = rule_enable
+        # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
         self.sequence = sequence
+        # Site ID. You can obtain this by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
+        # 
         # This parameter is required.
         self.site_id = site_id
+        # Version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the version of the site where the configuration will take effect. The default is version 0.
         self.site_version = site_version
 
     def validate(self):
@@ -100,11 +112,20 @@ class CreateHttpResponseHeaderModificationRuleRequestResponseHeaderModification(
         type: str = None,
         value: str = None,
     ):
+        # Response header name.
+        # 
         # This parameter is required.
         self.name = name
+        # Operation type. Possible values:
+        # 
+        # - add: Add.
+        # - del: Delete
+        # - modify: Modify.
+        # 
         # This parameter is required.
         self.operation = operation
         self.type = type
+        # Response header value.
         self.value = value
 
     def validate(self):

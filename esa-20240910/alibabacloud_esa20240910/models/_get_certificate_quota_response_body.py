@@ -17,11 +17,17 @@ class GetCertificateQuotaResponseBody(DaraModel):
         site_usage: List[main_models.GetCertificateQuotaResponseBodySiteUsage] = None,
         type: str = None,
     ):
+        # Free certificate quota.
         self.quota = quota
+        # Usage of free certificate quota.
         self.quota_usage = quota_usage
+        # Request ID.
         self.request_id = request_id
+        # Number of sites.
         self.site_count = site_count
+        # List of site usage details.
         self.site_usage = site_usage
+        # Certificate Quota type.
         self.type = type
 
     def validate(self):
@@ -89,8 +95,11 @@ class GetCertificateQuotaResponseBodySiteUsage(DaraModel):
         site_name: str = None,
         site_usage: int = None,
     ):
+        # Site ID.
         self.site_id = site_id
+        # Site name.
         self.site_name = site_name
+        # Site usage.
         self.site_usage = site_usage
 
     def validate(self):

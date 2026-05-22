@@ -15,6 +15,7 @@ class SetAutomaticFrequencyControlConfigResponseBody(DaraModel):
         self.action_type = action_type
         self.enable = enable
         self.level = level
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):

@@ -20,14 +20,26 @@ class GetKvAccountResponseBody(DaraModel):
         request_id: str = None,
         status: str = None,
     ):
+        # The available capacity of all namespaces in the account. Unit: bytes.
         self.capacity = capacity
+        # The available capacity of all namespaces in the account.
         self.capacity_string = capacity_string
+        # The used capacity of all namespaces in the account. Unit: bytes.
         self.capacity_used = capacity_used
+        # The used capacity of all namespaces in the account.
         self.capacity_used_string = capacity_used_string
+        # The namespaces in the account.
         self.namespace_list = namespace_list
+        # The maximum number of namespaces that can be created in the account.
         self.namespace_quota = namespace_quota
+        # The number of created namespaces that store key-value data in the account.
         self.namespace_used = namespace_used
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether Edge KV is activated for the Alibaba Cloud account.
+        # 
+        # *   **online**
+        # *   **offline**
         self.status = status
 
     def validate(self):
@@ -118,13 +130,26 @@ class GetKvAccountResponseBodyNamespaceList(DaraModel):
         namespace_id: str = None,
         status: str = None,
     ):
+        # The available capacity of the namespace. Unit: bytes.
         self.capacity = capacity
+        # The available capacity of the namespace.
         self.capacity_string = capacity_string
+        # The used capacity of the namespace. Unit: bytes.
         self.capacity_used = capacity_used
+        # The used capacity of the namespace.
         self.capacity_used_string = capacity_used_string
+        # The description of the namespace.
         self.description = description
+        # The name of the namespace.
         self.namespace = namespace
+        # The ID of the namespace.
         self.namespace_id = namespace_id
+        # The status of the namespace. Valid values:
+        # 
+        # *   **online**: normal.
+        # *   **delete**: pending deletion.
+        # *   **deleting**: being deleted.
+        # *   **deleted**: deleted.
         self.status = status
 
     def validate(self):

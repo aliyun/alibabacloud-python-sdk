@@ -18,13 +18,24 @@ class CreateCustomScenePolicyResponseBody(DaraModel):
         start_time: str = None,
         template: str = None,
     ):
+        # The time when the policy expires.
+        # 
+        # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.end_time = end_time
+        # The policy name.
         self.name = name
+        # The IDs of websites associated.
         self.objects = objects
+        # The policy ID.
         self.policy_id = policy_id
+        # The request ID.
         self.request_id = request_id
         self.site_ids = site_ids
+        # The time when the policy takes effect.
+        # 
+        # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.start_time = start_time
+        # The name of the policy template.
         self.template = template
 
     def validate(self):

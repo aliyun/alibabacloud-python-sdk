@@ -16,10 +16,15 @@ class ListRoutineCodeVersionsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The code versions of the routine.
         self.code_versions = code_versions
+        # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of code versions returned.
         self.total_count = total_count
 
     def validate(self):
@@ -85,12 +90,19 @@ class ListRoutineCodeVersionsResponseBodyCodeVersions(DaraModel):
         extra_info: str = None,
         status: str = None,
     ):
+        # The ID of the code version build.
         self.build_id = build_id
+        # The description of the code version.
         self.code_description = code_description
+        # The version of the code.
         self.code_version = code_version
+        # Code version configuration items.
         self.conf_options = conf_options
+        # The time when the code version was created.
         self.create_time = create_time
+        # Additional information about the code version.
         self.extra_info = extra_info
+        # The status of the code version.
         self.status = status
 
     def validate(self):
@@ -156,6 +168,7 @@ class ListRoutineCodeVersionsResponseBodyCodeVersionsConfOptions(DaraModel):
         self,
         not_found_strategy: str = None,
     ):
+        # Code version configuration items NotFoundStrategy.
         self.not_found_strategy = not_found_strategy
 
     def validate(self):

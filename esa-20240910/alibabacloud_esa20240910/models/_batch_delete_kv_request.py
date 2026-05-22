@@ -12,8 +12,12 @@ class BatchDeleteKvRequest(DaraModel):
         keys: List[str] = None,
         namespace: str = None,
     ):
+        # The keys that you want to delete. You can delete a maximum of 10,000 key-value pairs at a time.
+        # 
         # This parameter is required.
         self.keys = keys
+        # The name of the namespace that you specify when you call the [CreateKvNamespace](https://help.aliyun.com/document_detail/2850317.html) operation.
+        # 
         # This parameter is required.
         self.namespace = namespace
 

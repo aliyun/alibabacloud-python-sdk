@@ -12,9 +12,13 @@ class UpdateSiteCustomLogShrinkRequest(DaraModel):
         response_headers_shrink: str = None,
         site_id: int = None,
     ):
+        # The cookie fields.
         self.cookies_shrink = cookies_shrink
+        # The request header fields.
         self.request_headers_shrink = request_headers_shrink
+        # The response header fields.
         self.response_headers_shrink = response_headers_shrink
+        # site id
         self.site_id = site_id
 
     def validate(self):

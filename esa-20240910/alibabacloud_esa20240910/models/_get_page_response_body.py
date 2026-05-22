@@ -19,25 +19,28 @@ class GetPageResponseBody(DaraModel):
         site_ids: List[int] = None,
         update_time: str = None,
     ):
-        # 自定义响应页面内容BASE64编码
+        # The Base64-encoded content of the error page. The content type is specified by the Content-Type field.
         # 
         # This parameter is required.
         self.content = content
-        # 自定义响应页面内容类型
+        # The Content-Type field in the HTTP header.
         # 
         # This parameter is required.
         self.content_type = content_type
-        # 自定义响应页面描述
+        # The description of the custom error page.
         self.description = description
-        # 自定义响应页面ID
+        # The ID of the custom error page.[](~~2850223~~)
         self.id = id
+        # The type of the custom response page.
         self.kind = kind
-        # 自定义响应页面名称
+        # The name of the custom response page.
         # 
         # This parameter is required.
         self.name = name
+        # The request ID.
         self.request_id = request_id
         self.site_ids = site_ids
+        # The time when the custom error page was last modified.
         self.update_time = update_time
 
     def validate(self):

@@ -18,12 +18,19 @@ class ListWafRulesResponseBody(DaraModel):
         site_usage: int = None,
         total_count: int = None,
     ):
+        # Number of rules used in this WAF phase for the corresponding instance of the site.
         self.instance_usage = instance_usage
+        # Page number.
         self.page_number = page_number
+        # Page size.
         self.page_size = page_size
+        # Request ID.
         self.request_id = request_id
+        # Returned list of rules.
         self.rules = rules
+        # Site usage.
         self.site_usage = site_usage
+        # Total number of rules after filtering.
         self.total_count = total_count
 
     def validate(self):
@@ -109,20 +116,35 @@ class ListWafRulesResponseBodyRules(DaraModel):
         type: str = None,
         update_time: str = None,
     ):
+        # The action corresponding to the rule.
         self.action = action
+        # List of statistical objects for frequency control rules.
         self.characteristics_fields = characteristics_fields
+        # Rule configuration.
         self.config = config
+        # List of fields for rule matching
         self.fields = fields
+        # Rule ID.
         self.id = id
+        # Rule name.
         self.name = name
+        # WAF phase.
         self.phase = phase
+        # Position order of the rule in the corresponding ruleset.
         self.position = position
+        # Ruleset ID.
         self.ruleset_id = ruleset_id
+        # Skip attribute for whitelist rules.
         self.skip = skip
+        # Rule status.
         self.status = status
+        # List of WAF phases to be skipped by whitelist rules.
         self.tags = tags
+        # Configuration for the effective time of the rule.
         self.timer = timer
+        # Rule type.
         self.type = type
+        # Modification time.
         self.update_time = update_time
 
     def validate(self):

@@ -11,8 +11,11 @@ class UpdateEdgeContainerAppLogRiverRequest(DaraModel):
         path: str = None,
         stdout: bool = None,
     ):
+        # The application ID, which can be obtained by calling the [ListEdgeContainerApps](https://help.aliyun.com/document_detail/2852396.html) operation.
         self.app_id = app_id
+        # The log path of the container.
         self.path = path
+        # Specifies whether to collect the standard output of the container.
         self.stdout = stdout
 
     def validate(self):

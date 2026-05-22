@@ -9,6 +9,7 @@ class GetEdgeContainerStagingDeployStatusRequest(DaraModel):
         self,
         app_id: str = None,
     ):
+        # The application ID, which can be obtained by calling the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) operation.
         self.app_id = app_id
 
     def validate(self):

@@ -11,8 +11,19 @@ class DescribeRatePlanInstanceStatusResponseBody(DaraModel):
         instance_status: str = None,
         request_id: str = None,
     ):
+        # The instance ID.
         self.instance_id = instance_id
+        # The instance status. Valid values:
+        # 
+        # *   running: The instance is running.
+        # *   renewing: The instance is being renewed.
+        # *   upgrading: The configuration of the instance is being upgraded.
+        # *   releasePrepaidService: The instance is released due to expiration.
+        # *   creating: The instance is being created.
+        # *   downgrading: The configuration of the instance is being downgraded.
+        # *   ceasePrepaidService: The instance has expired.
         self.instance_status = instance_status
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

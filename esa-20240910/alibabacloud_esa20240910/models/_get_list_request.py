@@ -9,6 +9,7 @@ class GetListRequest(DaraModel):
         self,
         id: int = None,
     ):
+        # The ID of the custom list, which can be obtained by calling the [ListLists](https://help.aliyun.com/document_detail/2850217.html) operation.
         self.id = id
 
     def validate(self):

@@ -11,8 +11,16 @@ class GetUserLogDeliveryQuotaResponseBody(DaraModel):
         free_quota: int = None,
         request_id: str = None,
     ):
+        # The log category. Valid values:
+        # 
+        # *   dcdn_log_access_l1 (default): access logs.
+        # *   dcdn_log_er: Edge Routine logs.
+        # *   dcdn_log_waf: firewall logs.
+        # *   dcdn_log_ipa: TCP/UDP proxy logs.
         self.business_type = business_type
+        # The remaining quota.
         self.free_quota = free_quota
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

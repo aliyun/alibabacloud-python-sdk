@@ -10,7 +10,12 @@ class DescribeKvAccountStatusResponseBody(DaraModel):
         request_id: str = None,
         status: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether Edge KV is activated for the Alibaba Cloud account.
+        # 
+        # *   **online**
+        # *   **offline**
         self.status = status
 
     def validate(self):

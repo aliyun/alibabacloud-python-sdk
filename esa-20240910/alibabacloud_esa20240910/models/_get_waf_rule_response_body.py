@@ -18,21 +18,26 @@ class GetWafRuleResponseBody(DaraModel):
         status: str = None,
         update_time: str = None,
     ):
+        # Rule configuration.
         self.config = config
-        # 自定义响应页面ID
+        # The ID of the WAF rule, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2878257.html) interface.
         self.id = id
-        # 自定义响应页面名称
+        # Rule name.
         # 
         # This parameter is required.
         self.name = name
-        # 自定义响应页面内容类型
+        # WAF operation phase.
         # 
         # This parameter is required.
         self.phase = phase
+        # The position of the rule in the rule set.
         self.position = position
+        # Request ID.
         self.request_id = request_id
         self.ruleset_id = ruleset_id
+        # Rule status.
         self.status = status
+        # The last modified time of the rule.
         self.update_time = update_time
 
     def validate(self):

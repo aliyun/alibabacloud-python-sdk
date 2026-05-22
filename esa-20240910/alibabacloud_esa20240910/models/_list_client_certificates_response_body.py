@@ -18,12 +18,19 @@ class ListClientCertificatesResponseBody(DaraModel):
         site_name: str = None,
         total_count: int = None,
     ):
+        # The page number returned.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The client certificates.
         self.result = result
+        # The website ID.
         self.site_id = site_id
+        # The website name.
         self.site_name = site_name
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -110,21 +117,35 @@ class ListClientCertificatesResponseBodyResult(DaraModel):
         type: str = None,
         update_time: str = None,
     ):
+        # The ID of the CA certificate.
         self.cacertificate_id = cacertificate_id
+        # The Common Name of the certificate.
         self.common_name = common_name
+        # The time when the certificate was created.
         self.create_time = create_time
         self.fingerprint_sha_256 = fingerprint_sha_256
+        # The certificate ID.
         self.id = id
+        # The certificate authority (CA) that issued the certificate.
         self.issuer = issuer
+        # The certificate name.
         self.name = name
+        # The time when the certificate expires.
         self.not_after = not_after
+        # The time when the certificate takes effect.
         self.not_before = not_before
+        # The public key algorithm of the certificate.
         self.pubkey_algorithm = pubkey_algorithm
+        # The Subject Alternative Name (SAN) of the certificate.
         self.san = san
         self.serial_number = serial_number
+        # The signature algorithm of the certificate.
         self.signature_algorithm = signature_algorithm
+        # The certificate status.
         self.status = status
+        # The certificate type.
         self.type = type
+        # The time when the certificate was updated.
         self.update_time = update_time
 
     def validate(self):

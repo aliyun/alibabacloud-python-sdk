@@ -14,14 +14,29 @@ class CreateCustomScenePolicyRequest(DaraModel):
         start_time: str = None,
         template: str = None,
     ):
+        # The time when the policy expires.
+        # 
+        # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # The policy name.
+        # 
         # This parameter is required.
         self.name = name
+        # The IDs of the websites that you want to associate with the policy. Separate multiple IDs with commas (,).
         self.objects = objects
         self.site_ids = site_ids
+        # The time when the policy takes effect.
+        # 
+        # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # 
         # This parameter is required.
         self.start_time = start_time
+        # The name of the policy template. Valid value:
+        # 
+        # *   **promotion**: major events.
+        # 
         # This parameter is required.
         self.template = template
 

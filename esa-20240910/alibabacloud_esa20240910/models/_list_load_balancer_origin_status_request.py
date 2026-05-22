@@ -11,9 +11,14 @@ class ListLoadBalancerOriginStatusRequest(DaraModel):
         pool_type: str = None,
         site_id: int = None,
     ):
+        # Load balancer ID. When querying multiple load balancers, separate the IDs with commas. A maximum of 100 load balancer IDs can be passed at once. Load balancer IDs can be obtained by calling the [ListLoadBalancers](https://help.aliyun.com/document_detail/2868897.html) interface.
+        # 
         # This parameter is required.
         self.load_balancer_ids = load_balancer_ids
+        # Source address pool type. Various source address pools are configured under the load balancer, including default pools, fallback pools, and primary region pools. Only the status of origins in the default pool affects the status of the load balancer itself. Passing `default_pool` means only querying the status of origins in the default source address pool under the load balancer.
         self.pool_type = pool_type
+        # Site ID.
+        # 
         # This parameter is required.
         self.site_id = site_id
 

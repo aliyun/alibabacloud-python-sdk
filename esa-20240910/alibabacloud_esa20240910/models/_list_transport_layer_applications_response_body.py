@@ -16,10 +16,15 @@ class ListTransportLayerApplicationsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # List of transport layer applications.
         self.applications = applications
+        # Current page number.
         self.page_number = page_number
+        # Page size.
         self.page_size = page_size
+        # Request ID.
         self.request_id = request_id
+        # Total number of transport layer applications.
         self.total_count = total_count
 
     def validate(self):
@@ -91,19 +96,38 @@ class ListTransportLayerApplicationsResponseBodyApplications(DaraModel):
         static_ip_v4list: List[main_models.ListTransportLayerApplicationsResponseBodyApplicationsStaticIpV4List] = None,
         status: str = None,
     ):
+        # Layer 4 application ID.
         self.application_id = application_id
+        # CNAME domain name corresponding to the Layer 4 acceleration application. This field is not empty only when the site is accessed via CNAME.
         self.cname = cname
+        # Whether to enable China mainland network access optimization. It is disabled by default. The value range is:
+        # 
+        # - on: Enabled.
+        # - off: Disabled.
         self.cross_border_optimization = cross_border_optimization
+        # IP access rule switch. When enabled, the IP access rules in WAF take effect on the Layer 4 application.
+        # 
+        # - on: Enabled.
+        # - off: Disabled.
         self.ip_access_rule = ip_access_rule
+        # IPv6 switch.
         self.ipv_6 = ipv_6
         self.keep_alive_protection = keep_alive_protection
+        # Domain name of the Layer 4 application.
         self.record_name = record_name
+        # List of forwarding rules.
         self.rules = rules
+        # Number of forwarding rules contained in the Layer 4 acceleration application.
         self.rules_count = rules_count
+        # Site ID.
         self.site_id = site_id
         self.static_ip = static_ip
         # This parameter is required.
         self.static_ip_v4list = static_ip_v4list
+        # Status of the Layer 4 application
+        # 
+        # - **deploying**: Deploying. In this state, modification and deletion are not allowed.
+        # - **active**: Active.
         self.status = status
 
     def validate(self):
@@ -262,13 +286,39 @@ class ListTransportLayerApplicationsResponseBodyApplicationsRules(DaraModel):
         source_port: str = None,
         source_type: str = None,
     ):
+        # Client IP pass-through protocol, supports:
+        # - **off**: No pass-through.
+        # - **PPv1**: PROXY Protocol v1, supports client IP pass-through for TCP protocol.
+        # - **PPv2**: PROXY Protocol v2, supports client IP pass-through for TCP and UDP protocols.
+        # - **SPP**: Simple Proxy Protocol, supports client IP pass-through for UDP protocol.
         self.client_ippass_through_mode = client_ippass_through_mode
+        # Comment information for the rule.
         self.comment = comment
+        # Edge port. Supports:
+        # 
+        # - A single port, e.g., 80.
+        # - Port range, e.g., 81-85, representing ports 81, 82, 83, 84, 85.
+        # - Combination of ports and port ranges, separated by commas, e.g., 80,81-85,90, representing ports 80, 81, 82, 83, 84, 85, 90.
         self.edge_port = edge_port
+        # Forwarding rule protocol, with values:
+        # 
+        # - TCP: TCP protocol.
+        # - UDP: UDP protocol.
         self.protocol = protocol
+        # Layer 4 acceleration rule ID.
         self.rule_id = rule_id
+        # Specific value of the source, which needs to match the source type.
         self.source = source
+        # Source port. Supports:
+        # 
+        # - A single port, when the source port is a single port, any valid combination of edge ports is supported.
+        # - Port range, only when the edge port is a port range, the source port can be set to a port range, and the range size must be consistent with the edge port. For example, if the edge port is 90-93, the source port cannot be set to 81-85 because the source port range is 5 and the edge port range is 3, which are inconsistent.
         self.source_port = source_port
+        # Source type, supports:
+        # - **ip**: IP.
+        # - **domain**: Domain name.
+        # - **OP**: Origin pool.
+        # - **LB**: Load balancer.
         self.source_type = source_type
 
     def validate(self):

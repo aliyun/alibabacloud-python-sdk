@@ -15,12 +15,20 @@ class CreateRoutineCodeDeploymentRequest(DaraModel):
         name: str = None,
         strategy: str = None,
     ):
+        # The configuration list of phased release version numbers. A maximum of two versions are supported, and the sum of the total proportions is equal to 100.
+        # 
         # This parameter is required.
         self.code_versions = code_versions
+        # The name of the environment. Only supports test environment `staging` or production environment `production`.
+        # 
         # This parameter is required.
         self.env = env
+        # The function name.
+        # 
         # This parameter is required.
         self.name = name
+        # The deployment policy. Valid value: percentage.
+        # 
         # This parameter is required.
         self.strategy = strategy
 
@@ -76,8 +84,12 @@ class CreateRoutineCodeDeploymentRequestCodeVersions(DaraModel):
         code_version: str = None,
         percentage: int = None,
     ):
+        # The version of the code.
+        # 
         # This parameter is required.
         self.code_version = code_version
+        # The phased release ratio of the code version. Valid values: 1 to 100.
+        # 
         # This parameter is required.
         self.percentage = percentage
 

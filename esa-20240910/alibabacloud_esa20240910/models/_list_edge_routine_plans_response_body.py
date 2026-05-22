@@ -17,11 +17,17 @@ class ListEdgeRoutinePlansResponseBody(DaraModel):
         total_count: int = None,
         total_page: int = None,
     ):
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Valid values: 1 to 500.
         self.page_size = page_size
+        # The plans.
         self.plan_info = plan_info
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
+        # The total number of pages returned.
         self.total_page = total_page
 
     def validate(self):
@@ -92,11 +98,23 @@ class ListEdgeRoutinePlansResponseBodyPlanInfo(DaraModel):
         payment_method: str = None,
         plan_name: str = None,
     ):
+        # The billing method. Valid values:
+        # 
+        # *   PREPAY: subscription.
+        # *   POSTPAY: pay-as-you-go.
         self.billing_mode = billing_mode
+        # The maximum number of versions that each routine supports.
         self.er_routine_code_version_quota = er_routine_code_version_quota
+        # The maximum of routines that can be created.
         self.er_routine_quota = er_routine_quota
+        # The maximum number of websites with which each routine can be associated.
         self.er_routine_route_site_count_quota = er_routine_route_site_count_quota
+        # The payment method. Valid values:
+        # 
+        # *   er_free
+        # *   er_pay
         self.payment_method = payment_method
+        # The plan name.
         self.plan_name = plan_name
 
     def validate(self):

@@ -12,10 +12,18 @@ class UpdateCacheTagRequest(DaraModel):
         site_version: int = None,
         tag_name: str = None,
     ):
+        # Specifies whether to ignore case sensitivity. Valid values:
+        # 
+        # *   on
+        # *   off
         self.case_insensitive = case_insensitive
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # 
         # This parameter is required.
         self.site_id = site_id
+        # The version number of the website configurations. You can use this parameter to specify a version of your website to apply the feature settings. By default, version 0 is used.
         self.site_version = site_version
+        # The name of the custom cache tag.
         self.tag_name = tag_name
 
     def validate(self):

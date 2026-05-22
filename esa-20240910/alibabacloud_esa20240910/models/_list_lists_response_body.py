@@ -19,11 +19,17 @@ class ListListsResponseBody(DaraModel):
         usage: int = None,
     ):
         self.items_usage = items_usage
+        # The array that contains list information, including list data after paging.
         self.lists = lists
+        # The page number returned.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of filtered lists.
         self.total_count = total_count
+        # The number of created lists.
         self.usage = usage
 
     def validate(self):
@@ -100,12 +106,17 @@ class ListListsResponseBodyLists(DaraModel):
         name: str = None,
         update_time: str = None,
     ):
-        # 自定义响应页面描述
+        # The list description.
         self.description = description
+        # The ID of the custom list.[](~~2850217~~)
         self.id = id
+        # The list type.
         self.kind = kind
+        # The length of the list information array, which indicates how many items the list contains.
         self.length = length
+        # The list name.
         self.name = name
+        # The time when the list was last modified.
         self.update_time = update_time
 
     def validate(self):

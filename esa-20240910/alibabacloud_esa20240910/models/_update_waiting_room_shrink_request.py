@@ -26,25 +26,73 @@ class UpdateWaitingRoomShrinkRequest(DaraModel):
         waiting_room_id: str = None,
         waiting_room_type: str = None,
     ):
+        # The name of the custom cookie.
         self.cookie_name = cookie_name
+        # The content of the custom waiting room page. You must specify this parameter if you set WaitingRoomType to custom. The content must be Base64-encoded.
         self.custom_page_html = custom_page_html
+        # The description of the waiting room.
         self.description = description
+        # Specifies whether to disable session renewal. Valid values:
+        # 
+        # *   on
+        # *   off
         self.disable_session_renewal_enable = disable_session_renewal_enable
+        # Specifies whether to enable the waiting room. Valid values:
+        # 
+        # *   on
+        # *   off
         self.enable = enable
+        # The hostname and path.
         self.host_name_and_path_shrink = host_name_and_path_shrink
+        # Specifies whether to enable JSON response. If JSON response is enabled, a JSON body is returned for requests to the waiting room with the header Accept: application/json. Valid values:
+        # 
+        # *   on
+        # *   off
         self.json_response_enable = json_response_enable
+        # The language of the waiting room page. You must specify this parameter if you set WaitingRoomType to default. Valid values:
+        # 
+        # *   enus: English.
+        # *   zhcn: Simplified Chinese.
+        # *   zhhk: Traditional Chinese.
         self.language = language
+        # The name of the waiting room.
         self.name = name
+        # The maximum number of new users per minute.
         self.new_users_per_minute = new_users_per_minute
+        # Specifies whether to queue all requests. Valid values:
+        # 
+        # *   on
+        # *   off
         self.queue_all_enable = queue_all_enable
+        # The queuing method. Valid values:
+        # 
+        # *   random: Users gain access to the origin randomly, regardless of the arrival time.
+        # *   fifo: Users gain access to the origin in order of arrival.
+        # *   passthrough: Users pass through the waiting room and go straight to the origin.
+        # *   reject-all: Users are blocked from reaching the origin.
         self.queuing_method = queuing_method
+        # The HTTP status code to return while a user is in the queue. Valid values:
+        # 
+        # *   200
+        # *   202
+        # *   429
         self.queuing_status_code = queuing_status_code
+        # The maximum duration for which a session remains valid after a user leaves the origin. Unit: minutes.
         self.session_duration = session_duration
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # 
         # This parameter is required.
         self.site_id = site_id
+        # The maximum number of active users.
         self.total_active_users = total_active_users
+        # The ID of the waiting room, which can be obtained by calling the [ListWaitingRooms](https://help.aliyun.com/document_detail/2850279.html) operation.
+        # 
         # This parameter is required.
         self.waiting_room_id = waiting_room_id
+        # The type of the waiting room. Valid values:
+        # 
+        # *   default
+        # *   custom
         self.waiting_room_type = waiting_room_type
 
     def validate(self):

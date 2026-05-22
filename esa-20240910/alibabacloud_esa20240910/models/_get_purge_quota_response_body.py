@@ -13,9 +13,12 @@ class GetPurgeQuotaResponseBody(DaraModel):
         usage: str = None,
         usage_30day: str = None,
     ):
+        # The total quota.
         self.quota = quota
         self.quota_30day = quota_30day
+        # The request ID.
         self.request_id = request_id
+        # The quota usage.
         self.usage = usage
         self.usage_30day = usage_30day
 

@@ -10,8 +10,12 @@ class DeleteTransportLayerApplicationRequest(DaraModel):
         application_id: int = None,
         site_id: int = None,
     ):
+        # Application ID, which can be obtained by calling the [ListTransportLayerApplications](~~ListTransportLayerApplications~~) interface.
+        # 
         # This parameter is required.
         self.application_id = application_id
+        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+        # 
         # This parameter is required.
         self.site_id = site_id
 

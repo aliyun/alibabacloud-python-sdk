@@ -9,6 +9,7 @@ class OpenErServiceResponseBody(DaraModel):
         self,
         request_id: str = None,
     ):
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):

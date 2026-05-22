@@ -12,7 +12,9 @@ class GetRoutineStagingEnvIpResponseBody(DaraModel):
         ipv4: List[str] = None,
         request_id: str = None,
     ):
+        # The IPv4 addresses.
         self.ipv4 = ipv4
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

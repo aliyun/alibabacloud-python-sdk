@@ -11,10 +11,23 @@ class SetHttpDDoSAttackRuleActionRequest(DaraModel):
         rule_ids: str = None,
         site_id: int = None,
     ):
+        # Rule action, with values:
+        # 
+        # - **deny**: Block.
+        # 
+        # - **js**: JS Verification.
+        # 
+        # - **observe**: Observe.
+        # 
         # This parameter is required.
         self.rule_action = rule_action
+        # List of rule IDs to be operated on, separated by English commas (,).
+        # > You can call the [DescribeHttpDDoSAttackRules](~~DescribeHttpDDoSAttackRules~~) API to get this parameter.
+        # 
         # This parameter is required.
         self.rule_ids = rule_ids
+        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
+        # 
         # This parameter is required.
         self.site_id = site_id
 

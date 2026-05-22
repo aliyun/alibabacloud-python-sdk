@@ -13,7 +13,9 @@ class ListWaitingRoomRulesResponseBody(DaraModel):
         request_id: str = None,
         waiting_room_rules: List[main_models.ListWaitingRoomRulesResponseBodyWaitingRoomRules] = None,
     ):
+        # Request ID, used for tracking the call status.
         self.request_id = request_id
+        # List of waiting room bypass rules.
         self.waiting_room_rules = waiting_room_rules
 
     def validate(self):
@@ -58,9 +60,17 @@ class ListWaitingRoomRulesResponseBodyWaitingRoomRules(DaraModel):
         rule_name: str = None,
         waiting_room_rule_id: int = None,
     ):
+        # Rule content, using conditional expressions to match user requests. This parameter does not need to be set when adding global configuration. There are two usage scenarios:
+        # - Match all incoming requests: set the value to true
+        # - Match specific requests: set the value to a custom expression, e.g., (http.host eq \\"video.example.com\\")
         self.rule = rule
+        # Rule switch. This parameter does not need to be set when adding global configuration. Value range:
+        # - on: enabled.
+        # - off: disabled.
         self.rule_enable = rule_enable
+        # Rule name. This parameter does not need to be set when adding global configuration.
         self.rule_name = rule_name
+        # Rule ID.
         self.waiting_room_rule_id = waiting_room_rule_id
 
     def validate(self):

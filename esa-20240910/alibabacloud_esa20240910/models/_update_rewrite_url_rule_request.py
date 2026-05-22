@@ -18,17 +18,36 @@ class UpdateRewriteUrlRuleRequest(DaraModel):
         site_id: int = None,
         uri: str = None,
     ):
+        # Configuration ID. It can be obtained by calling the [ListRewriteUrlRules](https://help.aliyun.com/document_detail/2867480.html) interface.
+        # 
         # This parameter is required.
         self.config_id = config_id
+        # The query string after rewriting.
         self.query_string = query_string
+        # Query string rewrite type. Value range:
+        # - static: Static mode.
+        # - dynamic: Dynamic mode.
         self.rewrite_query_string_type = rewrite_query_string_type
+        # URI rewrite type. Value range:
+        # - static: Static mode.
+        # - dynamic: Dynamic mode.
         self.rewrite_uri_type = rewrite_uri_type
+        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
+        # - Match all incoming requests: Set the value to true
+        # - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         self.rule = rule
+        # Rule switch. This parameter is not required when adding a global configuration. Value range:
+        # - on: Enable.
+        # - off: Disable.
         self.rule_enable = rule_enable
+        # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
         self.sequence = sequence
+        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+        # 
         # This parameter is required.
         self.site_id = site_id
+        # The target URI after rewriting.
         self.uri = uri
 
     def validate(self):

@@ -10,7 +10,9 @@ class CreateOriginPoolResponseBody(DaraModel):
         id: int = None,
         request_id: str = None,
     ):
+        # The ID of the newly created origin address pool.
         self.id = id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
