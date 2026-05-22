@@ -1220,6 +1220,154 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.multi_modal_guard_with_options_async(request, runtime)
 
+    def multi_modal_guard_async_with_options(
+        self,
+        request: main_models.MultiModalGuardAsyncRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.MultiModalGuardAsyncResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.service):
+            body['Service'] = request.service
+        if not DaraCore.is_null(request.service_parameters):
+            body['ServiceParameters'] = request.service_parameters
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'MultiModalGuardAsync',
+            version = '2022-03-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.MultiModalGuardAsyncResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def multi_modal_guard_async_with_options_async(
+        self,
+        request: main_models.MultiModalGuardAsyncRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.MultiModalGuardAsyncResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.service):
+            body['Service'] = request.service
+        if not DaraCore.is_null(request.service_parameters):
+            body['ServiceParameters'] = request.service_parameters
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'MultiModalGuardAsync',
+            version = '2022-03-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.MultiModalGuardAsyncResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def multi_modal_guard_async(
+        self,
+        request: main_models.MultiModalGuardAsyncRequest,
+    ) -> main_models.MultiModalGuardAsyncResponse:
+        runtime = RuntimeOptions()
+        return self.multi_modal_guard_async_with_options(request, runtime)
+
+    async def multi_modal_guard_async_async(
+        self,
+        request: main_models.MultiModalGuardAsyncRequest,
+    ) -> main_models.MultiModalGuardAsyncResponse:
+        runtime = RuntimeOptions()
+        return await self.multi_modal_guard_async_with_options_async(request, runtime)
+
+    def multi_modal_guard_async_result_with_options(
+        self,
+        request: main_models.MultiModalGuardAsyncResultRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.MultiModalGuardAsyncResultResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.service):
+            body['Service'] = request.service
+        if not DaraCore.is_null(request.service_parameters):
+            body['ServiceParameters'] = request.service_parameters
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'MultiModalGuardAsyncResult',
+            version = '2022-03-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.MultiModalGuardAsyncResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def multi_modal_guard_async_result_with_options_async(
+        self,
+        request: main_models.MultiModalGuardAsyncResultRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.MultiModalGuardAsyncResultResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.service):
+            body['Service'] = request.service
+        if not DaraCore.is_null(request.service_parameters):
+            body['ServiceParameters'] = request.service_parameters
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'MultiModalGuardAsyncResult',
+            version = '2022-03-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.MultiModalGuardAsyncResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def multi_modal_guard_async_result(
+        self,
+        request: main_models.MultiModalGuardAsyncResultRequest,
+    ) -> main_models.MultiModalGuardAsyncResultResponse:
+        runtime = RuntimeOptions()
+        return self.multi_modal_guard_async_result_with_options(request, runtime)
+
+    async def multi_modal_guard_async_result_async(
+        self,
+        request: main_models.MultiModalGuardAsyncResultRequest,
+    ) -> main_models.MultiModalGuardAsyncResultResponse:
+        runtime = RuntimeOptions()
+        return await self.multi_modal_guard_async_result_with_options_async(request, runtime)
+
     def multi_modal_guard_for_base_64with_options(
         self,
         request: main_models.MultiModalGuardForBase64Request,

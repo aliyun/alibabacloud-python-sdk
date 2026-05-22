@@ -1,3 +1,8 @@
+2026-05-22 Version: 3.3.0
+- Support API MultiModalGuardAsync.
+- Support API MultiModalGuardAsyncResult.
+
+
 2026-05-13 Version: 3.2.4
 - Update API VideoModerationResult: add response parameters Body.Data.FrameResult.Frames.$.Results.$.VlContent.
 
