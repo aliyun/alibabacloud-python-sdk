@@ -112,6 +112,7 @@ class ListApiKeysResponseBodyApiKeys(DaraModel):
         self,
         api_key_id: int = None,
         api_key_value: str = None,
+        auth: main_models.ListApiKeysResponseBodyApiKeysAuth = None,
         created_by: str = None,
         description: str = None,
         disabled: int = None,
@@ -121,6 +122,7 @@ class ListApiKeysResponseBodyApiKeys(DaraModel):
         # API Key ID。
         self.api_key_id = api_key_id
         self.api_key_value = api_key_value
+        self.auth = auth
         self.created_by = created_by
         self.description = description
         self.disabled = disabled
@@ -128,7 +130,8 @@ class ListApiKeysResponseBodyApiKeys(DaraModel):
         self.workspace_id = workspace_id
 
     def validate(self):
-        pass
+        if self.auth:
+            self.auth.validate()
 
     def to_map(self):
         result = dict()
@@ -140,6 +143,9 @@ class ListApiKeysResponseBodyApiKeys(DaraModel):
 
         if self.api_key_value is not None:
             result['apiKeyValue'] = self.api_key_value
+
+        if self.auth is not None:
+            result['auth'] = self.auth.to_map()
 
         if self.created_by is not None:
             result['createdBy'] = self.created_by
@@ -166,6 +172,10 @@ class ListApiKeysResponseBodyApiKeys(DaraModel):
         if m.get('apiKeyValue') is not None:
             self.api_key_value = m.get('apiKeyValue')
 
+        if m.get('auth') is not None:
+            temp_model = main_models.ListApiKeysResponseBodyApiKeysAuth()
+            self.auth = temp_model.from_map(m.get('auth'))
+
         if m.get('createdBy') is not None:
             self.created_by = m.get('createdBy')
 
@@ -180,6 +190,41 @@ class ListApiKeysResponseBodyApiKeys(DaraModel):
 
         if m.get('workspaceId') is not None:
             self.workspace_id = m.get('workspaceId')
+
+        return self
+
+class ListApiKeysResponseBodyApiKeysAuth(DaraModel):
+    def __init__(
+        self,
+        access_ips: List[str] = None,
+        type: str = None,
+    ):
+        self.access_ips = access_ips
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.access_ips is not None:
+            result['accessIps'] = self.access_ips
+
+        if self.type is not None:
+            result['type'] = self.type
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accessIps') is not None:
+            self.access_ips = m.get('accessIps')
+
+        if m.get('type') is not None:
+            self.type = m.get('type')
 
         return self
 

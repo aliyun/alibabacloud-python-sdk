@@ -53,9 +53,13 @@ class Client(OpenApiClient):
             query['description'] = request.description
         if not DaraCore.is_null(request.workspace_id):
             query['workspaceId'] = request.workspace_id
+        body = {}
+        if not DaraCore.is_null(request.auth):
+            body['auth'] = request.auth
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query)
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
             action = 'CreateApiKey',
@@ -65,7 +69,7 @@ class Client(OpenApiClient):
             method = 'POST',
             auth_type = 'AK',
             style = 'ROA',
-            req_body_type = 'json',
+            req_body_type = 'formData',
             body_type = 'json'
         )
         return DaraCore.from_map(
@@ -85,9 +89,13 @@ class Client(OpenApiClient):
             query['description'] = request.description
         if not DaraCore.is_null(request.workspace_id):
             query['workspaceId'] = request.workspace_id
+        body = {}
+        if not DaraCore.is_null(request.auth):
+            body['auth'] = request.auth
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query)
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
             action = 'CreateApiKey',
@@ -97,7 +105,7 @@ class Client(OpenApiClient):
             method = 'POST',
             auth_type = 'AK',
             style = 'ROA',
-            req_body_type = 'json',
+            req_body_type = 'formData',
             body_type = 'json'
         )
         return DaraCore.from_map(
@@ -266,6 +274,150 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.delete_api_key_with_options_async(api_key_id, headers, runtime)
+
+    def disable_api_key_with_options(
+        self,
+        api_key_id: str,
+        request: main_models.DisableApiKeyRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DisableApiKeyResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DisableApiKey',
+            version = '2026-02-10',
+            protocol = 'HTTPS',
+            pathname = f'/modelstudio/apikeys/{DaraURL.percent_encode(api_key_id)}/disable',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DisableApiKeyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def disable_api_key_with_options_async(
+        self,
+        api_key_id: str,
+        request: main_models.DisableApiKeyRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DisableApiKeyResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DisableApiKey',
+            version = '2026-02-10',
+            protocol = 'HTTPS',
+            pathname = f'/modelstudio/apikeys/{DaraURL.percent_encode(api_key_id)}/disable',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DisableApiKeyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def disable_api_key(
+        self,
+        api_key_id: str,
+        request: main_models.DisableApiKeyRequest,
+    ) -> main_models.DisableApiKeyResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.disable_api_key_with_options(api_key_id, request, headers, runtime)
+
+    async def disable_api_key_async(
+        self,
+        api_key_id: str,
+        request: main_models.DisableApiKeyRequest,
+    ) -> main_models.DisableApiKeyResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.disable_api_key_with_options_async(api_key_id, request, headers, runtime)
+
+    def enable_api_key_with_options(
+        self,
+        api_key_id: str,
+        request: main_models.EnableApiKeyRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.EnableApiKeyResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'EnableApiKey',
+            version = '2026-02-10',
+            protocol = 'HTTPS',
+            pathname = f'/modelstudio/apikeys/{DaraURL.percent_encode(api_key_id)}/enable',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EnableApiKeyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def enable_api_key_with_options_async(
+        self,
+        api_key_id: str,
+        request: main_models.EnableApiKeyRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.EnableApiKeyResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'EnableApiKey',
+            version = '2026-02-10',
+            protocol = 'HTTPS',
+            pathname = f'/modelstudio/apikeys/{DaraURL.percent_encode(api_key_id)}/enable',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EnableApiKeyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def enable_api_key(
+        self,
+        api_key_id: str,
+        request: main_models.EnableApiKeyRequest,
+    ) -> main_models.EnableApiKeyResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.enable_api_key_with_options(api_key_id, request, headers, runtime)
+
+    async def enable_api_key_async(
+        self,
+        api_key_id: str,
+        request: main_models.EnableApiKeyRequest,
+    ) -> main_models.EnableApiKeyResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.enable_api_key_with_options_async(api_key_id, request, headers, runtime)
 
     def get_api_key_with_options(
         self,
@@ -513,6 +665,78 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_workspaces_with_options_async(request, headers, runtime)
 
+    def reset_api_key_with_options(
+        self,
+        api_key_id: str,
+        request: main_models.ResetApiKeyRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ResetApiKeyResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'ResetApiKey',
+            version = '2026-02-10',
+            protocol = 'HTTPS',
+            pathname = f'/modelstudio/apikeys/{DaraURL.percent_encode(api_key_id)}/reset',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ResetApiKeyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def reset_api_key_with_options_async(
+        self,
+        api_key_id: str,
+        request: main_models.ResetApiKeyRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ResetApiKeyResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'ResetApiKey',
+            version = '2026-02-10',
+            protocol = 'HTTPS',
+            pathname = f'/modelstudio/apikeys/{DaraURL.percent_encode(api_key_id)}/reset',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ResetApiKeyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def reset_api_key(
+        self,
+        api_key_id: str,
+        request: main_models.ResetApiKeyRequest,
+    ) -> main_models.ResetApiKeyResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.reset_api_key_with_options(api_key_id, request, headers, runtime)
+
+    async def reset_api_key_async(
+        self,
+        api_key_id: str,
+        request: main_models.ResetApiKeyRequest,
+    ) -> main_models.ResetApiKeyResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.reset_api_key_with_options_async(api_key_id, request, headers, runtime)
+
     def update_api_key_with_options(
         self,
         api_key_id: str,
@@ -524,9 +748,13 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.description):
             query['description'] = request.description
+        body = {}
+        if not DaraCore.is_null(request.auth):
+            body['auth'] = request.auth
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query)
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
             action = 'UpdateApiKey',
@@ -536,7 +764,7 @@ class Client(OpenApiClient):
             method = 'PUT',
             auth_type = 'AK',
             style = 'ROA',
-            req_body_type = 'json',
+            req_body_type = 'formData',
             body_type = 'json'
         )
         return DaraCore.from_map(
@@ -555,9 +783,13 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.description):
             query['description'] = request.description
+        body = {}
+        if not DaraCore.is_null(request.auth):
+            body['auth'] = request.auth
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query)
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
             action = 'UpdateApiKey',
@@ -567,7 +799,7 @@ class Client(OpenApiClient):
             method = 'PUT',
             auth_type = 'AK',
             style = 'ROA',
-            req_body_type = 'json',
+            req_body_type = 'formData',
             body_type = 'json'
         )
         return DaraCore.from_map(

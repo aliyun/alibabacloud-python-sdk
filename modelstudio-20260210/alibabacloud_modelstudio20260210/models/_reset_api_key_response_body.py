@@ -2,15 +2,13 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List
-
 from alibabacloud_modelstudio20260210 import models as main_models
 from darabonba.model import DaraModel
 
-class GetApiKeyResponseBody(DaraModel):
+class ResetApiKeyResponseBody(DaraModel):
     def __init__(
         self,
-        api_key: main_models.GetApiKeyResponseBodyApiKey = None,
+        api_key: main_models.ResetApiKeyResponseBodyApiKey = None,
         code: str = None,
         http_status_code: int = None,
         message: str = None,
@@ -57,7 +55,7 @@ class GetApiKeyResponseBody(DaraModel):
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('apiKey') is not None:
-            temp_model = main_models.GetApiKeyResponseBodyApiKey()
+            temp_model = main_models.ResetApiKeyResponseBodyApiKey()
             self.api_key = temp_model.from_map(m.get('apiKey'))
 
         if m.get('code') is not None:
@@ -77,31 +75,20 @@ class GetApiKeyResponseBody(DaraModel):
 
         return self
 
-class GetApiKeyResponseBodyApiKey(DaraModel):
+class ResetApiKeyResponseBodyApiKey(DaraModel):
     def __init__(
         self,
         api_key_id: int = None,
         api_key_value: str = None,
-        auth: main_models.GetApiKeyResponseBodyApiKeyAuth = None,
-        created_by: str = None,
-        description: str = None,
-        disabled: int = None,
-        gmt_create: int = None,
         workspace_id: str = None,
     ):
         # API Key ID。
         self.api_key_id = api_key_id
         self.api_key_value = api_key_value
-        self.auth = auth
-        self.created_by = created_by
-        self.description = description
-        self.disabled = disabled
-        self.gmt_create = gmt_create
         self.workspace_id = workspace_id
 
     def validate(self):
-        if self.auth:
-            self.auth.validate()
+        pass
 
     def to_map(self):
         result = dict()
@@ -113,21 +100,6 @@ class GetApiKeyResponseBodyApiKey(DaraModel):
 
         if self.api_key_value is not None:
             result['apiKeyValue'] = self.api_key_value
-
-        if self.auth is not None:
-            result['auth'] = self.auth.to_map()
-
-        if self.created_by is not None:
-            result['createdBy'] = self.created_by
-
-        if self.description is not None:
-            result['description'] = self.description
-
-        if self.disabled is not None:
-            result['disabled'] = self.disabled
-
-        if self.gmt_create is not None:
-            result['gmtCreate'] = self.gmt_create
 
         if self.workspace_id is not None:
             result['workspaceId'] = self.workspace_id
@@ -142,59 +114,8 @@ class GetApiKeyResponseBodyApiKey(DaraModel):
         if m.get('apiKeyValue') is not None:
             self.api_key_value = m.get('apiKeyValue')
 
-        if m.get('auth') is not None:
-            temp_model = main_models.GetApiKeyResponseBodyApiKeyAuth()
-            self.auth = temp_model.from_map(m.get('auth'))
-
-        if m.get('createdBy') is not None:
-            self.created_by = m.get('createdBy')
-
-        if m.get('description') is not None:
-            self.description = m.get('description')
-
-        if m.get('disabled') is not None:
-            self.disabled = m.get('disabled')
-
-        if m.get('gmtCreate') is not None:
-            self.gmt_create = m.get('gmtCreate')
-
         if m.get('workspaceId') is not None:
             self.workspace_id = m.get('workspaceId')
-
-        return self
-
-class GetApiKeyResponseBodyApiKeyAuth(DaraModel):
-    def __init__(
-        self,
-        access_ips: List[str] = None,
-        type: str = None,
-    ):
-        self.access_ips = access_ips
-        self.type = type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        _map = super().to_map()
-        if _map is not None:
-            result = _map
-        if self.access_ips is not None:
-            result['accessIps'] = self.access_ips
-
-        if self.type is not None:
-            result['type'] = self.type
-
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('accessIps') is not None:
-            self.access_ips = m.get('accessIps')
-
-        if m.get('type') is not None:
-            self.type = m.get('type')
 
         return self
 
