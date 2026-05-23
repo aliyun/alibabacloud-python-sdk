@@ -9,14 +9,18 @@ from darabonba.model import DaraModel
 class Attachment(DaraModel):
     def __init__(
         self,
+        attach_resource_id: str = None,
         attach_resource_ids: List[str] = None,
+        attach_resource_parent_ids: List[str] = None,
         attach_resource_type: str = None,
         environment_id: str = None,
         gateway_id: str = None,
         policy_attachment_id: str = None,
     ):
+        self.attach_resource_id = attach_resource_id
         # The resource IDs.
         self.attach_resource_ids = attach_resource_ids
+        self.attach_resource_parent_ids = attach_resource_parent_ids
         # The supported mount point type. Valid values:
         # 
         # *   HttpApi: an HTTP API
@@ -42,8 +46,14 @@ class Attachment(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.attach_resource_id is not None:
+            result['attachResourceId'] = self.attach_resource_id
+
         if self.attach_resource_ids is not None:
             result['attachResourceIds'] = self.attach_resource_ids
+
+        if self.attach_resource_parent_ids is not None:
+            result['attachResourceParentIds'] = self.attach_resource_parent_ids
 
         if self.attach_resource_type is not None:
             result['attachResourceType'] = self.attach_resource_type
@@ -61,8 +71,14 @@ class Attachment(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('attachResourceId') is not None:
+            self.attach_resource_id = m.get('attachResourceId')
+
         if m.get('attachResourceIds') is not None:
             self.attach_resource_ids = m.get('attachResourceIds')
+
+        if m.get('attachResourceParentIds') is not None:
+            self.attach_resource_parent_ids = m.get('attachResourceParentIds')
 
         if m.get('attachResourceType') is not None:
             self.attach_resource_type = m.get('attachResourceType')
