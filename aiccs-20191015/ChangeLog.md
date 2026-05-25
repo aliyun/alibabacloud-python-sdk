@@ -1,3 +1,8 @@
+2026-05-25 Version: 5.1.0
+- Support API LlmFullDuplexCallOperate.
+- Support API LlmSmartCallFullDuplex.
+
+
 2026-05-18 Version: 5.0.0
 - Update API PageQueryAgentListNew: update request parameters AgentId' type has changed.
 - Update API PageQueryAgentListNew: update request parameters AgentId' format has changed.

@@ -9987,6 +9987,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_task_detail_with_options_async(request, runtime)
 
+    def llm_full_duplex_call_operate_with_options(
+        self,
+        request: main_models.LlmFullDuplexCallOperateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.LlmFullDuplexCallOperateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.call_id):
+            query['CallId'] = request.call_id
+        if not DaraCore.is_null(request.command):
+            query['Command'] = request.command
+        if not DaraCore.is_null(request.param):
+            query['Param'] = request.param
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'LlmFullDuplexCallOperate',
+            version = '2019-10-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.LlmFullDuplexCallOperateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def llm_full_duplex_call_operate_with_options_async(
+        self,
+        request: main_models.LlmFullDuplexCallOperateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.LlmFullDuplexCallOperateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.call_id):
+            query['CallId'] = request.call_id
+        if not DaraCore.is_null(request.command):
+            query['Command'] = request.command
+        if not DaraCore.is_null(request.param):
+            query['Param'] = request.param
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'LlmFullDuplexCallOperate',
+            version = '2019-10-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.LlmFullDuplexCallOperateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def llm_full_duplex_call_operate(
+        self,
+        request: main_models.LlmFullDuplexCallOperateRequest,
+    ) -> main_models.LlmFullDuplexCallOperateResponse:
+        runtime = RuntimeOptions()
+        return self.llm_full_duplex_call_operate_with_options(request, runtime)
+
+    async def llm_full_duplex_call_operate_async(
+        self,
+        request: main_models.LlmFullDuplexCallOperateRequest,
+    ) -> main_models.LlmFullDuplexCallOperateResponse:
+        runtime = RuntimeOptions()
+        return await self.llm_full_duplex_call_operate_with_options_async(request, runtime)
+
     def llm_smart_call_with_options(
         self,
         tmp_req: main_models.LlmSmartCallRequest,
@@ -10234,6 +10312,116 @@ class Client(OpenApiClient):
     ) -> main_models.LlmSmartCallEncryptResponse:
         runtime = RuntimeOptions()
         return await self.llm_smart_call_encrypt_with_options_async(request, runtime)
+
+    def llm_smart_call_full_duplex_with_options(
+        self,
+        tmp_req: main_models.LlmSmartCallFullDuplexRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.LlmSmartCallFullDuplexResponse:
+        tmp_req.validate()
+        request = main_models.LlmSmartCallFullDuplexShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.start_word_param):
+            request.start_word_param_shrink = Utils.array_to_string_with_specified_style(tmp_req.start_word_param, 'StartWordParam', 'json')
+        query = {}
+        if not DaraCore.is_null(request.application_code):
+            query['ApplicationCode'] = request.application_code
+        if not DaraCore.is_null(request.called_number):
+            query['CalledNumber'] = request.called_number
+        if not DaraCore.is_null(request.caller_number):
+            query['CallerNumber'] = request.caller_number
+        if not DaraCore.is_null(request.out_id):
+            query['OutId'] = request.out_id
+        if not DaraCore.is_null(request.session_timeout):
+            query['SessionTimeout'] = request.session_timeout
+        if not DaraCore.is_null(request.start_word_param_shrink):
+            query['StartWordParam'] = request.start_word_param_shrink
+        if not DaraCore.is_null(request.tts_speed):
+            query['TtsSpeed'] = request.tts_speed
+        if not DaraCore.is_null(request.tts_voice_code):
+            query['TtsVoiceCode'] = request.tts_voice_code
+        if not DaraCore.is_null(request.tts_volume):
+            query['TtsVolume'] = request.tts_volume
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'LlmSmartCallFullDuplex',
+            version = '2019-10-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.LlmSmartCallFullDuplexResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def llm_smart_call_full_duplex_with_options_async(
+        self,
+        tmp_req: main_models.LlmSmartCallFullDuplexRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.LlmSmartCallFullDuplexResponse:
+        tmp_req.validate()
+        request = main_models.LlmSmartCallFullDuplexShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.start_word_param):
+            request.start_word_param_shrink = Utils.array_to_string_with_specified_style(tmp_req.start_word_param, 'StartWordParam', 'json')
+        query = {}
+        if not DaraCore.is_null(request.application_code):
+            query['ApplicationCode'] = request.application_code
+        if not DaraCore.is_null(request.called_number):
+            query['CalledNumber'] = request.called_number
+        if not DaraCore.is_null(request.caller_number):
+            query['CallerNumber'] = request.caller_number
+        if not DaraCore.is_null(request.out_id):
+            query['OutId'] = request.out_id
+        if not DaraCore.is_null(request.session_timeout):
+            query['SessionTimeout'] = request.session_timeout
+        if not DaraCore.is_null(request.start_word_param_shrink):
+            query['StartWordParam'] = request.start_word_param_shrink
+        if not DaraCore.is_null(request.tts_speed):
+            query['TtsSpeed'] = request.tts_speed
+        if not DaraCore.is_null(request.tts_voice_code):
+            query['TtsVoiceCode'] = request.tts_voice_code
+        if not DaraCore.is_null(request.tts_volume):
+            query['TtsVolume'] = request.tts_volume
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'LlmSmartCallFullDuplex',
+            version = '2019-10-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.LlmSmartCallFullDuplexResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def llm_smart_call_full_duplex(
+        self,
+        request: main_models.LlmSmartCallFullDuplexRequest,
+    ) -> main_models.LlmSmartCallFullDuplexResponse:
+        runtime = RuntimeOptions()
+        return self.llm_smart_call_full_duplex_with_options(request, runtime)
+
+    async def llm_smart_call_full_duplex_async(
+        self,
+        request: main_models.LlmSmartCallFullDuplexRequest,
+    ) -> main_models.LlmSmartCallFullDuplexResponse:
+        runtime = RuntimeOptions()
+        return await self.llm_smart_call_full_duplex_with_options_async(request, runtime)
 
     def make_call_with_options(
         self,

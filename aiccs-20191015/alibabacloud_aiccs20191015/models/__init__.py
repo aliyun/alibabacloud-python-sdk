@@ -382,6 +382,9 @@ from ._list_task_response import ListTaskResponse
 from ._list_task_detail_request import ListTaskDetailRequest
 from ._list_task_detail_response_body import ListTaskDetailResponseBody
 from ._list_task_detail_response import ListTaskDetailResponse
+from ._llm_full_duplex_call_operate_request import LlmFullDuplexCallOperateRequest
+from ._llm_full_duplex_call_operate_response_body import LlmFullDuplexCallOperateResponseBody
+from ._llm_full_duplex_call_operate_response import LlmFullDuplexCallOperateResponse
 from ._llm_smart_call_request import LlmSmartCallRequest
 from ._llm_smart_call_shrink_request import LlmSmartCallShrinkRequest
 from ._llm_smart_call_response_body import LlmSmartCallResponseBody
@@ -390,6 +393,10 @@ from ._llm_smart_call_encrypt_request import LlmSmartCallEncryptRequest
 from ._llm_smart_call_encrypt_shrink_request import LlmSmartCallEncryptShrinkRequest
 from ._llm_smart_call_encrypt_response_body import LlmSmartCallEncryptResponseBody
 from ._llm_smart_call_encrypt_response import LlmSmartCallEncryptResponse
+from ._llm_smart_call_full_duplex_request import LlmSmartCallFullDuplexRequest
+from ._llm_smart_call_full_duplex_shrink_request import LlmSmartCallFullDuplexShrinkRequest
+from ._llm_smart_call_full_duplex_response_body import LlmSmartCallFullDuplexResponseBody
+from ._llm_smart_call_full_duplex_response import LlmSmartCallFullDuplexResponse
 from ._make_call_request import MakeCallRequest
 from ._make_call_response_body import MakeCallResponseBody
 from ._make_call_response import MakeCallResponse
@@ -1079,6 +1086,9 @@ __all__ = [
     ListTaskDetailRequest,
     ListTaskDetailResponseBody,
     ListTaskDetailResponse,
+    LlmFullDuplexCallOperateRequest,
+    LlmFullDuplexCallOperateResponseBody,
+    LlmFullDuplexCallOperateResponse,
     LlmSmartCallRequest,
     LlmSmartCallShrinkRequest,
     LlmSmartCallResponseBody,
@@ -1087,6 +1097,10 @@ __all__ = [
     LlmSmartCallEncryptShrinkRequest,
     LlmSmartCallEncryptResponseBody,
     LlmSmartCallEncryptResponse,
+    LlmSmartCallFullDuplexRequest,
+    LlmSmartCallFullDuplexShrinkRequest,
+    LlmSmartCallFullDuplexResponseBody,
+    LlmSmartCallFullDuplexResponse,
     MakeCallRequest,
     MakeCallResponseBody,
     MakeCallResponse,
