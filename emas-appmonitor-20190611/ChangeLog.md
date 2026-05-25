@@ -1,3 +1,24 @@
+2026-05-25 Version: 1.3.0
+- Support API CreateTlogTask.
+- Support API GetTlogCollectList.
+- Support API GetTlogDeviceInfo.
+- Support API GetTlogDeviceList.
+- Support API GetTlogTaskCollections.
+- Support API GetTlogTaskInfo.
+- Support API SearchTlog.
+- Update API GetError: add response parameters Body.Model.Controllers.
+- Update API GetError: add response parameters Body.Model.FileDescriptor.
+- Update API GetError: add response parameters Body.Model.LagCost.
+- Update API GetError: add response parameters Body.Model.LaunchedCrashStage.
+- Update API GetError: add response parameters Body.Model.MemInfo.
+- Update API GetIssue: add response parameters Body.Model.Reason.
+- Update API GetIssue: add response parameters Body.Model.Type.
+- Update API GetIssues: add response parameters Body.Model.Items.$.LagCost.
+- Update API GetIssues: add response parameters Body.Model.Items.$.Reason.
+- Update API GetIssues: add response parameters Body.Model.Items.$.Tags.
+- Update API GetIssues: add response parameters Body.Model.Items.$.Type.
+
+
 2025-10-09 Version: 1.2.3
 - Update API GetError: add response parameters Body.Model.IsJailbroken.
 - Update API GetError: add response parameters Body.Model.IsSimulator.
