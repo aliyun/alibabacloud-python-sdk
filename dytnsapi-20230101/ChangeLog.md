@@ -1,3 +1,8 @@
+2026-05-25 Version: 1.2.0
+- Support API GetIdentificationResult.
+- Support API GetIdentificationSession.
+
+
 2025-03-02 Version: 1.1.0
 - Support API DescribeNumberHLR.
 - Support API DescribeNumberMccMnc.
