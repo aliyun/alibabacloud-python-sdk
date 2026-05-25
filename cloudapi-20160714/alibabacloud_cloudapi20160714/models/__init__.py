@@ -94,6 +94,9 @@ from ._create_private_dnsresponse import CreatePrivateDNSResponse
 from ._create_signature_request import CreateSignatureRequest
 from ._create_signature_response_body import CreateSignatureResponseBody
 from ._create_signature_response import CreateSignatureResponse
+from ._create_stage_model_request import CreateStageModelRequest
+from ._create_stage_model_response_body import CreateStageModelResponseBody
+from ._create_stage_model_response import CreateStageModelResponse
 from ._create_traffic_control_request import CreateTrafficControlRequest
 from ._create_traffic_control_response_body import CreateTrafficControlResponseBody
 from ._create_traffic_control_response import CreateTrafficControlResponse
@@ -166,6 +169,9 @@ from ._delete_private_dnsresponse import DeletePrivateDNSResponse
 from ._delete_signature_request import DeleteSignatureRequest
 from ._delete_signature_response_body import DeleteSignatureResponseBody
 from ._delete_signature_response import DeleteSignatureResponse
+from ._delete_stage_model_request import DeleteStageModelRequest
+from ._delete_stage_model_response_body import DeleteStageModelResponseBody
+from ._delete_stage_model_response import DeleteStageModelResponse
 from ._delete_traffic_control_request import DeleteTrafficControlRequest
 from ._delete_traffic_control_response_body import DeleteTrafficControlResponseBody
 from ._delete_traffic_control_response import DeleteTrafficControlResponse
@@ -415,6 +421,9 @@ from ._describe_signatures_response import DescribeSignaturesResponse
 from ._describe_signatures_by_api_request import DescribeSignaturesByApiRequest
 from ._describe_signatures_by_api_response_body import DescribeSignaturesByApiResponseBody
 from ._describe_signatures_by_api_response import DescribeSignaturesByApiResponse
+from ._describe_stage_models_request import DescribeStageModelsRequest
+from ._describe_stage_models_response_body import DescribeStageModelsResponseBody
+from ._describe_stage_models_response import DescribeStageModelsResponse
 from ._describe_summary_data_request import DescribeSummaryDataRequest
 from ._describe_summary_data_response_body import DescribeSummaryDataResponseBody
 from ._describe_summary_data_response import DescribeSummaryDataResponse
@@ -543,6 +552,9 @@ from ._modify_plugin_response import ModifyPluginResponse
 from ._modify_signature_request import ModifySignatureRequest
 from ._modify_signature_response_body import ModifySignatureResponseBody
 from ._modify_signature_response import ModifySignatureResponse
+from ._modify_stage_model_request import ModifyStageModelRequest
+from ._modify_stage_model_response_body import ModifyStageModelResponseBody
+from ._modify_stage_model_response import ModifyStageModelResponse
 from ._modify_traffic_control_request import ModifyTrafficControlRequest
 from ._modify_traffic_control_response_body import ModifyTrafficControlResponseBody
 from ._modify_traffic_control_response import ModifyTrafficControlResponse
@@ -951,6 +963,7 @@ from ._describe_signatures_response_body import DescribeSignaturesResponseBodySi
 from ._describe_signatures_response_body import DescribeSignaturesResponseBodySignatureInfos
 from ._describe_signatures_by_api_response_body import DescribeSignaturesByApiResponseBodySignaturesSignatureItem
 from ._describe_signatures_by_api_response_body import DescribeSignaturesByApiResponseBodySignatures
+from ._describe_stage_models_response_body import DescribeStageModelsResponseBodyStageModelInfoList
 from ._describe_system_parameters_response_body import DescribeSystemParametersResponseBodySystemParamsSystemParamItem
 from ._describe_system_parameters_response_body import DescribeSystemParametersResponseBodySystemParams
 from ._describe_traffic_controls_response_body import DescribeTrafficControlsResponseBodyTrafficControlsTrafficControlSpecialPoliciesSpecialPolicySpecialsSpecial
@@ -1110,6 +1123,9 @@ __all__ = [
     CreateSignatureRequest,
     CreateSignatureResponseBody,
     CreateSignatureResponse,
+    CreateStageModelRequest,
+    CreateStageModelResponseBody,
+    CreateStageModelResponse,
     CreateTrafficControlRequest,
     CreateTrafficControlResponseBody,
     CreateTrafficControlResponse,
@@ -1182,6 +1198,9 @@ __all__ = [
     DeleteSignatureRequest,
     DeleteSignatureResponseBody,
     DeleteSignatureResponse,
+    DeleteStageModelRequest,
+    DeleteStageModelResponseBody,
+    DeleteStageModelResponse,
     DeleteTrafficControlRequest,
     DeleteTrafficControlResponseBody,
     DeleteTrafficControlResponse,
@@ -1431,6 +1450,9 @@ __all__ = [
     DescribeSignaturesByApiRequest,
     DescribeSignaturesByApiResponseBody,
     DescribeSignaturesByApiResponse,
+    DescribeStageModelsRequest,
+    DescribeStageModelsResponseBody,
+    DescribeStageModelsResponse,
     DescribeSummaryDataRequest,
     DescribeSummaryDataResponseBody,
     DescribeSummaryDataResponse,
@@ -1559,6 +1581,9 @@ __all__ = [
     ModifySignatureRequest,
     ModifySignatureResponseBody,
     ModifySignatureResponse,
+    ModifyStageModelRequest,
+    ModifyStageModelResponseBody,
+    ModifyStageModelResponse,
     ModifyTrafficControlRequest,
     ModifyTrafficControlResponseBody,
     ModifyTrafficControlResponse,
@@ -1967,6 +1992,7 @@ __all__ = [
     DescribeSignaturesResponseBodySignatureInfos,
     DescribeSignaturesByApiResponseBodySignaturesSignatureItem,
     DescribeSignaturesByApiResponseBodySignatures,
+    DescribeStageModelsResponseBodyStageModelInfoList,
     DescribeSystemParametersResponseBodySystemParamsSystemParamItem,
     DescribeSystemParametersResponseBodySystemParams,
     DescribeTrafficControlsResponseBodyTrafficControlsTrafficControlSpecialPoliciesSpecialPolicySpecialsSpecial,
