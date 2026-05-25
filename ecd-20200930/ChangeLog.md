@@ -1,3 +1,7 @@
+2026-05-25 Version: 4.26.1
+- Update API DescribeRecordFile: add request parameters ResourceType.
+
+
 2026-05-25 Version: 4.26.0
 - Support API QueryHistoryUsageDurationRank.
 

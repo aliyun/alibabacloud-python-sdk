@@ -14982,6 +14982,8 @@ class Client(OpenApiClient):
             query['RecordType'] = request.record_type
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
         if not DaraCore.is_null(request.start_time):
             query['StartTime'] = request.start_time
         if not DaraCore.is_null(request.status):
@@ -15032,6 +15034,8 @@ class Client(OpenApiClient):
             query['RecordType'] = request.record_type
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
         if not DaraCore.is_null(request.start_time):
             query['StartTime'] = request.start_time
         if not DaraCore.is_null(request.status):

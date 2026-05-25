@@ -17,6 +17,7 @@ class DescribeRecordFileRequest(DaraModel):
         page_size: int = None,
         record_type: str = None,
         region_id: str = None,
+        resource_type: str = None,
         start_time: str = None,
         status: int = None,
     ):
@@ -31,6 +32,7 @@ class DescribeRecordFileRequest(DaraModel):
         self.record_type = record_type
         # This parameter is required.
         self.region_id = region_id
+        self.resource_type = resource_type
         self.start_time = start_time
         self.status = status
 
@@ -72,6 +74,9 @@ class DescribeRecordFileRequest(DaraModel):
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+
         if self.start_time is not None:
             result['StartTime'] = self.start_time
 
@@ -111,6 +116,9 @@ class DescribeRecordFileRequest(DaraModel):
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
 
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
