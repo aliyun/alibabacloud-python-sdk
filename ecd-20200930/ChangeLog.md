@@ -1,3 +1,7 @@
+2026-05-25 Version: 4.26.0
+- Support API QueryHistoryUsageDurationRank.
+
+
 2026-05-13 Version: 4.25.2
 - Update API DescribeCenterPolicyList: add response parameters Body.DescribePolicyGroups.$.AdminKeyboardOnFullScreen.
 - Update API DescribeCenterPolicyList: add response parameters Body.DescribePolicyGroups.$.AdminKeyboardOnWindows.

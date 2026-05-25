@@ -24833,6 +24833,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.query_history_metric_distribution_with_options_async(request, runtime)
 
+    def query_history_usage_duration_rank_with_options(
+        self,
+        request: main_models.QueryHistoryUsageDurationRankRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryHistoryUsageDurationRankResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not DaraCore.is_null(request.end_date):
+            query['EndDate'] = request.end_date
+        if not DaraCore.is_null(request.limit):
+            query['Limit'] = request.limit
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.start_date):
+            query['StartDate'] = request.start_date
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryHistoryUsageDurationRank',
+            version = '2020-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryHistoryUsageDurationRankResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_history_usage_duration_rank_with_options_async(
+        self,
+        request: main_models.QueryHistoryUsageDurationRankRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryHistoryUsageDurationRankResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not DaraCore.is_null(request.end_date):
+            query['EndDate'] = request.end_date
+        if not DaraCore.is_null(request.limit):
+            query['Limit'] = request.limit
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.start_date):
+            query['StartDate'] = request.start_date
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryHistoryUsageDurationRank',
+            version = '2020-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryHistoryUsageDurationRankResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_history_usage_duration_rank(
+        self,
+        request: main_models.QueryHistoryUsageDurationRankRequest,
+    ) -> main_models.QueryHistoryUsageDurationRankResponse:
+        runtime = RuntimeOptions()
+        return self.query_history_usage_duration_rank_with_options(request, runtime)
+
+    async def query_history_usage_duration_rank_async(
+        self,
+        request: main_models.QueryHistoryUsageDurationRankRequest,
+    ) -> main_models.QueryHistoryUsageDurationRankResponse:
+        runtime = RuntimeOptions()
+        return await self.query_history_usage_duration_rank_with_options_async(request, runtime)
+
     def reboot_desktops_with_options(
         self,
         request: main_models.RebootDesktopsRequest,

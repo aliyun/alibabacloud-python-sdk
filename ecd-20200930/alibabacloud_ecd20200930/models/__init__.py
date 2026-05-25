@@ -759,6 +759,9 @@ from ._query_history_avg_metric_list_response import QueryHistoryAvgMetricListRe
 from ._query_history_metric_distribution_request import QueryHistoryMetricDistributionRequest
 from ._query_history_metric_distribution_response_body import QueryHistoryMetricDistributionResponseBody
 from ._query_history_metric_distribution_response import QueryHistoryMetricDistributionResponse
+from ._query_history_usage_duration_rank_request import QueryHistoryUsageDurationRankRequest
+from ._query_history_usage_duration_rank_response_body import QueryHistoryUsageDurationRankResponseBody
+from ._query_history_usage_duration_rank_response import QueryHistoryUsageDurationRankResponse
 from ._reboot_desktops_request import RebootDesktopsRequest
 from ._reboot_desktops_response_body import RebootDesktopsResponseBody
 from ._reboot_desktops_response import RebootDesktopsResponse
@@ -1148,6 +1151,7 @@ from ._query_history_avg_metric_list_response_body import QueryHistoryAvgMetricL
 from ._query_history_avg_metric_list_response_body import QueryHistoryAvgMetricListResponseBodyAvgMetricList
 from ._query_history_metric_distribution_request import QueryHistoryMetricDistributionRequestRanges
 from ._query_history_metric_distribution_response_body import QueryHistoryMetricDistributionResponseBodyDistributionList
+from ._query_history_usage_duration_rank_response_body import QueryHistoryUsageDurationRankResponseBodyUsageDurationList
 from ._rebuild_desktops_response_body import RebuildDesktopsResponseBodyRebuildResults
 from ._remove_file_permission_request import RemoveFilePermissionRequestMemberListCdsIdentity
 from ._remove_file_permission_request import RemoveFilePermissionRequestMemberList
@@ -1918,6 +1922,9 @@ __all__ = [
     QueryHistoryMetricDistributionRequest,
     QueryHistoryMetricDistributionResponseBody,
     QueryHistoryMetricDistributionResponse,
+    QueryHistoryUsageDurationRankRequest,
+    QueryHistoryUsageDurationRankResponseBody,
+    QueryHistoryUsageDurationRankResponse,
     RebootDesktopsRequest,
     RebootDesktopsResponseBody,
     RebootDesktopsResponse,
@@ -2307,6 +2314,7 @@ __all__ = [
     QueryHistoryAvgMetricListResponseBodyAvgMetricList,
     QueryHistoryMetricDistributionRequestRanges,
     QueryHistoryMetricDistributionResponseBodyDistributionList,
+    QueryHistoryUsageDurationRankResponseBodyUsageDurationList,
     RebuildDesktopsResponseBodyRebuildResults,
     RemoveFilePermissionRequestMemberListCdsIdentity,
     RemoveFilePermissionRequestMemberList,
