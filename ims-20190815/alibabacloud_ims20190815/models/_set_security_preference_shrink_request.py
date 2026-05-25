@@ -12,6 +12,7 @@ class SetSecurityPreferenceShrinkRequest(DaraModel):
         allow_user_to_manage_access_keys: bool = None,
         allow_user_to_manage_mfadevices: bool = None,
         allow_user_to_manage_personal_ding_talk: bool = None,
+        allow_user_to_manage_service_credentials: bool = None,
         enable_save_mfaticket: bool = None,
         login_network_masks: str = None,
         login_session_duration: int = None,
@@ -46,6 +47,7 @@ class SetSecurityPreferenceShrinkRequest(DaraModel):
         # *   true (default)
         # *   false
         self.allow_user_to_manage_personal_ding_talk = allow_user_to_manage_personal_ding_talk
+        self.allow_user_to_manage_service_credentials = allow_user_to_manage_service_credentials
         # Specifies whether RAM users can remember the MFA devices for seven days. Valid values:
         # 
         # *   true
@@ -105,6 +107,9 @@ class SetSecurityPreferenceShrinkRequest(DaraModel):
         if self.allow_user_to_manage_personal_ding_talk is not None:
             result['AllowUserToManagePersonalDingTalk'] = self.allow_user_to_manage_personal_ding_talk
 
+        if self.allow_user_to_manage_service_credentials is not None:
+            result['AllowUserToManageServiceCredentials'] = self.allow_user_to_manage_service_credentials
+
         if self.enable_save_mfaticket is not None:
             result['EnableSaveMFATicket'] = self.enable_save_mfaticket
 
@@ -147,6 +152,9 @@ class SetSecurityPreferenceShrinkRequest(DaraModel):
 
         if m.get('AllowUserToManagePersonalDingTalk') is not None:
             self.allow_user_to_manage_personal_ding_talk = m.get('AllowUserToManagePersonalDingTalk')
+
+        if m.get('AllowUserToManageServiceCredentials') is not None:
+            self.allow_user_to_manage_service_credentials = m.get('AllowUserToManageServiceCredentials')
 
         if m.get('EnableSaveMFATicket') is not None:
             self.enable_save_mfaticket = m.get('EnableSaveMFATicket')

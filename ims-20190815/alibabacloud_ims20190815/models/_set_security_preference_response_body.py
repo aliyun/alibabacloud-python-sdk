@@ -343,9 +343,11 @@ class SetSecurityPreferenceResponseBodySecurityPreferenceAccessKeyPreference(Dar
     def __init__(
         self,
         allow_user_to_manage_access_keys: bool = None,
+        allow_user_to_manage_service_credentials: bool = None,
     ):
         # Indicates whether RAM users can manage their AccessKey pairs.
         self.allow_user_to_manage_access_keys = allow_user_to_manage_access_keys
+        self.allow_user_to_manage_service_credentials = allow_user_to_manage_service_credentials
 
     def validate(self):
         pass
@@ -358,12 +360,18 @@ class SetSecurityPreferenceResponseBodySecurityPreferenceAccessKeyPreference(Dar
         if self.allow_user_to_manage_access_keys is not None:
             result['AllowUserToManageAccessKeys'] = self.allow_user_to_manage_access_keys
 
+        if self.allow_user_to_manage_service_credentials is not None:
+            result['AllowUserToManageServiceCredentials'] = self.allow_user_to_manage_service_credentials
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('AllowUserToManageAccessKeys') is not None:
             self.allow_user_to_manage_access_keys = m.get('AllowUserToManageAccessKeys')
+
+        if m.get('AllowUserToManageServiceCredentials') is not None:
+            self.allow_user_to_manage_service_credentials = m.get('AllowUserToManageServiceCredentials')
 
         return self
 

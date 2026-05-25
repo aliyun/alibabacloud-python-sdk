@@ -5955,6 +5955,8 @@ class Client(OpenApiClient):
             query['AllowUserToManageMFADevices'] = request.allow_user_to_manage_mfadevices
         if not DaraCore.is_null(request.allow_user_to_manage_personal_ding_talk):
             query['AllowUserToManagePersonalDingTalk'] = request.allow_user_to_manage_personal_ding_talk
+        if not DaraCore.is_null(request.allow_user_to_manage_service_credentials):
+            query['AllowUserToManageServiceCredentials'] = request.allow_user_to_manage_service_credentials
         if not DaraCore.is_null(request.enable_save_mfaticket):
             query['EnableSaveMFATicket'] = request.enable_save_mfaticket
         if not DaraCore.is_null(request.login_network_masks):
@@ -6011,6 +6013,8 @@ class Client(OpenApiClient):
             query['AllowUserToManageMFADevices'] = request.allow_user_to_manage_mfadevices
         if not DaraCore.is_null(request.allow_user_to_manage_personal_ding_talk):
             query['AllowUserToManagePersonalDingTalk'] = request.allow_user_to_manage_personal_ding_talk
+        if not DaraCore.is_null(request.allow_user_to_manage_service_credentials):
+            query['AllowUserToManageServiceCredentials'] = request.allow_user_to_manage_service_credentials
         if not DaraCore.is_null(request.enable_save_mfaticket):
             query['EnableSaveMFATicket'] = request.enable_save_mfaticket
         if not DaraCore.is_null(request.login_network_masks):

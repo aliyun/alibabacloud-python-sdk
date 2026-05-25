@@ -1,3 +1,10 @@
+2026-05-25 Version: 3.3.7
+- Update API GetAccountSummary: add response parameters Body.SummaryMap.ServiceCredentialsPerUserPerServiceQuota.
+- Update API GetSecurityPreference: add response parameters Body.SecurityPreference.AccessKeyPreference.AllowUserToManageServiceCredentials.
+- Update API SetSecurityPreference: add request parameters AllowUserToManageServiceCredentials.
+- Update API SetSecurityPreference: add response parameters Body.SecurityPreference.AccessKeyPreference.AllowUserToManageServiceCredentials.
+
+
 2026-03-30 Version: 3.3.6
 - Update API GetAccountSummary: add response parameters Body.SummaryMap.AuthorizedClientPerUserQuota.
 

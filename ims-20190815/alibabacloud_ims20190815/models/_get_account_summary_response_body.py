@@ -68,6 +68,7 @@ class GetAccountSummaryResponseBodySummaryMap(DaraModel):
         policy_size_quota: int = None,
         roles: int = None,
         roles_quota: int = None,
+        service_credentials_per_user_per_service_quota: int = None,
         users: int = None,
         users_quota: int = None,
         versions_per_policy_quota: int = None,
@@ -113,6 +114,7 @@ class GetAccountSummaryResponseBodySummaryMap(DaraModel):
         self.roles = roles
         # The maximum number of RAM roles that can be created.
         self.roles_quota = roles_quota
+        self.service_credentials_per_user_per_service_quota = service_credentials_per_user_per_service_quota
         # The number of RAM users.
         self.users = users
         # The maximum number of RAM users that can be created.
@@ -193,6 +195,9 @@ class GetAccountSummaryResponseBodySummaryMap(DaraModel):
         if self.roles_quota is not None:
             result['RolesQuota'] = self.roles_quota
 
+        if self.service_credentials_per_user_per_service_quota is not None:
+            result['ServiceCredentialsPerUserPerServiceQuota'] = self.service_credentials_per_user_per_service_quota
+
         if self.users is not None:
             result['Users'] = self.users
 
@@ -271,6 +276,9 @@ class GetAccountSummaryResponseBodySummaryMap(DaraModel):
 
         if m.get('RolesQuota') is not None:
             self.roles_quota = m.get('RolesQuota')
+
+        if m.get('ServiceCredentialsPerUserPerServiceQuota') is not None:
+            self.service_credentials_per_user_per_service_quota = m.get('ServiceCredentialsPerUserPerServiceQuota')
 
         if m.get('Users') is not None:
             self.users = m.get('Users')
