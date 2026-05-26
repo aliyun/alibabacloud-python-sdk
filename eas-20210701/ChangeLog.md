@@ -1,3 +1,10 @@
+2026-05-26 Version: 6.15.0
+- Support API CreateConfig.
+- Support API DeleteConfig.
+- Support API ListConfigs.
+- Support API UpdateConfig.
+
+
 2026-05-11 Version: 6.14.0
 - Support API CreateServiceRollout.
 - Support API DeleteServiceRollout.

@@ -594,6 +594,98 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_benchmark_task_with_options_async(request, headers, runtime)
 
+    def create_config_with_options(
+        self,
+        cluster_id: str,
+        config_type: str,
+        name: str,
+        config_key: str,
+        request: main_models.CreateConfigRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateConfigResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.value):
+            body['Value'] = request.value
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateConfig',
+            version = '2021-07-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/configs/{DaraURL.percent_encode(cluster_id)}/{DaraURL.percent_encode(config_type)}/{DaraURL.percent_encode(name)}/{DaraURL.percent_encode(config_key)}',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_config_with_options_async(
+        self,
+        cluster_id: str,
+        config_type: str,
+        name: str,
+        config_key: str,
+        request: main_models.CreateConfigRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateConfigResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.value):
+            body['Value'] = request.value
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateConfig',
+            version = '2021-07-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/configs/{DaraURL.percent_encode(cluster_id)}/{DaraURL.percent_encode(config_type)}/{DaraURL.percent_encode(name)}/{DaraURL.percent_encode(config_key)}',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_config(
+        self,
+        cluster_id: str,
+        config_type: str,
+        name: str,
+        config_key: str,
+        request: main_models.CreateConfigRequest,
+    ) -> main_models.CreateConfigResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_config_with_options(cluster_id, config_type, name, config_key, request, headers, runtime)
+
+    async def create_config_async(
+        self,
+        cluster_id: str,
+        config_type: str,
+        name: str,
+        config_key: str,
+        request: main_models.CreateConfigRequest,
+    ) -> main_models.CreateConfigResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_config_with_options_async(cluster_id, config_type, name, config_key, request, headers, runtime)
+
     def create_fault_injection_with_options(
         self,
         cluster_id: str,
@@ -2111,6 +2203,90 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.delete_benchmark_task_with_options_async(cluster_id, task_name, request, headers, runtime)
+
+    def delete_config_with_options(
+        self,
+        cluster_id: str,
+        config_type: str,
+        name: str,
+        config_key: str,
+        request: main_models.DeleteConfigRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteConfigResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteConfig',
+            version = '2021-07-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/configs/{DaraURL.percent_encode(cluster_id)}/{DaraURL.percent_encode(config_type)}/{DaraURL.percent_encode(name)}/{DaraURL.percent_encode(config_key)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_config_with_options_async(
+        self,
+        cluster_id: str,
+        config_type: str,
+        name: str,
+        config_key: str,
+        request: main_models.DeleteConfigRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteConfigResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteConfig',
+            version = '2021-07-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/configs/{DaraURL.percent_encode(cluster_id)}/{DaraURL.percent_encode(config_type)}/{DaraURL.percent_encode(name)}/{DaraURL.percent_encode(config_key)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_config(
+        self,
+        cluster_id: str,
+        config_type: str,
+        name: str,
+        config_key: str,
+        request: main_models.DeleteConfigRequest,
+    ) -> main_models.DeleteConfigResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_config_with_options(cluster_id, config_type, name, config_key, request, headers, runtime)
+
+    async def delete_config_async(
+        self,
+        cluster_id: str,
+        config_type: str,
+        name: str,
+        config_key: str,
+        request: main_models.DeleteConfigRequest,
+    ) -> main_models.DeleteConfigResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_config_with_options_async(cluster_id, config_type, name, config_key, request, headers, runtime)
 
     def delete_fault_injection_with_options(
         self,
@@ -5842,6 +6018,98 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_benchmark_task_with_options_async(request, headers, runtime)
 
+    def list_configs_with_options(
+        self,
+        cluster_id: str,
+        config_type: str,
+        name: str,
+        request: main_models.ListConfigsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListConfigsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page):
+            query['Page'] = request.page
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListConfigs',
+            version = '2021-07-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/configs/{DaraURL.percent_encode(cluster_id)}/{DaraURL.percent_encode(config_type)}/{DaraURL.percent_encode(name)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListConfigsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_configs_with_options_async(
+        self,
+        cluster_id: str,
+        config_type: str,
+        name: str,
+        request: main_models.ListConfigsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListConfigsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page):
+            query['Page'] = request.page
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListConfigs',
+            version = '2021-07-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/configs/{DaraURL.percent_encode(cluster_id)}/{DaraURL.percent_encode(config_type)}/{DaraURL.percent_encode(name)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListConfigsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_configs(
+        self,
+        cluster_id: str,
+        config_type: str,
+        name: str,
+        request: main_models.ListConfigsRequest,
+    ) -> main_models.ListConfigsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_configs_with_options(cluster_id, config_type, name, request, headers, runtime)
+
+    async def list_configs_async(
+        self,
+        cluster_id: str,
+        config_type: str,
+        name: str,
+        request: main_models.ListConfigsRequest,
+    ) -> main_models.ListConfigsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_configs_with_options_async(cluster_id, config_type, name, request, headers, runtime)
+
     def list_gateway_with_options(
         self,
         tmp_req: main_models.ListGatewayRequest,
@@ -8485,6 +8753,98 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.update_benchmark_task_with_options_async(cluster_id, task_name, request, headers, runtime)
+
+    def update_config_with_options(
+        self,
+        cluster_id: str,
+        config_type: str,
+        name: str,
+        config_key: str,
+        request: main_models.UpdateConfigRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateConfigResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.value):
+            body['Value'] = request.value
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateConfig',
+            version = '2021-07-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/configs/{DaraURL.percent_encode(cluster_id)}/{DaraURL.percent_encode(config_type)}/{DaraURL.percent_encode(name)}/{DaraURL.percent_encode(config_key)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_config_with_options_async(
+        self,
+        cluster_id: str,
+        config_type: str,
+        name: str,
+        config_key: str,
+        request: main_models.UpdateConfigRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateConfigResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.value):
+            body['Value'] = request.value
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateConfig',
+            version = '2021-07-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/configs/{DaraURL.percent_encode(cluster_id)}/{DaraURL.percent_encode(config_type)}/{DaraURL.percent_encode(name)}/{DaraURL.percent_encode(config_key)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_config(
+        self,
+        cluster_id: str,
+        config_type: str,
+        name: str,
+        config_key: str,
+        request: main_models.UpdateConfigRequest,
+    ) -> main_models.UpdateConfigResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_config_with_options(cluster_id, config_type, name, config_key, request, headers, runtime)
+
+    async def update_config_async(
+        self,
+        cluster_id: str,
+        config_type: str,
+        name: str,
+        config_key: str,
+        request: main_models.UpdateConfigRequest,
+    ) -> main_models.UpdateConfigResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_config_with_options_async(cluster_id, config_type, name, config_key, request, headers, runtime)
 
     def update_gateway_with_options(
         self,
