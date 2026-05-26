@@ -703,6 +703,9 @@ from ._list_instance_user_permissions_response import ListInstanceUserPermission
 from ._list_instances_request import ListInstancesRequest
 from ._list_instances_response_body import ListInstancesResponseBody
 from ._list_instances_response import ListInstancesResponse
+from ._list_inventory_jobs_request import ListInventoryJobsRequest
+from ._list_inventory_jobs_response_body import ListInventoryJobsResponseBody
+from ._list_inventory_jobs_response import ListInventoryJobsResponse
 from ._list_lh_task_flow_and_scenario_request import ListLhTaskFlowAndScenarioRequest
 from ._list_lh_task_flow_and_scenario_response_body import ListLhTaskFlowAndScenarioResponseBody
 from ._list_lh_task_flow_and_scenario_response import ListLhTaskFlowAndScenarioResponse
@@ -910,6 +913,9 @@ from ._search_data_track_result_response import SearchDataTrackResultResponse
 from ._search_database_request import SearchDatabaseRequest
 from ._search_database_response_body import SearchDatabaseResponseBody
 from ._search_database_response import SearchDatabaseResponse
+from ._search_inventory_asset_request import SearchInventoryAssetRequest
+from ._search_inventory_asset_response_body import SearchInventoryAssetResponseBody
+from ._search_inventory_asset_response import SearchInventoryAssetResponse
 from ._search_inventory_knowledge_request import SearchInventoryKnowledgeRequest
 from ._search_inventory_knowledge_response_body import SearchInventoryKnowledgeResponseBody
 from ._search_inventory_knowledge_response import SearchInventoryKnowledgeResponse
@@ -1312,6 +1318,7 @@ from ._list_instances_response_body import ListInstancesResponseBodyInstanceList
 from ._list_instances_response_body import ListInstancesResponseBodyInstanceListInstanceStandardGroup
 from ._list_instances_response_body import ListInstancesResponseBodyInstanceListInstance
 from ._list_instances_response_body import ListInstancesResponseBodyInstanceList
+from ._list_inventory_jobs_response_body import ListInventoryJobsResponseBodyData
 from ._list_lh_task_flow_and_scenario_response_body import ListLhTaskFlowAndScenarioResponseBodyRawDAGListDag
 from ._list_lh_task_flow_and_scenario_response_body import ListLhTaskFlowAndScenarioResponseBodyRawDAGList
 from ._list_lh_task_flow_and_scenario_response_body import ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGDagListDag
@@ -1421,6 +1428,7 @@ from ._search_database_response_body import SearchDatabaseResponseBodySearchData
 from ._search_database_response_body import SearchDatabaseResponseBodySearchDatabaseListSearchDatabaseOwnerNameList
 from ._search_database_response_body import SearchDatabaseResponseBodySearchDatabaseListSearchDatabase
 from ._search_database_response_body import SearchDatabaseResponseBodySearchDatabaseList
+from ._search_inventory_asset_response_body import SearchInventoryAssetResponseBodyData
 from ._search_inventory_knowledge_response_body import SearchInventoryKnowledgeResponseBodyData
 from ._search_table_response_body import SearchTableResponseBodySearchTableListSearchTableOwnerIdList
 from ._search_table_response_body import SearchTableResponseBodySearchTableListSearchTableOwnerNameList
@@ -2139,6 +2147,9 @@ __all__ = [
     ListInstancesRequest,
     ListInstancesResponseBody,
     ListInstancesResponse,
+    ListInventoryJobsRequest,
+    ListInventoryJobsResponseBody,
+    ListInventoryJobsResponse,
     ListLhTaskFlowAndScenarioRequest,
     ListLhTaskFlowAndScenarioResponseBody,
     ListLhTaskFlowAndScenarioResponse,
@@ -2346,6 +2357,9 @@ __all__ = [
     SearchDatabaseRequest,
     SearchDatabaseResponseBody,
     SearchDatabaseResponse,
+    SearchInventoryAssetRequest,
+    SearchInventoryAssetResponseBody,
+    SearchInventoryAssetResponse,
     SearchInventoryKnowledgeRequest,
     SearchInventoryKnowledgeResponseBody,
     SearchInventoryKnowledgeResponse,
@@ -2748,6 +2762,7 @@ __all__ = [
     ListInstancesResponseBodyInstanceListInstanceStandardGroup,
     ListInstancesResponseBodyInstanceListInstance,
     ListInstancesResponseBodyInstanceList,
+    ListInventoryJobsResponseBodyData,
     ListLhTaskFlowAndScenarioResponseBodyRawDAGListDag,
     ListLhTaskFlowAndScenarioResponseBodyRawDAGList,
     ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGDagListDag,
@@ -2857,6 +2872,7 @@ __all__ = [
     SearchDatabaseResponseBodySearchDatabaseListSearchDatabaseOwnerNameList,
     SearchDatabaseResponseBodySearchDatabaseListSearchDatabase,
     SearchDatabaseResponseBodySearchDatabaseList,
+    SearchInventoryAssetResponseBodyData,
     SearchInventoryKnowledgeResponseBodyData,
     SearchTableResponseBodySearchTableListSearchTableOwnerIdList,
     SearchTableResponseBodySearchTableListSearchTableOwnerNameList,
