@@ -1,3 +1,6 @@
+2026-05-26 Version: 1.2.1
+- Generated python 2023-01-01 for Dytnsapi.
+
 2026-05-25 Version: 1.2.0
 - Support API GetIdentificationResult.
 - Support API GetIdentificationSession.
