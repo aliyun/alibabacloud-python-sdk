@@ -15,7 +15,9 @@ class QaChatRequest(DaraModel):
         options: Dict[str, Any] = None,
         session_id: str = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.message = message
         self.options = options
         self.session_id = session_id
