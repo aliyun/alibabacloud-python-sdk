@@ -8,6 +8,7 @@ class OperateSupabaseForAdminRequest(DaraModel):
     def __init__(
         self,
         biz_id: str = None,
+        env: str = None,
         execute_sql: str = None,
         operate_type: str = None,
         order_by_clause: str = None,
@@ -21,6 +22,7 @@ class OperateSupabaseForAdminRequest(DaraModel):
     ):
         # This parameter is required.
         self.biz_id = biz_id
+        self.env = env
         self.execute_sql = execute_sql
         self.operate_type = operate_type
         self.order_by_clause = order_by_clause
@@ -42,6 +44,9 @@ class OperateSupabaseForAdminRequest(DaraModel):
             result = _map
         if self.biz_id is not None:
             result['BizId'] = self.biz_id
+
+        if self.env is not None:
+            result['Env'] = self.env
 
         if self.execute_sql is not None:
             result['ExecuteSql'] = self.execute_sql
@@ -79,6 +84,9 @@ class OperateSupabaseForAdminRequest(DaraModel):
         m = m or dict()
         if m.get('BizId') is not None:
             self.biz_id = m.get('BizId')
+
+        if m.get('Env') is not None:
+            self.env = m.get('Env')
 
         if m.get('ExecuteSql') is not None:
             self.execute_sql = m.get('ExecuteSql')

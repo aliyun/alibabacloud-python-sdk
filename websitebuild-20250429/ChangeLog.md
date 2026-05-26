@@ -1,3 +1,10 @@
+2026-05-26 Version: 2.22.1
+- Update API AllocateSupabaseForAdmin: add request parameters Env.
+- Update API OperateSupabaseForAdmin: add request parameters Env.
+- Update API QuerySupabaseAuthConfigsForAdmin: add request parameters Env.
+- Update API QuerySupabaseConfigsForAdmin: add request parameters Env.
+
+
 2026-05-19 Version: 2.22.0
 - Support API CreateAIStaffChat.
 - Support API CreateAIStaffConversation.

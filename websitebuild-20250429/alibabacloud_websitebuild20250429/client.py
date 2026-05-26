@@ -50,6 +50,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.biz_id):
             query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.env):
+            query['Env'] = request.env
         if not DaraCore.is_null(request.order_column):
             query['OrderColumn'] = request.order_column
         if not DaraCore.is_null(request.order_type):
@@ -88,6 +90,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.biz_id):
             query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.env):
+            query['Env'] = request.env
         if not DaraCore.is_null(request.order_column):
             query['OrderColumn'] = request.order_column
         if not DaraCore.is_null(request.order_type):
@@ -4156,6 +4160,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.biz_id):
             query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.env):
+            query['Env'] = request.env
         if not DaraCore.is_null(request.execute_sql):
             query['ExecuteSql'] = request.execute_sql
         if not DaraCore.is_null(request.operate_type):
@@ -4204,6 +4210,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.biz_id):
             query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.env):
+            query['Env'] = request.env
         if not DaraCore.is_null(request.execute_sql):
             query['ExecuteSql'] = request.execute_sql
         if not DaraCore.is_null(request.operate_type):
@@ -5192,6 +5200,8 @@ class Client(OpenApiClient):
             query['AuthType'] = request.auth_type
         if not DaraCore.is_null(request.biz_id):
             query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.env):
+            query['Env'] = request.env
         if not DaraCore.is_null(request.order_column):
             query['OrderColumn'] = request.order_column
         if not DaraCore.is_null(request.order_type):
@@ -5232,6 +5242,8 @@ class Client(OpenApiClient):
             query['AuthType'] = request.auth_type
         if not DaraCore.is_null(request.biz_id):
             query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.env):
+            query['Env'] = request.env
         if not DaraCore.is_null(request.order_column):
             query['OrderColumn'] = request.order_column
         if not DaraCore.is_null(request.order_type):
@@ -5284,6 +5296,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.biz_id):
             query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.env):
+            query['Env'] = request.env
         if not DaraCore.is_null(request.order_column):
             query['OrderColumn'] = request.order_column
         if not DaraCore.is_null(request.order_type):
@@ -5322,6 +5336,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.biz_id):
             query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.env):
+            query['Env'] = request.env
         if not DaraCore.is_null(request.order_column):
             query['OrderColumn'] = request.order_column
         if not DaraCore.is_null(request.order_type):

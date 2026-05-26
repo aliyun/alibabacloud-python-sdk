@@ -9,6 +9,7 @@ class QuerySupabaseAuthConfigsForAdminRequest(DaraModel):
         self,
         auth_type: str = None,
         biz_id: str = None,
+        env: str = None,
         order_column: str = None,
         order_type: str = None,
         page_num: int = None,
@@ -19,6 +20,7 @@ class QuerySupabaseAuthConfigsForAdminRequest(DaraModel):
         self.auth_type = auth_type
         # This parameter is required.
         self.biz_id = biz_id
+        self.env = env
         self.order_column = order_column
         self.order_type = order_type
         self.page_num = page_num
@@ -38,6 +40,9 @@ class QuerySupabaseAuthConfigsForAdminRequest(DaraModel):
 
         if self.biz_id is not None:
             result['BizId'] = self.biz_id
+
+        if self.env is not None:
+            result['Env'] = self.env
 
         if self.order_column is not None:
             result['OrderColumn'] = self.order_column
@@ -63,6 +68,9 @@ class QuerySupabaseAuthConfigsForAdminRequest(DaraModel):
 
         if m.get('BizId') is not None:
             self.biz_id = m.get('BizId')
+
+        if m.get('Env') is not None:
+            self.env = m.get('Env')
 
         if m.get('OrderColumn') is not None:
             self.order_column = m.get('OrderColumn')
