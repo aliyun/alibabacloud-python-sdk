@@ -1,3 +1,8 @@
+2026-05-26 Version: 3.0.0
+- Update API AddLiveRecordVodConfig: delete request parameters FormatConfig.
+- Update API UpdateLiveRecordVodConfig: delete request parameters FormatConfig.
+
+
 2026-05-15 Version: 2.7.4
 - Update API AddLiveRecordVodConfig: add request parameters DelayTime.
 - Update API AddLiveRecordVodConfig: add request parameters FormatConfig.

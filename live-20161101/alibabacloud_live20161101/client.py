@@ -2524,8 +2524,6 @@ class Client(OpenApiClient):
             query['DelayTime'] = request.delay_time
         if not DaraCore.is_null(request.domain_name):
             query['DomainName'] = request.domain_name
-        if not DaraCore.is_null(request.format_config):
-            query['FormatConfig'] = request.format_config
         if not DaraCore.is_null(request.on_demand):
             query['OnDemand'] = request.on_demand
         if not DaraCore.is_null(request.owner_id):
@@ -2584,8 +2582,6 @@ class Client(OpenApiClient):
             query['DelayTime'] = request.delay_time
         if not DaraCore.is_null(request.domain_name):
             query['DomainName'] = request.domain_name
-        if not DaraCore.is_null(request.format_config):
-            query['FormatConfig'] = request.format_config
         if not DaraCore.is_null(request.on_demand):
             query['OnDemand'] = request.on_demand
         if not DaraCore.is_null(request.owner_id):
@@ -37940,8 +37936,6 @@ class Client(OpenApiClient):
             query['DelayTime'] = request.delay_time
         if not DaraCore.is_null(request.domain_name):
             query['DomainName'] = request.domain_name
-        if not DaraCore.is_null(request.format_config):
-            query['FormatConfig'] = request.format_config
         if not DaraCore.is_null(request.on_demand):
             query['OnDemand'] = request.on_demand
         if not DaraCore.is_null(request.owner_id):
@@ -37994,8 +37988,6 @@ class Client(OpenApiClient):
             query['DelayTime'] = request.delay_time
         if not DaraCore.is_null(request.domain_name):
             query['DomainName'] = request.domain_name
-        if not DaraCore.is_null(request.format_config):
-            query['FormatConfig'] = request.format_config
         if not DaraCore.is_null(request.on_demand):
             query['OnDemand'] = request.on_demand
         if not DaraCore.is_null(request.owner_id):
