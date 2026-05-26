@@ -1986,6 +1986,100 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_uaidconversion_sign_with_options_async(request, runtime)
 
+    def history_three_elements_verification_with_options(
+        self,
+        request: main_models.HistoryThreeElementsVerificationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.HistoryThreeElementsVerificationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.auth_code):
+            query['AuthCode'] = request.auth_code
+        if not DaraCore.is_null(request.carrier):
+            query['Carrier'] = request.carrier
+        if not DaraCore.is_null(request.cert_code):
+            query['CertCode'] = request.cert_code
+        if not DaraCore.is_null(request.input_number):
+            query['InputNumber'] = request.input_number
+        if not DaraCore.is_null(request.mask):
+            query['Mask'] = request.mask
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.verification_time):
+            query['VerificationTime'] = request.verification_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'HistoryThreeElementsVerification',
+            version = '2020-02-17',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.HistoryThreeElementsVerificationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def history_three_elements_verification_with_options_async(
+        self,
+        request: main_models.HistoryThreeElementsVerificationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.HistoryThreeElementsVerificationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.auth_code):
+            query['AuthCode'] = request.auth_code
+        if not DaraCore.is_null(request.carrier):
+            query['Carrier'] = request.carrier
+        if not DaraCore.is_null(request.cert_code):
+            query['CertCode'] = request.cert_code
+        if not DaraCore.is_null(request.input_number):
+            query['InputNumber'] = request.input_number
+        if not DaraCore.is_null(request.mask):
+            query['Mask'] = request.mask
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.verification_time):
+            query['VerificationTime'] = request.verification_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'HistoryThreeElementsVerification',
+            version = '2020-02-17',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.HistoryThreeElementsVerificationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def history_three_elements_verification(
+        self,
+        request: main_models.HistoryThreeElementsVerificationRequest,
+    ) -> main_models.HistoryThreeElementsVerificationResponse:
+        runtime = RuntimeOptions()
+        return self.history_three_elements_verification_with_options(request, runtime)
+
+    async def history_three_elements_verification_async(
+        self,
+        request: main_models.HistoryThreeElementsVerificationRequest,
+    ) -> main_models.HistoryThreeElementsVerificationResponse:
+        runtime = RuntimeOptions()
+        return await self.history_three_elements_verification_with_options_async(request, runtime)
+
     def invalid_phone_number_filter_with_options(
         self,
         request: main_models.InvalidPhoneNumberFilterRequest,

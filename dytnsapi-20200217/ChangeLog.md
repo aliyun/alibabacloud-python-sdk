@@ -1,3 +1,7 @@
+2026-05-26 Version: 3.3.0
+- Support API HistoryThreeElementsVerification.
+
+
 2025-12-31 Version: 3.2.0
 - Support API SaveContacts.
 

@@ -65,6 +65,9 @@ from ._get_uaidapply_token_sign_response import GetUAIDApplyTokenSignResponse
 from ._get_uaidconversion_sign_request import GetUAIDConversionSignRequest
 from ._get_uaidconversion_sign_response_body import GetUAIDConversionSignResponseBody
 from ._get_uaidconversion_sign_response import GetUAIDConversionSignResponse
+from ._history_three_elements_verification_request import HistoryThreeElementsVerificationRequest
+from ._history_three_elements_verification_response_body import HistoryThreeElementsVerificationResponseBody
+from ._history_three_elements_verification_response import HistoryThreeElementsVerificationResponse
 from ._invalid_phone_number_filter_request import InvalidPhoneNumberFilterRequest
 from ._invalid_phone_number_filter_response_body import InvalidPhoneNumberFilterResponseBody
 from ._invalid_phone_number_filter_response import InvalidPhoneNumberFilterResponse
@@ -164,6 +167,7 @@ from ._describe_phone_number_risk_response_body import DescribePhoneNumberRiskRe
 from ._describe_phone_twice_tel_verify_response_body import DescribePhoneTwiceTelVerifyResponseBodyData
 from ._get_uaidapply_token_sign_response_body import GetUAIDApplyTokenSignResponseBodyData
 from ._get_uaidconversion_sign_response_body import GetUAIDConversionSignResponseBodyData
+from ._history_three_elements_verification_response_body import HistoryThreeElementsVerificationResponseBodyData
 from ._invalid_phone_number_filter_response_body import InvalidPhoneNumberFilterResponseBodyData
 from ._list_contacts_response_body import ListContactsResponseBodyData
 from ._phone_number_convert_service_response_body import PhoneNumberConvertServiceResponseBodyData
@@ -253,6 +257,9 @@ __all__ = [
     GetUAIDConversionSignRequest,
     GetUAIDConversionSignResponseBody,
     GetUAIDConversionSignResponse,
+    HistoryThreeElementsVerificationRequest,
+    HistoryThreeElementsVerificationResponseBody,
+    HistoryThreeElementsVerificationResponse,
     InvalidPhoneNumberFilterRequest,
     InvalidPhoneNumberFilterResponseBody,
     InvalidPhoneNumberFilterResponse,
@@ -352,6 +359,7 @@ __all__ = [
     DescribePhoneTwiceTelVerifyResponseBodyData,
     GetUAIDApplyTokenSignResponseBodyData,
     GetUAIDConversionSignResponseBodyData,
+    HistoryThreeElementsVerificationResponseBodyData,
     InvalidPhoneNumberFilterResponseBodyData,
     ListContactsResponseBodyData,
     PhoneNumberConvertServiceResponseBodyData,
