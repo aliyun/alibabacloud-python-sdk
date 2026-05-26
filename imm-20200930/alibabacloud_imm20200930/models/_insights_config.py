@@ -2,17 +2,21 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from alibabacloud_imm20200930 import models as main_models
 from darabonba.model import DaraModel
 
 class InsightsConfig(DaraModel):
     def __init__(
         self,
         language: str = None,
+        video: main_models.VideoInsightsConfig = None,
     ):
         self.language = language
+        self.video = video
 
     def validate(self):
-        pass
+        if self.video:
+            self.video.validate()
 
     def to_map(self):
         result = dict()
@@ -22,12 +26,19 @@ class InsightsConfig(DaraModel):
         if self.language is not None:
             result['Language'] = self.language
 
+        if self.video is not None:
+            result['Video'] = self.video.to_map()
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Language') is not None:
             self.language = m.get('Language')
+
+        if m.get('Video') is not None:
+            temp_model = main_models.VideoInsightsConfig()
+            self.video = temp_model.from_map(m.get('Video'))
 
         return self
 

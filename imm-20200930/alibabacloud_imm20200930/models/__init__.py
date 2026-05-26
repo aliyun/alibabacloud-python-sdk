@@ -38,6 +38,7 @@ from ._element_relation import ElementRelation
 from ._fast_fail_policy import FastFailPolicy
 from ._figure import Figure
 from ._figure_cluster import FigureCluster
+from ._figure_cluster_config import FigureClusterConfig
 from ._figure_cluster_for_req import FigureClusterForReq
 from ._file import File
 from ._file_smart_cluster import FileSmartCluster
@@ -66,6 +67,7 @@ from ._notification import Notification
 from ._ocrcontents import OCRContents
 from ._octree_option import OctreeOption
 from ._optimization import Optimization
+from ._person_reference_config import PersonReferenceConfig
 from ._point_int_64 import PointInt64
 from ._project import Project
 from ._property import Property
@@ -81,6 +83,7 @@ from ._similar_image import SimilarImage
 from ._similar_image_cluster import SimilarImageCluster
 from ._simple_query import SimpleQuery
 from ._smart_cluster import SmartCluster
+from ._smart_cluster_config import SmartClusterConfig
 from ._smart_cluster_rule import SmartClusterRule
 from ._spec import Spec
 from ._story import Story
@@ -96,6 +99,8 @@ from ._tool_call import ToolCall
 from ._training_specification import TrainingSpecification
 from ._trim_policy import TrimPolicy
 from ._video_insight import VideoInsight
+from ._video_insights_caption_config import VideoInsightsCaptionConfig
+from ._video_insights_config import VideoInsightsConfig
 from ._video_stream import VideoStream
 from ._weboffice_permission import WebofficePermission
 from ._weboffice_user import WebofficeUser
@@ -604,6 +609,7 @@ __all__ = [
     FastFailPolicy,
     Figure,
     FigureCluster,
+    FigureClusterConfig,
     FigureClusterForReq,
     File,
     FileSmartCluster,
@@ -632,6 +638,7 @@ __all__ = [
     OCRContents,
     OctreeOption,
     Optimization,
+    PersonReferenceConfig,
     PointInt64,
     Project,
     Property,
@@ -647,6 +654,7 @@ __all__ = [
     SimilarImageCluster,
     SimpleQuery,
     SmartCluster,
+    SmartClusterConfig,
     SmartClusterRule,
     Spec,
     Story,
@@ -662,6 +670,8 @@ __all__ = [
     TrainingSpecification,
     TrimPolicy,
     VideoInsight,
+    VideoInsightsCaptionConfig,
+    VideoInsightsConfig,
     VideoStream,
     WebofficePermission,
     WebofficeUser,

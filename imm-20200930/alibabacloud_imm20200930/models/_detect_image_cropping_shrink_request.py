@@ -9,6 +9,7 @@ class DetectImageCroppingShrinkRequest(DaraModel):
         self,
         aspect_ratios: str = None,
         credential_config_shrink: str = None,
+        inclusion_hints_shrink: str = None,
         project_name: str = None,
         source_uri: str = None,
     ):
@@ -28,6 +29,7 @@ class DetectImageCroppingShrinkRequest(DaraModel):
         # 
         # The authorization chain settings. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config_shrink = credential_config_shrink
+        self.inclusion_hints_shrink = inclusion_hints_shrink
         # The name of the project.
         # 
         # This parameter is required.
@@ -51,6 +53,9 @@ class DetectImageCroppingShrinkRequest(DaraModel):
         if self.credential_config_shrink is not None:
             result['CredentialConfig'] = self.credential_config_shrink
 
+        if self.inclusion_hints_shrink is not None:
+            result['InclusionHints'] = self.inclusion_hints_shrink
+
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
 
@@ -66,6 +71,9 @@ class DetectImageCroppingShrinkRequest(DaraModel):
 
         if m.get('CredentialConfig') is not None:
             self.credential_config_shrink = m.get('CredentialConfig')
+
+        if m.get('InclusionHints') is not None:
+            self.inclusion_hints_shrink = m.get('InclusionHints')
 
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')

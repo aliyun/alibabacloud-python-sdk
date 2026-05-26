@@ -2,6 +2,8 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
 from alibabacloud_imm20200930 import models as main_models
 from darabonba.model import DaraModel
 
@@ -10,6 +12,7 @@ class DetectImageCroppingRequest(DaraModel):
         self,
         aspect_ratios: str = None,
         credential_config: main_models.CredentialConfig = None,
+        inclusion_hints: List[str] = None,
         project_name: str = None,
         source_uri: str = None,
     ):
@@ -29,6 +32,7 @@ class DetectImageCroppingRequest(DaraModel):
         # 
         # The authorization chain settings. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config = credential_config
+        self.inclusion_hints = inclusion_hints
         # The name of the project.
         # 
         # This parameter is required.
@@ -53,6 +57,9 @@ class DetectImageCroppingRequest(DaraModel):
         if self.credential_config is not None:
             result['CredentialConfig'] = self.credential_config.to_map()
 
+        if self.inclusion_hints is not None:
+            result['InclusionHints'] = self.inclusion_hints
+
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
 
@@ -69,6 +76,9 @@ class DetectImageCroppingRequest(DaraModel):
         if m.get('CredentialConfig') is not None:
             temp_model = main_models.CredentialConfig()
             self.credential_config = temp_model.from_map(m.get('CredentialConfig'))
+
+        if m.get('InclusionHints') is not None:
+            self.inclusion_hints = m.get('InclusionHints')
 
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')

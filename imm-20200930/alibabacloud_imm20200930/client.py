@@ -5129,11 +5129,15 @@ class Client(OpenApiClient):
         Utils.convert(tmp_req, request)
         if not DaraCore.is_null(tmp_req.credential_config):
             request.credential_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
+        if not DaraCore.is_null(tmp_req.inclusion_hints):
+            request.inclusion_hints_shrink = Utils.array_to_string_with_specified_style(tmp_req.inclusion_hints, 'InclusionHints', 'json')
         query = {}
         if not DaraCore.is_null(request.aspect_ratios):
             query['AspectRatios'] = request.aspect_ratios
         if not DaraCore.is_null(request.credential_config_shrink):
             query['CredentialConfig'] = request.credential_config_shrink
+        if not DaraCore.is_null(request.inclusion_hints_shrink):
+            query['InclusionHints'] = request.inclusion_hints_shrink
         if not DaraCore.is_null(request.project_name):
             query['ProjectName'] = request.project_name
         if not DaraCore.is_null(request.source_uri):
@@ -5167,11 +5171,15 @@ class Client(OpenApiClient):
         Utils.convert(tmp_req, request)
         if not DaraCore.is_null(tmp_req.credential_config):
             request.credential_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
+        if not DaraCore.is_null(tmp_req.inclusion_hints):
+            request.inclusion_hints_shrink = Utils.array_to_string_with_specified_style(tmp_req.inclusion_hints, 'InclusionHints', 'json')
         query = {}
         if not DaraCore.is_null(request.aspect_ratios):
             query['AspectRatios'] = request.aspect_ratios
         if not DaraCore.is_null(request.credential_config_shrink):
             query['CredentialConfig'] = request.credential_config_shrink
+        if not DaraCore.is_null(request.inclusion_hints_shrink):
+            query['InclusionHints'] = request.inclusion_hints_shrink
         if not DaraCore.is_null(request.project_name):
             query['ProjectName'] = request.project_name
         if not DaraCore.is_null(request.source_uri):

@@ -11,10 +11,12 @@ class DetectImageCroppingResponseBody(DaraModel):
     def __init__(
         self,
         croppings: List[main_models.CroppingSuggestion] = None,
+        matched_inclusion_hints: List[str] = None,
         request_id: str = None,
     ):
         # The image cropping suggestions.
         self.croppings = croppings
+        self.matched_inclusion_hints = matched_inclusion_hints
         # The request ID.
         self.request_id = request_id
 
@@ -34,6 +36,9 @@ class DetectImageCroppingResponseBody(DaraModel):
             for k1 in self.croppings:
                 result['Croppings'].append(k1.to_map() if k1 else None)
 
+        if self.matched_inclusion_hints is not None:
+            result['MatchedInclusionHints'] = self.matched_inclusion_hints
+
         if self.request_id is not None:
             result['RequestId'] = self.request_id
 
@@ -46,6 +51,9 @@ class DetectImageCroppingResponseBody(DaraModel):
             for k1 in m.get('Croppings'):
                 temp_model = main_models.CroppingSuggestion()
                 self.croppings.append(temp_model.from_map(k1))
+
+        if m.get('MatchedInclusionHints') is not None:
+            self.matched_inclusion_hints = m.get('MatchedInclusionHints')
 
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
