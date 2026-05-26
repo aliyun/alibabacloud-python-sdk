@@ -126,6 +126,7 @@ from ._get_yike_asset_media_info_response_body import GetYikeAssetMediaInfoRespo
 from ._get_yike_asset_media_info_response_body import GetYikeAssetMediaInfoResponseBodyMediaInfoMediaBasicInfo
 from ._get_yike_asset_media_info_response_body import GetYikeAssetMediaInfoResponseBodyMediaInfo
 from ._get_yike_prompt_expansion_voice_fix_job_response_body import GetYikePromptExpansionVoiceFixJobResponseBodyJobResult
+from ._get_yike_storyboard_job_response_body import GetYikeStoryboardJobResponseBodyJobCredit
 from ._get_yike_storyboard_job_response_body import GetYikeStoryboardJobResponseBodyJobParams
 from ._get_yike_storyboard_job_response_body import GetYikeStoryboardJobResponseBodyJobResult
 from ._get_yike_user_response_body import GetYikeUserResponseBodyUserInfo
@@ -260,6 +261,7 @@ __all__ = [
     GetYikeAssetMediaInfoResponseBodyMediaInfoMediaBasicInfo,
     GetYikeAssetMediaInfoResponseBodyMediaInfo,
     GetYikePromptExpansionVoiceFixJobResponseBodyJobResult,
+    GetYikeStoryboardJobResponseBodyJobCredit,
     GetYikeStoryboardJobResponseBodyJobParams,
     GetYikeStoryboardJobResponseBodyJobResult,
     GetYikeUserResponseBodyUserInfo,

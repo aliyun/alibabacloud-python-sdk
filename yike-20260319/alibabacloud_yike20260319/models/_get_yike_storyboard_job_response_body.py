@@ -8,12 +8,14 @@ from darabonba.model import DaraModel
 class GetYikeStoryboardJobResponseBody(DaraModel):
     def __init__(
         self,
+        job_credit: main_models.GetYikeStoryboardJobResponseBodyJobCredit = None,
         job_id: str = None,
         job_params: main_models.GetYikeStoryboardJobResponseBodyJobParams = None,
         job_result: main_models.GetYikeStoryboardJobResponseBodyJobResult = None,
         job_status: str = None,
         request_id: str = None,
     ):
+        self.job_credit = job_credit
         self.job_id = job_id
         self.job_params = job_params
         self.job_result = job_result
@@ -21,6 +23,8 @@ class GetYikeStoryboardJobResponseBody(DaraModel):
         self.request_id = request_id
 
     def validate(self):
+        if self.job_credit:
+            self.job_credit.validate()
         if self.job_params:
             self.job_params.validate()
         if self.job_result:
@@ -31,6 +35,9 @@ class GetYikeStoryboardJobResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.job_credit is not None:
+            result['JobCredit'] = self.job_credit.to_map()
+
         if self.job_id is not None:
             result['JobId'] = self.job_id
 
@@ -50,6 +57,10 @@ class GetYikeStoryboardJobResponseBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('JobCredit') is not None:
+            temp_model = main_models.GetYikeStoryboardJobResponseBodyJobCredit()
+            self.job_credit = temp_model.from_map(m.get('JobCredit'))
+
         if m.get('JobId') is not None:
             self.job_id = m.get('JobId')
 
@@ -248,6 +259,57 @@ class GetYikeStoryboardJobResponseBodyJobParams(DaraModel):
 
         if m.get('VideoModel') is not None:
             self.video_model = m.get('VideoModel')
+
+        return self
+
+class GetYikeStoryboardJobResponseBodyJobCredit(DaraModel):
+    def __init__(
+        self,
+        element_image_generation: str = None,
+        total_credit_cost: str = None,
+        video_composition: str = None,
+        video_generation: str = None,
+    ):
+        self.element_image_generation = element_image_generation
+        self.total_credit_cost = total_credit_cost
+        self.video_composition = video_composition
+        self.video_generation = video_generation
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.element_image_generation is not None:
+            result['ElementImageGeneration'] = self.element_image_generation
+
+        if self.total_credit_cost is not None:
+            result['TotalCreditCost'] = self.total_credit_cost
+
+        if self.video_composition is not None:
+            result['VideoComposition'] = self.video_composition
+
+        if self.video_generation is not None:
+            result['VideoGeneration'] = self.video_generation
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ElementImageGeneration') is not None:
+            self.element_image_generation = m.get('ElementImageGeneration')
+
+        if m.get('TotalCreditCost') is not None:
+            self.total_credit_cost = m.get('TotalCreditCost')
+
+        if m.get('VideoComposition') is not None:
+            self.video_composition = m.get('VideoComposition')
+
+        if m.get('VideoGeneration') is not None:
+            self.video_generation = m.get('VideoGeneration')
 
         return self
 

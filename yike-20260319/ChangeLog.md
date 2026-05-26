@@ -1,3 +1,7 @@
+2026-05-26 Version: 1.6.2
+- Update API GetYikeStoryboardJob: add response parameters Body.JobCredit.
+
+
 2026-05-21 Version: 1.6.1
 - Generated python 2026-03-19 for Yike.
 
