@@ -1,3 +1,8 @@
+2026-05-26 Version: 5.2.2
+- Update API GetSupabaseProject: add response parameters Body.ProjectDescription.
+- Update API ListSupabaseProjects: add response parameters Body.Items.$.ProjectDescription.
+
+
 2026-04-20 Version: 5.2.0
 - Support API ModifySupabaseAutoScalePolicy.
 

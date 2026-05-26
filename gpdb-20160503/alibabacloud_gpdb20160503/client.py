@@ -19498,6 +19498,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.modify_supabase_auto_scale_policy_with_options_async(request, runtime)
 
+    def modify_supabase_project_resource_with_options(
+        self,
+        request: main_models.ModifySupabaseProjectResourceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifySupabaseProjectResourceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.modify_type):
+            query['ModifyType'] = request.modify_type
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.project_spec):
+            query['ProjectSpec'] = request.project_spec
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.storage_size):
+            query['StorageSize'] = request.storage_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifySupabaseProjectResource',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifySupabaseProjectResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_supabase_project_resource_with_options_async(
+        self,
+        request: main_models.ModifySupabaseProjectResourceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifySupabaseProjectResourceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.modify_type):
+            query['ModifyType'] = request.modify_type
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.project_spec):
+            query['ProjectSpec'] = request.project_spec
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.storage_size):
+            query['StorageSize'] = request.storage_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifySupabaseProjectResource',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifySupabaseProjectResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_supabase_project_resource(
+        self,
+        request: main_models.ModifySupabaseProjectResourceRequest,
+    ) -> main_models.ModifySupabaseProjectResourceResponse:
+        runtime = RuntimeOptions()
+        return self.modify_supabase_project_resource_with_options(request, runtime)
+
+    async def modify_supabase_project_resource_async(
+        self,
+        request: main_models.ModifySupabaseProjectResourceRequest,
+    ) -> main_models.ModifySupabaseProjectResourceResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_supabase_project_resource_with_options_async(request, runtime)
+
     def modify_supabase_project_security_ips_with_options(
         self,
         request: main_models.ModifySupabaseProjectSecurityIpsRequest,

@@ -110,6 +110,7 @@ class ListSupabaseProjectsResponseBodyItems(DaraModel):
         expire_time: str = None,
         pay_type: str = None,
         private_connect_url: str = None,
+        project_description: str = None,
         project_id: str = None,
         project_name: str = None,
         project_spec: str = None,
@@ -144,6 +145,7 @@ class ListSupabaseProjectsResponseBodyItems(DaraModel):
         self.pay_type = pay_type
         # The private (VPC) connection URL for the Supabase Dashboard.
         self.private_connect_url = private_connect_url
+        self.project_description = project_description
         # The Supabase project ID.
         self.project_id = project_id
         # The name of the Supabase project.
@@ -208,6 +210,9 @@ class ListSupabaseProjectsResponseBodyItems(DaraModel):
 
         if self.private_connect_url is not None:
             result['PrivateConnectUrl'] = self.private_connect_url
+
+        if self.project_description is not None:
+            result['ProjectDescription'] = self.project_description
 
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
@@ -275,6 +280,9 @@ class ListSupabaseProjectsResponseBodyItems(DaraModel):
 
         if m.get('PrivateConnectUrl') is not None:
             self.private_connect_url = m.get('PrivateConnectUrl')
+
+        if m.get('ProjectDescription') is not None:
+            self.project_description = m.get('ProjectDescription')
 
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')
