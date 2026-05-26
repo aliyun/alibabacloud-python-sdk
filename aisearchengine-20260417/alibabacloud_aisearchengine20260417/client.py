@@ -146,6 +146,166 @@ class Client(OpenApiClient):
         headers = {}
         return await self.engine_search_with_options_async(request, headers, runtime)
 
+    def get_dataset_resource_url_with_options(
+        self,
+        request: main_models.GetDatasetResourceUrlRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetDatasetResourceUrlResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.dataset_id):
+            body['datasetId'] = request.dataset_id
+        if not DaraCore.is_null(request.primary_key):
+            body['primaryKey'] = request.primary_key
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetDatasetResourceUrl',
+            version = '2026-04-17',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/dataset/open/resources',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetDatasetResourceUrlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_dataset_resource_url_with_options_async(
+        self,
+        request: main_models.GetDatasetResourceUrlRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetDatasetResourceUrlResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.dataset_id):
+            body['datasetId'] = request.dataset_id
+        if not DaraCore.is_null(request.primary_key):
+            body['primaryKey'] = request.primary_key
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetDatasetResourceUrl',
+            version = '2026-04-17',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/dataset/open/resources',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetDatasetResourceUrlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_dataset_resource_url(
+        self,
+        request: main_models.GetDatasetResourceUrlRequest,
+    ) -> main_models.GetDatasetResourceUrlResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_dataset_resource_url_with_options(request, headers, runtime)
+
+    async def get_dataset_resource_url_async(
+        self,
+        request: main_models.GetDatasetResourceUrlRequest,
+    ) -> main_models.GetDatasetResourceUrlResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_dataset_resource_url_with_options_async(request, headers, runtime)
+
+    def import_dataset_data_with_options(
+        self,
+        request: main_models.ImportDatasetDataRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ImportDatasetDataResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.dataset_id):
+            body['datasetId'] = request.dataset_id
+        if not DaraCore.is_null(request.records):
+            body['records'] = request.records
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ImportDatasetData',
+            version = '2026-04-17',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/dataset/open/upsert',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ImportDatasetDataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def import_dataset_data_with_options_async(
+        self,
+        request: main_models.ImportDatasetDataRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ImportDatasetDataResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.dataset_id):
+            body['datasetId'] = request.dataset_id
+        if not DaraCore.is_null(request.records):
+            body['records'] = request.records
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ImportDatasetData',
+            version = '2026-04-17',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/dataset/open/upsert',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ImportDatasetDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def import_dataset_data(
+        self,
+        request: main_models.ImportDatasetDataRequest,
+    ) -> main_models.ImportDatasetDataResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.import_dataset_data_with_options(request, headers, runtime)
+
+    async def import_dataset_data_async(
+        self,
+        request: main_models.ImportDatasetDataRequest,
+    ) -> main_models.ImportDatasetDataResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.import_dataset_data_with_options_async(request, headers, runtime)
+
     def qa_chat_with_sse(
         self,
         request: main_models.QaChatRequest,
