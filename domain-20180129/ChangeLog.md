@@ -1,3 +1,8 @@
+2026-05-26 Version: 5.0.3
+- Update API SaveBatchTaskForCreatingOrderRenew: add request parameters OrderRenewParam.$.PermitPremiumRenew.
+- Update API SaveSingleTaskForCreatingOrderRenew: add request parameters PermitPremiumRenew.
+
+
 2026-04-23 Version: 5.0.2
 - Update API QueryDomainByDomainName: add response parameters Body.Registrar.
 - Update API QueryDomainList: add request parameters AutoRenewEnabled.

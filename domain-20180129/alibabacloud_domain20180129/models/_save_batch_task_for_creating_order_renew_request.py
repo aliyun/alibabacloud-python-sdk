@@ -96,10 +96,12 @@ class SaveBatchTaskForCreatingOrderRenewRequestOrderRenewParam(DaraModel):
         self,
         current_expiration_date: int = None,
         domain_name: str = None,
+        permit_premium_renew: bool = None,
         subscription_duration: int = None,
     ):
         self.current_expiration_date = current_expiration_date
         self.domain_name = domain_name
+        self.permit_premium_renew = permit_premium_renew
         self.subscription_duration = subscription_duration
 
     def validate(self):
@@ -116,6 +118,9 @@ class SaveBatchTaskForCreatingOrderRenewRequestOrderRenewParam(DaraModel):
         if self.domain_name is not None:
             result['DomainName'] = self.domain_name
 
+        if self.permit_premium_renew is not None:
+            result['PermitPremiumRenew'] = self.permit_premium_renew
+
         if self.subscription_duration is not None:
             result['SubscriptionDuration'] = self.subscription_duration
 
@@ -128,6 +133,9 @@ class SaveBatchTaskForCreatingOrderRenewRequestOrderRenewParam(DaraModel):
 
         if m.get('DomainName') is not None:
             self.domain_name = m.get('DomainName')
+
+        if m.get('PermitPremiumRenew') is not None:
+            self.permit_premium_renew = m.get('PermitPremiumRenew')
 
         if m.get('SubscriptionDuration') is not None:
             self.subscription_duration = m.get('SubscriptionDuration')

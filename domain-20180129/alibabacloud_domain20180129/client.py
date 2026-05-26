@@ -8445,6 +8445,8 @@ class Client(OpenApiClient):
             query['DomainName'] = request.domain_name
         if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
+        if not DaraCore.is_null(request.permit_premium_renew):
+            query['PermitPremiumRenew'] = request.permit_premium_renew
         if not DaraCore.is_null(request.promotion_no):
             query['PromotionNo'] = request.promotion_no
         if not DaraCore.is_null(request.subscription_duration):
@@ -8489,6 +8491,8 @@ class Client(OpenApiClient):
             query['DomainName'] = request.domain_name
         if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
+        if not DaraCore.is_null(request.permit_premium_renew):
+            query['PermitPremiumRenew'] = request.permit_premium_renew
         if not DaraCore.is_null(request.promotion_no):
             query['PromotionNo'] = request.promotion_no
         if not DaraCore.is_null(request.subscription_duration):
