@@ -13,12 +13,14 @@ class CreateOAuth2CredentialProviderRequest(DaraModel):
         description: str = None,
         oauth2_credential_provider_name: str = None,
         oauth2_provider_config: main_models.OAuth2ProviderConfig = None,
+        token_vault_name: str = None,
     ):
         self.callback_url = callback_url
         self.credential_provider_vendor = credential_provider_vendor
         self.description = description
         self.oauth2_credential_provider_name = oauth2_credential_provider_name
         self.oauth2_provider_config = oauth2_provider_config
+        self.token_vault_name = token_vault_name
 
     def validate(self):
         if self.oauth2_provider_config:
@@ -44,6 +46,9 @@ class CreateOAuth2CredentialProviderRequest(DaraModel):
         if self.oauth2_provider_config is not None:
             result['OAuth2ProviderConfig'] = self.oauth2_provider_config.to_map()
 
+        if self.token_vault_name is not None:
+            result['TokenVaultName'] = self.token_vault_name
+
         return result
 
     def from_map(self, m: dict = None):
@@ -63,6 +68,9 @@ class CreateOAuth2CredentialProviderRequest(DaraModel):
         if m.get('OAuth2ProviderConfig') is not None:
             temp_model = main_models.OAuth2ProviderConfig()
             self.oauth2_provider_config = temp_model.from_map(m.get('OAuth2ProviderConfig'))
+
+        if m.get('TokenVaultName') is not None:
+            self.token_vault_name = m.get('TokenVaultName')
 
         return self
 

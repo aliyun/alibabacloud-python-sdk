@@ -5,14 +5,25 @@ from __future__ import annotations
 from ._authorization_request import AuthorizationRequest
 from ._authorization_server_metadata import AuthorizationServerMetadata
 from ._custom_oauth2_provider_config import CustomOAuth2ProviderConfig
+from ._definition import Definition
+from ._encryption_config import EncryptionConfig
 from ._included_oauth2_provider_config import IncludedOAuth2ProviderConfig
 from ._oauth2_discovery import OAuth2Discovery
 from ._oauth2_provider_config import OAuth2ProviderConfig
 from ._pkce import PKCE
 from ._token_reqeust import TokenReqeust
+from ._add_samlidentity_provider_certificate_request import AddSAMLIdentityProviderCertificateRequest
+from ._add_samlidentity_provider_certificate_response_body import AddSAMLIdentityProviderCertificateResponseBody
+from ._add_samlidentity_provider_certificate_response import AddSAMLIdentityProviderCertificateResponse
+from ._attach_policy_set_to_gateway_request import AttachPolicySetToGatewayRequest
+from ._attach_policy_set_to_gateway_response_body import AttachPolicySetToGatewayResponseBody
+from ._attach_policy_set_to_gateway_response import AttachPolicySetToGatewayResponse
 from ._create_apikey_credential_provider_request import CreateAPIKeyCredentialProviderRequest
 from ._create_apikey_credential_provider_response_body import CreateAPIKeyCredentialProviderResponseBody
 from ._create_apikey_credential_provider_response import CreateAPIKeyCredentialProviderResponse
+from ._create_client_secret_request import CreateClientSecretRequest
+from ._create_client_secret_response_body import CreateClientSecretResponseBody
+from ._create_client_secret_response import CreateClientSecretResponse
 from ._create_identity_provider_request import CreateIdentityProviderRequest
 from ._create_identity_provider_shrink_request import CreateIdentityProviderShrinkRequest
 from ._create_identity_provider_response_body import CreateIdentityProviderResponseBody
@@ -21,6 +32,30 @@ from ._create_oauth2_credential_provider_request import CreateOAuth2CredentialPr
 from ._create_oauth2_credential_provider_shrink_request import CreateOAuth2CredentialProviderShrinkRequest
 from ._create_oauth2_credential_provider_response_body import CreateOAuth2CredentialProviderResponseBody
 from ._create_oauth2_credential_provider_response import CreateOAuth2CredentialProviderResponse
+from ._create_policy_request import CreatePolicyRequest
+from ._create_policy_shrink_request import CreatePolicyShrinkRequest
+from ._create_policy_response_body import CreatePolicyResponseBody
+from ._create_policy_response import CreatePolicyResponse
+from ._create_policy_set_request import CreatePolicySetRequest
+from ._create_policy_set_response_body import CreatePolicySetResponseBody
+from ._create_policy_set_response import CreatePolicySetResponse
+from ._create_role_request import CreateRoleRequest
+from ._create_role_response_body import CreateRoleResponseBody
+from ._create_role_response import CreateRoleResponse
+from ._create_role_assignment_request import CreateRoleAssignmentRequest
+from ._create_role_assignment_response_body import CreateRoleAssignmentResponseBody
+from ._create_role_assignment_response import CreateRoleAssignmentResponse
+from ._create_token_vault_request import CreateTokenVaultRequest
+from ._create_token_vault_shrink_request import CreateTokenVaultShrinkRequest
+from ._create_token_vault_response_body import CreateTokenVaultResponseBody
+from ._create_token_vault_response import CreateTokenVaultResponse
+from ._create_user_pool_request import CreateUserPoolRequest
+from ._create_user_pool_response_body import CreateUserPoolResponseBody
+from ._create_user_pool_response import CreateUserPoolResponse
+from ._create_user_pool_client_request import CreateUserPoolClientRequest
+from ._create_user_pool_client_shrink_request import CreateUserPoolClientShrinkRequest
+from ._create_user_pool_client_response_body import CreateUserPoolClientResponseBody
+from ._create_user_pool_client_response import CreateUserPoolClientResponse
 from ._create_workload_identity_request import CreateWorkloadIdentityRequest
 from ._create_workload_identity_shrink_request import CreateWorkloadIdentityShrinkRequest
 from ._create_workload_identity_response_body import CreateWorkloadIdentityResponseBody
@@ -28,42 +63,145 @@ from ._create_workload_identity_response import CreateWorkloadIdentityResponse
 from ._delete_apikey_credential_provider_request import DeleteAPIKeyCredentialProviderRequest
 from ._delete_apikey_credential_provider_response_body import DeleteAPIKeyCredentialProviderResponseBody
 from ._delete_apikey_credential_provider_response import DeleteAPIKeyCredentialProviderResponse
+from ._delete_client_secret_request import DeleteClientSecretRequest
+from ._delete_client_secret_response_body import DeleteClientSecretResponseBody
+from ._delete_client_secret_response import DeleteClientSecretResponse
 from ._delete_identity_provider_request import DeleteIdentityProviderRequest
 from ._delete_identity_provider_response_body import DeleteIdentityProviderResponseBody
 from ._delete_identity_provider_response import DeleteIdentityProviderResponse
 from ._delete_oauth2_credential_provider_request import DeleteOAuth2CredentialProviderRequest
 from ._delete_oauth2_credential_provider_response_body import DeleteOAuth2CredentialProviderResponseBody
 from ._delete_oauth2_credential_provider_response import DeleteOAuth2CredentialProviderResponse
+from ._delete_policy_request import DeletePolicyRequest
+from ._delete_policy_response_body import DeletePolicyResponseBody
+from ._delete_policy_response import DeletePolicyResponse
+from ._delete_policy_set_request import DeletePolicySetRequest
+from ._delete_policy_set_response_body import DeletePolicySetResponseBody
+from ._delete_policy_set_response import DeletePolicySetResponse
+from ._delete_role_request import DeleteRoleRequest
+from ._delete_role_response_body import DeleteRoleResponseBody
+from ._delete_role_response import DeleteRoleResponse
+from ._delete_role_assignment_request import DeleteRoleAssignmentRequest
+from ._delete_role_assignment_response_body import DeleteRoleAssignmentResponseBody
+from ._delete_role_assignment_response import DeleteRoleAssignmentResponse
+from ._delete_samlidentity_provider_certificate_request import DeleteSAMLIdentityProviderCertificateRequest
+from ._delete_samlidentity_provider_certificate_response_body import DeleteSAMLIdentityProviderCertificateResponseBody
+from ._delete_samlidentity_provider_certificate_response import DeleteSAMLIdentityProviderCertificateResponse
+from ._delete_token_vault_request import DeleteTokenVaultRequest
+from ._delete_token_vault_response_body import DeleteTokenVaultResponseBody
+from ._delete_token_vault_response import DeleteTokenVaultResponse
+from ._delete_user_request import DeleteUserRequest
+from ._delete_user_response_body import DeleteUserResponseBody
+from ._delete_user_response import DeleteUserResponse
+from ._delete_user_pool_request import DeleteUserPoolRequest
+from ._delete_user_pool_response_body import DeleteUserPoolResponseBody
+from ._delete_user_pool_response import DeleteUserPoolResponse
+from ._delete_user_pool_client_request import DeleteUserPoolClientRequest
+from ._delete_user_pool_client_response_body import DeleteUserPoolClientResponseBody
+from ._delete_user_pool_client_response import DeleteUserPoolClientResponse
 from ._delete_workload_identity_request import DeleteWorkloadIdentityRequest
 from ._delete_workload_identity_response_body import DeleteWorkloadIdentityResponseBody
 from ._delete_workload_identity_response import DeleteWorkloadIdentityResponse
+from ._detach_policy_set_from_gateway_request import DetachPolicySetFromGatewayRequest
+from ._detach_policy_set_from_gateway_response_body import DetachPolicySetFromGatewayResponseBody
+from ._detach_policy_set_from_gateway_response import DetachPolicySetFromGatewayResponse
 from ._get_apikey_credential_provider_request import GetAPIKeyCredentialProviderRequest
 from ._get_apikey_credential_provider_response_body import GetAPIKeyCredentialProviderResponseBody
 from ._get_apikey_credential_provider_response import GetAPIKeyCredentialProviderResponse
+from ._get_gateway_policy_config_request import GetGatewayPolicyConfigRequest
+from ._get_gateway_policy_config_response_body import GetGatewayPolicyConfigResponseBody
+from ._get_gateway_policy_config_response import GetGatewayPolicyConfigResponse
 from ._get_identity_provider_request import GetIdentityProviderRequest
 from ._get_identity_provider_response_body import GetIdentityProviderResponseBody
 from ._get_identity_provider_response import GetIdentityProviderResponse
 from ._get_oauth2_credential_provider_request import GetOAuth2CredentialProviderRequest
 from ._get_oauth2_credential_provider_response_body import GetOAuth2CredentialProviderResponseBody
 from ._get_oauth2_credential_provider_response import GetOAuth2CredentialProviderResponse
+from ._get_policy_request import GetPolicyRequest
+from ._get_policy_response_body import GetPolicyResponseBody
+from ._get_policy_response import GetPolicyResponse
+from ._get_policy_set_request import GetPolicySetRequest
+from ._get_policy_set_response_body import GetPolicySetResponseBody
+from ._get_policy_set_response import GetPolicySetResponse
+from ._get_role_request import GetRoleRequest
+from ._get_role_response_body import GetRoleResponseBody
+from ._get_role_response import GetRoleResponse
+from ._get_samlidentity_provider_request import GetSAMLIdentityProviderRequest
+from ._get_samlidentity_provider_response_body import GetSAMLIdentityProviderResponseBody
+from ._get_samlidentity_provider_response import GetSAMLIdentityProviderResponse
+from ._get_samlservice_provider_info_request import GetSAMLServiceProviderInfoRequest
+from ._get_samlservice_provider_info_response_body import GetSAMLServiceProviderInfoResponseBody
+from ._get_samlservice_provider_info_response import GetSAMLServiceProviderInfoResponse
+from ._get_token_vault_request import GetTokenVaultRequest
+from ._get_token_vault_response_body import GetTokenVaultResponseBody
+from ._get_token_vault_response import GetTokenVaultResponse
+from ._get_user_request import GetUserRequest
+from ._get_user_response_body import GetUserResponseBody
+from ._get_user_response import GetUserResponse
+from ._get_user_pool_request import GetUserPoolRequest
+from ._get_user_pool_response_body import GetUserPoolResponseBody
+from ._get_user_pool_response import GetUserPoolResponse
+from ._get_user_pool_client_request import GetUserPoolClientRequest
+from ._get_user_pool_client_response_body import GetUserPoolClientResponseBody
+from ._get_user_pool_client_response import GetUserPoolClientResponse
 from ._get_workload_identity_request import GetWorkloadIdentityRequest
 from ._get_workload_identity_response_body import GetWorkloadIdentityResponseBody
 from ._get_workload_identity_response import GetWorkloadIdentityResponse
 from ._list_apikey_credential_providers_request import ListAPIKeyCredentialProvidersRequest
 from ._list_apikey_credential_providers_response_body import ListAPIKeyCredentialProvidersResponseBody
 from ._list_apikey_credential_providers_response import ListAPIKeyCredentialProvidersResponse
+from ._list_client_secrets_request import ListClientSecretsRequest
+from ._list_client_secrets_response_body import ListClientSecretsResponseBody
+from ._list_client_secrets_response import ListClientSecretsResponse
 from ._list_identity_providers_request import ListIdentityProvidersRequest
 from ._list_identity_providers_response_body import ListIdentityProvidersResponseBody
 from ._list_identity_providers_response import ListIdentityProvidersResponse
 from ._list_oauth2_credential_providers_request import ListOAuth2CredentialProvidersRequest
 from ._list_oauth2_credential_providers_response_body import ListOAuth2CredentialProvidersResponseBody
 from ._list_oauth2_credential_providers_response import ListOAuth2CredentialProvidersResponse
+from ._list_policies_request import ListPoliciesRequest
+from ._list_policies_response_body import ListPoliciesResponseBody
+from ._list_policies_response import ListPoliciesResponse
+from ._list_policy_set_attached_gateways_request import ListPolicySetAttachedGatewaysRequest
+from ._list_policy_set_attached_gateways_response_body import ListPolicySetAttachedGatewaysResponseBody
+from ._list_policy_set_attached_gateways_response import ListPolicySetAttachedGatewaysResponse
+from ._list_policy_sets_request import ListPolicySetsRequest
+from ._list_policy_sets_response_body import ListPolicySetsResponseBody
+from ._list_policy_sets_response import ListPolicySetsResponse
+from ._list_role_assignments_request import ListRoleAssignmentsRequest
+from ._list_role_assignments_response_body import ListRoleAssignmentsResponseBody
+from ._list_role_assignments_response import ListRoleAssignmentsResponse
+from ._list_roles_request import ListRolesRequest
+from ._list_roles_response_body import ListRolesResponseBody
+from ._list_roles_response import ListRolesResponse
+from ._list_samlidentity_provider_certificates_request import ListSAMLIdentityProviderCertificatesRequest
+from ._list_samlidentity_provider_certificates_response_body import ListSAMLIdentityProviderCertificatesResponseBody
+from ._list_samlidentity_provider_certificates_response import ListSAMLIdentityProviderCertificatesResponse
+from ._list_token_vaults_request import ListTokenVaultsRequest
+from ._list_token_vaults_response_body import ListTokenVaultsResponseBody
+from ._list_token_vaults_response import ListTokenVaultsResponse
+from ._list_user_pool_clients_request import ListUserPoolClientsRequest
+from ._list_user_pool_clients_response_body import ListUserPoolClientsResponseBody
+from ._list_user_pool_clients_response import ListUserPoolClientsResponse
+from ._list_user_pools_request import ListUserPoolsRequest
+from ._list_user_pools_response_body import ListUserPoolsResponseBody
+from ._list_user_pools_response import ListUserPoolsResponse
+from ._list_users_request import ListUsersRequest
+from ._list_users_response_body import ListUsersResponseBody
+from ._list_users_response import ListUsersResponse
 from ._list_workload_identities_request import ListWorkloadIdentitiesRequest
 from ._list_workload_identities_response_body import ListWorkloadIdentitiesResponseBody
 from ._list_workload_identities_response import ListWorkloadIdentitiesResponse
+from ._set_samlidentity_provider_request import SetSAMLIdentityProviderRequest
+from ._set_samlidentity_provider_shrink_request import SetSAMLIdentityProviderShrinkRequest
+from ._set_samlidentity_provider_response_body import SetSAMLIdentityProviderResponseBody
+from ._set_samlidentity_provider_response import SetSAMLIdentityProviderResponse
 from ._update_apikey_credential_provider_request import UpdateAPIKeyCredentialProviderRequest
 from ._update_apikey_credential_provider_response_body import UpdateAPIKeyCredentialProviderResponseBody
 from ._update_apikey_credential_provider_response import UpdateAPIKeyCredentialProviderResponse
+from ._update_gateway_policy_config_request import UpdateGatewayPolicyConfigRequest
+from ._update_gateway_policy_config_response_body import UpdateGatewayPolicyConfigResponseBody
+from ._update_gateway_policy_config_response import UpdateGatewayPolicyConfigResponse
 from ._update_identity_provider_request import UpdateIdentityProviderRequest
 from ._update_identity_provider_shrink_request import UpdateIdentityProviderShrinkRequest
 from ._update_identity_provider_response_body import UpdateIdentityProviderResponseBody
@@ -72,35 +210,106 @@ from ._update_oauth2_credential_provider_request import UpdateOAuth2CredentialPr
 from ._update_oauth2_credential_provider_shrink_request import UpdateOAuth2CredentialProviderShrinkRequest
 from ._update_oauth2_credential_provider_response_body import UpdateOAuth2CredentialProviderResponseBody
 from ._update_oauth2_credential_provider_response import UpdateOAuth2CredentialProviderResponse
+from ._update_policy_request import UpdatePolicyRequest
+from ._update_policy_shrink_request import UpdatePolicyShrinkRequest
+from ._update_policy_response_body import UpdatePolicyResponseBody
+from ._update_policy_response import UpdatePolicyResponse
+from ._update_policy_set_request import UpdatePolicySetRequest
+from ._update_policy_set_response_body import UpdatePolicySetResponseBody
+from ._update_policy_set_response import UpdatePolicySetResponse
+from ._update_role_request import UpdateRoleRequest
+from ._update_role_response_body import UpdateRoleResponseBody
+from ._update_role_response import UpdateRoleResponse
+from ._update_token_vault_request import UpdateTokenVaultRequest
+from ._update_token_vault_response_body import UpdateTokenVaultResponseBody
+from ._update_token_vault_response import UpdateTokenVaultResponse
+from ._update_user_pool_request import UpdateUserPoolRequest
+from ._update_user_pool_response_body import UpdateUserPoolResponseBody
+from ._update_user_pool_response import UpdateUserPoolResponse
+from ._update_user_pool_client_request import UpdateUserPoolClientRequest
+from ._update_user_pool_client_shrink_request import UpdateUserPoolClientShrinkRequest
+from ._update_user_pool_client_response_body import UpdateUserPoolClientResponseBody
+from ._update_user_pool_client_response import UpdateUserPoolClientResponse
 from ._update_workload_identity_request import UpdateWorkloadIdentityRequest
 from ._update_workload_identity_shrink_request import UpdateWorkloadIdentityShrinkRequest
 from ._update_workload_identity_response_body import UpdateWorkloadIdentityResponseBody
 from ._update_workload_identity_response import UpdateWorkloadIdentityResponse
+from ._definition import DefinitionCedar
 from ._create_apikey_credential_provider_response_body import CreateAPIKeyCredentialProviderResponseBodyAPIKeyCredentialProvider
+from ._create_client_secret_response_body import CreateClientSecretResponseBodyClientSecret
 from ._create_identity_provider_response_body import CreateIdentityProviderResponseBodyIdentityProvider
 from ._create_oauth2_credential_provider_response_body import CreateOAuth2CredentialProviderResponseBodyOAuth2CredentialProvider
+from ._create_policy_response_body import CreatePolicyResponseBodyPolicy
+from ._create_policy_set_response_body import CreatePolicySetResponseBodyPolicySet
+from ._create_role_response_body import CreateRoleResponseBodyRole
+from ._create_role_assignment_response_body import CreateRoleAssignmentResponseBodyRoleAssignment
+from ._create_token_vault_response_body import CreateTokenVaultResponseBodyTokenVaultEncryptionConfig
+from ._create_token_vault_response_body import CreateTokenVaultResponseBodyTokenVault
+from ._create_user_pool_response_body import CreateUserPoolResponseBodyUserPool
+from ._create_user_pool_client_response_body import CreateUserPoolClientResponseBodyClientClientScopes
+from ._create_user_pool_client_response_body import CreateUserPoolClientResponseBodyClient
 from ._create_workload_identity_response_body import CreateWorkloadIdentityResponseBodyWorkloadIdentity
 from ._get_apikey_credential_provider_response_body import GetAPIKeyCredentialProviderResponseBodyAPIKeyCredentialProvider
+from ._get_gateway_policy_config_response_body import GetGatewayPolicyConfigResponseBodyGatewayPolicyConfig
 from ._get_identity_provider_response_body import GetIdentityProviderResponseBodyIdentityProvider
 from ._get_oauth2_credential_provider_response_body import GetOAuth2CredentialProviderResponseBodyOAuth2CredentialProvider
+from ._get_policy_response_body import GetPolicyResponseBodyPolicy
+from ._get_policy_set_response_body import GetPolicySetResponseBodyPolicySet
+from ._get_role_response_body import GetRoleResponseBodyRole
+from ._get_samlidentity_provider_response_body import GetSAMLIdentityProviderResponseBodySSOIdentityProviderConfigurationX509Certificates
+from ._get_samlidentity_provider_response_body import GetSAMLIdentityProviderResponseBodySSOIdentityProviderConfiguration
+from ._get_samlservice_provider_info_response_body import GetSAMLServiceProviderInfoResponseBodySAMLServiceProviderInfo
+from ._get_token_vault_response_body import GetTokenVaultResponseBodyTokenVaultEncryptionConfig
+from ._get_token_vault_response_body import GetTokenVaultResponseBodyTokenVault
+from ._get_user_response_body import GetUserResponseBodyUser
+from ._get_user_pool_response_body import GetUserPoolResponseBodyUserPool
+from ._get_user_pool_client_response_body import GetUserPoolClientResponseBodyClientClientScopes
+from ._get_user_pool_client_response_body import GetUserPoolClientResponseBodyClient
 from ._get_workload_identity_response_body import GetWorkloadIdentityResponseBodyWorkloadIdentity
 from ._list_apikey_credential_providers_response_body import ListAPIKeyCredentialProvidersResponseBodyAPIKeyCredentialProviders
+from ._list_client_secrets_response_body import ListClientSecretsResponseBodyClientSecrets
 from ._list_identity_providers_response_body import ListIdentityProvidersResponseBodyIdentityProviders
 from ._list_oauth2_credential_providers_response_body import ListOAuth2CredentialProvidersResponseBodyOAuth2CredentialProviders
+from ._list_policies_response_body import ListPoliciesResponseBodyPolicies
+from ._list_policy_set_attached_gateways_response_body import ListPolicySetAttachedGatewaysResponseBodyAttachedGateways
+from ._list_policy_sets_response_body import ListPolicySetsResponseBodyPolicySets
+from ._list_role_assignments_response_body import ListRoleAssignmentsResponseBodyAssignments
+from ._list_roles_response_body import ListRolesResponseBodyRoles
+from ._list_samlidentity_provider_certificates_response_body import ListSAMLIdentityProviderCertificatesResponseBodyX509Certificates
+from ._list_token_vaults_response_body import ListTokenVaultsResponseBodyTokenVaultsEncryptionConfig
+from ._list_token_vaults_response_body import ListTokenVaultsResponseBodyTokenVaults
+from ._list_user_pool_clients_response_body import ListUserPoolClientsResponseBodyClientsClientScopes
+from ._list_user_pool_clients_response_body import ListUserPoolClientsResponseBodyClients
+from ._list_user_pools_response_body import ListUserPoolsResponseBodyUserPools
+from ._list_users_response_body import ListUsersResponseBodyUsers
 from ._list_workload_identities_response_body import ListWorkloadIdentitiesResponseBodyWorkloadIdentities
+from ._set_samlidentity_provider_response_body import SetSAMLIdentityProviderResponseBodySSOIdentityProviderConfigurationX509Certificates
+from ._set_samlidentity_provider_response_body import SetSAMLIdentityProviderResponseBodySSOIdentityProviderConfiguration
+from ._update_gateway_policy_config_response_body import UpdateGatewayPolicyConfigResponseBodyGatewayPolicyConfig
 
 __all__ = [
     AuthorizationRequest,
     AuthorizationServerMetadata,
     CustomOAuth2ProviderConfig,
+    Definition,
+    EncryptionConfig,
     IncludedOAuth2ProviderConfig,
     OAuth2Discovery,
     OAuth2ProviderConfig,
     PKCE,
     TokenReqeust,
+    AddSAMLIdentityProviderCertificateRequest,
+    AddSAMLIdentityProviderCertificateResponseBody,
+    AddSAMLIdentityProviderCertificateResponse,
+    AttachPolicySetToGatewayRequest,
+    AttachPolicySetToGatewayResponseBody,
+    AttachPolicySetToGatewayResponse,
     CreateAPIKeyCredentialProviderRequest,
     CreateAPIKeyCredentialProviderResponseBody,
     CreateAPIKeyCredentialProviderResponse,
+    CreateClientSecretRequest,
+    CreateClientSecretResponseBody,
+    CreateClientSecretResponse,
     CreateIdentityProviderRequest,
     CreateIdentityProviderShrinkRequest,
     CreateIdentityProviderResponseBody,
@@ -109,6 +318,30 @@ __all__ = [
     CreateOAuth2CredentialProviderShrinkRequest,
     CreateOAuth2CredentialProviderResponseBody,
     CreateOAuth2CredentialProviderResponse,
+    CreatePolicyRequest,
+    CreatePolicyShrinkRequest,
+    CreatePolicyResponseBody,
+    CreatePolicyResponse,
+    CreatePolicySetRequest,
+    CreatePolicySetResponseBody,
+    CreatePolicySetResponse,
+    CreateRoleRequest,
+    CreateRoleResponseBody,
+    CreateRoleResponse,
+    CreateRoleAssignmentRequest,
+    CreateRoleAssignmentResponseBody,
+    CreateRoleAssignmentResponse,
+    CreateTokenVaultRequest,
+    CreateTokenVaultShrinkRequest,
+    CreateTokenVaultResponseBody,
+    CreateTokenVaultResponse,
+    CreateUserPoolRequest,
+    CreateUserPoolResponseBody,
+    CreateUserPoolResponse,
+    CreateUserPoolClientRequest,
+    CreateUserPoolClientShrinkRequest,
+    CreateUserPoolClientResponseBody,
+    CreateUserPoolClientResponse,
     CreateWorkloadIdentityRequest,
     CreateWorkloadIdentityShrinkRequest,
     CreateWorkloadIdentityResponseBody,
@@ -116,42 +349,145 @@ __all__ = [
     DeleteAPIKeyCredentialProviderRequest,
     DeleteAPIKeyCredentialProviderResponseBody,
     DeleteAPIKeyCredentialProviderResponse,
+    DeleteClientSecretRequest,
+    DeleteClientSecretResponseBody,
+    DeleteClientSecretResponse,
     DeleteIdentityProviderRequest,
     DeleteIdentityProviderResponseBody,
     DeleteIdentityProviderResponse,
     DeleteOAuth2CredentialProviderRequest,
     DeleteOAuth2CredentialProviderResponseBody,
     DeleteOAuth2CredentialProviderResponse,
+    DeletePolicyRequest,
+    DeletePolicyResponseBody,
+    DeletePolicyResponse,
+    DeletePolicySetRequest,
+    DeletePolicySetResponseBody,
+    DeletePolicySetResponse,
+    DeleteRoleRequest,
+    DeleteRoleResponseBody,
+    DeleteRoleResponse,
+    DeleteRoleAssignmentRequest,
+    DeleteRoleAssignmentResponseBody,
+    DeleteRoleAssignmentResponse,
+    DeleteSAMLIdentityProviderCertificateRequest,
+    DeleteSAMLIdentityProviderCertificateResponseBody,
+    DeleteSAMLIdentityProviderCertificateResponse,
+    DeleteTokenVaultRequest,
+    DeleteTokenVaultResponseBody,
+    DeleteTokenVaultResponse,
+    DeleteUserRequest,
+    DeleteUserResponseBody,
+    DeleteUserResponse,
+    DeleteUserPoolRequest,
+    DeleteUserPoolResponseBody,
+    DeleteUserPoolResponse,
+    DeleteUserPoolClientRequest,
+    DeleteUserPoolClientResponseBody,
+    DeleteUserPoolClientResponse,
     DeleteWorkloadIdentityRequest,
     DeleteWorkloadIdentityResponseBody,
     DeleteWorkloadIdentityResponse,
+    DetachPolicySetFromGatewayRequest,
+    DetachPolicySetFromGatewayResponseBody,
+    DetachPolicySetFromGatewayResponse,
     GetAPIKeyCredentialProviderRequest,
     GetAPIKeyCredentialProviderResponseBody,
     GetAPIKeyCredentialProviderResponse,
+    GetGatewayPolicyConfigRequest,
+    GetGatewayPolicyConfigResponseBody,
+    GetGatewayPolicyConfigResponse,
     GetIdentityProviderRequest,
     GetIdentityProviderResponseBody,
     GetIdentityProviderResponse,
     GetOAuth2CredentialProviderRequest,
     GetOAuth2CredentialProviderResponseBody,
     GetOAuth2CredentialProviderResponse,
+    GetPolicyRequest,
+    GetPolicyResponseBody,
+    GetPolicyResponse,
+    GetPolicySetRequest,
+    GetPolicySetResponseBody,
+    GetPolicySetResponse,
+    GetRoleRequest,
+    GetRoleResponseBody,
+    GetRoleResponse,
+    GetSAMLIdentityProviderRequest,
+    GetSAMLIdentityProviderResponseBody,
+    GetSAMLIdentityProviderResponse,
+    GetSAMLServiceProviderInfoRequest,
+    GetSAMLServiceProviderInfoResponseBody,
+    GetSAMLServiceProviderInfoResponse,
+    GetTokenVaultRequest,
+    GetTokenVaultResponseBody,
+    GetTokenVaultResponse,
+    GetUserRequest,
+    GetUserResponseBody,
+    GetUserResponse,
+    GetUserPoolRequest,
+    GetUserPoolResponseBody,
+    GetUserPoolResponse,
+    GetUserPoolClientRequest,
+    GetUserPoolClientResponseBody,
+    GetUserPoolClientResponse,
     GetWorkloadIdentityRequest,
     GetWorkloadIdentityResponseBody,
     GetWorkloadIdentityResponse,
     ListAPIKeyCredentialProvidersRequest,
     ListAPIKeyCredentialProvidersResponseBody,
     ListAPIKeyCredentialProvidersResponse,
+    ListClientSecretsRequest,
+    ListClientSecretsResponseBody,
+    ListClientSecretsResponse,
     ListIdentityProvidersRequest,
     ListIdentityProvidersResponseBody,
     ListIdentityProvidersResponse,
     ListOAuth2CredentialProvidersRequest,
     ListOAuth2CredentialProvidersResponseBody,
     ListOAuth2CredentialProvidersResponse,
+    ListPoliciesRequest,
+    ListPoliciesResponseBody,
+    ListPoliciesResponse,
+    ListPolicySetAttachedGatewaysRequest,
+    ListPolicySetAttachedGatewaysResponseBody,
+    ListPolicySetAttachedGatewaysResponse,
+    ListPolicySetsRequest,
+    ListPolicySetsResponseBody,
+    ListPolicySetsResponse,
+    ListRoleAssignmentsRequest,
+    ListRoleAssignmentsResponseBody,
+    ListRoleAssignmentsResponse,
+    ListRolesRequest,
+    ListRolesResponseBody,
+    ListRolesResponse,
+    ListSAMLIdentityProviderCertificatesRequest,
+    ListSAMLIdentityProviderCertificatesResponseBody,
+    ListSAMLIdentityProviderCertificatesResponse,
+    ListTokenVaultsRequest,
+    ListTokenVaultsResponseBody,
+    ListTokenVaultsResponse,
+    ListUserPoolClientsRequest,
+    ListUserPoolClientsResponseBody,
+    ListUserPoolClientsResponse,
+    ListUserPoolsRequest,
+    ListUserPoolsResponseBody,
+    ListUserPoolsResponse,
+    ListUsersRequest,
+    ListUsersResponseBody,
+    ListUsersResponse,
     ListWorkloadIdentitiesRequest,
     ListWorkloadIdentitiesResponseBody,
     ListWorkloadIdentitiesResponse,
+    SetSAMLIdentityProviderRequest,
+    SetSAMLIdentityProviderShrinkRequest,
+    SetSAMLIdentityProviderResponseBody,
+    SetSAMLIdentityProviderResponse,
     UpdateAPIKeyCredentialProviderRequest,
     UpdateAPIKeyCredentialProviderResponseBody,
     UpdateAPIKeyCredentialProviderResponse,
+    UpdateGatewayPolicyConfigRequest,
+    UpdateGatewayPolicyConfigResponseBody,
+    UpdateGatewayPolicyConfigResponse,
     UpdateIdentityProviderRequest,
     UpdateIdentityProviderShrinkRequest,
     UpdateIdentityProviderResponseBody,
@@ -160,20 +496,80 @@ __all__ = [
     UpdateOAuth2CredentialProviderShrinkRequest,
     UpdateOAuth2CredentialProviderResponseBody,
     UpdateOAuth2CredentialProviderResponse,
+    UpdatePolicyRequest,
+    UpdatePolicyShrinkRequest,
+    UpdatePolicyResponseBody,
+    UpdatePolicyResponse,
+    UpdatePolicySetRequest,
+    UpdatePolicySetResponseBody,
+    UpdatePolicySetResponse,
+    UpdateRoleRequest,
+    UpdateRoleResponseBody,
+    UpdateRoleResponse,
+    UpdateTokenVaultRequest,
+    UpdateTokenVaultResponseBody,
+    UpdateTokenVaultResponse,
+    UpdateUserPoolRequest,
+    UpdateUserPoolResponseBody,
+    UpdateUserPoolResponse,
+    UpdateUserPoolClientRequest,
+    UpdateUserPoolClientShrinkRequest,
+    UpdateUserPoolClientResponseBody,
+    UpdateUserPoolClientResponse,
     UpdateWorkloadIdentityRequest,
     UpdateWorkloadIdentityShrinkRequest,
     UpdateWorkloadIdentityResponseBody,
     UpdateWorkloadIdentityResponse,
+    DefinitionCedar,
     CreateAPIKeyCredentialProviderResponseBodyAPIKeyCredentialProvider,
+    CreateClientSecretResponseBodyClientSecret,
     CreateIdentityProviderResponseBodyIdentityProvider,
     CreateOAuth2CredentialProviderResponseBodyOAuth2CredentialProvider,
+    CreatePolicyResponseBodyPolicy,
+    CreatePolicySetResponseBodyPolicySet,
+    CreateRoleResponseBodyRole,
+    CreateRoleAssignmentResponseBodyRoleAssignment,
+    CreateTokenVaultResponseBodyTokenVaultEncryptionConfig,
+    CreateTokenVaultResponseBodyTokenVault,
+    CreateUserPoolResponseBodyUserPool,
+    CreateUserPoolClientResponseBodyClientClientScopes,
+    CreateUserPoolClientResponseBodyClient,
     CreateWorkloadIdentityResponseBodyWorkloadIdentity,
     GetAPIKeyCredentialProviderResponseBodyAPIKeyCredentialProvider,
+    GetGatewayPolicyConfigResponseBodyGatewayPolicyConfig,
     GetIdentityProviderResponseBodyIdentityProvider,
     GetOAuth2CredentialProviderResponseBodyOAuth2CredentialProvider,
+    GetPolicyResponseBodyPolicy,
+    GetPolicySetResponseBodyPolicySet,
+    GetRoleResponseBodyRole,
+    GetSAMLIdentityProviderResponseBodySSOIdentityProviderConfigurationX509Certificates,
+    GetSAMLIdentityProviderResponseBodySSOIdentityProviderConfiguration,
+    GetSAMLServiceProviderInfoResponseBodySAMLServiceProviderInfo,
+    GetTokenVaultResponseBodyTokenVaultEncryptionConfig,
+    GetTokenVaultResponseBodyTokenVault,
+    GetUserResponseBodyUser,
+    GetUserPoolResponseBodyUserPool,
+    GetUserPoolClientResponseBodyClientClientScopes,
+    GetUserPoolClientResponseBodyClient,
     GetWorkloadIdentityResponseBodyWorkloadIdentity,
     ListAPIKeyCredentialProvidersResponseBodyAPIKeyCredentialProviders,
+    ListClientSecretsResponseBodyClientSecrets,
     ListIdentityProvidersResponseBodyIdentityProviders,
     ListOAuth2CredentialProvidersResponseBodyOAuth2CredentialProviders,
-    ListWorkloadIdentitiesResponseBodyWorkloadIdentities
+    ListPoliciesResponseBodyPolicies,
+    ListPolicySetAttachedGatewaysResponseBodyAttachedGateways,
+    ListPolicySetsResponseBodyPolicySets,
+    ListRoleAssignmentsResponseBodyAssignments,
+    ListRolesResponseBodyRoles,
+    ListSAMLIdentityProviderCertificatesResponseBodyX509Certificates,
+    ListTokenVaultsResponseBodyTokenVaultsEncryptionConfig,
+    ListTokenVaultsResponseBodyTokenVaults,
+    ListUserPoolClientsResponseBodyClientsClientScopes,
+    ListUserPoolClientsResponseBodyClients,
+    ListUserPoolsResponseBodyUserPools,
+    ListUsersResponseBodyUsers,
+    ListWorkloadIdentitiesResponseBodyWorkloadIdentities,
+    SetSAMLIdentityProviderResponseBodySSOIdentityProviderConfigurationX509Certificates,
+    SetSAMLIdentityProviderResponseBodySSOIdentityProviderConfiguration,
+    UpdateGatewayPolicyConfigResponseBodyGatewayPolicyConfig
 ]

@@ -1,3 +1,86 @@
+2026-05-26 Version: 1.1.0
+- Support API AddSAMLIdentityProviderCertificate.
+- Support API AttachPolicySetToGateway.
+- Support API CreateClientSecret.
+- Support API CreatePolicy.
+- Support API CreatePolicySet.
+- Support API CreateRole.
+- Support API CreateRoleAssignment.
+- Support API CreateTokenVault.
+- Support API CreateUserPool.
+- Support API CreateUserPoolClient.
+- Support API DeleteClientSecret.
+- Support API DeletePolicy.
+- Support API DeletePolicySet.
+- Support API DeleteRole.
+- Support API DeleteRoleAssignment.
+- Support API DeleteSAMLIdentityProviderCertificate.
+- Support API DeleteTokenVault.
+- Support API DeleteUser.
+- Support API DeleteUserPool.
+- Support API DeleteUserPoolClient.
+- Support API DetachPolicySetFromGateway.
+- Support API GetGatewayPolicyConfig.
+- Support API GetPolicy.
+- Support API GetPolicySet.
+- Support API GetRole.
+- Support API GetSAMLIdentityProvider.
+- Support API GetSAMLServiceProviderInfo.
+- Support API GetTokenVault.
+- Support API GetUser.
+- Support API GetUserPool.
+- Support API GetUserPoolClient.
+- Support API ListClientSecrets.
+- Support API ListPolicies.
+- Support API ListPolicySetAttachedGateways.
+- Support API ListPolicySets.
+- Support API ListRoleAssignments.
+- Support API ListRoles.
+- Support API ListSAMLIdentityProviderCertificates.
+- Support API ListTokenVaults.
+- Support API ListUserPoolClients.
+- Support API ListUserPools.
+- Support API ListUsers.
+- Support API SetSAMLIdentityProvider.
+- Support API UpdateGatewayPolicyConfig.
+- Support API UpdatePolicy.
+- Support API UpdatePolicySet.
+- Support API UpdateRole.
+- Support API UpdateTokenVault.
+- Support API UpdateUserPool.
+- Support API UpdateUserPoolClient.
+- Update API CreateAPIKeyCredentialProvider: add request parameters TokenVaultName.
+- Update API CreateAPIKeyCredentialProvider: add response parameters Body.APIKeyCredentialProvider.TokenVaultName.
+- Update API CreateOAuth2CredentialProvider: add request parameters TokenVaultName.
+- Update API CreateOAuth2CredentialProvider: add response parameters Body.OAuth2CredentialProvider.TokenVaultName.
+- Update API CreateWorkloadIdentity: add request parameters CreateRAMRole.
+- Update API CreateWorkloadIdentity: add request parameters SessionBindingEnabled.
+- Update API CreateWorkloadIdentity: add request parameters SourceAgentArn.
+- Update API CreateWorkloadIdentity: add request parameters SourcePlatform.
+- Update API CreateWorkloadIdentity: add response parameters Body.WorkloadIdentity.SessionBindingEnabled.
+- Update API CreateWorkloadIdentity: add response parameters Body.WorkloadIdentity.SourceAgentArn.
+- Update API CreateWorkloadIdentity: add response parameters Body.WorkloadIdentity.SourcePlatform.
+- Update API DeleteAPIKeyCredentialProvider: add request parameters TokenVaultName.
+- Update API DeleteOAuth2CredentialProvider: add request parameters TokenVaultName.
+- Update API GetAPIKeyCredentialProvider: add request parameters TokenVaultName.
+- Update API GetAPIKeyCredentialProvider: add response parameters Body.APIKeyCredentialProvider.TokenVaultName.
+- Update API GetOAuth2CredentialProvider: add request parameters TokenVaultName.
+- Update API GetOAuth2CredentialProvider: add response parameters Body.OAuth2CredentialProvider.TokenVaultName.
+- Update API GetWorkloadIdentity: add response parameters Body.WorkloadIdentity.SessionBindingEnabled.
+- Update API GetWorkloadIdentity: add response parameters Body.WorkloadIdentity.SourceAgentArn.
+- Update API GetWorkloadIdentity: add response parameters Body.WorkloadIdentity.SourcePlatform.
+- Update API ListAPIKeyCredentialProviders: add request parameters TokenVaultName.
+- Update API ListAPIKeyCredentialProviders: add response parameters Body.APIKeyCredentialProviders.$.TokenVaultName.
+- Update API ListOAuth2CredentialProviders: add request parameters TokenVaultName.
+- Update API ListOAuth2CredentialProviders: add response parameters Body.OAuth2CredentialProviders.$.TokenVaultName.
+- Update API ListWorkloadIdentities: add response parameters Body.WorkloadIdentities.$.SessionBindingEnabled.
+- Update API ListWorkloadIdentities: add response parameters Body.WorkloadIdentities.$.SourceAgentArn.
+- Update API ListWorkloadIdentities: add response parameters Body.WorkloadIdentities.$.SourcePlatform.
+- Update API UpdateAPIKeyCredentialProvider: add request parameters TokenVaultName.
+- Update API UpdateOAuth2CredentialProvider: add request parameters TokenVaultName.
+- Update API UpdateWorkloadIdentity: add request parameters SessionBindingEnabled.
+
+
 2025-12-24 Version: 1.0.1
 - Generated python 2025-09-01 for AgentIdentity.
 

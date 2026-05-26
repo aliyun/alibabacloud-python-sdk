@@ -84,6 +84,7 @@ class ListOAuth2CredentialProvidersResponseBodyOAuth2CredentialProviders(DaraMod
         description: str = None,
         oauth2_credential_provider_name: str = None,
         oauth2_provider_config: main_models.OAuth2ProviderConfig = None,
+        token_vault_name: str = None,
         update_time: str = None,
     ):
         self.callback_url = callback_url
@@ -93,6 +94,7 @@ class ListOAuth2CredentialProvidersResponseBodyOAuth2CredentialProviders(DaraMod
         self.description = description
         self.oauth2_credential_provider_name = oauth2_credential_provider_name
         self.oauth2_provider_config = oauth2_provider_config
+        self.token_vault_name = token_vault_name
         self.update_time = update_time
 
     def validate(self):
@@ -125,6 +127,9 @@ class ListOAuth2CredentialProvidersResponseBodyOAuth2CredentialProviders(DaraMod
         if self.oauth2_provider_config is not None:
             result['OAuth2ProviderConfig'] = self.oauth2_provider_config.to_map()
 
+        if self.token_vault_name is not None:
+            result['TokenVaultName'] = self.token_vault_name
+
         if self.update_time is not None:
             result['UpdateTime'] = self.update_time
 
@@ -153,6 +158,9 @@ class ListOAuth2CredentialProvidersResponseBodyOAuth2CredentialProviders(DaraMod
         if m.get('OAuth2ProviderConfig') is not None:
             temp_model = main_models.OAuth2ProviderConfig()
             self.oauth2_provider_config = temp_model.from_map(m.get('OAuth2ProviderConfig'))
+
+        if m.get('TokenVaultName') is not None:
+            self.token_vault_name = m.get('TokenVaultName')
 
         if m.get('UpdateTime') is not None:
             self.update_time = m.get('UpdateTime')

@@ -82,6 +82,9 @@ class ListWorkloadIdentitiesResponseBodyWorkloadIdentities(DaraModel):
         description: str = None,
         identity_provider_name: str = None,
         role_arn: str = None,
+        session_binding_enabled: bool = None,
+        source_agent_arn: str = None,
+        source_platform: str = None,
         update_time: str = None,
         workload_identity_arn: str = None,
         workload_identity_name: str = None,
@@ -91,6 +94,9 @@ class ListWorkloadIdentitiesResponseBodyWorkloadIdentities(DaraModel):
         self.description = description
         self.identity_provider_name = identity_provider_name
         self.role_arn = role_arn
+        self.session_binding_enabled = session_binding_enabled
+        self.source_agent_arn = source_agent_arn
+        self.source_platform = source_platform
         self.update_time = update_time
         self.workload_identity_arn = workload_identity_arn
         self.workload_identity_name = workload_identity_name
@@ -117,6 +123,15 @@ class ListWorkloadIdentitiesResponseBodyWorkloadIdentities(DaraModel):
 
         if self.role_arn is not None:
             result['RoleArn'] = self.role_arn
+
+        if self.session_binding_enabled is not None:
+            result['SessionBindingEnabled'] = self.session_binding_enabled
+
+        if self.source_agent_arn is not None:
+            result['SourceAgentArn'] = self.source_agent_arn
+
+        if self.source_platform is not None:
+            result['SourcePlatform'] = self.source_platform
 
         if self.update_time is not None:
             result['UpdateTime'] = self.update_time
@@ -145,6 +160,15 @@ class ListWorkloadIdentitiesResponseBodyWorkloadIdentities(DaraModel):
 
         if m.get('RoleArn') is not None:
             self.role_arn = m.get('RoleArn')
+
+        if m.get('SessionBindingEnabled') is not None:
+            self.session_binding_enabled = m.get('SessionBindingEnabled')
+
+        if m.get('SourceAgentArn') is not None:
+            self.source_agent_arn = m.get('SourceAgentArn')
+
+        if m.get('SourcePlatform') is not None:
+            self.source_platform = m.get('SourcePlatform')
 
         if m.get('UpdateTime') is not None:
             self.update_time = m.get('UpdateTime')

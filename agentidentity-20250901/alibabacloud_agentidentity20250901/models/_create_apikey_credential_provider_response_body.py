@@ -42,8 +42,6 @@ class CreateAPIKeyCredentialProviderResponseBody(DaraModel):
 
         return self
 
-
-
 class CreateAPIKeyCredentialProviderResponseBodyAPIKeyCredentialProvider(DaraModel):
     def __init__(
         self,
@@ -51,11 +49,13 @@ class CreateAPIKeyCredentialProviderResponseBodyAPIKeyCredentialProvider(DaraMod
         create_time: str = None,
         credential_provider_arn: str = None,
         description: str = None,
+        token_vault_name: str = None,
     ):
         self.apikey_credential_provider_name = apikey_credential_provider_name
         self.create_time = create_time
         self.credential_provider_arn = credential_provider_arn
         self.description = description
+        self.token_vault_name = token_vault_name
 
     def validate(self):
         pass
@@ -77,6 +77,9 @@ class CreateAPIKeyCredentialProviderResponseBodyAPIKeyCredentialProvider(DaraMod
         if self.description is not None:
             result['Description'] = self.description
 
+        if self.token_vault_name is not None:
+            result['TokenVaultName'] = self.token_vault_name
+
         return result
 
     def from_map(self, m: dict = None):
@@ -92,6 +95,9 @@ class CreateAPIKeyCredentialProviderResponseBodyAPIKeyCredentialProvider(DaraMod
 
         if m.get('Description') is not None:
             self.description = m.get('Description')
+
+        if m.get('TokenVaultName') is not None:
+            self.token_vault_name = m.get('TokenVaultName')
 
         return self
 
