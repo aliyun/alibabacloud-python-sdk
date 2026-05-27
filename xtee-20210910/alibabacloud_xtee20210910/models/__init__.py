@@ -68,6 +68,10 @@ from ._create_expression_variable_response import CreateExpressionVariableRespon
 from ._create_field_request import CreateFieldRequest
 from ._create_field_response_body import CreateFieldResponseBody
 from ._create_field_response import CreateFieldResponse
+from ._create_foreign_poc_sample_request import CreateForeignPocSampleRequest
+from ._create_foreign_poc_sample_advance_request import CreateForeignPocSampleAdvanceRequest
+from ._create_foreign_poc_sample_response_body import CreateForeignPocSampleResponseBody
+from ._create_foreign_poc_sample_response import CreateForeignPocSampleResponse
 from ._create_model_request import CreateModelRequest
 from ._create_model_response_body import CreateModelResponseBody
 from ._create_model_response import CreateModelResponse
@@ -878,6 +882,10 @@ from ._update_sample_batch_response import UpdateSampleBatchResponse
 from ._upload_file_check_request import UploadFileCheckRequest
 from ._upload_file_check_response_body import UploadFileCheckResponseBody
 from ._upload_file_check_response import UploadFileCheckResponse
+from ._upload_foreign_sample_file_request import UploadForeignSampleFileRequest
+from ._upload_foreign_sample_file_advance_request import UploadForeignSampleFileAdvanceRequest
+from ._upload_foreign_sample_file_response_body import UploadForeignSampleFileResponseBody
+from ._upload_foreign_sample_file_response import UploadForeignSampleFileResponse
 from ._upload_sample_file_request import UploadSampleFileRequest
 from ._upload_sample_file_response_body import UploadSampleFileResponseBody
 from ._upload_sample_file_response import UploadSampleFileResponse
@@ -894,6 +902,7 @@ from ._compare_rule_response_body import CompareRuleResponseBodyResultObjectNewR
 from ._compare_rule_response_body import CompareRuleResponseBodyResultObjectOldRule
 from ._compare_rule_response_body import CompareRuleResponseBodyResultObject
 from ._create_analysis_export_task_response_body import CreateAnalysisExportTaskResponseBodyResultObject
+from ._create_foreign_poc_sample_response_body import CreateForeignPocSampleResponseBodyResultObject
 from ._create_poc_sample_response_body import CreatePocSampleResponseBodyResultObject
 from ._create_sample_response_body import CreateSampleResponseBodyResultObject
 from ._create_task_group_response_body import CreateTaskGroupResponseBodyResultObject
@@ -1152,6 +1161,9 @@ from ._modify_cust_variable_response_body import ModifyCustVariableResponseBodyR
 from ._query_auth_rule_detail_by_rule_id_response_body import QueryAuthRuleDetailByRuleIdResponseBodyResultObject
 from ._search_sample_response_body import SearchSampleResponseBodyResultObject
 from ._upload_file_check_response_body import UploadFileCheckResponseBodyResultObject
+from ._upload_foreign_sample_file_response_body import UploadForeignSampleFileResponseBodyResultObjectColumnStats
+from ._upload_foreign_sample_file_response_body import UploadForeignSampleFileResponseBodyResultObjectPreviewData
+from ._upload_foreign_sample_file_response_body import UploadForeignSampleFileResponseBodyResultObject
 from ._upload_sample_file_response_body import UploadSampleFileResponseBodyResultObjectColumnStats
 from ._upload_sample_file_response_body import UploadSampleFileResponseBodyResultObjectPreviewData
 from ._upload_sample_file_response_body import UploadSampleFileResponseBodyResultObject
@@ -1223,6 +1235,10 @@ __all__ = [
     CreateFieldRequest,
     CreateFieldResponseBody,
     CreateFieldResponse,
+    CreateForeignPocSampleRequest,
+    CreateForeignPocSampleAdvanceRequest,
+    CreateForeignPocSampleResponseBody,
+    CreateForeignPocSampleResponse,
     CreateModelRequest,
     CreateModelResponseBody,
     CreateModelResponse,
@@ -2033,6 +2049,10 @@ __all__ = [
     UploadFileCheckRequest,
     UploadFileCheckResponseBody,
     UploadFileCheckResponse,
+    UploadForeignSampleFileRequest,
+    UploadForeignSampleFileAdvanceRequest,
+    UploadForeignSampleFileResponseBody,
+    UploadForeignSampleFileResponse,
     UploadSampleFileRequest,
     UploadSampleFileResponseBody,
     UploadSampleFileResponse,
@@ -2049,6 +2069,7 @@ __all__ = [
     CompareRuleResponseBodyResultObjectOldRule,
     CompareRuleResponseBodyResultObject,
     CreateAnalysisExportTaskResponseBodyResultObject,
+    CreateForeignPocSampleResponseBodyResultObject,
     CreatePocSampleResponseBodyResultObject,
     CreateSampleResponseBodyResultObject,
     CreateTaskGroupResponseBodyResultObject,
@@ -2307,6 +2328,9 @@ __all__ = [
     QueryAuthRuleDetailByRuleIdResponseBodyResultObject,
     SearchSampleResponseBodyResultObject,
     UploadFileCheckResponseBodyResultObject,
+    UploadForeignSampleFileResponseBodyResultObjectColumnStats,
+    UploadForeignSampleFileResponseBodyResultObjectPreviewData,
+    UploadForeignSampleFileResponseBodyResultObject,
     UploadSampleFileResponseBodyResultObjectColumnStats,
     UploadSampleFileResponseBodyResultObjectPreviewData,
     UploadSampleFileResponseBodyResultObject

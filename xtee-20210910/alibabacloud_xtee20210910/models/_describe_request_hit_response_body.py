@@ -174,6 +174,7 @@ class DescribeRequestHitResponseBodyResultObjectRuleHitRecords(DaraModel):
         self.rule_snapshot_id = rule_snapshot_id
         # Policy status
         self.rule_status = rule_status
+        # Rule Type
         self.rule_type = rule_type
 
     def validate(self):
