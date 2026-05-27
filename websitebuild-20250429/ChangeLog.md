@@ -1,3 +1,6 @@
+2026-05-27 Version: 2.22.2
+- Generated python 2025-04-29 for WebsiteBuild.
+
 2026-05-26 Version: 2.22.1
 - Update API AllocateSupabaseForAdmin: add request parameters Env.
 - Update API OperateSupabaseForAdmin: add request parameters Env.
