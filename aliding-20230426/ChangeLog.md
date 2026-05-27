@@ -1,3 +1,7 @@
+2026-05-27 Version: 2.52.0
+- Support API BatchGetUserIdByOpenDingtalkId.
+
+
 2026-05-22 Version: 2.51.3
 - Generated python 2023-04-26 for aliding.
 

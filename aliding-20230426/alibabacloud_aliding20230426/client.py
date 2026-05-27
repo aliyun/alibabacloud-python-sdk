@@ -1776,6 +1776,116 @@ class Client(OpenApiClient):
         headers = main_models.BatchGetFormDataByIdListHeaders()
         return await self.batch_get_form_data_by_id_list_with_options_async(request, headers, runtime)
 
+    def batch_get_user_id_by_open_dingtalk_id_with_options(
+        self,
+        tmp_req: main_models.BatchGetUserIdByOpenDingtalkIdRequest,
+        tmp_header: main_models.BatchGetUserIdByOpenDingtalkIdHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchGetUserIdByOpenDingtalkIdResponse:
+        tmp_req.validate()
+        request = main_models.BatchGetUserIdByOpenDingtalkIdShrinkRequest()
+        Utils.convert(tmp_req, request)
+        headers = main_models.BatchGetUserIdByOpenDingtalkIdShrinkHeaders()
+        Utils.convert(tmp_header, headers)
+        if not DaraCore.is_null(tmp_header.account_context):
+            headers.account_context_shrink = Utils.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not DaraCore.is_null(tmp_req.tenant_context):
+            request.tenant_context_shrink = Utils.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        if not DaraCore.is_null(tmp_req.open_dingtalk_ids):
+            request.open_dingtalk_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.open_dingtalk_ids, 'openDingtalkIds', 'json')
+        body = {}
+        if not DaraCore.is_null(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not DaraCore.is_null(request.open_dingtalk_ids_shrink):
+            body['openDingtalkIds'] = request.open_dingtalk_ids_shrink
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.account_context_shrink):
+            real_headers['AccountContext'] = DaraCore.to_json_string(headers.account_context_shrink)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'BatchGetUserIdByOpenDingtalkId',
+            version = '2023-04-26',
+            protocol = 'HTTPS',
+            pathname = f'/dingtalk/v1/im/batchGetUserIdByOpenDingtalkId',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchGetUserIdByOpenDingtalkIdResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_get_user_id_by_open_dingtalk_id_with_options_async(
+        self,
+        tmp_req: main_models.BatchGetUserIdByOpenDingtalkIdRequest,
+        tmp_header: main_models.BatchGetUserIdByOpenDingtalkIdHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchGetUserIdByOpenDingtalkIdResponse:
+        tmp_req.validate()
+        request = main_models.BatchGetUserIdByOpenDingtalkIdShrinkRequest()
+        Utils.convert(tmp_req, request)
+        headers = main_models.BatchGetUserIdByOpenDingtalkIdShrinkHeaders()
+        Utils.convert(tmp_header, headers)
+        if not DaraCore.is_null(tmp_header.account_context):
+            headers.account_context_shrink = Utils.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not DaraCore.is_null(tmp_req.tenant_context):
+            request.tenant_context_shrink = Utils.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        if not DaraCore.is_null(tmp_req.open_dingtalk_ids):
+            request.open_dingtalk_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.open_dingtalk_ids, 'openDingtalkIds', 'json')
+        body = {}
+        if not DaraCore.is_null(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not DaraCore.is_null(request.open_dingtalk_ids_shrink):
+            body['openDingtalkIds'] = request.open_dingtalk_ids_shrink
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.account_context_shrink):
+            real_headers['AccountContext'] = DaraCore.to_json_string(headers.account_context_shrink)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'BatchGetUserIdByOpenDingtalkId',
+            version = '2023-04-26',
+            protocol = 'HTTPS',
+            pathname = f'/dingtalk/v1/im/batchGetUserIdByOpenDingtalkId',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchGetUserIdByOpenDingtalkIdResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_get_user_id_by_open_dingtalk_id(
+        self,
+        request: main_models.BatchGetUserIdByOpenDingtalkIdRequest,
+    ) -> main_models.BatchGetUserIdByOpenDingtalkIdResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.BatchGetUserIdByOpenDingtalkIdHeaders()
+        return self.batch_get_user_id_by_open_dingtalk_id_with_options(request, headers, runtime)
+
+    async def batch_get_user_id_by_open_dingtalk_id_async(
+        self,
+        request: main_models.BatchGetUserIdByOpenDingtalkIdRequest,
+    ) -> main_models.BatchGetUserIdByOpenDingtalkIdResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.BatchGetUserIdByOpenDingtalkIdHeaders()
+        return await self.batch_get_user_id_by_open_dingtalk_id_with_options_async(request, headers, runtime)
+
     def batch_query_group_member_with_options(
         self,
         tmp_req: main_models.BatchQueryGroupMemberRequest,
