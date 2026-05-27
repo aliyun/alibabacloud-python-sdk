@@ -1,3 +1,29 @@
+2026-05-27 Version: 7.0.0
+- Support API ListComputeMetricsBySignature.
+- Support API ListInstances.
+- Support API ListMmsTimers.
+- Support API RetryMmsTask.
+- Support API SumBills.
+- Support API SumBillsByDate.
+- Support API SumComputeMetricsByRecord.
+- Support API SumComputeMetricsByUsage.
+- Support API SumDailyBillsByItem.
+- Support API SumStorageMetricsByType.
+- Support API TriggerMmsTimer.
+- Support API UpdateMmsDb.
+- Support API UpdateMmsTable.
+- Support API UpdateMmsTables.
+- Support API UpdateMmsTimer.
+- Update API ListComputeMetricsByInstance: delete request parameters body.region.
+- Update API ListComputeMetricsByInstance: delete response parameters Body.errorCode.
+- Update API ListComputeMetricsByInstance: delete response parameters Body.errorMsg.
+- Update API QueryTunnelMetricDetail: add request parameters body.codeList.
+- Update API SumStorageMetricsByDate: delete request parameters body.region.
+- Update API SumStorageMetricsByDate: delete request parameters body.userId.
+- Update API SumStorageMetricsByDate: delete response parameters Body.errorCode.
+- Update API SumStorageMetricsByDate: delete response parameters Body.errorMsg.
+
+
 2026-04-08 Version: 6.1.0
 - Support API CreateMmsTimer.
 - Support API DeleteMmsTimer.

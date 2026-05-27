@@ -11,17 +11,11 @@ class ListComputeMetricsByInstanceResponseBody(DaraModel):
     def __init__(
         self,
         data: main_models.ListComputeMetricsByInstanceResponseBodyData = None,
-        error_code: str = None,
-        error_msg: str = None,
         http_code: int = None,
         request_id: str = None,
     ):
         # The data returned.
         self.data = data
-        # The error code.
-        self.error_code = error_code
-        # The error message.
-        self.error_msg = error_msg
         # The HTTP status code.
         # 
         # - 1xx: informational response. The request is received and is being processed.
@@ -45,12 +39,6 @@ class ListComputeMetricsByInstanceResponseBody(DaraModel):
         if self.data is not None:
             result['data'] = self.data.to_map()
 
-        if self.error_code is not None:
-            result['errorCode'] = self.error_code
-
-        if self.error_msg is not None:
-            result['errorMsg'] = self.error_msg
-
         if self.http_code is not None:
             result['httpCode'] = self.http_code
 
@@ -64,12 +52,6 @@ class ListComputeMetricsByInstanceResponseBody(DaraModel):
         if m.get('data') is not None:
             temp_model = main_models.ListComputeMetricsByInstanceResponseBodyData()
             self.data = temp_model.from_map(m.get('data'))
-
-        if m.get('errorCode') is not None:
-            self.error_code = m.get('errorCode')
-
-        if m.get('errorMsg') is not None:
-            self.error_msg = m.get('errorMsg')
 
         if m.get('httpCode') is not None:
             self.http_code = m.get('httpCode')

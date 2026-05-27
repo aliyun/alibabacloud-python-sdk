@@ -131,11 +131,17 @@ from ._kill_jobs_response import KillJobsResponse
 from ._list_compute_metrics_by_instance_request import ListComputeMetricsByInstanceRequest
 from ._list_compute_metrics_by_instance_response_body import ListComputeMetricsByInstanceResponseBody
 from ._list_compute_metrics_by_instance_response import ListComputeMetricsByInstanceResponse
+from ._list_compute_metrics_by_signature_request import ListComputeMetricsBySignatureRequest
+from ._list_compute_metrics_by_signature_response_body import ListComputeMetricsBySignatureResponseBody
+from ._list_compute_metrics_by_signature_response import ListComputeMetricsBySignatureResponse
 from ._list_compute_quota_plan_response_body import ListComputeQuotaPlanResponseBody
 from ._list_compute_quota_plan_response import ListComputeQuotaPlanResponse
 from ._list_functions_request import ListFunctionsRequest
 from ._list_functions_response_body import ListFunctionsResponseBody
 from ._list_functions_response import ListFunctionsResponse
+from ._list_instances_request import ListInstancesRequest
+from ._list_instances_response_body import ListInstancesResponseBody
+from ._list_instances_response import ListInstancesResponse
 from ._list_job_infos_request import ListJobInfosRequest
 from ._list_job_infos_response_body import ListJobInfosResponseBody
 from ._list_job_infos_response import ListJobInfosResponse
@@ -174,6 +180,9 @@ from ._list_mms_tasks_response import ListMmsTasksResponse
 from ._list_mms_timer_logs_request import ListMmsTimerLogsRequest
 from ._list_mms_timer_logs_response_body import ListMmsTimerLogsResponseBody
 from ._list_mms_timer_logs_response import ListMmsTimerLogsResponse
+from ._list_mms_timers_request import ListMmsTimersRequest
+from ._list_mms_timers_response_body import ListMmsTimersResponseBody
+from ._list_mms_timers_response import ListMmsTimersResponse
 from ._list_packages_response_body import ListPackagesResponseBody
 from ._list_packages_response import ListPackagesResponse
 from ._list_project_users_response_body import ListProjectUsersResponseBody
@@ -230,13 +239,37 @@ from ._query_tunnel_metric_detail_response_body import QueryTunnelMetricDetailRe
 from ._query_tunnel_metric_detail_response import QueryTunnelMetricDetailResponse
 from ._retry_mms_job_response_body import RetryMmsJobResponseBody
 from ._retry_mms_job_response import RetryMmsJobResponse
+from ._retry_mms_task_request import RetryMmsTaskRequest
+from ._retry_mms_task_response_body import RetryMmsTaskResponseBody
+from ._retry_mms_task_response import RetryMmsTaskResponse
 from ._start_mms_job_response_body import StartMmsJobResponseBody
 from ._start_mms_job_response import StartMmsJobResponse
 from ._stop_mms_job_response_body import StopMmsJobResponseBody
 from ._stop_mms_job_response import StopMmsJobResponse
+from ._sum_bills_request import SumBillsRequest
+from ._sum_bills_response_body import SumBillsResponseBody
+from ._sum_bills_response import SumBillsResponse
+from ._sum_bills_by_date_request import SumBillsByDateRequest
+from ._sum_bills_by_date_response_body import SumBillsByDateResponseBody
+from ._sum_bills_by_date_response import SumBillsByDateResponse
+from ._sum_compute_metrics_by_record_request import SumComputeMetricsByRecordRequest
+from ._sum_compute_metrics_by_record_response_body import SumComputeMetricsByRecordResponseBody
+from ._sum_compute_metrics_by_record_response import SumComputeMetricsByRecordResponse
+from ._sum_compute_metrics_by_usage_request import SumComputeMetricsByUsageRequest
+from ._sum_compute_metrics_by_usage_response_body import SumComputeMetricsByUsageResponseBody
+from ._sum_compute_metrics_by_usage_response import SumComputeMetricsByUsageResponse
+from ._sum_daily_bills_by_item_request import SumDailyBillsByItemRequest
+from ._sum_daily_bills_by_item_response_body import SumDailyBillsByItemResponseBody
+from ._sum_daily_bills_by_item_response import SumDailyBillsByItemResponse
 from ._sum_storage_metrics_by_date_request import SumStorageMetricsByDateRequest
 from ._sum_storage_metrics_by_date_response_body import SumStorageMetricsByDateResponseBody
 from ._sum_storage_metrics_by_date_response import SumStorageMetricsByDateResponse
+from ._sum_storage_metrics_by_type_request import SumStorageMetricsByTypeRequest
+from ._sum_storage_metrics_by_type_response_body import SumStorageMetricsByTypeResponseBody
+from ._sum_storage_metrics_by_type_response import SumStorageMetricsByTypeResponse
+from ._trigger_mms_timer_request import TriggerMmsTimerRequest
+from ._trigger_mms_timer_response_body import TriggerMmsTimerResponseBody
+from ._trigger_mms_timer_response import TriggerMmsTimerResponse
 from ._update_compute_quota_plan_request import UpdateComputeQuotaPlanRequest
 from ._update_compute_quota_plan_response_body import UpdateComputeQuotaPlanResponseBody
 from ._update_compute_quota_plan_response import UpdateComputeQuotaPlanResponse
@@ -249,6 +282,18 @@ from ._update_compute_sub_quota_response import UpdateComputeSubQuotaResponse
 from ._update_mms_data_source_request import UpdateMmsDataSourceRequest
 from ._update_mms_data_source_response_body import UpdateMmsDataSourceResponseBody
 from ._update_mms_data_source_response import UpdateMmsDataSourceResponse
+from ._update_mms_db_request import UpdateMmsDbRequest
+from ._update_mms_db_response_body import UpdateMmsDbResponseBody
+from ._update_mms_db_response import UpdateMmsDbResponse
+from ._update_mms_table_request import UpdateMmsTableRequest
+from ._update_mms_table_response_body import UpdateMmsTableResponseBody
+from ._update_mms_table_response import UpdateMmsTableResponse
+from ._update_mms_tables_request import UpdateMmsTablesRequest
+from ._update_mms_tables_response_body import UpdateMmsTablesResponseBody
+from ._update_mms_tables_response import UpdateMmsTablesResponse
+from ._update_mms_timer_request import UpdateMmsTimerRequest
+from ._update_mms_timer_response_body import UpdateMmsTimerResponseBody
+from ._update_mms_timer_response import UpdateMmsTimerResponse
 from ._update_package_request import UpdatePackageRequest
 from ._update_package_response_body import UpdatePackageResponseBody
 from ._update_package_response import UpdatePackageResponse
@@ -382,6 +427,9 @@ from ._get_table_info_response_body import GetTableInfoResponseBodyDataPartition
 from ._get_table_info_response_body import GetTableInfoResponseBodyData
 from ._list_compute_metrics_by_instance_response_body import ListComputeMetricsByInstanceResponseBodyDataInstanceComputeMetrics
 from ._list_compute_metrics_by_instance_response_body import ListComputeMetricsByInstanceResponseBodyData
+from ._list_compute_metrics_by_signature_response_body import ListComputeMetricsBySignatureResponseBodyDataSignatureComputeMetricsInstances
+from ._list_compute_metrics_by_signature_response_body import ListComputeMetricsBySignatureResponseBodyDataSignatureComputeMetrics
+from ._list_compute_metrics_by_signature_response_body import ListComputeMetricsBySignatureResponseBodyData
 from ._list_compute_quota_plan_response_body import ListComputeQuotaPlanResponseBodyDataPlanListQuotaParameter
 from ._list_compute_quota_plan_response_body import ListComputeQuotaPlanResponseBodyDataPlanListQuotaSubQuotaInfoListParameter
 from ._list_compute_quota_plan_response_body import ListComputeQuotaPlanResponseBodyDataPlanListQuotaSubQuotaInfoList
@@ -390,6 +438,7 @@ from ._list_compute_quota_plan_response_body import ListComputeQuotaPlanResponse
 from ._list_compute_quota_plan_response_body import ListComputeQuotaPlanResponseBodyData
 from ._list_functions_response_body import ListFunctionsResponseBodyDataFunctions
 from ._list_functions_response_body import ListFunctionsResponseBodyData
+from ._list_instances_response_body import ListInstancesResponseBodyData
 from ._list_job_infos_response_body import ListJobInfosResponseBodyDataJobInfoListSceneResults
 from ._list_job_infos_response_body import ListJobInfosResponseBodyDataJobInfoList
 from ._list_job_infos_response_body import ListJobInfosResponseBodyData
@@ -425,6 +474,8 @@ from ._list_mms_tasks_response_body import ListMmsTasksResponseBodyDataObjectLis
 from ._list_mms_tasks_response_body import ListMmsTasksResponseBodyData
 from ._list_mms_timer_logs_response_body import ListMmsTimerLogsResponseBodyDataObjectList
 from ._list_mms_timer_logs_response_body import ListMmsTimerLogsResponseBodyData
+from ._list_mms_timers_response_body import ListMmsTimersResponseBodyDataObjectList
+from ._list_mms_timers_response_body import ListMmsTimersResponseBodyData
 from ._list_packages_response_body import ListPackagesResponseBodyDataCreatedPackages
 from ._list_packages_response_body import ListPackagesResponseBodyDataInstalledPackages
 from ._list_packages_response_body import ListPackagesResponseBodyData
@@ -510,8 +561,22 @@ from ._query_tunnel_metric_response_body import QueryTunnelMetricResponseBodyDat
 from ._query_tunnel_metric_response_body import QueryTunnelMetricResponseBodyData
 from ._query_tunnel_metric_detail_response_body import QueryTunnelMetricDetailResponseBodyDataMetrics
 from ._query_tunnel_metric_detail_response_body import QueryTunnelMetricDetailResponseBodyData
+from ._sum_bills_response_body import SumBillsResponseBodyDataItemBills
+from ._sum_bills_response_body import SumBillsResponseBodyData
+from ._sum_bills_by_date_response_body import SumBillsByDateResponseBodyDataItemBills
+from ._sum_bills_by_date_response_body import SumBillsByDateResponseBodyData
+from ._sum_compute_metrics_by_record_response_body import SumComputeMetricsByRecordResponseBodyDataDailyComputeRecords
+from ._sum_compute_metrics_by_record_response_body import SumComputeMetricsByRecordResponseBodyData
+from ._sum_compute_metrics_by_usage_response_body import SumComputeMetricsByUsageResponseBodyDataDailyComputeMetrics
+from ._sum_compute_metrics_by_usage_response_body import SumComputeMetricsByUsageResponseBodyData
+from ._sum_daily_bills_by_item_response_body import SumDailyBillsByItemResponseBodyDataItemSummaryBillsDailySumBillsItemBills
+from ._sum_daily_bills_by_item_response_body import SumDailyBillsByItemResponseBodyDataItemSummaryBillsDailySumBills
+from ._sum_daily_bills_by_item_response_body import SumDailyBillsByItemResponseBodyDataItemSummaryBills
+from ._sum_daily_bills_by_item_response_body import SumDailyBillsByItemResponseBodyData
 from ._sum_storage_metrics_by_date_response_body import SumStorageMetricsByDateResponseBodyDataItemStorageMetrics
 from ._sum_storage_metrics_by_date_response_body import SumStorageMetricsByDateResponseBodyData
+from ._sum_storage_metrics_by_type_response_body import SumStorageMetricsByTypeResponseBodyDataDailyStorageMetrics
+from ._sum_storage_metrics_by_type_response_body import SumStorageMetricsByTypeResponseBodyData
 from ._update_compute_quota_plan_request import UpdateComputeQuotaPlanRequestQuotaParameter
 from ._update_compute_quota_plan_request import UpdateComputeQuotaPlanRequestQuotaSubQuotaInfoListParameter
 from ._update_compute_quota_plan_request import UpdateComputeQuotaPlanRequestQuotaSubQuotaInfoList
@@ -657,11 +722,17 @@ __all__ = [
     ListComputeMetricsByInstanceRequest,
     ListComputeMetricsByInstanceResponseBody,
     ListComputeMetricsByInstanceResponse,
+    ListComputeMetricsBySignatureRequest,
+    ListComputeMetricsBySignatureResponseBody,
+    ListComputeMetricsBySignatureResponse,
     ListComputeQuotaPlanResponseBody,
     ListComputeQuotaPlanResponse,
     ListFunctionsRequest,
     ListFunctionsResponseBody,
     ListFunctionsResponse,
+    ListInstancesRequest,
+    ListInstancesResponseBody,
+    ListInstancesResponse,
     ListJobInfosRequest,
     ListJobInfosResponseBody,
     ListJobInfosResponse,
@@ -700,6 +771,9 @@ __all__ = [
     ListMmsTimerLogsRequest,
     ListMmsTimerLogsResponseBody,
     ListMmsTimerLogsResponse,
+    ListMmsTimersRequest,
+    ListMmsTimersResponseBody,
+    ListMmsTimersResponse,
     ListPackagesResponseBody,
     ListPackagesResponse,
     ListProjectUsersResponseBody,
@@ -756,13 +830,37 @@ __all__ = [
     QueryTunnelMetricDetailResponse,
     RetryMmsJobResponseBody,
     RetryMmsJobResponse,
+    RetryMmsTaskRequest,
+    RetryMmsTaskResponseBody,
+    RetryMmsTaskResponse,
     StartMmsJobResponseBody,
     StartMmsJobResponse,
     StopMmsJobResponseBody,
     StopMmsJobResponse,
+    SumBillsRequest,
+    SumBillsResponseBody,
+    SumBillsResponse,
+    SumBillsByDateRequest,
+    SumBillsByDateResponseBody,
+    SumBillsByDateResponse,
+    SumComputeMetricsByRecordRequest,
+    SumComputeMetricsByRecordResponseBody,
+    SumComputeMetricsByRecordResponse,
+    SumComputeMetricsByUsageRequest,
+    SumComputeMetricsByUsageResponseBody,
+    SumComputeMetricsByUsageResponse,
+    SumDailyBillsByItemRequest,
+    SumDailyBillsByItemResponseBody,
+    SumDailyBillsByItemResponse,
     SumStorageMetricsByDateRequest,
     SumStorageMetricsByDateResponseBody,
     SumStorageMetricsByDateResponse,
+    SumStorageMetricsByTypeRequest,
+    SumStorageMetricsByTypeResponseBody,
+    SumStorageMetricsByTypeResponse,
+    TriggerMmsTimerRequest,
+    TriggerMmsTimerResponseBody,
+    TriggerMmsTimerResponse,
     UpdateComputeQuotaPlanRequest,
     UpdateComputeQuotaPlanResponseBody,
     UpdateComputeQuotaPlanResponse,
@@ -775,6 +873,18 @@ __all__ = [
     UpdateMmsDataSourceRequest,
     UpdateMmsDataSourceResponseBody,
     UpdateMmsDataSourceResponse,
+    UpdateMmsDbRequest,
+    UpdateMmsDbResponseBody,
+    UpdateMmsDbResponse,
+    UpdateMmsTableRequest,
+    UpdateMmsTableResponseBody,
+    UpdateMmsTableResponse,
+    UpdateMmsTablesRequest,
+    UpdateMmsTablesResponseBody,
+    UpdateMmsTablesResponse,
+    UpdateMmsTimerRequest,
+    UpdateMmsTimerResponseBody,
+    UpdateMmsTimerResponse,
     UpdatePackageRequest,
     UpdatePackageResponseBody,
     UpdatePackageResponse,
@@ -908,6 +1018,9 @@ __all__ = [
     GetTableInfoResponseBodyData,
     ListComputeMetricsByInstanceResponseBodyDataInstanceComputeMetrics,
     ListComputeMetricsByInstanceResponseBodyData,
+    ListComputeMetricsBySignatureResponseBodyDataSignatureComputeMetricsInstances,
+    ListComputeMetricsBySignatureResponseBodyDataSignatureComputeMetrics,
+    ListComputeMetricsBySignatureResponseBodyData,
     ListComputeQuotaPlanResponseBodyDataPlanListQuotaParameter,
     ListComputeQuotaPlanResponseBodyDataPlanListQuotaSubQuotaInfoListParameter,
     ListComputeQuotaPlanResponseBodyDataPlanListQuotaSubQuotaInfoList,
@@ -916,6 +1029,7 @@ __all__ = [
     ListComputeQuotaPlanResponseBodyData,
     ListFunctionsResponseBodyDataFunctions,
     ListFunctionsResponseBodyData,
+    ListInstancesResponseBodyData,
     ListJobInfosResponseBodyDataJobInfoListSceneResults,
     ListJobInfosResponseBodyDataJobInfoList,
     ListJobInfosResponseBodyData,
@@ -951,6 +1065,8 @@ __all__ = [
     ListMmsTasksResponseBodyData,
     ListMmsTimerLogsResponseBodyDataObjectList,
     ListMmsTimerLogsResponseBodyData,
+    ListMmsTimersResponseBodyDataObjectList,
+    ListMmsTimersResponseBodyData,
     ListPackagesResponseBodyDataCreatedPackages,
     ListPackagesResponseBodyDataInstalledPackages,
     ListPackagesResponseBodyData,
@@ -1036,8 +1152,22 @@ __all__ = [
     QueryTunnelMetricResponseBodyData,
     QueryTunnelMetricDetailResponseBodyDataMetrics,
     QueryTunnelMetricDetailResponseBodyData,
+    SumBillsResponseBodyDataItemBills,
+    SumBillsResponseBodyData,
+    SumBillsByDateResponseBodyDataItemBills,
+    SumBillsByDateResponseBodyData,
+    SumComputeMetricsByRecordResponseBodyDataDailyComputeRecords,
+    SumComputeMetricsByRecordResponseBodyData,
+    SumComputeMetricsByUsageResponseBodyDataDailyComputeMetrics,
+    SumComputeMetricsByUsageResponseBodyData,
+    SumDailyBillsByItemResponseBodyDataItemSummaryBillsDailySumBillsItemBills,
+    SumDailyBillsByItemResponseBodyDataItemSummaryBillsDailySumBills,
+    SumDailyBillsByItemResponseBodyDataItemSummaryBills,
+    SumDailyBillsByItemResponseBodyData,
     SumStorageMetricsByDateResponseBodyDataItemStorageMetrics,
     SumStorageMetricsByDateResponseBodyData,
+    SumStorageMetricsByTypeResponseBodyDataDailyStorageMetrics,
+    SumStorageMetricsByTypeResponseBodyData,
     UpdateComputeQuotaPlanRequestQuotaParameter,
     UpdateComputeQuotaPlanRequestQuotaSubQuotaInfoListParameter,
     UpdateComputeQuotaPlanRequestQuotaSubQuotaInfoList,

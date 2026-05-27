@@ -6,18 +6,18 @@ from typing import List
 
 from darabonba.model import DaraModel
 
-class SumStorageMetricsByDateRequest(DaraModel):
+class SumComputeMetricsByUsageRequest(DaraModel):
     def __init__(
         self,
         end_date: int = None,
         project_names: List[str] = None,
         start_date: int = None,
-        stats_type: str = None,
+        usage_type: str = None,
     ):
         self.end_date = end_date
         self.project_names = project_names
         self.start_date = start_date
-        self.stats_type = stats_type
+        self.usage_type = usage_type
 
     def validate(self):
         pass
@@ -36,8 +36,8 @@ class SumStorageMetricsByDateRequest(DaraModel):
         if self.start_date is not None:
             result['startDate'] = self.start_date
 
-        if self.stats_type is not None:
-            result['statsType'] = self.stats_type
+        if self.usage_type is not None:
+            result['usageType'] = self.usage_type
 
         return result
 
@@ -52,8 +52,8 @@ class SumStorageMetricsByDateRequest(DaraModel):
         if m.get('startDate') is not None:
             self.start_date = m.get('startDate')
 
-        if m.get('statsType') is not None:
-            self.stats_type = m.get('statsType')
+        if m.get('usageType') is not None:
+            self.usage_type = m.get('usageType')
 
         return self
 

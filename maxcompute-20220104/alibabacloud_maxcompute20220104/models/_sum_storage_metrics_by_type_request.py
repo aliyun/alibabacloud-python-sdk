@@ -6,7 +6,7 @@ from typing import List
 
 from darabonba.model import DaraModel
 
-class SumStorageMetricsByDateRequest(DaraModel):
+class SumStorageMetricsByTypeRequest(DaraModel):
     def __init__(
         self,
         end_date: int = None,

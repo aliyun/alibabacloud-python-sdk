@@ -10,6 +10,7 @@ class QueryTunnelMetricDetailRequest(DaraModel):
     def __init__(
         self,
         asc_order: bool = None,
+        code_list: List[int] = None,
         group_list: List[str] = None,
         limit: int = None,
         operation_list: List[str] = None,
@@ -21,6 +22,7 @@ class QueryTunnelMetricDetailRequest(DaraModel):
         start_time: int = None,
     ):
         self.asc_order = asc_order
+        self.code_list = code_list
         self.group_list = group_list
         self.limit = limit
         self.operation_list = operation_list
@@ -43,6 +45,9 @@ class QueryTunnelMetricDetailRequest(DaraModel):
             result = _map
         if self.asc_order is not None:
             result['ascOrder'] = self.asc_order
+
+        if self.code_list is not None:
+            result['codeList'] = self.code_list
 
         if self.group_list is not None:
             result['groupList'] = self.group_list
@@ -77,6 +82,9 @@ class QueryTunnelMetricDetailRequest(DaraModel):
         m = m or dict()
         if m.get('ascOrder') is not None:
             self.asc_order = m.get('ascOrder')
+
+        if m.get('codeList') is not None:
+            self.code_list = m.get('codeList')
 
         if m.get('groupList') is not None:
             self.group_list = m.get('groupList')

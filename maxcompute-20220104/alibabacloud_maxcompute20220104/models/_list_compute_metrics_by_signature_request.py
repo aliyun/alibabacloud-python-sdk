@@ -6,7 +6,7 @@ from typing import List
 
 from darabonba.model import DaraModel
 
-class ListComputeMetricsByInstanceRequest(DaraModel):
+class ListComputeMetricsBySignatureRequest(DaraModel):
     def __init__(
         self,
         end_date: int = None,
@@ -16,29 +16,17 @@ class ListComputeMetricsByInstanceRequest(DaraModel):
         page_size: int = None,
         project_names: List[str] = None,
         signature: str = None,
-        spec_codes: List[str] = None,
         start_date: int = None,
         types: List[str] = None,
     ):
-        # The end time for the period.
         self.end_date = end_date
-        # The job(instance) ID.
         self.instance_id = instance_id
-        # The Alibaba Cloud account that is used to run the MaxCompute job.
         self.job_owner = job_owner
-        # The page number.
         self.page_number = page_number
-        # The number of entries per page.
         self.page_size = page_size
-        # The name of MaxCompute project.
         self.project_names = project_names
-        # The signature of the SQL job.
         self.signature = signature
-        # Specification types.
-        self.spec_codes = spec_codes
-        # The start time for the period.
         self.start_date = start_date
-        # Metering types.
         self.types = types
 
     def validate(self):
@@ -70,9 +58,6 @@ class ListComputeMetricsByInstanceRequest(DaraModel):
         if self.signature is not None:
             result['signature'] = self.signature
 
-        if self.spec_codes is not None:
-            result['specCodes'] = self.spec_codes
-
         if self.start_date is not None:
             result['startDate'] = self.start_date
 
@@ -103,9 +88,6 @@ class ListComputeMetricsByInstanceRequest(DaraModel):
 
         if m.get('signature') is not None:
             self.signature = m.get('signature')
-
-        if m.get('specCodes') is not None:
-            self.spec_codes = m.get('specCodes')
 
         if m.get('startDate') is not None:
             self.start_date = m.get('startDate')

@@ -4029,8 +4029,6 @@ class Client(OpenApiClient):
             body['pageSize'] = request.page_size
         if not DaraCore.is_null(request.project_names):
             body['projectNames'] = request.project_names
-        if not DaraCore.is_null(request.region):
-            body['region'] = request.region
         if not DaraCore.is_null(request.signature):
             body['signature'] = request.signature
         if not DaraCore.is_null(request.spec_codes):
@@ -4079,8 +4077,6 @@ class Client(OpenApiClient):
             body['pageSize'] = request.page_size
         if not DaraCore.is_null(request.project_names):
             body['projectNames'] = request.project_names
-        if not DaraCore.is_null(request.region):
-            body['region'] = request.region
         if not DaraCore.is_null(request.signature):
             body['signature'] = request.signature
         if not DaraCore.is_null(request.spec_codes):
@@ -4124,6 +4120,114 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.list_compute_metrics_by_instance_with_options_async(request, headers, runtime)
+
+    def list_compute_metrics_by_signature_with_options(
+        self,
+        request: main_models.ListComputeMetricsBySignatureRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListComputeMetricsBySignatureResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.end_date):
+            body['endDate'] = request.end_date
+        if not DaraCore.is_null(request.instance_id):
+            body['instanceId'] = request.instance_id
+        if not DaraCore.is_null(request.job_owner):
+            body['jobOwner'] = request.job_owner
+        if not DaraCore.is_null(request.page_number):
+            body['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.project_names):
+            body['projectNames'] = request.project_names
+        if not DaraCore.is_null(request.signature):
+            body['signature'] = request.signature
+        if not DaraCore.is_null(request.start_date):
+            body['startDate'] = request.start_date
+        if not DaraCore.is_null(request.types):
+            body['types'] = request.types
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListComputeMetricsBySignature',
+            version = '2022-01-04',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/computeMetrics/listBySignature',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListComputeMetricsBySignatureResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_compute_metrics_by_signature_with_options_async(
+        self,
+        request: main_models.ListComputeMetricsBySignatureRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListComputeMetricsBySignatureResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.end_date):
+            body['endDate'] = request.end_date
+        if not DaraCore.is_null(request.instance_id):
+            body['instanceId'] = request.instance_id
+        if not DaraCore.is_null(request.job_owner):
+            body['jobOwner'] = request.job_owner
+        if not DaraCore.is_null(request.page_number):
+            body['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.project_names):
+            body['projectNames'] = request.project_names
+        if not DaraCore.is_null(request.signature):
+            body['signature'] = request.signature
+        if not DaraCore.is_null(request.start_date):
+            body['startDate'] = request.start_date
+        if not DaraCore.is_null(request.types):
+            body['types'] = request.types
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListComputeMetricsBySignature',
+            version = '2022-01-04',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/computeMetrics/listBySignature',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListComputeMetricsBySignatureResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_compute_metrics_by_signature(
+        self,
+        request: main_models.ListComputeMetricsBySignatureRequest,
+    ) -> main_models.ListComputeMetricsBySignatureResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_compute_metrics_by_signature_with_options(request, headers, runtime)
+
+    async def list_compute_metrics_by_signature_async(
+        self,
+        request: main_models.ListComputeMetricsBySignatureRequest,
+    ) -> main_models.ListComputeMetricsBySignatureResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_compute_metrics_by_signature_with_options_async(request, headers, runtime)
 
     def list_compute_quota_plan_with_options(
         self,
@@ -4282,6 +4386,86 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.list_functions_with_options_async(project_name, request, headers, runtime)
+
+    def list_instances_with_options(
+        self,
+        request: main_models.ListInstancesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListInstancesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_date):
+            query['endDate'] = request.end_date
+        if not DaraCore.is_null(request.start_date):
+            query['startDate'] = request.start_date
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListInstances',
+            version = '2022-01-04',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/bills/instances',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_instances_with_options_async(
+        self,
+        request: main_models.ListInstancesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListInstancesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_date):
+            query['endDate'] = request.end_date
+        if not DaraCore.is_null(request.start_date):
+            query['startDate'] = request.start_date
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListInstances',
+            version = '2022-01-04',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/bills/instances',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_instances(
+        self,
+        request: main_models.ListInstancesRequest,
+    ) -> main_models.ListInstancesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_instances_with_options(request, headers, runtime)
+
+    async def list_instances_async(
+        self,
+        request: main_models.ListInstancesRequest,
+    ) -> main_models.ListInstancesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_instances_with_options_async(request, headers, runtime)
 
     def list_job_infos_with_options(
         self,
@@ -5657,6 +5841,106 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_mms_timer_logs_with_options_async(source_id, timer_id, request, headers, runtime)
 
+    def list_mms_timers_with_options(
+        self,
+        source_id: str,
+        request: main_models.ListMmsTimersRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListMmsTimersResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.name):
+            query['name'] = request.name
+        if not DaraCore.is_null(request.page_num):
+            query['pageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.src_db_name):
+            query['srcDbName'] = request.src_db_name
+        if not DaraCore.is_null(request.src_table_name):
+            query['srcTableName'] = request.src_table_name
+        if not DaraCore.is_null(request.stopped):
+            query['stopped'] = request.stopped
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListMmsTimers',
+            version = '2022-01-04',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/mms/datasources/{DaraURL.percent_encode(source_id)}/timers',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListMmsTimersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_mms_timers_with_options_async(
+        self,
+        source_id: str,
+        request: main_models.ListMmsTimersRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListMmsTimersResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.name):
+            query['name'] = request.name
+        if not DaraCore.is_null(request.page_num):
+            query['pageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.src_db_name):
+            query['srcDbName'] = request.src_db_name
+        if not DaraCore.is_null(request.src_table_name):
+            query['srcTableName'] = request.src_table_name
+        if not DaraCore.is_null(request.stopped):
+            query['stopped'] = request.stopped
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListMmsTimers',
+            version = '2022-01-04',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/mms/datasources/{DaraURL.percent_encode(source_id)}/timers',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListMmsTimersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_mms_timers(
+        self,
+        source_id: str,
+        request: main_models.ListMmsTimersRequest,
+    ) -> main_models.ListMmsTimersResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_mms_timers_with_options(source_id, request, headers, runtime)
+
+    async def list_mms_timers_async(
+        self,
+        source_id: str,
+        request: main_models.ListMmsTimersRequest,
+    ) -> main_models.ListMmsTimersResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_mms_timers_with_options_async(source_id, request, headers, runtime)
+
     def list_packages_with_options(
         self,
         project_name: str,
@@ -6255,7 +6539,7 @@ class Client(OpenApiClient):
         request = main_models.ListStoragePartitionsInfoShrinkRequest()
         Utils.convert(tmp_req, request)
         if not DaraCore.is_null(tmp_req.types):
-            request.types_shrink = Utils.array_to_string_with_specified_style(tmp_req.types, 'types', 'json')
+            request.types_shrink = Utils.array_to_string_with_specified_style(tmp_req.types, 'types', 'simple')
         query = {}
         if not DaraCore.is_null(request.asc_order):
             query['ascOrder'] = request.asc_order
@@ -6309,7 +6593,7 @@ class Client(OpenApiClient):
         request = main_models.ListStoragePartitionsInfoShrinkRequest()
         Utils.convert(tmp_req, request)
         if not DaraCore.is_null(tmp_req.types):
-            request.types_shrink = Utils.array_to_string_with_specified_style(tmp_req.types, 'types', 'json')
+            request.types_shrink = Utils.array_to_string_with_specified_style(tmp_req.types, 'types', 'simple')
         query = {}
         if not DaraCore.is_null(request.asc_order):
             query['ascOrder'] = request.asc_order
@@ -7351,6 +7635,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.asc_order):
             body['ascOrder'] = request.asc_order
+        if not DaraCore.is_null(request.code_list):
+            body['codeList'] = request.code_list
         if not DaraCore.is_null(request.group_list):
             body['groupList'] = request.group_list
         if not DaraCore.is_null(request.limit):
@@ -7402,6 +7688,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.asc_order):
             body['ascOrder'] = request.asc_order
+        if not DaraCore.is_null(request.code_list):
+            body['codeList'] = request.code_list
         if not DaraCore.is_null(request.group_list):
             body['groupList'] = request.group_list
         if not DaraCore.is_null(request.limit):
@@ -7524,6 +7812,82 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.retry_mms_job_with_options_async(source_id, job_id, headers, runtime)
+
+    def retry_mms_task_with_options(
+        self,
+        source_id: str,
+        task_id: str,
+        request: main_models.RetryMmsTaskRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.RetryMmsTaskResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'RetryMmsTask',
+            version = '2022-01-04',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/mms/datasources/{DaraURL.percent_encode(source_id)}/tasks/{DaraURL.percent_encode(task_id)}/retry',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RetryMmsTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def retry_mms_task_with_options_async(
+        self,
+        source_id: str,
+        task_id: str,
+        request: main_models.RetryMmsTaskRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.RetryMmsTaskResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'RetryMmsTask',
+            version = '2022-01-04',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/mms/datasources/{DaraURL.percent_encode(source_id)}/tasks/{DaraURL.percent_encode(task_id)}/retry',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RetryMmsTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def retry_mms_task(
+        self,
+        source_id: str,
+        task_id: str,
+        request: main_models.RetryMmsTaskRequest,
+    ) -> main_models.RetryMmsTaskResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.retry_mms_task_with_options(source_id, task_id, request, headers, runtime)
+
+    async def retry_mms_task_async(
+        self,
+        source_id: str,
+        task_id: str,
+        request: main_models.RetryMmsTaskRequest,
+    ) -> main_models.RetryMmsTaskResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.retry_mms_task_with_options_async(source_id, task_id, request, headers, runtime)
 
     def start_mms_job_with_options(
         self,
@@ -7665,6 +8029,462 @@ class Client(OpenApiClient):
         headers = {}
         return await self.stop_mms_job_with_options_async(source_id, job_id, headers, runtime)
 
+    def sum_bills_with_options(
+        self,
+        request: main_models.SumBillsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.SumBillsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.end_date):
+            body['endDate'] = request.end_date
+        if not DaraCore.is_null(request.project_names):
+            body['projectNames'] = request.project_names
+        if not DaraCore.is_null(request.start_date):
+            body['startDate'] = request.start_date
+        if not DaraCore.is_null(request.stats_type):
+            body['statsType'] = request.stats_type
+        if not DaraCore.is_null(request.top_n):
+            body['topN'] = request.top_n
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SumBills',
+            version = '2022-01-04',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/bills/sum',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SumBillsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def sum_bills_with_options_async(
+        self,
+        request: main_models.SumBillsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.SumBillsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.end_date):
+            body['endDate'] = request.end_date
+        if not DaraCore.is_null(request.project_names):
+            body['projectNames'] = request.project_names
+        if not DaraCore.is_null(request.start_date):
+            body['startDate'] = request.start_date
+        if not DaraCore.is_null(request.stats_type):
+            body['statsType'] = request.stats_type
+        if not DaraCore.is_null(request.top_n):
+            body['topN'] = request.top_n
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SumBills',
+            version = '2022-01-04',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/bills/sum',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SumBillsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def sum_bills(
+        self,
+        request: main_models.SumBillsRequest,
+    ) -> main_models.SumBillsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.sum_bills_with_options(request, headers, runtime)
+
+    async def sum_bills_async(
+        self,
+        request: main_models.SumBillsRequest,
+    ) -> main_models.SumBillsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.sum_bills_with_options_async(request, headers, runtime)
+
+    def sum_bills_by_date_with_options(
+        self,
+        request: main_models.SumBillsByDateRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.SumBillsByDateResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.end_date):
+            body['endDate'] = request.end_date
+        if not DaraCore.is_null(request.project_names):
+            body['projectNames'] = request.project_names
+        if not DaraCore.is_null(request.start_date):
+            body['startDate'] = request.start_date
+        if not DaraCore.is_null(request.stats_type):
+            body['statsType'] = request.stats_type
+        if not DaraCore.is_null(request.top_n):
+            body['topN'] = request.top_n
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SumBillsByDate',
+            version = '2022-01-04',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/bills/sumByDate',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SumBillsByDateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def sum_bills_by_date_with_options_async(
+        self,
+        request: main_models.SumBillsByDateRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.SumBillsByDateResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.end_date):
+            body['endDate'] = request.end_date
+        if not DaraCore.is_null(request.project_names):
+            body['projectNames'] = request.project_names
+        if not DaraCore.is_null(request.start_date):
+            body['startDate'] = request.start_date
+        if not DaraCore.is_null(request.stats_type):
+            body['statsType'] = request.stats_type
+        if not DaraCore.is_null(request.top_n):
+            body['topN'] = request.top_n
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SumBillsByDate',
+            version = '2022-01-04',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/bills/sumByDate',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SumBillsByDateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def sum_bills_by_date(
+        self,
+        request: main_models.SumBillsByDateRequest,
+    ) -> main_models.SumBillsByDateResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.sum_bills_by_date_with_options(request, headers, runtime)
+
+    async def sum_bills_by_date_async(
+        self,
+        request: main_models.SumBillsByDateRequest,
+    ) -> main_models.SumBillsByDateResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.sum_bills_by_date_with_options_async(request, headers, runtime)
+
+    def sum_compute_metrics_by_record_with_options(
+        self,
+        request: main_models.SumComputeMetricsByRecordRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.SumComputeMetricsByRecordResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.end_date):
+            body['endDate'] = request.end_date
+        if not DaraCore.is_null(request.project_names):
+            body['projectNames'] = request.project_names
+        if not DaraCore.is_null(request.start_date):
+            body['startDate'] = request.start_date
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SumComputeMetricsByRecord',
+            version = '2022-01-04',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/computeMetrics/sumByRecord',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SumComputeMetricsByRecordResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def sum_compute_metrics_by_record_with_options_async(
+        self,
+        request: main_models.SumComputeMetricsByRecordRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.SumComputeMetricsByRecordResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.end_date):
+            body['endDate'] = request.end_date
+        if not DaraCore.is_null(request.project_names):
+            body['projectNames'] = request.project_names
+        if not DaraCore.is_null(request.start_date):
+            body['startDate'] = request.start_date
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SumComputeMetricsByRecord',
+            version = '2022-01-04',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/computeMetrics/sumByRecord',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SumComputeMetricsByRecordResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def sum_compute_metrics_by_record(
+        self,
+        request: main_models.SumComputeMetricsByRecordRequest,
+    ) -> main_models.SumComputeMetricsByRecordResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.sum_compute_metrics_by_record_with_options(request, headers, runtime)
+
+    async def sum_compute_metrics_by_record_async(
+        self,
+        request: main_models.SumComputeMetricsByRecordRequest,
+    ) -> main_models.SumComputeMetricsByRecordResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.sum_compute_metrics_by_record_with_options_async(request, headers, runtime)
+
+    def sum_compute_metrics_by_usage_with_options(
+        self,
+        request: main_models.SumComputeMetricsByUsageRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.SumComputeMetricsByUsageResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.end_date):
+            body['endDate'] = request.end_date
+        if not DaraCore.is_null(request.project_names):
+            body['projectNames'] = request.project_names
+        if not DaraCore.is_null(request.start_date):
+            body['startDate'] = request.start_date
+        if not DaraCore.is_null(request.usage_type):
+            body['usageType'] = request.usage_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SumComputeMetricsByUsage',
+            version = '2022-01-04',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/computeMetrics/sumByUsage',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SumComputeMetricsByUsageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def sum_compute_metrics_by_usage_with_options_async(
+        self,
+        request: main_models.SumComputeMetricsByUsageRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.SumComputeMetricsByUsageResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.end_date):
+            body['endDate'] = request.end_date
+        if not DaraCore.is_null(request.project_names):
+            body['projectNames'] = request.project_names
+        if not DaraCore.is_null(request.start_date):
+            body['startDate'] = request.start_date
+        if not DaraCore.is_null(request.usage_type):
+            body['usageType'] = request.usage_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SumComputeMetricsByUsage',
+            version = '2022-01-04',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/computeMetrics/sumByUsage',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SumComputeMetricsByUsageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def sum_compute_metrics_by_usage(
+        self,
+        request: main_models.SumComputeMetricsByUsageRequest,
+    ) -> main_models.SumComputeMetricsByUsageResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.sum_compute_metrics_by_usage_with_options(request, headers, runtime)
+
+    async def sum_compute_metrics_by_usage_async(
+        self,
+        request: main_models.SumComputeMetricsByUsageRequest,
+    ) -> main_models.SumComputeMetricsByUsageResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.sum_compute_metrics_by_usage_with_options_async(request, headers, runtime)
+
+    def sum_daily_bills_by_item_with_options(
+        self,
+        request: main_models.SumDailyBillsByItemRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.SumDailyBillsByItemResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.end_date):
+            body['endDate'] = request.end_date
+        if not DaraCore.is_null(request.page_number):
+            body['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.project_names):
+            body['projectNames'] = request.project_names
+        if not DaraCore.is_null(request.start_date):
+            body['startDate'] = request.start_date
+        if not DaraCore.is_null(request.stats_type):
+            body['statsType'] = request.stats_type
+        if not DaraCore.is_null(request.types):
+            body['types'] = request.types
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SumDailyBillsByItem',
+            version = '2022-01-04',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/dailyBills/sumByItem',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SumDailyBillsByItemResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def sum_daily_bills_by_item_with_options_async(
+        self,
+        request: main_models.SumDailyBillsByItemRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.SumDailyBillsByItemResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.end_date):
+            body['endDate'] = request.end_date
+        if not DaraCore.is_null(request.page_number):
+            body['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.project_names):
+            body['projectNames'] = request.project_names
+        if not DaraCore.is_null(request.start_date):
+            body['startDate'] = request.start_date
+        if not DaraCore.is_null(request.stats_type):
+            body['statsType'] = request.stats_type
+        if not DaraCore.is_null(request.types):
+            body['types'] = request.types
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SumDailyBillsByItem',
+            version = '2022-01-04',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/dailyBills/sumByItem',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SumDailyBillsByItemResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def sum_daily_bills_by_item(
+        self,
+        request: main_models.SumDailyBillsByItemRequest,
+    ) -> main_models.SumDailyBillsByItemResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.sum_daily_bills_by_item_with_options(request, headers, runtime)
+
+    async def sum_daily_bills_by_item_async(
+        self,
+        request: main_models.SumDailyBillsByItemRequest,
+    ) -> main_models.SumDailyBillsByItemResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.sum_daily_bills_by_item_with_options_async(request, headers, runtime)
+
     def sum_storage_metrics_by_date_with_options(
         self,
         request: main_models.SumStorageMetricsByDateRequest,
@@ -7677,14 +8497,10 @@ class Client(OpenApiClient):
             body['endDate'] = request.end_date
         if not DaraCore.is_null(request.project_names):
             body['projectNames'] = request.project_names
-        if not DaraCore.is_null(request.region):
-            body['region'] = request.region
         if not DaraCore.is_null(request.start_date):
             body['startDate'] = request.start_date
         if not DaraCore.is_null(request.stats_type):
             body['statsType'] = request.stats_type
-        if not DaraCore.is_null(request.user_id):
-            body['userId'] = request.user_id
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             body = Utils.parse_to_map(body)
@@ -7717,14 +8533,10 @@ class Client(OpenApiClient):
             body['endDate'] = request.end_date
         if not DaraCore.is_null(request.project_names):
             body['projectNames'] = request.project_names
-        if not DaraCore.is_null(request.region):
-            body['region'] = request.region
         if not DaraCore.is_null(request.start_date):
             body['startDate'] = request.start_date
         if not DaraCore.is_null(request.stats_type):
             body['statsType'] = request.stats_type
-        if not DaraCore.is_null(request.user_id):
-            body['userId'] = request.user_id
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             body = Utils.parse_to_map(body)
@@ -7760,6 +8572,170 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.sum_storage_metrics_by_date_with_options_async(request, headers, runtime)
+
+    def sum_storage_metrics_by_type_with_options(
+        self,
+        request: main_models.SumStorageMetricsByTypeRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.SumStorageMetricsByTypeResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.end_date):
+            body['endDate'] = request.end_date
+        if not DaraCore.is_null(request.project_names):
+            body['projectNames'] = request.project_names
+        if not DaraCore.is_null(request.start_date):
+            body['startDate'] = request.start_date
+        if not DaraCore.is_null(request.stats_type):
+            body['statsType'] = request.stats_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SumStorageMetricsByType',
+            version = '2022-01-04',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/storageMetrics/sumByType',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SumStorageMetricsByTypeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def sum_storage_metrics_by_type_with_options_async(
+        self,
+        request: main_models.SumStorageMetricsByTypeRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.SumStorageMetricsByTypeResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.end_date):
+            body['endDate'] = request.end_date
+        if not DaraCore.is_null(request.project_names):
+            body['projectNames'] = request.project_names
+        if not DaraCore.is_null(request.start_date):
+            body['startDate'] = request.start_date
+        if not DaraCore.is_null(request.stats_type):
+            body['statsType'] = request.stats_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SumStorageMetricsByType',
+            version = '2022-01-04',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/storageMetrics/sumByType',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SumStorageMetricsByTypeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def sum_storage_metrics_by_type(
+        self,
+        request: main_models.SumStorageMetricsByTypeRequest,
+    ) -> main_models.SumStorageMetricsByTypeResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.sum_storage_metrics_by_type_with_options(request, headers, runtime)
+
+    async def sum_storage_metrics_by_type_async(
+        self,
+        request: main_models.SumStorageMetricsByTypeRequest,
+    ) -> main_models.SumStorageMetricsByTypeResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.sum_storage_metrics_by_type_with_options_async(request, headers, runtime)
+
+    def trigger_mms_timer_with_options(
+        self,
+        source_id: str,
+        timer_id: str,
+        request: main_models.TriggerMmsTimerRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.TriggerMmsTimerResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'TriggerMmsTimer',
+            version = '2022-01-04',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/mms/datasources/{DaraURL.percent_encode(source_id)}/timers/{DaraURL.percent_encode(timer_id)}/trigger',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.TriggerMmsTimerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def trigger_mms_timer_with_options_async(
+        self,
+        source_id: str,
+        timer_id: str,
+        request: main_models.TriggerMmsTimerRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.TriggerMmsTimerResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'TriggerMmsTimer',
+            version = '2022-01-04',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/mms/datasources/{DaraURL.percent_encode(source_id)}/timers/{DaraURL.percent_encode(timer_id)}/trigger',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.TriggerMmsTimerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def trigger_mms_timer(
+        self,
+        source_id: str,
+        timer_id: str,
+        request: main_models.TriggerMmsTimerRequest,
+    ) -> main_models.TriggerMmsTimerResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.trigger_mms_timer_with_options(source_id, timer_id, request, headers, runtime)
+
+    async def trigger_mms_timer_async(
+        self,
+        source_id: str,
+        timer_id: str,
+        request: main_models.TriggerMmsTimerRequest,
+    ) -> main_models.TriggerMmsTimerResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.trigger_mms_timer_with_options_async(source_id, timer_id, request, headers, runtime)
 
     def update_compute_quota_plan_with_options(
         self,
@@ -8098,6 +9074,386 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.update_mms_data_source_with_options_async(source_id, request, headers, runtime)
+
+    def update_mms_db_with_options(
+        self,
+        source_id: str,
+        db_id: str,
+        request: main_models.UpdateMmsDbRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateMmsDbResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.dst_name):
+            body['dstName'] = request.dst_name
+        if not DaraCore.is_null(request.dst_project_name):
+            body['dstProjectName'] = request.dst_project_name
+        if not DaraCore.is_null(request.status):
+            body['status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateMmsDb',
+            version = '2022-01-04',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/mms/datasources/{DaraURL.percent_encode(source_id)}/dbs/{DaraURL.percent_encode(db_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateMmsDbResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_mms_db_with_options_async(
+        self,
+        source_id: str,
+        db_id: str,
+        request: main_models.UpdateMmsDbRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateMmsDbResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.dst_name):
+            body['dstName'] = request.dst_name
+        if not DaraCore.is_null(request.dst_project_name):
+            body['dstProjectName'] = request.dst_project_name
+        if not DaraCore.is_null(request.status):
+            body['status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateMmsDb',
+            version = '2022-01-04',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/mms/datasources/{DaraURL.percent_encode(source_id)}/dbs/{DaraURL.percent_encode(db_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateMmsDbResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_mms_db(
+        self,
+        source_id: str,
+        db_id: str,
+        request: main_models.UpdateMmsDbRequest,
+    ) -> main_models.UpdateMmsDbResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_mms_db_with_options(source_id, db_id, request, headers, runtime)
+
+    async def update_mms_db_async(
+        self,
+        source_id: str,
+        db_id: str,
+        request: main_models.UpdateMmsDbRequest,
+    ) -> main_models.UpdateMmsDbResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_mms_db_with_options_async(source_id, db_id, request, headers, runtime)
+
+    def update_mms_table_with_options(
+        self,
+        source_id: str,
+        table_id: str,
+        request: main_models.UpdateMmsTableRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateMmsTableResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.dst_name):
+            body['dstName'] = request.dst_name
+        if not DaraCore.is_null(request.dst_project_name):
+            body['dstProjectName'] = request.dst_project_name
+        if not DaraCore.is_null(request.dst_schema_name):
+            body['dstSchemaName'] = request.dst_schema_name
+        if not DaraCore.is_null(request.status):
+            body['status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateMmsTable',
+            version = '2022-01-04',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/mms/datasources/{DaraURL.percent_encode(source_id)}/tables/{DaraURL.percent_encode(table_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateMmsTableResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_mms_table_with_options_async(
+        self,
+        source_id: str,
+        table_id: str,
+        request: main_models.UpdateMmsTableRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateMmsTableResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.dst_name):
+            body['dstName'] = request.dst_name
+        if not DaraCore.is_null(request.dst_project_name):
+            body['dstProjectName'] = request.dst_project_name
+        if not DaraCore.is_null(request.dst_schema_name):
+            body['dstSchemaName'] = request.dst_schema_name
+        if not DaraCore.is_null(request.status):
+            body['status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateMmsTable',
+            version = '2022-01-04',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/mms/datasources/{DaraURL.percent_encode(source_id)}/tables/{DaraURL.percent_encode(table_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateMmsTableResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_mms_table(
+        self,
+        source_id: str,
+        table_id: str,
+        request: main_models.UpdateMmsTableRequest,
+    ) -> main_models.UpdateMmsTableResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_mms_table_with_options(source_id, table_id, request, headers, runtime)
+
+    async def update_mms_table_async(
+        self,
+        source_id: str,
+        table_id: str,
+        request: main_models.UpdateMmsTableRequest,
+    ) -> main_models.UpdateMmsTableResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_mms_table_with_options_async(source_id, table_id, request, headers, runtime)
+
+    def update_mms_tables_with_options(
+        self,
+        source_id: str,
+        request: main_models.UpdateMmsTablesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateMmsTablesResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.db_name):
+            body['dbName'] = request.db_name
+        if not DaraCore.is_null(request.dst_project_name):
+            body['dstProjectName'] = request.dst_project_name
+        if not DaraCore.is_null(request.dst_schema_name):
+            body['dstSchemaName'] = request.dst_schema_name
+        if not DaraCore.is_null(request.status):
+            body['status'] = request.status
+        if not DaraCore.is_null(request.table_names):
+            body['tableNames'] = request.table_names
+        if not DaraCore.is_null(request.tables):
+            body['tables'] = request.tables
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateMmsTables',
+            version = '2022-01-04',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/mms/datasources/{DaraURL.percent_encode(source_id)}/tables',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateMmsTablesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_mms_tables_with_options_async(
+        self,
+        source_id: str,
+        request: main_models.UpdateMmsTablesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateMmsTablesResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.db_name):
+            body['dbName'] = request.db_name
+        if not DaraCore.is_null(request.dst_project_name):
+            body['dstProjectName'] = request.dst_project_name
+        if not DaraCore.is_null(request.dst_schema_name):
+            body['dstSchemaName'] = request.dst_schema_name
+        if not DaraCore.is_null(request.status):
+            body['status'] = request.status
+        if not DaraCore.is_null(request.table_names):
+            body['tableNames'] = request.table_names
+        if not DaraCore.is_null(request.tables):
+            body['tables'] = request.tables
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateMmsTables',
+            version = '2022-01-04',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/mms/datasources/{DaraURL.percent_encode(source_id)}/tables',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateMmsTablesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_mms_tables(
+        self,
+        source_id: str,
+        request: main_models.UpdateMmsTablesRequest,
+    ) -> main_models.UpdateMmsTablesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_mms_tables_with_options(source_id, request, headers, runtime)
+
+    async def update_mms_tables_async(
+        self,
+        source_id: str,
+        request: main_models.UpdateMmsTablesRequest,
+    ) -> main_models.UpdateMmsTablesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_mms_tables_with_options_async(source_id, request, headers, runtime)
+
+    def update_mms_timer_with_options(
+        self,
+        source_id: str,
+        timer_id: str,
+        request: main_models.UpdateMmsTimerRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateMmsTimerResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.schedule_type):
+            body['scheduleType'] = request.schedule_type
+        if not DaraCore.is_null(request.stopped):
+            body['stopped'] = request.stopped
+        if not DaraCore.is_null(request.value):
+            body['value'] = request.value
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateMmsTimer',
+            version = '2022-01-04',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/mms/datasources/{DaraURL.percent_encode(source_id)}/timers/{DaraURL.percent_encode(timer_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateMmsTimerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_mms_timer_with_options_async(
+        self,
+        source_id: str,
+        timer_id: str,
+        request: main_models.UpdateMmsTimerRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateMmsTimerResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.schedule_type):
+            body['scheduleType'] = request.schedule_type
+        if not DaraCore.is_null(request.stopped):
+            body['stopped'] = request.stopped
+        if not DaraCore.is_null(request.value):
+            body['value'] = request.value
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateMmsTimer',
+            version = '2022-01-04',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/mms/datasources/{DaraURL.percent_encode(source_id)}/timers/{DaraURL.percent_encode(timer_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateMmsTimerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_mms_timer(
+        self,
+        source_id: str,
+        timer_id: str,
+        request: main_models.UpdateMmsTimerRequest,
+    ) -> main_models.UpdateMmsTimerResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_mms_timer_with_options(source_id, timer_id, request, headers, runtime)
+
+    async def update_mms_timer_async(
+        self,
+        source_id: str,
+        timer_id: str,
+        request: main_models.UpdateMmsTimerRequest,
+    ) -> main_models.UpdateMmsTimerResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_mms_timer_with_options_async(source_id, timer_id, request, headers, runtime)
 
     def update_package_with_options(
         self,
