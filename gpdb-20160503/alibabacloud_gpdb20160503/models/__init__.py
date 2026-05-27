@@ -566,6 +566,9 @@ from ._list_streaming_data_sources_response import ListStreamingDataSourcesRespo
 from ._list_streaming_jobs_request import ListStreamingJobsRequest
 from ._list_streaming_jobs_response_body import ListStreamingJobsResponseBody
 from ._list_streaming_jobs_response import ListStreamingJobsResponse
+from ._list_supabase_project_tags_request import ListSupabaseProjectTagsRequest
+from ._list_supabase_project_tags_response_body import ListSupabaseProjectTagsResponseBody
+from ._list_supabase_project_tags_response import ListSupabaseProjectTagsResponse
 from ._list_supabase_projects_request import ListSupabaseProjectsRequest
 from ._list_supabase_projects_response_body import ListSupabaseProjectsResponseBody
 from ._list_supabase_projects_response import ListSupabaseProjectsResponse
@@ -658,6 +661,9 @@ from ._modify_streaming_job_response import ModifyStreamingJobResponse
 from ._modify_supabase_auto_scale_policy_request import ModifySupabaseAutoScalePolicyRequest
 from ._modify_supabase_auto_scale_policy_response_body import ModifySupabaseAutoScalePolicyResponseBody
 from ._modify_supabase_auto_scale_policy_response import ModifySupabaseAutoScalePolicyResponse
+from ._modify_supabase_project_description_request import ModifySupabaseProjectDescriptionRequest
+from ._modify_supabase_project_description_response_body import ModifySupabaseProjectDescriptionResponseBody
+from ._modify_supabase_project_description_response import ModifySupabaseProjectDescriptionResponse
 from ._modify_supabase_project_resource_request import ModifySupabaseProjectResourceRequest
 from ._modify_supabase_project_resource_response_body import ModifySupabaseProjectResourceResponseBody
 from ._modify_supabase_project_resource_response import ModifySupabaseProjectResourceResponse
@@ -733,6 +739,9 @@ from ._switch_dbinstance_net_type_response import SwitchDBInstanceNetTypeRespons
 from ._tag_resources_request import TagResourcesRequest
 from ._tag_resources_response_body import TagResourcesResponseBody
 from ._tag_resources_response import TagResourcesResponse
+from ._tag_supabase_project_request import TagSupabaseProjectRequest
+from ._tag_supabase_project_response_body import TagSupabaseProjectResponseBody
+from ._tag_supabase_project_response import TagSupabaseProjectResponse
 from ._text_embedding_request import TextEmbeddingRequest
 from ._text_embedding_shrink_request import TextEmbeddingShrinkRequest
 from ._text_embedding_response_body import TextEmbeddingResponseBody
@@ -747,6 +756,9 @@ from ._unload_sample_data_response import UnloadSampleDataResponse
 from ._untag_resources_request import UntagResourcesRequest
 from ._untag_resources_response_body import UntagResourcesResponseBody
 from ._untag_resources_response import UntagResourcesResponse
+from ._untag_supabase_project_request import UntagSupabaseProjectRequest
+from ._untag_supabase_project_response_body import UntagSupabaseProjectResponseBody
+from ._untag_supabase_project_response import UntagSupabaseProjectResponse
 from ._update_collection_data_metadata_request import UpdateCollectionDataMetadataRequest
 from ._update_collection_data_metadata_shrink_request import UpdateCollectionDataMetadataShrinkRequest
 from ._update_collection_data_metadata_response_body import UpdateCollectionDataMetadataResponseBody
@@ -976,6 +988,8 @@ from ._list_slow_sqlrecords_response_body import ListSlowSQLRecordsResponseBodyI
 from ._list_streaming_data_services_response_body import ListStreamingDataServicesResponseBodyServiceItems
 from ._list_streaming_data_sources_response_body import ListStreamingDataSourcesResponseBodyDataSourceItems
 from ._list_streaming_jobs_response_body import ListStreamingJobsResponseBodyJobItems
+from ._list_supabase_project_tags_request import ListSupabaseProjectTagsRequestTag
+from ._list_supabase_project_tags_response_body import ListSupabaseProjectTagsResponseBodyTagResources
 from ._list_supabase_projects_response_body import ListSupabaseProjectsResponseBodyItems
 from ._list_support_models_response_body import ListSupportModelsResponseBodyModelNames
 from ._list_tables_response_body import ListTablesResponseBodyTables
@@ -1026,6 +1040,7 @@ from ._query_knowledge_bases_content_response_body import QueryKnowledgeBasesCon
 from ._rerank_response_body import RerankResponseBodyResultsResults
 from ._rerank_response_body import RerankResponseBodyResults
 from ._tag_resources_request import TagResourcesRequestTag
+from ._tag_supabase_project_request import TagSupabaseProjectRequestTag
 from ._text_embedding_response_body import TextEmbeddingResponseBodyResultsResultsEmbedding
 from ._text_embedding_response_body import TextEmbeddingResponseBodyResultsResults
 from ._text_embedding_response_body import TextEmbeddingResponseBodyResults
@@ -1598,6 +1613,9 @@ __all__ = [
     ListStreamingJobsRequest,
     ListStreamingJobsResponseBody,
     ListStreamingJobsResponse,
+    ListSupabaseProjectTagsRequest,
+    ListSupabaseProjectTagsResponseBody,
+    ListSupabaseProjectTagsResponse,
     ListSupabaseProjectsRequest,
     ListSupabaseProjectsResponseBody,
     ListSupabaseProjectsResponse,
@@ -1690,6 +1708,9 @@ __all__ = [
     ModifySupabaseAutoScalePolicyRequest,
     ModifySupabaseAutoScalePolicyResponseBody,
     ModifySupabaseAutoScalePolicyResponse,
+    ModifySupabaseProjectDescriptionRequest,
+    ModifySupabaseProjectDescriptionResponseBody,
+    ModifySupabaseProjectDescriptionResponse,
     ModifySupabaseProjectResourceRequest,
     ModifySupabaseProjectResourceResponseBody,
     ModifySupabaseProjectResourceResponse,
@@ -1765,6 +1786,9 @@ __all__ = [
     TagResourcesRequest,
     TagResourcesResponseBody,
     TagResourcesResponse,
+    TagSupabaseProjectRequest,
+    TagSupabaseProjectResponseBody,
+    TagSupabaseProjectResponse,
     TextEmbeddingRequest,
     TextEmbeddingShrinkRequest,
     TextEmbeddingResponseBody,
@@ -1779,6 +1803,9 @@ __all__ = [
     UntagResourcesRequest,
     UntagResourcesResponseBody,
     UntagResourcesResponse,
+    UntagSupabaseProjectRequest,
+    UntagSupabaseProjectResponseBody,
+    UntagSupabaseProjectResponse,
     UpdateCollectionDataMetadataRequest,
     UpdateCollectionDataMetadataShrinkRequest,
     UpdateCollectionDataMetadataResponseBody,
@@ -2008,6 +2035,8 @@ __all__ = [
     ListStreamingDataServicesResponseBodyServiceItems,
     ListStreamingDataSourcesResponseBodyDataSourceItems,
     ListStreamingJobsResponseBodyJobItems,
+    ListSupabaseProjectTagsRequestTag,
+    ListSupabaseProjectTagsResponseBodyTagResources,
     ListSupabaseProjectsResponseBodyItems,
     ListSupportModelsResponseBodyModelNames,
     ListTablesResponseBodyTables,
@@ -2058,6 +2087,7 @@ __all__ = [
     RerankResponseBodyResultsResults,
     RerankResponseBodyResults,
     TagResourcesRequestTag,
+    TagSupabaseProjectRequestTag,
     TextEmbeddingResponseBodyResultsResultsEmbedding,
     TextEmbeddingResponseBodyResultsResults,
     TextEmbeddingResponseBodyResults,

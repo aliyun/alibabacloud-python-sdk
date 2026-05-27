@@ -16794,6 +16794,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_streaming_jobs_with_options_async(request, runtime)
 
+    def list_supabase_project_tags_with_options(
+        self,
+        request: main_models.ListSupabaseProjectTagsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListSupabaseProjectTagsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not DaraCore.is_null(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListSupabaseProjectTags',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListSupabaseProjectTagsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_supabase_project_tags_with_options_async(
+        self,
+        request: main_models.ListSupabaseProjectTagsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListSupabaseProjectTagsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not DaraCore.is_null(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListSupabaseProjectTags',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListSupabaseProjectTagsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_supabase_project_tags(
+        self,
+        request: main_models.ListSupabaseProjectTagsRequest,
+    ) -> main_models.ListSupabaseProjectTagsResponse:
+        runtime = RuntimeOptions()
+        return self.list_supabase_project_tags_with_options(request, runtime)
+
+    async def list_supabase_project_tags_async(
+        self,
+        request: main_models.ListSupabaseProjectTagsRequest,
+    ) -> main_models.ListSupabaseProjectTagsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_supabase_project_tags_with_options_async(request, runtime)
+
     def list_supabase_projects_with_options(
         self,
         request: main_models.ListSupabaseProjectsRequest,
@@ -19498,6 +19584,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.modify_supabase_auto_scale_policy_with_options_async(request, runtime)
 
+    def modify_supabase_project_description_with_options(
+        self,
+        request: main_models.ModifySupabaseProjectDescriptionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifySupabaseProjectDescriptionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.project_description):
+            query['ProjectDescription'] = request.project_description
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifySupabaseProjectDescription',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifySupabaseProjectDescriptionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_supabase_project_description_with_options_async(
+        self,
+        request: main_models.ModifySupabaseProjectDescriptionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifySupabaseProjectDescriptionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.project_description):
+            query['ProjectDescription'] = request.project_description
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifySupabaseProjectDescription',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifySupabaseProjectDescriptionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_supabase_project_description(
+        self,
+        request: main_models.ModifySupabaseProjectDescriptionRequest,
+    ) -> main_models.ModifySupabaseProjectDescriptionResponse:
+        runtime = RuntimeOptions()
+        return self.modify_supabase_project_description_with_options(request, runtime)
+
+    async def modify_supabase_project_description_async(
+        self,
+        request: main_models.ModifySupabaseProjectDescriptionRequest,
+    ) -> main_models.ModifySupabaseProjectDescriptionResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_supabase_project_description_with_options_async(request, runtime)
+
     def modify_supabase_project_resource_with_options(
         self,
         request: main_models.ModifySupabaseProjectResourceRequest,
@@ -21766,6 +21930,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.tag_resources_with_options_async(request, runtime)
 
+    def tag_supabase_project_with_options(
+        self,
+        request: main_models.TagSupabaseProjectRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.TagSupabaseProjectResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not DaraCore.is_null(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'TagSupabaseProject',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.TagSupabaseProjectResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def tag_supabase_project_with_options_async(
+        self,
+        request: main_models.TagSupabaseProjectRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.TagSupabaseProjectResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not DaraCore.is_null(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'TagSupabaseProject',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.TagSupabaseProjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def tag_supabase_project(
+        self,
+        request: main_models.TagSupabaseProjectRequest,
+    ) -> main_models.TagSupabaseProjectResponse:
+        runtime = RuntimeOptions()
+        return self.tag_supabase_project_with_options(request, runtime)
+
+    async def tag_supabase_project_async(
+        self,
+        request: main_models.TagSupabaseProjectRequest,
+    ) -> main_models.TagSupabaseProjectResponse:
+        runtime = RuntimeOptions()
+        return await self.tag_supabase_project_with_options_async(request, runtime)
+
     def text_embedding_with_options(
         self,
         tmp_req: main_models.TextEmbeddingRequest,
@@ -22133,6 +22379,92 @@ class Client(OpenApiClient):
     ) -> main_models.UntagResourcesResponse:
         runtime = RuntimeOptions()
         return await self.untag_resources_with_options_async(request, runtime)
+
+    def untag_supabase_project_with_options(
+        self,
+        request: main_models.UntagSupabaseProjectRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UntagSupabaseProjectResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.all):
+            query['All'] = request.all
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not DaraCore.is_null(request.tag_key):
+            query['TagKey'] = request.tag_key
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UntagSupabaseProject',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UntagSupabaseProjectResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def untag_supabase_project_with_options_async(
+        self,
+        request: main_models.UntagSupabaseProjectRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UntagSupabaseProjectResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.all):
+            query['All'] = request.all
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not DaraCore.is_null(request.tag_key):
+            query['TagKey'] = request.tag_key
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UntagSupabaseProject',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UntagSupabaseProjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def untag_supabase_project(
+        self,
+        request: main_models.UntagSupabaseProjectRequest,
+    ) -> main_models.UntagSupabaseProjectResponse:
+        runtime = RuntimeOptions()
+        return self.untag_supabase_project_with_options(request, runtime)
+
+    async def untag_supabase_project_async(
+        self,
+        request: main_models.UntagSupabaseProjectRequest,
+    ) -> main_models.UntagSupabaseProjectResponse:
+        runtime = RuntimeOptions()
+        return await self.untag_supabase_project_with_options_async(request, runtime)
 
     def update_collection_data_metadata_with_options(
         self,

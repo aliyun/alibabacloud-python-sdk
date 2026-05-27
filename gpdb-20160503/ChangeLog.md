@@ -1,3 +1,10 @@
+2026-05-27 Version: 5.3.0
+- Support API ListSupabaseProjectTags.
+- Support API ModifySupabaseProjectDescription.
+- Support API TagSupabaseProject.
+- Support API UntagSupabaseProject.
+
+
 2026-05-26 Version: 5.2.2
 - Update API GetSupabaseProject: add response parameters Body.ProjectDescription.
 - Update API ListSupabaseProjects: add response parameters Body.Items.$.ProjectDescription.
