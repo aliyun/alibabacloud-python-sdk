@@ -238,6 +238,8 @@ class Client(OpenApiClient):
     ) -> main_models.CreateDigitalEmployeeResponse:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.attributes):
+            body['attributes'] = request.attributes
         if not DaraCore.is_null(request.default_rule):
             body['defaultRule'] = request.default_rule
         if not DaraCore.is_null(request.description):
@@ -282,6 +284,8 @@ class Client(OpenApiClient):
     ) -> main_models.CreateDigitalEmployeeResponse:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.attributes):
+            body['attributes'] = request.attributes
         if not DaraCore.is_null(request.default_rule):
             body['defaultRule'] = request.default_rule
         if not DaraCore.is_null(request.description):
@@ -433,6 +437,110 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.create_digital_employee_skill_with_options_async(name, request, headers, runtime)
+
+    def create_mcp_service_with_options(
+        self,
+        name: str,
+        request: main_models.CreateMcpServiceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateMcpServiceResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.connection):
+            body['connection'] = request.connection
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.display_name):
+            body['displayName'] = request.display_name
+        if not DaraCore.is_null(request.enable):
+            body['enable'] = request.enable
+        if not DaraCore.is_null(request.mcp_service_name):
+            body['mcpServiceName'] = request.mcp_service_name
+        if not DaraCore.is_null(request.network):
+            body['network'] = request.network
+        if not DaraCore.is_null(request.tools):
+            body['tools'] = request.tools
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateMcpService',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = f'/digitalEmployee/{DaraURL.percent_encode(name)}/mcpService',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateMcpServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_mcp_service_with_options_async(
+        self,
+        name: str,
+        request: main_models.CreateMcpServiceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateMcpServiceResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.connection):
+            body['connection'] = request.connection
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.display_name):
+            body['displayName'] = request.display_name
+        if not DaraCore.is_null(request.enable):
+            body['enable'] = request.enable
+        if not DaraCore.is_null(request.mcp_service_name):
+            body['mcpServiceName'] = request.mcp_service_name
+        if not DaraCore.is_null(request.network):
+            body['network'] = request.network
+        if not DaraCore.is_null(request.tools):
+            body['tools'] = request.tools
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateMcpService',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = f'/digitalEmployee/{DaraURL.percent_encode(name)}/mcpService',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateMcpServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_mcp_service(
+        self,
+        name: str,
+        request: main_models.CreateMcpServiceRequest,
+    ) -> main_models.CreateMcpServiceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_mcp_service_with_options(name, request, headers, runtime)
+
+    async def create_mcp_service_async(
+        self,
+        name: str,
+        request: main_models.CreateMcpServiceRequest,
+    ) -> main_models.CreateMcpServiceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_mcp_service_with_options_async(name, request, headers, runtime)
 
     def create_thread_with_options(
         self,
@@ -750,6 +858,82 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_digital_employee_skill_with_options_async(name, skill_name, request, headers, runtime)
 
+    def delete_mcp_service_with_options(
+        self,
+        name: str,
+        mcp_service_name: str,
+        request: main_models.DeleteMcpServiceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteMcpServiceResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteMcpService',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = f'/digitalEmployee/{DaraURL.percent_encode(name)}/mcpService/{DaraURL.percent_encode(mcp_service_name)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteMcpServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_mcp_service_with_options_async(
+        self,
+        name: str,
+        mcp_service_name: str,
+        request: main_models.DeleteMcpServiceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteMcpServiceResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteMcpService',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = f'/digitalEmployee/{DaraURL.percent_encode(name)}/mcpService/{DaraURL.percent_encode(mcp_service_name)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteMcpServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_mcp_service(
+        self,
+        name: str,
+        mcp_service_name: str,
+        request: main_models.DeleteMcpServiceRequest,
+    ) -> main_models.DeleteMcpServiceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_mcp_service_with_options(name, mcp_service_name, request, headers, runtime)
+
+    async def delete_mcp_service_async(
+        self,
+        name: str,
+        mcp_service_name: str,
+        request: main_models.DeleteMcpServiceRequest,
+    ) -> main_models.DeleteMcpServiceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_mcp_service_with_options_async(name, mcp_service_name, request, headers, runtime)
+
     def delete_thread_with_options(
         self,
         name: str,
@@ -825,6 +1009,86 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.delete_thread_with_options_async(name, thread_id, request, headers, runtime)
+
+    def fetch_remote_mcp_tools_with_options(
+        self,
+        request: main_models.FetchRemoteMcpToolsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.FetchRemoteMcpToolsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.connection):
+            body['connection'] = request.connection
+        if not DaraCore.is_null(request.network):
+            body['network'] = request.network
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'FetchRemoteMcpTools',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = f'/mcptools',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.FetchRemoteMcpToolsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def fetch_remote_mcp_tools_with_options_async(
+        self,
+        request: main_models.FetchRemoteMcpToolsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.FetchRemoteMcpToolsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.connection):
+            body['connection'] = request.connection
+        if not DaraCore.is_null(request.network):
+            body['network'] = request.network
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'FetchRemoteMcpTools',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = f'/mcptools',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.FetchRemoteMcpToolsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def fetch_remote_mcp_tools(
+        self,
+        request: main_models.FetchRemoteMcpToolsRequest,
+    ) -> main_models.FetchRemoteMcpToolsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.fetch_remote_mcp_tools_with_options(request, headers, runtime)
+
+    async def fetch_remote_mcp_tools_async(
+        self,
+        request: main_models.FetchRemoteMcpToolsRequest,
+    ) -> main_models.FetchRemoteMcpToolsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.fetch_remote_mcp_tools_with_options_async(request, headers, runtime)
 
     def get_artifact_with_options(
         self,
@@ -1077,6 +1341,82 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.get_digital_employee_skill_with_options_async(name, skill_name, request, headers, runtime)
+
+    def get_mcp_service_with_options(
+        self,
+        name: str,
+        mcp_service_name: str,
+        request: main_models.GetMcpServiceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetMcpServiceResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetMcpService',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = f'/digitalEmployee/{DaraURL.percent_encode(name)}/mcpService/{DaraURL.percent_encode(mcp_service_name)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetMcpServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_mcp_service_with_options_async(
+        self,
+        name: str,
+        mcp_service_name: str,
+        request: main_models.GetMcpServiceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetMcpServiceResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetMcpService',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = f'/digitalEmployee/{DaraURL.percent_encode(name)}/mcpService/{DaraURL.percent_encode(mcp_service_name)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetMcpServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_mcp_service(
+        self,
+        name: str,
+        mcp_service_name: str,
+        request: main_models.GetMcpServiceRequest,
+    ) -> main_models.GetMcpServiceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_mcp_service_with_options(name, mcp_service_name, request, headers, runtime)
+
+    async def get_mcp_service_async(
+        self,
+        name: str,
+        mcp_service_name: str,
+        request: main_models.GetMcpServiceRequest,
+    ) -> main_models.GetMcpServiceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_mcp_service_with_options_async(name, mcp_service_name, request, headers, runtime)
 
     def get_thread_with_options(
         self,
@@ -1602,6 +1942,90 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_digital_employees_with_options_async(request, headers, runtime)
 
+    def list_mcp_services_with_options(
+        self,
+        name: str,
+        request: main_models.ListMcpServicesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListMcpServicesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListMcpServices',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = f'/digitalEmployee/{DaraURL.percent_encode(name)}/mcpServices',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListMcpServicesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_mcp_services_with_options_async(
+        self,
+        name: str,
+        request: main_models.ListMcpServicesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListMcpServicesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListMcpServices',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = f'/digitalEmployee/{DaraURL.percent_encode(name)}/mcpServices',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListMcpServicesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_mcp_services(
+        self,
+        name: str,
+        request: main_models.ListMcpServicesRequest,
+    ) -> main_models.ListMcpServicesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_mcp_services_with_options(name, request, headers, runtime)
+
+    async def list_mcp_services_async(
+        self,
+        name: str,
+        request: main_models.ListMcpServicesRequest,
+    ) -> main_models.ListMcpServicesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_mcp_services_with_options_async(name, request, headers, runtime)
+
     def list_threads_with_options(
         self,
         name: str,
@@ -1719,6 +2143,8 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateDigitalEmployeeResponse:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.attributes):
+            body['attributes'] = request.attributes
         if not DaraCore.is_null(request.default_rule):
             body['defaultRule'] = request.default_rule
         if not DaraCore.is_null(request.description):
@@ -1758,6 +2184,8 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateDigitalEmployeeResponse:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.attributes):
+            body['attributes'] = request.attributes
         if not DaraCore.is_null(request.default_rule):
             body['defaultRule'] = request.default_rule
         if not DaraCore.is_null(request.description):
@@ -1905,6 +2333,110 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.update_digital_employee_skill_with_options_async(name, skill_name, request, headers, runtime)
+
+    def update_mcp_service_with_options(
+        self,
+        name: str,
+        mcp_service_name: str,
+        request: main_models.UpdateMcpServiceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateMcpServiceResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.connection):
+            body['connection'] = request.connection
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.display_name):
+            body['displayName'] = request.display_name
+        if not DaraCore.is_null(request.enable):
+            body['enable'] = request.enable
+        if not DaraCore.is_null(request.network):
+            body['network'] = request.network
+        if not DaraCore.is_null(request.tools):
+            body['tools'] = request.tools
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateMcpService',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = f'/digitalEmployee/{DaraURL.percent_encode(name)}/mcpService/{DaraURL.percent_encode(mcp_service_name)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateMcpServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_mcp_service_with_options_async(
+        self,
+        name: str,
+        mcp_service_name: str,
+        request: main_models.UpdateMcpServiceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateMcpServiceResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.connection):
+            body['connection'] = request.connection
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.display_name):
+            body['displayName'] = request.display_name
+        if not DaraCore.is_null(request.enable):
+            body['enable'] = request.enable
+        if not DaraCore.is_null(request.network):
+            body['network'] = request.network
+        if not DaraCore.is_null(request.tools):
+            body['tools'] = request.tools
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateMcpService',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = f'/digitalEmployee/{DaraURL.percent_encode(name)}/mcpService/{DaraURL.percent_encode(mcp_service_name)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateMcpServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_mcp_service(
+        self,
+        name: str,
+        mcp_service_name: str,
+        request: main_models.UpdateMcpServiceRequest,
+    ) -> main_models.UpdateMcpServiceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_mcp_service_with_options(name, mcp_service_name, request, headers, runtime)
+
+    async def update_mcp_service_async(
+        self,
+        name: str,
+        mcp_service_name: str,
+        request: main_models.UpdateMcpServiceRequest,
+    ) -> main_models.UpdateMcpServiceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_mcp_service_with_options_async(name, mcp_service_name, request, headers, runtime)
 
     def update_thread_with_options(
         self,

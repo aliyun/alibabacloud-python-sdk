@@ -1,3 +1,12 @@
+2026-05-27 Version: 1.2.0
+- Support API CreateMcpService.
+- Support API DeleteMcpService.
+- Support API FetchRemoteMcpTools.
+- Support API GetMcpService.
+- Support API ListMcpServices.
+- Support API UpdateMcpService.
+
+
 2026-05-12 Version: 1.1.1
 - Update API ListThreads: add request parameters includeMission.
 

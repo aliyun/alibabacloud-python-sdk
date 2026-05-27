@@ -12,6 +12,9 @@ from ._create_digital_employee_response import CreateDigitalEmployeeResponse
 from ._create_digital_employee_skill_request import CreateDigitalEmployeeSkillRequest
 from ._create_digital_employee_skill_response_body import CreateDigitalEmployeeSkillResponseBody
 from ._create_digital_employee_skill_response import CreateDigitalEmployeeSkillResponse
+from ._create_mcp_service_request import CreateMcpServiceRequest
+from ._create_mcp_service_response_body import CreateMcpServiceResponseBody
+from ._create_mcp_service_response import CreateMcpServiceResponse
 from ._create_thread_request import CreateThreadRequest
 from ._create_thread_response_body import CreateThreadResponseBody
 from ._create_thread_response import CreateThreadResponse
@@ -24,9 +27,15 @@ from ._delete_digital_employee_response import DeleteDigitalEmployeeResponse
 from ._delete_digital_employee_skill_request import DeleteDigitalEmployeeSkillRequest
 from ._delete_digital_employee_skill_response_body import DeleteDigitalEmployeeSkillResponseBody
 from ._delete_digital_employee_skill_response import DeleteDigitalEmployeeSkillResponse
+from ._delete_mcp_service_request import DeleteMcpServiceRequest
+from ._delete_mcp_service_response_body import DeleteMcpServiceResponseBody
+from ._delete_mcp_service_response import DeleteMcpServiceResponse
 from ._delete_thread_request import DeleteThreadRequest
 from ._delete_thread_response_body import DeleteThreadResponseBody
 from ._delete_thread_response import DeleteThreadResponse
+from ._fetch_remote_mcp_tools_request import FetchRemoteMcpToolsRequest
+from ._fetch_remote_mcp_tools_response_body import FetchRemoteMcpToolsResponseBody
+from ._fetch_remote_mcp_tools_response import FetchRemoteMcpToolsResponse
 from ._get_artifact_request import GetArtifactRequest
 from ._get_artifact_response import GetArtifactResponse
 from ._get_digital_employee_request import GetDigitalEmployeeRequest
@@ -35,6 +44,9 @@ from ._get_digital_employee_response import GetDigitalEmployeeResponse
 from ._get_digital_employee_skill_request import GetDigitalEmployeeSkillRequest
 from ._get_digital_employee_skill_response_body import GetDigitalEmployeeSkillResponseBody
 from ._get_digital_employee_skill_response import GetDigitalEmployeeSkillResponse
+from ._get_mcp_service_request import GetMcpServiceRequest
+from ._get_mcp_service_response_body import GetMcpServiceResponseBody
+from ._get_mcp_service_response import GetMcpServiceResponse
 from ._get_thread_request import GetThreadRequest
 from ._get_thread_response_body import GetThreadResponseBody
 from ._get_thread_response import GetThreadResponse
@@ -54,6 +66,9 @@ from ._list_digital_employees_request import ListDigitalEmployeesRequest
 from ._list_digital_employees_shrink_request import ListDigitalEmployeesShrinkRequest
 from ._list_digital_employees_response_body import ListDigitalEmployeesResponseBody
 from ._list_digital_employees_response import ListDigitalEmployeesResponse
+from ._list_mcp_services_request import ListMcpServicesRequest
+from ._list_mcp_services_response_body import ListMcpServicesResponseBody
+from ._list_mcp_services_response import ListMcpServicesResponse
 from ._list_threads_request import ListThreadsRequest
 from ._list_threads_shrink_request import ListThreadsShrinkRequest
 from ._list_threads_response_body import ListThreadsResponseBody
@@ -64,6 +79,9 @@ from ._update_digital_employee_response import UpdateDigitalEmployeeResponse
 from ._update_digital_employee_skill_request import UpdateDigitalEmployeeSkillRequest
 from ._update_digital_employee_skill_response_body import UpdateDigitalEmployeeSkillResponseBody
 from ._update_digital_employee_skill_response import UpdateDigitalEmployeeSkillResponse
+from ._update_mcp_service_request import UpdateMcpServiceRequest
+from ._update_mcp_service_response_body import UpdateMcpServiceResponseBody
+from ._update_mcp_service_response import UpdateMcpServiceResponse
 from ._update_thread_request import UpdateThreadRequest
 from ._update_thread_response_body import UpdateThreadResponseBody
 from ._update_thread_response import UpdateThreadResponse
@@ -73,10 +91,22 @@ from ._create_chat_response_body import CreateChatResponseBodyMessages
 from ._create_digital_employee_request import CreateDigitalEmployeeRequestKnowledgesBailian
 from ._create_digital_employee_request import CreateDigitalEmployeeRequestKnowledges
 from ._create_digital_employee_skill_request import CreateDigitalEmployeeSkillRequestFiles
+from ._create_mcp_service_request import CreateMcpServiceRequestConnectionAuth
+from ._create_mcp_service_request import CreateMcpServiceRequestConnection
+from ._create_mcp_service_request import CreateMcpServiceRequestNetwork
+from ._create_mcp_service_request import CreateMcpServiceRequestTools
 from ._create_thread_request import CreateThreadRequestVariables
+from ._fetch_remote_mcp_tools_request import FetchRemoteMcpToolsRequestConnectionAuth
+from ._fetch_remote_mcp_tools_request import FetchRemoteMcpToolsRequestConnection
+from ._fetch_remote_mcp_tools_request import FetchRemoteMcpToolsRequestNetwork
 from ._get_digital_employee_response_body import GetDigitalEmployeeResponseBodyKnowledgesBailian
 from ._get_digital_employee_response_body import GetDigitalEmployeeResponseBodyKnowledges
 from ._get_digital_employee_skill_response_body import GetDigitalEmployeeSkillResponseBodyFiles
+from ._get_mcp_service_response_body import GetMcpServiceResponseBodyMcpServiceConnectionAuth
+from ._get_mcp_service_response_body import GetMcpServiceResponseBodyMcpServiceConnection
+from ._get_mcp_service_response_body import GetMcpServiceResponseBodyMcpServiceNetwork
+from ._get_mcp_service_response_body import GetMcpServiceResponseBodyMcpServiceTools
+from ._get_mcp_service_response_body import GetMcpServiceResponseBodyMcpService
 from ._get_thread_response_body import GetThreadResponseBodyVariables
 from ._get_thread_data_response_body import GetThreadDataResponseBodyDataMessages
 from ._get_thread_data_response_body import GetThreadDataResponseBodyData
@@ -86,12 +116,22 @@ from ._list_digital_employee_skills_response_body import ListDigitalEmployeeSkil
 from ._list_digital_employees_response_body import ListDigitalEmployeesResponseBodyDigitalEmployeesKnowledgesBailian
 from ._list_digital_employees_response_body import ListDigitalEmployeesResponseBodyDigitalEmployeesKnowledges
 from ._list_digital_employees_response_body import ListDigitalEmployeesResponseBodyDigitalEmployees
+from ._list_mcp_services_response_body import ListMcpServicesResponseBodyMcpServicesMcpServiceListConnectionAuth
+from ._list_mcp_services_response_body import ListMcpServicesResponseBodyMcpServicesMcpServiceListConnection
+from ._list_mcp_services_response_body import ListMcpServicesResponseBodyMcpServicesMcpServiceListNetwork
+from ._list_mcp_services_response_body import ListMcpServicesResponseBodyMcpServicesMcpServiceListTools
+from ._list_mcp_services_response_body import ListMcpServicesResponseBodyMcpServicesMcpServiceList
+from ._list_mcp_services_response_body import ListMcpServicesResponseBodyMcpServices
 from ._list_threads_request import ListThreadsRequestFilter
 from ._list_threads_response_body import ListThreadsResponseBodyThreadsVariables
 from ._list_threads_response_body import ListThreadsResponseBodyThreads
 from ._update_digital_employee_request import UpdateDigitalEmployeeRequestKnowledgesBailian
 from ._update_digital_employee_request import UpdateDigitalEmployeeRequestKnowledges
 from ._update_digital_employee_skill_request import UpdateDigitalEmployeeSkillRequestFiles
+from ._update_mcp_service_request import UpdateMcpServiceRequestConnectionAuth
+from ._update_mcp_service_request import UpdateMcpServiceRequestConnection
+from ._update_mcp_service_request import UpdateMcpServiceRequestNetwork
+from ._update_mcp_service_request import UpdateMcpServiceRequestTools
 
 __all__ = [
     Tag,
@@ -104,6 +144,9 @@ __all__ = [
     CreateDigitalEmployeeSkillRequest,
     CreateDigitalEmployeeSkillResponseBody,
     CreateDigitalEmployeeSkillResponse,
+    CreateMcpServiceRequest,
+    CreateMcpServiceResponseBody,
+    CreateMcpServiceResponse,
     CreateThreadRequest,
     CreateThreadResponseBody,
     CreateThreadResponse,
@@ -116,9 +159,15 @@ __all__ = [
     DeleteDigitalEmployeeSkillRequest,
     DeleteDigitalEmployeeSkillResponseBody,
     DeleteDigitalEmployeeSkillResponse,
+    DeleteMcpServiceRequest,
+    DeleteMcpServiceResponseBody,
+    DeleteMcpServiceResponse,
     DeleteThreadRequest,
     DeleteThreadResponseBody,
     DeleteThreadResponse,
+    FetchRemoteMcpToolsRequest,
+    FetchRemoteMcpToolsResponseBody,
+    FetchRemoteMcpToolsResponse,
     GetArtifactRequest,
     GetArtifactResponse,
     GetDigitalEmployeeRequest,
@@ -127,6 +176,9 @@ __all__ = [
     GetDigitalEmployeeSkillRequest,
     GetDigitalEmployeeSkillResponseBody,
     GetDigitalEmployeeSkillResponse,
+    GetMcpServiceRequest,
+    GetMcpServiceResponseBody,
+    GetMcpServiceResponse,
     GetThreadRequest,
     GetThreadResponseBody,
     GetThreadResponse,
@@ -146,6 +198,9 @@ __all__ = [
     ListDigitalEmployeesShrinkRequest,
     ListDigitalEmployeesResponseBody,
     ListDigitalEmployeesResponse,
+    ListMcpServicesRequest,
+    ListMcpServicesResponseBody,
+    ListMcpServicesResponse,
     ListThreadsRequest,
     ListThreadsShrinkRequest,
     ListThreadsResponseBody,
@@ -156,6 +211,9 @@ __all__ = [
     UpdateDigitalEmployeeSkillRequest,
     UpdateDigitalEmployeeSkillResponseBody,
     UpdateDigitalEmployeeSkillResponse,
+    UpdateMcpServiceRequest,
+    UpdateMcpServiceResponseBody,
+    UpdateMcpServiceResponse,
     UpdateThreadRequest,
     UpdateThreadResponseBody,
     UpdateThreadResponse,
@@ -165,10 +223,22 @@ __all__ = [
     CreateDigitalEmployeeRequestKnowledgesBailian,
     CreateDigitalEmployeeRequestKnowledges,
     CreateDigitalEmployeeSkillRequestFiles,
+    CreateMcpServiceRequestConnectionAuth,
+    CreateMcpServiceRequestConnection,
+    CreateMcpServiceRequestNetwork,
+    CreateMcpServiceRequestTools,
     CreateThreadRequestVariables,
+    FetchRemoteMcpToolsRequestConnectionAuth,
+    FetchRemoteMcpToolsRequestConnection,
+    FetchRemoteMcpToolsRequestNetwork,
     GetDigitalEmployeeResponseBodyKnowledgesBailian,
     GetDigitalEmployeeResponseBodyKnowledges,
     GetDigitalEmployeeSkillResponseBodyFiles,
+    GetMcpServiceResponseBodyMcpServiceConnectionAuth,
+    GetMcpServiceResponseBodyMcpServiceConnection,
+    GetMcpServiceResponseBodyMcpServiceNetwork,
+    GetMcpServiceResponseBodyMcpServiceTools,
+    GetMcpServiceResponseBodyMcpService,
     GetThreadResponseBodyVariables,
     GetThreadDataResponseBodyDataMessages,
     GetThreadDataResponseBodyData,
@@ -178,10 +248,20 @@ __all__ = [
     ListDigitalEmployeesResponseBodyDigitalEmployeesKnowledgesBailian,
     ListDigitalEmployeesResponseBodyDigitalEmployeesKnowledges,
     ListDigitalEmployeesResponseBodyDigitalEmployees,
+    ListMcpServicesResponseBodyMcpServicesMcpServiceListConnectionAuth,
+    ListMcpServicesResponseBodyMcpServicesMcpServiceListConnection,
+    ListMcpServicesResponseBodyMcpServicesMcpServiceListNetwork,
+    ListMcpServicesResponseBodyMcpServicesMcpServiceListTools,
+    ListMcpServicesResponseBodyMcpServicesMcpServiceList,
+    ListMcpServicesResponseBodyMcpServices,
     ListThreadsRequestFilter,
     ListThreadsResponseBodyThreadsVariables,
     ListThreadsResponseBodyThreads,
     UpdateDigitalEmployeeRequestKnowledgesBailian,
     UpdateDigitalEmployeeRequestKnowledges,
-    UpdateDigitalEmployeeSkillRequestFiles
+    UpdateDigitalEmployeeSkillRequestFiles,
+    UpdateMcpServiceRequestConnectionAuth,
+    UpdateMcpServiceRequestConnection,
+    UpdateMcpServiceRequestNetwork,
+    UpdateMcpServiceRequestTools
 ]

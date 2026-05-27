@@ -2,7 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List, Dict, Any
+from typing import Dict, List, Any
 
 from alibabacloud_starops20260428 import models as main_models
 from darabonba.model import DaraModel
@@ -10,12 +10,14 @@ from darabonba.model import DaraModel
 class UpdateDigitalEmployeeRequest(DaraModel):
     def __init__(
         self,
+        attributes: Dict[str, str] = None,
         default_rule: str = None,
         description: str = None,
         display_name: str = None,
         knowledges: main_models.UpdateDigitalEmployeeRequestKnowledges = None,
         role_arn: str = None,
     ):
+        self.attributes = attributes
         self.default_rule = default_rule
         self.description = description
         self.display_name = display_name
@@ -31,6 +33,9 @@ class UpdateDigitalEmployeeRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.attributes is not None:
+            result['attributes'] = self.attributes
+
         if self.default_rule is not None:
             result['defaultRule'] = self.default_rule
 
@@ -50,6 +55,9 @@ class UpdateDigitalEmployeeRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('attributes') is not None:
+            self.attributes = m.get('attributes')
+
         if m.get('defaultRule') is not None:
             self.default_rule = m.get('defaultRule')
 
