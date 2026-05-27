@@ -7,10 +7,9 @@ from darabonba.model import DaraModel
 class GetDatasetResourceUrlRequest(DaraModel):
     def __init__(
         self,
-        dataset_id: int = None,
+        dataset_id: str = None,
         primary_key: str = None,
     ):
-        # This parameter is required.
         self.dataset_id = dataset_id
         # This parameter is required.
         self.primary_key = primary_key

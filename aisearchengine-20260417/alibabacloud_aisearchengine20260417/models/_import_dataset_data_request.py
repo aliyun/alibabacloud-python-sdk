@@ -9,10 +9,9 @@ from darabonba.model import DaraModel
 class ImportDatasetDataRequest(DaraModel):
     def __init__(
         self,
-        dataset_id: int = None,
+        dataset_id: str = None,
         records: List[Dict[str, Any]] = None,
     ):
-        # This parameter is required.
         self.dataset_id = dataset_id
         # This parameter is required.
         self.records = records
