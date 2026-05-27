@@ -1,3 +1,10 @@
+2026-05-27 Version: 5.2.0
+- Support API AddInboundNumber.
+- Support API AddLargeModel.
+- Support API TestLargeModel.
+- Support API UpdateLargeModel.
+
+
 2026-05-25 Version: 5.1.0
 - Support API LlmFullDuplexCallOperate.
 - Support API LlmSmartCallFullDuplex.

@@ -6,6 +6,14 @@ from ._add_hotline_number_request import AddHotlineNumberRequest
 from ._add_hotline_number_shrink_request import AddHotlineNumberShrinkRequest
 from ._add_hotline_number_response_body import AddHotlineNumberResponseBody
 from ._add_hotline_number_response import AddHotlineNumberResponse
+from ._add_inbound_number_request import AddInboundNumberRequest
+from ._add_inbound_number_shrink_request import AddInboundNumberShrinkRequest
+from ._add_inbound_number_response_body import AddInboundNumberResponseBody
+from ._add_inbound_number_response import AddInboundNumberResponse
+from ._add_large_model_request import AddLargeModelRequest
+from ._add_large_model_shrink_request import AddLargeModelShrinkRequest
+from ._add_large_model_response_body import AddLargeModelResponseBody
+from ._add_large_model_response import AddLargeModelResponse
 from ._add_outer_account_request import AddOuterAccountRequest
 from ._add_outer_account_response_body import AddOuterAccountResponseBody
 from ._add_outer_account_response import AddOuterAccountResponse
@@ -525,6 +533,10 @@ from ._suspend_outbound_task_response import SuspendOutboundTaskResponse
 from ._terminate_ai_outbound_task_request import TerminateAiOutboundTaskRequest
 from ._terminate_ai_outbound_task_response_body import TerminateAiOutboundTaskResponseBody
 from ._terminate_ai_outbound_task_response import TerminateAiOutboundTaskResponse
+from ._test_large_model_request import TestLargeModelRequest
+from ._test_large_model_shrink_request import TestLargeModelShrinkRequest
+from ._test_large_model_response_body import TestLargeModelResponseBody
+from ._test_large_model_response import TestLargeModelResponse
 from ._transfer_call_to_skill_group_request import TransferCallToSkillGroupRequest
 from ._transfer_call_to_skill_group_response_body import TransferCallToSkillGroupResponseBody
 from ._transfer_call_to_skill_group_response import TransferCallToSkillGroupResponse
@@ -542,6 +554,10 @@ from ._update_ai_outbound_task_response import UpdateAiOutboundTaskResponse
 from ._update_department_request import UpdateDepartmentRequest
 from ._update_department_response_body import UpdateDepartmentResponseBody
 from ._update_department_response import UpdateDepartmentResponse
+from ._update_large_model_request import UpdateLargeModelRequest
+from ._update_large_model_shrink_request import UpdateLargeModelShrinkRequest
+from ._update_large_model_response_body import UpdateLargeModelResponseBody
+from ._update_large_model_response import UpdateLargeModelResponse
 from ._update_outer_account_request import UpdateOuterAccountRequest
 from ._update_outer_account_response_body import UpdateOuterAccountResponseBody
 from ._update_outer_account_response import UpdateOuterAccountResponse
@@ -549,6 +565,7 @@ from ._update_skill_group_request import UpdateSkillGroupRequest
 from ._update_skill_group_response_body import UpdateSkillGroupResponseBody
 from ._update_skill_group_response import UpdateSkillGroupResponse
 from ._add_hotline_number_request import AddHotlineNumberRequestOutboundRangeList
+from ._add_inbound_number_response_body import AddInboundNumberResponseBodyData
 from ._batch_create_quality_projects_response_body import BatchCreateQualityProjectsResponseBodyData
 from ._cancel_ai_call_details_response_body import CancelAiCallDetailsResponseBodyData
 from ._create_ai_outbound_task_request import CreateAiOutboundTaskRequestRecallRule
@@ -703,6 +720,7 @@ from ._query_touch_list_response_body import QueryTouchListResponseBodyResultDat
 from ._query_touch_list_response_body import QueryTouchListResponseBodyResultData
 from ._remove_agent_from_skill_group_response_body import RemoveAgentFromSkillGroupResponseBodyData
 from ._reset_hotline_number_request import ResetHotlineNumberRequestOutboundRangeList
+from ._test_large_model_response_body import TestLargeModelResponseBodyData
 from ._update_ai_outbound_task_request import UpdateAiOutboundTaskRequestRecallRule
 
 __all__ = [
@@ -710,6 +728,14 @@ __all__ = [
     AddHotlineNumberShrinkRequest,
     AddHotlineNumberResponseBody,
     AddHotlineNumberResponse,
+    AddInboundNumberRequest,
+    AddInboundNumberShrinkRequest,
+    AddInboundNumberResponseBody,
+    AddInboundNumberResponse,
+    AddLargeModelRequest,
+    AddLargeModelShrinkRequest,
+    AddLargeModelResponseBody,
+    AddLargeModelResponse,
     AddOuterAccountRequest,
     AddOuterAccountResponseBody,
     AddOuterAccountResponse,
@@ -1229,6 +1255,10 @@ __all__ = [
     TerminateAiOutboundTaskRequest,
     TerminateAiOutboundTaskResponseBody,
     TerminateAiOutboundTaskResponse,
+    TestLargeModelRequest,
+    TestLargeModelShrinkRequest,
+    TestLargeModelResponseBody,
+    TestLargeModelResponse,
     TransferCallToSkillGroupRequest,
     TransferCallToSkillGroupResponseBody,
     TransferCallToSkillGroupResponse,
@@ -1246,6 +1276,10 @@ __all__ = [
     UpdateDepartmentRequest,
     UpdateDepartmentResponseBody,
     UpdateDepartmentResponse,
+    UpdateLargeModelRequest,
+    UpdateLargeModelShrinkRequest,
+    UpdateLargeModelResponseBody,
+    UpdateLargeModelResponse,
     UpdateOuterAccountRequest,
     UpdateOuterAccountResponseBody,
     UpdateOuterAccountResponse,
@@ -1253,6 +1287,7 @@ __all__ = [
     UpdateSkillGroupResponseBody,
     UpdateSkillGroupResponse,
     AddHotlineNumberRequestOutboundRangeList,
+    AddInboundNumberResponseBodyData,
     BatchCreateQualityProjectsResponseBodyData,
     CancelAiCallDetailsResponseBodyData,
     CreateAiOutboundTaskRequestRecallRule,
@@ -1407,5 +1442,6 @@ __all__ = [
     QueryTouchListResponseBodyResultData,
     RemoveAgentFromSkillGroupResponseBodyData,
     ResetHotlineNumberRequestOutboundRangeList,
+    TestLargeModelResponseBodyData,
     UpdateAiOutboundTaskRequestRecallRule
 ]

@@ -159,6 +159,222 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.add_hotline_number_with_options_async(request, runtime)
 
+    def add_inbound_number_with_options(
+        self,
+        tmp_req: main_models.AddInboundNumberRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddInboundNumberResponse:
+        tmp_req.validate()
+        request = main_models.AddInboundNumberShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.inbound_numbers):
+            request.inbound_numbers_shrink = Utils.array_to_string_with_specified_style(tmp_req.inbound_numbers, 'InboundNumbers', 'json')
+        query = {}
+        if not DaraCore.is_null(request.application_code):
+            query['ApplicationCode'] = request.application_code
+        if not DaraCore.is_null(request.inbound_numbers_shrink):
+            query['InboundNumbers'] = request.inbound_numbers_shrink
+        if not DaraCore.is_null(request.inbound_type):
+            query['InboundType'] = request.inbound_type
+        if not DaraCore.is_null(request.line_code):
+            query['LineCode'] = request.line_code
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddInboundNumber',
+            version = '2019-10-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddInboundNumberResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_inbound_number_with_options_async(
+        self,
+        tmp_req: main_models.AddInboundNumberRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddInboundNumberResponse:
+        tmp_req.validate()
+        request = main_models.AddInboundNumberShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.inbound_numbers):
+            request.inbound_numbers_shrink = Utils.array_to_string_with_specified_style(tmp_req.inbound_numbers, 'InboundNumbers', 'json')
+        query = {}
+        if not DaraCore.is_null(request.application_code):
+            query['ApplicationCode'] = request.application_code
+        if not DaraCore.is_null(request.inbound_numbers_shrink):
+            query['InboundNumbers'] = request.inbound_numbers_shrink
+        if not DaraCore.is_null(request.inbound_type):
+            query['InboundType'] = request.inbound_type
+        if not DaraCore.is_null(request.line_code):
+            query['LineCode'] = request.line_code
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddInboundNumber',
+            version = '2019-10-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddInboundNumberResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_inbound_number(
+        self,
+        request: main_models.AddInboundNumberRequest,
+    ) -> main_models.AddInboundNumberResponse:
+        runtime = RuntimeOptions()
+        return self.add_inbound_number_with_options(request, runtime)
+
+    async def add_inbound_number_async(
+        self,
+        request: main_models.AddInboundNumberRequest,
+    ) -> main_models.AddInboundNumberResponse:
+        runtime = RuntimeOptions()
+        return await self.add_inbound_number_with_options_async(request, runtime)
+
+    def add_large_model_with_options(
+        self,
+        tmp_req: main_models.AddLargeModelRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddLargeModelResponse:
+        tmp_req.validate()
+        request = main_models.AddLargeModelShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.base_model):
+            request.base_model_shrink = Utils.array_to_string_with_specified_style(tmp_req.base_model, 'BaseModel', 'json')
+        query = {}
+        if not DaraCore.is_null(request.auth_code):
+            query['AuthCode'] = request.auth_code
+        if not DaraCore.is_null(request.base_model_shrink):
+            query['BaseModel'] = request.base_model_shrink
+        if not DaraCore.is_null(request.model_name):
+            query['ModelName'] = request.model_name
+        if not DaraCore.is_null(request.model_url):
+            query['ModelUrl'] = request.model_url
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.temperature):
+            query['Temperature'] = request.temperature
+        if not DaraCore.is_null(request.top_k):
+            query['TopK'] = request.top_k
+        if not DaraCore.is_null(request.top_p):
+            query['TopP'] = request.top_p
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddLargeModel',
+            version = '2019-10-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddLargeModelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_large_model_with_options_async(
+        self,
+        tmp_req: main_models.AddLargeModelRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddLargeModelResponse:
+        tmp_req.validate()
+        request = main_models.AddLargeModelShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.base_model):
+            request.base_model_shrink = Utils.array_to_string_with_specified_style(tmp_req.base_model, 'BaseModel', 'json')
+        query = {}
+        if not DaraCore.is_null(request.auth_code):
+            query['AuthCode'] = request.auth_code
+        if not DaraCore.is_null(request.base_model_shrink):
+            query['BaseModel'] = request.base_model_shrink
+        if not DaraCore.is_null(request.model_name):
+            query['ModelName'] = request.model_name
+        if not DaraCore.is_null(request.model_url):
+            query['ModelUrl'] = request.model_url
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.temperature):
+            query['Temperature'] = request.temperature
+        if not DaraCore.is_null(request.top_k):
+            query['TopK'] = request.top_k
+        if not DaraCore.is_null(request.top_p):
+            query['TopP'] = request.top_p
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddLargeModel',
+            version = '2019-10-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddLargeModelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_large_model(
+        self,
+        request: main_models.AddLargeModelRequest,
+    ) -> main_models.AddLargeModelResponse:
+        runtime = RuntimeOptions()
+        return self.add_large_model_with_options(request, runtime)
+
+    async def add_large_model_async(
+        self,
+        request: main_models.AddLargeModelRequest,
+    ) -> main_models.AddLargeModelResponse:
+        runtime = RuntimeOptions()
+        return await self.add_large_model_with_options_async(request, runtime)
+
     def add_outer_account_with_options(
         self,
         request: main_models.AddOuterAccountRequest,
@@ -14297,6 +14513,104 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.terminate_ai_outbound_task_with_options_async(request, runtime)
 
+    def test_large_model_with_options(
+        self,
+        tmp_req: main_models.TestLargeModelRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.TestLargeModelResponse:
+        tmp_req.validate()
+        request = main_models.TestLargeModelShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.base_model):
+            request.base_model_shrink = Utils.array_to_string_with_specified_style(tmp_req.base_model, 'BaseModel', 'json')
+        query = {}
+        if not DaraCore.is_null(request.base_model_shrink):
+            query['BaseModel'] = request.base_model_shrink
+        if not DaraCore.is_null(request.model_code):
+            query['ModelCode'] = request.model_code
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.user_dialog_content):
+            query['UserDialogContent'] = request.user_dialog_content
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'TestLargeModel',
+            version = '2019-10-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.TestLargeModelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def test_large_model_with_options_async(
+        self,
+        tmp_req: main_models.TestLargeModelRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.TestLargeModelResponse:
+        tmp_req.validate()
+        request = main_models.TestLargeModelShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.base_model):
+            request.base_model_shrink = Utils.array_to_string_with_specified_style(tmp_req.base_model, 'BaseModel', 'json')
+        query = {}
+        if not DaraCore.is_null(request.base_model_shrink):
+            query['BaseModel'] = request.base_model_shrink
+        if not DaraCore.is_null(request.model_code):
+            query['ModelCode'] = request.model_code
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.user_dialog_content):
+            query['UserDialogContent'] = request.user_dialog_content
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'TestLargeModel',
+            version = '2019-10-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.TestLargeModelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def test_large_model(
+        self,
+        request: main_models.TestLargeModelRequest,
+    ) -> main_models.TestLargeModelResponse:
+        runtime = RuntimeOptions()
+        return self.test_large_model_with_options(request, runtime)
+
+    async def test_large_model_async(
+        self,
+        request: main_models.TestLargeModelRequest,
+    ) -> main_models.TestLargeModelResponse:
+        runtime = RuntimeOptions()
+        return await self.test_large_model_with_options_async(request, runtime)
+
     def transfer_call_to_skill_group_with_options(
         self,
         request: main_models.TransferCallToSkillGroupRequest,
@@ -14850,6 +15164,124 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateDepartmentResponse:
         runtime = RuntimeOptions()
         return await self.update_department_with_options_async(request, runtime)
+
+    def update_large_model_with_options(
+        self,
+        tmp_req: main_models.UpdateLargeModelRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateLargeModelResponse:
+        tmp_req.validate()
+        request = main_models.UpdateLargeModelShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.base_model):
+            request.base_model_shrink = Utils.array_to_string_with_specified_style(tmp_req.base_model, 'BaseModel', 'json')
+        query = {}
+        if not DaraCore.is_null(request.auth_code):
+            query['AuthCode'] = request.auth_code
+        if not DaraCore.is_null(request.base_model_shrink):
+            query['BaseModel'] = request.base_model_shrink
+        if not DaraCore.is_null(request.model_code):
+            query['ModelCode'] = request.model_code
+        if not DaraCore.is_null(request.model_name):
+            query['ModelName'] = request.model_name
+        if not DaraCore.is_null(request.model_url):
+            query['ModelUrl'] = request.model_url
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.temperature):
+            query['Temperature'] = request.temperature
+        if not DaraCore.is_null(request.top_k):
+            query['TopK'] = request.top_k
+        if not DaraCore.is_null(request.top_p):
+            query['TopP'] = request.top_p
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateLargeModel',
+            version = '2019-10-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateLargeModelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_large_model_with_options_async(
+        self,
+        tmp_req: main_models.UpdateLargeModelRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateLargeModelResponse:
+        tmp_req.validate()
+        request = main_models.UpdateLargeModelShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.base_model):
+            request.base_model_shrink = Utils.array_to_string_with_specified_style(tmp_req.base_model, 'BaseModel', 'json')
+        query = {}
+        if not DaraCore.is_null(request.auth_code):
+            query['AuthCode'] = request.auth_code
+        if not DaraCore.is_null(request.base_model_shrink):
+            query['BaseModel'] = request.base_model_shrink
+        if not DaraCore.is_null(request.model_code):
+            query['ModelCode'] = request.model_code
+        if not DaraCore.is_null(request.model_name):
+            query['ModelName'] = request.model_name
+        if not DaraCore.is_null(request.model_url):
+            query['ModelUrl'] = request.model_url
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.temperature):
+            query['Temperature'] = request.temperature
+        if not DaraCore.is_null(request.top_k):
+            query['TopK'] = request.top_k
+        if not DaraCore.is_null(request.top_p):
+            query['TopP'] = request.top_p
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateLargeModel',
+            version = '2019-10-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateLargeModelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_large_model(
+        self,
+        request: main_models.UpdateLargeModelRequest,
+    ) -> main_models.UpdateLargeModelResponse:
+        runtime = RuntimeOptions()
+        return self.update_large_model_with_options(request, runtime)
+
+    async def update_large_model_async(
+        self,
+        request: main_models.UpdateLargeModelRequest,
+    ) -> main_models.UpdateLargeModelResponse:
+        runtime = RuntimeOptions()
+        return await self.update_large_model_with_options_async(request, runtime)
 
     def update_outer_account_with_options(
         self,
