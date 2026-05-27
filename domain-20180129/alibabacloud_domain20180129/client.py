@@ -1175,6 +1175,8 @@ class Client(OpenApiClient):
             query['Domain'] = request.domain
         if not DaraCore.is_null(request.expected_price):
             query['ExpectedPrice'] = request.expected_price
+        if not DaraCore.is_null(request.product_type):
+            query['ProductType'] = request.product_type
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -1209,6 +1211,8 @@ class Client(OpenApiClient):
             query['Domain'] = request.domain
         if not DaraCore.is_null(request.expected_price):
             query['ExpectedPrice'] = request.expected_price
+        if not DaraCore.is_null(request.product_type):
+            query['ProductType'] = request.product_type
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -6367,6 +6371,8 @@ class Client(OpenApiClient):
             query['DomainName'] = request.domain_name
         if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
+        if not DaraCore.is_null(request.service_type):
+            query['ServiceType'] = request.service_type
         if not DaraCore.is_null(request.status):
             query['Status'] = request.status
         if not DaraCore.is_null(request.user_client_ip):
@@ -6401,6 +6407,8 @@ class Client(OpenApiClient):
             query['DomainName'] = request.domain_name
         if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
+        if not DaraCore.is_null(request.service_type):
+            query['ServiceType'] = request.service_type
         if not DaraCore.is_null(request.status):
             query['Status'] = request.status
         if not DaraCore.is_null(request.user_client_ip):

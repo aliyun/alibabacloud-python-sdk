@@ -10,6 +10,7 @@ from darabonba.model import DaraModel
 class QueryDomainByDomainNameResponseBody(DaraModel):
     def __init__(
         self,
+        cnnic_privacy_service_status: str = None,
         dns_list: main_models.QueryDomainByDomainNameResponseBodyDnsList = None,
         domain_group_id: int = None,
         domain_group_name: str = None,
@@ -27,6 +28,7 @@ class QueryDomainByDomainNameResponseBody(DaraModel):
         expiration_date_status: str = None,
         instance_id: str = None,
         premium: bool = None,
+        privacy_service_status: str = None,
         real_name_status: str = None,
         registrant_name: str = None,
         registrant_organization: str = None,
@@ -46,6 +48,7 @@ class QueryDomainByDomainNameResponseBody(DaraModel):
         zh_registrant_name: str = None,
         zh_registrant_organization: str = None,
     ):
+        self.cnnic_privacy_service_status = cnnic_privacy_service_status
         self.dns_list = dns_list
         # The ID of the domain name group. You can call the [QueryDomainGroupList](https://help.aliyun.com/document_detail/69362.html) operation to query the ID of the domain name group.
         self.domain_group_id = domain_group_id
@@ -98,6 +101,7 @@ class QueryDomainByDomainNameResponseBody(DaraModel):
         self.instance_id = instance_id
         # Indicates whether the domain name is a premium domain name.
         self.premium = premium
+        self.privacy_service_status = privacy_service_status
         # The status of real-name verification for the domain name. Valid values:
         # 
         # *   **NONAUDIT**: The real-name verification is not performed.
@@ -166,6 +170,9 @@ class QueryDomainByDomainNameResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.cnnic_privacy_service_status is not None:
+            result['CnnicPrivacyServiceStatus'] = self.cnnic_privacy_service_status
+
         if self.dns_list is not None:
             result['DnsList'] = self.dns_list.to_map()
 
@@ -216,6 +223,9 @@ class QueryDomainByDomainNameResponseBody(DaraModel):
 
         if self.premium is not None:
             result['Premium'] = self.premium
+
+        if self.privacy_service_status is not None:
+            result['PrivacyServiceStatus'] = self.privacy_service_status
 
         if self.real_name_status is not None:
             result['RealNameStatus'] = self.real_name_status
@@ -275,6 +285,9 @@ class QueryDomainByDomainNameResponseBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CnnicPrivacyServiceStatus') is not None:
+            self.cnnic_privacy_service_status = m.get('CnnicPrivacyServiceStatus')
+
         if m.get('DnsList') is not None:
             temp_model = main_models.QueryDomainByDomainNameResponseBodyDnsList()
             self.dns_list = temp_model.from_map(m.get('DnsList'))
@@ -326,6 +339,9 @@ class QueryDomainByDomainNameResponseBody(DaraModel):
 
         if m.get('Premium') is not None:
             self.premium = m.get('Premium')
+
+        if m.get('PrivacyServiceStatus') is not None:
+            self.privacy_service_status = m.get('PrivacyServiceStatus')
 
         if m.get('RealNameStatus') is not None:
             self.real_name_status = m.get('RealNameStatus')

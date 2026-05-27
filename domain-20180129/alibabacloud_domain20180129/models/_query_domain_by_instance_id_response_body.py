@@ -10,6 +10,7 @@ from darabonba.model import DaraModel
 class QueryDomainByInstanceIdResponseBody(DaraModel):
     def __init__(
         self,
+        cnnic_privacy_service_status: str = None,
         dns_list: main_models.QueryDomainByInstanceIdResponseBodyDnsList = None,
         domain_group_id: int = None,
         domain_group_name: str = None,
@@ -47,6 +48,7 @@ class QueryDomainByInstanceIdResponseBody(DaraModel):
         zh_registrant_name: str = None,
         zh_registrant_organization: str = None,
     ):
+        self.cnnic_privacy_service_status = cnnic_privacy_service_status
         self.dns_list = dns_list
         self.domain_group_id = domain_group_id
         self.domain_group_name = domain_group_name
@@ -95,6 +97,9 @@ class QueryDomainByInstanceIdResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.cnnic_privacy_service_status is not None:
+            result['CnnicPrivacyServiceStatus'] = self.cnnic_privacy_service_status
+
         if self.dns_list is not None:
             result['DnsList'] = self.dns_list.to_map()
 
@@ -207,6 +212,9 @@ class QueryDomainByInstanceIdResponseBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CnnicPrivacyServiceStatus') is not None:
+            self.cnnic_privacy_service_status = m.get('CnnicPrivacyServiceStatus')
+
         if m.get('DnsList') is not None:
             temp_model = main_models.QueryDomainByInstanceIdResponseBodyDnsList()
             self.dns_list = temp_model.from_map(m.get('DnsList'))

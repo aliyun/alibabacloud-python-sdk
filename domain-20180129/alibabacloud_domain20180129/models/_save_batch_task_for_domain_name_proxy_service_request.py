@@ -11,12 +11,14 @@ class SaveBatchTaskForDomainNameProxyServiceRequest(DaraModel):
         self,
         domain_name: List[str] = None,
         lang: str = None,
+        service_type: str = None,
         status: bool = None,
         user_client_ip: str = None,
     ):
         # This parameter is required.
         self.domain_name = domain_name
         self.lang = lang
+        self.service_type = service_type
         # This parameter is required.
         self.status = status
         self.user_client_ip = user_client_ip
@@ -35,6 +37,9 @@ class SaveBatchTaskForDomainNameProxyServiceRequest(DaraModel):
         if self.lang is not None:
             result['Lang'] = self.lang
 
+        if self.service_type is not None:
+            result['ServiceType'] = self.service_type
+
         if self.status is not None:
             result['Status'] = self.status
 
@@ -50,6 +55,9 @@ class SaveBatchTaskForDomainNameProxyServiceRequest(DaraModel):
 
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
+
+        if m.get('ServiceType') is not None:
+            self.service_type = m.get('ServiceType')
 
         if m.get('Status') is not None:
             self.status = m.get('Status')

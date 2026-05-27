@@ -1,3 +1,11 @@
+2026-05-27 Version: 5.0.4
+- Update API CreateIntlFixedPriceDomainOrder: add request parameters ProductType.
+- Update API QueryDomainByDomainName: add response parameters Body.CnnicPrivacyServiceStatus.
+- Update API QueryDomainByDomainName: add response parameters Body.PrivacyServiceStatus.
+- Update API QueryDomainByInstanceId: add response parameters Body.CnnicPrivacyServiceStatus.
+- Update API SaveBatchTaskForDomainNameProxyService: add request parameters ServiceType.
+
+
 2026-05-26 Version: 5.0.3
 - Update API SaveBatchTaskForCreatingOrderRenew: add request parameters OrderRenewParam.$.PermitPremiumRenew.
 - Update API SaveSingleTaskForCreatingOrderRenew: add request parameters PermitPremiumRenew.
