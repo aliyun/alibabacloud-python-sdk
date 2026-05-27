@@ -94,6 +94,9 @@ from ._export_material_file_request import ExportMaterialFileRequest
 from ._export_material_file_shrink_request import ExportMaterialFileShrinkRequest
 from ._export_material_file_response_body import ExportMaterialFileResponseBody
 from ._export_material_file_response import ExportMaterialFileResponse
+from ._get_aistaff_preview_url_request import GetAIStaffPreviewUrlRequest
+from ._get_aistaff_preview_url_response_body import GetAIStaffPreviewUrlResponseBody
+from ._get_aistaff_preview_url_response import GetAIStaffPreviewUrlResponse
 from ._get_app_instance_request import GetAppInstanceRequest
 from ._get_app_instance_response_body import GetAppInstanceResponseBody
 from ._get_app_instance_response import GetAppInstanceResponse
@@ -290,6 +293,7 @@ from ._delete_app_domain_redirect_response_body import DeleteAppDomainRedirectRe
 from ._describe_app_domain_dns_record_response_body import DescribeAppDomainDnsRecordResponseBodyModule
 from ._dispatch_console_apifor_partner_response_body import DispatchConsoleAPIForPartnerResponseBodyModule
 from ._export_material_file_response_body import ExportMaterialFileResponseBodyModule
+from ._get_aistaff_preview_url_response_body import GetAIStaffPreviewUrlResponseBodyModule
 from ._get_app_instance_for_partner_response_body import GetAppInstanceForPartnerResponseBodyModuleAiStaffList
 from ._get_app_instance_for_partner_response_body import GetAppInstanceForPartnerResponseBodyModuleAppDesignSpec
 from ._get_app_instance_for_partner_response_body import GetAppInstanceForPartnerResponseBodyModuleAppOperationAddressActions
@@ -473,6 +477,9 @@ __all__ = [
     ExportMaterialFileShrinkRequest,
     ExportMaterialFileResponseBody,
     ExportMaterialFileResponse,
+    GetAIStaffPreviewUrlRequest,
+    GetAIStaffPreviewUrlResponseBody,
+    GetAIStaffPreviewUrlResponse,
     GetAppInstanceRequest,
     GetAppInstanceResponseBody,
     GetAppInstanceResponse,
@@ -669,6 +676,7 @@ __all__ = [
     DescribeAppDomainDnsRecordResponseBodyModule,
     DispatchConsoleAPIForPartnerResponseBodyModule,
     ExportMaterialFileResponseBodyModule,
+    GetAIStaffPreviewUrlResponseBodyModule,
     GetAppInstanceForPartnerResponseBodyModuleAiStaffList,
     GetAppInstanceForPartnerResponseBodyModuleAppDesignSpec,
     GetAppInstanceForPartnerResponseBodyModuleAppOperationAddressActions,

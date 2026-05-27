@@ -1873,6 +1873,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.export_material_file_with_options_async(request, runtime)
 
+    def get_aistaff_preview_url_with_options(
+        self,
+        request: main_models.GetAIStaffPreviewUrlRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAIStaffPreviewUrlResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.conversation_id):
+            body['ConversationId'] = request.conversation_id
+        if not DaraCore.is_null(request.restart):
+            body['Restart'] = request.restart
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAIStaffPreviewUrl',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAIStaffPreviewUrlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_aistaff_preview_url_with_options_async(
+        self,
+        request: main_models.GetAIStaffPreviewUrlRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAIStaffPreviewUrlResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.conversation_id):
+            body['ConversationId'] = request.conversation_id
+        if not DaraCore.is_null(request.restart):
+            body['Restart'] = request.restart
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAIStaffPreviewUrl',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAIStaffPreviewUrlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_aistaff_preview_url(
+        self,
+        request: main_models.GetAIStaffPreviewUrlRequest,
+    ) -> main_models.GetAIStaffPreviewUrlResponse:
+        runtime = RuntimeOptions()
+        return self.get_aistaff_preview_url_with_options(request, runtime)
+
+    async def get_aistaff_preview_url_async(
+        self,
+        request: main_models.GetAIStaffPreviewUrlRequest,
+    ) -> main_models.GetAIStaffPreviewUrlResponse:
+        runtime = RuntimeOptions()
+        return await self.get_aistaff_preview_url_with_options_async(request, runtime)
+
     def get_app_instance_with_options(
         self,
         request: main_models.GetAppInstanceRequest,
