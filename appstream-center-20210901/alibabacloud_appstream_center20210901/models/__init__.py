@@ -5,6 +5,9 @@ from __future__ import annotations
 from ._approve_ota_task_request import ApproveOtaTaskRequest
 from ._approve_ota_task_response_body import ApproveOtaTaskResponseBody
 from ._approve_ota_task_response import ApproveOtaTaskResponse
+from ._assign_wuying_server_private_addresses_request import AssignWuyingServerPrivateAddressesRequest
+from ._assign_wuying_server_private_addresses_response_body import AssignWuyingServerPrivateAddressesResponseBody
+from ._assign_wuying_server_private_addresses_response import AssignWuyingServerPrivateAddressesResponse
 from ._authorize_instance_group_request import AuthorizeInstanceGroupRequest
 from ._authorize_instance_group_shrink_request import AuthorizeInstanceGroupShrinkRequest
 from ._authorize_instance_group_response_body import AuthorizeInstanceGroupResponseBody
@@ -213,6 +216,9 @@ from ._stop_wuying_server_response import StopWuyingServerResponse
 from ._tag_cloud_resources_request import TagCloudResourcesRequest
 from ._tag_cloud_resources_response_body import TagCloudResourcesResponseBody
 from ._tag_cloud_resources_response import TagCloudResourcesResponse
+from ._unassign_wuying_server_private_addresses_request import UnassignWuyingServerPrivateAddressesRequest
+from ._unassign_wuying_server_private_addresses_response_body import UnassignWuyingServerPrivateAddressesResponseBody
+from ._unassign_wuying_server_private_addresses_response import UnassignWuyingServerPrivateAddressesResponse
 from ._unbind_request import UnbindRequest
 from ._unbind_response_body import UnbindResponseBody
 from ._unbind_response import UnbindResponse
@@ -323,6 +329,7 @@ from ._list_tag_cloud_resources_response_body import ListTagCloudResourcesRespon
 from ._list_tenant_config_response_body import ListTenantConfigResponseBodyTenantConfigModel
 from ._list_wuying_server_response_body import ListWuyingServerResponseBodyWuyingServerListDataDisk
 from ._list_wuying_server_response_body import ListWuyingServerResponseBodyWuyingServerListInstanceInfoList
+from ._list_wuying_server_response_body import ListWuyingServerResponseBodyWuyingServerListPrivateIpSets
 from ._list_wuying_server_response_body import ListWuyingServerResponseBodyWuyingServerListServerInstanceTypeInfo
 from ._list_wuying_server_response_body import ListWuyingServerResponseBodyWuyingServerListSessions
 from ._list_wuying_server_response_body import ListWuyingServerResponseBodyWuyingServerList
@@ -363,6 +370,9 @@ __all__ = [
     ApproveOtaTaskRequest,
     ApproveOtaTaskResponseBody,
     ApproveOtaTaskResponse,
+    AssignWuyingServerPrivateAddressesRequest,
+    AssignWuyingServerPrivateAddressesResponseBody,
+    AssignWuyingServerPrivateAddressesResponse,
     AuthorizeInstanceGroupRequest,
     AuthorizeInstanceGroupShrinkRequest,
     AuthorizeInstanceGroupResponseBody,
@@ -571,6 +581,9 @@ __all__ = [
     TagCloudResourcesRequest,
     TagCloudResourcesResponseBody,
     TagCloudResourcesResponse,
+    UnassignWuyingServerPrivateAddressesRequest,
+    UnassignWuyingServerPrivateAddressesResponseBody,
+    UnassignWuyingServerPrivateAddressesResponse,
     UnbindRequest,
     UnbindResponseBody,
     UnbindResponse,
@@ -681,6 +694,7 @@ __all__ = [
     ListTenantConfigResponseBodyTenantConfigModel,
     ListWuyingServerResponseBodyWuyingServerListDataDisk,
     ListWuyingServerResponseBodyWuyingServerListInstanceInfoList,
+    ListWuyingServerResponseBodyWuyingServerListPrivateIpSets,
     ListWuyingServerResponseBodyWuyingServerListServerInstanceTypeInfo,
     ListWuyingServerResponseBodyWuyingServerListSessions,
     ListWuyingServerResponseBodyWuyingServerList,

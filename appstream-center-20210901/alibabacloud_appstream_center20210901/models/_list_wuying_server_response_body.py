@@ -89,6 +89,7 @@ class ListWuyingServerResponseBodyWuyingServerList(DaraModel):
         charge_type: str = None,
         create_time: str = None,
         data_disk: List[main_models.ListWuyingServerResponseBodyWuyingServerListDataDisk] = None,
+        eni_private_ip_address_quantity: int = None,
         expired_time: str = None,
         fota_version: str = None,
         image_id: str = None,
@@ -101,6 +102,7 @@ class ListWuyingServerResponseBodyWuyingServerList(DaraModel):
         office_site_type: str = None,
         os_type: str = None,
         policy_group_id_list: List[str] = None,
+        private_ip_sets: List[main_models.ListWuyingServerResponseBodyWuyingServerListPrivateIpSets] = None,
         resource_session_status: str = None,
         security_group_ids: List[str] = None,
         server_instance_type_info: main_models.ListWuyingServerResponseBodyWuyingServerListServerInstanceTypeInfo = None,
@@ -115,6 +117,8 @@ class ListWuyingServerResponseBodyWuyingServerList(DaraModel):
         users: List[str] = None,
         virtual_kubelet_ip: str = None,
         virtual_node_pool_id: str = None,
+        vk_upgrade_needed: bool = None,
+        vk_version: str = None,
         wuying_server_id: str = None,
         wuying_server_name: str = None,
     ):
@@ -129,6 +133,7 @@ class ListWuyingServerResponseBodyWuyingServerList(DaraModel):
         self.create_time = create_time
         # The data disks.
         self.data_disk = data_disk
+        self.eni_private_ip_address_quantity = eni_private_ip_address_quantity
         # The time when the subscription instance expires.
         self.expired_time = expired_time
         self.fota_version = fota_version
@@ -150,6 +155,7 @@ class ListWuyingServerResponseBodyWuyingServerList(DaraModel):
         # The OS type.
         self.os_type = os_type
         self.policy_group_id_list = policy_group_id_list
+        self.private_ip_sets = private_ip_sets
         self.resource_session_status = resource_session_status
         self.security_group_ids = security_group_ids
         # The specifications.
@@ -169,6 +175,8 @@ class ListWuyingServerResponseBodyWuyingServerList(DaraModel):
         self.users = users
         self.virtual_kubelet_ip = virtual_kubelet_ip
         self.virtual_node_pool_id = virtual_node_pool_id
+        self.vk_upgrade_needed = vk_upgrade_needed
+        self.vk_version = vk_version
         # The ID of the workstation.
         self.wuying_server_id = wuying_server_id
         # The name of the workstation.
@@ -181,6 +189,10 @@ class ListWuyingServerResponseBodyWuyingServerList(DaraModel):
                     v1.validate()
         if self.instance_info_list:
             for v1 in self.instance_info_list:
+                 if v1:
+                    v1.validate()
+        if self.private_ip_sets:
+            for v1 in self.private_ip_sets:
                  if v1:
                     v1.validate()
         if self.server_instance_type_info:
@@ -217,6 +229,9 @@ class ListWuyingServerResponseBodyWuyingServerList(DaraModel):
         if self.data_disk is not None:
             for k1 in self.data_disk:
                 result['DataDisk'].append(k1.to_map() if k1 else None)
+
+        if self.eni_private_ip_address_quantity is not None:
+            result['EniPrivateIpAddressQuantity'] = self.eni_private_ip_address_quantity
 
         if self.expired_time is not None:
             result['ExpiredTime'] = self.expired_time
@@ -255,6 +270,11 @@ class ListWuyingServerResponseBodyWuyingServerList(DaraModel):
 
         if self.policy_group_id_list is not None:
             result['PolicyGroupIdList'] = self.policy_group_id_list
+
+        result['PrivateIpSets'] = []
+        if self.private_ip_sets is not None:
+            for k1 in self.private_ip_sets:
+                result['PrivateIpSets'].append(k1.to_map() if k1 else None)
 
         if self.resource_session_status is not None:
             result['ResourceSessionStatus'] = self.resource_session_status
@@ -300,6 +320,12 @@ class ListWuyingServerResponseBodyWuyingServerList(DaraModel):
         if self.virtual_node_pool_id is not None:
             result['VirtualNodePoolId'] = self.virtual_node_pool_id
 
+        if self.vk_upgrade_needed is not None:
+            result['VkUpgradeNeeded'] = self.vk_upgrade_needed
+
+        if self.vk_version is not None:
+            result['VkVersion'] = self.vk_version
+
         if self.wuying_server_id is not None:
             result['WuyingServerId'] = self.wuying_server_id
 
@@ -333,6 +359,9 @@ class ListWuyingServerResponseBodyWuyingServerList(DaraModel):
             for k1 in m.get('DataDisk'):
                 temp_model = main_models.ListWuyingServerResponseBodyWuyingServerListDataDisk()
                 self.data_disk.append(temp_model.from_map(k1))
+
+        if m.get('EniPrivateIpAddressQuantity') is not None:
+            self.eni_private_ip_address_quantity = m.get('EniPrivateIpAddressQuantity')
 
         if m.get('ExpiredTime') is not None:
             self.expired_time = m.get('ExpiredTime')
@@ -372,6 +401,12 @@ class ListWuyingServerResponseBodyWuyingServerList(DaraModel):
 
         if m.get('PolicyGroupIdList') is not None:
             self.policy_group_id_list = m.get('PolicyGroupIdList')
+
+        self.private_ip_sets = []
+        if m.get('PrivateIpSets') is not None:
+            for k1 in m.get('PrivateIpSets'):
+                temp_model = main_models.ListWuyingServerResponseBodyWuyingServerListPrivateIpSets()
+                self.private_ip_sets.append(temp_model.from_map(k1))
 
         if m.get('ResourceSessionStatus') is not None:
             self.resource_session_status = m.get('ResourceSessionStatus')
@@ -418,6 +453,12 @@ class ListWuyingServerResponseBodyWuyingServerList(DaraModel):
 
         if m.get('VirtualNodePoolId') is not None:
             self.virtual_node_pool_id = m.get('VirtualNodePoolId')
+
+        if m.get('VkUpgradeNeeded') is not None:
+            self.vk_upgrade_needed = m.get('VkUpgradeNeeded')
+
+        if m.get('VkVersion') is not None:
+            self.vk_version = m.get('VkVersion')
 
         if m.get('WuyingServerId') is not None:
             self.wuying_server_id = m.get('WuyingServerId')
@@ -531,6 +572,41 @@ class ListWuyingServerResponseBodyWuyingServerListServerInstanceTypeInfo(DaraMod
 
         if m.get('ServerInstanceType') is not None:
             self.server_instance_type = m.get('ServerInstanceType')
+
+        return self
+
+class ListWuyingServerResponseBodyWuyingServerListPrivateIpSets(DaraModel):
+    def __init__(
+        self,
+        primary: bool = None,
+        private_ip_address: str = None,
+    ):
+        self.primary = primary
+        self.private_ip_address = private_ip_address
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.primary is not None:
+            result['Primary'] = self.primary
+
+        if self.private_ip_address is not None:
+            result['PrivateIpAddress'] = self.private_ip_address
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Primary') is not None:
+            self.primary = m.get('Primary')
+
+        if m.get('PrivateIpAddress') is not None:
+            self.private_ip_address = m.get('PrivateIpAddress')
 
         return self
 

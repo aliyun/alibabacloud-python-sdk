@@ -1,3 +1,12 @@
+2026-05-27 Version: 5.4.0
+- Support API AssignWuyingServerPrivateAddresses.
+- Support API UnassignWuyingServerPrivateAddresses.
+- Update API ListWuyingServer: add response parameters Body.WuyingServerList.$.EniPrivateIpAddressQuantity.
+- Update API ListWuyingServer: add response parameters Body.WuyingServerList.$.PrivateIpSets.
+- Update API ListWuyingServer: add response parameters Body.WuyingServerList.$.VkUpgradeNeeded.
+- Update API ListWuyingServer: add response parameters Body.WuyingServerList.$.VkVersion.
+
+
 2026-05-12 Version: 5.3.0
 - Support API DeliverToUserSls.
 
