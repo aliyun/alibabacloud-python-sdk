@@ -2015,6 +2015,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.deliver_to_user_sls_with_options_async(request, runtime)
 
+    def describe_wuying_server_with_options(
+        self,
+        request: main_models.DescribeWuyingServerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeWuyingServerResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.wuying_server_id):
+            body['WuyingServerId'] = request.wuying_server_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeWuyingServer',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeWuyingServerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_wuying_server_with_options_async(
+        self,
+        request: main_models.DescribeWuyingServerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeWuyingServerResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.wuying_server_id):
+            body['WuyingServerId'] = request.wuying_server_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeWuyingServer',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeWuyingServerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_wuying_server(
+        self,
+        request: main_models.DescribeWuyingServerRequest,
+    ) -> main_models.DescribeWuyingServerResponse:
+        runtime = RuntimeOptions()
+        return self.describe_wuying_server_with_options(request, runtime)
+
+    async def describe_wuying_server_async(
+        self,
+        request: main_models.DescribeWuyingServerRequest,
+    ) -> main_models.DescribeWuyingServerResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_wuying_server_with_options_async(request, runtime)
+
     def describe_wuying_server_eip_info_with_options(
         self,
         request: main_models.DescribeWuyingServerEipInfoRequest,

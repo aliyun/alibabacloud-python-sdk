@@ -67,6 +67,9 @@ from ._delete_wuying_server_response import DeleteWuyingServerResponse
 from ._deliver_to_user_sls_request import DeliverToUserSlsRequest
 from ._deliver_to_user_sls_response_body import DeliverToUserSlsResponseBody
 from ._deliver_to_user_sls_response import DeliverToUserSlsResponse
+from ._describe_wuying_server_request import DescribeWuyingServerRequest
+from ._describe_wuying_server_response_body import DescribeWuyingServerResponseBody
+from ._describe_wuying_server_response import DescribeWuyingServerResponse
 from ._describe_wuying_server_eip_info_request import DescribeWuyingServerEipInfoRequest
 from ._describe_wuying_server_eip_info_response_body import DescribeWuyingServerEipInfoResponseBody
 from ._describe_wuying_server_eip_info_response import DescribeWuyingServerEipInfoResponse
@@ -265,6 +268,8 @@ from ._create_wuying_server_request import CreateWuyingServerRequestDataDisk
 from ._create_wuying_server_response_body import CreateWuyingServerResponseBodyData
 from ._delete_app_instances_response_body import DeleteAppInstancesResponseBodyDeleteAppInstanceModels
 from ._deliver_to_user_sls_request import DeliverToUserSlsRequestDeliveryScopes
+from ._describe_wuying_server_response_body import DescribeWuyingServerResponseBodyDataPrivateIpSets
+from ._describe_wuying_server_response_body import DescribeWuyingServerResponseBodyData
 from ._describe_wuying_server_eip_info_response_body import DescribeWuyingServerEipInfoResponseBodyEipInfoModel
 from ._get_app_instance_group_response_body import GetAppInstanceGroupResponseBodyAppInstanceGroupModelsApps
 from ._get_app_instance_group_response_body import GetAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePoolRecurrenceSchedulesTimerPeriods
@@ -432,6 +437,9 @@ __all__ = [
     DeliverToUserSlsRequest,
     DeliverToUserSlsResponseBody,
     DeliverToUserSlsResponse,
+    DescribeWuyingServerRequest,
+    DescribeWuyingServerResponseBody,
+    DescribeWuyingServerResponse,
     DescribeWuyingServerEipInfoRequest,
     DescribeWuyingServerEipInfoResponseBody,
     DescribeWuyingServerEipInfoResponse,
@@ -630,6 +638,8 @@ __all__ = [
     CreateWuyingServerResponseBodyData,
     DeleteAppInstancesResponseBodyDeleteAppInstanceModels,
     DeliverToUserSlsRequestDeliveryScopes,
+    DescribeWuyingServerResponseBodyDataPrivateIpSets,
+    DescribeWuyingServerResponseBodyData,
     DescribeWuyingServerEipInfoResponseBodyEipInfoModel,
     GetAppInstanceGroupResponseBodyAppInstanceGroupModelsApps,
     GetAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePoolRecurrenceSchedulesTimerPeriods,

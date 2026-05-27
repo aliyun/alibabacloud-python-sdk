@@ -1,3 +1,7 @@
+2026-05-27 Version: 5.5.0
+- Support API DescribeWuyingServer.
+
+
 2026-05-27 Version: 5.4.0
 - Support API AssignWuyingServerPrivateAddresses.
 - Support API UnassignWuyingServerPrivateAddresses.
