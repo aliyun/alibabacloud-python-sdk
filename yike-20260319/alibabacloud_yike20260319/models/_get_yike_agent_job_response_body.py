@@ -10,7 +10,9 @@ from darabonba.model import DaraModel
 class GetYikeAgentJobResponseBody(DaraModel):
     def __init__(
         self,
+        create_time: str = None,
         error_code: str = None,
+        finish_time: str = None,
         job_id: str = None,
         job_params: str = None,
         job_result: List[main_models.GetYikeAgentJobResponseBodyJobResult] = None,
@@ -19,7 +21,9 @@ class GetYikeAgentJobResponseBody(DaraModel):
         request_id: str = None,
         user_data: str = None,
     ):
+        self.create_time = create_time
         self.error_code = error_code
+        self.finish_time = finish_time
         self.job_id = job_id
         self.job_params = job_params
         self.job_result = job_result
@@ -39,8 +43,14 @@ class GetYikeAgentJobResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+
         if self.error_code is not None:
             result['ErrorCode'] = self.error_code
+
+        if self.finish_time is not None:
+            result['FinishTime'] = self.finish_time
 
         if self.job_id is not None:
             result['JobId'] = self.job_id
@@ -69,8 +79,14 @@ class GetYikeAgentJobResponseBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+
         if m.get('ErrorCode') is not None:
             self.error_code = m.get('ErrorCode')
+
+        if m.get('FinishTime') is not None:
+            self.finish_time = m.get('FinishTime')
 
         if m.get('JobId') is not None:
             self.job_id = m.get('JobId')

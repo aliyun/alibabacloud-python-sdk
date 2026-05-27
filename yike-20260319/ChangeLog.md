@@ -1,3 +1,8 @@
+2026-05-27 Version: 1.6.3
+- Update API GetYikeAgentJob: add response parameters Body.CreateTime.
+- Update API GetYikeAgentJob: add response parameters Body.FinishTime.
+
+
 2026-05-26 Version: 1.6.2
 - Update API GetYikeStoryboardJob: add response parameters Body.JobCredit.
 
