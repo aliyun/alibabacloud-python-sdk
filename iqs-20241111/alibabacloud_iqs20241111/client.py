@@ -917,7 +917,7 @@ class Client(OpenApiClient):
         sse_resp = self.call_sseapi(params, req, runtime)
         for resp in sse_resp:
             if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
-                data = json.loads(resp.event.data)
+                data = resp.event.data
                 yield  DaraCore.from_map(
                     main_models.OmniAnswerResponse(),
                     {
@@ -953,7 +953,7 @@ class Client(OpenApiClient):
         sse_resp = self.call_sseapi_async(params, req, runtime)
         async for resp in sse_resp:
             if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
-                data = json.loads(resp.event.data)
+                data = resp.event.data
                 yield  DaraCore.from_map(
                     main_models.OmniAnswerResponse(),
                     {
@@ -1173,6 +1173,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.read_page_scrape_with_options_async(request, headers, runtime)
+
+    def scan_file_with_options(
+        self,
+        request: main_models.ScanFileRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ScanFileResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ScanFile',
+            version = '2024-11-11',
+            protocol = 'HTTPS',
+            pathname = f'/linked-retrieval/linked-retrieval-entry/v1/iqs/domain/scan/file',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ScanFileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def scan_file_with_options_async(
+        self,
+        request: main_models.ScanFileRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ScanFileResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ScanFile',
+            version = '2024-11-11',
+            protocol = 'HTTPS',
+            pathname = f'/linked-retrieval/linked-retrieval-entry/v1/iqs/domain/scan/file',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ScanFileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def scan_file(
+        self,
+        request: main_models.ScanFileRequest,
+    ) -> main_models.ScanFileResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.scan_file_with_options(request, headers, runtime)
+
+    async def scan_file_async(
+        self,
+        request: main_models.ScanFileRequest,
+    ) -> main_models.ScanFileResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.scan_file_with_options_async(request, headers, runtime)
 
     def unified_search_with_options(
         self,

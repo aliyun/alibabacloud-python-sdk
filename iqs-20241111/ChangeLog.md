@@ -1,3 +1,7 @@
+2026-05-28 Version: 1.10.0
+- Support API ScanFile.
+
+
 2026-05-14 Version: 1.9.1
 - Generated python 2024-11-11 for IQS.
 
