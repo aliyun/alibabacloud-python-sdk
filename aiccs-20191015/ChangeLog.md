@@ -1,3 +1,8 @@
+2026-05-28 Version: 5.3.0
+- Support API AddModelApplication.
+- Support API UpdateModelApplication.
+
+
 2026-05-27 Version: 5.2.0
 - Support API AddInboundNumber.
 - Support API AddLargeModel.
