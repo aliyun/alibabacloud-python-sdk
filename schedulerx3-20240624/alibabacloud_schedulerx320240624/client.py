@@ -443,10 +443,16 @@ class Client(OpenApiClient):
             body['ApiKey'] = request.api_key
         if not DaraCore.is_null(request.auth_type):
             body['AuthType'] = request.auth_type
+        if not DaraCore.is_null(request.auto_scale):
+            body['AutoScale'] = request.auto_scale
         if not DaraCore.is_null(request.cluster_id):
             body['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.cms_workspace_id):
+            body['CmsWorkspaceId'] = request.cms_workspace_id
         if not DaraCore.is_null(request.description):
             body['Description'] = request.description
+        if not DaraCore.is_null(request.integration_type):
+            body['IntegrationType'] = request.integration_type
         if not DaraCore.is_null(request.name):
             body['Name'] = request.name
         if not DaraCore.is_null(request.network):
@@ -457,6 +463,8 @@ class Client(OpenApiClient):
             body['WorkerType'] = request.worker_type
         if not DaraCore.is_null(request.workers):
             body['Workers'] = request.workers
+        if not DaraCore.is_null(request.xattrs):
+            body['XAttrs'] = request.xattrs
         req = open_api_util_models.OpenApiRequest(
             body = Utils.parse_to_map(body)
         )
@@ -487,10 +495,16 @@ class Client(OpenApiClient):
             body['ApiKey'] = request.api_key
         if not DaraCore.is_null(request.auth_type):
             body['AuthType'] = request.auth_type
+        if not DaraCore.is_null(request.auto_scale):
+            body['AutoScale'] = request.auto_scale
         if not DaraCore.is_null(request.cluster_id):
             body['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.cms_workspace_id):
+            body['CmsWorkspaceId'] = request.cms_workspace_id
         if not DaraCore.is_null(request.description):
             body['Description'] = request.description
+        if not DaraCore.is_null(request.integration_type):
+            body['IntegrationType'] = request.integration_type
         if not DaraCore.is_null(request.name):
             body['Name'] = request.name
         if not DaraCore.is_null(request.network):
@@ -501,6 +515,8 @@ class Client(OpenApiClient):
             body['WorkerType'] = request.worker_type
         if not DaraCore.is_null(request.workers):
             body['Workers'] = request.workers
+        if not DaraCore.is_null(request.xattrs):
+            body['XAttrs'] = request.xattrs
         req = open_api_util_models.OpenApiRequest(
             body = Utils.parse_to_map(body)
         )
@@ -1227,6 +1243,8 @@ class Client(OpenApiClient):
             body['ClusterId'] = request.cluster_id
         if not DaraCore.is_null(request.id):
             body['Id'] = request.id
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
         req = open_api_util_models.OpenApiRequest(
             body = Utils.parse_to_map(body)
         )
@@ -1257,6 +1275,8 @@ class Client(OpenApiClient):
             body['ClusterId'] = request.cluster_id
         if not DaraCore.is_null(request.id):
             body['Id'] = request.id
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
         req = open_api_util_models.OpenApiRequest(
             body = Utils.parse_to_map(body)
         )
@@ -7063,12 +7083,18 @@ class Client(OpenApiClient):
             body['ApiKey'] = request.api_key
         if not DaraCore.is_null(request.auth_type):
             body['AuthType'] = request.auth_type
+        if not DaraCore.is_null(request.auto_scale):
+            body['AutoScale'] = request.auto_scale
         if not DaraCore.is_null(request.cluster_id):
             body['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.cms_workspace_id):
+            body['CmsWorkspaceId'] = request.cms_workspace_id
         if not DaraCore.is_null(request.description):
             body['Description'] = request.description
         if not DaraCore.is_null(request.id):
             body['Id'] = request.id
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
         if not DaraCore.is_null(request.network):
             body['Network'] = request.network
         if not DaraCore.is_null(request.protocol):
@@ -7077,6 +7103,8 @@ class Client(OpenApiClient):
             body['WorkerType'] = request.worker_type
         if not DaraCore.is_null(request.workers):
             body['Workers'] = request.workers
+        if not DaraCore.is_null(request.xattrs):
+            body['XAttrs'] = request.xattrs
         req = open_api_util_models.OpenApiRequest(
             body = Utils.parse_to_map(body)
         )
@@ -7107,12 +7135,18 @@ class Client(OpenApiClient):
             body['ApiKey'] = request.api_key
         if not DaraCore.is_null(request.auth_type):
             body['AuthType'] = request.auth_type
+        if not DaraCore.is_null(request.auto_scale):
+            body['AutoScale'] = request.auto_scale
         if not DaraCore.is_null(request.cluster_id):
             body['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.cms_workspace_id):
+            body['CmsWorkspaceId'] = request.cms_workspace_id
         if not DaraCore.is_null(request.description):
             body['Description'] = request.description
         if not DaraCore.is_null(request.id):
             body['Id'] = request.id
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
         if not DaraCore.is_null(request.network):
             body['Network'] = request.network
         if not DaraCore.is_null(request.protocol):
@@ -7121,6 +7155,8 @@ class Client(OpenApiClient):
             body['WorkerType'] = request.worker_type
         if not DaraCore.is_null(request.workers):
             body['Workers'] = request.workers
+        if not DaraCore.is_null(request.xattrs):
+            body['XAttrs'] = request.xattrs
         req = open_api_util_models.OpenApiRequest(
             body = Utils.parse_to_map(body)
         )

@@ -9,6 +9,7 @@ class DeleteExecutorGroupRequest(DaraModel):
         self,
         cluster_id: str = None,
         id: int = None,
+        name: str = None,
     ):
         # This parameter is required.
         self.cluster_id = cluster_id
@@ -16,6 +17,7 @@ class DeleteExecutorGroupRequest(DaraModel):
         # 
         # This parameter is required.
         self.id = id
+        self.name = name
 
     def validate(self):
         pass
@@ -31,6 +33,9 @@ class DeleteExecutorGroupRequest(DaraModel):
         if self.id is not None:
             result['Id'] = self.id
 
+        if self.name is not None:
+            result['Name'] = self.name
+
         return result
 
     def from_map(self, m: dict = None):
@@ -40,6 +45,9 @@ class DeleteExecutorGroupRequest(DaraModel):
 
         if m.get('Id') is not None:
             self.id = m.get('Id')
+
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
 
         return self
 

@@ -84,6 +84,7 @@ class ListExecutorsResponseBodyData(DaraModel):
         label: str = None,
         online: bool = None,
         port: int = None,
+        status: str = None,
         version: str = None,
         weight: int = None,
     ):
@@ -93,6 +94,7 @@ class ListExecutorsResponseBodyData(DaraModel):
         self.label = label
         self.online = online
         self.port = port
+        self.status = status
         self.version = version
         self.weight = weight
 
@@ -122,6 +124,9 @@ class ListExecutorsResponseBodyData(DaraModel):
         if self.port is not None:
             result['Port'] = self.port
 
+        if self.status is not None:
+            result['Status'] = self.status
+
         if self.version is not None:
             result['Version'] = self.version
 
@@ -149,6 +154,9 @@ class ListExecutorsResponseBodyData(DaraModel):
 
         if m.get('Port') is not None:
             self.port = m.get('Port')
+
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
 
         if m.get('Version') is not None:
             self.version = m.get('Version')
