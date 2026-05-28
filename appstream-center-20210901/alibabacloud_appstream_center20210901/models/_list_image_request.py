@@ -13,6 +13,7 @@ class ListImageRequest(DaraModel):
         biz_region_id_list: List[str] = None,
         biz_type: int = None,
         biz_type_list: List[int] = None,
+        distro: str = None,
         feature_list: List[str] = None,
         fota_version: str = None,
         image_id: str = None,
@@ -42,6 +43,7 @@ class ListImageRequest(DaraModel):
         self.biz_type = biz_type
         # The list of all service types. It is not available publicly.
         self.biz_type_list = biz_type_list
+        self.distro = distro
         # The features supported by the image.
         self.feature_list = feature_list
         # The image version.
@@ -153,6 +155,9 @@ class ListImageRequest(DaraModel):
         if self.biz_type_list is not None:
             result['BizTypeList'] = self.biz_type_list
 
+        if self.distro is not None:
+            result['Distro'] = self.distro
+
         if self.feature_list is not None:
             result['FeatureList'] = self.feature_list
 
@@ -221,6 +226,9 @@ class ListImageRequest(DaraModel):
 
         if m.get('BizTypeList') is not None:
             self.biz_type_list = m.get('BizTypeList')
+
+        if m.get('Distro') is not None:
+            self.distro = m.get('Distro')
 
         if m.get('FeatureList') is not None:
             self.feature_list = m.get('FeatureList')

@@ -3482,6 +3482,8 @@ class Client(OpenApiClient):
     ) -> main_models.ListImageResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.distro):
+            query['Distro'] = request.distro
         if not DaraCore.is_null(request.tag_list):
             query['TagList'] = request.tag_list
         body = {}
@@ -3552,6 +3554,8 @@ class Client(OpenApiClient):
     ) -> main_models.ListImageResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.distro):
+            query['Distro'] = request.distro
         if not DaraCore.is_null(request.tag_list):
             query['TagList'] = request.tag_list
         body = {}
