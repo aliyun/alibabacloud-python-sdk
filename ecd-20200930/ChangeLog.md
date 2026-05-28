@@ -1,3 +1,10 @@
+2026-05-28 Version: 4.26.2
+- Update API DescribeGlobalDesktopRecords: add request parameters BusinessChannel.
+- Update API ModifyDesktopHostName: add request parameters DesktopIds.
+- Update API ModifyDesktopName: add request parameters DesktopIds.
+- Update API ModifyDesktopName: add request parameters UserAssignMode.
+
+
 2026-05-25 Version: 4.26.1
 - Update API DescribeRecordFile: add request parameters ResourceType.
 

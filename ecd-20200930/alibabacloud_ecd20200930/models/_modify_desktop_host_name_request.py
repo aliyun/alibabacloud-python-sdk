@@ -2,19 +2,21 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
 from darabonba.model import DaraModel
 
 class ModifyDesktopHostNameRequest(DaraModel):
     def __init__(
         self,
         desktop_id: str = None,
+        desktop_ids: List[str] = None,
         new_host_name: str = None,
         region_id: str = None,
     ):
         # The ID of the cloud computer.
-        # 
-        # This parameter is required.
         self.desktop_id = desktop_id
+        self.desktop_ids = desktop_ids
         # The new hostname of the cloud computer. The hostname must meet the following requirements:
         # 
         # *   The hostname must be 2 to 15 characters in length.
@@ -38,6 +40,9 @@ class ModifyDesktopHostNameRequest(DaraModel):
         if self.desktop_id is not None:
             result['DesktopId'] = self.desktop_id
 
+        if self.desktop_ids is not None:
+            result['DesktopIds'] = self.desktop_ids
+
         if self.new_host_name is not None:
             result['NewHostName'] = self.new_host_name
 
@@ -50,6 +55,9 @@ class ModifyDesktopHostNameRequest(DaraModel):
         m = m or dict()
         if m.get('DesktopId') is not None:
             self.desktop_id = m.get('DesktopId')
+
+        if m.get('DesktopIds') is not None:
+            self.desktop_ids = m.get('DesktopIds')
 
         if m.get('NewHostName') is not None:
             self.new_host_name = m.get('NewHostName')

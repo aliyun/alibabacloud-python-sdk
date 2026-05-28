@@ -9,6 +9,7 @@ from darabonba.model import DaraModel
 class DescribeGlobalDesktopRecordsRequest(DaraModel):
     def __init__(
         self,
+        business_channel: str = None,
         desktop_id: List[str] = None,
         desktop_name: str = None,
         desktop_status_list: List[str] = None,
@@ -27,6 +28,7 @@ class DescribeGlobalDesktopRecordsRequest(DaraModel):
         start_time: str = None,
         sub_pay_type: str = None,
     ):
+        self.business_channel = business_channel
         # The cloud computer IDs. You can specify 1 to 100 office network IDs.
         self.desktop_id = desktop_id
         # The name of the cloud computer.
@@ -89,6 +91,9 @@ class DescribeGlobalDesktopRecordsRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.business_channel is not None:
+            result['BusinessChannel'] = self.business_channel
+
         if self.desktop_id is not None:
             result['DesktopId'] = self.desktop_id
 
@@ -144,6 +149,9 @@ class DescribeGlobalDesktopRecordsRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BusinessChannel') is not None:
+            self.business_channel = m.get('BusinessChannel')
+
         if m.get('DesktopId') is not None:
             self.desktop_id = m.get('DesktopId')
 

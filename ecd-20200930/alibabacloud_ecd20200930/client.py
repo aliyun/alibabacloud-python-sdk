@@ -12862,6 +12862,8 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeGlobalDesktopRecordsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.business_channel):
+            query['BusinessChannel'] = request.business_channel
         if not DaraCore.is_null(request.desktop_id):
             query['DesktopId'] = request.desktop_id
         if not DaraCore.is_null(request.desktop_name):
@@ -12922,6 +12924,8 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeGlobalDesktopRecordsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.business_channel):
+            query['BusinessChannel'] = request.business_channel
         if not DaraCore.is_null(request.desktop_id):
             query['DesktopId'] = request.desktop_id
         if not DaraCore.is_null(request.desktop_name):
@@ -21634,6 +21638,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.desktop_id):
             query['DesktopId'] = request.desktop_id
+        if not DaraCore.is_null(request.desktop_ids):
+            query['DesktopIds'] = request.desktop_ids
         if not DaraCore.is_null(request.new_host_name):
             query['NewHostName'] = request.new_host_name
         if not DaraCore.is_null(request.region_id):
@@ -21666,6 +21672,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.desktop_id):
             query['DesktopId'] = request.desktop_id
+        if not DaraCore.is_null(request.desktop_ids):
+            query['DesktopIds'] = request.desktop_ids
         if not DaraCore.is_null(request.new_host_name):
             query['NewHostName'] = request.new_host_name
         if not DaraCore.is_null(request.region_id):
@@ -21712,10 +21720,14 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.desktop_id):
             query['DesktopId'] = request.desktop_id
+        if not DaraCore.is_null(request.desktop_ids):
+            query['DesktopIds'] = request.desktop_ids
         if not DaraCore.is_null(request.new_desktop_name):
             query['NewDesktopName'] = request.new_desktop_name
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.user_assign_mode):
+            query['UserAssignMode'] = request.user_assign_mode
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -21744,10 +21756,14 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.desktop_id):
             query['DesktopId'] = request.desktop_id
+        if not DaraCore.is_null(request.desktop_ids):
+            query['DesktopIds'] = request.desktop_ids
         if not DaraCore.is_null(request.new_desktop_name):
             query['NewDesktopName'] = request.new_desktop_name
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.user_assign_mode):
+            query['UserAssignMode'] = request.user_assign_mode
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
