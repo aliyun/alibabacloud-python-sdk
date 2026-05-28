@@ -20,17 +20,29 @@ class LogtailPipelineConfig(DaraModel):
         processors: List[Dict[str, Any]] = None,
         task: Dict[str, Any] = None,
     ):
+        # The aggregation plug-ins.
         self.aggregators = aggregators
+        # The name of the configuration.
+        # 
         # This parameter is required.
         self.config_name = config_name
+        # The creation time. The value is a UNIX timestamp.
         self.create_time = create_time
+        # The data output plug-ins.
+        # 
         # This parameter is required.
         self.flushers = flushers
+        # The global configuration.
         self.global_ = global_
+        # The data source plug-ins.
+        # 
         # This parameter is required.
         self.inputs = inputs
+        # The last modification time. The value is a UNIX timestamp.
         self.last_modify_time = last_modify_time
+        # The sample log.
         self.log_sample = log_sample
+        # The processing plug-ins.
         self.processors = processors
         self.task = task
 

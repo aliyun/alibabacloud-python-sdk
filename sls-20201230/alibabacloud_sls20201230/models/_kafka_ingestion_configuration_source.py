@@ -2,6 +2,8 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import Dict, Any
+
 from darabonba.model import DaraModel
 
 class KafkaIngestionConfigurationSource(DaraModel):
@@ -12,11 +14,14 @@ class KafkaIngestionConfigurationSource(DaraModel):
         consumer_group: str = None,
         default_time_source: str = None,
         enable_sls_context: bool = None,
+        enable_vpc_nat: bool = None,
         encoding: str = None,
+        format: Dict[str, Any] = None,
         from_position: str = None,
         name_resolutions: str = None,
         parse_array: bool = None,
         processor_id: str = None,
+        security_groups: str = None,
         time_field: str = None,
         time_format: str = None,
         time_pattern: str = None,
@@ -24,6 +29,7 @@ class KafkaIngestionConfigurationSource(DaraModel):
         topics: str = None,
         value_type: str = None,
         vpc_id: str = None,
+        vswitch_id: str = None,
     ):
         # This parameter is required.
         self.bootstrap_servers = bootstrap_servers
@@ -31,14 +37,17 @@ class KafkaIngestionConfigurationSource(DaraModel):
         self.consumer_group = consumer_group
         self.default_time_source = default_time_source
         self.enable_sls_context = enable_sls_context
+        self.enable_vpc_nat = enable_vpc_nat
         # This parameter is required.
         self.encoding = encoding
+        self.format = format
         # This parameter is required.
         self.from_position = from_position
         self.name_resolutions = name_resolutions
         # This parameter is required.
         self.parse_array = parse_array
         self.processor_id = processor_id
+        self.security_groups = security_groups
         self.time_field = time_field
         self.time_format = time_format
         self.time_pattern = time_pattern
@@ -48,6 +57,7 @@ class KafkaIngestionConfigurationSource(DaraModel):
         # This parameter is required.
         self.value_type = value_type
         self.vpc_id = vpc_id
+        self.vswitch_id = vswitch_id
 
     def validate(self):
         pass
@@ -72,8 +82,14 @@ class KafkaIngestionConfigurationSource(DaraModel):
         if self.enable_sls_context is not None:
             result['enableSlsContext'] = self.enable_sls_context
 
+        if self.enable_vpc_nat is not None:
+            result['enableVpcNat'] = self.enable_vpc_nat
+
         if self.encoding is not None:
             result['encoding'] = self.encoding
+
+        if self.format is not None:
+            result['format'] = self.format
 
         if self.from_position is not None:
             result['fromPosition'] = self.from_position
@@ -86,6 +102,9 @@ class KafkaIngestionConfigurationSource(DaraModel):
 
         if self.processor_id is not None:
             result['processorId'] = self.processor_id
+
+        if self.security_groups is not None:
+            result['securityGroups'] = self.security_groups
 
         if self.time_field is not None:
             result['timeField'] = self.time_field
@@ -108,6 +127,9 @@ class KafkaIngestionConfigurationSource(DaraModel):
         if self.vpc_id is not None:
             result['vpcId'] = self.vpc_id
 
+        if self.vswitch_id is not None:
+            result['vswitchId'] = self.vswitch_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -127,8 +149,14 @@ class KafkaIngestionConfigurationSource(DaraModel):
         if m.get('enableSlsContext') is not None:
             self.enable_sls_context = m.get('enableSlsContext')
 
+        if m.get('enableVpcNat') is not None:
+            self.enable_vpc_nat = m.get('enableVpcNat')
+
         if m.get('encoding') is not None:
             self.encoding = m.get('encoding')
+
+        if m.get('format') is not None:
+            self.format = m.get('format')
 
         if m.get('fromPosition') is not None:
             self.from_position = m.get('fromPosition')
@@ -141,6 +169,9 @@ class KafkaIngestionConfigurationSource(DaraModel):
 
         if m.get('processorId') is not None:
             self.processor_id = m.get('processorId')
+
+        if m.get('securityGroups') is not None:
+            self.security_groups = m.get('securityGroups')
 
         if m.get('timeField') is not None:
             self.time_field = m.get('timeField')
@@ -162,6 +193,9 @@ class KafkaIngestionConfigurationSource(DaraModel):
 
         if m.get('vpcId') is not None:
             self.vpc_id = m.get('vpcId')
+
+        if m.get('vswitchId') is not None:
+            self.vswitch_id = m.get('vswitchId')
 
         return self
 

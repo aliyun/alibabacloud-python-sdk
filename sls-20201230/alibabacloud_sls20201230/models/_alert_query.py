@@ -21,26 +21,47 @@ class AlertQuery(DaraModel):
         time_span_type: str = None,
         ui: str = None,
     ):
+        # The name of the chart.
         self.chart_title = chart_title
+        # The ID of the dashboard.
         self.dashboard_id = dashboard_id
+        # The end of the time range to query.
+        # 
         # This parameter is required.
         self.end = end
+        # Specifies whether to enable Dedicated SQL.
         self.power_sql_mode = power_sql_mode
+        # The name of the project.
+        # 
         # This parameter is required.
         self.project = project
+        # The query statement.
+        # 
         # This parameter is required.
         self.query = query
+        # The region.
+        # 
         # This parameter is required.
         self.region = region
+        # The Alibaba Cloud Resource Name (ARN) of the role.
         self.role_arn = role_arn
+        # The beginning of the time range to query.
+        # 
         # This parameter is required.
         self.start = start
+        # The name of the storage.
+        # 
         # This parameter is required.
         self.store = store
+        # The storage type.
+        # 
         # This parameter is required.
         self.store_type = store_type
+        # The type of the time span.
+        # 
         # This parameter is required.
         self.time_span_type = time_span_type
+        # The page on which you can record frontend configurations in specified scenarios.
         self.ui = ui
 
     def validate(self):

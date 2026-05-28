@@ -11,6 +11,8 @@ class ESIngestionConfiguration(DaraModel):
         logstore: str = None,
         source: main_models.ESIngestionConfigurationSource = None,
     ):
+        # logstore
+        # 
         # This parameter is required.
         self.logstore = logstore
         # This parameter is required.

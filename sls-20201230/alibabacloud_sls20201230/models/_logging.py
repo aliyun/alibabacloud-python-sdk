@@ -13,8 +13,12 @@ class Logging(DaraModel):
         logging_details: List[main_models.LoggingLoggingDetails] = None,
         logging_project: str = None,
     ):
+        # The settings of the service log feature.
+        # 
         # This parameter is required.
         self.logging_details = logging_details
+        # The name of the project to which service logs are stored.
+        # 
         # This parameter is required.
         self.logging_project = logging_project
 
@@ -58,8 +62,21 @@ class LoggingLoggingDetails(DaraModel):
         logstore: str = None,
         type: str = None,
     ):
+        # The logstore name.
+        # 
         # This parameter is required.
         self.logstore = logstore
+        # The type of the service logs. Valid values:
+        # 
+        # *   consumergroup_log: the consumption delay logs of consumer groups.
+        # *   logtail_alarm: the alert logs of Logtail.
+        # *   operation_log: the operation logs. You are charged for operation logs.
+        # *   logtail_profile: the collection logs of Logtail.
+        # *   metering: the metering logs.
+        # *   logtail_status: the status logs of Logtail.
+        # *   scheduledsqlalert: the operational logs of scheduled SQL jobs.
+        # *   etl_alert: the operational logs of data transformation jobs.
+        # 
         # This parameter is required.
         self.type = type
 

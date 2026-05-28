@@ -9,12 +9,15 @@ from darabonba.model import DaraModel
 class S3IngestionConfigurationSource(DaraModel):
     def __init__(
         self,
+        advanced_parameters: Dict[str, Any] = None,
         aws_access_key: str = None,
         aws_access_key_secret: str = None,
         aws_region: str = None,
         aws_sqsqueue_url: str = None,
         aws_use_sqs: bool = None,
         bucket: str = None,
+        cloud_front_endpoint: str = None,
+        cloud_front_token: str = None,
         compression_codec: str = None,
         encoding: str = None,
         end_time: int = None,
@@ -31,22 +34,36 @@ class S3IngestionConfigurationSource(DaraModel):
         time_pattern: str = None,
         time_zone: str = None,
         use_aws_sqsonly: bool = None,
+        use_cloud_front: bool = None,
     ):
+        self.advanced_parameters = advanced_parameters
+        # aws access key
+        # 
         # This parameter is required.
         self.aws_access_key = aws_access_key
+        # aws access key secret
+        # 
         # This parameter is required.
         self.aws_access_key_secret = aws_access_key_secret
+        # s3 region
+        # 
         # This parameter is required.
         self.aws_region = aws_region
+        # sqs queue url
         self.aws_sqsqueue_url = aws_sqsqueue_url
         self.aws_use_sqs = aws_use_sqs
+        # s3 bucket
+        # 
         # This parameter is required.
         self.bucket = bucket
+        self.cloud_front_endpoint = cloud_front_endpoint
+        self.cloud_front_token = cloud_front_token
         # This parameter is required.
         self.compression_codec = compression_codec
         # This parameter is required.
         self.encoding = encoding
         self.end_time = end_time
+        # s3 endpoint
         self.endpoint = endpoint
         # This parameter is required.
         self.format = format
@@ -62,6 +79,7 @@ class S3IngestionConfigurationSource(DaraModel):
         self.time_pattern = time_pattern
         self.time_zone = time_zone
         self.use_aws_sqsonly = use_aws_sqsonly
+        self.use_cloud_front = use_cloud_front
 
     def validate(self):
         pass
@@ -71,6 +89,9 @@ class S3IngestionConfigurationSource(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.advanced_parameters is not None:
+            result['advancedParameters'] = self.advanced_parameters
+
         if self.aws_access_key is not None:
             result['awsAccessKey'] = self.aws_access_key
 
@@ -88,6 +109,12 @@ class S3IngestionConfigurationSource(DaraModel):
 
         if self.bucket is not None:
             result['bucket'] = self.bucket
+
+        if self.cloud_front_endpoint is not None:
+            result['cloudFrontEndpoint'] = self.cloud_front_endpoint
+
+        if self.cloud_front_token is not None:
+            result['cloudFrontToken'] = self.cloud_front_token
 
         if self.compression_codec is not None:
             result['compressionCodec'] = self.compression_codec
@@ -137,10 +164,16 @@ class S3IngestionConfigurationSource(DaraModel):
         if self.use_aws_sqsonly is not None:
             result['useAwsSQSOnly'] = self.use_aws_sqsonly
 
+        if self.use_cloud_front is not None:
+            result['useCloudFront'] = self.use_cloud_front
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('advancedParameters') is not None:
+            self.advanced_parameters = m.get('advancedParameters')
+
         if m.get('awsAccessKey') is not None:
             self.aws_access_key = m.get('awsAccessKey')
 
@@ -158,6 +191,12 @@ class S3IngestionConfigurationSource(DaraModel):
 
         if m.get('bucket') is not None:
             self.bucket = m.get('bucket')
+
+        if m.get('cloudFrontEndpoint') is not None:
+            self.cloud_front_endpoint = m.get('cloudFrontEndpoint')
+
+        if m.get('cloudFrontToken') is not None:
+            self.cloud_front_token = m.get('cloudFrontToken')
 
         if m.get('compressionCodec') is not None:
             self.compression_codec = m.get('compressionCodec')
@@ -206,6 +245,9 @@ class S3IngestionConfigurationSource(DaraModel):
 
         if m.get('useAwsSQSOnly') is not None:
             self.use_aws_sqsonly = m.get('useAwsSQSOnly')
+
+        if m.get('useCloudFront') is not None:
+            self.use_cloud_front = m.get('useCloudFront')
 
         return self
 

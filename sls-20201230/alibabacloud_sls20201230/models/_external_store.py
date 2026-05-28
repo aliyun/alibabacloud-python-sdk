@@ -13,10 +13,16 @@ class ExternalStore(DaraModel):
         parameter: Dict[str, Any] = None,
         store_type: str = None,
     ):
+        # The name of the external store. The name must be unique in a project and must be different from Logstore names.
+        # 
         # This parameter is required.
         self.external_store_name = external_store_name
+        # The parameters that are configured for the external store.
+        # 
         # This parameter is required.
         self.parameter = parameter
+        # The storage type. Set the value to rds-vpc, which indicates a database on an ApsaraDB RDS for MySQL instance in a virtual private cloud (VPC).
+        # 
         # This parameter is required.
         self.store_type = store_type
 

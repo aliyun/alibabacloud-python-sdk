@@ -25,6 +25,9 @@ from ._etlconfiguration import ETLConfiguration
 from ._etlconfiguration_sink import ETLConfigurationSink
 from ._encrypt_conf import EncryptConf
 from ._encrypt_user_cmk_conf import EncryptUserCmkConf
+from ._gcsingestion import GCSIngestion
+from ._gcsingestion_configuration import GCSIngestionConfiguration
+from ._gcsingestion_configuration_source import GCSIngestionConfigurationSource
 from ._group_configuration import GroupConfiguration
 from ._histogram import Histogram
 from ._index_json_key import IndexJsonKey
@@ -87,9 +90,6 @@ from ._service_status import ServiceStatus
 from ._shard import Shard
 from ._mldata_param_annotations_value import MLDataParamAnnotationsValue
 from ._mldata_param_predictions_value import MLDataParamPredictionsValue
-from ._add_memories_request import AddMemoriesRequest
-from ._add_memories_response_body import AddMemoriesResponseBody
-from ._add_memories_response import AddMemoriesResponse
 from ._apply_config_to_machine_group_response import ApplyConfigToMachineGroupResponse
 from ._call_ai_tools_request import CallAiToolsRequest
 from ._call_ai_tools_response import CallAiToolsResponse
@@ -115,8 +115,6 @@ from ._create_consumer_group_request import CreateConsumerGroupRequest
 from ._create_consumer_group_response import CreateConsumerGroupResponse
 from ._create_dashboard_request import CreateDashboardRequest
 from ._create_dashboard_response import CreateDashboardResponse
-from ._create_dataset_request import CreateDatasetRequest
-from ._create_dataset_response import CreateDatasetResponse
 from ._create_domain_request import CreateDomainRequest
 from ._create_domain_response import CreateDomainResponse
 from ._create_download_job_request import CreateDownloadJobRequest
@@ -125,6 +123,8 @@ from ._create_etlrequest import CreateETLRequest
 from ._create_etlresponse import CreateETLResponse
 from ._create_elasticsearch_ingestion_request import CreateElasticsearchIngestionRequest
 from ._create_elasticsearch_ingestion_response import CreateElasticsearchIngestionResponse
+from ._create_gcsingestion_request import CreateGCSIngestionRequest
+from ._create_gcsingestion_response import CreateGCSIngestionResponse
 from ._create_index_request import CreateIndexRequest
 from ._create_index_response import CreateIndexResponse
 from ._create_log_store_request import CreateLogStoreRequest
@@ -139,8 +139,6 @@ from ._create_materialized_view_request import CreateMaterializedViewRequest
 from ._create_materialized_view_response import CreateMaterializedViewResponse
 from ._create_max_compute_export_request import CreateMaxComputeExportRequest
 from ._create_max_compute_export_response import CreateMaxComputeExportResponse
-from ._create_memory_store_request import CreateMemoryStoreRequest
-from ._create_memory_store_response import CreateMemoryStoreResponse
 from ._create_metric_store_request import CreateMetricStoreRequest
 from ._create_metric_store_response import CreateMetricStoreResponse
 from ._create_ossexport_request import CreateOSSExportRequest
@@ -178,7 +176,6 @@ from ._delete_config_response import DeleteConfigResponse
 from ._delete_consume_processor_response import DeleteConsumeProcessorResponse
 from ._delete_consumer_group_response import DeleteConsumerGroupResponse
 from ._delete_dashboard_response import DeleteDashboardResponse
-from ._delete_dataset_response import DeleteDatasetResponse
 from ._delete_domain_response import DeleteDomainResponse
 from ._delete_download_job_response import DeleteDownloadJobResponse
 from ._delete_etlresponse import DeleteETLResponse
@@ -191,10 +188,6 @@ from ._delete_logtail_pipeline_config_response import DeleteLogtailPipelineConfi
 from ._delete_machine_group_response import DeleteMachineGroupResponse
 from ._delete_materialized_view_response import DeleteMaterializedViewResponse
 from ._delete_max_compute_export_response import DeleteMaxComputeExportResponse
-from ._delete_memories_request import DeleteMemoriesRequest
-from ._delete_memories_response import DeleteMemoriesResponse
-from ._delete_memory_response import DeleteMemoryResponse
-from ._delete_memory_store_response import DeleteMemoryStoreResponse
 from ._delete_metric_store_response import DeleteMetricStoreResponse
 from ._delete_ossexport_response import DeleteOSSExportResponse
 from ._delete_osshdfsexport_response import DeleteOSSHDFSExportResponse
@@ -213,10 +206,6 @@ from ._disable_alert_response import DisableAlertResponse
 from ._disable_scheduled_sqlresponse import DisableScheduledSQLResponse
 from ._enable_alert_response import EnableAlertResponse
 from ._enable_scheduled_sqlresponse import EnableScheduledSQLResponse
-from ._execute_query_headers import ExecuteQueryHeaders
-from ._execute_query_request import ExecuteQueryRequest
-from ._execute_query_response_body import ExecuteQueryResponseBody
-from ._execute_query_response import ExecuteQueryResponse
 from ._get_agent_instance_config_request import GetAgentInstanceConfigRequest
 from ._get_agent_instance_config_shrink_request import GetAgentInstanceConfigShrinkRequest
 from ._get_agent_instance_config_response_body import GetAgentInstanceConfigResponseBody
@@ -249,18 +238,19 @@ from ._get_cursor_time_request import GetCursorTimeRequest
 from ._get_cursor_time_response_body import GetCursorTimeResponseBody
 from ._get_cursor_time_response import GetCursorTimeResponse
 from ._get_dashboard_response import GetDashboardResponse
-from ._get_dataset_response_body import GetDatasetResponseBody
-from ._get_dataset_response import GetDatasetResponse
 from ._get_download_job_response_body import GetDownloadJobResponseBody
 from ._get_download_job_response import GetDownloadJobResponse
 from ._get_etlresponse import GetETLResponse
 from ._get_elasticsearch_ingestion_response import GetElasticsearchIngestionResponse
+from ._get_gcsingestion_response import GetGCSIngestionResponse
 from ._get_histograms_request import GetHistogramsRequest
 from ._get_histograms_response import GetHistogramsResponse
 from ._get_index_response_body import GetIndexResponseBody
 from ._get_index_response import GetIndexResponse
 from ._get_ingest_processor_response import GetIngestProcessorResponse
 from ._get_log_store_response import GetLogStoreResponse
+from ._get_log_store_config_response_body import GetLogStoreConfigResponseBody
+from ._get_log_store_config_response import GetLogStoreConfigResponse
 from ._get_log_store_metering_mode_response_body import GetLogStoreMeteringModeResponseBody
 from ._get_log_store_metering_mode_response import GetLogStoreMeteringModeResponse
 from ._get_logging_response import GetLoggingResponse
@@ -279,14 +269,6 @@ from ._get_materialized_view_headers import GetMaterializedViewHeaders
 from ._get_materialized_view_response_body import GetMaterializedViewResponseBody
 from ._get_materialized_view_response import GetMaterializedViewResponse
 from ._get_max_compute_export_response import GetMaxComputeExportResponse
-from ._get_memories_request import GetMemoriesRequest
-from ._get_memories_response_body import GetMemoriesResponseBody
-from ._get_memories_response import GetMemoriesResponse
-from ._get_memory_response_body import GetMemoryResponseBody
-from ._get_memory_response import GetMemoryResponse
-from ._get_memory_history_response import GetMemoryHistoryResponse
-from ._get_memory_store_response_body import GetMemoryStoreResponseBody
-from ._get_memory_store_response import GetMemoryStoreResponse
 from ._get_metric_store_response_body import GetMetricStoreResponseBody
 from ._get_metric_store_response import GetMetricStoreResponse
 from ._get_metric_store_metering_mode_response_body import GetMetricStoreMeteringModeResponseBody
@@ -340,9 +322,6 @@ from ._list_dashboard_request import ListDashboardRequest
 from ._list_dashboard_shrink_request import ListDashboardShrinkRequest
 from ._list_dashboard_response_body import ListDashboardResponseBody
 from ._list_dashboard_response import ListDashboardResponse
-from ._list_datasets_request import ListDatasetsRequest
-from ._list_datasets_response_body import ListDatasetsResponseBody
-from ._list_datasets_response import ListDatasetsResponse
 from ._list_domains_request import ListDomainsRequest
 from ._list_domains_response_body import ListDomainsResponseBody
 from ._list_domains_response import ListDomainsResponse
@@ -355,6 +334,9 @@ from ._list_etls_response import ListETLsResponse
 from ._list_elasticsearch_ingestions_request import ListElasticsearchIngestionsRequest
 from ._list_elasticsearch_ingestions_response_body import ListElasticsearchIngestionsResponseBody
 from ._list_elasticsearch_ingestions_response import ListElasticsearchIngestionsResponse
+from ._list_gcsingestions_request import ListGCSIngestionsRequest
+from ._list_gcsingestions_response_body import ListGCSIngestionsResponseBody
+from ._list_gcsingestions_response import ListGCSIngestionsResponse
 from ._list_ingest_processors_request import ListIngestProcessorsRequest
 from ._list_ingest_processors_response_body import ListIngestProcessorsResponseBody
 from ._list_ingest_processors_response import ListIngestProcessorsResponse
@@ -379,9 +361,6 @@ from ._list_materialized_views_response import ListMaterializedViewsResponse
 from ._list_max_compute_exports_request import ListMaxComputeExportsRequest
 from ._list_max_compute_exports_response_body import ListMaxComputeExportsResponseBody
 from ._list_max_compute_exports_response import ListMaxComputeExportsResponse
-from ._list_memory_stores_request import ListMemoryStoresRequest
-from ._list_memory_stores_response_body import ListMemoryStoresResponseBody
-from ._list_memory_stores_response import ListMemoryStoresResponse
 from ._list_metric_stores_request import ListMetricStoresRequest
 from ._list_metric_stores_response_body import ListMetricStoresResponseBody
 from ._list_metric_stores_response import ListMetricStoresResponse
@@ -425,6 +404,8 @@ from ._put_consume_processor_request import PutConsumeProcessorRequest
 from ._put_consume_processor_response import PutConsumeProcessorResponse
 from ._put_ingest_processor_request import PutIngestProcessorRequest
 from ._put_ingest_processor_response import PutIngestProcessorResponse
+from ._put_log_store_config_request import PutLogStoreConfigRequest
+from ._put_log_store_config_response import PutLogStoreConfigResponse
 from ._put_logs_headers import PutLogsHeaders
 from ._put_logs_request import PutLogsRequest
 from ._put_logs_response import PutLogsResponse
@@ -438,14 +419,12 @@ from ._refresh_token_request import RefreshTokenRequest
 from ._refresh_token_response_body import RefreshTokenResponseBody
 from ._refresh_token_response import RefreshTokenResponse
 from ._remove_config_from_machine_group_response import RemoveConfigFromMachineGroupResponse
-from ._search_memories_request import SearchMemoriesRequest
-from ._search_memories_response_body import SearchMemoriesResponseBody
-from ._search_memories_response import SearchMemoriesResponse
 from ._split_shard_request import SplitShardRequest
 from ._split_shard_response import SplitShardResponse
 from ._start_azure_blob_ingestion_response import StartAzureBlobIngestionResponse
 from ._start_etlresponse import StartETLResponse
 from ._start_elasticsearch_ingestion_response import StartElasticsearchIngestionResponse
+from ._start_gcsingestion_response import StartGCSIngestionResponse
 from ._start_max_compute_export_response import StartMaxComputeExportResponse
 from ._start_ossexport_response import StartOSSExportResponse
 from ._start_osshdfsexport_response import StartOSSHDFSExportResponse
@@ -453,6 +432,7 @@ from ._start_ossingestion_response import StartOSSIngestionResponse
 from ._stop_azure_blob_ingestion_response import StopAzureBlobIngestionResponse
 from ._stop_etlresponse import StopETLResponse
 from ._stop_elasticsearch_ingestion_response import StopElasticsearchIngestionResponse
+from ._stop_gcsingestion_response import StopGCSIngestionResponse
 from ._stop_max_compute_export_response import StopMaxComputeExportResponse
 from ._stop_ossexport_response import StopOSSExportResponse
 from ._stop_osshdfsexport_response import StopOSSHDFSExportResponse
@@ -481,12 +461,12 @@ from ._update_consumer_group_request import UpdateConsumerGroupRequest
 from ._update_consumer_group_response import UpdateConsumerGroupResponse
 from ._update_dashboard_request import UpdateDashboardRequest
 from ._update_dashboard_response import UpdateDashboardResponse
-from ._update_dataset_request import UpdateDatasetRequest
-from ._update_dataset_response import UpdateDatasetResponse
 from ._update_etlrequest import UpdateETLRequest
 from ._update_etlresponse import UpdateETLResponse
 from ._update_elasticsearch_ingestion_request import UpdateElasticsearchIngestionRequest
 from ._update_elasticsearch_ingestion_response import UpdateElasticsearchIngestionResponse
+from ._update_gcsingestion_request import UpdateGCSIngestionRequest
+from ._update_gcsingestion_response import UpdateGCSIngestionResponse
 from ._update_index_request import UpdateIndexRequest
 from ._update_index_response import UpdateIndexResponse
 from ._update_log_store_request import UpdateLogStoreRequest
@@ -509,10 +489,6 @@ from ._update_materialized_view_request import UpdateMaterializedViewRequest
 from ._update_materialized_view_response import UpdateMaterializedViewResponse
 from ._update_max_compute_export_request import UpdateMaxComputeExportRequest
 from ._update_max_compute_export_response import UpdateMaxComputeExportResponse
-from ._update_memory_request import UpdateMemoryRequest
-from ._update_memory_response import UpdateMemoryResponse
-from ._update_memory_store_request import UpdateMemoryStoreRequest
-from ._update_memory_store_response import UpdateMemoryStoreResponse
 from ._update_metric_store_request import UpdateMetricStoreRequest
 from ._update_metric_store_response import UpdateMetricStoreResponse
 from ._update_metric_store_metering_mode_request import UpdateMetricStoreMeteringModeRequest
@@ -551,14 +527,11 @@ from ._submit_async_sql_params import SubmitAsyncSqlParamsExtensions
 from ._index import IndexLine
 from ._logging import LoggingLoggingDetails
 from ._machine_group import MachineGroupGroupAttribute
-from ._add_memories_request import AddMemoriesRequestMessages
-from ._add_memories_response_body import AddMemoriesResponseBodyResults
 from ._create_download_job_request import CreateDownloadJobRequestConfigurationSink
 from ._create_download_job_request import CreateDownloadJobRequestConfiguration
 from ._create_logging_request import CreateLoggingRequestLoggingDetails
 from ._create_machine_group_request import CreateMachineGroupRequestGroupAttribute
 from ._describe_regions_response_body import DescribeRegionsResponseBodyRegions
-from ._execute_query_response_body import ExecuteQueryResponseBodyMeta
 from ._get_check_point_response import GetCheckPointResponseBody
 from ._get_collection_policy_response_body import GetCollectionPolicyResponseBodyCollectionPolicyCentralizeConfig
 from ._get_collection_policy_response_body import GetCollectionPolicyResponseBodyCollectionPolicyDataConfig
@@ -572,10 +545,6 @@ from ._get_histograms_response import GetHistogramsResponseBody
 from ._get_index_response_body import GetIndexResponseBodyLine
 from ._get_logs_v2response_body import GetLogsV2ResponseBodyMetaPhraseQueryInfo
 from ._get_logs_v2response_body import GetLogsV2ResponseBodyMeta
-from ._get_memories_response_body import GetMemoriesResponseBodyRelations
-from ._get_memories_response_body import GetMemoriesResponseBodyResults
-from ._get_memory_history_response import GetMemoryHistoryResponseBodyInput
-from ._get_memory_history_response import GetMemoryHistoryResponseBody
 from ._get_sql_instance_response import GetSqlInstanceResponseBody
 from ._get_store_view_index_response_body import GetStoreViewIndexResponseBodyIndexes
 from ._list_agent_instance_configs_response_body import ListAgentInstanceConfigsResponseBodyConfigs
@@ -590,16 +559,12 @@ from ._list_collection_policies_response_body import ListCollectionPoliciesRespo
 from ._list_collection_policies_response_body import ListCollectionPoliciesResponseBodyStatistics
 from ._list_dashboard_request import ListDashboardRequestTags
 from ._list_dashboard_response_body import ListDashboardResponseBodyDashboardItems
-from ._list_datasets_response_body import ListDatasetsResponseBodyDatasets
 from ._list_download_jobs_response_body import ListDownloadJobsResponseBodyResultsConfigurationSink
 from ._list_download_jobs_response_body import ListDownloadJobsResponseBodyResultsConfiguration
 from ._list_download_jobs_response_body import ListDownloadJobsResponseBodyResultsExecutionDetails
 from ._list_download_jobs_response_body import ListDownloadJobsResponseBodyResults
-from ._list_memory_stores_response_body import ListMemoryStoresResponseBodyMemoryStores
 from ._list_tag_resources_request import ListTagResourcesRequestTags
 from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResources
-from ._search_memories_response_body import SearchMemoriesResponseBodyRelations
-from ._search_memories_response_body import SearchMemoriesResponseBodyResults
 from ._tag_resources_request import TagResourcesRequestTags
 from ._update_log_store_encryption_request import UpdateLogStoreEncryptionRequestUserCmkInfo
 from ._update_logging_request import UpdateLoggingRequestLoggingDetails
@@ -633,6 +598,9 @@ __all__ = [
     ETLConfigurationSink,
     EncryptConf,
     EncryptUserCmkConf,
+    GCSIngestion,
+    GCSIngestionConfiguration,
+    GCSIngestionConfigurationSource,
     GroupConfiguration,
     Histogram,
     IndexJsonKey,
@@ -695,9 +663,6 @@ __all__ = [
     Shard,
     MLDataParamAnnotationsValue,
     MLDataParamPredictionsValue,
-    AddMemoriesRequest,
-    AddMemoriesResponseBody,
-    AddMemoriesResponse,
     ApplyConfigToMachineGroupResponse,
     CallAiToolsRequest,
     CallAiToolsResponse,
@@ -723,8 +688,6 @@ __all__ = [
     CreateConsumerGroupResponse,
     CreateDashboardRequest,
     CreateDashboardResponse,
-    CreateDatasetRequest,
-    CreateDatasetResponse,
     CreateDomainRequest,
     CreateDomainResponse,
     CreateDownloadJobRequest,
@@ -733,6 +696,8 @@ __all__ = [
     CreateETLResponse,
     CreateElasticsearchIngestionRequest,
     CreateElasticsearchIngestionResponse,
+    CreateGCSIngestionRequest,
+    CreateGCSIngestionResponse,
     CreateIndexRequest,
     CreateIndexResponse,
     CreateLogStoreRequest,
@@ -747,8 +712,6 @@ __all__ = [
     CreateMaterializedViewResponse,
     CreateMaxComputeExportRequest,
     CreateMaxComputeExportResponse,
-    CreateMemoryStoreRequest,
-    CreateMemoryStoreResponse,
     CreateMetricStoreRequest,
     CreateMetricStoreResponse,
     CreateOSSExportRequest,
@@ -786,7 +749,6 @@ __all__ = [
     DeleteConsumeProcessorResponse,
     DeleteConsumerGroupResponse,
     DeleteDashboardResponse,
-    DeleteDatasetResponse,
     DeleteDomainResponse,
     DeleteDownloadJobResponse,
     DeleteETLResponse,
@@ -799,10 +761,6 @@ __all__ = [
     DeleteMachineGroupResponse,
     DeleteMaterializedViewResponse,
     DeleteMaxComputeExportResponse,
-    DeleteMemoriesRequest,
-    DeleteMemoriesResponse,
-    DeleteMemoryResponse,
-    DeleteMemoryStoreResponse,
     DeleteMetricStoreResponse,
     DeleteOSSExportResponse,
     DeleteOSSHDFSExportResponse,
@@ -821,10 +779,6 @@ __all__ = [
     DisableScheduledSQLResponse,
     EnableAlertResponse,
     EnableScheduledSQLResponse,
-    ExecuteQueryHeaders,
-    ExecuteQueryRequest,
-    ExecuteQueryResponseBody,
-    ExecuteQueryResponse,
     GetAgentInstanceConfigRequest,
     GetAgentInstanceConfigShrinkRequest,
     GetAgentInstanceConfigResponseBody,
@@ -857,18 +811,19 @@ __all__ = [
     GetCursorTimeResponseBody,
     GetCursorTimeResponse,
     GetDashboardResponse,
-    GetDatasetResponseBody,
-    GetDatasetResponse,
     GetDownloadJobResponseBody,
     GetDownloadJobResponse,
     GetETLResponse,
     GetElasticsearchIngestionResponse,
+    GetGCSIngestionResponse,
     GetHistogramsRequest,
     GetHistogramsResponse,
     GetIndexResponseBody,
     GetIndexResponse,
     GetIngestProcessorResponse,
     GetLogStoreResponse,
+    GetLogStoreConfigResponseBody,
+    GetLogStoreConfigResponse,
     GetLogStoreMeteringModeResponseBody,
     GetLogStoreMeteringModeResponse,
     GetLoggingResponse,
@@ -887,14 +842,6 @@ __all__ = [
     GetMaterializedViewResponseBody,
     GetMaterializedViewResponse,
     GetMaxComputeExportResponse,
-    GetMemoriesRequest,
-    GetMemoriesResponseBody,
-    GetMemoriesResponse,
-    GetMemoryResponseBody,
-    GetMemoryResponse,
-    GetMemoryHistoryResponse,
-    GetMemoryStoreResponseBody,
-    GetMemoryStoreResponse,
     GetMetricStoreResponseBody,
     GetMetricStoreResponse,
     GetMetricStoreMeteringModeResponseBody,
@@ -948,9 +895,6 @@ __all__ = [
     ListDashboardShrinkRequest,
     ListDashboardResponseBody,
     ListDashboardResponse,
-    ListDatasetsRequest,
-    ListDatasetsResponseBody,
-    ListDatasetsResponse,
     ListDomainsRequest,
     ListDomainsResponseBody,
     ListDomainsResponse,
@@ -963,6 +907,9 @@ __all__ = [
     ListElasticsearchIngestionsRequest,
     ListElasticsearchIngestionsResponseBody,
     ListElasticsearchIngestionsResponse,
+    ListGCSIngestionsRequest,
+    ListGCSIngestionsResponseBody,
+    ListGCSIngestionsResponse,
     ListIngestProcessorsRequest,
     ListIngestProcessorsResponseBody,
     ListIngestProcessorsResponse,
@@ -987,9 +934,6 @@ __all__ = [
     ListMaxComputeExportsRequest,
     ListMaxComputeExportsResponseBody,
     ListMaxComputeExportsResponse,
-    ListMemoryStoresRequest,
-    ListMemoryStoresResponseBody,
-    ListMemoryStoresResponse,
     ListMetricStoresRequest,
     ListMetricStoresResponseBody,
     ListMetricStoresResponse,
@@ -1033,6 +977,8 @@ __all__ = [
     PutConsumeProcessorResponse,
     PutIngestProcessorRequest,
     PutIngestProcessorResponse,
+    PutLogStoreConfigRequest,
+    PutLogStoreConfigResponse,
     PutLogsHeaders,
     PutLogsRequest,
     PutLogsResponse,
@@ -1046,14 +992,12 @@ __all__ = [
     RefreshTokenResponseBody,
     RefreshTokenResponse,
     RemoveConfigFromMachineGroupResponse,
-    SearchMemoriesRequest,
-    SearchMemoriesResponseBody,
-    SearchMemoriesResponse,
     SplitShardRequest,
     SplitShardResponse,
     StartAzureBlobIngestionResponse,
     StartETLResponse,
     StartElasticsearchIngestionResponse,
+    StartGCSIngestionResponse,
     StartMaxComputeExportResponse,
     StartOSSExportResponse,
     StartOSSHDFSExportResponse,
@@ -1061,6 +1005,7 @@ __all__ = [
     StopAzureBlobIngestionResponse,
     StopETLResponse,
     StopElasticsearchIngestionResponse,
+    StopGCSIngestionResponse,
     StopMaxComputeExportResponse,
     StopOSSExportResponse,
     StopOSSHDFSExportResponse,
@@ -1089,12 +1034,12 @@ __all__ = [
     UpdateConsumerGroupResponse,
     UpdateDashboardRequest,
     UpdateDashboardResponse,
-    UpdateDatasetRequest,
-    UpdateDatasetResponse,
     UpdateETLRequest,
     UpdateETLResponse,
     UpdateElasticsearchIngestionRequest,
     UpdateElasticsearchIngestionResponse,
+    UpdateGCSIngestionRequest,
+    UpdateGCSIngestionResponse,
     UpdateIndexRequest,
     UpdateIndexResponse,
     UpdateLogStoreRequest,
@@ -1117,10 +1062,6 @@ __all__ = [
     UpdateMaterializedViewResponse,
     UpdateMaxComputeExportRequest,
     UpdateMaxComputeExportResponse,
-    UpdateMemoryRequest,
-    UpdateMemoryResponse,
-    UpdateMemoryStoreRequest,
-    UpdateMemoryStoreResponse,
     UpdateMetricStoreRequest,
     UpdateMetricStoreResponse,
     UpdateMetricStoreMeteringModeRequest,
@@ -1159,14 +1100,11 @@ __all__ = [
     IndexLine,
     LoggingLoggingDetails,
     MachineGroupGroupAttribute,
-    AddMemoriesRequestMessages,
-    AddMemoriesResponseBodyResults,
     CreateDownloadJobRequestConfigurationSink,
     CreateDownloadJobRequestConfiguration,
     CreateLoggingRequestLoggingDetails,
     CreateMachineGroupRequestGroupAttribute,
     DescribeRegionsResponseBodyRegions,
-    ExecuteQueryResponseBodyMeta,
     GetCheckPointResponseBody,
     GetCollectionPolicyResponseBodyCollectionPolicyCentralizeConfig,
     GetCollectionPolicyResponseBodyCollectionPolicyDataConfig,
@@ -1180,10 +1118,6 @@ __all__ = [
     GetIndexResponseBodyLine,
     GetLogsV2ResponseBodyMetaPhraseQueryInfo,
     GetLogsV2ResponseBodyMeta,
-    GetMemoriesResponseBodyRelations,
-    GetMemoriesResponseBodyResults,
-    GetMemoryHistoryResponseBodyInput,
-    GetMemoryHistoryResponseBody,
     GetSqlInstanceResponseBody,
     GetStoreViewIndexResponseBodyIndexes,
     ListAgentInstanceConfigsResponseBodyConfigs,
@@ -1198,16 +1132,12 @@ __all__ = [
     ListCollectionPoliciesResponseBodyStatistics,
     ListDashboardRequestTags,
     ListDashboardResponseBodyDashboardItems,
-    ListDatasetsResponseBodyDatasets,
     ListDownloadJobsResponseBodyResultsConfigurationSink,
     ListDownloadJobsResponseBodyResultsConfiguration,
     ListDownloadJobsResponseBodyResultsExecutionDetails,
     ListDownloadJobsResponseBodyResults,
-    ListMemoryStoresResponseBodyMemoryStores,
     ListTagResourcesRequestTags,
     ListTagResourcesResponseBodyTagResources,
-    SearchMemoriesResponseBodyRelations,
-    SearchMemoriesResponseBodyResults,
     TagResourcesRequestTags,
     UpdateLogStoreEncryptionRequestUserCmkInfo,
     UpdateLoggingRequestLoggingDetails,

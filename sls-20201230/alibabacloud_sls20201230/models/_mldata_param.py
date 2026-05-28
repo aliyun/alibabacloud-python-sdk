@@ -21,15 +21,25 @@ class MLDataParam(DaraModel):
         value: str = None,
         value_type: str = None,
     ):
+        # The unique identifier of the data.
         self.annotationdata_id = annotationdata_id
+        # The annotations of the data.
         self.annotations = annotations
+        # The configurations of the data.
         self.config = config
+        # The creation time.
         self.create_time = create_time
+        # The hash value of the data.
         self.data_hash = data_hash
+        # The ID of the associated dataset.
         self.dataset_id = dataset_id
+        # The last modification time.
         self.last_modify_time = last_modify_time
+        # The model preview results.
         self.predictions = predictions
+        # The data source.
         self.value = value
+        # The type of the data source.
         self.value_type = value_type
 
     def validate(self):

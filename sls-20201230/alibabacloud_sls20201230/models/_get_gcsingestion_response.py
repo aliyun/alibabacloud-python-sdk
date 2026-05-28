@@ -7,12 +7,12 @@ from typing import Dict
 from alibabacloud_sls20201230 import models as main_models
 from darabonba.model import DaraModel
 
-class ListMemoryStoresResponse(DaraModel):
+class GetGCSIngestionResponse(DaraModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
         status_code: int = None,
-        body: main_models.ListMemoryStoresResponseBody = None,
+        body: main_models.GCSIngestion = None,
     ):
         self.headers = headers
         self.status_code = status_code
@@ -47,7 +47,7 @@ class ListMemoryStoresResponse(DaraModel):
             self.status_code = m.get('statusCode')
 
         if m.get('body') is not None:
-            temp_model = main_models.ListMemoryStoresResponseBody()
+            temp_model = main_models.GCSIngestion()
             self.body = temp_model.from_map(m.get('body'))
 
         return self

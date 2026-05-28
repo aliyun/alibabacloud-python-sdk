@@ -16,13 +16,21 @@ class TemplateConfiguration(DaraModel):
         type: str = None,
         version: str = None,
     ):
+        # The annotations of the template.
         self.aonotations = aonotations
+        # The ID of the template.
+        # 
         # This parameter is required.
         self.id = id
+        # The language of the template.
         self.lang = lang
+        # The tokens that are carried by the template.
         self.tokens = tokens
+        # The type of the template.
+        # 
         # This parameter is required.
         self.type = type
+        # The version of the template.
         self.version = version
 
     def validate(self):

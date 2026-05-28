@@ -21,18 +21,33 @@ class Project(DaraModel):
         resource_group_id: str = None,
         status: str = None,
     ):
+        # The time at which the project was created.
         self.create_time = create_time
+        # The data redundancy type.
         self.data_redundancy_type = data_redundancy_type
+        # The description of the project.
+        # 
         # This parameter is required.
         self.description = description
+        # The time at which the project was last modified.
         self.last_modify_time = last_modify_time
+        # The ID of the Alibaba Cloud account that is used to create the project.
         self.owner = owner
+        # The name of the project. The name is included in the value of the Host header. The name must be unique in a region. You cannot change the name after the project is created.
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # project quota
         self.quota = quota
         self.recycle_bin_enabled = recycle_bin_enabled
+        # The region to which the project belongs.
         self.region = region
+        # The ID of the resource group to which the project belongs.
         self.resource_group_id = resource_group_id
+        # The status of the project. Valid values:
+        # 
+        # *   Normal
+        # *   Disable
         self.status = status
 
     def validate(self):

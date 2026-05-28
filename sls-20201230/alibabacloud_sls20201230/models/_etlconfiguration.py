@@ -21,20 +21,36 @@ class ETLConfiguration(DaraModel):
         sinks: List[main_models.ETLConfigurationSink] = None,
         to_time: int = None,
     ):
+        # The AccessKey ID used to grant the permissions to read data from the source logstore. This parameter is required. If you use a role to grant the required permissions, specify an empty string.
         self.access_key_id = access_key_id
+        # The AccessKey secret used to grant the permissions to read data from the source logstore. This parameter is required. If you use a role to grant the required permissions, specify an empty string.
         self.access_key_secret = access_key_secret
+        # The beginning of the time range for transformation. Specify a Unix timestamp that is accurate to the second. This parameter is required. If you want to transform data from the first log in the source logstore, enter 0.
+        # 
         # This parameter is required.
         self.from_time = from_time
+        # The type of the data transformation syntax.
         self.lang = lang
+        # The name of the source logstore.
+        # 
         # This parameter is required.
         self.logstore = logstore
+        # The advanced parameter settings.
         self.parameters = parameters
+        # The Alibaba Cloud Resource Name (ARN) of the role that is used to grant the permissions to read data from the source logstore.
+        # 
         # This parameter is required.
         self.role_arn = role_arn
+        # The transformation script.
+        # 
         # This parameter is required.
         self.script = script
+        # The storage destinations.
+        # 
         # This parameter is required.
         self.sinks = sinks
+        # The end of the time range for transformation. Specify a Unix timestamp that is accurate to the second. This parameter is required. If you want to transform data until the data transformation job is manually stopped, enter 0.
+        # 
         # This parameter is required.
         self.to_time = to_time
 

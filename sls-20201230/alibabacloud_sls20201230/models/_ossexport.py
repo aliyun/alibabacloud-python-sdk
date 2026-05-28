@@ -17,15 +17,25 @@ class OSSExport(DaraModel):
         schedule_id: str = None,
         status: str = None,
     ):
+        # The OSS export configuration.
         self.configuration = configuration
+        # The time when the OSS data shipping job was created.
         self.create_time = create_time
+        # The description of the OSS data shipping job.
         self.description = description
+        # The display name of the OSS data shipping job.
+        # 
         # This parameter is required.
         self.display_name = display_name
+        # The time when the OSS data shipping job was last modified.
         self.last_modified_time = last_modified_time
+        # The name of the OSS data shipping job.
+        # 
         # This parameter is required.
         self.name = name
+        # The ID of the OSS data shipping job.
         self.schedule_id = schedule_id
+        # The status of the OSS data shipping job.
         self.status = status
 
     def validate(self):

@@ -20,6 +20,7 @@ class ListProjectRequest(DaraModel):
         self.offset = offset
         # The name of the project.
         self.project_name = project_name
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # The number of entries per page. Default value: 100. This operation can return up to 500 projects.
         self.size = size

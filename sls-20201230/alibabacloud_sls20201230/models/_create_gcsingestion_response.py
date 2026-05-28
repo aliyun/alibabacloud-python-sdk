@@ -2,18 +2,20 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import Dict
+from typing import Dict, Any
 
 from darabonba.model import DaraModel
 
-class CreateDatasetResponse(DaraModel):
+class CreateGCSIngestionResponse(DaraModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
         status_code: int = None,
+        body: Any = None,
     ):
         self.headers = headers
         self.status_code = status_code
+        self.body = body
 
     def validate(self):
         pass
@@ -29,6 +31,9 @@ class CreateDatasetResponse(DaraModel):
         if self.status_code is not None:
             result['statusCode'] = self.status_code
 
+        if self.body is not None:
+            result['body'] = self.body
+
         return result
 
     def from_map(self, m: dict = None):
@@ -38,6 +43,9 @@ class CreateDatasetResponse(DaraModel):
 
         if m.get('statusCode') is not None:
             self.status_code = m.get('statusCode')
+
+        if m.get('body') is not None:
+            self.body = m.get('body')
 
         return self
 

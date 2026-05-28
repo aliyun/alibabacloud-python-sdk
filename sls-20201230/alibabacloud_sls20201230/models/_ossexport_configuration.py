@@ -14,12 +14,19 @@ class OSSExportConfiguration(DaraModel):
         logstore: str = None,
         role_arn: str = None,
         sink: main_models.OSSExportConfigurationSink = None,
+        source_secure_transport: bool = None,
         to_time: int = None,
     ):
+        # The beginning of the time range to ship data. The value 1 specifies that the data shipping job ships data from the first log in the Logstore.
         self.from_time = from_time
+        # The name of the Logstore.
         self.logstore = logstore
+        # The Alibaba Cloud Resource Name (ARN) of the Resource Access Management (RAM) role that is used to read data from Simple Log Service.
         self.role_arn = role_arn
+        # The configurations of the OSS data shipping job.
         self.sink = sink
+        self.source_secure_transport = source_secure_transport
+        # The end of the time range to ship data. The value 0 specifies that the data shipping job continuously ships data until the job is manually stopped.
         self.to_time = to_time
 
     def validate(self):
@@ -43,6 +50,9 @@ class OSSExportConfiguration(DaraModel):
         if self.sink is not None:
             result['sink'] = self.sink.to_map()
 
+        if self.source_secure_transport is not None:
+            result['sourceSecureTransport'] = self.source_secure_transport
+
         if self.to_time is not None:
             result['toTime'] = self.to_time
 
@@ -62,6 +72,9 @@ class OSSExportConfiguration(DaraModel):
         if m.get('sink') is not None:
             temp_model = main_models.OSSExportConfigurationSink()
             self.sink = temp_model.from_map(m.get('sink'))
+
+        if m.get('sourceSecureTransport') is not None:
+            self.source_secure_transport = m.get('sourceSecureTransport')
 
         if m.get('toTime') is not None:
             self.to_time = m.get('toTime')
@@ -87,25 +100,50 @@ class OSSExportConfigurationSink(DaraModel):
         suffix: str = None,
         time_zone: str = None,
     ):
+        # The OSS bucket.
+        # 
         # This parameter is required.
         self.bucket = bucket
+        # The interval between two data shipping operations. Valid values: 300 to 900. Unit: seconds.
         self.buffer_interval = buffer_interval
+        # The size of the OSS object to which data is shipped. Valid values: 5 to 256. Unit: MB.
         self.buffer_size = buffer_size
+        # The compression type. Valid values: snappy, gizp, zstd, and none.
         self.compression_type = compression_type
+        # The details of the OSS object. Note: The value of this parameter is in the JSON format and varies based on the value of contentType.
         self.content_detail = content_detail
+        # The storage format of the OSS object. Valid values: json, parquet, csv, and orc.
         self.content_type = content_type
+        # The latency of data shipping.
+        # 
+        # > 
+        # 
+        # *   This parameter is deprecated.
         self.delay_sec = delay_sec
+        # The latency of data shipping. The value of this parameter cannot exceed the data retention period of the source Logstore.
         self.delay_seconds = delay_seconds
+        # *   The endpoint that is used to access OSS. You can specify only an internal OSS endpoint for the region where the Simple Log Service project resides. The value is in the `http://+OSS endpoint` format. For more information, see [OSS regions and endpoints](https://help.aliyun.com/document_detail/31837.html).
+        # *   The endpoint that is used to access OSS-HDFS. You can specify only an internal OSS-HDFS endpoint for the region where the Simple Log Service project resides.
+        # 
         # This parameter is required.
         self.endpoint = endpoint
+        # The partition format. For more information, see [Partition formats](https://help.aliyun.com/document_detail/371934.html).
+        # 
         # This parameter is required.
         self.path_format = path_format
+        # The partition format type.
+        # 
         # This parameter is required.
         self.path_format_type = path_format_type
+        # The prefix of the OSS object.
         self.prefix = prefix
+        # The ARN of the RAM role that is used to write data to OSS.
+        # 
         # This parameter is required.
         self.role_arn = role_arn
+        # The suffix of the OSS object.
         self.suffix = suffix
+        # The time zone. For more information, see [Time zones](https://help.aliyun.com/document_detail/375323.html).
         self.time_zone = time_zone
 
     def validate(self):

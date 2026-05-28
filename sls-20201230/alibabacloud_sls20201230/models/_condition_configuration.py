@@ -10,7 +10,9 @@ class ConditionConfiguration(DaraModel):
         condition: str = None,
         count_condition: str = None,
     ):
+        # The evaluate expression.
         self.condition = condition
+        # The number of entries that match the evaluate expression to return.
         self.count_condition = count_condition
 
     def validate(self):

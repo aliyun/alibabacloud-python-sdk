@@ -6,9 +6,11 @@ from typing import Dict, Any
 
 from darabonba.model import DaraModel
 
-class OSSIngestionConfigurationSource(DaraModel):
+class GCSIngestionConfigurationSource(DaraModel):
     def __init__(
         self,
+        access_key_id: str = None,
+        access_key_secret: str = None,
         advanced_parameters: Dict[str, Any] = None,
         bucket: str = None,
         compression_codec: str = None,
@@ -21,66 +23,40 @@ class OSSIngestionConfigurationSource(DaraModel):
         prefix: str = None,
         processor_id: str = None,
         restore_object_enabled: bool = None,
-        role_arn: str = None,
         start_time: int = None,
         tag_pack_id: bool = None,
         time_field: str = None,
         time_format: str = None,
         time_pattern: str = None,
         time_zone: str = None,
-        use_meta_index: bool = None,
     ):
+        # This parameter is required.
+        self.access_key_id = access_key_id
+        # This parameter is required.
+        self.access_key_secret = access_key_secret
         self.advanced_parameters = advanced_parameters
-        # The OSS bucket.
-        # 
         # This parameter is required.
         self.bucket = bucket
-        # The compression type.
-        # 
         # This parameter is required.
         self.compression_codec = compression_codec
-        # The encoding type.
-        # 
         # This parameter is required.
         self.encoding = encoding
-        # The point in time before which modified OSS objects are imported.
         self.end_time = end_time
-        # The OSS endpoint.
-        # 
-        # This parameter is required.
         self.endpoint = endpoint
-        # The format.
-        # 
         # This parameter is required.
         self.format = format
-        # The interval at which the system checks for new files.
-        # 
         # This parameter is required.
         self.interval = interval
-        # The regular expression that is used to filter OSS objects by directory.
         self.pattern = pattern
-        # The directory of the OSS objects.
         self.prefix = prefix
         self.processor_id = processor_id
-        # Specifies whether to import OSS objects of the Archive class.
         self.restore_object_enabled = restore_object_enabled
-        # The Alibaba Cloud Resource Name (ARN) of the role.
-        self.role_arn = role_arn
-        # The point in time after which modified OSS objects are imported.
         self.start_time = start_time
         self.tag_pack_id = tag_pack_id
-        # The time field to extract.
         self.time_field = time_field
-        # The format of the time field.
         self.time_format = time_format
-        # The regular expression that is used to extract time.
         self.time_pattern = time_pattern
-        # The time zone of the time field.
         self.time_zone = time_zone
-        # Specifies whether to enable OSS metadata indexing.
-        # 
-        # This parameter is required.
-        self.use_meta_index = use_meta_index
 
     def validate(self):
         pass
@@ -90,6 +66,12 @@ class OSSIngestionConfigurationSource(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.access_key_id is not None:
+            result['accessKeyId'] = self.access_key_id
+
+        if self.access_key_secret is not None:
+            result['accessKeySecret'] = self.access_key_secret
+
         if self.advanced_parameters is not None:
             result['advancedParameters'] = self.advanced_parameters
 
@@ -126,9 +108,6 @@ class OSSIngestionConfigurationSource(DaraModel):
         if self.restore_object_enabled is not None:
             result['restoreObjectEnabled'] = self.restore_object_enabled
 
-        if self.role_arn is not None:
-            result['roleARN'] = self.role_arn
-
         if self.start_time is not None:
             result['startTime'] = self.start_time
 
@@ -147,13 +126,16 @@ class OSSIngestionConfigurationSource(DaraModel):
         if self.time_zone is not None:
             result['timeZone'] = self.time_zone
 
-        if self.use_meta_index is not None:
-            result['useMetaIndex'] = self.use_meta_index
-
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('accessKeyId') is not None:
+            self.access_key_id = m.get('accessKeyId')
+
+        if m.get('accessKeySecret') is not None:
+            self.access_key_secret = m.get('accessKeySecret')
+
         if m.get('advancedParameters') is not None:
             self.advanced_parameters = m.get('advancedParameters')
 
@@ -190,9 +172,6 @@ class OSSIngestionConfigurationSource(DaraModel):
         if m.get('restoreObjectEnabled') is not None:
             self.restore_object_enabled = m.get('restoreObjectEnabled')
 
-        if m.get('roleARN') is not None:
-            self.role_arn = m.get('roleARN')
-
         if m.get('startTime') is not None:
             self.start_time = m.get('startTime')
 
@@ -210,9 +189,6 @@ class OSSIngestionConfigurationSource(DaraModel):
 
         if m.get('timeZone') is not None:
             self.time_zone = m.get('timeZone')
-
-        if m.get('useMetaIndex') is not None:
-            self.use_meta_index = m.get('useMetaIndex')
 
         return self
 

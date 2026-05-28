@@ -11,6 +11,7 @@ class AzureBlobIngestionConfigurationSource(DaraModel):
         self,
         account_key: str = None,
         account_name: str = None,
+        advanced_parameters: Dict[str, Any] = None,
         compression_codec: str = None,
         container_name: str = None,
         encoding: str = None,
@@ -32,6 +33,7 @@ class AzureBlobIngestionConfigurationSource(DaraModel):
         self.account_key = account_key
         # This parameter is required.
         self.account_name = account_name
+        self.advanced_parameters = advanced_parameters
         # This parameter is required.
         self.compression_codec = compression_codec
         # This parameter is required.
@@ -67,6 +69,9 @@ class AzureBlobIngestionConfigurationSource(DaraModel):
 
         if self.account_name is not None:
             result['accountName'] = self.account_name
+
+        if self.advanced_parameters is not None:
+            result['advancedParameters'] = self.advanced_parameters
 
         if self.compression_codec is not None:
             result['compressionCodec'] = self.compression_codec
@@ -125,6 +130,9 @@ class AzureBlobIngestionConfigurationSource(DaraModel):
 
         if m.get('accountName') is not None:
             self.account_name = m.get('accountName')
+
+        if m.get('advancedParameters') is not None:
+            self.advanced_parameters = m.get('advancedParameters')
 
         if m.get('compressionCodec') is not None:
             self.compression_codec = m.get('compressionCodec')

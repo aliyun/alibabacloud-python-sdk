@@ -2,17 +2,16 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
 from darabonba.model import DaraModel
 
-class ConsumeProcessorConfiguration(DaraModel):
+class GetLogStoreConfigResponseBody(DaraModel):
     def __init__(
         self,
-        spl: str = None,
+        client_ip_headers: List[str] = None,
     ):
-        # SPL statement
-        # 
-        # This parameter is required.
-        self.spl = spl
+        self.client_ip_headers = client_ip_headers
 
     def validate(self):
         pass
@@ -22,15 +21,15 @@ class ConsumeProcessorConfiguration(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.spl is not None:
-            result['spl'] = self.spl
+        if self.client_ip_headers is not None:
+            result['clientIpHeaders'] = self.client_ip_headers
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('spl') is not None:
-            self.spl = m.get('spl')
+        if m.get('clientIpHeaders') is not None:
+            self.client_ip_headers = m.get('clientIpHeaders')
 
         return self
 

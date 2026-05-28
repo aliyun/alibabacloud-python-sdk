@@ -2,21 +2,25 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from alibabacloud_sls20201230 import models as main_models
 from darabonba.model import DaraModel
 
-class ListS3IngestionsRequest(DaraModel):
+class GCSIngestionConfiguration(DaraModel):
     def __init__(
         self,
         logstore: str = None,
-        offset: int = None,
-        size: int = None,
+        source: main_models.GCSIngestionConfigurationSource = None,
     ):
+        # logstore
+        # 
+        # This parameter is required.
         self.logstore = logstore
-        self.offset = offset
-        self.size = size
+        # This parameter is required.
+        self.source = source
 
     def validate(self):
-        pass
+        if self.source:
+            self.source.validate()
 
     def to_map(self):
         result = dict()
@@ -26,11 +30,8 @@ class ListS3IngestionsRequest(DaraModel):
         if self.logstore is not None:
             result['logstore'] = self.logstore
 
-        if self.offset is not None:
-            result['offset'] = self.offset
-
-        if self.size is not None:
-            result['size'] = self.size
+        if self.source is not None:
+            result['source'] = self.source.to_map()
 
         return result
 
@@ -39,11 +40,9 @@ class ListS3IngestionsRequest(DaraModel):
         if m.get('logstore') is not None:
             self.logstore = m.get('logstore')
 
-        if m.get('offset') is not None:
-            self.offset = m.get('offset')
-
-        if m.get('size') is not None:
-            self.size = m.get('size')
+        if m.get('source') is not None:
+            temp_model = main_models.GCSIngestionConfigurationSource()
+            self.source = temp_model.from_map(m.get('source'))
 
         return self
 

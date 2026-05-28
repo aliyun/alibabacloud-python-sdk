@@ -13,10 +13,15 @@ class SinkEventStoreConfiguration(DaraModel):
         project: str = None,
         role_arn: str = None,
     ):
+        # Specifies whether to send alerts.
         self.enabled = enabled
+        # endpoint
         self.endpoint = endpoint
+        # The name of the Eventstore.
         self.event_store = event_store
+        # The name of the project.
         self.project = project
+        # The Alibaba Cloud Resource Name (ARN) of the Resource Access Management (RAM) role.
         self.role_arn = role_arn
 
     def validate(self):

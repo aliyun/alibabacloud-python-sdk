@@ -9,6 +9,7 @@ class SinkCmsConfiguration(DaraModel):
         self,
         enabled: bool = None,
     ):
+        # Specifies whether to send alerts.
         self.enabled = enabled
 
     def validate(self):

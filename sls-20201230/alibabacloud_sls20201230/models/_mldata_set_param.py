@@ -17,14 +17,23 @@ class MLDataSetParam(DaraModel):
         name: str = None,
         setting_type: str = None,
     ):
+        # The creator.
         self.create_by = create_by
+        # The creation time.
         self.create_time = create_time
+        # The type of the data.
         self.data_type = data_type
+        # The unique identifier of the dataset.
         self.dataset_id = dataset_id
+        # The description of the dataset.
         self.description = description
+        # The ID of the tag system that corresponds to the dataset.
         self.label_id = label_id
+        # The last modification time.
         self.last_modify_time = last_modify_time
+        # The name of the dataset.
         self.name = name
+        # The configuration type of the tag table.
         self.setting_type = setting_type
 
     def validate(self):

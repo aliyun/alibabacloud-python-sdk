@@ -17,16 +17,35 @@ class ETL(DaraModel):
         schedule_id: str = None,
         status: str = None,
     ):
+        # The configurations of the data transformation job.
+        # 
         # This parameter is required.
         self.configuration = configuration
+        # The time when the data transformation job was created.
         self.create_time = create_time
+        # job description
         self.description = description
+        # job displayName
+        # 
         # This parameter is required.
         self.display_name = display_name
+        # The time when the data transformation job was last modified.
         self.last_modified_time = last_modified_time
+        # job name
+        # 
         # This parameter is required.
         self.name = name
+        # The ID of the scheduler.
         self.schedule_id = schedule_id
+        # The status of the data transformation job. Valid values:
+        # 
+        # 1.  RUNNING
+        # 2.  STOPPING
+        # 3.  STOPPED
+        # 4.  SUCCEEDED
+        # 5.  FAILED
+        # 6.  STARTING
+        # 7.  RESTARTING
         self.status = status
 
     def validate(self):

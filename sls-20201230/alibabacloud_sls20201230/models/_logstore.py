@@ -26,24 +26,58 @@ class Logstore(DaraModel):
         telemetry_type: str = None,
         ttl: int = None,
     ):
+        # Specifies whether to record public IP addresses. Default value: false. Valid values:
+        # 
+        # *   true
+        # *   false
         self.append_meta = append_meta
+        # Specifies whether to enable automatic sharding. Valid values:
+        # 
+        # *   true
+        # *   false
         self.auto_split = auto_split
+        # The time at which the Logstore was created. The value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.create_time = create_time
+        # Specifies whether to enable the web tracking feature. Default value: false. Valid values:
+        # 
+        # *   true
+        # *   false
         self.enable_tracking = enable_tracking
+        # The configuration of data encryption.
         self.encrypt_conf = encrypt_conf
+        # The retention period of data in the hot storage tier of the Logstore. Minimum value: 30. Unit: days.
         self.hot_ttl = hot_ttl
+        # The retention period of data in the Infrequent Access (IA) storage tier of the Logstore.
         self.infrequent_access_ttl = infrequent_access_ttl
+        # The time at which the Logstore was last modified. The value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.last_modify_time = last_modify_time
+        # The name of the Logstore.
+        # 
         # This parameter is required.
         self.logstore_name = logstore_name
+        # The maximum number of shards into which existing shards can be automatically split. Valid values: 1 to 64.
         self.max_split_shard = max_split_shard
+        # The type of the Logstore. Simple Log Service provides two types of Logstores: Standard Logstores and Query Logstores. Valid values:
+        # 
+        # *   **standard**: Standard Logstore. This type of Logstore supports the log analysis feature and is suitable for scenarios such as real-time monitoring and interactive analysis. You can also use this type of Logstore to build a comprehensive observability system.
+        # *   **query**: Query Logstore. This type of Logstore supports high-performance queries. The index traffic fee of a Query Logstore is approximately half that of a Standard Logstore. Query Logstores do not support SQL analysis. Query Logstores are suitable for scenarios in which the amount of data is large, the log retention period is long, or log analysis is not required. If logs are stored for weeks or months, the log retention period is considered long.
         self.mode = mode
+        # The ingest processor ID.
         self.processor_id = processor_id
+        # The type of the service to which the logs belong.
         self.product_type = product_type
+        # The number of shards.
+        # 
         # This parameter is required.
         self.shard_count = shard_count
         self.sharding_policy = sharding_policy
+        # The type of the data that you want to query. Valid values:
+        # 
+        # *   Metrics: metric data.
+        # *   None: non-metric data.
         self.telemetry_type = telemetry_type
+        # The log retention period. Unit: days. Valid values: 1 to 3650. If you set this parameter to 3650, logs are permanently stored.
+        # 
         # This parameter is required.
         self.ttl = ttl
 

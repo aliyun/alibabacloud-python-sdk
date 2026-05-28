@@ -4,23 +4,19 @@ from __future__ import annotations
 
 from typing import Dict
 
-from alibabacloud_sls20201230 import models as main_models
 from darabonba.model import DaraModel
 
-class GetMemoryResponse(DaraModel):
+class PutLogStoreConfigResponse(DaraModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
         status_code: int = None,
-        body: main_models.GetMemoryResponseBody = None,
     ):
         self.headers = headers
         self.status_code = status_code
-        self.body = body
 
     def validate(self):
-        if self.body:
-            self.body.validate()
+        pass
 
     def to_map(self):
         result = dict()
@@ -33,9 +29,6 @@ class GetMemoryResponse(DaraModel):
         if self.status_code is not None:
             result['statusCode'] = self.status_code
 
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-
         return result
 
     def from_map(self, m: dict = None):
@@ -45,10 +38,6 @@ class GetMemoryResponse(DaraModel):
 
         if m.get('statusCode') is not None:
             self.status_code = m.get('statusCode')
-
-        if m.get('body') is not None:
-            temp_model = main_models.GetMemoryResponseBody()
-            self.body = temp_model.from_map(m.get('body'))
 
         return self
 

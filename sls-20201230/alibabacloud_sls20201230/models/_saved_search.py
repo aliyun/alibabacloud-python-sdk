@@ -13,14 +13,23 @@ class SavedSearch(DaraModel):
         search_query: str = None,
         topic: str = None,
     ):
+        # The display name of the saved search.
+        # 
         # This parameter is required.
         self.display_name = display_name
+        # The name of the Logstore.
+        # 
         # This parameter is required.
         self.logstore = logstore
+        # The name of the saved search.
+        # 
         # This parameter is required.
         self.savedsearch_name = savedsearch_name
+        # The search statement or the analytic statement.
+        # 
         # This parameter is required.
         self.search_query = search_query
+        # The topic of the log. Default value: empty string ("").
         self.topic = topic
 
     def validate(self):

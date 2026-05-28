@@ -11,6 +11,7 @@ class S3IngestionConfiguration(DaraModel):
         logstore: str = None,
         source: main_models.S3IngestionConfigurationSource = None,
     ):
+        # logstore
         self.logstore = logstore
         self.source = source
 

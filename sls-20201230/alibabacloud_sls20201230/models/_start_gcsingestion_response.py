@@ -2,25 +2,23 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import Dict
+from typing import Dict, Any
 
-from alibabacloud_sls20201230 import models as main_models
 from darabonba.model import DaraModel
 
-class ListDatasetsResponse(DaraModel):
+class StartGCSIngestionResponse(DaraModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
         status_code: int = None,
-        body: main_models.ListDatasetsResponseBody = None,
+        body: Any = None,
     ):
         self.headers = headers
         self.status_code = status_code
         self.body = body
 
     def validate(self):
-        if self.body:
-            self.body.validate()
+        pass
 
     def to_map(self):
         result = dict()
@@ -34,7 +32,7 @@ class ListDatasetsResponse(DaraModel):
             result['statusCode'] = self.status_code
 
         if self.body is not None:
-            result['body'] = self.body.to_map()
+            result['body'] = self.body
 
         return result
 
@@ -47,8 +45,7 @@ class ListDatasetsResponse(DaraModel):
             self.status_code = m.get('statusCode')
 
         if m.get('body') is not None:
-            temp_model = main_models.ListDatasetsResponseBody()
-            self.body = temp_model.from_map(m.get('body'))
+            self.body = m.get('body')
 
         return self
 

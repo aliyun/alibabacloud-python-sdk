@@ -9,6 +9,7 @@ class SinkAlerthubConfiguration(DaraModel):
         self,
         enabled: bool = None,
     ):
+        # Specifies whether to send alerts.
         self.enabled = enabled
 
     def validate(self):

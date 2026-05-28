@@ -10,8 +10,12 @@ class LogContent(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The name of the custom key.
+        # 
         # This parameter is required.
         self.key = key
+        # The value of the custom key.
+        # 
         # This parameter is required.
         self.value = value
 

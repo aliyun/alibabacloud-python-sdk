@@ -4,14 +4,14 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class ListDatasetsRequest(DaraModel):
+class ListGCSIngestionsRequest(DaraModel):
     def __init__(
         self,
-        name: str = None,
+        logstore: str = None,
         offset: int = None,
         size: int = None,
     ):
-        self.name = name
+        self.logstore = logstore
         self.offset = offset
         self.size = size
 
@@ -23,8 +23,8 @@ class ListDatasetsRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.name is not None:
-            result['name'] = self.name
+        if self.logstore is not None:
+            result['logstore'] = self.logstore
 
         if self.offset is not None:
             result['offset'] = self.offset
@@ -36,8 +36,8 @@ class ListDatasetsRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('name') is not None:
-            self.name = m.get('name')
+        if m.get('logstore') is not None:
+            self.logstore = m.get('logstore')
 
         if m.get('offset') is not None:
             self.offset = m.get('offset')

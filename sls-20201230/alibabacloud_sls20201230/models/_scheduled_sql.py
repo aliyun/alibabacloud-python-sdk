@@ -18,18 +18,31 @@ class ScheduledSQL(DaraModel):
         schedule_id: str = None,
         status: str = None,
     ):
+        # The configuration of the Scheduled SQL job.
+        # 
         # This parameter is required.
         self.configuration = configuration
+        # The time when the Scheduled SQL job was created.
         self.create_time = create_time
+        # The description of the scheduled SQL job.
         self.description = description
+        # The display name of the scheduled SQL job.
+        # 
         # This parameter is required.
         self.display_name = display_name
+        # The time when the Scheduled SQL job was last modified.
         self.last_modified_time = last_modified_time
+        # The name of the scheduled SQL job.
+        # 
         # This parameter is required.
         self.name = name
+        # The scheduling settings of the Scheduled SQL job.
+        # 
         # This parameter is required.
         self.schedule = schedule
+        # The ID of the scheduler.
         self.schedule_id = schedule_id
+        # The status of the Scheduled SQL job.
         self.status = status
 
     def validate(self):

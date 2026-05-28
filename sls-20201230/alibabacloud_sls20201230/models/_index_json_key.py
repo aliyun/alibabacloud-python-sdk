@@ -16,11 +16,18 @@ class IndexJsonKey(DaraModel):
         token: List[str] = None,
         type: str = None,
     ):
+        # Alias.
         self.alias = alias
+        # Case sensitivity.
         self.case_sensitive = case_sensitive
+        # Whether the field contains Chinese characters.
         self.chn = chn
+        # Whether to enable statistics.
         self.doc_value = doc_value
+        # Delimiter.
         self.token = token
+        # The data type of the field.
+        # 
         # This parameter is required.
         self.type = type
 

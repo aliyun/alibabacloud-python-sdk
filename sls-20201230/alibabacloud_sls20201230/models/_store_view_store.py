@@ -11,9 +11,14 @@ class StoreViewStore(DaraModel):
         query: str = None,
         store_name: str = None,
     ):
+        # The name of the project.
+        # 
         # This parameter is required.
         self.project = project
+        # The query statement that contains filter conditions.
         self.query = query
+        # The name of the Logstore or Metricstore.
+        # 
         # This parameter is required.
         self.store_name = store_name
 

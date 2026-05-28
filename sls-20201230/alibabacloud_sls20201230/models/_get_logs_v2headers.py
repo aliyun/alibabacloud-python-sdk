@@ -17,8 +17,6 @@ class GetLogsV2Headers(DaraModel):
         # 
         # *   For Java, Python, and Go, only the lz4 and gzip algorithms are supported for decompression.
         # *   For PHP, JavaScript, and C#, only the gzip algorithm is supported for decompression.
-        # 
-        # This parameter is required.
         self.accept_encoding = accept_encoding
 
     def validate(self):

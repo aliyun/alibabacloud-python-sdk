@@ -10,7 +10,9 @@ class JoinConfiguration(DaraModel):
         condition: str = None,
         type: str = None,
     ):
+        # The condition of the set operation.
         self.condition = condition
+        # The type of the set operation.
         self.type = type
 
     def validate(self):

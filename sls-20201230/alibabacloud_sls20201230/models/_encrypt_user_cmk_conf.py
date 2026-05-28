@@ -11,10 +11,16 @@ class EncryptUserCmkConf(DaraModel):
         cmk_key_id: str = None,
         region_id: str = None,
     ):
+        # The Alibaba Cloud Resource Name (ARN) of the Resource Access Management (RAM) role.
+        # 
         # This parameter is required.
         self.arn = arn
+        # The ID of the customer master key (CMK) if you use the bring-your-own-key (BYOK) key.
+        # 
         # This parameter is required.
         self.cmk_key_id = cmk_key_id
+        # The ID of the region where the CMK resides.
+        # 
         # This parameter is required.
         self.region_id = region_id
 

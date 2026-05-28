@@ -1,3 +1,16 @@
+2026-05-28 Version: 5.13.0
+- Support API CreateGCSIngestion.
+- Support API GetGCSIngestion.
+- Support API GetLogStoreConfig.
+- Support API ListGCSIngestions.
+- Support API PutLogStoreConfig.
+- Support API StartGCSIngestion.
+- Support API StopGCSIngestion.
+- Support API UpdateGCSIngestion.
+- Update API GetLogsV2: add request parameters body.isAccurate.
+- Update API GetMetricStore: add response parameters Body.processorId.
+
+
 2026-02-05 Version: 5.12.1
 - Generated python 2020-12-30 for Sls.
 

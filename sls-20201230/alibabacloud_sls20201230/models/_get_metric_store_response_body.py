@@ -18,6 +18,7 @@ class GetMetricStoreResponseBody(DaraModel):
         metric_type: str = None,
         mode: str = None,
         name: str = None,
+        processor_id: str = None,
         shard_count: int = None,
         sharding_policy: main_models.ShardingPolicy = None,
         ttl: int = None,
@@ -39,6 +40,7 @@ class GetMetricStoreResponseBody(DaraModel):
         self.mode = mode
         # The name of the Metricstore.
         self.name = name
+        self.processor_id = processor_id
         # The number of shards.
         self.shard_count = shard_count
         self.sharding_policy = sharding_policy
@@ -84,6 +86,9 @@ class GetMetricStoreResponseBody(DaraModel):
         if self.name is not None:
             result['name'] = self.name
 
+        if self.processor_id is not None:
+            result['processorId'] = self.processor_id
+
         if self.shard_count is not None:
             result['shardCount'] = self.shard_count
 
@@ -126,6 +131,9 @@ class GetMetricStoreResponseBody(DaraModel):
 
         if m.get('name') is not None:
             self.name = m.get('name')
+
+        if m.get('processorId') is not None:
+            self.processor_id = m.get('processorId')
 
         if m.get('shardCount') is not None:
             self.shard_count = m.get('shardCount')

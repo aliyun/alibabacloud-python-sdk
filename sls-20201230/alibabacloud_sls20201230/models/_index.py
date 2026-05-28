@@ -18,11 +18,20 @@ class Index(DaraModel):
         max_text_len: int = None,
         scan_index: bool = None,
     ):
+        # The configurations of field indexes. A field index is a key-value pair in which the key specifies the name of the field and the value specifies the index configuration of the field. You must specify at least one of the following parameters: line and keys.
         self.keys = keys
+        # The configurations of full-text indexes. You must specify at least one of the following parameters: line and keys.
         self.line = line
+        # Specifies whether to enable the LogReduce feature. After you enable the LogReduce feature, either the whitelist or blacklist takes effect. Valid values:
+        # 
+        # *   true
+        # *   false (default)
         self.log_reduce = log_reduce
+        # The blacklist of fields that are used to cluster logs. This parameter takes effect only when the LogReduce feature is enabled.
         self.log_reduce_black_list = log_reduce_black_list
+        # The whitelist of fields that are used to cluster logs. This parameter takes effect only when the LogReduce feature is enabled.
         self.log_reduce_white_list = log_reduce_white_list
+        # The maximum length of a field value that can be retained. Default value: 2048. Unit: bytes. The default value is equal to 2 KB. You can change the value of this parameter. Valid values: 64 to 16384.
         self.max_text_len = max_text_len
         self.scan_index = scan_index
 
@@ -102,10 +111,22 @@ class IndexLine(DaraModel):
         include_keys: List[str] = None,
         token: List[str] = None,
     ):
+        # Specifies whether to enable case sensitivity. Valid values:
+        # 
+        # *   true
+        # *   false (default)
         self.case_sensitive = case_sensitive
+        # Specifies whether the field contains Chinese characters. Valid values:
+        # 
+        # *   true
+        # *   false (default)
         self.chn = chn
+        # The excluded fields. You cannot specify both include_keys and exclude_keys.
         self.exclude_keys = exclude_keys
+        # The included fields. You cannot specify both include_keys and exclude_keys.
         self.include_keys = include_keys
+        # The delimiters. You can specify a delimiter to delimit the content of a field value.
+        # 
         # This parameter is required.
         self.token = token
 

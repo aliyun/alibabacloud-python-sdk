@@ -14,24 +14,35 @@ class OSSIngestion(DaraModel):
         display_name: str = None,
         last_modified_time: int = None,
         name: str = None,
-        processor_id: str = None,
         schedule: main_models.Schedule = None,
         schedule_id: str = None,
         status: str = None,
     ):
+        # The configurations of the OSS data import job.
+        # 
         # This parameter is required.
         self.configuration = configuration
+        # The time when the data import job was created.
         self.create_time = create_time
+        # The description of the data import job.
         self.description = description
+        # The display name of the data import job.
+        # 
         # This parameter is required.
         self.display_name = display_name
+        # The time when the data import job was last modified.
         self.last_modified_time = last_modified_time
+        # The name of the data import job.
+        # 
         # This parameter is required.
         self.name = name
-        self.processor_id = processor_id
+        # The scheduling settings.
+        # 
         # This parameter is required.
         self.schedule = schedule
+        # The ID of the data import job.
         self.schedule_id = schedule_id
+        # The status of the data import job.
         self.status = status
 
     def validate(self):
@@ -62,9 +73,6 @@ class OSSIngestion(DaraModel):
 
         if self.name is not None:
             result['name'] = self.name
-
-        if self.processor_id is not None:
-            result['processorId'] = self.processor_id
 
         if self.schedule is not None:
             result['schedule'] = self.schedule.to_map()
@@ -97,9 +105,6 @@ class OSSIngestion(DaraModel):
 
         if m.get('name') is not None:
             self.name = m.get('name')
-
-        if m.get('processorId') is not None:
-            self.processor_id = m.get('processorId')
 
         if m.get('schedule') is not None:
             temp_model = main_models.Schedule()

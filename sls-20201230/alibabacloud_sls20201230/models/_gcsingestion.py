@@ -5,48 +5,36 @@ from __future__ import annotations
 from alibabacloud_sls20201230 import models as main_models
 from darabonba.model import DaraModel
 
-class Alert(DaraModel):
+class GCSIngestion(DaraModel):
     def __init__(
         self,
-        configuration: main_models.AlertConfiguration = None,
+        configuration: main_models.GCSIngestionConfiguration = None,
         create_time: int = None,
         description: str = None,
         display_name: str = None,
         last_modified_time: int = None,
         name: str = None,
-        schedule: main_models.Schedule = None,
+        schedule_id: str = None,
         status: str = None,
     ):
-        # The configurations of the alert rule.
-        # 
         # This parameter is required.
         self.configuration = configuration
-        # The time when the alert rule was created.
         self.create_time = create_time
-        # The description of the alert rule.
+        # job description
         self.description = description
-        # The alert rule name.
+        # job displayName
         # 
         # This parameter is required.
         self.display_name = display_name
-        # The time when the alert rule was last modified.
         self.last_modified_time = last_modified_time
-        # The ID of the alert rule.
-        # 
         # This parameter is required.
         self.name = name
-        # The scheduling settings.
-        # 
-        # This parameter is required.
-        self.schedule = schedule
-        # The alert status.
+        self.schedule_id = schedule_id
         self.status = status
 
     def validate(self):
         if self.configuration:
             self.configuration.validate()
-        if self.schedule:
-            self.schedule.validate()
 
     def to_map(self):
         result = dict()
@@ -71,8 +59,8 @@ class Alert(DaraModel):
         if self.name is not None:
             result['name'] = self.name
 
-        if self.schedule is not None:
-            result['schedule'] = self.schedule.to_map()
+        if self.schedule_id is not None:
+            result['scheduleId'] = self.schedule_id
 
         if self.status is not None:
             result['status'] = self.status
@@ -82,7 +70,7 @@ class Alert(DaraModel):
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('configuration') is not None:
-            temp_model = main_models.AlertConfiguration()
+            temp_model = main_models.GCSIngestionConfiguration()
             self.configuration = temp_model.from_map(m.get('configuration'))
 
         if m.get('createTime') is not None:
@@ -100,9 +88,8 @@ class Alert(DaraModel):
         if m.get('name') is not None:
             self.name = m.get('name')
 
-        if m.get('schedule') is not None:
-            temp_model = main_models.Schedule()
-            self.schedule = temp_model.from_map(m.get('schedule'))
+        if m.get('scheduleId') is not None:
+            self.schedule_id = m.get('scheduleId')
 
         if m.get('status') is not None:
             self.status = m.get('status')

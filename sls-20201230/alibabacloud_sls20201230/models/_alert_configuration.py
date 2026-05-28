@@ -33,34 +33,64 @@ class AlertConfiguration(DaraModel):
         type: str = None,
         version: str = None,
     ):
+        # The annotations of the alert rule.
         self.annotations = annotations
+        # Specifies whether to allow the system to automatically add annotations to the alert rule.
+        # 
         # This parameter is required.
         self.auto_annotation = auto_annotation
+        # The alert trigger conditions.
         self.condition_configuration = condition_configuration
+        # The ID of the dashboard associated with the alert rule.
         self.dashboard = dashboard
+        # The configurations of group evaluation.
+        # 
         # This parameter is required.
         self.group_configuration = group_configuration
+        # The set operation configurations for the query statements of the alert rule.
         self.join_configurations = join_configurations
+        # The labels of the alert rule.
         self.labels = labels
+        # The time when a paused alert rule is resumed.
         self.mute_until = mute_until
+        # Specifies whether to enable the no-data alert feature.
+        # 
         # This parameter is required.
         self.no_data_fire = no_data_fire
+        # The severity of the no-data alert.
         self.no_data_severity = no_data_severity
+        # The notification configurations of Simple Log Service.
         self.policy_configuration = policy_configuration
+        # The query statements.
+        # 
         # This parameter is required.
         self.query_list = query_list
+        # Specifies whether to send a recovery notification after an alert is cleared.
+        # 
         # This parameter is required.
         self.send_resolved = send_resolved
+        # The alert severity configurations.
+        # 
         # This parameter is required.
         self.severity_configurations = severity_configurations
+        # The configurations that allow alerts to be sent to the notification system of Simple Log Service.
         self.sink_alerthub = sink_alerthub
+        # The configurations that allow alerts to be sent to CloudMonitor Event Center.
         self.sink_cms = sink_cms
+        # The configurations that allow alerts to be sent to an Eventstore.
         self.sink_event_store = sink_event_store
+        # The custom tags of the alert rule.
         self.tags = tags
+        # The alert template configurations.
         self.template_configuration = template_configuration
+        # The maximum number of consecutive times that the trigger condition is met.
+        # 
         # This parameter is required.
         self.threshold = threshold
+        # The type of the alert rule.
         self.type = type
+        # The version.
+        # 
         # This parameter is required.
         self.version = version
 

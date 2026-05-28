@@ -12,7 +12,9 @@ class MLServiceAnalysisParam(DaraModel):
         input: List[Dict[str, str]] = None,
         parameter: Dict[str, str] = None,
     ):
+        # The input data.
         self.input = input
+        # The parameter.
         self.parameter = parameter
 
     def validate(self):

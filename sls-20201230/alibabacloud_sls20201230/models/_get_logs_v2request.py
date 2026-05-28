@@ -10,6 +10,7 @@ class GetLogsV2Request(DaraModel):
         forward: bool = None,
         from_: int = None,
         highlight: bool = None,
+        is_accurate: bool = None,
         line: int = None,
         offset: int = None,
         power_sql: bool = None,
@@ -29,6 +30,7 @@ class GetLogsV2Request(DaraModel):
         self.from_ = from_
         # Specifies whether to highlight the returned result.
         self.highlight = highlight
+        self.is_accurate = is_accurate
         # The maximum number of logs to return for the request. This parameter takes effect only when the query parameter is set to a search statement. Valid values: 0 to 100. Default value: 100.
         self.line = line
         # The line from which the query starts. This parameter takes effect only when the query parameter is set to a search statement. Default value: 0.
@@ -73,6 +75,9 @@ class GetLogsV2Request(DaraModel):
         if self.highlight is not None:
             result['highlight'] = self.highlight
 
+        if self.is_accurate is not None:
+            result['isAccurate'] = self.is_accurate
+
         if self.line is not None:
             result['line'] = self.line
 
@@ -109,6 +114,9 @@ class GetLogsV2Request(DaraModel):
 
         if m.get('highlight') is not None:
             self.highlight = m.get('highlight')
+
+        if m.get('isAccurate') is not None:
+            self.is_accurate = m.get('isAccurate')
 
         if m.get('line') is not None:
             self.line = m.get('line')
