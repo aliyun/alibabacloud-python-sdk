@@ -9,7 +9,7 @@ class ScanFileInfo(DaraModel):
         self,
         angle: int = None,
         height: int = None,
-        image_base_64: bytes = None,
+        image_base_64: str = None,
         width: int = None,
     ):
         self.angle = angle
