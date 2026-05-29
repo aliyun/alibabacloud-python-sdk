@@ -1,3 +1,13 @@
+2026-05-29 Version: 5.6.0
+- Support API ListModelProviderEndpoints.
+- Update API GetRuntimeChannel: add response parameters Body.Data.$.ChannelType.
+- Update API GetRuntimeModelConfig: add response parameters Body.Data.ModelTemplateRefType.
+- Update API GetRuntimeModelConfig: add response parameters Body.Data.ResourceGroupId.
+- Update API ListDesktopAgentRuntime: add response parameters Body.Data.$.ModelTemplateId.
+- Update API ListDesktopAgentRuntime: add response parameters Body.Data.$.ModelTemplateName.
+- Update API ListDesktopAgentRuntime: add response parameters Body.Data.$.RegionLocation.
+
+
 2026-05-28 Version: 5.5.1
 - Update API ListImage: add request parameters Distro.
 

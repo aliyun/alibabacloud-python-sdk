@@ -122,6 +122,9 @@ from ._list_llm_templates_request import ListLlmTemplatesRequest
 from ._list_llm_templates_shrink_request import ListLlmTemplatesShrinkRequest
 from ._list_llm_templates_response_body import ListLlmTemplatesResponseBody
 from ._list_llm_templates_response import ListLlmTemplatesResponse
+from ._list_model_provider_endpoints_request import ListModelProviderEndpointsRequest
+from ._list_model_provider_endpoints_response_body import ListModelProviderEndpointsResponseBody
+from ._list_model_provider_endpoints_response import ListModelProviderEndpointsResponse
 from ._list_model_provider_templates_request import ListModelProviderTemplatesRequest
 from ._list_model_provider_templates_shrink_request import ListModelProviderTemplatesShrinkRequest
 from ._list_model_provider_templates_response_body import ListModelProviderTemplatesResponseBody
@@ -321,6 +324,8 @@ from ._list_image_response_body import ListImageResponseBodyDataSnapshotList
 from ._list_image_response_body import ListImageResponseBodyDataTagList
 from ._list_image_response_body import ListImageResponseBodyData
 from ._list_llm_templates_response_body import ListLlmTemplatesResponseBodyData
+from ._list_model_provider_endpoints_response_body import ListModelProviderEndpointsResponseBodyDataEndpoints
+from ._list_model_provider_endpoints_response_body import ListModelProviderEndpointsResponseBodyData
 from ._list_model_provider_templates_response_body import ListModelProviderTemplatesResponseBodyData
 from ._list_model_template_resource_group_response_body import ListModelTemplateResourceGroupResponseBodyData
 from ._list_model_templates_response_body import ListModelTemplatesResponseBodyData
@@ -492,6 +497,9 @@ __all__ = [
     ListLlmTemplatesShrinkRequest,
     ListLlmTemplatesResponseBody,
     ListLlmTemplatesResponse,
+    ListModelProviderEndpointsRequest,
+    ListModelProviderEndpointsResponseBody,
+    ListModelProviderEndpointsResponse,
     ListModelProviderTemplatesRequest,
     ListModelProviderTemplatesShrinkRequest,
     ListModelProviderTemplatesResponseBody,
@@ -691,6 +699,8 @@ __all__ = [
     ListImageResponseBodyDataTagList,
     ListImageResponseBodyData,
     ListLlmTemplatesResponseBodyData,
+    ListModelProviderEndpointsResponseBodyDataEndpoints,
+    ListModelProviderEndpointsResponseBodyData,
     ListModelProviderTemplatesResponseBodyData,
     ListModelTemplateResourceGroupResponseBodyData,
     ListModelTemplatesResponseBodyData,

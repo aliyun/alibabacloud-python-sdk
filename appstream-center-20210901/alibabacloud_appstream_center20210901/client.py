@@ -3731,6 +3731,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_llm_templates_with_options_async(request, runtime)
 
+    def list_model_provider_endpoints_with_options(
+        self,
+        request: main_models.ListModelProviderEndpointsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListModelProviderEndpointsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_platform):
+            query['AgentPlatform'] = request.agent_platform
+        if not DaraCore.is_null(request.agent_provider):
+            query['AgentProvider'] = request.agent_provider
+        if not DaraCore.is_null(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not DaraCore.is_null(request.provider_name):
+            query['ProviderName'] = request.provider_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListModelProviderEndpoints',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListModelProviderEndpointsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_model_provider_endpoints_with_options_async(
+        self,
+        request: main_models.ListModelProviderEndpointsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListModelProviderEndpointsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_platform):
+            query['AgentPlatform'] = request.agent_platform
+        if not DaraCore.is_null(request.agent_provider):
+            query['AgentProvider'] = request.agent_provider
+        if not DaraCore.is_null(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not DaraCore.is_null(request.provider_name):
+            query['ProviderName'] = request.provider_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListModelProviderEndpoints',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListModelProviderEndpointsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_model_provider_endpoints(
+        self,
+        request: main_models.ListModelProviderEndpointsRequest,
+    ) -> main_models.ListModelProviderEndpointsResponse:
+        runtime = RuntimeOptions()
+        return self.list_model_provider_endpoints_with_options(request, runtime)
+
+    async def list_model_provider_endpoints_async(
+        self,
+        request: main_models.ListModelProviderEndpointsRequest,
+    ) -> main_models.ListModelProviderEndpointsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_model_provider_endpoints_with_options_async(request, runtime)
+
     def list_model_provider_templates_with_options(
         self,
         tmp_req: main_models.ListModelProviderTemplatesRequest,

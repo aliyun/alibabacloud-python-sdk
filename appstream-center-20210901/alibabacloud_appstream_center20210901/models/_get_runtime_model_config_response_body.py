@@ -51,11 +51,15 @@ class GetRuntimeModelConfigResponseBodyData(DaraModel):
         model_provider_list: List[main_models.GetRuntimeModelConfigResponseBodyDataModelProviderList] = None,
         model_template_id: str = None,
         model_template_name: str = None,
+        model_template_ref_type: str = None,
+        resource_group_id: str = None,
     ):
         self.default_model = default_model
         self.model_provider_list = model_provider_list
         self.model_template_id = model_template_id
         self.model_template_name = model_template_name
+        self.model_template_ref_type = model_template_ref_type
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         if self.model_provider_list:
@@ -82,6 +86,12 @@ class GetRuntimeModelConfigResponseBodyData(DaraModel):
         if self.model_template_name is not None:
             result['ModelTemplateName'] = self.model_template_name
 
+        if self.model_template_ref_type is not None:
+            result['ModelTemplateRefType'] = self.model_template_ref_type
+
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -100,6 +110,12 @@ class GetRuntimeModelConfigResponseBodyData(DaraModel):
 
         if m.get('ModelTemplateName') is not None:
             self.model_template_name = m.get('ModelTemplateName')
+
+        if m.get('ModelTemplateRefType') is not None:
+            self.model_template_ref_type = m.get('ModelTemplateRefType')
+
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
 
         return self
 

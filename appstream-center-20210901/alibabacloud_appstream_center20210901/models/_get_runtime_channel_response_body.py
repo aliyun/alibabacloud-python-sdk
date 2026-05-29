@@ -62,6 +62,7 @@ class GetRuntimeChannelResponseBodyData(DaraModel):
     def __init__(
         self,
         avatar_url: str = None,
+        channel_type: str = None,
         code: str = None,
         config: str = None,
         config_mode: str = None,
@@ -71,6 +72,7 @@ class GetRuntimeChannelResponseBodyData(DaraModel):
         status: str = None,
     ):
         self.avatar_url = avatar_url
+        self.channel_type = channel_type
         self.code = code
         self.config = config
         self.config_mode = config_mode
@@ -89,6 +91,9 @@ class GetRuntimeChannelResponseBodyData(DaraModel):
             result = _map
         if self.avatar_url is not None:
             result['AvatarUrl'] = self.avatar_url
+
+        if self.channel_type is not None:
+            result['ChannelType'] = self.channel_type
 
         if self.code is not None:
             result['Code'] = self.code
@@ -117,6 +122,9 @@ class GetRuntimeChannelResponseBodyData(DaraModel):
         m = m or dict()
         if m.get('AvatarUrl') is not None:
             self.avatar_url = m.get('AvatarUrl')
+
+        if m.get('ChannelType') is not None:
+            self.channel_type = m.get('ChannelType')
 
         if m.get('Code') is not None:
             self.code = m.get('Code')

@@ -87,9 +87,12 @@ class ListDesktopAgentRuntimeResponseBodyData(DaraModel):
         desktop_status: str = None,
         has_auth_user: bool = None,
         model_configure: bool = None,
+        model_template_id: str = None,
+        model_template_name: str = None,
         os_type: str = None,
         qr_code_configuring_list: List[str] = None,
         region_id: str = None,
+        region_location: str = None,
         resource_group: main_models.ListDesktopAgentRuntimeResponseBodyDataResourceGroup = None,
         resource_id: str = None,
         risk_info: main_models.ListDesktopAgentRuntimeResponseBodyDataRiskInfo = None,
@@ -104,9 +107,12 @@ class ListDesktopAgentRuntimeResponseBodyData(DaraModel):
         self.desktop_status = desktop_status
         self.has_auth_user = has_auth_user
         self.model_configure = model_configure
+        self.model_template_id = model_template_id
+        self.model_template_name = model_template_name
         self.os_type = os_type
         self.qr_code_configuring_list = qr_code_configuring_list
         self.region_id = region_id
+        self.region_location = region_location
         self.resource_group = resource_group
         self.resource_id = resource_id
         self.risk_info = risk_info
@@ -160,6 +166,12 @@ class ListDesktopAgentRuntimeResponseBodyData(DaraModel):
         if self.model_configure is not None:
             result['ModelConfigure'] = self.model_configure
 
+        if self.model_template_id is not None:
+            result['ModelTemplateId'] = self.model_template_id
+
+        if self.model_template_name is not None:
+            result['ModelTemplateName'] = self.model_template_name
+
         if self.os_type is not None:
             result['OsType'] = self.os_type
 
@@ -168,6 +180,9 @@ class ListDesktopAgentRuntimeResponseBodyData(DaraModel):
 
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+
+        if self.region_location is not None:
+            result['RegionLocation'] = self.region_location
 
         if self.resource_group is not None:
             result['ResourceGroup'] = self.resource_group.to_map()
@@ -216,6 +231,12 @@ class ListDesktopAgentRuntimeResponseBodyData(DaraModel):
         if m.get('ModelConfigure') is not None:
             self.model_configure = m.get('ModelConfigure')
 
+        if m.get('ModelTemplateId') is not None:
+            self.model_template_id = m.get('ModelTemplateId')
+
+        if m.get('ModelTemplateName') is not None:
+            self.model_template_name = m.get('ModelTemplateName')
+
         if m.get('OsType') is not None:
             self.os_type = m.get('OsType')
 
@@ -224,6 +245,9 @@ class ListDesktopAgentRuntimeResponseBodyData(DaraModel):
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+
+        if m.get('RegionLocation') is not None:
+            self.region_location = m.get('RegionLocation')
 
         if m.get('ResourceGroup') is not None:
             temp_model = main_models.ListDesktopAgentRuntimeResponseBodyDataResourceGroup()
