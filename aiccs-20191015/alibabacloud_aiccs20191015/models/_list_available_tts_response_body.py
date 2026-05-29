@@ -90,6 +90,7 @@ class ListAvailableTtsResponseBodyData(DaraModel):
         tts_style: str = None,
         tts_voice_code: str = None,
         tts_voice_name: str = None,
+        voice_type: str = None,
     ):
         # 音色试听文件
         self.tts_audition_file_url = tts_audition_file_url
@@ -101,6 +102,7 @@ class ListAvailableTtsResponseBodyData(DaraModel):
         self.tts_voice_code = tts_voice_code
         # 音色名称
         self.tts_voice_name = tts_voice_name
+        self.voice_type = voice_type
 
     def validate(self):
         pass
@@ -125,6 +127,9 @@ class ListAvailableTtsResponseBodyData(DaraModel):
         if self.tts_voice_name is not None:
             result['TtsVoiceName'] = self.tts_voice_name
 
+        if self.voice_type is not None:
+            result['VoiceType'] = self.voice_type
+
         return result
 
     def from_map(self, m: dict = None):
@@ -143,6 +148,9 @@ class ListAvailableTtsResponseBodyData(DaraModel):
 
         if m.get('TtsVoiceName') is not None:
             self.tts_voice_name = m.get('TtsVoiceName')
+
+        if m.get('VoiceType') is not None:
+            self.voice_type = m.get('VoiceType')
 
         return self
 

@@ -9362,6 +9362,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not DaraCore.is_null(request.tts_voice_code):
             query['TtsVoiceCode'] = request.tts_voice_code
+        if not DaraCore.is_null(request.voice_type):
+            query['VoiceType'] = request.voice_type
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -9396,6 +9398,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not DaraCore.is_null(request.tts_voice_code):
             query['TtsVoiceCode'] = request.tts_voice_code
+        if not DaraCore.is_null(request.voice_type):
+            query['VoiceType'] = request.voice_type
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )

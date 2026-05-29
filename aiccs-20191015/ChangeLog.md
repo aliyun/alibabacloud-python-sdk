@@ -1,3 +1,8 @@
+2026-05-29 Version: 5.3.1
+- Update API ListAvailableTts: add request parameters VoiceType.
+- Update API ListAvailableTts: add response parameters Body.Data.$.VoiceType.
+
+
 2026-05-28 Version: 5.3.0
 - Support API AddModelApplication.
 - Support API UpdateModelApplication.
