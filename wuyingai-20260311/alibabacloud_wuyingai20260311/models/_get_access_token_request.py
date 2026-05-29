@@ -4,8 +4,6 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-
-
 class GetAccessTokenRequest(DaraModel):
     def __init__(
         self,
