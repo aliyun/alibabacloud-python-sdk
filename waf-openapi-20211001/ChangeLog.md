@@ -8,6 +8,16 @@
 - Update API DescribeProductInstances: add response parameters Body.ProductInstances.$.ResourceDomain.
 
 
+2026-05-29 Version: 7.8.1
+- Update API CreateCloudResource: add request parameters Listen.Domain.
+- Update API DescribeCloudResourceList: add request parameters ResourceDomain.
+- Update API DescribeCloudResourceList: add response parameters Body.CloudResourceList.$.ResourceDomain.
+- Update API DescribeHybridCloudResourceDetail: add response parameters Body.Domain.Redirect.BackendPorts.
+- Update API DescribeHybridCloudResourceDetail: add response parameters Body.Domain.Redirect.ProxyProtocol.
+- Update API DescribeProductInstances: add request parameters ResourceDomain.
+- Update API DescribeProductInstances: add response parameters Body.ProductInstances.$.ResourceDomain.
+
+
 2026-05-21 Version: 7.8.0
 - Support API DescribePostpayBills.
 
