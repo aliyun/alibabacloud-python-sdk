@@ -15,6 +15,7 @@ class UpdateServerGroupAttributeRequest(DaraModel):
         cross_zone_enabled: bool = None,
         dry_run: bool = None,
         health_check_config: main_models.UpdateServerGroupAttributeRequestHealthCheckConfig = None,
+        ip_version_affinity_mode: str = None,
         scheduler: str = None,
         server_group_id: str = None,
         server_group_name: str = None,
@@ -53,6 +54,7 @@ class UpdateServerGroupAttributeRequest(DaraModel):
         self.dry_run = dry_run
         # The configuration of health checks.
         self.health_check_config = health_check_config
+        self.ip_version_affinity_mode = ip_version_affinity_mode
         # The scheduling algorithm. Valid values:
         # 
         # *   **Wrr**: the weighted round robin algorithm. Backend servers that have higher weights receive more requests than those that have lower weights.
@@ -116,6 +118,9 @@ class UpdateServerGroupAttributeRequest(DaraModel):
         if self.health_check_config is not None:
             result['HealthCheckConfig'] = self.health_check_config.to_map()
 
+        if self.ip_version_affinity_mode is not None:
+            result['IpVersionAffinityMode'] = self.ip_version_affinity_mode
+
         if self.scheduler is not None:
             result['Scheduler'] = self.scheduler
 
@@ -160,6 +165,9 @@ class UpdateServerGroupAttributeRequest(DaraModel):
         if m.get('HealthCheckConfig') is not None:
             temp_model = main_models.UpdateServerGroupAttributeRequestHealthCheckConfig()
             self.health_check_config = temp_model.from_map(m.get('HealthCheckConfig'))
+
+        if m.get('IpVersionAffinityMode') is not None:
+            self.ip_version_affinity_mode = m.get('IpVersionAffinityMode')
 
         if m.get('Scheduler') is not None:
             self.scheduler = m.get('Scheduler')

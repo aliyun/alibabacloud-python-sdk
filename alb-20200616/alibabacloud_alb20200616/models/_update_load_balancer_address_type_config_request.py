@@ -14,6 +14,7 @@ class UpdateLoadBalancerAddressTypeConfigRequest(DaraModel):
         client_token: str = None,
         dry_run: str = None,
         load_balancer_id: str = None,
+        retain_resource_type: List[str] = None,
         zone_mappings: List[main_models.UpdateLoadBalancerAddressTypeConfigRequestZoneMappings] = None,
     ):
         # The new network type. Valid values:
@@ -38,6 +39,7 @@ class UpdateLoadBalancerAddressTypeConfigRequest(DaraModel):
         # 
         # This parameter is required.
         self.load_balancer_id = load_balancer_id
+        self.retain_resource_type = retain_resource_type
         # The zones and the vSwitches in the zones. You can specify a maximum of 10 zones. If the selected region supports two or more zones, select at least two zones to ensure the high availability of your service.
         self.zone_mappings = zone_mappings
 
@@ -64,6 +66,9 @@ class UpdateLoadBalancerAddressTypeConfigRequest(DaraModel):
         if self.load_balancer_id is not None:
             result['LoadBalancerId'] = self.load_balancer_id
 
+        if self.retain_resource_type is not None:
+            result['RetainResourceType'] = self.retain_resource_type
+
         result['ZoneMappings'] = []
         if self.zone_mappings is not None:
             for k1 in self.zone_mappings:
@@ -84,6 +89,9 @@ class UpdateLoadBalancerAddressTypeConfigRequest(DaraModel):
 
         if m.get('LoadBalancerId') is not None:
             self.load_balancer_id = m.get('LoadBalancerId')
+
+        if m.get('RetainResourceType') is not None:
+            self.retain_resource_type = m.get('RetainResourceType')
 
         self.zone_mappings = []
         if m.get('ZoneMappings') is not None:

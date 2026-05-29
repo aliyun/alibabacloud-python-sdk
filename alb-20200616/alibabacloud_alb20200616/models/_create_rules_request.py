@@ -30,6 +30,8 @@ class CreateRulesRequest(DaraModel):
         # 
         # This parameter is required.
         self.listener_id = listener_id
+        # The details about the forwarding rules.
+        # 
         # This parameter is required.
         self.rules = rules
 
@@ -89,15 +91,30 @@ class CreateRulesRequestRules(DaraModel):
         rule_name: str = None,
         tag: List[main_models.CreateRulesRequestRulesTag] = None,
     ):
+        # The traffic direction to which the forwarding rule is applied.
+        # 
+        # Valid values:
+        # 
+        # *   Response
+        # *   Request
         self.direction = direction
+        # The priority of the forwarding rule.
+        # 
         # This parameter is required.
         self.priority = priority
+        # The actions of the forwarding rule.
+        # 
         # This parameter is required.
         self.rule_actions = rule_actions
+        # The conditions of the forwarding rule.
+        # 
         # This parameter is required.
         self.rule_conditions = rule_conditions
+        # The name of the forwarding rule.
+        # 
         # This parameter is required.
         self.rule_name = rule_name
+        # The tags.
         self.tag = tag
 
     def validate(self):
@@ -182,7 +199,9 @@ class CreateRulesRequestRulesTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag. It can contain a maximum of 128 characters, cannot start with aliyun or acs:, and cannot contain http:// or https://.
         self.key = key
+        # The value of the tag. It can contain a maximum of 128 characters, cannot start with aliyun or acs:, and cannot contain http:// or https://.
         self.value = value
 
     def validate(self):
@@ -225,15 +244,36 @@ class CreateRulesRequestRulesRuleConditions(DaraModel):
         source_ip_config: main_models.CreateRulesRequestRulesRuleConditionsSourceIpConfig = None,
         type: str = None,
     ):
+        # The configuration of the cookie condition.
         self.cookie_config = cookie_config
+        # The configuration of the HTTP header condition.
         self.header_config = header_config
+        # The configuration of the hostname condition.
         self.host_config = host_config
+        # The configuration of the HTTP request method condition.
         self.method_config = method_config
+        # The configuration of the path condition.
         self.path_config = path_config
+        # The configurations of the query string condition.
         self.query_string_config = query_string_config
+        # The configuration of the HTTP response header condition.
         self.response_header_config = response_header_config
+        # The configuration of the response status code condition.
         self.response_status_code_config = response_status_code_config
+        # The configuration of the condition that matches requests based on source IP addresses.
         self.source_ip_config = source_ip_config
+        # The type of the condition. Valid values:
+        # 
+        # *   Host: forwards requests based on hosts.
+        # *   Path: forwards requests based on paths.
+        # *   Header: forwards requests based on HTTP headers.
+        # *   QueryString: forwards requests based on query strings.
+        # *   Method: forwards requests based on HTTP request methods.
+        # *   Cookie: forwards requests based on cookies.
+        # *   SourceIp: forwards requests based on source IP addresses.
+        # *   ResponseHeader: forwards requests based on HTTP response headers.
+        # *   ResponseStatusCode: forwards requests based on response status codes.
+        # 
         # This parameter is required.
         self.type = type
 
@@ -342,6 +382,7 @@ class CreateRulesRequestRulesRuleConditionsSourceIpConfig(DaraModel):
         self,
         values: List[str] = None,
     ):
+        # The condition that matches requests based on source IP addresses.
         self.values = values
 
     def validate(self):
@@ -369,6 +410,7 @@ class CreateRulesRequestRulesRuleConditionsResponseStatusCodeConfig(DaraModel):
         self,
         values: List[str] = None,
     ):
+        # The response status codes.
         self.values = values
 
     def validate(self):
@@ -397,7 +439,13 @@ class CreateRulesRequestRulesRuleConditionsResponseHeaderConfig(DaraModel):
         key: str = None,
         values: List[str] = None,
     ):
+        # The key of the HTTP response header.
+        # 
+        # *   Contain a maximum of 40 characters.
+        # *   Support letters, digits, hyphens (-), and underscores (_).
+        # *   Do not support Cookie or Host.
         self.key = key
+        # The values of the HTTP response header.
         self.values = values
 
     def validate(self):
@@ -431,6 +479,7 @@ class CreateRulesRequestRulesRuleConditionsQueryStringConfig(DaraModel):
         self,
         values: List[main_models.CreateRulesRequestRulesRuleConditionsQueryStringConfigValues] = None,
     ):
+        # The key-value pairs in query strings.
         self.values = values
 
     def validate(self):
@@ -467,7 +516,15 @@ class CreateRulesRequestRulesRuleConditionsQueryStringConfigValues(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the query string.
+        # 
+        # *   Contain a maximum of 100 characters.
+        # *   Support asterisks (\\*) and question marks (?) as wildcard characters. Support printable characters, excluding uppercase letters, space characters, and the following special characters: `# [ ] { } \\ | < > & "`.
         self.key = key
+        # The value of the query string.
+        # 
+        # *   Contain a maximum of 128 characters.
+        # *   Support printable characters, excluding uppercase letters, space characters, and the following special characters: `# [ ] { } \\ | < > & "`. You can use asterisks (\\*) and question marks (?) as wildcard characters.
         self.value = value
 
     def validate(self):
@@ -501,6 +558,7 @@ class CreateRulesRequestRulesRuleConditionsPathConfig(DaraModel):
         self,
         values: List[str] = None,
     ):
+        # The paths to which requests are forwarded.
         self.values = values
 
     def validate(self):
@@ -528,6 +586,7 @@ class CreateRulesRequestRulesRuleConditionsMethodConfig(DaraModel):
         self,
         values: List[str] = None,
     ):
+        # The HTTP request methods.
         self.values = values
 
     def validate(self):
@@ -555,6 +614,7 @@ class CreateRulesRequestRulesRuleConditionsHostConfig(DaraModel):
         self,
         values: List[str] = None,
     ):
+        # The hostnames.
         self.values = values
 
     def validate(self):
@@ -583,7 +643,13 @@ class CreateRulesRequestRulesRuleConditionsHeaderConfig(DaraModel):
         key: str = None,
         values: List[str] = None,
     ):
+        # The key of the HTTP header.
+        # 
+        # *   Contain a maximum of 40 characters.
+        # *   Support letters, digits, hyphens (-), and underscores (_).
+        # *   Do not support Cookie or Host.
         self.key = key
+        # The values of the HTTP header.
         self.values = values
 
     def validate(self):
@@ -617,6 +683,7 @@ class CreateRulesRequestRulesRuleConditionsCookieConfig(DaraModel):
         self,
         values: List[main_models.CreateRulesRequestRulesRuleConditionsCookieConfigValues] = None,
     ):
+        # The key-value pairs in cookies.
         self.values = values
 
     def validate(self):
@@ -653,7 +720,17 @@ class CreateRulesRequestRulesRuleConditionsCookieConfigValues(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The cookie key.
+        # 
+        # *   Contain a maximum of 100 characters.
+        # *   Support asterisks (\\*) and question marks (?) as wildcard characters.
+        # *   Support printable characters, excluding uppercase letters, space characters, and the following special characters: `; # [ ] { } \\ | < > & "`.
         self.key = key
+        # The cookie value.
+        # 
+        # *   Contain a maximum of 100 characters.
+        # *   Support asterisks (\\*) and question marks (?) as wildcard characters.
+        # *   Support printable characters, excluding uppercase letters, space characters, and the following special characters: `; # [ ] { } \\ | < > & "`.
         self.value = value
 
     def validate(self):
@@ -697,17 +774,49 @@ class CreateRulesRequestRulesRuleActions(DaraModel):
         traffic_mirror_config: main_models.CreateRulesRequestRulesRuleActionsTrafficMirrorConfig = None,
         type: str = None,
     ):
+        # The CORS configuration.
         self.cors_config = cors_config
+        # The configuration of the action to return a fixed response.
         self.fixed_response_config = fixed_response_config
+        # The configuration of the action to forward requests to server groups.
         self.forward_group_config = forward_group_config
+        # The configuration of the action to insert a header.
         self.insert_header_config = insert_header_config
+        # The priority of the action. Valid values: **1 to 50000**. A lower value indicates a higher priority. The actions of a forwarding rule are applied in descending order of priority. This parameter is required. The priority of each action within a forwarding rule must be unique.
+        # 
         # This parameter is required.
         self.order = order
+        # The configuration of the redirect action.
+        # 
+        # >  Do not set all parameters in **RedirectConfig** to default values, excluding **httpCode**.
         self.redirect_config = redirect_config
+        # The configuration of the action to remove a header.
         self.remove_header_config = remove_header_config
+        # The configuration of the rewrite action.
+        # 
+        # >  If you specify a **Rewrite** action along with other types of actions in a forwarding rule, you must also specify a **ForwardGroup** action.
         self.rewrite_config = rewrite_config
+        # The configuration of the action to throttle traffic.
         self.traffic_limit_config = traffic_limit_config
+        # The configuration of the action to mirror traffic.
         self.traffic_mirror_config = traffic_mirror_config
+        # The type of the action. Valid values are:
+        # 
+        # *   **ForwardGroup**: forwards requests to multiple vServer groups.
+        # *   **Redirect**: redirects requests.
+        # *   **FixedResponse**: returns a fixed response.
+        # *   **Rewrite**: rewrites requests.
+        # *   **InsertHeader**: inserts a header.
+        # *   **RemoveHeader**: deletes a header.
+        # *   **TrafficLimit**: throttles traffic.
+        # *   **trafficMirror**: mirrors network traffic.
+        # *   **Cors**: forwards requests based on CORS.
+        # 
+        # Actions in each forwarding rule must meet the following requirements:
+        # 
+        # *   **Each forwarding rule must include one and only one of the following actions: **ForwardGroup**, **Redirect**, or **FixedResponse**, and this action must be performed last.**
+        # *   **Each forwarding rule may contain none, one, or more actions of other types.************** You can specify multiple **InsertHeader** actions or one **Rewrite** action.
+        # 
         # This parameter is required.
         self.type = type
 
@@ -823,7 +932,11 @@ class CreateRulesRequestRulesRuleActionsTrafficMirrorConfig(DaraModel):
         mirror_group_config: main_models.CreateRulesRequestRulesRuleActionsTrafficMirrorConfigMirrorGroupConfig = None,
         target_type: str = None,
     ):
+        # The configuration of the server group to which traffic is mirrored.
         self.mirror_group_config = mirror_group_config
+        # The type of destination to which network traffic is mirrored. Valid value:
+        # 
+        # *   **ForwardGroupMirror**: a server group
         self.target_type = target_type
 
     def validate(self):
@@ -859,6 +972,7 @@ class CreateRulesRequestRulesRuleActionsTrafficMirrorConfigMirrorGroupConfig(Dar
         self,
         server_group_tuples: List[main_models.CreateRulesRequestRulesRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples] = None,
     ):
+        # The server group to which traffic is mirrored.
         self.server_group_tuples = server_group_tuples
 
     def validate(self):
@@ -894,6 +1008,7 @@ class CreateRulesRequestRulesRuleActionsTrafficMirrorConfigMirrorGroupConfigServ
         self,
         server_group_id: str = None,
     ):
+        # The ID of the server group.
         self.server_group_id = server_group_id
 
     def validate(self):
@@ -922,7 +1037,11 @@ class CreateRulesRequestRulesRuleActionsTrafficLimitConfig(DaraModel):
         per_ip_qps: int = None,
         qps: int = None,
     ):
+        # QPS per IP address. Valid values: **1 to 1000000**.
+        # 
+        # >  If both the **QPS** and **PerIpQps** parameters are specified, the value of the **QPS** parameter must be smaller than that of the PerIpQps parameter.
         self.per_ip_qps = per_ip_qps
+        # Queries per second (QPS). Valid values: **1** to **1000000**.
         self.qps = qps
 
     def validate(self):
@@ -958,8 +1077,34 @@ class CreateRulesRequestRulesRuleActionsRewriteConfig(DaraModel):
         path: str = None,
         query: str = None,
     ):
+        # The hostname to which requests are rewritten. Valid values are:
+        # 
+        # *   **${host}** (default): This value cannot be concatenated with any other characters.
+        # 
+        # *   A custom hostname, which must meet the following requirements:
+        # 
+        #     *   Contain 3 to 128 characters. Supported characters include lowercase letters, digits, and the following characters: - . \\* (as wildcard characters) = ~ _ + \\ ^ ! $ & | ( ) [ ] ?
+        #     *   Contain at least one period (.) but cannot start or end with a period (.).
+        #     *   The rightmost domain label can contain only letters and wildcard characters, and cannot contain digits or hyphens (-). The leftmost `domain label` can be an asterisk (\\*).
+        #     *   The other domain labels do not start or end with hyphens (-). You can use asterisks (\\*) and question marks (?) anywhere in a domain label as wildcard characters.
         self.host = host
+        # The path to which requests are rewritten. Valid values are:
+        # 
+        # *   **${path}** (default): You can reference **${host}**, **${protocol}**, and **${port}**, with each appearing only once. You can also concatenate any preceding variable with strings that meet the following requirements.
+        # 
+        # *   A custom path, which must meet the following requirements:
+        # 
+        #     *   Contain a maximum of 128 characters and is case-sensitive. Support asterisks (\\*) and question marks (?) as wildcard characters.
+        #     *   Start with a forward slash (/), and can contain letters, digits, and the following special characters: `$-_.+/&~@:\\"*?`. It cannot contain the following special characters: `“%#;!()[]^,”\\"`. Support asterisks (\\*) and question marks (?) as wildcard characters.
         self.path = path
+        # The query string of the URL to which requests are rewritten.
+        # 
+        # *   **${query}** (default): You can reference **${host}**, **${protocol}**, and **${port}**, with each appearing only once. You can also concatenate any preceding variable with strings that meet the following requirements.
+        # 
+        # *   A custom query string, which must meet the following requirements:
+        # 
+        #     *   Contain a maximum of 128 characters.
+        #     *   Contain printable characters, excluding space characters, the special characters `#[]{}\\|<>"`, and uppercase letters.
         self.query = query
 
     def validate(self):
@@ -999,6 +1144,10 @@ class CreateRulesRequestRulesRuleActionsRemoveHeaderConfig(DaraModel):
         self,
         key: str = None,
     ):
+        # The key of the header to be removed. It can contain a maximum of 40 characters and supports letters, digits, underscores (_), and hyphens (-). The header keys specified in RemoveHeader must be unique.
+        # 
+        # *   If Direction is set to Request, the following request headers cannot be removed: `slb-id`, `slb-ip`, `x-forwarded-for`, `x-forwarded-proto`, `x-forwarded-eip`, `x-forwarded-port`, `x-forwarded-client-srcport`, `connection`, `upgrade`, `content-length`, `transfer-encoding`, `keep-alive`, `te`, `host`, `cookie`, `remoteip`, `authority`, and `x-forwarded-host`.
+        # *   If Direction is set to Response, the following response headers (case-insensitive) cannot be removed: `connection`, `upgrade`, `content-length`, and `transfer-encoding`.
         self.key = key
 
     def validate(self):
@@ -1031,11 +1180,54 @@ class CreateRulesRequestRulesRuleActionsRedirectConfig(DaraModel):
         protocol: str = None,
         query: str = None,
     ):
+        # The hostname to which requests are redirected. Valid values are:
+        # 
+        # *   **${host}** (default): This value cannot be concatenated with any other characters.
+        # 
+        # *   A custom hostname, which must meet the following requirements:
+        # 
+        #     *   Contain 3 to 128 characters. Supported characters include lowercase letters, digits, and the following characters: - . \\* (as wildcard characters) = ~ _ + \\ ^ ! $ & | ( ) [ ] ?
+        #     *   Contain at least one period (.) but cannot start or end with a period (.).
+        #     *   The rightmost domain label can contain only letters and wildcard characters, and cannot contain digits or hyphens (-). The leftmost `domain label` can be an asterisk (\\*).
+        #     *   The other domain labels do not start or end with hyphens (-).
+        #     *   Support asterisks (\\*) and question marks (?) anywhere in a domain label as wildcard characters.
         self.host = host
+        # The HTTP status code that indicates the redirect type. Valid values: **301**, **302**, **303**, **307**, and **308**.
         self.http_code = http_code
+        # The path to which requests are redirected. Valid values are:
+        # 
+        # *   **${path}** (default): You can reference **${host}**, **${protocol}**, and **${port}**, with each appearing only once. You can also concatenate any preceding variable with strings that meet the following requirements.
+        # 
+        # *   A custom path, which must meet the following requirements:
+        # 
+        #     *   Contain a maximum of 128 characters and is case-sensitive. Support asterisks (\\*) and question marks (?) as wildcard characters.
+        #     *   Start with a forward slash (/), and can contain letters, digits, and the following special characters: `$-_.+/&~@:\\"*?`. It cannot contain the following special characters: `“%#;!()[]^,”\\"`. Support asterisks (\\*) and question marks (?) as wildcard characters.
         self.path = path
+        # The port to which requests are redirected. Valid values are:
+        # 
+        # *   **${port}** (default): This value cannot be concatenated with any other characters.
+        # *   A custom port number. Valid values: **1 to 63335**.
         self.port = port
+        # The redirect protocol. Valid values are:
+        # 
+        # *   **${protocol}** (default): This value cannot be modified or concatenated with any other characters.
+        # *   **HTTP**
+        # *   **HTTPS**
+        # 
+        # > 
+        # 
+        # *   For HTTPS listeners, you can only redirect HTTPS to HTTPS.
+        # 
+        # *   For HTTP listeners, you can redirect HTTP to either HTTP or HTTPS.
         self.protocol = protocol
+        # The query string to which requests are redirected.
+        # 
+        # *   **${query}** (default): You can reference **${host}**, **${protocol}**, and **${port}**, with each appearing only once. You can also concatenate any preceding variable with strings that meet the following requirements.
+        # 
+        # *   A custom query string, which must meet the following requirements:
+        # 
+        #     *   Contain a maximum of 128 characters.
+        #     *   Contain printable characters, excluding space characters, the special characters `#[]{}\\|<>"`, and uppercase letters.
         self.query = query
 
     def validate(self):
@@ -1095,8 +1287,29 @@ class CreateRulesRequestRulesRuleActionsInsertHeaderConfig(DaraModel):
         value: str = None,
         value_type: str = None,
     ):
+        # The key of the header, which can contain a maximum of 40 characters. Supported characters include letters, digits, underscores (_), and hyphens (-). The header keys specified by **InsertHeaderConfig** must be unique.
+        # 
+        # >  You cannot specify the following header keys: `slb-id`, `slb-ip`, `x-forwarded-for`, `x-forwarded-proto`, `x-forwarded-eip`, `x-forwarded-port`, `x-forwarded-client-srcport`, `connection`, `upgrade`, `content-length`, `transfer-encoding`, `keep-alive`, `te`, `host`, `cookie`, `remoteip`, `authority`, and `x-forwarded-host`. The header keys are case-insensitive.
         self.key = key
+        # The value of the header.
+        # 
+        # *   If **ValueType** is set to **SystemDefined**, you can set this parameter to one of the following values:
+        # 
+        #     *   **ClientSrcPort**: the client port.
+        #     *   **ClientSrcIp**: the client IP address.
+        #     *   **Protocol**: the request protocol (HTTP or HTTPS).
+        #     *   **SLBId**: the ID of the ALB instance.
+        #     *   **SLBPort**: the listener port of the ALB instance.
+        # 
+        # *   If **ValueType** is set to **UserDefined**, specify a custom header value. The header value can contain a maximum of 128 characters, and supports printable characters whose ASCII values are `greater than or equal to 32 and lower than 127` and asterisks (\\*) and question marks (?) as wildcard characters. Quotation marks (`"`) are not supported. The header value cannot start or end with a space or end with a backslash (`\\`).
+        # 
+        # *   If **ValueType** is set to **ReferenceHeader**, you can reference a value from request headers. The value can contain a maximum of 128 characters. Supported characters include lowercase letters, digits, hyphens (-), and underscores (_).
         self.value = value
+        # The type of the header value. Valid values are:
+        # 
+        # *   **UserDefined**: a custom header value
+        # *   **ReferenceHeader**: a header value that references one of the request headers
+        # *   **SystemDefined**: a system-defined header value
         self.value_type = value_type
 
     def validate(self):
@@ -1137,7 +1350,9 @@ class CreateRulesRequestRulesRuleActionsForwardGroupConfig(DaraModel):
         server_group_sticky_session: main_models.CreateRulesRequestRulesRuleActionsForwardGroupConfigServerGroupStickySession = None,
         server_group_tuples: List[main_models.CreateRulesRequestRulesRuleActionsForwardGroupConfigServerGroupTuples] = None,
     ):
+        # The configuration of session persistence.
         self.server_group_sticky_session = server_group_sticky_session
+        # The server groups to which requests are forwarded.
         self.server_group_tuples = server_group_tuples
 
     def validate(self):
@@ -1183,7 +1398,12 @@ class CreateRulesRequestRulesRuleActionsForwardGroupConfigServerGroupTuples(Dara
         server_group_id: str = None,
         weight: int = None,
     ):
+        # The ID of the server group.
         self.server_group_id = server_group_id
+        # The weight of the server group. A larger value indicates a higher weight. A server group with a higher weight receives more requests. Valid values: **0** to **100**
+        # 
+        # *   If the number of destination server groups is 1, the default weight of the server group is **100**. You can specify another value.
+        # *   If the number of destination server groups is larger than 1, you must specify weights for the server groups.
         self.weight = weight
 
     def validate(self):
@@ -1218,7 +1438,12 @@ class CreateRulesRequestRulesRuleActionsForwardGroupConfigServerGroupStickySessi
         enabled: bool = None,
         timeout: int = None,
     ):
+        # Enables session persistence. Valid values:
+        # 
+        # *   **true**
+        # *   **false** (default)
         self.enabled = enabled
+        # The timeout period for sessions. Unit: seconds. Valid values: **1** to **86400**. Default value: **1000**.
         self.timeout = timeout
 
     def validate(self):
@@ -1254,8 +1479,13 @@ class CreateRulesRequestRulesRuleActionsFixedResponseConfig(DaraModel):
         content_type: str = None,
         http_code: str = None,
     ):
+        # The content of the custom response. The content cannot exceed 1 KB in size, and can contain only ASCII characters.
         self.content = content
+        # The format of the custom response.
+        # 
+        # Valid values: **text/plain**, **text/css**, **text/html**, **application/javascript**, and **application/json**
         self.content_type = content_type
+        # The HTTP status code in responses. Valid values: **2xx**, **4xx**, and **5xx**. The value must be a numeric string. **x** can be any digit.
         self.http_code = http_code
 
     def validate(self):
@@ -1300,11 +1530,22 @@ class CreateRulesRequestRulesRuleActionsCorsConfig(DaraModel):
         expose_headers: List[str] = None,
         max_age: int = None,
     ):
+        # Include credentials in CORS requests. Valid values:
+        # 
+        # *   **on**
+        # *   **off**
         self.allow_credentials = allow_credentials
+        # The trusted header of CORS requests.
         self.allow_headers = allow_headers
+        # The trusted HTTP methods of CORS requests.
         self.allow_methods = allow_methods
+        # The trusted origins of CORS requests.
         self.allow_origin = allow_origin
+        # The headers that can be exposed.
         self.expose_headers = expose_headers
+        # The maximum cache time for preflight requests in the browser. Unit: seconds.
+        # 
+        # Valid values: **-1** to **172800**.
         self.max_age = max_age
 
     def validate(self):

@@ -1,3 +1,13 @@
+2026-05-29 Version: 1.3.2
+- Update API CreateLoadBalancer: add request parameters SecurityGroupIds.
+- Update API CreateServerGroup: add request parameters IpVersionAffinityMode.
+- Update API DeleteLoadBalancer: add request parameters RetainResourceType.
+- Update API ListServerGroups: add response parameters Body.ServerGroups.$.IpVersionAffinityMode.
+- Update API UpdateLoadBalancerAddressTypeConfig: add request parameters RetainResourceType.
+- Update API UpdateLoadBalancerZones: add request parameters RetainResourceType.
+- Update API UpdateServerGroupAttribute: add request parameters IpVersionAffinityMode.
+
+
 2026-01-21 Version: 1.3.1
 - Generated python 2020-06-16 for Alb.
 

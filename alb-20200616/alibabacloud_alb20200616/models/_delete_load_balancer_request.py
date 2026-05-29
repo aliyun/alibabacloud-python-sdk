@@ -2,6 +2,8 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
 from darabonba.model import DaraModel
 
 class DeleteLoadBalancerRequest(DaraModel):
@@ -10,6 +12,7 @@ class DeleteLoadBalancerRequest(DaraModel):
         client_token: str = None,
         dry_run: bool = None,
         load_balancer_id: str = None,
+        retain_resource_type: List[str] = None,
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -24,6 +27,7 @@ class DeleteLoadBalancerRequest(DaraModel):
         # 
         # This parameter is required.
         self.load_balancer_id = load_balancer_id
+        self.retain_resource_type = retain_resource_type
 
     def validate(self):
         pass
@@ -42,6 +46,9 @@ class DeleteLoadBalancerRequest(DaraModel):
         if self.load_balancer_id is not None:
             result['LoadBalancerId'] = self.load_balancer_id
 
+        if self.retain_resource_type is not None:
+            result['RetainResourceType'] = self.retain_resource_type
+
         return result
 
     def from_map(self, m: dict = None):
@@ -54,6 +61,9 @@ class DeleteLoadBalancerRequest(DaraModel):
 
         if m.get('LoadBalancerId') is not None:
             self.load_balancer_id = m.get('LoadBalancerId')
+
+        if m.get('RetainResourceType') is not None:
+            self.retain_resource_type = m.get('RetainResourceType')
 
         return self
 

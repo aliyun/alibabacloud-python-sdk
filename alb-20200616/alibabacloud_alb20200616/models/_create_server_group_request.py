@@ -15,6 +15,7 @@ class CreateServerGroupRequest(DaraModel):
         cross_zone_enabled: bool = None,
         dry_run: bool = None,
         health_check_config: main_models.CreateServerGroupRequestHealthCheckConfig = None,
+        ip_version_affinity_mode: str = None,
         ipv_6enabled: bool = None,
         protocol: str = None,
         resource_group_id: str = None,
@@ -61,6 +62,7 @@ class CreateServerGroupRequest(DaraModel):
         # 
         # This parameter is required.
         self.health_check_config = health_check_config
+        self.ip_version_affinity_mode = ip_version_affinity_mode
         # Specifies whether to enable Ipv6.
         self.ipv_6enabled = ipv_6enabled
         # The backend protocol. Valid values:
@@ -151,6 +153,9 @@ class CreateServerGroupRequest(DaraModel):
         if self.health_check_config is not None:
             result['HealthCheckConfig'] = self.health_check_config.to_map()
 
+        if self.ip_version_affinity_mode is not None:
+            result['IpVersionAffinityMode'] = self.ip_version_affinity_mode
+
         if self.ipv_6enabled is not None:
             result['Ipv6Enabled'] = self.ipv_6enabled
 
@@ -212,6 +217,9 @@ class CreateServerGroupRequest(DaraModel):
         if m.get('HealthCheckConfig') is not None:
             temp_model = main_models.CreateServerGroupRequestHealthCheckConfig()
             self.health_check_config = temp_model.from_map(m.get('HealthCheckConfig'))
+
+        if m.get('IpVersionAffinityMode') is not None:
+            self.ip_version_affinity_mode = m.get('IpVersionAffinityMode')
 
         if m.get('Ipv6Enabled') is not None:
             self.ipv_6enabled = m.get('Ipv6Enabled')
