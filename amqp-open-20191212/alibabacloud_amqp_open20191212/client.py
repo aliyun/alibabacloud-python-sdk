@@ -40,6 +40,92 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return Utils.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def add_instance_white_list_with_options(
+        self,
+        tmp_req: main_models.AddInstanceWhiteListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddInstanceWhiteListResponse:
+        tmp_req.validate()
+        request = main_models.AddInstanceWhiteListShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.white_list_item):
+            request.white_list_item_shrink = Utils.array_to_string_with_specified_style(tmp_req.white_list_item, 'WhiteListItem', 'json')
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.white_list_item_shrink):
+            query['WhiteListItem'] = request.white_list_item_shrink
+        if not DaraCore.is_null(request.white_list_type):
+            query['WhiteListType'] = request.white_list_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddInstanceWhiteList',
+            version = '2019-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddInstanceWhiteListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_instance_white_list_with_options_async(
+        self,
+        tmp_req: main_models.AddInstanceWhiteListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddInstanceWhiteListResponse:
+        tmp_req.validate()
+        request = main_models.AddInstanceWhiteListShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.white_list_item):
+            request.white_list_item_shrink = Utils.array_to_string_with_specified_style(tmp_req.white_list_item, 'WhiteListItem', 'json')
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.white_list_item_shrink):
+            query['WhiteListItem'] = request.white_list_item_shrink
+        if not DaraCore.is_null(request.white_list_type):
+            query['WhiteListType'] = request.white_list_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddInstanceWhiteList',
+            version = '2019-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddInstanceWhiteListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_instance_white_list(
+        self,
+        request: main_models.AddInstanceWhiteListRequest,
+    ) -> main_models.AddInstanceWhiteListResponse:
+        runtime = RuntimeOptions()
+        return self.add_instance_white_list_with_options(request, runtime)
+
+    async def add_instance_white_list_async(
+        self,
+        request: main_models.AddInstanceWhiteListRequest,
+    ) -> main_models.AddInstanceWhiteListResponse:
+        runtime = RuntimeOptions()
+        return await self.add_instance_white_list_with_options_async(request, runtime)
+
     def create_account_with_options(
         self,
         request: main_models.CreateAccountRequest,
@@ -1572,6 +1658,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_exchanges_with_options_async(request, runtime)
 
+    def list_instance_white_list_with_options(
+        self,
+        request: main_models.ListInstanceWhiteListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListInstanceWhiteListResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.white_list_type):
+            query['whiteListType'] = request.white_list_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListInstanceWhiteList',
+            version = '2019-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListInstanceWhiteListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_instance_white_list_with_options_async(
+        self,
+        request: main_models.ListInstanceWhiteListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListInstanceWhiteListResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.white_list_type):
+            query['whiteListType'] = request.white_list_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListInstanceWhiteList',
+            version = '2019-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListInstanceWhiteListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_instance_white_list(
+        self,
+        request: main_models.ListInstanceWhiteListRequest,
+    ) -> main_models.ListInstanceWhiteListResponse:
+        runtime = RuntimeOptions()
+        return self.list_instance_white_list_with_options(request, runtime)
+
+    async def list_instance_white_list_async(
+        self,
+        request: main_models.ListInstanceWhiteListRequest,
+    ) -> main_models.ListInstanceWhiteListResponse:
+        runtime = RuntimeOptions()
+        return await self.list_instance_white_list_with_options_async(request, runtime)
+
     def list_instances_with_options(
         self,
         request: main_models.ListInstancesRequest,
@@ -1901,6 +2061,84 @@ class Client(OpenApiClient):
     ) -> main_models.ListVirtualHostsResponse:
         runtime = RuntimeOptions()
         return await self.list_virtual_hosts_with_options_async(request, runtime)
+
+    def remove_instance_white_list_with_options(
+        self,
+        request: main_models.RemoveInstanceWhiteListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RemoveInstanceWhiteListResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.white_list_item_id):
+            query['whiteListItemId'] = request.white_list_item_id
+        if not DaraCore.is_null(request.white_list_type):
+            query['whiteListType'] = request.white_list_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RemoveInstanceWhiteList',
+            version = '2019-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RemoveInstanceWhiteListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def remove_instance_white_list_with_options_async(
+        self,
+        request: main_models.RemoveInstanceWhiteListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RemoveInstanceWhiteListResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.white_list_item_id):
+            query['whiteListItemId'] = request.white_list_item_id
+        if not DaraCore.is_null(request.white_list_type):
+            query['whiteListType'] = request.white_list_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RemoveInstanceWhiteList',
+            version = '2019-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RemoveInstanceWhiteListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def remove_instance_white_list(
+        self,
+        request: main_models.RemoveInstanceWhiteListRequest,
+    ) -> main_models.RemoveInstanceWhiteListResponse:
+        runtime = RuntimeOptions()
+        return self.remove_instance_white_list_with_options(request, runtime)
+
+    async def remove_instance_white_list_async(
+        self,
+        request: main_models.RemoveInstanceWhiteListRequest,
+    ) -> main_models.RemoveInstanceWhiteListResponse:
+        runtime = RuntimeOptions()
+        return await self.remove_instance_white_list_with_options_async(request, runtime)
 
     def update_instance_with_options(
         self,

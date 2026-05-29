@@ -1,3 +1,9 @@
+2026-05-29 Version: 1.5.0
+- Support API AddInstanceWhiteList.
+- Support API ListInstanceWhiteList.
+- Support API RemoveInstanceWhiteList.
+
+
 2026-05-15 Version: 1.4.7
 - Update API CreateInstance: add request parameters AuthModel.
 - Update API CreateInstance: add request parameters ServerlessSwitch.
