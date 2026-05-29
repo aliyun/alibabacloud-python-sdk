@@ -137,6 +137,7 @@ class DescribeHybridCloudResourceDetailResponseBodyDomain(DaraModel):
 class DescribeHybridCloudResourceDetailResponseBodyDomainRedirect(DaraModel):
     def __init__(
         self,
+        backend_ports: List[main_models.DescribeHybridCloudResourceDetailResponseBodyDomainRedirectBackendPorts] = None,
         backends: List[str] = None,
         cname_enabled: bool = None,
         connect_timeout: int = None,
@@ -145,6 +146,7 @@ class DescribeHybridCloudResourceDetailResponseBodyDomainRedirect(DaraModel):
         keepalive_requests: int = None,
         keepalive_timeout: int = None,
         loadbalance: str = None,
+        proxy_protocol: bool = None,
         read_timeout: int = None,
         request_headers: List[main_models.DescribeHybridCloudResourceDetailResponseBodyDomainRedirectRequestHeaders] = None,
         retry: bool = None,
@@ -153,6 +155,7 @@ class DescribeHybridCloudResourceDetailResponseBodyDomainRedirect(DaraModel):
         sni_host: str = None,
         write_timeout: int = None,
     ):
+        self.backend_ports = backend_ports
         self.backends = backends
         self.cname_enabled = cname_enabled
         self.connect_timeout = connect_timeout
@@ -161,6 +164,7 @@ class DescribeHybridCloudResourceDetailResponseBodyDomainRedirect(DaraModel):
         self.keepalive_requests = keepalive_requests
         self.keepalive_timeout = keepalive_timeout
         self.loadbalance = loadbalance
+        self.proxy_protocol = proxy_protocol
         self.read_timeout = read_timeout
         self.request_headers = request_headers
         self.retry = retry
@@ -170,6 +174,10 @@ class DescribeHybridCloudResourceDetailResponseBodyDomainRedirect(DaraModel):
         self.write_timeout = write_timeout
 
     def validate(self):
+        if self.backend_ports:
+            for v1 in self.backend_ports:
+                 if v1:
+                    v1.validate()
         if self.request_headers:
             for v1 in self.request_headers:
                  if v1:
@@ -180,6 +188,11 @@ class DescribeHybridCloudResourceDetailResponseBodyDomainRedirect(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        result['BackendPorts'] = []
+        if self.backend_ports is not None:
+            for k1 in self.backend_ports:
+                result['BackendPorts'].append(k1.to_map() if k1 else None)
+
         if self.backends is not None:
             result['Backends'] = self.backends
 
@@ -203,6 +216,9 @@ class DescribeHybridCloudResourceDetailResponseBodyDomainRedirect(DaraModel):
 
         if self.loadbalance is not None:
             result['Loadbalance'] = self.loadbalance
+
+        if self.proxy_protocol is not None:
+            result['ProxyProtocol'] = self.proxy_protocol
 
         if self.read_timeout is not None:
             result['ReadTimeout'] = self.read_timeout
@@ -231,6 +247,12 @@ class DescribeHybridCloudResourceDetailResponseBodyDomainRedirect(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.backend_ports = []
+        if m.get('BackendPorts') is not None:
+            for k1 in m.get('BackendPorts'):
+                temp_model = main_models.DescribeHybridCloudResourceDetailResponseBodyDomainRedirectBackendPorts()
+                self.backend_ports.append(temp_model.from_map(k1))
+
         if m.get('Backends') is not None:
             self.backends = m.get('Backends')
 
@@ -254,6 +276,9 @@ class DescribeHybridCloudResourceDetailResponseBodyDomainRedirect(DaraModel):
 
         if m.get('Loadbalance') is not None:
             self.loadbalance = m.get('Loadbalance')
+
+        if m.get('ProxyProtocol') is not None:
+            self.proxy_protocol = m.get('ProxyProtocol')
 
         if m.get('ReadTimeout') is not None:
             self.read_timeout = m.get('ReadTimeout')
@@ -313,6 +338,49 @@ class DescribeHybridCloudResourceDetailResponseBodyDomainRedirectRequestHeaders(
 
         if m.get('Value') is not None:
             self.value = m.get('Value')
+
+        return self
+
+class DescribeHybridCloudResourceDetailResponseBodyDomainRedirectBackendPorts(DaraModel):
+    def __init__(
+        self,
+        backend_port: int = None,
+        listen_port: int = None,
+        protocol: str = None,
+    ):
+        self.backend_port = backend_port
+        self.listen_port = listen_port
+        self.protocol = protocol
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.backend_port is not None:
+            result['BackendPort'] = self.backend_port
+
+        if self.listen_port is not None:
+            result['ListenPort'] = self.listen_port
+
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BackendPort') is not None:
+            self.backend_port = m.get('BackendPort')
+
+        if m.get('ListenPort') is not None:
+            self.listen_port = m.get('ListenPort')
+
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
 
         return self
 

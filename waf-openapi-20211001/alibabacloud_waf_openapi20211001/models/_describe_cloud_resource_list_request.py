@@ -14,6 +14,7 @@ class DescribeCloudResourceListRequest(DaraModel):
         owner_user_id: str = None,
         port: str = None,
         region_id: str = None,
+        resource_domain: str = None,
         resource_instance_id: str = None,
         resource_manager_resource_group_id: str = None,
         resource_product: str = None,
@@ -26,6 +27,7 @@ class DescribeCloudResourceListRequest(DaraModel):
         self.owner_user_id = owner_user_id
         self.port = port
         self.region_id = region_id
+        self.resource_domain = resource_domain
         self.resource_instance_id = resource_instance_id
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
         self.resource_product = resource_product
@@ -58,6 +60,9 @@ class DescribeCloudResourceListRequest(DaraModel):
 
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+
+        if self.resource_domain is not None:
+            result['ResourceDomain'] = self.resource_domain
 
         if self.resource_instance_id is not None:
             result['ResourceInstanceId'] = self.resource_instance_id
@@ -92,6 +97,9 @@ class DescribeCloudResourceListRequest(DaraModel):
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+
+        if m.get('ResourceDomain') is not None:
+            self.resource_domain = m.get('ResourceDomain')
 
         if m.get('ResourceInstanceId') is not None:
             self.resource_instance_id = m.get('ResourceInstanceId')

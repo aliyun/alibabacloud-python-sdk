@@ -12,6 +12,7 @@ class DescribeProductInstancesRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
         region_id: str = None,
+        resource_domain: str = None,
         resource_instance_access_status: str = None,
         resource_instance_id: str = None,
         resource_instance_ip: str = None,
@@ -39,6 +40,7 @@ class DescribeProductInstancesRequest(DaraModel):
         # *   **cn-hangzhou**: Chinese mainland.
         # *   **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
+        self.resource_domain = resource_domain
         self.resource_instance_access_status = resource_instance_access_status
         # The ID of the instance.
         self.resource_instance_id = resource_instance_id
@@ -95,6 +97,9 @@ class DescribeProductInstancesRequest(DaraModel):
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
+        if self.resource_domain is not None:
+            result['ResourceDomain'] = self.resource_domain
+
         if self.resource_instance_access_status is not None:
             result['ResourceInstanceAccessStatus'] = self.resource_instance_access_status
 
@@ -140,6 +145,9 @@ class DescribeProductInstancesRequest(DaraModel):
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+
+        if m.get('ResourceDomain') is not None:
+            self.resource_domain = m.get('ResourceDomain')
 
         if m.get('ResourceInstanceAccessStatus') is not None:
             self.resource_instance_access_status = m.get('ResourceInstanceAccessStatus')

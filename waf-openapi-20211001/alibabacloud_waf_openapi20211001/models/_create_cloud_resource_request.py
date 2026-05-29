@@ -328,6 +328,7 @@ class CreateCloudResourceRequestListen(DaraModel):
         certificates: List[main_models.CreateCloudResourceRequestListenCertificates] = None,
         cipher_suite: int = None,
         custom_ciphers: List[str] = None,
+        domain: str = None,
         enable_tlsv_3: bool = None,
         http_2enabled: bool = None,
         port: int = None,
@@ -347,6 +348,7 @@ class CreateCloudResourceRequestListen(DaraModel):
         self.cipher_suite = cipher_suite
         # The custom cipher suites that you want to add. This parameter is available only if you set **CipherSuite** to **99**.
         self.custom_ciphers = custom_ciphers
+        self.domain = domain
         # Specifies whether to support TLS 1.3. This parameter is available only if you specify **HttpsPorts**. Valid values:
         # 
         # *   **true**
@@ -358,19 +360,13 @@ class CreateCloudResourceRequestListen(DaraModel):
         # *   **false** (default)
         self.http_2enabled = http_2enabled
         # The port of the cloud service.
-        # 
-        # This parameter is required.
         self.port = port
         # The protocol type. Valid values:
         # 
         # *   **http**
         # *   **https**
-        # 
-        # This parameter is required.
         self.protocol = protocol
         # The instance ID of the cloud service.
-        # 
-        # This parameter is required.
         self.resource_instance_id = resource_instance_id
         # The type of the cloud service that you want to add. Valid values:
         # 
@@ -411,6 +407,9 @@ class CreateCloudResourceRequestListen(DaraModel):
         if self.custom_ciphers is not None:
             result['CustomCiphers'] = self.custom_ciphers
 
+        if self.domain is not None:
+            result['Domain'] = self.domain
+
         if self.enable_tlsv_3 is not None:
             result['EnableTLSv3'] = self.enable_tlsv_3
 
@@ -450,6 +449,9 @@ class CreateCloudResourceRequestListen(DaraModel):
 
         if m.get('CustomCiphers') is not None:
             self.custom_ciphers = m.get('CustomCiphers')
+
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
 
         if m.get('EnableTLSv3') is not None:
             self.enable_tlsv_3 = m.get('EnableTLSv3')

@@ -68,6 +68,7 @@ class DescribeProductInstancesResponseBodyProductInstances(DaraModel):
         access_port_and_protocols: List[main_models.DescribeProductInstancesResponseBodyProductInstancesAccessPortAndProtocols] = None,
         access_ports: List[int] = None,
         owner_user_id: str = None,
+        resource_domain: str = None,
         resource_instance_access_status: str = None,
         resource_instance_edition: str = None,
         resource_instance_id: str = None,
@@ -84,6 +85,7 @@ class DescribeProductInstancesResponseBodyProductInstances(DaraModel):
         self.access_ports = access_ports
         # The ID of the Alibaba Cloud account to which the resource belongs.
         self.owner_user_id = owner_user_id
+        self.resource_domain = resource_domain
         self.resource_instance_access_status = resource_instance_access_status
         self.resource_instance_edition = resource_instance_edition
         # The ID of the instance.
@@ -147,6 +149,9 @@ class DescribeProductInstancesResponseBodyProductInstances(DaraModel):
         if self.owner_user_id is not None:
             result['OwnerUserId'] = self.owner_user_id
 
+        if self.resource_domain is not None:
+            result['ResourceDomain'] = self.resource_domain
+
         if self.resource_instance_access_status is not None:
             result['ResourceInstanceAccessStatus'] = self.resource_instance_access_status
 
@@ -197,6 +202,9 @@ class DescribeProductInstancesResponseBodyProductInstances(DaraModel):
 
         if m.get('OwnerUserId') is not None:
             self.owner_user_id = m.get('OwnerUserId')
+
+        if m.get('ResourceDomain') is not None:
+            self.resource_domain = m.get('ResourceDomain')
 
         if m.get('ResourceInstanceAccessStatus') is not None:
             self.resource_instance_access_status = m.get('ResourceInstanceAccessStatus')

@@ -80,6 +80,7 @@ class DescribeCloudResourceListResponseBodyCloudResourceList(DaraModel):
         cloud_resource_id: str = None,
         port: int = None,
         protocol: str = None,
+        resource_domain: str = None,
         resource_instance_id: str = None,
         resource_manager_resource_group_id: str = None,
         resource_product: str = None,
@@ -88,6 +89,7 @@ class DescribeCloudResourceListResponseBodyCloudResourceList(DaraModel):
         self.cloud_resource_id = cloud_resource_id
         self.port = port
         self.protocol = protocol
+        self.resource_domain = resource_domain
         self.resource_instance_id = resource_instance_id
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
         self.resource_product = resource_product
@@ -109,6 +111,9 @@ class DescribeCloudResourceListResponseBodyCloudResourceList(DaraModel):
 
         if self.protocol is not None:
             result['Protocol'] = self.protocol
+
+        if self.resource_domain is not None:
+            result['ResourceDomain'] = self.resource_domain
 
         if self.resource_instance_id is not None:
             result['ResourceInstanceId'] = self.resource_instance_id
@@ -134,6 +139,9 @@ class DescribeCloudResourceListResponseBodyCloudResourceList(DaraModel):
 
         if m.get('Protocol') is not None:
             self.protocol = m.get('Protocol')
+
+        if m.get('ResourceDomain') is not None:
+            self.resource_domain = m.get('ResourceDomain')
 
         if m.get('ResourceInstanceId') is not None:
             self.resource_instance_id = m.get('ResourceInstanceId')

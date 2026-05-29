@@ -7043,6 +7043,8 @@ class Client(OpenApiClient):
             query['Port'] = request.port
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_domain):
+            query['ResourceDomain'] = request.resource_domain
         if not DaraCore.is_null(request.resource_instance_id):
             query['ResourceInstanceId'] = request.resource_instance_id
         if not DaraCore.is_null(request.resource_manager_resource_group_id):
@@ -7089,6 +7091,8 @@ class Client(OpenApiClient):
             query['Port'] = request.port
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_domain):
+            query['ResourceDomain'] = request.resource_domain
         if not DaraCore.is_null(request.resource_instance_id):
             query['ResourceInstanceId'] = request.resource_instance_id
         if not DaraCore.is_null(request.resource_manager_resource_group_id):
@@ -12837,6 +12841,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_domain):
+            query['ResourceDomain'] = request.resource_domain
         if not DaraCore.is_null(request.resource_instance_access_status):
             query['ResourceInstanceAccessStatus'] = request.resource_instance_access_status
         if not DaraCore.is_null(request.resource_instance_id):
@@ -12891,6 +12897,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_domain):
+            query['ResourceDomain'] = request.resource_domain
         if not DaraCore.is_null(request.resource_instance_access_status):
             query['ResourceInstanceAccessStatus'] = request.resource_instance_access_status
         if not DaraCore.is_null(request.resource_instance_id):
