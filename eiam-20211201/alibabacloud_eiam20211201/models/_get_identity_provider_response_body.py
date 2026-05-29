@@ -613,6 +613,8 @@ class GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfig(DaraModel)
         id_psso_url: str = None,
         max_clock_skew: int = None,
         require_request_signed: bool = None,
+        want_assertions_signed: bool = None,
+        want_response_signed: bool = None,
     ):
         self.binding_method = binding_method
         self.certificates = certificates
@@ -620,6 +622,8 @@ class GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfig(DaraModel)
         self.id_psso_url = id_psso_url
         self.max_clock_skew = max_clock_skew
         self.require_request_signed = require_request_signed
+        self.want_assertions_signed = want_assertions_signed
+        self.want_response_signed = want_response_signed
 
     def validate(self):
         if self.certificates:
@@ -652,6 +656,12 @@ class GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfig(DaraModel)
         if self.require_request_signed is not None:
             result['RequireRequestSigned'] = self.require_request_signed
 
+        if self.want_assertions_signed is not None:
+            result['WantAssertionsSigned'] = self.want_assertions_signed
+
+        if self.want_response_signed is not None:
+            result['WantResponseSigned'] = self.want_response_signed
+
         return result
 
     def from_map(self, m: dict = None):
@@ -676,6 +686,12 @@ class GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfig(DaraModel)
 
         if m.get('RequireRequestSigned') is not None:
             self.require_request_signed = m.get('RequireRequestSigned')
+
+        if m.get('WantAssertionsSigned') is not None:
+            self.want_assertions_signed = m.get('WantAssertionsSigned')
+
+        if m.get('WantResponseSigned') is not None:
+            self.want_response_signed = m.get('WantResponseSigned')
 
         return self
 

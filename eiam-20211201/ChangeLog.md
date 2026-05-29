@@ -1,3 +1,12 @@
+2026-05-29 Version: 2.15.11
+- Update API CreateIdentityProvider: add request parameters SamlConfig.WantAssertionsSigned.
+- Update API CreateIdentityProvider: add request parameters SamlConfig.WantResponseSigned.
+- Update API GetIdentityProvider: add response parameters Body.IdentityProviderDetail.SamlConfig.WantAssertionsSigned.
+- Update API GetIdentityProvider: add response parameters Body.IdentityProviderDetail.SamlConfig.WantResponseSigned.
+- Update API UpdateIdentityProvider: add request parameters SamlConfig.WantAssertionsSigned.
+- Update API UpdateIdentityProvider: add request parameters SamlConfig.WantResponseSigned.
+
+
 2026-05-20 Version: 2.15.10
 - Update API GetInstanceLicense: add response parameters Body.License.InstanceLicenseDetail.MimApplicationLicenseStatus.
 - Update API GetInstanceLicense: add response parameters Body.License.InstanceLicenseDetail.PrepaidActiveUserNumber.
