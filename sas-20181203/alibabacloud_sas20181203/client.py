@@ -50626,6 +50626,8 @@ class Client(OpenApiClient):
             query['DiskType'] = request.disk_type
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
         if not DaraCore.is_null(request.instance_name):
             query['InstanceName'] = request.instance_name
         if not DaraCore.is_null(request.page_size):
@@ -50668,6 +50670,8 @@ class Client(OpenApiClient):
             query['DiskType'] = request.disk_type
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
         if not DaraCore.is_null(request.instance_name):
             query['InstanceName'] = request.instance_name
         if not DaraCore.is_null(request.page_size):
