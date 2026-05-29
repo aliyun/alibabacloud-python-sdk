@@ -48,6 +48,9 @@ from ._delete_project_response import DeleteProjectResponse
 from ._delete_quota_plan_request import DeleteQuotaPlanRequest
 from ._delete_quota_plan_response_body import DeleteQuotaPlanResponseBody
 from ._delete_quota_plan_response import DeleteQuotaPlanResponse
+from ._delete_role_request import DeleteRoleRequest
+from ._delete_role_response_body import DeleteRoleResponseBody
+from ._delete_role_response import DeleteRoleResponse
 from ._get_compute_effective_plan_response_body import GetComputeEffectivePlanResponseBody
 from ._get_compute_effective_plan_response import GetComputeEffectivePlanResponse
 from ._get_compute_quota_plan_response_body import GetComputeQuotaPlanResponseBody
@@ -639,6 +642,9 @@ __all__ = [
     DeleteQuotaPlanRequest,
     DeleteQuotaPlanResponseBody,
     DeleteQuotaPlanResponse,
+    DeleteRoleRequest,
+    DeleteRoleResponseBody,
+    DeleteRoleResponse,
     GetComputeEffectivePlanResponseBody,
     GetComputeEffectivePlanResponse,
     GetComputeQuotaPlanResponseBody,

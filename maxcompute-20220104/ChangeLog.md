@@ -1,3 +1,7 @@
+2026-05-29 Version: 7.1.0
+- Support API DeleteRole.
+
+
 2026-05-27 Version: 7.0.1
 - Generated python 2022-01-04 for MaxCompute.
 

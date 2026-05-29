@@ -1571,6 +1571,82 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_quota_plan_with_options_async(nickname, plan_name, request, headers, runtime)
 
+    def delete_role_with_options(
+        self,
+        project_name: str,
+        role_name: str,
+        request: main_models.DeleteRoleRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteRoleResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteRole',
+            version = '2022-01-04',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/projects/{DaraURL.percent_encode(project_name)}/roles/{DaraURL.percent_encode(role_name)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteRoleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_role_with_options_async(
+        self,
+        project_name: str,
+        role_name: str,
+        request: main_models.DeleteRoleRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteRoleResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteRole',
+            version = '2022-01-04',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/projects/{DaraURL.percent_encode(project_name)}/roles/{DaraURL.percent_encode(role_name)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteRoleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_role(
+        self,
+        project_name: str,
+        role_name: str,
+        request: main_models.DeleteRoleRequest,
+    ) -> main_models.DeleteRoleResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_role_with_options(project_name, role_name, request, headers, runtime)
+
+    async def delete_role_async(
+        self,
+        project_name: str,
+        role_name: str,
+        request: main_models.DeleteRoleRequest,
+    ) -> main_models.DeleteRoleResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_role_with_options_async(project_name, role_name, request, headers, runtime)
+
     def get_compute_effective_plan_with_options(
         self,
         nickname: str,
