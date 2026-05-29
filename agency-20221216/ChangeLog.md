@@ -1,3 +1,8 @@
+2026-05-29 Version: 1.11.0
+- Support API AutomaticWriteOff.
+- Support API QueryAutomaticWriteOffChangeRecords.
+
+
 2026-05-19 Version: 1.10.0
 - Support API InviteSubReseller.
 

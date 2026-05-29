@@ -2,6 +2,9 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from ._automatic_write_off_request import AutomaticWriteOffRequest
+from ._automatic_write_off_response_body import AutomaticWriteOffResponseBody
+from ._automatic_write_off_response import AutomaticWriteOffResponse
 from ._cancel_coupon_request import CancelCouponRequest
 from ._cancel_coupon_response_body import CancelCouponResponseBody
 from ._cancel_coupon_response import CancelCouponResponse
@@ -105,6 +108,9 @@ from ._list_tier_2coupon_approval_response import ListTier2CouponApprovalRespons
 from ._process_approval_request import ProcessApprovalRequest
 from ._process_approval_response_body import ProcessApprovalResponseBody
 from ._process_approval_response import ProcessApprovalResponse
+from ._query_automatic_write_off_change_records_request import QueryAutomaticWriteOffChangeRecordsRequest
+from ._query_automatic_write_off_change_records_response_body import QueryAutomaticWriteOffChangeRecordsResponseBody
+from ._query_automatic_write_off_change_records_response import QueryAutomaticWriteOffChangeRecordsResponse
 from ._query_reversed_deduction_history_request import QueryReversedDeductionHistoryRequest
 from ._query_reversed_deduction_history_response_body import QueryReversedDeductionHistoryResponseBody
 from ._query_reversed_deduction_history_response import QueryReversedDeductionHistoryResponse
@@ -165,10 +171,14 @@ from ._list_coupon_usage_response_body import ListCouponUsageResponseBodyData
 from ._list_coupon_usage_response_body import ListCouponUsageResponseBodyPageInfo
 from ._list_export_tasks_response_body import ListExportTasksResponseBodyData
 from ._list_tier_2coupon_approval_response_body import ListTier2CouponApprovalResponseBodyData
+from ._query_automatic_write_off_change_records_response_body import QueryAutomaticWriteOffChangeRecordsResponseBodyData
 from ._query_reversed_deduction_history_response_body import QueryReversedDeductionHistoryResponseBodyData
 from ._quota_list_export_paged_response_body import QuotaListExportPagedResponseBodyData
 
 __all__ = [
+    AutomaticWriteOffRequest,
+    AutomaticWriteOffResponseBody,
+    AutomaticWriteOffResponse,
     CancelCouponRequest,
     CancelCouponResponseBody,
     CancelCouponResponse,
@@ -272,6 +282,9 @@ __all__ = [
     ProcessApprovalRequest,
     ProcessApprovalResponseBody,
     ProcessApprovalResponse,
+    QueryAutomaticWriteOffChangeRecordsRequest,
+    QueryAutomaticWriteOffChangeRecordsResponseBody,
+    QueryAutomaticWriteOffChangeRecordsResponse,
     QueryReversedDeductionHistoryRequest,
     QueryReversedDeductionHistoryResponseBody,
     QueryReversedDeductionHistoryResponse,
@@ -332,6 +345,7 @@ __all__ = [
     ListCouponUsageResponseBodyPageInfo,
     ListExportTasksResponseBodyData,
     ListTier2CouponApprovalResponseBodyData,
+    QueryAutomaticWriteOffChangeRecordsResponseBodyData,
     QueryReversedDeductionHistoryResponseBodyData,
     QuotaListExportPagedResponseBodyData
 ]
