@@ -1,3 +1,9 @@
+2026-06-01 Version: 1.2.1
+- Update API CreateDigitalEmployee: add request parameters body.toolPolicy.
+- Update API GetDigitalEmployee: add response parameters Body.toolPolicy.
+- Update API UpdateDigitalEmployee: add request parameters body.toolPolicy.
+
+
 2026-05-27 Version: 1.2.0
 - Support API CreateMcpService.
 - Support API DeleteMcpService.

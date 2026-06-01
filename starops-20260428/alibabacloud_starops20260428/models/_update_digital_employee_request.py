@@ -16,6 +16,7 @@ class UpdateDigitalEmployeeRequest(DaraModel):
         display_name: str = None,
         knowledges: main_models.UpdateDigitalEmployeeRequestKnowledges = None,
         role_arn: str = None,
+        tool_policy: main_models.UpdateDigitalEmployeeRequestToolPolicy = None,
     ):
         self.attributes = attributes
         self.default_rule = default_rule
@@ -23,10 +24,14 @@ class UpdateDigitalEmployeeRequest(DaraModel):
         self.display_name = display_name
         self.knowledges = knowledges
         self.role_arn = role_arn
+        # 数字员工工具调用安全策略配置。
+        self.tool_policy = tool_policy
 
     def validate(self):
         if self.knowledges:
             self.knowledges.validate()
+        if self.tool_policy:
+            self.tool_policy.validate()
 
     def to_map(self):
         result = dict()
@@ -51,6 +56,9 @@ class UpdateDigitalEmployeeRequest(DaraModel):
         if self.role_arn is not None:
             result['roleArn'] = self.role_arn
 
+        if self.tool_policy is not None:
+            result['toolPolicy'] = self.tool_policy.to_map()
+
         return result
 
     def from_map(self, m: dict = None):
@@ -73,6 +81,140 @@ class UpdateDigitalEmployeeRequest(DaraModel):
 
         if m.get('roleArn') is not None:
             self.role_arn = m.get('roleArn')
+
+        if m.get('toolPolicy') is not None:
+            temp_model = main_models.UpdateDigitalEmployeeRequestToolPolicy()
+            self.tool_policy = temp_model.from_map(m.get('toolPolicy'))
+
+        return self
+
+class UpdateDigitalEmployeeRequestToolPolicy(DaraModel):
+    def __init__(
+        self,
+        aliyun: main_models.UpdateDigitalEmployeeRequestToolPolicyAliyun = None,
+    ):
+        # Aliyun MCP 工具调用安全策略配置。
+        self.aliyun = aliyun
+
+    def validate(self):
+        if self.aliyun:
+            self.aliyun.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.aliyun is not None:
+            result['aliyun'] = self.aliyun.to_map()
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('aliyun') is not None:
+            temp_model = main_models.UpdateDigitalEmployeeRequestToolPolicyAliyun()
+            self.aliyun = temp_model.from_map(m.get('aliyun'))
+
+        return self
+
+class UpdateDigitalEmployeeRequestToolPolicyAliyun(DaraModel):
+    def __init__(
+        self,
+        enable: bool = None,
+        statements: List[main_models.UpdateDigitalEmployeeRequestToolPolicyAliyunStatements] = None,
+    ):
+        # 是否启用 Aliyun MCP 工具策略。
+        self.enable = enable
+        # Aliyun OpenAPI 工具策略语句列表。
+        self.statements = statements
+
+    def validate(self):
+        if self.statements:
+            for v1 in self.statements:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.enable is not None:
+            result['enable'] = self.enable
+
+        result['statements'] = []
+        if self.statements is not None:
+            for k1 in self.statements:
+                result['statements'].append(k1.to_map() if k1 else None)
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enable') is not None:
+            self.enable = m.get('enable')
+
+        self.statements = []
+        if m.get('statements') is not None:
+            for k1 in m.get('statements'):
+                temp_model = main_models.UpdateDigitalEmployeeRequestToolPolicyAliyunStatements()
+                self.statements.append(temp_model.from_map(k1))
+
+        return self
+
+class UpdateDigitalEmployeeRequestToolPolicyAliyunStatements(DaraModel):
+    def __init__(
+        self,
+        actions: List[str] = None,
+        api_version: str = None,
+        decision: str = None,
+        product: str = None,
+    ):
+        # Aliyun OpenAPI Action 列表，格式为 product:ApiName、product:Prefix* 或 product:*。
+        self.actions = actions
+        # 本条语句对应的 Aliyun OpenAPI API 版本。
+        self.api_version = api_version
+        # 命中该 API 后的执行策略。
+        self.decision = decision
+        # 本条语句对应的 Aliyun OpenAPI 产品名。
+        self.product = product
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.actions is not None:
+            result['actions'] = self.actions
+
+        if self.api_version is not None:
+            result['apiVersion'] = self.api_version
+
+        if self.decision is not None:
+            result['decision'] = self.decision
+
+        if self.product is not None:
+            result['product'] = self.product
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('actions') is not None:
+            self.actions = m.get('actions')
+
+        if m.get('apiVersion') is not None:
+            self.api_version = m.get('apiVersion')
+
+        if m.get('decision') is not None:
+            self.decision = m.get('decision')
+
+        if m.get('product') is not None:
+            self.product = m.get('product')
 
         return self
 

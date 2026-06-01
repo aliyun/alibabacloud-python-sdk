@@ -90,6 +90,9 @@ from ._create_chat_request import CreateChatRequestMessages
 from ._create_chat_response_body import CreateChatResponseBodyMessages
 from ._create_digital_employee_request import CreateDigitalEmployeeRequestKnowledgesBailian
 from ._create_digital_employee_request import CreateDigitalEmployeeRequestKnowledges
+from ._create_digital_employee_request import CreateDigitalEmployeeRequestToolPolicyAliyunStatements
+from ._create_digital_employee_request import CreateDigitalEmployeeRequestToolPolicyAliyun
+from ._create_digital_employee_request import CreateDigitalEmployeeRequestToolPolicy
 from ._create_digital_employee_skill_request import CreateDigitalEmployeeSkillRequestFiles
 from ._create_mcp_service_request import CreateMcpServiceRequestConnectionAuth
 from ._create_mcp_service_request import CreateMcpServiceRequestConnection
@@ -101,6 +104,9 @@ from ._fetch_remote_mcp_tools_request import FetchRemoteMcpToolsRequestConnectio
 from ._fetch_remote_mcp_tools_request import FetchRemoteMcpToolsRequestNetwork
 from ._get_digital_employee_response_body import GetDigitalEmployeeResponseBodyKnowledgesBailian
 from ._get_digital_employee_response_body import GetDigitalEmployeeResponseBodyKnowledges
+from ._get_digital_employee_response_body import GetDigitalEmployeeResponseBodyToolPolicyAliyunStatements
+from ._get_digital_employee_response_body import GetDigitalEmployeeResponseBodyToolPolicyAliyun
+from ._get_digital_employee_response_body import GetDigitalEmployeeResponseBodyToolPolicy
 from ._get_digital_employee_skill_response_body import GetDigitalEmployeeSkillResponseBodyFiles
 from ._get_mcp_service_response_body import GetMcpServiceResponseBodyMcpServiceConnectionAuth
 from ._get_mcp_service_response_body import GetMcpServiceResponseBodyMcpServiceConnection
@@ -127,6 +133,9 @@ from ._list_threads_response_body import ListThreadsResponseBodyThreadsVariables
 from ._list_threads_response_body import ListThreadsResponseBodyThreads
 from ._update_digital_employee_request import UpdateDigitalEmployeeRequestKnowledgesBailian
 from ._update_digital_employee_request import UpdateDigitalEmployeeRequestKnowledges
+from ._update_digital_employee_request import UpdateDigitalEmployeeRequestToolPolicyAliyunStatements
+from ._update_digital_employee_request import UpdateDigitalEmployeeRequestToolPolicyAliyun
+from ._update_digital_employee_request import UpdateDigitalEmployeeRequestToolPolicy
 from ._update_digital_employee_skill_request import UpdateDigitalEmployeeSkillRequestFiles
 from ._update_mcp_service_request import UpdateMcpServiceRequestConnectionAuth
 from ._update_mcp_service_request import UpdateMcpServiceRequestConnection
@@ -222,6 +231,9 @@ __all__ = [
     CreateChatResponseBodyMessages,
     CreateDigitalEmployeeRequestKnowledgesBailian,
     CreateDigitalEmployeeRequestKnowledges,
+    CreateDigitalEmployeeRequestToolPolicyAliyunStatements,
+    CreateDigitalEmployeeRequestToolPolicyAliyun,
+    CreateDigitalEmployeeRequestToolPolicy,
     CreateDigitalEmployeeSkillRequestFiles,
     CreateMcpServiceRequestConnectionAuth,
     CreateMcpServiceRequestConnection,
@@ -233,6 +245,9 @@ __all__ = [
     FetchRemoteMcpToolsRequestNetwork,
     GetDigitalEmployeeResponseBodyKnowledgesBailian,
     GetDigitalEmployeeResponseBodyKnowledges,
+    GetDigitalEmployeeResponseBodyToolPolicyAliyunStatements,
+    GetDigitalEmployeeResponseBodyToolPolicyAliyun,
+    GetDigitalEmployeeResponseBodyToolPolicy,
     GetDigitalEmployeeSkillResponseBodyFiles,
     GetMcpServiceResponseBodyMcpServiceConnectionAuth,
     GetMcpServiceResponseBodyMcpServiceConnection,
@@ -259,6 +274,9 @@ __all__ = [
     ListThreadsResponseBodyThreads,
     UpdateDigitalEmployeeRequestKnowledgesBailian,
     UpdateDigitalEmployeeRequestKnowledges,
+    UpdateDigitalEmployeeRequestToolPolicyAliyunStatements,
+    UpdateDigitalEmployeeRequestToolPolicyAliyun,
+    UpdateDigitalEmployeeRequestToolPolicy,
     UpdateDigitalEmployeeSkillRequestFiles,
     UpdateMcpServiceRequestConnectionAuth,
     UpdateMcpServiceRequestConnection,

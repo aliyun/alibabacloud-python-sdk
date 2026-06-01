@@ -256,6 +256,8 @@ class Client(OpenApiClient):
             body['roleArn'] = request.role_arn
         if not DaraCore.is_null(request.tags):
             body['tags'] = request.tags
+        if not DaraCore.is_null(request.tool_policy):
+            body['toolPolicy'] = request.tool_policy
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             body = Utils.parse_to_map(body)
@@ -302,6 +304,8 @@ class Client(OpenApiClient):
             body['roleArn'] = request.role_arn
         if not DaraCore.is_null(request.tags):
             body['tags'] = request.tags
+        if not DaraCore.is_null(request.tool_policy):
+            body['toolPolicy'] = request.tool_policy
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             body = Utils.parse_to_map(body)
@@ -2155,6 +2159,8 @@ class Client(OpenApiClient):
             body['knowledges'] = request.knowledges
         if not DaraCore.is_null(request.role_arn):
             body['roleArn'] = request.role_arn
+        if not DaraCore.is_null(request.tool_policy):
+            body['toolPolicy'] = request.tool_policy
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             body = Utils.parse_to_map(body)
@@ -2196,6 +2202,8 @@ class Client(OpenApiClient):
             body['knowledges'] = request.knowledges
         if not DaraCore.is_null(request.role_arn):
             body['roleArn'] = request.role_arn
+        if not DaraCore.is_null(request.tool_policy):
+            body['toolPolicy'] = request.tool_policy
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             body = Utils.parse_to_map(body)
