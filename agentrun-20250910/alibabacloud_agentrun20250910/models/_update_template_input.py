@@ -17,6 +17,7 @@ class UpdateTemplateInput(DaraModel):
         credential_configuration: main_models.CredentialConfiguration = None,
         description: str = None,
         enable_agent: bool = None,
+        enable_pre_stop: bool = None,
         environment_variables: Dict[str, str] = None,
         execution_role_arn: str = None,
         log_configuration: main_models.LogConfiguration = None,
@@ -24,6 +25,7 @@ class UpdateTemplateInput(DaraModel):
         nas_config: main_models.NASConfig = None,
         network_configuration: main_models.NetworkConfiguration = None,
         oss_configuration: List[main_models.OssConfiguration] = None,
+        pre_stop_timeout_in_seconds: int = None,
         sandbox_idle_timeout_in_seconds: int = None,
         sandbox_ttlin_seconds: int = None,
         scaling_config: main_models.ScalingConfig = None,
@@ -39,6 +41,7 @@ class UpdateTemplateInput(DaraModel):
         self.credential_configuration = credential_configuration
         self.description = description
         self.enable_agent = enable_agent
+        self.enable_pre_stop = enable_pre_stop
         self.environment_variables = environment_variables
         self.execution_role_arn = execution_role_arn
         self.log_configuration = log_configuration
@@ -47,6 +50,7 @@ class UpdateTemplateInput(DaraModel):
         self.nas_config = nas_config
         self.network_configuration = network_configuration
         self.oss_configuration = oss_configuration
+        self.pre_stop_timeout_in_seconds = pre_stop_timeout_in_seconds
         # 沙箱空闲超时时间（秒）
         self.sandbox_idle_timeout_in_seconds = sandbox_idle_timeout_in_seconds
         # 沙箱存活时间（秒）
@@ -102,6 +106,9 @@ class UpdateTemplateInput(DaraModel):
         if self.enable_agent is not None:
             result['enableAgent'] = self.enable_agent
 
+        if self.enable_pre_stop is not None:
+            result['enablePreStop'] = self.enable_pre_stop
+
         if self.environment_variables is not None:
             result['environmentVariables'] = self.environment_variables
 
@@ -124,6 +131,9 @@ class UpdateTemplateInput(DaraModel):
         if self.oss_configuration is not None:
             for k1 in self.oss_configuration:
                 result['ossConfiguration'].append(k1.to_map() if k1 else None)
+
+        if self.pre_stop_timeout_in_seconds is not None:
+            result['preStopTimeoutInSeconds'] = self.pre_stop_timeout_in_seconds
 
         if self.sandbox_idle_timeout_in_seconds is not None:
             result['sandboxIdleTimeoutInSeconds'] = self.sandbox_idle_timeout_in_seconds
@@ -168,6 +178,9 @@ class UpdateTemplateInput(DaraModel):
         if m.get('enableAgent') is not None:
             self.enable_agent = m.get('enableAgent')
 
+        if m.get('enablePreStop') is not None:
+            self.enable_pre_stop = m.get('enablePreStop')
+
         if m.get('environmentVariables') is not None:
             self.environment_variables = m.get('environmentVariables')
 
@@ -194,6 +207,9 @@ class UpdateTemplateInput(DaraModel):
             for k1 in m.get('ossConfiguration'):
                 temp_model = main_models.OssConfiguration()
                 self.oss_configuration.append(temp_model.from_map(k1))
+
+        if m.get('preStopTimeoutInSeconds') is not None:
+            self.pre_stop_timeout_in_seconds = m.get('preStopTimeoutInSeconds')
 
         if m.get('sandboxIdleTimeoutInSeconds') is not None:
             self.sandbox_idle_timeout_in_seconds = m.get('sandboxIdleTimeoutInSeconds')

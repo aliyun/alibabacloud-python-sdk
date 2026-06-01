@@ -18,6 +18,7 @@ class Template(DaraModel):
         description: str = None,
         disk_size: int = None,
         enable_agent: bool = None,
+        enable_pre_stop: bool = None,
         environment_variables: Dict[str, str] = None,
         execution_role_arn: str = None,
         last_updated_at: str = None,
@@ -28,6 +29,7 @@ class Template(DaraModel):
         nas_config: main_models.NASConfig = None,
         network_configuration: main_models.NetworkConfiguration = None,
         oss_configuration: List[main_models.OssConfiguration] = None,
+        pre_stop_timeout_in_seconds: int = None,
         resource_name: str = None,
         sandbox_idle_timeout_in_seconds: str = None,
         sandbox_ttlin_seconds: str = None,
@@ -51,6 +53,7 @@ class Template(DaraModel):
         self.description = description
         self.disk_size = disk_size
         self.enable_agent = enable_agent
+        self.enable_pre_stop = enable_pre_stop
         self.environment_variables = environment_variables
         self.execution_role_arn = execution_role_arn
         self.last_updated_at = last_updated_at
@@ -62,6 +65,7 @@ class Template(DaraModel):
         self.nas_config = nas_config
         self.network_configuration = network_configuration
         self.oss_configuration = oss_configuration
+        self.pre_stop_timeout_in_seconds = pre_stop_timeout_in_seconds
         self.resource_name = resource_name
         self.sandbox_idle_timeout_in_seconds = sandbox_idle_timeout_in_seconds
         self.sandbox_ttlin_seconds = sandbox_ttlin_seconds
@@ -129,6 +133,9 @@ class Template(DaraModel):
         if self.enable_agent is not None:
             result['enableAgent'] = self.enable_agent
 
+        if self.enable_pre_stop is not None:
+            result['enablePreStop'] = self.enable_pre_stop
+
         if self.environment_variables is not None:
             result['environmentVariables'] = self.environment_variables
 
@@ -160,6 +167,9 @@ class Template(DaraModel):
         if self.oss_configuration is not None:
             for k1 in self.oss_configuration:
                 result['ossConfiguration'].append(k1.to_map() if k1 else None)
+
+        if self.pre_stop_timeout_in_seconds is not None:
+            result['preStopTimeoutInSeconds'] = self.pre_stop_timeout_in_seconds
 
         if self.resource_name is not None:
             result['resourceName'] = self.resource_name
@@ -230,6 +240,9 @@ class Template(DaraModel):
         if m.get('enableAgent') is not None:
             self.enable_agent = m.get('enableAgent')
 
+        if m.get('enablePreStop') is not None:
+            self.enable_pre_stop = m.get('enablePreStop')
+
         if m.get('environmentVariables') is not None:
             self.environment_variables = m.get('environmentVariables')
 
@@ -267,6 +280,9 @@ class Template(DaraModel):
             for k1 in m.get('ossConfiguration'):
                 temp_model = main_models.OssConfiguration()
                 self.oss_configuration.append(temp_model.from_map(k1))
+
+        if m.get('preStopTimeoutInSeconds') is not None:
+            self.pre_stop_timeout_in_seconds = m.get('preStopTimeoutInSeconds')
 
         if m.get('resourceName') is not None:
             self.resource_name = m.get('resourceName')
