@@ -23,6 +23,7 @@ class AddClientUserDefineRuleRequest(DaraModel):
         proc_path: str = None,
         registry_content: str = None,
         registry_key: str = None,
+        target_default: str = None,
         type: int = None,
     ):
         # The action of the custom defense rule. Valid values:
@@ -68,6 +69,7 @@ class AddClientUserDefineRuleRequest(DaraModel):
         self.registry_content = registry_content
         # The registry key.
         self.registry_key = registry_key
+        self.target_default = target_default
         # The type of the custom defense rule. Valid values:
         # 
         # *   **1**: Process hash
@@ -140,6 +142,9 @@ class AddClientUserDefineRuleRequest(DaraModel):
         if self.registry_key is not None:
             result['RegistryKey'] = self.registry_key
 
+        if self.target_default is not None:
+            result['TargetDefault'] = self.target_default
+
         if self.type is not None:
             result['Type'] = self.type
 
@@ -194,6 +199,9 @@ class AddClientUserDefineRuleRequest(DaraModel):
 
         if m.get('RegistryKey') is not None:
             self.registry_key = m.get('RegistryKey')
+
+        if m.get('TargetDefault') is not None:
+            self.target_default = m.get('TargetDefault')
 
         if m.get('Type') is not None:
             self.type = m.get('Type')

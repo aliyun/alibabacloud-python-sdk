@@ -116,6 +116,8 @@ class ListUnknownThreatDetectEventResponseBodyPageInfo(DaraModel):
 class ListUnknownThreatDetectEventResponseBodyData(DaraModel):
     def __init__(
         self,
+        analyze_desc: str = None,
+        analyze_result: str = None,
         cmd_chain: str = None,
         cmdline: str = None,
         count: int = None,
@@ -136,6 +138,8 @@ class ListUnknownThreatDetectEventResponseBodyData(DaraModel):
         status: int = None,
         uuid: str = None,
     ):
+        self.analyze_desc = analyze_desc
+        self.analyze_result = analyze_result
         self.cmd_chain = cmd_chain
         self.cmdline = cmdline
         self.count = count
@@ -164,6 +168,12 @@ class ListUnknownThreatDetectEventResponseBodyData(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.analyze_desc is not None:
+            result['AnalyzeDesc'] = self.analyze_desc
+
+        if self.analyze_result is not None:
+            result['AnalyzeResult'] = self.analyze_result
+
         if self.cmd_chain is not None:
             result['CmdChain'] = self.cmd_chain
 
@@ -225,6 +235,12 @@ class ListUnknownThreatDetectEventResponseBodyData(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AnalyzeDesc') is not None:
+            self.analyze_desc = m.get('AnalyzeDesc')
+
+        if m.get('AnalyzeResult') is not None:
+            self.analyze_result = m.get('AnalyzeResult')
+
         if m.get('CmdChain') is not None:
             self.cmd_chain = m.get('CmdChain')
 

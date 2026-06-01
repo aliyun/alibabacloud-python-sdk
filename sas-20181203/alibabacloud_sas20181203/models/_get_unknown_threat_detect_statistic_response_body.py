@@ -46,12 +46,14 @@ class GetUnknownThreatDetectStatisticResponseBody(DaraModel):
 class GetUnknownThreatDetectStatisticResponseBodyData(DaraModel):
     def __init__(
         self,
+        block_event_machine_count: int = None,
         block_machine_count: int = None,
         machine_count: int = None,
         monitor_machine_count: int = None,
         open_machine_count: int = None,
         studying_machine_count: int = None,
     ):
+        self.block_event_machine_count = block_event_machine_count
         self.block_machine_count = block_machine_count
         self.machine_count = machine_count
         self.monitor_machine_count = monitor_machine_count
@@ -66,6 +68,9 @@ class GetUnknownThreatDetectStatisticResponseBodyData(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.block_event_machine_count is not None:
+            result['BlockEventMachineCount'] = self.block_event_machine_count
+
         if self.block_machine_count is not None:
             result['BlockMachineCount'] = self.block_machine_count
 
@@ -85,6 +90,9 @@ class GetUnknownThreatDetectStatisticResponseBodyData(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BlockEventMachineCount') is not None:
+            self.block_event_machine_count = m.get('BlockEventMachineCount')
+
         if m.get('BlockMachineCount') is not None:
             self.block_machine_count = m.get('BlockMachineCount')
 

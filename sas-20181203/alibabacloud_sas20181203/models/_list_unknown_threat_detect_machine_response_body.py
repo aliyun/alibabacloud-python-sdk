@@ -116,21 +116,27 @@ class ListUnknownThreatDetectMachineResponseBodyPageInfo(DaraModel):
 class ListUnknownThreatDetectMachineResponseBodyData(DaraModel):
     def __init__(
         self,
+        effect_days: int = None,
         instance_name: str = None,
         internet_ip: str = None,
         intranet_ip: str = None,
+        plugin_status: str = None,
         process_count: int = None,
         status: str = None,
         study_mode: str = None,
+        study_remain_days: int = None,
         study_start_time: int = None,
         uuid: str = None,
     ):
+        self.effect_days = effect_days
         self.instance_name = instance_name
         self.internet_ip = internet_ip
         self.intranet_ip = intranet_ip
+        self.plugin_status = plugin_status
         self.process_count = process_count
         self.status = status
         self.study_mode = study_mode
+        self.study_remain_days = study_remain_days
         self.study_start_time = study_start_time
         self.uuid = uuid
 
@@ -142,6 +148,9 @@ class ListUnknownThreatDetectMachineResponseBodyData(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.effect_days is not None:
+            result['EffectDays'] = self.effect_days
+
         if self.instance_name is not None:
             result['InstanceName'] = self.instance_name
 
@@ -151,6 +160,9 @@ class ListUnknownThreatDetectMachineResponseBodyData(DaraModel):
         if self.intranet_ip is not None:
             result['IntranetIp'] = self.intranet_ip
 
+        if self.plugin_status is not None:
+            result['PluginStatus'] = self.plugin_status
+
         if self.process_count is not None:
             result['ProcessCount'] = self.process_count
 
@@ -159,6 +171,9 @@ class ListUnknownThreatDetectMachineResponseBodyData(DaraModel):
 
         if self.study_mode is not None:
             result['StudyMode'] = self.study_mode
+
+        if self.study_remain_days is not None:
+            result['StudyRemainDays'] = self.study_remain_days
 
         if self.study_start_time is not None:
             result['StudyStartTime'] = self.study_start_time
@@ -170,6 +185,9 @@ class ListUnknownThreatDetectMachineResponseBodyData(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('EffectDays') is not None:
+            self.effect_days = m.get('EffectDays')
+
         if m.get('InstanceName') is not None:
             self.instance_name = m.get('InstanceName')
 
@@ -179,6 +197,9 @@ class ListUnknownThreatDetectMachineResponseBodyData(DaraModel):
         if m.get('IntranetIp') is not None:
             self.intranet_ip = m.get('IntranetIp')
 
+        if m.get('PluginStatus') is not None:
+            self.plugin_status = m.get('PluginStatus')
+
         if m.get('ProcessCount') is not None:
             self.process_count = m.get('ProcessCount')
 
@@ -187,6 +208,9 @@ class ListUnknownThreatDetectMachineResponseBodyData(DaraModel):
 
         if m.get('StudyMode') is not None:
             self.study_mode = m.get('StudyMode')
+
+        if m.get('StudyRemainDays') is not None:
+            self.study_remain_days = m.get('StudyRemainDays')
 
         if m.get('StudyStartTime') is not None:
             self.study_start_time = m.get('StudyStartTime')

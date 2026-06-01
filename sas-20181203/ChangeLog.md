@@ -1,3 +1,17 @@
+2026-06-01 Version: 9.3.2
+- Update API AddClientUserDefineRule: add request parameters TargetDefault.
+- Update API GetUnknownThreatDetectStatistic: add response parameters Body.Data.BlockEventMachineCount.
+- Update API ListUnknownThreatDetectEvent: add request parameters AnalyzeResult.
+- Update API ListUnknownThreatDetectEvent: add request parameters Lang.
+- Update API ListUnknownThreatDetectEvent: add response parameters Body.Data.$.AnalyzeDesc.
+- Update API ListUnknownThreatDetectEvent: add response parameters Body.Data.$.AnalyzeResult.
+- Update API ListUnknownThreatDetectMachine: add response parameters Body.Data.$.EffectDays.
+- Update API ListUnknownThreatDetectMachine: add response parameters Body.Data.$.PluginStatus.
+- Update API ListUnknownThreatDetectMachine: add response parameters Body.Data.$.StudyRemainDays.
+- Update API ListUnknownThreatDetectProcess: add response parameters Body.Data.$.ExplanationEn.
+- Update API ListUnknownThreatDetectProcess: add response parameters Body.Data.$.ExplanationZh.
+
+
 2026-05-29 Version: 9.3.1
 - Update API ListAgentlessAsset: add request parameters InstanceIds.
 

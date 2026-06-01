@@ -460,6 +460,8 @@ class Client(OpenApiClient):
             query['RegistryContent'] = request.registry_content
         if not DaraCore.is_null(request.registry_key):
             query['RegistryKey'] = request.registry_key
+        if not DaraCore.is_null(request.target_default):
+            query['TargetDefault'] = request.target_default
         if not DaraCore.is_null(request.type):
             query['Type'] = request.type
         req = open_api_util_models.OpenApiRequest(
@@ -520,6 +522,8 @@ class Client(OpenApiClient):
             query['RegistryContent'] = request.registry_content
         if not DaraCore.is_null(request.registry_key):
             query['RegistryKey'] = request.registry_key
+        if not DaraCore.is_null(request.target_default):
+            query['TargetDefault'] = request.target_default
         if not DaraCore.is_null(request.type):
             query['Type'] = request.type
         req = open_api_util_models.OpenApiRequest(
@@ -59494,10 +59498,14 @@ class Client(OpenApiClient):
     ) -> main_models.ListUnknownThreatDetectEventResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.analyze_result):
+            query['AnalyzeResult'] = request.analyze_result
         if not DaraCore.is_null(request.current_page):
             query['CurrentPage'] = request.current_page
         if not DaraCore.is_null(request.hash_key):
             query['HashKey'] = request.hash_key
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
         if not DaraCore.is_null(request.parent_process_path):
@@ -59536,10 +59544,14 @@ class Client(OpenApiClient):
     ) -> main_models.ListUnknownThreatDetectEventResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.analyze_result):
+            query['AnalyzeResult'] = request.analyze_result
         if not DaraCore.is_null(request.current_page):
             query['CurrentPage'] = request.current_page
         if not DaraCore.is_null(request.hash_key):
             query['HashKey'] = request.hash_key
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
         if not DaraCore.is_null(request.parent_process_path):

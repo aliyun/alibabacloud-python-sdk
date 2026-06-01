@@ -7,8 +7,10 @@ from darabonba.model import DaraModel
 class ListUnknownThreatDetectEventRequest(DaraModel):
     def __init__(
         self,
+        analyze_result: str = None,
         current_page: int = None,
         hash_key: str = None,
+        lang: str = None,
         page_size: int = None,
         parent_process_path: str = None,
         process_path: str = None,
@@ -16,8 +18,10 @@ class ListUnknownThreatDetectEventRequest(DaraModel):
         status: int = None,
         uuid: str = None,
     ):
+        self.analyze_result = analyze_result
         self.current_page = current_page
         self.hash_key = hash_key
+        self.lang = lang
         self.page_size = page_size
         self.parent_process_path = parent_process_path
         self.process_path = process_path
@@ -33,11 +37,17 @@ class ListUnknownThreatDetectEventRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.analyze_result is not None:
+            result['AnalyzeResult'] = self.analyze_result
+
         if self.current_page is not None:
             result['CurrentPage'] = self.current_page
 
         if self.hash_key is not None:
             result['HashKey'] = self.hash_key
+
+        if self.lang is not None:
+            result['Lang'] = self.lang
 
         if self.page_size is not None:
             result['PageSize'] = self.page_size
@@ -61,11 +71,17 @@ class ListUnknownThreatDetectEventRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AnalyzeResult') is not None:
+            self.analyze_result = m.get('AnalyzeResult')
+
         if m.get('CurrentPage') is not None:
             self.current_page = m.get('CurrentPage')
 
         if m.get('HashKey') is not None:
             self.hash_key = m.get('HashKey')
+
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
 
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')

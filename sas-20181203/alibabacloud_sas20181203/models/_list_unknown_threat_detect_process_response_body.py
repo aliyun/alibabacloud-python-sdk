@@ -117,6 +117,8 @@ class ListUnknownThreatDetectProcessResponseBodyData(DaraModel):
     def __init__(
         self,
         analyze_result: str = None,
+        explanation_en: str = None,
+        explanation_zh: str = None,
         first_time: int = None,
         md_5: str = None,
         process_id: str = None,
@@ -125,6 +127,8 @@ class ListUnknownThreatDetectProcessResponseBodyData(DaraModel):
         sha_256: str = None,
     ):
         self.analyze_result = analyze_result
+        self.explanation_en = explanation_en
+        self.explanation_zh = explanation_zh
         self.first_time = first_time
         self.md_5 = md_5
         self.process_id = process_id
@@ -142,6 +146,12 @@ class ListUnknownThreatDetectProcessResponseBodyData(DaraModel):
             result = _map
         if self.analyze_result is not None:
             result['AnalyzeResult'] = self.analyze_result
+
+        if self.explanation_en is not None:
+            result['ExplanationEn'] = self.explanation_en
+
+        if self.explanation_zh is not None:
+            result['ExplanationZh'] = self.explanation_zh
 
         if self.first_time is not None:
             result['FirstTime'] = self.first_time
@@ -167,6 +177,12 @@ class ListUnknownThreatDetectProcessResponseBodyData(DaraModel):
         m = m or dict()
         if m.get('AnalyzeResult') is not None:
             self.analyze_result = m.get('AnalyzeResult')
+
+        if m.get('ExplanationEn') is not None:
+            self.explanation_en = m.get('ExplanationEn')
+
+        if m.get('ExplanationZh') is not None:
+            self.explanation_zh = m.get('ExplanationZh')
 
         if m.get('FirstTime') is not None:
             self.first_time = m.get('FirstTime')
