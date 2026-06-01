@@ -77,6 +77,9 @@ from ._create_job_response import CreateJobResponse
 from ._create_job_template_request import CreateJobTemplateRequest
 from ._create_job_template_response_body import CreateJobTemplateResponseBody
 from ._create_job_template_response import CreateJobTemplateResponse
+from ._create_ray_history_server_request import CreateRayHistoryServerRequest
+from ._create_ray_history_server_response_body import CreateRayHistoryServerResponseBody
+from ._create_ray_history_server_response import CreateRayHistoryServerResponse
 from ._create_tensorboard_request import CreateTensorboardRequest
 from ._create_tensorboard_response_body import CreateTensorboardResponseBody
 from ._create_tensorboard_response import CreateTensorboardResponse
@@ -85,6 +88,9 @@ from ._delete_job_response import DeleteJobResponse
 from ._delete_job_template_request import DeleteJobTemplateRequest
 from ._delete_job_template_response_body import DeleteJobTemplateResponseBody
 from ._delete_job_template_response import DeleteJobTemplateResponse
+from ._delete_ray_history_server_request import DeleteRayHistoryServerRequest
+from ._delete_ray_history_server_response_body import DeleteRayHistoryServerResponseBody
+from ._delete_ray_history_server_response import DeleteRayHistoryServerResponse
 from ._delete_tensorboard_request import DeleteTensorboardRequest
 from ._delete_tensorboard_response_body import DeleteTensorboardResponseBody
 from ._delete_tensorboard_response import DeleteTensorboardResponse
@@ -115,6 +121,9 @@ from ._get_pod_logs_response import GetPodLogsResponse
 from ._get_ray_dashboard_request import GetRayDashboardRequest
 from ._get_ray_dashboard_response_body import GetRayDashboardResponseBody
 from ._get_ray_dashboard_response import GetRayDashboardResponse
+from ._get_ray_history_server_request import GetRayHistoryServerRequest
+from ._get_ray_history_server_response_body import GetRayHistoryServerResponseBody
+from ._get_ray_history_server_response import GetRayHistoryServerResponse
 from ._get_tensorboard_request import GetTensorboardRequest
 from ._get_tensorboard_response import GetTensorboardResponse
 from ._get_tensorboard_shared_url_request import GetTensorboardSharedUrlRequest
@@ -139,17 +148,26 @@ from ._list_jobs_request import ListJobsRequest
 from ._list_jobs_shrink_request import ListJobsShrinkRequest
 from ._list_jobs_response_body import ListJobsResponseBody
 from ._list_jobs_response import ListJobsResponse
+from ._list_ray_history_servers_request import ListRayHistoryServersRequest
+from ._list_ray_history_servers_response_body import ListRayHistoryServersResponseBody
+from ._list_ray_history_servers_response import ListRayHistoryServersResponse
 from ._list_tensorboards_request import ListTensorboardsRequest
 from ._list_tensorboards_response_body import ListTensorboardsResponseBody
 from ._list_tensorboards_response import ListTensorboardsResponse
 from ._set_job_template_default_version_request import SetJobTemplateDefaultVersionRequest
 from ._set_job_template_default_version_response_body import SetJobTemplateDefaultVersionResponseBody
 from ._set_job_template_default_version_response import SetJobTemplateDefaultVersionResponse
+from ._start_ray_history_server_request import StartRayHistoryServerRequest
+from ._start_ray_history_server_response_body import StartRayHistoryServerResponseBody
+from ._start_ray_history_server_response import StartRayHistoryServerResponse
 from ._start_tensorboard_request import StartTensorboardRequest
 from ._start_tensorboard_response_body import StartTensorboardResponseBody
 from ._start_tensorboard_response import StartTensorboardResponse
 from ._stop_job_response_body import StopJobResponseBody
 from ._stop_job_response import StopJobResponse
+from ._stop_ray_history_server_request import StopRayHistoryServerRequest
+from ._stop_ray_history_server_response_body import StopRayHistoryServerResponseBody
+from ._stop_ray_history_server_response import StopRayHistoryServerResponse
 from ._stop_tensorboard_request import StopTensorboardRequest
 from ._stop_tensorboard_response_body import StopTensorboardResponseBody
 from ._stop_tensorboard_response import StopTensorboardResponse
@@ -183,6 +201,7 @@ from ._get_job_response_body import GetJobResponseBodyRestartRecord
 from ._get_job_response_body import GetJobResponseBodyUserVpc
 from ._get_job_template_response_body import GetJobTemplateResponseBodyVersions
 from ._list_job_templates_response_body import ListJobTemplatesResponseBodyJobTemplates
+from ._list_ray_history_servers_response_body import ListRayHistoryServersResponseBodyRayHistoryServers
 
 __all__ = [
     AIMasterMessage,
@@ -260,6 +279,9 @@ __all__ = [
     CreateJobTemplateRequest,
     CreateJobTemplateResponseBody,
     CreateJobTemplateResponse,
+    CreateRayHistoryServerRequest,
+    CreateRayHistoryServerResponseBody,
+    CreateRayHistoryServerResponse,
     CreateTensorboardRequest,
     CreateTensorboardResponseBody,
     CreateTensorboardResponse,
@@ -268,6 +290,9 @@ __all__ = [
     DeleteJobTemplateRequest,
     DeleteJobTemplateResponseBody,
     DeleteJobTemplateResponse,
+    DeleteRayHistoryServerRequest,
+    DeleteRayHistoryServerResponseBody,
+    DeleteRayHistoryServerResponse,
     DeleteTensorboardRequest,
     DeleteTensorboardResponseBody,
     DeleteTensorboardResponse,
@@ -298,6 +323,9 @@ __all__ = [
     GetRayDashboardRequest,
     GetRayDashboardResponseBody,
     GetRayDashboardResponse,
+    GetRayHistoryServerRequest,
+    GetRayHistoryServerResponseBody,
+    GetRayHistoryServerResponse,
     GetTensorboardRequest,
     GetTensorboardResponse,
     GetTensorboardSharedUrlRequest,
@@ -322,17 +350,26 @@ __all__ = [
     ListJobsShrinkRequest,
     ListJobsResponseBody,
     ListJobsResponse,
+    ListRayHistoryServersRequest,
+    ListRayHistoryServersResponseBody,
+    ListRayHistoryServersResponse,
     ListTensorboardsRequest,
     ListTensorboardsResponseBody,
     ListTensorboardsResponse,
     SetJobTemplateDefaultVersionRequest,
     SetJobTemplateDefaultVersionResponseBody,
     SetJobTemplateDefaultVersionResponse,
+    StartRayHistoryServerRequest,
+    StartRayHistoryServerResponseBody,
+    StartRayHistoryServerResponse,
     StartTensorboardRequest,
     StartTensorboardResponseBody,
     StartTensorboardResponse,
     StopJobResponseBody,
     StopJobResponse,
+    StopRayHistoryServerRequest,
+    StopRayHistoryServerResponseBody,
+    StopRayHistoryServerResponse,
     StopTensorboardRequest,
     StopTensorboardResponseBody,
     StopTensorboardResponse,
@@ -365,5 +402,6 @@ __all__ = [
     GetJobResponseBodyRestartRecord,
     GetJobResponseBodyUserVpc,
     GetJobTemplateResponseBodyVersions,
-    ListJobTemplatesResponseBodyJobTemplates
+    ListJobTemplatesResponseBodyJobTemplates,
+    ListRayHistoryServersResponseBodyRayHistoryServers
 ]
