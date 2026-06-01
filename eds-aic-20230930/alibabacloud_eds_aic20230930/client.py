@@ -1496,6 +1496,120 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_key_pair_with_options_async(request, runtime)
 
+    def create_mobile_agent_package_with_options(
+        self,
+        request: main_models.CreateMobileAgentPackageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateMobileAgentPackageResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.amount):
+            query['Amount'] = request.amount
+        if not DaraCore.is_null(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
+        if not DaraCore.is_null(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not DaraCore.is_null(request.biz_region_id):
+            query['BizRegionId'] = request.biz_region_id
+        if not DaraCore.is_null(request.credit_amount):
+            query['CreditAmount'] = request.credit_amount
+        if not DaraCore.is_null(request.credit_config):
+            query['CreditConfig'] = request.credit_config
+        if not DaraCore.is_null(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.mobile_agent_package_spec):
+            query['MobileAgentPackageSpec'] = request.mobile_agent_package_spec
+        if not DaraCore.is_null(request.paid_callback_url):
+            query['PaidCallbackUrl'] = request.paid_callback_url
+        if not DaraCore.is_null(request.period):
+            query['Period'] = request.period
+        if not DaraCore.is_null(request.period_unit):
+            query['PeriodUnit'] = request.period_unit
+        if not DaraCore.is_null(request.promotion_id):
+            query['PromotionId'] = request.promotion_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateMobileAgentPackage',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateMobileAgentPackageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_mobile_agent_package_with_options_async(
+        self,
+        request: main_models.CreateMobileAgentPackageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateMobileAgentPackageResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.amount):
+            query['Amount'] = request.amount
+        if not DaraCore.is_null(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
+        if not DaraCore.is_null(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not DaraCore.is_null(request.biz_region_id):
+            query['BizRegionId'] = request.biz_region_id
+        if not DaraCore.is_null(request.credit_amount):
+            query['CreditAmount'] = request.credit_amount
+        if not DaraCore.is_null(request.credit_config):
+            query['CreditConfig'] = request.credit_config
+        if not DaraCore.is_null(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.mobile_agent_package_spec):
+            query['MobileAgentPackageSpec'] = request.mobile_agent_package_spec
+        if not DaraCore.is_null(request.paid_callback_url):
+            query['PaidCallbackUrl'] = request.paid_callback_url
+        if not DaraCore.is_null(request.period):
+            query['Period'] = request.period
+        if not DaraCore.is_null(request.period_unit):
+            query['PeriodUnit'] = request.period_unit
+        if not DaraCore.is_null(request.promotion_id):
+            query['PromotionId'] = request.promotion_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateMobileAgentPackage',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateMobileAgentPackageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_mobile_agent_package(
+        self,
+        request: main_models.CreateMobileAgentPackageRequest,
+    ) -> main_models.CreateMobileAgentPackageResponse:
+        runtime = RuntimeOptions()
+        return self.create_mobile_agent_package_with_options(request, runtime)
+
+    async def create_mobile_agent_package_async(
+        self,
+        request: main_models.CreateMobileAgentPackageRequest,
+    ) -> main_models.CreateMobileAgentPackageResponse:
+        runtime = RuntimeOptions()
+        return await self.create_mobile_agent_package_with_options_async(request, runtime)
+
     def create_policy_group_with_options(
         self,
         tmp_req: main_models.CreatePolicyGroupRequest,
@@ -3819,6 +3933,96 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeMetricTopResponse:
         runtime = RuntimeOptions()
         return await self.describe_metric_top_with_options_async(request, runtime)
+
+    def describe_mobile_agent_package_with_options(
+        self,
+        request: main_models.DescribeMobileAgentPackageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeMobileAgentPackageResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not DaraCore.is_null(request.package_ids):
+            query['PackageIds'] = request.package_ids
+        if not DaraCore.is_null(request.package_spec):
+            query['PackageSpec'] = request.package_spec
+        if not DaraCore.is_null(request.package_status):
+            query['PackageStatus'] = request.package_status
+        if not DaraCore.is_null(request.page_num):
+            query['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeMobileAgentPackage',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeMobileAgentPackageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_mobile_agent_package_with_options_async(
+        self,
+        request: main_models.DescribeMobileAgentPackageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeMobileAgentPackageResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not DaraCore.is_null(request.package_ids):
+            query['PackageIds'] = request.package_ids
+        if not DaraCore.is_null(request.package_spec):
+            query['PackageSpec'] = request.package_spec
+        if not DaraCore.is_null(request.package_status):
+            query['PackageStatus'] = request.package_status
+        if not DaraCore.is_null(request.page_num):
+            query['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeMobileAgentPackage',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeMobileAgentPackageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_mobile_agent_package(
+        self,
+        request: main_models.DescribeMobileAgentPackageRequest,
+    ) -> main_models.DescribeMobileAgentPackageResponse:
+        runtime = RuntimeOptions()
+        return self.describe_mobile_agent_package_with_options(request, runtime)
+
+    async def describe_mobile_agent_package_async(
+        self,
+        request: main_models.DescribeMobileAgentPackageRequest,
+    ) -> main_models.DescribeMobileAgentPackageResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_mobile_agent_package_with_options_async(request, runtime)
 
     def describe_regions_with_options(
         self,
@@ -7273,6 +7477,100 @@ class Client(OpenApiClient):
     ) -> main_models.RenewCloudPhoneNodesResponse:
         runtime = RuntimeOptions()
         return await self.renew_cloud_phone_nodes_with_options_async(request, runtime)
+
+    def renew_mobile_agent_package_with_options(
+        self,
+        request: main_models.RenewMobileAgentPackageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RenewMobileAgentPackageResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
+        if not DaraCore.is_null(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not DaraCore.is_null(request.mobile_agent_package_ids):
+            query['MobileAgentPackageIds'] = request.mobile_agent_package_ids
+        if not DaraCore.is_null(request.paid_callback_url):
+            query['PaidCallbackUrl'] = request.paid_callback_url
+        if not DaraCore.is_null(request.period):
+            query['Period'] = request.period
+        if not DaraCore.is_null(request.period_unit):
+            query['PeriodUnit'] = request.period_unit
+        if not DaraCore.is_null(request.promotion_id):
+            query['PromotionId'] = request.promotion_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RenewMobileAgentPackage',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RenewMobileAgentPackageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def renew_mobile_agent_package_with_options_async(
+        self,
+        request: main_models.RenewMobileAgentPackageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RenewMobileAgentPackageResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
+        if not DaraCore.is_null(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not DaraCore.is_null(request.mobile_agent_package_ids):
+            query['MobileAgentPackageIds'] = request.mobile_agent_package_ids
+        if not DaraCore.is_null(request.paid_callback_url):
+            query['PaidCallbackUrl'] = request.paid_callback_url
+        if not DaraCore.is_null(request.period):
+            query['Period'] = request.period
+        if not DaraCore.is_null(request.period_unit):
+            query['PeriodUnit'] = request.period_unit
+        if not DaraCore.is_null(request.promotion_id):
+            query['PromotionId'] = request.promotion_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RenewMobileAgentPackage',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RenewMobileAgentPackageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def renew_mobile_agent_package(
+        self,
+        request: main_models.RenewMobileAgentPackageRequest,
+    ) -> main_models.RenewMobileAgentPackageResponse:
+        runtime = RuntimeOptions()
+        return self.renew_mobile_agent_package_with_options(request, runtime)
+
+    async def renew_mobile_agent_package_async(
+        self,
+        request: main_models.RenewMobileAgentPackageRequest,
+    ) -> main_models.RenewMobileAgentPackageResponse:
+        runtime = RuntimeOptions()
+        return await self.renew_mobile_agent_package_with_options_async(request, runtime)
 
     def reset_android_instances_in_group_with_options(
         self,

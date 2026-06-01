@@ -1,3 +1,9 @@
+2026-06-01 Version: 4.27.0
+- Support API CreateMobileAgentPackage.
+- Support API DescribeMobileAgentPackage.
+- Support API RenewMobileAgentPackage.
+
+
 2026-05-19 Version: 4.26.0
 - Support API PauseAgentTask.
 - Support API ResumeAgentTask.

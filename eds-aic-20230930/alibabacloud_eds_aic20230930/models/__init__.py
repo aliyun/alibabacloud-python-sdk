@@ -48,6 +48,9 @@ from ._create_custom_image_response import CreateCustomImageResponse
 from ._create_key_pair_request import CreateKeyPairRequest
 from ._create_key_pair_response_body import CreateKeyPairResponseBody
 from ._create_key_pair_response import CreateKeyPairResponse
+from ._create_mobile_agent_package_request import CreateMobileAgentPackageRequest
+from ._create_mobile_agent_package_response_body import CreateMobileAgentPackageResponseBody
+from ._create_mobile_agent_package_response import CreateMobileAgentPackageResponse
 from ._create_policy_group_request import CreatePolicyGroupRequest
 from ._create_policy_group_shrink_request import CreatePolicyGroupShrinkRequest
 from ._create_policy_group_response_body import CreatePolicyGroupResponseBody
@@ -129,6 +132,9 @@ from ._describe_metric_list_response import DescribeMetricListResponse
 from ._describe_metric_top_request import DescribeMetricTopRequest
 from ._describe_metric_top_response_body import DescribeMetricTopResponseBody
 from ._describe_metric_top_response import DescribeMetricTopResponse
+from ._describe_mobile_agent_package_request import DescribeMobileAgentPackageRequest
+from ._describe_mobile_agent_package_response_body import DescribeMobileAgentPackageResponseBody
+from ._describe_mobile_agent_package_response import DescribeMobileAgentPackageResponse
 from ._describe_regions_request import DescribeRegionsRequest
 from ._describe_regions_response_body import DescribeRegionsResponseBody
 from ._describe_regions_response import DescribeRegionsResponse
@@ -255,6 +261,9 @@ from ._renew_android_instance_groups_response import RenewAndroidInstanceGroupsR
 from ._renew_cloud_phone_nodes_request import RenewCloudPhoneNodesRequest
 from ._renew_cloud_phone_nodes_response_body import RenewCloudPhoneNodesResponseBody
 from ._renew_cloud_phone_nodes_response import RenewCloudPhoneNodesResponse
+from ._renew_mobile_agent_package_request import RenewMobileAgentPackageRequest
+from ._renew_mobile_agent_package_response_body import RenewMobileAgentPackageResponseBody
+from ._renew_mobile_agent_package_response import RenewMobileAgentPackageResponse
 from ._reset_android_instances_in_group_request import ResetAndroidInstancesInGroupRequest
 from ._reset_android_instances_in_group_response_body import ResetAndroidInstancesInGroupResponseBody
 from ._reset_android_instances_in_group_response import ResetAndroidInstancesInGroupResponse
@@ -394,6 +403,7 @@ from ._describe_metric_list_response_body import DescribeMetricListResponseBodyM
 from ._describe_metric_top_response_body import DescribeMetricTopResponseBodyMetricTotalModelMetricModelListDataPoints
 from ._describe_metric_top_response_body import DescribeMetricTopResponseBodyMetricTotalModelMetricModelList
 from ._describe_metric_top_response_body import DescribeMetricTopResponseBodyMetricTotalModel
+from ._describe_mobile_agent_package_response_body import DescribeMobileAgentPackageResponseBodyPackageList
 from ._describe_regions_response_body import DescribeRegionsResponseBodyRegionModels
 from ._describe_spec_response_body import DescribeSpecResponseBodySpecInfoModel
 from ._describe_system_property_templates_response_body import DescribeSystemPropertyTemplatesResponseBodySystemPropertyTemplateModelSystemPropertyInfoCustomPropertyInfos
@@ -488,6 +498,9 @@ __all__ = [
     CreateKeyPairRequest,
     CreateKeyPairResponseBody,
     CreateKeyPairResponse,
+    CreateMobileAgentPackageRequest,
+    CreateMobileAgentPackageResponseBody,
+    CreateMobileAgentPackageResponse,
     CreatePolicyGroupRequest,
     CreatePolicyGroupShrinkRequest,
     CreatePolicyGroupResponseBody,
@@ -569,6 +582,9 @@ __all__ = [
     DescribeMetricTopRequest,
     DescribeMetricTopResponseBody,
     DescribeMetricTopResponse,
+    DescribeMobileAgentPackageRequest,
+    DescribeMobileAgentPackageResponseBody,
+    DescribeMobileAgentPackageResponse,
     DescribeRegionsRequest,
     DescribeRegionsResponseBody,
     DescribeRegionsResponse,
@@ -695,6 +711,9 @@ __all__ = [
     RenewCloudPhoneNodesRequest,
     RenewCloudPhoneNodesResponseBody,
     RenewCloudPhoneNodesResponse,
+    RenewMobileAgentPackageRequest,
+    RenewMobileAgentPackageResponseBody,
+    RenewMobileAgentPackageResponse,
     ResetAndroidInstancesInGroupRequest,
     ResetAndroidInstancesInGroupResponseBody,
     ResetAndroidInstancesInGroupResponse,
@@ -834,6 +853,7 @@ __all__ = [
     DescribeMetricTopResponseBodyMetricTotalModelMetricModelListDataPoints,
     DescribeMetricTopResponseBodyMetricTotalModelMetricModelList,
     DescribeMetricTopResponseBodyMetricTotalModel,
+    DescribeMobileAgentPackageResponseBodyPackageList,
     DescribeRegionsResponseBodyRegionModels,
     DescribeSpecResponseBodySpecInfoModel,
     DescribeSystemPropertyTemplatesResponseBodySystemPropertyTemplateModelSystemPropertyInfoCustomPropertyInfos,
