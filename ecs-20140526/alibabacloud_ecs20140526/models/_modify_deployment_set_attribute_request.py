@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class ModifyDeploymentSetAttributeRequest(DaraModel):
     def __init__(
         self,
+        affinity: int = None,
         deployment_set_id: str = None,
         deployment_set_name: str = None,
         description: str = None,
@@ -16,6 +17,7 @@ class ModifyDeploymentSetAttributeRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        self.affinity = affinity
         # The ID of the deployment set.
         # 
         # This parameter is required.
@@ -41,6 +43,9 @@ class ModifyDeploymentSetAttributeRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.affinity is not None:
+            result['Affinity'] = self.affinity
+
         if self.deployment_set_id is not None:
             result['DeploymentSetId'] = self.deployment_set_id
 
@@ -69,6 +74,9 @@ class ModifyDeploymentSetAttributeRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Affinity') is not None:
+            self.affinity = m.get('Affinity')
+
         if m.get('DeploymentSetId') is not None:
             self.deployment_set_id = m.get('DeploymentSetId')
 

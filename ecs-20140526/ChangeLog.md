@@ -1,3 +1,9 @@
+2026-06-01 Version: 7.8.2
+- Update API CreateDeploymentSet: add request parameters Affinity.
+- Update API DescribeDeploymentSets: add response parameters Body.DeploymentSets.$.Affinity.
+- Update API ModifyDeploymentSetAttribute: add request parameters Affinity.
+
+
 2026-05-19 Version: 7.8.1
 - Update API ModifyInstanceAttribute: add request parameters CpuOptions.
 - Update API RunInstances: add request parameters CpuOptions.

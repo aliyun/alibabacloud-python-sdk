@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class CreateDeploymentSetRequest(DaraModel):
     def __init__(
         self,
+        affinity: int = None,
         client_token: str = None,
         deployment_set_name: str = None,
         description: str = None,
@@ -22,6 +23,7 @@ class CreateDeploymentSetRequest(DaraModel):
         strategy: str = None,
         type: str = None,
     ):
+        self.affinity = affinity
         # The description of the deployment set. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
         self.client_token = client_token
         # The name of the deployment set. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with `http://` or `https://`. The name can contain digits, letters, colons (:), underscores (_), and hyphens (-).
@@ -72,6 +74,9 @@ class CreateDeploymentSetRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.affinity is not None:
+            result['Affinity'] = self.affinity
+
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
 
@@ -118,6 +123,9 @@ class CreateDeploymentSetRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Affinity') is not None:
+            self.affinity = m.get('Affinity')
+
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
 

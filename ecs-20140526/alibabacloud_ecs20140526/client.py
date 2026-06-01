@@ -4164,6 +4164,8 @@ class Client(OpenApiClient):
     ) -> main_models.CreateDeploymentSetResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.affinity):
+            query['Affinity'] = request.affinity
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.deployment_set_name):
@@ -4218,6 +4220,8 @@ class Client(OpenApiClient):
     ) -> main_models.CreateDeploymentSetResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.affinity):
+            query['Affinity'] = request.affinity
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.deployment_set_name):
@@ -30520,6 +30524,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyDeploymentSetAttributeResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.affinity):
+            query['Affinity'] = request.affinity
         if not DaraCore.is_null(request.deployment_set_id):
             query['DeploymentSetId'] = request.deployment_set_id
         if not DaraCore.is_null(request.deployment_set_name):
@@ -30562,6 +30568,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyDeploymentSetAttributeResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.affinity):
+            query['Affinity'] = request.affinity
         if not DaraCore.is_null(request.deployment_set_id):
             query['DeploymentSetId'] = request.deployment_set_id
         if not DaraCore.is_null(request.deployment_set_name):
