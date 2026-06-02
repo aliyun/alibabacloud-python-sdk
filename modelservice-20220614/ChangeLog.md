@@ -1,3 +1,10 @@
+2026-06-02 Version: 3.0.0
+- Update API GetUser: add request parameters channel.
+- Update API GetUser: add request parameters region.
+- Update API GetUser: add response parameters Body.InnerToken.
+- Update API GetUser: delete request parameters scene_type.
+
+
 2026-05-19 Version: 2.0.0
 - Update API GetUser: add request parameters scene_type.
 - Update API GetUser: delete request parameters SceneType.

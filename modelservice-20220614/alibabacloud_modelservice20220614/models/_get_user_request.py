@@ -7,9 +7,11 @@ from darabonba.model import DaraModel
 class GetUserRequest(DaraModel):
     def __init__(
         self,
-        scene_type: str = None,
+        channel: str = None,
+        region: str = None,
     ):
-        self.scene_type = scene_type
+        self.channel = channel
+        self.region = region
 
     def validate(self):
         pass
@@ -19,15 +21,21 @@ class GetUserRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.scene_type is not None:
-            result['scene_type'] = self.scene_type
+        if self.channel is not None:
+            result['channel'] = self.channel
+
+        if self.region is not None:
+            result['region'] = self.region
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('scene_type') is not None:
-            self.scene_type = m.get('scene_type')
+        if m.get('channel') is not None:
+            self.channel = m.get('channel')
+
+        if m.get('region') is not None:
+            self.region = m.get('region')
 
         return self
 

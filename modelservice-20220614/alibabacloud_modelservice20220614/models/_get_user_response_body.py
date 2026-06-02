@@ -10,6 +10,7 @@ class GetUserResponseBody(DaraModel):
         app_id: str = None,
         code: str = None,
         host: str = None,
+        inner_token: str = None,
         message: str = None,
         request_id: str = None,
         token: str = None,
@@ -17,6 +18,7 @@ class GetUserResponseBody(DaraModel):
         self.app_id = app_id
         self.code = code
         self.host = host
+        self.inner_token = inner_token
         self.message = message
         self.request_id = request_id
         self.token = token
@@ -37,6 +39,9 @@ class GetUserResponseBody(DaraModel):
 
         if self.host is not None:
             result['Host'] = self.host
+
+        if self.inner_token is not None:
+            result['InnerToken'] = self.inner_token
 
         if self.message is not None:
             result['Message'] = self.message
@@ -59,6 +64,9 @@ class GetUserResponseBody(DaraModel):
 
         if m.get('Host') is not None:
             self.host = m.get('Host')
+
+        if m.get('InnerToken') is not None:
+            self.inner_token = m.get('InnerToken')
 
         if m.get('Message') is not None:
             self.message = m.get('Message')
