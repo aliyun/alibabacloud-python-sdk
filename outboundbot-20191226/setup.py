@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_outboundbot20191226.
 
-Created on 05/02/2026
+Created on 02/06/2026
 
 @author: Alibaba Cloud SDK
 """
@@ -38,7 +38,7 @@ URL = "https://github.com/aliyun/alibabacloud-python-sdk"
 VERSION = __import__(PACKAGE).__version__
 REQUIRES = [
     "darabonba-core>=1.0.0, <2.0.0",
-    "alibabacloud_tea_openapi>=0.4.3, <1.0.0"
+    "alibabacloud_tea_openapi>=0.4.4, <1.0.0"
 ]
 
 LONG_DESCRIPTION = ''

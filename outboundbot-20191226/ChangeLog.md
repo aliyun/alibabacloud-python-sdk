@@ -1,3 +1,8 @@
+2026-06-02 Version: 2.0.2
+- Update API DescribeJob: add response parameters Body.Job.Tasks.$.TotalDuration.
+- Update API QueryJobsWithResult: add response parameters Body.Jobs.List.$.LatestTask.HangUpDirection.
+
+
 2026-02-05 Version: 2.0.1
 - Update API DescribeGroupExecutingInfo: add response parameters Body.ExecutingInfo.AvgTalkTime.
 - Update API DescribeGroupExecutingInfo: add response parameters Body.ExecutingInfo.DurationDistribution.

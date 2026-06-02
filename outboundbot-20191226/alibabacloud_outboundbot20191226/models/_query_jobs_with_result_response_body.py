@@ -274,6 +274,7 @@ class QueryJobsWithResultResponseBodyJobsListLatestTask(DaraModel):
         contact: main_models.QueryJobsWithResultResponseBodyJobsListLatestTaskContact = None,
         dial_exception_codes: List[main_models.QueryJobsWithResultResponseBodyJobsListLatestTaskDialExceptionCodes] = None,
         extras: List[main_models.QueryJobsWithResultResponseBodyJobsListLatestTaskExtras] = None,
+        hang_up_direction: str = None,
         has_answered: bool = None,
         has_hang_up_by_rejection: bool = None,
         has_last_playback_completed: bool = None,
@@ -289,6 +290,7 @@ class QueryJobsWithResultResponseBodyJobsListLatestTask(DaraModel):
         self.contact = contact
         self.dial_exception_codes = dial_exception_codes
         self.extras = extras
+        self.hang_up_direction = hang_up_direction
         self.has_answered = has_answered
         self.has_hang_up_by_rejection = has_hang_up_by_rejection
         self.has_last_playback_completed = has_last_playback_completed
@@ -340,6 +342,9 @@ class QueryJobsWithResultResponseBodyJobsListLatestTask(DaraModel):
         if self.extras is not None:
             for k1 in self.extras:
                 result['Extras'].append(k1.to_map() if k1 else None)
+
+        if self.hang_up_direction is not None:
+            result['HangUpDirection'] = self.hang_up_direction
 
         if self.has_answered is not None:
             result['HasAnswered'] = self.has_answered
@@ -395,6 +400,9 @@ class QueryJobsWithResultResponseBodyJobsListLatestTask(DaraModel):
             for k1 in m.get('Extras'):
                 temp_model = main_models.QueryJobsWithResultResponseBodyJobsListLatestTaskExtras()
                 self.extras.append(temp_model.from_map(k1))
+
+        if m.get('HangUpDirection') is not None:
+            self.hang_up_direction = m.get('HangUpDirection')
 
         if m.get('HasAnswered') is not None:
             self.has_answered = m.get('HasAnswered')

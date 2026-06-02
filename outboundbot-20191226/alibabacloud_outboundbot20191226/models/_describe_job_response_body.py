@@ -325,6 +325,7 @@ class DescribeJobResponseBodyJobTasks(DaraModel):
         sip_duration: int = None,
         status: str = None,
         task_id: str = None,
+        total_duration: int = None,
     ):
         self.actual_time = actual_time
         self.brief = brief
@@ -347,6 +348,7 @@ class DescribeJobResponseBodyJobTasks(DaraModel):
         self.sip_duration = sip_duration
         self.status = status
         self.task_id = task_id
+        self.total_duration = total_duration
 
     def validate(self):
         if self.contact:
@@ -426,6 +428,9 @@ class DescribeJobResponseBodyJobTasks(DaraModel):
         if self.task_id is not None:
             result['TaskId'] = self.task_id
 
+        if self.total_duration is not None:
+            result['TotalDuration'] = self.total_duration
+
         return result
 
     def from_map(self, m: dict = None):
@@ -496,6 +501,9 @@ class DescribeJobResponseBodyJobTasks(DaraModel):
 
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')
+
+        if m.get('TotalDuration') is not None:
+            self.total_duration = m.get('TotalDuration')
 
         return self
 
