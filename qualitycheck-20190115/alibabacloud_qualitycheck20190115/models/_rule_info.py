@@ -51,7 +51,7 @@ class RuleInfo(DaraModel):
         score_deleted: bool = None,
         score_id: int = None,
         score_name: str = None,
-        score_num: int = None,
+        score_num: float = None,
         score_num_type: int = None,
         score_rule_hit_type: int = None,
         score_sub_id: int = None,
