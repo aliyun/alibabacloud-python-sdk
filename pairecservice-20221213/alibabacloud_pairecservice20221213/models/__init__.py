@@ -14,6 +14,9 @@ from ._backflow_feature_consistency_check_job_data_response import BackflowFeatu
 from ._change_recall_management_service_version_request import ChangeRecallManagementServiceVersionRequest
 from ._change_recall_management_service_version_response_body import ChangeRecallManagementServiceVersionResponseBody
 from ._change_recall_management_service_version_response import ChangeRecallManagementServiceVersionResponse
+from ._chat_conversation_request import ChatConversationRequest
+from ._chat_conversation_response_body import ChatConversationResponseBody
+from ._chat_conversation_response import ChatConversationResponse
 from ._check_instance_resources_request import CheckInstanceResourcesRequest
 from ._check_instance_resources_response_body import CheckInstanceResourcesResponseBody
 from ._check_instance_resources_response import CheckInstanceResourcesResponse
@@ -706,6 +709,9 @@ __all__ = [
     ChangeRecallManagementServiceVersionRequest,
     ChangeRecallManagementServiceVersionResponseBody,
     ChangeRecallManagementServiceVersionResponse,
+    ChatConversationRequest,
+    ChatConversationResponseBody,
+    ChatConversationResponse,
     CheckInstanceResourcesRequest,
     CheckInstanceResourcesResponseBody,
     CheckInstanceResourcesResponse,

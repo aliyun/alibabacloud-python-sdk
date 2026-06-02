@@ -2,7 +2,9 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import Dict
+import json
+
+from typing import Dict, Generator, AsyncGenerator
 
 from alibabacloud_pairecservice20221213 import models as main_models
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
@@ -320,6 +322,184 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.change_recall_management_service_version_with_options_async(recall_management_service_id, request, headers, runtime)
+
+    def chat_conversation_with_sse(
+        self,
+        request: main_models.ChatConversationRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> Generator[main_models.ChatConversationResponse, None, None]:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.config):
+            body['Config'] = request.config
+        if not DaraCore.is_null(request.content):
+            body['Content'] = request.content
+        if not DaraCore.is_null(request.conversation_id):
+            body['ConversationId'] = request.conversation_id
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ChatConversation',
+            version = '2022-12-13',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/conversations/chat',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        sse_resp = self.call_sseapi(params, req, runtime)
+        for resp in sse_resp:
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.ChatConversationResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
+
+    async def chat_conversation_with_sse_async(
+        self,
+        request: main_models.ChatConversationRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> AsyncGenerator[main_models.ChatConversationResponse, None, None]:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.config):
+            body['Config'] = request.config
+        if not DaraCore.is_null(request.content):
+            body['Content'] = request.content
+        if not DaraCore.is_null(request.conversation_id):
+            body['ConversationId'] = request.conversation_id
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ChatConversation',
+            version = '2022-12-13',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/conversations/chat',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        sse_resp = self.call_sseapi_async(params, req, runtime)
+        async for resp in sse_resp:
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.ChatConversationResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
+
+    def chat_conversation_with_options(
+        self,
+        request: main_models.ChatConversationRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ChatConversationResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.config):
+            body['Config'] = request.config
+        if not DaraCore.is_null(request.content):
+            body['Content'] = request.content
+        if not DaraCore.is_null(request.conversation_id):
+            body['ConversationId'] = request.conversation_id
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ChatConversation',
+            version = '2022-12-13',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/conversations/chat',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ChatConversationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def chat_conversation_with_options_async(
+        self,
+        request: main_models.ChatConversationRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ChatConversationResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.config):
+            body['Config'] = request.config
+        if not DaraCore.is_null(request.content):
+            body['Content'] = request.content
+        if not DaraCore.is_null(request.conversation_id):
+            body['ConversationId'] = request.conversation_id
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ChatConversation',
+            version = '2022-12-13',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/conversations/chat',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ChatConversationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def chat_conversation(
+        self,
+        request: main_models.ChatConversationRequest,
+    ) -> main_models.ChatConversationResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.chat_conversation_with_options(request, headers, runtime)
+
+    async def chat_conversation_async(
+        self,
+        request: main_models.ChatConversationRequest,
+    ) -> main_models.ChatConversationResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.chat_conversation_with_options_async(request, headers, runtime)
 
     def check_instance_resources_with_options(
         self,
