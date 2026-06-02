@@ -20,6 +20,7 @@ class GetCertificateDetailResponseBody(DaraModel):
         common_name: str = None,
         company_id: int = None,
         contact_id: int = None,
+        csr: str = None,
         domain: str = None,
         exist_private_key: bool = None,
         finger_print: str = None,
@@ -44,6 +45,7 @@ class GetCertificateDetailResponseBody(DaraModel):
         self.common_name = common_name
         self.company_id = company_id
         self.contact_id = contact_id
+        self.csr = csr
         self.domain = domain
         self.exist_private_key = exist_private_key
         self.finger_print = finger_print
@@ -104,6 +106,9 @@ class GetCertificateDetailResponseBody(DaraModel):
 
         if self.contact_id is not None:
             result['ContactId'] = self.contact_id
+
+        if self.csr is not None:
+            result['Csr'] = self.csr
 
         if self.domain is not None:
             result['Domain'] = self.domain
@@ -182,6 +187,9 @@ class GetCertificateDetailResponseBody(DaraModel):
 
         if m.get('ContactId') is not None:
             self.contact_id = m.get('ContactId')
+
+        if m.get('Csr') is not None:
+            self.csr = m.get('Csr')
 
         if m.get('Domain') is not None:
             self.domain = m.get('Domain')

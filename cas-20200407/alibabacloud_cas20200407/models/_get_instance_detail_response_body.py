@@ -44,6 +44,7 @@ class GetInstanceDetailResponseBody(DaraModel):
         spec: str = None,
         status: str = None,
         tags: List[main_models.GetInstanceDetailResponseBodyTags] = None,
+        upgrade_status: str = None,
         validation_method: str = None,
         wildcard_domain_count: int = None,
     ):
@@ -81,6 +82,7 @@ class GetInstanceDetailResponseBody(DaraModel):
         self.spec = spec
         self.status = status
         self.tags = tags
+        self.upgrade_status = upgrade_status
         self.validation_method = validation_method
         self.wildcard_domain_count = wildcard_domain_count
 
@@ -211,6 +213,9 @@ class GetInstanceDetailResponseBody(DaraModel):
             for k1 in self.tags:
                 result['Tags'].append(k1.to_map() if k1 else None)
 
+        if self.upgrade_status is not None:
+            result['UpgradeStatus'] = self.upgrade_status
+
         if self.validation_method is not None:
             result['ValidationMethod'] = self.validation_method
 
@@ -332,6 +337,9 @@ class GetInstanceDetailResponseBody(DaraModel):
                 temp_model = main_models.GetInstanceDetailResponseBodyTags()
                 self.tags.append(temp_model.from_map(k1))
 
+        if m.get('UpgradeStatus') is not None:
+            self.upgrade_status = m.get('UpgradeStatus')
+
         if m.get('ValidationMethod') is not None:
             self.validation_method = m.get('ValidationMethod')
 
@@ -379,6 +387,7 @@ class GetInstanceDetailResponseBodyDomainValidationList(DaraModel):
     def __init__(
         self,
         cname: str = None,
+        cname_key: str = None,
         domain: str = None,
         root_domain: str = None,
         validation_key: str = None,
@@ -386,6 +395,7 @@ class GetInstanceDetailResponseBodyDomainValidationList(DaraModel):
         validation_value: str = None,
     ):
         self.cname = cname
+        self.cname_key = cname_key
         self.domain = domain
         self.root_domain = root_domain
         self.validation_key = validation_key
@@ -402,6 +412,9 @@ class GetInstanceDetailResponseBodyDomainValidationList(DaraModel):
             result = _map
         if self.cname is not None:
             result['Cname'] = self.cname
+
+        if self.cname_key is not None:
+            result['CnameKey'] = self.cname_key
 
         if self.domain is not None:
             result['Domain'] = self.domain
@@ -424,6 +437,9 @@ class GetInstanceDetailResponseBodyDomainValidationList(DaraModel):
         m = m or dict()
         if m.get('Cname') is not None:
             self.cname = m.get('Cname')
+
+        if m.get('CnameKey') is not None:
+            self.cname_key = m.get('CnameKey')
 
         if m.get('Domain') is not None:
             self.domain = m.get('Domain')

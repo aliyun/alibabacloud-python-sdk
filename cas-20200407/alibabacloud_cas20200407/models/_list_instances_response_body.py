@@ -80,6 +80,7 @@ class ListInstancesResponseBodyInstanceList(DaraModel):
         auto_reissue: str = None,
         brand: str = None,
         cert_identifier: str = None,
+        certificate_domain: str = None,
         certificate_id: int = None,
         certificate_name: str = None,
         certificate_not_after: int = None,
@@ -96,13 +97,16 @@ class ListInstancesResponseBodyInstanceList(DaraModel):
         order_end_time: int = None,
         order_start_time: int = None,
         pending_result: str = None,
+        resource_group_id: str = None,
         spec: str = None,
         status: str = None,
+        using_product_list: List[str] = None,
         wildcard_domain_count: int = None,
     ):
         self.auto_reissue = auto_reissue
         self.brand = brand
         self.cert_identifier = cert_identifier
+        self.certificate_domain = certificate_domain
         self.certificate_id = certificate_id
         self.certificate_name = certificate_name
         self.certificate_not_after = certificate_not_after
@@ -119,8 +123,10 @@ class ListInstancesResponseBodyInstanceList(DaraModel):
         self.order_end_time = order_end_time
         self.order_start_time = order_start_time
         self.pending_result = pending_result
+        self.resource_group_id = resource_group_id
         self.spec = spec
         self.status = status
+        self.using_product_list = using_product_list
         self.wildcard_domain_count = wildcard_domain_count
 
     def validate(self):
@@ -139,6 +145,9 @@ class ListInstancesResponseBodyInstanceList(DaraModel):
 
         if self.cert_identifier is not None:
             result['CertIdentifier'] = self.cert_identifier
+
+        if self.certificate_domain is not None:
+            result['CertificateDomain'] = self.certificate_domain
 
         if self.certificate_id is not None:
             result['CertificateId'] = self.certificate_id
@@ -188,11 +197,17 @@ class ListInstancesResponseBodyInstanceList(DaraModel):
         if self.pending_result is not None:
             result['PendingResult'] = self.pending_result
 
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+
         if self.spec is not None:
             result['Spec'] = self.spec
 
         if self.status is not None:
             result['Status'] = self.status
+
+        if self.using_product_list is not None:
+            result['UsingProductList'] = self.using_product_list
 
         if self.wildcard_domain_count is not None:
             result['WildcardDomainCount'] = self.wildcard_domain_count
@@ -209,6 +224,9 @@ class ListInstancesResponseBodyInstanceList(DaraModel):
 
         if m.get('CertIdentifier') is not None:
             self.cert_identifier = m.get('CertIdentifier')
+
+        if m.get('CertificateDomain') is not None:
+            self.certificate_domain = m.get('CertificateDomain')
 
         if m.get('CertificateId') is not None:
             self.certificate_id = m.get('CertificateId')
@@ -258,11 +276,17 @@ class ListInstancesResponseBodyInstanceList(DaraModel):
         if m.get('PendingResult') is not None:
             self.pending_result = m.get('PendingResult')
 
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+
         if m.get('Spec') is not None:
             self.spec = m.get('Spec')
 
         if m.get('Status') is not None:
             self.status = m.get('Status')
+
+        if m.get('UsingProductList') is not None:
+            self.using_product_list = m.get('UsingProductList')
 
         if m.get('WildcardDomainCount') is not None:
             self.wildcard_domain_count = m.get('WildcardDomainCount')

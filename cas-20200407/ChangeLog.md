@@ -1,3 +1,12 @@
+2026-06-02 Version: 3.5.1
+- Update API GetCertificateDetail: add response parameters Body.Csr.
+- Update API GetInstanceDetail: add response parameters Body.UpgradeStatus.
+- Update API GetInstanceDetail: add response parameters Body.DomainValidationList.$.CnameKey.
+- Update API ListInstances: add response parameters Body.InstanceList.$.CertificateDomain.
+- Update API ListInstances: add response parameters Body.InstanceList.$.ResourceGroupId.
+- Update API ListInstances: add response parameters Body.InstanceList.$.UsingProductList.
+
+
 2026-05-19 Version: 3.5.0
 - Support API GetMatchedResources.
 
