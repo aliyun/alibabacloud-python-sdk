@@ -1,3 +1,19 @@
+2026-06-02 Version: 1.2.0
+- Support API CreateFlow.
+- Support API CreateUserAuthConfig.
+- Support API DeleteFlow.
+- Support API DeleteUserAuthConfig.
+- Support API DisableFlow.
+- Support API EnableFlow.
+- Support API GetFlow.
+- Support API GetUserAuthConfig.
+- Support API LaunchFlow.
+- Support API ListUserAuthConfigs.
+- Support API UpdateFlow.
+- Support API UpdateUserAuthConfig.
+- Support API WithdrawFlow.
+
+
 2026-04-08 Version: 1.1.0
 - Support API InvokeAction.
 

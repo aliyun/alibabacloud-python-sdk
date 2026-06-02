@@ -110,8 +110,6 @@ class InvokeActionRequest(DaraModel):
 
         return self
 
-
-
 class InvokeActionRequestAuthConfig(DaraModel):
     def __init__(
         self,
