@@ -42,6 +42,9 @@ from ._create_cloud_phone_node_request import CreateCloudPhoneNodeRequest
 from ._create_cloud_phone_node_shrink_request import CreateCloudPhoneNodeShrinkRequest
 from ._create_cloud_phone_node_response_body import CreateCloudPhoneNodeResponseBody
 from ._create_cloud_phone_node_response import CreateCloudPhoneNodeResponse
+from ._create_credit_package_request import CreateCreditPackageRequest
+from ._create_credit_package_response_body import CreateCreditPackageResponseBody
+from ._create_credit_package_response import CreateCreditPackageResponse
 from ._create_custom_image_request import CreateCustomImageRequest
 from ._create_custom_image_response_body import CreateCustomImageResponseBody
 from ._create_custom_image_response import CreateCustomImageResponse
@@ -108,6 +111,9 @@ from ._describe_buckets_response import DescribeBucketsResponse
 from ._describe_cloud_phone_nodes_request import DescribeCloudPhoneNodesRequest
 from ._describe_cloud_phone_nodes_response_body import DescribeCloudPhoneNodesResponseBody
 from ._describe_cloud_phone_nodes_response import DescribeCloudPhoneNodesResponse
+from ._describe_credit_package_request import DescribeCreditPackageRequest
+from ._describe_credit_package_response_body import DescribeCreditPackageResponseBody
+from ._describe_credit_package_response import DescribeCreditPackageResponse
 from ._describe_display_config_request import DescribeDisplayConfigRequest
 from ._describe_display_config_response_body import DescribeDisplayConfigResponseBody
 from ._describe_display_config_response import DescribeDisplayConfigResponse
@@ -383,6 +389,7 @@ from ._describe_cloud_phone_nodes_response_body import DescribeCloudPhoneNodesRe
 from ._describe_cloud_phone_nodes_response_body import DescribeCloudPhoneNodesResponseBodyNodeModelPhoneDataInfo
 from ._describe_cloud_phone_nodes_response_body import DescribeCloudPhoneNodesResponseBodyNodeModelTags
 from ._describe_cloud_phone_nodes_response_body import DescribeCloudPhoneNodesResponseBodyNodeModel
+from ._describe_credit_package_response_body import DescribeCreditPackageResponseBodyCreditsPackageInfos
 from ._describe_display_config_response_body import DescribeDisplayConfigResponseBodyDisplayConfigModel
 from ._describe_image_list_request import DescribeImageListRequestImageBizTags
 from ._describe_image_list_response_body import DescribeImageListResponseBodyDataImageBizTags
@@ -492,6 +499,9 @@ __all__ = [
     CreateCloudPhoneNodeShrinkRequest,
     CreateCloudPhoneNodeResponseBody,
     CreateCloudPhoneNodeResponse,
+    CreateCreditPackageRequest,
+    CreateCreditPackageResponseBody,
+    CreateCreditPackageResponse,
     CreateCustomImageRequest,
     CreateCustomImageResponseBody,
     CreateCustomImageResponse,
@@ -558,6 +568,9 @@ __all__ = [
     DescribeCloudPhoneNodesRequest,
     DescribeCloudPhoneNodesResponseBody,
     DescribeCloudPhoneNodesResponse,
+    DescribeCreditPackageRequest,
+    DescribeCreditPackageResponseBody,
+    DescribeCreditPackageResponse,
     DescribeDisplayConfigRequest,
     DescribeDisplayConfigResponseBody,
     DescribeDisplayConfigResponse,
@@ -833,6 +846,7 @@ __all__ = [
     DescribeCloudPhoneNodesResponseBodyNodeModelPhoneDataInfo,
     DescribeCloudPhoneNodesResponseBodyNodeModelTags,
     DescribeCloudPhoneNodesResponseBodyNodeModel,
+    DescribeCreditPackageResponseBodyCreditsPackageInfos,
     DescribeDisplayConfigResponseBodyDisplayConfigModel,
     DescribeImageListRequestImageBizTags,
     DescribeImageListResponseBodyDataImageBizTags,
