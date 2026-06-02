@@ -1,3 +1,7 @@
+2026-06-02 Version: 1.8.0
+- Support API DeleteBroadcastSticker.
+
+
 2026-05-18 Version: 1.7.3
 - Update API CreateBroadcastVideoFromTemplate: add request parameters body.videoOptions.mode.
 
