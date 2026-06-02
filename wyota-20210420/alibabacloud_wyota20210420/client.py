@@ -369,95 +369,307 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.bind_password_free_login_user_with_options_async(request, runtime)
 
-    def describe_device_seats_with_options(
+    def delete_clients_with_options(
         self,
-        request: main_models.DescribeDeviceSeatsRequest,
+        request: main_models.DeleteClientsRequest,
         runtime: RuntimeOptions,
-    ) -> main_models.DescribeDeviceSeatsResponse:
+    ) -> main_models.DeleteClientsResponse:
         request.validate()
+        query = {}
+        if not DaraCore.is_null(request.caller_ali_uid):
+            query['CallerAliUid'] = request.caller_ali_uid
         body = {}
-        if not DaraCore.is_null(request.page_number):
-            body['PageNumber'] = request.page_number
-        if not DaraCore.is_null(request.page_size):
-            body['PageSize'] = request.page_size
-        if not DaraCore.is_null(request.serial_no):
-            body['SerialNo'] = request.serial_no
-        if not DaraCore.is_null(request.serial_no_list):
-            body['SerialNoList'] = request.serial_no_list
-        if not DaraCore.is_null(request.site_id):
-            body['SiteId'] = request.site_id
-        if not DaraCore.is_null(request.tenant_id):
-            body['TenantId'] = request.tenant_id
+        if not DaraCore.is_null(request.in_manage):
+            body['InManage'] = request.in_manage
+        body_flat = {}
+        if not DaraCore.is_null(request.uuids):
+            body_flat['Uuids'] = request.uuids
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
         req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
-            action = 'DescribeDeviceSeats',
+            action = 'DeleteClients',
             version = '2021-04-20',
             protocol = 'HTTPS',
             pathname = '/',
             method = 'POST',
-            auth_type = 'Anonymous',
+            auth_type = 'AK',
             style = 'RPC',
             req_body_type = 'formData',
             body_type = 'json'
         )
         return DaraCore.from_map(
-            main_models.DescribeDeviceSeatsResponse(),
-            self.do_rpcrequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
+            main_models.DeleteClientsResponse(),
+            self.call_api(params, req, runtime)
         )
 
-    async def describe_device_seats_with_options_async(
+    async def delete_clients_with_options_async(
         self,
-        request: main_models.DescribeDeviceSeatsRequest,
+        request: main_models.DeleteClientsRequest,
         runtime: RuntimeOptions,
-    ) -> main_models.DescribeDeviceSeatsResponse:
+    ) -> main_models.DeleteClientsResponse:
         request.validate()
+        query = {}
+        if not DaraCore.is_null(request.caller_ali_uid):
+            query['CallerAliUid'] = request.caller_ali_uid
         body = {}
-        if not DaraCore.is_null(request.page_number):
-            body['PageNumber'] = request.page_number
-        if not DaraCore.is_null(request.page_size):
-            body['PageSize'] = request.page_size
-        if not DaraCore.is_null(request.serial_no):
-            body['SerialNo'] = request.serial_no
-        if not DaraCore.is_null(request.serial_no_list):
-            body['SerialNoList'] = request.serial_no_list
-        if not DaraCore.is_null(request.site_id):
-            body['SiteId'] = request.site_id
-        if not DaraCore.is_null(request.tenant_id):
-            body['TenantId'] = request.tenant_id
+        if not DaraCore.is_null(request.in_manage):
+            body['InManage'] = request.in_manage
+        body_flat = {}
+        if not DaraCore.is_null(request.uuids):
+            body_flat['Uuids'] = request.uuids
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
         req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
-            action = 'DescribeDeviceSeats',
+            action = 'DeleteClients',
             version = '2021-04-20',
             protocol = 'HTTPS',
             pathname = '/',
             method = 'POST',
-            auth_type = 'Anonymous',
+            auth_type = 'AK',
             style = 'RPC',
             req_body_type = 'formData',
             body_type = 'json'
         )
         return DaraCore.from_map(
-            main_models.DescribeDeviceSeatsResponse(),
-            await self.do_rpcrequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
+            main_models.DeleteClientsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
-    def describe_device_seats(
+    def delete_clients(
         self,
-        request: main_models.DescribeDeviceSeatsRequest,
-    ) -> main_models.DescribeDeviceSeatsResponse:
+        request: main_models.DeleteClientsRequest,
+    ) -> main_models.DeleteClientsResponse:
         runtime = RuntimeOptions()
-        return self.describe_device_seats_with_options(request, runtime)
+        return self.delete_clients_with_options(request, runtime)
 
-    async def describe_device_seats_async(
+    async def delete_clients_async(
         self,
-        request: main_models.DescribeDeviceSeatsRequest,
-    ) -> main_models.DescribeDeviceSeatsResponse:
+        request: main_models.DeleteClientsRequest,
+    ) -> main_models.DeleteClientsResponse:
         runtime = RuntimeOptions()
-        return await self.describe_device_seats_with_options_async(request, runtime)
+        return await self.delete_clients_with_options_async(request, runtime)
+
+    def describe_clients_with_options(
+        self,
+        request: main_models.DescribeClientsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeClientsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.caller_ali_uid):
+            query['CallerAliUid'] = request.caller_ali_uid
+        body = {}
+        if not DaraCore.is_null(request.client_type):
+            body['ClientType'] = request.client_type
+        if not DaraCore.is_null(request.custom_resource_id):
+            body['CustomResourceId'] = request.custom_resource_id
+        if not DaraCore.is_null(request.custom_resource_status):
+            body['CustomResourceStatus'] = request.custom_resource_status
+        if not DaraCore.is_null(request.in_manage):
+            body['InManage'] = request.in_manage
+        if not DaraCore.is_null(request.include_sub_groups):
+            body['IncludeSubGroups'] = request.include_sub_groups
+        if not DaraCore.is_null(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.model):
+            body['Model'] = request.model
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.online_status):
+            body['OnlineStatus'] = request.online_status
+        if not DaraCore.is_null(request.platform):
+            body['Platform'] = request.platform
+        if not DaraCore.is_null(request.search_keyword):
+            body['SearchKeyword'] = request.search_keyword
+        if not DaraCore.is_null(request.terminal_group_id):
+            body['TerminalGroupId'] = request.terminal_group_id
+        body_flat = {}
+        if not DaraCore.is_null(request.uuids):
+            body_flat['Uuids'] = request.uuids
+        if not DaraCore.is_null(request.with_bind_user):
+            body['WithBindUser'] = request.with_bind_user
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeClients',
+            version = '2021-04-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeClientsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_clients_with_options_async(
+        self,
+        request: main_models.DescribeClientsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeClientsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.caller_ali_uid):
+            query['CallerAliUid'] = request.caller_ali_uid
+        body = {}
+        if not DaraCore.is_null(request.client_type):
+            body['ClientType'] = request.client_type
+        if not DaraCore.is_null(request.custom_resource_id):
+            body['CustomResourceId'] = request.custom_resource_id
+        if not DaraCore.is_null(request.custom_resource_status):
+            body['CustomResourceStatus'] = request.custom_resource_status
+        if not DaraCore.is_null(request.in_manage):
+            body['InManage'] = request.in_manage
+        if not DaraCore.is_null(request.include_sub_groups):
+            body['IncludeSubGroups'] = request.include_sub_groups
+        if not DaraCore.is_null(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.model):
+            body['Model'] = request.model
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.online_status):
+            body['OnlineStatus'] = request.online_status
+        if not DaraCore.is_null(request.platform):
+            body['Platform'] = request.platform
+        if not DaraCore.is_null(request.search_keyword):
+            body['SearchKeyword'] = request.search_keyword
+        if not DaraCore.is_null(request.terminal_group_id):
+            body['TerminalGroupId'] = request.terminal_group_id
+        body_flat = {}
+        if not DaraCore.is_null(request.uuids):
+            body_flat['Uuids'] = request.uuids
+        if not DaraCore.is_null(request.with_bind_user):
+            body['WithBindUser'] = request.with_bind_user
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeClients',
+            version = '2021-04-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeClientsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_clients(
+        self,
+        request: main_models.DescribeClientsRequest,
+    ) -> main_models.DescribeClientsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_clients_with_options(request, runtime)
+
+    async def describe_clients_async(
+        self,
+        request: main_models.DescribeClientsRequest,
+    ) -> main_models.DescribeClientsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_clients_with_options_async(request, runtime)
+
+    def get_or_create_invitation_code_with_options(
+        self,
+        request: main_models.GetOrCreateInvitationCodeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetOrCreateInvitationCodeResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.expire_days):
+            body['ExpireDays'] = request.expire_days
+        if not DaraCore.is_null(request.expire_minutes):
+            body['ExpireMinutes'] = request.expire_minutes
+        if not DaraCore.is_null(request.terminal_group_id):
+            body['TerminalGroupId'] = request.terminal_group_id
+        if not DaraCore.is_null(request.type):
+            body['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetOrCreateInvitationCode',
+            version = '2021-04-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetOrCreateInvitationCodeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_or_create_invitation_code_with_options_async(
+        self,
+        request: main_models.GetOrCreateInvitationCodeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetOrCreateInvitationCodeResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.expire_days):
+            body['ExpireDays'] = request.expire_days
+        if not DaraCore.is_null(request.expire_minutes):
+            body['ExpireMinutes'] = request.expire_minutes
+        if not DaraCore.is_null(request.terminal_group_id):
+            body['TerminalGroupId'] = request.terminal_group_id
+        if not DaraCore.is_null(request.type):
+            body['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetOrCreateInvitationCode',
+            version = '2021-04-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetOrCreateInvitationCodeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_or_create_invitation_code(
+        self,
+        request: main_models.GetOrCreateInvitationCodeRequest,
+    ) -> main_models.GetOrCreateInvitationCodeResponse:
+        runtime = RuntimeOptions()
+        return self.get_or_create_invitation_code_with_options(request, runtime)
+
+    async def get_or_create_invitation_code_async(
+        self,
+        request: main_models.GetOrCreateInvitationCodeRequest,
+    ) -> main_models.GetOrCreateInvitationCodeResponse:
+        runtime = RuntimeOptions()
+        return await self.get_or_create_invitation_code_with_options_async(request, runtime)
 
     def list_terminal_with_options(
         self,
@@ -744,84 +956,6 @@ class Client(OpenApiClient):
     ) -> main_models.UnbindAccountLessLoginUserResponse:
         runtime = RuntimeOptions()
         return await self.unbind_account_less_login_user_with_options_async(request, runtime)
-
-    def unbind_device_seats_with_options(
-        self,
-        tmp_req: main_models.UnbindDeviceSeatsRequest,
-        runtime: RuntimeOptions,
-    ) -> main_models.UnbindDeviceSeatsResponse:
-        tmp_req.validate()
-        request = main_models.UnbindDeviceSeatsShrinkRequest()
-        Utils.convert(tmp_req, request)
-        if not DaraCore.is_null(tmp_req.serial_no_list):
-            request.serial_no_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.serial_no_list, 'SerialNoList', 'json')
-        body = {}
-        if not DaraCore.is_null(request.serial_no_list_shrink):
-            body['SerialNoList'] = request.serial_no_list_shrink
-        req = open_api_util_models.OpenApiRequest(
-            body = Utils.parse_to_map(body)
-        )
-        params = open_api_util_models.Params(
-            action = 'UnbindDeviceSeats',
-            version = '2021-04-20',
-            protocol = 'HTTPS',
-            pathname = '/',
-            method = 'POST',
-            auth_type = 'AK',
-            style = 'RPC',
-            req_body_type = 'formData',
-            body_type = 'json'
-        )
-        return DaraCore.from_map(
-            main_models.UnbindDeviceSeatsResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def unbind_device_seats_with_options_async(
-        self,
-        tmp_req: main_models.UnbindDeviceSeatsRequest,
-        runtime: RuntimeOptions,
-    ) -> main_models.UnbindDeviceSeatsResponse:
-        tmp_req.validate()
-        request = main_models.UnbindDeviceSeatsShrinkRequest()
-        Utils.convert(tmp_req, request)
-        if not DaraCore.is_null(tmp_req.serial_no_list):
-            request.serial_no_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.serial_no_list, 'SerialNoList', 'json')
-        body = {}
-        if not DaraCore.is_null(request.serial_no_list_shrink):
-            body['SerialNoList'] = request.serial_no_list_shrink
-        req = open_api_util_models.OpenApiRequest(
-            body = Utils.parse_to_map(body)
-        )
-        params = open_api_util_models.Params(
-            action = 'UnbindDeviceSeats',
-            version = '2021-04-20',
-            protocol = 'HTTPS',
-            pathname = '/',
-            method = 'POST',
-            auth_type = 'AK',
-            style = 'RPC',
-            req_body_type = 'formData',
-            body_type = 'json'
-        )
-        return DaraCore.from_map(
-            main_models.UnbindDeviceSeatsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def unbind_device_seats(
-        self,
-        request: main_models.UnbindDeviceSeatsRequest,
-    ) -> main_models.UnbindDeviceSeatsResponse:
-        runtime = RuntimeOptions()
-        return self.unbind_device_seats_with_options(request, runtime)
-
-    async def unbind_device_seats_async(
-        self,
-        request: main_models.UnbindDeviceSeatsRequest,
-    ) -> main_models.UnbindDeviceSeatsResponse:
-        runtime = RuntimeOptions()
-        return await self.unbind_device_seats_with_options_async(request, runtime)
 
     def unbind_password_free_login_user_with_options(
         self,

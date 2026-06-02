@@ -1,3 +1,11 @@
+2026-06-02 Version: 3.0.0
+- Support API DeleteClients.
+- Support API DescribeClients.
+- Support API GetOrCreateInvitationCode.
+- Delete API DescribeDeviceSeats.
+- Delete API UnbindDeviceSeats.
+
+
 2026-02-27 Version: 2.0.0
 - Delete API ActivateDevice.
 - Delete API AddDeviceFromSN.
