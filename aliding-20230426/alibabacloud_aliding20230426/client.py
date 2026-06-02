@@ -22930,6 +22930,120 @@ class Client(OpenApiClient):
         headers = main_models.MeetingFlashMinutesHeaders()
         return await self.meeting_flash_minutes_with_options_async(request, headers, runtime)
 
+    def meeting_flash_minutes_text_with_options(
+        self,
+        tmp_req: main_models.MeetingFlashMinutesTextRequest,
+        tmp_header: main_models.MeetingFlashMinutesTextHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.MeetingFlashMinutesTextResponse:
+        tmp_req.validate()
+        request = main_models.MeetingFlashMinutesTextShrinkRequest()
+        Utils.convert(tmp_req, request)
+        headers = main_models.MeetingFlashMinutesTextShrinkHeaders()
+        Utils.convert(tmp_header, headers)
+        if not DaraCore.is_null(tmp_header.account_context):
+            headers.account_context_shrink = Utils.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not DaraCore.is_null(tmp_req.tenant_context):
+            request.tenant_context_shrink = Utils.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not DaraCore.is_null(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not DaraCore.is_null(request.conference_id):
+            body['conferenceId'] = request.conference_id
+        if not DaraCore.is_null(request.max_results):
+            body['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            body['nextToken'] = request.next_token
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.account_context_shrink):
+            real_headers['AccountContext'] = DaraCore.to_json_string(headers.account_context_shrink)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'MeetingFlashMinutesText',
+            version = '2023-04-26',
+            protocol = 'HTTPS',
+            pathname = f'/dingtalk/v1/minutes/meetingFlashMinutesText',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.MeetingFlashMinutesTextResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def meeting_flash_minutes_text_with_options_async(
+        self,
+        tmp_req: main_models.MeetingFlashMinutesTextRequest,
+        tmp_header: main_models.MeetingFlashMinutesTextHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.MeetingFlashMinutesTextResponse:
+        tmp_req.validate()
+        request = main_models.MeetingFlashMinutesTextShrinkRequest()
+        Utils.convert(tmp_req, request)
+        headers = main_models.MeetingFlashMinutesTextShrinkHeaders()
+        Utils.convert(tmp_header, headers)
+        if not DaraCore.is_null(tmp_header.account_context):
+            headers.account_context_shrink = Utils.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not DaraCore.is_null(tmp_req.tenant_context):
+            request.tenant_context_shrink = Utils.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not DaraCore.is_null(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not DaraCore.is_null(request.conference_id):
+            body['conferenceId'] = request.conference_id
+        if not DaraCore.is_null(request.max_results):
+            body['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            body['nextToken'] = request.next_token
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.account_context_shrink):
+            real_headers['AccountContext'] = DaraCore.to_json_string(headers.account_context_shrink)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'MeetingFlashMinutesText',
+            version = '2023-04-26',
+            protocol = 'HTTPS',
+            pathname = f'/dingtalk/v1/minutes/meetingFlashMinutesText',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.MeetingFlashMinutesTextResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def meeting_flash_minutes_text(
+        self,
+        request: main_models.MeetingFlashMinutesTextRequest,
+    ) -> main_models.MeetingFlashMinutesTextResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.MeetingFlashMinutesTextHeaders()
+        return self.meeting_flash_minutes_text_with_options(request, headers, runtime)
+
+    async def meeting_flash_minutes_text_async(
+        self,
+        request: main_models.MeetingFlashMinutesTextRequest,
+    ) -> main_models.MeetingFlashMinutesTextResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.MeetingFlashMinutesTextHeaders()
+        return await self.meeting_flash_minutes_text_with_options_async(request, headers, runtime)
+
     def mute_all_with_options(
         self,
         tmp_req: main_models.MuteAllRequest,

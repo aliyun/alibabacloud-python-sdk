@@ -1104,6 +1104,12 @@ from ._meeting_flash_minutes_request import MeetingFlashMinutesRequest
 from ._meeting_flash_minutes_shrink_request import MeetingFlashMinutesShrinkRequest
 from ._meeting_flash_minutes_response_body import MeetingFlashMinutesResponseBody
 from ._meeting_flash_minutes_response import MeetingFlashMinutesResponse
+from ._meeting_flash_minutes_text_headers import MeetingFlashMinutesTextHeaders
+from ._meeting_flash_minutes_text_shrink_headers import MeetingFlashMinutesTextShrinkHeaders
+from ._meeting_flash_minutes_text_request import MeetingFlashMinutesTextRequest
+from ._meeting_flash_minutes_text_shrink_request import MeetingFlashMinutesTextShrinkRequest
+from ._meeting_flash_minutes_text_response_body import MeetingFlashMinutesTextResponseBody
+from ._meeting_flash_minutes_text_response import MeetingFlashMinutesTextResponse
 from ._mute_all_headers import MuteAllHeaders
 from ._mute_all_shrink_headers import MuteAllShrinkHeaders
 from ._mute_all_request import MuteAllRequest
@@ -2436,6 +2442,12 @@ from ._meeting_flash_minutes_response_body import MeetingFlashMinutesResponseBod
 from ._meeting_flash_minutes_response_body import MeetingFlashMinutesResponseBodyTodosDingtalkTodoListExecutorList
 from ._meeting_flash_minutes_response_body import MeetingFlashMinutesResponseBodyTodosDingtalkTodoList
 from ._meeting_flash_minutes_response_body import MeetingFlashMinutesResponseBodyTodos
+from ._meeting_flash_minutes_text_headers import MeetingFlashMinutesTextHeadersAccountContext
+from ._meeting_flash_minutes_text_request import MeetingFlashMinutesTextRequestTenantContext
+from ._meeting_flash_minutes_text_response_body import MeetingFlashMinutesTextResponseBodyParagraphListSentenceListWordList
+from ._meeting_flash_minutes_text_response_body import MeetingFlashMinutesTextResponseBodyParagraphListSentenceList
+from ._meeting_flash_minutes_text_response_body import MeetingFlashMinutesTextResponseBodyParagraphListSpeakerDisplay
+from ._meeting_flash_minutes_text_response_body import MeetingFlashMinutesTextResponseBodyParagraphList
 from ._mute_all_headers import MuteAllHeadersAccountContext
 from ._mute_all_request import MuteAllRequestTenantContext
 from ._mute_members_headers import MuteMembersHeadersAccountContext
@@ -3827,6 +3839,12 @@ __all__ = [
     MeetingFlashMinutesShrinkRequest,
     MeetingFlashMinutesResponseBody,
     MeetingFlashMinutesResponse,
+    MeetingFlashMinutesTextHeaders,
+    MeetingFlashMinutesTextShrinkHeaders,
+    MeetingFlashMinutesTextRequest,
+    MeetingFlashMinutesTextShrinkRequest,
+    MeetingFlashMinutesTextResponseBody,
+    MeetingFlashMinutesTextResponse,
     MuteAllHeaders,
     MuteAllShrinkHeaders,
     MuteAllRequest,
@@ -5159,6 +5177,12 @@ __all__ = [
     MeetingFlashMinutesResponseBodyTodosDingtalkTodoListExecutorList,
     MeetingFlashMinutesResponseBodyTodosDingtalkTodoList,
     MeetingFlashMinutesResponseBodyTodos,
+    MeetingFlashMinutesTextHeadersAccountContext,
+    MeetingFlashMinutesTextRequestTenantContext,
+    MeetingFlashMinutesTextResponseBodyParagraphListSentenceListWordList,
+    MeetingFlashMinutesTextResponseBodyParagraphListSentenceList,
+    MeetingFlashMinutesTextResponseBodyParagraphListSpeakerDisplay,
+    MeetingFlashMinutesTextResponseBodyParagraphList,
     MuteAllHeadersAccountContext,
     MuteAllRequestTenantContext,
     MuteMembersHeadersAccountContext,
