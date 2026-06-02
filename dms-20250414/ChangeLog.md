@@ -1,3 +1,16 @@
+2026-06-02 Version: 1.14.0
+- Support API DeleteWorkspaceCode.
+- Support API GetWorkspaceCode.
+- Support API ListWorkspaceCode.
+- Support API SaveWorkspaceCode.
+- Update API CreateCustomAgent: add request parameters RelatedSessionId.
+- Update API CreateCustomAgent: add response parameters Body.Data.RelatedSessionId.
+- Update API DescribeCustomAgent: add response parameters Body.Data.RelatedSessionId.
+- Update API ListCustomAgent: add response parameters Body.Data.Content.$.RelatedSessionId.
+- Update API ModifyCustomAgent: add request parameters RelatedSessionId.
+- Update API ModifyCustomAgent: add response parameters Body.Data.RelatedSessionId.
+
+
 2026-05-20 Version: 1.13.1
 - Update API FileUploadCallback: add request parameters OssBucket.
 

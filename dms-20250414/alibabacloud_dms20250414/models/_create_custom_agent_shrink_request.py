@@ -16,6 +16,7 @@ class CreateCustomAgentShrinkRequest(DaraModel):
         knowledge: str = None,
         knowledge_config_list_shrink: str = None,
         name: str = None,
+        related_session_id: str = None,
         schedule_task_config_shrink: str = None,
         text_report_config: str = None,
         web_report_config: str = None,
@@ -30,6 +31,7 @@ class CreateCustomAgentShrinkRequest(DaraModel):
         self.knowledge = knowledge
         self.knowledge_config_list_shrink = knowledge_config_list_shrink
         self.name = name
+        self.related_session_id = related_session_id
         self.schedule_task_config_shrink = schedule_task_config_shrink
         self.text_report_config = text_report_config
         self.web_report_config = web_report_config
@@ -69,6 +71,9 @@ class CreateCustomAgentShrinkRequest(DaraModel):
 
         if self.name is not None:
             result['Name'] = self.name
+
+        if self.related_session_id is not None:
+            result['RelatedSessionId'] = self.related_session_id
 
         if self.schedule_task_config_shrink is not None:
             result['ScheduleTaskConfig'] = self.schedule_task_config_shrink
@@ -112,6 +117,9 @@ class CreateCustomAgentShrinkRequest(DaraModel):
 
         if m.get('Name') is not None:
             self.name = m.get('Name')
+
+        if m.get('RelatedSessionId') is not None:
+            self.related_session_id = m.get('RelatedSessionId')
 
         if m.get('ScheduleTaskConfig') is not None:
             self.schedule_task_config_shrink = m.get('ScheduleTaskConfig')

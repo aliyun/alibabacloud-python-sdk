@@ -95,6 +95,7 @@ class DescribeCustomAgentResponseBodyData(DaraModel):
         next_runtime: int = None,
         offline_time: str = None,
         region: str = None,
+        related_session_id: str = None,
         release_time: str = None,
         schedule_task_config: main_models.DescribeCustomAgentResponseBodyDataScheduleTaskConfig = None,
         status: str = None,
@@ -125,6 +126,7 @@ class DescribeCustomAgentResponseBodyData(DaraModel):
         self.next_runtime = next_runtime
         self.offline_time = offline_time
         self.region = region
+        self.related_session_id = related_session_id
         self.release_time = release_time
         self.schedule_task_config = schedule_task_config
         self.status = status
@@ -219,6 +221,9 @@ class DescribeCustomAgentResponseBodyData(DaraModel):
 
         if self.region is not None:
             result['Region'] = self.region
+
+        if self.related_session_id is not None:
+            result['RelatedSessionId'] = self.related_session_id
 
         if self.release_time is not None:
             result['ReleaseTime'] = self.release_time
@@ -315,6 +320,9 @@ class DescribeCustomAgentResponseBodyData(DaraModel):
 
         if m.get('Region') is not None:
             self.region = m.get('Region')
+
+        if m.get('RelatedSessionId') is not None:
+            self.related_session_id = m.get('RelatedSessionId')
 
         if m.get('ReleaseTime') is not None:
             self.release_time = m.get('ReleaseTime')

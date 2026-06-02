@@ -775,6 +775,8 @@ class Client(OpenApiClient):
             query['KnowledgeConfigList'] = request.knowledge_config_list_shrink
         if not DaraCore.is_null(request.name):
             query['Name'] = request.name
+        if not DaraCore.is_null(request.related_session_id):
+            query['RelatedSessionId'] = request.related_session_id
         if not DaraCore.is_null(request.schedule_task_config_shrink):
             query['ScheduleTaskConfig'] = request.schedule_task_config_shrink
         if not DaraCore.is_null(request.text_report_config):
@@ -837,6 +839,8 @@ class Client(OpenApiClient):
             query['KnowledgeConfigList'] = request.knowledge_config_list_shrink
         if not DaraCore.is_null(request.name):
             query['Name'] = request.name
+        if not DaraCore.is_null(request.related_session_id):
+            query['RelatedSessionId'] = request.related_session_id
         if not DaraCore.is_null(request.schedule_task_config_shrink):
             query['ScheduleTaskConfig'] = request.schedule_task_config_shrink
         if not DaraCore.is_null(request.text_report_config):
@@ -2446,6 +2450,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.delete_file_upload_with_options_async(request, runtime)
 
+    def delete_workspace_code_with_options(
+        self,
+        request: main_models.DeleteWorkspaceCodeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteWorkspaceCodeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.path):
+            query['Path'] = request.path
+        if not DaraCore.is_null(request.repo):
+            query['Repo'] = request.repo
+        if not DaraCore.is_null(request.symlink):
+            query['Symlink'] = request.symlink
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteWorkspaceCode',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteWorkspaceCodeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_workspace_code_with_options_async(
+        self,
+        request: main_models.DeleteWorkspaceCodeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteWorkspaceCodeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.path):
+            query['Path'] = request.path
+        if not DaraCore.is_null(request.repo):
+            query['Repo'] = request.repo
+        if not DaraCore.is_null(request.symlink):
+            query['Symlink'] = request.symlink
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteWorkspaceCode',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteWorkspaceCodeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_workspace_code(
+        self,
+        request: main_models.DeleteWorkspaceCodeRequest,
+    ) -> main_models.DeleteWorkspaceCodeResponse:
+        runtime = RuntimeOptions()
+        return self.delete_workspace_code_with_options(request, runtime)
+
+    async def delete_workspace_code_async(
+        self,
+        request: main_models.DeleteWorkspaceCodeRequest,
+    ) -> main_models.DeleteWorkspaceCodeResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_workspace_code_with_options_async(request, runtime)
+
     def describe_custom_agent_with_options(
         self,
         request: main_models.DescribeCustomAgentRequest,
@@ -3963,6 +4049,84 @@ class Client(OpenApiClient):
     ) -> main_models.GetNotebookTaskStatusResponse:
         runtime = RuntimeOptions()
         return await self.get_notebook_task_status_with_options_async(request, runtime)
+
+    def get_workspace_code_with_options(
+        self,
+        request: main_models.GetWorkspaceCodeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetWorkspaceCodeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.iac):
+            query['Iac'] = request.iac
+        if not DaraCore.is_null(request.path):
+            query['Path'] = request.path
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetWorkspaceCode',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetWorkspaceCodeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_workspace_code_with_options_async(
+        self,
+        request: main_models.GetWorkspaceCodeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetWorkspaceCodeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.iac):
+            query['Iac'] = request.iac
+        if not DaraCore.is_null(request.path):
+            query['Path'] = request.path
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetWorkspaceCode',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetWorkspaceCodeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_workspace_code(
+        self,
+        request: main_models.GetWorkspaceCodeRequest,
+    ) -> main_models.GetWorkspaceCodeResponse:
+        runtime = RuntimeOptions()
+        return self.get_workspace_code_with_options(request, runtime)
+
+    async def get_workspace_code_async(
+        self,
+        request: main_models.GetWorkspaceCodeRequest,
+    ) -> main_models.GetWorkspaceCodeResponse:
+        runtime = RuntimeOptions()
+        return await self.get_workspace_code_with_options_async(request, runtime)
 
     def get_workspace_code_publish_setting_with_options(
         self,
@@ -6188,6 +6352,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_knowledge_bases_with_options_async(request, runtime)
 
+    def list_workspace_code_with_options(
+        self,
+        request: main_models.ListWorkspaceCodeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListWorkspaceCodeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.path):
+            query['Path'] = request.path
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListWorkspaceCode',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListWorkspaceCodeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_workspace_code_with_options_async(
+        self,
+        request: main_models.ListWorkspaceCodeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListWorkspaceCodeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.path):
+            query['Path'] = request.path
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListWorkspaceCode',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListWorkspaceCodeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_workspace_code(
+        self,
+        request: main_models.ListWorkspaceCodeRequest,
+    ) -> main_models.ListWorkspaceCodeResponse:
+        runtime = RuntimeOptions()
+        return self.list_workspace_code_with_options(request, runtime)
+
+    async def list_workspace_code_async(
+        self,
+        request: main_models.ListWorkspaceCodeRequest,
+    ) -> main_models.ListWorkspaceCodeResponse:
+        runtime = RuntimeOptions()
+        return await self.list_workspace_code_with_options_async(request, runtime)
+
     def modify_custom_agent_with_options(
         self,
         tmp_req: main_models.ModifyCustomAgentRequest,
@@ -6225,6 +6463,8 @@ class Client(OpenApiClient):
             query['KnowledgeConfigList'] = request.knowledge_config_list_shrink
         if not DaraCore.is_null(request.name):
             query['Name'] = request.name
+        if not DaraCore.is_null(request.related_session_id):
+            query['RelatedSessionId'] = request.related_session_id
         if not DaraCore.is_null(request.schedule_task_config_shrink):
             query['ScheduleTaskConfig'] = request.schedule_task_config_shrink
         if not DaraCore.is_null(request.text_report_config):
@@ -6289,6 +6529,8 @@ class Client(OpenApiClient):
             query['KnowledgeConfigList'] = request.knowledge_config_list_shrink
         if not DaraCore.is_null(request.name):
             query['Name'] = request.name
+        if not DaraCore.is_null(request.related_session_id):
+            query['RelatedSessionId'] = request.related_session_id
         if not DaraCore.is_null(request.schedule_task_config_shrink):
             query['ScheduleTaskConfig'] = request.schedule_task_config_shrink
         if not DaraCore.is_null(request.text_report_config):
@@ -6559,6 +6801,104 @@ class Client(OpenApiClient):
     ) -> main_models.RemoveUserToDataAgentWorkspaceResponse:
         runtime = RuntimeOptions()
         return await self.remove_user_to_data_agent_workspace_with_options_async(request, runtime)
+
+    def save_workspace_code_with_options(
+        self,
+        request: main_models.SaveWorkspaceCodeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SaveWorkspaceCodeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.content):
+            query['Content'] = request.content
+        if not DaraCore.is_null(request.force):
+            query['Force'] = request.force
+        if not DaraCore.is_null(request.iac):
+            query['Iac'] = request.iac
+        if not DaraCore.is_null(request.mtime):
+            query['Mtime'] = request.mtime
+        if not DaraCore.is_null(request.repo):
+            query['Repo'] = request.repo
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        body = {}
+        if not DaraCore.is_null(request.path):
+            body['Path'] = request.path
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SaveWorkspaceCode',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SaveWorkspaceCodeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def save_workspace_code_with_options_async(
+        self,
+        request: main_models.SaveWorkspaceCodeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SaveWorkspaceCodeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.content):
+            query['Content'] = request.content
+        if not DaraCore.is_null(request.force):
+            query['Force'] = request.force
+        if not DaraCore.is_null(request.iac):
+            query['Iac'] = request.iac
+        if not DaraCore.is_null(request.mtime):
+            query['Mtime'] = request.mtime
+        if not DaraCore.is_null(request.repo):
+            query['Repo'] = request.repo
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        body = {}
+        if not DaraCore.is_null(request.path):
+            body['Path'] = request.path
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SaveWorkspaceCode',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SaveWorkspaceCodeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def save_workspace_code(
+        self,
+        request: main_models.SaveWorkspaceCodeRequest,
+    ) -> main_models.SaveWorkspaceCodeResponse:
+        runtime = RuntimeOptions()
+        return self.save_workspace_code_with_options(request, runtime)
+
+    async def save_workspace_code_async(
+        self,
+        request: main_models.SaveWorkspaceCodeRequest,
+    ) -> main_models.SaveWorkspaceCodeResponse:
+        runtime = RuntimeOptions()
+        return await self.save_workspace_code_with_options_async(request, runtime)
 
     def send_chat_message_with_options(
         self,
