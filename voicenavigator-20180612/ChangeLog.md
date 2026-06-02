@@ -1,3 +1,7 @@
+2026-06-02 Version: 2.0.1
+- Update API DebugBeginDialogue: add request parameters ShouldUseSandBox.
+
+
 2026-05-11 Version: 2.0.0
 - Delete API GenerateUploadUrl.
 - Update API DescribeTTSConfig: add response parameters Body.TtsOverrides.

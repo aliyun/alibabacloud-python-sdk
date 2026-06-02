@@ -585,6 +585,8 @@ class Client(OpenApiClient):
             query['InitialContext'] = request.initial_context
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.should_use_sand_box):
+            query['ShouldUseSandBox'] = request.should_use_sand_box
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -621,6 +623,8 @@ class Client(OpenApiClient):
             query['InitialContext'] = request.initial_context
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.should_use_sand_box):
+            query['ShouldUseSandBox'] = request.should_use_sand_box
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )

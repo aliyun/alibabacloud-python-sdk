@@ -12,6 +12,7 @@ class DebugBeginDialogueRequest(DaraModel):
         conversation_id: str = None,
         initial_context: str = None,
         instance_id: str = None,
+        should_use_sand_box: bool = None,
     ):
         self.called_number = called_number
         # This parameter is required.
@@ -21,6 +22,7 @@ class DebugBeginDialogueRequest(DaraModel):
         self.initial_context = initial_context
         # This parameter is required.
         self.instance_id = instance_id
+        self.should_use_sand_box = should_use_sand_box
 
     def validate(self):
         pass
@@ -45,6 +47,9 @@ class DebugBeginDialogueRequest(DaraModel):
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
 
+        if self.should_use_sand_box is not None:
+            result['ShouldUseSandBox'] = self.should_use_sand_box
+
         return result
 
     def from_map(self, m: dict = None):
@@ -63,6 +68,9 @@ class DebugBeginDialogueRequest(DaraModel):
 
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+
+        if m.get('ShouldUseSandBox') is not None:
+            self.should_use_sand_box = m.get('ShouldUseSandBox')
 
         return self
 
