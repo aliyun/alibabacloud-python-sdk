@@ -1,3 +1,11 @@
+2026-06-03 Version: 2.23.1
+- Update API CreateAppInstance: add request parameters CreateAction.
+- Update API CreateAppInstance: add request parameters Description.
+- Update API CreateAppInstance: add request parameters Name.
+- Update API CreateAppInstance: add request parameters Version.
+- Update API ListAppInstances: add response parameters Body.StartPosition.
+
+
 2026-05-27 Version: 2.23.0
 - Support API GetAIStaffPreviewUrl.
 

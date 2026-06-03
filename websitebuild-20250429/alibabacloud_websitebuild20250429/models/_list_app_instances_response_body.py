@@ -27,6 +27,7 @@ class ListAppInstancesResponseBody(DaraModel):
         result_limit: bool = None,
         root_error_code: str = None,
         root_error_msg: str = None,
+        start_position: str = None,
         synchro: bool = None,
         total_page_num: int = None,
     ):
@@ -66,6 +67,7 @@ class ListAppInstancesResponseBody(DaraModel):
         self.root_error_code = root_error_code
         # Error message
         self.root_error_msg = root_error_msg
+        self.start_position = start_position
         # Reserved parameter.
         self.synchro = synchro
         # Total number of pages.
@@ -135,6 +137,9 @@ class ListAppInstancesResponseBody(DaraModel):
         if self.root_error_msg is not None:
             result['RootErrorMsg'] = self.root_error_msg
 
+        if self.start_position is not None:
+            result['StartPosition'] = self.start_position
+
         if self.synchro is not None:
             result['Synchro'] = self.synchro
 
@@ -198,6 +203,9 @@ class ListAppInstancesResponseBody(DaraModel):
 
         if m.get('RootErrorMsg') is not None:
             self.root_error_msg = m.get('RootErrorMsg')
+
+        if m.get('StartPosition') is not None:
+            self.start_position = m.get('StartPosition')
 
         if m.get('Synchro') is not None:
             self.synchro = m.get('Synchro')

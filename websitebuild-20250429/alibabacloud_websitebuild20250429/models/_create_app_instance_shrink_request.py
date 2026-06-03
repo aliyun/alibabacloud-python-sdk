@@ -10,15 +10,19 @@ class CreateAppInstanceShrinkRequest(DaraModel):
         application_type: str = None,
         auto_renew: bool = None,
         client_token: str = None,
+        create_action: str = None,
         deploy_area: str = None,
+        description: str = None,
         duration: int = None,
         extend: str = None,
+        name: str = None,
         payment_type: str = None,
         pricing_cycle: str = None,
         quantity: int = None,
         resource_group_id: str = None,
         site_version: str = None,
         tags_shrink: str = None,
+        version: str = None,
     ):
         # Application type
         self.application_type = application_type
@@ -26,12 +30,15 @@ class CreateAppInstanceShrinkRequest(DaraModel):
         self.auto_renew = auto_renew
         # Ensures idempotence of the request. Generate a unique value from your client to ensure that it is unique across different requests. ClientToken only supports ASCII characters and cannot exceed 64 characters
         self.client_token = client_token
+        self.create_action = create_action
         # Deployment area
         self.deploy_area = deploy_area
+        self.description = description
         # Required. The number of subscription periods
         self.duration = duration
         # Extended information
         self.extend = extend
+        self.name = name
         # Payment type
         self.payment_type = payment_type
         # Required. The unit of the subscription period, Year: Year, Month: Month, Day: Day, Hour: Hour
@@ -42,6 +49,7 @@ class CreateAppInstanceShrinkRequest(DaraModel):
         # Site version
         self.site_version = site_version
         self.tags_shrink = tags_shrink
+        self.version = version
 
     def validate(self):
         pass
@@ -60,14 +68,23 @@ class CreateAppInstanceShrinkRequest(DaraModel):
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
 
+        if self.create_action is not None:
+            result['CreateAction'] = self.create_action
+
         if self.deploy_area is not None:
             result['DeployArea'] = self.deploy_area
+
+        if self.description is not None:
+            result['Description'] = self.description
 
         if self.duration is not None:
             result['Duration'] = self.duration
 
         if self.extend is not None:
             result['Extend'] = self.extend
+
+        if self.name is not None:
+            result['Name'] = self.name
 
         if self.payment_type is not None:
             result['PaymentType'] = self.payment_type
@@ -87,6 +104,9 @@ class CreateAppInstanceShrinkRequest(DaraModel):
         if self.tags_shrink is not None:
             result['Tags'] = self.tags_shrink
 
+        if self.version is not None:
+            result['Version'] = self.version
+
         return result
 
     def from_map(self, m: dict = None):
@@ -100,14 +120,23 @@ class CreateAppInstanceShrinkRequest(DaraModel):
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
 
+        if m.get('CreateAction') is not None:
+            self.create_action = m.get('CreateAction')
+
         if m.get('DeployArea') is not None:
             self.deploy_area = m.get('DeployArea')
+
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
 
         if m.get('Duration') is not None:
             self.duration = m.get('Duration')
 
         if m.get('Extend') is not None:
             self.extend = m.get('Extend')
+
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
 
         if m.get('PaymentType') is not None:
             self.payment_type = m.get('PaymentType')
@@ -126,6 +155,9 @@ class CreateAppInstanceShrinkRequest(DaraModel):
 
         if m.get('Tags') is not None:
             self.tags_shrink = m.get('Tags')
+
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
 
         return self
 

@@ -828,12 +828,18 @@ class Client(OpenApiClient):
             query['AutoRenew'] = request.auto_renew
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.create_action):
+            query['CreateAction'] = request.create_action
         if not DaraCore.is_null(request.deploy_area):
             query['DeployArea'] = request.deploy_area
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
         if not DaraCore.is_null(request.duration):
             query['Duration'] = request.duration
         if not DaraCore.is_null(request.extend):
             query['Extend'] = request.extend
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
         if not DaraCore.is_null(request.payment_type):
             query['PaymentType'] = request.payment_type
         if not DaraCore.is_null(request.pricing_cycle):
@@ -842,6 +848,8 @@ class Client(OpenApiClient):
             query['Quantity'] = request.quantity
         if not DaraCore.is_null(request.site_version):
             query['SiteVersion'] = request.site_version
+        if not DaraCore.is_null(request.version):
+            query['Version'] = request.version
         body = {}
         if not DaraCore.is_null(request.resource_group_id):
             body['ResourceGroupId'] = request.resource_group_id
@@ -884,12 +892,18 @@ class Client(OpenApiClient):
             query['AutoRenew'] = request.auto_renew
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.create_action):
+            query['CreateAction'] = request.create_action
         if not DaraCore.is_null(request.deploy_area):
             query['DeployArea'] = request.deploy_area
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
         if not DaraCore.is_null(request.duration):
             query['Duration'] = request.duration
         if not DaraCore.is_null(request.extend):
             query['Extend'] = request.extend
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
         if not DaraCore.is_null(request.payment_type):
             query['PaymentType'] = request.payment_type
         if not DaraCore.is_null(request.pricing_cycle):
@@ -898,6 +912,8 @@ class Client(OpenApiClient):
             query['Quantity'] = request.quantity
         if not DaraCore.is_null(request.site_version):
             query['SiteVersion'] = request.site_version
+        if not DaraCore.is_null(request.version):
+            query['Version'] = request.version
         body = {}
         if not DaraCore.is_null(request.resource_group_id):
             body['ResourceGroupId'] = request.resource_group_id

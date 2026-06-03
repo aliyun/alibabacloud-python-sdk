@@ -17,6 +17,7 @@ class AppInstanceProfile(DaraModel):
         ord_time: str = None,
         order_id: str = None,
         pay_time: str = None,
+        preview_url: str = None,
         seo_site: str = None,
         site_version: str = None,
         site_version_text: str = None,
@@ -34,6 +35,7 @@ class AppInstanceProfile(DaraModel):
         self.ord_time = ord_time
         self.order_id = order_id
         self.pay_time = pay_time
+        self.preview_url = preview_url
         self.seo_site = seo_site
         self.site_version = site_version
         self.site_version_text = site_version_text
@@ -78,6 +80,9 @@ class AppInstanceProfile(DaraModel):
 
         if self.pay_time is not None:
             result['PayTime'] = self.pay_time
+
+        if self.preview_url is not None:
+            result['PreviewUrl'] = self.preview_url
 
         if self.seo_site is not None:
             result['SeoSite'] = self.seo_site
@@ -130,6 +135,9 @@ class AppInstanceProfile(DaraModel):
 
         if m.get('PayTime') is not None:
             self.pay_time = m.get('PayTime')
+
+        if m.get('PreviewUrl') is not None:
+            self.preview_url = m.get('PreviewUrl')
 
         if m.get('SeoSite') is not None:
             self.seo_site = m.get('SeoSite')
