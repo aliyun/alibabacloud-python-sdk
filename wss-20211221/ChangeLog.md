@@ -1,3 +1,7 @@
+2026-06-03 Version: 1.4.1
+- Update API CreateMultiOrder: add request parameters ChannelCookie.
+
+
 2026-05-05 Version: 1.4.0
 - Support API DescribeCreditPackageAgents.
 - Support API DescribeCreditUsageInfo.

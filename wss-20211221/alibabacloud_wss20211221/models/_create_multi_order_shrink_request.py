@@ -10,11 +10,13 @@ from darabonba.model import DaraModel
 class CreateMultiOrderShrinkRequest(DaraModel):
     def __init__(
         self,
+        channel_cookie: str = None,
         order_items: List[main_models.CreateMultiOrderShrinkRequestOrderItems] = None,
         order_type: str = None,
         properties_shrink: str = None,
         reseller_owner_uid: int = None,
     ):
+        self.channel_cookie = channel_cookie
         self.order_items = order_items
         self.order_type = order_type
         self.properties_shrink = properties_shrink
@@ -31,6 +33,9 @@ class CreateMultiOrderShrinkRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.channel_cookie is not None:
+            result['ChannelCookie'] = self.channel_cookie
+
         result['OrderItems'] = []
         if self.order_items is not None:
             for k1 in self.order_items:
@@ -49,6 +54,9 @@ class CreateMultiOrderShrinkRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ChannelCookie') is not None:
+            self.channel_cookie = m.get('ChannelCookie')
+
         self.order_items = []
         if m.get('OrderItems') is not None:
             for k1 in m.get('OrderItems'):

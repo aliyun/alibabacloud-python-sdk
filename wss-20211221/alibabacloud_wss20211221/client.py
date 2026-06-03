@@ -51,6 +51,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.properties):
             request.properties_shrink = Utils.array_to_string_with_specified_style(tmp_req.properties, 'Properties', 'json')
         query = {}
+        if not DaraCore.is_null(request.channel_cookie):
+            query['ChannelCookie'] = request.channel_cookie
         if not DaraCore.is_null(request.order_items):
             query['OrderItems'] = request.order_items
         if not DaraCore.is_null(request.order_type):
@@ -89,6 +91,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.properties):
             request.properties_shrink = Utils.array_to_string_with_specified_style(tmp_req.properties, 'Properties', 'json')
         query = {}
+        if not DaraCore.is_null(request.channel_cookie):
+            query['ChannelCookie'] = request.channel_cookie
         if not DaraCore.is_null(request.order_items):
             query['OrderItems'] = request.order_items
         if not DaraCore.is_null(request.order_type):
