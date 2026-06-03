@@ -1,3 +1,9 @@
+2026-06-03 Version: 2.1.0
+- Support API CreateTenantKey.
+- Support API GetPublicKey.
+- Support API ListScriptVariables.
+
+
 2026-06-02 Version: 2.0.2
 - Update API DescribeJob: add response parameters Body.Job.Tasks.$.TotalDuration.
 - Update API QueryJobsWithResult: add response parameters Body.Jobs.List.$.LatestTask.HangUpDirection.

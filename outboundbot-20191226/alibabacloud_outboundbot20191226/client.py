@@ -2292,6 +2292,66 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_task_export_task_with_options_async(request, runtime)
 
+    def create_tenant_key_with_options(
+        self,
+        request: main_models.CreateTenantKeyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateTenantKeyResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'CreateTenantKey',
+            version = '2019-12-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateTenantKeyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_tenant_key_with_options_async(
+        self,
+        request: main_models.CreateTenantKeyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateTenantKeyResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'CreateTenantKey',
+            version = '2019-12-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateTenantKeyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_tenant_key(
+        self,
+        request: main_models.CreateTenantKeyRequest,
+    ) -> main_models.CreateTenantKeyResponse:
+        runtime = RuntimeOptions()
+        return self.create_tenant_key_with_options(request, runtime)
+
+    async def create_tenant_key_async(
+        self,
+        request: main_models.CreateTenantKeyRequest,
+    ) -> main_models.CreateTenantKeyResponse:
+        runtime = RuntimeOptions()
+        return await self.create_tenant_key_with_options_async(request, runtime)
+
     def delete_agent_profiles_with_options(
         self,
         tmp_req: main_models.DeleteAgentProfilesRequest,
@@ -6556,6 +6616,66 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_number_district_info_template_download_url_with_options_async(runtime)
 
+    def get_public_key_with_options(
+        self,
+        request: main_models.GetPublicKeyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetPublicKeyResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'GetPublicKey',
+            version = '2019-12-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetPublicKeyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_public_key_with_options_async(
+        self,
+        request: main_models.GetPublicKeyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetPublicKeyResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'GetPublicKey',
+            version = '2019-12-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetPublicKeyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_public_key(
+        self,
+        request: main_models.GetPublicKeyRequest,
+    ) -> main_models.GetPublicKeyResponse:
+        runtime = RuntimeOptions()
+        return self.get_public_key_with_options(request, runtime)
+
+    async def get_public_key_async(
+        self,
+        request: main_models.GetPublicKeyRequest,
+    ) -> main_models.GetPublicKeyResponse:
+        runtime = RuntimeOptions()
+        return await self.get_public_key_with_options_async(request, runtime)
+
     def get_realtime_concurrency_report_with_options(
         self,
         request: main_models.GetRealtimeConcurrencyReportRequest,
@@ -8939,6 +9059,84 @@ class Client(OpenApiClient):
     ) -> main_models.ListScriptRecordingResponse:
         runtime = RuntimeOptions()
         return await self.list_script_recording_with_options_async(request, runtime)
+
+    def list_script_variables_with_options(
+        self,
+        request: main_models.ListScriptVariablesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListScriptVariablesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.sandbox):
+            query['Sandbox'] = request.sandbox
+        if not DaraCore.is_null(request.script_id):
+            query['ScriptId'] = request.script_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListScriptVariables',
+            version = '2019-12-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListScriptVariablesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_script_variables_with_options_async(
+        self,
+        request: main_models.ListScriptVariablesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListScriptVariablesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.sandbox):
+            query['Sandbox'] = request.sandbox
+        if not DaraCore.is_null(request.script_id):
+            query['ScriptId'] = request.script_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListScriptVariables',
+            version = '2019-12-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListScriptVariablesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_script_variables(
+        self,
+        request: main_models.ListScriptVariablesRequest,
+    ) -> main_models.ListScriptVariablesResponse:
+        runtime = RuntimeOptions()
+        return self.list_script_variables_with_options(request, runtime)
+
+    async def list_script_variables_async(
+        self,
+        request: main_models.ListScriptVariablesRequest,
+    ) -> main_models.ListScriptVariablesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_script_variables_with_options_async(request, runtime)
 
     def list_script_voice_configs_with_options(
         self,

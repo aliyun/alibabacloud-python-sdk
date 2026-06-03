@@ -79,6 +79,9 @@ from ._create_tag_response import CreateTagResponse
 from ._create_task_export_task_request import CreateTaskExportTaskRequest
 from ._create_task_export_task_response_body import CreateTaskExportTaskResponseBody
 from ._create_task_export_task_response import CreateTaskExportTaskResponse
+from ._create_tenant_key_request import CreateTenantKeyRequest
+from ._create_tenant_key_response_body import CreateTenantKeyResponseBody
+from ._create_tenant_key_response import CreateTenantKeyResponse
 from ._delete_agent_profiles_request import DeleteAgentProfilesRequest
 from ._delete_agent_profiles_shrink_request import DeleteAgentProfilesShrinkRequest
 from ._delete_agent_profiles_response_body import DeleteAgentProfilesResponseBody
@@ -245,6 +248,9 @@ from ._get_max_attempts_per_day_response_body import GetMaxAttemptsPerDayRespons
 from ._get_max_attempts_per_day_response import GetMaxAttemptsPerDayResponse
 from ._get_number_district_info_template_download_url_response_body import GetNumberDistrictInfoTemplateDownloadUrlResponseBody
 from ._get_number_district_info_template_download_url_response import GetNumberDistrictInfoTemplateDownloadUrlResponse
+from ._get_public_key_request import GetPublicKeyRequest
+from ._get_public_key_response_body import GetPublicKeyResponseBody
+from ._get_public_key_response import GetPublicKeyResponse
 from ._get_realtime_concurrency_report_request import GetRealtimeConcurrencyReportRequest
 from ._get_realtime_concurrency_report_response_body import GetRealtimeConcurrencyReportResponseBody
 from ._get_realtime_concurrency_report_response import GetRealtimeConcurrencyReportResponse
@@ -333,6 +339,9 @@ from ._list_script_publish_histories_response import ListScriptPublishHistoriesR
 from ._list_script_recording_request import ListScriptRecordingRequest
 from ._list_script_recording_response_body import ListScriptRecordingResponseBody
 from ._list_script_recording_response import ListScriptRecordingResponse
+from ._list_script_variables_request import ListScriptVariablesRequest
+from ._list_script_variables_response_body import ListScriptVariablesResponseBody
+from ._list_script_variables_response import ListScriptVariablesResponse
 from ._list_script_voice_configs_request import ListScriptVoiceConfigsRequest
 from ._list_script_voice_configs_response_body import ListScriptVoiceConfigsResponseBody
 from ._list_script_voice_configs_response import ListScriptVoiceConfigsResponse
@@ -642,6 +651,7 @@ from ._list_resource_tags_response_body import ListResourceTagsResponseBodyResou
 from ._list_script_publish_histories_response_body import ListScriptPublishHistoriesResponseBodyScriptPublishHistoriesList
 from ._list_script_publish_histories_response_body import ListScriptPublishHistoriesResponseBodyScriptPublishHistories
 from ._list_script_recording_response_body import ListScriptRecordingResponseBodyScriptRecordings
+from ._list_script_variables_response_body import ListScriptVariablesResponseBodyVariables
 from ._list_script_voice_configs_response_body import ListScriptVoiceConfigsResponseBodyScriptVoiceConfigsList
 from ._list_script_voice_configs_response_body import ListScriptVoiceConfigsResponseBodyScriptVoiceConfigs
 from ._list_scripts_response_body import ListScriptsResponseBodyScriptsListNluProfile
@@ -786,6 +796,9 @@ __all__ = [
     CreateTaskExportTaskRequest,
     CreateTaskExportTaskResponseBody,
     CreateTaskExportTaskResponse,
+    CreateTenantKeyRequest,
+    CreateTenantKeyResponseBody,
+    CreateTenantKeyResponse,
     DeleteAgentProfilesRequest,
     DeleteAgentProfilesShrinkRequest,
     DeleteAgentProfilesResponseBody,
@@ -952,6 +965,9 @@ __all__ = [
     GetMaxAttemptsPerDayResponse,
     GetNumberDistrictInfoTemplateDownloadUrlResponseBody,
     GetNumberDistrictInfoTemplateDownloadUrlResponse,
+    GetPublicKeyRequest,
+    GetPublicKeyResponseBody,
+    GetPublicKeyResponse,
     GetRealtimeConcurrencyReportRequest,
     GetRealtimeConcurrencyReportResponseBody,
     GetRealtimeConcurrencyReportResponse,
@@ -1040,6 +1056,9 @@ __all__ = [
     ListScriptRecordingRequest,
     ListScriptRecordingResponseBody,
     ListScriptRecordingResponse,
+    ListScriptVariablesRequest,
+    ListScriptVariablesResponseBody,
+    ListScriptVariablesResponse,
     ListScriptVoiceConfigsRequest,
     ListScriptVoiceConfigsResponseBody,
     ListScriptVoiceConfigsResponse,
@@ -1349,6 +1368,7 @@ __all__ = [
     ListScriptPublishHistoriesResponseBodyScriptPublishHistoriesList,
     ListScriptPublishHistoriesResponseBodyScriptPublishHistories,
     ListScriptRecordingResponseBodyScriptRecordings,
+    ListScriptVariablesResponseBodyVariables,
     ListScriptVoiceConfigsResponseBodyScriptVoiceConfigsList,
     ListScriptVoiceConfigsResponseBodyScriptVoiceConfigs,
     ListScriptsResponseBodyScriptsListNluProfile,
