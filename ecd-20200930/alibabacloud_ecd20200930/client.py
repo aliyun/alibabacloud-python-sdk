@@ -11052,6 +11052,8 @@ class Client(OpenApiClient):
             query['CreationTimeStart'] = request.creation_time_start
         if not DaraCore.is_null(request.desktop_ids):
             query['DesktopIds'] = request.desktop_ids
+        if not DaraCore.is_null(request.end_user_id):
+            query['EndUserId'] = request.end_user_id
         if not DaraCore.is_null(request.group_id):
             query['GroupId'] = request.group_id
         if not DaraCore.is_null(request.host_name):
@@ -11104,6 +11106,8 @@ class Client(OpenApiClient):
             query['CreationTimeStart'] = request.creation_time_start
         if not DaraCore.is_null(request.desktop_ids):
             query['DesktopIds'] = request.desktop_ids
+        if not DaraCore.is_null(request.end_user_id):
+            query['EndUserId'] = request.end_user_id
         if not DaraCore.is_null(request.group_id):
             query['GroupId'] = request.group_id
         if not DaraCore.is_null(request.host_name):

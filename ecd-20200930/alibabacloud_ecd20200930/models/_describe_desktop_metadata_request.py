@@ -11,6 +11,7 @@ class DescribeDesktopMetadataRequest(DaraModel):
         self,
         creation_time_start: str = None,
         desktop_ids: List[str] = None,
+        end_user_id: str = None,
         group_id: str = None,
         host_name: str = None,
         image_id: str = None,
@@ -25,6 +26,7 @@ class DescribeDesktopMetadataRequest(DaraModel):
     ):
         self.creation_time_start = creation_time_start
         self.desktop_ids = desktop_ids
+        self.end_user_id = end_user_id
         self.group_id = group_id
         self.host_name = host_name
         self.image_id = image_id
@@ -50,6 +52,9 @@ class DescribeDesktopMetadataRequest(DaraModel):
 
         if self.desktop_ids is not None:
             result['DesktopIds'] = self.desktop_ids
+
+        if self.end_user_id is not None:
+            result['EndUserId'] = self.end_user_id
 
         if self.group_id is not None:
             result['GroupId'] = self.group_id
@@ -93,6 +98,9 @@ class DescribeDesktopMetadataRequest(DaraModel):
 
         if m.get('DesktopIds') is not None:
             self.desktop_ids = m.get('DesktopIds')
+
+        if m.get('EndUserId') is not None:
+            self.end_user_id = m.get('EndUserId')
 
         if m.get('GroupId') is not None:
             self.group_id = m.get('GroupId')

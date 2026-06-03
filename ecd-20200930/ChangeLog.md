@@ -1,3 +1,7 @@
+2026-06-03 Version: 4.26.3
+- Update API DescribeDesktopMetadata: add request parameters EndUserId.
+
+
 2026-05-28 Version: 4.26.2
 - Update API DescribeGlobalDesktopRecords: add request parameters BusinessChannel.
 - Update API ModifyDesktopHostName: add request parameters DesktopIds.
