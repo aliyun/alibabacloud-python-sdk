@@ -1496,10 +1496,12 @@ class DescribeInstancesResponseBodyInstancesInstanceMetadataOptions(DaraModel):
         http_endpoint: str = None,
         http_put_response_hop_limit: int = None,
         http_tokens: str = None,
+        instance_metadata_tags: str = None,
     ):
         self.http_endpoint = http_endpoint
         self.http_put_response_hop_limit = http_put_response_hop_limit
         self.http_tokens = http_tokens
+        self.instance_metadata_tags = instance_metadata_tags
 
     def validate(self):
         pass
@@ -1518,6 +1520,9 @@ class DescribeInstancesResponseBodyInstancesInstanceMetadataOptions(DaraModel):
         if self.http_tokens is not None:
             result['HttpTokens'] = self.http_tokens
 
+        if self.instance_metadata_tags is not None:
+            result['InstanceMetadataTags'] = self.instance_metadata_tags
+
         return result
 
     def from_map(self, m: dict = None):
@@ -1530,6 +1535,9 @@ class DescribeInstancesResponseBodyInstancesInstanceMetadataOptions(DaraModel):
 
         if m.get('HttpTokens') is not None:
             self.http_tokens = m.get('HttpTokens')
+
+        if m.get('InstanceMetadataTags') is not None:
+            self.instance_metadata_tags = m.get('InstanceMetadataTags')
 
         return self
 

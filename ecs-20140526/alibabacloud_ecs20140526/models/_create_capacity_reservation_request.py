@@ -16,6 +16,7 @@ class CreateCapacityReservationRequest(DaraModel):
         end_time: str = None,
         end_time_type: str = None,
         instance_amount: int = None,
+        instance_charge_type: str = None,
         instance_type: str = None,
         owner_account: str = None,
         owner_id: int = None,
@@ -46,6 +47,7 @@ class CreateCapacityReservationRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_amount = instance_amount
+        self.instance_charge_type = instance_charge_type
         # The instance type. You can create a capacity reservation to reserve the capacity of only one instance type. You can call the [DescribeInstanceTypes](https://help.aliyun.com/document_detail/25620.html) operation to query the instance types provided by ECS.
         # 
         # This parameter is required.
@@ -111,6 +113,9 @@ class CreateCapacityReservationRequest(DaraModel):
         if self.instance_amount is not None:
             result['InstanceAmount'] = self.instance_amount
 
+        if self.instance_charge_type is not None:
+            result['InstanceChargeType'] = self.instance_charge_type
+
         if self.instance_type is not None:
             result['InstanceType'] = self.instance_type
 
@@ -168,6 +173,9 @@ class CreateCapacityReservationRequest(DaraModel):
 
         if m.get('InstanceAmount') is not None:
             self.instance_amount = m.get('InstanceAmount')
+
+        if m.get('InstanceChargeType') is not None:
+            self.instance_charge_type = m.get('InstanceChargeType')
 
         if m.get('InstanceType') is not None:
             self.instance_type = m.get('InstanceType')

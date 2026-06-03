@@ -3792,6 +3792,8 @@ class Client(OpenApiClient):
             query['EndTimeType'] = request.end_time_type
         if not DaraCore.is_null(request.instance_amount):
             query['InstanceAmount'] = request.instance_amount
+        if not DaraCore.is_null(request.instance_charge_type):
+            query['InstanceChargeType'] = request.instance_charge_type
         if not DaraCore.is_null(request.instance_type):
             query['InstanceType'] = request.instance_type
         if not DaraCore.is_null(request.owner_account):
@@ -3852,6 +3854,8 @@ class Client(OpenApiClient):
             query['EndTimeType'] = request.end_time_type
         if not DaraCore.is_null(request.instance_amount):
             query['InstanceAmount'] = request.instance_amount
+        if not DaraCore.is_null(request.instance_charge_type):
+            query['InstanceChargeType'] = request.instance_charge_type
         if not DaraCore.is_null(request.instance_type):
             query['InstanceType'] = request.instance_type
         if not DaraCore.is_null(request.owner_account):

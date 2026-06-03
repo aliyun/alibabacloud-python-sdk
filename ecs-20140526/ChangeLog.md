@@ -1,3 +1,10 @@
+2026-06-03 Version: 7.8.3
+- Update API CreateCapacityReservation: add request parameters InstanceChargeType.
+- Update API DescribeCapacityReservations: add response parameters Body.CapacityReservationSet.$.DeliveryTime.
+- Update API DescribeCapacityReservations: add response parameters Body.CapacityReservationSet.$.UnlockedTime.
+- Update API DescribeInstances: add response parameters Body.Instances.$.MetadataOptions.InstanceMetadataTags.
+
+
 2026-06-01 Version: 7.8.2
 - Update API CreateDeploymentSet: add request parameters Affinity.
 - Update API DescribeDeploymentSets: add response parameters Body.DeploymentSets.$.Affinity.

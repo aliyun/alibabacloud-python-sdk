@@ -112,6 +112,7 @@ class DescribeCapacityReservationsResponseBodyCapacityReservationSetCapacityRese
         self,
         allocated_resources: main_models.DescribeCapacityReservationsResponseBodyCapacityReservationSetCapacityReservationItemAllocatedResources = None,
         capacity_reservation_owner_id: str = None,
+        delivery_time: str = None,
         description: str = None,
         end_time: str = None,
         end_time_type: str = None,
@@ -129,9 +130,11 @@ class DescribeCapacityReservationsResponseBodyCapacityReservationSetCapacityRese
         status: str = None,
         tags: main_models.DescribeCapacityReservationsResponseBodyCapacityReservationSetCapacityReservationItemTags = None,
         time_slot: str = None,
+        unlocked_time: str = None,
     ):
         self.allocated_resources = allocated_resources
         self.capacity_reservation_owner_id = capacity_reservation_owner_id
+        self.delivery_time = delivery_time
         self.description = description
         self.end_time = end_time
         self.end_time_type = end_time_type
@@ -149,6 +152,7 @@ class DescribeCapacityReservationsResponseBodyCapacityReservationSetCapacityRese
         self.status = status
         self.tags = tags
         self.time_slot = time_slot
+        self.unlocked_time = unlocked_time
 
     def validate(self):
         if self.allocated_resources:
@@ -166,6 +170,9 @@ class DescribeCapacityReservationsResponseBodyCapacityReservationSetCapacityRese
 
         if self.capacity_reservation_owner_id is not None:
             result['CapacityReservationOwnerId'] = self.capacity_reservation_owner_id
+
+        if self.delivery_time is not None:
+            result['DeliveryTime'] = self.delivery_time
 
         if self.description is not None:
             result['Description'] = self.description
@@ -218,6 +225,9 @@ class DescribeCapacityReservationsResponseBodyCapacityReservationSetCapacityRese
         if self.time_slot is not None:
             result['TimeSlot'] = self.time_slot
 
+        if self.unlocked_time is not None:
+            result['UnlockedTime'] = self.unlocked_time
+
         return result
 
     def from_map(self, m: dict = None):
@@ -228,6 +238,9 @@ class DescribeCapacityReservationsResponseBodyCapacityReservationSetCapacityRese
 
         if m.get('CapacityReservationOwnerId') is not None:
             self.capacity_reservation_owner_id = m.get('CapacityReservationOwnerId')
+
+        if m.get('DeliveryTime') is not None:
+            self.delivery_time = m.get('DeliveryTime')
 
         if m.get('Description') is not None:
             self.description = m.get('Description')
@@ -280,6 +293,9 @@ class DescribeCapacityReservationsResponseBodyCapacityReservationSetCapacityRese
 
         if m.get('TimeSlot') is not None:
             self.time_slot = m.get('TimeSlot')
+
+        if m.get('UnlockedTime') is not None:
+            self.unlocked_time = m.get('UnlockedTime')
 
         return self
 
