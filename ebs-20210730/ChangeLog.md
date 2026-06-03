@@ -1,3 +1,8 @@
+2026-06-03 Version: 5.0.0
+- Delete API DescribeDiskEvents.
+- Delete API DescribeDiskMonitorDataList.
+
+
 2026-04-01 Version: 4.5.1
 - Generated python 2021-07-30 for ebs.
 
