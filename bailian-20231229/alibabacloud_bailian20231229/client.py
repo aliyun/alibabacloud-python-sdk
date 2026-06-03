@@ -1773,6 +1773,82 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_chunk_with_options_async(workspace_id, request, headers, runtime)
 
+    def delete_connector_with_options(
+        self,
+        connector_id: str,
+        workspace_id: str,
+        request: main_models.DeleteConnectorRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteConnectorResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteConnector',
+            version = '2023-12-29',
+            protocol = 'HTTPS',
+            pathname = f'/{DaraURL.percent_encode(workspace_id)}/datacenter/connector/{DaraURL.percent_encode(connector_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteConnectorResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_connector_with_options_async(
+        self,
+        connector_id: str,
+        workspace_id: str,
+        request: main_models.DeleteConnectorRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteConnectorResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteConnector',
+            version = '2023-12-29',
+            protocol = 'HTTPS',
+            pathname = f'/{DaraURL.percent_encode(workspace_id)}/datacenter/connector/{DaraURL.percent_encode(connector_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteConnectorResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_connector(
+        self,
+        connector_id: str,
+        workspace_id: str,
+        request: main_models.DeleteConnectorRequest,
+    ) -> main_models.DeleteConnectorResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_connector_with_options(connector_id, workspace_id, request, headers, runtime)
+
+    async def delete_connector_async(
+        self,
+        connector_id: str,
+        workspace_id: str,
+        request: main_models.DeleteConnectorRequest,
+    ) -> main_models.DeleteConnectorResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_connector_with_options_async(connector_id, workspace_id, request, headers, runtime)
+
     def delete_file_with_options(
         self,
         file_id: str,
@@ -4960,6 +5036,94 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.update_chunk_with_options_async(workspace_id, request, headers, runtime)
+
+    def update_connector_with_options(
+        self,
+        workspace_id: str,
+        connector_id: str,
+        request: main_models.UpdateConnectorRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateConnectorResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.connector_name):
+            body['ConnectorName'] = request.connector_name
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateConnector',
+            version = '2023-12-29',
+            protocol = 'HTTPS',
+            pathname = f'/{DaraURL.percent_encode(workspace_id)}/datacenter/connector/{DaraURL.percent_encode(connector_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateConnectorResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_connector_with_options_async(
+        self,
+        workspace_id: str,
+        connector_id: str,
+        request: main_models.UpdateConnectorRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateConnectorResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.connector_name):
+            body['ConnectorName'] = request.connector_name
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateConnector',
+            version = '2023-12-29',
+            protocol = 'HTTPS',
+            pathname = f'/{DaraURL.percent_encode(workspace_id)}/datacenter/connector/{DaraURL.percent_encode(connector_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateConnectorResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_connector(
+        self,
+        workspace_id: str,
+        connector_id: str,
+        request: main_models.UpdateConnectorRequest,
+    ) -> main_models.UpdateConnectorResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_connector_with_options(workspace_id, connector_id, request, headers, runtime)
+
+    async def update_connector_async(
+        self,
+        workspace_id: str,
+        connector_id: str,
+        request: main_models.UpdateConnectorRequest,
+    ) -> main_models.UpdateConnectorResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_connector_with_options_async(workspace_id, connector_id, request, headers, runtime)
 
     def update_file_tag_with_options(
         self,

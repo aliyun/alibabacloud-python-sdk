@@ -62,6 +62,9 @@ from ._delete_chunk_request import DeleteChunkRequest
 from ._delete_chunk_shrink_request import DeleteChunkShrinkRequest
 from ._delete_chunk_response_body import DeleteChunkResponseBody
 from ._delete_chunk_response import DeleteChunkResponse
+from ._delete_connector_request import DeleteConnectorRequest
+from ._delete_connector_response_body import DeleteConnectorResponseBody
+from ._delete_connector_response import DeleteConnectorResponse
 from ._delete_file_request import DeleteFileRequest
 from ._delete_file_response_body import DeleteFileResponseBody
 from ._delete_file_response import DeleteFileResponse
@@ -173,6 +176,9 @@ from ._update_and_publish_agent_selective_response import UpdateAndPublishAgentS
 from ._update_chunk_request import UpdateChunkRequest
 from ._update_chunk_response_body import UpdateChunkResponseBody
 from ._update_chunk_response import UpdateChunkResponse
+from ._update_connector_request import UpdateConnectorRequest
+from ._update_connector_response_body import UpdateConnectorResponseBody
+from ._update_connector_response import UpdateConnectorResponse
 from ._update_file_tag_request import UpdateFileTagRequest
 from ._update_file_tag_shrink_request import UpdateFileTagShrinkRequest
 from ._update_file_tag_response_body import UpdateFileTagResponseBody
@@ -197,6 +203,7 @@ from ._add_connector_request import AddConnectorRequestFileConnectorConfig
 from ._add_connector_response_body import AddConnectorResponseBodyData
 from ._add_file_request import AddFileRequestParserConfig
 from ._add_file_response_body import AddFileResponseBodyData
+from ._add_files_from_authorized_oss_request import AddFilesFromAuthorizedOssRequestFileDetailsParserConfig
 from ._add_files_from_authorized_oss_request import AddFilesFromAuthorizedOssRequestFileDetails
 from ._add_files_from_authorized_oss_response_body import AddFilesFromAuthorizedOssResponseBodyDataAddFileResultList
 from ._add_files_from_authorized_oss_response_body import AddFilesFromAuthorizedOssResponseBodyData
@@ -224,6 +231,7 @@ from ._create_index_request import CreateIndexRequestColumns
 from ._create_index_request import CreateIndexRequestMetaExtractColumns
 from ._create_index_response_body import CreateIndexResponseBodyData
 from ._delete_category_response_body import DeleteCategoryResponseBodyData
+from ._delete_connector_response_body import DeleteConnectorResponseBodyData
 from ._delete_file_response_body import DeleteFileResponseBodyData
 from ._delete_index_document_response_body import DeleteIndexDocumentResponseBodyData
 from ._describe_file_response_body import DescribeFileResponseBodyData
@@ -297,6 +305,7 @@ from ._update_and_publish_agent_selective_request import UpdateAndPublishAgentSe
 from ._update_and_publish_agent_selective_request import UpdateAndPublishAgentSelectiveRequestApplicationConfigWorkFlows
 from ._update_and_publish_agent_selective_request import UpdateAndPublishAgentSelectiveRequestApplicationConfig
 from ._update_and_publish_agent_selective_request import UpdateAndPublishAgentSelectiveRequestSampleLibrary
+from ._update_connector_response_body import UpdateConnectorResponseBodyData
 from ._update_file_tag_response_body import UpdateFileTagResponseBodyData
 from ._update_index_response_body import UpdateIndexResponseBodyData
 from ._update_table_from_authorized_oss_response_body import UpdateTableFromAuthorizedOssResponseBodyData
@@ -362,6 +371,9 @@ __all__ = [
     DeleteChunkShrinkRequest,
     DeleteChunkResponseBody,
     DeleteChunkResponse,
+    DeleteConnectorRequest,
+    DeleteConnectorResponseBody,
+    DeleteConnectorResponse,
     DeleteFileRequest,
     DeleteFileResponseBody,
     DeleteFileResponse,
@@ -473,6 +485,9 @@ __all__ = [
     UpdateChunkRequest,
     UpdateChunkResponseBody,
     UpdateChunkResponse,
+    UpdateConnectorRequest,
+    UpdateConnectorResponseBody,
+    UpdateConnectorResponse,
     UpdateFileTagRequest,
     UpdateFileTagShrinkRequest,
     UpdateFileTagResponseBody,
@@ -497,6 +512,7 @@ __all__ = [
     AddConnectorResponseBodyData,
     AddFileRequestParserConfig,
     AddFileResponseBodyData,
+    AddFilesFromAuthorizedOssRequestFileDetailsParserConfig,
     AddFilesFromAuthorizedOssRequestFileDetails,
     AddFilesFromAuthorizedOssResponseBodyDataAddFileResultList,
     AddFilesFromAuthorizedOssResponseBodyData,
@@ -524,6 +540,7 @@ __all__ = [
     CreateIndexRequestMetaExtractColumns,
     CreateIndexResponseBodyData,
     DeleteCategoryResponseBodyData,
+    DeleteConnectorResponseBodyData,
     DeleteFileResponseBodyData,
     DeleteIndexDocumentResponseBodyData,
     DescribeFileResponseBodyData,
@@ -597,6 +614,7 @@ __all__ = [
     UpdateAndPublishAgentSelectiveRequestApplicationConfigWorkFlows,
     UpdateAndPublishAgentSelectiveRequestApplicationConfig,
     UpdateAndPublishAgentSelectiveRequestSampleLibrary,
+    UpdateConnectorResponseBodyData,
     UpdateFileTagResponseBodyData,
     UpdateIndexResponseBodyData,
     UpdateTableFromAuthorizedOssResponseBodyData

@@ -100,14 +100,19 @@ class AddFilesFromAuthorizedOssRequestFileDetails(DaraModel):
         self,
         file_name: str = None,
         oss_key: str = None,
+        parser: str = None,
+        parser_config: main_models.AddFilesFromAuthorizedOssRequestFileDetailsParserConfig = None,
     ):
         # This parameter is required.
         self.file_name = file_name
         # This parameter is required.
         self.oss_key = oss_key
+        self.parser = parser
+        self.parser_config = parser_config
 
     def validate(self):
-        pass
+        if self.parser_config:
+            self.parser_config.validate()
 
     def to_map(self):
         result = dict()
@@ -120,6 +125,12 @@ class AddFilesFromAuthorizedOssRequestFileDetails(DaraModel):
         if self.oss_key is not None:
             result['OssKey'] = self.oss_key
 
+        if self.parser is not None:
+            result['Parser'] = self.parser
+
+        if self.parser_config is not None:
+            result['ParserConfig'] = self.parser_config.to_map()
+
         return result
 
     def from_map(self, m: dict = None):
@@ -129,6 +140,48 @@ class AddFilesFromAuthorizedOssRequestFileDetails(DaraModel):
 
         if m.get('OssKey') is not None:
             self.oss_key = m.get('OssKey')
+
+        if m.get('Parser') is not None:
+            self.parser = m.get('Parser')
+
+        if m.get('ParserConfig') is not None:
+            temp_model = main_models.AddFilesFromAuthorizedOssRequestFileDetailsParserConfig()
+            self.parser_config = temp_model.from_map(m.get('ParserConfig'))
+
+        return self
+
+class AddFilesFromAuthorizedOssRequestFileDetailsParserConfig(DaraModel):
+    def __init__(
+        self,
+        model_name: str = None,
+        model_prompt: str = None,
+    ):
+        self.model_name = model_name
+        self.model_prompt = model_prompt
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.model_name is not None:
+            result['ModelName'] = self.model_name
+
+        if self.model_prompt is not None:
+            result['ModelPrompt'] = self.model_prompt
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ModelName') is not None:
+            self.model_name = m.get('ModelName')
+
+        if m.get('ModelPrompt') is not None:
+            self.model_prompt = m.get('ModelPrompt')
 
         return self
 

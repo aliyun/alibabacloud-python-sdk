@@ -1,3 +1,10 @@
+2026-06-03 Version: 2.12.0
+- Support API DeleteConnector.
+- Support API UpdateConnector.
+- Update API AddFilesFromAuthorizedOss: add request parameters FileDetails.$.Parser.
+- Update API AddFilesFromAuthorizedOss: add request parameters FileDetails.$.ParserConfig.
+
+
 2026-05-21 Version: 2.11.1
 - Generated python 2023-12-29 for bailian.
 
