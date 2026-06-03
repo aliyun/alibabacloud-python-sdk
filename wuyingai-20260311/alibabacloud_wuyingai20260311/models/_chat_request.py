@@ -214,11 +214,13 @@ class ChatRequestInput(DaraModel):
 class ChatRequestInputContent(DaraModel):
     def __init__(
         self,
+        file_name: str = None,
         file_url: str = None,
         image_url: str = None,
         text: str = None,
         type: str = None,
     ):
+        self.file_name = file_name
         self.file_url = file_url
         self.image_url = image_url
         self.text = text
@@ -232,6 +234,9 @@ class ChatRequestInputContent(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+
         if self.file_url is not None:
             result['FileUrl'] = self.file_url
 
@@ -248,6 +253,9 @@ class ChatRequestInputContent(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+
         if m.get('FileUrl') is not None:
             self.file_url = m.get('FileUrl')
 
