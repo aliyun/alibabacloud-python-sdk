@@ -1,3 +1,6 @@
+2026-06-03 Version: 2.1.1
+- Generated python 2019-12-26 for OutboundBot.
+
 2026-06-03 Version: 2.1.0
 - Support API CreateTenantKey.
 - Support API GetPublicKey.
