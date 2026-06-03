@@ -15,6 +15,7 @@ class CustomDomain(DaraModel):
         cors_config: main_models.CORSConfig = None,
         created_time: str = None,
         domain_name: str = None,
+        is_e2b: bool = None,
         last_modified_time: str = None,
         protocol: str = None,
         route_config: main_models.RouteConfig = None,
@@ -35,6 +36,7 @@ class CustomDomain(DaraModel):
         self.created_time = created_time
         # The domain name.
         self.domain_name = domain_name
+        self.is_e2b = is_e2b
         # The time when the custom domain name was last updated.
         self.last_modified_time = last_modified_time
         # The protocol type that is supported by the custom domain name. Valid values: HTTP HTTPS HTTP,HTTPS
@@ -88,6 +90,9 @@ class CustomDomain(DaraModel):
         if self.domain_name is not None:
             result['domainName'] = self.domain_name
 
+        if self.is_e2b is not None:
+            result['isE2B'] = self.is_e2b
+
         if self.last_modified_time is not None:
             result['lastModifiedTime'] = self.last_modified_time
 
@@ -133,6 +138,9 @@ class CustomDomain(DaraModel):
 
         if m.get('domainName') is not None:
             self.domain_name = m.get('domainName')
+
+        if m.get('isE2B') is not None:
+            self.is_e2b = m.get('isE2B')
 
         if m.get('lastModifiedTime') is not None:
             self.last_modified_time = m.get('lastModifiedTime')

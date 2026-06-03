@@ -12,6 +12,7 @@ class CreateCustomDomainInput(DaraModel):
         cert_config: main_models.CertConfig = None,
         cors_config: main_models.CORSConfig = None,
         domain_name: str = None,
+        is_e2b: bool = None,
         protocol: str = None,
         route_config: main_models.RouteConfig = None,
         tls_config: main_models.TLSConfig = None,
@@ -26,6 +27,7 @@ class CreateCustomDomainInput(DaraModel):
         # 
         # This parameter is required.
         self.domain_name = domain_name
+        self.is_e2b = is_e2b
         # The protocol type that is supported by the custom domain name. Valid values: HTTP HTTPS HTTP,HTTPS
         self.protocol = protocol
         # The route table that maps paths to functions when the function is invoked by using the custom domain name.
@@ -66,6 +68,9 @@ class CreateCustomDomainInput(DaraModel):
         if self.domain_name is not None:
             result['domainName'] = self.domain_name
 
+        if self.is_e2b is not None:
+            result['isE2B'] = self.is_e2b
+
         if self.protocol is not None:
             result['protocol'] = self.protocol
 
@@ -96,6 +101,9 @@ class CreateCustomDomainInput(DaraModel):
 
         if m.get('domainName') is not None:
             self.domain_name = m.get('domainName')
+
+        if m.get('isE2B') is not None:
+            self.is_e2b = m.get('isE2B')
 
         if m.get('protocol') is not None:
             self.protocol = m.get('protocol')
