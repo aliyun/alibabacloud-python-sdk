@@ -24,6 +24,8 @@ class AppInstanceProfile(DaraModel):
         source: str = None,
         template_etag: str = None,
         template_id: str = None,
+        chatbi_task_id: str = None,
+        chatbi_task_status: str = None,
     ):
         self.application_type = application_type
         self.application_type_text = application_type_text
@@ -42,6 +44,8 @@ class AppInstanceProfile(DaraModel):
         self.source = source
         self.template_etag = template_etag
         self.template_id = template_id
+        self.chatbi_task_id = chatbi_task_id
+        self.chatbi_task_status = chatbi_task_status
 
     def validate(self):
         pass
@@ -102,6 +106,12 @@ class AppInstanceProfile(DaraModel):
         if self.template_id is not None:
             result['TemplateId'] = self.template_id
 
+        if self.chatbi_task_id is not None:
+            result['chatbiTaskId'] = self.chatbi_task_id
+
+        if self.chatbi_task_status is not None:
+            result['chatbiTaskStatus'] = self.chatbi_task_status
+
         return result
 
     def from_map(self, m: dict = None):
@@ -156,6 +166,12 @@ class AppInstanceProfile(DaraModel):
 
         if m.get('TemplateId') is not None:
             self.template_id = m.get('TemplateId')
+
+        if m.get('chatbiTaskId') is not None:
+            self.chatbi_task_id = m.get('chatbiTaskId')
+
+        if m.get('chatbiTaskStatus') is not None:
+            self.chatbi_task_status = m.get('chatbiTaskStatus')
 
         return self
 
