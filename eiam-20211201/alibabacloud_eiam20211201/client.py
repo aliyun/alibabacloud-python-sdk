@@ -18697,6 +18697,8 @@ class Client(OpenApiClient):
     ) -> main_models.ListInstancesResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.edition):
+            query['Edition'] = request.edition
         if not DaraCore.is_null(request.instance_ids):
             query['InstanceIds'] = request.instance_ids
         if not DaraCore.is_null(request.page_number):
@@ -18731,6 +18733,8 @@ class Client(OpenApiClient):
     ) -> main_models.ListInstancesResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.edition):
+            query['Edition'] = request.edition
         if not DaraCore.is_null(request.instance_ids):
             query['InstanceIds'] = request.instance_ids
         if not DaraCore.is_null(request.page_number):

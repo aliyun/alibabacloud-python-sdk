@@ -9,11 +9,13 @@ from darabonba.model import DaraModel
 class ListInstancesRequest(DaraModel):
     def __init__(
         self,
+        edition: str = None,
         instance_ids: List[str] = None,
         page_number: int = None,
         page_size: int = None,
         status: str = None,
     ):
+        self.edition = edition
         # The list of instance IDs.
         self.instance_ids = instance_ids
         # The number of the page to return.
@@ -34,6 +36,9 @@ class ListInstancesRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.edition is not None:
+            result['Edition'] = self.edition
+
         if self.instance_ids is not None:
             result['InstanceIds'] = self.instance_ids
 
@@ -50,6 +55,9 @@ class ListInstancesRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Edition') is not None:
+            self.edition = m.get('Edition')
+
         if m.get('InstanceIds') is not None:
             self.instance_ids = m.get('InstanceIds')
 
