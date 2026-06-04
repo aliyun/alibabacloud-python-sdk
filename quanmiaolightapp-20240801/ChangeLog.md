@@ -1,3 +1,6 @@
+2026-06-04 Version: 2.13.10
+- Generated python 2024-08-01 for QuanMiaoLightApp.
+
 2026-05-06 Version: 2.13.9
 - Update API GetEssayCorrectionTask: add response parameters Body.data.results.$.dimensionResults.
 - Update API GetEssayCorrectionTask: add response parameters Body.data.results.$.errorCode.
