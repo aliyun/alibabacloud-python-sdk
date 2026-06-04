@@ -2,6 +2,8 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import Dict, List
+
 from alibabacloud_dataworks_public20240518 import models as main_models
 from darabonba.model import DaraModel
 
@@ -149,8 +151,10 @@ class Column(DaraModel):
 class ColumnBusinessMetadata(DaraModel):
     def __init__(
         self,
+        custom_attributes: Dict[str, List[str]] = None,
         description: str = None,
     ):
+        self.custom_attributes = custom_attributes
         # A business-level description of the field (supported only by MaxCompute, HMS (EMR clusters) and DLF.
         self.description = description
 
@@ -162,6 +166,9 @@ class ColumnBusinessMetadata(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.custom_attributes is not None:
+            result['CustomAttributes'] = self.custom_attributes
+
         if self.description is not None:
             result['Description'] = self.description
 
@@ -169,6 +176,9 @@ class ColumnBusinessMetadata(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CustomAttributes') is not None:
+            self.custom_attributes = m.get('CustomAttributes')
+
         if m.get('Description') is not None:
             self.description = m.get('Description')
 

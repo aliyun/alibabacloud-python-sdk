@@ -652,6 +652,162 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.attach_data_quality_rules_to_evaluation_task_with_options_async(request, runtime)
 
+    def batch_create_meta_entities_with_options(
+        self,
+        tmp_req: main_models.BatchCreateMetaEntitiesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchCreateMetaEntitiesResponse:
+        tmp_req.validate()
+        request = main_models.BatchCreateMetaEntitiesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.entities):
+            request.entities_shrink = Utils.array_to_string_with_specified_style(tmp_req.entities, 'Entities', 'json')
+        body = {}
+        if not DaraCore.is_null(request.entities_shrink):
+            body['Entities'] = request.entities_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'BatchCreateMetaEntities',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchCreateMetaEntitiesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_create_meta_entities_with_options_async(
+        self,
+        tmp_req: main_models.BatchCreateMetaEntitiesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchCreateMetaEntitiesResponse:
+        tmp_req.validate()
+        request = main_models.BatchCreateMetaEntitiesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.entities):
+            request.entities_shrink = Utils.array_to_string_with_specified_style(tmp_req.entities, 'Entities', 'json')
+        body = {}
+        if not DaraCore.is_null(request.entities_shrink):
+            body['Entities'] = request.entities_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'BatchCreateMetaEntities',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchCreateMetaEntitiesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_create_meta_entities(
+        self,
+        request: main_models.BatchCreateMetaEntitiesRequest,
+    ) -> main_models.BatchCreateMetaEntitiesResponse:
+        runtime = RuntimeOptions()
+        return self.batch_create_meta_entities_with_options(request, runtime)
+
+    async def batch_create_meta_entities_async(
+        self,
+        request: main_models.BatchCreateMetaEntitiesRequest,
+    ) -> main_models.BatchCreateMetaEntitiesResponse:
+        runtime = RuntimeOptions()
+        return await self.batch_create_meta_entities_with_options_async(request, runtime)
+
+    def batch_delete_meta_entities_with_options(
+        self,
+        tmp_req: main_models.BatchDeleteMetaEntitiesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchDeleteMetaEntitiesResponse:
+        tmp_req.validate()
+        request = main_models.BatchDeleteMetaEntitiesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.ids):
+            request.ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.ids, 'Ids', 'simple')
+        body = {}
+        if not DaraCore.is_null(request.ids_shrink):
+            body['Ids'] = request.ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'BatchDeleteMetaEntities',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchDeleteMetaEntitiesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_delete_meta_entities_with_options_async(
+        self,
+        tmp_req: main_models.BatchDeleteMetaEntitiesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchDeleteMetaEntitiesResponse:
+        tmp_req.validate()
+        request = main_models.BatchDeleteMetaEntitiesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.ids):
+            request.ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.ids, 'Ids', 'simple')
+        body = {}
+        if not DaraCore.is_null(request.ids_shrink):
+            body['Ids'] = request.ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'BatchDeleteMetaEntities',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchDeleteMetaEntitiesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_delete_meta_entities(
+        self,
+        request: main_models.BatchDeleteMetaEntitiesRequest,
+    ) -> main_models.BatchDeleteMetaEntitiesResponse:
+        runtime = RuntimeOptions()
+        return self.batch_delete_meta_entities_with_options(request, runtime)
+
+    async def batch_delete_meta_entities_async(
+        self,
+        request: main_models.BatchDeleteMetaEntitiesRequest,
+    ) -> main_models.BatchDeleteMetaEntitiesResponse:
+        runtime = RuntimeOptions()
+        return await self.batch_delete_meta_entities_with_options_async(request, runtime)
+
     def batch_update_tasks_with_options(
         self,
         tmp_req: main_models.BatchUpdateTasksRequest,
@@ -1335,6 +1491,116 @@ class Client(OpenApiClient):
     ) -> main_models.CreateComputeResourceResponse:
         runtime = RuntimeOptions()
         return await self.create_compute_resource_with_options_async(request, runtime)
+
+    def create_custom_attribute_with_options(
+        self,
+        tmp_req: main_models.CreateCustomAttributeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateCustomAttributeResponse:
+        tmp_req.validate()
+        request = main_models.CreateCustomAttributeShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.entity_types):
+            request.entity_types_shrink = Utils.array_to_string_with_specified_style(tmp_req.entity_types, 'EntityTypes', 'simple')
+        if not DaraCore.is_null(tmp_req.value_enums):
+            request.value_enums_shrink = Utils.array_to_string_with_specified_style(tmp_req.value_enums, 'ValueEnums', 'simple')
+        body = {}
+        if not DaraCore.is_null(request.comment):
+            body['Comment'] = request.comment
+        if not DaraCore.is_null(request.display_enabled):
+            body['DisplayEnabled'] = request.display_enabled
+        if not DaraCore.is_null(request.display_name):
+            body['DisplayName'] = request.display_name
+        if not DaraCore.is_null(request.entity_types_shrink):
+            body['EntityTypes'] = request.entity_types_shrink
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        if not DaraCore.is_null(request.search_filter_enabled):
+            body['SearchFilterEnabled'] = request.search_filter_enabled
+        if not DaraCore.is_null(request.type):
+            body['Type'] = request.type
+        if not DaraCore.is_null(request.value_enums_shrink):
+            body['ValueEnums'] = request.value_enums_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateCustomAttribute',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateCustomAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_custom_attribute_with_options_async(
+        self,
+        tmp_req: main_models.CreateCustomAttributeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateCustomAttributeResponse:
+        tmp_req.validate()
+        request = main_models.CreateCustomAttributeShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.entity_types):
+            request.entity_types_shrink = Utils.array_to_string_with_specified_style(tmp_req.entity_types, 'EntityTypes', 'simple')
+        if not DaraCore.is_null(tmp_req.value_enums):
+            request.value_enums_shrink = Utils.array_to_string_with_specified_style(tmp_req.value_enums, 'ValueEnums', 'simple')
+        body = {}
+        if not DaraCore.is_null(request.comment):
+            body['Comment'] = request.comment
+        if not DaraCore.is_null(request.display_enabled):
+            body['DisplayEnabled'] = request.display_enabled
+        if not DaraCore.is_null(request.display_name):
+            body['DisplayName'] = request.display_name
+        if not DaraCore.is_null(request.entity_types_shrink):
+            body['EntityTypes'] = request.entity_types_shrink
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        if not DaraCore.is_null(request.search_filter_enabled):
+            body['SearchFilterEnabled'] = request.search_filter_enabled
+        if not DaraCore.is_null(request.type):
+            body['Type'] = request.type
+        if not DaraCore.is_null(request.value_enums_shrink):
+            body['ValueEnums'] = request.value_enums_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateCustomAttribute',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateCustomAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_custom_attribute(
+        self,
+        request: main_models.CreateCustomAttributeRequest,
+    ) -> main_models.CreateCustomAttributeResponse:
+        runtime = RuntimeOptions()
+        return self.create_custom_attribute_with_options(request, runtime)
+
+    async def create_custom_attribute_async(
+        self,
+        request: main_models.CreateCustomAttributeRequest,
+    ) -> main_models.CreateCustomAttributeResponse:
+        runtime = RuntimeOptions()
+        return await self.create_custom_attribute_with_options_async(request, runtime)
 
     def create_dialarm_rule_with_options(
         self,
@@ -3498,6 +3764,100 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_meta_collection_with_options_async(request, runtime)
 
+    def create_meta_entity_def_with_options(
+        self,
+        tmp_req: main_models.CreateMetaEntityDefRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateMetaEntityDefResponse:
+        tmp_req.validate()
+        request = main_models.CreateMetaEntityDefShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.attribute_defs):
+            request.attribute_defs_shrink = Utils.array_to_string_with_specified_style(tmp_req.attribute_defs, 'AttributeDefs', 'json')
+        body = {}
+        if not DaraCore.is_null(request.attribute_defs_shrink):
+            body['AttributeDefs'] = request.attribute_defs_shrink
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.display_name):
+            body['DisplayName'] = request.display_name
+        if not DaraCore.is_null(request.extend):
+            body['Extend'] = request.extend
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateMetaEntityDef',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateMetaEntityDefResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_meta_entity_def_with_options_async(
+        self,
+        tmp_req: main_models.CreateMetaEntityDefRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateMetaEntityDefResponse:
+        tmp_req.validate()
+        request = main_models.CreateMetaEntityDefShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.attribute_defs):
+            request.attribute_defs_shrink = Utils.array_to_string_with_specified_style(tmp_req.attribute_defs, 'AttributeDefs', 'json')
+        body = {}
+        if not DaraCore.is_null(request.attribute_defs_shrink):
+            body['AttributeDefs'] = request.attribute_defs_shrink
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.display_name):
+            body['DisplayName'] = request.display_name
+        if not DaraCore.is_null(request.extend):
+            body['Extend'] = request.extend
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateMetaEntityDef',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateMetaEntityDefResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_meta_entity_def(
+        self,
+        request: main_models.CreateMetaEntityDefRequest,
+    ) -> main_models.CreateMetaEntityDefResponse:
+        runtime = RuntimeOptions()
+        return self.create_meta_entity_def_with_options(request, runtime)
+
+    async def create_meta_entity_def_async(
+        self,
+        request: main_models.CreateMetaEntityDefRequest,
+    ) -> main_models.CreateMetaEntityDefResponse:
+        runtime = RuntimeOptions()
+        return await self.create_meta_entity_def_with_options_async(request, runtime)
+
     def create_network_with_options(
         self,
         request: main_models.CreateNetworkRequest,
@@ -5552,6 +5912,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.delete_compute_resource_with_options_async(request, runtime)
 
+    def delete_custom_attribute_with_options(
+        self,
+        request: main_models.DeleteCustomAttributeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteCustomAttributeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.id):
+            query['Id'] = request.id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteCustomAttribute',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteCustomAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_custom_attribute_with_options_async(
+        self,
+        request: main_models.DeleteCustomAttributeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteCustomAttributeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.id):
+            query['Id'] = request.id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteCustomAttribute',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteCustomAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_custom_attribute(
+        self,
+        request: main_models.DeleteCustomAttributeRequest,
+    ) -> main_models.DeleteCustomAttributeResponse:
+        runtime = RuntimeOptions()
+        return self.delete_custom_attribute_with_options(request, runtime)
+
+    async def delete_custom_attribute_async(
+        self,
+        request: main_models.DeleteCustomAttributeRequest,
+    ) -> main_models.DeleteCustomAttributeResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_custom_attribute_with_options_async(request, runtime)
+
     def delete_dialarm_rule_with_options(
         self,
         request: main_models.DeleteDIAlarmRuleRequest,
@@ -6847,6 +7277,80 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteMetaCollectionResponse:
         runtime = RuntimeOptions()
         return await self.delete_meta_collection_with_options_async(request, runtime)
+
+    def delete_meta_entity_def_with_options(
+        self,
+        request: main_models.DeleteMetaEntityDefRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteMetaEntityDefResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.entity_type):
+            body['EntityType'] = request.entity_type
+        if not DaraCore.is_null(request.force):
+            body['Force'] = request.force
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteMetaEntityDef',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteMetaEntityDefResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_meta_entity_def_with_options_async(
+        self,
+        request: main_models.DeleteMetaEntityDefRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteMetaEntityDefResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.entity_type):
+            body['EntityType'] = request.entity_type
+        if not DaraCore.is_null(request.force):
+            body['Force'] = request.force
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteMetaEntityDef',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteMetaEntityDefResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_meta_entity_def(
+        self,
+        request: main_models.DeleteMetaEntityDefRequest,
+    ) -> main_models.DeleteMetaEntityDefResponse:
+        runtime = RuntimeOptions()
+        return self.delete_meta_entity_def_with_options(request, runtime)
+
+    async def delete_meta_entity_def_async(
+        self,
+        request: main_models.DeleteMetaEntityDefRequest,
+    ) -> main_models.DeleteMetaEntityDefResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_meta_entity_def_with_options_async(request, runtime)
 
     def delete_network_with_options(
         self,
@@ -9038,6 +9542,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_create_workflow_instances_result_with_options_async(request, runtime)
 
+    def get_custom_attribute_with_options(
+        self,
+        request: main_models.GetCustomAttributeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetCustomAttributeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.id):
+            query['Id'] = request.id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetCustomAttribute',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetCustomAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_custom_attribute_with_options_async(
+        self,
+        request: main_models.GetCustomAttributeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetCustomAttributeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.id):
+            query['Id'] = request.id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetCustomAttribute',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetCustomAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_custom_attribute(
+        self,
+        request: main_models.GetCustomAttributeRequest,
+    ) -> main_models.GetCustomAttributeResponse:
+        runtime = RuntimeOptions()
+        return self.get_custom_attribute_with_options(request, runtime)
+
+    async def get_custom_attribute_async(
+        self,
+        request: main_models.GetCustomAttributeRequest,
+    ) -> main_models.GetCustomAttributeResponse:
+        runtime = RuntimeOptions()
+        return await self.get_custom_attribute_with_options_async(request, runtime)
+
     def get_dijob_with_options(
         self,
         request: main_models.GetDIJobRequest,
@@ -10795,6 +11369,146 @@ class Client(OpenApiClient):
     ) -> main_models.GetMetaCollectionResponse:
         runtime = RuntimeOptions()
         return await self.get_meta_collection_with_options_async(request, runtime)
+
+    def get_meta_entity_with_options(
+        self,
+        request: main_models.GetMetaEntityRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetMetaEntityResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetMetaEntity',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetMetaEntityResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_meta_entity_with_options_async(
+        self,
+        request: main_models.GetMetaEntityRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetMetaEntityResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetMetaEntity',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetMetaEntityResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_meta_entity(
+        self,
+        request: main_models.GetMetaEntityRequest,
+    ) -> main_models.GetMetaEntityResponse:
+        runtime = RuntimeOptions()
+        return self.get_meta_entity_with_options(request, runtime)
+
+    async def get_meta_entity_async(
+        self,
+        request: main_models.GetMetaEntityRequest,
+    ) -> main_models.GetMetaEntityResponse:
+        runtime = RuntimeOptions()
+        return await self.get_meta_entity_with_options_async(request, runtime)
+
+    def get_meta_entity_def_with_options(
+        self,
+        request: main_models.GetMetaEntityDefRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetMetaEntityDefResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.entity_type):
+            body['EntityType'] = request.entity_type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetMetaEntityDef',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetMetaEntityDefResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_meta_entity_def_with_options_async(
+        self,
+        request: main_models.GetMetaEntityDefRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetMetaEntityDefResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.entity_type):
+            body['EntityType'] = request.entity_type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetMetaEntityDef',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetMetaEntityDefResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_meta_entity_def(
+        self,
+        request: main_models.GetMetaEntityDefRequest,
+    ) -> main_models.GetMetaEntityDefResponse:
+        runtime = RuntimeOptions()
+        return self.get_meta_entity_def_with_options(request, runtime)
+
+    async def get_meta_entity_def_async(
+        self,
+        request: main_models.GetMetaEntityDefRequest,
+    ) -> main_models.GetMetaEntityDefResponse:
+        runtime = RuntimeOptions()
+        return await self.get_meta_entity_def_with_options_async(request, runtime)
 
     def get_network_with_options(
         self,
@@ -13437,6 +14151,100 @@ class Client(OpenApiClient):
     async def list_crawler_types_async(self) -> main_models.ListCrawlerTypesResponse:
         runtime = RuntimeOptions()
         return await self.list_crawler_types_with_options_async(runtime)
+
+    def list_custom_attributes_with_options(
+        self,
+        request: main_models.ListCustomAttributesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListCustomAttributesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.comment):
+            query['Comment'] = request.comment
+        if not DaraCore.is_null(request.display_name):
+            query['DisplayName'] = request.display_name
+        if not DaraCore.is_null(request.entity_types):
+            query['EntityTypes'] = request.entity_types
+        if not DaraCore.is_null(request.order):
+            query['Order'] = request.order
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.sort_by):
+            query['SortBy'] = request.sort_by
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListCustomAttributes',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListCustomAttributesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_custom_attributes_with_options_async(
+        self,
+        request: main_models.ListCustomAttributesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListCustomAttributesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.comment):
+            query['Comment'] = request.comment
+        if not DaraCore.is_null(request.display_name):
+            query['DisplayName'] = request.display_name
+        if not DaraCore.is_null(request.entity_types):
+            query['EntityTypes'] = request.entity_types
+        if not DaraCore.is_null(request.order):
+            query['Order'] = request.order
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.sort_by):
+            query['SortBy'] = request.sort_by
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListCustomAttributes',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListCustomAttributesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_custom_attributes(
+        self,
+        request: main_models.ListCustomAttributesRequest,
+    ) -> main_models.ListCustomAttributesResponse:
+        runtime = RuntimeOptions()
+        return self.list_custom_attributes_with_options(request, runtime)
+
+    async def list_custom_attributes_async(
+        self,
+        request: main_models.ListCustomAttributesRequest,
+    ) -> main_models.ListCustomAttributesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_custom_attributes_with_options_async(request, runtime)
 
     def list_dialarm_rules_with_options(
         self,
@@ -16321,6 +17129,214 @@ class Client(OpenApiClient):
     ) -> main_models.ListMetaCollectionsResponse:
         runtime = RuntimeOptions()
         return await self.list_meta_collections_with_options_async(request, runtime)
+
+    def list_meta_entities_with_options(
+        self,
+        tmp_req: main_models.ListMetaEntitiesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListMetaEntitiesResponse:
+        tmp_req.validate()
+        request = main_models.ListMetaEntitiesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.attribute_filters):
+            request.attribute_filters_shrink = Utils.array_to_string_with_specified_style(tmp_req.attribute_filters, 'AttributeFilters', 'json')
+        if not DaraCore.is_null(tmp_req.custom_attribute_filters):
+            request.custom_attribute_filters_shrink = Utils.array_to_string_with_specified_style(tmp_req.custom_attribute_filters, 'CustomAttributeFilters', 'json')
+        body = {}
+        if not DaraCore.is_null(request.attribute_filters_shrink):
+            body['AttributeFilters'] = request.attribute_filters_shrink
+        if not DaraCore.is_null(request.comment):
+            body['Comment'] = request.comment
+        if not DaraCore.is_null(request.custom_attribute_filters_shrink):
+            body['CustomAttributeFilters'] = request.custom_attribute_filters_shrink
+        if not DaraCore.is_null(request.entity_type):
+            body['EntityType'] = request.entity_type
+        if not DaraCore.is_null(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.order):
+            body['Order'] = request.order
+        if not DaraCore.is_null(request.sort_by):
+            body['SortBy'] = request.sort_by
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListMetaEntities',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListMetaEntitiesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_meta_entities_with_options_async(
+        self,
+        tmp_req: main_models.ListMetaEntitiesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListMetaEntitiesResponse:
+        tmp_req.validate()
+        request = main_models.ListMetaEntitiesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.attribute_filters):
+            request.attribute_filters_shrink = Utils.array_to_string_with_specified_style(tmp_req.attribute_filters, 'AttributeFilters', 'json')
+        if not DaraCore.is_null(tmp_req.custom_attribute_filters):
+            request.custom_attribute_filters_shrink = Utils.array_to_string_with_specified_style(tmp_req.custom_attribute_filters, 'CustomAttributeFilters', 'json')
+        body = {}
+        if not DaraCore.is_null(request.attribute_filters_shrink):
+            body['AttributeFilters'] = request.attribute_filters_shrink
+        if not DaraCore.is_null(request.comment):
+            body['Comment'] = request.comment
+        if not DaraCore.is_null(request.custom_attribute_filters_shrink):
+            body['CustomAttributeFilters'] = request.custom_attribute_filters_shrink
+        if not DaraCore.is_null(request.entity_type):
+            body['EntityType'] = request.entity_type
+        if not DaraCore.is_null(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.order):
+            body['Order'] = request.order
+        if not DaraCore.is_null(request.sort_by):
+            body['SortBy'] = request.sort_by
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListMetaEntities',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListMetaEntitiesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_meta_entities(
+        self,
+        request: main_models.ListMetaEntitiesRequest,
+    ) -> main_models.ListMetaEntitiesResponse:
+        runtime = RuntimeOptions()
+        return self.list_meta_entities_with_options(request, runtime)
+
+    async def list_meta_entities_async(
+        self,
+        request: main_models.ListMetaEntitiesRequest,
+    ) -> main_models.ListMetaEntitiesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_meta_entities_with_options_async(request, runtime)
+
+    def list_meta_entity_defs_with_options(
+        self,
+        request: main_models.ListMetaEntityDefsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListMetaEntityDefsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.display_name):
+            body['DisplayName'] = request.display_name
+        if not DaraCore.is_null(request.extend):
+            body['Extend'] = request.extend
+        if not DaraCore.is_null(request.order):
+            body['Order'] = request.order
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.sort_by):
+            body['SortBy'] = request.sort_by
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListMetaEntityDefs',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListMetaEntityDefsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_meta_entity_defs_with_options_async(
+        self,
+        request: main_models.ListMetaEntityDefsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListMetaEntityDefsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.display_name):
+            body['DisplayName'] = request.display_name
+        if not DaraCore.is_null(request.extend):
+            body['Extend'] = request.extend
+        if not DaraCore.is_null(request.order):
+            body['Order'] = request.order
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.sort_by):
+            body['SortBy'] = request.sort_by
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListMetaEntityDefs',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListMetaEntityDefsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_meta_entity_defs(
+        self,
+        request: main_models.ListMetaEntityDefsRequest,
+    ) -> main_models.ListMetaEntityDefsResponse:
+        runtime = RuntimeOptions()
+        return self.list_meta_entity_defs_with_options(request, runtime)
+
+    async def list_meta_entity_defs_async(
+        self,
+        request: main_models.ListMetaEntityDefsRequest,
+    ) -> main_models.ListMetaEntityDefsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_meta_entity_defs_with_options_async(request, runtime)
 
     def list_networks_with_options(
         self,
@@ -21482,11 +22498,17 @@ class Client(OpenApiClient):
 
     def update_column_business_metadata_with_options(
         self,
-        request: main_models.UpdateColumnBusinessMetadataRequest,
+        tmp_req: main_models.UpdateColumnBusinessMetadataRequest,
         runtime: RuntimeOptions,
     ) -> main_models.UpdateColumnBusinessMetadataResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.UpdateColumnBusinessMetadataShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.custom_attributes):
+            request.custom_attributes_shrink = Utils.array_to_string_with_specified_style(tmp_req.custom_attributes, 'CustomAttributes', 'json')
         body = {}
+        if not DaraCore.is_null(request.custom_attributes_shrink):
+            body['CustomAttributes'] = request.custom_attributes_shrink
         if not DaraCore.is_null(request.description):
             body['Description'] = request.description
         if not DaraCore.is_null(request.id):
@@ -21512,11 +22534,17 @@ class Client(OpenApiClient):
 
     async def update_column_business_metadata_with_options_async(
         self,
-        request: main_models.UpdateColumnBusinessMetadataRequest,
+        tmp_req: main_models.UpdateColumnBusinessMetadataRequest,
         runtime: RuntimeOptions,
     ) -> main_models.UpdateColumnBusinessMetadataResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.UpdateColumnBusinessMetadataShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.custom_attributes):
+            request.custom_attributes_shrink = Utils.array_to_string_with_specified_style(tmp_req.custom_attributes, 'CustomAttributes', 'json')
         body = {}
+        if not DaraCore.is_null(request.custom_attributes_shrink):
+            body['CustomAttributes'] = request.custom_attributes_shrink
         if not DaraCore.is_null(request.description):
             body['Description'] = request.description
         if not DaraCore.is_null(request.id):
@@ -21721,6 +22749,112 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateComputeResourceResponse:
         runtime = RuntimeOptions()
         return await self.update_compute_resource_with_options_async(request, runtime)
+
+    def update_custom_attribute_with_options(
+        self,
+        tmp_req: main_models.UpdateCustomAttributeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateCustomAttributeResponse:
+        tmp_req.validate()
+        request = main_models.UpdateCustomAttributeShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.entity_types):
+            request.entity_types_shrink = Utils.array_to_string_with_specified_style(tmp_req.entity_types, 'EntityTypes', 'simple')
+        if not DaraCore.is_null(tmp_req.value_enums):
+            request.value_enums_shrink = Utils.array_to_string_with_specified_style(tmp_req.value_enums, 'ValueEnums', 'simple')
+        body = {}
+        if not DaraCore.is_null(request.comment):
+            body['Comment'] = request.comment
+        if not DaraCore.is_null(request.display_enabled):
+            body['DisplayEnabled'] = request.display_enabled
+        if not DaraCore.is_null(request.display_name):
+            body['DisplayName'] = request.display_name
+        if not DaraCore.is_null(request.entity_types_shrink):
+            body['EntityTypes'] = request.entity_types_shrink
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        if not DaraCore.is_null(request.search_filter_enabled):
+            body['SearchFilterEnabled'] = request.search_filter_enabled
+        if not DaraCore.is_null(request.value_enums_shrink):
+            body['ValueEnums'] = request.value_enums_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateCustomAttribute',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateCustomAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_custom_attribute_with_options_async(
+        self,
+        tmp_req: main_models.UpdateCustomAttributeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateCustomAttributeResponse:
+        tmp_req.validate()
+        request = main_models.UpdateCustomAttributeShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.entity_types):
+            request.entity_types_shrink = Utils.array_to_string_with_specified_style(tmp_req.entity_types, 'EntityTypes', 'simple')
+        if not DaraCore.is_null(tmp_req.value_enums):
+            request.value_enums_shrink = Utils.array_to_string_with_specified_style(tmp_req.value_enums, 'ValueEnums', 'simple')
+        body = {}
+        if not DaraCore.is_null(request.comment):
+            body['Comment'] = request.comment
+        if not DaraCore.is_null(request.display_enabled):
+            body['DisplayEnabled'] = request.display_enabled
+        if not DaraCore.is_null(request.display_name):
+            body['DisplayName'] = request.display_name
+        if not DaraCore.is_null(request.entity_types_shrink):
+            body['EntityTypes'] = request.entity_types_shrink
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        if not DaraCore.is_null(request.search_filter_enabled):
+            body['SearchFilterEnabled'] = request.search_filter_enabled
+        if not DaraCore.is_null(request.value_enums_shrink):
+            body['ValueEnums'] = request.value_enums_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateCustomAttribute',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateCustomAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_custom_attribute(
+        self,
+        request: main_models.UpdateCustomAttributeRequest,
+    ) -> main_models.UpdateCustomAttributeResponse:
+        runtime = RuntimeOptions()
+        return self.update_custom_attribute_with_options(request, runtime)
+
+    async def update_custom_attribute_async(
+        self,
+        request: main_models.UpdateCustomAttributeRequest,
+    ) -> main_models.UpdateCustomAttributeResponse:
+        runtime = RuntimeOptions()
+        return await self.update_custom_attribute_with_options_async(request, runtime)
 
     def update_dialarm_rule_with_options(
         self,
@@ -23480,6 +24614,198 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.update_meta_collection_with_options_async(request, runtime)
 
+    def update_meta_entity_with_options(
+        self,
+        tmp_req: main_models.UpdateMetaEntityRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateMetaEntityResponse:
+        tmp_req.validate()
+        request = main_models.UpdateMetaEntityShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.attributes):
+            request.attributes_shrink = Utils.array_to_string_with_specified_style(tmp_req.attributes, 'Attributes', 'json')
+        if not DaraCore.is_null(tmp_req.custom_attributes):
+            request.custom_attributes_shrink = Utils.array_to_string_with_specified_style(tmp_req.custom_attributes, 'CustomAttributes', 'json')
+        body = {}
+        if not DaraCore.is_null(request.attributes_shrink):
+            body['Attributes'] = request.attributes_shrink
+        if not DaraCore.is_null(request.comment):
+            body['Comment'] = request.comment
+        if not DaraCore.is_null(request.custom_attributes_shrink):
+            body['CustomAttributes'] = request.custom_attributes_shrink
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateMetaEntity',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateMetaEntityResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_meta_entity_with_options_async(
+        self,
+        tmp_req: main_models.UpdateMetaEntityRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateMetaEntityResponse:
+        tmp_req.validate()
+        request = main_models.UpdateMetaEntityShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.attributes):
+            request.attributes_shrink = Utils.array_to_string_with_specified_style(tmp_req.attributes, 'Attributes', 'json')
+        if not DaraCore.is_null(tmp_req.custom_attributes):
+            request.custom_attributes_shrink = Utils.array_to_string_with_specified_style(tmp_req.custom_attributes, 'CustomAttributes', 'json')
+        body = {}
+        if not DaraCore.is_null(request.attributes_shrink):
+            body['Attributes'] = request.attributes_shrink
+        if not DaraCore.is_null(request.comment):
+            body['Comment'] = request.comment
+        if not DaraCore.is_null(request.custom_attributes_shrink):
+            body['CustomAttributes'] = request.custom_attributes_shrink
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateMetaEntity',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateMetaEntityResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_meta_entity(
+        self,
+        request: main_models.UpdateMetaEntityRequest,
+    ) -> main_models.UpdateMetaEntityResponse:
+        runtime = RuntimeOptions()
+        return self.update_meta_entity_with_options(request, runtime)
+
+    async def update_meta_entity_async(
+        self,
+        request: main_models.UpdateMetaEntityRequest,
+    ) -> main_models.UpdateMetaEntityResponse:
+        runtime = RuntimeOptions()
+        return await self.update_meta_entity_with_options_async(request, runtime)
+
+    def update_meta_entity_def_with_options(
+        self,
+        tmp_req: main_models.UpdateMetaEntityDefRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateMetaEntityDefResponse:
+        tmp_req.validate()
+        request = main_models.UpdateMetaEntityDefShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.new_attribute_defs):
+            request.new_attribute_defs_shrink = Utils.array_to_string_with_specified_style(tmp_req.new_attribute_defs, 'NewAttributeDefs', 'json')
+        if not DaraCore.is_null(tmp_req.update_attribute_defs):
+            request.update_attribute_defs_shrink = Utils.array_to_string_with_specified_style(tmp_req.update_attribute_defs, 'UpdateAttributeDefs', 'json')
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.display_name):
+            body['DisplayName'] = request.display_name
+        if not DaraCore.is_null(request.entity_type):
+            body['EntityType'] = request.entity_type
+        if not DaraCore.is_null(request.new_attribute_defs_shrink):
+            body['NewAttributeDefs'] = request.new_attribute_defs_shrink
+        if not DaraCore.is_null(request.update_attribute_defs_shrink):
+            body['UpdateAttributeDefs'] = request.update_attribute_defs_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateMetaEntityDef',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateMetaEntityDefResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_meta_entity_def_with_options_async(
+        self,
+        tmp_req: main_models.UpdateMetaEntityDefRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateMetaEntityDefResponse:
+        tmp_req.validate()
+        request = main_models.UpdateMetaEntityDefShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.new_attribute_defs):
+            request.new_attribute_defs_shrink = Utils.array_to_string_with_specified_style(tmp_req.new_attribute_defs, 'NewAttributeDefs', 'json')
+        if not DaraCore.is_null(tmp_req.update_attribute_defs):
+            request.update_attribute_defs_shrink = Utils.array_to_string_with_specified_style(tmp_req.update_attribute_defs, 'UpdateAttributeDefs', 'json')
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.display_name):
+            body['DisplayName'] = request.display_name
+        if not DaraCore.is_null(request.entity_type):
+            body['EntityType'] = request.entity_type
+        if not DaraCore.is_null(request.new_attribute_defs_shrink):
+            body['NewAttributeDefs'] = request.new_attribute_defs_shrink
+        if not DaraCore.is_null(request.update_attribute_defs_shrink):
+            body['UpdateAttributeDefs'] = request.update_attribute_defs_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateMetaEntityDef',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateMetaEntityDefResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_meta_entity_def(
+        self,
+        request: main_models.UpdateMetaEntityDefRequest,
+    ) -> main_models.UpdateMetaEntityDefResponse:
+        runtime = RuntimeOptions()
+        return self.update_meta_entity_def_with_options(request, runtime)
+
+    async def update_meta_entity_def_async(
+        self,
+        request: main_models.UpdateMetaEntityDefRequest,
+    ) -> main_models.UpdateMetaEntityDefResponse:
+        runtime = RuntimeOptions()
+        return await self.update_meta_entity_def_with_options_async(request, runtime)
+
     def update_node_with_options(
         self,
         request: main_models.UpdateNodeRequest,
@@ -24238,11 +25564,17 @@ class Client(OpenApiClient):
 
     def update_table_business_metadata_with_options(
         self,
-        request: main_models.UpdateTableBusinessMetadataRequest,
+        tmp_req: main_models.UpdateTableBusinessMetadataRequest,
         runtime: RuntimeOptions,
     ) -> main_models.UpdateTableBusinessMetadataResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.UpdateTableBusinessMetadataShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.custom_attributes):
+            request.custom_attributes_shrink = Utils.array_to_string_with_specified_style(tmp_req.custom_attributes, 'CustomAttributes', 'json')
         body = {}
+        if not DaraCore.is_null(request.custom_attributes_shrink):
+            body['CustomAttributes'] = request.custom_attributes_shrink
         if not DaraCore.is_null(request.id):
             body['Id'] = request.id
         if not DaraCore.is_null(request.readme):
@@ -24268,11 +25600,17 @@ class Client(OpenApiClient):
 
     async def update_table_business_metadata_with_options_async(
         self,
-        request: main_models.UpdateTableBusinessMetadataRequest,
+        tmp_req: main_models.UpdateTableBusinessMetadataRequest,
         runtime: RuntimeOptions,
     ) -> main_models.UpdateTableBusinessMetadataResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.UpdateTableBusinessMetadataShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.custom_attributes):
+            request.custom_attributes_shrink = Utils.array_to_string_with_specified_style(tmp_req.custom_attributes, 'CustomAttributes', 'json')
         body = {}
+        if not DaraCore.is_null(request.custom_attributes_shrink):
+            body['CustomAttributes'] = request.custom_attributes_shrink
         if not DaraCore.is_null(request.id):
             body['Id'] = request.id
         if not DaraCore.is_null(request.readme):

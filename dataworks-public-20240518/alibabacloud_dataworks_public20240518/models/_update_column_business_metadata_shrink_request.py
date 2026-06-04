@@ -2,18 +2,16 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import Dict, List
-
 from darabonba.model import DaraModel
 
-class UpdateColumnBusinessMetadataRequest(DaraModel):
+class UpdateColumnBusinessMetadataShrinkRequest(DaraModel):
     def __init__(
         self,
-        custom_attributes: Dict[str, List[str]] = None,
+        custom_attributes_shrink: str = None,
         description: str = None,
         id: str = None,
     ):
-        self.custom_attributes = custom_attributes
+        self.custom_attributes_shrink = custom_attributes_shrink
         # The field business description.
         self.description = description
         # The field ID. You can refer to the response from the ListColumns operation. You can also refer to the [Concepts related to metadata entities](https://help.aliyun.com/document_detail/2880092.html).
@@ -29,8 +27,8 @@ class UpdateColumnBusinessMetadataRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.custom_attributes is not None:
-            result['CustomAttributes'] = self.custom_attributes
+        if self.custom_attributes_shrink is not None:
+            result['CustomAttributes'] = self.custom_attributes_shrink
 
         if self.description is not None:
             result['Description'] = self.description
@@ -43,7 +41,7 @@ class UpdateColumnBusinessMetadataRequest(DaraModel):
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('CustomAttributes') is not None:
-            self.custom_attributes = m.get('CustomAttributes')
+            self.custom_attributes_shrink = m.get('CustomAttributes')
 
         if m.get('Description') is not None:
             self.description = m.get('Description')

@@ -5,6 +5,7 @@ from __future__ import annotations
 from ._catalog import Catalog
 from ._column import Column
 from ._crawler_type import CrawlerType
+from ._custom_attribute import CustomAttribute
 from ._data_quality_evaluation_task import DataQualityEvaluationTask
 from ._data_quality_evaluation_task_instance import DataQualityEvaluationTaskInstance
 from ._data_quality_result import DataQualityResult
@@ -18,6 +19,10 @@ from ._identify_credential import IdentifyCredential
 from ._lineage_entity import LineageEntity
 from ._lineage_relationship import LineageRelationship
 from ._lineage_task import LineageTask
+from ._meta_entity import MetaEntity
+from ._meta_entity_attribute_def import MetaEntityAttributeDef
+from ._meta_entity_def import MetaEntityDef
+from ._meta_entity_write_result import MetaEntityWriteResult
 from ._partition import Partition
 from ._schema import Schema
 from ._table import Table
@@ -38,6 +43,14 @@ from ._attach_data_quality_rules_to_evaluation_task_request import AttachDataQua
 from ._attach_data_quality_rules_to_evaluation_task_shrink_request import AttachDataQualityRulesToEvaluationTaskShrinkRequest
 from ._attach_data_quality_rules_to_evaluation_task_response_body import AttachDataQualityRulesToEvaluationTaskResponseBody
 from ._attach_data_quality_rules_to_evaluation_task_response import AttachDataQualityRulesToEvaluationTaskResponse
+from ._batch_create_meta_entities_request import BatchCreateMetaEntitiesRequest
+from ._batch_create_meta_entities_shrink_request import BatchCreateMetaEntitiesShrinkRequest
+from ._batch_create_meta_entities_response_body import BatchCreateMetaEntitiesResponseBody
+from ._batch_create_meta_entities_response import BatchCreateMetaEntitiesResponse
+from ._batch_delete_meta_entities_request import BatchDeleteMetaEntitiesRequest
+from ._batch_delete_meta_entities_shrink_request import BatchDeleteMetaEntitiesShrinkRequest
+from ._batch_delete_meta_entities_response_body import BatchDeleteMetaEntitiesResponseBody
+from ._batch_delete_meta_entities_response import BatchDeleteMetaEntitiesResponse
 from ._batch_update_tasks_request import BatchUpdateTasksRequest
 from ._batch_update_tasks_shrink_request import BatchUpdateTasksShrinkRequest
 from ._batch_update_tasks_response_body import BatchUpdateTasksResponseBody
@@ -66,6 +79,10 @@ from ._create_component_response import CreateComponentResponse
 from ._create_compute_resource_request import CreateComputeResourceRequest
 from ._create_compute_resource_response_body import CreateComputeResourceResponseBody
 from ._create_compute_resource_response import CreateComputeResourceResponse
+from ._create_custom_attribute_request import CreateCustomAttributeRequest
+from ._create_custom_attribute_shrink_request import CreateCustomAttributeShrinkRequest
+from ._create_custom_attribute_response_body import CreateCustomAttributeResponseBody
+from ._create_custom_attribute_response import CreateCustomAttributeResponse
 from ._create_dialarm_rule_request import CreateDIAlarmRuleRequest
 from ._create_dialarm_rule_shrink_request import CreateDIAlarmRuleShrinkRequest
 from ._create_dialarm_rule_response_body import CreateDIAlarmRuleResponseBody
@@ -143,6 +160,10 @@ from ._create_lineage_relationship_response import CreateLineageRelationshipResp
 from ._create_meta_collection_request import CreateMetaCollectionRequest
 from ._create_meta_collection_response_body import CreateMetaCollectionResponseBody
 from ._create_meta_collection_response import CreateMetaCollectionResponse
+from ._create_meta_entity_def_request import CreateMetaEntityDefRequest
+from ._create_meta_entity_def_shrink_request import CreateMetaEntityDefShrinkRequest
+from ._create_meta_entity_def_response_body import CreateMetaEntityDefResponseBody
+from ._create_meta_entity_def_response import CreateMetaEntityDefResponse
 from ._create_network_request import CreateNetworkRequest
 from ._create_network_response_body import CreateNetworkResponseBody
 from ._create_network_response import CreateNetworkResponse
@@ -209,6 +230,9 @@ from ._delete_component_response import DeleteComponentResponse
 from ._delete_compute_resource_request import DeleteComputeResourceRequest
 from ._delete_compute_resource_response_body import DeleteComputeResourceResponseBody
 from ._delete_compute_resource_response import DeleteComputeResourceResponse
+from ._delete_custom_attribute_request import DeleteCustomAttributeRequest
+from ._delete_custom_attribute_response_body import DeleteCustomAttributeResponseBody
+from ._delete_custom_attribute_response import DeleteCustomAttributeResponse
 from ._delete_dialarm_rule_request import DeleteDIAlarmRuleRequest
 from ._delete_dialarm_rule_response_body import DeleteDIAlarmRuleResponseBody
 from ._delete_dialarm_rule_response import DeleteDIAlarmRuleResponse
@@ -264,6 +288,9 @@ from ._delete_lineage_relationship_response import DeleteLineageRelationshipResp
 from ._delete_meta_collection_request import DeleteMetaCollectionRequest
 from ._delete_meta_collection_response_body import DeleteMetaCollectionResponseBody
 from ._delete_meta_collection_response import DeleteMetaCollectionResponse
+from ._delete_meta_entity_def_request import DeleteMetaEntityDefRequest
+from ._delete_meta_entity_def_response_body import DeleteMetaEntityDefResponseBody
+from ._delete_meta_entity_def_response import DeleteMetaEntityDefResponse
 from ._delete_network_request import DeleteNetworkRequest
 from ._delete_network_response_body import DeleteNetworkResponseBody
 from ._delete_network_response import DeleteNetworkResponse
@@ -355,6 +382,9 @@ from ._get_compute_resource_response import GetComputeResourceResponse
 from ._get_create_workflow_instances_result_request import GetCreateWorkflowInstancesResultRequest
 from ._get_create_workflow_instances_result_response_body import GetCreateWorkflowInstancesResultResponseBody
 from ._get_create_workflow_instances_result_response import GetCreateWorkflowInstancesResultResponse
+from ._get_custom_attribute_request import GetCustomAttributeRequest
+from ._get_custom_attribute_response_body import GetCustomAttributeResponseBody
+from ._get_custom_attribute_response import GetCustomAttributeResponse
 from ._get_dijob_request import GetDIJobRequest
 from ._get_dijob_response_body import GetDIJobResponseBody
 from ._get_dijob_response import GetDIJobResponse
@@ -430,6 +460,12 @@ from ._get_lineage_relationship_response import GetLineageRelationshipResponse
 from ._get_meta_collection_request import GetMetaCollectionRequest
 from ._get_meta_collection_response_body import GetMetaCollectionResponseBody
 from ._get_meta_collection_response import GetMetaCollectionResponse
+from ._get_meta_entity_request import GetMetaEntityRequest
+from ._get_meta_entity_response_body import GetMetaEntityResponseBody
+from ._get_meta_entity_response import GetMetaEntityResponse
+from ._get_meta_entity_def_request import GetMetaEntityDefRequest
+from ._get_meta_entity_def_response_body import GetMetaEntityDefResponseBody
+from ._get_meta_entity_def_response import GetMetaEntityDefResponse
 from ._get_network_request import GetNetworkRequest
 from ._get_network_response_body import GetNetworkResponseBody
 from ._get_network_response import GetNetworkResponse
@@ -539,6 +575,9 @@ from ._list_compute_resources_response_body import ListComputeResourcesResponseB
 from ._list_compute_resources_response import ListComputeResourcesResponse
 from ._list_crawler_types_response_body import ListCrawlerTypesResponseBody
 from ._list_crawler_types_response import ListCrawlerTypesResponse
+from ._list_custom_attributes_request import ListCustomAttributesRequest
+from ._list_custom_attributes_response_body import ListCustomAttributesResponseBody
+from ._list_custom_attributes_response import ListCustomAttributesResponse
 from ._list_dialarm_rules_request import ListDIAlarmRulesRequest
 from ._list_dialarm_rules_response_body import ListDIAlarmRulesResponseBody
 from ._list_dialarm_rules_response import ListDIAlarmRulesResponse
@@ -654,6 +693,13 @@ from ._list_lineages_response import ListLineagesResponse
 from ._list_meta_collections_request import ListMetaCollectionsRequest
 from ._list_meta_collections_response_body import ListMetaCollectionsResponseBody
 from ._list_meta_collections_response import ListMetaCollectionsResponse
+from ._list_meta_entities_request import ListMetaEntitiesRequest
+from ._list_meta_entities_shrink_request import ListMetaEntitiesShrinkRequest
+from ._list_meta_entities_response_body import ListMetaEntitiesResponseBody
+from ._list_meta_entities_response import ListMetaEntitiesResponse
+from ._list_meta_entity_defs_request import ListMetaEntityDefsRequest
+from ._list_meta_entity_defs_response_body import ListMetaEntityDefsResponseBody
+from ._list_meta_entity_defs_response import ListMetaEntityDefsResponse
 from ._list_networks_request import ListNetworksRequest
 from ._list_networks_response_body import ListNetworksResponseBody
 from ._list_networks_response import ListNetworksResponse
@@ -859,6 +905,7 @@ from ._update_business_request import UpdateBusinessRequest
 from ._update_business_response_body import UpdateBusinessResponseBody
 from ._update_business_response import UpdateBusinessResponse
 from ._update_column_business_metadata_request import UpdateColumnBusinessMetadataRequest
+from ._update_column_business_metadata_shrink_request import UpdateColumnBusinessMetadataShrinkRequest
 from ._update_column_business_metadata_response_body import UpdateColumnBusinessMetadataResponseBody
 from ._update_column_business_metadata_response import UpdateColumnBusinessMetadataResponse
 from ._update_component_request import UpdateComponentRequest
@@ -867,6 +914,10 @@ from ._update_component_response import UpdateComponentResponse
 from ._update_compute_resource_request import UpdateComputeResourceRequest
 from ._update_compute_resource_response_body import UpdateComputeResourceResponseBody
 from ._update_compute_resource_response import UpdateComputeResourceResponse
+from ._update_custom_attribute_request import UpdateCustomAttributeRequest
+from ._update_custom_attribute_shrink_request import UpdateCustomAttributeShrinkRequest
+from ._update_custom_attribute_response_body import UpdateCustomAttributeResponseBody
+from ._update_custom_attribute_response import UpdateCustomAttributeResponse
 from ._update_dialarm_rule_request import UpdateDIAlarmRuleRequest
 from ._update_dialarm_rule_shrink_request import UpdateDIAlarmRuleShrinkRequest
 from ._update_dialarm_rule_response_body import UpdateDIAlarmRuleResponseBody
@@ -927,6 +978,14 @@ from ._update_meta_collection_request import UpdateMetaCollectionRequest
 from ._update_meta_collection_shrink_request import UpdateMetaCollectionShrinkRequest
 from ._update_meta_collection_response_body import UpdateMetaCollectionResponseBody
 from ._update_meta_collection_response import UpdateMetaCollectionResponse
+from ._update_meta_entity_request import UpdateMetaEntityRequest
+from ._update_meta_entity_shrink_request import UpdateMetaEntityShrinkRequest
+from ._update_meta_entity_response_body import UpdateMetaEntityResponseBody
+from ._update_meta_entity_response import UpdateMetaEntityResponse
+from ._update_meta_entity_def_request import UpdateMetaEntityDefRequest
+from ._update_meta_entity_def_shrink_request import UpdateMetaEntityDefShrinkRequest
+from ._update_meta_entity_def_response_body import UpdateMetaEntityDefResponseBody
+from ._update_meta_entity_def_response import UpdateMetaEntityDefResponse
 from ._update_node_request import UpdateNodeRequest
 from ._update_node_response_body import UpdateNodeResponseBody
 from ._update_node_response import UpdateNodeResponse
@@ -952,6 +1011,7 @@ from ._update_route_request import UpdateRouteRequest
 from ._update_route_response_body import UpdateRouteResponseBody
 from ._update_route_response import UpdateRouteResponse
 from ._update_table_business_metadata_request import UpdateTableBusinessMetadataRequest
+from ._update_table_business_metadata_shrink_request import UpdateTableBusinessMetadataShrinkRequest
 from ._update_table_business_metadata_response_body import UpdateTableBusinessMetadataResponseBody
 from ._update_table_business_metadata_response import UpdateTableBusinessMetadataResponse
 from ._update_task_request import UpdateTaskRequest
@@ -1016,6 +1076,7 @@ from ._table import TableBusinessMetadataTags
 from ._table import TableBusinessMetadataUpstreamTasks
 from ._table import TableBusinessMetadata
 from ._table import TableTechnicalMetadata
+from ._batch_create_meta_entities_request import BatchCreateMetaEntitiesRequestEntities
 from ._batch_update_tasks_request import BatchUpdateTasksRequestTasksDataSource
 from ._batch_update_tasks_request import BatchUpdateTasksRequestTasksRuntimeResource
 from ._batch_update_tasks_request import BatchUpdateTasksRequestTasksTags
@@ -1363,6 +1424,7 @@ from ._list_components_response_body import ListComponentsResponseBodyPagingInfo
 from ._list_compute_resources_response_body import ListComputeResourcesResponseBodyPagingInfoComputeResourcesComputeResource
 from ._list_compute_resources_response_body import ListComputeResourcesResponseBodyPagingInfoComputeResources
 from ._list_compute_resources_response_body import ListComputeResourcesResponseBodyPagingInfo
+from ._list_custom_attributes_response_body import ListCustomAttributesResponseBodyPagingInfo
 from ._list_dialarm_rules_response_body import ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRulesNotificationSettingsNotificationChannels
 from ._list_dialarm_rules_response_body import ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRulesNotificationSettingsNotificationReceivers
 from ._list_dialarm_rules_response_body import ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRulesNotificationSettings
@@ -1507,6 +1569,10 @@ from ._list_lineages_response_body import ListLineagesResponseBodyPagingInfoLine
 from ._list_lineages_response_body import ListLineagesResponseBodyPagingInfo
 from ._list_meta_collections_response_body import ListMetaCollectionsResponseBodyDataMetaCollections
 from ._list_meta_collections_response_body import ListMetaCollectionsResponseBodyData
+from ._list_meta_entities_request import ListMetaEntitiesRequestAttributeFilters
+from ._list_meta_entities_request import ListMetaEntitiesRequestCustomAttributeFilters
+from ._list_meta_entities_response_body import ListMetaEntitiesResponseBodyPagingInfo
+from ._list_meta_entity_defs_response_body import ListMetaEntityDefsResponseBodyPagingInfo
 from ._list_networks_response_body import ListNetworksResponseBodyPagingInfoNetworkList
 from ._list_networks_response_body import ListNetworksResponseBodyPagingInfo
 from ._list_node_dependencies_response_body import ListNodeDependenciesResponseBodyPagingInfoNodesDataSource
@@ -1707,6 +1773,7 @@ from ._update_data_quality_scan_request import UpdateDataQualityScanRequestHooks
 from ._update_data_quality_scan_request import UpdateDataQualityScanRequestParameters
 from ._update_data_quality_scan_request import UpdateDataQualityScanRequestRuntimeResource
 from ._update_data_quality_scan_request import UpdateDataQualityScanRequestTrigger
+from ._update_meta_entity_response_body import UpdateMetaEntityResponseBodyResult
 from ._update_parameter_request import UpdateParameterRequestProperties
 from ._update_project_role_request import UpdateProjectRoleRequestModulePermissions
 from ._update_task_request import UpdateTaskRequestDataSource
@@ -1744,6 +1811,7 @@ __all__ = [
     Catalog,
     Column,
     CrawlerType,
+    CustomAttribute,
     DataQualityEvaluationTask,
     DataQualityEvaluationTaskInstance,
     DataQualityResult,
@@ -1757,6 +1825,10 @@ __all__ = [
     LineageEntity,
     LineageRelationship,
     LineageTask,
+    MetaEntity,
+    MetaEntityAttributeDef,
+    MetaEntityDef,
+    MetaEntityWriteResult,
     Partition,
     Schema,
     Table,
@@ -1777,6 +1849,14 @@ __all__ = [
     AttachDataQualityRulesToEvaluationTaskShrinkRequest,
     AttachDataQualityRulesToEvaluationTaskResponseBody,
     AttachDataQualityRulesToEvaluationTaskResponse,
+    BatchCreateMetaEntitiesRequest,
+    BatchCreateMetaEntitiesShrinkRequest,
+    BatchCreateMetaEntitiesResponseBody,
+    BatchCreateMetaEntitiesResponse,
+    BatchDeleteMetaEntitiesRequest,
+    BatchDeleteMetaEntitiesShrinkRequest,
+    BatchDeleteMetaEntitiesResponseBody,
+    BatchDeleteMetaEntitiesResponse,
     BatchUpdateTasksRequest,
     BatchUpdateTasksShrinkRequest,
     BatchUpdateTasksResponseBody,
@@ -1805,6 +1885,10 @@ __all__ = [
     CreateComputeResourceRequest,
     CreateComputeResourceResponseBody,
     CreateComputeResourceResponse,
+    CreateCustomAttributeRequest,
+    CreateCustomAttributeShrinkRequest,
+    CreateCustomAttributeResponseBody,
+    CreateCustomAttributeResponse,
     CreateDIAlarmRuleRequest,
     CreateDIAlarmRuleShrinkRequest,
     CreateDIAlarmRuleResponseBody,
@@ -1882,6 +1966,10 @@ __all__ = [
     CreateMetaCollectionRequest,
     CreateMetaCollectionResponseBody,
     CreateMetaCollectionResponse,
+    CreateMetaEntityDefRequest,
+    CreateMetaEntityDefShrinkRequest,
+    CreateMetaEntityDefResponseBody,
+    CreateMetaEntityDefResponse,
     CreateNetworkRequest,
     CreateNetworkResponseBody,
     CreateNetworkResponse,
@@ -1948,6 +2036,9 @@ __all__ = [
     DeleteComputeResourceRequest,
     DeleteComputeResourceResponseBody,
     DeleteComputeResourceResponse,
+    DeleteCustomAttributeRequest,
+    DeleteCustomAttributeResponseBody,
+    DeleteCustomAttributeResponse,
     DeleteDIAlarmRuleRequest,
     DeleteDIAlarmRuleResponseBody,
     DeleteDIAlarmRuleResponse,
@@ -2003,6 +2094,9 @@ __all__ = [
     DeleteMetaCollectionRequest,
     DeleteMetaCollectionResponseBody,
     DeleteMetaCollectionResponse,
+    DeleteMetaEntityDefRequest,
+    DeleteMetaEntityDefResponseBody,
+    DeleteMetaEntityDefResponse,
     DeleteNetworkRequest,
     DeleteNetworkResponseBody,
     DeleteNetworkResponse,
@@ -2094,6 +2188,9 @@ __all__ = [
     GetCreateWorkflowInstancesResultRequest,
     GetCreateWorkflowInstancesResultResponseBody,
     GetCreateWorkflowInstancesResultResponse,
+    GetCustomAttributeRequest,
+    GetCustomAttributeResponseBody,
+    GetCustomAttributeResponse,
     GetDIJobRequest,
     GetDIJobResponseBody,
     GetDIJobResponse,
@@ -2169,6 +2266,12 @@ __all__ = [
     GetMetaCollectionRequest,
     GetMetaCollectionResponseBody,
     GetMetaCollectionResponse,
+    GetMetaEntityRequest,
+    GetMetaEntityResponseBody,
+    GetMetaEntityResponse,
+    GetMetaEntityDefRequest,
+    GetMetaEntityDefResponseBody,
+    GetMetaEntityDefResponse,
     GetNetworkRequest,
     GetNetworkResponseBody,
     GetNetworkResponse,
@@ -2278,6 +2381,9 @@ __all__ = [
     ListComputeResourcesResponse,
     ListCrawlerTypesResponseBody,
     ListCrawlerTypesResponse,
+    ListCustomAttributesRequest,
+    ListCustomAttributesResponseBody,
+    ListCustomAttributesResponse,
     ListDIAlarmRulesRequest,
     ListDIAlarmRulesResponseBody,
     ListDIAlarmRulesResponse,
@@ -2393,6 +2499,13 @@ __all__ = [
     ListMetaCollectionsRequest,
     ListMetaCollectionsResponseBody,
     ListMetaCollectionsResponse,
+    ListMetaEntitiesRequest,
+    ListMetaEntitiesShrinkRequest,
+    ListMetaEntitiesResponseBody,
+    ListMetaEntitiesResponse,
+    ListMetaEntityDefsRequest,
+    ListMetaEntityDefsResponseBody,
+    ListMetaEntityDefsResponse,
     ListNetworksRequest,
     ListNetworksResponseBody,
     ListNetworksResponse,
@@ -2598,6 +2711,7 @@ __all__ = [
     UpdateBusinessResponseBody,
     UpdateBusinessResponse,
     UpdateColumnBusinessMetadataRequest,
+    UpdateColumnBusinessMetadataShrinkRequest,
     UpdateColumnBusinessMetadataResponseBody,
     UpdateColumnBusinessMetadataResponse,
     UpdateComponentRequest,
@@ -2606,6 +2720,10 @@ __all__ = [
     UpdateComputeResourceRequest,
     UpdateComputeResourceResponseBody,
     UpdateComputeResourceResponse,
+    UpdateCustomAttributeRequest,
+    UpdateCustomAttributeShrinkRequest,
+    UpdateCustomAttributeResponseBody,
+    UpdateCustomAttributeResponse,
     UpdateDIAlarmRuleRequest,
     UpdateDIAlarmRuleShrinkRequest,
     UpdateDIAlarmRuleResponseBody,
@@ -2666,6 +2784,14 @@ __all__ = [
     UpdateMetaCollectionShrinkRequest,
     UpdateMetaCollectionResponseBody,
     UpdateMetaCollectionResponse,
+    UpdateMetaEntityRequest,
+    UpdateMetaEntityShrinkRequest,
+    UpdateMetaEntityResponseBody,
+    UpdateMetaEntityResponse,
+    UpdateMetaEntityDefRequest,
+    UpdateMetaEntityDefShrinkRequest,
+    UpdateMetaEntityDefResponseBody,
+    UpdateMetaEntityDefResponse,
     UpdateNodeRequest,
     UpdateNodeResponseBody,
     UpdateNodeResponse,
@@ -2691,6 +2817,7 @@ __all__ = [
     UpdateRouteResponseBody,
     UpdateRouteResponse,
     UpdateTableBusinessMetadataRequest,
+    UpdateTableBusinessMetadataShrinkRequest,
     UpdateTableBusinessMetadataResponseBody,
     UpdateTableBusinessMetadataResponse,
     UpdateTaskRequest,
@@ -2755,6 +2882,7 @@ __all__ = [
     TableBusinessMetadataUpstreamTasks,
     TableBusinessMetadata,
     TableTechnicalMetadata,
+    BatchCreateMetaEntitiesRequestEntities,
     BatchUpdateTasksRequestTasksDataSource,
     BatchUpdateTasksRequestTasksRuntimeResource,
     BatchUpdateTasksRequestTasksTags,
@@ -3102,6 +3230,7 @@ __all__ = [
     ListComputeResourcesResponseBodyPagingInfoComputeResourcesComputeResource,
     ListComputeResourcesResponseBodyPagingInfoComputeResources,
     ListComputeResourcesResponseBodyPagingInfo,
+    ListCustomAttributesResponseBodyPagingInfo,
     ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRulesNotificationSettingsNotificationChannels,
     ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRulesNotificationSettingsNotificationReceivers,
     ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRulesNotificationSettings,
@@ -3246,6 +3375,10 @@ __all__ = [
     ListLineagesResponseBodyPagingInfo,
     ListMetaCollectionsResponseBodyDataMetaCollections,
     ListMetaCollectionsResponseBodyData,
+    ListMetaEntitiesRequestAttributeFilters,
+    ListMetaEntitiesRequestCustomAttributeFilters,
+    ListMetaEntitiesResponseBodyPagingInfo,
+    ListMetaEntityDefsResponseBodyPagingInfo,
     ListNetworksResponseBodyPagingInfoNetworkList,
     ListNetworksResponseBodyPagingInfo,
     ListNodeDependenciesResponseBodyPagingInfoNodesDataSource,
@@ -3446,6 +3579,7 @@ __all__ = [
     UpdateDataQualityScanRequestParameters,
     UpdateDataQualityScanRequestRuntimeResource,
     UpdateDataQualityScanRequestTrigger,
+    UpdateMetaEntityResponseBodyResult,
     UpdateParameterRequestProperties,
     UpdateProjectRoleRequestModulePermissions,
     UpdateTaskRequestDataSource,

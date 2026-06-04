@@ -1,3 +1,23 @@
+2026-06-04 Version: 8.5.0
+- Support API BatchCreateMetaEntities.
+- Support API BatchDeleteMetaEntities.
+- Support API CreateCustomAttribute.
+- Support API CreateMetaEntityDef.
+- Support API DeleteCustomAttribute.
+- Support API DeleteMetaEntityDef.
+- Support API GetCustomAttribute.
+- Support API GetMetaEntity.
+- Support API GetMetaEntityDef.
+- Support API ListCustomAttributes.
+- Support API ListMetaEntities.
+- Support API ListMetaEntityDefs.
+- Support API UpdateCustomAttribute.
+- Support API UpdateMetaEntity.
+- Support API UpdateMetaEntityDef.
+- Update API UpdateColumnBusinessMetadata: add request parameters CustomAttributes.
+- Update API UpdateTableBusinessMetadata: add request parameters CustomAttributes.
+
+
 2026-05-21 Version: 8.4.1
 - Update API ListWorkflowInstances: add request parameters EnvType.
 

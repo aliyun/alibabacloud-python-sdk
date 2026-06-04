@@ -263,6 +263,7 @@ class TableBusinessMetadata(DaraModel):
     def __init__(
         self,
         categories: List[List[main_models.TableBusinessMetadataCategories]] = None,
+        custom_attributes: Dict[str, List[str]] = None,
         extension: main_models.TableBusinessMetadataExtension = None,
         readme: str = None,
         tags: List[main_models.TableBusinessMetadataTags] = None,
@@ -270,6 +271,7 @@ class TableBusinessMetadata(DaraModel):
     ):
         # The categories.
         self.categories = categories
+        self.custom_attributes = custom_attributes
         # The extended information. Only MaxCompute tables supports this parameter.
         self.extension = extension
         # The usage notes.
@@ -309,6 +311,9 @@ class TableBusinessMetadata(DaraModel):
                     l1.append(k2.to_map() if k2 else None)
                 result['Categories'].append(l1)
 
+        if self.custom_attributes is not None:
+            result['CustomAttributes'] = self.custom_attributes
+
         if self.extension is not None:
             result['Extension'] = self.extension.to_map()
 
@@ -337,6 +342,9 @@ class TableBusinessMetadata(DaraModel):
                     temp_model = main_models.TableBusinessMetadataCategories()
                     l1.append(temp_model.from_map(k2))
                 self.categories.append(l1)
+
+        if m.get('CustomAttributes') is not None:
+            self.custom_attributes = m.get('CustomAttributes')
 
         if m.get('Extension') is not None:
             temp_model = main_models.TableBusinessMetadataExtension()

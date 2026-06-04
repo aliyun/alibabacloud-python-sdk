@@ -2,18 +2,16 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import Dict, List
-
 from darabonba.model import DaraModel
 
-class UpdateTableBusinessMetadataRequest(DaraModel):
+class UpdateTableBusinessMetadataShrinkRequest(DaraModel):
     def __init__(
         self,
-        custom_attributes: Dict[str, List[str]] = None,
+        custom_attributes_shrink: str = None,
         id: str = None,
         readme: str = None,
     ):
-        self.custom_attributes = custom_attributes
+        self.custom_attributes_shrink = custom_attributes_shrink
         # The table ID. You can refer to the format of the table ID returned by the ListTables operation.
         # 
         # This parameter is required.
@@ -29,8 +27,8 @@ class UpdateTableBusinessMetadataRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.custom_attributes is not None:
-            result['CustomAttributes'] = self.custom_attributes
+        if self.custom_attributes_shrink is not None:
+            result['CustomAttributes'] = self.custom_attributes_shrink
 
         if self.id is not None:
             result['Id'] = self.id
@@ -43,7 +41,7 @@ class UpdateTableBusinessMetadataRequest(DaraModel):
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('CustomAttributes') is not None:
-            self.custom_attributes = m.get('CustomAttributes')
+            self.custom_attributes_shrink = m.get('CustomAttributes')
 
         if m.get('Id') is not None:
             self.id = m.get('Id')
