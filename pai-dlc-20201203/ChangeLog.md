@@ -1,3 +1,7 @@
+2026-06-04 Version: 1.9.0
+- Support API GetMetrics.
+
+
 2026-06-01 Version: 1.8.0
 - Support API CreateRayHistoryServer.
 - Support API DeleteRayHistoryServer.

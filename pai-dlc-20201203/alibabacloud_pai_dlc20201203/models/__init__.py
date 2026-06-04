@@ -112,6 +112,9 @@ from ._get_job_sanity_check_result_response import GetJobSanityCheckResultRespon
 from ._get_job_template_request import GetJobTemplateRequest
 from ._get_job_template_response_body import GetJobTemplateResponseBody
 from ._get_job_template_response import GetJobTemplateResponse
+from ._get_metrics_request import GetMetricsRequest
+from ._get_metrics_response_body import GetMetricsResponseBody
+from ._get_metrics_response import GetMetricsResponse
 from ._get_pod_events_request import GetPodEventsRequest
 from ._get_pod_events_response_body import GetPodEventsResponseBody
 from ._get_pod_events_response import GetPodEventsResponse
@@ -314,6 +317,9 @@ __all__ = [
     GetJobTemplateRequest,
     GetJobTemplateResponseBody,
     GetJobTemplateResponse,
+    GetMetricsRequest,
+    GetMetricsResponseBody,
+    GetMetricsResponse,
     GetPodEventsRequest,
     GetPodEventsResponseBody,
     GetPodEventsResponse,

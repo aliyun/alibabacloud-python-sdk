@@ -23,6 +23,7 @@ class CreateRayHistoryServerRequest(DaraModel):
         self.resource_id = resource_id
         # This parameter is required.
         self.storage_path = storage_path
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):

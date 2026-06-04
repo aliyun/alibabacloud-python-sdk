@@ -1416,6 +1416,118 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_job_template_with_options_async(template_id, request, headers, runtime)
 
+    def get_metrics_with_options(
+        self,
+        request: main_models.GetMetricsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetMetricsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dimensions):
+            query['Dimensions'] = request.dimensions
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.job_id):
+            query['JobId'] = request.job_id
+        if not DaraCore.is_null(request.length):
+            query['Length'] = request.length
+        if not DaraCore.is_null(request.metric_name):
+            query['MetricName'] = request.metric_name
+        if not DaraCore.is_null(request.namespace):
+            query['Namespace'] = request.namespace
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.period):
+            query['Period'] = request.period
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.token):
+            query['Token'] = request.token
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetMetrics',
+            version = '2020-12-03',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/cms/metrics',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetMetricsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_metrics_with_options_async(
+        self,
+        request: main_models.GetMetricsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetMetricsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dimensions):
+            query['Dimensions'] = request.dimensions
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.job_id):
+            query['JobId'] = request.job_id
+        if not DaraCore.is_null(request.length):
+            query['Length'] = request.length
+        if not DaraCore.is_null(request.metric_name):
+            query['MetricName'] = request.metric_name
+        if not DaraCore.is_null(request.namespace):
+            query['Namespace'] = request.namespace
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.period):
+            query['Period'] = request.period
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.token):
+            query['Token'] = request.token
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetMetrics',
+            version = '2020-12-03',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/cms/metrics',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetMetricsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_metrics(
+        self,
+        request: main_models.GetMetricsRequest,
+    ) -> main_models.GetMetricsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_metrics_with_options(request, headers, runtime)
+
+    async def get_metrics_async(
+        self,
+        request: main_models.GetMetricsRequest,
+    ) -> main_models.GetMetricsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_metrics_with_options_async(request, headers, runtime)
+
     def get_pod_events_with_options(
         self,
         job_id: str,
