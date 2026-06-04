@@ -1,3 +1,55 @@
+2026-06-04 Version: 2.24.0
+- Support API CopyAppPluginConfig.
+- Support API CreateAppChat.
+- Support API DeleteAppInstanceFile.
+- Support API DeleteAppSupabaseSecrets.
+- Support API GetAppCodeWorkspaceDetail.
+- Support API GetAppConversation.
+- Support API GetAppConversationLockStatus.
+- Support API GetAppDatabaseTableSchemas.
+- Support API GetAppFileContent.
+- Support API GetAppInstanceEntitlement.
+- Support API GetAppInstanceTempShortUrl.
+- Support API GetAppPublishStatus.
+- Support API GetAppRequirement.
+- Support API GetAppSandboxPreviewUrl.
+- Support API GetAppSeoStatus.
+- Support API GetAppSeoTrends.
+- Support API GetAppSitemap.
+- Support API GetAppSupabaseAuthConfig.
+- Support API GetAppSupabaseInstance.
+- Support API GetAppSupabaseSecrets.
+- Support API GetAppTemplate.
+- Support API GetAppWorkspaceDirectory.
+- Support API ListAppChatMessages.
+- Support API ListAppConversationMessages.
+- Support API ListAppConversations.
+- Support API ListAppPluginConfigs.
+- Support API ListAppPlugins.
+- Support API ListAppPublishHistory.
+- Support API ListAppTemplateDicts.
+- Support API ListAppTemplates.
+- Support API ListIsvPaymentPluginConfigs.
+- Support API OperateAppTemplateLike.
+- Support API PublishAppInstance.
+- Support API ReconnectAppChat.
+- Support API RenewAppSandbox.
+- Support API RollbackAppCodeSnapshot.
+- Support API RollbackAppInstancePublish.
+- Support API SaveAppRequirement.
+- Support API SaveAppSupabaseSecrets.
+- Support API SubmitAppSeoIndex.
+- Support API SwitchAppConversation.
+- Support API UpdateAppChatMessage.
+- Support API UpdateAppCode.
+- Support API UpdateAppFile.
+- Support API UpdateAppInstance.
+- Support API UpdateAppSeoStatus.
+- Support API UpdateAppSupabaseAuthConfig.
+- Support API UpdateAppSupabaseSecret.
+- Support API UploadAppSiteValidationFile.
+
+
 2026-06-03 Version: 2.23.1
 - Update API CreateAppInstance: add request parameters CreateAction.
 - Update API CreateAppInstance: add request parameters Description.

@@ -40,6 +40,9 @@ from ._check_resource_measure_response import CheckResourceMeasureResponse
 from ._check_user_resource_measure_request import CheckUserResourceMeasureRequest
 from ._check_user_resource_measure_response_body import CheckUserResourceMeasureResponseBody
 from ._check_user_resource_measure_response import CheckUserResourceMeasureResponse
+from ._copy_app_plugin_config_request import CopyAppPluginConfigRequest
+from ._copy_app_plugin_config_response_body import CopyAppPluginConfigResponseBody
+from ._copy_app_plugin_config_response import CopyAppPluginConfigResponse
 from ._create_aistaff_chat_request import CreateAIStaffChatRequest
 from ._create_aistaff_chat_response_body import CreateAIStaffChatResponseBody
 from ._create_aistaff_chat_response import CreateAIStaffChatResponse
@@ -52,6 +55,8 @@ from ._create_app_assistant_agent_response import CreateAppAssistantAgentRespons
 from ._create_app_assistant_agent_sso_login_request import CreateAppAssistantAgentSsoLoginRequest
 from ._create_app_assistant_agent_sso_login_response_body import CreateAppAssistantAgentSsoLoginResponseBody
 from ._create_app_assistant_agent_sso_login_response import CreateAppAssistantAgentSsoLoginResponse
+from ._create_app_chat_request import CreateAppChatRequest
+from ._create_app_chat_response import CreateAppChatResponse
 from ._create_app_instance_request import CreateAppInstanceRequest
 from ._create_app_instance_shrink_request import CreateAppInstanceShrinkRequest
 from ._create_app_instance_response_body import CreateAppInstanceResponseBody
@@ -74,6 +79,12 @@ from ._delete_app_domain_certificate_response import DeleteAppDomainCertificateR
 from ._delete_app_domain_redirect_request import DeleteAppDomainRedirectRequest
 from ._delete_app_domain_redirect_response_body import DeleteAppDomainRedirectResponseBody
 from ._delete_app_domain_redirect_response import DeleteAppDomainRedirectResponse
+from ._delete_app_instance_file_request import DeleteAppInstanceFileRequest
+from ._delete_app_instance_file_response_body import DeleteAppInstanceFileResponseBody
+from ._delete_app_instance_file_response import DeleteAppInstanceFileResponse
+from ._delete_app_supabase_secrets_request import DeleteAppSupabaseSecretsRequest
+from ._delete_app_supabase_secrets_response_body import DeleteAppSupabaseSecretsResponseBody
+from ._delete_app_supabase_secrets_response import DeleteAppSupabaseSecretsResponse
 from ._delete_material_directory_request import DeleteMaterialDirectoryRequest
 from ._delete_material_directory_response_body import DeleteMaterialDirectoryResponseBody
 from ._delete_material_directory_response import DeleteMaterialDirectoryResponse
@@ -97,23 +108,77 @@ from ._export_material_file_response import ExportMaterialFileResponse
 from ._get_aistaff_preview_url_request import GetAIStaffPreviewUrlRequest
 from ._get_aistaff_preview_url_response_body import GetAIStaffPreviewUrlResponseBody
 from ._get_aistaff_preview_url_response import GetAIStaffPreviewUrlResponse
+from ._get_app_code_workspace_detail_request import GetAppCodeWorkspaceDetailRequest
+from ._get_app_code_workspace_detail_response_body import GetAppCodeWorkspaceDetailResponseBody
+from ._get_app_code_workspace_detail_response import GetAppCodeWorkspaceDetailResponse
+from ._get_app_conversation_request import GetAppConversationRequest
+from ._get_app_conversation_response_body import GetAppConversationResponseBody
+from ._get_app_conversation_response import GetAppConversationResponse
+from ._get_app_conversation_lock_status_request import GetAppConversationLockStatusRequest
+from ._get_app_conversation_lock_status_response_body import GetAppConversationLockStatusResponseBody
+from ._get_app_conversation_lock_status_response import GetAppConversationLockStatusResponse
+from ._get_app_database_table_schemas_request import GetAppDatabaseTableSchemasRequest
+from ._get_app_database_table_schemas_response_body import GetAppDatabaseTableSchemasResponseBody
+from ._get_app_database_table_schemas_response import GetAppDatabaseTableSchemasResponse
+from ._get_app_file_content_request import GetAppFileContentRequest
+from ._get_app_file_content_response_body import GetAppFileContentResponseBody
+from ._get_app_file_content_response import GetAppFileContentResponse
 from ._get_app_instance_request import GetAppInstanceRequest
 from ._get_app_instance_response_body import GetAppInstanceResponseBody
 from ._get_app_instance_response import GetAppInstanceResponse
+from ._get_app_instance_entitlement_request import GetAppInstanceEntitlementRequest
+from ._get_app_instance_entitlement_response_body import GetAppInstanceEntitlementResponseBody
+from ._get_app_instance_entitlement_response import GetAppInstanceEntitlementResponse
 from ._get_app_instance_for_admin_request import GetAppInstanceForAdminRequest
 from ._get_app_instance_for_admin_response_body import GetAppInstanceForAdminResponseBody
 from ._get_app_instance_for_admin_response import GetAppInstanceForAdminResponse
 from ._get_app_instance_for_partner_request import GetAppInstanceForPartnerRequest
 from ._get_app_instance_for_partner_response_body import GetAppInstanceForPartnerResponseBody
 from ._get_app_instance_for_partner_response import GetAppInstanceForPartnerResponse
+from ._get_app_instance_temp_short_url_request import GetAppInstanceTempShortUrlRequest
+from ._get_app_instance_temp_short_url_response_body import GetAppInstanceTempShortUrlResponseBody
+from ._get_app_instance_temp_short_url_response import GetAppInstanceTempShortUrlResponse
 from ._get_app_plugin_config_request import GetAppPluginConfigRequest
 from ._get_app_plugin_config_response_body import GetAppPluginConfigResponseBody
 from ._get_app_plugin_config_response import GetAppPluginConfigResponse
+from ._get_app_publish_status_request import GetAppPublishStatusRequest
+from ._get_app_publish_status_response_body import GetAppPublishStatusResponseBody
+from ._get_app_publish_status_response import GetAppPublishStatusResponse
 from ._get_app_recommended_commodities_request import GetAppRecommendedCommoditiesRequest
 from ._get_app_recommended_commodities_response_body import GetAppRecommendedCommoditiesResponseBody
 from ._get_app_recommended_commodities_response import GetAppRecommendedCommoditiesResponse
+from ._get_app_requirement_request import GetAppRequirementRequest
+from ._get_app_requirement_response_body import GetAppRequirementResponseBody
+from ._get_app_requirement_response import GetAppRequirementResponse
+from ._get_app_sandbox_preview_url_request import GetAppSandboxPreviewUrlRequest
+from ._get_app_sandbox_preview_url_response_body import GetAppSandboxPreviewUrlResponseBody
+from ._get_app_sandbox_preview_url_response import GetAppSandboxPreviewUrlResponse
+from ._get_app_seo_status_request import GetAppSeoStatusRequest
+from ._get_app_seo_status_response_body import GetAppSeoStatusResponseBody
+from ._get_app_seo_status_response import GetAppSeoStatusResponse
+from ._get_app_seo_trends_request import GetAppSeoTrendsRequest
+from ._get_app_seo_trends_response_body import GetAppSeoTrendsResponseBody
+from ._get_app_seo_trends_response import GetAppSeoTrendsResponse
+from ._get_app_sitemap_request import GetAppSitemapRequest
+from ._get_app_sitemap_response_body import GetAppSitemapResponseBody
+from ._get_app_sitemap_response import GetAppSitemapResponse
+from ._get_app_supabase_auth_config_request import GetAppSupabaseAuthConfigRequest
+from ._get_app_supabase_auth_config_response_body import GetAppSupabaseAuthConfigResponseBody
+from ._get_app_supabase_auth_config_response import GetAppSupabaseAuthConfigResponse
+from ._get_app_supabase_instance_request import GetAppSupabaseInstanceRequest
+from ._get_app_supabase_instance_response_body import GetAppSupabaseInstanceResponseBody
+from ._get_app_supabase_instance_response import GetAppSupabaseInstanceResponse
+from ._get_app_supabase_secrets_request import GetAppSupabaseSecretsRequest
+from ._get_app_supabase_secrets_response_body import GetAppSupabaseSecretsResponseBody
+from ._get_app_supabase_secrets_response import GetAppSupabaseSecretsResponse
+from ._get_app_template_request import GetAppTemplateRequest
+from ._get_app_template_response_body import GetAppTemplateResponseBody
+from ._get_app_template_response import GetAppTemplateResponse
 from ._get_app_token_service_response_body import GetAppTokenServiceResponseBody
 from ._get_app_token_service_response import GetAppTokenServiceResponse
+from ._get_app_workspace_directory_request import GetAppWorkspaceDirectoryRequest
+from ._get_app_workspace_directory_response_body import GetAppWorkspaceDirectoryResponseBody
+from ._get_app_workspace_directory_response import GetAppWorkspaceDirectoryResponse
 from ._get_create_logo_task_request import GetCreateLogoTaskRequest
 from ._get_create_logo_task_response_body import GetCreateLogoTaskResponseBody
 from ._get_create_logo_task_response import GetCreateLogoTaskResponse
@@ -144,11 +209,20 @@ from ._list_aistaff_chat_messages_response import ListAIStaffChatMessagesRespons
 from ._list_app_assistant_agents_request import ListAppAssistantAgentsRequest
 from ._list_app_assistant_agents_response_body import ListAppAssistantAgentsResponseBody
 from ._list_app_assistant_agents_response import ListAppAssistantAgentsResponse
+from ._list_app_chat_messages_request import ListAppChatMessagesRequest
+from ._list_app_chat_messages_response_body import ListAppChatMessagesResponseBody
+from ._list_app_chat_messages_response import ListAppChatMessagesResponse
 from ._list_app_commodity_specifications_for_partner_response_body import ListAppCommoditySpecificationsForPartnerResponseBody
 from ._list_app_commodity_specifications_for_partner_response import ListAppCommoditySpecificationsForPartnerResponse
 from ._list_app_commodity_specifications_v2for_partner_request import ListAppCommoditySpecificationsV2ForPartnerRequest
 from ._list_app_commodity_specifications_v2for_partner_response_body import ListAppCommoditySpecificationsV2ForPartnerResponseBody
 from ._list_app_commodity_specifications_v2for_partner_response import ListAppCommoditySpecificationsV2ForPartnerResponse
+from ._list_app_conversation_messages_request import ListAppConversationMessagesRequest
+from ._list_app_conversation_messages_response_body import ListAppConversationMessagesResponseBody
+from ._list_app_conversation_messages_response import ListAppConversationMessagesResponse
+from ._list_app_conversations_request import ListAppConversationsRequest
+from ._list_app_conversations_response_body import ListAppConversationsResponseBody
+from ._list_app_conversations_response import ListAppConversationsResponse
 from ._list_app_domain_redirect_records_request import ListAppDomainRedirectRecordsRequest
 from ._list_app_domain_redirect_records_response_body import ListAppDomainRedirectRecordsResponseBody
 from ._list_app_domain_redirect_records_response import ListAppDomainRedirectRecordsResponse
@@ -159,6 +233,24 @@ from ._list_app_instances_request import ListAppInstancesRequest
 from ._list_app_instances_shrink_request import ListAppInstancesShrinkRequest
 from ._list_app_instances_response_body import ListAppInstancesResponseBody
 from ._list_app_instances_response import ListAppInstancesResponse
+from ._list_app_plugin_configs_request import ListAppPluginConfigsRequest
+from ._list_app_plugin_configs_response_body import ListAppPluginConfigsResponseBody
+from ._list_app_plugin_configs_response import ListAppPluginConfigsResponse
+from ._list_app_plugins_request import ListAppPluginsRequest
+from ._list_app_plugins_response_body import ListAppPluginsResponseBody
+from ._list_app_plugins_response import ListAppPluginsResponse
+from ._list_app_publish_history_request import ListAppPublishHistoryRequest
+from ._list_app_publish_history_response_body import ListAppPublishHistoryResponseBody
+from ._list_app_publish_history_response import ListAppPublishHistoryResponse
+from ._list_app_template_dicts_request import ListAppTemplateDictsRequest
+from ._list_app_template_dicts_response_body import ListAppTemplateDictsResponseBody
+from ._list_app_template_dicts_response import ListAppTemplateDictsResponse
+from ._list_app_templates_request import ListAppTemplatesRequest
+from ._list_app_templates_response_body import ListAppTemplatesResponseBody
+from ._list_app_templates_response import ListAppTemplatesResponse
+from ._list_isv_payment_plugin_configs_request import ListIsvPaymentPluginConfigsRequest
+from ._list_isv_payment_plugin_configs_response_body import ListIsvPaymentPluginConfigsResponseBody
+from ._list_isv_payment_plugin_configs_response import ListIsvPaymentPluginConfigsResponse
 from ._modify_app_instance_spec_request import ModifyAppInstanceSpecRequest
 from ._modify_app_instance_spec_response_body import ModifyAppInstanceSpecResponseBody
 from ._modify_app_instance_spec_response import ModifyAppInstanceSpecResponse
@@ -185,9 +277,15 @@ from ._operate_app_instance_for_partner_response import OperateAppInstanceForPar
 from ._operate_app_service_for_partner_request import OperateAppServiceForPartnerRequest
 from ._operate_app_service_for_partner_response_body import OperateAppServiceForPartnerResponseBody
 from ._operate_app_service_for_partner_response import OperateAppServiceForPartnerResponse
+from ._operate_app_template_like_request import OperateAppTemplateLikeRequest
+from ._operate_app_template_like_response_body import OperateAppTemplateLikeResponseBody
+from ._operate_app_template_like_response import OperateAppTemplateLikeResponse
 from ._operate_supabase_for_admin_request import OperateSupabaseForAdminRequest
 from ._operate_supabase_for_admin_response_body import OperateSupabaseForAdminResponseBody
 from ._operate_supabase_for_admin_response import OperateSupabaseForAdminResponse
+from ._publish_app_instance_request import PublishAppInstanceRequest
+from ._publish_app_instance_response_body import PublishAppInstanceResponseBody
+from ._publish_app_instance_response import PublishAppInstanceResponse
 from ._push_resource_measure_request import PushResourceMeasureRequest
 from ._push_resource_measure_response_body import PushResourceMeasureResponseBody
 from ._push_resource_measure_response import PushResourceMeasureResponse
@@ -229,6 +327,8 @@ from ._query_supabase_configs_for_admin_response import QuerySupabaseConfigsForA
 from ._query_supabase_instance_info_for_admin_request import QuerySupabaseInstanceInfoForAdminRequest
 from ._query_supabase_instance_info_for_admin_response_body import QuerySupabaseInstanceInfoForAdminResponseBody
 from ._query_supabase_instance_info_for_admin_response import QuerySupabaseInstanceInfoForAdminResponse
+from ._reconnect_app_chat_request import ReconnectAppChatRequest
+from ._reconnect_app_chat_response import ReconnectAppChatResponse
 from ._refresh_app_instance_ticket_request import RefreshAppInstanceTicketRequest
 from ._refresh_app_instance_ticket_response_body import RefreshAppInstanceTicketResponseBody
 from ._refresh_app_instance_ticket_response import RefreshAppInstanceTicketResponse
@@ -238,6 +338,21 @@ from ._refund_app_instance_for_partner_response import RefundAppInstanceForPartn
 from ._renew_app_instance_request import RenewAppInstanceRequest
 from ._renew_app_instance_response_body import RenewAppInstanceResponseBody
 from ._renew_app_instance_response import RenewAppInstanceResponse
+from ._renew_app_sandbox_request import RenewAppSandboxRequest
+from ._renew_app_sandbox_response_body import RenewAppSandboxResponseBody
+from ._renew_app_sandbox_response import RenewAppSandboxResponse
+from ._rollback_app_code_snapshot_request import RollbackAppCodeSnapshotRequest
+from ._rollback_app_code_snapshot_response_body import RollbackAppCodeSnapshotResponseBody
+from ._rollback_app_code_snapshot_response import RollbackAppCodeSnapshotResponse
+from ._rollback_app_instance_publish_request import RollbackAppInstancePublishRequest
+from ._rollback_app_instance_publish_response_body import RollbackAppInstancePublishResponseBody
+from ._rollback_app_instance_publish_response import RollbackAppInstancePublishResponse
+from ._save_app_requirement_request import SaveAppRequirementRequest
+from ._save_app_requirement_response_body import SaveAppRequirementResponseBody
+from ._save_app_requirement_response import SaveAppRequirementResponse
+from ._save_app_supabase_secrets_request import SaveAppSupabaseSecretsRequest
+from ._save_app_supabase_secrets_response_body import SaveAppSupabaseSecretsResponseBody
+from ._save_app_supabase_secrets_response import SaveAppSupabaseSecretsResponse
 from ._search_image_request import SearchImageRequest
 from ._search_image_shrink_request import SearchImageShrinkRequest
 from ._search_image_response_body import SearchImageResponseBody
@@ -245,9 +360,15 @@ from ._search_image_response import SearchImageResponse
 from ._set_app_domain_certificate_request import SetAppDomainCertificateRequest
 from ._set_app_domain_certificate_response_body import SetAppDomainCertificateResponseBody
 from ._set_app_domain_certificate_response import SetAppDomainCertificateResponse
+from ._submit_app_seo_index_request import SubmitAppSeoIndexRequest
+from ._submit_app_seo_index_response_body import SubmitAppSeoIndexResponseBody
+from ._submit_app_seo_index_response import SubmitAppSeoIndexResponse
 from ._submit_material_task_request import SubmitMaterialTaskRequest
 from ._submit_material_task_response_body import SubmitMaterialTaskResponseBody
 from ._submit_material_task_response import SubmitMaterialTaskResponse
+from ._switch_app_conversation_request import SwitchAppConversationRequest
+from ._switch_app_conversation_response_body import SwitchAppConversationResponseBody
+from ._switch_app_conversation_response import SwitchAppConversationResponse
 from ._sync_app_instance_for_partner_request import SyncAppInstanceForPartnerRequest
 from ._sync_app_instance_for_partner_shrink_request import SyncAppInstanceForPartnerShrinkRequest
 from ._sync_app_instance_for_partner_response_body import SyncAppInstanceForPartnerResponseBody
@@ -255,6 +376,31 @@ from ._sync_app_instance_for_partner_response import SyncAppInstanceForPartnerRe
 from ._unbind_app_domain_request import UnbindAppDomainRequest
 from ._unbind_app_domain_response_body import UnbindAppDomainResponseBody
 from ._unbind_app_domain_response import UnbindAppDomainResponse
+from ._update_app_chat_message_request import UpdateAppChatMessageRequest
+from ._update_app_chat_message_response_body import UpdateAppChatMessageResponseBody
+from ._update_app_chat_message_response import UpdateAppChatMessageResponse
+from ._update_app_code_request import UpdateAppCodeRequest
+from ._update_app_code_response_body import UpdateAppCodeResponseBody
+from ._update_app_code_response import UpdateAppCodeResponse
+from ._update_app_file_request import UpdateAppFileRequest
+from ._update_app_file_response_body import UpdateAppFileResponseBody
+from ._update_app_file_response import UpdateAppFileResponse
+from ._update_app_instance_request import UpdateAppInstanceRequest
+from ._update_app_instance_shrink_request import UpdateAppInstanceShrinkRequest
+from ._update_app_instance_response_body import UpdateAppInstanceResponseBody
+from ._update_app_instance_response import UpdateAppInstanceResponse
+from ._update_app_seo_status_request import UpdateAppSeoStatusRequest
+from ._update_app_seo_status_response_body import UpdateAppSeoStatusResponseBody
+from ._update_app_seo_status_response import UpdateAppSeoStatusResponse
+from ._update_app_supabase_auth_config_request import UpdateAppSupabaseAuthConfigRequest
+from ._update_app_supabase_auth_config_response_body import UpdateAppSupabaseAuthConfigResponseBody
+from ._update_app_supabase_auth_config_response import UpdateAppSupabaseAuthConfigResponse
+from ._update_app_supabase_secret_request import UpdateAppSupabaseSecretRequest
+from ._update_app_supabase_secret_response_body import UpdateAppSupabaseSecretResponseBody
+from ._update_app_supabase_secret_response import UpdateAppSupabaseSecretResponse
+from ._upload_app_site_validation_file_request import UploadAppSiteValidationFileRequest
+from ._upload_app_site_validation_file_response_body import UploadAppSiteValidationFileResponseBody
+from ._upload_app_site_validation_file_response import UploadAppSiteValidationFileResponse
 from ._upload_material_file_request import UploadMaterialFileRequest
 from ._upload_material_file_response_body import UploadMaterialFileResponseBody
 from ._upload_material_file_response import UploadMaterialFileResponse
@@ -294,6 +440,12 @@ from ._describe_app_domain_dns_record_response_body import DescribeAppDomainDnsR
 from ._dispatch_console_apifor_partner_response_body import DispatchConsoleAPIForPartnerResponseBodyModule
 from ._export_material_file_response_body import ExportMaterialFileResponseBodyModule
 from ._get_aistaff_preview_url_response_body import GetAIStaffPreviewUrlResponseBodyModule
+from ._get_app_code_workspace_detail_response_body import GetAppCodeWorkspaceDetailResponseBodyModuleSnapshots
+from ._get_app_code_workspace_detail_response_body import GetAppCodeWorkspaceDetailResponseBodyModule
+from ._get_app_conversation_response_body import GetAppConversationResponseBodyModule
+from ._get_app_file_content_response_body import GetAppFileContentResponseBodyModule
+from ._get_app_instance_entitlement_response_body import GetAppInstanceEntitlementResponseBodyModuleItems
+from ._get_app_instance_entitlement_response_body import GetAppInstanceEntitlementResponseBodyModule
 from ._get_app_instance_for_partner_response_body import GetAppInstanceForPartnerResponseBodyModuleAiStaffList
 from ._get_app_instance_for_partner_response_body import GetAppInstanceForPartnerResponseBodyModuleAppDesignSpec
 from ._get_app_instance_for_partner_response_body import GetAppInstanceForPartnerResponseBodyModuleAppOperationAddressActions
@@ -312,10 +464,22 @@ from ._get_app_instance_for_partner_response_body import GetAppInstanceForPartne
 from ._get_app_instance_for_partner_response_body import GetAppInstanceForPartnerResponseBodyModuleRelatedInstanceListProfile
 from ._get_app_instance_for_partner_response_body import GetAppInstanceForPartnerResponseBodyModuleRelatedInstanceList
 from ._get_app_instance_for_partner_response_body import GetAppInstanceForPartnerResponseBodyModule
+from ._get_app_instance_temp_short_url_response_body import GetAppInstanceTempShortUrlResponseBodyModule
 from ._get_app_plugin_config_response_body import GetAppPluginConfigResponseBodyModule
+from ._get_app_publish_status_response_body import GetAppPublishStatusResponseBodyModule
 from ._get_app_recommended_commodities_response_body import GetAppRecommendedCommoditiesResponseBodyModuleCommodities
 from ._get_app_recommended_commodities_response_body import GetAppRecommendedCommoditiesResponseBodyModule
+from ._get_app_requirement_response_body import GetAppRequirementResponseBodyModule
+from ._get_app_seo_status_response_body import GetAppSeoStatusResponseBodyModule
+from ._get_app_seo_trends_response_body import GetAppSeoTrendsResponseBodyModule
+from ._get_app_supabase_auth_config_response_body import GetAppSupabaseAuthConfigResponseBodyModule
+from ._get_app_supabase_instance_response_body import GetAppSupabaseInstanceResponseBodyModule
+from ._get_app_supabase_secrets_response_body import GetAppSupabaseSecretsResponseBodyModuleSecrets
+from ._get_app_supabase_secrets_response_body import GetAppSupabaseSecretsResponseBodyModule
+from ._get_app_template_response_body import GetAppTemplateResponseBodyModule
 from ._get_app_token_service_response_body import GetAppTokenServiceResponseBodyModule
+from ._get_app_workspace_directory_response_body import GetAppWorkspaceDirectoryResponseBodyModuleDirectoryList
+from ._get_app_workspace_directory_response_body import GetAppWorkspaceDirectoryResponseBodyModule
 from ._get_create_logo_task_response_body import GetCreateLogoTaskResponseBodyTask
 from ._get_domain_info_for_partner_response_body import GetDomainInfoForPartnerResponseBodyDataOwnership
 from ._get_domain_info_for_partner_response_body import GetDomainInfoForPartnerResponseBodyData
@@ -332,10 +496,14 @@ from ._list_aistaff_chat_messages_response_body import ListAIStaffChatMessagesRe
 from ._list_app_assistant_agents_response_body import ListAppAssistantAgentsResponseBodyModuleCredential
 from ._list_app_assistant_agents_response_body import ListAppAssistantAgentsResponseBodyModuleEmbedConfig
 from ._list_app_assistant_agents_response_body import ListAppAssistantAgentsResponseBodyModule
+from ._list_app_chat_messages_response_body import ListAppChatMessagesResponseBodyModule
 from ._list_app_commodity_specifications_for_partner_response_body import ListAppCommoditySpecificationsForPartnerResponseBodyModule
 from ._list_app_commodity_specifications_v2for_partner_response_body import ListAppCommoditySpecificationsV2ForPartnerResponseBodyModuleData
 from ._list_app_commodity_specifications_v2for_partner_response_body import ListAppCommoditySpecificationsV2ForPartnerResponseBodyModuleNext
 from ._list_app_commodity_specifications_v2for_partner_response_body import ListAppCommoditySpecificationsV2ForPartnerResponseBodyModule
+from ._list_app_conversation_messages_response_body import ListAppConversationMessagesResponseBodyModule
+from ._list_app_conversations_response_body import ListAppConversationsResponseBodyModuleData
+from ._list_app_conversations_response_body import ListAppConversationsResponseBodyModule
 from ._list_app_domain_redirect_records_response_body import ListAppDomainRedirectRecordsResponseBodyModuleData
 from ._list_app_domain_redirect_records_response_body import ListAppDomainRedirectRecordsResponseBodyModuleNext
 from ._list_app_domain_redirect_records_response_body import ListAppDomainRedirectRecordsResponseBodyModule
@@ -356,7 +524,17 @@ from ._list_app_instance_domains_response_body import ListAppInstanceDomainsResp
 from ._list_app_instance_domains_response_body import ListAppInstanceDomainsResponseBodyModuleNextVerification
 from ._list_app_instance_domains_response_body import ListAppInstanceDomainsResponseBodyModuleNext
 from ._list_app_instance_domains_response_body import ListAppInstanceDomainsResponseBodyModule
+from ._list_app_plugin_configs_response_body import ListAppPluginConfigsResponseBodyModule
+from ._list_app_plugins_response_body import ListAppPluginsResponseBodyModule
+from ._list_app_publish_history_response_body import ListAppPublishHistoryResponseBodyModuleHistory
+from ._list_app_publish_history_response_body import ListAppPublishHistoryResponseBodyModule
+from ._list_app_template_dicts_response_body import ListAppTemplateDictsResponseBodyModule
+from ._list_app_templates_response_body import ListAppTemplatesResponseBodyModuleData
+from ._list_app_templates_response_body import ListAppTemplatesResponseBodyModuleNext
+from ._list_app_templates_response_body import ListAppTemplatesResponseBodyModule
+from ._list_isv_payment_plugin_configs_response_body import ListIsvPaymentPluginConfigsResponseBodyModule
 from ._modify_app_instance_spec_response_body import ModifyAppInstanceSpecResponseBodyModule
+from ._publish_app_instance_response_body import PublishAppInstanceResponseBodyModule
 from ._query_inspiration_account_details_response_body import QueryInspirationAccountDetailsResponseBodyModuleData
 from ._query_inspiration_account_details_response_body import QueryInspirationAccountDetailsResponseBodyModuleNext
 from ._query_inspiration_account_details_response_body import QueryInspirationAccountDetailsResponseBodyModule
@@ -374,15 +552,22 @@ from ._query_supabase_instance_info_for_admin_response_body import QuerySupabase
 from ._refresh_app_instance_ticket_response_body import RefreshAppInstanceTicketResponseBodyModule
 from ._refund_app_instance_for_partner_response_body import RefundAppInstanceForPartnerResponseBodyModule
 from ._renew_app_instance_response_body import RenewAppInstanceResponseBodyModule
+from ._renew_app_sandbox_response_body import RenewAppSandboxResponseBodyModule
+from ._rollback_app_code_snapshot_response_body import RollbackAppCodeSnapshotResponseBodyModule
+from ._rollback_app_instance_publish_response_body import RollbackAppInstancePublishResponseBodyModule
 from ._search_image_response_body import SearchImageResponseBodyImageResponseImageList
 from ._search_image_response_body import SearchImageResponseBodyImageResponse
 from ._set_app_domain_certificate_response_body import SetAppDomainCertificateResponseBodyModule
 from ._submit_material_task_response_body import SubmitMaterialTaskResponseBodyModule
+from ._switch_app_conversation_response_body import SwitchAppConversationResponseBodyModule
 from ._sync_app_instance_for_partner_request import SyncAppInstanceForPartnerRequestAppInstanceProfile
 from ._sync_app_instance_for_partner_request import SyncAppInstanceForPartnerRequestAppInstance
 from ._sync_app_instance_for_partner_response_body import SyncAppInstanceForPartnerResponseBodyDataAppInstance
 from ._sync_app_instance_for_partner_response_body import SyncAppInstanceForPartnerResponseBodyData
 from ._unbind_app_domain_response_body import UnbindAppDomainResponseBodyModule
+from ._update_app_chat_message_response_body import UpdateAppChatMessageResponseBodyModule
+from ._update_app_instance_request import UpdateAppInstanceRequestTags
+from ._update_app_instance_response_body import UpdateAppInstanceResponseBodyModule
 
 __all__ = [
     AppAiStaff,
@@ -423,6 +608,9 @@ __all__ = [
     CheckUserResourceMeasureRequest,
     CheckUserResourceMeasureResponseBody,
     CheckUserResourceMeasureResponse,
+    CopyAppPluginConfigRequest,
+    CopyAppPluginConfigResponseBody,
+    CopyAppPluginConfigResponse,
     CreateAIStaffChatRequest,
     CreateAIStaffChatResponseBody,
     CreateAIStaffChatResponse,
@@ -435,6 +623,8 @@ __all__ = [
     CreateAppAssistantAgentSsoLoginRequest,
     CreateAppAssistantAgentSsoLoginResponseBody,
     CreateAppAssistantAgentSsoLoginResponse,
+    CreateAppChatRequest,
+    CreateAppChatResponse,
     CreateAppInstanceRequest,
     CreateAppInstanceShrinkRequest,
     CreateAppInstanceResponseBody,
@@ -457,6 +647,12 @@ __all__ = [
     DeleteAppDomainRedirectRequest,
     DeleteAppDomainRedirectResponseBody,
     DeleteAppDomainRedirectResponse,
+    DeleteAppInstanceFileRequest,
+    DeleteAppInstanceFileResponseBody,
+    DeleteAppInstanceFileResponse,
+    DeleteAppSupabaseSecretsRequest,
+    DeleteAppSupabaseSecretsResponseBody,
+    DeleteAppSupabaseSecretsResponse,
     DeleteMaterialDirectoryRequest,
     DeleteMaterialDirectoryResponseBody,
     DeleteMaterialDirectoryResponse,
@@ -480,23 +676,77 @@ __all__ = [
     GetAIStaffPreviewUrlRequest,
     GetAIStaffPreviewUrlResponseBody,
     GetAIStaffPreviewUrlResponse,
+    GetAppCodeWorkspaceDetailRequest,
+    GetAppCodeWorkspaceDetailResponseBody,
+    GetAppCodeWorkspaceDetailResponse,
+    GetAppConversationRequest,
+    GetAppConversationResponseBody,
+    GetAppConversationResponse,
+    GetAppConversationLockStatusRequest,
+    GetAppConversationLockStatusResponseBody,
+    GetAppConversationLockStatusResponse,
+    GetAppDatabaseTableSchemasRequest,
+    GetAppDatabaseTableSchemasResponseBody,
+    GetAppDatabaseTableSchemasResponse,
+    GetAppFileContentRequest,
+    GetAppFileContentResponseBody,
+    GetAppFileContentResponse,
     GetAppInstanceRequest,
     GetAppInstanceResponseBody,
     GetAppInstanceResponse,
+    GetAppInstanceEntitlementRequest,
+    GetAppInstanceEntitlementResponseBody,
+    GetAppInstanceEntitlementResponse,
     GetAppInstanceForAdminRequest,
     GetAppInstanceForAdminResponseBody,
     GetAppInstanceForAdminResponse,
     GetAppInstanceForPartnerRequest,
     GetAppInstanceForPartnerResponseBody,
     GetAppInstanceForPartnerResponse,
+    GetAppInstanceTempShortUrlRequest,
+    GetAppInstanceTempShortUrlResponseBody,
+    GetAppInstanceTempShortUrlResponse,
     GetAppPluginConfigRequest,
     GetAppPluginConfigResponseBody,
     GetAppPluginConfigResponse,
+    GetAppPublishStatusRequest,
+    GetAppPublishStatusResponseBody,
+    GetAppPublishStatusResponse,
     GetAppRecommendedCommoditiesRequest,
     GetAppRecommendedCommoditiesResponseBody,
     GetAppRecommendedCommoditiesResponse,
+    GetAppRequirementRequest,
+    GetAppRequirementResponseBody,
+    GetAppRequirementResponse,
+    GetAppSandboxPreviewUrlRequest,
+    GetAppSandboxPreviewUrlResponseBody,
+    GetAppSandboxPreviewUrlResponse,
+    GetAppSeoStatusRequest,
+    GetAppSeoStatusResponseBody,
+    GetAppSeoStatusResponse,
+    GetAppSeoTrendsRequest,
+    GetAppSeoTrendsResponseBody,
+    GetAppSeoTrendsResponse,
+    GetAppSitemapRequest,
+    GetAppSitemapResponseBody,
+    GetAppSitemapResponse,
+    GetAppSupabaseAuthConfigRequest,
+    GetAppSupabaseAuthConfigResponseBody,
+    GetAppSupabaseAuthConfigResponse,
+    GetAppSupabaseInstanceRequest,
+    GetAppSupabaseInstanceResponseBody,
+    GetAppSupabaseInstanceResponse,
+    GetAppSupabaseSecretsRequest,
+    GetAppSupabaseSecretsResponseBody,
+    GetAppSupabaseSecretsResponse,
+    GetAppTemplateRequest,
+    GetAppTemplateResponseBody,
+    GetAppTemplateResponse,
     GetAppTokenServiceResponseBody,
     GetAppTokenServiceResponse,
+    GetAppWorkspaceDirectoryRequest,
+    GetAppWorkspaceDirectoryResponseBody,
+    GetAppWorkspaceDirectoryResponse,
     GetCreateLogoTaskRequest,
     GetCreateLogoTaskResponseBody,
     GetCreateLogoTaskResponse,
@@ -527,11 +777,20 @@ __all__ = [
     ListAppAssistantAgentsRequest,
     ListAppAssistantAgentsResponseBody,
     ListAppAssistantAgentsResponse,
+    ListAppChatMessagesRequest,
+    ListAppChatMessagesResponseBody,
+    ListAppChatMessagesResponse,
     ListAppCommoditySpecificationsForPartnerResponseBody,
     ListAppCommoditySpecificationsForPartnerResponse,
     ListAppCommoditySpecificationsV2ForPartnerRequest,
     ListAppCommoditySpecificationsV2ForPartnerResponseBody,
     ListAppCommoditySpecificationsV2ForPartnerResponse,
+    ListAppConversationMessagesRequest,
+    ListAppConversationMessagesResponseBody,
+    ListAppConversationMessagesResponse,
+    ListAppConversationsRequest,
+    ListAppConversationsResponseBody,
+    ListAppConversationsResponse,
     ListAppDomainRedirectRecordsRequest,
     ListAppDomainRedirectRecordsResponseBody,
     ListAppDomainRedirectRecordsResponse,
@@ -542,6 +801,24 @@ __all__ = [
     ListAppInstancesShrinkRequest,
     ListAppInstancesResponseBody,
     ListAppInstancesResponse,
+    ListAppPluginConfigsRequest,
+    ListAppPluginConfigsResponseBody,
+    ListAppPluginConfigsResponse,
+    ListAppPluginsRequest,
+    ListAppPluginsResponseBody,
+    ListAppPluginsResponse,
+    ListAppPublishHistoryRequest,
+    ListAppPublishHistoryResponseBody,
+    ListAppPublishHistoryResponse,
+    ListAppTemplateDictsRequest,
+    ListAppTemplateDictsResponseBody,
+    ListAppTemplateDictsResponse,
+    ListAppTemplatesRequest,
+    ListAppTemplatesResponseBody,
+    ListAppTemplatesResponse,
+    ListIsvPaymentPluginConfigsRequest,
+    ListIsvPaymentPluginConfigsResponseBody,
+    ListIsvPaymentPluginConfigsResponse,
     ModifyAppInstanceSpecRequest,
     ModifyAppInstanceSpecResponseBody,
     ModifyAppInstanceSpecResponse,
@@ -568,9 +845,15 @@ __all__ = [
     OperateAppServiceForPartnerRequest,
     OperateAppServiceForPartnerResponseBody,
     OperateAppServiceForPartnerResponse,
+    OperateAppTemplateLikeRequest,
+    OperateAppTemplateLikeResponseBody,
+    OperateAppTemplateLikeResponse,
     OperateSupabaseForAdminRequest,
     OperateSupabaseForAdminResponseBody,
     OperateSupabaseForAdminResponse,
+    PublishAppInstanceRequest,
+    PublishAppInstanceResponseBody,
+    PublishAppInstanceResponse,
     PushResourceMeasureRequest,
     PushResourceMeasureResponseBody,
     PushResourceMeasureResponse,
@@ -612,6 +895,8 @@ __all__ = [
     QuerySupabaseInstanceInfoForAdminRequest,
     QuerySupabaseInstanceInfoForAdminResponseBody,
     QuerySupabaseInstanceInfoForAdminResponse,
+    ReconnectAppChatRequest,
+    ReconnectAppChatResponse,
     RefreshAppInstanceTicketRequest,
     RefreshAppInstanceTicketResponseBody,
     RefreshAppInstanceTicketResponse,
@@ -621,6 +906,21 @@ __all__ = [
     RenewAppInstanceRequest,
     RenewAppInstanceResponseBody,
     RenewAppInstanceResponse,
+    RenewAppSandboxRequest,
+    RenewAppSandboxResponseBody,
+    RenewAppSandboxResponse,
+    RollbackAppCodeSnapshotRequest,
+    RollbackAppCodeSnapshotResponseBody,
+    RollbackAppCodeSnapshotResponse,
+    RollbackAppInstancePublishRequest,
+    RollbackAppInstancePublishResponseBody,
+    RollbackAppInstancePublishResponse,
+    SaveAppRequirementRequest,
+    SaveAppRequirementResponseBody,
+    SaveAppRequirementResponse,
+    SaveAppSupabaseSecretsRequest,
+    SaveAppSupabaseSecretsResponseBody,
+    SaveAppSupabaseSecretsResponse,
     SearchImageRequest,
     SearchImageShrinkRequest,
     SearchImageResponseBody,
@@ -628,9 +928,15 @@ __all__ = [
     SetAppDomainCertificateRequest,
     SetAppDomainCertificateResponseBody,
     SetAppDomainCertificateResponse,
+    SubmitAppSeoIndexRequest,
+    SubmitAppSeoIndexResponseBody,
+    SubmitAppSeoIndexResponse,
     SubmitMaterialTaskRequest,
     SubmitMaterialTaskResponseBody,
     SubmitMaterialTaskResponse,
+    SwitchAppConversationRequest,
+    SwitchAppConversationResponseBody,
+    SwitchAppConversationResponse,
     SyncAppInstanceForPartnerRequest,
     SyncAppInstanceForPartnerShrinkRequest,
     SyncAppInstanceForPartnerResponseBody,
@@ -638,6 +944,31 @@ __all__ = [
     UnbindAppDomainRequest,
     UnbindAppDomainResponseBody,
     UnbindAppDomainResponse,
+    UpdateAppChatMessageRequest,
+    UpdateAppChatMessageResponseBody,
+    UpdateAppChatMessageResponse,
+    UpdateAppCodeRequest,
+    UpdateAppCodeResponseBody,
+    UpdateAppCodeResponse,
+    UpdateAppFileRequest,
+    UpdateAppFileResponseBody,
+    UpdateAppFileResponse,
+    UpdateAppInstanceRequest,
+    UpdateAppInstanceShrinkRequest,
+    UpdateAppInstanceResponseBody,
+    UpdateAppInstanceResponse,
+    UpdateAppSeoStatusRequest,
+    UpdateAppSeoStatusResponseBody,
+    UpdateAppSeoStatusResponse,
+    UpdateAppSupabaseAuthConfigRequest,
+    UpdateAppSupabaseAuthConfigResponseBody,
+    UpdateAppSupabaseAuthConfigResponse,
+    UpdateAppSupabaseSecretRequest,
+    UpdateAppSupabaseSecretResponseBody,
+    UpdateAppSupabaseSecretResponse,
+    UploadAppSiteValidationFileRequest,
+    UploadAppSiteValidationFileResponseBody,
+    UploadAppSiteValidationFileResponse,
     UploadMaterialFileRequest,
     UploadMaterialFileResponseBody,
     UploadMaterialFileResponse,
@@ -677,6 +1008,12 @@ __all__ = [
     DispatchConsoleAPIForPartnerResponseBodyModule,
     ExportMaterialFileResponseBodyModule,
     GetAIStaffPreviewUrlResponseBodyModule,
+    GetAppCodeWorkspaceDetailResponseBodyModuleSnapshots,
+    GetAppCodeWorkspaceDetailResponseBodyModule,
+    GetAppConversationResponseBodyModule,
+    GetAppFileContentResponseBodyModule,
+    GetAppInstanceEntitlementResponseBodyModuleItems,
+    GetAppInstanceEntitlementResponseBodyModule,
     GetAppInstanceForPartnerResponseBodyModuleAiStaffList,
     GetAppInstanceForPartnerResponseBodyModuleAppDesignSpec,
     GetAppInstanceForPartnerResponseBodyModuleAppOperationAddressActions,
@@ -695,10 +1032,22 @@ __all__ = [
     GetAppInstanceForPartnerResponseBodyModuleRelatedInstanceListProfile,
     GetAppInstanceForPartnerResponseBodyModuleRelatedInstanceList,
     GetAppInstanceForPartnerResponseBodyModule,
+    GetAppInstanceTempShortUrlResponseBodyModule,
     GetAppPluginConfigResponseBodyModule,
+    GetAppPublishStatusResponseBodyModule,
     GetAppRecommendedCommoditiesResponseBodyModuleCommodities,
     GetAppRecommendedCommoditiesResponseBodyModule,
+    GetAppRequirementResponseBodyModule,
+    GetAppSeoStatusResponseBodyModule,
+    GetAppSeoTrendsResponseBodyModule,
+    GetAppSupabaseAuthConfigResponseBodyModule,
+    GetAppSupabaseInstanceResponseBodyModule,
+    GetAppSupabaseSecretsResponseBodyModuleSecrets,
+    GetAppSupabaseSecretsResponseBodyModule,
+    GetAppTemplateResponseBodyModule,
     GetAppTokenServiceResponseBodyModule,
+    GetAppWorkspaceDirectoryResponseBodyModuleDirectoryList,
+    GetAppWorkspaceDirectoryResponseBodyModule,
     GetCreateLogoTaskResponseBodyTask,
     GetDomainInfoForPartnerResponseBodyDataOwnership,
     GetDomainInfoForPartnerResponseBodyData,
@@ -715,10 +1064,14 @@ __all__ = [
     ListAppAssistantAgentsResponseBodyModuleCredential,
     ListAppAssistantAgentsResponseBodyModuleEmbedConfig,
     ListAppAssistantAgentsResponseBodyModule,
+    ListAppChatMessagesResponseBodyModule,
     ListAppCommoditySpecificationsForPartnerResponseBodyModule,
     ListAppCommoditySpecificationsV2ForPartnerResponseBodyModuleData,
     ListAppCommoditySpecificationsV2ForPartnerResponseBodyModuleNext,
     ListAppCommoditySpecificationsV2ForPartnerResponseBodyModule,
+    ListAppConversationMessagesResponseBodyModule,
+    ListAppConversationsResponseBodyModuleData,
+    ListAppConversationsResponseBodyModule,
     ListAppDomainRedirectRecordsResponseBodyModuleData,
     ListAppDomainRedirectRecordsResponseBodyModuleNext,
     ListAppDomainRedirectRecordsResponseBodyModule,
@@ -739,7 +1092,17 @@ __all__ = [
     ListAppInstanceDomainsResponseBodyModuleNextVerification,
     ListAppInstanceDomainsResponseBodyModuleNext,
     ListAppInstanceDomainsResponseBodyModule,
+    ListAppPluginConfigsResponseBodyModule,
+    ListAppPluginsResponseBodyModule,
+    ListAppPublishHistoryResponseBodyModuleHistory,
+    ListAppPublishHistoryResponseBodyModule,
+    ListAppTemplateDictsResponseBodyModule,
+    ListAppTemplatesResponseBodyModuleData,
+    ListAppTemplatesResponseBodyModuleNext,
+    ListAppTemplatesResponseBodyModule,
+    ListIsvPaymentPluginConfigsResponseBodyModule,
     ModifyAppInstanceSpecResponseBodyModule,
+    PublishAppInstanceResponseBodyModule,
     QueryInspirationAccountDetailsResponseBodyModuleData,
     QueryInspirationAccountDetailsResponseBodyModuleNext,
     QueryInspirationAccountDetailsResponseBodyModule,
@@ -757,13 +1120,20 @@ __all__ = [
     RefreshAppInstanceTicketResponseBodyModule,
     RefundAppInstanceForPartnerResponseBodyModule,
     RenewAppInstanceResponseBodyModule,
+    RenewAppSandboxResponseBodyModule,
+    RollbackAppCodeSnapshotResponseBodyModule,
+    RollbackAppInstancePublishResponseBodyModule,
     SearchImageResponseBodyImageResponseImageList,
     SearchImageResponseBodyImageResponse,
     SetAppDomainCertificateResponseBodyModule,
     SubmitMaterialTaskResponseBodyModule,
+    SwitchAppConversationResponseBodyModule,
     SyncAppInstanceForPartnerRequestAppInstanceProfile,
     SyncAppInstanceForPartnerRequestAppInstance,
     SyncAppInstanceForPartnerResponseBodyDataAppInstance,
     SyncAppInstanceForPartnerResponseBodyData,
-    UnbindAppDomainResponseBodyModule
+    UnbindAppDomainResponseBodyModule,
+    UpdateAppChatMessageResponseBodyModule,
+    UpdateAppInstanceRequestTags,
+    UpdateAppInstanceResponseBodyModule
 ]
