@@ -1,3 +1,8 @@
+2026-06-04 Version: 3.3.1
+- Update API QueryMdsUpgradeTaskDetail: add response parameters Body.ResultContent.Data.Content.ReminderPeriod.
+- Update API QueryPayOrderToMsence: add response parameters Body.MpaasUserGamecenterPaymentQuerystatusResponse.CpExtra.
+
+
 2026-05-18 Version: 3.3.0
 - Support API CheckUserAuthToMscene.
 - Update API GetGameReviewByStatus: add response parameters Body.ResultContent.Content.$.TargetDetail.PublishStatusDesc.

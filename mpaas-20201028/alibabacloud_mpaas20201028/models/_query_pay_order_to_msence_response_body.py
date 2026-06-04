@@ -70,8 +70,10 @@ class QueryPayOrderToMsenceResponseBody(DaraModel):
 class QueryPayOrderToMsenceResponseBodyMpaasUserGamecenterPaymentQuerystatusResponse(DaraModel):
     def __init__(
         self,
+        cp_extra: str = None,
         order_status: str = None,
     ):
+        self.cp_extra = cp_extra
         self.order_status = order_status
 
     def validate(self):
@@ -82,6 +84,9 @@ class QueryPayOrderToMsenceResponseBodyMpaasUserGamecenterPaymentQuerystatusResp
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.cp_extra is not None:
+            result['CpExtra'] = self.cp_extra
+
         if self.order_status is not None:
             result['OrderStatus'] = self.order_status
 
@@ -89,6 +94,9 @@ class QueryPayOrderToMsenceResponseBodyMpaasUserGamecenterPaymentQuerystatusResp
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CpExtra') is not None:
+            self.cp_extra = m.get('CpExtra')
+
         if m.get('OrderStatus') is not None:
             self.order_status = m.get('OrderStatus')
 
