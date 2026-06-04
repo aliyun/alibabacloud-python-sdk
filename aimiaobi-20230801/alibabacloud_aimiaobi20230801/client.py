@@ -4510,6 +4510,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.fetch_import_terms_task_with_options_async(request, runtime)
 
+    def fetch_parse_document_layout_task_with_options(
+        self,
+        request: main_models.FetchParseDocumentLayoutTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.FetchParseDocumentLayoutTaskResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.task_id):
+            body['TaskId'] = request.task_id
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'FetchParseDocumentLayoutTask',
+            version = '2023-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.FetchParseDocumentLayoutTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def fetch_parse_document_layout_task_with_options_async(
+        self,
+        request: main_models.FetchParseDocumentLayoutTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.FetchParseDocumentLayoutTaskResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.task_id):
+            body['TaskId'] = request.task_id
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'FetchParseDocumentLayoutTask',
+            version = '2023-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.FetchParseDocumentLayoutTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def fetch_parse_document_layout_task(
+        self,
+        request: main_models.FetchParseDocumentLayoutTaskRequest,
+    ) -> main_models.FetchParseDocumentLayoutTaskResponse:
+        runtime = RuntimeOptions()
+        return self.fetch_parse_document_layout_task_with_options(request, runtime)
+
+    async def fetch_parse_document_layout_task_async(
+        self,
+        request: main_models.FetchParseDocumentLayoutTaskRequest,
+    ) -> main_models.FetchParseDocumentLayoutTaskResponse:
+        runtime = RuntimeOptions()
+        return await self.fetch_parse_document_layout_task_with_options_async(request, runtime)
+
     def generate_export_word_task_with_options(
         self,
         request: main_models.GenerateExportWordTaskRequest,
@@ -22035,6 +22109,84 @@ class Client(OpenApiClient):
     ) -> main_models.SubmitImportTermsTaskResponse:
         runtime = RuntimeOptions()
         return await self.submit_import_terms_task_with_options_async(request, runtime)
+
+    def submit_parse_document_layout_task_with_options(
+        self,
+        request: main_models.SubmitParseDocumentLayoutTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitParseDocumentLayoutTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.content):
+            query['Content'] = request.content
+        body = {}
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitParseDocumentLayoutTask',
+            version = '2023-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitParseDocumentLayoutTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_parse_document_layout_task_with_options_async(
+        self,
+        request: main_models.SubmitParseDocumentLayoutTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitParseDocumentLayoutTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.content):
+            query['Content'] = request.content
+        body = {}
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitParseDocumentLayoutTask',
+            version = '2023-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitParseDocumentLayoutTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_parse_document_layout_task(
+        self,
+        request: main_models.SubmitParseDocumentLayoutTaskRequest,
+    ) -> main_models.SubmitParseDocumentLayoutTaskResponse:
+        runtime = RuntimeOptions()
+        return self.submit_parse_document_layout_task_with_options(request, runtime)
+
+    async def submit_parse_document_layout_task_async(
+        self,
+        request: main_models.SubmitParseDocumentLayoutTaskRequest,
+    ) -> main_models.SubmitParseDocumentLayoutTaskResponse:
+        runtime = RuntimeOptions()
+        return await self.submit_parse_document_layout_task_with_options_async(request, runtime)
 
     def submit_smart_audit_with_options(
         self,

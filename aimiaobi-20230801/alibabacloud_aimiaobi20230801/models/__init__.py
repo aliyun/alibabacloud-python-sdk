@@ -184,6 +184,9 @@ from ._fetch_image_task_response import FetchImageTaskResponse
 from ._fetch_import_terms_task_request import FetchImportTermsTaskRequest
 from ._fetch_import_terms_task_response_body import FetchImportTermsTaskResponseBody
 from ._fetch_import_terms_task_response import FetchImportTermsTaskResponse
+from ._fetch_parse_document_layout_task_request import FetchParseDocumentLayoutTaskRequest
+from ._fetch_parse_document_layout_task_response_body import FetchParseDocumentLayoutTaskResponseBody
+from ._fetch_parse_document_layout_task_response import FetchParseDocumentLayoutTaskResponse
 from ._generate_export_word_task_request import GenerateExportWordTaskRequest
 from ._generate_export_word_task_response_body import GenerateExportWordTaskResponseBody
 from ._generate_export_word_task_response import GenerateExportWordTaskResponse
@@ -683,6 +686,9 @@ from ._submit_fact_audit_url_response import SubmitFactAuditUrlResponse
 from ._submit_import_terms_task_request import SubmitImportTermsTaskRequest
 from ._submit_import_terms_task_response_body import SubmitImportTermsTaskResponseBody
 from ._submit_import_terms_task_response import SubmitImportTermsTaskResponse
+from ._submit_parse_document_layout_task_request import SubmitParseDocumentLayoutTaskRequest
+from ._submit_parse_document_layout_task_response_body import SubmitParseDocumentLayoutTaskResponseBody
+from ._submit_parse_document_layout_task_response import SubmitParseDocumentLayoutTaskResponse
 from ._submit_smart_audit_request import SubmitSmartAuditRequest
 from ._submit_smart_audit_shrink_request import SubmitSmartAuditShrinkRequest
 from ._submit_smart_audit_response_body import SubmitSmartAuditResponseBody
@@ -793,6 +799,9 @@ from ._fetch_image_task_response_body import FetchImageTaskResponseBodyDataTaskI
 from ._fetch_image_task_response_body import FetchImageTaskResponseBodyDataTaskInfoList
 from ._fetch_image_task_response_body import FetchImageTaskResponseBodyData
 from ._fetch_import_terms_task_response_body import FetchImportTermsTaskResponseBodyData
+from ._fetch_parse_document_layout_task_response_body import FetchParseDocumentLayoutTaskResponseBodyDataLayoutResultElements
+from ._fetch_parse_document_layout_task_response_body import FetchParseDocumentLayoutTaskResponseBodyDataLayoutResult
+from ._fetch_parse_document_layout_task_response_body import FetchParseDocumentLayoutTaskResponseBodyData
 from ._generate_export_word_task_response_body import GenerateExportWordTaskResponseBodyData
 from ._generate_image_task_request import GenerateImageTaskRequestParagraphList
 from ._generate_image_task_response_body import GenerateImageTaskResponseBodyDataTaskList
@@ -1349,6 +1358,7 @@ from ._submit_enterprise_voc_analysis_task_request import SubmitEnterpriseVocAna
 from ._submit_enterprise_voc_analysis_task_response_body import SubmitEnterpriseVocAnalysisTaskResponseBodyData
 from ._submit_export_terms_task_response_body import SubmitExportTermsTaskResponseBodyData
 from ._submit_import_terms_task_response_body import SubmitImportTermsTaskResponseBodyData
+from ._submit_parse_document_layout_task_response_body import SubmitParseDocumentLayoutTaskResponseBodyData
 from ._submit_smart_audit_request import SubmitSmartAuditRequestImageUrlList
 from ._submit_smart_audit_request import SubmitSmartAuditRequestImageUrls
 from ._submit_smart_audit_response_body import SubmitSmartAuditResponseBodyData
@@ -1574,6 +1584,9 @@ __all__ = [
     FetchImportTermsTaskRequest,
     FetchImportTermsTaskResponseBody,
     FetchImportTermsTaskResponse,
+    FetchParseDocumentLayoutTaskRequest,
+    FetchParseDocumentLayoutTaskResponseBody,
+    FetchParseDocumentLayoutTaskResponse,
     GenerateExportWordTaskRequest,
     GenerateExportWordTaskResponseBody,
     GenerateExportWordTaskResponse,
@@ -2073,6 +2086,9 @@ __all__ = [
     SubmitImportTermsTaskRequest,
     SubmitImportTermsTaskResponseBody,
     SubmitImportTermsTaskResponse,
+    SubmitParseDocumentLayoutTaskRequest,
+    SubmitParseDocumentLayoutTaskResponseBody,
+    SubmitParseDocumentLayoutTaskResponse,
     SubmitSmartAuditRequest,
     SubmitSmartAuditShrinkRequest,
     SubmitSmartAuditResponseBody,
@@ -2183,6 +2199,9 @@ __all__ = [
     FetchImageTaskResponseBodyDataTaskInfoList,
     FetchImageTaskResponseBodyData,
     FetchImportTermsTaskResponseBodyData,
+    FetchParseDocumentLayoutTaskResponseBodyDataLayoutResultElements,
+    FetchParseDocumentLayoutTaskResponseBodyDataLayoutResult,
+    FetchParseDocumentLayoutTaskResponseBodyData,
     GenerateExportWordTaskResponseBodyData,
     GenerateImageTaskRequestParagraphList,
     GenerateImageTaskResponseBodyDataTaskList,
@@ -2739,6 +2758,7 @@ __all__ = [
     SubmitEnterpriseVocAnalysisTaskResponseBodyData,
     SubmitExportTermsTaskResponseBodyData,
     SubmitImportTermsTaskResponseBodyData,
+    SubmitParseDocumentLayoutTaskResponseBodyData,
     SubmitSmartAuditRequestImageUrlList,
     SubmitSmartAuditRequestImageUrls,
     SubmitSmartAuditResponseBodyData,

@@ -334,12 +334,14 @@ class RunSearchSimilarArticlesResponseBodyHeader(DaraModel):
         error_code: str = None,
         error_message: str = None,
         event: str = None,
+        event_info: str = None,
         session_id: str = None,
         task_id: str = None,
     ):
         self.error_code = error_code
         self.error_message = error_message
         self.event = event
+        self.event_info = event_info
         self.session_id = session_id
         self.task_id = task_id
 
@@ -360,6 +362,9 @@ class RunSearchSimilarArticlesResponseBodyHeader(DaraModel):
         if self.event is not None:
             result['Event'] = self.event
 
+        if self.event_info is not None:
+            result['EventInfo'] = self.event_info
+
         if self.session_id is not None:
             result['SessionId'] = self.session_id
 
@@ -378,6 +383,9 @@ class RunSearchSimilarArticlesResponseBodyHeader(DaraModel):
 
         if m.get('Event') is not None:
             self.event = m.get('Event')
+
+        if m.get('EventInfo') is not None:
+            self.event_info = m.get('EventInfo')
 
         if m.get('SessionId') is not None:
             self.session_id = m.get('SessionId')

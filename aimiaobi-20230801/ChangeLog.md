@@ -1,3 +1,9 @@
+2026-06-04 Version: 1.45.0
+- Support API FetchParseDocumentLayoutTask.
+- Support API SubmitParseDocumentLayoutTask.
+- Update API RunSearchSimilarArticles: add response parameters Body.Header.EventInfo.
+
+
 2026-05-20 Version: 1.44.3
 - Update API ExportPptArtifact: add request parameters ExternalUserId.
 - Update API GetPptArtifactExportResult: add request parameters ExternalUserId.
