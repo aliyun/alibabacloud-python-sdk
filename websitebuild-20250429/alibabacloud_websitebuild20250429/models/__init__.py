@@ -64,6 +64,9 @@ from ._create_app_instance_response import CreateAppInstanceResponse
 from ._create_app_instance_ticket_request import CreateAppInstanceTicketRequest
 from ._create_app_instance_ticket_response_body import CreateAppInstanceTicketResponseBody
 from ._create_app_instance_ticket_response import CreateAppInstanceTicketResponse
+from ._create_app_llm_api_key_for_partner_request import CreateAppLlmApiKeyForPartnerRequest
+from ._create_app_llm_api_key_for_partner_response_body import CreateAppLlmApiKeyForPartnerResponseBody
+from ._create_app_llm_api_key_for_partner_response import CreateAppLlmApiKeyForPartnerResponse
 from ._create_app_token_service_request import CreateAppTokenServiceRequest
 from ._create_app_token_service_response_body import CreateAppTokenServiceResponseBody
 from ._create_app_token_service_response import CreateAppTokenServiceResponse
@@ -432,6 +435,7 @@ from ._create_app_assistant_agent_sso_login_response_body import CreateAppAssist
 from ._create_app_instance_request import CreateAppInstanceRequestTags
 from ._create_app_instance_response_body import CreateAppInstanceResponseBodyModule
 from ._create_app_instance_ticket_response_body import CreateAppInstanceTicketResponseBodyModule
+from ._create_app_llm_api_key_for_partner_response_body import CreateAppLlmApiKeyForPartnerResponseBodyModule
 from ._create_app_token_service_response_body import CreateAppTokenServiceResponseBodyModule
 from ._create_material_directory_response_body import CreateMaterialDirectoryResponseBodyModule
 from ._delete_app_domain_certificate_response_body import DeleteAppDomainCertificateResponseBodyModule
@@ -632,6 +636,9 @@ __all__ = [
     CreateAppInstanceTicketRequest,
     CreateAppInstanceTicketResponseBody,
     CreateAppInstanceTicketResponse,
+    CreateAppLlmApiKeyForPartnerRequest,
+    CreateAppLlmApiKeyForPartnerResponseBody,
+    CreateAppLlmApiKeyForPartnerResponse,
     CreateAppTokenServiceRequest,
     CreateAppTokenServiceResponseBody,
     CreateAppTokenServiceResponse,
@@ -1000,6 +1007,7 @@ __all__ = [
     CreateAppInstanceRequestTags,
     CreateAppInstanceResponseBodyModule,
     CreateAppInstanceTicketResponseBodyModule,
+    CreateAppLlmApiKeyForPartnerResponseBodyModule,
     CreateAppTokenServiceResponseBodyModule,
     CreateMaterialDirectoryResponseBodyModule,
     DeleteAppDomainCertificateResponseBodyModule,

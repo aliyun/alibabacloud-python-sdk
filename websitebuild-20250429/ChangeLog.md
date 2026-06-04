@@ -1,3 +1,7 @@
+2026-06-04 Version: 2.25.0
+- Support API CreateAppLlmApiKeyForPartner.
+
+
 2026-06-04 Version: 2.24.3
 - Generated python 2025-04-29 for WebsiteBuild.
 

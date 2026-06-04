@@ -1277,6 +1277,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_app_instance_ticket_with_options_async(request, runtime)
 
+    def create_app_llm_api_key_for_partner_with_options(
+        self,
+        request: main_models.CreateAppLlmApiKeyForPartnerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAppLlmApiKeyForPartnerResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.biz_id):
+            body['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.ip_white_list):
+            body['IpWhiteList'] = request.ip_white_list
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAppLlmApiKeyForPartner',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAppLlmApiKeyForPartnerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_app_llm_api_key_for_partner_with_options_async(
+        self,
+        request: main_models.CreateAppLlmApiKeyForPartnerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAppLlmApiKeyForPartnerResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.biz_id):
+            body['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.ip_white_list):
+            body['IpWhiteList'] = request.ip_white_list
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAppLlmApiKeyForPartner',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAppLlmApiKeyForPartnerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_app_llm_api_key_for_partner(
+        self,
+        request: main_models.CreateAppLlmApiKeyForPartnerRequest,
+    ) -> main_models.CreateAppLlmApiKeyForPartnerResponse:
+        runtime = RuntimeOptions()
+        return self.create_app_llm_api_key_for_partner_with_options(request, runtime)
+
+    async def create_app_llm_api_key_for_partner_async(
+        self,
+        request: main_models.CreateAppLlmApiKeyForPartnerRequest,
+    ) -> main_models.CreateAppLlmApiKeyForPartnerResponse:
+        runtime = RuntimeOptions()
+        return await self.create_app_llm_api_key_for_partner_with_options_async(request, runtime)
+
     def create_app_token_service_with_options(
         self,
         request: main_models.CreateAppTokenServiceRequest,
