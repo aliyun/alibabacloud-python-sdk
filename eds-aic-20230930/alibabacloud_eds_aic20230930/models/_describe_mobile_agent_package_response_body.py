@@ -82,6 +82,7 @@ class DescribeMobileAgentPackageResponseBodyPackageList(DaraModel):
         package_credit: str = None,
         package_id: str = None,
         package_spec: str = None,
+        package_spec_name: str = None,
         package_status: str = None,
         used_credit: str = None,
     ):
@@ -90,6 +91,7 @@ class DescribeMobileAgentPackageResponseBodyPackageList(DaraModel):
         self.package_credit = package_credit
         self.package_id = package_id
         self.package_spec = package_spec
+        self.package_spec_name = package_spec_name
         self.package_status = package_status
         self.used_credit = used_credit
 
@@ -116,6 +118,9 @@ class DescribeMobileAgentPackageResponseBodyPackageList(DaraModel):
         if self.package_spec is not None:
             result['PackageSpec'] = self.package_spec
 
+        if self.package_spec_name is not None:
+            result['PackageSpecName'] = self.package_spec_name
+
         if self.package_status is not None:
             result['PackageStatus'] = self.package_status
 
@@ -140,6 +145,9 @@ class DescribeMobileAgentPackageResponseBodyPackageList(DaraModel):
 
         if m.get('PackageSpec') is not None:
             self.package_spec = m.get('PackageSpec')
+
+        if m.get('PackageSpecName') is not None:
+            self.package_spec_name = m.get('PackageSpecName')
 
         if m.get('PackageStatus') is not None:
             self.package_status = m.get('PackageStatus')

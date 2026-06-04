@@ -1601,10 +1601,14 @@ class Client(OpenApiClient):
             query['CreditAmount'] = request.credit_amount
         if not DaraCore.is_null(request.credit_config):
             query['CreditConfig'] = request.credit_config
+        if not DaraCore.is_null(request.image_id):
+            query['ImageId'] = request.image_id
         if not DaraCore.is_null(request.instance_name):
             query['InstanceName'] = request.instance_name
         if not DaraCore.is_null(request.mobile_agent_package_spec):
             query['MobileAgentPackageSpec'] = request.mobile_agent_package_spec
+        if not DaraCore.is_null(request.package_spec_id):
+            query['PackageSpecId'] = request.package_spec_id
         if not DaraCore.is_null(request.paid_callback_url):
             query['PaidCallbackUrl'] = request.paid_callback_url
         if not DaraCore.is_null(request.period):
@@ -1651,10 +1655,14 @@ class Client(OpenApiClient):
             query['CreditAmount'] = request.credit_amount
         if not DaraCore.is_null(request.credit_config):
             query['CreditConfig'] = request.credit_config
+        if not DaraCore.is_null(request.image_id):
+            query['ImageId'] = request.image_id
         if not DaraCore.is_null(request.instance_name):
             query['InstanceName'] = request.instance_name
         if not DaraCore.is_null(request.mobile_agent_package_spec):
             query['MobileAgentPackageSpec'] = request.mobile_agent_package_spec
+        if not DaraCore.is_null(request.package_spec_id):
+            query['PackageSpecId'] = request.package_spec_id
         if not DaraCore.is_null(request.paid_callback_url):
             query['PaidCallbackUrl'] = request.paid_callback_url
         if not DaraCore.is_null(request.period):
@@ -8155,6 +8163,8 @@ class Client(OpenApiClient):
             query['AutoInstall'] = request.auto_install
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.file_md_5):
+            query['FileMd5'] = request.file_md_5
         if not DaraCore.is_null(request.source_file_path):
             query['SourceFilePath'] = request.source_file_path
         if not DaraCore.is_null(request.target_file_name):
@@ -8197,6 +8207,8 @@ class Client(OpenApiClient):
             query['AutoInstall'] = request.auto_install
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.file_md_5):
+            query['FileMd5'] = request.file_md_5
         if not DaraCore.is_null(request.source_file_path):
             query['SourceFilePath'] = request.source_file_path
         if not DaraCore.is_null(request.target_file_name):

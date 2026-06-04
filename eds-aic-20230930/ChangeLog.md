@@ -1,3 +1,10 @@
+2026-06-04 Version: 4.28.1
+- Update API CreateMobileAgentPackage: add request parameters ImageId.
+- Update API CreateMobileAgentPackage: add request parameters PackageSpecId.
+- Update API DescribeMobileAgentPackage: add response parameters Body.PackageList.$.PackageSpecName.
+- Update API SendFile: add request parameters FileMd5.
+
+
 2026-06-02 Version: 4.28.0
 - Support API CreateCreditPackage.
 - Support API DescribeCreditPackage.

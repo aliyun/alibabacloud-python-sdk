@@ -13,8 +13,10 @@ class CreateMobileAgentPackageRequest(DaraModel):
         biz_region_id: str = None,
         credit_amount: str = None,
         credit_config: str = None,
+        image_id: str = None,
         instance_name: str = None,
         mobile_agent_package_spec: str = None,
+        package_spec_id: int = None,
         paid_callback_url: str = None,
         period: int = None,
         period_unit: str = None,
@@ -26,8 +28,10 @@ class CreateMobileAgentPackageRequest(DaraModel):
         self.biz_region_id = biz_region_id
         self.credit_amount = credit_amount
         self.credit_config = credit_config
+        self.image_id = image_id
         self.instance_name = instance_name
         self.mobile_agent_package_spec = mobile_agent_package_spec
+        self.package_spec_id = package_spec_id
         self.paid_callback_url = paid_callback_url
         self.period = period
         self.period_unit = period_unit
@@ -59,11 +63,17 @@ class CreateMobileAgentPackageRequest(DaraModel):
         if self.credit_config is not None:
             result['CreditConfig'] = self.credit_config
 
+        if self.image_id is not None:
+            result['ImageId'] = self.image_id
+
         if self.instance_name is not None:
             result['InstanceName'] = self.instance_name
 
         if self.mobile_agent_package_spec is not None:
             result['MobileAgentPackageSpec'] = self.mobile_agent_package_spec
+
+        if self.package_spec_id is not None:
+            result['PackageSpecId'] = self.package_spec_id
 
         if self.paid_callback_url is not None:
             result['PaidCallbackUrl'] = self.paid_callback_url
@@ -99,11 +109,17 @@ class CreateMobileAgentPackageRequest(DaraModel):
         if m.get('CreditConfig') is not None:
             self.credit_config = m.get('CreditConfig')
 
+        if m.get('ImageId') is not None:
+            self.image_id = m.get('ImageId')
+
         if m.get('InstanceName') is not None:
             self.instance_name = m.get('InstanceName')
 
         if m.get('MobileAgentPackageSpec') is not None:
             self.mobile_agent_package_spec = m.get('MobileAgentPackageSpec')
+
+        if m.get('PackageSpecId') is not None:
+            self.package_spec_id = m.get('PackageSpecId')
 
         if m.get('PaidCallbackUrl') is not None:
             self.paid_callback_url = m.get('PaidCallbackUrl')
