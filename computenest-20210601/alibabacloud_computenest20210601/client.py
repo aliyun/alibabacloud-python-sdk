@@ -3164,6 +3164,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_tag_values_with_options_async(request, runtime)
 
+    def renew_service_instance_with_options(
+        self,
+        request: main_models.RenewServiceInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RenewServiceInstanceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.service_instance_id):
+            query['ServiceInstanceId'] = request.service_instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RenewServiceInstance',
+            version = '2021-06-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RenewServiceInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def renew_service_instance_with_options_async(
+        self,
+        request: main_models.RenewServiceInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RenewServiceInstanceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.service_instance_id):
+            query['ServiceInstanceId'] = request.service_instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RenewServiceInstance',
+            version = '2021-06-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RenewServiceInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def renew_service_instance(
+        self,
+        request: main_models.RenewServiceInstanceRequest,
+    ) -> main_models.RenewServiceInstanceResponse:
+        runtime = RuntimeOptions()
+        return self.renew_service_instance_with_options(request, runtime)
+
+    async def renew_service_instance_async(
+        self,
+        request: main_models.RenewServiceInstanceRequest,
+    ) -> main_models.RenewServiceInstanceResponse:
+        runtime = RuntimeOptions()
+        return await self.renew_service_instance_with_options_async(request, runtime)
+
     def renew_service_instance_resources_with_options(
         self,
         request: main_models.RenewServiceInstanceResourcesRequest,

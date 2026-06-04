@@ -114,6 +114,9 @@ from ._list_tag_resources_response import ListTagResourcesResponse
 from ._list_tag_values_request import ListTagValuesRequest
 from ._list_tag_values_response_body import ListTagValuesResponseBody
 from ._list_tag_values_response import ListTagValuesResponse
+from ._renew_service_instance_request import RenewServiceInstanceRequest
+from ._renew_service_instance_response_body import RenewServiceInstanceResponseBody
+from ._renew_service_instance_response import RenewServiceInstanceResponse
 from ._renew_service_instance_resources_request import RenewServiceInstanceResourcesRequest
 from ._renew_service_instance_resources_response_body import RenewServiceInstanceResourcesResponseBody
 from ._renew_service_instance_resources_response import RenewServiceInstanceResourcesResponse
@@ -367,6 +370,9 @@ __all__ = [
     ListTagValuesRequest,
     ListTagValuesResponseBody,
     ListTagValuesResponse,
+    RenewServiceInstanceRequest,
+    RenewServiceInstanceResponseBody,
+    RenewServiceInstanceResponse,
     RenewServiceInstanceResourcesRequest,
     RenewServiceInstanceResourcesResponseBody,
     RenewServiceInstanceResourcesResponse,
