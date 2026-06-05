@@ -1,3 +1,11 @@
+2026-06-05 Version: 8.6.0
+- Support API CreateAgent.
+- Support API DeleteAgent.
+- Support API DeleteMcpServer.
+- Support API DeleteSkill.
+- Support API GetAgent.
+
+
 2026-06-04 Version: 8.5.0
 - Support API BatchCreateMetaEntities.
 - Support API BatchDeleteMetaEntities.
