@@ -275,6 +275,78 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_api_key_with_options_async(api_key_id, headers, runtime)
 
+    def delete_workspace_with_options(
+        self,
+        workspace_id: str,
+        request: main_models.DeleteWorkspaceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteWorkspaceResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteWorkspace',
+            version = '2026-02-10',
+            protocol = 'HTTPS',
+            pathname = f'/modelstudio/workspaces/{DaraURL.percent_encode(workspace_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteWorkspaceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_workspace_with_options_async(
+        self,
+        workspace_id: str,
+        request: main_models.DeleteWorkspaceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteWorkspaceResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteWorkspace',
+            version = '2026-02-10',
+            protocol = 'HTTPS',
+            pathname = f'/modelstudio/workspaces/{DaraURL.percent_encode(workspace_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteWorkspaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_workspace(
+        self,
+        workspace_id: str,
+        request: main_models.DeleteWorkspaceRequest,
+    ) -> main_models.DeleteWorkspaceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_workspace_with_options(workspace_id, request, headers, runtime)
+
+    async def delete_workspace_async(
+        self,
+        workspace_id: str,
+        request: main_models.DeleteWorkspaceRequest,
+    ) -> main_models.DeleteWorkspaceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_workspace_with_options_async(workspace_id, request, headers, runtime)
+
     def disable_api_key_with_options(
         self,
         api_key_id: str,

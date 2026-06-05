@@ -1,3 +1,7 @@
+2026-06-05 Version: 1.2.0
+- Support API DeleteWorkspace.
+
+
 2026-05-22 Version: 1.1.0
 - Support API DisableApiKey.
 - Support API EnableApiKey.

@@ -10,6 +10,9 @@ from ._create_workspace_response_body import CreateWorkspaceResponseBody
 from ._create_workspace_response import CreateWorkspaceResponse
 from ._delete_api_key_response_body import DeleteApiKeyResponseBody
 from ._delete_api_key_response import DeleteApiKeyResponse
+from ._delete_workspace_request import DeleteWorkspaceRequest
+from ._delete_workspace_response_body import DeleteWorkspaceResponseBody
+from ._delete_workspace_response import DeleteWorkspaceResponse
 from ._disable_api_key_request import DisableApiKeyRequest
 from ._disable_api_key_response_body import DisableApiKeyResponseBody
 from ._disable_api_key_response import DisableApiKeyResponse
@@ -33,6 +36,7 @@ from ._update_api_key_response import UpdateApiKeyResponse
 from ._create_api_key_request import CreateApiKeyRequestAuth
 from ._create_api_key_response_body import CreateApiKeyResponseBodyApiKey
 from ._create_workspace_response_body import CreateWorkspaceResponseBodyWorkspace
+from ._delete_workspace_response_body import DeleteWorkspaceResponseBodyFailReasons
 from ._get_api_key_response_body import GetApiKeyResponseBodyApiKeyAuth
 from ._get_api_key_response_body import GetApiKeyResponseBodyApiKey
 from ._list_api_keys_response_body import ListApiKeysResponseBodyApiKeysAuth
@@ -50,6 +54,9 @@ __all__ = [
     CreateWorkspaceResponse,
     DeleteApiKeyResponseBody,
     DeleteApiKeyResponse,
+    DeleteWorkspaceRequest,
+    DeleteWorkspaceResponseBody,
+    DeleteWorkspaceResponse,
     DisableApiKeyRequest,
     DisableApiKeyResponseBody,
     DisableApiKeyResponse,
@@ -73,6 +80,7 @@ __all__ = [
     CreateApiKeyRequestAuth,
     CreateApiKeyResponseBodyApiKey,
     CreateWorkspaceResponseBodyWorkspace,
+    DeleteWorkspaceResponseBodyFailReasons,
     GetApiKeyResponseBodyApiKeyAuth,
     GetApiKeyResponseBodyApiKey,
     ListApiKeysResponseBodyApiKeysAuth,
