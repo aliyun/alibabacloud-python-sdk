@@ -1,3 +1,6 @@
+2026-06-05 Version: 2.26.1
+- Generated python 2025-04-29 for WebsiteBuild.
+
 2026-06-05 Version: 2.26.0
 - Support API GetMiniAppAuthUrl.
 - Support API GetMiniAppBinding.

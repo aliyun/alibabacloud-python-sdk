@@ -891,19 +891,19 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> Generator[main_models.CreateAppChatResponse, None, None]:
         request.validate()
-        query = {}
+        body = {}
         if not DaraCore.is_null(request.bot_id):
-            query['BotId'] = request.bot_id
+            body['BotId'] = request.bot_id
         if not DaraCore.is_null(request.chat_id):
-            query['ChatId'] = request.chat_id
+            body['ChatId'] = request.chat_id
         if not DaraCore.is_null(request.conversation_id):
-            query['ConversationId'] = request.conversation_id
+            body['ConversationId'] = request.conversation_id
         if not DaraCore.is_null(request.messages):
-            query['Messages'] = request.messages
+            body['Messages'] = request.messages
         if not DaraCore.is_null(request.site_id):
-            query['SiteId'] = request.site_id
+            body['SiteId'] = request.site_id
         req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
+            body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
             action = 'CreateAppChat',
@@ -936,19 +936,19 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> AsyncGenerator[main_models.CreateAppChatResponse, None, None]:
         request.validate()
-        query = {}
+        body = {}
         if not DaraCore.is_null(request.bot_id):
-            query['BotId'] = request.bot_id
+            body['BotId'] = request.bot_id
         if not DaraCore.is_null(request.chat_id):
-            query['ChatId'] = request.chat_id
+            body['ChatId'] = request.chat_id
         if not DaraCore.is_null(request.conversation_id):
-            query['ConversationId'] = request.conversation_id
+            body['ConversationId'] = request.conversation_id
         if not DaraCore.is_null(request.messages):
-            query['Messages'] = request.messages
+            body['Messages'] = request.messages
         if not DaraCore.is_null(request.site_id):
-            query['SiteId'] = request.site_id
+            body['SiteId'] = request.site_id
         req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
+            body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
             action = 'CreateAppChat',
@@ -981,19 +981,19 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.CreateAppChatResponse:
         request.validate()
-        query = {}
+        body = {}
         if not DaraCore.is_null(request.bot_id):
-            query['BotId'] = request.bot_id
+            body['BotId'] = request.bot_id
         if not DaraCore.is_null(request.chat_id):
-            query['ChatId'] = request.chat_id
+            body['ChatId'] = request.chat_id
         if not DaraCore.is_null(request.conversation_id):
-            query['ConversationId'] = request.conversation_id
+            body['ConversationId'] = request.conversation_id
         if not DaraCore.is_null(request.messages):
-            query['Messages'] = request.messages
+            body['Messages'] = request.messages
         if not DaraCore.is_null(request.site_id):
-            query['SiteId'] = request.site_id
+            body['SiteId'] = request.site_id
         req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
+            body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
             action = 'CreateAppChat',
@@ -1017,19 +1017,19 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.CreateAppChatResponse:
         request.validate()
-        query = {}
+        body = {}
         if not DaraCore.is_null(request.bot_id):
-            query['BotId'] = request.bot_id
+            body['BotId'] = request.bot_id
         if not DaraCore.is_null(request.chat_id):
-            query['ChatId'] = request.chat_id
+            body['ChatId'] = request.chat_id
         if not DaraCore.is_null(request.conversation_id):
-            query['ConversationId'] = request.conversation_id
+            body['ConversationId'] = request.conversation_id
         if not DaraCore.is_null(request.messages):
-            query['Messages'] = request.messages
+            body['Messages'] = request.messages
         if not DaraCore.is_null(request.site_id):
-            query['SiteId'] = request.site_id
+            body['SiteId'] = request.site_id
         req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
+            body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
             action = 'CreateAppChat',
