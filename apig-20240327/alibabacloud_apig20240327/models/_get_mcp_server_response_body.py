@@ -67,6 +67,7 @@ class GetMcpServerResponseBody(DaraModel):
 class GetMcpServerResponseBodyData(DaraModel):
     def __init__(
         self,
+        api_id: str = None,
         assembled_sources: List[main_models.GetMcpServerResponseBodyDataAssembledSources] = None,
         backend: main_models.Backend = None,
         create_from_type: str = None,
@@ -90,6 +91,7 @@ class GetMcpServerResponseBodyData(DaraModel):
         route_id: str = None,
         type: str = None,
     ):
+        self.api_id = api_id
         # The list of assembly sources. This parameter is required when the type parameter is set to AssemblyMCP.
         self.assembled_sources = assembled_sources
         # The backend service of the route.
@@ -166,6 +168,9 @@ class GetMcpServerResponseBodyData(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.api_id is not None:
+            result['apiId'] = self.api_id
+
         result['assembledSources'] = []
         if self.assembled_sources is not None:
             for k1 in self.assembled_sources:
@@ -242,6 +247,9 @@ class GetMcpServerResponseBodyData(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('apiId') is not None:
+            self.api_id = m.get('apiId')
+
         self.assembled_sources = []
         if m.get('assembledSources') is not None:
             for k1 in m.get('assembledSources'):
