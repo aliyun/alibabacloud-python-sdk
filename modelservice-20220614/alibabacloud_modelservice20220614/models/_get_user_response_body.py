@@ -2,11 +2,15 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import Any
+
 from darabonba.model import DaraModel
 
 class GetUserResponseBody(DaraModel):
     def __init__(
         self,
+        anthropic_host: str = None,
+        api_keys: Any = None,
         app_id: str = None,
         code: str = None,
         host: str = None,
@@ -15,6 +19,8 @@ class GetUserResponseBody(DaraModel):
         request_id: str = None,
         token: str = None,
     ):
+        self.anthropic_host = anthropic_host
+        self.api_keys = api_keys
         self.app_id = app_id
         self.code = code
         self.host = host
@@ -31,6 +37,12 @@ class GetUserResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.anthropic_host is not None:
+            result['AnthropicHost'] = self.anthropic_host
+
+        if self.api_keys is not None:
+            result['ApiKeys'] = self.api_keys
+
         if self.app_id is not None:
             result['AppId'] = self.app_id
 
@@ -56,6 +68,12 @@ class GetUserResponseBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AnthropicHost') is not None:
+            self.anthropic_host = m.get('AnthropicHost')
+
+        if m.get('ApiKeys') is not None:
+            self.api_keys = m.get('ApiKeys')
+
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
 

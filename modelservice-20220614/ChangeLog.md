@@ -1,3 +1,8 @@
+2026-06-05 Version: 3.0.1
+- Update API GetUser: add response parameters Body.AnthropicHost.
+- Update API GetUser: add response parameters Body.ApiKeys.
+
+
 2026-06-02 Version: 3.0.0
 - Update API GetUser: add request parameters channel.
 - Update API GetUser: add request parameters region.
