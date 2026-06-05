@@ -10,7 +10,14 @@ class GetAppInstanceForAdminRequest(DaraModel):
         biz_id: str = None,
         domain: str = None,
     ):
+        # The ID of the delivery receipt. The delivery receipt ID is the value of the BizId parameter that is returned when you call the SendSms or SendBatchSms operation.
         self.biz_id = biz_id
+        # The domain name.
+        # 
+        # > 
+        # *   Wildcard domain names are supported. You can use the wildcard character asterisk (\\*) to specify a wildcard domain name.
+        # 
+        # For example, you can enter \\*.baidu.com to specify the domain name baidu.com.
         self.domain = domain
 
     def validate(self):
