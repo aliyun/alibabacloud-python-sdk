@@ -40,6 +40,88 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return Utils.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def add_hive_edge_workers_with_options(
+        self,
+        tmp_req: main_models.AddHiveEdgeWorkersRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddHiveEdgeWorkersResponse:
+        tmp_req.validate()
+        request = main_models.AddHiveEdgeWorkersShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.instance_ids):
+            request.instance_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.instance_ids, 'InstanceIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.hive_id):
+            query['HiveId'] = request.hive_id
+        if not DaraCore.is_null(request.instance_ids_shrink):
+            query['InstanceIds'] = request.instance_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddHiveEdgeWorkers',
+            version = '2018-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddHiveEdgeWorkersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_hive_edge_workers_with_options_async(
+        self,
+        tmp_req: main_models.AddHiveEdgeWorkersRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddHiveEdgeWorkersResponse:
+        tmp_req.validate()
+        request = main_models.AddHiveEdgeWorkersShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.instance_ids):
+            request.instance_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.instance_ids, 'InstanceIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.hive_id):
+            query['HiveId'] = request.hive_id
+        if not DaraCore.is_null(request.instance_ids_shrink):
+            query['InstanceIds'] = request.instance_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddHiveEdgeWorkers',
+            version = '2018-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddHiveEdgeWorkersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_hive_edge_workers(
+        self,
+        request: main_models.AddHiveEdgeWorkersRequest,
+    ) -> main_models.AddHiveEdgeWorkersResponse:
+        runtime = RuntimeOptions()
+        return self.add_hive_edge_workers_with_options(request, runtime)
+
+    async def add_hive_edge_workers_async(
+        self,
+        request: main_models.AddHiveEdgeWorkersRequest,
+    ) -> main_models.AddHiveEdgeWorkersResponse:
+        runtime = RuntimeOptions()
+        return await self.add_hive_edge_workers_with_options_async(request, runtime)
+
     def add_vs_pull_stream_info_config_with_options(
         self,
         request: main_models.AddVsPullStreamInfoConfigRequest,
@@ -2090,6 +2172,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.bind_template_with_options_async(request, runtime)
 
+    def cancel_comfy_task_with_options(
+        self,
+        request: main_models.CancelComfyTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CancelComfyTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CancelComfyTask',
+            version = '2018-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CancelComfyTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cancel_comfy_task_with_options_async(
+        self,
+        request: main_models.CancelComfyTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CancelComfyTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CancelComfyTask',
+            version = '2018-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CancelComfyTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cancel_comfy_task(
+        self,
+        request: main_models.CancelComfyTaskRequest,
+    ) -> main_models.CancelComfyTaskResponse:
+        runtime = RuntimeOptions()
+        return self.cancel_comfy_task_with_options(request, runtime)
+
+    async def cancel_comfy_task_async(
+        self,
+        request: main_models.CancelComfyTaskRequest,
+    ) -> main_models.CancelComfyTaskResponse:
+        runtime = RuntimeOptions()
+        return await self.cancel_comfy_task_with_options_async(request, runtime)
+
     def continuous_adjust_with_options(
         self,
         request: main_models.ContinuousAdjustRequest,
@@ -2257,6 +2409,232 @@ class Client(OpenApiClient):
     ) -> main_models.ContinuousMoveResponse:
         runtime = RuntimeOptions()
         return await self.continuous_move_with_options_async(request, runtime)
+
+    def create_comfy_task_with_options(
+        self,
+        request: main_models.CreateComfyTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateComfyTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.hive_id):
+            query['HiveId'] = request.hive_id
+        if not DaraCore.is_null(request.user_parameters):
+            query['UserParameters'] = request.user_parameters
+        if not DaraCore.is_null(request.workflow_id):
+            query['WorkflowId'] = request.workflow_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateComfyTask',
+            version = '2018-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateComfyTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_comfy_task_with_options_async(
+        self,
+        request: main_models.CreateComfyTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateComfyTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.hive_id):
+            query['HiveId'] = request.hive_id
+        if not DaraCore.is_null(request.user_parameters):
+            query['UserParameters'] = request.user_parameters
+        if not DaraCore.is_null(request.workflow_id):
+            query['WorkflowId'] = request.workflow_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateComfyTask',
+            version = '2018-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateComfyTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_comfy_task(
+        self,
+        request: main_models.CreateComfyTaskRequest,
+    ) -> main_models.CreateComfyTaskResponse:
+        runtime = RuntimeOptions()
+        return self.create_comfy_task_with_options(request, runtime)
+
+    async def create_comfy_task_async(
+        self,
+        request: main_models.CreateComfyTaskRequest,
+    ) -> main_models.CreateComfyTaskResponse:
+        runtime = RuntimeOptions()
+        return await self.create_comfy_task_with_options_async(request, runtime)
+
+    def create_comfy_user_data_dir_with_options(
+        self,
+        request: main_models.CreateComfyUserDataDirRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateComfyUserDataDirResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.path):
+            query['Path'] = request.path
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateComfyUserDataDir',
+            version = '2018-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateComfyUserDataDirResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_comfy_user_data_dir_with_options_async(
+        self,
+        request: main_models.CreateComfyUserDataDirRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateComfyUserDataDirResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.path):
+            query['Path'] = request.path
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateComfyUserDataDir',
+            version = '2018-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateComfyUserDataDirResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_comfy_user_data_dir(
+        self,
+        request: main_models.CreateComfyUserDataDirRequest,
+    ) -> main_models.CreateComfyUserDataDirResponse:
+        runtime = RuntimeOptions()
+        return self.create_comfy_user_data_dir_with_options(request, runtime)
+
+    async def create_comfy_user_data_dir_async(
+        self,
+        request: main_models.CreateComfyUserDataDirRequest,
+    ) -> main_models.CreateComfyUserDataDirResponse:
+        runtime = RuntimeOptions()
+        return await self.create_comfy_user_data_dir_with_options_async(request, runtime)
+
+    def create_comfy_workflow_with_options(
+        self,
+        request: main_models.CreateComfyWorkflowRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateComfyWorkflowResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.workflow):
+            query['Workflow'] = request.workflow
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateComfyWorkflow',
+            version = '2018-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateComfyWorkflowResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_comfy_workflow_with_options_async(
+        self,
+        request: main_models.CreateComfyWorkflowRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateComfyWorkflowResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.workflow):
+            query['Workflow'] = request.workflow
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateComfyWorkflow',
+            version = '2018-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateComfyWorkflowResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_comfy_workflow(
+        self,
+        request: main_models.CreateComfyWorkflowRequest,
+    ) -> main_models.CreateComfyWorkflowResponse:
+        runtime = RuntimeOptions()
+        return self.create_comfy_workflow_with_options(request, runtime)
+
+    async def create_comfy_workflow_async(
+        self,
+        request: main_models.CreateComfyWorkflowRequest,
+    ) -> main_models.CreateComfyWorkflowResponse:
+        runtime = RuntimeOptions()
+        return await self.create_comfy_workflow_with_options_async(request, runtime)
 
     def create_device_with_options(
         self,
@@ -2713,6 +3091,80 @@ class Client(OpenApiClient):
     ) -> main_models.CreateGroupResponse:
         runtime = RuntimeOptions()
         return await self.create_group_with_options_async(request, runtime)
+
+    def create_hive_with_options(
+        self,
+        request: main_models.CreateHiveRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateHiveResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateHive',
+            version = '2018-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateHiveResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_hive_with_options_async(
+        self,
+        request: main_models.CreateHiveRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateHiveResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateHive',
+            version = '2018-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateHiveResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_hive(
+        self,
+        request: main_models.CreateHiveRequest,
+    ) -> main_models.CreateHiveResponse:
+        runtime = RuntimeOptions()
+        return self.create_hive_with_options(request, runtime)
+
+    async def create_hive_async(
+        self,
+        request: main_models.CreateHiveRequest,
+    ) -> main_models.CreateHiveResponse:
+        runtime = RuntimeOptions()
+        return await self.create_hive_with_options_async(request, runtime)
 
     def create_parent_platform_with_options(
         self,
@@ -3412,6 +3864,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_template_with_options_async(request, runtime)
 
+    def del_hive_edge_workers_with_options(
+        self,
+        tmp_req: main_models.DelHiveEdgeWorkersRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DelHiveEdgeWorkersResponse:
+        tmp_req.validate()
+        request = main_models.DelHiveEdgeWorkersShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.instance_ids):
+            request.instance_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.instance_ids, 'InstanceIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.hive_id):
+            query['HiveId'] = request.hive_id
+        if not DaraCore.is_null(request.instance_ids_shrink):
+            query['InstanceIds'] = request.instance_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DelHiveEdgeWorkers',
+            version = '2018-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DelHiveEdgeWorkersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def del_hive_edge_workers_with_options_async(
+        self,
+        tmp_req: main_models.DelHiveEdgeWorkersRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DelHiveEdgeWorkersResponse:
+        tmp_req.validate()
+        request = main_models.DelHiveEdgeWorkersShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.instance_ids):
+            request.instance_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.instance_ids, 'InstanceIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.hive_id):
+            query['HiveId'] = request.hive_id
+        if not DaraCore.is_null(request.instance_ids_shrink):
+            query['InstanceIds'] = request.instance_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DelHiveEdgeWorkers',
+            version = '2018-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DelHiveEdgeWorkersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def del_hive_edge_workers(
+        self,
+        request: main_models.DelHiveEdgeWorkersRequest,
+    ) -> main_models.DelHiveEdgeWorkersResponse:
+        runtime = RuntimeOptions()
+        return self.del_hive_edge_workers_with_options(request, runtime)
+
+    async def del_hive_edge_workers_async(
+        self,
+        request: main_models.DelHiveEdgeWorkersRequest,
+    ) -> main_models.DelHiveEdgeWorkersResponse:
+        runtime = RuntimeOptions()
+        return await self.del_hive_edge_workers_with_options_async(request, runtime)
+
     def delete_cloud_app_with_options(
         self,
         request: main_models.DeleteCloudAppRequest,
@@ -3481,6 +4015,216 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteCloudAppResponse:
         runtime = RuntimeOptions()
         return await self.delete_cloud_app_with_options_async(request, runtime)
+
+    def delete_comfy_production_with_options(
+        self,
+        request: main_models.DeleteComfyProductionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteComfyProductionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.production_id):
+            query['ProductionId'] = request.production_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteComfyProduction',
+            version = '2018-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteComfyProductionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_comfy_production_with_options_async(
+        self,
+        request: main_models.DeleteComfyProductionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteComfyProductionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.production_id):
+            query['ProductionId'] = request.production_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteComfyProduction',
+            version = '2018-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteComfyProductionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_comfy_production(
+        self,
+        request: main_models.DeleteComfyProductionRequest,
+    ) -> main_models.DeleteComfyProductionResponse:
+        runtime = RuntimeOptions()
+        return self.delete_comfy_production_with_options(request, runtime)
+
+    async def delete_comfy_production_async(
+        self,
+        request: main_models.DeleteComfyProductionRequest,
+    ) -> main_models.DeleteComfyProductionResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_comfy_production_with_options_async(request, runtime)
+
+    def delete_comfy_user_data_with_options(
+        self,
+        request: main_models.DeleteComfyUserDataRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteComfyUserDataResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.file_name):
+            query['FileName'] = request.file_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteComfyUserData',
+            version = '2018-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteComfyUserDataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_comfy_user_data_with_options_async(
+        self,
+        request: main_models.DeleteComfyUserDataRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteComfyUserDataResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.file_name):
+            query['FileName'] = request.file_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteComfyUserData',
+            version = '2018-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteComfyUserDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_comfy_user_data(
+        self,
+        request: main_models.DeleteComfyUserDataRequest,
+    ) -> main_models.DeleteComfyUserDataResponse:
+        runtime = RuntimeOptions()
+        return self.delete_comfy_user_data_with_options(request, runtime)
+
+    async def delete_comfy_user_data_async(
+        self,
+        request: main_models.DeleteComfyUserDataRequest,
+    ) -> main_models.DeleteComfyUserDataResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_comfy_user_data_with_options_async(request, runtime)
+
+    def delete_comfy_workflow_with_options(
+        self,
+        request: main_models.DeleteComfyWorkflowRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteComfyWorkflowResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.workflow_id):
+            query['WorkflowId'] = request.workflow_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteComfyWorkflow',
+            version = '2018-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteComfyWorkflowResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_comfy_workflow_with_options_async(
+        self,
+        request: main_models.DeleteComfyWorkflowRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteComfyWorkflowResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.workflow_id):
+            query['WorkflowId'] = request.workflow_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteComfyWorkflow',
+            version = '2018-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteComfyWorkflowResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_comfy_workflow(
+        self,
+        request: main_models.DeleteComfyWorkflowRequest,
+    ) -> main_models.DeleteComfyWorkflowResponse:
+        runtime = RuntimeOptions()
+        return self.delete_comfy_workflow_with_options(request, runtime)
+
+    async def delete_comfy_workflow_async(
+        self,
+        request: main_models.DeleteComfyWorkflowRequest,
+    ) -> main_models.DeleteComfyWorkflowResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_comfy_workflow_with_options_async(request, runtime)
 
     def delete_device_with_options(
         self,
@@ -3773,6 +4517,76 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteGroupResponse:
         runtime = RuntimeOptions()
         return await self.delete_group_with_options_async(request, runtime)
+
+    def delete_hive_with_options(
+        self,
+        request: main_models.DeleteHiveRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteHiveResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.hive_id):
+            query['HiveId'] = request.hive_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteHive',
+            version = '2018-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteHiveResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_hive_with_options_async(
+        self,
+        request: main_models.DeleteHiveRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteHiveResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.hive_id):
+            query['HiveId'] = request.hive_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteHive',
+            version = '2018-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteHiveResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_hive(
+        self,
+        request: main_models.DeleteHiveRequest,
+    ) -> main_models.DeleteHiveResponse:
+        runtime = RuntimeOptions()
+        return self.delete_hive_with_options(request, runtime)
+
+    async def delete_hive_async(
+        self,
+        request: main_models.DeleteHiveRequest,
+    ) -> main_models.DeleteHiveResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_hive_with_options_async(request, runtime)
 
     def delete_parent_platform_with_options(
         self,
@@ -4607,6 +5421,544 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeAccountStatResponse:
         runtime = RuntimeOptions()
         return await self.describe_account_stat_with_options_async(request, runtime)
+
+    def describe_comfy_production_download_url_with_options(
+        self,
+        request: main_models.DescribeComfyProductionDownloadUrlRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeComfyProductionDownloadUrlResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.production_id):
+            query['ProductionId'] = request.production_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeComfyProductionDownloadUrl',
+            version = '2018-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeComfyProductionDownloadUrlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_comfy_production_download_url_with_options_async(
+        self,
+        request: main_models.DescribeComfyProductionDownloadUrlRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeComfyProductionDownloadUrlResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.production_id):
+            query['ProductionId'] = request.production_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeComfyProductionDownloadUrl',
+            version = '2018-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeComfyProductionDownloadUrlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_comfy_production_download_url(
+        self,
+        request: main_models.DescribeComfyProductionDownloadUrlRequest,
+    ) -> main_models.DescribeComfyProductionDownloadUrlResponse:
+        runtime = RuntimeOptions()
+        return self.describe_comfy_production_download_url_with_options(request, runtime)
+
+    async def describe_comfy_production_download_url_async(
+        self,
+        request: main_models.DescribeComfyProductionDownloadUrlRequest,
+    ) -> main_models.DescribeComfyProductionDownloadUrlResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_comfy_production_download_url_with_options_async(request, runtime)
+
+    def describe_comfy_productions_with_options(
+        self,
+        request: main_models.DescribeComfyProductionsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeComfyProductionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeComfyProductions',
+            version = '2018-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeComfyProductionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_comfy_productions_with_options_async(
+        self,
+        request: main_models.DescribeComfyProductionsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeComfyProductionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeComfyProductions',
+            version = '2018-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeComfyProductionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_comfy_productions(
+        self,
+        request: main_models.DescribeComfyProductionsRequest,
+    ) -> main_models.DescribeComfyProductionsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_comfy_productions_with_options(request, runtime)
+
+    async def describe_comfy_productions_async(
+        self,
+        request: main_models.DescribeComfyProductionsRequest,
+    ) -> main_models.DescribeComfyProductionsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_comfy_productions_with_options_async(request, runtime)
+
+    def describe_comfy_tasks_with_options(
+        self,
+        request: main_models.DescribeComfyTasksRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeComfyTasksResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.task_state):
+            query['TaskState'] = request.task_state
+        if not DaraCore.is_null(request.workflow_id):
+            query['WorkflowId'] = request.workflow_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeComfyTasks',
+            version = '2018-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeComfyTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_comfy_tasks_with_options_async(
+        self,
+        request: main_models.DescribeComfyTasksRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeComfyTasksResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.task_state):
+            query['TaskState'] = request.task_state
+        if not DaraCore.is_null(request.workflow_id):
+            query['WorkflowId'] = request.workflow_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeComfyTasks',
+            version = '2018-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeComfyTasksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_comfy_tasks(
+        self,
+        request: main_models.DescribeComfyTasksRequest,
+    ) -> main_models.DescribeComfyTasksResponse:
+        runtime = RuntimeOptions()
+        return self.describe_comfy_tasks_with_options(request, runtime)
+
+    async def describe_comfy_tasks_async(
+        self,
+        request: main_models.DescribeComfyTasksRequest,
+    ) -> main_models.DescribeComfyTasksResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_comfy_tasks_with_options_async(request, runtime)
+
+    def describe_comfy_user_data_download_url_with_options(
+        self,
+        request: main_models.DescribeComfyUserDataDownloadUrlRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeComfyUserDataDownloadUrlResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.file_name):
+            query['FileName'] = request.file_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeComfyUserDataDownloadUrl',
+            version = '2018-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeComfyUserDataDownloadUrlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_comfy_user_data_download_url_with_options_async(
+        self,
+        request: main_models.DescribeComfyUserDataDownloadUrlRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeComfyUserDataDownloadUrlResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.file_name):
+            query['FileName'] = request.file_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeComfyUserDataDownloadUrl',
+            version = '2018-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeComfyUserDataDownloadUrlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_comfy_user_data_download_url(
+        self,
+        request: main_models.DescribeComfyUserDataDownloadUrlRequest,
+    ) -> main_models.DescribeComfyUserDataDownloadUrlResponse:
+        runtime = RuntimeOptions()
+        return self.describe_comfy_user_data_download_url_with_options(request, runtime)
+
+    async def describe_comfy_user_data_download_url_async(
+        self,
+        request: main_models.DescribeComfyUserDataDownloadUrlRequest,
+    ) -> main_models.DescribeComfyUserDataDownloadUrlResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_comfy_user_data_download_url_with_options_async(request, runtime)
+
+    def describe_comfy_user_data_upload_url_with_options(
+        self,
+        request: main_models.DescribeComfyUserDataUploadUrlRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeComfyUserDataUploadUrlResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.content_type):
+            query['ContentType'] = request.content_type
+        if not DaraCore.is_null(request.file_md_5):
+            query['FileMd5'] = request.file_md_5
+        if not DaraCore.is_null(request.file_name):
+            query['FileName'] = request.file_name
+        if not DaraCore.is_null(request.file_size_bytes):
+            query['FileSizeBytes'] = request.file_size_bytes
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeComfyUserDataUploadUrl',
+            version = '2018-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeComfyUserDataUploadUrlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_comfy_user_data_upload_url_with_options_async(
+        self,
+        request: main_models.DescribeComfyUserDataUploadUrlRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeComfyUserDataUploadUrlResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.content_type):
+            query['ContentType'] = request.content_type
+        if not DaraCore.is_null(request.file_md_5):
+            query['FileMd5'] = request.file_md_5
+        if not DaraCore.is_null(request.file_name):
+            query['FileName'] = request.file_name
+        if not DaraCore.is_null(request.file_size_bytes):
+            query['FileSizeBytes'] = request.file_size_bytes
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeComfyUserDataUploadUrl',
+            version = '2018-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeComfyUserDataUploadUrlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_comfy_user_data_upload_url(
+        self,
+        request: main_models.DescribeComfyUserDataUploadUrlRequest,
+    ) -> main_models.DescribeComfyUserDataUploadUrlResponse:
+        runtime = RuntimeOptions()
+        return self.describe_comfy_user_data_upload_url_with_options(request, runtime)
+
+    async def describe_comfy_user_data_upload_url_async(
+        self,
+        request: main_models.DescribeComfyUserDataUploadUrlRequest,
+    ) -> main_models.DescribeComfyUserDataUploadUrlResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_comfy_user_data_upload_url_with_options_async(request, runtime)
+
+    def describe_comfy_user_datas_with_options(
+        self,
+        request: main_models.DescribeComfyUserDatasRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeComfyUserDatasResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.file_name):
+            query['FileName'] = request.file_name
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeComfyUserDatas',
+            version = '2018-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeComfyUserDatasResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_comfy_user_datas_with_options_async(
+        self,
+        request: main_models.DescribeComfyUserDatasRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeComfyUserDatasResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.file_name):
+            query['FileName'] = request.file_name
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeComfyUserDatas',
+            version = '2018-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeComfyUserDatasResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_comfy_user_datas(
+        self,
+        request: main_models.DescribeComfyUserDatasRequest,
+    ) -> main_models.DescribeComfyUserDatasResponse:
+        runtime = RuntimeOptions()
+        return self.describe_comfy_user_datas_with_options(request, runtime)
+
+    async def describe_comfy_user_datas_async(
+        self,
+        request: main_models.DescribeComfyUserDatasRequest,
+    ) -> main_models.DescribeComfyUserDatasResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_comfy_user_datas_with_options_async(request, runtime)
+
+    def describe_comfy_workflows_with_options(
+        self,
+        request: main_models.DescribeComfyWorkflowsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeComfyWorkflowsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeComfyWorkflows',
+            version = '2018-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeComfyWorkflowsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_comfy_workflows_with_options_async(
+        self,
+        request: main_models.DescribeComfyWorkflowsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeComfyWorkflowsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeComfyWorkflows',
+            version = '2018-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeComfyWorkflowsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_comfy_workflows(
+        self,
+        request: main_models.DescribeComfyWorkflowsRequest,
+    ) -> main_models.DescribeComfyWorkflowsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_comfy_workflows_with_options(request, runtime)
+
+    async def describe_comfy_workflows_async(
+        self,
+        request: main_models.DescribeComfyWorkflowsRequest,
+    ) -> main_models.DescribeComfyWorkflowsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_comfy_workflows_with_options_async(request, runtime)
 
     def describe_device_with_options(
         self,
@@ -9880,6 +11232,128 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_cloud_apps_with_options_async(request, runtime)
 
+    def list_edge_workers_with_options(
+        self,
+        tmp_req: main_models.ListEdgeWorkersRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListEdgeWorkersResponse:
+        tmp_req.validate()
+        request = main_models.ListEdgeWorkersShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.hive_ids):
+            request.hive_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.hive_ids, 'HiveIds', 'json')
+        if not DaraCore.is_null(tmp_req.instance_ids):
+            request.instance_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.instance_ids, 'InstanceIds', 'json')
+        if not DaraCore.is_null(tmp_req.plan_ids):
+            request.plan_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.plan_ids, 'PlanIds', 'json')
+        if not DaraCore.is_null(tmp_req.statuses):
+            request.statuses_shrink = Utils.array_to_string_with_specified_style(tmp_req.statuses, 'Statuses', 'json')
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.hive_ids_shrink):
+            query['HiveIds'] = request.hive_ids_shrink
+        if not DaraCore.is_null(request.instance_ids_shrink):
+            query['InstanceIds'] = request.instance_ids_shrink
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.plan_ids_shrink):
+            query['PlanIds'] = request.plan_ids_shrink
+        if not DaraCore.is_null(request.spec):
+            query['Spec'] = request.spec
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.statuses_shrink):
+            query['Statuses'] = request.statuses_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListEdgeWorkers',
+            version = '2018-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListEdgeWorkersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_edge_workers_with_options_async(
+        self,
+        tmp_req: main_models.ListEdgeWorkersRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListEdgeWorkersResponse:
+        tmp_req.validate()
+        request = main_models.ListEdgeWorkersShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.hive_ids):
+            request.hive_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.hive_ids, 'HiveIds', 'json')
+        if not DaraCore.is_null(tmp_req.instance_ids):
+            request.instance_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.instance_ids, 'InstanceIds', 'json')
+        if not DaraCore.is_null(tmp_req.plan_ids):
+            request.plan_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.plan_ids, 'PlanIds', 'json')
+        if not DaraCore.is_null(tmp_req.statuses):
+            request.statuses_shrink = Utils.array_to_string_with_specified_style(tmp_req.statuses, 'Statuses', 'json')
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.hive_ids_shrink):
+            query['HiveIds'] = request.hive_ids_shrink
+        if not DaraCore.is_null(request.instance_ids_shrink):
+            query['InstanceIds'] = request.instance_ids_shrink
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.plan_ids_shrink):
+            query['PlanIds'] = request.plan_ids_shrink
+        if not DaraCore.is_null(request.spec):
+            query['Spec'] = request.spec
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.statuses_shrink):
+            query['Statuses'] = request.statuses_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListEdgeWorkers',
+            version = '2018-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListEdgeWorkersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_edge_workers(
+        self,
+        request: main_models.ListEdgeWorkersRequest,
+    ) -> main_models.ListEdgeWorkersResponse:
+        runtime = RuntimeOptions()
+        return self.list_edge_workers_with_options(request, runtime)
+
+    async def list_edge_workers_async(
+        self,
+        request: main_models.ListEdgeWorkersRequest,
+    ) -> main_models.ListEdgeWorkersResponse:
+        runtime = RuntimeOptions()
+        return await self.list_edge_workers_with_options_async(request, runtime)
+
     def list_file_push_statuses_with_options(
         self,
         request: main_models.ListFilePushStatusesRequest,
@@ -10011,6 +11485,96 @@ class Client(OpenApiClient):
     ) -> main_models.ListFilesResponse:
         runtime = RuntimeOptions()
         return await self.list_files_with_options_async(request, runtime)
+
+    def list_hives_with_options(
+        self,
+        request: main_models.ListHivesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListHivesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.hive_id):
+            query['HiveId'] = request.hive_id
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListHives',
+            version = '2018-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListHivesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_hives_with_options_async(
+        self,
+        request: main_models.ListHivesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListHivesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.hive_id):
+            query['HiveId'] = request.hive_id
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListHives',
+            version = '2018-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListHivesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_hives(
+        self,
+        request: main_models.ListHivesRequest,
+    ) -> main_models.ListHivesResponse:
+        runtime = RuntimeOptions()
+        return self.list_hives_with_options(request, runtime)
+
+    async def list_hives_async(
+        self,
+        request: main_models.ListHivesRequest,
+    ) -> main_models.ListHivesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_hives_with_options_async(request, runtime)
 
     def list_public_keys_with_options(
         self,
@@ -10626,6 +12190,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_rendering_sessions_with_options_async(request, runtime)
 
+    def list_specifications_with_options(
+        self,
+        request: main_models.ListSpecificationsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListSpecificationsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.specification):
+            query['Specification'] = request.specification
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListSpecifications',
+            version = '2018-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListSpecificationsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_specifications_with_options_async(
+        self,
+        request: main_models.ListSpecificationsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListSpecificationsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.specification):
+            query['Specification'] = request.specification
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListSpecifications',
+            version = '2018-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListSpecificationsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_specifications(
+        self,
+        request: main_models.ListSpecificationsRequest,
+    ) -> main_models.ListSpecificationsResponse:
+        runtime = RuntimeOptions()
+        return self.list_specifications_with_options(request, runtime)
+
+    async def list_specifications_async(
+        self,
+        request: main_models.ListSpecificationsRequest,
+    ) -> main_models.ListSpecificationsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_specifications_with_options_async(request, runtime)
+
     def manage_login_with_options(
         self,
         request: main_models.ManageLoginRequest,
@@ -10707,6 +12349,84 @@ class Client(OpenApiClient):
     ) -> main_models.ManageLoginResponse:
         runtime = RuntimeOptions()
         return await self.manage_login_with_options_async(request, runtime)
+
+    def modify_comfy_workflow_with_options(
+        self,
+        request: main_models.ModifyComfyWorkflowRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyComfyWorkflowResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.workflow_id):
+            query['WorkflowId'] = request.workflow_id
+        if not DaraCore.is_null(request.workflow_name):
+            query['WorkflowName'] = request.workflow_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyComfyWorkflow',
+            version = '2018-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyComfyWorkflowResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_comfy_workflow_with_options_async(
+        self,
+        request: main_models.ModifyComfyWorkflowRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyComfyWorkflowResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.workflow_id):
+            query['WorkflowId'] = request.workflow_id
+        if not DaraCore.is_null(request.workflow_name):
+            query['WorkflowName'] = request.workflow_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyComfyWorkflow',
+            version = '2018-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyComfyWorkflowResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_comfy_workflow(
+        self,
+        request: main_models.ModifyComfyWorkflowRequest,
+    ) -> main_models.ModifyComfyWorkflowResponse:
+        runtime = RuntimeOptions()
+        return self.modify_comfy_workflow_with_options(request, runtime)
+
+    async def modify_comfy_workflow_async(
+        self,
+        request: main_models.ModifyComfyWorkflowRequest,
+    ) -> main_models.ModifyComfyWorkflowResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_comfy_workflow_with_options_async(request, runtime)
 
     def modify_device_with_options(
         self,
@@ -11316,6 +13036,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.modify_group_with_options_async(request, runtime)
 
+    def modify_hive_attribute_with_options(
+        self,
+        request: main_models.ModifyHiveAttributeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyHiveAttributeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.hive_id):
+            query['HiveId'] = request.hive_id
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyHiveAttribute',
+            version = '2018-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyHiveAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_hive_attribute_with_options_async(
+        self,
+        request: main_models.ModifyHiveAttributeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyHiveAttributeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.hive_id):
+            query['HiveId'] = request.hive_id
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyHiveAttribute',
+            version = '2018-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyHiveAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_hive_attribute(
+        self,
+        request: main_models.ModifyHiveAttributeRequest,
+    ) -> main_models.ModifyHiveAttributeResponse:
+        runtime = RuntimeOptions()
+        return self.modify_hive_attribute_with_options(request, runtime)
+
+    async def modify_hive_attribute_async(
+        self,
+        request: main_models.ModifyHiveAttributeRequest,
+    ) -> main_models.ModifyHiveAttributeResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_hive_attribute_with_options_async(request, runtime)
+
     def modify_parent_platform_with_options(
         self,
         request: main_models.ModifyParentPlatformRequest,
@@ -11891,6 +13689,88 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyTemplateResponse:
         runtime = RuntimeOptions()
         return await self.modify_template_with_options_async(request, runtime)
+
+    def move_hive_edge_workers_with_options(
+        self,
+        tmp_req: main_models.MoveHiveEdgeWorkersRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.MoveHiveEdgeWorkersResponse:
+        tmp_req.validate()
+        request = main_models.MoveHiveEdgeWorkersShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.instance_ids):
+            request.instance_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.instance_ids, 'InstanceIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.hive_id):
+            query['HiveId'] = request.hive_id
+        if not DaraCore.is_null(request.instance_ids_shrink):
+            query['InstanceIds'] = request.instance_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'MoveHiveEdgeWorkers',
+            version = '2018-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.MoveHiveEdgeWorkersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def move_hive_edge_workers_with_options_async(
+        self,
+        tmp_req: main_models.MoveHiveEdgeWorkersRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.MoveHiveEdgeWorkersResponse:
+        tmp_req.validate()
+        request = main_models.MoveHiveEdgeWorkersShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.instance_ids):
+            request.instance_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.instance_ids, 'InstanceIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.hive_id):
+            query['HiveId'] = request.hive_id
+        if not DaraCore.is_null(request.instance_ids_shrink):
+            query['InstanceIds'] = request.instance_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'MoveHiveEdgeWorkers',
+            version = '2018-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.MoveHiveEdgeWorkersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def move_hive_edge_workers(
+        self,
+        request: main_models.MoveHiveEdgeWorkersRequest,
+    ) -> main_models.MoveHiveEdgeWorkersResponse:
+        runtime = RuntimeOptions()
+        return self.move_hive_edge_workers_with_options(request, runtime)
+
+    async def move_hive_edge_workers_async(
+        self,
+        request: main_models.MoveHiveEdgeWorkersRequest,
+    ) -> main_models.MoveHiveEdgeWorkersResponse:
+        runtime = RuntimeOptions()
+        return await self.move_hive_edge_workers_with_options_async(request, runtime)
 
     def open_vs_service_with_options(
         self,

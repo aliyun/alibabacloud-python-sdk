@@ -7,14 +7,14 @@ from typing import List
 from alibabacloud_vs20181212 import models as main_models
 from darabonba.model import DaraModel
 
-class AssociateRenderingProjectInstancesResponseBody(DaraModel):
+class MoveHiveEdgeWorkersResponseBody(DaraModel):
     def __init__(
         self,
-        failed_instance_count: str = None,
-        failed_instances: List[main_models.AssociateRenderingProjectInstancesResponseBodyFailedInstances] = None,
+        failed_instance_count: int = None,
+        failed_instances: List[main_models.MoveHiveEdgeWorkersResponseBodyFailedInstances] = None,
         request_id: str = None,
-        success_instance_count: str = None,
-        success_instances: List[main_models.AssociateRenderingProjectInstancesResponseBodySuccessInstances] = None,
+        success_instance_count: int = None,
+        success_instances: List[main_models.MoveHiveEdgeWorkersResponseBodySuccessInstances] = None,
     ):
         self.failed_instance_count = failed_instance_count
         self.failed_instances = failed_instances
@@ -66,7 +66,7 @@ class AssociateRenderingProjectInstancesResponseBody(DaraModel):
         self.failed_instances = []
         if m.get('FailedInstances') is not None:
             for k1 in m.get('FailedInstances'):
-                temp_model = main_models.AssociateRenderingProjectInstancesResponseBodyFailedInstances()
+                temp_model = main_models.MoveHiveEdgeWorkersResponseBodyFailedInstances()
                 self.failed_instances.append(temp_model.from_map(k1))
 
         if m.get('RequestId') is not None:
@@ -78,19 +78,19 @@ class AssociateRenderingProjectInstancesResponseBody(DaraModel):
         self.success_instances = []
         if m.get('SuccessInstances') is not None:
             for k1 in m.get('SuccessInstances'):
-                temp_model = main_models.AssociateRenderingProjectInstancesResponseBodySuccessInstances()
+                temp_model = main_models.MoveHiveEdgeWorkersResponseBodySuccessInstances()
                 self.success_instances.append(temp_model.from_map(k1))
 
         return self
 
-class AssociateRenderingProjectInstancesResponseBodySuccessInstances(DaraModel):
+class MoveHiveEdgeWorkersResponseBodySuccessInstances(DaraModel):
     def __init__(
         self,
+        instance_id: str = None,
         message: str = None,
-        rendering_instance_id: str = None,
     ):
+        self.instance_id = instance_id
         self.message = message
-        self.rendering_instance_id = rendering_instance_id
 
     def validate(self):
         pass
@@ -100,32 +100,32 @@ class AssociateRenderingProjectInstancesResponseBodySuccessInstances(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+
         if self.message is not None:
             result['Message'] = self.message
-
-        if self.rendering_instance_id is not None:
-            result['RenderingInstanceId'] = self.rendering_instance_id
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+
         if m.get('Message') is not None:
             self.message = m.get('Message')
-
-        if m.get('RenderingInstanceId') is not None:
-            self.rendering_instance_id = m.get('RenderingInstanceId')
 
         return self
 
-class AssociateRenderingProjectInstancesResponseBodyFailedInstances(DaraModel):
+class MoveHiveEdgeWorkersResponseBodyFailedInstances(DaraModel):
     def __init__(
         self,
+        instance_id: str = None,
         message: str = None,
-        rendering_instance_id: str = None,
     ):
+        self.instance_id = instance_id
         self.message = message
-        self.rendering_instance_id = rendering_instance_id
 
     def validate(self):
         pass
@@ -135,21 +135,21 @@ class AssociateRenderingProjectInstancesResponseBodyFailedInstances(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+
         if self.message is not None:
             result['Message'] = self.message
-
-        if self.rendering_instance_id is not None:
-            result['RenderingInstanceId'] = self.rendering_instance_id
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+
         if m.get('Message') is not None:
             self.message = m.get('Message')
-
-        if m.get('RenderingInstanceId') is not None:
-            self.rendering_instance_id = m.get('RenderingInstanceId')
 
         return self
 

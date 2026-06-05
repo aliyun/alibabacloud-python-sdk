@@ -1,3 +1,31 @@
+2026-06-05 Version: 3.7.0
+- Support API AddHiveEdgeWorkers.
+- Support API CancelComfyTask.
+- Support API CreateComfyTask.
+- Support API CreateComfyUserDataDir.
+- Support API CreateComfyWorkflow.
+- Support API CreateHive.
+- Support API DelHiveEdgeWorkers.
+- Support API DeleteComfyProduction.
+- Support API DeleteComfyUserData.
+- Support API DeleteComfyWorkflow.
+- Support API DeleteHive.
+- Support API DescribeComfyProductionDownloadUrl.
+- Support API DescribeComfyProductions.
+- Support API DescribeComfyTasks.
+- Support API DescribeComfyUserDataDownloadUrl.
+- Support API DescribeComfyUserDataUploadUrl.
+- Support API DescribeComfyUserDatas.
+- Support API DescribeComfyWorkflows.
+- Support API ListEdgeWorkers.
+- Support API ListHives.
+- Support API ListSpecifications.
+- Support API ModifyComfyWorkflow.
+- Support API ModifyHiveAttribute.
+- Support API MoveHiveEdgeWorkers.
+- Update API DescribeRenderingInstance: add response parameters Body.ResourceStatus.
+
+
 2026-01-30 Version: 3.6.0
 - Support API ModifyRenderingChargeType.
 

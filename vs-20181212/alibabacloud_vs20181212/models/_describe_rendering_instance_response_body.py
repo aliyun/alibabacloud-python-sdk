@@ -24,6 +24,7 @@ class DescribeRenderingInstanceResponseBody(DaraModel):
         rendering_status: main_models.DescribeRenderingInstanceResponseBodyRenderingStatus = None,
         request_id: str = None,
         resource_attributes: main_models.DescribeRenderingInstanceResponseBodyResourceAttributes = None,
+        resource_status: main_models.DescribeRenderingInstanceResponseBodyResourceStatus = None,
         storage_size: int = None,
         system_info: main_models.DescribeRenderingInstanceResponseBodySystemInfo = None,
     ):
@@ -41,6 +42,7 @@ class DescribeRenderingInstanceResponseBody(DaraModel):
         self.rendering_status = rendering_status
         self.request_id = request_id
         self.resource_attributes = resource_attributes
+        self.resource_status = resource_status
         self.storage_size = storage_size
         self.system_info = system_info
 
@@ -59,6 +61,8 @@ class DescribeRenderingInstanceResponseBody(DaraModel):
             self.rendering_status.validate()
         if self.resource_attributes:
             self.resource_attributes.validate()
+        if self.resource_status:
+            self.resource_status.validate()
         if self.system_info:
             self.system_info.validate()
 
@@ -112,6 +116,9 @@ class DescribeRenderingInstanceResponseBody(DaraModel):
 
         if self.resource_attributes is not None:
             result['ResourceAttributes'] = self.resource_attributes.to_map()
+
+        if self.resource_status is not None:
+            result['ResourceStatus'] = self.resource_status.to_map()
 
         if self.storage_size is not None:
             result['StorageSize'] = self.storage_size
@@ -174,6 +181,10 @@ class DescribeRenderingInstanceResponseBody(DaraModel):
             temp_model = main_models.DescribeRenderingInstanceResponseBodyResourceAttributes()
             self.resource_attributes = temp_model.from_map(m.get('ResourceAttributes'))
 
+        if m.get('ResourceStatus') is not None:
+            temp_model = main_models.DescribeRenderingInstanceResponseBodyResourceStatus()
+            self.resource_status = temp_model.from_map(m.get('ResourceStatus'))
+
         if m.get('StorageSize') is not None:
             self.storage_size = m.get('StorageSize')
 
@@ -215,6 +226,33 @@ class DescribeRenderingInstanceResponseBodySystemInfo(DaraModel):
 
         if m.get('Resolution') is not None:
             self.resolution = m.get('Resolution')
+
+        return self
+
+class DescribeRenderingInstanceResponseBodyResourceStatus(DaraModel):
+    def __init__(
+        self,
+        status: str = None,
+    ):
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.status is not None:
+            result['Status'] = self.status
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
 
         return self
 

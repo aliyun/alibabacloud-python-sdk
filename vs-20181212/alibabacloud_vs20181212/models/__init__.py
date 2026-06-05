@@ -2,6 +2,10 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from ._add_hive_edge_workers_request import AddHiveEdgeWorkersRequest
+from ._add_hive_edge_workers_shrink_request import AddHiveEdgeWorkersShrinkRequest
+from ._add_hive_edge_workers_response_body import AddHiveEdgeWorkersResponseBody
+from ._add_hive_edge_workers_response import AddHiveEdgeWorkersResponse
 from ._add_vs_pull_stream_info_config_request import AddVsPullStreamInfoConfigRequest
 from ._add_vs_pull_stream_info_config_response_body import AddVsPullStreamInfoConfigResponseBody
 from ._add_vs_pull_stream_info_config_response import AddVsPullStreamInfoConfigResponse
@@ -78,12 +82,24 @@ from ._bind_purchased_device_response import BindPurchasedDeviceResponse
 from ._bind_template_request import BindTemplateRequest
 from ._bind_template_response_body import BindTemplateResponseBody
 from ._bind_template_response import BindTemplateResponse
+from ._cancel_comfy_task_request import CancelComfyTaskRequest
+from ._cancel_comfy_task_response_body import CancelComfyTaskResponseBody
+from ._cancel_comfy_task_response import CancelComfyTaskResponse
 from ._continuous_adjust_request import ContinuousAdjustRequest
 from ._continuous_adjust_response_body import ContinuousAdjustResponseBody
 from ._continuous_adjust_response import ContinuousAdjustResponse
 from ._continuous_move_request import ContinuousMoveRequest
 from ._continuous_move_response_body import ContinuousMoveResponseBody
 from ._continuous_move_response import ContinuousMoveResponse
+from ._create_comfy_task_request import CreateComfyTaskRequest
+from ._create_comfy_task_response_body import CreateComfyTaskResponseBody
+from ._create_comfy_task_response import CreateComfyTaskResponse
+from ._create_comfy_user_data_dir_request import CreateComfyUserDataDirRequest
+from ._create_comfy_user_data_dir_response_body import CreateComfyUserDataDirResponseBody
+from ._create_comfy_user_data_dir_response import CreateComfyUserDataDirResponse
+from ._create_comfy_workflow_request import CreateComfyWorkflowRequest
+from ._create_comfy_workflow_response_body import CreateComfyWorkflowResponseBody
+from ._create_comfy_workflow_response import CreateComfyWorkflowResponse
 from ._create_device_request import CreateDeviceRequest
 from ._create_device_response_body import CreateDeviceResponseBody
 from ._create_device_response import CreateDeviceResponse
@@ -96,6 +112,9 @@ from ._create_directory_response import CreateDirectoryResponse
 from ._create_group_request import CreateGroupRequest
 from ._create_group_response_body import CreateGroupResponseBody
 from ._create_group_response import CreateGroupResponse
+from ._create_hive_request import CreateHiveRequest
+from ._create_hive_response_body import CreateHiveResponseBody
+from ._create_hive_response import CreateHiveResponse
 from ._create_parent_platform_request import CreateParentPlatformRequest
 from ._create_parent_platform_response_body import CreateParentPlatformResponseBody
 from ._create_parent_platform_response import CreateParentPlatformResponse
@@ -119,9 +138,22 @@ from ._create_stream_snapshot_response import CreateStreamSnapshotResponse
 from ._create_template_request import CreateTemplateRequest
 from ._create_template_response_body import CreateTemplateResponseBody
 from ._create_template_response import CreateTemplateResponse
+from ._del_hive_edge_workers_request import DelHiveEdgeWorkersRequest
+from ._del_hive_edge_workers_shrink_request import DelHiveEdgeWorkersShrinkRequest
+from ._del_hive_edge_workers_response_body import DelHiveEdgeWorkersResponseBody
+from ._del_hive_edge_workers_response import DelHiveEdgeWorkersResponse
 from ._delete_cloud_app_request import DeleteCloudAppRequest
 from ._delete_cloud_app_response_body import DeleteCloudAppResponseBody
 from ._delete_cloud_app_response import DeleteCloudAppResponse
+from ._delete_comfy_production_request import DeleteComfyProductionRequest
+from ._delete_comfy_production_response_body import DeleteComfyProductionResponseBody
+from ._delete_comfy_production_response import DeleteComfyProductionResponse
+from ._delete_comfy_user_data_request import DeleteComfyUserDataRequest
+from ._delete_comfy_user_data_response_body import DeleteComfyUserDataResponseBody
+from ._delete_comfy_user_data_response import DeleteComfyUserDataResponse
+from ._delete_comfy_workflow_request import DeleteComfyWorkflowRequest
+from ._delete_comfy_workflow_response_body import DeleteComfyWorkflowResponseBody
+from ._delete_comfy_workflow_response import DeleteComfyWorkflowResponse
 from ._delete_device_request import DeleteDeviceRequest
 from ._delete_device_response_body import DeleteDeviceResponseBody
 from ._delete_device_response import DeleteDeviceResponse
@@ -134,6 +166,9 @@ from ._delete_file_response import DeleteFileResponse
 from ._delete_group_request import DeleteGroupRequest
 from ._delete_group_response_body import DeleteGroupResponseBody
 from ._delete_group_response import DeleteGroupResponse
+from ._delete_hive_request import DeleteHiveRequest
+from ._delete_hive_response_body import DeleteHiveResponseBody
+from ._delete_hive_response import DeleteHiveResponse
 from ._delete_parent_platform_request import DeleteParentPlatformRequest
 from ._delete_parent_platform_response_body import DeleteParentPlatformResponseBody
 from ._delete_parent_platform_response import DeleteParentPlatformResponse
@@ -169,6 +204,27 @@ from ._delete_vs_streams_notify_url_config_response import DeleteVsStreamsNotify
 from ._describe_account_stat_request import DescribeAccountStatRequest
 from ._describe_account_stat_response_body import DescribeAccountStatResponseBody
 from ._describe_account_stat_response import DescribeAccountStatResponse
+from ._describe_comfy_production_download_url_request import DescribeComfyProductionDownloadUrlRequest
+from ._describe_comfy_production_download_url_response_body import DescribeComfyProductionDownloadUrlResponseBody
+from ._describe_comfy_production_download_url_response import DescribeComfyProductionDownloadUrlResponse
+from ._describe_comfy_productions_request import DescribeComfyProductionsRequest
+from ._describe_comfy_productions_response_body import DescribeComfyProductionsResponseBody
+from ._describe_comfy_productions_response import DescribeComfyProductionsResponse
+from ._describe_comfy_tasks_request import DescribeComfyTasksRequest
+from ._describe_comfy_tasks_response_body import DescribeComfyTasksResponseBody
+from ._describe_comfy_tasks_response import DescribeComfyTasksResponse
+from ._describe_comfy_user_data_download_url_request import DescribeComfyUserDataDownloadUrlRequest
+from ._describe_comfy_user_data_download_url_response_body import DescribeComfyUserDataDownloadUrlResponseBody
+from ._describe_comfy_user_data_download_url_response import DescribeComfyUserDataDownloadUrlResponse
+from ._describe_comfy_user_data_upload_url_request import DescribeComfyUserDataUploadUrlRequest
+from ._describe_comfy_user_data_upload_url_response_body import DescribeComfyUserDataUploadUrlResponseBody
+from ._describe_comfy_user_data_upload_url_response import DescribeComfyUserDataUploadUrlResponse
+from ._describe_comfy_user_datas_request import DescribeComfyUserDatasRequest
+from ._describe_comfy_user_datas_response_body import DescribeComfyUserDatasResponseBody
+from ._describe_comfy_user_datas_response import DescribeComfyUserDatasResponse
+from ._describe_comfy_workflows_request import DescribeComfyWorkflowsRequest
+from ._describe_comfy_workflows_response_body import DescribeComfyWorkflowsResponseBody
+from ._describe_comfy_workflows_response import DescribeComfyWorkflowsResponse
 from ._describe_device_request import DescribeDeviceRequest
 from ._describe_device_response_body import DescribeDeviceResponseBody
 from ._describe_device_response import DescribeDeviceResponse
@@ -359,12 +415,19 @@ from ._list_cloud_app_patches_response import ListCloudAppPatchesResponse
 from ._list_cloud_apps_request import ListCloudAppsRequest
 from ._list_cloud_apps_response_body import ListCloudAppsResponseBody
 from ._list_cloud_apps_response import ListCloudAppsResponse
+from ._list_edge_workers_request import ListEdgeWorkersRequest
+from ._list_edge_workers_shrink_request import ListEdgeWorkersShrinkRequest
+from ._list_edge_workers_response_body import ListEdgeWorkersResponseBody
+from ._list_edge_workers_response import ListEdgeWorkersResponse
 from ._list_file_push_statuses_request import ListFilePushStatusesRequest
 from ._list_file_push_statuses_response_body import ListFilePushStatusesResponseBody
 from ._list_file_push_statuses_response import ListFilePushStatusesResponse
 from ._list_files_request import ListFilesRequest
 from ._list_files_response_body import ListFilesResponseBody
 from ._list_files_response import ListFilesResponse
+from ._list_hives_request import ListHivesRequest
+from ._list_hives_response_body import ListHivesResponseBody
+from ._list_hives_response import ListHivesResponse
 from ._list_public_keys_request import ListPublicKeysRequest
 from ._list_public_keys_response_body import ListPublicKeysResponseBody
 from ._list_public_keys_response import ListPublicKeysResponse
@@ -386,9 +449,15 @@ from ._list_rendering_projects_response import ListRenderingProjectsResponse
 from ._list_rendering_sessions_request import ListRenderingSessionsRequest
 from ._list_rendering_sessions_response_body import ListRenderingSessionsResponseBody
 from ._list_rendering_sessions_response import ListRenderingSessionsResponse
+from ._list_specifications_request import ListSpecificationsRequest
+from ._list_specifications_response_body import ListSpecificationsResponseBody
+from ._list_specifications_response import ListSpecificationsResponse
 from ._manage_login_request import ManageLoginRequest
 from ._manage_login_response_body import ManageLoginResponseBody
 from ._manage_login_response import ManageLoginResponse
+from ._modify_comfy_workflow_request import ModifyComfyWorkflowRequest
+from ._modify_comfy_workflow_response_body import ModifyComfyWorkflowResponseBody
+from ._modify_comfy_workflow_response import ModifyComfyWorkflowResponse
 from ._modify_device_request import ModifyDeviceRequest
 from ._modify_device_response_body import ModifyDeviceResponseBody
 from ._modify_device_response import ModifyDeviceResponse
@@ -407,6 +476,9 @@ from ._modify_directory_response import ModifyDirectoryResponse
 from ._modify_group_request import ModifyGroupRequest
 from ._modify_group_response_body import ModifyGroupResponseBody
 from ._modify_group_response import ModifyGroupResponse
+from ._modify_hive_attribute_request import ModifyHiveAttributeRequest
+from ._modify_hive_attribute_response_body import ModifyHiveAttributeResponseBody
+from ._modify_hive_attribute_response import ModifyHiveAttributeResponse
 from ._modify_parent_platform_request import ModifyParentPlatformRequest
 from ._modify_parent_platform_response_body import ModifyParentPlatformResponseBody
 from ._modify_parent_platform_response import ModifyParentPlatformResponse
@@ -425,6 +497,10 @@ from ._modify_rendering_instance_bandwidth_response import ModifyRenderingInstan
 from ._modify_template_request import ModifyTemplateRequest
 from ._modify_template_response_body import ModifyTemplateResponseBody
 from ._modify_template_response import ModifyTemplateResponse
+from ._move_hive_edge_workers_request import MoveHiveEdgeWorkersRequest
+from ._move_hive_edge_workers_shrink_request import MoveHiveEdgeWorkersShrinkRequest
+from ._move_hive_edge_workers_response_body import MoveHiveEdgeWorkersResponseBody
+from ._move_hive_edge_workers_response import MoveHiveEdgeWorkersResponse
 from ._open_vs_service_response_body import OpenVsServiceResponseBody
 from ._open_vs_service_response import OpenVsServiceResponse
 from ._push_file_request import PushFileRequest
@@ -574,6 +650,8 @@ from ._upload_public_key_response import UploadPublicKeyResponse
 from ._verify_vs_domain_owner_request import VerifyVsDomainOwnerRequest
 from ._verify_vs_domain_owner_response_body import VerifyVsDomainOwnerResponseBody
 from ._verify_vs_domain_owner_response import VerifyVsDomainOwnerResponse
+from ._add_hive_edge_workers_response_body import AddHiveEdgeWorkersResponseBodyFailedInstances
+from ._add_hive_edge_workers_response_body import AddHiveEdgeWorkersResponseBodySuccessInstances
 from ._associate_rendering_project_instances_response_body import AssociateRenderingProjectInstancesResponseBodyFailedInstances
 from ._associate_rendering_project_instances_response_body import AssociateRenderingProjectInstancesResponseBodySuccessInstances
 from ._batch_bind_directories_response_body import BatchBindDirectoriesResponseBodyResults
@@ -602,7 +680,13 @@ from ._batch_unbind_templates_response_body import BatchUnbindTemplatesResponseB
 from ._create_rendering_instance_request import CreateRenderingInstanceRequestAttributes
 from ._create_rendering_instance_request import CreateRenderingInstanceRequestClientInfo
 from ._create_rendering_project_request import CreateRenderingProjectRequestSessionAttribs
+from ._del_hive_edge_workers_response_body import DelHiveEdgeWorkersResponseBodyFailedInstances
+from ._del_hive_edge_workers_response_body import DelHiveEdgeWorkersResponseBodySuccessInstances
 from ._delete_rendering_instance_configuration_request import DeleteRenderingInstanceConfigurationRequestConfiguration
+from ._describe_comfy_productions_response_body import DescribeComfyProductionsResponseBodyProductions
+from ._describe_comfy_tasks_response_body import DescribeComfyTasksResponseBodyTasks
+from ._describe_comfy_user_datas_response_body import DescribeComfyUserDatasResponseBodyUserDatas
+from ._describe_comfy_workflows_response_body import DescribeComfyWorkflowsResponseBodyWorkflows
 from ._describe_device_response_body import DescribeDeviceResponseBodyDirectory
 from ._describe_device_response_body import DescribeDeviceResponseBodyStats
 from ._describe_device_channels_response_body import DescribeDeviceChannelsResponseBodyChannels
@@ -627,6 +711,7 @@ from ._describe_rendering_instance_response_body import DescribeRenderingInstanc
 from ._describe_rendering_instance_response_body import DescribeRenderingInstanceResponseBodyPortMappings
 from ._describe_rendering_instance_response_body import DescribeRenderingInstanceResponseBodyRenderingStatus
 from ._describe_rendering_instance_response_body import DescribeRenderingInstanceResponseBodyResourceAttributes
+from ._describe_rendering_instance_response_body import DescribeRenderingInstanceResponseBodyResourceStatus
 from ._describe_rendering_instance_response_body import DescribeRenderingInstanceResponseBodySystemInfo
 from ._describe_rendering_instance_configuration_request import DescribeRenderingInstanceConfigurationRequestConfiguration
 from ._describe_rendering_instance_configuration_response_body import DescribeRenderingInstanceConfigurationResponseBodyConfigurationAttributes
@@ -692,8 +777,10 @@ from ._install_cloud_app_response_body import InstallCloudAppResponseBodySuccess
 from ._list_cloud_app_installations_response_body import ListCloudAppInstallationsResponseBodyInstallationInfos
 from ._list_cloud_app_patches_response_body import ListCloudAppPatchesResponseBodyPatches
 from ._list_cloud_apps_response_body import ListCloudAppsResponseBodyCloudApps
+from ._list_edge_workers_response_body import ListEdgeWorkersResponseBodyInstances
 from ._list_file_push_statuses_response_body import ListFilePushStatusesResponseBodyPushStatuses
 from ._list_files_response_body import ListFilesResponseBodyFiles
+from ._list_hives_response_body import ListHivesResponseBodyHives
 from ._list_public_keys_response_body import ListPublicKeysResponseBodyPublicKeys
 from ._list_rendering_data_packages_response_body import ListRenderingDataPackagesResponseBodyDataPackages
 from ._list_rendering_instance_gateway_response_body import ListRenderingInstanceGatewayResponseBodyGatewayConfigurationInfos
@@ -703,7 +790,10 @@ from ._list_rendering_project_instances_response_body import ListRenderingProjec
 from ._list_rendering_projects_response_body import ListRenderingProjectsResponseBodyProjectsSessionAttribs
 from ._list_rendering_projects_response_body import ListRenderingProjectsResponseBodyProjects
 from ._list_rendering_sessions_response_body import ListRenderingSessionsResponseBodySessions
+from ._list_specifications_response_body import ListSpecificationsResponseBodyItems
 from ._manage_login_response_body import ManageLoginResponseBodyLoginInfo
+from ._move_hive_edge_workers_response_body import MoveHiveEdgeWorkersResponseBodyFailedInstances
+from ._move_hive_edge_workers_response_body import MoveHiveEdgeWorkersResponseBodySuccessInstances
 from ._reboot_rendering_server_response_body import RebootRenderingServerResponseBodyFailedInstances
 from ._reboot_rendering_server_response_body import RebootRenderingServerResponseBodySuccessInstances
 from ._refresh_rendering_instance_streaming_request import RefreshRenderingInstanceStreamingRequestClientInfo
@@ -720,6 +810,10 @@ from ._update_rendering_instance_settings_request import UpdateRenderingInstance
 from ._update_rendering_project_request import UpdateRenderingProjectRequestSessionAttribs
 
 __all__ = [
+    AddHiveEdgeWorkersRequest,
+    AddHiveEdgeWorkersShrinkRequest,
+    AddHiveEdgeWorkersResponseBody,
+    AddHiveEdgeWorkersResponse,
     AddVsPullStreamInfoConfigRequest,
     AddVsPullStreamInfoConfigResponseBody,
     AddVsPullStreamInfoConfigResponse,
@@ -796,12 +890,24 @@ __all__ = [
     BindTemplateRequest,
     BindTemplateResponseBody,
     BindTemplateResponse,
+    CancelComfyTaskRequest,
+    CancelComfyTaskResponseBody,
+    CancelComfyTaskResponse,
     ContinuousAdjustRequest,
     ContinuousAdjustResponseBody,
     ContinuousAdjustResponse,
     ContinuousMoveRequest,
     ContinuousMoveResponseBody,
     ContinuousMoveResponse,
+    CreateComfyTaskRequest,
+    CreateComfyTaskResponseBody,
+    CreateComfyTaskResponse,
+    CreateComfyUserDataDirRequest,
+    CreateComfyUserDataDirResponseBody,
+    CreateComfyUserDataDirResponse,
+    CreateComfyWorkflowRequest,
+    CreateComfyWorkflowResponseBody,
+    CreateComfyWorkflowResponse,
     CreateDeviceRequest,
     CreateDeviceResponseBody,
     CreateDeviceResponse,
@@ -814,6 +920,9 @@ __all__ = [
     CreateGroupRequest,
     CreateGroupResponseBody,
     CreateGroupResponse,
+    CreateHiveRequest,
+    CreateHiveResponseBody,
+    CreateHiveResponse,
     CreateParentPlatformRequest,
     CreateParentPlatformResponseBody,
     CreateParentPlatformResponse,
@@ -837,9 +946,22 @@ __all__ = [
     CreateTemplateRequest,
     CreateTemplateResponseBody,
     CreateTemplateResponse,
+    DelHiveEdgeWorkersRequest,
+    DelHiveEdgeWorkersShrinkRequest,
+    DelHiveEdgeWorkersResponseBody,
+    DelHiveEdgeWorkersResponse,
     DeleteCloudAppRequest,
     DeleteCloudAppResponseBody,
     DeleteCloudAppResponse,
+    DeleteComfyProductionRequest,
+    DeleteComfyProductionResponseBody,
+    DeleteComfyProductionResponse,
+    DeleteComfyUserDataRequest,
+    DeleteComfyUserDataResponseBody,
+    DeleteComfyUserDataResponse,
+    DeleteComfyWorkflowRequest,
+    DeleteComfyWorkflowResponseBody,
+    DeleteComfyWorkflowResponse,
     DeleteDeviceRequest,
     DeleteDeviceResponseBody,
     DeleteDeviceResponse,
@@ -852,6 +974,9 @@ __all__ = [
     DeleteGroupRequest,
     DeleteGroupResponseBody,
     DeleteGroupResponse,
+    DeleteHiveRequest,
+    DeleteHiveResponseBody,
+    DeleteHiveResponse,
     DeleteParentPlatformRequest,
     DeleteParentPlatformResponseBody,
     DeleteParentPlatformResponse,
@@ -887,6 +1012,27 @@ __all__ = [
     DescribeAccountStatRequest,
     DescribeAccountStatResponseBody,
     DescribeAccountStatResponse,
+    DescribeComfyProductionDownloadUrlRequest,
+    DescribeComfyProductionDownloadUrlResponseBody,
+    DescribeComfyProductionDownloadUrlResponse,
+    DescribeComfyProductionsRequest,
+    DescribeComfyProductionsResponseBody,
+    DescribeComfyProductionsResponse,
+    DescribeComfyTasksRequest,
+    DescribeComfyTasksResponseBody,
+    DescribeComfyTasksResponse,
+    DescribeComfyUserDataDownloadUrlRequest,
+    DescribeComfyUserDataDownloadUrlResponseBody,
+    DescribeComfyUserDataDownloadUrlResponse,
+    DescribeComfyUserDataUploadUrlRequest,
+    DescribeComfyUserDataUploadUrlResponseBody,
+    DescribeComfyUserDataUploadUrlResponse,
+    DescribeComfyUserDatasRequest,
+    DescribeComfyUserDatasResponseBody,
+    DescribeComfyUserDatasResponse,
+    DescribeComfyWorkflowsRequest,
+    DescribeComfyWorkflowsResponseBody,
+    DescribeComfyWorkflowsResponse,
     DescribeDeviceRequest,
     DescribeDeviceResponseBody,
     DescribeDeviceResponse,
@@ -1077,12 +1223,19 @@ __all__ = [
     ListCloudAppsRequest,
     ListCloudAppsResponseBody,
     ListCloudAppsResponse,
+    ListEdgeWorkersRequest,
+    ListEdgeWorkersShrinkRequest,
+    ListEdgeWorkersResponseBody,
+    ListEdgeWorkersResponse,
     ListFilePushStatusesRequest,
     ListFilePushStatusesResponseBody,
     ListFilePushStatusesResponse,
     ListFilesRequest,
     ListFilesResponseBody,
     ListFilesResponse,
+    ListHivesRequest,
+    ListHivesResponseBody,
+    ListHivesResponse,
     ListPublicKeysRequest,
     ListPublicKeysResponseBody,
     ListPublicKeysResponse,
@@ -1104,9 +1257,15 @@ __all__ = [
     ListRenderingSessionsRequest,
     ListRenderingSessionsResponseBody,
     ListRenderingSessionsResponse,
+    ListSpecificationsRequest,
+    ListSpecificationsResponseBody,
+    ListSpecificationsResponse,
     ManageLoginRequest,
     ManageLoginResponseBody,
     ManageLoginResponse,
+    ModifyComfyWorkflowRequest,
+    ModifyComfyWorkflowResponseBody,
+    ModifyComfyWorkflowResponse,
     ModifyDeviceRequest,
     ModifyDeviceResponseBody,
     ModifyDeviceResponse,
@@ -1125,6 +1284,9 @@ __all__ = [
     ModifyGroupRequest,
     ModifyGroupResponseBody,
     ModifyGroupResponse,
+    ModifyHiveAttributeRequest,
+    ModifyHiveAttributeResponseBody,
+    ModifyHiveAttributeResponse,
     ModifyParentPlatformRequest,
     ModifyParentPlatformResponseBody,
     ModifyParentPlatformResponse,
@@ -1143,6 +1305,10 @@ __all__ = [
     ModifyTemplateRequest,
     ModifyTemplateResponseBody,
     ModifyTemplateResponse,
+    MoveHiveEdgeWorkersRequest,
+    MoveHiveEdgeWorkersShrinkRequest,
+    MoveHiveEdgeWorkersResponseBody,
+    MoveHiveEdgeWorkersResponse,
     OpenVsServiceResponseBody,
     OpenVsServiceResponse,
     PushFileRequest,
@@ -1292,6 +1458,8 @@ __all__ = [
     VerifyVsDomainOwnerRequest,
     VerifyVsDomainOwnerResponseBody,
     VerifyVsDomainOwnerResponse,
+    AddHiveEdgeWorkersResponseBodyFailedInstances,
+    AddHiveEdgeWorkersResponseBodySuccessInstances,
     AssociateRenderingProjectInstancesResponseBodyFailedInstances,
     AssociateRenderingProjectInstancesResponseBodySuccessInstances,
     BatchBindDirectoriesResponseBodyResults,
@@ -1320,7 +1488,13 @@ __all__ = [
     CreateRenderingInstanceRequestAttributes,
     CreateRenderingInstanceRequestClientInfo,
     CreateRenderingProjectRequestSessionAttribs,
+    DelHiveEdgeWorkersResponseBodyFailedInstances,
+    DelHiveEdgeWorkersResponseBodySuccessInstances,
     DeleteRenderingInstanceConfigurationRequestConfiguration,
+    DescribeComfyProductionsResponseBodyProductions,
+    DescribeComfyTasksResponseBodyTasks,
+    DescribeComfyUserDatasResponseBodyUserDatas,
+    DescribeComfyWorkflowsResponseBodyWorkflows,
     DescribeDeviceResponseBodyDirectory,
     DescribeDeviceResponseBodyStats,
     DescribeDeviceChannelsResponseBodyChannels,
@@ -1345,6 +1519,7 @@ __all__ = [
     DescribeRenderingInstanceResponseBodyPortMappings,
     DescribeRenderingInstanceResponseBodyRenderingStatus,
     DescribeRenderingInstanceResponseBodyResourceAttributes,
+    DescribeRenderingInstanceResponseBodyResourceStatus,
     DescribeRenderingInstanceResponseBodySystemInfo,
     DescribeRenderingInstanceConfigurationRequestConfiguration,
     DescribeRenderingInstanceConfigurationResponseBodyConfigurationAttributes,
@@ -1410,8 +1585,10 @@ __all__ = [
     ListCloudAppInstallationsResponseBodyInstallationInfos,
     ListCloudAppPatchesResponseBodyPatches,
     ListCloudAppsResponseBodyCloudApps,
+    ListEdgeWorkersResponseBodyInstances,
     ListFilePushStatusesResponseBodyPushStatuses,
     ListFilesResponseBodyFiles,
+    ListHivesResponseBodyHives,
     ListPublicKeysResponseBodyPublicKeys,
     ListRenderingDataPackagesResponseBodyDataPackages,
     ListRenderingInstanceGatewayResponseBodyGatewayConfigurationInfos,
@@ -1421,7 +1598,10 @@ __all__ = [
     ListRenderingProjectsResponseBodyProjectsSessionAttribs,
     ListRenderingProjectsResponseBodyProjects,
     ListRenderingSessionsResponseBodySessions,
+    ListSpecificationsResponseBodyItems,
     ManageLoginResponseBodyLoginInfo,
+    MoveHiveEdgeWorkersResponseBodyFailedInstances,
+    MoveHiveEdgeWorkersResponseBodySuccessInstances,
     RebootRenderingServerResponseBodyFailedInstances,
     RebootRenderingServerResponseBodySuccessInstances,
     RefreshRenderingInstanceStreamingRequestClientInfo,
