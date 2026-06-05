@@ -194,6 +194,16 @@ from ._get_icp_filing_info_for_partner_response import GetIcpFilingInfoForPartne
 from ._get_llm_proxy_config_for_admin_request import GetLlmProxyConfigForAdminRequest
 from ._get_llm_proxy_config_for_admin_response_body import GetLlmProxyConfigForAdminResponseBody
 from ._get_llm_proxy_config_for_admin_response import GetLlmProxyConfigForAdminResponse
+from ._get_mini_app_auth_url_request import GetMiniAppAuthUrlRequest
+from ._get_mini_app_auth_url_response_body import GetMiniAppAuthUrlResponseBody
+from ._get_mini_app_auth_url_response import GetMiniAppAuthUrlResponse
+from ._get_mini_app_binding_request import GetMiniAppBindingRequest
+from ._get_mini_app_binding_shrink_request import GetMiniAppBindingShrinkRequest
+from ._get_mini_app_binding_response_body import GetMiniAppBindingResponseBody
+from ._get_mini_app_binding_response import GetMiniAppBindingResponse
+from ._get_mini_app_binding_for_admin_request import GetMiniAppBindingForAdminRequest
+from ._get_mini_app_binding_for_admin_response_body import GetMiniAppBindingForAdminResponseBody
+from ._get_mini_app_binding_for_admin_response import GetMiniAppBindingForAdminResponse
 from ._get_user_access_token_for_partner_request import GetUserAccessTokenForPartnerRequest
 from ._get_user_access_token_for_partner_response_body import GetUserAccessTokenForPartnerResponseBody
 from ._get_user_access_token_for_partner_response import GetUserAccessTokenForPartnerResponse
@@ -401,6 +411,9 @@ from ._update_app_supabase_auth_config_response import UpdateAppSupabaseAuthConf
 from ._update_app_supabase_secret_request import UpdateAppSupabaseSecretRequest
 from ._update_app_supabase_secret_response_body import UpdateAppSupabaseSecretResponseBody
 from ._update_app_supabase_secret_response import UpdateAppSupabaseSecretResponse
+from ._update_mini_app_binding_request import UpdateMiniAppBindingRequest
+from ._update_mini_app_binding_response_body import UpdateMiniAppBindingResponseBody
+from ._update_mini_app_binding_response import UpdateMiniAppBindingResponse
 from ._upload_app_site_validation_file_request import UploadAppSiteValidationFileRequest
 from ._upload_app_site_validation_file_response_body import UploadAppSiteValidationFileResponseBody
 from ._upload_app_site_validation_file_response import UploadAppSiteValidationFileResponse
@@ -489,6 +502,9 @@ from ._get_domain_info_for_partner_response_body import GetDomainInfoForPartnerR
 from ._get_domain_info_for_partner_response_body import GetDomainInfoForPartnerResponseBodyData
 from ._get_icp_filing_info_for_partner_response_body import GetIcpFilingInfoForPartnerResponseBodyData
 from ._get_llm_proxy_config_for_admin_response_body import GetLlmProxyConfigForAdminResponseBodyModule
+from ._get_mini_app_auth_url_response_body import GetMiniAppAuthUrlResponseBodyData
+from ._get_mini_app_binding_response_body import GetMiniAppBindingResponseBodyData
+from ._get_mini_app_binding_for_admin_response_body import GetMiniAppBindingForAdminResponseBodyData
 from ._get_user_access_token_for_partner_response_body import GetUserAccessTokenForPartnerResponseBodyModule
 from ._get_user_tmp_identity_for_partner_response_body import GetUserTmpIdentityForPartnerResponseBodyDataCredentials
 from ._get_user_tmp_identity_for_partner_response_body import GetUserTmpIdentityForPartnerResponseBodyData
@@ -572,6 +588,7 @@ from ._unbind_app_domain_response_body import UnbindAppDomainResponseBodyModule
 from ._update_app_chat_message_response_body import UpdateAppChatMessageResponseBodyModule
 from ._update_app_instance_request import UpdateAppInstanceRequestTags
 from ._update_app_instance_response_body import UpdateAppInstanceResponseBodyModule
+from ._update_mini_app_binding_response_body import UpdateMiniAppBindingResponseBodyData
 
 __all__ = [
     AppAiStaff,
@@ -766,6 +783,16 @@ __all__ = [
     GetLlmProxyConfigForAdminRequest,
     GetLlmProxyConfigForAdminResponseBody,
     GetLlmProxyConfigForAdminResponse,
+    GetMiniAppAuthUrlRequest,
+    GetMiniAppAuthUrlResponseBody,
+    GetMiniAppAuthUrlResponse,
+    GetMiniAppBindingRequest,
+    GetMiniAppBindingShrinkRequest,
+    GetMiniAppBindingResponseBody,
+    GetMiniAppBindingResponse,
+    GetMiniAppBindingForAdminRequest,
+    GetMiniAppBindingForAdminResponseBody,
+    GetMiniAppBindingForAdminResponse,
     GetUserAccessTokenForPartnerRequest,
     GetUserAccessTokenForPartnerResponseBody,
     GetUserAccessTokenForPartnerResponse,
@@ -973,6 +1000,9 @@ __all__ = [
     UpdateAppSupabaseSecretRequest,
     UpdateAppSupabaseSecretResponseBody,
     UpdateAppSupabaseSecretResponse,
+    UpdateMiniAppBindingRequest,
+    UpdateMiniAppBindingResponseBody,
+    UpdateMiniAppBindingResponse,
     UploadAppSiteValidationFileRequest,
     UploadAppSiteValidationFileResponseBody,
     UploadAppSiteValidationFileResponse,
@@ -1061,6 +1091,9 @@ __all__ = [
     GetDomainInfoForPartnerResponseBodyData,
     GetIcpFilingInfoForPartnerResponseBodyData,
     GetLlmProxyConfigForAdminResponseBodyModule,
+    GetMiniAppAuthUrlResponseBodyData,
+    GetMiniAppBindingResponseBodyData,
+    GetMiniAppBindingForAdminResponseBodyData,
     GetUserAccessTokenForPartnerResponseBodyModule,
     GetUserTmpIdentityForPartnerResponseBodyDataCredentials,
     GetUserTmpIdentityForPartnerResponseBodyData,
@@ -1143,5 +1176,6 @@ __all__ = [
     UnbindAppDomainResponseBodyModule,
     UpdateAppChatMessageResponseBodyModule,
     UpdateAppInstanceRequestTags,
-    UpdateAppInstanceResponseBodyModule
+    UpdateAppInstanceResponseBodyModule,
+    UpdateMiniAppBindingResponseBodyData
 ]

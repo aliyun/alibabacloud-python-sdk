@@ -4483,6 +4483,248 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_llm_proxy_config_for_admin_with_options_async(request, runtime)
 
+    def get_mini_app_auth_url_with_options(
+        self,
+        request: main_models.GetMiniAppAuthUrlRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetMiniAppAuthUrlResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.channel):
+            query['Channel'] = request.channel
+        if not DaraCore.is_null(request.redirect_uri):
+            query['RedirectUri'] = request.redirect_uri
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetMiniAppAuthUrl',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetMiniAppAuthUrlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_mini_app_auth_url_with_options_async(
+        self,
+        request: main_models.GetMiniAppAuthUrlRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetMiniAppAuthUrlResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.channel):
+            query['Channel'] = request.channel
+        if not DaraCore.is_null(request.redirect_uri):
+            query['RedirectUri'] = request.redirect_uri
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetMiniAppAuthUrl',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetMiniAppAuthUrlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_mini_app_auth_url(
+        self,
+        request: main_models.GetMiniAppAuthUrlRequest,
+    ) -> main_models.GetMiniAppAuthUrlResponse:
+        runtime = RuntimeOptions()
+        return self.get_mini_app_auth_url_with_options(request, runtime)
+
+    async def get_mini_app_auth_url_async(
+        self,
+        request: main_models.GetMiniAppAuthUrlRequest,
+    ) -> main_models.GetMiniAppAuthUrlResponse:
+        runtime = RuntimeOptions()
+        return await self.get_mini_app_auth_url_with_options_async(request, runtime)
+
+    def get_mini_app_binding_with_options(
+        self,
+        tmp_req: main_models.GetMiniAppBindingRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetMiniAppBindingResponse:
+        tmp_req.validate()
+        request = main_models.GetMiniAppBindingShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.setting_keys):
+            request.setting_keys_shrink = Utils.array_to_string_with_specified_style(tmp_req.setting_keys, 'SettingKeys', 'json')
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.channel):
+            query['Channel'] = request.channel
+        if not DaraCore.is_null(request.setting_keys_shrink):
+            query['SettingKeys'] = request.setting_keys_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetMiniAppBinding',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetMiniAppBindingResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_mini_app_binding_with_options_async(
+        self,
+        tmp_req: main_models.GetMiniAppBindingRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetMiniAppBindingResponse:
+        tmp_req.validate()
+        request = main_models.GetMiniAppBindingShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.setting_keys):
+            request.setting_keys_shrink = Utils.array_to_string_with_specified_style(tmp_req.setting_keys, 'SettingKeys', 'json')
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.channel):
+            query['Channel'] = request.channel
+        if not DaraCore.is_null(request.setting_keys_shrink):
+            query['SettingKeys'] = request.setting_keys_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetMiniAppBinding',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetMiniAppBindingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_mini_app_binding(
+        self,
+        request: main_models.GetMiniAppBindingRequest,
+    ) -> main_models.GetMiniAppBindingResponse:
+        runtime = RuntimeOptions()
+        return self.get_mini_app_binding_with_options(request, runtime)
+
+    async def get_mini_app_binding_async(
+        self,
+        request: main_models.GetMiniAppBindingRequest,
+    ) -> main_models.GetMiniAppBindingResponse:
+        runtime = RuntimeOptions()
+        return await self.get_mini_app_binding_with_options_async(request, runtime)
+
+    def get_mini_app_binding_for_admin_with_options(
+        self,
+        request: main_models.GetMiniAppBindingForAdminRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetMiniAppBindingForAdminResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.channel):
+            query['Channel'] = request.channel
+        if not DaraCore.is_null(request.platform_appid):
+            query['PlatformAppid'] = request.platform_appid
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetMiniAppBindingForAdmin',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetMiniAppBindingForAdminResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_mini_app_binding_for_admin_with_options_async(
+        self,
+        request: main_models.GetMiniAppBindingForAdminRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetMiniAppBindingForAdminResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.channel):
+            query['Channel'] = request.channel
+        if not DaraCore.is_null(request.platform_appid):
+            query['PlatformAppid'] = request.platform_appid
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetMiniAppBindingForAdmin',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetMiniAppBindingForAdminResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_mini_app_binding_for_admin(
+        self,
+        request: main_models.GetMiniAppBindingForAdminRequest,
+    ) -> main_models.GetMiniAppBindingForAdminResponse:
+        runtime = RuntimeOptions()
+        return self.get_mini_app_binding_for_admin_with_options(request, runtime)
+
+    async def get_mini_app_binding_for_admin_async(
+        self,
+        request: main_models.GetMiniAppBindingForAdminRequest,
+    ) -> main_models.GetMiniAppBindingForAdminResponse:
+        runtime = RuntimeOptions()
+        return await self.get_mini_app_binding_for_admin_with_options_async(request, runtime)
+
     def get_user_access_token_for_partner_with_options(
         self,
         request: main_models.GetUserAccessTokenForPartnerRequest,
@@ -10350,6 +10592,88 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateAppSupabaseSecretResponse:
         runtime = RuntimeOptions()
         return await self.update_app_supabase_secret_with_options_async(request, runtime)
+
+    def update_mini_app_binding_with_options(
+        self,
+        request: main_models.UpdateMiniAppBindingRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateMiniAppBindingResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.channel):
+            query['Channel'] = request.channel
+        if not DaraCore.is_null(request.setting_key):
+            query['SettingKey'] = request.setting_key
+        if not DaraCore.is_null(request.setting_value):
+            query['SettingValue'] = request.setting_value
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateMiniAppBinding',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateMiniAppBindingResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_mini_app_binding_with_options_async(
+        self,
+        request: main_models.UpdateMiniAppBindingRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateMiniAppBindingResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.channel):
+            query['Channel'] = request.channel
+        if not DaraCore.is_null(request.setting_key):
+            query['SettingKey'] = request.setting_key
+        if not DaraCore.is_null(request.setting_value):
+            query['SettingValue'] = request.setting_value
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateMiniAppBinding',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateMiniAppBindingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_mini_app_binding(
+        self,
+        request: main_models.UpdateMiniAppBindingRequest,
+    ) -> main_models.UpdateMiniAppBindingResponse:
+        runtime = RuntimeOptions()
+        return self.update_mini_app_binding_with_options(request, runtime)
+
+    async def update_mini_app_binding_async(
+        self,
+        request: main_models.UpdateMiniAppBindingRequest,
+    ) -> main_models.UpdateMiniAppBindingResponse:
+        runtime = RuntimeOptions()
+        return await self.update_mini_app_binding_with_options_async(request, runtime)
 
     def upload_app_site_validation_file_with_options(
         self,
