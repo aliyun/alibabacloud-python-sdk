@@ -1,3 +1,14 @@
+2026-06-06 Version: 1.45.1
+- Update API ListHotTopics: add request parameters CreateTimeEnd.
+- Update API ListHotTopics: add request parameters CreateTimeStart.
+- Update API ListHotTopics: add request parameters CustomField.
+- Update API ListHotTopics: add response parameters Body.Data.$.CreateTime.
+- Update API ListHotTopics: add response parameters Body.Data.$.CustomField.
+- Update API ListHotTopics: add response parameters Body.Data.$.TopicUrl.
+- Update API SubmitCustomSourceTopicAnalysis: add request parameters Topics.$.CustomField.
+- Update API SubmitCustomSourceTopicAnalysis: add request parameters Topics.$.TopicUrl.
+
+
 2026-06-04 Version: 1.45.0
 - Support API FetchParseDocumentLayoutTask.
 - Support API SubmitParseDocumentLayoutTask.

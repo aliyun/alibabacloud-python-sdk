@@ -10,6 +10,9 @@ class ListHotTopicsRequest(DaraModel):
     def __init__(
         self,
         agent_key: str = None,
+        create_time_end: str = None,
+        create_time_start: str = None,
+        custom_field: str = None,
         max_results: int = None,
         next_token: str = None,
         topic_ids: List[str] = None,
@@ -21,6 +24,9 @@ class ListHotTopicsRequest(DaraModel):
     ):
         # This parameter is required.
         self.agent_key = agent_key
+        self.create_time_end = create_time_end
+        self.create_time_start = create_time_start
+        self.custom_field = custom_field
         self.max_results = max_results
         self.next_token = next_token
         self.topic_ids = topic_ids
@@ -40,6 +46,15 @@ class ListHotTopicsRequest(DaraModel):
             result = _map
         if self.agent_key is not None:
             result['AgentKey'] = self.agent_key
+
+        if self.create_time_end is not None:
+            result['CreateTimeEnd'] = self.create_time_end
+
+        if self.create_time_start is not None:
+            result['CreateTimeStart'] = self.create_time_start
+
+        if self.custom_field is not None:
+            result['CustomField'] = self.custom_field
 
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
@@ -71,6 +86,15 @@ class ListHotTopicsRequest(DaraModel):
         m = m or dict()
         if m.get('AgentKey') is not None:
             self.agent_key = m.get('AgentKey')
+
+        if m.get('CreateTimeEnd') is not None:
+            self.create_time_end = m.get('CreateTimeEnd')
+
+        if m.get('CreateTimeStart') is not None:
+            self.create_time_start = m.get('CreateTimeStart')
+
+        if m.get('CustomField') is not None:
+            self.custom_field = m.get('CustomField')
 
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')

@@ -111,11 +111,15 @@ class SubmitCustomSourceTopicAnalysisRequest(DaraModel):
 class SubmitCustomSourceTopicAnalysisRequestTopics(DaraModel):
     def __init__(
         self,
+        custom_field: str = None,
         news: List[main_models.HottopicNews] = None,
         topic: str = None,
+        topic_url: str = None,
     ):
+        self.custom_field = custom_field
         self.news = news
         self.topic = topic
+        self.topic_url = topic_url
 
     def validate(self):
         if self.news:
@@ -128,6 +132,9 @@ class SubmitCustomSourceTopicAnalysisRequestTopics(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.custom_field is not None:
+            result['CustomField'] = self.custom_field
+
         result['News'] = []
         if self.news is not None:
             for k1 in self.news:
@@ -136,10 +143,16 @@ class SubmitCustomSourceTopicAnalysisRequestTopics(DaraModel):
         if self.topic is not None:
             result['Topic'] = self.topic
 
+        if self.topic_url is not None:
+            result['TopicUrl'] = self.topic_url
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CustomField') is not None:
+            self.custom_field = m.get('CustomField')
+
         self.news = []
         if m.get('News') is not None:
             for k1 in m.get('News'):
@@ -148,6 +161,9 @@ class SubmitCustomSourceTopicAnalysisRequestTopics(DaraModel):
 
         if m.get('Topic') is not None:
             self.topic = m.get('Topic')
+
+        if m.get('TopicUrl') is not None:
+            self.topic_url = m.get('TopicUrl')
 
         return self
 

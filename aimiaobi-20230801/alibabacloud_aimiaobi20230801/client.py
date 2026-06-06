@@ -10874,6 +10874,12 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(request.agent_key):
             query['AgentKey'] = request.agent_key
         body = {}
+        if not DaraCore.is_null(request.create_time_end):
+            body['CreateTimeEnd'] = request.create_time_end
+        if not DaraCore.is_null(request.create_time_start):
+            body['CreateTimeStart'] = request.create_time_start
+        if not DaraCore.is_null(request.custom_field):
+            body['CustomField'] = request.custom_field
         if not DaraCore.is_null(request.max_results):
             body['MaxResults'] = request.max_results
         if not DaraCore.is_null(request.next_token):
@@ -10926,6 +10932,12 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(request.agent_key):
             query['AgentKey'] = request.agent_key
         body = {}
+        if not DaraCore.is_null(request.create_time_end):
+            body['CreateTimeEnd'] = request.create_time_end
+        if not DaraCore.is_null(request.create_time_start):
+            body['CreateTimeStart'] = request.create_time_start
+        if not DaraCore.is_null(request.custom_field):
+            body['CustomField'] = request.custom_field
         if not DaraCore.is_null(request.max_results):
             body['MaxResults'] = request.max_results
         if not DaraCore.is_null(request.next_token):

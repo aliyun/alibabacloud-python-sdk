@@ -110,7 +110,9 @@ class ListHotTopicsResponseBodyData(DaraModel):
     def __init__(
         self,
         async_task_id: str = None,
+        create_time: str = None,
         create_user: str = None,
+        custom_field: str = None,
         hot_value: int = None,
         id: str = None,
         status: str = None,
@@ -120,10 +122,13 @@ class ListHotTopicsResponseBodyData(DaraModel):
         task_status: int = None,
         topic: str = None,
         topic_source: str = None,
+        topic_url: str = None,
         version: str = None,
     ):
         self.async_task_id = async_task_id
+        self.create_time = create_time
         self.create_user = create_user
+        self.custom_field = custom_field
         self.hot_value = hot_value
         self.id = id
         self.status = status
@@ -133,6 +138,7 @@ class ListHotTopicsResponseBodyData(DaraModel):
         self.task_status = task_status
         self.topic = topic
         self.topic_source = topic_source
+        self.topic_url = topic_url
         self.version = version
 
     def validate(self):
@@ -149,8 +155,14 @@ class ListHotTopicsResponseBodyData(DaraModel):
         if self.async_task_id is not None:
             result['AsyncTaskId'] = self.async_task_id
 
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+
         if self.create_user is not None:
             result['CreateUser'] = self.create_user
+
+        if self.custom_field is not None:
+            result['CustomField'] = self.custom_field
 
         if self.hot_value is not None:
             result['HotValue'] = self.hot_value
@@ -181,6 +193,9 @@ class ListHotTopicsResponseBodyData(DaraModel):
         if self.topic_source is not None:
             result['TopicSource'] = self.topic_source
 
+        if self.topic_url is not None:
+            result['TopicUrl'] = self.topic_url
+
         if self.version is not None:
             result['Version'] = self.version
 
@@ -191,8 +206,14 @@ class ListHotTopicsResponseBodyData(DaraModel):
         if m.get('AsyncTaskId') is not None:
             self.async_task_id = m.get('AsyncTaskId')
 
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+
         if m.get('CreateUser') is not None:
             self.create_user = m.get('CreateUser')
+
+        if m.get('CustomField') is not None:
+            self.custom_field = m.get('CustomField')
 
         if m.get('HotValue') is not None:
             self.hot_value = m.get('HotValue')
@@ -223,6 +244,9 @@ class ListHotTopicsResponseBodyData(DaraModel):
 
         if m.get('TopicSource') is not None:
             self.topic_source = m.get('TopicSource')
+
+        if m.get('TopicUrl') is not None:
+            self.topic_url = m.get('TopicUrl')
 
         if m.get('Version') is not None:
             self.version = m.get('Version')
