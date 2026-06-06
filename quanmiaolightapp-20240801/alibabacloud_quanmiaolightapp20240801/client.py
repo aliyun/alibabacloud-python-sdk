@@ -43,6 +43,190 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return Utils.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def batch_cancel_tasks_with_options(
+        self,
+        workspace_id: str,
+        tmp_req: main_models.BatchCancelTasksRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchCancelTasksResponse:
+        tmp_req.validate()
+        request = main_models.BatchCancelTasksShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.task_ids):
+            request.task_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.task_ids, 'taskIds', 'json')
+        body = {}
+        if not DaraCore.is_null(request.task_code):
+            body['taskCode'] = request.task_code
+        if not DaraCore.is_null(request.task_ids_shrink):
+            body['taskIds'] = request.task_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'BatchCancelTasks',
+            version = '2024-08-01',
+            protocol = 'HTTPS',
+            pathname = f'/{DaraURL.percent_encode(workspace_id)}/quanmiao/lightapp/batchCancelTasks',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchCancelTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_cancel_tasks_with_options_async(
+        self,
+        workspace_id: str,
+        tmp_req: main_models.BatchCancelTasksRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchCancelTasksResponse:
+        tmp_req.validate()
+        request = main_models.BatchCancelTasksShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.task_ids):
+            request.task_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.task_ids, 'taskIds', 'json')
+        body = {}
+        if not DaraCore.is_null(request.task_code):
+            body['taskCode'] = request.task_code
+        if not DaraCore.is_null(request.task_ids_shrink):
+            body['taskIds'] = request.task_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'BatchCancelTasks',
+            version = '2024-08-01',
+            protocol = 'HTTPS',
+            pathname = f'/{DaraURL.percent_encode(workspace_id)}/quanmiao/lightapp/batchCancelTasks',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchCancelTasksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_cancel_tasks(
+        self,
+        workspace_id: str,
+        request: main_models.BatchCancelTasksRequest,
+    ) -> main_models.BatchCancelTasksResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.batch_cancel_tasks_with_options(workspace_id, request, headers, runtime)
+
+    async def batch_cancel_tasks_async(
+        self,
+        workspace_id: str,
+        request: main_models.BatchCancelTasksRequest,
+    ) -> main_models.BatchCancelTasksResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.batch_cancel_tasks_with_options_async(workspace_id, request, headers, runtime)
+
+    def batch_query_task_status_with_options(
+        self,
+        workspace_id: str,
+        tmp_req: main_models.BatchQueryTaskStatusRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchQueryTaskStatusResponse:
+        tmp_req.validate()
+        request = main_models.BatchQueryTaskStatusShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.task_ids):
+            request.task_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.task_ids, 'taskIds', 'json')
+        body = {}
+        if not DaraCore.is_null(request.task_code):
+            body['taskCode'] = request.task_code
+        if not DaraCore.is_null(request.task_ids_shrink):
+            body['taskIds'] = request.task_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'BatchQueryTaskStatus',
+            version = '2024-08-01',
+            protocol = 'HTTPS',
+            pathname = f'/{DaraURL.percent_encode(workspace_id)}/quanmiao/lightapp/batchQueryTaskStatus',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchQueryTaskStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_query_task_status_with_options_async(
+        self,
+        workspace_id: str,
+        tmp_req: main_models.BatchQueryTaskStatusRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchQueryTaskStatusResponse:
+        tmp_req.validate()
+        request = main_models.BatchQueryTaskStatusShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.task_ids):
+            request.task_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.task_ids, 'taskIds', 'json')
+        body = {}
+        if not DaraCore.is_null(request.task_code):
+            body['taskCode'] = request.task_code
+        if not DaraCore.is_null(request.task_ids_shrink):
+            body['taskIds'] = request.task_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'BatchQueryTaskStatus',
+            version = '2024-08-01',
+            protocol = 'HTTPS',
+            pathname = f'/{DaraURL.percent_encode(workspace_id)}/quanmiao/lightapp/batchQueryTaskStatus',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchQueryTaskStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_query_task_status(
+        self,
+        workspace_id: str,
+        request: main_models.BatchQueryTaskStatusRequest,
+    ) -> main_models.BatchQueryTaskStatusResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.batch_query_task_status_with_options(workspace_id, request, headers, runtime)
+
+    async def batch_query_task_status_async(
+        self,
+        workspace_id: str,
+        request: main_models.BatchQueryTaskStatusRequest,
+    ) -> main_models.BatchQueryTaskStatusResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.batch_query_task_status_with_options_async(workspace_id, request, headers, runtime)
+
     def cancel_async_task_with_options(
         self,
         workspace_id: str,
@@ -722,6 +906,86 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.get_tag_mining_analysis_task_with_options_async(workspace_id, request, headers, runtime)
+
+    def get_task_execution_statistics_with_options(
+        self,
+        workspace_id: str,
+        request: main_models.GetTaskExecutionStatisticsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetTaskExecutionStatisticsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.task_code):
+            query['taskCode'] = request.task_code
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetTaskExecutionStatistics',
+            version = '2024-08-01',
+            protocol = 'HTTPS',
+            pathname = f'/{DaraURL.percent_encode(workspace_id)}/quanmiao/lightapp/getTaskExecutionStatistics',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetTaskExecutionStatisticsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_task_execution_statistics_with_options_async(
+        self,
+        workspace_id: str,
+        request: main_models.GetTaskExecutionStatisticsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetTaskExecutionStatisticsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.task_code):
+            query['taskCode'] = request.task_code
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetTaskExecutionStatistics',
+            version = '2024-08-01',
+            protocol = 'HTTPS',
+            pathname = f'/{DaraURL.percent_encode(workspace_id)}/quanmiao/lightapp/getTaskExecutionStatistics',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetTaskExecutionStatisticsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_task_execution_statistics(
+        self,
+        workspace_id: str,
+        request: main_models.GetTaskExecutionStatisticsRequest,
+    ) -> main_models.GetTaskExecutionStatisticsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_task_execution_statistics_with_options(workspace_id, request, headers, runtime)
+
+    async def get_task_execution_statistics_async(
+        self,
+        workspace_id: str,
+        request: main_models.GetTaskExecutionStatisticsRequest,
+    ) -> main_models.GetTaskExecutionStatisticsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_task_execution_statistics_with_options_async(workspace_id, request, headers, runtime)
 
     def get_video_analysis_config_with_options(
         self,
