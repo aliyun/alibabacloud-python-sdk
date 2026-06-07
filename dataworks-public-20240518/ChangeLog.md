@@ -1,3 +1,14 @@
+2026-06-07 Version: 8.7.0
+- Support API CreateMcpServer.
+- Support API CreateSkill.
+- Support API GetMcpServer.
+- Support API GetSkill.
+- Support API ListCustomAgents.
+- Support API ListMcpServers.
+- Support API ListSkills.
+- Support API UpdateMcpServer.
+
+
 2026-06-05 Version: 8.6.0
 - Support API CreateAgent.
 - Support API DeleteAgent.

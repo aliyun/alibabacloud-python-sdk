@@ -161,6 +161,10 @@ from ._create_lineage_relationship_request import CreateLineageRelationshipReque
 from ._create_lineage_relationship_shrink_request import CreateLineageRelationshipShrinkRequest
 from ._create_lineage_relationship_response_body import CreateLineageRelationshipResponseBody
 from ._create_lineage_relationship_response import CreateLineageRelationshipResponse
+from ._create_mcp_server_request import CreateMcpServerRequest
+from ._create_mcp_server_shrink_request import CreateMcpServerShrinkRequest
+from ._create_mcp_server_response_body import CreateMcpServerResponseBody
+from ._create_mcp_server_response import CreateMcpServerResponse
 from ._create_meta_collection_request import CreateMetaCollectionRequest
 from ._create_meta_collection_response_body import CreateMetaCollectionResponseBody
 from ._create_meta_collection_response import CreateMetaCollectionResponse
@@ -209,6 +213,10 @@ from ._create_resource_group_response import CreateResourceGroupResponse
 from ._create_route_request import CreateRouteRequest
 from ._create_route_response_body import CreateRouteResponseBody
 from ._create_route_response import CreateRouteResponse
+from ._create_skill_request import CreateSkillRequest
+from ._create_skill_shrink_request import CreateSkillShrinkRequest
+from ._create_skill_response_body import CreateSkillResponseBody
+from ._create_skill_response import CreateSkillResponse
 from ._create_udf_file_request import CreateUdfFileRequest
 from ._create_udf_file_response_body import CreateUdfFileResponseBody
 from ._create_udf_file_response import CreateUdfFileResponse
@@ -473,6 +481,9 @@ from ._get_job_status_response import GetJobStatusResponse
 from ._get_lineage_relationship_request import GetLineageRelationshipRequest
 from ._get_lineage_relationship_response_body import GetLineageRelationshipResponseBody
 from ._get_lineage_relationship_response import GetLineageRelationshipResponse
+from ._get_mcp_server_request import GetMcpServerRequest
+from ._get_mcp_server_response_body import GetMcpServerResponseBody
+from ._get_mcp_server_response import GetMcpServerResponse
 from ._get_meta_collection_request import GetMetaCollectionRequest
 from ._get_meta_collection_response_body import GetMetaCollectionResponseBody
 from ._get_meta_collection_response import GetMetaCollectionResponse
@@ -521,6 +532,9 @@ from ._get_route_response import GetRouteResponse
 from ._get_schema_request import GetSchemaRequest
 from ._get_schema_response_body import GetSchemaResponseBody
 from ._get_schema_response import GetSchemaResponse
+from ._get_skill_request import GetSkillRequest
+from ._get_skill_response_body import GetSkillResponseBody
+from ._get_skill_response import GetSkillResponse
 from ._get_table_request import GetTableRequest
 from ._get_table_response_body import GetTableResponseBody
 from ._get_table_response import GetTableResponse
@@ -591,6 +605,10 @@ from ._list_compute_resources_response_body import ListComputeResourcesResponseB
 from ._list_compute_resources_response import ListComputeResourcesResponse
 from ._list_crawler_types_response_body import ListCrawlerTypesResponseBody
 from ._list_crawler_types_response import ListCrawlerTypesResponse
+from ._list_custom_agents_request import ListCustomAgentsRequest
+from ._list_custom_agents_shrink_request import ListCustomAgentsShrinkRequest
+from ._list_custom_agents_response_body import ListCustomAgentsResponseBody
+from ._list_custom_agents_response import ListCustomAgentsResponse
 from ._list_custom_attributes_request import ListCustomAttributesRequest
 from ._list_custom_attributes_response_body import ListCustomAttributesResponseBody
 from ._list_custom_attributes_response import ListCustomAttributesResponse
@@ -706,6 +724,10 @@ from ._list_lineage_relationships_response import ListLineageRelationshipsRespon
 from ._list_lineages_request import ListLineagesRequest
 from ._list_lineages_response_body import ListLineagesResponseBody
 from ._list_lineages_response import ListLineagesResponse
+from ._list_mcp_servers_request import ListMcpServersRequest
+from ._list_mcp_servers_shrink_request import ListMcpServersShrinkRequest
+from ._list_mcp_servers_response_body import ListMcpServersResponseBody
+from ._list_mcp_servers_response import ListMcpServersResponse
 from ._list_meta_collections_request import ListMetaCollectionsRequest
 from ._list_meta_collections_response_body import ListMetaCollectionsResponseBody
 from ._list_meta_collections_response import ListMetaCollectionsResponse
@@ -773,6 +795,10 @@ from ._list_schemas_request import ListSchemasRequest
 from ._list_schemas_shrink_request import ListSchemasShrinkRequest
 from ._list_schemas_response_body import ListSchemasResponseBody
 from ._list_schemas_response import ListSchemasResponse
+from ._list_skills_request import ListSkillsRequest
+from ._list_skills_shrink_request import ListSkillsShrinkRequest
+from ._list_skills_response_body import ListSkillsResponseBody
+from ._list_skills_response import ListSkillsResponse
 from ._list_tables_request import ListTablesRequest
 from ._list_tables_shrink_request import ListTablesShrinkRequest
 from ._list_tables_response_body import ListTablesResponseBody
@@ -990,6 +1016,10 @@ from ._update_function_response import UpdateFunctionResponse
 from ._update_ideevent_result_request import UpdateIDEEventResultRequest
 from ._update_ideevent_result_response_body import UpdateIDEEventResultResponseBody
 from ._update_ideevent_result_response import UpdateIDEEventResultResponse
+from ._update_mcp_server_request import UpdateMcpServerRequest
+from ._update_mcp_server_shrink_request import UpdateMcpServerShrinkRequest
+from ._update_mcp_server_response_body import UpdateMcpServerResponseBody
+from ._update_mcp_server_response import UpdateMcpServerResponse
 from ._update_meta_collection_request import UpdateMetaCollectionRequest
 from ._update_meta_collection_shrink_request import UpdateMetaCollectionShrinkRequest
 from ._update_meta_collection_response_body import UpdateMetaCollectionResponseBody
@@ -1182,11 +1212,17 @@ from ._create_data_quality_scan_request import CreateDataQualityScanRequestTrigg
 from ._create_data_quality_scan_run_request import CreateDataQualityScanRunRequestParameters
 from ._create_data_quality_scan_run_request import CreateDataQualityScanRunRequestRuntimeResource
 from ._create_dataset_request import CreateDatasetRequestInitVersion
+from ._create_mcp_server_request import CreateMcpServerRequestConfig
+from ._create_mcp_server_request import CreateMcpServerRequestVisibilityScope
+from ._create_mcp_server_response_body import CreateMcpServerResponseBodyMcpServer
 from ._create_parameter_request import CreateParameterRequestProperties
 from ._create_project_request import CreateProjectRequestAliyunResourceTags
 from ._create_project_role_request import CreateProjectRoleRequestModulePermissions
 from ._create_resource_group_request import CreateResourceGroupRequestAliyunResourceTags
 from ._create_resource_group_response_body import CreateResourceGroupResponseBodyResourceGroupOrder
+from ._create_skill_request import CreateSkillRequestVisibilityScope
+from ._create_skill_response_body import CreateSkillResponseBodySkillVisibilityScope
+from ._create_skill_response_body import CreateSkillResponseBodySkill
 from ._create_workflow_instances_request import CreateWorkflowInstancesRequestDefaultRunPropertiesAlert
 from ._create_workflow_instances_request import CreateWorkflowInstancesRequestDefaultRunPropertiesAnalysis
 from ._create_workflow_instances_request import CreateWorkflowInstancesRequestDefaultRunPropertiesRunPolicy
@@ -1346,6 +1382,8 @@ from ._get_image_response_body import GetImageResponseBodyImageBuildConfig
 from ._get_image_response_body import GetImageResponseBodyImageSupported
 from ._get_image_response_body import GetImageResponseBodyImage
 from ._get_job_status_response_body import GetJobStatusResponseBodyJobStatus
+from ._get_mcp_server_response_body import GetMcpServerResponseBodyMcpServerConfig
+from ._get_mcp_server_response_body import GetMcpServerResponseBodyMcpServer
 from ._get_meta_collection_response_body import GetMetaCollectionResponseBodyMetaCollection
 from ._get_network_response_body import GetNetworkResponseBodyNetwork
 from ._get_node_response_body import GetNodeResponseBodyNode
@@ -1365,6 +1403,8 @@ from ._get_resource_group_response_body import GetResourceGroupResponseBodyResou
 from ._get_resource_group_response_body import GetResourceGroupResponseBodyResourceGroupSpec
 from ._get_resource_group_response_body import GetResourceGroupResponseBodyResourceGroup
 from ._get_route_response_body import GetRouteResponseBodyRoute
+from ._get_skill_response_body import GetSkillResponseBodySkillVisibilityScope
+from ._get_skill_response_body import GetSkillResponseBodySkill
 from ._get_task_response_body import GetTaskResponseBodyTaskDataSource
 from ._get_task_response_body import GetTaskResponseBodyTaskDependencies
 from ._get_task_response_body import GetTaskResponseBodyTaskInputsVariables
@@ -1448,6 +1488,8 @@ from ._list_components_response_body import ListComponentsResponseBodyPagingInfo
 from ._list_compute_resources_response_body import ListComputeResourcesResponseBodyPagingInfoComputeResourcesComputeResource
 from ._list_compute_resources_response_body import ListComputeResourcesResponseBodyPagingInfoComputeResources
 from ._list_compute_resources_response_body import ListComputeResourcesResponseBodyPagingInfo
+from ._list_custom_agents_response_body import ListCustomAgentsResponseBodyPagingInfoAgents
+from ._list_custom_agents_response_body import ListCustomAgentsResponseBodyPagingInfo
 from ._list_custom_attributes_response_body import ListCustomAttributesResponseBodyPagingInfo
 from ._list_dialarm_rules_response_body import ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRulesNotificationSettingsNotificationChannels
 from ._list_dialarm_rules_response_body import ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRulesNotificationSettingsNotificationReceivers
@@ -1591,6 +1633,9 @@ from ._list_images_response_body import ListImagesResponseBodyPagingInfo
 from ._list_lineage_relationships_response_body import ListLineageRelationshipsResponseBodyPagingInfo
 from ._list_lineages_response_body import ListLineagesResponseBodyPagingInfoLineages
 from ._list_lineages_response_body import ListLineagesResponseBodyPagingInfo
+from ._list_mcp_servers_response_body import ListMcpServersResponseBodyPagingInfoMcpServersConfig
+from ._list_mcp_servers_response_body import ListMcpServersResponseBodyPagingInfoMcpServers
+from ._list_mcp_servers_response_body import ListMcpServersResponseBodyPagingInfo
 from ._list_meta_collections_response_body import ListMetaCollectionsResponseBodyDataMetaCollections
 from ._list_meta_collections_response_body import ListMetaCollectionsResponseBodyData
 from ._list_meta_entities_request import ListMetaEntitiesRequestAttributeFilters
@@ -1674,6 +1719,8 @@ from ._list_resources_response_body import ListResourcesResponseBodyPagingInfo
 from ._list_routes_response_body import ListRoutesResponseBodyPagingInfoRouteList
 from ._list_routes_response_body import ListRoutesResponseBodyPagingInfo
 from ._list_schemas_response_body import ListSchemasResponseBodyPagingInfo
+from ._list_skills_response_body import ListSkillsResponseBodyPagingInfoSkills
+from ._list_skills_response_body import ListSkillsResponseBodyPagingInfo
 from ._list_tables_response_body import ListTablesResponseBodyPagingInfo
 from ._list_task_instance_operation_logs_response_body import ListTaskInstanceOperationLogsResponseBodyPagingInfoOperationLogs
 from ._list_task_instance_operation_logs_response_body import ListTaskInstanceOperationLogsResponseBodyPagingInfo
@@ -1797,6 +1844,8 @@ from ._update_data_quality_scan_request import UpdateDataQualityScanRequestHooks
 from ._update_data_quality_scan_request import UpdateDataQualityScanRequestParameters
 from ._update_data_quality_scan_request import UpdateDataQualityScanRequestRuntimeResource
 from ._update_data_quality_scan_request import UpdateDataQualityScanRequestTrigger
+from ._update_mcp_server_request import UpdateMcpServerRequestVisibilityScope
+from ._update_mcp_server_response_body import UpdateMcpServerResponseBodyMcpServer
 from ._update_meta_entity_response_body import UpdateMetaEntityResponseBodyResult
 from ._update_parameter_request import UpdateParameterRequestProperties
 from ._update_project_role_request import UpdateProjectRoleRequestModulePermissions
@@ -1991,6 +2040,10 @@ __all__ = [
     CreateLineageRelationshipShrinkRequest,
     CreateLineageRelationshipResponseBody,
     CreateLineageRelationshipResponse,
+    CreateMcpServerRequest,
+    CreateMcpServerShrinkRequest,
+    CreateMcpServerResponseBody,
+    CreateMcpServerResponse,
     CreateMetaCollectionRequest,
     CreateMetaCollectionResponseBody,
     CreateMetaCollectionResponse,
@@ -2039,6 +2092,10 @@ __all__ = [
     CreateRouteRequest,
     CreateRouteResponseBody,
     CreateRouteResponse,
+    CreateSkillRequest,
+    CreateSkillShrinkRequest,
+    CreateSkillResponseBody,
+    CreateSkillResponse,
     CreateUdfFileRequest,
     CreateUdfFileResponseBody,
     CreateUdfFileResponse,
@@ -2303,6 +2360,9 @@ __all__ = [
     GetLineageRelationshipRequest,
     GetLineageRelationshipResponseBody,
     GetLineageRelationshipResponse,
+    GetMcpServerRequest,
+    GetMcpServerResponseBody,
+    GetMcpServerResponse,
     GetMetaCollectionRequest,
     GetMetaCollectionResponseBody,
     GetMetaCollectionResponse,
@@ -2351,6 +2411,9 @@ __all__ = [
     GetSchemaRequest,
     GetSchemaResponseBody,
     GetSchemaResponse,
+    GetSkillRequest,
+    GetSkillResponseBody,
+    GetSkillResponse,
     GetTableRequest,
     GetTableResponseBody,
     GetTableResponse,
@@ -2421,6 +2484,10 @@ __all__ = [
     ListComputeResourcesResponse,
     ListCrawlerTypesResponseBody,
     ListCrawlerTypesResponse,
+    ListCustomAgentsRequest,
+    ListCustomAgentsShrinkRequest,
+    ListCustomAgentsResponseBody,
+    ListCustomAgentsResponse,
     ListCustomAttributesRequest,
     ListCustomAttributesResponseBody,
     ListCustomAttributesResponse,
@@ -2536,6 +2603,10 @@ __all__ = [
     ListLineagesRequest,
     ListLineagesResponseBody,
     ListLineagesResponse,
+    ListMcpServersRequest,
+    ListMcpServersShrinkRequest,
+    ListMcpServersResponseBody,
+    ListMcpServersResponse,
     ListMetaCollectionsRequest,
     ListMetaCollectionsResponseBody,
     ListMetaCollectionsResponse,
@@ -2603,6 +2674,10 @@ __all__ = [
     ListSchemasShrinkRequest,
     ListSchemasResponseBody,
     ListSchemasResponse,
+    ListSkillsRequest,
+    ListSkillsShrinkRequest,
+    ListSkillsResponseBody,
+    ListSkillsResponse,
     ListTablesRequest,
     ListTablesShrinkRequest,
     ListTablesResponseBody,
@@ -2820,6 +2895,10 @@ __all__ = [
     UpdateIDEEventResultRequest,
     UpdateIDEEventResultResponseBody,
     UpdateIDEEventResultResponse,
+    UpdateMcpServerRequest,
+    UpdateMcpServerShrinkRequest,
+    UpdateMcpServerResponseBody,
+    UpdateMcpServerResponse,
     UpdateMetaCollectionRequest,
     UpdateMetaCollectionShrinkRequest,
     UpdateMetaCollectionResponseBody,
@@ -3012,11 +3091,17 @@ __all__ = [
     CreateDataQualityScanRunRequestParameters,
     CreateDataQualityScanRunRequestRuntimeResource,
     CreateDatasetRequestInitVersion,
+    CreateMcpServerRequestConfig,
+    CreateMcpServerRequestVisibilityScope,
+    CreateMcpServerResponseBodyMcpServer,
     CreateParameterRequestProperties,
     CreateProjectRequestAliyunResourceTags,
     CreateProjectRoleRequestModulePermissions,
     CreateResourceGroupRequestAliyunResourceTags,
     CreateResourceGroupResponseBodyResourceGroupOrder,
+    CreateSkillRequestVisibilityScope,
+    CreateSkillResponseBodySkillVisibilityScope,
+    CreateSkillResponseBodySkill,
     CreateWorkflowInstancesRequestDefaultRunPropertiesAlert,
     CreateWorkflowInstancesRequestDefaultRunPropertiesAnalysis,
     CreateWorkflowInstancesRequestDefaultRunPropertiesRunPolicy,
@@ -3176,6 +3261,8 @@ __all__ = [
     GetImageResponseBodyImageSupported,
     GetImageResponseBodyImage,
     GetJobStatusResponseBodyJobStatus,
+    GetMcpServerResponseBodyMcpServerConfig,
+    GetMcpServerResponseBodyMcpServer,
     GetMetaCollectionResponseBodyMetaCollection,
     GetNetworkResponseBodyNetwork,
     GetNodeResponseBodyNode,
@@ -3195,6 +3282,8 @@ __all__ = [
     GetResourceGroupResponseBodyResourceGroupSpec,
     GetResourceGroupResponseBodyResourceGroup,
     GetRouteResponseBodyRoute,
+    GetSkillResponseBodySkillVisibilityScope,
+    GetSkillResponseBodySkill,
     GetTaskResponseBodyTaskDataSource,
     GetTaskResponseBodyTaskDependencies,
     GetTaskResponseBodyTaskInputsVariables,
@@ -3278,6 +3367,8 @@ __all__ = [
     ListComputeResourcesResponseBodyPagingInfoComputeResourcesComputeResource,
     ListComputeResourcesResponseBodyPagingInfoComputeResources,
     ListComputeResourcesResponseBodyPagingInfo,
+    ListCustomAgentsResponseBodyPagingInfoAgents,
+    ListCustomAgentsResponseBodyPagingInfo,
     ListCustomAttributesResponseBodyPagingInfo,
     ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRulesNotificationSettingsNotificationChannels,
     ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRulesNotificationSettingsNotificationReceivers,
@@ -3421,6 +3512,9 @@ __all__ = [
     ListLineageRelationshipsResponseBodyPagingInfo,
     ListLineagesResponseBodyPagingInfoLineages,
     ListLineagesResponseBodyPagingInfo,
+    ListMcpServersResponseBodyPagingInfoMcpServersConfig,
+    ListMcpServersResponseBodyPagingInfoMcpServers,
+    ListMcpServersResponseBodyPagingInfo,
     ListMetaCollectionsResponseBodyDataMetaCollections,
     ListMetaCollectionsResponseBodyData,
     ListMetaEntitiesRequestAttributeFilters,
@@ -3504,6 +3598,8 @@ __all__ = [
     ListRoutesResponseBodyPagingInfoRouteList,
     ListRoutesResponseBodyPagingInfo,
     ListSchemasResponseBodyPagingInfo,
+    ListSkillsResponseBodyPagingInfoSkills,
+    ListSkillsResponseBodyPagingInfo,
     ListTablesResponseBodyPagingInfo,
     ListTaskInstanceOperationLogsResponseBodyPagingInfoOperationLogs,
     ListTaskInstanceOperationLogsResponseBodyPagingInfo,
@@ -3627,6 +3723,8 @@ __all__ = [
     UpdateDataQualityScanRequestParameters,
     UpdateDataQualityScanRequestRuntimeResource,
     UpdateDataQualityScanRequestTrigger,
+    UpdateMcpServerRequestVisibilityScope,
+    UpdateMcpServerResponseBodyMcpServer,
     UpdateMetaEntityResponseBodyResult,
     UpdateParameterRequestProperties,
     UpdateProjectRoleRequestModulePermissions,

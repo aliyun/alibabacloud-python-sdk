@@ -3820,6 +3820,100 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_lineage_relationship_with_options_async(request, runtime)
 
+    def create_mcp_server_with_options(
+        self,
+        tmp_req: main_models.CreateMcpServerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateMcpServerResponse:
+        tmp_req.validate()
+        request = main_models.CreateMcpServerShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.config):
+            request.config_shrink = Utils.array_to_string_with_specified_style(tmp_req.config, 'Config', 'json')
+        if not DaraCore.is_null(tmp_req.visibility_scope):
+            request.visibility_scope_shrink = Utils.array_to_string_with_specified_style(tmp_req.visibility_scope, 'VisibilityScope', 'json')
+        body = {}
+        if not DaraCore.is_null(request.config_shrink):
+            body['Config'] = request.config_shrink
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.visibility):
+            body['Visibility'] = request.visibility
+        if not DaraCore.is_null(request.visibility_scope_shrink):
+            body['VisibilityScope'] = request.visibility_scope_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateMcpServer',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateMcpServerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_mcp_server_with_options_async(
+        self,
+        tmp_req: main_models.CreateMcpServerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateMcpServerResponse:
+        tmp_req.validate()
+        request = main_models.CreateMcpServerShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.config):
+            request.config_shrink = Utils.array_to_string_with_specified_style(tmp_req.config, 'Config', 'json')
+        if not DaraCore.is_null(tmp_req.visibility_scope):
+            request.visibility_scope_shrink = Utils.array_to_string_with_specified_style(tmp_req.visibility_scope, 'VisibilityScope', 'json')
+        body = {}
+        if not DaraCore.is_null(request.config_shrink):
+            body['Config'] = request.config_shrink
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.visibility):
+            body['Visibility'] = request.visibility
+        if not DaraCore.is_null(request.visibility_scope_shrink):
+            body['VisibilityScope'] = request.visibility_scope_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateMcpServer',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateMcpServerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_mcp_server(
+        self,
+        request: main_models.CreateMcpServerRequest,
+    ) -> main_models.CreateMcpServerResponse:
+        runtime = RuntimeOptions()
+        return self.create_mcp_server_with_options(request, runtime)
+
+    async def create_mcp_server_async(
+        self,
+        request: main_models.CreateMcpServerRequest,
+    ) -> main_models.CreateMcpServerResponse:
+        runtime = RuntimeOptions()
+        return await self.create_mcp_server_with_options_async(request, runtime)
+
     def create_meta_collection_with_options(
         self,
         request: main_models.CreateMetaCollectionRequest,
@@ -5353,6 +5447,116 @@ class Client(OpenApiClient):
     ) -> main_models.CreateRouteResponse:
         runtime = RuntimeOptions()
         return await self.create_route_with_options_async(request, runtime)
+
+    def create_skill_with_options(
+        self,
+        tmp_req: main_models.CreateSkillRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateSkillResponse:
+        tmp_req.validate()
+        request = main_models.CreateSkillShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.extra):
+            request.extra_shrink = Utils.array_to_string_with_specified_style(tmp_req.extra, 'Extra', 'json')
+        if not DaraCore.is_null(tmp_req.visibility_scope):
+            request.visibility_scope_shrink = Utils.array_to_string_with_specified_style(tmp_req.visibility_scope, 'VisibilityScope', 'json')
+        body = {}
+        if not DaraCore.is_null(request.bundle_url):
+            body['BundleUrl'] = request.bundle_url
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.extra_shrink):
+            body['Extra'] = request.extra_shrink
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.skill_md_override):
+            body['SkillMdOverride'] = request.skill_md_override
+        if not DaraCore.is_null(request.version_note):
+            body['VersionNote'] = request.version_note
+        if not DaraCore.is_null(request.visibility):
+            body['Visibility'] = request.visibility
+        if not DaraCore.is_null(request.visibility_scope_shrink):
+            body['VisibilityScope'] = request.visibility_scope_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateSkill',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateSkillResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_skill_with_options_async(
+        self,
+        tmp_req: main_models.CreateSkillRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateSkillResponse:
+        tmp_req.validate()
+        request = main_models.CreateSkillShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.extra):
+            request.extra_shrink = Utils.array_to_string_with_specified_style(tmp_req.extra, 'Extra', 'json')
+        if not DaraCore.is_null(tmp_req.visibility_scope):
+            request.visibility_scope_shrink = Utils.array_to_string_with_specified_style(tmp_req.visibility_scope, 'VisibilityScope', 'json')
+        body = {}
+        if not DaraCore.is_null(request.bundle_url):
+            body['BundleUrl'] = request.bundle_url
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.extra_shrink):
+            body['Extra'] = request.extra_shrink
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.skill_md_override):
+            body['SkillMdOverride'] = request.skill_md_override
+        if not DaraCore.is_null(request.version_note):
+            body['VersionNote'] = request.version_note
+        if not DaraCore.is_null(request.visibility):
+            body['Visibility'] = request.visibility
+        if not DaraCore.is_null(request.visibility_scope_shrink):
+            body['VisibilityScope'] = request.visibility_scope_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateSkill',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateSkillResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_skill(
+        self,
+        request: main_models.CreateSkillRequest,
+    ) -> main_models.CreateSkillResponse:
+        runtime = RuntimeOptions()
+        return self.create_skill_with_options(request, runtime)
+
+    async def create_skill_async(
+        self,
+        request: main_models.CreateSkillRequest,
+    ) -> main_models.CreateSkillResponse:
+        runtime = RuntimeOptions()
+        return await self.create_skill_with_options_async(request, runtime)
 
     def create_udf_file_with_options(
         self,
@@ -11722,6 +11926,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_lineage_relationship_with_options_async(request, runtime)
 
+    def get_mcp_server_with_options(
+        self,
+        request: main_models.GetMcpServerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetMcpServerResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetMcpServer',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetMcpServerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_mcp_server_with_options_async(
+        self,
+        request: main_models.GetMcpServerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetMcpServerResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetMcpServer',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetMcpServerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_mcp_server(
+        self,
+        request: main_models.GetMcpServerRequest,
+    ) -> main_models.GetMcpServerResponse:
+        runtime = RuntimeOptions()
+        return self.get_mcp_server_with_options(request, runtime)
+
+    async def get_mcp_server_async(
+        self,
+        request: main_models.GetMcpServerRequest,
+    ) -> main_models.GetMcpServerResponse:
+        runtime = RuntimeOptions()
+        return await self.get_mcp_server_with_options_async(request, runtime)
+
     def get_meta_collection_with_options(
         self,
         request: main_models.GetMetaCollectionRequest,
@@ -12809,6 +13083,76 @@ class Client(OpenApiClient):
     ) -> main_models.GetSchemaResponse:
         runtime = RuntimeOptions()
         return await self.get_schema_with_options_async(request, runtime)
+
+    def get_skill_with_options(
+        self,
+        request: main_models.GetSkillRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetSkillResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetSkill',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetSkillResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_skill_with_options_async(
+        self,
+        request: main_models.GetSkillRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetSkillResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetSkill',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetSkillResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_skill(
+        self,
+        request: main_models.GetSkillRequest,
+    ) -> main_models.GetSkillResponse:
+        runtime = RuntimeOptions()
+        return self.get_skill_with_options(request, runtime)
+
+    async def get_skill_async(
+        self,
+        request: main_models.GetSkillRequest,
+    ) -> main_models.GetSkillResponse:
+        runtime = RuntimeOptions()
+        return await self.get_skill_with_options_async(request, runtime)
 
     def get_table_with_options(
         self,
@@ -14569,6 +14913,100 @@ class Client(OpenApiClient):
     async def list_crawler_types_async(self) -> main_models.ListCrawlerTypesResponse:
         runtime = RuntimeOptions()
         return await self.list_crawler_types_with_options_async(runtime)
+
+    def list_custom_agents_with_options(
+        self,
+        tmp_req: main_models.ListCustomAgentsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListCustomAgentsResponse:
+        tmp_req.validate()
+        request = main_models.ListCustomAgentsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.visibility):
+            request.visibility_shrink = Utils.array_to_string_with_specified_style(tmp_req.visibility, 'Visibility', 'json')
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        body = {}
+        if not DaraCore.is_null(request.q):
+            body['Q'] = request.q
+        if not DaraCore.is_null(request.visibility_shrink):
+            body['Visibility'] = request.visibility_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListCustomAgents',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListCustomAgentsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_custom_agents_with_options_async(
+        self,
+        tmp_req: main_models.ListCustomAgentsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListCustomAgentsResponse:
+        tmp_req.validate()
+        request = main_models.ListCustomAgentsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.visibility):
+            request.visibility_shrink = Utils.array_to_string_with_specified_style(tmp_req.visibility, 'Visibility', 'json')
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        body = {}
+        if not DaraCore.is_null(request.q):
+            body['Q'] = request.q
+        if not DaraCore.is_null(request.visibility_shrink):
+            body['Visibility'] = request.visibility_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListCustomAgents',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListCustomAgentsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_custom_agents(
+        self,
+        request: main_models.ListCustomAgentsRequest,
+    ) -> main_models.ListCustomAgentsResponse:
+        runtime = RuntimeOptions()
+        return self.list_custom_agents_with_options(request, runtime)
+
+    async def list_custom_agents_async(
+        self,
+        request: main_models.ListCustomAgentsRequest,
+    ) -> main_models.ListCustomAgentsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_custom_agents_with_options_async(request, runtime)
 
     def list_custom_attributes_with_options(
         self,
@@ -17482,6 +17920,100 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_lineages_with_options_async(request, runtime)
 
+    def list_mcp_servers_with_options(
+        self,
+        tmp_req: main_models.ListMcpServersRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListMcpServersResponse:
+        tmp_req.validate()
+        request = main_models.ListMcpServersShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.visibility):
+            request.visibility_shrink = Utils.array_to_string_with_specified_style(tmp_req.visibility, 'Visibility', 'json')
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        body = {}
+        if not DaraCore.is_null(request.q):
+            body['Q'] = request.q
+        if not DaraCore.is_null(request.visibility_shrink):
+            body['Visibility'] = request.visibility_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListMcpServers',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListMcpServersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_mcp_servers_with_options_async(
+        self,
+        tmp_req: main_models.ListMcpServersRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListMcpServersResponse:
+        tmp_req.validate()
+        request = main_models.ListMcpServersShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.visibility):
+            request.visibility_shrink = Utils.array_to_string_with_specified_style(tmp_req.visibility, 'Visibility', 'json')
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        body = {}
+        if not DaraCore.is_null(request.q):
+            body['Q'] = request.q
+        if not DaraCore.is_null(request.visibility_shrink):
+            body['Visibility'] = request.visibility_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListMcpServers',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListMcpServersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_mcp_servers(
+        self,
+        request: main_models.ListMcpServersRequest,
+    ) -> main_models.ListMcpServersResponse:
+        runtime = RuntimeOptions()
+        return self.list_mcp_servers_with_options(request, runtime)
+
+    async def list_mcp_servers_async(
+        self,
+        request: main_models.ListMcpServersRequest,
+    ) -> main_models.ListMcpServersResponse:
+        runtime = RuntimeOptions()
+        return await self.list_mcp_servers_with_options_async(request, runtime)
+
     def list_meta_collections_with_options(
         self,
         request: main_models.ListMetaCollectionsRequest,
@@ -19121,6 +19653,100 @@ class Client(OpenApiClient):
     ) -> main_models.ListSchemasResponse:
         runtime = RuntimeOptions()
         return await self.list_schemas_with_options_async(request, runtime)
+
+    def list_skills_with_options(
+        self,
+        tmp_req: main_models.ListSkillsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListSkillsResponse:
+        tmp_req.validate()
+        request = main_models.ListSkillsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.visibility):
+            request.visibility_shrink = Utils.array_to_string_with_specified_style(tmp_req.visibility, 'Visibility', 'json')
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        body = {}
+        if not DaraCore.is_null(request.q):
+            body['Q'] = request.q
+        if not DaraCore.is_null(request.visibility_shrink):
+            body['Visibility'] = request.visibility_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListSkills',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListSkillsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_skills_with_options_async(
+        self,
+        tmp_req: main_models.ListSkillsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListSkillsResponse:
+        tmp_req.validate()
+        request = main_models.ListSkillsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.visibility):
+            request.visibility_shrink = Utils.array_to_string_with_specified_style(tmp_req.visibility, 'Visibility', 'json')
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        body = {}
+        if not DaraCore.is_null(request.q):
+            body['Q'] = request.q
+        if not DaraCore.is_null(request.visibility_shrink):
+            body['Visibility'] = request.visibility_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListSkills',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListSkillsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_skills(
+        self,
+        request: main_models.ListSkillsRequest,
+    ) -> main_models.ListSkillsResponse:
+        runtime = RuntimeOptions()
+        return self.list_skills_with_options(request, runtime)
+
+    async def list_skills_async(
+        self,
+        request: main_models.ListSkillsRequest,
+    ) -> main_models.ListSkillsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_skills_with_options_async(request, runtime)
 
     def list_tables_with_options(
         self,
@@ -24941,6 +25567,108 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateIDEEventResultResponse:
         runtime = RuntimeOptions()
         return await self.update_ideevent_result_with_options_async(request, runtime)
+
+    def update_mcp_server_with_options(
+        self,
+        tmp_req: main_models.UpdateMcpServerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateMcpServerResponse:
+        tmp_req.validate()
+        request = main_models.UpdateMcpServerShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.custom_headers):
+            request.custom_headers_shrink = Utils.array_to_string_with_specified_style(tmp_req.custom_headers, 'CustomHeaders', 'json')
+        if not DaraCore.is_null(tmp_req.visibility_scope):
+            request.visibility_scope_shrink = Utils.array_to_string_with_specified_style(tmp_req.visibility_scope, 'VisibilityScope', 'json')
+        body = {}
+        if not DaraCore.is_null(request.custom_headers_shrink):
+            body['CustomHeaders'] = request.custom_headers_shrink
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.transport):
+            body['Transport'] = request.transport
+        if not DaraCore.is_null(request.url):
+            body['Url'] = request.url
+        if not DaraCore.is_null(request.visibility):
+            body['Visibility'] = request.visibility
+        if not DaraCore.is_null(request.visibility_scope_shrink):
+            body['VisibilityScope'] = request.visibility_scope_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateMcpServer',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateMcpServerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_mcp_server_with_options_async(
+        self,
+        tmp_req: main_models.UpdateMcpServerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateMcpServerResponse:
+        tmp_req.validate()
+        request = main_models.UpdateMcpServerShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.custom_headers):
+            request.custom_headers_shrink = Utils.array_to_string_with_specified_style(tmp_req.custom_headers, 'CustomHeaders', 'json')
+        if not DaraCore.is_null(tmp_req.visibility_scope):
+            request.visibility_scope_shrink = Utils.array_to_string_with_specified_style(tmp_req.visibility_scope, 'VisibilityScope', 'json')
+        body = {}
+        if not DaraCore.is_null(request.custom_headers_shrink):
+            body['CustomHeaders'] = request.custom_headers_shrink
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.transport):
+            body['Transport'] = request.transport
+        if not DaraCore.is_null(request.url):
+            body['Url'] = request.url
+        if not DaraCore.is_null(request.visibility):
+            body['Visibility'] = request.visibility
+        if not DaraCore.is_null(request.visibility_scope_shrink):
+            body['VisibilityScope'] = request.visibility_scope_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateMcpServer',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateMcpServerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_mcp_server(
+        self,
+        request: main_models.UpdateMcpServerRequest,
+    ) -> main_models.UpdateMcpServerResponse:
+        runtime = RuntimeOptions()
+        return self.update_mcp_server_with_options(request, runtime)
+
+    async def update_mcp_server_async(
+        self,
+        request: main_models.UpdateMcpServerRequest,
+    ) -> main_models.UpdateMcpServerResponse:
+        runtime = RuntimeOptions()
+        return await self.update_mcp_server_with_options_async(request, runtime)
 
     def update_meta_collection_with_options(
         self,
