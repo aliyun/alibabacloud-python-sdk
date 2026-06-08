@@ -13,8 +13,14 @@ class ABTestScene(DaraModel):
         status: int = None,
         values: List[str] = None,
     ):
+        # The alias of the test scenario.
         self.name = name
+        # The status of the test scenario. Valid values:
+        # 
+        # *   0: not in effect
+        # *   1: in effect
         self.status = status
+        # The ID of the test scenario
         self.values = values
 
     def validate(self):

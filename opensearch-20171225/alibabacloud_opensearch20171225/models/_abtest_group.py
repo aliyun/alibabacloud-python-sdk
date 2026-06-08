@@ -10,7 +10,12 @@ class ABTestGroup(DaraModel):
         name: str = None,
         status: int = None,
     ):
+        # The alias of the test group.
         self.name = name
+        # The status of the test group. Valid values:
+        # 
+        # *   0: not in effect
+        # *   1: in effect
         self.status = status
 
     def validate(self):

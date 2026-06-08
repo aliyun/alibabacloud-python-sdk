@@ -1,3 +1,7 @@
+2026-06-08 Version: 5.1.0
+- Support API UpdateAppGroupDeleteProtection.
+
+
 2025-12-29 Version: 5.0.0
 - Update API CreateSortScript: add request parameters body.description.
 - Update API GetSortScript: add response parameters Body.result.description.

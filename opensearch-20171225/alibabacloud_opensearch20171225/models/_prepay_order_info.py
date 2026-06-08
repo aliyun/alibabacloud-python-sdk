@@ -11,8 +11,14 @@ class PrepayOrderInfo(DaraModel):
         duration: int = None,
         pricing_cycle: str = None,
     ):
+        # Specifies whether to enable auto-renewal for the instance.
         self.auto_renew = auto_renew
+        # The subscription duration.
         self.duration = duration
+        # The billing cycle. Valid values:
+        # 
+        # *   Year
+        # *   Month
         self.pricing_cycle = pricing_cycle
 
     def validate(self):
