@@ -9,6 +9,7 @@ class Id3MetaVerifyRequest(DaraModel):
         self,
         crop: str = None,
         face_file: str = None,
+        face_picture: str = None,
         face_url: str = None,
         identify_num: str = None,
         param_type: str = None,
@@ -25,6 +26,7 @@ class Id3MetaVerifyRequest(DaraModel):
         # Portrait side of the ID card image input stream.
         # Choose one between `CertUrl` and `CertFile`.
         self.face_file = face_file
+        self.face_picture = face_picture
         # Portrait side of the ID card image.
         # Accessible HTTP or HTTPS link on the public network.
         # Choose one between `CertUrl` and `CertFile`.
@@ -62,6 +64,9 @@ class Id3MetaVerifyRequest(DaraModel):
         if self.face_file is not None:
             result['FaceFile'] = self.face_file
 
+        if self.face_picture is not None:
+            result['FacePicture'] = self.face_picture
+
         if self.face_url is not None:
             result['FaceUrl'] = self.face_url
 
@@ -83,6 +88,9 @@ class Id3MetaVerifyRequest(DaraModel):
 
         if m.get('FaceFile') is not None:
             self.face_file = m.get('FaceFile')
+
+        if m.get('FacePicture') is not None:
+            self.face_picture = m.get('FacePicture')
 
         if m.get('FaceUrl') is not None:
             self.face_url = m.get('FaceUrl')

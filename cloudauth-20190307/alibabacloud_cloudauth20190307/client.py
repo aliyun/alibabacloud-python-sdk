@@ -6332,6 +6332,8 @@ class Client(OpenApiClient):
             body['Crop'] = request.crop
         if not DaraCore.is_null(request.face_file):
             body['FaceFile'] = request.face_file
+        if not DaraCore.is_null(request.face_picture):
+            body['FacePicture'] = request.face_picture
         if not DaraCore.is_null(request.face_url):
             body['FaceUrl'] = request.face_url
         if not DaraCore.is_null(request.identify_num):
@@ -6370,6 +6372,8 @@ class Client(OpenApiClient):
             body['Crop'] = request.crop
         if not DaraCore.is_null(request.face_file):
             body['FaceFile'] = request.face_file
+        if not DaraCore.is_null(request.face_picture):
+            body['FacePicture'] = request.face_picture
         if not DaraCore.is_null(request.face_url):
             body['FaceUrl'] = request.face_url
         if not DaraCore.is_null(request.identify_num):
@@ -7100,6 +7104,8 @@ class Client(OpenApiClient):
             query['CertifyUrlStyle'] = request.certify_url_style
         if not DaraCore.is_null(request.certify_url_type):
             query['CertifyUrlType'] = request.certify_url_type
+        if not DaraCore.is_null(request.enable_beauty):
+            query['EnableBeauty'] = request.enable_beauty
         if not DaraCore.is_null(request.encrypt_type):
             query['EncryptType'] = request.encrypt_type
         if not DaraCore.is_null(request.face_contrast_picture_url):
@@ -7206,6 +7212,8 @@ class Client(OpenApiClient):
             query['CertifyUrlStyle'] = request.certify_url_style
         if not DaraCore.is_null(request.certify_url_type):
             query['CertifyUrlType'] = request.certify_url_type
+        if not DaraCore.is_null(request.enable_beauty):
+            query['EnableBeauty'] = request.enable_beauty
         if not DaraCore.is_null(request.encrypt_type):
             query['EncryptType'] = request.encrypt_type
         if not DaraCore.is_null(request.face_contrast_picture_url):

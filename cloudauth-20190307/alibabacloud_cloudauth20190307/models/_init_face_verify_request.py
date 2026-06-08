@@ -20,6 +20,7 @@ class InitFaceVerifyRequest(DaraModel):
         certify_url_style: str = None,
         certify_url_type: str = None,
         crop: str = None,
+        enable_beauty: str = None,
         encrypt_type: str = None,
         face_contrast_picture: str = None,
         face_contrast_picture_url: str = None,
@@ -117,6 +118,7 @@ class InitFaceVerifyRequest(DaraModel):
         # 
         # > If the image you are requesting is not from a standard liveness detection SDK, it is recommended to allow face image cropping. When this feature is enabled, the requested image will first undergo face cropping and alignment, and then the service request will be initiated.
         self.crop = crop
+        self.enable_beauty = enable_beauty
         # Encryption algorithm to be used, currently supporting only the SM2 national encryption algorithm.
         # 
         # After enabling encrypted transmission, you need to pass in the encrypted CertName and CertNo. For how to encrypt, please refer to [Parameter Encryption Instructions](https://help.aliyun.com/zh/id-verification/financial-grade-id-verification/description-of-parameter-encryption?spm=a2c4g.11186623.0.0.1a9d566eWdqwy8#task-2229332).
@@ -317,6 +319,9 @@ class InitFaceVerifyRequest(DaraModel):
         if self.crop is not None:
             result['Crop'] = self.crop
 
+        if self.enable_beauty is not None:
+            result['EnableBeauty'] = self.enable_beauty
+
         if self.encrypt_type is not None:
             result['EncryptType'] = self.encrypt_type
 
@@ -437,6 +442,9 @@ class InitFaceVerifyRequest(DaraModel):
 
         if m.get('Crop') is not None:
             self.crop = m.get('Crop')
+
+        if m.get('EnableBeauty') is not None:
+            self.enable_beauty = m.get('EnableBeauty')
 
         if m.get('EncryptType') is not None:
             self.encrypt_type = m.get('EncryptType')
