@@ -1,3 +1,10 @@
+2026-06-08 Version: 6.1.2
+- Update API CreateLabelTable: add request parameters body.Fields.$.AlignedEntityName.
+- Update API ExportModelFeatureTrainingSetTable: add request parameters body.FeatureViewConfig.JoinWithLabel.
+- Update API GetLabelTable: add response parameters Body.Fields.$.AlignedEntityName.
+- Update API UpdateLabelTable: add request parameters body.Fields.$.AlignedEntityName.
+
+
 2026-05-14 Version: 6.1.1
 - Update API GetProject: add response parameters Body.WorkspaceId.
 - Update API ListFeatureViewOnlineFeatures: add request parameters Config.

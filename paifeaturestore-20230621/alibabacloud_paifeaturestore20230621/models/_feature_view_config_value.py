@@ -16,6 +16,7 @@ class FeatureViewConfigValue(DaraModel):
         use_mock: bool = None,
         snapshot: main_models.FeatureViewConfigValueSnapshot = None,
         second_join_key: str = None,
+        join_with_label: bool = None,
     ):
         self.partitions = partitions
         self.event_time = event_time
@@ -23,6 +24,7 @@ class FeatureViewConfigValue(DaraModel):
         self.use_mock = use_mock
         self.snapshot = snapshot
         self.second_join_key = second_join_key
+        self.join_with_label = join_with_label
 
     def validate(self):
         if self.partitions:
@@ -57,6 +59,9 @@ class FeatureViewConfigValue(DaraModel):
         if self.second_join_key is not None:
             result['SecondJoinKey'] = self.second_join_key
 
+        if self.join_with_label is not None:
+            result['JoinWithLabel'] = self.join_with_label
+
         return result
 
     def from_map(self, m: dict = None):
@@ -82,6 +87,9 @@ class FeatureViewConfigValue(DaraModel):
 
         if m.get('SecondJoinKey') is not None:
             self.second_join_key = m.get('SecondJoinKey')
+
+        if m.get('JoinWithLabel') is not None:
+            self.join_with_label = m.get('JoinWithLabel')
 
         return self
 
