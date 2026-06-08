@@ -1,3 +1,8 @@
+2026-06-08 Version: 3.3.2
+- Update API SaveOrderRelationInfoToMsence: add request parameters ClientType.
+- Update API SaveOrderRelationInfoToMsence: add request parameters CpExtra.
+
+
 2026-06-04 Version: 3.3.1
 - Update API QueryMdsUpgradeTaskDetail: add response parameters Body.ResultContent.Data.Content.ReminderPeriod.
 - Update API QueryPayOrderToMsence: add response parameters Body.MpaasUserGamecenterPaymentQuerystatusResponse.CpExtra.

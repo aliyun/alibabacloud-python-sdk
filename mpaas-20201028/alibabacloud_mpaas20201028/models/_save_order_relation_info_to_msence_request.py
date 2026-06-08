@@ -11,6 +11,8 @@ class SaveOrderRelationInfoToMsenceRequest(DaraModel):
         app_id: str = None,
         biz_order_id: str = None,
         biz_order_status: int = None,
+        client_type: str = None,
+        cp_extra: str = None,
         custom_id: str = None,
         mini_program_id: str = None,
         open_uid: str = None,
@@ -22,6 +24,8 @@ class SaveOrderRelationInfoToMsenceRequest(DaraModel):
         self.app_id = app_id
         self.biz_order_id = biz_order_id
         self.biz_order_status = biz_order_status
+        self.client_type = client_type
+        self.cp_extra = cp_extra
         self.custom_id = custom_id
         self.mini_program_id = mini_program_id
         self.open_uid = open_uid
@@ -48,6 +52,12 @@ class SaveOrderRelationInfoToMsenceRequest(DaraModel):
 
         if self.biz_order_status is not None:
             result['BizOrderStatus'] = self.biz_order_status
+
+        if self.client_type is not None:
+            result['ClientType'] = self.client_type
+
+        if self.cp_extra is not None:
+            result['CpExtra'] = self.cp_extra
 
         if self.custom_id is not None:
             result['CustomId'] = self.custom_id
@@ -82,6 +92,12 @@ class SaveOrderRelationInfoToMsenceRequest(DaraModel):
 
         if m.get('BizOrderStatus') is not None:
             self.biz_order_status = m.get('BizOrderStatus')
+
+        if m.get('ClientType') is not None:
+            self.client_type = m.get('ClientType')
+
+        if m.get('CpExtra') is not None:
+            self.cp_extra = m.get('CpExtra')
 
         if m.get('CustomId') is not None:
             self.custom_id = m.get('CustomId')

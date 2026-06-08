@@ -11275,6 +11275,10 @@ class Client(OpenApiClient):
             body['BizOrderId'] = request.biz_order_id
         if not DaraCore.is_null(request.biz_order_status):
             body['BizOrderStatus'] = request.biz_order_status
+        if not DaraCore.is_null(request.client_type):
+            body['ClientType'] = request.client_type
+        if not DaraCore.is_null(request.cp_extra):
+            body['CpExtra'] = request.cp_extra
         if not DaraCore.is_null(request.custom_id):
             body['CustomId'] = request.custom_id
         if not DaraCore.is_null(request.mini_program_id):
@@ -11321,6 +11325,10 @@ class Client(OpenApiClient):
             body['BizOrderId'] = request.biz_order_id
         if not DaraCore.is_null(request.biz_order_status):
             body['BizOrderStatus'] = request.biz_order_status
+        if not DaraCore.is_null(request.client_type):
+            body['ClientType'] = request.client_type
+        if not DaraCore.is_null(request.cp_extra):
+            body['CpExtra'] = request.cp_extra
         if not DaraCore.is_null(request.custom_id):
             body['CustomId'] = request.custom_id
         if not DaraCore.is_null(request.mini_program_id):
