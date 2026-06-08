@@ -4,6 +4,12 @@
 - Update API GenerateTemplatePolicy: add response parameters Body.PolicyFunctions.
 
 
+2026-06-08 Version: 3.6.1
+- Update API GenerateTemplatePolicy: add request parameters GenerateOptions.
+- Update API GenerateTemplatePolicy: add request parameters Parameters.
+- Update API GenerateTemplatePolicy: add response parameters Body.PolicyFunctions.
+
+
 2025-10-28 Version: 3.6.0
 - Support API EnableServiceAccess.
 - Support API EnableServices.
