@@ -1,3 +1,9 @@
+2026-06-08 Version: 1.3.3
+- Update API FindIdpListByLoginIdentifier: add response parameters Body.TenantAliasInfo.IsLoginByCipherParam.
+- Update API GetLoginToken: add request parameters CipherEndUserId.
+- Update API GetLoginToken: add request parameters CipherPassword.
+
+
 2026-04-30 Version: 1.3.2
 - Update API FindIdpListByLoginIdentifier: add response parameters Body.OfficeSiteInfo.PreferVpcAccess.
 - Update API FindIdpListByLoginIdentifier: add response parameters Body.OfficeSiteInfo.VpcAccessAddress.

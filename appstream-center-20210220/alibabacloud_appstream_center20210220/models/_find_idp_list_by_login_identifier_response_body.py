@@ -92,11 +92,13 @@ class FindIdpListByLoginIdentifierResponseBodyTenantAliasInfo(DaraModel):
     def __init__(
         self,
         access_type: str = None,
+        is_login_by_cipher_param: str = None,
         prefer_vpc_access: bool = None,
         tenant_alias: str = None,
         vpc_access_address: str = None,
     ):
         self.access_type = access_type
+        self.is_login_by_cipher_param = is_login_by_cipher_param
         self.prefer_vpc_access = prefer_vpc_access
         self.tenant_alias = tenant_alias
         self.vpc_access_address = vpc_access_address
@@ -111,6 +113,9 @@ class FindIdpListByLoginIdentifierResponseBodyTenantAliasInfo(DaraModel):
             result = _map
         if self.access_type is not None:
             result['AccessType'] = self.access_type
+
+        if self.is_login_by_cipher_param is not None:
+            result['IsLoginByCipherParam'] = self.is_login_by_cipher_param
 
         if self.prefer_vpc_access is not None:
             result['PreferVpcAccess'] = self.prefer_vpc_access
@@ -127,6 +132,9 @@ class FindIdpListByLoginIdentifierResponseBodyTenantAliasInfo(DaraModel):
         m = m or dict()
         if m.get('AccessType') is not None:
             self.access_type = m.get('AccessType')
+
+        if m.get('IsLoginByCipherParam') is not None:
+            self.is_login_by_cipher_param = m.get('IsLoginByCipherParam')
 
         if m.get('PreferVpcAccess') is not None:
             self.prefer_vpc_access = m.get('PreferVpcAccess')

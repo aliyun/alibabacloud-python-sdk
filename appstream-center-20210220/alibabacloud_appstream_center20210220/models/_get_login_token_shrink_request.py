@@ -11,6 +11,8 @@ class GetLoginTokenShrinkRequest(DaraModel):
         authentication_code: str = None,
         available_features_shrink: str = None,
         channel: str = None,
+        cipher_end_user_id: str = None,
+        cipher_password: str = None,
         client_id: str = None,
         client_name: str = None,
         client_os: str = None,
@@ -50,6 +52,8 @@ class GetLoginTokenShrinkRequest(DaraModel):
         self.authentication_code = authentication_code
         self.available_features_shrink = available_features_shrink
         self.channel = channel
+        self.cipher_end_user_id = cipher_end_user_id
+        self.cipher_password = cipher_password
         # This parameter is required.
         self.client_id = client_id
         self.client_name = client_name
@@ -105,6 +109,12 @@ class GetLoginTokenShrinkRequest(DaraModel):
 
         if self.channel is not None:
             result['Channel'] = self.channel
+
+        if self.cipher_end_user_id is not None:
+            result['CipherEndUserId'] = self.cipher_end_user_id
+
+        if self.cipher_password is not None:
+            result['CipherPassword'] = self.cipher_password
 
         if self.client_id is not None:
             result['ClientId'] = self.client_id
@@ -223,6 +233,12 @@ class GetLoginTokenShrinkRequest(DaraModel):
 
         if m.get('Channel') is not None:
             self.channel = m.get('Channel')
+
+        if m.get('CipherEndUserId') is not None:
+            self.cipher_end_user_id = m.get('CipherEndUserId')
+
+        if m.get('CipherPassword') is not None:
+            self.cipher_password = m.get('CipherPassword')
 
         if m.get('ClientId') is not None:
             self.client_id = m.get('ClientId')
