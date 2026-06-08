@@ -22,6 +22,30 @@
 - Support API UpdateSecurityStrategy.
 
 
+2026-06-08 Version: 8.8.0
+- Support API ApplyResourceAccessPermission.
+- Support API ApproveProcessInstance.
+- Support API CreateProcessDefinition.
+- Support API CreateSecurityStrategy.
+- Support API DeleteProcessDefinition.
+- Support API DeleteSecurityStrategy.
+- Support API DisableProcessDefinition.
+- Support API EnableProcessDefinition.
+- Support API FindBestMatchSecurityStrategy.
+- Support API GetApplicationContents.
+- Support API GetProcessDefinition.
+- Support API GetProcessInstance.
+- Support API GetSecurityStrategy.
+- Support API ListMyApplications.
+- Support API ListMyRelatedApprovals.
+- Support API ListPendingApprovals.
+- Support API ListProcessDefinitions.
+- Support API ListSecurityStrategies.
+- Support API StopProcessInstance.
+- Support API UpdateProcessDefinition.
+- Support API UpdateSecurityStrategy.
+
+
 2026-06-07 Version: 8.7.0
 - Support API CreateMcpServer.
 - Support API CreateSkill.
