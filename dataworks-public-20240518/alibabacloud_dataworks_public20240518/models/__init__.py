@@ -33,6 +33,13 @@ from ._abolish_pipeline_run_response import AbolishPipelineRunResponse
 from ._add_entity_into_meta_collection_request import AddEntityIntoMetaCollectionRequest
 from ._add_entity_into_meta_collection_response_body import AddEntityIntoMetaCollectionResponseBody
 from ._add_entity_into_meta_collection_response import AddEntityIntoMetaCollectionResponse
+from ._apply_resource_access_permission_request import ApplyResourceAccessPermissionRequest
+from ._apply_resource_access_permission_shrink_request import ApplyResourceAccessPermissionShrinkRequest
+from ._apply_resource_access_permission_response_body import ApplyResourceAccessPermissionResponseBody
+from ._apply_resource_access_permission_response import ApplyResourceAccessPermissionResponse
+from ._approve_process_instance_request import ApproveProcessInstanceRequest
+from ._approve_process_instance_response_body import ApproveProcessInstanceResponseBody
+from ._approve_process_instance_response import ApproveProcessInstanceResponse
 from ._associate_project_to_image_request import AssociateProjectToImageRequest
 from ._associate_project_to_image_response_body import AssociateProjectToImageResponseBody
 from ._associate_project_to_image_response import AssociateProjectToImageResponse
@@ -186,6 +193,10 @@ from ._create_pipeline_run_request import CreatePipelineRunRequest
 from ._create_pipeline_run_shrink_request import CreatePipelineRunShrinkRequest
 from ._create_pipeline_run_response_body import CreatePipelineRunResponseBody
 from ._create_pipeline_run_response import CreatePipelineRunResponse
+from ._create_process_definition_request import CreateProcessDefinitionRequest
+from ._create_process_definition_shrink_request import CreateProcessDefinitionShrinkRequest
+from ._create_process_definition_response_body import CreateProcessDefinitionResponseBody
+from ._create_process_definition_response import CreateProcessDefinitionResponse
 from ._create_project_request import CreateProjectRequest
 from ._create_project_shrink_request import CreateProjectShrinkRequest
 from ._create_project_response_body import CreateProjectResponseBody
@@ -213,6 +224,10 @@ from ._create_resource_group_response import CreateResourceGroupResponse
 from ._create_route_request import CreateRouteRequest
 from ._create_route_response_body import CreateRouteResponseBody
 from ._create_route_response import CreateRouteResponse
+from ._create_security_strategy_request import CreateSecurityStrategyRequest
+from ._create_security_strategy_shrink_request import CreateSecurityStrategyShrinkRequest
+from ._create_security_strategy_response_body import CreateSecurityStrategyResponseBody
+from ._create_security_strategy_response import CreateSecurityStrategyResponse
 from ._create_skill_request import CreateSkillRequest
 from ._create_skill_shrink_request import CreateSkillShrinkRequest
 from ._create_skill_response_body import CreateSkillResponseBody
@@ -318,6 +333,9 @@ from ._delete_node_response import DeleteNodeResponse
 from ._delete_parameter_request import DeleteParameterRequest
 from ._delete_parameter_response_body import DeleteParameterResponseBody
 from ._delete_parameter_response import DeleteParameterResponse
+from ._delete_process_definition_request import DeleteProcessDefinitionRequest
+from ._delete_process_definition_response_body import DeleteProcessDefinitionResponseBody
+from ._delete_process_definition_response import DeleteProcessDefinitionResponse
 from ._delete_project_request import DeleteProjectRequest
 from ._delete_project_response_body import DeleteProjectResponseBody
 from ._delete_project_response import DeleteProjectResponse
@@ -336,6 +354,9 @@ from ._delete_resource_group_response import DeleteResourceGroupResponse
 from ._delete_route_request import DeleteRouteRequest
 from ._delete_route_response_body import DeleteRouteResponseBody
 from ._delete_route_response import DeleteRouteResponse
+from ._delete_security_strategy_request import DeleteSecurityStrategyRequest
+from ._delete_security_strategy_response_body import DeleteSecurityStrategyResponseBody
+from ._delete_security_strategy_response import DeleteSecurityStrategyResponse
 from ._delete_skill_request import DeleteSkillRequest
 from ._delete_skill_response_body import DeleteSkillResponseBody
 from ._delete_skill_response import DeleteSkillResponse
@@ -355,12 +376,18 @@ from ._detach_data_quality_rules_from_evaluation_task_request import DetachDataQ
 from ._detach_data_quality_rules_from_evaluation_task_shrink_request import DetachDataQualityRulesFromEvaluationTaskShrinkRequest
 from ._detach_data_quality_rules_from_evaluation_task_response_body import DetachDataQualityRulesFromEvaluationTaskResponseBody
 from ._detach_data_quality_rules_from_evaluation_task_response import DetachDataQualityRulesFromEvaluationTaskResponse
+from ._disable_process_definition_request import DisableProcessDefinitionRequest
+from ._disable_process_definition_response_body import DisableProcessDefinitionResponseBody
+from ._disable_process_definition_response import DisableProcessDefinitionResponse
 from ._dissociate_project_from_image_request import DissociateProjectFromImageRequest
 from ._dissociate_project_from_image_response_body import DissociateProjectFromImageResponseBody
 from ._dissociate_project_from_image_response import DissociateProjectFromImageResponse
 from ._dissociate_project_from_resource_group_request import DissociateProjectFromResourceGroupRequest
 from ._dissociate_project_from_resource_group_response_body import DissociateProjectFromResourceGroupResponseBody
 from ._dissociate_project_from_resource_group_response import DissociateProjectFromResourceGroupResponse
+from ._enable_process_definition_request import EnableProcessDefinitionRequest
+from ._enable_process_definition_response_body import EnableProcessDefinitionResponseBody
+from ._enable_process_definition_response import EnableProcessDefinitionResponse
 from ._establish_relation_table_to_business_request import EstablishRelationTableToBusinessRequest
 from ._establish_relation_table_to_business_response_body import EstablishRelationTableToBusinessResponseBody
 from ._establish_relation_table_to_business_response import EstablishRelationTableToBusinessResponse
@@ -371,6 +398,9 @@ from ._execute_adhoc_workflow_instance_request import ExecuteAdhocWorkflowInstan
 from ._execute_adhoc_workflow_instance_shrink_request import ExecuteAdhocWorkflowInstanceShrinkRequest
 from ._execute_adhoc_workflow_instance_response_body import ExecuteAdhocWorkflowInstanceResponseBody
 from ._execute_adhoc_workflow_instance_response import ExecuteAdhocWorkflowInstanceResponse
+from ._find_best_match_security_strategy_request import FindBestMatchSecurityStrategyRequest
+from ._find_best_match_security_strategy_response_body import FindBestMatchSecurityStrategyResponseBody
+from ._find_best_match_security_strategy_response import FindBestMatchSecurityStrategyResponse
 from ._get_agent_request import GetAgentRequest
 from ._get_agent_response_body import GetAgentResponseBody
 from ._get_agent_response import GetAgentResponse
@@ -385,6 +415,9 @@ from ._get_agent_session_token_usage_response import GetAgentSessionTokenUsageRe
 from ._get_alert_rule_request import GetAlertRuleRequest
 from ._get_alert_rule_response_body import GetAlertRuleResponseBody
 from ._get_alert_rule_response import GetAlertRuleResponse
+from ._get_application_contents_request import GetApplicationContentsRequest
+from ._get_application_contents_response_body import GetApplicationContentsResponseBody
+from ._get_application_contents_response import GetApplicationContentsResponse
 from ._get_business_request import GetBusinessRequest
 from ._get_business_response_body import GetBusinessResponseBody
 from ._get_business_response import GetBusinessResponse
@@ -508,6 +541,12 @@ from ._get_partition_response import GetPartitionResponse
 from ._get_pipeline_run_request import GetPipelineRunRequest
 from ._get_pipeline_run_response_body import GetPipelineRunResponseBody
 from ._get_pipeline_run_response import GetPipelineRunResponse
+from ._get_process_definition_request import GetProcessDefinitionRequest
+from ._get_process_definition_response_body import GetProcessDefinitionResponseBody
+from ._get_process_definition_response import GetProcessDefinitionResponse
+from ._get_process_instance_request import GetProcessInstanceRequest
+from ._get_process_instance_response_body import GetProcessInstanceResponseBody
+from ._get_process_instance_response import GetProcessInstanceResponse
 from ._get_project_request import GetProjectRequest
 from ._get_project_response_body import GetProjectResponseBody
 from ._get_project_response import GetProjectResponse
@@ -532,6 +571,9 @@ from ._get_route_response import GetRouteResponse
 from ._get_schema_request import GetSchemaRequest
 from ._get_schema_response_body import GetSchemaResponseBody
 from ._get_schema_response import GetSchemaResponse
+from ._get_security_strategy_request import GetSecurityStrategyRequest
+from ._get_security_strategy_response_body import GetSecurityStrategyResponseBody
+from ._get_security_strategy_response import GetSecurityStrategyResponse
 from ._get_skill_request import GetSkillRequest
 from ._get_skill_response_body import GetSkillResponseBody
 from ._get_skill_response import GetSkillResponse
@@ -738,6 +780,14 @@ from ._list_meta_entities_response import ListMetaEntitiesResponse
 from ._list_meta_entity_defs_request import ListMetaEntityDefsRequest
 from ._list_meta_entity_defs_response_body import ListMetaEntityDefsResponseBody
 from ._list_meta_entity_defs_response import ListMetaEntityDefsResponse
+from ._list_my_applications_request import ListMyApplicationsRequest
+from ._list_my_applications_shrink_request import ListMyApplicationsShrinkRequest
+from ._list_my_applications_response_body import ListMyApplicationsResponseBody
+from ._list_my_applications_response import ListMyApplicationsResponse
+from ._list_my_related_approvals_request import ListMyRelatedApprovalsRequest
+from ._list_my_related_approvals_shrink_request import ListMyRelatedApprovalsShrinkRequest
+from ._list_my_related_approvals_response_body import ListMyRelatedApprovalsResponseBody
+from ._list_my_related_approvals_response import ListMyRelatedApprovalsResponse
 from ._list_networks_request import ListNetworksRequest
 from ._list_networks_response_body import ListNetworksResponseBody
 from ._list_networks_response import ListNetworksResponse
@@ -757,12 +807,19 @@ from ._list_parameters_response import ListParametersResponse
 from ._list_partitions_request import ListPartitionsRequest
 from ._list_partitions_response_body import ListPartitionsResponseBody
 from ._list_partitions_response import ListPartitionsResponse
+from ._list_pending_approvals_request import ListPendingApprovalsRequest
+from ._list_pending_approvals_shrink_request import ListPendingApprovalsShrinkRequest
+from ._list_pending_approvals_response_body import ListPendingApprovalsResponseBody
+from ._list_pending_approvals_response import ListPendingApprovalsResponse
 from ._list_pipeline_run_items_request import ListPipelineRunItemsRequest
 from ._list_pipeline_run_items_response_body import ListPipelineRunItemsResponseBody
 from ._list_pipeline_run_items_response import ListPipelineRunItemsResponse
 from ._list_pipeline_runs_request import ListPipelineRunsRequest
 from ._list_pipeline_runs_response_body import ListPipelineRunsResponseBody
 from ._list_pipeline_runs_response import ListPipelineRunsResponse
+from ._list_process_definitions_request import ListProcessDefinitionsRequest
+from ._list_process_definitions_response_body import ListProcessDefinitionsResponseBody
+from ._list_process_definitions_response import ListProcessDefinitionsResponse
 from ._list_project_members_request import ListProjectMembersRequest
 from ._list_project_members_shrink_request import ListProjectMembersShrinkRequest
 from ._list_project_members_response_body import ListProjectMembersResponseBody
@@ -795,6 +852,9 @@ from ._list_schemas_request import ListSchemasRequest
 from ._list_schemas_shrink_request import ListSchemasShrinkRequest
 from ._list_schemas_response_body import ListSchemasResponseBody
 from ._list_schemas_response import ListSchemasResponse
+from ._list_security_strategies_request import ListSecurityStrategiesRequest
+from ._list_security_strategies_response_body import ListSecurityStrategiesResponseBody
+from ._list_security_strategies_response import ListSecurityStrategiesResponse
 from ._list_skills_request import ListSkillsRequest
 from ._list_skills_shrink_request import ListSkillsShrinkRequest
 from ._list_skills_response_body import ListSkillsResponseBody
@@ -910,6 +970,9 @@ from ._start_workflow_instances_response import StartWorkflowInstancesResponse
 from ._stop_dijob_request import StopDIJobRequest
 from ._stop_dijob_response_body import StopDIJobResponseBody
 from ._stop_dijob_response import StopDIJobResponse
+from ._stop_process_instance_request import StopProcessInstanceRequest
+from ._stop_process_instance_response_body import StopProcessInstanceResponseBody
+from ._stop_process_instance_response import StopProcessInstanceResponse
 from ._stop_task_instances_request import StopTaskInstancesRequest
 from ._stop_task_instances_shrink_request import StopTaskInstancesShrinkRequest
 from ._stop_task_instances_response_body import StopTaskInstancesResponseBody
@@ -1039,6 +1102,10 @@ from ._update_parameter_request import UpdateParameterRequest
 from ._update_parameter_shrink_request import UpdateParameterShrinkRequest
 from ._update_parameter_response_body import UpdateParameterResponseBody
 from ._update_parameter_response import UpdateParameterResponse
+from ._update_process_definition_request import UpdateProcessDefinitionRequest
+from ._update_process_definition_shrink_request import UpdateProcessDefinitionShrinkRequest
+from ._update_process_definition_response_body import UpdateProcessDefinitionResponseBody
+from ._update_process_definition_response import UpdateProcessDefinitionResponse
 from ._update_project_request import UpdateProjectRequest
 from ._update_project_response_body import UpdateProjectResponseBody
 from ._update_project_response import UpdateProjectResponse
@@ -1056,6 +1123,10 @@ from ._update_resource_group_response import UpdateResourceGroupResponse
 from ._update_route_request import UpdateRouteRequest
 from ._update_route_response_body import UpdateRouteResponseBody
 from ._update_route_response import UpdateRouteResponse
+from ._update_security_strategy_request import UpdateSecurityStrategyRequest
+from ._update_security_strategy_shrink_request import UpdateSecurityStrategyShrinkRequest
+from ._update_security_strategy_response_body import UpdateSecurityStrategyResponseBody
+from ._update_security_strategy_response import UpdateSecurityStrategyResponse
 from ._update_table_business_metadata_request import UpdateTableBusinessMetadataRequest
 from ._update_table_business_metadata_shrink_request import UpdateTableBusinessMetadataShrinkRequest
 from ._update_table_business_metadata_response_body import UpdateTableBusinessMetadataResponseBody
@@ -1122,6 +1193,9 @@ from ._table import TableBusinessMetadataTags
 from ._table import TableBusinessMetadataUpstreamTasks
 from ._table import TableBusinessMetadata
 from ._table import TableTechnicalMetadata
+from ._apply_resource_access_permission_request import ApplyResourceAccessPermissionRequestApplyContentsGrantee
+from ._apply_resource_access_permission_request import ApplyResourceAccessPermissionRequestApplyContentsResource
+from ._apply_resource_access_permission_request import ApplyResourceAccessPermissionRequestApplyContents
 from ._batch_create_meta_entities_request import BatchCreateMetaEntitiesRequestEntities
 from ._batch_update_tasks_request import BatchUpdateTasksRequestTasksDataSource
 from ._batch_update_tasks_request import BatchUpdateTasksRequestTasksRuntimeResource
@@ -1216,10 +1290,15 @@ from ._create_mcp_server_request import CreateMcpServerRequestConfig
 from ._create_mcp_server_request import CreateMcpServerRequestVisibilityScope
 from ._create_mcp_server_response_body import CreateMcpServerResponseBodyMcpServer
 from ._create_parameter_request import CreateParameterRequestProperties
+from ._create_process_definition_request import CreateProcessDefinitionRequestApprovalNodes
+from ._create_process_definition_request import CreateProcessDefinitionRequestNotificationServices
+from ._create_process_definition_request import CreateProcessDefinitionRequestRuleConditions
 from ._create_project_request import CreateProjectRequestAliyunResourceTags
 from ._create_project_role_request import CreateProjectRoleRequestModulePermissions
 from ._create_resource_group_request import CreateResourceGroupRequestAliyunResourceTags
 from ._create_resource_group_response_body import CreateResourceGroupResponseBodyResourceGroupOrder
+from ._create_security_strategy_request import CreateSecurityStrategyRequestContentControllers
+from ._create_security_strategy_request import CreateSecurityStrategyRequestContent
 from ._create_skill_request import CreateSkillRequestVisibilityScope
 from ._create_skill_response_body import CreateSkillResponseBodySkillVisibilityScope
 from ._create_skill_response_body import CreateSkillResponseBodySkill
@@ -1240,6 +1319,10 @@ from ._execute_adhoc_workflow_instance_request import ExecuteAdhocWorkflowInstan
 from ._execute_adhoc_workflow_instance_request import ExecuteAdhocWorkflowInstanceRequestTasksRuntimeResource
 from ._execute_adhoc_workflow_instance_request import ExecuteAdhocWorkflowInstanceRequestTasksScript
 from ._execute_adhoc_workflow_instance_request import ExecuteAdhocWorkflowInstanceRequestTasks
+from ._find_best_match_security_strategy_response_body import FindBestMatchSecurityStrategyResponseBodyDataSecurityStrategyContentControllers
+from ._find_best_match_security_strategy_response_body import FindBestMatchSecurityStrategyResponseBodyDataSecurityStrategyContent
+from ._find_best_match_security_strategy_response_body import FindBestMatchSecurityStrategyResponseBodyDataSecurityStrategy
+from ._find_best_match_security_strategy_response_body import FindBestMatchSecurityStrategyResponseBodyData
 from ._get_agent_response_body import GetAgentResponseBodyAgentCallableAgents
 from ._get_agent_response_body import GetAgentResponseBodyAgentModel
 from ._get_agent_response_body import GetAgentResponseBodyAgentSkills
@@ -1266,6 +1349,10 @@ from ._get_alert_rule_response_body import GetAlertRuleResponseBodyAlertRuleTrig
 from ._get_alert_rule_response_body import GetAlertRuleResponseBodyAlertRuleTriggerConditionTarget
 from ._get_alert_rule_response_body import GetAlertRuleResponseBodyAlertRuleTriggerCondition
 from ._get_alert_rule_response_body import GetAlertRuleResponseBodyAlertRule
+from ._get_application_contents_response_body import GetApplicationContentsResponseBodyDataContentsGrantee
+from ._get_application_contents_response_body import GetApplicationContentsResponseBodyDataContentsResource
+from ._get_application_contents_response_body import GetApplicationContentsResponseBodyDataContents
+from ._get_application_contents_response_body import GetApplicationContentsResponseBodyData
 from ._get_business_response_body import GetBusinessResponseBodyData
 from ._get_certificate_response_body import GetCertificateResponseBodyCertificate
 from ._get_component_response_body import GetComponentResponseBodyComponent
@@ -1391,6 +1478,18 @@ from ._get_parameter_response_body import GetParameterResponseBodyParameterPrope
 from ._get_parameter_response_body import GetParameterResponseBodyParameter
 from ._get_pipeline_run_response_body import GetPipelineRunResponseBodyPipelineStages
 from ._get_pipeline_run_response_body import GetPipelineRunResponseBodyPipeline
+from ._get_process_definition_response_body import GetProcessDefinitionResponseBodyProcessDefinitionApprovalNodes
+from ._get_process_definition_response_body import GetProcessDefinitionResponseBodyProcessDefinitionNotificationServices
+from ._get_process_definition_response_body import GetProcessDefinitionResponseBodyProcessDefinitionRuleConditions
+from ._get_process_definition_response_body import GetProcessDefinitionResponseBodyProcessDefinition
+from ._get_process_instance_response_body import GetProcessInstanceResponseBodyProcessInstanceApprovalProcessDefinitionApprovalNodes
+from ._get_process_instance_response_body import GetProcessInstanceResponseBodyProcessInstanceApprovalProcessDefinitionNotificationServices
+from ._get_process_instance_response_body import GetProcessInstanceResponseBodyProcessInstanceApprovalProcessDefinitionRuleConditions
+from ._get_process_instance_response_body import GetProcessInstanceResponseBodyProcessInstanceApprovalProcessDefinition
+from ._get_process_instance_response_body import GetProcessInstanceResponseBodyProcessInstanceApprovalTasksApprovalNode
+from ._get_process_instance_response_body import GetProcessInstanceResponseBodyProcessInstanceApprovalTasksTaskCandidates
+from ._get_process_instance_response_body import GetProcessInstanceResponseBodyProcessInstanceApprovalTasks
+from ._get_process_instance_response_body import GetProcessInstanceResponseBodyProcessInstance
 from ._get_project_response_body import GetProjectResponseBodyProjectAliyunResourceTags
 from ._get_project_response_body import GetProjectResponseBodyProject
 from ._get_project_member_response_body import GetProjectMemberResponseBodyProjectMemberRoles
@@ -1403,6 +1502,9 @@ from ._get_resource_group_response_body import GetResourceGroupResponseBodyResou
 from ._get_resource_group_response_body import GetResourceGroupResponseBodyResourceGroupSpec
 from ._get_resource_group_response_body import GetResourceGroupResponseBodyResourceGroup
 from ._get_route_response_body import GetRouteResponseBodyRoute
+from ._get_security_strategy_response_body import GetSecurityStrategyResponseBodySecurityStrategyContentControllers
+from ._get_security_strategy_response_body import GetSecurityStrategyResponseBodySecurityStrategyContent
+from ._get_security_strategy_response_body import GetSecurityStrategyResponseBodySecurityStrategy
 from ._get_skill_response_body import GetSkillResponseBodySkillVisibilityScope
 from ._get_skill_response_body import GetSkillResponseBodySkill
 from ._get_task_response_body import GetTaskResponseBodyTaskDataSource
@@ -1642,6 +1744,19 @@ from ._list_meta_entities_request import ListMetaEntitiesRequestAttributeFilters
 from ._list_meta_entities_request import ListMetaEntitiesRequestCustomAttributeFilters
 from ._list_meta_entities_response_body import ListMetaEntitiesResponseBodyPagingInfo
 from ._list_meta_entity_defs_response_body import ListMetaEntityDefsResponseBodyPagingInfo
+from ._list_my_applications_request import ListMyApplicationsRequestResource
+from ._list_my_applications_response_body import ListMyApplicationsResponseBodyDataDataContentsGrantee
+from ._list_my_applications_response_body import ListMyApplicationsResponseBodyDataDataContentsResource
+from ._list_my_applications_response_body import ListMyApplicationsResponseBodyDataDataContents
+from ._list_my_applications_response_body import ListMyApplicationsResponseBodyDataData
+from ._list_my_applications_response_body import ListMyApplicationsResponseBodyData
+from ._list_my_related_approvals_request import ListMyRelatedApprovalsRequestGrantee
+from ._list_my_related_approvals_request import ListMyRelatedApprovalsRequestResource
+from ._list_my_related_approvals_response_body import ListMyRelatedApprovalsResponseBodyDataDataContentsGrantee
+from ._list_my_related_approvals_response_body import ListMyRelatedApprovalsResponseBodyDataDataContentsResource
+from ._list_my_related_approvals_response_body import ListMyRelatedApprovalsResponseBodyDataDataContents
+from ._list_my_related_approvals_response_body import ListMyRelatedApprovalsResponseBodyDataData
+from ._list_my_related_approvals_response_body import ListMyRelatedApprovalsResponseBodyData
 from ._list_networks_response_body import ListNetworksResponseBodyPagingInfoNetworkList
 from ._list_networks_response_body import ListNetworksResponseBodyPagingInfo
 from ._list_node_dependencies_response_body import ListNodeDependenciesResponseBodyPagingInfoNodesDataSource
@@ -1689,11 +1804,20 @@ from ._list_parameters_response_body import ListParametersResponseBodyPagingInfo
 from ._list_parameters_response_body import ListParametersResponseBodyPagingInfoParameters
 from ._list_parameters_response_body import ListParametersResponseBodyPagingInfo
 from ._list_partitions_response_body import ListPartitionsResponseBodyPagingInfo
+from ._list_pending_approvals_request import ListPendingApprovalsRequestGrantee
+from ._list_pending_approvals_request import ListPendingApprovalsRequestResource
+from ._list_pending_approvals_response_body import ListPendingApprovalsResponseBodyDataDataContentsGrantee
+from ._list_pending_approvals_response_body import ListPendingApprovalsResponseBodyDataDataContentsResource
+from ._list_pending_approvals_response_body import ListPendingApprovalsResponseBodyDataDataContents
+from ._list_pending_approvals_response_body import ListPendingApprovalsResponseBodyDataData
+from ._list_pending_approvals_response_body import ListPendingApprovalsResponseBodyData
 from ._list_pipeline_run_items_response_body import ListPipelineRunItemsResponseBodyPagingInfoPipelineRunItems
 from ._list_pipeline_run_items_response_body import ListPipelineRunItemsResponseBodyPagingInfo
 from ._list_pipeline_runs_response_body import ListPipelineRunsResponseBodyPagingInfoPipelineRunsStages
 from ._list_pipeline_runs_response_body import ListPipelineRunsResponseBodyPagingInfoPipelineRuns
 from ._list_pipeline_runs_response_body import ListPipelineRunsResponseBodyPagingInfo
+from ._list_process_definitions_response_body import ListProcessDefinitionsResponseBodyPagingInfoProcessDefinitions
+from ._list_process_definitions_response_body import ListProcessDefinitionsResponseBodyPagingInfo
 from ._list_project_members_response_body import ListProjectMembersResponseBodyPagingInfoProjectMembersRoles
 from ._list_project_members_response_body import ListProjectMembersResponseBodyPagingInfoProjectMembers
 from ._list_project_members_response_body import ListProjectMembersResponseBodyPagingInfo
@@ -1719,6 +1843,10 @@ from ._list_resources_response_body import ListResourcesResponseBodyPagingInfo
 from ._list_routes_response_body import ListRoutesResponseBodyPagingInfoRouteList
 from ._list_routes_response_body import ListRoutesResponseBodyPagingInfo
 from ._list_schemas_response_body import ListSchemasResponseBodyPagingInfo
+from ._list_security_strategies_response_body import ListSecurityStrategiesResponseBodyPagingInfoSecurityStrategiesContentControllers
+from ._list_security_strategies_response_body import ListSecurityStrategiesResponseBodyPagingInfoSecurityStrategiesContent
+from ._list_security_strategies_response_body import ListSecurityStrategiesResponseBodyPagingInfoSecurityStrategies
+from ._list_security_strategies_response_body import ListSecurityStrategiesResponseBodyPagingInfo
 from ._list_skills_response_body import ListSkillsResponseBodyPagingInfoSkills
 from ._list_skills_response_body import ListSkillsResponseBodyPagingInfo
 from ._list_tables_response_body import ListTablesResponseBodyPagingInfo
@@ -1848,7 +1976,12 @@ from ._update_mcp_server_request import UpdateMcpServerRequestVisibilityScope
 from ._update_mcp_server_response_body import UpdateMcpServerResponseBodyMcpServer
 from ._update_meta_entity_response_body import UpdateMetaEntityResponseBodyResult
 from ._update_parameter_request import UpdateParameterRequestProperties
+from ._update_process_definition_request import UpdateProcessDefinitionRequestApprovalNodes
+from ._update_process_definition_request import UpdateProcessDefinitionRequestNotificationServices
+from ._update_process_definition_request import UpdateProcessDefinitionRequestRuleConditions
 from ._update_project_role_request import UpdateProjectRoleRequestModulePermissions
+from ._update_security_strategy_request import UpdateSecurityStrategyRequestContentControllers
+from ._update_security_strategy_request import UpdateSecurityStrategyRequestContent
 from ._update_task_request import UpdateTaskRequestDataSource
 from ._update_task_request import UpdateTaskRequestDependencies
 from ._update_task_request import UpdateTaskRequestInputsVariables
@@ -1912,6 +2045,13 @@ __all__ = [
     AddEntityIntoMetaCollectionRequest,
     AddEntityIntoMetaCollectionResponseBody,
     AddEntityIntoMetaCollectionResponse,
+    ApplyResourceAccessPermissionRequest,
+    ApplyResourceAccessPermissionShrinkRequest,
+    ApplyResourceAccessPermissionResponseBody,
+    ApplyResourceAccessPermissionResponse,
+    ApproveProcessInstanceRequest,
+    ApproveProcessInstanceResponseBody,
+    ApproveProcessInstanceResponse,
     AssociateProjectToImageRequest,
     AssociateProjectToImageResponseBody,
     AssociateProjectToImageResponse,
@@ -2065,6 +2205,10 @@ __all__ = [
     CreatePipelineRunShrinkRequest,
     CreatePipelineRunResponseBody,
     CreatePipelineRunResponse,
+    CreateProcessDefinitionRequest,
+    CreateProcessDefinitionShrinkRequest,
+    CreateProcessDefinitionResponseBody,
+    CreateProcessDefinitionResponse,
     CreateProjectRequest,
     CreateProjectShrinkRequest,
     CreateProjectResponseBody,
@@ -2092,6 +2236,10 @@ __all__ = [
     CreateRouteRequest,
     CreateRouteResponseBody,
     CreateRouteResponse,
+    CreateSecurityStrategyRequest,
+    CreateSecurityStrategyShrinkRequest,
+    CreateSecurityStrategyResponseBody,
+    CreateSecurityStrategyResponse,
     CreateSkillRequest,
     CreateSkillShrinkRequest,
     CreateSkillResponseBody,
@@ -2197,6 +2345,9 @@ __all__ = [
     DeleteParameterRequest,
     DeleteParameterResponseBody,
     DeleteParameterResponse,
+    DeleteProcessDefinitionRequest,
+    DeleteProcessDefinitionResponseBody,
+    DeleteProcessDefinitionResponse,
     DeleteProjectRequest,
     DeleteProjectResponseBody,
     DeleteProjectResponse,
@@ -2215,6 +2366,9 @@ __all__ = [
     DeleteRouteRequest,
     DeleteRouteResponseBody,
     DeleteRouteResponse,
+    DeleteSecurityStrategyRequest,
+    DeleteSecurityStrategyResponseBody,
+    DeleteSecurityStrategyResponse,
     DeleteSkillRequest,
     DeleteSkillResponseBody,
     DeleteSkillResponse,
@@ -2234,12 +2388,18 @@ __all__ = [
     DetachDataQualityRulesFromEvaluationTaskShrinkRequest,
     DetachDataQualityRulesFromEvaluationTaskResponseBody,
     DetachDataQualityRulesFromEvaluationTaskResponse,
+    DisableProcessDefinitionRequest,
+    DisableProcessDefinitionResponseBody,
+    DisableProcessDefinitionResponse,
     DissociateProjectFromImageRequest,
     DissociateProjectFromImageResponseBody,
     DissociateProjectFromImageResponse,
     DissociateProjectFromResourceGroupRequest,
     DissociateProjectFromResourceGroupResponseBody,
     DissociateProjectFromResourceGroupResponse,
+    EnableProcessDefinitionRequest,
+    EnableProcessDefinitionResponseBody,
+    EnableProcessDefinitionResponse,
     EstablishRelationTableToBusinessRequest,
     EstablishRelationTableToBusinessResponseBody,
     EstablishRelationTableToBusinessResponse,
@@ -2250,6 +2410,9 @@ __all__ = [
     ExecuteAdhocWorkflowInstanceShrinkRequest,
     ExecuteAdhocWorkflowInstanceResponseBody,
     ExecuteAdhocWorkflowInstanceResponse,
+    FindBestMatchSecurityStrategyRequest,
+    FindBestMatchSecurityStrategyResponseBody,
+    FindBestMatchSecurityStrategyResponse,
     GetAgentRequest,
     GetAgentResponseBody,
     GetAgentResponse,
@@ -2264,6 +2427,9 @@ __all__ = [
     GetAlertRuleRequest,
     GetAlertRuleResponseBody,
     GetAlertRuleResponse,
+    GetApplicationContentsRequest,
+    GetApplicationContentsResponseBody,
+    GetApplicationContentsResponse,
     GetBusinessRequest,
     GetBusinessResponseBody,
     GetBusinessResponse,
@@ -2387,6 +2553,12 @@ __all__ = [
     GetPipelineRunRequest,
     GetPipelineRunResponseBody,
     GetPipelineRunResponse,
+    GetProcessDefinitionRequest,
+    GetProcessDefinitionResponseBody,
+    GetProcessDefinitionResponse,
+    GetProcessInstanceRequest,
+    GetProcessInstanceResponseBody,
+    GetProcessInstanceResponse,
     GetProjectRequest,
     GetProjectResponseBody,
     GetProjectResponse,
@@ -2411,6 +2583,9 @@ __all__ = [
     GetSchemaRequest,
     GetSchemaResponseBody,
     GetSchemaResponse,
+    GetSecurityStrategyRequest,
+    GetSecurityStrategyResponseBody,
+    GetSecurityStrategyResponse,
     GetSkillRequest,
     GetSkillResponseBody,
     GetSkillResponse,
@@ -2617,6 +2792,14 @@ __all__ = [
     ListMetaEntityDefsRequest,
     ListMetaEntityDefsResponseBody,
     ListMetaEntityDefsResponse,
+    ListMyApplicationsRequest,
+    ListMyApplicationsShrinkRequest,
+    ListMyApplicationsResponseBody,
+    ListMyApplicationsResponse,
+    ListMyRelatedApprovalsRequest,
+    ListMyRelatedApprovalsShrinkRequest,
+    ListMyRelatedApprovalsResponseBody,
+    ListMyRelatedApprovalsResponse,
     ListNetworksRequest,
     ListNetworksResponseBody,
     ListNetworksResponse,
@@ -2636,12 +2819,19 @@ __all__ = [
     ListPartitionsRequest,
     ListPartitionsResponseBody,
     ListPartitionsResponse,
+    ListPendingApprovalsRequest,
+    ListPendingApprovalsShrinkRequest,
+    ListPendingApprovalsResponseBody,
+    ListPendingApprovalsResponse,
     ListPipelineRunItemsRequest,
     ListPipelineRunItemsResponseBody,
     ListPipelineRunItemsResponse,
     ListPipelineRunsRequest,
     ListPipelineRunsResponseBody,
     ListPipelineRunsResponse,
+    ListProcessDefinitionsRequest,
+    ListProcessDefinitionsResponseBody,
+    ListProcessDefinitionsResponse,
     ListProjectMembersRequest,
     ListProjectMembersShrinkRequest,
     ListProjectMembersResponseBody,
@@ -2674,6 +2864,9 @@ __all__ = [
     ListSchemasShrinkRequest,
     ListSchemasResponseBody,
     ListSchemasResponse,
+    ListSecurityStrategiesRequest,
+    ListSecurityStrategiesResponseBody,
+    ListSecurityStrategiesResponse,
     ListSkillsRequest,
     ListSkillsShrinkRequest,
     ListSkillsResponseBody,
@@ -2789,6 +2982,9 @@ __all__ = [
     StopDIJobRequest,
     StopDIJobResponseBody,
     StopDIJobResponse,
+    StopProcessInstanceRequest,
+    StopProcessInstanceResponseBody,
+    StopProcessInstanceResponse,
     StopTaskInstancesRequest,
     StopTaskInstancesShrinkRequest,
     StopTaskInstancesResponseBody,
@@ -2918,6 +3114,10 @@ __all__ = [
     UpdateParameterShrinkRequest,
     UpdateParameterResponseBody,
     UpdateParameterResponse,
+    UpdateProcessDefinitionRequest,
+    UpdateProcessDefinitionShrinkRequest,
+    UpdateProcessDefinitionResponseBody,
+    UpdateProcessDefinitionResponse,
     UpdateProjectRequest,
     UpdateProjectResponseBody,
     UpdateProjectResponse,
@@ -2935,6 +3135,10 @@ __all__ = [
     UpdateRouteRequest,
     UpdateRouteResponseBody,
     UpdateRouteResponse,
+    UpdateSecurityStrategyRequest,
+    UpdateSecurityStrategyShrinkRequest,
+    UpdateSecurityStrategyResponseBody,
+    UpdateSecurityStrategyResponse,
     UpdateTableBusinessMetadataRequest,
     UpdateTableBusinessMetadataShrinkRequest,
     UpdateTableBusinessMetadataResponseBody,
@@ -3001,6 +3205,9 @@ __all__ = [
     TableBusinessMetadataUpstreamTasks,
     TableBusinessMetadata,
     TableTechnicalMetadata,
+    ApplyResourceAccessPermissionRequestApplyContentsGrantee,
+    ApplyResourceAccessPermissionRequestApplyContentsResource,
+    ApplyResourceAccessPermissionRequestApplyContents,
     BatchCreateMetaEntitiesRequestEntities,
     BatchUpdateTasksRequestTasksDataSource,
     BatchUpdateTasksRequestTasksRuntimeResource,
@@ -3095,10 +3302,15 @@ __all__ = [
     CreateMcpServerRequestVisibilityScope,
     CreateMcpServerResponseBodyMcpServer,
     CreateParameterRequestProperties,
+    CreateProcessDefinitionRequestApprovalNodes,
+    CreateProcessDefinitionRequestNotificationServices,
+    CreateProcessDefinitionRequestRuleConditions,
     CreateProjectRequestAliyunResourceTags,
     CreateProjectRoleRequestModulePermissions,
     CreateResourceGroupRequestAliyunResourceTags,
     CreateResourceGroupResponseBodyResourceGroupOrder,
+    CreateSecurityStrategyRequestContentControllers,
+    CreateSecurityStrategyRequestContent,
     CreateSkillRequestVisibilityScope,
     CreateSkillResponseBodySkillVisibilityScope,
     CreateSkillResponseBodySkill,
@@ -3119,6 +3331,10 @@ __all__ = [
     ExecuteAdhocWorkflowInstanceRequestTasksRuntimeResource,
     ExecuteAdhocWorkflowInstanceRequestTasksScript,
     ExecuteAdhocWorkflowInstanceRequestTasks,
+    FindBestMatchSecurityStrategyResponseBodyDataSecurityStrategyContentControllers,
+    FindBestMatchSecurityStrategyResponseBodyDataSecurityStrategyContent,
+    FindBestMatchSecurityStrategyResponseBodyDataSecurityStrategy,
+    FindBestMatchSecurityStrategyResponseBodyData,
     GetAgentResponseBodyAgentCallableAgents,
     GetAgentResponseBodyAgentModel,
     GetAgentResponseBodyAgentSkills,
@@ -3145,6 +3361,10 @@ __all__ = [
     GetAlertRuleResponseBodyAlertRuleTriggerConditionTarget,
     GetAlertRuleResponseBodyAlertRuleTriggerCondition,
     GetAlertRuleResponseBodyAlertRule,
+    GetApplicationContentsResponseBodyDataContentsGrantee,
+    GetApplicationContentsResponseBodyDataContentsResource,
+    GetApplicationContentsResponseBodyDataContents,
+    GetApplicationContentsResponseBodyData,
     GetBusinessResponseBodyData,
     GetCertificateResponseBodyCertificate,
     GetComponentResponseBodyComponent,
@@ -3270,6 +3490,18 @@ __all__ = [
     GetParameterResponseBodyParameter,
     GetPipelineRunResponseBodyPipelineStages,
     GetPipelineRunResponseBodyPipeline,
+    GetProcessDefinitionResponseBodyProcessDefinitionApprovalNodes,
+    GetProcessDefinitionResponseBodyProcessDefinitionNotificationServices,
+    GetProcessDefinitionResponseBodyProcessDefinitionRuleConditions,
+    GetProcessDefinitionResponseBodyProcessDefinition,
+    GetProcessInstanceResponseBodyProcessInstanceApprovalProcessDefinitionApprovalNodes,
+    GetProcessInstanceResponseBodyProcessInstanceApprovalProcessDefinitionNotificationServices,
+    GetProcessInstanceResponseBodyProcessInstanceApprovalProcessDefinitionRuleConditions,
+    GetProcessInstanceResponseBodyProcessInstanceApprovalProcessDefinition,
+    GetProcessInstanceResponseBodyProcessInstanceApprovalTasksApprovalNode,
+    GetProcessInstanceResponseBodyProcessInstanceApprovalTasksTaskCandidates,
+    GetProcessInstanceResponseBodyProcessInstanceApprovalTasks,
+    GetProcessInstanceResponseBodyProcessInstance,
     GetProjectResponseBodyProjectAliyunResourceTags,
     GetProjectResponseBodyProject,
     GetProjectMemberResponseBodyProjectMemberRoles,
@@ -3282,6 +3514,9 @@ __all__ = [
     GetResourceGroupResponseBodyResourceGroupSpec,
     GetResourceGroupResponseBodyResourceGroup,
     GetRouteResponseBodyRoute,
+    GetSecurityStrategyResponseBodySecurityStrategyContentControllers,
+    GetSecurityStrategyResponseBodySecurityStrategyContent,
+    GetSecurityStrategyResponseBodySecurityStrategy,
     GetSkillResponseBodySkillVisibilityScope,
     GetSkillResponseBodySkill,
     GetTaskResponseBodyTaskDataSource,
@@ -3521,6 +3756,19 @@ __all__ = [
     ListMetaEntitiesRequestCustomAttributeFilters,
     ListMetaEntitiesResponseBodyPagingInfo,
     ListMetaEntityDefsResponseBodyPagingInfo,
+    ListMyApplicationsRequestResource,
+    ListMyApplicationsResponseBodyDataDataContentsGrantee,
+    ListMyApplicationsResponseBodyDataDataContentsResource,
+    ListMyApplicationsResponseBodyDataDataContents,
+    ListMyApplicationsResponseBodyDataData,
+    ListMyApplicationsResponseBodyData,
+    ListMyRelatedApprovalsRequestGrantee,
+    ListMyRelatedApprovalsRequestResource,
+    ListMyRelatedApprovalsResponseBodyDataDataContentsGrantee,
+    ListMyRelatedApprovalsResponseBodyDataDataContentsResource,
+    ListMyRelatedApprovalsResponseBodyDataDataContents,
+    ListMyRelatedApprovalsResponseBodyDataData,
+    ListMyRelatedApprovalsResponseBodyData,
     ListNetworksResponseBodyPagingInfoNetworkList,
     ListNetworksResponseBodyPagingInfo,
     ListNodeDependenciesResponseBodyPagingInfoNodesDataSource,
@@ -3568,11 +3816,20 @@ __all__ = [
     ListParametersResponseBodyPagingInfoParameters,
     ListParametersResponseBodyPagingInfo,
     ListPartitionsResponseBodyPagingInfo,
+    ListPendingApprovalsRequestGrantee,
+    ListPendingApprovalsRequestResource,
+    ListPendingApprovalsResponseBodyDataDataContentsGrantee,
+    ListPendingApprovalsResponseBodyDataDataContentsResource,
+    ListPendingApprovalsResponseBodyDataDataContents,
+    ListPendingApprovalsResponseBodyDataData,
+    ListPendingApprovalsResponseBodyData,
     ListPipelineRunItemsResponseBodyPagingInfoPipelineRunItems,
     ListPipelineRunItemsResponseBodyPagingInfo,
     ListPipelineRunsResponseBodyPagingInfoPipelineRunsStages,
     ListPipelineRunsResponseBodyPagingInfoPipelineRuns,
     ListPipelineRunsResponseBodyPagingInfo,
+    ListProcessDefinitionsResponseBodyPagingInfoProcessDefinitions,
+    ListProcessDefinitionsResponseBodyPagingInfo,
     ListProjectMembersResponseBodyPagingInfoProjectMembersRoles,
     ListProjectMembersResponseBodyPagingInfoProjectMembers,
     ListProjectMembersResponseBodyPagingInfo,
@@ -3598,6 +3855,10 @@ __all__ = [
     ListRoutesResponseBodyPagingInfoRouteList,
     ListRoutesResponseBodyPagingInfo,
     ListSchemasResponseBodyPagingInfo,
+    ListSecurityStrategiesResponseBodyPagingInfoSecurityStrategiesContentControllers,
+    ListSecurityStrategiesResponseBodyPagingInfoSecurityStrategiesContent,
+    ListSecurityStrategiesResponseBodyPagingInfoSecurityStrategies,
+    ListSecurityStrategiesResponseBodyPagingInfo,
     ListSkillsResponseBodyPagingInfoSkills,
     ListSkillsResponseBodyPagingInfo,
     ListTablesResponseBodyPagingInfo,
@@ -3727,7 +3988,12 @@ __all__ = [
     UpdateMcpServerResponseBodyMcpServer,
     UpdateMetaEntityResponseBodyResult,
     UpdateParameterRequestProperties,
+    UpdateProcessDefinitionRequestApprovalNodes,
+    UpdateProcessDefinitionRequestNotificationServices,
+    UpdateProcessDefinitionRequestRuleConditions,
     UpdateProjectRoleRequestModulePermissions,
+    UpdateSecurityStrategyRequestContentControllers,
+    UpdateSecurityStrategyRequestContent,
     UpdateTaskRequestDataSource,
     UpdateTaskRequestDependencies,
     UpdateTaskRequestInputsVariables,
