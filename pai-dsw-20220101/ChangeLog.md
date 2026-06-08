@@ -1,3 +1,7 @@
+2026-06-08 Version: 2.4.0
+- Support API QueryAutoShutdownPolicies.
+
+
 2026-05-21 Version: 2.3.10
 - Update API GetInstanceEvents: add request parameters Offset.
 - Update API GetInstanceEvents: add request parameters Reverse.

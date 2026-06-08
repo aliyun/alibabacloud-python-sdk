@@ -3373,6 +3373,94 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_temp_files_with_options_async(request, headers, runtime)
 
+    def query_auto_shutdown_policies_with_options(
+        self,
+        request: main_models.QueryAutoShutdownPoliciesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryAutoShutdownPoliciesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.token):
+            query['Token'] = request.token
+        body = {}
+        if not DaraCore.is_null(request.instance_ids):
+            body['InstanceIds'] = request.instance_ids
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryAutoShutdownPolicies',
+            version = '2022-01-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/batch/autoshutdownpolicies/query',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryAutoShutdownPoliciesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_auto_shutdown_policies_with_options_async(
+        self,
+        request: main_models.QueryAutoShutdownPoliciesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryAutoShutdownPoliciesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.token):
+            query['Token'] = request.token
+        body = {}
+        if not DaraCore.is_null(request.instance_ids):
+            body['InstanceIds'] = request.instance_ids
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryAutoShutdownPolicies',
+            version = '2022-01-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/batch/autoshutdownpolicies/query',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryAutoShutdownPoliciesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_auto_shutdown_policies(
+        self,
+        request: main_models.QueryAutoShutdownPoliciesRequest,
+    ) -> main_models.QueryAutoShutdownPoliciesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.query_auto_shutdown_policies_with_options(request, headers, runtime)
+
+    async def query_auto_shutdown_policies_async(
+        self,
+        request: main_models.QueryAutoShutdownPoliciesRequest,
+    ) -> main_models.QueryAutoShutdownPoliciesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.query_auto_shutdown_policies_with_options_async(request, headers, runtime)
+
     def start_instance_with_options(
         self,
         instance_id: str,

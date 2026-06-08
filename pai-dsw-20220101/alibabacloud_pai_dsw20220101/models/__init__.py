@@ -114,6 +114,9 @@ from ._list_system_logs_response import ListSystemLogsResponse
 from ._list_temp_files_request import ListTempFilesRequest
 from ._list_temp_files_response_body import ListTempFilesResponseBody
 from ._list_temp_files_response import ListTempFilesResponse
+from ._query_auto_shutdown_policies_request import QueryAutoShutdownPoliciesRequest
+from ._query_auto_shutdown_policies_response_body import QueryAutoShutdownPoliciesResponseBody
+from ._query_auto_shutdown_policies_response import QueryAutoShutdownPoliciesResponse
 from ._start_instance_response_body import StartInstanceResponseBody
 from ._start_instance_response import StartInstanceResponse
 from ._stop_instance_request import StopInstanceRequest
@@ -198,6 +201,8 @@ from ._list_instances_response_body import ListInstancesResponseBodyInstances
 from ._list_system_logs_response_body import ListSystemLogsResponseBodySystemLogs
 from ._list_temp_files_response_body import ListTempFilesResponseBodyQuota
 from ._list_temp_files_response_body import ListTempFilesResponseBodyTempFiles
+from ._query_auto_shutdown_policies_response_body import QueryAutoShutdownPoliciesResponseBodyAutoShutdownPoliciesConditions
+from ._query_auto_shutdown_policies_response_body import QueryAutoShutdownPoliciesResponseBodyAutoShutdownPolicies
 from ._update_instance_request import UpdateInstanceRequestAffinityCPU
 from ._update_instance_request import UpdateInstanceRequestAffinity
 from ._update_instance_request import UpdateInstanceRequestAssignNodeSpec
@@ -323,6 +328,9 @@ __all__ = [
     ListTempFilesRequest,
     ListTempFilesResponseBody,
     ListTempFilesResponse,
+    QueryAutoShutdownPoliciesRequest,
+    QueryAutoShutdownPoliciesResponseBody,
+    QueryAutoShutdownPoliciesResponse,
     StartInstanceResponseBody,
     StartInstanceResponse,
     StopInstanceRequest,
@@ -407,6 +415,8 @@ __all__ = [
     ListSystemLogsResponseBodySystemLogs,
     ListTempFilesResponseBodyQuota,
     ListTempFilesResponseBodyTempFiles,
+    QueryAutoShutdownPoliciesResponseBodyAutoShutdownPoliciesConditions,
+    QueryAutoShutdownPoliciesResponseBodyAutoShutdownPolicies,
     UpdateInstanceRequestAffinityCPU,
     UpdateInstanceRequestAffinity,
     UpdateInstanceRequestAssignNodeSpec,
