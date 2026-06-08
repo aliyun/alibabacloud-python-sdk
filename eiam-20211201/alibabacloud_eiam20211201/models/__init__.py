@@ -737,6 +737,9 @@ from ._list_organizational_units_for_resource_server_response_body import ListOr
 from ._list_organizational_units_for_resource_server_response import ListOrganizationalUnitsForResourceServerResponse
 from ._list_regions_response_body import ListRegionsResponseBody
 from ._list_regions_response import ListRegionsResponse
+from ._list_resource_server_scopes_request import ListResourceServerScopesRequest
+from ._list_resource_server_scopes_response_body import ListResourceServerScopesResponseBody
+from ._list_resource_server_scopes_response import ListResourceServerScopesResponse
 from ._list_resource_servers_for_user_request import ListResourceServersForUserRequest
 from ._list_resource_servers_for_user_response_body import ListResourceServersForUserResponseBody
 from ._list_resource_servers_for_user_response import ListResourceServersForUserResponse
@@ -1372,6 +1375,7 @@ from ._list_organizational_units_for_resource_server_request import ListOrganiza
 from ._list_organizational_units_for_resource_server_response_body import ListOrganizationalUnitsForResourceServerResponseBodyOrganizationalUnitsResourceServerScopes
 from ._list_organizational_units_for_resource_server_response_body import ListOrganizationalUnitsForResourceServerResponseBodyOrganizationalUnits
 from ._list_regions_response_body import ListRegionsResponseBodyRegions
+from ._list_resource_server_scopes_response_body import ListResourceServerScopesResponseBodyResourceServerScopes
 from ._list_resource_servers_for_user_request import ListResourceServersForUserRequestFilter
 from ._list_resource_servers_for_user_response_body import ListResourceServersForUserResponseBodyResourceServersResourceServerScopes
 from ._list_resource_servers_for_user_response_body import ListResourceServersForUserResponseBodyResourceServers
@@ -2224,6 +2228,9 @@ __all__ = [
     ListOrganizationalUnitsForResourceServerResponse,
     ListRegionsResponseBody,
     ListRegionsResponse,
+    ListResourceServerScopesRequest,
+    ListResourceServerScopesResponseBody,
+    ListResourceServerScopesResponse,
     ListResourceServersForUserRequest,
     ListResourceServersForUserResponseBody,
     ListResourceServersForUserResponse,
@@ -2859,6 +2866,7 @@ __all__ = [
     ListOrganizationalUnitsForResourceServerResponseBodyOrganizationalUnitsResourceServerScopes,
     ListOrganizationalUnitsForResourceServerResponseBodyOrganizationalUnits,
     ListRegionsResponseBodyRegions,
+    ListResourceServerScopesResponseBodyResourceServerScopes,
     ListResourceServersForUserRequestFilter,
     ListResourceServersForUserResponseBodyResourceServersResourceServerScopes,
     ListResourceServersForUserResponseBodyResourceServers,

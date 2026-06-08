@@ -19548,6 +19548,112 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_regions_with_options_async(runtime)
 
+    def list_resource_server_scopes_with_options(
+        self,
+        request: main_models.ListResourceServerScopesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListResourceServerScopesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.authorization_type):
+            query['AuthorizationType'] = request.authorization_type
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.previous_token):
+            query['PreviousToken'] = request.previous_token
+        if not DaraCore.is_null(request.resource_server_scope_ids):
+            query['ResourceServerScopeIds'] = request.resource_server_scope_ids
+        if not DaraCore.is_null(request.resource_server_scope_name):
+            query['ResourceServerScopeName'] = request.resource_server_scope_name
+        if not DaraCore.is_null(request.resource_server_scope_type):
+            query['ResourceServerScopeType'] = request.resource_server_scope_type
+        if not DaraCore.is_null(request.resource_server_scope_value):
+            query['ResourceServerScopeValue'] = request.resource_server_scope_value
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListResourceServerScopes',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListResourceServerScopesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_resource_server_scopes_with_options_async(
+        self,
+        request: main_models.ListResourceServerScopesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListResourceServerScopesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.authorization_type):
+            query['AuthorizationType'] = request.authorization_type
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.previous_token):
+            query['PreviousToken'] = request.previous_token
+        if not DaraCore.is_null(request.resource_server_scope_ids):
+            query['ResourceServerScopeIds'] = request.resource_server_scope_ids
+        if not DaraCore.is_null(request.resource_server_scope_name):
+            query['ResourceServerScopeName'] = request.resource_server_scope_name
+        if not DaraCore.is_null(request.resource_server_scope_type):
+            query['ResourceServerScopeType'] = request.resource_server_scope_type
+        if not DaraCore.is_null(request.resource_server_scope_value):
+            query['ResourceServerScopeValue'] = request.resource_server_scope_value
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListResourceServerScopes',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListResourceServerScopesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_resource_server_scopes(
+        self,
+        request: main_models.ListResourceServerScopesRequest,
+    ) -> main_models.ListResourceServerScopesResponse:
+        runtime = RuntimeOptions()
+        return self.list_resource_server_scopes_with_options(request, runtime)
+
+    async def list_resource_server_scopes_async(
+        self,
+        request: main_models.ListResourceServerScopesRequest,
+    ) -> main_models.ListResourceServerScopesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_resource_server_scopes_with_options_async(request, runtime)
+
     def list_resource_servers_for_user_with_options(
         self,
         request: main_models.ListResourceServersForUserRequest,
