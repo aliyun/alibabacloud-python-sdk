@@ -40,6 +40,88 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return Utils.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def ask_luma_with_options(
+        self,
+        request: main_models.AskLumaRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AskLumaResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_name):
+            body['AgentName'] = request.agent_name
+        if not DaraCore.is_null(request.conversation_id):
+            body['ConversationId'] = request.conversation_id
+        if not DaraCore.is_null(request.max_rows):
+            body['MaxRows'] = request.max_rows
+        if not DaraCore.is_null(request.question):
+            body['Question'] = request.question
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'AskLuma',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AskLumaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def ask_luma_with_options_async(
+        self,
+        request: main_models.AskLumaRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AskLumaResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_name):
+            body['AgentName'] = request.agent_name
+        if not DaraCore.is_null(request.conversation_id):
+            body['ConversationId'] = request.conversation_id
+        if not DaraCore.is_null(request.max_rows):
+            body['MaxRows'] = request.max_rows
+        if not DaraCore.is_null(request.question):
+            body['Question'] = request.question
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'AskLuma',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AskLumaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def ask_luma(
+        self,
+        request: main_models.AskLumaRequest,
+    ) -> main_models.AskLumaResponse:
+        runtime = RuntimeOptions()
+        return self.ask_luma_with_options(request, runtime)
+
+    async def ask_luma_async(
+        self,
+        request: main_models.AskLumaRequest,
+    ) -> main_models.AskLumaResponse:
+        runtime = RuntimeOptions()
+        return await self.ask_luma_with_options_async(request, runtime)
+
     def check_service_linked_role_for_product_with_options(
         self,
         request: main_models.CheckServiceLinkedRoleForProductRequest,
@@ -109,6 +191,96 @@ class Client(OpenApiClient):
     ) -> main_models.CheckServiceLinkedRoleForProductResponse:
         runtime = RuntimeOptions()
         return await self.check_service_linked_role_for_product_with_options_async(request, runtime)
+
+    def create_agent_with_options(
+        self,
+        tmp_req: main_models.CreateAgentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAgentResponse:
+        tmp_req.validate()
+        request = main_models.CreateAgentShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.metadata):
+            request.metadata_shrink = Utils.array_to_string_with_specified_style(tmp_req.metadata, 'Metadata', 'json')
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.metadata_shrink):
+            body['Metadata'] = request.metadata_shrink
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.prompt):
+            body['Prompt'] = request.prompt
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAgent',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAgentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_agent_with_options_async(
+        self,
+        tmp_req: main_models.CreateAgentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAgentResponse:
+        tmp_req.validate()
+        request = main_models.CreateAgentShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.metadata):
+            request.metadata_shrink = Utils.array_to_string_with_specified_style(tmp_req.metadata, 'Metadata', 'json')
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.metadata_shrink):
+            body['Metadata'] = request.metadata_shrink
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.prompt):
+            body['Prompt'] = request.prompt
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAgent',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAgentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_agent(
+        self,
+        request: main_models.CreateAgentRequest,
+    ) -> main_models.CreateAgentResponse:
+        runtime = RuntimeOptions()
+        return self.create_agent_with_options(request, runtime)
+
+    async def create_agent_async(
+        self,
+        request: main_models.CreateAgentRequest,
+    ) -> main_models.CreateAgentResponse:
+        runtime = RuntimeOptions()
+        return await self.create_agent_with_options_async(request, runtime)
 
     def create_api_destination_with_options(
         self,
@@ -815,6 +987,76 @@ class Client(OpenApiClient):
     ) -> main_models.CreateServiceLinkedRoleForProductResponse:
         runtime = RuntimeOptions()
         return await self.create_service_linked_role_for_product_with_options_async(request, runtime)
+
+    def delete_agent_with_options(
+        self,
+        request: main_models.DeleteAgentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAgentResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteAgent',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteAgentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_agent_with_options_async(
+        self,
+        request: main_models.DeleteAgentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAgentResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteAgent',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteAgentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_agent(
+        self,
+        request: main_models.DeleteAgentRequest,
+    ) -> main_models.DeleteAgentResponse:
+        runtime = RuntimeOptions()
+        return self.delete_agent_with_options(request, runtime)
+
+    async def delete_agent_async(
+        self,
+        request: main_models.DeleteAgentRequest,
+    ) -> main_models.DeleteAgentResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_agent_with_options_async(request, runtime)
 
     def delete_api_destination_with_options(
         self,
@@ -1650,6 +1892,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.event_center_query_events_with_options_async(request, runtime)
 
+    def get_agent_with_options(
+        self,
+        request: main_models.GetAgentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAgentResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAgent',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAgentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_agent_with_options_async(
+        self,
+        request: main_models.GetAgentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAgentResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAgent',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAgentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_agent(
+        self,
+        request: main_models.GetAgentRequest,
+    ) -> main_models.GetAgentResponse:
+        runtime = RuntimeOptions()
+        return self.get_agent_with_options(request, runtime)
+
+    async def get_agent_async(
+        self,
+        request: main_models.GetAgentRequest,
+    ) -> main_models.GetAgentResponse:
+        runtime = RuntimeOptions()
+        return await self.get_agent_with_options_async(request, runtime)
+
     def get_api_destination_with_options(
         self,
         request: main_models.GetApiDestinationRequest,
@@ -2003,6 +2315,84 @@ class Client(OpenApiClient):
     ) -> main_models.GetRuleResponse:
         runtime = RuntimeOptions()
         return await self.get_rule_with_options_async(request, runtime)
+
+    def list_agents_with_options(
+        self,
+        request: main_models.ListAgentsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAgentsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.after):
+            body['After'] = request.after
+        if not DaraCore.is_null(request.limit):
+            body['Limit'] = request.limit
+        if not DaraCore.is_null(request.order):
+            body['Order'] = request.order
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAgents',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAgentsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_agents_with_options_async(
+        self,
+        request: main_models.ListAgentsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAgentsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.after):
+            body['After'] = request.after
+        if not DaraCore.is_null(request.limit):
+            body['Limit'] = request.limit
+        if not DaraCore.is_null(request.order):
+            body['Order'] = request.order
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAgents',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAgentsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_agents(
+        self,
+        request: main_models.ListAgentsRequest,
+    ) -> main_models.ListAgentsResponse:
+        runtime = RuntimeOptions()
+        return self.list_agents_with_options(request, runtime)
+
+    async def list_agents_async(
+        self,
+        request: main_models.ListAgentsRequest,
+    ) -> main_models.ListAgentsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_agents_with_options_async(request, runtime)
 
     def list_aliyun_official_event_sources_with_options(
         self,
@@ -2702,6 +3092,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.pause_event_streaming_with_options_async(request, runtime)
 
+    def poll_ask_result_with_options(
+        self,
+        request: main_models.PollAskResultRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.PollAskResultResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_name):
+            body['AgentName'] = request.agent_name
+        if not DaraCore.is_null(request.message_id):
+            body['MessageId'] = request.message_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'PollAskResult',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.PollAskResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def poll_ask_result_with_options_async(
+        self,
+        request: main_models.PollAskResultRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.PollAskResultResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_name):
+            body['AgentName'] = request.agent_name
+        if not DaraCore.is_null(request.message_id):
+            body['MessageId'] = request.message_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'PollAskResult',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.PollAskResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def poll_ask_result(
+        self,
+        request: main_models.PollAskResultRequest,
+    ) -> main_models.PollAskResultResponse:
+        runtime = RuntimeOptions()
+        return self.poll_ask_result_with_options(request, runtime)
+
+    async def poll_ask_result_async(
+        self,
+        request: main_models.PollAskResultRequest,
+    ) -> main_models.PollAskResultResponse:
+        runtime = RuntimeOptions()
+        return await self.poll_ask_result_with_options_async(request, runtime)
+
     def put_targets_with_options(
         self,
         tmp_req: main_models.PutTargetsRequest,
@@ -2787,6 +3251,84 @@ class Client(OpenApiClient):
     ) -> main_models.PutTargetsResponse:
         runtime = RuntimeOptions()
         return await self.put_targets_with_options_async(request, runtime)
+
+    def query_ask_luma_log_with_options(
+        self,
+        request: main_models.QueryAskLumaLogRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryAskLumaLogResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.after):
+            body['After'] = request.after
+        if not DaraCore.is_null(request.agent_name):
+            body['AgentName'] = request.agent_name
+        if not DaraCore.is_null(request.limit):
+            body['Limit'] = request.limit
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryAskLumaLog',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryAskLumaLogResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_ask_luma_log_with_options_async(
+        self,
+        request: main_models.QueryAskLumaLogRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryAskLumaLogResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.after):
+            body['After'] = request.after
+        if not DaraCore.is_null(request.agent_name):
+            body['AgentName'] = request.agent_name
+        if not DaraCore.is_null(request.limit):
+            body['Limit'] = request.limit
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryAskLumaLog',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryAskLumaLogResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_ask_luma_log(
+        self,
+        request: main_models.QueryAskLumaLogRequest,
+    ) -> main_models.QueryAskLumaLogResponse:
+        runtime = RuntimeOptions()
+        return self.query_ask_luma_log_with_options(request, runtime)
+
+    async def query_ask_luma_log_async(
+        self,
+        request: main_models.QueryAskLumaLogRequest,
+    ) -> main_models.QueryAskLumaLogResponse:
+        runtime = RuntimeOptions()
+        return await self.query_ask_luma_log_with_options_async(request, runtime)
 
     def query_event_with_options(
         self,
@@ -3341,6 +3883,100 @@ class Client(OpenApiClient):
     ) -> main_models.TestEventSourceConfigResponse:
         runtime = RuntimeOptions()
         return await self.test_event_source_config_with_options_async(request, runtime)
+
+    def update_agent_with_options(
+        self,
+        tmp_req: main_models.UpdateAgentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAgentResponse:
+        tmp_req.validate()
+        request = main_models.UpdateAgentShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.metadata):
+            request.metadata_shrink = Utils.array_to_string_with_specified_style(tmp_req.metadata, 'Metadata', 'json')
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.metadata_shrink):
+            body['Metadata'] = request.metadata_shrink
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.prompt):
+            body['Prompt'] = request.prompt
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAgent',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAgentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_agent_with_options_async(
+        self,
+        tmp_req: main_models.UpdateAgentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAgentResponse:
+        tmp_req.validate()
+        request = main_models.UpdateAgentShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.metadata):
+            request.metadata_shrink = Utils.array_to_string_with_specified_style(tmp_req.metadata, 'Metadata', 'json')
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.metadata_shrink):
+            body['Metadata'] = request.metadata_shrink
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.prompt):
+            body['Prompt'] = request.prompt
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAgent',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAgentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_agent(
+        self,
+        request: main_models.UpdateAgentRequest,
+    ) -> main_models.UpdateAgentResponse:
+        runtime = RuntimeOptions()
+        return self.update_agent_with_options(request, runtime)
+
+    async def update_agent_async(
+        self,
+        request: main_models.UpdateAgentRequest,
+    ) -> main_models.UpdateAgentResponse:
+        runtime = RuntimeOptions()
+        return await self.update_agent_with_options_async(request, runtime)
 
     def update_api_destination_with_options(
         self,

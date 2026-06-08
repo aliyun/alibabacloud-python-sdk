@@ -4,16 +4,24 @@ from __future__ import annotations
 
 from ._agent import Agent
 from ._agui_message import AguiMessage
+from ._ask_luma_log_entry import AskLumaLogEntry
+from ._ask_luma_result import AskLumaResult
 from ._bai_lian_agent_transform_parameters import BaiLianAgentTransformParameters
 from ._catalog import Catalog
 from ._column import Column
+from ._constraints import Constraints
+from ._content import Content
 from ._conversation import Conversation
 from ._dash_scope_transform_parameters import DashScopeTransformParameters
 from ._embedding_transform_parameters import EmbeddingTransformParameters
 from ._event_table_query_histogram import EventTableQueryHistogram
+from ._execution_result import ExecutionResult
 from ._metadata import Metadata
 from ._namespace import Namespace
+from ._query_ask_luma_log_result import QueryAskLumaLogResult
+from ._query_attachment import QueryAttachment
 from ._row import Row
+from ._schema_column import SchemaColumn
 from ._sink_api_destination_parameters import SinkApiDestinationParameters
 from ._sink_bai_lian_parameters import SinkBaiLianParameters
 from ._sink_data_works_trigger_parameters import SinkDataWorksTriggerParameters
@@ -27,9 +35,16 @@ from ._source_postgre_sqlparameters import SourcePostgreSQLParameters
 from ._source_rabbit_mqmeta_parameters import SourceRabbitMQMetaParameters
 from ._source_rabbit_mqmsg_sync_parameters import SourceRabbitMQMsgSyncParameters
 from ._table import Table
+from ._ask_luma_request import AskLumaRequest
+from ._ask_luma_response_body import AskLumaResponseBody
+from ._ask_luma_response import AskLumaResponse
 from ._check_service_linked_role_for_product_request import CheckServiceLinkedRoleForProductRequest
 from ._check_service_linked_role_for_product_response_body import CheckServiceLinkedRoleForProductResponseBody
 from ._check_service_linked_role_for_product_response import CheckServiceLinkedRoleForProductResponse
+from ._create_agent_request import CreateAgentRequest
+from ._create_agent_shrink_request import CreateAgentShrinkRequest
+from ._create_agent_response_body import CreateAgentResponseBody
+from ._create_agent_response import CreateAgentResponse
 from ._create_api_destination_request import CreateApiDestinationRequest
 from ._create_api_destination_shrink_request import CreateApiDestinationShrinkRequest
 from ._create_api_destination_response_body import CreateApiDestinationResponseBody
@@ -56,6 +71,9 @@ from ._create_rule_response import CreateRuleResponse
 from ._create_service_linked_role_for_product_request import CreateServiceLinkedRoleForProductRequest
 from ._create_service_linked_role_for_product_response_body import CreateServiceLinkedRoleForProductResponseBody
 from ._create_service_linked_role_for_product_response import CreateServiceLinkedRoleForProductResponse
+from ._delete_agent_request import DeleteAgentRequest
+from ._delete_agent_response_body import DeleteAgentResponseBody
+from ._delete_agent_response import DeleteAgentResponse
 from ._delete_api_destination_request import DeleteApiDestinationRequest
 from ._delete_api_destination_response_body import DeleteApiDestinationResponseBody
 from ._delete_api_destination_response import DeleteApiDestinationResponse
@@ -92,6 +110,9 @@ from ._event_center_query_events_request import EventCenterQueryEventsRequest
 from ._event_center_query_events_shrink_request import EventCenterQueryEventsShrinkRequest
 from ._event_center_query_events_response_body import EventCenterQueryEventsResponseBody
 from ._event_center_query_events_response import EventCenterQueryEventsResponse
+from ._get_agent_request import GetAgentRequest
+from ._get_agent_response_body import GetAgentResponseBody
+from ._get_agent_response import GetAgentResponse
 from ._get_api_destination_request import GetApiDestinationRequest
 from ._get_api_destination_response_body import GetApiDestinationResponseBody
 from ._get_api_destination_response import GetApiDestinationResponse
@@ -107,6 +128,9 @@ from ._get_event_streaming_response import GetEventStreamingResponse
 from ._get_rule_request import GetRuleRequest
 from ._get_rule_response_body import GetRuleResponseBody
 from ._get_rule_response import GetRuleResponse
+from ._list_agents_request import ListAgentsRequest
+from ._list_agents_response_body import ListAgentsResponseBody
+from ._list_agents_response import ListAgentsResponse
 from ._list_aliyun_official_event_sources_response_body import ListAliyunOfficialEventSourcesResponseBody
 from ._list_aliyun_official_event_sources_response import ListAliyunOfficialEventSourcesResponse
 from ._list_api_destinations_request import ListApiDestinationsRequest
@@ -133,10 +157,16 @@ from ._list_user_defined_event_sources_response import ListUserDefinedEventSourc
 from ._pause_event_streaming_request import PauseEventStreamingRequest
 from ._pause_event_streaming_response_body import PauseEventStreamingResponseBody
 from ._pause_event_streaming_response import PauseEventStreamingResponse
+from ._poll_ask_result_request import PollAskResultRequest
+from ._poll_ask_result_response_body import PollAskResultResponseBody
+from ._poll_ask_result_response import PollAskResultResponse
 from ._put_targets_request import PutTargetsRequest
 from ._put_targets_shrink_request import PutTargetsShrinkRequest
 from ._put_targets_response_body import PutTargetsResponseBody
 from ._put_targets_response import PutTargetsResponse
+from ._query_ask_luma_log_request import QueryAskLumaLogRequest
+from ._query_ask_luma_log_response_body import QueryAskLumaLogResponseBody
+from ._query_ask_luma_log_response import QueryAskLumaLogResponse
 from ._query_event_request import QueryEventRequest
 from ._query_event_response_body import QueryEventResponseBody
 from ._query_event_response import QueryEventResponse
@@ -159,6 +189,10 @@ from ._test_event_source_config_request import TestEventSourceConfigRequest
 from ._test_event_source_config_shrink_request import TestEventSourceConfigShrinkRequest
 from ._test_event_source_config_response_body import TestEventSourceConfigResponseBody
 from ._test_event_source_config_response import TestEventSourceConfigResponse
+from ._update_agent_request import UpdateAgentRequest
+from ._update_agent_shrink_request import UpdateAgentShrinkRequest
+from ._update_agent_response_body import UpdateAgentResponseBody
+from ._update_agent_response import UpdateAgentResponse
 from ._update_api_destination_request import UpdateApiDestinationRequest
 from ._update_api_destination_shrink_request import UpdateApiDestinationShrinkRequest
 from ._update_api_destination_response_body import UpdateApiDestinationResponseBody
@@ -214,6 +248,9 @@ from ._sink_rabbit_mqmsg_sync_parameters import SinkRabbitMQMsgSyncParametersRou
 from ._table import TableColumns
 from ._table import TableRetentionPolicy
 from ._check_service_linked_role_for_product_response_body import CheckServiceLinkedRoleForProductResponseBodyData
+from ._create_agent_request import CreateAgentRequestMetadataAttachments
+from ._create_agent_request import CreateAgentRequestMetadata
+from ._create_agent_response_body import CreateAgentResponseBodyData
 from ._create_api_destination_request import CreateApiDestinationRequestHttpApiParameters
 from ._create_api_destination_response_body import CreateApiDestinationResponseBodyDate
 from ._create_connection_request import CreateConnectionRequestAuthParametersApiKeyAuthParameters
@@ -578,6 +615,7 @@ from ._get_rule_response_body import GetRuleResponseBodyDataTargetsDeadLetterQue
 from ._get_rule_response_body import GetRuleResponseBodyDataTargetsParamList
 from ._get_rule_response_body import GetRuleResponseBodyDataTargets
 from ._get_rule_response_body import GetRuleResponseBodyData
+from ._list_agents_response_body import ListAgentsResponseBodyData
 from ._list_aliyun_official_event_sources_response_body import ListAliyunOfficialEventSourcesResponseBodyDataEventSourceListEventTypes
 from ._list_aliyun_official_event_sources_response_body import ListAliyunOfficialEventSourcesResponseBodyDataEventSourceList
 from ._list_aliyun_official_event_sources_response_body import ListAliyunOfficialEventSourcesResponseBodyData
@@ -762,6 +800,9 @@ from ._query_traced_events_response_body import QueryTracedEventsResponseBodyDat
 from ._test_event_pattern_response_body import TestEventPatternResponseBodyData
 from ._test_event_source_config_request import TestEventSourceConfigRequestSourceMySQLParameters
 from ._test_event_source_config_response_body import TestEventSourceConfigResponseBodyData
+from ._update_agent_request import UpdateAgentRequestMetadataAttachments
+from ._update_agent_request import UpdateAgentRequestMetadata
+from ._update_agent_response_body import UpdateAgentResponseBodyData
 from ._update_api_destination_request import UpdateApiDestinationRequestHttpApiParameters
 from ._update_connection_request import UpdateConnectionRequestAuthParametersApiKeyAuthParameters
 from ._update_connection_request import UpdateConnectionRequestAuthParametersBasicAuthParameters
@@ -942,16 +983,24 @@ from ._update_event_streaming_request import UpdateEventStreamingRequestTransfor
 __all__ = [
     Agent,
     AguiMessage,
+    AskLumaLogEntry,
+    AskLumaResult,
     BaiLianAgentTransformParameters,
     Catalog,
     Column,
+    Constraints,
+    Content,
     Conversation,
     DashScopeTransformParameters,
     EmbeddingTransformParameters,
     EventTableQueryHistogram,
+    ExecutionResult,
     Metadata,
     Namespace,
+    QueryAskLumaLogResult,
+    QueryAttachment,
     Row,
+    SchemaColumn,
     SinkApiDestinationParameters,
     SinkBaiLianParameters,
     SinkDataWorksTriggerParameters,
@@ -965,9 +1014,16 @@ __all__ = [
     SourceRabbitMQMetaParameters,
     SourceRabbitMQMsgSyncParameters,
     Table,
+    AskLumaRequest,
+    AskLumaResponseBody,
+    AskLumaResponse,
     CheckServiceLinkedRoleForProductRequest,
     CheckServiceLinkedRoleForProductResponseBody,
     CheckServiceLinkedRoleForProductResponse,
+    CreateAgentRequest,
+    CreateAgentShrinkRequest,
+    CreateAgentResponseBody,
+    CreateAgentResponse,
     CreateApiDestinationRequest,
     CreateApiDestinationShrinkRequest,
     CreateApiDestinationResponseBody,
@@ -994,6 +1050,9 @@ __all__ = [
     CreateServiceLinkedRoleForProductRequest,
     CreateServiceLinkedRoleForProductResponseBody,
     CreateServiceLinkedRoleForProductResponse,
+    DeleteAgentRequest,
+    DeleteAgentResponseBody,
+    DeleteAgentResponse,
     DeleteApiDestinationRequest,
     DeleteApiDestinationResponseBody,
     DeleteApiDestinationResponse,
@@ -1030,6 +1089,9 @@ __all__ = [
     EventCenterQueryEventsShrinkRequest,
     EventCenterQueryEventsResponseBody,
     EventCenterQueryEventsResponse,
+    GetAgentRequest,
+    GetAgentResponseBody,
+    GetAgentResponse,
     GetApiDestinationRequest,
     GetApiDestinationResponseBody,
     GetApiDestinationResponse,
@@ -1045,6 +1107,9 @@ __all__ = [
     GetRuleRequest,
     GetRuleResponseBody,
     GetRuleResponse,
+    ListAgentsRequest,
+    ListAgentsResponseBody,
+    ListAgentsResponse,
     ListAliyunOfficialEventSourcesResponseBody,
     ListAliyunOfficialEventSourcesResponse,
     ListApiDestinationsRequest,
@@ -1071,10 +1136,16 @@ __all__ = [
     PauseEventStreamingRequest,
     PauseEventStreamingResponseBody,
     PauseEventStreamingResponse,
+    PollAskResultRequest,
+    PollAskResultResponseBody,
+    PollAskResultResponse,
     PutTargetsRequest,
     PutTargetsShrinkRequest,
     PutTargetsResponseBody,
     PutTargetsResponse,
+    QueryAskLumaLogRequest,
+    QueryAskLumaLogResponseBody,
+    QueryAskLumaLogResponse,
     QueryEventRequest,
     QueryEventResponseBody,
     QueryEventResponse,
@@ -1097,6 +1168,10 @@ __all__ = [
     TestEventSourceConfigShrinkRequest,
     TestEventSourceConfigResponseBody,
     TestEventSourceConfigResponse,
+    UpdateAgentRequest,
+    UpdateAgentShrinkRequest,
+    UpdateAgentResponseBody,
+    UpdateAgentResponse,
     UpdateApiDestinationRequest,
     UpdateApiDestinationShrinkRequest,
     UpdateApiDestinationResponseBody,
@@ -1152,6 +1227,9 @@ __all__ = [
     TableColumns,
     TableRetentionPolicy,
     CheckServiceLinkedRoleForProductResponseBodyData,
+    CreateAgentRequestMetadataAttachments,
+    CreateAgentRequestMetadata,
+    CreateAgentResponseBodyData,
     CreateApiDestinationRequestHttpApiParameters,
     CreateApiDestinationResponseBodyDate,
     CreateConnectionRequestAuthParametersApiKeyAuthParameters,
@@ -1516,6 +1594,7 @@ __all__ = [
     GetRuleResponseBodyDataTargetsParamList,
     GetRuleResponseBodyDataTargets,
     GetRuleResponseBodyData,
+    ListAgentsResponseBodyData,
     ListAliyunOfficialEventSourcesResponseBodyDataEventSourceListEventTypes,
     ListAliyunOfficialEventSourcesResponseBodyDataEventSourceList,
     ListAliyunOfficialEventSourcesResponseBodyData,
@@ -1700,6 +1779,9 @@ __all__ = [
     TestEventPatternResponseBodyData,
     TestEventSourceConfigRequestSourceMySQLParameters,
     TestEventSourceConfigResponseBodyData,
+    UpdateAgentRequestMetadataAttachments,
+    UpdateAgentRequestMetadata,
+    UpdateAgentResponseBodyData,
     UpdateApiDestinationRequestHttpApiParameters,
     UpdateConnectionRequestAuthParametersApiKeyAuthParameters,
     UpdateConnectionRequestAuthParametersBasicAuthParameters,
