@@ -12768,6 +12768,8 @@ class Client(OpenApiClient):
     ) -> main_models.TurnOffZoneResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.hp_alb_zone_drained):
+            query['hpAlbZoneDrained'] = request.hp_alb_zone_drained
         if not DaraCore.is_null(request.zone):
             query['zone'] = request.zone
         req = open_api_util_models.OpenApiRequest(
@@ -12799,6 +12801,8 @@ class Client(OpenApiClient):
     ) -> main_models.TurnOffZoneResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.hp_alb_zone_drained):
+            query['hpAlbZoneDrained'] = request.hp_alb_zone_drained
         if not DaraCore.is_null(request.zone):
             query['zone'] = request.zone
         req = open_api_util_models.OpenApiRequest(
@@ -12848,6 +12852,8 @@ class Client(OpenApiClient):
     ) -> main_models.TurnOnZoneResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.hp_alb_zone_drained):
+            query['hpAlbZoneDrained'] = request.hp_alb_zone_drained
         if not DaraCore.is_null(request.zone):
             query['zone'] = request.zone
         req = open_api_util_models.OpenApiRequest(
@@ -12879,6 +12885,8 @@ class Client(OpenApiClient):
     ) -> main_models.TurnOnZoneResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.hp_alb_zone_drained):
+            query['hpAlbZoneDrained'] = request.hp_alb_zone_drained
         if not DaraCore.is_null(request.zone):
             query['zone'] = request.zone
         req = open_api_util_models.OpenApiRequest(
