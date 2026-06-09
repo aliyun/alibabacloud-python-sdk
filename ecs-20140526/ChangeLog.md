@@ -1,3 +1,7 @@
+2026-06-09 Version: 7.8.4
+- Update API DescribeRenewalPrice: add response parameters Body.PriceInfo.RelatedPrice.
+
+
 2026-06-03 Version: 7.8.3
 - Update API CreateCapacityReservation: add request parameters InstanceChargeType.
 - Update API DescribeCapacityReservations: add response parameters Body.CapacityReservationSet.$.DeliveryTime.

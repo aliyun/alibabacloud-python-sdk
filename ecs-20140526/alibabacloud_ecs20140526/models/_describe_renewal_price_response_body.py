@@ -50,15 +50,19 @@ class DescribeRenewalPriceResponseBodyPriceInfo(DaraModel):
     def __init__(
         self,
         price: main_models.DescribeRenewalPriceResponseBodyPriceInfoPrice = None,
+        related_price: main_models.DescribeRenewalPriceResponseBodyPriceInfoRelatedPrice = None,
         rules: main_models.DescribeRenewalPriceResponseBodyPriceInfoRules = None,
     ):
         # The price.
         self.price = price
+        self.related_price = related_price
         self.rules = rules
 
     def validate(self):
         if self.price:
             self.price.validate()
+        if self.related_price:
+            self.related_price.validate()
         if self.rules:
             self.rules.validate()
 
@@ -70,6 +74,9 @@ class DescribeRenewalPriceResponseBodyPriceInfo(DaraModel):
         if self.price is not None:
             result['Price'] = self.price.to_map()
 
+        if self.related_price is not None:
+            result['RelatedPrice'] = self.related_price.to_map()
+
         if self.rules is not None:
             result['Rules'] = self.rules.to_map()
 
@@ -80,6 +87,10 @@ class DescribeRenewalPriceResponseBodyPriceInfo(DaraModel):
         if m.get('Price') is not None:
             temp_model = main_models.DescribeRenewalPriceResponseBodyPriceInfoPrice()
             self.price = temp_model.from_map(m.get('Price'))
+
+        if m.get('RelatedPrice') is not None:
+            temp_model = main_models.DescribeRenewalPriceResponseBodyPriceInfoRelatedPrice()
+            self.related_price = temp_model.from_map(m.get('RelatedPrice'))
 
         if m.get('Rules') is not None:
             temp_model = main_models.DescribeRenewalPriceResponseBodyPriceInfoRules()
@@ -154,6 +165,86 @@ class DescribeRenewalPriceResponseBodyPriceInfoRulesRule(DaraModel):
 
         if m.get('RuleId') is not None:
             self.rule_id = m.get('RuleId')
+
+        return self
+
+class DescribeRenewalPriceResponseBodyPriceInfoRelatedPrice(DaraModel):
+    def __init__(
+        self,
+        marketplace_image_price: main_models.DescribeRenewalPriceResponseBodyPriceInfoRelatedPriceMarketplaceImagePrice = None,
+    ):
+        self.marketplace_image_price = marketplace_image_price
+
+    def validate(self):
+        if self.marketplace_image_price:
+            self.marketplace_image_price.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.marketplace_image_price is not None:
+            result['MarketplaceImagePrice'] = self.marketplace_image_price.to_map()
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MarketplaceImagePrice') is not None:
+            temp_model = main_models.DescribeRenewalPriceResponseBodyPriceInfoRelatedPriceMarketplaceImagePrice()
+            self.marketplace_image_price = temp_model.from_map(m.get('MarketplaceImagePrice'))
+
+        return self
+
+class DescribeRenewalPriceResponseBodyPriceInfoRelatedPriceMarketplaceImagePrice(DaraModel):
+    def __init__(
+        self,
+        currency: str = None,
+        discount_price: float = None,
+        original_price: float = None,
+        trade_price: float = None,
+    ):
+        self.currency = currency
+        self.discount_price = discount_price
+        self.original_price = original_price
+        self.trade_price = trade_price
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.currency is not None:
+            result['Currency'] = self.currency
+
+        if self.discount_price is not None:
+            result['DiscountPrice'] = self.discount_price
+
+        if self.original_price is not None:
+            result['OriginalPrice'] = self.original_price
+
+        if self.trade_price is not None:
+            result['TradePrice'] = self.trade_price
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Currency') is not None:
+            self.currency = m.get('Currency')
+
+        if m.get('DiscountPrice') is not None:
+            self.discount_price = m.get('DiscountPrice')
+
+        if m.get('OriginalPrice') is not None:
+            self.original_price = m.get('OriginalPrice')
+
+        if m.get('TradePrice') is not None:
+            self.trade_price = m.get('TradePrice')
 
         return self
 
