@@ -287,6 +287,9 @@ from ._redeploy_airflow_response import RedeployAirflowResponse
 from ._remove_user_to_data_agent_workspace_request import RemoveUserToDataAgentWorkspaceRequest
 from ._remove_user_to_data_agent_workspace_response_body import RemoveUserToDataAgentWorkspaceResponseBody
 from ._remove_user_to_data_agent_workspace_response import RemoveUserToDataAgentWorkspaceResponse
+from ._retrieve_knowledge_base_request import RetrieveKnowledgeBaseRequest
+from ._retrieve_knowledge_base_response_body import RetrieveKnowledgeBaseResponseBody
+from ._retrieve_knowledge_base_response import RetrieveKnowledgeBaseResponse
 from ._save_workspace_code_request import SaveWorkspaceCodeRequest
 from ._save_workspace_code_response_body import SaveWorkspaceCodeResponseBody
 from ._save_workspace_code_response import SaveWorkspaceCodeResponse
@@ -422,6 +425,9 @@ from ._modify_custom_agent_response_body import ModifyCustomAgentResponseBodyDat
 from ._modify_custom_agent_response_body import ModifyCustomAgentResponseBodyDataScheduleTaskConfig
 from ._modify_custom_agent_response_body import ModifyCustomAgentResponseBodyData
 from ._operate_custom_agent_response_body import OperateCustomAgentResponseBodyData
+from ._retrieve_knowledge_base_response_body import RetrieveKnowledgeBaseResponseBodyDataMatches
+from ._retrieve_knowledge_base_response_body import RetrieveKnowledgeBaseResponseBodyDataResults
+from ._retrieve_knowledge_base_response_body import RetrieveKnowledgeBaseResponseBodyData
 from ._send_chat_message_request import SendChatMessageRequestDataSource
 from ._send_chat_message_request import SendChatMessageRequestDataSources
 from ._send_chat_message_request import SendChatMessageRequestSessionConfig
@@ -719,6 +725,9 @@ __all__ = [
     RemoveUserToDataAgentWorkspaceRequest,
     RemoveUserToDataAgentWorkspaceResponseBody,
     RemoveUserToDataAgentWorkspaceResponse,
+    RetrieveKnowledgeBaseRequest,
+    RetrieveKnowledgeBaseResponseBody,
+    RetrieveKnowledgeBaseResponse,
     SaveWorkspaceCodeRequest,
     SaveWorkspaceCodeResponseBody,
     SaveWorkspaceCodeResponse,
@@ -854,6 +863,9 @@ __all__ = [
     ModifyCustomAgentResponseBodyDataScheduleTaskConfig,
     ModifyCustomAgentResponseBodyData,
     OperateCustomAgentResponseBodyData,
+    RetrieveKnowledgeBaseResponseBodyDataMatches,
+    RetrieveKnowledgeBaseResponseBodyDataResults,
+    RetrieveKnowledgeBaseResponseBodyData,
     SendChatMessageRequestDataSource,
     SendChatMessageRequestDataSources,
     SendChatMessageRequestSessionConfig,

@@ -6802,6 +6802,124 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.remove_user_to_data_agent_workspace_with_options_async(request, runtime)
 
+    def retrieve_knowledge_base_with_options(
+        self,
+        request: main_models.RetrieveKnowledgeBaseRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RetrieveKnowledgeBaseResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.filter):
+            body['Filter'] = request.filter
+        if not DaraCore.is_null(request.hybrid_search):
+            body['HybridSearch'] = request.hybrid_search
+        if not DaraCore.is_null(request.hybrid_search_args):
+            body['HybridSearchArgs'] = request.hybrid_search_args
+        if not DaraCore.is_null(request.include_metadata_fields):
+            body['IncludeMetadataFields'] = request.include_metadata_fields
+        if not DaraCore.is_null(request.include_vector):
+            body['IncludeVector'] = request.include_vector
+        if not DaraCore.is_null(request.kb_uuid):
+            body['KbUuid'] = request.kb_uuid
+        if not DaraCore.is_null(request.metrics):
+            body['Metrics'] = request.metrics
+        if not DaraCore.is_null(request.offset):
+            body['Offset'] = request.offset
+        if not DaraCore.is_null(request.order_by):
+            body['OrderBy'] = request.order_by
+        if not DaraCore.is_null(request.query):
+            body['Query'] = request.query
+        if not DaraCore.is_null(request.recall_window):
+            body['RecallWindow'] = request.recall_window
+        if not DaraCore.is_null(request.rerank_factor):
+            body['RerankFactor'] = request.rerank_factor
+        if not DaraCore.is_null(request.top_k):
+            body['TopK'] = request.top_k
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'RetrieveKnowledgeBase',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RetrieveKnowledgeBaseResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def retrieve_knowledge_base_with_options_async(
+        self,
+        request: main_models.RetrieveKnowledgeBaseRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RetrieveKnowledgeBaseResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.filter):
+            body['Filter'] = request.filter
+        if not DaraCore.is_null(request.hybrid_search):
+            body['HybridSearch'] = request.hybrid_search
+        if not DaraCore.is_null(request.hybrid_search_args):
+            body['HybridSearchArgs'] = request.hybrid_search_args
+        if not DaraCore.is_null(request.include_metadata_fields):
+            body['IncludeMetadataFields'] = request.include_metadata_fields
+        if not DaraCore.is_null(request.include_vector):
+            body['IncludeVector'] = request.include_vector
+        if not DaraCore.is_null(request.kb_uuid):
+            body['KbUuid'] = request.kb_uuid
+        if not DaraCore.is_null(request.metrics):
+            body['Metrics'] = request.metrics
+        if not DaraCore.is_null(request.offset):
+            body['Offset'] = request.offset
+        if not DaraCore.is_null(request.order_by):
+            body['OrderBy'] = request.order_by
+        if not DaraCore.is_null(request.query):
+            body['Query'] = request.query
+        if not DaraCore.is_null(request.recall_window):
+            body['RecallWindow'] = request.recall_window
+        if not DaraCore.is_null(request.rerank_factor):
+            body['RerankFactor'] = request.rerank_factor
+        if not DaraCore.is_null(request.top_k):
+            body['TopK'] = request.top_k
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'RetrieveKnowledgeBase',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RetrieveKnowledgeBaseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def retrieve_knowledge_base(
+        self,
+        request: main_models.RetrieveKnowledgeBaseRequest,
+    ) -> main_models.RetrieveKnowledgeBaseResponse:
+        runtime = RuntimeOptions()
+        return self.retrieve_knowledge_base_with_options(request, runtime)
+
+    async def retrieve_knowledge_base_async(
+        self,
+        request: main_models.RetrieveKnowledgeBaseRequest,
+    ) -> main_models.RetrieveKnowledgeBaseResponse:
+        runtime = RuntimeOptions()
+        return await self.retrieve_knowledge_base_with_options_async(request, runtime)
+
     def save_workspace_code_with_options(
         self,
         request: main_models.SaveWorkspaceCodeRequest,

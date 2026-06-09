@@ -1,3 +1,7 @@
+2026-06-09 Version: 1.15.0
+- Support API RetrieveKnowledgeBase.
+
+
 2026-06-02 Version: 1.14.0
 - Support API DeleteWorkspaceCode.
 - Support API GetWorkspaceCode.
