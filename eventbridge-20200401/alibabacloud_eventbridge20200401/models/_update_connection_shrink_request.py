@@ -11,6 +11,8 @@ class UpdateConnectionShrinkRequest(DaraModel):
         connection_name: str = None,
         description: str = None,
         network_parameters_shrink: str = None,
+        parameters_shrink: str = None,
+        type: str = None,
     ):
         # The parameters that are configured for authentication.
         self.auth_parameters_shrink = auth_parameters_shrink
@@ -24,6 +26,10 @@ class UpdateConnectionShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.network_parameters_shrink = network_parameters_shrink
+        # 数据源连接参数（JSON 对象）。具体字段定义请调用 GetConnectionType 接口，参考返回结果中的 ParamsSchema
+        self.parameters_shrink = parameters_shrink
+        # 连接类型。可选值：MySQL、PostgreSQL、Elasticsearch、Http
+        self.type = type
 
     def validate(self):
         pass
@@ -45,6 +51,12 @@ class UpdateConnectionShrinkRequest(DaraModel):
         if self.network_parameters_shrink is not None:
             result['NetworkParameters'] = self.network_parameters_shrink
 
+        if self.parameters_shrink is not None:
+            result['Parameters'] = self.parameters_shrink
+
+        if self.type is not None:
+            result['Type'] = self.type
+
         return result
 
     def from_map(self, m: dict = None):
@@ -60,6 +72,12 @@ class UpdateConnectionShrinkRequest(DaraModel):
 
         if m.get('NetworkParameters') is not None:
             self.network_parameters_shrink = m.get('NetworkParameters')
+
+        if m.get('Parameters') is not None:
+            self.parameters_shrink = m.get('Parameters')
+
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
 
         return self
 

@@ -384,6 +384,8 @@ class Client(OpenApiClient):
             request.auth_parameters_shrink = Utils.array_to_string_with_specified_style(tmp_req.auth_parameters, 'AuthParameters', 'json')
         if not DaraCore.is_null(tmp_req.network_parameters):
             request.network_parameters_shrink = Utils.array_to_string_with_specified_style(tmp_req.network_parameters, 'NetworkParameters', 'json')
+        if not DaraCore.is_null(tmp_req.parameters):
+            request.parameters_shrink = Utils.array_to_string_with_specified_style(tmp_req.parameters, 'Parameters', 'json')
         query = {}
         if not DaraCore.is_null(request.auth_parameters_shrink):
             query['AuthParameters'] = request.auth_parameters_shrink
@@ -393,6 +395,10 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not DaraCore.is_null(request.network_parameters_shrink):
             query['NetworkParameters'] = request.network_parameters_shrink
+        if not DaraCore.is_null(request.parameters_shrink):
+            query['Parameters'] = request.parameters_shrink
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -424,6 +430,8 @@ class Client(OpenApiClient):
             request.auth_parameters_shrink = Utils.array_to_string_with_specified_style(tmp_req.auth_parameters, 'AuthParameters', 'json')
         if not DaraCore.is_null(tmp_req.network_parameters):
             request.network_parameters_shrink = Utils.array_to_string_with_specified_style(tmp_req.network_parameters, 'NetworkParameters', 'json')
+        if not DaraCore.is_null(tmp_req.parameters):
+            request.parameters_shrink = Utils.array_to_string_with_specified_style(tmp_req.parameters, 'Parameters', 'json')
         query = {}
         if not DaraCore.is_null(request.auth_parameters_shrink):
             query['AuthParameters'] = request.auth_parameters_shrink
@@ -433,6 +441,10 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not DaraCore.is_null(request.network_parameters_shrink):
             query['NetworkParameters'] = request.network_parameters_shrink
+        if not DaraCore.is_null(request.parameters_shrink):
+            query['Parameters'] = request.parameters_shrink
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -820,6 +832,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_event_streaming_with_options_async(request, runtime)
 
+    def create_namespace_with_options(
+        self,
+        request: main_models.CreateNamespaceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateNamespaceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.catalog):
+            query['Catalog'] = request.catalog
+        if not DaraCore.is_null(request.comment):
+            query['Comment'] = request.comment
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateNamespace',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateNamespaceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_namespace_with_options_async(
+        self,
+        request: main_models.CreateNamespaceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateNamespaceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.catalog):
+            query['Catalog'] = request.catalog
+        if not DaraCore.is_null(request.comment):
+            query['Comment'] = request.comment
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateNamespace',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateNamespaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_namespace(
+        self,
+        request: main_models.CreateNamespaceRequest,
+    ) -> main_models.CreateNamespaceResponse:
+        runtime = RuntimeOptions()
+        return self.create_namespace_with_options(request, runtime)
+
+    async def create_namespace_async(
+        self,
+        request: main_models.CreateNamespaceRequest,
+    ) -> main_models.CreateNamespaceResponse:
+        runtime = RuntimeOptions()
+        return await self.create_namespace_with_options_async(request, runtime)
+
     def create_rule_with_options(
         self,
         tmp_req: main_models.CreateRuleRequest,
@@ -987,6 +1085,112 @@ class Client(OpenApiClient):
     ) -> main_models.CreateServiceLinkedRoleForProductResponse:
         runtime = RuntimeOptions()
         return await self.create_service_linked_role_for_product_with_options_async(request, runtime)
+
+    def create_table_with_options(
+        self,
+        tmp_req: main_models.CreateTableRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateTableResponse:
+        tmp_req.validate()
+        request = main_models.CreateTableShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.columns):
+            request.columns_shrink = Utils.array_to_string_with_specified_style(tmp_req.columns, 'Columns', 'json')
+        if not DaraCore.is_null(tmp_req.retention_policy):
+            request.retention_policy_shrink = Utils.array_to_string_with_specified_style(tmp_req.retention_policy, 'RetentionPolicy', 'json')
+        query = {}
+        if not DaraCore.is_null(request.catalog):
+            query['Catalog'] = request.catalog
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.columns_shrink):
+            query['Columns'] = request.columns_shrink
+        if not DaraCore.is_null(request.comment):
+            query['Comment'] = request.comment
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.namespace):
+            query['Namespace'] = request.namespace
+        if not DaraCore.is_null(request.retention_policy_shrink):
+            query['RetentionPolicy'] = request.retention_policy_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateTable',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateTableResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_table_with_options_async(
+        self,
+        tmp_req: main_models.CreateTableRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateTableResponse:
+        tmp_req.validate()
+        request = main_models.CreateTableShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.columns):
+            request.columns_shrink = Utils.array_to_string_with_specified_style(tmp_req.columns, 'Columns', 'json')
+        if not DaraCore.is_null(tmp_req.retention_policy):
+            request.retention_policy_shrink = Utils.array_to_string_with_specified_style(tmp_req.retention_policy, 'RetentionPolicy', 'json')
+        query = {}
+        if not DaraCore.is_null(request.catalog):
+            query['Catalog'] = request.catalog
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.columns_shrink):
+            query['Columns'] = request.columns_shrink
+        if not DaraCore.is_null(request.comment):
+            query['Comment'] = request.comment
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.namespace):
+            query['Namespace'] = request.namespace
+        if not DaraCore.is_null(request.retention_policy_shrink):
+            query['RetentionPolicy'] = request.retention_policy_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateTable',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateTableResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_table(
+        self,
+        request: main_models.CreateTableRequest,
+    ) -> main_models.CreateTableResponse:
+        runtime = RuntimeOptions()
+        return self.create_table_with_options(request, runtime)
+
+    async def create_table_async(
+        self,
+        request: main_models.CreateTableRequest,
+    ) -> main_models.CreateTableResponse:
+        runtime = RuntimeOptions()
+        return await self.create_table_with_options_async(request, runtime)
 
     def delete_agent_with_options(
         self,
@@ -1412,6 +1616,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.delete_event_streaming_with_options_async(request, runtime)
 
+    def delete_namespace_with_options(
+        self,
+        request: main_models.DeleteNamespaceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteNamespaceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.catalog):
+            query['Catalog'] = request.catalog
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteNamespace',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteNamespaceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_namespace_with_options_async(
+        self,
+        request: main_models.DeleteNamespaceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteNamespaceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.catalog):
+            query['Catalog'] = request.catalog
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteNamespace',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteNamespaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_namespace(
+        self,
+        request: main_models.DeleteNamespaceRequest,
+    ) -> main_models.DeleteNamespaceResponse:
+        runtime = RuntimeOptions()
+        return self.delete_namespace_with_options(request, runtime)
+
+    async def delete_namespace_async(
+        self,
+        request: main_models.DeleteNamespaceRequest,
+    ) -> main_models.DeleteNamespaceResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_namespace_with_options_async(request, runtime)
+
     def delete_rule_with_options(
         self,
         request: main_models.DeleteRuleRequest,
@@ -1485,6 +1771,92 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteRuleResponse:
         runtime = RuntimeOptions()
         return await self.delete_rule_with_options_async(request, runtime)
+
+    def delete_table_with_options(
+        self,
+        request: main_models.DeleteTableRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteTableResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.catalog):
+            query['Catalog'] = request.catalog
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.namespace):
+            query['Namespace'] = request.namespace
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteTable',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteTableResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_table_with_options_async(
+        self,
+        request: main_models.DeleteTableRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteTableResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.catalog):
+            query['Catalog'] = request.catalog
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.namespace):
+            query['Namespace'] = request.namespace
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteTable',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteTableResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_table(
+        self,
+        request: main_models.DeleteTableRequest,
+    ) -> main_models.DeleteTableResponse:
+        runtime = RuntimeOptions()
+        return self.delete_table_with_options(request, runtime)
+
+    async def delete_table_async(
+        self,
+        request: main_models.DeleteTableRequest,
+    ) -> main_models.DeleteTableResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_table_with_options_async(request, runtime)
 
     def delete_targets_with_options(
         self,
@@ -2032,6 +2404,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_api_destination_with_options_async(request, runtime)
 
+    def get_catalog_with_options(
+        self,
+        request: main_models.GetCatalogRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetCatalogResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetCatalog',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetCatalogResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_catalog_with_options_async(
+        self,
+        request: main_models.GetCatalogRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetCatalogResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetCatalog',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetCatalogResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_catalog(
+        self,
+        request: main_models.GetCatalogRequest,
+    ) -> main_models.GetCatalogResponse:
+        runtime = RuntimeOptions()
+        return self.get_catalog_with_options(request, runtime)
+
+    async def get_catalog_async(
+        self,
+        request: main_models.GetCatalogRequest,
+    ) -> main_models.GetCatalogResponse:
+        runtime = RuntimeOptions()
+        return await self.get_catalog_with_options_async(request, runtime)
+
     def get_connection_with_options(
         self,
         request: main_models.GetConnectionRequest,
@@ -2242,6 +2692,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_event_streaming_with_options_async(request, runtime)
 
+    def get_namespace_with_options(
+        self,
+        request: main_models.GetNamespaceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetNamespaceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.catalog):
+            query['Catalog'] = request.catalog
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetNamespace',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetNamespaceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_namespace_with_options_async(
+        self,
+        request: main_models.GetNamespaceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetNamespaceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.catalog):
+            query['Catalog'] = request.catalog
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetNamespace',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetNamespaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_namespace(
+        self,
+        request: main_models.GetNamespaceRequest,
+    ) -> main_models.GetNamespaceResponse:
+        runtime = RuntimeOptions()
+        return self.get_namespace_with_options(request, runtime)
+
+    async def get_namespace_async(
+        self,
+        request: main_models.GetNamespaceRequest,
+    ) -> main_models.GetNamespaceResponse:
+        runtime = RuntimeOptions()
+        return await self.get_namespace_with_options_async(request, runtime)
+
     def get_rule_with_options(
         self,
         request: main_models.GetRuleRequest,
@@ -2315,6 +2847,92 @@ class Client(OpenApiClient):
     ) -> main_models.GetRuleResponse:
         runtime = RuntimeOptions()
         return await self.get_rule_with_options_async(request, runtime)
+
+    def get_table_with_options(
+        self,
+        request: main_models.GetTableRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetTableResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.catalog):
+            query['Catalog'] = request.catalog
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.namespace):
+            query['Namespace'] = request.namespace
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetTable',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetTableResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_table_with_options_async(
+        self,
+        request: main_models.GetTableRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetTableResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.catalog):
+            query['Catalog'] = request.catalog
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.namespace):
+            query['Namespace'] = request.namespace
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetTable',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetTableResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_table(
+        self,
+        request: main_models.GetTableRequest,
+    ) -> main_models.GetTableResponse:
+        runtime = RuntimeOptions()
+        return self.get_table_with_options(request, runtime)
+
+    async def get_table_async(
+        self,
+        request: main_models.GetTableRequest,
+    ) -> main_models.GetTableResponse:
+        runtime = RuntimeOptions()
+        return await self.get_table_with_options_async(request, runtime)
 
     def list_agents_with_options(
         self,
@@ -2526,6 +3144,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_api_destinations_with_options_async(request, runtime)
 
+    def list_catalogs_with_options(
+        self,
+        request: main_models.ListCatalogsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListCatalogsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.limit):
+            query['Limit'] = request.limit
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListCatalogs',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListCatalogsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_catalogs_with_options_async(
+        self,
+        request: main_models.ListCatalogsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListCatalogsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.limit):
+            query['Limit'] = request.limit
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListCatalogs',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListCatalogsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_catalogs(
+        self,
+        request: main_models.ListCatalogsRequest,
+    ) -> main_models.ListCatalogsResponse:
+        runtime = RuntimeOptions()
+        return self.list_catalogs_with_options(request, runtime)
+
+    async def list_catalogs_async(
+        self,
+        request: main_models.ListCatalogsRequest,
+    ) -> main_models.ListCatalogsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_catalogs_with_options_async(request, runtime)
+
     def list_connections_with_options(
         self,
         request: main_models.ListConnectionsRequest,
@@ -2539,6 +3231,8 @@ class Client(OpenApiClient):
             body['MaxResults'] = request.max_results
         if not DaraCore.is_null(request.next_token):
             body['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.type):
+            body['Type'] = request.type
         req = open_api_util_models.OpenApiRequest(
             body = Utils.parse_to_map(body)
         )
@@ -2571,6 +3265,8 @@ class Client(OpenApiClient):
             body['MaxResults'] = request.max_results
         if not DaraCore.is_null(request.next_token):
             body['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.type):
+            body['Type'] = request.type
         req = open_api_util_models.OpenApiRequest(
             body = Utils.parse_to_map(body)
         )
@@ -2772,6 +3468,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_event_streamings_with_options_async(request, runtime)
 
+    def list_namespaces_with_options(
+        self,
+        request: main_models.ListNamespacesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListNamespacesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.catalog):
+            query['Catalog'] = request.catalog
+        if not DaraCore.is_null(request.limit):
+            query['Limit'] = request.limit
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListNamespaces',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListNamespacesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_namespaces_with_options_async(
+        self,
+        request: main_models.ListNamespacesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListNamespacesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.catalog):
+            query['Catalog'] = request.catalog
+        if not DaraCore.is_null(request.limit):
+            query['Limit'] = request.limit
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListNamespaces',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListNamespacesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_namespaces(
+        self,
+        request: main_models.ListNamespacesRequest,
+    ) -> main_models.ListNamespacesResponse:
+        runtime = RuntimeOptions()
+        return self.list_namespaces_with_options(request, runtime)
+
+    async def list_namespaces_async(
+        self,
+        request: main_models.ListNamespacesRequest,
+    ) -> main_models.ListNamespacesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_namespaces_with_options_async(request, runtime)
+
     def list_rules_with_options(
         self,
         request: main_models.ListRulesRequest,
@@ -2853,6 +3627,88 @@ class Client(OpenApiClient):
     ) -> main_models.ListRulesResponse:
         runtime = RuntimeOptions()
         return await self.list_rules_with_options_async(request, runtime)
+
+    def list_tables_with_options(
+        self,
+        request: main_models.ListTablesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListTablesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.catalog):
+            query['Catalog'] = request.catalog
+        if not DaraCore.is_null(request.limit):
+            query['Limit'] = request.limit
+        if not DaraCore.is_null(request.namespace):
+            query['Namespace'] = request.namespace
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListTables',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListTablesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_tables_with_options_async(
+        self,
+        request: main_models.ListTablesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListTablesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.catalog):
+            query['Catalog'] = request.catalog
+        if not DaraCore.is_null(request.limit):
+            query['Limit'] = request.limit
+        if not DaraCore.is_null(request.namespace):
+            query['Namespace'] = request.namespace
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListTables',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListTablesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_tables(
+        self,
+        request: main_models.ListTablesRequest,
+    ) -> main_models.ListTablesResponse:
+        runtime = RuntimeOptions()
+        return self.list_tables_with_options(request, runtime)
+
+    async def list_tables_async(
+        self,
+        request: main_models.ListTablesRequest,
+    ) -> main_models.ListTablesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_tables_with_options_async(request, runtime)
 
     def list_targets_with_options(
         self,
@@ -3407,6 +4263,80 @@ class Client(OpenApiClient):
     ) -> main_models.QueryEventResponse:
         runtime = RuntimeOptions()
         return await self.query_event_with_options_async(request, runtime)
+
+    def query_event_house_with_options(
+        self,
+        request: main_models.QueryEventHouseRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryEventHouseResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.limit):
+            query['Limit'] = request.limit
+        if not DaraCore.is_null(request.query):
+            query['Query'] = request.query
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryEventHouse',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryEventHouseResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_event_house_with_options_async(
+        self,
+        request: main_models.QueryEventHouseRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryEventHouseResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.limit):
+            query['Limit'] = request.limit
+        if not DaraCore.is_null(request.query):
+            query['Query'] = request.query
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryEventHouse',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryEventHouseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_event_house(
+        self,
+        request: main_models.QueryEventHouseRequest,
+    ) -> main_models.QueryEventHouseResponse:
+        runtime = RuntimeOptions()
+        return self.query_event_house_with_options(request, runtime)
+
+    async def query_event_house_async(
+        self,
+        request: main_models.QueryEventHouseRequest,
+    ) -> main_models.QueryEventHouseResponse:
+        runtime = RuntimeOptions()
+        return await self.query_event_house_with_options_async(request, runtime)
 
     def query_event_traces_with_options(
         self,
@@ -4080,6 +5010,8 @@ class Client(OpenApiClient):
             request.auth_parameters_shrink = Utils.array_to_string_with_specified_style(tmp_req.auth_parameters, 'AuthParameters', 'json')
         if not DaraCore.is_null(tmp_req.network_parameters):
             request.network_parameters_shrink = Utils.array_to_string_with_specified_style(tmp_req.network_parameters, 'NetworkParameters', 'json')
+        if not DaraCore.is_null(tmp_req.parameters):
+            request.parameters_shrink = Utils.array_to_string_with_specified_style(tmp_req.parameters, 'Parameters', 'json')
         query = {}
         if not DaraCore.is_null(request.auth_parameters_shrink):
             query['AuthParameters'] = request.auth_parameters_shrink
@@ -4089,6 +5021,10 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not DaraCore.is_null(request.network_parameters_shrink):
             query['NetworkParameters'] = request.network_parameters_shrink
+        if not DaraCore.is_null(request.parameters_shrink):
+            query['Parameters'] = request.parameters_shrink
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -4120,6 +5056,8 @@ class Client(OpenApiClient):
             request.auth_parameters_shrink = Utils.array_to_string_with_specified_style(tmp_req.auth_parameters, 'AuthParameters', 'json')
         if not DaraCore.is_null(tmp_req.network_parameters):
             request.network_parameters_shrink = Utils.array_to_string_with_specified_style(tmp_req.network_parameters, 'NetworkParameters', 'json')
+        if not DaraCore.is_null(tmp_req.parameters):
+            request.parameters_shrink = Utils.array_to_string_with_specified_style(tmp_req.parameters, 'Parameters', 'json')
         query = {}
         if not DaraCore.is_null(request.auth_parameters_shrink):
             query['AuthParameters'] = request.auth_parameters_shrink
@@ -4129,6 +5067,10 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not DaraCore.is_null(request.network_parameters_shrink):
             query['NetworkParameters'] = request.network_parameters_shrink
+        if not DaraCore.is_null(request.parameters_shrink):
+            query['Parameters'] = request.parameters_shrink
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -4594,6 +5536,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.update_event_streaming_business_option_with_options_async(request, runtime)
 
+    def update_namespace_with_options(
+        self,
+        request: main_models.UpdateNamespaceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateNamespaceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.catalog):
+            query['Catalog'] = request.catalog
+        if not DaraCore.is_null(request.comment):
+            query['Comment'] = request.comment
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateNamespace',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateNamespaceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_namespace_with_options_async(
+        self,
+        request: main_models.UpdateNamespaceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateNamespaceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.catalog):
+            query['Catalog'] = request.catalog
+        if not DaraCore.is_null(request.comment):
+            query['Comment'] = request.comment
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateNamespace',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateNamespaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_namespace(
+        self,
+        request: main_models.UpdateNamespaceRequest,
+    ) -> main_models.UpdateNamespaceResponse:
+        runtime = RuntimeOptions()
+        return self.update_namespace_with_options(request, runtime)
+
+    async def update_namespace_async(
+        self,
+        request: main_models.UpdateNamespaceRequest,
+    ) -> main_models.UpdateNamespaceResponse:
+        runtime = RuntimeOptions()
+        return await self.update_namespace_with_options_async(request, runtime)
+
     def update_rule_with_options(
         self,
         request: main_models.UpdateRuleRequest,
@@ -4679,3 +5707,141 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateRuleResponse:
         runtime = RuntimeOptions()
         return await self.update_rule_with_options_async(request, runtime)
+
+    def update_table_with_options(
+        self,
+        tmp_req: main_models.UpdateTableRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateTableResponse:
+        tmp_req.validate()
+        request = main_models.UpdateTableShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.add_column):
+            request.add_column_shrink = Utils.array_to_string_with_specified_style(tmp_req.add_column, 'AddColumn', 'json')
+        if not DaraCore.is_null(tmp_req.delete_column):
+            request.delete_column_shrink = Utils.array_to_string_with_specified_style(tmp_req.delete_column, 'DeleteColumn', 'json')
+        if not DaraCore.is_null(tmp_req.rename_column):
+            request.rename_column_shrink = Utils.array_to_string_with_specified_style(tmp_req.rename_column, 'RenameColumn', 'json')
+        if not DaraCore.is_null(tmp_req.update_column_comment):
+            request.update_column_comment_shrink = Utils.array_to_string_with_specified_style(tmp_req.update_column_comment, 'UpdateColumnComment', 'json')
+        if not DaraCore.is_null(tmp_req.update_column_type):
+            request.update_column_type_shrink = Utils.array_to_string_with_specified_style(tmp_req.update_column_type, 'UpdateColumnType', 'json')
+        if not DaraCore.is_null(tmp_req.update_retention_policy):
+            request.update_retention_policy_shrink = Utils.array_to_string_with_specified_style(tmp_req.update_retention_policy, 'UpdateRetentionPolicy', 'json')
+        query = {}
+        if not DaraCore.is_null(request.add_column_shrink):
+            query['AddColumn'] = request.add_column_shrink
+        if not DaraCore.is_null(request.catalog):
+            query['Catalog'] = request.catalog
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.delete_column_shrink):
+            query['DeleteColumn'] = request.delete_column_shrink
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.namespace):
+            query['Namespace'] = request.namespace
+        if not DaraCore.is_null(request.rename_column_shrink):
+            query['RenameColumn'] = request.rename_column_shrink
+        if not DaraCore.is_null(request.update_column_comment_shrink):
+            query['UpdateColumnComment'] = request.update_column_comment_shrink
+        if not DaraCore.is_null(request.update_column_type_shrink):
+            query['UpdateColumnType'] = request.update_column_type_shrink
+        if not DaraCore.is_null(request.update_comment):
+            query['UpdateComment'] = request.update_comment
+        if not DaraCore.is_null(request.update_retention_policy_shrink):
+            query['UpdateRetentionPolicy'] = request.update_retention_policy_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateTable',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateTableResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_table_with_options_async(
+        self,
+        tmp_req: main_models.UpdateTableRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateTableResponse:
+        tmp_req.validate()
+        request = main_models.UpdateTableShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.add_column):
+            request.add_column_shrink = Utils.array_to_string_with_specified_style(tmp_req.add_column, 'AddColumn', 'json')
+        if not DaraCore.is_null(tmp_req.delete_column):
+            request.delete_column_shrink = Utils.array_to_string_with_specified_style(tmp_req.delete_column, 'DeleteColumn', 'json')
+        if not DaraCore.is_null(tmp_req.rename_column):
+            request.rename_column_shrink = Utils.array_to_string_with_specified_style(tmp_req.rename_column, 'RenameColumn', 'json')
+        if not DaraCore.is_null(tmp_req.update_column_comment):
+            request.update_column_comment_shrink = Utils.array_to_string_with_specified_style(tmp_req.update_column_comment, 'UpdateColumnComment', 'json')
+        if not DaraCore.is_null(tmp_req.update_column_type):
+            request.update_column_type_shrink = Utils.array_to_string_with_specified_style(tmp_req.update_column_type, 'UpdateColumnType', 'json')
+        if not DaraCore.is_null(tmp_req.update_retention_policy):
+            request.update_retention_policy_shrink = Utils.array_to_string_with_specified_style(tmp_req.update_retention_policy, 'UpdateRetentionPolicy', 'json')
+        query = {}
+        if not DaraCore.is_null(request.add_column_shrink):
+            query['AddColumn'] = request.add_column_shrink
+        if not DaraCore.is_null(request.catalog):
+            query['Catalog'] = request.catalog
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.delete_column_shrink):
+            query['DeleteColumn'] = request.delete_column_shrink
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.namespace):
+            query['Namespace'] = request.namespace
+        if not DaraCore.is_null(request.rename_column_shrink):
+            query['RenameColumn'] = request.rename_column_shrink
+        if not DaraCore.is_null(request.update_column_comment_shrink):
+            query['UpdateColumnComment'] = request.update_column_comment_shrink
+        if not DaraCore.is_null(request.update_column_type_shrink):
+            query['UpdateColumnType'] = request.update_column_type_shrink
+        if not DaraCore.is_null(request.update_comment):
+            query['UpdateComment'] = request.update_comment
+        if not DaraCore.is_null(request.update_retention_policy_shrink):
+            query['UpdateRetentionPolicy'] = request.update_retention_policy_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateTable',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateTableResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_table(
+        self,
+        request: main_models.UpdateTableRequest,
+    ) -> main_models.UpdateTableResponse:
+        runtime = RuntimeOptions()
+        return self.update_table_with_options(request, runtime)
+
+    async def update_table_async(
+        self,
+        request: main_models.UpdateTableRequest,
+    ) -> main_models.UpdateTableResponse:
+        runtime = RuntimeOptions()
+        return await self.update_table_with_options_async(request, runtime)
