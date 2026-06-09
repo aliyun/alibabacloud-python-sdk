@@ -9,12 +9,14 @@ class UpdateAppSeoStatusRequest(DaraModel):
         self,
         biz_id: str = None,
         domain: str = None,
+        se_auth_info: str = None,
         se_type: str = None,
     ):
         # Business ID
         self.biz_id = biz_id
         # Domain Name
         self.domain = domain
+        self.se_auth_info = se_auth_info
         # Search Engine Type
         self.se_type = se_type
 
@@ -32,6 +34,9 @@ class UpdateAppSeoStatusRequest(DaraModel):
         if self.domain is not None:
             result['Domain'] = self.domain
 
+        if self.se_auth_info is not None:
+            result['SeAuthInfo'] = self.se_auth_info
+
         if self.se_type is not None:
             result['SeType'] = self.se_type
 
@@ -44,6 +49,9 @@ class UpdateAppSeoStatusRequest(DaraModel):
 
         if m.get('Domain') is not None:
             self.domain = m.get('Domain')
+
+        if m.get('SeAuthInfo') is not None:
+            self.se_auth_info = m.get('SeAuthInfo')
 
         if m.get('SeType') is not None:
             self.se_type = m.get('SeType')

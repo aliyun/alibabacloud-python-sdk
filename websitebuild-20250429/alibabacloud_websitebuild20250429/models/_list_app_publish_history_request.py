@@ -8,6 +8,7 @@ class ListAppPublishHistoryRequest(DaraModel):
     def __init__(
         self,
         biz_id: str = None,
+        deploy_channel: str = None,
         keyword: str = None,
         max_results: int = None,
         next_token: str = None,
@@ -18,6 +19,7 @@ class ListAppPublishHistoryRequest(DaraModel):
         website_domain: str = None,
     ):
         self.biz_id = biz_id
+        self.deploy_channel = deploy_channel
         self.keyword = keyword
         self.max_results = max_results
         self.next_token = next_token
@@ -37,6 +39,9 @@ class ListAppPublishHistoryRequest(DaraModel):
             result = _map
         if self.biz_id is not None:
             result['BizId'] = self.biz_id
+
+        if self.deploy_channel is not None:
+            result['DeployChannel'] = self.deploy_channel
 
         if self.keyword is not None:
             result['Keyword'] = self.keyword
@@ -68,6 +73,9 @@ class ListAppPublishHistoryRequest(DaraModel):
         m = m or dict()
         if m.get('BizId') is not None:
             self.biz_id = m.get('BizId')
+
+        if m.get('DeployChannel') is not None:
+            self.deploy_channel = m.get('DeployChannel')
 
         if m.get('Keyword') is not None:
             self.keyword = m.get('Keyword')

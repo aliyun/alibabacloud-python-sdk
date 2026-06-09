@@ -42,6 +42,7 @@ class AppInstanceAggregate(DaraModel):
         tags: List[main_models.AppInstanceAggregateTags] = None,
         thumbnail_url: str = None,
         user_id: str = None,
+        version: str = None,
     ):
         self.ai_staff_list = ai_staff_list
         self.app_operation_address = app_operation_address
@@ -76,6 +77,7 @@ class AppInstanceAggregate(DaraModel):
         self.tags = tags
         self.thumbnail_url = thumbnail_url
         self.user_id = user_id
+        self.version = version
 
     def validate(self):
         if self.ai_staff_list:
@@ -204,6 +206,9 @@ class AppInstanceAggregate(DaraModel):
         if self.user_id is not None:
             result['UserId'] = self.user_id
 
+        if self.version is not None:
+            result['Version'] = self.version
+
         return result
 
     def from_map(self, m: dict = None):
@@ -315,6 +320,9 @@ class AppInstanceAggregate(DaraModel):
 
         if m.get('UserId') is not None:
             self.user_id = m.get('UserId')
+
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
 
         return self
 

@@ -1,3 +1,12 @@
+2026-06-09 Version: 2.27.0
+- Support API ConfirmAppInstance.
+- Support API DeleteAppFile.
+- Support API GetOssUploadPolicy.
+- Support API GetTempDownloadUrl.
+- Update API ListAppPublishHistory: add request parameters DeployChannel.
+- Update API UpdateAppSeoStatus: add request parameters SeAuthInfo.
+
+
 2026-06-08 Version: 2.26.2
 - Generated python 2025-04-29 for WebsiteBuild.
 

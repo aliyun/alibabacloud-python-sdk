@@ -495,6 +495,120 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.check_user_resource_measure_with_options_async(request, runtime)
 
+    def confirm_app_instance_with_options(
+        self,
+        request: main_models.ConfirmAppInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ConfirmAppInstanceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_type):
+            query['ApplicationType'] = request.application_type
+        if not DaraCore.is_null(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.deploy_area):
+            query['DeployArea'] = request.deploy_area
+        if not DaraCore.is_null(request.duration):
+            query['Duration'] = request.duration
+        if not DaraCore.is_null(request.extend):
+            query['Extend'] = request.extend
+        if not DaraCore.is_null(request.payment_type):
+            query['PaymentType'] = request.payment_type
+        if not DaraCore.is_null(request.pricing_cycle):
+            query['PricingCycle'] = request.pricing_cycle
+        if not DaraCore.is_null(request.quantity):
+            query['Quantity'] = request.quantity
+        if not DaraCore.is_null(request.site_version):
+            query['SiteVersion'] = request.site_version
+        if not DaraCore.is_null(request.trial_biz_id):
+            query['TrialBizId'] = request.trial_biz_id
+        if not DaraCore.is_null(request.version):
+            query['Version'] = request.version
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ConfirmAppInstance',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ConfirmAppInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def confirm_app_instance_with_options_async(
+        self,
+        request: main_models.ConfirmAppInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ConfirmAppInstanceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_type):
+            query['ApplicationType'] = request.application_type
+        if not DaraCore.is_null(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.deploy_area):
+            query['DeployArea'] = request.deploy_area
+        if not DaraCore.is_null(request.duration):
+            query['Duration'] = request.duration
+        if not DaraCore.is_null(request.extend):
+            query['Extend'] = request.extend
+        if not DaraCore.is_null(request.payment_type):
+            query['PaymentType'] = request.payment_type
+        if not DaraCore.is_null(request.pricing_cycle):
+            query['PricingCycle'] = request.pricing_cycle
+        if not DaraCore.is_null(request.quantity):
+            query['Quantity'] = request.quantity
+        if not DaraCore.is_null(request.site_version):
+            query['SiteVersion'] = request.site_version
+        if not DaraCore.is_null(request.trial_biz_id):
+            query['TrialBizId'] = request.trial_biz_id
+        if not DaraCore.is_null(request.version):
+            query['Version'] = request.version
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ConfirmAppInstance',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ConfirmAppInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def confirm_app_instance(
+        self,
+        request: main_models.ConfirmAppInstanceRequest,
+    ) -> main_models.ConfirmAppInstanceResponse:
+        runtime = RuntimeOptions()
+        return self.confirm_app_instance_with_options(request, runtime)
+
+    async def confirm_app_instance_async(
+        self,
+        request: main_models.ConfirmAppInstanceRequest,
+    ) -> main_models.ConfirmAppInstanceResponse:
+        runtime = RuntimeOptions()
+        return await self.confirm_app_instance_with_options_async(request, runtime)
+
     def copy_app_plugin_config_with_options(
         self,
         request: main_models.CopyAppPluginConfigRequest,
@@ -1736,6 +1850,80 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteAppDomainRedirectResponse:
         runtime = RuntimeOptions()
         return await self.delete_app_domain_redirect_with_options_async(request, runtime)
+
+    def delete_app_file_with_options(
+        self,
+        request: main_models.DeleteAppFileRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAppFileResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.conversation_id):
+            body['ConversationId'] = request.conversation_id
+        if not DaraCore.is_null(request.file_path):
+            body['FilePath'] = request.file_path
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteAppFile',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteAppFileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_app_file_with_options_async(
+        self,
+        request: main_models.DeleteAppFileRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAppFileResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.conversation_id):
+            body['ConversationId'] = request.conversation_id
+        if not DaraCore.is_null(request.file_path):
+            body['FilePath'] = request.file_path
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteAppFile',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteAppFileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_app_file(
+        self,
+        request: main_models.DeleteAppFileRequest,
+    ) -> main_models.DeleteAppFileResponse:
+        runtime = RuntimeOptions()
+        return self.delete_app_file_with_options(request, runtime)
+
+    async def delete_app_file_async(
+        self,
+        request: main_models.DeleteAppFileRequest,
+    ) -> main_models.DeleteAppFileResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_app_file_with_options_async(request, runtime)
 
     def delete_app_instance_file_with_options(
         self,
@@ -4725,6 +4913,146 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_mini_app_binding_for_admin_with_options_async(request, runtime)
 
+    def get_oss_upload_policy_with_options(
+        self,
+        request: main_models.GetOssUploadPolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetOssUploadPolicyResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.scenario):
+            body['Scenario'] = request.scenario
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetOssUploadPolicy',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetOssUploadPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_oss_upload_policy_with_options_async(
+        self,
+        request: main_models.GetOssUploadPolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetOssUploadPolicyResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.scenario):
+            body['Scenario'] = request.scenario
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetOssUploadPolicy',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetOssUploadPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_oss_upload_policy(
+        self,
+        request: main_models.GetOssUploadPolicyRequest,
+    ) -> main_models.GetOssUploadPolicyResponse:
+        runtime = RuntimeOptions()
+        return self.get_oss_upload_policy_with_options(request, runtime)
+
+    async def get_oss_upload_policy_async(
+        self,
+        request: main_models.GetOssUploadPolicyRequest,
+    ) -> main_models.GetOssUploadPolicyResponse:
+        runtime = RuntimeOptions()
+        return await self.get_oss_upload_policy_with_options_async(request, runtime)
+
+    def get_temp_download_url_with_options(
+        self,
+        request: main_models.GetTempDownloadUrlRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetTempDownloadUrlResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.oss_key):
+            body['OssKey'] = request.oss_key
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetTempDownloadUrl',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetTempDownloadUrlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_temp_download_url_with_options_async(
+        self,
+        request: main_models.GetTempDownloadUrlRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetTempDownloadUrlResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.oss_key):
+            body['OssKey'] = request.oss_key
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetTempDownloadUrl',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetTempDownloadUrlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_temp_download_url(
+        self,
+        request: main_models.GetTempDownloadUrlRequest,
+    ) -> main_models.GetTempDownloadUrlResponse:
+        runtime = RuntimeOptions()
+        return self.get_temp_download_url_with_options(request, runtime)
+
+    async def get_temp_download_url_async(
+        self,
+        request: main_models.GetTempDownloadUrlRequest,
+    ) -> main_models.GetTempDownloadUrlResponse:
+        runtime = RuntimeOptions()
+        return await self.get_temp_download_url_with_options_async(request, runtime)
+
     def get_user_access_token_for_partner_with_options(
         self,
         request: main_models.GetUserAccessTokenForPartnerRequest,
@@ -6074,6 +6402,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.biz_id):
             query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.deploy_channel):
+            query['DeployChannel'] = request.deploy_channel
         if not DaraCore.is_null(request.keyword):
             query['Keyword'] = request.keyword
         if not DaraCore.is_null(request.max_results):
@@ -6118,6 +6448,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.biz_id):
             query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.deploy_channel):
+            query['DeployChannel'] = request.deploy_channel
         if not DaraCore.is_null(request.keyword):
             query['Keyword'] = request.keyword
         if not DaraCore.is_null(request.max_results):
@@ -10366,6 +10698,8 @@ class Client(OpenApiClient):
             query['BizId'] = request.biz_id
         if not DaraCore.is_null(request.domain):
             query['Domain'] = request.domain
+        if not DaraCore.is_null(request.se_auth_info):
+            query['SeAuthInfo'] = request.se_auth_info
         if not DaraCore.is_null(request.se_type):
             query['SeType'] = request.se_type
         req = open_api_util_models.OpenApiRequest(
@@ -10398,6 +10732,8 @@ class Client(OpenApiClient):
             query['BizId'] = request.biz_id
         if not DaraCore.is_null(request.domain):
             query['Domain'] = request.domain
+        if not DaraCore.is_null(request.se_auth_info):
+            query['SeAuthInfo'] = request.se_auth_info
         if not DaraCore.is_null(request.se_type):
             query['SeType'] = request.se_type
         req = open_api_util_models.OpenApiRequest(

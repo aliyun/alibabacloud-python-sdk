@@ -40,6 +40,9 @@ from ._check_resource_measure_response import CheckResourceMeasureResponse
 from ._check_user_resource_measure_request import CheckUserResourceMeasureRequest
 from ._check_user_resource_measure_response_body import CheckUserResourceMeasureResponseBody
 from ._check_user_resource_measure_response import CheckUserResourceMeasureResponse
+from ._confirm_app_instance_request import ConfirmAppInstanceRequest
+from ._confirm_app_instance_response_body import ConfirmAppInstanceResponseBody
+from ._confirm_app_instance_response import ConfirmAppInstanceResponse
 from ._copy_app_plugin_config_request import CopyAppPluginConfigRequest
 from ._copy_app_plugin_config_response_body import CopyAppPluginConfigResponseBody
 from ._copy_app_plugin_config_response import CopyAppPluginConfigResponse
@@ -82,6 +85,9 @@ from ._delete_app_domain_certificate_response import DeleteAppDomainCertificateR
 from ._delete_app_domain_redirect_request import DeleteAppDomainRedirectRequest
 from ._delete_app_domain_redirect_response_body import DeleteAppDomainRedirectResponseBody
 from ._delete_app_domain_redirect_response import DeleteAppDomainRedirectResponse
+from ._delete_app_file_request import DeleteAppFileRequest
+from ._delete_app_file_response_body import DeleteAppFileResponseBody
+from ._delete_app_file_response import DeleteAppFileResponse
 from ._delete_app_instance_file_request import DeleteAppInstanceFileRequest
 from ._delete_app_instance_file_response_body import DeleteAppInstanceFileResponseBody
 from ._delete_app_instance_file_response import DeleteAppInstanceFileResponse
@@ -204,6 +210,12 @@ from ._get_mini_app_binding_response import GetMiniAppBindingResponse
 from ._get_mini_app_binding_for_admin_request import GetMiniAppBindingForAdminRequest
 from ._get_mini_app_binding_for_admin_response_body import GetMiniAppBindingForAdminResponseBody
 from ._get_mini_app_binding_for_admin_response import GetMiniAppBindingForAdminResponse
+from ._get_oss_upload_policy_request import GetOssUploadPolicyRequest
+from ._get_oss_upload_policy_response_body import GetOssUploadPolicyResponseBody
+from ._get_oss_upload_policy_response import GetOssUploadPolicyResponse
+from ._get_temp_download_url_request import GetTempDownloadUrlRequest
+from ._get_temp_download_url_response_body import GetTempDownloadUrlResponseBody
+from ._get_temp_download_url_response import GetTempDownloadUrlResponse
 from ._get_user_access_token_for_partner_request import GetUserAccessTokenForPartnerRequest
 from ._get_user_access_token_for_partner_response_body import GetUserAccessTokenForPartnerResponseBody
 from ._get_user_access_token_for_partner_response import GetUserAccessTokenForPartnerResponse
@@ -439,6 +451,7 @@ from ._batch_check_resource_measure_response_body import BatchCheckResourceMeasu
 from ._bind_app_domain_response_body import BindAppDomainResponseBodyModule
 from ._check_resource_measure_response_body import CheckResourceMeasureResponseBodyModule
 from ._check_user_resource_measure_response_body import CheckUserResourceMeasureResponseBodyModule
+from ._confirm_app_instance_response_body import ConfirmAppInstanceResponseBodyModule
 from ._create_aistaff_chat_request import CreateAIStaffChatRequestMessages
 from ._create_aistaff_conversation_response_body import CreateAIStaffConversationResponseBodyModule
 from ._create_app_assistant_agent_response_body import CreateAppAssistantAgentResponseBodyModuleCredential
@@ -505,6 +518,7 @@ from ._get_llm_proxy_config_for_admin_response_body import GetLlmProxyConfigForA
 from ._get_mini_app_auth_url_response_body import GetMiniAppAuthUrlResponseBodyData
 from ._get_mini_app_binding_response_body import GetMiniAppBindingResponseBodyData
 from ._get_mini_app_binding_for_admin_response_body import GetMiniAppBindingForAdminResponseBodyData
+from ._get_oss_upload_policy_response_body import GetOssUploadPolicyResponseBodyModule
 from ._get_user_access_token_for_partner_response_body import GetUserAccessTokenForPartnerResponseBodyModule
 from ._get_user_tmp_identity_for_partner_response_body import GetUserTmpIdentityForPartnerResponseBodyDataCredentials
 from ._get_user_tmp_identity_for_partner_response_body import GetUserTmpIdentityForPartnerResponseBodyData
@@ -629,6 +643,9 @@ __all__ = [
     CheckUserResourceMeasureRequest,
     CheckUserResourceMeasureResponseBody,
     CheckUserResourceMeasureResponse,
+    ConfirmAppInstanceRequest,
+    ConfirmAppInstanceResponseBody,
+    ConfirmAppInstanceResponse,
     CopyAppPluginConfigRequest,
     CopyAppPluginConfigResponseBody,
     CopyAppPluginConfigResponse,
@@ -671,6 +688,9 @@ __all__ = [
     DeleteAppDomainRedirectRequest,
     DeleteAppDomainRedirectResponseBody,
     DeleteAppDomainRedirectResponse,
+    DeleteAppFileRequest,
+    DeleteAppFileResponseBody,
+    DeleteAppFileResponse,
     DeleteAppInstanceFileRequest,
     DeleteAppInstanceFileResponseBody,
     DeleteAppInstanceFileResponse,
@@ -793,6 +813,12 @@ __all__ = [
     GetMiniAppBindingForAdminRequest,
     GetMiniAppBindingForAdminResponseBody,
     GetMiniAppBindingForAdminResponse,
+    GetOssUploadPolicyRequest,
+    GetOssUploadPolicyResponseBody,
+    GetOssUploadPolicyResponse,
+    GetTempDownloadUrlRequest,
+    GetTempDownloadUrlResponseBody,
+    GetTempDownloadUrlResponse,
     GetUserAccessTokenForPartnerRequest,
     GetUserAccessTokenForPartnerResponseBody,
     GetUserAccessTokenForPartnerResponse,
@@ -1028,6 +1054,7 @@ __all__ = [
     BindAppDomainResponseBodyModule,
     CheckResourceMeasureResponseBodyModule,
     CheckUserResourceMeasureResponseBodyModule,
+    ConfirmAppInstanceResponseBodyModule,
     CreateAIStaffChatRequestMessages,
     CreateAIStaffConversationResponseBodyModule,
     CreateAppAssistantAgentResponseBodyModuleCredential,
@@ -1094,6 +1121,7 @@ __all__ = [
     GetMiniAppAuthUrlResponseBodyData,
     GetMiniAppBindingResponseBodyData,
     GetMiniAppBindingForAdminResponseBodyData,
+    GetOssUploadPolicyResponseBodyModule,
     GetUserAccessTokenForPartnerResponseBodyModule,
     GetUserTmpIdentityForPartnerResponseBodyDataCredentials,
     GetUserTmpIdentityForPartnerResponseBodyData,
