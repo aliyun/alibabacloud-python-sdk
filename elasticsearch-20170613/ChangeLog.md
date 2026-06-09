@@ -3,6 +3,11 @@
 - Update API TurnOnZone: add request parameters hpAlbZoneDrained.
 
 
+2026-06-09 Version: 5.3.1
+- Update API TurnOffZone: add request parameters hpAlbZoneDrained.
+- Update API TurnOnZone: add request parameters hpAlbZoneDrained.
+
+
 2026-04-01 Version: 5.3.0
 - Support API GetKeystores.
 - Support API InitModel.
