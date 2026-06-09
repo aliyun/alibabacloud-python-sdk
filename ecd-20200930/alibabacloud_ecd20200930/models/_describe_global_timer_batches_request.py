@@ -2,6 +2,8 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
 from darabonba.model import DaraModel
 
 class DescribeGlobalTimerBatchesRequest(DaraModel):
@@ -11,6 +13,7 @@ class DescribeGlobalTimerBatchesRequest(DaraModel):
         max_results: str = None,
         next_token: str = None,
         region_id: str = None,
+        resource_types: List[str] = None,
         search_region_id: str = None,
         timer_type: str = None,
     ):
@@ -18,6 +21,7 @@ class DescribeGlobalTimerBatchesRequest(DaraModel):
         self.max_results = max_results
         self.next_token = next_token
         self.region_id = region_id
+        self.resource_types = resource_types
         self.search_region_id = search_region_id
         self.timer_type = timer_type
 
@@ -41,6 +45,9 @@ class DescribeGlobalTimerBatchesRequest(DaraModel):
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
+        if self.resource_types is not None:
+            result['ResourceTypes'] = self.resource_types
+
         if self.search_region_id is not None:
             result['SearchRegionId'] = self.search_region_id
 
@@ -62,6 +69,9 @@ class DescribeGlobalTimerBatchesRequest(DaraModel):
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+
+        if m.get('ResourceTypes') is not None:
+            self.resource_types = m.get('ResourceTypes')
 
         if m.get('SearchRegionId') is not None:
             self.search_region_id = m.get('SearchRegionId')

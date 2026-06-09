@@ -16,11 +16,13 @@ class DescribeGlobalTimerRecordsRequest(DaraModel):
         max_results: str = None,
         next_token: str = None,
         region_id: str = None,
+        resource_types: List[str] = None,
         result_category: str = None,
         retryable: bool = None,
         search_region_id: str = None,
         timer_result: str = None,
         timer_types: List[str] = None,
+        wuying_server_ids: List[str] = None,
     ):
         # The ID of the batch in which the scheduled task is executed.
         self.batch_id = batch_id
@@ -39,6 +41,7 @@ class DescribeGlobalTimerRecordsRequest(DaraModel):
         self.next_token = next_token
         # The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
         self.region_id = region_id
+        self.resource_types = resource_types
         # The type of the execution result. You can specify this parameter to filter the execution results.
         # 
         # Valid values:
@@ -64,6 +67,7 @@ class DescribeGlobalTimerRecordsRequest(DaraModel):
         self.timer_result = timer_result
         # The scheduled tasks.
         self.timer_types = timer_types
+        self.wuying_server_ids = wuying_server_ids
 
     def validate(self):
         pass
@@ -94,6 +98,9 @@ class DescribeGlobalTimerRecordsRequest(DaraModel):
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
+        if self.resource_types is not None:
+            result['ResourceTypes'] = self.resource_types
+
         if self.result_category is not None:
             result['ResultCategory'] = self.result_category
 
@@ -108,6 +115,9 @@ class DescribeGlobalTimerRecordsRequest(DaraModel):
 
         if self.timer_types is not None:
             result['TimerTypes'] = self.timer_types
+
+        if self.wuying_server_ids is not None:
+            result['WuyingServerIds'] = self.wuying_server_ids
 
         return result
 
@@ -134,6 +144,9 @@ class DescribeGlobalTimerRecordsRequest(DaraModel):
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
 
+        if m.get('ResourceTypes') is not None:
+            self.resource_types = m.get('ResourceTypes')
+
         if m.get('ResultCategory') is not None:
             self.result_category = m.get('ResultCategory')
 
@@ -148,6 +161,9 @@ class DescribeGlobalTimerRecordsRequest(DaraModel):
 
         if m.get('TimerTypes') is not None:
             self.timer_types = m.get('TimerTypes')
+
+        if m.get('WuyingServerIds') is not None:
+            self.wuying_server_ids = m.get('WuyingServerIds')
 
         return self
 

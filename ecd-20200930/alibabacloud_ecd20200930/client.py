@@ -13012,6 +13012,8 @@ class Client(OpenApiClient):
             query['NextToken'] = request.next_token
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_types):
+            query['ResourceTypes'] = request.resource_types
         if not DaraCore.is_null(request.search_region_id):
             query['SearchRegionId'] = request.search_region_id
         if not DaraCore.is_null(request.timer_type):
@@ -13050,6 +13052,8 @@ class Client(OpenApiClient):
             query['NextToken'] = request.next_token
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_types):
+            query['ResourceTypes'] = request.resource_types
         if not DaraCore.is_null(request.search_region_id):
             query['SearchRegionId'] = request.search_region_id
         if not DaraCore.is_null(request.timer_type):
@@ -13108,6 +13112,8 @@ class Client(OpenApiClient):
             query['NextToken'] = request.next_token
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_types):
+            query['ResourceTypes'] = request.resource_types
         if not DaraCore.is_null(request.result_category):
             query['ResultCategory'] = request.result_category
         if not DaraCore.is_null(request.retryable):
@@ -13118,6 +13124,8 @@ class Client(OpenApiClient):
             query['TimerResult'] = request.timer_result
         if not DaraCore.is_null(request.timer_types):
             query['TimerTypes'] = request.timer_types
+        if not DaraCore.is_null(request.wuying_server_ids):
+            query['WuyingServerIds'] = request.wuying_server_ids
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -13158,6 +13166,8 @@ class Client(OpenApiClient):
             query['NextToken'] = request.next_token
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_types):
+            query['ResourceTypes'] = request.resource_types
         if not DaraCore.is_null(request.result_category):
             query['ResultCategory'] = request.result_category
         if not DaraCore.is_null(request.retryable):
@@ -13168,6 +13178,8 @@ class Client(OpenApiClient):
             query['TimerResult'] = request.timer_result
         if not DaraCore.is_null(request.timer_types):
             query['TimerTypes'] = request.timer_types
+        if not DaraCore.is_null(request.wuying_server_ids):
+            query['WuyingServerIds'] = request.wuying_server_ids
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )

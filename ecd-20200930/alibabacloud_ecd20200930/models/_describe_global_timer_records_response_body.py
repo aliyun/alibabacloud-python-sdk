@@ -82,6 +82,7 @@ class DescribeGlobalTimerRecordsResponseBodyResults(DaraModel):
         display_result_name: str = None,
         finish_time: str = None,
         region_id: str = None,
+        resource_parent_id: str = None,
         retryable: bool = None,
         timer_group_id: str = None,
         timer_record_id: str = None,
@@ -103,6 +104,7 @@ class DescribeGlobalTimerRecordsResponseBodyResults(DaraModel):
         self.finish_time = finish_time
         # The region ID.
         self.region_id = region_id
+        self.resource_parent_id = resource_parent_id
         self.retryable = retryable
         # The ID of the scheduled task group.
         self.timer_group_id = timer_group_id
@@ -146,6 +148,9 @@ class DescribeGlobalTimerRecordsResponseBodyResults(DaraModel):
 
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+
+        if self.resource_parent_id is not None:
+            result['ResourceParentId'] = self.resource_parent_id
 
         if self.retryable is not None:
             result['Retryable'] = self.retryable
@@ -192,6 +197,9 @@ class DescribeGlobalTimerRecordsResponseBodyResults(DaraModel):
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+
+        if m.get('ResourceParentId') is not None:
+            self.resource_parent_id = m.get('ResourceParentId')
 
         if m.get('Retryable') is not None:
             self.retryable = m.get('Retryable')

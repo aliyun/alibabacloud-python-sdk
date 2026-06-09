@@ -1,3 +1,10 @@
+2026-06-09 Version: 4.26.4
+- Update API DescribeGlobalTimerBatches: add request parameters ResourceTypes.
+- Update API DescribeGlobalTimerRecords: add request parameters ResourceTypes.
+- Update API DescribeGlobalTimerRecords: add request parameters WuyingServerIds.
+- Update API DescribeGlobalTimerRecords: add response parameters Body.Results.$.ResourceParentId.
+
+
 2026-06-03 Version: 4.26.3
 - Update API DescribeDesktopMetadata: add request parameters EndUserId.
 
