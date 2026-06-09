@@ -8,9 +8,11 @@ class DescribeCdcVersionListRequest(DaraModel):
     def __init__(
         self,
         dbinstance_name: str = None,
+        instance_name: str = None,
         region_id: str = None,
     ):
         self.dbinstance_name = dbinstance_name
+        self.instance_name = instance_name
         self.region_id = region_id
 
     def validate(self):
@@ -24,6 +26,9 @@ class DescribeCdcVersionListRequest(DaraModel):
         if self.dbinstance_name is not None:
             result['DBInstanceName'] = self.dbinstance_name
 
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
@@ -33,6 +38,9 @@ class DescribeCdcVersionListRequest(DaraModel):
         m = m or dict()
         if m.get('DBInstanceName') is not None:
             self.dbinstance_name = m.get('DBInstanceName')
+
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')

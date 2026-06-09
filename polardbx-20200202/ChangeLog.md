@@ -1,3 +1,7 @@
+2026-06-09 Version: 3.4.2
+- Update API DescribeCdcVersionList: add request parameters InstanceName.
+
+
 2026-05-22 Version: 3.4.1
 - Update API DeleteSubCNInstance: add request parameters InstanceClusterName.
 

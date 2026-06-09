@@ -4080,6 +4080,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.dbinstance_name):
             query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.instance_name):
+            query['InstanceName'] = request.instance_name
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -4110,6 +4112,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.dbinstance_name):
             query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.instance_name):
+            query['InstanceName'] = request.instance_name
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
