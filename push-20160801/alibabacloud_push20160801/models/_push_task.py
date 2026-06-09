@@ -934,8 +934,12 @@ class PushTaskNotificationAndroidOptionsXiaomi(DaraModel):
     def __init__(
         self,
         channel: str = None,
+        focus_param: str = None,
+        focus_pics: str = None,
     ):
         self.channel = channel
+        self.focus_param = focus_param
+        self.focus_pics = focus_pics
 
     def validate(self):
         pass
@@ -948,12 +952,24 @@ class PushTaskNotificationAndroidOptionsXiaomi(DaraModel):
         if self.channel is not None:
             result['Channel'] = self.channel
 
+        if self.focus_param is not None:
+            result['FocusParam'] = self.focus_param
+
+        if self.focus_pics is not None:
+            result['FocusPics'] = self.focus_pics
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Channel') is not None:
             self.channel = m.get('Channel')
+
+        if m.get('FocusParam') is not None:
+            self.focus_param = m.get('FocusParam')
+
+        if m.get('FocusPics') is not None:
+            self.focus_pics = m.get('FocusPics')
 
         return self
 

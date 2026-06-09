@@ -1,3 +1,10 @@
+2026-06-09 Version: 2.1.5
+- Update API MassPush: add request parameters PushTask.$.AndroidXiaomiFocusParam.
+- Update API MassPush: add request parameters PushTask.$.AndroidXiaomiFocusPics.
+- Update API Push: add request parameters AndroidXiaomiFocusParam.
+- Update API Push: add request parameters AndroidXiaomiFocusPics.
+
+
 2026-04-30 Version: 2.1.4
 - Update API MassPush: add request parameters PushTask.$.AndroidVivoLiveMessage.
 - Update API Push: add request parameters AndroidVivoLiveMessage.

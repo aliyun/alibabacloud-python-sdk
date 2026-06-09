@@ -63,6 +63,8 @@ class PushRequest(DaraModel):
         android_xiao_mi_notify_body: str = None,
         android_xiao_mi_notify_title: str = None,
         android_xiaomi_big_picture_url: str = None,
+        android_xiaomi_focus_param: str = None,
+        android_xiaomi_focus_pics: str = None,
         android_xiaomi_image_url: str = None,
         app_key: int = None,
         body: str = None,
@@ -181,6 +183,8 @@ class PushRequest(DaraModel):
         self.android_xiao_mi_notify_body = android_xiao_mi_notify_body
         self.android_xiao_mi_notify_title = android_xiao_mi_notify_title
         self.android_xiaomi_big_picture_url = android_xiaomi_big_picture_url
+        self.android_xiaomi_focus_param = android_xiaomi_focus_param
+        self.android_xiaomi_focus_pics = android_xiaomi_focus_pics
         self.android_xiaomi_image_url = android_xiaomi_image_url
         # This parameter is required.
         self.app_key = app_key
@@ -419,6 +423,12 @@ class PushRequest(DaraModel):
 
         if self.android_xiaomi_big_picture_url is not None:
             result['AndroidXiaomiBigPictureUrl'] = self.android_xiaomi_big_picture_url
+
+        if self.android_xiaomi_focus_param is not None:
+            result['AndroidXiaomiFocusParam'] = self.android_xiaomi_focus_param
+
+        if self.android_xiaomi_focus_pics is not None:
+            result['AndroidXiaomiFocusPics'] = self.android_xiaomi_focus_pics
 
         if self.android_xiaomi_image_url is not None:
             result['AndroidXiaomiImageUrl'] = self.android_xiaomi_image_url
@@ -774,6 +784,12 @@ class PushRequest(DaraModel):
 
         if m.get('AndroidXiaomiBigPictureUrl') is not None:
             self.android_xiaomi_big_picture_url = m.get('AndroidXiaomiBigPictureUrl')
+
+        if m.get('AndroidXiaomiFocusParam') is not None:
+            self.android_xiaomi_focus_param = m.get('AndroidXiaomiFocusParam')
+
+        if m.get('AndroidXiaomiFocusPics') is not None:
+            self.android_xiaomi_focus_pics = m.get('AndroidXiaomiFocusPics')
 
         if m.get('AndroidXiaomiImageUrl') is not None:
             self.android_xiaomi_image_url = m.get('AndroidXiaomiImageUrl')
