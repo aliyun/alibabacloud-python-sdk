@@ -1,3 +1,7 @@
+2026-06-09 Version: 2.33.4
+- Update API ListCallDetailRecordsV2: add response parameters Body.Data.List.$.OutsideNumberDestinationNumber.
+
+
 2026-05-12 Version: 2.33.3
 - Update API AssignUsers: add request parameters Async.
 

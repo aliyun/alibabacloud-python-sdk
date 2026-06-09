@@ -169,6 +169,7 @@ class ListCallDetailRecordsV2ResponseBodyDataList(DaraModel):
         offsite_agent_destination_numbers: str = None,
         offsite_agent_originator_numbers: str = None,
         offsite_agent_release_reason: str = None,
+        outside_number_destination_number: str = None,
         outside_number_release_reason: str = None,
         queue_time: int = None,
         recording_duration: int = None,
@@ -230,6 +231,7 @@ class ListCallDetailRecordsV2ResponseBodyDataList(DaraModel):
         self.offsite_agent_destination_numbers = offsite_agent_destination_numbers
         self.offsite_agent_originator_numbers = offsite_agent_originator_numbers
         self.offsite_agent_release_reason = offsite_agent_release_reason
+        self.outside_number_destination_number = outside_number_destination_number
         self.outside_number_release_reason = outside_number_release_reason
         self.queue_time = queue_time
         self.recording_duration = recording_duration
@@ -379,6 +381,9 @@ class ListCallDetailRecordsV2ResponseBodyDataList(DaraModel):
 
         if self.offsite_agent_release_reason is not None:
             result['OffsiteAgentReleaseReason'] = self.offsite_agent_release_reason
+
+        if self.outside_number_destination_number is not None:
+            result['OutsideNumberDestinationNumber'] = self.outside_number_destination_number
 
         if self.outside_number_release_reason is not None:
             result['OutsideNumberReleaseReason'] = self.outside_number_release_reason
@@ -564,6 +569,9 @@ class ListCallDetailRecordsV2ResponseBodyDataList(DaraModel):
 
         if m.get('OffsiteAgentReleaseReason') is not None:
             self.offsite_agent_release_reason = m.get('OffsiteAgentReleaseReason')
+
+        if m.get('OutsideNumberDestinationNumber') is not None:
+            self.outside_number_destination_number = m.get('OutsideNumberDestinationNumber')
 
         if m.get('OutsideNumberReleaseReason') is not None:
             self.outside_number_release_reason = m.get('OutsideNumberReleaseReason')
