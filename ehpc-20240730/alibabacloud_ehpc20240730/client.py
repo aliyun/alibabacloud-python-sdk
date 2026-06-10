@@ -257,6 +257,10 @@ class Client(OpenApiClient):
             query['ClusterVpcId'] = request.cluster_vpc_id
         if not DaraCore.is_null(request.deletion_protection):
             query['DeletionProtection'] = request.deletion_protection
+        if not DaraCore.is_null(request.grow_interval):
+            query['GrowInterval'] = request.grow_interval
+        if not DaraCore.is_null(request.idle_interval):
+            query['IdleInterval'] = request.idle_interval
         if not DaraCore.is_null(request.is_enterprise_security_group):
             query['IsEnterpriseSecurityGroup'] = request.is_enterprise_security_group
         if not DaraCore.is_null(request.manager_shrink):
@@ -343,6 +347,10 @@ class Client(OpenApiClient):
             query['ClusterVpcId'] = request.cluster_vpc_id
         if not DaraCore.is_null(request.deletion_protection):
             query['DeletionProtection'] = request.deletion_protection
+        if not DaraCore.is_null(request.grow_interval):
+            query['GrowInterval'] = request.grow_interval
+        if not DaraCore.is_null(request.idle_interval):
+            query['IdleInterval'] = request.idle_interval
         if not DaraCore.is_null(request.is_enterprise_security_group):
             query['IsEnterpriseSecurityGroup'] = request.is_enterprise_security_group
         if not DaraCore.is_null(request.manager_shrink):

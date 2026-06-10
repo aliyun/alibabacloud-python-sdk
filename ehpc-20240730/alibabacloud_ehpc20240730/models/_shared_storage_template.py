@@ -14,11 +14,20 @@ class SharedStorageTemplate(DaraModel):
         nasdirectory: str = None,
         protocol_type: str = None,
     ):
+        # The ID of the mounted file system.
         self.file_system_id = file_system_id
+        # The local mount directory of the attached file system.
         self.mount_directory = mount_directory
+        # The storage mount options of the mounted file system.
         self.mount_options = mount_options
+        # The address of the mount point of the file system.
         self.mount_target_domain = mount_target_domain
+        # The remote mount directory of the mounted file system.
         self.nasdirectory = nasdirectory
+        # The protocol type of the mounted file system. Valid values:
+        # 
+        # *   NFS
+        # *   SMB
         self.protocol_type = protocol_type
 
     def validate(self):

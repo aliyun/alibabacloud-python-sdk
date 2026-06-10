@@ -15,12 +15,19 @@ class CreateReservedNodePoolRequest(DaraModel):
         name: str = None,
         v_switch_id: str = None,
     ):
+        # The ID of the cluster.
         self.cluster_id = cluster_id
+        # The number of reserved nodes.
         self.count = count
+        # The description of the reserved node pool.
         self.description = description
+        # The suffix of the hostnames for the reserved nodes.
         self.host_postfix = host_postfix
+        # The prefix of the hostnames for the reserved nodes.
         self.host_prefix = host_prefix
+        # The name of the reserved node pool.
         self.name = name
+        # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
 
     def validate(self):

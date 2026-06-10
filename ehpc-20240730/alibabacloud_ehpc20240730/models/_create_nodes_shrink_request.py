@@ -22,40 +22,44 @@ class CreateNodesShrinkRequest(DaraModel):
         reserved_node_pool_id: str = None,
         v_switch_id: str = None,
     ):
-        # The cluster ID.
+        # The ID of the cluster.
         # 
-        # You can call the [ListClusters](https://help.aliyun.com/document_detail/87116.html) operation to query the cluster ID.
+        # You can call [ListClusters](https://help.aliyun.com/document_detail/87116.html) to obtain the cluster ID.
         self.cluster_id = cluster_id
-        # The hardware configurations of the compute nodes.
+        # Specifies the hardware configuration of the compute node.
         self.compute_node_shrink = compute_node_shrink
-        # The number of compute nodes that you want to add. Valid values: 1 to 99. The MinCount value must be smaller than the Count value.
+        # The number of compute nodes to add. Valid values: 1 to 99. The value of MinCount must be less than the value of Count.
         # 
-        # *   If the number of available Elastic Compute Service (ECS) instances is smaller than the MinCount value, the nodes fail to be added.
-        # *   If the number of available ECS instances is larger than the MinCount value but smaller than the Count value, nodes are added based on the MinCount value.
-        # *   If the number of available ECS instances is larger than the Count value, nodes are added based on the Count value.
+        # - If the ECS inventory is less than MinCount, the operation fails.
+        # 
+        # - If the ECS inventory is between MinCount and Count, the number of nodes specified by MinCount is added.
+        # 
+        # - If the ECS inventory is greater than Count, the number of nodes specified by Count is added.
         self.count = count
-        # Deployment set ID. You can obtain the deployment set ID through [DescribeDeploymentSets](https://help.aliyun.com/document_detail/91313.html). Currently, only deployment sets with a low network latency strategy are supported.
+        # The ID of the deployment set. You can call the [DescribeDeploymentSets](https://help.aliyun.com/document_detail/91313.html) operation to obtain the ID. Only deployment sets that use the low-latency network policy are supported.
         self.deployment_set_id = deployment_set_id
-        # The type of the network between compute nodes. Valid values:
+        # Specifies the network type for communication between compute nodes. Valid values:
         # 
-        # *   vpc
-        # *   eRDMA
+        # - vpc
+        # 
+        # - eRDMA
         self.hpcinter_connect = hpcinter_connect
-        # The hostname prefix of the added compute nodes.
+        # The hostname prefix for the compute nodes in the queue.
         self.hostname_prefix = hostname_prefix
-        # The hostname suffix of the added compute nodes.
+        # The hostname suffix of the compute nodes in the queue.
         self.hostname_suffix = hostname_suffix
+        # The ID of the reserved node pool.
         self.hostnames_shrink = hostnames_shrink
-        # Specifies whether to enable deletion protection for the added compute nodes.
+        # Specifies whether deletion protection is enabled for the compute node.
         self.keep_alive = keep_alive
         self.min_count = min_count
-        # The name of the queue for which you want to create compute nodes.
+        # The name of the queue to which the compute nodes belong.
         self.queue_name = queue_name
-        # The Resource Access Management (RAM) role to be assumed by the added nodes.
+        # The name of the authorized instance role to be attached to the compute nodes in the queue.
         self.ram_role = ram_role
-        # Preset node pool ID.
+        # The ID of the reserved node pool.
         self.reserved_node_pool_id = reserved_node_pool_id
-        # The ID of the vSwitch to be used by the added nodes.
+        # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
 
     def validate(self):

@@ -16,7 +16,6 @@ class ListSoftwaresResponseBody(DaraModel):
         request_id: str = None,
         total_count: str = None,
     ):
-        # The information about the software that can be installed in the cluster.
         self.additional_packages = additional_packages
         # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
@@ -117,15 +116,10 @@ class ListSoftwaresResponseBodyAdditionalPackagesAdditionalPackageInfos(DaraMode
         name: str = None,
         versions: main_models.ListSoftwaresResponseBodyAdditionalPackagesAdditionalPackageInfosVersions = None,
     ):
-        # The application category.
         self.category = category
-        # The software description.
         self.description = description
-        # The URL of the software icon.
         self.icon = icon
-        # The software name.
         self.name = name
-        # The information about the software versions that can be installed in the cluster.
         self.versions = versions
 
     def validate(self):
@@ -216,11 +210,8 @@ class ListSoftwaresResponseBodyAdditionalPackagesAdditionalPackageInfosVersionsV
         support_os: main_models.ListSoftwaresResponseBodyAdditionalPackagesAdditionalPackageInfosVersionsVersionInfosSupportOs = None,
         version: str = None,
     ):
-        # Indicates whether the version is the latest.
         self.latest = latest
-        # The information about the supported OSs.
         self.support_os = support_os
-        # The software version.
         self.version = version
 
     def validate(self):
@@ -298,12 +289,7 @@ class ListSoftwaresResponseBodyAdditionalPackagesAdditionalPackageInfosVersionsV
         architecture: str = None,
         os_tag: str = None,
     ):
-        # The OS architecture. Valid values:
-        # 
-        # *   x86_64
-        # *   arm64
         self.architecture = architecture
-        # The image tag.
         self.os_tag = os_tag
 
     def validate(self):

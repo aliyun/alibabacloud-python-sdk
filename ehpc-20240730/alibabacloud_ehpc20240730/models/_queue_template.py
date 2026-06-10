@@ -27,22 +27,57 @@ class QueueTemplate(DaraModel):
         reserved_node_pool_id: str = None,
         v_switch_ids: List[str] = None,
     ):
+        # The auto scale-out policy for the queue.
         self.allocation_strategy = allocation_strategy
+        # The list of hardware configurations for the compute nodes in the queue. You can specify 0 to 10 configurations.
         self.compute_nodes = compute_nodes
+        # Indicates whether to enable auto scale-in for the queue. Valid values:
+        # 
+        # - true: enabled
+        # 
+        # - false: disabled
         self.enable_scale_in = enable_scale_in
+        # Indicates whether to enable auto scale-out for the queue. Valid values:
+        # 
+        # - true: enabled
+        # 
+        # - false: disabled
         self.enable_scale_out = enable_scale_out
+        # The hostname prefix of the compute nodes in the queue.
+        # 
+        # >Notice: 
+        # 
+        # The prefix can be up to 8 characters in length for Windows operating systems and up to 32 characters in length for Linux operating systems. The prefix can contain only lowercase letters, digits, and hyphens (-).
         self.hostname_prefix = hostname_prefix
+        # The hostname suffix of the compute nodes in the queue.
         self.hostname_suffix = hostname_suffix
+        # The initial number of compute nodes in the queue.
         self.initial_count = initial_count
+        # The network type of the compute nodes in the queue. Valid values:
+        # 
+        # - vpc
+        # 
+        # - eRDMA
         self.inter_connect = inter_connect
+        # The list of nodes in the queue that have deletion protection enabled.
         self.keep_alive_nodes = keep_alive_nodes
+        # The maximum number of compute nodes in the queue.
         self.max_count = max_count
+        # The maximum number of compute nodes that can be scaled out in each cycle.
         self.max_count_per_cycle = max_count_per_cycle
+        # The minimum number of compute nodes in the queue.
         self.min_count = min_count
+        # The queue name. The name must be 1 to 15 characters long. It can contain letters from the Unicode letter category, such as English letters and digits, and periods (.).
+        # 
         # This parameter is required.
         self.queue_name = queue_name
+        # The name of the instance role attached to the compute nodes in the queue.
         self.ram_role = ram_role
+        # The ID of the reserved node pool that the queue uses.
+        # 
+        # > If this parameter is specified, allocatable nodes from the reserved node pool are used to create compute nodes. The `VSwitchIds`, `HostnamePrefix`, and `HostnameSuffix` parameters are ignored.
         self.reserved_node_pool_id = reserved_node_pool_id
+        # A list of virtual switches available to the compute nodes in the queue. You can specify 1 to 5 virtual switches.
         self.v_switch_ids = v_switch_ids
 
     def validate(self):

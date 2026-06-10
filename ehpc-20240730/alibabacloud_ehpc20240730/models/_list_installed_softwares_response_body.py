@@ -16,7 +16,6 @@ class ListInstalledSoftwaresResponseBody(DaraModel):
         request_id: str = None,
         total_count: str = None,
     ):
-        # The list of installed software.
         self.additional_packages = additional_packages
         # The page number of the returned page.
         self.page_number = page_number
@@ -119,26 +118,12 @@ class ListInstalledSoftwaresResponseBodyAdditionalPackagesAdditionalPackageInfos
         status: str = None,
         version: str = None,
     ):
-        # The category into which the software falls.
         self.category = category
-        # The time when the software was installed.
         self.create_time = create_time
-        # The software description.
         self.description = description
-        # The URL of the software icon.
         self.icon = icon
-        # The software name.
         self.name = name
-        # The installation status of the software.
-        # 
-        # Valid values:
-        # 
-        # *   Installed
-        # *   Uninstalled
-        # *   Installing
-        # *   Exception
         self.status = status
-        # The software version.
         self.version = version
 
     def validate(self):

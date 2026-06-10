@@ -19,6 +19,8 @@ class CreateClusterShrinkRequest(DaraModel):
         cluster_vswitch_id: str = None,
         cluster_vpc_id: str = None,
         deletion_protection: bool = None,
+        grow_interval: int = None,
+        idle_interval: int = None,
         is_enterprise_security_group: bool = None,
         manager_shrink: str = None,
         max_core_count: int = None,
@@ -29,70 +31,77 @@ class CreateClusterShrinkRequest(DaraModel):
         shared_storages_shrink: str = None,
         tags_shrink: str = None,
     ):
-        # The list of software that you want to install in the cluster. Valid values of N: 0 to 10.
+        # A list of software to install in the cluster. You can specify up to 10 packages.
         self.additional_packages_shrink = additional_packages_shrink
-        # The configurations of the custom addons in the cluster. Only one addon is supported.
+        # The configuration of the custom service component for the cluster. Only one component is supported.
         self.addons_shrink = addons_shrink
-        # The client version. By default, the latest version is used.
+        # The version of the E-HPC client. By default, the latest version is used.
         self.client_version = client_version
-        # The cluster type. Valid values:
+        # The edition of the cluster. Valid values:
         # 
-        # *   Standard
-        # *   Serverless
+        # - Standard
+        # 
+        # - Serverless
         self.cluster_category = cluster_category
-        # The access credentials of the cluster.
+        # The security credentials for the cluster.
         self.cluster_credentials_shrink = cluster_credentials_shrink
-        # The post-processing script of the cluster.
+        # The post-processing script for the cluster.
         self.cluster_custom_configuration_shrink = cluster_custom_configuration_shrink
-        # The cluster description. The description must be 1 to 128 characters in length and can contain letters, digits, hyphens (-), and underscores (_).
+        # The description of the cluster. The description must be 2 to 128 characters long and can contain letters, Chinese characters, digits, hyphens (-), and underscores (_).
         self.cluster_description = cluster_description
-        # The deployment mode of the cluster. Valid values:
+        # The cluster\\"s deployment type. Valid values:
         # 
-        # *   Integrated
-        # *   Hybrid
-        # *   Custom
+        # - Integrated: An integrated cluster.
+        # 
+        # - Hybrid: A hybrid cloud cluster.
+        # 
+        # - Custom: A custom cluster.
         self.cluster_mode = cluster_mode
-        # The cluster name. The name must be 1 to 128 characters in length and can contain letters, digits, hyphens (-), and underscores (_).
+        # The name of the cluster. The name must be 2 to 128 characters long and can contain letters, Chinese characters, digits, hyphens (-), and underscores (_).
         self.cluster_name = cluster_name
-        # The ID of the vSwitch that you want the cluster to use. The vSwitch must reside in the VPC that is specified by the `ClusterVpcId` parameter.
+        # The ID of the VSwitch for the cluster. The VSwitch must be in the VPC specified by `ClusterVpcId`.
         # 
-        # You can call the [DescribeVpcs](https://help.aliyun.com/document_detail/448581.html) operation to query information about the created VPCs and vSwitches.
+        # Call the [DescribeVpcs](https://help.aliyun.com/document_detail/448581.html) operation to find available VPCs and VSwitches.
         self.cluster_vswitch_id = cluster_vswitch_id
-        # The ID of the virtual private cloud (VPC) in which the cluster resides.
+        # The ID of the VPC for the cluster.
         self.cluster_vpc_id = cluster_vpc_id
-        # Specifies whether to enable deletion protection for the cluster. Deletion protection decides whether the cluster can be deleted in the console or by calling the [DeleteCluster](https://help.aliyun.com/document_detail/424406.html) operation. Valid values:
+        # Specifies whether to enable deletion protection for the cluster. This feature prevents the cluster from being deleted via the console or the [DeleteCluster](https://help.aliyun.com/document_detail/424406.html) operation.
         # 
-        # *   true
-        # *   false
+        # - true: Enables deletion protection.
+        # 
+        # - false: Disables deletion protection.
         # 
         # Default value: false.
         self.deletion_protection = deletion_protection
-        # Specifies whether to use an advanced security group. Valid values:
+        self.grow_interval = grow_interval
+        self.idle_interval = idle_interval
+        # Specifies whether to use an enterprise security group. Valid values:
         # 
-        # *   true: automatically creates and uses an advanced security group.
-        # *   false: automatically creates and uses a basic security group.
+        # - true: The system automatically creates and uses an enterprise security group.
         # 
-        # For more information, see [Basic security groups and advanced security groups](https://help.aliyun.com/document_detail/605897.html).
+        # - false: The system automatically creates and uses a security group.
+        # 
+        # For more information about how to select a security group type, see [Security groups and enterprise security groups](https://help.aliyun.com/document_detail/605897.html).
         self.is_enterprise_security_group = is_enterprise_security_group
-        # The configurations of the cluster management node.
+        # Configuration for the cluster manager node.
         self.manager_shrink = manager_shrink
-        # The maximum number of vCPUs that can be used by compute nodes in the cluster. Valid values: 0 to 100,000.
+        # The maximum number of CPU cores that the cluster can manage across all compute nodes. Valid values: 0 to 100,000.
         self.max_core_count = max_core_count
         # The maximum number of compute nodes that the cluster can manage. Valid values: 0 to 5,000.
         self.max_count = max_count
-        # The queues in the cluster. The number of queues can be 0 to 8.
+        # Configuration for the cluster queues. You can specify up to 8 queues.
         self.queues_shrink = queues_shrink
-        # The ID of the resource group to which the cluster belongs.
+        # The ID of the resource group.
         # 
-        # You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to obtain the IDs of the resource groups.
+        # Call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to find resource group IDs.
         self.resource_group_id = resource_group_id
-        # The ID of the security group to which the cluster belongs.
+        # The ID of the security group for the cluster.
         # 
-        # You can call the [DescribeSecurityGroups](https://help.aliyun.com/document_detail/25556.html) operation to query available security groups in the current region.
+        # Call the [DescribeSecurityGroups](https://help.aliyun.com/document_detail/25556.html) operation to find available security groups in the current region.
         self.security_group_id = security_group_id
-        # The shared storage resources of the cluster.
+        # Configuration for the cluster\\"s shared storage.
         self.shared_storages_shrink = shared_storages_shrink
-        # The tags of the cluster.
+        # The list of tags to add to the cluster. You can add up to 20 tags.
         self.tags_shrink = tags_shrink
 
     def validate(self):
@@ -138,6 +147,12 @@ class CreateClusterShrinkRequest(DaraModel):
 
         if self.deletion_protection is not None:
             result['DeletionProtection'] = self.deletion_protection
+
+        if self.grow_interval is not None:
+            result['GrowInterval'] = self.grow_interval
+
+        if self.idle_interval is not None:
+            result['IdleInterval'] = self.idle_interval
 
         if self.is_enterprise_security_group is not None:
             result['IsEnterpriseSecurityGroup'] = self.is_enterprise_security_group
@@ -205,6 +220,12 @@ class CreateClusterShrinkRequest(DaraModel):
 
         if m.get('DeletionProtection') is not None:
             self.deletion_protection = m.get('DeletionProtection')
+
+        if m.get('GrowInterval') is not None:
+            self.grow_interval = m.get('GrowInterval')
+
+        if m.get('IdleInterval') is not None:
+            self.idle_interval = m.get('IdleInterval')
 
         if m.get('IsEnterpriseSecurityGroup') is not None:
             self.is_enterprise_security_group = m.get('IsEnterpriseSecurityGroup')

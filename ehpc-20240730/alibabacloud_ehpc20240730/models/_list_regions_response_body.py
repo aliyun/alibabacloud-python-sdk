@@ -16,10 +16,19 @@ class ListRegionsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The maximum number of entries returned per page.
+        # 
+        # Valid values: 1 to 100.
+        # 
+        # Default value: 20.
         self.max_results = max_results
+        # The token to retrieve the next page of results.
         self.next_token = next_token
+        # The list of available regions.
         self.regions = regions
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries that meet the query conditions.<br>This parameter is optional and may not be returned.
         self.total_count = total_count
 
     def validate(self):
@@ -80,7 +89,9 @@ class ListRegionsResponseBodyRegions(DaraModel):
         local_name: str = None,
         region_id: str = None,
     ):
+        # The name of the region.
         self.local_name = local_name
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

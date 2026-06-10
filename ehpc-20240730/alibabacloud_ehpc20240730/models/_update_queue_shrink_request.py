@@ -12,9 +12,9 @@ class UpdateQueueShrinkRequest(DaraModel):
     ):
         # The cluster ID.
         # 
-        # You can call the [ListClusters](https://help.aliyun.com/document_detail/87116.html) operation to query the cluster ID.
+        # Call [ListClusters](https://help.aliyun.com/document_detail/87116.html) to get the cluster ID.
         self.cluster_id = cluster_id
-        # The information about the queue to be updated.
+        # The queue information to update.
         self.queue_shrink = queue_shrink
 
     def validate(self):

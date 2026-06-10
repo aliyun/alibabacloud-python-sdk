@@ -1,3 +1,8 @@
+2026-06-10 Version: 2.3.1
+- Update API CreateCluster: add request parameters GrowInterval.
+- Update API CreateCluster: add request parameters IdleInterval.
+
+
 2026-01-30 Version: 2.3.0
 - Support API CreateReservedNodePool.
 - Support API DeleteReservedNodePool.
