@@ -15,8 +15,15 @@ class GetAlertStrategyResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Status code:  
+        # - `code == Success` indicates successful authorization;  
+        # - Other status codes indicate failed authorization. When authorization fails, view the `message` field to obtain detailed error message.
         self.code = code
+        # Returned data.
         self.data = data
+        # Error message  
+        # - If `code == Success`, this field is empty;  
+        # - Otherwise, this field contains the request error message.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -73,13 +80,21 @@ class GetAlertStrategyResponseBodyData(DaraModel):
         uid: str = None,
         updated_at: int = None,
     ):
+        # Creation Time.
         self.created_at = created_at
+        # Indicates whether the alert policy is enabled
         self.enabled = enabled
+        # Alert policy ID
         self.id = id
+        # k8s label
         self.k_8s_label = k_8s_label
+        # Policy Name
         self.name = name
+        # Details of the alert policy
         self.strategy = strategy
+        # User ID
         self.uid = uid
+        # Update Time.
         self.updated_at = updated_at
 
     def validate(self):
@@ -153,8 +168,10 @@ class GetAlertStrategyResponseBodyDataStrategy(DaraModel):
         destinations: Any = None,
         items: Any = None,
     ):
+        # Set of clusters that accept alerts
         self.clusters = clusters
         self.destinations = destinations
+        # List of abnormal items that accept alerts
         self.items = items
 
     def validate(self):

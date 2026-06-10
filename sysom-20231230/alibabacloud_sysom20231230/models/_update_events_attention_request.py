@@ -11,8 +11,12 @@ class UpdateEventsAttentionRequest(DaraModel):
         range: str = None,
         uuid: str = None,
     ):
+        # Sensitivity of the anomalous activity. Valid values are -1 to 3. A value of -1 decreases sensitivity by 1 degree, and a value of 0 increases sensitivity by 1 degree.
         self.mode = mode
+        # Scope of effect: cluster or edge zone
         self.range = range
+        # UUID corresponding to the anomalous activity
+        # 
         # This parameter is required.
         self.uuid = uuid
 

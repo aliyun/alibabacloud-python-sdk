@@ -9,6 +9,8 @@ class GetVmcoreDiagnosisTaskRequest(DaraModel):
         self,
         task_id: str = None,
     ):
+        # Job ID
+        # 
         # This parameter is required.
         self.task_id = task_id
 

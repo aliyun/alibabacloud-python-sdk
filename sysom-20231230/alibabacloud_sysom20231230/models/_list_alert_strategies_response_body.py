@@ -18,13 +18,23 @@ class ListAlertStrategiesResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
+        # Status code  
+        # - If `code == Success`, authorization succeeded.  
+        # - Other status codes indicate authorization failed. When authorization fails, view the `message` field to obtain detailed error message.
         self.code = code
+        # Return Result.
         self.data = data
+        # Maximum number of returned records
         self.max_results = max_results
+        # Error message  
+        # - If `code == Success`, this field is empty;  
+        # - Otherwise, this field contains the request error message.
         self.message = message
+        # Pagination token for the next request.
         self.next_token = next_token
         # Id of the request
         self.request_id = request_id
+        # Total number of records
         self.total = total
 
     def validate(self):
@@ -103,13 +113,20 @@ class ListAlertStrategiesResponseBodyData(DaraModel):
         uid: str = None,
         updated_at: int = None,
     ):
+        # Creation Time.
         self.created_at = created_at
+        # Whether the alert policy is enabled
         self.enabled = enabled
+        # Policy ID
         self.id = id
         self.k_8s_label = k_8s_label
+        # Policy Name
         self.name = name
+        # Details of the alert policy
         self.strategy = strategy
+        # User ID
         self.uid = uid
+        # Update Time
         self.updated_at = updated_at
 
     def validate(self):
@@ -183,8 +200,10 @@ class ListAlertStrategiesResponseBodyDataStrategy(DaraModel):
         destinations: List[int] = None,
         items: List[str] = None,
     ):
+        # Set of clusters that accept alerts
         self.clusters = clusters
         self.destinations = destinations
+        # List of abnormal items that accept alerts
         self.items = items
 
     def validate(self):

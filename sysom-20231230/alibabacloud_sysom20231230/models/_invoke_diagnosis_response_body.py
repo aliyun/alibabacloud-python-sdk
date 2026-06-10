@@ -13,9 +13,17 @@ class InvokeDiagnosisResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Status code  
+        # - If `code == Success`, authorization succeeded.  
+        # - Other status codes indicate authorization failure. When authorization fails, check the `message` field for detailed error information.
         self.code = code
+        # Return Result.
         self.data = data
+        # Error message  
+        # - If `code == Success`, this field is empty.  
+        # - Otherwise, this field contains the request error message.
         self.message = message
+        # Request RequestId
         self.request_id = request_id
 
     def validate(self):
@@ -63,6 +71,7 @@ class InvokeDiagnosisResponseBodyData(DaraModel):
         self,
         task_id: str = None,
     ):
+        # Diagnostic task ID. You can use this ID to invoke the `GetDiagnosisResult` API to query the diagnosis result.
         self.task_id = task_id
 
     def validate(self):

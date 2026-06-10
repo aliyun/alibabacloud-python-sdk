@@ -12,8 +12,13 @@ class StartAIDiffAnalysisResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Status code  
+        # - `code == Success` indicates that authorization succeeded.  
+        # - Other status codes indicate that authorization failed. When authorization fails, view the `message` field to obtain detailed error information.
         self.code = code
+        # AI differential analysis result data
         self.data = data
+        # Error message description; empty if no error occurred
         self.message = message
         # Id of the request
         self.request_id = request_id

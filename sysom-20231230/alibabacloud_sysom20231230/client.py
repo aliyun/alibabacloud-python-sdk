@@ -632,6 +632,8 @@ class Client(OpenApiClient):
             body['instance'] = request.instance
         if not DaraCore.is_null(request.items):
             body['items'] = request.items
+        if not DaraCore.is_null(request.metric_source):
+            body['metricSource'] = request.metric_source
         if not DaraCore.is_null(request.region):
             body['region'] = request.region
         if not DaraCore.is_null(request.source):
@@ -668,6 +670,8 @@ class Client(OpenApiClient):
             body['instance'] = request.instance
         if not DaraCore.is_null(request.items):
             body['items'] = request.items
+        if not DaraCore.is_null(request.metric_source):
+            body['metricSource'] = request.metric_source
         if not DaraCore.is_null(request.region):
             body['region'] = request.region
         if not DaraCore.is_null(request.source):

@@ -14,14 +14,24 @@ class GetHotSpotUniqListRequest(DaraModel):
         table: str = None,
         uniq: str = None,
     ):
+        # End time
+        # 
         # This parameter is required.
         self.beg_end = beg_end
+        # Start time
+        # 
         # This parameter is required.
         self.beg_start = beg_start
+        # Instance ID
+        # 
         # This parameter is required.
         self.instance = instance
+        # Process ID
         self.pid = pid
+        # Table name
         self.table = table
+        # Identity flag
+        # 
         # This parameter is required.
         self.uniq = uniq
 

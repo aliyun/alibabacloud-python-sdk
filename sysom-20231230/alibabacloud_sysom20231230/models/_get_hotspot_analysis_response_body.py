@@ -13,11 +13,15 @@ class GetHotspotAnalysisResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # error code
         self.code = code
+        # Returned Data
         self.data = data
+        # Response message
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the invocation is successful
         self.success = success
 
     def validate(self):

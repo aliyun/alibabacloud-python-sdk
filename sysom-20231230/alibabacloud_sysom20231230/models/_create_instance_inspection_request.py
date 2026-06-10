@@ -11,11 +11,13 @@ class CreateInstanceInspectionRequest(DaraModel):
         self,
         instance: str = None,
         items: List[str] = None,
+        metric_source: str = None,
         region: str = None,
         source: str = None,
     ):
         self.instance = instance
         self.items = items
+        self.metric_source = metric_source
         self.region = region
         self.source = source
 
@@ -33,6 +35,9 @@ class CreateInstanceInspectionRequest(DaraModel):
         if self.items is not None:
             result['items'] = self.items
 
+        if self.metric_source is not None:
+            result['metricSource'] = self.metric_source
+
         if self.region is not None:
             result['region'] = self.region
 
@@ -48,6 +53,9 @@ class CreateInstanceInspectionRequest(DaraModel):
 
         if m.get('items') is not None:
             self.items = m.get('items')
+
+        if m.get('metricSource') is not None:
+            self.metric_source = m.get('metricSource')
 
         if m.get('region') is not None:
             self.region = m.get('region')

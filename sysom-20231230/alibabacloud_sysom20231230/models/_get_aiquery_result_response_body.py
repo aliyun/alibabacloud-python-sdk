@@ -12,8 +12,11 @@ class GetAIQueryResultResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # error code
         self.code = code
+        # Return Result, with large Data Volume
         self.data = data
+        # error message.
         self.message = message
         # Id of the request
         self.request_id = request_id

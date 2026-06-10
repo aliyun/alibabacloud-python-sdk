@@ -9,6 +9,8 @@ class GetDiagnosisResultRequest(DaraModel):
         self,
         task_id: str = None,
     ):
+        # Diagnostic task ID
+        # 
         # This parameter is required.
         self.task_id = task_id
 

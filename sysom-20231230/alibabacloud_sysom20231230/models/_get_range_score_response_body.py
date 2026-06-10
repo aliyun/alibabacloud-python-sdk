@@ -16,11 +16,19 @@ class GetRangeScoreResponseBody(DaraModel):
         request_id: str = None,
         total: float = None,
     ):
-        # 代表资源一级ID的资源属性字段
+        # Status code  
+        # - If `code == Success`, authorization succeeded.  
+        # - Other status codes indicate authorization failed. When authorization fails, view the `message` field to obtain detailed error information.
         self.code = code
+        # Returned data.
         self.data = data
+        # Error message  
+        # - If `code == Success`, this field is empty.  
+        # - Otherwise, this field contains the request error message.
         self.message = message
+        # Request RequestId
         self.request_id = request_id
+        # Total data volume.
         self.total = total
 
     def validate(self):
@@ -82,8 +90,11 @@ class GetRangeScoreResponseBodyData(DaraModel):
         type: str = None,
         value: int = None,
     ):
+        # Time point
         self.time = time
+        # Metric type
         self.type = type
+        # Score
         self.value = value
 
     def validate(self):

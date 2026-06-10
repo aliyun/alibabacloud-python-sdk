@@ -15,12 +15,19 @@ class ListAgentInstallRecordsRequest(DaraModel):
         region: str = None,
         status: str = None,
     ):
+        # Current page number (starting from 1)
         self.current = current
+        # If this field is specified, the response filters the Agent installation status for the specified instance.
         self.instance_id = instance_id
+        # Page size
         self.page_size = page_size
+        # If this parameter is specified, the response filters the installation list for the specified Agent. It can be used together with the plugin_version parameter.
         self.plugin_id = plugin_id
+        # This parameter cannot be used alone. It must be used together with plugin_id to filter the installation list for a specified version of the specified Agent.
         self.plugin_version = plugin_version
+        # Region ID.
         self.region = region
+        # Filter widget installation records by status
         self.status = status
 
     def validate(self):

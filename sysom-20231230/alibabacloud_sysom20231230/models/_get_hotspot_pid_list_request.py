@@ -12,12 +12,20 @@ class GetHotspotPidListRequest(DaraModel):
         instance: str = None,
         table: str = None,
     ):
+        # stop time
+        # 
         # This parameter is required.
         self.beg_end = beg_end
+        # start time
+        # 
         # This parameter is required.
         self.beg_start = beg_start
+        # instance ID
+        # 
         # This parameter is required.
         self.instance = instance
+        # Table name to query
+        # 
         # This parameter is required.
         self.table = table
 

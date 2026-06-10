@@ -19,16 +19,27 @@ class ListAbnormalyEventsRequest(DaraModel):
         show_pod: int = None,
         start: float = None,
     ):
+        # Cluster ID
         self.cluster = cluster
+        # This field is present when paging is used and indicates the current page.
         self.current = current
+        # End time
         self.end = end
+        # Anomalous activity name
         self.event = event
+        # Instance ID.
         self.instance = instance
+        # Level of the anomalous activity
         self.level = level
+        # Namespace where the pod is located
         self.namespace = namespace
+        # Page size. The default value is 5. Valid values are in the range [1,100].
         self.page_size = page_size
+        # Pod name
         self.pod = pod
+        # Whether to display anomalous activities of the pod
         self.show_pod = show_pod
+        # Start time
         self.start = start
 
     def validate(self):

@@ -11,8 +11,11 @@ class GetListRecordRequest(DaraModel):
         page_size: int = None,
         region: str = None,
     ):
+        # Current page number
         self.current = current
+        # Number of data entries per page.
         self.page_size = page_size
+        # Region ID.
         self.region = region
 
     def validate(self):

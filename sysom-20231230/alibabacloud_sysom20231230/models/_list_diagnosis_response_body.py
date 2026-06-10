@@ -16,11 +16,21 @@ class ListDiagnosisResponseBody(DaraModel):
         message: str = None,
         total: int = None,
     ):
+        # Request ID, which can be used for end-to-end diagnosis
         self.request_id = request_id
+        # Status code  
+        # - `code == Success` indicates successful authorization;  
+        # - Other status codes indicate failed authorization. When authorization fails, view the `message` field to obtain detailed error information;
         self.code = code
+        # Returned data
         self.data = data
+        # Error message  
+        # - If `code == Success`, this field is empty.  
+        # - Otherwise, this field contains the request error message.
+        # 
         # This parameter is required.
         self.message = message
+        # Total count
         self.total = total
 
     def validate(self):
@@ -90,16 +100,32 @@ class ListDiagnosisResponseBodyData(DaraModel):
         updated_at: str = None,
         url: str = None,
     ):
+        # Diagnosis error code; 0 indicates no error
         self.code = code
+        # Diagnostic command
         self.command = command
+        # Creation Time
         self.created_at = created_at
+        # Error message
         self.err_msg = err_msg
+        # Diagnosis parameters
         self.params = params
+        # Diagnosis result
         self.result = result
+        # Diagnosis Type
         self.service_name = service_name
+        # Status of the diagnostic task execution.  
+        # Valid values:  
+        # - **Ready**: Ready  
+        # - **Running**: Running  
+        # - **Success**: Succeeded  
+        # - **Fail**: Failed
         self.status = status
+        # Job ID.
         self.task_id = task_id
+        # Update Time
         self.updated_at = updated_at
+        # Diagnostic details URL
         self.url = url
 
     def validate(self):

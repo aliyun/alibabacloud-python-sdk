@@ -16,10 +16,19 @@ class ListInstancesResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
+        # Status code  
+        # - `code == Success` indicates that authorization succeeded.  
+        # - Any other status code indicates that authorization failed. When authorization fails, check the `message` field for detailed error information.
         self.code = code
+        # Return Result.
         self.data = data
+        # Error message  
+        # - If `code == Success`, this field is empty.  
+        # - Otherwise, this field contains the request error message.
         self.message = message
+        # Request RequestId
         self.request_id = request_id
+        # Total number of records
         self.total = total
 
     def validate(self):
@@ -90,17 +99,29 @@ class ListInstancesResponseBodyData(DaraModel):
         region: str = None,
         status: str = None,
     ):
+        # Cluster ID
         self.cluster_id = cluster_id
+        # ECS instance ID
         self.instance = instance
+        # Milvus version of the instance
         self.kernel_version = kernel_version
+        # Metadata of the instance
         self.meta = meta
+        # Architecture of the ECS instance
         self.os_arch = os_arch
+        # Health score of the instance
         self.os_health_score = os_health_score
+        # Operating system name of the instance (retrieved from /etc/os-release)
         self.os_name = os_name
+        # Operating system name ID of the instance (retrieved from /etc/os-release)
         self.os_name_id = os_name_id
+        # Operating system version of the instance (obtained from /etc/os-release)
         self.os_version = os_version
+        # Operating system version ID of the instance (retrieved from /etc/os-release)
         self.os_version_id = os_version_id
+        # Region where the instance is located
         self.region = region
+        # Status of the instance
         self.status = status
 
     def validate(self):

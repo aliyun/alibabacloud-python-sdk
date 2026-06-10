@@ -15,9 +15,13 @@ class GetHotspotTrackingResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Error code
         self.code = code
+        # Returned data
         self.data = data
+        # Return message
         self.message = message
+        # Request ID
         self.request_id = request_id
 
     def validate(self):
@@ -66,7 +70,9 @@ class GetHotspotTrackingResponseBodyData(DaraModel):
         flame: main_models.GetHotspotTrackingResponseBodyDataFlame = None,
         series: main_models.GetHotspotTrackingResponseBodyDataSeries = None,
     ):
+        # Flame graph data
         self.flame = flame
+        # Data list
         self.series = series
 
     def validate(self):
@@ -106,7 +112,9 @@ class GetHotspotTrackingResponseBodyDataSeries(DaraModel):
         columns: List[str] = None,
         values: List[List[str]] = None,
     ):
+        # List of column names
         self.columns = columns
+        # List of hot spot metric data
         self.values = values
 
     def validate(self):
@@ -141,7 +149,9 @@ class GetHotspotTrackingResponseBodyDataFlame(DaraModel):
         columns: List[str] = None,
         values: List[List[str]] = None,
     ):
+        # List of column names
         self.columns = columns
+        # List of flame graph data
         self.values = values
 
     def validate(self):

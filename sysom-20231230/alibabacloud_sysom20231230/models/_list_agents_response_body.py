@@ -16,10 +16,19 @@ class ListAgentsResponseBody(DaraModel):
         message: str = None,
         total: int = None,
     ):
+        # Request ID, which can be used for end-to-end Diagnosis
         self.request_id = request_id
+        # Status code  
+        # - `code == Success` indicates successful authorization;  
+        # - Other status codes indicate authorization failure. When authorization fails, view the `message` field to obtain detailed error message;
         self.code = code
+        # Returned Data
         self.data = data
+        # Error message  
+        # - If `code == Success`, this field is empty.  
+        # - Otherwise, this field contains the request error message.
         self.message = message
+        # Total number of records.
         self.total = total
 
     def validate(self):
@@ -86,13 +95,23 @@ class ListAgentsResponseBodyData(DaraModel):
         updated_at: str = None,
         versions: List[main_models.ListAgentsResponseBodyDataVersions] = None,
     ):
+        # Widget creation time
         self.created_at = created_at
+        # Widget description
         self.description = description
+        # Widget ID
         self.id = id
+        # Widget name
         self.name = name
+        # Supported architecture (multiple architectures separated by commas)
         self.support_arch = support_arch
+        # Widget type  
+        # - Control: control-type widget  
+        # - AI: AI widget
         self.type = type
+        # Widget Update Time
         self.updated_at = updated_at
+        # Widget Version List
         self.versions = versions
 
     def validate(self):
@@ -175,11 +194,17 @@ class ListAgentsResponseBodyDataVersions(DaraModel):
         upgrade_script: str = None,
         version: str = None,
     ):
+        # Widget version creation time
         self.created_at = created_at
+        # The widget\\"s install script
         self.install_script = install_script
+        # Widget uninstall script
         self.uninstall_script = uninstall_script
+        # Widget version update time
         self.updated_at = updated_at
+        # Widget upgrade script
         self.upgrade_script = upgrade_script
+        # Widget version number
         self.version = version
 
     def validate(self):

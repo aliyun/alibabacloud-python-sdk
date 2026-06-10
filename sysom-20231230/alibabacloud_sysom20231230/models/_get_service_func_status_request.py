@@ -12,10 +12,16 @@ class GetServiceFuncStatusRequest(DaraModel):
         params: main_models.GetServiceFuncStatusRequestParams = None,
         service_name: str = None,
     ):
+        # channel name
+        # 
         # This parameter is required.
         self.channel = channel
+        # Diagnosis parameters. Different types of diagnosis require different diagnosis parameters. You can use this field to filter records whose parameter values match the specified values.
+        # 
         # This parameter is required.
         self.params = params
+        # Service Name
+        # 
         # This parameter is required.
         self.service_name = service_name
 
@@ -60,9 +66,13 @@ class GetServiceFuncStatusRequestParams(DaraModel):
         instance: str = None,
         uid: str = None,
     ):
+        # feature name
+        # 
         # This parameter is required.
         self.function_name = function_name
+        # instance ID
         self.instance = instance
+        # User ID
         self.uid = uid
 
     def validate(self):

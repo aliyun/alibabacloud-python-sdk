@@ -13,9 +13,17 @@ class InstallAgentForClusterResponseBody(DaraModel):
         data: main_models.InstallAgentForClusterResponseBodyData = None,
         message: str = None,
     ):
+        # Request ID, which can be used for end-to-end diagnosis
         self.request_id = request_id
+        # Status code  
+        # - If `code == Success`, authorization succeeded.  
+        # - Any other status code indicates authorization failed. When authorization fails, check the `message` field for detailed error information.
         self.code = code
+        # Returned data.
         self.data = data
+        # Error message  
+        # - If `code == Success`, this field is empty.  
+        # - Otherwise, this field contains the request error message.
         self.message = message
 
     def validate(self):
@@ -63,6 +71,7 @@ class InstallAgentForClusterResponseBodyData(DaraModel):
         self,
         task_id: str = None,
     ):
+        # Job ID.
         self.task_id = task_id
 
     def validate(self):

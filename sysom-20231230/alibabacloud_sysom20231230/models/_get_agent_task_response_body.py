@@ -15,9 +15,17 @@ class GetAgentTaskResponseBody(DaraModel):
         data: main_models.GetAgentTaskResponseBodyData = None,
         message: str = None,
     ):
+        # Request ID, which can be used for end-to-end Diagnosis
         self.request_id = request_id
+        # Status code  
+        # - `code == Success` indicates that authorization Succeeded.  
+        # - Any other status code indicates Failed to Authorize. When authorization fails, View the `message` field to obtain the detailed error message.
         self.code = code
+        # Returned Data.
         self.data = data
+        # Error message  
+        # - If `code == Success`, this field is empty;  
+        # - Otherwise, this field contains the Request error message.
         self.message = message
 
     def validate(self):
@@ -67,8 +75,10 @@ class GetAgentTaskResponseBodyData(DaraModel):
         status: str = None,
         task_id: str = None,
     ):
+        # List of sub-Jobs
         self.jobs = jobs
         self.status = status
+        # Job ID.
         self.task_id = task_id
 
     def validate(self):
@@ -123,13 +133,62 @@ class GetAgentTaskResponseBodyDataJobs(DaraModel):
         result: str = None,
         status: str = None,
     ):
+        # When Job execution fails, this field contains the error message indicating the cause of the failure.
         self.error = error
+        # The error code indicating the reason for sub-job failure. Possible values:
+        # * empty: The job executed normally.
+        # * INSTANCE_NOT_SUPPORTED: The instance type is not supported.
+        # * INSTANCE_NOT_EXISTS: The instance does not exist.
+        # * INSTANCE_RELEASED: The instance has been released.
+        # * INSTANCE_NOT_RUNNING: The instance is not running.
+        # * INSTANCE_NOT_OWNED: The instance does not belong to the current account.
+        # * AGENT_ALREADY_INSTALLED: The agent is already installed.
+        # * AGENT_NOT_INSTALLED: The agent is not installed.
+        # * AGENT_SAME_VERSION: The version is the same.
+        # * HAS_RUNNING_JOB: There is a running job.
+        # * RPM_LOCK_HELD: The RPM lock is held.
+        # * DISK_SPACE_INSUFFICIENT: Insufficient disk space.
+        # * NODE_LOAD_HIGH: High edge zone load.
+        # * COMMAND_FAILED: Command execution failed.
+        # * CLIENT_NOT_RUNNING: The Cloud Assistant agent is not running.
+        # * CLIENT_NOT_RESPONSE: The Cloud Assistant agent is unresponsive.
+        # * DELIVERY_TIMEOUT: Command delivery timeout.
+        # * EXECUTION_TIMEOUT: Command execution timeout.
+        # * TASK_CONCURRENCY_LIMIT: Task concurrency limit reached.
         self.error_code = error_code
+        # Detailed reason for subtask execution failure. Possible values:  
+        # * Instance type is not supported  
+        # * Instance does not exist  
+        # * Instance has been released  
+        # * Instance is not running  
+        # * Instance does not belong to the current account  
+        # * Agent is already installed  
+        # * Agent is not installed  
+        # * Agent version is the same; no upgrade is required  
+        # * A task is currently running; please retry later  
+        # * RPM lock is occupied; please retry later  
+        # * Insufficient disk space  
+        # * Edge zone payload is too high; please retry later  
+        # * Command execution failed; please retry later  
+        # * Cloud Assistant Agent is not running  
+        # * Cloud Assistant Agent is unresponsive  
+        # * Command sending timeout  
+        # * Command execution timeout  
+        # * Task concurrency limit has been reached
         self.error_message = error_message
+        # Instance ID.
         self.instance = instance
+        # Parameters of the sub-Job
         self.params = params
+        # Region ID.
         self.region = region
+        # Result of sub-Job execution
         self.result = result
+        # Sub-Job status:  
+        # - Created: Created  
+        # - Running: Running  
+        # - Success: Job Run Succeeded  
+        # - Fail: Job Run failed
         self.status = status
 
     def validate(self):

@@ -10,7 +10,9 @@ class GetInstantScoreRequest(DaraModel):
         cluster: str = None,
         instance: str = None,
     ):
+        # Cluster ID
         self.cluster = cluster
+        # Instance ID.
         self.instance = instance
 
     def validate(self):

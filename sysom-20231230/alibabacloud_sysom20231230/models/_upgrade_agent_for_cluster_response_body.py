@@ -13,9 +13,17 @@ class UpgradeAgentForClusterResponseBody(DaraModel):
         data: main_models.UpgradeAgentForClusterResponseBodyData = None,
         message: str = None,
     ):
+        # Request ID, which can be used for end-to-end Diagnosis
         self.request_id = request_id
+        # Status code  
+        # - `code == Success` indicates successful authorization;  
+        # - Other status codes indicate authorization failure. When authorization fails, view the `message` field to obtain detailed error message;
         self.code = code
+        # Returned Data.
         self.data = data
+        # error message  
+        # - If `code == Success`, this field is empty;  
+        # - Otherwise, this field contains the request error message.
         self.message = message
 
     def validate(self):
@@ -63,6 +71,9 @@ class UpgradeAgentForClusterResponseBodyData(DaraModel):
         self,
         task_id: str = None,
     ):
+        # Job ID.  
+        # 
+        # You can use this job ID to invoke the GetAgentTask API to view the execution status of the job.
         self.task_id = task_id
 
     def validate(self):

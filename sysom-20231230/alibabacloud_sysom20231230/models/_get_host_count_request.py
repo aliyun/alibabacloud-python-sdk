@@ -12,9 +12,13 @@ class GetHostCountRequest(DaraModel):
         instance: str = None,
         start: float = None,
     ):
+        # Cluster ID
         self.cluster = cluster
+        # End Time
         self.end = end
+        # Instance ID.
         self.instance = instance
+        # Start Time
         self.start = start
 
     def validate(self):

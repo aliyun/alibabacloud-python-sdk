@@ -15,9 +15,17 @@ class GetAlertDestinationResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Status code.  
+        # - If `code == Success`, authorization succeeded.  
+        # - Other status codes indicate authorization failed. When authorization fails, check the `message` field for detailed error information.
         self.code = code
+        # Returned data.
         self.data = data
+        # Error message.  
+        # - If `code == Success`, this field is empty.  
+        # - Otherwise, this field contains the request error message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -72,13 +80,21 @@ class GetAlertDestinationResponseBodyData(DaraModel):
         uid: str = None,
         updated_at: str = None,
     ):
+        # Creation Time.
         self.created_at = created_at
+        # Alert contact ID
         self.id = id
+        # Alert contact name
         self.name = name
+        # Configuration Parameter
         self.params = params
+        # Configuration source
         self.source = source
+        # Alert push target. Currently, only DingTalk Robot is supported.
         self.target = target
+        # User ID
         self.uid = uid
+        # Update Time.
         self.updated_at = updated_at
 
     def validate(self):

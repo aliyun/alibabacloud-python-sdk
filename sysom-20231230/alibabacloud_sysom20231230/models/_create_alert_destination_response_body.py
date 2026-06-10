@@ -13,9 +13,15 @@ class CreateAlertDestinationResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # error code
         self.code = code
+        # Returned data.
         self.data = data
+        # Error message  
+        # - If `code == Success`, this field is empty.  
+        # - Otherwise, this field contains the request error message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -70,13 +76,21 @@ class CreateAlertDestinationResponseBodyData(DaraModel):
         uid: str = None,
         updated_at: int = None,
     ):
+        # Creation Time.
         self.created_at = created_at
+        # Policy ID
         self.id = id
+        # Policy Name
         self.name = name
+        # Configuration Parameter of alert contact
         self.params = params
+        # Configuration Source
         self.source = source
+        # Push Target. Currently, only DingTalk Robot is supported.
         self.target = target
+        # User ID
         self.uid = uid
+        # Update Time
         self.updated_at = updated_at
 
     def validate(self):
@@ -151,9 +165,13 @@ class CreateAlertDestinationResponseBodyDataParams(DaraModel):
         sec: str = None,
         webhook: str = None,
     ):
+        # mailbox
         self.email = email
+        # Phone
         self.phone = phone
+        # Robot key
         self.sec = sec
+        # Robot address
         self.webhook = webhook
 
     def validate(self):

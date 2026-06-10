@@ -14,15 +14,26 @@ class GetHotspotTrackingRequest(DaraModel):
         pid: int = None,
         table: str = None,
     ):
+        # End time
+        # 
         # This parameter is required.
         self.beg_end = beg_end
+        # Start time
+        # 
         # This parameter is required.
         self.beg_start = beg_start
+        # Hot spot type
+        # 
         # This parameter is required.
         self.hot_type = hot_type
+        # Instance ID
+        # 
         # This parameter is required.
         self.instance = instance
+        # Process PID
         self.pid = pid
+        # Query table name
+        # 
         # This parameter is required.
         self.table = table
 

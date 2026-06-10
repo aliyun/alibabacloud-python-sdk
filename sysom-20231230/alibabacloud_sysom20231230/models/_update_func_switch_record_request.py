@@ -12,10 +12,16 @@ class UpdateFuncSwitchRecordRequest(DaraModel):
         params: main_models.UpdateFuncSwitchRecordRequestParams = None,
         service_name: str = None,
     ):
+        # Diagnosis channel (currently fixed to the ecs channel)
+        # 
         # This parameter is required.
         self.channel = channel
+        # Diagnosis parameters. Different diagnosis types require different diagnosis parameters. You can use this field to filter records whose parameters match specified values.
+        # 
         # This parameter is required.
         self.params = params
+        # Service Name
+        # 
         # This parameter is required.
         self.service_name = service_name
 
@@ -63,12 +69,19 @@ class UpdateFuncSwitchRecordRequestParams(DaraModel):
         region: str = None,
         uid: str = None,
     ):
+        # Configuration Parameter
         self.args = args
+        # Feature Name
+        # 
         # This parameter is required.
         self.function_name = function_name
+        # Instance ID
         self.instance = instance
+        # Operation Type
         self.op = op
+        # Region to which the instance belongs. Ensure that all instance IDs passed in the instances field belong to the same region.
         self.region = region
+        # User ID
         self.uid = uid
 
     def validate(self):
@@ -136,14 +149,23 @@ class UpdateFuncSwitchRecordRequestParamsArgs(DaraModel):
         pid: int = None,
         system_profiling: str = None,
     ):
+        # Configuration process
         self.add_cmd = add_cmd
+        # ONCPU tracing Toggle
         self.cpu = cpu
+        # Duration in seconds (s)
         self.duration = duration
+        # Storage Path
         self.java_store_path = java_store_path
+        # Edit Lock tracing Toggle
         self.locks = locks
+        # Tracing epoch
         self.loop = loop
+        # Memory tracing Toggle
         self.mem = mem
+        # Process PID
         self.pid = pid
+        # System tracing toggle
         self.system_profiling = system_profiling
 
     def validate(self):

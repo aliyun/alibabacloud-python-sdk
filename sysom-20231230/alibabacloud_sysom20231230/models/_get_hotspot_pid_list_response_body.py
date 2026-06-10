@@ -15,8 +15,11 @@ class GetHotspotPidListResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # error code
         self.code = code
+        # Data returned
         self.data = data
+        # Response message
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -67,7 +70,9 @@ class GetHotspotPidListResponseBodyData(DaraModel):
         columns: List[str] = None,
         values: List[List[str]] = None,
     ):
+        # List of column names
         self.columns = columns
+        # List of process information
         self.values = values
 
     def validate(self):

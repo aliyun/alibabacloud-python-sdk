@@ -14,10 +14,16 @@ class UninstallAgentRequest(DaraModel):
         agent_version: str = None,
         instances: List[main_models.UninstallAgentRequestInstances] = None,
     ):
+        # ID of the widget to uninstall
+        # 
         # This parameter is required.
         self.agent_id = agent_id
+        # Version of the widget to uninstall
+        # 
         # This parameter is required.
         self.agent_version = agent_version
+        # List of instances from which to uninstall the widget
+        # 
         # This parameter is required.
         self.instances = instances
 
@@ -67,8 +73,12 @@ class UninstallAgentRequestInstances(DaraModel):
         instance: str = None,
         region: str = None,
     ):
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance = instance
+        # Region ID.
+        # 
         # This parameter is required.
         self.region = region
 

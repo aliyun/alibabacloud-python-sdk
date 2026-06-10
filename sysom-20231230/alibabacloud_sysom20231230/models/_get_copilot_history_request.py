@@ -9,6 +9,8 @@ class GetCopilotHistoryRequest(DaraModel):
         self,
         count: int = None,
     ):
+        # Quantity of historical chat records to request, typically fewer than 100 records
+        # 
         # This parameter is required.
         self.count = count
 

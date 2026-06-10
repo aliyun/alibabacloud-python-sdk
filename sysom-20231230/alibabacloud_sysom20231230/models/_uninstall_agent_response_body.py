@@ -13,9 +13,17 @@ class UninstallAgentResponseBody(DaraModel):
         data: main_models.UninstallAgentResponseBodyData = None,
         message: str = None,
     ):
+        # Request ID, which can be used for end-to-end diagnosis
         self.request_id = request_id
+        # Status code  
+        # - `code == Success` indicates that authorization succeeded.  
+        # - Other status codes indicate that authorization failed. When authorization fails, view the `message` field to obtain detailed error message.
         self.code = code
+        # Returned data
         self.data = data
+        # Error message  
+        # - If `code == Success`, this field is empty.  
+        # - Otherwise, this field contains the request error message.
         self.message = message
 
     def validate(self):
@@ -63,6 +71,7 @@ class UninstallAgentResponseBodyData(DaraModel):
         self,
         task_id: str = None,
     ):
+        # Job ID.
         self.task_id = task_id
 
     def validate(self):

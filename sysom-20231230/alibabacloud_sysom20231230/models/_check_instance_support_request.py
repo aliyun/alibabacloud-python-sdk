@@ -12,7 +12,9 @@ class CheckInstanceSupportRequest(DaraModel):
         instances: List[str] = None,
         region: str = None,
     ):
+        # List of instance IDs to check
         self.instances = instances
+        # Region to which the instances belong. Ensure that all instance IDs passed in the instances list belong to the same region.
         self.region = region
 
     def validate(self):

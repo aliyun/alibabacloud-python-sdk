@@ -13,8 +13,15 @@ class GetVmcoreDiagnosisTaskResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Status code  
+        # - `code == Success` indicates successful authorization;  
+        # - Other status codes indicate authorization failure. When authorization fails, view the `message` field to obtain detailed error information.
         self.code = code
+        # Return Result
         self.data = data
+        # Error message  
+        # - If `code == Success`, this field is empty.  
+        # - Otherwise, this field contains the request error message.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -70,12 +77,19 @@ class GetVmcoreDiagnosisTaskResponseBodyData(DaraModel):
         task_type: str = None,
         urls: main_models.GetVmcoreDiagnosisTaskResponseBodyDataUrls = None,
     ):
+        # Creation Time
         self.created_at = created_at
+        # Diagnosis Result
         self.diagnose_result = diagnose_result
+        # Diagnosis error message
         self.error_msg = error_msg
+        # Job ID
         self.task_id = task_id
+        # Task Status
         self.task_status = task_status
+        # Task Type
         self.task_type = task_type
+        # Download links for files associated with the job
         self.urls = urls
 
     def validate(self):
@@ -144,9 +158,13 @@ class GetVmcoreDiagnosisTaskResponseBodyDataUrls(DaraModel):
         dmesg_url: str = None,
         vmcore_url: str = None,
     ):
+        # Download link for the debuginfo-common RPM package
         self.debuginfo_common_url = debuginfo_common_url
+        # Link to download the debuginfo RPM package
         self.debuginfo_url = debuginfo_url
+        # Download link for the dmesg log
         self.dmesg_url = dmesg_url
+        # Download link for the vmcore file
         self.vmcore_url = vmcore_url
 
     def validate(self):

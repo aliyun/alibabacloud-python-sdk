@@ -15,12 +15,26 @@ class ListClustersRequest(DaraModel):
         name: str = None,
         page_size: int = None,
     ):
+        # Filter by cluster ID  
+        # 
+        # > This cluster ID is not the ACK cluster ID, but the `id` field in the data returned by this API
         self.cluster_id = cluster_id
+        # - `Running`: Cluster management is Normal;  
+        # - `Installing`: An install Job is in progress for the cluster;  
+        # - `Uninstalling`: An uninstall Job is in progress for the cluster;  
+        # - `Upgrading`: An Update Job is in progress for the cluster;  
+        # - `Offline`: The cluster is offline and management is abnormal.
         self.cluster_status = cluster_status
+        # - `ACK`: ACK cluster  
+        # - `CUSTOM`: Custom cluster (default clusters are classified as custom clusters)
         self.cluster_type = cluster_type
+        # Current page number (starting from page 1)
         self.current = current
+        # This field is deprecated. Use the `cluster_id` field for filtering instead.
         self.id = id
+        # Filter plugins by plugin name
         self.name = name
+        # Page size
         self.page_size = page_size
 
     def validate(self):

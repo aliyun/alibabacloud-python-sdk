@@ -1,3 +1,7 @@
+2026-06-10 Version: 1.18.1
+- Update API CreateInstanceInspection: add request parameters body.metricSource.
+
+
 2026-05-13 Version: 1.18.0
 - Support API CreateClusterVpcEndpointConnection.
 

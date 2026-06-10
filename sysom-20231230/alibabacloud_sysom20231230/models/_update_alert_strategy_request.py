@@ -16,13 +16,21 @@ class UpdateAlertStrategyRequest(DaraModel):
         name: str = None,
         strategy: main_models.UpdateAlertStrategyRequestStrategy = None,
     ):
+        # Whether the alert policy is enabled
+        # 
         # This parameter is required.
         self.enabled = enabled
+        # Alert policy ID
+        # 
         # This parameter is required.
         self.id = id
         self.k_8s_label = k_8s_label
+        # Alert policy name
+        # 
         # This parameter is required.
         self.name = name
+        # Alert policy details
+        # 
         # This parameter is required.
         self.strategy = strategy
 
@@ -79,8 +87,10 @@ class UpdateAlertStrategyRequestStrategy(DaraModel):
         destinations: List[int] = None,
         items: List[str] = None,
     ):
+        # Set of clusters that receive alerts
         self.clusters = clusters
         self.destinations = destinations
+        # Set of abnormal items that receive alerts
         self.items = items
 
     def validate(self):

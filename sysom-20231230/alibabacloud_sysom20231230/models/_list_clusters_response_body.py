@@ -16,10 +16,19 @@ class ListClustersResponseBody(DaraModel):
         message: str = None,
         total: int = None,
     ):
+        # Request ID, which can be used for end-to-end diagnosis
         self.request_id = request_id
+        # Status code  
+        # - If `code == Success`, authorization succeeded.  
+        # - Any other status code indicates authorization failed. When authorization fails, check the `message` field for detailed error message.
         self.code = code
+        # Returned data
         self.data = data
+        # Error message  
+        # - If `code == Success`, this field is empty;  
+        # - Otherwise, this field contains the request error message.
         self.message = message
+        # Total number of records
         self.total = total
 
     def validate(self):
@@ -86,13 +95,29 @@ class ListClustersResponseBodyData(DaraModel):
         region: str = None,
         updated_at: str = None,
     ):
+        # Actual cluster ID.  
+        # 
+        # > - For `ACK` type clusters, this ID is the ACK cluster ID.  
+        # > - For `CUSTOM` type clusters, this ID serves as a UUID and has no additional meaning.
         self.cluster_id = cluster_id
+        # - `Running`: Cluster management is normal.  
+        # - `Installing`: An install job is in progress for the cluster.  
+        # - `Uninstalling`: An uninstall job is in progress for the cluster.  
+        # - `Upgrading`: An update job is in progress for the cluster.  
+        # - `Offline`: The cluster is offline and cluster management is abnormal.
         self.cluster_status = cluster_status
+        # - `ACK`: ACK cluster  
+        # - `CUSTOM`: Custom cluster (default clusters are classified as custom clusters)
         self.cluster_type = cluster_type
+        # Creation Time
         self.created_at = created_at
+        # Cluster ID
         self.id = id
+        # Cluster Name
         self.name = name
+        # Region ID.
         self.region = region
+        # Update Time
         self.updated_at = updated_at
 
     def validate(self):

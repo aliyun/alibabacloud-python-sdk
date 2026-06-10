@@ -16,10 +16,15 @@ class ListInstancesWithEcsInfoResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
+        # Status code.
         self.code = code
+        # Returned data.
         self.data = data
+        # Error message. An empty value indicates that the data has been read completely.
         self.message = message
+        # Request RequestId
         self.request_id = request_id
+        # Total number of records
         self.total = total
 
     def validate(self):
@@ -91,18 +96,35 @@ class ListInstancesWithEcsInfoResponseBodyData(DaraModel):
         resource_group_name: str = None,
         status: str = None,
     ):
+        # Cluster ID
         self.cluster_id = cluster_id
+        # instance ID
         self.instance_id = instance_id
+        # Instance Name.
         self.instance_name = instance_name
+        # tags of instances
         self.instance_tag = instance_tag
+        # Milvus version
         self.kernel_version = kernel_version
+        # ECS instance architecture
         self.os_arch = os_arch
+        # Instance health score
         self.os_health_score = os_health_score
+        # The operating system name of the instance
         self.os_name = os_name
+        # Instance private IP
         self.private_ip = private_ip
+        # Instance Internet IP
         self.public_ip = public_ip
+        # Resource group ID.
         self.resource_group_id = resource_group_id
+        # Resource group name
         self.resource_group_name = resource_group_name
+        # The running status of the instance. Valid values:  
+        # - **Running**: The instance is running.  
+        # - **Offline**: The instance is offline.  
+        # 
+        # > An instance in the Offline state indicates that the heartbeat from the edge zone to the SysOM Server has been lost. This does not mean that the corresponding ECS instance is not running.
         self.status = status
 
     def validate(self):
@@ -211,7 +233,9 @@ class ListInstancesWithEcsInfoResponseBodyDataInstanceTag(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # Name of the tag.
         self.tag_key = tag_key
+        # Tag value.
         self.tag_value = tag_value
 
     def validate(self):

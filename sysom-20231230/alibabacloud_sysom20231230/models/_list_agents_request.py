@@ -12,9 +12,13 @@ class ListAgentsRequest(DaraModel):
         page_size: int = None,
         type: str = None,
     ):
+        # Current page number (starting from page 1)
         self.current = current
+        # Filter plugins by plugin name
         self.name = name
+        # Page size
         self.page_size = page_size
+        # Retrieve the list based on the Agent Type. For example, passing "control" retrieves all control-type Agents.
         self.type = type
 
     def validate(self):

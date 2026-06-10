@@ -14,12 +14,20 @@ class ListInstanceHealthRequest(DaraModel):
         page_size: int = None,
         start: float = None,
     ):
+        # cluster ID
         self.cluster = cluster
+        # Current page number for paging
         self.current = current
+        # End Time
+        # 
         # This parameter is required.
         self.end = end
+        # instance ID.
         self.instance = instance
+        # Page size. Default value is 5. Valid range: [1,100]
         self.page_size = page_size
+        # Start Time
+        # 
         # This parameter is required.
         self.start = start
 

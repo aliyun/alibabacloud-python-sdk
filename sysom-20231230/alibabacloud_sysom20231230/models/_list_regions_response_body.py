@@ -14,9 +14,13 @@ class ListRegionsResponseBody(DaraModel):
         data: List[str] = None,
         message: str = None,
     ):
+        # Request ID, which can be used for end-to-end diagnosis
         self.request_id = request_id
+        # error code
         self.code = code
+        # List of areas
         self.data = data
+        # Description of the error code; empty if no error occurred
         self.message = message
 
     def validate(self):

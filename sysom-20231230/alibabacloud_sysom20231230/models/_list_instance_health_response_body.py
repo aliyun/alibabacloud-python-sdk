@@ -16,10 +16,19 @@ class ListInstanceHealthResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
+        # Status code.  
+        # - `code == Success` indicates that authorization succeeded.  
+        # - Other status codes indicate that authorization failed. When authorization fails, check the `message` field for detailed error message.
         self.code = code
+        # Returned data.
         self.data = data
+        # error message  
+        # - If `code == Success`, this field is empty;  
+        # - Otherwise, this field contains the request error message.
         self.message = message
+        # Request RequestId
         self.request_id = request_id
+        # Total number of query results.
         self.total = total
 
     def validate(self):
@@ -85,12 +94,23 @@ class ListInstanceHealthResponseBodyData(DaraModel):
         score: float = None,
         status: str = None,
     ):
+        # List of container image names in the pod.
         self.images = images
+        # Instance ID.
         self.instance = instance
+        # Namespace where the pod resides.
         self.namespace = namespace
+        # Pod name.
         self.pod = pod
+        # Region ID.
         self.region_id = region_id
+        # Health score value.
         self.score = score
+        # Running status of the instance. Valid values:  
+        # - **Running**: The instance is running.  
+        # - **Offline**: The instance is offline.  
+        # 
+        # > An instance in the Offline state indicates that the heartbeat from the edge zone to the SysOM server has been lost. This does not mean that the corresponding ECS instance is not running.
         self.status = status
 
     def validate(self):

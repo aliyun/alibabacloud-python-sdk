@@ -16,10 +16,19 @@ class ListAgentInstallRecordsResponseBody(DaraModel):
         message: str = None,
         total: int = None,
     ):
+        # Request ID, which can be used for end-to-end Diagnosis
         self.request_id = request_id
+        # Status code  
+        # - `code == Success` indicates successful authorization;  
+        # - Other status codes indicate failed authorization. When authorization fails, view the `message` field to obtain detailed error message;
         self.code = code
+        # Return Result.
         self.data = data
+        # error message  
+        # - If `code == Success`, this field is empty;  
+        # - Otherwise, this field contains the request error message.
         self.message = message
+        # Total number of records.
         self.total = total
 
     def validate(self):
@@ -84,11 +93,17 @@ class ListAgentInstallRecordsResponseBodyData(DaraModel):
         status: str = None,
         updated_at: str = None,
     ):
+        # Creation Time
         self.created_at = created_at
+        # instance ID
         self.instance_id = instance_id
+        # widget ID
         self.plugin_id = plugin_id
+        # plugin Version
         self.plugin_version = plugin_version
+        # widget status
         self.status = status
+        # Updated At
         self.updated_at = updated_at
 
     def validate(self):

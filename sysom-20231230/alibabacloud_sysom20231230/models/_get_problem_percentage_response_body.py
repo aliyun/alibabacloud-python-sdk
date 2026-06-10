@@ -16,10 +16,19 @@ class GetProblemPercentageResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
+        # Status code  
+        # - `code == Success` indicates successful authorization;  
+        # - Other status codes indicate failed authorization. When authorization fails, view the `message` field to obtain detailed error message;
         self.code = code
+        # Returned data.
         self.data = data
+        # Error message  
+        # - If `code == Success`, this field is empty;  
+        # - Otherwise, this field contains the request error message.
         self.message = message
+        # Request RequestId
         self.request_id = request_id
+        # Total data volume.
         self.total = total
 
     def validate(self):
@@ -80,7 +89,9 @@ class GetProblemPercentageResponseBodyData(DaraModel):
         type: str = None,
         value: int = None,
     ):
+        # Type of abnormal item
         self.type = type
+        # Quantity of abnormal types
         self.value = value
 
     def validate(self):
