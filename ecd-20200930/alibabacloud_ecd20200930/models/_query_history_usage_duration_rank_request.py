@@ -13,10 +13,15 @@ class QueryHistoryUsageDurationRankRequest(DaraModel):
         next_token: str = None,
         start_date: str = None,
     ):
+        # The business type.
         self.biz_type = biz_type
+        # The end date of the query in `YYYY-MM-DD` format. You can query data within the last 90 days.
         self.end_date = end_date
+        # The number of entries to return. The default value is 5, and the maximum value is 200.
         self.limit = limit
+        # The token that is used to retrieve the next page of results. You can obtain this token from the response to the previous request.
         self.next_token = next_token
+        # The start date of the query in `YYYY-MM-DD` format. You can query data within the last 90 days.
         self.start_date = start_date
 
     def validate(self):

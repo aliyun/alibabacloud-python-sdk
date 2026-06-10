@@ -88,11 +88,11 @@ class ListTransferFilesResponseBodyFiles(DaraModel):
     ):
         # The URL of the file icon.
         # 
-        # > 
+        # >
         # 
-        # *   For image file types (.png, .jpg, .jpeg, .gif, .webp, and .svg), the URL of the specific image is returned.
+        # - For image file types (.png, .jpg, .jpeg, .gif, .webp, and .svg), the URL of the specific image is returned.
         # 
-        # *   For other file types, the URL of the default image is returned.
+        # - For other file types, the URL of the default image is returned.
         self.icon_url = icon_url
         # The file ID.
         self.id = id
@@ -100,15 +100,15 @@ class ListTransferFilesResponseBodyFiles(DaraModel):
         self.name = name
         # The name of the object stored in OSS.
         # 
-        # > 
+        # >
         # 
-        # *   A value is returned for this parameter only when the object is stored in a custom OSS bucket.
+        # - A value is returned for this parameter only when the object is stored in a custom OSS bucket.
         self.oss_file_name = oss_file_name
         # The path of the object in the OSS bucket.
         # 
-        # > 
+        # >
         # 
-        # *   A value is returned for this parameter only when the object is stored in a custom OSS bucket.
+        # - A value is returned for this parameter only when the object is stored in a custom OSS bucket.
         self.oss_file_path = oss_file_path
         # The file size.
         self.size = size
@@ -116,9 +116,11 @@ class ListTransferFilesResponseBodyFiles(DaraModel):
         # 
         # Valid values:
         # 
-        # *   DELETING
-        # *   DELETED
-        # *   UPLOADED
+        # - DELETING
+        # 
+        # - DELETED
+        # 
+        # - UPLOADED
         self.status = status
         # The file type.
         self.type = type

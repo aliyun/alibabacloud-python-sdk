@@ -16,17 +16,15 @@ class CreateNASFileSystemRequest(DaraModel):
     ):
         # Description of the NAS file system.
         self.description = description
-        # Whether the file system is encrypted. Uses KMS service-managed keys to encrypt the file system\\"s on-disk data. No decryption is required when reading and writing encrypted data. Possible values and their meanings:
-        # 
-        # - 0: Not encrypted.
-        # - 1: Encrypted using NAS-managed keys.
-        # 
-        # Default value: 0
+        # Whether the file system is encrypted. Uses KMS service-managed keys to encrypt the file system\\"s on-disk data. No decryption is required when reading and writing encrypted data.
         self.encrypt_type = encrypt_type
         # Name of the NAS file system.
         # The file name must follow these rules:
+        # 
         # - Length: 2 to 128 English or Chinese characters.
-        # - Must start with an uppercase or lowercase letter or a Chinese character, cannot start with http:// or https://.
+        # 
+        # - Must start with an uppercase or lowercase letter or a Chinese character, cannot start with http\\:// or https\\://.
+        # 
         # - Can include numbers, underscores (_), or hyphens (-).
         self.name = name
         # Workspace ID.
@@ -37,12 +35,7 @@ class CreateNASFileSystemRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # Storage specification type of the NAS file system. Allowed values:
-        # 
-        # - Capacity: Capacity type.
-        # - Performance: Performance type.
-        # 
-        # Default value: Capacity
+        # Storage specification type of the NAS file system.
         self.storage_type = storage_type
 
     def validate(self):

@@ -11,8 +11,12 @@ class DescribeCustomizedListHeadersRequest(DaraModel):
         list_type: str = None,
         region_id: str = None,
     ):
+        # The language type for exporting the WUYING Workspace list.
         self.lang_type = lang_type
+        # The list type.
         self.list_type = list_type
+        # The region ID. You can invoke [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to obtain the list of regions supported by WUYING Workspace.
+        # 
         # This parameter is required.
         self.region_id = region_id
 

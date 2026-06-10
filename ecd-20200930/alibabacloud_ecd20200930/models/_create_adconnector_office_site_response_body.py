@@ -10,7 +10,7 @@ class CreateADConnectorOfficeSiteResponseBody(DaraModel):
         office_site_id: str = None,
         request_id: str = None,
     ):
-        # The office network ID.
+        # The ID of the office network.
         self.office_site_id = office_site_id
         # The ID of the request.
         self.request_id = request_id

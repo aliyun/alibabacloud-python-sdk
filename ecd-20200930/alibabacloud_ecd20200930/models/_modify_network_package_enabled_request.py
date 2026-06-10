@@ -12,30 +12,12 @@ class ModifyNetworkPackageEnabledRequest(DaraModel):
         region_id: str = None,
     ):
         # Specifies whether to restore the premium bandwidth plan of the cloud computer.
-        # 
-        # Valid values:
-        # 
-        # *   true
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   false
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
         self.enabled = enabled
         # The ID of the premium bandwidth plan.
         # 
         # This parameter is required.
         self.network_package_id = network_package_id
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # The region ID. You can call the [](t2167755.xdita#)operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id

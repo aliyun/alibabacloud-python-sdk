@@ -13,11 +13,11 @@ class DeleteNetworkPackagesRequest(DaraModel):
         region_id: str = None,
         reseller_owner_uid: int = None,
     ):
-        # The IDs of premium bandwidth plans. You can specify one or more IDs.
+        # List of public network premium bandwidth IDs. You can specify one or more IDs.
         # 
         # This parameter is required.
         self.network_package_id = network_package_id
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # The region ID. Call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to obtain a list of regions where WUYING Workspace is available.
         # 
         # This parameter is required.
         self.region_id = region_id

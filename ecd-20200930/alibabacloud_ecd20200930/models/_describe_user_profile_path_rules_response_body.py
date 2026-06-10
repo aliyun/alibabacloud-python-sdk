@@ -13,9 +13,7 @@ class DescribeUserProfilePathRulesResponseBody(DaraModel):
         request_id: str = None,
         user_profile_path_rule: main_models.DescribeUserProfilePathRulesResponseBodyUserProfilePathRule = None,
     ):
-        # The request ID.
         self.request_id = request_id
-        # The directory blacklist and whitelist.
         self.user_profile_path_rule = user_profile_path_rule
 
     def validate(self):
@@ -53,29 +51,8 @@ class DescribeUserProfilePathRulesResponseBodyUserProfilePathRule(DaraModel):
         rules: List[main_models.DescribeUserProfilePathRulesResponseBodyUserProfilePathRuleRules] = None,
         user_profile_rule_type: str = None,
     ):
-        # The desktop group ID.
         self.desktop_group_id = desktop_group_id
-        # The directory rules.
         self.rules = rules
-        # The directory type that is configured for the directory.
-        # 
-        # Valid values:
-        # 
-        # *   DesktopGroup
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   Default
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
         self.user_profile_rule_type = user_profile_rule_type
 
     def validate(self):
@@ -124,9 +101,7 @@ class DescribeUserProfilePathRulesResponseBodyUserProfilePathRuleRules(DaraModel
         black_path: main_models.DescribeUserProfilePathRulesResponseBodyUserProfilePathRuleRulesBlackPath = None,
         white_paths: List[main_models.DescribeUserProfilePathRulesResponseBodyUserProfilePathRuleRulesWhitePaths] = None,
     ):
-        # The blacklist that is configured.
         self.black_path = black_path
-        # The directories in the whitelist.
         self.white_paths = white_paths
 
     def validate(self):
@@ -172,27 +147,7 @@ class DescribeUserProfilePathRulesResponseBodyUserProfilePathRuleRulesWhitePaths
         path: str = None,
         type: str = None,
     ):
-        # The path.
         self.path = path
-        # The path type.
-        # 
-        # Valid values:
-        # 
-        # *   file
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   folder
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
         self.type = type
 
     def validate(self):
@@ -227,27 +182,7 @@ class DescribeUserProfilePathRulesResponseBodyUserProfilePathRuleRulesBlackPath(
         path: str = None,
         type: str = None,
     ):
-        # The path.
         self.path = path
-        # The path type.
-        # 
-        # Valid values:
-        # 
-        # *   file
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   folder
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
         self.type = type
 
     def validate(self):

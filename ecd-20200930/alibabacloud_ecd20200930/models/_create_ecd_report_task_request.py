@@ -21,19 +21,10 @@ class CreateEcdReportTaskRequest(DaraModel):
         # The filter conditions for filtering query results. The logical relationship between each filter condition is "and" (&). Each filter condition contains FilterKey and FilterValues, which indicate the key and value for the filter condition.
         self.filter_list = filter_list
         # The language of the report. An enumerated type.
-        # 
-        # Valid values:
-        # 
-        # *   zh-CN (default): Chinese
-        # *   en-GB: English
         self.lang_type = lang_type
         # The name of the report file.
         self.report_file_name = report_file_name
         # The sub-type of the report export task.
-        # 
-        # Valid value:
-        # 
-        # *   DESKTOP: cloud computer
         # 
         # This parameter is required.
         self.sub_type = sub_type
@@ -41,7 +32,7 @@ class CreateEcdReportTaskRequest(DaraModel):
         # 
         # Valid value:
         # 
-        # *   RESOURCE_REPORT
+        # - RESOURCE_REPORT
         # 
         # This parameter is required.
         self.task_type = task_type
@@ -112,34 +103,55 @@ class CreateEcdReportTaskRequestFilterList(DaraModel):
     ):
         # The key of the filter condition for filtering query results. When SubType is set to:
         # 
-        # 1.  DESKTOP (indicating a cloud computer report), the following filter conditions are available:
+        # 1. DESKTOP (indicating a cloud computer report), the following filter conditions are available:
         # 
-        # *   KeyWord: cloud computer keyword (supports automatic recognition)
-        # *   RegionId: region ID
-        # *   DesktopId: cloud computer ID
-        # *   DesktopName: cloud computer name (supports fuzzy matching)
-        # *   OfficeSiteId: office network ID
-        # *   OfficeSiteName: office network name (supports fuzzy matching)
-        # *   Status: cloud computer status
-        # *   DesktopType: desktop type
-        # *   DesktopIP: cloud computer IP address
-        # *   SubPayType: billing method
-        # *   EndUserId: user name (supports fuzzy matching)
-        # *   ExpireTime: expiration date and time, in the yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\" format
-        # *   IncludeAssignedUser: indicates whether the cloud computer is assigned to users or not
-        # *   ResourceGroupId: resource group ID
-        # *   PolicyId: policy ID
-        # *   Tag:{Tag Key value}: cloud computer tag (To filter data using multiple tags, specify multiple filter condition objects.)
+        # - KeyWord: cloud computer keyword (supports automatic recognition)
+        # 
+        # - RegionId: region ID
+        # 
+        # - DesktopId: cloud computer ID
+        # 
+        # - DesktopName: cloud computer name (supports fuzzy matching)
+        # 
+        # - OfficeSiteId: office network ID
+        # 
+        # - OfficeSiteName: office network name (supports fuzzy matching)
+        # 
+        # - Status: cloud computer status
+        # 
+        # - DesktopType: desktop type
+        # 
+        # - DesktopIP: cloud computer IP address
+        # 
+        # - SubPayType: billing method
+        # 
+        # - EndUserId: user name (supports fuzzy matching)
+        # 
+        # - ExpireTime: expiration date and time, in the yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\" format
+        # 
+        # - IncludeAssignedUser: indicates whether the cloud computer is assigned to users or not
+        # 
+        # - ResourceGroupId: resource group ID
+        # 
+        # - PolicyId: policy ID
+        # 
+        # - Tag:{Tag Key value}: cloud computer tag (To filter data using multiple tags, specify multiple filter condition objects.)
         self.filter_key = filter_key
         # The value of the filter condition. Only the first value of the FilterValues parameter is used, if FilterKey is set to one of the following values:
         # 
-        # *   KeyWord
-        # *   DesktopName
-        # *   OfficeSiteName
-        # *   DesktopIP
-        # *   EndUserId
-        # *   ExpireTime
-        # *   IncludeAssignedUser
+        # - KeyWord
+        # 
+        # - DesktopName
+        # 
+        # - OfficeSiteName
+        # 
+        # - DesktopIP
+        # 
+        # - EndUserId
+        # 
+        # - ExpireTime
+        # 
+        # - IncludeAssignedUser
         self.filter_values = filter_values
 
     def validate(self):

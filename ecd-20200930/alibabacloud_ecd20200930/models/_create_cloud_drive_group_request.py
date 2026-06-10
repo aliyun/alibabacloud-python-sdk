@@ -15,6 +15,7 @@ class CreateCloudDriveGroupRequest(DaraModel):
         region_id: str = None,
         total_size: int = None,
     ):
+        # List of user IDs to be set as team space administrators.
         self.admin_user_ids = admin_user_ids
         # The ID of the cloud disk in Cloud Drive Service.
         # 

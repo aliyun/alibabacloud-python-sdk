@@ -20,7 +20,7 @@ class DescribeFlowStatisticRequest(DaraModel):
         # 
         # This parameter is required.
         self.office_site_id = office_site_id
-        # The number of the page to return.\\
+        # The number of the page to return.<br>
         # Default value: 1.
         self.page_number = page_number
         # The number of entries to return on each page.
@@ -29,9 +29,11 @@ class DescribeFlowStatisticRequest(DaraModel):
         # 
         # Valid values:
         # 
-        # *   3600: 1 hour
-        # *   10800: 3 hours
-        # *   86400: 24 hours
+        # - 3600: 1 hour
+        # 
+        # - 10800: 3 hours
+        # 
+        # - 86400: 24 hours
         # 
         # This parameter is required.
         self.period = period

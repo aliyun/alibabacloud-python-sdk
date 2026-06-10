@@ -14,11 +14,11 @@ class ListDirectoryUsersResponseBody(DaraModel):
         request_id: str = None,
         users: List[main_models.ListDirectoryUsersResponseBodyUsers] = None,
     ):
-        # The token used to start the next query. If the value of this parameter is empty, all results are returned.
+        # The token that is used to start the next query. If this parameter is empty, all results have been returned.
         self.next_token = next_token
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The usernames corresponding to the AD directory. If the AD directory contains only the Administrator and Guest accounts, the Users array will be empty.
+        # An array that consists of the users in the AD directory. If the AD directory contains only the Administrator and Guest users, an empty \\`Users\\` array is returned.
         self.users = users
 
     def validate(self):
@@ -72,16 +72,16 @@ class ListDirectoryUsersResponseBodyUsers(DaraModel):
         phone: str = None,
         user_principal_name: str = None,
     ):
-        # The number of assigned cloud computers.
+        # The number of assigned cloud desktops.
         self.assigned_desktop_number = assigned_desktop_number
-        # The display name of the user.
+        # The display name.
         self.display_name = display_name
         self.display_name_new = display_name_new
         # The email address.
         self.email = email
-        # The name of the user.
+        # The username.
         self.end_user = end_user
-        # The mobile number.
+        # The mobile phone number.
         self.phone = phone
         self.user_principal_name = user_principal_name
 

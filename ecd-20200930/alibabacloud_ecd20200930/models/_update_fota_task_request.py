@@ -23,8 +23,9 @@ class UpdateFotaTaskRequest(DaraModel):
         # 
         # Valid values:
         # 
-        # *   Running: automatically pushes the image update task.
-        # *   Pending: does not automatically push the image update task.
+        # - Running: automatically pushes the image update task.
+        # 
+        # - Pending: does not automatically push the image update task.
         self.user_status = user_status
 
     def validate(self):

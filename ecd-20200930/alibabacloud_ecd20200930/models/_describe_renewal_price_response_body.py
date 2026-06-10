@@ -141,17 +141,18 @@ class DescribeRenewalPriceResponseBodyPriceInfoPrice(DaraModel):
         promotions: List[main_models.DescribeRenewalPriceResponseBodyPriceInfoPricePromotions] = None,
         trade_price: float = None,
     ):
-        # The unit of currency (USD).
+        # <props="china">The unit of currency. The value is CNY.
+        # <props="intl">The unit of currency. The value is USD.
         self.currency = currency
-        # The discounted amount.
+        # The discount.
         self.discount_price = discount_price
-        # The orders.
+        # The order details.
         self.order_lines = order_lines
         # The original price.
         self.original_price = original_price
-        # The promotions.
+        # The promotion details.
         self.promotions = promotions
-        # The actual price. The actual price is the original price minus the discount.
+        # The final price. This is the value of `OriginalPrice` minus `DiscountPrice`.
         self.trade_price = trade_price
 
     def validate(self):
@@ -221,7 +222,7 @@ class DescribeRenewalPriceResponseBodyPriceInfoPricePromotions(DaraModel):
         promotion_name: str = None,
         selected: bool = None,
     ):
-        # The description of the promotion rule.
+        # The promotion rule description.
         self.option_code = option_code
         # The promotion description.
         self.promotion_desc = promotion_desc
@@ -229,7 +230,7 @@ class DescribeRenewalPriceResponseBodyPriceInfoPricePromotions(DaraModel):
         self.promotion_id = promotion_id
         # The promotion name.
         self.promotion_name = promotion_name
-        # Indicates whether an item is selected.
+        # Indicates whether the promotion is selected.
         self.selected = selected
 
     def validate(self):

@@ -35,97 +35,55 @@ class CreateSimpleOfficeSiteRequest(DaraModel):
         self.access_attribute = access_attribute
         self.account_type = account_type
         self.authority_host = authority_host
-        # The maximum public bandwidth. Value range: 10 to 200. Unit: Mbit/s. This parameter is available if you set `EnableInternetAccess` to `true`.
+        # The peak public bandwidth. Valid values: 10 to 200. Unit: Mbps.
+        # This parameter is valid only when `EnableInternetAccess` is set to `true`.
         self.bandwidth = bandwidth
-        # The Cloud Enterprise Network (CEN) instance ID.
+        # The ID of the Cloud Enterprise Network (CEN) instance.
         # 
-        # >  If you want end users to connect to cloud computers from Alibaba Cloud Workspace clients over VPCs, you can attach the office network to a CEN instance. The CEN instance is the one that connects to your on-premises network over VPN Gateway or Express Connect.
+        # > If you want to connect to cloud desktops over a VPC, attach the office site to the same CEN instance that is connected to your on-premises network by a VPN or an Express Connect circuit.
         self.cen_id = cen_id
-        # The ID of the Alibaba Cloud account to which the Cloud Enterprise Network (CEN) instance belongs.
+        # The ID of the Alibaba Cloud account that owns the CEN instance.
         # 
-        # - If you do not specify the CenId parameter, or the CEN instance that is specified by the CenId parameter belongs to the current Alibaba Cloud account, skip this parameter.
-        # - If you specify the CenId parameter and the CEN instance that you specify for the CenId parameter belongs to another Alibaba Cloud account, enter the ID of the Alibaba Cloud account.
+        # - If you do not specify CenId, or if the CEN instance belongs to your Alibaba Cloud account, this parameter is not required.
+        # 
+        # - If the CEN instance is owned by another Alibaba Cloud account, specify the ID of that account.
         self.cen_owner_id = cen_owner_id
-        # The IPv4 CIDR block that you want the office network to use in the virtual private cloud (VPC) of the office network. The system automatically creates a VPC for the office network based on the IPv4 CIDR block. We recommend that you set this parameter to one of the following CIDR blocks and their subnets:
+        # The IPv4 CIDR block for the office site\\"s Virtual Private Cloud (VPC). This parameter is required for standard office sites. The system automatically creates a VPC based on the specified IPv4 CIDR block. Use one of the following CIDR blocks or their subnets:
         # 
-        # *   `10.0.0.0/12` (subnet mask range: 12 to 14 bits)
-        # *   `172.16.0.0/12` (subnet mask range: 12 to 24 bits)
-        # *   `192.168.0.0/16` (subnet mask range: 16 to 24 bits)
+        # - `10.0.0.0/12` (The valid mask range is 12 to 24 bits.)
+        # 
+        # - `172.16.0.0/12` (The valid mask range is 12 to 24 bits.)
+        # 
+        # - `192.168.0.0/16` (The valid mask range is 16 to 24 bits.)
         self.cidr_block = cidr_block
         self.client_id = client_id
         self.client_secret = client_secret
-        # Specifies whether to create a CloudBox-based office network.
-        # 
-        # Valid values:
-        # 
-        # *   true
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   false
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
+        # Specifies whether to create a Cloud Box office site.
         self.cloud_box_office_site = cloud_box_office_site
-        # The method to connect to cloud computers from Alibaba Cloud Workspace clients.
+        # Specifies how clients can connect to cloud desktops.
         # 
-        # >  The VPC connection depends on Alibaba Cloud PrivateLink. You can use PrivateLink for free. When you set this parameter to VPC or Any, PrivateLink is automatically activated.````
+        # > VPC connections rely on the Alibaba Cloud PrivateLink service, which is free of charge. If you set this parameter to `VPC` or `Any`, the system automatically enables the PrivateLink service.
         self.desktop_access_type = desktop_access_type
         self.domain_name = domain_name
         self.eid = eid
-        # Specifies whether to grant the local administrator permissions to users that are authorized to use cloud computers in the office network.
-        # 
-        # Valid values:
-        # 
-        # * true (default)
-        # * false
+        # Specifies whether to grant users local administrator privileges on their cloud desktops.
         self.enable_admin_access = enable_admin_access
-        # Specifies whether to enable Internet access.
-        # 
-        # Valid values:
-        # 
-        # *   true
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   false (default)
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
+        # Specifies whether to enable internet access.
         self.enable_internet_access = enable_internet_access
         # Specifies whether to enable trusted device verification.
         self.need_verify_zero_device = need_verify_zero_device
-        # The office network name. The name must be 2 to 255 characters in length. It can contain digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
+        # The name of the office site. The name must be 2 to 255 characters in length. It must start with a letter or a Chinese character, and cannot start with `http://` or `https://`. The name can contain digits, colons (:), underscores (_), and hyphens (-).
         self.office_site_name = office_site_name
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to get a list of regions that support Elastic Desktop Service (ECD).
         # 
         # This parameter is required.
         self.region_id = region_id
         self.tenant_id = tenant_id
-        # The IDs of the vSwitches that you want to specify in VPCs. This parameter is required only when you create CloudBox-based office networks.
+        # The vSwitch ID. This parameter is required when you create a Cloud Box office site.
         self.v_switch_id = v_switch_id
-        # The verification code. If the CEN instance that you specify for the CenId parameter belongs to another Alibaba Cloud account, you must call the [SendVerifyCode](https://help.aliyun.com/document_detail/335132.html) operation to obtain the verification code.
+        # The verification code. If the CEN instance is owned by another Alibaba Cloud account, you must first call [SendVerifyCode](https://help.aliyun.com/document_detail/335132.html) to obtain a verification code.
         self.verify_code = verify_code
-        # The network type of the office network.
-        # 
-        # Valid values:
-        # 
-        # *   standard: advanced
-        # *   basic: basic
+        # The type of the office site.
         self.vpc_type = vpc_type
 
     def validate(self):

@@ -23,20 +23,8 @@ class DescribeEcdReportTasksRequest(DaraModel):
         # The number of entries returned per page. Maximum value: 200.
         self.page_size = page_size
         # The task status.
-        # 
-        # Valid values:
-        # 
-        # *   INIT: initializing
-        # *   FAILED
-        # *   RUNNING
-        # *   EXPIRED
-        # *   FINISHED
         self.status = status
         # The sub-type of the report export task.
-        # 
-        # Valid value:
-        # 
-        # *   DESKTOP: cloud computer
         self.sub_type = sub_type
         # The ID of the report export task.
         self.task_id = task_id
@@ -44,7 +32,7 @@ class DescribeEcdReportTasksRequest(DaraModel):
         # 
         # Valid value:
         # 
-        # *   RESOURCE_REPORT
+        # - RESOURCE_REPORT
         self.task_type = task_type
 
     def validate(self):

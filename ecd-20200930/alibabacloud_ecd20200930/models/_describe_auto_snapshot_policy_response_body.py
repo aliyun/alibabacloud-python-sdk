@@ -14,11 +14,11 @@ class DescribeAutoSnapshotPolicyResponseBody(DaraModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # The details of the queried automatic snapshot policies.
+        # The automatic snapshot policies.
         self.auto_snapshot_policies = auto_snapshot_policies
-        # The token that is used to start the next query. If this parameter is empty, all results haven been returned.
+        # The pagination token that is used in the next request to retrieve a new page of results. If the return value is empty, no more results are returned.
         self.next_token = next_token
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -75,44 +75,33 @@ class DescribeAutoSnapshotPolicyResponseBodyAutoSnapshotPolicies(DaraModel):
         status: str = None,
         time_points: str = None,
     ):
-        # The time when the automatic snapshot policy was created. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the `yyyy-mm-ddthh:mm:ssz` format. The time is displayed in UTC.
+        # The time when the policy was created. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the `yyyy-mm-ddthh:mm:ssz` format. The time is displayed in UTC.
         self.creation_time = creation_time
-        # The cron expression that specifies when Elastic Desktop Service creates snapshots on the cloud computers.
+        # The cron expression that is used to create snapshots.
         self.cron_expression = cron_expression
         # The number of cloud computers to which the automatic snapshot policy is applied.
         self.desktop_num = desktop_num
+        # The disk type for which the automatic snapshot policy is created.
+        # 
+        # Valid values:
+        # 
+        # - SYSTEM: system disk
+        # 
+        # - DATA: data disk
         self.disk_type = disk_type
         # The ID of the automatic snapshot policy.
         self.policy_id = policy_id
         # The name of the automatic snapshot policy.
         self.policy_name = policy_name
-        # The ID of the region to which the automatic snapshot policy belongs.
+        # The ID of the region where the automatic snapshot policy resides.
         self.region_id = region_id
-        # The retention period of the automatic snapshots. Unit: days. Valid values: 1 to 180.
+        # The retention period of automatic snapshots. Unit: days. Valid values: 1 to 180.
         self.retention_days = retention_days
         # The status of the automatic snapshot policy.
-        # 
-        # Valid values:
-        # 
-        # *   Expire: The automatic snapshot policy cannot be used because you have overdue payments in your account.
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   Normal: The automatic snapshot policy is normal.
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
         self.status = status
-        # The points in time at which the auto snapshots were created.
+        # The points in time when automatic snapshots are created.
         # 
-        # The parameter values are a JSON array. Example: `["0", "1", ... "23"]`. A maximum of 24 points in time are returned. The points in time are separated with commas (,).
+        # The value is a JSON array of integers. Example: `["0", "1", ... "23"]`. A maximum of 24 points in time can be specified.
         self.time_points = time_points
 
     def validate(self):

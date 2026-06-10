@@ -14,13 +14,13 @@ class CreateDesktopGroupResponseBody(DaraModel):
         order_ids: List[str] = None,
         request_id: str = None,
     ):
-        # The ID of the shared group.
+        # The ID of the desktop group.
         self.desktop_group_id = desktop_group_id
-        # The IDs of the shared groups.
+        # The desktop group IDs.
         self.desktop_group_ids = desktop_group_ids
-        # The IDs of the orders.
+        # The order IDs.
         self.order_ids = order_ids
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

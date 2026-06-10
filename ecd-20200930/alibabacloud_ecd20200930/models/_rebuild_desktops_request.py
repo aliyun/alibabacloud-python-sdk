@@ -17,41 +17,35 @@ class RebuildDesktopsRequest(DaraModel):
         region_id: str = None,
     ):
         self.after_status = after_status
-        # The cloud computer IDs. You can specify the IDs of 1 to 20 cloud computers.
+        # The IDs of the cloud computers to rebuild. You can specify 1 to 20 IDs.
         # 
         # This parameter is required.
         self.desktop_id = desktop_id
         # The ID of the new image.
         self.image_id = image_id
-        # The OS language. Only system images are supported, and Linux cloud computers support only English.
-        # 
-        # Valid values:
-        # 
-        # *   en-US: English
-        # *   zh-HK: Traditional Chinese (Hong Kong, China)
-        # *   zh-CN: Simplified Chinese
-        # *   ja-JP: Japanese
+        # The operating system language. This parameter applies only to system images. For Linux cloud computers, only English is supported.
         self.language = language
-        # The operation type on the data disk.
+        # Specifies how to handle the data disk.
         # 
-        # >  This parameter is empty by default regardless of whether data disks are attached to the cloud computer.
+        # > This parameter is optional.
         # 
-        # *   No data disks are attached to the cloud computer:\\
-        #     No operation is performed on the data disks of the cloud computer regardless of the value of this parameter.
+        # - If a cloud computer does not have a data disk, this parameter is ignored.<br>
         # 
-        # *   Data disks are attached to the cloud computer:
+        # - If a cloud computer has a data disk:
         # 
-        #     1.  The OS of the cloud computer is the same as the OS of the destination image:
+        #   1. If the new image has the same operating system as the original one:
         # 
-        #         *   If you set the OperateType parameter to `replace`, the data in the data disks of the cloud computer is replaced.
-        #         *   If you leave the OperateType parameter empty, the data in the data disks of the cloud computer is retained.
+        #      - If you set this parameter to `replace`, the data disk is replaced.
         # 
-        #     2.  The OS of the cloud computer is different from the OS of the destination image:
+        #      - If you do not specify this parameter, the data disk is retained.
         # 
-        #         *   If you set the OperateType parameter to `replace`, the data in the data disks of the cloud computer is replaced.
-        #         *   If you leave the OperateType parameter empty, the data in the data disks of the cloud computer is cleared.
+        #   2. If the new image has a different operating system:
+        # 
+        #      - If you set this parameter to `replace`, the data disk is replaced.
+        # 
+        #      - If you do not specify this parameter, the data disk is erased.
         self.operate_type = operate_type
-        # The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the regions supported by Elastic Desktop Service (EDS).
+        # The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to find the regions where Elastic Desktop Service is available.
         # 
         # This parameter is required.
         self.region_id = region_id

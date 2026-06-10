@@ -34,97 +34,97 @@ class CreateCdsFileShareLinkRequest(DaraModel):
         # 
         # Valid values:
         # 
-        # *   true
+        # - true
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     :
+        #   :
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     prohibits file download
+        #   prohibits file download
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     .
+        #   .
         # 
-        # *   false
+        # - false
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     :
+        #   :
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     allows file download
+        #   allows file download
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     .
+        #   .
         self.disable_download = disable_download
         # Specifies whether to prohibit the preview of the files that are being shared.
         # 
         # Valid values:
         # 
-        # *   true
+        # - true
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     :
+        #   :
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     prohibits file preview
+        #   prohibits file preview
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     .
+        #   .
         # 
-        # *   false
+        # - false
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     :
+        #   :
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     allows file preview
+        #   allows file preview
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     .
+        #   .
         self.disable_preview = disable_preview
         # Specifies whether to prohibit the dump of the files that are being shared.
         # 
         # Valid values:
         # 
-        # *   true
+        # - true
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     :
+        #   :
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     prohibits file dump
+        #   prohibits file dump
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     .
+        #   .
         # 
-        # *   false
+        # - false
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     :
+        #   :
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     allows file dump
+        #   allows file dump
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     .
+        #   .
         self.disable_save = disable_save
         # The limit on the number of times that the shared files can be downloaded. The value of this parameter must be equal to or greater than 0. The value 0 specifies that no limit is imposed on the number of times that the shared files can be downloaded.
         self.download_limit = download_limit
@@ -134,6 +134,7 @@ class CreateCdsFileShareLinkRequest(DaraModel):
         self.expiration = expiration
         # The file IDs.
         self.file_ids = file_ids
+        # Team space ID.
         self.group_id = group_id
         # The limit on the number of times that the shared files can be previewed. The value of this parameter must be equal to or greater than 0. The value 0 specifies that no limit is imposed on the number of times that the shared files can be previewed.
         self.preview_limit = preview_limit

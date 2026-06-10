@@ -18,8 +18,9 @@ class DeleteCenterPolicyRequest(DaraModel):
         # 
         # Valid values:
         # 
-        # *   1: public cloud.
-        # *   8: commercial edition.
+        # - 1: public cloud.
+        # 
+        # - 8: commercial edition.
         # 
         # This parameter is required.
         self.business_type = business_type
@@ -35,8 +36,9 @@ class DeleteCenterPolicyRequest(DaraModel):
         # 
         # Valid values:
         # 
-        # *   app: cloud applications.
-        # *   desktop: cloud computers.
+        # - app: cloud applications.
+        # 
+        # - desktop: cloud computers.
         # 
         # This parameter is required.
         self.resource_type = resource_type

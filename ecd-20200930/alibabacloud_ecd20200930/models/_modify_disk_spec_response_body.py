@@ -10,7 +10,7 @@ class ModifyDiskSpecResponseBody(DaraModel):
         order_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the order. You can obtain the ID of an order from the [Expenses and Costs > Orders](https://usercenter2-intl.aliyun.com/order/list) page.
+        # The order ID. You can find the order ID in <props="china">[Expenses and Costs > My Orders](https://billing-cost.console.aliyun.com/order/list). <props="intl">[Expenses and Costs > Order Management](https://usercenter2-intl.aliyun.com/order/list).
         self.order_id = order_id
         # The ID of the request.
         self.request_id = request_id

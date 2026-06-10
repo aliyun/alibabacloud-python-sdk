@@ -28,8 +28,9 @@ class DeleteTemplatesResponseBody(DaraModel):
         # 
         # Valid values:
         # 
-        # *   true: The request is successful.
-        # *   false: The request failed.
+        # - true: The request is successful.
+        # 
+        # - false: The request failed.
         self.success = success
 
     def validate(self):

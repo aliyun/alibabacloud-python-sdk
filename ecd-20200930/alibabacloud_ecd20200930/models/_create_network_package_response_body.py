@@ -11,9 +11,9 @@ class CreateNetworkPackageResponseBody(DaraModel):
         order_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the premium bandwidth plan.
+        # The ID of the created network package.
         self.network_package_id = network_package_id
-        # The ID of the bill.
+        # The ID of the order.
         self.order_id = order_id
         # The ID of the request.
         self.request_id = request_id

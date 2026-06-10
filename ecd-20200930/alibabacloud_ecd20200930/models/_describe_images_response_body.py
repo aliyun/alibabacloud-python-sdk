@@ -104,21 +104,21 @@ class DescribeImagesResponseBodyImages(DaraModel):
         # 
         # Valid values:
         # 
-        # *   SYSTEM
+        # - SYSTEM
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        # *   CUSTOM
+        # - CUSTOM
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         self.image_type = image_type
         # The name of the image.
         self.name = name
@@ -128,61 +128,61 @@ class DescribeImagesResponseBodyImages(DaraModel):
         # 
         # Valid values:
         # 
-        # *   Ubuntu
+        # - Ubuntu
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        # *   Windows Server 2022
+        # - Windows Server 2022
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        # *   UOS
+        # - UOS
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        # *   CentOS
+        # - CentOS
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        # *   Windows Server 2019
+        # - Windows Server 2019
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        # *   SQL Server 2016
+        # - SQL Server 2016
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        # *   Windows 10
+        # - Windows 10
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         self.platform = platform
         # The creation progress of the image. Unit: %.
         self.progress = progress
@@ -190,16 +190,17 @@ class DescribeImagesResponseBodyImages(DaraModel):
         # 
         # Valid values:
         # 
-        # *   HDX: High-definition Experience (HDX) protocol
-        # *   ASP: in-house Adaptive Streaming Protocol (ASP) (recommended)
+        # - HDX: High-definition Experience (HDX) protocol
+        # 
+        # - ASP: in-house Adaptive Streaming Protocol (ASP) (recommended)
         self.protocol_type = protocol_type
         # The type of the image session.
         # 
         # Valid values:
         # 
-        # *   SINGLE_SESSION: single-session image.
+        # - SINGLE_SESSION: single-session image.
         # 
-        # *   MULTIPLE_SESSION: multi-session image.
+        # - MULTIPLE_SESSION: multi-session image.
         self.session_type = session_type
         # The number of shared images.
         self.shared_count = shared_count
@@ -209,29 +210,29 @@ class DescribeImagesResponseBodyImages(DaraModel):
         # 
         # Valid values:
         # 
-        # *   Creating
+        # - Creating
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        # *   Available
+        # - Available
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        # *   CreateFailed
+        # - CreateFailed
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         self.status = status
         # The languages of the operating system.
         self.supported_languages = supported_languages

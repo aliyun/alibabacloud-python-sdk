@@ -11,14 +11,15 @@ class ResetSnapshotRequest(DaraModel):
         snapshot_id: str = None,
         stop_desktop: bool = None,
     ):
-        # The ID of the region.
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the snapshot.
+        # The ID of the snapshot used to recover disk data.
         # 
         # This parameter is required.
         self.snapshot_id = snapshot_id
+        # Indicates whether to shut down and recover the disk using the snapshot.
         self.stop_desktop = stop_desktop
 
     def validate(self):

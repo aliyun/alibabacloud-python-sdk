@@ -26,9 +26,11 @@ class CreateAndBindNasFileSystemRequest(DaraModel):
         self.desktop_group_id = desktop_group_id
         # Specifies whether to encrypt data in the NAS file system. You can use keys that are hosted by Key Management Service (KMS) to encrypt data in a file system. When you read and write the encrypted data, the data is automatically decrypted. Valid values:
         # 
-        # *   0: does not encrypt data in the NAS file system.
-        # *   1: encrypts data in the NAS file system by using a NAS-managed key. ` If you set  `FileSystemType`  to  `standard`  or  `extreme`, you can use a NAS-managed key to encrypt data in a NAS file system.`
-        # *   2: encrypts data in the NAS file system by using a KMS-managed key. `If` you set FileSystemType`  to  `extreme`, you can use a KMS-managed key to encrypt data in a NAS file system.`
+        # - 0: does not encrypt data in the NAS file system.
+        # 
+        # - 1: encrypts data in the NAS file system by using a NAS-managed key. `If you set `FileSystemType`  to  `standard`  or  `extreme`, you can use a NAS-managed key to encrypt data in a NAS file system.`
+        # 
+        # - 2: encrypts data in the NAS file system by using a KMS-managed key. `If` you set FileSystemType`  to  `extreme`, you can use a KMS-managed key to encrypt data in a NAS file system.`
         # 
         # Default value: 0.
         self.encrypt_type = encrypt_type
@@ -48,8 +50,9 @@ class CreateAndBindNasFileSystemRequest(DaraModel):
         self.region_id = region_id
         # The storage type of the NAS file system. Valid values:
         # 
-        # *   Capacity
-        # *   Performance
+        # - Capacity
+        # 
+        # - Performance
         # 
         # Default value: Capacity.
         # 

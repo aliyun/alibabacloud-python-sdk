@@ -14,9 +14,11 @@ class DescribeRecordFileResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # Details of the screen recording files.
         self.record_files = record_files
-        # RequestId
+        # The request ID.
         self.request_id = request_id
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -78,20 +80,47 @@ class DescribeRecordFileResponseBodyRecordFiles(DaraModel):
         resource_group_name: str = None,
         status: int = None,
     ):
+        # The ID of the cloud desktop.
         self.desktop_id = desktop_id
+        # The name of the cloud desktop.
         self.desktop_name = desktop_name
+        # The name of the end user.
         self.end_user_id = end_user_id
+        # The event details.
         self.event_details = event_details
+        # The name of the screen recording file.
         self.file_name = file_name
+        # The file size. Unit: bytes.
         self.file_size = file_size
+        # The ID of the policy.
         self.policy_id = policy_id
+        # The time when the screen recording ended. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format and is displayed in UTC.
         self.record_end_time = record_end_time
+        # The expiration time of the screen recording file.
         self.record_expire = record_expire
+        # The time when the screen recording started. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format and is displayed in UTC.
         self.record_start_time = record_start_time
+        # The recording type. Valid values:
+        # 
+        # - `alltime`: continuous screen recording.
+        # 
+        # - `period`: interval screen recording.
+        # 
+        # - `event`: event-triggered screen recording.
+        # 
+        # - `session`: session-based screen recording.
         self.record_type = record_type
+        # The ID of the region where the cloud desktop resides.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The name of the resource group.
         self.resource_group_name = resource_group_name
+        # The upload status of the screen recording file. Valid values:
+        # 
+        # - `0`: uploaded.
+        # 
+        # - `1`: uploading.
         self.status = status
 
     def validate(self):
@@ -213,8 +242,11 @@ class DescribeRecordFileResponseBodyRecordFilesEventDetails(DaraModel):
         event_time: int = None,
         event_type: str = None,
     ):
+        # The event details.
         self.event_name = event_name
+        # The time when the event occurred.
         self.event_time = event_time
+        # The event type.
         self.event_type = event_type
 
     def validate(self):

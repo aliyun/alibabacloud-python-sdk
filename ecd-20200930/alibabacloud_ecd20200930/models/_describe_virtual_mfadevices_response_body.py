@@ -14,11 +14,11 @@ class DescribeVirtualMFADevicesResponseBody(DaraModel):
         request_id: str = None,
         virtual_mfadevices: List[main_models.DescribeVirtualMFADevicesResponseBodyVirtualMFADevices] = None,
     ):
-        # A pagination token. It can be used in the next request to retrieve a new page of results.If NextToken is empty, no next page exists.
+        # The token to retrieve the next page of results. If this parameter is empty, no more results are available.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # Details of the virtual MFA devices.
+        # A list of virtual MFA devices.
         self.virtual_mfadevices = virtual_mfadevices
 
     def validate(self):
@@ -75,47 +75,21 @@ class DescribeVirtualMFADevicesResponseBodyVirtualMFADevices(DaraModel):
         status: str = None,
     ):
         self.ad_user = ad_user
-        # The number of consecutive failures to bind the virtual MFA device, or the number of failures on the verification of the virtual MFA device.
+        # The number of consecutive failed attempts to bind or authenticate the virtual MFA device.
         self.consecutive_fails = consecutive_fails
-        # > This parameter is in invitational preview and is not publicly available.
+        # > This parameter is in private preview.
         self.directory_id = directory_id
-        # The name of the AD user who uses the virtual MFA device.
+        # The AD username of the bound user.
         self.end_user_id = end_user_id
-        # The time when the virtual MFA device was started. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+        # The time when the virtual MFA device was enabled. The time is in the `YYYY-MM-DDThh:mm:ssZ` format and in UTC, as specified by the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard.
         self.gmt_enabled = gmt_enabled
-        # The time when a locked virtual MFA device was automatically unlocked. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+        # The time when the locked virtual MFA device is automatically unlocked. The time is in the `YYYY-MM-DDThh:mm:ssZ` format and in UTC, as specified by the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard.
         self.gmt_unlock = gmt_unlock
-        # The ID of the workspace.
+        # The workspace ID.
         self.office_site_id = office_site_id
-        # The serial number of the virtual MFA device, which is a unique identifier.
+        # The serial number of the virtual MFA device.
         self.serial_number = serial_number
         # The status of the virtual MFA device.
-        # 
-        # Valid values:
-        # 
-        # *   LOCKED
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   UNBOUND
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   NORMAL
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
         self.status = status
 
     def validate(self):

@@ -29,58 +29,66 @@ class DescribeGlobalDesktopRecordsRequest(DaraModel):
         sub_pay_type: str = None,
     ):
         self.business_channel = business_channel
-        # The cloud computer IDs. You can specify 1 to 100 office network IDs.
+        # The IDs of the cloud desktops. You can specify up to 100 IDs.
         self.desktop_id = desktop_id
-        # The name of the cloud computer.
+        # The name of the cloud desktop.
         self.desktop_name = desktop_name
+        # The ID of the resource group.
         self.desktop_status_list = desktop_status_list
-        # The cloud computer type. You can call the [DescribeDesktopTypes](https://help.aliyun.com/document_detail/188882.html) operation to query the IDs of the specifications supported by the cloud computer.
+        # The desktop type. You can call the [DescribeDesktopTypes](https://help.aliyun.com/document_detail/188882.html) operation to query the IDs of the supported desktop types.
         self.desktop_type = desktop_type
-        # The end time. The interval between the start time and end time can be up to 30 days. Supported formats:
+        # The end time of the query. The time must be in UTC and in the `YYYY-MM-DDThh:mm:ssZ` format. The interval between the start and end times cannot exceed 30 days.
         # 
-        # *   Format: YYYY-MM-DDThh:mm:ssZ.
+        # - Format: YYYY-MM-DDThh:mm:ssZ.
         self.end_time = end_time
-        # The end user ID.
+        # The ID of the end user.
+        # 
+        # - Asc: ascending order
+        # 
+        # - Desc: descending order
         self.end_user_id = end_user_id
         self.exclude_desktop_status_list = exclude_desktop_status_list
-        # The office network IDs.
+        # The ID of the office site.
+        # 
+        # - China (Shanghai)
+        # 
+        # - Singapore
         self.office_site_id = office_site_id
-        # The sorting field. If this parameter is not provided, results are sorted by creation time in descending order. Valid values:
+        # The field by which to sort the results. If you do not specify this parameter, the results are sorted by creation time in descending order. Valid value:
         # 
-        # *   uptime: indicates that the cloud computers are sorted by startup duration.
+        # - `uptime`: Sorts the results by cloud desktop uptime.
         self.order_by = order_by
-        # The page number of the current page.\\
-        # Default value: 1
-        self.page_number = page_number
-        # The number of entries to return on each page. Valid values: 1 to 100.
-        self.page_size = page_size
-        # The region ID.
+        # The page number to return.<br>Default value: 1.<br>
         # 
-        # *   China (Shanghai)
-        # *   Singapore
+        # - Format: YYYY-MM-DDThh:mm:ssZ.
+        self.page_number = page_number
+        # The number of entries per page. Maximum value: 100.
+        self.page_size = page_size
+        # The ID of the region.
+        # 
+        # - Shanghai
+        # 
+        # - Singapore
         # 
         # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The query range. This parameter is empty by default. Optional values are:
+        # The query scope. This parameter is empty by default. Valid value:
         # 
-        # *   ADVANCED: indicates that statistics such as the connection duration are queried.
+        # - `ADVANCED`: Queries statistical records, such as connection duration.
+        # 
+        # - postPaid: Pay-as-you-go.
+        # 
+        # - monthPackage: monthly time-based package.
         self.scope = scope
-        # The sorting method. Default value: ascending. Valid value:
+        # The sort order. The default is `Asc`. Valid values:
         # 
-        # *   Asc: ascending order
-        # *   Desc: descending.
+        # - `Asc`: ascending order
         self.sort_type = sort_type
-        # The start time. Supported formats:
-        # 
-        # *   Format: YYYY-MM-DDThh:mm:ssZ.
+        # The start time of the query. The time must be in UTC and in the `YYYY-MM-DDThh:mm:ssZ` format.
         self.start_time = start_time
-        # The way to purchase cloud computers. Valid values:
-        # 
-        # *   prePaid: The monthly purchase is unlimited.
-        # *   postPaid: pay-as-you-go
-        # *   monthPackage: monthly duration.
+        # The billing method of the cloud desktop. Valid values:
         self.sub_pay_type = sub_pay_type
 
     def validate(self):

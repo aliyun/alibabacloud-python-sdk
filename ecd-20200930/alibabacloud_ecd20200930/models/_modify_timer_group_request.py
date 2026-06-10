@@ -16,17 +16,17 @@ class ModifyTimerGroupRequest(DaraModel):
         name: str = None,
         region_id: str = None,
     ):
-        # The scheduled tasks.
+        # The scheduled task configurations.
         self.config_timers = config_timers
         # The description of the configuration group.
         self.description = description
-        # The ID of the configuration group.
+        # The configuration group ID.
         # 
         # This parameter is required.
         self.group_id = group_id
         # The name of the configuration group.
         self.name = name
-        # The ID of the region. Set the value to `cn-shanghai`.
+        # The region ID. This feature is not tied to a specific region, but you must set this parameter to `cn-shanghai`.
         self.region_id = region_id
 
     def validate(self):
@@ -96,55 +96,27 @@ class ModifyTimerGroupRequestConfigTimers(DaraModel):
         timer_type: str = None,
         trigger_type: str = None,
     ):
-        # Specifies whether to allow end users to configure the scheduled task.
+        # Specifies whether to allow end users to configure scheduled tasks.
         self.allow_client_setting = allow_client_setting
-        # The cron expression specified in the scheduled task.
+        # The Cron expression for the scheduled task.
         # 
-        # >  The time must be in UTC. For example, if your local time is 24:00 (UTC+8), you must set the value to 0 0 16 ? \\* 1,2,3,4,5,6,7.
+        # > The Cron expression must be in UTC. For example, to schedule a task for 00:00 daily in China Standard Time (UTC+8), set this parameter to `0 0 16 ? * 1,2,3,4,5,6,7`.
         self.cron_expression = cron_expression
-        # Specifies whether to forcibly execute the scheduled task. A value of true specifies the scheduled task will run forcefully, ignoring the cloud computer and connection status.
+        # Specifies whether to force execution. If this parameter is set to `true`, the scheduled task runs regardless of the desktop and connection status.
         self.enforce = enforce
-        # The interval at which the scheduled task is executed. Unit: minutes.
+        # The interval, in minutes.
         self.interval = interval
         self.notification_time = notification_time
-        # The type of the scheduled operation. If you set TimerType to NoConnect, you can specify this parameter.
-        # 
-        # Valid values:
-        # 
-        # *   Hibernate: scheduled hibernation.
-        # *   Shutdown: scheduled shutdown.
+        # The operation to perform. This parameter applies only if `TimerType` is set to `NoConnect`.
         self.operation_type = operation_type
-        # The process whitelist. If whitelisted processes are running, the scheduled task does not take effect.
+        # The process whitelist for advanced inactivity detection. The scheduled task is not triggered if a process from this list is running.
         self.process_whitelist = process_whitelist
-        # The reset option.
-        # 
-        # Valid value:
-        # 
-        # *   RESET_TYPE_SYSTEM: resets the system disk.
-        # *   RESET_TYPE_USER_DISK: resets the data disk.
-        # *   RESET_TYPE_BOTH: resets the system disk and data disk.
+        # Specifies which disks to reset.
         self.reset_type = reset_type
         self.segment_timers = segment_timers
         # The type of the scheduled task.
-        # 
-        # Valid value:
-        # 
-        # *   NoOperationDisconnect: scheduled disconnection upon inactivity.
-        # *   NoConnect: scheduled disconnection upon specified operation (OperationType).
-        # *   TimerBoot: scheduled start.
-        # *   TimerReset: scheduled reset.
-        # *   NoOperationShutdown: scheduled shutdown upon inactivity.
-        # *   NoOperationHibernate: scheduled hibernation upon inactivity.
-        # *   TimerShutdown: scheduled shutdown.
-        # *   NoOperationReboot: scheduled restart upon inactivity.
-        # *   TimerReboot: Restarts the cloud computers on schedule.
         self.timer_type = timer_type
-        # The method to trigger the scheduled task upon inactivity.
-        # 
-        # Valid values:
-        # 
-        # *   Advanced: intelligent detection.
-        # *   Standard: standard detection.
+        # The method for detecting inactivity.
         self.trigger_type = trigger_type
 
     def validate(self):
@@ -243,6 +215,7 @@ class ModifyTimerGroupRequestConfigTimersSegmentTimers(DaraModel):
         enforce: bool = None,
         image_id: str = None,
         interval: int = None,
+        ip_segments: List[str] = None,
         lock_screen_time: int = None,
         notification_time: int = None,
         operation_type: str = None,
@@ -255,11 +228,15 @@ class ModifyTimerGroupRequestConfigTimersSegmentTimers(DaraModel):
         verification_notification_time: int = None,
         verification_time: int = None,
     ):
+        # Timestamp for scheduled task execution. The task runs at the specified time.
         self.appointment_timer = appointment_timer
         self.end_cron_expression = end_cron_expression
         self.enforce = enforce
+        # Image ID for image-change scheduled tasks.
         self.image_id = image_id
         self.interval = interval
+        self.ip_segments = ip_segments
+        # Lock screen time for inactivity-based lock screen. Not supported for non-AD desktops.
         self.lock_screen_time = lock_screen_time
         self.notification_time = notification_time
         self.operation_type = operation_type
@@ -294,6 +271,9 @@ class ModifyTimerGroupRequestConfigTimersSegmentTimers(DaraModel):
 
         if self.interval is not None:
             result['Interval'] = self.interval
+
+        if self.ip_segments is not None:
+            result['IpSegments'] = self.ip_segments
 
         if self.lock_screen_time is not None:
             result['LockScreenTime'] = self.lock_screen_time
@@ -346,6 +326,9 @@ class ModifyTimerGroupRequestConfigTimersSegmentTimers(DaraModel):
 
         if m.get('Interval') is not None:
             self.interval = m.get('Interval')
+
+        if m.get('IpSegments') is not None:
+            self.ip_segments = m.get('IpSegments')
 
         if m.get('LockScreenTime') is not None:
             self.lock_screen_time = m.get('LockScreenTime')

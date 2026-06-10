@@ -26,48 +26,38 @@ class DescribeDesktopSessionsRequest(DaraModel):
         start_time: str = None,
         sub_pay_type: str = None,
     ):
-        # Specifies whether to turn on the switch to check session status of cloud computers.
+        # Specifies whether to check the session status within the cloud computer.
         self.check_os_session = check_os_session
-        # The IDs of the cloud computers. You can specify the IDs of 1 to 100 cloud computers.
+        # The ID of the cloud computer. You can specify 1 to 100 IDs.
         self.desktop_id = desktop_id
         # The name of the cloud computer.
         self.desktop_name = desktop_name
-        # The end of the time range to query.
+        # The end time of the query.
         self.end_time = end_time
         # The ID of the end user.
         self.end_user_id = end_user_id
-        # The user ID. This parameter functions the same as the `EndUserId` parameter. You only need to include one of them in your request.
+        # The ID of the end user. This parameter is the same as the `EndUserId` parameter. Specify only one of them.
         self.end_user_id_filter = end_user_id_filter
+        # Specifies whether to return information about the terminal.
         self.fill_hardware_info = fill_hardware_info
+        # The language of the returned information.
         self.language = language
-        # The office network ID.
+        # The ID of the cloud computer.
         self.office_site_id = office_site_id
-        # The page number.
+        # The page number for a paged query.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The maximum number of entries to return on each page for a paged query.
         self.page_size = page_size
-        # The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the regions supported by Elastic Desktop Service (EDS).
+        # The ID of the region. Call [](t2167755.xdita#)to obtain a list of regions that Elastic Desktop Service (EDS) supports.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_group_id = resource_group_id
-        # The state of the session.
-        # 
-        # Valid values:
-        # 
-        # *   Connected
-        # *   Disconnected
+        # The connection status of the session.
         self.session_status = session_status
-        # The start of the time range to query.
+        # The start time of the query.
         self.start_time = start_time
-        # The billing method of cloud computers.
-        # 
-        # Valid values:
-        # 
-        # *   duration: hourly plan (available for users in the whitelist)
-        # *   postPaid: pay-as-you-go
-        # *   monthPackage: monthly subscription (the 120-hour/250-hour computing plan)
-        # *   prePaid: monthly subscription (the Unlimited computing plan)
+        # The billing method of the cloud computer.
         self.sub_pay_type = sub_pay_type
 
     def validate(self):

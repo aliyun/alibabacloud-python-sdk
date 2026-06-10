@@ -23,6 +23,7 @@ class ModifyCloudDrivePermissionRequest(DaraModel):
         self.download_end_user_ids = download_end_user_ids
         # The IDs of the users who have the upload and download permissions.
         self.download_upload_end_user_ids = download_upload_end_user_ids
+        # List of end user IDs with neither upload nor download permissions. These users cannot download files from the enterprise file storage to on-premises devices or upload files from on-premises devices to the enterprise file storage.
         self.no_download_no_upload_end_user_ids = no_download_no_upload_end_user_ids
         # The region ID.
         # 

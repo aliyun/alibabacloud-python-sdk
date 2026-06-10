@@ -14,8 +14,11 @@ class QueryHistoryAvgMetricListResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of average metric data.
         self.avg_metric_list = avg_metric_list
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -79,22 +82,61 @@ class QueryHistoryAvgMetricListResponseBodyAvgMetricList(DaraModel):
         sessions: List[main_models.QueryHistoryAvgMetricListResponseBodyAvgMetricListSessions] = None,
         sub_pay_type: str = None,
     ):
+        # The aggregated metric value.
         self.avg_value = avg_value
+        # The billing method of the desktop. Valid values:
+        # 
+        # - `PostPaid`: pay-as-you-go
+        # 
+        # - `PrePaid`: subscription
+        # 
+        # Default value: `PostPaid`.
         self.charge_type = charge_type
+        # The number of vCPUs.
         self.cpu = cpu
+        # The desktop group ID.
         self.desktop_group_id = desktop_group_id
+        # **The desktop ID.**
         self.desktop_id = desktop_id
+        # **The desktop name.**
         self.desktop_name = desktop_name
+        # The status of the desktop. Valid values:
+        # 
+        # - `Stopped`: The desktop is stopped.
+        # 
+        # - `Starting`: The desktop is being started.
+        # 
+        # - `Rebuilding`: The desktop is being rebuilt.
+        # 
+        # - `Running`: The desktop is running.
+        # 
+        # - `Stopping`: The desktop is being stopped.
+        # 
+        # - `Expired`: The desktop has expired.
+        # 
+        # - `Deleted`: The desktop has been deleted.
+        # 
+        # - `Pending`: The desktop is in a pending state.
         self.desktop_status = desktop_status
+        # The desktop type.
         self.desktop_type = desktop_type
+        # The IDs of the authorized end users.
         self.end_user_ids = end_user_ids
+        # The GPU memory size.
         self.gpu_spec = gpu_spec
+        # The management flag.
         self.management_flag = management_flag
+        # The memory size, in MB.
         self.memory = memory
+        # Whether the desktop is a multi-user shared desktop.
         self.multi_resource = multi_resource
+        # The type of the system image.
         self.platform = platform
+        # The region ID.
         self.region_id = region_id
+        # A list of session details.
         self.sessions = sessions
+        # The payment type.
         self.sub_pay_type = sub_pay_type
 
     def validate(self):
@@ -229,9 +271,13 @@ class QueryHistoryAvgMetricListResponseBodyAvgMetricListSessions(DaraModel):
         external_user_name: str = None,
         nick_name: str = None,
     ):
+        # The ID of the end user.
         self.end_user_id = end_user_id
+        # The time when the session was created.
         self.establishment_time = establishment_time
+        # The external username of the end user.
         self.external_user_name = external_user_name
+        # The nickname of the end user.
         self.nick_name = nick_name
 
     def validate(self):

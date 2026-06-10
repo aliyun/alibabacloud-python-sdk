@@ -15,34 +15,14 @@ class ModifyNetworkPackageBandwidthRequest(DaraModel):
         reseller_owner_uid: int = None,
     ):
         # Specifies whether to enable the automatic payment feature.
-        # 
-        # Valid values:
-        # 
-        # *   true (default): enables the auto-payment feature.
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     Make sure that your account has sufficient balance. Otherwise, no order is generated.
-        # 
-        #     <!-- -->
-        # 
-        # *   false: disables the auto-payment feature. In this case, an order is generated but you need to make the payment manually.
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     To make the payment, log on to the Elastic Desktop Service console, go to the Orders page, and find the order based on the order ID.
-        # 
-        #     <!-- -->
         self.auto_pay = auto_pay
-        # The maximum bandwidth of the premium bandwidth plan, in Mbit/s. Valid range: The allowed range depends on the billing method:
+        # The maximum bandwidth of the premium bandwidth plan, in Mbit/s.
         # 
-        # *   Subscription: 2 to 1000
-        # *   Pay-as-you-go, by data transfer (PayByTraffic): 2 to 200
-        # *   Pay-as-you-go, by fixed bandwidth (PayByBandwidth): 2 to 1000
+        # - For subscription premium bandwidth, the valid range is 2 to 1000.
+        # 
+        # - For pay-as-you-go premium bandwidth with pay-by-traffic billing, the valid range is 2 to 200.
+        # 
+        # - For pay-as-you-go premium bandwidth with pay-by-bandwidth billing, the valid range is 2 to 1000.
         # 
         # This parameter is required.
         self.bandwidth = bandwidth
@@ -52,7 +32,7 @@ class ModifyNetworkPackageBandwidthRequest(DaraModel):
         self.network_package_id = network_package_id
         # The promotion ID.
         self.promotion_id = promotion_id
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # The region ID. You can call the [](t2167755.xdita#)operation to query the list of regions supported by Elastic Desktop Service (EDS).
         # 
         # This parameter is required.
         self.region_id = region_id

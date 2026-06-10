@@ -21,13 +21,13 @@ class ApplyCoordinationForMonitoringRequest(DaraModel):
         # 
         # Set the value to FULL_CONTROL.
         # 
-        # *   The value FULL_CONTROL specifies that the cloud desktop is shared and remote access to the cloud desktop is allowed.
+        # - The value FULL_CONTROL specifies that the cloud desktop is shared and remote access to the cloud desktop is allowed.
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
         # This parameter is required.
         self.coordinate_policy_type = coordinate_policy_type
@@ -37,13 +37,13 @@ class ApplyCoordinationForMonitoringRequest(DaraModel):
         # 
         # Set the value to ADMIN_INITIATE.
         # 
-        # *   The value ADMIN_INITIATE specifies that the administrator initiates the coordination request.
+        # - The value ADMIN_INITIATE specifies that the administrator initiates the coordination request.
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         self.initiator_type = initiator_type
         # The region ID. You can call the [DescribeRegions](https://next.api.aliyun.com/document/ecd/2020-09-30/DescribeRegions) operation to query the most recent region list.
         # 
@@ -151,13 +151,13 @@ class ApplyCoordinationForMonitoringRequestResourceCandidates(DaraModel):
         # 
         # Set the value to CLOUD_DESKTOP.
         # 
-        # *   The value CLOUD_DESKTOP specifies that the resource is a cloud desktop.
+        # - The value CLOUD_DESKTOP specifies that the resource is a cloud desktop.
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
         # This parameter is required.
         self.resource_type = resource_type

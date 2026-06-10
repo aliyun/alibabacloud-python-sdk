@@ -18,108 +18,33 @@ class CreateCdsFileRequest(DaraModel):
         parent_file_id: str = None,
         region_id: str = None,
     ):
-        # The ID of the cloud disk.
+        # Enterprise cloud disk ID.
         # 
         # This parameter is required.
         self.cds_id = cds_id
-        # The policy that is used when the file that you want to upload has the same name as an existing file in the cloud disk.
-        # 
-        # Valid values:
-        # 
-        # *   refuse
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     denies creating the file
-        # 
-        #     <!-- -->
-        # 
-        #     .
-        # 
-        # *   auto_rename
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     automatically renames the file
-        # 
-        #     <!-- -->
-        # 
-        #     .
-        # 
-        # *   ignore
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     allows the file to use the same name as the existing file in the cloud disk
-        # 
-        #     <!-- -->
-        # 
-        #     .
-        # 
-        # *   over_write
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     overwrites the existing file in the cloud disk
-        # 
-        #     <!-- -->
-        # 
-        #     .
+        # How to handle files with the same name.
         self.conflict_policy = conflict_policy
-        # The user ID.
+        # User ID.
         self.end_user_id = end_user_id
-        # The hash value of the SHA1 algorithm that is used by the file.
+        # SHA-1 hash value of the file.
         self.file_hash = file_hash
-        # The file size. Unit: bytes.
+        # File size. Unit: Byte.
         # 
         # This parameter is required.
         self.file_length = file_length
-        # The file name.
+        # File name.
         # 
         # This parameter is required.
         self.file_name = file_name
-        # The file type.
-        # 
-        # Valid values:
-        # 
-        # *   file
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   folder
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
+        # File type.
         # 
         # This parameter is required.
         self.file_type = file_type
+        # Team space ID.
         self.group_id = group_id
-        # The ID of the parent folder.
+        # Parent file ID. Get this from the `FileId` parameter returned by the [ListCdsFiles](https://help.aliyun.com/document_detail/2247622.html) API.
         self.parent_file_id = parent_file_id
-        # The region ID.
+        # Region ID. Call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to list regions supported by WUYING Workspace.
         # 
         # This parameter is required.
         self.region_id = region_id

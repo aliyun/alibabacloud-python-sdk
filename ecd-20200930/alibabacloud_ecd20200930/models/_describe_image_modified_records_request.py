@@ -12,18 +12,19 @@ class DescribeImageModifiedRecordsRequest(DaraModel):
         next_token: str = None,
         region_id: str = None,
     ):
-        # The ID of the cloud computer.
+        # The cloud desktop ID.
         # 
         # This parameter is required.
         self.desktop_id = desktop_id
-        # The maximum number of entries to return on each page.
+        # Number of entries per page for paged queries.
         # 
-        # *   Maximum value: 100.
-        # *   Default value: 10.
+        # - Maximum: 100.
+        # 
+        # - Default: 10.
         self.max_results = max_results
-        # The token that determines the start point of the next query. If this parameter is left empty, all results are returned.
+        # Pagination token. Set this parameter to the NextToken value returned by the previous API call.
         self.next_token = next_token
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # Region ID. Call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to list regions that support WUYING Workspace.
         # 
         # This parameter is required.
         self.region_id = region_id

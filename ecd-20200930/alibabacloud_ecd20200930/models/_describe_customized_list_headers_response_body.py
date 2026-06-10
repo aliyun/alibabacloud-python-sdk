@@ -13,7 +13,9 @@ class DescribeCustomizedListHeadersResponseBody(DaraModel):
         headers: List[main_models.DescribeCustomizedListHeadersResponseBodyHeaders] = None,
         request_id: str = None,
     ):
+        # The list of table headers.
         self.headers = headers
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -57,8 +59,11 @@ class DescribeCustomizedListHeadersResponseBodyHeaders(DaraModel):
         header_key: str = None,
         header_name: str = None,
     ):
+        # The display type of the table header. You can invoke [ModifyCustomizedListHeaders](https://help.aliyun.com/document_detail/452324.html) to change it.
         self.display_type = display_type
+        # The key of the table header.
         self.header_key = header_key
+        # The name of the table header.
         self.header_name = header_name
 
     def validate(self):

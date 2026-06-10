@@ -10,8 +10,12 @@ class DescribeCloudDrivePermissionsRequest(DaraModel):
         cds_id: str = None,
         region_id: str = None,
     ):
+        # ID of the created enterprise cloud drive.
+        # 
         # This parameter is required.
         self.cds_id = cds_id
+        # Region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
 

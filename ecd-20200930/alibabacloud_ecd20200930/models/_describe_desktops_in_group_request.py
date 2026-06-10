@@ -18,27 +18,23 @@ class DescribeDesktopsInGroupRequest(DaraModel):
     ):
         self.custom_end_time_period = custom_end_time_period
         self.custom_start_time_period = custom_start_time_period
-        # The ID of the cloud computer share.
+        # The ID of the desktop group.
         # 
         # This parameter is required.
         self.desktop_group_id = desktop_group_id
-        # Specifies whether to ignore deletion flags.
-        # 
-        # Default value: true. Valid values:
-        # 
-        # *   true: ignores deletion flags. The cloud computers that were deleted are returned.
-        # *   false: does not ignore deletion flags. The cloud computers that were deleted are not returned.
+        # Specifies whether to return deleted desktops.
         self.ignore_deleted = ignore_deleted
-        # The maximum number of entries per page.
+        # The maximum number of entries to return on a single page.
         # 
-        # *   Default value: 10.
-        # *   Maximum value: 100.
+        # - Maximum value: 100.
+        # 
+        # - Default value: 10.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+        # The token that is used to start the next query. If this parameter is empty, all results are returned.
         self.next_token = next_token
-        # The billing method of the cloud computer share.
+        # The billing method.
         self.pay_type = pay_type
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
         # 
         # This parameter is required.
         self.region_id = region_id

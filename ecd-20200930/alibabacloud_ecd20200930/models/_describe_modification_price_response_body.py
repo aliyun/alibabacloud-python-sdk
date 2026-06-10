@@ -141,7 +141,7 @@ class DescribeModificationPriceResponseBodyPriceInfoPrice(DaraModel):
         promotions: List[main_models.DescribeModificationPriceResponseBodyPriceInfoPricePromotions] = None,
         trade_price: float = None,
     ):
-        # The unit of currency (USD).
+        # <props="china">The unit of currency (CNY).<props="intl">The unit of currency (USD).
         self.currency = currency
         # The discounted amount.
         self.discount_price = discount_price

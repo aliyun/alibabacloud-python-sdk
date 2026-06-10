@@ -15,11 +15,18 @@ class DescribeCloudDiskGroupsRequest(DaraModel):
         parent_org_id: str = None,
         region_id: str = None,
     ):
+        # The ID of the enterprise cloud drive that you created.
+        # 
         # This parameter is required.
         self.cds_id = cds_id
+        # The group ID.
         self.group_id = group_id
+        # The team space name.
         self.group_name = group_name
+        # The parent organization ID.
         self.parent_org_id = parent_org_id
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
 

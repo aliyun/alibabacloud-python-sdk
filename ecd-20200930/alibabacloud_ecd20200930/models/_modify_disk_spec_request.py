@@ -15,44 +15,26 @@ class ModifyDiskSpecRequest(DaraModel):
         root_disk_performance_level: str = None,
         user_disk_performance_level: str = None,
     ):
-        # Specifies whether to enable the automatic payment feature.
+        # Specifies whether to enable automatic payment.
         # 
-        # *   If you set the value to `true`, ensure your account has sufficient balance to avoid generating abnormal orders.
-        # *   If you set the value to `false`, go to the **Expenses and Costs** page to complete the payment based on the order number.
+        # - If set to `true`, ensure your account has a sufficient balance. Otherwise, an abnormal order is generated.
         # 
-        # Valid values:
-        # 
-        # *   true (default): enables the automatic payment feature.
-        # *   false: generates the order and manually complete the payment.
+        # - If set to `false`, log on to the console. Then, go to the **Expenses and Costs** page to pay for the order using the returned order ID.
         self.auto_pay = auto_pay
-        # The ID of the cloud computer.
+        # The ID of the cloud desktop.
         # 
         # This parameter is required.
         self.desktop_id = desktop_id
-        # The ID of the sales promotion activity. You can call the DescribePrice operation to obtain the IDs of matching sales promotion activities.
+        # The promotion ID. Call a pricing inquiry API to get a list of applicable promotion IDs.
         self.promotion_id = promotion_id
-        # The ID of the region. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
+        # The region ID. Call [DescribeRegions](~~DescribeRegions~~) to get a list of supported regions for WUYING Workspace.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.reseller_owner_uid = reseller_owner_uid
-        # The PL of the system disk. Only Enterprise Graphics or High Frequency cloud computers support disk PL adjustments.
-        # 
-        # Valid values:
-        # 
-        # *   PL1
-        # *   PL0
-        # *   PL3
-        # *   PL2
+        # The performance level of the system disk. You can set the performance level for Graphics or High-frequency workspaces.
         self.root_disk_performance_level = root_disk_performance_level
-        # The PL of the data disk. Only Enterprise Graphics or High Frequency cloud computers support disk PL adjustments.
-        # 
-        # Valid values:
-        # 
-        # *   PL1
-        # *   PL0
-        # *   PL3
-        # *   PL2
+        # The performance level of the data disk. You can set the performance level for Graphics or High-frequency workspaces.
         self.user_disk_performance_level = user_disk_performance_level
 
     def validate(self):

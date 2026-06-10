@@ -12,10 +12,15 @@ class ModifyQosRuleRequest(DaraModel):
         qos_rule_name: str = None,
         upload: int = None,
     ):
+        # The maximum downstream bandwidth. The unit is Mbps.
         self.download = download
+        # The ID of the QoS rule.
+        # 
         # This parameter is required.
         self.qos_rule_id = qos_rule_id
+        # The name of the QoS rule.
         self.qos_rule_name = qos_rule_name
+        # The maximum upstream bandwidth. The unit is Mbps.
         self.upload = upload
 
     def validate(self):

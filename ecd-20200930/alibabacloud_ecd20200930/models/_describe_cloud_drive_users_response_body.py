@@ -14,8 +14,11 @@ class DescribeCloudDriveUsersResponseBody(DaraModel):
         next_token: str = None,
         request_id: str = None,
     ):
+        # A list of user personal drives.
         self.cloud_drive_users = cloud_drive_users
+        # The token for the next page of results. An empty value indicates that all results have been returned.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -69,12 +72,19 @@ class DescribeCloudDriveUsersResponseBodyCloudDriveUsers(DaraModel):
         user_id: str = None,
         user_name: str = None,
     ):
+        # The ID of the user personal drive.
         self.drive_id = drive_id
+        # The ID of the end user.
         self.end_user_id = end_user_id
+        # The status of the user personal drive.
         self.status = status
+        # Maximum storage capacity for the user’s personal drive, in bytes.
         self.total_size = total_size
+        # The used storage space, in bytes.
         self.used_size = used_size
+        # The internal ID of the user.
         self.user_id = user_id
+        # The name of the end user.
         self.user_name = user_name
 
     def validate(self):

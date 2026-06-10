@@ -25,55 +25,73 @@ class DescribeModificationPriceRequest(DaraModel):
     ):
         # The maximum public bandwidth. Unit: Mbit/s.
         # 
-        # >  Valid values when PayByTraffic is set to PayByBandwidth: 10 to 1000.
+        # > Valid values when PayByTraffic is set to PayByBandwidth: 10 to 1000.
         self.bandwidth = bandwidth
         # The ID of either the monthly subscription cloud computer with unlimited hours or the premium bandwidth plan.
         self.instance_id = instance_id
         # The specifications.
         # 
-        # *   Valid values when you set `ResourceType` to `Desktop`:
+        # - Valid values when you set `ResourceType` to `Desktop`:
         # 
-        #     *   ecd.basic.small
-        #     *   ecd.basic.large
-        #     *   ecd.advanced.large
-        #     *   ecd.advanced.xlarge
-        #     *   ecd.performance.2xlarge
-        #     *   ecd.graphics.xlarge
-        #     *   ecd.graphics.2xlarge
-        #     *   ecd.advanced.xlarge_s8d2
-        #     *   ecd.advanced.xlarge_s8d7
-        #     *   ecd.graphics.1g72c
-        #     *   eds.general.2c2g
-        #     *   eds.general.2c4g
-        #     *   eds.general.2c8g
-        #     *   eds.general.4c8g
-        #     *   eds.general.4c16g
-        #     *   eds.general.8c16g
-        #     *   eds.general.8c32g
-        #     *   eds.general.16c32g
+        #   - ecd.basic.small
         # 
-        # *   You can skip this parameter if `ResourceType` is set to `NetworkPackage`.
+        #   - ecd.basic.large
+        # 
+        #   - ecd.advanced.large
+        # 
+        #   - ecd.advanced.xlarge
+        # 
+        #   - ecd.performance.2xlarge
+        # 
+        #   - ecd.graphics.xlarge
+        # 
+        #   - ecd.graphics.2xlarge
+        # 
+        #   - ecd.advanced.xlarge_s8d2
+        # 
+        #   - ecd.advanced.xlarge_s8d7
+        # 
+        #   - ecd.graphics.1g72c
+        # 
+        #   - eds.general.2c2g
+        # 
+        #   - eds.general.2c4g
+        # 
+        #   - eds.general.2c8g
+        # 
+        #   - eds.general.4c8g
+        # 
+        #   - eds.general.4c16g
+        # 
+        #   - eds.general.8c16g
+        # 
+        #   - eds.general.8c32g
+        # 
+        #   - eds.general.16c32g
+        # 
+        # - You can skip this parameter if `ResourceType` is set to `NetworkPackage`.
         self.instance_type = instance_type
+        # Promotion activity ID.
         self.promotion_id = promotion_id
-        # The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
+        # The region ID. You can call the [](t2167755.xdita#)operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
         # 
         # This parameter is required.
         self.region_id = region_id
+        # User ID for resource ownership in resale mode. You do not need to specify this parameter if resale mode is not used.
         self.reseller_owner_uid = reseller_owner_uid
+        # List of resource specification templates.
         self.resource_specs = resource_specs
         # The resource type. The required parameters depend on the resource type.
         # 
-        # *   When `ResourceType` is set to `Desktop`, the required parameters are `InstanceType`, `RootDiskSizeGib`, and `UserDiskSizeGib`.
-        # *   When `ResourceType` is set to `NetworkPackage`, the required parameter is `Bandwidth`.
+        # - When `ResourceType` is set to `Desktop`, the required parameters are `InstanceType`, `RootDiskSizeGib`, and `UserDiskSizeGib`.
         # 
-        # Valid values:
-        # 
-        # *   Desktop (default): cloud computers.
-        # *   NetworkPackage: premium bandwidth plans.
+        # - When `ResourceType` is set to `NetworkPackage`, the required parameter is `Bandwidth`.
         self.resource_type = resource_type
+        # Performance level of the system disk. When the WUYING Workspace instance type is set to graphics-optimized or high clock speed, you can specify the disk performance level. For differences between performance levels, see [](t583241.xdita#).
         self.root_disk_performance_level = root_disk_performance_level
         # The size of the system disk. Unit: GiB.
         self.root_disk_size_gib = root_disk_size_gib
+        # Performance level of the data disk. When the WUYING Workspace instance type is set to graphics-optimized or high clock speed, you can specify the disk performance level. For differences between performance levels, see [](t583241.xdita#).
         self.user_disk_performance_level = user_disk_performance_level
         # The size of the data disk. Unit: GiB.
         self.user_disk_size_gib = user_disk_size_gib
@@ -179,8 +197,11 @@ class DescribeModificationPriceRequestResourceSpecs(DaraModel):
         root_disk_size_gib: int = None,
         user_disk_size_gib: int = None,
     ):
+        # Cloud computer ID.
         self.desktop_id = desktop_id
+        # System disk size. Unit: GiB.
         self.root_disk_size_gib = root_disk_size_gib
+        # Data disk size. Unit: GiB.
         self.user_disk_size_gib = user_disk_size_gib
 
     def validate(self):

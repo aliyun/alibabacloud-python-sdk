@@ -22,119 +22,23 @@ class DescribeOfficeSitesRequest(DaraModel):
         self.account_type = account_type
         # The number of entries to return on each page.
         # 
-        # *   Maximum value: 100.
-        # *   Default value: 10.
+        # - Maximum value: 100.
+        # 
+        # - Default value: 10.
         self.max_results = max_results
-        # The token that determines the start point of the next query.
+        # The token used to retrieve the next page of results.
         self.next_token = next_token
-        # The office network IDs. You can specify the IDs of 1 to 100 office networks.
+        # The office network IDs. You can specify 1 to 100 office network IDs.
         self.office_site_id = office_site_id
-        # The account type of the office network.
-        # 
-        # Valid values:
-        # 
-        # *   SIMPLE: convenience account
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   AD_CONNECTOR: enterprise Active Directory (AD) account
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
+        # The type of account for the office network.
         self.office_site_type = office_site_type
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The security protection setting of the office network.
-        # 
-        # Valid values:
-        # 
-        # *   SASE: SASE is configured.
-        # *   OFF: No security protection setting is configured.
+        # The security protection setting for the office network.
         self.security_protection = security_protection
         # The office network status.
-        # 
-        # Valid values:
-        # 
-        # *   REGISTERING: The office network is being registered.
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   DEREGISTERING: The office network is being deregistered.
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   REGISTERED: The office network is registered.
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   NEEDCONFIGTRUST: A trust relationship is required for the office network.
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   CONFIGTRUSTFAILED: A trust relationship fails to be configured for the office network.
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   DEREGISTERED: The office network is deregistered.
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   ERROR: One or more configurations of the office network are invalid.
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   CONFIGTRUSTING: A trust relationship is being configured for the office network.
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   NEEDCONFIGUSER: Users are required for the office network.
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
         self.status = status
         # The ID of the virtual private cloud (VPC).
         self.vpc_id = vpc_id

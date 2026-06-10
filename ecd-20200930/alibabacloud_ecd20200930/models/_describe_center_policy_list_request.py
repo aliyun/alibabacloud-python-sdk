@@ -22,37 +22,21 @@ class DescribeCenterPolicyListRequest(DaraModel):
         self.academic_proxy = academic_proxy
         # The business type.
         # 
-        # Valid values:
-        # 
-        # *   1: public cloud
-        # *   8: commercial edition.
-        # 
         # This parameter is required.
         self.business_type = business_type
         self.model_library = model_library
-        # The page number.\\
-        # Default value: 1.
+        # The page number to return in a paged query.<br>Default value: 1.
         self.page_number = page_number
-        # The number of entries per page.
+        # The maximum number of entries per page in a paged query.
         self.page_size = page_size
-        # The IDs of the cloud computer policies.
+        # The list of Cloud Desktop policy IDs.
         self.policy_group_id = policy_group_id
         self.port_proxy = port_proxy
         # The resource type.
         # 
-        # Valid values:
-        # 
-        # *   app: cloud applications.
-        # *   desktop: cloud computers.
-        # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The effective scope of the cloud computer policy.
-        # 
-        # Valid values:
-        # 
-        # *   IP: The policy applies to specific IP addresses.
-        # *   GLOBAL: The policy applies globally.
+        # The scope where the Cloud Desktop policy takes effect.
         self.scope = scope
 
     def validate(self):

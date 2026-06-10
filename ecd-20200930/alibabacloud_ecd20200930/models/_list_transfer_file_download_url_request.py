@@ -12,7 +12,9 @@ class ListTransferFileDownloadUrlRequest(DaraModel):
         file_ids: List[str] = None,
         task_id: str = None,
     ):
+        # The list of file IDs to query.
         self.file_ids = file_ids
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):

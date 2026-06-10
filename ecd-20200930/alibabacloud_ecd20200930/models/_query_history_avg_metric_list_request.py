@@ -19,13 +19,21 @@ class QueryHistoryAvgMetricListRequest(DaraModel):
         resource_region_id: str = None,
         sort_type: str = None,
     ):
+        # The start date of the statistics. The format is `YYYY-MM-DD`. The default value is T-1.
         self.data_date = data_date
+        # The desktop ID list. A maximum of 100 IDs are supported.
         self.desktop_id = desktop_id
+        # The metric to query.
         self.metric_name = metric_name
+        # The page number, which must be greater than 0. Default value: 1.
         self.page_num = page_num
+        # The page size. Valid values: 1 to 200. Default value: 20.
         self.page_size = page_size
+        # The list of custom numeric ranges.
         self.range = range
+        # The desktop region.
         self.resource_region_id = resource_region_id
+        # The sorting method.
         self.sort_type = sort_type
 
     def validate(self):
@@ -101,10 +109,15 @@ class QueryHistoryAvgMetricListRequestRange(DaraModel):
         max: float = None,
         min: float = None,
     ):
+        # Specifies whether to include the maximum value. Default value: false.
         self.include_max = include_max
+        # Specifies whether to include the minimum value. Default value: true.
         self.include_min = include_min
+        # The range label, which is used for the return value.
         self.label = label
+        # The maximum value.
         self.max = max
+        # The minimum value.
         self.min = min
 
     def validate(self):

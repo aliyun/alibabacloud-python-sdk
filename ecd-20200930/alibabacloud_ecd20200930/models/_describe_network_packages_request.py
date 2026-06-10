@@ -19,14 +19,15 @@ class DescribeNetworkPackagesRequest(DaraModel):
         # 
         # Valid values:
         # 
-        # *   PayByTraffic: charges by data transfer.
+        # - PayByTraffic: charges by data transfer.
         # 
-        # *   PayByBandwidth: charges by fixed bandwidth.
+        # - PayByBandwidth: charges by fixed bandwidth.
         self.internet_charge_type = internet_charge_type
         # The number of entries to return on each page.
         # 
-        # *   Maximum value: 100
-        # *   Default value: 10
+        # - Maximum value: 100
+        # 
+        # - Default value: 10
         self.max_results = max_results
         # The ID of the premium bandwidth plan. You can specify 1 to 100 IDs.
         self.network_package_id = network_package_id

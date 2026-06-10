@@ -20,8 +20,9 @@ class DescribeSessionStatisticRequest(DaraModel):
         self.office_site_id = office_site_id
         # The query interval. Unit: seconds. Valid values:
         # 
-        # *   60
-        # *   120
+        # - 60
+        # 
+        # - 120
         self.period = period
         # The region ID.
         self.region_id = region_id

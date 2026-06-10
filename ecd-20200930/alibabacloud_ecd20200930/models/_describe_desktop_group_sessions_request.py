@@ -39,33 +39,10 @@ class DescribeDesktopGroupSessionsRequest(DaraModel):
         # A pagination token. It can be used in the next request to retrieve a new page of results.
         self.next_token = next_token
         # The type of the session.
-        # 
-        # Valid values:
-        # 
-        # *   0: single-session
-        # *   1: multi-session
         self.own_type = own_type
-        # The ID of the region. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
+        # The ID of the region. You can call the [](t2167755.xdita#)operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
         self.region_id = region_id
         # The status of the session.
-        # 
-        # Valid values:
-        # 
-        # *   Connected
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   Disconnected
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
         self.session_status = session_status
         # The beginning of the time range to query.
         self.start_time = start_time

@@ -14,9 +14,14 @@ class ModifyOfficeSiteAcceleratorRequest(DaraModel):
         office_site_id: str = None,
         region_id: str = None,
     ):
+        # The information about the regions to accelerate.
         self.accelerate_region = accelerate_region
+        # The office network ID.
+        # 
         # This parameter is required.
         self.office_site_id = office_site_id
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
 
@@ -68,11 +73,38 @@ class ModifyOfficeSiteAcceleratorRequestAccelerateRegion(DaraModel):
         ip_version: str = None,
         isp_type: str = None,
     ):
+        # The ID of the region to accelerate.
+        # 
+        # The number of regions that you can add is limited by the total bandwidth and the instance type of the GA instance. For more information about the number of access regions supported by each instance type, see [Overview of GA instances](t1855472.xdita#).
+        # 
         # This parameter is required.
         self.accelerate_region_id = accelerate_region_id
+        # The peak public bandwidth. Unit: Mbps.
+        # 
+        # > For the pay-by-bandwidth metering method, the value ranges from 10 to 1000.
+        # 
         # This parameter is required.
         self.bandwidth = bandwidth
+        # The IP protocol version used to access GA instances. Valid values:
+        # 
+        # - **IPv4** (default)
+        # 
+        # - **IPv6**
+        # 
+        # - **DUAL_STACK**: IPv4 and IPv6
+        # 
+        # > * Only standard pay-as-you-go GA instances support the DUAL_STACK option.
         self.ip_version = ip_version
+        # The Internet line type in the acceleration region. Valid values:
+        # 
+        # - **BGP**: BGP (Multi-ISP) lines.
+        # 
+        # - **BGP_PRO**: BGP (Multi-ISP) Pro lines.
+        # 
+        # > * This parameter is required for GA instances that use the pay-by-data-transfer metering method.
+        # >
+        # > * The supported line types vary based on the acceleration region.
+        # 
         # This parameter is required.
         self.isp_type = isp_type
 

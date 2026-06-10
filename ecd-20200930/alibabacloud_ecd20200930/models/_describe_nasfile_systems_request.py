@@ -18,19 +18,19 @@ class DescribeNASFileSystemsRequest(DaraModel):
     ):
         # The IDs of the NAS file systems.
         self.file_system_id = file_system_id
-        # Specifies whether to include only NAS file systems that support the User Profile Management (UPM) feature in the query results.
+        # Specifies whether to return only NAS file systems that are compatible with User Profile Management (UPM).
         self.match_compatible_profile = match_compatible_profile
         # The number of entries to return on each page.
         # 
-        # Maximum value: 100.
+        # - Maximum value: 100.
         # 
-        # Default value: 10.
+        # - Default value: 10.
         self.max_results = max_results
-        # The token that determines the start point of the query.
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of `NextToken`.
         self.next_token = next_token
         # The ID of the office network.
         self.office_site_id = office_site_id
-        # The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
+        # The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the regions where Elastic Desktop Service (EDS) is available.
         # 
         # This parameter is required.
         self.region_id = region_id

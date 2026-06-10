@@ -9,6 +9,7 @@ class QueryHistoryActiveUserCountRequest(DaraModel):
         self,
         data_date: str = None,
     ):
+        # The date for which to query data, in YYYY-MM-DD format. Default: the previous day (T-1).
         self.data_date = data_date
 
     def validate(self):

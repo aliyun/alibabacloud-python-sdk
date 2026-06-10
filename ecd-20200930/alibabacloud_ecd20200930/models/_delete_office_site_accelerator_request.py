@@ -10,8 +10,12 @@ class DeleteOfficeSiteAcceleratorRequest(DaraModel):
         office_site_id: str = None,
         region_id: str = None,
     ):
+        # The office network ID.
+        # 
         # This parameter is required.
         self.office_site_id = office_site_id
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
 

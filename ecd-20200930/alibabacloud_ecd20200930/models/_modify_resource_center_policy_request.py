@@ -18,7 +18,7 @@ class ModifyResourceCenterPolicyRequest(DaraModel):
     ):
         # The IDs of the cloud computer policies that you want to associate with cloud computers.
         # 
-        # >  You can specify up to one cloud computer policy that takes effect globally, and up to four cloud computer policies that apply to specific IP addresses. If multiple cloud computer policies are configured for global enforcement, only the earliest-associated policy will take effect
+        # > You can specify up to one cloud computer policy that takes effect globally, and up to four cloud computer policies that apply to specific IP addresses. If multiple cloud computer policies are configured for global enforcement, only the earliest-associated policy will take effect
         # 
         # This parameter is required.
         self.policy_group_ids = policy_group_ids
@@ -26,7 +26,7 @@ class ModifyResourceCenterPolicyRequest(DaraModel):
         # 
         # Valid values:
         # 
-        # *   general: a general policy.
+        # - general: a general policy.
         # 
         # This parameter is required.
         self.policy_group_type = policy_group_type
@@ -34,10 +34,13 @@ class ModifyResourceCenterPolicyRequest(DaraModel):
         # 
         # Valid values:
         # 
-        # *   app: cloud applications.
-        # *   resourceGroup: resource groups.
-        # *   desktop: cloud computers.
-        # *   desktopGroup: cloud computer shares.
+        # - app: cloud applications.
+        # 
+        # - resourceGroup: resource groups.
+        # 
+        # - desktop: cloud computers.
+        # 
+        # - desktopGroup: cloud computer shares.
         # 
         # This parameter is required.
         self.product_type = product_type
@@ -53,8 +56,9 @@ class ModifyResourceCenterPolicyRequest(DaraModel):
         # 
         # Valid values:
         # 
-        # *   app: cloud applications.
-        # *   desktop: cloud computers.
+        # - app: cloud applications.
+        # 
+        # - desktop: cloud computers.
         # 
         # This parameter is required.
         self.resource_type = resource_type

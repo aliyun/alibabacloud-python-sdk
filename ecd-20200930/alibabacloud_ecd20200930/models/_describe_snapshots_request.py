@@ -21,68 +21,39 @@ class DescribeSnapshotsRequest(DaraModel):
         source_disk_type: str = None,
         start_time: str = None,
     ):
-        # The user who creates the snapshot.
+        # The creator.
         self.creator = creator
-        # The ID of the cloud computer.
+        # The ID of the cloud desktop.
         self.desktop_id = desktop_id
-        # The name of the cloud computer.
+        # The name of the cloud desktop.
         self.desktop_name = desktop_name
-        # The end of the time range to query. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
+        # The end time to query for snapshots. The time follows the [ISO 8601](t10049.xdita#) standard and is in UTC. The format is `yyyy-mm-ddthh:mm:ssz`.
         self.end_time = end_time
         # The number of entries per page.
         # 
-        # *   Maximum value: 100.
-        # *   Default value: 10.
+        # - Maximum value: 100.
+        # 
+        # - Default value: 10.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. You must specify the token that is obtained from the previous query as the value of NextToken.
+        # The token for the next page of results. This is the NextToken value from the previous API call.
         self.next_token = next_token
+        # The operating system type.
         self.os_type = os_type
-        # The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
+        # The ID of the region. Call [](t2167755.xdita#)to get a list of regions that support Elastic Desktop Service (EDS).
         # 
         # This parameter is required.
         self.region_id = region_id
         # The snapshot ID.
         self.snapshot_id = snapshot_id
-        # The name of the snapshot. The name must be 2 to 127 characters in length. The name must start with a letter. The name can contain letters, digits, underscores (_), and hyphens (-). The name cannot start with `auto` because snapshots whose names start with auto are recognized as automatic snapshots.
+        # The display name of the snapshot. The name must be 2 to 127 characters long. It must start with a letter. It can contain digits, underscores (_), and hyphens (-). The name cannot start with `auto` to avoid naming conflicts with automatic snapshots.
         self.snapshot_name = snapshot_name
-        # The category of the snapshots.
-        # 
-        # Default value: all. Valid values:
-        # 
-        # *   all: all snapshot categories
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   auto: automatic snapshots
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   user: manual snapshots
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
+        # The snapshot type.
         self.snapshot_type = snapshot_type
-        # The disk for which you want to create a snapshot.
+        # The disk from which to create the snapshot.
         # 
-        # >  The value of this parameter is not case-sensitive.
-        # 
-        # Valid values:
-        # 
-        # *   Data: the data disk.
-        # *   System: the system disk.
+        # > The value is case-insensitive.
         self.source_disk_type = source_disk_type
-        # The beginning of the time range to query. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
+        # The start time to query for snapshots. The time follows the [ISO 8601](t10049.xdita#) standard and is in UTC. The format is `yyyy-mm-ddthh:mm:ssz`.
         self.start_time = start_time
 
     def validate(self):

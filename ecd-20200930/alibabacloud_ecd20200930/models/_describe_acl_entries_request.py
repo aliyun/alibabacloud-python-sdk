@@ -16,8 +16,9 @@ class DescribeAclEntriesRequest(DaraModel):
     ):
         # The number of entries per page.
         # 
-        # *   Maximum value: 1600.
-        # *   Default value: 1600.
+        # - Maximum value: 1600.
+        # 
+        # - Default value: 1600.
         self.max_results = max_results
         # The token that is used for the next query. If this parameter is empty, all results have been returned.
         self.next_token = next_token
@@ -33,8 +34,9 @@ class DescribeAclEntriesRequest(DaraModel):
         # 
         # Valid values:
         # 
-        # *   desktop: cloud computer
-        # *   vpc: office network
+        # - desktop: cloud computer
+        # 
+        # - vpc: office network
         self.source_type = source_type
 
     def validate(self):

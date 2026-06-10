@@ -11,6 +11,8 @@ class DeleteQosRulesRequest(DaraModel):
         self,
         qos_rule_id: List[str] = None,
     ):
+        # A list of QoS rule IDs.
+        # 
         # This parameter is required.
         self.qos_rule_id = qos_rule_id
 

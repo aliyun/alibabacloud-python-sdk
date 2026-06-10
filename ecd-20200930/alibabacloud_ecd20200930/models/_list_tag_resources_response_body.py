@@ -75,7 +75,7 @@ class ListTagResourcesResponseBodyTagResources(DaraModel):
         # 
         # Valid values:
         # 
-        # * ALIYUN::GWS::INSTANCE: cloud computer.
+        # - ALIYUN::GWS::INSTANCE: cloud computer.
         self.resource_type = resource_type
         # The tag keys.
         self.tag_key = tag_key

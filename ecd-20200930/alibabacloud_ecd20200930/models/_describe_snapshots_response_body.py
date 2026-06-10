@@ -14,11 +14,11 @@ class DescribeSnapshotsResponseBody(DaraModel):
         request_id: str = None,
         snapshots: List[main_models.DescribeSnapshotsResponseBodySnapshots] = None,
     ):
-        # If the NextToken parameter is empty, no next page exists.
+        # The token that marks the start of the next page of results. If NextToken is empty, no more pages exist.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The snapshots.
+        # A collection of snapshots.
         self.snapshots = snapshots
 
     def validate(self):
@@ -89,60 +89,33 @@ class DescribeSnapshotsResponseBodySnapshots(DaraModel):
         volume_encryption_enabled: bool = None,
         volume_encryption_key: str = None,
     ):
-        # The point in time at which the snapshot was created. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the `yyyy-mm-ddthh:mm:ssz` format. The time is displayed in UTC.
+        # The point in time at which the snapshot was created. The time follows the [ISO 8601](t10049.xdita#) standard in the `yyyy-mm-ddthh:mm:ssz` format. The time is displayed in UTC.
         self.creation_time = creation_time
         # The user who creates the snapshot.
         self.creator = creator
-        # The time when the snapshot was deleted. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the `yyyy-mm-ddthh:mm:ssz` format. The time is displayed in UTC.
+        # The snapshot creation time follows the [ISO 8601](t10049.xdita#) standard. It uses UTC+0 time and is formatted as `yyyy-mm-ddThh:mm:ssZ`.
         self.deletion_time = deletion_time
         # The description of the snapshot.
         self.description = description
-        # The ID of the cloud computer to which the snapshot belongs.
+        # The ID of the cloud desktop to which the snapshot belongs.
         self.desktop_id = desktop_id
-        # The name of the cloud computer.
+        # The name of the cloud desktop.
         self.desktop_name = desktop_name
-        # The status of the cloud computer.
-        # 
-        # Valid values:
-        # 
-        # *   Stopped
-        # *   Starting
-        # *   Rebuilding
-        # *   Running
-        # *   Stopping
-        # *   Expired
-        # *   Deleted
-        # *   Pending
+        # The status of the cloud desktop.
         self.desktop_status = desktop_status
+        # Status of the disk to which the snapshot belongs.
         self.disk_status = disk_status
         self.env_id = env_id
         self.env_type = env_type
+        # The operating system type.
         self.os_type = os_type
         # The progress of creating the snapshot. Unit: %.
         self.progress = progress
         # The protocol type.
-        # 
-        # Valid values:
-        # 
-        # *   HDX: High-definition Experience (HDX) protocol
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   ASP: in-house Adaptive Streaming Protocol (ASP)
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
         self.protocol_type = protocol_type
-        # The remaining time that is required to complete the snapshot creation. Unit: seconds.
+        # The remaining time to complete snapshot creation. Unit: seconds.
         # 
-        # >  When the `Status` value is `PROGRESSING`, the `RemainTime` value is `-1`. A value of -1 indicates that the system is calculating the remaining time.
+        # > When `Status` is `PROGRESSING`, the value of `RemainTime` is `-1`. This indicates that the system is calculating the remaining time.
         self.remain_time = remain_time
         # The ID of the restore point.
         self.restore_point_id = restore_point_id
@@ -153,78 +126,16 @@ class DescribeSnapshotsResponseBodySnapshots(DaraModel):
         # The name of the snapshot.
         self.snapshot_name = snapshot_name
         # The type of the snapshot.
-        # 
-        # Valid values:
-        # 
-        # *   AUTO: automatic snapshot
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   USER: manual snapshot
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
         self.snapshot_type = snapshot_type
         # The capacity of the source disk. Unit: GiB.
         self.source_disk_size = source_disk_size
         # The type of the source disk.
-        # 
-        # Valid values:
-        # 
-        # *   SYSTEM: system disk
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   DATA: data disk
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
         self.source_disk_type = source_disk_type
         # The status of the snapshot.
-        # 
-        # Valid values:
-        # 
-        # *   PROGRESSING: The snapshot is being created.
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   FAILED: The snapshot fails to be created.
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   ACCOMPLISHED: The snapshot is created.
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
         self.status = status
         # Indicates whether disk encryption is enabled.
         self.volume_encryption_enabled = volume_encryption_enabled
-        # The ID of the Key Management Service (KMS) key that is used when disk encryption is enabled. You can call the [ListKeys](https://help.aliyun.com/document_detail/28951.html) operation to query the list of KMS keys.
+        # The ID of the Key Management Service (KMS) key that is used when disk encryption is enabled. You can call the [](t22712.xdita#)operation to query the list of KMS keys.
         self.volume_encryption_key = volume_encryption_key
 
     def validate(self):

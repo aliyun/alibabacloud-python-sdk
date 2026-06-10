@@ -392,6 +392,8 @@ class Client(OpenApiClient):
             query['DesktopGroupIds'] = request.desktop_group_ids
         if not DaraCore.is_null(request.end_user_ids):
             query['EndUserIds'] = request.end_user_ids
+        if not DaraCore.is_null(request.org_id):
+            query['OrgId'] = request.org_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.simple_user_group_id):
@@ -434,6 +436,8 @@ class Client(OpenApiClient):
             query['DesktopGroupIds'] = request.desktop_group_ids
         if not DaraCore.is_null(request.end_user_ids):
             query['EndUserIds'] = request.end_user_ids
+        if not DaraCore.is_null(request.org_id):
+            query['OrgId'] = request.org_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.simple_user_group_id):
@@ -25316,6 +25320,8 @@ class Client(OpenApiClient):
             query['DesktopGroupIds'] = request.desktop_group_ids
         if not DaraCore.is_null(request.end_user_ids):
             query['EndUserIds'] = request.end_user_ids
+        if not DaraCore.is_null(request.org_id):
+            query['OrgId'] = request.org_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.simple_user_group_id):
@@ -25356,6 +25362,8 @@ class Client(OpenApiClient):
             query['DesktopGroupIds'] = request.desktop_group_ids
         if not DaraCore.is_null(request.end_user_ids):
             query['EndUserIds'] = request.end_user_ids
+        if not DaraCore.is_null(request.org_id):
+            query['OrgId'] = request.org_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.simple_user_group_id):

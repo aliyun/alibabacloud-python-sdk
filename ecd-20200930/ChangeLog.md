@@ -1,3 +1,12 @@
+2026-06-10 Version: 4.26.5
+- Update API AddUserToDesktopGroup: add request parameters OrgId.
+- Update API CreateConfigGroup: add request parameters ConfigTimers.$.SegmentTimers.$.IpSegments.
+- Update API DescribeDesktopGroups: add response parameters Body.DesktopGroups.$.OrgId.
+- Update API DescribeTimerGroup: add response parameters Body.Data.ConfigTimers.$.SegmentTimers.$.IpSegments.
+- Update API ModifyTimerGroup: add request parameters ConfigTimers.$.SegmentTimers.$.IpSegments.
+- Update API RemoveUserFromDesktopGroup: add request parameters OrgId.
+
+
 2026-06-09 Version: 4.26.4
 - Update API DescribeGlobalTimerBatches: add request parameters ResourceTypes.
 - Update API DescribeGlobalTimerRecords: add request parameters ResourceTypes.

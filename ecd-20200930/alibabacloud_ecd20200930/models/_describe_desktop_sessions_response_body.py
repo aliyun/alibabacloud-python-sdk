@@ -16,9 +16,9 @@ class DescribeDesktopSessionsResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # Details of sessions.
+        # The session details.
         self.sessions = sessions
-        # The total number of entries returned.
+        # The total number of query results.
         self.total_count = total_count
 
     def validate(self):
@@ -88,67 +88,49 @@ class DescribeDesktopSessionsResponseBodySessions(DaraModel):
         terminal_info: main_models.DescribeDesktopSessionsResponseBodySessionsTerminalInfo = None,
         total_connection_time: int = None,
     ):
+        # The type of the account.
         self.account_type = account_type
         # The IP address of the client.
         self.client_ip = client_ip
-        # The client OS.
+        # The operating system of the client.
         self.client_os = client_os
-        # The client version.
+        # The version of the client.
         self.client_version = client_version
         # The ID of the cloud computer.
         self.desktop_id = desktop_id
         # The name of the cloud computer.
         self.desktop_name = desktop_name
+        # The type of the office network.
         self.directory_type = directory_type
-        # The duration of the remote assistance. Unit: seconds.
+        # The duration of remote assistance initiated by the end user. Unit: seconds.
         self.end_user_apply_coordinate_time = end_user_apply_coordinate_time
         # The ID of the end user.
         self.end_user_id = end_user_id
         # The duration of the last connection to the cloud computer. Unit: seconds.
         self.latest_connection_time = latest_connection_time
-        # The ID of the office network.
+        # The ID of the workspace.
         self.office_site_id = office_site_id
-        # The name of the office network.
+        # The name of the office site.
         self.office_site_name = office_site_name
-        # Indicates whether the switch to check session status of cloud computers is turned on.
+        # Indicates the session status of the cloud desktop.
         self.os_session_status = os_session_status
-        # The OS.
-        # 
-        # Valid values:
-        # 
-        # *   Linux
-        # *   Windows
+        # The operating system type.
         self.os_type = os_type
         # The protocol type.
-        # 
-        # Valid values:
-        # 
-        # *   HDX
-        # *   ASP
         self.protocol_type = protocol_type
+        # The information about the resource group.
         self.resource_groups = resource_groups
-        # The end time of the session.
+        # The time when the session ended.
         self.session_end_time = session_end_time
-        # The idle duration of the session. Unit: seconds.
+        # The duration for which the session was idle. Unit: seconds.
         self.session_idle_time = session_idle_time
-        # The start time of the session.
+        # The time when the session started.
         self.session_start_time = session_start_time
-        # The state of the session.
-        # 
-        # Valid values:
-        # 
-        # *   Connected
-        # *   Disconnected
+        # The connection status of the session.
         self.session_status = session_status
-        # The billing method of cloud computers.
-        # 
-        # Valid values:
-        # 
-        # *   duration: hourly plan (available for users in the whitelist)
-        # *   postPaid: pay-as-you-go
-        # *   monthPackage: monthly subscription (120-hour computing plan and 250-hour computing plan)
-        # *   prePaid: monthly subscription (Unlimited computing plan)
+        # The billing method of the cloud computer.
         self.sub_pay_type = sub_pay_type
+        # The description of the terminal device.
         self.terminal_info = terminal_info
         # The total connection duration. Unit: seconds.
         self.total_connection_time = total_connection_time
@@ -324,9 +306,13 @@ class DescribeDesktopSessionsResponseBodySessionsTerminalInfo(DaraModel):
         serial_number: str = None,
         uuid: str = None,
     ):
+        # The model of the terminal device.
         self.model = model
+        # The type of the terminal device.
         self.product_name = product_name
+        # The serial number of the terminal device.
         self.serial_number = serial_number
+        # The universally unique identifier (UUID) of the logon device.
         self.uuid = uuid
 
     def validate(self):
@@ -373,7 +359,9 @@ class DescribeDesktopSessionsResponseBodySessionsResourceGroups(DaraModel):
         id: str = None,
         name: str = None,
     ):
+        # The ID of the resource group.
         self.id = id
+        # The name of the resource group.
         self.name = name
 
     def validate(self):

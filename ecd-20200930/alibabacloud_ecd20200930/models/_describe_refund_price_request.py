@@ -14,18 +14,13 @@ class DescribeRefundPriceRequest(DaraModel):
         region_id: str = None,
         reseller_owner_uid: int = None,
     ):
-        # ID of cloud computer N. Valid values of N: 1 to 20.
+        # A list of cloud desktop IDs. You can specify one or more IDs. The number of IDs (N) must be between 1 and 20.
         # 
         # This parameter is required.
         self.desktop_id = desktop_id
-        # The unsubscription type.
-        # 
-        # Valid values:
-        # 
-        # *   RemainRefund: refunds the remaining balance and releases resources.
-        # *   RenewRefund: refunds only the renewal fee and adjusts the expiration date accordingly.
+        # Refund type.
         self.refund_type = refund_type
-        # The ID of the region. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
+        # Region ID. Call [DescribeRegions](~~DescribeRegions~~) to get a list of regions supported by WUYING Workspace.
         # 
         # This parameter is required.
         self.region_id = region_id

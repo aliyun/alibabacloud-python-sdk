@@ -33,21 +33,21 @@ class DescribeImagesRequest(DaraModel):
         # 
         # Valid values:
         # 
-        # *   true
+        # - true
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        # *   false
+        # - false
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         self.gpu_category = gpu_category
         # The version of the GPU driver.
         self.gpu_driver_version = gpu_driver_version
@@ -63,8 +63,9 @@ class DescribeImagesRequest(DaraModel):
         self.language_type = language_type
         # The maximum number of entries to return on each page.
         # 
-        # *   Maximum value: 100.
-        # *   Default value: 10.
+        # - Maximum value: 100.
+        # 
+        # - Default value: 10.
         self.max_results = max_results
         # The token that determines the start point of the next query. If you do not specify this parameter, all results are returned.
         self.next_token = next_token
@@ -72,28 +73,29 @@ class DescribeImagesRequest(DaraModel):
         # 
         # Valid values:
         # 
-        # *   Linux
+        # - Linux
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        # *   Windows
+        # - Windows
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         self.os_type = os_type
         # The protocol type.
         # 
         # Valid values:
         # 
-        # *   HDX: High-definition Experience (HDX) protocol
-        # *   ASP: in-house Adaptive Streaming Protocol (ASP) (recommended)
+        # - HDX: High-definition Experience (HDX) protocol
+        # 
+        # - ASP: in-house Adaptive Streaming Protocol (ASP) (recommended)
         self.protocol_type = protocol_type
         # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
         # 

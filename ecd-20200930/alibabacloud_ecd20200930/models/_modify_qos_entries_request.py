@@ -17,13 +17,19 @@ class ModifyQosEntriesRequest(DaraModel):
         revoke_desktop_group_id: List[str] = None,
         revoke_desktop_id: List[str] = None,
     ):
+        # The IDs of the cloud phones to bind to the QoS rule.
         self.auth_android_id = auth_android_id
         self.auth_desktop_group_id = auth_desktop_group_id
+        # The IDs of the cloud desktops to bind to the QoS rule.
         self.auth_desktop_id = auth_desktop_id
+        # The ID of the QoS rule.
+        # 
         # This parameter is required.
         self.qos_rule_id = qos_rule_id
+        # The IDs of the cloud phones to unbind from the QoS rule.
         self.revoke_android_id = revoke_android_id
         self.revoke_desktop_group_id = revoke_desktop_group_id
+        # The IDs of the cloud desktops to unbind from the QoS rule.
         self.revoke_desktop_id = revoke_desktop_id
 
     def validate(self):

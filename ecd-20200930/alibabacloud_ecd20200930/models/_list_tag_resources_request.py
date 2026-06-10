@@ -31,7 +31,7 @@ class ListTagResourcesRequest(DaraModel):
         # 
         # Valid values:
         # 
-        # * ALIYUN::GWS::INSTANCE: cloud computer.
+        # - ALIYUN::GWS::INSTANCE: cloud computer.
         # 
         # This parameter is required.
         self.resource_type = resource_type

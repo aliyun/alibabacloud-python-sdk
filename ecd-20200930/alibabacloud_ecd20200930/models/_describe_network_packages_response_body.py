@@ -86,21 +86,21 @@ class DescribeNetworkPackagesResponseBodyNetworkPackages(DaraModel):
         # 
         # Valid values:
         # 
-        # *   Expired
+        # - Expired
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        # *   Normal
+        # - Normal
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         self.business_status = business_status
         # The time when the premium bandwidth plan was created.
         self.create_time = create_time
@@ -108,19 +108,21 @@ class DescribeNetworkPackagesResponseBodyNetworkPackages(DaraModel):
         self.eip_addresses = eip_addresses
         # The time when the premium bandwidth plan expires.
         # 
-        # *   If the plan is a subscription one, the time when the plan expires is returned.
-        # *   If the plan is a pay-as-you-go one, `2099-12-31T15:59:59Z` is returned.
+        # - If the plan is a subscription one, the time when the plan expires is returned.
+        # 
+        # - If the plan is a pay-as-you-go one, `2099-12-31T15:59:59Z` is returned.
         self.expired_time = expired_time
         # The charge type of the premium bandwidth plan.
         # 
-        # *   Valid value when the `PayType` parameter is set to `PrePaid`:
+        # - Valid value when the `PayType` parameter is set to `PrePaid`:
         # 
-        #     *   PayByBandwidth: charges by fixed bandwidth.
+        #   - PayByBandwidth: charges by fixed bandwidth.
         # 
-        # *   Valid values when the `PayType` parameter is set to `PostPaid`:
+        # - Valid values when the `PayType` parameter is set to `PostPaid`:
         # 
-        #     *   PayByTraffic: charges by data transfer.
-        #     *   PayByBandwidth: charges by fixed bandwidth.
+        #   - PayByTraffic: charges by data transfer.
+        # 
+        #   - PayByBandwidth: charges by fixed bandwidth.
         self.internet_charge_type = internet_charge_type
         # The ID of the premium bandwidth plan.
         self.network_package_id = network_package_id
@@ -128,37 +130,37 @@ class DescribeNetworkPackagesResponseBodyNetworkPackages(DaraModel):
         # 
         # Valid values:
         # 
-        # *   Creating
+        # - Creating
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        # *   Released
+        # - Released
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        # *   InUse
+        # - InUse
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        # *   Releasing
+        # - Releasing
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         self.network_package_status = network_package_status
         # The office network ID.
         self.office_site_id = office_site_id
@@ -168,16 +170,19 @@ class DescribeNetworkPackagesResponseBodyNetworkPackages(DaraModel):
         # 
         # Valid values:
         # 
-        # *   standard: advanced office network
-        # *   customized: custom office network
-        # *   basic: basic office network
+        # - standard: advanced office network
+        # 
+        # - customized: custom office network
+        # 
+        # - basic: basic office network
         self.office_site_vpc_type = office_site_vpc_type
         # The billing method of the premium bandwidth plan.
         # 
         # Valid values:
         # 
-        # *   PostPaid: pay-as-you-go
-        # *   PrePaid: subscription
+        # - PostPaid: pay-as-you-go
+        # 
+        # - PrePaid: subscription
         self.pay_type = pay_type
         # The time when the reserved network bandwidth took effect.
         self.reservation_active_time = reservation_active_time
@@ -187,9 +192,9 @@ class DescribeNetworkPackagesResponseBodyNetworkPackages(DaraModel):
         # 
         # Valid values:
         # 
-        # *   PayByTraffic: charges by data transfer.
+        # - PayByTraffic: charges by data transfer.
         # 
-        # *   PayByBandwidth: charges by fixed bandwidth.
+        # - PayByBandwidth: charges by fixed bandwidth.
         self.reservation_internet_charge_type = reservation_internet_charge_type
 
     def validate(self):

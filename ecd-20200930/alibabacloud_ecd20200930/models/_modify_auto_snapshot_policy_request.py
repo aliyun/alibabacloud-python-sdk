@@ -14,20 +14,20 @@ class ModifyAutoSnapshotPolicyRequest(DaraModel):
         region_id: str = None,
         retention_days: int = None,
     ):
-        # The CRON expression.
+        # The cron expression.
         self.cron_expression = cron_expression
         self.disk_type = disk_type
         # The ID of the automatic snapshot policy.
         # 
         # This parameter is required.
         self.policy_id = policy_id
-        # The name of the automatic snapshot policy. The name must be 2 to 128 characters in length. The name must start with a letter but cannot start with `http://` or `https://`. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-). This parameter is empty by default.
+        # The name of the automatic snapshot policy. The name must be 2 to 128 characters long, start with a letter or a Chinese character, and must not start with `http://` or `https://`. It can contain digits, colons (:), underscores (_), and hyphens (-). The default is an empty string.
         self.policy_name = policy_name
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # The region ID. Call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to get a list of regions where Elastic Desktop Service is available.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The retention period of the automatic snapshots. Unit: days. Valid values: 1 to 180.
+        # The number of days to retain automatic snapshots. The value must be an integer from 1 to 180.
         self.retention_days = retention_days
 
     def validate(self):

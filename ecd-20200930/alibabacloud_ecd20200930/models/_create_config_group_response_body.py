@@ -11,11 +11,11 @@ class CreateConfigGroupResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The ID of the configuration group.
+        # Configuration group ID.
         self.group_id = group_id
-        # The creation result of the configuration group.
+        # Result message.
         self.message = message
-        # The ID of the request.
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):

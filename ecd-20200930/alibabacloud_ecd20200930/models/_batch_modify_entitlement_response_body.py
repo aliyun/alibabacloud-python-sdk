@@ -59,11 +59,15 @@ class BatchModifyEntitlementResponseBodyEntitlements(DaraModel):
         # 
         # Valid values:
         # 
-        # *   FAILED
-        # *   NOT_STARTED
-        # *   STARTED
-        # *   PROCESSING
-        # *   FINISHED
+        # - FAILED
+        # 
+        # - NOT_STARTED
+        # 
+        # - STARTED
+        # 
+        # - PROCESSING
+        # 
+        # - FINISHED
         self.status = status
         # The task ID.
         self.task_id = task_id
@@ -123,11 +127,15 @@ class BatchModifyEntitlementResponseBodyEntitlementsAssignModels(DaraModel):
         # 
         # Valid values:
         # 
-        # *   FAILED
-        # *   NOT_STARTED
-        # *   STARTED
-        # *   PROCESSING
-        # *   FINISHED
+        # - FAILED
+        # 
+        # - NOT_STARTED
+        # 
+        # - STARTED
+        # 
+        # - PROCESSING
+        # 
+        # - FINISHED
         self.inner_status = inner_status
 
     def validate(self):

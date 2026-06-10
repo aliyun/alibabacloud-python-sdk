@@ -13,9 +13,9 @@ class DescribeTimerGroupResponseBody(DaraModel):
         data: main_models.DescribeTimerGroupResponseBodyData = None,
         request_id: str = None,
     ):
-        # The configuration group.
+        # The details of the timer group.
         self.data = data
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -63,42 +63,31 @@ class DescribeTimerGroupResponseBodyData(DaraModel):
         status: str = None,
         type: str = None,
     ):
-        # The number of resources that are bound to the configuration group.
+        # The number of resources associated with the timer group.
         self.bind_count = bind_count
-        # The number of bound resources.
+        # A map of associated resource counts, categorized by resource type.
         self.bind_count_map = bind_count_map
-        # The scheduled tasks.
+        # The configurations of the scheduled tasks.
         self.config_timers = config_timers
-        # The description of the configuration group.
+        # The description of the timer group.
         self.description = description
-        # The ID of the configuration group.
+        # The ID of the timer group.
         self.group_id = group_id
+        # An internal code used by the frontend to display the description of a system-scheduled task.
         self.inner_timer_desc = inner_timer_desc
+        # An internal code used by the frontend to display the name of a system-scheduled task.
         self.inner_timer_name = inner_timer_name
+        # Indicates that resources cannot be bound to or unbound from this timer group.
         self.is_bind = is_bind
+        # Indicates that this timer group cannot be modified.
         self.is_update = is_update
-        # The name of the configuration group.
+        # The name of the timer group.
         self.name = name
-        # The service type of the configuration group.
-        # 
-        # Valid value:
-        # 
-        # *   CLOUD_DESKTOP: the cloud computer service.
+        # The product type that the timer group supports.
         self.product_type = product_type
-        # The state of the configuration group.
-        # 
-        # Valid values:
-        # 
-        # *   AVAILABLE: The configuration group is available.
-        # *   UNAVAILABLE: The configuration group is deleted.
-        # *   DELETING: The configuration group is being deleted.
-        # *   UPDATING: The configuration group is being modified.
+        # The status of the timer group.
         self.status = status
-        # The type of the configuration group.
-        # 
-        # Valid value:
-        # 
-        # *   Timer: the scheduled task type.
+        # The type of the timer group.
         self.type = type
 
     def validate(self):
@@ -216,53 +205,25 @@ class DescribeTimerGroupResponseBodyDataConfigTimers(DaraModel):
         timer_type: str = None,
         trigger_type: str = None,
     ):
-        # Indicates whether end users can configure scheduled tasks.
+        # Whether to allow end users to configure the scheduled task.
         self.allow_client_setting = allow_client_setting
-        # The CRON expression for the scheduled task.
+        # The cron expression for the scheduled task.
         self.cron_expression = cron_expression
-        # Specifies whether to forcibly execute the scheduled task. A value of true specifies the scheduled task will run forcefully, ignoring the cloud computer and connection status.
+        # Specifies whether to force the execution of the scheduled task. If set to `true`, the task runs regardless of the cloud computer\\"s status or connection state.
         self.enforce = enforce
-        # The interval at which the scheduled task is executed. Unit: minutes.
+        # The interval. Unit: minutes.
         self.interval = interval
         self.notification_time = notification_time
-        # The type of the scheduled disconnection task.
-        # 
-        # Valid values:
-        # 
-        # *   Hibernate: scheduled hibernation.
-        # *   Shutdown: scheduled shutdown.
+        # The operation to perform when `TimerType` is set to `NoConnect`.
         self.operation_type = operation_type
-        # The process whitelist. If whitelisted processes are running, the scheduled task upon inactivity does not take effect.
+        # The process whitelist for smart detection. A scheduled task based on user inactivity does not run if a whitelisted process is running.
         self.process_whitelist = process_whitelist
-        # The reset operation of the scheduled task.
-        # 
-        # Valid values:
-        # 
-        # *   RESET_TYPE_SYSTEM: resets the system disk.
-        # *   RESET_TYPE_USER_DISK: resets the data disk.
-        # *   RESET_TYPE_BOTH: resets the system disk and data disk.
+        # The reset type for the scheduled reset task.
         self.reset_type = reset_type
         self.segment_timers = segment_timers
         # The type of the scheduled task.
-        # 
-        # Valid values:
-        # 
-        # *   NoOperationDisconnect: scheduled disconnection upon inactivity.
-        # *   NoConnect: scheduled disconnection upon specified operation (OperationType).
-        # *   TimerBoot: scheduled start.
-        # *   TimerReset: scheduled reset.
-        # *   NoOperationShutdown: scheduled shutdown upon inactivity.
-        # *   NoOperationHibernate: scheduled hibernation upon inactivity.
-        # *   TimerShutdown: scheduled shutdown.
-        # *   NoOperationReboot: scheduled restart upon inactivity.
-        # *   TimerReboot: scheduled restart.
         self.timer_type = timer_type
-        # The method to trigger the scheduled task upon inactivity.
-        # 
-        # Valid values:
-        # 
-        # *   Advanced: intelligent detection.
-        # *   Standard: standard detection.
+        # The detection method for user inactivity.
         self.trigger_type = trigger_type
 
     def validate(self):
@@ -362,6 +323,7 @@ class DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers(DaraModel):
         enforce: bool = None,
         image_id: str = None,
         interval: int = None,
+        ip_segments: List[str] = None,
         lock_screen_time: int = None,
         notification_time: int = None,
         operation_type: str = None,
@@ -375,12 +337,16 @@ class DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers(DaraModel):
         verification_notification_time: int = None,
         verification_time: int = None,
     ):
+        # The time to execute the scheduled task, specified as a Unix timestamp in milliseconds.
         self.appointment_timer = appointment_timer
         self.create_snapshot = create_snapshot
         self.end_cron_expression = end_cron_expression
         self.enforce = enforce
+        # The image ID for a scheduled image-change task.
         self.image_id = image_id
         self.interval = interval
+        self.ip_segments = ip_segments
+        # The duration of user inactivity, in seconds, before the screen locks. This feature applies only to cloud computers joined to an Active Directory (AD) domain.
         self.lock_screen_time = lock_screen_time
         self.notification_time = notification_time
         self.operation_type = operation_type
@@ -419,6 +385,9 @@ class DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers(DaraModel):
 
         if self.interval is not None:
             result['Interval'] = self.interval
+
+        if self.ip_segments is not None:
+            result['IpSegments'] = self.ip_segments
 
         if self.lock_screen_time is not None:
             result['LockScreenTime'] = self.lock_screen_time
@@ -477,6 +446,9 @@ class DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers(DaraModel):
 
         if m.get('Interval') is not None:
             self.interval = m.get('Interval')
+
+        if m.get('IpSegments') is not None:
+            self.ip_segments = m.get('IpSegments')
 
         if m.get('LockScreenTime') is not None:
             self.lock_screen_time = m.get('LockScreenTime')

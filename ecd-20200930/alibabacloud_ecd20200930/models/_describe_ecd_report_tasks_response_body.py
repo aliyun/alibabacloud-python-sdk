@@ -96,7 +96,7 @@ class DescribeEcdReportTasksResponseBodyExportTaskList(DaraModel):
         # 
         # Valid value:
         # 
-        # *   DESKTOP: cloud computer
+        # - DESKTOP: cloud computer
         self.sub_type = sub_type
         # The ID of the report export task.
         self.task_id = task_id
@@ -104,7 +104,7 @@ class DescribeEcdReportTasksResponseBodyExportTaskList(DaraModel):
         # 
         # Valid value:
         # 
-        # *   RESOURCE_REPORT
+        # - RESOURCE_REPORT
         self.task_type = task_type
 
     def validate(self):

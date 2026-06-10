@@ -17,8 +17,9 @@ class SetDirectorySsoStatusRequest(DaraModel):
         self.directory_id = directory_id
         # Specifies whether to enable SSO. Valid values:
         # 
-        # *   true: enables SSO.
-        # *   false: disables SSO.
+        # - true: enables SSO.
+        # 
+        # - false: disables SSO.
         # 
         # This parameter is required.
         self.enable_sso = enable_sso

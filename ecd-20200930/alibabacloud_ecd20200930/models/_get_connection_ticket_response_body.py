@@ -21,15 +21,17 @@ class GetConnectionTicketResponseBody(DaraModel):
         self.request_id = request_id
         # Before you use the credential, you must Base64 decode the content of the credential, save the credential as an xxx.ica file, and then open the file. Python sample code:
         # 
-        #     import base64
-        #     response = {
-        #         "Ticket": "W0VuY29kaW5nXQ0KSW5wdXRFbmNvZGluZz1V********",
-        #         "RequestId": "1CBAFFAB-B697-4049-A9B1-67E1FC5F****",
-        #     }
-        #     f = open (\\"xxx.ica\\", \\"w\\")
-        #     out = base64.b64decode(response[\\"Ticket\\"])
-        #     f.write(out)
-        #     f.close()
+        # ```
+        # import base64
+        # response = {
+        #     "Ticket": "W0VuY29kaW5nXQ0KSW5wdXRFbmNvZGluZz1V********",
+        #     "RequestId": "1CBAFFAB-B697-4049-A9B1-67E1FC5F****",
+        # }
+        # f = open (\\"xxx.ica\\", \\"w\\")
+        # out = base64.b64decode(response[\\"Ticket\\"])
+        # f.write(out)
+        # f.close()
+        # ```
         self.task_code = task_code
         # The ID of the cloud computer connection task.
         self.task_id = task_id
@@ -39,29 +41,29 @@ class GetConnectionTicketResponseBody(DaraModel):
         # 
         # Valid values:
         # 
-        # *   FAILED: The credential fails to be obtained.
+        # - FAILED: The credential fails to be obtained.
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        # *   RUNNING: The credential is being obtained.
+        # - RUNNING: The credential is being obtained.
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        # *   FINISHED: The credential is obtained.
+        # - FINISHED: The credential is obtained.
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         self.task_status = task_status
         # The credentials for connecting to the cloud computer.
         self.ticket = ticket

@@ -13,9 +13,9 @@ class DescribeDesktopInfoResponseBody(DaraModel):
         desktops: List[main_models.DescribeDesktopInfoResponseBodyDesktops] = None,
         request_id: str = None,
     ):
-        # The basic information about cloud computers.
+        # Basic desktop information.
         self.desktops = desktops
-        # The request ID.
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -66,41 +66,25 @@ class DescribeDesktopInfoResponseBodyDesktops(DaraModel):
         release_note: str = None,
         start_time: str = None,
     ):
-        # The connection status of the user.
-        # 
-        # Valid values:
-        # 
-        # *   Connected
-        # *   Disconnected
+        # User connection status.
         self.connection_status = connection_status
-        # The version of the cloud computer image.
+        # Desktop image version number.
         self.current_app_version = current_app_version
-        # The ID of the cloud computer pool.
+        # Desktop group ID.
         self.desktop_group_id = desktop_group_id
-        # The ID of the cloud computer.
+        # Desktop ID.
         self.desktop_id = desktop_id
-        # The status of the cloud computer.
-        # 
-        # Valid values:
-        # 
-        # *   Stopped
-        # *   Failed
-        # *   Starting
-        # *   Running
-        # *   Stopping
-        # *   Expired
-        # *   Deleted
-        # *   Pending
+        # The status of the cloud desktop.
         self.desktop_status = desktop_status
-        # The information about flags that are used to manage cloud computers.
+        # The management flag.
         self.management_flag = management_flag
-        # The size of the update package. Unit: KB.
+        # Upgrade package size, in KB.
         self.new_app_size = new_app_size
-        # The version number of the image that can be updated on the cloud computer.
+        # Desktop upgradable image version number.
         self.new_app_version = new_app_version
-        # The description of the image version that can be updated.
+        # Description of the upgradable image version.
         self.release_note = release_note
-        # The time when the cloud computer was first started.
+        # Desktop first startup time.
         self.start_time = start_time
 
     def validate(self):

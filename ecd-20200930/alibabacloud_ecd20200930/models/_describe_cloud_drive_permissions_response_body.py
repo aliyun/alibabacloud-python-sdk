@@ -13,7 +13,9 @@ class DescribeCloudDrivePermissionsResponseBody(DaraModel):
         cloud_drive_permission_models: List[main_models.DescribeCloudDrivePermissionsResponseBodyCloudDrivePermissionModels] = None,
         request_id: str = None,
     ):
+        # List of enterprise cloud drive permission information.
         self.cloud_drive_permission_models = cloud_drive_permission_models
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -56,7 +58,9 @@ class DescribeCloudDrivePermissionsResponseBodyCloudDrivePermissionModels(DaraMo
         end_users: List[str] = None,
         permission: str = None,
     ):
+        # List of end user IDs.
         self.end_users = end_users
+        # File transfer permission between the enterprise cloud drive and on-premises devices for the user.
         self.permission = permission
 
     def validate(self):

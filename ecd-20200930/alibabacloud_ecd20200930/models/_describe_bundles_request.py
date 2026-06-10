@@ -34,69 +34,20 @@ class DescribeBundlesRequest(DaraModel):
         # The IDs of the cloud computer templates. You can specify 1 to 100 IDs.
         self.bundle_id = bundle_id
         # The type of the cloud computer template.
-        # 
-        # Valid values:
-        # 
-        # *   SYSTEM: system template
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   CUSTOM: custom template
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
         self.bundle_type = bundle_type
         # Specifies whether to query the inventory status of the cloud computer instance type.
         self.check_stock = check_stock
         # The number of vCPUs contained in the cloud computer instance type.
         self.cpu_count = cpu_count
         # The instance family of the cloud computers.
-        # 
-        # Valid values:
-        # 
-        # *   eds.graphics: graphical instance families
-        # *   eds.hf: instance families with high clock speeds
-        # *   eds.general: general-purpose instance families
         self.desktop_type_family = desktop_type_family
-        # >  This parameter is not available for public use.
+        # > This parameter is not available for public use.
         self.fota_channel = fota_channel
         # Specifies whether the cloud computers in the template belong to a cloud computer pool.
-        # 
-        # Valid values:
-        # 
-        # *   true
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   false
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
         self.from_desktop_group = from_desktop_group
         # The number of GPUs contained in the cloud computer instance type.
         self.gpu_count = gpu_count
         # The GPU driver type.
-        # 
-        # Valid values:
-        # 
-        # *   T4
-        # *   A10
-        # *   G28
-        # *   G39
         self.gpu_driver_type = gpu_driver_type
         # The image IDs.
         self.image_id = image_id
@@ -111,33 +62,10 @@ class DescribeBundlesRequest(DaraModel):
         # The token that is used to start the next query.
         self.next_token = next_token
         # The type of the OS.
-        # 
-        # Valid values:
-        # 
-        # *   Linux
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   Windows
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
         self.os_type = os_type
         # The protocol type.
-        # 
-        # Valid values:
-        # 
-        # *   HDX: High-definition Experience (HDX) protocol
-        # *   ASP: in-house Adaptive Streaming Protocol (ASP) (recommend)
         self.protocol_type = protocol_type
-        # The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the regions supported by Elastic Desktop Service (EDS).
+        # The region ID. You can call the [](t2167755.xdita#)operation to query the regions supported by Elastic Desktop Service (EDS).
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -145,10 +73,7 @@ class DescribeBundlesRequest(DaraModel):
         self.scope = scope
         # The desktop template that is selected based on specific criteria.
         self.selected_bundle = selected_bundle
-        # The type of the session. Valide values:
-        # 
-        # - SingleSession
-        # - MultipleSession
+        # The type of the session.
         self.session_type = session_type
         # Specifies whether to return multi-session cloud computer templates. Default value: false.
         self.support_multi_session = support_multi_session

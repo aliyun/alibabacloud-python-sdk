@@ -11,8 +11,9 @@ class CreateCdsFileResponseBody(DaraModel):
         file_model: main_models.CreateCdsFileResponseBodyFileModel = None,
         request_id: str = None,
     ):
+        # File upload response object.
         self.file_model = file_model
-        # The request ID.
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -50,8 +51,11 @@ class CreateCdsFileResponseBodyFileModel(DaraModel):
         upload_id: str = None,
         upload_url: str = None,
     ):
+        # File ID.
         self.file_id = file_id
+        # File upload task ID.
         self.upload_id = upload_id
+        # File upload URL. Valid for 15 minutes by default.
         self.upload_url = upload_url
 
     def validate(self):

@@ -19,46 +19,30 @@ class ResetDesktopsRequest(DaraModel):
         reset_scope: str = None,
         reset_type: str = None,
     ):
-        # The ID of the cloud computer share.
+        # The ID of the shared cloud desktop.
         # 
-        # *   If you specify `DesktopId`, ignore `DesktopGroupId`.
-        # *   If you leave `DesktopId` empty, the system obtains the IDs of all cloud computers within the share specified by `DesktopGroupId`.``
+        # - If you specify `DesktopId`, the system ignores `DesktopGroupId`.
+        # 
+        # - If `DesktopId` is empty, the system uses `DesktopGroupId` to retrieve the `DesktopId` of all cloud desktops in the shared cloud desktop group.
         self.desktop_group_id = desktop_group_id
-        # The IDs of the cloud computer shares.
+        # A list of shared cloud desktop group IDs.
         self.desktop_group_ids = desktop_group_ids
-        # The IDs of the cloud computers. You can specify the IDs of 1 to 100 cloud computers.
+        # A list of cloud desktop IDs. You can specify 1 to 100 IDs.
         self.desktop_id = desktop_id
-        # The ID of the image.
+        # The image ID.
         self.image_id = image_id
         self.last_retry_time = last_retry_time
-        # The billing method of the cloud computer share.
+        # The billing method.
         # 
-        # >  This parameter takes effect when you reset a cloud computer share. If you leave this parameter empty, all cloud computers in that share are reset.
-        # 
-        # Valid values:
-        # 
-        # *   PostPaid: pay-as-you-go.
-        # *   PrePaid: subscription.
+        # > This parameter applies only when resetting shared cloud desktops. If you leave it empty, the system resets all cloud desktops in the shared cloud desktop group, regardless of their billing method.
         self.pay_type = pay_type
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/436773.html) operation to query the most recent region list.
+        # The region ID. Call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to list regions that support WUYING Workspace.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The reset scope. You can configure this parameter to reset the image or cloud computer.
-        # 
-        # Valid values:
-        # 
-        # *   ALL (default): resets the image and cloud computer.
-        # *   IMAGE: resets only the image.
+        # The scope of the reset operation. Set this parameter to reset either the image or the cloud desktop.
         self.reset_scope = reset_scope
-        # The disk reset type.
-        # 
-        # Valid values:
-        # 
-        # *   0: does not reset disks.
-        # *   1: resets only the system disk.
-        # *   2: resets only the user disk.
-        # *   3: resets the system disk and the user disk.
+        # The reset type. This determines whether to reset and which disks to reset.
         # 
         # This parameter is required.
         self.reset_type = reset_type

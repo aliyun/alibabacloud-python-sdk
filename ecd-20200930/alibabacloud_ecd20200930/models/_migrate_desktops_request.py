@@ -15,20 +15,21 @@ class MigrateDesktopsRequest(DaraModel):
         target_office_site_id: str = None,
         target_subnet_id: str = None,
     ):
-        # The IDs of the cloud computers. You can specify 1 to 100 IDs.
+        # The IDs of the cloud computers to migrate. You can specify 1 to 100 IDs.
         # 
         # This parameter is required.
         self.desktop_id = desktop_id
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # The region ID. To get a list of supported regions, call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation.
         # 
         # This parameter is required.
         self.region_id = region_id
+        # This parameter is not publicly available.
         self.target_member_ip = target_member_ip
-        # The ID of the destination office network.
+        # The ID of the target office network.
         # 
         # This parameter is required.
         self.target_office_site_id = target_office_site_id
-        # > This parameter is for internal use only.
+        # This parameter is not publicly available.
         self.target_subnet_id = target_subnet_id
 
     def validate(self):

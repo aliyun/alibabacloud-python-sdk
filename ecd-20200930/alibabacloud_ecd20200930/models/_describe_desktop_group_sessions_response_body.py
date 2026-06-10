@@ -96,7 +96,7 @@ class DescribeDesktopGroupSessionsResponseBodySessions(DaraModel):
         terminal_info: main_models.DescribeDesktopGroupSessionsResponseBodySessionsTerminalInfo = None,
         total_connection_duration: int = None,
     ):
-        # 账号类型
+        # The account type.
         self.account_type = account_type
         # The IP address of the client.
         self.client_ip = client_ip
@@ -110,7 +110,7 @@ class DescribeDesktopGroupSessionsResponseBodySessions(DaraModel):
         self.desktop_group_name = desktop_group_name
         # If the session status is Connected, it indicates the ID of the cloud computer that is currently connected. If the session status is Disconnected, it indicates the ID of the cloud computer that was last connected.
         self.desktop_id = desktop_id
-        # 办公网络类型
+        # The office network type.
         self.directory_type = directory_type
         # The point in time when the end user applies for administrator assistance.
         self.end_user_apply_coordinate_time = end_user_apply_coordinate_time
@@ -127,47 +127,14 @@ class DescribeDesktopGroupSessionsResponseBodySessions(DaraModel):
         # The office network name.
         self.office_site_name = office_site_name
         # The operating system type of the cloud computer.
-        # 
-        # Valid values:
-        # 
-        # *   linux.
-        # *   Windows.
         self.os_type = os_type
         # The type of the session.
-        # 
-        # Valid values:
-        # 
-        # *   0: single-session
-        # *   1: multi-session
         self.own_type = own_type
         # The protocol type supported by the rule.
-        # 
-        # Valid value:
-        # 
-        # *   High-definition Experience (HDX).
-        # *   ASP.
         self.protocol_type = protocol_type
         # The idle duration of the cloud computer. Unit: seconds.
         self.session_idle_time = session_idle_time
         # The state of the session.
-        # 
-        # Valid values:
-        # 
-        # *   Connected
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   Disconnected
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
         self.session_status = session_status
         # Terminal Info
         self.terminal_info = terminal_info

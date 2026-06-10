@@ -20,30 +20,25 @@ class DescribePolicyGroupsRequest(DaraModel):
         scope: str = None,
     ):
         self.business_channel = business_channel
-        # The array of cloud computer policy IDs to be excluded.
+        # The list of cloud computer policy IDs to exclude from the query results.
         self.external_policy_group_ids = external_policy_group_ids
         # The number of entries per page.
         # 
-        # *   Valid values: 1 to 100
-        # *   Default value: 10
+        # - Maximum value: 100
+        # 
+        # - Default value: 10
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+        # The pagination token. Set this parameter to the NextToken value returned in the previous response. Do not set this parameter for the first request.
         self.next_token = next_token
         self.page_number = page_number
         self.page_size = page_size
-        # The IDs of the cloud computer policies.
+        # The list of cloud computer policy IDs.
         self.policy_group_id = policy_group_id
-        # The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the regions supported by Elastic Desktop Service (EDS).
+        # The region ID. Call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by WUYING Workspace.
         # 
         # This parameter is required.
         self.region_id = region_id
         # The effective scope of the cloud computer policy.
-        # 
-        # Valid values:
-        # 
-        # *   ALL
-        # *   IP
-        # *   GLOBAL
         self.scope = scope
 
     def validate(self):

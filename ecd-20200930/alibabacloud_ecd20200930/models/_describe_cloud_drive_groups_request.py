@@ -32,15 +32,17 @@ class DescribeCloudDriveGroupsRequest(DaraModel):
         self.directory_name = directory_name
         # The team space status. Valid values:
         # 
-        # *   enabled
-        # *   disabled
+        # - enabled
+        # 
+        # - disabled
         # 
         # Default value: enabled.
         self.drive_status = drive_status
         # Specifies whether the space is increased.
         # 
-        # *   binding: increased
-        # *   unbound: not increased
+        # - binding: increased
+        # 
+        # - unbound: not increased
         # 
         # Default value: null. The default value indicates that all spaces are queried.
         self.drive_type = drive_type
@@ -50,15 +52,17 @@ class DescribeCloudDriveGroupsRequest(DaraModel):
         self.group_name = group_name
         # The team type.
         # 
-        # *   org: organizational structure
-        # *   directory: workspace
+        # - org: organizational structure
+        # 
+        # - directory: workspace
         # 
         # Default value: null. The default value indicates that all types of teams are queried.
         self.group_type = group_type
         # The number of entries to return on each page.
         # 
-        # *   Valid values: 1 to 100
-        # *   Default value: 20
+        # - Valid values: 1 to 100
+        # 
+        # - Default value: 20
         self.max_results = max_results
         # The pagination token that is used in the next request to retrieve a new page of results.
         self.next_token = next_token

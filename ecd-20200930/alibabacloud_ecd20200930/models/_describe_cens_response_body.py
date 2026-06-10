@@ -100,17 +100,7 @@ class DescribeCensResponseBodyCens(DaraModel):
         self.description = description
         # The IPv6 level.
         # 
-        # >  IPv6 is not supported.
-        # 
-        # Valid value:
-        # 
-        # *   DISABLED
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
+        # > IPv6 is not supported.
         self.ipv_6level = ipv_6level
         # The name of the CEN instance.
         self.name = name
@@ -120,35 +110,17 @@ class DescribeCensResponseBodyCens(DaraModel):
         # 
         # Valid value:
         # 
-        # *   REDUCED: CIDR block conflicts are allowed, but the conflicting CIDR blocks cannot be identical.
+        # - REDUCED: CIDR block conflicts are allowed, but the conflicting CIDR blocks cannot be identical.
         self.protection_level = protection_level
         # The status of the CEN instance.
         # 
         # Valid values:
         # 
-        # *   Creating
+        # - Creating
         # 
-        #     <!-- -->
+        # - Active
         # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   Active
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   Deleting
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
+        # - Deleting
         self.status = status
         # The tags of the CEN instance.
         self.tags = tags

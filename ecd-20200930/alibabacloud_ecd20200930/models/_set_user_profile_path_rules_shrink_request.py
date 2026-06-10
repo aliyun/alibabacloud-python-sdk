@@ -12,41 +12,10 @@ class SetUserProfilePathRulesShrinkRequest(DaraModel):
         user_profile_path_rule_shrink: str = None,
         user_profile_rule_type: str = None,
     ):
-        # The desktop group ID.
         self.desktop_group_id = desktop_group_id
-        # The region ID.
-        # 
         # This parameter is required.
         self.region_id = region_id
-        # The directories that you want to configure in the blacklist and whitelist.
         self.user_profile_path_rule_shrink = user_profile_path_rule_shrink
-        # The directory type that you want to configure.
-        # 
-        # Valid values:
-        # 
-        # *   Both_Default_DesktopGroup
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   DesktopGroup
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   Default
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
         self.user_profile_rule_type = user_profile_rule_type
 
     def validate(self):

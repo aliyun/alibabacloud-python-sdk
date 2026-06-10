@@ -13,20 +13,20 @@ class CreateAutoSnapshotPolicyRequest(DaraModel):
         region_id: str = None,
         retention_days: int = None,
     ):
-        # The CRON expression for periodic scheduling.
+        # The cron expression for the recurring schedule.
         # 
         # This parameter is required.
         self.cron_expression = cron_expression
         self.disk_type = disk_type
-        # The name of the automatic snapshot policy. The name must be 2 to 128 characters in length. The name must start with a letter but cannot start with `http://` or `https://`. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-). This parameter is empty by default.
+        # The name of the automatic snapshot policy. It can contain 2 to 128 English or Chinese characters. It must start with a letter or a Chinese character, and cannot start with `http://` or `https://`. It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: empty.
         # 
         # This parameter is required.
         self.policy_name = policy_name
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # The region ID. For more information, see [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to get a list of regions supported by WUYING Workspace.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The retention period of the automatic snapshots. Unit: days. Valid values: 1 to 180.
+        # The retention period of the automatic snapshot, in days. Valid values: 1 to 180.
         # 
         # This parameter is required.
         self.retention_days = retention_days
