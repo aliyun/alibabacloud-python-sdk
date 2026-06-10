@@ -9,6 +9,7 @@ class GetAppTemplateRequest(DaraModel):
         self,
         template_id: str = None,
     ):
+        # Template ID
         self.template_id = template_id
 
     def validate(self):

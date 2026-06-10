@@ -11,8 +11,11 @@ class GetMiniAppAuthUrlRequest(DaraModel):
         channel: str = None,
         redirect_uri: str = None,
     ):
+        # Site ID
         self.biz_id = biz_id
+        # Channel information
         self.channel = channel
+        # Hyperlink URL
         self.redirect_uri = redirect_uri
 
     def validate(self):

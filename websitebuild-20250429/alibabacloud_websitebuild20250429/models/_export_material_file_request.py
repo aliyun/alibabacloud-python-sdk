@@ -12,8 +12,12 @@ class ExportMaterialFileRequest(DaraModel):
         biz_id: str = None,
         file_ids: List[str] = None,
     ):
+        # Business instance ID
+        # 
         # This parameter is required.
         self.biz_id = biz_id
+        # List of file IDs
+        # 
         # This parameter is required.
         self.file_ids = file_ids
 

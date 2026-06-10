@@ -24,19 +24,33 @@ class ListAppConversationsResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
+        # Detailed reason for access denial.
         self.access_denied_detail = access_denied_detail
+        # Indicates whether retry is allowed
         self.allow_retry = allow_retry
+        # Application name. Queries the application with this name.
         self.app_name = app_name
+        # Dynamic error code.
         self.dynamic_code = dynamic_code
+        # Error message
         self.dynamic_message = dynamic_message
+        # Faulty parameters.
         self.error_args = error_args
+        # Number of results per query.  
+        # 
+        # Value range: 10 to 100. Default value: 20.
         self.max_results = max_results
+        # Response data
         self.module = module
+        # Token indicating the start of the next query. This field is empty if there is no next query.
         self.next_token = next_token
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
+        # Error code
         self.root_error_code = root_error_code
+        # Abnormal message
         self.root_error_msg = root_error_msg
+        # Reserved parameter.
         self.synchro = synchro
 
     def validate(self):
@@ -141,9 +155,13 @@ class ListAppConversationsResponseBodyModule(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # Request result.
         self.data = data
+        # Page number. The default value is 1.
         self.page_num = page_num
+        # Paging size.
         self.page_size = page_size
+        # Resource count that matches the filter condition.
         self.total_count = total_count
 
     def validate(self):
@@ -209,17 +227,29 @@ class ListAppConversationsResponseBodyModuleData(DaraModel):
     ):
         # aliyun_pk
         self.aliyun_pk = aliyun_pk
+        # Bot ID
         self.bot_id = bot_id
+        # Chat records
         self.chat_num = chat_num
+        # Session ID
         self.conversation_id = conversation_id
+        # Creation Time
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.gmt_create_time = gmt_create_time
+        # Update Time.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.gmt_modified_time = gmt_modified_time
+        # Extension information (in JSON string format)
         self.meta_data = meta_data
+        # Section ID of the checklist item.
         self.section_id = section_id
+        # Site ID. You can obtain it by invoking the [ListSites](~~ListSites~~) API.
         self.site_id = site_id
+        # Current viewpoint, equivalent to the news title.
         self.title = title
+        # User ID
         self.user_id = user_id
 
     def validate(self):

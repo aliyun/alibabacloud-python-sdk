@@ -9,6 +9,7 @@ class GetAppInstanceForPartnerRequest(DaraModel):
         self,
         biz_id: str = None,
     ):
+        # Business ID
         self.biz_id = biz_id
 
     def validate(self):

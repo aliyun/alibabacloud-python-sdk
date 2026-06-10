@@ -22,17 +22,27 @@ class GetAppPublishStatusResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
+        # Detailed reason for access denial.
         self.access_denied_detail = access_denied_detail
+        # Is retry allowed
         self.allow_retry = allow_retry
+        # App name.
         self.app_name = app_name
+        # Dynamic error code.
         self.dynamic_code = dynamic_code
+        # Dynamic message.
         self.dynamic_message = dynamic_message
+        # Returned error parameters
         self.error_args = error_args
+        # Response data
         self.module = module
         # Id of the request
         self.request_id = request_id
+        # Error code
         self.root_error_code = root_error_code
+        # Abnormal message
         self.root_error_msg = root_error_msg
+        # Reserved parameter.
         self.synchro = synchro
 
     def validate(self):
@@ -135,23 +145,45 @@ class GetAppPublishStatusResponseBodyModule(DaraModel):
         publish_time: str = None,
         site_id: str = None,
         steps: List[str] = None,
+        subchannel: str = None,
     ):
+        # Indicates whether quick rollback is supported.
         self.can_quick_revert = can_quick_revert
+        # Current operation step of the job.
         self.current_step = current_step
+        # Deployment channel
         self.deploy_channel = deploy_channel
+        # Application description
         self.description = description
+        # Publishing procedure
         self.error_step = error_step
+        # Indicates whether the job is finished.
         self.is_finish = is_finish
+        # Indicates whether the invocation succeeded. Valid values:
+        # 
+        # - `true`: The invocation succeeded.
+        # 
+        # - `false`: Failed to invoke.
         self.is_success = is_success
+        # Additional description information.
         self.msg = msg
+        # Sorting type: ASC or DESC.
         self.order_type = order_type
+        # Job completion percentage.
         self.percent = percent
+        # Publish number
         self.publish_number = publish_number
+        # Publish order ID
         self.publish_order_id = publish_order_id
+        # Scheduled publish time
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.publish_time = publish_time
+        # The site ID, which can be obtained by invoking the [ListSites](~~ListSites~~) API.
         self.site_id = site_id
+        # Error Level, including FATAL, ERROR, WARNING, and CRITICAL.
         self.steps = steps
+        self.subchannel = subchannel
 
     def validate(self):
         pass
@@ -206,6 +238,9 @@ class GetAppPublishStatusResponseBodyModule(DaraModel):
         if self.steps is not None:
             result['Steps'] = self.steps
 
+        if self.subchannel is not None:
+            result['Subchannel'] = self.subchannel
+
         return result
 
     def from_map(self, m: dict = None):
@@ -254,6 +289,9 @@ class GetAppPublishStatusResponseBodyModule(DaraModel):
 
         if m.get('Steps') is not None:
             self.steps = m.get('Steps')
+
+        if m.get('Subchannel') is not None:
+            self.subchannel = m.get('Subchannel')
 
         return self
 

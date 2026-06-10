@@ -22,17 +22,27 @@ class GetAppSeoTrendsResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
+        # Detailed reason for access denial.
         self.access_denied_detail = access_denied_detail
+        # Is retry allowed
         self.allow_retry = allow_retry
+        # Application name
         self.app_name = app_name
+        # Dynamic error code
         self.dynamic_code = dynamic_code
+        # Dynamic error message.
         self.dynamic_message = dynamic_message
+        # Returned error parameters
         self.error_args = error_args
+        # Response data
         self.module = module
         # Id of the request
         self.request_id = request_id
+        # Error code
         self.root_error_code = root_error_code
+        # Abnormal message
         self.root_error_msg = root_error_msg
+        # Backup parameter.
         self.synchro = synchro
 
     def validate(self):
@@ -124,8 +134,11 @@ class GetAppSeoTrendsResponseBodyModule(DaraModel):
         bing_index_trends: str = None,
         google_index_trends: str = None,
     ):
+        # Baidu
         self.baidu_index_trends = baidu_index_trends
+        # Bing
         self.bing_index_trends = bing_index_trends
+        # Google
         self.google_index_trends = google_index_trends
 
     def validate(self):

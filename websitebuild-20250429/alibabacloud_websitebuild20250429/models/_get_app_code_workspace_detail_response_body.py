@@ -22,17 +22,30 @@ class GetAppCodeWorkspaceDetailResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
+        # Detailed reason for access denial.
         self.access_denied_detail = access_denied_detail
+        # Indicates whether retry is allowed. Valid values:  
+        # - false: Retry is not allowed.  
+        # - true: Retry is allowed.
         self.allow_retry = allow_retry
+        # App name.
         self.app_name = app_name
+        # Dynamic error code.
         self.dynamic_code = dynamic_code
+        # Dynamic error message, used to replace the `%s` placeholder in the **ErrMessage** error message.  
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, it indicates that the provided request parameter **DtsJobId** is invalid.
         self.dynamic_message = dynamic_message
+        # Faulty parameters
         self.error_args = error_args
+        # Application module
         self.module = module
         # Id of the request
         self.request_id = request_id
+        # Error code
         self.root_error_code = root_error_code
+        # Abnormal message
         self.root_error_msg = root_error_msg
+        # Reserved parameter.
         self.synchro = synchro
 
     def validate(self):
@@ -121,6 +134,7 @@ class GetAppCodeWorkspaceDetailResponseBodyModule(DaraModel):
     def __init__(
         self,
         active_logical_number: int = None,
+        commit_hash: str = None,
         is_dirty: bool = None,
         max_logical_number: int = None,
         site_id: str = None,
@@ -128,11 +142,14 @@ class GetAppCodeWorkspaceDetailResponseBodyModule(DaraModel):
     ):
         # 11111
         self.active_logical_number = active_logical_number
+        self.commit_hash = commit_hash
         # true
         self.is_dirty = is_dirty
         # 1111
         self.max_logical_number = max_logical_number
+        # Site ID, which can be obtained by invoking the [ListSites](~~ListSites~~) API.
         self.site_id = site_id
+        # API Guide information.
         self.snapshots = snapshots
 
     def validate(self):
@@ -148,6 +165,9 @@ class GetAppCodeWorkspaceDetailResponseBodyModule(DaraModel):
             result = _map
         if self.active_logical_number is not None:
             result['ActiveLogicalNumber'] = self.active_logical_number
+
+        if self.commit_hash is not None:
+            result['CommitHash'] = self.commit_hash
 
         if self.is_dirty is not None:
             result['IsDirty'] = self.is_dirty
@@ -169,6 +189,9 @@ class GetAppCodeWorkspaceDetailResponseBodyModule(DaraModel):
         m = m or dict()
         if m.get('ActiveLogicalNumber') is not None:
             self.active_logical_number = m.get('ActiveLogicalNumber')
+
+        if m.get('CommitHash') is not None:
+            self.commit_hash = m.get('CommitHash')
 
         if m.get('IsDirty') is not None:
             self.is_dirty = m.get('IsDirty')
@@ -194,9 +217,13 @@ class GetAppCodeWorkspaceDetailResponseBodyModuleSnapshots(DaraModel):
         gmt_create_time: str = None,
         logical_number: int = None,
     ):
+        # SDK change log
         self.change_log = change_log
+        # Creation UTC time in ISO8601 format.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.gmt_create_time = gmt_create_time
+        # Logical value
         self.logical_number = logical_number
 
     def validate(self):

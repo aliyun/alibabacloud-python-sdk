@@ -10,7 +10,9 @@ class DeleteMaterialDirectoryRequest(DaraModel):
         biz_id: str = None,
         directory_id: str = None,
     ):
+        # The business ID of the application instance.
         self.biz_id = biz_id
+        # The folder ID.
         self.directory_id = directory_id
 
     def validate(self):

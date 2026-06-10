@@ -12,9 +12,13 @@ class ModuleResultsValue(DaraModel):
         error_code: str = None,
         error_message: str = None,
     ):
+        # Whether the check is passed
         self.passed = passed
+        # Resource identity
         self.resource_code = resource_code
+        # Error code when failed; null when passed
         self.error_code = error_code
+        # Error message when failed; null when passed
         self.error_message = error_message
 
     def validate(self):

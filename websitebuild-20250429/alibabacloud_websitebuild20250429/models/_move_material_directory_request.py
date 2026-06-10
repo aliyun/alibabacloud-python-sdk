@@ -12,12 +12,20 @@ class MoveMaterialDirectoryRequest(DaraModel):
         parent_directory_id: str = None,
         sort_num: int = None,
     ):
+        # Application instance ID
+        # 
         # This parameter is required.
         self.biz_id = biz_id
+        # Folder ID
+        # 
         # This parameter is required.
         self.directory_id = directory_id
+        # Parent folder ID after shift
+        # 
         # This parameter is required.
         self.parent_directory_id = parent_directory_id
+        # Sorting ordinal number
+        # 
         # This parameter is required.
         self.sort_num = sort_num
 

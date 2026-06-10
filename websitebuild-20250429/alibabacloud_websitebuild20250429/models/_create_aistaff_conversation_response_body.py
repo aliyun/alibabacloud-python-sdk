@@ -22,17 +22,27 @@ class CreateAIStaffConversationResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
+        # Detailed reason for access denial.
         self.access_denied_detail = access_denied_detail
+        # Is retry allowed
         self.allow_retry = allow_retry
+        # Application name. Query the application with this name.
         self.app_name = app_name
+        # Dynamic error code.
         self.dynamic_code = dynamic_code
+        # Dynamic message.
         self.dynamic_message = dynamic_message
+        # Returned error parameters
         self.error_args = error_args
+        # Response data
         self.module = module
         # Id of the request
         self.request_id = request_id
+        # error code
         self.root_error_code = root_error_code
+        # Abnormal message
         self.root_error_msg = root_error_msg
+        # Backup parameter.
         self.synchro = synchro
 
     def validate(self):
@@ -127,11 +137,17 @@ class CreateAIStaffConversationResponseBodyModule(DaraModel):
         site_id: str = None,
         title: str = None,
     ):
+        # Bot ID
         self.bot_id = bot_id
+        # ID of the chat.
         self.chat_id = chat_id
+        # Session ID
         self.conversation_id = conversation_id
+        # Section ID of the check item.
         self.section_id = section_id
+        # Site ID, which can be obtained by invoking the [ListSites](~~ListSites~~) API.
         self.site_id = site_id
+        # Current point, equivalent to a news title
         self.title = title
 
     def validate(self):

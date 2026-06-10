@@ -10,7 +10,9 @@ class SaveAppSupabaseSecretsRequest(DaraModel):
         biz_id: str = None,
         secrets_json: str = None,
     ):
+        # Business ID
         self.biz_id = biz_id
+        # Key list JSON
         self.secrets_json = secrets_json
 
     def validate(self):

@@ -11,8 +11,11 @@ class CreateAppAssistantAgentRequest(DaraModel):
         biz_id: str = None,
         platform_type: str = None,
     ):
+        # Agent name
         self.agent_name = agent_name
+        # Business ID
         self.biz_id = biz_id
+        # Platform type
         self.platform_type = platform_type
 
     def validate(self):

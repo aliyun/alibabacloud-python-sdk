@@ -14,19 +14,34 @@ class ListAppPublishHistoryRequest(DaraModel):
         next_token: str = None,
         page_num: int = None,
         page_size: int = None,
+        publish_env: str = None,
         sort: str = None,
         status: str = None,
+        subchannel: str = None,
         website_domain: str = None,
     ):
+        # Business ID
         self.biz_id = biz_id
         self.deploy_channel = deploy_channel
+        # Search keyword
         self.keyword = keyword
+        # Number of results per query.  
+        # 
+        # Value range: 10 to 100. Default value: 20.
         self.max_results = max_results
+        # Token indicating the start of the next query. Empty if there is no next query.
         self.next_token = next_token
+        # Page number
         self.page_num = page_num
+        # Page size
         self.page_size = page_size
+        self.publish_env = publish_env
+        # Sorting method
         self.sort = sort
+        # Publish status
         self.status = status
+        self.subchannel = subchannel
+        # Website domain name
         self.website_domain = website_domain
 
     def validate(self):
@@ -58,11 +73,17 @@ class ListAppPublishHistoryRequest(DaraModel):
         if self.page_size is not None:
             result['PageSize'] = self.page_size
 
+        if self.publish_env is not None:
+            result['PublishEnv'] = self.publish_env
+
         if self.sort is not None:
             result['Sort'] = self.sort
 
         if self.status is not None:
             result['Status'] = self.status
+
+        if self.subchannel is not None:
+            result['Subchannel'] = self.subchannel
 
         if self.website_domain is not None:
             result['WebsiteDomain'] = self.website_domain
@@ -92,11 +113,17 @@ class ListAppPublishHistoryRequest(DaraModel):
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
 
+        if m.get('PublishEnv') is not None:
+            self.publish_env = m.get('PublishEnv')
+
         if m.get('Sort') is not None:
             self.sort = m.get('Sort')
 
         if m.get('Status') is not None:
             self.status = m.get('Status')
+
+        if m.get('Subchannel') is not None:
+            self.subchannel = m.get('Subchannel')
 
         if m.get('WebsiteDomain') is not None:
             self.website_domain = m.get('WebsiteDomain')

@@ -13,10 +13,15 @@ class UpdateAppSupabaseSecretRequest(DaraModel):
         secret_type: str = None,
         secret_value: str = None,
     ):
+        # Business ID
         self.biz_id = biz_id
+        # Key value
         self.secret_key = secret_key
+        # Key name
         self.secret_name = secret_name
+        # Key Type
         self.secret_type = secret_type
+        # Key Value
         self.secret_value = secret_value
 
     def validate(self):

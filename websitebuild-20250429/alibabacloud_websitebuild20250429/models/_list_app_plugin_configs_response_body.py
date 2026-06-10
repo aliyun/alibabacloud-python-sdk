@@ -24,19 +24,34 @@ class ListAppPluginConfigsResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
+        # The detailed reason why access was denied.
         self.access_denied_detail = access_denied_detail
+        # is retry allowed
         self.allow_retry = allow_retry
+        # Application Name. Query the application with this name.
         self.app_name = app_name
+        # Dynamic error code.
         self.dynamic_code = dynamic_code
+        # Dynamic error message used to replace the `%s` placeholder in the **ErrMessage** error message.  
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, it indicates that the request parameter **DtsJobId** is invalid.
         self.dynamic_message = dynamic_message
+        # Returned error parameters
         self.error_args = error_args
+        # The number of results returned per query.  
+        # 
+        # Valid range: 10 to 100. Default Value: 20.
         self.max_results = max_results
+        # task object
         self.module = module
+        # The token to start the next query. It is empty if there is no next query.
         self.next_token = next_token
         # Id of the request
         self.request_id = request_id
+        # error code
         self.root_error_code = root_error_code
+        # abnormal message
         self.root_error_msg = root_error_msg
+        # is synchronous processing enabled
         self.synchro = synchro
 
     def validate(self):
@@ -156,20 +171,39 @@ class ListAppPluginConfigsResponseBodyModule(DaraModel):
         site_name: str = None,
         user_id: str = None,
     ):
+        # Business ID
         self.biz_id = biz_id
+        # Indicates whether to display.
         self.display = display
+        # Indicates whether scheduled delivery of resource snapshots is enabled.  
+        # 
+        # Valid values:  
+        # - true: Enabled.  
+        # - false: Shutdown.
         self.enabled = enabled
+        # Extension information
         self.extend = extend
+        # Creation Time
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.gmt_create_time = gmt_create_time
+        # Updated At
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.gmt_modified_time = gmt_modified_time
+        # primary key
         self.id = id
+        # Plugin configuration
         self.plugin_config = plugin_config
+        # Plugin description
         self.plugin_desc = plugin_desc
+        # Plugin ID
         self.plugin_id = plugin_id
+        # Plugin name
         self.plugin_name = plugin_name
+        # Site name
         self.site_name = site_name
+        # User ID
         self.user_id = user_id
 
     def validate(self):

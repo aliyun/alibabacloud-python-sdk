@@ -10,7 +10,9 @@ class ListAppAssistantAgentsRequest(DaraModel):
         biz_id: str = None,
         platform_type: str = None,
     ):
+        # Business ID
         self.biz_id = biz_id
+        # Platform Type
         self.platform_type = platform_type
 
     def validate(self):

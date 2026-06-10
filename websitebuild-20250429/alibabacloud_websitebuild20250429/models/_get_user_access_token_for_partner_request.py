@@ -11,6 +11,9 @@ class GetUserAccessTokenForPartnerRequest(DaraModel):
         ticket: str = None,
     ):
         self.site_host = site_host
+        # Credential for connecting to the cloud application.  
+        # > This parameter appears when the API is invoked again (not on the first invocation).
+        # 
         # This parameter is required.
         self.ticket = ticket
 

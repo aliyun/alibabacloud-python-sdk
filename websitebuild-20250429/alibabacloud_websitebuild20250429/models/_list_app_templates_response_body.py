@@ -24,19 +24,33 @@ class ListAppTemplatesResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
+        # Detailed reason for access denial.
         self.access_denied_detail = access_denied_detail
+        # Indicates whether retry is allowed.
         self.allow_retry = allow_retry
+        # Application name.
         self.app_name = app_name
+        # Dynamic error code.
         self.dynamic_code = dynamic_code
+        # Dynamic message. Not currently used. Ignore it.
         self.dynamic_message = dynamic_message
+        # Faulty parameters
         self.error_args = error_args
+        # Number of results returned per query.  
+        # 
+        # Valid values: 10 to 100. Default value: 20.
         self.max_results = max_results
+        # Response data
         self.module = module
+        # Token for starting the next query. It is empty if there is no next query.
         self.next_token = next_token
         # Id of the request
         self.request_id = request_id
+        # Error code
         self.root_error_code = root_error_code
+        # Abnormal message
         self.root_error_msg = root_error_msg
+        # Reserved parameter.
         self.synchro = synchro
 
     def validate(self):
@@ -146,14 +160,23 @@ class ListAppTemplatesResponseBodyModule(DaraModel):
         total_item_num: int = None,
         total_page_num: int = None,
     ):
+        # Current page number.
         self.current_page_num = current_page_num
+        # Request Result.
         self.data = data
+        # Decision weight
         self.next = next
+        # Whether there is a next page.
         self.next_page = next_page
+        # Page size.
         self.page_size = page_size
+        # Indicates whether there is a previous page.
         self.pre_page = pre_page
+        # For the current query, aside from paging limits, the server-side processes at most the latest 1000 records. If the result exceeds 1000 records, **ResultLimit** is **true**; you should narrow the Time Range and search again. Otherwise, **ResultLimit** is **false**.
         self.result_limit = result_limit
+        # Total number of records.
         self.total_item_num = total_item_num
+        # Total number of pages.
         self.total_page_num = total_page_num
 
     def validate(self):
@@ -264,30 +287,62 @@ class ListAppTemplatesResponseBodyModuleNext(DaraModel):
         view_count: int = None,
         weight: int = None,
     ):
+        # Application Type
         self.app_type = app_type
+        # bizId of the associated application instance
         self.biz_id = biz_id
+        # Color
         self.color_scheme = color_scheme
+        # Color scheme name
         self.color_scheme_name = color_scheme_name
+        # The actual data volume of the original table copied during DMS lockless change.
         self.copy_count = copy_count
+        # Tenant User Information
         self.creator = creator
+        # Creation Time
         self.gmt_create = gmt_create
+        # Updated At
         self.gmt_modified = gmt_modified
+        # Primary key
         self.id = id
+        # Industry. Default value: **common** (General Industry). Valid values:  
+        # 
+        # - **microVideo**: Short Video Industry.  
+        # 
+        # - **common**: General Industry.
         self.industry = industry
+        # Industry Name
         self.industry_name = industry_name
+        # ID of the last modifier
         self.last_modifier = last_modifier
+        # Like count.
         self.like_count = like_count
+        # Whether the current user has liked the item.
         self.liked = liked
+        # Fix Content.
         self.metadata = metadata
+        # Preview URL
         self.preview_url = preview_url
+        # Edition. Valid values:  
+        # - **BasicVersion**: Basic Edition.  
+        # - **EnterpriseVersion**: Enterprise Edition.  
+        # > This parameter is required only when ProductForm is set to IntegrationForm.
         self.product_version = product_version
+        # Edition name.
         self.product_version_name = product_version_name
+        # Share Count
         self.share_count = share_count
+        # Possible values: unknown, init, testing, online
         self.status = status
+        # Template ID
         self.template_id = template_id
+        # Template Name
         self.template_name = template_name
+        # Application thumbnail
         self.thumbnail_url = thumbnail_url
+        # View count.
         self.view_count = view_count
+        # Weight
         self.weight = weight
 
     def validate(self):
@@ -483,32 +538,65 @@ class ListAppTemplatesResponseBodyModuleData(DaraModel):
         view_count: int = None,
         weight: int = None,
     ):
+        # application Type
         self.app_type = app_type
+        # application instance ID
         self.biz_id = biz_id
+        # Color
         self.color_scheme = color_scheme
+        # Color name
         self.color_scheme_name = color_scheme_name
+        # The actual data volume of the original table copied during DMS lockless change.
         self.copy_count = copy_count
+        # Creator ID.
         self.creator = creator
+        # Creation Time
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.gmt_create_time = gmt_create_time
+        # Updated At
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.gmt_modified_time = gmt_modified_time
+        # primary key
         self.id = id
+        # Industry of the file to be analyzed. Default value: **common** (general industry). Select an appropriate industry to enable the backend to match an algorithm combination suitable for that industry. Valid values:  
+        # 
+        # - **microVideo**: Short video industry.  
+        # - **common**: General industry.
         self.industry = industry
+        # Industry Name
         self.industry_name = industry_name
+        # Editor ID
         self.last_modifier = last_modifier
+        # Number of likes.
         self.like_count = like_count
+        # Whether the current user has liked it
         self.liked = liked
+        # Remediation action.
         self.metadata = metadata
+        # Preview URL
         self.preview_url = preview_url
+        # Edition. Valid values:  
+        # - **BasicVersion**: Basic Edition.  
+        # - **EnterpriseVersion**: Enterprise Edition.
         self.product_version = product_version
+        # Edition name.
         self.product_version_name = product_version_name
+        # Share Count
         self.share_count = share_count
+        # File Status
         self.status = status
+        # Template ID
         self.template_id = template_id
+        # Template Name.  
+        # - Maximum length: 128 characters.
         self.template_name = template_name
+        # Application thumbnail
         self.thumbnail_url = thumbnail_url
+        # View Count.
         self.view_count = view_count
+        # weight
         self.weight = weight
 
     def validate(self):

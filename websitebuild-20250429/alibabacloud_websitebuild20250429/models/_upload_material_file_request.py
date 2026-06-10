@@ -12,12 +12,19 @@ class UploadMaterialFileRequest(DaraModel):
         file_url: str = None,
         name: str = None,
     ):
+        # Application Instance Business ID
+        # 
         # This parameter is required.
         self.biz_id = biz_id
+        # Parent Folder ID
+        # 
         # This parameter is required.
         self.directory_id = directory_id
+        # File Path
+        # 
         # This parameter is required.
         self.file_url = file_url
+        # File Name
         self.name = name
 
     def validate(self):

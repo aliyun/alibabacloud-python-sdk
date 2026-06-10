@@ -23,21 +23,46 @@ class SearchImageShrinkRequest(DaraModel):
         tags_shrink: str = None,
         text: str = None,
     ):
+        # Color
         self.color_hex = color_hex
+        # Indicates whether the image contains a person.
         self.has_person = has_person
+        # Image category. Valid values:
+        # - normal: Illustrations or article images.
+        # - banner: Background images or image carousels.
+        # - goods: Product or service images.
         self.image_category = image_category
+        # Image aspect ratio, including:
+        # "16:9"
+        # "4:3"
+        # "2:1"
+        # "1:1"
+        # "3:4"
+        # "9:16"
         self.image_ratio = image_ratio
+        # Maximum image height.
         self.max_height = max_height
+        # Number of items per page in a paged query. Maximum value is 100. Default value is 20.
         self.max_results = max_results
+        # Maximum image width (inclusive).
         self.max_width = max_width
+        # Minimum image height
         self.min_height = min_height
+        # Minimum image width (inclusive).
         self.min_width = min_width
+        # Query credential (Token). Set this parameter to the NextToken value returned in the previous API call. You do not need to set this parameter for the initial API call. If NextToken is specified, the request parameters PageSize and PageNumber become invalid, and the TotalCount in the returned data is also invalid.
         self.next_token = next_token
         # Osskey。
         self.oss_key = oss_key
+        # Number of results to return. Default value is 10.
         self.size = size
+        # Starting position of the return result. Valid values: 0 to 499. Default value is 0.
         self.start = start
+        # Tags.
         self.tags_shrink = tags_shrink
+        # Description text for searching images.
+        # 
+        # > Supports up to 512 characters.
         self.text = text
 
     def validate(self):

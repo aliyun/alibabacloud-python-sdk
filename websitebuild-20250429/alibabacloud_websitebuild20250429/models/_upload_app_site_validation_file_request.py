@@ -14,11 +14,17 @@ class UploadAppSiteValidationFileRequest(DaraModel):
         file_type: str = None,
         site_host: str = None,
     ):
+        # business ID
         self.biz_id = biz_id
+        # domain name
         self.domain = domain
+        # file name
         self.file = file
+        # file content
         self.file_content = file_content
+        # file type
         self.file_type = file_type
+        # site host
         self.site_host = site_host
 
     def validate(self):

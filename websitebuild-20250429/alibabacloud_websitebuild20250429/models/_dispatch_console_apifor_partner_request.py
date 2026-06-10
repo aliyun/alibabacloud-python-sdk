@@ -15,9 +15,20 @@ class DispatchConsoleAPIForPartnerRequest(DaraModel):
     ):
         # This parameter is required.
         self.live_token = live_token
+        # Set the operation to perform on the alert. Valid values:
+        # 
+        # - **deal**: Handle the alert (fencing)
+        # - **ignore**: Ignore
+        # - **mark_mis_info**: Mark as false positive (add to whitelist)
+        # - **rm_mark_mis_info**: Unmark as false positive (remove from whitelist)
+        # - **offline_handled**: Mark as Completed
+        # 
         # This parameter is required.
         self.operation = operation
+        # Error parameter.
         self.params = params
+        # Product code
+        # 
         # This parameter is required.
         self.product = product
         self.site_host = site_host

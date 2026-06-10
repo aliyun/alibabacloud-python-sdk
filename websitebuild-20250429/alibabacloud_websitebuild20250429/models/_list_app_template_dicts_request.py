@@ -11,8 +11,13 @@ class ListAppTemplateDictsRequest(DaraModel):
         max_results: int = None,
         next_token: str = None,
     ):
+        # Dictionary type
         self.dict_type = dict_type
+        # Number of results per query.  
+        # 
+        # Valid range: 10 to 100. Default Value: 20.
         self.max_results = max_results
+        # Token indicating the start of the next query. This value is empty if there is no next query.
         self.next_token = next_token
 
     def validate(self):

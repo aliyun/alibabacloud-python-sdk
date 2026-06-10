@@ -15,12 +15,19 @@ class CheckUserResourceMeasureRequest(DaraModel):
         resource_code: str = None,
         resource_value: int = None,
     ):
+        # Belonging ID (site ID or Alibaba Cloud User ID)
         self.belong_id = belong_id
+        # Belonging ID Type (siteId, uid)
         self.belong_id_type = belong_id_type
+        # ESP business type
         self.biz_type = biz_type
+        # ESP business ID
         self.esp_biz_id = esp_biz_id
+        # Order module information (espBizId and bizType cannot be empty when this is empty)
         self.order_component_params = order_component_params
+        # Resource identity
         self.resource_code = resource_code
+        # Resource value. Default is empty. Required only for feature-type resources. 0 means not supported, and 1 means supported.
         self.resource_value = resource_value
 
     def validate(self):

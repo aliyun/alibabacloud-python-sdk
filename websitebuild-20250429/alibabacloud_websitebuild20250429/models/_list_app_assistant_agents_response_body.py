@@ -22,17 +22,28 @@ class ListAppAssistantAgentsResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
+        # The detailed reason why access was denied.
         self.access_denied_detail = access_denied_detail
+        # is retry allowed
         self.allow_retry = allow_retry
+        # App Name.
         self.app_name = app_name
+        # dynamic error code.
         self.dynamic_code = dynamic_code
+        # dynamic error message, used to replace the `%s` placeholder in the **ErrMessage** error message.  
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, it indicates that the request parameter **DtsJobId** is invalid.
         self.dynamic_message = dynamic_message
+        # Returned error parameters
         self.error_args = error_args
+        # response Data
         self.module = module
         # Id of the request
         self.request_id = request_id
+        # Error code
         self.root_error_code = root_error_code
+        # abnormal message
         self.root_error_msg = root_error_msg
+        # Reserved parameter.
         self.synchro = synchro
 
     def validate(self):
@@ -139,17 +150,29 @@ class ListAppAssistantAgentsResponseBodyModule(DaraModel):
         status: str = None,
         user_id: str = None,
     ):
+        # Agent ID (returned by the platform)
         self.agent_id = agent_id
+        # Agent Name
         self.agent_name = agent_name
+        # bizId of the associated application instance
         self.biz_id = biz_id
+        # Credential
         self.credential = credential
+        # Embed configuration
         self.embed_config = embed_config
+        # Extension parameters
         self.extra_params = extra_params
+        # Creation Time
         self.gmt_create = gmt_create
+        # Updated At
         self.gmt_modified = gmt_modified
+        # Agent platform appId
         self.platform_app_id = platform_app_id
+        # Platform Type
         self.platform_type = platform_type
+        # Status
         self.status = status
+        # User ID
         self.user_id = user_id
 
     def validate(self):
@@ -249,7 +272,9 @@ class ListAppAssistantAgentsResponseBodyModuleEmbedConfig(DaraModel):
         extra: Dict[str, str] = None,
         raw_script: str = None,
     ):
+        # Extension fields
         self.extra = extra
+        # Raw embed script
         self.raw_script = raw_script
 
     def validate(self):
@@ -287,12 +312,15 @@ class ListAppAssistantAgentsResponseBodyModuleCredential(DaraModel):
         password: str = None,
         username: str = None,
     ):
-        # API Key
+        # API key
         self.api_key = api_key
         # API Secret
         self.api_secret = api_secret
+        # Extension field
         self.extra = extra
+        # Password
         self.password = password
+        # Username
         self.username = username
 
     def validate(self):

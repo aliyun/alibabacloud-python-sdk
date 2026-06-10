@@ -45,9 +45,11 @@ class CreateAppInstanceShrinkRequest(DaraModel):
         self.pricing_cycle = pricing_cycle
         # Required. The quantity of instances to be ordered.
         self.quantity = quantity
+        # Resource group ID
         self.resource_group_id = resource_group_id
         # Site version
         self.site_version = site_version
+        # List of tags
         self.tags_shrink = tags_shrink
         self.version = version
 

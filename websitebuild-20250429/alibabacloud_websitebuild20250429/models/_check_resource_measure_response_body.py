@@ -22,17 +22,28 @@ class CheckResourceMeasureResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
+        # Detailed reason for access denial.
         self.access_denied_detail = access_denied_detail
+        # Is retry allowed
         self.allow_retry = allow_retry
+        # App Name.
         self.app_name = app_name
+        # Dynamic error code.
         self.dynamic_code = dynamic_code
+        # Dynamic error message used to replace `%s` in the **ErrMessage** error message.  
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, it indicates that the provided request parameter **DtsJobId** is invalid.
         self.dynamic_message = dynamic_message
+        # Returned error parameters
         self.error_args = error_args
+        # Application module
         self.module = module
         # Id of the request
         self.request_id = request_id
+        # Error code
         self.root_error_code = root_error_code
+        # Abnormal message
         self.root_error_msg = root_error_msg
+        # Reserved parameter.
         self.synchro = synchro
 
     def validate(self):
@@ -125,9 +136,13 @@ class CheckResourceMeasureResponseBodyModule(DaraModel):
         passed: bool = None,
         resource_code: str = None,
     ):
+        # Error code when failed; null when passed
         self.error_code = error_code
+        # Error message when failed; null when passed
         self.error_message = error_message
+        # Is the check passed
         self.passed = passed
+        # Resource identity
         self.resource_code = resource_code
 
     def validate(self):

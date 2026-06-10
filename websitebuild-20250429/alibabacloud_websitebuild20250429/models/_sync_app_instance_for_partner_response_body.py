@@ -11,6 +11,7 @@ class SyncAppInstanceForPartnerResponseBody(DaraModel):
         data: main_models.SyncAppInstanceForPartnerResponseBodyData = None,
         request_id: str = None,
     ):
+        # Request result.
         self.data = data
         # Id of the request
         self.request_id = request_id
@@ -48,6 +49,7 @@ class SyncAppInstanceForPartnerResponseBodyData(DaraModel):
         self,
         app_instance: main_models.SyncAppInstanceForPartnerResponseBodyDataAppInstance = None,
     ):
+        # Application instance information
         self.app_instance = app_instance
 
     def validate(self):
@@ -77,6 +79,7 @@ class SyncAppInstanceForPartnerResponseBodyDataAppInstance(DaraModel):
         self,
         biz_id: str = None,
     ):
+        # Customer business ID
         self.biz_id = biz_id
 
     def validate(self):

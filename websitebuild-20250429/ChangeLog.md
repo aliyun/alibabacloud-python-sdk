@@ -1,3 +1,23 @@
+2026-06-10 Version: 2.27.1
+- Update API GetAppCodeWorkspaceDetail: add response parameters Body.Module.CommitHash.
+- Update API GetAppPublishStatus: add response parameters Body.Module.Subchannel.
+- Update API ListAppPublishHistory: add request parameters PublishEnv.
+- Update API ListAppPublishHistory: add request parameters Subchannel.
+- Update API ListAppPublishHistory: add response parameters Body.Module.History.$.CommitHash.
+- Update API ListAppPublishHistory: add response parameters Body.Module.History.$.Subchannel.
+- Update API QueryInspirationAccountDetails: add response parameters Body.Module.Data.$.BalanceStr.
+- Update API QueryInspirationAccountDetails: add response parameters Body.Module.Data.$.InitQuotaStr.
+- Update API QueryInspirationAccountDetails: add response parameters Body.Module.Next.BalanceStr.
+- Update API QueryInspirationAccountDetails: add response parameters Body.Module.Next.InitQuotaStr.
+- Update API QueryInspirationBalance: add response parameters Body.Module.RemainingStr.
+- Update API QueryInspirationBalance: add response parameters Body.Module.TotalQuotaStr.
+- Update API QueryInspirationBalance: add response parameters Body.Module.TotalUsedStr.
+- Update API QueryInspirationConsumeRecords: add response parameters Body.Module.Data.$.AmountStr.
+- Update API QueryInspirationConsumeRecords: add response parameters Body.Module.Data.$.ConsumeType.
+- Update API QueryInspirationConsumeRecords: add response parameters Body.Module.Next.AmountStr.
+- Update API QueryInspirationConsumeRecords: add response parameters Body.Module.Next.ConsumeType.
+
+
 2026-06-09 Version: 2.27.0
 - Support API ConfirmAppInstance.
 - Support API DeleteAppFile.

@@ -16,13 +16,23 @@ class ListAppConversationsRequest(DaraModel):
         site_id: str = None,
         start_modify_time: str = None,
     ):
+        # Bot ID
         self.bot_id = bot_id
+        # End modification time (ISO 8601 format)
         self.end_modify_time = end_modify_time
+        # The number of entries to return in each query result.  
+        # 
+        # Valid values: 10 to 100. Default value: 20.
         self.max_results = max_results
+        # Token indicating the start of the next query. It is empty when there is no next query.
         self.next_token = next_token
+        # Page number
         self.page_num = page_num
+        # Number of entries per page
         self.page_size = page_size
+        # Site ID
         self.site_id = site_id
+        # Start modification time (ISO 8601 format)
         self.start_modify_time = start_modify_time
 
     def validate(self):

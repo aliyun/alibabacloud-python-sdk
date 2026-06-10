@@ -24,18 +24,31 @@ class UpdateAppInstanceRequest(DaraModel):
         tags: List[main_models.UpdateAppInstanceRequestTags] = None,
         thumbnail_url: str = None,
     ):
+        # Application type
         self.application_type = application_type
+        # Business ID
         self.biz_id = biz_id
+        # Ensures the idempotence of the request. Generate a unique value from your client for this parameter to guarantee uniqueness across different requests. ClientToken supports only ASCII characters and must not exceed 64 characters.
         self.client_token = client_token
+        # Deployment area
         self.deploy_area = deploy_area
+        # Application description
         self.description = description
+        # Extension information
         self.extend = extend
+        # Application icon
         self.icon_url = icon_url
+        # Application name
         self.name = name
+        # Payment type
         self.payment_type = payment_type
+        # The ID of the resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
+        # Website version
         self.site_version = site_version
+        # Tags.
         self.tags = tags
+        # Application thumbnail
         self.thumbnail_url = thumbnail_url
 
     def validate(self):
@@ -144,7 +157,13 @@ class UpdateAppInstanceRequestTags(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The tag key of the instance. Valid values for N: **1** to **20**. If you specify this parameter, it cannot be an empty string.
+        # 
+        # It can contain up to 64 characters, must not start with `aliyun` or `acs:`, and must not contain `http://` or `https://`.
         self.tag_key = tag_key
+        # The tag value of the instance. Valid values for N: **1** to **20**. If you specify this parameter, it can be an empty string.
+        # 
+        # It can contain up to 128 characters, must not start with `aliyun` or `acs:`, and must not contain `http://` or `https://`.
         self.tag_value = tag_value
 
     def validate(self):

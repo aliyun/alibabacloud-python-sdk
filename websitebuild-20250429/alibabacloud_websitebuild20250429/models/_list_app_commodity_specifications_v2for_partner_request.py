@@ -10,7 +10,11 @@ class ListAppCommoditySpecificationsV2ForPartnerRequest(DaraModel):
         max_results: int = None,
         next_token: str = None,
     ):
+        # Number of results per query.
+        # 
+        # Valid values: 10 to 100. Default value: 20.
         self.max_results = max_results
+        # Token indicating the start of the next query. It is empty if there is no next query.
         self.next_token = next_token
 
     def validate(self):

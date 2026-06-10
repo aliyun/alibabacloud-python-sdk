@@ -11,10 +11,16 @@ class ModifyMaterialFileRequest(DaraModel):
         file_id: str = None,
         name: str = None,
     ):
+        # Application instance business ID
+        # 
         # This parameter is required.
         self.biz_id = biz_id
+        # File ID
+        # 
         # This parameter is required.
         self.file_id = file_id
+        # Modified file Name
+        # 
         # This parameter is required.
         self.name = name
 

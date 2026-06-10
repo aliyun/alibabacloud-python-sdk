@@ -22,17 +22,27 @@ class QuerySupabaseAuthConfigsForAdminResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
+        # Details of access denied
         self.access_denied_detail = access_denied_detail
+        # Is retry allowed
         self.allow_retry = allow_retry
+        # App Name.
         self.app_name = app_name
+        # Dynamic error code
         self.dynamic_code = dynamic_code
+        # Dynamic message. Not currently used. Ignore it.
         self.dynamic_message = dynamic_message
+        # Returned error parameters
         self.error_args = error_args
+        # Task object
         self.module = module
         # Id of the request
         self.request_id = request_id
+        # error code
         self.root_error_code = root_error_code
+        # Fault message
         self.root_error_msg = root_error_msg
+        # Is processed synchronously
         self.synchro = synchro
 
     def validate(self):
@@ -122,6 +132,14 @@ class QuerySupabaseAuthConfigsForAdminResponseBodyModule(DaraModel):
         self,
         configs: Dict[str, Any] = None,
     ):
+        # Configuration values. Valid values:  
+        # - cc_rule: CC rule.  
+        # - ddos_dispatch: DDoS filter interaction scheduling.  
+        # - edge_safe: Edge application security.  
+        # - blocked_regions: Geo-blocking.  
+        # - http_acl_policy: Precise ACL rule.  
+        # - bot_manager: Bot traffic Management.  
+        # - ip_reputation: IP reputation investigation.
         self.configs = configs
 
     def validate(self):

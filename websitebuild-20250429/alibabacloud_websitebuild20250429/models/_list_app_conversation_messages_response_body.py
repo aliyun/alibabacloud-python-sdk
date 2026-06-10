@@ -24,19 +24,34 @@ class ListAppConversationMessagesResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
+        # permission denied information
         self.access_denied_detail = access_denied_detail
+        # is retry allowed
         self.allow_retry = allow_retry
+        # App Name.
         self.app_name = app_name
+        # dynamic error code.
         self.dynamic_code = dynamic_code
+        # dynamic error message used to replace the `%s` placeholder in the **ErrMessage** response parameter.  
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, it indicates that the request parameter **DtsJobId** is invalid.
         self.dynamic_message = dynamic_message
+        # faulty parameter(s).
         self.error_args = error_args
+        # Number of results per query.  
+        # 
+        # Value range: 10–100. Default Value: 20.
         self.max_results = max_results
+        # Response Data
         self.module = module
+        # Token for the start of the next query. It is empty if there is no next query.
         self.next_token = next_token
         # Id of the request
         self.request_id = request_id
+        # error code
         self.root_error_code = root_error_code
+        # abnormal message
         self.root_error_msg = root_error_msg
+        # Reserved parameter.
         self.synchro = synchro
 
     def validate(self):
@@ -158,20 +173,47 @@ class ListAppConversationMessagesResponseBodyModule(DaraModel):
         site_id: str = None,
         type: str = None,
     ):
+        # Bot ID
         self.bot_id = bot_id
+        # Chat ID.
         self.chat_id = chat_id
+        # Current chat status.
         self.chat_status = chat_status
+        # The ID of the data class API invoked.
         self.content = content
+        # Content type
         self.content_type = content_type
+        # Session ID
         self.conversation_id = conversation_id
+        # Creation Time
         self.gmt_create = gmt_create
+        # Updated At
         self.gmt_modified = gmt_modified
+        # Message ID.
         self.message_id = message_id
+        # Business extension metadata (in Map format, must be a JSON string).
         self.meta_data = meta_data
+        # Region ordinal number. This parameter is deprecated.
         self.no = no
+        # Role of the conversation participant. Valid values include:
+        # 
+        # - user: User
+        # 
+        # - assistant: Assistant
+        # 
+        # - system: System
+        # 
+        # - function: Function
+        # 
+        # - plugin: Plugin
+        # 
+        # - tool: Tool
         self.role = role
+        # Section ID of the inspection item.
         self.section_id = section_id
+        # Site ID, which can be obtained by invoking the [ListSites](~~ListSites~~) API.
         self.site_id = site_id
+        # File type
         self.type = type
 
     def validate(self):

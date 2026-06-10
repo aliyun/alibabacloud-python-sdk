@@ -29,7 +29,6 @@ class GetOssUploadPolicyResponseBody(DaraModel):
         self.dynamic_message = dynamic_message
         self.error_args = error_args
         self.module = module
-        # Id of the request
         self.request_id = request_id
         self.root_error_code = root_error_code
         self.root_error_msg = root_error_msg
@@ -135,9 +134,7 @@ class GetOssUploadPolicyResponseBodyModule(DaraModel):
         self.security_token = security_token
         self.signature = signature
         self.version = version
-        # x-oss-credential
         self.xoss_credential = xoss_credential
-        # x-oss-date
         self.xoss_date = xoss_date
 
     def validate(self):

@@ -13,10 +13,16 @@ class ModifyMaterialFileStatusRequest(DaraModel):
         file_ids: List[str] = None,
         status: str = None,
     ):
+        # Business instance ID
+        # 
         # This parameter is required.
         self.biz_id = biz_id
+        # File ID
+        # 
         # This parameter is required.
         self.file_ids = file_ids
+        # Modified status
+        # 
         # This parameter is required.
         self.status = status
 

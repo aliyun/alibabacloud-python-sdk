@@ -16,10 +16,15 @@ class CreateAIStaffChatRequest(DaraModel):
         messages: List[main_models.CreateAIStaffChatRequestMessages] = None,
         meta_data: Dict[str, str] = None,
     ):
+        # Site ID
         self.biz_id = biz_id
+        # Conversation ID (provided when recovering from a break)
         self.chat_id = chat_id
+        # session ID
         self.conversation_id = conversation_id
+        # List of conversation messages
         self.messages = messages
+        # Additional conversation information
         self.meta_data = meta_data
 
     def validate(self):
@@ -83,10 +88,15 @@ class CreateAIStaffChatRequestMessages(DaraModel):
         role: str = None,
         type: str = None,
     ):
+        # Message content
         self.content = content
+        # Content type
         self.content_type = content_type
+        # Business extension metadata (in Map format, must be a JSON string)
         self.meta_data = meta_data
+        # Role in the conversation
         self.role = role
+        # File type
         self.type = type
 
     def validate(self):

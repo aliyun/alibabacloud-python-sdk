@@ -13,10 +13,13 @@ class GetUserAccessTokenForPartnerResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
+        # Error code. The value is as follows: If the request succeeded, the ErrorCode field is not returned. If the request failed, the ErrorCode field is returned. For more information, see the error code list in this topic.
         self.error_code = error_code
+        # Response data
         self.module = module
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request succeeded.
         self.success = success
 
     def validate(self):

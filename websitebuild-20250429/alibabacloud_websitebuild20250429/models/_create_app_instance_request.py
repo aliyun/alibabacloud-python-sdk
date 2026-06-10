@@ -48,9 +48,11 @@ class CreateAppInstanceRequest(DaraModel):
         self.pricing_cycle = pricing_cycle
         # Required. The quantity of instances to be ordered.
         self.quantity = quantity
+        # Resource group ID
         self.resource_group_id = resource_group_id
         # Site version
         self.site_version = site_version
+        # List of tags
         self.tags = tags
         self.version = version
 
@@ -178,7 +180,9 @@ class CreateAppInstanceRequestTags(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # tag key
         self.tag_key = tag_key
+        # value of tag 0
         self.tag_value = tag_value
 
     def validate(self):

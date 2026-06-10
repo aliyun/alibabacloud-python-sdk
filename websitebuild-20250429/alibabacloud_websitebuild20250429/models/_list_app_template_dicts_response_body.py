@@ -24,19 +24,34 @@ class ListAppTemplateDictsResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
+        # Detailed reason why access was denied.
         self.access_denied_detail = access_denied_detail
+        # is retry allowed
         self.allow_retry = allow_retry
+        # application name; queries the application with this name
         self.app_name = app_name
+        # dynamic error code.
         self.dynamic_code = dynamic_code
+        # dynamic error message used to replace the `%s` placeholder in the **ErrMessage** response parameter.  
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, it indicates that the request parameter **DtsJobId** is invalid.
         self.dynamic_message = dynamic_message
+        # faulty parameters
         self.error_args = error_args
+        # Number of results per query.  
+        # 
+        # Value range: 10–100. Default Value: 20.
         self.max_results = max_results
+        # response Data
         self.module = module
+        # Token for the start of the next query. It is empty when there is no next query.
         self.next_token = next_token
         # Id of the request
         self.request_id = request_id
+        # error code
         self.root_error_code = root_error_code
+        # abnormal message
         self.root_error_msg = root_error_msg
+        # is processing synchronous
         self.synchro = synchro
 
     def validate(self):
@@ -149,11 +164,23 @@ class ListAppTemplateDictsResponseBodyModule(DaraModel):
         has_templates: bool = None,
         sort_order: int = None,
     ):
+        # Dictionary Code
         self.dict_code = dict_code
+        # Dictionary label
         self.dict_label = dict_label
+        # Enumeration of template dictionary types
         self.dict_type = dict_type
+        # Dictionary value
         self.dict_value = dict_value
+        # Indicates whether a template exists.
         self.has_templates = has_templates
+        # Sorting order. The default is descending.  
+        # 
+        # Enumeration values:  
+        # 
+        # ASC: ascending.  
+        # 
+        # DESC: descending.
         self.sort_order = sort_order
 
     def validate(self):

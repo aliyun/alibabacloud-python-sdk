@@ -11,6 +11,7 @@ class GetMiniAppBindingForAdminResponseBody(DaraModel):
         data: main_models.GetMiniAppBindingForAdminResponseBodyData = None,
         request_id: str = None,
     ):
+        # Request result.
         self.data = data
         # Id of the request
         self.request_id = request_id
@@ -50,8 +51,11 @@ class GetMiniAppBindingForAdminResponseBodyData(DaraModel):
         biz_id: str = None,
         platform_appid: str = None,
     ):
+        # Authorization status
         self.auth_status = auth_status
+        # Business ID
         self.biz_id = biz_id
+        # Miniapp ID
         self.platform_appid = platform_appid
 
     def validate(self):

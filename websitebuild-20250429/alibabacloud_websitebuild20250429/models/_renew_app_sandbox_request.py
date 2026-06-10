@@ -9,6 +9,7 @@ class RenewAppSandboxRequest(DaraModel):
         self,
         conversation_id: str = None,
     ):
+        # Session ID
         self.conversation_id = conversation_id
 
     def validate(self):

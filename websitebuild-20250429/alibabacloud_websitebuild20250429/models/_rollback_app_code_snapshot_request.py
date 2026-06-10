@@ -10,7 +10,9 @@ class RollbackAppCodeSnapshotRequest(DaraModel):
         site_id: str = None,
         target_logical_number: int = None,
     ):
+        # site ID
         self.site_id = site_id
+        # Target snapshot version number
         self.target_logical_number = target_logical_number
 
     def validate(self):

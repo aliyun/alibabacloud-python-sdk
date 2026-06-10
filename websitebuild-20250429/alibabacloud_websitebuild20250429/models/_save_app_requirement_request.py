@@ -10,7 +10,9 @@ class SaveAppRequirementRequest(DaraModel):
         conversation_id: str = None,
         prd: str = None,
     ):
+        # Session ID
         self.conversation_id = conversation_id
+        # Requirement document content
         self.prd = prd
 
     def validate(self):

@@ -22,17 +22,34 @@ class GetAppRecommendedCommoditiesResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
+        # Detailed reason for access denial.
         self.access_denied_detail = access_denied_detail
+        # Indicates whether retry is allowed
         self.allow_retry = allow_retry
+        # App Name.
         self.app_name = app_name
+        # Dynamic error code.
         self.dynamic_code = dynamic_code
+        # Dynamic error message used to replace the `%s` placeholder in the **ErrMessage** error message.  
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, it means the provided request parameter **DtsJobId** is invalid.
         self.dynamic_message = dynamic_message
+        # Returned error parameters
         self.error_args = error_args
+        # Data table module.  
+        # 
+        # - ABTest: Experiment Data Table  
+        # 
+        # - ExperimentTool: Experiment Tool Table  
+        # 
+        # - DataDiagnosis: Data Diagnosis
         self.module = module
         # Id of the request
         self.request_id = request_id
+        # Error code
         self.root_error_code = root_error_code
+        # Abnormal message
         self.root_error_msg = root_error_msg
+        # Indicates whether processing is synchronous
         self.synchro = synchro
 
     def validate(self):
@@ -122,6 +139,7 @@ class GetAppRecommendedCommoditiesResponseBodyModule(DaraModel):
         self,
         commodities: List[main_models.GetAppRecommendedCommoditiesResponseBodyModuleCommodities] = None,
     ):
+        # Marketing product list
         self.commodities = commodities
 
     def validate(self):
@@ -163,12 +181,19 @@ class GetAppRecommendedCommoditiesResponseBodyModuleCommodities(DaraModel):
         redirect_url: str = None,
         status: str = None,
     ):
+        # Commodity code (used for both resource plans and Marketing Products)
         self.commodity_code = commodity_code
+        # Extension fields (such as unsupportedReason)
         self.extend = extend
+        # Order Type: BUY - Purchase, UPGRADE - upgrade
         self.order_type = order_type
+        # Sorting Priority (the smaller the number, the higher the priority)
         self.priority = priority
+        # Marketing Product ID (returned only for new purchases)
         self.promotion_commodity_id = promotion_commodity_id
+        # Hyperlink URL (returned when a redirect is required, such as during an upgrade)
         self.redirect_url = redirect_url
+        # Product Status
         self.status = status
 
     def validate(self):

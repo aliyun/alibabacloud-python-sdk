@@ -13,6 +13,7 @@ class GetMiniAppBindingResponseBody(DaraModel):
         data: main_models.GetMiniAppBindingResponseBodyData = None,
         request_id: str = None,
     ):
+        # Request result.
         self.data = data
         # Id of the request
         self.request_id = request_id
@@ -56,12 +57,19 @@ class GetMiniAppBindingResponseBodyData(DaraModel):
         production_qr_code_url: str = None,
         setting_values: Dict[str, str] = None,
     ):
+        # Authorization status
         self.auth_status = auth_status
+        # Business ID
         self.biz_id = biz_id
+        # ICP filing status
         self.icp_filed = icp_filed
+        # Miniapp ID
         self.platform_appid = platform_appid
+        # Preview QR code
         self.preview_qr_code_url = preview_qr_code_url
+        # Production QR code
         self.production_qr_code_url = production_qr_code_url
+        # Extension information
         self.setting_values = setting_values
 
     def validate(self):

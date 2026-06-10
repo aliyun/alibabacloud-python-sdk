@@ -14,10 +14,15 @@ class SyncAppInstanceForPartnerRequest(DaraModel):
         source_biz_id: str = None,
         source_type: str = None,
     ):
+        # Application instance object data
         self.app_instance = app_instance
+        # Type of system event. CREATE, UPDATE, COMPLETE
         self.event_type = event_type
+        # Operator ID
         self.operator = operator
+        # Source business ID.
         self.source_biz_id = source_biz_id
+        # Source: MARKET_CLOUD_DREAM
         self.source_type = source_type
 
     def validate(self):
@@ -86,21 +91,43 @@ class SyncAppInstanceForPartnerRequestAppInstance(DaraModel):
         thumbnail_url: str = None,
         user_id: str = None,
     ):
+        # Application Type: WEBSITE
         self.app_type = app_type
+        # Website business ID
         self.biz_id = biz_id
+        # Logical deletion
         self.deleted = deleted
+        # Domain name
         self.domain = domain
+        # Event end time (UNIX timestamp).
         self.end_time = end_time
+        # Deletion time
         self.gmt_delete = gmt_delete
+        # Vulnerability published UNIX timestamp, in milliseconds.
         self.gmt_publish = gmt_publish
+        # Application icon URL.
         self.icon_url = icon_url
+        # Website name
         self.name = name
+        # Website configuration information
         self.profile = profile
         # siteId
         self.site_host = site_host
+        # Website SiteID
         self.slug = slug
+        # Query start time. If no start and end times are provided, all historical deployment records of the instance are queried.
         self.start_time = start_time
+        # Instance running status.  
+        # - NotRun: Not running  
+        # - Running: Running  
+        # - WaitTime: Waiting for TriggerTime  
+        # - CheckingCondition: Checking branch conditions  
+        # - WaitResource: Waiting for resources  
+        # - Failure: Execution failed  
+        # - Success: Execution succeeded  
+        # - Checking: Sent to Data Quality check
         self.status = status
+        # Thumbnail URL.
         self.thumbnail_url = thumbnail_url
         # 123123123131232
         self.user_id = user_id
@@ -227,11 +254,17 @@ class SyncAppInstanceForPartnerRequestAppInstanceProfile(DaraModel):
         template_etag: str = None,
         template_id: str = None,
     ):
+        # Deployment region
         self.deploy_area = deploy_area
+        # Lingxiao instance ID
         self.lx_instance_id = lx_instance_id
+        # Order ID
         self.order_id = order_id
+        # Version
         self.site_version = site_version
+        # Template ID
         self.template_etag = template_etag
+        # Model template ID
         self.template_id = template_id
 
     def validate(self):

@@ -22,17 +22,28 @@ class GetAppInstanceEntitlementResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
+        # Permission denied information
         self.access_denied_detail = access_denied_detail
+        # Indicates whether retry is allowed
         self.allow_retry = allow_retry
+        # App Name.
         self.app_name = app_name
+        # Dynamic error code.
         self.dynamic_code = dynamic_code
+        # Dynamic error message, used to replace `%s` in the **ErrMessage** error message.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, it indicates that the request parameter **DtsJobId** is invalid.
         self.dynamic_message = dynamic_message
+        # Returned error parameters
         self.error_args = error_args
+        # Response data
         self.module = module
         # Id of the request
         self.request_id = request_id
+        # Error code
         self.root_error_code = root_error_code
+        # Abnormal message
         self.root_error_msg = root_error_msg
+        # Reserved parameter.
         self.synchro = synchro
 
     def validate(self):
@@ -123,7 +134,9 @@ class GetAppInstanceEntitlementResponseBodyModule(DaraModel):
         biz_id: str = None,
         items: List[main_models.GetAppInstanceEntitlementResponseBodyModuleItems] = None,
     ):
+        # BizId of the associated application instance
         self.biz_id = biz_id
+        # All entitlements
         self.items = items
 
     def validate(self):
@@ -181,22 +194,39 @@ class GetAppInstanceEntitlementResponseBodyModuleItems(DaraModel):
         usage_percent: int = None,
         used: int = None,
     ):
+        # Indicates whether an instance has been assigned
         self.allocated = allocated
+        # Is this item currently active?
         self.available = available
+        # Authorization item identity
         self.code = code
+        # Indicates whether configuration has been completed
         self.configured = configured
+        # Is this item entitled in the version?
         self.entitled = entitled
+        # Feature source type (PLUGIN/SKILL/CHANNEL/SYSTEM)
         self.feature_type = feature_type
+        # Runtime instance ID
         self.instance_id = instance_id
+        # Authorization item Name
         self.name = name
+        # Plugin ID
         self.plugin_id = plugin_id
+        # Total quota
         self.quota = quota
+        # Remaining quantity
         self.remaining = remaining
+        # Resource domain association identity
         self.resource_code = resource_code
+        # Resource type (QUOTA/LIMIT)
         self.resource_type = resource_type
+        # Is it running?
         self.running = running
+        # Authorization Type (FEATURE / RESOURCE / RUNTIME)
         self.type = type
+        # Usage percentage
         self.usage_percent = usage_percent
+        # Usage
         self.used = used
 
     def validate(self):

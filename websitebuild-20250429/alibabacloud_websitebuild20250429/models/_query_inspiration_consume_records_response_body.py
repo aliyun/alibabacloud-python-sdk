@@ -22,17 +22,27 @@ class QueryInspirationConsumeRecordsResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
+        # Detailed reason for access denial.
         self.access_denied_detail = access_denied_detail
+        # Is retry allowed
         self.allow_retry = allow_retry
+        # Application Name. Query the application with this name.
         self.app_name = app_name
+        # Dynamic error code.
         self.dynamic_code = dynamic_code
+        # Dynamic message. Not currently used. Please ignore.
         self.dynamic_message = dynamic_message
+        # Returned error parameters
         self.error_args = error_args
+        # Whether the deletion succeeded
         self.module = module
         # Id of the request
         self.request_id = request_id
+        # Error code
         self.root_error_code = root_error_code
+        # Abnormal message
         self.root_error_msg = root_error_msg
+        # Is processed synchronously
         self.synchro = synchro
 
     def validate(self):
@@ -130,14 +140,23 @@ class QueryInspirationConsumeRecordsResponseBodyModule(DaraModel):
         total_item_num: int = None,
         total_page_num: int = None,
     ):
+        # Current page number.
         self.current_page_num = current_page_num
+        # Request Result.
         self.data = data
+        # Next feature ID
         self.next = next
+        # Indicates whether there is a next page.
         self.next_page = next_page
+        # Paging size.
         self.page_size = page_size
+        # Whether there is a previous page.
         self.pre_page = pre_page
+        # In addition to paging limits, the server-side processes at most the latest 1 000 records for the current query. If the result exceeds 1 000 records, **ResultLimit** is **true**; you should narrow the Time Range and search again. Otherwise, **ResultLimit** is **false**.
         self.result_limit = result_limit
+        # Total number of records.
         self.total_item_num = total_item_num
+        # Total number of pages.
         self.total_page_num = total_page_num
 
     def validate(self):
@@ -223,13 +242,21 @@ class QueryInspirationConsumeRecordsResponseBodyModuleNext(DaraModel):
     def __init__(
         self,
         amount: int = None,
+        amount_str: str = None,
         consume_time: str = None,
+        consume_type: str = None,
         meta_data: str = None,
         scene_name: str = None,
     ):
+        # Quantity of inspiration value consumed
         self.amount = amount
+        self.amount_str = amount_str
+        # Consumption Time
         self.consume_time = consume_time
+        self.consume_type = consume_type
+        # Extension information (in JSON string format)
         self.meta_data = meta_data
+        # Consumption scenario Name (such as AI application development, AI creative image generation, AI Video creation, AI Content creation)
         self.scene_name = scene_name
 
     def validate(self):
@@ -243,8 +270,14 @@ class QueryInspirationConsumeRecordsResponseBodyModuleNext(DaraModel):
         if self.amount is not None:
             result['Amount'] = self.amount
 
+        if self.amount_str is not None:
+            result['AmountStr'] = self.amount_str
+
         if self.consume_time is not None:
             result['ConsumeTime'] = self.consume_time
+
+        if self.consume_type is not None:
+            result['ConsumeType'] = self.consume_type
 
         if self.meta_data is not None:
             result['MetaData'] = self.meta_data
@@ -259,8 +292,14 @@ class QueryInspirationConsumeRecordsResponseBodyModuleNext(DaraModel):
         if m.get('Amount') is not None:
             self.amount = m.get('Amount')
 
+        if m.get('AmountStr') is not None:
+            self.amount_str = m.get('AmountStr')
+
         if m.get('ConsumeTime') is not None:
             self.consume_time = m.get('ConsumeTime')
+
+        if m.get('ConsumeType') is not None:
+            self.consume_type = m.get('ConsumeType')
 
         if m.get('MetaData') is not None:
             self.meta_data = m.get('MetaData')
@@ -274,13 +313,21 @@ class QueryInspirationConsumeRecordsResponseBodyModuleData(DaraModel):
     def __init__(
         self,
         amount: int = None,
+        amount_str: str = None,
         consume_time: str = None,
+        consume_type: str = None,
         meta_data: str = None,
         scene_name: str = None,
     ):
+        # Quantity of inspiration value consumed
         self.amount = amount
+        self.amount_str = amount_str
+        # Consumption time
         self.consume_time = consume_time
+        self.consume_type = consume_type
+        # Extension information (in JSON string format)
         self.meta_data = meta_data
+        # Consumption scenario Name (such as AI application development, AI creative image generation, AI Video creation, AI Content creation)
         self.scene_name = scene_name
 
     def validate(self):
@@ -294,8 +341,14 @@ class QueryInspirationConsumeRecordsResponseBodyModuleData(DaraModel):
         if self.amount is not None:
             result['Amount'] = self.amount
 
+        if self.amount_str is not None:
+            result['AmountStr'] = self.amount_str
+
         if self.consume_time is not None:
             result['ConsumeTime'] = self.consume_time
+
+        if self.consume_type is not None:
+            result['ConsumeType'] = self.consume_type
 
         if self.meta_data is not None:
             result['MetaData'] = self.meta_data
@@ -310,8 +363,14 @@ class QueryInspirationConsumeRecordsResponseBodyModuleData(DaraModel):
         if m.get('Amount') is not None:
             self.amount = m.get('Amount')
 
+        if m.get('AmountStr') is not None:
+            self.amount_str = m.get('AmountStr')
+
         if m.get('ConsumeTime') is not None:
             self.consume_time = m.get('ConsumeTime')
+
+        if m.get('ConsumeType') is not None:
+            self.consume_type = m.get('ConsumeType')
 
         if m.get('MetaData') is not None:
             self.meta_data = m.get('MetaData')

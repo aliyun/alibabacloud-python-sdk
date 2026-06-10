@@ -10,7 +10,9 @@ class GetAppSupabaseAuthConfigRequest(DaraModel):
         auth_type: str = None,
         biz_id: str = None,
     ):
+        # Authentication type
         self.auth_type = auth_type
+        # Business ID
         self.biz_id = biz_id
 
     def validate(self):

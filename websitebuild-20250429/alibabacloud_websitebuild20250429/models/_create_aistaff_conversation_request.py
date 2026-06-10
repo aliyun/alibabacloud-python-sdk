@@ -9,6 +9,7 @@ class CreateAIStaffConversationRequest(DaraModel):
         self,
         text: str = None,
     ):
+        # User question text. The first 100 characters are truncated and used as the session title.
         self.text = text
 
     def validate(self):

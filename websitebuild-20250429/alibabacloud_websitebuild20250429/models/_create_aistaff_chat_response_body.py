@@ -21,17 +21,27 @@ class CreateAIStaffChatResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
+        # Detailed reason for access denial.
         self.access_denied_detail = access_denied_detail
+        # is retry allowed
         self.allow_retry = allow_retry
+        # App Name.
         self.app_name = app_name
+        # dynamic error code.
         self.dynamic_code = dynamic_code
+        # dynamic error message.
         self.dynamic_message = dynamic_message
+        # Returned error parameters
         self.error_args = error_args
+        # response Data
         self.module = module
         # Id of the request
         self.request_id = request_id
+        # error code
         self.root_error_code = root_error_code
+        # abnormal message
         self.root_error_msg = root_error_msg
+        # Fallback parameter.
         self.synchro = synchro
 
     def validate(self):

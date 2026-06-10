@@ -9,6 +9,7 @@ class GetCreateLogoTaskRequest(DaraModel):
         self,
         task_id: str = None,
     ):
+        # The job ID returned upon successful invocation. Note: Keep this ID securely. You need this ID to query the device creation status.
         self.task_id = task_id
 
     def validate(self):

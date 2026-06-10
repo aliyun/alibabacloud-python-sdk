@@ -18,15 +18,27 @@ class ListAppTemplatesRequest(DaraModel):
         product_version: str = None,
         status: str = None,
     ):
+        # Application Type
         self.app_type = app_type
+        # Color scheme
         self.color_scheme = color_scheme
+        # industry categorization
         self.industry = industry
+        # Search keyword
         self.keyword = keyword
+        # Number of results per query.  
+        # 
+        # Value range: 10–100. Default Value: 20.
         self.max_results = max_results
+        # Token indicating the start of the next query. It is empty when there is no next query.
         self.next_token = next_token
+        # Page number
         self.page_num = page_num
+        # Page size
         self.page_size = page_size
+        # Edition
         self.product_version = product_version
+        # template Status
         self.status = status
 
     def validate(self):

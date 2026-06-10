@@ -12,9 +12,13 @@ class UpdateMiniAppBindingRequest(DaraModel):
         setting_key: str = None,
         setting_value: str = None,
     ):
+        # Business ID
         self.biz_id = biz_id
+        # Channel
         self.channel = channel
+        # Configuration key
         self.setting_key = setting_key
+        # Configuration value
         self.setting_value = setting_value
 
     def validate(self):

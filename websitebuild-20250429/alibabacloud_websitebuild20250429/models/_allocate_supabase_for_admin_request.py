@@ -15,13 +15,20 @@ class AllocateSupabaseForAdminRequest(DaraModel):
         page_size: int = None,
         user_id: str = None,
     ):
+        # Business ID
+        # 
         # This parameter is required.
         self.biz_id = biz_id
         self.env = env
+        # Sorting field
         self.order_column = order_column
+        # Sorting type: ASC or DESC
         self.order_type = order_type
+        # Page number, default is 1
         self.page_num = page_num
+        # Page size, default is 10
         self.page_size = page_size
+        # User ID
         self.user_id = user_id
 
     def validate(self):

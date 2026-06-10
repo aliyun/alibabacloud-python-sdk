@@ -16,10 +16,15 @@ class ModuleDataComponentsValue(DaraModel):
         properties: Dict[str, main_models.ModuleDataComponentsValuePropertiesValue] = None,
         module_attr_status: int = None,
     ):
+        # Unique widget encoding (system internal identity)
         self.code = code
+        # The display name of the widget (user-visible name)
         self.name = name
+        # Widget instance attribute configuration
         self.instance_property = instance_property
+        # Widget instance attribute configuration
         self.properties = properties
+        # Module attribute status
         self.module_attr_status = module_attr_status
 
     def validate(self):
@@ -91,9 +96,13 @@ class ModuleDataComponentsValueInstanceProperty(DaraModel):
         value: str = None,
         values: List[main_models.ModuleDataComponentsValueInstancePropertyValues] = None,
     ):
+        # Property encoding (system internal identity)
         self.code = code
+        # Property display name (User-visible Name)
         self.name = name
+        # Attribute Value encoding (internal system value)
         self.value = value
+        # List of module Attribute Values
         self.values = values
 
     def validate(self):
@@ -149,8 +158,11 @@ class ModuleDataComponentsValueInstancePropertyValues(DaraModel):
         value: str = None,
         name: str = None,
     ):
+        # Property encoding (system internal identity)
         self.code = code
+        # Attribute Value encoding (internal system value)
         self.value = value
+        # Property display name (User-visible Name)
         self.name = name
 
     def validate(self):

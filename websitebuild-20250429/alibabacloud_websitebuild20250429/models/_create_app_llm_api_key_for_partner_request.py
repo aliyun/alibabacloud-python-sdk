@@ -14,9 +14,13 @@ class CreateAppLlmApiKeyForPartnerRequest(DaraModel):
         description: str = None,
         ip_white_list: List[str] = None,
     ):
+        # Business ID of the application instance
         self.biz_id = biz_id
+        # Idempotent token (reserved)
         self.client_token = client_token
+        # Description of the API key usage
         self.description = description
+        # Caller-defined IP address whitelist (the backend appends the system default IP segment)
         self.ip_white_list = ip_white_list
 
     def validate(self):

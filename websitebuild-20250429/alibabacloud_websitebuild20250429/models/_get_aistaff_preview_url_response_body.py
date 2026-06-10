@@ -22,17 +22,28 @@ class GetAIStaffPreviewUrlResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
+        # Detailed reason for access denial.
         self.access_denied_detail = access_denied_detail
+        # is retry allowed
         self.allow_retry = allow_retry
+        # AppName.
         self.app_name = app_name
+        # dynamic error code.
         self.dynamic_code = dynamic_code
+        # dynamic error message, used to replace the `%s` placeholder in the **ErrMessage** field of the response.  
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, it indicates that the request parameter **DtsJobId** is invalid.
         self.dynamic_message = dynamic_message
+        # returned error parameters
         self.error_args = error_args
+        # response data
         self.module = module
         # Id of the request
         self.request_id = request_id
+        # error code
         self.root_error_code = root_error_code
+        # abnormal message
         self.root_error_msg = root_error_msg
+        # Backup parameter.
         self.synchro = synchro
 
     def validate(self):
@@ -122,6 +133,7 @@ class GetAIStaffPreviewUrlResponseBodyModule(DaraModel):
         self,
         url_map: Dict[str, str] = None,
     ):
+        # preview URL information (including fields such as previewUrl and sessionId)
         self.url_map = url_map
 
     def validate(self):

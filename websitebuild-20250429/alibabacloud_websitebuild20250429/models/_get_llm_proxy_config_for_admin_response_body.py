@@ -22,17 +22,30 @@ class GetLlmProxyConfigForAdminResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
+        # Detailed reason for access denial.
         self.access_denied_detail = access_denied_detail
+        # Indicates whether retry is allowed. Valid values:  
+        # - false: Retry is not allowed.  
+        # - true: Retry is allowed.
         self.allow_retry = allow_retry
+        # Application name. Query the application with this name.
         self.app_name = app_name
+        # Dynamic code. This parameter is not used and can be ignored.
         self.dynamic_code = dynamic_code
+        # Dynamic error message used to replace the `%s` placeholder in the **ErrMessage** error message.  
+        # > For example, if **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, it indicates that the request parameter **DtsJobId** is invalid.
         self.dynamic_message = dynamic_message
+        # Error parameters returned.
         self.error_args = error_args
+        # Returned object.
         self.module = module
         # Id of the request
         self.request_id = request_id
+        # Error code
         self.root_error_code = root_error_code
+        # Abnormal message
         self.root_error_msg = root_error_msg
+        # Indicates whether the request is processed synchronously.
         self.synchro = synchro
 
     def validate(self):
@@ -137,22 +150,43 @@ class GetLlmProxyConfigForAdminResponseBodyModule(DaraModel):
         status: int = None,
         suspend_reason: str = None,
     ):
+        # List of supported models
         self.allowed_models = allowed_models
+        # Business ID of the application instance
         self.biz_id = biz_id
+        # List of blocked models
         self.blocked_models = blocked_models
+        # Grants specific permissions to processes within the container. Currently, only NET_ADMIN and NET_RAW are supported.  
+        # 
+        # > NET_RAW is not supported by default. You must submit a ticket to request it.
         self.capability = capability
+        # Daily request quota
         self.daily_limit = daily_limit
+        # Daily token quota
         self.daily_token_limit = daily_token_limit
+        # Indicates whether scheduled delivery of resource snapshots is enabled.  
+        # 
+        # Valid values:  
+        # - true: Enabled.  
+        # - false: Shutdown.
         self.enabled = enabled
+        # Extension configuration (in JSON format)
         self.extend = extend
+        # Creation Time
         self.gmt_create = gmt_create
+        # Updated At
         self.gmt_modified = gmt_modified
+        # Primary key
         self.id = id
+        # IP blacklist
         self.ip_blacklist = ip_blacklist
+        # IP whitelist, with multiple entries separated by commas
         self.ip_whitelist = ip_whitelist
+        # Requests per minute quota
         self.rpm_limit = rpm_limit
-        # trial,draft,live,refunded,expired,released
+        # trial, draft, live, refunded, expired, released
         self.status = status
+        # Reason for pause.
         self.suspend_reason = suspend_reason
 
     def validate(self):

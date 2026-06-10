@@ -22,17 +22,28 @@ class GetAppSupabaseInstanceResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
+        # Detailed reason for access denial.
         self.access_denied_detail = access_denied_detail
+        # Is retry allowed
         self.allow_retry = allow_retry
+        # App Name.
         self.app_name = app_name
+        # Dynamic error code.
         self.dynamic_code = dynamic_code
+        # Dynamic error message, used to replace the `%s` placeholder in the **ErrMessage** error message.  
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, it indicates that the provided request parameter **DtsJobId** is invalid.
         self.dynamic_message = dynamic_message
+        # Returned error parameters
         self.error_args = error_args
+        # Task object
         self.module = module
         # Id of the request
         self.request_id = request_id
+        # error code
         self.root_error_code = root_error_code
+        # Abnormal message
         self.root_error_msg = root_error_msg
+        # Spare parameter.
         self.synchro = synchro
 
     def validate(self):
@@ -130,15 +141,23 @@ class GetAppSupabaseInstanceResponseBodyModule(DaraModel):
         supabase_instance_id: str = None,
         supabase_public_url: str = None,
     ):
+        # anonymity key
         self.anon_key = anon_key
+        # application instance business ID
         self.biz_id = biz_id
+        # database instance ID
         self.db_instance_id = db_instance_id
+        # Database public URL
         self.db_public_url = db_public_url
+        # instance creation status
         self.instance_create_status = instance_create_status
+        # service key
         self.service_key = service_key
-        # trial,draft,live,refunded,expired,released
+        # trial, draft, live, refunded, expired, released
         self.status = status
+        # Supabase instance ID
         self.supabase_instance_id = supabase_instance_id
+        # Supabase public URL
         self.supabase_public_url = supabase_public_url
 
     def validate(self):

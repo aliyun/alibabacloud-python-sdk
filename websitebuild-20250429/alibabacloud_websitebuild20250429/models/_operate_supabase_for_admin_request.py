@@ -20,18 +20,30 @@ class OperateSupabaseForAdminRequest(DaraModel):
         user_id: str = None,
         where_clause: str = None,
     ):
+        # Business ID
+        # 
         # This parameter is required.
         self.biz_id = biz_id
         self.env = env
+        # SQL statement
         self.execute_sql = execute_sql
+        # Operation Type
         self.operate_type = operate_type
+        # ORDER BY clause
         self.order_by_clause = order_by_clause
+        # Sorting field
         self.order_column = order_column
+        # Sorting type: ASC|DESC
         self.order_type = order_type
+        # Page number
         self.page_num = page_num
+        # Page size
         self.page_size = page_size
+        # Table name
         self.table_name = table_name
+        # User ID
         self.user_id = user_id
+        # WHERE clause
         self.where_clause = where_clause
 
     def validate(self):

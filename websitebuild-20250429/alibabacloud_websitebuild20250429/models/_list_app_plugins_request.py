@@ -13,10 +13,20 @@ class ListAppPluginsRequest(DaraModel):
         phase: str = None,
         platform: str = None,
     ):
+        # Business ID of the application instance
         self.biz_id = biz_id
+        # Number of results per query.  
+        # 
+        # Valid range: 10 to 100. Default value: 20.
         self.max_results = max_results
+        # Token indicating the start of the next query. Empty if there is no next query.
         self.next_token = next_token
+        # Status of the dataset acceleration instance. Valid values:  
+        # - Created: Initialization.  
+        # - Running: Running.  
+        # - Stopped: Stopped.
         self.phase = phase
+        # Platform
         self.platform = platform
 
     def validate(self):

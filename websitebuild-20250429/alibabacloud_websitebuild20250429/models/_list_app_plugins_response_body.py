@@ -24,19 +24,34 @@ class ListAppPluginsResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
+        # Detailed reason for access denial.
         self.access_denied_detail = access_denied_detail
+        # Indicates whether retry is allowed
         self.allow_retry = allow_retry
+        # Application name. Query the application with this name.
         self.app_name = app_name
+        # Dynamic error code.
         self.dynamic_code = dynamic_code
+        # Dynamic error message used to replace the `%s` placeholder in the **ErrMessage** error message.  
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, it indicates that the provided request parameter **DtsJobId** is invalid.
         self.dynamic_message = dynamic_message
+        # Returned error parameters
         self.error_args = error_args
+        # Number of results per query.  
+        # 
+        # Value range: 10 to 100. Default value: 20.
         self.max_results = max_results
+        # Returned object.
         self.module = module
+        # Token for starting the next query. It is empty if there is no next query.
         self.next_token = next_token
         # Id of the request
         self.request_id = request_id
+        # Error code
         self.root_error_code = root_error_code
+        # Abnormal message
         self.root_error_msg = root_error_msg
+        # Reserved parameter.
         self.synchro = synchro
 
     def validate(self):
@@ -158,22 +173,46 @@ class ListAppPluginsResponseBodyModule(DaraModel):
         skill_header: str = None,
         tags: str = None,
     ):
+        # plugin code
         self.code = code
+        # Configuration form in React JSON Schema format
         self.config_items = config_items
+        # plugin Description
         self.desc = desc
+        # Image display. Valid values:  
+        # 
+        # - **0** (None): Do not display.  
+        # - **1** (Always): Always display.
         self.display = display
+        # Indicates whether scheduled delivery of resource snapshots is enabled.  
+        # 
+        # Valid values:  
+        # - true: Enabled.  
+        # - false: Shutdown.
         self.enabled = enabled
+        # environment
         self.env = env
+        # Creation Time
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.gmt_create_time = gmt_create_time
+        # Updated At
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.gmt_modified_time = gmt_modified_time
+        # hook definitions
         self.hooks = hooks
+        # plugin Description
         self.icon = icon
+        # primary key
         self.id = id
+        # Indicates whether the item has been deleted: 0—No, 1—Yes
         self.is_deleted = is_deleted
+        # plugin Name
         self.name = name
+        # skill header, used by the model for selection
         self.skill_header = skill_header
+        # Categorization label
         self.tags = tags
 
     def validate(self):

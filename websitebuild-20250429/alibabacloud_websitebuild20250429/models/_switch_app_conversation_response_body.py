@@ -29,7 +29,6 @@ class SwitchAppConversationResponseBody(DaraModel):
         self.dynamic_message = dynamic_message
         self.error_args = error_args
         self.module = module
-        # Id of the request
         self.request_id = request_id
         self.root_error_code = root_error_code
         self.root_error_msg = root_error_msg

@@ -24,19 +24,34 @@ class ListIsvPaymentPluginConfigsResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
+        # Detailed reason for access denial.
         self.access_denied_detail = access_denied_detail
+        # Indicates whether retry is allowed.
         self.allow_retry = allow_retry
+        # App name.
         self.app_name = app_name
+        # Dynamic code; currently unused. Ignore this field.
         self.dynamic_code = dynamic_code
+        # Dynamic error message used to replace the `%s` placeholder in the **ErrMessage** error message.  
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, it indicates that the provided request parameter **DtsJobId** is invalid.
         self.dynamic_message = dynamic_message
+        # Returned error parameters
         self.error_args = error_args
+        # Number of results per query.  
+        # 
+        # Value range: 10–100. Default Value: 20.
         self.max_results = max_results
+        # Response data
         self.module = module
+        # Token for starting the next query. It is empty if there is no next query.
         self.next_token = next_token
         # Id of the request
         self.request_id = request_id
+        # Error code
         self.root_error_code = root_error_code
+        # abnormal message
         self.root_error_msg = root_error_msg
+        # Reserved parameter.
         self.synchro = synchro
 
     def validate(self):
@@ -154,18 +169,31 @@ class ListIsvPaymentPluginConfigsResponseBodyModule(DaraModel):
         site_name: str = None,
         user_id: str = None,
     ):
+        # Business ID
         self.biz_id = biz_id
+        # Extension information
         self.extend = extend
+        # Creation Time
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.gmt_create_time = gmt_create_time
+        # Updated At
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.gmt_modified_time = gmt_modified_time
+        # Primary key
         self.id = id
+        # Plugin configuration
         self.plugin_config = plugin_config
+        # Plugin description
         self.plugin_desc = plugin_desc
+        # Plugin ID
         self.plugin_id = plugin_id
+        # Plugin name
         self.plugin_name = plugin_name
+        # Site name
         self.site_name = site_name
+        # User ID
         self.user_id = user_id
 
     def validate(self):

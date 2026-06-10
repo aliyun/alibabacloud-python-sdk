@@ -13,8 +13,11 @@ class GetMiniAppBindingRequest(DaraModel):
         channel: str = None,
         setting_keys: List[str] = None,
     ):
+        # Site ID
         self.biz_id = biz_id
+        # Channel
         self.channel = channel
+        # List of extension information keys
         self.setting_keys = setting_keys
 
     def validate(self):

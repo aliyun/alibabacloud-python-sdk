@@ -11,8 +11,11 @@ class GetMiniAppBindingForAdminRequest(DaraModel):
         channel: str = None,
         platform_appid: str = None,
     ):
+        # Business ID
         self.biz_id = biz_id
+        # Channel
         self.channel = channel
+        # Miniapp ID
         self.platform_appid = platform_appid
 
     def validate(self):

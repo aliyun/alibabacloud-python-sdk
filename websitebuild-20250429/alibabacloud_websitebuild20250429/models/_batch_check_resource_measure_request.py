@@ -14,11 +14,17 @@ class BatchCheckResourceMeasureRequest(DaraModel):
         order_component_params: str = None,
         resource_check_items: str = None,
     ):
+        # Belonging ID (website ID or Alibaba Cloud User ID)
         self.belong_id = belong_id
+        # Belonging ID Type (siteId, uid)
         self.belong_id_type = belong_id_type
+        # ESP business type
         self.biz_type = biz_type
+        # ESP business ID
         self.esp_biz_id = esp_biz_id
+        # Order module information (automatically completed if empty)
         self.order_component_params = order_component_params
+        # List of resource check items, in JSON array format
         self.resource_check_items = resource_check_items
 
     def validate(self):

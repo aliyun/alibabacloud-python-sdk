@@ -24,19 +24,39 @@ class ListAppPublishHistoryResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
+        # Detailed reason for access denial.
         self.access_denied_detail = access_denied_detail
+        # is retry allowed
         self.allow_retry = allow_retry
+        # frontend application Name.
         self.app_name = app_name
+        # dynamic error code.
         self.dynamic_code = dynamic_code
+        # dynamic message, not currently used. Please ignore.
         self.dynamic_message = dynamic_message
+        # fault parameters
         self.error_args = error_args
+        # Number of results per query.  
+        # 
+        # Value range: 10 to 100. Default Value: 20.
         self.max_results = max_results
+        # Data Table module.  
+        # 
+        # - ABTest: experiment Data Table  
+        # 
+        # - ExperimentTool: experiment tool table  
+        # 
+        # - DataDiagnosis: Data Diagnosis
         self.module = module
+        # Token for the start of the next query. It is empty if there is no next query.
         self.next_token = next_token
         # Id of the request
         self.request_id = request_id
+        # error code
         self.root_error_code = root_error_code
+        # abnormal message
         self.root_error_msg = root_error_msg
+        # Reserved parameter.
         self.synchro = synchro
 
     def validate(self):
@@ -142,10 +162,19 @@ class ListAppPublishHistoryResponseBodyModule(DaraModel):
         page_size: int = None,
         total: int = None,
     ):
+        # Current publish order ID
         self.current_publish_order_id = current_publish_order_id
+        # Indicates whether to display the history of applying the alert template to application groups. Valid values:
+        # 
+        # - true: Display.
+        # 
+        # - false (default): Do not display.
         self.history = history
+        # Page number. Default value is 1.
         self.page_num = page_num
+        # Paging size.
         self.page_size = page_size
+        # Total count.
         self.total = total
 
     def validate(self):
@@ -204,6 +233,7 @@ class ListAppPublishHistoryResponseBodyModuleHistory(DaraModel):
     def __init__(
         self,
         can_quick_revert: str = None,
+        commit_hash: str = None,
         current_step: str = None,
         deploy_channel: str = None,
         description: str = None,
@@ -217,22 +247,42 @@ class ListAppPublishHistoryResponseBodyModuleHistory(DaraModel):
         publish_order_id: int = None,
         publish_time: str = None,
         steps: List[str] = None,
+        subchannel: str = None,
     ):
+        # Indicates whether quick rollback is supported.
         self.can_quick_revert = can_quick_revert
+        self.commit_hash = commit_hash
+        # Current step.
         self.current_step = current_step
+        # Deployment channel.
         self.deploy_channel = deploy_channel
+        # Application description.
         self.description = description
+        # Publishing procedure.
         self.error_step = error_step
+        # Indicates whether the process is complete.
         self.is_finish = is_finish
+        # Indicates whether resource allocation to the cost center succeeded.
+        # - true indicates success.
+        # - false indicates failure.
         self.is_success = is_success
+        # Error message.
         self.msg = msg
+        # Sorting type: ASC or DESC.
         self.order_type = order_type
+        # Transcoding progress.
         self.percent = percent
+        # Publish number.
         self.publish_number = publish_number
+        # Publish order ID.
         self.publish_order_id = publish_order_id
+        # Published At.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.publish_time = publish_time
+        # Specific widget configuration.
         self.steps = steps
+        self.subchannel = subchannel
 
     def validate(self):
         pass
@@ -244,6 +294,9 @@ class ListAppPublishHistoryResponseBodyModuleHistory(DaraModel):
             result = _map
         if self.can_quick_revert is not None:
             result['CanQuickRevert'] = self.can_quick_revert
+
+        if self.commit_hash is not None:
+            result['CommitHash'] = self.commit_hash
 
         if self.current_step is not None:
             result['CurrentStep'] = self.current_step
@@ -284,12 +337,18 @@ class ListAppPublishHistoryResponseBodyModuleHistory(DaraModel):
         if self.steps is not None:
             result['Steps'] = self.steps
 
+        if self.subchannel is not None:
+            result['Subchannel'] = self.subchannel
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('CanQuickRevert') is not None:
             self.can_quick_revert = m.get('CanQuickRevert')
+
+        if m.get('CommitHash') is not None:
+            self.commit_hash = m.get('CommitHash')
 
         if m.get('CurrentStep') is not None:
             self.current_step = m.get('CurrentStep')
@@ -329,6 +388,9 @@ class ListAppPublishHistoryResponseBodyModuleHistory(DaraModel):
 
         if m.get('Steps') is not None:
             self.steps = m.get('Steps')
+
+        if m.get('Subchannel') is not None:
+            self.subchannel = m.get('Subchannel')
 
         return self
 

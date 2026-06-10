@@ -11,8 +11,11 @@ class UpdateAppFileRequest(DaraModel):
         conversation_id: str = None,
         file_path: str = None,
     ):
+        # File content
         self.content = content
+        # Session ID
         self.conversation_id = conversation_id
+        # File Path
         self.file_path = file_path
 
     def validate(self):

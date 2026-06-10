@@ -22,17 +22,28 @@ class GetAppTemplateResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
+        # permission denied information
         self.access_denied_detail = access_denied_detail
+        # is retry allowed
         self.allow_retry = allow_retry
+        # App Name.
         self.app_name = app_name
+        # dynamic error Code
         self.dynamic_code = dynamic_code
+        # dynamic error message, used to replace the `%s` placeholder in the **ErrMessage** error message.  
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, it indicates that the request parameter **DtsJobId** is invalid.
         self.dynamic_message = dynamic_message
+        # returned error parameters
         self.error_args = error_args
+        # whether deletion succeeded
         self.module = module
         # Id of the request
         self.request_id = request_id
+        # Error code
         self.root_error_code = root_error_code
+        # abnormal message
         self.root_error_msg = root_error_msg
+        # Reserved parameter.
         self.synchro = synchro
 
     def validate(self):
@@ -146,35 +157,83 @@ class GetAppTemplateResponseBodyModule(DaraModel):
         view_count: int = None,
         weight: int = None,
     ):
+        # Application type
         self.app_type = app_type
+        # Business ID
         self.biz_id = biz_id
+        # color
         self.color_scheme = color_scheme
+        # Color name
         self.color_scheme_name = color_scheme_name
+        # The actual data volume of the original table copied during DMS lockless change.
         self.copy_count = copy_count
+        # User ID of the creator.
         self.creator = creator
+        # Creation UTC time, in ISO 8601 date format.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.gmt_create_time = gmt_create_time
-        # modify time
+        # Modify time
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.gmt_modified_time = gmt_modified_time
+        # Primary key
         self.id = id
+        # Industry. Default value: **common** (general industry). Valid values:
+        # 
+        # - **microVideo**: Short video industry.
+        # 
+        # - **common**: General industry.
         self.industry = industry
+        # Industry name.
         self.industry_name = industry_name
+        # Last modifier
         self.last_modifier = last_modifier
+        # Like count.
         self.like_count = like_count
+        # Whether the current user has liked it
         self.liked = liked
+        # <props="china">
+        # 
+        # Map of metadata for text segmentation.
+        # 
+        # > In document-search-type knowledge bases, the `file_path` field in the metadata Map is meaningless. Do not use it in your business code.
+        # 
+        # > When retrieving a document-search-type knowledge base, if a segment contains an image, the image URL will be exposed through the `image_url` field in the metadata Map, along with a time-to-live (TTL).
+        # 
+        # 
+        # <props="intl">
+        # 
+        # Map of metadata for text segmentation.
+        # 
+        # > In document-search-type knowledge bases, the `file_path` field in the metadata Map is meaningless. Do not use it in your business code.
+        # 
+        # > When retrieving a document-search-type knowledge base, if a segment contains an image, the image URL will be exposed through the `image_url` field in the metadata Map, along with a time-to-live (TTL).
         self.metadata = metadata
+        # Preview URL
         self.preview_url = preview_url
+        # Edition. Valid values:
+        # - **BasicVersion**: Basic Edition.
+        # - **EnterpriseVersion**: Enterprise Edition.
+        # > This parameter is required only when ProductForm is set to IntegrationForm.
         self.product_version = product_version
+        # Edition Name.
         self.product_version_name = product_version_name
+        # Share count
         self.share_count = share_count
-        # trial,draft,live,refunded,expired,released
+        # trial, draft, live, refunded, expired, released
         self.status = status
+        # Template ID
         self.template_id = template_id
+        # Template Name
         self.template_name = template_name
+        # application thumbnail
         self.thumbnail_url = thumbnail_url
+        # View count.
         self.view_count = view_count
+        # Hot word weight, an integer in the range [1, 5].  
+        # Common value: 4.  
+        # If the effect is not obvious, you can moderately increase the weight. However, if the weight is too high, it may cause negative effects and reduce the accuracy of detecting other words.
         self.weight = weight
 
     def validate(self):

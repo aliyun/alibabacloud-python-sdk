@@ -9,6 +9,7 @@ class GetAppSupabaseInstanceRequest(DaraModel):
         self,
         biz_id: str = None,
     ):
+        # business ID
         self.biz_id = biz_id
 
     def validate(self):

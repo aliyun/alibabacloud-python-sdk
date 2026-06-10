@@ -22,21 +22,39 @@ class QueryMaterialFileListShrinkRequest(DaraModel):
         suffix_list_shrink: str = None,
         type_list_shrink: str = None,
     ):
+        # Business ID of the application instance
+        # 
         # This parameter is required.
         self.biz_id = biz_id
+        # Folder ID
+        # 
         # This parameter is required.
         self.directory_id = directory_id
+        # Maximum file size
         self.max_file_size = max_file_size
+        # Number of results per query.
+        # 
+        # Valid values: 10 to 100. Default value: 20.
         self.max_results = max_results
+        # Minimum file size
         self.min_file_size = min_file_size
+        # Website name
         self.name = name
+        # Token indicating the start of the next query. It is empty when there is no subsequent query.
         self.next_token = next_token
+        # Sorting field
         self.order_column = order_column
+        # Sorting type: ASC or DESC
         self.order_type = order_type
+        # Page number. Default value is 1.
         self.page_num = page_num
+        # Page size. Default value: 10.
         self.page_size = page_size
+        # Status range
         self.status_list_shrink = status_list_shrink
+        # File suffix list
         self.suffix_list_shrink = suffix_list_shrink
+        # List of file types
         self.type_list_shrink = type_list_shrink
 
     def validate(self):

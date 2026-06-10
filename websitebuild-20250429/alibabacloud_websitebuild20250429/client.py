@@ -6414,10 +6414,14 @@ class Client(OpenApiClient):
             query['PageNum'] = request.page_num
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.publish_env):
+            query['PublishEnv'] = request.publish_env
         if not DaraCore.is_null(request.sort):
             query['Sort'] = request.sort
         if not DaraCore.is_null(request.status):
             query['Status'] = request.status
+        if not DaraCore.is_null(request.subchannel):
+            query['Subchannel'] = request.subchannel
         if not DaraCore.is_null(request.website_domain):
             query['WebsiteDomain'] = request.website_domain
         req = open_api_util_models.OpenApiRequest(
@@ -6460,10 +6464,14 @@ class Client(OpenApiClient):
             query['PageNum'] = request.page_num
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.publish_env):
+            query['PublishEnv'] = request.publish_env
         if not DaraCore.is_null(request.sort):
             query['Sort'] = request.sort
         if not DaraCore.is_null(request.status):
             query['Status'] = request.status
+        if not DaraCore.is_null(request.subchannel):
+            query['Subchannel'] = request.subchannel
         if not DaraCore.is_null(request.website_domain):
             query['WebsiteDomain'] = request.website_domain
         req = open_api_util_models.OpenApiRequest(

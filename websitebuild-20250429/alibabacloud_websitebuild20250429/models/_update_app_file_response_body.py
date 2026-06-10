@@ -21,17 +21,28 @@ class UpdateAppFileResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
+        # Detailed reason for access denial.
         self.access_denied_detail = access_denied_detail
+        # Indicates whether retry is allowed
         self.allow_retry = allow_retry
+        # Application name. It can contain digits, letters, and hyphens (-). It must start with a letter, must not end with a hyphen (-), and must not exceed 36 characters.
         self.app_name = app_name
+        # Dynamic code. Not currently used. Ignore this field.
         self.dynamic_code = dynamic_code
+        # Dynamic error message used to replace the `%s` placeholder in the **ErrMessage** error message.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, it indicates that the provided request parameter **DtsJobId** is invalid.
         self.dynamic_message = dynamic_message
+        # Invalid parameters.
         self.error_args = error_args
+        # Indicates whether the shift succeeded
         self.module = module
         # Id of the request
         self.request_id = request_id
+        # Error code
         self.root_error_code = root_error_code
+        # Abnormal message
         self.root_error_msg = root_error_msg
+        # Indicates whether processing is synchronous
         self.synchro = synchro
 
     def validate(self):

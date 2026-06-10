@@ -281,6 +281,7 @@ class ListAppInstanceDomainsResponseBodyModuleNext(DaraModel):
         self.overall_status = overall_status
         # Domain ownership information
         self.ownership = ownership
+        # Domain name qualification information
         self.qualification = qualification
         # Domain resolution information
         self.resolution = resolution
@@ -558,8 +559,11 @@ class ListAppInstanceDomainsResponseBodyModuleNextQualification(DaraModel):
         icp_site_record_number: str = None,
         police_record_number: str = None,
     ):
+        # ICP filing number of the entity
         self.icp_record_number = icp_record_number
+        # ICP filing number for the website
         self.icp_site_record_number = icp_site_record_number
+        # Public security filing number
         self.police_record_number = police_record_number
 
     def validate(self):
@@ -708,6 +712,7 @@ class ListAppInstanceDomainsResponseBodyModuleData(DaraModel):
         self.overall_status = overall_status
         # Domain ownership information
         self.ownership = ownership
+        # Domain name qualification information
         self.qualification = qualification
         # Domain resolution information
         self.resolution = resolution
@@ -994,8 +999,11 @@ class ListAppInstanceDomainsResponseBodyModuleDataQualification(DaraModel):
         icp_site_record_number: str = None,
         police_record_number: str = None,
     ):
+        # ICP entity filing number
         self.icp_record_number = icp_record_number
+        # ICP website filing number
         self.icp_site_record_number = icp_site_record_number
+        # Public security filing number
         self.police_record_number = police_record_number
 
     def validate(self):

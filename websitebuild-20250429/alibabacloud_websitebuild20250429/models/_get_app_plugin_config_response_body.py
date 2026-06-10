@@ -14,11 +14,15 @@ class GetAppPluginConfigResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # API status or POP error code
         self.code = code
+        # Additional information
         self.message = message
+        # Response data
         self.module = module
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request succeeded.
         self.success = success
 
     def validate(self):
@@ -80,14 +84,23 @@ class GetAppPluginConfigResponseBodyModule(DaraModel):
         plugin_name: str = None,
         user_id: str = None,
     ):
+        # Business ID
         self.biz_id = biz_id
+        # Creation Time
         self.gmt_create = gmt_create
+        # Updated At
         self.gmt_modified = gmt_modified
+        # Primary key
         self.id = id
+        # Specific widget configuration, formatted as a JSON string. Refer to the utility class: com.alibaba.dataphin.pipeline.common.facade.openapi.model.plugin.OABasePluginConfig and the toJsonString method of its child classes. Developers should inherit this widget configuration class and implement the corresponding widget configuration. The structure of each widget configuration is identical to the MPS queue configuration structure created on the Dataphin Page.
         self.plugin_config = plugin_config
+        # View Description
         self.plugin_desc = plugin_desc
+        # ID of the attached API Gateway plugin
         self.plugin_id = plugin_id
+        # Plugin Name. It can contain uppercase and lowercase English letters, Chinese characters, digits, and underscores (_). The length must be between 4 and 50 characters, and it cannot start with an underscore.
         self.plugin_name = plugin_name
+        # User ID
         self.user_id = user_id
 
     def validate(self):

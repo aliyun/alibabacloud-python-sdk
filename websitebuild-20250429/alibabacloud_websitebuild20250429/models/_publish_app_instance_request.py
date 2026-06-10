@@ -14,11 +14,17 @@ class PublishAppInstanceRequest(DaraModel):
         publish_number: str = None,
         weapp_action: str = None,
     ):
+        # Business ID
         self.biz_id = biz_id
+        # Deployment channel
         self.deploy_channel = deploy_channel
+        # Publish description
         self.description = description
+        # Logical version number
         self.logical_number = logical_number
+        # Publish number
         self.publish_number = publish_number
+        # action
         self.weapp_action = weapp_action
 
     def validate(self):
