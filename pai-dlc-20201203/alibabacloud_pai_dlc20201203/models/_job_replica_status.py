@@ -9,6 +9,7 @@ class JobReplicaStatus(DaraModel):
     def __init__(
         self,
         active: int = None,
+        current_spot_instance_type: str = None,
         dequeued: int = None,
         estimated_auto_scaling_spec: main_models.AutoScalingSpec = None,
         estimated_pod_count: int = None,
@@ -17,6 +18,7 @@ class JobReplicaStatus(DaraModel):
         type: str = None,
     ):
         self.active = active
+        self.current_spot_instance_type = current_spot_instance_type
         self.dequeued = dequeued
         self.estimated_auto_scaling_spec = estimated_auto_scaling_spec
         self.estimated_pod_count = estimated_pod_count
@@ -37,6 +39,9 @@ class JobReplicaStatus(DaraModel):
             result = _map
         if self.active is not None:
             result['Active'] = self.active
+
+        if self.current_spot_instance_type is not None:
+            result['CurrentSpotInstanceType'] = self.current_spot_instance_type
 
         if self.dequeued is not None:
             result['Dequeued'] = self.dequeued
@@ -62,6 +67,9 @@ class JobReplicaStatus(DaraModel):
         m = m or dict()
         if m.get('Active') is not None:
             self.active = m.get('Active')
+
+        if m.get('CurrentSpotInstanceType') is not None:
+            self.current_spot_instance_type = m.get('CurrentSpotInstanceType')
 
         if m.get('Dequeued') is not None:
             self.dequeued = m.get('Dequeued')

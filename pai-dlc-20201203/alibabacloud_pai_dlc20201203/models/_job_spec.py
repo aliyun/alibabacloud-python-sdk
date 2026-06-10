@@ -14,6 +14,7 @@ class JobSpec(DaraModel):
         auto_scaling_spec: main_models.AutoScalingSpec = None,
         consider_in_success_policy: bool = None,
         ecs_spec: str = None,
+        elastic_spot_specs: List[main_models.ElasticSpotSpec] = None,
         extra_pod_spec: main_models.ExtraPodSpec = None,
         image: str = None,
         image_config: main_models.ImageConfig = None,
@@ -40,6 +41,7 @@ class JobSpec(DaraModel):
         # 
         # >  The price varies based on instance types.
         self.ecs_spec = ecs_spec
+        self.elastic_spot_specs = elastic_spot_specs
         # The additional pod configurations.
         self.extra_pod_spec = extra_pod_spec
         # The address of the image that is run by the worker node. You can call [ListImages](https://help.aliyun.com/document_detail/449118.html) to obtain the image provided by PAI. You can also specify a third-party public image.
@@ -83,6 +85,10 @@ class JobSpec(DaraModel):
             self.assign_node_spec.validate()
         if self.auto_scaling_spec:
             self.auto_scaling_spec.validate()
+        if self.elastic_spot_specs:
+            for v1 in self.elastic_spot_specs:
+                 if v1:
+                    v1.validate()
         if self.extra_pod_spec:
             self.extra_pod_spec.validate()
         if self.image_config:
@@ -120,6 +126,11 @@ class JobSpec(DaraModel):
 
         if self.ecs_spec is not None:
             result['EcsSpec'] = self.ecs_spec
+
+        result['ElasticSpotSpecs'] = []
+        if self.elastic_spot_specs is not None:
+            for k1 in self.elastic_spot_specs:
+                result['ElasticSpotSpecs'].append(k1.to_map() if k1 else None)
 
         if self.extra_pod_spec is not None:
             result['ExtraPodSpec'] = self.extra_pod_spec.to_map()
@@ -190,6 +201,12 @@ class JobSpec(DaraModel):
 
         if m.get('EcsSpec') is not None:
             self.ecs_spec = m.get('EcsSpec')
+
+        self.elastic_spot_specs = []
+        if m.get('ElasticSpotSpecs') is not None:
+            for k1 in m.get('ElasticSpotSpecs'):
+                temp_model = main_models.ElasticSpotSpec()
+                self.elastic_spot_specs.append(temp_model.from_map(k1))
 
         if m.get('ExtraPodSpec') is not None:
             temp_model = main_models.ExtraPodSpec()

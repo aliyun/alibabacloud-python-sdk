@@ -21,6 +21,7 @@ from ._debugger_job_issue import DebuggerJobIssue
 from ._debugger_result import DebuggerResult
 from ._download_job_result import DownloadJobResult
 from ._ecs_spec import EcsSpec
+from ._elastic_spot_spec import ElasticSpotSpec
 from ._env_var import EnvVar
 from ._event_info import EventInfo
 from ._extra_pod_spec import ExtraPodSpec
@@ -226,6 +227,7 @@ __all__ = [
     DebuggerResult,
     DownloadJobResult,
     EcsSpec,
+    ElasticSpotSpec,
     EnvVar,
     EventInfo,
     ExtraPodSpec,

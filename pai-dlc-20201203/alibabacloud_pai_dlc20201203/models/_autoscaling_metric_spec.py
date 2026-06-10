@@ -10,10 +10,12 @@ class AutoscalingMetricSpec(DaraModel):
         metric_name: str = None,
         stabilization_window_seconds: int = None,
         target_value: int = None,
+        tolerance: str = None,
     ):
         self.metric_name = metric_name
         self.stabilization_window_seconds = stabilization_window_seconds
         self.target_value = target_value
+        self.tolerance = tolerance
 
     def validate(self):
         pass
@@ -32,6 +34,9 @@ class AutoscalingMetricSpec(DaraModel):
         if self.target_value is not None:
             result['TargetValue'] = self.target_value
 
+        if self.tolerance is not None:
+            result['Tolerance'] = self.tolerance
+
         return result
 
     def from_map(self, m: dict = None):
@@ -44,6 +49,9 @@ class AutoscalingMetricSpec(DaraModel):
 
         if m.get('TargetValue') is not None:
             self.target_value = m.get('TargetValue')
+
+        if m.get('Tolerance') is not None:
+            self.tolerance = m.get('Tolerance')
 
         return self
 
