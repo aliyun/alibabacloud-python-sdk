@@ -1,3 +1,21 @@
+2026-06-10 Version: 4.5.0
+- Support API CreateSkill.
+- Support API CreateSkillFileDetect.
+- Support API CreateSkillHubConfig.
+- Support API CreateSkillSpace.
+- Support API DeleteSkill.
+- Support API DeleteSkillSpace.
+- Support API GetSkill.
+- Support API GetSkillFileDetectResult.
+- Support API GetSkillHubConfig.
+- Support API GetSkillSpace.
+- Support API ListPublicSkills.
+- Support API ListSkillFiles.
+- Support API ListSkillSpaces.
+- Support API ListSkills.
+- Support API UpdateSkill.
+
+
 2026-06-04 Version: 4.4.0
 - Support API RenewServiceInstance.
 
