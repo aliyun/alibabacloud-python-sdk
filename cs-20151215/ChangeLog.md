@@ -1,3 +1,10 @@
+2026-06-10 Version: 6.6.4
+- Update API CreateClusterNodePool: add request parameters body.management.auto_fault_diagnosis.
+- Update API DescribeClusterNodePoolDetail: add response parameters Body.management.auto_fault_diagnosis.
+- Update API DescribeClusterNodePools: add response parameters Body.nodepools.$.management.auto_fault_diagnosis.
+- Update API ModifyClusterNodePool: add request parameters body.management.auto_fault_diagnosis.
+
+
 2026-05-15 Version: 6.6.3
 - Update API DescribeClusterNodePoolDetail: add response parameters Body.eflo_node_group.
 - Update API DescribeClusterNodePools: add response parameters Body.nodepools.$.eflo_node_group.

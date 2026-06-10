@@ -11,7 +11,7 @@ class DeleteAlertContactRequest(DaraModel):
         self,
         contact_ids: List[int] = None,
     ):
-        # The list of alert contact IDs.
+        # The alert contact IDs to delete.
         # 
         # This parameter is required.
         self.contact_ids = contact_ids

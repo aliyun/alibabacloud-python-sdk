@@ -16,30 +16,51 @@ class DescribeEventsRequest(DaraModel):
     ):
         # The cluster ID.
         self.cluster_id = cluster_id
+        # The maximum number of results to return.
         self.max_results = max_results
+        # The pagination token. Set this parameter to the value of `NextToken` returned by the previous API call.
         self.next_token = next_token
-        # The page number.
+        # The number of the page to return.
         self.page_number = page_number
-        # The number of entries per page.
-        self.page_size = page_size
-        # The event type. Valid values:
+        # The maximum number of results per page.
         # 
-        # *   `cluster_create`: cluster creation.
-        # *   `cluster_scaleout`: cluster scale-out.
-        # *   `cluster_attach`: node addition.
-        # *   `cluster_delete`: cluster deletion.
-        # *   `cluster_upgrade`: cluster upgrades.
-        # *   `cluster_migrate`: cluster migration.
-        # *   `cluster_node_delete`: node removal.
-        # *   `cluster_node_drain`: node draining.
-        # *   `cluster_modify`: cluster modifications.
-        # *   `cluster_configuration_modify`: modifications of control plane configurations.
-        # *   `cluster_addon_install`: component installation.
-        # *   `cluster_addon_upgrade`: component updates.
-        # *   `cluster_addon_uninstall`: component uninstallation.
-        # *   `runtime_upgrade`: runtime updates.
-        # *   `nodepool_upgrade`: node pool upgrades.
-        # *   `nodepool_update`: node pool updates.
+        # Valid values: [1,100].
+        # 
+        # Default: 50.
+        self.page_size = page_size
+        # The event type. If you do not specify this parameter, events of all types are returned. Valid values:
+        # 
+        # - `cluster_create`: Create a cluster.
+        # 
+        # - `cluster_scaleout`: Scale out a cluster.
+        # 
+        # - `cluster_attach`: Attach an existing node.
+        # 
+        # - `cluster_delete`: Delete a cluster.
+        # 
+        # - `cluster_upgrade`: Upgrade a cluster.
+        # 
+        # - `cluster_migrate`: Migrate a cluster.
+        # 
+        # - `cluster_node_delete`: Remove a node.
+        # 
+        # - `cluster_node_drain`: Drain a node.
+        # 
+        # - `cluster_modify`: Modify a cluster.
+        # 
+        # - `cluster_configuration_modify`: Modify the control plane configuration of a cluster.
+        # 
+        # - `cluster_addon_install`: Install an add-on.
+        # 
+        # - `cluster_addon_upgrade`: Upgrade an add-on.
+        # 
+        # - `cluster_addon_uninstall`: Uninstall an add-on.
+        # 
+        # - `runtime_upgrade`: Upgrade the runtime.
+        # 
+        # - `nodepool_upgrade`: Upgrade a node pool.
+        # 
+        # - `nodepool_update`: Update a node pool.
         self.type = type
 
     def validate(self):

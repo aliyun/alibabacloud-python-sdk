@@ -17,9 +17,13 @@ class DescribeEventsForRegionRequest(DaraModel):
         self.cluster_id = cluster_id
         self.max_results = max_results
         self.next_token = next_token
-        # The number of pages.
+        # The page number.
         self.page_number = page_number
-        # The number of records on each page.
+        # The number of entries to return on each page.
+        # 
+        # Valid values: 1 to 100.
+        # 
+        # Default value: 50.
         self.page_size = page_size
 
     def validate(self):

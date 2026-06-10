@@ -15,9 +15,13 @@ class CreateAutoRepairPolicyRequest(DaraModel):
         resource_type: str = None,
         rules: List[main_models.CreateAutoRepairPolicyRequestRules] = None,
     ):
+        # The name of the auto repair policy.
         self.name = name
+        # The resource subtype to which the auto repair policy applies.
         self.resource_sub_type = resource_sub_type
+        # The resource type to which the auto repair policy applies.
         self.resource_type = resource_type
+        # The sub-rules for the auto repair policy.
         self.rules = rules
 
     def validate(self):
@@ -72,7 +76,9 @@ class CreateAutoRepairPolicyRequestRules(DaraModel):
         incidents: List[main_models.CreateAutoRepairPolicyRequestRulesIncidents] = None,
         repair_procedure: List[main_models.CreateAutoRepairPolicyRequestRulesRepairProcedure] = None,
     ):
+        # The incidents that the rule detects.
         self.incidents = incidents
+        # The repair procedure.
         self.repair_procedure = repair_procedure
 
     def validate(self):
@@ -125,8 +131,11 @@ class CreateAutoRepairPolicyRequestRulesRepairProcedure(DaraModel):
         intervention: main_models.CreateAutoRepairPolicyRequestRulesRepairProcedureIntervention = None,
         name: str = None,
     ):
+        # Configuration parameters for the repair step.
         self.config = config
+        # Settings for manual intervention.
         self.intervention = intervention
+        # The name of the repair step.
         self.name = name
 
     def validate(self):
@@ -171,9 +180,13 @@ class CreateAutoRepairPolicyRequestRulesRepairProcedureIntervention(DaraModel):
         inquiring_label: main_models.CreateAutoRepairPolicyRequestRulesRepairProcedureInterventionInquiringLabel = None,
         type: str = None,
     ):
+        # The label that grants authorization for the repair step. To approve the step, add this label to the node. After the action is complete, ACK automatically removes both the inquiry and approval labels for this step. If this label is not added promptly, the repair procedure halts and the node remains impaired.
         self.approved_label = approved_label
+        # Specifies whether to enable manual approval.
         self.enable = enable
+        # The label used to request authorization for the repair step. When this step begins, ACK applies this label to the node and waits for approval before performing the action.
         self.inquiring_label = inquiring_label
+        # The manual approval type.
         self.type = type
 
     def validate(self):
@@ -225,7 +238,9 @@ class CreateAutoRepairPolicyRequestRulesRepairProcedureInterventionInquiringLabe
         key: str = None,
         value: str = None,
     ):
+        # The label key.
         self.key = key
+        # The label value.
         self.value = value
 
     def validate(self):
@@ -260,7 +275,9 @@ class CreateAutoRepairPolicyRequestRulesRepairProcedureInterventionApprovedLabel
         key: str = None,
         value: str = None,
     ):
+        # The label key.
         self.key = key
+        # The label value.
         self.value = value
 
     def validate(self):
@@ -295,7 +312,9 @@ class CreateAutoRepairPolicyRequestRulesIncidents(DaraModel):
         name: str = None,
         type: str = None,
     ):
+        # The incident name.
         self.name = name
+        # The incident type.
         self.type = type
 
     def validate(self):

@@ -26,9 +26,6 @@ class DescribeUserQuotaResponseBody(DaraModel):
         self.cluster_nodepool_quota = cluster_nodepool_quota
         # The quota of clusters that belong to an Alibaba Cloud account. Default value: 50. If the default quota limit is reached, submit an application in the [Quota Center console](https://quotas.console.aliyun.com/products/csk/quotas) to increase the quota.
         self.cluster_quota = cluster_quota
-        # This parameter is discontinued.
-        # 
-        # The quotas of enhanced edge node pools.
         self.edge_improved_nodepool_quota = edge_improved_nodepool_quota
         # The quota of nodes in an ACK cluster. Default value: 100. If the default quota limit is reached, submit an application in the [Quota Center console](https://quotas.console.aliyun.com/products/csk/quotas) to increase the quota.
         self.node_quota = node_quota
@@ -109,19 +106,8 @@ class DescribeUserQuotaResponseBodyEdgeImprovedNodepoolQuota(DaraModel):
         count: int = None,
         period: int = None,
     ):
-        # This parameter is discontinued.
-        # 
-        # The maximum bandwidth of each enhanced edge node pool. Unit: Mbit/s.
         self.bandwidth = bandwidth
-        # This parameter is discontinued.
-        # 
-        # The maximum number of enhanced edge node pools that you can create within an Alibaba Cloud account.
         self.count = count
-        # This parameter is discontinued.
-        # 
-        # The maximum subscription duration of an enhanced edge node pool. Unit: months.
-        # 
-        # >  You are charged for enhanced edge node pools based on the pay-as-you-go billing method. Therefore, you can ignore this parameter.
         self.period = period
 
     def validate(self):

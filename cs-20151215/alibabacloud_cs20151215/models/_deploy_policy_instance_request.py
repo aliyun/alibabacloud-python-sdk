@@ -13,14 +13,15 @@ class DeployPolicyInstanceRequest(DaraModel):
         namespaces: List[str] = None,
         parameters: Dict[str, Any] = None,
     ):
-        # The action of the policy. Valid values:
+        # The governance action. Valid values:
         # 
-        # *   `deny`: Deployments that match the policy are denied.
-        # *   `warn`: Alerts are generated for Deployments that match the policy.
+        # - `deny`: Denies deployments that violate the rule.
+        # 
+        # - `warn`: Generates an alert for deployments that violate the rule.
         self.action = action
-        # The namespaces to which the policy applies. If you leave this parameter empty, the policy is applicable to all namespaces of the cluster.
+        # The namespaces where the policy applies. If you omit this parameter, the policy applies to all namespaces.
         self.namespaces = namespaces
-        # The parameter settings of the policy. For more information about the parameters supported by each policy, see [Predefined security policies of ACK](https://www.alibabacloud.com/help/doc-detail/359819.html).
+        # For details on the parameters supported by each policy governance rule, see [Container security policy rules](https://www.alibabacloud.com/help/doc-detail/359819.html).
         self.parameters = parameters
 
     def validate(self):

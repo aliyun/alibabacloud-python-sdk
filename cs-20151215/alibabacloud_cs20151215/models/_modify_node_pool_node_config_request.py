@@ -20,6 +20,7 @@ class ModifyNodePoolNodeConfigRequest(DaraModel):
         self.containerd_config = containerd_config
         # The kubelet configurations.
         self.kubelet_config = kubelet_config
+        # List of nodes to upgrade.
         self.node_names = node_names
         # The OS configuration.
         self.os_config = os_config
@@ -115,6 +116,7 @@ class ModifyNodePoolNodeConfigRequestOsConfig(DaraModel):
         hugepage: main_models.Hugepage = None,
         sysctl: Dict[str, Any] = None,
     ):
+        # Hugepage configuration.
         self.hugepage = hugepage
         # The sysctl configuration.
         self.sysctl = sysctl

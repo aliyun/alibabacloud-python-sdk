@@ -16,6 +16,7 @@ class DescribeClusterEventsResponseBody(DaraModel):
     ):
         # The list of events.
         self.events = events
+        # The token used to retrieve the next page of results. If this parameter is empty, there are no more results to return.
         self.next_token = next_token
         # The pagination information.
         self.page_info = page_info
@@ -70,11 +71,11 @@ class DescribeClusterEventsResponseBodyPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The number of the page to return.
+        # The page number.
         self.page_number = page_number
-        # The number of entries per page. Valid values: 1 to 50. Default value: 50.
+        # The number of entries returned per page.
         self.page_size = page_size
-        # The total number of entries returned.
+        # The total number of entries that match the query.
         self.total_count = total_count
 
     def validate(self):
@@ -120,19 +121,51 @@ class DescribeClusterEventsResponseBodyEvents(DaraModel):
         time: str = None,
         type: str = None,
     ):
-        # The ID of the cluster.
+        # The cluster ID.
         self.cluster_id = cluster_id
-        # The description of the event.
+        # The event data.
         self.data = data
         # The event ID.
         self.event_id = event_id
         # The event source.
         self.source = source
-        # The subject related to the event.
+        # The object associated with the event.
         self.subject = subject
-        # The time when the event started.
+        # The time the event occurred.
         self.time = time
-        # The type of event. Valid values:
+        # The event type. Valid values:
+        # 
+        # - `cluster_create`: Cluster creation.
+        # 
+        # - `cluster_scaleout`: Cluster scale-out.
+        # 
+        # - `cluster_attach`: Attaching existing nodes to a cluster.
+        # 
+        # - `cluster_delete`: Cluster deletion.
+        # 
+        # - `cluster_upgrade`: Cluster upgrade.
+        # 
+        # - `cluster_migrate`: Cluster migration.
+        # 
+        # - `cluster_node_delete`: Node removal.
+        # 
+        # - `cluster_node_drain`: Node drain.
+        # 
+        # - `cluster_modify`: Cluster modification.
+        # 
+        # - `cluster_configuration_modify`: Control plane configuration modification.
+        # 
+        # - `cluster_addon_install`: Add-on installation.
+        # 
+        # - `cluster_addon_upgrade`: Add-on upgrade.
+        # 
+        # - `cluster_addon_uninstall`: Add-on uninstallation.
+        # 
+        # - `runtime_upgrade`: Container runtime upgrade.
+        # 
+        # - `nodepool_upgrade`: Node pool upgrade.
+        # 
+        # - `nodepool_update`: Node pool update.
         self.type = type
 
     def validate(self):
@@ -201,36 +234,10 @@ class DescribeClusterEventsResponseBodyEventsData(DaraModel):
         reason: str = None,
     ):
         # The severity level of the event.
-        # 
-        # Valid values:
-        # 
-        # *   warning
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   error
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   info
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
         self.level = level
-        # The details of the event.
+        # The event message.
         self.message = message
-        # The status of the event.
+        # The event status.
         self.reason = reason
 
     def validate(self):

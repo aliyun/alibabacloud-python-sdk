@@ -95,7 +95,9 @@ class ListClusterKubeconfigStatesResponseBodyStates(DaraModel):
         # *   Expired: The certificate is expired.
         # *   Unknown: The status of the certificate is unknown.
         self.cert_state = cert_state
+        # Cloud service name.
         self.cloud_service_name = cloud_service_name
+        # List of cluster roles associated with the cluster cloud product service roles.
         self.cloud_service_roles = cloud_service_roles
         # Indicates whether the client certificate for the kubeconfig file can be revoked.
         self.revokable = revokable
@@ -190,9 +192,16 @@ class ListClusterKubeconfigStatesResponseBodyStatesCloudServiceRoles(DaraModel):
         role_namespace: str = None,
         type: str = None,
     ):
+        # Indicates whether the content matches the default cluster role template.  
+        # 
+        # - true: Matches  
+        # - false: Does not match
         self.is_default_template = is_default_template
+        # Name of the cluster role associated with the cluster cloud product service role.
         self.role_name = role_name
+        # Namespace of the cluster role associated with the cluster cloud product service role.
         self.role_namespace = role_namespace
+        # The type of the cluster role associated with the cloud service role of the cluster.
         self.type = type
 
     def validate(self):

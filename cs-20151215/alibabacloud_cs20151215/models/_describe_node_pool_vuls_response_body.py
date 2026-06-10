@@ -135,6 +135,7 @@ class DescribeNodePoolVulsResponseBodyVulRecordsVulList(DaraModel):
         self.necessity = necessity
         # Indicates whether a restart is required.
         self.need_reboot = need_reboot
+        # List of packages affected by the vulnerability.
         self.package_list = package_list
 
     def validate(self):
@@ -200,6 +201,7 @@ class DescribeNodePoolVulsResponseBodyVulRecordsVulListPackageList(DaraModel):
         self,
         name: str = None,
     ):
+        # Package name.
         self.name = name
 
     def validate(self):

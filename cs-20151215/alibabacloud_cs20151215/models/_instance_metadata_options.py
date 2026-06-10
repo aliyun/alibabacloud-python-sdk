@@ -9,6 +9,21 @@ class InstanceMetadataOptions(DaraModel):
         self,
         http_tokens: str = None,
     ):
+        # Configuration of the ECS instance metadata access mode. Valid values:  
+        # 
+        # * `optional`: Compatible with both NAT mode and hardened mode.  
+        # * `required`: Enables hardened mode only (IMDSv2). After this mode is enabled, applications within edge zones cannot access ECS instance metadata through NAT mode.  
+        # 
+        # Default Value: `optional`.  
+        # 
+        # >Notice:   
+        # 
+        # * This parameter is currently available only to users on the whitelist. To use it, submit a ticket to request access.  
+        # * This parameter is supported only in ACK managed clusters of version 1.28 or later.  
+        # 
+        #   
+        # 
+        # > For more information about instance metadata access modes, see [Instance Metadata Access Mode](https://help.aliyun.com/document_detail/108460.html).
         self.http_tokens = http_tokens
 
     def validate(self):

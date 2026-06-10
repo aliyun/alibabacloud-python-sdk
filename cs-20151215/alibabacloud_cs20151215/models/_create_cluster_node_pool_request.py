@@ -27,6 +27,7 @@ class CreateClusterNodePoolRequest(DaraModel):
         scaling_group: main_models.CreateClusterNodePoolRequestScalingGroup = None,
         tee_config: main_models.CreateClusterNodePoolRequestTeeConfig = None,
     ):
+        # Intelligent managed configuration for the node pool.
         self.auto_mode = auto_mode
         # The configurations of auto scaling.
         self.auto_scaling = auto_scaling
@@ -34,6 +35,7 @@ class CreateClusterNodePoolRequest(DaraModel):
         # 
         # The number of nodes in the node pool.
         self.count = count
+        # Lingjun node pool configuration.
         self.eflo_node_group = eflo_node_group
         # Specifies whether to set the network type of the pod to host network.
         # 
@@ -62,6 +64,7 @@ class CreateClusterNodePoolRequest(DaraModel):
         # 
         # The maximum number of nodes that can be contained in the edge node pool.
         self.max_nodes = max_nodes
+        # List of edge zone widgets.
         self.node_components = node_components
         # The node configurations.
         self.node_config = node_config
@@ -329,6 +332,7 @@ class CreateClusterNodePoolRequestScalingGroup(DaraModel):
         self.deploymentset_id = deploymentset_id
         # The expected number of nodes in the node pool.
         self.desired_size = desired_size
+        # Block device initialization configuration.
         self.disk_init = disk_init
         # The custom image ID. By default, the image provided by Container Service for Kubernetes (ACK) is used.
         self.image_id = image_id
@@ -354,6 +358,7 @@ class CreateClusterNodePoolRequestScalingGroup(DaraModel):
         # 
         # This parameter is required.
         self.instance_charge_type = instance_charge_type
+        # Access configuration for ECS instance metadata.
         self.instance_metadata_options = instance_metadata_options
         # The instance attributes.
         self.instance_patterns = instance_patterns
@@ -428,6 +433,11 @@ class CreateClusterNodePoolRequestScalingGroup(DaraModel):
         self.ram_role_name = ram_role_name
         # The IDs of ApsaraDB RDS instances.
         self.rds_instances = rds_instances
+        # The resource pool and resource pool policy used when creating instances. After you set this parameter, note the following:
+        # 
+        # This parameter takes effect only when pay-as-you-go instances are created.
+        # 
+        # This parameter cannot be set together with `private_pool_options.match_criteria` or `private_pool_options.id`.
         self.resource_pool_options = resource_pool_options
         # The scaling mode of the scaling group. Valid values:
         # 
@@ -516,6 +526,7 @@ class CreateClusterNodePoolRequestScalingGroup(DaraModel):
         # 
         # Valid values: 20 to 20248.
         self.system_disk_size = system_disk_size
+        # Snapshot policy for the system disk.
         self.system_disk_snapshot_policy_id = system_disk_snapshot_policy_id
         # The tags that you want to add only to ECS instances.
         # 
@@ -975,7 +986,13 @@ class CreateClusterNodePoolRequestScalingGroupResourcePoolOptions(DaraModel):
         private_pool_ids: List[str] = None,
         strategy: str = None,
     ):
+        # A list of private pool IDs, which are either Elasticity Assurance service IDs or Capacity Reservation service IDs. This parameter accepts only private pool IDs in Target pattern. The value range for N is 1 to 20.
         self.private_pool_ids = private_pool_ids
+        # The resource pool policy used when creating an instance. Resource pools include private pools generated after Elasticity Assurance or Capacity Reservation services take effect, as well as the public pool, which are available for selection when starting an instance. Valid values:
+        # PrivatePoolFirst: Private pool first. With this policy, if `resource_pool_options.private_pool_ids` is specified, the specified private pool is used first. If no private pool is specified or the specified private pool lacks sufficient capacity, an open-type private pool is automatically matched. If no eligible private pool exists, the instance is created using the public pool.
+        # PrivatePoolOnly: Private pool only. With this policy, you must specify `resource_pool_options.private_pool_ids`. If the specified private pool lacks sufficient capacity, instance startup fails.
+        # None: Do not use a resource pool policy.
+        # Default Value: None.
         self.strategy = strategy
 
     def validate(self):
@@ -1134,8 +1151,11 @@ class CreateClusterNodePoolRequestNodeComponents(DaraModel):
         name: str = None,
         version: str = None,
     ):
+        # Configuration of the edge zone widget.
         self.config = config
+        # Name of the edge zone widget.
         self.name = name
+        # Version of the edge zone widget.
         self.version = version
 
     def validate(self):
@@ -1177,6 +1197,7 @@ class CreateClusterNodePoolRequestNodeComponentsConfig(DaraModel):
         self,
         custom_config: Dict[str, str] = None,
     ):
+        # Custom Configuration of the edge zone widget.
         self.custom_config = custom_config
 
     def validate(self):
@@ -1202,6 +1223,7 @@ class CreateClusterNodePoolRequestNodeComponentsConfig(DaraModel):
 class CreateClusterNodePoolRequestManagement(DaraModel):
     def __init__(
         self,
+        auto_fault_diagnosis: bool = None,
         auto_repair: bool = None,
         auto_repair_policy: main_models.CreateClusterNodePoolRequestManagementAutoRepairPolicy = None,
         auto_upgrade: bool = None,
@@ -1211,6 +1233,7 @@ class CreateClusterNodePoolRequestManagement(DaraModel):
         enable: bool = None,
         upgrade_config: main_models.CreateClusterNodePoolRequestManagementUpgradeConfig = None,
     ):
+        self.auto_fault_diagnosis = auto_fault_diagnosis
         # Specifies whether to enable auto node repair. This parameter takes effect only when `enable` is set to true.
         # 
         # *   `true`: enables auto node repair.
@@ -1263,6 +1286,9 @@ class CreateClusterNodePoolRequestManagement(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.auto_fault_diagnosis is not None:
+            result['auto_fault_diagnosis'] = self.auto_fault_diagnosis
+
         if self.auto_repair is not None:
             result['auto_repair'] = self.auto_repair
 
@@ -1291,6 +1317,9 @@ class CreateClusterNodePoolRequestManagement(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('auto_fault_diagnosis') is not None:
+            self.auto_fault_diagnosis = m.get('auto_fault_diagnosis')
+
         if m.get('auto_repair') is not None:
             self.auto_repair = m.get('auto_repair')
 
@@ -1392,6 +1421,9 @@ class CreateClusterNodePoolRequestManagementAutoVulFixPolicy(DaraModel):
         restart_node: bool = None,
         vul_level: str = None,
     ):
+        # Packages to exclude during vulnerability remediation.
+        # 
+        # Default Value: `kernel`.
         self.exclude_packages = exclude_packages
         # Specifies whether to allow node restart. This parameter takes effect only when `auto_vul_fix` is set to true. Valid values:
         # 
@@ -1506,6 +1538,7 @@ class CreateClusterNodePoolRequestManagementAutoRepairPolicy(DaraModel):
         approval_required: bool = None,
         restart_node: bool = None,
     ):
+        # Whether manual approval is required for edge zone repair.
         self.approval_required = approval_required
         # Specifies whether to allow node restart. This parameter takes effect only when `auto_repair` is set to true. Valid values:
         # 
@@ -1768,7 +1801,9 @@ class CreateClusterNodePoolRequestEfloNodeGroup(DaraModel):
         cluster_id: str = None,
         group_id: str = None,
     ):
+        # The Lingjun cluster ID that must be associated when creating a Lingjun node pool.
         self.cluster_id = cluster_id
+        # The ID of the Lingjun group in the Lingjun cluster to associate when creating a Lingjun node pool.
         self.group_id = group_id
 
     def validate(self):
@@ -1926,6 +1961,10 @@ class CreateClusterNodePoolRequestAutoMode(DaraModel):
         self,
         enable: bool = None,
     ):
+        # Whether to enable the intelligent managed mode.  
+        # Valid values:  
+        # - true: Enables the intelligent managed mode. This can be enabled only when the cluster has the intelligent managed mode enabled.  
+        # - false: Disables the intelligent managed mode.
         self.enable = enable
 
     def validate(self):

@@ -17,11 +17,17 @@ class DescribeAutoRepairPolicyResponseBody(DaraModel):
         resource_type: str = None,
         rules: List[main_models.DescribeAutoRepairPolicyResponseBodyRules] = None,
     ):
+        # The ID of the auto-repair rule.
         self.id = id
+        # The name of the auto-repair rule.
         self.name = name
+        # The IDs of resources affected by the auto-repair rule.
         self.resource_ids = resource_ids
+        # The subtype of the resource affected by the auto-repair rule.
         self.resource_sub_type = resource_sub_type
+        # The resource type affected by the auto-repair rule.
         self.resource_type = resource_type
+        # The list of rules.
         self.rules = rules
 
     def validate(self):
@@ -88,7 +94,9 @@ class DescribeAutoRepairPolicyResponseBodyRules(DaraModel):
         incidents: List[main_models.DescribeAutoRepairPolicyResponseBodyRulesIncidents] = None,
         repair_procedure: List[main_models.DescribeAutoRepairPolicyResponseBodyRulesRepairProcedure] = None,
     ):
+        # The detected incidents that trigger the rule.
         self.incidents = incidents
+        # The repair procedure, which contains a list of repair actions.
         self.repair_procedure = repair_procedure
 
     def validate(self):
@@ -141,8 +149,11 @@ class DescribeAutoRepairPolicyResponseBodyRulesRepairProcedure(DaraModel):
         intervention: main_models.DescribeAutoRepairPolicyResponseBodyRulesRepairProcedureIntervention = None,
         name: str = None,
     ):
+        # The configuration parameters for the repair action.
         self.config = config
+        # The manual approval configuration.
         self.intervention = intervention
+        # The name of the repair action.
         self.name = name
 
     def validate(self):
@@ -187,9 +198,13 @@ class DescribeAutoRepairPolicyResponseBodyRulesRepairProcedureIntervention(DaraM
         inquiring_label: main_models.DescribeAutoRepairPolicyResponseBodyRulesRepairProcedureInterventionInquiringLabel = None,
         type: str = None,
     ):
+        # The label you add to a node to approve a repair action. When ACK detects this label, it proceeds with the current repair step. After the action is complete, ACK automatically removes both the inquiring and approved labels. If you do not add this label promptly, the repair procedure is paused, and the node may remain unhealthy.
         self.approved_label = approved_label
+        # Specifies whether to enable manual approval.
         self.enable = enable
+        # When a repair procedure reaches this step, ACK applies this label to the affected node and pauses until you grant approval.
         self.inquiring_label = inquiring_label
+        # The manual approval type.
         self.type = type
 
     def validate(self):
@@ -241,7 +256,9 @@ class DescribeAutoRepairPolicyResponseBodyRulesRepairProcedureInterventionInquir
         key: str = None,
         value: str = None,
     ):
+        # The label key.
         self.key = key
+        # The label value.
         self.value = value
 
     def validate(self):
@@ -276,7 +293,9 @@ class DescribeAutoRepairPolicyResponseBodyRulesRepairProcedureInterventionApprov
         key: str = None,
         value: str = None,
     ):
+        # The label\\"s `key`.
         self.key = key
+        # The label\\"s value.
         self.value = value
 
     def validate(self):
@@ -311,7 +330,9 @@ class DescribeAutoRepairPolicyResponseBodyRulesIncidents(DaraModel):
         name: str = None,
         type: str = None,
     ):
+        # The incident name.
         self.name = name
+        # The incident type.
         self.type = type
 
     def validate(self):

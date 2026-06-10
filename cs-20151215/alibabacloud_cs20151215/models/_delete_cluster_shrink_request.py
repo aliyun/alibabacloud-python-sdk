@@ -12,23 +12,26 @@ class DeleteClusterShrinkRequest(DaraModel):
         retain_all_resources: bool = None,
         retain_resources_shrink: str = None,
     ):
-        # The type of cluster resource that you want to delete or retain.
+        # The options for deleting the resources that are associated with the cluster.
         self.delete_options_shrink = delete_options_shrink
-        # Specifies whether to retain the Server Load Balancer (SLB) resources that are created by the cluster.
+        # Whether to retain SLB resources. Valid values:
         # 
-        # *   `true`: retains the SLB instances that are created by the cluster.
-        # *   `false`: does not retain the SLB instances that are created by the cluster.
+        # - `true`: Retains the SLB resources that are created for the cluster.
         # 
-        # Default value: `false`. Set resource_type to `SLB` in the `delete_options` parameter to manage SLB instances.
+        # - `false`: Does not retain the SLB resources that are created for the cluster.
+        # 
+        # Default value: `false`.
+        # Use the `delete_options` parameter to manage `SLB` resources instead.
         self.keep_slb = keep_slb
-        # Specifies whether to retain all resources. If you set the parameter to `true`, the `retain_resources` parameter is ignored. The cloud resources that are created by the cluster are retained. You can call the `DescribeClusterResources` operation to query cloud resources created by the cluster. If you set the parameter to `false`, resources to be retained by default in the `delete_options` parameter are still retained. To delete these resources, set `delete_mode` to `delete` in `delete_options`.
+        # Whether to retain all associated resources. If you set this parameter to `true`, the `retain_resources` parameter is ignored, and all cloud resources that are created with the cluster and can be queried by calling `DescribeClusterResources` are retained. If you set this parameter to `false`, note that resources that are configured to be retained by default in the `delete_options` parameter are still retained. To delete these resources, you must explicitly set the `delete_mode` parameter to `delete` for them in `delete_options`.
         # 
-        # *   `true`: retains all resources, including cloud resources created by the cluster.
-        # *   `false`: does not retain all resources. Resources to be retained by default in the `delete_options` parameter are retained. For example, `ALB` instances are retained when this parameter is set to `false`.
+        # - `true`: Retains all associated cloud resources that are created with the cluster.
+        # 
+        # - `false`: Does not retain all associated cloud resources. Resources that are configured to be retained by default in the `delete_options` parameter, such as `ALB`, are still retained when this parameter is set to `false`.
         # 
         # Default value: `false`.
         self.retain_all_resources = retain_all_resources
-        # The list of resources. To retain resources when you delete a cluster, you need to specify the IDs of the resources to be retained.
+        # The IDs of resources to retain when the cluster is deleted.
         self.retain_resources_shrink = retain_resources_shrink
 
     def validate(self):

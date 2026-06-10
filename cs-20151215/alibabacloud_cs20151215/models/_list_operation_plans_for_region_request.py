@@ -11,8 +11,11 @@ class ListOperationPlansForRegionRequest(DaraModel):
         state: str = None,
         type: str = None,
     ):
+        # Filter by cluster ID.
         self.cluster_id = cluster_id
+        # Filter by execution plan status.
         self.state = state
+        # Filter by execution plan type.
         self.type = type
 
     def validate(self):
