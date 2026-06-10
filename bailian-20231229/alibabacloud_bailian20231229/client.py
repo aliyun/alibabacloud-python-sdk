@@ -1925,6 +1925,94 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_file_with_options_async(file_id, workspace_id, request, headers, runtime)
 
+    def delete_files_with_options(
+        self,
+        workspace_id: str,
+        tmp_req: main_models.DeleteFilesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteFilesResponse:
+        tmp_req.validate()
+        request = main_models.DeleteFilesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.file_ids):
+            request.file_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.file_ids, 'FileIds', 'json')
+        body = {}
+        if not DaraCore.is_null(request.file_ids_shrink):
+            body['FileIds'] = request.file_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteFiles',
+            version = '2023-12-29',
+            protocol = 'HTTPS',
+            pathname = f'/{DaraURL.percent_encode(workspace_id)}/datacenter/file/delete',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteFilesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_files_with_options_async(
+        self,
+        workspace_id: str,
+        tmp_req: main_models.DeleteFilesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteFilesResponse:
+        tmp_req.validate()
+        request = main_models.DeleteFilesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.file_ids):
+            request.file_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.file_ids, 'FileIds', 'json')
+        body = {}
+        if not DaraCore.is_null(request.file_ids_shrink):
+            body['FileIds'] = request.file_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteFiles',
+            version = '2023-12-29',
+            protocol = 'HTTPS',
+            pathname = f'/{DaraURL.percent_encode(workspace_id)}/datacenter/file/delete',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteFilesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_files(
+        self,
+        workspace_id: str,
+        request: main_models.DeleteFilesRequest,
+    ) -> main_models.DeleteFilesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_files_with_options(workspace_id, request, headers, runtime)
+
+    async def delete_files_async(
+        self,
+        workspace_id: str,
+        request: main_models.DeleteFilesRequest,
+    ) -> main_models.DeleteFilesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_files_with_options_async(workspace_id, request, headers, runtime)
+
     def delete_index_with_options(
         self,
         workspace_id: str,

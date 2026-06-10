@@ -1,3 +1,7 @@
+2026-06-10 Version: 2.13.0
+- Support API DeleteFiles.
+
+
 2026-06-03 Version: 2.12.0
 - Support API DeleteConnector.
 - Support API UpdateConnector.

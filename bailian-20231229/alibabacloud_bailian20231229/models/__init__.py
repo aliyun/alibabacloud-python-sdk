@@ -68,6 +68,10 @@ from ._delete_connector_response import DeleteConnectorResponse
 from ._delete_file_request import DeleteFileRequest
 from ._delete_file_response_body import DeleteFileResponseBody
 from ._delete_file_response import DeleteFileResponse
+from ._delete_files_request import DeleteFilesRequest
+from ._delete_files_shrink_request import DeleteFilesShrinkRequest
+from ._delete_files_response_body import DeleteFilesResponseBody
+from ._delete_files_response import DeleteFilesResponse
 from ._delete_index_request import DeleteIndexRequest
 from ._delete_index_response_body import DeleteIndexResponseBody
 from ._delete_index_response import DeleteIndexResponse
@@ -233,6 +237,8 @@ from ._create_index_response_body import CreateIndexResponseBodyData
 from ._delete_category_response_body import DeleteCategoryResponseBodyData
 from ._delete_connector_response_body import DeleteConnectorResponseBodyData
 from ._delete_file_response_body import DeleteFileResponseBodyData
+from ._delete_files_response_body import DeleteFilesResponseBodyDataDeleteFileResultList
+from ._delete_files_response_body import DeleteFilesResponseBodyData
 from ._delete_index_document_response_body import DeleteIndexDocumentResponseBodyData
 from ._describe_file_response_body import DescribeFileResponseBodyData
 from ._get_alipay_transfer_status_response_body import GetAlipayTransferStatusResponseBodyData
@@ -377,6 +383,10 @@ __all__ = [
     DeleteFileRequest,
     DeleteFileResponseBody,
     DeleteFileResponse,
+    DeleteFilesRequest,
+    DeleteFilesShrinkRequest,
+    DeleteFilesResponseBody,
+    DeleteFilesResponse,
     DeleteIndexRequest,
     DeleteIndexResponseBody,
     DeleteIndexResponse,
@@ -542,6 +552,8 @@ __all__ = [
     DeleteCategoryResponseBodyData,
     DeleteConnectorResponseBodyData,
     DeleteFileResponseBodyData,
+    DeleteFilesResponseBodyDataDeleteFileResultList,
+    DeleteFilesResponseBodyData,
     DeleteIndexDocumentResponseBodyData,
     DescribeFileResponseBodyData,
     GetAlipayTransferStatusResponseBodyData,
