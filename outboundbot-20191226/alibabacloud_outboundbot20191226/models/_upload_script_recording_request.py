@@ -13,14 +13,24 @@ class UploadScriptRecordingRequest(DaraModel):
         instance_id: str = None,
         script_id: str = None,
     ):
+        # Text content of the recording file
+        # 
         # This parameter is required.
         self.content = content
+        # File key in OSS
+        # 
         # This parameter is required.
         self.file_id = file_id
+        # File name
+        # 
         # This parameter is required.
         self.file_name = file_name
+        # Instance ID
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Script ID
+        # 
         # This parameter is required.
         self.script_id = script_id
 

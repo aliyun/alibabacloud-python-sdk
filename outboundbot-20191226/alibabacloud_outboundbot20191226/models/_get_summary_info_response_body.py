@@ -17,11 +17,17 @@ class GetSummaryInfoResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # List of instances.
         self.agent_bot_instance_summary_list = agent_bot_instance_summary_list
+        # Response code.
         self.code = code
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Response message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the request succeeded.
         self.success = success
 
     def validate(self):
@@ -90,9 +96,13 @@ class GetSummaryInfoResponseBodyAgentBotInstanceSummaryList(DaraModel):
         total_call_time: int = None,
         used_recording_storage_space: int = None,
     ):
+        # Instance ID.
         self.instance_id = instance_id
+        # Total number of outbound calls.
         self.total_call_count = total_call_count
+        # Total call duration, in seconds.
         self.total_call_time = total_call_time
+        # Used recording storage space, in MB.
         self.used_recording_storage_space = used_recording_storage_space
 
     def validate(self):

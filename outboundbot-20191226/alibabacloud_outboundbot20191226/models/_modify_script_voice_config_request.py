@@ -13,13 +13,28 @@ class ModifyScriptVoiceConfigRequest(DaraModel):
         script_waveform_relation: str = None,
         type: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The script ID.
+        # 
         # This parameter is required.
         self.script_id = script_id
+        # The script voice configuration ID.
+        # 
         # This parameter is required.
         self.script_voice_config_id = script_voice_config_id
+        # Maps script segments to audio recordings. This parameter is required only when Type is set to WAVEFORM.
+        # 
+        # > To obtain the value for the ScriptWaveformId parameter, call the CreateScriptWaveform operation. The ScriptContent parameter specifies the text that corresponds to the audio segment.
         self.script_waveform_relation = script_waveform_relation
+        # The audio source type.
+        # 
+        # - WAVEFORM: A pre-recorded audio file.
+        # 
+        # - TTS: Audio generated from text using the text-to-speech (TTS) service.
+        # 
         # This parameter is required.
         self.type = type
 

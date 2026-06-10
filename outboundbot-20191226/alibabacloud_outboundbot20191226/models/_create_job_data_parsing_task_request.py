@@ -10,8 +10,14 @@ class CreateJobDataParsingTaskRequest(DaraModel):
         instance_id: str = None,
         job_file_path: str = None,
     ):
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Path to the file that contains the job data.
+        # 
+        # > This value is the Folder parameter returned by the GetJobDataUploadParams operation.
+        # 
         # This parameter is required.
         self.job_file_path = job_file_path
 

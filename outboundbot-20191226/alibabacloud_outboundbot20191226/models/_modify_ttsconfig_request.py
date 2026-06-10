@@ -16,20 +16,39 @@ class ModifyTTSConfigRequest(DaraModel):
         voice: str = None,
         volume: str = None,
     ):
+        # AppKey for your Intelligent Speech Interaction project. Required only when NlsServiceType is Authorized.
         self.app_key = app_key
+        # Instance ID
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The service type.
+        # Managed: The default public Intelligent Speech Interaction service for Outbound Bot.
+        # Authorized: A private Intelligent Speech Interaction service that you have purchased. To grant authorization, navigate to Scenario Management > Edit > Call Service > Custom Service.
         self.nls_service_type = nls_service_type
-        # 语调 [-500,500]之间整数。默认值为0。
+        # Pitch. An integer between -500 and 500. Default is 0.
         # 
-        # 大于0表示升高音高。
+        # A value greater than 0 raises pitch.
         # 
-        # 小于0表示降低音高。
+        # A value less than 0 lowers pitch.
         self.pitch_rate = pitch_rate
+        # Scenario ID
+        # 
         # This parameter is required.
         self.script_id = script_id
+        # Speech rate. An integer between -500 and 500. Default is 0.
+        # 
+        # A value greater than 0 increases speech speed.
+        # 
+        # A value less than 0 decreases speech speed.
         self.speech_rate = speech_rate
+        # Voice model, such as aixia, siyue, or xiaoyun
         self.voice = voice
+        # Volume. An integer between 0 and 100. Default is 50.
+        # 
+        # A value greater than 50 increases volume.
+        # 
+        # A value less than 50 decreases volume.
         self.volume = volume
 
     def validate(self):

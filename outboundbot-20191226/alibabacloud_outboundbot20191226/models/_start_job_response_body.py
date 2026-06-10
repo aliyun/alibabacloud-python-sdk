@@ -18,12 +18,19 @@ class StartJobResponseBody(DaraModel):
         success: bool = None,
         task_ids: List[main_models.StartJobResponseBodyTaskIds] = None,
     ):
+        # List of call IDs
         self.call_ids = call_ids
+        # API status code
         self.code = code
+        # HTTP status code
         self.http_status_code = http_status_code
+        # API message
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Indicates whether the call succeeded. true means success. false means failure.
         self.success = success
+        # Mapping between third-party contact IDs and outbound call task IDs
         self.task_ids = task_ids
 
     def validate(self):
@@ -105,7 +112,9 @@ class StartJobResponseBodyTaskIds(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # Third-party contact ID
         self.key = key
+        # Outbound call task ID
         self.value = value
 
     def validate(self):
@@ -140,7 +149,9 @@ class StartJobResponseBodyCallIds(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # Third-party contact ID
         self.key = key
+        # Call ID for the task
         self.value = value
 
     def validate(self):

@@ -15,11 +15,17 @@ class CreateBatchRepeatJobResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code
         self.code = code
+        # HTTP error code
         self.http_status_code = http_status_code
+        # Job group information
         self.job_group = job_group
+        # Response message
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -82,9 +88,13 @@ class CreateBatchRepeatJobResponseBodyJobGroup(DaraModel):
         priority: str = None,
         ringing_duration: int = None,
     ):
+        # Job group ID
         self.id = id
+        # Minimum concurrency
         self.min_concurrency = min_concurrency
+        # Job priority
         self.priority = priority
+        # Ringing duration
         self.ringing_duration = ringing_duration
 
     def validate(self):

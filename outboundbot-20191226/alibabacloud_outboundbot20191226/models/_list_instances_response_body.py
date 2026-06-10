@@ -20,14 +20,23 @@ class ListInstancesResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # The response code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # A list of service instances.
         self.instances = instances
+        # The response message.
         self.message = message
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
+        # The total number of instances.
         self.total_count = total_count
 
     def validate(self):
@@ -121,16 +130,27 @@ class ListInstancesResponseBodyInstances(DaraModel):
         resource_group_id: str = None,
         resource_tags: List[main_models.ListInstancesResponseBodyInstancesResourceTags] = None,
     ):
+        # The time when the instance was created.
         self.creation_time = creation_time
+        # The ID of the user who created the instance.
         self.creator_id = creator_id
+        # The name of the user who created the instance.
         self.creator_name = creator_name
+        # The description of the Outbound Calling Bot service instance.
         self.instance_description = instance_description
+        # The ID of the service instance.
         self.instance_id = instance_id
+        # The name of the Outbound Calling Bot service instance.
         self.instance_name = instance_name
+        # Indicates whether the instance is a system-predefined instance.
         self.is_preset = is_preset
+        # The maximum number of concurrent outbound calls.
         self.max_concurrent_conversation = max_concurrent_conversation
+        # The name of the Alibaba Cloud account.
         self.owner_name = owner_name
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The tags.
         self.resource_tags = resource_tags
 
     def validate(self):
@@ -227,7 +247,9 @@ class ListInstancesResponseBodyInstancesResourceTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag.
         self.key = key
+        # The value of the tag.
         self.value = value
 
     def validate(self):

@@ -13,8 +13,19 @@ class SaveContactBlockListRequest(DaraModel):
         contact_block_lists_json: str = None,
         instance_id: str = None,
     ):
+        # The list of contacts. [Deprecated]
         self.contact_block_list_list = contact_block_list_list
+        # A JSON string that contains the blocklist. This parameter is required.
+        # 
+        # - phoneNumber: The mobile phone number.
+        # 
+        # - remark: The remarks.
+        # 
+        # - name: The name.
+        # 
+        # - creator: The creator.
         self.contact_block_lists_json = contact_block_lists_json
+        # The instance ID. This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):

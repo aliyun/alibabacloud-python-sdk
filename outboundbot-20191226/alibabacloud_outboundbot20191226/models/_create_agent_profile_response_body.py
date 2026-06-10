@@ -15,11 +15,17 @@ class CreateAgentProfileResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code
         self.code = code
+        # Response data
         self.data = data
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Response message
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Indicates whether the request succeeded
         self.success = success
 
     def validate(self):
@@ -97,23 +103,39 @@ class CreateAgentProfileResponseBodyData(DaraModel):
         update_time: str = None,
         variables_json: str = None,
     ):
+        # Agent profile ID
         self.agent_profile_id = agent_profile_id
+        # Agent profile template ID
         self.agent_profile_template_id = agent_profile_template_id
-        # agent type
+        # Agent type
         self.agent_type = agent_type
+        # Creation time
         self.create_time = create_time
+        # Description
         self.description = description
+        # Instance ID
         self.instance_id = instance_id
+        # Instruction configuration
         self.instruction_json = instruction_json
+        # Label description
         self.labels_json = labels_json
+        # Model ID
         self.model = model
+        # Model configuration
         self.model_config = model_config
+        # Prompt (professional mode)
         self.prompt = prompt
+        # Agent configuration
         self.prompt_json = prompt_json
+        # Scenario
         self.scenario = scenario
+        # Scenario ID
         self.script_id = script_id
+        # Indicates whether this is a system template
         self.system = system
+        # Last update time
         self.update_time = update_time
+        # Variable configuration
         self.variables_json = variables_json
 
     def validate(self):

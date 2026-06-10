@@ -15,11 +15,17 @@ class SaveAnnotationMissionTagInfoListResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code of the API call.
         self.code = code
+        # The returned data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The message returned for the API call.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the call was successful. A value of true indicates that the call was successful. A value of false indicates that the call failed.
         self.success = success
 
     def validate(self):
@@ -81,8 +87,11 @@ class SaveAnnotationMissionTagInfoListResponseBodyData(DaraModel):
         message: str = None,
         success: bool = None,
     ):
+        # The number of successful operations.
         self.exec_count = exec_count
+        # The message returned for the API call.
         self.message = message
+        # Indicates whether the operation was successful.
         self.success = success
 
     def validate(self):

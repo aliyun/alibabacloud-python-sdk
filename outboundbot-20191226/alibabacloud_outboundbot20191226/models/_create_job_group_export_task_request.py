@@ -13,9 +13,13 @@ class CreateJobGroupExportTaskRequest(DaraModel):
         job_group_id: str = None,
         option: List[str] = None,
     ):
+        # Instance ID
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Job group ID. Required.
         self.job_group_id = job_group_id
+        # Parameters that control task execution for the import.
         self.option = option
 
     def validate(self):

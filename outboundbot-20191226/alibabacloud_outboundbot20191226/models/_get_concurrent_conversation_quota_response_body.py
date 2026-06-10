@@ -15,13 +15,19 @@ class GetConcurrentConversationQuotaResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # API status code
         self.code = code
+        # HTTP status code
         self.http_status_code = http_status_code
-        # maxConcurrent
+        # Maximum number of concurrent conversations
         self.max_concurrent = max_concurrent
+        # API message
         self.message = message
+        # Remaining concurrent conversations
         self.remaining_concurrent = remaining_concurrent
+        # Request ID
         self.request_id = request_id
+        # Indicates if the call succeeded.
         self.success = success
 
     def validate(self):

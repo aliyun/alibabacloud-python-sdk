@@ -9,6 +9,7 @@ class GetAnnotationMissionSummaryRequest(DaraModel):
         self,
         annotation_mission_id: str = None,
     ):
+        # The ID of the annotation task.
         self.annotation_mission_id = annotation_mission_id
 
     def validate(self):

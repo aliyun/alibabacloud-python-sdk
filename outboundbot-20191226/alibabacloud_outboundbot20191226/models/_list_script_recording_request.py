@@ -16,17 +16,49 @@ class ListScriptRecordingRequest(DaraModel):
         states_json: str = None,
         uuids_json: str = None,
     ):
+        # Instance ID of the recording
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Page number
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # Number of entries per page
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # Recording ID list (JSON format), same as UuidsJson
         self.ref_ids_json = ref_ids_json
+        # Scenario ID of the recording
+        # 
         # This parameter is required.
         self.script_id = script_id
+        # Search criteria: Search by recording name or content.
         self.search = search
+        # Recording status
+        # 
+        # - Validating: 1
+        # 
+        # - Validation failed: 2
+        # 
+        # - Processing: 3
+        # 
+        # - Processing failed: 4
+        # 
+        # - Reviewing: 5
+        # 
+        # - Review failed: 6
+        # 
+        # - Publish failed: 7
+        # 
+        # - Published: 8
+        # 
+        # - Pending publish: 9
         self.states_json = states_json
+        # Recording ID list
+        # 
+        # > This is a list of unique recording IDs. If left blank, all recordings display.
         self.uuids_json = uuids_json
 
     def validate(self):

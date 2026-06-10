@@ -10,8 +10,12 @@ class ChangeResourceGroupRequest(DaraModel):
         new_resource_group_id: str = None,
         resource_id: str = None,
     ):
+        # The ID of the new resource group.
+        # 
         # This parameter is required.
         self.new_resource_group_id = new_resource_group_id
+        # The ID of the resource.
+        # 
         # This parameter is required.
         self.resource_id = resource_id
 

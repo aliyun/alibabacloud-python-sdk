@@ -11,9 +11,14 @@ class ListDownloadTasksRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # Instance ID.
         self.instance_id = instance_id
+        # Page number
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # Count
+        # 
         # This parameter is required.
         self.page_size = page_size
 

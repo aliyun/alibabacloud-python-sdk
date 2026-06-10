@@ -15,11 +15,17 @@ class ModifyInstanceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The instance information.
         self.instance = instance
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -86,13 +92,21 @@ class ModifyInstanceResponseBodyInstance(DaraModel):
         max_concurrent_conversation: int = None,
         owner_name: str = None,
     ):
+        # The creation time.
         self.creation_time = creation_time
+        # The ID of the creator.
         self.creator_id = creator_id
+        # The name of the creator.
         self.creator_name = creator_name
+        # The instance description.
         self.instance_description = instance_description
+        # The instance ID.
         self.instance_id = instance_id
+        # The name of the instance.
         self.instance_name = instance_name
+        # The maximum number of concurrent conversations.
         self.max_concurrent_conversation = max_concurrent_conversation
+        # The name of the owner.
         self.owner_name = owner_name
 
     def validate(self):

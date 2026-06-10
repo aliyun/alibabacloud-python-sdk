@@ -10,7 +10,9 @@ class GetAsrServerInfoRequest(DaraModel):
         entry_id: str = None,
         strategy_level: int = None,
     ):
+        # Instance ID
         self.entry_id = entry_id
+        # Policy level
         self.strategy_level = strategy_level
 
     def validate(self):

@@ -14,11 +14,17 @@ class CreateJobGroupExportTaskResponseBody(DaraModel):
         success: bool = None,
         task_id: str = None,
     ):
+        # Error code
         self.code = code
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Response message
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Indicates whether the request succeeded
         self.success = success
+        # Task ID
         self.task_id = task_id
 
     def validate(self):

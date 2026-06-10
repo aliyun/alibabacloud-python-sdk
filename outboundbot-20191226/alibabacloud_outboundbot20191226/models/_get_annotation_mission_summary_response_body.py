@@ -17,11 +17,17 @@ class GetAnnotationMissionSummaryResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # The data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The additional information. If the request is successful, success is returned. If the request fails, an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the call was successful. A value of true indicates a successful call. A value of false indicates a failed call.
         self.success = success
 
     def validate(self):
@@ -86,11 +92,17 @@ class GetAnnotationMissionSummaryResponseBodyData(DaraModel):
         success: bool = None,
         tag_summary_info: main_models.GetAnnotationMissionSummaryResponseBodyDataTagSummaryInfo = None,
     ):
+        # The ID of the annotation task.
         self.annotation_mission_id = annotation_mission_id
+        # The statistics of speech annotation.
         self.asr_summary_info = asr_summary_info
+        # The statistics of semantic tagging.
         self.intent_summary_info = intent_summary_info
+        # The additional information. If the request is successful, success is returned. If the request fails, an error code is returned.
         self.message = message
+        # Indicates whether the call was successful. A value of true indicates a successful call. A value of false indicates a failed call.
         self.success = success
+        # The custom tags and their quantities.
         self.tag_summary_info = tag_summary_info
 
     def validate(self):
@@ -156,6 +168,7 @@ class GetAnnotationMissionSummaryResponseBodyDataTagSummaryInfo(DaraModel):
         self,
         tag_summary_info_detail_list: List[main_models.GetAnnotationMissionSummaryResponseBodyDataTagSummaryInfoTagSummaryInfoDetailList] = None,
     ):
+        # The list of tags.
         self.tag_summary_info_detail_list = tag_summary_info_detail_list
 
     def validate(self):
@@ -192,7 +205,9 @@ class GetAnnotationMissionSummaryResponseBodyDataTagSummaryInfoTagSummaryInfoDet
         count: int = None,
         name: str = None,
     ):
+        # The number of tags.
         self.count = count
+        # The name of the tag.
         self.name = name
 
     def validate(self):
@@ -233,13 +248,21 @@ class GetAnnotationMissionSummaryResponseBodyDataIntentSummaryInfo(DaraModel):
         no_annotation: int = None,
         translation_unrecognized_count: int = None,
     ):
+        # The number of correct chats.
         self.annotation_correct_count = annotation_correct_count
+        # Invalid data
         self.annotation_invalid = annotation_invalid
+        # The total number of chats.
         self.chat_total_count = chat_total_count
+        # The number of conversations.
         self.intent_user_say_count = intent_user_say_count
+        # The number of uncovered intents.
         self.intention_not_covered_count = intention_not_covered_count
+        # The number of detection errors.
         self.match_error_count = match_error_count
+        # Not annotated.
         self.no_annotation = no_annotation
+        # The number of translations that were not recognized.
         self.translation_unrecognized_count = translation_unrecognized_count
 
     def validate(self):
@@ -317,14 +340,23 @@ class GetAnnotationMissionSummaryResponseBodyDataAsrSummaryInfo(DaraModel):
         sentence_error_rate: int = None,
         word_error_rate: int = None,
     ):
+        # The number of times language model data was added.
         self.add_customization_data_count = add_customization_data_count
+        # The number of times hotwords were added.
         self.add_vocabulary_data_count = add_vocabulary_data_count
+        # Data is invalid.
         self.annotation_invalid = annotation_invalid
+        # The character accuracy rate. Unit: 0.01%.
         self.character_correct_rate = character_correct_rate
+        # The character error rate. Unit: 0.01%.
         self.character_error_rate = character_error_rate
+        # The total number of chats.
         self.chat_total_count = chat_total_count
+        # Not annotated.
         self.no_annotation = no_annotation
+        # The sentence error rate. Unit: 0.01%.
         self.sentence_error_rate = sentence_error_rate
+        # The word error rate. Unit: 0.01%. This parameter is typically used for English.
         self.word_error_rate = word_error_rate
 
     def validate(self):

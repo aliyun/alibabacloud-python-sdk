@@ -14,11 +14,17 @@ class GetEmptyNumberNoMoreCallsInfoResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Response code
         self.code = code
+        # Do Not Call Nonexistent Numbers
         self.empty_number_no_more_calls = empty_number_no_more_calls
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Response message
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Indicates whether the call succeeded
         self.success = success
 
     def validate(self):

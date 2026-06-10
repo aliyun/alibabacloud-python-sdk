@@ -21,15 +21,25 @@ class ListBeebotIntentResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # The internal request ID.
         self.beebot_request_id = beebot_request_id
+        # The response code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The list of intents.
         self.intents = intents
+        # The message returned by the operation.
         self.message = message
+        # The page number.
         self.page_number = page_number
+        # The number of entries returned on each page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the call succeeded.
         self.success = success
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -127,14 +137,25 @@ class ListBeebotIntentResponseBodyIntents(DaraModel):
         modify_user_id: str = None,
         modify_user_name: str = None,
     ):
+        # The intent alias.
         self.alias_name = alias_name
+        # The time when the intent was created.
         self.create_time = create_time
+        # The ID of the user who created the intent.
         self.create_user_id = create_user_id
+        # The name of the account that created the intent.
         self.create_user_name = create_user_name
+        # The intent ID.
         self.intent_id = intent_id
+        # The intent name.
+        # 
+        # > This is the intent code. It uniquely identifies the intent.
         self.intent_name = intent_name
+        # The time when the intent was last modified.
         self.modify_time = modify_time
+        # Modify User ID
         self.modify_user_id = modify_user_id
+        # Modify the account name.
         self.modify_user_name = modify_user_name
 
     def validate(self):

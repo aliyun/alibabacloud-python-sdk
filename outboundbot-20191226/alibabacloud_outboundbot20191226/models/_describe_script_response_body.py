@@ -16,12 +16,19 @@ class DescribeScriptResponseBody(DaraModel):
         script: main_models.DescribeScriptResponseBodyScript = None,
         success: bool = None,
     ):
+        # API status code
         self.code = code
+        # HTTP status code
         self.http_status_code = http_status_code
+        # API message
         self.message = message
+        # Deprecated
         self.nls_config = nls_config
+        # Request ID
         self.request_id = request_id
+        # Script details
         self.script = script
+        # Indicates whether the call succeeded
         self.success = success
 
     def validate(self):
@@ -110,29 +117,56 @@ class DescribeScriptResponseBodyScript(DaraModel):
         tts_config: str = None,
         update_time: int = None,
     ):
+        # Robot workspace access key
         self.agent_id = agent_id
+        # Robot workspace access key
         self.agent_key = agent_key
+        # Indicates whether the robot workspace uses a Large Language Model (LLM)
         self.agent_llm = agent_llm
+        # ASR configuration
         self.asr_config = asr_config
+        # Call configuration
         self.chat_config = chat_config
+        # Chatbot ID
         self.chatbot_id = chatbot_id
+        # Status of the debug script
         self.debug_status = debug_status
+        # Enables emotion detection
         self.emotion_enable = emotion_enable
+        # Industry
         self.industry = industry
+        # Indicates whether the debug version is in draft status
         self.is_debug_drafted = is_debug_drafted
+        # Indicates whether the script is in draft status
         self.is_drafted = is_drafted
         self.label_config = label_config
+        # Enables intelligent sentence break
         self.long_wait_enable = long_wait_enable
+        # Enables tone continuity
         self.mini_playback_enable = mini_playback_enable
+        # Enables graceful barge-in
         self.new_barge_in_enable = new_barge_in_enable
+        # NLU engine (applies only to LLM scenarios)
+        # 
+        # - Prompts — Text entry mode
+        # 
+        # - SSE_FUNCTION — Function Compute service mode
         self.nlu_engine = nlu_engine
+        # Function Compute service mode configuration
         self.nlu_profile = nlu_profile
+        # Scenario
         self.scene = scene
+        # Script description
         self.script_description = script_description
+        # Script ID
         self.script_id = script_id
+        # Script name
         self.script_name = script_name
+        # Script status
         self.status = status
+        # TTS configuration for the script
         self.tts_config = tts_config
+        # Time when the script was last updated
         self.update_time = update_time
 
     def validate(self):
@@ -303,8 +337,11 @@ class DescribeScriptResponseBodyScriptNluProfile(DaraModel):
         fc_region: str = None,
         support_beebot_prompts: bool = None,
     ):
+        # Function service name
         self.fc_function = fc_function
+        # Function service trigger URL
         self.fc_http_trigger_url = fc_http_trigger_url
+        # Function service region
         self.fc_region = fc_region
         self.support_beebot_prompts = support_beebot_prompts
 

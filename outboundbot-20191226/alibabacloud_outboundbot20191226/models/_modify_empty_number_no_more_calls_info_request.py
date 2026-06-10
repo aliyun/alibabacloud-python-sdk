@@ -11,9 +11,19 @@ class ModifyEmptyNumberNoMoreCallsInfoRequest(DaraModel):
         entry_id: str = None,
         strategy_level: int = None,
     ):
+        # Enable or disable the nonexistent number no-call feature.
         self.empty_number_no_more_calls = empty_number_no_more_calls
+        # Instance ID
+        # 
         # This parameter is required.
         self.entry_id = entry_id
+        # Policy level. Use 2 for business instances.
+        # 
+        # - 0: system
+        # 
+        # - 1: tenant
+        # 
+        # - 2: instance
         self.strategy_level = strategy_level
 
     def validate(self):

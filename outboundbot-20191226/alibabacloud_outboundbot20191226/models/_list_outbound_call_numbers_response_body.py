@@ -17,11 +17,17 @@ class ListOutboundCallNumbersResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # API status code.
         self.code = code
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # API message.
         self.message = message
+        # List of outbound call numbers.
         self.outbound_call_numbers = outbound_call_numbers
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -84,9 +90,13 @@ class ListOutboundCallNumbersResponseBodyOutboundCallNumbers(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # List of outbound call number data.
         self.list = list
+        # Page number.
         self.page_number = page_number
+        # Number of entries on the page.
         self.page_size = page_size
+        # Total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -143,9 +153,13 @@ class ListOutboundCallNumbersResponseBodyOutboundCallNumbersList(DaraModel):
         rate_limit_count: str = None,
         rate_limit_period: str = None,
     ):
+        # Phone number.
         self.number = number
+        # ID of the phone number.
         self.outbound_call_number_id = outbound_call_number_id
+        # Time window for rate limiting, in seconds.
         self.rate_limit_count = rate_limit_count
+        # Maximum number of calls allowed in the time window.
         self.rate_limit_period = rate_limit_period
 
     def validate(self):

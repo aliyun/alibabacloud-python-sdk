@@ -11,10 +11,16 @@ class DescribeDialogueNodeStatisticsRequest(DaraModel):
         job_group_id: str = None,
         limit: int = None,
     ):
+        # Instance ID
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Task group ID
+        # 
         # This parameter is required.
         self.job_group_id = job_group_id
+        # Limit for displaying statistics
+        # 
         # This parameter is required.
         self.limit = limit
 

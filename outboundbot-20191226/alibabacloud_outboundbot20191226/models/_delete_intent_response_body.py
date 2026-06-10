@@ -13,10 +13,15 @@ class DeleteIntentResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

@@ -13,13 +13,22 @@ class ListIntentsRequest(DaraModel):
         page_size: int = None,
         script_id: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # A keyword to filter intents.
         self.keyword = keyword
+        # The number of the page to return.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # The number of entries to return on each page.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # The script ID.
+        # 
         # This parameter is required.
         self.script_id = script_id
 

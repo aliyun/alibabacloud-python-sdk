@@ -5085,6 +5085,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.need_voice_slice_recording):
             query['NeedVoiceSliceRecording'] = request.need_voice_slice_recording
+        if not DaraCore.is_null(request.swap_channels):
+            query['SwapChannels'] = request.swap_channels
         if not DaraCore.is_null(request.task_id):
             query['TaskId'] = request.task_id
         req = open_api_util_models.OpenApiRequest(
@@ -5117,6 +5119,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.need_voice_slice_recording):
             query['NeedVoiceSliceRecording'] = request.need_voice_slice_recording
+        if not DaraCore.is_null(request.swap_channels):
+            query['SwapChannels'] = request.swap_channels
         if not DaraCore.is_null(request.task_id):
             query['TaskId'] = request.task_id
         req = open_api_util_models.OpenApiRequest(

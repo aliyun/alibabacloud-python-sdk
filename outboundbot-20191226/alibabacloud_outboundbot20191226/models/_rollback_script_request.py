@@ -11,10 +11,18 @@ class RollbackScriptRequest(DaraModel):
         rollback_version: str = None,
         script_id: str = None,
     ):
+        # Instance ID
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Version to roll back to
+        # 
+        # > For valid values, see the ListScriptPublishHistories operation.
+        # 
         # This parameter is required.
         self.rollback_version = rollback_version
+        # Script ID
+        # 
         # This parameter is required.
         self.script_id = script_id
 

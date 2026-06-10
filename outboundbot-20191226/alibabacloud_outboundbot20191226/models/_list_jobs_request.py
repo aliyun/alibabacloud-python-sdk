@@ -12,8 +12,12 @@ class ListJobsRequest(DaraModel):
         instance_id: str = None,
         job_id: List[str] = None,
     ):
+        # Instance ID
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Job ID list. Note: the number of child items must be less than or equal to 99.
+        # 
         # This parameter is required.
         self.job_id = job_id
 

@@ -11,8 +11,13 @@ class SuspendCallWithFileRequest(DaraModel):
         group_id: str = None,
         instance_id: str = None,
     ):
+        # File path. Required.
+        # 
+        # > Get the value for this parameter by calling the GetJobDataUploadParams operation. Use the Folder value returned in the response as the FilePath value.
         self.file_path = file_path
+        # Task group ID. Required.
         self.group_id = group_id
+        # Instance ID. Required.
         self.instance_id = instance_id
 
     def validate(self):

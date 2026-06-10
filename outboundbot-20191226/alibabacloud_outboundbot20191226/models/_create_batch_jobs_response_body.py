@@ -17,11 +17,17 @@ class CreateBatchJobsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Information about the job group.
         self.batch_job = batch_job
+        # API status code.
         self.code = code
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Response message.
         self.message = message
+        # ID of the request.
         self.request_id = request_id
+        # Indicates whether the call succeeded.
         self.success = success
 
     def validate(self):
@@ -88,13 +94,21 @@ class CreateBatchJobsResponseBodyBatchJob(DaraModel):
         scenario_id: str = None,
         strategy: main_models.CreateBatchJobsResponseBodyBatchJobStrategy = None,
     ):
+        # ID of the job group.
         self.batch_job_id = batch_job_id
+        # List of caller numbers.
         self.calling_numbers = calling_numbers
+        # Time when the job group was created.
         self.creation_time = creation_time
+        # Key of the uploaded Excel file.
         self.job_file_path = job_file_path
+        # Description of the job group.
         self.job_group_description = job_group_description
+        # Name of the job group.
         self.job_group_name = job_group_name
+        # ID of the scenario for the job group.
         self.scenario_id = scenario_id
+        # Job execution policy.
         self.strategy = strategy
 
     def validate(self):
@@ -180,20 +194,35 @@ class CreateBatchJobsResponseBodyBatchJobStrategy(DaraModel):
         type: str = None,
         working_time: List[main_models.CreateBatchJobsResponseBodyBatchJobStrategyWorkingTime] = None,
     ):
+        # Custom information for the policy.
         self.customized = customized
+        # End time of the scheduling policy.
         self.end_time = end_time
+        # Action to take for outbound calls that were not completed in the previous cycle.
         self.follow_up_strategy = follow_up_strategy
+        # Indicates whether the policy is a template.
         self.is_template = is_template
+        # Maximum number of retries per day after a failed call.
         self.max_attempts_per_day = max_attempts_per_day
+        # Minimum interval between retries.
         self.min_attempt_interval = min_attempt_interval
+        # How often the job repeats. Valid values: Once, Day, Week, and Month.
         self.repeat_by = repeat_by
+        # List of days on which the job repeats.
         self.repeat_days = repeat_days
+        # Recording policy for caller numbers.
         self.routing_strategy = routing_strategy
+        # Start time when the job group begins execution.
         self.start_time = start_time
+        # Description of the policy.
         self.strategy_description = strategy_description
+        # ID of the policy.
         self.strategy_id = strategy_id
+        # Name of the policy.
         self.strategy_name = strategy_name
+        # Type of the policy.
         self.type = type
+        # Time periods during which the job runs each day.
         self.working_time = working_time
 
     def validate(self):
@@ -314,7 +343,9 @@ class CreateBatchJobsResponseBodyBatchJobStrategyWorkingTime(DaraModel):
         begin_time: str = None,
         end_time: str = None,
     ):
+        # Start time.
         self.begin_time = begin_time
+        # End time.
         self.end_time = end_time
 
     def validate(self):

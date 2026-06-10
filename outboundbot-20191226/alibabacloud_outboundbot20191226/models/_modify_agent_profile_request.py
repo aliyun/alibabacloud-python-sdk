@@ -23,20 +23,39 @@ class ModifyAgentProfileRequest(DaraModel):
         scenario: str = None,
         variables_json: str = None,
     ):
+        # Agent configuration ID
+        # 
+        # > Get the agent configuration ID for created scenarios from the ChatbotId return parameter of DescribeScript.
+        # 
         # This parameter is required.
         self.agent_profile_id = agent_profile_id
+        # API plug-in configuration
+        # 
+        # > To bind multiple APIs, get the UUIDs of multiple APIs through ListApiPlugins and fill them in the format [{"uuid":"xxx"},{"uuid":"xxxx""},....].
         self.api_plugin_json = api_plugin_json
+        # Description
         self.description = description
+        # FAQ category ID
         self.faq_category_ids = faq_category_ids
+        # Instance ID
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Instruction configuration
         self.instruction_json = instruction_json
+        # Label description
         self.labels_json = labels_json
+        # Model ID
         self.model = model
+        # Model configuration
         self.model_config = model_config
+        # Prompt (Professional Mode)
         self.prompt = prompt
+        # Agent configuration
         self.prompt_json = prompt_json
+        # Scenario
         self.scenario = scenario
+        # Variable configuration
         self.variables_json = variables_json
 
     def validate(self):

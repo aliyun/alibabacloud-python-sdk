@@ -16,10 +16,19 @@ class ListInstancesRequest(DaraModel):
         resource_group_id: str = None,
         tag: List[main_models.ListInstancesRequestTag] = None,
     ):
+        # The name of the Outbound Calling Bot instance.
         self.name = name
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The ID of the resource group.
+        # 
+        # > For more information, see ListResourceGroups.
         self.resource_group_id = resource_group_id
+        # The tags of the service instance.
+        # 
+        # > You can call the ListResourceTags operation to obtain the tags.
         self.tag = tag
 
     def validate(self):
@@ -80,7 +89,9 @@ class ListInstancesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the instance tag.
         self.key = key
+        # The value of the instance tag.
         self.value = value
 
     def validate(self):

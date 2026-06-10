@@ -15,12 +15,19 @@ class ModifyBeebotIntentLgfResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Internal Request ID
         self.beebot_request_id = beebot_request_id
+        # status code
         self.code = code
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Utterance Template ID
         self.lgf_id = lgf_id
+        # Response message
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Indicates whether the operation succeeded.
         self.success = success
 
     def validate(self):

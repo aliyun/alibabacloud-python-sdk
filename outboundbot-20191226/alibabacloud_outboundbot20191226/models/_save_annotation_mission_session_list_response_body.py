@@ -17,11 +17,17 @@ class SaveAnnotationMissionSessionListResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The returned message. If the request is successful, success is returned. If the request fails, an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the call was successful. A value of true indicates success. A value of false indicates failure.
         self.success = success
 
     def validate(self):
@@ -84,9 +90,13 @@ class SaveAnnotationMissionSessionListResponseBodyData(DaraModel):
         save_annotation_mission_session_list_request: main_models.SaveAnnotationMissionSessionListResponseBodyDataSaveAnnotationMissionSessionListRequest = None,
         success: bool = None,
     ):
+        # The message returned for the operation.
         self.message = message
+        # The list of messages.
         self.message_list = message_list
+        # The request result.
         self.save_annotation_mission_session_list_request = save_annotation_mission_session_list_request
+        # Indicates whether the operation was successful.
         self.success = success
 
     def validate(self):
@@ -134,6 +144,7 @@ class SaveAnnotationMissionSessionListResponseBodyDataSaveAnnotationMissionSessi
         self,
         annotation_mission_session_list_json_string: str = None,
     ):
+        # The content of the script for the approval requests
         self.annotation_mission_session_list_json_string = annotation_mission_session_list_json_string
 
     def validate(self):

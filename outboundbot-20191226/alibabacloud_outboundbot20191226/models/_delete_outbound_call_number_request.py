@@ -10,8 +10,12 @@ class DeleteOutboundCallNumberRequest(DaraModel):
         instance_id: str = None,
         outbound_call_number_id: str = None,
     ):
+        # Instance ID
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Number ID
+        # 
         # This parameter is required.
         self.outbound_call_number_id = outbound_call_number_id
 

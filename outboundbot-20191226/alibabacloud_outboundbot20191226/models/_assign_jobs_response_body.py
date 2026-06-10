@@ -17,12 +17,19 @@ class AssignJobsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The job group ID.
         self.job_group_id = job_group_id
+        # A list of job IDs.
         self.jobs_id = jobs_id
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

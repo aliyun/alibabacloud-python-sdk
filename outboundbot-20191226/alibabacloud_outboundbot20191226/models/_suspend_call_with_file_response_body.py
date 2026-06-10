@@ -13,10 +13,15 @@ class SuspendCallWithFileResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Response code.
         self.code = code
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Response message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the call was suspended successfully.
         self.success = success
 
     def validate(self):

@@ -15,12 +15,19 @@ class ModifyBeebotIntentUserSayResponseBody(DaraModel):
         success: bool = None,
         user_say_id: int = None,
     ):
+        # The internal request ID.
         self.beebot_request_id = beebot_request_id
+        # The status code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The message returned by the API.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
+        # The user utterance ID.
         self.user_say_id = user_say_id
 
     def validate(self):

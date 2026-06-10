@@ -14,11 +14,19 @@ class CreateJobDataParsingTaskResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # API status code.
         self.code = code
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # ID of the uploaded job data parsing task.
+        # 
+        # > Use this value as the JobDataParsingTaskId parameter in DescribeJobDataParsingTaskProgress.
         self.job_data_parsing_task_id = job_data_parsing_task_id
+        # API message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the request succeeded.
         self.success = success
 
     def validate(self):

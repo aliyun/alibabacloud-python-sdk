@@ -15,13 +15,27 @@ class UntagResourcesRequest(DaraModel):
         resource_type: str = None,
         tag_key: List[str] = None,
     ):
+        # Remove all tags. This parameter takes effect only when TagKey.N is empty. Valid values:
+        # 
+        # - true
+        # 
+        # - false
+        # 
+        # Default value: false
         self.all = all
+        # Region
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # List of resource IDs. Default value: list of instance IDs. Valid values for n: 1 to 50
+        # 
         # This parameter is required.
         self.resource_id = resource_id
+        # Resource type. Default value: INSTANCE
+        # 
         # This parameter is required.
         self.resource_type = resource_type
+        # List of tag keys. Valid values for n: 1 to 20
         self.tag_key = tag_key
 
     def validate(self):

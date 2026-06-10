@@ -15,11 +15,17 @@ class GetAgentProfileResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -97,25 +103,53 @@ class GetAgentProfileResponseBodyData(DaraModel):
         update_time: str = None,
         variables_json: str = None,
     ):
+        # The ID of the agent configuration.
         self.agent_profile_id = agent_profile_id
+        # The ID of the agent configuration template.
         self.agent_profile_template_id = agent_profile_template_id
-        # agent type
+        # The agent type.
         self.agent_type = agent_type
+        # The API plugin configuration.
         self.api_plugin_json = api_plugin_json
+        # The time when the configuration was created.
         self.create_time = create_time
+        # The description.
         self.description = description
+        # The instance ID.
         self.instance_id = instance_id
+        # The instruction configuration.
         self.instruction_json = instruction_json
+        # The description of the labels.
         self.labels_json = labels_json
+        # The model ID.
         self.model = model
+        # The model configuration.
         self.model_config = model_config
+        # The Natural Language Understanding (NLU) configuration. The parameters are described as follows:
+        # 
+        # - chatbotInstanceId: The instance ID of the ChatMe LLM agent.
+        # 
+        # - faqCategoryIds: The IDs of the attached FAQ categories.
+        # 
+        # - llmAgentId: The ID of the ChatMe LLM workspace.
+        # 
+        # - llmAgentKey: The key of the ChatMe LLM workspace.
+        # 
+        # - llmAgentInstanceId: The instance ID of the ChatMe LLM workspace.
         self.nlu_config_json = nlu_config_json
+        # The prompt for the professional pattern.
         self.prompt = prompt
+        # The agent configuration.
         self.prompt_json = prompt_json
+        # The scenario.
         self.scenario = scenario
+        # The scenario ID.
         self.script_id = script_id
+        # Indicates whether the template is a system template.
         self.system = system
+        # The time when the configuration was last modified.
         self.update_time = update_time
+        # The variable configuration.
         self.variables_json = variables_json
 
     def validate(self):

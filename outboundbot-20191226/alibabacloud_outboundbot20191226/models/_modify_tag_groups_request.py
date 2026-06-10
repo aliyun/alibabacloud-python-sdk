@@ -12,12 +12,20 @@ class ModifyTagGroupsRequest(DaraModel):
         tag_groups: str = None,
         tags: str = None,
     ):
+        # The ID of the instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The script ID.
+        # 
         # This parameter is required.
         self.script_id = script_id
+        # The tag groups to modify.
+        # 
         # This parameter is required.
         self.tag_groups = tag_groups
+        # The list of tags.
+        # 
         # This parameter is required.
         self.tags = tags
 

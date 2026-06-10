@@ -20,14 +20,23 @@ class ListScriptRecordingResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # API status
         self.code = code
+        # HTTP status code
         self.http_status_code = http_status_code
+        # API message
         self.message = message
+        # Page number
         self.page_number = page_number
+        # Number of entries per page
         self.page_size = page_size
+        # Request ID
         self.request_id = request_id
+        # Recording list
         self.script_recordings = script_recordings
+        # Success
         self.success = success
+        # Total count
         self.total_count = total_count
 
     def validate(self):
@@ -124,19 +133,33 @@ class ListScriptRecordingResponseBodyScriptRecordings(DaraModel):
         storage_uuid: str = None,
         uuid: str = None,
     ):
+        # Creation time.
         self.gmt_create = gmt_create
+        # Update time
         self.gmt_modified = gmt_modified
+        # Recording upload time
         self.gmt_upload = gmt_upload
+        # The ID of the recording file within the instance
         self.inner_id = inner_id
+        # Instance ID
         self.instance_id = instance_id
+        # Recording content
         self.recording_content = recording_content
+        # Recording duration, in seconds.
         self.recording_duration = recording_duration
+        # Recording name
         self.recording_name = recording_name
+        # The unique ID of the recording.
         self.ref_id = ref_id
+        # Scenario ID of the recording
         self.script_id = script_id
+        # Recording status
         self.state = state
+        # State extension
         self.state_extend = state_extend
+        # Storage UUID
         self.storage_uuid = storage_uuid
+        # Unique ID of the recording
         self.uuid = uuid
 
     def validate(self):

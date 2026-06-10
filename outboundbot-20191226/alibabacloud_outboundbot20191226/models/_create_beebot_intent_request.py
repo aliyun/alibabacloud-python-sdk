@@ -12,10 +12,16 @@ class CreateBeebotIntentRequest(DaraModel):
         intent_definition: main_models.CreateBeebotIntentRequestIntentDefinition = None,
         script_id: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The description of the intent.
+        # 
         # This parameter is required.
         self.intent_definition = intent_definition
+        # The scenario ID.
+        # 
         # This parameter is required.
         self.script_id = script_id
 
@@ -59,7 +65,12 @@ class CreateBeebotIntentRequestIntentDefinition(DaraModel):
         alias_name: str = None,
         intent_name: str = None,
     ):
+        # The intent alias.
         self.alias_name = alias_name
+        # The intent name.
+        # 
+        # > This is the intent code. It serves as a unique identifier.
+        # 
         # This parameter is required.
         self.intent_name = intent_name
 

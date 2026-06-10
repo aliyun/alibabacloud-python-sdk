@@ -15,11 +15,17 @@ class ModifyScriptVoiceConfigResponseBody(DaraModel):
         script_voice_config: main_models.ModifyScriptVoiceConfigResponseBodyScriptVoiceConfig = None,
         success: bool = None,
     ):
+        # The API status code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The API message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The voice configuration for the script.
         self.script_voice_config = script_voice_config
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -85,12 +91,19 @@ class ModifyScriptVoiceConfigResponseBodyScriptVoiceConfig(DaraModel):
         source: str = None,
         type: str = None,
     ):
+        # The instance ID.
         self.instance_id = instance_id
+        # The text that corresponds to the audio.
         self.script_content = script_content
+        # The script ID.
         self.script_id = script_id
+        # The script voice configuration ID.
         self.script_voice_config_id = script_voice_config_id
+        # Maps script segments to audio recordings.
         self.script_waveform_relation = script_waveform_relation
+        # The script source.
         self.source = source
+        # The audio source type.
         self.type = type
 
     def validate(self):

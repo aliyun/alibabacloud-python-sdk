@@ -12,12 +12,20 @@ class ListScriptVoiceConfigsRequest(DaraModel):
         page_size: int = None,
         script_id: str = None,
     ):
+        # The ID of the instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The page number of the page to return.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # The number of entries to return on each page.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # The ID of the script.
+        # 
         # This parameter is required.
         self.script_id = script_id
 

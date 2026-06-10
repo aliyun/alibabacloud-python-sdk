@@ -17,11 +17,17 @@ class GetTaskByUuidResponseBody(DaraModel):
         success: bool = None,
         task: main_models.GetTaskByUuidResponseBodyTask = None,
     ):
+        # API status code
         self.code = code
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Response message
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Indicates whether the request succeeded
         self.success = success
+        # Task information
         self.task = task
 
     def validate(self):
@@ -92,17 +98,55 @@ class GetTaskByUuidResponseBodyTask(DaraModel):
         job_id: str = None,
         planned_time: int = None,
     ):
+        # Actual execution time
         self.actual_time = actual_time
+        # Call ID
         self.call_id = call_id
+        # Callee number
         self.called_number = called_number
+        # Caller number
         self.calling_number = calling_number
+        # List of conversations
         self.conversations = conversations
+        # Reason the task ended
+        # 
+        # - FINISHED: Task completed normally
+        # 
+        # - CHATBOT_HANGUP_AFTER_NOANSWER: Bot hung up after no answer
+        # 
+        # - CHATBOT_HANGUP_AFTER_SILENCE: Bot hung up after silence timeout
+        # 
+        # - CLIENT_HANGUP_AFTER_NOANSWER: Client hung up after no answer
+        # 
+        # - CLIENT_HANGUP: Client hung up without reason
+        # 
+        # - TRANSFER_BY_INTENT: Transferred to agent after intent match
+        # 
+        # - TRANSFER_AFTER_NOANSWER: Transferred to agent after no answer
+        # 
+        # - INO_INTERACTION: No interaction from client
+        # 
+        # - ERROR: System error interrupted the task
+        # 
+        # - SPECIAL_INTERCEPT_VOICE_ASSISTANT: Intercepted due to voice assistant
+        # 
+        # - SPECIAL_INTERCEPT_EXTENSION_NUMBER_TRANSFER: Intercepted due to extension number transfer
+        # 
+        # >Notice: 
+        # 
+        # This parameter is a string that returns an enumeration value such as FINISHED.
         self.end_reason = end_reason
+        # End time
         self.end_time = end_time
+        # Task ID
         self.id = id
+        # Instance ID
         self.instance_id = instance_id
+        # Job group ID
         self.job_group_id = job_group_id
+        # Job ID
         self.job_id = job_id
+        # Planned execution time (deprecated)
         self.planned_time = planned_time
 
     def validate(self):
@@ -208,10 +252,43 @@ class GetTaskByUuidResponseBodyTaskConversations(DaraModel):
         speaker: str = None,
         timestamp: int = None,
     ):
+        # Action type
+        # 
+        # - Dialogue: Dialogue
+        # 
+        # - AbortDialogue: Abort a dialogue
+        # 
+        # - SilenceTimeout: Silence timeout
+        # 
+        # - CollectedNumber: Collected number
+        # 
+        # - EndDialogue: End a dialogue
+        # 
+        # - Broadcast: Greeting message
+        # 
+        # - HangUp: Hang up
+        # 
+        # - Authorize: Authorization
+        # 
+        # - TransferToAgent: Transfer to an agent
+        # 
+        # - TransferToIVR: Transfer to an IVR system
+        # 
+        # - RedirectToPage: Redirect to a page
+        # 
+        # - CollectNumber: Collect a number
+        # 
+        # - WaitOnAsyncTask: Wait for an asynchronous task
+        # 
+        # - Error: Error
         self.action = action
+        # Conversation text.
         self.script = script
+        # Session ID
         self.sequence_id = sequence_id
+        # Who spoke in the conversation. Valid values: Robot or Contact.
         self.speaker = speaker
+        # Timestamp when the summary was created.
         self.timestamp = timestamp
 
     def validate(self):

@@ -11,9 +11,22 @@ class ImportScriptRequest(DaraModel):
         nlu_engine: str = None,
         signature_url: str = None,
     ):
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # NLU engine. Applies only to Large Language Model (LLM) scenarios.
+        # 
+        # Valid values:
+        # 
+        # - Prompts: LLM scenario.
+        # 
+        # - Empty: Non-LLM scenario.
         self.nlu_engine = nlu_engine
+        # URL of the scenario JSON file to import.
+        # 
+        # > This value is the Folder parameter returned by the GetJobDataUploadParams operation.
+        # 
         # This parameter is required.
         self.signature_url = signature_url
 

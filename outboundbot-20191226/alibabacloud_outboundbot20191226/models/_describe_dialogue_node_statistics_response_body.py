@@ -21,15 +21,25 @@ class DescribeDialogueNodeStatisticsResponseBody(DaraModel):
         success: bool = None,
         total_completed: int = None,
     ):
+        # API status code
         self.code = code
+        # Task group ID
         self.group_id = group_id
+        # Hang-up nodes
         self.hang_up_dialogue_nodes = hang_up_dialogue_nodes
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Instance ID
         self.instance_id = instance_id
+        # API message
         self.message = message
+        # No-answer nodes
         self.no_answer_dialogue_nodes = no_answer_dialogue_nodes
+        # Request ID
         self.request_id = request_id
+        # Indicates success
         self.success = success
+        # Number of completed tasks in the task group
         self.total_completed = total_completed
 
     def validate(self):
@@ -135,14 +145,21 @@ class DescribeDialogueNodeStatisticsResponseBodyNoAnswerDialogueNodes(DaraModel)
         node_id: str = None,
         node_name: str = None,
     ):
+        # Task group ID
         self.group_id = group_id
+        # Number of hang-ups
         self.hang_up_num = hang_up_num
+        # Number of hits
         self.hit_num = hit_num
-        # id
+        # ID, unique identifier
         self.id = id
+        # Instance ID
         self.instance_id = instance_id
+        # Number of no-answers
         self.no_answer_num = no_answer_num
+        # Node ID
         self.node_id = node_id
+        # Node name
         self.node_name = node_name
 
     def validate(self):
@@ -215,9 +232,13 @@ class DescribeDialogueNodeStatisticsResponseBodyHangUpDialogueNodes(DaraModel):
         node_name: str = None,
         rate_display: str = None,
     ):
+        # Number of hang-ups
         self.hang_up_num = hang_up_num
+        # Node ID
         self.node_id = node_id
+        # Node name
         self.node_name = node_name
+        # Proportion of quantity
         self.rate_display = rate_display
 
     def validate(self):

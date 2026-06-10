@@ -11,10 +11,15 @@ class DescribeJobRequest(DaraModel):
         job_id: str = None,
         with_script: bool = None,
     ):
+        # The ID of the instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The ID of the job.
+        # 
         # This parameter is required.
         self.job_id = job_id
+        # Specifies whether to return the script.
         self.with_script = with_script
 
     def validate(self):

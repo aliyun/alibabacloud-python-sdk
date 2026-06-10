@@ -15,18 +15,32 @@ class ModifyGlobalQuestionRequest(DaraModel):
         questions: str = None,
         script_id: str = None,
     ):
+        # A JSON string containing an array of answers.
+        # 
         # This parameter is required.
         self.answers = answers
+        # The unique ID of the global question.
+        # 
         # This parameter is required.
         self.global_question_id = global_question_id
+        # The global question name.
+        # 
         # This parameter is required.
         self.global_question_name = global_question_name
+        # The global question type.
+        # 
         # This parameter is required.
         self.global_question_type = global_question_type
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # A JSON string containing an array of questions.
+        # 
         # This parameter is required.
         self.questions = questions
+        # The script ID.
+        # 
         # This parameter is required.
         self.script_id = script_id
 

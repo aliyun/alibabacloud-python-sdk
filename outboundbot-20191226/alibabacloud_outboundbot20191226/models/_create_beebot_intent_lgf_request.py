@@ -12,10 +12,16 @@ class CreateBeebotIntentLgfRequest(DaraModel):
         lgf_definition: main_models.CreateBeebotIntentLgfRequestLgfDefinition = None,
         script_id: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The LGF definition.
+        # 
         # This parameter is required.
         self.lgf_definition = lgf_definition
+        # The scenario ID.
+        # 
         # This parameter is required.
         self.script_id = script_id
 
@@ -59,8 +65,12 @@ class CreateBeebotIntentLgfRequestLgfDefinition(DaraModel):
         intent_id: int = None,
         rule_text: str = None,
     ):
+        # The intent ID.
+        # 
         # This parameter is required.
         self.intent_id = intent_id
+        # Intent configuration
+        # 
         # This parameter is required.
         self.rule_text = rule_text
 

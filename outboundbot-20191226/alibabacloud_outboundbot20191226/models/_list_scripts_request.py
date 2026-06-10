@@ -13,13 +13,29 @@ class ListScriptsRequest(DaraModel):
         page_size: int = None,
         script_name: str = None,
     ):
+        # The ID of the instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The NLU engine.
+        # 
+        # - Leave this parameter empty to query scripts that use small models.
+        # 
+        # - Set this parameter to `Prompts` to query scripts that use the text completion mode of a large model.
+        # 
+        # - Set this parameter to `SSE_FUNCTION` to query scripts that use the function calling mode of a large model.
+        # 
+        # - Set this parameter to `BeeBot` to query scripts that use the workflow configuration mode of a large model.
         self.nlu_engine = nlu_engine
+        # The page number.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # The number of entries per page.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # The name of the script.
         self.script_name = script_name
 
     def validate(self):

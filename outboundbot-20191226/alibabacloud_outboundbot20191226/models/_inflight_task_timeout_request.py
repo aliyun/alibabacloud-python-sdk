@@ -11,9 +11,14 @@ class InflightTaskTimeoutRequest(DaraModel):
         instance_owner_id: int = None,
         task_id: str = None,
     ):
+        # Instance ID
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Alibaba Cloud account ID of the instance owner
         self.instance_owner_id = instance_owner_id
+        # Task ID
+        # 
         # This parameter is required.
         self.task_id = task_id
 

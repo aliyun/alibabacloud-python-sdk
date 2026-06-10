@@ -12,12 +12,20 @@ class CreateTagRequest(DaraModel):
         tag_group: str = None,
         tag_name: str = None,
     ):
+        # The ID of the instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The ID of the script.
+        # 
         # This parameter is required.
         self.script_id = script_id
+        # The tag group name.
+        # 
         # This parameter is required.
         self.tag_group = tag_group
+        # The tag name.
+        # 
         # This parameter is required.
         self.tag_name = tag_name
 

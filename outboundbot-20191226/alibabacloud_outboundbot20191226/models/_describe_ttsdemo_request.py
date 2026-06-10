@@ -21,20 +21,67 @@ class DescribeTTSDemoRequest(DaraModel):
         voice: str = None,
         volume: int = None,
     ):
+        # The AccessKey (AK) for this namespace.
+        # 
+        # > Enter the AK when the engine is xunfei.
         self.access_key = access_key
+        # Alibaba Cloud custom voice ID
         self.ali_customized_voice = ali_customized_voice
+        # Speech service type
+        # 
+        # - When using **ali** as a custom service, enter the appKey of your Intelligent Speech Interaction project.
+        # 
+        # - When using **xunfei** as a custom service, enter its appKey.
         self.app_key = app_key
+        # Storage engine. Choose from ali, volc, or xunfei.
+        # 
+        # - Enter **ali** when using the default service or Alibaba Cloud as a custom service.
+        # 
+        # - Enter **volc** when using the doubao service.
+        # 
+        # - Enter **xunfei** when using iFLYTEK as a service provider. This option is only available for small-model scenarios.
         self.engine = engine
+        # Instance ID
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Service type
+        # Managed: The default Intelligent Speech Interaction service for Intelligent Outbound Calling (public service).
+        # Authorized: An Intelligent Speech Interaction service you purchased on Alibaba Cloud public cloud (your private service). You can grant authorization by going to Scenario Management > Edit > Call Service > Custom Service.
+        # 
+        # > Set this parameter to Authorized when using Alibaba Cloud\\"s Intelligent Speech Interaction as your custom service provider.
         self.nls_service_type = nls_service_type
+        # Pitch. An integer between -500 and 500. Default is 0.
+        # 
+        # A value greater than 0 raises pitch.
+        # 
+        # A value less than 0 lowers pitch.
         self.pitch_rate = pitch_rate
+        # Scenario ID
         self.script_id = script_id
+        # The AccessKey secret (SK) for this namespace.
+        # 
+        # > Enter the SK when the engine is xunfei.
         self.secret_key = secret_key
+        # Speech rate. An integer between -500 and 500. Default is 0.
+        # 
+        # A value greater than 0 increases speech speed.
+        # 
+        # A value less than 0 decreases speech speed.
         self.speech_rate = speech_rate
+        # Text to convert to speech
+        # 
         # This parameter is required.
         self.text = text
+        # Voice ID. Examples include aixia, siyue, and xiaoyun. For the full list of available voices, see the voice list below.
+        # 
+        # > Cloned voices use dynamic Voice IDs that are generated during voice cloning. Therefore, specific Voice IDs for cloned voices are not listed here. To get a cloned voice’s Voice ID, call ListVoiceClone from the voice cloning page.
         self.voice = voice
+        # Volume. An integer between 0 and 100. Default is 50.
+        # 
+        # A value greater than 50 increases volume.
+        # 
+        # A value less than 50 decreases volume.
         self.volume = volume
 
     def validate(self):

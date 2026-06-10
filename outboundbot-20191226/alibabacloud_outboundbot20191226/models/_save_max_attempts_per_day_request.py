@@ -11,9 +11,15 @@ class SaveMaxAttemptsPerDayRequest(DaraModel):
         max_attempts_per_day: int = None,
         strategy_level: int = None,
     ):
+        # Instance ID
+        # 
         # This parameter is required.
         self.entry_id = entry_id
+        # Daily maximum redial attempts. Default is 3 if not specified.
         self.max_attempts_per_day = max_attempts_per_day
+        # Policy level (required)
+        # 
+        # - 2: Instance
         self.strategy_level = strategy_level
 
     def validate(self):

@@ -17,11 +17,17 @@ class ListIntentionsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # API Status Code
         self.code = code
+        # Returned Data
         self.data = data
+        # HTTP Status Code
         self.http_status_code = http_status_code
+        # API Message
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Is Success
         self.success = success
 
     def validate(self):
@@ -84,9 +90,13 @@ class ListIntentionsResponseBodyData(DaraModel):
         message: str = None,
         success: bool = None,
     ):
+        # Bot ID
         self.bot_id = bot_id
+        # Intent List
         self.intent_list = intent_list
+        # API Message
         self.message = message
+        # Indicates whether the operation was successful.
         self.success = success
 
     def validate(self):
@@ -151,17 +161,41 @@ class ListIntentionsResponseBodyDataIntentList(DaraModel):
         type: int = None,
         user_say: List[main_models.ListIntentionsResponseBodyDataIntentListUserSay] = None,
     ):
+        # Intent Alias
         self.alias = alias
+        # Bot ID (Deprecated)
         self.bot_id = bot_id
+        # Bot Name
         self.bot_name = bot_name
+        # Conversation Flow ID
         self.dialog_id = dialog_id
+        # Intent ID
         self.id = id
+        # Language
+        # 
+        # - English (en-us)
+        # 
+        # - Chinese (zh-cn)
         self.language = language
+        # Intent Name
         self.name = name
+        # LGF Intent Expression
         self.rule_check = rule_check
+        # Intent Slot Information
         self.slot = slot
+        # Table ID
         self.table_id = table_id
+        # Intent Type:
+        # 
+        # - 0: Normal intent;
+        # 
+        # - 1: UNKNOWN;
+        # 
+        # - 2: TableQA intent;
+        # 
+        # - 3: Generated from standard intent
         self.type = type
+        # User Say List
         self.user_say = user_say
 
     def validate(self):
@@ -284,9 +318,14 @@ class ListIntentionsResponseBodyDataIntentListUserSay(DaraModel):
         strict: bool = None,
         user_say_data: List[main_models.ListIntentionsResponseBodyDataIntentListUserSayUserSayData] = None,
     ):
+        # Source ID
+        # >Notice: Invalid content
         self.from_id = from_id
+        # The ID of the user utterance.
         self.id = id
+        # Is Strict Match
         self.strict = strict
+        # User Say List
         self.user_say_data = user_say_data
 
     def validate(self):
@@ -341,7 +380,9 @@ class ListIntentionsResponseBodyDataIntentListUserSayUserSayData(DaraModel):
         slot_id: str = None,
         text: str = None,
     ):
+        # Slot Unique Identifier
         self.slot_id = slot_id
+        # Expression
         self.text = text
 
     def validate(self):
@@ -386,17 +427,41 @@ class ListIntentionsResponseBodyDataIntentListSlot(DaraModel):
         tags: List[main_models.ListIntentionsResponseBodyDataIntentListSlotTags] = None,
         value: str = None,
     ):
+        # The follow-up question function.
+        # >Notice: This parameter is invalid.
         self.feedback_functions = feedback_functions
+        # Feedback Type
+        # >Notice: Invalid content
         self.feedback_type = feedback_type
+        # Slot Unique Identifier
         self.id = id
+        # Is Array:
+        # 
+        # - true: Yes
+        # 
+        # - false: No
         self.is_array = is_array
+        # Is Encrypted
+        # >Notice: Invalid content
         self.is_encrypt = is_encrypt
+        # Is Interactive
+        # >Notice: Invalid content
         self.is_interactive = is_interactive
+        # Is Required Slot:
+        # 
+        # - true: Yes
+        # 
+        # - false: No
         self.is_necessary = is_necessary
+        # Slot Lifecycle
         self.life_span = life_span
+        # Slot Name
         self.name = name
+        # Slot Follow-up Question
         self.question = question
+        # Slot Tagging Labels
         self.tags = tags
+        # Slot Tagging Result
         self.value = value
 
     def validate(self):
@@ -508,7 +573,9 @@ class ListIntentionsResponseBodyDataIntentListSlotTags(DaraModel):
         user_say_id: str = None,
         value: str = None,
     ):
+        # User Say Unique Identifier for the Label
         self.user_say_id = user_say_id
+        # The value of the tag is the result of tagging an intent expression.
         self.value = value
 
     def validate(self):
@@ -551,15 +618,29 @@ class ListIntentionsResponseBodyDataIntentListSlotFeedbackFunctions(DaraModel):
         switch: List[main_models.ListIntentionsResponseBodyDataIntentListSlotFeedbackFunctionsSwitch] = None,
         type: str = None,
     ):
+        # Alibaba Cloud Function Name
         self.aliyun_function = aliyun_function
+        # Alibaba Cloud Service
         self.aliyun_service = aliyun_service
+        # API Status Code
         self.code = code
+        # Follow-up Question Description
         self.description = description
+        # Endpoint
         self.end_point = end_point
+        # Follow-up Question Function
         self.function = function
+        # Function Name
         self.name = name
+        # Parameters
         self.params = params
+        # Feature Switch. Values:
+        # 
+        # - **on**: Enabled
+        # 
+        # - **off**: Disabled
         self.switch = switch
+        # Follow-up Question Type
         self.type = type
 
     def validate(self):
@@ -653,10 +734,15 @@ class ListIntentionsResponseBodyDataIntentListSlotFeedbackFunctionsSwitch(DaraMo
         type: str = None,
         value: str = None,
     ):
+        # Condition ID
         self.id = id
+        # Follow-up Question Label
         self.label = label
+        # Condition Name
         self.name = name
+        # Type
         self.type = type
+        # Condition Value
         self.value = value
 
     def validate(self):
@@ -711,9 +797,13 @@ class ListIntentionsResponseBodyDataIntentListRuleCheck(DaraModel):
         text: str = None,
         warning: List[str] = None,
     ):
+        # Error Message
         self.error = error
+        # Is Strict Match
         self.strict = strict
+        # Expression Value
         self.text = text
+        # Warning Message
         self.warning = warning
 
     def validate(self):

@@ -21,15 +21,25 @@ class ListBeebotIntentUserSayResponseBody(DaraModel):
         total_count: int = None,
         user_says: List[main_models.ListBeebotIntentUserSayResponseBodyUserSays] = None,
     ):
+        # The internal request ID.
         self.beebot_request_id = beebot_request_id
+        # The status code of the API.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The message returned for the API call.
         self.message = message
+        # The page number.
         self.page_number = page_number
+        # The number of entries displayed per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
+        # The total number of entries.
         self.total_count = total_count
+        # The list of user utterances.
         self.user_says = user_says
 
     def validate(self):
@@ -123,10 +133,15 @@ class ListBeebotIntentUserSayResponseBodyUserSays(DaraModel):
         modify_time: str = None,
         user_say_id: str = None,
     ):
+        # The content of the utterance.
         self.content = content
+        # The time when the utterance was created.
         self.create_time = create_time
+        # The intent ID.
         self.intent_id = intent_id
+        # The time when the utterance was last modified.
         self.modify_time = modify_time
+        # The utterance ID.
         self.user_say_id = user_say_id
 
     def validate(self):

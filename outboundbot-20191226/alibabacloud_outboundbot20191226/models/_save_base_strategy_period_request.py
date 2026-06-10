@@ -16,12 +16,21 @@ class SaveBaseStrategyPeriodRequest(DaraModel):
         working_time: List[str] = None,
         working_time_frames_json: str = None,
     ):
+        # Instance ID
+        # 
         # This parameter is required.
         self.entry_id = entry_id
+        # Make outbound calls only on weekdays. Defaults to false.
         self.only_weekdays = only_weekdays
+        # Make outbound calls only on non-holiday days. Defaults to false.
         self.only_workdays = only_workdays
+        # Policy level (required)
+        # 
+        # - 2: Instance
         self.strategy_level = strategy_level
+        # Running time (deprecated)
         self.working_time = working_time
+        # Running time
         self.working_time_frames_json = working_time_frames_json
 
     def validate(self):

@@ -18,12 +18,19 @@ class GetRealtimeConcurrencyReportResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # API status code
         self.code = code
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Response message
         self.message = message
+        # Report generation time
         self.report_date = report_date
+        # Report details.
         self.reports = reports
+        # Request ID
         self.request_id = request_id
+        # Is successful
         self.success = success
 
     def validate(self):
@@ -92,9 +99,13 @@ class GetRealtimeConcurrencyReportResponseBodyReports(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # Report collection data
         self.list = list
+        # Page number
         self.page_number = page_number
+        # Page size
         self.page_size = page_size
+        # Total count
         self.total_count = total_count
 
     def validate(self):
@@ -155,13 +166,21 @@ class GetRealtimeConcurrencyReportResponseBodyReportsList(DaraModel):
         occupied_concurrency_count: int = None,
         report_date: int = None,
     ):
+        # Instance ID
         self.instance_id = instance_id
+        # Instance name
         self.instance_name = instance_name
+        # Job ID
         self.job_group_id = job_group_id
+        # Job name.
         self.job_group_name = job_group_name
+        # Maximum configured concurrency limit
         self.max_concurrency_limit = max_concurrency_limit
+        # Minimum concurrency limit for the job
         self.min_concurrency_limit = min_concurrency_limit
+        # Occupied concurrency value
         self.occupied_concurrency_count = occupied_concurrency_count
+        # Report generation time
         self.report_date = report_date
 
     def validate(self):

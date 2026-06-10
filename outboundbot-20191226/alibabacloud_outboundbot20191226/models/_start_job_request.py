@@ -16,13 +16,39 @@ class StartJobRequest(DaraModel):
         scenario_id: str = None,
         script_id: str = None,
     ):
+        # List of caller numbers
         self.calling_number = calling_number
+        # Instance ID
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Task group ID
         self.job_group_id = job_group_id
+        # Job data, which includes the following fields:
+        # 
+        # extras // Optional extra information
+        # 
+        # - key // Key for a custom variable
+        # 
+        # - value // Value for a custom variable
+        # 
+        # contacts // Required contact information for the callee
+        # 
+        # - phoneNumber // Required phone number of the callee
+        # 
+        # - referenceId // Required contact ID (user-defined) to avoid duplicate names
+        # 
+        # - role // Optional role of this contact in the outbound call scenario. If omitted, no role distinction is made
+        # 
+        # - honorific // Optional honorific for the contact
+        # 
+        # - name // Optional name of the contact
+        # 
         # This parameter is required.
         self.job_json = job_json
+        # Scenario ID. This field supports backward compatibility with legacy outbound calling features. You can omit it.
         self.scenario_id = scenario_id
+        # Scenario ID (required)
         self.script_id = script_id
 
     def validate(self):

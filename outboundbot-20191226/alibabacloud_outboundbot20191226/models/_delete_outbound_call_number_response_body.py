@@ -13,10 +13,19 @@ class DeleteOutboundCallNumberResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # API status code
         self.code = code
+        # HTTP status code
         self.http_status_code = http_status_code
+        # API message
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Indicates whether the request succeeded:
+        # 
+        # - true: succeeded.
+        # 
+        # - false: failed.
         self.success = success
 
     def validate(self):

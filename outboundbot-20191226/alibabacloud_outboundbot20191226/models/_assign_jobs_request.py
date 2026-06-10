@@ -18,15 +18,61 @@ class AssignJobsRequest(DaraModel):
         roster_type: str = None,
         strategy_json: str = None,
     ):
+        # These numbers are displayed as the caller ID to the contact.
+        # 
+        # > If unspecified, all available calling numbers are used.
         self.calling_number = calling_number
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Specifies whether the task is asynchronous.
+        # 
+        # You can omit this parameter if you create jobs by calling this API. The default value is `false`.
         self.is_asynchrony = is_asynchrony
+        # The ID of the data parsing task for the outbound call job.
+        # 
+        # You can omit this parameter if you create jobs by calling this API.
+        # 
+        # > If you create jobs by uploading a file, you must call the `CreateJobDataParsingTask` operation to obtain a value for this parameter.
         self.job_data_parsing_task_id = job_data_parsing_task_id
+        # The job group ID.
+        # 
         # This parameter is required.
         self.job_group_id = job_group_id
+        # >Notice: 
+        # 
+        # This parameter is required.
+        # 
+        # 
+        # 
+        # The job data, a JSON array where each object represents a contact. For formatting details, see the example.
+        # 
+        # The array can contain up to 99 elements.
         self.jobs_json = jobs_json
+        # The roster type.
+        # 
+        # If you create jobs by calling this API, you can omit this parameter. The default value is `json`. If you upload a contact list file, set this parameter to `excel`.
         self.roster_type = roster_type
+        # The execution strategy for the job group.
+        # 
+        # - `repeatBy`: The recurrence type. Valid values: `Once` (runs once), `Day` (repeats daily), `Week` (repeats weekly), and `Month` (repeats monthly).
+        # 
+        # - `startTime`: The start time of the strategy.
+        # 
+        # - `endTime`: The end time of the strategy.
+        # 
+        # - `workingTime`: The time windows during which calls can be made.
+        # 
+        # - `maxAttemptsPerDay`: The maximum daily call attempts per phone number.
+        # 
+        # - `minAttemptInterval`: The minimum interval between call retries, in minutes.
+        # 
+        # - `routingStrategy`: The number routing strategy. Valid values: `None` (no preference), `LocalFirst` (prioritizes numbers in the same city), and `LocalProvinceFirst` (prioritizes numbers in the same province).
+        # 
+        # - `repeatDays`: The specific days on which the job runs, based on the `repeatBy` type. If `repeatBy` is set to `Week`, `0` represents Sunday, and `1` through `6` represent Monday through Saturday. If `repeatBy` is set to `Month`, values from `1` to `31` represent the days of the month. If a month does not have a specified day (for example, February 30), the job is skipped for that month.
+        # 
+        # - `repeatable`: Specifies whether the job is recurring. Valid values are `true` and `false`.
         self.strategy_json = strategy_json
 
     def validate(self):

@@ -14,11 +14,21 @@ class ImportScriptResponseBody(DaraModel):
         script_id: str = None,
         success: bool = None,
     ):
+        # API status code.
         self.code = code
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # API message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Outbound scenario ID.
         self.script_id = script_id
+        # Indicates whether the call succeeded.
+        # 
+        # - **true**: The call succeeded.
+        # 
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):

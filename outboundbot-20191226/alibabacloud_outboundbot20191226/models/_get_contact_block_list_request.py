@@ -12,10 +12,15 @@ class GetContactBlockListRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # Specifies whether to return the total number of entries.
         self.count_total_row = count_total_row
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The page number. This parameter is required.
         self.page_number = page_number
+        # The number of entries (required)
         self.page_size = page_size
 
     def validate(self):

@@ -15,11 +15,17 @@ class DescribeIntentResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The details of the intent.
         self.intent = intent
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -86,13 +92,21 @@ class DescribeIntentResponseBodyIntent(DaraModel):
         update_time: int = None,
         utterances: str = None,
     ):
+        # The time when the intent was created.
         self.create_time = create_time
+        # The description of the intent.
         self.intent_description = intent_description
+        # The ID of the intent.
         self.intent_id = intent_id
+        # The name of the intent.
         self.intent_name = intent_name
+        # The keywords for the intent. You can use these keywords to filter intents during list operations.
         self.keywords = keywords
+        # The ID of the script.
         self.script_id = script_id
+        # The time when the intent was last updated.
         self.update_time = update_time
+        # A list of utterances that trigger the intent.
         self.utterances = utterances
 
     def validate(self):

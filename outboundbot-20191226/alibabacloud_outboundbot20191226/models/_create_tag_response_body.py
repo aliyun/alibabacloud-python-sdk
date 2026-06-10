@@ -14,11 +14,17 @@ class CreateTagResponseBody(DaraModel):
         success: bool = None,
         tag_id: str = None,
     ):
+        # The status code returned for the request.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The message returned for the request.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
+        # The tag ID.
         self.tag_id = tag_id
 
     def validate(self):

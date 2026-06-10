@@ -15,12 +15,19 @@ class ModifyDialogueFlowResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # The JSON string that defines the dialogue flow.
         self.dialogue_flow_definition = dialogue_flow_definition
+        # The dialogue flow ID.
         self.dialogue_flow_id = dialogue_flow_id
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

@@ -13,8 +13,12 @@ class SuspendCallRequest(DaraModel):
         group_id: str = None,
         instance_id: str = None,
     ):
+        # The list of called numbers.
         self.called_numbers = called_numbers
+        # The task group ID. This parameter is required.
         self.group_id = group_id
+        # The instance ID. This parameter is required.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 

@@ -11,10 +11,16 @@ class CreateBeebotIntentUserSayShrinkRequest(DaraModel):
         script_id: str = None,
         user_say_definition_shrink: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The scenario ID.
+        # 
         # This parameter is required.
         self.script_id = script_id
+        # The definition of the user utterance.
+        # 
         # This parameter is required.
         self.user_say_definition_shrink = user_say_definition_shrink
 

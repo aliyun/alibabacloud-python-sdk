@@ -11,10 +11,22 @@ class ListFlashSmsTemplatesRequest(DaraModel):
         instance_id: str = None,
         provider_id: str = None,
     ):
+        # The ID of the flash SMS configuration.
+        # 
         # This parameter is required.
         self.config_id = config_id
+        # The ID of the instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The ID of the flash SMS provider.
+        # 
+        # - Uincall: Beijing Uincall Communication Co., Ltd.
+        # 
+        # - ShangHaiTianNan: Shanghai Tiannan
+        # 
+        # - HeDao: Galacos
+        # 
         # This parameter is required.
         self.provider_id = provider_id
 

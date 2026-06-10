@@ -17,11 +17,17 @@ class ListScriptVoiceConfigsResponseBody(DaraModel):
         script_voice_configs: main_models.ListScriptVoiceConfigsResponseBodyScriptVoiceConfigs = None,
         success: bool = None,
     ):
+        # The API status code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The paginated list of script voice configurations.
         self.script_voice_configs = script_voice_configs
+        # Indicates whether the request succeeded.
         self.success = success
 
     def validate(self):
@@ -84,9 +90,13 @@ class ListScriptVoiceConfigsResponseBodyScriptVoiceConfigs(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # An array of script voice configuration objects.
         self.list = list
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -146,12 +156,19 @@ class ListScriptVoiceConfigsResponseBodyScriptVoiceConfigsList(DaraModel):
         source: str = None,
         type: str = None,
     ):
+        # The instance ID.
         self.instance_id = instance_id
+        # The text content of the script.
         self.script_content = script_content
+        # The script ID.
         self.script_id = script_id
+        # The ID of the voice configuration.
         self.script_voice_config_id = script_voice_config_id
+        # The relationship between the script and the audio file.
         self.script_waveform_relation = script_waveform_relation
+        # The source of the script.
         self.source = source
+        # The voice type.
         self.type = type
 
     def validate(self):

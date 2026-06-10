@@ -17,11 +17,17 @@ class ListJobsByGroupResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Response code
         self.code = code
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Job array
         self.jobs = jobs
+        # API message
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Indicates whether the call succeeded
         self.success = success
 
     def validate(self):
@@ -84,9 +90,13 @@ class ListJobsByGroupResponseBodyJobs(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # Job list
         self.list = list
+        # Page number
         self.page_number = page_number
+        # Page size
         self.page_size = page_size
+        # Total count
         self.total_count = total_count
 
     def validate(self):
@@ -152,18 +162,79 @@ class ListJobsByGroupResponseBodyJobsList(DaraModel):
         summary: List[main_models.ListJobsByGroupResponseBodyJobsListSummary] = None,
         system_priority: int = None,
     ):
+        # Caller number list
         self.calling_numbers = calling_numbers
+        # Contact list
         self.contacts = contacts
+        # Business data
+        # 
+        # > TenantId and ServiceId are system-generated. All other parameters are custom.
         self.extras = extras
+        # The failure reason.
+        # 
+        # - Unknown: An unknown error occurred.
+        # 
+        # - NoAnswer: The call was not answered.
+        # 
+        # - InvalidStrategy: The policy is invalid or incorrectly configured.
+        # 
+        # - TimeUp: The task timed out during scheduling.
+        # 
+        # - NoStrategy: The policy is empty or was not found.
+        # 
+        # - CallFailed: The call failed.
+        # 
+        # - PerDayCallCountLimit: The daily call limit for the phone number was reached.
+        # 
+        # - ContactBlockList: The phone number is on the blocklist.
+        # 
+        # - EmptyNumber: The phone number is nonexistent.
+        # 
+        # - JobPerDayCallCountLimit: The daily call limit for the phone number within the job was reached.
+        # 
+        # - VerificationCancelled: The call was canceled because it failed pre-call validation.
+        # 
+        # - ContactSuspended: Calling to the contact is suspended.
+        # 
+        # - InArrears: The account has an overdue payment.
+        # 
+        # - OutOfService: The phone number is out of service.
+        # 
+        # - NoneRepeatableJobMaxAttemptCountLimit: The non-repeatable job reached the maximum number of attempts.
         self.failure_reason = failure_reason
+        # Job ID
         self.job_group_id = job_group_id
+        # Job ID
         self.job_id = job_id
+        # Priority
         self.priority = priority
+        # Third-party system ID
         self.reference_id = reference_id
+        # Scenario ID (legacy parameter)
         self.scenario_id = scenario_id
+        # Job status
+        # 
+        # - Scheduling (0)
+        # 
+        # - Executing (1)
+        # 
+        # - Succeeded (2)
+        # 
+        # - Paused (3)
+        # 
+        # - Failed (4)
+        # 
+        # - Cancelled (5)
+        # 
+        # - Drafted (6)
         self.status = status
+        # Strategy ID
         self.strategy_id = strategy_id
+        # Conversation summary (deprecated)
+        # 
+        # > Use the DescribeJob API to retrieve this data.
         self.summary = summary
+        # System priority
         self.system_priority = system_priority
 
     def validate(self):
@@ -296,13 +367,21 @@ class ListJobsByGroupResponseBodyJobsListSummary(DaraModel):
         summary_name: str = None,
         task_id: str = None,
     ):
+        # Conversation summary category
         self.category = category
+        # Conversation summary content
         self.content = content
+        # Call record ID
         self.conversation_detail_id = conversation_detail_id
+        # Job group ID
         self.job_group_id = job_group_id
+        # Job ID
         self.job_id = job_id
+        # Summary ID
         self.summary_id = summary_id
+        # Summary name
         self.summary_name = summary_name
+        # Call ID
         self.task_id = task_id
 
     def validate(self):
@@ -373,7 +452,9 @@ class ListJobsByGroupResponseBodyJobsListExtras(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # Business parameter name
         self.key = key
+        # Business parameter value
         self.value = value
 
     def validate(self):
@@ -414,13 +495,21 @@ class ListJobsByGroupResponseBodyJobsListContacts(DaraModel):
         role: str = None,
         state: str = None,
     ):
+        # Contact ID (system-generated)
         self.contact_id = contact_id
+        # Contact name
         self.contact_name = contact_name
+        # Honorific (same as contact name)
         self.honorific = honorific
+        # Job ID (deprecated)
         self.job_id = job_id
+        # Phone number
         self.phone_number = phone_number
+        # Contact third-party system ID (uploaded by customer)
         self.reference_id = reference_id
+        # Deprecated
         self.role = role
+        # Deprecated
         self.state = state
 
     def validate(self):

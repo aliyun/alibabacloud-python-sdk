@@ -13,9 +13,14 @@ class DescribeJobGroupRequest(DaraModel):
         instance_id: str = None,
         job_group_id: str = None,
     ):
+        # Filter condition. This parameter is deprecated.
         self.brief_types = brief_types
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Job group ID.
+        # 
         # This parameter is required.
         self.job_group_id = job_group_id
 

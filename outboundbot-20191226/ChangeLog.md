@@ -1,3 +1,7 @@
+2026-06-10 Version: 2.1.2
+- Update API DownloadRecording: add request parameters SwapChannels.
+
+
 2026-06-03 Version: 2.1.1
 - Generated python 2019-12-26 for OutboundBot.
 

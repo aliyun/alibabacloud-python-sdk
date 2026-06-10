@@ -15,12 +15,19 @@ class ModifyBeebotIntentResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Internal request ID
         self.beebot_request_id = beebot_request_id
+        # API status code
         self.code = code
+        # HTTP return code
         self.http_status_code = http_status_code
+        # Intent ID
         self.intent_id = intent_id
+        # API message
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Is successful
         self.success = success
 
     def validate(self):

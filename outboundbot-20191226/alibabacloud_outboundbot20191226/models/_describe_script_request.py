@@ -10,8 +10,12 @@ class DescribeScriptRequest(DaraModel):
         instance_id: str = None,
         script_id: str = None,
     ):
+        # Instance ID
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Script ID
+        # 
         # This parameter is required.
         self.script_id = script_id
 

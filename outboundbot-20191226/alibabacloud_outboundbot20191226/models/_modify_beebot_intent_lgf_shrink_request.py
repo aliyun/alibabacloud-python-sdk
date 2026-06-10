@@ -12,12 +12,20 @@ class ModifyBeebotIntentLgfShrinkRequest(DaraModel):
         lgf_id: int = None,
         script_id: str = None,
     ):
+        # Instance ID
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Utterance Template Definition
+        # 
         # This parameter is required.
         self.lgf_definition_shrink = lgf_definition_shrink
+        # Utterance Template ID
+        # 
         # This parameter is required.
         self.lgf_id = lgf_id
+        # Scenario ID
+        # 
         # This parameter is required.
         self.script_id = script_id
 

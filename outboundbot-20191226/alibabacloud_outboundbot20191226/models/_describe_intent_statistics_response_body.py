@@ -23,17 +23,29 @@ class DescribeIntentStatisticsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # API status code
         self.code = code
+        # Total count of global intents
         self.global_intent_num = global_intent_num
+        # Global intent array
         self.global_intents = global_intents
+        # Group ID of the instance.
         self.group_id = group_id
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Instance ID
         self.instance_id = instance_id
+        # Rejected intent information list
         self.intents_after_no_answer = intents_after_no_answer
+        # API message
         self.message = message
+        # Total count of flow intents
         self.process_intent_num = process_intent_num
+        # Intent information list
         self.process_intents = process_intents
+        # Request ID
         self.request_id = request_id
+        # Success
         self.success = success
 
     def validate(self):
@@ -160,13 +172,25 @@ class DescribeIntentStatisticsResponseBodyProcessIntents(DaraModel):
         rate_display: str = None,
         type: str = None,
     ):
+        # Task group ID
         self.group_id = group_id
+        # Hit after no acknowledgement
         self.hit_after_no_answer = hit_after_no_answer
+        # Hit count
         self.hit_num = hit_num
+        # Instance ID
         self.instance_id = instance_id
+        # Intent ID
         self.intent_id = intent_id
+        # Intent name
         self.intent_name = intent_name
+        # Percentage
         self.rate_display = rate_display
+        # Type
+        # 
+        # - GlobalIntent(0): Global intent
+        # 
+        # - ProcessIntent(1): Flow intent
         self.type = type
 
     def validate(self):
@@ -240,10 +264,15 @@ class DescribeIntentStatisticsResponseBodyIntentsAfterNoAnswer(DaraModel):
         intent_id: str = None,
         intent_name: str = None,
     ):
+        # Task group ID
         self.group_id = group_id
+        # No acknowledgement is received after a hit.
         self.hit_after_no_answer = hit_after_no_answer
+        # Instance ID
         self.instance_id = instance_id
+        # Intent ID
         self.intent_id = intent_id
+        # Intent name
         self.intent_name = intent_name
 
     def validate(self):
@@ -301,12 +330,23 @@ class DescribeIntentStatisticsResponseBodyGlobalIntents(DaraModel):
         intent_name: str = None,
         type: str = None,
     ):
+        # Task group ID
         self.group_id = group_id
+        # Hit after no acknowledgement
         self.hit_after_no_answer = hit_after_no_answer
+        # Hit count
         self.hit_num = hit_num
+        # Instance ID
         self.instance_id = instance_id
+        # Intent ID
         self.intent_id = intent_id
+        # Intent name
         self.intent_name = intent_name
+        # Type
+        # 
+        # GlobalIntent(0): Global intent
+        # 
+        # ProcessIntent(1): Flow intent
         self.type = type
 
     def validate(self):

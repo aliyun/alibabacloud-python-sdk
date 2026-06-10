@@ -17,11 +17,17 @@ class ListDownloadTasksResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # API status code
         self.code = code
+        # Download task list
         self.download_tasks = download_tasks
+        # HTTP status code
         self.http_status_code = http_status_code
+        # API message
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Success
         self.success = success
 
     def validate(self):
@@ -84,9 +90,13 @@ class ListDownloadTasksResponseBodyDownloadTasks(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # Download task array
         self.list = list
+        # Page number
         self.page_number = page_number
+        # Count
         self.page_size = page_size
+        # Total count
         self.total_count = total_count
 
     def validate(self):
@@ -144,10 +154,27 @@ class ListDownloadTasksResponseBodyDownloadTasksList(DaraModel):
         task_id: str = None,
         title: str = None,
     ):
+        # Download task file list
         self.download_task_files = download_task_files
+        # The expiration time.
         self.expire_time = expire_time
+        # Export status.
+        # 
+        # - Pending: Pending
+        # 
+        # - InProgress: In progress
+        # 
+        # - Finished: Completed
+        # 
+        # - Failed: Failed
+        # 
+        # - Expired: Expired
+        # 
+        # - Cancelled: Canceled
         self.status = status
+        # Task ID
         self.task_id = task_id
+        # Title
         self.title = title
 
     def validate(self):
@@ -210,9 +237,25 @@ class ListDownloadTasksResponseBodyDownloadTasksListDownloadTaskFiles(DaraModel)
         status: str = None,
         title: str = None,
     ):
+        # File ID
         self.file_id = file_id
+        # Completion progress [Deprecated]
         self.progress = progress
+        # File status
+        # 
+        # - Pending: Pending
+        # 
+        # - InProgress: In progress
+        # 
+        # - Finished: Completed
+        # 
+        # - Failed: Failed
+        # 
+        # - Expired: Expired
+        # 
+        # - Cancelled: Canceled
         self.status = status
+        # Title
         self.title = title
 
     def validate(self):

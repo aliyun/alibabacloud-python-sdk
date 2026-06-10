@@ -11,10 +11,18 @@ class DeleteGlobalQuestionRequest(DaraModel):
         instance_id: str = None,
         script_id: str = None,
     ):
+        # The global question ID.
+        # 
+        # > You can call the ListGlobalQuestions operation to obtain the ID.
+        # 
         # This parameter is required.
         self.global_question_id = global_question_id
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The script ID.
+        # 
         # This parameter is required.
         self.script_id = script_id
 

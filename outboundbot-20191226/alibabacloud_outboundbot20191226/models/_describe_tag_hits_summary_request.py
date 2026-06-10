@@ -10,8 +10,12 @@ class DescribeTagHitsSummaryRequest(DaraModel):
         instance_id: str = None,
         job_group_id: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The job group ID.
+        # 
         # This parameter is required.
         self.job_group_id = job_group_id
 

@@ -15,11 +15,17 @@ class ModifyOutboundCallNumberResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # API status code
         self.code = code
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Response message
         self.message = message
+        # Number information
         self.outbound_call_number = outbound_call_number
+        # Request ID
         self.request_id = request_id
+        # Indicates whether the operation succeeded
         self.success = success
 
     def validate(self):
@@ -82,9 +88,13 @@ class ModifyOutboundCallNumberResponseBodyOutboundCallNumber(DaraModel):
         rate_limit_count: str = None,
         rate_limit_period: str = None,
     ):
+        # Outbound call number
         self.number = number
+        # Number ID
         self.outbound_call_number_id = outbound_call_number_id
+        # Rate limiting period
         self.rate_limit_count = rate_limit_count
+        # Rate limiting count
         self.rate_limit_period = rate_limit_period
 
     def validate(self):

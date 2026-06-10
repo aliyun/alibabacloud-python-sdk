@@ -15,11 +15,17 @@ class GetAgentProfileTemplateResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # API status code.
         self.code = code
+        # Returned data.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # API message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the call succeeded.
         self.success = success
 
     def validate(self):
@@ -84,11 +90,17 @@ class GetAgentProfileTemplateResponseBodyData(DaraModel):
         prompt_schema: str = None,
         update_time: str = None,
     ):
+        # ID of the agent profile template.
         self.agent_profile_template_id = agent_profile_template_id
+        # Time when the template was created.
         self.create_time = create_time
+        # Description of the agent profile template.
         self.description = description
+        # Name of the agent profile template.
         self.name = name
+        # Agent profile template configuration.
         self.prompt_schema = prompt_schema
+        # Time when the template was last updated.
         self.update_time = update_time
 
     def validate(self):

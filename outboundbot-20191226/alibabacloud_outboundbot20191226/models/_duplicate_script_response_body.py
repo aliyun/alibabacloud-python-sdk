@@ -14,11 +14,17 @@ class DuplicateScriptResponseBody(DaraModel):
         script_id: str = None,
         success: bool = None,
     ):
+        # The response code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The ID of the new script.
         self.script_id = script_id
+        # Indicates whether the request was successful. A value of true indicates success, while false indicates failure.
         self.success = success
 
     def validate(self):

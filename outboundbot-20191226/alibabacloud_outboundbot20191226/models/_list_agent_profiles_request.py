@@ -11,9 +11,13 @@ class ListAgentProfilesRequest(DaraModel):
         instance_id: str = None,
         script_id: str = None,
     ):
+        # The IP address of the application. This is an optional system field.
         self.app_ip = app_ip
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The scenario ID.
         self.script_id = script_id
 
     def validate(self):

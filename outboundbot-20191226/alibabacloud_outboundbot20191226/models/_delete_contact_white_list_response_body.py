@@ -14,11 +14,17 @@ class DeleteContactWhiteListResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Number of affected rows [Deprecated]
         self.affected_rows = affected_rows
+        # Response code
         self.code = code
+        # HTTP status code
         self.http_status_code = http_status_code
+        # API response message
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Indicates whether the operation succeeded
         self.success = success
 
     def validate(self):

@@ -10,8 +10,11 @@ class GetAgentProfileTemplateRequest(DaraModel):
         agent_profile_template_id: str = None,
         app_ip: str = None,
     ):
+        # ID of the agent profile template.
+        # 
         # This parameter is required.
         self.agent_profile_template_id = agent_profile_template_id
+        # IP address of the application. This is a system field and is optional.
         self.app_ip = app_ip
 
     def validate(self):

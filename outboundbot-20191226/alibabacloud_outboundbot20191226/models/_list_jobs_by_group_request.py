@@ -14,14 +14,24 @@ class ListJobsByGroupRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # Instance ID
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Job failure reason
         self.job_failure_reason = job_failure_reason
+        # Job group ID
+        # 
         # This parameter is required.
         self.job_group_id = job_group_id
+        # Job status
         self.job_status = job_status
+        # Page number
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # Number of entries per page
+        # 
         # This parameter is required.
         self.page_size = page_size
 

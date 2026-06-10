@@ -17,11 +17,17 @@ class DescribeJobGroupResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # API status code.
         self.code = code
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Job information.
         self.job_group = job_group
+        # API message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the operation succeeded.
         self.success = success
 
     def validate(self):
@@ -104,29 +110,54 @@ class DescribeJobGroupResponseBodyJobGroup(DaraModel):
         status: str = None,
         strategy: main_models.DescribeJobGroupResponseBodyJobGroupStrategy = None,
     ):
+        # Caller number list.
         self.calling_numbers = calling_numbers
+        # Creation time.
         self.creation_time = creation_time
+        # Export progress. This field is deprecated.
+        # 
+        # > Get this information from the ListJobGroups API instead.
         self.export_progress = export_progress
+        # Configuration parameters for flash SMS delivery. This is a JSON object that contains third-party flash SMS configuration details.
         self.flash_sms_extras = flash_sms_extras
+        # Job list parsing task ID. This parameter is deprecated.
         self.job_data_parsing_task_id = job_data_parsing_task_id
+        # OSS file key for the uploaded job list. This parameter is deprecated.
         self.job_file_path = job_file_path
+        # Job description.
         self.job_group_description = job_group_description
+        # Job group ID.
         self.job_group_id = job_group_id
+        # Job group name.
         self.job_group_name = job_group_name
+        # Minimum concurrency.
         self.min_concurrency = min_concurrency
+        # Modification time.
         self.modify_time = modify_time
+        # Priority.
         self.priority = priority
+        # Job progress.
         self.progress = progress
+        # Caller number list for redials. These numbers are used only when the first call fails. If not specified, the system uses the main caller number list.
         self.recall_calling_numbers = recall_calling_numbers
+        # Redial strategy.
         self.recall_strategy = recall_strategy
+        # Statistics. This is a legacy parameter and is no longer provided. This field is deprecated.
         self.result = result
+        # Ringing duration.
         self.ringing_duration = ringing_duration
+        # Scenario ID. This is a legacy canvas parameter. For new canvases, this value is the same as ScriptId.
         self.scenario_id = scenario_id
+        # Script scenario ID.
         self.script_id = script_id
+        # Script scenario name.
         self.script_name = script_name
         self.script_nlu_engine = script_nlu_engine
+        # Script scenario version number.
         self.script_version = script_version
+        # Job status.
         self.status = status
+        # Job execution strategy.
         self.strategy = strategy
 
     def validate(self):
@@ -324,21 +355,41 @@ class DescribeJobGroupResponseBodyJobGroupStrategy(DaraModel):
         type: str = None,
         working_time: List[main_models.DescribeJobGroupResponseBodyJobGroupStrategyWorkingTime] = None,
     ):
+        # Custom data for the strategy. This is a legacy parameter and is no longer used.
         self.customized = customized
+        # End time of the scheduling strategy.
         self.end_time = end_time
+        # Action to take after the execution period ends. This is a legacy parameter and is no longer used.
         self.follow_up_strategy = follow_up_strategy
+        # Indicates whether this is a template.
         self.is_template = is_template
+        # Maximum number of calls per day when the call is not answered.
         self.max_attempts_per_day = max_attempts_per_day
+        # Minimum interval between retry attempts.
         self.min_attempt_interval = min_attempt_interval
+        # Job repetition method.
         self.repeat_by = repeat_by
+        # Days on which the job repeats. Use with RepeatBy.
+        # 
+        # - If the recurrence is weekly, 0 means Sunday, and 1–6 mean Monday through Saturday.
+        # 
+        # - If the recurrence is monthly, 1–31 mean the 1st through 31st days of the month. Months without the specified day skip the job. For example, if you select the 30th, February skips it.
         self.repeat_days = repeat_days
+        # Indicates whether this is a recurring job.
         self.repeatable = repeatable
+        # Phone number routing policy.
         self.routing_strategy = routing_strategy
+        # Start time of the strategy.
         self.start_time = start_time
+        # Strategy description.
         self.strategy_description = strategy_description
+        # Strategy ID.
         self.strategy_id = strategy_id
+        # Strategy name.
         self.strategy_name = strategy_name
+        # Strategy type.
         self.type = type
+        # Working hours.
         self.working_time = working_time
 
     def validate(self):
@@ -465,7 +516,9 @@ class DescribeJobGroupResponseBodyJobGroupStrategyWorkingTime(DaraModel):
         begin_time: str = None,
         end_time: str = None,
     ):
+        # End time
         self.begin_time = begin_time
+        # End time.
         self.end_time = end_time
 
     def validate(self):
@@ -503,10 +556,15 @@ class DescribeJobGroupResponseBodyJobGroupResult(DaraModel):
         timeout_hangup_num: int = None,
         unrecognized_num: int = None,
     ):
+        # Number of calls hung up by the customer. This field is deprecated.
         self.client_hangup_num = client_hangup_num
+        # Number of completed jobs. This field is deprecated.
         self.finished_num = finished_num
+        # Number of calls with no interaction. This field is deprecated.
         self.no_interact_num = no_interact_num
+        # Number of calls hung up due to timeout. This field is deprecated.
         self.timeout_hangup_num = timeout_hangup_num
+        # Number of unrecognized responses. This field is deprecated.
         self.unrecognized_num = unrecognized_num
 
     def validate(self):
@@ -560,8 +618,11 @@ class DescribeJobGroupResponseBodyJobGroupRecallStrategy(DaraModel):
         in_arrears_ignore: bool = None,
         out_of_service_ignore: bool = None,
     ):
+        # Do not dial nonexistent numbers.
         self.empty_number_ignore = empty_number_ignore
+        # Do not dial numbers with overdue payments.
         self.in_arrears_ignore = in_arrears_ignore
+        # Do not dial out-of-service numbers.
         self.out_of_service_ignore = out_of_service_ignore
 
     def validate(self):
@@ -613,18 +674,31 @@ class DescribeJobGroupResponseBodyJobGroupProgress(DaraModel):
         total_jobs: int = None,
         total_not_answered: int = None,
     ):
+        # Business result information. This field is deprecated.
         self.briefs = briefs
+        # Number of cancelled jobs.
         self.cancelled = cancelled
+        # Statistics in key-value format. This field is deprecated.
         self.categories = categories
+        # Job execution time. This field is deprecated.
         self.duration = duration
+        # Number of jobs in execution.
         self.executing = executing
+        # Number of failed jobs.
         self.failed = failed
+        # Number of paused jobs.
         self.paused = paused
+        # Number of jobs being scheduled.
         self.scheduling = scheduling
+        # Start time of execution. This field is deprecated.
         self.start_time = start_time
+        # Overall job execution status. This field is deprecated.
         self.status = status
+        # Total number of completed jobs.
         self.total_completed = total_completed
+        # Total number of jobs.
         self.total_jobs = total_jobs
+        # This field is deprecated.
         self.total_not_answered = total_not_answered
 
     def validate(self):
@@ -742,7 +816,9 @@ class DescribeJobGroupResponseBodyJobGroupProgressCategories(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # Custom statistics field name.
         self.key = key
+        # Custom statistics value.
         self.value = value
 
     def validate(self):
@@ -777,7 +853,9 @@ class DescribeJobGroupResponseBodyJobGroupProgressBriefs(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # Business result name.
         self.key = key
+        # Business result value.
         self.value = value
 
     def validate(self):
@@ -812,7 +890,9 @@ class DescribeJobGroupResponseBodyJobGroupFlashSmsExtras(DaraModel):
         config_id: str = None,
         template_id: str = None,
     ):
+        # Flash SMS configuration ID.
         self.config_id = config_id
+        # Flash SMS template ID.
         self.template_id = template_id
 
     def validate(self):
@@ -848,8 +928,11 @@ class DescribeJobGroupResponseBodyJobGroupExportProgress(DaraModel):
         progress: str = None,
         status: str = None,
     ):
+        # File URL. This field is deprecated.
         self.file_http_url = file_http_url
+        # Export progress. This field is deprecated.
         self.progress = progress
+        # Export status. This field is deprecated.
         self.status = status
 
     def validate(self):

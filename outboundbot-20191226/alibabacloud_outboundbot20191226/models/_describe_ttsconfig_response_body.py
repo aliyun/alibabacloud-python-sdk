@@ -15,11 +15,17 @@ class DescribeTTSConfigResponseBody(DaraModel):
         success: bool = None,
         ttsconfig: main_models.DescribeTTSConfigResponseBodyTTSConfig = None,
     ):
+        # API status code
         self.code = code
+        # HTTP status code
         self.http_status_code = http_status_code
+        # API message
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Indicates whether the operation was successful.
         self.success = success
+        # TTS configuration
         self.ttsconfig = ttsconfig
 
     def validate(self):
@@ -84,11 +90,17 @@ class DescribeTTSConfigResponseBodyTTSConfig(DaraModel):
         voice: str = None,
         volume: str = None,
     ):
+        # AppKey for invoking TTS
         self.app_key = app_key
+        # Instance ID
         self.instance_id = instance_id
+        # Service type
         self.nls_service_type = nls_service_type
+        # Speech rate
         self.speech_rate = speech_rate
+        # TTS model
         self.voice = voice
+        # Volume
         self.volume = volume
 
     def validate(self):

@@ -15,11 +15,17 @@ class DescribeJobDataParsingTaskProgressResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Response code.
         self.code = code
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Response message.
         self.message = message
+        # Parsing progress.
         self.progress = progress
+        # ID of the request.
         self.request_id = request_id
+        # Indicates whether the call succeeded.
         self.success = success
 
     def validate(self):
@@ -84,11 +90,27 @@ class DescribeJobDataParsingTaskProgressResponseBodyProgress(DaraModel):
         status: str = None,
         total_job_count: int = None,
     ):
+        # Error code for a failed parsing task.
         self.fail_error_code = fail_error_code
+        # Reason for failure.
         self.fail_reason = fail_reason
+        # Download URL for the file that lists parsing failures. This field is deprecated.
         self.feedback_url = feedback_url
+        # Number of jobs processed so far.
         self.handled_job_count = handled_job_count
+        # Status of the job.
+        # 
+        # - Pending: The job is waiting to start.
+        # 
+        # - InProgress: The job is running.
+        # 
+        # - Finished: The job completed successfully.
+        # 
+        # - PartialFinished: The job completed partially.
+        # 
+        # - Failed: The job failed.
         self.status = status
+        # Total number of jobs in the task.
         self.total_job_count = total_job_count
 
     def validate(self):

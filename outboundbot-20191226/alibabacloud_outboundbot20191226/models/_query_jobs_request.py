@@ -18,18 +18,31 @@ class QueryJobsRequest(DaraModel):
         start_time: int = None,
         time_alignment: str = None,
     ):
+        # Filter condition. Contact name.
         self.contact_name = contact_name
+        # Filter condition. End time. Default value is 0, which means up to now.
         self.end_time = end_time
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Task group ID.
         self.job_group_id = job_group_id
+        # Page number.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # Page size.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # Filter condition. Contact phone number.
         self.phone_number = phone_number
+        # Scenario ID. This parameter is deprecated.
         self.scenario_id = scenario_id
+        # Filter condition. Start time. Default value is 0, which means from 00:00 today.
         self.start_time = start_time
+        # Time filter basis. Valid values: start, end, and job_create.
         self.time_alignment = time_alignment
 
     def validate(self):

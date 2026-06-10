@@ -13,10 +13,15 @@ class DeleteScriptResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the call succeeded. A value of true indicates success. A value of false indicates failure.
         self.success = success
 
     def validate(self):

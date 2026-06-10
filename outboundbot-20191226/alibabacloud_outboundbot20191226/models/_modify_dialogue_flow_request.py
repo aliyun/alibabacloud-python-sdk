@@ -13,13 +13,22 @@ class ModifyDialogueFlowRequest(DaraModel):
         is_drafted: bool = None,
         script_id: str = None,
     ):
+        # A JSON string that defines the structure and logic of the dialogue flow.
+        # 
         # This parameter is required.
         self.dialogue_flow_definition = dialogue_flow_definition
+        # The dialogue flow ID.
+        # 
         # This parameter is required.
         self.dialogue_flow_id = dialogue_flow_id
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Specifies whether to save the changes as a draft.
         self.is_drafted = is_drafted
+        # The script ID.
+        # 
         # This parameter is required.
         self.script_id = script_id
 

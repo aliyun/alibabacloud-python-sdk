@@ -17,11 +17,17 @@ class ListScriptsResponseBody(DaraModel):
         scripts: main_models.ListScriptsResponseBodyScripts = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The paginated list of scripts.
         self.scripts = scripts
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -84,9 +90,13 @@ class ListScriptsResponseBodyScripts(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The list of scripts.
         self.list = list
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of scripts.
         self.total_count = total_count
 
     def validate(self):
@@ -162,28 +172,51 @@ class ListScriptsResponseBodyScriptsList(DaraModel):
         update_time: int = None,
         agent_id: int = None,
     ):
+        # The agent access key.
         self.agent_key = agent_key
+        # Indicates whether the agent is an LLM agent.
         self.agent_llm = agent_llm
+        # The creation time.
         self.create_time = create_time
+        # The debug status.
         self.debug_status = debug_status
+        # Indicates whether emotion detection is enabled. This parameter is always false for LLM-based scripts.
         self.emotion_enable = emotion_enable
+        # The industry.
         self.industry = industry
+        # Indicates whether the debug version of the script is a draft.
         self.is_debug_drafted = is_debug_drafted
+        # Indicates whether the script is a draft.
         self.is_drafted = is_drafted
+        # Indicates whether the script is for a preset scene.
         self.is_preset = is_preset
+        # Indicates whether long wait is enabled. This parameter is always false for LLM-based scripts.
         self.long_wait_enable = long_wait_enable
+        # Indicates whether mini playback is enabled.
         self.mini_playback_enable = mini_playback_enable
+        # Indicates whether graceful barge-in is enabled. This parameter is always false for LLM-based scripts.
         self.new_barge_in_enable = new_barge_in_enable
+        # The NLU access type, which is set to Managed for LLM scenarios and is empty for small model scenarios.
         self.nlu_access_type = nlu_access_type
+        # The NLU engine, which is set to Prompts for LLM scenarios and is empty for small model scenarios.
         self.nlu_engine = nlu_engine
+        # The Function Compute configuration for function calling mode.
         self.nlu_profile = nlu_profile
+        # The rejection reason.
         self.reject_reason = reject_reason
+        # The scene.
         self.scene = scene
+        # The script description.
         self.script_description = script_description
+        # The script ID.
         self.script_id = script_id
+        # The script name.
         self.script_name = script_name
+        # The script status.
         self.status = status
+        # The update time.
         self.update_time = update_time
+        # The agent ID.
         self.agent_id = agent_id
 
     def validate(self):
@@ -347,8 +380,11 @@ class ListScriptsResponseBodyScriptsListNluProfile(DaraModel):
         fc_http_trigger_url: str = None,
         fc_region: str = None,
     ):
+        # The function name.
         self.fc_function = fc_function
+        # The URL of the function trigger.
         self.fc_http_trigger_url = fc_http_trigger_url
+        # The function region.
         self.fc_region = fc_region
 
     def validate(self):

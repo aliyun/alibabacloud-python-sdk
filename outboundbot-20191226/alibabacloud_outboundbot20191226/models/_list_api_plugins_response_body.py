@@ -20,14 +20,23 @@ class ListApiPluginsResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # API plugin list
         self.api_plugins = api_plugins
+        # API status code
         self.code = code
+        # HTTP status code
         self.http_status_code = http_status_code
+        # API prompt message
         self.message = message
+        # Page number
         self.page_number = page_number
+        # Number of entries displayed per page
         self.page_size = page_size
+        # Request ID
         self.request_id = request_id
+        # Indicates success
         self.success = success
+        # Total number of entries
         self.total_count = total_count
 
     def validate(self):
@@ -120,15 +129,31 @@ class ListApiPluginsResponseBodyApiPlugins(DaraModel):
         type: str = None,
         uuid: str = None,
     ):
+        # Description.
         self.description = description
+        # Draft configuration
         self.drafted_config_json = drafted_config_json
+        # Creation time.
         self.gmt_create = gmt_create
+        # Update time
         self.gmt_modified = gmt_modified
+        # Instance ID
         self.instance_id = instance_id
+        # Plugin name
         self.name = name
+        # Published configuration
         self.published_config_json = published_config_json
+        # Status.
+        # 
+        # - Drafted
+        # 
+        # - Published
+        # 
+        # - PublishedAndEdited
         self.status = status
+        # Type
         self.type = type
+        # Unique plugin identifier
         self.uuid = uuid
 
     def validate(self):

@@ -14,11 +14,17 @@ class CreateDialogueFlowResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code returned for the request.
         self.code = code
+        # The dialogue flow ID.
         self.dialogue_flow_id = dialogue_flow_id
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The message returned by the request.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

@@ -14,11 +14,17 @@ class CreateScriptWaveformResponseBody(DaraModel):
         script_waveform_id: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # Script information
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # The ID of the script waveform.
         self.script_waveform_id = script_waveform_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

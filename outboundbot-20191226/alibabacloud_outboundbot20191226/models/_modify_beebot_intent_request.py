@@ -13,12 +13,20 @@ class ModifyBeebotIntentRequest(DaraModel):
         intent_id: int = None,
         script_id: str = None,
     ):
+        # Instance ID
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Intent definition
+        # 
         # This parameter is required.
         self.intent_definition = intent_definition
+        # Intent ID
+        # 
         # This parameter is required.
         self.intent_id = intent_id
+        # Scenario ID
+        # 
         # This parameter is required.
         self.script_id = script_id
 
@@ -68,7 +76,10 @@ class ModifyBeebotIntentRequestIntentDefinition(DaraModel):
         alias_name: str = None,
         intent_name: str = None,
     ):
+        # Intent alias
         self.alias_name = alias_name
+        # Intent name
+        # 
         # This parameter is required.
         self.intent_name = intent_name
 

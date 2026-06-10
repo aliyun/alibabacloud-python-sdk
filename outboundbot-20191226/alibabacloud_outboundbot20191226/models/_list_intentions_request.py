@@ -17,14 +17,41 @@ class ListIntentionsRequest(DaraModel):
         script_id: str = None,
         user_nick: str = None,
     ):
+        # >Notice: 
+        # 
+        # This parameter is required. Select based on the scenario.
+        # 
+        # 
+        # 
+        # Annotation data source.
+        # 
+        # - 1: Outbound Call
+        # 
+        # - 2: Navigation
         self.annotation_mission_data_source_type = annotation_mission_data_source_type
+        # Bot ID
+        # 
+        # > Get this from the DescribeScript API. The corresponding parameter is ChatbotId.
         self.bot_id = bot_id
+        # Environment
+        # 
+        # - 1: Private Cloud
+        # 
+        # - 2: Public Cloud
         self.environment = environment
+        # Instance ID
         self.instance_id = instance_id
+        # Intent ID
         self.intent_id = intent_id
+        # Page Number
         self.page_index = page_index
+        # Number.
         self.page_size = page_size
+        # Scenario ID
         self.script_id = script_id
+        # Intent Name
+        # 
+        # > Use this for fuzzy queries based on keywords.
         self.user_nick = user_nick
 
     def validate(self):

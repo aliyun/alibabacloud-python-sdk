@@ -9,6 +9,8 @@ class GetAssignJobsAsyncResultRequest(DaraModel):
         self,
         async_task_id: str = None,
     ):
+        # The ID of the asynchronous task.
+        # 
         # This parameter is required.
         self.async_task_id = async_task_id
 

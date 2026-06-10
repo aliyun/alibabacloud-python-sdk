@@ -20,18 +20,32 @@ class ModifyBatchJobsRequest(DaraModel):
         strategy_json: str = None,
         submitted: bool = None,
     ):
+        # The job name.
+        # 
         # This parameter is required.
         self.batch_job_name = batch_job_name
+        # The calling numbers.
         self.calling_number = calling_number
+        # The description of the job group.
         self.description = description
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The download URL of the Excel file for the job.
         self.job_file_path = job_file_path
+        # The job group ID.
+        # 
         # This parameter is required.
         self.job_group_id = job_group_id
+        # The scenario ID.
         self.scenario_id = scenario_id
+        # The script ID.
         self.script_id = script_id
+        # The policy in the JSON format.
         self.strategy_json = strategy_json
+        # Specifies whether to submit the job. \\`false\\` submits the job. \\`true\\` saves the job as a draft.
+        # 
         # This parameter is required.
         self.submitted = submitted
 

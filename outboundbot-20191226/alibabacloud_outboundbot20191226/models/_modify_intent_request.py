@@ -15,16 +15,28 @@ class ModifyIntentRequest(DaraModel):
         script_id: str = None,
         utterances: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The intent description.
         self.intent_description = intent_description
+        # The intent ID.
+        # 
         # This parameter is required.
         self.intent_id = intent_id
+        # The intent name.
+        # 
         # This parameter is required.
         self.intent_name = intent_name
+        # The keywords. The value must be a JSON array of strings.
         self.keywords = keywords
+        # The script ID.
+        # 
         # This parameter is required.
         self.script_id = script_id
+        # The user utterances. The value must be a JSON array of strings.
+        # 
         # This parameter is required.
         self.utterances = utterances
 

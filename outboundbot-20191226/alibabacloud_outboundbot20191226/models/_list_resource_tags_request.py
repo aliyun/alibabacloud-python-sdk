@@ -11,10 +11,16 @@ class ListResourceTagsRequest(DaraModel):
         page_size: int = None,
         resource_type: str = None,
     ):
+        # Page number
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # The number of entries to return.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # Resource type
+        # 
         # This parameter is required.
         self.resource_type = resource_type
 

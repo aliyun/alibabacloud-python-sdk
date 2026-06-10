@@ -17,11 +17,21 @@ class ListDialogueFlowsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # A list of dialogue flows.
         self.dialogue_flows = dialogue_flows
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request succeeded.
+        # 
+        # - **true**: The request succeeded.
+        # 
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -92,11 +102,21 @@ class ListDialogueFlowsResponseBodyDialogueFlows(DaraModel):
         script_id: str = None,
         script_version: str = None,
     ):
+        # The dialogue flow data, formatted as a JSON string.
         self.dialogue_flow_definition = dialogue_flow_definition
+        # The dialogue flow ID.
         self.dialogue_flow_id = dialogue_flow_id
+        # The dialogue flow name.
         self.dialogue_flow_name = dialogue_flow_name
+        # The flow type.
+        # 
+        # - `SubFlow`: The subflow.
+        # 
+        # - `MainFlow`: The main flow.
         self.dialogue_flow_type = dialogue_flow_type
+        # The outbound script ID.
         self.script_id = script_id
+        # The script version.
         self.script_version = script_version
 
     def validate(self):

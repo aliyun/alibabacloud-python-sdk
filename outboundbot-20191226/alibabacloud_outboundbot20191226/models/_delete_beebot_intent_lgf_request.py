@@ -12,12 +12,20 @@ class DeleteBeebotIntentLgfRequest(DaraModel):
         lgf_id: int = None,
         script_id: str = None,
     ):
+        # Instance ID
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Intent ID
+        # 
         # This parameter is required.
         self.intent_id = intent_id
+        # Utterance Template ID
+        # 
         # This parameter is required.
         self.lgf_id = lgf_id
+        # Scenario ID
+        # 
         # This parameter is required.
         self.script_id = script_id
 

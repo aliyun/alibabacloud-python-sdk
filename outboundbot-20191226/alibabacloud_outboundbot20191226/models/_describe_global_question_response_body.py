@@ -15,11 +15,17 @@ class DescribeGlobalQuestionResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # The details of the global question.
         self.global_question = global_question
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -84,11 +90,17 @@ class DescribeGlobalQuestionResponseBodyGlobalQuestion(DaraModel):
         questions: str = None,
         script_id: str = None,
     ):
+        # The answers to the global question.
         self.answers = answers
+        # The ID of the global question.
         self.global_question_id = global_question_id
+        # The name of the global question.
         self.global_question_name = global_question_name
+        # The type of the global question.
         self.global_question_type = global_question_type
+        # The questions mapped to this global question.
         self.questions = questions
+        # The ID of the script.
         self.script_id = script_id
 
     def validate(self):

@@ -11,6 +11,7 @@ class GetSummaryInfoRequest(DaraModel):
         self,
         instance_id_list: List[str] = None,
     ):
+        # List of instance IDs.
         self.instance_id_list = instance_id_list
 
     def validate(self):

@@ -14,11 +14,17 @@ class DeleteContactBlockListResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Affected rows (deprecated)
         self.affected_rows = affected_rows
+        # API status code
         self.code = code
+        # HTTP status code
         self.http_status_code = http_status_code
+        # API message
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Indicates whether the operation succeeded
         self.success = success
 
     def validate(self):

@@ -18,12 +18,19 @@ class ListTagsResponseBody(DaraModel):
         tag_groups: List[main_models.ListTagsResponseBodyTagGroups] = None,
         tags: List[main_models.ListTagsResponseBodyTags] = None,
     ):
+        # The response code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
+        # The list of tag groups.
         self.tag_groups = tag_groups
+        # The list of tags.
         self.tags = tags
 
     def validate(self):
@@ -108,10 +115,15 @@ class ListTagsResponseBodyTags(DaraModel):
         tag_index: int = None,
         tag_name: str = None,
     ):
+        # The ID of the script.
         self.script_id = script_id
+        # The name of the tag group.
         self.tag_group = tag_group
+        # The ID of the tag.
         self.tag_id = tag_id
+        # The index of the tag.
         self.tag_index = tag_index
+        # The name of the tag.
         self.tag_name = tag_name
 
     def validate(self):
@@ -166,9 +178,13 @@ class ListTagsResponseBodyTagGroups(DaraModel):
         tag_group_id: str = None,
         tag_group_index: int = None,
     ):
+        # The ID of the script.
         self.script_id = script_id
+        # The name of the tag group.
         self.tag_group = tag_group
+        # The ID of the tag group.
         self.tag_group_id = tag_group_id
+        # The index of the tag group.
         self.tag_group_index = tag_group_index
 
     def validate(self):

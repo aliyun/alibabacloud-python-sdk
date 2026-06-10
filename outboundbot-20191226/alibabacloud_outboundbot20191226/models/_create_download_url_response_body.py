@@ -14,11 +14,17 @@ class CreateDownloadUrlResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code of the operation.
         self.code = code
+        # The URL of the file.
         self.file_http_url = file_http_url
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The message returned for the operation.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

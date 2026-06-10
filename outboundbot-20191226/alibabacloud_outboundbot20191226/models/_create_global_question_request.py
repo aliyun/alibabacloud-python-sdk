@@ -14,16 +14,28 @@ class CreateGlobalQuestionRequest(DaraModel):
         questions: str = None,
         script_id: str = None,
     ):
+        # The answers to the global question.
+        # 
         # This parameter is required.
         self.answers = answers
+        # The name of the global question.
+        # 
         # This parameter is required.
         self.global_question_name = global_question_name
+        # The type of the global question.
+        # 
         # This parameter is required.
         self.global_question_type = global_question_type
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The questions that trigger the global question.
+        # 
         # This parameter is required.
         self.questions = questions
+        # The script ID.
+        # 
         # This parameter is required.
         self.script_id = script_id
 

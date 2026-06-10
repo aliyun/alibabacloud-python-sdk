@@ -10,8 +10,17 @@ class GetMaxAttemptsPerDayRequest(DaraModel):
         entry_id: str = None,
         strategy_level: int = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.entry_id = entry_id
+        # The policy level. The default value is 2 for a business instance.
+        # 
+        # - 0: System
+        # 
+        # - 1: Tenant
+        # 
+        # - 2: Instance
         self.strategy_level = strategy_level
 
     def validate(self):

@@ -10,8 +10,14 @@ class TerminateCallRequest(DaraModel):
         call_id: str = None,
         instance_id: str = None,
     ):
+        # ID of the call.
+        # 
+        # > You can get this ID by calling the DescribeJob operation.
+        # 
         # This parameter is required.
         self.call_id = call_id
+        # ID of the instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 

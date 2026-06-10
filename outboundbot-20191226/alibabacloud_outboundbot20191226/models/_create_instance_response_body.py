@@ -15,11 +15,17 @@ class CreateInstanceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The information about the instance.
         self.instance = instance
+        # The message returned for the request.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -87,14 +93,23 @@ class CreateInstanceResponseBodyInstance(DaraModel):
         owner_name: str = None,
         resource_group_id: str = None,
     ):
+        # The time when the instance was created. This value is a UNIX timestamp in milliseconds.
         self.creation_time = creation_time
+        # The ID of the user who created the instance.
         self.creator_id = creator_id
+        # The name of the user who created the instance.
         self.creator_name = creator_name
+        # The description of the instance.
         self.instance_description = instance_description
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The name of the instance.
         self.instance_name = instance_name
+        # The maximum number of concurrent conversations for the instance.
         self.max_concurrent_conversation = max_concurrent_conversation
+        # The name of the instance owner.
         self.owner_name = owner_name
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):

@@ -14,11 +14,17 @@ class UploadScriptRecordingResponseBody(DaraModel):
         success: bool = None,
         uuid: str = None,
     ):
+        # Return code
         self.code = code
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Interface message
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Is successful
         self.success = success
+        # Unique recording ID
         self.uuid = uuid
 
     def validate(self):

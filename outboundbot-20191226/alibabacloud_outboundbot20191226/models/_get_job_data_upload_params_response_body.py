@@ -15,11 +15,17 @@ class GetJobDataUploadParamsResponseBody(DaraModel):
         success: bool = None,
         upload_params: main_models.GetJobDataUploadParamsResponseBodyUploadParams = None,
     ):
+        # API status code
         self.code = code
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Response message
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Is successful
         self.success = success
+        # List of upload parameters
         self.upload_params = upload_params
 
     def validate(self):
@@ -84,11 +90,19 @@ class GetJobDataUploadParamsResponseBodyUploadParams(DaraModel):
         policy: str = None,
         signature: str = None,
     ):
+        # OSS access ID
         self.access_id = access_id
+        # Expiration time (seconds)
         self.expire = expire
+        # Upload folder
+        # 
+        # > This parameter\\"s value is used in request parameters for many APIs.
         self.folder = folder
+        # Upload server URL
         self.host = host
+        # Upload policy
         self.policy = policy
+        # Signature information
         self.signature = signature
 
     def validate(self):
