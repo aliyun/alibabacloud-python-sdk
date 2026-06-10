@@ -317,6 +317,7 @@ class QueryInspirationConsumeRecordsResponseBodyModuleData(DaraModel):
         consume_time: str = None,
         consume_type: str = None,
         meta_data: str = None,
+        record_key: str = None,
         scene_name: str = None,
     ):
         # Quantity of inspiration value consumed
@@ -327,6 +328,7 @@ class QueryInspirationConsumeRecordsResponseBodyModuleData(DaraModel):
         self.consume_type = consume_type
         # Extension information (in JSON string format)
         self.meta_data = meta_data
+        self.record_key = record_key
         # Consumption scenario Name (such as AI application development, AI creative image generation, AI Video creation, AI Content creation)
         self.scene_name = scene_name
 
@@ -353,6 +355,9 @@ class QueryInspirationConsumeRecordsResponseBodyModuleData(DaraModel):
         if self.meta_data is not None:
             result['MetaData'] = self.meta_data
 
+        if self.record_key is not None:
+            result['RecordKey'] = self.record_key
+
         if self.scene_name is not None:
             result['SceneName'] = self.scene_name
 
@@ -374,6 +379,9 @@ class QueryInspirationConsumeRecordsResponseBodyModuleData(DaraModel):
 
         if m.get('MetaData') is not None:
             self.meta_data = m.get('MetaData')
+
+        if m.get('RecordKey') is not None:
+            self.record_key = m.get('RecordKey')
 
         if m.get('SceneName') is not None:
             self.scene_name = m.get('SceneName')

@@ -15,6 +15,7 @@ from ._app_service import AppService
 from ._app_service_aggregate import AppServiceAggregate
 from ._app_service_group import AppServiceGroup
 from ._app_service_profile import AppServiceProfile
+from ._tree_node import TreeNode
 from ._module_results_value import ModuleResultsValue
 from ._module_versions_value import ModuleVersionsValue
 from ._module_data_components_value import ModuleDataComponentsValue
@@ -618,6 +619,7 @@ __all__ = [
     AppServiceAggregate,
     AppServiceGroup,
     AppServiceProfile,
+    TreeNode,
     ModuleResultsValue,
     ModuleVersionsValue,
     ModuleDataComponentsValue,
