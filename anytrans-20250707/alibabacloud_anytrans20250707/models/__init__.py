@@ -50,6 +50,9 @@ from ._text_translate_request import TextTranslateRequest
 from ._text_translate_shrink_request import TextTranslateShrinkRequest
 from ._text_translate_response_body import TextTranslateResponseBody
 from ._text_translate_response import TextTranslateResponse
+from ._usage_query_request import UsageQueryRequest
+from ._usage_query_response_body import UsageQueryResponseBody
+from ._usage_query_response import UsageQueryResponse
 from ._batch_translate_request import BatchTranslateRequestExtConfig
 from ._batch_translate_request import BatchTranslateRequestExtExamples
 from ._batch_translate_request import BatchTranslateRequestExtTerminologies
@@ -116,6 +119,7 @@ from ._text_translate_request import TextTranslateRequestExtTextTransform
 from ._text_translate_request import TextTranslateRequestExt
 from ._text_translate_response_body import TextTranslateResponseBodyDataUsage
 from ._text_translate_response_body import TextTranslateResponseBodyData
+from ._usage_query_response_body import UsageQueryResponseBodyData
 
 __all__ = [
     BatchTranslateRequest,
@@ -166,6 +170,9 @@ __all__ = [
     TextTranslateShrinkRequest,
     TextTranslateResponseBody,
     TextTranslateResponse,
+    UsageQueryRequest,
+    UsageQueryResponseBody,
+    UsageQueryResponse,
     BatchTranslateRequestExtConfig,
     BatchTranslateRequestExtExamples,
     BatchTranslateRequestExtTerminologies,
@@ -231,5 +238,6 @@ __all__ = [
     TextTranslateRequestExtTextTransform,
     TextTranslateRequestExt,
     TextTranslateResponseBodyDataUsage,
-    TextTranslateResponseBodyData
+    TextTranslateResponseBodyData,
+    UsageQueryResponseBodyData
 ]

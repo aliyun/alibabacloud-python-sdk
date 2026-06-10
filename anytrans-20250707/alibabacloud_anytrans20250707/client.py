@@ -1343,3 +1343,87 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.text_translate_with_options_async(request, headers, runtime)
+
+    def usage_query_with_options(
+        self,
+        request: main_models.UsageQueryRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UsageQueryResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.end_time):
+            body['endTime'] = request.end_time
+        if not DaraCore.is_null(request.start_time):
+            body['startTime'] = request.start_time
+        if not DaraCore.is_null(request.workspace_id):
+            body['workspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UsageQuery',
+            version = '2025-07-07',
+            protocol = 'HTTPS',
+            pathname = f'/anytrans/translate/doc/usage/query',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UsageQueryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def usage_query_with_options_async(
+        self,
+        request: main_models.UsageQueryRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UsageQueryResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.end_time):
+            body['endTime'] = request.end_time
+        if not DaraCore.is_null(request.start_time):
+            body['startTime'] = request.start_time
+        if not DaraCore.is_null(request.workspace_id):
+            body['workspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UsageQuery',
+            version = '2025-07-07',
+            protocol = 'HTTPS',
+            pathname = f'/anytrans/translate/doc/usage/query',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UsageQueryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def usage_query(
+        self,
+        request: main_models.UsageQueryRequest,
+    ) -> main_models.UsageQueryResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.usage_query_with_options(request, headers, runtime)
+
+    async def usage_query_async(
+        self,
+        request: main_models.UsageQueryRequest,
+    ) -> main_models.UsageQueryResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.usage_query_with_options_async(request, headers, runtime)

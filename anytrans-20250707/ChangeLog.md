@@ -1,3 +1,7 @@
+2026-06-10 Version: 2.2.0
+- Support API UsageQuery.
+
+
 2026-05-19 Version: 2.1.7
 - Update API SubmitDocTranslateTask: add request parameters ext.config.isBilingual.
 
