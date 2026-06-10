@@ -50,8 +50,6 @@ class ListDayAmountResponseBody(DaraModel):
 
         return self
 
-
-
 class ListDayAmountResponseBodyDayAmounts(DaraModel):
     def __init__(
         self,

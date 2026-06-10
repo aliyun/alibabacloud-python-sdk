@@ -2,15 +2,16 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import Any
+from typing import List
 
+from alibabacloud_modelservice20220614 import models as main_models
 from darabonba.model import DaraModel
 
 class GetUserResponseBody(DaraModel):
     def __init__(
         self,
         anthropic_host: str = None,
-        api_keys: Any = None,
+        api_keys: List[main_models.GetUserResponseBodyApiKeys] = None,
         app_id: str = None,
         code: str = None,
         host: str = None,
@@ -30,7 +31,10 @@ class GetUserResponseBody(DaraModel):
         self.token = token
 
     def validate(self):
-        pass
+        if self.api_keys:
+            for v1 in self.api_keys:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -40,8 +44,10 @@ class GetUserResponseBody(DaraModel):
         if self.anthropic_host is not None:
             result['AnthropicHost'] = self.anthropic_host
 
+        result['ApiKeys'] = []
         if self.api_keys is not None:
-            result['ApiKeys'] = self.api_keys
+            for k1 in self.api_keys:
+                result['ApiKeys'].append(k1.to_map() if k1 else None)
 
         if self.app_id is not None:
             result['AppId'] = self.app_id
@@ -71,8 +77,11 @@ class GetUserResponseBody(DaraModel):
         if m.get('AnthropicHost') is not None:
             self.anthropic_host = m.get('AnthropicHost')
 
+        self.api_keys = []
         if m.get('ApiKeys') is not None:
-            self.api_keys = m.get('ApiKeys')
+            for k1 in m.get('ApiKeys'):
+                temp_model = main_models.GetUserResponseBodyApiKeys()
+                self.api_keys.append(temp_model.from_map(k1))
 
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
@@ -94,6 +103,43 @@ class GetUserResponseBody(DaraModel):
 
         if m.get('Token') is not None:
             self.token = m.get('Token')
+
+        return self
+
+
+
+class GetUserResponseBodyApiKeys(DaraModel):
+    def __init__(
+        self,
+        api_key: str = None,
+        inner_api_key: str = None,
+    ):
+        self.api_key = api_key
+        self.inner_api_key = inner_api_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.api_key is not None:
+            result['ApiKey'] = self.api_key
+
+        if self.inner_api_key is not None:
+            result['InnerApiKey'] = self.inner_api_key
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApiKey') is not None:
+            self.api_key = m.get('ApiKey')
+
+        if m.get('InnerApiKey') is not None:
+            self.inner_api_key = m.get('InnerApiKey')
 
         return self
 
