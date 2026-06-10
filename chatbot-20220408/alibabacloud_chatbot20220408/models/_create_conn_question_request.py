@@ -11,9 +11,14 @@ class CreateConnQuestionRequest(DaraModel):
         conn_question_id: int = None,
         knowledge_id: int = None,
     ):
+        # The agent key. If you do not specify this parameter, the default agent is used. You can obtain the key from the Business Management page of your main account.
         self.agent_key = agent_key
+        # The connected question ID.
+        # 
         # This parameter is required.
         self.conn_question_id = conn_question_id
+        # The knowledge ID.
+        # 
         # This parameter is required.
         self.knowledge_id = knowledge_id
 

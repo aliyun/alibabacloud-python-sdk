@@ -16,11 +16,15 @@ class ListAgentResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of business spaces.
         self.data = data
+        # The page number of the returned results.
         self.page_number = page_number
+        # The number of entries returned on the current page.
         self.page_size = page_size
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
+        # The total count of business spaces that match the query.
         self.total_count = total_count
 
     def validate(self):
@@ -83,9 +87,13 @@ class ListAgentResponseBodyData(DaraModel):
         agent_name: str = None,
         instance_infos: Dict[str, Any] = None,
     ):
+        # The business space ID.
         self.agent_id = agent_id
+        # The business space signature, used to identify the business space in Platform-as-a-Service (PaaS) API calls.
         self.agent_key = agent_key
+        # The name of the business space.
         self.agent_name = agent_name
+        # Details of the associated commodity instance. The object keys are commodity codes.
         self.instance_infos = instance_infos
 
     def validate(self):

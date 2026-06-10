@@ -16,13 +16,21 @@ class DescribePerspectiveResponseBody(DaraModel):
         self_define: bool = None,
         status: int = None,
     ):
+        # The creation time in UTC.
         self.create_time = create_time
+        # The modification time in UTC.
         self.modify_time = modify_time
+        # The name of the perspective.
         self.name = name
+        # The perspective code (used for the Q\\&A API).
         self.perspective_code = perspective_code
+        # The ID of the perspective.
         self.perspective_id = perspective_id
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the perspective is user-defined.
         self.self_define = self_define
+        # The status of the perspective. Valid values: 3 (Enabled) and 1 (Disabled).
         self.status = status
 
     def validate(self):

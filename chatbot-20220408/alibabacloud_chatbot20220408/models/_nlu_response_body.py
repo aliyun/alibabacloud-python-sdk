@@ -14,8 +14,11 @@ class NluResponseBody(DaraModel):
         messages: List[main_models.NluResponseBodyMessages] = None,
         request_id: str = None,
     ):
+        # The ID of the natural language understanding response.
         self.message_id = message_id
+        # The list of messages.
         self.messages = messages
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -64,7 +67,9 @@ class NluResponseBodyMessages(DaraModel):
         dialog_hub_nlu_info: main_models.NluResponseBodyMessagesDialogHubNluInfo = None,
         ds_nlu_info: main_models.NluResponseBodyMessagesDsNluInfo = None,
     ):
+        # The natural language understanding information from DialogHub.
         self.dialog_hub_nlu_info = dialog_hub_nlu_info
+        # The natural language understanding information from Dialog Studio.
         self.ds_nlu_info = ds_nlu_info
 
     def validate(self):
@@ -104,7 +109,9 @@ class NluResponseBodyMessagesDsNluInfo(DaraModel):
         entity_list: List[main_models.NluResponseBodyMessagesDsNluInfoEntityList] = None,
         intent_list: List[main_models.NluResponseBodyMessagesDsNluInfoIntentList] = None,
     ):
+        # The list of entities.
         self.entity_list = entity_list
+        # The list of intents.
         self.intent_list = intent_list
 
     def validate(self):
@@ -160,11 +167,17 @@ class NluResponseBodyMessagesDsNluInfoIntentList(DaraModel):
         score: float = None,
         slot_list: List[main_models.NluResponseBodyMessagesDsNluInfoIntentListSlotList] = None,
     ):
+        # The intent ID.
         self.intent_id = intent_id
+        # The details of the matching process.
         self.match_detail = match_detail
+        # The match type. Valid values are `Similarity` (match by utterance similarity), `Lgf` (match by LGF), `Classify` (match by model training), `FewShotLearning` (match by the built-in few-shot learning model), and `BuildIn` (match with a built-in intent).
         self.match_type = match_type
+        # The name of the intent.
         self.name = name
+        # The confidence score of the match.
         self.score = score
+        # The list of slots for the matched intent.
         self.slot_list = slot_list
 
     def validate(self):
@@ -233,9 +246,13 @@ class NluResponseBodyMessagesDsNluInfoIntentListSlotList(DaraModel):
         type: str = None,
         value: str = None,
     ):
+        # The name of the entity.
         self.name = name
+        # The original word for the entity, also known as an entity member.
         self.origin = origin
+        # The type of the entity. Currently, only the `text` type is supported.
         self.type = type
+        # The entity\\"s synonym.
         self.value = value
 
     def validate(self):
@@ -284,9 +301,13 @@ class NluResponseBodyMessagesDsNluInfoEntityList(DaraModel):
         type: str = None,
         value: str = None,
     ):
+        # The name of the entity.
         self.name = name
+        # The original word for the entity, also known as an entity member.
         self.origin = origin
+        # The type of the entity. Currently, only the `text` type is supported.
         self.type = type
+        # The entity\\"s synonym.
         self.value = value
 
     def validate(self):
@@ -333,7 +354,9 @@ class NluResponseBodyMessagesDialogHubNluInfo(DaraModel):
         global_dict_list: List[main_models.NluResponseBodyMessagesDialogHubNluInfoGlobalDictList] = None,
         global_sensitive_word_list: List[main_models.NluResponseBodyMessagesDialogHubNluInfoGlobalSensitiveWordList] = None,
     ):
+        # The list of global dictionary entries.
         self.global_dict_list = global_dict_list
+        # The list of global sensitive words.
         self.global_sensitive_word_list = global_sensitive_word_list
 
     def validate(self):
@@ -385,7 +408,9 @@ class NluResponseBodyMessagesDialogHubNluInfoGlobalSensitiveWordList(DaraModel):
         standard_word: str = None,
         word: str = None,
     ):
+        # The standard word.
         self.standard_word = standard_word
+        # The synonym.
         self.word = word
 
     def validate(self):
@@ -420,7 +445,9 @@ class NluResponseBodyMessagesDialogHubNluInfoGlobalDictList(DaraModel):
         standard_word: str = None,
         word: str = None,
     ):
+        # The standard word.
         self.standard_word = standard_word
+        # The synonym.
         self.word = word
 
     def validate(self):

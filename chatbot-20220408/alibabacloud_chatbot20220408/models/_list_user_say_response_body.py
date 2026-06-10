@@ -16,10 +16,15 @@ class ListUserSayResponseBody(DaraModel):
         total_count: int = None,
         user_says: List[main_models.ListUserSayResponseBodyUserSays] = None,
     ):
+        # The page number of the returned page.
         self.page_number = page_number
+        # The number of entries returned on the current page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of matching entries.
         self.total_count = total_count
+        # A list of user says.
         self.user_says = user_says
 
     def validate(self):
@@ -84,11 +89,17 @@ class ListUserSayResponseBodyUserSays(DaraModel):
         slot_infos: List[main_models.ListUserSayResponseBodyUserSaysSlotInfos] = None,
         user_say_id: int = None,
     ):
+        # The content of the user say.
         self.content = content
+        # The time when the user say was created. The time is in UTC.
         self.create_time = create_time
+        # The ID of the intent.
         self.intent_id = intent_id
+        # The time when the user say was last modified. The time is in UTC.
         self.modify_time = modify_time
+        # A list of associated slots.
         self.slot_infos = slot_infos
+        # The ID of the user say.
         self.user_say_id = user_say_id
 
     def validate(self):
@@ -156,8 +167,11 @@ class ListUserSayResponseBodyUserSaysSlotInfos(DaraModel):
         slot_id: str = None,
         start_index: int = None,
     ):
+        # The zero-based end index of the slot in the user say. This value is exclusive.
         self.end_index = end_index
+        # The ID of the intent slot.
         self.slot_id = slot_id
+        # The zero-based start index of the slot in the user say. This value is inclusive.
         self.start_index = start_index
 
     def validate(self):

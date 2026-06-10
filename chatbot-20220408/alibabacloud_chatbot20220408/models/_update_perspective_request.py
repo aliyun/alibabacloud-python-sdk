@@ -11,8 +11,11 @@ class UpdatePerspectiveRequest(DaraModel):
         name: str = None,
         perspective_id: str = None,
     ):
+        # The business space key. If not specified, the default business space is used. You can get the key from the Business Management page of your main account.
         self.agent_key = agent_key
+        # The name of the perspective. The name must be 50 characters or fewer.
         self.name = name
+        # The perspective ID.
         self.perspective_id = perspective_id
 
     def validate(self):

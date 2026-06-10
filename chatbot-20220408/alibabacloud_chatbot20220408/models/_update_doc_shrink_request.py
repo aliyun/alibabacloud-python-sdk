@@ -20,18 +20,36 @@ class UpdateDocShrinkRequest(DaraModel):
         tag_ids_shrink: str = None,
         title: str = None,
     ):
+        # The key for the business space. If this parameter is not specified, the default business space is used. You can obtain the key on the Business Management page of your master account.
         self.agent_key = agent_key
+        # The document category ID.
         self.category_id = category_id
+        # **Splitter**: The method used to split the document. Valid values: `paragraphSplitter` (splits by paragraph, default) and `treeSplitter` (splits by hierarchical rules).
+        # 
+        # **ChunkSize**: The chunk size. The value must be an integer from 200 to 800. The default value is 500.
+        # 
+        # **TreePatterns**: An array of regular expressions that define the structure for rule-based splitting. The default value is `[]`.
+        # 
+        # **TitleSource**: The source of the document title. Valid values: `ocrTitle` (uses the OCR-recognized title, default) and `docName` (uses the document name as the title).
         self.config = config
+        # The document content.
         self.content = content
         self.doc_metadata_shrink = doc_metadata_shrink
+        # The document name.
         self.doc_name = doc_name
+        # The time when the document expires. Specify the time in UTC, using the `YYYY-MM-DDThh:mm:ssZ` format.
         self.end_date = end_date
+        # The document ID.
+        # 
         # This parameter is required.
         self.knowledge_id = knowledge_id
+        # The metadata of the document, specified as a JSON string.
         self.meta = meta
+        # The time when the document becomes effective. Specify the time in UTC, using the `YYYY-MM-DDThh:mm:ssZ` format.
         self.start_date = start_date
+        # The tag IDs to associate with the document. Passing an empty array removes all existing tag associations.
         self.tag_ids_shrink = tag_ids_shrink
+        # The document title.
         self.title = title
 
     def validate(self):

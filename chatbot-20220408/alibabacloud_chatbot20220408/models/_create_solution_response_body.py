@@ -10,7 +10,9 @@ class CreateSolutionResponseBody(DaraModel):
         request_id: str = None,
         solution_id: int = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The ID of the knowledge answer.
         self.solution_id = solution_id
 
     def validate(self):

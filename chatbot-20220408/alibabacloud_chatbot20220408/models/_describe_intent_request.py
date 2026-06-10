@@ -11,9 +11,14 @@ class DescribeIntentRequest(DaraModel):
         instance_id: str = None,
         intent_id: int = None,
     ):
+        # The key for the business space. If you omit this parameter, the system uses the default business space. You can obtain the key from the Business Management page of the primary account.
         self.agent_key = agent_key
+        # The chatbot ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The intent ID.
+        # 
         # This parameter is required.
         self.intent_id = intent_id
 

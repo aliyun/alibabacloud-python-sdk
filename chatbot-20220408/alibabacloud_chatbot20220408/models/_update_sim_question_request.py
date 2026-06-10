@@ -11,9 +11,14 @@ class UpdateSimQuestionRequest(DaraModel):
         sim_question_id: int = None,
         title: str = None,
     ):
+        # The key of the workspace. If you do not specify this parameter, the default workspace is used. You can find the key on the Business Management page of your master account.
         self.agent_key = agent_key
+        # The ID of the similar question that you want to update.
+        # 
         # This parameter is required.
         self.sim_question_id = sim_question_id
+        # The new title of the similar question. The title can be up to 120 characters long.
+        # 
         # This parameter is required.
         self.title = title
 

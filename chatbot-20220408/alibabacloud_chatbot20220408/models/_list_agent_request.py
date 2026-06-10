@@ -12,9 +12,13 @@ class ListAgentRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The name of the business space. Use this parameter to filter the results.
         self.agent_name = agent_name
+        # The commodity code. Filters the results to return only business spaces associated with a specific commodity code.
         self.goods_codes = goods_codes
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Valid values: 1 to 100. Default value: 10.
         self.page_size = page_size
 
     def validate(self):

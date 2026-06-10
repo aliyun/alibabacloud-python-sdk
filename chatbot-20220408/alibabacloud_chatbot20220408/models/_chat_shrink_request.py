@@ -19,16 +19,31 @@ class ChatShrinkRequest(DaraModel):
         utterance: str = None,
         vendor_param: str = None,
     ):
+        # The key for the business space. If omitted, the request is routed to the default business space. You can get this key from the **Business Management** page of your main account.
         self.agent_key = agent_key
+        # The unique ID of the chatbot instance. To get this ID, log in to the Alibaba Cloud Chatbot console and go to **Chatbot Details** > **Session API**.
         self.instance_id = instance_id
+        # The name of an intent within a dialog flow. If specified, the chatbot directly activates this intent to process the user\\"s request.
         self.intent_name = intent_name
+        # The ID of an entry in the knowledge base. If you specify this ID, the chatbot directly returns the corresponding answer.
         self.knowledge_id = knowledge_id
+        # An array of perspective codes. Use these codes to retrieve answers from different perspectives for the same knowledge entry. Example: `Perspective=["FZJBY3raWr"]`. When using an SDK, refer to its parameter definitions.
         self.perspective_shrink = perspective_shrink
+        # Specifies the environment to use. The default value is `false`, which indicates the production environment.
+        # 
+        # - `true`: The test environment. This environment is for testing only. Do not use it in production due to potential instability and QPS limitations.
+        # 
+        # - `false`: The production environment.
         self.sand_box = sand_box
+        # The unique ID of the user in the current session.
         self.sender_id = sender_id
+        # The nickname of the user in the current session.
         self.sender_nick = sender_nick
+        # The session ID, used to identify a user session and maintain context. For a new user, omit this parameter in the first call to the `Chat` API. The chatbot automatically starts a session and returns the `SessionId` in the response. To continue the conversation, include this `SessionId` in all subsequent requests. The maximum length is 64 characters.
         self.session_id = session_id
+        # The user\\"s input text.
         self.utterance = utterance
+        # A JSON-formatted string containing custom parameters to pass to various dialog engines.
         self.vendor_param = vendor_param
 
     def validate(self):

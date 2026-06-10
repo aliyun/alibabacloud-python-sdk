@@ -15,14 +15,23 @@ class ListDSEntityValueRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The key for the business space. If omitted, the default business space is used. You can get this key from the Business Management page of your primary account.
         self.agent_key = agent_key
+        # The ID of the entity.
+        # 
         # This parameter is required.
         self.entity_id = entity_id
+        # The ID of the entity value.
         self.entity_value_id = entity_value_id
+        # The ID of the instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The keyword used to search for entity values and their synonyms.
         self.keyword = keyword
+        # The page number. Defaults to 1.
         self.page_number = page_number
+        # The page size. Defaults to 10.
         self.page_size = page_size
 
     def validate(self):

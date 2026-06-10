@@ -10,7 +10,9 @@ class DeleteDocResponseBody(DaraModel):
         knowledge_id: int = None,
         request_id: str = None,
     ):
+        # The ID of the knowledge.
         self.knowledge_id = knowledge_id
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

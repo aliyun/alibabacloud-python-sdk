@@ -11,9 +11,14 @@ class DescribeDSEntityRequest(DaraModel):
         entity_id: int = None,
         instance_id: str = None,
     ):
+        # The key for the business space. If omitted, the default business space is used. You can find this key on the Business Management page of your primary account.
         self.agent_key = agent_key
+        # The entity ID.
+        # 
         # This parameter is required.
         self.entity_id = entity_id
+        # The robot ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 

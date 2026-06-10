@@ -14,9 +14,13 @@ class CreateIntentRequest(DaraModel):
         instance_id: str = None,
         intent_definition: main_models.CreateIntentRequestIntentDefinition = None,
     ):
+        # The key of the business space. If you do not specify this parameter, the default business space is used. You can get the key from the business management page of your main account.
         self.agent_key = agent_key
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The intent definition.
         self.intent_definition = intent_definition
 
     def validate(self):
@@ -60,9 +64,13 @@ class CreateIntentRequestIntentDefinition(DaraModel):
         intent_name: str = None,
         slot_infos: List[main_models.CreateIntentRequestIntentDefinitionSlotInfos] = None,
     ):
+        # The intent alias.
         self.alias_name = alias_name
+        # The intent name.
+        # 
         # This parameter is required.
         self.intent_name = intent_name
+        # An array of objects, each defining a slot for the intent.
         self.slot_infos = slot_infos
 
     def validate(self):
@@ -115,13 +123,22 @@ class CreateIntentRequestIntentDefinitionSlotInfos(DaraModel):
         slot_id: str = None,
         value: str = None,
     ):
+        # Specifies whether the slot can have multiple values.
         self.array = array
+        # Specifies whether to encrypt the slot value.
         self.encrypt = encrypt
+        # Specifies whether the slot is interactive.
         self.interactive = interactive
+        # The slot name.
+        # 
         # This parameter is required.
         self.name = name
+        # The slot ID.
+        # 
         # This parameter is required.
         self.slot_id = slot_id
+        # The name of the associated entity.
+        # 
         # This parameter is required.
         self.value = value
 

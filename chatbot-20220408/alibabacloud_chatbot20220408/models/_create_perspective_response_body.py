@@ -10,7 +10,9 @@ class CreatePerspectiveResponseBody(DaraModel):
         perspective_id: str = None,
         request_id: str = None,
     ):
+        # The perspective ID.
         self.perspective_id = perspective_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

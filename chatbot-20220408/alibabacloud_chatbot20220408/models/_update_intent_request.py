@@ -15,10 +15,16 @@ class UpdateIntentRequest(DaraModel):
         intent_definition: main_models.UpdateIntentRequestIntentDefinition = None,
         intent_id: int = None,
     ):
+        # The key for the business space. If you omit this parameter, the system uses the default business space. You can find this key on the Business Management page of your primary account.
         self.agent_key = agent_key
+        # The ID of the chatbot instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The intent definition object.
         self.intent_definition = intent_definition
+        # The ID of the intent.
+        # 
         # This parameter is required.
         self.intent_id = intent_id
 
@@ -69,9 +75,13 @@ class UpdateIntentRequestIntentDefinition(DaraModel):
         intent_name: str = None,
         slot_infos: List[main_models.UpdateIntentRequestIntentDefinitionSlotInfos] = None,
     ):
+        # The alias for the intent.
         self.alias_name = alias_name
+        # The name of the intent.
+        # 
         # This parameter is required.
         self.intent_name = intent_name
+        # A list of slot objects.
         self.slot_infos = slot_infos
 
     def validate(self):
@@ -124,13 +134,22 @@ class UpdateIntentRequestIntentDefinitionSlotInfos(DaraModel):
         slot_id: str = None,
         value: str = None,
     ):
+        # Specifies whether the slot can contain an array of values.
         self.array = array
+        # Specifies whether to enable data masking for the slot value.
         self.encrypt = encrypt
+        # Specifies whether the slot is interactive. If true, the chatbot prompts the user for a value if the user does not provide one.
         self.interactive = interactive
+        # The name of the slot.
+        # 
         # This parameter is required.
         self.name = name
+        # The ID of the slot.
+        # 
         # This parameter is required.
         self.slot_id = slot_id
+        # The name of the associated entity.
+        # 
         # This parameter is required.
         self.value = value
 

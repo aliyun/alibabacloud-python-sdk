@@ -11,9 +11,14 @@ class TongyiChatDebugInfoRequest(DaraModel):
         instance_id: str = None,
         message_id: str = None,
     ):
+        # The key of the business space. If you do not specify this parameter, the default business space is used. You can get the key from the Business Management page of your main account.
         self.agent_key = agent_key
+        # The ID of the chatbot.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The ID of the response message in the current session.
+        # 
         # This parameter is required.
         self.message_id = message_id
 

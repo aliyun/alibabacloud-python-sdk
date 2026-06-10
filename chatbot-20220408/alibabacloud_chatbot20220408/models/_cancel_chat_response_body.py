@@ -10,7 +10,9 @@ class CancelChatResponseBody(DaraModel):
         cancel_result: bool = None,
         request_id: str = None,
     ):
+        # Indicates whether the operation was successful.
         self.cancel_result = cancel_result
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

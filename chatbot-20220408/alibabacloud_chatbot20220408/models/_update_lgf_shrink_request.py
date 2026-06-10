@@ -12,12 +12,17 @@ class UpdateLgfShrinkRequest(DaraModel):
         lgf_definition_shrink: str = None,
         lgf_id: int = None,
     ):
+        # The key for the business space. If omitted, the default business space is used. You can get the key on the Business Management page of your main account.
         self.agent_key = agent_key
+        # The bot ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The LGF definition.
+        # 
         # This parameter is required.
         self.lgf_definition_shrink = lgf_definition_shrink
-        # LGF ID
+        # The LGF ID.
         # 
         # This parameter is required.
         self.lgf_id = lgf_id

@@ -20,15 +20,25 @@ class ContinueInstancePublishTaskResponseBody(DaraModel):
         status: str = None,
         warnings: Dict[str, Any] = None,
     ):
+        # The business types associated with the publish task.
         self.biz_type_list = biz_type_list
+        # The UTC time when the task was created.
         self.create_time = create_time
+        # The error message if the task fails.
         self.error = error
+        # A key-value map of errors. Keys are the submodule names, and values are arrays of error messages.
         self.errors = errors
+        # The ID of the task.
         self.id = id
+        # The UTC time when the task was last modified.
         self.modify_time = modify_time
+        # The ID of the request.
         self.request_id = request_id
+        # The ID of the task, returned as a string.
         self.response = response
+        # The status of the task.
         self.status = status
+        # A key-value map of warnings. Keys are the submodule names, and values are arrays of warning messages.
         self.warnings = warnings
 
     def validate(self):

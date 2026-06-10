@@ -12,10 +12,16 @@ class CreateDSEntityRequest(DaraModel):
         entity_type: str = None,
         instance_id: str = None,
     ):
+        # The key for the `business space`. If you omit this parameter, the default `business space` is used. You can get the key from the Business Management page of your `main account`.
         self.agent_key = agent_key
+        # The `entity name`. The name can contain Chinese characters, uppercase and lowercase letters, digits, and underscores (_).
+        # 
         # This parameter is required.
         self.entity_name = entity_name
+        # The `entity type`. Valid values: `synonyms` and `regex`.
         self.entity_type = entity_type
+        # The `instance ID`.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 

@@ -16,14 +16,23 @@ class CreateSolutionRequest(DaraModel):
         perspective_codes: List[str] = None,
         tag_id_list: List[int] = None,
     ):
+        # The key of the business space. If this parameter is omitted, the system uses the default business space. You can obtain the key from the Business Management page of your primary account.
         self.agent_key = agent_key
+        # The content of the knowledge answer.
+        # 
         # This parameter is required.
         self.content = content
+        # The answer type. Valid values: `0` (plain text) and `1` (rich text).
         self.content_type = content_type
+        # The ID of the knowledge.
+        # 
         # This parameter is required.
         self.knowledge_id = knowledge_id
+        # A list of perspective codes.
+        # 
         # This parameter is required.
         self.perspective_codes = perspective_codes
+        # A list of tag IDs.
         self.tag_id_list = tag_id_list
 
     def validate(self):

@@ -9,6 +9,7 @@ class LinkInstanceCategoryResponseBody(DaraModel):
         self,
         request_id: str = None,
     ):
+        # 请求 ID
         self.request_id = request_id
 
     def validate(self):

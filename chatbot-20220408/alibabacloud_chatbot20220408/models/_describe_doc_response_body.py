@@ -36,31 +36,61 @@ class DescribeDocResponseBody(DaraModel):
         title: str = None,
         url: str = None,
     ):
+        # The business code.
         self.biz_code = biz_code
+        # The category ID.
         self.category_id = category_id
+        # The configuration for document parsing and splitting. Key: `Splitter`. Valid values: `paragraphSplitter` (splits by recognition level, default) and `treeSplitter` (splits by rule level).
+        # 
+        # Key: `ChunkSize`. The size of each document chunk, which must be between 200 and 800. The default value is 500.
+        # 
+        # Key: `TreePatterns`. The patterns for the rule-based hierarchy. The default value is [].
+        # 
+        # Key: `TitleSource`. The source of the document title. Valid values: `ocrTitle` (OCR-recognized title, default) and `docName` (document name).
         self.config = config
+        # The creation time.
         self.create_time = create_time
+        # The creator ID.
         self.create_user_id = create_user_id
+        # The creator name.
         self.create_user_name = create_user_name
+        # The document details.
         self.doc_info = doc_info
+        # A list of metadata sets, where each set corresponds to a business view.
         self.doc_metadata = doc_metadata
+        # The document name.
         self.doc_name = doc_name
+        # A list of document tags.
         self.doc_tags = doc_tags
+        # The effective status, calculated from `StartDate` and `EndDate`.<br>20: Active<br>21: Expired<br>22: Pending<br><br><br>
         self.effect_status = effect_status
+        # The end time in UTC format.
         self.end_date = end_date
+        # The knowledge ID.
         self.knowledge_id = knowledge_id
+        # The document\\"s metadata.
         self.meta = meta
+        # The modification time.
         self.modify_time = modify_time
+        # The modifier ID.
         self.modify_user_id = modify_user_id
+        # The modifier name.
         self.modify_user_name = modify_user_name
+        # Indicates whether a failed task can be retried.<br>`true`: The task can be retried.<br>`false`: The task cannot be retried.<br><br>
         self.process_can_retry = process_can_retry
+        # The processing message.
         self.process_message = process_message
+        # The processing status of the task.<br>-1: Queued<br>0: Succeeded<br>1: Parsing<br>2: Processing<br>3: Failed<br><br><br><br><br>
         self.process_status = process_status
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The start time in UTC format.
         self.start_date = start_date
+        # The edit status.<br>1: Unpublished<br>2: Published<br>3: Updated but not published<br><br><br>
         self.status = status
+        # The document title.
         self.title = title
+        # The OSS address of the document.
         self.url = url
 
     def validate(self):
@@ -256,10 +286,15 @@ class DescribeDocResponseBodyDocTags(DaraModel):
         tag_id: int = None,
         tag_name: str = None,
     ):
+        # Indicates whether the tag represents all items by default.
         self.default_tag = default_tag
+        # The tag\\"s group ID.
         self.group_id = group_id
+        # The tag group name.
         self.group_name = group_name
+        # The tag ID.
         self.tag_id = tag_id
+        # The tag name.
         self.tag_name = tag_name
 
     def validate(self):
@@ -313,8 +348,11 @@ class DescribeDocResponseBodyDocMetadata(DaraModel):
         business_view_name: str = None,
         meta_cell_info_dtolist: List[main_models.DescribeDocResponseBodyDocMetadataMetaCellInfoDTOList] = None,
     ):
+        # The ID of the business view.
         self.business_view_id = business_view_id
+        # The business view name.
         self.business_view_name = business_view_name
+        # A list of metadata cells.
         self.meta_cell_info_dtolist = meta_cell_info_dtolist
 
     def validate(self):
@@ -364,8 +402,11 @@ class DescribeDocResponseBodyDocMetadataMetaCellInfoDTOList(DaraModel):
         field_name: str = None,
         value: str = None,
     ):
+        # The code of the field.
         self.field_code = field_code
+        # The field name.
         self.field_name = field_name
+        # The value of the field.
         self.value = value
 
     def validate(self):
@@ -405,6 +446,7 @@ class DescribeDocResponseBodyDocInfo(DaraModel):
         self,
         doc_paras: List[main_models.DescribeDocResponseBodyDocInfoDocParas] = None,
     ):
+        # The paragraphs of the document.
         self.doc_paras = doc_paras
 
     def validate(self):
@@ -443,9 +485,13 @@ class DescribeDocResponseBodyDocInfoDocParas(DaraModel):
         para_text: str = None,
         para_type: str = None,
     ):
+        # The paragraph level.
         self.para_level = para_level
+        # The paragraph number.
         self.para_no = para_no
+        # The paragraph content. The content can be plain text, text extracted from an image using optical character recognition (OCR), or a table in Markdown format.
         self.para_text = para_text
+        # The paragraph type.<br>text: Text<br>figure: Image<br>table: Table<br><br><br>
         self.para_type = para_type
 
     def validate(self):

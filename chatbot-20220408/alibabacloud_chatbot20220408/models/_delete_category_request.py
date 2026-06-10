@@ -10,7 +10,10 @@ class DeleteCategoryRequest(DaraModel):
         agent_key: str = None,
         category_id: int = None,
     ):
+        # The agent key. If not specified, the default agent is used. You can obtain the key from the agent management page of your main account.
         self.agent_key = agent_key
+        # The unique identifier of the category.
+        # 
         # This parameter is required.
         self.category_id = category_id
 

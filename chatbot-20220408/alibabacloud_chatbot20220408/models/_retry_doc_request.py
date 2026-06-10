@@ -10,7 +10,10 @@ class RetryDocRequest(DaraModel):
         agent_key: str = None,
         knowledge_id: int = None,
     ):
+        # The key for the business space. If you do not specify this parameter, the default business space is used. You can obtain the key from the Business Management page of your primary account.
         self.agent_key = agent_key
+        # The knowledge ID.
+        # 
         # This parameter is required.
         self.knowledge_id = knowledge_id
 

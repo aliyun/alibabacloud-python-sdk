@@ -10,7 +10,10 @@ class DeleteSolutionRequest(DaraModel):
         agent_key: str = None,
         solution_id: int = None,
     ):
+        # The key for the business space. If you omit this parameter, the default business space is used. You can obtain this key from the Business Management page of your main account.
         self.agent_key = agent_key
+        # The ID of the solution.
+        # 
         # This parameter is required.
         self.solution_id = solution_id
 

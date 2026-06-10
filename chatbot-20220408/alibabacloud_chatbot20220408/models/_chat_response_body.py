@@ -16,10 +16,15 @@ class ChatResponseBody(DaraModel):
         request_id: str = None,
         session_id: str = None,
     ):
+        # The unique message ID.
         self.message_id = message_id
+        # A list of message objects.
         self.messages = messages
+        # The words segmented from the query. This field may be empty.
         self.query_seg_list = query_seg_list
+        # The unique request ID.
         self.request_id = request_id
+        # The unique session ID.
         self.session_id = session_id
 
     def validate(self):
@@ -85,12 +90,19 @@ class ChatResponseBodyMessages(DaraModel):
         title: str = None,
         voice_title: str = None,
     ):
+        # Indicates the source of the recommended answer if `AnswerType` is `Recommend`.
         self.answer_source = answer_source
+        # Type of the message.
         self.answer_type = answer_type
+        # Contains the `Knowledge` object if `AnswerType` is `Knowledge`.
         self.knowledge = knowledge
+        # Contains a list of `Recommend` objects if `AnswerType` is `Recommend`.
         self.recommends = recommends
+        # Contains the `Text` object if `AnswerType` is `Text`.
         self.text = text
+        # The title of the clarification question for text-based chat scenarios.
         self.title = title
+        # The clarification content for voice-based scenarios.
         self.voice_title = voice_title
 
     def validate(self):
@@ -184,22 +196,39 @@ class ChatResponseBodyMessagesText(DaraModel):
         slots: List[main_models.ChatResponseBodyMessagesTextSlots] = None,
         user_defined_chat_title: str = None,
     ):
+        # The source of the answer.
         self.answer_source = answer_source
+        # Title of the matched article. Returned only if `AnswerSource` is `MACHINE_READ`.
         self.article_title = article_title
+        # Command parameters, such as the skill group for transferring to a human agent.
         self.commands = commands
+        # The content of the text message.
         self.content = content
+        # The content format of the answer.
         self.content_type = content_type
+        # Name of the dialog. Returned only if `AnswerSource` is `BotFramework`.
         self.dialog_name = dialog_name
+        # Contains passthrough parameters.
         self.ext = ext
+        # Passthrough parameters. Returned only if `AnswerSource` is `BotFramework`.
         self.external_flags = external_flags
+        # The hit statement.
         self.hit_statement = hit_statement
+        # The name of the intent. This field is returned when `AnswerSource` is `BotFramework`.
         self.intent_name = intent_name
+        # Metadata.
         self.meta_data = meta_data
+        # The node ID. Returned only if `AnswerSource` is `BotFramework`.
         self.node_id = node_id
+        # The name of the node. This field is returned when `AnswerSource` is `BotFramework`.
         self.node_name = node_name
+        # A value of `SSML` indicates that an interactive slot-filling process has started in the dialog factory. This field is returned only if `AnswerSource` is `BotFramework`.
         self.response_type = response_type
+        # The confidence score.
         self.score = score
+        # A list of slot objects. Returned only if `AnswerSource` is `BotFramework`.
         self.slots = slots
+        # The title of a custom chit-chat topic.
         self.user_defined_chat_title = user_defined_chat_title
 
     def validate(self):
@@ -334,9 +363,13 @@ class ChatResponseBodyMessagesTextSlots(DaraModel):
         origin: str = None,
         value: str = None,
     ):
+        # Indicates whether the slot was filled.
         self.hit = hit
+        # The name of the slot.
         self.name = name
+        # The original value from the user\\"s input.
         self.origin = origin
+        # Extracted value of the slot.
         self.value = value
 
     def validate(self):
@@ -385,9 +418,13 @@ class ChatResponseBodyMessagesRecommends(DaraModel):
         score: float = None,
         title: str = None,
     ):
+        # Source of the clarification.
         self.answer_source = answer_source
+        # The knowledge ID for the clarification.
         self.knowledge_id = knowledge_id
+        # The score of the recommended content. Returned only if `AnswerSource` is `KNOWLEDGE`.
         self.score = score
+        # Clarification content. This can be an entity from knowledge graph QA, a knowledge title from FAQ-based QA, or a column value from table QA.
         self.title = title
 
     def validate(self):
@@ -442,15 +479,26 @@ class ChatResponseBodyMessagesKnowledge(DaraModel):
         summary: str = None,
         title: str = None,
     ):
+        # The source of the answer.
+        # `KnowledgeBase`: The answer is from the knowledge base.
         self.answer_source = answer_source
+        # The category of the knowledge entry.
         self.category = category
+        # The content of the matched knowledge entry.
         self.content = content
+        # Content format of the answer.
         self.content_type = content_type
+        # The hit statement matching the query.
         self.hit_statement = hit_statement
+        # ID of the matched knowledge entry in the knowledge base.
         self.id = id
+        # A list of related knowledge objects.
         self.related_knowledges = related_knowledges
+        # The confidence score.
         self.score = score
+        # Summary of the matched knowledge entry.
         self.summary = summary
+        # The title of the matched knowledge entry.
         self.title = title
 
     def validate(self):
@@ -541,7 +589,9 @@ class ChatResponseBodyMessagesKnowledgeRelatedKnowledges(DaraModel):
         knowledge_id: str = None,
         title: str = None,
     ):
+        # The ID of the related knowledge entry.
         self.knowledge_id = knowledge_id
+        # The title of the related knowledge entry.
         self.title = title
 
     def validate(self):

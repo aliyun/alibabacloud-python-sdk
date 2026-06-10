@@ -22,16 +22,27 @@ class DescribeIntentResponseBody(DaraModel):
         request_id: str = None,
         slot_infos: List[main_models.DescribeIntentResponseBodySlotInfos] = None,
     ):
+        # The intent alias.
         self.alias_name = alias_name
+        # The time when the intent was created, in UTC format.
         self.create_time = create_time
+        # The creator ID.
         self.create_user_id = create_user_id
+        # The creator name.
         self.create_user_name = create_user_name
+        # The intent ID.
         self.intent_id = intent_id
+        # The intent name.
         self.intent_name = intent_name
+        # The time when the intent was last modified, in UTC format.
         self.modify_time = modify_time
+        # The modifier ID.
         self.modify_user_id = modify_user_id
+        # The modifier name.
         self.modify_user_name = modify_user_name
+        # The request ID.
         self.request_id = request_id
+        # An array of objects that contain the slot information for the intent.
         self.slot_infos = slot_infos
 
     def validate(self):
@@ -132,11 +143,17 @@ class DescribeIntentResponseBodySlotInfos(DaraModel):
         slot_id: str = None,
         value: str = None,
     ):
+        # Indicates whether the slot can contain an array of values.
         self.array = array
+        # Indicates whether the slot is configured to encrypt its value.
         self.encrypt = encrypt
+        # Indicates whether interactive slot filling is enabled. Default value: false.
         self.interactive = interactive
+        # The slot name.
         self.name = name
+        # The slot ID.
         self.slot_id = slot_id
+        # The value extracted for the slot.
         self.value = value
 
     def validate(self):

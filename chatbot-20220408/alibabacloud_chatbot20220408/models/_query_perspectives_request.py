@@ -9,6 +9,7 @@ class QueryPerspectivesRequest(DaraModel):
         self,
         agent_key: str = None,
     ):
+        # The key of the business space. If this parameter is omitted, the default business space is used. You can find the key on the Business Management page of your primary account.
         self.agent_key = agent_key
 
     def validate(self):

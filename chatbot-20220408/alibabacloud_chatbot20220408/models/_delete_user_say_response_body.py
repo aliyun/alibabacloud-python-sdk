@@ -10,7 +10,9 @@ class DeleteUserSayResponseBody(DaraModel):
         request_id: str = None,
         user_say_id: int = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The ID of the user say.
         self.user_say_id = user_say_id
 
     def validate(self):

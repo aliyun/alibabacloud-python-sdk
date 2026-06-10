@@ -16,10 +16,15 @@ class SearchFaqResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of matching FAQs.
         self.faq_hits = faq_hits
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of matched entries.
         self.total_count = total_count
 
     def validate(self):
@@ -91,18 +96,31 @@ class SearchFaqResponseBodyFaqHits(DaraModel):
         status: int = None,
         title: str = None,
     ):
+        # The category ID.
         self.category_id = category_id
+        # The creation time (UTC).
         self.create_time = create_time
+        # The creator ID.
         self.create_user_id = create_user_id
+        # The creator\\"s username.
         self.create_user_name = create_user_name
+        # The effective status of the FAQ. This status is determined by the StartDate and EndDate parameters.
         self.effect_status = effect_status
+        # A list of matched similar titles.
         self.hit_similar_titles = hit_similar_titles
+        # A list of matched answers.
         self.hit_solutions = hit_solutions
+        # The FAQ ID.
         self.knowledge_id = knowledge_id
+        # The modification time (UTC).
         self.modify_time = modify_time
+        # The modifier ID.
         self.modify_user_id = modify_user_id
+        # The modifier\\"s username.
         self.modify_user_name = modify_user_name
+        # The FAQ status.
         self.status = status
+        # The title of the FAQ.
         self.title = title
 
     def validate(self):

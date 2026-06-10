@@ -12,10 +12,16 @@ class UpdateCategoryRequest(DaraModel):
         category_id: int = None,
         name: str = None,
     ):
+        # The key for the business space. If this parameter is omitted, the default business space is used. You can obtain the key on the **Business Management** page of your primary account.
         self.agent_key = agent_key
+        # The business code.
         self.biz_code = biz_code
+        # The category ID.
+        # 
         # This parameter is required.
         self.category_id = category_id
+        # The category name.
+        # 
         # This parameter is required.
         self.name = name
 

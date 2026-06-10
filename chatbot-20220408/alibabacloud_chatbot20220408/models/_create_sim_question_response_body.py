@@ -10,7 +10,9 @@ class CreateSimQuestionResponseBody(DaraModel):
         request_id: str = None,
         sim_question_id: int = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The similar question ID.
         self.sim_question_id = sim_question_id
 
     def validate(self):

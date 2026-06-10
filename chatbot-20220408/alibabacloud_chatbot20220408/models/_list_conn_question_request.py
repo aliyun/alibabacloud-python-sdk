@@ -10,7 +10,10 @@ class ListConnQuestionRequest(DaraModel):
         agent_key: str = None,
         knowledge_id: int = None,
     ):
+        # The key for the workspace. If omitted, the default workspace is used. You can find this key on the Business Management page of your main account.
         self.agent_key = agent_key
+        # The ID of the knowledge item.
+        # 
         # This parameter is required.
         self.knowledge_id = knowledge_id
 

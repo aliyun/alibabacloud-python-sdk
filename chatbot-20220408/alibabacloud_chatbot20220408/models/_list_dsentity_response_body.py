@@ -16,10 +16,15 @@ class ListDSEntityResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of entities.
         self.entities = entities
+        # The current page number. Default value: 1.
         self.page_number = page_number
+        # The page size. Default value: 10.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total count of matching entries.
         self.total_count = total_count
 
     def validate(self):
@@ -88,15 +93,25 @@ class ListDSEntityResponseBodyEntities(DaraModel):
         modify_user_name: str = None,
         sys_entity_code: str = None,
     ):
+        # The creation time in UTC.
         self.create_time = create_time
+        # The ID of the user who created the entity.
         self.create_user_id = create_user_id
+        # The name of the user who created the entity.
         self.create_user_name = create_user_name
+        # The ID of the entity.
         self.entity_id = entity_id
+        # The entity name.
         self.entity_name = entity_name
+        # The entity type. Valid values: `synonyms`, `regex`, and `system`.
         self.entity_type = entity_type
+        # The update time in UTC.
         self.modify_time = modify_time
+        # The ID of the user who last modified the entity.
         self.modify_user_id = modify_user_id
+        # The name of the user who last modified the entity.
         self.modify_user_name = modify_user_name
+        # The code for the system entity, such as `sys_date`. This parameter is blank for custom entities.
         self.sys_entity_code = sys_entity_code
 
     def validate(self):

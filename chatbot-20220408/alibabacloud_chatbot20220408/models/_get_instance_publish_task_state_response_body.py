@@ -20,15 +20,25 @@ class GetInstancePublishTaskStateResponseBody(DaraModel):
         status: str = None,
         warnings: Dict[str, Any] = None,
     ):
+        # The list of business types.
         self.biz_type_list = biz_type_list
+        # The UTC time when the task was created.
         self.create_time = create_time
+        # The error message if the task fails.
         self.error = error
+        # A map of error messages for each submodule, where the key is the submodule and the value is an array of errors.
         self.errors = errors
+        # The task ID.
         self.id = id
+        # The UTC time when the task was last modified.
         self.modify_time = modify_time
+        # The request ID.
         self.request_id = request_id
+        # The task ID, returned as a string.
         self.response = response
+        # The status of the task.
         self.status = status
+        # A map of warning messages for each submodule, where the key is the submodule and the value is an array of warnings.
         self.warnings = warnings
 
     def validate(self):

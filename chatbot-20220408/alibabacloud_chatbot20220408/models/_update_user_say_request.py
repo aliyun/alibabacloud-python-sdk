@@ -15,10 +15,16 @@ class UpdateUserSayRequest(DaraModel):
         user_say_definition: main_models.UpdateUserSayRequestUserSayDefinition = None,
         user_say_id: int = None,
     ):
+        # The workspace key. If you omit this parameter, the default workspace is used. You can find this key on the Workspace Management page in your main account.
         self.agent_key = agent_key
+        # The ID of the bot.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The definition of the user say.
         self.user_say_definition = user_say_definition
+        # The ID of the user say.
+        # 
         # This parameter is required.
         self.user_say_id = user_say_id
 
@@ -69,10 +75,15 @@ class UpdateUserSayRequestUserSayDefinition(DaraModel):
         intent_id: int = None,
         slot_infos: List[main_models.UpdateUserSayRequestUserSayDefinitionSlotInfos] = None,
     ):
+        # The content of the user say.
+        # 
         # This parameter is required.
         self.content = content
+        # The ID of the intent.
+        # 
         # This parameter is required.
         self.intent_id = intent_id
+        # An array that contains information for each slot.
         self.slot_infos = slot_infos
 
     def validate(self):
@@ -122,8 +133,11 @@ class UpdateUserSayRequestUserSayDefinitionSlotInfos(DaraModel):
         slot_id: str = None,
         start_index: int = None,
     ):
+        # The zero-based end index (exclusive) of the slot within the content of the user say.
         self.end_index = end_index
+        # The ID of the slot.
         self.slot_id = slot_id
+        # The zero-based start index of the slot within the content of the user say.
         self.start_index = start_index
 
     def validate(self):

@@ -10,7 +10,10 @@ class DeleteDocRequest(DaraModel):
         agent_key: str = None,
         knowledge_id: int = None,
     ):
+        # The business space key. If this parameter is not specified, the default business space is used. You can obtain the key from the Business Management page of your main account.
         self.agent_key = agent_key
+        # The ID of the knowledge.
+        # 
         # This parameter is required.
         self.knowledge_id = knowledge_id
 

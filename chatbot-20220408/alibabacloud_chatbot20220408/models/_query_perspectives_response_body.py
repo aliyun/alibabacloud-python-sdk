@@ -13,7 +13,9 @@ class QueryPerspectivesResponseBody(DaraModel):
         perspectives: List[main_models.QueryPerspectivesResponseBodyPerspectives] = None,
         request_id: str = None,
     ):
+        # A list of perspectives.
         self.perspectives = perspectives
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -61,12 +63,19 @@ class QueryPerspectivesResponseBodyPerspectives(DaraModel):
         self_define: bool = None,
         status: int = None,
     ):
+        # The creation time in UTC.
         self.create_time = create_time
+        # The modification time in UTC.
         self.modify_time = modify_time
+        # The perspective name.
         self.name = name
+        # The perspective code (used for the Q\\&A API).
         self.perspective_code = perspective_code
+        # The perspective ID.
         self.perspective_id = perspective_id
+        # Indicates whether the perspective is custom-defined.
         self.self_define = self_define
+        # The status of the perspective. Valid values are 3 (enabled) and 1 (disabled).
         self.status = status
 
     def validate(self):

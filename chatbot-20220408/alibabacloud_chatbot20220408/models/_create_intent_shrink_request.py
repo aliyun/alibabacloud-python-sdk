@@ -11,9 +11,13 @@ class CreateIntentShrinkRequest(DaraModel):
         instance_id: str = None,
         intent_definition_shrink: str = None,
     ):
+        # The key of the business space. If you do not specify this parameter, the default business space is used. You can get the key from the business management page of your main account.
         self.agent_key = agent_key
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The intent definition.
         self.intent_definition_shrink = intent_definition_shrink
 
     def validate(self):

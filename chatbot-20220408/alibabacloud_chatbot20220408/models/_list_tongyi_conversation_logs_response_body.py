@@ -15,9 +15,13 @@ class ListTongyiConversationLogsResponseBody(DaraModel):
         request_id: str = None,
         session_flow_debug_info: main_models.ListTongyiConversationLogsResponseBodySessionFlowDebugInfo = None,
     ):
+        # The request processing time, in milliseconds.
         self.cost_time = cost_time
+        # An array of conversation log entries.
         self.datas = datas
+        # The request ID.
         self.request_id = request_id
+        # The debug information for the session flow.
         self.session_flow_debug_info = session_flow_debug_info
 
     def validate(self):
@@ -66,7 +70,9 @@ class ListTongyiConversationLogsResponseBodySessionFlowDebugInfo(DaraModel):
         api_params: Dict[str, Any] = None,
         slot_params: Dict[str, Any] = None,
     ):
+        # The API parameters from the session flow.
         self.api_params = api_params
+        # The slot parameters from the session flow.
         self.slot_params = slot_params
 
     def validate(self):

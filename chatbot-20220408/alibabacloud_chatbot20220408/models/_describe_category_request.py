@@ -10,7 +10,10 @@ class DescribeCategoryRequest(DaraModel):
         agent_key: str = None,
         category_id: int = None,
     ):
+        # The key of the business space. If you do not specify this parameter, the default business space is used. You can get the key from the Business Management page of your root account.
         self.agent_key = agent_key
+        # The ID of the category.
+        # 
         # This parameter is required.
         self.category_id = category_id
 

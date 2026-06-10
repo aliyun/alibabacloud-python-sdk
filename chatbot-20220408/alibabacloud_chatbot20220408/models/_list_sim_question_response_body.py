@@ -13,7 +13,9 @@ class ListSimQuestionResponseBody(DaraModel):
         request_id: str = None,
         sim_questions: List[main_models.ListSimQuestionResponseBodySimQuestions] = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The list of similar questions.
         self.sim_questions = sim_questions
 
     def validate(self):
@@ -58,9 +60,13 @@ class ListSimQuestionResponseBodySimQuestions(DaraModel):
         sim_question_id: int = None,
         title: str = None,
     ):
+        # The creation time of the similar question, in UTC.
         self.create_time = create_time
+        # The modification time of the similar question, in UTC.
         self.modify_time = modify_time
+        # The similar question ID.
         self.sim_question_id = sim_question_id
+        # The title of the similar question.
         self.title = title
 
     def validate(self):

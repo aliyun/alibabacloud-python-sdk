@@ -13,11 +13,17 @@ class CreateCategoryRequest(DaraModel):
         name: str = None,
         parent_category_id: int = None,
     ):
+        # The key of the business space. If this parameter is not specified, the default business space is used. You can obtain the key from the Business Management page of your main account.
         self.agent_key = agent_key
+        # The business code.
         self.biz_code = biz_code
+        # The knowledge type. Valid values are 1 for an FAQ category and 3 for a document category. The default value is 1.
         self.knowledge_type = knowledge_type
+        # The category name.
+        # 
         # This parameter is required.
         self.name = name
+        # The ID of the parent category. Defaults to -1, which indicates the root category.
         self.parent_category_id = parent_category_id
 
     def validate(self):

@@ -11,9 +11,14 @@ class DeleteDSEntityRequest(DaraModel):
         entity_id: int = None,
         instance_id: str = None,
     ):
+        # If unspecified, the default agent is used. You can get the key from the agent management page of your main account.
         self.agent_key = agent_key
+        # The entity ID.
+        # 
         # This parameter is required.
         self.entity_id = entity_id
+        # The chatbot ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 

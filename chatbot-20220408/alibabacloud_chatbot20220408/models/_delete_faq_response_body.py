@@ -9,6 +9,7 @@ class DeleteFaqResponseBody(DaraModel):
         self,
         request_id: str = None,
     ):
+        # A unique identifier for the request.
         self.request_id = request_id
 
     def validate(self):

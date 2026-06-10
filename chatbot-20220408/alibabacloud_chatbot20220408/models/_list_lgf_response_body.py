@@ -16,10 +16,15 @@ class ListLgfResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # A list of advanced semantic configurations.
         self.lgfs = lgfs
+        # The returned page number.
         self.page_number = page_number
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total count of matching entries.
         self.total_count = total_count
 
     def validate(self):
@@ -83,11 +88,15 @@ class ListLgfResponseBodyLgfs(DaraModel):
         modify_time: str = None,
         rule_text: str = None,
     ):
+        # The creation time, in UTC.
         self.create_time = create_time
+        # The ID of the intent.
         self.intent_id = intent_id
-        # LGF ID
+        # The LGF ID.
         self.lgf_id = lgf_id
+        # The modification time, in UTC.
         self.modify_time = modify_time
+        # The LGF rule.
         self.rule_text = rule_text
 
     def validate(self):

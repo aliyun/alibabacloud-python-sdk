@@ -1,3 +1,7 @@
+2026-06-10 Version: 2.5.3
+- Update API TongyiChatDebugInfo: add response parameters Body.AnswerInfo.
+
+
 2026-03-24 Version: 2.5.2
 - Update API BeginSession: add request parameters SessionId.
 - Update API ListInstance: add request parameters Sandbox.

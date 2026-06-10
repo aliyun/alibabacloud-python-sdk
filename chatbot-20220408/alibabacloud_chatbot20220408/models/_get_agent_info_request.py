@@ -9,6 +9,7 @@ class GetAgentInfoRequest(DaraModel):
         self,
         instance_id: str = None,
     ):
+        # The instance ID.
         self.instance_id = instance_id
 
     def validate(self):

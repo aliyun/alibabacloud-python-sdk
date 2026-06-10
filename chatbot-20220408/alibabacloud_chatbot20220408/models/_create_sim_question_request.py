@@ -11,9 +11,14 @@ class CreateSimQuestionRequest(DaraModel):
         knowledge_id: int = None,
         title: str = None,
     ):
+        # The business space key. If omitted, the default business space is used. You can find the key on the business management page of your main account.
         self.agent_key = agent_key
+        # The knowledge ID.
+        # 
         # This parameter is required.
         self.knowledge_id = knowledge_id
+        # The similar question title. Maximum length: 120 characters.
+        # 
         # This parameter is required.
         self.title = title
 

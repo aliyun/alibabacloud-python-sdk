@@ -10,7 +10,9 @@ class DeleteDSEntityValueResponseBody(DaraModel):
         entity_value_id: int = None,
         request_id: str = None,
     ):
+        # The ID of the deleted entity value.
         self.entity_value_id = entity_value_id
+        # The unique identifier of the request.
         self.request_id = request_id
 
     def validate(self):

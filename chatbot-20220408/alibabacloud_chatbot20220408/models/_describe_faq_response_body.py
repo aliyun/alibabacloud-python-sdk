@@ -27,21 +27,37 @@ class DescribeFaqResponseBody(DaraModel):
         tag_id_list: List[int] = None,
         title: str = None,
     ):
+        # The category ID.
         self.category_id = category_id
+        # The time the knowledge was created, in UTC.
         self.create_time = create_time
+        # The creator of the knowledge.
         self.create_user_name = create_user_name
+        # The validity status of the knowledge, calculated based on `StartDate` and `EndDate`. Valid values: `20` (Active), `21` (Expired), and `22` (Pending).
         self.effect_status = effect_status
+        # The expiration time of the knowledge, in UTC.
         self.end_date = end_date
+        # The knowledge ID.
         self.knowledge_id = knowledge_id
+        # The time the knowledge was last modified, in UTC.
         self.modify_time = modify_time
+        # The user who last modified the knowledge.
         self.modify_user_name = modify_user_name
+        # A list of related questions.
         self.outlines = outlines
+        # The request ID.
         self.request_id = request_id
+        # A list of similar questions.
         self.sim_questions = sim_questions
+        # A list of solutions.
         self.solutions = solutions
+        # The effective start time of the knowledge, in UTC.
         self.start_date = start_date
+        # The knowledge status. Valid values: `-1` (Deleted and unpublished), `1` (Unpublished), `2` (Published), and `3` (Updated and unpublished).
         self.status = status
+        # A list of tag IDs associated with the knowledge.
         self.tag_id_list = tag_id_list
+        # The knowledge title.
         self.title = title
 
     def validate(self):
@@ -192,13 +208,21 @@ class DescribeFaqResponseBodySolutions(DaraModel):
         solution_id: int = None,
         tag_id_list: List[int] = None,
     ):
+        # The solution content.
         self.content = content
+        # The solution content type. Valid values: `0` (plain text) and `1` (rich text).
         self.content_type = content_type
+        # The time the solution was created, in UTC.
         self.create_time = create_time
+        # The time the solution was last modified, in UTC.
         self.modify_time = modify_time
+        # A list of perspective codes.
         self.perspective_codes = perspective_codes
+        # The plain text content of the solution.
         self.plain_text = plain_text
+        # The solution ID.
         self.solution_id = solution_id
+        # A list of tag IDs.
         self.tag_id_list = tag_id_list
 
     def validate(self):
@@ -271,9 +295,13 @@ class DescribeFaqResponseBodySimQuestions(DaraModel):
         sim_question_id: int = None,
         title: str = None,
     ):
+        # The time the similar question was created, in UTC.
         self.create_time = create_time
+        # The time the similar question was last modified, in UTC.
         self.modify_time = modify_time
+        # The similar question ID.
         self.sim_question_id = sim_question_id
+        # The similar question title.
         self.title = title
 
     def validate(self):
@@ -323,10 +351,15 @@ class DescribeFaqResponseBodyOutlines(DaraModel):
         outline_id: int = None,
         title: str = None,
     ):
+        # The related knowledge ID.
         self.conn_question_id = conn_question_id
+        # The time the related question was created, in UTC.
         self.create_time = create_time
+        # The time the related question was last modified, in UTC.
         self.modify_time = modify_time
+        # The relationship ID.
         self.outline_id = outline_id
+        # The related knowledge title.
         self.title = title
 
     def validate(self):

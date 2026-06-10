@@ -13,6 +13,7 @@ class BeginSessionRequest(DaraModel):
         session_id: str = None,
         vendor_param: str = None,
     ):
+        # The key for the business space. If not specified, the default business space is used. You can find the key on the Business Management page of your main account.
         self.agent_key = agent_key
         self.instance_id = instance_id
         self.sand_box = sand_box
