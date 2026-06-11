@@ -14,21 +14,19 @@ class SaveWorkspaceCodeResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The returned data.
+        # 返回数据
         self.data = data
-        # The error code.
+        # 错误码
         self.error_code = error_code
-        # The HTTP status code.
+        # http状态码
         self.http_status_code = http_status_code
-        # The error message for a failed request. This parameter is not returned for successful requests.
+        # 错误信息，在接口失败时，返回具体错误信息，成功时则为空
         self.message = message
-        # The request ID.
+        # 请求ID
         self.request_id = request_id
-        # Indicates whether the request was successful.
-        # 
-        # - **true**: The request was successful.
-        # 
-        # - **false**: The request failed.
+        # 是否调用成功。
+        # - **true**：调用成功。
+        # - **false**：调用失败。
         self.success = success
 
     def validate(self):

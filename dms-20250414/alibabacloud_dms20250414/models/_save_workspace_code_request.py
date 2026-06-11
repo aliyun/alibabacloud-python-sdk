@@ -15,25 +15,23 @@ class SaveWorkspaceCodeRequest(DaraModel):
         repo: str = None,
         workspace_id: str = None,
     ):
-        # The content of the file.
+        # The code content.
         # 
         # This parameter is required.
         self.content = content
-        # Specifies whether to overwrite the file if it already exists. The default value is `true`.
+        # Specifies whether to forcibly overwrite the file. If set to true, the file is overwritten regardless of whether it has been modified by others.
         self.force = force
-        # Specifies whether the file is an IaC template.
+        # Specifies whether the file is an infrastructure as code template file. Set this parameter to true for YAML configuration files that are edited in the visual editor.
         self.iac = iac
-        # The modification time of the file.
-        # 
-        # The time must be in the ISO 8601 format: `yyyy-MM-ddTHH:mm:ssZ`.
+        # The file modification time. The GetWorkspaceCode operation returns this mtime value. When you call SaveWorkspaceCode, include this mtime value to check whether the file has been changed on the server. If the mtime values do not match, the save operation fails, which indicates that the server-side version has been modified.
         self.mtime = mtime
-        # The publishing configuration, specified as a JSON string. The `repos` array specifies the target repository and branch. The `exclude` array specifies the directories to ignore.
+        # The file path to save.
         # 
         # This parameter is required.
         self.path = path
-        # Information about the repository.
+        # The repository information. Specify this parameter when creating a git repository directory during the save operation.
         self.repo = repo
-        # The ID of the workspace.
+        # The workspace ID (numeric ID).
         # 
         # This parameter is required.
         self.workspace_id = workspace_id
