@@ -1,3 +1,7 @@
+2026-06-11 Version: 6.7.0
+- Support API RunNodeOperation.
+
+
 2026-06-10 Version: 6.6.4
 - Update API CreateClusterNodePool: add request parameters body.management.auto_fault_diagnosis.
 - Update API DescribeClusterNodePoolDetail: add response parameters Body.management.auto_fault_diagnosis.

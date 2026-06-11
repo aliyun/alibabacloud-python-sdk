@@ -10389,6 +10389,98 @@ class Client(OpenApiClient):
         headers = {}
         return await self.run_cluster_inspect_with_options_async(cluster_id, request, headers, runtime)
 
+    def run_node_operation_with_options(
+        self,
+        cluster_id: str,
+        nodepool_id: str,
+        node_name: str,
+        request: main_models.RunNodeOperationRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.RunNodeOperationResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.operation_action):
+            body['operationAction'] = request.operation_action
+        if not DaraCore.is_null(request.operation_args):
+            body['operationArgs'] = request.operation_args
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'RunNodeOperation',
+            version = '2015-12-15',
+            protocol = 'HTTPS',
+            pathname = f'/clusters/{DaraURL.percent_encode(cluster_id)}/nodepools/{DaraURL.percent_encode(nodepool_id)}/nodes/{DaraURL.percent_encode(node_name)}/operation',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RunNodeOperationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def run_node_operation_with_options_async(
+        self,
+        cluster_id: str,
+        nodepool_id: str,
+        node_name: str,
+        request: main_models.RunNodeOperationRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.RunNodeOperationResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.operation_action):
+            body['operationAction'] = request.operation_action
+        if not DaraCore.is_null(request.operation_args):
+            body['operationArgs'] = request.operation_args
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'RunNodeOperation',
+            version = '2015-12-15',
+            protocol = 'HTTPS',
+            pathname = f'/clusters/{DaraURL.percent_encode(cluster_id)}/nodepools/{DaraURL.percent_encode(nodepool_id)}/nodes/{DaraURL.percent_encode(node_name)}/operation',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RunNodeOperationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def run_node_operation(
+        self,
+        cluster_id: str,
+        nodepool_id: str,
+        node_name: str,
+        request: main_models.RunNodeOperationRequest,
+    ) -> main_models.RunNodeOperationResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.run_node_operation_with_options(cluster_id, nodepool_id, node_name, request, headers, runtime)
+
+    async def run_node_operation_async(
+        self,
+        cluster_id: str,
+        nodepool_id: str,
+        node_name: str,
+        request: main_models.RunNodeOperationRequest,
+    ) -> main_models.RunNodeOperationResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.run_node_operation_with_options_async(cluster_id, nodepool_id, node_name, request, headers, runtime)
+
     def scale_cluster_node_pool_with_options(
         self,
         cluster_id: str,
