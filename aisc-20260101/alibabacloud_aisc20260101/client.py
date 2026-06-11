@@ -109,3 +109,85 @@ class Client(OpenApiClient):
     ) -> main_models.CreateSkillFileCheckResponse:
         runtime = RuntimeOptions()
         return await self.create_skill_file_check_with_options_async(request, runtime)
+
+    def list_sub_tasks_with_options(
+        self,
+        request: main_models.ListSubTasksRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListSubTasksResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.root_task_id):
+            query['RootTaskId'] = request.root_task_id
+        if not DaraCore.is_null(request.task_type):
+            query['TaskType'] = request.task_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListSubTasks',
+            version = '2026-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListSubTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_sub_tasks_with_options_async(
+        self,
+        request: main_models.ListSubTasksRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListSubTasksResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.root_task_id):
+            query['RootTaskId'] = request.root_task_id
+        if not DaraCore.is_null(request.task_type):
+            query['TaskType'] = request.task_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListSubTasks',
+            version = '2026-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListSubTasksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_sub_tasks(
+        self,
+        request: main_models.ListSubTasksRequest,
+    ) -> main_models.ListSubTasksResponse:
+        runtime = RuntimeOptions()
+        return self.list_sub_tasks_with_options(request, runtime)
+
+    async def list_sub_tasks_async(
+        self,
+        request: main_models.ListSubTasksRequest,
+    ) -> main_models.ListSubTasksResponse:
+        runtime = RuntimeOptions()
+        return await self.list_sub_tasks_with_options_async(request, runtime)
