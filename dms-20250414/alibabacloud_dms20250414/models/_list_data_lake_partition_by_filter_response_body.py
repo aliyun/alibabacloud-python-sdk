@@ -18,12 +18,23 @@ class ListDataLakePartitionByFilterResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code that is returned if the request fails.
         self.error_code = error_code
+        # The error message that is returned if the request fails.
         self.error_message = error_message
+        # The number of entries per page.
         self.max_results = max_results
+        # The token for the next page of results.
         self.next_token = next_token
+        # The list of partitions.
         self.partition_list = partition_list
+        # The ID of the request, used for log tracing and troubleshooting.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # - **true**: The request was successful.
+        # 
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):

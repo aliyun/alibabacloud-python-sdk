@@ -16,17 +16,43 @@ class ListDataLakePartitionByFilterRequest(DaraModel):
         tid: int = None,
         workspace_id: int = None,
     ):
+        # The name of the data catalog.
+        # 
         # This parameter is required.
         self.catalog_name = catalog_name
+        # The name of the database.
+        # 
         # This parameter is required.
         self.db_name = db_name
+        # Query conditional expression. Supported operators:
+        # 
+        # - Comparison operators: =, <>, !=, <, <=, >, and >=. For example: \\`ds>20240101\\`.
+        # 
+        # - Logical operators: AND, OR, and NOT. For example: \\`ds LIKE \\"20240%\\"\\`.
+        # 
+        # - The BETWEEN operator, which specifies a range. For example: \\`ds BETWEEN 20240101 AND 20241201\\`.
+        # 
+        # - The IN operator, which specifies a set of values. For example: \\`ds IN (20240101, 20240102)\\`.
+        # 
         # This parameter is required.
         self.filter = filter
+        # The number of entries per page. The maximum value is 100.
         self.max_results = max_results
+        # The token that is used to retrieve the next page of results. Valid values:
+        # 
+        # - If this parameter is left empty, no more results are returned.
+        # 
+        # - If a value is returned, the value is the token for the next query.
         self.next_token = next_token
+        # The name of the table.
+        # 
         # This parameter is required.
         self.table_name = table_name
+        # The tenant ID.
+        # 
+        # > Hover over your profile picture in the upper-right corner of the DMS console to obtain the tenant ID. For details, see [View tenant information](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
+        # The ID of the workspace.
         self.workspace_id = workspace_id
 
     def validate(self):

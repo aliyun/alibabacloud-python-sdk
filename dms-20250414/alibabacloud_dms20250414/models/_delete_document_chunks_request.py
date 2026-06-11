@@ -13,10 +13,16 @@ class DeleteDocumentChunksRequest(DaraModel):
         document_name: str = None,
         kb_uuid: str = None,
     ):
+        # A list of chunk IDs.
+        # 
         # This parameter is required.
         self.chunk_ids = chunk_ids
+        # The name of the document.
+        # 
         # This parameter is required.
         self.document_name = document_name
+        # The ID of the knowledge base.
+        # 
         # This parameter is required.
         self.kb_uuid = kb_uuid
 

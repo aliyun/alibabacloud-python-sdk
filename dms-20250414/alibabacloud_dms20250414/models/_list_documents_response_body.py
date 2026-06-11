@@ -19,13 +19,25 @@ class ListDocumentsResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # A list of documents.
         self.data = data
+        # The error code, returned only when the request fails.
         self.error_code = error_code
+        # The error message, returned only when the request fails.
         self.error_message = error_message
+        # The page size.
         self.max_results = max_results
+        # The pagination token.
         self.next_token = next_token
+        # The unique request ID. Use this ID to troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # - **true**: The request was successful.
+        # 
+        # - **false**: The request failed.
         self.success = success
+        # The total number of documents that meet the specified criteria. This parameter is not currently supported and always returns 0.
         self.total_count = total_count
 
     def validate(self):

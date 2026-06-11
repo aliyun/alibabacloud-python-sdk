@@ -14,10 +14,15 @@ class GetDataAgentWorkspaceInfoResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The returned data.
         self.data = data
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_message = error_message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -80,15 +85,25 @@ class GetDataAgentWorkspaceInfoResponseBodyData(DaraModel):
         workspace_name: str = None,
         workspace_status: str = None,
     ):
+        # The time when the workspace was created. This value is a UNIX timestamp in seconds.
         self.create_time = create_time
+        # The user ID (UID) of the workspace creator.
         self.creator = creator
+        # Indicates whether session sharing is enabled.
         self.is_session_share_enabled = is_session_share_enabled
+        # The time when the workspace was last modified. This value is a UNIX timestamp in seconds.
         self.modify_time = modify_time
+        # The user\\"s role in the workspace.
         self.role_name = role_name
+        # The number of members in the workspace.
         self.total_member = total_member
+        # The description of the workspace.
         self.workspace_desc = workspace_desc
+        # The workspace ID.
         self.workspace_id = workspace_id
+        # The name of the workspace.
         self.workspace_name = workspace_name
+        # The status of the workspace.
         self.workspace_status = workspace_status
 
     def validate(self):

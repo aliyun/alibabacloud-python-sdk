@@ -17,16 +17,28 @@ class ListDataAgentWorkspaceRequest(DaraModel):
         workspace_name: str = None,
         workspace_type: str = None,
     ):
+        # The current DMS unit.
         self.dmsunit = dmsunit
+        # This parameter is reserved for future use.
         self.max_results = max_results
+        # This parameter is reserved for future use.
         self.next_token = next_token
+        # The sort order.
         self.order = order
+        # The field to sort by.
         self.order_by = order_by
+        # The page number.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # The number of entries to return on each page.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # The workspace name.
         self.workspace_name = workspace_name
+        # The workspace type.
+        # 
         # This parameter is required.
         self.workspace_type = workspace_type
 

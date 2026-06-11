@@ -17,12 +17,23 @@ class ListDataLakeFunctionNameResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code.
         self.error_code = error_code
+        # The error message returned if the request fails.
         self.error_message = error_message
+        # The list of function names.
         self.function_name_list = function_name_list
+        # The page size.
         self.max_results = max_results
+        # The token that is used to start the next query.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # - **true**: The request was successful.
+        # 
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):

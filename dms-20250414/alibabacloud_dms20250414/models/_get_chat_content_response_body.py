@@ -15,11 +15,17 @@ class GetChatContentResponseBody(DaraModel):
         level: int = None,
         timestamp: str = None,
     ):
+        # The category of the message, which helps parse the `content` field when it is a JSON object. For example,`PLAN` indicates that the message is an execution plan and conforms to the execution plan schema.
         self.category = category
+        # The checkpoint value.
         self.checkpoint = checkpoint
+        # The message content.
         self.content = content
+        # The type of the content field. Valid values: `[str, json]`. If the value is `json`, the content field can be parsed as a JSON object.
         self.content_type = content_type
+        # The message type, which distinguishes control signals from message data. For example,`CHAT_START` indicates the start of an agent\\"s reply,`CHAT_FINISH` indicates the end of the reply,`DATA` indicates a message that contains content, and`DELTA` indicates a part of an incremental output.
         self.event_type = event_type
+        # The output level of the message. A higher value indicates greater importance.
         self.level = level
         self.timestamp = timestamp
 

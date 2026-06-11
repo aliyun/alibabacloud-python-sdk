@@ -10,8 +10,12 @@ class WorkspaceActionLogRequest(DaraModel):
         key: str = None,
         workspace_id: str = None,
     ):
+        # The key for the session playback history.
+        # 
         # This parameter is required.
         self.key = key
+        # The workspace ID.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

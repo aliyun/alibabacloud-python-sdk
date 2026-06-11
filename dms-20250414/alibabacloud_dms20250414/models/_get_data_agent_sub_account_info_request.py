@@ -10,7 +10,9 @@ class GetDataAgentSubAccountInfoRequest(DaraModel):
         dms_unit: str = None,
         sub_account_id: str = None,
     ):
+        # The current DMS unit.
         self.dms_unit = dms_unit
+        # The UID of the RAM user.
         self.sub_account_id = sub_account_id
 
     def validate(self):

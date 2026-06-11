@@ -26,20 +26,34 @@ class OneMetaDatabase(DaraModel):
         state: int = None,
         storage_location: str = None,
     ):
+        # The catalog name.
         self.catalog_name = catalog_name
+        # The catalog type.
         self.catalog_type = catalog_type
+        # The catalog UUID.
         self.catalog_uuid = catalog_uuid
+        # The data source type.
         self.data_source_type = data_source_type
+        # The business attributes of the database.
         self.database_biz_attrs = database_biz_attrs
+        # The database UUID.
         self.database_uuid = database_uuid
+        # The database description.
         self.description = description
         self.engine_meta = engine_meta
+        # The database name.
         self.name = name
+        # The extended properties of the database.
         self.properties = properties
+        # The qualified name of the database.
         self.qualified_name = qualified_name
+        # The region ID.
         self.region_id = region_id
+        # The name used to search the database.
         self.search_name = search_name
+        # The database state.
         self.state = state
+        # The database storage location.
         self.storage_location = storage_location
 
     def validate(self):

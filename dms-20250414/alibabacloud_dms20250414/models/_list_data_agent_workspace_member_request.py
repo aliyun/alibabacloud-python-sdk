@@ -18,15 +18,25 @@ class ListDataAgentWorkspaceMemberRequest(DaraModel):
         search_role_name: str = None,
         workspace_id: str = None,
     ):
+        # The current DMS unit.
         self.dmsunit = dmsunit
+        # The number of entries per page.
         self.max_results = max_results
+        # The token.
         self.next_token = next_token
+        # The sort order.
         self.order = order
+        # The sort field.
         self.order_by = order_by
+        # The page number.
         self.page_number = page_number
+        # The number of entries to return on each page.
         self.page_size = page_size
+        # The prefix of the member ID to query.
         self.search_member_id = search_member_id
+        # The prefix of the member name to query.
         self.search_role_name = search_role_name
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):

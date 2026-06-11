@@ -12,9 +12,13 @@ class GetChatContentRequest(DaraModel):
         dmsunit: str = None,
         session_id: str = None,
     ):
+        # The agent ID. This parameter is required.
         self.agent_id = agent_id
+        # The service returns output starting from this checkpoint.
         self.checkpoint = checkpoint
+        # The DMS unit. For users on the Alibaba Cloud China site, the default value is cn-hangzhou.
         self.dmsunit = dmsunit
+        # The session ID. This parameter is required.
         self.session_id = session_id
 
     def validate(self):

@@ -18,12 +18,23 @@ class UpdateAirflowResponseBody(DaraModel):
         root: main_models.UpdateAirflowResponseBodyRoot = None,
         success: bool = None,
     ):
+        # Details about the access denial.
         self.access_denied_detail = access_denied_detail
+        # The error code.
         self.error_code = error_code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Details of the updated Airflow instance.
         self.root = root
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # - **true**: The request was successful.
+        # 
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -115,34 +126,59 @@ class UpdateAirflowResponseBodyRoot(DaraModel):
         workspace_id: str = None,
         zone_id: str = None,
     ):
+        # The name of the Airflow instance.
         self.airflow_name = airflow_name
+        # The version of Airflow.
         self.airflow_version = airflow_version
-        # SMALL。
+        # The instance specification.
         self.app_spec = app_spec
+        # The instance type.
         self.app_type = app_type
+        # A list of custom configuration items.
         self.custom_airflow_cfg = custom_airflow_cfg
+        # The directory where DAGs are scanned.
         self.dags_dir = dags_dir
+        # A data mount item.
         self.data_mount_info_list = data_mount_info_list
+        # The error message returned upon deployment failure.
         self.deploy_error_msg = deploy_error_msg
+        # The description of the Airflow instance.
         self.description = description
+        # Indicates whether serverless mode is enabled.
         self.enable_serverless = enable_serverless
+        # The environment variables.
         self.environments = environments
+        # The time when the instance was created.
         self.gmt_created = gmt_created
+        # The graceful shutdown timeout, in seconds.
         self.graceful_shutdown_timeout = graceful_shutdown_timeout
+        # The name of the Object Storage Service (OSS) bucket.
         self.oss_bucket_name = oss_bucket_name
+        # The path in OSS where logs are stored.
         self.oss_path = oss_path
+        # The directory where Airflow plugins are scanned.
         self.plugins_dir = plugins_dir
+        # The path to the Python requirements file.
         self.requirement_file = requirement_file
+        # The Python package requirements.
         self.requirements = requirements
+        # The ID of the security group.
         self.security_group_id = security_group_id
+        # The startup script for the Airflow container.
         self.startup_file = startup_file
+        # The instance status.
         self.status = status
+        # The Airflow instance ID.
         self.uuid = uuid
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
-        # VPC ID。
+        # The VPC ID.
         self.vpc_id = vpc_id
+        # The number of worker node replicas.
         self.worker_serverless_replicas = worker_serverless_replicas
+        # The workspace ID.
         self.workspace_id = workspace_id
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):

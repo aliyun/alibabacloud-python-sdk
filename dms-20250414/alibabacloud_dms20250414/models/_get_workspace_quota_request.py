@@ -9,6 +9,8 @@ class GetWorkspaceQuotaRequest(DaraModel):
         self,
         workspace_id: str = None,
     ):
+        # The ID of the DMS workspace.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

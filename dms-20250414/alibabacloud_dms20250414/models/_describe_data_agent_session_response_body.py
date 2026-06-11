@@ -16,11 +16,19 @@ class DescribeDataAgentSessionResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response data.
         self.data = data
+        # The error code.
         self.error_code = error_code
+        # The error message returned when the request fails.
         self.error_message = error_message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
+        # 
+        # - **true**: The request was successful.
+        # 
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -85,17 +93,29 @@ class DescribeDataAgentSessionResponseBodyData(DaraModel):
         title: str = None,
         user_id: str = None,
     ):
+        # The ID of the agent.
         self.agent_id = agent_id
+        # The status of the agent.
         self.agent_status = agent_status
+        # The session replay history.
         self.chat_history_locations = chat_history_locations
+        # The timestamp indicating when the session was created.
         self.create_time = create_time
+        # Indicates whether the current user has favorited the session in the workspace.
         self.favorite_in_workspace = favorite_in_workspace
+        # The ID of the file.
         self.file = file
+        # Indicates whether the current user has favorited the session.
         self.saved = saved
+        # The configuration of the session.
         self.session_config = session_config
+        # The ID of the agent session.
         self.session_id = session_id
+        # The status of the session.
         self.session_status = session_status
+        # The title of the session.
         self.title = title
+        # The ID of the session owner.
         self.user_id = user_id
 
     def validate(self):
@@ -211,17 +231,40 @@ class DescribeDataAgentSessionResponseBodyDataSessionConfig(DaraModel):
         report_water_mark: str = None,
         user_oss_bucket: str = None,
     ):
+        # The ID of the custom agent.
         self.custom_agent_id = custom_agent_id
+        # The stage of the custom agent. Valid values:
+        # 
+        # - **debug**: The test stage.
+        # 
+        # - **prod**: The production stage.
         self.custom_agent_stage = custom_agent_stage
+        # Indicates whether web search is enabled.
         self.enable_search = enable_search
         self.encrypt_key = encrypt_key
         self.encrypt_type = encrypt_type
         self.kb_uuid_list = kb_uuid_list
+        # The language. Valid values:
+        # 
+        # - **CHINESE**: Chinese
+        # 
+        # - **ENGLISH**: English
         self.language = language
+        # A list of MCP server IDs.
         self.mcp_server_ids = mcp_server_ids
+        # The mode. Valid values:
+        # 
+        # - **ASK_DATA**: quick inquiry mode
+        # 
+        # - **ANALYSIS**: analysis mode
+        # 
+        # - **INSIGHT**: insight mode
         self.mode = mode
         self.report_page_width = report_page_width
         self.report_water_mark = report_water_mark
+        # The name of the user\\"s OSS bucket.
+        # 
+        # - The service can upload analysis files and reports to this bucket.
         self.user_oss_bucket = user_oss_bucket
 
     def validate(self):
@@ -316,7 +359,9 @@ class DescribeDataAgentSessionResponseBodyDataChatHistoryLocations(DaraModel):
         key: str = None,
         url: str = None,
     ):
+        # The key of the session replay history item.
         self.key = key
+        # The OSS download URL for the session replay history item.
         self.url = url
 
     def validate(self):

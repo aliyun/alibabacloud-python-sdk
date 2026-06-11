@@ -14,10 +14,19 @@ class CreateDataLakeTableResponseBody(DaraModel):
         success: bool = None,
         table: main_models.DLTable = None,
     ):
+        # The error code that is returned when the request fails.
         self.error_code = error_code
+        # The error message that is returned when the request fails.
         self.error_message = error_message
+        # The ID of the request, used for log tracing and troubleshooting.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # - **true**: The request was successful.
+        # 
+        # - **false**: The request failed.
         self.success = success
+        # The details of the table.
         self.table = table
 
     def validate(self):

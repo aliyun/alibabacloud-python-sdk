@@ -11,8 +11,11 @@ class RemoveUserToDataAgentWorkspaceRequest(DaraModel):
         member_id: str = None,
         workspace_id: str = None,
     ):
+        # The current DMS unit.
         self.dmsunit = dmsunit
+        # The UID of the member account to remove.
         self.member_id = member_id
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):

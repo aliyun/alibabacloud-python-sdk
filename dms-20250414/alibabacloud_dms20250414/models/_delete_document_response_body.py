@@ -13,10 +13,23 @@ class DeleteDocumentResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Indicates whether the document was deleted. Valid values:
+        # 
+        # - **true**: The deletion was successful.
+        # 
+        # - **false**: The deletion failed.
         self.data = data
+        # The error code that is returned if the request fails.
         self.error_code = error_code
+        # The error message that is returned if the request fails.
         self.error_message = error_message
+        # The unique request ID. Use this ID to troubleshoot errors.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # - **true**: The request was successful.
+        # 
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):

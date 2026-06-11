@@ -14,11 +14,15 @@ class SendChatMessageResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The response data.
         self.data = data
+        # The error code. A value of `Success` indicates that the request was successful.
         self.error_code = error_code
+        # The error message. This field is empty if the request is successful.
         self.error_message = error_message
+        # The request ID.
         self.request_id = request_id
-        # Success
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -74,11 +78,11 @@ class SendChatMessageResponseBodyData(DaraModel):
         message: str = None,
         session_id: str = None,
     ):
-        # AgentId
+        # The agent ID.
         self.agent_id = agent_id
-        # Message
+        # Describes the result of the request.
         self.message = message
-        # SessionId
+        # The session ID.
         self.session_id = session_id
 
     def validate(self):

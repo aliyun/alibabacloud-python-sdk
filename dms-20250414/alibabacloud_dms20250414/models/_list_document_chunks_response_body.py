@@ -19,13 +19,25 @@ class ListDocumentChunksResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # A list of chunks.
         self.data = data
+        # The error code returned if the request fails.
         self.error_code = error_code
+        # The error message returned if the request fails.
         self.error_message = error_message
+        # The number of entries returned on this page.
         self.max_results = max_results
+        # The pagination token for the next page of results.
         self.next_token = next_token
+        # The unique request ID. If you encounter an error, provide this ID for troubleshooting.
         self.request_id = request_id
+        # Indicates if the request was successful. Valid values:
+        # 
+        # - **true**: The request was successful.
+        # 
+        # - **false**: The request failed.
         self.success = success
+        # The total number of chunks that meet the filter criteria. (This feature is not yet supported, and the value is always 0.)
         self.total_count = total_count
 
     def validate(self):

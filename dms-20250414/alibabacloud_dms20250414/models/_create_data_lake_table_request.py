@@ -14,13 +14,23 @@ class CreateDataLakeTableRequest(DaraModel):
         tid: int = None,
         workspace_id: int = None,
     ):
+        # The name of the data catalog.
+        # 
         # This parameter is required.
         self.catalog_name = catalog_name
+        # The name of the database.
+        # 
         # This parameter is required.
         self.db_name = db_name
+        # The information about the table.
+        # 
         # This parameter is required.
         self.table_input = table_input
+        # The ID of the tenant.
+        # 
+        # > Hover over your profile picture in the upper-right corner of the DMS console to obtain the tenant ID. For details, see [View tenant information](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
+        # The ID of the workspace.
         self.workspace_id = workspace_id
 
     def validate(self):

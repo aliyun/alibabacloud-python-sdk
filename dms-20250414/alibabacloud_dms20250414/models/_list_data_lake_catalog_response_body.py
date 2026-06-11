@@ -16,10 +16,19 @@ class ListDataLakeCatalogResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # A list of data catalogs.
         self.cata_log_list = cata_log_list
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_message = error_message
+        # The request ID, used for log tracing and troubleshooting.
         self.request_id = request_id
+        # Indicates whether the request succeeded. Valid values:
+        # 
+        # - **true**: The request succeeded.
+        # 
+        # - ******false**: The request failed.
         self.success = success
 
     def validate(self):

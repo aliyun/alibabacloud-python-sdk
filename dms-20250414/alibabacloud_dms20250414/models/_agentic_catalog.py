@@ -21,16 +21,27 @@ class AgenticCatalog(DaraModel):
         state: int = None,
         storage_location: str = None,
     ):
+        # A collection of key-value pairs that represents business attributes for the catalog, such as the data owner or department.
         self.catalog_biz_attrs = catalog_biz_attrs
+        # The type of the catalog. For example, `INTERNAL_METADATA` or `THIRD_PARTY`.
         self.catalog_type = catalog_type
+        # The unique identifier (UUID) of the catalog. This parameter is system-generated and output-only.
         self.catalog_uuid = catalog_uuid
+        # The type of the data source associated with the catalog. For example, `MySQL`, `PostgreSQL`, or `OSS`.
         self.data_source_type = data_source_type
+        # The unique identifier (UUID) of the associated data source.
         self.data_source_uuid = data_source_uuid
+        # The description of the catalog. It can be up to 2,048 characters long.
         self.description = description
+        # The display name of the catalog. The name can be up to 256 characters long.
         self.name = name
+        # A collection of key-value pairs that represents additional technical properties for the catalog.
         self.properties = properties
+        # The ID of the region where the catalog is located. For example, `cn-hangzhou`.
         self.region_id = region_id
+        # The current state of the catalog. Valid values are: `0` (Creating), `1` (Active), `2` (Deleting), and `3` (Error).
         self.state = state
+        # The storage location for the catalog\\"s metadata, such as a database name or a file path.
         self.storage_location = storage_location
 
     def validate(self):

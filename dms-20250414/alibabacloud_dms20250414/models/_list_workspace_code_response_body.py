@@ -17,11 +17,17 @@ class ListWorkspaceCodeResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The data returned in the response.
         self.data = data
+        # The error code.
         self.error_code = error_code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message returned if the request fails.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -81,6 +87,7 @@ class ListWorkspaceCodeResponseBodyData(DaraModel):
         self,
         list: List[main_models.ListWorkspaceCodeResponseBodyDataList] = None,
     ):
+        # An array of objects representing the files and directories.
         self.list = list
 
     def validate(self):
@@ -120,10 +127,19 @@ class ListWorkspaceCodeResponseBodyDataList(DaraModel):
         size: int = None,
         symlink: str = None,
     ):
+        # Indicates whether the object is a directory.
         self.is_dir = is_dir
+        # The modification time of the file.
+        # 
+        # The time is in the ISO 8601 format: `yyyy-MM-ddTHH:mm:ssZ`.
+        # 
+        # This parameter is returned only for files.
         self.mtime = mtime
+        # The name of the file or directory.
         self.name = name
+        # The file size in bytes.
         self.size = size
+        # The target of the symlink.
         self.symlink = symlink
 
     def validate(self):

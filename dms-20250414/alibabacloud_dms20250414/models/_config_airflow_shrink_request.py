@@ -11,10 +11,16 @@ class ConfigAirflowShrinkRequest(DaraModel):
         custom_airflow_cfg_shrink: str = None,
         workspace_id: str = None,
     ):
+        # The unique ID of the Airflow instance.
+        # 
         # This parameter is required.
         self.airflow_id = airflow_id
+        # The list of custom Airflow configurations.
+        # 
         # This parameter is required.
         self.custom_airflow_cfg_shrink = custom_airflow_cfg_shrink
+        # The DMS workspace ID.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

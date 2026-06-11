@@ -13,11 +13,19 @@ class DeleteDocumentChunksResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 实际删除的行数
+        # The number of deleted chunks.
         self.data = data
+        # The error code returned if the call fails.
         self.error_code = error_code
+        # The error message returned if the call fails.
         self.error_message = error_message
+        # The unique request ID for the call. If an error occurs, provide this request ID to support.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # - **true**: The request was successful.
+        # 
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):

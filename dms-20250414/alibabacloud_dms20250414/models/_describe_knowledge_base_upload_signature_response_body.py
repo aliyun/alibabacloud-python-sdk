@@ -14,10 +14,19 @@ class DescribeKnowledgeBaseUploadSignatureResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The upload signature details.
         self.data = data
+        # The error code if the request fails.
         self.error_code = error_code
+        # The error message if the request fails.
         self.error_message = error_message
+        # The unique ID of the request. If an error occurs, use this ID to troubleshoot the issue.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # - **true**: The request was successful.
+        # 
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -78,13 +87,21 @@ class DescribeKnowledgeBaseUploadSignatureResponseBodyData(DaraModel):
         upload_dir: str = None,
         upload_host: str = None,
     ):
+        # The credential scope string for the signature.
         self.oss_credential = oss_credential
+        # The request time in ISO 8601 format.
         self.oss_date = oss_date
+        # The STS token used for uploading to OSS. It is valid for one hour.
         self.oss_security_token = oss_security_token
+        # The authentication signature.
         self.oss_signature = oss_signature
+        # The signature version and algorithm.
         self.oss_signature_version = oss_signature_version
+        # The Base64-encoded POST policy that specifies the conditions for the file upload.
         self.policy = policy
+        # The path prefix for the file upload.
         self.upload_dir = upload_dir
+        # The destination URL for the file upload.
         self.upload_host = upload_host
 
     def validate(self):

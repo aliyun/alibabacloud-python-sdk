@@ -26,20 +26,35 @@ class AgenticDatabase(DaraModel):
         state: int = None,
         storage_location: str = None,
     ):
+        # The name of the catalog.
         self.catalog_name = catalog_name
+        # The type of the catalog.
         self.catalog_type = catalog_type
+        # The unique identifier of the catalog.
         self.catalog_uuid = catalog_uuid
+        # The data source type, such as `MySQL` or `PostgreSQL`.
         self.data_source_type = data_source_type
+        # The database\\"s business attributes.
         self.database_biz_attrs = database_biz_attrs
+        # The unique identifier of the database.
         self.database_uuid = database_uuid
+        # The database description.
         self.description = description
+        # The metadata for the database engine.
         self.engine_meta = engine_meta
+        # The name of the database.
         self.name = name
+        # The database\\"s extended properties.
         self.properties = properties
+        # The fully qualified name of the database.
         self.qualified_name = qualified_name
+        # The region ID of the database.
         self.region_id = region_id
+        # The name used to search the database.
         self.search_name = search_name
+        # The database state.
         self.state = state
+        # The database storage location.
         self.storage_location = storage_location
 
     def validate(self):

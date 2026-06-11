@@ -11,10 +11,15 @@ class OperateCustomAgentRequest(DaraModel):
         operate_type: str = None,
         workspace_id: str = None,
     ):
+        # Custom Agent ID
+        # 
         # This parameter is required.
         self.custom_agent_id = custom_agent_id
+        # Operation type
+        # 
         # This parameter is required.
         self.operate_type = operate_type
+        # Workspace ID
         self.workspace_id = workspace_id
 
     def validate(self):

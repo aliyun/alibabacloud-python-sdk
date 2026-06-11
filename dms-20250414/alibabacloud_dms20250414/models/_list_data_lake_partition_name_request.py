@@ -15,15 +15,31 @@ class ListDataLakePartitionNameRequest(DaraModel):
         tid: int = None,
         workspace_id: int = None,
     ):
+        # The name of the data catalog.
+        # 
         # This parameter is required.
         self.catalog_name = catalog_name
+        # The name of the database.
+        # 
         # This parameter is required.
         self.db_name = db_name
+        # The number of entries to return on each page. The maximum value is 100.
         self.max_results = max_results
+        # The token that is used to retrieve the next page of results. You do not need to specify this parameter for the first call.
+        # 
+        # - If **NextToken** is empty, no subsequent query is needed.
+        # 
+        # - If **NextToken** has a return value, it is the token to start the next query.
         self.next_token = next_token
+        # The name of the table.
+        # 
         # This parameter is required.
         self.table_name = table_name
+        # The tenant ID.
+        # 
+        # > Hover over your profile picture in the upper-right corner of the DMS console to obtain the tenant ID. For details, see [View tenant information](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
+        # The ID of the workspace.
         self.workspace_id = workspace_id
 
     def validate(self):

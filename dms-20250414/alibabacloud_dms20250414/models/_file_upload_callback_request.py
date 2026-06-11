@@ -14,12 +14,23 @@ class FileUploadCallbackRequest(DaraModel):
         oss_bucket: str = None,
         upload_location: str = None,
     ):
+        # For frontend use only.
         self.call_from = call_from
+        # The current DMS unit.
         self.dms_unit = dms_unit
+        # The file size in bytes.
         self.file_size = file_size
+        # The file name.
+        # 
         # This parameter is required.
         self.filename = filename
         self.oss_bucket = oss_bucket
+        # The full path for the file upload.
+        # 
+        # - Format: This path is formed by appending the file name to the UploadDir value returned by the DescribeFileUploadSignature operation.
+        # 
+        # - Example: ${UploadDir}/${Filename}
+        # 
         # This parameter is required.
         self.upload_location = upload_location
 

@@ -14,10 +14,19 @@ class UpdateDocumentResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response object.
         self.data = data
+        # The error code for a failed request.
         self.error_code = error_code
+        # The error message for a failed request.
         self.error_message = error_message
+        # The unique ID of the request. Use this ID for troubleshooting.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # - **true**: The request succeeded.
+        # 
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):

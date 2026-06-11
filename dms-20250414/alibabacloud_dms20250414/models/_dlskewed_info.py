@@ -13,8 +13,11 @@ class DLSkewedInfo(DaraModel):
         skewed_col_value_location_maps: Dict[str, Any] = None,
         skewed_col_values: List[List[str]] = None,
     ):
+        # A list of skewed column names.
         self.skewed_col_names = skewed_col_names
+        # A mapping of skewed column values to their locations.
         self.skewed_col_value_location_maps = skewed_col_value_location_maps
+        # A list of skewed column values. Each list provides a set of associated values.
         self.skewed_col_values = skewed_col_values
 
     def validate(self):

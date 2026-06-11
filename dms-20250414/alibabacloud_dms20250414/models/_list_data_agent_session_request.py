@@ -18,15 +18,25 @@ class ListDataAgentSessionRequest(DaraModel):
         title: str = None,
         workspace_id: str = None,
     ):
+        # Session creation end time
         self.create_end_time = create_end_time
+        # Session creation start time
         self.create_start_time = create_start_time
+        # Custom Agent ID
         self.custom_agent_id = custom_agent_id
+        # Current DMS unit
         self.dmsunit = dmsunit
+        # Whether to return only saved sessions
         self.is_saved = is_saved
+        # Page number for pagination
         self.page_number = page_number
+        # Number of records per page
         self.page_size = page_size
+        # Session type. Required when you specify a collaboration workspace.
         self.query_type = query_type
+        # Data Agent title (supports fuzzy search)
         self.title = title
+        # Collaboration workspace ID
         self.workspace_id = workspace_id
 
     def validate(self):

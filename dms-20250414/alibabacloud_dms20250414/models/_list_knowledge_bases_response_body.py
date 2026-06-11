@@ -19,13 +19,25 @@ class ListKnowledgeBasesResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # A list of knowledge base objects.
         self.data = data
+        # The error code returned if the request fails.
         self.error_code = error_code
+        # The error message.
         self.error_message = error_message
+        # The number of entries returned on the current page.
         self.max_results = max_results
+        # The token used to retrieve the next page of results.
+        # 
+        # - If this parameter is empty, all results have been returned.
+        # 
+        # - If a value is returned, use it in the next request to retrieve the next page of results.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. `true` indicates success, and `false` indicates failure.
         self.success = success
+        # The total number of knowledge bases matching the query. This feature is not currently supported and the returned value is always `0`.
         self.total_count = total_count
 
     def validate(self):

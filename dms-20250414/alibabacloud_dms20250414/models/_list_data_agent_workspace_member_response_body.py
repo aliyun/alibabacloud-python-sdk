@@ -16,10 +16,15 @@ class ListDataAgentWorkspaceMemberResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The returned data.
         self.data = data
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_message = error_message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -79,12 +84,19 @@ class ListDataAgentWorkspaceMemberResponseBodyData(DaraModel):
         total_elements: int = None,
         total_pages: int = None,
     ):
+        # The data content.
         self.content = content
+        # The number of entries per page.
         self.max_results = max_results
+        # The token for the next query.
         self.next_token = next_token
+        # The total number of pages.
         self.page_number = page_number
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The total number of entries.
         self.total_elements = total_elements
+        # The total number of pages.
         self.total_pages = total_pages
 
     def validate(self):
@@ -161,11 +173,17 @@ class ListDataAgentWorkspaceMemberResponseBodyDataContent(DaraModel):
         total_task_number: int = None,
         user_name: str = None,
     ):
+        # The time when the user joined the workspace. This is a UNIX timestamp in seconds.
         self.join_time = join_time
+        # The Alibaba Cloud UID of the user.
         self.member_id = member_id
+        # The name of the user\\"s role in the workspace.
         self.role_name = role_name
+        # The number of tasks that are running for the user in the workspace.
         self.running_task_number = running_task_number
+        # The total number of tasks initiated by the user in the workspace.
         self.total_task_number = total_task_number
+        # The RAM username of the user.
         self.user_name = user_name
 
     def validate(self):

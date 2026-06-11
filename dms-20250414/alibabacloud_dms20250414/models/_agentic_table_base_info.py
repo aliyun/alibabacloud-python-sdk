@@ -17,13 +17,21 @@ class AgenticTableBaseInfo(DaraModel):
         table_type: str = None,
         table_uuid: str = None,
     ):
+        # The catalog type.
         self.catalog_type = catalog_type
+        # The database\\"s unique identifier.
         self.database_uuid = database_uuid
+        # The table description.
         self.description = description
+        # The engine metadata.
         self.engine_meta = engine_meta
+        # The table name.
         self.name = name
+        # The table\\"s qualified name.
         self.qualified_name = qualified_name
+        # The table type.
         self.table_type = table_type
+        # The table\\"s unique identifier.
         self.table_uuid = table_uuid
 
     def validate(self):

@@ -14,10 +14,19 @@ class GetDataLakePartitionResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned if the request fails.
         self.error_code = error_code
+        # The error message returned if the call fails.
         self.error_message = error_message
+        # The information about the data lakehouse table partition.
         self.partition = partition
+        # The request ID, used for log tracing and troubleshooting.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # - **true**: The call was successful.
+        # 
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):

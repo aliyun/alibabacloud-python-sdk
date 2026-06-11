@@ -15,12 +15,23 @@ class GetNotebookAndSubmitTaskResponseBody(DaraModel):
         success: bool = None,
         task_id: str = None,
     ):
+        # The status code. `Success` indicates that the request was successful.
         self.code = code
+        # The returned message.
         self.err_msg = err_msg
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # The request ID.
         self.request_id = request_id
+        # The session ID.
         self.session_id = session_id
+        # Indicates whether the request succedded. Valid values:
+        # 
+        # - **true**: The request succedded.
+        # 
+        # - **false**: The request failed.
         self.success = success
+        # The ID of the scheduled task.
         self.task_id = task_id
 
     def validate(self):

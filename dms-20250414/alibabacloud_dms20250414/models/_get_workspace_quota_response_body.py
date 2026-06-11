@@ -16,12 +16,19 @@ class GetWorkspaceQuotaResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Details of the access denial.
         self.access_denied_detail = access_denied_detail
+        # The returned data.
         self.data = data
+        # The error code.
         self.error_code = error_code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -93,12 +100,19 @@ class GetWorkspaceQuotaResponseBodyData(DaraModel):
         status: str = None,
         workspace_id: str = None,
     ):
+        # The CU quota.
         self.cu_quota = cu_quota
+        # The amount of CU quota used.
         self.cu_quota_usage = cu_quota_usage
+        # The ID of the billing instance.
         self.instance_id = instance_id
+        # The available free notebook quota (in CU-H).
         self.notebook_free_quota_available = notebook_free_quota_available
+        # The total free notebook quota (in CU-H).
         self.notebook_free_quota_total = notebook_free_quota_total
+        # The instance status.
         self.status = status
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):

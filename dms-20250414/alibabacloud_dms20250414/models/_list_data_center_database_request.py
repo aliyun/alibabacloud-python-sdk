@@ -13,10 +13,17 @@ class ListDataCenterDatabaseRequest(DaraModel):
         language: str = None,
         search_key: str = None,
     ):
+        # This parameter is for internal use.
         self.call_from = call_from
+        # The DMS unit.
         self.dms_unit = dms_unit
+        # The import type.
+        # 
+        # - FILE
         self.import_type = import_type
+        # This parameter is for internal use.
         self.language = language
+        # The keyword for a fuzzy search for databases.
         self.search_key = search_key
 
     def validate(self):

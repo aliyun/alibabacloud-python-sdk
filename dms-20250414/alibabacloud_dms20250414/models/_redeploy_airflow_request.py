@@ -10,8 +10,12 @@ class RedeployAirflowRequest(DaraModel):
         airflow_id: str = None,
         workspace_id: str = None,
     ):
+        # The unique ID of the Airflow instance.
+        # 
         # This parameter is required.
         self.airflow_id = airflow_id
+        # The ID of the DMS workspace.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

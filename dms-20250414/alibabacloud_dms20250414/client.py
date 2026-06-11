@@ -6927,21 +6927,21 @@ class Client(OpenApiClient):
     ) -> main_models.SaveWorkspaceCodeResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.content):
-            query['Content'] = request.content
-        if not DaraCore.is_null(request.force):
-            query['Force'] = request.force
-        if not DaraCore.is_null(request.iac):
-            query['Iac'] = request.iac
-        if not DaraCore.is_null(request.mtime):
-            query['Mtime'] = request.mtime
-        if not DaraCore.is_null(request.repo):
-            query['Repo'] = request.repo
         if not DaraCore.is_null(request.workspace_id):
             query['WorkspaceId'] = request.workspace_id
         body = {}
+        if not DaraCore.is_null(request.content):
+            body['Content'] = request.content
+        if not DaraCore.is_null(request.force):
+            body['Force'] = request.force
+        if not DaraCore.is_null(request.iac):
+            body['Iac'] = request.iac
+        if not DaraCore.is_null(request.mtime):
+            body['Mtime'] = request.mtime
         if not DaraCore.is_null(request.path):
             body['Path'] = request.path
+        if not DaraCore.is_null(request.repo):
+            body['Repo'] = request.repo
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query),
             body = Utils.parse_to_map(body)
@@ -6969,21 +6969,21 @@ class Client(OpenApiClient):
     ) -> main_models.SaveWorkspaceCodeResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.content):
-            query['Content'] = request.content
-        if not DaraCore.is_null(request.force):
-            query['Force'] = request.force
-        if not DaraCore.is_null(request.iac):
-            query['Iac'] = request.iac
-        if not DaraCore.is_null(request.mtime):
-            query['Mtime'] = request.mtime
-        if not DaraCore.is_null(request.repo):
-            query['Repo'] = request.repo
         if not DaraCore.is_null(request.workspace_id):
             query['WorkspaceId'] = request.workspace_id
         body = {}
+        if not DaraCore.is_null(request.content):
+            body['Content'] = request.content
+        if not DaraCore.is_null(request.force):
+            body['Force'] = request.force
+        if not DaraCore.is_null(request.iac):
+            body['Iac'] = request.iac
+        if not DaraCore.is_null(request.mtime):
+            body['Mtime'] = request.mtime
         if not DaraCore.is_null(request.path):
             body['Path'] = request.path
+        if not DaraCore.is_null(request.repo):
+            body['Repo'] = request.repo
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query),
             body = Utils.parse_to_map(body)

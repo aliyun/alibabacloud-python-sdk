@@ -10,8 +10,12 @@ class DeleteDocumentRequest(DaraModel):
         document_name: str = None,
         kb_uuid: str = None,
     ):
+        # The document name.
+        # 
         # This parameter is required.
         self.document_name = document_name
+        # The knowledge base ID.
+        # 
         # This parameter is required.
         self.kb_uuid = kb_uuid
 

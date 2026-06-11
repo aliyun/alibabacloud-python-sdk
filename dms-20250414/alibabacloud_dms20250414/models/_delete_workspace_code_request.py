@@ -12,10 +12,16 @@ class DeleteWorkspaceCodeRequest(DaraModel):
         symlink: bool = None,
         workspace_id: str = None,
     ):
+        # The full path of the code file or directory. The path must be prefixed with `/Workspace/code/`.
+        # 
         # This parameter is required.
         self.path = path
+        # The repository information.
         self.repo = repo
+        # Specifies whether the item to delete is a symbolic link.
         self.symlink = symlink
+        # The ID of the workspace.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

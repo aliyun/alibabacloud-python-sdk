@@ -14,10 +14,19 @@ class GetDataLakeTableResponseBody(DaraModel):
         success: str = None,
         table: main_models.DLTable = None,
     ):
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_message = error_message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # - **true**: The request was successful.
+        # 
+        # - **false**: The request failed.
         self.success = success
+        # The information about the table.
         self.table = table
 
     def validate(self):

@@ -11,10 +11,16 @@ class UpsertDocumentChunksRequest(DaraModel):
         document_name: str = None,
         kb_uuid: str = None,
     ):
+        # A list of document chunks to upsert.
+        # 
         # This parameter is required.
         self.chunks = chunks
+        # The name of the document.
+        # 
         # This parameter is required.
         self.document_name = document_name
+        # The unique identifier for the knowledge base.
+        # 
         # This parameter is required.
         self.kb_uuid = kb_uuid
 

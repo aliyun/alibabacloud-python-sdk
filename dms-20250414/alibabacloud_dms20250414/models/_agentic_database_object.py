@@ -14,11 +14,17 @@ class AgenticDatabaseObject(DaraModel):
         object_qualified_name: str = None,
         object_type: str = None,
     ):
+        # The fully qualified name of the database. This name uniquely identifies the database within the system.
         self.database_qualified_name = database_qualified_name
+        # The unique identifier (UUID) of the database that contains the object.
         self.database_uuid = database_uuid
+        # The Data Definition Language (DDL) SQL statement that defines the object\\"s structure.
         self.ddl_sql = ddl_sql
+        # The name of the database object, such as a table, view, or index.
         self.object_name = object_name
+        # The fully qualified name that uniquely identifies the object, typically formatted as <database>.<schema>.<object>.
         self.object_qualified_name = object_qualified_name
+        # The type of the database object. For example, `TABLE`, `VIEW`, or `INDEX`.
         self.object_type = object_type
 
     def validate(self):

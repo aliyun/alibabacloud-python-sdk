@@ -14,11 +14,19 @@ class DeleteCustomAgentResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Return struct
         self.data = data
+        # Error code
         self.error_code = error_code
+        # Returns an error message if the call fails.
         self.error_message = error_message
         # Id of the request
         self.request_id = request_id
+        # Return value description.
+        # 
+        # - **true**: Deletion successful.
+        # 
+        # - **false**: Deletion failed.
         self.success = success
 
     def validate(self):
@@ -74,8 +82,11 @@ class DeleteCustomAgentResponseBodyData(DaraModel):
         message: str = None,
         success: bool = None,
     ):
+        # Custom Agent ID
         self.custom_agent_id = custom_agent_id
+        # Deletion operation message
         self.message = message
+        # Is deletion successful?
         self.success = success
 
     def validate(self):

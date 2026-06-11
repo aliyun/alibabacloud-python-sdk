@@ -16,10 +16,19 @@ class BatchDeleteDataLakePartitionsResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The error code returned if the request fails.
         self.error_code = error_code
+        # The error message returned if the request fails.
         self.error_message = error_message
+        # A list of errors.
         self.partition_errors = partition_errors
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # - **true**: The request was successful.
+        # 
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):

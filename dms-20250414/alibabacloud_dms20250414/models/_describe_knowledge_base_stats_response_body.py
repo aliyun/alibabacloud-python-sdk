@@ -14,10 +14,15 @@ class DescribeKnowledgeBaseStatsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The object that contains the knowledge base statistics.
         self.data = data
+        # The error code returned if the request fails.
         self.error_code = error_code
+        # The error message returned if the request fails.
         self.error_message = error_message
+        # The unique ID of the request. Use this ID to troubleshoot errors.
         self.request_id = request_id
+        # Indicates whether the request succeeded. A value of `true` indicates success, and a value of `false` indicates failure.
         self.success = success
 
     def validate(self):
@@ -75,10 +80,15 @@ class DescribeKnowledgeBaseStatsResponseBodyData(DaraModel):
         total_chunk_count: int = None,
         total_file_size: int = None,
     ):
+        # The number of documents in the knowledge base.
         self.document_count = document_count
+        # The number of hits for the knowledge base.
         self.kb_hits = kb_hits
+        # The ID of the knowledge base.
         self.kb_uuid = kb_uuid
+        # The total number of knowledge chunks in the knowledge base.
         self.total_chunk_count = total_chunk_count
+        # The total size of all files in the knowledge base, in bytes.
         self.total_file_size = total_file_size
 
     def validate(self):

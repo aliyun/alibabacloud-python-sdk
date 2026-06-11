@@ -12,9 +12,12 @@ class CreateDataAgentWorkspaceRequest(DaraModel):
         workspace_desc: str = None,
         workspace_name: str = None,
     ):
+        # The DMS unit.
         self.dmsunit = dmsunit
         self.is_session_share_enabled = is_session_share_enabled
+        # The description of the workspace.
         self.workspace_desc = workspace_desc
+        # The name of the workspace.
         self.workspace_name = workspace_name
 
     def validate(self):

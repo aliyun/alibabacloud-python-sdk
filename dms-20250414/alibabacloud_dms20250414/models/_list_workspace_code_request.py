@@ -10,8 +10,12 @@ class ListWorkspaceCodeRequest(DaraModel):
         path: str = None,
         workspace_id: str = None,
     ):
+        # The path of the file or directory.
+        # 
         # This parameter is required.
         self.path = path
+        # The ID of the workspace.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

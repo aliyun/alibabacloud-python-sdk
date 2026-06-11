@@ -14,10 +14,19 @@ class GetDataLakeFunctionResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned if the request fails.
         self.error_code = error_code
+        # The error message returned if the request fails.
         self.error_message = error_message
+        # The details of the function.
         self.function = function
+        # The request ID, used for log tracing and troubleshooting.
         self.request_id = request_id
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # - **true**: The request is successful.
+        # 
+        # - **false**: The request fails.
         self.success = success
 
     def validate(self):

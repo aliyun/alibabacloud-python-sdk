@@ -13,13 +13,21 @@ class GetNotebookAndSubmitTaskRequest(DaraModel):
         session_id: str = None,
         workspace_id: str = None,
     ):
+        # The input parameters for the Notebook file. Pass the parameters in a dictionary format.
+        # 
         # This parameter is required.
         self.params = params
+        # The path of the Notebook file.
+        # 
         # This parameter is required.
         self.path = path
+        # The number of retries if scheduling fails.
         self.retry = retry
+        # The session ID.
+        # 
         # This parameter is required.
         self.session_id = session_id
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):

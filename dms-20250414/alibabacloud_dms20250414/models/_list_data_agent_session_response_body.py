@@ -20,15 +20,27 @@ class ListDataAgentSessionResponseBody(DaraModel):
         total: int = None,
         total_pages: int = None,
     ):
+        # Response data
         self.data = data
+        # Error code. Returned when the request fails.
         self.error_code = error_code
+        # Error message returned when the call fails.
         self.error_message = error_message
+        # Current page number
         self.page_number = page_number
+        # Current page size
         self.page_size = page_size
-        # Id of the request
+        # Request ID
         self.request_id = request_id
+        # Whether the request succeeded. Possible values:
+        # 
+        # - **true**: The request succeeded.
+        # 
+        # - **false**: The request failed.
         self.success = success
+        # Total number of records
         self.total = total
+        # Total number of pages
         self.total_pages = total_pages
 
     def validate(self):
@@ -122,16 +134,27 @@ class ListDataAgentSessionResponseBodyData(DaraModel):
         title: str = None,
         user_id: str = None,
     ):
+        # Current Agent ID
         self.agent_id = agent_id
+        # Current Agent status
         self.agent_status = agent_status
+        # Session creation time
         self.create_time = create_time
+        # Whether the session is saved by the current user in the workspace
         self.favorite_in_workspace = favorite_in_workspace
+        # File ID
         self.file = file
+        # Whether the session is saved by the current user
         self.saved = saved
+        # Session configuration
         self.session_config = session_config
+        # Data Agent session ID
         self.session_id = session_id
+        # Session status
         self.session_status = session_status
+        # Title
         self.title = title
+        # Session owner ID
         self.user_id = user_id
 
     def validate(self):
@@ -226,11 +249,33 @@ class ListDataAgentSessionResponseBodyDataSessionConfig(DaraModel):
         mode: str = None,
         user_oss_bucket: str = None,
     ):
+        # Custom Agent ID
         self.custom_agent_id = custom_agent_id
+        # Custom Agent usage stage:
+        # 
+        # - **debug** Debug stage
+        # 
+        # - **prod** Production stage
         self.custom_agent_stage = custom_agent_stage
+        # Whether web search is enabled
         self.enable_search = enable_search
+        # Language
+        # 
+        # - **CHINESE** Chinese
+        # 
+        # - **ENGLISH** English
         self.language = language
+        # Mode:
+        # 
+        # - **ASK_DATA** Quick Inquiry Mode
+        # 
+        # - **ANALYSIS** Analysis mode
+        # 
+        # - **INSIGHT** Insight mode
         self.mode = mode
+        # User OSS bucket name
+        # 
+        # - Files and reports generated during analysis can be uploaded to the user-specified OSS bucket.
         self.user_oss_bucket = user_oss_bucket
 
     def validate(self):

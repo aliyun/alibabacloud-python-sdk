@@ -16,11 +16,19 @@ class ListCustomAgentResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The returned data.
         self.data = data
+        # The error code.
         self.error_code = error_code
+        # The error message returned if the request fails.
         self.error_message = error_message
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # - **true**: The request was successful.
+        # 
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -78,10 +86,15 @@ class ListCustomAgentResponseBodyData(DaraModel):
         total_elements: int = None,
         total_pages: int = None,
     ):
+        # A list of custom agent objects.
         self.content = content
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of entries.
         self.total_elements = total_elements
+        # The total number of pages.
         self.total_pages = total_pages
 
     def validate(self):
@@ -170,35 +183,61 @@ class ListCustomAgentResponseBodyDataContent(DaraModel):
         web_report_config: str = None,
         workspace_id: str = None,
     ):
+        # The parent Alibaba Cloud account ID.
         self.aliyun_parent_id = aliyun_parent_id
+        # The Alibaba Cloud account ID.
         self.aliyun_uid = aliyun_uid
         self.callback_config = callback_config
+        # The name of the creator.
         self.creator_user_name = creator_user_name
+        # The custom agent ID.
         self.custom_agent_id = custom_agent_id
+        # The current DMS unit.
         self.dmsunit = dmsunit
+        # The data scope, specified as a JSON string.
         self.data_json = data_json
         self.default_agent = default_agent
+        # The description of the custom agent.
         self.description = description
+        # The current DMS unit.
         self.dms_unit = dms_unit
+        # The execution configuration.
         self.execution_config = execution_config
+        # The time when the agent was created.
         self.gmt_created = gmt_created
+        # The time when the agent was last modified.
         self.gmt_modified = gmt_modified
+        # The instructions.
         self.instruction = instruction
+        # Indicates whether the agent is configured with a recurring task.
         self.is_schedule_task = is_schedule_task
+        # The provided knowledge.
         self.knowledge = knowledge
         self.knowledge_config_list = knowledge_config_list
+        # The user who last modified the agent.
         self.modifier = modifier
+        # The name of the user who last modified the agent.
         self.modifier_user_name = modifier_user_name
+        # The name of the custom agent.
         self.name = name
+        # If a recurring task is configured, this indicates its next scheduled runtime.
         self.next_runtime = next_runtime
+        # The time when the agent was taken offline.
         self.offline_time = offline_time
+        # The region.
         self.region = region
         self.related_session_id = related_session_id
+        # The time when the agent was published.
         self.release_time = release_time
+        # The recurring task configuration.
         self.schedule_task_config = schedule_task_config
+        # The status of the custom agent.
         self.status = status
+        # The formatting instructions for the text report.
         self.text_report_config = text_report_config
+        # The formatting instructions for the web report.
         self.web_report_config = web_report_config
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -419,8 +458,11 @@ class ListCustomAgentResponseBodyDataContentScheduleTaskConfig(DaraModel):
         query: str = None,
         related_session_id: str = None,
     ):
+        # The cron expression for the recurring task.
         self.cron_expression = cron_expression
+        # The query for the recurring task.
         self.query = query
+        # The ID of the referenced historical session.
         self.related_session_id = related_session_id
 
     def validate(self):
@@ -506,9 +548,13 @@ class ListCustomAgentResponseBodyDataContentExecutionConfig(DaraModel):
         skip_sql_confirm: bool = None,
         skip_web_report_confirm: bool = None,
     ):
+        # Indicates whether to prevent user inquiries during the process.
         self.skip_ask_human = skip_ask_human
+        # Indicates whether to skip the plan confirmation step.
         self.skip_plan = skip_plan
+        # Indicates whether to skip all SQL confirmations.
         self.skip_sql_confirm = skip_sql_confirm
+        # Indicates whether to skip the confirmation for generating a web report.
         self.skip_web_report_confirm = skip_web_report_confirm
 
     def validate(self):

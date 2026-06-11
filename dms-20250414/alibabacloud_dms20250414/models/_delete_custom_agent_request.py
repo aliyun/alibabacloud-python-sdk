@@ -10,8 +10,11 @@ class DeleteCustomAgentRequest(DaraModel):
         custom_agent_id: str = None,
         workspace_id: str = None,
     ):
+        # Custom Agent ID
+        # 
         # This parameter is required.
         self.custom_agent_id = custom_agent_id
+        # Workspace ID
         self.workspace_id = workspace_id
 
     def validate(self):

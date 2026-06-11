@@ -15,12 +15,17 @@ class WorkspaceCodePublishResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # job
+        # An object that contains the key for the asynchronous code deployment.
         self.data = data
+        # The error code.
         self.error_code = error_code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message returned if the request fails. This parameter is empty on success.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates if the request succeeded.
         self.success = success
 
     def validate(self):
@@ -80,6 +85,7 @@ class WorkspaceCodePublishResponseBodyData(DaraModel):
         self,
         key: str = None,
     ):
+        # The key for the asynchronous code deployment. Use this key to query its status.
         self.key = key
 
     def validate(self):

@@ -16,15 +16,41 @@ class ListDataLakeTableRequest(DaraModel):
         tid: int = None,
         workspace_id: int = None,
     ):
+        # The name of the data catalog.
+        # 
         # This parameter is required.
         self.catalog_name = catalog_name
+        # The name of the database.
+        # 
         # This parameter is required.
         self.db_name = db_name
+        # The number of entries to return on each page. The maximum value is 100.
         self.max_results = max_results
+        # The token used to retrieve the next page of results. To retrieve the next page, set this parameter to the \\`NextToken\\` value from the previous response. If you do not specify this parameter, the first page is returned.
+        # 
+        # - If **NextToken** is empty, there are no more queries.
+        # 
+        # - If **NextToken** has a value, the value is the token to start the next query.
         self.next_token = next_token
+        # The name of the metadata table. This parameter supports regular expressions.
         self.table_name_pattern = table_name_pattern
+        # The type of the table. Valid values:
+        # 
+        # - MANAGED_TABLE: Internal table.
+        # 
+        # - EXTERNAL_TABLE: External table.
+        # 
+        # - VIRTUAL_VIEW: Virtual view.
+        # 
+        # - INDEX_TABLE: Index table.
+        # 
+        # - MATERIALIZED_VIEW: Materialized view.
         self.table_type = table_type
+        # The tenant ID.
+        # 
+        # > Hover over your profile picture in the upper-right corner of the DMS console to obtain the tenant ID. For details, see [View tenant information](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
+        # The ID of the workspace.
         self.workspace_id = workspace_id
 
     def validate(self):

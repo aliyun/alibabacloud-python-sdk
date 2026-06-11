@@ -12,9 +12,15 @@ class DataMountInfo(DaraModel):
         prefix: str = None,
         read_only: bool = None,
     ):
+        # The name of the mount directory. The actual mount path is prefixed with /Workspace/data/.
         self.mount_folder_name = mount_folder_name
+        # The name of the OSS bucket.
         self.oss_bucket = oss_bucket
+        # The prefix. If this parameter is not specified, the root directory is used.
         self.prefix = prefix
+        # Whether to mount the data volume as read-only.
+        # 
+        # Default value: false.
         self.read_only = read_only
 
     def validate(self):

@@ -16,10 +16,15 @@ class DLPartitionInput(DaraModel):
         storage_descriptor: main_models.DLStorageDescriptor = None,
         values: List[str] = None,
     ):
+        # The time when the partition was created. This is a UNIX timestamp in seconds.
         self.create_time = create_time
+        # The time when the partition was last accessed. This is a UNIX timestamp in seconds.
         self.last_access_time = last_access_time
+        # The key-value pair parameters for the partition.
         self.parameters = parameters
+        # The data storage information of the data lakehouse table.
         self.storage_descriptor = storage_descriptor
+        # The partition values.
         self.values = values
 
     def validate(self):

@@ -23,19 +23,34 @@ class SendChatMessageRequest(DaraModel):
         session_config: main_models.SendChatMessageRequestSessionConfig = None,
         session_id: str = None,
     ):
+        # The agent ID. This parameter is required. You can obtain this ID from the response of the `CreateAgentSession` operation. An agent has a lifecycle, so its ID may change with each request.
+        # 
         # This parameter is required.
         self.agent_id = agent_id
+        # The DMS unit where your DMS instance is located. This information is used to connect to your DMS instance for database analysis. You can find this value in the DMS console. For users on the Alibaba Cloud China site, you can enter `cn-hangzhou`.
         self.dmsunit = dmsunit
+        # The data source information. Optional.
         self.data_source = data_source
+        # A list of data sources. Optional.
         self.data_sources = data_sources
+        # The content of the message to send to the agent.
+        # 
         # This parameter is required.
         self.message = message
+        # The message type. The default value is `primary`. Set this parameter to `additional` when responding to a human-in-the-loop question from the agent. Set it to `cancel` to cancel the current session.
         self.message_type = message_type
+        # The parent session ID.
         self.parent_session_id = parent_session_id
+        # This parameter is required if the `MessageType` is `additional`. It contains the specific question asked by the agent during the human-in-the-loop process.
         self.question = question
+        # The quoted content. This parameter is typically used when interacting with the agent.
         self.quoted_message = quoted_message
+        # This parameter specifies the agent message to which this message is a response, enabling message deduplication. Set this to the highest checkpoint sequence number you have received. For the first message, use 0.
         self.reply_to = reply_to
+        # Session-specific configurations. These apply only if provided in the first `SendMessage` request of the session.
         self.session_config = session_config
+        # The session ID. This parameter is required. You can obtain the session ID by calling the `CreateAgentSession` operation.
+        # 
         # This parameter is required.
         self.session_id = session_id
 
@@ -148,10 +163,14 @@ class SendChatMessageRequestSessionConfig(DaraModel):
         mode: str = None,
         report_water_mark: str = None,
     ):
+        # This parameter is deprecated. Use the `CustomAgentId` request parameter from the `CreateAgentSession` operation instead.
         self.custom_agent_id = custom_agent_id
+        # This parameter is deprecated. Use the `CustomAgentStage` request parameter from the `CreateAgentSession` operation instead.
         self.custom_agent_stage = custom_agent_stage
+        # The language of the session. Only Chinese and English are supported. The default value is Chinese. The value must be in uppercase.
         self.language = language
         self.mode = mode
+        # A text watermark of up to 64 characters that will be added to generated PDF reports.
         self.report_water_mark = report_water_mark
 
     def validate(self):
@@ -213,16 +232,27 @@ class SendChatMessageRequestDataSources(DaraModel):
         region_id: str = None,
         tables: List[str] = None,
     ):
+        # This parameter is deprecated. Do not use it.
         self.data_source_id = data_source_id
+        # The data source type. Valid values are `remote_data_center` for file analysis and `database` for database analysis.
         self.data_source_type = data_source_type
+        # This parameter is deprecated. Do not use it.
         self.database = database
+        # The database name.
         self.db_name = db_name
+        # The ID of the database in DMS.
         self.dms_database_id = dms_database_id
+        # The ID of the instance in DMS.
         self.dms_instance_id = dms_instance_id
+        # The database engine type.
         self.engine = engine
+        # The file ID.
         self.file_id = file_id
+        # This parameter is deprecated. Do not use it.
         self.location = location
+        # The region ID.
         self.region_id = region_id
+        # A list of table names to analyze.
         self.tables = tables
 
     def validate(self):
@@ -320,16 +350,27 @@ class SendChatMessageRequestDataSource(DaraModel):
         region_id: str = None,
         tables: List[str] = None,
     ):
+        # This parameter is deprecated. Do not use it.
         self.data_source_id = data_source_id
+        # The data source type. Valid values are `remote_data_center` for file analysis and `database` for database analysis.
         self.data_source_type = data_source_type
+        # This parameter is deprecated. Do not use it.
         self.database = database
+        # The database name.
         self.db_name = db_name
+        # The ID of the database in DMS.
         self.dms_database_id = dms_database_id
+        # The ID of the instance in DMS.
         self.dms_instance_id = dms_instance_id
+        # The database engine type.
         self.engine = engine
+        # The file ID.
         self.file_id = file_id
+        # This parameter is deprecated. Do not use it.
         self.location = location
+        # The region ID.
         self.region_id = region_id
+        # A list of table names to analyze.
         self.tables = tables
 
     def validate(self):

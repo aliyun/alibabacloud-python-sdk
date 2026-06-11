@@ -18,12 +18,19 @@ class ListDataAgentWorkspaceResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The returned data.
         self.data = data
+        # The error code.
         self.error_code = error_code
+        # The error message returned if the request fails.
         self.error_message = error_message
+        # This parameter is not used.
         self.max_results = max_results
+        # This parameter is not used.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -93,10 +100,15 @@ class ListDataAgentWorkspaceResponseBodyData(DaraModel):
         total_elements: int = None,
         total_pages: int = None,
     ):
+        # The details of the workspaces.
         self.content = content
+        # The page number.
         self.page_number = page_number
+        # The number of workspaces on each page.
         self.page_size = page_size
+        # The total number of workspaces.
         self.total_elements = total_elements
+        # The total number of pages.
         self.total_pages = total_pages
 
     def validate(self):
@@ -165,15 +177,24 @@ class ListDataAgentWorkspaceResponseBodyDataContent(DaraModel):
         workspace_name: str = None,
         workspace_status: str = None,
     ):
+        # The creation time of the workspace, provided as a UNIX timestamp in seconds.
         self.create_time = create_time
+        # The creator\\"s user ID (UID).
         self.creator = creator
+        # The description of the workspace.
         self.description = description
         self.is_session_share_enabled = is_session_share_enabled
+        # The last modification time of the workspace, provided as a UNIX timestamp in seconds.
         self.modify_time = modify_time
+        # The name of the user\\"s role in the workspace.
         self.role_name = role_name
+        # The number of members in the workspace.
         self.total_member = total_member
+        # The ID of the workspace.
         self.workspace_id = workspace_id
+        # The name of the workspace.
         self.workspace_name = workspace_name
+        # The status of the workspace.
         self.workspace_status = workspace_status
 
     def validate(self):

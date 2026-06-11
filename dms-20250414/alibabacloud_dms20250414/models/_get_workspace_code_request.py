@@ -11,9 +11,14 @@ class GetWorkspaceCodeRequest(DaraModel):
         path: str = None,
         workspace_id: str = None,
     ):
+        # If the file is in JSON format, set this parameter to `true` to convert the returned content to YAML format.
         self.iac = iac
+        # The path to the code file. For example: `/Workspace/code/test.py`.
+        # 
         # This parameter is required.
         self.path = path
+        # The ID of the workspace.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

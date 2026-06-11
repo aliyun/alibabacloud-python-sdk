@@ -11,9 +11,13 @@ class UpdateKnowledgeBaseRequest(DaraModel):
         kb_uuid: str = None,
         name: str = None,
     ):
+        # The new knowledge base description.
         self.description = description
+        # The knowledge base ID.
+        # 
         # This parameter is required.
         self.kb_uuid = kb_uuid
+        # The new knowledge base name.
         self.name = name
 
     def validate(self):

@@ -15,14 +15,26 @@ class SaveWorkspaceCodeRequest(DaraModel):
         repo: str = None,
         workspace_id: str = None,
     ):
+        # The content of the file.
+        # 
         # This parameter is required.
         self.content = content
+        # Specifies whether to overwrite the file if it already exists. The default value is `true`.
         self.force = force
+        # Specifies whether the file is an IaC template.
         self.iac = iac
+        # The modification time of the file.
+        # 
+        # The time must be in the ISO 8601 format: `yyyy-MM-ddTHH:mm:ssZ`.
         self.mtime = mtime
+        # The publishing configuration, specified as a JSON string. The `repos` array specifies the target repository and branch. The `exclude` array specifies the directories to ignore.
+        # 
         # This parameter is required.
         self.path = path
+        # Information about the repository.
         self.repo = repo
+        # The ID of the workspace.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

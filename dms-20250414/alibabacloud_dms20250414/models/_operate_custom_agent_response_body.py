@@ -14,11 +14,19 @@ class OperateCustomAgentResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Return struct
         self.data = data
+        # Error code.
         self.error_code = error_code
+        # Error message returned when the call fails.
         self.error_message = error_message
         # Id of the request
         self.request_id = request_id
+        # Is the request successful? Return values are as follows:
+        # 
+        # - True: The request is successful.
+        # 
+        # - False: The request failed.
         self.success = success
 
     def validate(self):
@@ -74,8 +82,11 @@ class OperateCustomAgentResponseBodyData(DaraModel):
         message: str = None,
         success: bool = None,
     ):
+        # Custom Agent ID
         self.custom_agent_id = custom_agent_id
+        # Operation message
         self.message = message
+        # Is the operation successful?
         self.success = success
 
     def validate(self):

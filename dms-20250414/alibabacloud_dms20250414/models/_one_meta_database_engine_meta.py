@@ -12,9 +12,13 @@ class OneMetaDatabaseEngineMeta(DaraModel):
         schema_name: str = None,
         storage_capacity: int = None,
     ):
+        # The catalog name.
         self.catalog_name = catalog_name
+        # The character encoding for the database.
         self.encoding = encoding
+        # The schema name.
         self.schema_name = schema_name
+        # The database storage capacity, in GB.
         self.storage_capacity = storage_capacity
 
     def validate(self):

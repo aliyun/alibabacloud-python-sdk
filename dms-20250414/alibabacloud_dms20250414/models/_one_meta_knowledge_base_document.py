@@ -21,18 +21,41 @@ class OneMetaKnowledgeBaseDocument(DaraModel):
         summary: str = None,
         text_splitter_name: str = None,
     ):
+        # The document description.
         self.description = description
+        # The number of chunks.
         self.docs_count = docs_count
+        # The name of the document loader.
         self.document_loader_name = document_loader_name
+        # The file extension.
         self.file_ext = file_ext
+        # The file size, in bytes.
         self.file_size = file_size
+        # When the document was created.
         self.gmt_create = gmt_create
+        # When the document was last modified.
         self.gmt_modified = gmt_modified
+        # The knowledge base ID.
         self.kb_uuid = kb_uuid
+        # Keywords extracted from the document.
         self.keywords = keywords
+        # The document name.
         self.name = name
+        # The document status. Valid values are:
+        # 
+        # - **0**: Complete.
+        # 
+        # - **-1**: Unprocessed.
+        # 
+        # - **-2**: Parsing.
+        # 
+        # - **-3**: Failed.
+        # 
+        # - **-4**: Canceled.
         self.state = state
+        # The summary of the document.
         self.summary = summary
+        # The name of the text splitter.
         self.text_splitter_name = text_splitter_name
 
     def validate(self):

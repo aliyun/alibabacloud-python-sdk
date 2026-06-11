@@ -27,21 +27,37 @@ class DLTableInput(DaraModel):
         view_expanded_text: str = None,
         view_original_text: str = None,
     ):
+        # The time when the table was created.
         self.create_time = create_time
+        # The ID of the user who created the table.
         self.creator_id = creator_id
+        # The description of the table.
         self.description = description
+        # The time when the table was last accessed.
         self.last_access_time = last_access_time
+        # The storage path of the table.
         self.location = location
+        # The user who last modified the table.
         self.modifier_id = modifier_id
+        # The name of the table.
         self.name = name
+        # The owner of the table.
         self.owner = owner
+        # The type of the owner. Valid values: USER, ROLE, and GROUP.
         self.owner_type = owner_type
+        # The key-value pair parameters.
         self.parameters = parameters
+        # The list of attribute columns for the table.
         self.partition_keys = partition_keys
+        # The retention period of the table.
         self.retention = retention
+        # The storage description. This includes the storage features and format details of the table.
         self.storage_descriptor = storage_descriptor
+        # The type of the metadata table. Examples: MANAGED_TABLE, EXTERNAL_TABLE, VIRTUAL_VIEW, INDEX_TABLE, and MATERIALIZED_VIEW.
         self.table_type = table_type
+        # If the table is a view, this parameter indicates the expanded text of the view.
         self.view_expanded_text = view_expanded_text
+        # If the table is a view, this parameter indicates the original text of the view.
         self.view_original_text = view_original_text
 
     def validate(self):

@@ -16,12 +16,23 @@ class GetNotebookTaskStatusResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code. A value of Success indicates that the request was successful.
         self.code = code
+        # The scheduling result.
         self.data = data
+        # The error code.
         self.error_code = error_code
+        # The status code.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # - **true**: The request was successful.
+        # 
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -90,9 +101,13 @@ class GetNotebookTaskStatusResponseBodyData(DaraModel):
         result: str = None,
         status: str = None,
     ):
+        # The URL to preview the scheduling result.
         self.notebook_schedule_preview_url = notebook_schedule_preview_url
+        # The progress of the scheduling task.
         self.progress = progress
+        # The output of the scheduling task.
         self.result = result
+        # The status of the scheduling result.
         self.status = status
 
     def validate(self):

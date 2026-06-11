@@ -23,21 +23,130 @@ class ModifyCustomAgentShrinkRequest(DaraModel):
         web_report_config: str = None,
         workspace_id: str = None,
     ):
+        # The callback configuration.
         self.callback_config_shrink = callback_config_shrink
+        # The ID of the custom agent.
+        # 
         # This parameter is required.
         self.custom_agent_id = custom_agent_id
+        # The current DMS unit.
         self.dmsunit = dmsunit
+        # The data scope for the agent, specified in a **JSON-formatted string**.
+        # 
+        # - General parameters:
+        # 
+        #   - `tableFlag`: Set this to `true` to specify the data scope.
+        # 
+        #   - `scope`: The value must be `personal`.
+        # 
+        #   - `personal`: The parameters for files or databases.
+        # 
+        # **For files**, use the following parameters:
+        # 
+        # - `DataSourceType`: The value must be `remote_data_center`.
+        # 
+        # - `FileId`: The file ID.
+        # 
+        # - `Database`: The database name returned by the `ListDataCenterTable` operation. This is typically the file name.
+        # 
+        # - `Tables`: The table names returned by the `ListDataCenterTable` operation.
+        # 
+        # - `TableIds`: The table IDs returned by the `ListDataCenterTable` operation.
+        # 
+        # - `RegionId`: The current region.
+        # 
+        # ```
+        # {
+        #   "tableFlag": true,
+        #   "scope": "personal",
+        #   "personal": {
+        #     "DataSourceType": "remote_data_center",
+        #     "FileId": "f-f0jksn001ibmkoo********6v2zn6",
+        #     "Database": "diamonds.csv",
+        #     "Tables": [
+        #       "diamonds"
+        #     ],
+        #     "TableIds": [
+        #       "35hfn94pxl********50pi"
+        #     ],
+        #     "RegionId": "cn-hangzhou"
+        #   }
+        # }
+        # ```
+        # 
+        # **For databases**, use the following parameters:
+        # 
+        # - `DataSourceType`: The value must be `database`.
+        # 
+        # - `DmsInstanceId`: The ID of the DMS instance, which is returned by the data center API.
+        # 
+        # - `DmsDatabaseId`: The ID of the DMS database, which is returned by the data center API.
+        # 
+        # - `FileId`: The instance name. This parameter is deprecated.
+        # 
+        # - `DbName`: The database name returned by the data center API.
+        # 
+        # - `Database`: The database name returned by the data center API.
+        # 
+        # - `Tables`: The table names returned by the data center API.
+        # 
+        # - `TableIds`: The table IDs returned by the data center API.
+        # 
+        # - `Engine`: The database engine type. Valid values: `mysql` and `postgresql`.
+        # 
+        # - `RegionId`: The current region.
+        # 
+        # ```
+        # {
+        #   "tableFlag": true,
+        #   "scope": "personal",
+        #   "personal": {
+        #     "DataSourceType": "database",
+        #     "DmsInstanceId": "284***8",
+        #     "DmsDatabaseId": "769***45",
+        #     "FileId": "pgm-bp15095e*******6t",
+        #     "DbName": "pg_catalog",
+        #     "Database": "pg_catalog",
+        #     "Tables": [
+        #       "pg_aggregate"
+        #     ],
+        #     "TableIds": [
+        #       "5263****31"
+        #     ],
+        #     "Engine": "postgresql",
+        #     "RegionId": "cn-hangzhou"
+        #   }
+        # }
+        # ```
         self.data_json = data_json
+        # The description of the custom agent.
         self.description = description
+        # The execution configuration.
         self.execution_config_shrink = execution_config_shrink
+        # The system instruction for the custom agent.
+        # 
+        # - The maximum length is 10,000 characters.
         self.instruction = instruction
+        # A text-based knowledge base for the custom agent.
+        # 
+        # - The maximum length is 10,000 characters.
         self.knowledge = knowledge
+        # The configurations for the external knowledge base.
         self.knowledge_config_list_shrink = knowledge_config_list_shrink
+        # The name of the custom agent.
         self.name = name
         self.related_session_id = related_session_id
+        # The configuration for the scheduled task.
         self.schedule_task_config_shrink = schedule_task_config_shrink
+        # The formatting instructions for the text report.
+        # 
+        # - The maximum length is 10,000 characters.
         self.text_report_config = text_report_config
+        # The formatting instructions for the web report.
+        # 
+        # - The maximum length is 50,000 characters.
         self.web_report_config = web_report_config
+        # The ID of the workspace.
         self.workspace_id = workspace_id
 
     def validate(self):

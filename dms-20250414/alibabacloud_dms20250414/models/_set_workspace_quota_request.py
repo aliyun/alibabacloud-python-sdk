@@ -13,12 +13,20 @@ class SetWorkspaceQuotaRequest(DaraModel):
         region: str = None,
         workspace_id: str = None,
     ):
+        # Specifies whether to enable auto-payment for the order.
         self.auto_pay = auto_pay
+        # A unique, client-generated token to ensure request idempotence. The token can contain only ASCII characters and must be no longer than 64 characters. For more information, see How to ensure idempotence.
         self.client_token = client_token
+        # The compute unit (CU) quota for the workspace.
+        # 
         # This parameter is required.
         self.cu_quota = cu_quota
+        # The ID of the region.
+        # 
         # This parameter is required.
         self.region = region
+        # The ID of the Data Management Service (DMS) workspace.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

@@ -20,19 +20,34 @@ class SendChatMessageShrinkRequest(DaraModel):
         session_config_shrink: str = None,
         session_id: str = None,
     ):
+        # The agent ID. This parameter is required. You can obtain this ID from the response of the `CreateAgentSession` operation. An agent has a lifecycle, so its ID may change with each request.
+        # 
         # This parameter is required.
         self.agent_id = agent_id
+        # The DMS unit where your DMS instance is located. This information is used to connect to your DMS instance for database analysis. You can find this value in the DMS console. For users on the Alibaba Cloud China site, you can enter `cn-hangzhou`.
         self.dmsunit = dmsunit
+        # The data source information. Optional.
         self.data_source_shrink = data_source_shrink
+        # A list of data sources. Optional.
         self.data_sources_shrink = data_sources_shrink
+        # The content of the message to send to the agent.
+        # 
         # This parameter is required.
         self.message = message
+        # The message type. The default value is `primary`. Set this parameter to `additional` when responding to a human-in-the-loop question from the agent. Set it to `cancel` to cancel the current session.
         self.message_type = message_type
+        # The parent session ID.
         self.parent_session_id = parent_session_id
+        # This parameter is required if the `MessageType` is `additional`. It contains the specific question asked by the agent during the human-in-the-loop process.
         self.question = question
+        # The quoted content. This parameter is typically used when interacting with the agent.
         self.quoted_message = quoted_message
+        # This parameter specifies the agent message to which this message is a response, enabling message deduplication. Set this to the highest checkpoint sequence number you have received. For the first message, use 0.
         self.reply_to = reply_to
+        # Session-specific configurations. These apply only if provided in the first `SendMessage` request of the session.
         self.session_config_shrink = session_config_shrink
+        # The session ID. This parameter is required. You can obtain the session ID by calling the `CreateAgentSession` operation.
+        # 
         # This parameter is required.
         self.session_id = session_id
 

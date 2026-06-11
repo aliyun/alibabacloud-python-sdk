@@ -13,10 +13,16 @@ class ListAirflowsRequest(DaraModel):
         skip: int = None,
         workspace_id: str = None,
     ):
+        # The number of entries per page.
         self.max_results = max_results
+        # The token that is used to retrieve the next page of results.
         self.next_token = next_token
+        # The page number. The value starts from 1.
         self.page_index = page_index
+        # The number of records to skip. This is used for paging.
         self.skip = skip
+        # The ID of the DMS workspace.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 
