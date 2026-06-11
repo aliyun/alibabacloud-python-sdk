@@ -25,32 +25,33 @@ class QueryConfigUnified(DaraModel):
         service_id_list: List[str] = None,
         type: str = None,
     ):
-        # 是否启用数据完整性检查
+        # Specifies whether to check for data completeness. A value of `true` enables the check.
         self.enable_data_complete_check = enable_data_complete_check
-        # 实体所属域
+        # Specifies the domain of the entity, such as `acs` for Alibaba Cloud services.
         self.entity_domain = entity_domain
-        # 需要附带返回的实体字段
+        # A list of entity fields to include in the response.
         self.entity_fields = entity_fields
-        # 实体过滤列表
+        # A list of filters for selecting specific entities.
         self.entity_filters = entity_filters
-        # 实体类型
+        # Specifies the type of the entity, such as `EcsInstance`.
         self.entity_type = entity_type
+        # Specifies the expression to post-process query results.
         self.expr = expr
-        # APM 过滤条件列表
+        # A list of Application Performance Monitoring (APM) filter configurations.
         self.filter_list = filter_list
-        # 标签过滤条件
+        # A list of filters that match labels.
         self.label_filters = label_filters
-        # APM 度量配置列表
+        # A list of APM measure configurations.
         self.measure_list = measure_list
-        # 指标名称（type=UMODEL_METRICSET_QUERY）
+        # Specifies the name of the metric to query.
         self.metric = metric
-        # 指标集名称（type=UMODEL_METRICSET_QUERY）
+        # Specifies the metric set that contains the metric.
         self.metric_set = metric_set
-        # Prometheus 查询语句（type=PROMETHEUS_SINGLE_QUERY）
+        # Specifies the query string in Prometheus Query Language (PromQL).
         self.prom_ql = prom_ql
-        # 服务 ID 列表（type=APM_MULTI_QUERY）
+        # A list of service IDs to query.
         self.service_id_list = service_id_list
-        # 查询类型
+        # The query type.
         # 
         # This parameter is required.
         self.type = type

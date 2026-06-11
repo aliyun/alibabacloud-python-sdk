@@ -16,11 +16,15 @@ class ListAlertRobotsResponseBody(DaraModel):
         robots: List[main_models.ListAlertRobotsResponseBodyRobots] = None,
         total: int = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The ID of the robot.
         self.robots = robots
+        # The total number of entries.
         self.total = total
 
     def validate(self):
@@ -87,10 +91,15 @@ class ListAlertRobotsResponseBodyRobots(DaraModel):
         workspace: str = None,
     ):
         self.digital_employee_name = digital_employee_name
+        # The language.
         self.lang = lang
+        # The name of the robot.
         self.name = name
+        # The unique robot ID.
         self.robot_id = robot_id
+        # The robot type.
         self.type = type
+        # The webhook URL.
         self.url = url
         self.workspace = workspace
 

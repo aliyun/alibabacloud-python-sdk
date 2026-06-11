@@ -16,12 +16,15 @@ class ListPrometheusVirtualInstancesResponseBody(DaraModel):
         request_id: str = None,
         total_count: str = None,
     ):
-        # Instance information.
+        # A list of instances.
         self.instances = instances
+        # The maximum number of entries returned on each page.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. If all results are returned, this parameter is left empty.
         self.next_token = next_token
-        # ID of the request
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -86,21 +89,21 @@ class ListPrometheusVirtualInstancesResponseBodyInstances(DaraModel):
         region_id: str = None,
         user_id: str = None,
     ):
-        # Creation time
+        # The creation time.
         self.created_at = created_at
-        # HTTP API URL.
+        # The HTTP API URL.
         self.http_api_url = http_api_url
-        # Applicable data source type: PROMETHEUS_DS
+        # Returned for the `PROMETHEUS_DS` data source type.
         # 
-        # Prometheus instance ID
+        # The Prometheus instance ID.
         self.instance_id = instance_id
-        # Applicable query type: CMS_BASIC_QUERY.
+        # Returned for the `CMS_BASIC_QUERY` query type.
         # 
-        # Namespace of the metric
+        # The namespace of the metric.
         self.namespace = namespace
-        # Region ID.
+        # The region ID.
         self.region_id = region_id
-        # User ID.
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):

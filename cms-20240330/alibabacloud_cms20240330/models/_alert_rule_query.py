@@ -33,80 +33,105 @@ class AlertRuleQuery(DaraModel):
         type: str = None,
     ):
         # Applicable query type: PROMQL_QUERY.
-        # Whether to perform alert evaluation only after data completeness is ensured.
+        # 
+        # Specifies whether to run the alert check only after the data is complete.
         self.check_after_data_complete = check_after_data_complete
         # Applicable query type: CMS_BASIC_QUERY.
-        # List of filtering dimensions for the resource.
+        # 
+        # A list of filter dimensions for the resource.
         self.dimensions = dimensions
-        # 资源所属的领域。
+        # The realm to which the resource belongs.
         self.domain = domain
         # Applicable query type: PROMQL_QUERY.
-        # Duration of alert data, in seconds.
+        # 
+        # The duration for which the alert data persists, in seconds.
         self.duration = duration
+        # An array of entity field filters.
         self.entity_fields = entity_fields
-        # 资源过滤器，用于筛选目标资源。
+        # A resource filter used to screen target resources.
         self.entity_filter = entity_filter
         # Applicable query type: PROMQL_QUERY.
-        # Query expression (PromQL).
+        # 
+        # The query expression (PromQL).
         self.expr = expr
         # Applicable query type: SLS_MULTI_QUERY.
-        # Configuration for the set join operation between the results of subquery 1 (queries[0]) and subquery 2 (queries[1]).
+        # 
+        # The configuration for the join operation on the result sets of subquery 1 (queries[0]) and subquery 2 (queries[1]).
         self.first_join = first_join
         # Applicable query type: SLS_MULTI_QUERY.
-        # List of grouping field names.
+        # 
+        # A list of grouping field names.
         self.group_field_list = group_field_list
         # Applicable query type: CMS_BASIC_QUERY.
-        # Associated application group ID, valid only when relationType = GROUP.
+        # 
+        # The ID of the associated application group. This parameter is valid only when relationType is set to GROUP.
         self.group_id = group_id
         # Applicable query type: SLS_MULTI_QUERY.
-        # Grouping type, with the following possible values:
+        # 
+        # The grouping type. Valid values:
         # 
         # - none: No grouping.
-        # - label: Automatic label grouping.
-        # - custom: Custom label grouping.
+        # 
+        # - label: Automatic grouping by tag.
+        # 
+        # - custom: Custom grouping by tag.
         self.group_type = group_type
+        # An array of label filters.
         self.label_filters = label_filters
         self.mark_tags = mark_tags
-        # 指标名。
+        # The name of the metric.
         self.metric = metric
-        # 监控指标集合。
+        # The collection of metrics.
         self.metric_set = metric_set
         # Applicable query type: CMS_BASIC_QUERY.
-        # Namespace of the metric.
-        self.namespace = namespace
-        # Applicable query types: SLS_MULTI_QUERY, APM_MULTI_QUERY.
-        # List of subqueries.
         # 
-        # For the SLS_MULTI_QUERY type, the list can contain up to three subqueries, and the number and order of subqueries must match the sub-datasource configurations in datasource.dsList.
+        # The namespace of the metric.
+        self.namespace = namespace
+        # Applicable query types: SLS_MULTI_QUERY and APM_MULTI_QUERY.
+        # 
+        # A list of subqueries.
+        # 
+        # For the SLS_MULTI_QUERY type, you can include up to three subqueries. The number and order of subqueries must match the sub-datasource configurations in datasource.dsList.
         self.queries = queries
         # Applicable query type: CMS_BASIC_QUERY.
-        # Resource scope for the rule query, with the following allowed values:
-        # - USER: All resources under the user\\"s UID.
-        # - GROUP: Application group.
-        # - INSTANCE: Specified list of instances.
+        # 
+        # The resource scope for the rule query. Valid values:
+        # 
+        # - USER: All resources under the user ID.
+        # 
+        # - GROUP: An application group.
+        # 
+        # - INSTANCE: A list of specified instances.
         self.relation_type = relation_type
         # Applicable query type: SLS_MULTI_QUERY.
-        # Configuration for the set join operation between the results of subquery 2 (queries[2]) and subquery 3 (queries[3]).
+        # 
+        # The configuration for the join operation on the result sets of subquery 2 (queries[2]) and subquery 3 (queries[3]).
         self.second_join = second_join
-        # Service ID list.
+        # A list of service IDs.
         self.service_ids = service_ids
-        # Query type.
+        # The query type.
         # 
         # Valid values:
         # 
-        # - PROMQL_QUERY: PromQL query
-        # - SLS_MULTI_QUERY: SLS query
-        # - APM_MULTI_QUERY: APM query
-        # - CMS_BASIC_QUERY: Basic CloudMonitor query
+        # - PROMQL_QUERY: A PromQL query.
         # 
-        # The valid fields within the query object vary depending on the query type. Refer to the "Applicable query type" description in each field\\"s documentation for details.
+        # - SLS_MULTI_QUERY: A Simple Log Service (SLS) query.
         # 
-        # The query type must match the data source type, with the following correspondences:
+        # - APM_MULTI_QUERY: An APM query.
+        # 
+        # - CMS_BASIC_QUERY: A basic CloudMonitor query.
+        # 
+        # Different query types have different valid parameters in the query object. For more information, see the "Applicable query type" description for each parameter.
+        # 
+        # The query type must match the data source type. The mappings are as follows:
         # 
         # - Prometheus data source (PROMETHEUS_DS): PROMQL_QUERY
+        # 
         # - APM data source (APM_DS): APM_MULTI_QUERY
+        # 
         # - SLS data source (SLS_MULTI_DS): SLS_MULTI_QUERY
-        # - Basic CloudMonitor data source (CMS_BASIC_DS): CMS_BASIC_QUERY.
+        # 
+        # - Basic CloudMonitor data source (CMS_BASIC_DS): CMS_BASIC_QUERY
         # 
         # This parameter is required.
         self.type = type
@@ -311,38 +336,50 @@ class AlertRuleQueryQueries(DaraModel):
         window: int = None,
     ):
         # Applicable query type: APM_MULTI_QUERY.
-        # ID of the APM predefined metric.
+        # 
+        # The ID of the predefined Application Performance Management (APM) metric.
         self.apm_alert_metric_id = apm_alert_metric_id
         # Applicable query type: ARMS_MULTI_QUERY.
-        # Dimension filter configuration for APM metrics. Must be used in conjunction with apmAlertMetricId.
+        # 
+        # The dimension filter configuration for the APM metric. This parameter must be used with apmAlertMetricId.
         self.apm_filters = apm_filters
         # Applicable query type: ARMS_MULTI_QUERY.
-        # List of aggregation dimensions for the query, i.e., the dimensions by which the metric is aggregated.
+        # 
+        # A list of aggregation dimensions for the query. This specifies the metric dimensions to use for aggregation.
         self.apm_group_by = apm_group_by
         # Applicable query type: ARMS_MULTI_QUERY.
-        # Alert (data) duration.
+        # 
+        # The duration of the alert data.
         self.duration = duration
         # Applicable query type: SLS_MULTI_QUERY.
-        # Time offset end time (relative).
-        # If start and end are specified, do not specify window.
-        self.end = end
-        # Applicable query types: APM_MULTI_QUERY, SLS_MULTI_QUERY.
-        # Query expression.
         # 
-        # - For APM_MULTI_QUERY, this field is optional and contains the PromQL generated for predefined metrics (used for data preview).
-        # - For SLS_MULTI_QUERY, this field contains the SQL query statement.
+        # The relative end time of the time offset.
+        # 
+        # If you specify start and end, do not specify window.
+        self.end = end
+        # Applicable query types: APM_MULTI_QUERY and SLS_MULTI_QUERY.
+        # 
+        # The query expression.
+        # 
+        # - For APM_MULTI_QUERY, this parameter is optional. It is the PromQL expression generated for a predefined metric, used for data preview.
+        # 
+        # - For SLS_MULTI_QUERY, this parameter is the SQL search statement.
         self.expr = expr
         self.name = name
         self.prom_ql = prom_ql
         # Applicable query type: SLS_MULTI_QUERY.
-        # SLS query time offset start time (relative).
-        # If start and end are specified, do not specify window. For example: start=15, timeUnit=minute, which means 15 minutes ago.
+        # 
+        # The relative start time of the time offset for an SLS query.
+        # 
+        # If you specify start and end, do not specify window. For example, if start is 15 and timeUnit is minute, the time offset starts 15 minutes ago.
         self.start = start
         # Applicable query type: SLS_MULTI_QUERY.
-        # Time units for the start, end, and window parameters: day/hour/minute/second.
+        # 
+        # The time unit for the start, end, and window parameters. Valid values: day, hour, minute, and second.
         self.time_unit = time_unit
         # Applicable query type: SLS_MULTI_QUERY.
-        # Exact-hour time query interval. If window is specified, start and end should not be specified.
+        # 
+        # The query interval for a time frame. If you specify window, do not specify start and end.
         self.window = window
 
     def validate(self):
@@ -440,16 +477,19 @@ class AlertRuleQueryQueriesApmFilters(DaraModel):
         type: str = None,
         value: str = None,
     ):
-        # Dimension in APM metrics.
+        # The dimension in the APM metric.
         self.dim = dim
-        # Filter operation types:
+        # The filter operation type:
         # 
-        # - eq: equals.
-        # - neq: not equals.
-        # - match: regular expression match.
-        # - nmatch: regular expression not match.
+        # - eq: Equal to
+        # 
+        # - neq: Not equal to
+        # 
+        # - match: Regular expression match
+        # 
+        # - nmatch: Regular expression non-match
         self.type = type
-        # The corresponding value for the filter operation.
+        # The value that corresponds to the filter operation.
         self.value = value
 
     def validate(self):
@@ -526,8 +566,11 @@ class AlertRuleQueryLabelFilters(DaraModel):
         operator: str = None,
         value: str = None,
     ):
+        # The name of the label.
         self.name = name
+        # The comparison operator that determines how to match the label value.
         self.operator = operator
+        # The value of the label.
         self.value = value
 
     def validate(self):
@@ -569,11 +612,11 @@ class AlertRuleQueryEntityFilter(DaraModel):
         filters: List[main_models.AlertRuleQueryEntityFilterFilters] = None,
         type: str = None,
     ):
-        # 资源类型域。
+        # The domain of the resource type.
         self.domain = domain
-        # 过滤条件列表，用于进一步筛选资源。
+        # A list of filter conditions to further screen resources.
         self.filters = filters
-        # 资源类型。
+        # The resource type.
         self.type = type
 
     def validate(self):
@@ -623,11 +666,11 @@ class AlertRuleQueryEntityFilterFilters(DaraModel):
         operator: str = None,
         value: str = None,
     ):
-        # 字段
+        # The field.
         self.field = field
-        # 比较运算符。
+        # The comparison operator.
         self.operator = operator
-        # 匹配的值。
+        # The value to match.
         self.value = value
 
     def validate(self):
@@ -668,7 +711,9 @@ class AlertRuleQueryEntityFields(DaraModel):
         field: str = None,
         value: str = None,
     ):
+        # The name of the entity field.
         self.field = field
+        # The value of the field.
         self.value = value
 
     def validate(self):

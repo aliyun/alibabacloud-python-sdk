@@ -18,22 +18,23 @@ class ServerResponseManageAlertRulesResult(DaraModel):
         success: bool = None,
         total: int = None,
     ):
-        # 响应码
+        # The operation status code.
         self.code = code
+        # The result of the operation.
         self.data = data
-        # 错误消息
+        # A message detailing the outcome of the request, such as a success message or an error description.
         self.message = message
-        # 分页 Token
+        # The token used to retrieve the next page of results. If the token is not returned, there are no more results.
         self.next_token = next_token
-        # 页码
+        # The current page number.
         self.page_number = page_number
-        # 每页大小
+        # The number of entries per page.
         self.page_size = page_size
-        # 请求 ID
+        # The unique ID for the request. Provide this ID when contacting support for assistance.
         self.request_id = request_id
-        # 是否成功
+        # Indicates whether the request succeeded (`true`) or failed (`false`).
         self.success = success
-        # 总数
+        # The total number of entries that match the query.
         self.total = total
 
     def validate(self):

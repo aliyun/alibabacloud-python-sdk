@@ -16,10 +16,15 @@ class ListContextStoresResponseBody(DaraModel):
         results: List[main_models.ListContextStoresResponseBodyResults] = None,
         total: int = None,
     ):
+        # The maximum number of results returned per page.
         self.max_results = max_results
+        # The token to retrieve the next page of results. If this field is empty, all results have been returned.
         self.next_token = next_token
+        # The unique ID of the request.
         self.request_id = request_id
+        # A list of context stores.
         self.results = results
+        # The total number of context stores.
         self.total = total
 
     def validate(self):
@@ -86,15 +91,25 @@ class ListContextStoresResponseBodyResults(DaraModel):
         update_time: str = None,
         workspace: str = None,
     ):
+        # The name of the context store.
         self.context_store_name = context_store_name
+        # The context type.
         self.context_type = context_type
+        # The creation time of the context store. The value is a Unix timestamp in milliseconds.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.create_time = create_time
+        # The description of the context store.
         self.description = description
+        # The region ID.
         self.region_id = region_id
+        # The status of the context store.
         self.status = status
+        # The last update time of the context store. The value is a Unix timestamp in milliseconds.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.update_time = update_time
+        # The ID of the workspace.
         self.workspace = workspace
 
     def validate(self):

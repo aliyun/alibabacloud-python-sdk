@@ -13,10 +13,15 @@ class CustomExtractionStrategy(DaraModel):
         strategy_type: str = None,
         update_prompt: str = None,
     ):
+        # Description
         self.description = description
+        # Extraction prompt
         self.extraction_prompt = extraction_prompt
+        # Policy Name
         self.strategy_name = strategy_name
+        # Policy type. Supports "Episodic", "Summary", and "Fact".
         self.strategy_type = strategy_type
+        # Update prompt
         self.update_prompt = update_prompt
 
     def validate(self):

@@ -21,16 +21,26 @@ class SearchMemoriesRequest(DaraModel):
         top_k: int = None,
         user_id: str = None,
     ):
+        # The agent ID.
         self.agent_id = agent_id
+        # The app ID assigned by the merchant.
         self.app_id = app_id
+        # The filter conditions.
         self.filters = filters
+        # The query text.
         self.query = query
+        # Specifies whether to rerank the search results.
         self.rerank = rerank
         self.retrieval_option = retrieval_option
+        # The run ID.
         self.run_id = run_id
+        # The search type.
         self.search_type = search_type
+        # The similarity threshold.
         self.threshold = threshold
+        # The number of top-K results to return.
         self.top_k = top_k
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):

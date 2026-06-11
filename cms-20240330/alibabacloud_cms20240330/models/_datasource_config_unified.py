@@ -11,11 +11,11 @@ class DatasourceConfigUnified(DaraModel):
         region_id: str = None,
         type: str = None,
     ):
-        # Prometheus 实例 ID（type=PROMETHEUS 时使用）
+        # The unique instance ID.
         self.instance_id = instance_id
-        # 地域 ID（各类型可选，缺省与规则/网关一致）
+        # The region ID.
         self.region_id = region_id
-        # 数据源类型
+        # The type of the data source.
         # 
         # This parameter is required.
         self.type = type

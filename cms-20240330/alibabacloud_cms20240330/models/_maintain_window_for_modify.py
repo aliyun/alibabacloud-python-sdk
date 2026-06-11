@@ -18,21 +18,21 @@ class MaintainWindowForModify(DaraModel):
         maintain_window_name: str = None,
         start_time: str = None,
     ):
-        # Description.
+        # The description.
         self.description = description
-        # Effective time range.
+        # The effective time range.
         self.effect_time_range = effect_time_range
-        # Crontab expression.
+        # The Crontab expression.
         self.effective = effective
-        # Effective end time.
+        # The time when the policy stops taking effect.
         self.end_time = end_time
-        # Filtering conditions.
+        # The filter conditions.
         self.filter_setting = filter_setting
-        # Name.
+        # The name.
         # 
         # This parameter is required.
         self.maintain_window_name = maintain_window_name
-        # Effective start time.
+        # The time when the policy starts to take effect.
         self.start_time = start_time
 
     def validate(self):
@@ -104,13 +104,13 @@ class MaintainWindowForModifyEffectTimeRange(DaraModel):
         start_time_in_minute: int = None,
         time_zone: str = None,
     ):
-        # Effective days (Monday to Sunday).
+        # The days of the week when the policy is effective (Monday to Sunday).
         self.day_in_week = day_in_week
-        # End time (in minutes).
+        # The end time in minutes.
         self.end_time_in_minute = end_time_in_minute
-        # Start time (in minutes).
+        # The start time in minutes.
         self.start_time_in_minute = start_time_in_minute
-        # Time zone.
+        # The time zone.
         self.time_zone = time_zone
 
     def validate(self):

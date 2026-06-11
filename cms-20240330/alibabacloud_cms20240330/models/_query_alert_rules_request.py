@@ -13,9 +13,13 @@ class QueryAlertRulesRequest(DaraModel):
         max_results: int = None,
         next_token: str = None,
     ):
+        # The request parameters for querying alert rules.
         self.body = body
+        # The client token used to ensure the idempotency of the request.
         self.client_token = client_token
+        # The maximum number of results to return per page.
         self.max_results = max_results
+        # The token used to retrieve the next page of results. If you do not specify this parameter, the query starts from the beginning.
         self.next_token = next_token
 
     def validate(self):

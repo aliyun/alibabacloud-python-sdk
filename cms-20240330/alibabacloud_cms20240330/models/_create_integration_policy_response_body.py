@@ -12,11 +12,11 @@ class CreateIntegrationPolicyResponseBody(DaraModel):
         policy: main_models.CreateIntegrationPolicyResponseBodyPolicy = None,
         request_id: str = None,
     ):
-        # Whether it is created.
+        # Indicates whether the policy was created.
         self.created = created
-        # Uploaded policy.
+        # The upload policy.
         self.policy = policy
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -64,19 +64,19 @@ class CreateIntegrationPolicyResponseBodyPolicy(DaraModel):
         user_id: str = None,
         workspace: str = None,
     ):
-        # Entity group ID.
+        # The entity group ID.
         self.entity_group_id = entity_group_id
-        # Policy ID.
+        # The policy ID.
         self.policy_id = policy_id
-        # Policy name.
+        # The policy name.
         self.policy_name = policy_name
-        # Policy type.
+        # The policy type.
         self.policy_type = policy_type
-        # Region ID.
+        # The region.
         self.region_id = region_id
-        # User ID.
+        # The user ID.
         self.user_id = user_id
-        # The workspace where the Policy resides.
+        # The workspace where the policy resides.
         self.workspace = workspace
 
     def validate(self):

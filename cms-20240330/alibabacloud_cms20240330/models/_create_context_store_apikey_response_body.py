@@ -11,8 +11,11 @@ class CreateContextStoreAPIKeyResponseBody(DaraModel):
         name: str = None,
         request_id: str = None,
     ):
+        # The value of the API key. This value is returned only upon creation. Store it in a secure location.
         self.api_key = api_key
+        # The display name of the API key.
         self.name = name
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

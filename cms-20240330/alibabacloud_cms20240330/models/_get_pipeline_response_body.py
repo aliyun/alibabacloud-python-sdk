@@ -22,18 +22,31 @@ class GetPipelineResponseBody(DaraModel):
         update_time: str = None,
         workspace: str = None,
     ):
+        # The creation time.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.create_time = create_time
+        # The description of the pipeline.
         self.description = description
+        # The execution policy.
         self.execute_policy = execute_policy
+        # The pipeline configuration.
         self.pipeline = pipeline
+        # The pipeline name.
         self.pipeline_name = pipeline_name
+        # The region ID.
         self.region_id = region_id
+        # The request ID.
         self.request_id = request_id
+        # The pipeline\\"s data sink.
         self.sink = sink
+        # The pipeline\\"s data source.
         self.source = source
+        # The update time.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.update_time = update_time
+        # The workspace ID.
         self.workspace = workspace
 
     def validate(self):
@@ -133,7 +146,9 @@ class GetPipelineResponseBodySource(DaraModel):
         logstore: main_models.GetPipelineResponseBodySourceLogstore = None,
         type: str = None,
     ):
+        # The configuration of the Log Service Logstore.
         self.logstore = logstore
+        # The type of the data source.
         self.type = type
 
     def validate(self):
@@ -171,7 +186,9 @@ class GetPipelineResponseBodySourceLogstore(DaraModel):
         project: str = None,
         query: str = None,
     ):
+        # The name of the Log Service Logstore.
         self.logstore = logstore
+        # The name of the Log Service project.
         self.project = project
         self.query = query
 
@@ -213,7 +230,9 @@ class GetPipelineResponseBodySink(DaraModel):
         dataset: main_models.GetPipelineResponseBodySinkDataset = None,
         type: str = None,
     ):
+        # The dataset configuration.
         self.dataset = dataset
+        # The sink type.
         self.type = type
 
     def validate(self):
@@ -250,7 +269,9 @@ class GetPipelineResponseBodySinkDataset(DaraModel):
         dataset: str = None,
         workspace: str = None,
     ):
+        # The dataset name.
         self.dataset = dataset
+        # The workspace ID.
         self.workspace = workspace
 
     def validate(self):
@@ -284,6 +305,7 @@ class GetPipelineResponseBodyPipeline(DaraModel):
         self,
         nodes: List[main_models.GetPipelineResponseBodyPipelineNodes] = None,
     ):
+        # The nodes in the pipeline.
         self.nodes = nodes
 
     def validate(self):
@@ -321,8 +343,11 @@ class GetPipelineResponseBodyPipelineNodes(DaraModel):
         parameters: Dict[str, Any] = None,
         type: str = None,
     ):
+        # The node ID.
         self.id = id
+        # The parameters for the node.
         self.parameters = parameters
+        # The node type.
         self.type = type
 
     def validate(self):
@@ -364,8 +389,11 @@ class GetPipelineResponseBodyExecutePolicy(DaraModel):
         run_once: main_models.GetPipelineResponseBodyExecutePolicyRunOnce = None,
         scheduled: main_models.GetPipelineResponseBodyExecutePolicyScheduled = None,
     ):
+        # The execution mode.
         self.mode = mode
+        # The configuration for a one-time execution.
         self.run_once = run_once
+        # The configuration for a scheduled execution.
         self.scheduled = scheduled
 
     def validate(self):
@@ -411,7 +439,9 @@ class GetPipelineResponseBodyExecutePolicyScheduled(DaraModel):
         from_time: int = None,
         interval: str = None,
     ):
+        # The start time of the execution, as a Unix timestamp.
         self.from_time = from_time
+        # The execution interval in seconds.
         self.interval = interval
 
     def validate(self):
@@ -446,7 +476,9 @@ class GetPipelineResponseBodyExecutePolicyRunOnce(DaraModel):
         from_time: int = None,
         to_time: int = None,
     ):
+        # The start time of the execution, as a Unix timestamp.
         self.from_time = from_time
+        # The end time of the execution, as a Unix timestamp.
         self.to_time = to_time
 
     def validate(self):

@@ -13,8 +13,11 @@ class NotifyChannel(DaraModel):
         enabled_sub_channels: List[str] = None,
         receivers: List[str] = None,
     ):
+        # The type of the notification channel.
         self.channel_type = channel_type
+        # The list of enabled sub-channels.
         self.enabled_sub_channels = enabled_sub_channels
+        # The list of receivers.
         self.receivers = receivers
 
     def validate(self):

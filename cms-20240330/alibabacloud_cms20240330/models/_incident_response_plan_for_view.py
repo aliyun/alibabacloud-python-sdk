@@ -26,20 +26,35 @@ class IncidentResponsePlanForView(DaraModel):
         uuid: str = None,
         workspace: str = None,
     ):
+        # The automatic recovery time.
         self.auto_recover_seconds = auto_recover_seconds
+        # The time when the plan was created.
         self.create_time = create_time
+        # The description of the response plan.
         self.description = description
+        # Indicates whether the response plan is enabled.
         self.enabled = enabled
+        # A list of the IDs of associated escalation policies.
         self.escalation_id = escalation_id
+        # The response pattern.
         self.mode = mode
+        # The name of the response plan.
         self.name = name
+        # The push notification settings.
         self.pushing_setting = pushing_setting
+        # The settings for repeated notifications.
         self.repeat_notify_setting = repeat_notify_setting
+        # The source.
         self.source = source
+        # The source type of the synchronization policy.
         self.sync_from_type = sync_from_type
+        # The type of the response plan.
         self.type = type
+        # The time when the plan was last updated.
         self.update_time = update_time
+        # The globally unique identifier.
         self.uuid = uuid
+        # The workspace.
         self.workspace = workspace
 
     def validate(self):

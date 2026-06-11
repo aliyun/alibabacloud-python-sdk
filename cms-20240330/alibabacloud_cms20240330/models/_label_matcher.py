@@ -10,7 +10,9 @@ class LabelMatcher(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The label key to match.
         self.key = key
+        # The label value to match.
         self.value = value
 
     def validate(self):

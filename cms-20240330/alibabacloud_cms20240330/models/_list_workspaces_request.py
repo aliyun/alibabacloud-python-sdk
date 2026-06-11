@@ -15,19 +15,15 @@ class ListWorkspacesRequest(DaraModel):
         workspace_name: str = None,
         workspace_name_list: List[str] = None,
     ):
-        # Page size
-        # Default value:
-        # 	50
-        # Maximum value:
-        # 	50
+        # The number of entries to return on each page. Default value: 50. Maximum value: 50.
         self.max_results = max_results
-        # Pagination Token
+        # The token for the next page of results.
         self.next_token = next_token
-        # Region
+        # The region.
         self.region = region
-        # Workspace name, fuzzy search
+        # The name of the workspace. This parameter supports fuzzy search.
         self.workspace_name = workspace_name
-        # Workspace name, exact match
+        # The names of the workspaces. This parameter supports exact search.
         self.workspace_name_list = workspace_name_list
 
     def validate(self):

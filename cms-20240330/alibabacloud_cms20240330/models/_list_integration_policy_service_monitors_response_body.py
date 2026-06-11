@@ -15,9 +15,13 @@ class ListIntegrationPolicyServiceMonitorsResponseBody(DaraModel):
         request_id: str = None,
         service_monitors: List[main_models.ListIntegrationPolicyServiceMonitorsResponseBodyServiceMonitors] = None,
     ):
+        # The cluster ID.
         self.cluster_id = cluster_id
+        # The policy ID.
         self.policy_id = policy_id
+        # The request ID.
         self.request_id = request_id
+        # The list of ServiceMonitors.
         self.service_monitors = service_monitors
 
     def validate(self):
@@ -80,15 +84,25 @@ class ListIntegrationPolicyServiceMonitorsResponseBodyServiceMonitors(DaraModel)
         name: str = None,
         namespace: str = None,
     ):
+        # The add-on name.
         self.addon_name = addon_name
+        # The name of the add-on release.
         self.addon_release_name = addon_release_name
+        # The add-on version.
         self.addon_version = addon_version
+        # The configuration YAML file.
         self.config_yaml = config_yaml
+        # The status.
         self.enable_status = enable_status
+        # Indicates whether the YAML file is encrypted.
         self.encrypt_yaml = encrypt_yaml
+        # The list of Endpoints.
         self.endpoints = endpoints
+        # The number of matched services.
         self.matched_service_count = matched_service_count
+        # The name of the ServiceMonitor.
         self.name = name
+        # The namespace.
         self.namespace = namespace
 
     def validate(self):
@@ -182,10 +196,15 @@ class ListIntegrationPolicyServiceMonitorsResponseBodyServiceMonitorsEndpoints(D
         port: str = None,
         target_port: str = None,
     ):
+        # The collection interval.
         self.interval = interval
+        # The number of matched targets.
         self.matched_target_count = matched_target_count
+        # The collection path.
         self.path = path
+        # The collection port.
         self.port = port
+        # The target port.
         self.target_port = target_port
 
     def validate(self):

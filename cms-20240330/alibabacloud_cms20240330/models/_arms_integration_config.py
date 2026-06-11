@@ -9,7 +9,7 @@ class ArmsIntegrationConfig(DaraModel):
         self,
         enabled: bool = None,
     ):
-        # 是否启用 ARMS 集成
+        # Whether ARMS integration is enabled.
         self.enabled = enabled
 
     def validate(self):

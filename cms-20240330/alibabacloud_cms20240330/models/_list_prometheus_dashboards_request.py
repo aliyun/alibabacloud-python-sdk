@@ -10,9 +10,9 @@ class ListPrometheusDashboardsRequest(DaraModel):
         aliyun_lang: str = None,
         resource_group_id: str = None,
     ):
-        # Language environment, default is Chinese zh | en
+        # The language of the response. Valid values: zh and en. The default value is zh.
         self.aliyun_lang = aliyun_lang
-        # Resource Group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):

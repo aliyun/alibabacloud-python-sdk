@@ -22,17 +22,29 @@ class MergeContact(DaraModel):
         phone_verify: bool = None,
         source: str = None,
     ):
+        # The email address.
         self.email = email
+        # Specifies whether the email address is authenticated.
         self.email_verify = email_verify
+        # An extension field used to store additional information.
         self.extend = extend
+        # The time when the contact was created.
         self.gmt_create = gmt_create
+        # The time when the contact was last modified.
         self.gmt_modified = gmt_modified
+        # The unique identifier of the contact.
         self.identifier = identifier
+        # The language preference.
         self.lang = lang
+        # The name of the contact.
         self.name = name
+        # The mobile phone number.
         self.phone = phone
+        # The country code for the mobile phone number.
         self.phone_code = phone_code
+        # Specifies whether the mobile phone number is authenticated.
         self.phone_verify = phone_verify
+        # The source system of the contact.
         self.source = source
 
     def validate(self):

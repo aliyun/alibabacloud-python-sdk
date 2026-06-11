@@ -33,27 +33,49 @@ class CmsEventForView(DaraModel):
         workspace: str = None,
         workspace_tags: Dict[str, Any] = None,
     ):
+        # Additional annotations for the event. This is an unstructured description field.
         self.annotations = annotations
+        # The raw data of the event. The format depends on the event type and dataschema.
         self.data = data
+        # The content type of the data field.
         self.datacontenttype = datacontenttype
+        # The data schema definition, which describes the structure of the data field.
         self.dataschema = dataschema
+        # The deduplication ID. It identifies different instances of the same event, such as a repeatedly reported event.
         self.dedup_id = dedup_id
+        # The unique identifier for the event. The system generates this globally unique ID.
         self.id = id
+        # The unique integration identifier. It is used for identity recognition in cross-system integrations.
         self.integration_uuid = integration_uuid
+        # The key-value pairs of the event labels.
         self.labels = labels
+        # The timestamp when the event was received and processed.
         self.receive_time = receive_time
+        # Information about the resource associated with the event, such as the instance ID, IP address, and region.
         self.resource = resource
+        # The severity level of the event.
         self.severity = severity
+        # The name of the source system or service, such as ECS, RDS, or VPC.
         self.source = source
+        # The type of event source. It distinguishes between sources such as monitoring systems, Simple Log Service, and application observability.
         self.sourcetype = sourcetype
+        # The current status of the event.
         self.status = status
+        # The subject or title of the event. It briefly describes the event.
         self.subject = subject
+        # The event subtype.
         self.subtype = subtype
+        # The internal system event ID. It is used for internal tracking and log association.
         self.sys_id = sys_id
+        # The time when the event occurred.
         self.time = time
+        # The timestamp of the event occurrence.
         self.timestamp = timestamp
+        # The event type.
         self.type = type
+        # The ID or name of the workspace. It is used for multi-tenant or organization fencing.
         self.workspace = workspace
+        # The workspace tags. They help you manage events by tag.
         self.workspace_tags = workspace_tags
 
     def validate(self):

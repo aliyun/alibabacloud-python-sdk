@@ -15,10 +15,15 @@ class UpdateContextRequest(DaraModel):
         payload: Dict[str, Any] = None,
         trigger_condition: str = None,
     ):
+        # The updated text for the long-term memory.
         self.content = content
+        # The experience object.
         self.experience = experience
+        # A set of key-value pairs to attach to an object for storing custom information.
         self.metadata = metadata
+        # The payload to update.
         self.payload = payload
+        # The trigger condition.
         self.trigger_condition = trigger_condition
 
     def validate(self):

@@ -9,6 +9,8 @@ class UpdatePrometheusUserSettingRequest(DaraModel):
         self,
         setting_value: str = None,
     ):
+        # The value of the user setting.
+        # 
         # This parameter is required.
         self.setting_value = setting_value
 

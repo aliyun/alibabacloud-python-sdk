@@ -18,19 +18,19 @@ class UpdatePrometheusViewRequest(DaraModel):
         status: str = None,
         workspace: str = None,
     ):
-        # Password-free read policy (supports IP segments and VpcId).
+        # The policy for password-free read access. IP address segments and VPC IDs are supported.
         self.auth_free_read_policy = auth_free_read_policy
-        # Whether to support password-free read.
+        # Specifies whether to enable password-free read access.
         self.enable_auth_free_read = enable_auth_free_read
-        # Whether to support authToken.
+        # Specifies whether to enable authentication tokens.
         self.enable_auth_token = enable_auth_token
-        # List of Prometheus instances.
+        # A list of Prometheus instances.
         self.prometheus_instances = prometheus_instances
-        # Prometheus view name.
+        # The name of the Prometheus view.
         self.prometheus_view_name = prometheus_view_name
-        # Running status.
+        # The status of the Prometheus view.
         self.status = status
-        # Belonging workspace.
+        # The workspace to which the view belongs.
         self.workspace = workspace
 
     def validate(self):
@@ -104,11 +104,11 @@ class UpdatePrometheusViewRequestPrometheusInstances(DaraModel):
         region_id: str = None,
         user_id: str = None,
     ):
-        # Instance ID.
+        # The instance ID.
         self.prometheus_instance_id = prometheus_instance_id
-        # Region.
+        # The region ID.
         self.region_id = region_id
-        # User ID.
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):

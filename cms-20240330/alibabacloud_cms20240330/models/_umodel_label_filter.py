@@ -11,11 +11,11 @@ class UmodelLabelFilter(DaraModel):
         operator: str = None,
         value: str = None,
     ):
-        # 标签名
+        # The key of the label used for filtering.
         self.name = name
-        # 标签过滤操作符，仅支持 = 或 !=
+        # The logical operator used to compare the label\\"s value.
         self.operator = operator
-        # 标签值
+        # The value of the label to match.
         self.value = value
 
     def validate(self):

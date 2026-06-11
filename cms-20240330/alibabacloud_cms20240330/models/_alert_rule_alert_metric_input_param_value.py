@@ -10,8 +10,12 @@ class AlertRuleAlertMetricInputParamValue(DaraModel):
         name: str = None,
         value: str = None,
     ):
+        # The name of the predefined metric parameter.
+        # 
         # This parameter is required.
         self.name = name
+        # The value of the predefined metric parameter.
+        # 
         # This parameter is required.
         self.value = value
 

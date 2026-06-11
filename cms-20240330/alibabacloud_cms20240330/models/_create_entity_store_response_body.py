@@ -10,9 +10,9 @@ class CreateEntityStoreResponseBody(DaraModel):
         request_id: str = None,
         workspace_name: str = None,
     ):
-        # request ID
+        # The request ID.
         self.request_id = request_id
-        # workspace name
+        # The name of the workspace.
         self.workspace_name = workspace_name
 
     def validate(self):

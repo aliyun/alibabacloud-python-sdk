@@ -10,9 +10,9 @@ class Pagination(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # 页码（从 1 开始）
+        # The current page number.
         self.page_number = page_number
-        # 每页数量
+        # The number of entries returned per page.
         self.page_size = page_size
 
     def validate(self):

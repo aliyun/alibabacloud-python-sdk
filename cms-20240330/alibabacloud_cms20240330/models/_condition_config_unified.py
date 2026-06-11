@@ -20,23 +20,23 @@ class ConditionConfigUnified(DaraModel):
         threshold_list: List[main_models.ApmThresholdConfig] = None,
         type: str = None,
     ):
-        # 聚合函数（APM_SIMPLE_CONDITION）
+        # The aggregation method for metric data points over the evaluation period. Valid values include `AVG`, `SUM`, and `MAX`.
         self.aggregate = aggregate
-        # 多条比较（APM_COMPOSITE_CONDITION）
+        # A list of composite comparison configurations for APM alerts. Each item is an `ApmCompositeCompareConfig` object.
         self.compare_list = compare_list
-        # 持续时间（秒），PROMETHEUS_SIMPLE / UMODEL_METRICSET 使用
+        # The number of seconds a condition must be true before triggering an alert.
         self.duration_secs = duration_secs
-        # 比较操作符（UMODEL_METRICSET_CONDITION 或 APM_SIMPLE_CONDITION）
+        # The comparison operator used to evaluate the metric against the threshold.
         self.operator = operator
-        # 条件间逻辑关系（APM_COMPOSITE_CONDITION）
+        # The logical relationship between multiple conditions. Valid values are `AND` and `OR`.
         self.relation = relation
-        # 严重等级（UMODEL / PROMETHEUS_SIMPLE / APM_COMPOSITE）
+        # The alert severity. Valid values are `CRITICAL`, `WARNING`, and `INFO`.
         self.severity = severity
-        # 阈值（UMODEL_METRICSET_CONDITION）
+        # The value against which the metric is evaluated to trigger an alert.
         self.threshold = threshold
-        # 多阈值列表（APM_SIMPLE_CONDITION）
+        # A list of threshold configurations for Application Performance Monitoring (APM) alerts. Each item is an `ApmThresholdConfig` object.
         self.threshold_list = threshold_list
-        # 检测条件类型
+        # The type of the alert condition.
         # 
         # This parameter is required.
         self.type = type

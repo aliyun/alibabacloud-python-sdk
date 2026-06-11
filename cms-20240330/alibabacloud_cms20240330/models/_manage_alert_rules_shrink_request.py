@@ -9,6 +9,7 @@ class ManageAlertRulesShrinkRequest(DaraModel):
         self,
         body_shrink: str = None,
     ):
+        # A unified request body for managing alert rules with the CREATE, UPDATE, PATCH, and BATCH_DELETE actions. The required fields depend on the specified action.
         self.body_shrink = body_shrink
 
     def validate(self):

@@ -15,9 +15,14 @@ class IncidentEscalationPolicyForModify(DaraModel):
         escalation_stage_list: List[main_models.IncidentEscalationStageForView] = None,
         name: str = None,
     ):
+        # The description.
         self.description = description
+        # Indicates whether the policy is enabled.
         self.enable = enable
+        # The list of escalation stages. This list defines multiple progressive escalation steps. Each stage contains trigger conditions and notification targets.
         self.escalation_stage_list = escalation_stage_list
+        # The name.
+        # 
         # This parameter is required.
         self.name = name
 

@@ -19,14 +19,23 @@ class ListContactsRequest(DaraModel):
         query_ungrouped_contacts: bool = None,
         workspace: str = None,
     ):
+        # The contact IDs.
         self.contact_ids = contact_ids
+        # The email address of the contact.
         self.email = email
+        # The ID of the contact group.
         self.group_id = group_id
+        # The contact name.
         self.name = name
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of entries to return on each page. Default value: 100.
         self.page_size = page_size
+        # The mobile number of the contact.
         self.phone = phone
+        # Specifies whether to query only ungrouped contacts.
         self.query_ungrouped_contacts = query_ungrouped_contacts
+        # The workspace ID.
         self.workspace = workspace
 
     def validate(self):

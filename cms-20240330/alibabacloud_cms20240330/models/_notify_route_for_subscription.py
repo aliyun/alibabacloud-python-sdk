@@ -13,7 +13,9 @@ class NotifyRouteForSubscription(DaraModel):
         channels: List[main_models.NotifyRouteForSubscriptionChannels] = None,
         effect_time_range: main_models.NotifyRouteForSubscriptionEffectTimeRange = None,
     ):
+        # An array of objects, each defining a notification channel.
         self.channels = channels
+        # The active period for the notification rule.
         self.effect_time_range = effect_time_range
 
     def validate(self):
@@ -61,9 +63,13 @@ class NotifyRouteForSubscriptionEffectTimeRange(DaraModel):
         start_time_in_minute: int = None,
         time_zone: str = None,
     ):
+        # The active days of the week, specified as an array of integers.
         self.day_in_week = day_in_week
+        # The end of the active period, in minutes from 00:00. The value ranges from 0 to 1439.
         self.end_time_in_minute = end_time_in_minute
+        # The start of the active period, in minutes from 00:00. The value ranges from 0 to 1439.
         self.start_time_in_minute = start_time_in_minute
+        # The time zone for the effect time range, specified in the IANA Time Zone Database format. For example, `UTC` or `Asia/Shanghai`.
         self.time_zone = time_zone
 
     def validate(self):
@@ -111,8 +117,11 @@ class NotifyRouteForSubscriptionChannels(DaraModel):
         enabled_sub_channels: List[str] = None,
         receivers: List[str] = None,
     ):
+        # The channel type. For example, `Email`, `SMS`, or `Webhook`.
         self.channel_type = channel_type
+        # A list of enabled sub-channels. Applicable to channels that support finer-grained topics or categories.
         self.enabled_sub_channels = enabled_sub_channels
+        # A list of notification receivers. The receiver format depends on the `channelType`.
         self.receivers = receivers
 
     def validate(self):

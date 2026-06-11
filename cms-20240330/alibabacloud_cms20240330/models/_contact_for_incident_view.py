@@ -10,7 +10,9 @@ class ContactForIncidentView(DaraModel):
         contact_id: str = None,
         name: str = None,
     ):
+        # The contact ID.
         self.contact_id = contact_id
+        # The contact name.
         self.name = name
 
     def validate(self):

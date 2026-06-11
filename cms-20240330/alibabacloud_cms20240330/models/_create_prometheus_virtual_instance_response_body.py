@@ -11,9 +11,9 @@ class CreatePrometheusVirtualInstanceResponseBody(DaraModel):
         instance: main_models.CreatePrometheusVirtualInstanceResponseBodyInstance = None,
         request_id: str = None,
     ):
-        # Instance ID
+        # The instance.
         self.instance = instance
-        # ID of the request
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -54,17 +54,17 @@ class CreatePrometheusVirtualInstanceResponseBodyInstance(DaraModel):
         region_id: str = None,
         user_id: str = None,
     ):
-        # Creation time
+        # The time when the instance was created.
         self.created_at = created_at
-        # HTTP API query address
+        # The HTTP API query URL.
         self.http_api_url = http_api_url
-        # Region ID
+        # The instance ID.
         self.instance_id = instance_id
-        # Cloud product
+        # The cloud product.
         self.namespace = namespace
-        # User ID
+        # Region ID
         self.region_id = region_id
-        # User ID
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):

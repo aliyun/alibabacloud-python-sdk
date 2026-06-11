@@ -19,21 +19,21 @@ class ListAggTaskGroupsRequest(DaraModel):
         tags: List[main_models.ListAggTaskGroupsRequestTags] = None,
         target_prometheus_id: str = None,
     ):
-        # List of IDs for the aggregation task groups, which must be JSON parseable.
+        # A list of aggregation task group IDs. The value must be a string that can be parsed as a JSON array.
         self.filter_agg_task_group_ids = filter_agg_task_group_ids
-        # List of names for the aggregation task groups, which must be JSON parseable.
+        # A list of aggregation task group names. The value must be a string that can be parsed as a JSON array.
         self.filter_agg_task_group_names = filter_agg_task_group_names
-        # Maximum number of records to return.
+        # The maximum number of entries to return on each page.
         self.max_results = max_results
-        # Query token.
+        # The token that is used to retrieve the next page of results.
         self.next_token = next_token
-        # Name search, supports fuzzy matching.
+        # The name to search for. Fuzzy search is supported.
         self.query = query
-        # Status of the aggregation task group, either \\"Running\\" or \\"Stopped\\". Default is Running.
+        # The status of the aggregation task group. Valid values are \\`Running\\` and \\`Stopped\\`. The default value is \\`Running\\`.
         self.status = status
-        # Resource group tags.
+        # The tags of the resource group.
         self.tags = tags
-        # The target Prometheus instance ID for the aggregation task group.
+        # The ID of the target Prometheus instance for the aggregation task group.
         self.target_prometheus_id = target_prometheus_id
 
     def validate(self):
@@ -112,9 +112,9 @@ class ListAggTaskGroupsRequestTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # Key of the resource group tag.
+        # The key of the resource group tag.
         self.key = key
-        # Value of the resource group tag.
+        # The value of the resource group tag.
         self.value = value
 
     def validate(self):

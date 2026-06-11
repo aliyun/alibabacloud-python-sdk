@@ -16,19 +16,19 @@ class IncidentResourceStruct(DaraModel):
         time: int = None,
         user_id: int = None,
     ):
-        # Description information.
+        # The description.
         self.description = description
-        # Incident ID.
+        # The event ID.
         self.incident_id = incident_id
-        # The unique ID of this resource in the event.
+        # The unique ID of the resource in the event.
         self.incident_resource_id = incident_resource_id
-        # Event resource details object.
+        # The details object for the event resource.
         self.resource = resource
-        # Source.
+        # The source.
         self.source = source
-        # Time.
+        # The timestamp.
         self.time = time
-        # User ID.
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):

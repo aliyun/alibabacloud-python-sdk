@@ -24,21 +24,33 @@ class AlertEventIntegrationPolicyForView(DaraModel):
         user_id: str = None,
         workspace: str = None,
     ):
-        # UUID
+        # The universally unique identifier (UUID).
         self.alert_event_integration_policy_id = alert_event_integration_policy_id
+        # The name.
+        # 
         # This parameter is required.
         self.alert_event_integration_policy_name = alert_event_integration_policy_name
+        # The time when the policy was created.
         self.create_time = create_time
+        # The description.
         self.description = description
+        # Indicates whether the policy is enabled.
         self.enable = enable
+        # The filter configuration.
         self.filter_setting = filter_setting
+        # The subscription settings.
         self.integration_setting = integration_setting
+        # The key for the integration\\"s reporting endpoint.
         self.token = token
+        # The transformation settings.
         self.transformer_setting = transformer_setting
+        # The type.
         self.type = type
+        # The time when the policy was last updated.
         self.update_time = update_time
+        # The user ID.
         self.user_id = user_id
-        # workspace
+        # The workspace.
         self.workspace = workspace
 
     def validate(self):

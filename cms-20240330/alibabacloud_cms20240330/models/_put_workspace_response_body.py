@@ -10,9 +10,9 @@ class PutWorkspaceResponseBody(DaraModel):
         request_id: str = None,
         workspace_name: str = None,
     ):
-        # ID of the request
+        # Id of the request
         self.request_id = request_id
-        # Name of the workspace.
+        # The name of the workspace.
         self.workspace_name = workspace_name
 
     def validate(self):

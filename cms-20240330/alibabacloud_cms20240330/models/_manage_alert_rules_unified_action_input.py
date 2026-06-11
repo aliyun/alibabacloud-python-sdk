@@ -27,32 +27,39 @@ class ManageAlertRulesUnifiedActionInput(DaraModel):
         uuid_list: List[str] = None,
         workspace: str = None,
     ):
-        # 操作类型
+        # The action to perform on the alert rule. For example, `create` or `update`.
         # 
         # This parameter is required.
         self.action = action
+        # The action integration configuration for triggering automated workflows or actions in external systems.
         self.action_integration_config = action_integration_config
-        # 注解
+        # A collection of key-value pairs attached to the alert as annotations. Use annotations to provide additional, non-identifying information, such as descriptions or runbook links.
         self.annotations = annotations
+        # Configuration for integrating with Application Real-Time Monitoring Service (ARMS).
         self.arms_integration_config = arms_integration_config
+        # The condition configuration that specifies the trigger criteria for the alert.
         self.condition_config = condition_config
-        # 内容模板
+        # The content template for the alert notification. You can use variables to customize the message.
         self.content_template = content_template
+        # The data source configuration for the alert rule.
         self.datasource_config = datasource_config
-        # 显示名称
+        # The display name of the alert rule, as shown in the console.
         self.display_name = display_name
-        # 是否启用
+        # Specifies whether the alert rule is enabled. A value of `true` indicates the rule is active, and `false` indicates it is inactive. Default: `true`.
         self.enabled = enabled
-        # 标签
+        # A collection of key-value pairs attached to the alert rule as labels. Use labels for categorization and filtering.
         self.labels = labels
+        # The notification configuration that specifies how and where to send alert notifications.
         self.notify_config = notify_config
+        # The query configuration that defines the data for rule evaluation.
         self.query_config = query_config
+        # The schedule configuration that determines how often the system evaluates the rule.
         self.schedule_config = schedule_config
-        # 规则 UUID（UPDATE/PATCH 必填）
+        # The unique identifier (UUID) of the alert rule. This parameter is required when you update or delete an existing rule.
         self.uuid = uuid
-        # 待删除规则 UUID 列表（BATCH_DELETE）
+        # A list of UUIDs. Use this parameter to perform bulk actions on multiple rules, such as batch deletion.
         self.uuid_list = uuid_list
-        # 工作空间（CREATE/UPDATE 等）
+        # The ID of the workspace that contains the alert rule.
         self.workspace = workspace
 
     def validate(self):

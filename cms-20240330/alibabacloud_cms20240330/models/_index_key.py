@@ -15,9 +15,17 @@ class IndexKey(DaraModel):
         json_keys: Dict[str, main_models.IndexJsonKey] = None,
         type: str = None,
     ):
+        # Indicates whether the value contains Chinese characters.
+        # 
+        # - `true`: Contains Chinese characters.
+        # 
+        # - `false`: Does not contain Chinese characters.
         self.chn = chn
+        # Specifies the model name.
         self.embedding = embedding
+        # Describes the json keys.
         self.json_keys = json_keys
+        # Specifies the field type.
         self.type = type
 
     def validate(self):

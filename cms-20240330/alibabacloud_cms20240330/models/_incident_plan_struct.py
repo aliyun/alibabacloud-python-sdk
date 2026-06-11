@@ -25,33 +25,33 @@ class IncidentPlanStruct(DaraModel):
         user_id: int = None,
         workspace: str = None,
     ):
-        # Automatic recovery wait time.
+        # The wait time for automatic recovery.
         self.auto_recover_seconds = auto_recover_seconds
-        # Event closure timeout.
+        # The timeout period for closing an event.
         self.close_expire = close_expire
-        # List of teams or roles involved in collaboration.
+        # A list of collaborating teams or roles.
         self.corporation = corporation
-        # Contingency plan description.
+        # The description of the plan.
         self.description = description
-        # List of escalation policy IDs.
+        # A list of escalation policy IDs.
         self.escalation_id = escalation_id
-        # Creation time.
+        # The time when the plan was created.
         self.gmt_create = gmt_create
-        # Last modification time.
+        # The time when the plan was last modified.
         self.gmt_modified = gmt_modified
-        # Grouping field path.
+        # The grouping field path.
         self.group_by = group_by
-        # Event contingency plan ID.
+        # The incident plan ID.
         self.incident_plan_id = incident_plan_id
-        # Contingency plan name.
+        # The name of the plan.
         self.name = name
-        # List of resource field mapping paths.
+        # A list of resource field mapping paths.
         self.resource_filed = resource_filed
-        # Status.
+        # The status.
         self.status = status
-        # User ID.
+        # The user ID.
         self.user_id = user_id
-        # Workspace name.
+        # The name of the workspace.
         self.workspace = workspace
 
     def validate(self):

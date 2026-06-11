@@ -20,14 +20,23 @@ class TransformAction(DaraModel):
         value: str = None,
         variable: str = None,
     ):
+        # The filter configuration.
         self.filter_setting = filter_setting
+        # The label name.
         self.label_key = label_key
+        # The mapping configuration.
         self.mapping = mapping
+        # The regular expression.
         self.reg_exp = reg_exp
+        # The reference path.
         self.source = source
+        # The target location.
         self.target = target
+        # The transform type.
         self.type = type
+        # The value to set.
         self.value = value
+        # The variable name.
         self.variable = variable
 
     def validate(self):

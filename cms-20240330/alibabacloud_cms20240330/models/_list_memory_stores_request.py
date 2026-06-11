@@ -11,8 +11,11 @@ class ListMemoryStoresRequest(DaraModel):
         memory_store_name: str = None,
         next_token: str = None,
     ):
+        # The maximum number of results to return. The maximum value is 200.
         self.max_results = max_results
+        # The name of the memory store.
         self.memory_store_name = memory_store_name
+        # The token for the next page of results.
         self.next_token = next_token
 
     def validate(self):

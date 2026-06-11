@@ -18,23 +18,23 @@ class NotifyConfigUnified(DaraModel):
         type: str = None,
         utc_offset: str = None,
     ):
-        # 一周中发送通知的星期，1-7
+        # The active days of the week.
         self.active_days = active_days
-        # 每天通知生效结束时间
+        # The end of the daily active time window. On active days, the system sends notifications only before this time. Format: `HH:mm`.
         self.active_end_time = active_end_time
-        # 每天通知生效开始时间
+        # The start of the daily active time window. On active days, the system sends notifications only after this time. Format: `HH:mm`.
         self.active_start_time = active_start_time
-        # 通知渠道列表
+        # The notification channels that receive alerts.
         # 
         # This parameter is required.
         self.channels = channels
-        # 通道沉默周期（秒）
+        # The silence time in seconds. After sending a notification, the system suppresses new notifications for the same alert for this duration.
         self.silence_time_secs = silence_time_secs
-        # 通知配置类型
+        # The type of the notification configuration.
         # 
         # This parameter is required.
         self.type = type
-        # UTC 时区偏移量
+        # The UTC offset for `activeStartTime` and `activeEndTime`. The format is `[+/-]HH:mm`. For example, `+08:00` represents the UTC+8 time zone.
         self.utc_offset = utc_offset
 
     def validate(self):

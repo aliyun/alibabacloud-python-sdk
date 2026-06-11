@@ -6940,6 +6940,10 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.addon_name):
             query['addonName'] = request.addon_name
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
         if not DaraCore.is_null(request.parent_addon_release_id):
             query['parentAddonReleaseId'] = request.parent_addon_release_id
         req = open_api_util_models.OpenApiRequest(
@@ -6973,6 +6977,10 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.addon_name):
             query['addonName'] = request.addon_name
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
         if not DaraCore.is_null(request.parent_addon_release_id):
             query['parentAddonReleaseId'] = request.parent_addon_release_id
         req = open_api_util_models.OpenApiRequest(
@@ -9912,6 +9920,74 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.manage_alert_rules_with_options_async(request, headers, runtime)
+
+    def open_cms_service_with_options(
+        self,
+        request: main_models.OpenCmsServiceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.OpenCmsServiceResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'OpenCmsService',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/cmsservice',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.OpenCmsServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def open_cms_service_with_options_async(
+        self,
+        request: main_models.OpenCmsServiceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.OpenCmsServiceResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'OpenCmsService',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/cmsservice',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.OpenCmsServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def open_cms_service(
+        self,
+        request: main_models.OpenCmsServiceRequest,
+    ) -> main_models.OpenCmsServiceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.open_cms_service_with_options(request, headers, runtime)
+
+    async def open_cms_service_async(
+        self,
+        request: main_models.OpenCmsServiceRequest,
+    ) -> main_models.OpenCmsServiceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.open_cms_service_with_options_async(request, headers, runtime)
 
     def put_workspace_with_options(
         self,

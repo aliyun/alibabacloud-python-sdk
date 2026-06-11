@@ -19,21 +19,21 @@ class AlertRuleAlertMetricFilterDef(DaraModel):
         opt: str = None,
         supported_opts: List[main_models.AlertRuleAlertMetricFilterDefSupportedOpts] = None,
     ):
-        # Dimension in APM metrics.
+        # The dimension in APM metrics.
         self.dim = dim
-        # When true, the filter item will not appear in the GROUP BY clause of the PromQL.
+        # If set to \\`true\\`, the filter item does not appear in the \\`group by\\` clause of a PromQL query.
         self.dim_disabled = dim_disabled
-        # Display Name (Chinese).
+        # The display name in Chinese.
         self.display_name_cn = display_name_cn
-        # Display Name (English).
+        # The display name in English.
         self.display_name_en = display_name_en
-        # Whether to hide. If hidden, it will not be displayed in the frontend UI, but its value can still be included when rendering the PromQL. A typical example is the "pid" filter condition in APM scenarios, which is generally not exposed through configurable UI elements but instead presented as a separate application search list in the frontend.
+        # Specifies whether to hide the filter. If hidden, the filter does not appear in the frontend UI. However, its value can be uploaded when rendering a PromQL query. For example, in an Application Performance Management (APM) scenario, the pid filter is typically hidden from the configuration UI. The frontend displays it as a separate application search list.
         self.hidden = hidden
-        # When true, the filter item will not appear in the label filter of the PromQL.
+        # If set to \\`true\\`, the filter item does not appear in the label filter of a PromQL query.
         self.label_disabled = label_disabled
-        # Filter Condition Operator.
+        # The operator for the filter condition.
         self.opt = opt
-        # List of supported options.
+        # A list of supported options.
         self.supported_opts = supported_opts
 
     def validate(self):
@@ -113,11 +113,11 @@ class AlertRuleAlertMetricFilterDefSupportedOpts(DaraModel):
         display_name_en: str = None,
         value: str = None,
     ):
-        # Display Name (Chinese).
+        # The display name in Chinese.
         self.display_name_cn = display_name_cn
-        # Display Name (English).
+        # The display name in English.
         self.display_name_en = display_name_en
-        # Matching value.
+        # The matching value.
         self.value = value
 
     def validate(self):

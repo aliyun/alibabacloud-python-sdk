@@ -17,12 +17,19 @@ class MergeOncallSchedule(DaraModel):
         source: str = None,
         workspace: str = None,
     ):
+        # Details of the on-call schedule.
         self.detail = detail
+        # The UTC time when the on-call schedule was created.
         self.gmt_create = gmt_create
+        # The UTC time when the on-call schedule was last modified.
         self.gmt_modified = gmt_modified
+        # The unique identifier of the on-call schedule.
         self.identifier = identifier
+        # The name of the on-call schedule.
         self.name = name
+        # The creation source of the on-call schedule.
         self.source = source
+        # The workspace that the on-call schedule belongs to.
         self.workspace = workspace
 
     def validate(self):

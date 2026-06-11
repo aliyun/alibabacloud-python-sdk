@@ -14,8 +14,11 @@ class FilterSetting(DaraModel):
         expression: str = None,
         relation: str = None,
     ):
+        # The subscription conditions.
         self.conditions = conditions
+        # The expression.
         self.expression = expression
+        # The relationship between conditions.
         self.relation = relation
 
     def validate(self):
@@ -65,8 +68,11 @@ class FilterSettingConditions(DaraModel):
         op: str = None,
         value: str = None,
     ):
+        # The field.
         self.field = field
+        # The comparison operator.
         self.op = op
+        # The value.
         self.value = value
 
     def validate(self):

@@ -16,10 +16,15 @@ class ListDeliveryTasksRequest(DaraModel):
         resource_group_id: str = None,
         tag: List[main_models.ListDeliveryTasksRequestTag] = None,
     ):
+        # The keywords for a fuzzy search by task name or task ID. The search uses `LIKE` semantics.
         self.key_words = key_words
+        # The number of entries to return on each page. Default value: 20. Maximum value: 100.
         self.max_results = max_results
+        # The pagination token that is used to retrieve the next page of results. You do not need to specify this parameter for the first request. For subsequent requests, set this parameter to the `nextToken` value that is returned in the previous response.
         self.next_token = next_token
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # A list of tags.
         self.tag = tag
 
     def validate(self):
@@ -80,7 +85,9 @@ class ListDeliveryTasksRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):

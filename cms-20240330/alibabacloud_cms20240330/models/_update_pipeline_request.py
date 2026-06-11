@@ -16,10 +16,15 @@ class UpdatePipelineRequest(DaraModel):
         sink: main_models.UpdatePipelineRequestSink = None,
         source: main_models.UpdatePipelineRequestSource = None,
     ):
+        # The pipeline description.
         self.description = description
+        # The execution policy.
         self.execute_policy = execute_policy
+        # The pipeline configuration.
         self.pipeline = pipeline
+        # The data sink configuration.
         self.sink = sink
+        # The data source configuration.
         self.source = source
 
     def validate(self):
@@ -83,7 +88,9 @@ class UpdatePipelineRequestSource(DaraModel):
         logstore: main_models.UpdatePipelineRequestSourceLogstore = None,
         type: str = None,
     ):
+        # The Log Service Logstore configuration.
         self.logstore = logstore
+        # The source type.
         self.type = type
 
     def validate(self):
@@ -120,7 +127,9 @@ class UpdatePipelineRequestSourceLogstore(DaraModel):
         logstore: str = None,
         query: str = None,
     ):
+        # The Logstore name.
         self.logstore = logstore
+        # The filter query.
         self.query = query
 
     def validate(self):
@@ -155,7 +164,9 @@ class UpdatePipelineRequestSink(DaraModel):
         dataset: main_models.UpdatePipelineRequestSinkDataset = None,
         type: str = None,
     ):
+        # The destination dataset configuration.
         self.dataset = dataset
+        # The sink type.
         self.type = type
 
     def validate(self):
@@ -192,7 +203,9 @@ class UpdatePipelineRequestSinkDataset(DaraModel):
         dataset: str = None,
         workspace: str = None,
     ):
+        # The dataset name.
         self.dataset = dataset
+        # The workspace ID.
         self.workspace = workspace
 
     def validate(self):
@@ -226,6 +239,7 @@ class UpdatePipelineRequestPipeline(DaraModel):
         self,
         nodes: List[main_models.UpdatePipelineRequestPipelineNodes] = None,
     ):
+        # The pipeline nodes.
         self.nodes = nodes
 
     def validate(self):
@@ -263,8 +277,11 @@ class UpdatePipelineRequestPipelineNodes(DaraModel):
         parameters: Dict[str, Any] = None,
         type: str = None,
     ):
+        # The node ID.
         self.id = id
+        # The node parameters.
         self.parameters = parameters
+        # The node type.
         self.type = type
 
     def validate(self):
@@ -306,8 +323,11 @@ class UpdatePipelineRequestExecutePolicy(DaraModel):
         run_once: main_models.UpdatePipelineRequestExecutePolicyRunOnce = None,
         scheduled: main_models.UpdatePipelineRequestExecutePolicyScheduled = None,
     ):
+        # The execution mode.
         self.mode = mode
+        # The one-time execution configuration.
         self.run_once = run_once
+        # The scheduled execution configuration.
         self.scheduled = scheduled
 
     def validate(self):
@@ -353,7 +373,9 @@ class UpdatePipelineRequestExecutePolicyScheduled(DaraModel):
         from_time: int = None,
         interval: str = None,
     ):
+        # The start timestamp.
         self.from_time = from_time
+        # The execution interval.
         self.interval = interval
 
     def validate(self):
@@ -388,7 +410,9 @@ class UpdatePipelineRequestExecutePolicyRunOnce(DaraModel):
         from_time: int = None,
         to_time: int = None,
     ):
+        # The start timestamp.
         self.from_time = from_time
+        # The end timestamp.
         self.to_time = to_time
 
     def validate(self):

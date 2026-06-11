@@ -13,9 +13,9 @@ class LabelsFilter(DaraModel):
         all_of: List[main_models.LabelMatcher] = None,
         any_of: List[main_models.LabelMatcher] = None,
     ):
-        # 匹配所有标签（AND）
+        # An array of `LabelMatcher` requirements. An object is selected only if it satisfies all of the requirements in this list (a logical AND). If provided, the list cannot be empty.
         self.all_of = all_of
-        # 匹配任意一个标签（OR）
+        # An array of `LabelMatcher` requirements. An object is selected if it satisfies at least one of the requirements in this list (a logical OR). If provided, the list cannot be empty.
         self.any_of = any_of
 
     def validate(self):

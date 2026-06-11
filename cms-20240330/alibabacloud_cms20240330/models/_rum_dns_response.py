@@ -11,8 +11,11 @@ class RumDnsResponse(DaraModel):
         message: str = None,
         result: bool = None,
     ):
+        # The domain name for RUM reporting.
         self.domain = domain
+        # The message returned if initialization fails.
         self.message = message
+        # The DNS initialization status of the domain name.
         self.result = result
 
     def validate(self):

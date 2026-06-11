@@ -1,3 +1,13 @@
+2026-06-11 Version: 10.0.0
+- Support API OpenCmsService.
+- Update API DescribeRegions: add request parameters RegionId.
+- Update API DescribeRegions: change request The number of host parameters has changed.
+- Update API GetCloudResourceData: add response parameters Body.responseStatus.
+- Update API ListAddonReleases: add request parameters maxResults.
+- Update API ListAddonReleases: add request parameters nextToken.
+- Update API ListAddonReleases: add response parameters Body.nextToken.
+
+
 2026-05-17 Version: 9.2.2
 - Generated python 2024-03-30 for Cms.
 

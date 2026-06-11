@@ -20,14 +20,23 @@ class UpdateDeliveryTaskRequest(DaraModel):
         task_description: str = None,
         task_name: str = None,
     ):
+        # The data source ID (Prometheus instance ID).
         self.data_source_id = data_source_id
+        # Additional labels to attach to all delivered metrics, specified as key-value pairs.
         self.external_labels = external_labels
+        # The labels for filtering metrics. This operation replaces the entire existing filter; incremental updates are not supported.
         self.label_filters = label_filters
+        # The metric filtering mode.
         self.label_filters_type = label_filters_type
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The list of sinks.
         self.sink_list = sink_list
+        # The status of the delivery task.
         self.status = status
+        # The task description.
         self.task_description = task_description
+        # The name of the delivery task. The name can include Chinese characters, English letters, underscores (_), and hyphens (-).
         self.task_name = task_name
 
     def validate(self):
@@ -112,7 +121,9 @@ class UpdateDeliveryTaskRequestSinkList(DaraModel):
         sink_configs: Dict[str, str] = None,
         sink_type: str = None,
     ):
+        # The detailed configuration of the sink. The meaning of the key-value pairs depends on the specified sinkType.
         self.sink_configs = sink_configs
+        # The sink type.
         self.sink_type = sink_type
 
     def validate(self):

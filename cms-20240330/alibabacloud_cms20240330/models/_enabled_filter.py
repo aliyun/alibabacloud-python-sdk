@@ -9,7 +9,7 @@ class EnabledFilter(DaraModel):
         self,
         eq: bool = None,
     ):
-        # 精确匹配
+        # The value to filter by. Set to `true` to return only enabled resources. Set to `false` to return only disabled resources.
         self.eq = eq
 
     def validate(self):

@@ -13,11 +13,11 @@ class IncidentResourceDetail(DaraModel):
         resource_id: Dict[str, Any] = None,
         type: str = None,
     ):
-        # Additional resource identifier.
+        # An additional resource identifier.
         self.extra_id = extra_id
-        # Resource ID object.
+        # The resource ID object.
         self.resource_id = resource_id
-        # Resource type, indicating which cloud product the resource belongs to.
+        # The resource type. This indicates the cloud product to which the resource belongs.
         self.type = type
 
     def validate(self):

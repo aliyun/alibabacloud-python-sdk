@@ -10,7 +10,13 @@ class IndexJsonKey(DaraModel):
         chn: bool = None,
         type: str = None,
     ):
+        # Specifies whether the field contains Chinese characters.
+        # 
+        # - `true`: The field contains Chinese characters.
+        # 
+        # - `false`: The field does not contain Chinese characters.
         self.chn = chn
+        # The field type.
         self.type = type
 
     def validate(self):

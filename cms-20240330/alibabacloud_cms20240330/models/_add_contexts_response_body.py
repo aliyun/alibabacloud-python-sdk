@@ -13,7 +13,9 @@ class AddContextsResponseBody(DaraModel):
         request_id: str = None,
         results: List[main_models.AddContextsResponseBodyResults] = None,
     ):
+        # The unique ID for the request.
         self.request_id = request_id
+        # An array of objects containing the results of the write operation.
         self.results = results
 
     def validate(self):
@@ -56,7 +58,9 @@ class AddContextsResponseBodyResults(DaraModel):
         context_id: str = None,
         status: str = None,
     ):
+        # The ID of the written record or event.
         self.context_id = context_id
+        # The write status. Can be "accepted", "queued", or "created".
         self.status = status
 
     def validate(self):

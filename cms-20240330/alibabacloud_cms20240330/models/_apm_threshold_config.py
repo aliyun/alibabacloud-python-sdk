@@ -10,11 +10,11 @@ class ApmThresholdConfig(DaraModel):
         severity: str = None,
         threshold: float = None,
     ):
-        # 告警等级
+        # The severity of the alert.
         # 
         # This parameter is required.
         self.severity = severity
-        # 阈值
+        # The metric value that triggers the alert.
         # 
         # This parameter is required.
         self.threshold = threshold

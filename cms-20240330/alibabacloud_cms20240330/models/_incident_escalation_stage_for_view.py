@@ -18,13 +18,21 @@ class IncidentEscalationStageForView(DaraModel):
         target_incident_state: str = None,
         trigger_delay: int = None,
     ):
+        # The number of loop notifications.
         self.cycle_notify_count = cycle_notify_count
+        # The loop notification interval.
         self.cycle_notify_interval = cycle_notify_interval
+        # The effective time range.
         self.effect_time_range = effect_time_range
+        # The stage index.
+        # 
         # This parameter is required.
         self.index = index
+        # The list of notification channels.
         self.notify_channels = notify_channels
+        # The target event state.
         self.target_incident_state = target_incident_state
+        # The trigger delay time.
         self.trigger_delay = trigger_delay
 
     def validate(self):

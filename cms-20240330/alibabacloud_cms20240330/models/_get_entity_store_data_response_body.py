@@ -15,13 +15,13 @@ class GetEntityStoreDataResponseBody(DaraModel):
         request_id: str = None,
         response_status: main_models.GetEntityStoreDataResponseBodyResponseStatus = None,
     ):
-        # Total list of returned data
+        # The list of returned data.
         self.data = data
-        # List of request headers
+        # The list of request headers.
         self.header = header
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Result status
+        # The result status.
         self.response_status = response_status
 
     def validate(self):
@@ -73,15 +73,15 @@ class GetEntityStoreDataResponseBodyResponseStatus(DaraModel):
         retry_policy: str = None,
         status_item: List[main_models.GetEntityStoreDataResponseBodyResponseStatusStatusItem] = None,
     ):
-        # Information during the execution process
+        # Information about the execution procedure.
         self.execution_states = execution_states
-        # Status level
+        # The status level.
         self.level = level
-        # Execution result
+        # The execution result.
         self.result = result
-        # Retry policy
+        # The retry policy.
         self.retry_policy = retry_policy
-        # Detailed status information list
+        # A list of detailed status information.
         self.status_item = status_item
 
     def validate(self):
@@ -144,13 +144,13 @@ class GetEntityStoreDataResponseBodyResponseStatusStatusItem(DaraModel):
         message: str = None,
         suggestion: str = None,
     ):
-        # Status code
+        # The status code.
         self.code = code
-        # Status level
+        # The status level.
         self.level = level
-        # Calculation execution information
+        # The execution information.
         self.message = message
-        # Suggestions when an error occurs during execution
+        # The suggestion provided when an execution fault occurs.
         self.suggestion = suggestion
 
     def validate(self):

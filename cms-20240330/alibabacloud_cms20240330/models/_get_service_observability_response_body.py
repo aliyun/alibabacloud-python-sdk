@@ -20,23 +20,23 @@ class GetServiceObservabilityResponseBody(DaraModel):
         type: str = None,
         workspace: str = None,
     ):
-        # Endpoint and Authentication Information
+        # The endpoint and authentication information.
         self.entry_point_info = entry_point_info
-        # Billing Type
+        # The billing type.
         self.fee_type = fee_type
-        # Quota Configuration
+        # The quota configuration.
         self.quotas = quotas
-        # Region
+        # The region.
         self.region_id = region_id
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # System Configuration
+        # The system configuration.
         self.settings = settings
-        # Resource Initialization Status
+        # The resource initialization status.
         self.status = status
-        # Application Observability Type
+        # The type of application observability.
         self.type = type
-        # Workspace Name
+        # The workspace name.
         self.workspace = workspace
 
     def validate(self):
@@ -117,13 +117,13 @@ class GetServiceObservabilityResponseBodyEntryPointInfo(DaraModel):
         project: str = None,
         public_domain: str = None,
     ):
-        # Authentication Token for Data Reporting
+        # The authentication token for reporting data.
         self.auth_token = auth_token
-        # Private Network Access Address
+        # The internal endpoint.
         self.private_domain = private_domain
-        # SLS Project
+        # The Simple Log Service project.
         self.project = project
-        # Public Network Access Address
+        # The public endpoint.
         self.public_domain = public_domain
 
     def validate(self):

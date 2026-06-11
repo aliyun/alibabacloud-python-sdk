@@ -19,13 +19,21 @@ class EntityGroupBase(DaraModel):
         user_id: str = None,
         workspace: str = None,
     ):
+        # The entity description.
         self.description = description
+        # The entity ID.
         self.entity_group_id = entity_group_id
+        # The entity name.
         self.entity_group_name = entity_group_name
+        # A collection of entity query rules.
         self.entity_queries = entity_queries
+        # The rule for entity discovery.
         self.entity_rules = entity_rules
+        # The region ID.
         self.region_id = region_id
+        # The user ID.
         self.user_id = user_id
+        # The workspace.
         self.workspace = workspace
 
     def validate(self):
@@ -107,7 +115,9 @@ class EntityGroupBaseEntityQueries(DaraModel):
         entity_type: str = None,
         spl: str = None,
     ):
+        # The entity type.
         self.entity_type = entity_type
+        # The Structured Process Language (SPL) search statement.
         self.spl = spl
 
     def validate(self):

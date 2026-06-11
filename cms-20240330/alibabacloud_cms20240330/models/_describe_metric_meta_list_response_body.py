@@ -16,11 +16,15 @@ class DescribeMetricMetaListResponseBody(DaraModel):
         resources: List[main_models.DescribeMetricMetaListResponseBodyResources] = None,
         total_count: int = None,
     ):
+        # The page number. The default value is `1`.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
+        # The configurations of the metrics in the resource.
         self.resources = resources
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -90,16 +94,33 @@ class DescribeMetricMetaListResponseBodyResources(DaraModel):
         type: str = None,
         unit: str = None,
     ):
+        # The description.
         self.description = description
+        # The descriptions of the dimensions.
         self.dimension_description = dimension_description
+        # The dimensions for filtering resources in CloudMonitor.
         self.dimensions = dimensions
+        # The CloudMonitor labels. This parameter is returned only when `metaFormat` is set to `CMS`.
         self.labels = labels
+        # The metadata format.
         self.meta_format = meta_format
+        # The metric name.
         self.metric_name = metric_name
+        # The namespace.
         self.namespace = namespace
+        # The aggregation period.
         self.periods = periods
+        # The statistic of the metric. Examples:
+        # 
+        # - `Maximum`: the maximum value.
+        # 
+        # - `Minimum`: the minimum value.
+        # 
+        # - `Average`: the average value.
         self.statistics = statistics
+        # The metric type.
         self.type = type
+        # The unit.
         self.unit = unit
 
     def validate(self):
@@ -195,6 +216,7 @@ class DescribeMetricMetaListResponseBodyResourcesDimensionDescription(DaraModel)
         self,
         name: str = None,
     ):
+        # The name of the dimension.
         self.name = name
 
     def validate(self):

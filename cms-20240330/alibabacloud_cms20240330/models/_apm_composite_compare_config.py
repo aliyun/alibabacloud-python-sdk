@@ -11,15 +11,15 @@ class ApmCompositeCompareConfig(DaraModel):
         operator: str = None,
         threshold: float = None,
     ):
-        # 聚合函数
+        # The aggregation method for metric data. For example, `AVG`, `SUM`, or `MAX`.
         # 
         # This parameter is required.
         self.aggregate = aggregate
-        # 比较操作符
+        # The operator for comparing the aggregated metric data against the `threshold`. For example, `GREATER_THAN` or `LESS_THAN`.
         # 
         # This parameter is required.
         self.operator = operator
-        # 单阈值
+        # The value to compare the aggregated metric data against. An alert is triggered when the metric data meets the condition defined by the `operator`.
         # 
         # This parameter is required.
         self.threshold = threshold

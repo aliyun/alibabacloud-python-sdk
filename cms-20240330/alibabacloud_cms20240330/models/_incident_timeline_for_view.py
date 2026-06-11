@@ -21,15 +21,25 @@ class IncidentTimelineForView(DaraModel):
         user_id: str = None,
         workspace: str = None,
     ):
+        # The type of status change.
         self.change_type = change_type
+        # The content of the timeline event.
         self.content = content
+        # The unique identifier of the incident.
         self.incident_uuid = incident_uuid
+        # Information about the operator.
         self.operator = operator
+        # The UNIX timestamp when the timeline event occurred.
         self.time = time
+        # The unique identifier of the timeline record.
         self.timeline_uuid = timeline_uuid
+        # The title of the timeline event.
         self.title = title
+        # The type of the timeline event.
         self.type = type
+        # The user ID.
         self.user_id = user_id
+        # The workspace.
         self.workspace = workspace
 
     def validate(self):

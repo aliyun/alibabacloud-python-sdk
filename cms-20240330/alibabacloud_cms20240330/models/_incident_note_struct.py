@@ -16,19 +16,19 @@ class IncidentNoteStruct(DaraModel):
         time: int = None,
         type: str = None,
     ):
-        # Content.
+        # The content.
         self.content = content
-        # Content format.
+        # The content format.
         self.format = format
-        # Incident ID.
+        # The event ID.
         self.incident_id = incident_id
-        # Note ID.
+        # The record ID.
         self.note_id = note_id
-        # Operator.
+        # The operator.
         self.operator = operator
-        # Time.
+        # The time.
         self.time = time
-        # Type.
+        # The type.
         self.type = type
 
     def validate(self):
@@ -97,13 +97,13 @@ class IncidentNoteStructOperator(DaraModel):
         name: str = None,
         user_id: int = None,
     ):
-        # Contact.
+        # The contact.
         self.contact = contact
-        # Contact ID.
+        # The contact ID.
         self.contact_id = contact_id
-        # Name.
+        # The name.
         self.name = name
-        # User ID.
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):

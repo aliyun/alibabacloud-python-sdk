@@ -20,25 +20,27 @@ class CreateServiceRequest(DaraModel):
         service_type: str = None,
         tags: List[main_models.CreateServiceRequestTags] = None,
     ):
-        # Extended attributes.
+        # The extended properties.
         self.attributes = attributes
-        # Service description, only valid when `serviceType=RUM`.
+        # The service description. This parameter is valid only when serviceType is set to RUM.
         self.description = description
-        # Display name, only valid when `serviceType=RUM`.
+        # The display name. This parameter is valid only when serviceType is set to RUM.
         self.display_name = display_name
-        # Application ID, generally not required to be specified.
+        # The application ID. You do not typically need to specify this parameter.
         self.pid = pid
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # Service name
+        # The service name.
         # 
         # This parameter is required.
         self.service_name = service_name
-        # Service status, not required for service creation.
+        # The service status. Do not specify this parameter when you create a service.
         self.service_status = service_status
-        # Service type
+        # The service type.
         # 
         # This parameter is required.
         self.service_type = service_type
+        # An array of tags.
         self.tags = tags
 
     def validate(self):
@@ -123,7 +125,9 @@ class CreateServiceRequestTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The `key` of the tag.
         self.key = key
+        # The `value` of the tag.
         self.value = value
 
     def validate(self):

@@ -19,11 +19,29 @@ class DescribeMetricMetaListRequest(DaraModel):
         page_size: int = None,
     ):
         self.keywords = keywords
+        # The labels used to filter resources. The following labels are supported:
+        # 
+        # - `metricCategory`: The metric category.
+        # 
+        # - `alertEnable`: Indicates whether to enable alerts.
+        # 
+        # - `alertUnit`: The recommended unit for alerts.
+        # 
+        # - `unitFactor`: The unit conversion factor.
+        # 
+        # - `minAlertPeriod`: The minimum alert period.
+        # 
+        # - `productCategory`: The product category.
         self.labels = labels
+        # The source of the metadata. Valid values: `CMS` for CloudMonitor metrics and `PROM_BASIC` for basic Prometheus metrics.
         self.meta_format = meta_format
+        # The name of the metric.
         self.metric_name = metric_name
+        # The namespace of the product.
         self.namespace = namespace
+        # The number of the page to return. Default value: `1`.
         self.page_number = page_number
+        # The number of entries to return on each page. Default value: `2000`.
         self.page_size = page_size
 
     def validate(self):
@@ -96,7 +114,9 @@ class DescribeMetricMetaListRequestLabels(DaraModel):
         name: str = None,
         value: str = None,
     ):
+        # The key of the label.
         self.name = name
+        # The value of the label.
         self.value = value
 
     def validate(self):

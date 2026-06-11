@@ -13,8 +13,11 @@ class PushingSetting(DaraModel):
         restore_action_ids: List[str] = None,
         template_uuid: str = None,
     ):
+        # The list of alert action IDs.
         self.alert_action_ids = alert_action_ids
+        # The list of restore action IDs.
         self.restore_action_ids = restore_action_ids
+        # The UUID of the message template.
         self.template_uuid = template_uuid
 
     def validate(self):

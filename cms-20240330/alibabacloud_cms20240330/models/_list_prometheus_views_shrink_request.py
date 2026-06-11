@@ -18,25 +18,25 @@ class ListPrometheusViewsShrinkRequest(DaraModel):
         version: str = None,
         workspace: str = None,
     ):
-        # Filter by RegionID.
+        # The region IDs by which to filter the results.
         self.filter_region_ids = filter_region_ids
-        # Maximum number of records to return.
+        # The maximum number of records to return.
         self.max_results = max_results
-        # Query token.
+        # The query token.
         self.next_token = next_token
-        # List of Prometheus view instance IDs.
+        # The IDs of the Prometheus view instances.
         self.prometheus_view_ids = prometheus_view_ids
-        # Prometheus view name.
+        # The name of the Prometheus view.
         self.prometheus_view_name = prometheus_view_name
-        # Resource group ID.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # Resource type.
+        # The resource type.
         self.resource_type = resource_type
-        # List of tags.
+        # The list of tags.
         self.tag_shrink = tag_shrink
-        # Instance version: V1 or V2
+        # The instance version. Valid values: V1 and V2.
         self.version = version
-        # Workspace name
+        # The name of the workspace.
         self.workspace = workspace
 
     def validate(self):

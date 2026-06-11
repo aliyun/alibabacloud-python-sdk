@@ -15,10 +15,13 @@ class ListPipelinesResponseBody(DaraModel):
         pipelines: List[main_models.ListPipelinesResponseBodyPipelines] = None,
         request_id: str = None,
     ):
+        # The number of results returned on the current page.
         self.max_results = max_results
+        # A pagination token. If this parameter is not empty, use it in a subsequent request to get the next page of results. If this parameter is empty, all results have been returned.
         self.next_token = next_token
+        # A list of pipelines.
         self.pipelines = pipelines
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -77,13 +80,21 @@ class ListPipelinesResponseBodyPipelines(DaraModel):
         update_time: str = None,
         workspace: str = None,
     ):
+        # The creation time.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.create_time = create_time
+        # The description of the pipeline.
         self.description = description
+        # The pipeline name.
         self.pipeline_name = pipeline_name
+        # The region ID.
         self.region_id = region_id
+        # The update time.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.update_time = update_time
+        # The workspace ID.
         self.workspace = workspace
 
     def validate(self):

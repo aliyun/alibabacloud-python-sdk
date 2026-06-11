@@ -21,7 +21,7 @@ class SubscriptionForModify(DaraModel):
         self.agent_config = agent_config
         # Description.
         self.description = description
-        # Filtering settings.
+        # Filter settings.
         self.filter_setting = filter_setting
         # Notification policy UUID.
         self.notify_strategy_id = notify_strategy_id
@@ -108,11 +108,11 @@ class SubscriptionForModifyPushingSetting(DaraModel):
         restore_action_ids: List[str] = None,
         template_uuid: str = None,
     ):
-        # Alert push action plan ID list.
+        # A list of alert push action plan IDs.
         self.alert_action_ids = alert_action_ids
         # Action plan ID.
         self.response_plan_id = response_plan_id
-        # Action integration plan ID list.
+        # A list of action integration plan IDs.
         self.restore_action_ids = restore_action_ids
         # Template UUID.
         self.template_uuid = template_uuid

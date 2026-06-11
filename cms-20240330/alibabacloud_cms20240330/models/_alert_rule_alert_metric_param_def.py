@@ -19,13 +19,21 @@ class AlertRuleAlertMetricParamDef(DaraModel):
         value: str = None,
         values: List[main_models.AlertRuleAlertMetricParamDefValues] = None,
     ):
+        # The maximum width of the input control. This parameter is valid only for SELECT_PARAM and INPUT_PARAM.
         self.max_width = max_width
+        # The minimum width of the input control. This parameter is valid only for SELECT_PARAM and INPUT_PARAM.
         self.min_width = min_width
+        # The name.
         self.name = name
+        # The Chinese placeholder text displayed on the frontend. This parameter is valid only for INPUT_PARAM.
         self.placeholder_cn = placeholder_cn
+        # The English placeholder text displayed on the frontend. This parameter is valid only for INPUT_PARAM.
         self.placeholder_en = placeholder_en
+        # ● TEXT_PARAM: A read-only text parameter defined by the backend. No user input control is displayed on the frontend.● INPUT_PARAM: An input box parameter.● SELECT_PARAM: A selection box parameter.
         self.type = type
+        # The value.
         self.value = value
+        # The list of available options in the drop-down list. This parameter is valid only for SELECT_PARAM.
         self.values = values
 
     def validate(self):
@@ -105,8 +113,11 @@ class AlertRuleAlertMetricParamDefValues(DaraModel):
         label_en: str = None,
         value: str = None,
     ):
+        # The Chinese display name of the option.
         self.label_cn = label_cn
+        # The English display name of the option.
         self.label_en = label_en
+        # The value.
         self.value = value
 
     def validate(self):

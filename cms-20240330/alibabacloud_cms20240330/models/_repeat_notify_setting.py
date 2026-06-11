@@ -10,7 +10,9 @@ class RepeatNotifySetting(DaraModel):
         end_incident_state: str = None,
         repeat_interval: str = None,
     ):
+        # The state that ends the management event.
         self.end_incident_state = end_incident_state
+        # The interval between repeated notifications.
         self.repeat_interval = repeat_interval
 
     def validate(self):

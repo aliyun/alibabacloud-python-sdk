@@ -17,11 +17,17 @@ class CreatePipelineRequest(DaraModel):
         sink: main_models.CreatePipelineRequestSink = None,
         source: main_models.CreatePipelineRequestSource = None,
     ):
+        # The pipeline description.
         self.description = description
+        # The execution policy.
         self.execute_policy = execute_policy
+        # The pipeline configuration.
         self.pipeline = pipeline
+        # The pipeline name.
         self.pipeline_name = pipeline_name
+        # The data sink for the processed output.
         self.sink = sink
+        # The data source.
         self.source = source
 
     def validate(self):
@@ -91,7 +97,9 @@ class CreatePipelineRequestSource(DaraModel):
         logstore: main_models.CreatePipelineRequestSourceLogstore = None,
         type: str = None,
     ):
+        # The Log Service Logstore configuration. This parameter is required when `source.type` is set to `logstore`.
         self.logstore = logstore
+        # The data source type.
         self.type = type
 
     def validate(self):
@@ -129,8 +137,11 @@ class CreatePipelineRequestSourceLogstore(DaraModel):
         project: str = None,
         query: str = None,
     ):
+        # The Logstore name.
         self.logstore = logstore
+        # The Log Service Project name.
         self.project = project
+        # The query statement to filter logs.
         self.query = query
 
     def validate(self):
@@ -171,7 +182,9 @@ class CreatePipelineRequestSink(DaraModel):
         dataset: main_models.CreatePipelineRequestSinkDataset = None,
         type: str = None,
     ):
+        # The destination dataset configuration. This parameter is required when `sink.type` is set to `dataset`.
         self.dataset = dataset
+        # The sink type.
         self.type = type
 
     def validate(self):
@@ -208,7 +221,9 @@ class CreatePipelineRequestSinkDataset(DaraModel):
         dataset: str = None,
         workspace: str = None,
     ):
+        # The dataset name.
         self.dataset = dataset
+        # The workspace ID.
         self.workspace = workspace
 
     def validate(self):
@@ -242,6 +257,7 @@ class CreatePipelineRequestPipeline(DaraModel):
         self,
         nodes: List[main_models.CreatePipelineRequestPipelineNodes] = None,
     ):
+        # The pipeline nodes.
         self.nodes = nodes
 
     def validate(self):
@@ -279,8 +295,11 @@ class CreatePipelineRequestPipelineNodes(DaraModel):
         parameters: Dict[str, Any] = None,
         type: str = None,
     ):
+        # The node ID.
         self.id = id
+        # The node parameters.
         self.parameters = parameters
+        # The node type.
         self.type = type
 
     def validate(self):
@@ -322,8 +341,11 @@ class CreatePipelineRequestExecutePolicy(DaraModel):
         run_once: main_models.CreatePipelineRequestExecutePolicyRunOnce = None,
         scheduled: main_models.CreatePipelineRequestExecutePolicyScheduled = None,
     ):
+        # The execution mode. Set to `runOnce` for a single execution, or `scheduled` for a recurring execution.
         self.mode = mode
+        # The configuration for a one-time execution. This parameter is required when `executePolicy.mode` is set to `runOnce`.
         self.run_once = run_once
+        # The configuration for a scheduled execution. This parameter is required when `executePolicy.mode` is set to `scheduled`.
         self.scheduled = scheduled
 
     def validate(self):
@@ -369,7 +391,9 @@ class CreatePipelineRequestExecutePolicyScheduled(DaraModel):
         from_time: int = None,
         interval: str = None,
     ):
+        # The start timestamp.
         self.from_time = from_time
+        # The execution interval in seconds.
         self.interval = interval
 
     def validate(self):
@@ -404,7 +428,9 @@ class CreatePipelineRequestExecutePolicyRunOnce(DaraModel):
         from_time: int = None,
         to_time: int = None,
     ):
+        # The start timestamp.
         self.from_time = from_time
+        # The end timestamp.
         self.to_time = to_time
 
     def validate(self):

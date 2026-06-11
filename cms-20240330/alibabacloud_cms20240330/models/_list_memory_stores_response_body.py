@@ -16,9 +16,13 @@ class ListMemoryStoresResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
+        # The maximum number of returned entries.
         self.max_results = max_results
+        # The list of memory stores.
         self.memory_stores = memory_stores
+        # The token for the next page of results.
         self.next_token = next_token
+        # The ID of the request.
         self.request_id = request_id
         self.total = total
 
@@ -84,13 +88,21 @@ class ListMemoryStoresResponseBodyMemoryStores(DaraModel):
         update_time: str = None,
         workspace: str = None,
     ):
+        # The time when the memory store was created.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.create_time = create_time
+        # The description of the memory store.
         self.description = description
+        # The name of the memory store.
         self.memory_store_name = memory_store_name
+        # The ID of the region.
         self.region_id = region_id
+        # The time when the memory store was last updated.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.update_time = update_time
+        # Workspace
         self.workspace = workspace
 
     def validate(self):

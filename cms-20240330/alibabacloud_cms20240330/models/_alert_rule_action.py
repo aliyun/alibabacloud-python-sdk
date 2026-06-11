@@ -11,6 +11,7 @@ class AlertRuleAction(DaraModel):
         self,
         actions: List[str] = None,
     ):
+        # A list of action integration IDs.
         self.actions = actions
 
     def validate(self):
