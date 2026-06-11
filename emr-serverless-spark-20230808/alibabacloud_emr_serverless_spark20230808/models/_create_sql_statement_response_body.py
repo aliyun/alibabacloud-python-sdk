@@ -11,7 +11,7 @@ class CreateSqlStatementResponseBody(DaraModel):
         data: main_models.CreateSqlStatementResponseBodyData = None,
         request_id: str = None,
     ):
-        # The data returned.
+        # The returned result.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -49,7 +49,7 @@ class CreateSqlStatementResponseBodyData(DaraModel):
         self,
         statement_id: str = None,
     ):
-        # The interactive query ID.
+        # The ID of the interactive query.
         self.statement_id = statement_id
 
     def validate(self):

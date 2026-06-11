@@ -17,17 +17,17 @@ class StartProcessInstanceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The code that is returned by the backend server.
+        # The return code from the backend.
         self.code = code
-        # The data returned.
+        # The returned data.
         self.data = data
-        # Indicates whether the workflow fails to be run manually.
+        # Indicates whether the manual workflow run failed.
         self.failed = failed
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The description of the returned code.
+        # The detailed description of the return code.
         self.msg = msg
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success

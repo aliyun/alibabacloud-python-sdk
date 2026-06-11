@@ -13,9 +13,13 @@ class GetLivyComputeResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The response code. A value of 1000000 indicates a successful request. Other values indicate a failed request. Check the message parameter for the error details.
         self.code = code
+        # The returned data.
         self.data = data
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -84,27 +88,57 @@ class GetLivyComputeResponseBodyData(DaraModel):
         start_time: int = None,
         status: str = None,
     ):
+        # The authentication method.
         self.auth_type = auth_type
+        # The auto-stop configuration.
         self.auto_stop_configuration = auto_stop_configuration
+        # The ID of the Livy Gateway.
         self.compute_id = compute_id
+        # The number of CPU cores for the Livy server.
         self.cpu_limit = cpu_limit
+        # The name of the creator.
         self.created_by = created_by
+        # The version number of the Spark engine.
         self.display_release_version = display_release_version
+        # The status of the public endpoint switch.
         self.enable_public = enable_public
+        # The public endpoint.
         self.endpoint = endpoint
+        # The internal endpoint.
         self.endpoint_inner = endpoint_inner
+        # The ID of the runtime environment.
         self.environment_id = environment_id
+        # Indicates whether the fusion switch is enabled.
         self.fusion = fusion
+        # The creation time.
         self.gmt_create = gmt_create
+        # The Livy Gateway configuration in JSON format. The following files are supported:
+        # 
+        # - sparkDefaultsConf
+        # 
+        # - sparkBlackListConf
+        # 
+        # - livyConf
+        # 
+        # - livyClientConf
         self.livy_server_conf = livy_server_conf
+        # The Livy version.
         self.livy_version = livy_version
+        # The memory size of the Livy server.
         self.memory_limit = memory_limit
+        # The name.
         self.name = name
+        # The name of the network connection.
         self.network_name = network_name
+        # The queue name.
         self.queue_name = queue_name
+        # The ID of the creator.
         self.ram_user_id = ram_user_id
+        # The version number of the Spark engine. This parameter is deprecated. Use displayReleaseVersion instead.
         self.release_version = release_version
+        # The start time.
         self.start_time = start_time
+        # The running status.
         self.status = status
 
     def validate(self):
@@ -261,7 +295,13 @@ class GetLivyComputeResponseBodyDataAutoStopConfiguration(DaraModel):
         enable: bool = None,
         idle_timeout_minutes: int = None,
     ):
+        # Indicates whether to automatically start the gateway after it is created.
+        # 
+        # - true: Yes.
+        # 
+        # - false: No.
         self.enable = enable
+        # The number of minutes after which the Livy Gateway is automatically stopped if it is idle.
         self.idle_timeout_minutes = idle_timeout_minutes
 
     def validate(self):

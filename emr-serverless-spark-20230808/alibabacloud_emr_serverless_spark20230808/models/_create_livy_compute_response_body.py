@@ -13,9 +13,13 @@ class CreateLivyComputeResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The status code of the request. A value of 1000000 indicates that the request was successful. Other values indicate that the request failed. For more information, see the message parameter.
         self.code = code
+        # The returned data.
         self.data = data
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -63,6 +67,7 @@ class CreateLivyComputeResponseBodyData(DaraModel):
         self,
         livy_compute_id: str = None,
     ):
+        # The ID of the Livy Gateway.
         self.livy_compute_id = livy_compute_id
 
     def validate(self):

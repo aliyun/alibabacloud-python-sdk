@@ -13,8 +13,9 @@ class GetRunConfigurationResponseBody(DaraModel):
         request_id: str = None,
         run_configuration: main_models.GetRunConfigurationResponseBodyRunConfiguration = None,
     ):
-        # 请求ID。
+        # The request ID.
         self.request_id = request_id
+        # The run configuration.
         self.run_configuration = run_configuration
 
     def validate(self):
@@ -52,10 +53,11 @@ class GetRunConfigurationResponseBodyRunConfiguration(DaraModel):
         log_config: main_models.GetRunConfigurationResponseBodyRunConfigurationLogConfig = None,
         runtime_configs: List[main_models.Tag] = None,
     ):
-        # 应用配置项
+        # The list of Spark configuration parameters.
         self.application_configs = application_configs
+        # The log configuration.
         self.log_config = log_config
-        # 运行配置。
+        # The list of runtime parameters.
         self.runtime_configs = runtime_configs
 
     def validate(self):
@@ -116,7 +118,9 @@ class GetRunConfigurationResponseBodyRunConfigurationLogConfig(DaraModel):
         log_level: str = None,
         log_path: str = None,
     ):
+        # The log level.
         self.log_level = log_level
+        # The log path.
         self.log_path = log_path
 
     def validate(self):
@@ -152,11 +156,11 @@ class GetRunConfigurationResponseBodyRunConfigurationApplicationConfigs(DaraMode
         config_item_key: str = None,
         config_item_value: str = None,
     ):
-        # 应用配置文件名。 应用配置文件名。 ```spark-defaults.conf```
+        # The name of the application configuration file.
         self.config_file_name = config_file_name
-        # 配置项键。 配置项键。 ```dfs.namenode.checkpoint.period```
+        # The key of the configuration item.
         self.config_item_key = config_item_key
-        # 配置项值。 配置项值。 ```3600s```
+        # The value of the configuration item.
         self.config_item_value = config_item_value
 
     def validate(self):

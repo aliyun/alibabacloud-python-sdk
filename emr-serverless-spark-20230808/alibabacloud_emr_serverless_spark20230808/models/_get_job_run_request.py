@@ -9,7 +9,7 @@ class GetJobRunRequest(DaraModel):
         self,
         region_id: str = None,
     ):
-        # The region ID.
+        # The region ID. For example, cn-hangzhou represents the Hangzhou region.
         self.region_id = region_id
 
     def validate(self):

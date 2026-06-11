@@ -1,3 +1,12 @@
+2026-06-11 Version: 1.24.0
+- Support API CancelRayJob.
+- Support API GetRayJob.
+- Support API ListRayJob.
+- Support API SubmitRayJob.
+- Update API ListWorkspaces: add response parameters Body.workspaces.$.ipWhiteList.
+- Update API UpdateWorkspace: add request parameters body.ipWhiteList.
+
+
 2026-04-28 Version: 1.23.0
 - Support API UpdateWorkspace.
 

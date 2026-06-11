@@ -12,7 +12,7 @@ class StartSessionClusterResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The workspace ID.
+        # The session cluster ID.
         self.session_cluster_id = session_cluster_id
 
     def validate(self):

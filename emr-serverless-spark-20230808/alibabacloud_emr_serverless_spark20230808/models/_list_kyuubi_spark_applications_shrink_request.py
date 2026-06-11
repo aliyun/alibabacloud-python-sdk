@@ -20,21 +20,21 @@ class ListKyuubiSparkApplicationsShrinkRequest(DaraModel):
         start_time_shrink: str = None,
         states: str = None,
     ):
-        # The ID of the application that is submitted by using a Kyuubi gateway.
+        # The ID of the Spark application submitted by Kyuubi, used for searching.
         self.application_id = application_id
-        # The name of the Spark application that is submitted by using a Kyuubi gateway.
+        # The name of the Spark application submitted by Kyuubi, used for searching.
         self.application_name = application_name
         self.end_time_shrink = end_time_shrink
         self.latest_sql_statement_statuses = latest_sql_statement_statuses
-        # The maximum number of entries to return.
+        # The maximum number of records to return.
         self.max_results = max_results
         self.min_duration = min_duration
-        # The pagination token that is used in the next request to retrieve a new page of results.
+        # The token to retrieve the next page of results.
         self.next_token = next_token
         self.order_by_shrink = order_by_shrink
         self.resource_queue_id = resource_queue_id
         self.sort = sort
-        # The range of start time.
+        # The time range when the task started.
         self.start_time_shrink = start_time_shrink
         self.states = states
 

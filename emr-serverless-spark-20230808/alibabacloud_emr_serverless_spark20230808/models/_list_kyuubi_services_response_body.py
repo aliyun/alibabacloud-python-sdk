@@ -13,7 +13,9 @@ class ListKyuubiServicesResponseBody(DaraModel):
         data: main_models.ListKyuubiServicesResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -49,6 +51,7 @@ class ListKyuubiServicesResponseBodyData(DaraModel):
         self,
         kyuubi_services: List[main_models.ListKyuubiServicesResponseBodyDataKyuubiServices] = None,
     ):
+        # A list of Kyuubi servers.
         self.kyuubi_services = kyuubi_services
 
     def validate(self):
@@ -98,21 +101,35 @@ class ListKyuubiServicesResponseBodyDataKyuubiServices(DaraModel):
         start_time: str = None,
         state: str = None,
     ):
+        # The instance type of the Kyuubi server.
         self.compute_instance = compute_instance
+        # The time when the server was created.
         self.create_time = create_time
+        # The UID of the user who created the server.
         self.creator = creator
+        # The internal endpoint.
         self.inner_endpoint = inner_endpoint
+        # The Kyuubi server configurations.
         self.kyuubi_configs = kyuubi_configs
+        # The version of the Kyuubi server.
         self.kyuubi_release_version = kyuubi_release_version
-        # KyuubiServer ID。
+        # The Kyuubi server ID.
         self.kyuubi_service_id = kyuubi_service_id
+        # The name of the Kyuubi server.
         self.name = name
+        # The public endpoint.
         self.public_endpoint = public_endpoint
+        # The queue name.
         self.queue = queue
+        # The version number of the Spark engine.
         self.release_version = release_version
+        # The number of replicas for the Kyuubi server.
         self.replica = replica
+        # The default configurations for Spark applications launched by the Kyuubi server.
         self.spark_configs = spark_configs
+        # The time when the Kyuubi server was last started.
         self.start_time = start_time
+        # The status of the Kyuubi server.
         self.state = state
 
     def validate(self):

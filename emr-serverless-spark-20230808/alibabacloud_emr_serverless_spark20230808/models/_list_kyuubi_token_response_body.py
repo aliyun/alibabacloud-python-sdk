@@ -13,7 +13,9 @@ class ListKyuubiTokenResponseBody(DaraModel):
         data: main_models.ListKyuubiTokenResponseBodyData = None,
         request_id: str = None,
     ):
+        # The data returned.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -49,6 +51,7 @@ class ListKyuubiTokenResponseBodyData(DaraModel):
         self,
         tokens: List[main_models.ListKyuubiTokenResponseBodyDataTokens] = None,
     ):
+        # A list of tokens.
         self.tokens = tokens
 
     def validate(self):
@@ -93,16 +96,24 @@ class ListKyuubiTokenResponseBodyDataTokens(DaraModel):
         token: str = None,
         token_id: str = None,
     ):
+        # The names of authorized RAM users.
         self.account_names = account_names
+        # The creation time.
         self.create_time = create_time
+        # The creator\\"s name.
         self.created_by = created_by
+        # The expiration time.
         self.expire_time = expire_time
+        # The last used time.
         self.last_used_time = last_used_time
+        # The ARNs of authorized users.
         self.member_arns = member_arns
+        # The token name.
         self.name = name
         self.spark_role = spark_role
+        # The masked token.
         self.token = token
-        # Token ID。
+        # The token ID.
         self.token_id = token_id
 
     def validate(self):

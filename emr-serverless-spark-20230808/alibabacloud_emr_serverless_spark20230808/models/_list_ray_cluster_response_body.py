@@ -13,7 +13,9 @@ class ListRayClusterResponseBody(DaraModel):
         ray_clusters: List[main_models.ListRayClusterResponseBodyRayClusters] = None,
         request_id: str = None,
     ):
+        # The list of Ray clusters.
         self.ray_clusters = ray_clusters
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -75,26 +77,57 @@ class ListRayClusterResponseBodyRayClusters(DaraModel):
         user_id: str = None,
         worker_spec: List[main_models.ListRayClusterResponseBodyRayClustersWorkerSpec] = None,
     ):
+        # The cluster ID.
         self.cluster_id = cluster_id
+        # The time when the cluster was created.
         self.create_time = create_time
+        # The UID of the user who created the cluster.
         self.creator = creator
+        # The nickname of the creator.
         self.creator_name = creator_name
+        # The URL of the Ray cluster dashboard.
         self.dashboard_url = dashboard_url
+        # The description.
         self.description = description
+        # The Ray engine version.
         self.display_release_version = display_release_version
+        # The gRPC endpoint for the internal network. The domain name can also be used to submit Ray jobs.
         self.grpc_endpoint = grpc_endpoint
+        # The information about the head node of the Ray cluster.
         self.head_spec = head_spec
+        # The ID of the Ray cluster instance.
         self.instance_id = instance_id
+        # The error message.
         self.message = message
+        # Indicates whether the configuration has been modified.
         self.modified = modified
+        # The time when the cluster was last modified.
         self.modified_time = modified_time
+        # The UID of the user who last updated the cluster.
         self.modifier = modifier
+        # The nickname of the modifier.
         self.modifier_name = modifier_name
+        # The name of the Ray cluster.
         self.name = name
+        # The name of the network connectivity service.
         self.network_service_name = network_service_name
+        # The startup time.
         self.start_time = start_time
+        # The cluster state.
+        # 
+        # - Starting: The cluster is starting.
+        # 
+        # - Running: The cluster is running.
+        # 
+        # - Stopping: The cluster is stopping.
+        # 
+        # - Stopped: The cluster is stopped.
+        # 
+        # - Error: The cluster has failed.
         self.state = state
+        # The ID of the Alibaba Cloud account.
         self.user_id = user_id
+        # The information about the worker nodes of the Ray cluster.
         self.worker_spec = worker_spec
 
     def validate(self):
@@ -261,14 +294,22 @@ class ListRayClusterResponseBodyRayClustersWorkerSpec(DaraModel):
         replica: int = None,
         worker_type: str = None,
     ):
+        # The number of CPU cores.
         self.cpu = cpu
         self.gpu_spec = gpu_spec
+        # The name of the worker group.
         self.group_name = group_name
+        # The maximum number of worker nodes after automatic scaling is enabled.
         self.max_replica = max_replica
+        # The memory size. Unit: Gi.
         self.memory = memory
+        # The minimum number of worker nodes after automatic scaling is enabled.
         self.min_replica = min_replica
+        # The queue name.
         self.queue_name = queue_name
+        # The number of nodes.
         self.replica = replica
+        # The worker type.
         self.worker_type = worker_type
 
     def validate(self):
@@ -350,12 +391,18 @@ class ListRayClusterResponseBodyRayClustersHeadSpec(DaraModel):
         queue_name: str = None,
         replica: int = None,
     ):
+        # The number of CPU cores.
         self.cpu = cpu
+        # Indicates whether automatic scaling is enabled for worker nodes.
         self.enable_auto_scaling = enable_auto_scaling
         self.gpu_spec = gpu_spec
+        # The idle timeout period for worker nodes.
         self.idle_timeout_seconds = idle_timeout_seconds
+        # The memory size. Unit: Gi.
         self.memory = memory
+        # The queue name.
         self.queue_name = queue_name
+        # The number of nodes.
         self.replica = replica
 
     def validate(self):

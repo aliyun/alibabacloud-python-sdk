@@ -15,18 +15,12 @@ class ListSessionClustersRequest(DaraModel):
         session_cluster_id: str = None,
     ):
         # The session type.
-        # 
-        # Valid values:
-        # 
-        # *   NOTEBOOK
-        # *   THRIFT
-        # *   SQL
         self.kind = kind
-        # The maximum number of entries to return.
+        # The maximum number of records to return.
         self.max_results = max_results
-        # The pagination token that is used in the request to retrieve a new page of results.
+        # The token that marks the start of the next page of results.
         self.next_token = next_token
-        # The name of the queue.
+        # The queue name.
         self.queue_name = queue_name
         # The region ID.
         self.region_id = region_id

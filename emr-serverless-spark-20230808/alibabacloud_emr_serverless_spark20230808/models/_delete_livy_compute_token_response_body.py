@@ -11,8 +11,11 @@ class DeleteLivyComputeTokenResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The response code. A value of 1000000 indicates a successful request. Other values indicate a failed request. For error details, see the message parameter.
         self.code = code
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

@@ -16,15 +16,15 @@ class ListWorkspacesResponseBody(DaraModel):
         total_count: int = None,
         workspaces: List[main_models.ListWorkspacesResponseBodyWorkspaces] = None,
     ):
-        # The maximum number of entries returned.
+        # The maximum number of records to retrieve at one time.
         self.max_results = max_results
-        # A pagination token. It can be used in the next request to retrieve a new page of results.
+        # Next page token.
         self.next_token = next_token
-        # The request ID.
+        # Request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # Total number of records.
         self.total_count = total_count
-        # The queried workspaces.
+        # Workspace list.
         self.workspaces = workspaces
 
     def validate(self):
@@ -92,6 +92,7 @@ class ListWorkspacesResponseBodyWorkspaces(DaraModel):
         end_time: int = None,
         fail_reason: str = None,
         gpu_spec: List[str] = None,
+        ip_white_list: List[str] = None,
         payment_duration_unit: str = None,
         payment_status: str = None,
         payment_type: str = None,
@@ -107,53 +108,54 @@ class ListWorkspacesResponseBodyWorkspaces(DaraModel):
         workspace_name: str = None,
         workspace_status: str = None,
     ):
-        # Specifies whether to enable auto-renewal. This parameter is required only if the paymentType parameter is set to Pre.
+        # Specifies whether to enable auto-renewal (required for the prepaid billing method).
         self.auto_renew = auto_renew
-        # The auto-renewal duration. This parameter is required only if the paymentType parameter is set to Pre.
+        # Auto-renewal duration (Required for the prepaid billing method).
         self.auto_renew_period = auto_renew_period
-        # The unit of the auto-renewal duration. This parameter is required only if the paymentType parameter is set to Pre.
+        # Auto-renewal period (Required for the prepaid billing method).
         self.auto_renew_period_unit = auto_renew_period_unit
-        # The time when the workflow was created.
+        # Workspace creation time.
         self.create_time = create_time
-        # The information of the Data Lake Formation (DLF) catalog.
+        # DLF Catalog information.
         self.dlf_catalog_id = dlf_catalog_id
-        # The version of DLF.
+        # Bind a dlf type.
         self.dlf_type = dlf_type
-        # The subscription period. This parameter is required only if the paymentType parameter is set to Pre.
+        # The subscription period quantity is required for the prepaid billing method.
         self.duration = duration
-        # The end of the end time range.
+        # Workspace release time.
         self.end_time = end_time
-        # The failure reason.
+        # Failure reason.
         self.fail_reason = fail_reason
+        # The GPU specifications.
         self.gpu_spec = gpu_spec
-        # The unit of the subscription duration.
+        self.ip_white_list = ip_white_list
+        # Subscription period (Required for the prepaid billing method).
         self.payment_duration_unit = payment_duration_unit
-        # The status of the payment.
+        # Payment status.
         self.payment_status = payment_status
-        # The billing method. Valid values:
-        # 
-        # - PayAsYouGo
-        # - Pre
+        # Billing method.
         self.payment_type = payment_type
-        # The information about the subscription quota.
+        # Information about prepaid resource quotas.
         self.pre_paid_quota = pre_paid_quota
-        # The region ID.
+        # Region ID.
         self.region_id = region_id
-        # The reason why the workspace is released.
+        # Workspace release reason.
         self.release_type = release_type
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The resource specifications.
+        # Resource specification.
         self.resource_spec = resource_spec
-        # The reason of the job status change.
+        # Information about changes to the workspace status.
         self.state_change_reason = state_change_reason
-        # The OSS path.
+        # OSS path.
         self.storage = storage
+        # The tags of the workspace.
         self.tags = tags
-        # The workspace ID.
+        # Workspace ID.
         self.workspace_id = workspace_id
-        # The name of the workspace.
+        # Workspace name.
         self.workspace_name = workspace_name
-        # The workspace status.
+        # Workspace status.
         self.workspace_status = workspace_status
 
     def validate(self):
@@ -200,6 +202,9 @@ class ListWorkspacesResponseBodyWorkspaces(DaraModel):
 
         if self.gpu_spec is not None:
             result['gpuSpec'] = self.gpu_spec
+
+        if self.ip_white_list is not None:
+            result['ipWhiteList'] = self.ip_white_list
 
         if self.payment_duration_unit is not None:
             result['paymentDurationUnit'] = self.payment_duration_unit
@@ -279,6 +284,9 @@ class ListWorkspacesResponseBodyWorkspaces(DaraModel):
         if m.get('gpuSpec') is not None:
             self.gpu_spec = m.get('gpuSpec')
 
+        if m.get('ipWhiteList') is not None:
+            self.ip_white_list = m.get('ipWhiteList')
+
         if m.get('paymentDurationUnit') is not None:
             self.payment_duration_unit = m.get('paymentDurationUnit')
 
@@ -334,7 +342,9 @@ class ListWorkspacesResponseBodyWorkspacesTags(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The tag key.
         self.tag_key = tag_key
+        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):
@@ -369,9 +379,9 @@ class ListWorkspacesResponseBodyWorkspacesStateChangeReason(DaraModel):
         code: str = None,
         message: str = None,
     ):
-        # The error code.
+        # Error code.
         self.code = code
-        # The error message.
+        # Error message.
         self.message = message
 
     def validate(self):
@@ -413,29 +423,33 @@ class ListWorkspacesResponseBodyWorkspacesPrePaidQuota(DaraModel):
         payment_status: str = None,
         used_resource: str = None,
     ):
-        # The amount of resources that are allocated by a subscription quota.
+        # The amount of resources that are currently allocated.
         self.allocated_resource = allocated_resource
-        # Indicates whether auto-renewal is enabled for the subscription quota.
+        # Whether auto-renewal is enabled for the resource.
         # 
-        # *   true
-        # *   false
+        # - true: Enables auto-renewal. The resource is automatically renewed after it expires.
+        # 
+        # - false: Auto-renewal is disabled. The resource is stopped upon expiration.
         self.auto_renewal = auto_renewal
-        # The creation time of the subscription quota.
+        # The creation time of the resource quota.
         self.create_time = create_time
-        # The expiration time of the subscription quota.
+        # The expiration time of the resource quota.
         self.expire_time = expire_time
-        # The ID of the instance that is generated when you purchase the subscription quota.
+        # The resource instance ID that is associated with the quota.
         self.instance_id = instance_id
-        # The maximum amount of resources that can be used in a subscription quota.
+        # The maximum amount of resources.
         self.max_resource = max_resource
+        # The order ID.
         self.order_id = order_id
-        # The status of the subscription quota. Valid values:
+        # The payment status of the current resource. The possible values are as follows:
         # 
-        # *   NORMAL
-        # *   WAIT_FOR_EXPIRE
-        # *   EXPIRED
+        # - NORMAL: Active.
+        # 
+        # - WAIT_FOR_EXPIRE: Will expire.
+        # 
+        # - EXPIRED: The item has expired.
         self.payment_status = payment_status
-        # The amount of resources that are used.
+        # The amount of resources currently in use.
         self.used_resource = used_resource
 
     def validate(self):

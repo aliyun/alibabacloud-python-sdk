@@ -24,33 +24,35 @@ class CreateSessionClusterRequest(DaraModel):
         release_version: str = None,
         region_id: str = None,
     ):
-        # The Spark configurations.
+        # The Spark application configurations.
         self.application_configs = application_configs
-        # Specifies whether to enable automatic startup.
+        # The automatic startup configuration.
         # 
-        # *   true
-        # *   false
+        # - true: Yes.
+        # 
+        # - false: No.
         self.auto_start_configuration = auto_start_configuration
-        # The automatic termination configuration.
+        # The automatic stop configuration.
         self.auto_stop_configuration = auto_stop_configuration
         self.client_token = client_token
-        # The version of the Spark engine.
+        # The version that is displayed in the console.
         self.display_release_version = display_release_version
-        # The ID of the Python environment. This parameter takes effect only for notebook sessions.
+        # The ID of the Python environment. This parameter applies only to Notebook sessions.
         self.env_id = env_id
-        # Specifies whether to enable Fusion engine for acceleration.
+        # Specifies whether to enable the Fusion engine for acceleration.
         self.fusion = fusion
-        # The session type.
+        # The type of the session. Valid values:
         # 
-        # *   SQL
-        # *   NOTEBOOK
+        # - SQL: an SQL session.
+        # 
+        # - NOTEBOOK: a Notebook session.
         self.kind = kind
-        # The name of the job.
+        # The name of the task.
         self.name = name
         self.public_endpoint_enabled = public_endpoint_enabled
         # The queue name.
         self.queue_name = queue_name
-        # The version number of Spark.
+        # The version of the Spark engine.
         self.release_version = release_version
         # The region ID.
         self.region_id = region_id
@@ -167,12 +169,13 @@ class CreateSessionClusterRequestAutoStopConfiguration(DaraModel):
         enable: bool = None,
         idle_timeout_minutes: int = None,
     ):
-        # Specifies whether to enable automatic termination.
+        # Specifies whether to enable automatic stop.
         # 
-        # *   true
-        # *   false
+        # - true: Enables automatic stop.
+        # 
+        # - false: Disables automatic stop.
         self.enable = enable
-        # The idle timeout period. The session is automatically terminated when the idle timeout period is exceeded.
+        # The idle timeout period of the session. The session is automatically stopped after it is idle for the specified period. Unit: minutes.
         self.idle_timeout_minutes = idle_timeout_minutes
 
     def validate(self):
@@ -208,8 +211,9 @@ class CreateSessionClusterRequestAutoStartConfiguration(DaraModel):
     ):
         # Specifies whether to enable automatic startup.
         # 
-        # *   true
-        # *   false
+        # - true: Enables automatic startup.
+        # 
+        # - false: Disables automatic startup.
         self.enable = enable
 
     def validate(self):
@@ -241,9 +245,9 @@ class CreateSessionClusterRequestApplicationConfigs(DaraModel):
     ):
         # The name of the configuration file.
         self.config_file_name = config_file_name
-        # The key of SparkConf.
+        # The key of a Spark configuration item.
         self.config_item_key = config_item_key
-        # The value of SparkConf.
+        # The value of a Spark configuration item.
         self.config_item_value = config_item_value
 
     def validate(self):

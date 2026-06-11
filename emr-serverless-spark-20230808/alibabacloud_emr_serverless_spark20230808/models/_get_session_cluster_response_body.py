@@ -75,61 +75,67 @@ class GetSessionClusterResponseBodySessionCluster(DaraModel):
         web_ui: str = None,
         workspace_id: str = None,
     ):
-        # The Spark configurations.
+        # The list of Spark application configurations.
         self.application_configs = application_configs
-        # Indicates whether automatic startup is enabled.
+        # The auto-start configuration.
         self.auto_start_configuration = auto_start_configuration
-        # Indicates whether automatic termination is enabled.
+        # The auto-stop configuration.
         self.auto_stop_configuration = auto_stop_configuration
         self.connection_token = connection_token
-        # The version of the Spark engine.
+        # The version that is displayed in the console.
         self.display_release_version = display_release_version
-        # The domain name to which the Spark UI of the session belongs.
+        # The domain name of the Spark UI for the session.
         self.domain = domain
-        # The internal endpoint.
+        # The internal same-region endpoint.
         self.domain_inner = domain_inner
-        # The ID of the job that is associated with the session.
+        # The ID of the developer job that is attached to the session.
         self.draft_id = draft_id
         # The environment ID.
         self.env_id = env_id
-        # The additional metadata of the session.
+        # The extra metadata of the session.
         self.extra = extra
-        # Indicates whether the Fusion engine is used for acceleration.
+        # Specifies whether to enable acceleration using the Fusion engine.
         self.fusion = fusion
-        # The creation time.
+        # The time when the session was created.
         self.gmt_create = gmt_create
-        # The type of the job. This parameter is required and cannot be modified after the deployment is created. Valid values:
+        # The job type. This parameter is required and cannot be modified after the job is created.
         # 
-        # *   SQLSCRIPT
-        # *   JAR
-        # *   PYTHON
+        # - SQLSCRIPT: an SQL job.
+        # 
+        # - JAR: a JAR job.
+        # 
+        # - PYTHON: a Python job.
         self.kind = kind
-        # The name of the session.
+        # The session name.
         self.name = name
         self.public_endpoint_enabled = public_endpoint_enabled
         # The queue name.
         self.queue_name = queue_name
-        # The version of Serverless Spark.
+        # The Serverless Spark version.
         self.release_version = release_version
-        # The session ID.
+        # The session cluster ID.
         self.session_cluster_id = session_cluster_id
-        # The start time.
+        # The time when the session started.
         self.start_time = start_time
-        # The job status.
+        # The state of the job.
         # 
-        # *   Starting
-        # *   Running
-        # *   Stopping
-        # *   Stopped
-        # *   Error
+        # - Starting: The job is starting.
+        # 
+        # - Running: The job is running.
+        # 
+        # - Stopping: The job is stopping.
+        # 
+        # - Stopped: The job is stopped.
+        # 
+        # - Error: The job failed.
         self.state = state
-        # The reason of the job status change.
+        # The reason for the state change.
         self.state_change_reason = state_change_reason
         # The user ID.
         self.user_id = user_id
-        # The name of the account that is used to create the session.
+        # The name of the user who created the session.
         self.user_name = user_name
-        # The Spark UI of the session.
+        # The URL of the Spark UI for the session.
         self.web_ui = web_ui
         # The workspace ID.
         self.workspace_id = workspace_id
@@ -321,9 +327,9 @@ class GetSessionClusterResponseBodySessionClusterStateChangeReason(DaraModel):
         code: str = None,
         message: str = None,
     ):
-        # The status change code.
+        # The state change code.
         self.code = code
-        # The status change message.
+        # The state change message.
         self.message = message
 
     def validate(self):
@@ -358,12 +364,13 @@ class GetSessionClusterResponseBodySessionClusterAutoStopConfiguration(DaraModel
         enable: bool = None,
         idle_timeout_minutes: int = None,
     ):
-        # Indicates whether automatic termination is enabled.
+        # Specifies whether to enable auto-stop.
         # 
-        # *   true
-        # *   false
+        # - true: Auto-stop is enabled.
+        # 
+        # - false: Auto-stop is disabled.
         self.enable = enable
-        # The idle timeout period. The session is automatically terminated when the idle timeout period is exceeded.
+        # The number of minutes a session can be idle before it is automatically stopped.
         self.idle_timeout_minutes = idle_timeout_minutes
 
     def validate(self):
@@ -397,10 +404,11 @@ class GetSessionClusterResponseBodySessionClusterAutoStartConfiguration(DaraMode
         self,
         enable: bool = None,
     ):
-        # Indicates whether automatic startup is enabled.
+        # Specifies whether to enable auto-start.
         # 
-        # *   true
-        # *   false
+        # - true: Auto-start is enabled.
+        # 
+        # - false: Auto-start is disabled.
         self.enable = enable
 
     def validate(self):
@@ -432,7 +440,7 @@ class GetSessionClusterResponseBodySessionClusterApplicationConfigs(DaraModel):
     ):
         # The name of the configuration file.
         self.config_file_name = config_file_name
-        # The key of the configuration.
+        # The configuration key.
         self.config_item_key = config_item_key
         # The configuration value.
         self.config_item_value = config_item_value

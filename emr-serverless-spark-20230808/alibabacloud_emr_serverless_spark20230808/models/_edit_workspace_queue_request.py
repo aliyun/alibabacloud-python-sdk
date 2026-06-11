@@ -17,11 +17,16 @@ class EditWorkspaceQueueRequest(DaraModel):
         workspace_queue_name: str = None,
         region_id: str = None,
     ):
+        # The environment types.
         self.environments = environments
         self.gpu_spec = gpu_spec
+        # The resource specifications.
         self.resource_spec = resource_spec
+        # The Workspace ID.
         self.workspace_id = workspace_id
+        # The name of the Workspace Queue.
         self.workspace_queue_name = workspace_queue_name
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -83,6 +88,7 @@ class EditWorkspaceQueueRequestResourceSpec(DaraModel):
         gpu: int = None,
         max_cu: int = None,
     ):
+        # The maximum resource capacity of the Workspace Queue.
         self.cu = cu
         self.gpu = gpu
         self.max_cu = max_cu

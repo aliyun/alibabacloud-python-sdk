@@ -17,14 +17,17 @@ class ListNetworkServicesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # 一次获取的最大记录数。
+        # The maximum number of entries to return on each page.
         self.max_results = max_results
+        # A list of network connections.
         self.network_services = network_services
-        # 下一页TOKEN。
+        # The pagination token that is used in the next request to retrieve a new page of results. If this parameter is empty, all results have been returned.
         self.next_token = next_token
+        # This parameter is deprecated.
         self.queues = queues
+        # The request ID.
         self.request_id = request_id
-        # 记录总数。
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -106,13 +109,21 @@ class ListNetworkServicesResponseBodyQueues(DaraModel):
         vswitch_ids: List[str] = None,
         workspace_id: str = None,
     ):
+        # This parameter is deprecated.
         self.name = name
+        # This parameter is deprecated.
         self.network_service_id = network_service_id
+        # This parameter is deprecated.
         self.state = state
+        # This parameter is deprecated.
         self.state_change_reason = state_change_reason
+        # This parameter is deprecated.
         self.type = type
+        # This parameter is deprecated.
         self.vpc_id = vpc_id
+        # This parameter is deprecated.
         self.vswitch_ids = vswitch_ids
+        # This parameter is deprecated.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -185,7 +196,9 @@ class ListNetworkServicesResponseBodyQueuesStateChangeReason(DaraModel):
         code: str = None,
         message: str = None,
     ):
+        # This parameter is deprecated.
         self.code = code
+        # This parameter is deprecated.
         self.message = message
 
     def validate(self):
@@ -226,14 +239,21 @@ class ListNetworkServicesResponseBodyNetworkServices(DaraModel):
         vswitch_ids: List[str] = None,
         workspace_id: str = None,
     ):
+        # The name of the network connection.
         self.name = name
+        # The ID of the network connection.
         self.network_service_id = network_service_id
+        # The state of the network connection.
         self.state = state
+        # The reason for the state change.
         self.state_change_reason = state_change_reason
+        # The type of the network connection.
         self.type = type
-        # VPC id。
+        # The VPC ID.
         self.vpc_id = vpc_id
+        # The list of vSwitch IDs.
         self.vswitch_ids = vswitch_ids
+        # The ID of the workspace.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -306,7 +326,9 @@ class ListNetworkServicesResponseBodyNetworkServicesStateChangeReason(DaraModel)
         code: str = None,
         message: str = None,
     ):
+        # The status code.
         self.code = code
+        # The message that provides details about the state change.
         self.message = message
 
     def validate(self):

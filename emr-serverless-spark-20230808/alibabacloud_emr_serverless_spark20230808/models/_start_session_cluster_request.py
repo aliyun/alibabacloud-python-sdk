@@ -13,7 +13,7 @@ class StartSessionClusterRequest(DaraModel):
     ):
         # The queue name.
         self.queue_name = queue_name
-        # The session ID.
+        # The session cluster ID.
         self.session_cluster_id = session_cluster_id
         # The region ID.
         self.region_id = region_id

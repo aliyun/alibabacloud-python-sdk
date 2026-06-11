@@ -11,11 +11,6 @@ class ListWorkspaceQueuesRequest(DaraModel):
         region_id: str = None,
     ):
         # The environment type.
-        # 
-        # Valid values:
-        # 
-        # *   dev
-        # *   production
         self.environment = environment
         # The region ID.
         self.region_id = region_id

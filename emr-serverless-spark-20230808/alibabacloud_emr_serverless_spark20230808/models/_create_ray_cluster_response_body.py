@@ -10,7 +10,9 @@ class CreateRayClusterResponseBody(DaraModel):
         cluster_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the Ray cluster.
         self.cluster_id = cluster_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

@@ -29,20 +29,20 @@ class UpdateProcessDefinitionWithScheduleRequest(DaraModel):
         task_relation_json: List[main_models.UpdateProcessDefinitionWithScheduleRequestTaskRelationJson] = None,
         timeout: int = None,
     ):
-        # The email address to receive alerts.
+        # The email address for alerts.
         self.alert_email_address = alert_email_address
-        # The description of the workflow.
+        # The workflow description.
         self.description = description
         # The execution policy.
         # 
         # This parameter is required.
         self.execution_type = execution_type
         self.global_params = global_params
-        # The name of the workflow.
+        # The workflow name.
         # 
         # This parameter is required.
         self.name = name
-        # The code of the service.
+        # The product code.
         # 
         # This parameter is required.
         self.product_namespace = product_namespace
@@ -50,29 +50,29 @@ class UpdateProcessDefinitionWithScheduleRequest(DaraModel):
         self.publish = publish
         # The region ID.
         self.region_id = region_id
-        # The status of the workflow.
+        # The release state of the workflow.
         self.release_state = release_state
         # The resource queue.
         self.resource_queue = resource_queue
         # The number of retries.
         self.retry_times = retry_times
-        # The execution user.
+        # The user to run the workflow.
         self.run_as = run_as
-        # The scheduling settings.
+        # The scheduling configuration.
         self.schedule = schedule
         # The tags.
         self.tags = tags
-        # The descriptions of all nodes in the workflow.
+        # A JSON array of task definitions. This array contains the descriptive information for all tasks in the workflow.
         # 
         # This parameter is required.
         self.task_definition_json = task_definition_json
-        # The node parallelism.
+        # The degree of concurrent execution for workflow nodes.
         self.task_parallelism = task_parallelism
-        # The dependencies of all nodes in the workflow. preTaskCode specifies the ID of an upstream node, and postTaskCode specifies the ID of a downstream node. The ID of each node is unique. If a node does not have an upstream node, set preTaskCode to 0.
+        # A JSON array that defines the dependencies between tasks in the workflow. \\`preTaskCode\\` specifies the upstream task ID, and \\`postTaskCode\\` specifies the downstream task ID. Each task must have a unique ID. For a task node without an upstream task, add a dependency and set \\`preTaskCode\\` to 0.
         # 
         # This parameter is required.
         self.task_relation_json = task_relation_json
-        # The default timeout period of the workflow.
+        # The default timeout period for the workflow execution.
         self.timeout = timeout
 
     def validate(self):
@@ -235,23 +235,23 @@ class UpdateProcessDefinitionWithScheduleRequestTaskRelationJson(DaraModel):
         pre_task_code: int = None,
         pre_task_version: int = None,
     ):
-        # The name of the node topology. You can enter a workflow name.
+        # The name of the task topology. You can use the workflow name.
         # 
         # This parameter is required.
         self.name = name
-        # The ID of the downstream node.
+        # The downstream task ID.
         # 
         # This parameter is required.
         self.post_task_code = post_task_code
-        # The version of the downstream node.
+        # The downstream task version.
         # 
         # This parameter is required.
         self.post_task_version = post_task_version
-        # The ID of the upstream node.
+        # The upstream task ID.
         # 
         # This parameter is required.
         self.pre_task_code = pre_task_code
-        # The version of the upstream node.
+        # The upstream task version.
         # 
         # This parameter is required.
         self.pre_task_version = pre_task_version
@@ -315,35 +315,35 @@ class UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJson(DaraModel):
         task_type: str = None,
         timeout: int = None,
     ):
-        # The email address to receive alerts.
+        # The email address for alerts.
         self.alert_email_address = alert_email_address
-        # The node ID.
+        # The task definition ID.
         # 
         # This parameter is required.
         self.code = code
-        # The node description.
+        # The description of the task definition.
         self.description = description
-        # Specifies whether to send alerts when the node fails.
+        # Specifies whether to enable alerts when the task fails.
         self.fail_alert_enable = fail_alert_enable
-        # The number of retries when the node fails.
+        # The number of times to retry the task if it fails.
         self.fail_retry_times = fail_retry_times
-        # The name of the job.
+        # The task name.
         # 
         # This parameter is required.
         self.name = name
-        # Specifies whether to send alerts when the node is started.
+        # Specifies whether to enable alerts when the task starts.
         self.start_alert_enable = start_alert_enable
-        # The tags of the job.
+        # The tags.
         self.tags = tags
-        # The job parameters.
+        # The parameters for the task definition.
         # 
         # This parameter is required.
         self.task_params = task_params
-        # The type of the node.
+        # The type of the workflow node.
         # 
         # This parameter is required.
         self.task_type = task_type
-        # The default timeout period of the node.
+        # The default timeout period for the task execution.
         self.timeout = timeout
 
     def validate(self):
@@ -448,38 +448,38 @@ class UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams(Dar
         type: str = None,
         workspace_biz_id: str = None,
     ):
-        # The displayed version of the Spark engine.
+        # The display version of the Spark engine.
         self.display_spark_version = display_spark_version
         # The environment ID.
         self.environment_id = environment_id
-        # Specifies whether to enable Fusion engine for acceleration.
+        # Specifies whether to enable the Fusion engine for acceleration.
         self.fusion = fusion
         self.local_params = local_params
-        # The name of the queue on which the job runs.
+        # The name of the queue on which the task runs.
         # 
         # This parameter is required.
         self.resource_queue_id = resource_queue_id
-        # The configurations of the Spark jobs.
+        # The Spark task configurations.
         self.spark_conf = spark_conf
-        # The number of driver cores of the Spark job.
+        # The number of cores for the Spark driver.
         self.spark_driver_cores = spark_driver_cores
-        # The size of driver memory of the Spark job.
+        # The memory size of the Spark driver.
         self.spark_driver_memory = spark_driver_memory
-        # The number of executor cores of the Spark job.
+        # The number of cores for each Spark executor.
         self.spark_executor_cores = spark_executor_cores
-        # The size of executor memory of the Spark job.
+        # The memory size of each Spark executor.
         self.spark_executor_memory = spark_executor_memory
-        # The level of the Spark log.
+        # The Spark log level.
         self.spark_log_level = spark_log_level
-        # The path where the operational logs of the Spark job are stored.
+        # The path to store Spark task logs.
         self.spark_log_path = spark_log_path
-        # The version of the Spark engine.
+        # The Spark engine version.
         self.spark_version = spark_version
-        # The ID of the data development job.
+        # The ID of the Data Development task.
         # 
         # This parameter is required.
         self.task_biz_id = task_biz_id
-        # The type of the Spark job.
+        # The Spark job type.
         self.type = type
         # The workspace ID.
         # 
@@ -619,9 +619,9 @@ class UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParamsSpar
         key: str = None,
         value: str = None,
     ):
-        # The key of the SparkConf object.
+        # The key of the Spark configuration.
         self.key = key
-        # The value of the SparkConf object.
+        # The value of the Spark configuration.
         self.value = value
 
     def validate(self):
@@ -709,13 +709,13 @@ class UpdateProcessDefinitionWithScheduleRequestSchedule(DaraModel):
         start_time: str = None,
         timezone_id: str = None,
     ):
-        # The CRON expression that is used for scheduling.
+        # The cron expression for scheduling.
         self.crontab = crontab
-        # The end time of the scheduling.
+        # The end time of the schedule.
         self.end_time = end_time
-        # The start time of the scheduling.
+        # The start time.
         self.start_time = start_time
-        # The ID of the time zone.
+        # The time zone ID.
         self.timezone_id = timezone_id
 
     def validate(self):

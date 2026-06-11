@@ -17,14 +17,23 @@ class CreateKyuubiServiceRequest(DaraModel):
         replica: int = None,
         spark_configs: str = None,
     ):
+        # The specifications of the Kyuubi service.
         self.compute_instance = compute_instance
+        # The Kyuubi service configuration.
         self.kyuubi_configs = kyuubi_configs
+        # The Kyuubi service database engine version.
         self.kyuubi_release_version = kyuubi_release_version
+        # The Kyuubi service name.
         self.name = name
+        # Specifies whether to enable public network access.
         self.public_endpoint_enabled = public_endpoint_enabled
+        # The queue where the Kyuubi service runs.
         self.queue = queue
+        # The Spark database engine version.
         self.release_version = release_version
+        # The number of replicas for high availability (HA).
         self.replica = replica
+        # The Spark configuration.
         self.spark_configs = spark_configs
 
     def validate(self):

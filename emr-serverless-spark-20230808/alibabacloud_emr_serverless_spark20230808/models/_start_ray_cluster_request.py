@@ -9,6 +9,7 @@ class StartRayClusterRequest(DaraModel):
         self,
         client_token: str = None,
     ):
+        # The token used to ensure idempotence.
         self.client_token = client_token
 
     def validate(self):

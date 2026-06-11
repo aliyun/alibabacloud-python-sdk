@@ -15,9 +15,13 @@ class ListLivyComputeResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The response code. A value of 1000000 indicates that the request is successful. For other values, see the message parameter for error details.
         self.code = code
+        # The returned data.
         self.data = data
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -65,6 +69,7 @@ class ListLivyComputeResponseBodyData(DaraModel):
         self,
         livy_computes: List[main_models.ListLivyComputeResponseBodyDataLivyComputes] = None,
     ):
+        # A list of Livy Gateways.
         self.livy_computes = livy_computes
 
     def validate(self):
@@ -108,14 +113,23 @@ class ListLivyComputeResponseBodyDataLivyComputes(DaraModel):
         start_time: int = None,
         status: str = None,
     ):
+        # The ID of the Livy Gateway.
         self.compute_id = compute_id
+        # The name of the creator.
         self.created_by = created_by
+        # The public endpoint.
         self.endpoint = endpoint
+        # The internal endpoint.
         self.endpoint_inner = endpoint_inner
+        # The time when the resource was created.
         self.gmt_create = gmt_create
+        # The name.
         self.name = name
+        # The queue name.
         self.queue_name = queue_name
+        # The time when the resource was started.
         self.start_time = start_time
+        # The running status.
         self.status = status
 
     def validate(self):

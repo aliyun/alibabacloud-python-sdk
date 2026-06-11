@@ -16,15 +16,15 @@ class ListSessionClustersResponseBody(DaraModel):
         session_clusters: List[main_models.ListSessionClustersResponseBodySessionClusters] = None,
         total_count: int = None,
     ):
-        # The maximum number of entries returned.
+        # The maximum number of entries returned for the request.
         self.max_results = max_results
-        # A pagination token.
+        # The token that marks the start of the next page of results.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The sessions.
+        # A list of sessions.
         self.session_clusters = session_clusters
-        # The total number of entries returned.
+        # The total number of entries that match the query criteria.
         self.total_count = total_count
 
     def validate(self):
@@ -107,61 +107,59 @@ class ListSessionClustersResponseBodySessionClusters(DaraModel):
         web_ui: str = None,
         workspace_id: str = None,
     ):
-        # The session configurations, which are equivalent to the configurations of the Spark job.
+        # The session configurations. These are equivalent to the configurations of the underlying Spark job.
         self.application_configs = application_configs
-        # The automatic startup configurations.
+        # The auto-start configuration.
         self.auto_start_configuration = auto_start_configuration
-        # The configurations of automatic termination.
+        # The auto-stop configuration.
         self.auto_stop_configuration = auto_stop_configuration
         self.connection_token = connection_token
-        # The version of the Spark engine.
+        # The version displayed in the console.
         self.display_release_version = display_release_version
         # The public endpoint of the Thrift server.
         self.domain = domain
-        # The internal endpoint of the Thrift server.
+        # The internal same-region endpoint of the Thrift server.
         self.domain_inner = domain_inner
-        # The ID of the job that is associated with the session.
+        # The ID of the developer job that is attached to the session.
         self.draft_id = draft_id
-        # The additional metadata of the session.
+        # The extra metadata of the session.
         self.extra = extra
-        # Indicates whether the Fusion engine is used for acceleration.
+        # Indicates whether acceleration by the Fusion engine is enabled.
         self.fusion = fusion
-        # The creation time.
+        # The time when the session was created.
         self.gmt_create = gmt_create
         # The session type.
-        # 
-        # Valid values:
-        # 
-        # *   NOTEBOOK
-        # *   THRIFT
-        # *   SQL
         self.kind = kind
-        # The name of the session.
+        # The session name.
         self.name = name
         self.public_endpoint_enabled = public_endpoint_enabled
-        # The name of the queue that is used to run the session.
+        # The name of the queue in which the session runs.
         self.queue_name = queue_name
-        # The version of EMR Serverless Spark.
+        # The Serverless Spark version.
         self.release_version = release_version
         # The session ID.
         self.session_cluster_id = session_cluster_id
-        # The start time.
+        # The time when the session was started.
         self.start_time = start_time
-        # The status of the session.
+        # The session state.
         # 
-        # *   Starting
-        # *   Running
-        # *   Stopping
-        # *   Stopped
-        # *   Error
+        # - Starting: The session is starting.
+        # 
+        # - Running: The session is running.
+        # 
+        # - Stopping: The session is stopping.
+        # 
+        # - Stopped: The session is stopped.
+        # 
+        # - Error: The session has failed.
         self.state = state
-        # The details of the most recent status change of the session.
+        # The details of the last state change of the session.
         self.state_change_reason = state_change_reason
         # The user ID.
         self.user_id = user_id
         # The username.
         self.user_name = user_name
-        # The Spark UI of the session.
+        # The URL of the Spark UI for the session.
         self.web_ui = web_ui
         # The workspace ID.
         self.workspace_id = workspace_id
@@ -347,9 +345,9 @@ class ListSessionClustersResponseBodySessionClustersStateChangeReason(DaraModel)
         code: str = None,
         message: str = None,
     ):
-        # The status change code.
+        # The state change code.
         self.code = code
-        # The status change message.
+        # The state change message.
         self.message = message
 
     def validate(self):
@@ -384,9 +382,9 @@ class ListSessionClustersResponseBodySessionClustersAutoStopConfiguration(DaraMo
         enable: bool = None,
         idle_timeout_minutes: int = None,
     ):
-        # Indicates whether automatic termination is enabled.
+        # Indicates whether auto-stop is enabled.
         self.enable = enable
-        # The idle timeout period. The session is automatically terminated when the idle timeout period is exceeded.
+        # The number of minutes of inactivity before the session is automatically stopped.
         self.idle_timeout_minutes = idle_timeout_minutes
 
     def validate(self):
@@ -420,7 +418,7 @@ class ListSessionClustersResponseBodySessionClustersAutoStartConfiguration(DaraM
         self,
         enable: bool = None,
     ):
-        # Indicates whether automatic startup is enabled.
+        # Indicates whether auto-start is enabled.
         self.enable = enable
 
     def validate(self):
@@ -450,9 +448,9 @@ class ListSessionClustersResponseBodySessionClustersApplicationConfigs(DaraModel
         config_item_key: str = None,
         config_item_value: str = None,
     ):
-        # The name of the configuration file.
+        # The configuration file name.
         self.config_file_name = config_file_name
-        # The key of the configuration.
+        # The configuration key.
         self.config_item_key = config_item_key
         # The configuration value.
         self.config_item_value = config_item_value

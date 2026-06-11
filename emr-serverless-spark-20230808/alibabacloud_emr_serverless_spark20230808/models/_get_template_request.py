@@ -15,11 +15,6 @@ class GetTemplateRequest(DaraModel):
         self.region_id = region_id
         self.template_biz_id = template_biz_id
         # The template type.
-        # 
-        # Valid values:
-        # 
-        # *   TASK
-        # *   SESSION
         self.template_type = template_type
 
     def validate(self):

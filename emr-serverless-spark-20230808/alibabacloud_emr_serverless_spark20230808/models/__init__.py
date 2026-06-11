@@ -33,6 +33,9 @@ from ._cancel_job_run_response import CancelJobRunResponse
 from ._cancel_kyuubi_spark_application_request import CancelKyuubiSparkApplicationRequest
 from ._cancel_kyuubi_spark_application_response_body import CancelKyuubiSparkApplicationResponseBody
 from ._cancel_kyuubi_spark_application_response import CancelKyuubiSparkApplicationResponse
+from ._cancel_ray_job_request import CancelRayJobRequest
+from ._cancel_ray_job_response_body import CancelRayJobResponseBody
+from ._cancel_ray_job_response import CancelRayJobResponse
 from ._change_resource_group_request import ChangeResourceGroupRequest
 from ._change_resource_group_response_body import ChangeResourceGroupResponseBody
 from ._change_resource_group_response import ChangeResourceGroupResponse
@@ -111,6 +114,9 @@ from ._get_livy_compute_token_response_body import GetLivyComputeTokenResponseBo
 from ._get_livy_compute_token_response import GetLivyComputeTokenResponse
 from ._get_ray_cluster_response_body import GetRayClusterResponseBody
 from ._get_ray_cluster_response import GetRayClusterResponse
+from ._get_ray_job_request import GetRayJobRequest
+from ._get_ray_job_response_body import GetRayJobResponseBody
+from ._get_ray_job_response import GetRayJobResponse
 from ._get_run_configuration_request import GetRunConfigurationRequest
 from ._get_run_configuration_response_body import GetRunConfigurationResponseBody
 from ._get_run_configuration_response import GetRunConfigurationResponse
@@ -169,6 +175,10 @@ from ._list_network_services_response import ListNetworkServicesResponse
 from ._list_ray_cluster_request import ListRayClusterRequest
 from ._list_ray_cluster_response_body import ListRayClusterResponseBody
 from ._list_ray_cluster_response import ListRayClusterResponse
+from ._list_ray_job_request import ListRayJobRequest
+from ._list_ray_job_shrink_request import ListRayJobShrinkRequest
+from ._list_ray_job_response_body import ListRayJobResponseBody
+from ._list_ray_job_response import ListRayJobResponse
 from ._list_release_versions_request import ListReleaseVersionsRequest
 from ._list_release_versions_response_body import ListReleaseVersionsResponseBody
 from ._list_release_versions_response import ListReleaseVersionsResponse
@@ -219,6 +229,9 @@ from ._stop_ray_cluster_response import StopRayClusterResponse
 from ._stop_session_cluster_request import StopSessionClusterRequest
 from ._stop_session_cluster_response_body import StopSessionClusterResponseBody
 from ._stop_session_cluster_response import StopSessionClusterResponse
+from ._submit_ray_job_request import SubmitRayJobRequest
+from ._submit_ray_job_response_body import SubmitRayJobResponseBody
+from ._submit_ray_job_response import SubmitRayJobResponse
 from ._terminate_sql_statement_request import TerminateSqlStatementRequest
 from ._terminate_sql_statement_response_body import TerminateSqlStatementResponseBody
 from ._terminate_sql_statement_response import TerminateSqlStatementResponse
@@ -244,6 +257,8 @@ from ._update_workspace_response import UpdateWorkspaceResponse
 from ._cache_cluster import CacheClusterCachesets
 from ._cache_cluster import CacheClusterConfigurations
 from ._cache_cluster import CacheClusterResourceSpec
+from ._cache_cluster import CacheClusterTables
+from ._cache_cluster import CacheClusterTags
 from ._cache_cluster import CacheClusterUsedResourceSpec
 from ._configuration_overrides import ConfigurationOverridesConfigurations
 from ._job_driver import JobDriverSparkSubmit
@@ -251,6 +266,8 @@ from ._sql_output import SqlOutputRows
 from ._sql_output import SqlOutputSchemaFields
 from ._sql_output import SqlOutputSchema
 from ._task import TaskCredential
+from ._task import TaskRayHeadSpec
+from ._task import TaskRayWorkerSpec
 from ._cancel_kyuubi_spark_application_response_body import CancelKyuubiSparkApplicationResponseBodyBody
 from ._create_kyuubi_service_response_body import CreateKyuubiServiceResponseBodyData
 from ._create_kyuubi_token_request import CreateKyuubiTokenRequestAutoExpireConfiguration
@@ -292,6 +309,9 @@ from ._get_livy_compute_token_response_body import GetLivyComputeTokenResponseBo
 from ._get_ray_cluster_response_body import GetRayClusterResponseBodyHeadSpec
 from ._get_ray_cluster_response_body import GetRayClusterResponseBodyInstances
 from ._get_ray_cluster_response_body import GetRayClusterResponseBodyWorkerSpec
+from ._get_ray_job_response_body import GetRayJobResponseBodyGuHours
+from ._get_ray_job_response_body import GetRayJobResponseBodyHeadSpec
+from ._get_ray_job_response_body import GetRayJobResponseBodyWorkerSpecs
 from ._get_run_configuration_response_body import GetRunConfigurationResponseBodyRunConfigurationApplicationConfigs
 from ._get_run_configuration_response_body import GetRunConfigurationResponseBodyRunConfigurationLogConfig
 from ._get_run_configuration_response_body import GetRunConfigurationResponseBodyRunConfiguration
@@ -336,6 +356,8 @@ from ._list_network_services_response_body import ListNetworkServicesResponseBod
 from ._list_ray_cluster_response_body import ListRayClusterResponseBodyRayClustersHeadSpec
 from ._list_ray_cluster_response_body import ListRayClusterResponseBodyRayClustersWorkerSpec
 from ._list_ray_cluster_response_body import ListRayClusterResponseBodyRayClusters
+from ._list_ray_job_request import ListRayJobRequestSubmitTime
+from ._list_ray_job_response_body import ListRayJobResponseBodyRayJobs
 from ._list_release_versions_response_body import ListReleaseVersionsResponseBodyReleaseVersions
 from ._list_session_clusters_response_body import ListSessionClustersResponseBodySessionClustersApplicationConfigs
 from ._list_session_clusters_response_body import ListSessionClustersResponseBodySessionClustersAutoStartConfiguration
@@ -353,6 +375,9 @@ from ._list_workspaces_response_body import ListWorkspacesResponseBodyWorkspaces
 from ._refresh_livy_compute_token_request import RefreshLivyComputeTokenRequestAutoExpireConfiguration
 from ._start_job_run_request import StartJobRunRequestConfigurationOverridesConfigurations
 from ._start_job_run_request import StartJobRunRequestConfigurationOverrides
+from ._submit_ray_job_request import SubmitRayJobRequestHeadSpec
+from ._submit_ray_job_request import SubmitRayJobRequestTags
+from ._submit_ray_job_request import SubmitRayJobRequestWorkerSpec
 from ._update_kyuubi_token_request import UpdateKyuubiTokenRequestAutoExpireConfiguration
 from ._update_livy_compute_request import UpdateLivyComputeRequestAutoStartConfiguration
 from ._update_livy_compute_request import UpdateLivyComputeRequestAutoStopConfiguration
@@ -401,6 +426,9 @@ __all__ = [
     CancelKyuubiSparkApplicationRequest,
     CancelKyuubiSparkApplicationResponseBody,
     CancelKyuubiSparkApplicationResponse,
+    CancelRayJobRequest,
+    CancelRayJobResponseBody,
+    CancelRayJobResponse,
     ChangeResourceGroupRequest,
     ChangeResourceGroupResponseBody,
     ChangeResourceGroupResponse,
@@ -479,6 +507,9 @@ __all__ = [
     GetLivyComputeTokenResponse,
     GetRayClusterResponseBody,
     GetRayClusterResponse,
+    GetRayJobRequest,
+    GetRayJobResponseBody,
+    GetRayJobResponse,
     GetRunConfigurationRequest,
     GetRunConfigurationResponseBody,
     GetRunConfigurationResponse,
@@ -537,6 +568,10 @@ __all__ = [
     ListRayClusterRequest,
     ListRayClusterResponseBody,
     ListRayClusterResponse,
+    ListRayJobRequest,
+    ListRayJobShrinkRequest,
+    ListRayJobResponseBody,
+    ListRayJobResponse,
     ListReleaseVersionsRequest,
     ListReleaseVersionsResponseBody,
     ListReleaseVersionsResponse,
@@ -587,6 +622,9 @@ __all__ = [
     StopSessionClusterRequest,
     StopSessionClusterResponseBody,
     StopSessionClusterResponse,
+    SubmitRayJobRequest,
+    SubmitRayJobResponseBody,
+    SubmitRayJobResponse,
     TerminateSqlStatementRequest,
     TerminateSqlStatementResponseBody,
     TerminateSqlStatementResponse,
@@ -612,6 +650,8 @@ __all__ = [
     CacheClusterCachesets,
     CacheClusterConfigurations,
     CacheClusterResourceSpec,
+    CacheClusterTables,
+    CacheClusterTags,
     CacheClusterUsedResourceSpec,
     ConfigurationOverridesConfigurations,
     JobDriverSparkSubmit,
@@ -619,6 +659,8 @@ __all__ = [
     SqlOutputSchemaFields,
     SqlOutputSchema,
     TaskCredential,
+    TaskRayHeadSpec,
+    TaskRayWorkerSpec,
     CancelKyuubiSparkApplicationResponseBodyBody,
     CreateKyuubiServiceResponseBodyData,
     CreateKyuubiTokenRequestAutoExpireConfiguration,
@@ -660,6 +702,9 @@ __all__ = [
     GetRayClusterResponseBodyHeadSpec,
     GetRayClusterResponseBodyInstances,
     GetRayClusterResponseBodyWorkerSpec,
+    GetRayJobResponseBodyGuHours,
+    GetRayJobResponseBodyHeadSpec,
+    GetRayJobResponseBodyWorkerSpecs,
     GetRunConfigurationResponseBodyRunConfigurationApplicationConfigs,
     GetRunConfigurationResponseBodyRunConfigurationLogConfig,
     GetRunConfigurationResponseBodyRunConfiguration,
@@ -704,6 +749,8 @@ __all__ = [
     ListRayClusterResponseBodyRayClustersHeadSpec,
     ListRayClusterResponseBodyRayClustersWorkerSpec,
     ListRayClusterResponseBodyRayClusters,
+    ListRayJobRequestSubmitTime,
+    ListRayJobResponseBodyRayJobs,
     ListReleaseVersionsResponseBodyReleaseVersions,
     ListSessionClustersResponseBodySessionClustersApplicationConfigs,
     ListSessionClustersResponseBodySessionClustersAutoStartConfiguration,
@@ -721,6 +768,9 @@ __all__ = [
     RefreshLivyComputeTokenRequestAutoExpireConfiguration,
     StartJobRunRequestConfigurationOverridesConfigurations,
     StartJobRunRequestConfigurationOverrides,
+    SubmitRayJobRequestHeadSpec,
+    SubmitRayJobRequestTags,
+    SubmitRayJobRequestWorkerSpec,
     UpdateKyuubiTokenRequestAutoExpireConfiguration,
     UpdateLivyComputeRequestAutoStartConfiguration,
     UpdateLivyComputeRequestAutoStopConfiguration,

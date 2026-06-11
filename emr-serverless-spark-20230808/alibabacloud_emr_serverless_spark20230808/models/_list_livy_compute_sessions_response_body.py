@@ -14,8 +14,11 @@ class ListLivyComputeSessionsResponseBody(DaraModel):
         sessions: List[main_models.ListLivyComputeSessionsResponseBodySessions] = None,
         total_count: int = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The list of sessions.
         self.sessions = sessions
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -75,18 +78,41 @@ class ListLivyComputeSessionsResponseBodySessions(DaraModel):
         vcore_seconds: int = None,
         web_ui: str = None,
     ):
+        # The ID of the Livy Gateway.
         self.compute_id = compute_id
+        # The time when the session was created. This is a UNIX timestamp in milliseconds.
         self.create_time = create_time
+        # The number of compute units (CUs) consumed during the task execution. This is an estimated value. The actual value is subject to the bill.
         self.cu_hours = cu_hours
+        # The time when the session ended. This is a UNIX timestamp in milliseconds.
         self.end_time = end_time
+        # The runtime information.
         self.info = info
+        # The total amount of memory in MB allocated to the task multiplied by the number of seconds the task has been running.
         self.mb_seconds = mb_seconds
+        # The session name.
         self.name = name
+        # The queue name.
         self.queue = queue
+        # The ID of the Livy Gateway session.
         self.session_id = session_id
+        # The Spark job configuration.
         self.spark_conf = spark_conf
+        # The session state.
+        # 
+        # - starting: The session is starting.
+        # 
+        # - running: The session is running.
+        # 
+        # - terminating: The session is being terminated.
+        # 
+        # - terminated: The session is terminated.
+        # 
+        # - error: The session failed.
         self.state = state
+        # The total number of vCores allocated to the task multiplied by the number of seconds the task has been running.
         self.vcore_seconds = vcore_seconds
+        # The web UI URL of the session.
         self.web_ui = web_ui
 
     def validate(self):

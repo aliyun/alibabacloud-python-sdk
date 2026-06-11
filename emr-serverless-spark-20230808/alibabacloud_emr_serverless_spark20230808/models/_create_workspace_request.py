@@ -30,41 +30,45 @@ class CreateWorkspaceRequest(DaraModel):
         workspace_name: str = None,
         region_id: str = None,
     ):
-        # Specifies whether to enable auto-renewal. This parameter is required only if the paymentType parameter is set to Pre.
+        # Specifies whether to enable auto-renewal. This parameter is required if you set `paymentType` to `Pre`.
         self.auto_renew = auto_renew
-        # The auto-renewal duration. This parameter is required only if the paymentType parameter is set to Pre.
+        # The auto-renewal duration. This parameter is required if `autoRenew` is set to `true`.
         self.auto_renew_period = auto_renew_period
-        # The unit of the auto-renewal duration. This parameter is required only if the paymentType parameter is set to Pre.
+        # The unit of the auto-renewal duration. This parameter is required if `autoRenew` is set to `true`.
         self.auto_renew_period_unit = auto_renew_period_unit
-        # Specifies whether to automatically start a session.
+        # Specifies whether to automatically start a session cluster when the workspace is created.
         self.auto_start_session_cluster = auto_start_session_cluster
-        # The client token that is used to ensure the idempotence of the request.
+        # A token that ensures the idempotency of the request.
         self.client_token = client_token
-        # The information of the Data Lake Formation (DLF) catalog.
+        # The DLF Catalog ID.
         self.dlf_catalog_id = dlf_catalog_id
-        # The version of DLF.
+        # The DLF type.
         self.dlf_type = dlf_type
-        # The subscription period. This parameter is required only if the paymentType parameter is set to Pre.
+        # The subscription duration. This parameter is required if you set `paymentType` to `Pre`.
         self.duration = duration
+        # The specifications for the GPU resources.
         self.gpu_spec = gpu_spec
-        # The name of the Object Storage Service (OSS) bucket.
+        # The OSS bucket for the workspace. The path must be in the `oss://<bucket-name>/` format.
         self.oss_bucket = oss_bucket
-        # The unit of the subscription duration.
+        # The unit of the subscription duration. This parameter is required if you set `paymentType` to `Pre`.
         self.payment_duration_unit = payment_duration_unit
         # The billing method. Valid values:
         # 
-        # *   PayAsYouGo
-        # *   Pre
+        # - `PayAsYouGo`: pay-as-you-go
+        # 
+        # - `Pre`: subscription
         self.payment_type = payment_type
-        # The name of the role used to run Spark jobs.
+        # The name of the RAM role used to run Spark jobs.
         self.ram_role_name = ram_role_name
-        # The type of the version.
+        # The release type.
         self.release_type = release_type
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         # The resource specifications.
         self.resource_spec = resource_spec
+        # The tags to add to the workspace.
         self.tag = tag
-        # The name of the workspace.
+        # The workspace name.
         self.workspace_name = workspace_name
         # The region ID.
         self.region_id = region_id
@@ -214,7 +218,9 @@ class CreateWorkspaceRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -249,8 +255,9 @@ class CreateWorkspaceRequestResourceSpec(DaraModel):
         cu: str = None,
         gpu: int = None,
     ):
-        # The maximum resource quota for a workspace.
+        # The resource quota for the workspace.
         self.cu = cu
+        # The GPU resource quota for the workspace.
         self.gpu = gpu
 
     def validate(self):

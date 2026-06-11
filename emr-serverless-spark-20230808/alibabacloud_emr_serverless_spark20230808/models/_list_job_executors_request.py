@@ -13,10 +13,15 @@ class ListJobExecutorsRequest(DaraModel):
         region_id: str = None,
         status: str = None,
     ):
+        # The executor type.
         self.executor_type = executor_type
+        # The maximum number of records to return in a single request.
         self.max_results = max_results
+        # The token for the next page of results.
         self.next_token = next_token
+        # The region ID.
         self.region_id = region_id
+        # The executor status.
         self.status = status
 
     def validate(self):
