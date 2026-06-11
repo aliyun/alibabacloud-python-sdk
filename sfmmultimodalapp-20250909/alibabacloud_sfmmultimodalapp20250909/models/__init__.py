@@ -36,6 +36,12 @@ from ._describe_command_response import DescribeCommandResponse
 from ._describe_mm_app_request import DescribeMmAppRequest
 from ._describe_mm_app_response_body import DescribeMmAppResponseBody
 from ._describe_mm_app_response import DescribeMmAppResponse
+from ._device_page_request import DevicePageRequest
+from ._device_page_response_body import DevicePageResponseBody
+from ._device_page_response import DevicePageResponse
+from ._device_update_request import DeviceUpdateRequest
+from ._device_update_response_body import DeviceUpdateResponseBody
+from ._device_update_response import DeviceUpdateResponse
 from ._list_command_request import ListCommandRequest
 from ._list_command_response_body import ListCommandResponseBody
 from ._list_command_response import ListCommandResponse
@@ -59,6 +65,9 @@ from ._patch_memory_config_response import PatchMemoryConfigResponse
 from ._publish_mm_app_request import PublishMmAppRequest
 from ._publish_mm_app_response_body import PublishMmAppResponseBody
 from ._publish_mm_app_response import PublishMmAppResponse
+from ._query_app_quota_request import QueryAppQuotaRequest
+from ._query_app_quota_response_body import QueryAppQuotaResponseBody
+from ._query_app_quota_response import QueryAppQuotaResponse
 from ._query_memory_config_request import QueryMemoryConfigRequest
 from ._query_memory_config_response_body import QueryMemoryConfigResponseBody
 from ._query_memory_config_response import QueryMemoryConfigResponse
@@ -125,6 +134,7 @@ from ._describe_mm_app_response_body import DescribeMmAppResponseBodyBindingConf
 from ._describe_mm_app_response_body import DescribeMmAppResponseBodyBindingConfig
 from ._describe_mm_app_response_body import DescribeMmAppResponseBodyConversationConfig
 from ._describe_mm_app_response_body import DescribeMmAppResponseBodyModelConfig
+from ._device_page_response_body import DevicePageResponseBodyDeviceList
 from ._list_command_response_body import ListCommandResponseBodyToolInfoListToolExamples
 from ._list_command_response_body import ListCommandResponseBodyToolInfoListToolParams
 from ._list_command_response_body import ListCommandResponseBodyToolInfoList
@@ -194,6 +204,12 @@ __all__ = [
     DescribeMmAppRequest,
     DescribeMmAppResponseBody,
     DescribeMmAppResponse,
+    DevicePageRequest,
+    DevicePageResponseBody,
+    DevicePageResponse,
+    DeviceUpdateRequest,
+    DeviceUpdateResponseBody,
+    DeviceUpdateResponse,
     ListCommandRequest,
     ListCommandResponseBody,
     ListCommandResponse,
@@ -217,6 +233,9 @@ __all__ = [
     PublishMmAppRequest,
     PublishMmAppResponseBody,
     PublishMmAppResponse,
+    QueryAppQuotaRequest,
+    QueryAppQuotaResponseBody,
+    QueryAppQuotaResponse,
     QueryMemoryConfigRequest,
     QueryMemoryConfigResponseBody,
     QueryMemoryConfigResponse,
@@ -283,6 +302,7 @@ __all__ = [
     DescribeMmAppResponseBodyBindingConfig,
     DescribeMmAppResponseBodyConversationConfig,
     DescribeMmAppResponseBodyModelConfig,
+    DevicePageResponseBodyDeviceList,
     ListCommandResponseBodyToolInfoListToolExamples,
     ListCommandResponseBodyToolInfoListToolParams,
     ListCommandResponseBodyToolInfoList,

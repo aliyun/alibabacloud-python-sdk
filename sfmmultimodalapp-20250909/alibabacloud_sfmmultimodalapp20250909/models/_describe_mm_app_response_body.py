@@ -41,7 +41,6 @@ class DescribeMmAppResponseBody(DaraModel):
         self.modify_user_name = modify_user_name
         self.prompt = prompt
         self.publish_version = publish_version
-        # Id of the request
         self.request_id = request_id
         self.status = status
 

@@ -2,7 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List
+from typing import List, Dict, Any
 
 from alibabacloud_sfmmultimodalapp20250909 import models as main_models
 from darabonba.model import DaraModel
@@ -87,6 +87,7 @@ class ListCommandResponseBodyToolInfoList(DaraModel):
         gmt_modified: str = None,
         modify_user_id: str = None,
         modify_user_name: str = None,
+        reply_mode: str = None,
         tool_examples: List[main_models.ListCommandResponseBodyToolInfoListToolExamples] = None,
         tool_id: str = None,
         tool_name: str = None,
@@ -102,6 +103,7 @@ class ListCommandResponseBodyToolInfoList(DaraModel):
         self.gmt_modified = gmt_modified
         self.modify_user_id = modify_user_id
         self.modify_user_name = modify_user_name
+        self.reply_mode = reply_mode
         self.tool_examples = tool_examples
         self.tool_id = tool_id
         self.tool_name = tool_name
@@ -151,6 +153,9 @@ class ListCommandResponseBodyToolInfoList(DaraModel):
 
         if self.modify_user_name is not None:
             result['ModifyUserName'] = self.modify_user_name
+
+        if self.reply_mode is not None:
+            result['ReplyMode'] = self.reply_mode
 
         result['ToolExamples'] = []
         if self.tool_examples is not None:
@@ -202,6 +207,9 @@ class ListCommandResponseBodyToolInfoList(DaraModel):
         if m.get('ModifyUserName') is not None:
             self.modify_user_name = m.get('ModifyUserName')
 
+        if m.get('ReplyMode') is not None:
+            self.reply_mode = m.get('ReplyMode')
+
         self.tool_examples = []
         if m.get('ToolExamples') is not None:
             for k1 in m.get('ToolExamples'):
@@ -228,10 +236,14 @@ class ListCommandResponseBodyToolInfoListToolParams(DaraModel):
         param_desc: str = None,
         param_example: str = None,
         param_name: str = None,
+        param_type: str = None,
+        required: bool = None,
     ):
         self.param_desc = param_desc
         self.param_example = param_example
         self.param_name = param_name
+        self.param_type = param_type
+        self.required = required
 
     def validate(self):
         pass
@@ -250,6 +262,12 @@ class ListCommandResponseBodyToolInfoListToolParams(DaraModel):
         if self.param_name is not None:
             result['ParamName'] = self.param_name
 
+        if self.param_type is not None:
+            result['ParamType'] = self.param_type
+
+        if self.required is not None:
+            result['Required'] = self.required
+
         return result
 
     def from_map(self, m: dict = None):
@@ -263,13 +281,21 @@ class ListCommandResponseBodyToolInfoListToolParams(DaraModel):
         if m.get('ParamName') is not None:
             self.param_name = m.get('ParamName')
 
+        if m.get('ParamType') is not None:
+            self.param_type = m.get('ParamType')
+
+        if m.get('Required') is not None:
+            self.required = m.get('Required')
+
         return self
 
 class ListCommandResponseBodyToolInfoListToolExamples(DaraModel):
     def __init__(
         self,
+        parameters: Dict[str, Any] = None,
         query: str = None,
     ):
+        self.parameters = parameters
         self.query = query
 
     def validate(self):
@@ -280,6 +306,9 @@ class ListCommandResponseBodyToolInfoListToolExamples(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.parameters is not None:
+            result['Parameters'] = self.parameters
+
         if self.query is not None:
             result['Query'] = self.query
 
@@ -287,6 +316,9 @@ class ListCommandResponseBodyToolInfoListToolExamples(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Parameters') is not None:
+            self.parameters = m.get('Parameters')
+
         if m.get('Query') is not None:
             self.query = m.get('Query')
 

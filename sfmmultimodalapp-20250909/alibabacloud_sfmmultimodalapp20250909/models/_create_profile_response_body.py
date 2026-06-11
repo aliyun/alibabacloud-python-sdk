@@ -83,7 +83,6 @@ class CreateProfileResponseBodyData(DaraModel):
     ):
         self.description = description
         self.name = name
-        # schema id
         self.schema_id = schema_id
 
     def validate(self):

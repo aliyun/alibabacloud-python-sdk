@@ -59,6 +59,8 @@ class Client(OpenApiClient):
             query['DomainCode'] = request.domain_code
         if not DaraCore.is_null(request.domain_name):
             query['DomainName'] = request.domain_name
+        if not DaraCore.is_null(request.reply_mode):
+            query['ReplyMode'] = request.reply_mode
         if not DaraCore.is_null(request.tool_description):
             query['ToolDescription'] = request.tool_description
         if not DaraCore.is_null(request.tool_examples_shrink):
@@ -107,6 +109,8 @@ class Client(OpenApiClient):
             query['DomainCode'] = request.domain_code
         if not DaraCore.is_null(request.domain_name):
             query['DomainName'] = request.domain_name
+        if not DaraCore.is_null(request.reply_mode):
+            query['ReplyMode'] = request.reply_mode
         if not DaraCore.is_null(request.tool_description):
             query['ToolDescription'] = request.tool_description
         if not DaraCore.is_null(request.tool_examples_shrink):
@@ -940,6 +944,170 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_mm_app_with_options_async(request, runtime)
 
+    def device_page_with_options(
+        self,
+        request: main_models.DevicePageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DevicePageResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DevicePage',
+            version = '2025-09-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DevicePageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def device_page_with_options_async(
+        self,
+        request: main_models.DevicePageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DevicePageResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DevicePage',
+            version = '2025-09-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DevicePageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def device_page(
+        self,
+        request: main_models.DevicePageRequest,
+    ) -> main_models.DevicePageResponse:
+        runtime = RuntimeOptions()
+        return self.device_page_with_options(request, runtime)
+
+    async def device_page_async(
+        self,
+        request: main_models.DevicePageRequest,
+    ) -> main_models.DevicePageResponse:
+        runtime = RuntimeOptions()
+        return await self.device_page_with_options_async(request, runtime)
+
+    def device_update_with_options(
+        self,
+        request: main_models.DeviceUpdateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeviceUpdateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not DaraCore.is_null(request.remark):
+            query['Remark'] = request.remark
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeviceUpdate',
+            version = '2025-09-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeviceUpdateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def device_update_with_options_async(
+        self,
+        request: main_models.DeviceUpdateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeviceUpdateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not DaraCore.is_null(request.remark):
+            query['Remark'] = request.remark
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeviceUpdate',
+            version = '2025-09-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeviceUpdateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def device_update(
+        self,
+        request: main_models.DeviceUpdateRequest,
+    ) -> main_models.DeviceUpdateResponse:
+        runtime = RuntimeOptions()
+        return self.device_update_with_options(request, runtime)
+
+    async def device_update_async(
+        self,
+        request: main_models.DeviceUpdateRequest,
+    ) -> main_models.DeviceUpdateResponse:
+        runtime = RuntimeOptions()
+        return await self.device_update_with_options_async(request, runtime)
+
     def list_command_with_options(
         self,
         request: main_models.ListCommandRequest,
@@ -1546,6 +1714,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.publish_mm_app_with_options_async(request, runtime)
 
+    def query_app_quota_with_options(
+        self,
+        request: main_models.QueryAppQuotaRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryAppQuotaResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryAppQuota',
+            version = '2025-09-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryAppQuotaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_app_quota_with_options_async(
+        self,
+        request: main_models.QueryAppQuotaRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryAppQuotaResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryAppQuota',
+            version = '2025-09-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryAppQuotaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_app_quota(
+        self,
+        request: main_models.QueryAppQuotaRequest,
+    ) -> main_models.QueryAppQuotaResponse:
+        runtime = RuntimeOptions()
+        return self.query_app_quota_with_options(request, runtime)
+
+    async def query_app_quota_async(
+        self,
+        request: main_models.QueryAppQuotaRequest,
+    ) -> main_models.QueryAppQuotaResponse:
+        runtime = RuntimeOptions()
+        return await self.query_app_quota_with_options_async(request, runtime)
+
     def query_memory_config_with_options(
         self,
         request: main_models.QueryMemoryConfigRequest,
@@ -1889,6 +2131,8 @@ class Client(OpenApiClient):
             query['DomainCode'] = request.domain_code
         if not DaraCore.is_null(request.domain_name):
             query['DomainName'] = request.domain_name
+        if not DaraCore.is_null(request.reply_mode):
+            query['ReplyMode'] = request.reply_mode
         if not DaraCore.is_null(request.tool_description):
             query['ToolDescription'] = request.tool_description
         if not DaraCore.is_null(request.tool_examples_shrink):
@@ -1939,6 +2183,8 @@ class Client(OpenApiClient):
             query['DomainCode'] = request.domain_code
         if not DaraCore.is_null(request.domain_name):
             query['DomainName'] = request.domain_name
+        if not DaraCore.is_null(request.reply_mode):
+            query['ReplyMode'] = request.reply_mode
         if not DaraCore.is_null(request.tool_description):
             query['ToolDescription'] = request.tool_description
         if not DaraCore.is_null(request.tool_examples_shrink):
