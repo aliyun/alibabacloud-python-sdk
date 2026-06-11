@@ -13,8 +13,11 @@ class CreateGatewayResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Response status code.
         self.code = code
+        # Response data.
         self.data = data
+        # Response message.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -64,6 +67,7 @@ class CreateGatewayResponseBodyData(DaraModel):
         self,
         gateway_id: str = None,
     ):
+        # Gateway ID.
         self.gateway_id = gateway_id
 
     def validate(self):

@@ -17,25 +17,33 @@ class Attachment(DaraModel):
         gateway_id: str = None,
         policy_attachment_id: str = None,
     ):
+        # The attachment point ID.
         self.attach_resource_id = attach_resource_id
-        # The resource IDs.
+        # A list of attached resource IDs.
         self.attach_resource_ids = attach_resource_ids
+        # A list of parent resource IDs.
         self.attach_resource_parent_ids = attach_resource_parent_ids
-        # The supported mount point type. Valid values:
+        # The supported attachment point types for the policy.
         # 
-        # *   HttpApi: an HTTP API
-        # *   Operation: an operation in an HTTP API
-        # *   GatewayRoute: a gateway route
-        # *   GatewayService: a gateway service
-        # *   GatewayServicePort: a gateway service port
-        # *   Domain: a gateway domain name
-        # *   Gateway: a gateway instance
+        # - `HttpApi`: An HTTP API.
+        # 
+        # - `Operation`: An operation of an HTTP API.
+        # 
+        # - `GatewayRoute`: A gateway route.
+        # 
+        # - `GatewayService`: A gateway service.
+        # 
+        # - `GatewayServicePort`: A gateway service port.
+        # 
+        # - `Domain`: A gateway domain.
+        # 
+        # - `Gateway`: A gateway.
         self.attach_resource_type = attach_resource_type
-        # The environment to which the mounted resource belongs. If an asterisk (\\*) is returned as the environment ID, the mounted resource is not related to the environment.
+        # The ID of the environment for the attached resource. An asterisk (`*`) indicates that the policy attachment is not environment-specific.
         self.environment_id = environment_id
-        # The instance to which the mounted resource belongs.
+        # The ID of the gateway for the attached resource.
         self.gateway_id = gateway_id
-        # The mount ID.
+        # The policy attachment ID.
         self.policy_attachment_id = policy_attachment_id
 
     def validate(self):

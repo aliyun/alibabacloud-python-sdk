@@ -24,17 +24,25 @@ class CreateGatewayRequest(DaraModel):
     ):
         # The logging configurations.
         self.charge_type = charge_type
+        # Gateway instance edition:
+        # 
+        # - Standard instance: Professional
+        # 
+        # - Serverless: Serverless (currently supports only AI gateway)
         self.gateway_edition = gateway_edition
         # The ID of the resource group.
         self.gateway_type = gateway_type
+        # Gateway log configuration.
         self.log_config = log_config
         # The ID of the vSwitch.
         self.name = name
         # The gateway edition.
         self.network_access_config = network_access_config
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # The tag key.
         self.spec = spec
+        # The list of labels.
         self.tag = tag
         # The tag value.
         self.vpc_id = vpc_id
@@ -147,7 +155,9 @@ class CreateGatewayRequestZoneConfig(DaraModel):
     ):
         # The response payload.
         self.select_option = select_option
+        # Virtual switch ID.
         self.v_switch_id = v_switch_id
+        # List of supported zones.
         self.zones = zones
 
     def validate(self):
@@ -196,7 +206,9 @@ class CreateGatewayRequestZoneConfigZones(DaraModel):
         v_switch_id: str = None,
         zone_id: str = None,
     ):
+        # The ID of the virtual switch.
         self.v_switch_id = v_switch_id
+        # The ID of the zone.
         self.zone_id = zone_id
 
     def validate(self):
@@ -231,7 +243,9 @@ class CreateGatewayRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The value of the label.
         self.value = value
 
     def validate(self):
@@ -293,6 +307,7 @@ class CreateGatewayRequestLogConfig(DaraModel):
         self,
         sls: main_models.CreateGatewayRequestLogConfigSls = None,
     ):
+        # SLS log configuration.
         self.sls = sls
 
     def validate(self):
@@ -322,6 +337,7 @@ class CreateGatewayRequestLogConfigSls(DaraModel):
         self,
         enable: bool = None,
     ):
+        # Whether to enable.
         self.enable = enable
 
     def validate(self):

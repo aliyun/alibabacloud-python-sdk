@@ -13,9 +13,13 @@ class HiMarketPortalDeployConfig(DaraModel):
         sae_config: main_models.HiMarketPortalDeployConfigSaeConfig = None,
         status: str = None,
     ):
+        # Additional information about the deployment status, such as error details.
         self.message = message
+        # The target deployment platform. For example, set this to `SAE` to deploy on Serverless App Engine.
         self.platform = platform
+        # Configuration settings for deploying to Serverless App Engine (SAE). This object is required when the `platform` is `SAE`.
         self.sae_config = sae_config
+        # The current status of the deployment. Possible values include `succeeded`, `failed`, and `in_progress`.
         self.status = status
 
     def validate(self):
@@ -70,13 +74,21 @@ class HiMarketPortalDeployConfigSaeConfig(DaraModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
+        # The ID of the application in Serverless App Engine.
         self.app_id = app_id
+        # The ID of the namespace that logically isolates the application.
         self.namespace_id = namespace_id
+        # The name of the OIDC role that grants permissions to the application.
         self.oidc_role_name = oidc_role_name
+        # The ID of the region in which to deploy the application.
         self.region_id = region_id
+        # The desired number of application replicas.
         self.replicas = replicas
+        # The ID of the security group to apply to the application instances. A security group acts as a virtual firewall.
         self.security_group_id = security_group_id
+        # The ID of the vSwitch within the specified VPC. Serverless App Engine launches application instances in the vSwitch\\"s zone.
         self.v_switch_id = v_switch_id
+        # The ID of the VPC to connect the application to.
         self.vpc_id = vpc_id
 
     def validate(self):

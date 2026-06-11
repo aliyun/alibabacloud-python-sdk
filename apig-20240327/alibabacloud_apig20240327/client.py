@@ -41,6 +41,126 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return Utils.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def add_gateway_quota_rule_with_options(
+        self,
+        gateway_id: str,
+        request: main_models.AddGatewayQuotaRuleRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.AddGatewayQuotaRuleResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.conflict_hash):
+            body['conflictHash'] = request.conflict_hash
+        if not DaraCore.is_null(request.consumer_group_ids):
+            body['consumerGroupIds'] = request.consumer_group_ids
+        if not DaraCore.is_null(request.consumer_ids):
+            body['consumerIds'] = request.consumer_ids
+        if not DaraCore.is_null(request.dry_run):
+            body['dryRun'] = request.dry_run
+        if not DaraCore.is_null(request.overwrite):
+            body['overwrite'] = request.overwrite
+        if not DaraCore.is_null(request.period_type):
+            body['periodType'] = request.period_type
+        if not DaraCore.is_null(request.quota_dimension):
+            body['quotaDimension'] = request.quota_dimension
+        if not DaraCore.is_null(request.quota_limit):
+            body['quotaLimit'] = request.quota_limit
+        if not DaraCore.is_null(request.rule_name):
+            body['ruleName'] = request.rule_name
+        if not DaraCore.is_null(request.timezone):
+            body['timezone'] = request.timezone
+        if not DaraCore.is_null(request.window_alignment):
+            body['windowAlignment'] = request.window_alignment
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddGatewayQuotaRule',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/gateways/{DaraURL.percent_encode(gateway_id)}/quota-rules',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddGatewayQuotaRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_gateway_quota_rule_with_options_async(
+        self,
+        gateway_id: str,
+        request: main_models.AddGatewayQuotaRuleRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.AddGatewayQuotaRuleResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.conflict_hash):
+            body['conflictHash'] = request.conflict_hash
+        if not DaraCore.is_null(request.consumer_group_ids):
+            body['consumerGroupIds'] = request.consumer_group_ids
+        if not DaraCore.is_null(request.consumer_ids):
+            body['consumerIds'] = request.consumer_ids
+        if not DaraCore.is_null(request.dry_run):
+            body['dryRun'] = request.dry_run
+        if not DaraCore.is_null(request.overwrite):
+            body['overwrite'] = request.overwrite
+        if not DaraCore.is_null(request.period_type):
+            body['periodType'] = request.period_type
+        if not DaraCore.is_null(request.quota_dimension):
+            body['quotaDimension'] = request.quota_dimension
+        if not DaraCore.is_null(request.quota_limit):
+            body['quotaLimit'] = request.quota_limit
+        if not DaraCore.is_null(request.rule_name):
+            body['ruleName'] = request.rule_name
+        if not DaraCore.is_null(request.timezone):
+            body['timezone'] = request.timezone
+        if not DaraCore.is_null(request.window_alignment):
+            body['windowAlignment'] = request.window_alignment
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddGatewayQuotaRule',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/gateways/{DaraURL.percent_encode(gateway_id)}/quota-rules',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddGatewayQuotaRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_gateway_quota_rule(
+        self,
+        gateway_id: str,
+        request: main_models.AddGatewayQuotaRuleRequest,
+    ) -> main_models.AddGatewayQuotaRuleResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.add_gateway_quota_rule_with_options(gateway_id, request, headers, runtime)
+
+    async def add_gateway_quota_rule_async(
+        self,
+        gateway_id: str,
+        request: main_models.AddGatewayQuotaRuleRequest,
+    ) -> main_models.AddGatewayQuotaRuleResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.add_gateway_quota_rule_with_options_async(gateway_id, request, headers, runtime)
+
     def add_gateway_security_group_rule_with_options(
         self,
         gateway_id: str,
@@ -2451,6 +2571,82 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_gateway_with_options_async(gateway_id, headers, runtime)
 
+    def delete_gateway_quota_rule_with_options(
+        self,
+        gateway_id: str,
+        rule_id: str,
+        request: main_models.DeleteGatewayQuotaRuleRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteGatewayQuotaRuleResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteGatewayQuotaRule',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/gateways/{DaraURL.percent_encode(gateway_id)}/quota-rules/{DaraURL.percent_encode(rule_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteGatewayQuotaRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_gateway_quota_rule_with_options_async(
+        self,
+        gateway_id: str,
+        rule_id: str,
+        request: main_models.DeleteGatewayQuotaRuleRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteGatewayQuotaRuleResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteGatewayQuotaRule',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/gateways/{DaraURL.percent_encode(gateway_id)}/quota-rules/{DaraURL.percent_encode(rule_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteGatewayQuotaRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_gateway_quota_rule(
+        self,
+        gateway_id: str,
+        rule_id: str,
+        request: main_models.DeleteGatewayQuotaRuleRequest,
+    ) -> main_models.DeleteGatewayQuotaRuleResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_gateway_quota_rule_with_options(gateway_id, rule_id, request, headers, runtime)
+
+    async def delete_gateway_quota_rule_async(
+        self,
+        gateway_id: str,
+        rule_id: str,
+        request: main_models.DeleteGatewayQuotaRuleRequest,
+    ) -> main_models.DeleteGatewayQuotaRuleResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_gateway_quota_rule_with_options_async(gateway_id, rule_id, request, headers, runtime)
+
     def delete_gateway_security_group_rule_with_options(
         self,
         gateway_id: str,
@@ -4000,6 +4196,190 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.get_gateway_with_options_async(gateway_id, headers, runtime)
+
+    def get_gateway_quota_rule_with_options(
+        self,
+        gateway_id: str,
+        rule_id: str,
+        request: main_models.GetGatewayQuotaRuleRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetGatewayQuotaRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.consumer_page_number):
+            query['consumerPageNumber'] = request.consumer_page_number
+        if not DaraCore.is_null(request.consumer_page_size):
+            query['consumerPageSize'] = request.consumer_page_size
+        if not DaraCore.is_null(request.with_consumers):
+            query['withConsumers'] = request.with_consumers
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetGatewayQuotaRule',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/gateways/{DaraURL.percent_encode(gateway_id)}/quota-rules/{DaraURL.percent_encode(rule_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetGatewayQuotaRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_gateway_quota_rule_with_options_async(
+        self,
+        gateway_id: str,
+        rule_id: str,
+        request: main_models.GetGatewayQuotaRuleRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetGatewayQuotaRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.consumer_page_number):
+            query['consumerPageNumber'] = request.consumer_page_number
+        if not DaraCore.is_null(request.consumer_page_size):
+            query['consumerPageSize'] = request.consumer_page_size
+        if not DaraCore.is_null(request.with_consumers):
+            query['withConsumers'] = request.with_consumers
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetGatewayQuotaRule',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/gateways/{DaraURL.percent_encode(gateway_id)}/quota-rules/{DaraURL.percent_encode(rule_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetGatewayQuotaRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_gateway_quota_rule(
+        self,
+        gateway_id: str,
+        rule_id: str,
+        request: main_models.GetGatewayQuotaRuleRequest,
+    ) -> main_models.GetGatewayQuotaRuleResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_gateway_quota_rule_with_options(gateway_id, rule_id, request, headers, runtime)
+
+    async def get_gateway_quota_rule_async(
+        self,
+        gateway_id: str,
+        rule_id: str,
+        request: main_models.GetGatewayQuotaRuleRequest,
+    ) -> main_models.GetGatewayQuotaRuleResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_gateway_quota_rule_with_options_async(gateway_id, rule_id, request, headers, runtime)
+
+    def get_gateway_quota_rule_subject_usage_with_options(
+        self,
+        gateway_id: str,
+        rule_id: str,
+        subject_id: str,
+        request: main_models.GetGatewayQuotaRuleSubjectUsageRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetGatewayQuotaRuleSubjectUsageResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetGatewayQuotaRuleSubjectUsage',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/gateways/{DaraURL.percent_encode(gateway_id)}/quota-rules/{DaraURL.percent_encode(rule_id)}/subjects/{DaraURL.percent_encode(subject_id)}/usage',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetGatewayQuotaRuleSubjectUsageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_gateway_quota_rule_subject_usage_with_options_async(
+        self,
+        gateway_id: str,
+        rule_id: str,
+        subject_id: str,
+        request: main_models.GetGatewayQuotaRuleSubjectUsageRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetGatewayQuotaRuleSubjectUsageResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetGatewayQuotaRuleSubjectUsage',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/gateways/{DaraURL.percent_encode(gateway_id)}/quota-rules/{DaraURL.percent_encode(rule_id)}/subjects/{DaraURL.percent_encode(subject_id)}/usage',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetGatewayQuotaRuleSubjectUsageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_gateway_quota_rule_subject_usage(
+        self,
+        gateway_id: str,
+        rule_id: str,
+        subject_id: str,
+        request: main_models.GetGatewayQuotaRuleSubjectUsageRequest,
+    ) -> main_models.GetGatewayQuotaRuleSubjectUsageResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_gateway_quota_rule_subject_usage_with_options(gateway_id, rule_id, subject_id, request, headers, runtime)
+
+    async def get_gateway_quota_rule_subject_usage_async(
+        self,
+        gateway_id: str,
+        rule_id: str,
+        subject_id: str,
+        request: main_models.GetGatewayQuotaRuleSubjectUsageRequest,
+    ) -> main_models.GetGatewayQuotaRuleSubjectUsageResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_gateway_quota_rule_subject_usage_with_options_async(gateway_id, rule_id, subject_id, request, headers, runtime)
 
     def get_http_api_with_options(
         self,
@@ -5632,6 +6012,102 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.list_gateway_features_with_options_async(gateway_id, headers, runtime)
+
+    def list_gateway_quota_rules_with_options(
+        self,
+        gateway_id: str,
+        request: main_models.ListGatewayQuotaRulesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListGatewayQuotaRulesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.keyword):
+            query['keyword'] = request.keyword
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListGatewayQuotaRules',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/gateways/{DaraURL.percent_encode(gateway_id)}/quota-rules',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListGatewayQuotaRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_gateway_quota_rules_with_options_async(
+        self,
+        gateway_id: str,
+        request: main_models.ListGatewayQuotaRulesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListGatewayQuotaRulesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.keyword):
+            query['keyword'] = request.keyword
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListGatewayQuotaRules',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/gateways/{DaraURL.percent_encode(gateway_id)}/quota-rules',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListGatewayQuotaRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_gateway_quota_rules(
+        self,
+        gateway_id: str,
+        request: main_models.ListGatewayQuotaRulesRequest,
+    ) -> main_models.ListGatewayQuotaRulesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_gateway_quota_rules_with_options(gateway_id, request, headers, runtime)
+
+    async def list_gateway_quota_rules_async(
+        self,
+        gateway_id: str,
+        request: main_models.ListGatewayQuotaRulesRequest,
+    ) -> main_models.ListGatewayQuotaRulesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_gateway_quota_rules_with_options_async(gateway_id, request, headers, runtime)
 
     def list_gateways_with_options(
         self,
@@ -7381,6 +7857,110 @@ class Client(OpenApiClient):
         headers = {}
         return await self.remove_consumer_authorization_rule_with_options_async(consumer_authorization_rule_id, headers, runtime)
 
+    def reset_gateway_quota_rule_with_options(
+        self,
+        gateway_id: str,
+        rule_id: str,
+        request: main_models.ResetGatewayQuotaRuleRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ResetGatewayQuotaRuleResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.conflict_hash):
+            body['conflictHash'] = request.conflict_hash
+        if not DaraCore.is_null(request.dry_run):
+            body['dryRun'] = request.dry_run
+        if not DaraCore.is_null(request.overwrite):
+            body['overwrite'] = request.overwrite
+        if not DaraCore.is_null(request.period_type):
+            body['periodType'] = request.period_type
+        if not DaraCore.is_null(request.quota_limit):
+            body['quotaLimit'] = request.quota_limit
+        if not DaraCore.is_null(request.timezone):
+            body['timezone'] = request.timezone
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ResetGatewayQuotaRule',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/gateways/{DaraURL.percent_encode(gateway_id)}/quota-rules/{DaraURL.percent_encode(rule_id)}/reset',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ResetGatewayQuotaRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def reset_gateway_quota_rule_with_options_async(
+        self,
+        gateway_id: str,
+        rule_id: str,
+        request: main_models.ResetGatewayQuotaRuleRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ResetGatewayQuotaRuleResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.conflict_hash):
+            body['conflictHash'] = request.conflict_hash
+        if not DaraCore.is_null(request.dry_run):
+            body['dryRun'] = request.dry_run
+        if not DaraCore.is_null(request.overwrite):
+            body['overwrite'] = request.overwrite
+        if not DaraCore.is_null(request.period_type):
+            body['periodType'] = request.period_type
+        if not DaraCore.is_null(request.quota_limit):
+            body['quotaLimit'] = request.quota_limit
+        if not DaraCore.is_null(request.timezone):
+            body['timezone'] = request.timezone
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ResetGatewayQuotaRule',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/gateways/{DaraURL.percent_encode(gateway_id)}/quota-rules/{DaraURL.percent_encode(rule_id)}/reset',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ResetGatewayQuotaRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def reset_gateway_quota_rule(
+        self,
+        gateway_id: str,
+        rule_id: str,
+        request: main_models.ResetGatewayQuotaRuleRequest,
+    ) -> main_models.ResetGatewayQuotaRuleResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.reset_gateway_quota_rule_with_options(gateway_id, rule_id, request, headers, runtime)
+
+    async def reset_gateway_quota_rule_async(
+        self,
+        gateway_id: str,
+        rule_id: str,
+        request: main_models.ResetGatewayQuotaRuleRequest,
+    ) -> main_models.ResetGatewayQuotaRuleResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.reset_gateway_quota_rule_with_options_async(gateway_id, rule_id, request, headers, runtime)
+
     def restart_gateway_with_options(
         self,
         gateway_id: str,
@@ -8418,6 +8998,206 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.update_gateway_name_with_options_async(gateway_id, request, headers, runtime)
+
+    def update_gateway_quota_rule_with_options(
+        self,
+        gateway_id: str,
+        rule_id: str,
+        request: main_models.UpdateGatewayQuotaRuleRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateGatewayQuotaRuleResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.add_ids):
+            body['addIds'] = request.add_ids
+        if not DaraCore.is_null(request.conflict_hash):
+            body['conflictHash'] = request.conflict_hash
+        if not DaraCore.is_null(request.consumer_group_ids):
+            body['consumerGroupIds'] = request.consumer_group_ids
+        if not DaraCore.is_null(request.dry_run):
+            body['dryRun'] = request.dry_run
+        if not DaraCore.is_null(request.overwrite):
+            body['overwrite'] = request.overwrite
+        if not DaraCore.is_null(request.quota_limit):
+            body['quotaLimit'] = request.quota_limit
+        if not DaraCore.is_null(request.remove_ids):
+            body['removeIds'] = request.remove_ids
+        if not DaraCore.is_null(request.rule_name):
+            body['ruleName'] = request.rule_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateGatewayQuotaRule',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/gateways/{DaraURL.percent_encode(gateway_id)}/quota-rules/{DaraURL.percent_encode(rule_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateGatewayQuotaRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_gateway_quota_rule_with_options_async(
+        self,
+        gateway_id: str,
+        rule_id: str,
+        request: main_models.UpdateGatewayQuotaRuleRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateGatewayQuotaRuleResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.add_ids):
+            body['addIds'] = request.add_ids
+        if not DaraCore.is_null(request.conflict_hash):
+            body['conflictHash'] = request.conflict_hash
+        if not DaraCore.is_null(request.consumer_group_ids):
+            body['consumerGroupIds'] = request.consumer_group_ids
+        if not DaraCore.is_null(request.dry_run):
+            body['dryRun'] = request.dry_run
+        if not DaraCore.is_null(request.overwrite):
+            body['overwrite'] = request.overwrite
+        if not DaraCore.is_null(request.quota_limit):
+            body['quotaLimit'] = request.quota_limit
+        if not DaraCore.is_null(request.remove_ids):
+            body['removeIds'] = request.remove_ids
+        if not DaraCore.is_null(request.rule_name):
+            body['ruleName'] = request.rule_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateGatewayQuotaRule',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/gateways/{DaraURL.percent_encode(gateway_id)}/quota-rules/{DaraURL.percent_encode(rule_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateGatewayQuotaRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_gateway_quota_rule(
+        self,
+        gateway_id: str,
+        rule_id: str,
+        request: main_models.UpdateGatewayQuotaRuleRequest,
+    ) -> main_models.UpdateGatewayQuotaRuleResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_gateway_quota_rule_with_options(gateway_id, rule_id, request, headers, runtime)
+
+    async def update_gateway_quota_rule_async(
+        self,
+        gateway_id: str,
+        rule_id: str,
+        request: main_models.UpdateGatewayQuotaRuleRequest,
+    ) -> main_models.UpdateGatewayQuotaRuleResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_gateway_quota_rule_with_options_async(gateway_id, rule_id, request, headers, runtime)
+
+    def update_gateway_quota_rule_status_with_options(
+        self,
+        gateway_id: str,
+        rule_id: str,
+        request: main_models.UpdateGatewayQuotaRuleStatusRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateGatewayQuotaRuleStatusResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.clear_history):
+            body['clearHistory'] = request.clear_history
+        if not DaraCore.is_null(request.enable):
+            body['enable'] = request.enable
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateGatewayQuotaRuleStatus',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/gateways/{DaraURL.percent_encode(gateway_id)}/quota-rules/{DaraURL.percent_encode(rule_id)}/status',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateGatewayQuotaRuleStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_gateway_quota_rule_status_with_options_async(
+        self,
+        gateway_id: str,
+        rule_id: str,
+        request: main_models.UpdateGatewayQuotaRuleStatusRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateGatewayQuotaRuleStatusResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.clear_history):
+            body['clearHistory'] = request.clear_history
+        if not DaraCore.is_null(request.enable):
+            body['enable'] = request.enable
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateGatewayQuotaRuleStatus',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/gateways/{DaraURL.percent_encode(gateway_id)}/quota-rules/{DaraURL.percent_encode(rule_id)}/status',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateGatewayQuotaRuleStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_gateway_quota_rule_status(
+        self,
+        gateway_id: str,
+        rule_id: str,
+        request: main_models.UpdateGatewayQuotaRuleStatusRequest,
+    ) -> main_models.UpdateGatewayQuotaRuleStatusResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_gateway_quota_rule_status_with_options(gateway_id, rule_id, request, headers, runtime)
+
+    async def update_gateway_quota_rule_status_async(
+        self,
+        gateway_id: str,
+        rule_id: str,
+        request: main_models.UpdateGatewayQuotaRuleStatusRequest,
+    ) -> main_models.UpdateGatewayQuotaRuleStatusResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_gateway_quota_rule_status_with_options_async(gateway_id, rule_id, request, headers, runtime)
 
     def update_http_api_with_options(
         self,

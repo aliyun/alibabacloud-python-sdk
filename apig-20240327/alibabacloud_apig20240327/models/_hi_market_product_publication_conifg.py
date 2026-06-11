@@ -9,6 +9,7 @@ class HiMarketProductPublicationConifg(DaraModel):
         self,
         publication_id: str = None,
     ):
+        # The unique identifier for the publication.
         self.publication_id = publication_id
 
     def validate(self):

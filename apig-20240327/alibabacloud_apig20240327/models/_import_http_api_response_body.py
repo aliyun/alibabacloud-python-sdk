@@ -15,11 +15,11 @@ class ImportHttpApiResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The status code.
+        # The response status code.
         self.code = code
-        # The API information.
+        # Details of the imported API.
         self.data = data
-        # The returned message.
+        # The response message.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -71,9 +71,9 @@ class ImportHttpApiResponseBodyData(DaraModel):
         http_api_id: str = None,
         name: str = None,
     ):
-        # The dry run result.
+        # The results of the dry run.
         self.dry_run_info = dry_run_info
-        # The API ID.
+        # The unique ID of the HTTP API.
         self.http_api_id = http_api_id
         # The API name.
         self.name = name
@@ -124,20 +124,20 @@ class ImportHttpApiResponseBodyDataDryRunInfo(DaraModel):
         success_operations: List[main_models.ImportHttpApiResponseBodyDataDryRunInfoSuccessOperations] = None,
         warning_messages: List[str] = None,
     ):
-        # The error messages. If an error message is returned, the API fails to be imported.
+        # Global error messages. If this list is not empty, the API import fails.
         self.error_messages = error_messages
-        # The existing APIs. If an existing API is returned, the import updates the existing API.
+        # Details of the existing API. If this field is populated, the import operation updates this API.
         self.exist_http_api_info = exist_http_api_info
-        # The data structs that fail the dry run.
+        # Data structures that failed the dry run.
         self.failure_components = failure_components
-        # The operations that fail the dry run.
+        # Operations that failed the dry run.
         self.failure_operations = failure_operations
         self.mcp_tools_definition = mcp_tools_definition
-        # The data structs that pass the dry run.
+        # Data structures that passed the dry run.
         self.success_components = success_components
-        # The operations that pass the dry run.
+        # Operations that passed the dry run.
         self.success_operations = success_operations
-        # The alerts. If an alert is returned, specific operations or structs may fail to be imported.
+        # Global warning messages. If this list is not empty, some operations or data structures might not be imported.
         self.warning_messages = warning_messages
 
     def validate(self):
@@ -248,12 +248,13 @@ class ImportHttpApiResponseBodyDataDryRunInfoSuccessOperations(DaraModel):
         name: str = None,
         path: str = None,
     ):
-        # The action that will be performed for the operation after the dry run.
+        # Indicates whether the operation creates or updates a resource.
         # 
-        # *   Create: The operation is created.
-        # *   Update: The operation is updated.
+        # - `Create`: Creates a new resource.
+        # 
+        # - `Update`: Updates an existing resource.
         self.action = action
-        # The HTTP method of the operation.
+        # The operation method.
         self.method = method
         # The operation name.
         self.name = name
@@ -304,12 +305,13 @@ class ImportHttpApiResponseBodyDataDryRunInfoSuccessComponents(DaraModel):
         action: str = None,
         name: str = None,
     ):
-        # The action that will be performed for the data struct after the dry run.
+        # Indicates whether the data structure will be created or updated.
         # 
-        # *   Create: The data struct is created.
-        # *   Update: The data struct is updated.
+        # - `Create`: Creates a new data structure.
+        # 
+        # - `Update`: Updates an existing data structure.
         self.action = action
-        # The data struct name.
+        # The data structure name.
         self.name = name
 
     def validate(self):
@@ -345,9 +347,9 @@ class ImportHttpApiResponseBodyDataDryRunInfoFailureOperations(DaraModel):
         method: str = None,
         path: str = None,
     ):
-        # The error message.
+        # The reason for the dry run failure.
         self.error_message = error_message
-        # The HTTP method of the operation.
+        # The operation method.
         self.method = method
         # The operation path.
         self.path = path
@@ -390,9 +392,9 @@ class ImportHttpApiResponseBodyDataDryRunInfoFailureComponents(DaraModel):
         error_message: str = None,
         name: str = None,
     ):
-        # The error message.
+        # The reason for the dry run failure.
         self.error_message = error_message
-        # The data struct name.
+        # The data structure name.
         self.name = name
 
     def validate(self):

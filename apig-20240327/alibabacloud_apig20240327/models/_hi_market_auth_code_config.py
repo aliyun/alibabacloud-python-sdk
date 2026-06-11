@@ -17,14 +17,23 @@ class HiMarketAuthCodeConfig(DaraModel):
         token_endpoint: str = None,
         user_info_endpoint: str = None,
     ):
+        # The URL of the identity provider\\"s authorization endpoint. Your application redirects users to this URL to sign in and grant consent.
         self.authorization_endpoint = authorization_endpoint
+        # The unique identifier for your application. The identity provider assigns this ID when you register your application.
         self.client_id = client_id
+        # The secret key for your application. This secret authenticates your application with the identity provider.
         self.client_secret = client_secret
+        # The URL of the identity provider that issues the tokens. This URL uniquely identifies the provider.
         self.issuer = issuer
+        # The URL of the identity provider\\"s JSON Web Key Set (JWKS) document. This document contains the public signing keys for token validation.
         self.jwk_set_uri = jwk_set_uri
+        # The URL where the identity provider redirects the user after authorizing your application. This URL must be registered in your application settings with the identity provider.
         self.redirect_uri = redirect_uri
+        # A space-separated list of requested permissions. For example: `openid profile`.
         self.scopes = scopes
+        # The URL of the identity provider\\"s token endpoint. Your application uses this endpoint to exchange an authorization code for an access token.
         self.token_endpoint = token_endpoint
+        # The URL of the identity provider\\"s user info endpoint. Your application can use this endpoint to retrieve the authenticated user\\"s profile information.
         self.user_info_endpoint = user_info_endpoint
 
     def validate(self):

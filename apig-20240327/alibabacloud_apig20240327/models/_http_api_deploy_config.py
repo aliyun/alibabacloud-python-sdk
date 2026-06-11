@@ -27,34 +27,34 @@ class HttpApiDeployConfig(DaraModel):
         service_configs: List[main_models.HttpApiDeployConfigServiceConfigs] = None,
         sub_domains: List[main_models.HttpApiDeployConfigSubDomains] = None,
     ):
-        # Specifies whether to enable automatic deployment.
+        # Whether to enable automatic deployment.
         self.auto_deploy = auto_deploy
-        # The publishing scenario.
+        # Deployment scenario.
         self.backend_scene = backend_scene
         self.builtin_route_names = builtin_route_names
-        # The IDs of the custom domain names.
+        # List of custom domain IDs.
         self.custom_domain_ids = custom_domain_ids
-        # The information about the custom domain names.
+        # List of custom domain details.
         self.custom_domain_infos = custom_domain_infos
         self.env_domain_ids = env_domain_ids
         self.env_domain_infos = env_domain_infos
-        # The environment ID.
+        # Environment ID.
         self.environment_id = environment_id
-        # The instance ID.
+        # Gateway instance ID.
         self.gateway_id = gateway_id
-        # The instance information.
+        # Gateway information.
         self.gateway_info = gateway_info
-        # 网关类型
+        # Gateway type.
         self.gateway_type = gateway_type
-        # The Mock settings.
+        # Mock configuration.
         self.mock = mock
-        # The policy configurations.
+        # List of policy configurations.
         self.policy_configs = policy_configs
-        # routeBackend
+        # Backend service information.
         self.route_backend = route_backend
-        # The service configurations.
+        # List of service configurations.
         self.service_configs = service_configs
-        # The information about the sub-domain names.
+        # List of second-level domain details.
         self.sub_domains = sub_domains
 
     def validate(self):
@@ -228,13 +228,13 @@ class HttpApiDeployConfigSubDomains(DaraModel):
         network_type: str = None,
         protocol: str = None,
     ):
-        # The domain name ID.
+        # Domain ID.
         self.domain_id = domain_id
-        # The domain name.
+        # Domain name.
         self.name = name
-        # The network type.
+        # Network type.
         self.network_type = network_type
-        # The protocol.
+        # Protocol.
         self.protocol = protocol
 
     def validate(self):
@@ -292,31 +292,31 @@ class HttpApiDeployConfigServiceConfigs(DaraModel):
         version: str = None,
         weight: int = None,
     ):
-        # Legacy gateway service ID for backward compatibility
+        # Gateway service ID.
         self.gateway_service_id = gateway_service_id
-        # Intent classification code
+        # Intent code.
         self.intent_code = intent_code
-        # Match conditions
+        # Matching conditions.
         self.match = match
-        # The model name.
+        # Model name.
         self.model_name = model_name
-        # The model name matching rule.
+        # Model name matching rule.
         self.model_name_pattern = model_name_pattern
-        # Multi-service routing strategy type
+        # Multi-service routing strategy type.
         self.multi_service_route_strategy = multi_service_route_strategy
-        # Service display name
+        # Service display name.
         self.name = name
-        # Observability metrics-based routing config
+        # Observability-based routing configuration.
         self.observability_route_config = observability_route_config
-        # Service port number
+        # Service port number.
         self.port = port
-        # Service protocol
+        # Service protocol (HTTP/HTTPS).
         self.protocol = protocol
-        # The service ID.
+        # Service ID.
         self.service_id = service_id
-        # Service version tag for tag-based routing scenarios
+        # Service version tag.
         self.version = version
-        # The service weight.
+        # Service weight.
         self.weight = weight
 
     def validate(self):
@@ -423,11 +423,11 @@ class HttpApiDeployConfigServiceConfigsObservabilityRouteConfig(DaraModel):
         queue_size: int = None,
         rate_limit: float = None,
     ):
-        # Routing mode
+        # Routing mode.
         self.mode = mode
-        # Queue size
+        # Queue size.
         self.queue_size = queue_size
-        # Max traffic ratio per single service
+        # Maximum traffic ratio for a single service.
         self.rate_limit = rate_limit
 
     def validate(self):
@@ -512,11 +512,11 @@ class HttpApiDeployConfigCustomDomainInfos(DaraModel):
         name: str = None,
         protocol: str = None,
     ):
-        # The domain name ID.
+        # Domain ID.
         self.domain_id = domain_id
-        # The domain name.
+        # Domain name.
         self.name = name
-        # The protocol.
+        # Protocol.
         self.protocol = protocol
 
     def validate(self):

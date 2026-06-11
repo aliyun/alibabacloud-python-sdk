@@ -18,15 +18,25 @@ class AiStatisticsPathField(DaraModel):
         sensitive: bool = None,
         source: str = None,
     ):
+        # The category to which the field belongs, used for grouping and organizing fields.
         self.category = category
+        # A detailed description that provides additional context about the field\\"s purpose and usage.
         self.description = description
+        # The unique key used to identify the field in statistical results.
         self.field_key = field_key
+        # Specifies whether the field is an input or an output. Valid values are typically `IN` or `OUT`.
         self.io = io
+        # The JSONPath expression to extract the field value from the source data.
         self.json_path = json_path
+        # The display name of the field, used for labeling in user interfaces or reports.
         self.name = name
+        # Specifies whether logging is enabled for this field. If set to `true`, the system records the field\\"s value in logs.
         self.record_enabled = record_enabled
+        # A rule or condition applied to the extracted field. The rule\\"s format and effect are implementation-specific.
         self.rule = rule
+        # Indicates whether the field contains sensitive information. If set to `true`, the system may apply masking or other security measures.
         self.sensitive = sensitive
+        # The data source from which the field is extracted. For example, `Request` or `Response`.
         self.source = source
 
     def validate(self):

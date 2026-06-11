@@ -18,15 +18,15 @@ class UpdateHttpApiRouteRequest(DaraModel):
         mcp_route_config: main_models.UpdateHttpApiRouteRequestMcpRouteConfig = None,
         policy_configs: List[main_models.HttpApiPolicyConfigs] = None,
     ):
-        # The backend service configurations for the route.
+        # The configuration of the backend service for the route.
         self.backend_config = backend_config
-        # The route description.
+        # The description of the route.
         self.description = description
-        # The list of domain IDs.
+        # A list of domain name IDs.
         self.domain_ids = domain_ids
         # The environment ID.
         self.environment_id = environment_id
-        # The route match rule.
+        # The route matching rule.
         self.match = match
         self.mcp_route_config = mcp_route_config
         self.policy_configs = policy_configs
@@ -153,14 +153,9 @@ class UpdateHttpApiRouteRequestBackendConfig(DaraModel):
         scene: str = None,
         services: List[main_models.UpdateHttpApiRouteRequestBackendConfigServices] = None,
     ):
-        # The backend service scenario. Valid values:
-        # 
-        # *   SingleService
-        # *   MultiServiceByRatio
-        # *   Redirect
-        # *   Mock
+        # The backend service scenario.
         self.scene = scene
-        # The list of backend services.
+        # A list of backend services.
         self.services = services
 
     def validate(self):
@@ -206,18 +201,19 @@ class UpdateHttpApiRouteRequestBackendConfigServices(DaraModel):
         version: str = None,
         weight: int = None,
     ):
-        # The service port (omit for dynamic ports).
+        # The service port. This parameter is not required for dynamic ports.
         self.port = port
         # The service protocol. Valid values:
         # 
-        # *   HTTP
-        # *   HTTPS
+        # - HTTP
+        # 
+        # - HTTPS
         self.protocol = protocol
         # The service ID.
         self.service_id = service_id
         # The service version.
         self.version = version
-        # The traffic weight percentage.
+        # The percentage of traffic.
         self.weight = weight
 
     def validate(self):

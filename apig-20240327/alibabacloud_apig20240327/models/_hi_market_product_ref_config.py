@@ -11,7 +11,9 @@ class HiMarketProductRefConfig(DaraModel):
         apig_ref_config: main_models.HiMarketProductRefConfigApigRefConfig = None,
         gateway_id: str = None,
     ):
+        # Reference settings for the API gateway.
         self.apig_ref_config = apig_ref_config
+        # Unique identifier for the gateway.
         self.gateway_id = gateway_id
 
     def validate(self):
@@ -53,12 +55,19 @@ class HiMarketProductRefConfigApigRefConfig(DaraModel):
         model_api_id: str = None,
         model_api_name: str = None,
     ):
+        # Unique identifier for the agent API.
         self.agent_api_id = agent_api_id
+        # The name of the agent API.
         self.agent_api_name = agent_api_name
+        # Unique identifier for the MCP route.
         self.mcp_route_id = mcp_route_id
+        # Unique identifier for the MCP server.
         self.mcp_server_id = mcp_server_id
+        # The name of the MCP server.
         self.mcp_server_name = mcp_server_name
+        # Unique identifier for the model API.
         self.model_api_id = model_api_id
+        # The name of the model API.
         self.model_api_name = model_api_name
 
     def validate(self):

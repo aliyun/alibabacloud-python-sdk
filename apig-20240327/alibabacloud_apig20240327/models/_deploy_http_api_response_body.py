@@ -13,12 +13,13 @@ class DeployHttpApiResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # Response status code.
+        # The response code.
         self.code = code
+        # The returned data.
         self.data = data
-        # Response message.
+        # The response message.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -66,6 +67,7 @@ class DeployHttpApiResponseBodyData(DaraModel):
         self,
         http_api_id: str = None,
     ):
+        # The ID of the HTTP API.
         self.http_api_id = http_api_id
 
     def validate(self):

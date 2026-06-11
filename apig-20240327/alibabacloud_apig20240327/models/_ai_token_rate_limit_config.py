@@ -16,10 +16,15 @@ class AiTokenRateLimitConfig(DaraModel):
         redis_config: main_models.AiPolicyRedisConfig = None,
         rules: List[main_models.AiTokenRateLimitConfigRule] = None,
     ):
+        # Controls whether global rules are enabled. If set to `true`, the rules in `globalRules` are applied. Defaults to `false`.
         self.enable_global_rules = enable_global_rules
+        # A list of global rate limit rules. These rules are applied when no specific rule in `rules` is matched.
         self.global_rules = global_rules
+        # Specifies the status of the plugin, such as `enabled` or `disabled`.
         self.plugin_status = plugin_status
+        # Specifies the Redis configuration for distributed rate limiting.
         self.redis_config = redis_config
+        # A list of specific rate limit rules.
         self.rules = rules
 
     def validate(self):

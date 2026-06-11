@@ -27,21 +27,37 @@ class AiSecurityGuardConfig(DaraModel):
         risk_config: List[main_models.AiSecurityGuardConfigRiskConfig] = None,
         service_address: str = None,
     ):
+        # The buffer limit in bytes for streaming content checks. The service buffers content up to this limit before sending it for analysis.
         self.buffer_limit = buffer_limit
+        # Specifies whether to check the content of incoming requests.
         self.check_request = check_request
+        # Specifies whether to check incoming requests for image content. Requires `checkRequest` to be `true`.
         self.check_request_image = check_request_image
+        # Specifies whether to check the content of outgoing responses.
         self.check_response = check_response
+        # Specifies whether to check outgoing responses for image content. Requires `checkResponse` to be `true`.
         self.check_response_image = check_response_image
+        # Specifies consumer-specific configurations for the request check service.
         self.consumer_request_check_service = consumer_request_check_service
+        # Specifies consumer-specific configurations for the response check service.
         self.consumer_response_check_service = consumer_response_check_service
+        # Specifies customized risk thresholds for different consumers.
         self.consumer_risk_level = consumer_risk_level
+        # Controls whether the AI Security Guard plugin is enabled or disabled.
         self.plugin_status = plugin_status
+        # The identifier of the request check service for text content.
         self.request_check_service = request_check_service
+        # The identifier of the request check service for image content.
         self.request_image_check_service = request_image_check_service
+        # The identifier of the response check service for text content.
         self.response_check_service = response_check_service
+        # The identifier of the response check service for image content.
         self.response_image_check_service = response_image_check_service
+        # The risk alert level. The service triggers an alert when a detected risk meets or exceeds this level.
         self.risk_alert_level = risk_alert_level
+        # Specifies general risk configurations.
         self.risk_config = risk_config
+        # The service address of the security check endpoint.
         self.service_address = service_address
 
     def validate(self):
@@ -199,8 +215,11 @@ class AiSecurityGuardConfigRiskConfig(DaraModel):
         level: str = None,
         type: str = None,
     ):
+        # Contains rules that override the default settings for specific consumers.
         self.consumer_rules = consumer_rules
+        # The default risk level for this risk type. For example: `low`, `medium`, or `high`.
         self.level = level
+        # The type of risk to configure. For example: `profanity` or `spam`.
         self.type = type
 
     def validate(self):
@@ -243,7 +262,9 @@ class AiSecurityGuardConfigRiskConfigConsumerRules(DaraModel):
         match_type: str = None,
         pattern: str = None,
     ):
+        # The location in the request to search for the `pattern`. For example: `header` or `query`.
         self.match_type = match_type
+        # The pattern for matching a consumer. This can be a regular expression.
         self.pattern = pattern
 
     def validate(self):
@@ -280,9 +301,13 @@ class AiSecurityGuardConfigConsumerRiskLevel(DaraModel):
         name: str = None,
         type: str = None,
     ):
+        # The risk level to apply to the specified consumer and risk type. For example: `low`, `medium`, or `high`.
         self.level = level
+        # The match type for identifying the consumer. For example: `header` or `query`.
         self.match_type = match_type
+        # The identifier of the consumer.
         self.name = name
+        # The type of risk to configure. For example: `profanity` or `spam`.
         self.type = type
 
     def validate(self):
@@ -332,10 +357,15 @@ class AiSecurityGuardConfigConsumerResponseCheckService(DaraModel):
         response_check_service: str = None,
         response_image_check_service: str = None,
     ):
+        # The match type for identifying the consumer. For example: `header` or `query`.
         self.match_type = match_type
+        # The modality type for this rule. For example: `text` or `image`.
         self.modality_type = modality_type
+        # The identifier of the consumer.
         self.name = name
+        # The identifier of the response check service for text content for this consumer.
         self.response_check_service = response_check_service
+        # The identifier of the response check service for image content for this consumer.
         self.response_image_check_service = response_image_check_service
 
     def validate(self):
@@ -391,10 +421,15 @@ class AiSecurityGuardConfigConsumerRequestCheckService(DaraModel):
         request_check_service: str = None,
         request_image_check_service: str = None,
     ):
+        # The match type for identifying the consumer. For example: `header` or `query`.
         self.match_type = match_type
+        # The modality type for this rule. For example: `text` or `image`.
         self.modality_type = modality_type
+        # The identifier of the consumer.
         self.name = name
+        # The identifier of the request check service for text content for this consumer.
         self.request_check_service = request_check_service
+        # The identifier of the request check service for image content for this consumer.
         self.request_image_check_service = request_image_check_service
 
     def validate(self):

@@ -24,43 +24,33 @@ class ListHttpApiRoutesRequest(DaraModel):
         with_plugin_attachment_by_plugin_id: str = None,
     ):
         self.backend_service_name = backend_service_name
-        # The string that is used to filter routes based on consumer authentication rules. Only authorized APIs are returned.
+        # Filters the results, returning only routes authorized by the specified consumer authorization rule.
         self.consumer_authorization_rule_id = consumer_authorization_rule_id
-        # The deployment state of the route.
-        # 
-        # Enumerated values:
-        # 
-        # *   Deploying: The route is being deployed.
-        # *   DeployedWithChanges: The route is deployed and modified.
-        # *   Undeploying: The route is being undeployed.
-        # *   NotDeployed: The route is not deployed.
-        # *   Deployed: The route is deployed.
-        # *   UndeployFailed: The route failed to be undeployed.
-        # *   DeployFailed: The route failed to be deployed.
+        # The deployment status of the route.
         self.deploy_statuses = deploy_statuses
-        # Specifies to filter routes by domain ID.
+        # Filters routes by the specified domain ID.
         self.domain_id = domain_id
         # The environment ID.
         self.environment_id = environment_id
-        # Whether to filter for deployment scenario
+        # Set to `true` if the query is for a deployment scenario.
         self.for_deploy = for_deploy
-        # The ID of the Cloud-native API Gateway instance.
+        # The cloud-native API gateway ID.
         self.gateway_id = gateway_id
-        # The route name.
+        # The route name. This parameter requires an exact match.
         self.name = name
-        # The route name keyword for a fuzzy search.
+        # Filters the results by route name using a fuzzy search.
         self.name_like = name_like
-        # The page number of the page to return. Pages start from page 1. Default value: 1.
+        # The page number, starting from 1. Defaults to 1 if unspecified.
         self.page_number = page_number
-        # The number of entries per page. Valid values: 1 to 100. Default value: 10.
+        # The page size. Valid values are 1 to 100. Defaults to 10 if unspecified.
         self.page_size = page_size
-        # The route path keyword for a fuzzy search.
+        # Filters the results by route path using a fuzzy search.
         self.path_like = path_like
-        # The consumer authorization information in the response.
+        # Set to `true` to include the consumer authorization policy in the response.
         self.with_auth_policy_info = with_auth_policy_info
-        # The authentication rules of the specified consumer in each route returned.
+        # The consumer ID. If specified, the response includes the consumer\\"s associated authorization rules for each route.
         self.with_consumer_info_by_id = with_consumer_info_by_id
-        # The mounting information of the specified plug-in in each route returned.
+        # The plugin ID. If specified, the response includes the attachment information for this plugin for each route.
         self.with_plugin_attachment_by_plugin_id = with_plugin_attachment_by_plugin_id
 
     def validate(self):

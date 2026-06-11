@@ -14,11 +14,11 @@ class DeployHttpApiRequest(DaraModel):
         rest_api_config: main_models.DeployHttpApiRequestRestApiConfig = None,
         route_id: str = None,
     ):
-        # httpApiConfig
+        # The HTTP API deployment configuration.
         self.http_api_config = http_api_config
-        # The REST API deployment configuration. This parameter is required when you publish a REST API.
+        # The REST API deployment configuration. This parameter is required when you deploy an HTTP API as a REST API.
         self.rest_api_config = rest_api_config
-        # The route ID. You must specify this parameter when you publish an HTTP API.
+        # The route ID. This parameter is required when you deploy a route for an HTTP API.
         self.route_id = route_id
 
     def validate(self):
@@ -68,17 +68,17 @@ class DeployHttpApiRequestRestApiConfig(DaraModel):
         operation_ids: List[str] = None,
         revision_id: str = None,
     ):
-        # The publish description.
+        # The deployment description.
         self.description = description
-        # The environment configurations.
+        # The deployment environment configuration.
         self.environment = environment
         # The gateway ID.
         self.gateway_id = gateway_id
-        # Operation-level deployment control list
+        # A list of operation-level deployment controls.
         self.operation_deployments = operation_deployments
-        # operationIds
+        # A list of operation IDs.
         self.operation_ids = operation_ids
-        # The historical version of the API. If you specify this parameter, the corresponding version of the API is published.
+        # The revision ID. If you specify this parameter, the deployment uses the settings from the specified revision.
         self.revision_id = revision_id
 
     def validate(self):
@@ -148,9 +148,9 @@ class DeployHttpApiRequestRestApiConfigOperationDeployments(DaraModel):
         action: str = None,
         operation_id: str = None,
     ):
-        # Operation type
+        # The operation type.
         self.action = action
-        # Unique identifier of the operation
+        # The unique ID of the operation.
         self.operation_id = operation_id
 
     def validate(self):
@@ -187,20 +187,13 @@ class DeployHttpApiRequestRestApiConfigEnvironment(DaraModel):
         environment_id: str = None,
         service_configs: List[main_models.DeployHttpApiRequestRestApiConfigEnvironmentServiceConfigs] = None,
     ):
-        # The publishing scenario.
-        # 
-        # Valid values:
-        # 
-        # *   SingleService
-        # *   MultiServiceByRatio
-        # *   MultiServiceByContent
-        # *   Mock
+        # The API deployment scenario.
         self.backend_scene = backend_scene
-        # The custom domain names.
+        # A list of custom domain IDs.
         self.custom_domain_ids = custom_domain_ids
         # The environment ID.
         self.environment_id = environment_id
-        # The configurations of existing services. For single-service publishing, only one entry is allowed. For other scenarios, multiple entries are allowed.
+        # The configurations for one or more backend services. A single-service scenario allows only one entry, while other scenarios, such as canary release by ratio and content-based routing, allow multiple entries.
         self.service_configs = service_configs
 
     def validate(self):
@@ -259,20 +252,21 @@ class DeployHttpApiRequestRestApiConfigEnvironmentServiceConfigs(DaraModel):
         version: str = None,
         weight: int = None,
     ):
-        # The matching condition configurations related to API publishing.
+        # The conditions that a request must meet to be routed to this service. This parameter is used for content-based routing.
         self.match = match
-        # The service port. If you want to use a dynamic port, do not pass this parameter.
+        # The service port. Do not specify this parameter for dynamic ports.
         self.port = port
-        # The service protocol. Valid values:
+        # The service protocol.
         # 
-        # *   HTTP
-        # *   HTTPS
+        # - HTTP
+        # 
+        # - HTTPS
         self.protocol = protocol
         # The service ID.
         self.service_id = service_id
-        # The version of the microservice.
+        # The service version.
         self.version = version
-        # The weight. Valid values: [1,100]. This parameter is valid only in proportional routing.
+        # The weight, which must be an integer from 1 to 100. This parameter applies only to the canary release by ratio scenario.
         self.weight = weight
 
     def validate(self):
@@ -335,7 +329,7 @@ class DeployHttpApiRequestHttpApiConfig(DaraModel):
     ):
         # The gateway ID.
         self.gateway_id = gateway_id
-        # routeIds
+        # A list of route IDs.
         self.route_ids = route_ids
 
     def validate(self):

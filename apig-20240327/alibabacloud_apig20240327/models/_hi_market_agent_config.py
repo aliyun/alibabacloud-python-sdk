@@ -12,6 +12,7 @@ class HiMarketAgentConfig(DaraModel):
         self,
         agent_apiconfig: main_models.HiMarketAgentConfigAgentAPIConfig = None,
     ):
+        # Contains the API configuration for the agent.
         self.agent_apiconfig = agent_apiconfig
 
     def validate(self):
@@ -42,7 +43,9 @@ class HiMarketAgentConfigAgentAPIConfig(DaraModel):
         agent_protocols: List[str] = None,
         routes: List[main_models.HiMarketHttpRoute] = None,
     ):
+        # The communication protocols supported by the agent.
         self.agent_protocols = agent_protocols
+        # The routing rules for incoming requests.
         self.routes = routes
 
     def validate(self):

@@ -15,11 +15,11 @@ class ListHttpApiRoutesResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The status code.
+        # The response status code.
         self.code = code
-        # The response payload.
+        # The response data.
         self.data = data
-        # The returned message.
+        # The response message.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -72,13 +72,13 @@ class ListHttpApiRoutesResponseBodyData(DaraModel):
         page_size: int = None,
         total_size: int = None,
     ):
-        # The routes.
+        # An array of route objects.
         self.items = items
-        # The page number of the returned page.
+        # The current page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries returned per page.
         self.page_size = page_size
-        # The total number of entries returned.
+        # The total number of available entries.
         self.total_size = total_size
 
     def validate(self):

@@ -20,15 +20,25 @@ class AiNetworkConfigSearchEngine(DaraModel):
         timeout_millisecond: int = None,
         type: str = None,
     ):
+        # Required. The API key to authenticate requests to the search engine service.
         self.api_key = api_key
+        # The search content mode, which determines how the service interprets the query and returns results.
         self.content_mode = content_mode
+        # The number of search results to return. If this parameter is omitted, the service uses a default value.
         self.count = count
+        # The endpoint URL for the search engine service.
         self.endpoint = endpoint
+        # The industry context for tailoring search results to a specific domain.
         self.industry = industry
+        # Optional. A key-value map for service-specific parameters not covered by the standard configuration.
         self.option_args = option_args
+        # The starting offset for the search results, used for pagination. For example, a value of 10 skips the first 10 results. The default is 0.
         self.start = start
+        # The time range for filtering results by their creation or modification date.
         self.time_range = time_range
+        # The request timeout in milliseconds. If a request exceeds this time, the service terminates it.
         self.timeout_millisecond = timeout_millisecond
+        # Specifies the search engine service to use.
         self.type = type
 
     def validate(self):

@@ -141,10 +141,15 @@ class ListPluginAttachmentsResponseBodyDataItems(DaraModel):
         resource_infos: List[main_models.ResourceInfo] = None,
     ):
         # The types of resource attachments.
+        # 
         # - HttpApi
+        # 
         # - Operation
+        # 
         # - GatewayRoute
+        # 
         # - GatewayDomain
+        # 
         # - Gateway
         self.attach_resource_type = attach_resource_type
         # Indicates if enabled.

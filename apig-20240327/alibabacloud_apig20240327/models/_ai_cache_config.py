@@ -16,12 +16,19 @@ class AiCacheConfig(DaraModel):
         redis_config: main_models.AiPolicyRedisConfig = None,
         vector_config: main_models.AiCacheConfigVectorConfig = None,
     ):
+        # The cache key strategy, which determines how the system generates a unique key for each cacheable request. Valid values: `DEFAULT` and `CUSTOM`.
         self.cache_key_strategy = cache_key_strategy
+        # The cache mode, which defines the caching behavior. Valid values are `NORMAL` for standard key-value caching and `SEMANTIC` for vector-based similarity caching.
         self.cache_mode = cache_mode
+        # The cache Time-to-Live (TTL) in seconds. This specifies the duration that a cached response remains valid. After the TTL expires, the cache removes the response.
         self.cache_ttl = cache_ttl
+        # The embedding configuration. Specifies the service that converts text queries into vector embeddings for semantic search.
         self.embedding_config = embedding_config
+        # The plugin status. Set to `enable` to activate the plugin or `disable` to deactivate it.
         self.plugin_status = plugin_status
+        # The Redis configuration, required if you use a Redis instance as the cache backend.
         self.redis_config = redis_config
+        # The vector configuration for semantic caching. This enables the cache to retrieve results based on semantic similarity instead of exact matches.
         self.vector_config = vector_config
 
     def validate(self):
@@ -101,11 +108,17 @@ class AiCacheConfigVectorConfig(DaraModel):
         timeout: int = None,
         type: str = None,
     ):
+        # The API key to authenticate with the vector database service.
         self.api_key = api_key
+        # The unique ID of the collection or index within the vector database for search and storage.
         self.collection_id = collection_id
+        # The endpoint URL of the vector database service.
         self.service_host = service_host
+        # The similarity threshold for a vector search to qualify as a cache hit. The value must be between 0.0 and 1.0. A higher value means a stricter similarity requirement.
         self.threshold = threshold
+        # The request timeout in milliseconds. A request to the vector service fails if it exceeds this duration. Default: `10000`.
         self.timeout = timeout
+        # The type of vector database service. For example, specify `DashVector` for Alibaba Cloud\\"s vector search service.
         self.type = type
 
     def validate(self):
@@ -166,9 +179,13 @@ class AiCacheConfigEmbeddingConfig(DaraModel):
         timeout: int = None,
         type: str = None,
     ):
+        # The model name to use for generating embeddings, such as `text-embedding-v1`.
         self.model_name = model_name
+        # The service ID of the deployed embedding model.
         self.service_id = service_id
+        # The request timeout in milliseconds. A request to the embedding service fails if it exceeds this duration. Default: `10000`.
         self.timeout = timeout
+        # The type of embedding service. For example, specify `Tongyi` for Alibaba Cloud\\"s Tongyi Qwen model series.
         self.type = type
 
     def validate(self):

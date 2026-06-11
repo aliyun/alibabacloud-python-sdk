@@ -9,6 +9,7 @@ class UpdateGatewayNameRequest(DaraModel):
         self,
         name: str = None,
     ):
+        # The gateway name.
         self.name = name
 
     def validate(self):

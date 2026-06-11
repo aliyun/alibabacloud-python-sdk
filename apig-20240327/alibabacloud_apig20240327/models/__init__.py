@@ -91,6 +91,9 @@ from ._sub_domain_info import SubDomainInfo
 from ._tls_cipher_suites_config import TlsCipherSuitesConfig
 from ._validation_options import ValidationOptions
 from ._http_api_api_info_deploy_cnt_map_value import HttpApiApiInfoDeployCntMapValue
+from ._add_gateway_quota_rule_request import AddGatewayQuotaRuleRequest
+from ._add_gateway_quota_rule_response_body import AddGatewayQuotaRuleResponseBody
+from ._add_gateway_quota_rule_response import AddGatewayQuotaRuleResponse
 from ._add_gateway_security_group_rule_request import AddGatewaySecurityGroupRuleRequest
 from ._add_gateway_security_group_rule_response_body import AddGatewaySecurityGroupRuleResponseBody
 from ._add_gateway_security_group_rule_response import AddGatewaySecurityGroupRuleResponse
@@ -164,6 +167,9 @@ from ._delete_environment_response_body import DeleteEnvironmentResponseBody
 from ._delete_environment_response import DeleteEnvironmentResponse
 from ._delete_gateway_response_body import DeleteGatewayResponseBody
 from ._delete_gateway_response import DeleteGatewayResponse
+from ._delete_gateway_quota_rule_request import DeleteGatewayQuotaRuleRequest
+from ._delete_gateway_quota_rule_response_body import DeleteGatewayQuotaRuleResponseBody
+from ._delete_gateway_quota_rule_response import DeleteGatewayQuotaRuleResponse
 from ._delete_gateway_security_group_rule_request import DeleteGatewaySecurityGroupRuleRequest
 from ._delete_gateway_security_group_rule_response_body import DeleteGatewaySecurityGroupRuleResponseBody
 from ._delete_gateway_security_group_rule_response import DeleteGatewaySecurityGroupRuleResponse
@@ -213,6 +219,12 @@ from ._get_environment_response_body import GetEnvironmentResponseBody
 from ._get_environment_response import GetEnvironmentResponse
 from ._get_gateway_response_body import GetGatewayResponseBody
 from ._get_gateway_response import GetGatewayResponse
+from ._get_gateway_quota_rule_request import GetGatewayQuotaRuleRequest
+from ._get_gateway_quota_rule_response_body import GetGatewayQuotaRuleResponseBody
+from ._get_gateway_quota_rule_response import GetGatewayQuotaRuleResponse
+from ._get_gateway_quota_rule_subject_usage_request import GetGatewayQuotaRuleSubjectUsageRequest
+from ._get_gateway_quota_rule_subject_usage_response_body import GetGatewayQuotaRuleSubjectUsageResponseBody
+from ._get_gateway_quota_rule_subject_usage_response import GetGatewayQuotaRuleSubjectUsageResponse
 from ._get_http_api_response_body import GetHttpApiResponseBody
 from ._get_http_api_response import GetHttpApiResponse
 from ._get_http_api_operation_response_body import GetHttpApiOperationResponseBody
@@ -264,6 +276,9 @@ from ._list_external_services_response_body import ListExternalServicesResponseB
 from ._list_external_services_response import ListExternalServicesResponse
 from ._list_gateway_features_response_body import ListGatewayFeaturesResponseBody
 from ._list_gateway_features_response import ListGatewayFeaturesResponse
+from ._list_gateway_quota_rules_request import ListGatewayQuotaRulesRequest
+from ._list_gateway_quota_rules_response_body import ListGatewayQuotaRulesResponseBody
+from ._list_gateway_quota_rules_response import ListGatewayQuotaRulesResponse
 from ._list_gateways_request import ListGatewaysRequest
 from ._list_gateways_shrink_request import ListGatewaysShrinkRequest
 from ._list_gateways_response_body import ListGatewaysResponseBody
@@ -314,6 +329,9 @@ from ._query_consumer_authorization_rules_response_body import QueryConsumerAuth
 from ._query_consumer_authorization_rules_response import QueryConsumerAuthorizationRulesResponse
 from ._remove_consumer_authorization_rule_response_body import RemoveConsumerAuthorizationRuleResponseBody
 from ._remove_consumer_authorization_rule_response import RemoveConsumerAuthorizationRuleResponse
+from ._reset_gateway_quota_rule_request import ResetGatewayQuotaRuleRequest
+from ._reset_gateway_quota_rule_response_body import ResetGatewayQuotaRuleResponseBody
+from ._reset_gateway_quota_rule_response import ResetGatewayQuotaRuleResponse
 from ._restart_gateway_response_body import RestartGatewayResponseBody
 from ._restart_gateway_response import RestartGatewayResponse
 from ._sync_mcpservers_request import SyncMCPServersRequest
@@ -347,6 +365,12 @@ from ._update_gateway_feature_response import UpdateGatewayFeatureResponse
 from ._update_gateway_name_request import UpdateGatewayNameRequest
 from ._update_gateway_name_response_body import UpdateGatewayNameResponseBody
 from ._update_gateway_name_response import UpdateGatewayNameResponse
+from ._update_gateway_quota_rule_request import UpdateGatewayQuotaRuleRequest
+from ._update_gateway_quota_rule_response_body import UpdateGatewayQuotaRuleResponseBody
+from ._update_gateway_quota_rule_response import UpdateGatewayQuotaRuleResponse
+from ._update_gateway_quota_rule_status_request import UpdateGatewayQuotaRuleStatusRequest
+from ._update_gateway_quota_rule_status_response_body import UpdateGatewayQuotaRuleStatusResponseBody
+from ._update_gateway_quota_rule_status_response import UpdateGatewayQuotaRuleStatusResponse
 from ._update_http_api_request import UpdateHttpApiRequest
 from ._update_http_api_response_body import UpdateHttpApiResponseBody
 from ._update_http_api_response import UpdateHttpApiResponse
@@ -474,6 +498,9 @@ from ._service import ServicePorts
 from ._service import ServiceVersionsLabels
 from ._service import ServiceVersions
 from ._tls_cipher_suites_config import TlsCipherSuitesConfigTlsCipherSuite
+from ._add_gateway_quota_rule_response_body import AddGatewayQuotaRuleResponseBodyDataConflictPreviewItems
+from ._add_gateway_quota_rule_response_body import AddGatewayQuotaRuleResponseBodyDataConflictPreview
+from ._add_gateway_quota_rule_response_body import AddGatewayQuotaRuleResponseBodyData
 from ._create_and_attach_policy_response_body import CreateAndAttachPolicyResponseBodyData
 from ._create_consumer_response_body import CreateConsumerResponseBodyData
 from ._create_consumer_authorization_rule_response_body import CreateConsumerAuthorizationRuleResponseBodyData
@@ -543,6 +570,10 @@ from ._get_gateway_response_body import GetGatewayResponseBodyDataVpc
 from ._get_gateway_response_body import GetGatewayResponseBodyDataZonesVSwitch
 from ._get_gateway_response_body import GetGatewayResponseBodyDataZones
 from ._get_gateway_response_body import GetGatewayResponseBodyData
+from ._get_gateway_quota_rule_response_body import GetGatewayQuotaRuleResponseBodyData
+from ._get_gateway_quota_rule_subject_usage_response_body import GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems
+from ._get_gateway_quota_rule_subject_usage_response_body import GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetails
+from ._get_gateway_quota_rule_subject_usage_response_body import GetGatewayQuotaRuleSubjectUsageResponseBodyData
 from ._get_mcp_server_response_body import GetMcpServerResponseBodyDataAssembledSources
 from ._get_mcp_server_response_body import GetMcpServerResponseBodyDataDomainInfos
 from ._get_mcp_server_response_body import GetMcpServerResponseBodyDataGrayMcpServerConfigsBackendConfigServices
@@ -585,6 +616,8 @@ from ._list_gateway_features_response_body import ListGatewayFeaturesResponseBod
 from ._list_gateway_features_response_body import ListGatewayFeaturesResponseBodyDataItemsDefinition
 from ._list_gateway_features_response_body import ListGatewayFeaturesResponseBodyDataItems
 from ._list_gateway_features_response_body import ListGatewayFeaturesResponseBodyData
+from ._list_gateway_quota_rules_response_body import ListGatewayQuotaRulesResponseBodyDataItems
+from ._list_gateway_quota_rules_response_body import ListGatewayQuotaRulesResponseBodyData
 from ._list_gateways_request import ListGatewaysRequestTag
 from ._list_gateways_response_body import ListGatewaysResponseBodyDataItemsLoadBalancersPorts
 from ._list_gateways_response_body import ListGatewaysResponseBodyDataItemsLoadBalancers
@@ -629,11 +662,17 @@ from ._list_zones_response_body import ListZonesResponseBodyData
 from ._query_consumer_authorization_rules_response_body import QueryConsumerAuthorizationRulesResponseBodyDataItemsResourceInfo
 from ._query_consumer_authorization_rules_response_body import QueryConsumerAuthorizationRulesResponseBodyDataItems
 from ._query_consumer_authorization_rules_response_body import QueryConsumerAuthorizationRulesResponseBodyData
+from ._reset_gateway_quota_rule_response_body import ResetGatewayQuotaRuleResponseBodyDataConflictPreviewItems
+from ._reset_gateway_quota_rule_response_body import ResetGatewayQuotaRuleResponseBodyDataConflictPreview
+from ._reset_gateway_quota_rule_response_body import ResetGatewayQuotaRuleResponseBodyData
 from ._sync_mcpservers_request import SyncMCPServersRequestNacosMcpServers
 from ._sync_mcpservers_response_body import SyncMCPServersResponseBodyDataFailedMcpServers
 from ._sync_mcpservers_response_body import SyncMCPServersResponseBodyDataSucceedMcpServers
 from ._sync_mcpservers_response_body import SyncMCPServersResponseBodyData
 from ._update_domain_response_body import UpdateDomainResponseBodyData
+from ._update_gateway_quota_rule_response_body import UpdateGatewayQuotaRuleResponseBodyDataConflictPreviewItems
+from ._update_gateway_quota_rule_response_body import UpdateGatewayQuotaRuleResponseBodyDataConflictPreview
+from ._update_gateway_quota_rule_response_body import UpdateGatewayQuotaRuleResponseBodyData
 from ._update_http_api_request import UpdateHttpApiRequestIngressConfig
 from ._update_http_api_route_request import UpdateHttpApiRouteRequestBackendConfigServices
 from ._update_http_api_route_request import UpdateHttpApiRouteRequestBackendConfig
@@ -740,6 +779,9 @@ __all__ = [
     TlsCipherSuitesConfig,
     ValidationOptions,
     HttpApiApiInfoDeployCntMapValue,
+    AddGatewayQuotaRuleRequest,
+    AddGatewayQuotaRuleResponseBody,
+    AddGatewayQuotaRuleResponse,
     AddGatewaySecurityGroupRuleRequest,
     AddGatewaySecurityGroupRuleResponseBody,
     AddGatewaySecurityGroupRuleResponse,
@@ -813,6 +855,9 @@ __all__ = [
     DeleteEnvironmentResponse,
     DeleteGatewayResponseBody,
     DeleteGatewayResponse,
+    DeleteGatewayQuotaRuleRequest,
+    DeleteGatewayQuotaRuleResponseBody,
+    DeleteGatewayQuotaRuleResponse,
     DeleteGatewaySecurityGroupRuleRequest,
     DeleteGatewaySecurityGroupRuleResponseBody,
     DeleteGatewaySecurityGroupRuleResponse,
@@ -862,6 +907,12 @@ __all__ = [
     GetEnvironmentResponse,
     GetGatewayResponseBody,
     GetGatewayResponse,
+    GetGatewayQuotaRuleRequest,
+    GetGatewayQuotaRuleResponseBody,
+    GetGatewayQuotaRuleResponse,
+    GetGatewayQuotaRuleSubjectUsageRequest,
+    GetGatewayQuotaRuleSubjectUsageResponseBody,
+    GetGatewayQuotaRuleSubjectUsageResponse,
     GetHttpApiResponseBody,
     GetHttpApiResponse,
     GetHttpApiOperationResponseBody,
@@ -913,6 +964,9 @@ __all__ = [
     ListExternalServicesResponse,
     ListGatewayFeaturesResponseBody,
     ListGatewayFeaturesResponse,
+    ListGatewayQuotaRulesRequest,
+    ListGatewayQuotaRulesResponseBody,
+    ListGatewayQuotaRulesResponse,
     ListGatewaysRequest,
     ListGatewaysShrinkRequest,
     ListGatewaysResponseBody,
@@ -963,6 +1017,9 @@ __all__ = [
     QueryConsumerAuthorizationRulesResponse,
     RemoveConsumerAuthorizationRuleResponseBody,
     RemoveConsumerAuthorizationRuleResponse,
+    ResetGatewayQuotaRuleRequest,
+    ResetGatewayQuotaRuleResponseBody,
+    ResetGatewayQuotaRuleResponse,
     RestartGatewayResponseBody,
     RestartGatewayResponse,
     SyncMCPServersRequest,
@@ -996,6 +1053,12 @@ __all__ = [
     UpdateGatewayNameRequest,
     UpdateGatewayNameResponseBody,
     UpdateGatewayNameResponse,
+    UpdateGatewayQuotaRuleRequest,
+    UpdateGatewayQuotaRuleResponseBody,
+    UpdateGatewayQuotaRuleResponse,
+    UpdateGatewayQuotaRuleStatusRequest,
+    UpdateGatewayQuotaRuleStatusResponseBody,
+    UpdateGatewayQuotaRuleStatusResponse,
     UpdateHttpApiRequest,
     UpdateHttpApiResponseBody,
     UpdateHttpApiResponse,
@@ -1123,6 +1186,9 @@ __all__ = [
     ServiceVersionsLabels,
     ServiceVersions,
     TlsCipherSuitesConfigTlsCipherSuite,
+    AddGatewayQuotaRuleResponseBodyDataConflictPreviewItems,
+    AddGatewayQuotaRuleResponseBodyDataConflictPreview,
+    AddGatewayQuotaRuleResponseBodyData,
     CreateAndAttachPolicyResponseBodyData,
     CreateConsumerResponseBodyData,
     CreateConsumerAuthorizationRuleResponseBodyData,
@@ -1192,6 +1258,10 @@ __all__ = [
     GetGatewayResponseBodyDataZonesVSwitch,
     GetGatewayResponseBodyDataZones,
     GetGatewayResponseBodyData,
+    GetGatewayQuotaRuleResponseBodyData,
+    GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems,
+    GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetails,
+    GetGatewayQuotaRuleSubjectUsageResponseBodyData,
     GetMcpServerResponseBodyDataAssembledSources,
     GetMcpServerResponseBodyDataDomainInfos,
     GetMcpServerResponseBodyDataGrayMcpServerConfigsBackendConfigServices,
@@ -1234,6 +1304,8 @@ __all__ = [
     ListGatewayFeaturesResponseBodyDataItemsDefinition,
     ListGatewayFeaturesResponseBodyDataItems,
     ListGatewayFeaturesResponseBodyData,
+    ListGatewayQuotaRulesResponseBodyDataItems,
+    ListGatewayQuotaRulesResponseBodyData,
     ListGatewaysRequestTag,
     ListGatewaysResponseBodyDataItemsLoadBalancersPorts,
     ListGatewaysResponseBodyDataItemsLoadBalancers,
@@ -1278,11 +1350,17 @@ __all__ = [
     QueryConsumerAuthorizationRulesResponseBodyDataItemsResourceInfo,
     QueryConsumerAuthorizationRulesResponseBodyDataItems,
     QueryConsumerAuthorizationRulesResponseBodyData,
+    ResetGatewayQuotaRuleResponseBodyDataConflictPreviewItems,
+    ResetGatewayQuotaRuleResponseBodyDataConflictPreview,
+    ResetGatewayQuotaRuleResponseBodyData,
     SyncMCPServersRequestNacosMcpServers,
     SyncMCPServersResponseBodyDataFailedMcpServers,
     SyncMCPServersResponseBodyDataSucceedMcpServers,
     SyncMCPServersResponseBodyData,
     UpdateDomainResponseBodyData,
+    UpdateGatewayQuotaRuleResponseBodyDataConflictPreviewItems,
+    UpdateGatewayQuotaRuleResponseBodyDataConflictPreview,
+    UpdateGatewayQuotaRuleResponseBodyData,
     UpdateHttpApiRequestIngressConfig,
     UpdateHttpApiRouteRequestBackendConfigServices,
     UpdateHttpApiRouteRequestBackendConfig,

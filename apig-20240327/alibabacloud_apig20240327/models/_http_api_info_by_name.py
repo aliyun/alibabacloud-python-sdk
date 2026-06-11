@@ -16,6 +16,7 @@ class HttpApiInfoByName(DaraModel):
         version_enabled: bool = None,
         versioned_http_apis: List[main_models.HttpApiApiInfo] = None,
     ):
+        # 网关Id
         self.gateway_id = gateway_id
         # The API name.
         self.name = name

@@ -14,8 +14,11 @@ class AiStatisticsConfig(DaraModel):
         log_response_content: bool = None,
         path_field_configs: List[main_models.AiStatisticsConfigPathFieldConfigs] = None,
     ):
+        # Specifies whether to record the body of incoming requests.
         self.log_request_content = log_request_content
+        # Specifies whether to record the body of outgoing responses.
         self.log_response_content = log_response_content
+        # An array of configurations for extracting data from specific paths.
         self.path_field_configs = path_field_configs
 
     def validate(self):
@@ -64,7 +67,9 @@ class AiStatisticsConfigPathFieldConfigs(DaraModel):
         field_paths: Dict[str, main_models.AiStatisticsPathField] = None,
         path: str = None,
     ):
+        # A key-value map for extracting fields. Keys are custom names, and values are paths to the data within the request or response body.
         self.field_paths = field_paths
+        # The API endpoint path to which this configuration applies, such as /user/id.
         self.path = path
 
     def validate(self):

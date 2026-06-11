@@ -33,53 +33,49 @@ class Service(DaraModel):
         update_timestamp: int = None,
         versions: List[main_models.ServiceVersions] = None,
     ):
-        # The address details, which can be IP addresses or domain names.
+        # A list of service addresses, such as IP addresses or domain names.
         self.addresses = addresses
-        # The agent service configuration
+        # The agent service configuration.
         self.agent_service_config = agent_service_config
-        # The AI service configurations.
+        # The AI service configuration.
         self.ai_service_config = ai_service_config
-        # The creation time (unix timestamp).
+        # The creation timestamp.
         self.create_timestamp = create_timestamp
-        # The express type
+        # The execution type for the cloud workflow.
         self.express_type = express_type
         # The gateway instance ID.
         self.gateway_id = gateway_id
-        # The service group name.
+        # The name of the service group.
         self.group_name = group_name
-        # The health check configurations.
+        # The health check configuration.
         self.health_check = health_check
-        # The health check status.
-        # 
-        # Valid values:
-        # 
-        # *   Unhealthy
-        # *   Healthy
+        # The health status. Valid values: `Healthy` or `Unhealthy`.
         self.health_status = health_status
-        # The label details for service version configuration
+        # A list of labels for the service.
         self.label_details = label_details
         # The service name.
         self.name = name
-        # The namespace of the service.
+        # The namespace.
         self.namespace = namespace
-        # The outlier endpoints list
+        # A list of outlier endpoints.
         self.outlier_endpoints = outlier_endpoints
-        # The list of objects containing port details.
+        # A list of port configurations.
         self.ports = ports
-        # The service protocol type.
+        # The service protocol.
         self.protocol = protocol
-        # The function qualifier name.
+        # The function qualifier.
         self.qualifier = qualifier
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The service unique ID.
+        # The unique service ID.
         self.service_id = service_id
-        # The source type.
+        # The source type of the service.
         self.source_type = source_type
-        # The list of unhealthy endpoints.
+        # A list of unhealthy endpoints.
         self.unhealthy_endpoints = unhealthy_endpoints
-        # The last modified time (unix timestamp).
+        # The update timestamp.
         self.update_timestamp = update_timestamp
+        # A list of service versions.
         self.versions = versions
 
     def validate(self):
@@ -269,7 +265,9 @@ class ServiceVersions(DaraModel):
         labels: List[main_models.ServiceVersionsLabels] = None,
         name: str = None,
     ):
+        # The labels of the version.
         self.labels = labels
+        # The version name.
         self.name = name
 
     def validate(self):
@@ -312,7 +310,9 @@ class ServiceVersionsLabels(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the label.
         self.key = key
+        # The value of the label.
         self.value = value
 
     def validate(self):
@@ -352,7 +352,7 @@ class ServicePorts(DaraModel):
         self.name = name
         # The port number.
         self.port = port
-        # The protocol. Valid values: TCP and UDP.
+        # The protocol. Valid values: `TCP` or `UDP`.
         self.protocol = protocol
 
     def validate(self):

@@ -1,3 +1,14 @@
+2026-06-11 Version: 7.1.0
+- Support API AddGatewayQuotaRule.
+- Support API DeleteGatewayQuotaRule.
+- Support API GetGatewayQuotaRule.
+- Support API GetGatewayQuotaRuleSubjectUsage.
+- Support API ListGatewayQuotaRules.
+- Support API ResetGatewayQuotaRule.
+- Support API UpdateGatewayQuotaRule.
+- Support API UpdateGatewayQuotaRuleStatus.
+
+
 2026-06-05 Version: 7.0.5
 - Update API GetMcpServer: add response parameters Body.data.apiId.
 

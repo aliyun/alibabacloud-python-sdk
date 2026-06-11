@@ -12,9 +12,13 @@ class HiMarketDomain(DaraModel):
         port: int = None,
         protocol: str = None,
     ):
+        # The custom domain name. This must be a valid DNS hostname.
         self.domain = domain
+        # The network type of the endpoint. For example, `VPC` for an internal network or `INTERNET` for a public network.
         self.network_type = network_type
+        # The port number for the endpoint. For example, `80` for HTTP or `443` for HTTPS.
         self.port = port
+        # The communication protocol. Valid values include `HTTP` and `HTTPS`.
         self.protocol = protocol
 
     def validate(self):

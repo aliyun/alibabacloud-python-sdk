@@ -38,11 +38,13 @@ class CreateHttpApiRequest(DaraModel):
         self.auth_config = auth_config
         # $.parameters[0].schema.properties.deployConfigs.items.example
         self.base_path = base_path
+        # ID of the gateway to which the API belongs.
         self.belong_gateway_id = belong_gateway_id
         # $.parameters[0].schema.example
         self.deploy_configs = deploy_configs
         # $.parameters[0].schema.properties.aiProtocols.items.description
         self.description = description
+        # Whether to preview without execution.
         self.dry_run = dry_run
         # Create an API of HTTP type
         self.enable_auth = enable_auth
@@ -62,6 +64,7 @@ class CreateHttpApiRequest(DaraModel):
         self.remove_base_path_on_forward = remove_base_path_on_forward
         # $.parameters[0].schema.properties.authConfig.example
         self.resource_group_id = resource_group_id
+        # The conflict merge strategy for import.
         self.strategy = strategy
         # $.parameters[0].schema.properties.deployConfigs.description
         self.type = type

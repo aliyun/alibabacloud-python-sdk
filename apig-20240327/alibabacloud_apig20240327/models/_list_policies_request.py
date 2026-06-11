@@ -16,14 +16,20 @@ class ListPoliciesRequest(DaraModel):
     ):
         # The attachment point ID.
         self.attach_resource_id = attach_resource_id
-        # The types of attachment points supported by the policy. Valid values: 
+        # The types of attachment points supported by the policy. Valid values:
         # 
         # - HttpApi
+        # 
         # - Operation
+        # 
         # - GatewayRoute
+        # 
         # - GatewayService
+        # 
         # - GatewayServicePort
+        # 
         # - Domain
+        # 
         # - Gateway
         self.attach_resource_type = attach_resource_type
         # The environment ID.

@@ -13,7 +13,9 @@ class AiFallbackConfig(DaraModel):
         only_redirect_upstream_code: bool = None,
         service_configs: List[main_models.AiFallbackConfigServiceConfigs] = None,
     ):
+        # Determines whether fallback is triggered solely by the upstream service\\"s status code. If `true`, fallback occurs only if the upstream service returns an error code. If `false`, other conditions, such as timeouts, can also trigger the fallback.
         self.only_redirect_upstream_code = only_redirect_upstream_code
+        # A list of fallback service configurations.
         self.service_configs = service_configs
 
     def validate(self):
@@ -58,9 +60,13 @@ class AiFallbackConfigServiceConfigs(DaraModel):
         service_id: str = None,
         target_model_name: str = None,
     ):
+        # The name of the fallback service.
         self.name = name
+        # Determines whether to pass the original model name to the fallback service. If `true`, the model name from the original request is used. If `false`, the value of `targetModelName` is used instead.
         self.pass_through_model_name = pass_through_model_name
+        # The unique ID of the fallback service.
         self.service_id = service_id
+        # The name of the model to use for the fallback request.
         self.target_model_name = target_model_name
 
     def validate(self):
