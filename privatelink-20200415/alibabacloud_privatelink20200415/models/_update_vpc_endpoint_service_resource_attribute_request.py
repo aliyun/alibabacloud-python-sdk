@@ -17,35 +17,37 @@ class UpdateVpcEndpointServiceResourceAttributeRequest(DaraModel):
     ):
         # Specifies whether to enable automatic resource allocation. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Enables automatic resource allocation.
+        # 
+        # - **false**: Disables automatic resource allocation.
         # 
         # This parameter is required.
         self.auto_allocated_enabled = auto_allocated_enabled
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # Generate a parameter value from your client to ensure that the value is unique among different requests. **ClientToken** can contain only ASCII characters.
         self.client_token = client_token
         # Specifies whether to perform a dry run. Valid values:
         # 
-        # *   **true**: performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # *   **false**: performs a dry run and sends the request. If the request passes the dry run, an HTTP 2xx status code is returned and the operation is performed. This is the default value.
-        self.dry_run = dry_run
-        # The ID of the region where the service resource is deployed.
+        # - **true**: sends a check request without modifying the properties of the service resource. The system checks the required parameters, request format, and service limits. If the request fails the check, an error is returned. If the request passes the check, the `DryRunOperation` error code is returned.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
+        # - **false** (default): sends a normal request. After the request passes the check, an HTTP 2xx status code is returned and the operation is performed.
+        self.dry_run = dry_run
+        # The ID of the region where you want to modify the service resource.
+        # 
+        # Call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to obtain the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The service resource ID.
+        # The ID of the service resource.
         # 
         # This parameter is required.
         self.resource_id = resource_id
-        # The endpoint service ID.
+        # The ID of the endpoint service.
         # 
         # This parameter is required.
         self.service_id = service_id
-        # The zone ID of the service resource.
+        # The zone where the service resource is located. This parameter is required if the service resource is an Application Load Balancer (ALB), a Network Load Balancer (NLB), or a Gateway Load Balancer (GWLB).
         self.zone_id = zone_id
 
     def validate(self):

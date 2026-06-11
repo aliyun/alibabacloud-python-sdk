@@ -16,18 +16,19 @@ class ListVpcEndpointsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The information about the endpoints.
+        # A list of endpoints.
         self.endpoints = endpoints
-        # The number of entries returned on each page.
+        # The number of entries returned per page.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+        # The token to retrieve the next page of results.
         # 
-        # *   If this is your first request and no next requests are to be performed, you do not need to specify this parameter.
-        # *   If a next request is to be performed, set the parameter to the value of **NextToken** that is returned from the last call.
+        # - If **NextToken** is empty, no next page exists.
+        # 
+        # - If a value is returned, use it in your next request to retrieve the next page of results.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries that match the query.
         self.total_count = total_count
 
     def validate(self):
@@ -108,30 +109,39 @@ class ListVpcEndpointsResponseBodyEndpoints(DaraModel):
         vpc_id: str = None,
         zone_affinity_enabled: bool = None,
     ):
-        # The protocol. Valid values:
+        # The IP address family. Valid values:
         # 
-        # *   **IPv4**
-        # *   **DualStack**
+        # - **IPv4**: IPv4.
+        # 
+        # - **DualStack**: dual stack.
         self.address_ip_version = address_ip_version
-        # The bandwidth of the endpoint connection. Unit: Mbit/s.
+        # The connection bandwidth of the endpoint, in Mbps.
         self.bandwidth = bandwidth
-        # The state of the endpoint connection. Valid values:
+        # The connection status of the endpoint. Valid values:
         # 
-        # *   **Pending**: The endpoint connection is being modified.
-        # *   **Connecting**: The endpoint connection is being established.
-        # *   **Connected**: The endpoint connection is established.
-        # *   **Disconnecting**: The endpoint is being disconnected from the endpoint service.
-        # *   **Disconnected**: The endpoint is disconnected from the endpoint service.
-        # *   **Deleting**: The endpoint connection is being deleted.
-        # *   **ServiceDeleted**: The corresponding service is deleted.
+        # - **Pending**: The connection is being modified.
+        # 
+        # - **Connecting**: The endpoint is being connected.
+        # 
+        # - **Connected**: The endpoint is connected.
+        # 
+        # - **Disconnecting**: The endpoint is being disconnected.
+        # 
+        # - **Disconnected**: The endpoint is disconnected.
+        # 
+        # - **Deleting**: The endpoint is being deleted.
+        # 
+        # - **ServiceDeleted**: The associated endpoint service has been deleted.
         self.connection_status = connection_status
         # The time when the endpoint was created.
         self.create_time = create_time
+        # The bandwidth of the cross-region connection, in Mbps.
         self.cross_region_bandwidth = cross_region_bandwidth
-        # The service state of the endpoint. Valid values:
+        # The business status of the endpoint. Valid values:
         # 
-        # *   **Normal**: The endpoint runs as expected.
-        # *   **FinancialLocked**: The endpoint is locked due to overdue payments.
+        # - **Normal**: The endpoint is running as expected.
+        # 
+        # - **FinancialLocked**: The endpoint is locked due to an overdue payment.
         self.endpoint_business_status = endpoint_business_status
         # The description of the endpoint.
         self.endpoint_description = endpoint_description
@@ -141,42 +151,51 @@ class ListVpcEndpointsResponseBodyEndpoints(DaraModel):
         self.endpoint_id = endpoint_id
         # The name of the endpoint.
         self.endpoint_name = endpoint_name
-        # The state of the endpoint. Valid values:
+        # The status of the endpoint. Valid values:
         # 
-        # *   **Creating**: The endpoint is being created.
-        # *   **Active**: The endpoint is available.
-        # *   **Pending**: The endpoint is being modified.
-        # *   **Deleting**: The endpoint is being deleted.
+        # - **Creating**: The endpoint is being created.
+        # 
+        # - **Active**: The endpoint is available.
+        # 
+        # - **Pending**: The endpoint is being modified.
+        # 
+        # - **Deleting**: The endpoint is being deleted.
         self.endpoint_status = endpoint_status
         # The type of the endpoint. Valid values:
         # 
-        # *   **Interface**: interface endpoint
-        # *   **Reverse**: reverse endpoint
+        # - **Interface**: an interface endpoint.
+        # 
+        # - **Reverse**: a reverse endpoint.
+        # 
+        # - **GatewayLoadBalancer**: a gateway load balancer endpoint.
         self.endpoint_type = endpoint_type
-        # The Resource Access Management (RAM) policy. For more information about policy definitions, see [Policy elements](https://help.aliyun.com/document_detail/93738.html).
+        # The RAM access policy. For details on the policy syntax, see [Basic elements of a RAM policy](https://help.aliyun.com/document_detail/93738.html).
         self.policy_document = policy_document
-        # The region ID of the endpoint.
+        # The ID of the region that contains the endpoint.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # Indicates whether the endpoint and the endpoint service belong to the same Alibaba Cloud account. Valid values:
         # 
-        # *   **true**
-        # *   **false**
-        self.resource_owner = resource_owner
-        # The ID of the endpoint service that is associated with the endpoint.
-        self.service_id = service_id
-        # The name of the endpoint service that is associated with the endpoint.
-        self.service_name = service_name
-        self.service_region_id = service_region_id
-        # The tags added to the resource.
-        self.tags = tags
-        # The ID of the virtual private cloud (VPC) to which the endpoint belongs.
-        self.vpc_id = vpc_id
-        # Indicates whether the domain name of the nearest endpoint that is associated with the endpoint service is resolved first. Valid values:
+        # - **true**
         # 
-        # *   **true**
-        # *   **false**
+        # - **false**
+        self.resource_owner = resource_owner
+        # The ID of the associated endpoint service.
+        self.service_id = service_id
+        # The name of the associated endpoint service.
+        self.service_name = service_name
+        # The ID of the region where the associated endpoint service is deployed.
+        self.service_region_id = service_region_id
+        # A list of tags.
+        self.tags = tags
+        # The ID of the VPC to which the endpoint belongs.
+        self.vpc_id = vpc_id
+        # Indicates whether zone-aware DNS resolution is enabled. Valid values:
+        # 
+        # - **true**
+        # 
+        # - **false**
         self.zone_affinity_enabled = zone_affinity_enabled
 
     def validate(self):
@@ -339,9 +358,9 @@ class ListVpcEndpointsResponseBodyEndpointsTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag added to the resource.
+        # The tag key.
         self.key = key
-        # The value of the tag added to the resource.
+        # The tag value.
         self.value = value
 
     def validate(self):

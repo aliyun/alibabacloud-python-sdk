@@ -22,56 +22,63 @@ class UpdateVpcEndpointServiceAttributeRequest(DaraModel):
         service_support_ipv_6: bool = None,
         zone_affinity_enabled: bool = None,
     ):
+        # The remote regions to add to the list of supported regions.
         self.add_supported_region_set = add_supported_region_set
-        # The protocol. Valid values:
+        # The IP version. Valid values:
         # 
-        # *   **IPv4**
-        # *   **DualStack**
+        # - **IPv4**: IPv4.
         # 
-        # >  You can set the protocol to DualStack only for endpoint services whose backend resource type is NLB.
+        # - **DualStack**: dual-stack.
+        # 
+        # > Only endpoint services that use an NLB or GWLB instance as the service resource support the **DualStack** IP version.
         self.address_ip_version = address_ip_version
-        # Specifies whether to automatically accept endpoint connection requests. Valid values:
+        # Specifies whether to automatically accept endpoint connections. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: automatically accepts endpoint connections.
+        # 
+        # - **false**: does not automatically accept endpoint connections.
         self.auto_accept_enabled = auto_accept_enabled
-        # The client token that is used to ensure the idempotence of the request.
+        # A client-generated token that ensures the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # Your client must generate a unique token for each request. **ClientToken** can contain only ASCII characters.
         self.client_token = client_token
-        # The default maximum bandwidth of the endpoint connection. Unit: Mbit/s. Default value: **3072**.
+        # The default maximum connection bandwidth. The default value is **3072**. Unit: Mbps.
         # 
         # Valid values: **100** to **10240**.
         # 
-        # >  You can specify this parameter only if you specify Classic Load Balancer (CLB) instances or Application Load Balancer (ALB) instances as service resources.
+        # > You can set this parameter only if the service resource is a CLB or ALB instance, but not an NLB instance.
         self.connect_bandwidth = connect_bandwidth
+        # The remote regions to remove from the list of supported regions.
         self.delete_supported_region_set = delete_supported_region_set
-        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        # Specifies whether to perform a dry run. Valid values:
         # 
-        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+        # - **true**: performs a dry run. The system checks the required parameters, request format, and service limits. If the request fails the dry run, the system returns an error message. If the request passes the dry run, the system returns the `DryRunOperation` error code.
+        # 
+        # - **false** (default): sends a normal request. If the request passes the check, the system returns a 2xx HTTP status code and performs the operation.
         self.dry_run = dry_run
         # The region ID of the endpoint service.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to get the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
         # The description of the endpoint service.
         self.service_description = service_description
-        # The endpoint service ID.
+        # The ID of the endpoint service.
         # 
         # This parameter is required.
         self.service_id = service_id
-        # Specifies whether to enable IPv6. Valid values:
+        # Specifies whether to enable IPv6 for the endpoint service. Valid values:
         # 
-        # *   **true**
-        # *   **false** (default)
+        # - **true**: Enables IPv6.
+        # 
+        # - **false** (default): Disables IPv6.
         self.service_support_ipv_6 = service_support_ipv_6
-        # Specifies whether to first resolve the domain name of the nearest endpoint that is associated with the endpoint service. Valid values:
+        # Specifies whether to enable zone affinity for the endpoint service. Valid values:
         # 
-        # *   **true** (default)
-        # *   **false**
+        # - **true** (default): Enables zone affinity.
+        # 
+        # - **false**: Disables zone affinity.
         self.zone_affinity_enabled = zone_affinity_enabled
 
     def validate(self):

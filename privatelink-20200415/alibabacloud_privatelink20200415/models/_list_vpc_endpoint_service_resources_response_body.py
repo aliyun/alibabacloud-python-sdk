@@ -19,8 +19,9 @@ class ListVpcEndpointServiceResourcesResponseBody(DaraModel):
         self.max_results = max_results
         # The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results. Valid values:
         # 
-        # *   If no value is returned for **NextToken**, no next requests are performed.
-        # *   If a value is returned for **NextToken**, the value can be used in the next request to retrieve a new page of results.
+        # - If no value is returned for **NextToken**, no next requests are performed.
+        # 
+        # - If a value is returned for **NextToken**, the value can be used in the next request to retrieve a new page of results.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -90,8 +91,9 @@ class ListVpcEndpointServiceResourcesResponseBodyResources(DaraModel):
     ):
         # Indicates whether automatic resource allocation is enabled. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.auto_allocated_enabled = auto_allocated_enabled
         # The IP address of the service resource.
         self.ip = ip
@@ -105,8 +107,9 @@ class ListVpcEndpointServiceResourcesResponseBodyResources(DaraModel):
         self.resource_id = resource_id
         # Indicates whether IPv6 is enabled for the endpoint service. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.resource_support_ipv_6 = resource_support_ipv_6
         # The type of the service resource.
         # 

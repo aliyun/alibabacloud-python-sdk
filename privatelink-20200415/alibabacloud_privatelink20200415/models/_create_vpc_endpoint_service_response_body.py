@@ -25,52 +25,58 @@ class CreateVpcEndpointServiceResponseBody(DaraModel):
         supported_region_set: List[main_models.CreateVpcEndpointServiceResponseBodySupportedRegionSet] = None,
         zone_affinity_enabled: bool = None,
     ):
-        # The protocol. Valid values:
+        # The IP version. Valid values:
         # 
-        # *   **IPv4**
-        # *   **DualStack**
+        # - **IPv4**: IPv4.
+        # - **DualStack**: dual stack.
         self.address_ip_version = address_ip_version
-        # Indicates whether the endpoint service automatically accepts endpoint connection requests. Valid values:
+        # Indicates whether endpoint connection requests are automatically accepted. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: automatically accepts endpoint connection requests.
+        # - **false**: does not automatically accept endpoint connection requests.
         self.auto_accept_enabled = auto_accept_enabled
         # The time when the endpoint service was created.
         self.create_time = create_time
         # The request ID.
         self.request_id = request_id
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The service state of the endpoint service. Valid values:
+        # The business status of the endpoint service. Valid values:
         # 
-        # *   **Normal**: The endpoint service runs as expected.
-        # *   **FinancialLocked**: The endpoint service is locked due to overdue payments.
+        # - **Normal**: normal.
+        # 
+        # - **FinancialLocked**: locked due to overdue payments.
         self.service_business_status = service_business_status
         # The description of the endpoint service.
         self.service_description = service_description
         # The domain name of the endpoint service.
         self.service_domain = service_domain
-        # The endpoint service ID.
+        # The ID of the endpoint service.
         self.service_id = service_id
         # The name of the endpoint service.
         self.service_name = service_name
         # The state of the endpoint service. Valid values:
         # 
-        # *   **Creating**: The endpoint service is being created.
-        # *   **Pending**: The endpoint service is being modified.
-        # *   **Active**: The endpoint service is available.
-        # *   **Deleting**: The endpoint service is being deleted.
+        # - **Creating**: being created.
+        # 
+        # - **Pending**: being modified.
+        # 
+        # - **Active**: available.
+        # 
+        # - **Deleting**: being deleted.
         self.service_status = service_status
-        # Indicates whether IPv6 was enabled for the endpoint service. Valid values:
+        # Indicates whether the endpoint service supports IPv6. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: yes.
+        # 
+        # - **false**: no.
         self.service_support_ipv_6 = service_support_ipv_6
+        # The list of regions in which the endpoint service is available. Service consumers can initiate endpoint connections from the regions in the list.
         self.supported_region_set = supported_region_set
-        # Indicates whether the domain name of the nearest endpoint that is associated with the endpoint service is resolved first. Valid values:
+        # Indicates whether zone affinity is enabled for endpoint domain name resolution. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: yes.
+        # - **false**: no.
         self.zone_affinity_enabled = zone_affinity_enabled
 
     def validate(self):
@@ -187,9 +193,21 @@ class CreateVpcEndpointServiceResponseBodySupportedRegionSet(DaraModel):
         service_region_id: str = None,
         supported_region_id: str = None,
     ):
+        # The business status of the region in which the endpoint service is available. Valid values:
+        # 
+        # - **Normal**: normal.
+        # - **FinancialLocked**: locked due to overdue payments.
         self.region_business_status = region_business_status
+        # The state of the region in which the endpoint service is available. Valid values:
+        # 
+        # - **Pending**: changing.
+        # - **Available**: available.
+        # - **Deleting**: being deleted.
+        # - **Failed**: failed.
+        # - **Closed**: closed.
         self.region_service_status = region_service_status
         self.service_region_id = service_region_id
+        # The ID of a region in which the endpoint service is available.
         self.supported_region_id = supported_region_id
 
     def validate(self):
