@@ -1,24 +1,23 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
 from typing import Dict
-from Tea.core import TeaCore
 
+from alibabacloud_agency20250227 import models as main_models
+from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
-from alibabacloud_tea_openapi import models as open_api_models
-from alibabacloud_tea_util.client import Client as UtilClient
-from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
-from alibabacloud_agency20250227 import models as agency_20250227_models
-from alibabacloud_tea_util import models as util_models
-from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
+from alibabacloud_tea_openapi.utils import Utils
+from darabonba.core import DaraCore as DaraCore
+from darabonba.runtime import RuntimeOptions
 
-
+"""
+"""
 class Client(OpenApiClient):
-    """
-    *\
-    """
+
     def __init__(
-        self, 
-        config: open_api_models.Config,
+        self,
+        config: open_api_util_models.Config,
     ):
         super().__init__(config)
         self._endpoint_rule = 'regional'
@@ -93,792 +92,636 @@ class Client(OpenApiClient):
         endpoint_map: Dict[str, str],
         endpoint: str,
     ) -> str:
-        if not UtilClient.empty(endpoint):
+        if not DaraCore.is_null(endpoint):
             return endpoint
-        if not UtilClient.is_unset(endpoint_map) and not UtilClient.empty(endpoint_map.get(region_id)):
+        if not DaraCore.is_null(endpoint_map) and not DaraCore.is_null(endpoint_map.get(region_id)):
             return endpoint_map.get(region_id)
-        return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
+        return Utils.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
     def get_bill_detail_file_list_with_options(
         self,
-        request: agency_20250227_models.GetBillDetailFileListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> agency_20250227_models.GetBillDetailFileListResponse:
-        """
-        @summary 查询账单导出文件
-        
-        @param request: GetBillDetailFileListRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetBillDetailFileListResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.GetBillDetailFileListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetBillDetailFileListResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.bill_month):
+        if not DaraCore.is_null(request.bill_month):
             query['BillMonth'] = request.bill_month
-        if not UtilClient.is_unset(request.oss_access_key_id):
+        if not DaraCore.is_null(request.oss_access_key_id):
             query['OssAccessKeyId'] = request.oss_access_key_id
-        if not UtilClient.is_unset(request.oss_access_key_secret):
+        if not DaraCore.is_null(request.oss_access_key_secret):
             query['OssAccessKeySecret'] = request.oss_access_key_secret
-        if not UtilClient.is_unset(request.oss_bucket_name):
+        if not DaraCore.is_null(request.oss_bucket_name):
             query['OssBucketName'] = request.oss_bucket_name
-        if not UtilClient.is_unset(request.oss_endpoint):
+        if not DaraCore.is_null(request.oss_endpoint):
             query['OssEndpoint'] = request.oss_endpoint
-        if not UtilClient.is_unset(request.oss_region):
+        if not DaraCore.is_null(request.oss_region):
             query['OssRegion'] = request.oss_region
-        if not UtilClient.is_unset(request.oss_security_token):
+        if not DaraCore.is_null(request.oss_security_token):
             query['OssSecurityToken'] = request.oss_security_token
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetBillDetailFileList',
-            version='2025-02-27',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetBillDetailFileList',
+            version = '2025-02-27',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            agency_20250227_models.GetBillDetailFileListResponse(),
+        return DaraCore.from_map(
+            main_models.GetBillDetailFileListResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def get_bill_detail_file_list_with_options_async(
         self,
-        request: agency_20250227_models.GetBillDetailFileListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> agency_20250227_models.GetBillDetailFileListResponse:
-        """
-        @summary 查询账单导出文件
-        
-        @param request: GetBillDetailFileListRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetBillDetailFileListResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.GetBillDetailFileListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetBillDetailFileListResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.bill_month):
+        if not DaraCore.is_null(request.bill_month):
             query['BillMonth'] = request.bill_month
-        if not UtilClient.is_unset(request.oss_access_key_id):
+        if not DaraCore.is_null(request.oss_access_key_id):
             query['OssAccessKeyId'] = request.oss_access_key_id
-        if not UtilClient.is_unset(request.oss_access_key_secret):
+        if not DaraCore.is_null(request.oss_access_key_secret):
             query['OssAccessKeySecret'] = request.oss_access_key_secret
-        if not UtilClient.is_unset(request.oss_bucket_name):
+        if not DaraCore.is_null(request.oss_bucket_name):
             query['OssBucketName'] = request.oss_bucket_name
-        if not UtilClient.is_unset(request.oss_endpoint):
+        if not DaraCore.is_null(request.oss_endpoint):
             query['OssEndpoint'] = request.oss_endpoint
-        if not UtilClient.is_unset(request.oss_region):
+        if not DaraCore.is_null(request.oss_region):
             query['OssRegion'] = request.oss_region
-        if not UtilClient.is_unset(request.oss_security_token):
+        if not DaraCore.is_null(request.oss_security_token):
             query['OssSecurityToken'] = request.oss_security_token
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetBillDetailFileList',
-            version='2025-02-27',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetBillDetailFileList',
+            version = '2025-02-27',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            agency_20250227_models.GetBillDetailFileListResponse(),
+        return DaraCore.from_map(
+            main_models.GetBillDetailFileListResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def get_bill_detail_file_list(
         self,
-        request: agency_20250227_models.GetBillDetailFileListRequest,
-    ) -> agency_20250227_models.GetBillDetailFileListResponse:
-        """
-        @summary 查询账单导出文件
-        
-        @param request: GetBillDetailFileListRequest
-        @return: GetBillDetailFileListResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetBillDetailFileListRequest,
+    ) -> main_models.GetBillDetailFileListResponse:
+        runtime = RuntimeOptions()
         return self.get_bill_detail_file_list_with_options(request, runtime)
 
     async def get_bill_detail_file_list_async(
         self,
-        request: agency_20250227_models.GetBillDetailFileListRequest,
-    ) -> agency_20250227_models.GetBillDetailFileListResponse:
-        """
-        @summary 查询账单导出文件
-        
-        @param request: GetBillDetailFileListRequest
-        @return: GetBillDetailFileListResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetBillDetailFileListRequest,
+    ) -> main_models.GetBillDetailFileListResponse:
+        runtime = RuntimeOptions()
         return await self.get_bill_detail_file_list_with_options_async(request, runtime)
 
     def get_commission_detail_file_list_with_options(
         self,
-        request: agency_20250227_models.GetCommissionDetailFileListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> agency_20250227_models.GetCommissionDetailFileListResponse:
-        """
-        @summary 查询伙伴佣金明细
-        
-        @param request: GetCommissionDetailFileListRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetCommissionDetailFileListResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.GetCommissionDetailFileListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetCommissionDetailFileListResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.bill_month):
+        if not DaraCore.is_null(request.bill_month):
             query['BillMonth'] = request.bill_month
-        if not UtilClient.is_unset(request.oss_access_key_id):
+        if not DaraCore.is_null(request.oss_access_key_id):
             query['OssAccessKeyId'] = request.oss_access_key_id
-        if not UtilClient.is_unset(request.oss_access_key_secret):
+        if not DaraCore.is_null(request.oss_access_key_secret):
             query['OssAccessKeySecret'] = request.oss_access_key_secret
-        if not UtilClient.is_unset(request.oss_bucket_name):
+        if not DaraCore.is_null(request.oss_bucket_name):
             query['OssBucketName'] = request.oss_bucket_name
-        if not UtilClient.is_unset(request.oss_endpoint):
+        if not DaraCore.is_null(request.oss_endpoint):
             query['OssEndpoint'] = request.oss_endpoint
-        if not UtilClient.is_unset(request.oss_region):
+        if not DaraCore.is_null(request.oss_region):
             query['OssRegion'] = request.oss_region
-        if not UtilClient.is_unset(request.oss_security_token):
+        if not DaraCore.is_null(request.oss_security_token):
             query['OssSecurityToken'] = request.oss_security_token
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetCommissionDetailFileList',
-            version='2025-02-27',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetCommissionDetailFileList',
+            version = '2025-02-27',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            agency_20250227_models.GetCommissionDetailFileListResponse(),
+        return DaraCore.from_map(
+            main_models.GetCommissionDetailFileListResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def get_commission_detail_file_list_with_options_async(
         self,
-        request: agency_20250227_models.GetCommissionDetailFileListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> agency_20250227_models.GetCommissionDetailFileListResponse:
-        """
-        @summary 查询伙伴佣金明细
-        
-        @param request: GetCommissionDetailFileListRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetCommissionDetailFileListResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.GetCommissionDetailFileListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetCommissionDetailFileListResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.bill_month):
+        if not DaraCore.is_null(request.bill_month):
             query['BillMonth'] = request.bill_month
-        if not UtilClient.is_unset(request.oss_access_key_id):
+        if not DaraCore.is_null(request.oss_access_key_id):
             query['OssAccessKeyId'] = request.oss_access_key_id
-        if not UtilClient.is_unset(request.oss_access_key_secret):
+        if not DaraCore.is_null(request.oss_access_key_secret):
             query['OssAccessKeySecret'] = request.oss_access_key_secret
-        if not UtilClient.is_unset(request.oss_bucket_name):
+        if not DaraCore.is_null(request.oss_bucket_name):
             query['OssBucketName'] = request.oss_bucket_name
-        if not UtilClient.is_unset(request.oss_endpoint):
+        if not DaraCore.is_null(request.oss_endpoint):
             query['OssEndpoint'] = request.oss_endpoint
-        if not UtilClient.is_unset(request.oss_region):
+        if not DaraCore.is_null(request.oss_region):
             query['OssRegion'] = request.oss_region
-        if not UtilClient.is_unset(request.oss_security_token):
+        if not DaraCore.is_null(request.oss_security_token):
             query['OssSecurityToken'] = request.oss_security_token
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetCommissionDetailFileList',
-            version='2025-02-27',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetCommissionDetailFileList',
+            version = '2025-02-27',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            agency_20250227_models.GetCommissionDetailFileListResponse(),
+        return DaraCore.from_map(
+            main_models.GetCommissionDetailFileListResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def get_commission_detail_file_list(
         self,
-        request: agency_20250227_models.GetCommissionDetailFileListRequest,
-    ) -> agency_20250227_models.GetCommissionDetailFileListResponse:
-        """
-        @summary 查询伙伴佣金明细
-        
-        @param request: GetCommissionDetailFileListRequest
-        @return: GetCommissionDetailFileListResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetCommissionDetailFileListRequest,
+    ) -> main_models.GetCommissionDetailFileListResponse:
+        runtime = RuntimeOptions()
         return self.get_commission_detail_file_list_with_options(request, runtime)
 
     async def get_commission_detail_file_list_async(
         self,
-        request: agency_20250227_models.GetCommissionDetailFileListRequest,
-    ) -> agency_20250227_models.GetCommissionDetailFileListResponse:
-        """
-        @summary 查询伙伴佣金明细
-        
-        @param request: GetCommissionDetailFileListRequest
-        @return: GetCommissionDetailFileListResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetCommissionDetailFileListRequest,
+    ) -> main_models.GetCommissionDetailFileListResponse:
+        runtime = RuntimeOptions()
         return await self.get_commission_detail_file_list_with_options_async(request, runtime)
 
     def get_customer_order_list_with_options(
         self,
-        tmp_req: agency_20250227_models.GetCustomerOrderListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> agency_20250227_models.GetCustomerOrderListResponse:
-        """
-        @summary 查询伙伴拓客订单
-        
-        @param tmp_req: GetCustomerOrderListRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetCustomerOrderListResponse
-        """
-        UtilClient.validate_model(tmp_req)
-        request = agency_20250227_models.GetCustomerOrderListShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.order_type_list):
-            request.order_type_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.order_type_list, 'OrderTypeList', 'json')
+        tmp_req: main_models.GetCustomerOrderListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetCustomerOrderListResponse:
+        tmp_req.validate()
+        request = main_models.GetCustomerOrderListShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.order_type_list):
+            request.order_type_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.order_type_list, 'OrderTypeList', 'json')
         query = {}
-        if not UtilClient.is_unset(request.customer_account):
+        if not DaraCore.is_null(request.customer_account):
             query['CustomerAccount'] = request.customer_account
-        if not UtilClient.is_unset(request.customer_uid):
+        if not DaraCore.is_null(request.customer_uid):
             query['CustomerUid'] = request.customer_uid
-        if not UtilClient.is_unset(request.order_create_after):
+        if not DaraCore.is_null(request.order_create_after):
             query['OrderCreateAfter'] = request.order_create_after
-        if not UtilClient.is_unset(request.order_create_before):
+        if not DaraCore.is_null(request.order_create_before):
             query['OrderCreateBefore'] = request.order_create_before
-        if not UtilClient.is_unset(request.order_id):
+        if not DaraCore.is_null(request.order_id):
             query['OrderId'] = request.order_id
-        if not UtilClient.is_unset(request.order_pay_after):
+        if not DaraCore.is_null(request.order_pay_after):
             query['OrderPayAfter'] = request.order_pay_after
-        if not UtilClient.is_unset(request.order_pay_before):
+        if not DaraCore.is_null(request.order_pay_before):
             query['OrderPayBefore'] = request.order_pay_before
-        if not UtilClient.is_unset(request.order_status):
+        if not DaraCore.is_null(request.order_status):
             query['OrderStatus'] = request.order_status
-        if not UtilClient.is_unset(request.order_type_list_shrink):
+        if not DaraCore.is_null(request.order_type_list_shrink):
             query['OrderTypeList'] = request.order_type_list_shrink
-        if not UtilClient.is_unset(request.page_no):
+        if not DaraCore.is_null(request.page_no):
             query['PageNo'] = request.page_no
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.pay_amount_after):
+        if not DaraCore.is_null(request.pay_amount_after):
             query['PayAmountAfter'] = request.pay_amount_after
-        if not UtilClient.is_unset(request.pay_amount_before):
+        if not DaraCore.is_null(request.pay_amount_before):
             query['PayAmountBefore'] = request.pay_amount_before
-        if not UtilClient.is_unset(request.pay_type):
+        if not DaraCore.is_null(request.pay_type):
             query['PayType'] = request.pay_type
-        if not UtilClient.is_unset(request.product_code):
+        if not DaraCore.is_null(request.product_code):
             query['ProductCode'] = request.product_code
-        if not UtilClient.is_unset(request.product_name):
+        if not DaraCore.is_null(request.product_name):
             query['ProductName'] = request.product_name
-        if not UtilClient.is_unset(request.project_id):
+        if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
-        if not UtilClient.is_unset(request.ram_account_for_customer_manager):
+        if not DaraCore.is_null(request.ram_account_for_customer_manager):
             query['RamAccountForCustomerManager'] = request.ram_account_for_customer_manager
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetCustomerOrderList',
-            version='2025-02-27',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetCustomerOrderList',
+            version = '2025-02-27',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            agency_20250227_models.GetCustomerOrderListResponse(),
+        return DaraCore.from_map(
+            main_models.GetCustomerOrderListResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def get_customer_order_list_with_options_async(
         self,
-        tmp_req: agency_20250227_models.GetCustomerOrderListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> agency_20250227_models.GetCustomerOrderListResponse:
-        """
-        @summary 查询伙伴拓客订单
-        
-        @param tmp_req: GetCustomerOrderListRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetCustomerOrderListResponse
-        """
-        UtilClient.validate_model(tmp_req)
-        request = agency_20250227_models.GetCustomerOrderListShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.order_type_list):
-            request.order_type_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.order_type_list, 'OrderTypeList', 'json')
+        tmp_req: main_models.GetCustomerOrderListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetCustomerOrderListResponse:
+        tmp_req.validate()
+        request = main_models.GetCustomerOrderListShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.order_type_list):
+            request.order_type_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.order_type_list, 'OrderTypeList', 'json')
         query = {}
-        if not UtilClient.is_unset(request.customer_account):
+        if not DaraCore.is_null(request.customer_account):
             query['CustomerAccount'] = request.customer_account
-        if not UtilClient.is_unset(request.customer_uid):
+        if not DaraCore.is_null(request.customer_uid):
             query['CustomerUid'] = request.customer_uid
-        if not UtilClient.is_unset(request.order_create_after):
+        if not DaraCore.is_null(request.order_create_after):
             query['OrderCreateAfter'] = request.order_create_after
-        if not UtilClient.is_unset(request.order_create_before):
+        if not DaraCore.is_null(request.order_create_before):
             query['OrderCreateBefore'] = request.order_create_before
-        if not UtilClient.is_unset(request.order_id):
+        if not DaraCore.is_null(request.order_id):
             query['OrderId'] = request.order_id
-        if not UtilClient.is_unset(request.order_pay_after):
+        if not DaraCore.is_null(request.order_pay_after):
             query['OrderPayAfter'] = request.order_pay_after
-        if not UtilClient.is_unset(request.order_pay_before):
+        if not DaraCore.is_null(request.order_pay_before):
             query['OrderPayBefore'] = request.order_pay_before
-        if not UtilClient.is_unset(request.order_status):
+        if not DaraCore.is_null(request.order_status):
             query['OrderStatus'] = request.order_status
-        if not UtilClient.is_unset(request.order_type_list_shrink):
+        if not DaraCore.is_null(request.order_type_list_shrink):
             query['OrderTypeList'] = request.order_type_list_shrink
-        if not UtilClient.is_unset(request.page_no):
+        if not DaraCore.is_null(request.page_no):
             query['PageNo'] = request.page_no
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.pay_amount_after):
+        if not DaraCore.is_null(request.pay_amount_after):
             query['PayAmountAfter'] = request.pay_amount_after
-        if not UtilClient.is_unset(request.pay_amount_before):
+        if not DaraCore.is_null(request.pay_amount_before):
             query['PayAmountBefore'] = request.pay_amount_before
-        if not UtilClient.is_unset(request.pay_type):
+        if not DaraCore.is_null(request.pay_type):
             query['PayType'] = request.pay_type
-        if not UtilClient.is_unset(request.product_code):
+        if not DaraCore.is_null(request.product_code):
             query['ProductCode'] = request.product_code
-        if not UtilClient.is_unset(request.product_name):
+        if not DaraCore.is_null(request.product_name):
             query['ProductName'] = request.product_name
-        if not UtilClient.is_unset(request.project_id):
+        if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
-        if not UtilClient.is_unset(request.ram_account_for_customer_manager):
+        if not DaraCore.is_null(request.ram_account_for_customer_manager):
             query['RamAccountForCustomerManager'] = request.ram_account_for_customer_manager
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetCustomerOrderList',
-            version='2025-02-27',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetCustomerOrderList',
+            version = '2025-02-27',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            agency_20250227_models.GetCustomerOrderListResponse(),
+        return DaraCore.from_map(
+            main_models.GetCustomerOrderListResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def get_customer_order_list(
         self,
-        request: agency_20250227_models.GetCustomerOrderListRequest,
-    ) -> agency_20250227_models.GetCustomerOrderListResponse:
-        """
-        @summary 查询伙伴拓客订单
-        
-        @param request: GetCustomerOrderListRequest
-        @return: GetCustomerOrderListResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetCustomerOrderListRequest,
+    ) -> main_models.GetCustomerOrderListResponse:
+        runtime = RuntimeOptions()
         return self.get_customer_order_list_with_options(request, runtime)
 
     async def get_customer_order_list_async(
         self,
-        request: agency_20250227_models.GetCustomerOrderListRequest,
-    ) -> agency_20250227_models.GetCustomerOrderListResponse:
-        """
-        @summary 查询伙伴拓客订单
-        
-        @param request: GetCustomerOrderListRequest
-        @return: GetCustomerOrderListResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetCustomerOrderListRequest,
+    ) -> main_models.GetCustomerOrderListResponse:
+        runtime = RuntimeOptions()
         return await self.get_customer_order_list_with_options_async(request, runtime)
 
     def get_renewal_rate_list_with_options(
         self,
-        request: agency_20250227_models.GetRenewalRateListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> agency_20250227_models.GetRenewalRateListResponse:
-        """
-        @summary 查询伙伴续费率
-        
-        @param request: GetRenewalRateListRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetRenewalRateListResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.GetRenewalRateListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetRenewalRateListResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.fiscal_year_and_quarter):
+        if not DaraCore.is_null(request.fiscal_year_and_quarter):
             query['FiscalYearAndQuarter'] = request.fiscal_year_and_quarter
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetRenewalRateList',
-            version='2025-02-27',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetRenewalRateList',
+            version = '2025-02-27',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            agency_20250227_models.GetRenewalRateListResponse(),
+        return DaraCore.from_map(
+            main_models.GetRenewalRateListResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def get_renewal_rate_list_with_options_async(
         self,
-        request: agency_20250227_models.GetRenewalRateListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> agency_20250227_models.GetRenewalRateListResponse:
-        """
-        @summary 查询伙伴续费率
-        
-        @param request: GetRenewalRateListRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetRenewalRateListResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.GetRenewalRateListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetRenewalRateListResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.fiscal_year_and_quarter):
+        if not DaraCore.is_null(request.fiscal_year_and_quarter):
             query['FiscalYearAndQuarter'] = request.fiscal_year_and_quarter
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetRenewalRateList',
-            version='2025-02-27',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetRenewalRateList',
+            version = '2025-02-27',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            agency_20250227_models.GetRenewalRateListResponse(),
+        return DaraCore.from_map(
+            main_models.GetRenewalRateListResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def get_renewal_rate_list(
         self,
-        request: agency_20250227_models.GetRenewalRateListRequest,
-    ) -> agency_20250227_models.GetRenewalRateListResponse:
-        """
-        @summary 查询伙伴续费率
-        
-        @param request: GetRenewalRateListRequest
-        @return: GetRenewalRateListResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetRenewalRateListRequest,
+    ) -> main_models.GetRenewalRateListResponse:
+        runtime = RuntimeOptions()
         return self.get_renewal_rate_list_with_options(request, runtime)
 
     async def get_renewal_rate_list_async(
         self,
-        request: agency_20250227_models.GetRenewalRateListRequest,
-    ) -> agency_20250227_models.GetRenewalRateListResponse:
-        """
-        @summary 查询伙伴续费率
-        
-        @param request: GetRenewalRateListRequest
-        @return: GetRenewalRateListResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetRenewalRateListRequest,
+    ) -> main_models.GetRenewalRateListResponse:
+        runtime = RuntimeOptions()
         return await self.get_renewal_rate_list_with_options_async(request, runtime)
 
     def get_sub_partner_list_with_options(
         self,
-        request: agency_20250227_models.GetSubPartnerListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> agency_20250227_models.GetSubPartnerListResponse:
-        """
-        @summary 查询二级分销商列表
-        
-        @param request: GetSubPartnerListRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetSubPartnerListResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.GetSubPartnerListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetSubPartnerListResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.page_no):
+        if not DaraCore.is_null(request.page_no):
             query['PageNo'] = request.page_no
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.sub_partner_company_name):
+        if not DaraCore.is_null(request.sub_partner_company_name):
             query['SubPartnerCompanyName'] = request.sub_partner_company_name
-        if not UtilClient.is_unset(request.sub_partner_pid):
+        if not DaraCore.is_null(request.sub_partner_pid):
             query['SubPartnerPid'] = request.sub_partner_pid
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetSubPartnerList',
-            version='2025-02-27',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetSubPartnerList',
+            version = '2025-02-27',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            agency_20250227_models.GetSubPartnerListResponse(),
+        return DaraCore.from_map(
+            main_models.GetSubPartnerListResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def get_sub_partner_list_with_options_async(
         self,
-        request: agency_20250227_models.GetSubPartnerListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> agency_20250227_models.GetSubPartnerListResponse:
-        """
-        @summary 查询二级分销商列表
-        
-        @param request: GetSubPartnerListRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetSubPartnerListResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.GetSubPartnerListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetSubPartnerListResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.page_no):
+        if not DaraCore.is_null(request.page_no):
             query['PageNo'] = request.page_no
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.sub_partner_company_name):
+        if not DaraCore.is_null(request.sub_partner_company_name):
             query['SubPartnerCompanyName'] = request.sub_partner_company_name
-        if not UtilClient.is_unset(request.sub_partner_pid):
+        if not DaraCore.is_null(request.sub_partner_pid):
             query['SubPartnerPid'] = request.sub_partner_pid
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetSubPartnerList',
-            version='2025-02-27',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetSubPartnerList',
+            version = '2025-02-27',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            agency_20250227_models.GetSubPartnerListResponse(),
+        return DaraCore.from_map(
+            main_models.GetSubPartnerListResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def get_sub_partner_list(
         self,
-        request: agency_20250227_models.GetSubPartnerListRequest,
-    ) -> agency_20250227_models.GetSubPartnerListResponse:
-        """
-        @summary 查询二级分销商列表
-        
-        @param request: GetSubPartnerListRequest
-        @return: GetSubPartnerListResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetSubPartnerListRequest,
+    ) -> main_models.GetSubPartnerListResponse:
+        runtime = RuntimeOptions()
         return self.get_sub_partner_list_with_options(request, runtime)
 
     async def get_sub_partner_list_async(
         self,
-        request: agency_20250227_models.GetSubPartnerListRequest,
-    ) -> agency_20250227_models.GetSubPartnerListResponse:
-        """
-        @summary 查询二级分销商列表
-        
-        @param request: GetSubPartnerListRequest
-        @return: GetSubPartnerListResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetSubPartnerListRequest,
+    ) -> main_models.GetSubPartnerListResponse:
+        runtime = RuntimeOptions()
         return await self.get_sub_partner_list_with_options_async(request, runtime)
 
     def get_sub_partner_order_list_with_options(
         self,
-        tmp_req: agency_20250227_models.GetSubPartnerOrderListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> agency_20250227_models.GetSubPartnerOrderListResponse:
-        """
-        @summary 查询拓渠订单
-        
-        @param tmp_req: GetSubPartnerOrderListRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetSubPartnerOrderListResponse
-        """
-        UtilClient.validate_model(tmp_req)
-        request = agency_20250227_models.GetSubPartnerOrderListShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.order_type_list):
-            request.order_type_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.order_type_list, 'OrderTypeList', 'json')
+        tmp_req: main_models.GetSubPartnerOrderListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetSubPartnerOrderListResponse:
+        tmp_req.validate()
+        request = main_models.GetSubPartnerOrderListShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.order_type_list):
+            request.order_type_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.order_type_list, 'OrderTypeList', 'json')
         query = {}
-        if not UtilClient.is_unset(request.order_create_after):
+        if not DaraCore.is_null(request.order_create_after):
             query['OrderCreateAfter'] = request.order_create_after
-        if not UtilClient.is_unset(request.order_create_before):
+        if not DaraCore.is_null(request.order_create_before):
             query['OrderCreateBefore'] = request.order_create_before
-        if not UtilClient.is_unset(request.order_id):
+        if not DaraCore.is_null(request.order_id):
             query['OrderId'] = request.order_id
-        if not UtilClient.is_unset(request.order_pay_after):
+        if not DaraCore.is_null(request.order_pay_after):
             query['OrderPayAfter'] = request.order_pay_after
-        if not UtilClient.is_unset(request.order_pay_before):
+        if not DaraCore.is_null(request.order_pay_before):
             query['OrderPayBefore'] = request.order_pay_before
-        if not UtilClient.is_unset(request.order_status):
+        if not DaraCore.is_null(request.order_status):
             query['OrderStatus'] = request.order_status
-        if not UtilClient.is_unset(request.order_type_list_shrink):
+        if not DaraCore.is_null(request.order_type_list_shrink):
             query['OrderTypeList'] = request.order_type_list_shrink
-        if not UtilClient.is_unset(request.page_no):
+        if not DaraCore.is_null(request.page_no):
             query['PageNo'] = request.page_no
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.pay_amount_after):
+        if not DaraCore.is_null(request.pay_amount_after):
             query['PayAmountAfter'] = request.pay_amount_after
-        if not UtilClient.is_unset(request.pay_amount_before):
+        if not DaraCore.is_null(request.pay_amount_before):
             query['PayAmountBefore'] = request.pay_amount_before
-        if not UtilClient.is_unset(request.pay_type):
+        if not DaraCore.is_null(request.pay_type):
             query['PayType'] = request.pay_type
-        if not UtilClient.is_unset(request.product_code):
+        if not DaraCore.is_null(request.product_code):
             query['ProductCode'] = request.product_code
-        if not UtilClient.is_unset(request.product_name):
+        if not DaraCore.is_null(request.product_name):
             query['ProductName'] = request.product_name
-        if not UtilClient.is_unset(request.project_id):
+        if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
-        if not UtilClient.is_unset(request.sub_partner_name):
+        if not DaraCore.is_null(request.sub_partner_name):
             query['SubPartnerName'] = request.sub_partner_name
-        if not UtilClient.is_unset(request.sub_partner_uid):
+        if not DaraCore.is_null(request.sub_partner_uid):
             query['SubPartnerUid'] = request.sub_partner_uid
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetSubPartnerOrderList',
-            version='2025-02-27',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetSubPartnerOrderList',
+            version = '2025-02-27',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            agency_20250227_models.GetSubPartnerOrderListResponse(),
+        return DaraCore.from_map(
+            main_models.GetSubPartnerOrderListResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def get_sub_partner_order_list_with_options_async(
         self,
-        tmp_req: agency_20250227_models.GetSubPartnerOrderListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> agency_20250227_models.GetSubPartnerOrderListResponse:
-        """
-        @summary 查询拓渠订单
-        
-        @param tmp_req: GetSubPartnerOrderListRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetSubPartnerOrderListResponse
-        """
-        UtilClient.validate_model(tmp_req)
-        request = agency_20250227_models.GetSubPartnerOrderListShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.order_type_list):
-            request.order_type_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.order_type_list, 'OrderTypeList', 'json')
+        tmp_req: main_models.GetSubPartnerOrderListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetSubPartnerOrderListResponse:
+        tmp_req.validate()
+        request = main_models.GetSubPartnerOrderListShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.order_type_list):
+            request.order_type_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.order_type_list, 'OrderTypeList', 'json')
         query = {}
-        if not UtilClient.is_unset(request.order_create_after):
+        if not DaraCore.is_null(request.order_create_after):
             query['OrderCreateAfter'] = request.order_create_after
-        if not UtilClient.is_unset(request.order_create_before):
+        if not DaraCore.is_null(request.order_create_before):
             query['OrderCreateBefore'] = request.order_create_before
-        if not UtilClient.is_unset(request.order_id):
+        if not DaraCore.is_null(request.order_id):
             query['OrderId'] = request.order_id
-        if not UtilClient.is_unset(request.order_pay_after):
+        if not DaraCore.is_null(request.order_pay_after):
             query['OrderPayAfter'] = request.order_pay_after
-        if not UtilClient.is_unset(request.order_pay_before):
+        if not DaraCore.is_null(request.order_pay_before):
             query['OrderPayBefore'] = request.order_pay_before
-        if not UtilClient.is_unset(request.order_status):
+        if not DaraCore.is_null(request.order_status):
             query['OrderStatus'] = request.order_status
-        if not UtilClient.is_unset(request.order_type_list_shrink):
+        if not DaraCore.is_null(request.order_type_list_shrink):
             query['OrderTypeList'] = request.order_type_list_shrink
-        if not UtilClient.is_unset(request.page_no):
+        if not DaraCore.is_null(request.page_no):
             query['PageNo'] = request.page_no
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.pay_amount_after):
+        if not DaraCore.is_null(request.pay_amount_after):
             query['PayAmountAfter'] = request.pay_amount_after
-        if not UtilClient.is_unset(request.pay_amount_before):
+        if not DaraCore.is_null(request.pay_amount_before):
             query['PayAmountBefore'] = request.pay_amount_before
-        if not UtilClient.is_unset(request.pay_type):
+        if not DaraCore.is_null(request.pay_type):
             query['PayType'] = request.pay_type
-        if not UtilClient.is_unset(request.product_code):
+        if not DaraCore.is_null(request.product_code):
             query['ProductCode'] = request.product_code
-        if not UtilClient.is_unset(request.product_name):
+        if not DaraCore.is_null(request.product_name):
             query['ProductName'] = request.product_name
-        if not UtilClient.is_unset(request.project_id):
+        if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
-        if not UtilClient.is_unset(request.sub_partner_name):
+        if not DaraCore.is_null(request.sub_partner_name):
             query['SubPartnerName'] = request.sub_partner_name
-        if not UtilClient.is_unset(request.sub_partner_uid):
+        if not DaraCore.is_null(request.sub_partner_uid):
             query['SubPartnerUid'] = request.sub_partner_uid
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetSubPartnerOrderList',
-            version='2025-02-27',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetSubPartnerOrderList',
+            version = '2025-02-27',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            agency_20250227_models.GetSubPartnerOrderListResponse(),
+        return DaraCore.from_map(
+            main_models.GetSubPartnerOrderListResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def get_sub_partner_order_list(
         self,
-        request: agency_20250227_models.GetSubPartnerOrderListRequest,
-    ) -> agency_20250227_models.GetSubPartnerOrderListResponse:
-        """
-        @summary 查询拓渠订单
-        
-        @param request: GetSubPartnerOrderListRequest
-        @return: GetSubPartnerOrderListResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetSubPartnerOrderListRequest,
+    ) -> main_models.GetSubPartnerOrderListResponse:
+        runtime = RuntimeOptions()
         return self.get_sub_partner_order_list_with_options(request, runtime)
 
     async def get_sub_partner_order_list_async(
         self,
-        request: agency_20250227_models.GetSubPartnerOrderListRequest,
-    ) -> agency_20250227_models.GetSubPartnerOrderListResponse:
-        """
-        @summary 查询拓渠订单
-        
-        @param request: GetSubPartnerOrderListRequest
-        @return: GetSubPartnerOrderListResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetSubPartnerOrderListRequest,
+    ) -> main_models.GetSubPartnerOrderListResponse:
+        runtime = RuntimeOptions()
         return await self.get_sub_partner_order_list_with_options_async(request, runtime)

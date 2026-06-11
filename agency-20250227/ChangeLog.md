@@ -1,3 +1,6 @@
+2026-06-11 Version: 1.0.6
+- Generated python 2025-02-27 for Agency.
+
 2025-05-29 Version: 1.0.5
 - Update API GetSubPartnerOrderList: add response parameters Body.Data.$.CustomerClassification.
 
