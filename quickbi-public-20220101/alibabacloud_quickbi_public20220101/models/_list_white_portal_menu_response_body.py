@@ -14,8 +14,15 @@ class ListWhitePortalMenuResponseBody(DaraModel):
         result: List[main_models.ListWhitePortalMenuResponseBodyResult] = None,
         success: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The whitelist.
         self.result = result
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # - true: The request was successful.
+        # 
+        # - false: The request failed.
         self.success = success
 
     def validate(self):
@@ -65,8 +72,21 @@ class ListWhitePortalMenuResponseBodyResult(DaraModel):
         receiver_id: str = None,
         receiver_type: int = None,
     ):
+        # The authorization type for the menu. Valid values:
+        # 
+        # - 1: View
+        # 
+        # - 3: Export and view
         self.auth_points_value = auth_points_value
+        # The ID of the authorization object. If the authorization is at the workspace or organization level, this parameter returns the workspace ID or organization ID.
         self.receiver_id = receiver_id
+        # The type of the authorization object. Valid values:
+        # 
+        # - 0: User
+        # 
+        # - 1: User group
+        # 
+        # - 3: Workspace or organization level
         self.receiver_type = receiver_type
 
     def validate(self):

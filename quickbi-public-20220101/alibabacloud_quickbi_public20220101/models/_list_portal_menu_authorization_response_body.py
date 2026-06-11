@@ -14,14 +14,15 @@ class ListPortalMenuAuthorizationResponseBody(DaraModel):
         result: List[main_models.ListPortalMenuAuthorizationResponseBodyResult] = None,
         success: bool = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The list of authorization details of the portal menu.
+        # A list of authorization details for the BI portal menus.
         self.result = result
-        # Indicates whether the request is successful. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   true: The request was successful.
-        # *   false: The request failed.
+        # - true: The request was successful.
+        # 
+        # - false: The request failed.
         self.success = success
 
     def validate(self):
@@ -71,14 +72,15 @@ class ListPortalMenuAuthorizationResponseBodyResult(DaraModel):
         receivers: List[main_models.ListPortalMenuAuthorizationResponseBodyResultReceivers] = None,
         show_only_with_access: bool = None,
     ):
-        # The menu ID of the BI portal leaf node.
+        # The ID of the leaf-node menu in the BI portal.
         self.menu_id = menu_id
-        # The details of the object to which the menu is authorized.
+        # The details of the authorization objects for the menu.
         self.receivers = receivers
-        # Whether only authorization is visible. Valid values:
+        # Indicates whether the menu is visible only to authorized users. Valid values:
         # 
-        # *   true: Only the authorization is visible.
-        # *   false: Both are visible.
+        # - true: The menu is visible only to authorized users.
+        # 
+        # - false: The menu is visible to all users.
         self.show_only_with_access = show_only_with_access
 
     def validate(self):
@@ -128,13 +130,31 @@ class ListPortalMenuAuthorizationResponseBodyResultReceivers(DaraModel):
         receiver_id: str = None,
         receiver_type: int = None,
     ):
+        # The authorization type for the menu. Valid values:
+        # 
+        # - 1: View
+        # 
+        # - 11: Edit
+        # 
+        # - 3: Export and view
+        # 
+        # - 10: Manage data entry
         self.auth_points_value = auth_points_value
         # The ID of the authorization object.
+        # 
+        # > - If the authorization object is an organization, this ID is the organization ID.
+        # >
+        # > - If the authorization object is a workspace, this ID is the workspace ID.
         self.receiver_id = receiver_id
         # The type of the authorization object. Valid values:
         # 
-        # *   0: user
-        # *   1: user group
+        # - 0: User
+        # 
+        # - 1: User group
+        # 
+        # - 2: Organization
+        # 
+        # - 3: Workspace
         self.receiver_type = receiver_type
 
     def validate(self):

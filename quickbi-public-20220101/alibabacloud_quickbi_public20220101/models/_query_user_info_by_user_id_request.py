@@ -9,7 +9,7 @@ class QueryUserInfoByUserIdRequest(DaraModel):
         self,
         user_id: str = None,
     ):
-        # The ID of the user. The UserID is the UserID of the Quick BI, not the UID of Alibaba Cloud.
+        # The user ID. This is the user ID in Quick BI, not an Alibaba Cloud UID.
         # 
         # This parameter is required.
         self.user_id = user_id

@@ -12,9 +12,19 @@ class GetMailTaskListRequest(DaraModel):
         paused: bool = None,
         user_nick: str = None,
     ):
+        # The page number.
+        # 
+        # - Starts from: 1
+        # 
+        # - Default value: 1
         self.page_num = page_num
+        # The number of entries to return on each page.
+        # 
+        # - Default value: 25
         self.page_size = page_size
+        # Specifies whether the tracking task is paused.
         self.paused = paused
+        # The nickname of the user who owns the tracking task. If this parameter is not specified, all tasks are returned.
         self.user_nick = user_nick
 
     def validate(self):

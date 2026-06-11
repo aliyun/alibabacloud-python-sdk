@@ -13,14 +13,24 @@ class CreateCubeBySqlRequest(DaraModel):
         user_id: str = None,
         workspace_id: str = None,
     ):
+        # The name of the custom dataset.
+        # 
         # This parameter is required.
         self.caption = caption
+        # The custom SQL statement.
+        # 
         # This parameter is required.
         self.custom_sql = custom_sql
+        # The ID of the data source.
+        # 
         # This parameter is required.
         self.ds_id = ds_id
+        # The ID of a Quick BI user with permissions to create datasets. This is not your Alibaba Cloud account ID. Call the [QueryUserInfoByAccount](https://next.api.aliyun.com/api/quickbi-public/2022-01-01/QueryUserInfoByAccount?spm=api-workbench.api_explorer.0.0.672f50daGq9ooV\\&params=%7B%7D\\&tab=DOC\\&sdkStyle=old\\&RegionId=cn-hangzhou) operation to obtain the user ID.
+        # 
         # This parameter is required.
         self.user_id = user_id
+        # The ID of the workspace.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

@@ -10,8 +10,12 @@ class DeleteDataLevelRuleConfigRequest(DaraModel):
         cube_id: str = None,
         rule_id: str = None,
     ):
+        # The ID of the dataset.
+        # 
         # This parameter is required.
         self.cube_id = cube_id
+        # The ID of the row-level permission rule.
+        # 
         # This parameter is required.
         self.rule_id = rule_id
 

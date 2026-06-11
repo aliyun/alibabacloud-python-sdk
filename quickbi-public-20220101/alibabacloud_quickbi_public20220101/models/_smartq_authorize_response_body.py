@@ -14,14 +14,15 @@ class SmartqAuthorizeResponseBody(DaraModel):
         result: List[main_models.SmartqAuthorizeResponseBodyResult] = None,
         success: bool = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Array of failed user information.
+        # An array of user information for failed operations.
         self.result = result
-        # Indicates whether the request was successful. The value range is as follows:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # - true: Request succeeded
-        # - false: Request failed
+        # - true: The request was successful.
+        # 
+        # - false: The request failed.
         self.success = success
 
     def validate(self):
@@ -72,13 +73,13 @@ class SmartqAuthorizeResponseBodyResult(DaraModel):
         llm_cube_theme: str = None,
         user_id: str = None,
     ):
-        # Reason for failure.
+        # The reason for the failure.
         self.detail_message = detail_message
-        # Q&A resource ID.
+        # The Q\\&A resource ID.
         self.llm_cube = llm_cube
-        # Analysis theme ID.
+        # The analysis subject ID.
         self.llm_cube_theme = llm_cube_theme
-        # User ID.
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):

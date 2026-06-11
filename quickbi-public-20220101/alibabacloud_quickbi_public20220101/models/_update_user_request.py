@@ -16,37 +16,58 @@ class UpdateUserRequest(DaraModel):
         user_id: str = None,
         user_type: int = None,
     ):
-        # Indicates whether the organization administrator. Valid values:
+        # Whether to assign the organization administrator role to the user. Valid values:
         # 
-        # *   true
-        # *   false
+        # - `true`
+        # 
+        # - `false`
+        # 
+        # >Notice: 
+        # 
+        # This parameter is deprecated and is ignored if RoleIds is also specified.
         self.admin_user = admin_user
-        # Indicate whether the RAM user is a permission administrator. Valid values:
+        # Whether to assign the permission administrator role to the user. Valid values:
         # 
-        # *   true
-        # *   false
+        # - `true`
+        # 
+        # - `false`
+        # 
+        # >Notice: 
+        # 
+        # This parameter is deprecated and is ignored if RoleIds is also specified.
         self.auth_admin_user = auth_admin_user
         self.copilot_modules = copilot_modules
-        # User status: 
-        # * **false**: Active
-        #  * **true**: Inactive
-        self.is_deleted = is_deleted
-        # The nickname of the account.
+        # The user status:
         # 
-        # *   Format check: The value can be up to 50 characters in length.
-        # *   Special format verification: Chinese and English digits_ \\ / | () ] [
+        # - **`false`**: active
+        # 
+        # - **`true`**: inactive
+        self.is_deleted = is_deleted
+        # The nickname of the user.
+        # 
+        # - The nickname can be up to 50 characters in length.
+        # 
+        # - The nickname can contain Chinese characters, letters, digits, and the following special characters: `_ \\ / | () ] [`
         self.nick_name = nick_name
-        # The IDs of the preset or custom organization roles bound to the user, separated by English commas \\",\\", with a maximum of 3. The value range is as follows: - Organization Administrator (preset role): 111111111 - Permission Administrator (preset role): 111111112 - Regular User (preset role): 111111113
+        # The IDs of the built-in or custom organization roles to assign to the user. Specify up to three comma-separated role IDs.
+        # 
+        # - organization administrator (built-in role): 111111111
+        # 
+        # - permission administrator (built-in role): 111111112
+        # 
+        # - standard user (built-in role): 111111113
         self.role_ids = role_ids
-        # The ID of the user to be updated. The user ID is the UserID of the Quick BI, not the UID of Alibaba Cloud.
+        # The ID of the Quick BI user to update. This is not an Alibaba Cloud UID.
         # 
         # This parameter is required.
         self.user_id = user_id
-        # The type of user who is a member of the organization. Valid values:
+        # The user type of the organization member. Valid values:
         # 
-        # *   1 : developer
-        # *   2 : visitors
-        # *   3 : Analyst
+        # - `1`: developer
+        # 
+        # - `2`: viewer
+        # 
+        # - `3`: analyst
         self.user_type = user_type
 
     def validate(self):

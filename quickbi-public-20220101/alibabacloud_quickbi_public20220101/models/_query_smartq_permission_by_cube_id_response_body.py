@@ -12,13 +12,14 @@ class QuerySmartqPermissionByCubeIdResponseBody(DaraModel):
         result: main_models.QuerySmartqPermissionByCubeIdResponseBodyResult = None,
         success: bool = None,
     ):
-        # Request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # Basic information of the dataset.
+        # The basic information about the dataset.
         self.result = result
-        # Indicates whether the request was successful. Possible values:
+        # Indicates whether the request was successful. Valid values:
         # 
         # - true: The request was successful.
+        # 
         # - false: The request failed.
         self.success = success
 
@@ -63,11 +64,11 @@ class QuerySmartqPermissionByCubeIdResponseBodyResult(DaraModel):
         cube_name: str = None,
         has_perssion: bool = None,
     ):
-        # Dataset ID.
+        # The ID of the dataset.
         self.cube_id = cube_id
-        # Dataset name.
+        # The name of the dataset.
         self.cube_name = cube_name
-        # Whether the current user has permission for the smart question. Note: \\"HasPerssion\\" seems to be a typo, it should probably be \\"HasPermission\\".
+        # Indicates whether the current user has permissions for Smart Q\\&A.
         self.has_perssion = has_perssion
 
     def validate(self):

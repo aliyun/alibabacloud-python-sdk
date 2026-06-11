@@ -14,14 +14,15 @@ class QueryOrganizationWorkspaceListResponseBody(DaraModel):
         result: main_models.QueryOrganizationWorkspaceListResponseBodyResult = None,
         success: bool = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Returns the paginated result of the workspace list, with detailed information about the workspaces stored in the Data parameter.
+        # The paginated query results. The Data parameter contains the details of each workspace.
         self.result = result
-        # Indicates whether the request was successful. Possible values:
+        # Whether the request succeeded. Valid values:
         # 
-        # - true: Request succeeded
-        # - false: Request failed
+        # - true: The request succeeded.
+        # 
+        # - false: The request failed.
         self.success = success
 
     def validate(self):
@@ -67,15 +68,15 @@ class QueryOrganizationWorkspaceListResponseBodyResult(DaraModel):
         total_num: int = None,
         total_pages: int = None,
     ):
-        # List of workspaces.
+        # An array of workspace objects.
         self.data = data
-        # Page number.
+        # The page number.
         self.page_num = page_num
-        # Number of rows per page as set in the request.
+        # The number of entries returned per page.
         self.page_size = page_size
-        # Total number of rows.
+        # The total number of workspaces.
         self.total_num = total_num
-        # Total number of pages.
+        # The total number of pages.
         self.total_pages = total_pages
 
     def validate(self):
@@ -149,40 +150,43 @@ class QueryOrganizationWorkspaceListResponseBodyResultData(DaraModel):
         workspace_id: str = None,
         workspace_name: str = None,
     ):
-        # Whether the work can be made public. Value range:
+        # Whether works in the workspace can be published. Valid values:
         # 
-        # - true: Public
-        # - false: Not public
+        # - true: Publishing is allowed.
+        # 
+        # - false: Publishing is not allowed.
         self.allow_publish_operation = allow_publish_operation
-        # Indicates whether the work can be authorized for sharing. Possible values:
+        # Whether works in the workspace can be shared. Valid values:
         # 
-        # - true: Authorized
-        # - false: Not authorized
+        # - true: Sharing is allowed.
+        # 
+        # - false: Sharing is not allowed.
         self.allow_share_operation = allow_share_operation
-        # Creation time of the workspace.
+        # The time when the workspace was created.
         self.create_time = create_time
-        # Quick BI user ID of the creator.
+        # The creator\\"s Quick BI user ID.
         self.create_user = create_user
-        # Aliyun account name of the creator.
+        # The creator\\"s Alibaba Cloud account name.
         self.create_user_account_name = create_user_account_name
-        # Last modified time of the workspace.
+        # The time when the workspace was last modified.
         self.modified_time = modified_time
-        # ID of the Quick BI user who modified the workspace.
+        # The modifier\\"s Quick BI user ID.
         self.modify_user = modify_user
-        # Aliyun account name of the modifier.
+        # The modifier\\"s Alibaba Cloud account name.
         self.modify_user_account_name = modify_user_account_name
-        # ID of the organization to which the workspace belongs.
+        # The ID of the workspace\\"s organization.
         self.organization_id = organization_id
-        # Quick BI user ID of the workspace owner.
+        # The workspace owner\\"s Quick BI user ID.
         self.owner = owner
-        # Aliyun account name of the workspace owner.
+        # The workspace owner\\"s Alibaba Cloud account name.
         self.owner_account_name = owner_account_name
+        # The workspace owner\\"s Quick BI account name.
         self.real_owner_account_name = real_owner_account_name
-        # Workspace description.
+        # The workspace description.
         self.workspace_description = workspace_description
-        # Workspace ID.
+        # The workspace ID.
         self.workspace_id = workspace_id
-        # Name of the workspace.
+        # The workspace name.
         self.workspace_name = workspace_name
 
     def validate(self):

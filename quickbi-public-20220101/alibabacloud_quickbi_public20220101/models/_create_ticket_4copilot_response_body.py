@@ -11,13 +11,15 @@ class CreateTicket4CopilotResponseBody(DaraModel):
         result: str = None,
         success: bool = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # ID of the Smart Q module to be embedded.
+        # The generated ticket.
         self.result = result
-        # Indicates whether the request was successful. Possible values:
-        # - true: The request succeeded
-        # - false: The request failed
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # - true: The request was successful.
+        # 
+        # - false: The request failed.
         self.success = success
 
     def validate(self):

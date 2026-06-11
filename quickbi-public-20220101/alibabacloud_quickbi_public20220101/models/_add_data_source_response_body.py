@@ -11,8 +11,15 @@ class AddDataSourceResponseBody(DaraModel):
         result: str = None,
         success: bool = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The ID of the data source.
         self.result = result
+        # Indicates whether the request succeeded. Valid values:
+        # 
+        # - `true`: The request succeeded.
+        # 
+        # - `false`: The request failed.
         self.success = success
 
     def validate(self):

@@ -1690,6 +1690,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.check_readable_with_options_async(request, runtime)
 
+    def clear_dynamic_tag_cache_with_options(
+        self,
+        request: main_models.ClearDynamicTagCacheRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ClearDynamicTagCacheResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.config_id):
+            query['ConfigId'] = request.config_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ClearDynamicTagCache',
+            version = '2022-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ClearDynamicTagCacheResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def clear_dynamic_tag_cache_with_options_async(
+        self,
+        request: main_models.ClearDynamicTagCacheRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ClearDynamicTagCacheResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.config_id):
+            query['ConfigId'] = request.config_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ClearDynamicTagCache',
+            version = '2022-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ClearDynamicTagCacheResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def clear_dynamic_tag_cache(
+        self,
+        request: main_models.ClearDynamicTagCacheRequest,
+    ) -> main_models.ClearDynamicTagCacheResponse:
+        runtime = RuntimeOptions()
+        return self.clear_dynamic_tag_cache_with_options(request, runtime)
+
+    async def clear_dynamic_tag_cache_async(
+        self,
+        request: main_models.ClearDynamicTagCacheRequest,
+    ) -> main_models.ClearDynamicTagCacheResponse:
+        runtime = RuntimeOptions()
+        return await self.clear_dynamic_tag_cache_with_options_async(request, runtime)
+
     def create_cube_by_sql_with_options(
         self,
         request: main_models.CreateCubeBySqlRequest,
@@ -4107,6 +4177,66 @@ class Client(OpenApiClient):
     ) -> main_models.ListDataSourceResponse:
         runtime = RuntimeOptions()
         return await self.list_data_source_with_options_async(request, runtime)
+
+    def list_dynamic_tag_with_options(
+        self,
+        request: main_models.ListDynamicTagRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDynamicTagResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'ListDynamicTag',
+            version = '2022-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDynamicTagResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_dynamic_tag_with_options_async(
+        self,
+        request: main_models.ListDynamicTagRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDynamicTagResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'ListDynamicTag',
+            version = '2022-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDynamicTagResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_dynamic_tag(
+        self,
+        request: main_models.ListDynamicTagRequest,
+    ) -> main_models.ListDynamicTagResponse:
+        runtime = RuntimeOptions()
+        return self.list_dynamic_tag_with_options(request, runtime)
+
+    async def list_dynamic_tag_async(
+        self,
+        request: main_models.ListDynamicTagRequest,
+    ) -> main_models.ListDynamicTagResponse:
+        runtime = RuntimeOptions()
+        return await self.list_dynamic_tag_with_options_async(request, runtime)
 
     def list_favorite_reports_with_options(
         self,

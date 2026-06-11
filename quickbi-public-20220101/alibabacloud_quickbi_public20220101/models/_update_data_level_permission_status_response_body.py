@@ -11,8 +11,19 @@ class UpdateDataLevelPermissionStatusResponseBody(DaraModel):
         result: bool = None,
         success: bool = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The result of the operation. Valid values:
+        # 
+        # - true: The operation was successful.
+        # 
+        # - false: The operation failed.
         self.result = result
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # - true: The request was successful.
+        # 
+        # - false: The request failed.
         self.success = success
 
     def validate(self):

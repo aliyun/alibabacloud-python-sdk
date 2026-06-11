@@ -14,14 +14,15 @@ class AddUserResponseBody(DaraModel):
         result: main_models.AddUserResponseBodyResult = None,
         success: bool = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Returns detailed information about the newly added Aliyun user.
+        # The details of the newly added Alibaba Cloud user.
         self.result = result
-        # Indicates whether the request was successful. Possible values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # - true: The request was successful.
-        # - false: The request failed.
+        # - true
+        # 
+        # - false
         self.success = success
 
     def validate(self):
@@ -72,33 +73,43 @@ class AddUserResponseBodyResult(DaraModel):
         user_id: str = None,
         user_type: int = None,
     ):
-        # Aliyun account.
+        # The Alibaba Cloud account.
         self.account_name = account_name
-        # Whether the organization administrator role is assigned. Value range: 
+        # Indicates whether the organization administrator role is assigned. Valid values:
         # 
-        # - true: Yes
-        # - false: No
+        # - true
         # 
-        # <notice>This parameter is deprecated and not recommended for use. It is invalid when RoleIdList is provided.</notice>
+        # - false
+        # 
+        # >Notice: 
+        # 
+        # This parameter is deprecated. It does not take effect when `RoleIdList` is specified.
         self.admin_user = admin_user
-        # Whether the permission administrator role is assigned. Value range: 
+        # Indicates whether the permission administrator role is assigned. Valid values:
         # 
-        # - true: Yes
-        # - false: No
+        # - true
         # 
-        # <notice>This parameter is deprecated and not recommended for use. It is invalid when RoleIdList is provided.</notice>
+        # - false
+        # 
+        # >Notice: 
+        # 
+        # This parameter is deprecated. It does not take effect when `RoleIdList` is specified.
         self.auth_admin_user = auth_admin_user
+        # The Copilot modules for which the user has a quota.
         self.copilot_modules = copilot_modules
-        # Aliyun account nickname.
+        # The nickname of the Alibaba Cloud account.
         self.nick_name = nick_name
-        # List of organization role IDs bound to the user.
+        # A list of organization role IDs assigned to the user.
         self.role_id_list = role_id_list
-        # UserID in Quick BI.
+        # The user ID in Quick BI.
         self.user_id = user_id
-        # User type of the organization member. Value range: 
-        # - 1: Developer 
-        # - 2: Visitor 
-        # - 3: Analyst
+        # The user type. Valid values:
+        # 
+        # - 1: developer
+        # 
+        # - 2: viewer
+        # 
+        # - 3: analyst
         self.user_type = user_type
 
     def validate(self):

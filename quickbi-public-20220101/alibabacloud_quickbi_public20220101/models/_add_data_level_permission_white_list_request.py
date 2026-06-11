@@ -13,25 +13,33 @@ class AddDataLevelPermissionWhiteListRequest(DaraModel):
         target_ids: str = None,
         target_type: str = None,
     ):
-        # The ID of the training dataset that you want to remove from the specified custom linguistic model.
+        # The ID of the dataset.
         # 
         # This parameter is required.
         self.cube_id = cube_id
-        # Operation Type: You can set this parameter to one of the following values.
+        # The operation to perform. Valid values:
         # 
-        # *   ADD: Add a whitelist
-        # *   DELETE: deletes a whitelist.
+        # - ADD: adds users or user groups to the whitelist.
+        # 
+        # - DELETE: removes users or user groups from the whitelist.
         self.operate_type = operate_type
-        # The type of row-level permissions.
+        # The type of permission. Valid values:
         # 
-        # *   ROW_LEVEL: row-level permissions,
-        # *   COLUMN_LEVEL: column-level permissions
+        # - ROW_LEVEL: row-level permission
+        # 
+        # - COLUMN_LEVEL: column-level permission
         self.rule_type = rule_type
-        self.target_ids = target_ids
-        # Modify the type of the whitelist:
+        # The IDs of the users or user groups to add to the whitelist.
         # 
-        # *   1: user
-        # *   2: user group
+        # - If you set TargetType to 1 (user), specify the user IDs.
+        # 
+        # - When `TargetType=2` (user group), the value is the user group ID.
+        self.target_ids = target_ids
+        # The type of object to add to the whitelist. Valid values:
+        # 
+        # - 1: user
+        # 
+        # - 2: user group
         self.target_type = target_type
 
     def validate(self):

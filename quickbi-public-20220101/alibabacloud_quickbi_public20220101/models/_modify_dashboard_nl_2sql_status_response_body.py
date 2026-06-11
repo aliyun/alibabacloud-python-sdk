@@ -13,8 +13,15 @@ class ModifyDashboardNl2sqlStatusResponseBody(DaraModel):
         result: List[str] = None,
         success: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # A list of dashboard IDs for which the operation failed.
         self.result = result
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # - true: The request was successful.
+        # 
+        # - false: The request failed.
         self.success = success
 
     def validate(self):

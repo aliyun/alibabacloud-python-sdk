@@ -15,8 +15,10 @@ class CreateTicketResponseBody(DaraModel):
         self.request_id = request_id
         # The generated ticket value.
         self.result = result
-        # Indicates whether the request was successful. Value range: 
-        # - true: Request succeeded 
+        # Indicates whether the request was successful. Value range:
+        # 
+        # - true: Request succeeded
+        # 
         # - false: Request failed
         self.success = success
 

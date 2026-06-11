@@ -10,8 +10,13 @@ class ModifyDashboardNl2sqlStatusRequest(DaraModel):
         dashboard_ids: str = None,
         status: int = None,
     ):
+        # An array of dashboard IDs. Separate multiple IDs with commas.
+        # >Notice: The number of IDs cannot exceed 50.
+        # 
         # This parameter is required.
         self.dashboard_ids = dashboard_ids
+        # The status identifier. 0 indicates disabled and 1 indicates enabled.
+        # 
         # This parameter is required.
         self.status = status
 

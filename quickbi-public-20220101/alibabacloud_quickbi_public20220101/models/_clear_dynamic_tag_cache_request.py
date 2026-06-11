@@ -4,15 +4,13 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class CheckDatasetExistedRequest(DaraModel):
+class ClearDynamicTagCacheRequest(DaraModel):
     def __init__(
         self,
-        cube_id: str = None,
+        config_id: str = None,
     ):
-        # The ID of the dataset.
-        # 
         # This parameter is required.
-        self.cube_id = cube_id
+        self.config_id = config_id
 
     def validate(self):
         pass
@@ -22,15 +20,15 @@ class CheckDatasetExistedRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.cube_id is not None:
-            result['CubeId'] = self.cube_id
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('CubeId') is not None:
-            self.cube_id = m.get('CubeId')
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
 
         return self
 

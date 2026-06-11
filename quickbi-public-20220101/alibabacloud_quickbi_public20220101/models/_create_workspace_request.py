@@ -16,13 +16,22 @@ class CreateWorkspaceRequest(DaraModel):
         workspace_description: str = None,
         workspace_name: str = None,
     ):
+        # Specifies whether reports in the workspace can be made public. Default value: true.
         self.allow_publish = allow_publish
+        # Specifies whether reports in the workspace can be shared. Default value: true.
         self.allow_share = allow_share
+        # Specifies whether the workspace is in collaboration mode. Default value: true.
         self.allow_view_all = allow_view_all
+        # Specifies whether to grant read permissions on the works in the workspace to all workspace members by default. Default value: false.
         self.default_share_to_all = default_share_to_all
+        # Specifies whether only administrators can create data sources in the workspace. Default value: false.
         self.only_admin_create_datasource = only_admin_create_datasource
+        # Specifies whether to use table remarks when you create a dataset in the workspace. Default value: true.
         self.use_comment = use_comment
+        # The description of the workspace.
         self.workspace_description = workspace_description
+        # The name of the workspace.
+        # 
         # This parameter is required.
         self.workspace_name = workspace_name
 

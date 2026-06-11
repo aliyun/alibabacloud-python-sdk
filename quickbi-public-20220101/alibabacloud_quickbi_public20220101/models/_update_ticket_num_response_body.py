@@ -15,13 +15,15 @@ class UpdateTicketNumResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the update is successful. Valid values:
         # 
-        # *   true: The request was successful.
-        # *   false: The request failed.
+        # - true: The request was successful.
+        # 
+        # - false: The request failed.
         self.result = result
         # Indicates whether the request is successful. Valid values:
         # 
-        # *   true: The request was successful.
-        # *   false: The request failed.
+        # - true: The request was successful.
+        # 
+        # - false: The request failed.
         self.success = success
 
     def validate(self):

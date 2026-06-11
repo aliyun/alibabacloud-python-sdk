@@ -14,19 +14,31 @@ class QueryDatasetListRequest(DaraModel):
         with_children: bool = None,
         workspace_id: str = None,
     ):
-        # The ID of the request.
-        self.directory_id = directory_id
-        # Information about the directory where the dataset is located
-        self.keyword = keyword
-        # The ID of the workspace.
-        self.page_num = page_num
-        # Specifies the directory ID.
+        # The ID of the folder.
         # 
-        # *   If this field is not empty, all datasets in the directory are obtained.
+        # - If you specify this parameter, all datasets in the folder are returned.
+        self.directory_id = directory_id
+        # The keyword used to search for datasets by name.
+        self.keyword = keyword
+        # The page number of the dataset list.
+        # 
+        # - Start value: 1
+        # 
+        # - Default value: 1
+        self.page_num = page_num
+        # The number of entries to return on each page.
+        # 
+        # - Default value: 10
+        # 
+        # - Maximum value: 1000
         self.page_size = page_size
-        # The total number of pages returned.
+        # Specifies whether to recursively include datasets in subdirectories. Valid values:
+        # 
+        # - true: Returns all datasets in the folder specified by DirectoryId and its subdirectories.
+        # 
+        # - false: Returns only the datasets in the folder specified by DirectoryId.
         self.with_children = with_children
-        # The name of the data source.
+        # The workspace ID.
         # 
         # This parameter is required.
         self.workspace_id = workspace_id

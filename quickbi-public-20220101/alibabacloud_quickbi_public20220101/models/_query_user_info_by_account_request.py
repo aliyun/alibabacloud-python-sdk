@@ -10,20 +10,21 @@ class QueryUserInfoByAccountRequest(DaraModel):
         account: str = None,
         parent_account_name: str = None,
     ):
-        # Enter the name or ID of the Alibaba Cloud account that you want to query.
+        # The Alibaba Cloud account name or Alibaba Cloud ID of the user.
         # 
-        # *   When you enter an account name:
+        # - If you enter an account name:
         # 
-        #     *   If the organization user is a master account, such as main_account, the query account format is master account. That is, the main account main_account to be entered.
-        #     *   If the organization user is a RAM user, such as a <zhangsan@test.onaliyun.com>, the query account format is the head of the RAM user, that is, the RAM user to be entered is zhangsan.
+        #   - If the organization member is a root account, such as `main_account`, enter the root account name. For example, `main_account`.
         # 
-        # *   ID:
+        #   - If the organization member is a RAM user, such as `zhangsan@test.onaliyun.com`, enter the prefix of the username before the at sign (@). For example, `zhangsan`.
         # 
-        #     *   Enter the UID of the account to query the account information.
+        # - If you enter an Alibaba Cloud ID:
+        # 
+        #   - Enter the complete user ID (UID) of the account.
         # 
         # This parameter is required.
         self.account = account
-        # When a duplicate error occurs while querying the sub-account, enter the primary account\\"s username, for example, zhangsan@test.onaliyun.com.
+        # To resolve a "duplicate user" error when querying a RAM user, specify the name of the root account to which the user belongs.
         self.parent_account_name = parent_account_name
 
     def validate(self):

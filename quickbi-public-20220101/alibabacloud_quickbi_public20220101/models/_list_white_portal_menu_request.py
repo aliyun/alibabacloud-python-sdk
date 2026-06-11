@@ -9,6 +9,8 @@ class ListWhitePortalMenuRequest(DaraModel):
         self,
         dataportal_id: str = None,
     ):
+        # The ID of the BI portal.
+        # 
         # This parameter is required.
         self.dataportal_id = dataportal_id
 

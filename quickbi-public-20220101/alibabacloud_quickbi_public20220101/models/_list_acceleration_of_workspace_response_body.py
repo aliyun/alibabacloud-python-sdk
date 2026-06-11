@@ -14,8 +14,15 @@ class ListAccelerationOfWorkspaceResponseBody(DaraModel):
         result: main_models.ListAccelerationOfWorkspaceResponseBodyResult = None,
         success: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The acceleration task model.
         self.result = result
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # - true: The request was successful.
+        # 
+        # - false: The request failed.
         self.success = success
 
     def validate(self):
@@ -63,12 +70,19 @@ class ListAccelerationOfWorkspaceResponseBodyResult(DaraModel):
         total_num: int = None,
         total_pages: int = None,
     ):
+        # An array of acceleration task information.
         self.data = data
+        # The next page. A value of NULL or 0 indicates that there is no next page.
         self.next = next
+        # The page number.
         self.page_num = page_num
+        # The number of rows per page that you set when you call the operation.
         self.page_size = page_size
+        # The previous page. A value of NULL or 0 indicates that there is no previous page.
         self.pre = pre
+        # The total number of rows.
         self.total_num = total_num
+        # The total number of pages.
         self.total_pages = total_pages
 
     def validate(self):
@@ -148,14 +162,35 @@ class ListAccelerationOfWorkspaceResponseBodyResultData(DaraModel):
         last_modify_time: str = None,
         size: str = None,
     ):
+        # The name of the creator.
         self.creator_name = creator_name
+        # The dataset ID.
         self.cube_id = cube_id
+        # The dataset name.
         self.cube_name = cube_name
+        # The time when acceleration was enabled.
         self.enable_quickindex_time = enable_quickindex_time
+        # The task history ID.
         self.job_history_id = job_history_id
+        # The acceleration task ID.
         self.job_id = job_id
+        # The status of the task. Valid values:
+        # 
+        # - 0: Pending
+        # 
+        # - 1: Running
+        # 
+        # - 2: Succeeded
+        # 
+        # - 3: Failed
+        # 
+        # - 4: Canceled
+        # 
+        # - 5: Warning
         self.job_status = job_status
+        # The time when the task was last modified.
         self.last_modify_time = last_modify_time
+        # The size.
         self.size = size
 
     def validate(self):

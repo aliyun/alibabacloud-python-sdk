@@ -18,6 +18,7 @@ class SetDataLevelPermissionRuleConfigResponseBody(DaraModel):
         # Indicates whether the request was successful. The value range is as follows:
         # 
         # - true: The request succeeded
+        # 
         # - false: The request failed
         self.success = success
 
