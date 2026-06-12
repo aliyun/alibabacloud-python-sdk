@@ -13,7 +13,7 @@ class UpdateServiceInstanceAttributesRequest(DaraModel):
         region_id: str = None,
         service_instance_id: str = None,
     ):
-        # Specifies whether to authorize the service provider to perform O\\&M operations on the service instance.
+        # Specifies whether to enable managed O\\&M.
         self.enable_operation = enable_operation
         self.granted_permission = granted_permission
         # The region ID.
@@ -22,7 +22,7 @@ class UpdateServiceInstanceAttributesRequest(DaraModel):
         self.region_id = region_id
         # The ID of the service instance.
         # 
-        # You can call the [ListServiceInstances](https://help.aliyun.com/document_detail/396200.html) operation to obtain the ID of the service instance.
+        # Call the [ListServiceInstances](https://help.aliyun.com/document_detail/396200.html) operation to obtain the service instance ID.
         # 
         # This parameter is required.
         self.service_instance_id = service_instance_id

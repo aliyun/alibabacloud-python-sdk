@@ -10,9 +10,9 @@ class CreateBackupRequest(DaraModel):
         description: str = None,
         service_instance_id: str = None,
     ):
-        # Backup description
+        # The backup description.
         self.description = description
-        # The ID of the service instance to be transferred to official version.
+        # The ID of the service instance to back up.
         # 
         # This parameter is required.
         self.service_instance_id = service_instance_id

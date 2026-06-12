@@ -16,17 +16,17 @@ class ListRestoreTasksResponseBody(DaraModel):
         restore_tasks: List[main_models.ListRestoreTasksResponseBodyRestoreTasks] = None,
         total_count: int = None,
     ):
-        # The maximum number of records returned in this request.
+        # The maximum number of entries returned for the request.
         self.max_results = max_results
-        # Indicates the read position returned by the current call. An empty value means all data has been read.
+        # The token that is used to retrieve the next page of results. If this parameter is empty, all results have been returned.
         # 
         # This parameter is required.
         self.next_token = next_token
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
-        # The list of restore tasks.
+        # The list of restore jobs.
         self.restore_tasks = restore_tasks
-        # Total data count under the current request conditions (optional; not returned by default).
+        # The total number of entries that meet the filter criteria.
         self.total_count = total_count
 
     def validate(self):
@@ -96,25 +96,27 @@ class ListRestoreTasksResponseBodyRestoreTasks(DaraModel):
     ):
         # The backup ID.
         self.backup_id = backup_id
-        # The creation time.
+        # The time when the job was created.
         self.create_time = create_time
-        # The expiration time of the service instance.
+        # The time when the restore job ended.
         self.end_time = end_time
-        # The update time.
+        # The time when the job was last updated.
         self.modified_time = modified_time
-        # The ID of the restore task.
+        # The ID of the restore job.
         self.restore_task_id = restore_task_id
         # The ID of the service instance.
         self.service_instance_id = service_instance_id
-        # The time when the update started.
+        # The time when the restore job started.
         self.start_time = start_time
         # The status of the service instance. Valid values:
         # 
-        # *   Restoring
-        # *   Restored
-        # *   RestoreFailed
+        # - Restoring: The service instance is being restored.
+        # 
+        # - Restored: The service instance was restored.
+        # 
+        # - RestoreFailed: The service instance failed to be restored.
         self.status = status
-        # The description of the service instance deployment information.
+        # The details of the instance status.
         self.status_detail = status_detail
 
     def validate(self):

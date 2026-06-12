@@ -14,9 +14,9 @@ class GenerateServicePolicyResponseBody(DaraModel):
         policy: str = None,
         request_id: str = None,
     ):
-        # The policies that are missing.
+        # The missing access policies.
         self.missing_policy = missing_policy
-        # The RAM policy.
+        # The required access policy.
         self.policy = policy
         # The request ID.
         self.request_id = request_id
@@ -68,11 +68,11 @@ class GenerateServicePolicyResponseBodyMissingPolicy(DaraModel):
         resource: str = None,
         service_name: str = None,
     ):
-        # Operations on specific resources.
+        # The access policy information.
         self.action = action
-        # The specific objects authorized. An asterisk (*) denotes all resources.
+        # The object to which the permissions are granted. An asterisk (\\*) indicates all resources.
         self.resource = resource
-        # The name of the service.
+        # The name of the service to which the access policy belongs.
         self.service_name = service_name
 
     def validate(self):

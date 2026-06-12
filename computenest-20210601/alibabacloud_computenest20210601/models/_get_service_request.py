@@ -16,17 +16,17 @@ class GetServiceRequest(DaraModel):
         service_version: str = None,
         show_details: List[str] = None,
     ):
-        # Region Id.
+        # The region ID.
         self.region_id = region_id
         # The service ID.
         self.service_id = service_id
-        # The service instance id.
+        # The service instance ID.
         self.service_instance_id = service_instance_id
         # The service name.
         self.service_name = service_name
         # The service version.
         self.service_version = service_version
-        # Whether to disclose service details.
+        # Specifies whether to return the detailed information of the service.
         self.show_details = show_details
 
     def validate(self):

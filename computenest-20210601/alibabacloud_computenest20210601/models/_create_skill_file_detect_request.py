@@ -11,9 +11,13 @@ class CreateSkillFileDetectRequest(DaraModel):
         oss_url: str = None,
         region_id: str = None,
     ):
+        # A unique, client-generated token to ensure request idempotence. **ClientToken** must contain only ASCII characters and be no longer than 64 characters.
         self.client_token = client_token
+        # The OSS URL of the compressed Skill package.
+        # 
         # This parameter is required.
         self.oss_url = oss_url
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

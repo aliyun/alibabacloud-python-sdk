@@ -22,31 +22,27 @@ class ListServicesRequest(DaraModel):
     ):
         # The filter.
         self.filter = filter
-        # Keyword fuzzy query.
+        # The keyword for a fuzzy query.
         self.fuzzy_keyword = fuzzy_keyword
-        # Whether it is used. Optional values:
+        # Specifies whether the service is in use. Valid values:
         # 
+        # - false: The service is not in use.
         # 
-        # 
-        # - false: not being used.
-        # 
-        # 
-        # 
-        # - true: already in use.
+        # - true: The service is in use.
         self.in_used = in_used
-        # The number of entries page. Valid values: 1 to 100. Default value: 20.
+        # The number of entries to return on each page. Maximum value: 100. Default value: 20.
         self.max_results = max_results
-        # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+        # The token that is used to retrieve the next page of results. Set this to the NextToken value returned from the previous API call.
         self.next_token = next_token
-        # Service ordering type.
+        # The sorting type for services.
         self.order_by_type = order_by_type
         # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # Service access type.
+        # The service access type.
         self.service_access_type = service_access_type
-        # The tags.
+        # The custom tags.
         self.tag = tag
 
     def validate(self):
@@ -177,14 +173,17 @@ class ListServicesRequestFilter(DaraModel):
         name: str = None,
         value: List[str] = None,
     ):
-        # The parameter name of the filter. You can specify one or more parameter names to query services. Valid values:
+        # The filter name. You can specify one or more filter names to query services. Valid values:
         # 
-        # *   ServiceId: the ID of the service.
-        # *   Name: the name of the service.
-        # *   Status: the state of the service.
-        # *   SupplierName: the name of the service provider.
+        # - ServiceId: The service ID.
+        # 
+        # - Name: The service name.
+        # 
+        # - Status: The service status.
+        # 
+        # - SupplierName: The service provider name.
         self.name = name
-        # A value of the filter condition.
+        # The filter values.
         self.value = value
 
     def validate(self):

@@ -15,9 +15,13 @@ class ListPublicSkillsRequest(DaraModel):
         need_download_url: bool = None,
         next_token: str = None,
     ):
+        # A list of filters.
         self.filter = filter
+        # The maximum number of entries to return on each page.
         self.max_results = max_results
+        # Specifies whether to return the download link for the skill package.
         self.need_download_url = need_download_url
+        # The token to retrieve the next page of results.
         self.next_token = next_token
 
     def validate(self):
@@ -72,7 +76,19 @@ class ListPublicSkillsRequestFilter(DaraModel):
         name: str = None,
         value: List[str] = None,
     ):
+        # The filter criterion. Valid values:
+        # 
+        # - `SkillId`: The ID of the skill. An exact match is performed.
+        # 
+        # - `SkillName`: The name of the skill.
+        # 
+        # - `MatchType`: The match type for the `SkillName` filter. Valid values: `exact` (exact match), `prefix` (prefix match), and `fuzzy` (fuzzy match).
+        # 
+        # - `Keyword`: The keyword used for a fuzzy match on the skill name or skill description.
+        # 
+        # - `SkillLabels`: The skill labels. A fuzzy match is performed.
         self.name = name
+        # The filter values. You can specify 1 to 10 values.
         self.value = value
 
     def validate(self):

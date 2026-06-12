@@ -1582,13 +1582,19 @@ class Client(OpenApiClient):
 
     def generate_service_policy_with_options(
         self,
-        request: main_models.GenerateServicePolicyRequest,
+        tmp_req: main_models.GenerateServicePolicyRequest,
         runtime: RuntimeOptions,
     ) -> main_models.GenerateServicePolicyResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.GenerateServicePolicyShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.parameters):
+            request.parameters_shrink = Utils.array_to_string_with_specified_style(tmp_req.parameters, 'Parameters', 'json')
         query = {}
         if not DaraCore.is_null(request.operation_types):
             query['OperationTypes'] = request.operation_types
+        if not DaraCore.is_null(request.parameters_shrink):
+            query['Parameters'] = request.parameters_shrink
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.service_id):
@@ -1620,13 +1626,19 @@ class Client(OpenApiClient):
 
     async def generate_service_policy_with_options_async(
         self,
-        request: main_models.GenerateServicePolicyRequest,
+        tmp_req: main_models.GenerateServicePolicyRequest,
         runtime: RuntimeOptions,
     ) -> main_models.GenerateServicePolicyResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.GenerateServicePolicyShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.parameters):
+            request.parameters_shrink = Utils.array_to_string_with_specified_style(tmp_req.parameters, 'Parameters', 'json')
         query = {}
         if not DaraCore.is_null(request.operation_types):
             query['OperationTypes'] = request.operation_types
+        if not DaraCore.is_null(request.parameters_shrink):
+            query['Parameters'] = request.parameters_shrink
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.service_id):

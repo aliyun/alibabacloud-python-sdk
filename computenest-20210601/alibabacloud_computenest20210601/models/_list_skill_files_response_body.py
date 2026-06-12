@@ -16,11 +16,15 @@ class ListSkillFilesResponseBody(DaraModel):
         skill_files: List[main_models.ListSkillFilesResponseBodySkillFiles] = None,
         total_count: int = None,
     ):
+        # The maximum number of entries returned per page.
         self.max_results = max_results
+        # The token to retrieve the next page of results. This token is returned only when more results are available.
         self.next_token = next_token
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
+        # The Skill files.
         self.skill_files = skill_files
+        # The total number of entries that match the query.
         self.total_count = total_count
 
     def validate(self):
@@ -81,7 +85,9 @@ class ListSkillFilesResponseBodySkillFiles(DaraModel):
         file_path: str = None,
         signed_url: str = None,
     ):
+        # The relative path of the file within the Skill.
         self.file_path = file_path
+        # The pre-signed URL for accessing the file in OSS.
         self.signed_url = signed_url
 
     def validate(self):

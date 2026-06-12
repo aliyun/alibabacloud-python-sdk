@@ -20,30 +20,35 @@ class GetBackupResponseBody(DaraModel):
     ):
         # The backup ID.
         self.backup_id = backup_id
-        # The creation time of the backup task.
+        # The time when the backup was created.
         self.create_time = create_time
-        # The description of the backup task.
+        # The backup description.
         self.description = description
-        # The end time of the backup task.
+        # The time when the backup ended.
         self.end_time = end_time
-        # The update time of the backup task.
+        # The time when the backup was last modified.
         self.modified_time = modified_time
         # The request ID.
         self.request_id = request_id
-        # The request ID.
+        # The service instance ID.
         self.service_instance_id = service_instance_id
-        # The start time of the backup task.
+        # The time when the backup started.
         self.start_time = start_time
-        # The status of the backup task.
+        # The status.
         # 
-        # *   Creating
-        # *   Created
-        # *   CreateFailed
-        # *   Deleting
-        # *   Deleted
-        # *   DeleteFailed
+        # - Creating: The backup is being created.
+        # 
+        # - Created: The backup is created.
+        # 
+        # - CreateFailed: The backup failed to be created.
+        # 
+        # - Deleting: The backup is being deleted.
+        # 
+        # - Deleted: The backup is deleted.
+        # 
+        # - DeleteFailed: The backup failed to be deleted.
         self.status = status
-        # The description of the deployment instance status.
+        # The detailed status of the deployment instance.
         self.status_detail = status_detail
 
     def validate(self):

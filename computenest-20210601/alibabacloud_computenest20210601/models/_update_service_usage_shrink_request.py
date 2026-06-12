@@ -12,14 +12,15 @@ class UpdateServiceUsageShrinkRequest(DaraModel):
         service_id: str = None,
         user_information_shrink: str = None,
     ):
-        # The client token that is used to ensure the idempotency of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **token** can contain only ASCII characters and cannot exceed 64 characters in length.
+        # A client token to ensure the idempotence of the request. Generate a unique value from your client for this parameter. **ClientToken** supports only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The region ID.
         self.region_id = region_id
         # The service ID.
         # 
         # This parameter is required.
         self.service_id = service_id
-        # The information about the applicant.
+        # The user information.
         self.user_information_shrink = user_information_shrink
 
     def validate(self):

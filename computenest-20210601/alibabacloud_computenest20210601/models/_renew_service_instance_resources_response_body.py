@@ -14,11 +14,11 @@ class RenewServiceInstanceResourcesResponseBody(DaraModel):
         renewal_result: main_models.RenewServiceInstanceResourcesResponseBodyRenewalResult = None,
         request_id: str = None,
     ):
-        # Details of failed renewals.
+        # The details of renewal failures.
         self.failure_details = failure_details
-        # Renewal result.
+        # The renewal result.
         self.renewal_result = renewal_result
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -71,11 +71,11 @@ class RenewServiceInstanceResourcesResponseBodyRenewalResult(DaraModel):
         succeeded: int = None,
         total_count: int = None,
     ):
-        # Number of failed renewals.
+        # The number of resources that failed to be renewed.
         self.failed = failed
-        # Number of successfully renewed resources.
+        # The number of successfully renewed resources.
         self.succeeded = succeeded
-        # Number of renewed resources.
+        # The number of resources to be renewed.
         self.total_count = total_count
 
     def validate(self):
@@ -117,11 +117,11 @@ class RenewServiceInstanceResourcesResponseBodyFailureDetails(DaraModel):
         error_message: str = None,
         resource_arn: str = None,
     ):
-        # Error code.
+        # The error code.
         self.error_code = error_code
-        # Error message.
+        # The error message.
         self.error_message = error_message
-        # Resource ARN (Aliyun Resource Name).
+        # The ARN of the resource.
         self.resource_arn = resource_arn
 
     def validate(self):

@@ -13,13 +13,15 @@ class CreateRestoreTaskResponseBody(DaraModel):
     ):
         # Id of the request
         self.request_id = request_id
-        # The ID of the restore task.
+        # The ID of the restore job.
         self.restore_task_id = restore_task_id
         # The status of the service instance. Valid values:
         # 
-        # *   Restoring
-        # *   Restored
-        # *   RestoreFailed
+        # - Restoring: The service instance is being restored.
+        # 
+        # - Restored: The service instance is restored.
+        # 
+        # - RestoreFailed: The service instance failed to be restored.
         self.status = status
 
     def validate(self):

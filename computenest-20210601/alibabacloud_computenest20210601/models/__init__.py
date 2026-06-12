@@ -60,6 +60,7 @@ from ._describe_regions_request import DescribeRegionsRequest
 from ._describe_regions_response_body import DescribeRegionsResponseBody
 from ._describe_regions_response import DescribeRegionsResponse
 from ._generate_service_policy_request import GenerateServicePolicyRequest
+from ._generate_service_policy_shrink_request import GenerateServicePolicyShrinkRequest
 from ._generate_service_policy_response_body import GenerateServicePolicyResponseBody
 from ._generate_service_policy_response import GenerateServicePolicyResponse
 from ._get_backup_request import GetBackupRequest
@@ -369,6 +370,7 @@ __all__ = [
     DescribeRegionsResponseBody,
     DescribeRegionsResponse,
     GenerateServicePolicyRequest,
+    GenerateServicePolicyShrinkRequest,
     GenerateServicePolicyResponseBody,
     GenerateServicePolicyResponse,
     GetBackupRequest,

@@ -11,11 +11,11 @@ class ListPoliciesRequest(DaraModel):
         next_token: str = None,
         region_id: str = None,
     ):
-        # Page size.
+        # The number of entries to return on each page.
         self.max_results = max_results
-        # Token for the next query, an empty nextToken indicates there is no next page.
+        # The token that is used to retrieve the next page of results. If this parameter is empty, no more results exist.
         self.next_token = next_token
-        # Region ID.
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

@@ -18,14 +18,24 @@ class CreateSkillRequest(DaraModel):
         source_skill_id: str = None,
         source_type: str = None,
     ):
+        # A client-generated token that ensures request idempotence. It must be unique for each request. The **ClientToken** can contain only ASCII characters and must be no more than 64 characters long.
         self.client_token = client_token
+        # Required when SourceType is set to UPLOAD. The OSS URL of the Skill package to upload.
         self.oss_url = oss_url
+        # The description of the Skill.
         self.skill_description = skill_description
+        # The Skill labels.
         self.skill_labels = skill_labels
+        # The name of the Skill.
         self.skill_name = skill_name
+        # The ID of the SkillSpace containing the Skill.
+        # 
         # This parameter is required.
         self.skill_space_id = skill_space_id
+        # Required when SourceType is set to COPY. The ID of the public Skill.
         self.source_skill_id = source_skill_id
+        # The creation method for the Skill.
+        # 
         # This parameter is required.
         self.source_type = source_type
 

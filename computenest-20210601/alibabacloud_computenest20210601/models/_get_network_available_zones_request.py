@@ -16,13 +16,21 @@ class GetNetworkAvailableZonesRequest(DaraModel):
         service_version: str = None,
         zone_id: str = None,
     ):
+        # Specifies whether the service is a trial.
         self.is_poc = is_poc
+        # The region of the virtual network.
         self.network_region_id = network_region_id
+        # The connection mode. Valid values: \\`PrivateLink\\` and \\`OverlayLink\\`. \\`OverlayLink\\` is an overlay link based on Application-aware Network Service Mesh (ANSM).
         self.private_vpc_connection_mode = private_vpc_connection_mode
+        # The service ID.
         self.service_id = service_id
+        # The direction of the internal-facing access. Valid values: \\`Forward\\` and \\`Reverse\\`.
         self.service_instance_endpoint_service_type = service_instance_endpoint_service_type
+        # The ID of the region where the service is located.
         self.service_region_id = service_region_id
+        # The service version.
         self.service_version = service_version
+        # The zone for the service deployment.
         self.zone_id = zone_id
 
     def validate(self):

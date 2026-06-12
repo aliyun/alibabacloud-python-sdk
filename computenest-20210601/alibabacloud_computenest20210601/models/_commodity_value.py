@@ -12,7 +12,7 @@ class CommodityValue(DaraModel):
         self,
         result: main_models.CommodityValueResult = None,
     ):
-        # The result model.
+        # The Result model.
         self.result = result
 
     def validate(self):
@@ -45,14 +45,15 @@ class CommodityValueResult(DaraModel):
         sub_orders: main_models.CommodityValueResultSubOrders = None,
         coupons: List[main_models.CommodityValueResultCoupons] = None,
     ):
-        # The information about the order.
+        # The order information.
         self.order = order
-        # The RFQ type. Valid values:
+        # The inquiry type. Valid values:
         # 
-        # 1.  Buy: price inquiry for new resources.
-        # 2.  ModificationBuy: price inquiry for resource configuration changes.
+        # 1. Buy: an inquiry for a new purchase.
+        # 
+        # 2. ModificationBuy: an inquiry for an upgrade or downgrade.
         self.inquiry_type = inquiry_type
-        # The order sub-items.
+        # The sub-orders.
         self.sub_orders = sub_orders
         # The coupons.
         self.coupons = coupons
@@ -124,7 +125,7 @@ class CommodityValueResultCoupons(DaraModel):
         self.coupon_desc = coupon_desc
         # The name of the coupon.
         self.coupon_name = coupon_name
-        # The coupon ID.
+        # The coupon number.
         self.coupon_option_no = coupon_option_no
         # Indicates whether the coupon is selected.
         self.selected = selected
@@ -178,7 +179,7 @@ class CommodityValueResultSubOrders(DaraModel):
         self,
         sub_order: List[main_models.CommodityValueResultSubOrdersSubOrder] = None,
     ):
-        # The order sub-item.
+        # The sub-orders.
         self.sub_order = sub_order
 
     def validate(self):
@@ -214,7 +215,7 @@ class CommodityValueResultSubOrdersSubOrder(DaraModel):
         self,
         module_instance: List[main_models.CommodityValueResultSubOrdersSubOrderModuleInstance] = None,
     ):
-        # The information about the module (instance).
+        # The module or instance information.
         self.module_instance = module_instance
 
     def validate(self):
@@ -268,25 +269,25 @@ class CommodityValueResultSubOrdersSubOrderModuleInstance(DaraModel):
         self.module_name = module_name
         # The module code.
         self.module_code = module_code
-        # The original price (RMB).
+        # The original price of the product, in CNY.
         self.total_product_fee = total_product_fee
-        # The discount amount (RMB).
+        # The discount, in CNY.
         self.discount_fee = discount_fee
-        # The amount actually paid (RMB).
+        # The amount payable, in CNY.
         self.pay_fee = pay_fee
         # The unit of the price.
         self.price_unit = price_unit
-        # Indicates whether the item is billed.
+        # Indicates whether the module is a billing item.
         self.is_pricing_module = is_pricing_module
-        # Indicates whether the order is paid.
+        # Indicates whether payment is required for the module in the order.
         self.need_order_pay = need_order_pay
         # The pricing type.
         self.price_type = price_type
         # The module attributes.
         self.module_attrs = module_attrs
-        # Module English name.
+        # The English name of the module.
         self.module_name_en = module_name_en
-        # Price Unit English Name
+        # The English name of the price unit.
         self.price_unit_en = price_unit_en
 
     def validate(self):
@@ -398,12 +399,15 @@ class CommodityValueResultSubOrdersSubOrderModuleInstanceModuleAttrs(DaraModel):
         value: str = None,
         unit: str = None,
     ):
-        # The type of the attribute. Valid values:
+        # The attribute type. Valid values:
         # 
-        # 1.  1: product
-        # 2.  2\\. specifications
-        # 3.  3: module
-        # 4.  4: external parameters (backup)
+        # 1. 1: product attribute
+        # 
+        # 2. 2: specification attribute
+        # 
+        # 3. 3: module attribute
+        # 
+        # 4. 4: external parameter (reserved)
         self.type = type
         # The attribute name.
         self.name = name
@@ -468,13 +472,13 @@ class CommodityValueResultOrder(DaraModel):
         discount_amount: str = None,
         original_amount: str = None,
     ):
-        # The code of the native currency.
+        # The currency code.
         self.currency = currency
-        # Amount after the discount.
+        # The amount after the discount is applied.
         self.trade_amount = trade_amount
         # The discount amount.
         self.discount_amount = discount_amount
-        # Amount before the discount.
+        # The original amount.
         self.original_amount = original_amount
 
     def validate(self):

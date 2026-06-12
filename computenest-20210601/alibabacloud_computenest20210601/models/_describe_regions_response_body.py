@@ -13,7 +13,7 @@ class DescribeRegionsResponseBody(DaraModel):
         regions: List[main_models.DescribeRegionsResponseBodyRegions] = None,
         request_id: str = None,
     ):
-        # The available regions.
+        # The list of available regions.
         self.regions = regions
         # The request ID.
         self.request_id = request_id
@@ -58,7 +58,7 @@ class DescribeRegionsResponseBodyRegions(DaraModel):
         region_endpoint: str = None,
         region_id: str = None,
     ):
-        # The region endpoint.
+        # The endpoint of the region.
         self.region_endpoint = region_endpoint
         # The region ID.
         self.region_id = region_id

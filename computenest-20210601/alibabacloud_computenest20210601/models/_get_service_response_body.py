@@ -48,93 +48,127 @@ class GetServiceResponseBody(DaraModel):
         version: str = None,
         version_name: str = None,
     ):
-        # The alert configurations of the service.
+        # The alert configuration of the service.
         # 
-        # >  This parameter takes effect only when you specify an alert policy for **PolicyNames**.
+        # > This configuration takes effect only if you configure an alert policy in **PolicyNames**.
         self.alarm_metadata = alarm_metadata
-        # The categories of the Flow.
+        # The service category name.
         self.categories = categories
-        # The information about the order placed in Alibaba Cloud Marketplace.
+        # The commodity specifications.
         self.commodity = commodity
-        # Compliance check metadata.
+        # The compliance package metadata.
         self.compliance_metadata = compliance_metadata
-        # Service deployment approach, Valid values：
+        # The deployment channel. Valid values:
         # 
-        # - NoWhere
-        # - Marketplace
-        # - ComputeNest
+        # - NoWhere: The service has no deployment channel.
+        # 
+        # - Marketplace: The service is deployed from Alibaba Cloud Marketplace.
+        # 
+        # - ComputeNest: The service is deployed from Compute Nest.
         self.deploy_from = deploy_from
-        # The storage configurations of the service. The format in which the deployment information of a service is stored varies based on the deployment type of the service. In this case, the deployment information is stored in the JSON string format.
+        # The deployment configuration of the service. The configuration is stored as a JSON string. The data format of the string varies based on the deployment type.
         self.deploy_metadata = deploy_metadata
-        # The deployment type of the service. Valid values:
+        # The deployment type. Valid values:
         # 
-        # *   ros: The service is deployed by using Resource Orchestration Service (ROS).
-        # *   terraform: The service is deployed by using Terraform.
+        # - ros: The service is deployed using ROS.
+        # 
+        # - terraform: The service is deployed using Terraform.
+        # 
+        # - spi: The service is deployed by calling a Service Provider Interface (SPI).
+        # 
+        # - operation: The service is an Alibaba Cloud Managed Services deployment.
+        # 
+        # - container: The service is deployed using a container.
+        # 
+        # - pkg: The service is a package service.
         self.deploy_type = deploy_type
-        # The duration for which hosted O\\&M is implemented. Unit: seconds.
+        # The duration of the Alibaba Cloud Managed Services. Unit: seconds.
         self.duration = duration
-        # Information about the ram role created in the service template.
+        # The information about the roles that are created in the service template.
         self.instance_role_infos = instance_role_infos
-        # Indicates whether the hosted O\\&M feature is enabled for the service. Default value: false. Valid values:
+        # Specifies whether to enable Alibaba Cloud Managed Services. Default value: false. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: enabled.
         # 
-        # >  This parameter is returned if you set **ServiceType** to **private**.
+        # - false: disabled.
+        # 
+        # > This parameter is required when **ServiceType** is set to **private**.
         self.is_support_operated = is_support_operated
         # The license metadata.
         self.license_metadata = license_metadata
-        # The logging configurations.
+        # The application log configuration.
         self.log_metadata = log_metadata
-        # The operation metadata.
+        # The O\\&M configuration.
         self.operation_metadata = operation_metadata
-        # The permissions on the service. Valid values:
+        # The permission type. Valid values:
         # 
-        # *   Deployable: Permissions to deploy the service.
-        # *   Accessible: Permissions to access the service.
+        # - Deployable: The service is deployable.
+        # 
+        # - Accessible: The service is accessible.
         self.permission = permission
-        # The policy name. The name can be up to 128 characters in length. Separate multiple names with commas (,). Only hosted O\\&M policies are supported.
+        # The policy names. A single policy name can be up to 128 characters in length. Separate multiple names with commas (,). Only policies related to Alibaba Cloud Managed Services are supported.
         self.policy_names = policy_names
         # The time when the service was published.
         self.publish_time = publish_time
         # The request ID.
         self.request_id = request_id
-        # Service document information.
+        # The service documents.
         self.service_document_infos = service_document_infos
         # The service ID.
         self.service_id = service_id
-        # The information about the service.
+        # The service information.
         self.service_infos = service_infos
+        # The multilingual configurations of the service.
         self.service_locale_configs = service_locale_configs
-        # The URL of the service page.
+        # The URL of the product page.
         self.service_product_url = service_product_url
-        # The type of the service. Valid values:
+        # The service type. Valid values:
         # 
-        # - private: The service is a private service and is deployed within the account of a customer.
-        # - managed: The service is a fully managed service and is deployed within the account of a service provider.
-        # - operation: The service is a hosted O&M service.
+        # - private: The service is deployed in the user\\"s account.
+        # 
+        # - managed: The service is hosted in the service provider\\"s account.
+        # 
+        # - operation: The service is an Alibaba Cloud Managed Service.
         self.service_type = service_type
-        # The permission type of the deployment URL. Valid values:
+        # The share type. Valid values:
         # 
-        # *   Public: All users can go to the URL to create a service instance or a trial service instance.
-        # *   Restricted: Only users in the whitelist can go to the URL to create a service instance or a trial service instance.
-        # *   OnlyFormalRestricted: Only users in the whitelist can go to the URL to create a service instance.
-        # *   OnlyTrailRestricted: Only users in the whitelist can go to the URL to create a trial service instance.
-        # *   Hidden: Users not in the whitelist cannot see the service details page when they go to the URL and cannot request deployment permissions.
+        # - Public: The service is public. Formal and trial deployments are not restricted.
+        # 
+        # - Restricted: The service is restricted. Formal and trial deployments are restricted.
+        # 
+        # - OnlyFormalRestricted: Only formal deployments are restricted.
+        # 
+        # - OnlyTrialRestricted: Only trial deployments are restricted.
+        # 
+        # - Hidden: The service is hidden, is not visible, and you cannot request permissions for deployment.
         self.share_type = share_type
-        # The deploy status of the service. Valid values:
-        # - Draft
-        # - Beta
-        # - Submitted
-        # - Approved
-        # - Launching
-        # - Online
-        # - Offline
-        # - Creating
+        # The status of the service. Valid values:
+        # 
+        # - Draft: The service is in the draft state.
+        # 
+        # - Beta: The service is in a pre-release state. The service cannot be modified but can be shared with other users.
+        # 
+        # - Submitted: The service is submitted for approval. The service cannot be modified.
+        # 
+        # - Approved: The service is approved. The service cannot be modified but can be published.
+        # 
+        # - Launching: The service is being published.
+        # 
+        # - Online: The service is published.
+        # 
+        # - Offline: The service is unpublished.
+        # 
+        # - Creating: The service is being created.
+        # 
+        # - CreateFailed: The service failed to be created.
+        # 
+        # - Updating: The service is being updated.
+        # 
+        # - UpdateFailed: The service failed to be updated.
         self.status = status
-        # The description of service provider.
+        # The description of the service provider.
         self.supplier_desc = supplier_desc
-        # The Logo of service provider.
+        # The icon of the service provider.
         self.supplier_logo = supplier_logo
         # The name of the service provider.
         self.supplier_name = supplier_name
@@ -142,21 +176,23 @@ class GetServiceResponseBody(DaraModel):
         self.supplier_uid = supplier_uid
         # The URL of the service provider.
         self.supplier_url = supplier_url
-        # Contact information of the service provider
+        # The contact information of the service provider.
         self.support_contacts = support_contacts
-        # The tags.
+        # The service tags.
         self.tags = tags
-        # The type of the tenant. Valid values:
+        # The tenant type. Valid values:
         # 
-        # *   SingleTenant
-        # *   MultiTenant
+        # - SingleTenant: The service is a single-tenant service.
+        # 
+        # - MultiTenant: The service is a multitenancy service.
         self.tenant_type = tenant_type
-        # The trial duration. Unit: day. The maximum trial duration cannot exceed 30 days.
+        # The trial duration in days. The maximum trial duration is 30 days.
         self.trial_duration = trial_duration
-        # The trial policy. Valid values:
+        # The trial type. Valid values:
         # 
-        # *   Trial: Trials are supported.
-        # *   NotTrial: Trials are not supported.
+        # - Trial: The service supports trial.
+        # 
+        # - NotTrial: The service does not support trial.
         self.trial_type = trial_type
         # The service version.
         self.version = version
@@ -501,9 +537,9 @@ class GetServiceResponseBodySupportContacts(DaraModel):
         type: str = None,
         value: str = None,
     ):
-        # The type of contact information.
+        # The type of the contact information.
         self.type = type
-        # The value of contact information.
+        # The contact information.
         self.value = value
 
     def validate(self):
@@ -539,8 +575,11 @@ class GetServiceResponseBodyServiceLocaleConfigs(DaraModel):
         original_value: str = None,
         zh_value: str = None,
     ):
+        # The English value of the service information.
         self.en_value = en_value
+        # The raw data value of the service information.
         self.original_value = original_value
+        # The Chinese value of the service information.
         self.zh_value = zh_value
 
     def validate(self):
@@ -585,20 +624,21 @@ class GetServiceResponseBodyServiceInfos(DaraModel):
         short_description: str = None,
         softwares: List[main_models.GetServiceResponseBodyServiceInfosSoftwares] = None,
     ):
-        # The agreement information about the service.
+        # The service agreements.
         self.agreements = agreements
         # The URL of the service icon.
         self.image = image
-        # The language of the service. Valid values:
+        # The language of the service configuration. Valid values:
         # 
-        # *   zh-CN: Chinese
-        # *   en-US: English
+        # - zh-CN: Chinese.
+        # 
+        # - en-US: English.
         self.locale = locale
         # The service name.
         self.name = name
-        # The description of the service.
+        # The summary of the service.
         self.short_description = short_description
-        # The list of the software in the service.
+        # The service software.
         self.softwares = softwares
 
     def validate(self):
@@ -674,9 +714,9 @@ class GetServiceResponseBodyServiceInfosSoftwares(DaraModel):
         name: str = None,
         version: str = None,
     ):
-        # The name of the Software.
+        # The software name.
         self.name = name
-        # The version of the software.
+        # The software version.
         self.version = version
 
     def validate(self):
@@ -749,9 +789,13 @@ class GetServiceResponseBodyServiceDocumentInfos(DaraModel):
         locale: str = None,
         template_name: str = None,
     ):
-        # The URL that is used to access the document.
+        # The document URL.
         self.document_url = document_url
-        # The language that you use for the query. Valid values: zh-CN and en-US.
+        # The language of the service document. Valid values:
+        # 
+        # - zh-CN: Chinese.
+        # 
+        # - en-US: English.
         self.locale = locale
         # The template name.
         self.template_name = template_name
@@ -796,11 +840,11 @@ class GetServiceResponseBodyInstanceRoleInfos(DaraModel):
         role_name: str = None,
         template_name: str = None,
     ):
-        # The content of the policy.
+        # The content of the control policy.
         self.policy_document = policy_document
-        # The information of the RAM entity.
+        # The information about the RAM entity.
         self.principals = principals
-        # The ram role name.
+        # The role name.
         self.role_name = role_name
         # The template name.
         self.template_name = template_name
@@ -848,7 +892,7 @@ class GetServiceResponseBodyComplianceMetadata(DaraModel):
         self,
         compliance_packs: List[str] = None,
     ):
-        # The compliance pack list.
+        # The list of compliance packages.
         self.compliance_packs = compliance_packs
 
     def validate(self):
@@ -884,29 +928,35 @@ class GetServiceResponseBodyCommodity(DaraModel):
         specifications: List[main_models.GetServiceResponseBodyCommoditySpecifications] = None,
         type: str = None,
     ):
-        # The billing method of the service. Valid values:
+        # The billing method.
         # 
-        # *   **PREPAY** (default): subscription.
-        # *   **POSTPAY**: pay-as-you-go.
+        # Valid values:
+        # 
+        # **PREPAY** (default): subscription.
+        # 
+        # **POSTPAY**: pay-as-you-go.
         self.charge_type = charge_type
-        # The commodity code of the service in Alibaba Cloud Marketplace.
+        # The commodity code.
         self.commodity_code = commodity_code
-        # The configuration metadata related to Lingxiao.
+        # The Lingxiao configuration metadata.
         self.css_metadata = css_metadata
-        # The deploy page.
+        # The deployment page.
         self.deploy_page = deploy_page
-        # The metadata of Alibaba Cloud Marketplace.
+        # The Alibaba Cloud Marketplace metadata.
         self.marketplace_metadata = marketplace_metadata
         # The order time.
         self.order_time = order_time
-        # The configuration metadata related to Saas Boost.
+        # The SaasBoost configuration metadata.
         self.saas_boost_metadata = saas_boost_metadata
-        # The specification details of the service in Alibaba Cloud Marketplace.
+        # The Alibaba Cloud Marketplace specification details.
         self.specifications = specifications
-        # The service type. Valid values:
+        # The type.
         # 
-        # *   marketplace: Alibaba Cloud Marketplace.
-        # *   Css: Lingxiao.
+        # Valid values:
+        # 
+        # Marketplace: Alibaba Cloud Marketplace.
+        # 
+        # Css: Lingxiao.
         self.type = type
 
     def validate(self):
@@ -1002,7 +1052,7 @@ class GetServiceResponseBodyCommoditySpecifications(DaraModel):
         self.code = code
         # The specification name.
         self.name = name
-        # The subscription duration. Unit: week or year.
+        # The purchasable duration. Unit: week or year.
         self.times = times
 
     def validate(self):
@@ -1042,7 +1092,7 @@ class GetServiceResponseBodyCommodityMarketplaceMetadata(DaraModel):
         self,
         specification_mappings: List[main_models.GetServiceResponseBodyCommodityMarketplaceMetadataSpecificationMappings] = None,
     ):
-        # The mappings between the service specifications and the template or package.
+        # The mapping between commodity specifications and templates or packages.
         self.specification_mappings = specification_mappings
 
     def validate(self):
@@ -1080,7 +1130,7 @@ class GetServiceResponseBodyCommodityMarketplaceMetadataSpecificationMappings(Da
         specification_name: str = None,
         template_name: str = None,
     ):
-        # The specification code of the service in Alibaba Cloud Marketplace.
+        # The specification code of the Alibaba Cloud Marketplace commodity.
         self.specification_code = specification_code
         # The package name.
         self.specification_name = specification_name
@@ -1124,7 +1174,7 @@ class GetServiceResponseBodyCommodityCssMetadata(DaraModel):
         self,
         components_mappings: List[main_models.GetServiceResponseBodyCommodityCssMetadataComponentsMappings] = None,
     ):
-        # The mapping information about the billing items.
+        # The billing item mappings.
         self.components_mappings = components_mappings
 
     def validate(self):

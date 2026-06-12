@@ -11,17 +11,17 @@ class DeployServiceInstanceRequest(DaraModel):
         region_id: str = None,
         service_instance_id: str = None,
     ):
-        # Ensures idempotency of the request. Generate a unique value for this parameter from your client to ensure it is unique across different requests. ClientToken supports only ASCII characters and cannot exceed 64 characters.
+        # A client token to ensure the idempotence of a request. Generate a unique value from the client for this parameter. The token can contain only ASCII characters and must be no more than 64 characters in length.
         self.client_token = client_token
-        # Region ID. Allowed values:
+        # The region ID. Possible values:
         # 
-        # - cn-hangzhou: East China 1 (Hangzhou).
+        # - cn-hangzhou: China (Hangzhou).
         # 
         # - ap-southeast-1: Singapore.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # Service instance ID.
+        # The ID of the service instance.
         # 
         # This parameter is required.
         self.service_instance_id = service_instance_id

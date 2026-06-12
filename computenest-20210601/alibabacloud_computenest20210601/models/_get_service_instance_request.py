@@ -11,7 +11,7 @@ class GetServiceInstanceRequest(DaraModel):
         region_id: str = None,
         service_instance_id: str = None,
     ):
-        # The MarketInstance ID.
+        # The Alibaba Cloud Marketplace instance ID.
         self.market_instance_id = market_instance_id
         # The region ID.
         # 
@@ -19,7 +19,7 @@ class GetServiceInstanceRequest(DaraModel):
         self.region_id = region_id
         # The service instance ID.
         # 
-        # >  You must specify either `ServiceInstanceId` or `MarketInstanceId`. Otherwise, the operation fails.
+        # > You must specify either `ServiceInstanceId` or `MarketInstanceId` to query the detailed information about the service instance.
         self.service_instance_id = service_instance_id
 
     def validate(self):

@@ -53,21 +53,23 @@ class GetUserInformationResponseBodyDeliverySettings(DaraModel):
         oss_expiration_days: int = None,
         oss_path: str = None,
     ):
-        # Indicates whether screencast delivery to OSS is enabled. Valid values:
+        # Specifies whether to use the delivery feature. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: Enabled.
+        # 
+        # - false: Disabled.
         self.actiontrail_delivery_to_oss_enabled = actiontrail_delivery_to_oss_enabled
         # The name of the OSS bucket.
         self.oss_bucket_name = oss_bucket_name
-        # Indicates whether screencast delivery to Object Storage Service (OSS) is enabled. Valid values:
+        # Specifies whether to deliver data to Object Storage Service (OSS). Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: Enabled.
+        # 
+        # - false: Disabled.
         self.oss_enabled = oss_enabled
-        # The number of days for which the screencasts are saved.
+        # The number of days to save screen recordings.
         self.oss_expiration_days = oss_expiration_days
-        # The OSS path.
+        # The path in OSS.
         self.oss_path = oss_path
 
     def validate(self):

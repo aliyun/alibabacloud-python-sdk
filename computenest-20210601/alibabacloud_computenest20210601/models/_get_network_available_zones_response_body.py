@@ -13,7 +13,9 @@ class GetNetworkAvailableZonesResponseBody(DaraModel):
         data: main_models.GetNetworkAvailableZonesResponseBodyData = None,
         request_id: str = None,
     ):
+        # The data returned.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -50,7 +52,9 @@ class GetNetworkAvailableZonesResponseBodyData(DaraModel):
         region_id_list: List[str] = None,
         zone_id_list: List[str] = None,
     ):
+        # The list of region IDs.
         self.region_id_list = region_id_list
+        # The list of zone IDs.
         self.zone_id_list = zone_id_list
 
     def validate(self):

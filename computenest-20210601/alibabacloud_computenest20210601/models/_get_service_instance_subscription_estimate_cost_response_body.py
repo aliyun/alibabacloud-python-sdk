@@ -13,9 +13,9 @@ class GetServiceInstanceSubscriptionEstimateCostResponseBody(DaraModel):
         request_id: str = None,
         resource_prices: List[main_models.GetServiceInstanceSubscriptionEstimateCostResponseBodyResourcePrices] = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # List of resource price information.
+        # The list of resource price information.
         self.resource_prices = resource_prices
 
     def validate(self):
@@ -65,26 +65,29 @@ class GetServiceInstanceSubscriptionEstimateCostResponseBodyResourcePrices(DaraM
         rules: List[main_models.GetServiceInstanceSubscriptionEstimateCostResponseBodyResourcePricesRules] = None,
         trade_amount: float = None,
     ):
-        # Currency. Valid values:
+        # The currency. Valid values:
+        # 
         # - CNY: Chinese Yuan.
+        # 
         # - USD: US Dollar.
+        # 
         # - JPY: Japanese Yen.
         self.currency = currency
         # The price details of the pricing module.
         self.detail_infos = detail_infos
-        # Discount.
+        # The discount.
         self.discount_amount = discount_amount
-        # Original price.
+        # The original price.
         self.original_amount = original_amount
-        # Renewal duration. The unit is specified by PeriodUnit.
+        # The renewal duration. The unit is specified by PeriodUnit.
         self.period = period
-        # The time unit for the renewal duration, which is the unit of the Period parameter. Valid values: Month, Year. Default value: Month.
+        # The unit of the renewal duration. This is the unit for the Period parameter. Valid values: Month and Year. Default value: Month.
         self.period_unit = period_unit
-        # Resource ARN (Aliyun Resource Name).
+        # The ARN of the resource.
         self.resource_arn = resource_arn
-        # Promotion details.
+        # The discount details.
         self.rules = rules
-        # Discounted price.
+        # The discounted price.
         self.trade_amount = trade_amount
 
     def validate(self):
@@ -179,11 +182,11 @@ class GetServiceInstanceSubscriptionEstimateCostResponseBodyResourcePricesRules(
         name: str = None,
         rule_desc_id: int = None,
     ):
-        # Promotion description.
+        # The description of the discount.
         self.description = description
-        # Promotion name.
+        # The name of the discount.
         self.name = name
-        # Promotion ID.
+        # The discount ID.
         self.rule_desc_id = rule_desc_id
 
     def validate(self):
@@ -226,13 +229,13 @@ class GetServiceInstanceSubscriptionEstimateCostResponseBodyResourcePricesDetail
         resource: str = None,
         trade_amount: float = None,
     ):
-        # Discount amount.
+        # The discount.
         self.discount_amount = discount_amount
-        # Original price.
+        # The original price.
         self.original_amount = original_amount
-        # Pricing module identifier.
+        # The identifier of the pricing module.
         self.resource = resource
-        # Discounted price.
+        # The discounted price.
         self.trade_amount = trade_amount
 
     def validate(self):

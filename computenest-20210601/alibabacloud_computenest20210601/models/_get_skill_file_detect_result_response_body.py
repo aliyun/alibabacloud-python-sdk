@@ -14,12 +14,31 @@ class GetSkillFileDetectResultResponseBody(DaraModel):
         result: int = None,
         score: int = None,
     ):
+        # The result code. A value of "200" indicates success. Other values indicate an error.
         self.code = code
+        # The unique identifier for the detection task.
         self.hash_key = hash_key
+        # The response message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The file detection result. Valid values:
+        # 
+        # 0: safe file
+        # 
+        # 1: suspicious file
+        # 
+        # 3: The detection is in progress.
         self.result = result
+        # The file detection score. The score ranges correspond to the following threat levels:
+        # 
+        # 0–60: safe
+        # 
+        # 61–70: risk
+        # 
+        # 71–80: suspicious
+        # 
+        # 81–100: malicious
         self.score = score
 
     def validate(self):

@@ -18,14 +18,24 @@ class UpdateSkillRequest(DaraModel):
         source_skill_id: str = None,
         source_type: str = None,
     ):
+        # A unique, client-generated token to ensure request idempotence. **ClientToken** can contain only ASCII characters and must not exceed 64 characters in length.
         self.client_token = client_token
+        # This parameter is required if `SourceType` is set to `UPLOAD`. It specifies the Object Storage Service (OSS) URL of the compressed skill package to upload.
         self.oss_url = oss_url
+        # The skill description.
         self.skill_description = skill_description
+        # The ID of the skill to update.
+        # 
         # This parameter is required.
         self.skill_id = skill_id
+        # An array of skill labels.
         self.skill_labels = skill_labels
+        # The skill name.
         self.skill_name = skill_name
+        # This parameter is required if `SourceType` is set to `COPY`. It specifies the ID of the public skill.
         self.source_skill_id = source_skill_id
+        # The source type for the skill update.
+        # 
         # This parameter is required.
         self.source_type = source_type
 

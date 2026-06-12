@@ -18,21 +18,21 @@ class GetServiceInstanceSubscriptionEstimateCostRequest(DaraModel):
         resource_period: List[main_models.GetServiceInstanceSubscriptionEstimateCostRequestResourcePeriod] = None,
         service_instance_id: str = None,
     ):
-        # Ensures idempotence of the request. Generate a parameter value from your client to ensure its uniqueness across different requests. **ClientToken** supports only ASCII characters and cannot exceed 64 characters.
+        # A client-generated token that ensures the idempotence of the request. The token must be unique for each request. It can contain only ASCII characters and cannot be longer than 64 characters.
         self.client_token = client_token
-        # Order type. Possible value: Renewal.
+        # The order type. Valid value: Renewal.
         # 
         # This parameter is required.
         self.order_type = order_type
-        # The renewal duration for all prepaid resources of the service instance. The unit is specified by PeriodUnit.
+        # The renewal duration for all subscription resources of the service instance. The unit is specified by PeriodUnit.
         self.period = period
-        # The time unit for the renewal duration of all prepaid resources of the service instance, which is the unit of the Period parameter. Valid values: Month, Year. Default value: Month.
+        # The unit of the renewal duration for all subscription resources of the service instance. This is the unit for the Period parameter. Valid values: Month and Year. Default value: Month.
         self.period_unit = period_unit
-        # Region ID.
+        # The region ID.
         self.region_id = region_id
-        # Resource renewal configuration.
+        # The renewal configuration for the resources.
         self.resource_period = resource_period
-        # Service instance ID.
+        # The service instance ID.
         # 
         # This parameter is required.
         self.service_instance_id = service_instance_id
@@ -108,11 +108,11 @@ class GetServiceInstanceSubscriptionEstimateCostRequestResourcePeriod(DaraModel)
         period_unit: str = None,
         resource_arn: str = None,
     ):
-        # Renewal duration. The unit is specified by PeriodUnit.
+        # The renewal duration. The unit is specified by PeriodUnit.
         self.period = period
-        # The time unit for the resource renewal duration, which is the unit of the Period parameter. Valid values: Month, Year. Default value: Month.
+        # The unit of the renewal duration for the resource. This is the unit for the Period parameter. Valid values: Month and Year. Default value: Month.
         self.period_unit = period_unit
-        # Resource ARN (Aliyun Resource Name).
+        # The Alibaba Cloud Resource Name (ARN) of the resource.
         self.resource_arn = resource_arn
 
     def validate(self):

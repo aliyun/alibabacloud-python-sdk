@@ -10,8 +10,11 @@ class GetSkillFileDetectResultRequest(DaraModel):
         hash_key: str = None,
         region_id: str = None,
     ):
+        # The unique identifier for the detection task.
+        # 
         # This parameter is required.
         self.hash_key = hash_key
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

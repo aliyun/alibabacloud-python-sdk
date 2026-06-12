@@ -10,8 +10,9 @@ class DeleteSkillRequest(DaraModel):
         client_token: str = None,
         skill_id: str = None,
     ):
+        # A token that you provide to ensure request idempotence. The value must be unique for each request. **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # Skill  ID
+        # The skill ID.
         # 
         # This parameter is required.
         self.skill_id = skill_id

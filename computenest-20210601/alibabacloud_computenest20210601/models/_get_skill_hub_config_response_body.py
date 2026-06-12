@@ -13,11 +13,15 @@ class GetSkillHubConfigResponseBody(DaraModel):
         request_id: str = None,
         update_time: str = None,
     ):
+        # The time when the configuration was created.
         self.create_time = create_time
+        # The name of the OSS bucket.
         self.oss_bucket_name = oss_bucket_name
+        # The region where the OSS bucket is located.
         self.oss_region_id = oss_region_id
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
+        # The time when the configuration was last updated.
         self.update_time = update_time
 
     def validate(self):

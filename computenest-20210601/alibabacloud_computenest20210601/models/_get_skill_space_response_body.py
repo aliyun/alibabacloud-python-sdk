@@ -14,12 +14,17 @@ class GetSkillSpaceResponseBody(DaraModel):
         skill_space_name: str = None,
         update_time: str = None,
     ):
+        # The time when the SkillSpace was created.
         self.create_time = create_time
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
+        # The description of the SkillSpace.
         self.skill_space_description = skill_space_description
+        # The ID of the SkillSpace.
         self.skill_space_id = skill_space_id
+        # The name of the SkillSpace.
         self.skill_space_name = skill_space_name
+        # The time when the SkillSpace was last updated.
         self.update_time = update_time
 
     def validate(self):

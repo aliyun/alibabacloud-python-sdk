@@ -14,13 +14,21 @@ class ValidateServiceInstanceNameRequest(DaraModel):
         service_version: str = None,
         template_name: str = None,
     ):
+        # A client token to ensure the idempotence of the request. Generate a unique token for each request. The **ClientToken** supports only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # Specifies whether the service instance is a trial instance.
         self.is_trial = is_trial
+        # The service ID.
+        # 
         # This parameter is required.
         self.service_id = service_id
+        # The name of the service instance.
+        # 
         # This parameter is required.
         self.service_instance_name = service_instance_name
+        # The service version.
         self.service_version = service_version
+        # The name of the template. Specify this parameter if the service supports multiple templates.
         self.template_name = template_name
 
     def validate(self):

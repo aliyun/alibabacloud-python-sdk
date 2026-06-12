@@ -17,17 +17,17 @@ class RenewServiceInstanceResourcesRequest(DaraModel):
         resource_period: List[main_models.RenewServiceInstanceResourcesRequestResourcePeriod] = None,
         service_instance_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # A client token to ensure that the request is idempotent. Generate a unique value for this parameter from your client for each request. The token can contain only ASCII characters and must not exceed 64 characters in length.
         self.client_token = client_token
-        # The renewal duration for all prepaid resources in the service instance. The unit is specified by PeriodUnit.
+        # The renewal duration for all subscription resources in the service instance. The unit is specified by \\`PeriodUnit\\`.
         self.period = period
-        # The time unit for the renewal duration of all prepaid resources in the service instance, which is the unit for the Period parameter. Valid values: Month, Year. Default value: Month.
+        # The time unit of the renewal duration for all subscription resources in the service instance. This parameter specifies the unit for \\`Period\\`. Valid values: \\`Month\\` and \\`Year\\`. Default value: \\`Month\\`.
         self.period_unit = period_unit
-        # Region ID.
+        # The region ID.
         self.region_id = region_id
-        # List of resource renewals.
+        # The list of resource renewals.
         self.resource_period = resource_period
-        # Service instance ID.
+        # The service instance ID.
         # 
         # This parameter is required.
         self.service_instance_id = service_instance_id
@@ -97,11 +97,11 @@ class RenewServiceInstanceResourcesRequestResourcePeriod(DaraModel):
         period_unit: str = None,
         resource_arn: str = None,
     ):
-        # The renewal duration for the resource. The unit is specified by PeriodUnit.
+        # The renewal duration for the resource. The unit is specified by \\`PeriodUnit\\`.
         self.period = period
-        # The time unit for the renewal duration of the resource, which is the unit for the Period parameter. Valid values: Month, Year. Default value: Month.
+        # The time unit of the renewal duration for the resource. This parameter specifies the unit for \\`Period\\`. Valid values: \\`Month\\` and \\`Year\\`. Default value: \\`Month\\`.
         self.period_unit = period_unit
-        # Resource ARN (Aliyun Resource Name).
+        # The Aliyun Resource Name (ARN) of the resource.
         self.resource_arn = resource_arn
 
     def validate(self):

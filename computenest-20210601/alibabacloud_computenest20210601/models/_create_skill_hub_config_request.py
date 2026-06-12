@@ -11,9 +11,14 @@ class CreateSkillHubConfigRequest(DaraModel):
         oss_bucket_name: str = None,
         oss_region_id: str = None,
     ):
+        # A client-generated token to ensure request idempotence. This value must be unique for each request. **ClientToken** must contain only ASCII characters and be no longer than 64 characters.
         self.client_token = client_token
+        # The name of the Object Storage Service (OSS) bucket.
+        # 
         # This parameter is required.
         self.oss_bucket_name = oss_bucket_name
+        # The region ID of the OSS bucket. For more information, see [OSS regions and endpoints](https://help.aliyun.com/document_detail/31837.html).
+        # 
         # This parameter is required.
         self.oss_region_id = oss_region_id
 

@@ -18,15 +18,21 @@ class GetSkillResponseBody(DaraModel):
         skill_space_id: str = None,
         update_time: str = None,
     ):
+        # The time the Skill was created.
         self.create_time = create_time
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The description of the Skill.
         self.skill_description = skill_description
-        # Skill ID
+        # The ID of the Skill.
         self.skill_id = skill_id
+        # The labels of the Skill.
         self.skill_labels = skill_labels
+        # The name of the Skill.
         self.skill_name = skill_name
+        # The ID of the SkillSpace to which the Skill belongs.
         self.skill_space_id = skill_space_id
+        # The time the Skill was last updated.
         self.update_time = update_time
 
     def validate(self):

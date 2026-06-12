@@ -1,3 +1,7 @@
+2026-06-12 Version: 4.5.1
+- Update API GenerateServicePolicy: add request parameters Parameters.
+
+
 2026-06-10 Version: 4.5.0
 - Support API CreateSkill.
 - Support API CreateSkillFileDetect.

@@ -15,12 +15,13 @@ class ListServiceUsagesRequest(DaraModel):
         next_token: str = None,
         region_id: str = None,
     ):
-        # The filters.
+        # The filter.
         self.filter = filter
-        # The number of entries per page. Valid values: 1 to 100. Default value: 20.
+        # The number of entries to return on each page. Maximum value: 100. Default value: 20.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+        # The token that is used to retrieve the next page of results. This value is the NextToken value returned from the previous API call.
         self.next_token = next_token
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -75,14 +76,17 @@ class ListServiceUsagesRequestFilter(DaraModel):
         name: str = None,
         value: List[str] = None,
     ):
-        # The parameter name of the filter. You can specify one or more filters. Valid values:
+        # The name of the filter. You can query by one or more names. Valid values:
         # 
-        # *   ServiceId: the ID of the service.
-        # *   ServiceName: the service name.
-        # *   Status: the state of the service.
-        # *   SupplierName: the name of the service provider.
+        # - ServiceId: The service ID.
+        # 
+        # - ServiceName: The service name.
+        # 
+        # - Status: The service status.
+        # 
+        # - SupplierName: The name of the supplier.
         self.name = name
-        # The parameter values of the filter.
+        # A list of filter values.
         self.value = value
 
     def validate(self):

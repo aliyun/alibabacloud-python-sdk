@@ -13,9 +13,9 @@ class CheckServiceDeployableResponseBody(DaraModel):
         check_results: List[main_models.CheckServiceDeployableResponseBodyCheckResults] = None,
         request_id: str = None,
     ):
-        # Inspection result.
+        # The check results.
         self.check_results = check_results
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -60,16 +60,16 @@ class CheckServiceDeployableResponseBodyCheckResults(DaraModel):
         type: str = None,
         value: str = None,
     ):
-        # Returns a hint message for the result.
+        # The message returned for the result.
         self.message = message
         self.skippable = skippable
-        # Check type, invalid values:
+        # The type of precheck. Valid values:
         # 
-        # - Balance ：Account balance.
+        # - Balance: The account balance.
         # 
-        # - Quota:  Account quota.
+        # - Quota: The resource quota.
         self.type = type
-        # Inspection result.
+        # The check result.
         self.value = value
 
     def validate(self):

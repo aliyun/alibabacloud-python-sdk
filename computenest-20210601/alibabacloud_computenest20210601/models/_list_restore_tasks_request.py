@@ -14,11 +14,11 @@ class ListRestoreTasksRequest(DaraModel):
         max_results: int = None,
         next_token: str = None,
     ):
-        # The list of the filters.
+        # The filter.
         self.filter = filter
-        # The number of rows displayed per page in paginated queries. Maximum: 100 rows per page. Default: 20 rows.
+        # The number of entries to return on each page. Maximum value: 100. Default value: 20.
         self.max_results = max_results
-        # NextToken
+        # The token that is used to retrieve the next page of results.
         self.next_token = next_token
 
     def validate(self):
@@ -67,15 +67,19 @@ class ListRestoreTasksRequestFilter(DaraModel):
         name: str = None,
         value: List[str] = None,
     ):
-        # The parameter name of the filter. You can specify one or more parameter names to query services. Valid values:
+        # The name of the filter. You can query by one or more filter names. Valid values:
         # 
-        # *   RestoreTaskId: the ID of the restore task.
-        # *   ServiceInstanceId: The ID of the service instance.
-        # *   Status
-        # *   StartTime
-        # *   EndTime
+        # - RestoreTaskId: The restore job ID.
+        # 
+        # - ServiceInstanceId: The service instance ID.
+        # 
+        # - Status: The status.
+        # 
+        # - StartTime: The start time.
+        # 
+        # - EndTime: The end time.
         self.name = name
-        # The parameter values of the filter.
+        # A list of filter values.
         self.value = value
 
     def validate(self):

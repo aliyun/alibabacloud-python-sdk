@@ -14,11 +14,11 @@ class ListTagResourcesResponseBody(DaraModel):
         request_id: str = None,
         tag_resources: List[main_models.ListTagResourcesResponseBodyTagResources] = None,
     ):
-        # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+        # The token to retrieve the next page of results.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The collection of details about resources and tags, such as resource IDs, resource types, and tag key-value pairs.
+        # A collection of resources and their tags. This collection includes information such as resource IDs, resource types, and tag key-value pairs.
         self.tag_resources = tag_resources
 
     def validate(self):
@@ -73,10 +73,13 @@ class ListTagResourcesResponseBodyTagResources(DaraModel):
         self.resource_id = resource_id
         # The resource type. Valid values:
         # 
-        # *   service: service
-        # *   serviceinstance: service instance
-        # *   artifact: deployment package
-        # *   dataset: dataset
+        # - service: a service.
+        # 
+        # - serviceinstance: a service instance.
+        # 
+        # - artifact: an artifact.
+        # 
+        # - dataset: a dataset.
         self.resource_type = resource_type
         # The tag key.
         self.tag_key = tag_key

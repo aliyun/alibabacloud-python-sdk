@@ -14,8 +14,11 @@ class ListSkillSpacesRequest(DaraModel):
         max_results: int = None,
         next_token: str = None,
     ):
+        # The query filters.
         self.filter = filter
+        # The number of entries to return per page. Maximum value: 100. Default value: 20.
         self.max_results = max_results
+        # The token for the next page of results. To retrieve the next page, set this parameter to the `NextToken` value from the previous response.
         self.next_token = next_token
 
     def validate(self):
@@ -64,7 +67,15 @@ class ListSkillSpacesRequestFilter(DaraModel):
         name: str = None,
         value: List[str] = None,
     ):
+        # The filter name. You can specify one or more filter names. Valid values:
+        # 
+        # - `SkillSpaceId`: The SkillSpace ID. This filter performs an exact match.
+        # 
+        # - `SkillSpaceName`: The SkillSpace name.
+        # 
+        # - `MatchType`: The match type for the `SkillSpaceName` filter. Valid values: `exact`, `prefix`, and `fuzzy`.
         self.name = name
+        # The filter values. You can specify 1 to 10 values.
         self.value = value
 
     def validate(self):

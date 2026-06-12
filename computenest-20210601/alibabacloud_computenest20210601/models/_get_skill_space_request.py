@@ -9,6 +9,8 @@ class GetSkillSpaceRequest(DaraModel):
         self,
         skill_space_id: str = None,
     ):
+        # The ID of the SkillSpace.
+        # 
         # This parameter is required.
         self.skill_space_id = skill_space_id
 

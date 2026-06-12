@@ -16,11 +16,15 @@ class ListSkillSpacesResponseBody(DaraModel):
         skill_spaces: List[main_models.ListSkillSpacesResponseBodySkillSpaces] = None,
         total_count: int = None,
     ):
+        # The number of entries returned per page.
         self.max_results = max_results
+        # The token for the next page of results. If this parameter is not returned, no more results are available.
         self.next_token = next_token
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The list of SkillSpaces.
         self.skill_spaces = skill_spaces
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -84,11 +88,15 @@ class ListSkillSpacesResponseBodySkillSpaces(DaraModel):
         skill_space_name: str = None,
         update_time: str = None,
     ):
+        # The time when the SkillSpace was created. The time is in UTC.
         self.create_time = create_time
+        # The SkillSpace description.
         self.skill_space_description = skill_space_description
-        # SkillSpace ID
+        # The SkillSpace ID.
         self.skill_space_id = skill_space_id
+        # The SkillSpace name.
         self.skill_space_name = skill_space_name
+        # The time when the SkillSpace was last updated. The time is in UTC.
         self.update_time = update_time
 
     def validate(self):

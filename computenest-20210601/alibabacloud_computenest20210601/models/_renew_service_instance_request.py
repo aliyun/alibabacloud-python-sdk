@@ -10,7 +10,15 @@ class RenewServiceInstanceRequest(DaraModel):
         dry_run: bool = None,
         service_instance_id: str = None,
     ):
+        # Specifies whether to perform a dry run of the renewal request, including permission and instance status checks. Valid values:
+        # 
+        # - **true**: Sends the request without renewing the service instance.
+        # 
+        # - **false**: Sends the request and renews the service instance after the checks pass.
+        # 
+        # Default value: false. The operation is allowed only when the service instance is in the Pending Renewal or Renewal Failed state.
         self.dry_run = dry_run
+        # The service instance ID.
         self.service_instance_id = service_instance_id
 
     def validate(self):

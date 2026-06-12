@@ -14,7 +14,7 @@ class ContinueDeployServiceInstanceResponseBody(DaraModel):
         request_id: str = None,
         service_instance_id: str = None,
     ):
-        # The dry run result.
+        # The check result.
         self.dry_run_result = dry_run_result
         # The request ID.
         self.request_id = request_id
@@ -62,15 +62,16 @@ class ContinueDeployServiceInstanceResponseBodyDryRunResult(DaraModel):
         parameters_conditionally_allowed_to_be_modified: List[str] = None,
         parameters_not_allowed_to_be_modified: List[str] = None,
     ):
-        # The parameters that can be modified. The operation that is performed to modify the parameters does not cause a validation error.
+        # The parameters that can be modified. Modifying these parameters does not cause a check error.
         # 
         # > This parameter is returned only if DryRun is set to true.
         self.parameters_allowed_to_be_modified = parameters_allowed_to_be_modified
-        # The parameters that can be modified under specific conditions. The new values of the parameters determine whether the operation that is performed to modify the parameters causes a validation error.
+        # The parameters that can be conditionally modified.
+        # Whether modifying these parameters causes a check error depends on their values.
         # 
         # > This parameter is returned only if DryRun is set to true.
         self.parameters_conditionally_allowed_to_be_modified = parameters_conditionally_allowed_to_be_modified
-        # The parameters that cannot be modified. The operation that is performed to modify the parameters causes a validation error.
+        # The parameters that cannot be modified. Modifying these parameters always causes a check error.
         # 
         # > This parameter is returned only if DryRun is set to true.
         self.parameters_not_allowed_to_be_modified = parameters_not_allowed_to_be_modified

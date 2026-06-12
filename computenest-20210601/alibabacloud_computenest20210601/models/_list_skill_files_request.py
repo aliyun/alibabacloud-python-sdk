@@ -15,10 +15,13 @@ class ListSkillFilesRequest(DaraModel):
         next_token: str = None,
         skill_id: str = None,
     ):
+        # The filter conditions.
         self.filter = filter
+        # The maximum number of entries to return per page. Valid values: 1 to 100. Default: 20.
         self.max_results = max_results
+        # The token that was returned from a previous call to this operation. Use this token to retrieve the next page of results.
         self.next_token = next_token
-        # Skill ID
+        # The ID of the Skill.
         # 
         # This parameter is required.
         self.skill_id = skill_id
@@ -75,7 +78,9 @@ class ListSkillFilesRequestFilter(DaraModel):
         name: str = None,
         value: List[str] = None,
     ):
+        # No filter names are currently supported.
         self.name = name
+        # The filter values. You can specify 1 to 10 values.
         self.value = value
 
     def validate(self):

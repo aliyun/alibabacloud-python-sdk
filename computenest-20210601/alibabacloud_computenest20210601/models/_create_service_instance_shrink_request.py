@@ -31,46 +31,55 @@ class CreateServiceInstanceShrinkRequest(DaraModel):
         template_name: str = None,
         trial_type: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # A client-generated, unique token that ensures the idempotence of the request. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # The information about the order placed in Alibaba Cloud Marketplace. You do not need to specify this parameter if the service is not published in Alibaba Cloud Marketplace or uses the pay-as-you-go billing method.
+        # The information about the Alibaba Cloud Marketplace purchase order. You do not need to specify this parameter if the service is not listed in Alibaba Cloud Marketplace or if you use the pay-as-you-go billing method.
         self.commodity = commodity
-        # The alert contact group.
+        # The CloudMonitor alert contact group that receives alerts.
         self.contact_group = contact_group
-        # Specifies whether to perform only a dry run for the request to check information such as the permissions and instance status. Valid values:
+        # Indicates whether to perform a dry run for the request. The dry run checks for permissions and instance status. Valid values:
         # 
-        # *   **true**: performs a dry run for the request, but does not create a service instance.
-        # *   **false**: performs a dry run for the request, and creates a service instance if the request passes the dry run.
+        # - **true**: Sends the request without creating the service instance.
+        # 
+        # - **false**: Sends the request and creates the service instance after the check is passed.
         self.dry_run = dry_run
-        # Specifies whether the service instance supports the hosted O\\&M feature. Valid values:
+        # Indicates whether the service instance has the O\\&M feature. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The service instance has the O\\&M feature.
+        # 
+        # - **false**: The service instance does not have the O\\&M feature.
         self.enable_instance_ops = enable_instance_ops
-        # Specifies whether to enable the Prometheus monitoring feature. Valid values:
+        # Indicates whether to enable Prometheus monitoring. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Enable.
+        # 
+        # - **false**: Disable.
         self.enable_user_prometheus = enable_user_prometheus
-        # The serviceInstance name.
-        self.name = name
-        # The operation metadata.
-        self.operation_metadata = operation_metadata
-        # The parameters that the customer specifies to deploy the service instance.
+        # The name of the service instance. The name must meet the following requirements:
         # 
-        # >  If region information is required to create a service instance, you must specify the region ID in the value of Parameters.
+        # - The name can be up to 64 characters in length.
+        # 
+        # - It must start with a letter or a digit and can contain letters, digits, hyphens (-), and underscores (_).
+        self.name = name
+        # The O\\&M configuration.
+        self.operation_metadata = operation_metadata
+        # The parameters for deploying the user instance.
+        # 
+        # > If the service instance contains deployment region information, you must specify the region in the deployment parameters.
         self.parameters_shrink = parameters_shrink
         # The region ID. Valid values:
         # 
-        # *   cn-hangzhou: China (Hangzhou).
-        # *   ap-southeast-1: Singapore.
+        # - cn-hangzhou: China (Hangzhou).
+        # 
+        # - ap-southeast-1: Singapore.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # Specifies whether to automatically deduct the resource fees from the account balance. Valid values:
+        # Indicates whether to automatically deduct the payment from your account balance. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Enable automatic payment.
+        # 
+        # - **false**: Disable automatic payment.
         self.resource_auto_pay = resource_auto_pay
         # The resource group ID.
         self.resource_group_id = resource_group_id
@@ -78,22 +87,23 @@ class CreateServiceInstanceShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.service_id = service_id
-        # The trial service instance id witch you want to convert to formal
+        # The ID of the service instance to convert to a paid instance.
         self.service_instance_id = service_instance_id
         # The service version.
         self.service_version = service_version
-        # Specification code.
+        # The commodity specification code.
         self.specification_code = specification_code
-        # The package name.
+        # The name of the specification package.
         self.specification_name = specification_name
-        # The tags.
+        # The custom tags.
         self.tag = tag
-        # The name of the template.
+        # The template name. You must specify this parameter if the service supports multiple templates.
         self.template_name = template_name
-        # The trial type of the service instance. Valid values:
+        # The type of the service instance. Valid values:
         # 
-        # *   **Trial**: Trials are supported.
-        # *   **NotTrial**: Trials are not supported.
+        # - **Trial**: The service instance supports trial.
+        # 
+        # - **NotTrial**: The service instance does not support trial.
         self.trial_type = trial_type
 
     def validate(self):
@@ -290,15 +300,15 @@ class CreateServiceInstanceShrinkRequestOperationMetadata(DaraModel):
         service_instance_id: str = None,
         start_time: str = None,
     ):
-        # The operation end time.
+        # The end time of the O\\&M window. This parameter is valid only in managed O\\&M mode.
         self.end_time = end_time
-        # The additional information.
+        # Additional information about the managed O\\&M service.
         self.extra_info = extra_info
-        # Imported resource.
+        # The list of imported resources.
         self.resources = resources
-        # The ID of the service instance.
+        # The ID of the imported service instance.
         self.service_instance_id = service_instance_id
-        # The operation start time.
+        # The start time of the O\\&M window. This parameter is valid only in managed O\\&M mode.
         self.start_time = start_time
 
     def validate(self):
@@ -355,15 +365,17 @@ class CreateServiceInstanceShrinkRequestCommodity(DaraModel):
         pay_period_unit: str = None,
         quotation_id: str = None,
     ):
-        # Specifies whether to automatically complete the payment. Valid values:
+        # Indicates whether to enable automatic payment for the order. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Enable automatic payment.
+        # 
+        # - **false**: Disable automatic payment.
         self.auto_pay = auto_pay
-        # Specifies whether to enable auto-renewal for the service instance. Valid values:
+        # Indicates whether to enable auto-renewal. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Enable.
+        # 
+        # - **false**: Disable.
         self.auto_renew = auto_renew
         # The coupon ID.
         self.coupon_id = coupon_id
@@ -371,11 +383,13 @@ class CreateServiceInstanceShrinkRequestCommodity(DaraModel):
         self.pay_period = pay_period
         # The unit of the subscription duration. Valid values:
         # 
-        # *   **Year**
-        # *   **Month**
-        # *   **Day**
+        # - **Year**: Year.
+        # 
+        # - **Month**: Month.
+        # 
+        # - **Day**: Day.
         self.pay_period_unit = pay_period_unit
-        # privet offer Id
+        # The ID of the private offer in Alibaba Cloud Marketplace.
         self.quotation_id = quotation_id
 
     def validate(self):

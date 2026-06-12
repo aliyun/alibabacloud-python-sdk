@@ -16,11 +16,15 @@ class ListSkillsResponseBody(DaraModel):
         skills: List[main_models.ListSkillsResponseBodySkills] = None,
         total_count: int = None,
     ):
+        # The maximum number of entries returned per page.
         self.max_results = max_results
+        # The token to retrieve the next page of results. This parameter is empty when all results have been returned.
         self.next_token = next_token
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # A list of Skills.
         self.skills = skills
+        # The total number of entries that match the query.
         self.total_count = total_count
 
     def validate(self):
@@ -87,14 +91,21 @@ class ListSkillsResponseBodySkills(DaraModel):
         skill_space_id: str = None,
         update_time: str = None,
     ):
+        # The creation time of the Skill.
         self.create_time = create_time
+        # The download URL of the Skill package. This parameter is returned only if `NeedDownloadUrl` is set to `true`.
         self.download_url = download_url
+        # The Skill description.
         self.skill_description = skill_description
-        # Skill ID
+        # The Skill ID.
         self.skill_id = skill_id
+        # The Skill labels.
         self.skill_labels = skill_labels
+        # The Skill name.
         self.skill_name = skill_name
+        # The ID of the SkillSpace to which the Skill belongs.
         self.skill_space_id = skill_space_id
+        # The last update time of the Skill.
         self.update_time = update_time
 
     def validate(self):
