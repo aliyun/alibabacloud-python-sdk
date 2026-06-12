@@ -16,15 +16,15 @@ class ListServiceInstanceUpgradeHistoryResponseBody(DaraModel):
         total_count: int = None,
         upgrade_history: List[main_models.ListServiceInstanceUpgradeHistoryResponseBodyUpgradeHistory] = None,
     ):
-        # The number of items to return per page when paginating results. The maximum is 100, and the default is 20.
+        # The number of entries to return on each page. The maximum value is 100. The default value is 20.
         self.max_results = max_results
-        # The token to use for the next query.
+        # The token to start the next query.
         self.next_token = next_token
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # The total count of upgrade history
+        # The total number of entries.
         self.total_count = total_count
-        # List of upgrade histories.
+        # The list of upgrade history records.
         self.upgrade_history = upgrade_history
 
     def validate(self):
@@ -91,29 +91,31 @@ class ListServiceInstanceUpgradeHistoryResponseBodyUpgradeHistory(DaraModel):
         type: str = None,
         upgrade_history_id: str = None,
     ):
-        # End time of the upgrade.
+        # The upgrade end time.
         self.end_time = end_time
-        # Version before the upgrade.
+        # The version before the upgrade.
         self.from_version = from_version
-        # Upgrade result.
+        # The upgrade results.
         self.results = results
-        # Start time of the upgrade.
+        # The upgrade start time.
         self.start_time = start_time
-        # Upgrade status. Possible values:
+        # The upgrade status. Valid values:
         # 
-        # - upgrading: In progress.
+        # - upgrading: The upgrade is in progress.
         # 
-        # - UpgradeSuccessful: Upgrade successful.
+        # - UpgradeSuccessful: The upgrade is successful.
         # 
-        # - UpgradeFailed: Upgrade failed.
+        # - UpgradeFailed: The upgrade failed.
         self.status = status
-        # Version after the upgrade.
+        # The version after the upgrade.
         self.to_version = to_version
-        # Upgrade type.
+        # The upgrade type.
+        # 
         # - Upgrade
+        # 
         # - Rollback
         self.type = type
-        # Upgrade history ID.
+        # The ID of the upgrade history record.
         self.upgrade_history_id = upgrade_history_id
 
     def validate(self):

@@ -16,15 +16,15 @@ class ListArtifactsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The information about deployment packages.
+        # The information about the artifacts.
         self.artifacts = artifacts
-        # The number of entries per page. Valid values: 1 to 100. Default value: 20.
+        # The number of entries returned per page. The maximum value is 100. The default value is 20.
         self.max_results = max_results
-        # The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results.
+        # The query token. Set it to the NextToken value returned from the previous API call.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries that meet the filter criteria.
         self.total_count = total_count
 
     def validate(self):
@@ -94,34 +94,44 @@ class ListArtifactsResponseBodyArtifacts(DaraModel):
         status: str = None,
         tags: List[main_models.ListArtifactsResponseBodyArtifactsTags] = None,
     ):
-        # The build properties of the artifact, utilized for hosting and building the deployment package.
+        # The content used to build the artifact. This parameter is used for hosted artifact builds.
         self.artifact_build_property = artifact_build_property
-        # The ID of the deployment package.
+        # The artifact ID.
         self.artifact_id = artifact_id
-        # The type of the deployment package.
+        # The artifact type.
         self.artifact_type = artifact_type
-        # The description of the deployment package.
+        # The description of the artifact.
         self.description = description
-        # The time when the deployment package was modified.
+        # The time when the artifact was modified.
         self.gmt_modified = gmt_modified
-        # The latest version of the deployment package.
+        # The latest version.
         self.max_version = max_version
-        # The name of the deployment package.
+        # The artifact name.
         self.name = name
-        # Permission fields are applicable to container image artifact and Helm Chart artifact They can only change from Automatic to Public. Options:
+        # The permission field. This parameter is valid for artifacts of the container image, Helm chart, and file types. For other types of artifacts, you can only change the permission from Automatic to Public.
+        # Valid values:
+        # 
         # - Public
+        # 
         # - Automatic
         self.permission_type = permission_type
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The status of the deployment package. Valid values:
+        # The status of the artifact.
         # 
-        # *   Created: The deployment package is created.
-        # *   Scanning: The deployment package is being scanned.
-        # *   ScanFailed: The deployment package failed to be scanned.
-        # *   Delivering: The deployment package is being distributed.
-        # *   Available: The deployment package is available.
-        # *   Deleted: The deployment package is deleted.
+        # Valid values:
+        # 
+        # - Created: The artifact is created.
+        # 
+        # - Scanning: The artifact is being scanned.
+        # 
+        # - ScanFailed: The artifact failed to be scanned.
+        # 
+        # - Delivering: The artifact is being distributed.
+        # 
+        # - Available: The artifact is available.
+        # 
+        # - Deleted: The artifact is deleted.
         self.status = status
         # The tags.
         self.tags = tags

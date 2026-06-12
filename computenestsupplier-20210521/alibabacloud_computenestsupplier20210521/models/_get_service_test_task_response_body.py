@@ -16,19 +16,15 @@ class GetServiceTestTaskResponseBody(DaraModel):
         task_name: str = None,
         task_region_id: str = None,
     ):
-        # The execution details.
+        # The execution details of the task. This includes the running details for different use cases.
         self.execution_details = execution_details
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
-        # The status of the service test task. Valid values:
-        # 
-        # *   Running
-        # *   Success
-        # *    Failure
+        # The running status of the service test task.
         self.status = status
         # The task name.
         self.task_name = task_name
-        # The task execution region.
+        # The region where the task runs.
         self.task_region_id = task_region_id
 
     def validate(self):
@@ -91,13 +87,13 @@ class GetServiceTestTaskResponseBodyExecutionDetails(DaraModel):
         status: str = None,
         sub_task_id: str = None,
     ):
-        # The service test case name.
+        # The use case name.
         self.case_name = case_name
-        # The execution report
+        # The execution report.
         self.execution_report = execution_report
-        # The sub task status.
+        # The execution status.
         self.status = status
-        # The sub task id.
+        # The subtask ID.
         self.sub_task_id = sub_task_id
 
     def validate(self):

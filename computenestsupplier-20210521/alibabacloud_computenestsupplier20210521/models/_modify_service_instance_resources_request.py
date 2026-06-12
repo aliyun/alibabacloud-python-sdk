@@ -11,16 +11,17 @@ class ModifyServiceInstanceResourcesRequest(DaraModel):
         service_instance_id: str = None,
         service_instance_resources_action: str = None,
     ):
-        # The imported resources.
+        # The resources to import.
         self.resources = resources
         # The ID of the service instance.
         # 
         # This parameter is required.
         self.service_instance_id = service_instance_id
-        # The type of operation performed on the service instance resource. Valid values:
+        # The operation to perform on the resources of the service instance. Valid values:
         # 
-        # *   Import: The resource is imported.
-        # *   UnImport: The resource import is canceled.
+        # - Import: Imports resources.
+        # 
+        # - UnImport: Removes imported resources.
         self.service_instance_resources_action = service_instance_resources_action
 
     def validate(self):

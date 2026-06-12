@@ -15,11 +15,11 @@ class ListResellersRequest(DaraModel):
         next_token: str = None,
         region_id: str = None,
     ):
-        # The filters.
+        # The filter.
         self.filter = filter
-        # The number of entries per page. Valid values: 1 to 100. Default value: 20.
+        # The number of entries to return on each page. Maximum value: 100.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+        # The token that is used to retrieve the next page of results.
         self.next_token = next_token
         # The region ID.
         # 
@@ -78,12 +78,13 @@ class ListResellersRequestFilter(DaraModel):
         name: str = None,
         value: List[str] = None,
     ):
-        # The parameter name of the filter. You can specify one or more parameter names to query services. Valid values:
+        # The name of the filter condition. Valid values:
         # 
-        # *   ResellerUid: the uid of the distributor.
-        # *   Name: the name of the distributor.
+        # - ResellerUid: The UID of the reseller.
+        # 
+        # - Name: The name of the reseller.
         self.name = name
-        # Filter value array.
+        # The values of the filter condition.
         self.value = value
 
     def validate(self):

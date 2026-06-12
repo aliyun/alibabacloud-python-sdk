@@ -20,18 +20,19 @@ class GetServiceTemplateParameterConstraintsRequest(DaraModel):
         service_version: str = None,
         template_name: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # The client token that is used to ensure the idempotence of the request. Generate a unique value for this parameter from your client. The value of ClientToken can contain only ASCII characters.
         self.client_token = client_token
-        # The ID of the region in which the service instance is deployed.
+        # The ID of the deployment region.
         # 
         # This parameter is required.
         self.deploy_region_id = deploy_region_id
-        # Specifies whether to enable the private connection feature. Valid values:
+        # Indicates whether PrivateLink is enabled. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: Enabled
+        # 
+        # - false: Not enabled
         self.enable_private_vpc_connection = enable_private_vpc_connection
-        # The parameters in the template.
+        # The parameter information.
         self.parameters = parameters
         # The region ID.
         # 
@@ -41,7 +42,7 @@ class GetServiceTemplateParameterConstraintsRequest(DaraModel):
         # 
         # This parameter is required.
         self.service_id = service_id
-        # The ID of the service instance.
+        # The service instance ID.
         self.service_instance_id = service_instance_id
         # The service version.
         self.service_version = service_version

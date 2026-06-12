@@ -39,62 +39,69 @@ class CreateServiceShrinkRequest(DaraModel):
         upgrade_metadata: str = None,
         version_name: str = None,
     ):
-        # The alert configurations of the service.
+        # The alert configurations for the service.
         # 
-        # >  This parameter takes effect only when you specify an alert policy for **PolicyNames**.
+        # > This configuration takes effect only after an alert-related access policy is configured in \\`PolicyNames\\`.
         self.alarm_metadata = alarm_metadata
-        # The approval type of the service usage application. Valid values:
+        # The approval type for service usage requests. Valid values:
         # 
-        # *   Manual: The application is manually approved.
-        # *   AutoPass: The application is automatically approved.
+        # - Manual: The request requires manual approval.
+        # 
+        # - AutoPass: The request is automatically approved.
         self.approval_type = approval_type
-        # The parameters for building the service
+        # The parameters for building the service.
         self.build_parameters = build_parameters
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # A client token used to ensure the idempotence of the request. Generate a unique value for this parameter from your client. \\`ClientToken\\` supports only ASCII characters.
         self.client_token = client_token
-        # Compliance check metadata.
+        # The compliance check metadata.
         self.compliance_metadata_shrink = compliance_metadata_shrink
-        # The storage configurations of the service. The format in which the deployment information of a service is stored varies based on the deployment type of the service. In this case, the deployment information is stored in the JSON string format.
+        # The deployment configuration of the service. The information stored varies by deployment type. Different deployment types have different data formats. The data is stored in a JSON string.
         self.deploy_metadata = deploy_metadata
-        # The deployment type of the service. Valid values:
+        # The deployment type. Valid values:
         # 
-        # *   ros: The service is deployed by using Resource Orchestration Service (ROS).
-        # *   terraform: The service is deployed by using Terraform.
-        # *   ack: The service is deployed by using Container Service for Kubernetes (ACK).
-        # *   spi: The service is deployed by calling a service provider interface (SPI).
-        # *   operation: The service is deployed by using a hosted O\\&M service.
+        # - ros: The service is deployed using ROS.
+        # 
+        # - terraform: The service is deployed using Terraform.
+        # 
+        # - ack: The service is deployed using ACK.
+        # 
+        # - spi: The service is deployed by invoking an SPI.
+        # 
+        # - operation: The service is an O\\&M service.
         # 
         # This parameter is required.
         self.deploy_type = deploy_type
-        # Specifies whether to perform only a dry run for the request to check information. Valid values:
-        # 
-        # *   true: performs a dry run for the request, but does not create a service.
-        # *   false: performs a dry run for the request, and create a service if the request passes the dry run.
+        # Specifies whether to perform a dry run to check the request.
         self.dry_run = dry_run
-        # The duration for which hosted O\\&M is implemented. Unit: seconds.
+        # The O\\&M duration. Unit: seconds.
         self.duration = duration
-        # Specifies whether to enable the hosted O\\&M feature for the service. Default value: false. Valid values:
+        # Specifies whether to enable O\\&M. Default value: false. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: Enabled.
         # 
-        # >  This parameter is required if you set **ServiceType** to **private**.
+        # - false: Disabled.
+        # 
+        # > This parameter is required when \\`ServiceType\\` is set to \\`private\\`.
         self.is_support_operated = is_support_operated
         # The license metadata.
         self.license_metadata = license_metadata
-        # The logging configurations.
+        # The application log configuration.
         self.log_metadata = log_metadata
-        # The hosted O\\&M configurations.
+        # The O\\&M configuration.
         self.operation_metadata = operation_metadata
-        # The policy name. The name can be up to 128 characters in length. Separate multiple names with commas (,). Only hosted O\\&M policies are supported.
+        # The policy name. The name of a single policy can be up to 128 characters in length. Separate multiple names with commas (,). Only policies related to O\\&M parameters are supported.
         self.policy_names = policy_names
         # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # Whether resell is supported.
+        # Specifies whether the service can be distributed. Valid values:
+        # 
+        # - false: The service cannot be distributed.
+        # 
+        # - true: The service can be distributed.
         self.resellable = resellable
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         # The service ID.
         self.service_id = service_id
@@ -102,33 +109,41 @@ class CreateServiceShrinkRequest(DaraModel):
         self.service_info = service_info
         # The service type. Valid values:
         # 
-        # *   private: The service is a private service and is deployed within the account of a customer.
-        # *   managed: The service is a fully managed service and is deployed within the account of a service provider.
-        # *   operation: The service is a hosted O\\&M service.
-        # *   poc: The service is a trial service.
-        self.service_type = service_type
-        # The permission type of the deployment URL. Valid values:
+        # - private: The service instance is deployed in the user\\"s account.
         # 
-        # *   Public: All users can go to the URL to create a service instance or a trial service instance.
-        # *   Restricted: Only users in the whitelist can go to the URL to create a service instance or a trial service instance.
-        # *   OnlyFormalRestricted: Only users in the whitelist can go to the URL to create a service instance.
-        # *   OnlyTrailRestricted: Only users in the whitelist can go to the URL to create a trial service instance.
-        # *   Hidden: Users not in the whitelist cannot see the service details page when they go to the URL and cannot request deployment permissions.
+        # - managed: The service instance is managed in the service provider\\"s account.
+        # 
+        # - operation: An O\\&M service instance.
+        # 
+        # - poc: A trial service instance.
+        self.service_type = service_type
+        # The sharing type. Valid values:
+        # 
+        # - Public: The service is public. Full and trial deployments are not restricted.
+        # 
+        # - Restricted: The service is restricted. Full and trial deployments are restricted.
+        # 
+        # - OnlyFormalRestricted: Only full deployments are restricted.
+        # 
+        # - OnlyTrailRestricted: Only trial deployments are restricted.
+        # 
+        # - Hidden: The service is hidden. It is not visible and you cannot request deployment permissions.
         self.share_type = share_type
-        # The source service ID for resell。
+        # The ID of the source service for distribution.
         self.source_service_id = source_service_id
-        # The source service version for resell。
+        # The version of the source service for distribution.
         self.source_service_version = source_service_version
         # The custom tags.
         self.tag = tag
-        # The type of the tenant. Valid values:
+        # The tenant type. Valid values:
         # 
-        # *   SingleTenant
-        # *   MultiTenant
+        # - SingleTenant: Single-tenant.
+        # 
+        # - MultiTenant: Multitenant.
         self.tenant_type = tenant_type
-        # The trial duration. Unit: day. The maximum trial duration cannot exceed 30 days.
+        # The trial duration. Unit: days. The maximum trial duration is 30 days.
         self.trial_duration = trial_duration
-        # The metadata about the upgrade.
+        # The upgrade metadata.
         self.upgrade_metadata = upgrade_metadata
         # The version name.
         self.version_name = version_name
@@ -380,26 +395,27 @@ class CreateServiceShrinkRequestServiceInfo(DaraModel):
         short_description: str = None,
         softwares: List[main_models.CreateServiceShrinkRequestServiceInfoSoftwares] = None,
     ):
-        # Protocol document information about the service.
+        # The information about the service agreements.
         self.agreements = agreements
         # The URL of the service icon.
         self.image = image
         # The language of the service. Valid values:
         # 
-        # *   zh-CN: Chinese
-        # *   en-US: English
+        # - zh-CN: Chinese.
+        # 
+        # - en-US: English.
         # 
         # This parameter is required.
         self.locale = locale
-        # The URL of the detailed description of the service.
+        # The detailed description of the service.
         self.long_description_url = long_description_url
         # The service name.
         # 
         # This parameter is required.
         self.name = name
-        # The description of the service.
+        # A brief description of the service.
         self.short_description = short_description
-        # The list of the software in the service.
+        # The information about the software used in the service.
         self.softwares = softwares
 
     def validate(self):
@@ -481,9 +497,9 @@ class CreateServiceShrinkRequestServiceInfoSoftwares(DaraModel):
         name: str = None,
         version: str = None,
     ):
-        # The name of the software.
+        # The software name.
         self.name = name
-        # The version of the software.
+        # The software version.
         self.version = version
 
     def validate(self):
@@ -518,9 +534,9 @@ class CreateServiceShrinkRequestServiceInfoAgreements(DaraModel):
         name: str = None,
         url: str = None,
     ):
-        # Protocol name.
+        # The name of the agreement.
         self.name = name
-        # Protocol url.
+        # The URL of the agreement.
         self.url = url
 
     def validate(self):

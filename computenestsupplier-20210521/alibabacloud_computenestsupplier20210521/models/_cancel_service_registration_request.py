@@ -11,13 +11,13 @@ class CancelServiceRegistrationRequest(DaraModel):
         region_id: str = None,
         registration_id: str = None,
     ):
-        # Client token, used to ensure the idempotence of requests. Generate a unique value for this parameter from your client to ensure it is unique across different requests. ClientToken supports only ASCII characters.
+        # A client token to ensure the idempotence of the request. Generate a unique value from your client. This value must be unique for each request and can contain only ASCII characters.
         self.client_token = client_token
-        # Region ID.
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # Service registration ID.
+        # The ID of the service review request.
         # 
         # This parameter is required.
         self.registration_id = registration_id

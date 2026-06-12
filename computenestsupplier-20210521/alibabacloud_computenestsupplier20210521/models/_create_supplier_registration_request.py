@@ -28,35 +28,49 @@ class CreateSupplierRegistrationRequest(DaraModel):
         supplier_name_en: str = None,
         supplier_url: str = None,
     ):
-        # Contact email
+        # The email address of the contact person.
         # 
         # This parameter is required.
         self.contact_email = contact_email
-        # Contact number
+        # The phone number of the contact person.
         # 
         # This parameter is required.
         self.contact_number = contact_number
-        # Contact person
+        # The contact person.
         # 
         # This parameter is required.
         self.contact_person = contact_person
-        # Contact person tiltle
+        # The title of the contact person.
         # 
         # This parameter is required.
         self.contact_person_title = contact_person_title
-        # Whether to enable the resell mode
+        # Specifies whether to enable distribution.
         self.enable_reseller_mode = enable_reseller_mode
-        # Annual product revenue
+        # The annual revenue of the product.
         self.product_annual_revenue = product_annual_revenue
-        # The business of product
+        # The industry of the service provider\\"s product.
         self.product_business = product_business
-        # Product delivery type
+        # The delivery methods of the service provider\\"s product. Valid values:
+        # 
+        # - SaaS
+        # 
+        # - License
+        # 
+        # - API
+        # 
+        # - DesktopSoftware
+        # 
+        # - Others
         # 
         # This parameter is required.
         self.product_delivery_types = product_delivery_types
-        # The publish time of product
+        # The launch date of the product.
         self.product_publish_time = product_publish_time
-        # Product sell type
+        # The sales models of the service provider\\"s product. Valid values:
+        # 
+        # - Direct: Direct sales
+        # 
+        # - Channel: Channel sales
         # 
         # This parameter is required.
         self.product_sell_types = product_sell_types
@@ -64,25 +78,25 @@ class CreateSupplierRegistrationRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The description of resell business.
+        # The description of the distribution business.
         self.resell_business_desc = resell_business_desc
-        # The demands of service providers.
+        # The suggestions from the service provider.
         self.suggestion = suggestion
-        # The description of service provider.
+        # The description of the service provider.
         # 
         # This parameter is required.
         self.supplier_desc = supplier_desc
-        # The Logo of service provider.
+        # The icon of the service provider.
         self.supplier_logo = supplier_logo
         # The name of the service provider.
         # 
         # This parameter is required.
         self.supplier_name = supplier_name
-        # The english name of the service provider.
+        # The English name of the service provider.
         # 
         # This parameter is required.
         self.supplier_name_en = supplier_name_en
-        # The URL of the service provider.
+        # The supplier\\"s address.
         # 
         # This parameter is required.
         self.supplier_url = supplier_url

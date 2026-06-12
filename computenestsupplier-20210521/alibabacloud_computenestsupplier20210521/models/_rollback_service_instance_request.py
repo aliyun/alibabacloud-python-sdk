@@ -11,13 +11,13 @@ class RollbackServiceInstanceRequest(DaraModel):
         region_id: str = None,
         service_instance_id: str = None,
     ):
-        # Ensures idempotence of the request. Generate a value from your client to ensure it is unique across different requests. **ClientToken** supports only ASCII characters and cannot exceed 64 characters.
+        # The client token that is used to ensure the idempotence of the request. Generate a unique value on your client for each request. The **ClientToken** can contain only ASCII characters and must be no more than 64 characters in length.
         self.client_token = client_token
-        # Region ID.
+        # The region ID.
         self.region_id = region_id
-        # Service instance ID.
+        # The service instance ID.
         # 
-        # You can obtain the service instance ID by calling [ListServiceInstances - Query Service Instance List](https://help.aliyun.com/document_detail/396200.html).
+        # Call [ListServiceInstances](https://help.aliyun.com/document_detail/396200.html) to obtain the service instance ID.
         self.service_instance_id = service_instance_id
 
     def validate(self):

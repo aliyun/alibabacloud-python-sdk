@@ -16,15 +16,15 @@ class ListSupplierRegistrationsResponseBody(DaraModel):
         supplier_registrations: List[main_models.ListSupplierRegistrationsResponseBodySupplierRegistrations] = None,
         total_count: int = None,
     ):
-        # The number of entries per page. Valid values: 1 to 100. Default value: 20.
+        # The number of entries returned per page. Maximum value: 100. Default value: 20.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results.
+        # The token that is used to retrieve the next page of results.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The supplier registrations
+        # A list of service provider registration requests.
         self.supplier_registrations = supplier_registrations
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -104,60 +104,67 @@ class ListSupplierRegistrationsResponseBodySupplierRegistrations(DaraModel):
         supplier_uid: str = None,
         supplier_url: str = None,
     ):
-        # The comment of this registration.
+        # The review comments.
         self.comment = comment
-        # Contact email
+        # The email address of the contact person.
         self.contact_email = contact_email
-        # Contact number
+        # The phone number of the contact person.
         self.contact_number = contact_number
-        # Contact person
+        # The contact person.
         self.contact_person = contact_person
-        # Contact person tiltle.
+        # The title of the contact person.
         self.contact_person_title = contact_person_title
-        # Whether to enable the resell mode.
+        # Indicates whether the reseller mode is supported.
         self.enable_reseller_mode = enable_reseller_mode
-        # Annual product revenue
+        # The annual revenue of the service provider\\"s product.
         self.product_annual_revenue = product_annual_revenue
-        # The business of product.
+        # The industry of the service provider\\"s product.
         self.product_business = product_business
-        # Product delivery type，Valid values:
+        # The delivery method of the service provider\\"s product. Valid values:
         # 
-        # SaaS
-        # License
-        # API
-        # DesktopSoftware
-        # Others
+        # - SaaS
+        # 
+        # - License
+        # 
+        # - API
+        # 
+        # - Desktop software
+        # 
+        # - Other
         self.product_delivery_types = product_delivery_types
-        # The publish time of product.
+        # The product launch date.
         self.product_publish_time = product_publish_time
-        # Product sell type, Valid values:
+        # The sales model of the service provider\\"s product. Valid values:
         # 
         # - Direct
+        # 
         # - Channel
         self.product_sell_types = product_sell_types
-        # The registration ID.
+        # The ID of the review request.
         self.registration_id = registration_id
-        # The description of resell business.
+        # The description of the reseller business.
         self.resell_business_desc = resell_business_desc
-        # The deployment state of the registration. Valid values:
+        # The review status. Valid values:
         # 
-        # - Submitted
-        # - Approved
-        # - Rejected
+        # - Submitted: The request is submitted.
+        # 
+        # - Approved: The request is approved.
+        # 
+        # - Rejected: The request is rejected.
         self.status = status
-        # The submit time of this registration.
+        # The time when the request was submitted.
         self.submit_time = submit_time
-        # The description of service provider.
+        # The description of the service provider.
         self.supplier_desc = supplier_desc
-        # The Logo of service provider.
+        # The icon of the service provider.
         self.supplier_logo = supplier_logo
         # The name of the service provider.
         self.supplier_name = supplier_name
-        # The english name of the service provider.
+        # The English name of the service provider.
         self.supplier_name_en = supplier_name_en
-        # The Alibaba Cloud account ID of the service provider.
+        # The UID of the service provider.
         self.supplier_uid = supplier_uid
-        # The URL of the service provider.
+        # The URL of the service provider\\"s official website.
         self.supplier_url = supplier_url
 
     def validate(self):

@@ -19,13 +19,13 @@ class GetServiceRegistrationResponseBody(DaraModel):
         status: str = None,
         submit_time: str = None,
     ):
-        # Comment from reviewer.
+        # The review comments.
         self.comment = comment
-        # The details of service audit.
+        # The review details.
         self.detail = detail
-        # Finish time.
+        # The time when the review was completed.
         self.finish_time = finish_time
-        # Service registration ID.
+        # The ID of the review request.
         self.registration_id = registration_id
         # The request ID.
         self.request_id = request_id
@@ -35,15 +35,19 @@ class GetServiceRegistrationResponseBody(DaraModel):
         self.service_info = service_info
         # The service version.
         self.service_version = service_version
-        # The status of service registration. Valid values:
+        # The status of the review request. Valid values:
         # 
-        # *   Submitted
-        # *   Approved
-        # *   Rejected
-        # *   Canceled
-        # *   Executed
+        # - Submitted
+        # 
+        # - Approved
+        # 
+        # - Rejected
+        # 
+        # - Canceled
+        # 
+        # - Executed: The service version is published.
         self.status = status
-        # Submit time.
+        # The time when the request was submitted.
         self.submit_time = submit_time
 
     def validate(self):
@@ -132,16 +136,15 @@ class GetServiceRegistrationResponseBodyServiceInfo(DaraModel):
         trial_type: str = None,
         version_name: str = None,
     ):
-        # The type of the service. Valid values:
-        # 
-        # *   private: The service is a private service and is deployed within the account of a customer.
-        # *   managed: The service is a fully managed service and is deployed within the account of a service provider.
-        # *   operation: The service is a hosted O\\&M service.
+        # The service type.
         self.service_type = service_type
-        # The trial policy. Valid values:
+        # The trial type.
         # 
-        # *   Trial: Trials are supported.
-        # *   NotTrial: Trials are not supported.
+        # Valid values:
+        # 
+        # - Trial: The service supports trial.
+        # 
+        # - NotTrial: The service does not support trial.
         self.trial_type = trial_type
         # The version name.
         self.version_name = version_name
@@ -186,13 +189,13 @@ class GetServiceRegistrationResponseBodyDetail(DaraModel):
         reports: str = None,
         template_diff_url: str = None,
     ):
-        # Whether risk exists.
+        # Indicates whether the service has risks.
         self.at_risk = at_risk
-        # Whether service is associated with artifact.
+        # Indicates whether the service is associated with an artifact.
         self.has_related_artifact = has_related_artifact
-        # The reports.
+        # The review reports.
         self.reports = reports
-        # The url of template diff file.
+        # The URL to view the differences in the template.
         self.template_diff_url = template_diff_url
 
     def validate(self):

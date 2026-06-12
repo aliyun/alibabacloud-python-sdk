@@ -17,13 +17,25 @@ class ListServiceBuildLogsRequest(DaraModel):
         service_id: str = None,
         sort_order: str = None,
     ):
+        # The filter.
         self.filter = filter
+        # The number of entries to return on each page. Maximum value: 100. Default value: 20.
         self.max_results = max_results
+        # The token that is used to retrieve the next page of results. Set this parameter to the NextToken value returned in the previous API call.
         self.next_token = next_token
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The service ID.
+        # 
         # This parameter is required.
         self.service_id = service_id
+        # The sort order. Valid values:
+        # 
+        # - **Ascending**: Ascending
+        # 
+        # - **Descending** (default): Descending
         self.sort_order = sort_order
 
     def validate(self):
@@ -90,7 +102,17 @@ class ListServiceBuildLogsRequestFilter(DaraModel):
         name: str = None,
         value: List[str] = None,
     ):
+        # The name of the filter. You can specify one or more filter names. Valid values:
+        # 
+        # - ServiceId: The service ID.
+        # 
+        # - Name: The service name.
+        # 
+        # - Status: The service status.
+        # 
+        # - SupplierName: The service provider name.
         self.name = name
+        # The list of filter values. The list can contain from 1 to 10 values.
         self.value = value
 
     def validate(self):

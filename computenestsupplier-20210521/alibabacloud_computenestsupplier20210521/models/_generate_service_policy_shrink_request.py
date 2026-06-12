@@ -2,40 +2,42 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
 from darabonba.model import DaraModel
 
-class CreateServiceTestCaseRequest(DaraModel):
+class GenerateServicePolicyShrinkRequest(DaraModel):
     def __init__(
         self,
+        operation_types: List[str] = None,
+        parameters_shrink: str = None,
         region_id: str = None,
         service_id: str = None,
         service_version: str = None,
         template_name: str = None,
-        test_case_name: str = None,
-        test_config: str = None,
+        trial_type: str = None,
     ):
+        # The operation types for which to generate policy information.
+        self.operation_types = operation_types
+        self.parameters_shrink = parameters_shrink
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The service ID.
         # 
         # This parameter is required.
         self.service_id = service_id
         # The service version.
-        # 
-        # This parameter is required.
         self.service_version = service_version
         # The template name.
-        # 
-        # This parameter is required.
         self.template_name = template_name
-        # The name of the test case.
+        # The trial type. Valid values:
         # 
-        # This parameter is required.
-        self.test_case_name = test_case_name
-        # The test configuration.
+        # - Trial: The service supports a trial.
         # 
-        # This parameter is required.
-        self.test_config = test_config
+        # - NotTrial: The service does not support a trial.
+        self.trial_type = trial_type
 
     def validate(self):
         pass
@@ -45,6 +47,12 @@ class CreateServiceTestCaseRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.operation_types is not None:
+            result['OperationTypes'] = self.operation_types
+
+        if self.parameters_shrink is not None:
+            result['Parameters'] = self.parameters_shrink
+
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
@@ -57,16 +65,19 @@ class CreateServiceTestCaseRequest(DaraModel):
         if self.template_name is not None:
             result['TemplateName'] = self.template_name
 
-        if self.test_case_name is not None:
-            result['TestCaseName'] = self.test_case_name
-
-        if self.test_config is not None:
-            result['TestConfig'] = self.test_config
+        if self.trial_type is not None:
+            result['TrialType'] = self.trial_type
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('OperationTypes') is not None:
+            self.operation_types = m.get('OperationTypes')
+
+        if m.get('Parameters') is not None:
+            self.parameters_shrink = m.get('Parameters')
+
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
 
@@ -79,11 +90,8 @@ class CreateServiceTestCaseRequest(DaraModel):
         if m.get('TemplateName') is not None:
             self.template_name = m.get('TemplateName')
 
-        if m.get('TestCaseName') is not None:
-            self.test_case_name = m.get('TestCaseName')
-
-        if m.get('TestConfig') is not None:
-            self.test_config = m.get('TestConfig')
+        if m.get('TrialType') is not None:
+            self.trial_type = m.get('TrialType')
 
         return self
 

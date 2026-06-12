@@ -10,14 +10,15 @@ class GetArtifactRepositoryCredentialsRequest(DaraModel):
         artifact_type: str = None,
         deploy_region_id: str = None,
     ):
-        # The type of the deployment package. Valid values:
+        # The type of the artifact. Valid values:
         # 
-        # *   File: Object Storage Service (OSS) object.
-        # *   AcrImage: container image.
+        # - File: an OSS file.
+        # 
+        # - AcrImage: a container image.
         # 
         # This parameter is required.
         self.artifact_type = artifact_type
-        # The region ID.
+        # The region to which the artifact is uploaded.
         self.deploy_region_id = deploy_region_id
 
     def validate(self):

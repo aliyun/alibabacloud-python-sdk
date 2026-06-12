@@ -13,11 +13,13 @@ class LaunchServiceResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The mode of the service online. Valid Type
+        # The type of the service publishing action. Valid values:
         # 
-        # - PublishNewVersion: Launch new version
-        # - PublishOfflineVersion:  The offline version is online again.
-        # - UpdateLatestVersion: Update the latest version online
+        # - PublishNewVersion: A new version is published.
+        # 
+        # - PublishOfflineVersion: An unpublished version is republished.
+        # 
+        # - UpdateLatestVersion: The latest online version is updated.
         self.service_launch_result_type = service_launch_result_type
         # The service version.
         self.version = version

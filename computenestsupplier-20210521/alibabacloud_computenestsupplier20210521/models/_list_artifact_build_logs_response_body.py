@@ -15,9 +15,13 @@ class ListArtifactBuildLogsResponseBody(DaraModel):
         next_token: str = None,
         request_id: str = None,
     ):
+        # The log array.
         self.build_logs = build_logs
+        # The number of entries returned per page. The maximum value is 100 and the default value is 20.
         self.max_results = max_results
+        # The token to start the next paged query.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -72,7 +76,10 @@ class ListArtifactBuildLogsResponseBodyBuildLogs(DaraModel):
         content: str = None,
         timestamp: str = None,
     ):
+        # The log content.
         self.content = content
+        # The timestamp.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.timestamp = timestamp
 

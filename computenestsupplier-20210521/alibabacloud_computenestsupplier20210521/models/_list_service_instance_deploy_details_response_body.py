@@ -16,15 +16,15 @@ class ListServiceInstanceDeployDetailsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The details of the service instance deployment.
+        # The deployment details of the service instance.
         self.deploy_details = deploy_details
-        # The number of entries per page. Valid values: 1 to 100. Default value: 20.
+        # The number of entries returned per page. The maximum value is 100. The default value is 20.
         self.max_results = max_results
-        # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+        # The token that is used to start the next query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -98,41 +98,43 @@ class ListServiceInstanceDeployDetailsResponseBodyDeployDetails(DaraModel):
         timestamp: str = None,
         user_id: str = None,
     ):
-        # The total number of entries that meet the specified conditions.
+        # The number of rows in the aggregate data.
         self.count = count
-        # The time when the service instance was created.
+        # The time when the entry was created.
         self.create_time = create_time
-        # The period over which data is aggregated.
+        # The aggregation period.
         self.cycle = cycle
-        # The indicates whether the deployment was successful.
+        # Indicates whether the deployment was successful.
         self.deploy_succeeded = deploy_succeeded
-        # The error code.
+        # The error code returned when the deployment failed.
         self.error_code = error_code
-        # The error description.
+        # The error details.
         self.error_detail = error_detail
-        # The type of error that caused the deployment to fail.
+        # The type of the error that occurred when the deployment failed.
         self.error_type = error_type
         # The service ID.
         self.service_id = service_id
         # The service instance ID.
         self.service_instance_id = service_instance_id
-        # The name of the service in Chinese.
+        # The Chinese name of the service.
         self.service_name_chn = service_name_chn
-        # The name of the service in English.
+        # The English name of the service.
         self.service_name_eng = service_name_eng
-        # The type of service. 
+        # The service type.
         # 
-        # Possible values:
+        # Valid values:
         # 
-        # - private: Deployed under the user\\"s account.
-        # - managed: Hosted under the service provider\\"s account.
-        # - operation: Managed operation service.
+        # - private: The service is deployed in the user\\"s account.
+        # 
+        # - managed: The service is hosted in the service provider\\"s account.
+        # 
+        # - operation: The service is an Alibaba Cloud Managed Service.
         self.service_type = service_type
         # The service version.
         self.service_version = service_version
-        # The timestamp when the response is returned.
+        # The timestamp.
         self.timestamp = timestamp
-        # The aliuid of user.
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):

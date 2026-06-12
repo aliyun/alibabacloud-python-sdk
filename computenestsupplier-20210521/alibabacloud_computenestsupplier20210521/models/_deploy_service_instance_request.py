@@ -11,7 +11,7 @@ class DeployServiceInstanceRequest(DaraModel):
         region_id: str = None,
         service_instance_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # A client token to ensure the idempotence of the request. Generate a unique value from your client for this parameter. The value can contain only ASCII characters and must be no more than 64 characters in length.
         self.client_token = client_token
         # The region ID.
         # 

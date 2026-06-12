@@ -16,15 +16,15 @@ class ListResellersResponseBody(DaraModel):
         supplier_information: List[main_models.ListResellersResponseBodySupplierInformation] = None,
         total_count: int = None,
     ):
-        # The number of entries per page. Valid values: 1 to 100. Default value: 20.
+        # The number of entries returned per page. The maximum value is 100.
         self.max_results = max_results
-        # A pagination token.
+        # The token that is used to retrieve the next page of results.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # distributor informations
+        # The list of results.
         self.supplier_information = supplier_information
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -88,15 +88,15 @@ class ListResellersResponseBodySupplierInformation(DaraModel):
         supplier_uid: int = None,
         supplier_url: str = None,
     ):
-        # The description of distributor.
+        # The description of the reseller.
         self.supplier_desc = supplier_desc
-        # The Logo of distributor
+        # The icon of the reseller.
         self.supplier_logo = supplier_logo
-        # The name of the distributor
+        # The name of the reseller.
         self.supplier_name = supplier_name
-        # The Alibaba Cloud account ID of the distributor.
+        # The UID of the reseller.
         self.supplier_uid = supplier_uid
-        # The URL of the distributor.
+        # The URL of the reseller\\"s official website.
         self.supplier_url = supplier_url
 
     def validate(self):

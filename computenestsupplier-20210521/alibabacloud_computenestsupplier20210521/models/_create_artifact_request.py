@@ -23,46 +23,57 @@ class CreateArtifactRequest(DaraModel):
         tag: List[main_models.CreateArtifactRequestTag] = None,
         version_name: str = None,
     ):
-        # The build properties of the artifact, utilized for hosting and building the deployment package.
+        # The content used to build the artifact. This parameter is used for managed artifact builds.
         self.artifact_build_property = artifact_build_property
-        # The type of the artifact build task. Valid values:
+        # The type of the artifact to be built. Valid values:
         # 
-        # - EcsImage: Build ECS (Elastic Container Service) image.
+        # - EcsImage: builds an ECS image.
         # 
-        # - Dockerfile: Build container image based on Dockerfile.
+        # - Dockerfile: builds a container image based on a Dockerfile.
         # 
-        # - Buildpacks: Build container image based on Buildpacks.
+        # - Buildpacks: builds a container image based on Buildpacks.
         # 
-        # - ContainerImage: Rebuild container image by renaming an existing container image.
+        # - ContainerImage: builds a container image by renaming an existing container image.
         self.artifact_build_type = artifact_build_type
-        # The ID of the deployment package.
-        self.artifact_id = artifact_id
-        # The properties of the deployment object.
-        self.artifact_property = artifact_property
-        # The type of the deployment package. Valid values:
+        # The artifact ID.
         # 
-        # *   EcsImage: Elastic Compute Service (ECS) image.
-        # *   AcrImage: container image.
-        # *   File: Object Storage Service (OSS) object.
-        # *   Script: script.
+        # This parameter is required to create a new version of an existing artifact.
+        # 
+        # You can call the [ListArtifacts](https://help.aliyun.com/document_detail/469993.html) operation to obtain the artifact ID.
+        self.artifact_id = artifact_id
+        # The content of the artifact.
+        self.artifact_property = artifact_property
+        # The artifact type.
+        # 
+        # Valid values:
+        # 
+        # - EcsImage: an ECS image artifact.
+        # 
+        # - AcrImage: a container image artifact.
+        # 
+        # - File: an Object Storage Service (OSS) file artifact.
+        # 
+        # - Script: a script artifact.
+        # 
+        # - HelmChart: a Helm chart artifact.
         # 
         # This parameter is required.
         self.artifact_type = artifact_type
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # Ensures the idempotence of the request.
         self.client_token = client_token
-        # The description of the deployment package.
+        # The description of the artifact.
         self.description = description
-        # The name of the deployment package.
+        # The artifact name.
         # 
         # This parameter is required.
         self.name = name
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The supported regions.
+        # The regions where the image can be distributed.
         self.support_region_ids = support_region_ids
         # The custom tags.
         self.tag = tag
-        # The version name of the deployment package.
+        # The name of the artifact version.
         # 
         # This parameter is required.
         self.version_name = version_name
@@ -217,42 +228,49 @@ class CreateArtifactRequestArtifactProperty(DaraModel):
         tag: str = None,
         url: str = None,
     ):
-        # The commodity code of the service in Alibaba Cloud Marketplace.
+        # The commodity code of the product in Alibaba Cloud Marketplace.
         # 
-        # >  This parameter is available only if the deployment package is an image.
+        # Obtain the commodity code in the [Alibaba Cloud Marketplace console](https://market.console.aliyun.com/?spm=a2c4g.11186623.0.0.599d6787eMBBxu#/apiTools?_k=d7j8gk).
+        # 
+        # > This parameter can be set only when the artifact is an image artifact.
         self.commodity_code = commodity_code
-        # The commodity version of the service in Alibaba Cloud Marketplace.
+        # The version of the product in Alibaba Cloud Marketplace.
         # 
-        # >  This parameter is available only if the deployment package is an image.
+        # View the product version on the [Alibaba Cloud Marketplace](https://market.aliyun.com/?spm=5176.24779694.0.0.b2144d22sksKM5) page.
+        # 
+        # > This parameter can be set only when the artifact is an image artifact.
         self.commodity_version = commodity_version
         # The image ID.
         # 
-        # >  This parameter is available only if the deployment package is an image.
-        self.image_id = image_id
-        # The region ID.
+        # After you specify a region ID, call the [DescribeImages](https://help.aliyun.com/document_detail/2679797.html) operation to view the available image IDs in the specified region.
         # 
-        # >  This parameter is available only if the deployment package is an image.
+        # > This parameter can be set only when the artifact is an image artifact.
+        self.image_id = image_id
+        # The region of the image.
+        # 
+        # > This parameter can be set only when the artifact is an image artifact.
         self.region_id = region_id
         # The ID of the image repository.
         # 
-        # >  This parameter is available only if the deployment package is a container image or of the Helm chart type.
+        # Call the [ListAcrImageRepositories](https://help.aliyun.com/document_detail/2539919.html) operation to obtain the image repository ID.
+        # 
+        # > This parameter can be set only when the artifact is a container image artifact or a Helm chart artifact.
         self.repo_id = repo_id
         # The name of the image repository.
         # 
-        # >  This parameter is available only if the deployment package is a container image or of the Helm chart type.
+        # > This parameter can be set only when the artifact is a container image artifact or a Helm chart artifact.
         self.repo_name = repo_name
-        # The default repository type. Valid values:
-        # 
-        # *   `Public`: a public repository.
-        # *   `Private`: a private repository.
-        # 
-        # You can specify the RepoType or Summary parameter. The RepoType parameter is optional.
+        # The type of the repository. Valid values: Public and Private.
         self.repo_type = repo_type
-        # The version tag of the image repository.
+        # The version of the image in the image repository.
         # 
-        # >  This parameter is available only if the deployment package is a container image or of the Helm chart type.
+        # Call the [ListAcrImageTags](https://help.aliyun.com/document_detail/2539920.html) operation to obtain the version of the image in the image repository.
+        # 
+        # > This parameter can be set only when the artifact is a container image artifact or a Helm chart artifact.
         self.tag = tag
-        # The object URL of the deployment package.
+        # The URL of the file artifact.
+        # 
+        # Upload a file and obtain its URL in the [Object Storage Service console](https://oss.console.aliyun.com/bucket).
         self.url = url
 
     def validate(self):
@@ -337,51 +355,55 @@ class CreateArtifactRequestArtifactBuildProperty(DaraModel):
         source_image_id: str = None,
         system_disk_size: int = None,
     ):
-        # The build arguments used during the image build process.
+        # The build arguments.
         # 
-        # >  This parameter is available only if the ArtifactBuildType is Dockerfile type.
+        # > This parameter can be set only when ArtifactBuildType is set to Dockerfile.
         self.build_args = build_args
-        # The address of the code repository.
+        # The code repository address.
         # 
-        # >  This parameter is available only if the ArtifactBuildType is Dockerfile or Buildpacks type.
+        # > This parameter can be set only when ArtifactBuildType is set to Dockerfile or Buildpacks.
         self.code_repo = code_repo
-        # The command content.
+        # The content of the command.
         # 
-        # >  This parameter is available only if the deployment package is a ecs image type.
+        # > This parameter can be set only when the artifact is an ECS image artifact.
         self.command_content = command_content
         # The command type. Valid values:
         # 
-        # *   RunBatScript: batch command, applicable to Windows instances.
-        # *   RunPowerShellScript: PowerShell command, applicable to Windows instances.
-        # *   RunShellScript: shell command, applicable to Linux instances.
+        # - RunBatScript: The command is a BAT script that runs on a Windows instance.
         # 
-        # >  This parameter is available only if the deployment package is a ecs image type.
+        # - RunPowerShellScript: The command is a PowerShell script that runs on a Windows instance.
+        # 
+        # - RunShellScript: The command is a shell script that runs on a Linux instance.
+        # 
+        # > This parameter can be set only when the artifact is an ECS image artifact.
         self.command_type = command_type
-        # The relative path to the Dockerfile within the code repository.
+        # The relative address of the Dockerfile file in the code repository.
         # 
-        # >  This parameter is available only if the ArtifactBuildType is Dockerfile type.
+        # Default value: Dockerfile.
+        # 
+        # > This parameter can be set only when ArtifactBuildType is set to Dockerfile.
         self.dockerfile_path = dockerfile_path
-        # Whether GPU is required. CPU instance is used by default.
+        # Specifies whether to use a GPU-accelerated instance. By default, a CPU-powered instance is used.
         self.enable_gpu = enable_gpu
-        # The region ID where the source mirror image is located.
+        # The ID of the region where the source image is located.
         # 
-        # >  This parameter is available only if the deployment package is a ecs image type.
+        # > This parameter can be set only when the artifact is an ECS image artifact.
         self.region_id = region_id
-        # The pull location of the source container image. This is used for the command docker pull ${SourceContainerImage}.
+        # The pull address of the source container image.
         # 
-        # >  This parameter is available only if the ArtifactBuildType is ContainerImage type.
+        # Used for docker pull ${SourceContainerImage}.
+        # 
+        # > This parameter can be set only when ArtifactBuildType is set to ContainerImage.
         self.source_container_image = source_container_image
-        # The source image id. Supported Types:
+        # The source image ID. The following types are supported:
         # 
-        # - Image ID: Pass the Image ID of the Ecs image directly.
+        # - Image ID: The ID of the ECS image.
         # 
-        # - OOS Common Parameter Name: Obtain the corresponding Image ID automatically by using the OOS common parameter name.
+        # - OOS public parameter name: The image ID is automatically obtained based on the name of the Operation Orchestration Service (OOS) public parameter.
         # 
-        # >  This parameter is available only if the deployment package is a ecs image type.
+        # > This parameter can be set only when the artifact is an ECS image artifact.
         self.source_image_id = source_image_id
         # The size of the system disk. Unit: GiB.
-        # 
-        # >  The system disk must be at least as large as the image.
         self.system_disk_size = system_disk_size
 
     def validate(self):
@@ -480,28 +502,29 @@ class CreateArtifactRequestArtifactBuildPropertyCodeRepo(DaraModel):
         repo_id: int = None,
         repo_name: str = None,
     ):
-        # The name of the branch in the code repository.
+        # The name of the code repository branch.
         self.branch = branch
-        # The endpoint. 
-        # The URL address used to access the privately deployed GitLab instance.
+        # The endpoint. This parameter is required for a private GitLab deployment.
         self.endpoint = endpoint
         # The organization ID.
         self.org_id = org_id
         # The owner of the code repository.
         # 
-        # >  This parameter is available only if the git repository is private.
+        # > This parameter is required only when the code repository is a private repository.
         self.owner = owner
-        # The platform type. Valid values: 
+        # The platform where the code repository is located. Valid values:
         # 
         # - github
         # 
         # - gitee
+        # 
         # - gitlab
+        # 
         # - codeup
         self.platform = platform
         # The repository ID.
         self.repo_id = repo_id
-        # The name of the repository.
+        # The repository name.
         self.repo_name = repo_name
 
     def validate(self):
@@ -566,9 +589,9 @@ class CreateArtifactRequestArtifactBuildPropertyBuildArgs(DaraModel):
         argument_name: str = None,
         argument_value: str = None,
     ):
-        # The name of a specific build argument.
+        # The name of the build argument.
         self.argument_name = argument_name
-        # The value of a specific build argument.
+        # The value of the build argument.
         self.argument_value = argument_value
 
     def validate(self):

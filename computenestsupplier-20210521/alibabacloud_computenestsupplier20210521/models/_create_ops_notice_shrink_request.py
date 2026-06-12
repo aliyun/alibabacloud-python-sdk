@@ -20,19 +20,56 @@ class CreateOpsNoticeShrinkRequest(DaraModel):
         solutions: str = None,
         type: str = None,
     ):
+        # The properties of the O\\&M item.
         self.attributes_shrink = attributes_shrink
+        # The category of the notice. Valid values:
+        # 
+        # - Availability
+        # 
+        # - Cost
+        # 
+        # - Performance
+        # 
+        # - Recovery
+        # 
+        # - Security
+        # 
         # This parameter is required.
         self.category = category
+        # A client token to ensure that the request is idempotent. Generate a unique token for each request. The token can contain only ASCII characters. Note: If you do not set this parameter, the system uses the RequestId as the ClientToken. The RequestId may be different for each request.
         self.client_token = client_token
+        # The content of the notice.
+        # 
         # This parameter is required.
         self.content = content
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The service ID.
         self.service_id = service_id
+        # The service versions to which the notice applies.
         self.service_version = service_version
+        # The severity level of the notice. Valid values:
+        # 
+        # - Critical
+        # 
+        # - High
+        # 
+        # - Medium
+        # 
+        # - Low
+        # 
         # This parameter is required.
         self.severity = severity
+        # The solution.
         self.solutions = solutions
+        # The type of the notice. Valid values:
+        # 
+        # - ServiceInstanceUpgrade: Upgrade
+        # 
+        # - VulnerabilityFix: Vulnerability
+        # 
         # This parameter is required.
         self.type = type
 

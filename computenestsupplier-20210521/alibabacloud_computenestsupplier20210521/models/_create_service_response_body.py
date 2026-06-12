@@ -16,13 +16,13 @@ class CreateServiceResponseBody(DaraModel):
         status: str = None,
         version: str = None,
     ):
-        # The dry run result.
+        # The check result.
         self.dry_run_result = dry_run_result
         # The request ID.
         self.request_id = request_id
         # The service ID.
         self.service_id = service_id
-        # The status of the service.
+        # The service status.
         self.status = status
         # The service version.
         self.version = version
@@ -78,7 +78,7 @@ class CreateServiceResponseBodyDryRunResult(DaraModel):
         self,
         role_policy: main_models.CreateServiceResponseBodyDryRunResultRolePolicy = None,
     ):
-        # The required ram policy for deploying role.
+        # The access policy of the deployment role.
         self.role_policy = role_policy
 
     def validate(self):
@@ -109,9 +109,9 @@ class CreateServiceResponseBodyDryRunResultRolePolicy(DaraModel):
         missing_policy: List[main_models.CreateServiceResponseBodyDryRunResultRolePolicyMissingPolicy] = None,
         policy: str = None,
     ):
-        # The missing ram policy for deploying role.
+        # The missing access policies for the deployment role.
         self.missing_policy = missing_policy
-        # The required ram policy for deploying role.
+        # The access policy required for the deployment role.
         self.policy = policy
 
     def validate(self):
@@ -155,11 +155,11 @@ class CreateServiceResponseBodyDryRunResultRolePolicyMissingPolicy(DaraModel):
         resource: str = None,
         service_name: str = None,
     ):
-        # The Actions.
+        # The operations in the access policy.
         self.action = action
-        # Resource in ram policy.
+        # The resource in the access policy.
         self.resource = resource
-        # The service name in ram policy.
+        # The service name in the access policy.
         self.service_name = service_name
 
     def validate(self):

@@ -30,45 +30,47 @@ class GetArtifactResponseBody(DaraModel):
         tags: List[main_models.GetArtifactResponseBodyTags] = None,
         version_name: str = None,
     ):
-        # The build properties of the artifact, utilized for hosting and building the deployment package.
+        # The content used to build the artifact. This parameter is used for managed artifact builds.
         self.artifact_build_property = artifact_build_property
-        # The type of the deployment package to be built.
+        # The type of the artifact build.
         self.artifact_build_type = artifact_build_type
-        # The ID of the deployment package.
+        # The ID of the artifact.
         self.artifact_id = artifact_id
-        # The properties of the deployment package.
+        # The properties of the artifact.
         self.artifact_property = artifact_property
-        # The type of the deployment package.
+        # The type of the artifact.
         self.artifact_type = artifact_type
-        # The version of the deployment package.
+        # The version of the artifact.
         self.artifact_version = artifact_version
-        # The description of the deployment package.
+        # The description of the artifact.
         self.description = description
-        # The time when the deployment package was modified.
+        # The time when the artifact was last modified.
         self.gmt_modified = gmt_modified
-        # The latest version of the deployment package.
+        # The latest version of the artifact.
         self.max_version = max_version
-        # The name of the deployment package.
+        # The name of the artifact.
         self.name = name
-        # Permission fields are applicable to container image artifact and Helm Chart artifact They can only change from Automatic to Public. Options:
+        # The permission type. This parameter is valid for artifacts of the ContainerImage and HelmChart types. Valid values:
+        # 
         # - Public
+        # 
         # - Automatic
         self.permission_type = permission_type
-        # The distribution progress of the deployment package.
+        # The distribution progress of the artifact.
         self.progress = progress
         # The request ID.
         self.request_id = request_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The status of the deployment package. Valid values:
+        # The status of the artifact.
         self.status = status
-        # The description of the deployment package.
+        # The description of the artifact status.
         self.status_detail = status_detail
-        # The ID of the region that supports the deployment package.
+        # The IDs of the regions where the artifact is supported.
         self.support_region_ids = support_region_ids
-        # The tags of the deployment package.
+        # The tags of the artifact.
         self.tags = tags
-        # The version name of the deployment package.
+        # The version name of the artifact.
         self.version_name = version_name
 
     def validate(self):
@@ -213,9 +215,9 @@ class GetArtifactResponseBodyTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the deployment package.
+        # The tag key of the artifact.
         self.key = key
-        # The tag value of the deployment package.
+        # The tag value of the artifact.
         self.value = value
 
     def validate(self):

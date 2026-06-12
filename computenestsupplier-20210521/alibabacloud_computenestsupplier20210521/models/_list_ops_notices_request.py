@@ -15,9 +15,14 @@ class ListOpsNoticesRequest(DaraModel):
         next_token: str = None,
         region_id: str = None,
     ):
+        # The filters.
         self.filter = filter
+        # The number of entries to return on each page. Maximum value: 100. Default value: 20.
         self.max_results = max_results
+        # The query token. Set the value to the NextToken value returned in the last API call.
         self.next_token = next_token
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
 
@@ -73,7 +78,21 @@ class ListOpsNoticesRequestFilter(DaraModel):
         name: str = None,
         value: List[str] = None,
     ):
+        # The filter name. Valid values:
+        # 
+        # - Type: The notice type.
+        # 
+        # - ServiceId: The service ID.
+        # 
+        # - ServiceName: The service name. Fuzzy search is supported. The format for a fuzzy search is \\*xxx\\*.
+        # 
+        # - Category: The notice category.
+        # 
+        # - Severity: The severity level.
+        # 
+        # - NoticeId: The O\\&M notice ID.
         self.name = name
+        # The filter values.
         self.value = value
 
     def validate(self):

@@ -22,27 +22,35 @@ class GetSupplierInformationResponseBody(DaraModel):
         supplier_url: str = None,
         support_contacts: List[main_models.GetSupplierInformationResponseBodySupportContacts] = None,
     ):
-        # Acr container namespace
+        # The namespace for the container image deployment.
         self.acr_namespace = acr_namespace
-        # The delivery settings.
+        # The computing resource configuration.
         self.delivery_settings = delivery_settings
-        # Whether to enable reseller
+        # Indicates whether to enable resellers. Valid values:
+        # 
+        # - true: Enabled.
+        # 
+        # - false: Disabled.
         self.enable_reseller = enable_reseller
-        # The Ip of the operation.
+        # The IP address for the operation.
         self.operation_ip = operation_ip
-        # The MFA of the operation.
+        # Indicates whether a multi-factor authentication (MFA) device is used. Valid values:
+        # 
+        # - true: Yes.
+        # 
+        # - false: No.
         self.operation_mfa_present = operation_mfa_present
         # The request ID.
         self.request_id = request_id
-        # The description of service provider.
+        # The description of the service provider.
         self.supplier_desc = supplier_desc
-        # The Logo of service provider.
+        # The icon of the service provider.
         self.supplier_logo = supplier_logo
         # The name of the service provider.
         self.supplier_name = supplier_name
         # The URL of the service provider.
         self.supplier_url = supplier_url
-        # Contact information of the service provider
+        # The contact information of the service provider.
         self.support_contacts = support_contacts
 
     def validate(self):
@@ -142,9 +150,9 @@ class GetSupplierInformationResponseBodySupportContacts(DaraModel):
         type: str = None,
         value: str = None,
     ):
-        # The type of contact information.
+        # The type of the contact method.
         self.type = type
-        # The value of contact information.
+        # The contact method.
         self.value = value
 
     def validate(self):
@@ -183,12 +191,13 @@ class GetSupplierInformationResponseBodyDeliverySettings(DaraModel):
     ):
         # The name of the OSS bucket.
         self.oss_bucket_name = oss_bucket_name
-        # Indicates whether screencast delivery to Object Storage Service (OSS) is enabled. Valid values:
+        # Indicates whether the feature that delivers the execution results of Cloud Assistant O\\&M tasks to Object Storage Service (OSS) is enabled. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: Enabled.
+        # 
+        # - false (default): Disabled.
         self.oss_enabled = oss_enabled
-        # The number of days for which the screencasts are saved.
+        # The expiration period for objects in OSS, in days.
         self.oss_expiration_days = oss_expiration_days
         # The OSS path.
         self.oss_path = oss_path

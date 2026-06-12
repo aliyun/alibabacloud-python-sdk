@@ -16,16 +16,19 @@ class ListTagValuesRequest(DaraModel):
         # 
         # This parameter is required.
         self.key = key
-        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+        # The token to start the next query.
         self.next_token = next_token
         # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The type of the resource. Valid values: 
-        # - service
-        # - service instance
-        # - artifact
+        # The resource type. Valid values:
+        # 
+        # - service: service.
+        # 
+        # - serviceinstance: service instance.
+        # 
+        # - artifact: artifact
         # 
         # This parameter is required.
         self.resource_type = resource_type

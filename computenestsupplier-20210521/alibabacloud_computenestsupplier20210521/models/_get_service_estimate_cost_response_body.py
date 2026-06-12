@@ -13,7 +13,7 @@ class GetServiceEstimateCostResponseBody(DaraModel):
         request_id: str = None,
         resources: Dict[str, Any] = None,
     ):
-        # The subscription duration information about the purchase order of Alibaba Cloud Marketplace.
+        # The subscription details of the Alibaba Cloud Marketplace order.
         self.commodity = commodity
         # The request ID.
         self.request_id = request_id

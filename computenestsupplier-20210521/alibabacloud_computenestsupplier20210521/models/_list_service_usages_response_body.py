@@ -16,15 +16,15 @@ class ListServiceUsagesResponseBody(DaraModel):
         service_usages: List[main_models.ListServiceUsagesResponseBodyServiceUsages] = None,
         total_count: int = None,
     ):
-        # The number of entries per page. Valid values: 1 to 100. Default value: 20.
+        # The number of entries returned per page. The maximum value is 100. The default value is 20.
         self.max_results = max_results
-        # The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results.
+        # The token to retrieve the next page of results. If this parameter is not empty, more results can be retrieved.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The service applications.
+        # The service usage details.
         self.service_usages = service_usages
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -92,28 +92,31 @@ class ListServiceUsagesResponseBodyServiceUsages(DaraModel):
         user_ali_uid: int = None,
         user_information: Dict[str, str] = None,
     ):
-        # The comment on the approval.
+        # The remarks on the approval.
         self.comments = comments
-        # The time when the application was created.
+        # The time when the request was created.
         self.create_time = create_time
         # The service ID.
         self.service_id = service_id
         # The service name.
         self.service_name = service_name
-        # The status of the service application. Valid values:
+        # The service status. Valid values:
         # 
-        # *   Submitted: The application is submitted or is to be approved.
-        # *   Approved: The application is approved.
-        # *   Rejected: The application is rejected.
-        # *   Canceled: The application is canceled.
+        # - Submitted: The request is submitted and is pending approval.
+        # 
+        # - Approved: The request is approved.
+        # 
+        # - Rejected: The request is rejected.
+        # 
+        # - Canceled: The request is canceled.
         self.status = status
-        # The name of the service provider.
+        # The supplier name.
         self.supplier_name = supplier_name
-        # The time when the application was updated.
+        # The time when the request was last updated.
         self.update_time = update_time
-        # The ID of the Alibaba Cloud account.
+        # The Alibaba Cloud account ID of the user.
         self.user_ali_uid = user_ali_uid
-        # The user information.
+        # The information about the user who submitted the request.
         self.user_information = user_information
 
     def validate(self):

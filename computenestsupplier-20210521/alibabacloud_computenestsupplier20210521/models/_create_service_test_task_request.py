@@ -20,9 +20,9 @@ class CreateServiceTestTaskRequest(DaraModel):
         # 
         # This parameter is required.
         self.task_name = task_name
-        # The Task Execution Region
+        # The region where the task is executed.
         self.task_region_id = task_region_id
-        # The service test case ids.
+        # The service test use cases.
         # 
         # This parameter is required.
         self.test_case_ids = test_case_ids

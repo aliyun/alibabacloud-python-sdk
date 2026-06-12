@@ -18,14 +18,31 @@ class ListArtifactBuildLogsRequest(DaraModel):
         region_id: str = None,
         sort_order: str = None,
     ):
+        # The artifact ID.
+        # 
+        # You can call the [ListArtifacts](https://help.aliyun.com/document_detail/469993.html) operation to obtain the artifact ID.
+        # 
         # This parameter is required.
         self.artifact_id = artifact_id
+        # The artifact version.
+        # 
+        # You can call the [ListArtifacts](https://help.aliyun.com/document_detail/469993.html) operation to obtain the artifact version.
         self.artifact_version = artifact_version
+        # The filter.
         self.filter = filter
+        # The number of entries to return on each page. Maximum value: 100. Default value: 20.
         self.max_results = max_results
+        # The token to start the next paged query.
         self.next_token = next_token
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The sort order. Valid values:
+        # 
+        # - **Ascending**: sorts the results in ascending order.
+        # 
+        # - **Descending** (default): sorts the results in descending order.
         self.sort_order = sort_order
 
     def validate(self):
@@ -98,7 +115,21 @@ class ListArtifactBuildLogsRequestFilter(DaraModel):
         name: str = None,
         value: List[str] = None,
     ):
+        # The name of the filter.
+        # 
+        # Valid values:
+        # 
+        # - StartTime
+        # 
+        # - EndTime
+        # 
+        # - ApplicationGroupName
+        # 
+        # - ResouceName
+        # 
+        # - EventName
         self.name = name
+        # The filter values.
         self.value = value
 
     def validate(self):

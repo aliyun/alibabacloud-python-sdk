@@ -25,20 +25,57 @@ class GetOpsNoticeResponseBody(DaraModel):
         type: str = None,
         user_count: str = None,
     ):
+        # The non-public properties of the O\\&M item.
         self.attributes = attributes
+        # The category. Valid values:
+        # 
+        # - Availability
+        # 
+        # - Cost
+        # 
+        # - Performance
+        # 
+        # - Recovery: backup and recovery
+        # 
+        # - Security
         self.category = category
+        # The message content.
         self.content = content
+        # The ID of the notice.
         self.notice_id = notice_id
+        # The request ID.
         self.request_id = request_id
+        # The service ID.
         self.service_id = service_id
+        # The number of service instances involved.
         self.service_instance_count = service_instance_count
+        # The service name.
         self.service_name = service_name
+        # The list of published service versions.
         self.service_versions = service_versions
+        # The severity of the O\\&M item. Valid values:
+        # 
+        # - Critical
+        # 
+        # - High
+        # 
+        # - Medium
+        # 
+        # - Low
         self.severity = severity
+        # The solutions.
         self.solutions = solutions
+        # The start time.
         self.start_time = start_time
+        # Indicates whether the operation was successful. A value of **true** indicates success.
         self.success = success
+        # The type of the notice. Valid values:
+        # 
+        # - ServiceInstanceUpgrade: upgrade
+        # 
+        # - VulnerabilityFix: vulnerability
         self.type = type
+        # The number of users who received the notice.
         self.user_count = user_count
 
     def validate(self):

@@ -18,27 +18,29 @@ class UpdateArtifactShrinkRequest(DaraModel):
         support_region_ids: List[str] = None,
         version_name: str = None,
     ):
-        # The build properties of the artifact, utilized for hosting and building the deployment package.
+        # The properties for building the artifact. This is used for managed artifact builds.
         self.artifact_build_property_shrink = artifact_build_property_shrink
-        # The ID of the deployment package.
+        # The ID of the artifact.
+        # 
+        # To obtain the artifact ID, call the [ListArtifacts](https://help.aliyun.com/document_detail/469993.html) operation.
         # 
         # This parameter is required.
         self.artifact_id = artifact_id
-        # The properties of the deployment package.
+        # The properties of the artifact.
         self.artifact_property_shrink = artifact_property_shrink
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # A client token to ensure the idempotence of the request. Generate a unique token for each request from your client. The **ClientToken** can contain only ASCII characters and must be no more than 64 characters long.
         self.client_token = client_token
-        # The description of the deployment package.
+        # The description of the artifact.
         self.description = description
-        # Permission fields are applicable to container image artifact and Helm Chart artifact. They can only change from Automatic to Public. Options:
+        # The permission type. This parameter is valid for container image artifacts and Helm Chart artifacts. The value can be changed only from \\`Automatic\\` to \\`Public\\`. Valid values:
         # 
-        # Public
+        # - Public
         # 
-        # Automatic
+        # - Automatic
         self.permission_type = permission_type
-        # The IDs of the regions that support the deployment package.
+        # The IDs of regions to which the image can be distributed.
         self.support_region_ids = support_region_ids
-        # The version name of the deployment package.
+        # The name of the artifact version.
         self.version_name = version_name
 
     def validate(self):

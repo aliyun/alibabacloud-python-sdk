@@ -11,11 +11,17 @@ class GetArtifactRequest(DaraModel):
         artifact_name: str = None,
         artifact_version: str = None,
     ):
-        # The ID of the deployment package.
+        # The ID of the artifact.
+        # 
+        # Call [ListArtifacts](https://help.aliyun.com/document_detail/469993.html) to obtain the artifact ID.
         self.artifact_id = artifact_id
-        # The name of the deployment package.
+        # The name of the artifact.
+        # 
+        # Call [ListArtifacts](https://help.aliyun.com/document_detail/469993.html) to obtain the artifact name.
         self.artifact_name = artifact_name
-        # The version of the deployment package.
+        # The version of the artifact.
+        # 
+        # Call [ListArtifacts](https://help.aliyun.com/document_detail/469993.html) to obtain the artifact version.
         self.artifact_version = artifact_version
 
     def validate(self):

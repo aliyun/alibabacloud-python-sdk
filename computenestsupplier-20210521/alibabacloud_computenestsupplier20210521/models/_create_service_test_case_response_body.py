@@ -12,7 +12,7 @@ class CreateServiceTestCaseResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The test case Id
+        # The test case ID.
         self.test_case_id = test_case_id
 
     def validate(self):

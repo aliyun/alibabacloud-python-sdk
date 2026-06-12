@@ -15,9 +15,7 @@ class RemoveServiceSharedAccountsRequest(DaraModel):
         type: str = None,
         user_ali_uids: List[int] = None,
     ):
-        # The client token that is used to ensure the idempotence of the request.
-        # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # A client token that is used to ensure the idempotence of the request. You must make sure that the token is unique for each request. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # The region ID.
         # 
@@ -27,12 +25,13 @@ class RemoveServiceSharedAccountsRequest(DaraModel):
         # 
         # This parameter is required.
         self.service_id = service_id
-        # The share type of the service. Default value: SharedAccount. Valid values:
+        # The service sharing type. The default value is SharedAccount. Valid values:
         # 
-        # *   SharedAccount: The service is shared by multiple accounts.
-        # *   Reseller: The service is distributed.
+        # - SharedAccount: The regular sharing type.
+        # 
+        # - Reseller: The reseller sharing type.
         self.type = type
-        # Whitelist accounts for service sharing.
+        # The whitelisted accounts for service sharing.
         # 
         # This parameter is required.
         self.user_ali_uids = user_ali_uids

@@ -17,18 +17,19 @@ class ListServiceSharedAccountsRequest(DaraModel):
         region_id: str = None,
         service_id: str = None,
     ):
-        # The filters.
+        # The filter.
         self.filter = filter
-        # The number of entries per page. Valid values: 1 to 100. Default value: 20.
+        # The number of entries to return on each page. Maximum value: 100. Default value: 20.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+        # The token used to start the next query. Set this parameter to the NextToken value returned from the last API call.
         self.next_token = next_token
-        # The permissions on the service. Valid values:
+        # The permission type. Valid values:
         # 
-        # *   Deployable: Permissions to deploy the service.
-        # *   Accessible: Permissions to access the service.
+        # - Deployable: The service is deployable.
+        # 
+        # - Accessible: The service is accessible.
         self.permission = permission
-        # The region ID where the service instance resides.
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -99,11 +100,9 @@ class ListServiceSharedAccountsRequestFilter(DaraModel):
         name: str = None,
         value: List[str] = None,
     ):
-        # The parameter name of the filter. You can specify one or more parameter names to query services. Valid values:
-        # 
-        # *   Name: the name of the service.
+        # The name of the filter.
         self.name = name
-        # The parameter value N of the filter. Valid values of N: 1 to 10.
+        # The list of filter values.
         self.value = value
 
     def validate(self):

@@ -16,15 +16,15 @@ class ListServicesResponseBody(DaraModel):
         services: List[main_models.ListServicesResponseBodyServices] = None,
         total_count: int = None,
     ):
-        # The number of entries per page. Valid values: 1 to 100. Default value: 20.
+        # The number of entries returned on each page. Maximum value: 100. Default value: 20.
         self.max_results = max_results
-        # A pagination token.
+        # The token that is used to retrieve the next page of results.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The services.
+        # The list of services.
         self.services = services
-        # The total number of entries returned.
+        # The total number of entries that meet the filter criteria.
         self.total_count = total_count
 
     def validate(self):
@@ -121,108 +121,131 @@ class ListServicesResponseBodyServices(DaraModel):
         version_name: str = None,
         virtual_internet_service: str = None,
     ):
-        # The approval type for applications for using the service. Valid values:
+        # The approval type for service usage requests. Valid values:
         # 
-        # *   Manual: The applications are manual reviewed.
-        # *   AutoPass: The applications are automatically approved.
+        # - Manual: Manual approval.
+        # 
+        # - AutoPass: Automatic approval.
         self.approval_type = approval_type
-        # The ID of the artifact.
+        # The artifact ID.
         self.artifact_id = artifact_id
-        # The version of the artifact.
+        # The artifact version.
         self.artifact_version = artifact_version
-        # The informathon for build service.
+        # The information about the service build.
         self.build_info = build_info
-        # The category of the service.
+        # The service category.
         self.categories = categories
-        # The commodity details.
+        # The commodity specifications.
         self.commodity = commodity
         # The commodity code of the service in Alibaba Cloud Marketplace.
         self.commodity_code = commodity_code
         # The time when the service was created.
         self.create_time = create_time
-        # Indicates whether the version is the default version. Valid values:
+        # Indicates whether the service is the default version. Valid values:
         # 
-        # *   false
-        # *   true
+        # - false: The service is not the default version.
+        # 
+        # - true: The service is the default version.
         self.default_version = default_version
-        # The deployment type of the service. Valid values:
+        # The deployment type. Valid values:
         # 
-        # *   ros: The service is deployed by using Resource Orchestration Service (ROS).
-        # *   terraform: The service is deployed by using Terraform.
-        # *   spi: The service is deployed by calling the Service Provider Interface (SPI).
-        # *   operation: The service is deployed by using a hosted O\\&M service.
-        # *   container: The service is deployed by using a container.
-        # *
+        # - ros: The service is deployed using ROS.
+        # 
+        # - terraform: The service is deployed using Terraform.
+        # 
+        # - spi: The service is deployed by calling an SPI.
+        # 
+        # - operation: The service is deployed using Alibaba Cloud Managed Services.
+        # 
+        # - container: The service is deployed using a container.
         self.deploy_type = deploy_type
         # Indicates whether the service has a beta version. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: Yes.
+        # 
+        # - false: No.
         self.has_beta = has_beta
         # Indicates whether the service has a draft version. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: Yes.
+        # 
+        # - false: No.
         self.has_draft = has_draft
-        # The latest version of the distribution source service.
+        # The latest version of the source service for distribution.
         self.latest_resell_source_service_version = latest_resell_source_service_version
         # The time when the service was published.
         self.publish_time = publish_time
-        # The purpose of the artifact. Valid values:
+        # The artifact association type. Valid values:
         # 
-        # *   ServiceDeployment: The artifact is used to create service instances.
-        # *   ServiceUpgrade: The artifact is used to upgrade service instances.
+        # - ServiceDeployment: Service deployment.
+        # 
+        # - ServiceUpgrade: Service upgrade.
         self.relation_type = relation_type
-        # The state of distribution authorization of the service. Valid values:
+        # The distribution authorization status of the service. Valid values:
         # 
-        # *   CanApply: Distributors can apply for distribution permissions.
-        # *   Applied: The application for distribution permissions is submitted.
-        # *   Approved: The application for distribution permissions is approved.
+        # - CanApply: You can apply for authorization.
+        # 
+        # - Applied: An application has been submitted.
+        # 
+        # - Approved: The application is approved.
         self.resell_apply_status = resell_apply_status
-        # The ID of the distribution service.
+        # The ID of the distributed service.
         self.resell_service_id = resell_service_id
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # Indicates whether the service is visible. Valid values:
+        # Indicates whether the service is discoverable. Valid values:
         # 
-        # *   INVISIBLE
-        # *   DISCOVERABLE
+        # - INVISIBLE: Not discoverable.
+        # 
+        # - DISCOVERABLE: Discoverable.
         self.service_discoverable = service_discoverable
         # The service ID.
         self.service_id = service_id
-        # The information about the service.
+        # The service information.
         self.service_infos = service_infos
+        # The multi-language configurations of the service.
         self.service_locale_configs = service_locale_configs
-        # The type of the service. Valid values:
+        # The service type. Valid values:
         # 
-        # *   private: The service is a private service and is deployed within the account of a customer.
-        # *   managed: The service is a fully managed service and is deployed within the account of a service provider.
-        # *   operation: The service is a hosted O\\&M service.
+        # - private: The service is deployed in the user\\"s account.
+        # 
+        # - managed: The service is deployed in the service provider\\"s account.
+        # 
+        # - operation: It is an Alibaba Cloud Managed Service.
         self.service_type = service_type
-        # The permission type of the deployment URL. Valid values:
+        # The sharing type. Valid values:
         # 
-        # *   Public: All users can go to the URL to create a formal service instance or a trial service instance.
-        # *   Restricted: Only users in the whitelist can go to the URL to create a formal service instance or a trial service instance.
-        # *   OnlyFormalRestricted: Only users in the whitelist can go to the URL to create a formal service instance.
-        # *   OnlyTrailRestricted: Only users in the whitelist can go to the URL to create a trial service instance.
-        # *   Hidden: Users not in the whitelist cannot see the service details page when they go to the URL and cannot request deployment permissions.
+        # - Public: Public. Official and trial deployments are not restricted.
+        # 
+        # - Restricted: Restricted. Official and trial deployments are restricted.
+        # 
+        # - OnlyFormalRestricted: Only official deployments are restricted.
+        # 
+        # - OnlyTrailRestricted: Only trial deployments are restricted.
+        # 
+        # - Hidden: Hidden. The service is not visible and you cannot request deployment permissions.
         self.share_type = share_type
         # The source image.
         self.source_image = source_image
-        # The ID of the distribution source service.
+        # The ID of the source service for distribution.
         self.source_service_id = source_service_id
-        # The version of the distribution source service.
+        # The version of the source service for distribution.
         self.source_service_version = source_service_version
-        # The name of the distribution source service provider.
+        # The name of the source service provider for distribution.
         self.source_supplier_name = source_supplier_name
-        # The state of the service. Valid values:
+        # The service status. Valid values:
         # 
-        # *   Draft: The service is a draft.
-        # *   Submitted: The service is submitted for review. You cannot modify services in this state.
-        # *   Approved: The service is approved. You cannot modify services in this state. You can publish services in this state.
-        # *   Launching: The service is being published.
-        # *   Online: The service is published.
-        # *   Offline: The service is unpublished.
+        # - Draft: The service is in the Draft state.
+        # 
+        # - Submitted: The service is submitted for review. Modifications are not allowed.
+        # 
+        # - Approved: The service is approved. Modifications are not allowed. The service can be published.
+        # 
+        # - Launching: The service is being published.
+        # 
+        # - Online: The service is published.
+        # 
+        # - Offline: The service is unpublished.
         self.status = status
         # The name of the service provider.
         self.supplier_name = supplier_name
@@ -230,26 +253,29 @@ class ListServicesResponseBodyServices(DaraModel):
         self.supplier_url = supplier_url
         # The service tags.
         self.tags = tags
-        # The tenant type of the managed service. Valid values:
+        # The tenant type for the managed service. Valid values:
         # 
-        # *   SingleTenant
-        # *   MultiTenant
+        # - SingleTenant: Single-tenant.
+        # 
+        # - MultiTenant: Multi-tenant.
         self.tenant_type = tenant_type
         # The trial policy. Valid values:
         # 
-        # *   Trial: Trials are supported.
-        # *   NotTrial: Trials are not supported.
+        # - Trial: The service supports a trial.
+        # 
+        # - NotTrial: The service does not support a trial.
         self.trial_type = trial_type
-        # The time when the service was modified.
+        # The time when the service was last updated.
         self.update_time = update_time
-        # The version of the service.
+        # The service version.
         self.version = version
         # The custom version name defined by the service provider.
         self.version_name = version_name
         # Indicates whether the service is a virtual Internet service. Valid values:
         # 
-        # *   false
-        # *   true
+        # - false: No.
+        # 
+        # - true: Yes.
         self.virtual_internet_service = virtual_internet_service
 
     def validate(self):
@@ -567,8 +593,11 @@ class ListServicesResponseBodyServicesServiceLocaleConfigs(DaraModel):
         original_value: str = None,
         zh_value: str = None,
     ):
+        # The English value of the business information.
         self.en_value = en_value
+        # The original value of the business information.
         self.original_value = original_value
+        # The Chinese value of the business information.
         self.zh_value = zh_value
 
     def validate(self):
@@ -613,14 +642,15 @@ class ListServicesResponseBodyServicesServiceInfos(DaraModel):
     ):
         # The URL of the service icon.
         self.image = image
-        # The language of the service. Valid values:
+        # The language of the service configuration. Valid values:
         # 
-        # *   zh-CN: Chinese.
-        # *   en-US: English.
+        # - zh-CN: Chinese.
+        # 
+        # - en-US: English.
         self.locale = locale
-        # The name of the service.
+        # The service name.
         self.name = name
-        # The description of the service.
+        # A brief description of the service.
         self.short_description = short_description
 
     def validate(self):
@@ -670,13 +700,15 @@ class ListServicesResponseBodyServicesCommodity(DaraModel):
     ):
         # The commodity code.
         self.commodity_code = commodity_code
-        # The configuration metadata related to Saas Boost.
+        # The metadata of the SaaS Boost configuration.
         self.saas_boost_metadata = saas_boost_metadata
-        # The platform type. Valid values:
+        # The type. Valid values:
         # 
-        # *   marketplace: Alibaba Cloud Marketplace.
-        # *   Css: Lingxiao.
-        # *   SaasBoost: Saas Boost.
+        # - Marketplace: Alibaba Cloud Marketplace.
+        # 
+        # - Css: Lingxiao.
+        # 
+        # - SaasBoost: SaaS Boost.
         self.type = type
 
     def validate(self):

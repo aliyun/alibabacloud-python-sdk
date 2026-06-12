@@ -18,13 +18,13 @@ class ListServiceTestCasesResponseBody(DaraModel):
     ):
         # The data returned.
         self.data = data
-        # The number of entries per page. Valid values: 1 to 100. Default value: 20.
+        # The number of entries returned on each page. The maximum value is 100. The default value is 20.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+        # The token that is used to start the next query.
         self.next_token = next_token
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of records that meet the filter criteria.
         self.total_count = total_count
 
     def validate(self):
@@ -89,11 +89,11 @@ class ListServiceTestCasesResponseBodyData(DaraModel):
     ):
         # The template name.
         self.template_name = template_name
-        # The service test case id.
+        # The ID of the test case.
         self.test_case_id = test_case_id
-        # The service test case name.
+        # The name of the test case.
         self.test_case_name = test_case_name
-        # The service test config.
+        # The user-configured YAML file.
         self.test_config = test_config
 
     def validate(self):

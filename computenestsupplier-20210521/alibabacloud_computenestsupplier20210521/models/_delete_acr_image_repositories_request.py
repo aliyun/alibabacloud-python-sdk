@@ -12,10 +12,20 @@ class DeleteAcrImageRepositoriesRequest(DaraModel):
         region_id: str = None,
         repo_id: str = None,
     ):
+        # The type of the artifact. The default value is AcrImage. Valid values:
+        # 
+        # - HelmChart: A Helm Chart image.
+        # 
+        # - AcrImage: A container image.
         self.artifact_type = artifact_type
+        # The client token that is used to ensure the idempotence of the request. Generate a value for this parameter from your client. Make sure that the value is unique among different requests. **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The image repository ID.
+        # 
         # This parameter is required.
         self.repo_id = repo_id
 

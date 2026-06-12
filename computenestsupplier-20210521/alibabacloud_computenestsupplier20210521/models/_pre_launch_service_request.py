@@ -11,9 +11,7 @@ class PreLaunchServiceRequest(DaraModel):
         region_id: str = None,
         service_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request.
-        # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # A client token that ensures the idempotence of the request. Generate a unique value for this parameter from your client for each request. The value can contain only ASCII characters.
         self.client_token = client_token
         # The region ID.
         # 

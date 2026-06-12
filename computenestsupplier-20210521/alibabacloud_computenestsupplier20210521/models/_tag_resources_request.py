@@ -19,18 +19,21 @@ class TagResourcesRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The resource IDs. You can specify at most 50 resource IDs in each call.
+        # The resource ID.
         # 
         # This parameter is required.
         self.resource_id = resource_id
-        # The resource type. Valid value:
-        # - service
-        # - serviceinstance
-        # - artifact
+        # The resource type. Valid values:
+        # 
+        # - service: a service.
+        # 
+        # - serviceinstance: a service instance.
+        # 
+        # - artifact: an artifact.
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The tags.
+        # The resource tags.
         self.tag = tag
 
     def validate(self):
@@ -85,9 +88,9 @@ class TagResourcesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
+        # The tag key of the resource.
         self.key = key
-        # The tag value.
+        # The tag value of the resource.
         self.value = value
 
     def validate(self):

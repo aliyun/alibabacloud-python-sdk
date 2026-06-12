@@ -18,9 +18,9 @@ class UpdateServiceInstanceAttributeRequest(DaraModel):
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.end_time = end_time
-        # The License Data
+        # The license data.
         self.license_data = license_data
-        # Application reason, currently used for trial application extension.
+        # The reason for the request. This parameter is used to extend a trial.
         self.reason = reason
         # The region ID.
         # 
@@ -83,9 +83,9 @@ class UpdateServiceInstanceAttributeRequestLicenseData(DaraModel):
         custom_data: str = None,
         response_info: main_models.UpdateServiceInstanceAttributeRequestLicenseDataResponseInfo = None,
     ):
-        # The Custom Data
+        # The custom metadata.
         self.custom_data = custom_data
-        # Mock response info.
+        # The information about the impersonated return value.
         self.response_info = response_info
 
     def validate(self):
@@ -123,11 +123,11 @@ class UpdateServiceInstanceAttributeRequestLicenseDataResponseInfo(DaraModel):
         error_message: str = None,
         update_response: bool = None,
     ):
-        # Mock error code.
+        # To impersonate an error message, specify an error code.
         self.error_code = error_code
-        # Mock error message.
+        # To impersonate an error message, specify the error message.
         self.error_message = error_message
-        # if you want mock response, please open this option.
+        # Specifies whether to modify the return value.
         self.update_response = update_response
 
     def validate(self):

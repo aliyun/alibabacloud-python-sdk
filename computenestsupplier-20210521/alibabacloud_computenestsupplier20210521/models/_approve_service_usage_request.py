@@ -14,9 +14,9 @@ class ApproveServiceUsageRequest(DaraModel):
         type: int = None,
         user_ali_uid: int = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # A client token that ensures the idempotence of the request. Generate a unique value from your client for each request. The token can contain only ASCII characters.
         self.client_token = client_token
-        # Approval comments.
+        # The approval comments.
         self.comments = comments
         # The region ID.
         self.region_id = region_id
@@ -24,9 +24,13 @@ class ApproveServiceUsageRequest(DaraModel):
         # 
         # This parameter is required.
         self.service_id = service_id
-        # ServiceSharedAccountType，
+        # The service sharing type. The default value is SharedAccount. Valid values:
+        # 
+        # - SharedAccount: The regular sharing type.
+        # 
+        # - Reseller: The reseller sharing type.
         self.type = type
-        # User ali uid.
+        # The UID of the user\\"s Alibaba Cloud account.
         # 
         # This parameter is required.
         self.user_ali_uid = user_ali_uid

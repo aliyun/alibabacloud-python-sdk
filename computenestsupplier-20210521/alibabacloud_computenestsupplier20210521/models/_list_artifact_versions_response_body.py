@@ -16,15 +16,15 @@ class ListArtifactVersionsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The version information about the deployment package.
+        # The information about the artifact versions.
         self.artifacts = artifacts
-        # The number of entries per page. Valid values: 1 to 100. Default value: 20.
+        # The number of entries returned per page. The maximum value is 100. The default value is 20.
         self.max_results = max_results
-        # The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results.
+        # The token that is used to retrieve the next page of results. If the results are not complete, this token is returned. To retrieve the next page of results, include this token in the next request.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries that meet the query criteria.
         self.total_count = total_count
 
     def validate(self):
@@ -99,48 +99,59 @@ class ListArtifactVersionsResponseBodyArtifacts(DaraModel):
         support_region_ids: str = None,
         version_name: str = None,
     ):
-        # The build properties of the artifact, utilized for hosting and building the deployment package.
+        # The content used to build the artifact. This parameter is used for managed artifact builds.
         self.artifact_build_property = artifact_build_property
-        # The type of the deployment package to be built.
+        # The artifact build type.
         self.artifact_build_type = artifact_build_type
-        # The ID of the deployment package.
+        # The artifact ID.
         self.artifact_id = artifact_id
-        # The properties of the deployment package.
+        # The properties of the artifact.
         self.artifact_property = artifact_property
-        # The type of the deployment package.
+        # The artifact type.
         self.artifact_type = artifact_type
-        # The version of the deployment package.
+        # The version of the artifact.
         self.artifact_version = artifact_version
-        # The time when the certificate was created.
+        # The time when the artifact was created.
         self.gmt_create = gmt_create
-        # The time when the deployment package was modified.
+        # The time when the artifact was last modified.
         self.gmt_modified = gmt_modified
-        # The distribution result of the image.
+        # The result of the image distribution.
         self.image_delivery = image_delivery
-        # The distribution progress of the deployment package.
+        # The distribution progress of the artifact.
         self.progress = progress
-        # The result file of the security scan.
+        # The file that contains the security scan results.
         self.result_file = result_file
-        # The result of the security scan. Valid values:
+        # The security scan result.
         # 
-        # *   Normal: No risks exist on the deployment package.
-        # *   AtRisk: Risks exist on the deployment package.
-        # *   Processing: The deployment package is being scanned.
+        # Valid values:
+        # 
+        # - Normal: The artifact is normal and has no threats.
+        # 
+        # - AtRisk: The artifact has security threats.
+        # 
+        # - Processing: The security scan is in progress.
         self.security_audit_result = security_audit_result
-        # The status of the deployment package. Valid values:
+        # The status of the artifact.
         # 
-        # *   Created: The deployment package is created.
-        # *   Scanning: The deployment package is being scanned.
-        # *   ScanFailed: The deployment package failed to be scanned.
-        # *   Delivering: The deployment package is being distributed.
-        # *   Available: The deployment package is available.
-        # *   Deleted: The deployment package is deleted.
+        # Valid values:
+        # 
+        # - Created: The artifact is created.
+        # 
+        # - Scanning: The artifact is being scanned.
+        # 
+        # - ScanFailed: The artifact failed to be scanned.
+        # 
+        # - Delivering: The artifact is being distributed.
+        # 
+        # - Available: The artifact is available.
+        # 
+        # - Deleted: The artifact is deleted.
         self.status = status
-        # The description of the deployment package.
+        # The description of the artifact status.
         self.status_detail = status_detail
-        # The ID of the region that supports the deployment package.
+        # The IDs of the regions to which the artifact is distributed.
         self.support_region_ids = support_region_ids
-        # The version name of the deployment package.
+        # The name of the artifact version.
         self.version_name = version_name
 
     def validate(self):

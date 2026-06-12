@@ -15,13 +15,13 @@ class ListServiceTestTaskLogsResponseBody(DaraModel):
         request_id: str = None,
         task_logs: List[main_models.ListServiceTestTaskLogsResponseBodyTaskLogs] = None,
     ):
-        # The number of items to return per page when paginating results. The maximum is 100, and the default is 20.
+        # The number of entries returned per page. Maximum value: 100. Default value: 20.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+        # The token that is used to retrieve the next page of results.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The service test task logs.
+        # The log entries.
         self.task_logs = task_logs
 
     def validate(self):
@@ -78,7 +78,7 @@ class ListServiceTestTaskLogsResponseBodyTaskLogs(DaraModel):
     ):
         # The log content.
         self.content = content
-        # The UTC timestamp when the response is returned.
+        # The timestamp.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.timestamp = timestamp

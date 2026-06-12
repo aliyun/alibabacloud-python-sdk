@@ -13,13 +13,15 @@ class DeleteArtifactRequest(DaraModel):
     ):
         # The ID of the artifact.
         # 
+        # Call [ListArtifacts](https://help.aliyun.com/document_detail/469993.html) to obtain the artifact ID.
+        # 
         # This parameter is required.
         self.artifact_id = artifact_id
         # The version of the artifact.
-        self.artifact_version = artifact_version
-        # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # Call [ListArtifactVersions](https://help.aliyun.com/document_detail/469995.html) to obtain the artifact version.
+        self.artifact_version = artifact_version
+        # A client-generated token that ensures the idempotence of the request. Make sure that the token is unique for each request. **ClientToken** supports only ASCII characters and must be no more than 64 characters long.
         self.client_token = client_token
 
     def validate(self):

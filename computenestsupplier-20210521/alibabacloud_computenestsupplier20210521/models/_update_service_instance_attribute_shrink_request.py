@@ -17,9 +17,9 @@ class UpdateServiceInstanceAttributeShrinkRequest(DaraModel):
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.end_time = end_time
-        # The License Data
+        # The license data.
         self.license_data_shrink = license_data_shrink
-        # Application reason, currently used for trial application extension.
+        # The reason for the request. This parameter is used to extend a trial.
         self.reason = reason
         # The region ID.
         # 

@@ -67,6 +67,7 @@ from ._generate_default_service_test_config_request import GenerateDefaultServic
 from ._generate_default_service_test_config_response_body import GenerateDefaultServiceTestConfigResponseBody
 from ._generate_default_service_test_config_response import GenerateDefaultServiceTestConfigResponse
 from ._generate_service_policy_request import GenerateServicePolicyRequest
+from ._generate_service_policy_shrink_request import GenerateServicePolicyShrinkRequest
 from ._generate_service_policy_response_body import GenerateServicePolicyResponseBody
 from ._generate_service_policy_response import GenerateServicePolicyResponse
 from ._get_artifact_request import GetArtifactRequest
@@ -489,6 +490,7 @@ __all__ = [
     GenerateDefaultServiceTestConfigResponseBody,
     GenerateDefaultServiceTestConfigResponse,
     GenerateServicePolicyRequest,
+    GenerateServicePolicyShrinkRequest,
     GenerateServicePolicyResponseBody,
     GenerateServicePolicyResponse,
     GetArtifactRequest,

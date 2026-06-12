@@ -14,20 +14,21 @@ class UpdateServiceInstanceSpecShrinkRequest(DaraModel):
         predefined_parameters_name: str = None,
         service_instance_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # A unique identifier that you provide to ensure the idempotence of the request. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # Specifies whether to enable Prometheus on the customer side. Valid values:
+        # Specifies whether to enable Prometheus on the client. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: Enables Prometheus.
+        # 
+        # - false: Disables Prometheus.
         self.enable_user_prometheus = enable_user_prometheus
-        # The name of the configuration update operation.
+        # The name of the upgrade or downgrade action.
         self.operation_name = operation_name
         # The configuration parameters of the service instance.
         self.parameters_shrink = parameters_shrink
-        # The name of the specification package.
+        # The package name.
         self.predefined_parameters_name = predefined_parameters_name
-        # The service instance ID.
+        # The ID of the service instance.
         self.service_instance_id = service_instance_id
 
     def validate(self):

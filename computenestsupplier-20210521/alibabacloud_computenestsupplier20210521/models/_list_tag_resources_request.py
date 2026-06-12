@@ -16,22 +16,25 @@ class ListTagResourcesRequest(DaraModel):
         resource_type: str = None,
         tag: List[main_models.ListTagResourcesRequestTag] = None,
     ):
-        # The pagination token that is used in the next request to retrieve a new page of results.
+        # The token to start the next query.
         self.next_token = next_token
-        # Region ID.
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The resource IDs. You can specify at most 50 resource IDs in each call.
+        # The resource ID.
         self.resource_id = resource_id
-        # The resource type. Valid value:
-        # - service
-        # - serviceinstance
-        # - artifact
+        # The resource type. Valid values:
+        # 
+        # - service: a service.
+        # 
+        # - serviceinstance: a service instance.
+        # 
+        # - artifact: a deployment.
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The tags.
+        # The custom tags.
         self.tag = tag
 
     def validate(self):

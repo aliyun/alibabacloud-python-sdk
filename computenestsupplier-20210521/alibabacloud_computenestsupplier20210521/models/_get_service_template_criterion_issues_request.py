@@ -11,9 +11,15 @@ class GetServiceTemplateCriterionIssuesRequest(DaraModel):
         service_id: str = None,
         service_version: str = None,
     ):
+        # The region ID.
         self.region_id = region_id
+        # The service ID.
+        # 
         # This parameter is required.
         self.service_id = service_id
+        # The service version.
+        # 
+        # For more information, see [ListServices - Query service information](https://help.aliyun.com/document_detail/2264368.html).
         self.service_version = service_version
 
     def validate(self):

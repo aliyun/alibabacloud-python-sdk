@@ -16,11 +16,11 @@ class ListServiceInstanceBillResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The billing information of the backup schedule.
+        # The name of the item.
         self.item = item
-        # The number of entries per page. Valid values: 1 to 100. Default value: 20.
+        # The number of entries returned per page. Maximum value: 100. Default value: 20.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+        # The token to start the next query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -103,51 +103,49 @@ class ListServiceInstanceBillResponseBodyItem(DaraModel):
         usage: str = None,
         usage_unit: str = None,
     ):
-        # The billing cycle. Format: YYYY-MM.
+        # The billing cycle. The format is YYYY-MM.
         self.billing_cycle = billing_cycle
-        # The billing date. This parameter is required only if the **Granularity** parameter is set to DAILY. Format: YYYY-MM-DD.
+        # The billing date. The format is YYYY-MM-DD.
         self.billing_date = billing_date
         # The billable item.
         self.billing_item = billing_item
         # The code of the billable item.
         self.billing_item_code = billing_item_code
-        # The currency unit.
-        # 
-        # *   China site: **CNY**.
-        # *   International site: **USD**.
+        # The currency.
         self.currency = currency
-        # The amount deducted with resource plans.
+        # The deduction by a resource plan.
         self.deducted_by_resource_package = deducted_by_resource_package
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
         # The discount amount.
         self.invoice_discount = invoice_discount
-        # The unit price.
+        # The list price.
         self.list_price = list_price
-        # The unit of the unit price.
+        # The unit of the list price.
         self.list_price_unit = list_price_unit
         # The pretax amount.
         self.pretax_amount = pretax_amount
         # The pretax gross amount.
         self.pretax_gross_amount = pretax_gross_amount
-        # The code of the service.
+        # The product code.
         self.product_code = product_code
-        # The details of the service.
+        # The product details.
         self.product_detail = product_detail
-        # The name of the cloud service or the name of the service-linked role with which the cloud service is associated.
+        # The product name.
         self.product_name = product_name
-        # Service instance ID.
+        # The ID of the service instance.
         self.service_instance_id = service_instance_id
-        # The billing cycle in which the bill is split.
+        # The month of the split bill.
         self.split_billing_cycle = split_billing_cycle
-        # The billing method. Valid values:
+        # The billing method:
         # 
-        # *   Subscription: the subscription billing method.
-        # *   PayAsYouGo: the pay-as-you-go billing method.
+        # - Subscription: subscription.
+        # 
+        # - PayAsYouGo: pay-as-you-go.
         self.subscription_type = subscription_type
-        # The amount of resource usage.
+        # The resource usage.
         self.usage = usage
-        # The unit of usage.
+        # The unit of the usage.
         self.usage_unit = usage_unit
 
     def validate(self):

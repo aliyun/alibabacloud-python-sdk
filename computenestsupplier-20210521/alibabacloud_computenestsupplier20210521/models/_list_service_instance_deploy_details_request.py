@@ -22,43 +22,57 @@ class ListServiceInstanceDeployDetailsRequest(DaraModel):
     ):
         # The time zone.
         # 
-        # Reference Format: "+08:00"
+        # Example: +08:00
         # 
-        # Valid Range: "-12:59" to "+13:00"
+        # Valid values: -12:59 to +13:00
         self.cycle_time_zone = cycle_time_zone
-        # Determines the time period over which data is aggregated. If no aggregation dimension is specified, the query defaults to providing detailed, unaggregated results.
+        # The aggregation period. If you do not specify this parameter, the system queries the details.
         # 
-        # Optional Values:
+        # Valid values:
         # 
         # - Year
+        # 
         # - Month
+        # 
         # - Day
+        # 
         # - All
         self.cycle_type = cycle_type
-        # The dimension names. (Equivalent to SQL\\"s GROUP BY Clause)
-        # Optional Values:
+        # The name of the dimension. This corresponds to the GROUP BY clause in SQL.
+        # 
+        # Valid values:
         # 
         # - UserId
+        # 
         # - ServiceId
+        # 
         # - ServiceVersion
+        # 
         # - ServiceInstanceId
+        # 
         # - DeploySucceeded
+        # 
         # - ErrorType
+        # 
         # - ErrorCode
         self.dimension = dimension
-        # The end of the time range to query. The end time must be later than the start time. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC.
+        # The end of the time range to query.
+        # 
+        # Use UTC+0 time in the yyyy-MM-ddTHH:mmZ format.
         self.end_time = end_time
         # The filter.
         self.filter = filter
-        # The number of entries per page. Valid values: 1 to 100. Default value: 20.
+        # The number of entries per page for a paged query. Maximum value: 100. Default value: 20.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+        # The token that is used to start the next query.
         self.next_token = next_token
-        # The region ID.
+        # The region ID of the instance.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+        # The start of the time range to query.
+        # 
+        # Use UTC+0 time in the yyyy-MM-ddTHH:mmZ format.
         self.start_time = start_time
 
     def validate(self):
@@ -143,19 +157,25 @@ class ListServiceInstanceDeployDetailsRequestFilter(DaraModel):
         name: str = None,
         value: List[str] = None,
     ):
-        # Filter Value Names (Equivalent to SQL\\"s WHERE Clause)
+        # The name of the filter. This corresponds to the WHERE clause in SQL.
         # 
-        # Available Options:
+        # Valid values:
         # 
         # - UserId
+        # 
         # - ServiceId
+        # 
         # - ServiceVersion
+        # 
         # - ServiceInstanceId
-        # - DeploySucceeded (Accepts True or False and case-insensitive)
+        # 
+        # - DeploySucceeded (The value can be True or False. The value is case-insensitive.)
+        # 
         # - ErrorType
+        # 
         # - ErrorCode
         self.name = name
-        # A value of the filter condition.
+        # A list of filter values.
         self.value = value
 
     def validate(self):

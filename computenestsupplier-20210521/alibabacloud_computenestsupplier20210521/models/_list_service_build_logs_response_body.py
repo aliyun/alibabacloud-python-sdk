@@ -14,8 +14,11 @@ class ListServiceBuildLogsResponseBody(DaraModel):
         next_token: str = None,
         request_id: str = None,
     ):
+        # An array of build logs.
         self.build_logs = build_logs
+        # The token that is used to retrieve the next page of results.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -65,8 +68,11 @@ class ListServiceBuildLogsResponseBodyBuildLogs(DaraModel):
         content: str = None,
         timestamp: str = None,
     ):
+        # The name of the build step.
         self.build_step = build_step
+        # The content of the log.
         self.content = content
+        # The timestamp of the log entry.
         self.timestamp = timestamp
 
     def validate(self):

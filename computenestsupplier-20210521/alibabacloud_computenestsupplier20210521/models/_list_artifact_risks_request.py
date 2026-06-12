@@ -10,9 +10,9 @@ class ListArtifactRisksRequest(DaraModel):
         artifact_id: str = None,
         artifact_version: str = None,
     ):
-        # Artifact ID.
+        # The artifact ID.
         self.artifact_id = artifact_id
-        # Artifact version.
+        # The artifact version.
         self.artifact_version = artifact_version
 
     def validate(self):

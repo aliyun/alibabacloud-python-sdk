@@ -16,15 +16,15 @@ class ListAcrImageRepositoriesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The number of entries per page. Valid values: 1 to 100. Default value: 20.
+        # The number of entries returned per page. The maximum value is 100. The default value is 20.
         self.max_results = max_results
-        # A pagination token.
+        # The token that is used to start the next query.
         self.next_token = next_token
-        # The images.
+        # The list of repositories.
         self.repositories = repositories
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -89,20 +89,17 @@ class ListAcrImageRepositoriesResponseBodyRepositories(DaraModel):
         repo_name: str = None,
         repo_type: str = None,
     ):
-        # The time when the image was created.
+        # The time when the repository was created.
         self.create_time = create_time
-        # The time when the image was modified.
+        # The time when the repository was last modified.
         self.modified_time = modified_time
-        # The namespace of the repository
+        # The namespace.
         self.namespace = namespace
-        # The image repo ID.
+        # The repository ID.
         self.repo_id = repo_id
-        # The image repo name.
+        # The repository name.
         self.repo_name = repo_name
-        # The type of the repository. Valid values:
-        # 
-        # *   `Private`: a private repository
-        # *   `Public`: a public repository
+        # The type of the repository. Valid values: Public and Private.
         self.repo_type = repo_type
 
     def validate(self):

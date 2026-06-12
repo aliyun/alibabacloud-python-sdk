@@ -16,20 +16,27 @@ class UpgradeServiceInstanceResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The ID of the service instance.
+        # The service instance ID.
         self.service_instance_id = service_instance_id
-        # The deployment state of the service instance. Valid values:
+        # The deployment status of the service instance. Valid values:
         # 
-        # *   Created
-        # *   Deploying
-        # *   DeployedFailed
-        # *   Deployed
-        # *   Upgrading
-        # *   Deleting
-        # *   Deleted
-        # *   DeletedFailed
+        # - Created: The service instance is created.
+        # 
+        # - Deploying: The service instance is being deployed.
+        # 
+        # - DeployedFailed: The service instance failed to be deployed.
+        # 
+        # - Deployed: The service instance is deployed.
+        # 
+        # - Upgrading: The service instance is being upgraded.
+        # 
+        # - Deleting: The service instance is being deleted.
+        # 
+        # - Deleted: The service instance is deleted.
+        # 
+        # - DeletedFailed: The service instance failed to be deleted.
         self.status = status
-        # The parameters required for the upgrade.
+        # The parameters that are required for the upgrade.
         self.upgrade_required_parameters = upgrade_required_parameters
 
     def validate(self):

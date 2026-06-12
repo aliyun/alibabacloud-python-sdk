@@ -10,9 +10,9 @@ class DeleteServiceTestCaseRequest(DaraModel):
         region_id: str = None,
         test_case_id: str = None,
     ):
-        # Region ID.
+        # The region ID.
         self.region_id = region_id
-        # The service test case id.
+        # The ID of the service test case.
         # 
         # This parameter is required.
         self.test_case_id = test_case_id

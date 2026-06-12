@@ -49,104 +49,125 @@ class GetServiceInstanceResponseBody(DaraModel):
     ):
         # The business status of the service instance. Valid values:
         # 
-        # *   Normal: The service instance is normal.
-        # *   Renewing: The service instance is being renewed.
-        # *   RenewFailed: The service instance failed to be renewed.
-        # *   Expired: The service instance expired.
+        # - Normal: The service instance is normal.
+        # 
+        # - Renewing: The service instance is being renewed.
+        # 
+        # - RenewFoiled: The service instance failed to be renewed.
+        # 
+        # - Expired: The service instance has expired.
         self.biz_status = biz_status
         # The time when the service instance was created.
         self.create_time = create_time
-        # Indicates whether the service instance supports the hosted O\\&M feature. Valid values:
+        # Indicates whether the service instance supports Alibaba Cloud Managed Services. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: The service instance supports Alibaba Cloud Managed Services.
+        # 
+        # - false: The service instance does not support Alibaba Cloud Managed Services.
         self.enable_instance_ops = enable_instance_ops
-        # Indicates whether the Prometheus monitoring feature is enabled on the user side.
+        # Indicates whether Prometheus is enabled for the user.
         self.enable_user_prometheus = enable_user_prometheus
         # The time when the service instance expires.
         self.end_time = end_time
         # The URL of the Grafana dashboard.
         self.grafana_dash_board_url = grafana_dash_board_url
         self.granted_permission = granted_permission
-        # Indicates whether the hosted O\\&M feature is enabled for the service instance. Valid values:
+        # Indicates whether Alibaba Cloud Managed Services is enabled for the service instance. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: Alibaba Cloud Managed Services is enabled for the service instance.
+        # 
+        # - false: Alibaba Cloud Managed Services is not enabled for the service instance.
         self.is_operated = is_operated
         # The license metadata.
         self.license_metadata = license_metadata
         # The name of the service instance.
         self.name = name
-        # The network configurations.
+        # The network configuration.
         # 
-        # >  This parameter is discontinued.
+        # > This parameter is deprecated.
         self.network_config = network_config
-        # The ID of the service instance that is used to implement hosted O\\&M.
+        # The ID of the service instance that is managed by Alibaba Cloud Managed Services.
         self.operated_service_instance_id = operated_service_instance_id
-        # The end of the time range during which hosted O\\&M is implemented.
+        # The end time of the Alibaba Cloud Managed Services.
         self.operation_end_time = operation_end_time
-        # Operate extra info
+        # The additional information about Alibaba Cloud Managed Services.
         self.operation_extra_info = operation_extra_info
-        # The beginning of the time range during which hosted O\\&M is implemented.
+        # The start time of the Alibaba Cloud Managed Services.
         self.operation_start_time = operation_start_time
-        # The outputs returned from creating the service instance.
+        # The output fields that are returned after the service instance is created.
         # 
-        # *   If the service is deployed by using a ROS template, all output fields of the template are returned.
-        # *   If the service is deployed by calling an SPI operation, the output fields of the service provider and for the Compute Nest additional features are returned.
+        # - In ROS mode, all output fields of the template are returned.
+        # 
+        # - In SPI mode, the output fields of the ISV and the output fields of the additional features of Compute Nest are returned.
         self.outputs = outputs
-        # The parameters that are specified to deploy the service instance.
+        # The parameters that are entered for deploying the service instance.
         self.parameters = parameters
-        # The billing method of the service. Valid values:
+        # The billing method. Valid values:
         # 
-        # *   Permanent: Once you purchase the service, you can use it permanently.
-        # *   Subscription: You purchase the service from Alibaba Cloud Marketplace and are charged for the service on a subscription basis.
-        # *   PayAsYouGo: You purchase the service from Alibaba Cloud Marketplace and are charged for the service on a pay-as-you-go basis.
-        # *   CustomFixTime: You are charged for the service based on a custom duration fixed by the service provider.
+        # - Permanent: The service is permanently purchased.
+        # 
+        # - Subscription: The service is a subscription service from Alibaba Cloud Marketplace.
+        # 
+        # - PayAsYouGo: The service is a pay-as-you-go service from Alibaba Cloud Marketplace.
+        # 
+        # - CustomFixTime: The service has a custom fixed duration.
         self.pay_type = pay_type
         self.policy_names = policy_names
         # The package name.
         self.predefined_parameter_name = predefined_parameter_name
-        # The deployment progress of the service instance. Unit: percentage.
+        # The deployment progress of the service instance. Unit: %.
         self.progress = progress
-        # The logon URL for the accounts in the resource directory corresponding to the service instance.
+        # The logon URL for the member in the resource directory that corresponds to the service instance.
         self.rd_account_login_url = rd_account_login_url
         # The request ID.
         self.request_id = request_id
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The list of resources.
+        # The resources.
         self.resources = resources
-        # The information about the service to which the service instance belongs.
+        # The service details.
         self.service = service
-        # The ID of the service instance.
+        # The service instance ID.
         self.service_instance_id = service_instance_id
-        # The type of the service. Valid values:
+        # The service type. Valid values:
         # 
-        # *   private: The service is a private service and is deployed within the account of a customer.
-        # *   managed: The service is a fully managed service and is deployed within the account of a service provider.
-        # *   operation: The service is a hosted O\\&M service.
-        # *   poc: The service is a trial service.
+        # - private: a service instance that is deployed in the user\\"s account.
+        # 
+        # - managed: a service instance that is deployed in the service provider\\"s account.
+        # 
+        # - operation: an Alibaba Cloud Managed Services instance
+        # 
+        # - poc: a trial service instance.
         self.service_type = service_type
         # The source of the service instance. Valid values:
         # 
-        # *   User: Compute Nest customer
-        # *   Market: Alibaba Cloud Marketplace
-        # *   Supplier: Compute Nest service provider
-        self.source = source
-        # The deployment state of the service instance. Valid values:
+        # - User: a Compute Nest user.
         # 
-        # *   Created
-        # *   Deploying
-        # *   DeployedFailed
-        # *   Deployed
-        # *   Upgrading
-        # *   Deleting
-        # *   Deleted
-        # *   DeletedFailed
+        # - Market: Alibaba Cloud Marketplace.
+        # 
+        # - Supplier: a Compute Nest service provider.
+        self.source = source
+        # The deployment status of the service instance. Valid values:
+        # 
+        # - Created: The service instance is created.
+        # 
+        # - Deploying: The service instance is being deployed.
+        # 
+        # - DeployedFailed: The service instance failed to be deployed.
+        # 
+        # - Deployed: The service instance is deployed.
+        # 
+        # - Upgrading: The service instance is being upgraded.
+        # 
+        # - Deleting: The service instance is being deleted.
+        # 
+        # - Deleted: The service instance is deleted.
+        # 
+        # - DeletedFailed: The service instance failed to be deleted.
         self.status = status
-        # The description of the deployment state of the service instance.
+        # The description of the deployment status of the instance.
         self.status_detail = status_detail
-        # The Alibaba Cloud account ID of the service provider.
+        # The service provider\\"s Alibaba Cloud account ID.
         self.supplier_uid = supplier_uid
         # The custom tags.
         self.tags = tags
@@ -154,7 +175,7 @@ class GetServiceInstanceResponseBody(DaraModel):
         self.template_name = template_name
         # The time when the service instance was updated.
         self.update_time = update_time
-        # The Alibaba Cloud account ID of the user.
+        # The user\\"s Alibaba Cloud account ID.
         self.user_id = user_id
 
     def validate(self):
@@ -460,39 +481,45 @@ class GetServiceInstanceResponseBodyService(DaraModel):
         version: str = None,
         version_name: str = None,
     ):
-        # The storage configurations of the service. The format in which the deployment information of a service is stored varies based on the deployment type of the service. In this case, the deployment information is stored in the JSON string format.
+        # The deployment configuration of the service. The data format varies based on the deployment type. The value is a JSON string.
         self.deploy_metadata = deploy_metadata
-        # The deployment type of the service. Valid values:
+        # The deployment type. Valid values:
         # 
-        # *   ros: The service is deployed by using Resource Orchestration Service (ROS).
-        # *   terraform: The service is deployed by using Terraform.
-        # *   ack: The service is deployed by using Container Service for Kubernetes (ACK).
-        # *   spi: The service is deployed by calling a service provider interface (SPI).
-        # *   operation: The service is deployed by using a hosted O\\&M service.
+        # - ros: The service is deployed using ROS.
+        # 
+        # - terraform: The service is deployed using Terraform.
+        # 
+        # - ack: The service is deployed using ACK.
+        # 
+        # - spi: The service is deployed using SPI.
+        # 
+        # - operation: The service is deployed using Alibaba Cloud Managed Services.
         self.deploy_type = deploy_type
         # The time when the service was published.
         self.publish_time = publish_time
-        # The URL of the service documentation.
+        # The URL of the documentation for the service.
         self.service_doc_url = service_doc_url
         # The service ID.
         self.service_id = service_id
-        # The information about the service.
+        # The service information.
         self.service_infos = service_infos
-        # The URL of the service page.
+        # The URL of the product page for the service.
         self.service_product_url = service_product_url
-        # The type of the service. Valid values:
+        # The service type. Valid values:
         # 
-        # *   private: The service is a private service and is deployed within the account of a customer.
-        # *   managed: The service is a fully managed service and is deployed within the account of a service provider.
-        # *   operation: The service is a hosted O\\&M service.
+        # - private: The service is deployed in the user\\"s account.
+        # 
+        # - managed: The service is deployed in the service provider\\"s account.
+        # 
+        # - operation: The service is an Alibaba Cloud Managed Services.
         self.service_type = service_type
-        # The status of the service. Valid values:
+        # The service status. Valid values:
         # 
-        # Draft: The registration request of the service is pending to be submitted.
+        # Draft: The service is pending registration.
         # 
-        # Submitted: The registration request of the service is submitted.
+        # Submitted: The service is submitted for registration.
         # 
-        # Approved: The registration request of the service is approved.
+        # Approved: The registration is approved.
         # 
         # Online: The service is published.
         # 
@@ -506,13 +533,13 @@ class GetServiceInstanceResponseBodyService(DaraModel):
         self.supplier_name = supplier_name
         # The URL of the service provider.
         self.supplier_url = supplier_url
-        # The upgradable service Info.
+        # The information about the service versions to which the service can be upgraded.
         self.upgradable_service_infos = upgradable_service_infos
-        # The service versions that can be updated.
+        # The service versions to which the service can be upgraded.
         self.upgradable_service_versions = upgradable_service_versions
         # The service version.
         self.version = version
-        # The custom version name defined by the service provider.
+        # The custom version name specified by the service provider.
         self.version_name = version_name
 
     def validate(self):
@@ -642,9 +669,9 @@ class GetServiceInstanceResponseBodyServiceUpgradableServiceInfos(DaraModel):
         version: str = None,
         version_name: str = None,
     ):
-        # The upgradable service version.
+        # The service version to which the service can be upgraded.
         self.version = version
-        # The version name of an upgradable service version.
+        # The name of the service version to which the service can be upgraded.
         self.version_name = version_name
 
     def validate(self):
@@ -687,7 +714,7 @@ class GetServiceInstanceResponseBodyServiceServiceInfos(DaraModel):
         self.locale = locale
         # The service name.
         self.name = name
-        # The description of the service.
+        # A short description of the service.
         self.short_description = short_description
 
     def validate(self):
@@ -736,17 +763,17 @@ class GetServiceInstanceResponseBodyNetworkConfig(DaraModel):
         private_vpc_connections: List[main_models.GetServiceInstanceResponseBodyNetworkConfigPrivateVpcConnections] = None,
         reverse_private_vpc_connections: List[main_models.GetServiceInstanceResponseBodyNetworkConfigReversePrivateVpcConnections] = None,
     ):
-        # The ID of the endpoint for the private connection.
+        # The ID of the endpoint for the PrivateLink connection.
         # 
-        # >  This parameter is discontinued.
+        # > This parameter is deprecated.
         self.endpoint_id = endpoint_id
-        # The ID of the endpoint service for the private connection.
+        # The ID of the endpoint service for the PrivateLink connection.
         # 
-        # >  This parameter is discontinued.
+        # > This parameter is deprecated.
         self.endpoint_service_id = endpoint_service_id
-        # The information about private connections.
+        # The information about the PrivateLink connection.
         self.private_vpc_connections = private_vpc_connections
-        # The information about the reverse private connection.
+        # The information about the reverse PrivateLink connection.
         self.reverse_private_vpc_connections = reverse_private_vpc_connections
 
     def validate(self):
@@ -810,9 +837,9 @@ class GetServiceInstanceResponseBodyNetworkConfigReversePrivateVpcConnections(Da
         endpoint_id: str = None,
         endpoint_service_id: str = None,
     ):
-        # The ID of the endpoint for the reverse private connection.
+        # The ID of the endpoint for the reverse PrivateLink connection.
         self.endpoint_id = endpoint_id
-        # The ID of the endpoint service for the reverse private connection.
+        # The ID of the endpoint service for the PrivateLink connection.
         self.endpoint_service_id = endpoint_service_id
 
     def validate(self):
@@ -849,11 +876,11 @@ class GetServiceInstanceResponseBodyNetworkConfigPrivateVpcConnections(DaraModel
         endpoint_service_id: str = None,
         private_zone_name: str = None,
     ):
-        # The network configurations, which are mainly used for the private connection.
+        # The network configuration. This is mainly used for PrivateLink connections.
         self.connection_configs = connection_configs
-        # The ID of the endpoint for the private connection.
+        # The ID of the endpoint for the PrivateLink connection.
         self.endpoint_id = endpoint_id
-        # The ID of the endpoint service for the private connection.
+        # The ID of the endpoint service for the PrivateLink connection.
         self.endpoint_service_id = endpoint_service_id
         # The custom domain name.
         self.private_zone_name = private_zone_name
@@ -916,31 +943,39 @@ class GetServiceInstanceResponseBodyNetworkConfigPrivateVpcConnectionsConnection
         v_switches: List[str] = None,
         vpc_id: str = None,
     ):
-        # The bandwidth limit for the private connection established based on the private network interconnection mode of Compute Nest.
+        # The bandwidth throttling for the connection that is established using the internal network of Compute Nest. Unit: Mbps.
         self.connect_bandwidth = connect_bandwidth
         # The domain name.
         self.domain_name = domain_name
-        # The IP addresses of the endpoints for private connections.
+        # The IP address of the endpoint for the PrivateLink connection.
         self.endpoint_ips = endpoint_ips
         # The status of the Ingress endpoint. Valid values:
         # 
-        # *   Ready: The Ingress endpoint is connected.
-        # *   Pending: The Ingress endpoint is being connected.
-        # *   Failed: The Ingress endpoint fails to be connected.
-        # *   Deleted: The Ingress endpoint is deleted.
-        # *   Deleting: The Ingress endpoint is being deleted.
+        # - Ready: The endpoint is connected.
+        # 
+        # - Pending: The endpoint is being connected.
+        # 
+        # - Failed: The endpoint failed to be connected.
+        # 
+        # - Deleted: The endpoint is deleted.
+        # 
+        # - Deleting: The endpoint is being deleted.
         self.ingress_endpoint_status = ingress_endpoint_status
         # The status of the network service. Valid values:
         # 
-        # *   Ready: The network service is connected.
-        # *   Pending: The network service is being connected.
-        # *   Failed: The network service fails to be connected.
-        # *   Deleted: The network service is deleted.
-        # *   Deleting: The network service is being deleted.
+        # - Ready: The endpoint is connected.
+        # 
+        # - Pending: The endpoint is being connected.
+        # 
+        # - Failed: The endpoint failed to be connected.
+        # 
+        # - Deleted: The endpoint is deleted.
+        # 
+        # - Deleting: The endpoint is being deleted.
         self.network_service_status = network_service_status
-        # The names of the security groups.
+        # The name of the security group.
         self.security_groups = security_groups
-        # The names of the vSwitches.
+        # The name of the virtual switch.
         self.v_switches = v_switches
         # The virtual private cloud (VPC) ID.
         self.vpc_id = vpc_id

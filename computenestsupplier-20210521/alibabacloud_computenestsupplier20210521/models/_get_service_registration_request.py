@@ -10,11 +10,11 @@ class GetServiceRegistrationRequest(DaraModel):
         region_id: str = None,
         registration_id: str = None,
     ):
-        # Region ID.
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # Service registration ID.
+        # The ID of the review request.
         self.registration_id = registration_id
 
     def validate(self):

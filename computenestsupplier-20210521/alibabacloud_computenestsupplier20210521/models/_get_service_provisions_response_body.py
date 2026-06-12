@@ -15,7 +15,7 @@ class GetServiceProvisionsResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The information about the cloud services.
+        # The details of the service.
         self.service_provisions = service_provisions
 
     def validate(self):
@@ -63,31 +63,35 @@ class GetServiceProvisionsResponseBodyServiceProvisions(DaraModel):
         status: str = None,
         status_reason: str = None,
     ):
-        # Indicates whether automatic activation for the service is defined in the template. Valid values:
+        # Indicates whether the service is automatically activated. The service is automatically activated if it is defined in the template. Valid values:
         # 
-        # *   true: Automatic activation for the service is defined in the template.
-        # *   false: Manual activation for the service is defined in the template.
+        # - true: The service is automatically activated.
+        # 
+        # - false: The service must be manually activated.
         self.auto_enable_service = auto_enable_service
-        # Product details. Some services (such as ACS) involve the activation of multiple products
+        # The details of the commodity. Some services, such as ACS, require you to activate multiple commodities.
         self.commodity_provisions = commodity_provisions
-        # The URL that points to the activation page of the service.
+        # The URL for activating the Alibaba Cloud service.
         # 
-        # > This parameter is returned if Status is set to Disabled.
+        # > This parameter is returned when Status is set to Disabled.
         self.enable_url = enable_url
-        # The information about the RAM roles of the cloud service. If this parameter is empty, no RAM roles is associated with the service.
+        # The information about the service roles. If this parameter is empty, no service roles are associated with the service.
         self.role_provision = role_provision
-        # The name of the cloud service.
+        # The service name.
         self.service_name = service_name
-        # The activation status of the cloud service. Valid values:
+        # The activation status of the service. Valid values:
         # 
-        # - Enabled: The cloud service is activated.
-        # - EnabledByDefault: The cloud service is activated by default.
-        # - Disabled: The cloud service is not activated.
-        # - Unknown: The activation status of the cloud service is unknown.
+        # - Enabled: The service is activated.
+        # 
+        # - EnabledByDefault: The service is activated by default.
+        # 
+        # - Disabled: The service is not activated.
+        # 
+        # - Unknown: The activation status is unknown.
         self.status = status
-        # The reason why the service is in the Disabled or Unknown state.
+        # The reason why the Alibaba Cloud service is not activated or the activation status is unknown.
         # 
-        # > This parameter is returned if Status is set to Disabled or Unknown.
+        # > This parameter is returned when Status is set to Unknown.
         self.status_reason = status_reason
 
     def validate(self):
@@ -163,11 +167,9 @@ class GetServiceProvisionsResponseBodyServiceProvisionsRoleProvision(DaraModel):
         authorization_url: str = None,
         roles: List[main_models.GetServiceProvisionsResponseBodyServiceProvisionsRoleProvisionRoles] = None,
     ):
-        # The authorization URL of the RAM role.
-        # 
-        # > This parameter is returned if Created is set to false.
+        # The URL for authorizing the service to access cloud resources. This parameter is returned if the role is not created.
         self.authorization_url = authorization_url
-        # The RAM roles.
+        # The list of service roles.
         self.roles = roles
 
     def validate(self):
@@ -212,14 +214,15 @@ class GetServiceProvisionsResponseBodyServiceProvisionsRoleProvisionRoles(DaraMo
         function: str = None,
         role_name: str = None,
     ):
-        # The information about the API operation that is used to create the RAM role.
+        # The information about the API operation that is used to create the role.
         self.api_for_creation = api_for_creation
-        # Indicates whether the RAM role is created. Valid values:
+        # Indicates whether the role is created. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: The role is created.
+        # 
+        # - false: The role is not created.
         self.created = created
-        # The purpose for which the RAM role is used. Default value: Default. A value of Default indicates that the RAM role is the default role of the service.
+        # The purpose of the role. Default value: Default. This value indicates that the role is the default role for the service.
         self.function = function
         # The name of the role.
         self.role_name = role_name
@@ -274,14 +277,15 @@ class GetServiceProvisionsResponseBodyServiceProvisionsRoleProvisionRolesApiForC
     ):
         # The name of the API operation.
         self.api_name = api_name
-        # The ID of the Alibaba Cloud service to which the API operation belongs.
+        # The ID of the product to which the API operation belongs.
         self.api_product_id = api_product_id
         # The type of the API operation. Valid values:
         # 
-        # *   Open: public
-        # *   Inner: private
+        # - Open: a public API operation.
+        # 
+        # - Inner: an internal API operation.
         self.api_type = api_type
-        # The parameters of the API operation. ${Variable name} indicates a dynamic parameter.
+        # The parameters of the API operation. Dynamic parameters are in the \\`${Variable}\\` format. The \\`${RegionId}\\` dynamic parameter is supported, which specifies the region.
         self.parameters = parameters
 
     def validate(self):
@@ -329,11 +333,15 @@ class GetServiceProvisionsResponseBodyServiceProvisionsCommodityProvisions(DaraM
         enable_url: str = None,
         status: str = None,
     ):
-        # Commodity Code
+        # The commodity code.
         self.commodity_code = commodity_code
-        # Product activation link.
+        # The URL for activating the commodity.
         self.enable_url = enable_url
-        # Cloud service activation status.
+        # The activation status of the Alibaba Cloud service. Valid values:
+        # 
+        # - Enabled: The service is activated.
+        # 
+        # - Disabled: The service is not activated.
         self.status = status
 
     def validate(self):

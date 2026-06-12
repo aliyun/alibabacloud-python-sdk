@@ -19,9 +19,9 @@ class ListServiceTestCasesRequest(DaraModel):
     ):
         # The filters.
         self.filters = filters
-        # The number of entries per page. Valid values: 1 to 100. Default value: 20.
+        # The number of entries to return on each page. The maximum value is 100. The default value is 20.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+        # The token that is used to start the next query.
         self.next_token = next_token
         # The region ID.
         self.region_id = region_id
@@ -94,13 +94,11 @@ class ListServiceTestCasesRequestFilters(DaraModel):
         name: str = None,
         value: List[str] = None,
     ):
-        # The parameter name of the filter. You can specify one or more filters. Valid values:
+        # The name of the filter. You can specify one or more filter names. Valid values:
         # 
-        # **Status**
-        # 
-        # **TaskId**
+        # **Status**: Filters by status. **TaskId**: Filters by task ID.
         self.name = name
-        # The value of the filter condition.
+        # The filter values.
         self.value = value
 
     def validate(self):

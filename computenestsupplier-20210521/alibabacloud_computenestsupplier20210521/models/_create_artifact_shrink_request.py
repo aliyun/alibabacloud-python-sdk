@@ -23,46 +23,57 @@ class CreateArtifactShrinkRequest(DaraModel):
         tag: List[main_models.CreateArtifactShrinkRequestTag] = None,
         version_name: str = None,
     ):
-        # The build properties of the artifact, utilized for hosting and building the deployment package.
+        # The content used to build the artifact. This parameter is used for managed artifact builds.
         self.artifact_build_property_shrink = artifact_build_property_shrink
-        # The type of the artifact build task. Valid values:
+        # The type of the artifact to be built. Valid values:
         # 
-        # - EcsImage: Build ECS (Elastic Container Service) image.
+        # - EcsImage: builds an ECS image.
         # 
-        # - Dockerfile: Build container image based on Dockerfile.
+        # - Dockerfile: builds a container image based on a Dockerfile.
         # 
-        # - Buildpacks: Build container image based on Buildpacks.
+        # - Buildpacks: builds a container image based on Buildpacks.
         # 
-        # - ContainerImage: Rebuild container image by renaming an existing container image.
+        # - ContainerImage: builds a container image by renaming an existing container image.
         self.artifact_build_type = artifact_build_type
-        # The ID of the deployment package.
-        self.artifact_id = artifact_id
-        # The properties of the deployment object.
-        self.artifact_property_shrink = artifact_property_shrink
-        # The type of the deployment package. Valid values:
+        # The artifact ID.
         # 
-        # *   EcsImage: Elastic Compute Service (ECS) image.
-        # *   AcrImage: container image.
-        # *   File: Object Storage Service (OSS) object.
-        # *   Script: script.
+        # This parameter is required to create a new version of an existing artifact.
+        # 
+        # You can call the [ListArtifacts](https://help.aliyun.com/document_detail/469993.html) operation to obtain the artifact ID.
+        self.artifact_id = artifact_id
+        # The content of the artifact.
+        self.artifact_property_shrink = artifact_property_shrink
+        # The artifact type.
+        # 
+        # Valid values:
+        # 
+        # - EcsImage: an ECS image artifact.
+        # 
+        # - AcrImage: a container image artifact.
+        # 
+        # - File: an Object Storage Service (OSS) file artifact.
+        # 
+        # - Script: a script artifact.
+        # 
+        # - HelmChart: a Helm chart artifact.
         # 
         # This parameter is required.
         self.artifact_type = artifact_type
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # Ensures the idempotence of the request.
         self.client_token = client_token
-        # The description of the deployment package.
+        # The description of the artifact.
         self.description = description
-        # The name of the deployment package.
+        # The artifact name.
         # 
         # This parameter is required.
         self.name = name
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The supported regions.
+        # The regions where the image can be distributed.
         self.support_region_ids = support_region_ids
         # The custom tags.
         self.tag = tag
-        # The version name of the deployment package.
+        # The name of the artifact version.
         # 
         # This parameter is required.
         self.version_name = version_name

@@ -13,9 +13,9 @@ class ListArtifactRisksResponseBody(DaraModel):
         artifact_risk_list: List[main_models.ListArtifactRisksResponseBodyArtifactRiskList] = None,
         request_id: str = None,
     ):
-        # List of artifact risks
+        # The list of artifact risks.
         self.artifact_risk_list = artifact_risk_list
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -63,26 +63,31 @@ class ListArtifactRisksResponseBodyArtifactRiskList(DaraModel):
         risk_type_name: str = None,
         solution: str = None,
     ):
-        # CVE numbers
+        # The CVE ID.
         self.cve_nos = cve_nos
-        # Extended information, in JSON format, to be parsed according to the risk category
+        # The extended information in JSON format. Parse this information based on the risk type.
         self.extend_info = extend_info
-        # Risk level:
+        # The risk level.
         # 
-        # - high represents high
+        # - high: High
         self.level = level
-        # Risk name.
+        # The name of the risk.
         self.risk_name = risk_name
-        # Risk type. Values:
-        # - AcrCve  Container image system vulnerability
-        # - AcrSca  Container image application vulnerability
-        # - EcsVulnerability  ECS image vulnerability information
-        # - EcsAlarm  ECS image security alarm
-        # - EcsBaseline  ECS image baseline check
+        # The risk type. Valid values:
+        # 
+        # - AcrCve: system vulnerabilities in a container image
+        # 
+        # - AcrSca: application vulnerabilities in a container image
+        # 
+        # - EcsVulnerability: ECS image vulnerabilities
+        # 
+        # - EcsAlarm: ECS image security alerts
+        # 
+        # - EcsBaseline: ECS image baseline checks
         self.risk_type = risk_type
-        # Risk Type name
+        # The name of the risk type.
         self.risk_type_name = risk_type_name
-        # Solution for the risk item.
+        # The solution to the risk.
         self.solution = solution
 
     def validate(self):

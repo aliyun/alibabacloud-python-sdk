@@ -13,9 +13,9 @@ class ListTagKeysResponseBody(DaraModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # The tag keys.
+        # The list of tag keys.
         self.keys = keys
-        # The pagination token that is used in the next request to retrieve a new page of results.
+        # The token to retrieve the next page of results. This token is returned when the response is truncated.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id

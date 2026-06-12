@@ -16,15 +16,15 @@ class ListAcrImageTagsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of images.
+        # A list of images.
         self.images = images
-        # The number of entries per page. Valid values: 1 to 100. Default value: 20.
+        # The number of entries returned on each page. The maximum value is 100. The default value is 20.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results.
+        # The token for the next page of results.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -89,9 +89,9 @@ class ListAcrImageTagsResponseBodyImages(DaraModel):
     ):
         # The time when the image was created.
         self.create_time = create_time
-        # The image size. Unit: bytes.
+        # The size of the image in bytes.
         self.image_size = image_size
-        # The time when the image was modified.
+        # The time when the image was last modified.
         self.modified_time = modified_time
         # The image version.
         self.tag = tag

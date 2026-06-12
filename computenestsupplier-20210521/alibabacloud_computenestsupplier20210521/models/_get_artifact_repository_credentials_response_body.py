@@ -15,13 +15,13 @@ class GetArtifactRepositoryCredentialsResponseBody(DaraModel):
         expire_date: str = None,
         request_id: str = None,
     ):
-        # The information about the resources that can be uploaded.
+        # Information about the resources that can be uploaded.
         self.available_resources = available_resources
-        # The credentials.
+        # The access credential.
         self.credentials = credentials
-        # The time when the credentials expired.
+        # The expiration time.
         self.expire_date = expire_date
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -88,7 +88,7 @@ class GetArtifactRepositoryCredentialsResponseBodyCredentials(DaraModel):
         self.access_key_secret = access_key_secret
         # The password.
         self.password = password
-        # The Security Token Service (STS) token.
+        # The security token.
         self.security_token = security_token
         # The username.
         self.username = username
@@ -148,7 +148,7 @@ class GetArtifactRepositoryCredentialsResponseBodyAvailableResources(DaraModel):
         self.path = path
         # The region ID.
         self.region_id = region_id
-        # The repository name.
+        # The name of the repository.
         self.repository_name = repository_name
 
     def validate(self):

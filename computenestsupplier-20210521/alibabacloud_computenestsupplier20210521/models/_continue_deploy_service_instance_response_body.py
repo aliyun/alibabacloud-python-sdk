@@ -14,7 +14,7 @@ class ContinueDeployServiceInstanceResponseBody(DaraModel):
         request_id: str = None,
         service_instance_id: str = None,
     ):
-        # The dry run result.
+        # The result of the dry run.
         self.dry_run_result = dry_run_result
         # The request ID.
         self.request_id = request_id
@@ -62,17 +62,17 @@ class ContinueDeployServiceInstanceResponseBodyDryRunResult(DaraModel):
         parameters_conditionally_allowed_to_be_modified: List[str] = None,
         parameters_not_allowed_to_be_modified: List[str] = None,
     ):
-        # The parameters that can be modified. The operation that is performed to modify the parameters does not cause a validation error.
+        # The parameters that can be modified. No error is reported if you modify these parameters.
         # 
-        # >  This parameter is returned only if DryRun is set to true.
+        # > This parameter is returned only when DryRun is set to true.
         self.parameters_allowed_to_be_modified = parameters_allowed_to_be_modified
-        # The parameters that can be modified under specific conditions. The new values of the parameters determine whether the operation that is performed to modify the parameters causes a validation error.
+        # The parameters that can be conditionally modified. Whether an error is reported depends on the new values of these parameters.
         # 
-        # >  This parameter is returned only if DryRun is set to true.
+        # > This parameter is returned only when DryRun is set to true.
         self.parameters_conditionally_allowed_to_be_modified = parameters_conditionally_allowed_to_be_modified
-        # The parameters that cannot be modified. The operation that is performed to modify the parameters causes a validation error.
+        # The parameters that cannot be modified. An error is reported if you modify these parameters.
         # 
-        # >  This parameter is returned only if DryRun is set to true.
+        # > This parameter is returned only when DryRun is set to true.
         self.parameters_not_allowed_to_be_modified = parameters_not_allowed_to_be_modified
 
     def validate(self):

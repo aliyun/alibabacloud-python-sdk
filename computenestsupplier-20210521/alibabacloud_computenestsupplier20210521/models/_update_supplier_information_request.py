@@ -19,23 +19,27 @@ class UpdateSupplierInformationRequest(DaraModel):
         supplier_url: str = None,
         support_contacts: List[main_models.UpdateSupplierInformationRequestSupportContacts] = None,
     ):
-        # The delivery settings.
+        # The custom settings.
         self.delivery_settings = delivery_settings
-        # The Ip of operation.
+        # The IP address segments for managed O\\&M access.
         self.operation_ip = operation_ip
-        # The MFA of operation.
+        # Specifies whether to enable multi-factor authentication (MFA). The default value is true. Valid values:
+        # 
+        # - true: Yes.
+        # 
+        # - false: No.
         self.operation_mfa_present = operation_mfa_present
-        # Region ID.
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The description of service provider.
+        # The description of the supplier.
         self.supplier_desc = supplier_desc
-        # The Logo of service provider.
+        # The icon of the supplier.
         self.supplier_logo = supplier_logo
-        # The URL of the service provider.
+        # The URL of the supplier.
         self.supplier_url = supplier_url
-        # Contact information of the service provider
+        # The contact information of the supplier.
         self.support_contacts = support_contacts
 
     def validate(self):
@@ -117,9 +121,9 @@ class UpdateSupplierInformationRequestSupportContacts(DaraModel):
         type: str = None,
         value: str = None,
     ):
-        # The type of  contact information
+        # The type of contact method.
         self.type = type
-        # The value of contact information
+        # The contact information.
         self.value = value
 
     def validate(self):
@@ -158,14 +162,15 @@ class UpdateSupplierInformationRequestDeliverySettings(DaraModel):
     ):
         # The name of the OSS bucket.
         self.oss_bucket_name = oss_bucket_name
-        # Specifies whether to enable screencast delivery to Object Storage Service (OSS). Valid values:
+        # Specifies whether to deliver the execution results of Cloud Assistant O\\&M tasks to Object Storage Service (OSS). Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: Enabled.
+        # 
+        # - false (default): Disabled.
         self.oss_enabled = oss_enabled
-        # The number of days for which the screencasts are saved.
+        # The retention period for screen recordings, in days.
         self.oss_expiration_days = oss_expiration_days
-        # The OSS path.
+        # The path in OSS.
         self.oss_path = oss_path
 
     def validate(self):

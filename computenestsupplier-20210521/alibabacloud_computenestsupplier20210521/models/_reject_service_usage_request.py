@@ -14,21 +14,22 @@ class RejectServiceUsageRequest(DaraModel):
         type: int = None,
         user_ali_uid: int = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # A client-generated token that ensures the idempotence of a request. Make sure that the token is unique for each request. The token can contain only ASCII characters.
         self.client_token = client_token
-        # Reject comments.
+        # The approval comments.
         self.comments = comments
         self.region_id = region_id
         # The service ID.
         # 
         # This parameter is required.
         self.service_id = service_id
-        # The share type of the service. Default value: SharedAccount. Valid values:
+        # The service sharing type. The default value is SharedAccount. Valid values:
         # 
-        # *   SharedAccount: The service is shared by multiple accounts.
-        # *   Reseller: The service is distributed.
+        # - SharedAccount: The common sharing type.
+        # 
+        # - Reseller: The reseller sharing type.
         self.type = type
-        # User ali uid.
+        # The ID of the user\\"s Alibaba Cloud account.
         # 
         # This parameter is required.
         self.user_ali_uid = user_ali_uid

@@ -12,7 +12,7 @@ class GenerateDefaultServiceTestConfigResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The service test config
+        # The service test config.
         self.test_config = test_config
 
     def validate(self):

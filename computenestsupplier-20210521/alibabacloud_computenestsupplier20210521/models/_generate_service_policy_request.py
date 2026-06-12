@@ -2,7 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List
+from typing import List, Dict, Any
 
 from darabonba.model import DaraModel
 
@@ -10,14 +10,16 @@ class GenerateServicePolicyRequest(DaraModel):
     def __init__(
         self,
         operation_types: List[str] = None,
+        parameters: Dict[str, Any] = None,
         region_id: str = None,
         service_id: str = None,
         service_version: str = None,
         template_name: str = None,
         trial_type: str = None,
     ):
-        # The type of operation N for which you want to generate the policy information.
+        # The operation types for which to generate policy information.
         self.operation_types = operation_types
+        self.parameters = parameters
         # The region ID.
         # 
         # This parameter is required.
@@ -30,10 +32,11 @@ class GenerateServicePolicyRequest(DaraModel):
         self.service_version = service_version
         # The template name.
         self.template_name = template_name
-        # The trial policy. Valid values:
+        # The trial type. Valid values:
         # 
-        # *   Trial: Trials are supported.
-        # *   NotTrial: Trials are not supported.
+        # - Trial: The service supports a trial.
+        # 
+        # - NotTrial: The service does not support a trial.
         self.trial_type = trial_type
 
     def validate(self):
@@ -46,6 +49,9 @@ class GenerateServicePolicyRequest(DaraModel):
             result = _map
         if self.operation_types is not None:
             result['OperationTypes'] = self.operation_types
+
+        if self.parameters is not None:
+            result['Parameters'] = self.parameters
 
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -68,6 +74,9 @@ class GenerateServicePolicyRequest(DaraModel):
         m = m or dict()
         if m.get('OperationTypes') is not None:
             self.operation_types = m.get('OperationTypes')
+
+        if m.get('Parameters') is not None:
+            self.parameters = m.get('Parameters')
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')

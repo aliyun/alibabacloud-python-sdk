@@ -18,24 +18,37 @@ class GetServiceRequest(DaraModel):
         shared_account_type: str = None,
         show_detail: List[str] = None,
     ):
-        # Specifies whether to filter information based on Alibaba Cloud account IDs.
+        # Specifies whether to filter the results by Alibaba Cloud account ID.
+        # 
+        # Valid values:
+        # 
+        # - true: Filters the results by Alibaba Cloud account ID.
+        # 
+        # - false: Does not filter the results by Alibaba Cloud account ID.
         self.filter_ali_uid = filter_ali_uid
         # The region ID.
         self.region_id = region_id
         # The service ID.
+        # 
+        # Call the [ListServices](https://help.aliyun.com/document_detail/2264368.html) operation to obtain the service ID.
         self.service_id = service_id
-        # The Service Instance Id.
+        # The service instance ID.
         self.service_instance_id = service_instance_id
-        # The Service Name.
+        # The service name.
         self.service_name = service_name
         # The service version.
-        self.service_version = service_version
-        # The share type of the service. Default value: SharedAccount. Valid values:
         # 
-        # *   SharedAccount: The service is shared by multiple accounts.
-        # *   Resell: The service is distributed.
+        # Call the [ListServices](https://help.aliyun.com/document_detail/2264368.html) operation to obtain the service version.
+        self.service_version = service_version
+        # The service sharing type.
+        # 
+        # Valid values:
+        # 
+        # - SharedAccount (default): common sharing.
+        # 
+        # - Resell: distribution sharing.
         self.shared_account_type = shared_account_type
-        # The information that you want to query.
+        # The details to be returned.
         self.show_detail = show_detail
 
     def validate(self):

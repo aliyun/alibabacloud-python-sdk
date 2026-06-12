@@ -16,15 +16,15 @@ class ListServiceRegistrationsResponseBody(DaraModel):
         service_registrations: List[main_models.ListServiceRegistrationsResponseBodyServiceRegistrations] = None,
         total_count: int = None,
     ):
-        # Number of items per page in a paginated query. The maximum is 100, and the default is 20.
+        # The number of entries returned on each page. Maximum value: 100. Default value: 20.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+        # The token for the next page of results.
         self.next_token = next_token
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Service registration information.
+        # The service review request information.
         self.service_registrations = service_registrations
-        # Total number of records that meet the criteria.
+        # The total number of matching records.
         self.total_count = total_count
 
     def validate(self):
@@ -89,29 +89,27 @@ class ListServiceRegistrationsResponseBodyServiceRegistrations(DaraModel):
         status: str = None,
         submit_time: str = None,
     ):
-        # Comment.
+        # The review comments.
         self.comment = comment
-        # Finish time.
+        # The end time.
         self.finish_time = finish_time
-        # Registration ID.
+        # The review request ID.
         self.registration_id = registration_id
-        # Service ID.
+        # The service ID.
         self.service_id = service_id
-        # Registration status. Allowed values:
+        # The status of the review request. Possible values:
         # 
-        # - Submitted
+        # - Submitted: The request is submitted.
         # 
-        # - Approved
+        # - Approved: The request is approved.
         # 
-        # - Rejected
+        # - Rejected: The request is rejected.
         # 
-        # - Canceled
+        # - Canceled: The request is canceled.
         # 
-        # - Executed
-        # 
-        # - Executed: Executed.
+        # - Executed: The request is executed.
         self.status = status
-        # Submit time.
+        # The time when the request was submitted.
         self.submit_time = submit_time
 
     def validate(self):

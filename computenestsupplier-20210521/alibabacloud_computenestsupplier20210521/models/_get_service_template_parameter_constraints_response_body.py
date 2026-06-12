@@ -14,9 +14,9 @@ class GetServiceTemplateParameterConstraintsResponseBody(DaraModel):
         parameter_constraints: List[main_models.GetServiceTemplateParameterConstraintsResponseBodyParameterConstraints] = None,
         request_id: str = None,
     ):
-        # The constraint families.
+        # The family constraints.
         self.family_constraints = family_constraints
-        # The parameters in the template.
+        # The parameter information.
         self.parameter_constraints = parameter_constraints
         # The request ID.
         self.request_id = request_id
@@ -74,17 +74,19 @@ class GetServiceTemplateParameterConstraintsResponseBodyParameterConstraints(Dar
     ):
         # The valid values of the parameter.
         self.allowed_values = allowed_values
-        # The names of the associated parameters.
+        # The list of associated parameters.
         self.association_parameter_names = association_parameter_names
         # The behavior of the parameter. Valid values:
         # 
-        # *   NoLimit: The value of this parameter is not limited.
-        # *   NotSupport: The value of this parameter cannot be queried.
-        # *   QueryError: The query failed.
+        # - NoLimit: The parameter has no value limit.
         # 
-        # >  If AllowedValues is not returned, Behavior and BehaviorReason are returned.
+        # - NotSupport: The parameter does not support value queries.
+        # 
+        # - QueryError: The query failed.
+        # 
+        # > If the query result does not include AllowedValues, Behavior and BehaviorReason are returned to describe the behavior of the parameter and the reason for the behavior.
         self.behavior = behavior
-        # The reason why the behavior of the parameter is returned.
+        # The reason for the parameter behavior.
         self.behavior_reason = behavior_reason
         # The original constraint information.
         self.original_constraints = original_constraints

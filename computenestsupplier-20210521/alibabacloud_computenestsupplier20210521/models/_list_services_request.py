@@ -18,19 +18,19 @@ class ListServicesRequest(DaraModel):
         resource_group_id: str = None,
         tag: List[main_models.ListServicesRequestTag] = None,
     ):
-        # Specifies whether to return all versions of a service. Default value: false, which specifies that only the default version of a service is returned.
+        # Specifies whether to return all versions of the service. The default value is false. If this parameter is set to false, only the default version of each service is returned.
         self.all_versions = all_versions
-        # The filters.
+        # The filter.
         self.filter = filter
-        # The number of entries per page. Valid values: 1 to 100. Default value: 20.
+        # The number of entries to return on each page. Maximum value: 100. Default value: 20.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+        # The token that is used to retrieve the next page of results. Set this parameter to the NextToken value returned by a previous call.
         self.next_token = next_token
         # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # The custom tags.
         self.tag = tag
@@ -151,14 +151,17 @@ class ListServicesRequestFilter(DaraModel):
         name: str = None,
         value: List[str] = None,
     ):
-        # The parameter name of the filter. You can specify one or more parameter names to query services. Valid values:
+        # The name of the filter. You can query by one or more filter names. Valid values:
         # 
-        # *   ServiceId: the ID of the service.
-        # *   Name: the name of the service.
-        # *   Status: the state of the service.
-        # *   SupplierName: the name of the service provider.
+        # - ServiceId: The service ID.
+        # 
+        # - Name: The service name.
+        # 
+        # - Status: The service status.
+        # 
+        # - SupplierName: The name of the service provider.
         self.name = name
-        # The parameter values of the filter.
+        # The filter values.
         self.value = value
 
     def validate(self):

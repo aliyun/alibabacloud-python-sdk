@@ -15,17 +15,17 @@ class GetUploadCredentialsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code.
+        # The return code of the call.
         self.code = code
-        # The response parameters.
+        # The returned data.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The message returned.
+        # The message returned for the request.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. A value of true indicates the request was successful. A value of false indicates the request failed.
+        # Indicates whether the call was successful. A value of true indicates success. A value of false indicates failure.
         self.success = success
 
     def validate(self):
@@ -97,9 +97,9 @@ class GetUploadCredentialsResponseBodyData(DaraModel):
         self.access_key_secret = access_key_secret
         # The bucket name.
         self.bucket_name = bucket_name
-        # The time when the AccessKey pair expires.
+        # The time when the permissions expire.
         self.expire_date = expire_date
-        # The name of the key.
+        # The specific key.
         self.key = key
         # The region ID.
         self.region_id = region_id

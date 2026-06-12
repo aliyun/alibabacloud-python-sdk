@@ -12,17 +12,17 @@ class WithdrawServiceRequest(DaraModel):
         service_id: str = None,
         service_version: str = None,
     ):
-        # Client token, used to ensure the idempotence of requests. Generate a unique value for this parameter from your client to ensure it is unique across different requests. ClientToken supports only ASCII characters.
+        # The client token that is used to ensure the idempotence of the request. Generate a value from your client and make sure that the value is unique among different requests. The token can contain only ASCII characters.
         self.client_token = client_token
-        # Region ID.
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # Service ID.
+        # The service ID.
         # 
         # This parameter is required.
         self.service_id = service_id
-        # Service version.
+        # The service version.
         # 
         # This parameter is required.
         self.service_version = service_version

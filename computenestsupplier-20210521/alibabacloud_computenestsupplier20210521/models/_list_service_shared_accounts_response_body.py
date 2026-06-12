@@ -16,15 +16,15 @@ class ListServiceSharedAccountsResponseBody(DaraModel):
         share_account: List[main_models.ListServiceSharedAccountsResponseBodyShareAccount] = None,
         total_count: int = None,
     ):
-        # The number of entries per page. Valid values: 1 to 100. Default value: 20.
+        # The number of entries returned on each page. Maximum value: 100. Default value: 20.
         self.max_results = max_results
-        # A pagination token.
+        # The token used to start the next query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # Service shared account information.
+        # The information about the shared accounts.
         self.share_account = share_account
-        # The total number of entries returned.
+        # The total number of entries that meet the filter criteria.
         self.total_count = total_count
 
     def validate(self):
@@ -90,25 +90,23 @@ class ListServiceSharedAccountsResponseBodyShareAccount(DaraModel):
         update_time: str = None,
         user_ali_uid: str = None,
     ):
-        # The time when the service was created.
+        # The time when the sharing was created.
         self.create_time = create_time
-        # Service logo.
+        # The logo of the distributor.
         self.logo = logo
-        # The name of the service instance. The value must meet the following requirements:
-        # 
-        # *   The name cannot exceed 64 characters in length.
-        # *   It can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or a letter.
+        # The name of the distributor.
         self.name = name
-        # The permissions on the service. Valid values:
+        # The permission type. Valid values:
         # 
-        # *   Deployable: Permissions to deploy the service.
-        # *   Accessible: Permissions to access the service.
+        # - Deployable: The service is deployable.
+        # 
+        # - Accessible: The service is accessible.
         self.permission = permission
         # The service ID.
         self.service_id = service_id
-        # The time when the service was updated.
+        # The time when the sharing was last updated.
         self.update_time = update_time
-        # The user aliUid.
+        # The Alibaba Cloud account ID of the user.
         self.user_ali_uid = user_ali_uid
 
     def validate(self):

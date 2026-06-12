@@ -21,38 +21,45 @@ class UpdateArtifactResponseBody(DaraModel):
         support_region_ids: str = None,
         version_name: str = None,
     ):
-        # The build properties of the artifact, utilized for hosting and building the deployment package.
+        # The properties for building the artifact. This is used for managed artifact builds.
         self.artifact_build_property = artifact_build_property
-        # The type of the deployment package to be built.
+        # The build type of the artifact.
         self.artifact_build_type = artifact_build_type
-        # The ID of the deployment package.
+        # The artifact ID.
         self.artifact_id = artifact_id
-        # The properties of the deployment package.
+        # The content of the artifact.
         self.artifact_property = artifact_property
-        # The type of the deployment package.
+        # The artifact type.
         self.artifact_type = artifact_type
-        # The version of the deployment package.
+        # The artifact version.
         self.artifact_version = artifact_version
-        # The description of the deployment package.
+        # The description of the artifact.
         self.description = description
-        # The time when the deployment package was modified.
+        # The time when the artifact was modified.
         self.gmt_modified = gmt_modified
         # The request ID.
         self.request_id = request_id
-        # The status of the deployment package. Valid values:
+        # The status of the artifact.
         # 
-        # *   Created: The deployment package is created.
-        # *   Scanning: The deployment package is being scanned.
-        # *   ScanFailed: The deployment package failed to be scanned.
-        # *   Delivering: The deployment package is being distributed.
-        # *   Available: The deployment package is available.
-        # *   Deleted: The deployment package is deleted.
+        # Valid values:
+        # 
+        # - Created: The artifact is created.
+        # 
+        # - Scanning: The artifact is being scanned.
+        # 
+        # - ScanFailed: The artifact failed to be scanned.
+        # 
+        # - Delivering: The artifact is being distributed.
+        # 
+        # - Available: The artifact is available.
+        # 
+        # - Deleted: The artifact is deleted.
         self.status = status
-        # The status of the deployment package.
+        # The details of the artifact status.
         self.status_detail = status_detail
-        # The ID of the region that supports the deployment package.
+        # The IDs of the regions to which the artifact can be distributed.
         self.support_region_ids = support_region_ids
-        # The name of the deployment package.
+        # The version name.
         self.version_name = version_name
 
     def validate(self):

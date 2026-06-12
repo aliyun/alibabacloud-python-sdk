@@ -12,14 +12,15 @@ class ListAcrImageRepositoriesRequest(DaraModel):
         next_token: str = None,
         repo_name: str = None,
     ):
-        # The type of the artifact. Default value: AcrImage. Valid values:
+        # The type of the artifact. The default value is AcrImage. Valid values:
         # 
-        # *   HelmChart: Helm chart image.
-        # *   AcrImage: container image.
+        # - HelmChart: a Helm chart image.
+        # 
+        # - AcrImage: a container image.
         self.artifact_type = artifact_type
-        # The number of entries per page. Valid values: 1 to 100. Default value: 20.
+        # The number of entries to return on each page for a paged query. The maximum value is 100. The default value is 20.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results.
+        # The token that is used to start the next query.
         self.next_token = next_token
         # The name of the image repository.
         self.repo_name = repo_name

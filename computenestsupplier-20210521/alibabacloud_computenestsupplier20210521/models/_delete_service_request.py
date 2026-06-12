@@ -12,7 +12,7 @@ class DeleteServiceRequest(DaraModel):
         service_id: str = None,
         service_version: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # A client token that ensures the idempotence of the request. The value must be unique for each request. The token can be up to 64 ASCII characters in length.
         self.client_token = client_token
         # The region ID.
         # 

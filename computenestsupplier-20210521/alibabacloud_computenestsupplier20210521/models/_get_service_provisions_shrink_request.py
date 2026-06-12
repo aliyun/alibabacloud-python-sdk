@@ -13,7 +13,7 @@ class GetServiceProvisionsShrinkRequest(DaraModel):
         service_version: str = None,
         template_name: str = None,
     ):
-        # The parameters that are specified to deploy the service instance.
+        # The parameters.
         self.parameters_shrink = parameters_shrink
         # The region ID.
         self.region_id = region_id

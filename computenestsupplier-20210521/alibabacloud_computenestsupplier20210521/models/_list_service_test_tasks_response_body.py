@@ -16,15 +16,15 @@ class ListServiceTestTasksResponseBody(DaraModel):
         request_id: str = None,
         service_test_tasks: List[main_models.ListServiceTestTasksResponseBodyServiceTestTasks] = None,
     ):
-        # The total number of entries returned.
+        # The number of tasks.
         self.count = count
-        # The number of items to return per page when paginating results. The maximum is 100, and the default is 20.
+        # The number of entries returned on each page.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+        # The pagination token that is used in the next request to retrieve a new page of results. If this parameter is not returned, it indicates that no more results are available.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The service test tasks.
+        # The collection of service test tasks.
         self.service_test_tasks = service_test_tasks
 
     def validate(self):
@@ -90,13 +90,13 @@ class ListServiceTestTasksResponseBodyServiceTestTasks(DaraModel):
     ):
         # The time when the task was created.
         self.create_time = create_time
-        # the status of service task.
+        # The execution status.
         self.status = status
         # The task ID.
         self.task_id = task_id
-        # The name of the task.
+        # The task name.
         self.task_name = task_name
-        # The task region id.
+        # The region where the task was executed.
         self.task_region_id = task_region_id
 
     def validate(self):

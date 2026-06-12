@@ -15,13 +15,13 @@ class ListServiceRegistrationsRequest(DaraModel):
         next_token: str = None,
         region_id: str = None,
     ):
-        # Filter.
+        # The filter.
         self.filter = filter
-        # The number of items to return per page during a paginated query. The maximum is 100, and the default is 20.
+        # The number of entries to return on each page. Maximum value: 100. Default value: 20.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+        # The query token. Set it to the NextToken value returned from the previous API call.
         self.next_token = next_token
-        # Region ID.
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -78,15 +78,15 @@ class ListServiceRegistrationsRequestFilter(DaraModel):
         name: str = None,
         value: List[str] = None,
     ):
-        # Name of the filter field. Allowed values:
+        # The name of the filter field. Valid values:
         # 
-        # - ServiceId: Service ID.
+        # - ServiceId: The service ID.
         # 
-        # - RegistrationId: Registration ID.
+        # - RegistrationId: The review request ID.
         # 
-        # - Status: Registration status. Allowed values: Submitted, Approved, Rejected, Canceled, and Executed.
+        # - Status: The service status. Valid values: Submitted, Approved, Rejected, Canceled, and Executed.
         self.name = name
-        # List of filter values.
+        # The list of filter values.
         self.value = value
 
     def validate(self):

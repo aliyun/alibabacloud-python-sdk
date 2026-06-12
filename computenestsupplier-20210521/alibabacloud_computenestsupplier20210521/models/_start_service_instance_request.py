@@ -11,15 +11,15 @@ class StartServiceInstanceRequest(DaraModel):
         region_id: str = None,
         service_instance_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request.
-        # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # A client token that is used to ensure the idempotence of the request. Generate a value for this parameter from your client and make sure that the value is unique among different requests. ClientToken can contain only ASCII characters.
         self.client_token = client_token
-        # The region ID where the service instance resides.
+        # The ID of the region where the service instance resides.
         # 
         # This parameter is required.
         self.region_id = region_id
         # The ID of the service instance.
+        # 
+        # You can call the [ListServiceInstances](https://help.aliyun.com/document_detail/396200.html) operation to query the IDs of service instances.
         # 
         # This parameter is required.
         self.service_instance_id = service_instance_id

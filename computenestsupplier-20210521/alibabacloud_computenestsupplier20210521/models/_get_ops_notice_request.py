@@ -10,8 +10,11 @@ class GetOpsNoticeRequest(DaraModel):
         notice_id: str = None,
         region_id: str = None,
     ):
+        # The notice ID.
+        # 
         # This parameter is required.
         self.notice_id = notice_id
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

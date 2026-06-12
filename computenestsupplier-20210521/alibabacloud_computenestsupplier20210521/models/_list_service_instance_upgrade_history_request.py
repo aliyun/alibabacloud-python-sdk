@@ -12,15 +12,15 @@ class ListServiceInstanceUpgradeHistoryRequest(DaraModel):
         region_id: str = None,
         service_instance_id: str = None,
     ):
-        # The number of items to return per page when paginating results. The maximum is 100, and the default is 20.
+        # The number of entries to return on each page for a paged query. The maximum value is 100. The default value is 20.
         self.max_results = max_results
-        # The token for the next query, which should be the value of the NextToken parameter from the previous API call.
+        # The token that is used to retrieve the next page of results. Set this to the NextToken value from a previous response.
         self.next_token = next_token
-        # Region ID.
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # Service instance ID.
+        # The service instance ID.
         # 
         # This parameter is required.
         self.service_instance_id = service_instance_id

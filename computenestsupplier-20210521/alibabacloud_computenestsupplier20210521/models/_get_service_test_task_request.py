@@ -12,7 +12,7 @@ class GetServiceTestTaskRequest(DaraModel):
     ):
         # The region ID.
         self.region_id = region_id
-        # The task ID.
+        # The ID of the service test task.
         self.task_id = task_id
 
     def validate(self):

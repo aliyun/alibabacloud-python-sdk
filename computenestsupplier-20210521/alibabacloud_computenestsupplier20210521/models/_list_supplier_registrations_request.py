@@ -17,9 +17,9 @@ class ListSupplierRegistrationsRequest(DaraModel):
     ):
         # The filter.
         self.filter = filter
-        # Number of items per page in a paginated query. The maximum is 100, and the default is 20.
+        # The number of entries to return on each page. Maximum value: 100. Default value: 20.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results.
+        # The token that is used to retrieve the next page of results.
         self.next_token = next_token
         # The region ID.
         # 
@@ -78,15 +78,17 @@ class ListSupplierRegistrationsRequestFilter(DaraModel):
         name: str = None,
         value: List[str] = None,
     ):
-        # Name of the filter field. Allowed values:
+        # The name of the filter. You can query by one or more filter names. Valid values:
         # 
-        # - SupplierUid: The aliUid of supplier.
-        # - SupplierName: The name of supplier.
-        # - RegistrationId: Registration ID.
+        # - SupplierUid: The UID of the service provider.
         # 
-        # - Status: Registration status. Allowed values: Submitted, Approved, Rejected.
+        # - RegistrationId: The review ID.
+        # 
+        # - Status: The review status.
+        # 
+        # - SupplierName: The name of the service provider.
         self.name = name
-        # Filter value.
+        # The value of the filter condition.
         self.value = value
 
     def validate(self):

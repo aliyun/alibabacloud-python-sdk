@@ -12,17 +12,17 @@ class UpdateServiceTestCaseRequest(DaraModel):
         test_case_name: str = None,
         test_config: str = None,
     ):
-        # Region ID.
+        # The region ID.
         self.region_id = region_id
-        # Service test case ID
+        # The ID of the service test case.
         # 
         # This parameter is required.
         self.test_case_id = test_case_id
-        # Test case name
+        # The name of the test case.
         # 
         # This parameter is required.
         self.test_case_name = test_case_name
-        # Test configuration
+        # The test configuration.
         # 
         # This parameter is required.
         self.test_config = test_config

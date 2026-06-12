@@ -14,11 +14,11 @@ class UpdateSupplierInformationResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The description of service provider.
+        # The description of the supplier.
         self.supplier_desc = supplier_desc
-        # The name of the service provider.
+        # The name of the supplier.
         self.supplier_name = supplier_name
-        # The URL of the service provider.
+        # The URL of the supplier.
         self.supplier_url = supplier_url
 
     def validate(self):

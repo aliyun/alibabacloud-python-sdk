@@ -15,13 +15,13 @@ class ListServiceInstanceResourcesResponseBody(DaraModel):
         request_id: str = None,
         resources: List[main_models.ListServiceInstanceResourcesResponseBodyResources] = None,
     ):
-        # The number of entries per page. Valid values: 1 to 100. Default value: 20.
+        # The number of entries returned per page. Maximum value: 100. Default value: 20.
         self.max_results = max_results
-        # A pagination token.
+        # The token to start the next query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The list of resources.
+        # The resources.
         self.resources = resources
 
     def validate(self):
@@ -84,44 +84,71 @@ class ListServiceInstanceResourcesResponseBodyResources(DaraModel):
         resource_arn: str = None,
         status: str = None,
     ):
-        # The time when the service instance was created.
+        # The time when the resource was created.
         self.create_time = create_time
-        # The time when the resource expires.
+        # The expiration time.
         self.expire_time = expire_time
         # The billing method. Valid values:
         # 
-        # *   Subscription
-        # *   PayAsYouGo
-        self.pay_type = pay_type
-        # The code of the cloud service.
-        self.product_code = product_code
-        # The type of the cloud service.
-        self.product_type = product_type
-        # The renewal state. Valid values:
+        # - Subscription: subscription.
         # 
-        # *   AutoRenewal
-        # *   ManualRenewal
-        # *   NotRenewal
+        # - PayAsYouGo: pay-as-you-go.
+        self.pay_type = pay_type
+        # The product code.
+        self.product_code = product_code
+        # The product type.
+        self.product_type = product_type
+        # The renewal status. Valid values:
+        # 
+        # - AutoRenewal: auto-renewal.
+        # 
+        # - ManualRenewal: manual renewal.
+        # 
+        # - NotRenewal: no renewal.
         self.renew_status = renew_status
         # The renewal period.
         self.renewal_period = renewal_period
         # The unit of the renewal period. Valid values:
         # 
-        # *   Month
-        # *   Year
-        self.renewal_period_unit = renewal_period_unit
-        # The ARN of the resource.
-        self.resource_arn = resource_arn
-        # The status of the service instance. Valid values:
+        # - Month: month.
         # 
-        # *   Created
-        # *   Deploying
-        # *   DeployedFailed
-        # *   Deployed
-        # *   Upgrading
-        # *   Deleting
-        # *   Deleted
-        # *   DeletedFailed
+        # - Year: year.
+        self.renewal_period_unit = renewal_period_unit
+        # The Alibaba Cloud Resource Name (ARN) of the resource.
+        self.resource_arn = resource_arn
+        # The status of the resource. Valid values:
+        # 
+        # - INIT_COMPLETE: The resource is pending creation.
+        # 
+        # - CREATE_COMPLETE: The resource is created.
+        # 
+        # - CREATE_FAILED: The resource failed to be created.
+        # 
+        # - CREATE_IN_PROGRESS: The resource is being created.
+        # 
+        # - UPDATE_IN_PROGRESS: The resource is being updated.
+        # 
+        # - UPDATE_FAILED: The resource failed to be updated.
+        # 
+        # - UPDATE_COMPLETE: The resource is updated.
+        # 
+        # - DELETE_IN_PROGRESS: The resource is being deleted.
+        # 
+        # - DELETE_FAILED: The resource failed to be deleted.
+        # 
+        # - DELETE_COMPLETE: The resource is deleted.
+        # 
+        # - CHECK_IN_PROGRESS: The resource is being checked.
+        # 
+        # - CHECK_FAILED: The resource failed to be checked.
+        # 
+        # - CHECK_COMPLETE: The resource is checked.
+        # 
+        # - IMPORT_IN_PROGRESS: The resource is being imported.
+        # 
+        # - IMPORT_FAILED: The resource failed to be imported.
+        # 
+        # - IMPORT_COMPLETE: The resource is imported.
         self.status = status
 
     def validate(self):

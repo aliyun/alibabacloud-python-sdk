@@ -16,10 +16,15 @@ class GetServiceTemplateCriterionIssuesResponseBody(DaraModel):
         total_criterion_issue_count: int = None,
         total_mandatory_criterion_issue_count: int = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The number of templates with criterion issues in the service.
         self.risky_template_count = risky_template_count
+        # The list of criterion issues in the template.
         self.template_criterion_issue_list = template_criterion_issue_list
+        # The total number of criterion issues in the service template.
         self.total_criterion_issue_count = total_criterion_issue_count
+        # The number of mandatory criterion issues in the service template.
         self.total_mandatory_criterion_issue_count = total_mandatory_criterion_issue_count
 
     def validate(self):
@@ -83,10 +88,15 @@ class GetServiceTemplateCriterionIssuesResponseBodyTemplateCriterionIssueList(Da
         total_criterion_issue_count: int = None,
         total_mandatory_criterion_issue_count: int = None,
     ):
+        # The list of criterion issues.
         self.criterion_issues = criterion_issues
+        # The name of the template.
         self.template_name = template_name
+        # The URL of the template.
         self.template_url = template_url
+        # The total number of criterion issues in the service template.
         self.total_criterion_issue_count = total_criterion_issue_count
+        # The number of mandatory criterion issues in the service template.
         self.total_mandatory_criterion_issue_count = total_mandatory_criterion_issue_count
 
     def validate(self):
@@ -149,9 +159,17 @@ class GetServiceTemplateCriterionIssuesResponseBodyTemplateCriterionIssueListCri
         position: str = None,
         type: str = None,
     ):
+        # The supplementary information about the criterion issue.
         self.extend_info = extend_info
+        # The severity level of the issue. Valid values:
+        # 
+        # - Mandatory: The issue must be fixed.
+        # 
+        # - Recommended: You are advised to fix the issue.
         self.level = level
+        # The position where the issue exists.
         self.position = position
+        # The type of the criterion issue.
         self.type = type
 
     def validate(self):
@@ -201,8 +219,11 @@ class GetServiceTemplateCriterionIssuesResponseBodyTemplateCriterionIssueListCri
         property: str = None,
         property_value: str = None,
     ):
+        # The AssociationProperty of the ROS parameter.
         self.association_property = association_property
+        # The resource property.
         self.property = property
+        # The value of the resource property.
         self.property_value = property_value
 
     def validate(self):

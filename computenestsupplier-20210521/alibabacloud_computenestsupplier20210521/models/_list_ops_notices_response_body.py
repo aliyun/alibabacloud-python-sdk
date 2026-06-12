@@ -16,10 +16,15 @@ class ListOpsNoticesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The number of entries returned on each page.
         self.max_results = max_results
+        # The token to start the next page of results. If this parameter is not returned, all results have been returned.
         self.next_token = next_token
+        # The O\\&M notices.
         self.ops_notices = ops_notices
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -90,17 +95,51 @@ class ListOpsNoticesResponseBodyOpsNotices(DaraModel):
         success: str = None,
         type: str = None,
     ):
+        # The O\\&M item properties.
         self.attributes = attributes
+        # The category. Valid values:
+        # 
+        # - Availability
+        # 
+        # - Cost
+        # 
+        # - Performance
+        # 
+        # - Recovery
+        # 
+        # - Security
         self.category = category
+        # The content.
         self.content = content
+        # The O\\&M notice ID.
         self.notice_id = notice_id
+        # The service ID.
         self.service_id = service_id
+        # The service name.
         self.service_name = service_name
+        # The service versions.
         self.service_versions = service_versions
+        # The severity level. Valid values:
+        # 
+        # - Critical
+        # 
+        # - High
+        # 
+        # - Medium
+        # 
+        # - Low
         self.severity = severity
+        # The solution.
         self.solutions = solutions
+        # The start time.
         self.start_time = start_time
+        # Indicates whether the request was successful.
         self.success = success
+        # The type. Valid values:
+        # 
+        # - ServiceInstanceUpgrade: upgrade
+        # 
+        # - VulnerabilityFix: vulnerability
         self.type = type
 
     def validate(self):

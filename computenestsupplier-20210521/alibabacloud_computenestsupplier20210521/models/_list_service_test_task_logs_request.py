@@ -12,15 +12,15 @@ class ListServiceTestTaskLogsRequest(DaraModel):
         sort_order: str = None,
         task_id: str = None,
     ):
-        # The number of items to return per page when paginating results. The maximum is 100, and the default is 20.
+        # The number of entries to return on each page. Maximum value: 100. Default value: 20.
         self.max_results = max_results
-        # A pagination token.
+        # The token that is used to retrieve the next page of results.
         self.next_token = next_token
-        # Sort Order. Possible values:
+        # The sort order. Valid values:
         # 
-        # + Ascending: Ascending order
+        # - **Ascending**: sorts the results in ascending order.
         # 
-        # + Descending (default value): Descending order
+        # - **Descending** (default): sorts the results in descending order.
         self.sort_order = sort_order
         # The task ID.
         self.task_id = task_id

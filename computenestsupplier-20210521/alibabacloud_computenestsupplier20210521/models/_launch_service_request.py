@@ -16,11 +16,11 @@ class LaunchServiceRequest(DaraModel):
         service_id: str = None,
         service_version: str = None,
     ):
-        # The categories of the service.
+        # The service categories.
         self.categories = categories
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # A client token used to ensure the idempotence of the request. Generate a unique value from your client for each request. The ClientToken parameter supports only ASCII characters.
         self.client_token = client_token
-        # Whether to set the recommended service publishing to the service directory.
+        # Specifies whether to recommend the service when publishing it to the Service Catalog.
         self.recommend = recommend
         # The region ID.
         # 

@@ -17,30 +17,37 @@ class ReleaseArtifactResponseBody(DaraModel):
         status: str = None,
         version_name: str = None,
     ):
-        # The ID of the artifact.
+        # The artifact ID.
         self.artifact_id = artifact_id
         # The content of the artifact.
         self.artifact_property = artifact_property
-        # The type of the artifact.
+        # The artifact type.
         self.artifact_type = artifact_type
-        # The version of the artifact.
+        # The artifact version.
         self.artifact_version = artifact_version
-        # The description of the artifact.
+        # The artifact description.
         self.description = description
-        # The time when the artifact was modified.
+        # The time when the artifact was last modified.
         self.gmt_modified = gmt_modified
         # The request ID.
         self.request_id = request_id
-        # The state of the artifact. Valid values:
+        # The status of the artifact.
         # 
-        # *   Created: The artifact is created.
-        # *   Scanning: The artifact is being scanned.
-        # *   ScanFailed: The artifact failed to be scanned.
-        # *   Delivering: The artifact is being distributed.
-        # *   Available: The artifact is available.
-        # *   Deleted: The artifact is deleted.
+        # Valid values:
+        # 
+        # - Created: The artifact is created.
+        # 
+        # - Scanning: The artifact is being scanned.
+        # 
+        # - ScanFailed: The artifact failed to be scanned.
+        # 
+        # - Delivering: The artifact is being distributed.
+        # 
+        # - Available: The artifact is available.
+        # 
+        # - Deleted: The artifact is deleted.
         self.status = status
-        # The version name of the artifact.
+        # The name of the artifact version.
         self.version_name = version_name
 
     def validate(self):
