@@ -22,7 +22,7 @@ class DescribeInstancesRequest(DaraModel):
         image_id: str = None,
         inner_ip_addresses: str = None,
         instance_charge_type: str = None,
-        instance_ids: str = None,
+        instance_ids: List[str] = None,
         instance_name: str = None,
         instance_network_type: str = None,
         instance_type: str = None,
