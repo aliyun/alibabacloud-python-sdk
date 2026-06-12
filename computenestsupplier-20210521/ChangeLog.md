@@ -2,6 +2,10 @@
 - Update API GenerateServicePolicy: add request parameters Parameters.
 
 
+2026-06-12 Version: 7.3.2
+- Update API GenerateServicePolicy: add request parameters Parameters.
+
+
 2026-05-22 Version: 7.3.1
 - Update API GetServiceInstance: add response parameters Body.GrantedPermission.
 - Update API GetServiceInstance: add response parameters Body.PolicyNames.
