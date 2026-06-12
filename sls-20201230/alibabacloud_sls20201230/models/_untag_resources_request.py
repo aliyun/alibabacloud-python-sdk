@@ -16,8 +16,9 @@ class UntagResourcesRequest(DaraModel):
     ):
         # Specifies whether to unbind all tags. Default value: false. Valid values:
         # 
-        # *   false: unbinds only the tags that match the value of tags.
-        # *   true: unbinds all tags that are bound to the resource.
+        # - false: unbinds only the tags that match the value of tags.
+        # 
+        # - true: unbinds all tags that are bound to the resource.
         self.all = all
         # The resource IDs. Each time you call this operation, you can unbind tags only from a single resource. Therefore, you can enter only one resource ID.
         # 
@@ -25,11 +26,15 @@ class UntagResourcesRequest(DaraModel):
         self.resource_id = resource_id
         # The type of the resource. Valid values:
         # 
-        # *   project
-        # *   logstore
-        # *   dashboard
-        # *   machinegroup
-        # *   logtailconfig
+        # - project
+        # 
+        # - logstore
+        # 
+        # - dashboard
+        # 
+        # - machinegroup
+        # 
+        # - logtailconfig
         self.resource_type = resource_type
         # The tag keys. If you set all to false, only the tags that match the value of this parameter are unbound.
         self.tags = tags

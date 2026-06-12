@@ -13,11 +13,17 @@ class UpdateAzureBlobIngestionRequest(DaraModel):
         display_name: str = None,
         schedule: main_models.Schedule = None,
     ):
+        # The updated configuration for the Azure Blob ingestion task.
+        # 
         # This parameter is required.
         self.configuration = configuration
+        # The updated description for the Azure Blob ingestion task.
         self.description = description
+        # The updated display name for the Azure Blob ingestion task.
+        # 
         # This parameter is required.
         self.display_name = display_name
+        # The updated ingestion schedule.
         self.schedule = schedule
 
     def validate(self):

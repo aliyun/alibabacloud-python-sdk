@@ -16,17 +16,17 @@ class IndexJsonKey(DaraModel):
         token: List[str] = None,
         type: str = None,
     ):
-        # Alias.
+        # The alias of the field.
         self.alias = alias
-        # Case sensitivity.
+        # Specifies whether queries on this field are case-sensitive.
         self.case_sensitive = case_sensitive
-        # Whether the field contains Chinese characters.
+        # Specifies whether to enable Chinese tokenization for the field.
         self.chn = chn
-        # Whether to enable statistics.
+        # Specifies whether to enable doc_value for the field. This enables sorting, aggregation, and statistical analysis on the field.
         self.doc_value = doc_value
-        # Delimiter.
+        # The delimiters used for tokenization.
         self.token = token
-        # The data type of the field.
+        # Specifies the field type.
         # 
         # This parameter is required.
         self.type = type

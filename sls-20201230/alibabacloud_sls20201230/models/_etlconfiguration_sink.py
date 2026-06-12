@@ -18,27 +18,27 @@ class ETLConfigurationSink(DaraModel):
         project: str = None,
         role_arn: str = None,
     ):
-        # The AccessKey ID that is used to grant the permissions to write data to the destination Logstore.
+        # The AccessKey ID used to write to the destination Logstore.
         self.access_key_id = access_key_id
-        # The AccessKey secret that is used to grant the permissions to write data to the destination Logstore.
+        # The AccessKey Secret used to write to the destination Logstore.
         self.access_key_secret = access_key_secret
-        # The result data to write.
+        # The datasets to write to the sink.
         self.datasets = datasets
-        # The Simple Log Service endpoint for the region where the destination project resides.
+        # The endpoint of the destination Project\\"s region.
         self.endpoint = endpoint
-        # The name of the destination Logstore.
+        # The destination Logstore name.
         # 
         # This parameter is required.
         self.logstore = logstore
-        # The name of the storage destination.
+        # The sink name.
         # 
         # This parameter is required.
         self.name = name
-        # The name of the destination project.
+        # The destination Project name.
         # 
         # This parameter is required.
         self.project = project
-        # The Alibaba Cloud Resource Name (ARN) of the role that is used to grant the permissions to write data to the destination Logstore.
+        # The role ARN used to write to the destination Logstore.
         # 
         # This parameter is required.
         self.role_arn = role_arn

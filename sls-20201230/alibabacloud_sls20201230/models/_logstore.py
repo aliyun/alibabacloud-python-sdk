@@ -11,6 +11,7 @@ class Logstore(DaraModel):
         append_meta: bool = None,
         auto_split: bool = None,
         create_time: int = None,
+        enable_modify: bool = None,
         enable_tracking: bool = None,
         encrypt_conf: main_models.EncryptConf = None,
         hot_ttl: int = None,
@@ -21,62 +22,70 @@ class Logstore(DaraModel):
         mode: str = None,
         processor_id: str = None,
         product_type: str = None,
+        resource_group_id: str = None,
         shard_count: int = None,
         sharding_policy: main_models.ShardingPolicy = None,
         telemetry_type: str = None,
         ttl: int = None,
     ):
-        # Specifies whether to record public IP addresses. Default value: false. Valid values:
+        # Specifies whether to include the client\\"s public IP address in the log data. The default is false.
         # 
-        # *   true
-        # *   false
+        # - true: Records the public IP address.
+        # 
+        # - false: Does not record the public IP address.
         self.append_meta = append_meta
-        # Specifies whether to enable automatic sharding. Valid values:
+        # Specifies whether to enable auto split.
         # 
-        # *   true
-        # *   false
+        # - true: Enables auto split.
+        # 
+        # - false: Disables auto split.
         self.auto_split = auto_split
-        # The time at which the Logstore was created. The value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The creation time of the Logstore, specified as a UNIX timestamp (the number of seconds since January 1, 1970, 00:00:00 UTC).
         self.create_time = create_time
-        # Specifies whether to enable the web tracking feature. Default value: false. Valid values:
+        self.enable_modify = enable_modify
+        # Specifies whether to enable WebTracking. The default value is false.
         # 
-        # *   true
-        # *   false
+        # - true: Enables WebTracking.
+        # 
+        # - false: Disables WebTracking.
         self.enable_tracking = enable_tracking
-        # The configuration of data encryption.
+        # The data encryption configuration.
         self.encrypt_conf = encrypt_conf
-        # The retention period of data in the hot storage tier of the Logstore. Minimum value: 30. Unit: days.
+        # The number of days to retain data in the hot storage tier. The minimum value is 30.
         self.hot_ttl = hot_ttl
-        # The retention period of data in the Infrequent Access (IA) storage tier of the Logstore.
+        # The number of days to retain data in the infrequent access storage tier.
         self.infrequent_access_ttl = infrequent_access_ttl
-        # The time at which the Logstore was last modified. The value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The time the Logstore was last modified, specified as a UNIX timestamp (the number of seconds since January 1, 1970, 00:00:00 UTC).
         self.last_modify_time = last_modify_time
         # The name of the Logstore.
         # 
         # This parameter is required.
         self.logstore_name = logstore_name
-        # The maximum number of shards into which existing shards can be automatically split. Valid values: 1 to 64.
+        # The maximum number of shards that an auto split can create. Valid values: 1 to 64.
         self.max_split_shard = max_split_shard
-        # The type of the Logstore. Simple Log Service provides two types of Logstores: Standard Logstores and Query Logstores. Valid values:
+        # Log Service provides two types of Logstores: Standard and Query.
         # 
-        # *   **standard**: Standard Logstore. This type of Logstore supports the log analysis feature and is suitable for scenarios such as real-time monitoring and interactive analysis. You can also use this type of Logstore to build a comprehensive observability system.
-        # *   **query**: Query Logstore. This type of Logstore supports high-performance queries. The index traffic fee of a Query Logstore is approximately half that of a Standard Logstore. Query Logstores do not support SQL analysis. Query Logstores are suitable for scenarios in which the amount of data is large, the log retention period is long, or log analysis is not required. If logs are stored for weeks or months, the log retention period is considered long.
+        # - **Standard**: Supports the full suite of Log Service data analysis features. This mode is ideal for real-time monitoring, interactive analysis, and building complete observability solutions.
+        # 
+        # - **Query**: Optimized for high-performance queries with indexing traffic costs that are approximately half those of the Standard mode. This mode does not support SQL analysis and is best for use cases involving large data volumes and long retention periods, where complex log analysis is not a requirement.
         self.mode = mode
-        # The ingest processor ID.
+        # The IngestProcessor ID.
         self.processor_id = processor_id
-        # The type of the service to which the logs belong.
+        # The product type of the logs.
         self.product_type = product_type
-        # The number of shards.
+        self.resource_group_id = resource_group_id
+        # The number of shards in the Logstore.
         # 
         # This parameter is required.
         self.shard_count = shard_count
         self.sharding_policy = sharding_policy
-        # The type of the data that you want to query. Valid values:
+        # The type of log data. Valid values:
         # 
-        # *   Metrics: metric data.
-        # *   None: non-metric data.
+        # - Metrics: The Logstore is optimized for time-series storage.
+        # 
+        # - None: The Logstore uses standard storage for logs.
         self.telemetry_type = telemetry_type
-        # The log retention period. Unit: days. Valid values: 1 to 3650. If you set this parameter to 3650, logs are permanently stored.
+        # The data retention period in days. Valid values: 1 to 3,650. A value of 3,650 indicates permanent storage.
         # 
         # This parameter is required.
         self.ttl = ttl
@@ -100,6 +109,9 @@ class Logstore(DaraModel):
 
         if self.create_time is not None:
             result['createTime'] = self.create_time
+
+        if self.enable_modify is not None:
+            result['enableModify'] = self.enable_modify
 
         if self.enable_tracking is not None:
             result['enable_tracking'] = self.enable_tracking
@@ -131,6 +143,9 @@ class Logstore(DaraModel):
         if self.product_type is not None:
             result['productType'] = self.product_type
 
+        if self.resource_group_id is not None:
+            result['resourceGroupId'] = self.resource_group_id
+
         if self.shard_count is not None:
             result['shardCount'] = self.shard_count
 
@@ -155,6 +170,9 @@ class Logstore(DaraModel):
 
         if m.get('createTime') is not None:
             self.create_time = m.get('createTime')
+
+        if m.get('enableModify') is not None:
+            self.enable_modify = m.get('enableModify')
 
         if m.get('enable_tracking') is not None:
             self.enable_tracking = m.get('enable_tracking')
@@ -186,6 +204,9 @@ class Logstore(DaraModel):
 
         if m.get('productType') is not None:
             self.product_type = m.get('productType')
+
+        if m.get('resourceGroupId') is not None:
+            self.resource_group_id = m.get('resourceGroupId')
 
         if m.get('shardCount') is not None:
             self.shard_count = m.get('shardCount')

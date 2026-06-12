@@ -1771,6 +1771,8 @@ class Client(OpenApiClient):
             body['appendMeta'] = request.append_meta
         if not DaraCore.is_null(request.auto_split):
             body['autoSplit'] = request.auto_split
+        if not DaraCore.is_null(request.enable_modify):
+            body['enableModify'] = request.enable_modify
         if not DaraCore.is_null(request.enable_tracking):
             body['enable_tracking'] = request.enable_tracking
         if not DaraCore.is_null(request.encrypt_conf):
@@ -1833,6 +1835,8 @@ class Client(OpenApiClient):
             body['appendMeta'] = request.append_meta
         if not DaraCore.is_null(request.auto_split):
             body['autoSplit'] = request.auto_split
+        if not DaraCore.is_null(request.enable_modify):
+            body['enableModify'] = request.enable_modify
         if not DaraCore.is_null(request.enable_tracking):
             body['enable_tracking'] = request.enable_tracking
         if not DaraCore.is_null(request.encrypt_conf):
@@ -9128,11 +9132,16 @@ class Client(OpenApiClient):
         self,
         project: str,
         name: str,
+        request: main_models.GetMaterializedViewRequest,
         headers: main_models.GetMaterializedViewHeaders,
         runtime: RuntimeOptions,
     ) -> main_models.GetMaterializedViewResponse:
+        request.validate()
         host_map = {}
         host_map['project'] = project
+        query = {}
+        if not DaraCore.is_null(request.return_status):
+            query['returnStatus'] = request.return_status
         real_headers = {}
         if not DaraCore.is_null(headers.common_headers):
             real_headers = headers.common_headers
@@ -9140,7 +9149,8 @@ class Client(OpenApiClient):
             real_headers['Content-Type'] = str(headers.content_type)
         req = open_api_util_models.OpenApiRequest(
             host_map = host_map,
-            headers = real_headers
+            headers = real_headers,
+            query = Utils.query(query)
         )
         params = open_api_util_models.Params(
             action = 'GetMaterializedView',
@@ -9162,11 +9172,16 @@ class Client(OpenApiClient):
         self,
         project: str,
         name: str,
+        request: main_models.GetMaterializedViewRequest,
         headers: main_models.GetMaterializedViewHeaders,
         runtime: RuntimeOptions,
     ) -> main_models.GetMaterializedViewResponse:
+        request.validate()
         host_map = {}
         host_map['project'] = project
+        query = {}
+        if not DaraCore.is_null(request.return_status):
+            query['returnStatus'] = request.return_status
         real_headers = {}
         if not DaraCore.is_null(headers.common_headers):
             real_headers = headers.common_headers
@@ -9174,7 +9189,8 @@ class Client(OpenApiClient):
             real_headers['Content-Type'] = str(headers.content_type)
         req = open_api_util_models.OpenApiRequest(
             host_map = host_map,
-            headers = real_headers
+            headers = real_headers,
+            query = Utils.query(query)
         )
         params = open_api_util_models.Params(
             action = 'GetMaterializedView',
@@ -9196,19 +9212,21 @@ class Client(OpenApiClient):
         self,
         project: str,
         name: str,
+        request: main_models.GetMaterializedViewRequest,
     ) -> main_models.GetMaterializedViewResponse:
         runtime = RuntimeOptions()
         headers = main_models.GetMaterializedViewHeaders()
-        return self.get_materialized_view_with_options(project, name, headers, runtime)
+        return self.get_materialized_view_with_options(project, name, request, headers, runtime)
 
     async def get_materialized_view_async(
         self,
         project: str,
         name: str,
+        request: main_models.GetMaterializedViewRequest,
     ) -> main_models.GetMaterializedViewResponse:
         runtime = RuntimeOptions()
         headers = main_models.GetMaterializedViewHeaders()
-        return await self.get_materialized_view_with_options_async(project, name, headers, runtime)
+        return await self.get_materialized_view_with_options_async(project, name, request, headers, runtime)
 
     def get_max_compute_export_with_options(
         self,

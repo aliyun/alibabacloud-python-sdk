@@ -13,11 +13,17 @@ class UpdateElasticsearchIngestionRequest(DaraModel):
         display_name: str = None,
         schedule: main_models.Schedule = None,
     ):
+        # ES or OpenSearch ingestion configuration
+        # 
         # This parameter is required.
         self.configuration = configuration
+        # Description of the ES or OpenSearch ingestion task
         self.description = description
+        # Display name of the ES or OpenSearch ingestion task
+        # 
         # This parameter is required.
         self.display_name = display_name
+        # Scheduling type. Leave this field empty unless you need strict scheduling. For example, to run the ingestion task every Monday at 8:00 a.m., use a cron expression
         self.schedule = schedule
 
     def validate(self):

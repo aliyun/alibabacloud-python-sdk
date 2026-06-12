@@ -16,17 +16,19 @@ class CreateStoreViewRequest(DaraModel):
     ):
         # The name of the dataset.
         # 
-        # *   The name can contain lowercase letters, digits, and underscores (_).
-        # *   The name must start with a lowercase letter.
-        # *   The name must be 3 to 62 characters in length.
+        # - The name can contain only lowercase letters, digits, and underscores (_).
+        # 
+        # - The name must start with a lowercase letter.
+        # 
+        # - The name must be 3 to 62 characters in length.
         # 
         # This parameter is required.
         self.name = name
-        # The type of the dataset. Valid values: metricstore and logstore.
+        # The type of the dataset. Set this parameter to metricstore to create a Metricstore dataset. Set this parameter to logstore to create a Logstore dataset.
         # 
         # This parameter is required.
         self.store_type = store_type
-        # The Logstores or Metricstores.
+        # A list of Logstores or Metricstores.
         # 
         # This parameter is required.
         self.stores = stores

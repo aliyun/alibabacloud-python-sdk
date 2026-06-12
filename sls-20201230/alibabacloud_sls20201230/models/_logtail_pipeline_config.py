@@ -44,6 +44,7 @@ class LogtailPipelineConfig(DaraModel):
         self.log_sample = log_sample
         # The processing plug-ins.
         self.processors = processors
+        # 任务配置
         self.task = task
 
     def validate(self):

@@ -12,12 +12,17 @@ class PullLogsRequest(DaraModel):
         end_cursor: str = None,
         query: str = None,
     ):
+        # The number of LogGroups to return. The value must be an integer from 1 to 1000.
+        # 
         # This parameter is required.
         self.count = count
+        # The cursor that specifies the start position from which to read data.
+        # 
         # This parameter is required.
         self.cursor = cursor
+        # The cursor that specifies the end position at which to stop reading data.
         self.end_cursor = end_cursor
-        # The SPL statement that is used to filter data. For more information, see [SPL instructions](https://help.aliyun.com/document_detail/2536530.html).
+        # The filter statement in the Structured Process Language (SPL) syntax. For more information, see [SPL instructions](https://help.aliyun.com/document_detail/2536530.html).
         self.query = query
 
     def validate(self):

@@ -13,10 +13,11 @@ class GetLogsV2Headers(DaraModel):
         accept_encoding: str = None,
     ):
         self.common_headers = common_headers
-        # The compression format.
+        # The compression method.
         # 
-        # *   For Java, Python, and Go, only the lz4 and gzip algorithms are supported for decompression.
-        # *   For PHP, JavaScript, and C#, only the gzip algorithm is supported for decompression.
+        # - Java, Python, and Go support lz4 and gzip decompression.
+        # 
+        # - PHP, JavaScript, and C# support gzip decompression only.
         self.accept_encoding = accept_encoding
 
     def validate(self):

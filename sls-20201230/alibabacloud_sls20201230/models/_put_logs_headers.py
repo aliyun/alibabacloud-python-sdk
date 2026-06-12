@@ -13,7 +13,7 @@ class PutLogsHeaders(DaraModel):
         x_log_compresstype: str = None,
     ):
         self.common_headers = common_headers
-        # The compression format. lz4 and gzip are supported.
+        # The compression type of the logs. Valid values: lz4 and gzip.
         # 
         # This parameter is required.
         self.x_log_compresstype = x_log_compresstype

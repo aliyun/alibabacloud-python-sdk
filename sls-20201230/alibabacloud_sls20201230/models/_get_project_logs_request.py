@@ -12,8 +12,9 @@ class GetProjectLogsRequest(DaraModel):
     ):
         # Specifies whether to enable the Dedicated SQL feature. For more information, see [Enable Dedicated SQL](https://help.aliyun.com/document_detail/223777.html). Valid values:
         # 
-        # *   true
-        # *   false (default): enables the Standard SQL feature.
+        # - true
+        # 
+        # - false (default): enables the Standard SQL feature.
         # 
         # You can use the powerSql or **query** parameter to configure Dedicated SQL.
         self.power_sql = power_sql

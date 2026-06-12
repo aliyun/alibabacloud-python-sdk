@@ -11,10 +11,12 @@ class GCSIngestionConfiguration(DaraModel):
         logstore: str = None,
         source: main_models.GCSIngestionConfigurationSource = None,
     ):
-        # logstore
+        # The name of the destination logstore.
         # 
         # This parameter is required.
         self.logstore = logstore
+        # The data source configuration.
+        # 
         # This parameter is required.
         self.source = source
 

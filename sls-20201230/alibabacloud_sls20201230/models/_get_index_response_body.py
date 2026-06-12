@@ -140,13 +140,15 @@ class GetIndexResponseBodyLine(DaraModel):
     ):
         # Indicates whether case sensitivity is enabled. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         self.case_sensitive = case_sensitive
         # Indicates whether Chinese characters are included. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         self.chn = chn
         # The excluded fields.
         self.exclude_keys = exclude_keys

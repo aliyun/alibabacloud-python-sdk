@@ -14,11 +14,11 @@ class ListIngestProcessorsResponseBody(DaraModel):
         processors: List[main_models.IngestProcessor] = None,
         total: int = None,
     ):
-        # The number of entries returned.
+        # The number of entries returned in the current response.
         self.count = count
-        # The ingest processors that are returned.
+        # A list of ingest processors that meet the query conditions.
         self.processors = processors
-        # The total number of entries returned.
+        # The total number of entries that meet the query conditions.
         self.total = total
 
     def validate(self):

@@ -14,11 +14,17 @@ class CreateMaterializedViewRequest(DaraModel):
         start_time: int = None,
         ttl: int = None,
     ):
+        # The aggregation interval in minutes. The system creates aggregation tasks based on this interval.
         self.agg_interval_mins = agg_interval_mins
+        # The destination Logstore for the aggregated data from the materialized view.
         self.logstore = logstore
+        # The name of the materialized view. The name must be unique within the project, 2 to 63 characters long, and contain only lowercase letters, digits, hyphens (-), and underscores (_). It must also start and end with a lowercase letter or a digit.
         self.name = name
+        # The query statement that defines the materialized view.
         self.original_sql = original_sql
+        # The time when the materialized view starts to aggregate data. Specify the time as a UNIX timestamp in seconds.
         self.start_time = start_time
+        # The time-to-live (TTL) of the data in the materialized view, in days. After this period, the data expires and is automatically deleted.
         self.ttl = ttl
 
     def validate(self):

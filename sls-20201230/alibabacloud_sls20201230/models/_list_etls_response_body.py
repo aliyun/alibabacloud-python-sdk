@@ -14,8 +14,9 @@ class ListETLsResponseBody(DaraModel):
         results: List[main_models.ETL] = None,
         total: int = None,
     ):
-        # The number of data transformation jobs that are returned.
+        # The number of data transformation jobs returned in the current response.
         self.count = count
+        # A list of data transformation results.
         self.results = results
         # The total number of data transformation jobs in the project.
         self.total = total

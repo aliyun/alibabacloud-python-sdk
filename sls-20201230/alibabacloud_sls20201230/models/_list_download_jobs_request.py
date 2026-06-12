@@ -11,8 +11,11 @@ class ListDownloadJobsRequest(DaraModel):
         offset: int = None,
         size: int = None,
     ):
+        # The name of the Logstore.
         self.logstore = logstore
+        # The line from which to start the query. The default value is 0.
         self.offset = offset
+        # The number of log download jobs to return in a single request.
         self.size = size
 
     def validate(self):

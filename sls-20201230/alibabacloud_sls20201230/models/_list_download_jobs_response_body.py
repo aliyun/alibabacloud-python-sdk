@@ -14,9 +14,11 @@ class ListDownloadJobsResponseBody(DaraModel):
         results: List[main_models.ListDownloadJobsResponseBodyResults] = None,
         total: int = None,
     ):
+        # The number of log download jobs returned in the current response.
         self.count = count
-        # Array, to return a list of log download tasks.
+        # An array that contains the list of log download jobs.
         self.results = results
+        # The total number of records.
         self.total = total
 
     def validate(self):
@@ -70,18 +72,19 @@ class ListDownloadJobsResponseBodyResults(DaraModel):
         name: str = None,
         status: str = None,
     ):
-        # 下载配置
+        # The download configuration.
         self.configuration = configuration
+        # The time when the log download job was created. This is a UNIX timestamp in seconds.
         self.create_time = create_time
-        # 任务描述
+        # The description of the log download job.
         self.description = description
-        # 任务显示名称
+        # Display name
         self.display_name = display_name
-        # The execution details.
+        # The execution details of the job.
         self.execution_details = execution_details
-        # 代表资源名称的资源属性字段
+        # The name of the log download job.
         self.name = name
-        # The task status.
+        # The status of the Job.
         self.status = status
 
     def validate(self):
@@ -157,19 +160,21 @@ class ListDownloadJobsResponseBodyResultsExecutionDetails(DaraModel):
         notice: str = None,
         progress: int = None,
     ):
+        # The ETag of the file.
         self.check_sum = check_sum
-        # 下载错误信息
+        # The error message that is returned if the job fails.
         self.error_message = error_message
-        # 下载执行时间
+        # The running time of the download.
         self.execute_time = execute_time
-        # 下载结果链接
+        # The URL of the downloaded file.
         self.file_path = file_path
-        # 下载文件大小
+        # The size of the downloaded file in bytes.
         self.file_size = file_size
-        # 下载日志条数
+        # The number of downloaded log entries.
         self.log_count = log_count
+        # The notification message.
         self.notice = notice
-        # 下载进度
+        # The download progress as a percentage.
         self.progress = progress
 
     def validate(self):
@@ -245,18 +250,19 @@ class ListDownloadJobsResponseBodyResultsConfiguration(DaraModel):
         sink: main_models.ListDownloadJobsResponseBodyResultsConfigurationSink = None,
         to_time: int = None,
     ):
+        # Specifies whether to allow the download of incomplete results.
         self.allow_in_complete = allow_in_complete
-        # 起点时间戳（精确到秒）
+        # The start time of the query. This is a UNIX timestamp that is accurate to the second.
         self.from_time = from_time
-        # 源logstore
+        # The source Logstore.
         self.logstore = logstore
-        # 是否启用powerSql
+        # Specifies whether to enable PowerSQL.
         self.power_sql = power_sql
-        # 查询语句
+        # The query statement.
         self.query = query
-        # 导出配置
+        # The sink configuration.
         self.sink = sink
-        # 结束时间戳（精确到秒）
+        # The end time of the query. This is a UNIX timestamp that is accurate to the second.
         self.to_time = to_time
 
     def validate(self):
@@ -327,15 +333,17 @@ class ListDownloadJobsResponseBodyResultsConfigurationSink(DaraModel):
         role_arn: str = None,
         type: str = None,
     ):
-        # 对象存储桶
+        # The destination OSS bucket.
         self.bucket = bucket
-        # 压缩格式
+        # The compression format.
         self.compression_type = compression_type
-        # 下载文件格式
+        # The file format of the downloaded file.
         self.content_type = content_type
+        # The prefix of the object that is downloaded to the destination OSS bucket.
         self.prefix = prefix
-        # 下载使用roleArn
+        # The Alibaba Cloud Resource Name (ARN) of the RAM role that is used for the download.
         self.role_arn = role_arn
+        # The type of the sink. The value is fixed as AliyunOSS.
         self.type = type
 
     def validate(self):

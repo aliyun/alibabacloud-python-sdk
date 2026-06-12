@@ -9,7 +9,7 @@ class PutProjectPolicyRequest(DaraModel):
         self,
         body: str = None,
     ):
-        # The project policy.
+        # The request parameters, which define the authorization policy.
         self.body = body
 
     def validate(self):

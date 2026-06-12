@@ -20,27 +20,37 @@ class CreateMetricStoreRequest(DaraModel):
         sharding_policy: main_models.ShardingPolicy = None,
         ttl: int = None,
     ):
+        # Specifies whether to record the public IP address of the client. The default value is false.
+        # 
+        # - true: Records the public IP address.
+        # 
+        # - false: Does not record the public IP address.
         self.append_meta = append_meta
-        # Specifies whether to enable automatic sharding.
+        # Specifies whether to enable automatic shard splitting.
         self.auto_split = auto_split
+        # The period for which data is stored in the hot tier. Unit: days. The value must be at least 7 and cannot be greater than the value of ttl. If you set this parameter to -1, all data is stored in the hot tier for the duration specified by ttl.
+        # 
+        # When the hot storage period ends, the data is moved to the IA storage class. For more information, see [Tiered Storage of Hot and Cold Data](https://help.aliyun.com/document_detail/308645.html).
         self.hot_ttl = hot_ttl
+        # The retention period of data in the IA storage class. Unit: days. The minimum value is 30. After this period, data is moved to Archive Storage.
         self.infrequent_access_ttl = infrequent_access_ttl
-        # The maximum number of shards into which existing shards can be automatically split. This parameter is valid only when you set the autoSplit parameter to true.
+        # The maximum number of shards into which a shard can be split. This parameter is valid only if autoSplit is set to true.
         self.max_split_shard = max_split_shard
-        # The type of the metric data. Example: prometheus.
+        # The type of the Metricstore. Only prometheus is supported. The default value is prometheus.
         self.metric_type = metric_type
-        # The type of the Metricstore. For example, you can set the parameter to standard to query Standard Metricstores.
+        # The type of the Metricstore. Only standard is supported. The default value is standard.
         self.mode = mode
-        # The name of the Metricstore.
+        # The name of the Metricstore to create.
         # 
         # This parameter is required.
         self.name = name
-        # The number of shards in the Metricstore.
+        # The number of [shards](https://help.aliyun.com/document_detail/28976.html) for the Metricstore.
         # 
         # This parameter is required.
         self.shard_count = shard_count
+        # The write hashing configuration.
         self.sharding_policy = sharding_policy
-        # The retention period of the metric data in the Metricstore. Unit: days.
+        # The data retention period of the Metricstore. Unit: days.
         # 
         # This parameter is required.
         self.ttl = ttl

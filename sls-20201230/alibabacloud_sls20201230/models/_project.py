@@ -21,7 +21,7 @@ class Project(DaraModel):
         resource_group_id: str = None,
         status: str = None,
     ):
-        # The time at which the project was created.
+        # The time when the project was created.
         self.create_time = create_time
         # The data redundancy type.
         self.data_redundancy_type = data_redundancy_type
@@ -29,25 +29,27 @@ class Project(DaraModel):
         # 
         # This parameter is required.
         self.description = description
-        # The time at which the project was last modified.
+        # The time when the project was last modified.
         self.last_modify_time = last_modify_time
-        # The ID of the Alibaba Cloud account that is used to create the project.
+        # The Alibaba Cloud account that owns the project.
         self.owner = owner
-        # The name of the project. The name is included in the value of the Host header. The name must be unique in a region. You cannot change the name after the project is created.
+        # The name of the project. The name is a part of the endpoint. The project name must be unique in a region of Alibaba Cloud. After a project is created, its name cannot be changed.
         # 
         # This parameter is required.
         self.project_name = project_name
-        # project quota
+        # The quota of the project.
         self.quota = quota
+        # Indicates whether the recycle bin is enabled.
         self.recycle_bin_enabled = recycle_bin_enabled
-        # The region to which the project belongs.
+        # The region where the project resides.
         self.region = region
         # The ID of the resource group to which the project belongs.
         self.resource_group_id = resource_group_id
-        # The status of the project. Valid values:
+        # The status of the project.
         # 
-        # *   Normal
-        # *   Disable
+        # - Normal: The project is in the normal state.
+        # 
+        # - Disable: The project is disabled.
         self.status = status
 
     def validate(self):

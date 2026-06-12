@@ -266,6 +266,7 @@ from ._get_mlservice_results_response_body import GetMLServiceResultsResponseBod
 from ._get_mlservice_results_response import GetMLServiceResultsResponse
 from ._get_machine_group_response import GetMachineGroupResponse
 from ._get_materialized_view_headers import GetMaterializedViewHeaders
+from ._get_materialized_view_request import GetMaterializedViewRequest
 from ._get_materialized_view_response_body import GetMaterializedViewResponseBody
 from ._get_materialized_view_response import GetMaterializedViewResponse
 from ._get_max_compute_export_response import GetMaxComputeExportResponse
@@ -839,6 +840,7 @@ __all__ = [
     GetMLServiceResultsResponse,
     GetMachineGroupResponse,
     GetMaterializedViewHeaders,
+    GetMaterializedViewRequest,
     GetMaterializedViewResponseBody,
     GetMaterializedViewResponse,
     GetMaxComputeExportResponse,

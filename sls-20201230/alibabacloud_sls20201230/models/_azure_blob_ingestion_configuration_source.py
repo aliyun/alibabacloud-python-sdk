@@ -29,31 +29,57 @@ class AzureBlobIngestionConfigurationSource(DaraModel):
         time_pattern: str = None,
         time_zone: str = None,
     ):
+        # The access key for the Azure Blob Storage account.
+        # 
         # This parameter is required.
         self.account_key = account_key
+        # The name of the Azure Blob Storage account.
+        # 
         # This parameter is required.
         self.account_name = account_name
+        # Advanced configuration options.
         self.advanced_parameters = advanced_parameters
+        # The compression codec for the source data. Valid values are `none`, `snappy`, and `gzip`.
+        # 
         # This parameter is required.
         self.compression_codec = compression_codec
+        # The name of the container in Azure Blob Storage.
+        # 
         # This parameter is required.
         self.container_name = container_name
+        # The character encoding of the source files.
+        # 
         # This parameter is required.
         self.encoding = encoding
+        # Ingests only files modified before this time, specified as a Unix timestamp.
         self.end_time = end_time
+        # The service endpoint for Azure Blob Storage.
         self.endpoint = endpoint
+        # The format of the source data.
+        # 
         # This parameter is required.
         self.format = format
+        # The interval at which to check for new files to ingest.
+        # 
         # This parameter is required.
         self.interval = interval
+        # A pattern used to filter files by path.
         self.pattern = pattern
+        # The file path prefix used to filter files.
         self.prefix = prefix
+        # The ID of the processor that receives the data.
         self.processor_id = processor_id
+        # Ingests only files modified after this time, specified as a Unix timestamp.
         self.start_time = start_time
+        # Specifies whether to enable context query.
         self.tag_pack_id = tag_pack_id
+        # The source field for the time value.
         self.time_field = time_field
+        # The format of the time field.
         self.time_format = time_format
+        # The pattern used to extract the time value.
         self.time_pattern = time_pattern
+        # The time zone of the time field.
         self.time_zone = time_zone
 
     def validate(self):

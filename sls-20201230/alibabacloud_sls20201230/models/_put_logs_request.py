@@ -10,7 +10,7 @@ class PutLogsRequest(DaraModel):
         self,
         body: main_models.LogGroup = None,
     ):
-        # The compressed Protobuf data.
+        # The compressed log data in protobuf format.
         self.body = body
 
     def validate(self):

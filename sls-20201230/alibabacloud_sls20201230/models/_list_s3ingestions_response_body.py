@@ -14,8 +14,11 @@ class ListS3IngestionsResponseBody(DaraModel):
         results: List[main_models.S3Ingestion] = None,
         total: int = None,
     ):
+        # The number of tasks returned on the current page.
         self.count = count
+        # The details of the task configurations.
         self.results = results
+        # The total number of entries that match the query.
         self.total = total
 
     def validate(self):

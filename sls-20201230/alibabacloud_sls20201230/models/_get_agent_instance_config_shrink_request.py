@@ -9,6 +9,7 @@ class GetAgentInstanceConfigShrinkRequest(DaraModel):
         self,
         attributes_shrink: str = None,
     ):
+        # The owner of the process-level configuration.
         self.attributes_shrink = attributes_shrink
 
     def validate(self):

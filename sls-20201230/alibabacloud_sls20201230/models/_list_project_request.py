@@ -15,14 +15,15 @@ class ListProjectRequest(DaraModel):
         size: int = None,
     ):
         self.description = description
+        # Specifies whether to retrieve the quota information for the project.
         self.fetch_quota = fetch_quota
-        # The line from which the query starts. Default value: 0.
+        # The line from which the query starts. The default value is 0.
         self.offset = offset
-        # The name of the project.
+        # The name of the project. Fuzzy queries are supported.
         self.project_name = project_name
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The number of entries per page. Default value: 100. This operation can return up to 500 projects.
+        # The number of rows to return on each page for a paged query. The default value is 100. A maximum of 500 projects can be returned.
         self.size = size
 
     def validate(self):

@@ -13,6 +13,7 @@ class PullLogsHeaders(DaraModel):
         accept_encoding: str = None,
     ):
         self.common_headers = common_headers
+        # The compression format of the data that the server returns. Only the lz4 format is supported.
         self.accept_encoding = accept_encoding
 
     def validate(self):

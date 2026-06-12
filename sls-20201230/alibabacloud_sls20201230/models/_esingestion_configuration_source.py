@@ -22,25 +22,45 @@ class ESIngestionConfigurationSource(DaraModel):
         username: str = None,
         vpc_id: str = None,
     ):
+        # The URL of the service instance.
+        # 
         # This parameter is required.
         self.bootstrap_servers = bootstrap_servers
+        # The import mode.
+        # 
         # This parameter is required.
         self.connector_mode = connector_mode
+        # The end time.
         self.end_time = end_time
+        # The list of ES indexes.
+        # 
         # This parameter is required.
         self.index = index
+        # The maximum data delay in seconds.
+        # 
         # This parameter is required.
         self.max_data_delay_sec = max_data_delay_sec
+        # The interval in seconds for checking new data.
+        # 
         # This parameter is required.
         self.min_frag_range_sec = min_frag_range_sec
+        # The password for the ES user.
         self.password = password
+        # The ES query.
+        # 
         # This parameter is required.
         self.query = query
+        # The start time.
         self.start_time = start_time
+        # The time field.
         self.time_field_name = time_field_name
+        # The format of the time field.
         self.time_format = time_format
+        # The time zone of the time field.
         self.time_zone = time_zone
+        # The username for ES.
         self.username = username
+        # The ID of the VPC instance.
         self.vpc_id = vpc_id
 
     def validate(self):

@@ -13,11 +13,11 @@ class ListLogtailPipelineConfigResponseBody(DaraModel):
         count: int = None,
         total: int = None,
     ):
-        # The Logtail pipeline configurations that are returned on the current page.
+        # The list of Logtail pipeline configurations returned on the current page.
         self.configs = configs
-        # The number of Logtail pipeline configurations that are returned on the current page.
+        # The number of Logtail pipeline configurations returned on the current page.
         self.count = count
-        # The total number of Logtail pipeline configurations in the current project.
+        # The total number of Logtail pipeline configurations in the project.
         self.total = total
 
     def validate(self):

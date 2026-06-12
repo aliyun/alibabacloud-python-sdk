@@ -15,16 +15,23 @@ class ConsumeProcessor(DaraModel):
         processor_name: str = None,
         update_time: int = None,
     ):
+        # Processor配置
+        # 
         # This parameter is required.
         self.configuration = configuration
+        # 创建时间
         self.create_time = create_time
+        # Processor描述
         self.description = description
+        # Processor名称
+        # 
         # This parameter is required.
         self.display_name = display_name
         # Processor ID
         # 
         # This parameter is required.
         self.processor_name = processor_name
+        # 更新时间
         self.update_time = update_time
 
     def validate(self):

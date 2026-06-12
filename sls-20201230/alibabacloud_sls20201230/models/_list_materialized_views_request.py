@@ -11,8 +11,11 @@ class ListMaterializedViewsRequest(DaraModel):
         offset: int = None,
         size: int = None,
     ):
+        # The name of the materialized view. Fuzzy search is supported.
         self.name = name
+        # The position from which to start returning results for pagination. Default value: 0.
         self.offset = offset
+        # The number of materialized views to return. The actual number of returned materialized views may be less than the specified value. If you do not specify this parameter, a system default is used.
         self.size = size
 
     def validate(self):

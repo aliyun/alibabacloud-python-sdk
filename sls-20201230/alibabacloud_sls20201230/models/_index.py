@@ -18,21 +18,23 @@ class Index(DaraModel):
         max_text_len: int = None,
         scan_index: bool = None,
     ):
-        # The configurations of field indexes. A field index is a key-value pair in which the key specifies the name of the field and the value specifies the index configuration of the field. You must specify at least one of the following parameters: line and keys.
+        # The field index configuration. The key is the field name and the value is the index configuration for the field. You must specify either this parameter or the \\`line\\` parameter.
         self.keys = keys
-        # The configurations of full-text indexes. You must specify at least one of the following parameters: line and keys.
+        # The full-text index configuration. You must specify either this parameter or the \\`keys\\` parameter.
         self.line = line
-        # Specifies whether to enable the LogReduce feature. After you enable the LogReduce feature, either the whitelist or blacklist takes effect. Valid values:
+        # Specifies whether to enable log clustering. If enabled, either the whitelist or the blacklist can be active, but not both.
         # 
-        # *   true
-        # *   false (default)
+        # - true: Enable log clustering.
+        # 
+        # - false (default): Do not enable log clustering.
         self.log_reduce = log_reduce
-        # The blacklist of fields that are used to cluster logs. This parameter takes effect only when the LogReduce feature is enabled.
+        # The blacklist of fields for log clustering. This parameter is valid only when log clustering is enabled.
         self.log_reduce_black_list = log_reduce_black_list
-        # The whitelist of fields that are used to cluster logs. This parameter takes effect only when the LogReduce feature is enabled.
+        # The whitelist of fields for log clustering. This parameter is valid only when log clustering is enabled.
         self.log_reduce_white_list = log_reduce_white_list
-        # The maximum length of a field value that can be retained. Default value: 2048. Unit: bytes. The default value is equal to 2 KB. You can change the value of this parameter. Valid values: 64 to 16384.
+        # The default maximum length of a field value in Simple Log Service is 2,048 bytes (2 KB). To change this limit, set the maximum length for a text field. The value must be between 64 and 16,384 bytes.
         self.max_text_len = max_text_len
+        # Specifies whether to enable the scan index.
         self.scan_index = scan_index
 
     def validate(self):
@@ -111,21 +113,23 @@ class IndexLine(DaraModel):
         include_keys: List[str] = None,
         token: List[str] = None,
     ):
-        # Specifies whether to enable case sensitivity. Valid values:
+        # Specifies whether the index is case-sensitive.
         # 
-        # *   true
-        # *   false (default)
+        # - true: The index is case-sensitive.
+        # 
+        # - false (default): The index is not case-sensitive.
         self.case_sensitive = case_sensitive
-        # Specifies whether the field contains Chinese characters. Valid values:
+        # Specifies whether the logs contain Chinese characters.
         # 
-        # *   true
-        # *   false (default)
+        # - true: The logs contain Chinese characters.
+        # 
+        # - false (default): The logs do not contain Chinese characters.
         self.chn = chn
-        # The excluded fields. You cannot specify both include_keys and exclude_keys.
+        # The list of fields to exclude from the full-text index. This parameter cannot be specified at the same time as \\`include_keys\\`.
         self.exclude_keys = exclude_keys
-        # The included fields. You cannot specify both include_keys and exclude_keys.
+        # The list of fields to include in the full-text index. This parameter cannot be specified at the same time as \\`exclude_keys\\`.
         self.include_keys = include_keys
-        # The delimiters. You can specify a delimiter to delimit the content of a field value.
+        # The list of delimiters for tokenization. This parameter specifies how the field is tokenized.
         # 
         # This parameter is required.
         self.token = token

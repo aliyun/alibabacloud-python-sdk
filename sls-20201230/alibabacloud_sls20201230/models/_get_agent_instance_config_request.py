@@ -11,6 +11,7 @@ class GetAgentInstanceConfigRequest(DaraModel):
         self,
         attributes: Dict[str, str] = None,
     ):
+        # The owner of the process-level configuration.
         self.attributes = attributes
 
     def validate(self):

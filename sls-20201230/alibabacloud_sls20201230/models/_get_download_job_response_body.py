@@ -16,19 +16,19 @@ class GetDownloadJobResponseBody(DaraModel):
         name: str = None,
         status: str = None,
     ):
-        # 下载配置
+        # The download configuration.
         self.configuration = configuration
-        # 代表创建时间的资源属性字段
+        # The time when the task was created.
         self.create_time = create_time
-        # 任务描述
+        # The description of the task.
         self.description = description
-        # 任务显示名称
+        # The display name.
         self.display_name = display_name
-        # 任务执行细节
+        # The execution details.
         self.execution_details = execution_details
-        # 代表资源名称的资源属性字段
+        # The name of the download task.
         self.name = name
-        # The status of the log download task.
+        # The status of the download task.
         self.status = status
 
     def validate(self):
@@ -104,19 +104,21 @@ class GetDownloadJobResponseBodyExecutionDetails(DaraModel):
         notice: str = None,
         progress: int = None,
     ):
+        # The ETag of the file.
         self.check_sum = check_sum
-        # 下载错误信息
+        # The error message if the download fails.
         self.error_message = error_message
-        # 下载执行时间
+        # The duration of the download task in seconds.
         self.execute_time = execute_time
-        # 下载结果链接
+        # The URL of the download result.
         self.file_path = file_path
-        # 下载文件大小
+        # The size of the downloaded file in bytes.
         self.file_size = file_size
-        # 下载日志条数
+        # The number of downloaded log entries.
         self.log_count = log_count
+        # Notification text.
         self.notice = notice
-        # 下载进度
+        # The download progress.
         self.progress = progress
 
     def validate(self):
@@ -192,18 +194,19 @@ class GetDownloadJobResponseBodyConfiguration(DaraModel):
         sink: main_models.GetDownloadJobResponseBodyConfigurationSink = None,
         to_time: int = None,
     ):
+        # Specifies whether to allow downloading incomplete data.
         self.allow_in_complete = allow_in_complete
-        # 起点时间戳（精确到秒）
+        # The start time of the download task. The value is a UNIX timestamp in seconds.
         self.from_time = from_time
-        # 源logstore
+        # The source Logstore.
         self.logstore = logstore
-        # 是否启用powerSql
+        # Specifies whether to enable PowerSQL.
         self.power_sql = power_sql
-        # 查询语句
+        # The search statement.
         self.query = query
-        # 导出配置
+        # The export configuration.
         self.sink = sink
-        # 结束时间戳（精确到秒）
+        # The end time of the download task. The value is a UNIX timestamp in seconds.
         self.to_time = to_time
 
     def validate(self):
@@ -274,15 +277,17 @@ class GetDownloadJobResponseBodyConfigurationSink(DaraModel):
         role_arn: str = None,
         type: str = None,
     ):
-        # 对象存储桶
+        # The Object Storage Service (OSS) bucket.
         self.bucket = bucket
-        # 压缩格式
+        # The compression format.
         self.compression_type = compression_type
-        # 下载文件格式
+        # The file format.
         self.content_type = content_type
+        # The prefix of the file that is saved to the bucket.
         self.prefix = prefix
-        # 下载使用roleArn
+        # The Alibaba Cloud Resource Name (ARN) of the RAM role that is used for the download.
         self.role_arn = role_arn
+        # The value is fixed to AliyunOSS.
         self.type = type
 
     def validate(self):

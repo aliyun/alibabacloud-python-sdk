@@ -10,7 +10,9 @@ class AgentInstanceConfigGrayConfigs(DaraModel):
         condition: str = None,
         content: str = None,
     ):
+        # The matching rule.
         self.condition = condition
+        # The content of the canary release configuration.
         self.content = content
 
     def validate(self):

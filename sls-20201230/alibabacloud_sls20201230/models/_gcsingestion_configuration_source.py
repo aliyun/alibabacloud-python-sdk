@@ -30,32 +30,59 @@ class GCSIngestionConfigurationSource(DaraModel):
         time_pattern: str = None,
         time_zone: str = None,
     ):
+        # The access key ID for authenticating with the GCS service. This parameter is required.
+        # 
         # This parameter is required.
         self.access_key_id = access_key_id
+        # The secret access key corresponding to the `accessKeyId`. This value is sensitive and must be managed securely.
+        # 
         # This parameter is required.
         self.access_key_secret = access_key_secret
+        # A nested object for specifying advanced configuration options as key-value pairs.
         self.advanced_parameters = advanced_parameters
+        # The name of the GCS bucket that contains the source data files.
+        # 
         # This parameter is required.
         self.bucket = bucket
+        # The compression format of the source files. Supported values are `none`, `gzip`, and `zstd`. If not specified, the system infers the format from the file extension.
+        # 
         # This parameter is required.
         self.compression_codec = compression_codec
+        # The character encoding of the source files. The default value is `UTF-8`.
+        # 
         # This parameter is required.
         self.encoding = encoding
+        # The end of the time range for data ingestion, specified as a Unix timestamp (in seconds). Only objects modified before this time are ingested.
         self.end_time = end_time
+        # The service endpoint for GCS. You can use a custom endpoint for private or accelerated connections.
         self.endpoint = endpoint
+        # A nested object that defines the format of the source data, such as CSV, JSON, or Parquet.
+        # 
         # This parameter is required.
         self.format = format
+        # The interval for checking for new data. Specify the value in a duration format, such as `15m` for 15 minutes. Set to `never` to perform a one-time ingestion.
+        # 
         # This parameter is required.
         self.interval = interval
+        # A regular expression that specifies which files to ingest. The pattern is matched against the full object key within the specified prefix.
         self.pattern = pattern
+        # The object key prefix used to discover files. This limits the scope of ingestion to a specific "folder" within the bucket.
         self.prefix = prefix
+        # The unique ID of the processor or pipeline that handles the ingested data.
         self.processor_id = processor_id
+        # Specifies whether to automatically restore objects from archival storage classes before ingestion. Set to `true` to enable this feature. The default is `false`.
         self.restore_object_enabled = restore_object_enabled
+        # The start of the time range for data ingestion, specified as a Unix timestamp (in seconds). Only objects modified at or after this time are ingested.
         self.start_time = start_time
+        # The ID of a predefined tag pack to apply to the ingested data. Tag packs contain rules for data enrichment and categorization.
         self.tag_pack_id = tag_pack_id
+        # The name of the field in your data that contains the timestamp. This timestamp is used as the event time for the ingested records.
         self.time_field = time_field
+        # The format of the timestamp in the `timeField`, specified using the Java `SimpleDateFormat` pattern. For example: `yyyy-MM-dd\\"T\\"HH:mm:ss.SSSZ`.
         self.time_format = time_format
+        # A regular expression used to extract a timestamp from unstructured data, such as a log entry or filename, if a structured `timeField` is not available.
         self.time_pattern = time_pattern
+        # The time zone for parsing timestamps that lack explicit time zone information. Specify a valid time zone identifier, such as `UTC` or `America/Los_Angeles`.
         self.time_zone = time_zone
 
     def validate(self):

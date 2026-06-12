@@ -12,9 +12,13 @@ class GetMLServiceResultsRequest(DaraModel):
         body: main_models.MLServiceAnalysisParam = None,
         version: str = None,
     ):
+        # - true: The request can use a built-in system service.
+        # 
+        # - false: The request cannot use a built-in system service.
         self.allow_builtin = allow_builtin
+        # The request struct.
         self.body = body
-        # The version of the algorithm. The algorithm varies based on the version.
+        # The version number of the algorithm. Different versions correspond to different algorithms.
         self.version = version
 
     def validate(self):

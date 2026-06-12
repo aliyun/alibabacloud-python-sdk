@@ -14,8 +14,11 @@ class ListAzureBlobIngestionResponseBody(DaraModel):
         results: List[main_models.AzureBlobIngestion] = None,
         total: int = None,
     ):
+        # The number of tasks returned on the current page.
         self.count = count
+        # A list of Azure Blob ingestion tasks.
         self.results = results
+        # The total number of tasks that match the query.
         self.total = total
 
     def validate(self):

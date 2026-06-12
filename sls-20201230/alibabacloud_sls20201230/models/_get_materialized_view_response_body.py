@@ -15,12 +15,19 @@ class GetMaterializedViewResponseBody(DaraModel):
         start_time: int = None,
         ttl: int = None,
     ):
+        # The time interval for data aggregation, in minutes.
         self.agg_interval_mins = agg_interval_mins
+        # Specifies whether the materialized view is active. Valid values are `true` and `false`.
         self.enabled = enabled
+        # The destination logstore that stores the aggregated data.
         self.logstore = logstore
+        # The name of the materialized view.
         self.name = name
+        # The SQL query that defines the materialized view.
         self.original_sql = original_sql
+        # The time when the materialized view was created. The value is a Unix timestamp.
         self.start_time = start_time
+        # The time to live (ttl) of the data in the destination logstore, in days.
         self.ttl = ttl
 
     def validate(self):

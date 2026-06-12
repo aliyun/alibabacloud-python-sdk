@@ -4,15 +4,12 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class UpdateLogStoreProcessorRequest(DaraModel):
+class GetMaterializedViewRequest(DaraModel):
     def __init__(
         self,
-        processor_name: str = None,
+        return_status: bool = None,
     ):
-        # The name of the ingest processor.
-        # 
-        # This parameter is required.
-        self.processor_name = processor_name
+        self.return_status = return_status
 
     def validate(self):
         pass
@@ -22,15 +19,15 @@ class UpdateLogStoreProcessorRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.processor_name is not None:
-            result['processorName'] = self.processor_name
+        if self.return_status is not None:
+            result['returnStatus'] = self.return_status
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('processorName') is not None:
-            self.processor_name = m.get('processorName')
+        if m.get('returnStatus') is not None:
+            self.return_status = m.get('returnStatus')
 
         return self
 

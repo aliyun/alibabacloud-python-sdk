@@ -12,6 +12,7 @@ class DescribeRegionsResponseBody(DaraModel):
         self,
         regions: List[main_models.DescribeRegionsResponseBodyRegions] = None,
     ):
+        # A list of available regions and their details.
         self.regions = regions
 
     def validate(self):
@@ -52,15 +53,17 @@ class DescribeRegionsResponseBodyRegions(DaraModel):
         local_name: str = None,
         region: str = None,
     ):
+        # The supported data redundancy types.
         self.data_redundancy_type = data_redundancy_type
+        # The accelerated endpoint of the region.
         self.internal_endpoint = internal_endpoint
-        # The public endpoint of Simple Log Service.
+        # The public endpoint of the region.
         self.internet_endpoint = internet_endpoint
-        # The internal endpoint of Simple Log Service.
+        # The intranet endpoint of the region.
         self.intranet_endpoint = intranet_endpoint
-        # The name of the Simple Log Service region.
+        # The display name of the region.
         self.local_name = local_name
-        # SLS region
+        # The ID of the region.
         self.region = region
 
     def validate(self):

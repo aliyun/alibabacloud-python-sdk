@@ -11,8 +11,11 @@ class ListMaterializedViewRequest(DaraModel):
         offset: int = None,
         size: int = None,
     ):
+        # The name of the materialized view. Use this to query for a specific materialized view.
         self.name = name
+        # The number of entries to skip before returning results. This parameter is used for pagination. Default value: 0.
         self.offset = offset
+        # The maximum number of materialized views to return per page. Default value: 100. Maximum value: 500.
         self.size = size
 
     def validate(self):

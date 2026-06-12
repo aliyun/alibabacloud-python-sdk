@@ -14,11 +14,11 @@ class ListOSSIngestionsResponseBody(DaraModel):
         results: List[main_models.OSSIngestion] = None,
         total: int = None,
     ):
-        # The number of OSS data import jobs that are returned.
+        # The number of OSS import tasks returned in this response.
         self.count = count
-        # The OSS data import jobs.
+        # A list of OSS import tasks.
         self.results = results
-        # The total number of OSS data import jobs in the project.
+        # The total number of OSS import tasks in the Project.
         self.total = total
 
     def validate(self):

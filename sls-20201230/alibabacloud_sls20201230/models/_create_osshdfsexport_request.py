@@ -13,7 +13,7 @@ class CreateOSSHDFSExportRequest(DaraModel):
         display_name: str = None,
         name: str = None,
     ):
-        # The configuration details of the job.
+        # The configuration of the job.
         # 
         # This parameter is required.
         self.configuration = configuration
@@ -23,7 +23,15 @@ class CreateOSSHDFSExportRequest(DaraModel):
         # 
         # This parameter is required.
         self.display_name = display_name
-        # The unique identifier of the OSS data shipping job.
+        # The name of the job. The name must be unique within the project and follow these conventions:
+        # 
+        # The job name must be unique within the project.
+        # 
+        # - The name can contain only lowercase letters, digits, hyphens (-), and underscores (_).
+        # 
+        # - The name must start and end with a lowercase letter or a digit.
+        # 
+        # - The name must be 2 to 64 characters in length.
         # 
         # This parameter is required.
         self.name = name

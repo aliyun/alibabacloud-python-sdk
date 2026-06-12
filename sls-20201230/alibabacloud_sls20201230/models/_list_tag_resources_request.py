@@ -18,11 +18,15 @@ class ListTagResourcesRequest(DaraModel):
         self.resource_id = resource_id
         # The type of the resource. Valid values:
         # 
-        # *   project
-        # *   logstore
-        # *   dashboard
-        # *   machinegroup
-        # *   logtailconfig
+        # - project
+        # 
+        # - logstore
+        # 
+        # - dashboard
+        # 
+        # - machinegroup
+        # 
+        # - logtailconfig
         # 
         # This parameter is required.
         self.resource_type = resource_type
@@ -77,7 +81,7 @@ class ListTagResourcesRequestTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag that you want to use to filter resources. For example, if you set the key to `"test-key"`, only resources to which the key is added are returned.``
+        # The key of the tag that you want to use to filter resources. For example, if you set the key to `"test-key"`, only resources to which the key is added are returned.\\`\\`
         # 
         # This parameter is required.
         self.key = key

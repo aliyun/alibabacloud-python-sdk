@@ -11,7 +11,9 @@ class ListOSSHDFSExportsRequest(DaraModel):
         offset: int = None,
         size: int = None,
     ):
+        # The name of the Logstore.
         self.logstore = logstore
+        # The line from which to start the query. Default value: 0.
         self.offset = offset
         # The number of entries to return. Default value: 10.
         self.size = size

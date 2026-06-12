@@ -12,9 +12,9 @@ class GroupConfiguration(DaraModel):
         fields: List[str] = None,
         type: str = None,
     ):
-        # The fields of group evaluation.
+        # The group evaluation fields.
         self.fields = fields
-        # The type of group evaluation.
+        # The group evaluation type.
         # 
         # This parameter is required.
         self.type = type

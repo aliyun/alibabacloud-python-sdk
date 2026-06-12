@@ -10,7 +10,7 @@ class UpdateAnnotationLabelRequest(DaraModel):
         self,
         body: main_models.MLLabelParam = None,
     ):
-        # The data structure of the request.
+        # The struct of the label table.
         self.body = body
 
     def validate(self):

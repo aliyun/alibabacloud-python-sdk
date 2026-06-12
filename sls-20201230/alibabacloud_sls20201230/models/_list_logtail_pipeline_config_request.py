@@ -13,14 +13,14 @@ class ListLogtailPipelineConfigRequest(DaraModel):
         offset: int = None,
         size: int = None,
     ):
-        # The name of the Logtail pipeline configuration.
+        # The name of the pipeline configuration.
         self.config_name = config_name
         self.config_type = config_type
         # The name of the Logstore.
         self.logstore_name = logstore_name
-        # The line from which the query starts.
+        # The line from which to start the query.
         self.offset = offset
-        # The number of Logtail pipeline configurations per page.
+        # The number of pipeline configurations to return on each page.
         self.size = size
 
     def validate(self):

@@ -14,8 +14,11 @@ class ListAgentInstanceConfigsResponseBody(DaraModel):
         size: int = None,
         total: int = None,
     ):
+        # The process-level configurations.
         self.configs = configs
+        # The number of data entries.
         self.size = size
+        # The total number of data entries that meet the query conditions.
         self.total = total
 
     def validate(self):
@@ -64,7 +67,9 @@ class ListAgentInstanceConfigsResponseBodyConfigs(DaraModel):
         attributes: Dict[str, str] = None,
         config_type: str = None,
     ):
+        # Ownership of the process-level configuration
         self.attributes = attributes
+        # Type of the process-level configuration
         self.config_type = config_type
 
     def validate(self):

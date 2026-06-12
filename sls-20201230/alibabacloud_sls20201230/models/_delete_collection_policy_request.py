@@ -10,7 +10,9 @@ class DeleteCollectionPolicyRequest(DaraModel):
         data_code: str = None,
         product_code: str = None,
     ):
+        # The code of the log type.
         self.data_code = data_code
+        # The code of the product.
         self.product_code = product_code
 
     def validate(self):

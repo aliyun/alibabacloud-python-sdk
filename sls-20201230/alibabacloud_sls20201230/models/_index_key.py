@@ -22,24 +22,24 @@ class IndexKey(DaraModel):
         type: str = None,
         vector_index: str = None,
     ):
-        # Alias.
+        # The alias of the field.
         self.alias = alias
-        # Case sensitivity.
+        # Specifies whether the field is case-sensitive.
         self.case_sensitive = case_sensitive
-        # Whether the field contains Chinese characters.
+        # Specifies whether the field contains Chinese characters.
         self.chn = chn
-        # Whether to enable statistics.
+        # Specifies whether to enable statistics for the field.
         self.doc_value = doc_value
         self.embedding = embedding
-        # Whether to enable auto indexing for all text fields in JSON.
+        # Specifies whether to automatically create an index for all text fields in the JSON object.
         self.index_all = index_all
-        # json key
+        # The JSON key.
         self.json_keys = json_keys
-        # Maximum depth.
+        # The maximum depth.
         self.max_depth = max_depth
-        # Delimiter.
+        # The delimiters used for tokenization.
         self.token = token
-        # The data type of the field.
+        # The type of the field.
         # 
         # This parameter is required.
         self.type = type

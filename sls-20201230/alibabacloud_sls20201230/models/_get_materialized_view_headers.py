@@ -13,6 +13,7 @@ class GetMaterializedViewHeaders(DaraModel):
         content_type: str = None,
     ):
         self.common_headers = common_headers
+        # The content type of the request. The value must be `application/json`.
         self.content_type = content_type
 
     def validate(self):

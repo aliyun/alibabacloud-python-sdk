@@ -14,8 +14,11 @@ class ListGCSIngestionsResponseBody(DaraModel):
         results: List[main_models.GCSIngestion] = None,
         total: int = None,
     ):
+        # The number of jobs returned on the current page.
         self.count = count
+        # The details of the job configurations.
         self.results = results
+        # The total number of entries that match the query.
         self.total = total
 
     def validate(self):

@@ -12,7 +12,7 @@ class PutConsumeProcessorRequest(DaraModel):
         description: str = None,
         display_name: str = None,
     ):
-        # Consumption processor configuration.
+        # The configuration of the consume processor.
         # 
         # This parameter is required.
         self.configuration = configuration

@@ -12,9 +12,14 @@ class UpdateGCSIngestionRequest(DaraModel):
         description: str = None,
         display_name: str = None,
     ):
+        # The configuration of the ingestion task.
+        # 
         # This parameter is required.
         self.configuration = configuration
+        # The description of the ingestion task.
         self.description = description
+        # The display name of the ingestion task.
+        # 
         # This parameter is required.
         self.display_name = display_name
 

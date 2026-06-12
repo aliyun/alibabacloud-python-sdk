@@ -33,39 +33,39 @@ class AlertConfiguration(DaraModel):
         type: str = None,
         version: str = None,
     ):
-        # The annotations of the alert rule.
+        # The alert annotations.
         self.annotations = annotations
-        # Specifies whether to allow the system to automatically add annotations to the alert rule.
+        # Specifies whether to enable automatic annotation.
         # 
         # This parameter is required.
         self.auto_annotation = auto_annotation
-        # The alert trigger conditions.
+        # The alert trigger condition.
         self.condition_configuration = condition_configuration
-        # The ID of the dashboard associated with the alert rule.
+        # The ID of the dashboard to which the alert is attached.
         self.dashboard = dashboard
-        # The configurations of group evaluation.
+        # The group evaluation configuration.
         # 
         # This parameter is required.
         self.group_configuration = group_configuration
-        # The set operation configurations for the query statements of the alert rule.
+        # The configurations for joining the results of query statements.
         self.join_configurations = join_configurations
-        # The labels of the alert rule.
+        # The alert labels.
         self.labels = labels
-        # The time when a paused alert rule is resumed.
+        # The time until which the alert is muted.
         self.mute_until = mute_until
-        # Specifies whether to enable the no-data alert feature.
+        # Specifies whether to enable no-data alerts.
         # 
         # This parameter is required.
         self.no_data_fire = no_data_fire
-        # The severity of the no-data alert.
+        # The severity of no-data alerts.
         self.no_data_severity = no_data_severity
-        # The notification configurations of Simple Log Service.
+        # The configuration for the SLS alert notification service.
         self.policy_configuration = policy_configuration
-        # The query statements.
+        # The list of query statements.
         # 
         # This parameter is required.
         self.query_list = query_list
-        # Specifies whether to send a recovery notification after an alert is cleared.
+        # Specifies whether to send recovery alerts.
         # 
         # This parameter is required.
         self.send_resolved = send_resolved
@@ -73,17 +73,17 @@ class AlertConfiguration(DaraModel):
         # 
         # This parameter is required.
         self.severity_configurations = severity_configurations
-        # The configurations that allow alerts to be sent to the notification system of Simple Log Service.
+        # The configuration for sending alerts to the SLS alert management service.
         self.sink_alerthub = sink_alerthub
-        # The configurations that allow alerts to be sent to CloudMonitor Event Center.
+        # The configuration for sending alerts to Cloud Monitor.
         self.sink_cms = sink_cms
-        # The configurations that allow alerts to be sent to an Eventstore.
+        # The configuration for sending alerts to the eventstore.
         self.sink_event_store = sink_event_store
-        # The custom tags of the alert rule.
+        # The custom alert tags.
         self.tags = tags
-        # The alert template configurations.
+        # The alert template configuration.
         self.template_configuration = template_configuration
-        # The maximum number of consecutive times that the trigger condition is met.
+        # The consecutive trigger threshold.
         # 
         # This parameter is required.
         self.threshold = threshold

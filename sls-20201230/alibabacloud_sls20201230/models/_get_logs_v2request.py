@@ -20,42 +20,43 @@ class GetLogsV2Request(DaraModel):
         to: int = None,
         topic: str = None,
     ):
-        # Specifies whether to page forward or backward for the scan-based query or phrase search.
+        # For a scan or phrase query, specifies whether to page forward or backward.
         self.forward = forward
-        # The beginning of the time range to query. The value is the log time that is specified when log data is written.
+        # The start of the time range to query. The value is the log time that was specified when the log was written.
         # 
-        # The time range that is specified in this operation is a left-closed, right-open interval. The interval includes the start time specified by the from parameter, but does not include the end time specified by the to parameter. If you specify the same value for the from and to parameters, the interval is invalid, and an error message is returned. The value is a timestamp that follows the UNIX time format. It is the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The time range is a left-closed right-open interval. This means the range includes the start time but not the end time. If the from and to values are the same, the interval is invalid and an error is returned. The value is a UNIX timestamp that represents the number of seconds since 00:00:00 UTC on January 1, 1970.
         # 
         # This parameter is required.
         self.from_ = from_
-        # Specifies whether to highlight the returned result.
+        # Specifies whether to highlight the results.
         self.highlight = highlight
+        # Specifies whether to enable nanosecond-level sorting.
         self.is_accurate = is_accurate
-        # The maximum number of logs to return for the request. This parameter takes effect only when the query parameter is set to a search statement. Valid values: 0 to 100. Default value: 100.
+        # The maximum number of logs to return. This parameter is valid only if the query parameter contains a query statement. The value must be an integer from 0 to 100. The default value is 100.
         self.line = line
-        # The line from which the query starts. This parameter takes effect only when the query parameter is set to a search statement. Default value: 0.
+        # The line number from which to start the query. This parameter is valid only if the query parameter contains a query statement. The default value is 0.
         self.offset = offset
-        # Specifies whether to enable the SQL enhancement feature. By default, the feature is disabled.
+        # Specifies whether to enable enhanced SQL. The default value is false.
         self.power_sql = power_sql
-        # The search statement or query statement. For more information, see the "Log search overview" and "Log analysis overview" topics.
+        # The query statement or analytic statement. For more information, see [Query overview](https://help.aliyun.com/document_detail/43772.html) and [Analysis overview](https://help.aliyun.com/document_detail/53608.html).
         # 
-        # If you add set session parallel_sql=true; to the analytic statement in the query parameter, Dedicated SQL is used. Example: \\* | set session parallel_sql=true; select count(\\*) as pv.
+        # To use the Exclusive SQL feature, add set session parallel_sql=true; to the analytic statement in the query parameter. Example: \\* | set session parallel_sql=true; select count(\\*) as pv.
         # 
-        # Note: If you specify an analytic statement in the query parameter, the line and offset parameters do not take effect in this operation. In this case, we recommend that you set the line and offset parameters to 0 and use the LIMIT clause to specify the number of logs to return on each page. For more information, see the "Perform paged queries" topic.
+        # Note: If the query parameter contains an analytic statement (SQL statement), the line and offset parameters are invalid. Set them to 0. Use the LIMIT clause in the SQL statement for paging. For more information, see Paginate query and analysis results.
         self.query = query
-        # Specifies whether to return logs in reverse chronological order of log timestamps. The log timestamps are accurate to minutes. Valid values:
+        # Specifies whether to return logs in descending order of their timestamps. The precision is at the minute level.
         # 
-        # true: Logs are returned in reverse chronological order of log timestamps. false (default): Logs are returned in chronological order of log timestamps. Note: The reverse parameter takes effect only when the query parameter is set to a search statement. The reverse parameter specifies the method used to sort returned logs. If the query parameter is set to a query statement, the reverse parameter does not take effect. The method used to sort returned logs is specified by the ORDER BY clause in the analytic statement. If you use the keyword asc in the ORDER BY clause, the logs are sorted in chronological order. If you use the keyword desc in the ORDER BY clause, the logs are sorted in reverse chronological order. By default, asc is used in the ORDER BY clause.
+        # true: Returns logs in descending order of their timestamps. false (default): Returns logs in ascending order of their timestamps. Note: If the query parameter contains a query statement, the reverse parameter is valid and specifies the sorting order. If the query parameter contains a query and analysis statement, the reverse parameter is invalid. The sorting order is specified by the ORDER BY clause in the analytic statement. If ORDER BY is asc (default), logs are sorted in ascending order. If ORDER BY is desc, logs are sorted in descending order.
         self.reverse = reverse
-        # The parameter that is used to query data.
+        # The query parameter.
         self.session = session
-        # The end of the time range to query. The value is the log time that is specified when log data is written.
+        # The end of the time range to query. The value is the log time that was specified when the log was written.
         # 
-        # The time range that is specified in this operation is a left-closed, right-open interval. The interval includes the start time specified by the from parameter, but does not include the end time specified by the to parameter. If you specify the same value for the from and to parameters, the interval is invalid, and an error message is returned. The value is a timestamp that follows the UNIX time format. It is the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The time range is a left-closed right-open interval. This means the range includes the start time but not the end time. If the from and to values are the same, the interval is invalid and an error is returned. The value is a UNIX timestamp that represents the number of seconds since 00:00:00 UTC on January 1, 1970.
         # 
         # This parameter is required.
         self.to = to
-        # The topic of the logs. Default value: double quotation marks ("").
+        # The log topic. The default value is double quotation marks ("").
         self.topic = topic
 
     def validate(self):

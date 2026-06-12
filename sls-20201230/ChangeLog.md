@@ -1,3 +1,8 @@
+2026-06-12 Version: 5.13.1
+- Update API CreateLogStore: add request parameters body.enableModify.
+- Update API GetMaterializedView: add request parameters returnStatus.
+
+
 2026-05-28 Version: 5.13.0
 - Support API CreateGCSIngestion.
 - Support API GetGCSIngestion.

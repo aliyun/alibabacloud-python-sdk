@@ -14,11 +14,11 @@ class LogItem(DaraModel):
         time: int = None,
         time_ns: int = None,
     ):
-        # The log fields.
+        # A list of log fields.
         # 
         # This parameter is required.
         self.contents = contents
-        # The log time. The value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The time of the log, formatted as a Unix timestamp. It represents the number of seconds that have elapsed since 00:00:00 UTC on January 1, 1970.
         # 
         # This parameter is required.
         self.time = time

@@ -12,7 +12,9 @@ class ListOSSIngestionsRequest(DaraModel):
         size: int = None,
     ):
         self.logstore = logstore
+        # The number of entries to skip for pagination. The default value is 0.
         self.offset = offset
+        # The maximum number of OSS import tasks to return in a single request.
         self.size = size
 
     def validate(self):

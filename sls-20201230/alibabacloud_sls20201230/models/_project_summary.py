@@ -14,16 +14,28 @@ class ProjectSummary(DaraModel):
         resource_group_id: str = None,
         update_time: int = None,
     ):
+        # The time when the project was created.
+        # 
         # This parameter is required.
         self.create_time = create_time
+        # The description of the project.
+        # 
         # This parameter is required.
         self.description = description
+        # The name of the project.
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The region where the project resides.
+        # 
         # This parameter is required.
         self.region = region
+        # The ID of the resource group.
+        # 
         # This parameter is required.
         self.resource_group_id = resource_group_id
+        # The time when the project was last updated.
+        # 
         # This parameter is required.
         self.update_time = update_time
 

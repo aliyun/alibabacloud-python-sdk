@@ -37,48 +37,71 @@ class S3IngestionConfigurationSource(DaraModel):
         use_cloud_front: bool = None,
     ):
         self.advanced_parameters = advanced_parameters
-        # aws access key
+        # Amazon Web Services (AWS) access key ID
         # 
         # This parameter is required.
         self.aws_access_key = aws_access_key
-        # aws access key secret
+        # Amazon Web Services (AWS) secret access key
         # 
         # This parameter is required.
         self.aws_access_key_secret = aws_access_key_secret
-        # s3 region
+        # Amazon S3 region
         # 
         # This parameter is required.
         self.aws_region = aws_region
-        # sqs queue url
+        # Amazon SQS queue URL
         self.aws_sqsqueue_url = aws_sqsqueue_url
+        # Specifies whether to use SQS.
         self.aws_use_sqs = aws_use_sqs
-        # s3 bucket
+        # Amazon S3 bucket name
         # 
         # This parameter is required.
         self.bucket = bucket
+        # The endpoint for the CloudFront distribution.
         self.cloud_front_endpoint = cloud_front_endpoint
+        # The authentication token for accessing the CloudFront endpoint.
         self.cloud_front_token = cloud_front_token
+        # Compression codec. Valid values: none, snappy, gzip
+        # 
         # This parameter is required.
         self.compression_codec = compression_codec
+        # Character encoding
+        # 
         # This parameter is required.
         self.encoding = encoding
+        # Include only files modified before this Unix timestamp
         self.end_time = end_time
-        # s3 endpoint
+        # Amazon S3 endpoint
         self.endpoint = endpoint
+        # Format
+        # 
         # This parameter is required.
         self.format = format
+        # Polling interval for new files
+        # 
         # This parameter is required.
         self.interval = interval
+        # Regular expression to filter file paths
         self.pattern = pattern
+        # Prefix to filter file paths
         self.prefix = prefix
+        # Ingest processor ID
         self.processor_id = processor_id
+        # Include only files modified after this Unix timestamp
         self.start_time = start_time
+        # Enable context browsing
         self.tag_pack_id = tag_pack_id
+        # Name of the field that contains event timestamps
         self.time_field = time_field
+        # Timestamp format in the time field
         self.time_format = time_format
+        # Regular expression to extract timestamps from file names or content
         self.time_pattern = time_pattern
+        # Time zone for the time field
         self.time_zone = time_zone
+        # Use only Amazon SQS to detect new files
         self.use_aws_sqsonly = use_aws_sqsonly
+        # Specifies whether to access S3 through a CloudFront distribution.
         self.use_cloud_front = use_cloud_front
 
     def validate(self):

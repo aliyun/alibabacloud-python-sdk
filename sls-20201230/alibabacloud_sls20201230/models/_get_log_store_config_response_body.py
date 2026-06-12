@@ -11,6 +11,7 @@ class GetLogStoreConfigResponseBody(DaraModel):
         self,
         client_ip_headers: List[str] = None,
     ):
+        # An array of header keys used to extract the client IP address when data is written to the Logstore. The keys are case-insensitive, but their order in the array is significant. For this feature to work, enable the `appendMeta` option on the Logstore. Log Service searches the request headers for these keys in the specified order and adds the first valid IP address it finds as a log tag.
         self.client_ip_headers = client_ip_headers
 
     def validate(self):

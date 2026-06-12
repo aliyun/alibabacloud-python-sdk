@@ -9,6 +9,7 @@ class RefreshTokenResponseBody(DaraModel):
         self,
         access_token: str = None,
     ):
+        # The access token.
         self.access_token = access_token
 
     def validate(self):

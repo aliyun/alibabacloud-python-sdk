@@ -16,12 +16,20 @@ class Dashboard(DaraModel):
         description: str = None,
         display_name: str = None,
     ):
+        # The properties of the dashboard.
         self.attribute = attribute
+        # The charts in the dashboard.
+        # 
         # This parameter is required.
         self.charts = charts
+        # The internal display name of the dashboard.
+        # 
         # This parameter is required.
         self.dashboard_name = dashboard_name
+        # The description of the dashboard.
         self.description = description
+        # The display name of the dashboard.
+        # 
         # This parameter is required.
         self.display_name = display_name
 

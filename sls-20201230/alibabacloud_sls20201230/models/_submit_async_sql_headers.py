@@ -14,7 +14,9 @@ class SubmitAsyncSqlHeaders(DaraModel):
         accept_encoding: str = None,
     ):
         self.common_headers = common_headers
+        # The data format of the response. The value must be application/x-protobuf.
         self.accept = accept
+        # The compression format of the response. The value can be lz4.
         self.accept_encoding = accept_encoding
 
     def validate(self):

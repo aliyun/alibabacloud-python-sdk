@@ -16,12 +16,24 @@ class MachineGroup(DaraModel):
         machine_identify_type: str = None,
         machine_list: List[str] = None,
     ):
+        # The properties of the machine group.
         self.group_attribute = group_attribute
+        # The name of the machine group.
+        # 
         # This parameter is required.
         self.group_name = group_name
+        # The type of the machine group. This parameter is currently an empty string.
         self.group_type = group_type
+        # The machine identity type.
+        # 
+        # - ip: The machine group is identified by IP addresses.
+        # 
+        # - userdefined: The machine group is identified by custom identifiers.
+        # 
         # This parameter is required.
         self.machine_identify_type = machine_identify_type
+        # The list of machines.
+        # 
         # This parameter is required.
         self.machine_list = machine_list
 
@@ -77,7 +89,9 @@ class MachineGroupGroupAttribute(DaraModel):
         external_name: str = None,
         group_topic: str = None,
     ):
+        # The identifier of the external management system that the machine group depends on.
         self.external_name = external_name
+        # The topic of the machine group.
         self.group_topic = group_topic
 
     def validate(self):

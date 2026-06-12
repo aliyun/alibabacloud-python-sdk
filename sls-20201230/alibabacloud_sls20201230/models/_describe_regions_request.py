@@ -9,13 +9,7 @@ class DescribeRegionsRequest(DaraModel):
         self,
         language: str = None,
     ):
-        # The language of the localName parameter that is returned.
-        # 
-        # Valid values:
-        # 
-        # *   ja
-        # *   en
-        # *   zh
+        # The language of the returned `localName` value.
         self.language = language
 
     def validate(self):

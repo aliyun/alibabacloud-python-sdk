@@ -11,8 +11,11 @@ class ListGCSIngestionsRequest(DaraModel):
         offset: int = None,
         size: int = None,
     ):
+        # The name of the Logstore.
         self.logstore = logstore
+        # The position from which to start returning results. The default value is 0.
         self.offset = offset
+        # The number of results to return on each page.
         self.size = size
 
     def validate(self):

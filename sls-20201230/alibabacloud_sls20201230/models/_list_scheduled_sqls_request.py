@@ -13,8 +13,9 @@ class ListScheduledSQLsRequest(DaraModel):
     ):
         # The name of the Logstore.
         self.logstore = logstore
+        # The line from which to start the query. The default value is 0.
         self.offset = offset
-        # The number of entries to return. Default value: 10.
+        # The number of entries to return. The default value is 10.
         self.size = size
 
     def validate(self):

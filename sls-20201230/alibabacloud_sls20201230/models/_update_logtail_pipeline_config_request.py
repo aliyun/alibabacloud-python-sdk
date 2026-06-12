@@ -18,46 +18,55 @@ class UpdateLogtailPipelineConfigRequest(DaraModel):
         processors: List[Dict[str, Any]] = None,
         task: Dict[str, Any] = None,
     ):
-        # The aggregation plug-ins.
+        # The list of aggregator plug-ins.
         # 
-        # >  This parameter takes effect only when extended plug-ins are used. You can use only one aggregation plug-in.
+        # >Notice: 
+        # 
+        # This parameter is valid only when you use an extension processing plug-in. You can use a maximum of one aggregator plug-in.
         self.aggregators = aggregators
         # The name of the configuration.
         # 
-        # >  The value of this parameter must be the same as the value of configName in the outer layer.
+        # >Notice: 
+        # 
+        # The name must be the same as the value of the configName parameter in the request path.
         # 
         # This parameter is required.
         self.config_name = config_name
-        # The output plug-ins.
+        # The list of output plug-ins.
         # 
-        # >  You can configure only one output plug-in.
+        # >Notice: 
+        # 
+        # Currently, you can add only one SLS output plug-in.
         # 
         # This parameter is required.
         self.flushers = flushers
-        # The global settings.
+        # The global configuration.
         self.global_ = global_
-        # The input plug-ins.
+        # The list of input plug-ins.
         # 
-        # >  You can configure only one input plug-in.
+        # >Notice: 
+        # 
+        # Currently, you can configure only one input plug-in.
         # 
         # This parameter is required.
         self.inputs = inputs
-        # The sample log. You can specify multiple sample logs.
+        # A sample log. Multiple logs are supported.
         self.log_sample = log_sample
-        # The processing plug-ins.
+        # The list of processing plug-ins.
         # 
-        # >  Logtail plug-ins for data processing are classified into native plug-ins and extended plug-ins. For more information, see [Overview of Logtail plug-ins for data processing](https://help.aliyun.com/document_detail/64957.html).
+        # > Processing plug-ins are classified into native processing plug-ins and extension processing plug-ins. For more information, see [Processing plug-ins](https://help.aliyun.com/document_detail/64957.html).
         # 
-        # > 
+        # >Notice: 
         # 
-        # *   You can use native plug-ins only to collect text logs.
-        # 
-        # *   You cannot add native plug-ins and extended plug-ins at a time.
-        # 
-        # *   When you add native plug-ins, take note of the following items:
-        # 
-        #     *   You must add one of the following Logtail plug-ins for data processing as the first plug-in: Data Parsing (Regex Mode), Data Parsing (Delimiter Mode), Data Parsing (JSON Mode), Data Parsing (NGINX Mode), Data Parsing (Apache Mode), and Data Parsing (IIS Mode).
-        #     *   After you add the first plug-in, you can add one Time Parsing plug-in, one Data Filtering plug-in, and multiple Data Masking plug-ins.
+        # > - Native plug-ins can be used only to collect text logs.
+        # >
+        # > - You cannot add native plug-ins and extension plug-ins at the same time.
+        # >
+        # > - When you use native plug-ins, the following requirements must be met:
+        # >
+        # >   - The first processing plug-in must be a regular expression-based parsing plug-in, a separator-based parsing plug-in, a JSON-based parsing plug-in, an NGINX-based parsing plug-in, an Apache-based parsing plug-in, or an IIS-based parsing plug-in.
+        # >
+        # >   - After the first processing plug-in, you can add only one time parsing plug-in, one filter plug-in, and multiple data masking plug-ins.
         self.processors = processors
         self.task = task
 

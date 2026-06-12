@@ -14,11 +14,11 @@ class ListConsumeProcessorsResponseBody(DaraModel):
         processors: List[main_models.ConsumeProcessor] = None,
         total: int = None,
     ):
-        # The number of consumption processors for offset.
+        # The number of consume processors returned in the current response.
         self.count = count
-        # The list of consumption processor information.
+        # The list of consume processors.
         self.processors = processors
-        # The total number of consumption processors that meet the query conditions.
+        # The total number of consume processors that meet the query conditions.
         self.total = total
 
     def validate(self):

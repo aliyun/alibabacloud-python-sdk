@@ -17,19 +17,27 @@ class GCSIngestion(DaraModel):
         schedule_id: str = None,
         status: str = None,
     ):
+        # The GCS ingestion configuration.
+        # 
         # This parameter is required.
         self.configuration = configuration
+        # Output only. The creation time of the job, as a Unix timestamp.
         self.create_time = create_time
-        # job description
+        # A user-friendly description for the job.
         self.description = description
-        # job displayName
+        # The display name for the job.
         # 
         # This parameter is required.
         self.display_name = display_name
+        # Output only. The last modified time of the job, as a Unix timestamp.
         self.last_modified_time = last_modified_time
+        # The job name.
+        # 
         # This parameter is required.
         self.name = name
+        # The job ID.
         self.schedule_id = schedule_id
+        # Output only. The ingestion status.
         self.status = status
 
     def validate(self):

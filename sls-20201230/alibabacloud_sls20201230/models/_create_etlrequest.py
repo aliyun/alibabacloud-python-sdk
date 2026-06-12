@@ -13,17 +13,25 @@ class CreateETLRequest(DaraModel):
         display_name: str = None,
         name: str = None,
     ):
-        # The detailed configuration of the job.
+        # The detailed configuration of the data transformation job.
         # 
         # This parameter is required.
         self.configuration = configuration
-        # The description of the job.
+        # The description of the data transformation job.
         self.description = description
-        # The display name of the job.
+        # The display name of the data transformation job.
         # 
         # This parameter is required.
         self.display_name = display_name
-        # The name of the job (unique within a project).
+        # The job name. The naming convention is as follows:
+        # 
+        # The job name must be unique within the project.
+        # 
+        # - The name can contain only lowercase letters, digits, hyphens (-), and underscores (_).
+        # 
+        # - The name must start and end with a lowercase letter or a digit.
+        # 
+        # - The length must be 2 to 64 characters.
         # 
         # This parameter is required.
         self.name = name

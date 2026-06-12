@@ -14,13 +14,30 @@ class CreateScheduledSQLRequest(DaraModel):
         name: str = None,
         schedule: main_models.Schedule = None,
     ):
+        # The configuration of the job.
+        # 
         # This parameter is required.
         self.configuration = configuration
+        # The description of the job.
         self.description = description
+        # The display name of the job.
+        # 
         # This parameter is required.
         self.display_name = display_name
+        # The job name. The name must be unique within a project.
+        # 
+        # The naming convention is as follows:
+        # 
+        # - The name can contain only lowercase letters, digits, hyphens (-), and underscores (_).
+        # 
+        # - The name must start and end with a lowercase letter or a digit.
+        # 
+        # - The name must be 2 to 64 characters in length.
+        # 
         # This parameter is required.
         self.name = name
+        # The scheduling configuration for the job.
+        # 
         # This parameter is required.
         self.schedule = schedule
 

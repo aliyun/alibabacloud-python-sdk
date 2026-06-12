@@ -17,7 +17,7 @@ class SavedSearch(DaraModel):
         # 
         # This parameter is required.
         self.display_name = display_name
-        # The name of the Logstore.
+        # The name of the logstore.
         # 
         # This parameter is required.
         self.logstore = logstore
@@ -25,11 +25,11 @@ class SavedSearch(DaraModel):
         # 
         # This parameter is required.
         self.savedsearch_name = savedsearch_name
-        # The search statement or the analytic statement.
+        # The search statement or analytic statement.
         # 
         # This parameter is required.
         self.search_query = search_query
-        # The topic of the log. Default value: empty string ("").
+        # The topic of the log. The default value is an empty string ("").
         self.topic = topic
 
     def validate(self):

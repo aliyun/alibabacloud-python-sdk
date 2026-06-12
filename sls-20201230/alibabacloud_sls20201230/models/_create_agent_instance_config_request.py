@@ -15,11 +15,17 @@ class CreateAgentInstanceConfigRequest(DaraModel):
         config_type: str = None,
         gray_configs: List[main_models.AgentInstanceConfigGrayConfigs] = None,
     ):
+        # The process that the configuration applies to.
         self.attributes = attributes
+        # The default configurations.
+        # 
         # This parameter is required.
         self.config = config
+        # The type of the process-level configuration.
+        # 
         # This parameter is required.
         self.config_type = config_type
+        # The canary release environment.
         self.gray_configs = gray_configs
 
     def validate(self):

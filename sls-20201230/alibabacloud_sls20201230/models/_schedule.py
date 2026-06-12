@@ -16,15 +16,15 @@ class Schedule(DaraModel):
     ):
         # The cron expression.
         self.cron_expression = cron_expression
-        # The number of seconds for which the scheduled job is delayed.
+        # The delay before a scheduled task is executed, in seconds (s).
         self.delay = delay
         # The fixed interval.
         self.interval = interval
-        # Specifies whether to run the scheduled job immediately.
+        # Specifies whether to execute the scheduled task immediately.
         self.run_immediately = run_immediately
-        # The time zone for the cron expression. This parameter is empty by default, which indicates that the time zone is UTC+8.
+        # The time zone of the cron expression. If this parameter is left empty, the default time zone UTC+8 is used.
         self.time_zone = time_zone
-        # The scheduling type.
+        # schedule type
         # 
         # This parameter is required.
         self.type = type

@@ -13,11 +13,24 @@ class CreateGCSIngestionRequest(DaraModel):
         display_name: str = None,
         name: str = None,
     ):
+        # The ingestion configuration.
+        # 
         # This parameter is required.
         self.configuration = configuration
+        # The task description.
         self.description = description
+        # The display name.
+        # 
         # This parameter is required.
         self.display_name = display_name
+        # The job name. Must be unique within the same project. Naming rules:
+        # 
+        # - Can contain only lowercase letters, digits, hyphens (-), and underscores (_).
+        # 
+        # - Must start and end with a lowercase letter or digit.
+        # 
+        # - Must be 2 to 64 characters in length.
+        # 
         # This parameter is required.
         self.name = name
 

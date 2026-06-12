@@ -9,7 +9,7 @@ class UpdateMetricStoreMeteringModeRequest(DaraModel):
         self,
         metering_mode: str = None,
     ):
-        # The billing mode. Default value: ChargeByFunction. Valid values: ChargeByFunction and ChargeByDataIngest.
+        # The billing mode to which you want to switch. Valid values: ChargeByFunction and ChargeByDataIngest. ChargeByFunction specifies the [pay-by-feature](https://help.aliyun.com/document_detail/48220.html) mode. ChargeByDataIngest specifies the [pay-by-ingested-data](https://help.aliyun.com/document_detail/2365756.html) mode.
         # 
         # This parameter is required.
         self.metering_mode = metering_mode

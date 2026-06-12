@@ -13,10 +13,15 @@ class Machine(DaraModel):
         machine_uniqueid: str = None,
         userdefined_id: str = None,
     ):
+        # The host ID of the machine.
         self.host_id = host_id
+        # The IP address of the machine.
         self.ip = ip
+        # The time of the last heartbeat. The value is a UNIX timestamp. It represents the number of seconds that have elapsed since 00:00:00 UTC on January 1, 1970.
         self.last_heartbeat_time = last_heartbeat_time
+        # The unique identifier of the machine.
         self.machine_uniqueid = machine_uniqueid
+        # The custom identifier of the machine. This parameter is valid only when the identity type of the machine group is set to custom.
         self.userdefined_id = userdefined_id
 
     def validate(self):

@@ -17,16 +17,16 @@ class OSSExportConfiguration(DaraModel):
         source_secure_transport: bool = None,
         to_time: int = None,
     ):
-        # The beginning of the time range to ship data. The value 1 specifies that the data shipping job ships data from the first log in the Logstore.
+        # The start time for the export, specified as a Unix timestamp. Set to 1 to export from the earliest available data in the Logstore.
         self.from_time = from_time
-        # The name of the Logstore.
+        # The name of the source Logstore.
         self.logstore = logstore
-        # The Alibaba Cloud Resource Name (ARN) of the Resource Access Management (RAM) role that is used to read data from Simple Log Service.
+        # The ARN of the Resource Access Management (RAM) role that Log Service assumes to read data from the Logstore. You must specify the ARN of your role.
         self.role_arn = role_arn
-        # The configurations of the OSS data shipping job.
+        # The configuration of the destination OSS sink.
         self.sink = sink
         self.source_secure_transport = source_secure_transport
-        # The end of the time range to ship data. The value 0 specifies that the data shipping job continuously ships data until the job is manually stopped.
+        # The end time for the export, specified as a Unix timestamp. Set to 0 to run the task continuously until it is stopped.
         self.to_time = to_time
 
     def validate(self):
@@ -100,50 +100,49 @@ class OSSExportConfigurationSink(DaraModel):
         suffix: str = None,
         time_zone: str = None,
     ):
-        # The OSS bucket.
+        # The name of the destination OSS bucket.
         # 
         # This parameter is required.
         self.bucket = bucket
-        # The interval between two data shipping operations. Valid values: 300 to 900. Unit: seconds.
+        # The time in seconds to buffer data before exporting. The value must be an integer from 300 to 900.
         self.buffer_interval = buffer_interval
-        # The size of the OSS object to which data is shipped. Valid values: 5 to 256. Unit: MB.
+        # The amount of data in MB to buffer before exporting. The value must be an integer from 5 to 256.
         self.buffer_size = buffer_size
-        # The compression type. Valid values: snappy, gizp, zstd, and none.
+        # The compression type for the exported files. Valid values: `snappy`, `gzip`, `zstd`, and `none` (no compression).
         self.compression_type = compression_type
-        # The details of the OSS object. Note: The value of this parameter is in the JSON format and varies based on the value of contentType.
+        # Format-specific settings. The structure of this JSON object depends on the `contentType` value.
         self.content_detail = content_detail
-        # The storage format of the OSS object. Valid values: json, parquet, csv, and orc.
+        # The format of the files stored in OSS. Valid values: `json`, `parquet`, `csv`, and `orc`.
         self.content_type = content_type
-        # The latency of data shipping.
+        # The delivery delay.
         # 
-        # > 
-        # 
-        # *   This parameter is deprecated.
+        # > - This parameter is deprecated.
         self.delay_sec = delay_sec
-        # The latency of data shipping. The value of this parameter cannot exceed the data retention period of the source Logstore.
+        # The delivery delay, in seconds. This value cannot exceed the data retention period of the source Logstore.
         self.delay_seconds = delay_seconds
-        # *   The endpoint that is used to access OSS. You can specify only an internal OSS endpoint for the region where the Simple Log Service project resides. The value is in the `http://+OSS endpoint` format. For more information, see [OSS regions and endpoints](https://help.aliyun.com/document_detail/31837.html).
-        # *   The endpoint that is used to access OSS-HDFS. You can specify only an internal OSS-HDFS endpoint for the region where the Simple Log Service project resides.
+        # - For Object Storage Service (OSS): The OSS internal endpoint. You must use an endpoint in the same region as the Logstore. For more information, see [OSS access domains and data centers](https://help.aliyun.com/document_detail/31837.html). The endpoint must use the HTTPS protocol.
+        # 
+        # - For OSS-HDFS: The OSS-HDFS internal endpoint. You must use an endpoint in the same region as the Logstore.
         # 
         # This parameter is required.
         self.endpoint = endpoint
-        # The partition format. For more information, see [Partition formats](https://help.aliyun.com/document_detail/371934.html).
+        # The path format for exported files. For more information, see [Path format](https://help.aliyun.com/document_detail/371934.html).
         # 
         # This parameter is required.
         self.path_format = path_format
-        # The partition format type.
+        # The type of the path format.
         # 
         # This parameter is required.
         self.path_format_type = path_format_type
-        # The prefix of the OSS object.
+        # The prefix for files exported to the OSS bucket.
         self.prefix = prefix
-        # The ARN of the RAM role that is used to write data to OSS.
+        # The ARN of the RAM role that Log Service assumes to write data to the OSS bucket. You must specify the ARN of your role.
         # 
         # This parameter is required.
         self.role_arn = role_arn
-        # The suffix of the OSS object.
+        # The suffix for the exported files.
         self.suffix = suffix
-        # The time zone. For more information, see [Time zones](https://help.aliyun.com/document_detail/375323.html).
+        # The time zone used for the path format. For more information, see [Time zones](https://help.aliyun.com/document_detail/375323.html).
         self.time_zone = time_zone
 
     def validate(self):

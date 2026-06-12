@@ -14,21 +14,29 @@ class CreateOSSIngestionRequest(DaraModel):
         name: str = None,
         schedule: main_models.Schedule = None,
     ):
-        # The configuration of the OSS data import job.
+        # The OSS import configuration.
         # 
         # This parameter is required.
         self.configuration = configuration
-        # The description of the job.
+        # The job description.
         self.description = description
-        # The display name of the job.
+        # The display name.
         # 
         # This parameter is required.
         self.display_name = display_name
-        # The name of the OSS data import job.
+        # The job name. The naming conventions are as follows:
+        # 
+        # The job name must be unique within the project.
+        # 
+        # - The name can contain only lowercase letters, digits, hyphens (-), and underscores (_).
+        # 
+        # - The name must start and end with a lowercase letter or a digit.
+        # 
+        # - The name must be 2 to 64 characters in length.
         # 
         # This parameter is required.
         self.name = name
-        # The scheduling type. By default, you do not need to specify this parameter. If you want to import data at regular intervals, such as importing data every Monday at 08: 00., you can specify a cron expression.
+        # The scheduling configuration. This parameter is optional. To meet specific timing requirements, such as importing data at 8:00 AM every Monday, use a cron expression.
         self.schedule = schedule
 
     def validate(self):

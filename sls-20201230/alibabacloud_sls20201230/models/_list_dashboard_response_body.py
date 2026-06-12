@@ -13,9 +13,9 @@ class ListDashboardResponseBody(DaraModel):
         dashboard_items: List[main_models.ListDashboardResponseBodyDashboardItems] = None,
         dashboards: List[str] = None,
     ):
-        # The details of the dashboard.
+        # The dashboards.
         self.dashboard_items = dashboard_items
-        # The queried dashboards. Each dashboard in the array is specified by dashboardName.
+        # A list of dashboard names. This corresponds to dashboardName.
         self.dashboards = dashboards
 
     def validate(self):
@@ -59,8 +59,9 @@ class ListDashboardResponseBodyDashboardItems(DaraModel):
         description: str = None,
         display_name: str = None,
     ):
-        # The dashboard ID. The ID must be unique in a project. Fuzzy search is supported. For example, if you enter da, all dashboards whose IDs start with da are queried.
+        # The dashboard ID. The ID must be unique within a project. Fuzzy queries are supported. For example, if you enter da, all dashboards whose names start with da are returned.
         self.dashboard_name = dashboard_name
+        # The description.
         self.description = description
         # The display name of the dashboard.
         self.display_name = display_name

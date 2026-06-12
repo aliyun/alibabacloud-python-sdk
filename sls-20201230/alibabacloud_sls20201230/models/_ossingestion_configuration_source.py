@@ -31,53 +31,55 @@ class OSSIngestionConfigurationSource(DaraModel):
         use_meta_index: bool = None,
     ):
         self.advanced_parameters = advanced_parameters
-        # The OSS bucket.
+        # The name of the OSS bucket.
         # 
         # This parameter is required.
         self.bucket = bucket
-        # The compression type.
+        # The compression type of the source files.
         # 
         # This parameter is required.
         self.compression_codec = compression_codec
-        # The encoding type.
+        # The encoding of the source files.
         # 
         # This parameter is required.
         self.encoding = encoding
-        # The point in time before which modified OSS objects are imported.
+        # Imports only files modified before this time. The value is a Unix timestamp in seconds.
         self.end_time = end_time
         # The OSS endpoint.
         # 
         # This parameter is required.
         self.endpoint = endpoint
-        # The format.
+        # Defines the format of the source data.
         # 
         # This parameter is required.
         self.format = format
-        # The interval at which the system checks for new files.
+        # The check interval for new files.
         # 
         # This parameter is required.
         self.interval = interval
-        # The regular expression that is used to filter OSS objects by directory.
+        # A regular expression to filter files by path.
         self.pattern = pattern
-        # The directory of the OSS objects.
+        # The path prefix for filtering files.
         self.prefix = prefix
+        # The ID of the writer processor.
         self.processor_id = processor_id
-        # Specifies whether to import OSS objects of the Archive class.
+        # Specifies whether to import archived files.
         self.restore_object_enabled = restore_object_enabled
-        # The Alibaba Cloud Resource Name (ARN) of the role.
+        # The Role ARN to use for accessing the OSS bucket.
         self.role_arn = role_arn
-        # The point in time after which modified OSS objects are imported.
+        # Imports only files modified after this time. The value is a Unix timestamp in seconds.
         self.start_time = start_time
+        # Specifies whether to enable context retrieval.
         self.tag_pack_id = tag_pack_id
-        # The time field to extract.
+        # The field containing the log time.
         self.time_field = time_field
         # The format of the time field.
         self.time_format = time_format
-        # The regular expression that is used to extract time.
+        # The regular expression to extract the time value from a log.
         self.time_pattern = time_pattern
-        # The time zone of the time field.
+        # The time zone of the timestamp in the source data.
         self.time_zone = time_zone
-        # Specifies whether to enable OSS metadata indexing.
+        # Specifies whether to use the OSS metadata index to accelerate file discovery.
         # 
         # This parameter is required.
         self.use_meta_index = use_meta_index

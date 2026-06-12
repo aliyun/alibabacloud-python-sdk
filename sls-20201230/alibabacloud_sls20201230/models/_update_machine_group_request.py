@@ -26,15 +26,17 @@ class UpdateMachineGroupRequest(DaraModel):
         self.group_type = group_type
         # The identifier type of the machine group. Valid values:
         # 
-        # *   ip: The machine group uses IP addresses as identifiers.
-        # *   userdefined: The machine group uses custom identifiers.
+        # - ip: The machine group uses IP addresses as identifiers.
+        # 
+        # - userdefined: The machine group uses custom identifiers.
         # 
         # This parameter is required.
         self.machine_identify_type = machine_identify_type
         # The identifiers of the machines in the machine group.
         # 
-        # *   If you set machineIdentifyType to ip, enter the IP addresses of the machines.
-        # *   If you set machineIdentifyType to userdefined, enter a custom identifier.
+        # - If you set machineIdentifyType to ip, enter the IP addresses of the machines.
+        # 
+        # - If you set machineIdentifyType to userdefined, enter a custom identifier.
         # 
         # This parameter is required.
         self.machine_list = machine_list
