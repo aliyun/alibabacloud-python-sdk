@@ -23,6 +23,7 @@ class ImportHttpApiRequest(DaraModel):
         strategy: str = None,
         target_http_api_id: str = None,
         version_config: main_models.HttpApiVersionConfig = None,
+        with_gateway_extension: bool = None,
     ):
         # The API deployment configurations.
         self.deploy_configs = deploy_configs
@@ -56,6 +57,7 @@ class ImportHttpApiRequest(DaraModel):
         self.target_http_api_id = target_http_api_id
         # The versioning configuration for the API. If an existing API matches the specified name (and version, if enabled), this import updates that API.
         self.version_config = version_config
+        self.with_gateway_extension = with_gateway_extension
 
     def validate(self):
         if self.deploy_configs:
@@ -113,6 +115,9 @@ class ImportHttpApiRequest(DaraModel):
         if self.version_config is not None:
             result['versionConfig'] = self.version_config.to_map()
 
+        if self.with_gateway_extension is not None:
+            result['withGatewayExtension'] = self.with_gateway_extension
+
         return result
 
     def from_map(self, m: dict = None):
@@ -160,6 +165,9 @@ class ImportHttpApiRequest(DaraModel):
         if m.get('versionConfig') is not None:
             temp_model = main_models.HttpApiVersionConfig()
             self.version_config = temp_model.from_map(m.get('versionConfig'))
+
+        if m.get('withGatewayExtension') is not None:
+            self.with_gateway_extension = m.get('withGatewayExtension')
 
         return self
 

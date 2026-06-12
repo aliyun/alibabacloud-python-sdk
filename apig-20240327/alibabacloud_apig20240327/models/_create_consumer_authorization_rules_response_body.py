@@ -15,11 +15,11 @@ class CreateConsumerAuthorizationRulesResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The status code.
+        # Response status code.
         self.code = code
-        # The response parameters.
+        # Response data.
         self.data = data
-        # The returned message.
+        # Response message.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -69,7 +69,7 @@ class CreateConsumerAuthorizationRulesResponseBodyData(DaraModel):
         self,
         consumer_authorization_rule_ids: List[str] = None,
     ):
-        # The authentication rule IDs.
+        # List of consumer authorization rule IDs.
         self.consumer_authorization_rule_ids = consumer_authorization_rule_ids
 
     def validate(self):

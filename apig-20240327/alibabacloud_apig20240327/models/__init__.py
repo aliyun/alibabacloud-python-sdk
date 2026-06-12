@@ -200,6 +200,9 @@ from ._deploy_http_api_response_body import DeployHttpApiResponseBody
 from ._deploy_http_api_response import DeployHttpApiResponse
 from ._deploy_mcp_server_response_body import DeployMcpServerResponseBody
 from ._deploy_mcp_server_response import DeployMcpServerResponse
+from ._describe_regions_request import DescribeRegionsRequest
+from ._describe_regions_response_body import DescribeRegionsResponseBody
+from ._describe_regions_response import DescribeRegionsResponse
 from ._export_http_api_request import ExportHttpApiRequest
 from ._export_http_api_response_body import ExportHttpApiResponseBody
 from ._export_http_api_response import ExportHttpApiResponse
@@ -550,6 +553,8 @@ from ._deploy_http_api_request import DeployHttpApiRequestRestApiConfigEnvironme
 from ._deploy_http_api_request import DeployHttpApiRequestRestApiConfigOperationDeployments
 from ._deploy_http_api_request import DeployHttpApiRequestRestApiConfig
 from ._deploy_http_api_response_body import DeployHttpApiResponseBodyData
+from ._describe_regions_response_body import DescribeRegionsResponseBodyRegionsRegion
+from ._describe_regions_response_body import DescribeRegionsResponseBodyRegions
 from ._export_http_api_request import ExportHttpApiRequestExtensionConfig
 from ._export_http_api_response_body import ExportHttpApiResponseBodyData
 from ._get_consumer_response_body import GetConsumerResponseBodyData
@@ -597,8 +602,10 @@ from ._get_trace_config_response_body import GetTraceConfigResponseBodyData
 from ._import_http_api_request import ImportHttpApiRequestSpecOssConfig
 from ._import_http_api_response_body import ImportHttpApiResponseBodyDataDryRunInfoFailureComponents
 from ._import_http_api_response_body import ImportHttpApiResponseBodyDataDryRunInfoFailureOperations
+from ._import_http_api_response_body import ImportHttpApiResponseBodyDataDryRunInfoFailureRoutes
 from ._import_http_api_response_body import ImportHttpApiResponseBodyDataDryRunInfoSuccessComponents
 from ._import_http_api_response_body import ImportHttpApiResponseBodyDataDryRunInfoSuccessOperations
+from ._import_http_api_response_body import ImportHttpApiResponseBodyDataDryRunInfoSuccessRoutes
 from ._import_http_api_response_body import ImportHttpApiResponseBodyDataDryRunInfo
 from ._import_http_api_response_body import ImportHttpApiResponseBodyData
 from ._install_plugin_response_body import InstallPluginResponseBodyDataInstallPluginResults
@@ -888,6 +895,9 @@ __all__ = [
     DeployHttpApiResponse,
     DeployMcpServerResponseBody,
     DeployMcpServerResponse,
+    DescribeRegionsRequest,
+    DescribeRegionsResponseBody,
+    DescribeRegionsResponse,
     ExportHttpApiRequest,
     ExportHttpApiResponseBody,
     ExportHttpApiResponse,
@@ -1238,6 +1248,8 @@ __all__ = [
     DeployHttpApiRequestRestApiConfigOperationDeployments,
     DeployHttpApiRequestRestApiConfig,
     DeployHttpApiResponseBodyData,
+    DescribeRegionsResponseBodyRegionsRegion,
+    DescribeRegionsResponseBodyRegions,
     ExportHttpApiRequestExtensionConfig,
     ExportHttpApiResponseBodyData,
     GetConsumerResponseBodyData,
@@ -1285,8 +1297,10 @@ __all__ = [
     ImportHttpApiRequestSpecOssConfig,
     ImportHttpApiResponseBodyDataDryRunInfoFailureComponents,
     ImportHttpApiResponseBodyDataDryRunInfoFailureOperations,
+    ImportHttpApiResponseBodyDataDryRunInfoFailureRoutes,
     ImportHttpApiResponseBodyDataDryRunInfoSuccessComponents,
     ImportHttpApiResponseBodyDataDryRunInfoSuccessOperations,
+    ImportHttpApiResponseBodyDataDryRunInfoSuccessRoutes,
     ImportHttpApiResponseBodyDataDryRunInfo,
     ImportHttpApiResponseBodyData,
     InstallPluginResponseBodyDataInstallPluginResults,

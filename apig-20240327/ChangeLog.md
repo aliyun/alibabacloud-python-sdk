@@ -1,3 +1,10 @@
+2026-06-12 Version: 7.2.0
+- Support API DescribeRegions.
+- Update API ImportHttpApi: add request parameters body.withGatewayExtension.
+- Update API ImportHttpApi: add response parameters Body.data.dryRunInfo.failureRoutes.
+- Update API ImportHttpApi: add response parameters Body.data.dryRunInfo.successRoutes.
+
+
 2026-06-11 Version: 7.1.0
 - Support API AddGatewayQuotaRule.
 - Support API DeleteGatewayQuotaRule.

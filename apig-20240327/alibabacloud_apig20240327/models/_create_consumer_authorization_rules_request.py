@@ -12,7 +12,7 @@ class CreateConsumerAuthorizationRulesRequest(DaraModel):
         self,
         authorization_rules: List[main_models.CreateConsumerAuthorizationRulesRequestAuthorizationRules] = None,
     ):
-        # The consumer authentication rules to be created.
+        # Consumer authorization rules.
         self.authorization_rules = authorization_rules
 
     def validate(self):
@@ -52,15 +52,15 @@ class CreateConsumerAuthorizationRulesRequestAuthorizationRules(DaraModel):
         resource_identifier: main_models.CreateConsumerAuthorizationRulesRequestAuthorizationRulesResourceIdentifier = None,
         resource_type: str = None,
     ):
-        # The consumer ID.
+        # Consumer ID.
         self.consumer_id = consumer_id
-        # The expiration mode. Valid values: LongTerm and ShortTerm.
+        # Expiration mode. Currently only LongTerm is supported.
         self.expire_mode = expire_mode
-        # The expiration timestamp.
+        # Expiration time.
         self.expire_timestamp = expire_timestamp
-        # The resource identifier, which is provided to non-standard code sources for space reuse.
+        # Resource identifier, provided to non-standard code sources as a unique identifier for space reuse
         self.resource_identifier = resource_identifier
-        # The resource type.
+        # Resource type.
         self.resource_type = resource_type
 
     def validate(self):
@@ -117,13 +117,13 @@ class CreateConsumerAuthorizationRulesRequestAuthorizationRulesResourceIdentifie
         resource_id: str = None,
         resources: List[str] = None,
     ):
-        # The environment ID.
+        # Environment ID.
         self.environment_id = environment_id
-        # Parent resource ID
+        # Parent resource ID.
         self.parent_resource_id = parent_resource_id
-        # The resource ID.
+        # Resource ID.
         self.resource_id = resource_id
-        # List of resources
+        # Resource information.
         self.resources = resources
 
     def validate(self):
