@@ -18,10 +18,15 @@ class ListProjectsResponseBody(DaraModel):
         total_count: int = None,
     ):
         self.list = list
+        # The maximum number of records returned in this query.
         self.max_results = max_results
+        # The pagination token for the next query. If NextToken is empty, no more results are available. If NextToken has a value, it indicates the token from which the next query starts.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
+        # The total number of query results.
         self.total_count = total_count
 
     def validate(self):

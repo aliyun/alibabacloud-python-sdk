@@ -4,24 +4,22 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class GetRecordsRequest(DaraModel):
+class CreateSubscriptionRequest(DaraModel):
     def __init__(
         self,
+        application: str = None,
+        comment: str = None,
         project_name: str = None,
-        shard_id: str = None,
-        start_time: int = None,
+        subscription_id: str = None,
         topic_name: str = None,
     ):
-        # The project name.
-        # 
+        # This parameter is required.
+        self.application = application
+        # This parameter is required.
+        self.comment = comment
         # This parameter is required.
         self.project_name = project_name
-        # The shard ID from which to read data.
-        self.shard_id = shard_id
-        # The start time for reading data. By default, data is read starting from 5 minutes before the current time.
-        self.start_time = start_time
-        # The topic name.
-        # 
+        self.subscription_id = subscription_id
         # This parameter is required.
         self.topic_name = topic_name
 
@@ -33,14 +31,17 @@ class GetRecordsRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.application is not None:
+            result['Application'] = self.application
+
+        if self.comment is not None:
+            result['Comment'] = self.comment
+
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
 
-        if self.shard_id is not None:
-            result['ShardId'] = self.shard_id
-
-        if self.start_time is not None:
-            result['StartTime'] = self.start_time
+        if self.subscription_id is not None:
+            result['SubscriptionId'] = self.subscription_id
 
         if self.topic_name is not None:
             result['TopicName'] = self.topic_name
@@ -49,14 +50,17 @@ class GetRecordsRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Application') is not None:
+            self.application = m.get('Application')
+
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
+
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
 
-        if m.get('ShardId') is not None:
-            self.shard_id = m.get('ShardId')
-
-        if m.get('StartTime') is not None:
-            self.start_time = m.get('StartTime')
+        if m.get('SubscriptionId') is not None:
+            self.subscription_id = m.get('SubscriptionId')
 
         if m.get('TopicName') is not None:
             self.topic_name = m.get('TopicName')

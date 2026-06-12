@@ -114,6 +114,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_project_with_options_async(request, runtime)
 
+    def create_subscription_with_options(
+        self,
+        request: main_models.CreateSubscriptionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateSubscriptionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application):
+            query['Application'] = request.application
+        if not DaraCore.is_null(request.comment):
+            query['Comment'] = request.comment
+        if not DaraCore.is_null(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not DaraCore.is_null(request.subscription_id):
+            query['SubscriptionId'] = request.subscription_id
+        if not DaraCore.is_null(request.topic_name):
+            query['TopicName'] = request.topic_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateSubscription',
+            version = '2024-06-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateSubscriptionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_subscription_with_options_async(
+        self,
+        request: main_models.CreateSubscriptionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateSubscriptionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application):
+            query['Application'] = request.application
+        if not DaraCore.is_null(request.comment):
+            query['Comment'] = request.comment
+        if not DaraCore.is_null(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not DaraCore.is_null(request.subscription_id):
+            query['SubscriptionId'] = request.subscription_id
+        if not DaraCore.is_null(request.topic_name):
+            query['TopicName'] = request.topic_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateSubscription',
+            version = '2024-06-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateSubscriptionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_subscription(
+        self,
+        request: main_models.CreateSubscriptionRequest,
+    ) -> main_models.CreateSubscriptionResponse:
+        runtime = RuntimeOptions()
+        return self.create_subscription_with_options(request, runtime)
+
+    async def create_subscription_async(
+        self,
+        request: main_models.CreateSubscriptionRequest,
+    ) -> main_models.CreateSubscriptionResponse:
+        runtime = RuntimeOptions()
+        return await self.create_subscription_with_options_async(request, runtime)
+
     def create_topic_with_options(
         self,
         request: main_models.CreateTopicRequest,
@@ -285,6 +371,84 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteProjectResponse:
         runtime = RuntimeOptions()
         return await self.delete_project_with_options_async(request, runtime)
+
+    def delete_subscription_with_options(
+        self,
+        request: main_models.DeleteSubscriptionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteSubscriptionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not DaraCore.is_null(request.subscription_id):
+            query['SubscriptionId'] = request.subscription_id
+        if not DaraCore.is_null(request.topic_name):
+            query['TopicName'] = request.topic_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteSubscription',
+            version = '2024-06-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteSubscriptionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_subscription_with_options_async(
+        self,
+        request: main_models.DeleteSubscriptionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteSubscriptionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not DaraCore.is_null(request.subscription_id):
+            query['SubscriptionId'] = request.subscription_id
+        if not DaraCore.is_null(request.topic_name):
+            query['TopicName'] = request.topic_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteSubscription',
+            version = '2024-06-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteSubscriptionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_subscription(
+        self,
+        request: main_models.DeleteSubscriptionRequest,
+    ) -> main_models.DeleteSubscriptionResponse:
+        runtime = RuntimeOptions()
+        return self.delete_subscription_with_options(request, runtime)
+
+    async def delete_subscription_async(
+        self,
+        request: main_models.DeleteSubscriptionRequest,
+    ) -> main_models.DeleteSubscriptionResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_subscription_with_options_async(request, runtime)
 
     def delete_topic_with_options(
         self,

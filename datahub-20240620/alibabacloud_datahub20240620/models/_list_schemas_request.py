@@ -13,11 +13,18 @@ class ListSchemasRequest(DaraModel):
         skip: int = None,
         topic_name: str = None,
     ):
+        # The maximum number of records to return in a paginated query.
         self.max_results = max_results
+        # The pagination token. If NextToken is empty, the query starts from the beginning. Otherwise, the query starts from where the previous query left off based on the token.
         self.next_token = next_token
+        # The project name.
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The number of records to skip in a paginated query.
         self.skip = skip
+        # The topic name.
+        # 
         # This parameter is required.
         self.topic_name = topic_name
 

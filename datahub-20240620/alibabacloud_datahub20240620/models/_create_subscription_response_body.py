@@ -4,15 +4,15 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class UpdateTopicResponseBody(DaraModel):
+class CreateSubscriptionResponseBody(DaraModel):
     def __init__(
         self,
         request_id: str = None,
-        success: bool = None,
+        subscription_id: str = None,
+        success: str = None,
     ):
-        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        self.subscription_id = subscription_id
         self.success = success
 
     def validate(self):
@@ -26,6 +26,9 @@ class UpdateTopicResponseBody(DaraModel):
         if self.request_id is not None:
             result['RequestId'] = self.request_id
 
+        if self.subscription_id is not None:
+            result['SubscriptionId'] = self.subscription_id
+
         if self.success is not None:
             result['Success'] = self.success
 
@@ -35,6 +38,9 @@ class UpdateTopicResponseBody(DaraModel):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+
+        if m.get('SubscriptionId') is not None:
+            self.subscription_id = m.get('SubscriptionId')
 
         if m.get('Success') is not None:
             self.success = m.get('Success')

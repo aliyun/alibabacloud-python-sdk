@@ -5,12 +5,18 @@ from __future__ import annotations
 from ._create_project_request import CreateProjectRequest
 from ._create_project_response_body import CreateProjectResponseBody
 from ._create_project_response import CreateProjectResponse
+from ._create_subscription_request import CreateSubscriptionRequest
+from ._create_subscription_response_body import CreateSubscriptionResponseBody
+from ._create_subscription_response import CreateSubscriptionResponse
 from ._create_topic_request import CreateTopicRequest
 from ._create_topic_response_body import CreateTopicResponseBody
 from ._create_topic_response import CreateTopicResponse
 from ._delete_project_request import DeleteProjectRequest
 from ._delete_project_response_body import DeleteProjectResponseBody
 from ._delete_project_response import DeleteProjectResponse
+from ._delete_subscription_request import DeleteSubscriptionRequest
+from ._delete_subscription_response_body import DeleteSubscriptionResponseBody
+from ._delete_subscription_response import DeleteSubscriptionResponse
 from ._delete_topic_request import DeleteTopicRequest
 from ._delete_topic_response_body import DeleteTopicResponseBody
 from ._delete_topic_response import DeleteTopicResponse
@@ -80,12 +86,18 @@ __all__ = [
     CreateProjectRequest,
     CreateProjectResponseBody,
     CreateProjectResponse,
+    CreateSubscriptionRequest,
+    CreateSubscriptionResponseBody,
+    CreateSubscriptionResponse,
     CreateTopicRequest,
     CreateTopicResponseBody,
     CreateTopicResponse,
     DeleteProjectRequest,
     DeleteProjectResponseBody,
     DeleteProjectResponse,
+    DeleteSubscriptionRequest,
+    DeleteSubscriptionResponseBody,
+    DeleteSubscriptionResponse,
     DeleteTopicRequest,
     DeleteTopicResponseBody,
     DeleteTopicResponse,

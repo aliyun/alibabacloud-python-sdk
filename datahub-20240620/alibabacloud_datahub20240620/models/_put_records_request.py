@@ -15,11 +15,18 @@ class PutRecordsRequest(DaraModel):
         shard_id: str = None,
         topic_name: str = None,
     ):
+        # The project name.
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The data to be written.
+        # 
         # This parameter is required.
         self.records = records
+        # The ID of the shard to which data is written. If this parameter is not specified, data is randomly written to a shard.
         self.shard_id = shard_id
+        # The topic name.
+        # 
         # This parameter is required.
         self.topic_name = topic_name
 
@@ -75,7 +82,10 @@ class PutRecordsRequestRecords(DaraModel):
         attributes: Dict[str, str] = None,
         data: List[str] = None,
     ):
+        # The additional information of the record. You can leave this parameter empty if no additional information is available.
         self.attributes = attributes
+        # The data content of the record.
+        # 
         # This parameter is required.
         self.data = data
 

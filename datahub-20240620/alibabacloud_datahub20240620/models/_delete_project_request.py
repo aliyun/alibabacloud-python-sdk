@@ -9,6 +9,8 @@ class DeleteProjectRequest(DaraModel):
         self,
         project_name: str = None,
     ):
+        # The project name.
+        # 
         # This parameter is required.
         self.project_name = project_name
 

@@ -11,10 +11,16 @@ class GetSubscriptionRequest(DaraModel):
         subscription_id: str = None,
         topic_name: str = None,
     ):
+        # The project name.
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The subscription ID.
+        # 
         # This parameter is required.
         self.subscription_id = subscription_id
+        # The topic name.
+        # 
         # This parameter is required.
         self.topic_name = topic_name
 

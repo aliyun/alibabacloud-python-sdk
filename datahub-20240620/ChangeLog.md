@@ -1,3 +1,8 @@
+2026-06-12 Version: 1.4.0
+- Support API CreateSubscription.
+- Support API DeleteSubscription.
+
+
 2026-03-20 Version: 1.3.0
 - Support API CreateProject.
 - Support API CreateTopic.

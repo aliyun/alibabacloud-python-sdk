@@ -11,8 +11,11 @@ class PutRecordsResponseBody(DaraModel):
         shard_id: str = None,
         success: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The ID of the shard to which the data was written.
         self.shard_id = shard_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

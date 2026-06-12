@@ -17,14 +17,23 @@ class GetProjectResponseBody(DaraModel):
         update_time: str = None,
         vpc_whitelist: str = None,
     ):
+        # The project description.
         self.comment = comment
+        # The time when the project was created.
         self.create_time = create_time
+        # The creator of the project.
         self.creator = creator
+        # The project name.
         self.project_name = project_name
+        # The request ID.
         self.request_id = request_id
+        # The total storage capacity of the project.
         self.storage = storage
+        # Indicates whether the request was successful.
         self.success = success
+        # The time when the project was last updated.
         self.update_time = update_time
+        # The VPC whitelist of the project.
         self.vpc_whitelist = vpc_whitelist
 
     def validate(self):

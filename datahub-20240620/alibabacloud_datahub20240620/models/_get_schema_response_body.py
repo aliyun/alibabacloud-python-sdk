@@ -16,13 +16,21 @@ class GetSchemaResponseBody(DaraModel):
         topic_name: str = None,
         version_id: int = None,
     ):
+        # The creation time.
         self.create_time = create_time
+        # The creator of the schema.
         self.creator = creator
+        # The project name.
         self.project_name = project_name
+        # The schema data corresponding to the specified VersionId.
         self.record_schema = record_schema
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
+        # The topic name.
         self.topic_name = topic_name
+        # The schema version number.
         self.version_id = version_id
 
     def validate(self):

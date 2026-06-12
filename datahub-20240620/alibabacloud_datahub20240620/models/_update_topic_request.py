@@ -11,9 +11,14 @@ class UpdateTopicRequest(DaraModel):
         project_name: str = None,
         topic_name: str = None,
     ):
+        # The comment.
         self.comment = comment
+        # The project name.
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The topic name.
+        # 
         # This parameter is required.
         self.topic_name = topic_name
 

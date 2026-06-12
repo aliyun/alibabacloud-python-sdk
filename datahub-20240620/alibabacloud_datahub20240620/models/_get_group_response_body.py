@@ -19,14 +19,23 @@ class GetGroupResponseBody(DaraModel):
         topic_list: List[str] = None,
         update_time: int = None,
     ):
+        # The description of the consumer group.
         self.comment = comment
+        # The time when the consumer group was created.
         self.create_time = create_time
+        # The creator of the consumer group.
         self.creator = creator
+        # The consumer group name.
         self.group_name = group_name
+        # The project name.
         self.project_name = project_name
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
+        # The list of topics associated with the consumer group.
         self.topic_list = topic_list
+        # The time when the consumer group was last updated.
         self.update_time = update_time
 
     def validate(self):

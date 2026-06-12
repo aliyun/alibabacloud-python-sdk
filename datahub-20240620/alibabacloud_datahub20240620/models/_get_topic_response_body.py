@@ -23,20 +23,35 @@ class GetTopicResponseBody(DaraModel):
         topic_name: str = None,
         update_time: str = None,
     ):
+        # The topic description.
         self.comment = comment
+        # The creation time.
         self.create_time = create_time
+        # The topic creator.
         self.creator = creator
+        # Indicates whether multiple versions are supported.
         self.enable_schema_registry = enable_schema_registry
+        # Indicates whether the extended mode is enabled.
         self.expand_mode = expand_mode
+        # The lifecycle.
         self.lifecycle = lifecycle
+        # The project name.
         self.project_name = project_name
+        # The data schema for the TUPLE type.
         self.record_schema = record_schema
+        # The topic type.
         self.record_type = record_type
+        # The request ID.
         self.request_id = request_id
+        # The number of shards.
         self.shard_count = shard_count
+        # The total storage of the topic.
         self.storage = storage
+        # Indicates whether the request was successful.
         self.success = success
+        # The topic name.
         self.topic_name = topic_name
+        # The last update time.
         self.update_time = update_time
 
     def validate(self):
