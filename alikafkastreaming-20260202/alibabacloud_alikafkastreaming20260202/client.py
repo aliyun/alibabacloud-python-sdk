@@ -51,6 +51,10 @@ class Client(OpenApiClient):
             query['PaidType'] = request.paid_type
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -81,6 +85,10 @@ class Client(OpenApiClient):
             query['PaidType'] = request.paid_type
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )

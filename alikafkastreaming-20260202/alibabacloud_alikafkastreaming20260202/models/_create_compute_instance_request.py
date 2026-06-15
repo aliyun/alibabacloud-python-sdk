@@ -9,11 +9,15 @@ class CreateComputeInstanceRequest(DaraModel):
         self,
         paid_type: int = None,
         region_id: str = None,
+        resource_group_id: str = None,
+        resource_type: str = None,
     ):
         # This parameter is required.
         self.paid_type = paid_type
         # This parameter is required.
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.resource_type = resource_type
 
     def validate(self):
         pass
@@ -29,6 +33,12 @@ class CreateComputeInstanceRequest(DaraModel):
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+
         return result
 
     def from_map(self, m: dict = None):
@@ -38,6 +48,12 @@ class CreateComputeInstanceRequest(DaraModel):
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
 
         return self
 
