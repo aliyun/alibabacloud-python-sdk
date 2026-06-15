@@ -20,7 +20,7 @@ class CancelDataFlowSubTaskRequest(DaraModel):
         # 
         # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
         self.client_token = client_token
-        # The ID of the data flow.
+        # The ID of the dataflow.
         # 
         # This parameter is required.
         self.data_flow_id = data_flow_id
@@ -28,7 +28,7 @@ class CancelDataFlowSubTaskRequest(DaraModel):
         # 
         # This parameter is required.
         self.data_flow_sub_task_id = data_flow_sub_task_id
-        # The ID of the data flow task.
+        # The ID of the dataflow task.
         # 
         # This parameter is required.
         self.data_flow_task_id = data_flow_task_id

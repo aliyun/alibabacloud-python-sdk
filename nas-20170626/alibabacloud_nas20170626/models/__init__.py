@@ -374,6 +374,7 @@ from ._upgrade_file_system_response_body import UpgradeFileSystemResponseBody
 from ._upgrade_file_system_response import UpgradeFileSystemResponse
 from ._apply_data_flow_auto_refresh_request import ApplyDataFlowAutoRefreshRequestAutoRefreshs
 from ._attach_vsc_to_filesystems_request import AttachVscToFilesystemsRequestResourceIds
+from ._attach_vsc_to_filesystems_request import AttachVscToFilesystemsRequestRoleChain
 from ._create_access_point_request import CreateAccessPointRequestTag
 from ._create_access_point_response_body import CreateAccessPointResponseBodyAccessPoint
 from ._create_data_flow_request import CreateDataFlowRequestAutoRefreshs
@@ -449,6 +450,7 @@ from ._describe_filesets_response_body import DescribeFilesetsResponseBodyEntrie
 from ._describe_filesystems_associated_hpn_zones_request import DescribeFilesystemsAssociatedHpnZonesRequestFilesystems
 from ._describe_filesystems_associated_hpn_zones_response_body import DescribeFilesystemsAssociatedHpnZonesResponseBodyFilesystems
 from ._describe_filesystems_vsc_attach_info_request import DescribeFilesystemsVscAttachInfoRequestResourceIds
+from ._describe_filesystems_vsc_attach_info_request import DescribeFilesystemsVscAttachInfoRequestRoleChain
 from ._describe_filesystems_vsc_attach_info_response_body import DescribeFilesystemsVscAttachInfoResponseBodyVscAttachInfoVscAttachInfo
 from ._describe_filesystems_vsc_attach_info_response_body import DescribeFilesystemsVscAttachInfoResponseBodyVscAttachInfo
 from ._describe_lifecycle_policies_response_body import DescribeLifecyclePoliciesResponseBodyLifecyclePoliciesRetrieveRules
@@ -486,6 +488,7 @@ from ._describe_zones_response_body import DescribeZonesResponseBodyZonesZonePer
 from ._describe_zones_response_body import DescribeZonesResponseBodyZonesZone
 from ._describe_zones_response_body import DescribeZonesResponseBodyZones
 from ._detach_vsc_from_filesystems_request import DetachVscFromFilesystemsRequestResourceIds
+from ._detach_vsc_from_filesystems_request import DetachVscFromFilesystemsRequestRoleChain
 from ._get_directory_or_file_properties_response_body import GetDirectoryOrFilePropertiesResponseBodyEntry
 from ._get_fileset_response_body import GetFilesetResponseBodyDataQuota
 from ._get_fileset_response_body import GetFilesetResponseBodyData
@@ -877,6 +880,7 @@ __all__ = [
     UpgradeFileSystemResponse,
     ApplyDataFlowAutoRefreshRequestAutoRefreshs,
     AttachVscToFilesystemsRequestResourceIds,
+    AttachVscToFilesystemsRequestRoleChain,
     CreateAccessPointRequestTag,
     CreateAccessPointResponseBodyAccessPoint,
     CreateDataFlowRequestAutoRefreshs,
@@ -952,6 +956,7 @@ __all__ = [
     DescribeFilesystemsAssociatedHpnZonesRequestFilesystems,
     DescribeFilesystemsAssociatedHpnZonesResponseBodyFilesystems,
     DescribeFilesystemsVscAttachInfoRequestResourceIds,
+    DescribeFilesystemsVscAttachInfoRequestRoleChain,
     DescribeFilesystemsVscAttachInfoResponseBodyVscAttachInfoVscAttachInfo,
     DescribeFilesystemsVscAttachInfoResponseBodyVscAttachInfo,
     DescribeLifecyclePoliciesResponseBodyLifecyclePoliciesRetrieveRules,
@@ -989,6 +994,7 @@ __all__ = [
     DescribeZonesResponseBodyZonesZone,
     DescribeZonesResponseBodyZones,
     DetachVscFromFilesystemsRequestResourceIds,
+    DetachVscFromFilesystemsRequestRoleChain,
     GetDirectoryOrFilePropertiesResponseBodyEntry,
     GetFilesetResponseBodyDataQuota,
     GetFilesetResponseBodyData,

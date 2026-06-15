@@ -12,25 +12,27 @@ class DeleteFilesetRequest(DaraModel):
         file_system_id: str = None,
         fset_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.
+        # A client-generated token that you can use to ensure the idempotence of the request. The ClientToken must be unique across requests.
         # 
-        # The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure the idempotence?](https://help.aliyun.com/document_detail/25693.html)
+        # The ClientToken can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         # 
-        # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
+        # > If you do not specify this parameter, the system automatically uses the request ID as the ClientToken. The request ID is unique for each request.
         self.client_token = client_token
-        # Specifies whether to perform a dry run.
+        # Specifies whether to perform a dry run for the request.
         # 
-        # During the dry run, the system checks whether the request parameters are valid and whether the requested resources are available. During the dry run, no fileset is deleted.
+        # A dry run checks for issues such as parameter validity and resource availability, but does not delete the fileset.
         # 
         # Valid values:
         # 
-        # *   true: performs only a dry run. The system checks the required parameters, request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the HTTP status code 200 is returned.
-        # *   false (default): performs a dry run and sends the request. If the request passes the dry run, the fileset is deleted.
-        self.dry_run = dry_run
-        # The ID of the file system.
+        # - true: Sends a check request and does not delete the fileset. The system checks for required parameters, request format, and business limits. If the check fails, an error is returned. If the check passes, an HTTP 200 OK status code is returned.
         # 
-        # *   The IDs of CPFS file systems must start with `cpfs-`. Example: cpfs-099394bd928c\\*\\*\\*\\*.
-        # *   The IDs of CPFS for Lingjun file systems must start with `bmcpfs-`. Example: bmcpfs-290w65p03ok64ya\\*\\*\\*\\*.
+        # - false (Default): Sends a normal request and deletes the fileset after the check passes.
+        self.dry_run = dry_run
+        # The file system ID.
+        # 
+        # - CPFS: The ID must start with `cpfs-`, such as cpfs-099394bd928c\\*\\*\\*\\*.
+        # 
+        # - CPFS for AI and HPC: The ID must start with `bmcpfs-`, such as bmcpfs-290w65p03ok64ya\\*\\*\\*\\*.
         # 
         # This parameter is required.
         self.file_system_id = file_system_id

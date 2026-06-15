@@ -40,7 +40,7 @@ class CreateAccessGroupRequest(DaraModel):
         # 
         # Valid values:
         # 
-        # *   standard (default): General-purpose NAS file system.
+        # *   standard: General-purpose Apsara File Storage NAS (NAS) file system
         # *   extreme: Extreme NAS file system.
         self.file_system_type = file_system_type
 

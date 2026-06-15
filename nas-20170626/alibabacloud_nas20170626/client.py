@@ -335,6 +335,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.resource_ids):
             query['ResourceIds'] = request.resource_ids
+        if not DaraCore.is_null(request.role_chain):
+            query['RoleChain'] = request.role_chain
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -365,6 +367,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.resource_ids):
             query['ResourceIds'] = request.resource_ids
+        if not DaraCore.is_null(request.role_chain):
+            query['RoleChain'] = request.role_chain
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -5441,6 +5445,8 @@ class Client(OpenApiClient):
             query['NextToken'] = request.next_token
         if not DaraCore.is_null(request.resource_ids):
             query['ResourceIds'] = request.resource_ids
+        if not DaraCore.is_null(request.role_chain):
+            query['RoleChain'] = request.role_chain
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -5473,6 +5479,8 @@ class Client(OpenApiClient):
             query['NextToken'] = request.next_token
         if not DaraCore.is_null(request.resource_ids):
             query['ResourceIds'] = request.resource_ids
+        if not DaraCore.is_null(request.role_chain):
+            query['RoleChain'] = request.role_chain
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -6579,6 +6587,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.resource_ids):
             query['ResourceIds'] = request.resource_ids
+        if not DaraCore.is_null(request.role_chain):
+            query['RoleChain'] = request.role_chain
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -6609,6 +6619,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.resource_ids):
             query['ResourceIds'] = request.resource_ids
+        if not DaraCore.is_null(request.role_chain):
+            query['RoleChain'] = request.role_chain
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )

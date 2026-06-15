@@ -23,7 +23,7 @@ class CreateAccessRuleRequest(DaraModel):
         # 
         # Valid values:
         # 
-        # *   standard (default): General-purpose NAS file system.
+        # *   standard: General-purpose Apsara File Storage NAS (NAS) file system
         # *   extreme: Extreme NAS file system.
         self.file_system_type = file_system_type
         # The IPv6 address or CIDR block of the authorized object.
@@ -45,7 +45,7 @@ class CreateAccessRuleRequest(DaraModel):
         # Valid values:
         # 
         # *   RDWR (default): the read and write permissions.
-        # *   RDONLY: the read-only permissions.
+        # *   RDONLY: the read-only permission.
         self.rwaccess_type = rwaccess_type
         # The IP address or CIDR block of the authorized object.
         # 

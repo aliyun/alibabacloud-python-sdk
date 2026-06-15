@@ -10,16 +10,16 @@ class DescribeBlackListClientsResponseBody(DaraModel):
         clients: str = None,
         request_id: str = None,
     ):
-        # The IDs of clients and the status of each client. The parameter value is a JSON string, for example, `{"client1": "EVICTING","client2":"EVICTED"}`.
+        # The IDs of clients and the status of each client. This parameter contains a JSON object, for example, {"client1": "EVICTING","client2":"EVICTED"}.
         # 
         # Available client statuses include:
         # 
-        # *   EVICTING: The client is being evicted.
-        # *   EVICTED: The client is evicted.
-        # *   ACCEPTING: The write access to the file system is being granted to the client.
-        # *   ACCEPTABLE: The write access to the file system is granted to the client.
+        # *   EVICTING indicates that a client is being removed
+        # *   EVICTED indicates that a client is removed
+        # *   ACCEPTING indicates that the write access to the file system is being granted to a client
+        # *   ACCEPTABLE indicates that the write access to the file system is granted to a client
         self.clients = clients
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

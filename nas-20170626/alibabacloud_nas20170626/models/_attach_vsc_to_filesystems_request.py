@@ -12,6 +12,7 @@ class AttachVscToFilesystemsRequest(DaraModel):
         self,
         client_token: str = None,
         resource_ids: List[main_models.AttachVscToFilesystemsRequestResourceIds] = None,
+        role_chain: List[main_models.AttachVscToFilesystemsRequestRoleChain] = None,
     ):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.
         # 
@@ -23,10 +24,15 @@ class AttachVscToFilesystemsRequest(DaraModel):
         # 
         # This parameter is required.
         self.resource_ids = resource_ids
+        self.role_chain = role_chain
 
     def validate(self):
         if self.resource_ids:
             for v1 in self.resource_ids:
+                 if v1:
+                    v1.validate()
+        if self.role_chain:
+            for v1 in self.role_chain:
                  if v1:
                     v1.validate()
 
@@ -43,6 +49,11 @@ class AttachVscToFilesystemsRequest(DaraModel):
             for k1 in self.resource_ids:
                 result['ResourceIds'].append(k1.to_map() if k1 else None)
 
+        result['RoleChain'] = []
+        if self.role_chain is not None:
+            for k1 in self.role_chain:
+                result['RoleChain'].append(k1.to_map() if k1 else None)
+
         return result
 
     def from_map(self, m: dict = None):
@@ -55,6 +66,55 @@ class AttachVscToFilesystemsRequest(DaraModel):
             for k1 in m.get('ResourceIds'):
                 temp_model = main_models.AttachVscToFilesystemsRequestResourceIds()
                 self.resource_ids.append(temp_model.from_map(k1))
+
+        self.role_chain = []
+        if m.get('RoleChain') is not None:
+            for k1 in m.get('RoleChain'):
+                temp_model = main_models.AttachVscToFilesystemsRequestRoleChain()
+                self.role_chain.append(temp_model.from_map(k1))
+
+        return self
+
+class AttachVscToFilesystemsRequestRoleChain(DaraModel):
+    def __init__(
+        self,
+        assume_role_for: str = None,
+        role_arn: str = None,
+        role_type: str = None,
+    ):
+        self.assume_role_for = assume_role_for
+        self.role_arn = role_arn
+        self.role_type = role_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.assume_role_for is not None:
+            result['AssumeRoleFor'] = self.assume_role_for
+
+        if self.role_arn is not None:
+            result['RoleArn'] = self.role_arn
+
+        if self.role_type is not None:
+            result['RoleType'] = self.role_type
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AssumeRoleFor') is not None:
+            self.assume_role_for = m.get('AssumeRoleFor')
+
+        if m.get('RoleArn') is not None:
+            self.role_arn = m.get('RoleArn')
+
+        if m.get('RoleType') is not None:
+            self.role_type = m.get('RoleType')
 
         return self
 

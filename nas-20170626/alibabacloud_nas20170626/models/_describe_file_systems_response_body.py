@@ -19,7 +19,7 @@ class DescribeFileSystemsResponseBody(DaraModel):
         self.file_systems = file_systems
         # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of file systems returned per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id

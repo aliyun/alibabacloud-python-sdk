@@ -15,23 +15,25 @@ class DescribeMountTargetsRequest(DaraModel):
     ):
         # The dual-stack (IPv4 and IPv6) domain name of the mount target.
         # 
-        # > Only Extreme NAS file systems that reside in the Chinese mainland support IPv6.
+        # > Currently, only Extreme NAS file systems in Chinese mainland regions support IPv6.
         self.dual_stack_mount_target_domain = dual_stack_mount_target_domain
         # The ID of the file system.
         # 
-        # *   Sample ID of a General-purpose NAS file system: 31a8e4\\*\\*\\*\\*.
-        # *   The IDs of Extreme NAS file systems must start with `extreme-`, for example, extreme-0015\\*\\*\\*\\*.
-        # *   The IDs of CPFS file systems must start with `cpfs-`. Example: cpfs-125487\\*\\*\\*\\*.
+        # - general-purpose NAS: 31a8e4\\*\\*\\*\\*.
+        # 
+        # - Extreme NAS: The ID must start with `extreme-`. Example: extreme-0015\\*\\*\\*\\*.
+        # 
+        # - CPFS: The ID must start with `cpfs-`. Example: cpfs-125487\\*\\*\\*\\*.
         # 
         # This parameter is required.
         self.file_system_id = file_system_id
-        # The address of the mount target.
+        # The domain name of the mount target.
         self.mount_target_domain = mount_target_domain
-        # The page number.
+        # The page number to return.
         # 
-        # Pages start from page 1. Default value: 1.
+        # The value must be 1 or greater. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of mount targets to return per page.
         # 
         # Valid values: 1 to 100.
         # 

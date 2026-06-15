@@ -25,13 +25,13 @@ class CreateDataFlowSubTaskRequest(DaraModel):
         self.client_token = client_token
         # The check conditions. The check must be passed after the following conditions are specified.
         self.condition = condition
-        # The ID of the data flow.
+        # The ID of the dataflow.
         # 
         # This parameter is required.
         self.data_flow_id = data_flow_id
-        # The ID of the data flow task.
+        # The ID of the dataflow task.
         # 
-        # >  Only the IDs of data streaming tasks are supported.
+        # > Only the IDs of data streaming tasks are supported.
         # 
         # This parameter is required.
         self.data_flow_task_id = data_flow_task_id

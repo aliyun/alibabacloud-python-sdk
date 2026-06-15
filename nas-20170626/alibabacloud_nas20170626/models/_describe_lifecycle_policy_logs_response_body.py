@@ -17,11 +17,23 @@ class DescribeLifecyclePolicyLogsResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # The execution logs of the lifecycle policy.
         self.lifecycle_policy_logs = lifecycle_policy_logs
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # Specifies whether the request succeeded.
+        # 
+        # Valid values:
+        # 
+        # - `true`: The request succeeded.
+        # 
+        # - `false`: The request failed.
         self.success = success
+        # The total number of logs.
         self.total_count = total_count
 
     def validate(self):
@@ -93,12 +105,33 @@ class DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogs(DaraModel):
         summary: str = None,
         transit_rules: List[main_models.DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogsTransitRules] = None,
     ):
+        # The time when the task was created. The time is displayed in UTC and is in the `yyyy-MM-ddTHH:mm:ssZ` format.
         self.create_time = create_time
+        # The execution paths of the task.
         self.paths = paths
+        # The retrieval rules for file data.
         self.retrieve_rules = retrieve_rules
+        # The status of the task. Valid values:
+        # 
+        # - `PENDING`: The task is initializing.
+        # 
+        # - `RUNNING`: The task is running.
+        # 
+        # - `STOPPED`: The task is stopped.
+        # 
+        # - `FINISHED`: The task is complete.
+        # 
+        # - `FAILED`: The task failed.
         self.status = status
+        # The storage tier. Valid values:
+        # 
+        # - `InfrequentAccess`: Infrequent Access (default).
+        # 
+        # - `Archive`: Archive Storage.
         self.storage_type = storage_type
+        # The task summary.
         self.summary = summary
+        # The transition rules for file data.
         self.transit_rules = transit_rules
 
     def validate(self):
@@ -180,7 +213,17 @@ class DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogsTransitRules(Dar
         attribute: str = None,
         threshold: str = None,
     ):
+        # The attribute of the rule.
+        # 
+        # Valid value:
+        # 
+        # - `Atime`: The last access time of a file.
         self.attribute = attribute
+        # The rule threshold.
+        # 
+        # Valid values:
+        # 
+        # - If `Attribute` is set to `Atime`, this parameter specifies the number of days since a file was last accessed. The value must be an integer from 1 to 365.
         self.threshold = threshold
 
     def validate(self):
@@ -215,7 +258,17 @@ class DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogsRetrieveRules(Da
         attribute: str = None,
         threshold: str = None,
     ):
+        # The attribute of the rule. Valid value:
+        # 
+        # - `RetrieveType`: The retrieval method.
         self.attribute = attribute
+        # The threshold of the rule. Valid values:
+        # 
+        # - If `Attribute` is set to `RetrieveType`:
+        # 
+        #   - `AfterVisit`: Data is retrieved on a best-effort basis when accessed. This value is available only if `LifecyclePolicyType` is set to `Auto`.
+        # 
+        #   - `All`: All data is retrieved. This value is available only if `LifecyclePolicyType` is set to `OnDemand`.
         self.threshold = threshold
 
     def validate(self):

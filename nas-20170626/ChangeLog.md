@@ -1,3 +1,9 @@
+2026-06-15 Version: 3.4.2
+- Update API AttachVscToFilesystems: add request parameters RoleChain.
+- Update API DescribeFilesystemsVscAttachInfo: add request parameters RoleChain.
+- Update API DetachVscFromFilesystems: add request parameters RoleChain.
+
+
 2026-05-08 Version: 3.4.1
 - Update API DescribeFileSystems: add response parameters Body.FileSystems.$.Options.VscAccessPointAccessOnly.
 - Update API DescribeMountTargets: add response parameters Body.MountTargets.$.AccessPointAccessOnly.
