@@ -9,6 +9,7 @@ from ._approve_reply_mail_address_request import ApproveReplyMailAddressRequest
 from ._approve_reply_mail_address_response_body import ApproveReplyMailAddressResponseBody
 from ._approve_reply_mail_address_response import ApproveReplyMailAddressResponse
 from ._batch_send_mail_request import BatchSendMailRequest
+from ._batch_send_mail_shrink_request import BatchSendMailShrinkRequest
 from ._batch_send_mail_response_body import BatchSendMailResponseBody
 from ._batch_send_mail_response import BatchSendMailResponse
 from ._change_domain_dkim_record_request import ChangeDomainDkimRecordRequest
@@ -237,6 +238,8 @@ from ._update_user_response import UpdateUserResponse
 from ._validate_email_request import ValidateEmailRequest
 from ._validate_email_response_body import ValidateEmailResponseBody
 from ._validate_email_response import ValidateEmailResponse
+from ._batch_send_mail_request import BatchSendMailRequestReceivers
+from ._batch_send_mail_request import BatchSendMailRequestTemplateContent
 from ._config_set_detail_response_body import ConfigSetDetailResponseBodyDetailIpPool
 from ._config_set_detail_response_body import ConfigSetDetailResponseBodyDetail
 from ._config_set_list_response_body import ConfigSetListResponseBodyConfigSetsIpPool
@@ -296,6 +299,7 @@ __all__ = [
     ApproveReplyMailAddressResponseBody,
     ApproveReplyMailAddressResponse,
     BatchSendMailRequest,
+    BatchSendMailShrinkRequest,
     BatchSendMailResponseBody,
     BatchSendMailResponse,
     ChangeDomainDkimRecordRequest,
@@ -524,6 +528,8 @@ __all__ = [
     ValidateEmailRequest,
     ValidateEmailResponseBody,
     ValidateEmailResponse,
+    BatchSendMailRequestReceivers,
+    BatchSendMailRequestTemplateContent,
     ConfigSetDetailResponseBodyDetailIpPool,
     ConfigSetDetailResponseBodyDetail,
     ConfigSetListResponseBodyConfigSetsIpPool,

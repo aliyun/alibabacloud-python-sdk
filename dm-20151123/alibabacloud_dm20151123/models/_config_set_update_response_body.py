@@ -10,7 +10,9 @@ class ConfigSetUpdateResponseBody(DaraModel):
         id: str = None,
         request_id: str = None,
     ):
+        # Configuration set ID.
         self.id = id
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):

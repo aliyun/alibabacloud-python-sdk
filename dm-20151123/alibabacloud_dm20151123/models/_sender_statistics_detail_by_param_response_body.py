@@ -14,9 +14,9 @@ class SenderStatisticsDetailByParamResponseBody(DaraModel):
         request_id: str = None,
         data: main_models.SenderStatisticsDetailByParamResponseBodyData = None,
     ):
-        # Used for pagination. If there are more results, set this returned value to the NextStart in the next request.
+        # Used for paging. If more results are available, set the \\`NextStart\\` parameter in your next request to this return value.
         self.next_start = next_start
-        # Request ID
+        # The request ID.
         self.request_id = request_id
         self.data = data
 

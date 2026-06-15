@@ -371,10 +371,16 @@ class Client(OpenApiClient):
 
     def batch_send_mail_with_options(
         self,
-        request: main_models.BatchSendMailRequest,
+        tmp_req: main_models.BatchSendMailRequest,
         runtime: RuntimeOptions,
     ) -> main_models.BatchSendMailResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.BatchSendMailShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.receivers):
+            request.receivers_shrink = Utils.array_to_string_with_specified_style(tmp_req.receivers, 'Receivers', 'json')
+        if not DaraCore.is_null(tmp_req.template_content):
+            request.template_content_shrink = Utils.array_to_string_with_specified_style(tmp_req.template_content, 'TemplateContent', 'json')
         query = {}
         if not DaraCore.is_null(request.account_name):
             query['AccountName'] = request.account_name
@@ -408,8 +414,14 @@ class Client(OpenApiClient):
             query['UnSubscribeFilterLevel'] = request.un_subscribe_filter_level
         if not DaraCore.is_null(request.un_subscribe_link_type):
             query['UnSubscribeLinkType'] = request.un_subscribe_link_type
+        body = {}
+        if not DaraCore.is_null(request.receivers_shrink):
+            body['Receivers'] = request.receivers_shrink
+        if not DaraCore.is_null(request.template_content_shrink):
+            body['TemplateContent'] = request.template_content_shrink
         req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
             action = 'BatchSendMail',
@@ -429,10 +441,16 @@ class Client(OpenApiClient):
 
     async def batch_send_mail_with_options_async(
         self,
-        request: main_models.BatchSendMailRequest,
+        tmp_req: main_models.BatchSendMailRequest,
         runtime: RuntimeOptions,
     ) -> main_models.BatchSendMailResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.BatchSendMailShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.receivers):
+            request.receivers_shrink = Utils.array_to_string_with_specified_style(tmp_req.receivers, 'Receivers', 'json')
+        if not DaraCore.is_null(tmp_req.template_content):
+            request.template_content_shrink = Utils.array_to_string_with_specified_style(tmp_req.template_content, 'TemplateContent', 'json')
         query = {}
         if not DaraCore.is_null(request.account_name):
             query['AccountName'] = request.account_name
@@ -466,8 +484,14 @@ class Client(OpenApiClient):
             query['UnSubscribeFilterLevel'] = request.un_subscribe_filter_level
         if not DaraCore.is_null(request.un_subscribe_link_type):
             query['UnSubscribeLinkType'] = request.un_subscribe_link_type
+        body = {}
+        if not DaraCore.is_null(request.receivers_shrink):
+            body['Receivers'] = request.receivers_shrink
+        if not DaraCore.is_null(request.template_content_shrink):
+            body['TemplateContent'] = request.template_content_shrink
         req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
             action = 'BatchSendMail',

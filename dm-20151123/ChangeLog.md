@@ -1,3 +1,8 @@
+2026-06-15 Version: 1.10.1
+- Update API BatchSendMail: add request parameters Receivers.
+- Update API BatchSendMail: add request parameters TemplateContent.
+
+
 2026-05-18 Version: 1.10.0
 - Support API CreateTemplate.
 

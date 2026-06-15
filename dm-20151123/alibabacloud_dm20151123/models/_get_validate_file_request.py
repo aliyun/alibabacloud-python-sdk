@@ -9,6 +9,7 @@ class GetValidateFileRequest(DaraModel):
         self,
         file_id: str = None,
     ):
+        # The file ID returned after the task is submitted.
         self.file_id = file_id
 
     def validate(self):

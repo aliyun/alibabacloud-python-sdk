@@ -27,46 +27,47 @@ class DescAccountSummaryResponseBody(DaraModel):
         templates: int = None,
         user_status: int = None,
     ):
-        # Daily quota
+        # The daily quota.
         self.daily_quota = daily_quota
-        # remaining amount of daily free quota
+        # The remaining daily free quota.
         self.daily_remain_free_quota = daily_remain_free_quota
-        # Dayu status (deprecated, retained for compatibility reasons.)
+        # The status of Dayu. This parameter is deprecated and retained for compatibility.
         self.dayu_status = dayu_status
-        # Number of domains
+        # The number of domain names.
         self.domains = domains
-        # Effective time
+        # The effective period.
         self.enable_times = enable_times
+        # The type of the outbound IP channel.
+        # 
+        # 1. backup: A backup IP channel that is not actively maintained. Customers using this channel are advised to purchase a dedicated IP for better stability.
+        # 
+        # 2. normal: A normal IP channel that is continuously maintained by the email delivery team to ensure stable and reliable service.
         self.ip_channel_type = ip_channel_type
-        # Number of sending addresses
+        # The number of sender addresses.
         self.mail_addresses = mail_addresses
-        # Maximum level
+        # The maximum reputation level.
         self.max_quota_level = max_quota_level
-        # Monthly quota
+        # The monthly quota.
         self.month_quota = month_quota
-        # Credit level
+        # The reputation level.
         self.quota_level = quota_level
-        # Number of recipients
+        # The number of recipients.
         self.receivers = receivers
-        # Remaining amount of total free quota
+        # The remaining free quota.
         self.remain_free_quota = remain_free_quota
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Deprecated, retained for compatibility reasons.
+        # This parameter is deprecated. It is retained for compatibility.
         self.sms_record = sms_record
-        # Deprecated, retained for compatibility reasons.
+        # This parameter is deprecated. It is retained for compatibility.
         self.sms_sign = sms_sign
-        # Deprecated, retained for compatibility reasons.
+        # This parameter is deprecated. It is retained for compatibility.
         self.sms_templates = sms_templates
-        # Number of tags
+        # The number of tags.
         self.tags = tags
-        # Number of templates
+        # The number of templates.
         self.templates = templates
-        # User status:
-        # 1 Frozen
-        # 2 In arrears
-        # 4 Restricted from sending
-        # 8 Logically deleted
+        # The status of the user. Valid values: 0: Normal. 1: Freeze. 2: Overdue payment. 4: Outbound messages are restricted. 8: The user is logically deleted.
         self.user_status = user_status
 
     def validate(self):

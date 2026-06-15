@@ -14,10 +14,11 @@ class SenderStatisticsByTagNameAndBatchIDResponseBody(DaraModel):
         total_count: int = None,
         data: main_models.SenderStatisticsByTagNameAndBatchIDResponseBodyData = None,
     ):
-        # Request ID
+        # The ID of the request.
         self.request_id = request_id
-        # Total count
+        # The total count of data records.
         self.total_count = total_count
+        # Contains the statistical data.
         self.data = data
 
     def validate(self):

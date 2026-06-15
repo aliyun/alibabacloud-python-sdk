@@ -12,9 +12,12 @@ class ConfigSetCreateRequest(DaraModel):
         is_public_channel_backoff: bool = None,
         name: str = None,
     ):
+        # A description of the configuration set (up to 50 characters).
         self.description = description
+        # The ID of an IP pool to associate with the configuration set. This parameter is optional.
         self.ip_pool_id = ip_pool_id
         self.is_public_channel_backoff = is_public_channel_backoff
+        # The name of the configuration set. The name must be unique and can contain up to 50 characters. This parameter is required.
         self.name = name
 
     def validate(self):

@@ -10,11 +10,11 @@ class DedicatedIpAutoRenewalRequest(DaraModel):
         auto_renewal: str = None,
         buy_resource_ids: str = None,
     ):
-        # Whether to enable auto-renewal
+        # Specifies whether to enable auto-renewal.
         # 
         # This parameter is required.
         self.auto_renewal = auto_renewal
-        # Purchase instance ID, separated by English commas if multiple.
+        # The IDs of the purchased instances. Separate multiple IDs with commas.
         # 
         # This parameter is required.
         self.buy_resource_ids = buy_resource_ids

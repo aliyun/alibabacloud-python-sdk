@@ -15,21 +15,26 @@ class QueryReceiverByParamRequest(DaraModel):
         resource_owner_id: int = None,
         status: int = None,
     ):
-        # Keyword, defaults to all information if not specified
+        # The keyword to search for recipient lists. If omitted, all recipient lists are returned.
         self.key_word = key_word
         self.owner_id = owner_id
-        # Current page number
+        # This deprecated field is kept for backward compatibility. You can omit this parameter.
+        # 
+        # The page number.
         self.page_no = page_no
-        # Number of items per page, default: 10
+        # The page size. Default value: 100.
+        # 
+        # Omitting this parameter returns all results. However, because the PageNo parameter is deprecated, the effect of PageSize on pagination is limited.
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # Delivery result. If not filled, it represents all statuses. Values:
+        # This deprecated field is kept for backward compatibility. You can omit this parameter.
         # 
-        # - 0: Success
-        # - 2: Invalid address
-        # - 3: Spam
-        # - 4: Failure
+        # The list status. Valid values:
+        # 
+        # - 0: uploading
+        # 
+        # - 1: upload complete
         self.status = status
 
     def validate(self):

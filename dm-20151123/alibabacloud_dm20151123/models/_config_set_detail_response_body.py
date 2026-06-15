@@ -11,7 +11,9 @@ class ConfigSetDetailResponseBody(DaraModel):
         detail: main_models.ConfigSetDetailResponseBodyDetail = None,
         request_id: str = None,
     ):
+        # The details of the configuration set.
         self.detail = detail
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -51,10 +53,14 @@ class ConfigSetDetailResponseBodyDetail(DaraModel):
         is_public_channel_backoff: bool = None,
         name: str = None,
     ):
+        # A description of the configuration set.
         self.description = description
+        # The ID of the configuration set.
         self.id = id
+        # The associated IP pool.
         self.ip_pool = ip_pool
         self.is_public_channel_backoff = is_public_channel_backoff
+        # The name of the configuration set.
         self.name = name
 
     def validate(self):
@@ -103,15 +109,15 @@ class ConfigSetDetailResponseBodyDetail(DaraModel):
 
         return self
 
-
-
 class ConfigSetDetailResponseBodyDetailIpPool(DaraModel):
     def __init__(
         self,
         ip_pool_id: str = None,
         ip_pool_name: str = None,
     ):
+        # The ID of the associated IP pool.
         self.ip_pool_id = ip_pool_id
+        # The name of the associated IP pool.
         self.ip_pool_name = ip_pool_name
 
     def validate(self):

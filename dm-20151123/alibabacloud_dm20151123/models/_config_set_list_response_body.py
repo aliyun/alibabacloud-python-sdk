@@ -17,11 +17,17 @@ class ConfigSetListResponseBody(DaraModel):
         request_id: str = None,
         total_counts: int = None,
     ):
+        # The list of ConfigSets.
         self.config_sets = config_sets
+        # The current page number.
         self.current_page = current_page
+        # Indicates whether more results are available.
         self.has_more = has_more
+        # The page size.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of matching entries.
         self.total_counts = total_counts
 
     def validate(self):
@@ -92,11 +98,16 @@ class ConfigSetListResponseBodyConfigSets(DaraModel):
         is_public_channel_backoff: bool = None,
         name: str = None,
     ):
+        # The description.
         self.description = description
+        # The list of from addresses associated with the ConfigSet.
         self.from_addresses = from_addresses
+        # The ConfigSet ID.
         self.id = id
+        # The IP pool associated with the ConfigSet.
         self.ip_pool = ip_pool
         self.is_public_channel_backoff = is_public_channel_backoff
+        # The ConfigSet name.
         self.name = name
 
     def validate(self):
@@ -157,7 +168,9 @@ class ConfigSetListResponseBodyConfigSetsIpPool(DaraModel):
         ip_pool_id: str = None,
         ip_pool_name: str = None,
     ):
+        # The associated IP pool ID.
         self.ip_pool_id = ip_pool_id
+        # The associated IP pool name.
         self.ip_pool_name = ip_pool_name
 
     def validate(self):

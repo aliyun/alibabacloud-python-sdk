@@ -2,12 +2,9 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List, Dict
-
-from alibabacloud_dm20151123 import models as main_models
 from darabonba.model import DaraModel
 
-class BatchSendMailRequest(DaraModel):
+class BatchSendMailShrinkRequest(DaraModel):
     def __init__(
         self,
         account_name: str = None,
@@ -17,14 +14,14 @@ class BatchSendMailRequest(DaraModel):
         headers: str = None,
         ip_pool_id: str = None,
         owner_id: int = None,
-        receivers: List[main_models.BatchSendMailRequestReceivers] = None,
+        receivers_shrink: str = None,
         receivers_name: str = None,
         reply_address: str = None,
         reply_address_alias: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         tag_name: str = None,
-        template_content: main_models.BatchSendMailRequestTemplateContent = None,
+        template_content_shrink: str = None,
         template_name: str = None,
         un_subscribe_filter_level: str = None,
         un_subscribe_link_type: str = None,
@@ -91,7 +88,7 @@ class BatchSendMailRequest(DaraModel):
         # The recipient list. The number of recipients must not exceed 100. Use this parameter or ReceiversName. If both Receivers and ReceiversName are specified, ReceiversName takes precedence.
         # 
         # Example: [{"To":["Jackie@example.com"],"TemplateData":{"UserName":"Jackie"}},{"To":["Tom@example.com"],"TemplateData":{"UserName":"Tom"}}].
-        self.receivers = receivers
+        self.receivers_shrink = receivers_shrink
         # The name of a pre-created recipient list that has recipients uploaded.
         # 
         # > **Note**
@@ -109,7 +106,7 @@ class BatchSendMailRequest(DaraModel):
         # The name of the email tag.
         self.tag_name = tag_name
         # The custom email content. Directly specify the content without creating a template in advance. Use this parameter or TemplateName. If both TemplateContent and TemplateName are specified, TemplateName takes precedence.
-        self.template_content = template_content
+        self.template_content_shrink = template_content_shrink
         # The name of a pre-created and approved template.
         self.template_name = template_name
         # The filtering level. For more information, see [Unsubscribe link generation and filtering mechanism](https://help.aliyun.com/document_detail/2689048.html).
@@ -127,12 +124,7 @@ class BatchSendMailRequest(DaraModel):
         self.un_subscribe_link_type = un_subscribe_link_type
 
     def validate(self):
-        if self.receivers:
-            for v1 in self.receivers:
-                 if v1:
-                    v1.validate()
-        if self.template_content:
-            self.template_content.validate()
+        pass
 
     def to_map(self):
         result = dict()
@@ -160,10 +152,8 @@ class BatchSendMailRequest(DaraModel):
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
 
-        result['Receivers'] = []
-        if self.receivers is not None:
-            for k1 in self.receivers:
-                result['Receivers'].append(k1.to_map() if k1 else None)
+        if self.receivers_shrink is not None:
+            result['Receivers'] = self.receivers_shrink
 
         if self.receivers_name is not None:
             result['ReceiversName'] = self.receivers_name
@@ -183,8 +173,8 @@ class BatchSendMailRequest(DaraModel):
         if self.tag_name is not None:
             result['TagName'] = self.tag_name
 
-        if self.template_content is not None:
-            result['TemplateContent'] = self.template_content.to_map()
+        if self.template_content_shrink is not None:
+            result['TemplateContent'] = self.template_content_shrink
 
         if self.template_name is not None:
             result['TemplateName'] = self.template_name
@@ -220,11 +210,8 @@ class BatchSendMailRequest(DaraModel):
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
 
-        self.receivers = []
         if m.get('Receivers') is not None:
-            for k1 in m.get('Receivers'):
-                temp_model = main_models.BatchSendMailRequestReceivers()
-                self.receivers.append(temp_model.from_map(k1))
+            self.receivers_shrink = m.get('Receivers')
 
         if m.get('ReceiversName') is not None:
             self.receivers_name = m.get('ReceiversName')
@@ -245,8 +232,7 @@ class BatchSendMailRequest(DaraModel):
             self.tag_name = m.get('TagName')
 
         if m.get('TemplateContent') is not None:
-            temp_model = main_models.BatchSendMailRequestTemplateContent()
-            self.template_content = temp_model.from_map(m.get('TemplateContent'))
+            self.template_content_shrink = m.get('TemplateContent')
 
         if m.get('TemplateName') is not None:
             self.template_name = m.get('TemplateName')
@@ -256,108 +242,6 @@ class BatchSendMailRequest(DaraModel):
 
         if m.get('UnSubscribeLinkType') is not None:
             self.un_subscribe_link_type = m.get('UnSubscribeLinkType')
-
-        return self
-
-class BatchSendMailRequestTemplateContent(DaraModel):
-    def __init__(
-        self,
-        alias: str = None,
-        html_body: str = None,
-        subject: str = None,
-        text_body: str = None,
-    ):
-        # The display name of the sender.
-        self.alias = alias
-        # The HTML body of the email.
-        # 
-        # > **Note:** HtmlBody and TextBody are for different types of email content. You must specify at least one of them.
-        # 
-        # The new SDK uses Body for parameter passing with a limit of approximately 8 MB (Java 1.4.0 and later, Python3 1.4.0 and later, PHP 1.4.0 and later).
-        self.html_body = html_body
-        # The email subject.
-        self.subject = subject
-        # The plain text body of the email.
-        # 
-        # > **Note:** HtmlBody and TextBody are for different types of email content. You must specify at least one of them.
-        # 
-        # The new SDK uses Body for parameter passing with a limit of approximately 8 MB (Java 1.4.0 and later, Python3 1.4.0 and later, PHP 1.4.0 and later).
-        self.text_body = text_body
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        _map = super().to_map()
-        if _map is not None:
-            result = _map
-        if self.alias is not None:
-            result['Alias'] = self.alias
-
-        if self.html_body is not None:
-            result['HtmlBody'] = self.html_body
-
-        if self.subject is not None:
-            result['Subject'] = self.subject
-
-        if self.text_body is not None:
-            result['TextBody'] = self.text_body
-
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Alias') is not None:
-            self.alias = m.get('Alias')
-
-        if m.get('HtmlBody') is not None:
-            self.html_body = m.get('HtmlBody')
-
-        if m.get('Subject') is not None:
-            self.subject = m.get('Subject')
-
-        if m.get('TextBody') is not None:
-            self.text_body = m.get('TextBody')
-
-        return self
-
-
-
-class BatchSendMailRequestReceivers(DaraModel):
-    def __init__(
-        self,
-        template_data: Dict[str, str] = None,
-        to: List[str] = None,
-    ):
-        # The email template parameters. This is a JSON map data type.
-        self.template_data = template_data
-        # The recipient list. This is an array type.
-        self.to = to
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        _map = super().to_map()
-        if _map is not None:
-            result = _map
-        if self.template_data is not None:
-            result['TemplateData'] = self.template_data
-
-        if self.to is not None:
-            result['To'] = self.to
-
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('TemplateData') is not None:
-            self.template_data = m.get('TemplateData')
-
-        if m.get('To') is not None:
-            self.to = m.get('To')
 
         return self
 

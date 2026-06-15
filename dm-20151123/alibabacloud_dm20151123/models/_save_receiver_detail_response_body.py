@@ -16,11 +16,11 @@ class SaveReceiverDetailResponseBody(DaraModel):
         success_count: int = None,
     ):
         self.data = data
-        # Number of errors.
+        # The number of errors.
         self.error_count = error_count
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Number of successes.
+        # The number of successful records.
         self.success_count = success_count
 
     def validate(self):

@@ -9,7 +9,7 @@ class DedicatedIpChangeWarmupTypeResponseBody(DaraModel):
         self,
         request_id: str = None,
     ):
-        # Request ID
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

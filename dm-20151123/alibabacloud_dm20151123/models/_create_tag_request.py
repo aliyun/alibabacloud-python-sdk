@@ -16,9 +16,9 @@ class CreateTagRequest(DaraModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # Tag description
+        # The description of the tag.
         self.tag_description = tag_description
-        # Tag name. Limitations: 1-50 characters, allowing English letters, numbers, and underscores.
+        # The tag name. The name must be 1 to 128 characters long and can contain letters, digits, and underscores (_).
         # 
         # This parameter is required.
         self.tag_name = tag_name
