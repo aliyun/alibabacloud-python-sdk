@@ -10,7 +10,9 @@ class CheckDeviceResponseBody(DaraModel):
         available: bool = None,
         request_id: str = None,
     ):
+        # Indicates whether the device is active.
         self.available = available
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

@@ -12,12 +12,22 @@ class UnbindTagRequest(DaraModel):
         key_type: str = None,
         tag_name: str = None,
     ):
+        # The AppKey of your application.
+        # 
         # This parameter is required.
         self.app_key = app_key
+        # The ID of the device.
+        # 
         # This parameter is required.
         self.client_key = client_key
+        # The type of the ClientKey. Valid value:
+        # 
+        # - **DEVICE**: The key is a device ID.
+        # 
         # This parameter is required.
         self.key_type = key_type
+        # Specifies the tag to unbind. To unbind multiple tags, separate them with commas. A maximum of 10 tags, each up to 128 characters long, can be unbound per request. The system supports a total of 10,000 tags.
+        # 
         # This parameter is required.
         self.tag_name = tag_name
 

@@ -10,8 +10,14 @@ class QueryPushStatByMsgRequest(DaraModel):
         app_key: int = None,
         message_id: int = None,
     ):
+        # The AppKey.
+        # 
         # This parameter is required.
         self.app_key = app_key
+        # The ID of the pushed message. This ID is returned after a message is pushed.
+        # 
+        # > Push data is available the next day. You cannot query data for the current day.
+        # 
         # This parameter is required.
         self.message_id = message_id
 

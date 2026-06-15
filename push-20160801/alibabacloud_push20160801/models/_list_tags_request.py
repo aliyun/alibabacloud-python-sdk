@@ -9,6 +9,8 @@ class ListTagsRequest(DaraModel):
         self,
         app_key: int = None,
     ):
+        # AppKey information.
+        # 
         # This parameter is required.
         self.app_key = app_key
 

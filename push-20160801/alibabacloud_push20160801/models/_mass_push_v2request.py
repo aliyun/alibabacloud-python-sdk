@@ -14,9 +14,18 @@ class MassPushV2Request(DaraModel):
         idempotent_token: str = None,
         push_tasks: List[main_models.PushTask] = None,
     ):
+        # AppKey value.
+        # 
         # This parameter is required.
         self.app_key = app_key
+        # An idempotency token to prevent duplicate pushes caused by API retries. If you call this API with the same IdempotentToken within 15 minutes, only one push is sent. Subsequent calls return the result of the first successful push.
+        # 
+        # > - The token must be a standard 36-character UUID in 8-4-4-4-12 format. Valid characters are hexadecimal digits 0–9 and a–f. Case does not matter.
+        # >
+        # > - This parameter prevents duplicates only from retries. It does not prevent duplicates from concurrent calls.
         self.idempotent_token = idempotent_token
+        # Batch push tasks.
+        # 
         # This parameter is required.
         self.push_tasks = push_tasks
 

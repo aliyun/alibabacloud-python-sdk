@@ -10,8 +10,12 @@ class QueryDevicesByAccountRequest(DaraModel):
         account: str = None,
         app_key: int = None,
     ):
+        # Account name. You can query only one account at a time.
+        # 
         # This parameter is required.
         self.account = account
+        # AppKey information.
+        # 
         # This parameter is required.
         self.app_key = app_key
 

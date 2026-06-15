@@ -14,6 +14,7 @@ class QueryPushStatByMsgResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.push_stats = push_stats
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

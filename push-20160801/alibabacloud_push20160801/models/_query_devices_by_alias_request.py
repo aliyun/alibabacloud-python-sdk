@@ -10,8 +10,12 @@ class QueryDevicesByAliasRequest(DaraModel):
         alias: str = None,
         app_key: int = None,
     ):
+        # The alias. You can query only one alias at a time.
+        # 
         # This parameter is required.
         self.alias = alias
+        # AppKey information.
+        # 
         # This parameter is required.
         self.app_key = app_key
 

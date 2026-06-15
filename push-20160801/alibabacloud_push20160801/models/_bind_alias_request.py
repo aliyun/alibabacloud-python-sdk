@@ -11,10 +11,18 @@ class BindAliasRequest(DaraModel):
         app_key: int = None,
         device_id: str = None,
     ):
+        # The alias to attach.
+        # 
+        # You can attach up to 10 aliases in one request. Separate multiple aliases with commas. Each alias can be up to 128 bytes long. Chinese characters count as three bytes each. A device can have up to 128 aliases attached. An alias can be attached to up to 128 devices.
+        # 
         # This parameter is required.
         self.alias_name = alias_name
+        # Your AppKey.
+        # 
         # This parameter is required.
         self.app_key = app_key
+        # The unique identifier of the device in Mobile Push. It is 32 characters long and contains only numbers and lowercase letters.
+        # 
         # This parameter is required.
         self.device_id = device_id
 

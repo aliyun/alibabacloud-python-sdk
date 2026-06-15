@@ -10,8 +10,12 @@ class CancelPushRequest(DaraModel):
         app_key: int = None,
         message_id: int = None,
     ):
+        # Your AppKey.
+        # 
         # This parameter is required.
         self.app_key = app_key
+        # The message ID of the push task to cancel.
+        # 
         # This parameter is required.
         self.message_id = message_id
 

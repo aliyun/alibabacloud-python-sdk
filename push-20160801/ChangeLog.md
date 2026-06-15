@@ -1,3 +1,10 @@
+2026-06-15 Version: 2.1.6
+- Update API MassPush: add request parameters PushTask.$.AndroidXiaomiTemplateId.
+- Update API MassPush: add request parameters PushTask.$.AndroidXiaomiTemplateParams.
+- Update API Push: add request parameters AndroidXiaomiTemplateId.
+- Update API Push: add request parameters AndroidXiaomiTemplateParams.
+
+
 2026-06-09 Version: 2.1.5
 - Update API MassPush: add request parameters PushTask.$.AndroidXiaomiFocusParam.
 - Update API MassPush: add request parameters PushTask.$.AndroidXiaomiFocusPics.

@@ -12,12 +12,36 @@ class ContinuouslyPushRequest(DaraModel):
         target: str = None,
         target_value: str = None,
     ):
+        # AppKey information.
+        # 
         # This parameter is required.
         self.app_key = app_key
+        # Message ID.
+        # 
+        # Obtain this MessageId by calling the Push API with Target set to TBD. It represents a message already saved in the push system.
+        # 
         # This parameter is required.
         self.message_id = message_id
+        # Push target:
+        # 
+        # - **DEVICE**: Push by device
+        # 
+        # - **ACCOUNT**: Push by account
+        # 
+        # - **ALIAS**: Push by alias
+        # 
+        # Continuous push supports only these three target types.
+        # 
         # This parameter is required.
         self.target = target
+        # Specify values based on Target. Separate multiple values with commas. If you exceed the limit, split the push into multiple calls.
+        # 
+        # - Target=DEVICE: values such as `deviceid1,deviceid2` (up to 1,000 supported).
+        # 
+        # - Target=ACCOUNT: values such as `account1,account2` (up to 1,000 supported).
+        # 
+        # - Target=ALIAS: values such as `alias1,alias2` (up to 1,000 supported).
+        # 
         # This parameter is required.
         self.target_value = target_value
 

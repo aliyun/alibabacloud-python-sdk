@@ -12,11 +12,21 @@ class UnbindAliasRequest(DaraModel):
         device_id: str = None,
         unbind_all: bool = None,
     ):
+        # The alias to detach.
+        # 
+        # An alias supports up to 128 bytes (one Chinese character counts as 3 bytes). This field is required when UnbindAll is false. You can detach up to 10 aliases at once. Separate multiple aliases with commas.
         self.alias_name = alias_name
+        # The AppKey.
+        # 
         # This parameter is required.
         self.app_key = app_key
+        # The unique device identifier for push notifications. It is 32 characters long and consists of digits and lowercase letters.
+        # 
         # This parameter is required.
         self.device_id = device_id
+        # Whether to detach all aliases. Default is false.
+        # 
+        # If true, detaches all aliases currently bound to the device. If false, detaches only the aliases specified in AliasName.
         self.unbind_all = unbind_all
 
     def validate(self):

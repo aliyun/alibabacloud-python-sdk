@@ -1197,6 +1197,10 @@ class Client(OpenApiClient):
             query['AndroidXiaomiFocusPics'] = request.android_xiaomi_focus_pics
         if not DaraCore.is_null(request.android_xiaomi_image_url):
             query['AndroidXiaomiImageUrl'] = request.android_xiaomi_image_url
+        if not DaraCore.is_null(request.android_xiaomi_template_id):
+            query['AndroidXiaomiTemplateId'] = request.android_xiaomi_template_id
+        if not DaraCore.is_null(request.android_xiaomi_template_params):
+            query['AndroidXiaomiTemplateParams'] = request.android_xiaomi_template_params
         if not DaraCore.is_null(request.app_key):
             query['AppKey'] = request.app_key
         if not DaraCore.is_null(request.body):
@@ -1467,6 +1471,10 @@ class Client(OpenApiClient):
             query['AndroidXiaomiFocusPics'] = request.android_xiaomi_focus_pics
         if not DaraCore.is_null(request.android_xiaomi_image_url):
             query['AndroidXiaomiImageUrl'] = request.android_xiaomi_image_url
+        if not DaraCore.is_null(request.android_xiaomi_template_id):
+            query['AndroidXiaomiTemplateId'] = request.android_xiaomi_template_id
+        if not DaraCore.is_null(request.android_xiaomi_template_params):
+            query['AndroidXiaomiTemplateParams'] = request.android_xiaomi_template_params
         if not DaraCore.is_null(request.app_key):
             query['AppKey'] = request.app_key
         if not DaraCore.is_null(request.body):

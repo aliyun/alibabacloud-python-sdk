@@ -16,18 +16,61 @@ class PushNoticeToiOSRequest(DaraModel):
         target_value: str = None,
         title: str = None,
     ):
+        # iOS notifications use Apple’s APNs service. Specify the environment.
+        # 
+        # - DEV: Development environment.
+        # 
+        # - PRODUCT: Production environment.
+        # 
         # This parameter is required.
         self.apns_env = apns_env
+        # Your AppKey.
+        # 
         # This parameter is required.
         self.app_key = app_key
+        # The body text of the notification.
+        # 
         # This parameter is required.
         self.body = body
+        # A custom key-value map for developer extensions.
+        # 
+        # > For iOS devices, pass this parameter as a JSON object. Otherwise, parsing fails.
         self.ext_parameters = ext_parameters
+        # A custom ID for the push task. If you specify a JobKey, the delivery log includes this field. For more information, see [Delivery logs](https://help.aliyun.com/document_detail/434651.html).
         self.job_key = job_key
+        # The target of the push. Valid values:
+        # 
+        # - **DEVICE**: Push to specific devices.
+        # 
+        # - **ACCOUNT**: Push to specific accounts.
+        # 
+        # - **ALIAS**: Push to users with specific aliases.
+        # 
+        # - **TAG**: Push to users with specific tags.
+        # 
+        # - **ALL**: Push to all devices.
+        # 
         # This parameter is required.
         self.target = target
+        # Values depend on the Target value. Separate multiple values with commas. If you exceed the limit, send multiple requests.
+        # 
+        # - If Target=DEVICE, use values such as `deviceid111,deviceid1111`. Maximum: 1000.
+        # 
+        # - If Target=ACCOUNT, use values such as `account111,account222`. Maximum: 1000.
+        # 
+        # - If Target=ALIAS, use values such as `alias111,alias222`. Maximum: 1000.
+        # 
+        # - If Target=TAG, support single or multiple tags. For format details, see [Tag format](https://help.aliyun.com/document_detail/434847.html).
+        # 
+        # - If Target=ALL, set this to **ALL**.
+        # 
         # This parameter is required.
         self.target_value = target_value
+        # The title of the notification.
+        # 
+        # - iOS 10 and later: Displays as the notification title.
+        # 
+        # - iOS 8.2 through iOS 9.x: Replaces the app name in the notification.
         self.title = title
 
     def validate(self):

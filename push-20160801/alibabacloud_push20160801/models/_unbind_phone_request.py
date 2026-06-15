@@ -10,8 +10,12 @@ class UnbindPhoneRequest(DaraModel):
         app_key: int = None,
         device_id: str = None,
     ):
+        # AppKey information.
+        # 
         # This parameter is required.
         self.app_key = app_key
+        # The unique identity of the device. It is 32 characters long and consists of digits and lowercase letters.
+        # 
         # This parameter is required.
         self.device_id = device_id
 

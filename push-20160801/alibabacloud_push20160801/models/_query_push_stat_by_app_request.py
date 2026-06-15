@@ -12,12 +12,22 @@ class QueryPushStatByAppRequest(DaraModel):
         granularity: str = None,
         start_time: str = None,
     ):
+        # The AppKey value.
+        # 
         # This parameter is required.
         self.app_key = app_key
+        # The end time of the query. Specify the time in ISO 8601 format, YYYY-MM-DDThh:mm:ssZ.
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # The data granularity of the response. You can only query data for up to 31 days at daily granularity. Valid values:
+        # 
+        # - **DAY**: Query data at daily granularity.
+        # 
         # This parameter is required.
         self.granularity = granularity
+        # The start time of the query. Specify the time in ISO 8601 format, YYYY-MM-DDThh:mm:ssZ.
+        # 
         # This parameter is required.
         self.start_time = start_time
 

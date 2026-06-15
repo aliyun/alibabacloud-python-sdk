@@ -13,6 +13,7 @@ class ListSummaryAppsResponseBody(DaraModel):
         request_id: str = None,
         summary_app_infos: main_models.ListSummaryAppsResponseBodySummaryAppInfos = None,
     ):
+        # Request ID.
         self.request_id = request_id
         self.summary_app_infos = summary_app_infos
 

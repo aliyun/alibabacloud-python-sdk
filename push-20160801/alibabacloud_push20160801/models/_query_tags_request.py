@@ -11,10 +11,16 @@ class QueryTagsRequest(DaraModel):
         client_key: str = None,
         key_type: str = None,
     ):
+        # The AppKey value.
+        # 
         # This parameter is required.
         self.app_key = app_key
+        # The device, account, or alias. Query one ClientKey at a time.
+        # 
         # This parameter is required.
         self.client_key = client_key
+        # The type of the ClientKey.
+        # 
         # This parameter is required.
         self.key_type = key_type
 
