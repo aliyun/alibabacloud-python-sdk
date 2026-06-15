@@ -2437,6 +2437,86 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_aicenter_state_with_options_async(workspace_id, request, headers, runtime)
 
+    def get_cache_cluster_with_options(
+        self,
+        cache_cluster_id: str,
+        request: main_models.GetCacheClusterRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetCacheClusterResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetCacheCluster',
+            version = '2023-08-08',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/cache/{DaraURL.percent_encode(cache_cluster_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetCacheClusterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_cache_cluster_with_options_async(
+        self,
+        cache_cluster_id: str,
+        request: main_models.GetCacheClusterRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetCacheClusterResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetCacheCluster',
+            version = '2023-08-08',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/cache/{DaraURL.percent_encode(cache_cluster_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetCacheClusterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_cache_cluster(
+        self,
+        cache_cluster_id: str,
+        request: main_models.GetCacheClusterRequest,
+    ) -> main_models.GetCacheClusterResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_cache_cluster_with_options(cache_cluster_id, request, headers, runtime)
+
+    async def get_cache_cluster_async(
+        self,
+        cache_cluster_id: str,
+        request: main_models.GetCacheClusterRequest,
+    ) -> main_models.GetCacheClusterResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_cache_cluster_with_options_async(cache_cluster_id, request, headers, runtime)
+
     def get_cu_hours_with_options(
         self,
         workspace_id: str,
@@ -5715,6 +5795,86 @@ class Client(OpenApiClient):
         headers = {}
         return await self.refresh_livy_compute_token_with_options_async(workspace_biz_id, livy_compute_id, token_id, request, headers, runtime)
 
+    def start_cache_cluster_with_options(
+        self,
+        cache_cluster_id: str,
+        request: main_models.StartCacheClusterRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.StartCacheClusterResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'StartCacheCluster',
+            version = '2023-08-08',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/cache/{DaraURL.percent_encode(cache_cluster_id)}/start',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.StartCacheClusterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def start_cache_cluster_with_options_async(
+        self,
+        cache_cluster_id: str,
+        request: main_models.StartCacheClusterRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.StartCacheClusterResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'StartCacheCluster',
+            version = '2023-08-08',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/cache/{DaraURL.percent_encode(cache_cluster_id)}/start',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.StartCacheClusterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def start_cache_cluster(
+        self,
+        cache_cluster_id: str,
+        request: main_models.StartCacheClusterRequest,
+    ) -> main_models.StartCacheClusterResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.start_cache_cluster_with_options(cache_cluster_id, request, headers, runtime)
+
+    async def start_cache_cluster_async(
+        self,
+        cache_cluster_id: str,
+        request: main_models.StartCacheClusterRequest,
+    ) -> main_models.StartCacheClusterResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.start_cache_cluster_with_options_async(cache_cluster_id, request, headers, runtime)
+
     def start_job_run_with_options(
         self,
         workspace_id: str,
@@ -6296,6 +6456,86 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.start_session_cluster_with_options_async(workspace_id, request, headers, runtime)
+
+    def stop_cache_cluster_with_options(
+        self,
+        cache_cluster_id: str,
+        request: main_models.StopCacheClusterRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.StopCacheClusterResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'StopCacheCluster',
+            version = '2023-08-08',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/cache/{DaraURL.percent_encode(cache_cluster_id)}/stop',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.StopCacheClusterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def stop_cache_cluster_with_options_async(
+        self,
+        cache_cluster_id: str,
+        request: main_models.StopCacheClusterRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.StopCacheClusterResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'StopCacheCluster',
+            version = '2023-08-08',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/cache/{DaraURL.percent_encode(cache_cluster_id)}/stop',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.StopCacheClusterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def stop_cache_cluster(
+        self,
+        cache_cluster_id: str,
+        request: main_models.StopCacheClusterRequest,
+    ) -> main_models.StopCacheClusterResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.stop_cache_cluster_with_options(cache_cluster_id, request, headers, runtime)
+
+    async def stop_cache_cluster_async(
+        self,
+        cache_cluster_id: str,
+        request: main_models.StopCacheClusterRequest,
+    ) -> main_models.StopCacheClusterResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.stop_cache_cluster_with_options_async(cache_cluster_id, request, headers, runtime)
 
     def stop_kyuubi_service_with_options(
         self,

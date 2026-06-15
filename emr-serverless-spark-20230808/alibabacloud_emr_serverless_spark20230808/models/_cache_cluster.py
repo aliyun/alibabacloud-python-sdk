@@ -19,6 +19,7 @@ class CacheCluster(DaraModel):
         configurations: List[main_models.CacheClusterConfigurations] = None,
         create_time: str = None,
         creator: str = None,
+        extra: str = None,
         gmt_created: int = None,
         gmt_modified: int = None,
         modifier: str = None,
@@ -33,40 +34,27 @@ class CacheCluster(DaraModel):
         used_resource_spec: main_models.CacheClusterUsedResourceSpec = None,
         version: str = None,
     ):
-        # An array of workspace IDs that are bound to the cache cluster.
         self.binded_workspaces = binded_workspaces
         self.cache_cluster_id = cache_cluster_id
         self.cache_cluster_name = cache_cluster_name
         self.cachesets = cachesets
-        # The unique identifier of the cache cluster.
         self.cluster_id = cluster_id
-        # The configuration of the cache cluster.
         self.configuration = configuration
-        # An array of configuration objects.
         self.configurations = configurations
         self.create_time = create_time
-        # The user who created the cache cluster.
         self.creator = creator
-        # The creation time of the cache cluster, provided as a UNIX timestamp.
+        self.extra = extra
         self.gmt_created = gmt_created
-        # The last modification time of the cache cluster, provided as a UNIX timestamp.
         self.gmt_modified = gmt_modified
-        # The user who last modified the cache cluster.
         self.modifier = modifier
-        # The name of the cache cluster.
         self.name = name
-        # The billing method for the cache cluster.
         self.payment_type = payment_type
-        # The ID of the region where the cache cluster is located.
         self.region_id = region_id
         self.resource_group_id = resource_group_id
-        # The resource specifications of the cache cluster.
         self.resource_spec = resource_spec
-        # The current state of the cache cluster.
         self.state = state
         self.tables = tables
         self.tags = tags
-        # The resource specifications currently in use by the cache cluster.
         self.used_resource_spec = used_resource_spec
         self.version = version
 
@@ -127,6 +115,9 @@ class CacheCluster(DaraModel):
 
         if self.creator is not None:
             result['creator'] = self.creator
+
+        if self.extra is not None:
+            result['extra'] = self.extra
 
         if self.gmt_created is not None:
             result['gmtCreated'] = self.gmt_created
@@ -208,6 +199,9 @@ class CacheCluster(DaraModel):
         if m.get('creator') is not None:
             self.creator = m.get('creator')
 
+        if m.get('extra') is not None:
+            self.extra = m.get('extra')
+
         if m.get('gmtCreated') is not None:
             self.gmt_created = m.get('gmtCreated')
 
@@ -263,9 +257,7 @@ class CacheClusterUsedResourceSpec(DaraModel):
         band_width: int = None,
         storage: int = None,
     ):
-        # The amount of bandwidth consumed by the cache cluster.
         self.band_width = band_width
-        # The amount of storage capacity consumed by the cache cluster.
         self.storage = storage
 
     def validate(self):
@@ -395,10 +387,8 @@ class CacheClusterResourceSpec(DaraModel):
         ha: bool = None,
         storage: int = None,
     ):
-        # The bandwidth of the cache cluster.
         self.band_width = band_width
         self.ha = ha
-        # The storage capacity of the cache cluster.
         self.storage = storage
 
     def validate(self):
@@ -439,9 +429,7 @@ class CacheClusterConfigurations(DaraModel):
         content: str = None,
         name: str = None,
     ):
-        # The content of the configuration file.
         self.content = content
-        # The name of the configuration file.
         self.name = name
 
     def validate(self):

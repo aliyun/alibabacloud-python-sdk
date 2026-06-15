@@ -92,6 +92,9 @@ from ._generate_task_codes_response import GenerateTaskCodesResponse
 from ._get_aicenter_state_request import GetAICenterStateRequest
 from ._get_aicenter_state_response_body import GetAICenterStateResponseBody
 from ._get_aicenter_state_response import GetAICenterStateResponse
+from ._get_cache_cluster_request import GetCacheClusterRequest
+from ._get_cache_cluster_response_body import GetCacheClusterResponseBody
+from ._get_cache_cluster_response import GetCacheClusterResponse
 from ._get_cu_hours_request import GetCuHoursRequest
 from ._get_cu_hours_response_body import GetCuHoursResponseBody
 from ._get_cu_hours_response import GetCuHoursResponse
@@ -201,6 +204,9 @@ from ._list_workspaces_response import ListWorkspacesResponse
 from ._refresh_livy_compute_token_request import RefreshLivyComputeTokenRequest
 from ._refresh_livy_compute_token_response_body import RefreshLivyComputeTokenResponseBody
 from ._refresh_livy_compute_token_response import RefreshLivyComputeTokenResponse
+from ._start_cache_cluster_request import StartCacheClusterRequest
+from ._start_cache_cluster_response_body import StartCacheClusterResponseBody
+from ._start_cache_cluster_response import StartCacheClusterResponse
 from ._start_job_run_request import StartJobRunRequest
 from ._start_job_run_response_body import StartJobRunResponseBody
 from ._start_job_run_response import StartJobRunResponse
@@ -218,6 +224,9 @@ from ._start_ray_cluster_response import StartRayClusterResponse
 from ._start_session_cluster_request import StartSessionClusterRequest
 from ._start_session_cluster_response_body import StartSessionClusterResponseBody
 from ._start_session_cluster_response import StartSessionClusterResponse
+from ._stop_cache_cluster_request import StopCacheClusterRequest
+from ._stop_cache_cluster_response_body import StopCacheClusterResponseBody
+from ._stop_cache_cluster_response import StopCacheClusterResponse
 from ._stop_kyuubi_service_response_body import StopKyuubiServiceResponseBody
 from ._stop_kyuubi_service_response import StopKyuubiServiceResponse
 from ._stop_livy_compute_request import StopLivyComputeRequest
@@ -485,6 +494,9 @@ __all__ = [
     GetAICenterStateRequest,
     GetAICenterStateResponseBody,
     GetAICenterStateResponse,
+    GetCacheClusterRequest,
+    GetCacheClusterResponseBody,
+    GetCacheClusterResponse,
     GetCuHoursRequest,
     GetCuHoursResponseBody,
     GetCuHoursResponse,
@@ -594,6 +606,9 @@ __all__ = [
     RefreshLivyComputeTokenRequest,
     RefreshLivyComputeTokenResponseBody,
     RefreshLivyComputeTokenResponse,
+    StartCacheClusterRequest,
+    StartCacheClusterResponseBody,
+    StartCacheClusterResponse,
     StartJobRunRequest,
     StartJobRunResponseBody,
     StartJobRunResponse,
@@ -611,6 +626,9 @@ __all__ = [
     StartSessionClusterRequest,
     StartSessionClusterResponseBody,
     StartSessionClusterResponse,
+    StopCacheClusterRequest,
+    StopCacheClusterResponseBody,
+    StopCacheClusterResponse,
     StopKyuubiServiceResponseBody,
     StopKyuubiServiceResponse,
     StopLivyComputeRequest,
