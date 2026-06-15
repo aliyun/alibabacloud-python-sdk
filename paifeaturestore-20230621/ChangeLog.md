@@ -1,3 +1,9 @@
+2026-06-15 Version: 6.1.3
+- Update API CreateModelFeature: add request parameters body.Features.$.PrefixName.
+- Update API GetModelFeature: add response parameters Body.Features.$.PrefixName.
+- Update API UpdateModelFeature: add request parameters body.Features.$.PrefixName.
+
+
 2026-06-08 Version: 6.1.2
 - Update API CreateLabelTable: add request parameters body.Fields.$.AlignedEntityName.
 - Update API ExportModelFeatureTrainingSetTable: add request parameters body.FeatureViewConfig.JoinWithLabel.

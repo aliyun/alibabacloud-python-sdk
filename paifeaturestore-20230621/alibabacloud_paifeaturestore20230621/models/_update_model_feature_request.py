@@ -15,8 +15,10 @@ class UpdateModelFeatureRequest(DaraModel):
         label_table_id: str = None,
         sequence_feature_view_ids: List[str] = None,
     ):
+        # The list of features.
         self.features = features
         self.label_priority_level = label_priority_level
+        # The label table ID. You can call the ListLabelTables operation to query the label table ID.
         self.label_table_id = label_table_id
         self.sequence_feature_view_ids = sequence_feature_view_ids
 
@@ -72,13 +74,30 @@ class UpdateModelFeatureRequestFeatures(DaraModel):
         alias_name: str = None,
         feature_view_id: str = None,
         name: str = None,
+        prefix_name: str = None,
         type: str = None,
     ):
+        # The feature alias.
         self.alias_name = alias_name
+        # The feature view ID. You can call the ListFeatureViews operation to query the feature view ID.
+        # 
         # This parameter is required.
         self.feature_view_id = feature_view_id
+        # The feature name.
+        # 
         # This parameter is required.
         self.name = name
+        self.prefix_name = prefix_name
+        # The feature type. Valid values:
+        # 
+        # - INT32
+        # - INT64
+        # - FLOAT
+        # - DOUBLE
+        # - STRING
+        # - BOOLEAN
+        # - TIMESTAMP.
+        # 
         # This parameter is required.
         self.type = type
 
@@ -99,6 +118,9 @@ class UpdateModelFeatureRequestFeatures(DaraModel):
         if self.name is not None:
             result['Name'] = self.name
 
+        if self.prefix_name is not None:
+            result['PrefixName'] = self.prefix_name
+
         if self.type is not None:
             result['Type'] = self.type
 
@@ -114,6 +136,9 @@ class UpdateModelFeatureRequestFeatures(DaraModel):
 
         if m.get('Name') is not None:
             self.name = m.get('Name')
+
+        if m.get('PrefixName') is not None:
+            self.prefix_name = m.get('PrefixName')
 
         if m.get('Type') is not None:
             self.type = m.get('Type')

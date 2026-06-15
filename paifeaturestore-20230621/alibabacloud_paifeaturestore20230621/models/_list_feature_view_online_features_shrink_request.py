@@ -11,6 +11,8 @@ class ListFeatureViewOnlineFeaturesShrinkRequest(DaraModel):
         join_ids_shrink: str = None,
     ):
         self.config = config
+        # The join IDs used to retrieve online features.
+        # 
         # This parameter is required.
         self.join_ids_shrink = join_ids_shrink
 

@@ -19,14 +19,27 @@ class ListFeatureEntitiesRequest(DaraModel):
         project_id: str = None,
         sort_by: str = None,
     ):
+        # Filters the results by a list of feature entity IDs.
         self.feature_entity_ids = feature_entity_ids
+        # Filters the results by feature entity name.
         self.name = name
+        # The sort order. Valid values:
+        # 
+        # - `Asc`: Ascending order.
+        # 
+        # - `Desc`: Descending order.
         self.order = order
+        # The Alibaba Cloud account ID of the creator.
         self.owner = owner
+        # The page number. Values start at 1. Default value: 1.
         self.page_number = page_number
+        # The number of entries to return on each page. Default value: 10.
         self.page_size = page_size
+        # Filters the results by parent feature entity ID. Omit this parameter to return all feature entities. Set it to `0` to return all root feature entities. Set it to a non-zero value to return all child feature entities of the specified parent.
         self.parent_feature_entity_id = parent_feature_entity_id
+        # The project ID. You can obtain this ID by calling the `ListProjects` operation.
         self.project_id = project_id
+        # The field to sort the results by.
         self.sort_by = sort_by
 
     def validate(self):

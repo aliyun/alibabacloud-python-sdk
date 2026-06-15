@@ -10,7 +10,9 @@ class GetModelFeatureFGInfoResponseBody(DaraModel):
         content: str = None,
         request_id: str = None,
     ):
+        # The content of the fg.json configuration file.
         self.content = content
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

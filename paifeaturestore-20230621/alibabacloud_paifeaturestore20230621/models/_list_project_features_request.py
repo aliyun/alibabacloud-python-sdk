@@ -15,12 +15,19 @@ class ListProjectFeaturesRequest(DaraModel):
         page_size: int = None,
         sort_by: str = None,
     ):
+        # The feature alias. Fuzzy search is supported.
         self.alias_name = alias_name
+        # Additional filter conditions in a JSON object. Conditions are combined by using the AND operator.
         self.filter = filter
+        # The feature name. Fuzzy search is supported.
         self.name = name
+        # Specifies the sort order. Valid values: `Asc` and `Desc`.
         self.order = order
+        # The page number. Starts from 1.
         self.page_number = page_number
+        # The number of features to return per page.
         self.page_size = page_size
+        # The field used to sort the returned features.
         self.sort_by = sort_by
 
     def validate(self):

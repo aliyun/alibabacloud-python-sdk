@@ -16,13 +16,33 @@ class ListTasksShrinkRequest(DaraModel):
         task_ids_shrink: str = None,
         type: str = None,
     ):
+        # The ID of the object. You can call the ListModelFeatures or ListFeatureViews operation to obtain the ID.
         self.object_id = object_id
+        # The type of the object.
+        # 
+        # ● `ModelFeature`: a model feature.
+        # 
+        # ● `FeatureView`: a feature view.
         self.object_type = object_type
+        # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
+        # The ID of the project. You can call the ListProjects operation to obtain the ID.
         self.project_id = project_id
+        # The task status.
+        # 
+        # ● `Initializing`: The task is being initialized.
+        # 
+        # ● `Running`: The task is running.
+        # 
+        # ● `Success`: The task is successful.
+        # 
+        # ● `Failure`: The task fails.
         self.status = status
+        # The task IDs by which to filter tasks.
         self.task_ids_shrink = task_ids_shrink
+        # The task type by which to filter tasks.
         self.type = type
 
     def validate(self):

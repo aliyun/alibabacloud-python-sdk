@@ -14,9 +14,17 @@ class WriteFeatureViewTableRequest(DaraModel):
         partitions: Dict[str, dict] = None,
         url_datasource: main_models.WriteFeatureViewTableRequestUrlDatasource = None,
     ):
+        # The write mode.
+        # 
+        # - Overwrite: Overwrites existing data.
+        # 
+        # - Merge: Merges the new data with existing data.
+        # 
         # This parameter is required.
         self.mode = mode
+        # The partitions to write to.
         self.partitions = partitions
+        # The file data source.
         self.url_datasource = url_datasource
 
     def validate(self):
@@ -60,8 +68,11 @@ class WriteFeatureViewTableRequestUrlDatasource(DaraModel):
         omit_header: bool = None,
         path: str = None,
     ):
+        # The file delimiter.
         self.delimiter = delimiter
+        # Specifies whether to omit the header from the source file.
         self.omit_header = omit_header
+        # The data source path.
         self.path = path
 
     def validate(self):

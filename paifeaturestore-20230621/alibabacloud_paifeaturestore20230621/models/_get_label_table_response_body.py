@@ -22,16 +22,27 @@ class GetLabelTableResponseBody(DaraModel):
         related_model_features: List[str] = None,
         request_id: str = None,
     ):
+        # The data source ID.
         self.datasource_id = datasource_id
+        # The data source name.
         self.datasource_name = datasource_name
+        # The fields in the label table.
         self.fields = fields
+        # The time when the label table was created.
         self.gmt_create_time = gmt_create_time
+        # The time when the label table was last modified.
         self.gmt_modified_time = gmt_modified_time
+        # The label table name.
         self.name = name
+        # The Alibaba Cloud account ID of the creator.
         self.owner = owner
+        # The project ID.
         self.project_id = project_id
+        # The project name.
         self.project_name = project_name
+        # A list of related model feature names.
         self.related_model_features = related_model_features
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -131,8 +142,11 @@ class GetLabelTableResponseBodyFields(DaraModel):
         type: str = None,
     ):
         self.aligned_entity_name = aligned_entity_name
+        # A list of field attributes.
         self.attributes = attributes
+        # The field name.
         self.name = name
+        # The field type.
         self.type = type
 
     def validate(self):

@@ -14,8 +14,11 @@ class ListModelFeaturesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of model features.
         self.model_features = model_features
+        # The request ID.
         self.request_id = request_id
+        # The total number of model features.
         self.total_count = total_count
 
     def validate(self):
@@ -70,13 +73,21 @@ class ListModelFeaturesResponseBodyModelFeatures(DaraModel):
         project_id: str = None,
         project_name: str = None,
     ):
+        # The time the model feature was created.
         self.gmt_create_time = gmt_create_time
+        # The time the model feature was last updated.
         self.gmt_modified_time = gmt_modified_time
+        # The label table name.
         self.label_table_name = label_table_name
+        # The model feature ID.
         self.model_feature_id = model_feature_id
+        # The model feature name.
         self.name = name
+        # The Alibaba Cloud account ID of the owner.
         self.owner = owner
+        # The project ID.
         self.project_id = project_id
+        # The project name.
         self.project_name = project_name
 
     def validate(self):

@@ -36,30 +36,63 @@ class GetFeatureViewResponseBody(DaraModel):
         write_method: str = None,
         write_to_feature_db: bool = None,
     ):
+        # The configuration.
         self.config = config
+        # The feature entity ID.
         self.feature_entity_id = feature_entity_id
+        # The feature entity name.
         self.feature_entity_name = feature_entity_name
+        # The list of fields.
         self.fields = fields
+        # The creation time.
         self.gmt_create_time = gmt_create_time
+        # The modification time.
         self.gmt_modified_time = gmt_modified_time
+        # The synchronization time.
         self.gmt_sync_time = gmt_sync_time
+        # The join ID of the feature entity.
         self.join_id = join_id
+        # The most recent synchronization configuration.
         self.last_sync_config = last_sync_config
+        # The name of the mock data table for the stream feature view.
         self.mock_table_name = mock_table_name
+        # The feature view name.
         self.name = name
+        # The Alibaba Cloud account ID of the owner.
         self.owner = owner
+        # The project ID.
         self.project_id = project_id
+        # The project name.
         self.project_name = project_name
+        # The script for data synchronization.
         self.publish_table_script = publish_table_script
+        # The ID of the data source where the registered table resides.
         self.register_datasource_id = register_datasource_id
+        # The name of the data source where the registered table resides.
         self.register_datasource_name = register_datasource_name
+        # The name of the registered table.
         self.register_table = register_table
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether to synchronize the online feature table.
         self.sync_online_table = sync_online_table
+        # The time to live (TTL).
         self.ttl = ttl
+        # The list of tags.
         self.tags = tags
+        # The type of the feature view. Valid values:
+        # 
+        # ● `Batch`: A batch feature.
+        # 
+        # ● `Stream`: A stream feature.
         self.type = type
+        # The write method. Valid values:
+        # 
+        # ● `ByReadyMadeTable`: Registers the feature view by using an existing table.
+        # 
+        # ● `Custom`: Uses a custom table structure.
         self.write_method = write_method
+        # Indicates whether to write data to the online managed storage.
         self.write_to_feature_db = write_to_feature_db
 
     def validate(self):
@@ -242,9 +275,25 @@ class GetFeatureViewResponseBodyFields(DaraModel):
         transform: List[main_models.GetFeatureViewResponseBodyFieldsTransform] = None,
         type: str = None,
     ):
+        # The list of field attributes. Valid values:
+        # 
+        # ● `Partition`: The partition field.
+        # 
+        # ● `PrimaryKey`: The primary key.
+        # 
+        # ● `EventTime`: The event time.
         self.attributes = attributes
+        # The field name.
         self.name = name
+        # The feature transformation.
         self.transform = transform
+        # The data type of the field. Valid values:
+        # 
+        # ● `int`
+        # 
+        # ● `string`
+        # 
+        # ● `float`
         self.type = type
 
     def validate(self):
@@ -300,8 +349,11 @@ class GetFeatureViewResponseBodyFieldsTransform(DaraModel):
         llmconfig_id: int = None,
         type: str = None,
     ):
+        # The input for the feature transformation.
         self.input = input
+        # The LLM configuration ID.
         self.llmconfig_id = llmconfig_id
+        # The feature transformation type.
         self.type = type
 
     def validate(self):
@@ -351,8 +403,11 @@ class GetFeatureViewResponseBodyFieldsTransformInput(DaraModel):
         name: str = None,
         type: str = None,
     ):
+        # The modality type.
         self.modality = modality
+        # The feature name.
         self.name = name
+        # The feature type.
         self.type = type
 
     def validate(self):

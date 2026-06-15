@@ -26,20 +26,35 @@ class GetModelFeatureResponseBody(DaraModel):
         training_set_fgtable: str = None,
         training_set_table: str = None,
     ):
+        # The script for exporting the training sample table.
         self.export_training_set_table_script = export_training_set_table_script
+        # The feature list.
         self.features = features
+        # The creation time.
         self.gmt_create_time = gmt_create_time
+        # The update time.
         self.gmt_modified_time = gmt_modified_time
+        # The priority level of the label table. Default value: 0. Set to 1 to prioritize the label table. Set to 2 to prioritize the feature view.
         self.label_priority_level = label_priority_level
+        # The label table ID.
         self.label_table_id = label_table_id
+        # The label table name.
         self.label_table_name = label_table_name
+        # The model feature name.
         self.name = name
+        # The Alibaba Cloud account ID of the creator.
         self.owner = owner
+        # The project ID.
         self.project_id = project_id
+        # The project name.
         self.project_name = project_name
+        # The feature relationships.
         self.relations = relations
+        # The request ID.
         self.request_id = request_id
+        # The name of the exported training set FG table.
         self.training_set_fgtable = training_set_fgtable
+        # The name of the exported training set table.
         self.training_set_table = training_set_table
 
     def validate(self):
@@ -163,7 +178,9 @@ class GetModelFeatureResponseBodyRelations(DaraModel):
         domains: List[main_models.GetModelFeatureResponseBodyRelationsDomains] = None,
         links: List[main_models.GetModelFeatureResponseBodyRelationsLinks] = None,
     ):
+        # The domain list.
         self.domains = domains
+        # The feature relationship link list.
         self.links = links
 
     def validate(self):
@@ -216,8 +233,11 @@ class GetModelFeatureResponseBodyRelationsLinks(DaraModel):
         link: str = None,
         to: str = None,
     ):
+        # The source ID of the link.
         self.from_ = from_
+        # The dependency field of the link.
         self.link = link
+        # The destination ID of the link.
         self.to = to
 
     def validate(self):
@@ -259,9 +279,15 @@ class GetModelFeatureResponseBodyRelationsDomains(DaraModel):
         id: str = None,
         name: str = None,
     ):
+        # The domain type. Valid values:
+        # 
+        # - FeatureEntity: feature entity.
+        # - FeatureView: feature view.
+        # - ModelFeature: model feature.
         self.domain_type = domain_type
         # Domain ID。
         self.id = id
+        # The domain name.
         self.name = name
 
     def validate(self):
@@ -303,12 +329,27 @@ class GetModelFeatureResponseBodyFeatures(DaraModel):
         feature_view_id: str = None,
         feature_view_name: str = None,
         name: str = None,
+        prefix_name: str = None,
         type: str = None,
     ):
+        # The feature alias.
         self.alias_name = alias_name
+        # The feature view ID.
         self.feature_view_id = feature_view_id
+        # The feature view name.
         self.feature_view_name = feature_view_name
+        # The feature name.
         self.name = name
+        self.prefix_name = prefix_name
+        # The feature type. Valid values:
+        # 
+        # - INT32
+        # - INT64
+        # - FLOAT
+        # - DOUBLE
+        # - STRING
+        # - BOOLEAN
+        # - TIMESTAMP.
         self.type = type
 
     def validate(self):
@@ -331,6 +372,9 @@ class GetModelFeatureResponseBodyFeatures(DaraModel):
         if self.name is not None:
             result['Name'] = self.name
 
+        if self.prefix_name is not None:
+            result['PrefixName'] = self.prefix_name
+
         if self.type is not None:
             result['Type'] = self.type
 
@@ -349,6 +393,9 @@ class GetModelFeatureResponseBodyFeatures(DaraModel):
 
         if m.get('Name') is not None:
             self.name = m.get('Name')
+
+        if m.get('PrefixName') is not None:
+            self.prefix_name = m.get('PrefixName')
 
         if m.get('Type') is not None:
             self.type = m.get('Type')

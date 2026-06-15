@@ -15,9 +15,13 @@ class UpdateModelFeatureFGFeatureRequest(DaraModel):
         reserves: List[str] = None,
         sequence_features: List[main_models.UpdateModelFeatureFGFeatureRequestSequenceFeatures] = None,
     ):
+        # Lookup feature information.
         self.lookup_features = lookup_features
+        # Basic feature information.
         self.raw_features = raw_features
+        # Reserved fields.
         self.reserves = reserves
+        # Sequence feature information.
         self.sequence_features = sequence_features
 
     def validate(self):
@@ -93,14 +97,23 @@ class UpdateModelFeatureFGFeatureRequestSequenceFeatures(DaraModel):
         sequence_length: int = None,
         sub_features: List[main_models.UpdateModelFeatureFGFeatureRequestSequenceFeaturesSubFeatures] = None,
     ):
+        # Feature attribute delimiter.
+        # 
         # This parameter is required.
         self.attribute_delim = attribute_delim
+        # Sequence feature name.
+        # 
         # This parameter is required.
         self.feature_name = feature_name
+        # Sequence feature delimiter.
+        # 
         # This parameter is required.
         self.sequence_delim = sequence_delim
+        # Maximum length of the sequence feature.
+        # 
         # This parameter is required.
         self.sequence_length = sequence_length
+        # List of subfeatures for the sequence feature.
         self.sub_features = sub_features
 
     def validate(self):
@@ -165,16 +178,44 @@ class UpdateModelFeatureFGFeatureRequestSequenceFeaturesSubFeatures(DaraModel):
         input_feature_name: str = None,
         value_type: str = None,
     ):
+        # Default value.
+        # 
         # This parameter is required.
         self.default_value = default_value
+        # Input feature domain.
+        # 
+        # - User
+        # 
+        # - Item
+        # 
+        # - Context
+        # 
         # This parameter is required.
         self.feature_domain = feature_domain
+        # Generated subfeature name.
+        # 
         # This parameter is required.
         self.feature_name = feature_name
+        # FG sequence subfeature type.
+        # 
+        # - IdFeature
+        # 
+        # - RawFeature
+        # 
         # This parameter is required.
         self.feature_type = feature_type
+        # Original feature name.
+        # 
         # This parameter is required.
         self.input_feature_name = input_feature_name
+        # Feature value type.
+        # 
+        # - INTEGER
+        # 
+        # - DOUBLE
+        # 
+        # - STRING
+        # 
         # This parameter is required.
         self.value_type = value_type
 
@@ -238,16 +279,44 @@ class UpdateModelFeatureFGFeatureRequestRawFeatures(DaraModel):
         input_feature_name: str = None,
         value_type: str = None,
     ):
+        # Default value.
+        # 
         # This parameter is required.
         self.default_value = default_value
+        # Input feature domain.
+        # 
+        # - User
+        # 
+        # - Item
+        # 
+        # - Context
+        # 
         # This parameter is required.
         self.feature_domain = feature_domain
+        # Generated feature name.
+        # 
         # This parameter is required.
         self.feature_name = feature_name
+        # FG basic feature type.
+        # 
+        # - IdFeature
+        # 
+        # - RawFeature
+        # 
         # This parameter is required.
         self.feature_type = feature_type
+        # The original name of the feature.
+        # 
         # This parameter is required.
         self.input_feature_name = input_feature_name
+        # Feature value type.
+        # 
+        # - INTEGER
+        # 
+        # - DOUBLE
+        # 
+        # - STRING
+        # 
         # This parameter is required.
         self.value_type = value_type
 
@@ -312,18 +381,50 @@ class UpdateModelFeatureFGFeatureRequestLookupFeatures(DaraModel):
         map_feature_name: str = None,
         value_type: str = None,
     ):
+        # Default value.
+        # 
         # This parameter is required.
         self.default_value = default_value
+        # Generated feature name.
+        # 
         # This parameter is required.
         self.feature_name = feature_name
+        # Key feature domain.
+        # 
+        # - User
+        # 
+        # - Item
+        # 
+        # - Context
+        # 
         # This parameter is required.
         self.key_feature_domain = key_feature_domain
+        # The name of the key feature.
+        # 
         # This parameter is required.
         self.key_feature_name = key_feature_name
+        # Map feature domain.
+        # 
+        # - User
+        # 
+        # - Item
+        # 
+        # - Context
+        # 
         # This parameter is required.
         self.map_feature_domain = map_feature_domain
+        # Map feature name.
+        # 
         # This parameter is required.
         self.map_feature_name = map_feature_name
+        # Feature value type.
+        # 
+        # - INTEGER
+        # 
+        # - DOUBLE
+        # 
+        # - STRING
+        # 
         # This parameter is required.
         self.value_type = value_type
 

@@ -18,20 +18,36 @@ class UpdateLLMConfigRequest(DaraModel):
         name: str = None,
         rps: int = None,
     ):
+        # The API key used to call the large language model (LLM).
+        # 
         # This parameter is required.
         self.api_key = api_key
+        # The base URL for calling the large language model (LLM).
+        # 
         # This parameter is required.
         self.base_url = base_url
+        # The batch size.
         self.batch_size = batch_size
+        # The embedding dimension. If you omit this parameter or set it to 0, the model uses its default dimension.
         self.embedding_dimension = embedding_dimension
+        # Whether to enable data fusion.
         self.enable_fusion = enable_fusion
+        # The maximum number of input tokens per row.
+        # 
         # This parameter is required.
         self.max_tokens = max_tokens
+        # The model name.
+        # 
         # This parameter is required.
         self.model = model
+        # The model type.
         self.model_type = model_type
+        # The name of the large language model (LLM) call configuration.
+        # 
         # This parameter is required.
         self.name = name
+        # The maximum number of requests per second (RPS).
+        # 
         # This parameter is required.
         self.rps = rps
 

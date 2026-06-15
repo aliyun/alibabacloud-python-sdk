@@ -14,9 +14,13 @@ class FeatureViewConfigValuePartitionsValue(DaraModel):
         start_value: str = None,
         end_value: str = None,
     ):
+        # Partition value.
         self.value = value
+        # List of partitions.
         self.values = values
+        # Start time partition.
         self.start_value = start_value
+        # End time partition.
         self.end_value = end_value
 
     def validate(self):

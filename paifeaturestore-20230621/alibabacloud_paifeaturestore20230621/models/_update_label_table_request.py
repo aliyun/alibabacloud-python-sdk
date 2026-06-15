@@ -14,9 +14,13 @@ class UpdateLabelTableRequest(DaraModel):
         fields: List[main_models.UpdateLabelTableRequestFields] = None,
         name: str = None,
     ):
+        # The ID of the data source for the label table.
         self.datasource_id = datasource_id
+        # The fields to modify.
+        # 
         # This parameter is required.
         self.fields = fields
+        # The name of the label table.
         self.name = name
 
     def validate(self):
@@ -68,10 +72,16 @@ class UpdateLabelTableRequestFields(DaraModel):
         type: str = None,
     ):
         self.aligned_entity_name = aligned_entity_name
+        # The field\\"s attributes.
+        # 
         # This parameter is required.
         self.attributes = attributes
+        # The name of the field.
+        # 
         # This parameter is required.
         self.name = name
+        # The data type of the field.
+        # 
         # This parameter is required.
         self.type = type
 

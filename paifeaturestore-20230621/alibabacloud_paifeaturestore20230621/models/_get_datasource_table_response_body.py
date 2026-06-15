@@ -14,8 +14,11 @@ class GetDatasourceTableResponseBody(DaraModel):
         request_id: str = None,
         table_name: str = None,
     ):
+        # The list of fields.
         self.fields = fields
+        # The request ID.
         self.request_id = request_id
+        # The name of the data table.
         self.table_name = table_name
 
     def validate(self):
@@ -65,8 +68,31 @@ class GetDatasourceTableResponseBodyFields(DaraModel):
         name: str = None,
         type: str = None,
     ):
+        # The attributes of the field. Valid values:
+        # 
+        # ● Partition: indicates that the field is a partition field.
+        # 
+        # ● EventTime: indicates that the field is an event time field.
+        # 
+        # ● PrimaryKey: indicates that the field is a primary key field.
         self.attributes = attributes
+        # The name of the field.
         self.name = name
+        # The data type of the field. Valid values:
+        # 
+        # ● INT32
+        # 
+        # ● INT64
+        # 
+        # ● FLOAT
+        # 
+        # ● DOUBLE
+        # 
+        # ● STRING
+        # 
+        # ● BOOLEAN
+        # 
+        # ● TIMESTAMP
         self.type = type
 
     def validate(self):

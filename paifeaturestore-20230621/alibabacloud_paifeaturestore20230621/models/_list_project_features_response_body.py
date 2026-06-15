@@ -14,9 +14,11 @@ class ListProjectFeaturesResponseBody(DaraModel):
         total_count: int = None,
         request_id: str = None,
     ):
+        # The list of returned features.
         self.features = features
+        # The total number of features that match the query criteria.
         self.total_count = total_count
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -71,13 +73,21 @@ class ListProjectFeaturesResponseBodyFeatures(DaraModel):
         owner: str = None,
         type: str = None,
     ):
+        # A comma-separated list of aliases for the feature.
         self.alias_names = alias_names
+        # The ID of the parent feature view.
         self.feature_view_id = feature_view_id
+        # The name of the parent feature view.
         self.feature_view_name = feature_view_name
+        # The time the feature was created, in ISO 8601 format.
         self.gmt_create_time = gmt_create_time
+        # The number of model features that reference this feature.
         self.model_feature_count = model_feature_count
+        # The name of the feature.
         self.name = name
+        # The owner of the feature.
         self.owner = owner
+        # The data type of the feature.
         self.type = type
 
     def validate(self):

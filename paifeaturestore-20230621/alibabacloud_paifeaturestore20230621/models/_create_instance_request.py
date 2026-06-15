@@ -9,6 +9,7 @@ class CreateInstanceRequest(DaraModel):
         self,
         type: str = None,
     ):
+        # The instance type. The only supported value is `Basic`.
         self.type = type
 
     def validate(self):

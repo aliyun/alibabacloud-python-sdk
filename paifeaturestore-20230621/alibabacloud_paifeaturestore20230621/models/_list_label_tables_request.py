@@ -18,13 +18,25 @@ class ListLabelTablesRequest(DaraModel):
         project_id: str = None,
         sort_by: str = None,
     ):
+        # The IDs of the label tables by which to filter the results.
         self.label_table_ids = label_table_ids
+        # The name of the label table.
         self.name = name
+        # The sort order. Valid values:
+        # 
+        # - `Asc`: ascending order.
+        # 
+        # - `Desc`: descending order.
         self.order = order
+        # The Alibaba Cloud account ID of the owner.
         self.owner = owner
+        # The page number. Page numbers start from 1. Default value: 1.
         self.page_number = page_number
+        # The number of entries to return on each page. Default value: 10.
         self.page_size = page_size
+        # The project ID. You can call the `ListProjects` operation to obtain this ID.
         self.project_id = project_id
+        # The field by which to sort the results.
         self.sort_by = sort_by
 
     def validate(self):

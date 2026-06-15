@@ -14,8 +14,11 @@ class ListFeatureEntitiesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # A list of feature entities.
         self.feature_entities = feature_entities
+        # The request ID.
         self.request_id = request_id
+        # The total number of feature entities.
         self.total_count = total_count
 
     def validate(self):
@@ -72,15 +75,25 @@ class ListFeatureEntitiesResponseBodyFeatureEntities(DaraModel):
         project_id: str = None,
         project_name: str = None,
     ):
+        # The feature entity ID.
         self.feature_entity_id = feature_entity_id
+        # The creation time.
         self.gmt_create_time = gmt_create_time
+        # The join ID that links the feature entity to a feature view.
         self.join_id = join_id
+        # The feature entity name.
         self.name = name
+        # The owner\\"s Alibaba Cloud account ID.
         self.owner = owner
+        # The parent feature entity ID. This value is empty or 0 for a root feature entity.
         self.parent_feature_entity_id = parent_feature_entity_id
+        # The parent feature entity name.
         self.parent_feature_entity_name = parent_feature_entity_name
+        # The join ID of the parent feature entity.
         self.parent_join_id = parent_join_id
+        # The project ID.
         self.project_id = project_id
+        # The project name.
         self.project_name = project_name
 
     def validate(self):

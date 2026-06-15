@@ -10,7 +10,9 @@ class CreateModelFeatureResponseBody(DaraModel):
         model_feature_id: str = None,
         request_id: str = None,
     ):
+        # The model feature ID.
         self.model_feature_id = model_feature_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

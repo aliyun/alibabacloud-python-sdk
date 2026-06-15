@@ -11,8 +11,11 @@ class CreateInstanceResponseBody(DaraModel):
         instance_id: str = None,
         request_id: str = None,
     ):
+        # The error code.
         self.code = code
+        # The instance ID.
         self.instance_id = instance_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

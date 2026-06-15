@@ -18,11 +18,17 @@ class FeatureViewConfigValue(DaraModel):
         second_join_key: str = None,
         join_with_label: bool = None,
     ):
+        # The list of partitions.
         self.partitions = partitions
+        # The event time.
         self.event_time = event_time
+        # Specifies whether the feature\\"s timestamp must match the event time.
         self.equal = equal
+        # Specifies whether to use a mock data table.
         self.use_mock = use_mock
+        # The snapshot configuration.
         self.snapshot = snapshot
+        # The second join key.
         self.second_join_key = second_join_key
         self.join_with_label = join_with_label
 
@@ -101,7 +107,9 @@ class FeatureViewConfigValueSnapshot(DaraModel):
         partitions: Dict[str, main_models.FeatureViewConfigValueSnapshotPartitionsValue] = None,
         table: str = None,
     ):
+        # The partition configuration for the snapshot.
         self.partitions = partitions
+        # The name of the snapshot table.
         self.table = table
 
     def validate(self):

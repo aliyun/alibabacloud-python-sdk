@@ -14,8 +14,11 @@ class ListModelFeatureAvailableFeaturesResponseBody(DaraModel):
         total_count: int = None,
         request_id: str = None,
     ):
+        # List of available features.
         self.avaliable_features = avaliable_features
+        # Total number of features.
         self.total_count = total_count
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -66,9 +69,23 @@ class ListModelFeatureAvailableFeaturesResponseBodyAvaliableFeatures(DaraModel):
         source_type: str = None,
         type: str = None,
     ):
+        # Feature name.
         self.name = name
+        # Source name.
         self.source_name = source_name
+        # Feature source.
+        # 
+        # - FeatureView
+        # 
+        # - LabelTable
         self.source_type = source_type
+        # Feature value type.
+        # 
+        # - INTEGER
+        # 
+        # - DOUBLE
+        # 
+        # - STRING
         self.type = type
 
     def validate(self):

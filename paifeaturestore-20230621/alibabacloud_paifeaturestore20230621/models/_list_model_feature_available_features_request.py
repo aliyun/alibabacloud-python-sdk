@@ -9,6 +9,7 @@ class ListModelFeatureAvailableFeaturesRequest(DaraModel):
         self,
         feature_name: str = None,
     ):
+        # Filter by feature name.
         self.feature_name = feature_name
 
     def validate(self):

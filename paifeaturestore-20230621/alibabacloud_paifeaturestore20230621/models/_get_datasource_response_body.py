@@ -17,14 +17,29 @@ class GetDatasourceResponseBody(DaraModel):
         uri: str = None,
         workspace_id: str = None,
     ):
+        # The resource configuration.
         self.config = config
+        # The ID of the data source.
         self.datasource_id = datasource_id
+        # The time the data source was created.
         self.gmt_create_time = gmt_create_time
+        # The time the data source was last updated.
         self.gmt_modified_time = gmt_modified_time
+        # The name of the data source.
         self.name = name
+        # The ID of the request.
         self.request_id = request_id
+        # The type of the data source. Valid values:
+        # 
+        # - Hologres
+        # 
+        # - Redis
+        # 
+        # - MaxCompute
         self.type = type
+        # The URI of the resource.
         self.uri = uri
+        # The ID of the workspace.
         self.workspace_id = workspace_id
 
     def validate(self):

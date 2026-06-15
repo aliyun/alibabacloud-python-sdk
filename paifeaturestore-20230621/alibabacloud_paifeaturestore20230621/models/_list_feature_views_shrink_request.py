@@ -19,16 +19,31 @@ class ListFeatureViewsShrinkRequest(DaraModel):
         tag: str = None,
         type: str = None,
     ):
+        # Filters the results by feature name.
         self.feature_name = feature_name
+        # The feature view IDs by which to filter the results.
         self.feature_view_ids_shrink = feature_view_ids_shrink
+        # Filters the results by feature view name.
         self.name = name
+        # The sort order. Valid values: `Desc` (descending) and `Asc` (ascending).
         self.order = order
+        # Filters the results by owner.
         self.owner = owner
+        # The page number of the results to return.
         self.page_number = page_number
+        # The number of feature views to return on each page.
         self.page_size = page_size
+        # The project ID. You can obtain this ID by calling the `ListProjects` operation.
         self.project_id = project_id
+        # The field by which to sort the results.
         self.sort_by = sort_by
+        # Filters the results by tag.
         self.tag = tag
+        # Filters the results by type. Valid values:
+        # 
+        # ● `Batch`: batch feature
+        # 
+        # ● `Stream`: stream feature
         self.type = type
 
     def validate(self):

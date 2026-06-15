@@ -17,15 +17,25 @@ class CreateModelFeatureRequest(DaraModel):
         project_id: str = None,
         sequence_feature_view_ids: List[str] = None,
     ):
+        # The list of features.
+        # 
         # This parameter is required.
         self.features = features
+        # The priority level of the label table. Default value: 0, which indicates that conflicts between label table features and feature view features are not allowed. A value of 1 indicates that the label table takes precedence when conflicts occur. A value of 2 indicates that the feature view takes precedence.
         self.label_priority_level = label_priority_level
+        # The label table ID. You can call the ListLabelTables operation to obtain the label table ID.
+        # 
         # This parameter is required.
         self.label_table_id = label_table_id
+        # The name of the model feature.
+        # 
         # This parameter is required.
         self.name = name
+        # The project ID. You can call the ListProjects operation to obtain the project ID.
+        # 
         # This parameter is required.
         self.project_id = project_id
+        # The sequence feature view IDs.
         self.sequence_feature_view_ids = sequence_feature_view_ids
 
     def validate(self):
@@ -92,13 +102,30 @@ class CreateModelFeatureRequestFeatures(DaraModel):
         alias_name: str = None,
         feature_view_id: str = None,
         name: str = None,
+        prefix_name: str = None,
         type: str = None,
     ):
+        # The alias of the feature.
         self.alias_name = alias_name
+        # The feature view ID. You can call the ListFeatureViews operation to obtain the feature view ID.
+        # 
         # This parameter is required.
         self.feature_view_id = feature_view_id
+        # The feature name.
+        # 
         # This parameter is required.
         self.name = name
+        self.prefix_name = prefix_name
+        # The feature type. Valid values:
+        # 
+        # - INT32
+        # - INT64
+        # - FLOAT
+        # - DOUBLE
+        # - STRING
+        # - BOOLEAN
+        # - TIMESTAMP.
+        # 
         # This parameter is required.
         self.type = type
 
@@ -119,6 +146,9 @@ class CreateModelFeatureRequestFeatures(DaraModel):
         if self.name is not None:
             result['Name'] = self.name
 
+        if self.prefix_name is not None:
+            result['PrefixName'] = self.prefix_name
+
         if self.type is not None:
             result['Type'] = self.type
 
@@ -134,6 +164,9 @@ class CreateModelFeatureRequestFeatures(DaraModel):
 
         if m.get('Name') is not None:
             self.name = m.get('Name')
+
+        if m.get('PrefixName') is not None:
+            self.prefix_name = m.get('PrefixName')
 
         if m.get('Type') is not None:
             self.type = m.get('Type')

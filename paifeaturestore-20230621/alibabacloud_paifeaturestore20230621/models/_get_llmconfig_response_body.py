@@ -23,21 +23,35 @@ class GetLLMConfigResponseBody(DaraModel):
         rps: int = None,
         workspace_id: str = None,
     ):
+        # The API key.
         self.api_key = api_key
+        # The base URL for API calls.
         self.base_url = base_url
+        # The batch size.
         self.batch_size = batch_size
+        # The embedding dimension. If this parameter is unspecified or set to 0, the system uses the model\\"s default dimension.
         self.embedding_dimension = embedding_dimension
+        # Indicates whether fusion is enabled.
         self.enable_fusion = enable_fusion
+        # The time when the configuration was created.
         self.gmt_create_time = gmt_create_time
+        # The time when the configuration was last modified.
         self.gmt_modified_time = gmt_modified_time
+        # The ID of the LLM call configuration.
         self.llmconfig_id = llmconfig_id
+        # The maximum number of tokens in a single request.
         self.max_tokens = max_tokens
+        # The model name.
         self.model = model
+        # The type of the model.
         self.model_type = model_type
+        # The name of the LLM call configuration.
         self.name = name
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The number of requests allowed per second.
         self.rps = rps
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):

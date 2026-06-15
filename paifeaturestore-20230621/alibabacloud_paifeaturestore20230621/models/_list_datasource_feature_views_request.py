@@ -21,18 +21,37 @@ class ListDatasourceFeatureViewsRequest(DaraModel):
         type: str = None,
         verbose: bool = None,
     ):
+        # Return all data (no paging).
         self.all = all
+        # End time for query read/write volume. Format: yyyy-mm-dd.
         self.end_date = end_date
+        # Fuzzy filter for feature view names.
         self.name = name
+        # Sort order.
         self.order = order
+        # Page number.
         self.page_number = page_number
+        # Page size.
         self.page_size = page_size
+        # Project ID. Get this ID using the ListProjects API.
         self.project_id = project_id
+        # Filter by project name.
         self.project_name = project_name
+        # Show storage usage. Default is true.
         self.show_storage_usage = show_storage_usage
+        # Sort by.
         self.sort_by = sort_by
+        # Start time for query read/write volume. Format: yyyy-mm-dd.
         self.start_date = start_date
+        # Feature view type.
+        # 
+        # - Batch - offline feature
+        # 
+        # - Stream - real-time feature
+        # 
+        # - Sequence - sequence feature
         self.type = type
+        # Show detailed information. If set to false, do not show UsageStatistics for each view; show only the total. Default is true.
         self.verbose = verbose
 
     def validate(self):

@@ -10,7 +10,13 @@ class CheckInstanceDatasourceResponseBody(DaraModel):
         request_id: str = None,
         status: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The resource check status.
+        # 
+        # - Success: succeeded
+        # 
+        # - Failure: failed
         self.status = status
 
     def validate(self):

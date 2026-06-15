@@ -24,23 +24,57 @@ class CreateFeatureViewRequest(DaraModel):
         write_method: str = None,
         write_to_feature_db: bool = None,
     ):
+        # The configurations of the feature view.
         self.config = config
+        # The ID of the feature entity.
         self.feature_entity_id = feature_entity_id
+        # The fields.
         self.fields = fields
+        # The name of the feature view.
+        # 
         # This parameter is required.
         self.name = name
+        # The ID of the project.
+        # 
         # This parameter is required.
         self.project_id = project_id
+        # The ID of the data source to which the table to be registered belongs. You can call the ListDatasources operation to obtain the data source ID.
         self.register_datasource_id = register_datasource_id
+        # The name of the table to register.
         self.register_table = register_table
+        # Specifies whether to synchronize the online feature table. Valid values:
+        # 
+        # - `true`: Synchronizes the online feature table.
+        # 
+        # - `false`: Does not synchronize the online feature table.
+        # 
         # This parameter is required.
         self.sync_online_table = sync_online_table
+        # The time-to-live (TTL) of the feature view, in days.
         self.ttl = ttl
+        # The tags of the feature view.
         self.tags = tags
+        # The type of the feature view. Valid values:
+        # 
+        # - `Batch`: Offline feature.
+        # 
+        # - `Stream`: Real-time feature.
+        # 
         # This parameter is required.
         self.type = type
+        # The write method. Valid values:
+        # 
+        # - `ByReadyMadeTable`: Registers the feature view by using an existing table.
+        # 
+        # - `Custom`: Defines a custom table structure.
+        # 
         # This parameter is required.
         self.write_method = write_method
+        # Specifies whether to write data to the online feature store. Valid values:
+        # 
+        # - `true`: Writes data to the online feature store.
+        # 
+        # - `false`: Does not write data to the online feature store.
         self.write_to_feature_db = write_to_feature_db
 
     def validate(self):
@@ -151,9 +185,33 @@ class CreateFeatureViewRequestFields(DaraModel):
         transform: List[main_models.CreateFeatureViewRequestFieldsTransform] = None,
         type: str = None,
     ):
+        # The attributes of the field. Valid values:
+        # 
+        # - `Partition`: partition field.
+        # 
+        # - `PrimaryKey`: primary key.
+        # 
+        # - `EventTime`: event time.
         self.attributes = attributes
+        # The name of the field.
         self.name = name
+        # The feature generation configurations.
         self.transform = transform
+        # The data type of the field. Valid values:
+        # 
+        # - INT32
+        # 
+        # - INT64
+        # 
+        # - FLOAT
+        # 
+        # - DOUBLE
+        # 
+        # - STRING
+        # 
+        # - BOOLEAN
+        # 
+        # - TIMESTAMP
         self.type = type
 
     def validate(self):
@@ -209,8 +267,11 @@ class CreateFeatureViewRequestFieldsTransform(DaraModel):
         llmconfig_id: int = None,
         type: str = None,
     ):
+        # The input for feature generation.
         self.input = input
+        # The ID of the large language model (LLM) configuration.
         self.llmconfig_id = llmconfig_id
+        # The type of the feature generation.
         self.type = type
 
     def validate(self):
@@ -260,8 +321,11 @@ class CreateFeatureViewRequestFieldsTransformInput(DaraModel):
         name: str = None,
         type: str = None,
     ):
+        # The modality of the input, such as text or image.
         self.modality = modality
+        # The name of the input field.
         self.name = name
+        # The data type of the input field.
         self.type = type
 
     def validate(self):

@@ -11,8 +11,11 @@ class GetServiceIdentityRoleResponseBody(DaraModel):
         request_id: str = None,
         role_name: str = None,
     ):
+        # 关联策略。
         self.policy = policy
+        # 请求ID。
         self.request_id = request_id
+        # 服务账户角色名称。
         self.role_name = role_name
 
     def validate(self):

@@ -10,7 +10,9 @@ class ListTaskLogsRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The page number. The minimum value is 1. The default value is 1.
         self.page_number = page_number
+        # The number of entries to return on each page. Default value: 10.
         self.page_size = page_size
 
     def validate(self):

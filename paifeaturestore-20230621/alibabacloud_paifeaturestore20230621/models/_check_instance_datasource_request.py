@@ -11,9 +11,20 @@ class CheckInstanceDatasourceRequest(DaraModel):
         type: str = None,
         uri: str = None,
     ):
+        # The resource configuration.
         self.config = config
+        # The data source type.
+        # 
+        # - Hologres
+        # 
+        # - Redis
+        # 
+        # - MaxCompute
+        # 
         # This parameter is required.
         self.type = type
+        # The resource URI.
+        # 
         # This parameter is required.
         self.uri = uri
 

@@ -19,15 +19,33 @@ class GetInstanceResponseBody(DaraModel):
         status: str = None,
         type: str = None,
     ):
+        # The information about the FeatureDB instance.
         self.feature_dbinfo = feature_dbinfo
+        # The information about the FeatureDB instance.
         self.feature_dbinstance_info = feature_dbinstance_info
+        # The time when the instance was created. The time is in the ISO 8601 format.
         self.gmt_create_time = gmt_create_time
+        # The time when the instance was last updated. The time is in the ISO 8601 format.
         self.gmt_modified_time = gmt_modified_time
+        # The message that is returned for the instance provisioning.
         self.message = message
+        # The progress of instance provisioning.
         self.progress = progress
+        # The region where the instance is deployed.
         self.region_id = region_id
+        # The request ID.
         self.request_id = request_id
+        # The status of the instance. Valid values:
+        # 
+        # - Initializing: The instance is being initialized.
+        # 
+        # - Running: The instance is running.
+        # 
+        # - Failure: The instance fails to be created.
+        # 
+        # - Stopped: The instance is stopped.
         self.status = status
+        # The type of the instance.
         self.type = type
 
     def validate(self):
@@ -114,6 +132,7 @@ class GetInstanceResponseBodyFeatureDBInstanceInfo(DaraModel):
         self,
         status: str = None,
     ):
+        # The status of the instance.
         self.status = status
 
     def validate(self):
@@ -141,6 +160,7 @@ class GetInstanceResponseBodyFeatureDBInfo(DaraModel):
         self,
         status: str = None,
     ):
+        # The status of the instance.
         self.status = status
 
     def validate(self):

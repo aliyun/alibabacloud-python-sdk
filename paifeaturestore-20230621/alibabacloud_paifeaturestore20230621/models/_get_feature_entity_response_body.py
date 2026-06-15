@@ -18,15 +18,25 @@ class GetFeatureEntityResponseBody(DaraModel):
         project_name: str = None,
         request_id: str = None,
     ):
+        # The time when the feature entity was created.
         self.gmt_create_time = gmt_create_time
+        # The join ID used to associate with a feature view.
         self.join_id = join_id
+        # The name of the feature entity.
         self.name = name
+        # The Alibaba Cloud account ID of the creator.
         self.owner = owner
+        # The ID of the parent feature entity. An empty value or 0 indicates a root feature entity.
         self.parent_feature_entity_id = parent_feature_entity_id
+        # The name of the parent feature entity.
         self.parent_feature_entity_name = parent_feature_entity_name
+        # The join ID of the parent feature entity.
         self.parent_join_id = parent_join_id
+        # The project ID.
         self.project_id = project_id
+        # The name of the project.
         self.project_name = project_name
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
