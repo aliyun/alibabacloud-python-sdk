@@ -5092,6 +5092,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_text_scan_result_with_options_async(request, runtime)
 
+    def get_tune_proposal_by_id_with_options(
+        self,
+        request: main_models.GetTuneProposalByIdRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetTuneProposalByIdResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.id):
+            query['Id'] = request.id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetTuneProposalById',
+            version = '2022-09-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetTuneProposalByIdResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_tune_proposal_by_id_with_options_async(
+        self,
+        request: main_models.GetTuneProposalByIdRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetTuneProposalByIdResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.id):
+            query['Id'] = request.id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetTuneProposalById',
+            version = '2022-09-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetTuneProposalByIdResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_tune_proposal_by_id(
+        self,
+        request: main_models.GetTuneProposalByIdRequest,
+    ) -> main_models.GetTuneProposalByIdResponse:
+        runtime = RuntimeOptions()
+        return self.get_tune_proposal_by_id_with_options(request, runtime)
+
+    async def get_tune_proposal_by_id_async(
+        self,
+        request: main_models.GetTuneProposalByIdRequest,
+    ) -> main_models.GetTuneProposalByIdResponse:
+        runtime = RuntimeOptions()
+        return await self.get_tune_proposal_by_id_with_options_async(request, runtime)
+
     def get_upload_info_with_options(
         self,
         request: main_models.GetUploadInfoRequest,

@@ -1,3 +1,8 @@
+2026-06-15 Version: 1.9.0
+- Support API GetTuneProposalById.
+- Update API GetPromptTestResult: add response parameters Body.Result.$.LabelDetails.$.Reason.
+
+
 2026-05-20 Version: 1.8.0
 - Support API CreateImageLib.
 

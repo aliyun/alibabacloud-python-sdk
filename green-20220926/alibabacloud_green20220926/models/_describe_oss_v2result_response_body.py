@@ -122,7 +122,6 @@ class DescribeOssV2ResultResponseBodyItems(DaraModel):
         self.risk_level_0 = risk_level_0
         self.risk_level_2 = risk_level_2
         self.scan_result = scan_result
-        # Service code。
         self.service_code = service_code
         self.sys_disposal_status = sys_disposal_status
         self.task_id = task_id

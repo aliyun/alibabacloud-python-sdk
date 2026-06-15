@@ -182,6 +182,9 @@ from ._get_text_scan_result_request import GetTextScanResultRequest
 from ._get_text_scan_result_shrink_request import GetTextScanResultShrinkRequest
 from ._get_text_scan_result_response_body import GetTextScanResultResponseBody
 from ._get_text_scan_result_response import GetTextScanResultResponse
+from ._get_tune_proposal_by_id_request import GetTuneProposalByIdRequest
+from ._get_tune_proposal_by_id_response_body import GetTuneProposalByIdResponseBody
+from ._get_tune_proposal_by_id_response import GetTuneProposalByIdResponse
 from ._get_upload_info_request import GetUploadInfoRequest
 from ._get_upload_info_response_body import GetUploadInfoResponseBody
 from ._get_upload_info_response import GetUploadInfoResponse
@@ -340,6 +343,7 @@ from ._get_stock_oss_check_tasks_list_response_body import GetStockOssCheckTasks
 from ._get_text_scan_result_response_body import GetTextScanResultResponseBodyDataItemsResult
 from ._get_text_scan_result_response_body import GetTextScanResultResponseBodyDataItems
 from ._get_text_scan_result_response_body import GetTextScanResultResponseBodyData
+from ._get_tune_proposal_by_id_response_body import GetTuneProposalByIdResponseBodyData
 from ._get_user_buy_status_response_body import GetUserBuyStatusResponseBodyData
 from ._list_answer_lib_response_body import ListAnswerLibResponseBodyData
 from ._list_callback_response_body import ListCallbackResponseBodyData
@@ -544,6 +548,9 @@ __all__ = [
     GetTextScanResultShrinkRequest,
     GetTextScanResultResponseBody,
     GetTextScanResultResponse,
+    GetTuneProposalByIdRequest,
+    GetTuneProposalByIdResponseBody,
+    GetTuneProposalByIdResponse,
     GetUploadInfoRequest,
     GetUploadInfoResponseBody,
     GetUploadInfoResponse,
@@ -702,6 +709,7 @@ __all__ = [
     GetTextScanResultResponseBodyDataItemsResult,
     GetTextScanResultResponseBodyDataItems,
     GetTextScanResultResponseBodyData,
+    GetTuneProposalByIdResponseBodyData,
     GetUserBuyStatusResponseBodyData,
     ListAnswerLibResponseBodyData,
     ListCallbackResponseBodyData,
