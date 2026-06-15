@@ -27,35 +27,34 @@ class ImportHttpApiRequest(DaraModel):
     ):
         # The API deployment configurations.
         self.deploy_configs = deploy_configs
-        # The description of the API to import. If omitted, the description is taken from the API definition. The maximum length is 255 bytes.
+        # The description of the imported API. If this parameter is not specified, the description is extracted from the API definition. Maximum length: 255 bytes.
         self.description = description
-        # Indicates whether to perform a dry run. If `true`, the system validates the request but does not import the API.
+        # Specifies whether to perform a dry run. If this parameter is enabled, only validation is performed without the actual import.
         self.dry_run = dry_run
         # The gateway ID.
         self.gateway_id = gateway_id
         # The MCP route ID.
         self.mcp_route_id = mcp_route_id
-        # The name of the API to import. If omitted, the name is taken from the API definition file. If an API with the same name and versioning configuration already exists, the import acts as an update based on the specified `strategy`.
+        # The name of the imported API. If this parameter is not specified, the name is extracted from the API definition file. If an API with the same name and version configuration already exists, this import updates the existing API definition based on the strategy parameter.
         self.name = name
         # The [resource group ID](https://help.aliyun.com/document_detail/151181.html).
         self.resource_group_id = resource_group_id
-        # The Base64-encoded API definition. It supports OpenAPI Specification (OAS) 2.0 and 3.0 and can be in either YAML or JSON format. This parameter takes precedence over `specFileUrl`. If the file size is larger than 10 MB, use the `specFileUrl` parameter.
+        # The Base64-encoded API definition. OAS 2.0 and OAS 3.0 specifications are supported in YAML or JSON format. This parameter takes priority over the specFileUrl parameter. If the file size exceeds 10 MB, use the specFileUrl parameter instead.
         self.spec_content_base_64 = spec_content_base_64
-        # The URL of the API definition file stored in OSS. The URL must be accessible from the public network or be an internal OSS endpoint in the same region. For OSS objects that are not publicly readable, use a presigned URL. For details, see [Download a file by using a presigned URL](https://help.aliyun.com/document_detail/39607.html).
+        # The download URL of the API definition file. The URL must be accessible over the public network or be an internal network OSS download URL in the same region. The URL must have download permissions. For OSS files that are not publicly readable, refer to References [Download objects using presigned URLs](https://help.aliyun.com/document_detail/39607.html) and provide a URL with download permissions. Only API definition files stored in OSS are supported.
         self.spec_file_url = spec_file_url
-        # Configuration for fetching the API definition from an OSS bucket.
+        # The OSS configuration.
         self.spec_oss_config = spec_oss_config
-        # The update strategy to apply when an API with the same name and versioning configuration already exists.
+        # The update strategy to use when the imported API has the same name and version management configuration as an existing API. Valid values:
+        # - SpecOnly: uses the imported file as the single source of truth.
+        # - SpecFirst: prioritizes the imported file. New operations are added and existing operations are updated. Operations not mentioned in the file remain unchanged.
+        # - ExistFirst: prioritizes the existing API. Only new operations are added. Existing operations are not updated.
         # 
-        # - `SpecOnly`: Overwrites the existing API completely with the imported definition.
-        # 
-        # - `SpecFirst`: Updates existing APIs and creates new ones based on the imported definition. Existing APIs not included in the import file are unaffected.
-        # 
-        # - `ExistFirst`: Creates new APIs from the imported definition but does not modify any existing APIs. This is the default strategy.
+        # Default value: ExistFirst.
         self.strategy = strategy
-        # If you specify this parameter, the import updates the specified API instead of creating a new one or searching for an existing API by name and versioning configuration. The target API must be an HTTP API.
+        # The ID of the target HTTP API. If this parameter is specified, this import updates the specified API instead of creating a new one or searching for an existing API by name and version management configuration. The target API must be of the REST type.
         self.target_http_api_id = target_http_api_id
-        # The versioning configuration for the API. If an existing API matches the specified name (and version, if enabled), this import updates that API.
+        # The API version configuration. If version configuration is enabled and an API with the same version number and name already exists, this import is treated as an update. If version configuration is not enabled and an API with the same name already exists, this import is treated as an update.
         self.version_config = version_config
         self.with_gateway_extension = with_gateway_extension
 
@@ -178,11 +177,11 @@ class ImportHttpApiRequestSpecOssConfig(DaraModel):
         object_key: str = None,
         region_id: str = None,
     ):
-        # The name of the OSS bucket that contains the API definition file.
+        # The bucket name.
         self.bucket_name = bucket_name
-        # The object key (file path) of the API definition file within the bucket.
+        # The full path of the file.
         self.object_key = object_key
-        # The ID of the region where the OSS bucket is located.
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

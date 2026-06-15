@@ -1,3 +1,7 @@
+2026-06-15 Version: 7.2.1
+- Update API DescribeRegions: add response parameters Body.data.
+
+
 2026-06-12 Version: 7.2.0
 - Support API DescribeRegions.
 - Update API ImportHttpApi: add request parameters body.withGatewayExtension.
