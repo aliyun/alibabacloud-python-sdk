@@ -39,8 +39,9 @@ class DescribeTaskAttributeResponseBody(DaraModel):
         self.success_count = success_count
         # Indicates whether the task can be canceled by calling the [CancelTask](https://help.aliyun.com/document_detail/25624.html) operation. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         self.support_cancel = support_cancel
         # The name of the operation that generated the task.
         self.task_action = task_action

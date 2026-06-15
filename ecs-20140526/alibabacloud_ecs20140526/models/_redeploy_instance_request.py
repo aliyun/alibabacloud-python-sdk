@@ -18,7 +18,7 @@ class RedeployInstanceRequest(DaraModel):
         # 
         # Default value: false.
         # 
-        # >  A forced stop is equivalent to a power outage and can result in loss of data that is not written to storage devices. We recommend that you redeploy instances when they are in the Stopped state.
+        # > A forced stop is equivalent to a power outage and can result in loss of data that is not written to storage devices. We recommend that you redeploy instances when they are in the Stopped state.
         self.force_stop = force_stop
         # The ID of the instance.
         # 

@@ -1,3 +1,9 @@
+2026-06-15 Version: 7.8.5
+- Update API CreatePlanMaintenanceWindow: add request parameters MinMaintenanceInterval.
+- Update API DescribePlanMaintenanceWindows: add response parameters Body.PlanMaintenanceWindowList.$.MinMaintenanceInterval.
+- Update API ModifyPlanMaintenanceWindow: add request parameters MinMaintenanceInterval.
+
+
 2026-06-09 Version: 7.8.4
 - Update API DescribeRenewalPrice: add response parameters Body.PriceInfo.RelatedPrice.
 

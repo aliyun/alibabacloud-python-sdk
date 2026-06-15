@@ -22,7 +22,7 @@ class DescribeInstanceStatusRequest(DaraModel):
     ):
         # The ID of the cluster to which the ECS instances belong.
         # 
-        # >  This parameter is deprecated. We recommend that you do not use this parameter.
+        # > This parameter is deprecated. We recommend that you do not use this parameter.
         self.cluster_id = cluster_id
         # The IDs of ECS instances. You can specify 1 to 100 instance IDs.
         # 

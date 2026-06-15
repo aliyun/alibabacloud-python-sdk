@@ -18,20 +18,21 @@ class ResetDisksRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The disks that you want to roll back.
+        # The disks to roll back. You can specify up to 10 disks.
         # 
         # This parameter is required.
         self.disk = disk
-        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        # Specifies whether to perform a dry run. Valid values:
         # 
-        # *   true: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and resource state limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # *   false: performs a dry run and performs the actual request. If the request passes the dry run, the rollback operation is performed.
+        # - true: performs a dry run to check the request. The disks are not rolled back. The check verifies required parameters, the request format, and resource states. If the request fails the check, the operation returns an error message. If the request passes the check, the operation returns the `DryRunOperation` error code.
+        # 
+        # - false: sends a normal request. After the request passes the check, the operation rolls back the disks.
         # 
         # Default value: false.
         self.dry_run = dry_run
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the latest Alibaba Cloud regions.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -108,9 +109,9 @@ class ResetDisksRequestDisk(DaraModel):
         disk_id: str = None,
         snapshot_id: str = None,
     ):
-        # The ID of the disk that you want to roll back. You can specify up to 10 disk IDs.
+        # The ID of the disk to roll back.
         self.disk_id = disk_id
-        # The ID of the disk snapshot that is contained in the instance snapshot. You can specify up to 10 disk snapshot IDs.
+        # The ID of the snapshot from an instance snapshot that is used to roll back the disk.
         self.snapshot_id = snapshot_id
 
     def validate(self):

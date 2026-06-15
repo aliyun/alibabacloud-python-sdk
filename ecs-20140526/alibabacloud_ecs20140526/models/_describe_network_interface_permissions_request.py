@@ -19,25 +19,25 @@ class DescribeNetworkInterfacePermissionsRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of ENI N. You must specify `NetworkInterfaceId` or `NetworkInterfacePermissionId.N` to determine the query range.
+        # The network interface ID. You must specify either `NetworkInterfaceId` or `NetworkInterfacePermissionId.N` to determine the query scope.
         self.network_interface_id = network_interface_id
-        # The IDs of ENI permissions. You can specify up to 100 ENI permission IDs.
+        # An array of network interface permission IDs. The array can contain 1 to 100 IDs.
         self.network_interface_permission_id = network_interface_permission_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number.
+        # The page number to return.
         # 
-        # Pages start from page 1.
+        # Starting value: 1
         # 
-        # Default value: 1.
+        # Default value: 1
         self.page_number = page_number
         # The number of entries per page.
         # 
-        # Maximum value: 100.
+        # Maximum value: 100
         # 
-        # Default value: 10.
+        # Default value: 10
         self.page_size = page_size
-        # The region ID of the ENI permission. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The ID of the region for the network interface permission. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to obtain the latest list of Alibaba Cloud regions.
         # 
         # This parameter is required.
         self.region_id = region_id

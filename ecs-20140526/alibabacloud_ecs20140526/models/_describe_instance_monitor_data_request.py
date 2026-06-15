@@ -28,9 +28,11 @@ class DescribeInstanceMonitorDataRequest(DaraModel):
         self.owner_id = owner_id
         # The interval at which to retrieve monitoring data. Unit: seconds. Valid values:
         # 
-        # *   60
-        # *   600
-        # *   3600
+        # - 60
+        # 
+        # - 600
+        # 
+        # - 3600
         # 
         # Default value: 60.
         self.period = period

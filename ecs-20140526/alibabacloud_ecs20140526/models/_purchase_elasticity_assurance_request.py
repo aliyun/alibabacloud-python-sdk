@@ -26,15 +26,17 @@ class PurchaseElasticityAssuranceRequest(DaraModel):
         self.owner_id = owner_id
         # The validity period of the elasticity assurance. The unit of the validity period is determined by the PeriodUnit value. Valid values:
         # 
-        # *   When PeriodUnit is set to Month, valid values are 1, 2, 3, 4, 5, 6, 7, 8, and 9.
-        # *   When PeriodUnit is set to Year, valid values are 1, 2, 3, 4, and 5.
+        # - When PeriodUnit is set to Month, valid values are 1, 2, 3, 4, 5, 6, 7, 8, and 9.
+        # 
+        # - When PeriodUnit is set to Year, valid values are 1, 2, 3, 4, and 5.
         # 
         # Default value: 1.
         self.period = period
         # The unit of the validity period of the elasticity assurance. Valid values:
         # 
-        # *   Month
-        # *   Year
+        # - Month
+        # 
+        # - Year
         # 
         # Default value: Year.
         self.period_unit = period_unit
@@ -135,8 +137,9 @@ class PurchaseElasticityAssuranceRequestPrivatePoolOptions(DaraModel):
         self.id = id
         # The type of the private pool with which you want to associate the elasticity assurance. Valid values:
         # 
-        # *   Open: open private pool. If you use the elasticity assurance to create Elastic Compute Service (ECS) instances, the open private pool that is associated with the elasticity assurance is automatically matched. If no capacity is available in the open private pool, resources in the public pool are automatically used to create the ECS instances.
-        # *   Target: targeted private pool. If you use the elasticity assurance to create ECS instances, the specified private pool that is associated with the elasticity assurance is automatically matched. If no capacity is available in the private pool, the ECS instances fail to be created.
+        # - Open: open private pool. If you use the elasticity assurance to create Elastic Compute Service (ECS) instances, the open private pool that is associated with the elasticity assurance is automatically matched. If no capacity is available in the open private pool, resources in the public pool are automatically used to create the ECS instances.
+        # 
+        # - Target: targeted private pool. If you use the elasticity assurance to create ECS instances, the specified private pool that is associated with the elasticity assurance is automatically matched. If no capacity is available in the private pool, the ECS instances fail to be created.
         # 
         # Default value: Open.
         self.match_criteria = match_criteria

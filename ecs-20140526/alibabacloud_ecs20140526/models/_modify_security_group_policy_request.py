@@ -20,10 +20,11 @@ class ModifySecurityGroupPolicyRequest(DaraModel):
         self.client_token = client_token
         # The internal access control policy of the security group. Valid values:
         # 
-        # *   Accept: the internal interconnectivity policy
-        # *   Drop: the internal isolation policy
+        # - Accept: the internal interconnectivity policy
         # 
-        # >  The value of this parameter is case-insensitive.
+        # - Drop: the internal isolation policy
+        # 
+        # > The value of this parameter is case-insensitive.
         # 
         # This parameter is required.
         self.inner_access_policy = inner_access_policy

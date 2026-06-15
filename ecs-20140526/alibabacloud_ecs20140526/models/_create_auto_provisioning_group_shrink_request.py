@@ -49,138 +49,153 @@ class CreateAutoProvisioningGroupShrinkRequest(DaraModel):
         valid_until: str = None,
     ):
         self.launch_configuration = launch_configuration
-        # The name of the auto provisioning group. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with `http://` or `https://`. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+        # The name of the auto provisioning group. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
         self.auto_provisioning_group_name = auto_provisioning_group_name
         # The delivery type of the auto provisioning group. Valid values:
         # 
-        # *   request: one-time asynchronous delivery. When the auto provisioning group is started, it attempts to asynchronously deliver an instance cluster that meets the target capacity only once. The group does not retry the operation regardless of whether all the instances are delivered.
-        # *   instant: one-time synchronous delivery. When the auto provisioning group is started, it attempts to synchronously deliver an instance cluster that meets the target capacity only once. The list of delivered instances and the causes of delivery failures are returned in the response.
-        # *   maintain: continuous delivery. When the auto provisioning group is started, it attempts to deliver an instance cluster that meets the target capacity, and monitors the real-time capacity. If the target capacity of the auto provisioning group is not reached, the auto provisioning group continues to create instances until the target capacity is reached.
+        # - request: One-time asynchronous delivery. The group delivers the instance cluster only at startup. If scheduling fails, no retry occurs.
+        # 
+        # - instant: One-time synchronous delivery. The group creates instances synchronously at startup and returns the list of successfully created instances and reasons for failures in the response.
+        # 
+        # - maintain: Continuous provisioning. The group attempts to deliver the instance cluster at startup and monitors real-time capacity. If the target capacity is not met, it continues creating ECS instances.
         # 
         # Default value: maintain.
         self.auto_provisioning_group_type = auto_provisioning_group_type
         self.candidate_options = candidate_options
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+        # Ensures request idempotence. Generate a unique value from your client for this parameter to ensure uniqueness across different requests. ClientToken supports only ASCII characters and cannot exceed 64 characters. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
-        # The information of data disks on the instance.
+        # The list of data disk configurations for instances.
         self.data_disk_config = data_disk_config
-        # The type of supplemental instances. When the sum of the `PayAsYouGoTargetCapacity` and `SpotTargetCapacity` values is smaller than the `TotalTargetCapacity` value, the auto provisioning group creates instances of the specified type to meet the total target capacity. Valid values:
+        # Specifies the billing method for the capacity difference when the sum of `PayAsYouGoTargetCapacity` and `SpotTargetCapacity` is less than `TotalTargetCapacity`. Valid values:
         # 
-        # *   PayAsYouGo: pay-as-you-go
-        # *   Spot: spot instance
+        # - PayAsYouGo: Pay-as-you-go instances.
+        # 
+        # - Spot: Spot instances.
         # 
         # Default value: Spot.
         self.default_target_capacity_type = default_target_capacity_type
         # The description of the auto provisioning group.
         self.description = description
-        # Specifies whether to release scaled-in instances when the real-time capacity of the auto provisioning group exceeds the target capacity and the group is triggered to scale in. Valid values:
+        # Specifies whether to release instances when the real-time capacity of the auto provisioning group exceeds the target capacity and scale-in is triggered. Valid values:
         # 
-        # *   termination: releases the scaled-in instances in the auto provisioning group.
-        # *   no-termination: removes the scaled-in instances from the auto provisioning group but does not release the instances.
+        # - termination: Releases scaled-in instances.
+        # 
+        # - no-termination: Only removes scaled-in instances from the auto provisioning group.
         # 
         # Default value: no-termination.
         self.excess_capacity_termination_policy = excess_capacity_termination_policy
         self.execution_mode = execution_mode
-        # >This parameter is in invitational preview and is not publicly available.
+        # > This parameter is in invitational preview and is not yet available.
         self.hibernation_options_configured = hibernation_options_configured
-        # The extended configurations of the launch template.
+        # The list of extended launch template configurations.
         self.launch_template_config = launch_template_config
-        # The ID of the launch template associated with the auto provisioning group. You can call the [DescribeLaunchTemplates](https://help.aliyun.com/document_detail/73759.html) operation to query available launch templates. When both LaunchTemplateId and `LaunchConfiguration.*` parameters are specified, LaunchTemplateId takes precedence.
+        # The ID of the launch template associated with the auto provisioning group. Call [DescribeLaunchTemplates](https://help.aliyun.com/document_detail/73759.html) to query available launch templates. When both a launch template and launch configuration parameters (`LaunchConfiguration.*`) are specified, the launch template takes precedence.
         self.launch_template_id = launch_template_id
-        # The version of the launch template associated with the auto provisioning group. You can call the [DescribeLaunchTemplateVersions](https://help.aliyun.com/document_detail/73761.html) operation to query the versions of available launch templates.
+        # The version of the launch template associated with the auto provisioning group. Call [DescribeLaunchTemplateVersions](https://help.aliyun.com/document_detail/73761.html) to query available launch template versions.
         # 
-        # Default value: the default version of the launch template.
+        # Default value: The default version of the launch template.
         self.launch_template_version = launch_template_version
-        # The maximum price of spot instances in the auto provisioning group.
+        # The maximum price for spot instances in the auto provisioning group.
         # 
-        # >  When both `MaxSpotPrice` and `LaunchTemplateConfig.N.MaxPrice` are specified, the smaller one of the two parameter values is used.
+        # > If both `MaxSpotPrice` and `LaunchTemplateConfig.N.MaxPrice` are set, the lower value takes effect.
         self.max_spot_price = max_spot_price
-        # The minimum target capacity of the auto provisioning group. The value must be a positive integer. When you specify this parameter, take note of the following items:
+        # The minimum target capacity of the auto provisioning group. Valid values: Positive integers.
         # 
-        # - This parameter takes effect only when `AutoProvisioningGroupType` is set to instant. 
-        # - If the number of instances that can be created in the current region is smaller than the value of this parameter, the operation cannot be called and no instances are created. 
-        # - If the number of instances that can be created in the current region is greater than the value of this parameter, instances can be created based on the specified parameters.
+        # Note:
+        # 
+        # - This parameter takes effect only when creating an auto provisioning group with `AutoProvisioningGroupType=instant`.
+        # 
+        # - If the instance inventory in the region is less than this value, the API call fails and no instances are created.
+        # 
+        # - If the instance inventory in the region is greater than this value, instances are created based on other configured parameters.
         self.min_target_capacity = min_target_capacity
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The policy for creating pay-as-you-go instances. Valid values:
+        # The strategy for creating pay-as-you-go instances. Valid values:
         # 
-        # *   lowest-price: cost optimization policy. The auto provisioning group selects the lowest-priced instance type to create instances.
-        # *   prioritized: priority-based policy. The auto provisioning group creates instances based on the priority specified by `LaunchTemplateConfig.N.Priority`.
+        # - lowest-price: Cost optimization strategy. Selects the instance type with the lowest price.
+        # 
+        # - prioritized: Priority-based strategy. Creates instances based on the priority specified in `LaunchTemplateConfig.N.Priority`.
         # 
         # Default value: lowest-price.
         self.pay_as_you_go_allocation_strategy = pay_as_you_go_allocation_strategy
-        # The target capacity of pay-as-you-go instances in the auto provisioning group. The value must be less than or equal to the `TotalTargetCapacity` value.
+        # The target capacity for pay-as-you-go instances in the auto provisioning group. Valid values: Integers less than or equal to the value of `TotalTargetCapacity`.
         self.pay_as_you_go_target_capacity = pay_as_you_go_target_capacity
-        # The capacity details of the subscription instance.
+        # Detailed capacity configuration for subscription instances.
         self.pre_paid_options = pre_paid_options
-        # The ID of the region in which to create the auto provisioning group. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The region ID of the auto provisioning group. Call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to view the latest Alibaba Cloud region list.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group to which to assign the auto provisioning group.
+        # The resource group ID of the auto provisioning group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The resource pool options to use to create instances. When you specify this parameter, take note of the following items:
+        # The resource pool strategy used when creating instances. Note:
         # 
-        # *   This parameter takes effect only when the auto provisioning group creates pay-as-you-go instances.
-        # *   This parameter takes effect only if you set `AutoProvisioningGroupType` to instant.
+        # - This parameter takes effect only when creating pay-as-you-go instances.
+        # 
+        # - This parameter takes effect only when creating an auto provisioning group with `AutoProvisioningGroupType=instant`.
         self.resource_pool_options_shrink = resource_pool_options_shrink
-        # The policy for creating spot instances. Valid values:
+        # The strategy for creating spot instances. Valid values:
         # 
-        # *   lowest-price: cost optimization policy. The auto provisioning group selects the lowest-priced instance type to create instances.
-        # *   diversified: balanced distribution policy. The auto provisioning group creates instances in zones that are specified in extended configurations and then evenly distributes the instances across the zones.
-        # *   capacity-optimized: capacity-optimized distribution policy. The auto provisioning group creates instances of the optimal instance types across the optimal zones based on resource availability.
+        # - lowest-price: Cost optimization strategy. Selects the instance type with the lowest price.
+        # 
+        # - diversified: Balanced zone distribution strategy. Creates instances across the zones specified in the launch template configurations and distributes them evenly.
+        # 
+        # - capacity-optimized: Capacity optimization strategy. Selects the optimal instance type and zone based on inventory availability.
         # 
         # Default value: lowest-price.
         self.spot_allocation_strategy = spot_allocation_strategy
-        # The operation to be performed on the spot instance when it is interrupted. Valid values:
+        # The behavior when a spot instance is interrupted. Valid values:
         # 
-        # *   stop: stops the spot instance.
-        # *   terminate: releases the spot instance.
+        # - stop: Stops the instance.
+        # 
+        # - terminate: Releases the instance.
         # 
         # Default value: terminate.
         self.spot_instance_interruption_behavior = spot_instance_interruption_behavior
-        # The number of spot instances of the lowest-priced instance type to be created by the auto provisioning group. This parameter takes effect when `SpotAllocationStrategy` is set to `lowest-price`.
+        # Takes effect only when `SpotAllocationStrategy` is set to `lowest-price`. Specifies the number of lowest-priced instance types from which the auto provisioning group creates instances.
         # 
-        # The value must be smaller than the N value specified in `LaunchTemplateConfig.N`.
+        # Valid values: Less than the value of N in `LaunchTemplateConfig.N`.
         self.spot_instance_pools_to_use_count = spot_instance_pools_to_use_count
-        # The target capacity of spot instances in the auto provisioning group. The value must be less than or equal to the `TotalTargetCapacity` value.
+        # The target capacity for spot instances in the auto provisioning group. Valid values: Integers less than or equal to the value of `TotalTargetCapacity`.
         self.spot_target_capacity = spot_target_capacity
-        # The information of system disks on the instance.
+        # The list of system disk configurations for instances.
         self.system_disk_config = system_disk_config
-        # The tags to add to the auto provisioning group.
+        # The list of tags bound to the auto provisioning group.
         self.tag = tag
-        # Specifies whether to release instances in the auto provisioning group when the auto provisioning group is deleted. Valid values:
+        # Specifies whether to release instances in the group when you delete the auto provisioning group. Valid values:
         # 
-        # *   true: releases the instances.
-        # *   false: retains the instances.
+        # - true: Releases instances in the group.
+        # 
+        # - false: Retains instances in the group.
         # 
         # Default value: false.
         self.terminate_instances = terminate_instances
-        # Specifies whether to release instances in the auto provisioning group when the group expires. Valid values:
+        # Specifies whether to release instances in the group when the auto provisioning group expires. Valid values:
         # 
-        # *   true: releases the instances.
-        # *   false: only removes the instances from the auto provisioning group but does not release them.
+        # - true: Releases instances in the group.
+        # 
+        # - false: Only removes instances from the auto provisioning group.
         # 
         # Default value: false.
         self.terminate_instances_with_expiration = terminate_instances_with_expiration
-        # The total target capacity of the auto provisioning group. The value must be a positive integer.
+        # The total target capacity of the auto provisioning group. Valid values: Positive integers.
         # 
-        # The total target capacity of the auto provisioning group must be greater than or equal to the sum of the target capacity of pay-as-you-go instances specified by `PayAsYouGoTargetCapacity` and the target capacity of spot instances specified by `SpotTargetCapacity`.
+        # The total capacity must be greater than or equal to the sum of `PayAsYouGoTargetCapacity` (target capacity for pay-as-you-go instances) and `SpotTargetCapacity` (target capacity for spot instances).
         # 
         # This parameter is required.
         self.total_target_capacity = total_target_capacity
-        # The time at which to start the auto provisioning group. The period of time between this point in time and the point in time specified by `ValidUntil` is the validity period of the auto provisioning group.
+        # The start time of the auto provisioning group. Used together with `ValidUntil` to define the validity period.
         # 
-        # Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # Specify the time in [ISO 8601](https://help.aliyun.com/document_detail/25696.html) format using UTC+0 time. Format: yyyy-MM-ddTHH:mm:ssZ.
         # 
-        # By default, an auto provisioning group is started immediately after it is created.
+        # Default value: The timestamp when the API call takes effect immediately.
         self.valid_from = valid_from
-        # The time at which the auto provisioning group expires. The period of time between this point in time and the point in time specified by `ValidFrom` is the validity period of the auto provisioning group.
+        # The expiration time of the auto provisioning group. Used together with `ValidFrom` to define the validity period.
         # 
-        # Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # Specify the time in [ISO 8601](https://help.aliyun.com/document_detail/25696.html) format using UTC+0 time. Format: yyyy-MM-ddTHH:mm:ssZ.
         # 
         # Default value: 2099-12-31T23:59:59Z.
         self.valid_until = valid_until
@@ -471,13 +486,13 @@ class CreateAutoProvisioningGroupShrinkRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N to add to the auto provisioning group.
+        # The tag key of the auto provisioning group.
         # 
-        # Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length. It cannot start with aliyun or acs: and cannot contain http:// or https://.
+        # N ranges from 1 to 20. If specified, the value cannot be an empty string. The key can be up to 128 characters in length and cannot start with aliyun or acs:. It also cannot contain http\\:// or https\\://.
         self.key = key
-        # The value of tag N to add to the auto provisioning group.
+        # The tag value of the auto provisioning group.
         # 
-        # Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot contain http:// or https://.
+        # N ranges from 1 to 20. If specified, the value can be an empty string. The value can be up to 128 characters in length and cannot contain http\\:// or https\\://.
         self.value = value
 
     def validate(self):
@@ -511,12 +526,15 @@ class CreateAutoProvisioningGroupShrinkRequestSystemDiskConfig(DaraModel):
         self,
         disk_category: str = None,
     ):
-        # The category of the system disk. You can specify multiple disk categories, and the disk categories are prioritized in the order in which they are specified. If a specified disk category is unavailable, the system uses the next available disk category. Valid values:
+        # The system disk type. You can specify multiple candidate disk types. The order specifies their priority. If one disk type is unavailable, the system automatically switches to the next type. Valid values:
         # 
-        # - cloud_efficiency: ultra disk.
-        # - cloud_ssd: standard SSD.
-        # - cloud_essd: ESSD
-        # - cloud: basic disk.
+        # - cloud_efficiency: Ultra disk.
+        # 
+        # - cloud_ssd: Standard SSD.
+        # 
+        # - cloud_essd: ESSD.
+        # 
+        # - cloud: Basic disk.
         self.disk_category = disk_category
 
     def validate(self):
@@ -544,7 +562,7 @@ class CreateAutoProvisioningGroupShrinkRequestPrePaidOptions(DaraModel):
         self,
         specify_capacity_distribution: List[main_models.CreateAutoProvisioningGroupShrinkRequestPrePaidOptionsSpecifyCapacityDistribution] = None,
     ):
-        # The minimum capacity set for different instance types. This parameter is valid only when `AutoProvisioningGroupType` is set to request.
+        # The minimum capacity set for different instance types. This parameter is supported only when `AutoProvisioningGroupType = request`.
         self.specify_capacity_distribution = specify_capacity_distribution
 
     def validate(self):
@@ -581,11 +599,11 @@ class CreateAutoProvisioningGroupShrinkRequestPrePaidOptionsSpecifyCapacityDistr
         instance_types: List[str] = None,
         min_target_capacity: int = None,
     ):
-        # Details about the instance types. Duplicate instance types are not allowed and the instance types are within the LaunchTemplateConfig.InstanceType range.
+        # The set of instance types. Duplicates are not allowed, and the types must be within the range of LaunchTemplateConfig.InstanceType.
         self.instance_types = instance_types
-        # The minimum number of instances to be delivered within the `InstanceTypes` range.
+        # The minimum number of instances to deliver within the `InstanceTypes` range.
         # 
-        # >  `sum(MinTargetCapacity)<= TotalTargetCapacity` indicates that the sum of MinTargetCapacity values of all instance types cannot exceed the TotalTargetCapacity value. If any instance type set cannot meet the MinTargetCapacity requirement due to insufficient inventory or other reasons, the entire request fails.
+        # > `sum(MinTargetCapacity)<= TotalTargetCapacity`. The sum of MinTargetCapacity across all instance type sets cannot exceed TotalTargetCapacity. If any instance type set fails to meet its MinTargetCapacity due to inventory issues, the entire request fails.
         self.min_target_capacity = min_target_capacity
 
     def validate(self):
@@ -631,52 +649,58 @@ class CreateAutoProvisioningGroupShrinkRequestLaunchTemplateConfig(DaraModel):
         v_switch_id: str = None,
         weighted_capacity: float = None,
     ):
-        # The architectures of the instance types.
+        # The list of architecture types for instance types.
         self.architectures = architectures
-        # Specifies whether to include burstable instance types. Valid values:
+        # Specifies whether the instance type supports performance bursts. Valid values:
         # 
-        # *   Exclude: excludes burstable instance types.
-        # *   Include: includes burstable instance types.
-        # *   Required: includes only burstable instance types.
+        # - Exclude: Excludes burstable instance types.
+        # 
+        # - Include: Includes burstable instance types.
+        # 
+        # - Required: Includes only burstable instance types.
         # 
         # Default value: Include.
         self.burstable_performance = burstable_performance
-        # The numbers of vCPUs of instance types.
+        # The list of vCPU counts for instance types.
         self.cores = cores
-        # The instance types that you want to exclude.
+        # The list of instance types to exclude.
         self.excluded_instance_types = excluded_instance_types
-        # The ID of the image. You can use this parameter to specify the image that is used by the current resource pool. If you do not specify this parameter, the image that is configured in `LaunchConfiguration.ImageId` or the launch template is used by default. You can call the [DescribeImages](https://help.aliyun.com/document_detail/25534.html) operation to query the available images. Note: This parameter is supported only when `AutoProvisioningGroupType` is set to instant.
+        # The image ID. Use this parameter to specify the image for the current resource pool. If not set, the image specified in `LaunchConfiguration.ImageId` or the launch template is used by default. Call [DescribeImages](https://help.aliyun.com/document_detail/25534.html) to query available images.
+        # Note: This parameter is supported only when `AutoProvisioningGroupType = instant`.
         self.image_id = image_id
-        # The instance family level of the instance type in extended configuration N. This parameter is used to filter instance types. Valid values of Nextended configuration N, Valid values:
+        # The instance family level, used to filter eligible instance types. Valid values:
         # 
-        # *   EntryLevel: entry level (shared instance types). Instance types of this level are the most cost-effective but may not ensure stable computing performance. Instance types of this level are suitable for scenarios in which the CPU utilization is low. For more information, see [Shared instance families](https://help.aliyun.com/document_detail/108489.html).
-        # *   EnterpriseLevel: enterprise level. Instance types of this level provide stable performance and dedicated resources and are suitable for business scenarios that require high stability. For more information, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
-        # *   CreditEntryLevel: credit entry level. This value is valid only for burstable instances. CPU credits are used to ensure computing performance. Instance types of this level are suitable for scenarios in which the CPU utilization is low but may fluctuate in specific cases. For information about burstable instances, see [Overview](https://help.aliyun.com/document_detail/59977.html).
+        # - EntryLevel: Entry-level, or shared-resource instances. Lower cost but no guaranteed stable computing performance. Suitable for workloads with low average CPU usage. For more information, see [Shared-resource instances](https://help.aliyun.com/document_detail/108489.html).
         # 
-        # Valid values of N: 1 to 10.
+        # - EnterpriseLevel: Enterprise-level. Stable performance with dedicated resources. Suitable for workloads requiring high stability. For more information, see [Instance families](https://help.aliyun.com/document_detail/25378.html).
+        # 
+        # - CreditEntryLevel: Credit entry-level, or burstable instances. Uses CPU credits to guarantee computing performance. Suitable for workloads with low average CPU usage and occasional bursts. For more information, see [Burstable instances](https://help.aliyun.com/document_detail/59977.html).
+        # 
+        # N ranges from 1 to 10.
         self.instance_family_level = instance_family_level
-        # The instance type in extended configuration N. Valid values of N: 1 to 20. For information about the valid values of this parameter, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
+        # The instance type corresponding to the extended launch template. N ranges from 1 to 20. For more information, see [Instance families](https://help.aliyun.com/document_detail/25378.html).
         self.instance_type = instance_type
-        # The maximum price of spot instances in extended configuration N.
+        # The maximum hourly price for spot instances in the extended launch template.
         # 
-        # >  If you specify one or more `LaunchTemplateConfig.N.*` parameters, you must also specify `LaunchTemplateConfig.N.MaxPrice`.
+        # > After `LaunchTemplateConfig` is set, `LaunchTemplateConfig.N.MaxPrice` is required.
         self.max_price = max_price
-        # >  This parameter is in invitational preview and is not publicly available.
+        # > This parameter is in invitational preview and is not supported.
         self.max_quantity = max_quantity
-        # The memory sizes of instance types.
+        # The list of memory sizes for instance types.
         self.memories = memories
-        # The priority of extended configuration N. A value of 0 indicates the highest priority. Valid values: 0 to ∞.
+        # The priority of the extended launch template. A value of 0 indicates the highest priority. Valid values: 0 to +∞.
         self.priority = priority
-        # The ID of the vSwitch in extended configuration N. The zone of the ECS instances created from the extended configuration is determined by the vSwitch.
+        # The ID of the virtual switch to which the ECS instance belongs in the extended launch template. The zone of the ECS instance launched from this template is determined by the virtual switch.
         # 
-        # >  If you specify one or more `LaunchTemplateConfig.N.*` parameters, you must also specify `LaunchTemplateConfig.N.VSwitchId`.
+        # > After `LaunchTemplateConfig` is set, `LaunchTemplateConfig.N.VSwitchId` is required.
         self.v_switch_id = v_switch_id
-        # The weight of the instance type in extended configuration N. A greater weight indicates that a single instance has more computing power and fewer instances are required. The value must be greater than 0.
+        # The weight of the instance type in the extended launch template. A higher value indicates greater computing power per instance and fewer instances needed. Valid values: Greater than 0.
         # 
-        # The weight is calculated based on the computing power of the specified instance type and the minimum computing power of a single instance in the cluster to be created by the auto provisioning group. For example, assume that the minimum computing power of a single instance is 8 vCPUs and 60 GiB of memory.
+        # You can calculate the weight based on the computing power of the specified instance type and the minimum computing power required per node in the cluster. For example, if the minimum computing power per node is 8 vCPUs and 60 GiB memory:
         # 
-        # *   For an instance type with 8 vCPUs and 60 GiB of memory, you can set the weight to 1.
-        # *   For an instance type with 16 vCPUs and 120 GiB of memory, you can set the weight to 2.
+        # - An instance type with 8 vCPUs and 60 GiB memory can have a weight of 1.
+        # 
+        # - An instance type with 16 vCPUs and 120 GiB memory can have a weight of 2.
         self.weighted_capacity = weighted_capacity
 
     def validate(self):
@@ -776,12 +800,15 @@ class CreateAutoProvisioningGroupShrinkRequestDataDiskConfig(DaraModel):
         self,
         disk_category: str = None,
     ):
-        # The category of data disk N. You can use this parameter to specify multiple disk categories, and the disk categories are prioritized in the order in which they are specified. If a specified disk category is unavailable, the system uses the next available disk category. Valid values:
+        # The data disk type. You can specify multiple candidate disk types. The order specifies their priority. If one disk type is unavailable, the system automatically switches to the next type. Valid values:
         # 
-        # - cloud_efficiency: ultra disk
-        # - cloud_ssd: standard SSD
-        # - cloud_essd: ESSD
-        # - cloud: basic disk
+        # - cloud_efficiency: Ultra disk.
+        # 
+        # - cloud_ssd: Standard SSD.
+        # 
+        # - cloud_essd: ESSD.
+        # 
+        # - cloud: Basic disk.
         self.disk_category = disk_category
 
     def validate(self):
@@ -884,218 +911,283 @@ class CreateAutoProvisioningGroupShrinkRequestLaunchConfiguration(DaraModel):
         spot_duration: int = None,
         spot_interruption_behavior: str = None,
     ):
-        # >  This parameter is in invitational preview and is not publicly available.
+        # > This parameter is in invitational preview and is not supported.
         self.arn = arn
-        # The automatic release time of the pay-as-you-go instance. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in Coordinated Universal Time (UTC).
+        # The automatic release time for pay-as-you-go instances. Specify the time in [ISO 8601](https://help.aliyun.com/document_detail/25696.html) format using UTC+0 time. Format: `yyyy-MM-ddTHH:mm:ssZ`.
         # 
-        # *   If the value of `ss` is not `00`, the start time is automatically rounded down to the nearest minute based on the value of `mm`.
-        # *   The specified time must be at least 30 minutes later than the current time.
-        # *   The specified time can be at most three years later than the current time.
+        # - If seconds (`ss`) are not `00`, the time is rounded down to the start of the current minute (`mm`).
+        # 
+        # - The earliest release time is 30 minutes after the current time.
+        # 
+        # - The latest release time cannot exceed three years from the current time.
         self.auto_release_time = auto_release_time
-        # The performance mode of the burstable instance. Valid values:
+        # The running mode of burstable instances. Valid values:
         # 
-        # *   Standard: the standard mode. For more information, see the "Standard mode" section in the [Overview of burstable instances](https://help.aliyun.com/document_detail/59977.html) topic.
-        # *   Unlimited: the unlimited mode. For more information, see the "Unlimited mode" section in the [Overview of burstable instances](https://help.aliyun.com/document_detail/59977.html) topic.
+        # - Standard: Standard mode. For more information, see the "Performance-constrained mode" section in [What are burstable instances?](https://help.aliyun.com/document_detail/59977.html)
         # 
-        # This parameter is empty by default.
+        # - Unlimited: Unlimited mode. For more information, see the "Unlimited mode" section in [What are burstable instances?](https://help.aliyun.com/document_detail/59977.html)
         # 
-        # When both LaunchTemplateId and LaunchConfiguration.\\* parameters are specified, LaunchTemplateId takes precedence.
+        # Default value: None.
+        # 
+        # When both a launch template and launch configuration parameters are specified, the launch template takes precedence.
         self.credit_specification = credit_specification
-        # The cloud disks in the extended configurations of the launch template.
+        # The list of data disk configurations for the extended launch template.
         self.data_disk = data_disk
-        # The ID of the deployment set.
+        # The deployment set ID.
         self.deployment_set_id = deployment_set_id
-        # The instance hostname. Take note of the following items:
+        # The hostname of the instance. Requirements:
         # 
-        # *   The hostname cannot start or end with a period (.) or hyphen (-). The hostname cannot contain consecutive periods (.) or hyphens (-).
-        # *   For Windows instances, the hostname must be 2 to 15 characters in length and cannot contain periods (.) or contain only digits. It can contain letters, digits, and hyphens (-).
-        # *   For instances that run other operating systems such as Linux, the hostname must be 2 to 64 characters in length. You can use periods (.) to separate a hostname into multiple segments. Each segment can contain letters, digits, and hyphens (-).
-        # *   You cannot specify both `LaunchConfiguration.HostName` and `LaunchConfiguration.HostNames.N`. Otherwise, an error is returned.
-        # *   When both LaunchTemplateId and LaunchConfiguration.\\* parameters are specified, LaunchTemplateId takes precedence.
+        # - Periods (.) and hyphens (-) cannot be the first or last character and cannot appear consecutively.
+        # 
+        # - Windows instances: 2–15 characters. Periods (.) are not supported. Cannot consist of only digits. Can contain letters, digits, and hyphens (-).
+        # 
+        # - Other instances (such as Linux): 2–64 characters. Multiple periods (.) are supported. Each segment between periods can contain letters, digits, and hyphens (-).
+        # 
+        # - Do not set both `LaunchConfiguration.HostName` and `LaunchConfiguration.HostNames.N`. Otherwise, an error is returned.
+        # 
+        # - When both a launch template and launch configuration parameters are specified, the launch template takes precedence.
         self.host_name = host_name
-        # The hostname of instance N. You can use this parameter to specify different hostnames for multiple instances. Take note of the following items:
+        # The list of hostnames for one or more instances. Requirements:
         # 
-        # - This parameter takes effect only when `AutoProvisioningGroupType` is set to instant. 
-        # - The value of N indicates the number of instances. Valid values of N: 1 to 1000. The value of N must be the same as the TotalTargetCapacity value. 
-        # - The hostname cannot start or end with a period (.) or hyphen (-). The hostname cannot contain consecutive periods (.) or hyphens (-). 
-        # - For Windows instances, the hostname must be 2 to 15 characters in length and cannot contain periods (.) or contain only digits. The hostname can contain letters, digits, and hyphens (-). 
-        # - For instances that run other operating systems such as Linux, the hostname must be 2 to 64 characters in length. You can use periods (.) to separate the hostname into multiple segments. Each segment can contain letters, digits, and hyphens (-). 
-        # - You cannot specify both `LaunchConfiguration.HostName` and `LaunchConfiguration.HostNames.N`. Otherwise, an error is returned. 
-        # - When both LaunchTemplateId and LaunchConfiguration.* parameters are specified, LaunchTemplateId takes precedence.
+        # - This parameter takes effect only when creating an auto provisioning group with `AutoProvisioningGroupType=instant`.
+        # 
+        # - N indicates the number of instances. Valid values: 1 to 1000. The value must match TotalTargetCapacity.
+        # 
+        # - Periods (.) and hyphens (-) cannot be the first or last character and cannot appear consecutively.
+        # 
+        # - When both a launch template and launch configuration parameters are specified, the launch template takes precedence.
         self.host_names = host_names
-        # The name of the image family. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with `aliyun` or `acs:`. The name cannot contain `http://` or `https://`. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+        # The image family name. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `aliyun` or `acs:`. It also cannot contain `http://` or `https://`.
         self.image_family = image_family
-        # The ID of the image to be used to create the instance. You can call the [DescribeImages](https://help.aliyun.com/document_detail/25534.html) operation to query available image resources. When both LaunchTemplateId and LaunchConfiguration.\\* parameters are specified, LaunchTemplateId takes precedence.
+        # The image ID. This is the image used when launching instances. Call [DescribeImages](https://help.aliyun.com/document_detail/25534.html) to query available images. When both a launch template and launch configuration parameters are specified, the launch template takes precedence.
         self.image_id = image_id
-        # The instance description. The description must be 2 to 256 characters in length. The description can contain letters and cannot start with `http://` or `https://`. When both LaunchTemplateId and LaunchConfiguration.\\* parameters are specified, LaunchTemplateId takes precedence.
+        # The instance description. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`. When both a launch template and launch configuration parameters are specified, the launch template takes precedence.
         self.instance_description = instance_description
-        # The instance name. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with `http://` or `https://`. The name can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
+        # The instance name. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
         # 
-        # The default value of this parameter is the `InstanceId` value.
+        # Default value: The instance `InstanceId`.
         # 
-        # When you batch create instances, you can batch configure sequential names for the instances. For more information, see [Batch configure sequential names or hostnames for multiple instances](https://help.aliyun.com/document_detail/196048.html).
+        # To create multiple ECS instances, you can batch configure sequential instance names. For more information, see [Batch configure sequential instance names or hostnames](https://help.aliyun.com/document_detail/196048.html).
         # 
-        # When both LaunchTemplateId and LaunchConfiguration.\\* parameters are specified, LaunchTemplateId takes precedence.
+        # When both a launch template and launch configuration parameters are specified, the launch template takes precedence.
         self.instance_name = instance_name
-        # The billing method for network usage. Valid values:
+        # The network billing type. Valid values:
         # 
-        # *   PayByBandwidth: pay-by-bandwidth
-        # *   PayByTraffic: pay-by-traffic
+        # - PayByBandwidth: Pay-by-bandwidth.
         # 
-        # >  When the pay-by-traffic billing method for network usage is used, the maximum inbound and outbound bandwidth values are used as the upper limits of bandwidth instead of guaranteed performance specifications. When demands outstrip resource supplies, the maximum bandwidths may be limited. If you want guaranteed bandwidth for your instance, use the pay-by-bandwidth billing method.
+        # - PayByTraffic: Pay-by-traffic.
         # 
-        # When both LaunchTemplateId and LaunchConfiguration.\\* parameters are specified, LaunchTemplateId takes precedence.
+        # > For pay-by-traffic, inbound and outbound bandwidth peaks represent upper limits and are not service-level commitments. Bandwidth may be throttled during resource contention. Use pay-by-bandwidth if your workload requires guaranteed bandwidth.
+        # 
+        # When both a launch template and launch configuration parameters are specified, the launch template takes precedence.
         self.internet_charge_type = internet_charge_type
-        # The maximum inbound public bandwidth. Unit: Mbit/s. Valid values:
+        # The maximum inbound public bandwidth, in Mbit/s. Valid values:
         # 
-        # *   When the maximum outbound public bandwidth is less than or equal to 10 Mbit/s, the valid values of this parameter are 1 to 10 and the default value is 10.
-        # *   When the maximum outbound public bandwidth is greater than 10 Mbit/s, the valid values of this parameter are 1 to the value of `LaunchConfiguration.InternetMaxBandwidthOut`, and the default value is the value of `LaunchConfiguration.InternetMaxBandwidthOut`.
+        # - When outbound public bandwidth is ≤ 10 Mbit/s: 1–10. Default: 10.
         # 
-        # When both LaunchTemplateId and LaunchConfiguration.\\* parameters are specified, LaunchTemplateId takes precedence.
+        # - When outbound public bandwidth is > 10 Mbit/s: 1–`LaunchConfiguration.InternetMaxBandwidthOut`. Default: `LaunchConfiguration.InternetMaxBandwidthOut`.
+        # 
+        # When both a launch template and launch configuration parameters are specified, the launch template takes precedence.
         self.internet_max_bandwidth_in = internet_max_bandwidth_in
-        # The maximum outbound public bandwidth. Unit: Mbit/s. Valid values: 0 to 100.
+        # The maximum outbound public bandwidth, in Mbit/s. Valid values: 0–100.
         # 
         # Default value: 0.
         # 
-        # When both LaunchTemplateId and LaunchConfiguration.\\* parameters are specified, LaunchTemplateId takes precedence.
+        # When both a launch template and launch configuration parameters are specified, the launch template takes precedence.
         self.internet_max_bandwidth_out = internet_max_bandwidth_out
         # Specifies whether the instance is I/O optimized. Valid values:
         # 
-        # *   none: The instance is not I/O optimized.
-        # *   optimized: The instance is I/O optimized.
+        # - none: Not I/O optimized.
         # 
-        # For instances of retired instance types, the default value is none. For instances of other instance types, the default value is optimized.
+        # - optimized: I/O optimized.
         # 
-        # When both LaunchTemplateId and LaunchConfiguration.\\* parameters are specified, LaunchTemplateId takes precedence.
+        # For retired instance types, the default value is none. For other instance types, the default value is optimized.
+        # 
+        # When both a launch template and launch configuration parameters are specified, the launch template takes precedence.
         self.io_optimized = io_optimized
         # The key pair name.
         # 
-        # *   For Windows instances, this parameter is ignored. This parameter is empty by default.
-        # *   By default, password-based logon is disabled for Linux instances.
+        # - For Windows instances, this parameter is ignored. Default value: empty.
         # 
-        # When both LaunchTemplateId and LaunchConfiguration.\\* parameters are specified, LaunchTemplateId takes precedence.
+        # - For Linux instances, password logon is disabled after initialization.
+        # 
+        # When both a launch template and launch configuration parameters are specified, the launch template takes precedence.
         self.key_pair_name = key_pair_name
-        # The instance password. The password must be 8 to 30 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. The password can contain the following special characters:
+        # The instance password. The password must be 8 to 30 characters in length and include at least three of the following: uppercase letters, lowercase letters, digits, and special characters. Valid special characters:
         # 
-        # ``( ) ` ~ ! @ # $ % ^ & * - _ + = | { }  ``: ; \\" < > , . ? /``  For Windows instances, the password cannot start with a forward slash (/). When both LaunchTemplateId and LaunchConfiguration.* parameters are specified, LaunchTemplateId takes precedence. `
+        # ``()`~!@#$%^&*-_+=|{}`[]`:;\\"<>,.?/``
+        # 
+        # For Windows instances, the password cannot start with a forward slash (/).
+        # 
+        # When both a launch template and launch configuration parameters are specified, the launch template takes precedence.
         self.password = password
         # Specifies whether to use the password preset in the image. Valid values:
         # 
-        # *   true: uses the password preset in the image.
-        # *   false: does not use the password preset in the image.
+        # - true: Uses the preset password.
         # 
-        # When both LaunchTemplateId and LaunchConfiguration.\\* parameters are specified, LaunchTemplateId takes precedence.
+        # - false: Does not use the preset password.
+        # 
+        # When both a launch template and launch configuration parameters are specified, the launch template takes precedence.
         self.password_inherit = password_inherit
-        # The name of the instance Resource Access Management (RAM) role. You can call the [ListRoles](https://help.aliyun.com/document_detail/28713.html) operation provided by RAM to query the instance RAM roles that you created. When both LaunchTemplateId and LaunchConfiguration.\\* parameters are specified, LaunchTemplateId takes precedence.
+        # The RAM role name of the instance. Use the RAM API [ListRoles](https://help.aliyun.com/document_detail/28713.html) to query your created RAM roles. When both a launch template and launch configuration parameters are specified, the launch template takes precedence.
         self.ram_role_name = ram_role_name
-        # The ID of the resource group to which to assign the instance. When both LaunchTemplateId and LaunchConfiguration.\\* parameters are specified, LaunchTemplateId takes precedence.
+        # The resource group ID of the instance. When both a launch template and launch configuration parameters are specified, the launch template takes precedence.
         self.resource_group_id = resource_group_id
         # Specifies whether to enable security hardening. Valid values:
         # 
-        # *   Active: enables security hardening. This value is applicable only to public images.
-        # *   Deactive: disables security hardening. This value is applicable to all image types.
+        # - Active: Enables security hardening. Applies only to public images.
         # 
-        # When both LaunchTemplateId and LaunchConfiguration.\\* parameters are specified, LaunchTemplateId takes precedence.
+        # - Deactive: Disables security hardening. Applies to all image types.
+        # 
+        # When both a launch template and launch configuration parameters are specified, the launch template takes precedence.
         self.security_enhancement_strategy = security_enhancement_strategy
-        # The ID of the security group to which to assign the instance. When both LaunchTemplateId and LaunchConfiguration.\\* parameters are specified, LaunchTemplateId takes precedence.
+        # The security group ID of the instance. When both a launch template and launch configuration parameters are specified, the launch template takes precedence.
         self.security_group_id = security_group_id
-        # The IDs of the security groups to which the new ECS instances belong.
+        # The list of security groups to which the instance belongs.
         self.security_group_ids = security_group_ids
-        # The system disk information of instances. When both LaunchTemplateId and LaunchConfiguration.\\* parameters are specified, LaunchTemplateId takes precedence.
+        # System disk information for the instance. When both a launch template and launch configuration parameters are specified, the launch template takes precedence.
         self.system_disk = system_disk
         # The category of the system disk. Valid values:
         # 
-        # *   cloud_efficiency: ultra disk
-        # *   cloud_ssd: standard SSD
-        # *   cloud_essd: enhanced SSD (ESSD)
-        # *   cloud: basic disk
+        # - cloud_efficiency: Ultra disk.
         # 
-        # For non-I/O optimized instances of retired instance types, the default value is cloud. For other instances, the default value is cloud_efficiency.
+        # - cloud_ssd: Standard SSD.
         # 
-        # When both LaunchTemplateId and LaunchConfiguration.\\* parameters are specified, LaunchTemplateId takes precedence.
+        # - cloud_essd: ESSD.
+        # 
+        # - cloud: Basic disk.
+        # 
+        # For retired instance types that are not I/O optimized, the default value is cloud. Otherwise, the default value is cloud_efficiency.
+        # 
+        # When both a launch template and launch configuration parameters are specified, the launch template takes precedence.
         self.system_disk_category = system_disk_category
-        # The description of the system disk. The description must be 2 to 256 characters in length. The description can contain letters and cannot start with `http://` or `https://`.
+        # The description of the system disk. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
         # 
-        # When both LaunchTemplateId and LaunchConfiguration.\\* parameters are specified, LaunchTemplateId takes precedence.
+        # When both a launch template and launch configuration parameters are specified, the launch template takes precedence.
         self.system_disk_description = system_disk_description
-        # The name of the system disk. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with `http://` or `https://`. The name can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-).
+        # The name of the system disk. The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
         # 
-        # This parameter is empty by default.
+        # Default value: empty.
         # 
-        # When both LaunchTemplateId and LaunchConfiguration.\\* parameters are specified, LaunchTemplateId takes precedence.
+        # When both a launch template and launch configuration parameters are specified, the launch template takes precedence.
         self.system_disk_name = system_disk_name
-        # The performance level of the ESSD to be used as the system disk. Valid values:
+        # The performance level of the ESSD used as the system disk. Valid values:
         # 
-        # *   PL0 (default): A single ESSD can deliver up to 10,000 random read/write IOPS.
-        # *   PL1: A single ESSD can deliver up to 50,000 random read/write IOPS.
-        # *   PL2: A single ESSD can deliver up to 100,000 random read/write IOPS.
-        # *   PL3: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
+        # - PL0 (default): Up to 10,000 random read/write IOPS per disk.
         # 
-        # For more information about ESSD performance levels, see [ESSDs](https://help.aliyun.com/document_detail/122389.html).
+        # - PL1: Up to 50,000 random read/write IOPS per disk.
         # 
-        # When both LaunchTemplateId and LaunchConfiguration.\\* parameters are specified, LaunchTemplateId takes precedence.
+        # - PL2: Up to 100,000 random read/write IOPS per disk.
+        # 
+        # - PL3: Up to 1,000,000 random read/write IOPS per disk.
+        # 
+        # For more information about selecting ESSD performance levels, see [ESSD](https://help.aliyun.com/document_detail/122389.html).
+        # 
+        # When both a launch template and launch configuration parameters are specified, the launch template takes precedence.
         self.system_disk_performance_level = system_disk_performance_level
-        # The size of the system disk. Valid values: 20 to 500. Unit: GiB. The value must be at least 20 and greater than or equal to the size of the image specified by LaunchConfiguration.ImageId.
+        # The size of the system disk, in GiB. Valid values: 20–500. The value must be greater than or equal to max{20, size of the image specified by LaunchConfiguration.ImageId}.
         # 
-        # Default value: 40 or the size of the image specified by LaunchConfiguration.ImageId, whichever is greater.
+        # Default value: max{40, size of the image specified by LaunchConfiguration.ImageId}.
         # 
-        # When both LaunchTemplateId and LaunchConfiguration.\\* parameters are specified, LaunchTemplateId takes precedence.
+        # When both a launch template and launch configuration parameters are specified, the launch template takes precedence.
         self.system_disk_size = system_disk_size
-        # The tag in the extended configurations of the launch template.
+        # The list of tags for the extended launch template.
         self.tag = tag
-        # The instance user data. The user data must be encoded in Base64. The raw data can be up to 32 KB in size. When both LaunchTemplateId and LaunchConfiguration.\\* parameters are specified, LaunchTemplateId takes precedence.
+        # The instance user data. Encode the data in Base64. The raw data cannot exceed 32 KB. When both a launch template and launch configuration parameters are specified, the launch template takes precedence.
         self.user_data = user_data
-        # Specifies whether to enable auto-renewal for the reserved instance. This parameter is required only when the instance uses the subscription billing method. Valid values:
+        # Specifies whether to enable auto-renewal. Takes effect when creating subscription instances. Valid values:
         # 
-        # *   true
-        # *   false (default)
+        # - true: Enables auto-renewal.
+        # 
+        # - false (default): Disables auto-renewal.
         self.auto_renew = auto_renew
-        # The auto-renewal period of the instance. Valid values:
+        # The auto-renewal duration per cycle. Valid values:
         # 
-        # Valid values when PeriodUnit is set to Month: 1, 2, 3, 6, 12, 24, 36, 48, and 60.
+        # <props="china">
+        # 
+        # - When PeriodUnit=Week: 1, 2, 3.
+        # 
+        # - When PeriodUnit=Month: 1, 2, 3, 6, 12, 24, 36, 48, 60.
+        # 
+        # 
+        # 
+        # <props="intl">
+        # 
+        # When PeriodUnit=Month: 1, 2, 3, 6, 12, 24, 36, 48, 60.
+        # 
+        # 
         # 
         # Default value: 1.
         self.auto_renew_period = auto_renew_period
+        # CPU configuration.
         self.cpu_options = cpu_options
-        # The image options.
+        # Image-related properties.
         # 
-        # When you specify this parameter, take note of the following items:
+        # Note:
         # 
-        # *   This parameter takes effect only when the AutoProvisioningGroupType parameter is set to instant.
+        # - This parameter takes effect only when creating an auto provisioning group with AutoProvisioningGroupType=instant.
         self.image_options = image_options
-        # The subscription period of the instance. The unit is specified by `PeriodUnit`. This parameter takes effect and is required only if the subscription billing method is selected. Valid values:
+        # The subscription duration. The unit is specified by `PeriodUnit`. Required when creating subscription instances. Valid values:
         # 
-        # Valid values if PeriodUnit is set to Month: 1, 2, 3, 6, and 12.
+        # <props="china">
+        # 
+        # - When PeriodUnit=Week, Period values: 1, 2, 3, 4.
+        # 
+        # - When PeriodUnit=Month, Period values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, 60.
+        # 
+        # 
+        # 
+        # <props="intl">
+        # 
+        # When PeriodUnit=Month, Period values: 1, 2, 3, 6, 12.
+        # 
+        # 
+        # 
+        # <props="partner">
+        # 
+        # When PeriodUnit=Month, Period values: 1, 2, 3, 6, 12.
         self.period = period
-        # The unit of the subscription period. Default value: Month. Valid values:
+        # The time unit for subscription billing. Valid values:
         # 
-        # Month
+        # <props="china">
+        # 
+        # - Week.
+        # 
+        # - Month (default).
+        # 
+        # 
+        # 
+        # <props="intl">
+        # 
+        # Month (default).
         self.period_unit = period_unit
         self.scheduler_options = scheduler_options
         self.security_options = security_options
-        # The protection period of the spot instance. Unit: hours. Default value: 1. Valid values: Valid values:
+        # The reserved duration for spot instances, in hours. Default value: 1. Valid values:
         # 
-        # *   1: After a spot instance is created, Alibaba Cloud ensures that the instance is not automatically released within 1 hour. After the 1-hour protection period ends, the system compares the bid price with the market price and checks the resource inventory to determine whether to retain or release the instance.
-        # *   0: After a spot instance is created, Alibaba Cloud does not ensure that the instance runs for 1 hour. The system compares the bid price with the market price and checks the resource inventory to determine whether to retain or release the instance.
+        # - 1: Alibaba Cloud guarantees that the instance runs for 1 hour without being automatically released. After 1 hour, the system compares your bid price with the market price and checks inventory to decide whether to retain or reclaim the instance.
         # 
-        # Alibaba Cloud sends an ECS system event to notify you 5 minutes before the instance is released. The spot instance is billed by second. We recommend that you specify an appropriate protection period based on your business requirements.
+        # - 0: Alibaba Cloud does not guarantee that the instance runs for 1 hour. The system immediately compares your bid price with the market price and checks inventory to decide whether to retain or reclaim the instance.
         # 
-        # When you specify this parameter, take note of the following items:
+        # Alibaba Cloud sends an ECS system event notification 5 minutes before reclaiming a spot instance. Spot instances are billed per second. Choose the reserved duration based on your task execution time.
         # 
-        # *   This parameter takes effect only when the AutoProvisioningGroupType parameter is set to instant.
+        # Note:
+        # 
+        # - This parameter takes effect only when creating an auto provisioning group with AutoProvisioningGroupType=instant.
         self.spot_duration = spot_duration
-        # The interruption event of the spot instances. Valid values:
+        # The interruption behavior for spot instances. Valid values:
         # 
-        # *   Terminate: The instance is released.
-        # *   Stop: The instance is stopped in economical mode.
+        # - Terminate: Releases the instance immediately.
         # 
-        # For information about the economical mode, see [Economical mode](https://help.aliyun.com/document_detail/63353.html).
+        # - Stop: Puts the instance into economical mode.
+        # 
+        # For more information about economical mode, see [Economical mode](https://help.aliyun.com/document_detail/63353.html).
         # 
         # Default value: Terminate.
         # 
-        # When you specify this parameter, take note of the following items:
+        # Note:
         # 
-        # *   This parameter takes effect only when the AutoProvisioningGroupType parameter is set to instant.
+        # - This parameter takes effect only when creating an auto provisioning group with AutoProvisioningGroupType=instant.
         self.spot_interruption_behavior = spot_interruption_behavior
 
     def validate(self):
@@ -1466,10 +1558,11 @@ class CreateAutoProvisioningGroupShrinkRequestLaunchConfigurationImageOptions(Da
         self,
         login_as_non_root: bool = None,
     ):
-        # Specifies whether the instance that uses the image supports logons of the ecs-user user. Valid value:
+        # Specifies whether instances using this image support logging on as the ecs-user. Valid values:
         # 
-        # *   true: The instance that uses the image supports logons of the ecs-user user.
-        # *   false: The instance that uses the image does not support logons of the ecs-user user.
+        # - true: Supported.
+        # 
+        # - false: Not supported.
         self.login_as_non_root = login_as_non_root
 
     def validate(self):
@@ -1498,7 +1591,17 @@ class CreateAutoProvisioningGroupShrinkRequestLaunchConfigurationCpuOptions(Dara
         core: int = None,
         threads_per_core: int = None,
     ):
+        # The number of CPU cores.
+        # 
+        # Default value: See [Customize CPU options](https://help.aliyun.com/zh/ecs/user-guide/specify-and-view-cpu-options?spm=a2c4g.11186623.0.0.734f769asTEobd).
         self.core = core
+        # The number of CPU threads. The vCPU count of an ECS instance equals CpuOptions.Core × CpuOptions.ThreadsPerCore.
+        # 
+        # CpuOptions.ThreadsPerCore=1 disables CPU hyper-threading.
+        # 
+        # Only specific instance types support setting the number of CPU threads.
+        # 
+        # Valid values and default values: See [Customize CPU options](https://help.aliyun.com/zh/ecs/user-guide/specify-and-view-cpu-options?spm=a2c4g.11186623.0.0.734f769aeIFsoj).
         self.threads_per_core = threads_per_core
 
     def validate(self):
@@ -1533,9 +1636,9 @@ class CreateAutoProvisioningGroupShrinkRequestLaunchConfigurationTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag. Valid values of N: 1 to 20. The tag key cannot be an empty string. It can be up to 128 characters in length and cannot start with acs: or aliyun. It cannot contain `http://` or `https://`. If both the LaunchTemplateId and LaunchConfiguration.* parameters are specified, the LaunchTemplateId parameter takes precedence.
+        # The tag key of the instance. N ranges from 1 to 20. If specified, the value cannot be an empty string. The key can be up to 128 characters in length and cannot start with aliyun or acs:. It also cannot contain `http://` or `https://`. When both a launch template and launch configuration parameters are specified, the launch template takes precedence.
         self.key = key
-        # The value of the tag. Valid values of N: 1 to 20. The tag value can be an empty string. It can be up to 128 characters in length. It cannot start with acs: or contain `http://` or `https://`. If both the LaunchTemplateId and LaunchConfiguration.* parameters are specified, the LaunchTemplateId parameter takes precedence.
+        # The tag value of the instance. N ranges from 1 to 20. If specified, the value can be an empty string. The value can be up to 128 characters in length and cannot start with acs:. It also cannot contain `http://` or `https://`. When both a launch template and launch configuration parameters are specified, the launch template takes precedence.
         self.value = value
 
     def validate(self):
@@ -1574,48 +1677,51 @@ class CreateAutoProvisioningGroupShrinkRequestLaunchConfigurationSystemDisk(Dara
         kmskey_id: str = None,
         provisioned_iops: int = None,
     ):
-        # The ID of the automatic snapshot policy to apply to the system disk.
+        # The automatic snapshot policy ID applied to the system disk.
         # 
-        # When you specify this parameter, take note of the following items:
+        # Note:
         # 
-        # *   This parameter takes effect only when the AutoProvisioningGroupType parameter is set to instant.
+        # - This parameter takes effect only when creating an auto provisioning group with AutoProvisioningGroupType=instant.
         self.auto_snapshot_policy_id = auto_snapshot_policy_id
-        # Specifies whether to enable the performance burst feature for the system disk. Valid values:
+        # Specifies whether to enable performance burst. Valid values:
         # 
-        # *   true: force attaches the disk to the instance.
-        # *   false: disables the performance burst feature for the system disk.
+        # - true: Enables performance burst.
         # 
-        # >  This parameter is available only if you set `LaunchConfiguration.SystemDisk.Category` to `cloud_auto`. For more information, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html).
+        # - false: Disables performance burst.
+        # 
+        # > This parameter is supported only when `SystemDisk.Category` is set to `cloud_auto`. For more information, see [ESSD AutoPL](https://help.aliyun.com/document_detail/368372.html).
         self.bursting_enabled = bursting_enabled
-        # The algorithm to use to encrypt the system disk. Valid values:
+        # The encryption algorithm for the system disk. Valid values:
         # 
-        # *   aes-256
-        # *   sm4-128
+        # - aes-256.
+        # 
+        # - sm4-128.
         # 
         # Default value: aes-256.
         # 
-        # When both LaunchTemplateId and LaunchConfiguration.\\* parameters are specified, LaunchTemplateId takes precedence.
+        # When both a launch template and launch configuration parameters are specified, the launch template takes precedence.
         # 
-        # >  This parameter is not publicly available.
+        # > This parameter is not yet available.
         self.encrypt_algorithm = encrypt_algorithm
-        # Specifies whether to encrypt the system disk. Valid values:
+        # Specifies whether to encrypt system disk N. Valid values:
         # 
-        # *   true: encrypts system disk N.
-        # *   false: does not encrypt system disk N.
+        # - true: Encrypts the disk.
         # 
-        # Default value: false. Valid values:
+        # - false: Does not encrypt the disk.
         # 
-        # When both LaunchTemplateId and LaunchConfiguration.\\* parameters are specified, LaunchTemplateId takes precedence.
+        # Default value: false.
+        # 
+        # When both a launch template and launch configuration parameters are specified, the launch template takes precedence.
         self.encrypted = encrypted
-        # The ID of the KMS key to use for system disk N.
+        # The KMS key ID for the system disk.
         # 
-        # When both LaunchTemplateId and LaunchConfiguration.\\* parameters are specified, LaunchTemplateId takes precedence.
+        # When both a launch template and launch configuration parameters are specified, the launch template takes precedence.
         self.kmskey_id = kmskey_id
-        # The provisioned read/write IOPS of the ESSD AutoPL disk to use as the system disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}.
+        # The provisioned read/write IOPS for ESSD AutoPL disks. Valid values: 0 to min{50,000, 1000 × capacity - baseline performance}.
         # 
-        # Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}.
+        # Baseline performance = min{1,800 + 50 × capacity, 50,000}.
         # 
-        # >  This parameter is available only if you set LaunchConfiguration.SystemDisk.Category to cloud_auto. For more information, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html).
+        # > This parameter is supported only when SystemDisk.Category is set to cloud_auto. For more information, see [ESSD AutoPL](https://help.aliyun.com/document_detail/368372.html).
         self.provisioned_iops = provisioned_iops
 
     def validate(self):
@@ -1686,103 +1792,115 @@ class CreateAutoProvisioningGroupShrinkRequestLaunchConfigurationDataDisk(DaraMo
         size: int = None,
         snapshot_id: str = None,
     ):
-        # The ID of the automatic snapshot policy to apply to data disk N.
+        # The automatic snapshot policy ID applied to the data disk.
         # 
-        # When you specify this parameter, take note of the following items:
+        # Note:
         # 
-        # *   This parameter takes effect only when the AutoProvisioningGroupType parameter is set to instant.
+        # - This parameter takes effect only when creating an auto provisioning group with AutoProvisioningGroupType=instant.
         self.auto_snapshot_policy_id = auto_snapshot_policy_id
-        # Specifies whether to enable the performance burst feature for the system disk. Valid values:
+        # Specifies whether to enable performance burst. Valid values:
         # 
-        # *   true: force attaches the disk to the instance.
-        # *   false: disables the performance burst feature for the system disk.
+        # - true: Enables performance burst.
         # 
-        # >  This parameter is available only if you set LaunchConfiguration.DataDisk.N.Category to cloud_auto. For more information, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html).
+        # - false: Disables performance burst.
+        # 
+        # > This parameter is supported only when DiskCategory is set to cloud_auto. For more information, see [ESSD AutoPL](https://help.aliyun.com/document_detail/368372.html).
         self.bursting_enabled = bursting_enabled
-        # The category of data disk N. Valid values of N: 1 to 16. Valid values:
+        # The category of data disk N. N ranges from 1 to 16. Valid values:
         # 
-        # *   cloud_efficiency: utra disk.
-        # *   cloud_ssd: standard SSD.
-        # *   cloud_essd: ESSD.
-        # *   cloud: basic disk.
+        # - cloud_efficiency: Ultra disk.
+        # 
+        # - cloud_ssd: Standard SSD.
+        # 
+        # - cloud_essd: ESSD.
+        # 
+        # - cloud: Basic disk.
         # 
         # For I/O optimized instances, the default value is cloud_efficiency. For non-I/O optimized instances, the default value is cloud.
         # 
-        # When both LaunchTemplateId and LaunchConfiguration.\\* parameters are specified, LaunchTemplateId takes precedence.
+        # When both a launch template and launch configuration parameters are specified, the launch template takes precedence.
         self.category = category
-        # Specifies whether to release data disk N when the instance to which the data disk is attached is released. Valid values:
+        # Specifies whether to release the data disk when the instance is released. Valid values:
         # 
-        # *   true: releases data disk N when the associated instance is released.
-        # *   false: does not release data disk N when the associated instance is released.
+        # - true: Releases the data disk with the instance.
+        # 
+        # - false: Does not release the data disk with the instance.
         # 
         # Default value: true.
         # 
-        # When both LaunchTemplateId and LaunchConfiguration.\\* parameters are specified, LaunchTemplateId takes precedence.
+        # When both a launch template and launch configuration parameters are specified, the launch template takes precedence.
         self.delete_with_instance = delete_with_instance
-        # The description of data disk N. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`. When both LaunchTemplateId and LaunchConfiguration.\\* parameters are specified, LaunchTemplateId takes precedence.
+        # The description of the data disk. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`. When both a launch template and launch configuration parameters are specified, the launch template takes precedence.
         self.description = description
-        # The mount point of data disk N. When both LaunchTemplateId and LaunchConfiguration.\\* parameters are specified, LaunchTemplateId takes precedence.
+        # The mount point of the data disk. When both a launch template and launch configuration parameters are specified, the launch template takes precedence.
         self.device = device
-        # The name of data disk N. The name must be 2 to 128 characters in length. The name must start with a letter but cannot start with `http://` or `https://`. The name can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-).
+        # The name of the data disk. The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
         # 
-        # This parameter is left empty by default.
+        # Default value: empty.
         # 
-        # When both LaunchTemplateId and LaunchConfiguration.\\* parameters are specified, LaunchTemplateId takes precedence.
+        # When both a launch template and launch configuration parameters are specified, the launch template takes precedence.
         self.disk_name = disk_name
-        # >  This parameter is not publicly available.
+        # > This parameter is not yet available.
         self.encrypt_algorithm = encrypt_algorithm
         # Specifies whether to encrypt data disk N. Valid values:
         # 
-        # *   true: encrypts system disk N.
-        # *   false: does not encrypt system disk N.
+        # - true: Encrypts the disk.
         # 
-        # Default value: false. Valid values:
+        # - false: Does not encrypt the disk.
         # 
-        # When both LaunchTemplateId and LaunchConfiguration.\\* parameters are specified, LaunchTemplateId takes precedence.
+        # Default value: false.
+        # 
+        # When both a launch template and launch configuration parameters are specified, the launch template takes precedence.
         self.encrypted = encrypted
-        # The ID of the Key Management Service (KMS) key to use for data disk N. When both LaunchTemplateId and LaunchConfiguration.\\* parameters are specified, LaunchTemplateId takes precedence.
+        # The KMS key ID for the data disk. When both a launch template and launch configuration parameters are specified, the launch template takes precedence.
         self.kms_key_id = kms_key_id
-        # The performance level of the Enterprise SSD (ESSD) to use as data disk N. The value of N in this parameter must be the same as the value of N in `LaunchConfiguration.DataDisk.N.Category`. Valid values:
+        # The performance level of the ESSD used as a data disk. The value of N must match the N in `LaunchConfiguration.DataDisk.N.Category`. Valid values:
         # 
-        # *   PL0: A single ESSD can deliver up to 10000 random read/write IOPS.
-        # *   PL1 (default): A single ESSD can deliver up to 50000 random read/write IOPS.
-        # *   PL2: A single ESSD can deliver up to 100000 random read/write IOPS.
-        # *   PL3: A single ESSD can deliver up to 1000000 random read/write IOPS.
+        # - PL0: Up to 10,000 random read/write IOPS per disk.
         # 
-        # For information about ESSD performance levels, see [ESSDs](https://help.aliyun.com/document_detail/122389.html).
+        # - PL1 (default): Up to 50,000 random read/write IOPS per disk.
         # 
-        # When both LaunchTemplateId and LaunchConfiguration.\\* parameters are specified, LaunchTemplateId takes precedence.
+        # - PL2: Up to 100,000 random read/write IOPS per disk.
+        # 
+        # - PL3: Up to 1,000,000 random read/write IOPS per disk.
+        # 
+        # For more information about selecting ESSD performance levels, see [ESSD](https://help.aliyun.com/document_detail/122389.html).
+        # 
+        # When both a launch template and launch configuration parameters are specified, the launch template takes precedence.
         self.performance_level = performance_level
-        # The provisioned read/write IOPS of the ESSD AutoPL disk to use as the system disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}.
+        # The provisioned read/write IOPS for ESSD AutoPL disks. Valid values: 0 to min{50,000, 1000 × capacity - baseline performance}.
         # 
-        # Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}.
+        # Baseline performance = min{1,800 + 50 × capacity, 50,000}.
         # 
-        # >  This parameter is available only if you set LaunchConfiguration.DataDisk.N.Category to cloud_auto. For more information, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html).
+        # > This parameter is supported only when DiskCategory is set to cloud_auto. For more information, see [ESSD AutoPL](https://help.aliyun.com/document_detail/368372.html).
         self.provisioned_iops = provisioned_iops
-        # The size of data disk N. Valid values of N: 1 to 16. Unit: GiB. Valid values:
+        # The size of data disk N, in GiB. N ranges from 1 to 16. Valid values:
         # 
-        # *   Valid values if you set LaunchConfiguration.DataDisk.N.Category to cloud_efficiency: 20 to 32768.
+        # - cloud_efficiency: 20–32768.
         # 
-        # *   Valid values if you set LaunchConfiguration.DataDisk.N.Category to cloud_ssd: 20 to 32768.
+        # - cloud_ssd: 20–32768.
         # 
-        # *   Valid values if you set LaunchConfiguration.DataDisk.N.Category to cloud_essd: vary based on the `LaunchConfiguration.DataDisk.N.PerformanceLevel` value.
+        # - cloud_essd: The valid range depends on the value of `LaunchConfiguration.DataDisk.N.PerformanceLevel`.
         # 
-        #     *   Valid values if you set LaunchConfiguration.DataDisk.N.PerformanceLevel to PL0: 40 to 32768.
-        #     *   Valid values if you set LaunchConfiguration.DataDisk.N.PerformanceLevel to PL1: 20 to 32768.
-        #     *   Valid values if you set LaunchConfiguration.DataDisk.N.PerformanceLevel to PL2: 461 to 32768.
-        #     *   Valid values if you set LaunchConfiguration.DataDisk.N.PerformanceLevel to PL3: 1261 to 32768.
+        #   - PL0: 40–32768.
         # 
-        # *   Valid values if you set LaunchConfiguration.DataDisk.N.Category to cloud: 5 to 2000.
+        #   - PL1: 20–32768.
         # 
-        # >  The value of this parameter must be greater than or equal to the size of the snapshot specified by `LaunchConfiguration.DataDisk.N.SnapshotId`.
+        #   - PL2: 461–32768.
         # 
-        # When both LaunchTemplateId and LaunchConfiguration.\\* parameters are specified, LaunchTemplateId takes precedence.
+        #   - PL3: 1261–32768
+        # 
+        # - cloud: 5–2000.
+        # 
+        # > The value must be greater than or equal to the size of the snapshot specified by `LaunchConfiguration.DataDisk.N.SnapshotId`.
+        # 
+        # When both a launch template and launch configuration parameters are specified, the launch template takes precedence.
         self.size = size
-        # The ID of the snapshot to use to create data disk N. Valid values of N: 1 to 16.
+        # The snapshot used to create data disk N. N ranges from 1 to 16.
         # 
-        # If you specify this parameter, `LaunchConfiguration.DataDisk.N.Size` is ignored. The size of data disk N is the same as that of the snapshot specified by this parameter. Use snapshots created after July 15, 2013. Otherwise, an error is returned and your request is rejected.
+        # After this parameter is specified, `LaunchConfiguration.DataDisk.N.Size` is ignored. The actual disk size equals the size of the specified snapshot. Snapshots created on or before July 15, 2013 are not supported and will cause the request to fail.
         # 
-        # When both LaunchTemplateId and LaunchConfiguration.\\* parameters are specified, LaunchTemplateId takes precedence.
+        # When both a launch template and launch configuration parameters are specified, the launch template takes precedence.
         self.snapshot_id = snapshot_id
 
     def validate(self):
@@ -1890,11 +2008,11 @@ class CreateAutoProvisioningGroupShrinkRequestLaunchConfigurationArn(DaraModel):
         role_type: str = None,
         rolearn: str = None,
     ):
-        # >  This parameter is in invitational preview and is not publicly available.
+        # > This parameter is in invitational preview and is not supported.
         self.assume_role_for = assume_role_for
-        # >  This parameter is in invitational preview and is not publicly available.
+        # > This parameter is in invitational preview and is not supported.
         self.role_type = role_type
-        # >  This parameter is in invitational preview and is not publicly available.
+        # > This parameter is in invitational preview and is not supported.
         self.rolearn = rolearn
 
     def validate(self):

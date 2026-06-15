@@ -10,7 +10,7 @@ class CreateCapacityReservationResponseBody(DaraModel):
         private_pool_options_id: str = None,
         request_id: str = None,
     ):
-        # The capacity reservation ID.
+        # The ID of the capacity reservation.
         self.private_pool_options_id = private_pool_options_id
         # The request ID.
         self.request_id = request_id

@@ -20,29 +20,29 @@ class DescribeInstanceHistoryEventsResponseBody(DaraModel):
         self.instance_system_event_set = instance_system_event_set
         # A pagination token. It can be used in the next request to retrieve a new page of results.
         # 
-        # >  If the NextToken parameter is not returned when you use the MaxResults and NextToken parameters to perform a paged query, no more data is returned.
+        # > If the NextToken parameter is not returned when you use the MaxResults and NextToken parameters to perform a paged query, no more data is returned.
         self.next_token = next_token
         # The page number.
         # 
-        # > 
+        # >
         # 
-        # *   If MaxResults and NextToken are used to query results by page, ignore this parameter.
+        # - If MaxResults and NextToken are used to query results by page, ignore this parameter.
         # 
-        # *   This parameter will be removed in the future. We recommend that you use the NextToken and MaxResults parameters for a paged query.
+        # - This parameter will be removed in the future. We recommend that you use the NextToken and MaxResults parameters for a paged query.
         self.page_number = page_number
         # The number of entries per page.
         # 
-        # > 
+        # >
         # 
-        # *   If MaxResults and NextToken are used to query results by page, ignore this parameter.
+        # - If MaxResults and NextToken are used to query results by page, ignore this parameter.
         # 
-        # *   This parameter will be removed in the future. We recommend that you use the NextToken and MaxResults parameters for a paged query.
+        # - This parameter will be removed in the future. We recommend that you use the NextToken and MaxResults parameters for a paged query.
         self.page_size = page_size
         # The ID of the request.
         self.request_id = request_id
         # The total number of instances.
         # 
-        # >  If you specify the MaxResults and NextToken request parameters to perform a paged query, the value of the TotalCount response parameter is invalid.
+        # > If you specify the MaxResults and NextToken request parameters to perform a paged query, the value of the TotalCount response parameter is invalid.
         self.total_count = total_count
 
     def validate(self):

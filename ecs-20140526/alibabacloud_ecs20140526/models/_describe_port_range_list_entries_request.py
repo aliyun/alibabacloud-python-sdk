@@ -16,11 +16,11 @@ class DescribePortRangeListEntriesRequest(DaraModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the port list.
+        # The ID of the port range list.
         # 
         # This parameter is required.
         self.port_range_list_id = port_range_list_id
-        # The region ID of the port list. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/2679950.html) operation to query the most recent region list.
+        # The region ID of the port range list. You can call [DescribeRegions](https://help.aliyun.com/document_detail/2679950.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id

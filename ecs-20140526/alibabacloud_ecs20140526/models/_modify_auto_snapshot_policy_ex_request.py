@@ -27,6 +27,7 @@ class ModifyAutoSnapshotPolicyExRequest(DaraModel):
         # The retention period of the snapshot copy in the destination region. Unit: days. Valid values:
         # 
         # - -1: The snapshot copy is retained until it is deleted.
+        # 
         # - 1 to 65535: The snapshot copy is retained for a specified number of days.
         # 
         # Default value: -1.
@@ -35,8 +36,9 @@ class ModifyAutoSnapshotPolicyExRequest(DaraModel):
         self.copy_encryption_configuration = copy_encryption_configuration
         # Specifies whether to enable cross-region replication for the automatic snapshot.
         # 
-        # *   true: enables cross-region replication for the automatic snapshot.
-        # *   false: disables cross-region replication for the automatic snapshot.
+        # - true: enables cross-region replication for the automatic snapshot.
+        # 
+        # - false: disables cross-region replication for the automatic snapshot.
         self.enable_cross_region_copy = enable_cross_region_copy
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -57,13 +59,15 @@ class ModifyAutoSnapshotPolicyExRequest(DaraModel):
         # 
         # To schedule multiple automatic snapshots to be created in a week, you can specify multiple days.
         # 
-        # *   You can specify up to seven days over a one-week period.
-        # *   You must set this parameter to a JSON array such as `["1", "2" ... "7"]`. Separate the values in the array with commas (,).
+        # - You can specify up to seven days over a one-week period.
+        # 
+        # - You must set this parameter to a JSON array such as `["1", "2" ... "7"]`. Separate the values in the array with commas (,).
         self.repeat_weekdays = repeat_weekdays
         # The retention period of the automatic snapshot. Unit: days. Valid values:
         # 
-        # *   \\-1: The automatic snapshot is permanently retained.
-        # *   1 to 65536: The auto snapshot is retained for the specified number of days.
+        # - -1: The automatic snapshot is permanently retained.
+        # 
+        # - 1 to 65536: The auto snapshot is retained for the specified number of days.
         # 
         # Default value: -1.
         self.retention_days = retention_days
@@ -71,8 +75,9 @@ class ModifyAutoSnapshotPolicyExRequest(DaraModel):
         # 
         # To schedule multiple automatic snapshots to be created in a day, you can specify multiple hours.
         # 
-        # *   You can specify up to 24 points in time.
-        # *   You must set this parameter to a JSON array such as `["0", "1", ... "23"]`. Separate the points in time with commas (,).
+        # - You can specify up to 24 points in time.
+        # 
+        # - You must set this parameter to a JSON array such as `["0", "1", ... "23"]`. Separate the points in time with commas (,).
         self.time_points = time_points
 
     def validate(self):
@@ -180,8 +185,9 @@ class ModifyAutoSnapshotPolicyExRequestCopyEncryptionConfiguration(DaraModel):
         self.arn = arn
         # Specifies whether to enable encryption for cross-region snapshot replication. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         # 
         # Default value: false.
         self.encrypted = encrypted

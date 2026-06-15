@@ -29,7 +29,7 @@ class DescribeDedicatedHostClustersRequest(DaraModel):
         self.dedicated_host_cluster_ids = dedicated_host_cluster_ids
         # The name of the host group.
         self.dedicated_host_cluster_name = dedicated_host_cluster_name
-        # >  This parameter is unavailable for use.
+        # > This parameter is unavailable for use.
         self.lock_reason = lock_reason
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -51,11 +51,11 @@ class DescribeDedicatedHostClustersRequest(DaraModel):
         self.region_id = region_id
         # The resource group ID of the host group. You can use a resource group ID to filter no more than 1,000 host groups.
         # 
-        # >  A default resource group is not supported.
+        # > A default resource group is not supported.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # >  This parameter is unavailable for use.
+        # > This parameter is unavailable for use.
         self.status = status
         # The tags of the host group.
         self.tag = tag

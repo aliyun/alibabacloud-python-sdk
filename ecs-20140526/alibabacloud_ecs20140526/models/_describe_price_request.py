@@ -47,148 +47,209 @@ class DescribePriceRequest(DaraModel):
         self.data_disk = data_disk
         self.scheduler_options = scheduler_options
         self.system_disk = system_disk
-        # The number of ECS instances. You can specify this parameter when you want to query the prices of multiple instances that have specific specifications. Valid values: 1 to 1000.
+        # The number of resources for which to query prices. Valid values: 1–1000.
         # 
         # Default value: 1.
         self.amount = amount
-        # The total number of times that the elasticity assurance can be applied. Set the value to Unlimited. This value indicates that the elasticity assurance can be applied an unlimited number of times within its effective period.
+        # The number of times the elasticity assurance can be used. Set this to `Unlimited`, which allows the assurance to be used any number of times during its effective period.
         # 
-        # Default value: Unlimited.
+        # Default value: `Unlimited`.
         self.assurance_times = assurance_times
-        # The storage capacity. Unit: GiB.
+        # The memory capacity for the elasticity assurance. Unit: GiB.
         self.capacity = capacity
-        # The type of the dedicated host. You can call the [DescribeDedicatedHostTypes](https://help.aliyun.com/document_detail/134240.html) operation to query the most recent list of dedicated host types.
+        # The dedicated host type. You can call the [DescribeDedicatedHostTypes](https://help.aliyun.com/document_detail/134240.html) operation to query dedicated host types.
         self.dedicated_host_type = dedicated_host_type
-        # This parameter takes effect only when ResourceType is set to instance.
+        # This parameter is valid only when `ResourceType` is set to `instance`.
         # 
-        # The image ID. Images contain the runtime environments to load when instances start. You can call the [DescribeImages](https://help.aliyun.com/document_detail/25534.html) operation to query available images. If you do not specify this parameter, the system queries the prices of Linux images.
+        # The ID of the image. The image provides the runtime environment for the instance. You can call the [DescribeImages](https://help.aliyun.com/document_detail/25534.html) operation to query available images. If you do not specify this parameter, the system queries prices for Linux instances by default.
         self.image_id = image_id
-        # The total number of reserved instances for an instance type.
+        # The number of instances to include in the reserved instance offering.
         # 
-        # Valid values: 1 to 1000.
+        # Valid values: 1–1000.
         self.instance_amount = instance_amount
-        # The total number of vCPUs supported by the elasticity assurance. When you call this API operation, the system calculates the number of instances that an elasticity assurance must support based on the specified value of InstanceType. The calculated value is rounded up to the nearest integer.
+        # The total number of vCPUs for instances that are covered by the elasticity assurance. When you call this operation, the system calculates the number of supported instances based on the specified `InstanceType` and rounds the value up to the nearest integer.
         # 
-        # > When you call this API operation to query the price of an elasticity assurance, you can only specify either InstanceCoreCpuCount or InstanceAmount.
+        # > When you query the price of an elasticity assurance, you can specify only one of the `InstanceCpuCoreCount` and `InstanceAmount` parameters.
         self.instance_cpu_core_count = instance_cpu_core_count
         # The network type of the instance. Valid values:
         # 
-        # *   classic: classic network
-        # *   vpc: Virtual Private Cloud (VPC)
+        # - `classic`: classic network
         # 
-        # Default value: vpc.
+        # - `vpc`: VPC
+        # 
+        # Default value: `vpc`.
         self.instance_network_type = instance_network_type
-        # The instance type. When `ResourceType` is set to `instance`, you must specify this parameter. For more information, see [Instance families](https://help.aliyun.com/document_detail/25378.html) or call the [DescribeInstanceTypes](https://help.aliyun.com/document_detail/25620.html) operation to query the most recent list of instance types.
+        # The instance type. This parameter is required when `ResourceType` is set to `instance`. For more information, see [Instance type families](https://help.aliyun.com/document_detail/25378.html) or call the [DescribeInstanceTypes](https://help.aliyun.com/document_detail/25620.html) operation to query the instance types.
         self.instance_type = instance_type
-        # The instance types. You can select only a single instance type when you configure an elasticity assurance in unlimited mode.
+        # The instance type. You can specify only one instance type for an elasticity assurance of the `Unlimited` type.
         self.instance_type_list = instance_type_list
         # The billing method for network usage. Valid values:
         # 
-        # *   PayByBandwidth: pay-by-bandwidth
-        # *   PayByTraffic: pay-by-traffic
+        # - `PayByBandwidth`: pay-by-bandwidth
         # 
-        # Default value: PayByTraffic
+        # - `PayByTraffic`: pay-by-traffic
+        # 
+        # Default value: `PayByTraffic`.
         self.internet_charge_type = internet_charge_type
-        # The maximum outbound public bandwidth. Unit: Mbit/s. Valid values: 0 to 100.
+        # The maximum outbound public bandwidth. Unit: Mbit/s. Valid values: 0–100.
         # 
         # Default value: 0.
         self.internet_max_bandwidth_out = internet_max_bandwidth_out
         # Specifies whether the instance is I/O optimized. Valid values:
         # 
-        # *   none: The instance is not I/O optimized.
-        # *   optimized: The instance is I/O optimized.
+        # - `none`: non-I/O-optimized.
         # 
-        # When the instance type specified by the InstanceType parameter belongs to [Generation I instance families](https://help.aliyun.com/document_detail/55263.html), the default value of this parameter is none.
+        # - `optimized`: I/O-optimized.
         # 
-        # When the instance type specified by the InstanceType parameter does not belong to [Generation I instance families](https://help.aliyun.com/document_detail/55263.html), the default value of this parameter is optimized.
+        # For [generation I](https://help.aliyun.com/document_detail/55263.html) instances, the default value is `none`.
+        # 
+        # For other instance types, the default value is `optimized`.
         self.io_optimized = io_optimized
         # The Internet service provider (ISP). Valid values:
         # 
-        # *   cmcc: China Mobile
-        # *   telecom: China Telecom
-        # *   unicom: China Unicom
-        # *   multiCarrier: multi-line ISP
-        self.isp = isp
-        # The payment option of the reserved instance. Valid values:
+        # - `cmcc`: China Mobile
         # 
-        # *   No Upfront
-        # *   Partial Upfront
-        # *   All Upfront
+        # - `telecom`: China Telecom
+        # 
+        # - `unicom`: China Unicom
+        # 
+        # - `multiCarrier`: BGP (Multi-ISP)
+        self.isp = isp
+        # The payment option for the reserved instance. Valid values:
+        # 
+        # - `No Upfront`
+        # 
+        # - `Partial Upfront`
+        # 
+        # - `All Upfront`
         self.offering_type = offering_type
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The billing cycle of the ECS instance. Valid values:
+        # The billing duration of the resource. This parameter is used with `PriceUnit`. Valid values:
         # 
-        # *   Valid values when PriceUnit is set to Month: 1, 2, 3, 4, 5, 6, 7, 8, and 9.
-        # *   Valid values when PriceUnit is set to Year: 1, 2, 3, 4, and 5.
-        # *   Set the value to 1 when PriceUnit is set to Hour.
+        # <props="china">
+        # 
+        # - If `PriceUnit` is set to `Month`: 1–9.
+        # 
+        # - If `PriceUnit` is set to `Year`: 1–5.
+        # 
+        # - If `PriceUnit` is set to `Hour`: 1.
+        # 
+        # - If `PriceUnit` is set to `Week`: 1–4.
+        # 
+        # 
+        # 
+        # <props="intl">
+        # 
+        # - If `PriceUnit` is set to `Month`: 1–9.
+        # 
+        # - If `PriceUnit` is set to `Year`: 1–5.
+        # 
+        # - If `PriceUnit` is set to `Hour`: 1.
+        # 
+        # 
         # 
         # Default value: 1.
         self.period = period
-        # The operating system of the image that is used by the instance. Valid values:
+        # The operating system of the instance. Valid values:
         # 
-        # *   Windows: Windows Server operating system
-        # *   Linux: Linux and UNIX-like operating system
+        # - `Windows`: Windows Server
+        # 
+        # - `Linux`: Linux
         self.platform = platform
-        # The pricing unit of the ECS resource. Valid values:
+        # The billing cycle of the resource. Valid values:
         # 
-        # *   Month
-        # *   Year
-        # *   Hour (default)
+        # <props="china">
+        # 
+        # - `Month`: For monthly pricing.
+        # 
+        # - `Year`: For yearly pricing.
+        # 
+        # - `Hour` (Default): For hourly pricing.
+        # 
+        # - `Week`: For weekly pricing.
+        # 
+        # 
+        # 
+        # <props="intl">
+        # 
+        # - `Month`: For monthly pricing.
+        # 
+        # - `Year`: For yearly pricing.
+        # 
+        # - `Hour` (Default): For hourly pricing.
         self.price_unit = price_unit
-        # The assurance schedules of the time-segmented elasticity assurance.
+        # The list of recurrence rules for the time-based elasticity assurance.
         # 
-        # >  Time-segmented elasticity assurances are available only in specific regions and to specific users. To use time-segmented elasticity assurances, [submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket-intl).
+        # <props="china">
+        # 
+        # > The time-based elasticity assurance feature is available only in specific regions and to specific users. To use this feature, [submit a ticket](https://selfservice.console.aliyun.com/ticket/createIndex).
+        # 
+        # 
+        # 
+        # <props="intl">
+        # 
+        # > The time-based elasticity assurance feature is available only in specific regions and to specific users. To use this feature, [submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket-intl).
         self.recurrence_rules = recurrence_rules
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent list of regions.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the list of Alibaba Cloud regions.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The type of the resource. Valid values:
+        # The type of the resource for which you want to query the price. Valid values:
         # 
-        # *   instance: queries the most recent prices of ECS instances. If you set this parameter to `instance`, specify `InstanceType`.
-        # *   disk: queries the most recent prices of cloud disks. If you set this parameter to `disk`, specify `DataDisk.1.Category` and `DataDisk.1.Size`.
-        # *   diskperformance: Queries the most recent prices of the provioned performance of the Enterprise SSD (ESSD) AutoPL disk. You must also specify `DataDisk.1.Category` and `DataDisk.1.ProvisionedIops`.
-        # *   bandwidth: queries the most recent prices for network usage.
-        # *   ddh: queries the most recent prices of dedicated hosts.
-        # *   ElasticityAssurance: queries the most recent prices of elasticity assurances. If you set this parameter to `ElasticityAssurance`, specify `InstanceType`.
-        # *   CapacityReservation: queries the most recent prices of capacity reservations. If you set this parameter to `CapacityReservation`, specify `InstanceType`.
+        # - `instance`: Query the prices of ECS instances. If you set this parameter to `instance`, you must also specify the `InstanceType` parameter.
         # 
-        # Default value: instance.
+        # - `disk`: Query the prices of cloud disks. If you set this parameter to `disk`, you must also specify the `DataDisk.1.Category` and `DataDisk.1.Size` parameters.
+        # 
+        # - `diskperformance`: Query the prices of the provisioned performance of an ESSD AutoPL cloud disk. You must also specify the `DataDisk.1.Category` and `DataDisk.1.ProvisionedIops` parameters.
+        # 
+        # - `bandwidth`: Query the prices of network bandwidth.
+        # 
+        # - `ddh`: Query the prices of dedicated hosts.
+        # 
+        # - `ElasticityAssurance`: Query the prices of Elasticity Assurance. If you set this parameter to `ElasticityAssurance`, you must also specify the `InstanceType` parameter.
+        # 
+        # - `CapacityReservation`: Query the prices of Capacity Reservation. If you set this parameter to `CapacityReservation`, you must also specify the `InstanceType` parameter.
+        # 
+        # Default value: `instance`.
         self.resource_type = resource_type
         # The scope of the reserved instance. Valid values:
         # 
-        # *   Region: regional
-        # *   Zone: zonal
+        # - `Region`: region-scoped
         # 
-        # Default value: Region.
+        # - `Zone`: zone-scoped
+        # 
+        # Default value: `Region`.
         self.scope = scope
         # The protection period of the spot instance. Unit: hours. Default value: 1. Valid values:
         # 
-        # *   1: After a spot instance is created, Alibaba Cloud ensures that the instance is not automatically released within 1 hour. After the 1-hour protection period ends, the system compares the bid price with the market price and checks the resource inventory to determine whether to retain or release the instance.
-        # *   0: After a spot instance is created, Alibaba Cloud does not ensure that the instance runs for 1 hour. The system compares the bid price with the market price and checks the resource inventory to determine whether to retain or release the instance.
+        # - `1`: Alibaba Cloud does not automatically release the instance within 1 hour. After the 1-hour protection period ends, the system checks the market price and resource inventory to determine whether to retain or release the instance.
         # 
-        # Alibaba Cloud sends an ECS system event to notify you 5 minutes before the instance is released. Spot instances are billed by second. We recommend that you specify a protection period based on your business requirements.
+        # - `0`: The instance has no protection period. The system checks the market price and resource inventory to determine whether to retain or release the instance.
         # 
-        # >  This parameter takes effect only when SpotStrategy is set to SpotWithPriceLimit or SpotAsPriceGo.
+        # Alibaba Cloud sends you an ECS system event five minutes before the instance is released. Spot instances are billed by the second. Select a protection period based on the time required to complete your task.
+        # 
+        # > This parameter is valid only when `SpotStrategy` is set to `SpotWithPriceLimit` or `SpotAsPriceGo`.
         self.spot_duration = spot_duration
-        # The bidding policy for the pay-as-you-go instance. Valid values:
+        # The preemption policy for the pay-as-you-go instance. Valid values:
         # 
-        # *   NoSpot: The instance is a regular pay-as-you-go instance.
-        # *   SpotWithPriceLimit: The instance is created as a spot instance that has a user-defined maximum hourly price.
-        # *   SpotAsPriceGo: The instance is created as a spot instance whose bid price is based on the market price at the time of purchase. The market price can be up to the pay-as-you-go price.
+        # - `NoSpot`: A regular pay-as-you-go instance.
         # 
-        # Default value: NoSpot.
+        # - `SpotWithPriceLimit`: A spot instance for which you specify a maximum hourly price.
         # 
-        # >  This parameter takes effect only when `PriceUnit` is set to Hour and `Period` is set to 1. The default value of `PriceUnit` is `Hour` and the default value of `Period` is `1`. Therefore, you do not need to set `PriceUnit` or `Period` when you set SpotStrategy.
+        # - `SpotAsPriceGo`: A spot instance where the system automatically bids up to the pay-as-you-go price.
+        # 
+        # Default value: `NoSpot`.
+        # 
+        # > This parameter applies only when you query hourly prices, where `PriceUnit` is `Hour` and `Period` is `1`. Because these are the default values, you do not need to set them when you use `SpotStrategy`.
         self.spot_strategy = spot_strategy
-        # The time when the time-segmented assurance of the elasticity assurance takes effect. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. For more information, see [ISO 8601](https://help.aliyun.com/document_detail/25696.html).
+        # The time when the time-based elasticity assurance takes effect. The time must be specified in UTC and formatted as `yyyy-MM-ddTHH:mm:ssZ` in accordance with the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard.
         self.start_time = start_time
-        # The zone ID.
+        # The ID of the availability zone.
         # 
-        # > Prices of spot instances vary based on zones. When you query the price of a spot instance, specify ZoneId.
+        # > The prices of spot instances may vary by availability zone. When you query the price of a spot instance, specify `ZoneId` to query the price for a specific availability zone.
         self.zone_id = zone_id
 
     def validate(self):
@@ -434,27 +495,31 @@ class DescribePriceRequestRecurrenceRules(DaraModel):
         recurrence_value: str = None,
         start_hour: int = None,
     ):
-        # The end time of the assurance period for the capacity reservation of the time-segmented elasticity assurance. Specify an on-the-hour point in time.
+        # The end time of the time-based assurance. The value must be on the hour.
         self.end_hour = end_hour
-        # The type of the assurance schedule. Valid values:
+        # The recurrence type of the rule. Valid values:
         # 
-        # *   Daily
-        # *   Weekly
-        # *   Monthly
+        # - `Daily`: repeats on a daily basis.
         # 
-        # >  If you specify this parameter, you must specify `RecurrenceType` and `RecurrenceValue`.
+        # - `Weekly`: repeats on a weekly basis.
+        # 
+        # - `Monthly`: repeats on a monthly basis.
+        # 
+        # > You must specify both `RecurrenceType` and `RecurrenceValue`.
         self.recurrence_type = recurrence_type
-        # The days of the week or month on which the capacity reservation of the time-segmented elasticity assurance takes effect or the interval, in number of days, at which the capacity reservation takes effect.
+        # The recurrence value.
         # 
-        # *   If you set `RecurrenceType` to `Daily`, you can specify only one value. Valid values: 1 to 31. The value specifies that the capacity reservation takes effect every few days.
-        # *   If you set `RecurrenceType` to `Weekly`, you can specify multiple values. Separate the values with commas (,). Valid values: 0, 1, 2, 3, 4, 5, and 6, which specify Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, and Saturday, respectively. Example: `1,2`, which specifies that the capacity reservation takes effect on Monday and Tuesday.
-        # *   If you set `RecurrenceType` to `Monthly`, you can specify two values in the `A-B` format. Valid values of A and B: 1 to 31. B must be greater than or equal to A. Example: `1-5`, which specifies that the capacity reservation takes effect every day from the first day up to the fifth day of each month.
+        # - If `RecurrenceType` is set to `Daily`, this parameter takes a single value that specifies the recurrence interval in days. Valid values: 1–31.
         # 
-        # >  If you specify this parameter, you must specify `RecurrenceType` and `RecurrenceValue`.
+        # - If `RecurrenceType` is set to `Weekly`, this parameter can have multiple values separated by commas (,). The values 0, 1, 2, 3, 4, 5, and 6 correspond to Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, and Saturday. For example, `1,2` specifies Monday and Tuesday.
+        # 
+        # - If `RecurrenceType` is set to `Monthly`, the value must be in the `A–B` format. The values of A and B must be between 1 and 31, and B must be greater than or equal to A. For example, `1–5` specifies the first to the fifth day of each month.
+        # 
+        # > You must specify both `RecurrenceType` and `RecurrenceValue`.
         self.recurrence_value = recurrence_value
-        # The start time of the assurance period for the capacity reservation of the time-segmented elasticity assurance. Specify an on-the-hour point in time.
+        # The start time of the time-based assurance. The value must be on the hour.
         # 
-        # >  You must specify both StartHour and EndHour. The EndHour value must be at least 4 hours later than the StartHour value.
+        # > Both `StartHour` and `EndHour` are required. The interval between them must be at least 4 hours.
         self.start_hour = start_hour
 
     def validate(self):
@@ -502,42 +567,54 @@ class DescribePriceRequestSystemDisk(DaraModel):
         performance_level: str = None,
         size: int = None,
     ):
-        # The category of the system disk. Valid values:
+        # The category of the system disk. You must specify `ImageId` when you query the price of a system disk. Valid values:
         # 
-        # *   cloud: basic disk
-        # *   cloud_efficiency: ultra disk
-        # *   cloud_ssd: standard SSD
-        # *   ephemeral_ssd: local SSD
-        # *   cloud_essd: Enterprise SSD (ESSD)
-        # *   cloud_auto: ESSD AutoPL disk
+        # - `cloud`: basic cloud disk
         # 
-        # Default value:
+        # - `cloud_efficiency`: efficiency cloud disk
         # 
-        # *   When InstanceType is set to a retired instance type and `IoOptimized` is set to `none`, the default value is `cloud`.
-        # *   In other cases, the default value is `cloud_efficiency`.
+        # - `cloud_ssd`: SSD cloud disk
         # 
-        # >  If you want to query the price of a system disk, you must also specify `ImageId`.
+        # - `ephemeral_ssd`: local SSD
+        # 
+        # - `cloud_essd`: ESSD
+        # 
+        # - `cloud_auto`: ESSD AutoPL
+        # 
+        # <props="china">
+        # 
+        # - `cloud_essd_entry`: ESSD Entry
+        # 
+        # 
+        # 
+        # 
+        # * For retired instance types where `IoOptimized` is `none`, the default value is `cloud`.
+        # 
+        # * In other cases, the default value is `cloud_efficiency`.<props="china">After January 30, 2026, for instance types that support only ESSDs, the default value will be changed from `cloud_efficiency` to `cloud_essd` at PL0. For more information, see the [change announcement](https://www.aliyun.com/notice/117844).
         self.category = category
-        # The performance level of the system disk when the disk is an ESSD. This parameter is valid only when `SystemDiskCategory` is set to cloud_essd. Valid values:
+        # The performance level of the ESSD when used as a system disk. This parameter is valid only when `SystemDisk.Category` is set to `cloud_essd`. Valid values:
         # 
-        # PL0, PL1 (default), PL2, PL3.
+        # `PL0`<br>`PL1` (Default)<br>`PL2`<br>`PL3`<br><br><br>
         self.performance_level = performance_level
         # The size of the system disk. Unit: GiB. Valid values:
         # 
-        # *   Basic disk (cloud): 20 to 500.
+        # - Basic cloud disk: 20–500.
         # 
-        # *   ESSD (cloud_essd): Valid values vary based on the SystemDisk.PerformanceLevel value.
+        # - ESSD cloud disk:
         # 
-        #     *   Valid values when SystemDisk.PerformanceLevel is set to PL0: 1 to 2048.
-        #     *   Valid values when SystemDisk.PerformanceLevel is set to PL1: 20 to 2048.
-        #     *   Valid values when SystemDisk.PerformanceLevel is set to PL2: 461 to 2048.
-        #     *   Valid values when SystemDisk.PerformanceLevel is set to PL3: 1261 to 2048.
+        #   - PL0: 1–2048.
         # 
-        # *   ESSD AutoPL disk (cloud_auto): 1 to 2048.
+        #   - PL1: 20–2048.
         # 
-        # *   Other disk categories: 20 to 2048.
+        #   - PL2: 461–2048.
         # 
-        # Default value: 20 or the size of the image specified by ImageId, whichever is greater.
+        #   - PL3: 1261–2048.
+        # 
+        # - ESSD AutoPL cloud disk: 1–2048.
+        # 
+        # - Other cloud disk categories: 20–2048.
+        # 
+        # Default value: `max{20, ImageSize}`, which is the greater of 20 and the size of the specified image (`ImageId`).
         self.size = size
 
     def validate(self):
@@ -578,10 +655,21 @@ class DescribePriceRequestSchedulerOptions(DaraModel):
         dedicated_host_id: str = None,
         deployment_set_strategy: str = None,
     ):
-        # This parameter takes effect only when ResourceType is set to instance.
+        # This parameter is valid only when `ResourceType` is set to `instance`.
         # 
-        # The ID of the dedicated host. You can call the [DescribeDedicatedHosts](https://help.aliyun.com/document_detail/134242.html) operation to query the dedicated host list.
+        # The ID of the dedicated host. You can call the [DescribeDedicatedHosts](https://help.aliyun.com/document_detail/134242.html) operation to query dedicated host IDs.
         self.dedicated_host_id = dedicated_host_id
+        # The deployment set strategy. Valid values:
+        # 
+        # - `Availability`: high availability
+        # 
+        # - `AvailabilityGroup`: high availability for deployment set groups
+        # 
+        # - `LowLatency`: low latency
+        # 
+        # - `ProximityLooseDispersion`: proximity loose dispersion
+        # 
+        # > Only the `ProximityLooseDispersion` strategy incurs a fee. The API response includes price details for the deployment set (where `Resource` is `deploymentSet`) only when this strategy is used. Other deployment set strategies are free of charge.
         self.deployment_set_strategy = deployment_set_strategy
 
     def validate(self):
@@ -620,50 +708,75 @@ class DescribePriceRequestDataDisk(DaraModel):
     ):
         # The category of data disk N. Valid values:
         # 
-        # *   cloud: basic disk.
-        # *   cloud_efficiency: ultra disk.
-        # *   cloud_ssd: standard SSD.
-        # *   ephemeral_ssd: local SSD.
-        # *   cloud_essd: ESSD.
-        # *   cloud_auto: ESSD AutoPL disk.
+        # - `cloud`: basic cloud disk
         # 
-        # Valid values of N: 1 to 16.
+        # - `cloud_efficiency`: efficiency cloud disk
+        # 
+        # - `cloud_ssd`: SSD cloud disk
+        # 
+        # - `ephemeral_ssd`: local SSD
+        # 
+        # - `cloud_essd`: ESSD
+        # 
+        # - `cloud_auto`: ESSD AutoPL
+        # 
+        # <props="china">
+        # 
+        # - `cloud_essd_entry`: ESSD Entry
+        # 
+        # 
+        # 
+        # 
+        # The value of N can be 1–16.
         self.category = category
-        # The performance level of data disk N when the disk is an ESSD. This parameter takes effect only when `DataDisk.N.Category` is set to cloud_essd. Valid values:
+        # The performance level of data disk N when it is an ESSD. This parameter is valid only when `DataDisk.N.Category` is set to `cloud_essd`. Valid values:
         # 
-        # *   PL0
-        # *   PL1 (default)
-        # *   PL2
-        # *   PL3
+        # - `PL0`
         # 
-        # Valid values of N: 1 to 16.
+        # - `PL1` (Default)
+        # 
+        # - `PL2`
+        # 
+        # - `PL3`
+        # 
+        # The value of N can be 1–16.
         self.performance_level = performance_level
         # The size of data disk N. Unit: GiB. Valid values:
         # 
-        # *   Valid values if DataDisk.N.Category is set to cloud: 5 to 2000.
+        # - `cloud`: 5–2000
         # 
-        # *   Valid values if DataDisk.N.Category is set to cloud_efficiency: 20 to 32768.
+        # - `cloud_efficiency`: 20–32768
         # 
-        # *   Valid values if DataDisk.N.Category is set to cloud_ssd: 20 to 32768.
+        # - `cloud_ssd`: 20–32768
         # 
-        # *   Valid values if DataDisk.N.Category is set to cloud_auto: 1 to 32768.
+        # - `cloud_auto`: 1–32768
         # 
-        # *   Valid values if DataDisk.N.Category is set to cloud_essd: vary based on the `DataDisk.N.PerformanceLevel` value.
+        # <props="china">
         # 
-        #     *   Valid values if DataDisk.N.PerformanceLevel is set to PL0: 1 to 32768.
-        #     *   Valid values if DataDisk.N.PerformanceLevel is set to PL1: 20 to 32768.
-        #     *   Valid values if DataDisk.N.PerformanceLevel is set to PL2: 461 to 32768.
-        #     *   Valid values if DataDisk.N.PerformanceLevel is set to PL3: 1261 to 32768.
+        # - `cloud_essd_entry`: 10–32768
         # 
-        # *   Valid values if DataDisk.N.Category is set to ephemeral_ssd: 5 to 800.
         # 
-        # Valid values of N: 1 to 16.
+        # 
+        # 
+        # - `cloud_essd`: The value range depends on the `DataDisk.N.PerformanceLevel`.
+        # 
+        #   - PL0: 1–32768
+        # 
+        #   - PL1: 20–32768
+        # 
+        #   - PL2: 461–32768
+        # 
+        #   - PL3: 1261–32768
+        # 
+        # - `ephemeral_ssd`: 5–800
+        # 
+        # The value of N can be 1–16.
         self.size = size
-        # The provisioned read/write IOPS of the ESSD AutoPL disk to use as data disk N. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}.
+        # The provisioned read/write IOPS for the ESSD AutoPL cloud disk. Valid values: 0–`min{50000, 1000 * Capacity - Baseline IOPS}`.
         # 
-        # Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}.
+        # `Baseline IOPS = min{1800 + 50 * Capacity, 50000}`.
         # 
-        # >  This parameter is available only if you set `DataDisk.N.Category` to `cloud_auto`. For more information, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html).
+        # > This parameter is valid only when `DataDisk.N.Category` is set to `cloud_auto`. For more information, see [ESSD AutoPL cloud disks](https://help.aliyun.com/document_detail/368372.html).
         self.provisioned_iops = provisioned_iops
 
     def validate(self):

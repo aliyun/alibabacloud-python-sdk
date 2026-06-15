@@ -32,7 +32,7 @@ class ModifySecurityGroupEgressRuleRequest(DaraModel):
         source_cidr_ip: str = None,
         source_port_range: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.**** For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.\\*\\*\\*\\* For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The description of the security group rule. The description must be 1 to 512 characters in length.
         self.description = description
@@ -42,9 +42,11 @@ class ModifySecurityGroupEgressRuleRequest(DaraModel):
         self.dest_cidr_ip = dest_cidr_ip
         # The ID of the destination security group. You must specify at least one of `DestGroupId` and `DestCidrIp`.
         # 
-        # *   At least one of DestGroupId, DestCidrIp, Ipv6DestCidrIp, and DestPrefixListId must be specified.
-        # *   If DestGroupId is specified but DestCidrIp is not specified, the NicType parameter can be set only to intranet.
-        # *   If both DestGroupId and DestCidrIp are specified, DestCidrIp takes precedence.
+        # - At least one of DestGroupId, DestCidrIp, Ipv6DestCidrIp, and DestPrefixListId must be specified.
+        # 
+        # - If DestGroupId is specified but DestCidrIp is not specified, the NicType parameter can be set only to intranet.
+        # 
+        # - If both DestGroupId and DestCidrIp are specified, DestCidrIp takes precedence.
         self.dest_group_id = dest_group_id
         # The Alibaba Cloud account that manages the destination security group when you set security group rule N across accounts.
         self.dest_group_owner_account = dest_group_owner_account
@@ -56,60 +58,75 @@ class ModifySecurityGroupEgressRuleRequest(DaraModel):
         self.dest_prefix_list_id = dest_prefix_list_id
         # Network Layer /transport layer protocol. Two types of assignments are supported:
         # 
-        # 1.  The case-insensitive protocol name. Valid values:
+        # 1. The case-insensitive protocol name. Valid values:
         # 
-        # *   ICMP
-        # *   GRE
-        # *   TCP
-        # *   UDP
-        # *   ALL: supports all protocols.
+        # - ICMP
         # 
-        # 2.  The value of the IANA-compliant protocol number, which is an integer from 0 to 255. List of regions currently available:
+        # - GRE
         # 
-        # *   Philippines (Manila)
-        # *   UK (London)
-        # *   Malaysia (Kuala Lumpur)
-        # *   China (Hohhot)
-        # *   China (Qingdao)
-        # *   US (Silicon Valley)
-        # *   Singapore
+        # - TCP
+        # 
+        # - UDP
+        # 
+        # - ALL: supports all protocols.
+        # 
+        # 2. The value of the IANA-compliant protocol number, which is an integer from 0 to 255. List of regions currently available:
+        # 
+        # - Philippines (Manila)
+        # 
+        # - UK (London)
+        # 
+        # - Malaysia (Kuala Lumpur)
+        # 
+        # - China (Hohhot)
+        # 
+        # - China (Qingdao)
+        # 
+        # - US (Silicon Valley)
+        # 
+        # - Singapore
         self.ip_protocol = ip_protocol
         # The destination IPv6 CIDR block. IPv6 CIDR blocks and IPv6 addresses are supported.
         # 
-        # >  Only the IP addresses of instances in virtual private clouds (VPCs) are supported. You cannot specify both Ipv6DestCidrIp and `DestCidrIp`.
+        # > Only the IP addresses of instances in virtual private clouds (VPCs) are supported. You cannot specify both Ipv6DestCidrIp and `DestCidrIp`.
         # 
         # By default, this parameter is left empty.
         self.ipv_6dest_cidr_ip = ipv_6dest_cidr_ip
         # The source IPv6 CIDR block. IPv6 CIDR blocks and IPv6 addresses are supported.
         # 
-        # >  Only the IP addresses of instances in VPCs are supported. You cannot specify both Ipv6SourceCidrIp and `SourceCidrIp`.
+        # > Only the IP addresses of instances in VPCs are supported. You cannot specify both Ipv6SourceCidrIp and `SourceCidrIp`.
         # 
         # By default, this parameter is left empty.
         self.ipv_6source_cidr_ip = ipv_6source_cidr_ip
         # The network interface controller (NIC) type.
         # 
-        # >  You cannot modify this parameter when you modify a security group rule by specifying the ID of the rule. If you want to change the NIC type of a security group rule, you can create a security group rule of a desired NIC type and delete the existing rule.
+        # > You cannot modify this parameter when you modify a security group rule by specifying the ID of the rule. If you want to change the NIC type of a security group rule, you can create a security group rule of a desired NIC type and delete the existing rule.
         self.nic_type = nic_type
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The action of the security group rule. Valid values:
         # 
-        # *   accept: allows access.
-        # *   drop: denies access and returns no responses.
+        # - accept: allows access.
+        # 
+        # - drop: denies access and returns no responses.
         # 
         # Default value: accept.
         self.policy = policy
         # The range of destination ports that correspond to the transport layer protocol. Valid values:
         # 
-        # *   If you set IpProtocol to TCP or UDP, the port number range is 1 to 65535. Separate the start port number and the end port number with a forward slash (/). Example: 1/200.
-        # *   If you set IpProtocol to ICMP, the port number range is -1/-1.
-        # *   If you set IpProtocol to GRE, the port number range is -1/-1.
-        # *   If you set IpProtocol to ALL, the port number range is -1/-1.
+        # - If you set IpProtocol to TCP or UDP, the port number range is 1 to 65535. Separate the start port number and the end port number with a forward slash (/). Example: 1/200.
+        # 
+        # - If you set IpProtocol to ICMP, the port number range is -1/-1.
+        # 
+        # - If you set IpProtocol to GRE, the port number range is -1/-1.
+        # 
+        # - If you set IpProtocol to ALL, the port number range is -1/-1.
         self.port_range = port_range
         # The ID of the port list. You can call the `DescribePortRangeLists` operation to query the IDs of available prefix lists.
         # 
-        # *   If you specify PortRange, the value of this parameter is ignored.
-        # *   If the security group is of the classic network type, you cannot reference port lists in the security group rules. For information about the limits on security groups and port lists, see the [Security groups](~~25412#SecurityGroupQuota1~~) section of the "Limits and quotas" topic.
+        # - If you specify PortRange, the value of this parameter is ignored.
+        # 
+        # - If the security group is of the classic network type, you cannot reference port lists in the security group rules. For information about the limits on security groups and port lists, see the [Security groups](~~25412#SecurityGroupQuota1~~) section of the "Limits and quotas" topic.
         self.port_range_list_id = port_range_list_id
         # The priority of the security group rule. Valid values: 1 to 100.
         # 
@@ -133,10 +150,13 @@ class ModifySecurityGroupEgressRuleRequest(DaraModel):
         self.source_cidr_ip = source_cidr_ip
         # The range of source ports that correspond to the transport layer protocol. Valid values:
         # 
-        # *   If you set IpProtocol to TCP or UDP, the port number range is 1 to 65535. Separate the start port number and the end port number with a forward slash (/). Example: 1/200.
-        # *   If you set IpProtocol to ICMP, the port number range is -1/-1.
-        # *   If you set IpProtocol to GRE, the port number range is -1/-1.
-        # *   If you set IpProtocol to ALL, the port number range is -1/-1.
+        # - If you set IpProtocol to TCP or UDP, the port number range is 1 to 65535. Separate the start port number and the end port number with a forward slash (/). Example: 1/200.
+        # 
+        # - If you set IpProtocol to ICMP, the port number range is -1/-1.
+        # 
+        # - If you set IpProtocol to GRE, the port number range is -1/-1.
+        # 
+        # - If you set IpProtocol to ALL, the port number range is -1/-1.
         self.source_port_range = source_port_range
 
     def validate(self):

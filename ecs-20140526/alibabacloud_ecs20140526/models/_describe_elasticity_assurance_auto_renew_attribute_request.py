@@ -20,7 +20,7 @@ class DescribeElasticityAssuranceAutoRenewAttributeRequest(DaraModel):
         self.private_pool_options = private_pool_options
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the elasticity assurance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The region ID of the elasticity assurance service. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -84,9 +84,10 @@ class DescribeElasticityAssuranceAutoRenewAttributeRequestPrivatePoolOptions(Dar
         self,
         id: List[str] = None,
     ):
-        # The IDs of elasticity assurances.
+        # 弹性保障服务ID列表。
         # 
-        # **Limits**: You can specify up to 50 elasticity assurance IDs in a single request.
+        # 
+        # **限制**：单次查询的弹性保障服务数量最多不超过50个。
         self.id = id
 
     def validate(self):

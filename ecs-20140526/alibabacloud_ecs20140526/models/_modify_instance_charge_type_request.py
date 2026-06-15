@@ -24,33 +24,37 @@ class ModifyInstanceChargeTypeRequest(DaraModel):
     ):
         # Specifies whether to automatically complete the payment. Valid values:
         # 
-        # *   true: enables automatic payment. Maintain a sufficient account balance. Otherwise, your order becomes invalid and is canceled.
-        # *   false: disables automatic payment. An order is generated but no payment is made.
+        # - true: enables automatic payment. Maintain a sufficient account balance. Otherwise, your order becomes invalid and is canceled.
+        # 
+        # - false: disables automatic payment. An order is generated but no payment is made.
         # 
         # Default value: true.
         # 
-        # >  If your account balance is insufficient, you can set AutoPay to false to generate an unpaid order. Then, you can log on to the ECS console to pay for the order.
+        # > If your account balance is insufficient, you can set AutoPay to false to generate an unpaid order. Then, you can log on to the ECS console to pay for the order.
         self.auto_pay = auto_pay
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **token** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         # 
-        # *   true: performs only a dry run. The system checks the request for potential issues, including invalid AccessKey pairs, unauthorized Resource Access Management (RAM) users, and missing parameter values. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # *   false: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+        # - true: performs only a dry run. The system checks the request for potential issues, including invalid AccessKey pairs, unauthorized Resource Access Management (RAM) users, and missing parameter values. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # 
+        # - false: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         # 
         # Default value: false.
         self.dry_run = dry_run
         # Specifies whether to change the billing method of all data disks on the instance from pay-as-you-go to subscription. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         # 
         # Default value: false.
         self.include_data_disks = include_data_disks
         # The new billing method of the instance. Valid values:
         # 
-        # *   PrePaid: subscription
-        # *   PostPaid: pay-as-you-go
+        # - PrePaid: subscription
+        # 
+        # - PostPaid: pay-as-you-go
         # 
         # Default value: PrePaid.
         self.instance_charge_type = instance_charge_type
@@ -60,8 +64,9 @@ class ModifyInstanceChargeTypeRequest(DaraModel):
         self.instance_ids = instance_ids
         # Specifies whether to return cost details of the order after the billing method is changed from subscription to pay-as-you-go. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         # 
         # Default value: false.
         self.is_detail_fee = is_detail_fee

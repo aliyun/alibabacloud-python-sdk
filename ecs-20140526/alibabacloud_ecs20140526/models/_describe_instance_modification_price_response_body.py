@@ -13,7 +13,7 @@ class DescribeInstanceModificationPriceResponseBody(DaraModel):
         price_info: main_models.DescribeInstanceModificationPriceResponseBodyPriceInfo = None,
         request_id: str = None,
     ):
-        # Details about the prices and promotion rules.
+        # Price information, including price details and promotional rules.
         self.price_info = price_info
         # The request ID.
         self.request_id = request_id
@@ -53,7 +53,7 @@ class DescribeInstanceModificationPriceResponseBodyPriceInfo(DaraModel):
         related_price: main_models.DescribeInstanceModificationPriceResponseBodyPriceInfoRelatedPrice = None,
         rules: main_models.DescribeInstanceModificationPriceResponseBodyPriceInfoRules = None,
     ):
-        # The price.
+        # The price details.
         self.price = price
         self.related_price = related_price
         self.rules = rules
@@ -257,17 +257,18 @@ class DescribeInstanceModificationPriceResponseBodyPriceInfoPrice(DaraModel):
         original_price: float = None,
         trade_price: float = None,
     ):
-        # The currency unit. Valid values:
+        # The currency. Valid values:
         # 
-        # *   Alibaba Cloud China site (aliyun.com): CNY
-        # *   Alibaba Cloud International site (alibabacloud.com): USD
+        # - `CNY`: For the China site.
+        # 
+        # - `USD`: For the international site.
         self.currency = currency
         self.detail_infos = detail_infos
-        # The discount.
+        # The discount amount.
         self.discount_price = discount_price
         # The original price.
         self.original_price = original_price
-        # The transaction price, which is equal to the original price minus the discount.
+        # The final price (original price - discount).
         self.trade_price = trade_price
 
     def validate(self):

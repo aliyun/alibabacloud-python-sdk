@@ -24,8 +24,9 @@ class DescribePortRangeListsRequest(DaraModel):
     ):
         # The maximum number of entries per page.
         # 
-        # *   Maximum value: 100
-        # *   Default value: 10.
+        # - Maximum value: 100
+        # 
+        # - Default value: 10.
         self.max_results = max_results
         # The pagination token that is used in the request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
@@ -33,7 +34,7 @@ class DescribePortRangeListsRequest(DaraModel):
         self.owner_id = owner_id
         # The ID of the port list. Valid values of N: 0 to 100.
         self.port_range_list_id = port_range_list_id
-        # The name of the port list. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http://, https://, com.aliyun, or com.alibabacloud. The name can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
+        # The name of the port list. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http\\://, https\\://, com.aliyun, or com.alibabacloud. The name can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
         self.port_range_list_name = port_range_list_name
         # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/2679950.html) operation to query the most recent region list.
         # 
@@ -41,7 +42,7 @@ class DescribePortRangeListsRequest(DaraModel):
         self.region_id = region_id
         # The ID of the resource group. If you specify this parameter to query resources, up to 1,000 resources that belong to the specified resource group can be returned in the response. You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/2716558.html) operation to query the most recent resource group list.
         # 
-        # >  A default resource group is not supported.
+        # > A default resource group is not supported.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

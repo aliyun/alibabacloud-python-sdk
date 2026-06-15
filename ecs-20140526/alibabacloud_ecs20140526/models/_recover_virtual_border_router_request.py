@@ -16,14 +16,20 @@ class RecoverVirtualBorderRouterRequest(DaraModel):
         user_cidr: str = None,
         vbr_id: str = None,
     ):
+        # A client-generated token that must be unique across requests to ensure idempotency. The token can contain only ASCII characters and must be no longer than 64 characters.
         self.client_token = client_token
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the region where the VBR is located. You can call the `DescribeRegions` operation to get the latest region list.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The secondary IPv4 CIDR block of your on-premises data center. This parameter is used for disaster recovery in a dual-homed configuration.
         self.user_cidr = user_cidr
+        # The ID of the VBR to recover.
+        # 
         # This parameter is required.
         self.vbr_id = vbr_id
 

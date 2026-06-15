@@ -16,15 +16,22 @@ class TerminatePhysicalConnectionRequest(DaraModel):
         resource_owner_id: int = None,
         user_cidr: str = None,
     ):
+        # A client-generated token to ensure the idempotency of the request. The token must be unique across requests and can contain only ASCII characters, with a maximum length of 64 characters.
         self.client_token = client_token
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the physical connection.
+        # 
         # This parameter is required.
         self.physical_connection_id = physical_connection_id
+        # The ID of the region where the physical connection is deployed.\\
+        # You can call the `DescribeRegions` operation to get the most recent region list.\\
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # This parameter is not used.
         self.user_cidr = user_cidr
 
     def validate(self):

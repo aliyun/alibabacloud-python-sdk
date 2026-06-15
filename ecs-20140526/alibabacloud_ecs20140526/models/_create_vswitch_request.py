@@ -19,18 +19,35 @@ class CreateVSwitchRequest(DaraModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
+        # The CIDR block for the vSwitch.\\
+        # It must be a subnet of the VPC\\"s CIDR block and must not overlap with the CIDR blocks of other vSwitches in the same VPC.\\
+        # 
         # This parameter is required.
         self.cidr_block = cidr_block
+        # A client token to ensure the idempotence of the request. The token must be unique across requests, contain only ASCII characters, and not exceed 64 characters in length.
         self.client_token = client_token
+        # The description for the vSwitch.\\
+        # It must be 2 to 256 characters long and must not start with `http://` or `https://`.\\
         self.description = description
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the region in which to create the vSwitch.\\
+        # Call the `DescribeRegions` operation to get a list of available regions.\\
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The name for the vSwitch.\\
+        # The name must be 2 to 128 characters long, start with a letter, and contain only letters, digits, underscores (_), and hyphens (-).\\
+        # If unspecified, the name defaults to the vSwitch ID.\\
+        # \\
         self.v_switch_name = v_switch_name
+        # The ID of the VPC in which to create the vSwitch.
+        # 
         # This parameter is required.
         self.vpc_id = vpc_id
+        # The ID of the zone in which to create the vSwitch.\\
+        # Call the `DescribeZones` operation to get a list of available zones.\\
+        # 
         # This parameter is required.
         self.zone_id = zone_id
 

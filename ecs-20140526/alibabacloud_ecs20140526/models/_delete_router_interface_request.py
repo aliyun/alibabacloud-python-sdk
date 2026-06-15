@@ -16,15 +16,23 @@ class DeleteRouterInterfaceRequest(DaraModel):
         router_interface_id: str = None,
         user_cidr: str = None,
     ):
+        # A client-generated, case-sensitive token used to ensure request idempotency. You must ensure that the token is unique for each request. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the region where the router interface is located.
+        # 
+        # You can call the [DescribeRegions](~~DescribeRegions~~) operation to get the latest list of regions.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The ID of the router interface that you want to delete.
+        # 
         # This parameter is required.
         self.router_interface_id = router_interface_id
+        # This parameter is used for auditing and is required in specific scenarios, such as when deleting a router interface for a peer-to-peer connection.
         self.user_cidr = user_cidr
 
     def validate(self):

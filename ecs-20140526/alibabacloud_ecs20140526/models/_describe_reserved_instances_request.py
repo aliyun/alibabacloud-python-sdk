@@ -31,27 +31,31 @@ class DescribeReservedInstancesRequest(DaraModel):
     ):
         # The allocation type of the reserved instances. Valid values:
         # 
-        # *   Normal: queries all reserved instances that belong to the current account.
-        # *   Shared: queries the reserved instances that are shared between the current main account and linked accounts.
+        # - Normal: queries all reserved instances that belong to the current account.
+        # 
+        # - Shared: queries the reserved instances that are shared between the current main account and linked accounts.
         # 
         # Default value: Normal.
         self.allocation_type = allocation_type
         # The instance type of the reserved instance. For information about the valid values, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
         # 
-        # >  Specify the instance type that you selected when you purchased the reserved instance. If the reserved instance is a regional reserved instance, it can be used to offset the bills of instance types that belong to the same instance family as the specified instance type, regardless of instance specifications.
+        # > Specify the instance type that you selected when you purchased the reserved instance. If the reserved instance is a regional reserved instance, it can be used to offset the bills of instance types that belong to the same instance family as the specified instance type, regardless of instance specifications.
         self.instance_type = instance_type
         # The instance family of the reserved instance. For information about the valid values, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
         self.instance_type_family = instance_type_family
         # The reason why the reserved instance is locked. Valid values:
         # 
-        # *   financial: The reserved instance is locked because the account has overdue payments or the service expires.
-        # *   security: The reserved instance is locked due to security reasons.
+        # - financial: The reserved instance is locked because the account has overdue payments or the service expires.
+        # 
+        # - security: The reserved instance is locked due to security reasons.
         self.lock_reason = lock_reason
         # The payment option of the reserved instance. Valid values:
         # 
-        # *   No Upfront
-        # *   Partial Upfront
-        # *   All Upfront
+        # - No Upfront
+        # 
+        # - Partial Upfront
+        # 
+        # - All Upfront
         self.offering_type = offering_type
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -71,14 +75,15 @@ class DescribeReservedInstancesRequest(DaraModel):
         self.reserved_instance_id = reserved_instance_id
         # The name of the reserved instance.
         # 
-        # >  Only exact search is supported.
+        # > Only exact search is supported.
         self.reserved_instance_name = reserved_instance_name
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The scope level of the reserved instance. Valid values:
         # 
-        # *   Region: regional
-        # *   Zone: zonal
+        # - Region: regional
+        # 
+        # - Zone: zonal
         self.scope = scope
         # The status of the reserved instances.
         self.status = status
@@ -223,9 +228,9 @@ class DescribeReservedInstancesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N of the reserved instance. The tag key cannot be empty and can be up to 128 characters in length. It cannot start with aliyun or acs: and cannot contain http:// or https://.
+        # The key of tag N of the reserved instance. The tag key cannot be empty and can be up to 128 characters in length. It cannot start with aliyun or acs: and cannot contain http\\:// or https\\://.
         # 
-        # >  If you specify a single tag to query resources, up to 1,000 resources to which the tag is added are returned. If you specify multiple tags to query resources, up to 1,000 resources to which all specified tags are added are returned. To query more than 1,000 resources that have specified tags added, call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation.
+        # > If you specify a single tag to query resources, up to 1,000 resources to which the tag is added are returned. If you specify multiple tags to query resources, up to 1,000 resources to which all specified tags are added are returned. To query more than 1,000 resources that have specified tags added, call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation.
         self.key = key
         # The value of tag N of the reserved instance. The tag value cannot be empty and can be up to 128 characters in length. It cannot start with `acs:` and cannot contain `http://` or `https://`.
         self.value = value

@@ -18,7 +18,7 @@ class DetachNetworkInterfaceRequest(DaraModel):
     ):
         # The ID of the trunk ENI.
         # 
-        # >  This parameter is unavailable for use.
+        # > This parameter is unavailable for use.
         # 
         # This parameter is required.
         self.instance_id = instance_id

@@ -21,20 +21,23 @@ class DescribeSecurityGroupAttributeRequest(DaraModel):
     ):
         # The attributes of the security group. Valid value:
         # 
-        # *   snapshotPolicyIds: queries information about snapshot policies associated with a security group.
+        # - snapshotPolicyIds: queries information about snapshot policies associated with a security group.
         self.attribute = attribute
         # The direction in which the security group rule is applied. Valid values:
         # 
-        # *   egress: outbound
-        # *   ingress: inbound
-        # *   all: outbound and inbound
+        # - egress: outbound
+        # 
+        # - ingress: inbound
+        # 
+        # - all: outbound and inbound
         # 
         # Default value: all.
         self.direction = direction
         # The maximum number of entries per page.
         # 
-        # *   Minimum value: 10.
-        # *   Maximum value: 1000.
+        # - Minimum value: 10.
+        # 
+        # - Maximum value: 1000.
         # 
         # Default value: 500.
         self.max_results = max_results
@@ -42,20 +45,21 @@ class DescribeSecurityGroupAttributeRequest(DaraModel):
         self.next_token = next_token
         # The network interface controller (NIC) type of the security group rule.
         # 
-        # *   Valid values for rules of security groups in the classic network:
+        # - Valid values for rules of security groups in the classic network:
         # 
-        #     *   internet (default)
-        #     *   intranet
+        #   - internet (default)
         # 
-        #     **
+        #   - intranet
         # 
-        #     **Note** You can query security group rules of only one NIC type in a single call. To query security group rules of both NIC types, call the operation twice.
+        #   \\*\\*
         # 
-        # *   When the security group is in a virtual private cloud (VPC), set the value to intranet, which is the default value for rules of security groups in VPCs.
+        #   **Note** You can query security group rules of only one NIC type in a single call. To query security group rules of both NIC types, call the operation twice.
         # 
-        #     **
+        # - When the security group is in a virtual private cloud (VPC), set the value to intranet, which is the default value for rules of security groups in VPCs.
         # 
-        #     **Note** If you set this parameter to internet or leave this parameter empty, a value of intranet is automatically used.
+        #   \\*\\*
+        # 
+        #   **Note** If you set this parameter to internet or leave this parameter empty, a value of intranet is automatically used.
         self.nic_type = nic_type
         self.owner_account = owner_account
         self.owner_id = owner_id

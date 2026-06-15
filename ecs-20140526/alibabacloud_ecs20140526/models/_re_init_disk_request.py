@@ -19,8 +19,9 @@ class ReInitDiskRequest(DaraModel):
     ):
         # Specifies whether to automatically start the instance after the disk is re-initialized. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         # 
         # Default value: false.
         self.auto_start_instance = auto_start_instance
@@ -36,7 +37,9 @@ class ReInitDiskRequest(DaraModel):
         self.owner_id = owner_id
         # Specifies whether to reset the password of the instance when you re-initialize its system disk. The password must be 8 to 30 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include:
         # 
-        #     ()`~!@#$%^&*-_+=|{}[]:;\\"<>,.?/
+        # ```
+        # ()`~!@#$%^&*-_+=|{}[]:;\\"<>,.?/
+        # ```
         # 
         # For Windows instances, passwords cannot start with a forward slash (/).
         # 
@@ -46,8 +49,9 @@ class ReInitDiskRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # Specifies whether to use Security Center free of charge after the system disk is re-initialized. Valid values:
         # 
-        # *   Active: uses Security Center free of charge after the system disk is re-initialized. This value is applicable to only public images.
-        # *   Deactive: does not use Security Center free of charge after the system disk is re-initialized. This value is applicable to all images.
+        # - Active: uses Security Center free of charge after the system disk is re-initialized. This value is applicable to only public images.
+        # 
+        # - Deactive: does not use Security Center free of charge after the system disk is re-initialized. This value is applicable to all images.
         # 
         # Default value: Deactive.
         self.security_enhancement_strategy = security_enhancement_strategy

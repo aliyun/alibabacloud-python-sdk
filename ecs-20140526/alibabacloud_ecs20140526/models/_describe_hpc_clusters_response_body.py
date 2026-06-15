@@ -17,13 +17,13 @@ class DescribeHpcClustersResponseBody(DaraModel):
         total_count: int = None,
     ):
         self.hpc_clusters = hpc_clusters
-        # Details about the HPC clusters. The value is an array that consists of the information of each HPC cluster.
+        # The page number of the HPC cluster list.
         self.page_number = page_number
-        # The page number.
+        # The number of entries per page that was set when the request was made.
         self.page_size = page_size
-        # The total number of HPC clusters.
+        # The request ID.
         self.request_id = request_id
-        # The ID of the HPC cluster.
+        # The total number of HPC clusters.
         self.total_count = total_count
 
     def validate(self):

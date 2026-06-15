@@ -13,7 +13,6 @@ class DescribeInstanceTopologyResponseBody(DaraModel):
         request_id: str = None,
         topologys: main_models.DescribeInstanceTopologyResponseBodyTopologys = None,
     ):
-        # The request ID.
         self.request_id = request_id
         self.topologys = topologys
 

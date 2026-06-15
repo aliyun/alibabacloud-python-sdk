@@ -34,8 +34,9 @@ class DescribeSecurityGroupsRequest(DaraModel):
     ):
         # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         # 
-        # *   true: performs only a dry run. The system checks your AccessKey pair, the permissions of the RAM user, and the required parameters. If the request passes the dry run, the DryRunOperation error code is returned. Otherwise, an error message is returned.
-        # *   false: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+        # - true: performs only a dry run. The system checks your AccessKey pair, the permissions of the RAM user, and the required parameters. If the request passes the dry run, the DryRunOperation error code is returned. Otherwise, an error message is returned.
+        # 
+        # - false: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         # 
         # Default value: false.
         self.dry_run = dry_run
@@ -43,7 +44,7 @@ class DescribeSecurityGroupsRequest(DaraModel):
         self.fuzzy_query = fuzzy_query
         # Specifies whether to query the capacity of the security group. If you set this parameter to True, the `EcsCount` and `AvailableInstanceAmount` values in the response are valid.
         # 
-        # >  This parameter is deprecated.
+        # > This parameter is deprecated.
         self.is_query_ecs_count = is_query_ecs_count
         # The maximum number of entries per page. If you specify this parameter, both `MaxResults` and `NextToken` are used for a paged query.
         # 
@@ -53,16 +54,17 @@ class DescribeSecurityGroupsRequest(DaraModel):
         self.max_results = max_results
         # The network type of the security group. Valid values:
         # 
-        # *   vpc
-        # *   classic
+        # - vpc
+        # 
+        # - classic
         self.network_type = network_type
         # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # >  This parameter will be removed in the future. We recommend that you use NextToken and MaxResults for a paged query.
+        # > This parameter will be removed in the future. We recommend that you use NextToken and MaxResults for a paged query.
         self.page_number = page_number
-        # >  This parameter will be removed in the future. We recommend that you use NextToken and MaxResults for a paged query.
+        # > This parameter will be removed in the future. We recommend that you use NextToken and MaxResults for a paged query.
         self.page_size = page_size
         # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
         # 
@@ -82,15 +84,17 @@ class DescribeSecurityGroupsRequest(DaraModel):
         self.security_group_name = security_group_name
         # The type of the security group. Valid values:
         # 
-        # *   normal: basic security group
-        # *   enterprise: advanced security group
+        # - normal: basic security group
+        # 
+        # - enterprise: advanced security group
         # 
         # > If you do not specify this parameter, both basic and advanced security groups are queried.
         self.security_group_type = security_group_type
         # Specifies whether to query managed security groups. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         self.service_managed = service_managed
         # The tags to add to the security groups.
         self.tag = tag

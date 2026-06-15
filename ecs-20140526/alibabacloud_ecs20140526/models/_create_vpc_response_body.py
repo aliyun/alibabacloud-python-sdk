@@ -12,9 +12,13 @@ class CreateVpcResponseBody(DaraModel):
         vrouter_id: str = None,
         vpc_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The ID of the route table automatically created for the VPC.
         self.route_table_id = route_table_id
+        # The ID of the virtual router automatically created for the VPC.
         self.vrouter_id = vrouter_id
+        # The ID of the VPC.
         self.vpc_id = vpc_id
 
     def validate(self):

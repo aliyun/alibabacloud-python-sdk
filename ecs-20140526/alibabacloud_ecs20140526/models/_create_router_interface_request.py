@@ -34,37 +34,92 @@ class CreateRouterInterfaceRequest(DaraModel):
         spec: str = None,
         user_cidr: str = None,
     ):
+        # The access point ID.
         self.access_point_id = access_point_id
+        # Specifies whether to enable automatic payment. Valid values are `true` and `false`. The default value is `true`.
         self.auto_pay = auto_pay
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The description of the router interface. The description must be 2 to 256 characters long, must start with a letter, and cannot start with `http://` or `https://`.
         self.description = description
+        # The source IP address that is used for the health check.
         self.health_check_source_ip = health_check_source_ip
+        # The destination IP address that is used for the health check.
         self.health_check_target_ip = health_check_target_ip
+        # The billing method of the instance. Set the value to `PrePaid`. This parameter is required if you also specify `PricingCycle`.
         self.instance_charge_type = instance_charge_type
+        # The name of the router interface. The name must be 2 to 128 characters long and start with a letter. It can contain letters, digits, underscores (_), and hyphens (-).
         self.name = name
+        # The ID of the peer access point.
         self.opposite_access_point_id = opposite_access_point_id
+        # The ID of the peer router interface.
         self.opposite_interface_id = opposite_interface_id
+        # The ID of the account to which the peer router interface belongs.
         self.opposite_interface_owner_id = opposite_interface_owner_id
+        # The ID of the peer region.
+        # 
         # This parameter is required.
         self.opposite_region_id = opposite_region_id
+        # The ID of the peer router. This parameter is available only when the local and peer router interfaces belong to the same account.
         self.opposite_router_id = opposite_router_id
+        # The type of the peer router. Valid values:
+        # 
+        # - **VRouter**
+        # - **VBR**
+        # 
+        # Default value: **VRouter**.
         self.opposite_router_type = opposite_router_type
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The subscription duration. This parameter is required when `InstanceChargeType` is set to `PrePaid` and `PricingCycle` is set to `Month` or `Year`. Valid values:
+        # 
+        # - If `PricingCycle` is set to `Month`, the valid values are 1 to 9.
+        # - If `PricingCycle` is set to `Year`, the valid values are 1 to 3.
         self.period = period
+        # The billing cycle. This parameter is required if `InstanceChargeType` is set to `PrePaid`. Valid values are `Month` and `Year`.
         self.pricing_cycle = pricing_cycle
+        # The region ID of the router interface.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The role of the router interface in the peering connection. Valid values:
+        # 
+        # - **InitiatingSide**: The router interface is the initiator.
+        # - **AcceptingSide**: The router interface is the acceptor.
+        # 
         # This parameter is required.
         self.role = role
+        # The router ID.
+        # 
         # This parameter is required.
         self.router_id = router_id
+        # The router type. Valid values:
+        # 
+        # - **VRouter**
+        # - **VBR**
+        # 
         # This parameter is required.
         self.router_type = router_type
+        # The specification of the router interface. Valid values:
+        # 
+        # - **Mini.2**
+        # - **Mini.5**
+        # - **Small.1**
+        # - **Small.2**
+        # - **Small.5**
+        # - **Middle.1**
+        # - **Middle.2**
+        # - **Middle.5**
+        # - **Large.1**
+        # - **Large.2**
+        # - **Large.5**
+        # - **Xlarge.1**
+        # 
         # This parameter is required.
         self.spec = spec
+        # The CIDR block of the user. This parameter is required when you create a router interface for a virtual border router (VBR) that is in the same region as the Express Connect circuit, or when both `RouterType` and `OppositeRouterType` are set to `VBR`.
         self.user_cidr = user_cidr
 
     def validate(self):

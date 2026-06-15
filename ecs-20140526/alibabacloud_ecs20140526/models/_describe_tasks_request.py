@@ -52,24 +52,33 @@ class DescribeTasksRequest(DaraModel):
         self.start_time = start_time
         # The name of the operation that generates the task. Valid values:
         # 
-        # *   ImportImage
-        # *   ExportImage
-        # *   RedeployInstance
-        # *   ModifyDiskSpec
-        # *   ArchiveSnapshot
+        # - ImportImage
+        # 
+        # - ExportImage
+        # 
+        # - RedeployInstance
+        # 
+        # - ModifyDiskSpec
+        # 
+        # - ArchiveSnapshot
         self.task_action = task_action
+        # Task group ID.
+        # 
+        # > This parameter is in invitational preview. When this parameter is used, other query conditions become invalid.
         self.task_group_id = task_group_id
         # The task IDs. You can specify up to 100 task IDs at a time. Separate the task IDs with commas (,).
         self.task_ids = task_ids
         # The task status. Valid values:
         # 
-        # *   Finished
-        # *   Processing
-        # *   Failed
+        # - Finished
+        # 
+        # - Processing
+        # 
+        # - Failed
         # 
         # This parameter is left empty by default.
         # 
-        # >  The system only queries tasks in the Finished, Processing, and Failed states and ignores other values.
+        # > The system only queries tasks in the Finished, Processing, and Failed states and ignores other values.
         self.task_status = task_status
 
     def validate(self):

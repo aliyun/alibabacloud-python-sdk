@@ -11,6 +11,7 @@ class ModifyPlanMaintenanceWindowRequest(DaraModel):
     def __init__(
         self,
         enable: bool = None,
+        min_maintenance_interval: int = None,
         plan_window_id: str = None,
         plan_window_name: str = None,
         region_id: str = None,
@@ -18,14 +19,24 @@ class ModifyPlanMaintenanceWindowRequest(DaraModel):
         target_resource: main_models.ModifyPlanMaintenanceWindowRequestTargetResource = None,
         time_period: main_models.ModifyPlanMaintenanceWindowRequestTimePeriod = None,
     ):
+        # Specifies whether to enable the maintenance window. If this parameter is not specified, the enabled status remains unchanged.
         self.enable = enable
+        self.min_maintenance_interval = min_maintenance_interval
+        # The ID of the maintenance window to modify.
+        # 
         # This parameter is required.
         self.plan_window_id = plan_window_id
+        # The new name of the maintenance window. If this parameter is not specified, the name remains unchanged.
         self.plan_window_name = plan_window_name
+        # The ID of the region where the instance is located. You can call the DescribeRegions operation to query the most recent list of Alibaba Cloud regions.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The maintenance action for the maintenance window. If this parameter is not specified, the action remains unchanged.
         self.support_maintenance_action = support_maintenance_action
+        # The resources to which the maintenance window applies. If this parameter is not specified, the target resources remain unchanged.
         self.target_resource = target_resource
+        # The recurrence schedule for the maintenance window. If this parameter is not specified, the schedule remains unchanged.
         self.time_period = time_period
 
     def validate(self):
@@ -41,6 +52,9 @@ class ModifyPlanMaintenanceWindowRequest(DaraModel):
             result = _map
         if self.enable is not None:
             result['Enable'] = self.enable
+
+        if self.min_maintenance_interval is not None:
+            result['MinMaintenanceInterval'] = self.min_maintenance_interval
 
         if self.plan_window_id is not None:
             result['PlanWindowId'] = self.plan_window_id
@@ -66,6 +80,9 @@ class ModifyPlanMaintenanceWindowRequest(DaraModel):
         m = m or dict()
         if m.get('Enable') is not None:
             self.enable = m.get('Enable')
+
+        if m.get('MinMaintenanceInterval') is not None:
+            self.min_maintenance_interval = m.get('MinMaintenanceInterval')
 
         if m.get('PlanWindowId') is not None:
             self.plan_window_id = m.get('PlanWindowId')
@@ -95,7 +112,9 @@ class ModifyPlanMaintenanceWindowRequestTimePeriod(DaraModel):
         period_unit: str = None,
         range_list: List[main_models.ModifyPlanMaintenanceWindowRequestTimePeriodRangeList] = None,
     ):
+        # The unit of the recurrence cycle. Valid values: `Daily` and `Weekly`.
         self.period_unit = period_unit
+        # The time ranges within the recurrence cycle. Times are specified in UTC.
         self.range_list = range_list
 
     def validate(self):
@@ -138,7 +157,21 @@ class ModifyPlanMaintenanceWindowRequestTimePeriodRangeList(DaraModel):
         end_time: str = None,
         start_time: str = None,
     ):
+        # The end time of the maintenance window.
+        # 
+        # - If `PeriodUnit` is set to `Weekly`, the format is `Day,HH:mm`. Valid values for `Day`: `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`, and `Sunday`.
+        # 
+        # - If `PeriodUnit` is set to `Daily`, the format is `HH:mm`.
+        # 
+        # - In the time format, `HH` represents the hour (00-23) and `mm` must be `00`.
         self.end_time = end_time
+        # The start time of the maintenance window.
+        # 
+        # - If `PeriodUnit` is set to `Weekly`, the format is `Day,HH:mm`. Valid values for `Day`: `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`, and `Sunday`.
+        # 
+        # - If `PeriodUnit` is set to `Daily`, the format is `HH:mm`.
+        # 
+        # - In the time format, `HH` represents the hour (00-23) and `mm` must be `00`.
         self.start_time = start_time
 
     def validate(self):
@@ -174,8 +207,11 @@ class ModifyPlanMaintenanceWindowRequestTargetResource(DaraModel):
         scope: str = None,
         tags: List[main_models.ModifyPlanMaintenanceWindowRequestTargetResourceTags] = None,
     ):
+        # The ID of the resource group. This parameter is required when `Scope` is set to `ResourceGroup`.
         self.resource_group_id = resource_group_id
+        # The method for specifying the target resources.
         self.scope = scope
+        # The resource tags. This parameter is required when `Scope` is set to `Tag`.
         self.tags = tags
 
     def validate(self):
@@ -224,7 +260,9 @@ class ModifyPlanMaintenanceWindowRequestTargetResourceTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag.
         self.key = key
+        # The value of the tag.
         self.value = value
 
     def validate(self):

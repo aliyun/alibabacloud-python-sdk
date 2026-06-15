@@ -15,18 +15,13 @@ class DeleteStorageSetRequest(DaraModel):
         resource_owner_id: int = None,
         storage_set_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The value of **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the storage set. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
-        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the storage set.
-        # 
         # This parameter is required.
         self.storage_set_id = storage_set_id
 

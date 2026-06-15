@@ -22,31 +22,31 @@ class DescribeDeploymentSetsRequest(DaraModel):
         strategy: str = None,
         type: str = None,
     ):
-        # The IDs of deployment sets. The value can be a JSON array that consists of deployment set IDs in the format of `["ds-xxxxxxxxx", "ds-yyyyyyyyy", ... "ds-zzzzzzzzz"]`. You can specify up to 100 deployment set IDs in each request. Separate the deployment set IDs with commas (,).
+        # The IDs of the deployment sets. The value can be a JSON array that consists of up to 100 deployment set IDs. Sample format: `["ds-xxxxxxxxx", "ds-yyyyyyyyy", … "ds-zzzzzzzzz"]`.
         self.deployment_set_ids = deployment_set_ids
-        # The name of the deployment set. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with `http://` or `https://`. The name can contain digits, letters, colons (:), underscores (_), and hyphens (-).
+        # The name of the deployment set. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
         self.deployment_set_name = deployment_set_name
-        # >  This parameter is deprecated.
+        # > This parameter is deprecated.
         self.domain = domain
-        # >  This parameter is deprecated.
+        # > This parameter is deprecated.
         self.granularity = granularity
-        # >  This parameter is deprecated.
+        # > This parameter is deprecated.
         self.network_type = network_type
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The page number.
         # 
-        # Pages start from page 1.
+        # Starts at 1.
         # 
         # Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # The number of entries per page.
         # 
-        # Valid values: 1 to 50.
+        # Maximum value: 50.
         # 
         # Default value: 10.
         self.page_size = page_size
-        # The region ID of the deployment set. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The ID of the region where the deployment set is located. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to view the latest list of Alibaba Cloud regions.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -54,9 +54,21 @@ class DescribeDeploymentSetsRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The deployment strategy. Valid values:
         # 
-        # *   Availability: high availability strategy
-        # *   AvailabilityGroup: high availability group strategy
+        # - Availability: high availability strategy.
+        # 
+        # - AvailabilityGroup: high availability group strategy.
+        # 
+        # - LowLatency: low-latency strategy.
         self.strategy = strategy
+        # The deployment type. Valid values:
+        # 
+        # - host: Ensures that the instances in the deployment set are deployed on different hosts.
+        # 
+        # - sw: Ensures that the instances in the deployment set are deployed on different switches.
+        # 
+        # - rack: Ensures that the instances in the deployment set are deployed on different racks.
+        # 
+        # Default value: host.
         self.type = type
 
     def validate(self):

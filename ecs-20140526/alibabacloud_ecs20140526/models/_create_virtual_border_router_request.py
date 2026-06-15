@@ -24,23 +24,50 @@ class CreateVirtualBorderRouterRequest(DaraModel):
         vbr_owner_id: int = None,
         vlan_id: int = None,
     ):
+        # The circuit code of the physical connection. This code is provided by your connectivity provider.
         self.circuit_code = circuit_code
+        # A client token to ensure that the request is idempotent.
+        # 
+        # You can generate this token on your client, but you must ensure that it is unique for each request. The token can contain only ASCII characters and cannot be longer than 64 characters.
         self.client_token = client_token
+        # The description of the VBR.
+        # 
+        # The description must be 2 to 256 characters long and cannot start with `http://` or `https://`.
         self.description = description
+        # The IP address of the VBR gateway in Alibaba Cloud.
         self.local_gateway_ip = local_gateway_ip
+        # The name of the VBR.
+        # 
+        # The name must be 2 to 128 characters long, start with a letter, and can contain only letters, digits, periods (.), underscores (_), and hyphens (-).
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The IP address of the gateway in your on-premises data center.
         self.peer_gateway_ip = peer_gateway_ip
+        # The peering subnet mask for the IP addresses of the local gateway and the peer gateway.
         self.peering_subnet_mask = peering_subnet_mask
+        # The ID of the physical connection.
+        # 
         # This parameter is required.
         self.physical_connection_id = physical_connection_id
+        # The ID of the region where the Virtual Border Router (VBR) is located.
+        # 
+        # You can call the `DescribeRegions` operation to get the latest list of regions.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The CIDR block of your on-premises network. Required when the VBR is connected to a Cloud Enterprise Network (CEN) instance.
         self.user_cidr = user_cidr
+        # The ID of the Alibaba Cloud account that owns the VBR. Specify this parameter when creating a VBR for another account.
         self.vbr_owner_id = vbr_owner_id
+        # The VLAN ID of the VBR.
+        # 
+        # Valid values: 0 to 4095.
+        # 
+        # A value of 0 indicates that the VBR is connected to the physical connection in Layer 3 router mode.
+        # 
         # This parameter is required.
         self.vlan_id = vlan_id
 

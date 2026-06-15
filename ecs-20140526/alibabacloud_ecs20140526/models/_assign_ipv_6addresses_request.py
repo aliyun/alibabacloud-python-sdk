@@ -21,25 +21,25 @@ class AssignIpv6AddressesRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.**** For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.\\*\\*\\*\\* For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The IPv6 addresses to assign to the ENI. Valid values of N: 1 to 10.
         # 
         # Example: Ipv6Address.1=2001:db8:1234:1a00::\\*\\*\\*\\*
         # 
-        # >  You must specify `Ipv6Addresses.N` or `Ipv6AddressCount`, but not both.
+        # > You must specify `Ipv6Addresses.N` or `Ipv6AddressCount`, but not both.
         self.ipv_6address = ipv_6address
         # The number of IPv6 addresses to randomly generate for the ENI. Valid values: 1 to 10.
         # 
-        # >  You must specify `Ipv6Addresses.N` or `Ipv6AddressCount`, but not both.
+        # > You must specify `Ipv6Addresses.N` or `Ipv6AddressCount`, but not both.
         self.ipv_6address_count = ipv_6address_count
         # The IPv6 prefixes to assign to the ENI. Valid values of N: 1 to 10.
         # 
-        # >  To assign IPv6 prefixes to the ENI, you must specify Ipv6Prefix.N or Ipv6PrefixCount, but not both.
+        # > To assign IPv6 prefixes to the ENI, you must specify Ipv6Prefix.N or Ipv6PrefixCount, but not both.
         self.ipv_6prefix = ipv_6prefix
         # The number of IPv6 prefixes to assign to the ENI. Valid values: 1 to 10.
         # 
-        # >  To assign IPv6 prefixes to the ENI, you must specify Ipv6Prefix.N or Ipv6PrefixCount, but not both.
+        # > To assign IPv6 prefixes to the ENI, you must specify Ipv6Prefix.N or Ipv6PrefixCount, but not both.
         self.ipv_6prefix_count = ipv_6prefix_count
         # The ENI ID.
         # 

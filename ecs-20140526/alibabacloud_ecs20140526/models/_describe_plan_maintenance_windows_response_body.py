@@ -16,10 +16,15 @@ class DescribePlanMaintenanceWindowsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The number of entries to return per page. The default value is 10, and the maximum value is 100. If you omit this parameter or specify a value less than 10, the default value is used. If you specify a value greater than 100, the maximum value is used.
         self.max_results = max_results
+        # The token to retrieve the next page of results.
         self.next_token = next_token
+        # A list of maintenance windows.
         self.plan_maintenance_window_list = plan_maintenance_window_list
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries that match the query. This parameter is optional and not returned by default.
         self.total_count = total_count
 
     def validate(self):
@@ -79,6 +84,7 @@ class DescribePlanMaintenanceWindowsResponseBodyPlanMaintenanceWindowList(DaraMo
         self,
         create_time: str = None,
         enable: bool = None,
+        min_maintenance_interval: int = None,
         modified_time: str = None,
         plan_window_id: str = None,
         plan_window_name: str = None,
@@ -86,13 +92,26 @@ class DescribePlanMaintenanceWindowsResponseBodyPlanMaintenanceWindowList(DaraMo
         target_resource: main_models.DescribePlanMaintenanceWindowsResponseBodyPlanMaintenanceWindowListTargetResource = None,
         time_period: main_models.DescribePlanMaintenanceWindowsResponseBodyPlanMaintenanceWindowListTimePeriod = None,
     ):
+        # The creation time of the maintenance window.
+        # 
+        # The time is in UTC and follows the ISO 8601 standard, formatted as yyyy-MM-ddTHH:mm:ssZ.
         self.create_time = create_time
+        # Indicates whether the maintenance window is enabled.
         self.enable = enable
+        self.min_maintenance_interval = min_maintenance_interval
+        # The modification time of the maintenance window.
+        # 
+        # The time is in UTC and follows the ISO 8601 standard, formatted as yyyy-MM-ddTHH:mm:ssZ.
         self.modified_time = modified_time
+        # The ID of the maintenance window.
         self.plan_window_id = plan_window_id
+        # The name of the maintenance window.
         self.plan_window_name = plan_window_name
+        # The supported maintenance action.
         self.support_maintenance_action = support_maintenance_action
+        # The resources targeted by the maintenance window.
         self.target_resource = target_resource
+        # The recurrence schedule of the maintenance window.
         self.time_period = time_period
 
     def validate(self):
@@ -111,6 +130,9 @@ class DescribePlanMaintenanceWindowsResponseBodyPlanMaintenanceWindowList(DaraMo
 
         if self.enable is not None:
             result['Enable'] = self.enable
+
+        if self.min_maintenance_interval is not None:
+            result['MinMaintenanceInterval'] = self.min_maintenance_interval
 
         if self.modified_time is not None:
             result['ModifiedTime'] = self.modified_time
@@ -140,6 +162,9 @@ class DescribePlanMaintenanceWindowsResponseBodyPlanMaintenanceWindowList(DaraMo
         if m.get('Enable') is not None:
             self.enable = m.get('Enable')
 
+        if m.get('MinMaintenanceInterval') is not None:
+            self.min_maintenance_interval = m.get('MinMaintenanceInterval')
+
         if m.get('ModifiedTime') is not None:
             self.modified_time = m.get('ModifiedTime')
 
@@ -168,7 +193,9 @@ class DescribePlanMaintenanceWindowsResponseBodyPlanMaintenanceWindowListTimePer
         period_unit: str = None,
         range_list: List[main_models.DescribePlanMaintenanceWindowsResponseBodyPlanMaintenanceWindowListTimePeriodRangeList] = None,
     ):
+        # The recurrence frequency. Valid values: Daily and Weekly.
         self.period_unit = period_unit
+        # The recurring UTC time ranges for the maintenance window.
         self.range_list = range_list
 
     def validate(self):
@@ -211,7 +238,9 @@ class DescribePlanMaintenanceWindowsResponseBodyPlanMaintenanceWindowListTimePer
         end_time: str = None,
         start_time: str = None,
     ):
+        # The end time of the time range.
         self.end_time = end_time
+        # The start time of the time range.
         self.start_time = start_time
 
     def validate(self):
@@ -247,8 +276,11 @@ class DescribePlanMaintenanceWindowsResponseBodyPlanMaintenanceWindowListTargetR
         scope: str = None,
         tags: List[main_models.DescribePlanMaintenanceWindowsResponseBodyPlanMaintenanceWindowListTargetResourceTags] = None,
     ):
+        # The ID of the target resource group.
         self.resource_group_id = resource_group_id
+        # The scope of the target resources. Valid values: Tag, ResourceGroup, Instance, and AliUid.
         self.scope = scope
+        # The target tags.
         self.tags = tags
 
     def validate(self):
@@ -297,7 +329,9 @@ class DescribePlanMaintenanceWindowsResponseBodyPlanMaintenanceWindowListTargetR
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):

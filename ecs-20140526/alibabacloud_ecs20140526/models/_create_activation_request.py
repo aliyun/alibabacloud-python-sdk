@@ -24,6 +24,7 @@ class CreateActivationRequest(DaraModel):
         tag: List[main_models.CreateActivationRequestTag] = None,
         time_to_live_in_hours: int = None,
     ):
+        # Ensures the idempotence of the request. Generate a unique value for this parameter from your client to guarantee that the value differs across requests. **ClientToken** supports only ASCII characters and cannot exceed 64 characters. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The description of the activation code. The description must be 1 to 100 characters in length.
         self.description = description

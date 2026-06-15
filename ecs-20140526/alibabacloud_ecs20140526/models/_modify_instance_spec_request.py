@@ -31,8 +31,9 @@ class ModifyInstanceSpecRequest(DaraModel):
         self.temporary = temporary
         # Specifies whether to allow cross-cluster instance type upgrade. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         # 
         # Default value: false.
         # 
@@ -40,26 +41,29 @@ class ModifyInstanceSpecRequest(DaraModel):
         # 
         # Instance that resides in the classic network:
         # 
-        # *   For [retired instance types](https://help.aliyun.com/document_detail/55263.html), when a non-I/O optimized instance is upgraded to an I/O optimized instance, the private IP address, disk device names, and software authorization codes of the instance change. For a Linux instance, basic disks (`cloud`) are identified as xvd\\* such as **xvda** and **xvdb**, and ultra disks (`cloud_efficiency`) and standard SSDs (`cloud_ssd`) are identified as vd\\* such as **vda** and **vdb**.
-        # *   For [instance families available for purchase](https://help.aliyun.com/document_detail/25378.html), when the instance type of an instance is changed, the private IP address of the instance changes.
+        # - For [retired instance types](https://help.aliyun.com/document_detail/55263.html), when a non-I/O optimized instance is upgraded to an I/O optimized instance, the private IP address, disk device names, and software authorization codes of the instance change. For a Linux instance, basic disks (`cloud`) are identified as xvd\\* such as **xvda** and **xvdb**, and ultra disks (`cloud_efficiency`) and standard SSDs (`cloud_ssd`) are identified as vd\\* such as **vda** and **vdb**.
+        # 
+        # - For [instance families available for purchase](https://help.aliyun.com/document_detail/25378.html), when the instance type of an instance is changed, the private IP address of the instance changes.
         # 
         # Instance that resides in a virtual private cloud (VPC): For [retired instance types](https://help.aliyun.com/document_detail/55263.html), when a non-I/O optimized instance is upgraded to an I/O optimized instance, the disk device names and software authorization codes of the instance change. For a Linux instance, basic disks (`cloud`) are identified as xvd\\* such as **xvda** and **xvdb**, and ultra disks (`cloud_efficiency`) and standard SSDs (`cloud_ssd`) are identified as vd\\* such as **vda** and **vdb**.
         self.allow_migrate_across_zone = allow_migrate_across_zone
         # Specifies whether to submit an asynchronous request. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         # 
         # Default value: false.
         self.async_ = async_
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. **The token can contain only ASCII characters and cannot exceed 64 characters in length.** For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
-        # >  This parameter is in invitational preview and is not publicly available.
+        # > This parameter is in invitational preview and is not publicly available.
         self.disk = disk
         # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         # 
-        # *   true: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, service limits, and unavailable ECS resources. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # *   false (default): performs a dry run and performs the actual request.
+        # - true: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, service limits, and unavailable ECS resources. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # 
+        # - false (default): performs a dry run and performs the actual request.
         self.dry_run = dry_run
         # The ID of the instance.
         # 
@@ -69,8 +73,9 @@ class ModifyInstanceSpecRequest(DaraModel):
         self.instance_type = instance_type
         # The maximum inbound public bandwidth. Unit: Mbit/s. Valid values:
         # 
-        # *   When the purchased outbound public bandwidth is less than or equal to 10 Mbit/s, the valid value of this parameter ranges from 1 to 10 and the default value is 10.
-        # *   When the purchased outbound public bandwidth is greater than 10 Mbit/s, the valid values of this parameter are 1 to the `InternetMaxBandwidthOut` value and the default value is the `InternetMaxBandwidthOut` value.
+        # - When the purchased outbound public bandwidth is less than or equal to 10 Mbit/s, the valid value of this parameter ranges from 1 to 10 and the default value is 10.
+        # 
+        # - When the purchased outbound public bandwidth is greater than 10 Mbit/s, the valid values of this parameter are 1 to the `InternetMaxBandwidthOut` value and the default value is the `InternetMaxBandwidthOut` value.
         # 
         # > When the **pay-by-traffic** billing method for network usage is used, the maximum inbound and outbound bandwidths are used as the upper limits of bandwidths instead of guaranteed performance specifications. In scenarios where demand outstrips resource supplies, these maximum bandwidth values may not be reached. If you want guaranteed bandwidths for your instance, use the **pay-by-bandwidth** billing method for network usage.
         self.internet_max_bandwidth_in = internet_max_bandwidth_in
@@ -78,7 +83,7 @@ class ModifyInstanceSpecRequest(DaraModel):
         # 
         # > When the **pay-by-traffic** billing method for network usage is used, the maximum inbound and outbound bandwidths are used as the upper limits of bandwidths instead of guaranteed performance specifications. In scenarios where demand outstrips resource supplies, these maximum bandwidth values may not be reached. If you want guaranteed bandwidths for your instance, use the **pay-by-bandwidth** billing method for network usage.
         self.internet_max_bandwidth_out = internet_max_bandwidth_out
-        # >  This parameter is not publicly available.
+        # > This parameter is not publicly available.
         self.modify_mode = modify_mode
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -216,11 +221,11 @@ class ModifyInstanceSpecRequestDisk(DaraModel):
         disk_id: str = None,
         performance_level: str = None,
     ):
-        # >  This parameter is in invitational preview and is not publicly available.
+        # > This parameter is in invitational preview and is not publicly available.
         self.category = category
-        # >  This parameter is in invitational preview and is not publicly available.
+        # > This parameter is in invitational preview and is not publicly available.
         self.disk_id = disk_id
-        # >  This parameter is in invitational preview and is not publicly available.
+        # > This parameter is in invitational preview and is not publicly available.
         self.performance_level = performance_level
 
     def validate(self):
@@ -262,11 +267,11 @@ class ModifyInstanceSpecRequestTemporary(DaraModel):
         internet_max_bandwidth_out: int = None,
         start_time: str = None,
     ):
-        # >  This parameter is in invitational preview and is not publicly available.
+        # > This parameter is in invitational preview and is not publicly available.
         self.end_time = end_time
-        # >  This parameter is in invitational preview and is not publicly available.
+        # > This parameter is in invitational preview and is not publicly available.
         self.internet_max_bandwidth_out = internet_max_bandwidth_out
-        # >  This parameter is in invitational preview and is not publicly available.
+        # > This parameter is in invitational preview and is not publicly available.
         self.start_time = start_time
 
     def validate(self):
@@ -308,10 +313,11 @@ class ModifyInstanceSpecRequestSystemDisk(DaraModel):
     ):
         # The new category of the system disk. Valid values:
         # 
-        # *   cloud_efficiency: ultra disk
-        # *   cloud_ssd: standard SSD
+        # - cloud_efficiency: ultra disk
         # 
-        # >  This parameter takes effect only when you upgrade a non-I/O optimized instance of [a retired instance type](https://help.aliyun.com/document_detail/55263.html) to an I/O optimized instance of [an instance type available for purchase](https://help.aliyun.com/document_detail/25378.html).
+        # - cloud_ssd: standard SSD
+        # 
+        # > This parameter takes effect only when you upgrade a non-I/O optimized instance of [a retired instance type](https://help.aliyun.com/document_detail/55263.html) to an I/O optimized instance of [an instance type available for purchase](https://help.aliyun.com/document_detail/25378.html).
         self.category = category
 
     def validate(self):

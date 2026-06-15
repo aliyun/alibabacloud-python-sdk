@@ -17,7 +17,7 @@ class CreateAutoProvisioningGroupResponseBody(DaraModel):
         # The ID of the auto provisioning group.
         self.auto_provisioning_group_id = auto_provisioning_group_id
         self.launch_results = launch_results
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

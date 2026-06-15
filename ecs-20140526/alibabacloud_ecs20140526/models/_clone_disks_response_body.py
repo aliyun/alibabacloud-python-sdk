@@ -10,7 +10,9 @@ class CloneDisksResponseBody(DaraModel):
         request_id: str = None,
         task_group_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The ID of the disk clone task group. You can call the [DescribeTasks](https://help.aliyun.com/zh/ecs/developer-reference/api-ecs-2014-05-26-describetasks) operation to query the execution result.
         self.task_group_id = task_group_id
 
     def validate(self):

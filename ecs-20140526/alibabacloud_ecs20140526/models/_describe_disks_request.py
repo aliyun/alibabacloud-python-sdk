@@ -46,181 +46,197 @@ class DescribeDisksRequest(DaraModel):
         zone_id: str = None,
     ):
         self.filter = filter
-        # The additional attributes. Set the value to `Placement`, which indicates the data storage locations of the disk.
+        # The additional attributes. Currently, the only valid value is `Placement`, which you can specify to query the data placement location of the disk.
         # 
-        # >  This attribute is valid only for Regional Enterprise SSDs (ESSDs).
+        # > Currently, only regional redundant disks have a data placement location.
         self.additional_attributes = additional_attributes
         # The ID of the automatic snapshot policy that is applied to the cloud disk.
         self.auto_snapshot_policy_id = auto_snapshot_policy_id
-        # The disk category. Valid values:
+        # The category of the disk. Valid values:
         # 
-        # *   all: all disk categories
-        # *   cloud: basic disk
-        # *   cloud_efficiency: ultra disk
-        # *   cloud_ssd: standard SSD
-        # *   cloud_essd: Enterprise SSD (ESSD)
-        # *   cloud_auto: ESSD AutoPL disk
-        # *   cloud_regional_disk_auto: Regional ESSD
-        # *   cloud_essd_entry: ESSD Entry disk
-        # *   elastic_ephemeral_disk_standard: standard elastic ephemeral disk
-        # *   elastic_ephemeral_disk_premium: premium elastic ephemeral disk
-        # *   local_ssd_pro: I/O-intensive local disk
-        # *   local_hdd_pro: throughput-intensive local disk
-        # *   ephemeral: retired local disk
-        # *   ephemeral_ssd: retired local SSD
+        # - all: all disk categories, including all cloud disks, local disks, and elastic ephemeral disks.
+        # 
+        # - cloud: basic disk.
+        # 
+        # - cloud_efficiency: ultra disk.
+        # 
+        # - cloud_ssd: SSD disk.
+        # 
+        # - cloud_essd: ESSD
+        # 
+        # - cloud_auto: ESSD AutoPL disk.
+        # 
+        # - cloud_regional_disk_auto: regional redundant ESSD disk.
+        # 
+        # - cloud_essd_entry: ESSD Entry disk.
+        # 
+        # - elastic_ephemeral_disk_standard: Standard elastic ephemeral disk.
+        # 
+        # - elastic_ephemeral_disk_premium: Premium elastic ephemeral disk.
+        # 
+        # - local_ssd_pro: I/O-intensive local disk.
+        # 
+        # - local_hdd_pro: throughput-intensive local disk.
+        # 
+        # - ephemeral: (Discontinued) local disk.
+        # 
+        # - ephemeral_ssd: (Discontinued) local SSD disk.
         # 
         # Default value: all.
-        # 
-        # Enumerated values:
-        # 
-        # *   all: all disks categories
-        # *   cloud_efficiency: ultra disk
-        # *   cloud_ssd: standard SSD
-        # *   local_ssd_pro: I/O-intensive local disk
-        # *   ephemeral: retired local disk
-        # *   cloud_essd_entry: ESSD Entry disk
-        # *   elastic_ephemeral_disk_premium: premium elastic ephemeral disk
-        # *   cloud: basic disk
-        # *   ephemeral_ssd: retired local SSD
-        # *   cloud_auto: ESSD AutoPL disk
-        # *   cloud_regional_disk_auto: Regional ESSD
-        # *   cloud_essd: ESSD
-        # *   elastic_ephemeral_disk_standard: standard elastic ephemeral disk
-        # *   local_hdd_pro: throughput-intensive local disk
         self.category = category
-        # Specifies whether to delete the automatic snapshots of the cloud disk after the disk is released.
+        # Specifies whether to release the automatic snapshots of the disk when the disk is released. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: The automatic snapshots are released.
         # 
-        # Default value: false
+        # - false: The automatic snapshots are retained.
+        # 
+        # Default value: false.
         self.delete_auto_snapshot = delete_auto_snapshot
-        # Specifies whether the disk is released when the associated instance is released. Valid values:
+        # Specifies whether the disk is released when the instance is released. Valid values:
         # 
-        # *   true: The disk is released when the associated instance is released.
-        # *   false: The disk is retained as a pay-as-you-go data disk when the associated instance is released.
+        # - true: The disk is released with the instance.
+        # 
+        # - false: The disk is retained as a pay-as-you-go data disk and is not released.
         # 
         # Default value: false.
         self.delete_with_instance = delete_with_instance
         # The billing method of the disk. Valid values:
         # 
-        # *   PrePaid: subscription
-        # *   PostPaid: pay-as-you-go
+        # - PrePaid: subscription.
+        # 
+        # - PostPaid: pay-as-you-go.
         self.disk_charge_type = disk_charge_type
-        # The IDs of cloud disks, local disks, or elastic ephemeral disks. The value is a JSON array that consists of up to 100 disk IDs. Separate the disk IDs with commas (,).
+        # The IDs of the cloud disks, local disks, or elastic ephemeral disks. The value is a JSON array of up to 100 disk IDs.
         self.disk_ids = disk_ids
         # The name of the disk. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
         self.disk_name = disk_name
         # The type of the disk. Valid values:
         # 
-        # *   all: system disk and data disk
-        # *   system: system disk
-        # *   data: data disk
+        # - all: both system disks and data disks.
+        # 
+        # - system: only system disks.
+        # 
+        # - data: only data disks.
         # 
         # Default value: all.
         # 
-        # >  Elastic ephemeral disks cannot be used as system disks.
+        # > Elastic ephemeral disks cannot be used as system disks.
         self.disk_type = disk_type
-        # Specifies whether to perform only a dry run without performing the actual request. Valid values:
+        # Specifies whether to perform a dry run for the request. Valid values:
         # 
-        # *   true: performs only a dry run. The systems checks whether your AccessKey pair is valid, whether RAM users are granted permissions, and whether the required parameters are specified. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # *   false: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+        # - true: Performs a dry run to check the request\\"s validity, including AccessKey authentication, permissions, and required parameters. If the request is valid, the `DryRunOperation` error code is returned. Otherwise, an error message is returned.
         # 
-        # Default value: false
+        # - false: Sends the request. If the request is valid, a 2xx HTTP status code is returned and the resources are queried.
+        # 
+        # Default value: false.
         self.dry_run = dry_run
-        # Specifies whether the automatic snapshot policy feature is enabled for the cloud disk. Valid values:
+        # Specifies whether the automatic snapshot policy feature is enabled for the disk. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: The feature is enabled.
         # 
-        # >  This parameter is deprecated. By default, the automatic snapshot policy feature is enabled for cloud disks. You need to only apply an automatic snapshot policy to a cloud disk before you can use the automatic snapshot policy.
+        # - false: The feature is disabled.
+        # 
+        # > This parameter is deprecated. The automatic snapshot policy feature is enabled by default for all disks. You only need to apply an automatic snapshot policy to a disk.
         self.enable_auto_snapshot = enable_auto_snapshot
-        # Specifies whether an automatic snapshot policy is applied to the cloud disk.
+        # Specifies whether an automatic snapshot policy is applied to the disk. Valid values:
         # 
-        # *   true: An automatic snapshot policy is applied to the cloud disk.
-        # *   false: No automatic snapshot policy is applied to the cloud disk.
+        # - true: An automatic snapshot policy is applied.
         # 
-        # Default value: false
+        # - false: No automatic snapshot policy is applied to the disk.
+        # 
+        # Default value: false.
         self.enable_automated_snapshot_policy = enable_automated_snapshot_policy
-        # Specifies whether the disk is a Shared Block Storage device.
+        # Specifies whether the disk is a shared block storage device.
         self.enable_shared = enable_shared
-        # Specifies whether to query only encrypted cloud disks.
+        # Specifies whether to query only encrypted disks. Valid values:
         # 
-        # *   true: queries only encrypted cloud disks.
-        # *   false: does not query encrypted cloud disks.
+        # - true: Only encrypted disks are queried.
         # 
-        # Default value: false
+        # - false: The query includes both encrypted and unencrypted disks.
+        # 
+        # Default value: false.
         self.encrypted = encrypted
-        # The ID of the Elastic Compute Service (ECS) instance to which the disk is attached.
+        # The ID of the instance to which the disk is attached.
         self.instance_id = instance_id
-        # The ID of the Key Management Service (KMS) key that is used by the cloud disk.
+        # The ID of the KMS key that is used to encrypt the cloud disk.
         self.kmskey_id = kmskey_id
         # The reason why the disk is locked. Valid values:
         # 
-        # *   financial: The disk is locked due to overdue payments.
-        # *   security: The disk is locked due to security reasons.
+        # - financial: The disk is locked due to overdue payments.
+        # 
+        # - security: The disk is locked for security reasons.
         self.lock_reason = lock_reason
-        # The maximum number of entries per page. Valid values: 10 to 500.
+        # The number of entries to return on each page. Valid values: 10 to 500.
         # 
         # Default value:
         # 
-        # *   If you do not specify this parameter or you set this parameter to a value less than 10, the default value is 10.
-        # *   If you set this parameter to a value greater than 500, the default value is 500.
+        # - If this parameter is not specified or is set to a value less than 10, the default value is 10.
+        # 
+        # - If this parameter is set to a value greater than 500, the value 500 is used.
         self.max_results = max_results
-        # Specifies whether to enable the multi-attach feature for the disk. Valid values:
+        # Specifies whether the multi-attach feature is enabled for the disk. Valid values:
         # 
-        # *   Disabled
-        # *   Enabled
-        # *   LegacyShared: Shared Block Storage devices are queried.
+        # - Disabled: The multi-attach feature is disabled.
+        # 
+        # - Enabled: The multi-attach feature is enabled.
+        # 
+        # - LegacyShared: Used to query shared block storage devices.
         self.multi_attach = multi_attach
-        # The query token. Set the value to the `NextToken` value that was returned in the last call to this operation.
-        # 
-        # For more information about how to check the responses returned by this operation, see the preceding "Description" section.
+        # The token used to start the next query. To retrieve the next page of results, set this parameter to the `NextToken` value returned from the previous call.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # >  This parameter will be removed in the future. We recommend that you use `NextToken` and `MaxResults` for a paged query.
+        # > This parameter is deprecated. Use the `NextToken` and `MaxResults` parameters for paged queries instead.
         self.page_number = page_number
-        # >  This parameter will be removed in the future. We recommend that you use `NextToken` and `MaxResults` for a paged query.
+        # > This parameter is deprecated. Use the `NextToken` and `MaxResults` parameters for paged queries instead.
         self.page_size = page_size
-        # Specifies whether the disk is removable. Valid values:
+        # Specifies whether the disk is detachable. Valid values:
         # 
-        # *   true: The disk is removable. A removable disk can independently exist and can be attached to or detached from an instance within the same zone.
-        # *   false: The disk is not removable. A disk that is not removable cannot independently exist or be attached to or detached from an instance within the same zone.
+        # - true: The disk is detachable. A detachable disk can exist independently and can be attached to or detached from an instance within the same availability zone.
         # 
-        # The `Portable` attribute of the following types of disks is `false`, and these types of disks share the same lifecycle with their associated instances:
+        # - false: The disk is not detachable. Its lifecycle is bound to the instance to which it is attached.
         # 
-        # *   Local disks
-        # *   Local SSDs
-        # *   Subscription data disks
+        # The `Portable` attribute for the following disk types is always `false`, and their lifecycles are bound to the instances to which they are attached:
+        # 
+        # - Local disks
+        # 
+        # - Local SSD disks
+        # 
+        # - Subscription data disks
         self.portable = portable
-        # The region ID of the disk. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The ID of the region where the disk resides. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the latest list of Alibaba Cloud regions.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group to which the disk belongs. If this parameter is specified to query resources, up to 1,000 resources that belong to the specified resource group can be displayed in the response.
+        # The ID of the resource group to which the disk belongs. When you use this parameter to filter resources, the number of resources cannot exceed 1,000.
         # 
-        # >  Resources in the default resource group are displayed in the response regardless of the value specified for this parameter.
+        # > You cannot filter resources in the default resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the snapshot from which you create the cloud disk.
+        # The ID of the snapshot that was used to create the cloud disk.
         self.snapshot_id = snapshot_id
-        # The status of the disk. For more information, see [Disk states](https://help.aliyun.com/document_detail/25689.html). Valid values:
+        # The state of the disk. For more information, see [Disk states](https://help.aliyun.com/document_detail/25689.html). Valid values:
         # 
-        # *   In_use
-        # *   Available
-        # *   Attaching
-        # *   Detaching
-        # *   Creating
-        # *   ReIniting
-        # *   All
+        # - In_use: The disk is in use.
+        # 
+        # - Available: The disk is ready for attachment.
+        # 
+        # - Attaching: The disk is being attached.
+        # 
+        # - Detaching: The disk is being detached.
+        # 
+        # - Creating: The disk is being created.
+        # 
+        # - ReIniting: The disk is being re-initialized.
+        # 
+        # - All: all disk states.
         # 
         # Default value: All.
         self.status = status
         # The tags of the disk.
         self.tag = tag
-        # The zone ID.
+        # The ID of the availability zone.
         self.zone_id = zone_id
 
     def validate(self):
@@ -464,11 +480,11 @@ class DescribeDisksRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N of the disk. Valid values of N: 1 to 20.
+        # The tag key of the disk.
         # 
-        # If you specify a single tag to query resources, up to 1,000 resources to which the tag is added are returned. If you specify multiple tags to query resources, up to 1,000 resources to which all specified tags are added are returned. To query more than 1,000 resources that have specified tags added, call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation.
+        # > For better compatibility, we recommend that you use the `Tag.N.Key` parameter.
         self.key = key
-        # The value of tag N of the disk. Valid values of N: 1 to 20.
+        # The tag value of the disk.
         self.value = value
 
     def validate(self):
@@ -503,9 +519,9 @@ class DescribeDisksRequestFilter(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of filter 1 used to query resources. Set the value to `CreationStartTime`. You can specify a time by setting both `Filter.1.Key` and `Filter.1.Value` to query resources that were created after the specified time.
+        # The key of the filter to use for the query. Set the value to `CreationStartTime`. You can use `Filter.1.Key` and `Filter.1.Value` to query resources that were created after a specific point in time.
         self.key = key
-        # The value of filter 1 used to query resources. Set the value to a time. If you specify this parameter, you must also specify the `Filter.1.Key` parameter. Specify the time in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
+        # The value of the filter to use for the query. When you specify this parameter, you must also specify the `Filter.1.Key` parameter. Specify the time in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
         self.value = value
 
     def validate(self):

@@ -13,7 +13,7 @@ class DescribePriceResponseBody(DaraModel):
         price_info: main_models.DescribePriceResponseBodyPriceInfo = None,
         request_id: str = None,
     ):
-        # The information about the prices and promotion rules.
+        # Details about the price and promotional rules.
         self.price_info = price_info
         # The request ID.
         self.request_id = request_id
@@ -53,9 +53,9 @@ class DescribePriceResponseBodyPriceInfo(DaraModel):
         related_price: main_models.DescribePriceResponseBodyPriceInfoRelatedPrice = None,
         rules: main_models.DescribePriceResponseBodyPriceInfoRules = None,
     ):
-        # The price.
+        # The price details.
         self.price = price
-        # The related price.
+        # The related prices.
         self.related_price = related_price
         self.rules = rules
 
@@ -174,7 +174,7 @@ class DescribePriceResponseBodyPriceInfoRelatedPrice(DaraModel):
         self,
         marketplace_image_price: main_models.DescribePriceResponseBodyPriceInfoRelatedPriceMarketplaceImagePrice = None,
     ):
-        # The Alibaba Cloud Marketplace image price.
+        # The price of the marketplace image.
         self.marketplace_image_price = marketplace_image_price
 
     def validate(self):
@@ -207,17 +207,17 @@ class DescribePriceResponseBodyPriceInfoRelatedPriceMarketplaceImagePrice(DaraMo
         original_price: float = None,
         trade_price: float = None,
     ):
-        # The currency unit.
+        # The currency.
         # 
-        # China site (aliyun.com): CNY
+        # CNY for sites in the Chinese mainland.
         # 
-        # International site (alibabacloud.com): USD
+        # USD for international sites.
         self.currency = currency
-        # The discount.
+        # The discount amount.
         self.discount_price = discount_price
         # The original price.
         self.original_price = original_price
-        # The transaction price, which is equal to the original price minus the discount.
+        # The trade price, calculated as `OriginalPrice` - `DiscountPrice`.
         self.trade_price = trade_price
 
     def validate(self):
@@ -268,20 +268,20 @@ class DescribePriceResponseBodyPriceInfoPrice(DaraModel):
         reserved_instance_hour_price: float = None,
         trade_price: float = None,
     ):
-        # The currency unit.
+        # The currency.
         # 
-        # Alibaba Cloud China site (aliyun.com): CNY.
+        # CNY for sites in the Chinese mainland.
         # 
-        # Alibaba Cloud International site (alibabacloud.com): USD.
+        # USD for international sites.
         self.currency = currency
         self.detail_infos = detail_infos
-        # The discount.
+        # The discount amount.
         self.discount_price = discount_price
         # The original price.
         self.original_price = original_price
-        # The hourly price of the reserved instance for which the No Upfront or Partial Upfront payment option is used.
+        # The hourly price of a No Upfront or Partial Upfront Reserved Instance Voucher.
         self.reserved_instance_hour_price = reserved_instance_hour_price
-        # The transaction price of the order. The transaction price is equal to the original price minus the discount.
+        # The trade price, calculated as `OriginalPrice` - `DiscountPrice`.
         self.trade_price = trade_price
 
     def validate(self):

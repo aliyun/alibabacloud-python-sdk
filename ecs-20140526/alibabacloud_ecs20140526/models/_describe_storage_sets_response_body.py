@@ -16,14 +16,10 @@ class DescribeStorageSetsResponseBody(DaraModel):
         storage_sets: main_models.DescribeStorageSetsResponseBodyStorageSets = None,
         total_count: int = None,
     ):
-        # The page number of the returned page.
         self.page_number = page_number
-        # The number of entries returned per page.
         self.page_size = page_size
-        # The ID of the request.
         self.request_id = request_id
         self.storage_sets = storage_sets
-        # The total number of storage sets.
         self.total_count = total_count
 
     def validate(self):

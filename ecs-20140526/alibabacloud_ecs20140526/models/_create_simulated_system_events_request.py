@@ -20,13 +20,19 @@ class CreateSimulatedSystemEventsRequest(DaraModel):
     ):
         # The type of the system event. Valid values:
         # 
-        # *   SystemMaintenance.Reboot: The instance is restarted due to system maintenance.
-        # *   SystemFailure.Reboot: The instance is restarted due to a system error.
-        # *   InstanceFailure.Reboot: The instance is restarted due to an instance error.
-        # *   SystemMaintenance.Stop: The instance is stopped due to system maintenance.
-        # *   SystemMaintenance.Redeploy: The instance is redeployed due to system maintenance.
-        # *   SystemFailure.Redeploy: The instance is redeployed due to a system error.
-        # *   SystemFailure.Stop: The instance is stopped due to a system error.
+        # - SystemMaintenance.Reboot: The instance is restarted due to system maintenance.
+        # 
+        # - SystemFailure.Reboot: The instance is restarted due to a system error.
+        # 
+        # - InstanceFailure.Reboot: The instance is restarted due to an instance error.
+        # 
+        # - SystemMaintenance.Stop: The instance is stopped due to system maintenance.
+        # 
+        # - SystemMaintenance.Redeploy: The instance is redeployed due to system maintenance.
+        # 
+        # - SystemFailure.Redeploy: The instance is redeployed due to a system error.
+        # 
+        # - SystemFailure.Stop: The instance is stopped due to a system error.
         # 
         # This parameter is required.
         self.event_type = event_type

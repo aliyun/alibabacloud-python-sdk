@@ -58,187 +58,203 @@ class DescribeInstanceTypesRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The advanced attributes of the instance type to return.
         self.additional_attributes = additional_attributes
         # The CPU architecture. Valid values:
         # 
-        # *   X86
-        # *   ARM
+        # - X86
+        # 
+        # - ARM
         self.cpu_architecture = cpu_architecture
-        # The CPU architectures of instance types. You can specify 1 or 2 CPU architectures.
+        # An array of 1 to 2 CPU architectures.
         self.cpu_architectures = cpu_architectures
-        # The GPU model.
+        # The GPU type.
         # 
-        # >  Fuzzy match is supported. For example, if an instance type provides NVIDIA V100 GPUs and you set this parameter to NVIDIA, information about the instance type is queried.
+        # > This parameter supports fuzzy search. For example, specifying `NVIDIA` returns instance types with `NVIDIA V100` GPUs.
         self.gpuspec = gpuspec
-        # The GPU models of instance types. You can specify 1 to 10 GPU models.
+        # An array of 1 to 10 GPU types.
         self.gpu_specs = gpu_specs
-        # The categories of instance types. You can specify 1 to 10 categories of instance types.
+        # An array of 1 to 10 instance categories.
         self.instance_categories = instance_categories
-        # The category of the instance type. Valid values:
+        # The instance category. Valid values:
         # 
-        # *   General-purpose: general-purpose instance type
-        # *   Compute-optimized: compute-optimized instance type
-        # *   Memory-optimized: memory-optimized instance type
-        # *   Big data: big data instance type
-        # *   Local SSDs: instance type with local SSDs
-        # *   High Clock Speed: instance type with high clock speeds
-        # *   Enhanced: enhanced instance type
-        # *   Shared: shared instance type
-        # *   Compute-optimized with GPU: GPU-accelerated compute-optimized instance type
-        # *   Visual Compute-optimized: visual compute-optimized instance type
-        # *   Heterogeneous Service: heterogeneous service instance type
-        # *   Compute-optimized with FPGA: FPGA-accelerated compute-optimized instance type
-        # *   Compute-optimized with NPU: NPU-accelerated compute-optimized instance type
-        # *   ECS Bare Metal: ECS Bare Metal Instance type
-        # *   Super Computing Cluster: Super Computing Cluster (SCC) instance type
-        # *   High Performance Compute: high-performance computing instance type
+        # - General-purpose
+        # 
+        # - Compute-optimized
+        # 
+        # - Memory-optimized
+        # 
+        # - Big data
+        # 
+        # - Local SSDs
+        # 
+        # - High clock speed
+        # 
+        # - Enhanced
+        # 
+        # - Shared
+        # 
+        # - Compute-optimized with GPU
+        # 
+        # - Visual Compute-optimized
+        # 
+        # - Heterogeneous service
+        # 
+        # - Compute-optimized with FPGA
+        # 
+        # - Compute-optimized with NPU
+        # 
+        # - ECS Bare Metal
+        # 
+        # - Super Computing Cluster
+        # 
+        # - High performance compute
         self.instance_category = instance_category
-        # The level of the instance family. Valid values:
+        # The instance family level. Valid values:
         # 
-        # *   EntryLevel: entry level (shared)
-        # *   EnterpriseLevel: enterprise level
-        # *   CreditEntryLevel: credit-based entry level
+        # - `EntryLevel`: Entry-level (shared).
+        # 
+        # - `EnterpriseLevel`: Enterprise-level.
+        # 
+        # - `CreditEntryLevel`: Credit-based entry-level.
         self.instance_family_level = instance_family_level
-        # The instance families. You can specify 1 to 10 instance families.
+        # An array of 1 to 10 instance type families.
         self.instance_type_families = instance_type_families
-        # The instance family to which the instance type belongs. For information about the valid values of this parameter, see [DescribeInstanceTypeFamilies](https://help.aliyun.com/document_detail/25621.html).
+        # The instance type family. For valid values, call the [DescribeInstanceTypeFamilies](https://help.aliyun.com/document_detail/25621.html) operation.
         # 
-        # For more information about instance families, see [Instance families](https://help.aliyun.com/document_detail/25378.html).
+        # For more information about instance type families, see [Instance type families](https://help.aliyun.com/document_detail/25378.html).
         self.instance_type_family = instance_type_family
-        # The instance types. You can specify 1 to 10 instance types. If this parameter is empty, information about all instance types is queried.
+        # An array of 1 to 10 instance types. If you do not specify this parameter, the operation returns information about all instance types.
         self.instance_types = instance_types
-        # The categories of local disks used by instance types. You can specify 1 or 2 categories of local disks.
+        # An array of 1 to 2 local disk categories.
         self.local_storage_categories = local_storage_categories
         # The category of local disks. For more information, see [Local disks](~~63138#section_n2w_8yc_5u1~~). Valid values:
         # 
-        # *   local_hdd_pro: local Serial Advanced Technology Attachment (SATA) HDDs, which are attached to d1ne or d1 instances.
-        # *   local_ssd_pro: local Non-Volatile Memory Express (NVMe) SSDs, which are attached to i2, i2g, i1, ga1, or gn5 instances.
+        # - `local_hdd_pro`: SATA HDD local disks, supported by d1ne and d1 instance types.
         # 
-        # Valid values:
-        # 
-        # *   local_hdd_pro
-        # *   local_ssd_pro
+        # - `local_ssd_pro`: NVMe SSD local disks, supported by i2, i2g, i1, ga1, and gn5 instance types.
         self.local_storage_category = local_storage_category
-        # The maximum number of entries per page. Valid values: 1 to 1600.
+        # The maximum number of entries to return on each page. Maximum value: 1600.
         # 
         # Default value: 1600.
         self.max_results = max_results
-        # The maximum number of vCPUs. The value must be a positive integer.
+        # The maximum number of vCPU cores for the instance type. The value must be a positive integer.
         # 
-        # >  If an instance type has more vCPUs than the specified value, information about the instance type is not queried.
+        # > The response excludes instance types with more vCPU cores than this value.
         self.maximum_cpu_core_count = maximum_cpu_core_count
         # The maximum clock speed.
         # 
-        # >  If an instance type uses processors that have a higher clock speed than the specified value, information about the instance type is not queried.
+        # > The response excludes instance types with a clock speed higher than this value.
         self.maximum_cpu_speed_frequency = maximum_cpu_speed_frequency
         # The maximum turbo frequency.
         # 
-        # >  If an instance type uses processors that deliver a higher turbo frequency than the specified value, information about the instance type is not queried.
+        # > The response excludes instance types with a turbo frequency higher than this value.
         self.maximum_cpu_turbo_frequency = maximum_cpu_turbo_frequency
         # The maximum number of GPUs. The value must be a positive integer.
         # 
-        # >  If an instance type provides more GPUs than the specified value, information about the instance type is not queried.
+        # > The response excludes instance types with more GPUs than this value.
         self.maximum_gpuamount = maximum_gpuamount
-        # The maximum memory size. Unit: GiB.
+        # The maximum memory size for the instance type. Unit: GiB.
         # 
-        # >  If the memory size of an instance type is larger than the specified value, information about the instance type is not queried.
+        # > The response excludes instance types with a larger memory size than this value.
         self.maximum_memory_size = maximum_memory_size
-        # The minimum baseline CPU performance (overall baseline performance of all vCPUs) of a t5 or t6 burstable instance.
+        # The minimum baseline vCPU performance of a t5 or t6 burstable performance instance. This value is the sum of the baseline performance of all vCPUs.
         # 
-        # >  If a t5 or t6 instance type provides baseline CPU performance lower than the specified value, information about the instance type is not queried.
+        # > The response excludes instance types with a baseline vCPU performance lower than this value.
         self.minimum_baseline_credit = minimum_baseline_credit
-        # The minimum number of vCPUs. The value must be a positive integer.
+        # The minimum number of vCPU cores for the instance type. The value must be a positive integer.
         # 
-        # >  If an instance type has fewer vCPUs than the specified value, information about the instance type is not queried.
+        # > The response excludes instance types with fewer vCPU cores than this value.
         self.minimum_cpu_core_count = minimum_cpu_core_count
         # The minimum clock speed.
         # 
-        # >  If an instance type uses processors that have a lower clock speed than the specified value, information about the instance type is not queried.
+        # > The response excludes instance types with a clock speed lower than this value.
         self.minimum_cpu_speed_frequency = minimum_cpu_speed_frequency
         # The minimum turbo frequency.
         # 
-        # >  If an instance type uses processors that deliver a lower turbo frequency than the specified value, information about the instance type is not queried.
+        # > The response excludes instance types with a turbo frequency lower than this value.
         self.minimum_cpu_turbo_frequency = minimum_cpu_turbo_frequency
-        # The minimum number of cloud disks per instance.
+        # The minimum value for the maximum number of cloud disks that can be attached to the instance type.
         # 
-        # >  If an instance type supports fewer cloud disks than the specified value, information about the instance type is not queried.
+        # > The response excludes instance types that support fewer attachable cloud disks than this value.
         self.minimum_disk_quantity = minimum_disk_quantity
-        # The minimum number of IPv6 addresses per ENI.
+        # The minimum value for the maximum number of IPv6 addresses that can be assigned to a single elastic network interface.
         # 
-        # >  If an instance type supports fewer IPv6 addresses per ENI than the specified value, information about the instance type is not queried.
+        # > The response excludes instance types whose ENIs support fewer assignable IPv6 addresses than this value.
         self.minimum_eni_ipv_6address_quantity = minimum_eni_ipv_6address_quantity
-        # The minimum number of IPv4 addresses per ENI.
+        # The minimum value for the maximum number of IPv4 addresses that can be assigned to a single elastic network interface.
         # 
-        # >  If an instance type supports fewer IPv4 addresses per ENI than the specified value, information about the instance type is not queried.
+        # > The response excludes instance types whose ENIs support fewer assignable IPv4 addresses than this value.
         self.minimum_eni_private_ip_address_quantity = minimum_eni_private_ip_address_quantity
-        # The minimum number of elastic network interfaces (ENIs) per instance.
+        # The minimum value for the maximum number of elastic network interfaces (ENIs) that can be attached to the instance type.
         # 
-        # >  If an instance type supports fewer ENIs than the specified value, information about the instance type is not queried.
+        # > The response excludes instance types that support fewer ENIs than this value.
         self.minimum_eni_quantity = minimum_eni_quantity
-        # The minimum number of ERIs per instance.
+        # The minimum number of Elastic RDMA Interfaces (ERIs).
         # 
-        # >  If an instance type supports fewer ERIs than the specified value, information about the instance type is not queried.
+        # > The response excludes instance types that support fewer ERIs than this value.
         self.minimum_eri_quantity = minimum_eri_quantity
         # The minimum number of GPUs. The value must be a positive integer.
         # 
-        # >  If an instance type provides fewer GPUs than the specified value, information about the instance type is not queried.
+        # > The response excludes instance types with fewer GPUs than this value.
         self.minimum_gpuamount = minimum_gpuamount
-        # The minimum initial CPU credits of a t5 or t6 burstable instance.
+        # The minimum initial vCPU credits of a t5 or t6 burstable performance instance.
         # 
-        # >  If a t5 or t6 instance type provides less initial vCPU credits than the specified value, information about the instance type is not queried.
+        # > The response excludes instance types with fewer initial vCPU credits than this value.
         self.minimum_initial_credit = minimum_initial_credit
-        # The minimum inbound internal bandwidth. Unit: Kbit/s.
+        # The minimum inbound bandwidth over the internal network. Unit: kbit/s.
         # 
-        # >  If an instance type provides an inbound internal bandwidth that is lower than the specified value, information about the instance type is not queried.
+        # > The response excludes instance types that have a lower inbound bandwidth limit over the internal network than this value.
         self.minimum_instance_bandwidth_rx = minimum_instance_bandwidth_rx
-        # The minimum outbound internal bandwidth. Unit: Kbit/s.
+        # The minimum outbound bandwidth over the internal network. Unit: kbit/s.
         # 
-        # >  If an instance type provides an outbound internal bandwidth that is lower than the specified value, information about the instance type is not queried.
+        # > The response excludes instance types that have a lower outbound bandwidth limit over the internal network than this value.
         self.minimum_instance_bandwidth_tx = minimum_instance_bandwidth_tx
-        # The minimum inbound packet forwarding rate over the internal network. Unit: pps.
+        # The minimum inbound packet rate over the internal network. Unit: pps.
         # 
-        # >  If an instance type provides an inbound packet forwarding rate over the internal network that is lower than the specified value, information about the instance type is not queried.
+        # > The response excludes instance types that have a lower inbound packet rate over the internal network than this value.
         self.minimum_instance_pps_rx = minimum_instance_pps_rx
-        # The minimum outbound packet forwarding rate over the internal network. Unit: pps.
+        # The minimum outbound packet rate over the internal network. Unit: pps.
         # 
-        # >  If an instance type provides an outbound packet forwarding rate over the internal network that is lower than the specified value, information about the instance type is not queried.
+        # > The response excludes instance types that have a lower outbound packet rate over the internal network than this value.
         self.minimum_instance_pps_tx = minimum_instance_pps_tx
-        # The minimum number of local disks per instance.
+        # The minimum number of local disks available on the instance type.
         # 
-        # >  If an instance type supports fewer local disks than the specified value, information about the instance type is not queried.
+        # > The response excludes instance types that support fewer local disks than this value.
         self.minimum_local_storage_amount = minimum_local_storage_amount
-        # The capacity of each local disk attached per instance. Unit: GiB.
+        # The minimum capacity of a single local disk, in GiB. The response excludes instance types whose local disks have a capacity smaller than this value.
         self.minimum_local_storage_capacity = minimum_local_storage_capacity
-        # The minimum memory size. Unit: GiB.
+        # The minimum memory size for the instance type. Unit: GiB.
         # 
-        # >  If the memory size of an instance type is smaller than the specified value, information about the instance type is not queried.
+        # > The response excludes instance types with a smaller memory size than this value.
         self.minimum_memory_size = minimum_memory_size
-        # The minimum default number of queues per primary network interface controller (NIC).
+        # The minimum number of queues supported by the primary elastic network interface.
         # 
-        # >  If an instance type supports fewer queues per primary NIC than the specified value, information about the instance type is not queried.
+        # > The response excludes instance types that support fewer queues for the primary elastic network interface than this value.
         self.minimum_primary_eni_queue_number = minimum_primary_eni_queue_number
-        # The minimum number of queue pair (QP) queues per elastic RDMA interface (ERI).
+        # The minimum value for the maximum number of queue pairs (QPs) supported by a single Elastic RDMA Interface (ERI).
         # 
-        # >  If an instance type supports fewer QP queues per ERI than the specified value, information about the instance type is not queried.
+        # > The response excludes instance types whose ERIs support fewer queue pairs than this value.
         self.minimum_queue_pair_number = minimum_queue_pair_number
-        # The minimum default number of queues per secondary NIC.
+        # The minimum number of queues supported by a secondary elastic network interface.
         # 
-        # >  If an instance type supports fewer queues per secondary NIC than the specified value, information about the instance type is not queried.
+        # > The response excludes instance types that support fewer queues for a secondary elastic network interface than this value.
         self.minimum_secondary_eni_queue_number = minimum_secondary_eni_queue_number
-        # The query token. Set the value to the NextToken value returned in the previous call to the DescribeInstanceTypes operation. You do not need to specify this parameter for the first request.
+        # The token used to retrieve the next page of results. You do not need to set this parameter for the first request. For subsequent requests, set this to the `NextToken` value from the previous response.
         self.next_token = next_token
-        # Specifies whether cloud disks can be attached by using the NVMe protocol. Valid values:
+        # Specifies whether cloud disks attached to the instance type support NVMe. Valid values:
         # 
-        # *   required: Cloud disks can be attached by using the NVMe protocol.
-        # *   unsupported: Cloud disks cannot be attached by using the NVMe protocol.
+        # - `required`: Cloud disks are attached using the NVMe protocol.
+        # 
+        # - `unsupported`: Cloud disks are attached without using the NVMe protocol.
         self.nvme_support = nvme_support
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The CPU model.
+        # The processor model.
         # 
-        # >  Fuzzy match is supported. For example, if an instance type uses Intel Xeon (Ice Lake) Platinum 8369B processors and you set this parameter to Intel, information about the instance type is queried.
+        # > This parameter supports fuzzy search. For example, specifying `Intel` returns instance types with `Intel Xeon(Ice Lake) Platinum 8369B` processors.
         self.physical_processor_model = physical_processor_model
-        # The CPU models of instance types. You can specify 1 to 10 CPU models.
+        # An array of 1 to 10 processor models.
         self.physical_processor_models = physical_processor_models
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

@@ -29,8 +29,9 @@ class ReleaseDedicatedHostRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The expiration time of the subscription dedicated host.
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         # 
         # Default value: false.
         self.terminate_subscription = terminate_subscription

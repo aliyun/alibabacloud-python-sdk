@@ -17,7 +17,7 @@ class AllocateDedicatedHostsResponseBody(DaraModel):
         self.dedicated_host_id_sets = dedicated_host_id_sets
         # The ID of the order.
         # 
-        # >  This parameter has a return value only when the dedicated host is a subscription one (request parameter **ChargeType set to PrePaid**).
+        # > This parameter has a return value only when the dedicated host is a subscription one (request parameter **ChargeType set to PrePaid**).
         self.order_id = order_id
         # The ID of the request.
         self.request_id = request_id

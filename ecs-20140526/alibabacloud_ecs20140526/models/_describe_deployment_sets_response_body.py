@@ -17,16 +17,17 @@ class DescribeDeploymentSetsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # Details of deployment sets.
         self.deployment_sets = deployment_sets
-        # The page number.
+        # The page number of the deployment set list.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries returned per page.
         self.page_size = page_size
         # The ID of the region.
         self.region_id = region_id
         # The request ID.
         self.request_id = request_id
-        # The total number of queried deployment sets.
+        # The total number of deployment sets.
         self.total_count = total_count
 
     def validate(self):

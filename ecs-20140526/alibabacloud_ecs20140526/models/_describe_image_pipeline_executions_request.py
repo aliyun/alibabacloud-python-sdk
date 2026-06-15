@@ -22,40 +22,53 @@ class DescribeImagePipelineExecutionsRequest(DaraModel):
         status: str = None,
         tag: List[main_models.DescribeImagePipelineExecutionsRequestTag] = None,
     ):
-        # null
+        # The ID of the image building task.
         self.execution_id = execution_id
-        # The value of tag N of the image creation task. Valid values of N: 1 to 20.
+        # The ID of the image template.
         self.image_pipeline_id = image_pipeline_id
-        # The status of the image creation task. You can specify multiple values. Separate the values with commas (,). Example: `BUILDING,DISTRIBUTING`. Valid values:
+        # The number of entries to return on each page. Valid values: 1 to 500.
         # 
-        # *   PREPARING: Resources, such as the intermediate instance, are being created.
-        # *   REPAIRING: The source image is being repaired.
-        # *   BUILDING: The user-defined commands are being run and an image is being created.
-        # *   TESTING: The user-defined test commands are being run.
-        # *   DISTRIBUTING: The created image is being copied and shared.
-        # *   RELEASING: The temporary resources generated during the image creation process are being released.
-        # *   SUCCESS: The image creation task is completed.
-        # *   PARTITION_SUCCESS: The image creation task is partially completed. The image is created, but exceptions may occur when the image was copied or shared or when temporary resources were released.
-        # *   FAILED: The image creation task fails.
-        # *   TEST_FAILED: The image is created, but the test fails.
-        # *   CANCELLING: The image creation task is being canceled.
-        # *   CANCELLED: The image creation task is canceled.
-        # 
-        # >  If you leave this parameter empty, all image creation tasks are queried regardless of task status.
+        # Default value: 50.
         self.max_results = max_results
-        # The ID of the image creation task.
+        # The query token. Set the value to the `NextToken` value returned from a previous call to this operation. This parameter is not required for the first call.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the latest list of Alibaba Cloud regions.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the image template.
+        # The status of the image building task. You can specify multiple values, separated by commas. Example: `BUILDING,DISTRIBUTING`. Valid values:
+        # 
+        # - PREPARING: The system is preparing resources, such as a temporary transit instance.
+        # 
+        # - REPAIRING: The system is repairing the source image.
+        # 
+        # - BUILDING: The system is building the image. This includes executing user-defined commands and creating the image.
+        # 
+        # - TESTING: The system is testing the created image by running user-defined test commands.
+        # 
+        # - DISTRIBUTING: The system is distributing the image. This includes copying and sharing the image.
+        # 
+        # - RELEASING: The system is releasing temporary resources generated during the build process.
+        # 
+        # - SUCCESS: The task completed successfully.
+        # 
+        # - PARTITION_SUCCESS: The task is partially successful. The image was created, but an error may have occurred during distribution or resource cleanup.
+        # 
+        # - FAILED: The image building task failed.
+        # 
+        # - TEST_FAILED: The image was created successfully, but it failed the user-defined tests.
+        # 
+        # - CANCELLING: The system is canceling the image building task.
+        # 
+        # - CANCELLED: The image building task was canceled.
+        # 
+        # > If you omit this parameter, the operation returns image building tasks of all statuses.
         self.status = status
-        # The tags of the image creation task.
+        # The list of tags.
         self.tag = tag
 
     def validate(self):
@@ -152,9 +165,9 @@ class DescribeImagePipelineExecutionsRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N of the image creation task. Valid values of N: 1 to 20.
+        # The key of tag N. The value of N can be from 1 to 20.
         self.key = key
-        # null
+        # The value of tag N. The value of N can be from 1 to 20.
         self.value = value
 
     def validate(self):

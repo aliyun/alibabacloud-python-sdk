@@ -16,10 +16,15 @@ class DescribeVirtualBorderRoutersForPhysicalConnectionResponseBody(DaraModel):
         total_count: int = None,
         virtual_border_router_for_physical_connection_set: main_models.DescribeVirtualBorderRoutersForPhysicalConnectionResponseBodyVirtualBorderRouterForPhysicalConnectionSet = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
+        # A collection of Virtual Border Routers (VBRs).
         self.virtual_border_router_for_physical_connection_set = virtual_border_router_for_physical_connection_set
 
     def validate(self):

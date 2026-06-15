@@ -11,7 +11,7 @@ class LockSnapshotResponseBody(DaraModel):
         locked_snapshot_info: main_models.LockSnapshotResponseBodyLockedSnapshotInfo = None,
         request_id: str = None,
     ):
-        # Locked snapshot information.
+        # Information about the locked snapshot.
         self.locked_snapshot_info = locked_snapshot_info
         # The request ID.
         self.request_id = request_id
@@ -57,24 +57,31 @@ class LockSnapshotResponseBodyLockedSnapshotInfo(DaraModel):
         lock_status: str = None,
         snapshot_id: str = None,
     ):
-        # The cooling-off period of the compliance mode. Unit: hours.
+        # The cool-off period for compliance mode. Unit: hours.
         self.cool_off_period = cool_off_period
-        # The end time of the cooling-off period in compliance mode. The time follows the [ISO 8601](https://help.aliyun.com/zh/ecs/developer-reference/iso-8601-time-format?spm=a2c4g.11186623.0.0.277c6c92kl7kXM) standard in the yyyy-MM-ddTHH:mm:ssZ format (in UTC).
+        # The time the cool-off period for compliance mode ends. The time is in UTC and follows the [ISO 8601](https://help.aliyun.com/zh/ecs/developer-reference/iso-8601-time-format?spm=a2c4g.11186623.0.0.277c6c92kl7kXM) standard in `yyyy-MM-ddTHH:mm:ssZ` format.
         self.cool_off_period_expired_time = cool_off_period_expired_time
-        # The date and time at which the snapshot is locked. The time follows the [ISO 8601](https://help.aliyun.com/zh/ecs/developer-reference/iso-8601-time-format?spm=a2c4g.11186623.0.0.277c6c92kl7kXM) standard in the yyyy-MM-ddTHH:mm:ssZ format (in UTC).
+        # The time the lock was created. The time is in UTC and follows the [ISO 8601](https://help.aliyun.com/zh/ecs/developer-reference/iso-8601-time-format?spm=a2c4g.11186623.0.0.277c6c92kl7kXM) standard in `yyyy-MM-ddTHH:mm:ssZ` format.
         self.lock_creation_time = lock_creation_time
-        # The lock duration. After the lock duration ends, the snapshot lock will automatically expire. Unit: days.
+        # The lock duration, in days. The snapshot lock automatically expires at the end of this period.
         self.lock_duration = lock_duration
-        # The start time of the lock duration. The time follows the [ISO 8601](https://help.aliyun.com/zh/ecs/developer-reference/iso-8601-time-format?spm=a2c4g.11186623.0.0.277c6c92kl7kXM) standard in the yyyy-MM-ddTHH:mm:ssZ format (in UTC). If you lock a snapshot that is in the Progressing state, the lock time is not calculated until the snapshot enters the Accomplished state.
-        self.lock_duration_start_time = lock_duration_start_time
-        # The time when the lock expires. The time follows the [ISO 8601](https://help.aliyun.com/zh/ecs/developer-reference/iso-8601-time-format?spm=a2c4g.11186623.0.0.277c6c92kl7kXM) standard in the yyyy-MM-ddTHH:mm:ssZ format (in UTC).
-        self.lock_expired_time = lock_expired_time
-        self.lock_mode = lock_mode
-        # The lock status. Valid values:
+        # The time the lock duration starts. The time is in UTC and follows the [ISO 8601](https://help.aliyun.com/zh/ecs/developer-reference/iso-8601-time-format?spm=a2c4g.11186623.0.0.277c6c92kl7kXM) standard in `yyyy-MM-ddTHH:mm:ssZ` format.
         # 
-        # *   compliance-cooloff: The snapshot is locked in compliance mode but is still within the cooling-off period. Snapshots cannot be deleted, but users with the corresponding RAM permissions can unlock snapshots, extend or shorten the cooling-off period, and extend or shorten the lock duration.
-        # *   compliance: The snapshot is locked in compliance mode and the cooling-off period has ended. Snapshots cannot be unlocked or deleted, but users with the corresponding RAM permissions can extend the lock duration.
-        # *   expired: The snapshot was once locked, but the lock duration has ended and the lock has expired. The snapshot is currently not locked and can be deleted.
+        # If you lock a snapshot that is in the `progressing` state, the lock duration starts only after the snapshot enters the `accomplished` state.
+        self.lock_duration_start_time = lock_duration_start_time
+        # The time the lock expires. The time is in UTC and follows the [ISO 8601](https://help.aliyun.com/zh/ecs/developer-reference/iso-8601-time-format?spm=a2c4g.11186623.0.0.277c6c92kl7kXM) standard in `yyyy-MM-ddTHH:mm:ssZ` format.
+        self.lock_expired_time = lock_expired_time
+        # The lock mode. Possible value:
+        # 
+        # - `compliance`: The snapshot is locked in compliance mode. A snapshot in compliance mode cannot be unlocked and can be deleted only after its lock duration expires. You cannot shorten the lock duration, but users with the required Resource Access Management (RAM) permissions can extend it at any time. When you lock a snapshot in compliance mode, you can optionally specify a cool-off period.
+        self.lock_mode = lock_mode
+        # The lock status. Possible values:
+        # 
+        # - `compliance-cooloff`: The snapshot is locked in compliance mode but is still in its cool-off period. The snapshot cannot be deleted. However, users with the required Resource Access Management (RAM) permissions can unlock it, change the cool-off period, and adjust the lock duration.
+        # 
+        # - `compliance`: The snapshot is locked in compliance mode, and the cool-off period has ended. The snapshot cannot be unlocked or deleted, but users with the required Resource Access Management (RAM) permissions can extend the lock duration.
+        # 
+        # - `expired`: The snapshot was previously locked, but the lock duration has ended, and the lock has expired. The snapshot is not currently locked and can be deleted.
         self.lock_status = lock_status
         # The snapshot ID.
         self.snapshot_id = snapshot_id

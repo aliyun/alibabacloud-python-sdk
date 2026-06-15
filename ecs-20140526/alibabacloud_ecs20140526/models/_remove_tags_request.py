@@ -19,36 +19,47 @@ class RemoveTagsRequest(DaraModel):
         tag: List[main_models.RemoveTagsRequestTag] = None,
     ):
         self.owner_id = owner_id
-        # The region ID of the resource. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The ID of the region where the resource is located. Call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to get the latest list of Alibaba Cloud regions.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource. For example, if you set ResourceType to instance, you must set this parameter to the ID of the related instance.
+        # The ID of the resource from which to remove tags. For example, if ResourceType is set to instance, this parameter is the instance ID.
         # 
         # This parameter is required.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The type of the resource. Valid values:
+        # The resource type. Valid values:
         # 
-        # *   instance
-        # *   disk
-        # *   snapshot
-        # *   image
-        # *   securitygroup
-        # *   volume
-        # *   eni
-        # *   ddh
-        # *   keypair
-        # *   launchtemplate
-        # *   reservedinstance
-        # *   snapshotpolicy
+        # - instance: an ECS instance.
+        # 
+        # - disk: a disk.
+        # 
+        # - snapshot: a snapshot.
+        # 
+        # - image: an image.
+        # 
+        # - securitygroup: a security group.
+        # 
+        # - volume: a volume.
+        # 
+        # - eni: an elastic network interface.
+        # 
+        # - ddh: a dedicated host.
+        # 
+        # - keypair: an SSH key pair.
+        # 
+        # - launchtemplate: a launch template.
+        # 
+        # - reservedinstance: a reserved instance.
+        # 
+        # - snapshotpolicy: an automatic snapshot policy.
         # 
         # All values must be in lowercase.
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The tags.
+        # A list of tags.
         self.tag = tag
 
     def validate(self):
@@ -121,9 +132,11 @@ class RemoveTagsRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot contain [http:// or https://](http://https://。). The tag key cannot start with acs: or aliyun.
+        # The key of the tag.
+        # 
+        # > For compatibility, we recommend that you use the Tag.N.Key parameter.
         self.key = key
-        # The value of tag N. Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot contain [http:// or https://](http://https://。). The tag value cannot start with acs: or aliyun.
+        # The value of the tag. The value can be an empty string and up to 128 characters long. It cannot start with aliyun or acs:, and cannot contain http\\:// or https\\://.
         self.value = value
 
     def validate(self):

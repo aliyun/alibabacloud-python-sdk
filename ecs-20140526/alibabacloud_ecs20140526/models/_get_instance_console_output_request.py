@@ -27,8 +27,9 @@ class GetInstanceConsoleOutputRequest(DaraModel):
         self.region_id = region_id
         # Specifies whether to remove formatting symbols from the returned command output. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         # 
         # Default value: false.
         self.remove_symbols = remove_symbols

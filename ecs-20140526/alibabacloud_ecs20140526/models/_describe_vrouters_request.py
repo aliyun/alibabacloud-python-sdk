@@ -18,12 +18,23 @@ class DescribeVRoutersRequest(DaraModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The page number.
+        # 
+        # Default value: 1.
         self.page_number = page_number
+        # The number of entries per page.
+        # 
+        # Valid values: 1 to 50.
+        # 
+        # Default value: 10.
         self.page_size = page_size
+        # The ID of the region where the VRouter is deployed. You can call the `DescribeRegions` operation to query the latest region list.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The ID of the VRouter.
         self.vrouter_id = vrouter_id
 
     def validate(self):

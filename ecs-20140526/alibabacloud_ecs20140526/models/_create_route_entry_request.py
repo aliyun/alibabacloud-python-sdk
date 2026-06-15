@@ -22,17 +22,46 @@ class CreateRouteEntryRequest(DaraModel):
         resource_owner_id: int = None,
         route_table_id: str = None,
     ):
+        # A unique, case-sensitive identifier to ensure request idempotency. The token must be 1 to 64 ASCII characters in length.
         self.client_token = client_token
+        # The destination CIDR block. The value must be a valid CIDR block. Set the value to `0.0.0.0/0` to create a default route.
+        # 
         # This parameter is required.
         self.destination_cidr_block = destination_cidr_block
+        # The ID of the next hop.
+        # 
+        # **Note** Specify either `NextHopId` or `NextHopList`, but not both.
         self.next_hop_id = next_hop_id
+        # The list of next hops for an ECMP route.
+        # 
+        # **Note** Specify either `NextHopId` or `NextHopList`, but not both.
         self.next_hop_list = next_hop_list
+        # The type of the next hop. Valid values:
+        # 
+        # - **Instance**: an ECS instance.
+        # 
+        # - **HaVip**: a high-availability virtual IP address.
+        # 
+        # - **RouterInterface**: a router interface.
+        # 
+        # - **NetworkInterface**: an elastic network interface.
+        # 
+        # - **VpnGateway**: a VPN gateway.
+        # 
+        # - **Ipv6Gateway**: an IPv6 gateway.
+        # 
+        # - **NatGateway**: a NAT gateway.
+        # 
+        # **Note** This parameter is required if you specify `NextHopId`.
         self.next_hop_type = next_hop_type
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the region. You can call the [DescribeRegions](~~docid:36063~~) operation to get the latest list of regions.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The ID of the route table.
+        # 
         # This parameter is required.
         self.route_table_id = route_table_id
 
@@ -130,7 +159,23 @@ class CreateRouteEntryRequestNextHopList(DaraModel):
         next_hop_id: str = None,
         next_hop_type: str = None,
     ):
+        # The ID of the next hop in the ECMP route.
         self.next_hop_id = next_hop_id
+        # The type of the next hop in the ECMP route. Valid values:
+        # 
+        # - **Instance**: an ECS instance.
+        # 
+        # - **HaVip**: a high-availability virtual IP address.
+        # 
+        # - **RouterInterface**: a router interface.
+        # 
+        # - **NetworkInterface**: an elastic network interface.
+        # 
+        # - **VpnGateway**: a VPN gateway.
+        # 
+        # - **Ipv6Gateway**: an IPv6 gateway.
+        # 
+        # - **NatGateway**: a NAT gateway.
         self.next_hop_type = next_hop_type
 
     def validate(self):

@@ -22,25 +22,25 @@ class DescribeAutoProvisioningGroupHistoryRequest(DaraModel):
         # 
         # This parameter is required.
         self.auto_provisioning_group_id = auto_provisioning_group_id
-        # The end of the time range of the queried data. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # The end of the time range to query the scheduling history. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
         self.end_time = end_time
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number of the returned page. Pages start from page 1.
+        # The page number. Pages start from page 1.
         # 
-        # Default value: 1
+        # Default value: 1.
         self.page_number = page_number
-        # The number of entries per page. Valid values: 1 to 100.
+        # The number of entries per page. Maximum value: 100.
         # 
-        # and the default value is 10.
+        # Default value: 10.
         self.page_size = page_size
-        # The region ID of the auto provisioning group.
+        # The ID of the region where the Auto Provisioning Group is located.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The beginning of the time range of the queried data. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # The beginning of the time range to query the scheduling history. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
         self.start_time = start_time
 
     def validate(self):

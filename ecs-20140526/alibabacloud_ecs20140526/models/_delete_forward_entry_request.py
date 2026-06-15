@@ -15,12 +15,21 @@ class DeleteForwardEntryRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The ID of the DNAT entry to delete.
+        # 
         # This parameter is required.
         self.forward_entry_id = forward_entry_id
+        # The ID of the DNAT table to which the DNAT entry belongs.
+        # 
         # This parameter is required.
         self.forward_table_id = forward_table_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the region where the VPC is located.\\
+        # \\
+        # To obtain the latest list of regions, call the [DescribeRegions](~~DescribeRegions~~) operation.\\
+        # \\
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account

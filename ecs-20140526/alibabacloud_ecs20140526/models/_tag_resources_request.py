@@ -31,29 +31,47 @@ class TagResourcesRequest(DaraModel):
         self.resource_owner_account = resource_owner_account
         # The type of the resource to which the tags are added. Valid values:
         # 
-        # *   instance: ECS instance
-        # *   disk: disk
-        # *   snapshot: snapshot
-        # *   image: image
-        # *   securitygroup: security group
-        # *   volume: storage volume
-        # *   eni: ENI
-        # *   ddh: dedicated host
-        # *   ddhcluster: dedicated host cluster
-        # *   keypair: SSH key pair
-        # *   launchtemplate: launch template
-        # *   reservedinstance
-        # *   snapshotpolicy: automatic snapshot policy
-        # *   elasticityassurance: elasticity assurance
-        # *   capacityreservation: capacity reservation
-        # *   command: Cloud Assistant command
-        # *   invocation: Cloud Assistant command execution result or file delivery result
-        # *   activation: activation code for a Cloud Assistant managed instance
-        # *   managedinstance: Cloud Assistant managed instance
+        # - instance: ECS instance
+        # 
+        # - disk: disk
+        # 
+        # - snapshot: snapshot
+        # 
+        # - image: image
+        # 
+        # - securitygroup: security group
+        # 
+        # - volume: storage volume
+        # 
+        # - eni: ENI
+        # 
+        # - ddh: dedicated host
+        # 
+        # - ddhcluster: dedicated host cluster
+        # 
+        # - keypair: SSH key pair
+        # 
+        # - launchtemplate: launch template
+        # 
+        # - reservedinstance
+        # 
+        # - snapshotpolicy: automatic snapshot policy
+        # 
+        # - elasticityassurance: elasticity assurance
+        # 
+        # - capacityreservation: capacity reservation
+        # 
+        # - command: Cloud Assistant command
+        # 
+        # - invocation: Cloud Assistant command execution result or file delivery result
+        # 
+        # - activation: activation code for a Cloud Assistant managed instance
+        # 
+        # - managedinstance: Cloud Assistant managed instance
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The tags of the reserved instance. You can specify up to 20 tags. If you specify multiple tags, the tag keys cannot be duplicated.``
+        # The tags of the reserved instance. You can specify up to 20 tags. If you specify multiple tags, the tag keys cannot be duplicated.\\`\\`
         # 
         # This parameter is required.
         self.tag = tag

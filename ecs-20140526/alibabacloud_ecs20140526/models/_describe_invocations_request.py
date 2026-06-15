@@ -32,43 +32,121 @@ class DescribeInvocationsRequest(DaraModel):
         tag: List[main_models.DescribeInvocationsRequestTag] = None,
         timed: bool = None,
     ):
-        # $.parameters[15].schema.items.description
+        # The command ID. You can call the [DescribeCommands](https://help.aliyun.com/document_detail/64843.html) API to query all available CommandId values.
         self.command_id = command_id
-        # $.parameters[15].schema.items.example
+        # The command name. If the `InstanceId` parameter is also specified, this parameter does not take effect.
         self.command_name = command_name
-        # $.parameters[15].schema.items.enumValueTitles
+        # The command type. Valid values:
+        # 
+        # - RunBatScript: The command is a Bat script that runs on a Windows instance.
+        # 
+        # - RunPowerShellScript: The command is a PowerShell script that runs on a Windows instance.
+        # 
+        # - RunShellScript: The command is a Shell script that runs on a Linux instance.
         self.command_type = command_type
+        # The codec for the `CommandContent` and `Output` fields in the returned data. Valid values:
+        # 
+        # - PlainText: Returns the original command content and output information.
+        # 
+        # - Base64: Returns Base64-encoded command content and output information.
+        # 
+        # Default value: Base64.
         self.content_encoding = content_encoding
+        # Indicates whether to return the command execution output in the results.
+        # 
+        # - true: Returns the output. In this case, you must specify at least one of the `InvokeId` or `InstanceId` parameters.
+        # 
+        # - false: Does not return the output.
+        # 
+        # Default value: false.
         self.include_output = include_output
-        # $.parameters[15].schema.enumValueTitles
+        # The instance ID. If you specify this parameter, all command execution records for this instance will be queried.
         self.instance_id = instance_id
-        # $.parameters[15].schema.items.properties.Value.enumValueTitles
+        # The command execution ID.
         self.invoke_id = invoke_id
-        # $.parameters[15].schema.example
+        # The overall execution status of the command. The overall status depends on the combined execution statuses of one or more instances involved in the command execution. Valid values:
+        # 
+        # - Running:
+        # 
+        #   - Periodic execution: The status remains Running until the periodic execution is manually stopped.
+        # 
+        #   - One-time execution: The overall status is Running as long as any instance has a running command process.
+        # 
+        # - Finished:
+        # 
+        #   - Periodic execution: The command process cannot reach a Finished state.
+        # 
+        #   - One-time execution: All instances have completed execution, or some instances were manually stopped while the rest completed execution.
+        # 
+        # - Success: All instances have a command execution status of either Stopped or Success, and at least one instance has a status of Success. Specifically:
+        # 
+        #   - For immediate jobs: The command completed successfully with an exit code of 0.
+        # 
+        #   - For scheduled jobs: The most recent execution succeeded with an exit code of 0, and all scheduled times have been completed.
+        # 
+        # - Failed:
+        # 
+        #   - Periodic execution: The command process cannot reach a Failed state.
+        # 
+        #   - One-time execution: All instances failed execution.
+        # 
+        # - Stopped: The command was stopped.
+        # 
+        # - Stopping: The command is being stopped.
+        # 
+        # - PartialFailed: Partial failure. This value does not take effect if the `InstanceId` parameter is also specified.
+        # 
+        # - Pending: The system is validating or sending the command. If at least one instance has a Pending execution status, the overall status is Pending.
+        # 
+        # - Scheduled: The scheduled command has been sent and is waiting to run. If at least one instance has a Scheduled execution status, the overall status is Scheduled.
         self.invoke_status = invoke_status
-        # acs:ecs:{#regionId}:{#accountId}:instance/*
+        # The maximum number of entries per page for paged queries.
+        # 
+        # Maximum value: 50.
+        # 
+        # Default value: 10.
         self.max_results = max_results
-        # Instance
+        # The query credential (Token). Set this parameter to the NextToken value returned by the previous API call.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # acs:ecs:{#regionId}:{#accountId}:command/*
+        # > This parameter will be unpublished soon. We recommend that you use NextToken and MaxResults to perform paged queries.
         self.page_number = page_number
-        # Command
+        # > This parameter will be unpublished soon. We recommend that you use NextToken and MaxResults to perform paged query operations.
         self.page_size = page_size
-        # $.parameters[15].schema.items.properties.Value.description
+        # The Region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to view the latest Alibaba Cloud region list.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # FEATUREecsXZ3H4M
+        # The execution mode of the command. This parameter does not take effect if the `InstanceId` parameter is also specified. Valid values:
+        # 
+        # - Once: Executes the command immediately.
+        # 
+        # - Period: Executes the command periodically.
+        # 
+        # - NextRebootOnly: Automatically executes the command the next time the instance starts.
+        # 
+        # - EveryReboot: Automatically executes the command every time the instance starts.
+        # 
+        # Default value: empty, which indicates that all modes are queried.
         self.repeat_mode = repeat_mode
-        # $.parameters[15].schema.items.properties.Value.example
+        # The resource group ID of the command execution. After you specify this parameter, you must also specify ResourceGroupId when executing the command. This enables filtering to retrieve the corresponding command execution results.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # dubbo
+        # The tag list.
         self.tag = tag
-        # $.parameters[15].schema.description
+        # Indicates whether the queried command will be automatically executed in the future. Valid values:
+        # 
+        # - true: The command is queried when the `RepeatMode` parameter is set to `Period`, `NextRebootOnly`, or `EveryReboot` during a call to `RunCommand` or `InvokeCommand`.
+        # 
+        # - false: The command is queried under either of the following conditions:
+        # 
+        #   - The `RepeatMode` parameter is set to `Once` during a call to `RunCommand` or `InvokeCommand`.
+        # 
+        #   - The command has been canceled, stopped, or has finished execution.
+        # 
+        # Default value: false.
         self.timed = timed
 
     def validate(self):
@@ -225,9 +303,15 @@ class DescribeInvocationsRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The command task ID.
+        # The tag key for command execution. Valid values for N are 1 to 20. If this value is specified, it cannot be an empty string.
+        # 
+        # When you use one tag to filter resources, the number of resources under this tag cannot exceed 1,000. When you use multiple tags to filter resources, the number of resources bound to all specified tags simultaneously cannot exceed 1,000. If the number of resources exceeds 1,000, you must use the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) API to query them.
+        # 
+        # The key can contain up to 64 characters, must not start with `aliyun` or `acs:`, and must not contain `http://` or `https://`.
         self.key = key
-        # The ID of the resource group. After you set this parameter, command execution results in the specified resource group are queried.
+        # The tag value for command execution. Valid values for N are 1 to 20. This value can be an empty string.
+        # 
+        # The value can contain up to 128 characters and must not contain `http://` or `https://`.
         self.value = value
 
     def validate(self):

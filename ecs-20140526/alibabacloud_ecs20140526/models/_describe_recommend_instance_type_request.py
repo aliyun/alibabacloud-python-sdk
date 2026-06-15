@@ -32,31 +32,35 @@ class DescribeRecommendInstanceTypeRequest(DaraModel):
     ):
         # The number of vCPU cores of the instance type.
         # 
-        # >  If you specify both `Cores` and `Memory`, the system returns all instance types that match the values of the parameters.
+        # > If you specify both `Cores` and `Memory`, the system returns all instance types that match the values of the parameters.
         self.cores = cores
         # The billing method of the ECS instance. For more information, see [Billing overview](https://help.aliyun.com/document_detail/25398.html). Valid values:
         # 
-        # *   PrePaid: subscription.
-        # *   PostPaid: pay-as-you-go
+        # - PrePaid: subscription.
+        # 
+        # - PostPaid: pay-as-you-go
         # 
         # Default value: PostPaid
         self.instance_charge_type = instance_charge_type
         # The level of the instance family. Valid values:
         # 
-        # *   EntryLevel: entry level.
-        # *   EnterpriseLevel: enterprise level.
-        # *   CreditEntryLevel: credit-based entry level. For more information, see [Burstable instance families](https://help.aliyun.com/document_detail/59977.html).
+        # - EntryLevel: entry level.
+        # 
+        # - EnterpriseLevel: enterprise level.
+        # 
+        # - CreditEntryLevel: credit-based entry level. For more information, see [Burstable instance families](https://help.aliyun.com/document_detail/59977.html).
         self.instance_family_level = instance_family_level
         # The instance type. For more information, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html) or call the [DescribeInstanceTypes](https://help.aliyun.com/document_detail/25620.html) operation to query the most recent instance type list.
         # 
-        # >  If you specify `InstanceType`, you cannot specify `Cores` or `Memory`.
+        # > If you specify `InstanceType`, you cannot specify `Cores` or `Memory`.
         self.instance_type = instance_type
         # The instance families from which the alternative instance types are selected. You can specify up to 10 instance families.
         self.instance_type_family = instance_type_family
         # Specifies whether instances of the instance type are I/O optimized. You cannot specify IoOptimized if the instance type supports only non-I/O optimized instances. Valid values:
         # 
-        # *   optimized: The instances are I/O optimized.
-        # *   none: The instances are non-I/O optimized.
+        # - optimized: The instances are I/O optimized.
+        # 
+        # - none: The instances are non-I/O optimized.
         # 
         # Default value: optimized.
         # 
@@ -64,16 +68,17 @@ class DescribeRecommendInstanceTypeRequest(DaraModel):
         self.io_optimized = io_optimized
         # The maximum hourly price for pay-as-you-go instances or spot instances.
         # 
-        # >  This parameter takes effect only when `SpotStrategy` is set to `SpotWithPriceLimit`.
+        # > This parameter takes effect only when `SpotStrategy` is set to `SpotWithPriceLimit`.
         self.max_price = max_price
         # The memory size of the instance type. Unit: GiB.
         # 
-        # >  If you specify both `Cores` and `Memory`, the system returns all instance types that match the values of the parameters.
+        # > If you specify both `Cores` and `Memory`, the system returns all instance types that match the values of the parameters.
         self.memory = memory
         # The network type of ECS instances. Valid values:
         # 
-        # *   classic
-        # *   vpc
+        # - classic
+        # 
+        # - vpc
         # 
         # Default value: vpc.
         # 
@@ -83,9 +88,11 @@ class DescribeRecommendInstanceTypeRequest(DaraModel):
         self.owner_id = owner_id
         # The policy for recommending instance types. Valid values:
         # 
-        # *   InventoryFirst: recommends instance types in descending order of resource availability.
-        # *   PriceFirst: recommends the most cost-effective instance types. Recommended instance types appear based on the hourly prices of vCPUs in ascending order.
-        # *   NewProductFirst: recommends the latest instance types first.
+        # - InventoryFirst: recommends instance types in descending order of resource availability.
+        # 
+        # - PriceFirst: recommends the most cost-effective instance types. Recommended instance types appear based on the hourly prices of vCPUs in ascending order.
+        # 
+        # - NewProductFirst: recommends the latest instance types first.
         # 
         # Default value: InventoryFirst.
         self.priority_strategy = priority_strategy
@@ -97,27 +104,33 @@ class DescribeRecommendInstanceTypeRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # Specifies the scenarios in which instance types are recommended. Valid values:
         # 
-        # *   UPGRADE: instance type upgrade or downgrade
-        # *   CREATE: instance creation
+        # - UPGRADE: instance type upgrade or downgrade
+        # 
+        # - CREATE: instance creation
         # 
         # Default value: CREATE.
         self.scene = scene
         # The bidding policy of the spot instance. Valid values:
         # 
-        # *   NoSpot: The instance is created as a pay-as-you-go instance.
-        # *   SpotWithPriceLimit: The instance is a spot instance that has a user-defined maximum hourly price.
-        # *   SpotAsPriceGo: The instance is a spot instance for which the market price at the time of purchase is automatically used as the bid price. The market price can be up to the pay-as-you-go price.
+        # - NoSpot: The instance is created as a pay-as-you-go instance.
         # 
-        # >  If you specify `SpotStrategy`, you must set `InstanceChargeType` to `PostPaid`.
+        # - SpotWithPriceLimit: The instance is a spot instance that has a user-defined maximum hourly price.
+        # 
+        # - SpotAsPriceGo: The instance is a spot instance for which the market price at the time of purchase is automatically used as the bid price. The market price can be up to the pay-as-you-go price.
+        # 
+        # > If you specify `SpotStrategy`, you must set `InstanceChargeType` to `PostPaid`.
         # 
         # Default value: NoSpot.
         self.spot_strategy = spot_strategy
         # The category of the system disk. Valid values:
         # 
-        # *   cloud_efficiency: ultra disk
-        # *   cloud_ssd: standard SSD
-        # *   cloud_essd: Enterprise SSD (ESSD)
-        # *   cloud: basic disk
+        # - cloud_efficiency: ultra disk
+        # 
+        # - cloud_ssd: standard SSD
+        # 
+        # - cloud_essd: Enterprise SSD (ESSD)
+        # 
+        # - cloud: basic disk
         # 
         # For non-I/O optimized instances, the default value is cloud.
         # 
@@ -129,8 +142,9 @@ class DescribeRecommendInstanceTypeRequest(DaraModel):
         self.zone_id = zone_id
         # Specifies whether to recommend only instance types in the zone specified by ZoneId. Valid values:
         # 
-        # *   Strict: recommends only instance types that are available in the zone specified by ZoneId.
-        # *   Include: recommends instance types that are available in the zone specified by ZoneId and instance types that are available in other zones within the same region.
+        # - Strict: recommends only instance types that are available in the zone specified by ZoneId.
+        # 
+        # - Include: recommends instance types that are available in the zone specified by ZoneId and instance types that are available in other zones within the same region.
         # 
         # If `ZoneId` is specified, the default value of this parameter is Strict, which indicates that only instance types in the zone specified by ZoneId are recommended.
         self.zone_match_mode = zone_match_mode

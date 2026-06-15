@@ -10,7 +10,9 @@ class CreatePhysicalConnectionResponseBody(DaraModel):
         physical_connection_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the physical connection.
         self.physical_connection_id = physical_connection_id
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

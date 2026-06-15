@@ -19,16 +19,30 @@ class DescribeVSwitchesRequest(DaraModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
+        # Specifies whether the vSwitch is the default vSwitch in the zone. Valid values:
+        # 
+        # - `true`
+        # - `false`
         self.is_default = is_default
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The page number to return.
+        # 
+        # Default value: 1.
         self.page_number = page_number
+        # The number of entries to return on each page. Valid values: 1 to 50.
+        # 
+        # Default value: 10.
         self.page_size = page_size
+        # The ID of the region where the vSwitches are located. To query the latest list of regions, call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
+        # The ID of the VPC.
         self.vpc_id = vpc_id
+        # The ID of the zone.
         self.zone_id = zone_id
 
     def validate(self):

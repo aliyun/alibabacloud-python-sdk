@@ -20,17 +20,28 @@ class ModifyForwardEntryRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The public IP address for the forward entry.
         self.external_ip = external_ip
+        # The external port for the forward entry.
         self.external_port = external_port
+        # The ID of the forward entry that you want to modify.
+        # 
         # This parameter is required.
         self.forward_entry_id = forward_entry_id
+        # The ID of the forward table.
+        # 
         # This parameter is required.
         self.forward_table_id = forward_table_id
+        # The internal IP address for the forward entry.
         self.internal_ip = internal_ip
+        # The internal port for the forward entry.
         self.internal_port = internal_port
+        # The IP protocol. Valid values are tcp, udp, and any.
         self.ip_protocol = ip_protocol
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the region where the forward table is located.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account

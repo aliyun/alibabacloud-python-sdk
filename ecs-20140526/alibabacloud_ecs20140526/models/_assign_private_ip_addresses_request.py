@@ -25,11 +25,11 @@ class AssignPrivateIpAddressesRequest(DaraModel):
         self.client_token = client_token
         # The IPv4 prefixes to assign to the ENI. Valid values of N: 1 to 10.
         # 
-        # >  To assign IPv4 prefixes to the ENI, you must specify the Ipv4Prefix.N or Ipv4PrefixCount parameter, but not both.
+        # > To assign IPv4 prefixes to the ENI, you must specify the Ipv4Prefix.N or Ipv4PrefixCount parameter, but not both.
         self.ipv_4prefix = ipv_4prefix
         # The number of IPv4 prefixes to be randomly generated for the ENI. Valid values: 1 to 10.
         # 
-        # >  To assign IPv4 prefixes to the ENI, you must specify the Ipv4Prefix.N or Ipv4PrefixCount parameter, but not both.
+        # > To assign IPv4 prefixes to the ENI, you must specify the Ipv4Prefix.N or Ipv4PrefixCount parameter, but not both.
         self.ipv_4prefix_count = ipv_4prefix_count
         # The ID of the ENI.
         # 
@@ -39,8 +39,9 @@ class AssignPrivateIpAddressesRequest(DaraModel):
         self.owner_id = owner_id
         # Secondary private IP address N to be automatically assigned from the CIDR block of the vSwitch that is connected to the ENI. Valid values of N:
         # 
-        # *   When the ENI is in the Available (`Available`) state, the valid values of N are 1 to 50.
-        # *   When the ENI is in the InUse (`InUse`) state, the valid values of N are subject to the instance type. For more information, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
+        # - When the ENI is in the Available (`Available`) state, the valid values of N are 1 to 50.
+        # 
+        # - When the ENI is in the InUse (`InUse`) state, the valid values of N are subject to the instance type. For more information, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
         # 
         # To assign secondary private IP addresses to the ENI, you must specify `PrivateIpAddress.N` or `SecondaryPrivateIpAddressCount` but not both.
         self.private_ip_address = private_ip_address

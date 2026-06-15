@@ -16,6 +16,7 @@ class DescribeNetworkInterfacePermissionsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The elastic network interface permissions.
         self.network_interface_permissions = network_interface_permissions
         # The page number.
         self.page_number = page_number
@@ -23,7 +24,7 @@ class DescribeNetworkInterfacePermissionsResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of matching entries.
         self.total_count = total_count
 
     def validate(self):

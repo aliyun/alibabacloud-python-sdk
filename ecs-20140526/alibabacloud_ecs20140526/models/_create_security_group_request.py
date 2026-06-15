@@ -44,8 +44,9 @@ class CreateSecurityGroupRequest(DaraModel):
         self.security_group_name = security_group_name
         # The type of the security group. Valid values:
         # 
-        # *   normal: basic security group
-        # *   enterprise: advanced security group For more information, see [Advanced security groups](https://help.aliyun.com/document_detail/120621.html).
+        # - normal: basic security group
+        # 
+        # - enterprise: advanced security group For more information, see [Advanced security groups](https://help.aliyun.com/document_detail/120621.html).
         # 
         # Default value: normal.
         self.security_group_type = security_group_type

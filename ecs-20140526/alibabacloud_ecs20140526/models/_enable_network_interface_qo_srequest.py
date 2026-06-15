@@ -16,12 +16,16 @@ class EnableNetworkInterfaceQoSRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The ID of the Elastic Network Interface (ENI).
+        # 
         # This parameter is required.
         self.network_interface_id = network_interface_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # QoS Speed Limit Settings
         self.qo_s = qo_s
+        # The Region ID. You can invoke DescribeRegions to view the latest Alibaba Cloud Region list.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account

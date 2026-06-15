@@ -21,11 +21,11 @@ class ApplyAutoSnapshotPolicyRequest(DaraModel):
         # 
         # This parameter is required.
         self.auto_snapshot_policy_id = auto_snapshot_policy_id
-        # The IDs of disks. The value is a JSON array that consists of disk IDs. Separate the disk IDs with commas (,).
+        # A JSON array of one or more disk IDs.
         # 
         # This parameter is required.
         self.disk_ids = disk_ids
-        # The region ID of the automatic snapshot policy and the disks. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The ID of the region where the automatic snapshot policy and target disks are located. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to get the latest list of Alibaba Cloud regions.
         # 
         # This parameter is required.
         self.region_id = region_id

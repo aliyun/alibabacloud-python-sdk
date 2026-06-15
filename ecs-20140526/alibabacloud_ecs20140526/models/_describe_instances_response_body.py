@@ -18,17 +18,17 @@ class DescribeInstancesResponseBody(DaraModel):
         total_count: int = None,
     ):
         self.instances = instances
-        # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+        # The pagination token returned in this call.
         self.next_token = next_token
-        # The page number.
+        # The page number of the instance list.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries per page that you specified in the request.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
         # The total number of instances queried.
         # 
-        # >  If you specify the `MaxResults` and `NextToken` request parameters to perform a paged query, the value of the `TotalCount` response parameter is invalid.
+        # > When you use the `MaxResults` and `NextToken` parameters for paged queries, the value of the `TotalCount` parameter is meaningless.
         self.total_count = total_count
 
     def validate(self):

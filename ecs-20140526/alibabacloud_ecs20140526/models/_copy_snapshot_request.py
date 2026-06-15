@@ -27,7 +27,7 @@ class CopySnapshotRequest(DaraModel):
         snapshot_id: str = None,
         tag: List[main_models.CopySnapshotRequestTag] = None,
     ):
-        # >This parameter is currently in invitational preview and unavailable for public use.
+        # > This parameter is currently in invitational preview and unavailable for public use.
         self.arn = arn
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
@@ -35,24 +35,25 @@ class CopySnapshotRequest(DaraModel):
         # 
         # This parameter is required.
         self.destination_region_id = destination_region_id
-        # The description of the new snapshot. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+        # The description of the new snapshot. The description must be 2 to 256 characters in length and cannot start with http\\:// or https\\://.
         # 
         # This parameter is empty by default.
         # 
         # This parameter is required.
         self.destination_snapshot_description = destination_snapshot_description
-        # The name of the new snapshot. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
+        # The name of the new snapshot. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http\\:// or https\\://. The name can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
         # 
         # This parameter is left empty by default.
         # 
         # This parameter is required.
         self.destination_snapshot_name = destination_snapshot_name
-        # >  This parameter is not publicly available.
+        # > This parameter is not publicly available.
         self.destination_storage_location_arn = destination_storage_location_arn
         # Specifies whether to encrypt the new snapshot. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         # 
         # Default value: false.
         self.encrypted = encrypted
@@ -211,9 +212,9 @@ class CopySnapshotRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N to add to the new snapshot. The tag key cannot be an empty string. It can be up to 128 characters in length and cannot start with acs: or aliyun. It cannot contain http:// or https://.
+        # The key of tag N to add to the new snapshot. The tag key cannot be an empty string. It can be up to 128 characters in length and cannot start with acs: or aliyun. It cannot contain http\\:// or https\\://.
         self.key = key
-        # The value of tag N to add to the new snapshot. The tag value can be an empty string. It can be up to 128 characters in length and cannot start with acs: or aliyun. It cannot contain http:// or https://.
+        # The value of tag N to add to the new snapshot. The tag value can be an empty string. It can be up to 128 characters in length and cannot start with acs: or aliyun. It cannot contain http\\:// or https\\://.
         self.value = value
 
     def validate(self):

@@ -28,8 +28,9 @@ class LeaveSecurityGroupRequest(DaraModel):
         self.owner_id = owner_id
         # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
         # 
-        # *   If you want to remove an instance from a security group, you do not need to specify a region ID.
-        # *   If you want to remove an ENI from a security group, you must specify the ID of the region in which the ENI resides.
+        # - If you want to remove an instance from a security group, you do not need to specify a region ID.
+        # 
+        # - If you want to remove an ENI from a security group, you must specify the ID of the region in which the ENI resides.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

@@ -32,93 +32,131 @@ class CreateImageRequest(DaraModel):
         snapshot_id: str = None,
         tag: List[main_models.CreateImageRequestTag] = None,
     ):
-        # The system architecture of the system disk. If you specify a data disk snapshot to create the system disk of the custom image, use Architecture to specify the system architecture of the system disk. Valid values:
+        # The system disk architecture. If you create the image\\"s system disk from a data disk snapshot, you must specify this parameter to identify the system disk architecture. Valid values:
         # 
-        # *   i386
-        # *   x86_64
-        # *   arm64
+        # - i386
+        # 
+        # - x86_64
+        # 
+        # - arm64
         # 
         # Default value: x86_64.
         self.architecture = architecture
         # The boot mode of the image. Valid values:
         # 
-        # *   BIOS: BIOS mode
-        # *   UEFI: Unified Extensible Firmware Interface (UEFI) mode
-        # *   UEFI-Preferred (default): BIOS mode and UEFI mode
+        # - BIOS: BIOS boot mode.
         # 
-        # >  Before you specify this parameter, make sure that you are familiar with the boot modes supported by the image. If you specify a boot mode that is not supported by the image, ECS instances created from the image cannot start as expected. For information about the boot modes of images, see the [Boot modes of images](~~2244655#b9caa9b8bb1wf~~) section of the "Best practices for ECS instance boot modes" topic.
+        # - UEFI: UEFI boot mode.
+        # 
+        # - UEFI-Preferred: The image supports both BIOS and UEFI boot modes. The UEFI boot mode is preferred. This is the default value.
+        # 
+        # >Notice: 
+        # 
+        # If you specify a boot mode that the image does not support, instances created from the image may fail to start. Before you specify this parameter, ensure you know the boot modes that the image supports. For more information, see [Boot modes](~~2244655#b9caa9b8bb1wf~~).
         self.boot_mode = boot_mode
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The value of **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+        # A client-generated token to ensure the request is idempotent. You must ensure that the token is unique across different requests. The `ClientToken` value can contain only ASCII characters and cannot exceed 64 characters. For more information, see [How to ensure idempotency](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
-        # The image description. The description must be 2 to 256 characters in length and cannot start with [http:// or https://.](http://https://。)
+        # The image description. It must be 2 to 256 characters long and cannot start with http\\:// or https\\://.
         self.description = description
-        # The mode in which to check the custom image. If you do not specify this parameter, the image is not checked. Only the standard check mode is supported.
+        # The image check policy. If you do not specify this parameter, no check is performed. Only the Standard mode is supported.
         # 
-        # >  This parameter is supported for most Linux and Windows operating system versions. For information about image check items and operating system limits for image check, see [Overview of image check](https://help.aliyun.com/document_detail/439819.html) and [Operating system limits for image check](https://help.aliyun.com/document_detail/475800.html).
+        # > This feature is supported for most Linux and Windows versions. For more information about the check items and the operating systems that support this feature, see [Overview of image check](https://help.aliyun.com/document_detail/439819.html) and [Operating systems that support image check](https://help.aliyun.com/document_detail/475800.html).
         self.detection_strategy = detection_strategy
-        # Details of the disks and snapshots from which the custom image is created. If you want to create a custom image based on a system disk snapshot and data disk snapshots, use this parameter to specify the snapshots.
+        # The mappings between disks and snapshots used to create the custom image. If you need to create a custom image from a system disk snapshot and data disk snapshots, specify this parameter.
         self.disk_device_mapping = disk_device_mapping
-        self.dry_run = dry_run
-        # The attributes of the custom image.
-        self.features = features
-        # The name of the image family. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with acs: or aliyun. The name cannot contain http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
-        self.image_family = image_family
-        # The name of the custom image. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
-        self.image_name = image_name
-        # The image version.
+        # Specifies whether to perform a dry run to check the request. Valid values:
         # 
-        # >  If you specify an ECS instance that runs an Alibaba Cloud Marketplace image or a custom image derived from an Alibaba Cloud Marketplace image by using `InstanceId`, you must leave this parameter empty or set this parameter to the `ImageVersion` value of the image run by the specified ECS instance.
+        # - true: performs a dry run but does not create the image. The system checks whether your AccessKey pair is valid, whether RAM users are granted permissions, and whether the required parameters are specified. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # 
+        # - false: Sends the request to perform the operation. If the request is valid, a 2xx HTTP status code is returned and the image is created.
+        # 
+        # Default value: false.
+        self.dry_run = dry_run
+        # The image attributes.
+        self.features = features
+        # The name of the image family. The name must be 2 to 128 characters long and start with a letter or a Chinese character. It cannot start with aliyun or acs:, nor contain http\\:// or https\\://. The name can contain digits, colons (:), underscores (_), and hyphens (-).
+        self.image_family = image_family
+        # The name of the image. The name must be 2 to 128 characters long. It must start with a letter or a Chinese character and must not start with http\\:// or https\\://. The name can contain digits, colons (:), underscores (_), and hyphens (-).
+        self.image_name = image_name
+        # The version of the image.
+        # 
+        # > If you specify an instance ID (`InstanceId`) and the instance was created from an Alibaba Cloud Marketplace image (or a custom image based on a Marketplace image), this parameter must match the `ImageVersion` of the instance\\"s image or be left empty.
         self.image_version = image_version
-        # The ID of the ECS instance from which to create the custom image. To create a custom image from an ECS instance, you must specify this parameter.
+        # The ID of the instance. This parameter is required when you create a custom image from an instance.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The operating system distribution for the system disk in the custom image. If you specify a data disk snapshot to create the system disk of the custom image, use Platform to specify the operating system distribution for the system disk. Valid values:
+        # The operating system distribution. You must specify this parameter to identify the operating system distribution when you use a data disk snapshot to create the image\\"s system disk. Valid values:
         # 
-        # *   Aliyun
-        # *   Anolis
-        # *   CentOS
-        # *   Ubuntu
-        # *   CoreOS
-        # *   SUSE
-        # *   Debian
-        # *   OpenSUSE
-        # *   FreeBSD
-        # *   RedHat
-        # *   Kylin
-        # *   UOS
-        # *   Fedora
-        # *   Fedora CoreOS
-        # *   CentOS Stream
-        # *   AlmaLinux
-        # *   Rocky Linux
-        # *   Gentoo
-        # *   Customized Linux
-        # *   Others Linux
-        # *   Windows Server 2022
-        # *   Windows Server 2019
-        # *   Windows Server 2016
-        # *   Windows Server 2012
-        # *   Windows Server 2008
-        # *   Windows Server 2003
+        # - Aliyun
+        # 
+        # - Anolis
+        # 
+        # - CentOS
+        # 
+        # - Ubuntu
+        # 
+        # - CoreOS
+        # 
+        # - SUSE
+        # 
+        # - Debian
+        # 
+        # - OpenSUSE
+        # 
+        # - FreeBSD
+        # 
+        # - RedHat
+        # 
+        # - Kylin
+        # 
+        # - UOS
+        # 
+        # - Fedora
+        # 
+        # - Fedora CoreOS
+        # 
+        # - CentOS Stream
+        # 
+        # - AlmaLinux
+        # 
+        # - Rocky Linux
+        # 
+        # - Gentoo
+        # 
+        # - Customized Linux
+        # 
+        # - Others Linux
+        # 
+        # - Windows Server 2022
+        # 
+        # - Windows Server 2019
+        # 
+        # - Windows Server 2016
+        # 
+        # - Windows Server 2012
+        # 
+        # - Windows Server 2008
+        # 
+        # - Windows Server 2003
         # 
         # Default value: Others Linux.
         self.platform = platform
-        # The region ID of the custom image that you want to create. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent list of regions.
+        # The ID of the region where the image will be created. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to get the latest list of Alibaba Cloud regions.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group to which to assign the custom image. If you leave this parameter empty, the image is assigned to the default resource group.
+        # The ID of the resource group to which to add the custom image. If you do not specify this parameter, the image is added to the default resource group.
         # 
-        # >  If you call the CreateImage operation as a Resource Access Management (RAM) user who does not have permissions on the default resource group and leave `ResourceGroupId` empty, the `Forbidden: User not authorized to operate on the specified resource` error message is returned. You must specify the ID of a resource group on which the RAM user has permissions or grant the RAM user permissions on the default resource group, and then call the CreateImage operation again.
+        # > As a RAM user, you must have the required permissions to call this operation. If you leave `ResourceGroupId` empty, the `Forbidden: User not authorized to operate on the specified resource` error is returned if you lack permissions on the default resource group. To resolve this issue, specify the ID of a resource group for which you have permissions, or ask an administrator to grant you permissions on the default resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the snapshot from which to create the custom image.
+        # The ID of the snapshot used to create the custom image.
         # 
-        # >  To create a custom image from only a system disk snapshot of an ECS instance, you can specify this parameter or `DiskDeviceMapping.N.SnapshotId` to specify the snapshot ID. If you add data disk snapshots, you can use only `DiskDeviceMapping.N.SnapshotId` to specify snapshots.
+        # > If you create a custom image from only a system disk snapshot, you can use either this parameter or the `DiskDeviceMapping.N.SnapshotId` parameter. If you want to include data disk snapshots, you must use the `DiskDeviceMapping.N.SnapshotId` parameter to specify the snapshots.
         self.snapshot_id = snapshot_id
-        # The tags.
+        # The tags to add to the image.
         self.tag = tag
 
     def validate(self):
@@ -287,9 +325,11 @@ class CreateImageRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N of the custom image. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. The tag key cannot contain `http://` or `https://`.
+        # The key of tag N to add to the image.
+        # 
+        # > For compatibility, we recommend that you use the `Tag.N.Key` parameter.
         self.key = key
-        # The value of tag N of the custom image. Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot start with `acs:`. The tag value cannot contain `http://` or `https://`.
+        # The value of tag N to add to the image. Valid values of N: 1 to 20. The tag value can be an empty string, up to 128 characters long, and cannot start with `acs:` or contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -323,12 +363,13 @@ class CreateImageRequestFeatures(DaraModel):
         self,
         imds_support: str = None,
     ):
-        # The image metadata access mode. Valid values:
+        # The instance metadata access mode. Valid values:
         # 
-        # *   v1: You cannot set the image metadata access mode to security hardening when you create instances from the image.
-        # *   v2: You can set the image metadata access mode to security hardening when you create instances from the image.
+        # - v1: The normal mode. When you create an ECS instance from an image that has the metadata access mode set to this value, you cannot configure the instance metadata access mode as Enforced.
         # 
-        # When you use a snapshot to create instances, the default value is set to 1. If you use an instance to create an image, the value of the ImdsSupport parameter is used by default.
+        # - v2: The enforced mode. When you create an ECS instance from an image that has the metadata access mode set to this value, you can configure the instance metadata access mode as Enforced.
+        # 
+        # Default value: v1 if you create the image from a snapshot. If you create the image from an instance, the value is inherited from the source instance\\"s image.
         self.imds_support = imds_support
 
     def validate(self):
@@ -359,24 +400,27 @@ class CreateImageRequestDiskDeviceMapping(DaraModel):
         size: int = None,
         snapshot_id: str = None,
     ):
-        # The device name of disk N in the custom image. Valid values:
+        # The device name of the disk in the custom image. Valid values:
         # 
-        # *   The device name of the system disk must be /dev/xvda.
-        # *   The device names of the data disks are unique and range from /dev/xvdb to /dev/xvdz in alphabetical order.
+        # - The device name of the system disk must be /dev/xvda.
+        # 
+        # - The device names of data disks are assigned in sequence from /dev/xvdb to /dev/xvdz and cannot be repeated.
         self.device = device
-        # The type of disk N in the custom image. You can specify this parameter to create the system disk of the custom image from a data disk snapshot. If you do not specify this parameter, the disk type is determined by the corresponding snapshot. Valid values:
+        # The type of the disk in the image. You can specify this parameter to use a data disk snapshot as the system disk of the image. If you do not specify this parameter, the disk type is determined by the type of the source snapshot. Valid values:
         # 
-        # *   system: system disk. You can specify only one snapshot to use to create the system disk in the custom image.
-        # *   data: data disk. You can specify up to 16 snapshots to use to create data disks in the custom image.
+        # - system: system disk. You can specify only one system disk snapshot.
+        # 
+        # - data: data disk. You can specify a maximum of 16 data disk snapshots.
         self.disk_type = disk_type
-        # The size of disk N in the custom image. Unit: GiB. The valid values and default value of DiskDeviceMapping.N.Size vary based on the value of DiskDeviceMapping.N.SnapshotId.
+        # The size of the cloud disk, in GiB. The valid values and default value of `DiskDeviceMapping.N.Size` vary based on whether `DiskDeviceMapping.N.SnapshotId` is specified.
         # 
-        # *   If you leave DiskDeviceMapping.N.SnapshotId empty, DiskDeviceMapping.N.Size has the following valid values and default values:
+        # - If `DiskDeviceMapping.N.SnapshotId` is not specified, the value of this parameter depends on the disk type:
         # 
-        #     *   For basic disks, the valid values range from 5 to 2000, and the default value is 5.
-        #     *   For other disks, the valid values range from 20 to 32768, and the default value is 20.
+        #   - For basic disks, the value range is 5 to 2,000 and the default value is 5.
         # 
-        # *   If you specify DiskDeviceMapping.N.SnapshotId, the value of DiskDeviceMapping.N.Size must be greater than or equal to the size of the specified snapshot. The default value of DiskDeviceMapping.N.Size is the size of the specified snapshot.
+        #   - For other disk types, the value range is 20 to 32,768 and the default value is 20.
+        # 
+        # - If `DiskDeviceMapping.N.SnapshotId` is specified, the value of `DiskDeviceMapping.N.Size` must be greater than or equal to the snapshot\\"s size. The default value is the snapshot\\"s size.
         self.size = size
         # The ID of the snapshot.
         self.snapshot_id = snapshot_id

@@ -10,7 +10,9 @@ class ExportSnapshotResponseBody(DaraModel):
         request_id: str = None,
         task_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The export task ID. Call the `DescribeTasks` operation to check the task status.
         self.task_id = task_id
 
     def validate(self):

@@ -18,15 +18,15 @@ class DescribeImagesResponseBody(DaraModel):
         total_count: int = None,
     ):
         self.images = images
-        # The page number returned.
+        # Current page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # Number of entries on the current page.
         self.page_size = page_size
-        # The region ID of the image.
+        # The region ID to which the image belongs.
         self.region_id = region_id
-        # The request ID.
+        # Request ID.
         self.request_id = request_id
-        # The total number of images.
+        # Total number of images.
         self.total_count = total_count
 
     def validate(self):

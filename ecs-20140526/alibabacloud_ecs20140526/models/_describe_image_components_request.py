@@ -30,12 +30,13 @@ class DescribeImageComponentsRequest(DaraModel):
         # 
         # Valid values:
         # 
-        # *   Build
-        # *   Test
+        # - Build
+        # 
+        # - Test
         self.component_type = component_type
         # The version number of the image component in the \\<major>.\\<minor>.\\<patch> format. You can set \\<major>, \\<minor>, and \\<patch> to non-negative integers, or set one of \\<major>, \\<minor>, and \\<patch> to the wildcard (\\*) and the other two to non-negative integers.
         # 
-        # >  This parameter takes effect only if you specify Name.
+        # > This parameter takes effect only if you specify Name.
         self.component_version = component_version
         # The IDs of image components. Valid values of N: 1 to 20.
         self.image_component_id = image_component_id
@@ -49,8 +50,9 @@ class DescribeImageComponentsRequest(DaraModel):
         self.next_token = next_token
         # The type of the image component. Valid values:
         # 
-        # *   SELF: the custom component that you created.
-        # *   ALIYUN: the system component provided by Alibaba Cloud.
+        # - SELF: the custom component that you created.
+        # 
+        # - ALIYUN: the system component provided by Alibaba Cloud.
         self.owner = owner
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -60,7 +62,7 @@ class DescribeImageComponentsRequest(DaraModel):
         self.region_id = region_id
         # The ID of the resource group. If this parameter is specified to query resources, up to 1,000 resources that belong to the specified resource group can be displayed in the response.
         # 
-        # >  Resources in the default resource group are displayed in the response regardless of how this parameter is set.
+        # > Resources in the default resource group are displayed in the response regardless of how this parameter is set.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -68,8 +70,9 @@ class DescribeImageComponentsRequest(DaraModel):
         # 
         # Valid values:
         # 
-        # *   Linux
-        # *   Windows
+        # - Linux
+        # 
+        # - Windows
         self.system_type = system_type
         # The tags of the image component.
         self.tag = tag

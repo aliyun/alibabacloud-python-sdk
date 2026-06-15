@@ -20,8 +20,9 @@ class DescribeImageSupportInstanceTypesRequest(DaraModel):
     ):
         # The scenario in which the image is used. Valid values:
         # 
-        # *   CreateEcs (default): instance creation
-        # *   ChangeOS: replacement of the system disk or operating system
+        # - CreateEcs (default): instance creation
+        # 
+        # - ChangeOS: replacement of the system disk or operating system
         self.action_type = action_type
         # The number of vCPUs of the instance type.
         self.filter = filter

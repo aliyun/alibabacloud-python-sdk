@@ -23,34 +23,37 @@ class CreateDeploymentSetRequest(DaraModel):
         strategy: str = None,
         type: str = None,
     ):
+        # The affinity level of the deployment set. This level determines how instances are distributed within the set. The value must be an integer from 1 to 10. Default value: 1.
         self.affinity = affinity
-        # The description of the deployment set. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
-        self.client_token = client_token
-        # The name of the deployment set. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with `http://` or `https://`. The name can contain digits, letters, colons (:), underscores (_), and hyphens (-).
-        self.deployment_set_name = deployment_set_name
-        # The emergency solution to use in the situation where instances in the deployment set cannot be evenly distributed to different zones due to resource insufficiency after the instances failover. Valid values:
+        # A client-generated token that you can use to ensure request idempotence. The token must be unique across requests.
         # 
-        # *   CancelMembershipAndStart: removes the instances from the deployment set and starts the instances immediately after they are failed over.
-        # *   KeepStopped: leaves the instances in the Stopped state and starts them after resources are replenished.
+        # The **ClientToken** value must be an ASCII string of up to 64 characters. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+        self.client_token = client_token
+        # The name of the deployment set. The name must be 2 to 128 characters long and start with a letter. It can contain digits, colons (:), underscores (_), and hyphens (-). The name cannot start with `http://` or `https://`.
+        self.deployment_set_name = deployment_set_name
+        # The description of the deployment set. The description must be 2 to 256 characters long and cannot start with `http://` or `https://`.
+        self.description = description
+        # > This parameter is deprecated.
+        self.domain = domain
+        # > This parameter is deprecated.
+        self.granularity = granularity
+        # The number of partitions in the deployment set group. Valid values: 1 to 7.
+        # 
+        # Default value: 3.
+        # 
+        # > This parameter is valid only when `Strategy` is set to `AvailabilityGroup`.
+        self.group_count = group_count
+        # The policy for an instance that fails to be redeployed after a failover due to insufficient resources. Valid values:
+        # 
+        # - CancelMembershipAndStart: Removes the instance from the deployment set and starts the instance immediately after failover.
+        # 
+        # - KeepStopped: Keeps the instance in the deployment set and in the Stopped state.
         # 
         # Default value: CancelMembershipAndStart.
-        self.description = description
-        # >  This parameter is deprecated.
-        self.domain = domain
-        # >  This parameter is deprecated.
-        self.granularity = granularity
-        # The deployment strategy. Valid values:
-        # 
-        # *   Availability: high availability strategy.
-        # *   AvailabilityGroup: high availability group strategy.
-        # 
-        # Default value: Availability.
-        self.group_count = group_count
-        # The region ID of the deployment set. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent list of regions.
         self.on_unable_to_redeploy_failed_instance = on_unable_to_redeploy_failed_instance
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # Creates a deployment set in a specific region.
+        # The ID of the region for the deployment set. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to view the latest list of Alibaba Cloud regions.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -58,12 +61,23 @@ class CreateDeploymentSetRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The deployment strategy. Valid values:
         # 
-        # *   Availability: high availability strategy
-        # *   AvailabilityGroup: high availability group strategy
-        # *   LowLatency: low latency strategy
+        # - Availability: High availability strategy.
+        # 
+        # - AvailabilityGroup: High availability strategy for deployment set groups.
+        # 
+        # - LowLatency: Low-latency strategy.
         # 
         # Default value: Availability.
         self.strategy = strategy
+        # The deployment granularity. Valid values:
+        # 
+        # - host: Spreads instances across different hosts.
+        # 
+        # - sw: Spreads instances across different switches.
+        # 
+        # - rack: Spreads instances across different racks.
+        # 
+        # Default value: host.
         self.type = type
 
     def validate(self):

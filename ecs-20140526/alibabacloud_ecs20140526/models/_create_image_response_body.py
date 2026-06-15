@@ -10,9 +10,9 @@ class CreateImageResponseBody(DaraModel):
         image_id: str = None,
         request_id: str = None,
     ):
-        # The image ID.
+        # The ID of the image.
         self.image_id = image_id
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

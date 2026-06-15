@@ -21,17 +21,32 @@ class CreateNatGatewayRequest(DaraModel):
         resource_owner_id: int = None,
         vpc_id: str = None,
     ):
+        # Configurations for the bandwidth packages to create and associate with the nat gateway.
+        # 
         # This parameter is required.
         self.bandwidth_package = bandwidth_package
+        # A client token to ensure the idempotence of the request.
+        # 
+        # This token is client-generated and must be unique for each request. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # A description of the nat gateway.
+        # 
+        # The description must be 2 to 256 characters in length. It must start with a letter or a Chinese character but cannot start with `http://` or `https://`.
         self.description = description
+        # A name for the nat gateway.
+        # 
+        # The name must be 2 to 128 characters in length. It must start with a letter or a Chinese character but cannot start with `http://` or `https://`.
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the region in which to create the nat gateway.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The ID of the VPC in which to create the nat gateway.
+        # 
         # This parameter is required.
         self.vpc_id = vpc_id
 
@@ -124,8 +139,11 @@ class CreateNatGatewayRequestBandwidthPackage(DaraModel):
         ip_count: int = None,
         zone: str = None,
     ):
+        # The peak bandwidth for the EIPs in the bandwidth package. Unit: Mbit/s.
         self.bandwidth = bandwidth
+        # The number of EIPs to create in the bandwidth package. Valid values: 1 to 10.
         self.ip_count = ip_count
+        # The ID of the zone in which to create the EIPs. If you do not specify a zone, the system randomly selects one.
         self.zone = zone
 
     def validate(self):

@@ -31,12 +31,13 @@ class CreateImageComponentRequest(DaraModel):
         # 
         # Valid values:
         # 
-        # *   Build
-        # *   Test
+        # - Build
+        # 
+        # - Test
         # 
         # Default value: Build.
         # 
-        # >  Image building components can be used only in image building templates. Image test components can be used only in image test templates.
+        # > Image building components can be used only in image building templates. Image test components can be used only in image test templates.
         self.component_type = component_type
         # The version number of the image component, which is used together with the name of the image component. The version number is in the \\<major>.\\<minor>.\\<patch> format. Set \\<major>, \\<minor>, and \\<patch> to non-negative integers.
         # 
@@ -44,11 +45,11 @@ class CreateImageComponentRequest(DaraModel):
         self.component_version = component_version
         # The content of the image component. The image component consists of multiple commands. The command content cannot exceed 16 KB in size. For information about the commands supported by Image Builder and the formats of the commands, see [Commands supported by Image Builder](https://help.aliyun.com/document_detail/200206.html).
         self.content = content
-        # The description. The description must be 2 to 256 characters in length and cannot start with [http:// or https://](http://https://。).
+        # The description. The description must be 2 to 256 characters in length and cannot start with [http:// or https://](http://https://%E3%80%82).
         self.description = description
-        # The name of the image component. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
+        # The name of the image component. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http\\:// or https\\://. The name can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
         # 
-        # >  If you do not specify `Name`, the return value of `ImageComponentId` is used.
+        # > If you do not specify `Name`, the return value of `ImageComponentId` is used.
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -64,8 +65,9 @@ class CreateImageComponentRequest(DaraModel):
         # 
         # Valid values:
         # 
-        # *   Linux
-        # *   Windows
+        # - Linux
+        # 
+        # - Windows
         # 
         # Default value: Linux.
         self.system_type = system_type
@@ -184,9 +186,9 @@ class CreateImageComponentRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot contain [http:// or https://](http://https://。). The tag key cannot start with acs: or aliyun.
+        # The key of tag N. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot contain [http:// or https://](http://https://%E3%80%82). The tag key cannot start with acs: or aliyun.
         self.key = key
-        # The value of tag N. Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot contain [http:// or https://](http://https://。). The tag value cannot start with acs:.
+        # The value of tag N. Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot contain [http:// or https://](http://https://%E3%80%82). The tag value cannot start with acs:.
         self.value = value
 
     def validate(self):

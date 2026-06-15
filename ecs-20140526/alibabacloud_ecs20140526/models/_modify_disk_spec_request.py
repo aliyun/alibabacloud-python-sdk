@@ -20,20 +20,23 @@ class ModifyDiskSpecRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # >  This parameter is in invitational preview and is not publicly available.
+        # > This parameter is in invitational preview and is not publicly available.
         self.destination_zone_id = destination_zone_id
         # The new disk category of the cloud disk. Valid values:
         # 
-        # *   cloud_essd: ESSD
-        # *   cloud_auto: ESSD AutoPL disk
-        # *   cloud_ssd: standard SSD
-        # *   cloud_efficiency: utra disk
+        # - cloud_essd: ESSD
+        # 
+        # - cloud_auto: ESSD AutoPL disk
+        # 
+        # - cloud_ssd: standard SSD
+        # 
+        # - cloud_efficiency: utra disk
         # 
         # This parameter is empty by default, which indicates that the disk category is not changed.
         # 
-        # > 
+        # >
         # 
-        # *   The preceding values are listed in descending order of disk performance. Subscription disks cannot be downgraded.
+        # - The preceding values are listed in descending order of disk performance. Subscription disks cannot be downgraded.
         self.disk_category = disk_category
         # The disk ID.
         # 
@@ -41,8 +44,9 @@ class ModifyDiskSpecRequest(DaraModel):
         self.disk_id = disk_id
         # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         # 
-        # *   true: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, service limits, and insufficient ECS resources. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # *   false: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+        # - true: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, service limits, and insufficient ECS resources. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # 
+        # - false: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         # 
         # Default value: false.
         self.dry_run = dry_run
@@ -52,10 +56,13 @@ class ModifyDiskSpecRequest(DaraModel):
         self.performance_control_options = performance_control_options
         # The new performance level of the ESSD. Valid values:
         # 
-        # *   PL0: An ESSD can deliver up to 10,000 random read/write IOPS.
-        # *   PL1: An ESSD can deliver up to 50,000 random read/write IOPS.
-        # *   PL2: An ESSD can deliver up to 100,000 random read/write IOPS.
-        # *   PL3: An ESSD delivers up to 1,000,000 random read/write IOPS.
+        # - PL0: An ESSD can deliver up to 10,000 random read/write IOPS.
+        # 
+        # - PL1: An ESSD can deliver up to 50,000 random read/write IOPS.
+        # 
+        # - PL2: An ESSD can deliver up to 100,000 random read/write IOPS.
+        # 
+        # - PL3: An ESSD delivers up to 1,000,000 random read/write IOPS.
         # 
         # Default value: PL1.
         self.performance_level = performance_level
@@ -65,7 +72,7 @@ class ModifyDiskSpecRequest(DaraModel):
         # 
         # Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}.
         # 
-        # >  This parameter is available only if you set `DiskCategory` to `cloud_auto`. For more information, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html) and [Modify the performance configurations of an ESSD AutoPL disk](https://help.aliyun.com/document_detail/413275.html).
+        # > This parameter is available only if you set `DiskCategory` to `cloud_auto`. For more information, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html) and [Modify the performance configurations of an ESSD AutoPL disk](https://help.aliyun.com/document_detail/413275.html).
         self.provisioned_iops = provisioned_iops
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

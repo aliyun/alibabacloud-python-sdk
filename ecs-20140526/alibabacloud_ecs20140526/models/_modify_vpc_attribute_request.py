@@ -18,16 +18,23 @@ class ModifyVpcAttributeRequest(DaraModel):
         vpc_id: str = None,
         vpc_name: str = None,
     ):
+        # The primary IPv4 cidr block for the VPC. You can only expand this cidr block, for example, from `192.168.0.0/24` to `192.168.0.0/16`. You cannot modify the primary cidr block if ClassicLink is enabled.
         self.cidr_block = cidr_block
+        # The description must be 2 to 256 characters long. It must start with a letter and cannot begin with `http://` or `https://`.
         self.description = description
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the VPC\\"s region.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # A user cidr block to add to the VPC. You can add up to three user cidr blocks. They cannot overlap with the primary cidr block, each other, or the reserved `100.64.0.0/10` cidr block.
         self.user_cidr = user_cidr
+        # The ID of the VPC to modify.
+        # 
         # This parameter is required.
         self.vpc_id = vpc_id
+        # The name must be 2 to 128 characters long, start with a letter, and can contain letters, digits, underscores (_), and hyphens (-).
         self.vpc_name = vpc_name
 
     def validate(self):

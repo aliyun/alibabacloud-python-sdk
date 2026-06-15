@@ -18,7 +18,7 @@ class DescribeInstanceRamRoleRequest(DaraModel):
     ):
         # The IDs of ECS instances. You can specify up to 50 instance IDs in a single request.
         # 
-        # >  You must specify at least one parameter from `InstanceIds` and `RamRoleName`.
+        # > You must specify at least one parameter from `InstanceIds` and `RamRoleName`.
         self.instance_ids = instance_ids
         self.owner_id = owner_id
         # The page number.
@@ -35,7 +35,7 @@ class DescribeInstanceRamRoleRequest(DaraModel):
         self.page_size = page_size
         # The name of the instance RAM role. If you specify this parameter, all ECS instances to which the instance RAM role is attached are returned in the response. You can call the [ListRoles](https://help.aliyun.com/document_detail/28713.html) operation of RAM to query the names of available instance RAM roles.
         # 
-        # >  You must specify at least one parameter from `InstanceIds` and `RamRoleName`.
+        # > You must specify at least one parameter from `InstanceIds` and `RamRoleName`.
         self.ram_role_name = ram_role_name
         # The region ID of the instance RAM role. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent list of regions.
         # 

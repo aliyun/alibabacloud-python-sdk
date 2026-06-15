@@ -20,8 +20,9 @@ class DescribeCapacityReservationInstancesRequest(DaraModel):
         self.private_pool_options = private_pool_options
         # The number of entries per page.
         # 
-        # *   Valid values: 1 to 100.
-        # *   Default value: 10.
+        # - Valid values: 1 to 100.
+        # 
+        # - Default value: 10.
         self.max_results = max_results
         # The pagination token that is used in the next request to retrieve a new page of results. You must specify the token that is obtained from the previous query as the value of the NextToken parameter.
         self.next_token = next_token

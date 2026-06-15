@@ -16,14 +16,21 @@ class ModifyVSwitchAttributeRequest(DaraModel):
         v_switch_id: str = None,
         v_switch_name: str = None,
     ):
+        # The new description for the vSwitch.\\
+        # The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.\\
         self.description = description
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the region where the vSwitch is located.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The ID of the vSwitch to modify.
+        # 
         # This parameter is required.
         self.v_switch_id = v_switch_id
+        # The new name for the vSwitch.\\
+        # The name must be 2 to 128 characters in length. It must start with a letter and can contain letters, digits, underscores (_), and hyphens (-).\\
         self.v_switch_name = v_switch_name
 
     def validate(self):

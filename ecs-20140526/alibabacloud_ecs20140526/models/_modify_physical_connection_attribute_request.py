@@ -24,23 +24,45 @@ class ModifyPhysicalConnectionAttributeRequest(DaraModel):
         user_cidr: str = None,
         bandwidth: int = None,
     ):
+        # The circuit code of the physical connection, provided by the line operator.
         self.circuit_code = circuit_code
+        # A client-generated token to ensure the idempotency of the request.
+        # 
+        # The token must be unique across requests. The client token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The new description of the physical connection.
         self.description = description
+        # The line operator that provides the physical connection.
         self.line_operator = line_operator
+        # The new name of the physical connection.
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The peer location of the physical connection.
         self.peer_location = peer_location
+        # The ID of the physical connection.
+        # 
         # This parameter is required.
         self.physical_connection_id = physical_connection_id
+        # The port type of the physical connection.
         self.port_type = port_type
+        # The ID of the redundant physical connection.
         self.redundant_physical_connection_id = redundant_physical_connection_id
+        # The ID of the region where the physical connection is located.
+        # 
+        # To get the latest list of regions, call the `DescribeRegions` operation.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The client-side IP address or CIDR block in your data center.
+        # 
+        # This parameter is used only for outbound traffic shaping.
         self.user_cidr = user_cidr
+        # The bandwidth of the physical connection.
+        # 
+        # Unit: Mbit/s.
         self.bandwidth = bandwidth
 
     def validate(self):

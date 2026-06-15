@@ -24,13 +24,15 @@ class DescribeLaunchTemplatesRequest(DaraModel):
     ):
         # The IDs of launch templates.
         # 
-        # *   You can query up to 100 launch templates.
-        # *   You must specify LaunchTemplateId or LaunchTemplateName to specify a launch template.
+        # - You can query up to 100 launch templates.
+        # 
+        # - You must specify LaunchTemplateId or LaunchTemplateName to specify a launch template.
         self.launch_template_id = launch_template_id
         # The names of launch templates.
         # 
-        # *   You can query up to 100 launch templates.
-        # *   You must specify LaunchTemplateId or LaunchTemplateName to specify a launch template.
+        # - You can query up to 100 launch templates.
+        # 
+        # - You must specify LaunchTemplateId or LaunchTemplateName to specify a launch template.
         self.launch_template_name = launch_template_name
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -50,11 +52,11 @@ class DescribeLaunchTemplatesRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The ID of the resource group to which the launch template belongs. If you specify this parameter to query resources, up to 1,000 resources that belong to the specified resource group can be returned.
         # 
-        # >  The default resource group is not supported.
+        # > The default resource group is not supported.
         self.template_resource_group_id = template_resource_group_id
         # The tags of the launch template.
         # 
-        # >  You can only call API operations to add tags to and query the tags of a launch template. You cannot add tags to or view the tags of a launch template in the ECS console.
+        # > You can only call API operations to add tags to and query the tags of a launch template. You cannot add tags to or view the tags of a launch template in the ECS console.
         self.template_tag = template_tag
 
     def validate(self):

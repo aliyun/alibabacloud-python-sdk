@@ -17,12 +17,18 @@ class DescribeBandwidthPackagesRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The ID of the bandwidth package.
         self.bandwidth_package_id = bandwidth_package_id
+        # The ID of the nat gateway. If specified, the operation returns only bandwidth packages associated with the specified nat gateway.
         self.nat_gateway_id = nat_gateway_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The page number. Starting value: 1. Default value: 1.
         self.page_number = page_number
+        # The number of entries to return on each page. Valid values: 1 to 100. Default value: 20.
         self.page_size = page_size
+        # The ID of the region where the bandwidth package is located.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account

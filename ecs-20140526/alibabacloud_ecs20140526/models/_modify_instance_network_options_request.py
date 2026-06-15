@@ -19,11 +19,15 @@ class ModifyInstanceNetworkOptionsRequest(DaraModel):
         # 
         # Valid values:
         # 
-        # *   Vpc-L1: Vpc-L1.
-        # *   Vpc-L2: Vpc-L2.
-        # *   Ebs-L1: Ebs-L1.
-        # *   Ebs-L2: Ebs-L2.
-        # *   Default: the Default.
+        # - Vpc-L1: Vpc-L1.
+        # 
+        # - Vpc-L2: Vpc-L2.
+        # 
+        # - Ebs-L1: Ebs-L1.
+        # 
+        # - Ebs-L2: Ebs-L2.
+        # 
+        # - Default: the Default.
         self.bandwidth_weighting = bandwidth_weighting
         # The ID of the instance whose network bandwidth weight is to be modified.
         self.instance_id = instance_id

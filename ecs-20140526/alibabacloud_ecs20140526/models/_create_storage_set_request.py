@@ -23,28 +23,18 @@ class CreateStorageSetRequest(DaraModel):
         tag: List[main_models.CreateStorageSetRequestTag] = None,
         zone_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **token** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
-        # The description of the storage set. The description must be 2 to 256 characters in length and cannot start with [http:// or https://](http://https://。).
         self.description = description
-        # The maximum number of partitions supported by the storage set. The value must be greater than or equal to 2 but cannot exceed the quota that you obtained by calling the [DescribeAccountAttributes](https://help.aliyun.com/document_detail/73772.html) operation.
-        # 
-        # Default value: 2.
         self.max_partition_number = max_partition_number
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the storage set. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
-        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The name of the storage set. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). The name must start with a letter and cannot start with [http:// or https:// ](http://https://。、（:）、（_）（-）。).
         self.storage_set_name = storage_set_name
         self.tag = tag
-        # The zone ID of the storage set. You can call the [DescribeZones](https://help.aliyun.com/document_detail/25610.html) operation to query the most recent zone list.
-        # 
         # This parameter is required.
         self.zone_id = zone_id
 

@@ -16,14 +16,20 @@ class DeleteVirtualBorderRouterRequest(DaraModel):
         user_cidr: str = None,
         vbr_id: str = None,
     ):
+        # A client token that is used to ensure the idempotence of the request. This token must be unique across requests. The token can contain only ASCII characters and must not exceed 64 characters in length.
         self.client_token = client_token
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the region where the VBR is deployed. You can call the `DescribeRegions` operation to obtain the latest list of regions.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The client-side CIDR block. This parameter is required only when you delete a VBR that is part of a dual-tunnel connection.
         self.user_cidr = user_cidr
+        # The ID of the VBR to delete.
+        # 
         # This parameter is required.
         self.vbr_id = vbr_id
 

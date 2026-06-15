@@ -28,69 +28,85 @@ class ModifyNetworkInterfaceAttributeRequest(DaraModel):
         source_dest_check: bool = None,
         tx_queue_size: int = None,
     ):
-        # The connection tracking configuration of the ENI.
+        # The connection tracking configuration.
+        # 
+        # Before using this parameter, we recommend that you read [Connection timeout management](https://help.aliyun.com/document_detail/2865958.html).
         self.connection_tracking_configuration = connection_tracking_configuration
-        # Specifies whether to release the ENI when the associated instance is released. Valid values:
+        # Specifies whether to delete the elastic network interface when its attached instance is released. Valid values:
         # 
-        # *   true
-        # *   false
+        # - `true`: The elastic network interface is deleted.
+        # 
+        # - `false`: The elastic network interface is retained.
         self.delete_on_release = delete_on_release
-        # The description of the ENI. The description must be 2 to 255 characters in length and cannot start with [http:// or https://](http://https://。).
+        # The description of the elastic network interface. The description must be 2 to 255 characters in length and cannot start with `http://` or `https://`.
         # 
-        # This parameter is left empty by default.
+        # Default value: empty.
         self.description = description
         # This parameter is not publicly available.
         self.enhanced_network = enhanced_network
-        # The ID of the ENI.
+        # The ID of the elastic network interface.
         # 
         # This parameter is required.
         self.network_interface_id = network_interface_id
-        # The name of the ENI. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with `http://` or `https://`. The name can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
+        # The name of the elastic network interface. The name must be 2 to 128 characters in length, start with a letter or a Chinese character, and not start with `http://` or `https://`. It can contain letters, digits, Chinese characters, colons (:), underscores (_), periods (.), and hyphens (-).
         # 
-        # This parameter is left empty by default.
+        # Default value: empty.
         self.network_interface_name = network_interface_name
-        # The communication parameters of the ENI.
+        # The traffic configuration of the elastic network interface.
         self.network_interface_traffic_config = network_interface_traffic_config
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The number of queues supported by the ENI. Valid values: 1 to 2048.
+        # The number of queues for the elastic network interface. Valid values: 1 to 2048.
         # 
-        # *   You can change the number of queues supported by an ENI only when the ENI is in the `Available` state or the ENI is attached (`InUse`) to an instance that is in the `Stopped` state.
-        # *   The number of queues supported by the ENI cannot exceed the maximum number of queues that the instance type allows for each ENI. The total number of queues on all ENIs on an instance cannot exceed the queue quota that the instance type supports. To query the maximum number of queues per ENI and the queue quota for an instance type, you can call the [DescribeInstanceTypes](https://help.aliyun.com/document_detail/25620.html) operation and check the `MaximumQueueNumberPerEni` and `TotalEniQueueQuantity` values in the response.
+        # - You can change the number of queues for an elastic network interface only when it is in the `Available` state or is attached to an instance in the `Stopped` state.
+        # 
+        # - The number of queues cannot exceed the maximum supported by the instance type. The total number of queues for all elastic network interfaces attached to the instance cannot exceed the instance\\"s queue quota. You can call the [DescribeInstanceTypes](https://help.aliyun.com/document_detail/25620.html) operation to query the `MaximumQueueNumberPerEni` and `TotalEniQueueQuantity` values for an instance type.
         self.queue_number = queue_number
-        # The region ID of the ENI. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The ID of the region where the elastic network interface is located. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the latest list of Alibaba Cloud regions.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The receive (Rx) queue depth of the ENI.
+        # The queue depth for inbound traffic on the elastic network interface.
         # 
-        # Take note of the following items:
+        # > This parameter is available by invitation only. To use this feature, submit a ticket.
         # 
-        # *   The Rx queue depth of an ENI must be the same as the transmit (Tx) queue depth of the ENI. Valid values: powers of 2 in the range of 8192 to 16384.
-        # *   A larger Rx queue depth yields higher inbound throughput but consumes more memory.
+        # Note the following:
+        # 
+        # - This parameter is available only for instance types of the 7th generation and later.
+        # 
+        # - This parameter is available only for instances that use Linux images.
+        # 
+        # - A larger queue depth for inbound traffic increases throughput and reduces the packet loss rate, but consumes more memory.
         self.rx_queue_size = rx_queue_size
-        # The IDs of the security groups to which to add the secondary ENI. The secondary ENI is added to the specified security groups and removed from the original security groups.
+        # The IDs of new security groups to associate with the secondary elastic network interface. The interface is then detached from its original security groups.
         # 
-        # *   The valid values of N vary based on the maximum number of security groups to which an ENI can be added. For more information, see the [Security group limits](~~25412#SecurityGroupQuota~~) section of the "Limits and quotas" topic.
-        # *   The new security groups take effect after a short delay.
+        # - The number of security groups that you can specify is limited by the maximum number of security groups to which an elastic network interface can be attached. For more information, see [Usage limits](~~25412#SecurityGroupQuota~~).
+        # 
+        # - The changes take effect after a short delay.
         self.security_group_id = security_group_id
-        # Source and destination IP address check We recommend that you enable the feature to improve network security. Valid value:
+        # Specifies whether to enable the source/destination check. For enhanced security, we recommend enabling this feature. Valid values:
         # 
-        # *   true
-        # *   false
+        # - `true`: Enabled
         # 
-        # Default value: false.
+        # - `false`: Disabled
         # 
-        # >  This feature is available only in some regions. Before you use this method, read [Source and destination IP address check](https://help.aliyun.com/document_detail/2863210.html).
+        # Default value: `false`.
+        # 
+        # > This feature is available only in specific regions. Before you use this parameter, read [Source/destination check](https://help.aliyun.com/document_detail/2863210.html).
         self.source_dest_check = source_dest_check
-        # The Tx queue depth of the ENI.
+        # The queue depth for outbound traffic on the elastic network interface.
         # 
-        # Take note of the following items:
+        # > This parameter is available by invitation only. To use this feature, submit a ticket.
         # 
-        # *   The Tx queue depth of an ENI must be the same as the Rx queue depth of the ENI. Valid values: powers of 2 in the range of 8192 to 16384.
-        # *   A larger Tx queue depth yields higher outbound throughput but consumes more memory.
+        # Note the following:
+        # 
+        # - This parameter is available only for instance types of the 7th generation and later.
+        # 
+        # - This parameter is available only for instances that use Linux images.
+        # 
+        # - A larger queue depth for outbound traffic increases throughput and reduces the packet loss rate, but consumes more memory.
         self.tx_queue_size = tx_queue_size
 
     def validate(self):
@@ -226,47 +242,57 @@ class ModifyNetworkInterfaceAttributeRequestNetworkInterfaceTrafficConfig(DaraMo
         rx_queue_size: int = None,
         tx_queue_size: int = None,
     ):
-        # The communication mode of the ENI. Valid values:
+        # The traffic mode of the elastic network interface. Valid values:
         # 
-        # *   Standard: uses the TCP communication mode.
-        # *   HighPerformance: uses the remote direct memory access (RDMA) communication mode with Elastic RDMA Interface (ERI) enabled.
+        # - `Standard`: The standard TCP traffic mode.
         # 
-        # When the ENI is in the InUse state, take note of the following items:
+        # - `HighPerformance`: The RDMA traffic mode with the Elastic RDMA Interface (ERI) feature enabled.
         # 
-        # *   The total number of ERIs attached to the instance cannot exceed the ERI quota for the instance type. To query the ERI quota for an instance type, call the DescribeInstanceTypes operation and check the EriQuantity value in the response.
+        # If the elastic network interface is attached to an instance, note the following:
         # 
-        # >  This parameter is in invitational preview and is not publicly available.
+        # - The total number of ERI-enabled elastic network interfaces on the instance cannot exceed the quota for the instance type. You can call the [DescribeInstanceTypes operation to query the value of the `EriQuantity` parameter.]()
+        # 
+        # > This parameter is available by invitation only.
         self.network_interface_traffic_mode = network_interface_traffic_mode
-        # The number of queues supported by the ENI. When the ENI is in the InUse state, take note of the following items:
+        # The number of queues for the elastic network interface.
+        # If the elastic network interface is attached to an instance, note the following:
         # 
-        # *   The value of this parameter cannot exceed the maximum number of queues allowed per ENI for the instance type.
-        # *   The total number of queues for all ENIs on the instance cannot exceed the queue quota for the instance type. To query the maximum number of queues per ENI and the queue quota for an instance type, call the DescribeInstanceTypes operation and check the MaximumQueueNumberPerEnig and TotalEniQueueQuantity values in the response.
+        # - The value cannot exceed the maximum number of queues per elastic network interface that is supported by the instance type.
         # 
-        # >  This parameter is in invitational preview and is not publicly available.
+        # - The total number of queues for all elastic network interfaces on the instance cannot exceed the queue quota for the instance type. You can call the [DescribeInstanceTypes operation to query the `MaximumQueueNumberPerEni` and `TotalEniQueueQuantity` values for an instance type.]()
+        # 
+        # > This parameter is available by invitation only. To use this feature, submit a ticket.
         self.queue_number = queue_number
-        # The number of queues supported by the ERI. When the ERI is in the InUse state, take note of the following items:
+        # The number of queue pairs for the ERI.
+        # If the elastic network interface is attached to an instance, note the following:
         # 
-        # *   The value of this parameter cannot exceed the maximum number of queues allowed per ERI for the instance type. To query the maximum number of queues allowed per ERI for an instance type, call the DescribeInstanceTypes operation and check the QueuePairNumber value in the response.
+        # - The value cannot exceed the maximum number of queue pairs per ERI that is supported by the instance type. You can call the [DescribeInstanceTypes operation to query the value of the `QueuePairNumber` parameter for an instance type.]()
         # 
-        # >  This parameter is in invitational preview and is not publicly available.
+        # > This parameter is available by invitation only. To use this feature, submit a ticket.
         self.queue_pair_number = queue_pair_number
-        # The receive (Rx) queue depth of the ENI.
+        # The queue depth for inbound traffic on the elastic network interface.
         # 
-        # Take note of the following items:
+        # > This parameter is available by invitation only. To use this feature, submit a ticket.
         # 
-        # *   The Rx queue depth of an ENI must be the same as the transmit (Tx) queue depth of the ENI. Valid values: powers of 2 in the range of 8192 to 16384.
-        # *   A larger Rx queue depth yields higher inbound throughput but consumes more memory.
+        # Note the following:
         # 
-        # >  This parameter is in invitational preview and is not publicly available.
+        # - This parameter is available only for instance types of the 7th generation and later.
+        # 
+        # - This parameter is available only for instances that use Linux images.
+        # 
+        # - A larger queue depth for inbound traffic increases throughput and reduces the packet loss rate, but consumes more memory.
         self.rx_queue_size = rx_queue_size
-        # The Tx queue depth of the ENI.
+        # The queue depth for outbound traffic on the elastic network interface.
         # 
-        # Take note of the following items:
+        # > This parameter is available by invitation only. To use this feature, submit a ticket.
         # 
-        # *   The Tx queue depth of an ENI must be the same as the Rx queue depth of the ENI. Valid values: powers of 2 in the range of 8192 to 16384.
-        # *   A larger Tx queue depth yields higher outbound throughput but consumes more memory.
+        # Note the following:
         # 
-        # >  This parameter is in invitational preview and is not publicly available.
+        # - This parameter is available only for instance types of the 7th generation and later.
+        # 
+        # - This parameter is available only for instances that use Linux images.
+        # 
+        # - A larger queue depth for outbound traffic increases throughput and reduces the packet loss rate, but consumes more memory.
         self.tx_queue_size = tx_queue_size
 
     def validate(self):
@@ -321,7 +347,7 @@ class ModifyNetworkInterfaceAttributeRequestEnhancedNetwork(DaraModel):
         virtual_function_quantity: int = None,
         virtual_function_total_queue_number: int = None,
     ):
-        # >  This parameter is not publicly available.
+        # > This parameter is not publicly available.
         self.enable_rss = enable_rss
         # This parameter is not publicly available.
         self.enable_sriov = enable_sriov
@@ -373,21 +399,21 @@ class ModifyNetworkInterfaceAttributeRequestConnectionTrackingConfiguration(Dara
         tcp_established_timeout: int = None,
         udp_timeout: int = None,
     ):
-        # The timeout period for TCP connections in the TIME_WAIT or CLOSE_WAIT state. Unit: seconds. Valid values: integers from 3 to 15.
+        # The timeout period, in seconds, for TCP connections in the `TIME_WAIT` or `CLOSE_WAIT` state. The value must be an integer from 3 to 15.
         # 
         # Default value: 3.
         # 
-        # >  If the associated ECS instance is used together with a Network Load Balancer (NLB) or Classic Load Balancer (CLB) instance, the default timeout period for TCP connections in the `TIME_WAIT` state is 15 seconds.
+        # > If your ECS instance is used with Network Load Balancer (NLB) or Classic Load Balancer (CLB), the default timeout period for connections in the `TIME_WAIT` state is 15 seconds.
         self.tcp_closed_and_time_wait_timeout = tcp_closed_and_time_wait_timeout
-        # The timeout period for TCP connections in the ESTABLISHED state. Unit: seconds. Valid values: 30, 60, 80, 100, 200, 300, 500, 700, and 910.
+        # The timeout period for TCP connections in the `ESTABLISHED` state, in seconds. Valid values: 30, 60, 80, 100, 200, 300, 500, 700, and 910.
         # 
         # Default value: 910.
         self.tcp_established_timeout = tcp_established_timeout
-        # The timeout period for UDP flows. Unit: seconds. Valid values: 10, 20, 30, 60, 80, and 100.
+        # The timeout period for UDP flows, in seconds. Valid values: 10, 20, 30, 60, 80, and 100.
         # 
         # Default value: 30.
         # 
-        # >  If the associated ECS instance is used together with an NLB or CLB instance, the default timeout period for UDP flows is 100 seconds.
+        # > If your ECS instance is used with Network Load Balancer (NLB) or Classic Load Balancer (CLB), the default value is 100 seconds.
         self.udp_timeout = udp_timeout
 
     def validate(self):

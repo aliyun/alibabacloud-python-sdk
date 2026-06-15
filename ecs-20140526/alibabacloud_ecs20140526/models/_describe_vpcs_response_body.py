@@ -16,10 +16,15 @@ class DescribeVpcsResponseBody(DaraModel):
         total_count: int = None,
         vpcs: main_models.DescribeVpcsResponseBodyVpcs = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
+        # The details of the VPCs.
         self.vpcs = vpcs
 
     def validate(self):

@@ -33,43 +33,49 @@ class CreateNetworkInterfaceResponseBody(DaraModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
-        # The description of the ENI.
+        # The description of the elastic network interface.
         self.description = description
+        # The IPv4 prefixes that are assigned to the elastic network interface.
         self.ipv_4prefix_sets = ipv_4prefix_sets
+        # The IPv6 prefixes that are assigned to the elastic network interface.
         self.ipv_6prefix_sets = ipv_6prefix_sets
+        # The IPv6 addresses that are assigned to the elastic network interface.
         self.ipv_6sets = ipv_6sets
-        # The media access control (MAC) address of the ENI.
+        # The MAC address of the elastic network interface.
         self.mac_address = mac_address
-        # The ID of the ENI.
+        # The ID of the elastic network interface.
         self.network_interface_id = network_interface_id
-        # The name of the ENI.
+        # The name of the elastic network interface.
         self.network_interface_name = network_interface_name
-        # The ID of the account to which the ENI belongs.
+        # The ID of the account that owns the elastic network interface.
         self.owner_id = owner_id
-        # The private IP address of the ENI.
+        # The primary private IP address of the elastic network interface.
         self.private_ip_address = private_ip_address
+        # The private IP addresses that are assigned to the elastic network interface.
         self.private_ip_sets = private_ip_sets
         # The request ID.
         self.request_id = request_id
-        # The ID of the resource group to which the ENI belongs.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The IDs of the security groups to which the elastic network interface belongs.
         self.security_group_ids = security_group_ids
-        # The ID of the distributor to which the ENI belongs.
+        # The ID of the distributor for the elastic network interface.
         self.service_id = service_id
-        # Indicates whether the user of the ENI is an Alibaba Cloud service or a distributor.
+        # Specifies whether the elastic network interface is managed by a cloud service or a distributor.
         self.service_managed = service_managed
-        # >  This parameter is in invitational preview and is not publicly available.
+        # > This parameter is in invitational preview and is not publicly available.
         self.source_dest_check = source_dest_check
-        # The state of the ENI.
+        # The status of the elastic network interface.
         self.status = status
+        # The tags of the elastic network interface.
         self.tags = tags
-        # The type of the ENI.
+        # The type of the elastic network interface.
         self.type = type
-        # The ID of the vSwitch to which the ENI is connected.
+        # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
-        # The ID of the VPC to which the ENI belongs.
+        # The ID of the VPC to which the elastic network interface belongs.
         self.vpc_id = vpc_id
-        # The zone ID of the ENI.
+        # The ID of the zone.
         self.zone_id = zone_id
 
     def validate(self):

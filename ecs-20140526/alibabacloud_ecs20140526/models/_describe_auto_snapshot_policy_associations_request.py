@@ -19,18 +19,19 @@ class DescribeAutoSnapshotPolicyAssociationsRequest(DaraModel):
     ):
         # The ID of the automatic snapshot policy.
         # 
-        # *   You can specify only one of AutoSnapshotPolicyId and DiskId.
+        # - You can specify only one of AutoSnapshotPolicyId and DiskId.
         self.auto_snapshot_policy_id = auto_snapshot_policy_id
         # The ID of the disk.
         # 
-        # *   You can specify only one of AutoSnapshotPolicyId and DiskId.
+        # - You can specify only one of AutoSnapshotPolicyId and DiskId.
         self.disk_id = disk_id
         # The number of entries to return on each page. Maximum value: 100.
         # 
         # Default value:
         # 
-        # *   If you do not specify this parameter or if you set this parameter to a value that is smaller than 10, the default value is 10.
-        # *   If you set a value greater than 100, the default value is 100.
+        # - If you do not specify this parameter or if you set this parameter to a value that is smaller than 10, the default value is 10.
+        # 
+        # - If you set a value greater than 100, the default value is 100.
         self.max_results = max_results
         # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of `NextToken`.
         self.next_token = next_token

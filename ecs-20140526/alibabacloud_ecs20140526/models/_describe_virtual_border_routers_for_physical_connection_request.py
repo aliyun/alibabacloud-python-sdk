@@ -19,12 +19,19 @@ class DescribeVirtualBorderRoutersForPhysicalConnectionRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The filter criteria.
         self.filter = filter
         self.owner_id = owner_id
+        # The page number. Default: 1.
         self.page_number = page_number
+        # The number of entries per page. Valid values: 1 to 50. Default: 10.
         self.page_size = page_size
+        # The ID of the physical connection.
+        # 
         # This parameter is required.
         self.physical_connection_id = physical_connection_id
+        # The ID of the region where the virtual border router (VBR) is deployed.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
@@ -106,7 +113,9 @@ class DescribeVirtualBorderRoutersForPhysicalConnectionRequestFilter(DaraModel):
         key: str = None,
         value: List[str] = None,
     ):
+        # The filter key. The only supported value is `VbrId`.
         self.key = key
+        # The VBR IDs. You can specify up to 20 IDs.
         self.value = value
 
     def validate(self):

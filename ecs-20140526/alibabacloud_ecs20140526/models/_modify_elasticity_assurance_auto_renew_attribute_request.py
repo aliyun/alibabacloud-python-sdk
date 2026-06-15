@@ -25,15 +25,17 @@ class ModifyElasticityAssuranceAutoRenewAttributeRequest(DaraModel):
         self.owner_id = owner_id
         # The auto-renewal period for the elasticity assurance.
         # 
-        # *   Valid values when `PeriodUnit` is set to `Year`: 1, 3, and 5.
-        # *   Valid values when `PeriodUnit` is set to `Month`: 1.
+        # - Valid values when `PeriodUnit` is set to `Year`: 1, 3, and 5.
+        # 
+        # - Valid values when `PeriodUnit` is set to `Month`: 1.
         # 
         # Default value: 1.
         self.period = period
         # The unit of the renewal duration. Valid values:
         # 
-        # *   Month
-        # *   Year
+        # - Month
+        # 
+        # - Year
         # 
         # Default value: Month.
         self.period_unit = period_unit
@@ -43,9 +45,11 @@ class ModifyElasticityAssuranceAutoRenewAttributeRequest(DaraModel):
         self.region_id = region_id
         # The auto-renewal status of the elasticity assurance. Valid values:
         # 
-        # *   AutoRenewal: Auto-renewal is enabled for the elasticity assurance.
-        # *   Normal: Auto-renewal is disabled for the elasticity assurance.
-        # *   NotRenewal: The elasticity assurance is not renewed. The system no longer sends an expiration notification but sends only a renewal notification three days before the elasticity assurance expires. You can change the value of this parameter from NotRenewal to `Normal` for an elasticity assurance, and then manually renew the elasticity assurance. Alternatively, you can set the RenewalStatus parameter to AutoRenewal.
+        # - AutoRenewal: Auto-renewal is enabled for the elasticity assurance.
+        # 
+        # - Normal: Auto-renewal is disabled for the elasticity assurance.
+        # 
+        # - NotRenewal: The elasticity assurance is not renewed. The system no longer sends an expiration notification but sends only a renewal notification three days before the elasticity assurance expires. You can change the value of this parameter from NotRenewal to `Normal` for an elasticity assurance, and then manually renew the elasticity assurance. Alternatively, you can set the RenewalStatus parameter to AutoRenewal.
         self.renewal_status = renewal_status
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -127,7 +131,7 @@ class ModifyElasticityAssuranceAutoRenewAttributeRequestPrivatePoolOptions(DaraM
     ):
         # The IDs of elasticity assurances.
         # 
-        # >  You can renew up to 50 elasticity assurances at a time.
+        # > You can renew up to 50 elasticity assurances at a time.
         self.id = id
 
     def validate(self):

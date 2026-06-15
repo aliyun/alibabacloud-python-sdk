@@ -32,22 +32,33 @@ class DescribeInstancesFullStatusRequest(DaraModel):
         self.event_id = event_id
         # The type of the system event. This parameter is valid only when InstanceEventType.N is not specified. Valid values:
         # 
-        # *   SystemMaintenance.Reboot: The instance is restarted due to system maintenance.
-        # *   SystemFailure.Reboot: The instance is restarted due to a system failure.
-        # *   InstanceFailure.Reboot: The instance is restarted due to an instance failure.
-        # *   InstanceExpiration.Stop: The subscription instance is stopped due to expiration.
-        # *   InstanceExpiration.Delete: The subscription instance is released due to expiration.
-        # *   AccountUnbalanced.Stop: The pay-as-you-go instance is stopped due to an overdue payment.
-        # *   AccountUnbalanced.Delete: The pay-as-you-go instance is released due to an overdue payment.
+        # - SystemMaintenance.Reboot: The instance is restarted due to system maintenance.
+        # 
+        # - SystemFailure.Reboot: The instance is restarted due to a system failure.
+        # 
+        # - InstanceFailure.Reboot: The instance is restarted due to an instance failure.
+        # 
+        # - InstanceExpiration.Stop: The subscription instance is stopped due to expiration.
+        # 
+        # - InstanceExpiration.Delete: The subscription instance is released due to expiration.
+        # 
+        # - AccountUnbalanced.Stop: The pay-as-you-go instance is stopped due to an overdue payment.
+        # 
+        # - AccountUnbalanced.Delete: The pay-as-you-go instance is released due to an overdue payment.
         self.event_type = event_type
         # The health status of the instance. Valid values:
         # 
-        # *   Impaired
-        # *   Warning: The instance performance may be degraded due to maintenance or technical issues.
-        # *   Maintaining
-        # *   Initializing
-        # *   InsufficientData
-        # *   NotApplicable
+        # - Impaired
+        # 
+        # - Warning: The instance performance may be degraded due to maintenance or technical issues.
+        # 
+        # - Maintaining
+        # 
+        # - Initializing
+        # 
+        # - InsufficientData
+        # 
+        # - NotApplicable
         # 
         # All the values are case-sensitive.
         self.health_status = health_status
@@ -73,9 +84,11 @@ class DescribeInstancesFullStatusRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The lifecycle status of the instance. Valid values:
         # 
-        # *   Starting
-        # *   Running
-        # *   Stopped
+        # - Starting
+        # 
+        # - Running
+        # 
+        # - Stopped
         self.status = status
 
     def validate(self):

@@ -269,38 +269,49 @@ class AuthorizeSecurityGroupRequestPermissions(DaraModel):
         self.dest_cidr_ip = dest_cidr_ip
         # Network Layer /transport layer protocol. Two types of assignments are supported:
         # 
-        # 1.  The case-insensitive protocol name. Valid value:
+        # 1. The case-insensitive protocol name. Valid value:
         # 
-        # *   ICMP
-        # *   GRE
-        # *   TCP
-        # *   UDP
-        # *   ALL: supports all protocols.
+        # - ICMP
         # 
-        # 2.  The value of the IANA-compliant protocol number, which is an integer from 0 to 255. List of regions currently available:
+        # - GRE
         # 
-        # *   Philippines (Manila)
-        # *   UK (London)
-        # *   Malaysia (Kuala Lumpur)
-        # *   China (Hohhot)
-        # *   China (Qingdao)
-        # *   US (Silicon Valley)
-        # *   Singapore
+        # - TCP
+        # 
+        # - UDP
+        # 
+        # - ALL: supports all protocols.
+        # 
+        # 2. The value of the IANA-compliant protocol number, which is an integer from 0 to 255. List of regions currently available:
+        # 
+        # - Philippines (Manila)
+        # 
+        # - UK (London)
+        # 
+        # - Malaysia (Kuala Lumpur)
+        # 
+        # - China (Hohhot)
+        # 
+        # - China (Qingdao)
+        # 
+        # - US (Silicon Valley)
+        # 
+        # - Singapore
         self.ip_protocol = ip_protocol
         # The destination IPv6 CIDR block. IP address ranges in the CIDR format and IPv6 format are supported.
         # 
         # This parameter is used to support quintuple rules. For more information, see [Security group quintuple rules](https://help.aliyun.com/document_detail/97439.html).
         # 
-        # >  This parameter is valid only for VPC-type ECS instances that support IPv6. This parameter and the `DestCidrIp` parameter cannot be set at the same time.
+        # > This parameter is valid only for VPC-type ECS instances that support IPv6. This parameter and the `DestCidrIp` parameter cannot be set at the same time.
         self.ipv_6dest_cidr_ip = ipv_6dest_cidr_ip
         # The source IPv6 CIDR block of the security group rule. IPv6 CIDR blocks and IPv6 addresses are supported.
         # 
-        # >  This parameter is valid only for Elastic Compute Service (ECS) instances that reside in virtual private clouds (VPCs) and support IPv6 CIDR blocks. You cannot specify both this parameter and `SourceCidrIp` in the same request.
+        # > This parameter is valid only for Elastic Compute Service (ECS) instances that reside in virtual private clouds (VPCs) and support IPv6 CIDR blocks. You cannot specify both this parameter and `SourceCidrIp` in the same request.
         self.ipv_6source_cidr_ip = ipv_6source_cidr_ip
         # The network interface controller (NIC) type of the security group rule if the security group resides in the classic network. Default value: Month. Valid values:
         # 
-        # *   internet: public NIC.
-        # *   intranet: internal NIC.
+        # - internet: public NIC.
+        # 
+        # - intranet: internal NIC.
         # 
         # If the security group resides in a VPC, this parameter is set to intranet by default and cannot be modified.
         # 
@@ -310,24 +321,29 @@ class AuthorizeSecurityGroupRequestPermissions(DaraModel):
         self.nic_type = nic_type
         # The action of the security group rule. Valid values:
         # 
-        # *   accept: allows inbound access.
-        # *   drop: denies inbound access and returns no responses. In this case, the request times out or the connection cannot be established.
+        # - accept: allows inbound access.
+        # 
+        # - drop: denies inbound access and returns no responses. In this case, the request times out or the connection cannot be established.
         # 
         # Default value: accept.
         self.policy = policy
         # The range of destination port numbers for the protocols specified in the security group rule. Valid values:
         # 
-        # *   TCP/UDP: Valid values: 1 to 65535. Use a forward slash (/) to separate the start and end ports. Example: 1/200.
-        # *   ICMP:-1/-1.
-        # *   GRE:-1/-1.
-        # *   Set the IpProtocol parameter to ALL:-1/-1.
+        # - TCP/UDP: Valid values: 1 to 65535. Use a forward slash (/) to separate the start and end ports. Example: 1/200.
+        # 
+        # - ICMP:-1/-1.
+        # 
+        # - GRE:-1/-1.
+        # 
+        # - Set the IpProtocol parameter to ALL:-1/-1.
         # 
         # For more information about the application scenarios of ports, see [Common ports of typical applications](https://help.aliyun.com/document_detail/40724.html).
         self.port_range = port_range
         # The ID of the port list. You can call the `DescribePortRangeLists` to query the ID of the port list that can be used.
         # 
-        # *   If you specify a `Permissions.N.PortRange` parameter, this parameter is ignored.
-        # *   If the network type of the security group is classic network, you cannot set the port list. For more information about limits on security groups and ports, see [Limits on security groups](~~25412#SecurityGroupQuota1~~).
+        # - If you specify a `Permissions.N.PortRange` parameter, this parameter is ignored.
+        # 
+        # - If the network type of the security group is classic network, you cannot set the port list. For more information about limits on security groups and ports, see [Limits on security groups](~~25412#SecurityGroupQuota1~~).
         self.port_range_list_id = port_range_list_id
         # The priority of the security group rule. A smaller value specifies a higher priority. Valid values: 1 to 100.
         # 
@@ -337,26 +353,33 @@ class AuthorizeSecurityGroupRequestPermissions(DaraModel):
         self.source_cidr_ip = source_cidr_ip
         # The ID of the source security group referenced in the security group rule.
         # 
-        # *   At least one of `SourceGroupId`, `SourceCidrIp`, `Ipv6SourceCidrIp`, and `SourcePrefixListId` must be specified.
-        # *   If you specify `SourceGroupId` but do not specify `SourceCidrIp` or `Ipv6SourceCidrIp`, you must set `NicType` to `intranet`.
-        # *   If both `SourceGroupId` and `SourceCidrIp` are specified, `SourceCidrIp` takes precedence.
+        # - At least one of `SourceGroupId`, `SourceCidrIp`, `Ipv6SourceCidrIp`, and `SourcePrefixListId` must be specified.
+        # 
+        # - If you specify `SourceGroupId` but do not specify `SourceCidrIp` or `Ipv6SourceCidrIp`, you must set `NicType` to `intranet`.
+        # 
+        # - If both `SourceGroupId` and `SourceCidrIp` are specified, `SourceCidrIp` takes precedence.
         self.source_group_id = source_group_id
         # The Alibaba Cloud account that manages the source security group referenced in the security group rule.
         # 
-        # *   If both `SourceGroupOwnerAccount` and `SourceGroupOwnerId` are empty, access permissions are configured for another security group in your Alibaba Cloud account.
-        # *   If you specify `SourceCidrIp`, `SourceGroupOwnerAccount` becomes invalid.
+        # - If both `SourceGroupOwnerAccount` and `SourceGroupOwnerId` are empty, access permissions are configured for another security group in your Alibaba Cloud account.
+        # 
+        # - If you specify `SourceCidrIp`, `SourceGroupOwnerAccount` becomes invalid.
         self.source_group_owner_account = source_group_owner_account
         # The ID of the Alibaba Cloud account that manages the source security group referenced in the security group rule.
         # 
-        # *   If both `SourceGroupOwnerAccount` and `SourceGroupOwnerId` are empty, access permissions are configured for another security group in your Alibaba Cloud account.
-        # *   If you specify `SourceCidrIp`, `SourceGroupOwnerAccount` becomes invalid.
+        # - If both `SourceGroupOwnerAccount` and `SourceGroupOwnerId` are empty, access permissions are configured for another security group in your Alibaba Cloud account.
+        # 
+        # - If you specify `SourceCidrIp`, `SourceGroupOwnerAccount` becomes invalid.
         self.source_group_owner_id = source_group_owner_id
         # The range of source port numbers for the protocols specified in the security group rule. Default value: Month. Valid values:
         # 
-        # *   TCP/UDP: Valid values: 1 to 65535. Use a forward slash (/) to separate the start and end ports. Example: 1/200.
-        # *   ICMP protocol:-1/-1.
-        # *   GRE protocol:-1/-1.
-        # *   If you set IpProtocol to ALL, the port range is -1/-1.
+        # - TCP/UDP: Valid values: 1 to 65535. Use a forward slash (/) to separate the start and end ports. Example: 1/200.
+        # 
+        # - ICMP protocol:-1/-1.
+        # 
+        # - GRE protocol:-1/-1.
+        # 
+        # - If you set IpProtocol to ALL, the port range is -1/-1.
         # 
         # This parameter is used to support quintuple rules. For more information, see [Security group quintuple rules](https://help.aliyun.com/document_detail/97439.html).
         self.source_port_range = source_port_range
@@ -364,8 +387,9 @@ class AuthorizeSecurityGroupRequestPermissions(DaraModel):
         # 
         # Notes:
         # 
-        # *   If a security group resides in the classic network, you cannot specify prefix lists in the rules of the security group. For more information about limits on security groups and prefix lists, see [Limits on security groups](~~25412#SecurityGroupQuota1~~).
-        # *   If you specify `SourceCidrIp`, `Ipv6SourceCidrIp`, or `SourceGroupId`, this parameter is ignored.
+        # - If a security group resides in the classic network, you cannot specify prefix lists in the rules of the security group. For more information about limits on security groups and prefix lists, see [Limits on security groups](~~25412#SecurityGroupQuota1~~).
+        # 
+        # - If you specify `SourceCidrIp`, `Ipv6SourceCidrIp`, or `SourceGroupId`, this parameter is ignored.
         self.source_prefix_list_id = source_prefix_list_id
 
     def validate(self):

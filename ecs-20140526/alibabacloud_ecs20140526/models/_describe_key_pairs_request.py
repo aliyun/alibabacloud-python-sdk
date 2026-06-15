@@ -28,10 +28,13 @@ class DescribeKeyPairsRequest(DaraModel):
         self.key_pair_finger_print = key_pair_finger_print
         # The name of the key pair. You can use the asterisk (\\*) symbol as a wildcard in regular expressions to perform a fuzzy search for key pairs. Sample patterns:
         # 
-        # *   `*SshKey`: queries key pairs whose names end with SshKey, including the key pair named SshKey.
-        # *   `SshKey*`: queries key pairs whose names start with SshKey, including the key pair named SshKey.
-        # *   `*SshKey*`: queries key pairs whose names include SshKey, including the key pair named SshKey.
-        # *   `SshKey`: queries the key pair named SshKey.
+        # - `*SshKey`: queries key pairs whose names end with SshKey, including the key pair named SshKey.
+        # 
+        # - `SshKey*`: queries key pairs whose names start with SshKey, including the key pair named SshKey.
+        # 
+        # - `*SshKey*`: queries key pairs whose names include SshKey, including the key pair named SshKey.
+        # 
+        # - `SshKey`: queries the key pair named SshKey.
         self.key_pair_name = key_pair_name
         self.owner_id = owner_id
         # The number of the page to return. Pages start from page 1.
@@ -48,7 +51,7 @@ class DescribeKeyPairsRequest(DaraModel):
         self.region_id = region_id
         # The ID of the resource group. If this parameter is specified to query resources, up to 1,000 resources that belong to the specified resource group can be displayed in the response.
         # 
-        # >  Resources in the default resource group are displayed in the response regardless of how this parameter is set.
+        # > Resources in the default resource group are displayed in the response regardless of how this parameter is set.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

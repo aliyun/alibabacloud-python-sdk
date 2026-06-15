@@ -13,7 +13,7 @@ class DescribePortRangeListEntriesResponseBody(DaraModel):
         entries: List[main_models.DescribePortRangeListEntriesResponseBodyEntries] = None,
         request_id: str = None,
     ):
-        # Port list entries.
+        # The port range list entries.
         self.entries = entries
         # The request ID.
         self.request_id = request_id

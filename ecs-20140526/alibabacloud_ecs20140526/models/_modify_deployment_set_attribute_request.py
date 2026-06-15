@@ -17,18 +17,19 @@ class ModifyDeploymentSetAttributeRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The affinity level of the deployment set. Instances in the deployment set are distributed based on this affinity level. Valid values: 1 to 10. Default value: 1.>Notice:  The affinity setting is available only when the deployment strategy is set to high availability (`Strategy = Availability`).
         self.affinity = affinity
         # The ID of the deployment set.
         # 
         # This parameter is required.
         self.deployment_set_id = deployment_set_id
-        # The new name of the deployment set. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
+        # The new name of the deployment set. The name must be 2 to 128 characters long and can contain letters, digits, Chinese characters, colons (:), underscores (_), periods (.), and hyphens (-).
         self.deployment_set_name = deployment_set_name
-        # The new description of the deployment set. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+        # The new description of the deployment set. It must be 2 to 256 characters long and cannot start with `http://` or `https://`.
         self.description = description
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the deployment set. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The region ID of the deployment set. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to obtain the latest list of Alibaba Cloud regions.
         # 
         # This parameter is required.
         self.region_id = region_id

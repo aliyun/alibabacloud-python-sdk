@@ -34,8 +34,9 @@ class PurchaseReservedInstancesOfferingRequest(DaraModel):
     ):
         # Specifies whether to enable auto-renewal for the reserved instance. Valid values:
         # 
-        # *   true
-        # *   false (default)
+        # - true
+        # 
+        # - false (default)
         self.auto_renew = auto_renew
         # The auto-renewal term of the reserved instance. Unit: months. This parameter takes effect only when AutoRenew is set to true.
         # 
@@ -45,7 +46,7 @@ class PurchaseReservedInstancesOfferingRequest(DaraModel):
         self.auto_renew_period = auto_renew_period
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **ClientToken** value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
-        # The description of the reserved instance. The description can be 2 to 256 characters in length and cannot start with [http:// or https://](http://https://。).
+        # The description of the reserved instance. The description can be 2 to 256 characters in length and cannot start with [http:// or https://](http://https://%E3%80%82).
         # 
         # This parameter is left empty by default.
         self.description = description
@@ -55,15 +56,17 @@ class PurchaseReservedInstancesOfferingRequest(DaraModel):
         self.instance_amount = instance_amount
         # The instance type that the reserved instance can match.
         # 
-        # >  The instance types that support reserved instances are subject to updates. For more information, see [Reserved instance overview](~~100370#3c1b682051vt4~~).
+        # > The instance types that support reserved instances are subject to updates. For more information, see [Reserved instance overview](~~100370#3c1b682051vt4~~).
         # 
         # This parameter is required.
         self.instance_type = instance_type
         # The payment option of the reserved instance. Valid values:
         # 
-        # *   No Upfront
-        # *   Partial Upfront
-        # *   All Upfront
+        # - No Upfront
+        # 
+        # - Partial Upfront
+        # 
+        # - All Upfront
         # 
         # Default value: All Upfront.
         self.offering_type = offering_type
@@ -83,8 +86,9 @@ class PurchaseReservedInstancesOfferingRequest(DaraModel):
         self.period_unit = period_unit
         # The operating system of the image used by the instance. Valid values:
         # 
-        # *   Windows: Windows Server operating system
-        # *   Linux: Linux and UNIX-like operating system
+        # - Windows: Windows Server operating system
+        # 
+        # - Linux: Linux and UNIX-like operating system
         # 
         # Default value: Linux.
         self.platform = platform
@@ -92,7 +96,7 @@ class PurchaseReservedInstancesOfferingRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The name of the reserved instance. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+        # The name of the reserved instance. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http\\:// or https\\://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         self.reserved_instance_name = reserved_instance_name
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -100,14 +104,15 @@ class PurchaseReservedInstancesOfferingRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The scope of reserved instance N. Valid values:
         # 
-        # *   Region: regional
-        # *   Zone: zonal
+        # - Region: regional
+        # 
+        # - Zone: zonal
         # 
         # Default value: Region.
         self.scope = scope
         # The time when you want the reserved instance to take effect. Specify the time in the [ISO 8601 standard](https://help.aliyun.com/document_detail/25696.html) in the `yyyy-MM-ddTHHZ` format. The time must be in UTC.
         # 
-        # >  If you do not specify this parameter, the reserved instance takes effect starting on the hour when the reserved instance is purchased. For example, if you purchase a reserved instance at 13:45:35 on November 1, 2024, the reserved instance takes effect starting 13:00:00 on November 1, 2024.
+        # > If you do not specify this parameter, the reserved instance takes effect starting on the hour when the reserved instance is purchased. For example, if you purchase a reserved instance at 13:45:35 on November 1, 2024, the reserved instance takes effect starting 13:00:00 on November 1, 2024.
         self.start_time = start_time
         # The tags to add to the reserved instance. You can add up to 20 tags.
         self.tag = tag

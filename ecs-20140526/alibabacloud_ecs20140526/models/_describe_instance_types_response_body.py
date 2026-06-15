@@ -14,10 +14,11 @@ class DescribeInstanceTypesResponseBody(DaraModel):
         next_token: str = None,
         request_id: str = None,
     ):
+        # A collection of instance types.
         self.instance_types = instance_types
-        # The query token returned in this call.
+        # The token used to retrieve the next page of results.
         self.next_token = next_token
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

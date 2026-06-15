@@ -20,7 +20,7 @@ class DescribeUserDataResponseBody(DaraModel):
         self.request_id = request_id
         # The user data of the instance.
         # 
-        # >  If no user data is configured for the instance, an empty string is returned.
+        # > If no user data is configured for the instance, an empty string is returned.
         self.user_data = user_data
 
     def validate(self):

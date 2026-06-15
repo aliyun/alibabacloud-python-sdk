@@ -16,9 +16,9 @@ class ModifyStorageCapacityUnitAttributeRequest(DaraModel):
         resource_owner_id: int = None,
         storage_capacity_unit_id: str = None,
     ):
-        # The new description of the SCU. The description must be 2 to 256 characters in length and cannot start with [http:// or https://.](http://https://。)
+        # The new description of the SCU. The description must be 2 to 256 characters in length and cannot start with [http:// or https://.](http://https://%E3%80%82)
         self.description = description
-        # The new name of the SCU. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with [http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).](http://https://。、（:）、（_）（-）。)
+        # The new name of the SCU. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with [http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).](http://https://%E3%80%82%E3%80%81%EF%BC%88:%EF%BC%89%E3%80%81%EF%BC%88_%EF%BC%89%EF%BC%88-%EF%BC%89%E3%80%82)
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id

@@ -14,10 +14,14 @@ class DeleteBandwidthPackageRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The ID of the bandwidth package to delete.
+        # 
         # This parameter is required.
         self.bandwidth_package_id = bandwidth_package_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the region where the bandwidth package is located.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account

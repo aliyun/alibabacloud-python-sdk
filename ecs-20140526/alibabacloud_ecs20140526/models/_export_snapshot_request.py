@@ -15,14 +15,21 @@ class ExportSnapshotRequest(DaraModel):
         role_name: str = None,
         snapshot_id: str = None,
     ):
+        # The name of the destination OSS bucket. The bucket must be in the same region as the snapshot.
+        # 
         # This parameter is required.
         self.oss_bucket = oss_bucket
         self.owner_id = owner_id
+        # The ID of the region where the snapshot is located. You can call the `DescribeRegions` operation to query the latest region list.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The name of the RAM role that authorizes ECS to export the snapshot. This role must grant ECS permission to write to the specified OSS bucket. If you omit this parameter, ECS uses its default service-linked role.
         self.role_name = role_name
+        # The ID of the snapshot to export.
+        # 
         # This parameter is required.
         self.snapshot_id = snapshot_id
 

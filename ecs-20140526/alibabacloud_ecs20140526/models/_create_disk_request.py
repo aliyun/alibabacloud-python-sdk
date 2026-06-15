@@ -38,170 +38,189 @@ class CreateDiskRequest(DaraModel):
         tag: List[main_models.CreateDiskRequestTag] = None,
         zone_id: str = None,
     ):
-        # This parameter is not publicly available.
+        # This parameter is not yet available.
         self.advanced_features = advanced_features
-        # >  This parameter is not publicly available.
+        # > This parameter is not yet available.
         self.arn = arn
-        # Specifies whether to enable the performance burst feature. Valid values:
+        # Specifies whether to enable performance bursting. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
         # 
-        # >  This parameter is available only if you set `DiskCategory` to `cloud_auto`. For more information, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html).
+        # - false
+        # 
+        # > This parameter is available only for ESSD AutoPL disks (`cloud_auto`). For more information, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html).
         self.bursting_enabled = bursting_enabled
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **token** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+        # A client-generated, unique, case-sensitive token that you can use to ensure the idempotency of the request. **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The description of the disk. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
         # 
-        # This parameter is left empty by default.
+        # Default value: empty.
         self.description = description
-        # The category of the data disk. Valid values for different disk categories:
+        # The category of the data disk. Valid values:
         # 
-        # *   cloud: basic disk
-        # *   cloud_efficiency: utra disk
-        # *   cloud_ssd: standard SSD
-        # *   cloud_essd: ESSD
-        # *   cloud_auto: ESSD AutoPL disk
-        # *   cloud_essd_entry: ESSD Entry disk
-        # *   cloud_regional_disk_auto: Regional ESSD
-        # *   elastic_ephemeral_disk_standard: standard elastic ephemeral disk
-        # *   elastic_ephemeral_disk_premium: premium elastic ephemeral disk
+        # - `cloud`: basic disk
         # 
-        # Default value: cloud.
+        # - `cloud_efficiency`: ultra disk
         # 
-        # Enumerated values:
+        # - `cloud_ssd`: standard SSD
         # 
-        # *   cloud: basic disk
-        # *   cloud_efficiency: ultra disk
-        # *   cloud_ssd: SSD
-        # *   cloud_auto: ESSD AutoPL disk
-        # *   cloud_regional_disk_auto: Regional ESSD
-        # *   cloud_essd: ESSD
-        # *   elastic_ephemeral_disk_standard: standard elastic ephemeral disk.
-        # *   cloud_essd: ESSD
-        # *   elastic_ephemeral_disk_premium: premium elastic ephemeral disk
+        # - `cloud_essd`: ESSD
+        # 
+        # - `cloud_auto`: ESSD AutoPL disk
+        # 
+        # - `cloud_essd_entry`: ESSD Entry disk
+        # 
+        # - `cloud_regional_disk_auto`: ESSD zone-redundant disk
+        # 
+        # - `elastic_ephemeral_disk_standard`: Elastic Ephemeral Disk - Standard
+        # 
+        # - `elastic_ephemeral_disk_premium`: Elastic Ephemeral Disk - Premium
+        # 
+        # Default value: `cloud`.
         self.disk_category = disk_category
-        # The name of the data disk. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-). The name must start with a letter.
+        # The name of the disk. The name must be 2 to 128 characters in length. It must start with a letter as defined by Unicode and can contain letters (including English and Chinese characters), digits (0-9), colons (:), underscores (_), periods (.), and hyphens (-).
         # 
-        # This parameter is left empty by default.
+        # Default value: empty.
         self.disk_name = disk_name
-        # This parameter is not publicly available.
+        # This parameter is not yet available.
         self.encrypt_algorithm = encrypt_algorithm
         # Specifies whether to encrypt the disk. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         # 
         # Default value: false.
         self.encrypted = encrypted
-        # The ID of the subscription instance to which to attach the subscription disk.
+        # Creates a subscription disk and automatically attaches it to the specified subscription instance.
         # 
-        # *   If you specify an instance ID, the following parameters are ignored: ResourceGroupId, Tag.N.Key, Tag.N.Value, ClientToken, and KMSKeyId.
-        # *   You cannot specify both ZoneId and InstanceId in a request.
+        # - If you set this parameter, the `ResourceGroupId`, `Tag.N.Key`, `Tag.N.Value`, `ClientToken`, and `KMSKeyId` parameters are ignored.
         # 
-        # This parameter is empty by default, which indicates that a pay-as-you-go disk is created in the region and zone specified by RegionId and ZoneId.
+        # - You cannot specify both `ZoneId` and `InstanceId`.
+        # 
+        # Default value: empty. An empty value indicates that you are creating a pay-as-you-go disk. The disk\\"s location is determined by `RegionId` and `ZoneId`.
         self.instance_id = instance_id
-        # The ID of the Key Management Service (KMS) key that is used for the disk.
-        self.kmskey_id = kmskey_id
-        # Specifies whether to enable the multi-attach feature for the disk. Valid values:
+        # The ID of the KMS key to use for the disk.
         # 
-        # *   Disabled
-        # *   Enabled Set the value to `Enabled` only for ESSDs.
+        # > If `Encrypted` is set to true and you do not specify `KMSKeyId`, a default key is used for encryption. The `KMSKeyId` is returned in the response after the instance is created.
+        # >
+        # > - - If the disk is created from an unshared encrypted snapshot, the encryption key used by that snapshot is used by default.
+        # >
+        # > - - If the disk is created from a shared encrypted snapshot, the service key is used by default.
+        # >
+        # > - - If the disk is created in a region with account-level default encryption enabled, the specified account-level key is used by default.
+        # >
+        # > - - In other cases, the service key is used by default.
+        self.kmskey_id = kmskey_id
+        # Specifies whether to enable the multi-attach feature. Valid values:
+        # 
+        # - Disabled: The feature is disabled.
+        # 
+        # - Enabled: The feature is enabled. Currently, only ESSDs support setting this parameter to `Enabled`.
         # 
         # Default value: Disabled.
         # 
-        # >  Disks for which the multi-attach feature is enabled support only the pay-as-you-go billing method. When `MultiAttach` is set to Enabled, you cannot specify `InstanceId`. You can call the [AttachDisk](https://help.aliyun.com/document_detail/25515.html) operation to attach disks to instances after the disks are created. Disks for which the multi-attach feature is enabled can be attached only as data disks.
+        # > Disks with the multi-attach feature enabled can only be billed on a pay-as-you-go basis. Therefore, you cannot set the `InstanceId` parameter when `MultiAttach` is `Enabled`. After you create the disk, you can call [AttachDisk](https://help.aliyun.com/document_detail/25515.html) to attach it. Note that a multi-attach disk can be attached only as a data disk.
         self.multi_attach = multi_attach
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The performance level of the disk if the disk is an ESSD. Valid values:
+        # The performance level of the ESSD. Valid values:
         # 
-        # *   PL0: A single ESSD can deliver up to 10,000 random read/write IOPS.
-        # *   PL1: A single ESSD can deliver up to 50,000 random read/write IOPS.
-        # *   PL2: A single ESSD can deliver up to 100,000 random read/write IOPS.
-        # *   PL3: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
+        # - PL0: A single disk can deliver up to 10,000 random read/write IOPS.
+        # 
+        # - PL1: A single disk can deliver up to 50,000 random read/write IOPS.
+        # 
+        # - PL2: A single disk can deliver up to 100,000 random read/write IOPS.
+        # 
+        # - PL3: A single disk can deliver up to 1,000,000 random read/write IOPS.
         # 
         # Default value: PL1.
         # 
-        # For information about ESSD performance levels, see [ESSDs](https://help.aliyun.com/document_detail/122389.html).
+        # For more information about how to choose an ESSD performance level, see [ESSDs](https://help.aliyun.com/document_detail/122389.html).
         self.performance_level = performance_level
-        # Specifies the read/write IOPS that is provisioned for the ESSD AutoPL disk. Valid value:
+        # The provisioned read/write IOPS of a single ESSD AutoPL disk. Valid values:
         # 
-        # *   Capacity (GiB) <= 3: not configurable
-        # *   Capacity (GiB) >= 4: [0, min{(1,000
+        # - Capacity <= 3 GiB: You cannot set provisioned performance.
         # 
-        # IOPS/GiB × Capacity - Baseline IOPS), 50,000}]
+        # - Capacity >= 4 GiB: 0 to min(1,000 IOPS/GiB × Capacity - Baseline IOPS, 50,000).
         # 
-        # Baseline performance: max{min{1,800 + 50 × Capacity, 50,000}, 3,000}
+        # Baseline IOPS = max(min(1,800 + 50 × Capacity, 50,000), 3,000).
         # 
-        # >  This parameter is available only if you set `DiskCategory` to `cloud_auto`. For more information, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html).
+        # > This parameter is available only for ESSD AutoPL disks (`cloud_auto`). For more information, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html).
         self.provisioned_iops = provisioned_iops
-        # The ID of the region in which to create the disk. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The ID of the region in which to create the disk. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group to which to add the disk.
+        # The ID of the resource group to which the disk belongs.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The size of the data disk. Unit: GiB. This parameter is required. Valid values for different disk categories:
+        # The capacity of the disk, in GiB. You must specify a value for this parameter. Value range:
         # 
-        # *   Valid values when DiskCategory is set to cloud: 5 to 2000.
+        # - `cloud`: 5 to 2,000
         # 
-        # *   Valid values when DiskCategory is set to cloud_efficiency: 20 to 32768.
+        # - `cloud_efficiency`: 20 to 32,768
         # 
-        # *   Valid values when DiskCategory is set to cloud_ssd: 20 to 32768.
+        # - `cloud_ssd`: 20 to 32,768
         # 
-        # *   Valid values when DiskCategory is set to cloud_essd: vary based on the `PerformanceLevel` value.
+        # - `PerformanceLevel`
         # 
-        #     *   Valid values when PerformanceLevel is set to PL0: 1 to 65536.
-        #     *   Valid values when PerformanceLevel is set to PL1: 20 to 65536.
-        #     *   Valid values when PerformanceLevel is set to PL2: 461 to 65536.
-        #     *   Valid values when PerformanceLevel is set to PL3: 1261 to 65536.
+        #   - PL0: 1 to 65,536
         # 
-        # *   Valid values when DiskCategory is set to cloud_auto: 1 to 65536.
+        #   - PL1: 20 to 65,536
         # 
-        # *   Valid values when DiskCategory is set to cloud_essd_entry: 10 to 32768.
+        #   - PL2: 461 to 65,536
         # 
-        # *   Valid values when DiskCategory is set to cloud_regional_disk_auto: 10 to 65536.
+        #   - PL3: 1,261 to 65,536
         # 
-        # *   Valid values when DiskCategory is set to elastic_ephemeral_disk_standard: 64 to 8192.
+        # - `cloud_auto`: 1 to 65,536
         # 
-        # *   Valid values when DiskCategory is set to elastic_ephemeral_disk_premium: 64 to 8192.
+        # - `cloud_essd_entry`: 10 to 32,768
+        # 
+        # - `cloud_regional_disk_auto`: 10 to 65,536
+        # 
+        # - `elastic_ephemeral_disk_standard`: 64 to 8,192
+        # 
+        # - `elastic_ephemeral_disk_premium`: 64 to 8,192
         # 
         # If you specify `SnapshotId`, the following limits apply to `SnapshotId` and `Size`:
         # 
-        # *   If the size of the snapshot specified by `SnapshotId` is larger than the value of `Size`, the size of the created disk is equal to the size of the snapshot.
-        # *   If the size of the snapshot specified by `SnapshotId` is smaller than the value of `Size`, the size of the created disk is equal to the value of `Size`.
+        # - If the snapshot capacity is greater than the specified `Size`, the actual disk size is the snapshot capacity.
+        # 
+        # - If the snapshot capacity is smaller than the specified `Size`, the actual disk size is the specified `Size`.
         self.size = size
-        # The ID of the snapshot to use to create the disk. Snapshots that were created on or before July 15, 2013 cannot be used to create disks.
+        # The ID of the snapshot used to create the disk. Snapshots created on or before July 15, 2013 cannot be used to create disks.
         # 
-        # The following limits apply to `SnapshotId` and `Size`:
+        # The `SnapshotId` and `Size` parameters have the following limits:
         # 
-        # *   If the size of the snapshot specified by `SnapshotId` is larger than the value of `Size`, the size of the created disk is equal to the specified snapshot size.
-        # *   If the size of the snapshot specified by `SnapshotId` is smaller than the value of `Size`, the size of the created disk is equal to the value of `Size`.
-        # *   You cannot create elastic ephemeral disks from snapshots.
+        # - If the snapshot capacity is greater than the specified `Size`, the actual disk size is the snapshot capacity.
+        # 
+        # - If the snapshot capacity is smaller than the specified `Size`, the actual disk size is the specified `Size`.
+        # 
+        # - You cannot use snapshots to create Elastic Ephemeral Disks.
         self.snapshot_id = snapshot_id
-        # The ID of the dedicated block storage cluster in which to create the disk. To create a disk in a specific dedicated block storage cluster, you must specify this parameter.
+        # The ID of the dedicated block storage cluster. If you need to create a disk in a specific dedicated block storage cluster, specify this parameter.
         # 
-        # >  You can specify the storage set-related parameters (`StorageSetId` and `StorageSetPartitionNumber`) or the dedicated block storage cluster-related parameter (`StorageClusterId`), but not both. If you specify a storage set-related parameter and a dedicated block storage cluster-related parameter in a request, the request fails.
+        # > You can specify either storage set parameters (`StorageSetId` and `StorageSetPartitionNumber`) or the dedicated block storage cluster parameter (`StorageClusterId`), but not both. The request fails if you specify parameters for both.
         self.storage_cluster_id = storage_cluster_id
         # The ID of the storage set.
         # 
-        # > You cannot specify storage set-related parameters (`StorageSetId` and `StorageSetPartitionNumber`) and the dedicated block storage cluster-related parameter (`StorageClusterId`) at the same time. Otherwise, the operation cannot be called.
+        # > You can specify either storage set parameters (`StorageSetId` and `StorageSetPartitionNumber`) or the dedicated block storage cluster parameter (`StorageClusterId`), but not both. The request fails if you specify parameters for both.
         self.storage_set_id = storage_set_id
-        # The number of partitions in the storage set. The value must be greater than or equal to 2 but cannot exceed the quota obtained by calling the [DescribeAccountAttributes](https://help.aliyun.com/document_detail/73772.html)operation.
+        # The number of partitions in the storage set. The value must be greater than or equal to 2 and cannot exceed the quota returned by the [DescribeAccountAttributes](https://help.aliyun.com/document_detail/73772.html) operation.
         # 
         # Default value: 2.
         self.storage_set_partition_number = storage_set_partition_number
-        # The tags to add to the disk.
+        # A list of tags for the disk.
         self.tag = tag
         # The ID of the zone in which to create the pay-as-you-go disk.
         # 
-        # *   If you do not specify InstanceId, you must specify ZoneId.
-        # *   You cannot specify both ZoneId and InstanceId in the same request.
+        # - If you do not set `InstanceId`, this parameter is required.
         # 
-        # >  You do not need to specify this parameter if you set DiskCategory to `cloud_regional_disk_auto` to create a Regional ESSD.
+        # - You cannot specify both `ZoneId` and `InstanceId`.
+        # 
+        # > ESSD zone-redundant disks (`cloud_regional_disk_auto`) do not require a zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -403,9 +422,11 @@ class CreateDiskRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N to add to the disk. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `acs:` or `aliyun`.
+        # The tag key of the disk.
+        # 
+        # > For better code compatibility, we recommend that you use the `Tag.N.Key` parameter.
         self.key = key
-        # The value of tag N to add to the disk. Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`.
+        # The tag value of the disk. The value of N ranges from 1 to 20. If you specify `Tag.N.Value`, the value can be an empty string. The value can be up to 128 characters in length and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -441,11 +462,11 @@ class CreateDiskRequestArn(DaraModel):
         role_type: str = None,
         rolearn: str = None,
     ):
-        # >  This parameter is not publicly available.
+        # > This parameter is not yet available.
         self.assume_role_for = assume_role_for
-        # >  This parameter is not publicly available.
+        # > This parameter is not yet available.
         self.role_type = role_type
-        # >  This parameter is not publicly available.
+        # > This parameter is not yet available.
         self.rolearn = rolearn
 
     def validate(self):

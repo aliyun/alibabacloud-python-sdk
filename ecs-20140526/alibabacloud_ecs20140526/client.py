@@ -7126,6 +7126,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.enable):
             query['Enable'] = request.enable
+        if not DaraCore.is_null(request.min_maintenance_interval):
+            query['MinMaintenanceInterval'] = request.min_maintenance_interval
         if not DaraCore.is_null(request.plan_window_name):
             query['PlanWindowName'] = request.plan_window_name
         if not DaraCore.is_null(request.region_id):
@@ -7170,6 +7172,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.enable):
             query['Enable'] = request.enable
+        if not DaraCore.is_null(request.min_maintenance_interval):
+            query['MinMaintenanceInterval'] = request.min_maintenance_interval
         if not DaraCore.is_null(request.plan_window_name):
             query['PlanWindowName'] = request.plan_window_name
         if not DaraCore.is_null(request.region_id):
@@ -34326,6 +34330,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.enable):
             query['Enable'] = request.enable
+        if not DaraCore.is_null(request.min_maintenance_interval):
+            query['MinMaintenanceInterval'] = request.min_maintenance_interval
         if not DaraCore.is_null(request.plan_window_id):
             query['PlanWindowId'] = request.plan_window_id
         if not DaraCore.is_null(request.plan_window_name):
@@ -34372,6 +34378,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.enable):
             query['Enable'] = request.enable
+        if not DaraCore.is_null(request.min_maintenance_interval):
+            query['MinMaintenanceInterval'] = request.min_maintenance_interval
         if not DaraCore.is_null(request.plan_window_id):
             query['PlanWindowId'] = request.plan_window_id
         if not DaraCore.is_null(request.plan_window_name):

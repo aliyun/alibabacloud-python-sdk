@@ -15,11 +15,16 @@ class DeleteHaVipRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The client token used to ensure request idempotence. You can use the client to generate the token, but you must ensure that the token is unique across requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The ID of the HaVip that you want to delete.
+        # 
         # This parameter is required.
         self.ha_vip_id = ha_vip_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the region where the HaVip is located. You can call the `DescribeRegions` operation to obtain the latest list of regions.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
