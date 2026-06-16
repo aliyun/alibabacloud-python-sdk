@@ -19,37 +19,39 @@ class SendChatMessageShrinkRequest(DaraModel):
         reply_to: str = None,
         session_config_shrink: str = None,
         session_id: str = None,
+        task_config_shrink: str = None,
     ):
-        # The agent ID. This parameter is required. You can obtain this ID from the response of the `CreateAgentSession` operation. An agent has a lifecycle, so its ID may change with each request.
+        # The agent ID. This parameter is required. You can obtain the current AgentId from the response of the CreateAgentSession operation. Agent resources have a lifecycle, so the AgentId you need to specify may change with each request.
         # 
         # This parameter is required.
         self.agent_id = agent_id
-        # The DMS unit where your DMS instance is located. This information is used to connect to your DMS instance for database analysis. You can find this value in the DMS console. For users on the Alibaba Cloud China site, you can enter `cn-hangzhou`.
+        # The Data Management unit you are currently in. If you choose to analyze a database, this information is used to correctly connect to your Data Management instance. You can go to the Data Management console to view your current Data Management unit. If you are a user of Alibaba Cloud China Website (www.aliyun.com), set this parameter to ap-southeast-1.
         self.dmsunit = dmsunit
-        # The data source information. Optional.
+        # The data source information. This parameter is optional.
         self.data_source_shrink = data_source_shrink
-        # A list of data sources. Optional.
+        # The detailed data source information. This parameter is optional.
         self.data_sources_shrink = data_sources_shrink
-        # The content of the message to send to the agent.
+        # The message content to send to the Agent in this request.
         # 
         # This parameter is required.
         self.message = message
-        # The message type. The default value is `primary`. Set this parameter to `additional` when responding to a human-in-the-loop question from the agent. Set it to `cancel` to cancel the current session.
+        # The message type. Default value: `[primary]`. When the message is a response to the Agent\\"s human-in-the-loop question, set this parameter to `[additional]`. When the message is intended to cancel the current session, set this parameter to `[cancel]`.
         self.message_type = message_type
         # The parent session ID.
         self.parent_session_id = parent_session_id
-        # This parameter is required if the `MessageType` is `additional`. It contains the specific question asked by the agent during the human-in-the-loop process.
+        # The specific question that the Agent asks the user through human-in-the-loop. This parameter is required when the message type is `additional`.
         self.question = question
-        # The quoted content. This parameter is typically used when interacting with the agent.
+        # The quoted content, typically used during interaction with the Agent.
         self.quoted_message = quoted_message
-        # This parameter specifies the agent message to which this message is a response, enabling message deduplication. Set this to the highest checkpoint sequence number you have received. For the first message, use 0.
+        # Indicates which Agent message this message responds to. Set this parameter to the largest Checkpoint sequence number currently received. Set it to 0 for the first message. This field is used for message deduplication in case of occasional network issues or duplicate message delivery.
         self.reply_to = reply_to
-        # Session-specific configurations. These apply only if provided in the first `SendMessage` request of the session.
+        # The special configuration for this session. For the same session, only the configuration included in the first SendMessage call takes effect.
         self.session_config_shrink = session_config_shrink
-        # The session ID. This parameter is required. You can obtain the session ID by calling the `CreateAgentSession` operation.
+        # The session ID. This parameter is required. You can obtain the SessionId by calling the CreateAgentSession operation.
         # 
         # This parameter is required.
         self.session_id = session_id
+        self.task_config_shrink = task_config_shrink
 
     def validate(self):
         pass
@@ -95,6 +97,9 @@ class SendChatMessageShrinkRequest(DaraModel):
         if self.session_id is not None:
             result['SessionId'] = self.session_id
 
+        if self.task_config_shrink is not None:
+            result['TaskConfig'] = self.task_config_shrink
+
         return result
 
     def from_map(self, m: dict = None):
@@ -134,6 +139,9 @@ class SendChatMessageShrinkRequest(DaraModel):
 
         if m.get('SessionId') is not None:
             self.session_id = m.get('SessionId')
+
+        if m.get('TaskConfig') is not None:
+            self.task_config_shrink = m.get('TaskConfig')
 
         return self
 

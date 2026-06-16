@@ -29,6 +29,7 @@ from ._dltable import DLTable
 from ._dltable_input import DLTableInput
 from ._dltablebase_info import DLTablebaseInfo
 from ._data_mount_info import DataMountInfo
+from ._dms_gateway_order import DmsGatewayOrder
 from ._dms_knowledge_search_order_info_do import DmsKnowledgeSearchOrderInfoDO
 from ._foreign_instance import ForeignInstance
 from ._foreign_instance_cred_info import ForeignInstanceCredInfo
@@ -380,7 +381,10 @@ from ._describe_custom_agent_response_body import DescribeCustomAgentResponseBod
 from ._describe_custom_agent_response_body import DescribeCustomAgentResponseBodyDataKnowledgeConfigList
 from ._describe_custom_agent_response_body import DescribeCustomAgentResponseBodyDataScheduleTaskConfig
 from ._describe_custom_agent_response_body import DescribeCustomAgentResponseBodyData
+from ._describe_data_agent_session_response_body import DescribeDataAgentSessionResponseBodyDataArtifacts
 from ._describe_data_agent_session_response_body import DescribeDataAgentSessionResponseBodyDataChatHistoryLocations
+from ._describe_data_agent_session_response_body import DescribeDataAgentSessionResponseBodyDataDataSources
+from ._describe_data_agent_session_response_body import DescribeDataAgentSessionResponseBodyDataRecallResults
 from ._describe_data_agent_session_response_body import DescribeDataAgentSessionResponseBodyDataSessionConfig
 from ._describe_data_agent_session_response_body import DescribeDataAgentSessionResponseBodyData
 from ._describe_document_response_body import DescribeDocumentResponseBodyData
@@ -431,6 +435,8 @@ from ._retrieve_knowledge_base_response_body import RetrieveKnowledgeBaseRespons
 from ._send_chat_message_request import SendChatMessageRequestDataSource
 from ._send_chat_message_request import SendChatMessageRequestDataSources
 from ._send_chat_message_request import SendChatMessageRequestSessionConfig
+from ._send_chat_message_request import SendChatMessageRequestTaskConfigReportConfig
+from ._send_chat_message_request import SendChatMessageRequestTaskConfig
 from ._send_chat_message_response_body import SendChatMessageResponseBodyData
 from ._set_workspace_quota_response_body import SetWorkspaceQuotaResponseBodyData
 from ._update_airflow_response_body import UpdateAirflowResponseBodyRoot
@@ -467,6 +473,7 @@ __all__ = [
     DLTableInput,
     DLTablebaseInfo,
     DataMountInfo,
+    DmsGatewayOrder,
     DmsKnowledgeSearchOrderInfoDO,
     ForeignInstance,
     ForeignInstanceCredInfo,
@@ -818,7 +825,10 @@ __all__ = [
     DescribeCustomAgentResponseBodyDataKnowledgeConfigList,
     DescribeCustomAgentResponseBodyDataScheduleTaskConfig,
     DescribeCustomAgentResponseBodyData,
+    DescribeDataAgentSessionResponseBodyDataArtifacts,
     DescribeDataAgentSessionResponseBodyDataChatHistoryLocations,
+    DescribeDataAgentSessionResponseBodyDataDataSources,
+    DescribeDataAgentSessionResponseBodyDataRecallResults,
     DescribeDataAgentSessionResponseBodyDataSessionConfig,
     DescribeDataAgentSessionResponseBodyData,
     DescribeDocumentResponseBodyData,
@@ -869,6 +879,8 @@ __all__ = [
     SendChatMessageRequestDataSource,
     SendChatMessageRequestDataSources,
     SendChatMessageRequestSessionConfig,
+    SendChatMessageRequestTaskConfigReportConfig,
+    SendChatMessageRequestTaskConfig,
     SendChatMessageResponseBodyData,
     SetWorkspaceQuotaResponseBodyData,
     UpdateAirflowResponseBodyRoot,

@@ -11,11 +11,11 @@ class DescribeDataAgentSessionRequest(DaraModel):
         session_id: str = None,
         workspace_id: str = None,
     ):
-        # The ID of the DMS unit.
+        # The current Data Management unit.
         self.dmsunit = dmsunit
-        # The ID of the agent session.
+        # The agent session ID.
         self.session_id = session_id
-        # The ID of the workspace.
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):

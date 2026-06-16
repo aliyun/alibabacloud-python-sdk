@@ -14,7 +14,7 @@ class GetDataAgentWorkspaceInfoResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The returned data.
+        # The response struct.
         self.data = data
         # The error code.
         self.error_code = error_code
@@ -22,7 +22,7 @@ class GetDataAgentWorkspaceInfoResponseBody(DaraModel):
         self.error_message = error_message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -80,26 +80,27 @@ class GetDataAgentWorkspaceInfoResponseBodyData(DaraModel):
         modify_time: str = None,
         role_name: str = None,
         total_member: str = None,
+        type: str = None,
         workspace_desc: str = None,
         workspace_id: str = None,
         workspace_name: str = None,
         workspace_status: str = None,
     ):
-        # The time when the workspace was created. This value is a UNIX timestamp in seconds.
+        # The creation time of the session. Unit: seconds. The value is a UNIX timestamp.
         self.create_time = create_time
-        # The user ID (UID) of the workspace creator.
+        # The UID of the workspace creator.
         self.creator = creator
-        # Indicates whether session sharing is enabled.
         self.is_session_share_enabled = is_session_share_enabled
-        # The time when the workspace was last modified. This value is a UNIX timestamp in seconds.
+        # The most recent modification time of the workspace. Unit: seconds. The value is a UNIX timestamp.
         self.modify_time = modify_time
-        # The user\\"s role in the workspace.
+        # The role name of the user in the workspace.
         self.role_name = role_name
         # The number of members in the workspace.
         self.total_member = total_member
-        # The description of the workspace.
+        self.type = type
+        # The description of the collaborative workspace.
         self.workspace_desc = workspace_desc
-        # The workspace ID.
+        # The ID of the collaborative workspace.
         self.workspace_id = workspace_id
         # The name of the workspace.
         self.workspace_name = workspace_name
@@ -131,6 +132,9 @@ class GetDataAgentWorkspaceInfoResponseBodyData(DaraModel):
 
         if self.total_member is not None:
             result['TotalMember'] = self.total_member
+
+        if self.type is not None:
+            result['Type'] = self.type
 
         if self.workspace_desc is not None:
             result['WorkspaceDesc'] = self.workspace_desc
@@ -165,6 +169,9 @@ class GetDataAgentWorkspaceInfoResponseBodyData(DaraModel):
 
         if m.get('TotalMember') is not None:
             self.total_member = m.get('TotalMember')
+
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
 
         if m.get('WorkspaceDesc') is not None:
             self.workspace_desc = m.get('WorkspaceDesc')

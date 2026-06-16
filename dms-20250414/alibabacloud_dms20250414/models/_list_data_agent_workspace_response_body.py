@@ -18,15 +18,15 @@ class ListDataAgentWorkspaceResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
-        # The returned data.
+        # The response struct.
         self.data = data
         # The error code.
         self.error_code = error_code
-        # The error message returned if the request fails.
+        # The error message returned if the call failed.
         self.error_message = error_message
-        # This parameter is not used.
+        # The maximum number of entries per page.
         self.max_results = max_results
-        # This parameter is not used.
+        # The token information.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -100,11 +100,11 @@ class ListDataAgentWorkspaceResponseBodyData(DaraModel):
         total_elements: int = None,
         total_pages: int = None,
     ):
-        # The details of the workspaces.
+        # The configuration content.
         self.content = content
-        # The page number.
+        # The total number of pages.
         self.page_number = page_number
-        # The number of workspaces on each page.
+        # The number of workspaces per page.
         self.page_size = page_size
         # The total number of workspaces.
         self.total_elements = total_elements
@@ -173,24 +173,26 @@ class ListDataAgentWorkspaceResponseBodyDataContent(DaraModel):
         modify_time: int = None,
         role_name: str = None,
         total_member: int = None,
+        type: str = None,
         workspace_id: str = None,
         workspace_name: str = None,
         workspace_status: str = None,
     ):
-        # The creation time of the workspace, provided as a UNIX timestamp in seconds.
+        # The creation time of the workspace. This value is a UNIX timestamp in seconds.
         self.create_time = create_time
-        # The creator\\"s user ID (UID).
+        # The UID of the workspace creator.
         self.creator = creator
         # The description of the workspace.
         self.description = description
         self.is_session_share_enabled = is_session_share_enabled
-        # The last modification time of the workspace, provided as a UNIX timestamp in seconds.
+        # The most recent modification time of the workspace. This value is a UNIX timestamp in seconds.
         self.modify_time = modify_time
-        # The name of the user\\"s role in the workspace.
+        # The role name of the user in the workspace.
         self.role_name = role_name
         # The number of members in the workspace.
         self.total_member = total_member
-        # The ID of the workspace.
+        self.type = type
+        # The workspace ID.
         self.workspace_id = workspace_id
         # The name of the workspace.
         self.workspace_name = workspace_name
@@ -226,6 +228,9 @@ class ListDataAgentWorkspaceResponseBodyDataContent(DaraModel):
         if self.total_member is not None:
             result['TotalMember'] = self.total_member
 
+        if self.type is not None:
+            result['Type'] = self.type
+
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
 
@@ -259,6 +264,9 @@ class ListDataAgentWorkspaceResponseBodyDataContent(DaraModel):
 
         if m.get('TotalMember') is not None:
             self.total_member = m.get('TotalMember')
+
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
 
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')

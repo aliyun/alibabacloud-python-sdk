@@ -14,7 +14,7 @@ class CreateDataAgentWorkspaceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The returned data structure.
+        # The response struct.
         self.data = data
         # The error code.
         self.error_code = error_code
@@ -80,23 +80,24 @@ class CreateDataAgentWorkspaceResponseBodyData(DaraModel):
         modify_time: int = None,
         role_name: str = None,
         total_member: int = None,
+        type: str = None,
         workspace_desc: str = None,
         workspace_id: str = None,
         workspace_name: str = None,
         workspace_status: str = None,
     ):
-        # The time the workspace was created, as a UNIX timestamp in seconds.
+        # The time when the workspace was created. The value is a UNIX timestamp in seconds.
         self.create_time = create_time
-        # The user ID of the workspace creator.
+        # The UID of the workspace creator.
         self.creator = creator
-        # Indicates whether session sharing is enabled for the workspace.
         self.is_session_share_enabled = is_session_share_enabled
-        # The time the workspace was last modified, as a UNIX timestamp in seconds.
+        # The time when the workspace was last modified. The value is a UNIX timestamp in seconds.
         self.modify_time = modify_time
-        # The name of the user\\"s role in the workspace.
+        # The role name of the user in the workspace.
         self.role_name = role_name
         # The number of members in the workspace.
         self.total_member = total_member
+        self.type = type
         # The description of the workspace.
         self.workspace_desc = workspace_desc
         # The workspace ID.
@@ -132,6 +133,9 @@ class CreateDataAgentWorkspaceResponseBodyData(DaraModel):
         if self.total_member is not None:
             result['TotalMember'] = self.total_member
 
+        if self.type is not None:
+            result['Type'] = self.type
+
         if self.workspace_desc is not None:
             result['WorkspaceDesc'] = self.workspace_desc
 
@@ -165,6 +169,9 @@ class CreateDataAgentWorkspaceResponseBodyData(DaraModel):
 
         if m.get('TotalMember') is not None:
             self.total_member = m.get('TotalMember')
+
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
 
         if m.get('WorkspaceDesc') is not None:
             self.workspace_desc = m.get('WorkspaceDesc')

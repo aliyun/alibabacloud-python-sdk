@@ -16,19 +16,18 @@ class DescribeDataAgentSessionResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response data.
+        # The response struct.
         self.data = data
         # The error code.
         self.error_code = error_code
-        # The error message returned when the request fails.
+        # The error message returned if the call failed.
         self.error_message = error_message
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # The return value. Valid values:
         # 
-        # - **true**: The request was successful.
-        # 
-        # - **false**: The request failed.
+        # - **true**: Succeeded.
+        # - **false**: Failed.
         self.success = success
 
     def validate(self):
@@ -82,10 +81,13 @@ class DescribeDataAgentSessionResponseBodyData(DaraModel):
         self,
         agent_id: str = None,
         agent_status: str = None,
+        artifacts: List[main_models.DescribeDataAgentSessionResponseBodyDataArtifacts] = None,
         chat_history_locations: List[main_models.DescribeDataAgentSessionResponseBodyDataChatHistoryLocations] = None,
         create_time: int = None,
+        data_sources: List[main_models.DescribeDataAgentSessionResponseBodyDataDataSources] = None,
         favorite_in_workspace: str = None,
         file: str = None,
+        recall_results: List[main_models.DescribeDataAgentSessionResponseBodyDataRecallResults] = None,
         saved: bool = None,
         session_config: main_models.DescribeDataAgentSessionResponseBodyDataSessionConfig = None,
         session_id: str = None,
@@ -93,34 +95,49 @@ class DescribeDataAgentSessionResponseBodyData(DaraModel):
         title: str = None,
         user_id: str = None,
     ):
-        # The ID of the agent.
+        # The current agent ID.
         self.agent_id = agent_id
-        # The status of the agent.
+        # The current agent status.
         self.agent_status = agent_status
-        # The session replay history.
+        self.artifacts = artifacts
+        # The chat replay history.
         self.chat_history_locations = chat_history_locations
-        # The timestamp indicating when the session was created.
+        # The session creation time.
         self.create_time = create_time
-        # Indicates whether the current user has favorited the session in the workspace.
+        self.data_sources = data_sources
+        # Indicates whether the session is saved as a favorite in the workspace by the current logged-in user.
         self.favorite_in_workspace = favorite_in_workspace
-        # The ID of the file.
+        # The file ID.
         self.file = file
-        # Indicates whether the current user has favorited the session.
+        self.recall_results = recall_results
+        # Indicates whether the session is saved as a favorite by the current logged-in user.
         self.saved = saved
-        # The configuration of the session.
+        # The session configuration item.
         self.session_config = session_config
-        # The ID of the agent session.
+        # The agent session ID.
         self.session_id = session_id
-        # The status of the session.
+        # The session status.
         self.session_status = session_status
-        # The title of the session.
+        # The title.
         self.title = title
         # The ID of the session owner.
         self.user_id = user_id
 
     def validate(self):
+        if self.artifacts:
+            for v1 in self.artifacts:
+                 if v1:
+                    v1.validate()
         if self.chat_history_locations:
             for v1 in self.chat_history_locations:
+                 if v1:
+                    v1.validate()
+        if self.data_sources:
+            for v1 in self.data_sources:
+                 if v1:
+                    v1.validate()
+        if self.recall_results:
+            for v1 in self.recall_results:
                  if v1:
                     v1.validate()
         if self.session_config:
@@ -137,6 +154,11 @@ class DescribeDataAgentSessionResponseBodyData(DaraModel):
         if self.agent_status is not None:
             result['AgentStatus'] = self.agent_status
 
+        result['Artifacts'] = []
+        if self.artifacts is not None:
+            for k1 in self.artifacts:
+                result['Artifacts'].append(k1.to_map() if k1 else None)
+
         result['ChatHistoryLocations'] = []
         if self.chat_history_locations is not None:
             for k1 in self.chat_history_locations:
@@ -145,11 +167,21 @@ class DescribeDataAgentSessionResponseBodyData(DaraModel):
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
 
+        result['DataSources'] = []
+        if self.data_sources is not None:
+            for k1 in self.data_sources:
+                result['DataSources'].append(k1.to_map() if k1 else None)
+
         if self.favorite_in_workspace is not None:
             result['FavoriteInWorkspace'] = self.favorite_in_workspace
 
         if self.file is not None:
             result['File'] = self.file
+
+        result['RecallResults'] = []
+        if self.recall_results is not None:
+            for k1 in self.recall_results:
+                result['RecallResults'].append(k1.to_map() if k1 else None)
 
         if self.saved is not None:
             result['Saved'] = self.saved
@@ -179,6 +211,12 @@ class DescribeDataAgentSessionResponseBodyData(DaraModel):
         if m.get('AgentStatus') is not None:
             self.agent_status = m.get('AgentStatus')
 
+        self.artifacts = []
+        if m.get('Artifacts') is not None:
+            for k1 in m.get('Artifacts'):
+                temp_model = main_models.DescribeDataAgentSessionResponseBodyDataArtifacts()
+                self.artifacts.append(temp_model.from_map(k1))
+
         self.chat_history_locations = []
         if m.get('ChatHistoryLocations') is not None:
             for k1 in m.get('ChatHistoryLocations'):
@@ -188,11 +226,23 @@ class DescribeDataAgentSessionResponseBodyData(DaraModel):
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
 
+        self.data_sources = []
+        if m.get('DataSources') is not None:
+            for k1 in m.get('DataSources'):
+                temp_model = main_models.DescribeDataAgentSessionResponseBodyDataDataSources()
+                self.data_sources.append(temp_model.from_map(k1))
+
         if m.get('FavoriteInWorkspace') is not None:
             self.favorite_in_workspace = m.get('FavoriteInWorkspace')
 
         if m.get('File') is not None:
             self.file = m.get('File')
+
+        self.recall_results = []
+        if m.get('RecallResults') is not None:
+            for k1 in m.get('RecallResults'):
+                temp_model = main_models.DescribeDataAgentSessionResponseBodyDataRecallResults()
+                self.recall_results.append(temp_model.from_map(k1))
 
         if m.get('Saved') is not None:
             self.saved = m.get('Saved')
@@ -231,40 +281,32 @@ class DescribeDataAgentSessionResponseBodyDataSessionConfig(DaraModel):
         report_water_mark: str = None,
         user_oss_bucket: str = None,
     ):
-        # The ID of the custom agent.
+        # The custom agent ID.
         self.custom_agent_id = custom_agent_id
         # The stage of the custom agent. Valid values:
-        # 
-        # - **debug**: The test stage.
-        # 
-        # - **prod**: The production stage.
+        # - **debug**: Debug stage.
+        # - **prod**: Production stage.
         self.custom_agent_stage = custom_agent_stage
-        # Indicates whether web search is enabled.
+        # Specifies whether to enable web search.
         self.enable_search = enable_search
         self.encrypt_key = encrypt_key
         self.encrypt_type = encrypt_type
         self.kb_uuid_list = kb_uuid_list
         # The language. Valid values:
-        # 
-        # - **CHINESE**: Chinese
-        # 
-        # - **ENGLISH**: English
+        # - **CHINESE**: Chinese.
+        # - **ENGLISH**: English.
         self.language = language
-        # A list of MCP server IDs.
+        # The list of MCP server IDs in the session configuration.
         self.mcp_server_ids = mcp_server_ids
         # The mode. Valid values:
-        # 
-        # - **ASK_DATA**: quick inquiry mode
-        # 
-        # - **ANALYSIS**: analysis mode
-        # 
-        # - **INSIGHT**: insight mode
+        # - **ASK_DATA**: Ask data mode.
+        # - **ANALYSIS**: Analysis mode.
+        # - **INSIGHT**: Insight mode.
         self.mode = mode
         self.report_page_width = report_page_width
         self.report_water_mark = report_water_mark
-        # The name of the user\\"s OSS bucket.
-        # 
-        # - The service can upload analysis files and reports to this bucket.
+        # The name of the user OSS bucket.
+        # - Analysis process files and report artifacts can be uploaded to the user-specified OSS bucket.
         self.user_oss_bucket = user_oss_bucket
 
     def validate(self):
@@ -353,15 +395,93 @@ class DescribeDataAgentSessionResponseBodyDataSessionConfig(DaraModel):
 
         return self
 
+class DescribeDataAgentSessionResponseBodyDataRecallResults(DaraModel):
+    def __init__(
+        self,
+        content: str = None,
+        score: float = None,
+        type: str = None,
+    ):
+        self.content = content
+        self.score = score
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.content is not None:
+            result['Content'] = self.content
+
+        if self.score is not None:
+            result['Score'] = self.score
+
+        if self.type is not None:
+            result['Type'] = self.type
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+
+        if m.get('Score') is not None:
+            self.score = m.get('Score')
+
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+
+        return self
+
+class DescribeDataAgentSessionResponseBodyDataDataSources(DaraModel):
+    def __init__(
+        self,
+        category: str = None,
+        detail: str = None,
+    ):
+        self.category = category
+        self.detail = detail
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.category is not None:
+            result['Category'] = self.category
+
+        if self.detail is not None:
+            result['Detail'] = self.detail
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+
+        if m.get('Detail') is not None:
+            self.detail = m.get('Detail')
+
+        return self
+
 class DescribeDataAgentSessionResponseBodyDataChatHistoryLocations(DaraModel):
     def __init__(
         self,
         key: str = None,
         url: str = None,
     ):
-        # The key of the session replay history item.
+        # The key of the chat replay history.
         self.key = key
-        # The OSS download URL for the session replay history item.
+        # The OSS download URL of the chat replay history.
         self.url = url
 
     def validate(self):
@@ -387,6 +507,89 @@ class DescribeDataAgentSessionResponseBodyDataChatHistoryLocations(DaraModel):
 
         if m.get('Url') is not None:
             self.url = m.get('Url')
+
+        return self
+
+class DescribeDataAgentSessionResponseBodyDataArtifacts(DaraModel):
+    def __init__(
+        self,
+        description: str = None,
+        finish_time: str = None,
+        id: str = None,
+        name: str = None,
+        receive_time: str = None,
+        start_time: str = None,
+        status: str = None,
+        type: str = None,
+    ):
+        self.description = description
+        self.finish_time = finish_time
+        self.id = id
+        self.name = name
+        self.receive_time = receive_time
+        self.start_time = start_time
+        self.status = status
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.description is not None:
+            result['Description'] = self.description
+
+        if self.finish_time is not None:
+            result['FinishTime'] = self.finish_time
+
+        if self.id is not None:
+            result['Id'] = self.id
+
+        if self.name is not None:
+            result['Name'] = self.name
+
+        if self.receive_time is not None:
+            result['ReceiveTime'] = self.receive_time
+
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+
+        if self.status is not None:
+            result['Status'] = self.status
+
+        if self.type is not None:
+            result['Type'] = self.type
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+
+        if m.get('FinishTime') is not None:
+            self.finish_time = m.get('FinishTime')
+
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+
+        if m.get('ReceiveTime') is not None:
+            self.receive_time = m.get('ReceiveTime')
+
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
 
         return self
 

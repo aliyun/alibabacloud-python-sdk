@@ -22,7 +22,17 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = ''
+        self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'us-west-1': 'dms.us-west-1.aliyuncs.com',
+            'us-east-1': 'dms.us-east-1.aliyuncs.com',
+            'cn-shenzhen': 'dms.cn-shenzhen.aliyuncs.com',
+            'cn-shanghai': 'dms.cn-shanghai.aliyuncs.com',
+            'cn-hongkong': 'dms.cn-hongkong.aliyuncs.com',
+            'cn-hangzhou': 'dms.cn-hangzhou.aliyuncs.com',
+            'cn-beijing': 'dms.cn-beijing.aliyuncs.com',
+            'ap-southeast-1': 'dms.ap-southeast-1.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('dms', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -7032,6 +7042,8 @@ class Client(OpenApiClient):
             request.data_sources_shrink = Utils.array_to_string_with_specified_style(tmp_req.data_sources, 'DataSources', 'json')
         if not DaraCore.is_null(tmp_req.session_config):
             request.session_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.session_config, 'SessionConfig', 'json')
+        if not DaraCore.is_null(tmp_req.task_config):
+            request.task_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.task_config, 'TaskConfig', 'json')
         query = {}
         if not DaraCore.is_null(request.agent_id):
             query['AgentId'] = request.agent_id
@@ -7057,6 +7069,8 @@ class Client(OpenApiClient):
             query['SessionConfig'] = request.session_config_shrink
         if not DaraCore.is_null(request.session_id):
             query['SessionId'] = request.session_id
+        if not DaraCore.is_null(request.task_config_shrink):
+            query['TaskConfig'] = request.task_config_shrink
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -7090,6 +7104,8 @@ class Client(OpenApiClient):
             request.data_sources_shrink = Utils.array_to_string_with_specified_style(tmp_req.data_sources, 'DataSources', 'json')
         if not DaraCore.is_null(tmp_req.session_config):
             request.session_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.session_config, 'SessionConfig', 'json')
+        if not DaraCore.is_null(tmp_req.task_config):
+            request.task_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.task_config, 'TaskConfig', 'json')
         query = {}
         if not DaraCore.is_null(request.agent_id):
             query['AgentId'] = request.agent_id
@@ -7115,6 +7131,8 @@ class Client(OpenApiClient):
             query['SessionConfig'] = request.session_config_shrink
         if not DaraCore.is_null(request.session_id):
             query['SessionId'] = request.session_id
+        if not DaraCore.is_null(request.task_config_shrink):
+            query['TaskConfig'] = request.task_config_shrink
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )

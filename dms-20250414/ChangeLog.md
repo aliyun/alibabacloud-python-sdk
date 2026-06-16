@@ -1,3 +1,18 @@
+2026-06-16 Version: 1.15.3
+- Update API CreateDataAgentWorkspace: add response parameters Body.Data.Type.
+- Update API DescribeDataAgentSession: add response parameters Body.Data.Artifacts.
+- Update API DescribeDataAgentSession: add response parameters Body.Data.DataSources.
+- Update API DescribeDataAgentSession: add response parameters Body.Data.RecallResults.
+- Update API GetDataAgentWorkspaceInfo: add response parameters Body.Data.Type.
+- Update API ListDataAgentWorkspace: add response parameters Body.Data.Content.$.Type.
+- Update API SendChatMessage: add request parameters TaskConfig.
+- Update API SendChatMessage: add request parameters SessionConfig.SkipAskHuman.
+- Update API SendChatMessage: add request parameters SessionConfig.SkipPlan.
+- Update API SendChatMessage: add request parameters SessionConfig.SkipSqlConfirm.
+- Update API SendChatMessage: add request parameters SessionConfig.SkipWebReportConfirm.
+- Update API SendChatMessage: add response parameters Body.Data.MessageId.
+
+
 2026-06-11 Version: 1.15.2
 - Generated python 2025-04-14 for Dms.
 

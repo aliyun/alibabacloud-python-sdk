@@ -16,13 +16,13 @@ class SendChatMessageResponseBody(DaraModel):
     ):
         # The response data.
         self.data = data
-        # The error code. A value of `Success` indicates that the request was successful.
+        # The error code.
         self.error_code = error_code
-        # The error message. This field is empty if the request is successful.
+        # The error message.
         self.error_message = error_message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Success
         self.success = success
 
     def validate(self):
@@ -76,13 +76,15 @@ class SendChatMessageResponseBodyData(DaraModel):
         self,
         agent_id: str = None,
         message: str = None,
+        message_id: str = None,
         session_id: str = None,
     ):
-        # The agent ID.
+        # AgentId
         self.agent_id = agent_id
-        # Describes the result of the request.
+        # Message
         self.message = message
-        # The session ID.
+        self.message_id = message_id
+        # SessionId
         self.session_id = session_id
 
     def validate(self):
@@ -99,6 +101,9 @@ class SendChatMessageResponseBodyData(DaraModel):
         if self.message is not None:
             result['Message'] = self.message
 
+        if self.message_id is not None:
+            result['MessageId'] = self.message_id
+
         if self.session_id is not None:
             result['SessionId'] = self.session_id
 
@@ -111,6 +116,9 @@ class SendChatMessageResponseBodyData(DaraModel):
 
         if m.get('Message') is not None:
             self.message = m.get('Message')
+
+        if m.get('MessageId') is not None:
+            self.message_id = m.get('MessageId')
 
         if m.get('SessionId') is not None:
             self.session_id = m.get('SessionId')

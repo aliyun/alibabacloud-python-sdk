@@ -22,37 +22,39 @@ class SendChatMessageRequest(DaraModel):
         reply_to: str = None,
         session_config: main_models.SendChatMessageRequestSessionConfig = None,
         session_id: str = None,
+        task_config: main_models.SendChatMessageRequestTaskConfig = None,
     ):
-        # The agent ID. This parameter is required. You can obtain this ID from the response of the `CreateAgentSession` operation. An agent has a lifecycle, so its ID may change with each request.
+        # The agent ID. This parameter is required. You can obtain the current AgentId from the response of the CreateAgentSession operation. Agent resources have a lifecycle, so the AgentId you need to specify may change with each request.
         # 
         # This parameter is required.
         self.agent_id = agent_id
-        # The DMS unit where your DMS instance is located. This information is used to connect to your DMS instance for database analysis. You can find this value in the DMS console. For users on the Alibaba Cloud China site, you can enter `cn-hangzhou`.
+        # The Data Management unit you are currently in. If you choose to analyze a database, this information is used to correctly connect to your Data Management instance. You can go to the Data Management console to view your current Data Management unit. If you are a user of Alibaba Cloud China Website (www.aliyun.com), set this parameter to ap-southeast-1.
         self.dmsunit = dmsunit
-        # The data source information. Optional.
+        # The data source information. This parameter is optional.
         self.data_source = data_source
-        # A list of data sources. Optional.
+        # The detailed data source information. This parameter is optional.
         self.data_sources = data_sources
-        # The content of the message to send to the agent.
+        # The message content to send to the Agent in this request.
         # 
         # This parameter is required.
         self.message = message
-        # The message type. The default value is `primary`. Set this parameter to `additional` when responding to a human-in-the-loop question from the agent. Set it to `cancel` to cancel the current session.
+        # The message type. Default value: `[primary]`. When the message is a response to the Agent\\"s human-in-the-loop question, set this parameter to `[additional]`. When the message is intended to cancel the current session, set this parameter to `[cancel]`.
         self.message_type = message_type
         # The parent session ID.
         self.parent_session_id = parent_session_id
-        # This parameter is required if the `MessageType` is `additional`. It contains the specific question asked by the agent during the human-in-the-loop process.
+        # The specific question that the Agent asks the user through human-in-the-loop. This parameter is required when the message type is `additional`.
         self.question = question
-        # The quoted content. This parameter is typically used when interacting with the agent.
+        # The quoted content, typically used during interaction with the Agent.
         self.quoted_message = quoted_message
-        # This parameter specifies the agent message to which this message is a response, enabling message deduplication. Set this to the highest checkpoint sequence number you have received. For the first message, use 0.
+        # Indicates which Agent message this message responds to. Set this parameter to the largest Checkpoint sequence number currently received. Set it to 0 for the first message. This field is used for message deduplication in case of occasional network issues or duplicate message delivery.
         self.reply_to = reply_to
-        # Session-specific configurations. These apply only if provided in the first `SendMessage` request of the session.
+        # The special configuration for this session. For the same session, only the configuration included in the first SendMessage call takes effect.
         self.session_config = session_config
-        # The session ID. This parameter is required. You can obtain the session ID by calling the `CreateAgentSession` operation.
+        # The session ID. This parameter is required. You can obtain the SessionId by calling the CreateAgentSession operation.
         # 
         # This parameter is required.
         self.session_id = session_id
+        self.task_config = task_config
 
     def validate(self):
         if self.data_source:
@@ -63,6 +65,8 @@ class SendChatMessageRequest(DaraModel):
                     v1.validate()
         if self.session_config:
             self.session_config.validate()
+        if self.task_config:
+            self.task_config.validate()
 
     def to_map(self):
         result = dict()
@@ -106,6 +110,9 @@ class SendChatMessageRequest(DaraModel):
 
         if self.session_id is not None:
             result['SessionId'] = self.session_id
+
+        if self.task_config is not None:
+            result['TaskConfig'] = self.task_config.to_map()
 
         return result
 
@@ -152,6 +159,82 @@ class SendChatMessageRequest(DaraModel):
         if m.get('SessionId') is not None:
             self.session_id = m.get('SessionId')
 
+        if m.get('TaskConfig') is not None:
+            temp_model = main_models.SendChatMessageRequestTaskConfig()
+            self.task_config = temp_model.from_map(m.get('TaskConfig'))
+
+        return self
+
+class SendChatMessageRequestTaskConfig(DaraModel):
+    def __init__(
+        self,
+        report_config: main_models.SendChatMessageRequestTaskConfigReportConfig = None,
+    ):
+        self.report_config = report_config
+
+    def validate(self):
+        if self.report_config:
+            self.report_config.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.report_config is not None:
+            result['ReportConfig'] = self.report_config.to_map()
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ReportConfig') is not None:
+            temp_model = main_models.SendChatMessageRequestTaskConfigReportConfig()
+            self.report_config = temp_model.from_map(m.get('ReportConfig'))
+
+        return self
+
+class SendChatMessageRequestTaskConfigReportConfig(DaraModel):
+    def __init__(
+        self,
+        report_prompt: str = None,
+        report_theme: str = None,
+        report_type: str = None,
+    ):
+        self.report_prompt = report_prompt
+        self.report_theme = report_theme
+        self.report_type = report_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.report_prompt is not None:
+            result['ReportPrompt'] = self.report_prompt
+
+        if self.report_theme is not None:
+            result['ReportTheme'] = self.report_theme
+
+        if self.report_type is not None:
+            result['ReportType'] = self.report_type
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ReportPrompt') is not None:
+            self.report_prompt = m.get('ReportPrompt')
+
+        if m.get('ReportTheme') is not None:
+            self.report_theme = m.get('ReportTheme')
+
+        if m.get('ReportType') is not None:
+            self.report_type = m.get('ReportType')
+
         return self
 
 class SendChatMessageRequestSessionConfig(DaraModel):
@@ -162,16 +245,24 @@ class SendChatMessageRequestSessionConfig(DaraModel):
         language: str = None,
         mode: str = None,
         report_water_mark: str = None,
+        skip_ask_human: bool = None,
+        skip_plan: bool = None,
+        skip_sql_confirm: bool = None,
+        skip_web_report_confirm: bool = None,
     ):
-        # This parameter is deprecated. Use the `CustomAgentId` request parameter from the `CreateAgentSession` operation instead.
+        # Deprecated. Use the input parameters of CreateAgentSession instead.
         self.custom_agent_id = custom_agent_id
-        # This parameter is deprecated. Use the `CustomAgentStage` request parameter from the `CreateAgentSession` operation instead.
+        # Deprecated. Use the input parameters of CreateAgentSession instead.
         self.custom_agent_stage = custom_agent_stage
-        # The language of the session. Only Chinese and English are supported. The default value is Chinese. The value must be in uppercase.
+        # Only Chinese and English are supported. The default value is Chinese. Only uppercase values are supported.
         self.language = language
         self.mode = mode
-        # A text watermark of up to 64 characters that will be added to generated PDF reports.
+        # The text of up to 64 characters that is used as a watermark in the generated PDF report.
         self.report_water_mark = report_water_mark
+        self.skip_ask_human = skip_ask_human
+        self.skip_plan = skip_plan
+        self.skip_sql_confirm = skip_sql_confirm
+        self.skip_web_report_confirm = skip_web_report_confirm
 
     def validate(self):
         pass
@@ -196,6 +287,18 @@ class SendChatMessageRequestSessionConfig(DaraModel):
         if self.report_water_mark is not None:
             result['ReportWaterMark'] = self.report_water_mark
 
+        if self.skip_ask_human is not None:
+            result['SkipAskHuman'] = self.skip_ask_human
+
+        if self.skip_plan is not None:
+            result['SkipPlan'] = self.skip_plan
+
+        if self.skip_sql_confirm is not None:
+            result['SkipSqlConfirm'] = self.skip_sql_confirm
+
+        if self.skip_web_report_confirm is not None:
+            result['SkipWebReportConfirm'] = self.skip_web_report_confirm
+
         return result
 
     def from_map(self, m: dict = None):
@@ -215,6 +318,18 @@ class SendChatMessageRequestSessionConfig(DaraModel):
         if m.get('ReportWaterMark') is not None:
             self.report_water_mark = m.get('ReportWaterMark')
 
+        if m.get('SkipAskHuman') is not None:
+            self.skip_ask_human = m.get('SkipAskHuman')
+
+        if m.get('SkipPlan') is not None:
+            self.skip_plan = m.get('SkipPlan')
+
+        if m.get('SkipSqlConfirm') is not None:
+            self.skip_sql_confirm = m.get('SkipSqlConfirm')
+
+        if m.get('SkipWebReportConfirm') is not None:
+            self.skip_web_report_confirm = m.get('SkipWebReportConfirm')
+
         return self
 
 class SendChatMessageRequestDataSources(DaraModel):
@@ -232,27 +347,27 @@ class SendChatMessageRequestDataSources(DaraModel):
         region_id: str = None,
         tables: List[str] = None,
     ):
-        # This parameter is deprecated. Do not use it.
+        # Deprecated. You do not need to specify this parameter.
         self.data_source_id = data_source_id
-        # The data source type. Valid values are `remote_data_center` for file analysis and `database` for database analysis.
+        # The data source type. Valid values: [remote_data_center, database], indicating that the analysis is performed on a file or a database respectively.
         self.data_source_type = data_source_type
-        # This parameter is deprecated. Do not use it.
+        # Deprecated. You do not need to specify this parameter.
         self.database = database
         # The database name.
         self.db_name = db_name
-        # The ID of the database in DMS.
+        # The ID of the database in Data Management.
         self.dms_database_id = dms_database_id
-        # The ID of the instance in DMS.
+        # The ID of the instance in Data Management.
         self.dms_instance_id = dms_instance_id
         # The database engine type.
         self.engine = engine
         # The file ID.
         self.file_id = file_id
-        # This parameter is deprecated. Do not use it.
+        # Deprecated. You do not need to specify this parameter.
         self.location = location
         # The region ID.
         self.region_id = region_id
-        # A list of table names to analyze.
+        # The list of table names to analyze.
         self.tables = tables
 
     def validate(self):
@@ -350,27 +465,27 @@ class SendChatMessageRequestDataSource(DaraModel):
         region_id: str = None,
         tables: List[str] = None,
     ):
-        # This parameter is deprecated. Do not use it.
+        # Deprecated. You do not need to specify this parameter.
         self.data_source_id = data_source_id
-        # The data source type. Valid values are `remote_data_center` for file analysis and `database` for database analysis.
+        # The data source type. Valid values: `[remote_data_center, database]`, indicating that the analysis is performed on a file or a database respectively.
         self.data_source_type = data_source_type
-        # This parameter is deprecated. Do not use it.
+        # Deprecated. You do not need to specify this parameter.
         self.database = database
         # The database name.
         self.db_name = db_name
-        # The ID of the database in DMS.
+        # The ID of the database in Data Management.
         self.dms_database_id = dms_database_id
-        # The ID of the instance in DMS.
+        # The ID of the instance in Data Management.
         self.dms_instance_id = dms_instance_id
         # The database engine type.
         self.engine = engine
         # The file ID.
         self.file_id = file_id
-        # This parameter is deprecated. Do not use it.
+        # Deprecated. You do not need to specify this parameter.
         self.location = location
         # The region ID.
         self.region_id = region_id
-        # A list of table names to analyze.
+        # The list of table names to analyze.
         self.tables = tables
 
     def validate(self):
