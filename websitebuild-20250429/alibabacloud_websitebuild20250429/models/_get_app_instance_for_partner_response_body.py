@@ -22,28 +22,28 @@ class GetAppInstanceForPartnerResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # Detailed reason why access was denied.
+        # The detailed reason why access was denied.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether retry is allowed
+        # Indicates whether retry is allowed.
         self.allow_retry = allow_retry
-        # AppName.
+        # The application name.
         self.app_name = app_name
-        # Dynamic error code.
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # Dynamic error message, used to replace the `%s` placeholder in the **ErrMessage** error message.  
-        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, it indicates that the provided request parameter **DtsJobId** is invalid.
+        # The dynamic error message, which is used to replace the `%s` in the **ErrMessage** response parameter.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the value of the **DtsJobId** request parameter is invalid.
         self.dynamic_message = dynamic_message
-        # Returned error parameters
+        # The error parameters.
         self.error_args = error_args
-        # Response data
+        # The response data.
         self.module = module
         # Id of the request
         self.request_id = request_id
-        # Error code
+        # The error code.
         self.root_error_code = root_error_code
-        # Abnormal message
+        # The exception message.
         self.root_error_msg = root_error_msg
-        # Reserved parameter.
+        # The reserved parameter.
         self.synchro = synchro
 
     def validate(self):
@@ -167,75 +167,75 @@ class GetAppInstanceForPartnerResponseBodyModule(DaraModel):
         user_id: str = None,
         version: str = None,
     ):
-        # List of AI staff associated with the application
+        # The list of AI staff members associated with the application.
         self.ai_staff_list = ai_staff_list
-        # Design order associated with the application
+        # The design specification associated with the application.
         self.app_design_spec = app_design_spec
-        # Application operation address
+        # The application operation address.
         self.app_operation_address = app_operation_address
-        # List of service instances associated with the application
+        # The list of service instances associated with the application.
         self.app_service_list = app_service_list
-        # Application subtype
+        # The application subtype.
         self.app_sub_type = app_sub_type
-        # Application Type
+        # The application type.
         self.app_type = app_type
-        # Application instance business ID
+        # The business ID of the application instance.
         self.biz_id = biz_id
-        # Build Type
+        # The build type.
         self.build_type = build_type
-        # Is deleted
+        # Indicates whether the instance is deleted.
         self.deleted = deleted
-        # Application Description
+        # The application description.
         self.description = description
         # placeHolder
         self.design_spec_biz_id = design_spec_biz_id
-        # Design Configuration ID
+        # The ID of the design specification.
         self.design_spec_id = design_spec_id
-        # Primary domain name
+        # The primary domain name.
         self.domain = domain
-        # End time
+        # The end time.
         self.end_time = end_time
-        # Environment
+        # The environment.
         self.env = env
-        # Associated delivery order ID
+        # The associated delivery order ID.
         self.esp_biz_id = esp_biz_id
-        # Creation Time
+        # The creation time.
         self.gmt_create = gmt_create
-        # Deletion time
+        # The deletion time.
         self.gmt_delete = gmt_delete
-        # Updated At
+        # The modification time.
         self.gmt_modified = gmt_modified
-        # Published At
+        # The publish time.
         self.gmt_publish = gmt_publish
-        # Application icon
+        # The application icon URL.
         self.icon_url = icon_url
-        # Application Name
+        # The application name.
         self.name = name
-        # Order ID
+        # The order ID.
         self.order_id = order_id
-        # Details
+        # The partner details.
         self.partner_detail = partner_detail
-        # Instance Configuration
+        # The instance configuration.
         self.profile = profile
-        # List of instances associated with the application
+        # The list of instances associated with the application.
         self.related_instance_list = related_instance_list
-        # Domain name
+        # The website domain name.
         self.site_host = site_host
-        # Application identifier
+        # The application identifier.
         self.slug = slug
-        # Source MARKET_CLOUD_DREAM
+        # The source. Example: MARKET_CLOUD_DREAM.
         self.source_type = source_type
-        # Start Time
+        # The start time.
         self.start_time = start_time
-        # Status
+        # The status.
         self.status = status
-        # Task Status text.
+        # The task status text.
         self.status_text = status_text
-        # Application Thumbnail
+        # The application thumbnail URL.
         self.thumbnail_url = thumbnail_url
-        # User ID
+        # The user ID.
         self.user_id = user_id
-        # Application instance Version
+        # The application instance version.
         self.version = version
 
     def validate(self):
@@ -533,63 +533,63 @@ class GetAppInstanceForPartnerResponseBodyModuleRelatedInstanceList(DaraModel):
         user_id: str = None,
         version: str = None,
     ):
-        # application sub-type
+        # The application subtype.
         self.app_sub_type = app_sub_type
-        # application Type
+        # The application type.
         self.app_type = app_type
-        # application instance business ID
+        # The business ID of the application instance.
         self.biz_id = biz_id
-        # Build Type
+        # The build type.
         self.build_type = build_type
-        # Is Deleted
+        # Indicates whether the instance is deleted.
         self.deleted = deleted
-        # Application description
+        # The application description.
         self.description = description
         # placeHolder
         self.design_spec_biz_id = design_spec_biz_id
-        # Design configuration ID
+        # The ID of the design specification.
         self.design_spec_id = design_spec_id
-        # primary domain name
+        # The primary domain name.
         self.domain = domain
-        # End time
+        # The end time.
         self.end_time = end_time
-        # Environment
+        # The environment.
         self.env = env
-        # Associated Delivery Order ID
+        # The associated delivery order ID.
         self.esp_biz_id = esp_biz_id
-        # Creation Time
+        # The creation time.
         self.gmt_create = gmt_create
-        # Deletion time
+        # The deletion time.
         self.gmt_delete = gmt_delete
-        # Updated At
+        # The modification time.
         self.gmt_modified = gmt_modified
-        # Published At
+        # The publish time.
         self.gmt_publish = gmt_publish
-        # application icon
+        # The application icon URL.
         self.icon_url = icon_url
-        # Application Name
+        # The application name.
         self.name = name
-        # order ID
+        # The order ID.
         self.order_id = order_id
-        # Instance configuration
+        # The instance configuration.
         self.profile = profile
-        # domain name
+        # The website domain name.
         self.site_host = site_host
-        # application identity
+        # The application identifier.
         self.slug = slug
-        # Source MARKET_CLOUD_DREAM
+        # The source. Example: MARKET_CLOUD_DREAM.
         self.source_type = source_type
-        # Start Time
+        # The start time.
         self.start_time = start_time
-        # Status
+        # The status.
         self.status = status
-        # Task Status text.
+        # The task status text.
         self.status_text = status_text
-        # Application thumbnail
+        # The application thumbnail URL.
         self.thumbnail_url = thumbnail_url
-        # User ID
+        # The user ID.
         self.user_id = user_id
-        # Application instance Version
+        # The application instance version.
         self.version = version
 
     def validate(self):
@@ -817,65 +817,65 @@ class GetAppInstanceForPartnerResponseBodyModuleRelatedInstanceListProfile(DaraM
         thumbnail: str = None,
         upgrade_status: str = None,
     ):
-        # Management Console URL
+        # The admin console URL.
         self.admin_url = admin_url
-        # Application Type Code
+        # The application type code.
         self.application_type = application_type
-        # Application type text description
+        # The text description of the application type.
         self.application_type_text = application_type_text
-        # Attached CNAME record
+        # The bound CNAME record.
         self.bind_cname = bind_cname
-        # Business ID
+        # The business ID.
         self.biz_id = biz_id
-        # Product encoding
+        # The commodity code.
         self.commodity_code = commodity_code
-        # [responses_200_schema_properties_Module_properties_RelatedInstanceList_items_properties_CustomerService_description]Customer service information
+        # The customer service information.
         self.customer_service = customer_service
-        # Deployment area
+        # The deployment region.
         self.deploy_area = deploy_area
-        # Domain Name List
+        # The domain name list.
         self.domain_list = domain_list
-        # Editor URL
+        # The editor URL.
         self.editor_url = editor_url
-        # Creation Time
+        # The creation time.
         self.gmt_create = gmt_create
-        # Updated At
+        # The modification time.
         self.gmt_modified = gmt_modified
-        # ICP number
+        # The ICP filing number.
         self.icpba_no = icpba_no
-        # Image list
+        # The image list.
         self.image_list = image_list
-        # Lenovo instance ID
+        # The Lingxiao instance ID.
         self.lx_instance_id = lx_instance_id
-        # Order Time
+        # The order placement time.
         self.ord_time = ord_time
-        # Order ID
+        # The order ID.
         self.order_id = order_id
-        # Order Quantity
+        # The number of orders.
         self.order_num = order_num
-        # Channel Partner Business ID
+        # The channel partner business ID.
         self.partner_id = partner_id
-        # Payment time
+        # The payment time.
         self.pay_time = pay_time
-        # Preview URL
+        # The preview URL.
         self.preview_url = preview_url
-        # SEO site information
+        # The SEO site information.
         self.seo_site = seo_site
-        # Site logo
+        # The site logo.
         self.site_logo = site_logo
-        # Site version encoding
+        # The site version code.
         self.site_version = site_version
-        # Site Version Text Description
+        # The text description of the site version.
         self.site_version_text = site_version_text
-        # Source Information
+        # The source information.
         self.source = source
-        # Template ETag identity
+        # The template ETag identifier.
         self.template_etag = template_etag
-        # Template ID
+        # The template ID.
         self.template_id = template_id
-        # Text List
+        # The text list.
         self.text_list = text_list
-        # Thumbnail
+        # The thumbnail.
         self.thumbnail = thumbnail
         self.upgrade_status = upgrade_status
 
@@ -1114,65 +1114,65 @@ class GetAppInstanceForPartnerResponseBodyModuleProfile(DaraModel):
         thumbnail: str = None,
         upgrade_status: str = None,
     ):
-        # Management console URL
+        # The admin console URL.
         self.admin_url = admin_url
-        # Application type code
+        # The application type code.
         self.application_type = application_type
-        # Application type text description
+        # The text description of the application type.
         self.application_type_text = application_type_text
-        # Attached CNAME record
+        # The bound CNAME record.
         self.bind_cname = bind_cname
-        # Business ID
+        # The business ID.
         self.biz_id = biz_id
-        # Product encoding
+        # The commodity code.
         self.commodity_code = commodity_code
-        # Customer Service Information
+        # The customer service information.
         self.customer_service = customer_service
-        # Deployment area
+        # The deployment region.
         self.deploy_area = deploy_area
-        # Domain name list
+        # The domain name list.
         self.domain_list = domain_list
-        # Editor URL
+        # The editor URL.
         self.editor_url = editor_url
-        # Creation time
+        # The creation time.
         self.gmt_create = gmt_create
-        # Updated At
+        # The modification time.
         self.gmt_modified = gmt_modified
-        # ICP number
+        # The ICP filing number.
         self.icpba_no = icpba_no
-        # Image list
+        # The image list.
         self.image_list = image_list
-        # Lenovo instance ID
+        # The Lingxiao instance ID.
         self.lx_instance_id = lx_instance_id
-        # Order time
+        # The order placement time.
         self.ord_time = ord_time
-        # Order ID
+        # The order ID.
         self.order_id = order_id
-        # Order quantity
+        # The number of orders.
         self.order_num = order_num
-        # Channel partner business ID
+        # The channel partner business ID.
         self.partner_id = partner_id
-        # Payment time
+        # The payment time.
         self.pay_time = pay_time
-        # Preview URL
+        # The preview URL.
         self.preview_url = preview_url
-        # SEO site information
+        # The SEO site information.
         self.seo_site = seo_site
-        # Site logo
+        # The site logo.
         self.site_logo = site_logo
-        # Site version encoding
+        # The site version code.
         self.site_version = site_version
-        # Site version text description
+        # The text description of the site version.
         self.site_version_text = site_version_text
-        # Source information
+        # The source information.
         self.source = source
-        # Template ETag identity
+        # The template ETag identifier.
         self.template_etag = template_etag
-        # Template ID
+        # The template ID.
         self.template_id = template_id
-        # Text list
+        # The text list.
         self.text_list = text_list
-        # Thumbnail
+        # The thumbnail.
         self.thumbnail = thumbnail
         self.upgrade_status = upgrade_status
 
@@ -1385,9 +1385,9 @@ class GetAppInstanceForPartnerResponseBodyModulePartnerDetail(DaraModel):
     ):
         # data
         self.bind_data = bind_data
-        # Partner ID, extension parameter
+        # The ID of the partner. This is an extended parameter.
         self.partner_id = partner_id
-        # Possible values: unknown, init, testing, online
+        # Valid values: unknown, init, testing, online.
         self.status = status
 
     def validate(self):
@@ -1439,21 +1439,21 @@ class GetAppInstanceForPartnerResponseBodyModulePartnerDetailBindData(DaraModel)
     ):
         # aliyun_pk
         self.aliyun_pk = aliyun_pk
-        # External bizId
+        # The external business ID.
         self.biz_id = biz_id
-        # Creation Time
+        # The creation time.
         self.gmt_create = gmt_create
-        # Updated At
+        # The modification time.
         self.gmt_modified = gmt_modified
-        # User who owns the ICP filing service code
+        # The user to whom the ICP filing service code belongs.
         self.grant_aliyun_pk = grant_aliyun_pk
-        # Phone number
+        # The mobile phone number.
         self.mobile = mobile
         # parent_pk
         self.parent_pk = parent_pk
-        # Externally associated partnerId
+        # The external association partner ID.
         self.partner_id = partner_id
-        # Display name of the attached user
+        # The display name of the bound user.
         self.user_display_name = user_display_name
 
     def validate(self):
@@ -1547,43 +1547,43 @@ class GetAppInstanceForPartnerResponseBodyModuleAppServiceList(DaraModel):
         status: str = None,
         user_id: str = None,
     ):
-        # Application instance business ID
+        # The business ID of the application instance.
         self.biz_id = biz_id
-        # Deletion flag
+        # The deletion flag.
         self.deleted = deleted
-        # End time
+        # The end time.
         self.end_time = end_time
         # esp bizId
         self.esp_biz_id = esp_biz_id
-        # Creation Time
+        # The creation time.
         self.gmt_create = gmt_create
-        # Updated At
+        # The modification time.
         self.gmt_modified = gmt_modified
-        # Application operation address
+        # The application operation address.
         self.group = group
-        # Associated business ID
+        # The associated business ID.
         self.instance_biz_id = instance_biz_id
-        # Service name
+        # The service name.
         self.name = name
-        # Delivery flow
+        # The delivery process.
         self.node_list = node_list
-        # Used to uniquely identify an operation behavior
+        # The unique identifier of an operation.
         self.operation_address = operation_address
-        # Order ID
+        # The order ID.
         self.order_id = order_id
-        # Instance service configuration
+        # The instance service configuration.
         self.profile = profile
-        # Service Type
+        # The service type.
         self.service_type = service_type
-        # Service Type Description
+        # The description of the service type.
         self.service_type_text = service_type_text
-        # Application identity
+        # The application identifier.
         self.slug = slug
-        # Start Time
+        # The start time.
         self.start_time = start_time
-        # Status
+        # The status.
         self.status = status
-        # User ID
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):
@@ -1746,25 +1746,25 @@ class GetAppInstanceForPartnerResponseBodyModuleAppServiceListProfile(DaraModel)
         service_spec_text: str = None,
         upgrade_status: str = None,
     ):
-        # Business ID
+        # The business ID.
         self.biz_id = biz_id
-        # Design Type
+        # The design type.
         self.design_type = design_type
-        # Design type description
+        # The description of the design type.
         self.design_type_text = design_type_text
-        # Creation Time
+        # The creation time.
         self.gmt_create = gmt_create
-        # Updated At
+        # The modification time.
         self.gmt_modified = gmt_modified
-        # primary key
+        # The primary key.
         self.id = id
-        # Lingxiao instance ID
+        # The Lingxiao instance ID.
         self.lx_instance_id = lx_instance_id
-        # order ID
+        # The order ID.
         self.order_id = order_id
-        # Service Specification
+        # The service specification.
         self.service_spec = service_spec
-        # Service specification description
+        # The description of the service specification.
         self.service_spec_text = service_spec_text
         self.upgrade_status = upgrade_status
 
@@ -1862,25 +1862,25 @@ class GetAppInstanceForPartnerResponseBodyModuleAppServiceListOperationAddress(D
         server_delivery_url: str = None,
         upgrade_buy_url: str = None,
     ):
-        # List of console operation buttons
+        # The list of console action buttons.
         self.actions = actions
-        # AI customer service design URL
+        # The URL for customer service design.
         self.ai_customer_config_url = ai_customer_config_url
-        # AI design URL
+        # The URL for AI design.
         self.ai_design_url = ai_design_url
-        # Application publish URL
+        # The URL for application publishing.
         self.app_publish_url = app_publish_url
-        # List of overview page operation buttons
+        # The list of overview page action buttons.
         self.dashboard_actions = dashboard_actions
-        # Professional design URL
+        # The URL for professional design.
         self.design_url = design_url
-        # Application instance logon URL
+        # The logon URL of the application instance.
         self.instance_login_url = instance_login_url
-        # Renewal and purchase URL
+        # The URL for renewal purchase.
         self.renew_buy_url = renew_buy_url
-        # Service delivery URL
+        # The URL for service delivery.
         self.server_delivery_url = server_delivery_url
-        # Upgrade purchase URL
+        # The URL for upgrade purchase.
         self.upgrade_buy_url = upgrade_buy_url
 
     def validate(self):
@@ -1982,13 +1982,13 @@ class GetAppInstanceForPartnerResponseBodyModuleAppServiceListOperationAddressDa
         enable: bool = None,
         href: str = None,
     ):
-        # Operation key used as a UUID for an operation behavior
+        # The action key that uniquely identifies an operation.
         self.action_key = action_key
-        # The display text of the action, used to show the action name in the interface.
+        # The display text of the action, which is shown as the action name in the interface.
         self.action_text = action_text
-        # The enable status, indicating whether the action is active.
+        # Indicates whether the action is enabled.
         self.enable = enable
-        # The URL address to which the hyperlink redirects when the action is clicked.
+        # The URL to which the user is redirected when the action is clicked.
         self.href = href
 
     def validate(self):
@@ -2037,13 +2037,13 @@ class GetAppInstanceForPartnerResponseBodyModuleAppServiceListOperationAddressAc
         enable: bool = None,
         href: str = None,
     ):
-        # Action key, used as a UUID for an action behavior.
+        # The action key that uniquely identifies an operation.
         self.action_key = action_key
-        # Display text for the action, used to show the action name in the interface.
+        # The display text of the action, which is shown as the action name in the interface.
         self.action_text = action_text
-        # Enable status, indicating whether the action is active.
+        # Indicates whether the action is enabled.
         self.enable = enable
-        # Link address, the URL to which the user is redirected when clicking the action.
+        # The URL to which the user is redirected when the action is clicked.
         self.href = href
 
     def validate(self):
@@ -2098,29 +2098,29 @@ class GetAppInstanceForPartnerResponseBodyModuleAppServiceListNodeList(DaraModel
         parent_node_id: str = None,
         step_no: int = None,
     ):
-        # Child folder object
+        # The child folder object.
         self.children = children
-        # The ordinal number of the last node.
+        # The sequence number of the last node.
         self.final_step_no = final_step_no
-        # When FinishStatus (baseline instance completion status) is FINISH (completed), the UNIX timestamp of the baseline instance completion time is returned.
+        # The completion timestamp of the baseline instance. This value is returned when FinishStatus is FINISH (completed).
         self.finish_time = finish_time
         # IsContainerNode
         self.is_container_node = is_container_node
-        # The ID of the OBServer edge zone where the resource node resides.
+        # The ID of the OBServer node where the resource node resides.
         self.node_id = node_id
         # <props="china">The name of the matrix.
-        # <props="intl">This parameter is not publicly available.
+        # <props="intl">This parameter is not available for public use..
         self.node_name = node_name
-        # Node running status. Valid values:
+        # The running status of the node. Valid values:
         # 
         # - **UP**: The node is running.
-        # - **DOWN**: The node is faulty.
+        # - **DOWN**: The node has failed.
         self.node_status = node_status
         # The role of the operator.
         self.operator_role = operator_role
-        # Parent node ID
+        # The ID of the parent node.
         self.parent_node_id = parent_node_id
-        # Ordinal number of the flow node
+        # The sequence number of the process node.
         self.step_no = step_no
 
     def validate(self):
@@ -2206,15 +2206,15 @@ class GetAppInstanceForPartnerResponseBodyModuleAppServiceListGroup(DaraModel):
         type: str = None,
         url: str = None,
     ):
-        # primary key
+        # The primary key.
         self.id = id
-        # Website Name
+        # The website name.
         self.name = name
         # QrCode
         self.qr_code = qr_code
         # dingtalk wx...
         self.type = type
-        # Temporary access URL for image
+        # The temporary access URL of the image.
         self.url = url
 
     def validate(self):
@@ -2275,25 +2275,25 @@ class GetAppInstanceForPartnerResponseBodyModuleAppOperationAddress(DaraModel):
         server_delivery_url: str = None,
         upgrade_buy_url: str = None,
     ):
-        # List of console operation buttons
+        # The list of console action buttons.
         self.actions = actions
-        # Customer service design URL
+        # The URL for customer service design.
         self.ai_customer_config_url = ai_customer_config_url
-        # AI Design URL
+        # The URL for AI design.
         self.ai_design_url = ai_design_url
-        # Application publish URL
+        # The URL for application publishing.
         self.app_publish_url = app_publish_url
-        # List of action buttons on the overview page
+        # The list of overview page action buttons.
         self.dashboard_actions = dashboard_actions
-        # Professional design URL
+        # The URL for professional design.
         self.design_url = design_url
-        # Application instance logon URL
+        # The logon URL of the application instance.
         self.instance_login_url = instance_login_url
-        # Renewal and purchase URL
+        # The URL for renewal purchase.
         self.renew_buy_url = renew_buy_url
-        # Service delivery URL
+        # The URL for service delivery.
         self.server_delivery_url = server_delivery_url
-        # Upgrade purchase URL
+        # The URL for upgrade purchase.
         self.upgrade_buy_url = upgrade_buy_url
 
     def validate(self):
@@ -2395,13 +2395,13 @@ class GetAppInstanceForPartnerResponseBodyModuleAppOperationAddressDashboardActi
         enable: bool = None,
         href: str = None,
     ):
-        # Operation key used to uniquely identify an operation behavior.
+        # The action key that uniquely identifies an operation.
         self.action_key = action_key
-        # Action display text used to show the action name in the interface
+        # The display text of the action, which is shown as the action name in the interface.
         self.action_text = action_text
-        # Enable status indicating whether the action is active
+        # Indicates whether the action is enabled.
         self.enable = enable
-        # Link URL to which the user is redirected when clicking the action
+        # The URL to which the user is redirected when the action is clicked.
         self.href = href
 
     def validate(self):
@@ -2450,13 +2450,13 @@ class GetAppInstanceForPartnerResponseBodyModuleAppOperationAddressActions(DaraM
         enable: bool = None,
         href: str = None,
     ):
-        # Operation key value, used as a UUID for an operation behavior.
+        # The action key that uniquely identifies an operation.
         self.action_key = action_key
-        # Action display text, used to show the action name in the interface
+        # The display text of the action, which is shown as the action name in the interface.
         self.action_text = action_text
-        # Enable status, indicating whether the operation is active.
+        # Indicates whether the action is enabled.
         self.enable = enable
-        # Link address, the URL to which the user is redirected when clicking the action
+        # The URL to which the user is redirected when the action is clicked.
         self.href = href
 
     def validate(self):
@@ -2522,21 +2522,25 @@ class GetAppInstanceForPartnerResponseBodyModuleAppDesignSpec(DaraModel):
     ):
         # bill
         self.bilingual = bilingual
-        # Customer Business ID
+        # The customer business ID.
         self.biz_id = biz_id
         # busincessScope
         self.business_scope = business_scope
-        # Specifies the color. Valid values: - **black**: black - **white**: white - **red**: red - **blue**: blue
+        # The specified color. Valid values:
+        # - **black**: Black.
+        # - **white**: White.
+        # - **red**: Red.
+        # - **blue**: Blue.
         self.color_style = color_style
-        # Company Name
+        # The company name.
         self.company_name = company_name
-        # deployment region
+        # The deployment region.
         self.deploy_area = deploy_area
-        # Creation Time
+        # The creation time.
         self.gmt_create = gmt_create
-        # Updated At
+        # The modification time.
         self.gmt_modified = gmt_modified
-        # primary key
+        # The primary key.
         self.id = id
         # business
         self.main_business = main_business
@@ -2554,7 +2558,11 @@ class GetAppInstanceForPartnerResponseBodyModuleAppDesignSpec(DaraModel):
         self.site_style = site_style
         # sitetitle
         self.site_title = site_title
-        # Application Type. Web & H5: web, miniapp: miniapp, iOS: ios, Android: android.
+        # The application type. Valid values:
+        # - web: Web & H5.
+        # - miniapp: mini program.
+        # - ios: iOS.
+        # - android: Android.
         self.site_type = site_type
         # userid
         self.user_id = user_id
@@ -2695,13 +2703,13 @@ class GetAppInstanceForPartnerResponseBodyModuleAiStaffList(DaraModel):
         staff_type: str = None,
         status: str = None,
     ):
-        # Staff ID
+        # The staff ID.
         self.staff_id = staff_id
-        # Staff Name
+        # The staff name.
         self.staff_name = staff_name
-        # Staff Type
+        # The staff type.
         self.staff_type = staff_type
-        # Staff Status
+        # The staff status.
         self.status = status
 
     def validate(self):

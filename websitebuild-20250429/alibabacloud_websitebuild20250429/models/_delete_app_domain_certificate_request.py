@@ -10,9 +10,9 @@ class DeleteAppDomainCertificateRequest(DaraModel):
         biz_id: str = None,
         domain_name: str = None,
     ):
-        # Business ID of the application instance
+        # The business ID of the application instance.
         self.biz_id = biz_id
-        # Domain name
+        # The domain name.
         self.domain_name = domain_name
 
     def validate(self):

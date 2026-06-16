@@ -14,15 +14,15 @@ class SyncAppInstanceForPartnerRequest(DaraModel):
         source_biz_id: str = None,
         source_type: str = None,
     ):
-        # Application instance object data
+        # The website instance object data.
         self.app_instance = app_instance
-        # Type of system event. CREATE, UPDATE, COMPLETE
+        # The type of the system event. Valid values: CREATE, UPDATE, and COMPLETE.
         self.event_type = event_type
-        # Operator ID
+        # The employee ID of the operator.
         self.operator = operator
-        # Source business ID.
+        # The source business ID.
         self.source_biz_id = source_biz_id
-        # Source: MARKET_CLOUD_DREAM
+        # The source. Set this parameter to MARKET_CLOUD_DREAM.
         self.source_type = source_type
 
     def validate(self):
@@ -91,43 +91,43 @@ class SyncAppInstanceForPartnerRequestAppInstance(DaraModel):
         thumbnail_url: str = None,
         user_id: str = None,
     ):
-        # Application Type: WEBSITE
+        # The application type. Set this parameter to WEBSITE.
         self.app_type = app_type
-        # Website business ID
+        # The website business ID.
         self.biz_id = biz_id
-        # Logical deletion
+        # Specifies whether the instance is logically deleted.
         self.deleted = deleted
-        # Domain name
+        # The domain name.
         self.domain = domain
-        # Event end time (UNIX timestamp).
+        # The end time of the event, in UNIX timestamp format.
         self.end_time = end_time
-        # Deletion time
+        # The deletion time.
         self.gmt_delete = gmt_delete
-        # Vulnerability published UNIX timestamp, in milliseconds.
+        # The timestamp when the vulnerability was published, in milliseconds.
         self.gmt_publish = gmt_publish
-        # Application icon URL.
+        # The URL of the application icon.
         self.icon_url = icon_url
-        # Website name
+        # The website name.
         self.name = name
-        # Website configuration information
+        # The website configuration information.
         self.profile = profile
         # siteId
         self.site_host = site_host
-        # Website SiteID
+        # The website SiteID.
         self.slug = slug
-        # Query start time. If no start and end times are provided, all historical deployment records of the instance are queried.
+        # The start time of the query. If you do not specify the start time or end time, all historical deployment records of the instance are queried.
         self.start_time = start_time
-        # Instance running status.  
-        # - NotRun: Not running  
-        # - Running: Running  
-        # - WaitTime: Waiting for TriggerTime  
-        # - CheckingCondition: Checking branch conditions  
-        # - WaitResource: Waiting for resources  
-        # - Failure: Execution failed  
-        # - Success: Execution succeeded  
-        # - Checking: Sent to Data Quality check
+        # The running status of the instance. Valid values:
+        # - NotRun: not running.
+        # - Running: running.
+        # - WaitTime: waiting for TriggerTime.
+        # - CheckingCondition: checking branch conditions.
+        # - WaitResource: waiting for resources.
+        # - Failure: execution failed.
+        # - Success: execution succeeded.
+        # - Checking: submitted for data quality check.
         self.status = status
-        # Thumbnail URL.
+        # The URL of the thumbnail.
         self.thumbnail_url = thumbnail_url
         # 123123123131232
         self.user_id = user_id
@@ -254,17 +254,17 @@ class SyncAppInstanceForPartnerRequestAppInstanceProfile(DaraModel):
         template_etag: str = None,
         template_id: str = None,
     ):
-        # Deployment region
+        # The deployment region.
         self.deploy_area = deploy_area
-        # Lingxiao instance ID
+        # The LingXiao instance ID.
         self.lx_instance_id = lx_instance_id
-        # Order ID
+        # The order ID.
         self.order_id = order_id
-        # Version
+        # The version.
         self.site_version = site_version
-        # Template ID
+        # The template identifier.
         self.template_etag = template_etag
-        # Model template ID
+        # The model template ID.
         self.template_id = template_id
 
     def validate(self):

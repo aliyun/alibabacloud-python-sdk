@@ -24,35 +24,35 @@ class MoveMaterialFileResponseBody(DaraModel):
         success: bool = None,
         synchro: bool = None,
     ):
-        # Details of access denied
+        # The details of the permission verification failure.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether retry is allowed. Valid values:  
-        # - false: Retry is not allowed.  
-        # - true: Retry is allowed.
+        # Indicates whether a retry is allowed. Valid values:
+        # - false: A retry is not allowed.
+        # - true: A retry is allowed.
         self.allow_retry = allow_retry
-        # Application name. It can contain digits, letters, and hyphens (-). It must start with a letter, cannot end with a hyphen (-), and must be no more than 36 characters in length.
+        # The application name. The name can contain digits, letters, and hyphens (-). It must start with a letter and cannot end with a hyphen (-). The name cannot exceed 36 characters in length.
         self.app_name = app_name
-        # Dynamic error code.
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # Dynamic message.
+        # The dynamic message.
         self.dynamic_message = dynamic_message
-        # Returned error parameters
+        # The error parameters returned.
         self.error_args = error_args
-        # Error code. The ErrorCode field is returned only when the request fails. If the request succeeds, the ErrorCode field is not returned. For more information, see the error code list in this topic.
+        # The error code. If the request is successful, the ErrorCode field is not returned. If the request fails, the ErrorCode field is returned. For more information, see the error code list in this topic.
         self.error_code = error_code
-        # Error message.
+        # The error message.
         self.error_msg = error_msg
-        # Indicates whether the shift succeeded.
+        # Indicates whether the files were moved successfully.
         self.module = module
         # Id of the request
         self.request_id = request_id
-        # Error code
+        # The error code.
         self.root_error_code = root_error_code
-        # Abnormal message
+        # The exception message.
         self.root_error_msg = root_error_msg
-        # Indicates whether the request succeeded.
+        # Indicates whether the request was successful.
         self.success = success
-        # Reserved parameter.
+        # The reserved parameter.
         self.synchro = synchro
 
     def validate(self):

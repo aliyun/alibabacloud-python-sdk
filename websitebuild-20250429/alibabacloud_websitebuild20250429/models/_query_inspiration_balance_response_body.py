@@ -24,26 +24,26 @@ class QueryInspirationBalanceResponseBody(DaraModel):
     ):
         # Detailed reason for access denial.
         self.access_denied_detail = access_denied_detail
-        # Whether retry is allowed
+        # Indicates whether retry is allowed.
         self.allow_retry = allow_retry
-        # Application name; query the application with this name
+        # Application name. Query the application with this name.
         self.app_name = app_name
         # Dynamic error code.
         self.dynamic_code = dynamic_code
-        # Dynamic error message used to replace `%s` in the **ErrMessage** error message.  
+        # Dynamic error message, used to replace `%s` in the **ErrMessage** error message of the response parameters.
         # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, it indicates that the request parameter **DtsJobId** is invalid.
         self.dynamic_message = dynamic_message
-        # Fault parameters.
+        # Error parameters.
         self.error_args = error_args
-        # Response data
+        # Response data.
         self.module = module
         # Id of the request
         self.request_id = request_id
-        # Error code
+        # Error code.
         self.root_error_code = root_error_code
-        # Abnormal message
+        # Exception message.
         self.root_error_msg = root_error_msg
-        # Whether processing is synchronous
+        # Indicates whether to process synchronously.
         self.synchro = synchro
 
     def validate(self):
@@ -138,13 +138,13 @@ class QueryInspirationBalanceResponseBodyModule(DaraModel):
         total_used: int = None,
         total_used_str: str = None,
     ):
-        # Remaining (totalQuota - totalUsed)
+        # Remaining (totalQuota - totalUsed).
         self.remaining = remaining
         self.remaining_str = remaining_str
-        # Total quota (sum of initQuota from all valid accounts)
+        # Total quota (sum of initQuota for all active accounts).
         self.total_quota = total_quota
         self.total_quota_str = total_quota_str
-        # Consumed amount (sum of used from all valid accounts)
+        # Total used (sum of used for all active accounts).
         self.total_used = total_used
         self.total_used_str = total_used_str
 

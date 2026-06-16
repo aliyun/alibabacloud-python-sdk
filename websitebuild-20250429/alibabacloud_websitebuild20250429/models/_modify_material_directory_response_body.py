@@ -24,33 +24,33 @@ class ModifyMaterialDirectoryResponseBody(DaraModel):
         success: bool = None,
         synchro: bool = None,
     ):
-        # Detailed reason for access denial.
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether retry is allowed.
+        # Indicates whether retries are allowed.
         self.allow_retry = allow_retry
-        # App name.
+        # The application name.
         self.app_name = app_name
-        # Dynamic error code.
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # Dynamic error message.
+        # The dynamic error message.
         self.dynamic_message = dynamic_message
-        # Error parameters.
+        # The error parameters.
         self.error_args = error_args
-        # Error code. The ErrorCode field is not returned if the request succeeds. If the request fails, the ErrorCode field is returned. For more information, see the error code list in this topic.
+        # The error code. If the request is successful, this field is not returned. If the request fails, this field is returned. For more information, see the error codes in this topic.
         self.error_code = error_code
-        # Error message.
+        # The error message.
         self.error_msg = error_msg
-        # Indicates whether the modification succeeded.
+        # Indicates whether the folder was modified successfully.
         self.module = module
         # Id of the request
         self.request_id = request_id
-        # Error code
+        # The root error code.
         self.root_error_code = root_error_code
-        # Abnormal message
+        # The root error message.
         self.root_error_msg = root_error_msg
-        # Indicates whether the request succeeded.
+        # Indicates whether the request was successful.
         self.success = success
-        # Indicates whether the processing is synchronous.
+        # Indicates whether the request was processed synchronously.
         self.synchro = synchro
 
     def validate(self):

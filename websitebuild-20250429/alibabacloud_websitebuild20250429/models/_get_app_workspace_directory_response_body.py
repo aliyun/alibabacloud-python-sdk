@@ -22,27 +22,27 @@ class GetAppWorkspaceDirectoryResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # Detailed reason for access denial.
+        # The detailed reason why access was denied.
         self.access_denied_detail = access_denied_detail
-        # Is retry allowed
+        # Indicates whether retry is allowed.
         self.allow_retry = allow_retry
-        # App name.
+        # The application name.
         self.app_name = app_name
-        # Dynamic error code.
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # Dynamic message. Not currently used. Ignore it.
+        # The dynamic message. This parameter is not in use. Ignore this parameter.
         self.dynamic_message = dynamic_message
-        # Returned error parameters
+        # The error parameters.
         self.error_args = error_args
-        # Returned object.
+        # The response object.
         self.module = module
         # Id of the request
         self.request_id = request_id
-        # Error code
+        # The error code.
         self.root_error_code = root_error_code
-        # Abnormal message
+        # The exception message.
         self.root_error_msg = root_error_msg
-        # Spare parameter.
+        # The reserved parameter.
         self.synchro = synchro
 
     def validate(self):
@@ -133,9 +133,9 @@ class GetAppWorkspaceDirectoryResponseBodyModule(DaraModel):
         current_time: str = None,
         directory_list: List[main_models.GetAppWorkspaceDirectoryResponseBodyModuleDirectoryList] = None,
     ):
-        # Current time
+        # The current time.
         self.current_time = current_time
-        # Directory structure
+        # The directory structure.
         self.directory_list = directory_list
 
     def validate(self):
@@ -179,11 +179,11 @@ class GetAppWorkspaceDirectoryResponseBodyModuleDirectoryList(DaraModel):
         key: str = None,
         label: str = None,
     ):
-        # Child content
+        # The child content.
         self.children = children
-        # Full path (relative to workspace)
+        # The full path relative to the workspace.
         self.key = key
-        # Name
+        # The name.
         self.label = label
 
     def validate(self):

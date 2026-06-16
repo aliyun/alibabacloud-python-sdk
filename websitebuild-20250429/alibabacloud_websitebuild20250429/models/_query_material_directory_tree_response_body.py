@@ -25,33 +25,33 @@ class QueryMaterialDirectoryTreeResponseBody(DaraModel):
         success: bool = None,
         synchro: bool = None,
     ):
-        # Detailed reason for access denial.
+        # The detailed reason why access was denied.
         self.access_denied_detail = access_denied_detail
         # Indicates whether retry is allowed.
         self.allow_retry = allow_retry
-        # Application name. Query the application with this name.
+        # The application name. The application with this name is queried.
         self.app_name = app_name
-        # Dynamic error code.
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # dynamic message.
+        # The dynamic message.
         self.dynamic_message = dynamic_message
-        # parameters that caused the error
+        # The error parameters.
         self.error_args = error_args
-        # Error code. The ErrorCode field is not returned if the request succeeds. If the request fails, the ErrorCode field is returned. For more information, see the error code list in this topic.
+        # The error code. If the request is successful, the ErrorCode field is not returned. If the request fails, the ErrorCode field is returned. For more information, see the error codes in this topic.
         self.error_code = error_code
-        # error message.
+        # The error message.
         self.error_msg = error_msg
-        # Response data
+        # The response data.
         self.module = module
         # Id of the request
         self.request_id = request_id
-        # error code
+        # The error code.
         self.root_error_code = root_error_code
-        # abnormal message
+        # The exception message.
         self.root_error_msg = root_error_msg
-        # Indicates whether the request succeeded.
+        # Indicates whether the request was successful.
         self.success = success
-        # Indicates whether the processing is synchronous.
+        # Indicates whether the request is synchronously processed.
         self.synchro = synchro
 
     def validate(self):
@@ -159,7 +159,7 @@ class QueryMaterialDirectoryTreeResponseBodyModule(DaraModel):
         self,
         directory_list: List[main_models.AppMaterialDirectory] = None,
     ):
-        # Top-level folder
+        # The first-level folders.
         self.directory_list = directory_list
 
     def validate(self):

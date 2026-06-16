@@ -21,27 +21,27 @@ class DeleteMaterialTaskResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # Details of access denied
+        # The details of the permission verification failure.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether retry is allowed
+        # Indicates whether a retry is allowed.
         self.allow_retry = allow_retry
-        # Application name. Query the application with this name.
+        # The application name. The application with this name is queried.
         self.app_name = app_name
-        # Dynamic code. Not currently used. Ignore this field.
+        # The dynamic code. This parameter is not in use. Ignore this parameter.
         self.dynamic_code = dynamic_code
-        # Dynamic message.
+        # The dynamic message.
         self.dynamic_message = dynamic_message
-        # Returned error parameters
+        # The returned error parameters.
         self.error_args = error_args
-        # Indicates whether the deletion succeeded
+        # Indicates whether the deletion was successful.
         self.module = module
         # Id of the request
         self.request_id = request_id
-        # Error code
+        # The error code.
         self.root_error_code = root_error_code
-        # Abnormal message
+        # The error message.
         self.root_error_msg = root_error_msg
-        # Reserved parameter.
+        # The reserved parameter.
         self.synchro = synchro
 
     def validate(self):

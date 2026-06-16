@@ -11,15 +11,15 @@ class MoveMaterialFileShrinkRequest(DaraModel):
         directory_id: str = None,
         file_ids_shrink: str = None,
     ):
-        # Application instance ID
+        # The application instance ID.
         # 
         # This parameter is required.
         self.biz_id = biz_id
-        # Folder ID
+        # The folder ID.
         # 
         # This parameter is required.
         self.directory_id = directory_id
-        # List of file IDs
+        # The list of file IDs.
         # 
         # This parameter is required.
         self.file_ids_shrink = file_ids_shrink

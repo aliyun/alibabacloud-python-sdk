@@ -11,11 +11,11 @@ class ReconnectAppChatRequest(DaraModel):
         conversation_id: str = None,
         last_event_id: int = None,
     ):
-        # Chat record ID
+        # The chat record ID.
         self.chat_id = chat_id
-        # Session ID
+        # The session ID.
         self.conversation_id = conversation_id
-        # Last management event ID
+        # The ID of the last event.
         self.last_event_id = last_event_id
 
     def validate(self):

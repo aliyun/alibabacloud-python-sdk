@@ -1,3 +1,10 @@
+2026-06-16 Version: 2.28.0
+- Support API CheckAppVerifyCode.
+- Support API CreateAppNotificationScene.
+- Support API DeleteAppNotificationScene.
+- Support API NotifyAppNotificationForAdmin.
+
+
 2026-06-10 Version: 2.27.2
 - Update API QueryInspirationConsumeRecords: add response parameters Body.Module.Data.$.RecordKey.
 

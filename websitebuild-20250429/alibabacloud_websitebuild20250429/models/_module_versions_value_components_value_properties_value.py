@@ -15,13 +15,13 @@ class ModuleVersionsValueComponentsValuePropertiesValue(DaraModel):
         value: str = None,
         values: List[main_models.ModuleVersionsValueComponentsValuePropertiesValueValues] = None,
     ):
-        # Property code (system internal identity)
+        # 属性编码（系统内部标识）
         self.code = code
-        # Property display name (user-visible name)
+        # 属性显示名称（用户可见名称）
         self.name = name
-        # Attribute value code (system internal value)
+        # 属性值编码（系统内部值）
         self.value = value
-        # List of module Attribute Values
+        # 模块属性值列表
         self.values = values
 
     def validate(self):
@@ -77,11 +77,11 @@ class ModuleVersionsValueComponentsValuePropertiesValueValues(DaraModel):
         value: str = None,
         name: str = None,
     ):
-        # Property code (system internal identity)
+        # 属性编码（系统内部标识）
         self.code = code
-        # Attribute Value encoding (internal System value)
+        # 属性值编码（系统内部值）
         self.value = value
-        # Property display name (User-visible name)
+        # 属性显示名称（用户可见名称）
         self.name = name
 
     def validate(self):

@@ -22,34 +22,34 @@ class GetAppRecommendedCommoditiesResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # Detailed reason for access denial.
+        # The detailed reason why access is denied.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether retry is allowed
+        # Indicates whether retry is allowed.
         self.allow_retry = allow_retry
-        # App Name.
+        # The application name.
         self.app_name = app_name
-        # Dynamic error code.
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # Dynamic error message used to replace the `%s` placeholder in the **ErrMessage** error message.  
-        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, it means the provided request parameter **DtsJobId** is invalid.
+        # The dynamic error message, which is used to replace the `%s` placeholder in the **ErrMessage** response parameter.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the request parameter **DtsJobId** is invalid.
         self.dynamic_message = dynamic_message
-        # Returned error parameters
+        # The error parameters.
         self.error_args = error_args
-        # Data table module.  
+        # The data table module. Valid values:
         # 
-        # - ABTest: Experiment Data Table  
+        # - ABTest: the experiment data table.
         # 
-        # - ExperimentTool: Experiment Tool Table  
+        # - ExperimentTool: the experiment tool table.
         # 
-        # - DataDiagnosis: Data Diagnosis
+        # - DataDiagnosis: data modeling diagnostics.
         self.module = module
         # Id of the request
         self.request_id = request_id
-        # Error code
+        # The error code.
         self.root_error_code = root_error_code
-        # Abnormal message
+        # The exception message.
         self.root_error_msg = root_error_msg
-        # Indicates whether processing is synchronous
+        # Indicates whether the request is processed synchronously.
         self.synchro = synchro
 
     def validate(self):
@@ -139,7 +139,7 @@ class GetAppRecommendedCommoditiesResponseBodyModule(DaraModel):
         self,
         commodities: List[main_models.GetAppRecommendedCommoditiesResponseBodyModuleCommodities] = None,
     ):
-        # Marketing product list
+        # The list of promotional commodities.
         self.commodities = commodities
 
     def validate(self):
@@ -181,19 +181,21 @@ class GetAppRecommendedCommoditiesResponseBodyModuleCommodities(DaraModel):
         redirect_url: str = None,
         status: str = None,
     ):
-        # Commodity code (used for both resource plans and Marketing Products)
+        # The commodity code. This code applies to both resource plans and promotional commodities.
         self.commodity_code = commodity_code
-        # Extension fields (such as unsupportedReason)
+        # The extension field, such as unsupportedReason.
         self.extend = extend
-        # Order Type: BUY - Purchase, UPGRADE - upgrade
+        # The order type. Valid values:
+        # - BUY: purchase.
+        # - UPGRADE: upgrade.
         self.order_type = order_type
-        # Sorting Priority (the smaller the number, the higher the priority)
+        # The sorting priority. A smaller value indicates a higher priority.
         self.priority = priority
-        # Marketing Product ID (returned only for new purchases)
+        # The promotional commodity ID. This parameter is returned only for new purchases.
         self.promotion_commodity_id = promotion_commodity_id
-        # Hyperlink URL (returned when a redirect is required, such as during an upgrade)
+        # The redirect URL. This parameter is returned when a redirect is required, such as during an upgrade.
         self.redirect_url = redirect_url
-        # Product Status
+        # The commodity status.
         self.status = status
 
     def validate(self):

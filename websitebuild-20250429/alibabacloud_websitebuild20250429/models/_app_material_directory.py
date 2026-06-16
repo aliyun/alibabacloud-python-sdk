@@ -17,17 +17,17 @@ class AppMaterialDirectory(DaraModel):
         sort_num: str = None,
         type: str = None,
     ):
-        # Application instance business ID
+        # The business ID of the application instance.
         self.biz_id = biz_id
-        # List of subfolders
+        # The list of subfolders.
         self.children = children
-        # Folder ID.
+        # The folder ID.
         self.directory_id = directory_id
-        # Name
+        # The name.
         self.name = name
-        # Sorting number
+        # The sort number.
         self.sort_num = sort_num
-        # Folder type
+        # The folder type.
         self.type = type
 
     def validate(self):

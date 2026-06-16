@@ -15,7 +15,7 @@ class ModuleNextPropertiesValue(DaraModel):
     ):
         # Property code, such as "aliyun_commodity_agreement"
         self.code = code
-        # List of attribute values
+        # Property value list
         self.values = values
 
     def validate(self):

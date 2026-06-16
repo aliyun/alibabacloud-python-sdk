@@ -35,6 +35,9 @@ from ._batch_check_resource_measure_response import BatchCheckResourceMeasureRes
 from ._bind_app_domain_request import BindAppDomainRequest
 from ._bind_app_domain_response_body import BindAppDomainResponseBody
 from ._bind_app_domain_response import BindAppDomainResponse
+from ._check_app_verify_code_request import CheckAppVerifyCodeRequest
+from ._check_app_verify_code_response_body import CheckAppVerifyCodeResponseBody
+from ._check_app_verify_code_response import CheckAppVerifyCodeResponse
 from ._check_resource_measure_request import CheckResourceMeasureRequest
 from ._check_resource_measure_response_body import CheckResourceMeasureResponseBody
 from ._check_resource_measure_response import CheckResourceMeasureResponse
@@ -71,6 +74,9 @@ from ._create_app_instance_ticket_response import CreateAppInstanceTicketRespons
 from ._create_app_llm_api_key_for_partner_request import CreateAppLlmApiKeyForPartnerRequest
 from ._create_app_llm_api_key_for_partner_response_body import CreateAppLlmApiKeyForPartnerResponseBody
 from ._create_app_llm_api_key_for_partner_response import CreateAppLlmApiKeyForPartnerResponse
+from ._create_app_notification_scene_request import CreateAppNotificationSceneRequest
+from ._create_app_notification_scene_response_body import CreateAppNotificationSceneResponseBody
+from ._create_app_notification_scene_response import CreateAppNotificationSceneResponse
 from ._create_app_token_service_request import CreateAppTokenServiceRequest
 from ._create_app_token_service_response_body import CreateAppTokenServiceResponseBody
 from ._create_app_token_service_response import CreateAppTokenServiceResponse
@@ -92,6 +98,9 @@ from ._delete_app_file_response import DeleteAppFileResponse
 from ._delete_app_instance_file_request import DeleteAppInstanceFileRequest
 from ._delete_app_instance_file_response_body import DeleteAppInstanceFileResponseBody
 from ._delete_app_instance_file_response import DeleteAppInstanceFileResponse
+from ._delete_app_notification_scene_request import DeleteAppNotificationSceneRequest
+from ._delete_app_notification_scene_response_body import DeleteAppNotificationSceneResponseBody
+from ._delete_app_notification_scene_response import DeleteAppNotificationSceneResponse
 from ._delete_app_supabase_secrets_request import DeleteAppSupabaseSecretsRequest
 from ._delete_app_supabase_secrets_response_body import DeleteAppSupabaseSecretsResponseBody
 from ._delete_app_supabase_secrets_response import DeleteAppSupabaseSecretsResponse
@@ -297,6 +306,9 @@ from ._move_material_file_request import MoveMaterialFileRequest
 from ._move_material_file_shrink_request import MoveMaterialFileShrinkRequest
 from ._move_material_file_response_body import MoveMaterialFileResponseBody
 from ._move_material_file_response import MoveMaterialFileResponse
+from ._notify_app_notification_for_admin_request import NotifyAppNotificationForAdminRequest
+from ._notify_app_notification_for_admin_response_body import NotifyAppNotificationForAdminResponseBody
+from ._notify_app_notification_for_admin_response import NotifyAppNotificationForAdminResponse
 from ._operate_app_instance_for_partner_request import OperateAppInstanceForPartnerRequest
 from ._operate_app_instance_for_partner_response_body import OperateAppInstanceForPartnerResponseBody
 from ._operate_app_instance_for_partner_response import OperateAppInstanceForPartnerResponse
@@ -450,6 +462,7 @@ from ._module_next_components_value_properties_value import ModuleNextComponents
 from ._allocate_supabase_for_admin_response_body import AllocateSupabaseForAdminResponseBodyModule
 from ._batch_check_resource_measure_response_body import BatchCheckResourceMeasureResponseBodyModule
 from ._bind_app_domain_response_body import BindAppDomainResponseBodyModule
+from ._check_app_verify_code_response_body import CheckAppVerifyCodeResponseBodyModule
 from ._check_resource_measure_response_body import CheckResourceMeasureResponseBodyModule
 from ._check_user_resource_measure_response_body import CheckUserResourceMeasureResponseBodyModule
 from ._confirm_app_instance_response_body import ConfirmAppInstanceResponseBodyModule
@@ -463,6 +476,7 @@ from ._create_app_instance_request import CreateAppInstanceRequestTags
 from ._create_app_instance_response_body import CreateAppInstanceResponseBodyModule
 from ._create_app_instance_ticket_response_body import CreateAppInstanceTicketResponseBodyModule
 from ._create_app_llm_api_key_for_partner_response_body import CreateAppLlmApiKeyForPartnerResponseBodyModule
+from ._create_app_notification_scene_response_body import CreateAppNotificationSceneResponseBodyModule
 from ._create_app_token_service_response_body import CreateAppTokenServiceResponseBodyModule
 from ._create_material_directory_response_body import CreateMaterialDirectoryResponseBodyModule
 from ._delete_app_domain_certificate_response_body import DeleteAppDomainCertificateResponseBodyModule
@@ -639,6 +653,9 @@ __all__ = [
     BindAppDomainRequest,
     BindAppDomainResponseBody,
     BindAppDomainResponse,
+    CheckAppVerifyCodeRequest,
+    CheckAppVerifyCodeResponseBody,
+    CheckAppVerifyCodeResponse,
     CheckResourceMeasureRequest,
     CheckResourceMeasureResponseBody,
     CheckResourceMeasureResponse,
@@ -675,6 +692,9 @@ __all__ = [
     CreateAppLlmApiKeyForPartnerRequest,
     CreateAppLlmApiKeyForPartnerResponseBody,
     CreateAppLlmApiKeyForPartnerResponse,
+    CreateAppNotificationSceneRequest,
+    CreateAppNotificationSceneResponseBody,
+    CreateAppNotificationSceneResponse,
     CreateAppTokenServiceRequest,
     CreateAppTokenServiceResponseBody,
     CreateAppTokenServiceResponse,
@@ -696,6 +716,9 @@ __all__ = [
     DeleteAppInstanceFileRequest,
     DeleteAppInstanceFileResponseBody,
     DeleteAppInstanceFileResponse,
+    DeleteAppNotificationSceneRequest,
+    DeleteAppNotificationSceneResponseBody,
+    DeleteAppNotificationSceneResponse,
     DeleteAppSupabaseSecretsRequest,
     DeleteAppSupabaseSecretsResponseBody,
     DeleteAppSupabaseSecretsResponse,
@@ -901,6 +924,9 @@ __all__ = [
     MoveMaterialFileShrinkRequest,
     MoveMaterialFileResponseBody,
     MoveMaterialFileResponse,
+    NotifyAppNotificationForAdminRequest,
+    NotifyAppNotificationForAdminResponseBody,
+    NotifyAppNotificationForAdminResponse,
     OperateAppInstanceForPartnerRequest,
     OperateAppInstanceForPartnerResponseBody,
     OperateAppInstanceForPartnerResponse,
@@ -1054,6 +1080,7 @@ __all__ = [
     AllocateSupabaseForAdminResponseBodyModule,
     BatchCheckResourceMeasureResponseBodyModule,
     BindAppDomainResponseBodyModule,
+    CheckAppVerifyCodeResponseBodyModule,
     CheckResourceMeasureResponseBodyModule,
     CheckUserResourceMeasureResponseBodyModule,
     ConfirmAppInstanceResponseBodyModule,
@@ -1067,6 +1094,7 @@ __all__ = [
     CreateAppInstanceResponseBodyModule,
     CreateAppInstanceTicketResponseBodyModule,
     CreateAppLlmApiKeyForPartnerResponseBodyModule,
+    CreateAppNotificationSceneResponseBodyModule,
     CreateAppTokenServiceResponseBodyModule,
     CreateMaterialDirectoryResponseBodyModule,
     DeleteAppDomainCertificateResponseBodyModule,

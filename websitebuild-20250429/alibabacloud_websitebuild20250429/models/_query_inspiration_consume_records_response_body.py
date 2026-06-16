@@ -22,27 +22,27 @@ class QueryInspirationConsumeRecordsResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # Detailed reason for access denial.
+        # The detailed reason why access is denied.
         self.access_denied_detail = access_denied_detail
-        # Is retry allowed
+        # Indicates whether a retry is allowed.
         self.allow_retry = allow_retry
-        # Application Name. Query the application with this name.
+        # The application name. The application with this name is queried.
         self.app_name = app_name
-        # Dynamic error code.
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # Dynamic message. Not currently used. Please ignore.
+        # The dynamic message. This parameter is not in use. Ignore this parameter.
         self.dynamic_message = dynamic_message
-        # Returned error parameters
+        # The error parameters.
         self.error_args = error_args
-        # Whether the deletion succeeded
+        # Indicates whether the deletion is successful.
         self.module = module
         # Id of the request
         self.request_id = request_id
-        # Error code
+        # The error code.
         self.root_error_code = root_error_code
-        # Abnormal message
+        # The error message.
         self.root_error_msg = root_error_msg
-        # Is processed synchronously
+        # Indicates whether the request is synchronously processed.
         self.synchro = synchro
 
     def validate(self):
@@ -140,23 +140,23 @@ class QueryInspirationConsumeRecordsResponseBodyModule(DaraModel):
         total_item_num: int = None,
         total_page_num: int = None,
     ):
-        # Current page number.
+        # The current page number.
         self.current_page_num = current_page_num
-        # Request Result.
+        # The request result.
         self.data = data
-        # Next feature ID
+        # The ID of the next feature.
         self.next = next
-        # Indicates whether there is a next page.
+        # Indicates whether a next page exists.
         self.next_page = next_page
-        # Paging size.
+        # The page size.
         self.page_size = page_size
-        # Whether there is a previous page.
+        # Indicates whether a previous page exists.
         self.pre_page = pre_page
-        # In addition to paging limits, the server-side processes at most the latest 1 000 records for the current query. If the result exceeds 1 000 records, **ResultLimit** is **true**; you should narrow the Time Range and search again. Otherwise, **ResultLimit** is **false**.
+        # Apart from pagination limits, the server processes up to 1,000 recent records for the current query. If the results exceed 1,000 records, **ResultLimit** is **true**. In this case, narrow the time range and search again. Otherwise, **ResultLimit** is **false**.
         self.result_limit = result_limit
-        # Total number of records.
+        # The total number of entries.
         self.total_item_num = total_item_num
-        # Total number of pages.
+        # The total number of pages.
         self.total_page_num = total_page_num
 
     def validate(self):
@@ -248,15 +248,15 @@ class QueryInspirationConsumeRecordsResponseBodyModuleNext(DaraModel):
         meta_data: str = None,
         scene_name: str = None,
     ):
-        # Quantity of inspiration value consumed
+        # The number of inspiration points consumed.
         self.amount = amount
         self.amount_str = amount_str
-        # Consumption Time
+        # The consumption time.
         self.consume_time = consume_time
         self.consume_type = consume_type
-        # Extension information (in JSON string format)
+        # The extended information in JSON string format.
         self.meta_data = meta_data
-        # Consumption scenario Name (such as AI application development, AI creative image generation, AI Video creation, AI Content creation)
+        # The name of the consumption scenario, such as AI Application Development, AI Creative Illustration, AI Video Creation, or AI Content Creation.
         self.scene_name = scene_name
 
     def validate(self):
@@ -320,16 +320,16 @@ class QueryInspirationConsumeRecordsResponseBodyModuleData(DaraModel):
         record_key: str = None,
         scene_name: str = None,
     ):
-        # Quantity of inspiration value consumed
+        # The number of inspiration points consumed.
         self.amount = amount
         self.amount_str = amount_str
-        # Consumption time
+        # The consumption time.
         self.consume_time = consume_time
         self.consume_type = consume_type
-        # Extension information (in JSON string format)
+        # The extended information in JSON string format.
         self.meta_data = meta_data
         self.record_key = record_key
-        # Consumption scenario Name (such as AI application development, AI creative image generation, AI Video creation, AI Content creation)
+        # The name of the consumption scenario, such as AI Application Development, AI Creative Illustration, AI Video Creation, or AI Content Creation.
         self.scene_name = scene_name
 
     def validate(self):

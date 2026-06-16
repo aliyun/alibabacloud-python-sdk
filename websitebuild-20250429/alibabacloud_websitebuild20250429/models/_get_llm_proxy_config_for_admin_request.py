@@ -10,9 +10,9 @@ class GetLlmProxyConfigForAdminRequest(DaraModel):
         biz_id: str = None,
         capability: str = None,
     ):
-        # Business ID
+        # The business ID.
         self.biz_id = biz_id
-        # Capability Type: llm, image, video
+        # The capability type. Valid values: llm, image, and video.
         self.capability = capability
 
     def validate(self):

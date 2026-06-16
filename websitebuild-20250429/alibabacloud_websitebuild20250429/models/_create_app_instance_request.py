@@ -27,32 +27,36 @@ class CreateAppInstanceRequest(DaraModel):
         tags: List[main_models.CreateAppInstanceRequestTags] = None,
         version: str = None,
     ):
-        # Application type
+        # The application type.
         self.application_type = application_type
-        # Whether to enable auto-renewal upon expiration
+        # Specifies whether to enable auto-renewal upon expiration.
         self.auto_renew = auto_renew
-        # Ensures idempotence of the request. Generate a unique value from your client to ensure that it is unique across different requests. ClientToken only supports ASCII characters and cannot exceed 64 characters
+        # The client token that is used to ensure the idempotence of the request. Generate a unique value from your client. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         self.create_action = create_action
-        # Deployment area
+        # The deployment region.
         self.deploy_area = deploy_area
         self.description = description
-        # Required. The number of subscription periods
+        # Required. The number of subscription periods.
         self.duration = duration
-        # Extended information
+        # The extended information.
         self.extend = extend
         self.name = name
-        # Payment type
+        # The payment type.
         self.payment_type = payment_type
-        # Required. The unit of the subscription period, Year: Year, Month: Month, Day: Day, Hour: Hour
+        # Required. The unit of the subscription period. Valid values:
+        # - Year: year
+        # - Month: month
+        # - Day: day
+        # - Hour: hour.
         self.pricing_cycle = pricing_cycle
-        # Required. The quantity of instances to be ordered.
+        # Required. The number of instances to subscribe to.
         self.quantity = quantity
-        # Resource group ID
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # Site version
+        # The website version.
         self.site_version = site_version
-        # List of tags
+        # The list of tags.
         self.tags = tags
         self.version = version
 
@@ -180,9 +184,9 @@ class CreateAppInstanceRequestTags(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # tag key
+        # The tag key.
         self.tag_key = tag_key
-        # value of tag 0
+        # The value of tag 0.
         self.tag_value = tag_value
 
     def validate(self):

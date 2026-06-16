@@ -15,19 +15,19 @@ class ModifyAppInstanceSpecRequest(DaraModel):
         payment_type: str = None,
         site_version: str = None,
     ):
-        # Application type
+        # The application type.
         self.application_type = application_type
-        # Business ID
+        # The business ID.
         self.biz_id = biz_id
-        # Ensures idempotence of requests. Generate a unique value from your client to ensure it is unique across different requests. ClientToken supports only ASCII characters and cannot exceed 64 characters.
+        # The client token that is used to ensure the idempotence of the request. Generate a unique value from your client. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # Deployment area
+        # The deployment region.
         self.deploy_area = deploy_area
-        # Extended information
+        # The extended information.
         self.extend = extend
-        # Payment type
+        # The payment type.
         self.payment_type = payment_type
-        # Site version
+        # The website version.
         self.site_version = site_version
 
     def validate(self):

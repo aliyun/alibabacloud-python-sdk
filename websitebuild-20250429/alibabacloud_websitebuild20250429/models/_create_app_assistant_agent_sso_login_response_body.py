@@ -22,28 +22,28 @@ class CreateAppAssistantAgentSsoLoginResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # Detailed reason for access denial.
+        # The detailed reason why access is denied.
         self.access_denied_detail = access_denied_detail
-        # is retry allowed
+        # Indicates whether a retry is allowed.
         self.allow_retry = allow_retry
-        # App name.
+        # The application name.
         self.app_name = app_name
-        # dynamic error code.
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # Dynamic error message used to replace the `%s` placeholder in the **ErrMessage** field of the response.  
-        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, it indicates that the request parameter **DtsJobId** is invalid.
+        # The dynamic error message, which is used to replace the `%s` placeholder in the **ErrMessage** response parameter.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the request parameter **DtsJobId** that you specify is invalid.
         self.dynamic_message = dynamic_message
-        # faulty parameters
+        # The error parameters.
         self.error_args = error_args
-        # response data
+        # The response data.
         self.module = module
         # Id of the request
         self.request_id = request_id
-        # Error code
+        # The error code.
         self.root_error_code = root_error_code
-        # abnormal message
+        # The exception message.
         self.root_error_msg = root_error_msg
-        # Reserved parameter.
+        # A reserved parameter.
         self.synchro = synchro
 
     def validate(self):
@@ -136,13 +136,13 @@ class CreateAppAssistantAgentSsoLoginResponseBodyModule(DaraModel):
         platform_type: str = None,
         sso_url: str = None,
     ):
-        # Expiration UNIX timestamp
+        # The expiration timestamp.
         self.expire_time = expire_time
-        # Platform-specific extension fields
+        # The platform-specific extension field.
         self.extra = extra
-        # Platform type identifier
+        # The platform type identifier.
         self.platform_type = platform_type
-        # SSO免登URL
+        # The SSO logon-free URL.
         self.sso_url = sso_url
 
     def validate(self):

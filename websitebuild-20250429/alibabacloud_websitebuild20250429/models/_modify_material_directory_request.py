@@ -11,15 +11,15 @@ class ModifyMaterialDirectoryRequest(DaraModel):
         directory_id: str = None,
         name: str = None,
     ):
-        # Application instance ID
+        # The application instance ID.
         # 
         # This parameter is required.
         self.biz_id = biz_id
-        # Folder ID
+        # The folder ID.
         # 
         # This parameter is required.
         self.directory_id = directory_id
-        # Modified folder name
+        # The new name of the folder.
         # 
         # This parameter is required.
         self.name = name

@@ -13,13 +13,13 @@ class DispatchConsoleAPIForPartnerResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
-        # Error code. The value is as follows: If the request succeeds, the ErrorCode field is not returned. If the request fails, the ErrorCode field is returned. For more information, see the error code list in this topic.
+        # The error code. If the request is successful, this field is not returned. If the request fails, this field is returned. For more information, see the error codes in this topic.
         self.error_code = error_code
-        # Response data
+        # The response data.
         self.module = module
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request succeeded.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -67,7 +67,7 @@ class DispatchConsoleAPIForPartnerResponseBodyModule(DaraModel):
         self,
         data: str = None,
     ):
-        # Request result.
+        # The request result.
         self.data = data
 
     def validate(self):

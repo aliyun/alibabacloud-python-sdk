@@ -14,15 +14,15 @@ class GetAppPluginConfigResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # API status or POP error code
+        # The API status code or POP error code.
         self.code = code
-        # Additional information
+        # The additional information.
         self.message = message
-        # Response data
+        # The response data.
         self.module = module
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request succeeded.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -84,23 +84,23 @@ class GetAppPluginConfigResponseBodyModule(DaraModel):
         plugin_name: str = None,
         user_id: str = None,
     ):
-        # Business ID
+        # The business ID.
         self.biz_id = biz_id
-        # Creation Time
+        # The creation time.
         self.gmt_create = gmt_create
-        # Updated At
+        # The modification time.
         self.gmt_modified = gmt_modified
-        # Primary key
+        # The primary key.
         self.id = id
-        # Specific widget configuration, formatted as a JSON string. Refer to the utility class: com.alibaba.dataphin.pipeline.common.facade.openapi.model.plugin.OABasePluginConfig and the toJsonString method of its child classes. Developers should inherit this widget configuration class and implement the corresponding widget configuration. The structure of each widget configuration is identical to the MPS queue configuration structure created on the Dataphin Page.
+        # The specific component configuration in JSON string format. Refer to the toJsonString method of the subclasses related to com.alibaba.dataphin.pipeline.common.facade.openapi.model.plugin.OABasePluginConfig. Developers should inherit this component configuration class and implement the corresponding component configuration. Each component configuration has the same structure as the pipeline configuration created on the Dataphin console.
         self.plugin_config = plugin_config
-        # View Description
+        # The description of the plugin.
         self.plugin_desc = plugin_desc
-        # ID of the attached API Gateway plugin
+        # The ID of the bound API gateway plugin.
         self.plugin_id = plugin_id
-        # Plugin Name. It can contain uppercase and lowercase English letters, Chinese characters, digits, and underscores (_). The length must be between 4 and 50 characters, and it cannot start with an underscore.
+        # The plugin name. The name can contain uppercase and lowercase letters, Chinese characters, digits, and underscores (_). The name must be 4 to 50 characters in length and cannot start with an underscore.
         self.plugin_name = plugin_name
-        # User ID
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):

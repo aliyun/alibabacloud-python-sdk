@@ -22,33 +22,33 @@ class AppMaterialFile(DaraModel):
         type: str = None,
         width: int = None,
     ):
-        # Application instance ID
+        # The application instance ID.
         self.biz_id = biz_id
-        # Content Type
+        # The content type.
         self.content_type = content_type
-        # Creation Time.
+        # The creation time.
         self.create_time = create_time
-        # Deletion Time
+        # The deletion time.
         self.deleted_time = deleted_time
-        # Folder ID
+        # The folder ID.
         self.directory_id = directory_id
-        # File ID
+        # The file ID.
         self.file_id = file_id
-        # File URL
+        # The file URL.
         self.file_url = file_url
-        # Image height
+        # The image height.
         self.height = height
-        # File name
+        # The file name.
         self.name = name
-        # File Status
+        # The file status.
         self.status = status
-        # Bucket size.
+        # The storage size.
         self.storage_size = storage_size
-        # File suffix
+        # The file name extension.
         self.suffix = suffix
-        # File Type
+        # The file type.
         self.type = type
-        # Image width
+        # The image width.
         self.width = width
 
     def validate(self):

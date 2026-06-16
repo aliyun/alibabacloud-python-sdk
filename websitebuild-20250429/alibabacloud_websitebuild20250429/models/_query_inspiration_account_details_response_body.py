@@ -22,29 +22,29 @@ class QueryInspirationAccountDetailsResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # Access denied details
+        # The details of the permission verification failure.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether retry is allowed. Valid values:
-        # - false: Retry is not allowed.
-        # - true: Retry is allowed.
+        # Indicates whether a retry is allowed. Valid values:
+        # - false: A retry is not allowed.
+        # - true: A retry is allowed.
         self.allow_retry = allow_retry
-        # Application Name. Query the application with this name.
+        # The application name. The application with this name is queried.
         self.app_name = app_name
-        # Dynamic error code.
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # Dynamic message.
+        # The dynamic message.
         self.dynamic_message = dynamic_message
-        # Returned error parameters
+        # The error parameters.
         self.error_args = error_args
-        # Response data
+        # The response data.
         self.module = module
         # Id of the request
         self.request_id = request_id
-        # Error code
+        # The error code.
         self.root_error_code = root_error_code
-        # Abnormal message
+        # The error message.
         self.root_error_msg = root_error_msg
-        # Indicates whether processing is synchronous
+        # Indicates whether the request is processed synchronously.
         self.synchro = synchro
 
     def validate(self):
@@ -142,23 +142,23 @@ class QueryInspirationAccountDetailsResponseBodyModule(DaraModel):
         total_item_num: int = None,
         total_page_num: int = None,
     ):
-        # Current page number.
+        # The current page number.
         self.current_page_num = current_page_num
-        # Request result.
+        # The query results.
         self.data = data
-        # Decision weight
+        # The decision weight.
         self.next = next
-        # Indicates whether there is a next page.
+        # Indicates whether a next page exists.
         self.next_page = next_page
-        # Page size.
+        # The page size.
         self.page_size = page_size
-        # Indicates whether a previous page exists
+        # Indicates whether a previous page exists.
         self.pre_page = pre_page
-        # In addition to paging limits, the server-side processes at most the latest 1,000 records for the current query. If the result exceeds 1,000 records, **ResultLimit** is **true**. You can narrow the Time Range and search again. Otherwise, **ResultLimit** is **false**.
+        # Apart from pagination limits, the server processes up to 1000 recent records for the current query. If the results exceed 1000 records, **ResultLimit** is **true**. In this case, narrow the time range and search again. Otherwise, **ResultLimit** is **false**.
         self.result_limit = result_limit
-        # Total number of records.
+        # The total number of entries.
         self.total_item_num = total_item_num
-        # Total number of pages.
+        # The total number of pages.
         self.total_page_num = total_page_num
 
     def validate(self):
@@ -253,21 +253,21 @@ class QueryInspirationAccountDetailsResponseBodyModuleNext(DaraModel):
         source_type: str = None,
         source_type_name: str = None,
     ):
-        # Acquisition time
+        # The time when the inspiration points were acquired.
         self.acquisition_time = acquisition_time
-        # Balance (initQuota - used)
+        # The remaining balance (InitQuota minus used).
         self.balance = balance
         self.balance_str = balance_str
-        # Expiration time of the validity period
+        # The expiration time of the quota.
         self.end_date = end_date
-        # Indicates whether it has expired (endDate < current time). The frontend uses this to gray out the display.
+        # Indicates whether the quota has expired (EndDate is earlier than the current time). The frontend grays out expired entries based on this value.
         self.expired = expired
-        # Quantity obtained (initial quota)
+        # The acquired quantity (initial quota).
         self.init_quota = init_quota
         self.init_quota_str = init_quota_str
-        # Source type code (such as FREE_TRIAL_GIFT, INSTANCE_GIFT, UPGRADE_GRANT, PURCHASED)
+        # The source type code. Valid values: FREE_TRIAL_GIFT, INSTANCE_GIFT, UPGRADE_GRANT, and PURCHASED.
         self.source_type = source_type
-        # Display Name of the source type
+        # The display name of the source type.
         self.source_type_name = source_type_name
 
     def validate(self):
@@ -352,21 +352,21 @@ class QueryInspirationAccountDetailsResponseBodyModuleData(DaraModel):
         source_type_name: str = None,
         status: str = None,
     ):
-        # Acquisition Time
+        # The time when the inspiration points were acquired.
         self.acquisition_time = acquisition_time
-        # Balance (initQuota - used)
+        # The remaining balance (InitQuota minus used).
         self.balance = balance
         self.balance_str = balance_str
-        # Validity Period expiration time
+        # The expiration time of the quota.
         self.end_date = end_date
-        # Indicates whether it has expired (endDate < current time). The frontend uses this to gray out the display.
+        # Indicates whether the quota has expired (EndDate is earlier than the current time). The frontend grays out expired entries based on this value.
         self.expired = expired
-        # Quantity obtained (initial quota)
+        # The acquired quantity (initial quota).
         self.init_quota = init_quota
         self.init_quota_str = init_quota_str
-        # Source type code (such as FREE_TRIAL_GIFT, INSTANCE_GIFT, UPGRADE_GRANT, PURCHASED)
+        # The source type code. Valid values: FREE_TRIAL_GIFT, INSTANCE_GIFT, UPGRADE_GRANT, and PURCHASED.
         self.source_type = source_type
-        # Source Type Display Name
+        # The display name of the source type.
         self.source_type_name = source_type_name
         self.status = status
 

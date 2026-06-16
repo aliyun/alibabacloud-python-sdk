@@ -11,11 +11,11 @@ class GetAppWorkspaceDirectoryRequest(DaraModel):
         deep: int = None,
         file_path: str = None,
     ):
-        # Session ID
+        # The session ID.
         self.conversation_id = conversation_id
-        # Directory depth (optional; null or 0 returns all levels)
+        # The directory depth. This parameter is optional. If set to null or 0, all levels are returned.
         self.deep = deep
-        # Directory path (optional)
+        # The directory path. This parameter is optional.
         self.file_path = file_path
 
     def validate(self):

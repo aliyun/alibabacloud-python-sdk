@@ -21,27 +21,27 @@ class EditPluginConfigResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # Detailed reason for access denial.
+        # The detailed reason why access was denied.
         self.access_denied_detail = access_denied_detail
-        # Whether retry is allowed
+        # Indicates whether retry is allowed.
         self.allow_retry = allow_retry
-        # The application name must start with a letter and can contain letters, digits, underscores (_), and hyphens (-). It supports up to 36 characters.
+        # The application name. The name must start with a letter and can contain letters, digits, underscores (_), and hyphens (-). The name can be up to 36 characters in length.
         self.app_name = app_name
-        # Dynamic code, currently unused. Please ignore.
+        # The dynamic code. This parameter is not in use. Ignore this parameter.
         self.dynamic_code = dynamic_code
-        # Error message
+        # The error message.
         self.dynamic_message = dynamic_message
-        # Faulty parameters.
+        # The error parameters.
         self.error_args = error_args
-        # Response data
+        # The response data.
         self.module = module
         # Id of the request
         self.request_id = request_id
-        # Error code
+        # The error code.
         self.root_error_code = root_error_code
-        # Abnormal message
+        # The exception message.
         self.root_error_msg = root_error_msg
-        # Whether processing is synchronous
+        # Indicates whether the request is synchronously processed.
         self.synchro = synchro
 
     def validate(self):

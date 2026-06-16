@@ -16,15 +16,15 @@ class ModuleVersionsValueComponentsValue(DaraModel):
         properties: Dict[str, main_models.ModuleVersionsValueComponentsValuePropertiesValue] = None,
         module_attr_status: int = None,
     ):
-        # Unique component code (system internal identity)
+        # 组件唯一编码（系统内部标识）
         self.component_code = component_code
-        # Widget display name (user-visible name)
+        # 组件显示名称（用户可见名称）
         self.component_name = component_name
-        # Component instance attribute configuration
+        # 组件实例属性配置
         self.instance_property = instance_property
-        # Widget instance attribute configuration
+        # 组件实例属性配置
         self.properties = properties
-        # Module property status
+        # 模块属性状态
         self.module_attr_status = module_attr_status
 
     def validate(self):
@@ -96,13 +96,13 @@ class ModuleVersionsValueComponentsValueInstanceProperty(DaraModel):
         value: str = None,
         values: List[main_models.ModuleVersionsValueComponentsValueInstancePropertyValues] = None,
     ):
-        # Property encoding (system internal identity)
+        # 属性编码（系统内部标识）
         self.code = code
-        # Attribute display name (user-visible name)
+        # 属性显示名称（用户可见名称）
         self.name = name
-        # Attribute Value encoding (internal System value)
+        # 属性值编码（系统内部值）
         self.value = value
-        # List of module Attribute Values
+        # 模块属性值列表
         self.values = values
 
     def validate(self):
@@ -158,11 +158,11 @@ class ModuleVersionsValueComponentsValueInstancePropertyValues(DaraModel):
         value: str = None,
         name: str = None,
     ):
-        # Property encoding (system internal identity)
+        # 属性编码（系统内部标识）
         self.code = code
-        # Attribute Value encoding (internal System value)
+        # 属性值编码（系统内部值）
         self.value = value
-        # Property display name (User-visible name)
+        # 属性显示名称（用户可见名称）
         self.name = name
 
     def validate(self):

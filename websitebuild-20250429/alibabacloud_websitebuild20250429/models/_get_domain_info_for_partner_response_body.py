@@ -11,7 +11,7 @@ class GetDomainInfoForPartnerResponseBody(DaraModel):
         data: main_models.GetDomainInfoForPartnerResponseBodyData = None,
         request_id: str = None,
     ):
-        # Request result.
+        # The request result.
         self.data = data
         # Id of the request
         self.request_id = request_id
@@ -52,13 +52,13 @@ class GetDomainInfoForPartnerResponseBodyData(DaraModel):
         ownership: main_models.GetDomainInfoForPartnerResponseBodyDataOwnership = None,
         registrar: str = None,
     ):
-        # Domain name.
+        # The domain name.
         self.domain_name = domain_name
-        # List of DNS server IP addresses.
+        # The list of DNS server IP addresses.
         self.name_servers = name_servers
-        # IP ownership.
+        # The IP ownership.
         self.ownership = ownership
-        # Domain name registrar
+        # The domain name registrar.
         self.registrar = registrar
 
     def validate(self):
@@ -107,9 +107,9 @@ class GetDomainInfoForPartnerResponseBodyDataOwnership(DaraModel):
         account: str = None,
         provider: str = None,
     ):
-        # Member name.
+        # The member name.
         self.account = account
-        # Provider
+        # The provider.
         self.provider = provider
 
     def validate(self):

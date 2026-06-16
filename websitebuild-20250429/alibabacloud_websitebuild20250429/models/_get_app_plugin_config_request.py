@@ -10,11 +10,11 @@ class GetAppPluginConfigRequest(DaraModel):
         biz_id: str = None,
         plugin_id: str = None,
     ):
-        # Customer business ID
+        # The business ID of the customer.
         # 
         # This parameter is required.
         self.biz_id = biz_id
-        # Gateway plugin ID
+        # The ID of the gateway plugin.
         # 
         # This parameter is required.
         self.plugin_id = plugin_id

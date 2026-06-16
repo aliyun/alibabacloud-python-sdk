@@ -25,33 +25,33 @@ class QueryMaterialFileDetailResponseBody(DaraModel):
         success: bool = None,
         synchro: bool = None,
     ):
-        # access denied details
+        # The details of the permission verification failure.
         self.access_denied_detail = access_denied_detail
-        # is retry allowed
+        # Indicates whether a retry is allowed.
         self.allow_retry = allow_retry
-        # application Name. Query the application with this Name.
+        # The application name. The application with this name is queried.
         self.app_name = app_name
-        # dynamic error code.
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # dynamic error message.
+        # The dynamic error message.
         self.dynamic_message = dynamic_message
-        # returned error parameters
+        # The error parameters.
         self.error_args = error_args
-        # error code. The ErrorCode field is not returned if the request succeeded. The ErrorCode field is returned if the request failed. For more information, see the error code List in this topic.
+        # The error code. If the request is successful, the ErrorCode field is not returned. If the request fails, the ErrorCode field is returned. For more information, see the error codes in this topic.
         self.error_code = error_code
-        # error message.
+        # The error message.
         self.error_msg = error_msg
-        # response Data
+        # The response data.
         self.module = module
         # Id of the request
         self.request_id = request_id
-        # error code
+        # The error code.
         self.root_error_code = root_error_code
-        # abnormal message
+        # The exception message.
         self.root_error_msg = root_error_msg
-        # identity indicating whether the request succeeded.
+        # Indicates whether the request was successful.
         self.success = success
-        # backup parameter.
+        # The reserved parameter.
         self.synchro = synchro
 
     def validate(self):

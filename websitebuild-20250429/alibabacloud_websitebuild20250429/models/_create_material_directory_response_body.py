@@ -28,27 +28,27 @@ class CreateMaterialDirectoryResponseBody(DaraModel):
         self.access_denied_detail = access_denied_detail
         # Indicates whether retry is allowed.
         self.allow_retry = allow_retry
-        # Application name. Query the application with this name.
+        # The application name. The application with this name is queried.
         self.app_name = app_name
-        # Dynamic error code.
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # Dynamic error message.
+        # The dynamic error message.
         self.dynamic_message = dynamic_message
-        # Returned error parameters.
+        # The error parameters.
         self.error_args = error_args
-        # Error code. The value is described as follows: If the request succeeded, the ErrorCode field is not returned. If the request failed, the ErrorCode field is returned. For more information, see the error code list in this topic.
+        # The error code. If the request is successful, this field is not returned. If the request fails, this field is returned. For more information, see the error codes in this topic.
         self.error_code = error_code
-        # Returned object.
+        # The returned object.
         self.module = module
         # Id of the request
         self.request_id = request_id
-        # error code
+        # The error code.
         self.root_error_code = root_error_code
-        # abnormal message
+        # The exception message.
         self.root_error_msg = root_error_msg
-        # Indicates whether the request succeeded.
+        # Indicates whether the request was successful.
         self.success = success
-        # Indicates whether the processing is synchronous.
+        # Indicates whether the request is synchronously processed.
         self.synchro = synchro
 
     def validate(self):
@@ -150,7 +150,7 @@ class CreateMaterialDirectoryResponseBodyModule(DaraModel):
         self,
         directory_id: str = None,
     ):
-        # Folder ID.
+        # The folder ID.
         self.directory_id = directory_id
 
     def validate(self):

@@ -16,15 +16,15 @@ class SearchImageResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
-        # Error code. The ErrorCode field is not returned if the request succeeded. If the request failed, the ErrorCode field is returned. For more information, see the error code list in this topic.
+        # The error code. If the request is successful, this field is not returned. If the request fails, this field is returned. For more information, see the error codes in this topic.
         self.error_code = error_code
-        # error message.
+        # The error message.
         self.error_msg = error_msg
-        # Image search Result
+        # The image search results.
         self.image_response = image_response
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request succeeded.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -80,13 +80,13 @@ class SearchImageResponseBodyImageResponse(DaraModel):
         max_results: int = None,
         next_token: str = None,
     ):
-        # Image List
+        # The image list.
         self.image_list = image_list
-        # Number of results per query.
+        # The number of entries returned per query.
         # 
-        # Value range: 10–100. Default Value: 20.
+        # Valid values: 10 to 100. Default value: 20.
         self.max_results = max_results
-        # Token indicating the start of the next query. It is empty when there is no next query.
+        # The token for the next query. This value is empty if there are no more results.
         self.next_token = next_token
 
     def validate(self):
@@ -143,28 +143,28 @@ class SearchImageResponseBodyImageResponseImageList(DaraModel):
         url: str = None,
         width: int = None,
     ):
-        # Descriptive hues detected in the Image
+        # The descriptive tones identified from the image.
         self.descriptive_tones = descriptive_tones
-        # Image height
+        # The height of the image.
         self.height = height
-        # Image categorization. Valid values:  
-        # - normal: Illustrations or article images.  
-        # - banner: Background images or image carousels.  
-        # - goods: Product or service images.
+        # The image category. Valid values:
+        # - normal: illustrations or article images.
+        # - banner: background images or carousel images.
+        # - goods: product or service images.
         self.image_category = image_category
-        # Aspect ratio
+        # The aspect ratio.
         self.image_ratio = image_ratio
-        # Image UUID
+        # The unique identifier of the image.
         self.image_uuid = image_uuid
         # oss key
         self.oss_key = oss_key
-        # Quantized color palette (HEX, LAB) extracted by the algorithm
+        # The quantitative palette extracted by the algorithm (HEX, LAB).
         self.quantitative_palette = quantitative_palette
-        # Image tags
+        # The image tags.
         self.tags_from_image = tags_from_image
-        # Temporary access URL of the image
+        # The temporary access URL of the image.
         self.url = url
-        # Image width
+        # The width of the image.
         self.width = width
 
     def validate(self):

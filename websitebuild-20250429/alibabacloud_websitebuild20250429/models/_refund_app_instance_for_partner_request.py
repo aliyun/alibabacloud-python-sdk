@@ -12,13 +12,13 @@ class RefundAppInstanceForPartnerRequest(DaraModel):
         refund_reason: str = None,
         user_id: str = None,
     ):
-        # Website building business ID
+        # The ID of the website building service.
         self.biz_id = biz_id
-        # Idempotent token
+        # The idempotence token.
         self.client_token = client_token
-        # Refund reason
+        # The reason for the refund.
         self.refund_reason = refund_reason
-        # User ID
+        # The ID of the user.
         self.user_id = user_id
 
     def validate(self):

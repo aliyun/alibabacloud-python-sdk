@@ -10,9 +10,9 @@ class GetIcpFilingInfoForPartnerRequest(DaraModel):
         biz_id: str = None,
         domain: str = None,
     ):
-        # Customer business ID
+        # The customer business ID.
         self.biz_id = biz_id
-        # Domain name.
+        # The domain name.
         self.domain = domain
 
     def validate(self):

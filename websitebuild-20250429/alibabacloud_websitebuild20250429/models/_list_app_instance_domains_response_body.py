@@ -24,34 +24,34 @@ class ListAppInstanceDomainsResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # Detailed reason for access denial.
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
-        # Whether retry is allowed
+        # Indicates whether a retry is allowed.
         self.allow_retry = allow_retry
-        # App name.
+        # The application name.
         self.app_name = app_name
-        # Dynamic error code.
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # Dynamic error message, used to replace `%s` in the error message of the returned parameter **ErrMessage**.
-        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid**, and **DynamicMessage** returns **DtsJobId**, it means that the input request parameter **DtsJobId** is invalid.
+        # The dynamic error message, which is used to replace the `%s` placeholder in the **ErrMessage** response parameter.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the value of the **DtsJobId** request parameter is invalid.
         self.dynamic_message = dynamic_message
-        # Returned error parameters
+        # The error parameters.
         self.error_args = error_args
-        # Number of results per query.
+        # The maximum number of entries to return per query.
         # 
-        # Range: 10~100. Default value: 20.
+        # Valid values: 10 to 100. Default value: 20.
         self.max_results = max_results
-        # Response data
+        # The response data.
         self.module = module
-        # 下一个查询开始的Token。没有下一个查询时为空。
+        # The token for the next query. This parameter is empty if there are no more results.
         self.next_token = next_token
-        # ID of the request
+        # Id of the request
         self.request_id = request_id
-        # Error code
+        # The error code.
         self.root_error_code = root_error_code
-        # Exception message
+        # The error message.
         self.root_error_msg = root_error_msg
-        # Reserved parameter.
+        # A reserved parameter.
         self.synchro = synchro
 
     def validate(self):
@@ -161,23 +161,23 @@ class ListAppInstanceDomainsResponseBodyModule(DaraModel):
         total_item_num: int = None,
         total_page_num: int = None,
     ):
-        # Current page number.
+        # The current page number.
         self.current_page_num = current_page_num
-        # Query result.
+        # The query results.
         self.data = data
-        # Decision weight
+        # The decision weight.
         self.next = next
-        # Whether there is a next page.
+        # Indicates whether a next page exists.
         self.next_page = next_page
-        # Page size.
+        # The page size.
         self.page_size = page_size
-        # Whether there is a previous page
+        # Indicates whether a previous page exists.
         self.pre_page = pre_page
-        # Apart from pagination limits, the server can process up to the most recent 1000 records. If the result exceeds 1000 records, **ResultLimit** will be **true**, please narrow down the time range and search again; otherwise, **ResultLimit** will be **false**.
+        # In addition to pagination limits, the server processes up to 1,000 recent records per query. If the results exceed 1,000 records, **ResultLimit** is **true**. In this case, narrow the time range and search again. Otherwise, **ResultLimit** is **false**.
         self.result_limit = result_limit
-        # Total number of items.
+        # The total number of entries.
         self.total_item_num = total_item_num
-        # Total number of pages.
+        # The total number of pages.
         self.total_page_num = total_page_num
 
     def validate(self):
@@ -271,21 +271,21 @@ class ListAppInstanceDomainsResponseBodyModuleNext(DaraModel):
         resolution: main_models.ListAppInstanceDomainsResponseBodyModuleNextResolution = None,
         verification: main_models.ListAppInstanceDomainsResponseBodyModuleNextVerification = None,
     ):
-        # Domain SSL certificate information
+        # The SSL certificate information of the domain name.
         self.certificate = certificate
-        # Instance creation time (required, format: yyyy-MM-dd HH:mm:ss)
+        # The time when the instance was created. Format: yyyy-MM-dd HH:mm:ss.
         self.create_time = create_time
-        # Domain name
+        # The domain name.
         self.domain_name = domain_name
-        # Binding overall status
+        # The overall binding status.
         self.overall_status = overall_status
-        # Domain ownership information
+        # The domain name ownership information.
         self.ownership = ownership
-        # Domain name qualification information
+        # The domain name qualification information.
         self.qualification = qualification
-        # Domain resolution information
+        # The domain name resolution information.
         self.resolution = resolution
-        # Domain verification information
+        # The domain name verification information.
         self.verification = verification
 
     def validate(self):
@@ -371,11 +371,11 @@ class ListAppInstanceDomainsResponseBodyModuleNextVerification(DaraModel):
         error_msg: str = None,
         verification_status: str = None,
     ):
-        # Guide for DNS records that the user needs to configure.
+        # The DNS record that the user needs to configure.
         self.dns_record = dns_record
-        # Error message.
+        # The error message.
         self.error_msg = error_msg
-        # Ownership verification status.
+        # The ownership verification status.
         self.verification_status = verification_status
 
     def validate(self):
@@ -419,11 +419,11 @@ class ListAppInstanceDomainsResponseBodyModuleNextVerificationDnsRecord(DaraMode
         record_type: str = None,
         value: str = None,
     ):
-        # Host record
+        # The host record.
         self.host = host
-        # Record type
+        # The record type.
         self.record_type = record_type
-        # Record value
+        # The record value.
         self.value = value
 
     def validate(self):
@@ -465,11 +465,11 @@ class ListAppInstanceDomainsResponseBodyModuleNextResolution(DaraModel):
         error_msg: str = None,
         resolution_status: str = None,
     ):
-        # DNS record information
+        # The DNS record information.
         self.dns_record = dns_record
-        # Error message
+        # The error message.
         self.error_msg = error_msg
-        # Domain resolution status
+        # The domain name resolution status.
         self.resolution_status = resolution_status
 
     def validate(self):
@@ -513,11 +513,11 @@ class ListAppInstanceDomainsResponseBodyModuleNextResolutionDnsRecord(DaraModel)
         record_type: str = None,
         value: str = None,
     ):
-        # Host record
+        # The host record.
         self.host = host
-        # Record type
+        # The record type.
         self.record_type = record_type
-        # Record value
+        # The record value.
         self.value = value
 
     def validate(self):
@@ -559,11 +559,11 @@ class ListAppInstanceDomainsResponseBodyModuleNextQualification(DaraModel):
         icp_site_record_number: str = None,
         police_record_number: str = None,
     ):
-        # ICP filing number of the entity
+        # The ICP entity filing number.
         self.icp_record_number = icp_record_number
-        # ICP filing number for the website
+        # The ICP website filing number.
         self.icp_site_record_number = icp_site_record_number
-        # Public security filing number
+        # The public security filing number.
         self.police_record_number = police_record_number
 
     def validate(self):
@@ -604,9 +604,9 @@ class ListAppInstanceDomainsResponseBodyModuleNextOwnership(DaraModel):
         account: str = None,
         provider: str = None,
     ):
-        # Account owner type: CURRENT OTHER
+        # The account owner type. Valid values: CURRENT and OTHER.
         self.account = account
-        # Registrar type: ALIYUN OTHER
+        # The registrar type. Valid values: ALIYUN and OTHER.
         self.provider = provider
 
     def validate(self):
@@ -643,13 +643,13 @@ class ListAppInstanceDomainsResponseBodyModuleNextCertificate(DaraModel):
         certificate_type: str = None,
         end_time: str = None,
     ):
-        # Certificate name.
+        # The certificate name.
         self.certificate_name = certificate_name
-        # Certificate status
+        # The certificate status.
         self.certificate_status = certificate_status
-        # Certificate type
+        # The certificate type.
         self.certificate_type = certificate_type
-        # 证书的到期日期
+        # The expiration date of the certificate.
         self.end_time = end_time
 
     def validate(self):
@@ -702,21 +702,21 @@ class ListAppInstanceDomainsResponseBodyModuleData(DaraModel):
         resolution: main_models.ListAppInstanceDomainsResponseBodyModuleDataResolution = None,
         verification: main_models.ListAppInstanceDomainsResponseBodyModuleDataVerification = None,
     ):
-        # Domain SSL certificate information
+        # The SSL certificate information of the domain name.
         self.certificate = certificate
-        # Instance creation time (required, format: yyyy-MM-dd HH:mm:ss)
+        # The time when the instance was created. Format: yyyy-MM-dd HH:mm:ss.
         self.create_time = create_time
-        # Domain name
+        # The domain name.
         self.domain_name = domain_name
-        # Binding overall status
+        # The overall binding status.
         self.overall_status = overall_status
-        # Domain ownership information
+        # The domain name ownership information.
         self.ownership = ownership
-        # Domain name qualification information
+        # The domain name qualification information.
         self.qualification = qualification
-        # Domain resolution information
+        # The domain name resolution information.
         self.resolution = resolution
-        # Domain verification information
+        # The domain name verification information.
         self.verification = verification
 
     def validate(self):
@@ -803,13 +803,13 @@ class ListAppInstanceDomainsResponseBodyModuleDataVerification(DaraModel):
         verification_status: str = None,
         verification_status_code: str = None,
     ):
-        # DNS record guide that the user needs to configure.
+        # The DNS record that the user needs to configure.
         self.dns_record = dns_record
-        # Error message.
+        # The error message.
         self.error_msg = error_msg
-        # Ownership verification status.
+        # The ownership verification status.
         self.verification_status = verification_status
-        # Ownership verification status
+        # The ownership verification status code.
         self.verification_status_code = verification_status_code
 
     def validate(self):
@@ -859,11 +859,11 @@ class ListAppInstanceDomainsResponseBodyModuleDataVerificationDnsRecord(DaraMode
         record_type: str = None,
         value: str = None,
     ):
-        # Host record
+        # The host record.
         self.host = host
-        # Record type
+        # The record type.
         self.record_type = record_type
-        # Record value
+        # The record value.
         self.value = value
 
     def validate(self):
@@ -905,11 +905,11 @@ class ListAppInstanceDomainsResponseBodyModuleDataResolution(DaraModel):
         error_msg: str = None,
         resolution_status: str = None,
     ):
-        # DNS record information
+        # The DNS record information.
         self.dns_record = dns_record
-        # Error message
+        # The error message.
         self.error_msg = error_msg
-        # Domain resolution status
+        # The domain name resolution status.
         self.resolution_status = resolution_status
 
     def validate(self):
@@ -953,11 +953,11 @@ class ListAppInstanceDomainsResponseBodyModuleDataResolutionDnsRecord(DaraModel)
         record_type: str = None,
         value: str = None,
     ):
-        # Host record
+        # The host record.
         self.host = host
-        # Record type
+        # The record type.
         self.record_type = record_type
-        # Record value
+        # The record value.
         self.value = value
 
     def validate(self):
@@ -999,11 +999,11 @@ class ListAppInstanceDomainsResponseBodyModuleDataQualification(DaraModel):
         icp_site_record_number: str = None,
         police_record_number: str = None,
     ):
-        # ICP entity filing number
+        # The ICP entity filing number.
         self.icp_record_number = icp_record_number
-        # ICP website filing number
+        # The ICP website filing number.
         self.icp_site_record_number = icp_site_record_number
-        # Public security filing number
+        # The public security filing number.
         self.police_record_number = police_record_number
 
     def validate(self):
@@ -1045,11 +1045,11 @@ class ListAppInstanceDomainsResponseBodyModuleDataOwnership(DaraModel):
         provider: str = None,
         root_domain: str = None,
     ):
-        # Account owner type: CURRENT OTHER
+        # The account owner type. Valid values: CURRENT and OTHER.
         self.account = account
-        # Registrar type: ALIYUN OTHER
+        # The registrar type. Valid values: ALIYUN and OTHER.
         self.provider = provider
-        # The root domain name of the domain.
+        # The root domain name corresponding to the domain name.
         self.root_domain = root_domain
 
     def validate(self):
@@ -1092,13 +1092,13 @@ class ListAppInstanceDomainsResponseBodyModuleDataCertificate(DaraModel):
         certificate_type: str = None,
         end_time: str = None,
     ):
-        # Certificate name.
+        # The certificate name.
         self.certificate_name = certificate_name
-        # Certificate status
+        # The certificate status.
         self.certificate_status = certificate_status
-        # Certificate type
+        # The certificate type.
         self.certificate_type = certificate_type
-        # Certificate expiration date
+        # The expiration date of the certificate.
         self.end_time = end_time
 
     def validate(self):

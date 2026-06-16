@@ -22,27 +22,27 @@ class QuerySupabaseAuthConfigsForAdminResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # Details of access denied
+        # The details of the permission verification failure.
         self.access_denied_detail = access_denied_detail
-        # Is retry allowed
+        # Indicates whether retry is allowed.
         self.allow_retry = allow_retry
-        # App Name.
+        # The application name.
         self.app_name = app_name
-        # Dynamic error code
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # Dynamic message. Not currently used. Ignore it.
+        # The dynamic message. This parameter is not in use. Ignore this parameter.
         self.dynamic_message = dynamic_message
-        # Returned error parameters
+        # The error parameters returned.
         self.error_args = error_args
-        # Task object
+        # The task object.
         self.module = module
         # Id of the request
         self.request_id = request_id
-        # error code
+        # The error code.
         self.root_error_code = root_error_code
-        # Fault message
+        # The error message.
         self.root_error_msg = root_error_msg
-        # Is processed synchronously
+        # Indicates whether the request is synchronously processed.
         self.synchro = synchro
 
     def validate(self):
@@ -132,14 +132,20 @@ class QuerySupabaseAuthConfigsForAdminResponseBodyModule(DaraModel):
         self,
         configs: Dict[str, Any] = None,
     ):
-        # Configuration values. Valid values:  
-        # - cc_rule: CC rule.  
-        # - ddos_dispatch: DDoS filter interaction scheduling.  
-        # - edge_safe: Edge application security.  
-        # - blocked_regions: Geo-blocking.  
-        # - http_acl_policy: Precise ACL rule.  
-        # - bot_manager: Bot traffic Management.  
-        # - ip_reputation: IP reputation investigation.
+        # The configuration value. Valid values:
+        # - cc_rule: HTTP flood mitigation rule.
+        # 
+        # - ddos_dispatch: DDoS interaction scheduling.
+        # 
+        # - edge_safe: edge application security.
+        # 
+        # - blocked_regions: Location Blacklist.
+        # 
+        # - http_acl_policy: Accurate Access Control.
+        # 
+        # - bot_manager: bot traffic management.
+        # 
+        # - ip_reputation: IP reputation library.
         self.configs = configs
 
     def validate(self):

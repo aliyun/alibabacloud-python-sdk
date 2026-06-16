@@ -25,35 +25,35 @@ class QueryMaterialTaskDetailResponseBody(DaraModel):
         success: bool = None,
         synchro: bool = None,
     ):
-        # access denied details
+        # The details of the permission verification failure.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether retry is allowed. Valid values:  
-        # - false: Retry is not allowed.  
+        # Indicates whether retry is allowed. Valid values:
+        # - false: Retry is not allowed.
         # - true: Retry is allowed.
         self.allow_retry = allow_retry
-        # AppName. It can contain digits, letters, and hyphens (-). It must start with a letter, cannot end with a hyphen (-), and cannot exceed 36 characters in length.
+        # The application name. The name can contain digits, letters, and hyphens (-). It must start with a letter, cannot end with a hyphen (-), and cannot exceed 36 characters in length.
         self.app_name = app_name
-        # Dynamic error code
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # dynamic message
+        # The dynamic message.
         self.dynamic_message = dynamic_message
-        # returned error parameters
+        # The error parameters returned.
         self.error_args = error_args
-        # error code. The ErrorCode field is returned only when the Request fails. If the Request succeeds, the ErrorCode field is not returned. For more information, see the error code List in this topic.
+        # The error code. If the request is successful, the ErrorCode field is not returned. If the request fails, the ErrorCode field is returned. For more information, see the error code list in this topic.
         self.error_code = error_code
-        # error message
+        # The error message.
         self.error_msg = error_msg
-        # Response data
+        # The response data.
         self.module = module
         # Id of the request
         self.request_id = request_id
-        # error code
+        # The error code.
         self.root_error_code = root_error_code
-        # abnormal message
+        # The exception message.
         self.root_error_msg = root_error_msg
-        # Indicates whether the Request succeeded.
+        # Indicates whether the request was successful.
         self.success = success
-        # Reserved parameter.
+        # The reserved parameter.
         self.synchro = synchro
 
     def validate(self):

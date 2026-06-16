@@ -22,30 +22,30 @@ class GetLlmProxyConfigForAdminResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # Detailed reason for access denial.
+        # The detailed reason why access is denied.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether retry is allowed. Valid values:  
-        # - false: Retry is not allowed.  
-        # - true: Retry is allowed.
+        # Indicates whether retries are allowed. Valid values:
+        # - false: Retries are not allowed.
+        # - true: Retries are allowed.
         self.allow_retry = allow_retry
-        # Application name. Query the application with this name.
+        # The application name. The application with this name is queried.
         self.app_name = app_name
-        # Dynamic code. This parameter is not used and can be ignored.
+        # The dynamic code. This parameter is not in use. Ignore this parameter.
         self.dynamic_code = dynamic_code
-        # Dynamic error message used to replace the `%s` placeholder in the **ErrMessage** error message.  
-        # > For example, if **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, it indicates that the request parameter **DtsJobId** is invalid.
+        # The dynamic error message. This parameter is used to replace the `%s` variable in the **ErrMessage** parameter.
+        # > For example, if the **ErrMessage** parameter returns **The Value of Input Parameter %s is not valid** and the **DynamicMessage** parameter returns **DtsJobId**, the **DtsJobId** request parameter is invalid.
         self.dynamic_message = dynamic_message
-        # Error parameters returned.
+        # The error parameters.
         self.error_args = error_args
-        # Returned object.
+        # The returned object.
         self.module = module
         # Id of the request
         self.request_id = request_id
-        # Error code
+        # The error code.
         self.root_error_code = root_error_code
-        # Abnormal message
+        # The exception message.
         self.root_error_msg = root_error_msg
-        # Indicates whether the request is processed synchronously.
+        # Indicates whether the request is synchronously processed.
         self.synchro = synchro
 
     def validate(self):
@@ -150,43 +150,43 @@ class GetLlmProxyConfigForAdminResponseBodyModule(DaraModel):
         status: int = None,
         suspend_reason: str = None,
     ):
-        # List of supported models
+        # The list of allowed models.
         self.allowed_models = allowed_models
-        # Business ID of the application instance
+        # The business ID of the application instance.
         self.biz_id = biz_id
-        # List of blocked models
+        # The list of blocked models.
         self.blocked_models = blocked_models
-        # Grants specific permissions to processes within the container. Currently, only NET_ADMIN and NET_RAW are supported.  
+        # The specific permissions granted to processes in the container. Only NET_ADMIN and NET_RAW are supported.
         # 
-        # > NET_RAW is not supported by default. You must submit a ticket to request it.
+        # > NET_RAW is not supported by default. Submit a ticket to apply for this permission.
         self.capability = capability
-        # Daily request quota
+        # The maximum number of requests per day.
         self.daily_limit = daily_limit
-        # Daily token quota
+        # The maximum number of tokens per day.
         self.daily_token_limit = daily_token_limit
-        # Indicates whether scheduled delivery of resource snapshots is enabled.  
+        # Specifies whether scheduled delivery of resource snapshots is enabled.
         # 
-        # Valid values:  
-        # - true: Enabled.  
-        # - false: Shutdown.
+        # Valid values:
+        # - true: Enabled.
+        # - false: Disabled.
         self.enabled = enabled
-        # Extension configuration (in JSON format)
+        # The extended configuration in JSON format.
         self.extend = extend
-        # Creation Time
+        # The creation time.
         self.gmt_create = gmt_create
-        # Updated At
+        # The modification time.
         self.gmt_modified = gmt_modified
-        # Primary key
+        # The primary key.
         self.id = id
-        # IP blacklist
+        # The IP blacklist.
         self.ip_blacklist = ip_blacklist
-        # IP whitelist, with multiple entries separated by commas
+        # The IP whitelist. Separate multiple IP addresses with commas (,).
         self.ip_whitelist = ip_whitelist
-        # Requests per minute quota
+        # The maximum number of requests per minute.
         self.rpm_limit = rpm_limit
-        # trial, draft, live, refunded, expired, released
+        # trial,draft,live,refunded,expired,released
         self.status = status
-        # Reason for pause.
+        # The reason for suspension.
         self.suspend_reason = suspend_reason
 
     def validate(self):

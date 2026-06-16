@@ -12,20 +12,20 @@ class OperateAppServiceForPartnerRequest(DaraModel):
         operate_event: str = None,
         service_type: str = None,
     ):
-        # Business ID.
+        # The business ID.
         self.biz_id = biz_id
-        # Additional extension information in JSON structure, facilitating future parameter extensions.
+        # Other extended information in JSON format for future parameter expansion.
         self.extend = extend
-        # Operation event:  
-        # SERVICE_FINISH: Service completed
+        # The operation event. Valid values:
+        # SERVICE_FINISH: the service is completed.
         self.operate_event = operate_event
-        # Service Type.  
+        # The service type.
         # 
-        # Valid values:  
+        # Valid values:
         # 
-        # - private: Deployed under the user\\"s account.  
+        # - private: deployment under the user account.
         # 
-        # - managed: Hosted under the service provider\\"s account.  
+        # - managed: hosted under the service provider account.
         # 
         # - operation: Alibaba Cloud Managed Services.
         self.service_type = service_type

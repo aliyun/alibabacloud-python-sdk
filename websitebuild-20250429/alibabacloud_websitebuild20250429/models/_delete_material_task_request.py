@@ -11,7 +11,7 @@ class DeleteMaterialTaskRequest(DaraModel):
         self,
         task_ids: List[str] = None,
     ):
-        # List of job IDs
+        # The list of task IDs.
         # 
         # This parameter is required.
         self.task_ids = task_ids

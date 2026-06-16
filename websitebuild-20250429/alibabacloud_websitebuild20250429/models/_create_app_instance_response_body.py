@@ -22,28 +22,28 @@ class CreateAppInstanceResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # Detailed reason for access denial.
+        # The detailed reason why access was denied.
         self.access_denied_detail = access_denied_detail
-        # Whether retry is allowed
+        # Indicates whether a retry is allowed.
         self.allow_retry = allow_retry
-        # Application name, query this application by name
+        # The application name. The application with this name is queried.
         self.app_name = app_name
-        # Dynamic error code.
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # Dynamic error message, used to replace the `%s` in the **ErrMessage** error message.
-        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid**, and **DynamicMessage** returns **DtsJobId**, it means that the input parameter **DtsJobId** is invalid.
+        # The dynamic error message, which is used to replace the `%s` variable in the **ErrMessage** return parameter.
+        # > For example, if **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the request parameter **DtsJobId** is invalid.
         self.dynamic_message = dynamic_message
-        # Returned error parameters
+        # The error parameters returned.
         self.error_args = error_args
-        # Response data
+        # The response data.
         self.module = module
-        # ID of the request
+        # Id of the request
         self.request_id = request_id
-        # Error code
+        # The error code.
         self.root_error_code = root_error_code
-        # Exception message
+        # The exception message.
         self.root_error_msg = root_error_msg
-        # Reserved parameter.
+        # The reserved parameter.
         self.synchro = synchro
 
     def validate(self):
@@ -136,11 +136,11 @@ class CreateAppInstanceResponseBodyModule(DaraModel):
         order_id: str = None,
         site_host: str = None,
     ):
-        # Business ID
+        # The business ID.
         self.biz_id = biz_id
-        # Instance ID
+        # The instance ID.
         self.instance_id = instance_id
-        # Order ID
+        # The order ID.
         self.order_id = order_id
         # siteId
         self.site_host = site_host

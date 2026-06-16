@@ -14,15 +14,15 @@ class GetUserTmpIdentityForPartnerResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Result of the request.
+        # The request result.
         self.data = data
-        # error code. The value is interpreted as follows: If the request succeeded, the ErrorCode field is not returned. If the request failed, the ErrorCode field is returned. For more information, see the error code List in this topic.
+        # The error code. If the request is successful, the ErrorCode field is not returned. If the request fails, the ErrorCode field is returned. For more information, see the error code list in this topic.
         self.error_code = error_code
-        # error message.
+        # The error message.
         self.error_msg = error_msg
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request succeeded.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -77,9 +77,9 @@ class GetUserTmpIdentityForPartnerResponseBodyData(DaraModel):
         credentials: main_models.GetUserTmpIdentityForPartnerResponseBodyDataCredentials = None,
         has_custom_role_auth: bool = None,
     ):
-        # Credential
+        # The security token.
         self.credentials = credentials
-        # Indicates whether authorization from the Customer has been obtained.
+        # Indicates whether the customer authorization has been obtained.
         self.has_custom_role_auth = has_custom_role_auth
 
     def validate(self):
@@ -118,13 +118,13 @@ class GetUserTmpIdentityForPartnerResponseBodyDataCredentials(DaraModel):
         encrypted_security_token: str = None,
         expiration: str = None,
     ):
-        # Encrypted temporary AccessKey ID
+        # The encrypted temporary AccessKey ID.
         self.encrypted_access_key_id = encrypted_access_key_id
-        # Encrypted temporary AccessKey secret
+        # The encrypted temporary AccessKey secret.
         self.encrypted_access_key_secret = encrypted_access_key_secret
-        # Encrypted Security Token Service token
+        # The encrypted STS token.
         self.encrypted_security_token = encrypted_security_token
-        # Expected expiration time of the certificate
+        # The estimated expiration time of the credential.
         self.expiration = expiration
 
     def validate(self):

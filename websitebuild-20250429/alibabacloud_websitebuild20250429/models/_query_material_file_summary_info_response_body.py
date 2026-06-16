@@ -22,27 +22,27 @@ class QueryMaterialFileSummaryInfoResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # Detailed reason for access denial.
+        # The detailed reason why access is denied.
         self.access_denied_detail = access_denied_detail
-        # Is retry allowed
+        # Indicates whether retry is allowed.
         self.allow_retry = allow_retry
-        # The application name. It can contain digits, letters, and hyphens (-). It must start with a letter and cannot end with a hyphen (-). The name must not exceed 36 characters.
+        # The application name. The name can contain digits, letters, and hyphens (-). It must start with a letter and cannot end with a hyphen (-). The name cannot exceed 36 characters in length.
         self.app_name = app_name
-        # Dynamic error code
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # Dynamic message.
+        # The dynamic message.
         self.dynamic_message = dynamic_message
-        # Returned error parameters
+        # The error parameters.
         self.error_args = error_args
-        # Response data
+        # The response data.
         self.module = module
         # Id of the request
         self.request_id = request_id
-        # Error code
+        # The error code.
         self.root_error_code = root_error_code
-        # Abnormal message
+        # The exception message.
         self.root_error_msg = root_error_msg
-        # Is processed synchronously
+        # Indicates whether the request is synchronously processed.
         self.synchro = synchro
 
     def validate(self):
@@ -133,9 +133,9 @@ class QueryMaterialFileSummaryInfoResponseBodyModule(DaraModel):
         file_num: int = None,
         storage_size: str = None,
     ):
-        # Total file quantity
+        # The total number of files.
         self.file_num = file_num
-        # Occupied bucket space
+        # The occupied storage space.
         self.storage_size = storage_size
 
     def validate(self):

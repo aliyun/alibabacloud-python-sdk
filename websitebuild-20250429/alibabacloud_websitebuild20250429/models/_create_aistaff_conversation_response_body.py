@@ -22,27 +22,27 @@ class CreateAIStaffConversationResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # Detailed reason for access denial.
+        # The detailed reason why access was denied.
         self.access_denied_detail = access_denied_detail
-        # Is retry allowed
+        # Indicates whether retry is allowed.
         self.allow_retry = allow_retry
-        # Application name. Query the application with this name.
+        # The application name. The application with this name is queried.
         self.app_name = app_name
-        # Dynamic error code.
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # Dynamic message.
+        # The dynamic message.
         self.dynamic_message = dynamic_message
-        # Returned error parameters
+        # The error parameters returned.
         self.error_args = error_args
-        # Response data
+        # The response data.
         self.module = module
         # Id of the request
         self.request_id = request_id
-        # error code
+        # The error code.
         self.root_error_code = root_error_code
-        # Abnormal message
+        # The exception message.
         self.root_error_msg = root_error_msg
-        # Backup parameter.
+        # The reserved parameter.
         self.synchro = synchro
 
     def validate(self):
@@ -137,17 +137,17 @@ class CreateAIStaffConversationResponseBodyModule(DaraModel):
         site_id: str = None,
         title: str = None,
     ):
-        # Bot ID
+        # The chatbot ID.
         self.bot_id = bot_id
-        # ID of the chat.
+        # The chat ID.
         self.chat_id = chat_id
-        # Session ID
+        # The session ID.
         self.conversation_id = conversation_id
-        # Section ID of the check item.
+        # The section ID of the check item.
         self.section_id = section_id
-        # Site ID, which can be obtained by invoking the [ListSites](~~ListSites~~) API.
+        # The site ID. You can call the [ListSites](~~ListSites~~) operation to obtain the site ID.
         self.site_id = site_id
-        # Current point, equivalent to a news title
+        # The current viewpoint, equivalent to the news title.
         self.title = title
 
     def validate(self):

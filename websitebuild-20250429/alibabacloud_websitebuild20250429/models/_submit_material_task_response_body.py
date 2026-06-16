@@ -25,35 +25,35 @@ class SubmitMaterialTaskResponseBody(DaraModel):
         success: bool = None,
         synchro: bool = None,
     ):
-        # details of access denied
+        # The details of the permission verification failure.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether retry is allowed. Valid values:  
-        # - false: Retry is not allowed.  
+        # Indicates whether retry is allowed. Valid values:
+        # - false: Retry is not allowed.
         # - true: Retry is allowed.
         self.allow_retry = allow_retry
-        # application name. Query the application with this name.
+        # The application name. The application with this name is queried.
         self.app_name = app_name
-        # dynamic error code
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # dynamic message.
+        # The dynamic message.
         self.dynamic_message = dynamic_message
-        # returned error parameters
+        # The error parameters.
         self.error_args = error_args
-        # error code. The ErrorCode field is returned only when the request fails. If the request succeeds, this field is not returned. For more information, see the error code list in this topic.
+        # The error code. The ErrorCode field is not returned if the request is successful. The ErrorCode field is returned if the request fails. For more information, see the error codes in this topic.
         self.error_code = error_code
-        # error message.
+        # The error message.
         self.error_msg = error_msg
-        # response Data
+        # The response data.
         self.module = module
         # Id of the request
         self.request_id = request_id
-        # error code
+        # The root error code.
         self.root_error_code = root_error_code
-        # abnormal message
+        # The root error message.
         self.root_error_msg = root_error_msg
-        # Indicates whether the request succeeded.
+        # Indicates whether the request was successful.
         self.success = success
-        # Indicates whether the processing is synchronous.
+        # Indicates whether the request is processed synchronously.
         self.synchro = synchro
 
     def validate(self):
@@ -161,7 +161,7 @@ class SubmitMaterialTaskResponseBodyModule(DaraModel):
         self,
         task_id: str = None,
     ):
-        # Job ID.
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):

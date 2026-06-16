@@ -13,11 +13,11 @@ class CreateLogoTaskRequest(DaraModel):
         prompt: str = None,
     ):
         self.logo_version = logo_version
-        # Negative prompt
+        # The negative prompt.
         self.negative_prompt = negative_prompt
-        # Job parameters
+        # The task parameters.
         self.parameters = parameters
-        # Positive prompt
+        # The positive prompt.
         self.prompt = prompt
 
     def validate(self):

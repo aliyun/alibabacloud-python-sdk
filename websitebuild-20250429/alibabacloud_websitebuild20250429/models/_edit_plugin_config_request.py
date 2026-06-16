@@ -13,15 +13,15 @@ class EditPluginConfigRequest(DaraModel):
         plugin_id: str = None,
         plugin_name: str = None,
     ):
-        # Business ID
+        # The business ID.
         self.biz_id = biz_id
-        # Plugin configuration
+        # The plug-in configuration.
         self.plugin_config = plugin_config
-        # Plugin description
+        # The plug-in description.
         self.plugin_desc = plugin_desc
-        # Plugin ID
+        # The plug-in ID.
         self.plugin_id = plugin_id
-        # Plugin name
+        # The plug-in name.
         self.plugin_name = plugin_name
 
     def validate(self):

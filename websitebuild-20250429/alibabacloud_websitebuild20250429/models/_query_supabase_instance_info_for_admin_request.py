@@ -15,23 +15,25 @@ class QuerySupabaseInstanceInfoForAdminRequest(DaraModel):
         page_size: int = None,
         user_id: str = None,
     ):
-        # Business instance ID
+        # The business instance ID.
         # 
         # This parameter is required.
         self.biz_id = biz_id
-        # Environment identity
+        # The environment identifier.
         # 
         # This parameter is required.
         self.env = env
-        # Sorting field
+        # The field by which to sort the results.
         self.order_column = order_column
-        # Sorting type: ASC or DESC
+        # The sort order. Valid values:
+        # - ASC: ascending order.
+        # - DESC: descending order.
         self.order_type = order_type
-        # Page number, default is 1
+        # The page number. Default value: 1.
         self.page_num = page_num
-        # Page size, default is 10
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # User ID
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):

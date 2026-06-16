@@ -22,30 +22,30 @@ class CheckUserResourceMeasureResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # Detailed reason for access denial.
+        # The detailed reason why access is denied.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether retry is allowed. Valid values:  
-        # - false: Retry is not allowed.  
-        # - true: Retry is allowed.
+        # Indicates whether a retry is allowed. Valid values:
+        # - false: A retry is not allowed.
+        # - true: A retry is allowed.
         self.allow_retry = allow_retry
-        # Application name. Query the application with this name.
+        # The application name. The application with this name is queried.
         self.app_name = app_name
-        # Dynamic error code.
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # Dynamic error message used to replace `%s` in the **ErrMessage** error message.  
-        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, it indicates that the provided request parameter **DtsJobId** is invalid.
+        # The dynamic error message, which is used to replace the `%s` placeholder in the **ErrMessage** response element.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the request parameter **DtsJobId** is invalid.
         self.dynamic_message = dynamic_message
-        # Returned error parameters
+        # The error parameters.
         self.error_args = error_args
-        # Returned object.
+        # The response object.
         self.module = module
         # Id of the request
         self.request_id = request_id
-        # Error code
+        # The error code.
         self.root_error_code = root_error_code
-        # Abnormal message
+        # The exception message.
         self.root_error_msg = root_error_msg
-        # Reserved parameter.
+        # A reserved parameter.
         self.synchro = synchro
 
     def validate(self):
@@ -138,13 +138,13 @@ class CheckUserResourceMeasureResponseBodyModule(DaraModel):
         passed: bool = None,
         resource_code: str = None,
     ):
-        # Error code when failed; null when passed
+        # The error code when the check fails. This value is null when the check passes.
         self.error_code = error_code
-        # Error message when failed; null when passed
+        # The error message when the check fails. This value is null when the check passes.
         self.error_message = error_message
-        # Indicates whether the check passed
+        # Indicates whether the check is passed.
         self.passed = passed
-        # Resource identity
+        # The resource identifier.
         self.resource_code = resource_code
 
     def validate(self):

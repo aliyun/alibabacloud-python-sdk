@@ -18,23 +18,23 @@ class QueryMaterialTaskListRequest(DaraModel):
         status_list: List[str] = None,
         task_type_list: List[str] = None,
     ):
-        # Number of results per query.
+        # The number of entries per query.
         # 
         # Valid values: 10 to 100. Default value: 20.
         self.max_results = max_results
-        # Token indicating the start of the next query. This field is empty if there is no next query.
+        # The token for the next query. This parameter is empty if no more results exist.
         self.next_token = next_token
-        # Sorting field.
+        # Sort field
         self.order_column = order_column
-        # Sorting type: ASC or DESC
+        # Sort type ASC|DESC
         self.order_type = order_type
-        # Page number. Default value is 1.
+        # Page number. Default value: 1
         self.page_num = page_num
-        # Page size. Default value: 10.
+        # Page size. Default value: 10
         self.page_size = page_size
-        # List of task statuses.
+        # Task status list
         self.status_list = status_list
-        # List of task types.
+        # Task type list
         self.task_type_list = task_type_list
 
     def validate(self):

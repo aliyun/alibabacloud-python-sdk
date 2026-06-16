@@ -10,9 +10,9 @@ class DeleteAppDomainRedirectRequest(DaraModel):
         biz_id: str = None,
         record_id: int = None,
     ):
-        # Business ID of the application instance
+        # Application instance business ID.
         self.biz_id = biz_id
-        # ID of the domain redirect record
+        # Domain name redirect record ID.
         self.record_id = record_id
 
     def validate(self):

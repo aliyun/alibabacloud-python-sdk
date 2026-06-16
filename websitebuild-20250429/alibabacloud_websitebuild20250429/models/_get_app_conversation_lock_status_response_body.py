@@ -21,28 +21,28 @@ class GetAppConversationLockStatusResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # permission denied information
+        # The access denied detail.
         self.access_denied_detail = access_denied_detail
-        # is retry allowed
+        # Indicates whether retry is allowed.
         self.allow_retry = allow_retry
-        # AppName.
+        # The application name.
         self.app_name = app_name
-        # dynamic code, currently unused; please ignore
+        # The dynamic code. This parameter is not in use. Ignore this parameter.
         self.dynamic_code = dynamic_code
-        # dynamic error message used to replace `%s` in the **ErrMessage** error message.  
-        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, it indicates that the provided request parameter **DtsJobId** is invalid.
+        # The dynamic error message that is used to replace the `%s` variable in the **ErrMessage** parameter.
+        # > For example, if **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the **DtsJobId** request parameter is invalid.
         self.dynamic_message = dynamic_message
-        # returned error parameters
+        # The error arguments.
         self.error_args = error_args
-        # response data
+        # The response data.
         self.module = module
         # Id of the request
         self.request_id = request_id
-        # error code
+        # The error code.
         self.root_error_code = root_error_code
-        # abnormal message
+        # The root error message.
         self.root_error_msg = root_error_msg
-        # is processed synchronously
+        # Indicates whether the request is synchronously processed.
         self.synchro = synchro
 
     def validate(self):

@@ -24,39 +24,39 @@ class QueryMaterialFileListRequest(DaraModel):
         suffix_list: List[str] = None,
         type_list: List[str] = None,
     ):
-        # Business ID of the application instance
+        # The business ID of the application instance.
         # 
         # This parameter is required.
         self.biz_id = biz_id
-        # Folder ID
+        # The folder ID.
         # 
         # This parameter is required.
         self.directory_id = directory_id
-        # Maximum file size
+        # The maximum file size.
         self.max_file_size = max_file_size
-        # Number of results per query.
+        # The maximum number of entries to return per query.
         # 
         # Valid values: 10 to 100. Default value: 20.
         self.max_results = max_results
-        # Minimum file size
+        # The minimum file size.
         self.min_file_size = min_file_size
-        # Website name
+        # The website name.
         self.name = name
-        # Token indicating the start of the next query. It is empty when there is no subsequent query.
+        # The token for the next query. This parameter is empty if no more results exist.
         self.next_token = next_token
-        # Sorting field
+        # The field by which to sort the results.
         self.order_column = order_column
-        # Sorting type: ASC or DESC
+        # The sort order. Valid values: ASC and DESC.
         self.order_type = order_type
-        # Page number. Default value is 1.
+        # The page number. Default value: 1.
         self.page_num = page_num
-        # Page size. Default value: 10.
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # Status range
+        # The list of statuses.
         self.status_list = status_list
-        # File suffix list
+        # The list of file suffixes.
         self.suffix_list = suffix_list
-        # List of file types
+        # The list of file types.
         self.type_list = type_list
 
     def validate(self):

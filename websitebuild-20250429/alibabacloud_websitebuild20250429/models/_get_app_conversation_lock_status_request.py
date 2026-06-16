@@ -9,7 +9,7 @@ class GetAppConversationLockStatusRequest(DaraModel):
         self,
         conversation_id: str = None,
     ):
-        # session ID
+        # The session ID.
         self.conversation_id = conversation_id
 
     def validate(self):

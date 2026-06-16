@@ -22,27 +22,27 @@ class ListAIStaffChatMessagesResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # Permission denied information
+        # The access denied details.
         self.access_denied_detail = access_denied_detail
-        # Is retry allowed
+        # Indicates whether retry is allowed.
         self.allow_retry = allow_retry
-        # App Name.
+        # The application name.
         self.app_name = app_name
-        # Dynamic error code.
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # Dynamic message. Not currently used. Please ignore.
+        # The dynamic message. This parameter is not in use. Ignore it.
         self.dynamic_message = dynamic_message
-        # Returned error parameters
+        # The error parameters.
         self.error_args = error_args
-        # Response data
+        # The response data.
         self.module = module
         # Id of the request
         self.request_id = request_id
-        # Error code
+        # The error code.
         self.root_error_code = root_error_code
-        # Abnormal message
+        # The error message.
         self.root_error_msg = root_error_msg
-        # Reserved parameter.
+        # The reserved parameter.
         self.synchro = synchro
 
     def validate(self):
@@ -132,12 +132,12 @@ class ListAIStaffChatMessagesResponseBodyModule(DaraModel):
         self,
         messages: List[main_models.ListAIStaffChatMessagesResponseBodyModuleMessages] = None,
     ):
-        # Sender type.  
+        # The sender type.
         # 
-        # Enumeration values:  
-        # - **ADMIN**: System  
-        # - **CUSTOMER**: Visitor  
-        # - **AGENT**: Agent
+        # Valid values:
+        # - **ADMIN**: System.
+        # - **CUSTOMER**: Visitor.
+        # - **AGENT**: Agent.
         self.messages = messages
 
     def validate(self):
@@ -186,44 +186,44 @@ class ListAIStaffChatMessagesResponseBodyModuleMessages(DaraModel):
         site_id: str = None,
         type: str = None,
     ):
-        # Bot ID.
+        # The bot ID.
         self.bot_id = bot_id
-        # Current conversation round ID
+        # The ID of the current conversation turn.
         self.chat_id = chat_id
-        # Current session status
+        # The current conversation status.
         self.chat_status = chat_status
-        # ID of the invoked data class API.
+        # The ID of the data API operation that is called.
         self.content = content
-        # Content type
+        # The content type.
         self.content_type = content_type
-        # Session ID
+        # The conversation ID.
         self.conversation_id = conversation_id
-        # Creation Time
+        # The creation time.
         self.gmt_create = gmt_create
-        # Updated At
+        # The modification time.
         self.gmt_modified = gmt_modified
-        # Message ID
+        # The message ID.
         self.message_id = message_id
-        # Business extension metadata (in Map format, must be a JSON string)
+        # The business extension metadata in Map format. The value must be a JSON string.
         self.meta_data = meta_data
-        # Indicates the role of the participant in the conversation. Valid values include:
+        # The role of the conversation participant. Valid values:
         # 
-        # - user: User
+        # - user: User.
         # 
-        # - assistant: Assistant
+        # - assistant: Assistant.
         # 
-        # - system: System
-        # - function: Function
+        # - system: System.
+        # - function: Function.
         # 
-        # - plugin: Plugin
+        # - plugin: Plugin.
         # 
-        # - tool: Tool
+        # - tool: Tool.
         self.role = role
-        # Section ID of the inspection item.
+        # The section ID of the check item.
         self.section_id = section_id
-        # Site ID.
+        # The site ID.
         self.site_id = site_id
-        # File type
+        # The file type.
         self.type = type
 
     def validate(self):

@@ -12,13 +12,13 @@ class ModuleResultsValue(DaraModel):
         error_code: str = None,
         error_message: str = None,
     ):
-        # Whether the check is passed
+        # 是否通过检查
         self.passed = passed
-        # Resource identity
+        # 资源标识
         self.resource_code = resource_code
-        # Error code when failed; null when passed
+        # 失败时的错误码，通过时为null
         self.error_code = error_code
-        # Error message when failed; null when passed
+        # 失败时的错误信息，通过时为null
         self.error_message = error_message
 
     def validate(self):

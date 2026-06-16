@@ -27,41 +27,41 @@ class QueryMaterialFileListResponseBody(DaraModel):
         success: bool = None,
         synchro: bool = None,
     ):
-        # Detailed reason for access denial.
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether retry is allowed. Valid values:  
-        # - false: Retry is not allowed.  
+        # Indicates whether retry is allowed. Valid values:
+        # - false: Retry is not allowed.
         # - true: Retry is allowed.
         self.allow_retry = allow_retry
-        # Application name. It can contain digits, letters, and hyphens (-). It must start with a letter, cannot end with a hyphen (-), and must be no more than 36 characters in length.
+        # The application name. The name can contain digits, letters, and hyphens (-). It must start with a letter and cannot end with a hyphen (-). The name cannot exceed 36 characters in length.
         self.app_name = app_name
-        # Dynamic code. Not currently used. Please ignore.
+        # The dynamic code. This parameter is not in use. Ignore this parameter.
         self.dynamic_code = dynamic_code
-        # Dynamic message.
+        # The dynamic message.
         self.dynamic_message = dynamic_message
-        # Returned error parameters
+        # The error parameters.
         self.error_args = error_args
-        # Error code. The value is interpreted as follows: If the request succeeded, the ErrorCode field is not returned. If the request failed, the ErrorCode field is returned. For details, see the error code list in this topic.
+        # The error code. The ErrorCode parameter is not returned if the request is successful. If the request fails, the ErrorCode parameter is returned. For more information, see the error codes in this topic.
         self.error_code = error_code
-        # Error message.
+        # The error message.
         self.error_msg = error_msg
-        # Number of results returned per query.  
+        # The maximum number of entries to return per query.
         # 
         # Valid values: 10 to 100. Default value: 20.
         self.max_results = max_results
-        # Response data
+        # The response data.
         self.module = module
-        # Token for starting the next query. This value is empty if there is no next query.
+        # The token for the next query. This parameter is empty if no more results exist.
         self.next_token = next_token
         # Id of the request
         self.request_id = request_id
-        # Error code
+        # The root error code.
         self.root_error_code = root_error_code
-        # Abnormal message
+        # The root error message.
         self.root_error_msg = root_error_msg
-        # Indicates whether the request succeeded.
+        # Indicates whether the request was successful.
         self.success = success
-        # Reserved parameter.
+        # The reserved parameter.
         self.synchro = synchro
 
     def validate(self):
@@ -188,21 +188,21 @@ class QueryMaterialFileListResponseBodyModule(DaraModel):
         total_item_num: int = None,
         total_page_num: int = None,
     ):
-        # Current page number.
+        # The current page number.
         self.current_page_num = current_page_num
-        # Request result.
+        # The query results.
         self.data = data
         # Indicates whether a next page exists.
         self.next_page = next_page
-        # Page size.
+        # The page size.
         self.page_size = page_size
         # Indicates whether a previous page exists.
         self.pre_page = pre_page
-        # For the current query, aside from pagination limits, the server-side processes at most the latest 1 000 records. If the result exceeds 1 000 records, **ResultLimit** is **true**. In this case, narrow the time range and search again. Otherwise, **ResultLimit** is **false**.
+        # Apart from pagination limits, the server processes up to 1,000 recent records per query. If the results exceed 1,000 records, **ResultLimit** is **true**. Narrow the time range and search again. Otherwise, **ResultLimit** is **false**.
         self.result_limit = result_limit
-        # Total number of records.
+        # The total number of entries.
         self.total_item_num = total_item_num
-        # Total number of pages.
+        # The total number of pages.
         self.total_page_num = total_page_num
 
     def validate(self):

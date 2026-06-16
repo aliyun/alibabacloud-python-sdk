@@ -307,6 +307,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.bind_app_domain_with_options_async(request, runtime)
 
+    def check_app_verify_code_with_options(
+        self,
+        request: main_models.CheckAppVerifyCodeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CheckAppVerifyCodeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.code):
+            query['Code'] = request.code
+        if not DaraCore.is_null(request.target):
+            query['Target'] = request.target
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CheckAppVerifyCode',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CheckAppVerifyCodeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def check_app_verify_code_with_options_async(
+        self,
+        request: main_models.CheckAppVerifyCodeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CheckAppVerifyCodeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.code):
+            query['Code'] = request.code
+        if not DaraCore.is_null(request.target):
+            query['Target'] = request.target
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CheckAppVerifyCode',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CheckAppVerifyCodeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def check_app_verify_code(
+        self,
+        request: main_models.CheckAppVerifyCodeRequest,
+    ) -> main_models.CheckAppVerifyCodeResponse:
+        runtime = RuntimeOptions()
+        return self.check_app_verify_code_with_options(request, runtime)
+
+    async def check_app_verify_code_async(
+        self,
+        request: main_models.CheckAppVerifyCodeRequest,
+    ) -> main_models.CheckAppVerifyCodeResponse:
+        runtime = RuntimeOptions()
+        return await self.check_app_verify_code_with_options_async(request, runtime)
+
     def check_resource_measure_with_options(
         self,
         request: main_models.CheckResourceMeasureRequest,
@@ -1473,6 +1555,120 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_app_llm_api_key_for_partner_with_options_async(request, runtime)
 
+    def create_app_notification_scene_with_options(
+        self,
+        request: main_models.CreateAppNotificationSceneRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAppNotificationSceneResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.channels_json):
+            query['ChannelsJson'] = request.channels_json
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.email_fields_json):
+            query['EmailFieldsJson'] = request.email_fields_json
+        if not DaraCore.is_null(request.email_limit_json):
+            query['EmailLimitJson'] = request.email_limit_json
+        if not DaraCore.is_null(request.email_recipient_ids_json):
+            query['EmailRecipientIdsJson'] = request.email_recipient_ids_json
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.phone_recipient_ids_json):
+            query['PhoneRecipientIdsJson'] = request.phone_recipient_ids_json
+        if not DaraCore.is_null(request.sms_fields_json):
+            query['SmsFieldsJson'] = request.sms_fields_json
+        if not DaraCore.is_null(request.sms_limit_json):
+            query['SmsLimitJson'] = request.sms_limit_json
+        if not DaraCore.is_null(request.table_name):
+            query['TableName'] = request.table_name
+        if not DaraCore.is_null(request.trigger_events_json):
+            query['TriggerEventsJson'] = request.trigger_events_json
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAppNotificationScene',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAppNotificationSceneResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_app_notification_scene_with_options_async(
+        self,
+        request: main_models.CreateAppNotificationSceneRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAppNotificationSceneResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.channels_json):
+            query['ChannelsJson'] = request.channels_json
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.email_fields_json):
+            query['EmailFieldsJson'] = request.email_fields_json
+        if not DaraCore.is_null(request.email_limit_json):
+            query['EmailLimitJson'] = request.email_limit_json
+        if not DaraCore.is_null(request.email_recipient_ids_json):
+            query['EmailRecipientIdsJson'] = request.email_recipient_ids_json
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.phone_recipient_ids_json):
+            query['PhoneRecipientIdsJson'] = request.phone_recipient_ids_json
+        if not DaraCore.is_null(request.sms_fields_json):
+            query['SmsFieldsJson'] = request.sms_fields_json
+        if not DaraCore.is_null(request.sms_limit_json):
+            query['SmsLimitJson'] = request.sms_limit_json
+        if not DaraCore.is_null(request.table_name):
+            query['TableName'] = request.table_name
+        if not DaraCore.is_null(request.trigger_events_json):
+            query['TriggerEventsJson'] = request.trigger_events_json
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAppNotificationScene',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAppNotificationSceneResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_app_notification_scene(
+        self,
+        request: main_models.CreateAppNotificationSceneRequest,
+    ) -> main_models.CreateAppNotificationSceneResponse:
+        runtime = RuntimeOptions()
+        return self.create_app_notification_scene_with_options(request, runtime)
+
+    async def create_app_notification_scene_async(
+        self,
+        request: main_models.CreateAppNotificationSceneRequest,
+    ) -> main_models.CreateAppNotificationSceneResponse:
+        runtime = RuntimeOptions()
+        return await self.create_app_notification_scene_with_options_async(request, runtime)
+
     def create_app_token_service_with_options(
         self,
         request: main_models.CreateAppTokenServiceRequest,
@@ -1998,6 +2194,80 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteAppInstanceFileResponse:
         runtime = RuntimeOptions()
         return await self.delete_app_instance_file_with_options_async(request, runtime)
+
+    def delete_app_notification_scene_with_options(
+        self,
+        request: main_models.DeleteAppNotificationSceneRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAppNotificationSceneResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.scene_id):
+            query['SceneId'] = request.scene_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteAppNotificationScene',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteAppNotificationSceneResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_app_notification_scene_with_options_async(
+        self,
+        request: main_models.DeleteAppNotificationSceneRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAppNotificationSceneResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.scene_id):
+            query['SceneId'] = request.scene_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteAppNotificationScene',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteAppNotificationSceneResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_app_notification_scene(
+        self,
+        request: main_models.DeleteAppNotificationSceneRequest,
+    ) -> main_models.DeleteAppNotificationSceneResponse:
+        runtime = RuntimeOptions()
+        return self.delete_app_notification_scene_with_options(request, runtime)
+
+    async def delete_app_notification_scene_async(
+        self,
+        request: main_models.DeleteAppNotificationSceneRequest,
+    ) -> main_models.DeleteAppNotificationSceneResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_app_notification_scene_with_options_async(request, runtime)
 
     def delete_app_supabase_secrets_with_options(
         self,
@@ -7273,6 +7543,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.move_material_file_with_options_async(request, runtime)
 
+    def notify_app_notification_for_admin_with_options(
+        self,
+        request: main_models.NotifyAppNotificationForAdminRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.NotifyAppNotificationForAdminResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.env):
+            query['Env'] = request.env
+        if not DaraCore.is_null(request.scene_id):
+            query['SceneId'] = request.scene_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'NotifyAppNotificationForAdmin',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.NotifyAppNotificationForAdminResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def notify_app_notification_for_admin_with_options_async(
+        self,
+        request: main_models.NotifyAppNotificationForAdminRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.NotifyAppNotificationForAdminResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.env):
+            query['Env'] = request.env
+        if not DaraCore.is_null(request.scene_id):
+            query['SceneId'] = request.scene_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'NotifyAppNotificationForAdmin',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.NotifyAppNotificationForAdminResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def notify_app_notification_for_admin(
+        self,
+        request: main_models.NotifyAppNotificationForAdminRequest,
+    ) -> main_models.NotifyAppNotificationForAdminResponse:
+        runtime = RuntimeOptions()
+        return self.notify_app_notification_for_admin_with_options(request, runtime)
+
+    async def notify_app_notification_for_admin_async(
+        self,
+        request: main_models.NotifyAppNotificationForAdminRequest,
+    ) -> main_models.NotifyAppNotificationForAdminResponse:
+        runtime = RuntimeOptions()
+        return await self.notify_app_notification_for_admin_with_options_async(request, runtime)
+
     def operate_app_instance_for_partner_with_options(
         self,
         request: main_models.OperateAppInstanceForPartnerRequest,
@@ -8923,15 +9271,15 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> Generator[main_models.ReconnectAppChatResponse, None, None]:
         request.validate()
-        query = {}
+        body = {}
         if not DaraCore.is_null(request.chat_id):
-            query['ChatId'] = request.chat_id
+            body['ChatId'] = request.chat_id
         if not DaraCore.is_null(request.conversation_id):
-            query['ConversationId'] = request.conversation_id
+            body['ConversationId'] = request.conversation_id
         if not DaraCore.is_null(request.last_event_id):
-            query['LastEventId'] = request.last_event_id
+            body['LastEventId'] = request.last_event_id
         req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
+            body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
             action = 'ReconnectAppChat',
@@ -8964,15 +9312,15 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> AsyncGenerator[main_models.ReconnectAppChatResponse, None, None]:
         request.validate()
-        query = {}
+        body = {}
         if not DaraCore.is_null(request.chat_id):
-            query['ChatId'] = request.chat_id
+            body['ChatId'] = request.chat_id
         if not DaraCore.is_null(request.conversation_id):
-            query['ConversationId'] = request.conversation_id
+            body['ConversationId'] = request.conversation_id
         if not DaraCore.is_null(request.last_event_id):
-            query['LastEventId'] = request.last_event_id
+            body['LastEventId'] = request.last_event_id
         req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
+            body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
             action = 'ReconnectAppChat',
@@ -9005,15 +9353,15 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.ReconnectAppChatResponse:
         request.validate()
-        query = {}
+        body = {}
         if not DaraCore.is_null(request.chat_id):
-            query['ChatId'] = request.chat_id
+            body['ChatId'] = request.chat_id
         if not DaraCore.is_null(request.conversation_id):
-            query['ConversationId'] = request.conversation_id
+            body['ConversationId'] = request.conversation_id
         if not DaraCore.is_null(request.last_event_id):
-            query['LastEventId'] = request.last_event_id
+            body['LastEventId'] = request.last_event_id
         req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
+            body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
             action = 'ReconnectAppChat',
@@ -9037,15 +9385,15 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.ReconnectAppChatResponse:
         request.validate()
-        query = {}
+        body = {}
         if not DaraCore.is_null(request.chat_id):
-            query['ChatId'] = request.chat_id
+            body['ChatId'] = request.chat_id
         if not DaraCore.is_null(request.conversation_id):
-            query['ConversationId'] = request.conversation_id
+            body['ConversationId'] = request.conversation_id
         if not DaraCore.is_null(request.last_event_id):
-            query['LastEventId'] = request.last_event_id
+            body['LastEventId'] = request.last_event_id
         req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
+            body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
             action = 'ReconnectAppChat',

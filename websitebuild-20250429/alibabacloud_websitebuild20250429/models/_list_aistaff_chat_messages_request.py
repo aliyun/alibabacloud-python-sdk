@@ -12,13 +12,13 @@ class ListAIStaffChatMessagesRequest(DaraModel):
         page_size: int = None,
         start_create_time: str = None,
     ):
-        # Business ID
+        # The business ID.
         self.biz_id = biz_id
-        # Session ID
+        # The conversation ID.
         self.conversation_id = conversation_id
-        # Number of data entries per page (10–100)
+        # The number of records per page. Valid values: 10 to 100.
         self.page_size = page_size
-        # gmtCreate of the last entry on the previous page; omit for the first page
+        # The gmtCreate value of the last record on the previous page. Leave this parameter empty for the first page.
         self.start_create_time = start_create_time
 
     def validate(self):

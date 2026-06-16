@@ -24,33 +24,33 @@ class MoveMaterialDirectoryResponseBody(DaraModel):
         success: bool = None,
         synchro: bool = None,
     ):
-        # Detailed reason for access denial.
+        # The detailed reason why access was denied.
         self.access_denied_detail = access_denied_detail
-        # is retry allowed
+        # Indicates whether retries are allowed.
         self.allow_retry = allow_retry
-        # application Name. Query the application with this Name.
+        # The application name. The application with this name is queried.
         self.app_name = app_name
-        # dynamic error code.
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # dynamic error message.
+        # The dynamic error message.
         self.dynamic_message = dynamic_message
-        # returned error parameters
+        # The error parameters returned.
         self.error_args = error_args
-        # error code. The value is described as follows: If the request succeeded, the ErrorCode field is not returned. If the request failed, the ErrorCode field is returned. For more information, see the error code List in this topic.
+        # The error code. The ErrorCode field is not returned if the request is successful. The ErrorCode field is returned if the request fails. For more information, see the error codes in this topic.
         self.error_code = error_code
-        # error message.
+        # The error message.
         self.error_msg = error_msg
-        # is shift succeeded
+        # Indicates whether the folder was moved successfully.
         self.module = module
         # Id of the request
         self.request_id = request_id
-        # error code
+        # The root error code.
         self.root_error_code = root_error_code
-        # abnormal message
+        # The root error message.
         self.root_error_msg = root_error_msg
-        # identity indicating whether the request succeeded or failed.
+        # Indicates whether the request was successful.
         self.success = success
-        # Backup parameter.
+        # The reserved parameter.
         self.synchro = synchro
 
     def validate(self):

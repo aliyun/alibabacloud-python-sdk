@@ -17,23 +17,23 @@ class PushResourceMeasureRequest(DaraModel):
         use_time: str = None,
         use_type: str = None,
     ):
-        # Resource usage amount
+        # The resource usage amount.
         self.amount = amount
-        # Belonging ID
+        # The owner ID.
         self.belong_id = belong_id
-        # Belonging ID Type (siteId, uid)
+        # The type of the owner ID (siteId or uid).
         self.belong_id_type = belong_id_type
-        # Business ID associated with this push, such as session ID, Job ID, or file ID
+        # The business ID associated with this push, such as a session ID, task ID, or file ID.
         self.biz_id = biz_id
-        # Metering data, used to flexibly push multiple data points such as model invocation count and token usage (JSON string)
+        # The metering data used to flexibly push multiple data points such as the number of model calls and token usage. The value must be a JSON string.
         self.measure_data = measure_data
-        # Business extension metadata (in Map format, must be a JSON string)
+        # The business extension metadata in Map format. The value must be a JSON string.
         self.meta_data = meta_data
-        # Resource identity
+        # The resource identifier.
         self.resource_code = resource_code
-        # Usage time, format: yyyy-MM-dd HH:mm:ss
+        # The usage time in the yyyy-MM-dd HH:mm:ss format.
         self.use_time = use_time
-        # Usage type
+        # The usage type.
         self.use_type = use_type
 
     def validate(self):

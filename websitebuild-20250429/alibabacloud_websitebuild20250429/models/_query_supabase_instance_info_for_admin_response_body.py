@@ -22,28 +22,28 @@ class QuerySupabaseInstanceInfoForAdminResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # Detailed reason for access denial.
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
-        # Whether retry is allowed
+        # Indicates whether a retry is allowed.
         self.allow_retry = allow_retry
-        # App Name.
+        # The application name.
         self.app_name = app_name
-        # Dynamic error code.
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # Dynamic error message used to replace the `%s` placeholder in the **ErrMessage** error message.  
-        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, it indicates that the provided request parameter **DtsJobId** is invalid.
+        # The dynamic error message, which replaces the `%s` placeholder in the **ErrMessage** response element.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the value of the **DtsJobId** request parameter is invalid.
         self.dynamic_message = dynamic_message
-        # Returned error parameters
+        # The error parameters.
         self.error_args = error_args
-        # Response data
+        # The response data.
         self.module = module
         # Id of the request
         self.request_id = request_id
-        # Error code
+        # The error code.
         self.root_error_code = root_error_code
-        # Abnormal message
+        # The error message.
         self.root_error_msg = root_error_msg
-        # Reserved parameter.
+        # A reserved parameter.
         self.synchro = synchro
 
     def validate(self):
@@ -155,51 +155,55 @@ class QuerySupabaseInstanceInfoForAdminResponseBodyModule(DaraModel):
         tenant_id: str = None,
         user_id: str = None,
     ):
-        # Anonymity key
+        # The anonymous key.
         self.anon_key = anon_key
-        # Business ID
+        # The business ID.
         self.biz_id = biz_id
-        # Database instance creation time
+        # The time when the database instance was created.
         self.db_instance_create_time = db_instance_create_time
-        # Database instance ID
+        # The database instance ID.
         self.db_instance_id = db_instance_id
-        # Database public URL
+        # The public URL of the database.
         self.db_public_url = db_public_url
-        # Database type (rds/polardb)
+        # The database type. Valid values:
+        # - rds
+        # - polardb.
         self.db_type = db_type
-        # Additional information
+        # The additional information.
         self.extra = extra
-        # Instance creation completion time
+        # The time when the instance creation was completed.
         self.instance_create_finished_time = instance_create_finished_time
-        # Instance creation status
+        # The creation status of the instance.
         self.instance_create_status = instance_create_status
-        # Deletion flag
+        # The deletion flag.
         self.is_deleted = is_deleted
-        # RDS database access password
+        # The password for accessing the ApsaraDB RDS database.
         self.rds_database_password = rds_database_password
-        # Service key
+        # The service key.
         self.service_key = service_key
-        # Status. 0: paused; 1: running
+        # The instance status. Valid values:
+        # - 0: Paused.
+        # - 1: Running.
         self.status = status
-        # Supabase Dashboard password
+        # The password for the Supabase Dashboard.
         self.supabase_dashboard_password = supabase_dashboard_password
-        # Supabase Dashboard username
+        # The username for the Supabase Dashboard.
         self.supabase_dashboard_user_name = supabase_dashboard_user_name
-        # Supabase instance creation time
+        # The time when the Supabase instance was created.
         self.supabase_instance_create_time = supabase_instance_create_time
-        # Supabase instance ID
+        # The Supabase instance ID.
         self.supabase_instance_id = supabase_instance_id
         # Supabase Kong URL
         self.supabase_kong_url = supabase_kong_url
-        # Supabase instance PrivateLink address
+        # The private endpoint of the Supabase instance.
         self.supabase_private_ip = supabase_private_ip
-        # Supabase instance public endpoint
+        # The public endpoint of the Supabase instance.
         self.supabase_public_ip = supabase_public_ip
-        # Supabase public URL
+        # The public URL of the Supabase instance.
         self.supabase_public_url = supabase_public_url
-        # Tenant ID
+        # The tenant ID.
         self.tenant_id = tenant_id
-        # User ID
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):

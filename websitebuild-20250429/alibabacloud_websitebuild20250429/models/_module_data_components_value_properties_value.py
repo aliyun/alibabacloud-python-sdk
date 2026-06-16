@@ -15,13 +15,13 @@ class ModuleDataComponentsValuePropertiesValue(DaraModel):
         value: str = None,
         values: List[main_models.ModuleDataComponentsValuePropertiesValueValues] = None,
     ):
-        # Property encoding (system internal identity)
+        # Property code (internal system identifier)
         self.code = code
-        # Property display name (User-visible name)
+        # Property display name (user-visible name)
         self.name = name
-        # Attribute value code (internal system value)
+        # Property value code (internal system value)
         self.value = value
-        # List of module attribute values
+        # Module property value list
         self.values = values
 
     def validate(self):
@@ -77,11 +77,11 @@ class ModuleDataComponentsValuePropertiesValueValues(DaraModel):
         value: str = None,
         name: str = None,
     ):
-        # Attribute code (internal system identifier)
+        # Property code (internal system identifier)
         self.code = code
-        # Attribute value code (internal system value)
+        # Property value code (internal system value)
         self.value = value
-        # Attribute display name (user-visible name)
+        # Property display name (user-visible name)
         self.name = name
 
     def validate(self):

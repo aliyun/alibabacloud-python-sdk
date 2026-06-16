@@ -16,15 +16,15 @@ class GetCreateLogoTaskResponseBody(DaraModel):
         success: bool = None,
         task: main_models.GetCreateLogoTaskResponseBodyTask = None,
     ):
-        # The error code. The ErrorCode field is not returned if the request succeeds. If the request fails, the ErrorCode field is returned. For more information, see the error code list in this topic.
+        # The error code. If the request is successful, this field is not returned. If the request fails, this field is returned. For more information, see the error code list in this topic.
         self.error_code = error_code
         # The error message.
         self.error_msg = error_msg
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request succeeded.
+        # Indicates whether the request was successful.
         self.success = success
-        # Job information
+        # The task information.
         self.task = task
 
     def validate(self):
@@ -80,17 +80,17 @@ class GetCreateLogoTaskResponseBodyTask(DaraModel):
         task_status: str = None,
         urls: List[str] = None,
     ):
-        # The job ID.
+        # The task ID.
         self.task_id = task_id
-        # The current status of the job:
+        # The current status of the task. Valid values:
         # 
-        # - pending: Pending execution  
-        # - configuring: Configuring  
-        # - success: Succeeded  
-        # - failed: Failed  
-        # - partialFailed: Partially failed
+        # - pending: pending execution
+        # - configuring: being configured
+        # - success: succeeded
+        # - failed: failed
+        # - partialFailed: partially failed.
         self.task_status = task_status
-        # The URLs of the prefetched resources.
+        # The URL of the prefetched resource.
         self.urls = urls
 
     def validate(self):
