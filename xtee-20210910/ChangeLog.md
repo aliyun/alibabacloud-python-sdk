@@ -1,3 +1,6 @@
+2026-06-16 Version: 2.4.2
+- Generated python 2021-09-10 for xtee.
+
 2026-06-16 Version: 2.4.1
 - Update API CreateTaskGroup: add request parameters ServiceList.
 - Update API CreateTaskGroup: add response parameters Body.ResultObject.SubTaskList.
