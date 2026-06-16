@@ -14,6 +14,7 @@ class ListKeywordsRequest(DaraModel):
         page_size: int = None,
         region_id: str = None,
         sort: Dict[str, str] = None,
+        tenant_code: str = None,
         word: str = None,
     ):
         # Current page number.
@@ -26,6 +27,7 @@ class ListKeywordsRequest(DaraModel):
         self.region_id = region_id
         # Sort field.
         self.sort = sort
+        self.tenant_code = tenant_code
         # Keyword.
         self.word = word
 
@@ -52,6 +54,9 @@ class ListKeywordsRequest(DaraModel):
         if self.sort is not None:
             result['Sort'] = self.sort
 
+        if self.tenant_code is not None:
+            result['TenantCode'] = self.tenant_code
+
         if self.word is not None:
             result['Word'] = self.word
 
@@ -73,6 +78,9 @@ class ListKeywordsRequest(DaraModel):
 
         if m.get('Sort') is not None:
             self.sort = m.get('Sort')
+
+        if m.get('TenantCode') is not None:
+            self.tenant_code = m.get('TenantCode')
 
         if m.get('Word') is not None:
             self.word = m.get('Word')

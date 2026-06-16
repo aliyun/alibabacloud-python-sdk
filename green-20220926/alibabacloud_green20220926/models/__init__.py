@@ -350,6 +350,7 @@ from ._list_callback_response_body import ListCallbackResponseBodyData
 from ._list_image_lib_response_body import ListImageLibResponseBodyLibList
 from ._list_images_from_lib_response_body import ListImagesFromLibResponseBodyItems
 from ._list_keyword_libs_response_body import ListKeywordLibsResponseBodyData
+from ._list_keywords_response_body import ListKeywordsResponseBodyDataItemsProperties
 from ._list_keywords_response_body import ListKeywordsResponseBodyDataItems
 from ._list_keywords_response_body import ListKeywordsResponseBodyData
 from ._list_oss_check_result_response_body import ListOssCheckResultResponseBodyItems
@@ -716,6 +717,7 @@ __all__ = [
     ListImageLibResponseBodyLibList,
     ListImagesFromLibResponseBodyItems,
     ListKeywordLibsResponseBodyData,
+    ListKeywordsResponseBodyDataItemsProperties,
     ListKeywordsResponseBodyDataItems,
     ListKeywordsResponseBodyData,
     ListOssCheckResultResponseBodyItems,

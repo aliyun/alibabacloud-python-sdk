@@ -315,8 +315,12 @@ class Client(OpenApiClient):
     ) -> main_models.AddKeywordLibResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.properties):
+            query['Properties'] = request.properties
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.tenant_code):
+            query['TenantCode'] = request.tenant_code
         body = {}
         if not DaraCore.is_null(request.keywords):
             body['Keywords'] = request.keywords
@@ -351,8 +355,12 @@ class Client(OpenApiClient):
     ) -> main_models.AddKeywordLibResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.properties):
+            query['Properties'] = request.properties
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.tenant_code):
+            query['TenantCode'] = request.tenant_code
         body = {}
         if not DaraCore.is_null(request.keywords):
             body['Keywords'] = request.keywords
@@ -403,6 +411,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.tenant_code):
+            query['TenantCode'] = request.tenant_code
         body = {}
         if not DaraCore.is_null(request.keywords):
             body['Keywords'] = request.keywords
@@ -439,6 +449,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.tenant_code):
+            query['TenantCode'] = request.tenant_code
         body = {}
         if not DaraCore.is_null(request.keywords):
             body['Keywords'] = request.keywords
@@ -487,8 +499,12 @@ class Client(OpenApiClient):
     ) -> main_models.AddKeywordsToLibResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.properties):
+            query['Properties'] = request.properties
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.tenant_code):
+            query['TenantCode'] = request.tenant_code
         body = {}
         if not DaraCore.is_null(request.keywords):
             body['Keywords'] = request.keywords
@@ -523,8 +539,12 @@ class Client(OpenApiClient):
     ) -> main_models.AddKeywordsToLibResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.properties):
+            query['Properties'] = request.properties
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.tenant_code):
+            query['TenantCode'] = request.tenant_code
         body = {}
         if not DaraCore.is_null(request.keywords):
             body['Keywords'] = request.keywords
@@ -1801,6 +1821,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.tenant_code):
+            query['TenantCode'] = request.tenant_code
         body = {}
         if not DaraCore.is_null(request.keyword_id_list):
             body['KeywordIdList'] = request.keyword_id_list
@@ -1837,6 +1859,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.tenant_code):
+            query['TenantCode'] = request.tenant_code
         body = {}
         if not DaraCore.is_null(request.keyword_id_list):
             body['KeywordIdList'] = request.keyword_id_list
@@ -1887,6 +1911,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.tenant_code):
+            query['TenantCode'] = request.tenant_code
         body = {}
         if not DaraCore.is_null(request.lib_id):
             body['LibId'] = request.lib_id
@@ -1919,6 +1945,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.tenant_code):
+            query['TenantCode'] = request.tenant_code
         body = {}
         if not DaraCore.is_null(request.lib_id):
             body['LibId'] = request.lib_id
@@ -2399,6 +2427,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.tenant_code):
+            query['TenantCode'] = request.tenant_code
         body = {}
         if not DaraCore.is_null(request.lib_id):
             body['LibId'] = request.lib_id
@@ -2431,6 +2461,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.tenant_code):
+            query['TenantCode'] = request.tenant_code
         body = {}
         if not DaraCore.is_null(request.lib_id):
             body['LibId'] = request.lib_id
@@ -3833,6 +3865,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.tenant_code):
+            query['TenantCode'] = request.tenant_code
         body = {}
         if not DaraCore.is_null(request.lib_id):
             body['LibId'] = request.lib_id
@@ -3865,6 +3899,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.tenant_code):
+            query['TenantCode'] = request.tenant_code
         body = {}
         if not DaraCore.is_null(request.lib_id):
             body['LibId'] = request.lib_id
@@ -5541,8 +5577,12 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        body = {}
+        if not DaraCore.is_null(request.service_code):
+            body['ServiceCode'] = request.service_code
         req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
             action = 'ListImageLib',
@@ -5569,8 +5609,12 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        body = {}
+        if not DaraCore.is_null(request.service_code):
+            body['ServiceCode'] = request.service_code
         req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
             action = 'ListImageLib',
@@ -5721,6 +5765,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.tenant_code):
+            query['TenantCode'] = request.tenant_code
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -5749,6 +5795,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.tenant_code):
+            query['TenantCode'] = request.tenant_code
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -5795,6 +5843,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.tenant_code):
+            query['TenantCode'] = request.tenant_code
         body = {}
         if not DaraCore.is_null(request.current_page):
             body['CurrentPage'] = request.current_page
@@ -5839,6 +5889,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.tenant_code):
+            query['TenantCode'] = request.tenant_code
         body = {}
         if not DaraCore.is_null(request.current_page):
             body['CurrentPage'] = request.current_page
@@ -7348,6 +7400,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.config_shrink):
             body['Config'] = request.config_shrink
+        if not DaraCore.is_null(request.service_code):
+            body['ServiceCode'] = request.service_code
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query),
             body = Utils.parse_to_map(body)
@@ -7384,6 +7438,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.config_shrink):
             body['Config'] = request.config_shrink
+        if not DaraCore.is_null(request.service_code):
+            body['ServiceCode'] = request.service_code
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query),
             body = Utils.parse_to_map(body)
@@ -7427,6 +7483,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.tenant_code):
+            query['TenantCode'] = request.tenant_code
         body = {}
         if not DaraCore.is_null(request.lib_id):
             body['LibId'] = request.lib_id
@@ -7461,6 +7519,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.tenant_code):
+            query['TenantCode'] = request.tenant_code
         body = {}
         if not DaraCore.is_null(request.lib_id):
             body['LibId'] = request.lib_id

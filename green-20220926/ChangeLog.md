@@ -1,3 +1,22 @@
+2026-06-16 Version: 1.9.1
+- Update API AddKeywordLib: add request parameters Properties.
+- Update API AddKeywordLib: add request parameters TenantCode.
+- Update API AddKeywords: add request parameters TenantCode.
+- Update API AddKeywordsToLib: add request parameters Properties.
+- Update API AddKeywordsToLib: add request parameters TenantCode.
+- Update API DeleteKeyword: add request parameters TenantCode.
+- Update API DeleteKeywordLib: add request parameters TenantCode.
+- Update API ExportKeyword: add request parameters TenantCode.
+- Update API GetKeywordLib: add request parameters TenantCode.
+- Update API ListImageLib: add request parameters ServiceCode.
+- Update API ListImageLib: add response parameters Body.MaxLibCount.
+- Update API ListKeywordLibs: add request parameters TenantCode.
+- Update API ListKeywords: add request parameters TenantCode.
+- Update API ListKeywords: add response parameters Body.Data.Items.$.Properties.
+- Update API UpdateImageLibFreeInspection: add request parameters ServiceCode.
+- Update API UpdateKeywordLib: add request parameters TenantCode.
+
+
 2026-06-15 Version: 1.9.0
 - Support API GetTuneProposalById.
 - Update API GetPromptTestResult: add response parameters Body.Result.$.LabelDetails.$.Reason.
