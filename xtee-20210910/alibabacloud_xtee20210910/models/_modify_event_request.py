@@ -17,25 +17,25 @@ class ModifyEventRequest(DaraModel):
         reg_id: str = None,
         template_type: str = None,
     ):
-        # Set the language type for requests and received messages, default value is **zh**. Values:
-        # - **zh**: Chinese
-        # - **en**: English
+        # The language of the request and response. Default value: **zh**. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.lang = lang
-        # Version number (latest).
+        # The version number (latest).
         self.biz_version = biz_version
-        # Creation type
+        # The creation type.
         self.create_type = create_type
-        # Event code
+        # The event code.
         self.event_code = event_code
-        # Event name.
+        # The event name.
         self.event_name = event_name
-        # Input parameters, JSON string.
+        # The input parameters in a JSON string.
         self.input_fields_str = input_fields_str
-        # Memo.
+        # The remarks.
         self.memo = memo
-        # Region code
+        # The region code.
         self.reg_id = reg_id
-        # Template type
+        # The template type.
         self.template_type = template_type
 
     def validate(self):

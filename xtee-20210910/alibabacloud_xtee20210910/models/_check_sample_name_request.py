@@ -11,8 +11,11 @@ class CheckSampleNameRequest(DaraModel):
         reg_id: str = None,
         sample_name: str = None,
     ):
+        # Language of error messages returned by the API. Valid values: zh: Chinese; en: English. Default value: en.
         self.lang = lang
+        # Area encoding.
         self.reg_id = reg_id
+        # Sample name.
         self.sample_name = sample_name
 
     def validate(self):

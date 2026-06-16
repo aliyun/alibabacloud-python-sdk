@@ -16,11 +16,19 @@ class CreateForeignPocSampleAdvanceRequest(DaraModel):
         sample_name: str = None,
         tab: str = None,
     ):
+        # OSS path of the file.
         self.file_object = file_object
+        # Set the language type for requests and received messages. Default value is **zh**. Valid values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Area encoding.
         self.reg_id = reg_id
+        # Remarks.
         self.remark = remark
+        # Sample Name.
         self.sample_name = sample_name
+        # Scenario.
         self.tab = tab
 
     def validate(self):

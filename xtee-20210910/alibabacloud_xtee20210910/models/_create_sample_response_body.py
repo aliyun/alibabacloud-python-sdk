@@ -11,9 +11,9 @@ class CreateSampleResponseBody(DaraModel):
         request_id: str = None,
         result_object: main_models.CreateSampleResponseBodyResultObject = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Return object
+        # The returned object.
         self.result_object = result_object
 
     def validate(self):
@@ -54,17 +54,17 @@ class CreateSampleResponseBodyResultObject(DaraModel):
         sample_count: int = None,
         success_count: int = None,
     ):
-        # Number of colored groups
+        # The number of tainted groups.
         self.community_count = community_count
-        # Number of failed samples
+        # The number of failed data samples.
         self.fail_count = fail_count
-        # Recall probability
+        # The recall probability.
         self.recall_probability = recall_probability
-        # Risk density
+        # The risk density.
         self.risk_density = risk_density
-        # Number of samples
+        # The number of data samples.
         self.sample_count = sample_count
-        # Number of successful samples
+        # The number of successful data samples.
         self.success_count = success_count
 
     def validate(self):

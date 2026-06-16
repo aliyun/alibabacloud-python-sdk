@@ -15,25 +15,25 @@ class DescribeScoreSectionNumLineChartRequest(DaraModel):
         reg_id: str = None,
         shunt_event_codes: str = None,
     ):
-        # Sets the language type for requests and received messages, default value is **zh**. Values:
-        # - **zh**: Chinese
-        # - **en**: English
+        # The language type for the request and response. Default value: **zh**. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.lang = lang
-        # Start timestamp, in milliseconds.
+        # The start timestamp, in milliseconds.
         # 
         # This parameter is required.
         self.begin_time = begin_time
-        # Bypass event code
+        # The bypass event codes.
         self.by_pass_event_codes = by_pass_event_codes
-        # End timestamp, in milliseconds.
+        # The end timestamp, in milliseconds.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # Main event code
+        # The main event codes.
         self.main_event_codes = main_event_codes
-        # Region code
+        # The region code.
         self.reg_id = reg_id
-        # Diversion event code
+        # The diversion event codes.
         self.shunt_event_codes = shunt_event_codes
 
     def validate(self):

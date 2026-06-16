@@ -11,9 +11,9 @@ class DescribeRuleSnapshotResponseBody(DaraModel):
         request_id: str = None,
         result_object: main_models.DescribeRuleSnapshotResponseBodyResultObject = None,
     ):
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Returned object
+        # The response object.
         self.result_object = result_object
 
     def validate(self):
@@ -62,33 +62,33 @@ class DescribeRuleSnapshotResponseBodyResultObject(DaraModel):
         rule_status: str = None,
         rule_type: str = None,
     ):
-        # Business version.
+        # The business version.
         self.biz_version = biz_version
-        # Event code
+        # The event code.
         self.event_code = event_code
-        # Event name.
+        # The event name.
         self.event_name = event_name
-        # Creation time.
+        # The creation time.
         self.gmt_create = gmt_create
-        # Modification time.
+        # The modification time.
         self.gmt_modified = gmt_modified
-        # Expression for analysis results.
+        # The expression of the analysis results.
         self.logic_expression = logic_expression
-        # Memo.
+        # The remarks.
         self.memo = memo
-        # Rule actions.
+        # The rule actions.
         self.rule_actions = rule_actions
-        # DSL rule expression. This field is required when ruleType is DSL.
+        # The DSL policy expression. This field is not empty when ruleType is DSL.
         self.rule_body = rule_body
-        # Expression.
+        # The expressions.
         self.rule_expressions = rule_expressions
-        # Policy ID
+        # The policy ID
         self.rule_id = rule_id
-        # Policy name
+        # The policy name.
         self.rule_name = rule_name
-        # Policy status
+        # The policy status.
         self.rule_status = rule_status
-        # Rule type.
+        # The policy type.
         self.rule_type = rule_type
 
     def validate(self):

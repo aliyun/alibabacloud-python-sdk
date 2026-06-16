@@ -13,9 +13,9 @@ class DescribeGroupConditionListResponseBody(DaraModel):
         request_id: str = None,
         result_object: List[main_models.DescribeGroupConditionListResponseBodyResultObject] = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Return object
+        # The response object.
         self.result_object = result_object
 
     def validate(self):
@@ -58,9 +58,9 @@ class DescribeGroupConditionListResponseBodyResultObject(DaraModel):
         field_key: str = None,
         field_value: str = None,
     ):
-        # Field key
+        # fieldKey
         self.field_key = field_key
-        # Field value.
+        # The field value.
         self.field_value = field_value
 
     def validate(self):

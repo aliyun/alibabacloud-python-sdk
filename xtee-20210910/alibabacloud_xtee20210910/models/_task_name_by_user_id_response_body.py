@@ -13,15 +13,15 @@ class TaskNameByUserIdResponseBody(DaraModel):
         request_id: str = None,
         result_object: bool = None,
     ):
-        # Response code.
+        # The response code.
         self.code = code
-        # HTTP status code.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Return message.
+        # The returned message.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Return result.
+        # The returned result.
         self.result_object = result_object
 
     def validate(self):

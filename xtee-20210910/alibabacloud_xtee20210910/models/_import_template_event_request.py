@@ -11,13 +11,13 @@ class ImportTemplateEventRequest(DaraModel):
         event_template_ids: str = None,
         reg_id: str = None,
     ):
-        # Sets the language type for requests and received messages, default value is **zh**. Values:
-        # - **zh**: Chinese
-        # - **en**: English
+        # The language of the request and response. Default value: **zh**. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.lang = lang
         # The template ID of the event.
         self.event_template_ids = event_template_ids
-        # Region code
+        # The region code.
         self.reg_id = reg_id
 
     def validate(self):

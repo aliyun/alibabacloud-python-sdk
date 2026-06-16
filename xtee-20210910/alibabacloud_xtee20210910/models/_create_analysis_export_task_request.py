@@ -20,43 +20,48 @@ class CreateAnalysisExportTaskRequest(DaraModel):
         scope: str = None,
         type: str = None,
     ):
-        # Sets the language type for the request and response messages, with a default value of **zh**. Values:
+        # The language type for the request and response messages. Default value: **zh**. Valid values:
         # - **zh**: Chinese
-        # - **en**: English
+        # - **en**: English.
         self.lang = lang
-        # Custom columns
+        # The custom columns.
         self.columns = columns
-        # Query expression
+        # The query expression.
         self.conditions = conditions
-        # Start time, accurate to milliseconds (ms).
+        # The start time, in milliseconds (ms).
         # 
         # This parameter is required.
         self.event_begin_time = event_begin_time
-        # Event code.
+        # The event code.
         # 
         # This parameter is required.
         self.event_codes = event_codes
-        # End time, accurate to milliseconds (ms).
+        # The end time, in milliseconds (ms).
         # 
         # This parameter is required.
         self.event_end_time = event_end_time
-        # Field name
+        # The field name.
         self.field_name = field_name
-        # Field value
+        # The field value.
         self.field_value = field_value
-        # File format, Excel, CSV
+        # The file format. Valid values: Excel and CSV.
         # 
         # This parameter is required.
         self.file_format = file_format
-        # Region code
+        # The region code.
         # 
         # This parameter is required.
         self.reg_id = reg_id
-        # Export scope: ALL: All, SELECT: Selected rows
+        # The export scope. Valid values:
+        # - ALL: all data
+        # - SELECT: selected rows.
         # 
         # This parameter is required.
         self.scope = scope
-        # Type, BASIC: Basic query, ADVANCE: Advanced query, BATCH: Batch query
+        # The query type. Valid values:
+        # - BASIC: basic query
+        # - ADVANCE: advanced query
+        # - BATCH: batch query.
         # 
         # This parameter is required.
         self.type = type

@@ -10,9 +10,9 @@ class CheckUsageVariableResponseBody(DaraModel):
         request_id: str = None,
         result_object: bool = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Whether it was successful
+        # Indicates whether the operation is successful.
         self.result_object = result_object
 
     def validate(self):

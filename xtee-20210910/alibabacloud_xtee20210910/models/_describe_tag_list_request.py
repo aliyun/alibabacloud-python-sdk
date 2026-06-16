@@ -11,13 +11,13 @@ class DescribeTagListRequest(DaraModel):
         lang: str = None,
         reg_id: str = None,
     ):
-        # Primary key ID
+        # The primary key ID.
         self.id = id
-        # Sets the language type for requests and received messages, with a default value of **zh**. Values: 
-        # - **zh**: Chinese
-        # - **en**: English
+        # The language type for the request and response messages. Default value: **zh**. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.lang = lang
-        # Region code
+        # The region code.
         self.reg_id = reg_id
 
     def validate(self):

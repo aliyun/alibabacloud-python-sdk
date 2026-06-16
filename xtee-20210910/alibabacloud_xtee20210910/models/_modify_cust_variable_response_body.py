@@ -13,9 +13,9 @@ class ModifyCustVariableResponseBody(DaraModel):
         request_id: str = None,
         result_object: List[main_models.ModifyCustVariableResponseBodyResultObject] = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Return object
+        # The response object.
         self.result_object = result_object
 
     def validate(self):
@@ -59,11 +59,11 @@ class ModifyCustVariableResponseBodyResultObject(DaraModel):
         message: str = None,
         success: bool = None,
     ):
-        # Failure type
+        # The failure type.
         self.fail_type = fail_type
-        # Detailed information.
+        # The detailed information.
         self.message = message
-        # Whether the operation was successful
+        # Indicates whether the operation is successful.
         self.success = success
 
     def validate(self):

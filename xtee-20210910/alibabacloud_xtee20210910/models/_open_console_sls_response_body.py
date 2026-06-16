@@ -10,9 +10,9 @@ class OpenConsoleSlsResponseBody(DaraModel):
         request_id: str = None,
         result_object: str = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Returned object
+        # The response object.
         self.result_object = result_object
 
     def validate(self):

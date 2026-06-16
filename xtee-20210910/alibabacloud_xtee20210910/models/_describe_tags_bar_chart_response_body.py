@@ -17,17 +17,17 @@ class DescribeTagsBarChartResponseBody(DaraModel):
         result_object: main_models.DescribeTagsBarChartResponseBodyResultObject = None,
         success: bool = None,
     ):
-        # Status code.
+        # The status code.
         self.code = code
-        # HTTP status code
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Error message.
+        # The error message.
         self.message = message
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Return object
+        # The returned object.
         self.result_object = result_object
-        # Whether the request was successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -88,9 +88,9 @@ class DescribeTagsBarChartResponseBodyResultObject(DaraModel):
         series: List[main_models.DescribeTagsBarChartResponseBodyResultObjectSeries] = None,
         xaxis: main_models.DescribeTagsBarChartResponseBodyResultObjectXaxis = None,
     ):
-        # Data list
+        # The data list.
         self.series = series
-        # xaxis interface configuration.
+        # The x-axis configuration.
         self.xaxis = xaxis
 
     def validate(self):
@@ -135,7 +135,7 @@ class DescribeTagsBarChartResponseBodyResultObjectXaxis(DaraModel):
         self,
         data: List[str] = None,
     ):
-        # xaxis data items
+        # The x-axis data items.
         self.data = data
 
     def validate(self):
@@ -165,11 +165,11 @@ class DescribeTagsBarChartResponseBodyResultObjectSeries(DaraModel):
         name: str = None,
         stack: str = None,
     ):
-        # Chart data list
+        # The chart data list.
         self.data = data
-        # Series name.
+        # The series name.
         self.name = name
-        # Chart field, same as name
+        # The chart field, which is the same as the name.
         self.stack = stack
 
     def validate(self):
@@ -218,9 +218,9 @@ class DescribeTagsBarChartResponseBodyResultObjectSeriesData(DaraModel):
         num: int = None,
         scale: str = None,
     ):
-        # Number.
+        # The quantity.
         self.num = num
-        # Scale
+        # The ratio.
         self.scale = scale
 
     def validate(self):

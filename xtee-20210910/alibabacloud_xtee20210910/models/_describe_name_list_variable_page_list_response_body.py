@@ -17,17 +17,17 @@ class DescribeNameListVariablePageListResponseBody(DaraModel):
         total_item: int = None,
         total_page: int = None,
     ):
-        # Current page number.
+        # The current page number.
         self.current_page = current_page
-        # Page size, default value is 10
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Return object
+        # The returned object.
         self.result_object = result_object
-        # Total number of items
+        # The total number of entries.
         self.total_item = total_item
-        # Total number of pages
+        # The total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -106,33 +106,33 @@ class DescribeNameListVariablePageListResponseBodyResultObject(DaraModel):
         type: str = None,
         user_id: int = None,
     ):
-        # Used capacity
+        # The used capacity.
         self.capacity = capacity
-        # Description information.
+        # The description.
         self.description = description
-        # Creation time.
+        # The creation time.
         self.gmt_create = gmt_create
-        # Modification time
+        # The modification time.
         self.gmt_modified = gmt_modified
-        # Name list ID
+        # The named list ID.
         self.id = id
-        # Remaining capacity
+        # The remaining capacity.
         self.left_capacity = left_capacity
-        # Parameter name.
+        # The parameter name.
         self.name = name
-        # Name list type
+        # The named list type.
         self.name_list_type = name_list_type
-        # Associated event eventCode
+        # The associated event code.
         self.ref_obj_id = ref_obj_id
-        # Association type
+        # The association type.
         self.ref_obj_type = ref_obj_type
-        # Data source
+        # The data source.
         self.source_type = source_type
-        # Title.
+        # The title.
         self.title = title
-        # Variable type
+        # The variable type.
         self.type = type
-        # User UID
+        # The user UID.
         self.user_id = user_id
 
     def validate(self):

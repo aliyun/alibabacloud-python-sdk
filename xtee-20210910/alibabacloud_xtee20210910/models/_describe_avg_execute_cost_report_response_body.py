@@ -17,17 +17,17 @@ class DescribeAvgExecuteCostReportResponseBody(DaraModel):
         result_object: List[main_models.DescribeAvgExecuteCostReportResponseBodyResultObject] = None,
         success: bool = None,
     ):
-        # Status code.
+        # The status code.
         self.code = code
-        # HTTP status code
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Error message.
+        # The error message.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Return object
+        # The response object.
         self.result_object = result_object
-        # Whether the call was successful
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -94,9 +94,9 @@ class DescribeAvgExecuteCostReportResponseBodyResultObject(DaraModel):
         ratio: str = None,
         value: str = None,
     ):
-        # Comparison with yesterday\\"s average execution time
+        # The day-over-day ratio compared to yesterday\\"s average execution duration.
         self.ratio = ratio
-        # Today\\"s average execution time
+        # The average execution duration for today.
         self.value = value
 
     def validate(self):

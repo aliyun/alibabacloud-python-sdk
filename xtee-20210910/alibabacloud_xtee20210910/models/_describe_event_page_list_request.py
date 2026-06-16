@@ -16,23 +16,23 @@ class DescribeEventPageListRequest(DaraModel):
         page_size: int = None,
         reg_id: str = None,
     ):
-        # Sets the language type for requests and received messages, with a default value of **zh**. Values:
+        # The language of the request and response. Default value: **zh**. Valid values:
         # - **zh**: Chinese
-        # - **en**: English
+        # - **en**: English.
         self.lang = lang
-        # Creation type
+        # The creation type.
         self.create_type = create_type
-        # Current page number.
+        # The current page number.
         self.current_page = current_page
-        # Event code
+        # The event code.
         self.event_code = event_code
-        # Event name.
+        # The event name.
         self.event_name = event_name
-        # Event status.
+        # The event status.
         self.event_status = event_status
-        # Page size, with a default value of 10
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # Region code
+        # The region code.
         self.reg_id = reg_id
 
     def validate(self):

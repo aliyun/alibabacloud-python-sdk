@@ -17,17 +17,17 @@ class DescribeAuthScenePageListResponseBody(DaraModel):
         total_item: int = None,
         total_page: int = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Current page number.
+        # The current page number.
         self.current_page = current_page
-        # Page size, default value is 10
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # Returned object
+        # The returned object.
         self.result_object = result_object
-        # Total number of items
+        # The total number of entries.
         self.total_item = total_item
-        # Total number of pages.
+        # The total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -97,15 +97,15 @@ class DescribeAuthScenePageListResponseBodyResultObject(DaraModel):
         scene_name: str = None,
         server_name: str = None,
     ):
-        # Number of common rules
+        # The number of General Policy policies.
         self.common_rule_count = common_rule_count
-        # Number of custom rules
+        # The number of custom policies.
         self.custom_rule_count = custom_rule_count
-        # Event code
+        # The event code.
         self.event_code = event_code
-        # Scene name.
+        # The scenario name.
         self.scene_name = scene_name
-        # Service name.
+        # The service name.
         self.server_name = server_name
 
     def validate(self):

@@ -15,17 +15,17 @@ class DescribeEventTotalCountReportResponseBody(DaraModel):
         result_object: main_models.DescribeEventTotalCountReportResponseBodyResultObject = None,
         success: bool = None,
     ):
-        # Status code
+        # Status code.
         self.code = code
-        # HTTP status code
+        # HTTP status code.
         self.http_status_code = http_status_code
         # Error message.
         self.message = message
         # Request ID.
         self.request_id = request_id
-        # Returned object
+        # Response object.
         self.result_object = result_object
-        # Indicates whether this operation was successful, `true` means success.
+        # Indicates whether the operation was successful. A value of true indicates success.
         self.success = success
 
     def validate(self):
@@ -86,9 +86,9 @@ class DescribeEventTotalCountReportResponseBodyResultObject(DaraModel):
         ratio: str = None,
         value: str = None,
     ):
-        # Comparison with yesterday\\"s event invocation count
+        # Day-over-day comparison of call event count.
         self.ratio = ratio
-        # Today\\"s event invocation count
+        # Total number of call events today.
         self.value = value
 
     def validate(self):

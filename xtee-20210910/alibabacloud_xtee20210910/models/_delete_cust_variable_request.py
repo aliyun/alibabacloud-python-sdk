@@ -13,17 +13,17 @@ class DeleteCustVariableRequest(DaraModel):
         reg_id: str = None,
         variable_id: str = None,
     ):
-        # Sets the language type for requests and received messages, default value is **zh**. Values: 
-        # - **zh**: Chinese
-        # - **en**: English
+        # The language of the request and response. Default value: **zh**. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.lang = lang
-        # Creation type
+        # The creation type.
         self.create_type = create_type
-        # Data version.
+        # The data version.
         self.data_version = data_version
-        # Region code
+        # The region code.
         self.reg_id = reg_id
-        # Variable ID
+        # The variable ID.
         self.variable_id = variable_id
 
     def validate(self):

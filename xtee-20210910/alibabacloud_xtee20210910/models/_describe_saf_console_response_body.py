@@ -12,9 +12,9 @@ class DescribeSafConsoleResponseBody(DaraModel):
         request_id: str = None,
         biz_data: List[str] = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Returned result.
+        # The response result.
         self.biz_data = biz_data
 
     def validate(self):

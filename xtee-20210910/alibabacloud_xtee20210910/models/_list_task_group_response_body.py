@@ -20,14 +20,23 @@ class ListTaskGroupResponseBody(DaraModel):
         total_item: int = None,
         total_page: int = None,
     ):
+        # Status code.
         self.code = code
+        # Current page number.
         self.current_page = current_page
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Return message.
         self.message = message
+        # Page size.
         self.page_size = page_size
+        # Request ID.
         self.request_id = request_id
+        # Request result.
         self.result_object = result_object
+        # Total number of returned items.
         self.total_item = total_item
+        # Total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -119,14 +128,23 @@ class ListTaskGroupResponseBodyResultObject(DaraModel):
         task_group_id: int = None,
         task_group_name: str = None,
     ):
+        # Creation Time.
         self.create_time = create_time
+        # Creator.
         self.creator_user_id = creator_user_id
+        # Audience group status.
         self.group_status = group_status
+        # Task group name.
         self.sample_names = sample_names
+        # Number of subtasks parsed and split from the task.
         self.sub_task_count = sub_task_count
+        # Subtask.
         self.sub_task_list = sub_task_list
+        # Scenario.
         self.tab = tab
+        # Task group ID.
         self.task_group_id = task_group_id
+        # Task group name.
         self.task_group_name = task_group_name
 
     def validate(self):
@@ -226,22 +244,43 @@ class ListTaskGroupResponseBodyResultObjectSubTaskList(DaraModel):
         task_group_id: int = None,
         task_status: str = None,
     ):
+        # Job end time.
         self.finish_time = finish_time
+        # Group name.
         self.group_name = group_name
+        # Indicates whether to hide.
         self.hide_view_result_button = hide_view_result_button
+        # Indicates whether the subtask is charged.
         self.is_charge = is_charge
+        # Model scenario.
         self.model_scene = model_scene
+        # Sample ID.
         self.sample_id = sample_id
+        # Sample name.
         self.sample_name = sample_name
+        # Service code.
         self.service_code = service_code
+        # Service name.
         self.service_name = service_name
+        # Subtask ID.
         self.sub_task_id = sub_task_id
+        # Indicates whether the job can be canceled. Valid values:  
+        # - true: The job can be canceled.  
+        # - false: The job cannot be canceled.
         self.support_cancel = support_cancel
+        # Supports download.
         self.support_download = support_download
+        # Indicates whether merge download is supported.
         self.support_merge_select = support_merge_select
+        # Indicates whether viewing is supported.
         self.support_view = support_view
+        # Scenario.
         self.tab = tab
+        # Task group ID.
         self.task_group_id = task_group_id
+        # The execution status of the import job:  
+        # - DOING: running  
+        # - FINISH: execution completed.
         self.task_status = task_status
 
     def validate(self):

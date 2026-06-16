@@ -12,15 +12,15 @@ class DeleteFieldRequest(DaraModel):
         name: str = None,
         reg_id: str = None,
     ):
-        # Set the language type for requests and received messages, default value is **zh**. Values: 
-        # - **zh**: Chinese
-        # - **en**: English
+        # The language type for the request and response messages. Default value: **zh**. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.lang = lang
-        # Primary key ID of the field
+        # The primary key ID of the field.
         self.id = id
-        # Name of the field.
+        # The name of the field.
         self.name = name
-        # Region code
+        # The region code.
         # 
         # This parameter is required.
         self.reg_id = reg_id

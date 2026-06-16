@@ -12,15 +12,15 @@ class DescribeFieldListRequest(DaraModel):
         inputs: str = None,
         reg_id: str = None,
     ):
-        # Sets the language type for requests and received messages, default value is **zh**. Values: 
+        # The language of the request and response messages. Default value: **zh**. Valid values:
         # - **zh**: Chinese
-        # - **en**: English
+        # - **en**: English.
         self.lang = lang
-        # Query input name or title
+        # The query parameter name or title.
         self.condition = condition
-        # Selected fields
+        # The selected fields.
         self.inputs = inputs
-        # Region code
+        # The region code.
         # 
         # This parameter is required.
         self.reg_id = reg_id

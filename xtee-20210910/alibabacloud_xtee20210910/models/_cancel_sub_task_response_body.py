@@ -13,10 +13,15 @@ class CancelSubTaskResponseBody(DaraModel):
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Service code.
         self.code = code
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Message returned by the API request.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Return Result.
         self.result_object = result_object
 
     def validate(self):

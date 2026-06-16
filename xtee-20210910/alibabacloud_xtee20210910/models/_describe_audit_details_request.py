@@ -11,15 +11,15 @@ class DescribeAuditDetailsRequest(DaraModel):
         id: int = None,
         reg_id: str = None,
     ):
-        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # The language of the request and response. Default value: **zh**. Valid values:
         # - **zh**: Chinese
-        # - **en**: English
+        # - **en**: English.
         self.lang = lang
-        # Primary key ID
+        # The primary key ID.
         # 
         # This parameter is required.
         self.id = id
-        # Region code
+        # The region code.
         self.reg_id = reg_id
 
     def validate(self):

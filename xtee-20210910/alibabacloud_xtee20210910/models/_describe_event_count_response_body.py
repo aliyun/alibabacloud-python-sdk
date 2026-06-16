@@ -15,17 +15,17 @@ class DescribeEventCountResponseBody(DaraModel):
         result_object: main_models.DescribeEventCountResponseBodyResultObject = None,
         success: bool = None,
     ):
-        # Status code
+        # The status code.
         self.code = code
-        # HTTP status code
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Error details
+        # The error details.
         self.message = message
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Returned object
+        # The returned object.
         self.result_object = result_object
-        # Whether the request was successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -87,11 +87,11 @@ class DescribeEventCountResponseBodyResultObject(DaraModel):
         max_total_item: int = None,
         total_item: int = None,
     ):
-        # Whether it exceeds the maximum number
+        # Indicates whether the maximum number is exceeded.
         self.limit = limit
-        # Maximum creation count
+        # The maximum number of items that can be created.
         self.max_total_item = max_total_item
-        # Total count
+        # The total number of items.
         self.total_item = total_item
 
     def validate(self):

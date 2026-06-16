@@ -23,47 +23,47 @@ class CreateCustVariableRequest(DaraModel):
         velocity_fc: str = None,
         velocity_tw: str = None,
     ):
-        # Sets the language type for requests and received messages, with a default value of **zh**. Values: 
-        # - **zh**: Chinese
-        # - **en**: English
+        # The language of the request and response. Default value: **zh**. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.lang = lang
-        # Condition value.
+        # The condition value.
         self.condition = condition
-        # Creation type
+        # The creation type.
         self.create_type = create_type
-        # Description information.
+        # The description.
         self.description = description
-        # Event code
+        # The event code.
         # 
         # This parameter is required.
         self.event_codes = event_codes
-        # Value type
+        # The value type.
         self.history_value_type = history_value_type
-        # Accumulative object
+        # The cumulative object.
         self.object = object
-        # Variable return type
+        # The return type of the variable.
         self.outputs = outputs
-        # Region code
+        # The region code.
         self.reg_id = reg_id
-        # Primary object
+        # The subject object.
         # 
         # This parameter is required.
         self.subject = subject
-        # Time slice type
+        # The time slice type.
         # 
         # This parameter is required.
         self.time_type = time_type
-        # Title.
+        # The title.
         # 
         # This parameter is required.
         self.title = title
-        # Number of time units
+        # The number of time units.
         self.tw_count = tw_count
-        # Variable type
+        # The variable type.
         # 
         # This parameter is required.
         self.velocity_fc = velocity_fc
-        # Time slice unit
+        # The time slice unit.
         # 
         # This parameter is required.
         self.velocity_tw = velocity_tw

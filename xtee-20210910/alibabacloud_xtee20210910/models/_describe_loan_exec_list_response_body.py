@@ -14,17 +14,17 @@ class DescribeLoanExecListResponseBody(DaraModel):
         total_item: int = None,
         total_page: int = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Current page number.
+        # The current page number.
         self.current_page = current_page
-        # Page size, with a default value of 10.
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # Return object.
+        # The returned object.
         self.result_object = result_object
-        # Total number of items.
+        # The total number of entries.
         self.total_item = total_item
-        # Total number of pages.
+        # The total number of pages.
         self.total_page = total_page
 
     def validate(self):

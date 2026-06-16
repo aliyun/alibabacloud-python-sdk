@@ -11,15 +11,15 @@ class DescribeAuthScenePageListRequest(DaraModel):
         reg_id: str = None,
         scene_name: str = None,
     ):
-        # Sets the language type for requests and received messages, default value is **zh**. Values: 
-        # - **zh**: Chinese
-        # - **en**: English
+        # The language type for the request and response messages. Default value: **zh**. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.lang = lang
-        # Region code
+        # The region code.
         # 
         # This parameter is required.
         self.reg_id = reg_id
-        # Scene name.
+        # The scenario name.
         self.scene_name = scene_name
 
     def validate(self):

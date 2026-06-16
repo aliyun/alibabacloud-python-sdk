@@ -19,29 +19,29 @@ class DescribeFieldPageRequest(DaraModel):
         title: str = None,
         type: str = None,
     ):
-        # Set the language type for request and response messages, default value is **zh**. Values:
+        # The language type for the request and response messages. Default value: **zh**. Valid values:
         # - **zh**: Chinese
-        # - **en**: English
+        # - **en**: English.
         self.lang = lang
-        # Field classification
+        # The field classification.
         self.classify = classify
-        # Query input parameter name or title
+        # The query parameter: name or title.
         self.condition = condition
-        # Current page number
+        # The current page number.
         self.current_page = current_page
-        # Field name
+        # The field name.
         self.name = name
-        # Number of items per page, default value is 10
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # Region code
+        # The region code.
         self.reg_id = reg_id
-        # Field source
+        # The field source.
         self.source = source
-        # Status.
+        # The status.
         self.status = status
-        # Title.
+        # The title.
         self.title = title
-        # Field type
+        # The field type.
         self.type = type
 
     def validate(self):

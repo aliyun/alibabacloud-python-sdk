@@ -13,9 +13,9 @@ class DescribeOperatorListResponseBody(DaraModel):
         request_id: str = None,
         result_object: List[main_models.DescribeOperatorListResponseBodyResultObject] = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Return object
+        # The returned object.
         self.result_object = result_object
 
     def validate(self):
@@ -58,9 +58,9 @@ class DescribeOperatorListResponseBodyResultObject(DaraModel):
         field_type: str = None,
         operators: List[main_models.DescribeOperatorListResponseBodyResultObjectOperators] = None,
     ):
-        # Return value type
+        # The type of the return value.
         self.field_type = field_type
-        # Operator list
+        # The list of operators.
         self.operators = operators
 
     def validate(self):
@@ -106,15 +106,15 @@ class DescribeOperatorListResponseBodyResultObjectOperators(DaraModel):
         name: str = None,
         right_variables: List[main_models.DescribeOperatorListResponseBodyResultObjectOperatorsRightVariables] = None,
     ):
-        # Operator code
+        # The operator code.
         self.code = code
-        # Whether it contains a right variable
+        # Indicates whether a right variable exists.
         self.has_right_variable = has_right_variable
-        # Description
+        # The description.
         self.memo = memo
-        # Operator name
+        # The operator name.
         self.name = name
-        # Right variable object
+        # The right variable object.
         self.right_variables = right_variables
 
     def validate(self):
@@ -176,11 +176,11 @@ class DescribeOperatorListResponseBodyResultObjectOperatorsRightVariables(DaraMo
         field_type: str = None,
         field_value: str = None,
     ):
-        # Field name.
+        # The field name.
         self.field_name = field_name
-        # Field type.
+        # The type of the field.
         self.field_type = field_type
-        # Field value.
+        # The field value.
         self.field_value = field_value
 
     def validate(self):

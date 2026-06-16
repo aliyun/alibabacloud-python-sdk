@@ -16,23 +16,23 @@ class DescribeCustVariablePageRequest(DaraModel):
         reg_id: str = None,
         status: str = None,
     ):
-        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # The language type for the request and response messages. Default value: **zh**. Valid values:
         # - **zh**: Chinese
-        # - **en**: English
+        # - **en**: English.
         self.lang = lang
-        # Creation type.
+        # The creation type.
         self.create_type = create_type
-        # Pagination parameter, current page number.
+        # The current page number for pagination.
         self.current_page = current_page
-        # Description.
+        # The description.
         self.description = description
-        # Event code.
+        # The event code.
         self.event_code = event_code
-        # Number of records per page, default value: 10.
+        # The number of records per page. Default value: 10.
         self.page_size = page_size
-        # Region code.
+        # The region code.
         self.reg_id = reg_id
-        # status.
+        # The status.
         self.status = status
 
     def validate(self):

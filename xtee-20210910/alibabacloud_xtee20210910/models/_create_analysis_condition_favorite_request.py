@@ -18,39 +18,39 @@ class CreateAnalysisConditionFavoriteRequest(DaraModel):
         reg_id: str = None,
         type: str = None,
     ):
-        # Sets the language type for requests and received messages, with a default value of **zh**. Values:
-        # - **zh**: Chinese
-        # - **en**: English
+        # The language of the request and response. Default value: **zh**. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.lang = lang
-        # Condition value.
+        # The condition value.
         # 
         # This parameter is required.
         self.condition = condition
-        # Start time, accurate to milliseconds (ms).
+        # The start time, in milliseconds (ms).
         # 
         # This parameter is required.
         self.event_begin_time = event_begin_time
-        # Event codes, separated by commas
+        # The event codes. Separate multiple event codes with commas (,).
         # 
         # This parameter is required.
         self.event_codes = event_codes
-        # End time, accurate to milliseconds (ms).
+        # The end time, in milliseconds (ms).
         # 
         # This parameter is required.
         self.event_end_time = event_end_time
-        # Field name
+        # The field name.
         self.field_name = field_name
-        # Field value
+        # The field value.
         self.field_value = field_value
-        # Condition favorite name
+        # The name of the saved query condition.
         # 
         # This parameter is required.
         self.name = name
-        # Region code
+        # The region code.
         # 
         # This parameter is required.
         self.reg_id = reg_id
-        # Query type
+        # The query type.
         # 
         # This parameter is required.
         self.type = type

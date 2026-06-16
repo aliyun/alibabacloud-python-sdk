@@ -17,17 +17,17 @@ class DescribeQueryVariablePageListResponseBody(DaraModel):
         total_item: int = None,
         total_page: int = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Pagination parameter, current page.
+        # The current page number.
         self.current_page = current_page
-        # Page size, default value is 10
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # Return object
+        # The returned object.
         self.result_object = result_object
-        # Total items
+        # The total number of entries.
         self.total_item = total_item
-        # Total pages
+        # The total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -104,29 +104,29 @@ class DescribeQueryVariablePageListResponseBodyResultObject(DaraModel):
         total: int = None,
         version: int = None,
     ):
-        # Data source code.
+        # The data source code.
         self.data_source_code = data_source_code
-        # Data source name.
+        # The data source name.
         self.data_source_name = data_source_name
-        # Description information.
+        # The description.
         self.description = description
-        # Event name.
+        # The event name.
         self.event_name = event_name
-        # Return value type
+        # The return value type.
         self.field_type = field_type
-        # Creation time.
+        # The creation time.
         self.gmt_create = gmt_create
-        # Modification time
+        # The modification time.
         self.gmt_modified = gmt_modified
-        # Query variable primary key ID
+        # The primary key ID of the custom query variable.
         self.id = id
-        # Query variable name
+        # The name of the custom query variable.
         self.name = name
-        # Status.
+        # The status.
         self.status = status
-        # Total count
+        # The total number of entries.
         self.total = total
-        # Version number.
+        # The version number.
         self.version = version
 
     def validate(self):

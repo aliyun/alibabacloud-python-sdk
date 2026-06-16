@@ -14,19 +14,19 @@ class UpdateAuditRequest(DaraModel):
         id: int = None,
         reg_id: str = None,
     ):
-        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # The language of the request and response. Default value: **zh**. Valid values:
         # - **zh**: Chinese
-        # - **en**: English
+        # - **en**: English.
         self.lang = lang
-        # Approval comments
+        # The approval comment.
         self.audit_msg = audit_msg
-        # Associated type
+        # The association type.
         self.audit_relation_type = audit_relation_type
-        # Status
+        # The approval status.
         self.audit_status = audit_status
-        # The ID of the approval to be updated.
+        # The ID of the approval to update.
         self.id = id
-        # Region code
+        # The region code.
         self.reg_id = reg_id
 
     def validate(self):

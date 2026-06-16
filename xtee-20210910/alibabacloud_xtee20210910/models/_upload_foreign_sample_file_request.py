@@ -12,9 +12,15 @@ class UploadForeignSampleFileRequest(DaraModel):
         reg_id: str = None,
         tab: str = None,
     ):
+        # OSS path of the file.
         self.file = file
+        # Set the language type for requests and received messages. The default value is **zh**. Valid values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # area encoding.
         self.reg_id = reg_id
+        # scenario.
         self.tab = tab
 
     def validate(self):

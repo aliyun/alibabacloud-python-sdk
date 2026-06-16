@@ -905,6 +905,7 @@ from ._create_analysis_export_task_response_body import CreateAnalysisExportTask
 from ._create_foreign_poc_sample_response_body import CreateForeignPocSampleResponseBodyResultObject
 from ._create_poc_sample_response_body import CreatePocSampleResponseBodyResultObject
 from ._create_sample_response_body import CreateSampleResponseBodyResultObject
+from ._create_task_group_response_body import CreateTaskGroupResponseBodyResultObjectSubTaskList
 from ._create_task_group_response_body import CreateTaskGroupResponseBodyResultObject
 from ._deep_copy_rule_response_body import DeepCopyRuleResponseBodyResultObject
 from ._describe_advance_search_left_variable_list_response_body import DescribeAdvanceSearchLeftVariableListResponseBodyResultObject
@@ -2072,6 +2073,7 @@ __all__ = [
     CreateForeignPocSampleResponseBodyResultObject,
     CreatePocSampleResponseBodyResultObject,
     CreateSampleResponseBodyResultObject,
+    CreateTaskGroupResponseBodyResultObjectSubTaskList,
     CreateTaskGroupResponseBodyResultObject,
     DeepCopyRuleResponseBodyResultObject,
     DescribeAdvanceSearchLeftVariableListResponseBodyResultObject,

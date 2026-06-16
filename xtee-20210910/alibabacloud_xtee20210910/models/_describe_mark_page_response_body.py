@@ -17,17 +17,17 @@ class DescribeMarkPageResponseBody(DaraModel):
         total_item: int = None,
         total_page: int = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Current page number.
+        # The current page number.
         self.current_page = current_page
-        # Page size, default value is 10.
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # Returned object.
+        # The returned object.
         self.result_object = result_object
-        # Total number of items.
+        # The total number of entries.
         self.total_item = total_item
-        # Total number of pages.
+        # The total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -96,13 +96,15 @@ class DescribeMarkPageResponseBodyResultObject(DaraModel):
         id: int = None,
         mark_type: str = None,
     ):
-        # Field name.
+        # The field name.
         self.field_name = field_name
-        # Field value.
+        # The field value.
         self.field_value = field_value
-        # Primary key ID.
+        # The primary key ID.
         self.id = id
-        # Mark (0 No / 1 Yes).
+        # Indicates whether the entry is tagged. Valid values:
+        # - **0**: not tagged.
+        # - **1**: tagged.
         self.mark_type = mark_type
 
     def validate(self):

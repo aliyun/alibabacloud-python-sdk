@@ -16,10 +16,15 @@ class UploadForeignSampleFileResponseBody(DaraModel):
         request_id: str = None,
         result_object: main_models.UploadForeignSampleFileResponseBodyResultObject = None,
     ):
+        # status code.
         self.code = code
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Return message.
         self.message = message
+        # request ID.
         self.request_id = request_id
+        # Return Result.
         self.result_object = result_object
 
     def validate(self):
@@ -82,16 +87,25 @@ class UploadForeignSampleFileResponseBodyResultObject(DaraModel):
         preview_data: main_models.UploadForeignSampleFileResponseBodyResultObjectPreviewData = None,
         row_count: int = None,
     ):
+        # Number of jobs.
         self.beyond_backtracking_period_num = beyond_backtracking_period_num
+        # Column.
         self.column_stats = column_stats
+        # Time type.
         self.date_type = date_type
+        # File name.
         self.file_name = file_name
+        # File Size.
         self.file_size = file_size
+        # File URL.
         self.file_url = file_url
+        # Non-existent scenarios.
         self.not_exist_scenes = not_exist_scenes
-        # PhoneInvalidList。
+        # PhoneInvalidList.
         self.phone_invalid_list = phone_invalid_list
+        # Table data.
         self.preview_data = preview_data
+        # Number of rows.
         self.row_count = row_count
 
     def validate(self):
@@ -185,7 +199,9 @@ class UploadForeignSampleFileResponseBodyResultObjectPreviewData(DaraModel):
         headers: List[str] = None,
         rows: List[List[str]] = None,
     ):
+        # Header information returned.
         self.headers = headers
+        # Row data.
         self.rows = rows
 
     def validate(self):
@@ -224,11 +240,17 @@ class UploadForeignSampleFileResponseBodyResultObjectColumnStats(DaraModel):
         miss_rate: str = None,
         row_number: int = None,
     ):
+        # De-duplication Count.
         self.distinct_number = distinct_number
+        # De-duplication rate.
         self.distinct_rate = distinct_rate
+        # Field Name.
         self.field_name = field_name
+        # Missing count.
         self.miss_number = miss_number
+        # Missing rate.
         self.miss_rate = miss_rate
+        # Row number of the record.
         self.row_number = row_number
 
     def validate(self):

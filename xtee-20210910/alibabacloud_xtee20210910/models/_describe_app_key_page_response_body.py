@@ -17,17 +17,17 @@ class DescribeAppKeyPageResponseBody(DaraModel):
         total_item: int = None,
         total_page: int = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Current page number.
+        # The current page number.
         self.current_page = current_page
-        # Number of items per page, default value is 10.
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # Returned object.
+        # The returned object.
         self.result_object = result_object
-        # Total number of items.
+        # The total number of entries.
         self.total_item = total_item
-        # Total number of pages.
+        # The total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -101,23 +101,23 @@ class DescribeAppKeyPageResponseBodyResultObject(DaraModel):
         sdk_items: str = None,
         used: str = None,
     ):
-        # Android SDK download URL.
+        # The download URL of the Android SDK.
         self.android_sdk_url = android_sdk_url
-        # Android SDK version number.
+        # The version number of the Android SDK.
         self.android_sdk_version = android_sdk_version
-        # Application appkey.
+        # The appKey of the application.
         self.app_key = app_key
-        # Creation time.
+        # The creation time.
         self.gmt_create = gmt_create
-        # iOS SDK download URL.
+        # The download URL of the iOS SDK.
         self.ios_sdk_url = ios_sdk_url
-        # iOS SDK version number.
+        # The version number of the iOS SDK.
         self.ios_sdk_version = ios_sdk_version
-        # Memo.
+        # The remarks.
         self.memo = memo
         # Deprecated.
         self.sdk_items = sdk_items
-        # Whether this appKey is integrated.
+        # Indicates whether the appKey is integrated.
         self.used = used
 
     def validate(self):

@@ -14,13 +14,13 @@ class DescribeUserInfoResponseBody(DaraModel):
         result_object: main_models.DescribeUserInfoResponseBodyResultObject = None,
         success: bool = None,
     ):
-        # Status code.
+        # The status code.
         self.code = code
-        # HTTP status code
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Error message
+        # The error message.
         self.message = message
-        # Returned object
+        # The returned object.
         self.result_object = result_object
         # Indicates whether the request was successful.
         self.success = success
@@ -79,13 +79,13 @@ class DescribeUserInfoResponseBodyResultObject(DaraModel):
         user_id: int = None,
         user_name: str = None,
     ):
-        # Client IP.
+        # The client IP address.
         self.client_ip = client_ip
-        # Sub-account ID
+        # The RAM user ID.
         self.sub_id = sub_id
-        # User UID
+        # The user UID.
         self.user_id = user_id
-        # User name
+        # The username.
         self.user_name = user_name
 
     def validate(self):

@@ -21,25 +21,25 @@ class DescribeEventResultListResponseBody(DaraModel):
         total_item: int = None,
         total_page: int = None,
     ):
-        # Status code.
+        # The status code.
         self.code = code
-        # Current page number.
+        # The current page number.
         self.current_page = current_page
-        # HTTP status code
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Error details
+        # The error details.
         self.message = message
-        # Page size, default value is 10
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Returned object
+        # The returned object.
         self.result_object = result_object
-        # Whether the query was successful.
+        # Indicates whether the query was successful.
         self.success = success
-        # Total number of items.
+        # The total number of entries.
         self.total_item = total_item
-        # Total number of pages
+        # The total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -134,17 +134,17 @@ class DescribeEventResultListResponseBodyResultObject(DaraModel):
         reject_num: int = None,
         total_num: int = None,
     ):
-        # Event code
+        # The event code.
         self.event_code = event_code
-        # Event name.
+        # The event name.
         self.event_name = event_name
-        # Number of passed checks.
+        # The number of entries that passed the check.
         self.pass_num = pass_num
-        # Number of pending items.
+        # The number of pending entries.
         self.pending_num = pending_num
-        # Number of rejected approvals.
+        # The number of entries rejected during approval.
         self.reject_num = reject_num
-        # Total number of items.
+        # The total number of entries.
         self.total_num = total_num
 
     def validate(self):

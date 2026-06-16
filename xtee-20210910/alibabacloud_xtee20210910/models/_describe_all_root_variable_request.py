@@ -18,27 +18,27 @@ class DescribeAllRootVariableRequest(DaraModel):
         reg_id: str = None,
         velocity_variable_ids: str = None,
     ):
-        # Set the language type for requests and received messages, default value is **zh**. Values: 
+        # The language of the request and response. Default value: **zh**. Valid values:
         # - **zh**: Chinese
-        # - **en**: English
+        # - **en**: English.
         self.lang = lang
-        # Request source IP. No need to fill in, the system will automatically obtain it.
+        # The source IP address of the request. You do not need to specify this parameter. The system automatically obtains the value.
         self.source_ip = source_ip
-        # Device variable list
+        # The list of device variables.
         self.device_variable_ids = device_variable_ids
-        # Event code
+        # The event code.
         self.event_code = event_code
-        # Custom variable list
+        # The list of custom variables.
         self.expression_variable_ids = expression_variable_ids
-        # Variable ID.
+        # The variable ID.
         self.id = id
-        # Event field list
+        # The list of event fields.
         self.native_variable_ids = native_variable_ids
-        # Custom query variable
+        # The custom query variables.
         self.query_variable_ids = query_variable_ids
-        # Region code
+        # The region code.
         self.reg_id = reg_id
-        # Custom cumulative variable
+        # The custom cumulative variables.
         self.velocity_variable_ids = velocity_variable_ids
 
     def validate(self):

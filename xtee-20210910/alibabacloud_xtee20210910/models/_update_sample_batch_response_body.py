@@ -10,9 +10,9 @@ class UpdateSampleBatchResponseBody(DaraModel):
         request_id: str = None,
         data: bool = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Returned data.
+        # The returned data.
         self.data = data
 
     def validate(self):

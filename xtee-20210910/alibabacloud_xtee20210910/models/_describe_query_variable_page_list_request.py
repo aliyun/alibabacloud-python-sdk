@@ -15,21 +15,21 @@ class DescribeQueryVariablePageListRequest(DaraModel):
         page_size: int = None,
         reg_id: str = None,
     ):
-        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # The language type for the request and response messages. Default value: **zh**. Valid values:
         # - **zh**: Chinese
-        # - **en**: English
+        # - **en**: English.
         self.lang = lang
-        # Current page number.
+        # The current page number.
         self.current_page = current_page
-        # Data source code
+        # The data source code.
         self.data_source_code = data_source_code
-        # Event code
+        # The event code.
         self.event_code = event_code
-        # Query variable name
+        # The name of the custom query variable.
         self.name = name
-        # Page size, default value is 10
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # Region code
+        # The region code.
         # 
         # This parameter is required.
         self.reg_id = reg_id

@@ -13,17 +13,17 @@ class UpdateSampleBatchRequest(DaraModel):
         tags: str = None,
         versions: str = None,
     ):
-        # Sets the language type for requests and received messages, default value is **zh**. Values:
-        # - **zh**: Chinese
-        # - **en**: English
+        # The language type for the request and response. Default value: **zh**. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.lang = lang
-        # Batch operation IDs.
+        # The IDs of the samples to be modified in batches.
         self.ids = ids
-        # Region code.
+        # The region code.
         self.reg_id = reg_id
-        # Tags (comma-separated).
+        # The tags, separated by commas.
         self.tags = tags
-        # Version number (latest).
+        # The latest version numbers.
         self.versions = versions
 
     def validate(self):

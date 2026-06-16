@@ -20,31 +20,31 @@ class ModifyRuleStatusRequest(DaraModel):
         rule_id: str = None,
         rule_version_id: int = None,
     ):
-        # Set the language type for requests and received messages, default value is **zh**. Values:
+        # The language of the request and response. Default value: **zh**. Valid values:
         # - **zh**: Chinese
-        # - **en**: English
+        # - **en**: English.
         self.lang = lang
-        # UID of the applicant.
+        # The UID of the user who initiated the approval.
         self.apply_user_id = apply_user_id
-        # Name of the applicant.
+        # The name of the user who initiated the approval.
         self.apply_user_name = apply_user_name
-        # Approval remarks.
+        # The remarks for the approval request.
         self.audit_remark = audit_remark
-        # UID of the auditor.
+        # The UID of the approver.
         self.audit_user_id = audit_user_id
-        # Name of the auditor.
+        # The name of the approver.
         self.audit_user_name = audit_user_name
-        # Primary key ID of the policy.
+        # The primary key ID of the policy.
         self.console_rule_id = console_rule_id
-        # Event type.
+        # The event type.
         self.event_type = event_type
-        # Region code.
+        # The region code.
         self.reg_id = reg_id
-        # Audit status.
+        # The approval status.
         self.rule_audit_type = rule_audit_type
-        # Policy ID.
+        # The policy ID.
         self.rule_id = rule_id
-        # Primary key ID of the policy version.
+        # The primary key ID of the policy version.
         self.rule_version_id = rule_version_id
 
     def validate(self):

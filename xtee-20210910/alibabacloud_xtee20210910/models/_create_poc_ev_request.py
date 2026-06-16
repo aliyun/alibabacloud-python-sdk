@@ -19,30 +19,30 @@ class CreatePocEvRequest(DaraModel):
         task_name: str = None,
         type: str = None,
     ):
-        # Date format type
+        # The date format type.
         self.date_format = date_format
-        # File name.
-        # > The file name must end with txt or sql. For example, test.txt, test.sql.
+        # The file name.
+        # > The file name must end with txt or sql. Example: test.txt or test.sql.
         self.file_name = file_name
-        # File type
+        # The file type.
         self.file_type = file_type
-        # File URL.
+        # The file URL.
         self.file_url = file_url
-        # Sets the language type for requests and received messages, with a default value of **zh**. Values:
+        # The language type for the request and response messages. Default value: **zh**. Valid values:
         # - **zh**: Chinese
-        # - **en**: English
+        # - **en**: English.
         self.lang = lang
-        # Region code
+        # The region code.
         self.reg_id = reg_id
-        # Service code.
+        # The service code.
         self.service_code = service_code
-        # Service name.
+        # The service name.
         self.service_name = service_name
-        # Scenario.
+        # The scenario.
         self.tab = tab
-        # Task name.
+        # The task name.
         self.task_name = task_name
-        # Access type.
+        # The access type.
         self.type = type
 
     def validate(self):

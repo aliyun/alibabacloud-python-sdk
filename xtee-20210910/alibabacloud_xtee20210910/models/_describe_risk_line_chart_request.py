@@ -13,21 +13,21 @@ class DescribeRiskLineChartRequest(DaraModel):
         event_codes: str = None,
         reg_id: str = None,
     ):
-        # Sets the language type for requests and received messages, default value is **zh**. Values: 
+        # Sets the language type for the request and response messages. Default value: **zh**. Valid values:
         # - **zh**: Chinese
         # - **en**: English
         self.lang = lang
-        # Query start time, accurate to milliseconds (ms).
+        # The beginning of the time range to query, in milliseconds (ms).
         # 
         # This parameter is required.
         self.begin_time = begin_time
-        # End time, accurate to milliseconds (ms).
+        # The end of the time range to query, in milliseconds (ms).
         # 
         # This parameter is required.
         self.end_time = end_time
-        # Event codes, separated by commas (,).
+        # Event codes. Separate multiple event codes with commas (,).
         self.event_codes = event_codes
-        # Region code
+        # Region ID.
         self.reg_id = reg_id
 
     def validate(self):

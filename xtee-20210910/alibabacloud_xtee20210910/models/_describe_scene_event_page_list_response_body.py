@@ -17,17 +17,17 @@ class DescribeSceneEventPageListResponseBody(DaraModel):
         total_item: int = None,
         total_page: int = None,
     ):
-        # Current page number.
+        # The current page number.
         self.current_page = current_page
-        # Number of items per page. Default value: 20, minimum value: 1, maximum value: 50.
+        # The number of entries per page in the response. Default value: 20. Minimum value: 1. Maximum value: 50.
         self.page_size = page_size
-        # Request ID, each request has a unique value, which facilitates subsequent troubleshooting
+        # The request ID. Each request has a unique ID for troubleshooting purposes.
         self.request_id = request_id
-        # Return array
+        # The returned array.
         self.result_object = result_object
-        # Total number of items
+        # The total number of entries.
         self.total_item = total_item
-        # Total number of pages
+        # The total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -102,25 +102,25 @@ class DescribeSceneEventPageListResponseBodyResultObject(DaraModel):
         use_status: str = None,
         white_box_rule_count: str = None,
     ):
-        # Number of common rules
+        # The number of General Policy rules.
         self.common_rule_count = common_rule_count
-        # Number of custom rules
+        # The number of custom policies.
         self.custom_rule_count = custom_rule_count
-        # Event code
+        # The event code.
         self.event_code = event_code
-        # Event name.
+        # The event name.
         self.event_name = event_name
-        # Modification time
+        # The time when the event was last modified.
         self.gmt_modified = gmt_modified
-        # Modifier
+        # The user who last modified the event.
         self.modifier = modifier
-        # Number of custom rules
+        # The number of user-defined policies.
         self.normal_rule_count = normal_rule_count
-        # Service code
+        # The service code.
         self.service = service
-        # Usage status
+        # The usage status.
         self.use_status = use_status
-        # Number of white-box rules
+        # The number of whitebox implementation policies.
         self.white_box_rule_count = white_box_rule_count
 
     def validate(self):

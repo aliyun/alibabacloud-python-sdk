@@ -11,13 +11,13 @@ class DescribeRecommendTaskDetailRequest(DaraModel):
         reg_id: str = None,
         task_id: int = None,
     ):
-        # Sets the language type for requests and responses, with a default value of **zh**. Values:
+        # The language type for the request and response messages. Default value: **zh**. Valid values:
         # - **zh**: Chinese
-        # - **en**: English
+        # - **en**: English.
         self.lang = lang
-        # Region code.
+        # The region code.
         self.reg_id = reg_id
-        # Task ID.
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):

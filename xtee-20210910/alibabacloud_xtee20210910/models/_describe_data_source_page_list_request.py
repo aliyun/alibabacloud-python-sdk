@@ -15,21 +15,21 @@ class DescribeDataSourcePageListRequest(DaraModel):
         reg_id: str = None,
         type: str = None,
     ):
-        # Set the language type for request and response, default value is **zh**. Values:
+        # The language of the request and response. Default value: **zh**. Valid values:
         # - **zh**: Chinese
-        # - **en**: English
+        # - **en**: English.
         self.lang = lang
-        # Request source IP.
+        # The source IP address of the request.
         self.source_ip = source_ip
-        # Current page number.
+        # The current page number.
         self.current_page = current_page
-        # Variable name
+        # The variable name.
         self.name = name
-        # Page size, default value is 10
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # Region code
+        # The region ID.
         self.reg_id = reg_id
-        # Type
+        # The type.
         self.type = type
 
     def validate(self):

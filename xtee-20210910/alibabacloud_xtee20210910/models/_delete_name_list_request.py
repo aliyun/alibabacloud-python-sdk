@@ -11,13 +11,13 @@ class DeleteNameListRequest(DaraModel):
         ids: str = None,
         reg_id: str = None,
     ):
-        # Sets the language type for requests and received messages, default value is **zh**. Values: 
-        # - **zh**: Chinese
-        # - **en**: English
+        # The language type for the request and response. Default value: **zh**. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.lang = lang
-        # Name list ID, multiple IDs should be separated by commas
+        # The list IDs. Separate multiple IDs with commas (,).
         self.ids = ids
-        # Region code
+        # The region code.
         self.reg_id = reg_id
 
     def validate(self):

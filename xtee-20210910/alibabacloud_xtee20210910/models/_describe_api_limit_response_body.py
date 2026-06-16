@@ -11,9 +11,9 @@ class DescribeApiLimitResponseBody(DaraModel):
         request_id: str = None,
         result_object: main_models.DescribeApiLimitResponseBodyResultObject = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Returned object
+        # The returned object.
         self.result_object = result_object
 
     def validate(self):
@@ -51,11 +51,11 @@ class DescribeApiLimitResponseBodyResultObject(DaraModel):
         max_total_item: int = None,
         total_item: int = None,
     ):
-        # Whether the maximum number has been exceeded
+        # Indicates whether the maximum number is exceeded.
         self.limit = limit
-        # Maximum number of items that can be created
+        # The maximum number of items that can be created.
         self.max_total_item = max_total_item
-        # Total number of items
+        # The total number of items.
         self.total_item = total_item
 
     def validate(self):

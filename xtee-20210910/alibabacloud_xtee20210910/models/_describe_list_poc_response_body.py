@@ -17,23 +17,23 @@ class DescribeListPocResponseBody(DaraModel):
         total_item: str = None,
         total_page: str = None,
     ):
-        # Status code.
+        # The status code.
         self.code = code
-        # Current page.
+        # The current page number.
         self.current_page = current_page
-        # HTTP status code.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Return message.
+        # The response message.
         self.message = message
-        # Page size.
+        # The number of entries per page.
         self.page_size = page_size
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Return result.
+        # The returned result.
         self.result_object = result_object
-        # Total number of items returned.
+        # The total number of entries returned.
         self.total_item = total_item
-        # Total number of pages.
+        # The total number of pages.
         self.total_page = total_page
 
     def validate(self):

@@ -15,25 +15,25 @@ class DescribeVariableSceneListRequest(DaraModel):
         paging: bool = None,
         reg_id: str = None,
     ):
-        # Sets the language type for requests and received messages, default value is **zh**. Values:
-        # - **zh**: Chinese
-        # - **en**: English
+        # The language type for the request and response messages. Default value: **zh**. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.lang = lang
-        # Business type.
+        # The business type.
         # 
         # This parameter is required.
         self.biz_type = biz_type
-        # Configuration key.
+        # The configuration key.
         self.config_key = config_key
-        # Current page number.
+        # The current page number.
         self.current_page = current_page
-        # Page size, default value is 10.
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # Paging flag, default is true.
+        # Specifies whether to enable paging. Default value: true.
         # 
         # This parameter is required.
         self.paging = paging
-        # Region code.
+        # The region code.
         self.reg_id = reg_id
 
     def validate(self):

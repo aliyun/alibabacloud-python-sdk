@@ -17,17 +17,17 @@ class DescribeEventLogPageResponseBody(DaraModel):
         total_item: int = None,
         total_page: int = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Current page number.
+        # The current page number.
         self.current_page = current_page
-        # Page size, default value is 10.
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # Returned object.
+        # The returned objects.
         self.result_object = result_object
-        # Total number of items.
+        # The total number of entries.
         self.total_item = total_item
-        # Total number of pages.
+        # The total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -103,27 +103,27 @@ class DescribeEventLogPageResponseBodyResultObject(DaraModel):
         timestamp: str = None,
         umid: str = None,
     ):
-        # Account ID.
+        # The account ID.
         self.account_id = account_id
-        # Email.
+        # The email address.
         self.email = email
-        # IP address.
+        # ip。
         self.ip = ip
-        # Mobile phone number.
+        # The phone number.
         self.mobile = mobile
-        # Nickname.
+        # The nickname.
         self.nick_name = nick_name
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Score.
+        # The score.
         self.score = score
-        # Event name.
+        # The event name.
         self.service = service
-        # Tags.
+        # The labels.
         self.tags = tags
-        # Transaction time.
+        # The transaction time.
         self.timestamp = timestamp
-        # Device ID.
+        # The device ID.
         self.umid = umid
 
     def validate(self):

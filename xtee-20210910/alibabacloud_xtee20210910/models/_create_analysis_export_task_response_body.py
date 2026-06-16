@@ -11,9 +11,9 @@ class CreateAnalysisExportTaskResponseBody(DaraModel):
         request_id: str = None,
         result_object: main_models.CreateAnalysisExportTaskResponseBodyResultObject = None,
     ):
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Returned object
+        # The returned object.
         self.result_object = result_object
 
     def validate(self):
@@ -59,27 +59,27 @@ class CreateAnalysisExportTaskResponseBodyResultObject(DaraModel):
         type: str = None,
         user_id: int = None,
     ):
-        # Export list.
+        # The export list.
         self.columns = columns
-        # Export task conditions.
+        # The conditions of the export task.
         self.conditions = conditions
-        # Event start time.
+        # The event start time.
         self.event_begin_time = event_begin_time
-        # Event code.
+        # The event code.
         self.event_codes = event_codes
-        # End time.
+        # The end time.
         self.event_end_time = event_end_time
-        # File format.
+        # The file format.
         self.file_format = file_format
-        # OSS-generated key.
+        # The randomly generated OSS key.
         self.oss_key = oss_key
-        # Export task scope.
+        # The scope of the export task.
         self.scope = scope
-        # Task status.
+        # The task status.
         self.status = status
-        # Export task type.
+        # The export task type.
         self.type = type
-        # User UID
+        # The user UID.
         self.user_id = user_id
 
     def validate(self):

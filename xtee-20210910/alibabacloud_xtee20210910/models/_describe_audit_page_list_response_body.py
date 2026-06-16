@@ -14,17 +14,17 @@ class DescribeAuditPageListResponseBody(DaraModel):
         total_item: int = None,
         total_page: int = None,
     ):
-        # Current page number.
+        # The current page number.
         self.current_page = current_page
-        # Number of records per page, default value: 10.
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Return object
+        # The returned object.
         self.result_object = result_object
-        # Total items
+        # The total number of entries.
         self.total_item = total_item
-        # Total pages
+        # The total number of pages.
         self.total_page = total_page
 
     def validate(self):

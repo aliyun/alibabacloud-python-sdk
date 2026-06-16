@@ -17,17 +17,17 @@ class DescribeFieldListResponseBody(DaraModel):
         total_item: int = None,
         total_page: int = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Current page number.
+        # The current page number.
         self.current_page = current_page
-        # Page size, default value is 10
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # Returned object
+        # The returned object.
         self.result_object = result_object
-        # Total number of items
+        # The total number of entries.
         self.total_item = total_item
-        # Total number of pages
+        # The total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -101,23 +101,23 @@ class DescribeFieldListResponseBodyResultObject(DaraModel):
         title: str = None,
         type: str = None,
     ):
-        # Field classification
+        # The field classification.
         self.classify = classify
-        # Description information.
+        # The description.
         self.description = description
-        # Enum data
+        # The enumeration data.
         self.enum_data = enum_data
-        # Field ID.
+        # The field ID.
         self.id = id
-        # Field name
+        # The field name.
         self.name = name
-        # Field source
+        # The field source.
         self.source = source
-        # Status.
+        # The status.
         self.status = status
-        # Title.
+        # The title.
         self.title = title
-        # Field type
+        # The field type.
         self.type = type
 
     def validate(self):

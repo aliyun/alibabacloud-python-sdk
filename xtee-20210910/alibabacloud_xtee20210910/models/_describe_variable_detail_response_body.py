@@ -13,9 +13,9 @@ class DescribeVariableDetailResponseBody(DaraModel):
         request_id: str = None,
         result_object: main_models.DescribeVariableDetailResponseBodyResultObject = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Return object
+        # The returned object.
         self.result_object = result_object
 
     def validate(self):
@@ -51,7 +51,7 @@ class DescribeVariableDetailResponseBodyResultObject(DaraModel):
         self,
         base_info: main_models.DescribeVariableDetailResponseBodyResultObjectBaseInfo = None,
     ):
-        # Basic attributes.
+        # The basic properties.
         self.base_info = base_info
 
     def validate(self):
@@ -115,79 +115,87 @@ class DescribeVariableDetailResponseBodyResultObjectBaseInfo(DaraModel):
         x_label: str = None,
         y_label: str = None,
     ):
-        # Whether variable binding is allowed
+        # Specifies whether variable binding is allowed. Valid values:
+        # - **DISABLE**: unavailable
+        # - **ALL**: all
+        # - **ENABLE**: available
+        # - **PART_ENABLE**: partially available.
         self.allow_bind = allow_bind
-        # Charging mode
+        # The billing mode. Valid values:
+        # - **PAY_PER_VIEW**: paid
+        # - **FREE**: free.
         self.charging_mode = charging_mode
-        # Charging mode description
+        # The billing mode description.
         self.charging_mode_desc = charging_mode_desc
-        # Creator.
+        # The creator.
         self.creator = creator
-        # Data distribution display, in JSON format
+        # The data distribution display in JSON format.
         self.data_display = data_display
-        # Data valid range, left-closed and right-closed
+        # The valid data range, inclusive on both ends.
         self.data_threshold = data_threshold
-        # Deduction factor
+        # The deduction coefficient.
         self.deduction_factor = deduction_factor
-        # Description.
+        # The description.
         self.description = description
-        # Front-end binding allowed
+        # Specifies whether front-end binding is allowed. Valid values:
+        # - **DISABLE**: not allowed
+        # - **ENABLE**: allowed.
         self.front_allow_bind = front_allow_bind
-        # Creation time.
+        # The creation time.
         self.gmt_create = gmt_create
-        # Modification time.
+        # The modification time.
         self.gmt_modified = gmt_modified
-        # Primary key ID
+        # The primary key ID.
         self.id = id
-        # Required parameters
+        # The required parameters.
         #      
-        #      When inputRequired=__all__, it means all parameters are required
-        #      When inputRequired=__one__, it means only one input is needed
-        #      Required fields are separated by commas, e.g., mobile,ip,email
+        # When inputRequired is set to __all__, all parameters are required.
+        # When inputRequired is set to __one__, only one input parameter is required.
+        # Required fields are separated by commas, such as mobile,ip,email.
         self.input_required = input_required
-        # Input parameters.
+        # The input parameters.
         self.inputs = inputs
-        # Input parameter description.
+        # The input parameter description.
         self.inputs_desc = inputs_desc
-        # Invoke key
+        # The invocation key.
         self.invoke_key = invoke_key
-        # Invoke RT, unit: milliseconds
+        # The invocation response time, in milliseconds.
         self.invoke_rt = invoke_rt
-        # Invocation success rate
+        # The invocation success rate.
         self.invoke_success_rate = invoke_success_rate
-        # Number of invocations
+        # The number of invocations.
         self.invoke_times = invoke_times
-        # Last modifier.
+        # The last modifier.
         self.last_modified_operator = last_modified_operator
-        # Variable name
+        # The variable name.
         self.name = name
-        # Output
+        # The outputs.
         self.outputs = outputs
-        # Output description
+        # The output description.
         self.outputs_desc = outputs_desc
-        # Code of applicable scenarios
+        # The applicable scenario code.
         self.scene = scene
-        # Applicable scenario description
+        # The applicable scenario description.
         self.scene_desc = scene_desc
-        # Display order
+        # The display order.
         self.show_order = show_order
-        # Source
+        # The source.
         self.source = source
-        # Source description
+        # The source description.
         self.source_desc = source_desc
-        # Status.
+        # The status.
         self.status = status
-        # List of supported regions.
+        # The list of supported regions.
         self.support_regions = support_regions
-        # Title.
+        # The title.
         self.title = title
-        # Type
+        # The type.
         self.type = type
-        # Category description
+        # The category description.
         self.type_desc = type_desc
-        # X-axis label for data distribution display
+        # The X-axis label for the data distribution chart.
         self.x_label = x_label
-        # Data distribution display y-axis label
+        # The Y-axis label for the data distribution chart.
         self.y_label = y_label
 
     def validate(self):

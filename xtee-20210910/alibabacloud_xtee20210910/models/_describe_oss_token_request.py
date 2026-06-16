@@ -12,15 +12,15 @@ class DescribeOssTokenRequest(DaraModel):
         reg_id: str = None,
         upload_type: str = None,
     ):
-        # Sets the language type for requests and received messages, with a default value of **zh**. Values:
-        # - **zh**: Chinese
-        # - **en**: English
+        # The language of the request and response. Default value: **zh**. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.lang = lang
-        # File name.
+        # The file name.
         self.file_name = file_name
-        # Region code
+        # The region code.
         self.reg_id = reg_id
-        # Upload type
+        # The upload type.
         self.upload_type = upload_type
 
     def validate(self):

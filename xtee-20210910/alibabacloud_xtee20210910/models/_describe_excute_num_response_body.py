@@ -15,7 +15,7 @@ class DescribeExcuteNumResponseBody(DaraModel):
     ):
         # Service category names.
         self.categories = categories
-        # Returned data.
+        # Response data.
         self.data = data
         # Request ID.
         self.request_id = request_id

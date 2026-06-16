@@ -19,33 +19,36 @@ class UpdateAnalysisConditionFavoriteRequest(DaraModel):
         reg_id: str = None,
         type: str = None,
     ):
-        # Sets the language type for requests and received messages, with a default value of **zh**. Values:
-        # - **zh**: Chinese
-        # - **en**: English
+        # The language of the request and response. Default value: **zh**. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.lang = lang
-        # Condition value.
+        # The condition value.
         self.condition = condition
-        # Start time, accurate to milliseconds (ms).
+        # The start time, in milliseconds (ms).
         self.event_begin_time = event_begin_time
-        # Event code
+        # The event code.
         self.event_code = event_code
-        # End time, accurate to milliseconds (ms).
+        # The end time, in milliseconds (ms).
         self.event_end_time = event_end_time
-        # Field name
+        # The field name.
         self.field_name = field_name
-        # Field value
+        # The field value.
         self.field_value = field_value
-        # Primary key ID
+        # The primary key ID.
         # 
         # This parameter is required.
         self.id = id
-        # Condition name
+        # The condition name.
         self.name = name
-        # Region code
+        # The region code.
         # 
         # This parameter is required.
         self.reg_id = reg_id
-        # Type, BASIC: Basic query, ADVANCE: Advanced query, BATCH: Batch query
+        # The type. Valid values:
+        # - BASIC: basic query.
+        # - ADVANCE: advanced query.
+        # - BATCH: batch query.
         self.type = type
 
     def validate(self):

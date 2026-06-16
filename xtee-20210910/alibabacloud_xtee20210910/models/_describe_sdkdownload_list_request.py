@@ -12,15 +12,15 @@ class DescribeSDKDownloadListRequest(DaraModel):
         list_type: str = None,
         reg_id: str = None,
     ):
-        # Sets the language type for requests and received messages, with a default value of **zh**. Values: 
+        # The language type for the request and response messages. Default value: **zh**. Valid values:
         # - **zh**: Chinese
-        # - **en**: English
+        # - **en**: English.
         self.lang = lang
-        # Device type.
+        # The device type.
         self.device_type = device_type
-        # Download type
+        # The download type.
         self.list_type = list_type
-        # Region code
+        # The region code.
         self.reg_id = reg_id
 
     def validate(self):

@@ -10,11 +10,11 @@ class CreateAppKeyRequest(DaraModel):
         lang: str = None,
         reg_id: str = None,
     ):
-        # Set the language type for requests and responses, with a default value of **zh**. Values:
-        # - **zh**: Chinese
-        # - **en**: English
+        # The language type for requests and responses. Default value: **zh**. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.lang = lang
-        # Region code
+        # The region ID.
         self.reg_id = reg_id
 
     def validate(self):

@@ -11,8 +11,11 @@ class DeleteSampleRequest(DaraModel):
         reg_id: str = None,
         sample_id: int = None,
     ):
+        # Language of the error message returned by the API. Valid values: zh: Chinese; en: English. Default value: en.
         self.lang = lang
+        # area encoding.
         self.reg_id = reg_id
+        # ID of the sample to delete.
         self.sample_id = sample_id
 
     def validate(self):

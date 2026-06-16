@@ -15,21 +15,21 @@ class DescribeSimulationTaskListRequest(DaraModel):
         reg_id: str = None,
         title: str = None,
     ):
-        # Sets the language type for requests and received messages, with a default value of **zh**. Values:
+        # The language of the request and response. Default value: **zh**. Valid values:
         # - **zh**: Chinese
-        # - **en**: English
+        # - **en**: English.
         self.lang = lang
-        # Current page number.
+        # The current page number.
         self.current_page = current_page
-        # Primary key ID
+        # The primary key ID.
         self.id = id
-        # Name
+        # The name.
         self.name = name
-        # Page size, with a default value of 10
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # Region code
+        # The region code.
         self.reg_id = reg_id
-        # Title.
+        # The title.
         self.title = title
 
     def validate(self):

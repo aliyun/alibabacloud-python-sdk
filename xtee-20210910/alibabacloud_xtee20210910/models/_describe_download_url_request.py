@@ -13,17 +13,17 @@ class DescribeDownloadUrlRequest(DaraModel):
         task_id: int = None,
         type: str = None,
     ):
-        # File type
+        # The file type.
         self.file_type = file_type
-        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # The language of the request and response. Default value: **zh**. Valid values:
         # - **zh**: Chinese
-        # - **en**: English
+        # - **en**: English.
         self.lang = lang
-        # Region code
+        # The region code.
         self.reg_id = reg_id
-        # Task ID.
+        # The task ID.
         self.task_id = task_id
-        # Download type
+        # The download type.
         self.type = type
 
     def validate(self):

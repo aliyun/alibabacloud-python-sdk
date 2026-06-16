@@ -11,9 +11,9 @@ class DescribeQueryVariableDetailResponseBody(DaraModel):
         request_id: str = None,
         result_object: main_models.DescribeQueryVariableDetailResponseBodyResultObject = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Returned object
+        # The returned object.
         self.result_object = result_object
 
     def validate(self):
@@ -59,27 +59,27 @@ class DescribeQueryVariableDetailResponseBodyResultObject(DaraModel):
         outputs: str = None,
         title: str = None,
     ):
-        # Data source code.
+        # The data source code.
         self.data_source_code = data_source_code
-        # Data source name
+        # The data source name.
         self.data_source_name = data_source_name
-        # Description.
+        # The description.
         self.description = description
-        # Event code
+        # The event code.
         self.event_code = event_code
-        # Expression.
+        # The expression.
         self.expression = expression
-        # Expression title.
+        # The expression name.
         self.expression_title = expression_title
-        # Expression variable.
+        # The expression variable.
         self.expression_variable = expression_variable
-        # Variable ID
+        # The variable ID.
         self.id = id
-        # Outlier
+        # The outlier value.
         self.outlier = outlier
-        # Output results.
+        # The output result.
         self.outputs = outputs
-        # Title.
+        # The title.
         self.title = title
 
     def validate(self):

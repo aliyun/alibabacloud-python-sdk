@@ -16,25 +16,25 @@ class ModifyFieldRequest(DaraModel):
         reg_id: str = None,
         title: str = None,
     ):
-        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # The language of the request and response. Default value: **zh**. Valid values:
         # - **zh**: Chinese
-        # - **en**: English
+        # - **en**: English.
         self.lang = lang
-        # Field classification
+        # The field category.
         self.classify = classify
-        # Description information.
+        # The description.
         self.description = description
-        # Enum type
+        # The enumeration type.
         self.enum_data = enum_data
-        # Variable ID
+        # The variable ID.
         self.id = id
-        # Variable name
+        # The variable name.
         self.name = name
-        # Region code
+        # The region code.
         # 
         # This parameter is required.
         self.reg_id = reg_id
-        # Title.
+        # The title.
         self.title = title
 
     def validate(self):

@@ -13,17 +13,17 @@ class DescribeHasRuleNameByEventCodeRequest(DaraModel):
         reg_id: str = None,
         rule_name: str = None,
     ):
-        # Sets the language type for requests and received messages, default value is **zh**. Values: 
-        # - **zh**: Chinese
-        # - **en**: English
+        # The language of the request and response. Default value: **zh**. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.lang = lang
-        # Event code
+        # The event code.
         self.event_code = event_code
-        # Excluded policy ID
+        # The ID of the policy to exclude.
         self.exclude_rule_id = exclude_rule_id
-        # Region code
+        # The region code.
         self.reg_id = reg_id
-        # Policy name
+        # The policy name.
         self.rule_name = rule_name
 
     def validate(self):

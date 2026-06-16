@@ -13,9 +13,9 @@ class DescribeAllRootVariableResponseBody(DaraModel):
         request_id: str = None,
         result_object: List[main_models.DescribeAllRootVariableResponseBodyResultObject] = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Return object
+        # The returned object.
         self.result_object = result_object
 
     def validate(self):
@@ -70,33 +70,33 @@ class DescribeAllRootVariableResponseBodyResultObject(DaraModel):
         title: str = None,
         type: str = None,
     ):
-        # Variable code
+        # The variable code.
         self.code = code
-        # Variable description.
+        # The variable description.
         self.description = description
-        # Display type and group label
+        # The display type and group label.
         self.display_type = display_type
-        # Favorite flag
+        # The favorite flag.
         self.favorite_flag = favorite_flag
-        # Field ranking
+        # The field sorting order.
         self.field_rank = field_rank
-        # Field type.
+        # The field type.
         self.field_type = field_type
-        # Variable ID.
+        # The variable ID.
         self.id = id
-        # Input field type.
+        # The input type of the parameter.
         self.input_field_type = input_field_type
-        # Variable input.
+        # The inputs of the variable.
         self.inputs = inputs
-        # Variable name.
+        # The variable name.
         self.name = name
-        # Maximum cross-sectional area of the checkbox.
+        # The maximum cross-sectional area of the check box.
         self.output_threshold = output_threshold
-        # Data source
+        # The data source.
         self.source_type = source_type
-        # Title.
+        # The title.
         self.title = title
-        # Variable type.
+        # The variable type.
         self.type = type
 
     def validate(self):
@@ -205,9 +205,9 @@ class DescribeAllRootVariableResponseBodyResultObjectOutputThreshold(DaraModel):
         max_value: float = None,
         min_value: float = None,
     ):
-        # Maximum value
+        # The maximum value.
         self.max_value = max_value
-        # Minimum value.
+        # The minimum value.
         self.min_value = min_value
 
     def validate(self):

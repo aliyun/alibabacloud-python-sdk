@@ -17,17 +17,17 @@ class DescribeTagsFluctuationResponseBody(DaraModel):
         result_object: List[main_models.DescribeTagsFluctuationResponseBodyResultObject] = None,
         success: bool = None,
     ):
-        # Status code.
+        # The status code.
         self.code = code
-        # HTTP status code
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Error message.
+        # The error message.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Return object
+        # The returned object.
         self.result_object = result_object
-        # Indicates whether the call was successful
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -98,17 +98,17 @@ class DescribeTagsFluctuationResponseBodyResultObject(DaraModel):
         within_three_day_num: str = None,
         yesterday_num: int = None,
     ):
-        # Tag name
+        # The label name.
         self.table_name = table_name
-        # Data for today
+        # The data for today.
         self.today_num = today_num
-        # Data for the last seven days
+        # The data for the last seven days.
         self.within_seven_day_num = within_seven_day_num
-        # Data for the last thirty days
+        # The data for the last 30 days.
         self.within_thirty_day_num = within_thirty_day_num
-        # Data for the last three days
+        # The data for the last three days.
         self.within_three_day_num = within_three_day_num
-        # Data for yesterday
+        # The data for yesterday.
         self.yesterday_num = yesterday_num
 
     def validate(self):

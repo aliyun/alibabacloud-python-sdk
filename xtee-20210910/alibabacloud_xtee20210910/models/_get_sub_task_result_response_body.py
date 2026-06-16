@@ -16,10 +16,15 @@ class GetSubTaskResultResponseBody(DaraModel):
         request_id: str = None,
         result_object: main_models.GetSubTaskResultResponseBodyResultObject = None,
     ):
+        # Status code.
         self.code = code
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Return message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Return Result.
         self.result_object = result_object
 
     def validate(self):
@@ -89,22 +94,39 @@ class GetSubTaskResultResponseBodyResultObject(DaraModel):
         task_name: str = None,
         user_id: int = None,
     ):
+        # Outputs List Settings.
         self.config = config
+        # Additional extension information.
         self.extra_info = extra_info
+        # File.
         self.file = file
+        # File name.
         self.file_name = file_name
+        # File type.
         self.file_type = file_type
+        # File URL.
         self.file_url = file_url
+        # Is charged.
         self.is_charge = is_charge
+        # Log content.
         self.log = log
+        # Reason.
         self.reason = reason
+        # Result URL.
         self.result_url = result_url
+        # Schedule type.
         self.schedule_type = schedule_type
+        # Service code.
         self.service_code = service_code
+        # Service name.
         self.service_name = service_name
+        # Status.
         self.status = status
+        # Job ID.
         self.task_id = task_id
+        # Task Name.
         self.task_name = task_name
+        # User ID.
         self.user_id = user_id
 
     def validate(self):
@@ -250,8 +272,11 @@ class GetSubTaskResultResponseBodyResultObjectLog(DaraModel):
         reason: str = None,
         time: int = None,
     ):
+        # Processing type.
         self.operate_type = operate_type
+        # Reason for the service status.
         self.reason = reason
+        # Time. Unit: ms.
         self.time = time
 
     def validate(self):
@@ -292,7 +317,9 @@ class GetSubTaskResultResponseBodyResultObjectFile(DaraModel):
         col: List[main_models.GetSubTaskResultResponseBodyResultObjectFileCol] = None,
         title: List[str] = None,
     ):
+        # Column names.
         self.col = col
+        # Variable title.
         self.title = title
 
     def validate(self):
@@ -345,29 +372,29 @@ class GetSubTaskResultResponseBodyResultObjectFileCol(DaraModel):
         a_8: str = None,
         a_9: str = None,
     ):
-        # A0。
+        # A0.
         self.a_0 = a_0
-        # A1。
+        # A1.
         self.a_1 = a_1
-        # A10。
+        # A10.
         self.a_10 = a_10
-        # A11。
+        # A11.
         self.a_11 = a_11
-        # A2。
+        # A2.
         self.a_2 = a_2
-        # A3。
+        # A3.
         self.a_3 = a_3
-        # A4。
+        # A4.
         self.a_4 = a_4
-        # A5。
+        # A5.
         self.a_5 = a_5
-        # A6。
+        # A6.
         self.a_6 = a_6
-        # A7。
+        # A7.
         self.a_7 = a_7
-        # A8。
+        # A8.
         self.a_8 = a_8
-        # A9。
+        # A9.
         self.a_9 = a_9
 
     def validate(self):
@@ -464,9 +491,13 @@ class GetSubTaskResultResponseBodyResultObjectConfig(DaraModel):
         sample_item: str = None,
         sample_items: List[str] = None,
     ):
+        # Backing field for service support.
         self.item = item
+        # Product description information.
         self.item_desc = item_desc
+        # Sample.
         self.sample_item = sample_item
+        # List of fields corresponding to the sample.
         self.sample_items = sample_items
 
     def validate(self):

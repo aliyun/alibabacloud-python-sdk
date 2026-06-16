@@ -13,9 +13,9 @@ class DescribeEventVariableTemplateBindResponseBody(DaraModel):
         request_id: str = None,
         result_object: main_models.DescribeEventVariableTemplateBindResponseBodyResultObject = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Return object
+        # The response object.
         self.result_object = result_object
 
     def validate(self):
@@ -54,13 +54,13 @@ class DescribeEventVariableTemplateBindResponseBodyResultObject(DaraModel):
         template_code: str = None,
         total_count: str = None,
     ):
-        # List of chargeable variables
+        # The list of paid variables.
         self.charge_variables = charge_variables
-        # List of free variables
+        # The list of free variables.
         self.free_variables = free_variables
-        # Template code
+        # The template code.
         self.template_code = template_code
-        # Total count
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -129,19 +129,19 @@ class DescribeEventVariableTemplateBindResponseBodyResultObjectFreeVariables(Dar
         title: str = None,
         type: str = None,
     ):
-        # Variable code
+        # The variable code.
         self.code = code
-        # Variable description.
+        # The variable description.
         self.description = description
-        # Field type.
+        # The field type.
         self.field_type = field_type
-        # Primary key ID
+        # The primary key ID.
         self.id = id
-        # Variable name
+        # The variable name.
         self.name = name
-        # Title.
+        # The title.
         self.title = title
-        # Variable type.
+        # The variable type.
         self.type = type
 
     def validate(self):
@@ -211,19 +211,19 @@ class DescribeEventVariableTemplateBindResponseBodyResultObjectChargeVariables(D
         title: str = None,
         type: str = None,
     ):
-        # Variable code
+        # The variable code.
         self.code = code
-        # Description of the variable.
+        # The variable description.
         self.description = description
-        # Field type.
+        # The field type.
         self.field_type = field_type
-        # Primary key ID
+        # The primary key ID.
         self.id = id
-        # Variable name
+        # The variable name.
         self.name = name
-        # Title.
+        # The title.
         self.title = title
-        # Variable type.
+        # The variable type.
         self.type = type
 
     def validate(self):

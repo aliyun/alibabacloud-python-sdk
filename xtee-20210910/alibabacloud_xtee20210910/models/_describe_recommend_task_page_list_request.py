@@ -13,17 +13,17 @@ class DescribeRecommendTaskPageListRequest(DaraModel):
         reg_id: str = None,
         task_name: str = None,
     ):
-        # Sets the language type for requests and received messages, with a default value of **zh**. Values:
-        # - **zh**: Chinese
-        # - **en**: English
+        # The language type for the request and response messages. Default value: **zh**. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.lang = lang
-        # Current page number
+        # The current page number.
         self.current_page = current_page
-        # Page size, with a default value of 10
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # Region code
+        # The region code.
         self.reg_id = reg_id
-        # Task name
+        # The task name.
         self.task_name = task_name
 
     def validate(self):

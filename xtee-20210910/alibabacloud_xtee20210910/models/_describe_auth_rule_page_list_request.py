@@ -13,19 +13,19 @@ class DescribeAuthRulePageListRequest(DaraModel):
         rule_name: str = None,
         status: str = None,
     ):
-        # Sets the language type for requests and received messages, default value is **zh**. Values: 
-        # - **zh**: Chinese
-        # - **en**: English
+        # The language type for the request and response messages. Default value: **zh**. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.lang = lang
-        # Event code
+        # The event code.
         self.event_code = event_code
-        # Region code
+        # The region code.
         # 
         # This parameter is required.
         self.reg_id = reg_id
-        # Policy name
+        # The policy name.
         self.rule_name = rule_name
-        # Status.
+        # The status.
         self.status = status
 
     def validate(self):

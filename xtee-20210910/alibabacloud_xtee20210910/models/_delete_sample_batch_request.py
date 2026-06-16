@@ -12,15 +12,15 @@ class DeleteSampleBatchRequest(DaraModel):
         reg_id: str = None,
         versions: str = None,
     ):
-        # Sets the language type for requests and received messages, with a default value of **zh**. Values: 
-        # - **zh**: Chinese
-        # - **en**: English
+        # The language type for the request and response. Default value: **zh**. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.lang = lang
-        # IDs for batch deletion operations.
+        # The IDs of the samples to delete in batches.
         self.ids = ids
-        # Region code.
+        # The region code.
         self.reg_id = reg_id
-        # List of versions.
+        # The list of versions.
         # 
         # This parameter is required.
         self.versions = versions

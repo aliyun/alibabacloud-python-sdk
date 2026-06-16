@@ -18,36 +18,35 @@ class ImportNameListRequest(DaraModel):
         title: str = None,
         variable_id: int = None,
     ):
-        # Set the language type for request and response messages, default value is **zh**. Values:
-        # - **zh**: Chinese
-        # - **en**: English
+        # The language type for the request and response. Default value: **zh**. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.lang = lang
-        # Creation type
+        # The creation type.
         self.create_type = create_type
-        # Import name list.
+        # The list of names to import.
         self.data = data
-        # Description information.
+        # The description.
         self.description = description
-        # Document import type:
+        # The document import type. Valid values:
         # 
-        # 
-        # INPUT: Text input
-        # CSV: CSV upload
-        # NONE: Do not upload for now
+        # INPUT: data entry.
+        # CSV: CSV upload.
+        # NONE: no upload.
         # 
         # This parameter is required.
         self.import_type = import_type
-        # name content memo
+        # The description.
         self.memo = memo
-        # nameListType
+        # The nameListType.
         self.name_list_type = name_list_type
-        # Region code
+        # The region code.
         self.reg_id = reg_id
-        # Title.
+        # The title.
         # 
         # This parameter is required.
         self.title = title
-        # Variable ID
+        # The variable ID.
         self.variable_id = variable_id
 
     def validate(self):

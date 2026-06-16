@@ -13,15 +13,15 @@ class DescribeAuditConfigResponseBody(DaraModel):
         result_object: bool = None,
         success: bool = None,
     ):
-        # Status code.
+        # The status code.
         self.code = code
-        # HTTP status code
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Error message
+        # The error message.
         self.message = message
-        # Returned object
+        # The response object.
         self.result_object = result_object
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):

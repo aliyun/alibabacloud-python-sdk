@@ -14,19 +14,19 @@ class DescribeSafTagListRequest(DaraModel):
         page_size: str = None,
         reg_id: str = None,
     ):
-        # Sets the language type for requests and received messages, default value is **zh**. Values:
-        # - **zh**: Chinese
-        # - **en**: English
+        # The language type for the request and response messages. Default value: **zh**. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.lang = lang
-        # Tag name. Fuzzy search.
+        # The label name. Fuzzy match is supported.
         self.tag_name = tag_name
-        # API service ID.
+        # The API service ID.
         self.api_id = api_id
-        # Current page number.
+        # The current page number.
         self.current_page = current_page
-        # Page size, default value is 10.
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # Region code.
+        # The region code.
         self.reg_id = reg_id
 
     def validate(self):

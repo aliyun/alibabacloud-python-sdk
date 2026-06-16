@@ -10,9 +10,9 @@ class CheckFieldLimitResponseBody(DaraModel):
         request_id: str = None,
         result_object: bool = None,
     ):
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Whether the condition is met: -**true**: meets the condition-**false**: does not meet the condition
+        # The returned object.
         self.result_object = result_object
 
     def validate(self):

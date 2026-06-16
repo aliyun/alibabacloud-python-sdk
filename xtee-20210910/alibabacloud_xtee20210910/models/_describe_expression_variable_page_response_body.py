@@ -17,17 +17,17 @@ class DescribeExpressionVariablePageResponseBody(DaraModel):
         total_item: int = None,
         total_page: int = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Current page number.
+        # The current page number.
         self.current_page = current_page
-        # Page size, with a default value of 10.
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # Returned object.
+        # The returned object.
         self.result_object = result_object
-        # Total number of items.
+        # The total number of entries.
         self.total_item = total_item
-        # Total number of pages.
+        # The total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -102,25 +102,25 @@ class DescribeExpressionVariablePageResponseBodyResultObject(DaraModel):
         title: str = None,
         version: int = None,
     ):
-        # Description information.
+        # The description.
         self.description = description
-        # Event name.
+        # The event name.
         self.event_name = event_name
-        # Modification time.
+        # The modification time.
         self.gmt_modified = gmt_modified
-        # Primary key of custom variable.
+        # The primary key of the custom variable.
         self.id = id
-        # Query variable name.
+        # The variable name.
         self.name = name
-        # Variable return type.
+        # The variable return type.
         self.outputs = outputs
-        # Associated Strategies.
+        # The rule ID of the associated policy.
         self.rule_list = rule_list
-        # Status.
+        # The status.
         self.status = status
-        # Title.
+        # The title.
         self.title = title
-        # Version information.
+        # The version information.
         self.version = version
 
     def validate(self):

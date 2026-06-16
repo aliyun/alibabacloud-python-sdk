@@ -10,11 +10,11 @@ class DescribeOperatorListRequest(DaraModel):
         lang: str = None,
         reg_id: str = None,
     ):
-        # Set the language type for request and response messages, default value is **zh**. Values: 
-        # - **zh**: Chinese
-        # - **en**: English
+        # The language of the request and response. Default value: **zh**. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.lang = lang
-        # Region code
+        # The region code.
         # 
         # This parameter is required.
         self.reg_id = reg_id

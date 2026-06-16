@@ -17,17 +17,17 @@ class DescribeDecisionResultTrendResponseBody(DaraModel):
         result_object: main_models.DescribeDecisionResultTrendResponseBodyResultObject = None,
         success: bool = None,
     ):
-        # Status code
+        # The status code.
         self.code = code
-        # HTTP status code
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Error details
+        # The error details.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Returned object
+        # The returned object.
         self.result_object = result_object
-        # Whether the request was successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -88,9 +88,9 @@ class DescribeDecisionResultTrendResponseBodyResultObject(DaraModel):
         series: List[main_models.DescribeDecisionResultTrendResponseBodyResultObjectSeries] = None,
         xaxis: main_models.DescribeDecisionResultTrendResponseBodyResultObjectXaxis = None,
     ):
-        # Chart data
+        # The chart data.
         self.series = series
-        # X-axis data
+        # The x-axis data.
         self.xaxis = xaxis
 
     def validate(self):
@@ -135,7 +135,7 @@ class DescribeDecisionResultTrendResponseBodyResultObjectXaxis(DaraModel):
         self,
         data: List[str] = None,
     ):
-        # X-axis data structure.
+        # The xaxis data structure.
         self.data = data
 
     def validate(self):
@@ -164,9 +164,9 @@ class DescribeDecisionResultTrendResponseBodyResultObjectSeries(DaraModel):
         data: List[main_models.DescribeDecisionResultTrendResponseBodyResultObjectSeriesData] = None,
         name: str = None,
     ):
-        # Returned data object
+        # The returned data object.
         self.data = data
-        # Name.
+        # The name.
         self.name = name
 
     def validate(self):
@@ -209,9 +209,9 @@ class DescribeDecisionResultTrendResponseBodyResultObjectSeriesData(DaraModel):
         num: int = None,
         scale: str = None,
     ):
-        # Number
+        # The quantity.
         self.num = num
-        # ratio
+        # The ratio.
         self.scale = scale
 
     def validate(self):

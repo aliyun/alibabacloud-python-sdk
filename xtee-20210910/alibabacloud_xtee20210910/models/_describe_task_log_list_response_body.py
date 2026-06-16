@@ -17,17 +17,17 @@ class DescribeTaskLogListResponseBody(DaraModel):
         total_item: int = None,
         total_page: int = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Current page number.
+        # The current page number.
         self.current_page = current_page
-        # Number of items per page, default value is 10
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # Returned object
+        # The returned object.
         self.result_object = result_object
-        # Total number of items
+        # The total number of entries.
         self.total_item = total_item
-        # Total number of pages.
+        # The total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -99,26 +99,26 @@ class DescribeTaskLogListResponseBodyResultObject(DaraModel):
         status: str = None,
         task_type: str = None,
     ):
-        # Completion time, in milliseconds.
+        # The completion time, in milliseconds.
         self.completion_time = completion_time
-        # Task creation time.
+        # The time when the task was created.
         self.create_time = create_time
-        # Log ID.
+        # The log ID.
         self.id = id
-        # Remark.
+        # The remarks.
         self.remark = remark
-        # Scene name
+        # The scenario name.
         self.scene_name = scene_name
-        # Status.
+        # The status. Valid values:
         # 
-        # 0: Deleted
-        # 1: Normal
+        # 0: deleted
+        # 1: Normal.
         self.status = status
-        # Task type
+        # The task type. Valid values:
         # 
-        # 1: Data upload
-        # 2: Supplemental upload
-        # 3: Labeling
+        # 1: data upload
+        # 2: supplementary upload
+        # 3: labeling.
         self.task_type = task_type
 
     def validate(self):

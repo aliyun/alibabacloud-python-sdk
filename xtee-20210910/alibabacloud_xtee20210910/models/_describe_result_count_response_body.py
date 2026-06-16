@@ -17,15 +17,15 @@ class DescribeResultCountResponseBody(DaraModel):
         result_object: List[main_models.DescribeResultCountResponseBodyResultObject] = None,
         success: bool = None,
     ):
-        # Status code.
+        # The status code.
         self.code = code
-        # HTTP status code
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Error message.
+        # The error message.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Return object
+        # The response object.
         self.result_object = result_object
         # Indicates whether the request was successful.
         self.success = success
@@ -94,9 +94,9 @@ class DescribeResultCountResponseBodyResultObject(DaraModel):
         result: str = None,
         total: str = None,
     ):
-        # Execution result
+        # The execution result.
         self.result = result
-        # Quantity
+        # The total number of entries.
         self.total = total
 
     def validate(self):

@@ -17,17 +17,17 @@ class DescribePocTaskListResponseBody(DaraModel):
         total_item: int = None,
         total_page: int = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Current page number.
+        # The current page number.
         self.current_page = current_page
-        # Page size, with a default value of 10.
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # Returned object.
+        # The returned object.
         self.result_object = result_object
-        # Total number of items.
+        # The total number of entries.
         self.total_item = total_item
-        # Total number of pages.
+        # The total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -100,21 +100,21 @@ class DescribePocTaskListResponseBodyResultObject(DaraModel):
         task_name: str = None,
         update_time: str = None,
     ):
-        # Creation time.
+        # The creation time.
         self.create_time = create_time
-        # Download URL.
+        # The download URL.
         self.download_url = download_url
-        # File type.
+        # The file type.
         self.file_type = file_type
-        # Service name.
+        # The service name.
         self.service_name = service_name
-        # Status.
+        # The status.
         self.status = status
-        # Task ID.
+        # The task ID.
         self.task_id = task_id
-        # Task name.
+        # The task name.
         self.task_name = task_name
-        # Last modified time.
+        # The last modification time.
         self.update_time = update_time
 
     def validate(self):

@@ -14,19 +14,19 @@ class ModifyEventStatusRequest(DaraModel):
         reg_id: str = None,
         to_event_satus: str = None,
     ):
-        # Sets the language type for requests and received messages, default value is **zh**. Values: 
-        # - **zh**: Chinese
-        # - **en**: English
+        # The language of the request and response. Default value: **zh**. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.lang = lang
-        # Creation type
+        # The creation type.
         self.create_type = create_type
-        # Event code
+        # The event code.
         self.event_code = event_code
-        # Initial event status, to avoid duplicate submissions or historical replays
+        # The original event status. This parameter is used to prevent duplicate submissions or historical replays.
         self.from_event_satus = from_event_satus
-        # Region code
+        # The region code.
         self.reg_id = reg_id
-        # Updated event status
+        # The event status to update to.
         self.to_event_satus = to_event_satus
 
     def validate(self):

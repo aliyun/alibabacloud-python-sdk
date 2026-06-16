@@ -17,17 +17,17 @@ class DescribeAllEventNameAndCodeResponseBody(DaraModel):
         result_object: List[main_models.DescribeAllEventNameAndCodeResponseBodyResultObject] = None,
         success: bool = None,
     ):
-        # Status code.
+        # The status code.
         self.code = code
-        # HTTP status code
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Error message.
+        # The error message.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Returned object
+        # The returned object.
         self.result_object = result_object
-        # Whether the operation was successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -97,15 +97,15 @@ class DescribeAllEventNameAndCodeResponseBodyResultObject(DaraModel):
         event_name: str = None,
         event_type: str = None,
     ):
-        # List of child fields.
+        # The list of child fields.
         self.children = children
-        # Creation type
+        # The creation type.
         self.create_type = create_type
-        # Event code
+        # The event code.
         self.event_code = event_code
-        # Event name.
+        # The event name.
         self.event_name = event_name
-        # Event type
+        # The event type.
         self.event_type = event_type
 
     def validate(self):
@@ -168,13 +168,13 @@ class DescribeAllEventNameAndCodeResponseBodyResultObjectChildren(DaraModel):
         event_name: str = None,
         event_type: str = None,
     ):
-        # Creation type
+        # The creation type.
         self.create_type = create_type
-        # Event code
+        # The event code.
         self.event_code = event_code
-        # Event name.
+        # The event name.
         self.event_name = event_name
-        # Event type
+        # The event type.
         self.event_type = event_type
 
     def validate(self):

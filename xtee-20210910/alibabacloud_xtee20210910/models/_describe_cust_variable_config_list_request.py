@@ -12,17 +12,17 @@ class DescribeCustVariableConfigListRequest(DaraModel):
         reg_id: str = None,
         time_type: str = None,
     ):
-        # Set the language type for requests and received messages, default value is **zh**. Values: 
-        # - **zh**: Chinese
-        # - **en**: English
+        # The language of the request and response. Default value: **zh**. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.lang = lang
-        # Configuration type
+        # The configuration type. Valid values:
         # 
         # This parameter is required.
         self.biz_type = biz_type
-        # Region code
+        # The region code.
         self.reg_id = reg_id
-        # Time type
+        # The time type. Valid values:
         self.time_type = time_type
 
     def validate(self):

@@ -11,13 +11,13 @@ class DescribeSafConsoleRequest(DaraModel):
         content: str = None,
         service: str = None,
     ):
-        # Set the language type for requests and received messages, default value is **zh**. Values:
-        # - **zh**: Chinese
-        # - **en**: English
+        # The language of the request and response. Default value: **zh**. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.lang = lang
-        # Query content.
+        # The query content.
         self.content = content
-        # Service to be called.
+        # The service to call.
         # 
         # This parameter is required.
         self.service = service

@@ -14,10 +14,15 @@ class DownloadSampleFileResponseBody(DaraModel):
         request_id: str = None,
         result_object: main_models.DownloadSampleFileResponseBodyResultObject = None,
     ):
+        # Status code.
         self.code = code
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Return message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Return Result.
         self.result_object = result_object
 
     def validate(self):
@@ -72,7 +77,9 @@ class DownloadSampleFileResponseBodyResultObject(DaraModel):
         status: str = None,
         url: str = None,
     ):
+        # Model status.
         self.status = status
+        # OSS download URL.
         self.url = url
 
     def validate(self):

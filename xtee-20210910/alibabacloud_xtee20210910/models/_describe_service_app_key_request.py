@@ -9,7 +9,7 @@ class DescribeServiceAppKeyRequest(DaraModel):
         self,
         reg_id: str = None,
     ):
-        # Region code
+        # The region code.
         self.reg_id = reg_id
 
     def validate(self):

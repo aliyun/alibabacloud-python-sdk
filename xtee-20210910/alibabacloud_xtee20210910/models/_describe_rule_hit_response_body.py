@@ -12,9 +12,9 @@ class DescribeRuleHitResponseBody(DaraModel):
         request_id: str = None,
         result_object: Dict[str, Any] = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Return object
+        # The returned object.
         self.result_object = result_object
 
     def validate(self):

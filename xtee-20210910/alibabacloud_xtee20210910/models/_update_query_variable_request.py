@@ -20,49 +20,49 @@ class UpdateQueryVariableRequest(DaraModel):
         reg_id: str = None,
         title: str = None,
     ):
-        # Sets the language type for requests and received messages, with a default value of **zh**. Values:
+        # The language of the request and response. Default value: **zh**. Valid values:
         # - **zh**: Chinese
-        # - **en**: English
+        # - **en**: English.
         self.lang = lang
-        # Data source code
+        # The data source code.
         # 
         # This parameter is required.
         self.data_source_code = data_source_code
-        # Description.
+        # The description.
         self.description = description
-        # Event code
+        # The event code.
         # 
         # This parameter is required.
         self.event_code = event_code
-        # Expression.
+        # The expression.
         # 
         # This parameter is required.
         self.expression = expression
-        # Display expression
+        # The display expression.
         # 
         # This parameter is required.
         self.expression_title = expression_title
-        # Expression associated variable
+        # The variable associated with the expression.
         # 
         # This parameter is required.
         self.expression_variable = expression_variable
-        # Primary key ID
+        # The primary key ID.
         # 
         # This parameter is required.
         self.id = id
-        # Outlier
+        # The outlier value.
         # 
         # This parameter is required.
         self.outlier = outlier
-        # Variable return type
+        # The return type of the variable.
         # 
         # This parameter is required.
         self.outputs = outputs
-        # Region code
+        # The region code.
         # 
         # This parameter is required.
         self.reg_id = reg_id
-        # Title.
+        # The title.
         # 
         # This parameter is required.
         self.title = title

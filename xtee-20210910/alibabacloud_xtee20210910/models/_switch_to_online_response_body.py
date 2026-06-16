@@ -14,17 +14,17 @@ class SwitchToOnlineResponseBody(DaraModel):
         result_object: bool = None,
         success: bool = None,
     ):
-        # Status code
+        # The status code.
         self.code = code
-        # HTTP status code
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Error message.
+        # The error message.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Return object
+        # The returned object.
         self.result_object = result_object
-        # Indicates whether this operation was successful, `true` means success.
+        # Indicates whether the operation is successful. A value of true indicates success.
         self.success = success
 
     def validate(self):

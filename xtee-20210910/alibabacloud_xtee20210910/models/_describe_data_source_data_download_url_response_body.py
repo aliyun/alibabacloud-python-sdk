@@ -11,9 +11,9 @@ class DescribeDataSourceDataDownloadUrlResponseBody(DaraModel):
         request_id: str = None,
         result_object: main_models.DescribeDataSourceDataDownloadUrlResponseBodyResultObject = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Return object
+        # The response object.
         self.result_object = result_object
 
     def validate(self):
@@ -49,7 +49,7 @@ class DescribeDataSourceDataDownloadUrlResponseBodyResultObject(DaraModel):
         self,
         download_file_url: str = None,
     ):
-        # Download URL.
+        # The download URL.
         self.download_file_url = download_file_url
 
     def validate(self):

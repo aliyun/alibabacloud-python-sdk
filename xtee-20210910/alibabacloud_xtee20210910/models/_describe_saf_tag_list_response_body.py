@@ -17,17 +17,17 @@ class DescribeSafTagListResponseBody(DaraModel):
         total_item: int = None,
         total_page: int = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Current page number.
+        # The current page number.
         self.current_page = current_page
-        # Page size, default value is 10.
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # Returned object.
+        # The returned object.
         self.result_object = result_object
-        # Total number of items.
+        # The total number of entries.
         self.total_item = total_item
-        # Total number of pages.
+        # The total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -99,19 +99,19 @@ class DescribeSafTagListResponseBodyResultObject(DaraModel):
         tag_uid: str = None,
         update_time: str = None,
     ):
-        # Tag description.
+        # The label description.
         self.tag_desc = tag_desc
-        # Tag meaning.
+        # The label meaning.
         self.tag_mean = tag_mean
-        # Tag name.
+        # The label name.
         self.tag_name = tag_name
-        # Tag identifier.
+        # The label identifier.
         self.tag_state = tag_state
-        # Tag type.
+        # The label type.
         self.tag_type = tag_type
-        # Unique identifier of the tag key.
+        # The unique identifier of the label key.
         self.tag_uid = tag_uid
-        # Update time.
+        # The update time.
         self.update_time = update_time
 
     def validate(self):

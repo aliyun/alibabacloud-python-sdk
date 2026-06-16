@@ -17,17 +17,17 @@ class DescribeRequestPeakReportResponseBody(DaraModel):
         result_object: List[main_models.DescribeRequestPeakReportResponseBodyResultObject] = None,
         success: bool = None,
     ):
-        # Status code
+        # The status code.
         self.code = code
-        # HTTP status code.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Error message.
+        # The error message.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Return object
+        # The response object.
         self.result_object = result_object
-        # Whether the request was successful
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -94,9 +94,9 @@ class DescribeRequestPeakReportResponseBodyResultObject(DaraModel):
         ratio: str = None,
         value: str = None,
     ):
-        # Return value
+        # The returned value.
         self.ratio = ratio
-        # Return text
+        # The description text.
         self.value = value
 
     def validate(self):

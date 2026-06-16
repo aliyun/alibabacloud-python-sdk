@@ -17,17 +17,17 @@ class DescribeEventResultBarChartResponseBody(DaraModel):
         result_object: main_models.DescribeEventResultBarChartResponseBodyResultObject = None,
         success: bool = None,
     ):
-        # Status code.
+        # The status code.
         self.code = code
-        # HTTP status code
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Error message.
+        # The error message.
         self.message = message
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Returned object
+        # The response object.
         self.result_object = result_object
-        # Whether the request was successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -88,9 +88,9 @@ class DescribeEventResultBarChartResponseBodyResultObject(DaraModel):
         series: List[main_models.DescribeEventResultBarChartResponseBodyResultObjectSeries] = None,
         xaxis: main_models.DescribeEventResultBarChartResponseBodyResultObjectXaxis = None,
     ):
-        # Chart data
+        # The chart data.
         self.series = series
-        # xaxis interface configuration.
+        # The xaxis configuration.
         self.xaxis = xaxis
 
     def validate(self):
@@ -135,7 +135,7 @@ class DescribeEventResultBarChartResponseBodyResultObjectXaxis(DaraModel):
         self,
         data: List[str] = None,
     ):
-        # Returned data object
+        # The response data.
         self.data = data
 
     def validate(self):
@@ -165,11 +165,11 @@ class DescribeEventResultBarChartResponseBodyResultObjectSeries(DaraModel):
         name: str = None,
         stack: str = None,
     ):
-        # Returned data object
+        # The response data.
         self.data = data
-        # Series name.
+        # The name of the series.
         self.name = name
-        # Label key
+        # The tag key.
         self.stack = stack
 
     def validate(self):
@@ -218,9 +218,9 @@ class DescribeEventResultBarChartResponseBodyResultObjectSeriesData(DaraModel):
         num: int = None,
         scale: str = None,
     ):
-        # Number.
+        # The quantity.
         self.num = num
-        # Scale
+        # The proportion.
         self.scale = scale
 
     def validate(self):

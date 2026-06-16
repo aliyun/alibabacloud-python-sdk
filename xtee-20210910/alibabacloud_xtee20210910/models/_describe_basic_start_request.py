@@ -13,15 +13,15 @@ class DescribeBasicStartRequest(DaraModel):
         service: str = None,
         start_ds: str = None,
     ):
-        # Application appkey.
+        # The AppKey of the application.
         self.app_key = app_key
-        # End time, accurate to milliseconds (ms).
+        # The end time, in milliseconds (ms).
         self.end_ds = end_ds
-        # Region code
+        # The region code.
         self.reg_id = reg_id
-        # Service to call
+        # The service to call.
         self.service = service
-        # Start time, accurate to milliseconds (ms).
+        # The start time, in milliseconds (ms).
         self.start_ds = start_ds
 
     def validate(self):

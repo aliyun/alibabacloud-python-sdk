@@ -13,9 +13,9 @@ class DescribeSelectItemResponseBody(DaraModel):
         request_id: str = None,
         result_object: main_models.DescribeSelectItemResponseBodyResultObject = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Return object
+        # The response object.
         self.result_object = result_object
 
     def validate(self):
@@ -52,9 +52,9 @@ class DescribeSelectItemResponseBodyResultObject(DaraModel):
         monitor_status_list: List[str] = None,
         task_id_list: List[str] = None,
     ):
-        # Monitoring status list.
+        # The list of monitoring statuses.
         self.monitor_status_list = monitor_status_list
-        # Task ID list.
+        # The list of task IDs.
         self.task_id_list = task_id_list
 
     def validate(self):

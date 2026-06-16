@@ -15,25 +15,25 @@ class UpdateDataSourceRequest(DaraModel):
         reg_id: str = None,
         type: str = None,
     ):
-        # Sets the language type for requests and received messages, default value is **zh**. Values: 
-        # - **zh**: Chinese
-        # - **en**: English
+        # The language of the request and response. Default value: **zh**. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.lang = lang
-        # Description information.
+        # The description.
         self.description = description
-        # Primary key ID
+        # The primary key ID.
         # 
         # This parameter is required.
         self.id = id
-        # Data source name.
+        # The data source name.
         self.name = name
-        # OSS file key.
+        # The OSS file key.
         self.oss_key = oss_key
-        # Region code
+        # The region code.
         # 
         # This parameter is required.
         self.reg_id = reg_id
-        # Data source type
+        # The data source type.
         self.type = type
 
     def validate(self):

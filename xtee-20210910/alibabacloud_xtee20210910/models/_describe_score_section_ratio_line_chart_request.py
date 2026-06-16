@@ -15,25 +15,25 @@ class DescribeScoreSectionRatioLineChartRequest(DaraModel):
         reg_id: str = None,
         shunt_event_codes: str = None,
     ):
-        # Sets the language type for request and response messages, with a default value of **zh**. Values: 
+        # Sets the language type for sending and receiving messages. Default value: **zh**. Valid values:
         # - **zh**: Chinese
         # - **en**: English
         self.lang = lang
-        # Start time, accurate to milliseconds (ms).
+        # The start time, accurate to milliseconds (ms).
         # 
         # This parameter is required.
         self.begin_time = begin_time
-        # Bypass event code
+        # Bypass event codes.
         self.by_pass_event_codes = by_pass_event_codes
-        # End time, accurate to milliseconds (ms).
+        # The end time, accurate to milliseconds (ms).
         # 
         # This parameter is required.
         self.end_time = end_time
-        # Main event code
+        # Main event codes.
         self.main_event_codes = main_event_codes
-        # Region code
+        # Region ID.
         self.reg_id = reg_id
-        # Shunt event code
+        # Shunt event codes.
         self.shunt_event_codes = shunt_event_codes
 
     def validate(self):

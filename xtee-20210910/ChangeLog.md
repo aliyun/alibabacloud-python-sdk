@@ -1,3 +1,8 @@
+2026-06-16 Version: 2.4.1
+- Update API CreateTaskGroup: add request parameters ServiceList.
+- Update API CreateTaskGroup: add response parameters Body.ResultObject.SubTaskList.
+
+
 2026-05-27 Version: 2.4.0
 - Support API CreateForeignPocSample.
 - Support API UploadForeignSampleFile.

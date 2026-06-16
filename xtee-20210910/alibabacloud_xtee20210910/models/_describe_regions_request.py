@@ -10,11 +10,11 @@ class DescribeRegionsRequest(DaraModel):
         lang: str = None,
         reg_id: str = None,
     ):
-        # Set the language type for requests and responses. The default value is **zh**. Values:
+        # The language type for the request and response messages. Default value: **zh**. Valid values:
         # - **zh**: Chinese
-        # - **en**: English
+        # - **en**: English.
         self.lang = lang
-        # Region code
+        # The region ID.
         self.reg_id = reg_id
 
     def validate(self):

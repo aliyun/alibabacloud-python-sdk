@@ -18,27 +18,27 @@ class DescribeVariableListRequest(DaraModel):
         types_str: str = None,
         value: str = None,
     ):
-        # Set the language type for requests and responses, default value is **zh**. Values: 
+        # The language of the request and response. Default value: **zh**. Valid values:
         # - **zh**: Chinese
-        # - **en**: English
+        # - **en**: English.
         self.lang = lang
-        # Creation type.
+        # The creation type.
         self.create_type = create_type
-        # Current page number.
+        # The current page number.
         self.current_page = current_page
-        # Page size, default value is 10.
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # Associated event ID.
+        # The ID of the associated event.
         self.ref_obj_id = ref_obj_id
-        # Region code.
+        # The region code.
         self.reg_id = reg_id
-        # Source type.
+        # The source type.
         self.source_type = source_type
-        # Type.
+        # The type.
         self.type = type
-        # JSON array string of types.
+        # The type JSON array string.
         self.types_str = types_str
-        # Value for fuzzy search.
+        # The value for fuzzy match.
         self.value = value
 
     def validate(self):

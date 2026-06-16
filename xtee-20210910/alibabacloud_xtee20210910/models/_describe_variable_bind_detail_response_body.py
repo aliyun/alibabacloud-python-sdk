@@ -13,9 +13,9 @@ class DescribeVariableBindDetailResponseBody(DaraModel):
         request_id: str = None,
         result_object: main_models.DescribeVariableBindDetailResponseBodyResultObject = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Return object
+        # The returned object.
         self.result_object = result_object
 
     def validate(self):
@@ -59,23 +59,23 @@ class DescribeVariableBindDetailResponseBodyResultObject(DaraModel):
         relation_rules: List[main_models.DescribeVariableBindDetailResponseBodyResultObjectRelationRules] = None,
         title: str = None,
     ):
-        # Whether modification is allowed, default is false
+        # Indicates whether modification is allowed. Default value: false.
         self.allow_modify = allow_modify
-        # Variable definition ID
+        # The variable definition ID.
         self.define_id = define_id
-        # Variable definition title
+        # The variable definition title.
         self.define_title = define_title
-        # Variable description information
+        # The variable description.
         self.description = description
-        # Event code
+        # The event code.
         self.event_code = event_code
-        # Variable ID.
+        # The variable ID.
         self.id = id
-        # Bound parameters.
+        # The bound parameters.
         self.params = params
-        # List of associated policies
+        # The list of associated policies.
         self.relation_rules = relation_rules
-        # Title.
+        # The title.
         self.title = title
 
     def validate(self):
@@ -169,9 +169,9 @@ class DescribeVariableBindDetailResponseBodyResultObjectRelationRules(DaraModel)
         key: str = None,
         value: str = None,
     ):
-        # Policy rule ID
+        # The policy ruleId.
         self.key = key
-        # Policy name
+        # The policy name.
         self.value = value
 
     def validate(self):
@@ -207,11 +207,11 @@ class DescribeVariableBindDetailResponseBodyResultObjectParams(DaraModel):
         required: bool = None,
         variable_name: str = None,
     ):
-        # Event field name
+        # The name of the event field.
         self.event_field_name = event_field_name
-        # Whether it is required, default is false
+        # Indicates whether this parameter is required. Default value: false.
         self.required = required
-        # Bound variable name
+        # The name of the bound variable.
         self.variable_name = variable_name
 
     def validate(self):

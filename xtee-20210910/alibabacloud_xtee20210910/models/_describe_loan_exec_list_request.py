@@ -15,21 +15,21 @@ class DescribeLoanExecListRequest(DaraModel):
         page_size: str = None,
         reg_id: str = None,
     ):
-        # Set the language type for request and response messages, default value is **zh**. Values:
+        # The language type for sending requests and receiving responses. Default value: **zh**. Valid values:
         # - **zh**: Chinese
         # - **en**: English
         self.lang = lang
-        # Import batch number.
+        # The import batch number.
         self.batch_no = batch_no
-        # Current page number.
+        # The current page number.
         self.current_page = current_page
-        # Monitoring metric data.
+        # The monitoring metric data.
         self.monitor_obj = monitor_obj
-        # Status
+        # The status.
         self.monitor_status = monitor_status
-        # Page size, with a default value of 10.
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # Region code
+        # The region ID.
         self.reg_id = reg_id
 
     def validate(self):

@@ -11,13 +11,13 @@ class CheckFieldLimitRequest(DaraModel):
         reg_id: str = None,
         source: str = None,
     ):
-        # Sets the language type for requests and received messages, with a default value of **zh**. Values: 
-        # - **zh**: Chinese
-        # - **en**: English
+        # The language of the request and response. Default value: **zh**. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.lang = lang
-        # Region code
+        # The region code.
         self.reg_id = reg_id
-        # Source of the field
+        # The field source.
         self.source = source
 
     def validate(self):

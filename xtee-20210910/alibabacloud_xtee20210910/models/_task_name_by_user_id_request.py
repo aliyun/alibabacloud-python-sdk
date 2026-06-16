@@ -11,13 +11,13 @@ class TaskNameByUserIdRequest(DaraModel):
         reg_id: str = None,
         task_name: str = None,
     ):
-        # Set the language type for requests and received messages, default value is **zh**. Values:
-        # - **zh**: Chinese
-        # - **en**: English
+        # The language type for the request and response messages. Default value: **zh**. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.lang = lang
-        # Region code.
+        # The region ID.
         self.reg_id = reg_id
-        # Task name.
+        # The task name.
         self.task_name = task_name
 
     def validate(self):

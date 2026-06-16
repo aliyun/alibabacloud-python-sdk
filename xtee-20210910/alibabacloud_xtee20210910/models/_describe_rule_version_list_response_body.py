@@ -17,17 +17,17 @@ class DescribeRuleVersionListResponseBody(DaraModel):
         total_item: int = None,
         total_page: int = None,
     ):
-        # Current page number.
+        # The current page number.
         self.current_page = current_page
-        # Page size, default value is 10
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Returned object
+        # The returned object.
         self.result_object = result_object
-        # Total number of items
+        # The total number of entries.
         self.total_item = total_item
-        # Total number of pages.
+        # The total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -107,35 +107,35 @@ class DescribeRuleVersionListResponseBodyResultObject(DaraModel):
         rule_type: str = None,
         version: int = None,
     ):
-        # Audit object
+        # The approval object.
         self.console_audit = console_audit
-        # Console rule ID.
+        # The console rule ID.
         self.console_rule_id = console_rule_id
-        # Associated policy remarks
+        # The remark of the associated policy.
         self.console_rule_memo = console_rule_memo
-        # Associated policy name
+        # The Policy Name of the associated policy.
         self.console_rule_name = console_rule_name
-        # Event code
+        # The event code.
         self.event_code = event_code
-        # Event type
+        # The event type.
         self.event_type = event_type
-        # Creation time.
+        # The creation time.
         self.gmt_create = gmt_create
-        # Modification time.
+        # The modification time.
         self.gmt_modified = gmt_modified
-        # Primary key ID of the policy
+        # The primary key ID of the policy.
         self.id = id
-        # The user who last operated.
+        # The user who last performed an operation.
         self.last_operator = last_operator
-        # Policy priority, the higher the number, the higher the priority.
+        # The policy priority. A larger value indicates a higher priority.
         self.priority = priority
-        # Policy ID
+        # The policy ID.
         self.rule_id = rule_id
-        # Policy status
+        # The policy status.
         self.rule_status = rule_status
-        # Rule Type
+        # The policy type.
         self.rule_type = rule_type
-        # Version number
+        # The version number.
         self.version = version
 
     def validate(self):
@@ -264,37 +264,37 @@ class DescribeRuleVersionListResponseBodyResultObjectConsoleAudit(DaraModel):
         relation_name: str = None,
         relation_type: str = None,
     ):
-        # Initiator UID
+        # The UID of the applicant.
         self.apply_user_id = apply_user_id
-        # Initiator name
+        # The name of the applicant.
         self.apply_user_name = apply_user_name
-        # Approval comment
+        # The approval comment.
         self.audit_msg = audit_msg
-        # Final approver UID
+        # The UID of the final approver.
         self.audit_real_user_id = audit_real_user_id
-        # Final approver name
+        # The name of the final approver.
         self.audit_real_user_name = audit_real_user_name
-        # Approver\\"s remarks.
+        # The remark of the approver.
         self.audit_remark = audit_remark
-        # Approval status
+        # The approval status.
         self.audit_status = audit_status
-        # Approval time.
+        # The approval time.
         self.audit_time = audit_time
-        # Designated approver UID
+        # The UID of the designated approver.
         self.audit_user_id = audit_user_id
-        # Designated auditor\\"s name
+        # The name of the designated approver.
         self.audit_user_name = audit_user_name
-        # Creation time.
+        # The creation time.
         self.gmt_create = gmt_create
-        # Primary key ID
+        # The primary key ID.
         self.id = id
-        # Information of related others (in JSON format)
+        # The information about other related persons in JSON format.
         self.relation_ext = relation_ext
-        # ID of the associated transaction
+        # The transaction ID associated with the approval.
         self.relation_id = relation_id
-        # Name of the associated item
+        # The name associated with the approval.
         self.relation_name = relation_name
-        # Type of approval (e.g., `rule` for policy approval)
+        # The type of the approval. For example, rule indicates a policy approval.
         self.relation_type = relation_type
 
     def validate(self):

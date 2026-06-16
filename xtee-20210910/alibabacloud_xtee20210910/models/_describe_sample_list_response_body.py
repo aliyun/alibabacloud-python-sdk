@@ -17,17 +17,17 @@ class DescribeSampleListResponseBody(DaraModel):
         total_item: int = None,
         total_page: int = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Current page number.
+        # The current page number.
         self.current_page = current_page
-        # Page size, with a default value of 10
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # Returned object
+        # The returned objects.
         self.result_object = result_object
-        # Total count.
+        # The total number of entries.
         self.total_item = total_item
-        # Total pages
+        # The total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -98,17 +98,17 @@ class DescribeSampleListResponseBodyResultObject(DaraModel):
         update_time: int = None,
         version: int = None,
     ):
-        # Database ID.
+        # The database ID.
         self.id = id
-        # Sample tags.
+        # The sample tags.
         self.sample_tags = sample_tags
-        # Sample type
+        # The sample type.
         self.sample_type = sample_type
-        # Sample value.
+        # The sample value.
         self.sample_value = sample_value
-        # Update time.
+        # The update time.
         self.update_time = update_time
-        # Version number.
+        # The version number.
         self.version = version
 
     def validate(self):

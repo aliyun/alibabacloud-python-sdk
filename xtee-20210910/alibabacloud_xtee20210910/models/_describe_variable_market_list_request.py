@@ -18,29 +18,27 @@ class DescribeVariableMarketListRequest(DaraModel):
         source: str = None,
         title: str = None,
     ):
-        # Sets the language type for requests and received messages, with a default value of **zh**. Values:
+        # The language of the request and response. Default value: **zh**. Valid values:
         # - **zh**: Chinese
-        # - **en**: English
+        # - **en**: English.
         self.lang = lang
-        # Charging mode
+        # The billing mode.
         self.charging_mode = charging_mode
-        # Current page number.
+        # The current page number.
         self.current_page = current_page
-        # Page size, with a default value of 10.
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # Paging indicator, default is true.
+        # Specifies whether to enable paging. Default value: true.
         self.paging = paging
-        # Query content, supports fuzzy search.
-        # 
-        #  Title/Description
+        # The query content. Fuzzy match is supported for the title or description.
         self.query_content = query_content
-        # Region code
+        # The region code.
         self.reg_id = reg_id
-        # Scenario
+        # The scenario.
         self.scenes_str = scenes_str
-        # Source
+        # The source.
         self.source = source
-        # Title.
+        # The title.
         self.title = title
 
     def validate(self):

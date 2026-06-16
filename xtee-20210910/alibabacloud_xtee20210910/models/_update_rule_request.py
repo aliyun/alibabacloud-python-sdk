@@ -22,35 +22,35 @@ class UpdateRuleRequest(DaraModel):
         rule_type: str = None,
         rule_version_id: int = None,
     ):
-        # Sets the language type for requests and received messages, default value is **zh**. Values: 
+        # The language of the request and response. Default value: **zh**. Valid values:
         # - **zh**: Chinese
-        # - **en**: English
+        # - **en**: English.
         self.lang = lang
-        # Primary key ID of the policy
+        # The primary key ID of the policy.
         self.console_rule_id = console_rule_id
-        # Event code
+        # The event code.
         self.event_code = event_code
-        # Execution logic
+        # The execution logic.
         self.logic_expression = logic_expression
-        # Description
+        # The description.
         self.memo = memo
-        # Region code
+        # The region code.
         self.reg_id = reg_id
-        # Output action
+        # The output actions.
         self.rule_actions = rule_actions
-        # DSL policy expression
+        # The DSL policy expression.
         self.rule_body = rule_body
-        # Policy expression
+        # The policy expressions.
         self.rule_expressions = rule_expressions
-        # Policy ID
+        # The policy ID.
         self.rule_id = rule_id
-        # Policy name
+        # The policy name.
         self.rule_name = rule_name
-        # Policy status
+        # The policy status.
         self.rule_status = rule_status
-        # Policy type
+        # The policy type.
         self.rule_type = rule_type
-        # Primary key ID of the policy version
+        # The primary key ID of the policy version.
         self.rule_version_id = rule_version_id
 
     def validate(self):

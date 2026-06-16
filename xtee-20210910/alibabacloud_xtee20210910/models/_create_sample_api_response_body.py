@@ -11,11 +11,11 @@ class CreateSampleApiResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # Status code.
+        # The API status code.
         self.code = code
-        # Error message.
+        # The response message.
         self.message = message
-        # ID of the request
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):

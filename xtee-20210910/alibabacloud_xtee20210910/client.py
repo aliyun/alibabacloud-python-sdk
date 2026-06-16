@@ -3706,6 +3706,8 @@ class Client(OpenApiClient):
             query['Scenes'] = request.scenes
         if not DaraCore.is_null(request.service_codes):
             query['ServiceCodes'] = request.service_codes
+        if not DaraCore.is_null(request.service_list):
+            query['ServiceList'] = request.service_list
         if not DaraCore.is_null(request.service_names):
             query['ServiceNames'] = request.service_names
         if not DaraCore.is_null(request.tab):
@@ -3750,6 +3752,8 @@ class Client(OpenApiClient):
             query['Scenes'] = request.scenes
         if not DaraCore.is_null(request.service_codes):
             query['ServiceCodes'] = request.service_codes
+        if not DaraCore.is_null(request.service_list):
+            query['ServiceList'] = request.service_list
         if not DaraCore.is_null(request.service_names):
             query['ServiceNames'] = request.service_names
         if not DaraCore.is_null(request.tab):

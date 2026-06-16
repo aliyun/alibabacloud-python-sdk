@@ -13,9 +13,9 @@ class DescribeEventTaskHistoryResponseBody(DaraModel):
         request_id: str = None,
         result_object: List[main_models.DescribeEventTaskHistoryResponseBodyResultObject] = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Return object
+        # The response object.
         self.result_object = result_object
 
     def validate(self):
@@ -60,13 +60,13 @@ class DescribeEventTaskHistoryResponseBodyResultObject(DaraModel):
         task_status: str = None,
         url: str = None,
     ):
-        # Task code.
+        # The task code.
         self.task_code = task_code
-        # Task name
+        # The task name.
         self.task_name = task_name
-        # Task status.
+        # The task status.
         self.task_status = task_status
-        # OSS download URL
+        # The OSS download URL.
         self.url = url
 
     def validate(self):

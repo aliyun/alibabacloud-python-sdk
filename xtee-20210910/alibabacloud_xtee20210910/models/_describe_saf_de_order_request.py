@@ -14,19 +14,19 @@ class DescribeSafDeOrderRequest(DaraModel):
         reg_id: str = None,
         start_date: str = None,
     ):
-        # Set the language type for request and response messages, default value is **zh**. Values:
-        # - **zh**: Chinese
-        # - **en**: English
+        # The language type for the request and response messages. Default value: **zh**. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.lang = lang
-        # Current page number.
+        # The current page number.
         self.current_page = current_page
-        # End date
+        # The end time.
         self.end_date = end_date
-        # Page size, default value is 10
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # Region code
+        # The region code.
         self.reg_id = reg_id
-        # Start date.
+        # The start date.
         self.start_date = start_date
 
     def validate(self):

@@ -17,17 +17,17 @@ class DescribeRecommendTaskPageListResponseBody(DaraModel):
         total_item: int = None,
         total_page: int = None,
     ):
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Current page number
+        # The current page number.
         self.current_page = current_page
-        # Page size, with a default value of 10
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # Returned object
+        # The returned object.
         self.result_object = result_object
-        # Total number of items
+        # The total number of entries.
         self.total_item = total_item
-        # Total number of pages.
+        # The total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -103,27 +103,27 @@ class DescribeRecommendTaskPageListResponseBodyResultObject(DaraModel):
         task_name: str = None,
         task_status: str = None,
     ):
-        # Impact indicators
+        # The affected metrics.
         self.expect_velocities = expect_velocities
-        # Creation time.
+        # The creation time.
         self.gmt_create = gmt_create
-        # Number of samples
+        # The number of samples.
         self.normal_count = normal_count
-        # Number of normal samples
+        # The number of normal samples.
         self.normal_size = normal_size
-        # Number of records displayed on the current page.
+        # The number of records displayed on the current page.
         self.risk_count = risk_count
-        # Number of risk samples
+        # The number of risky samples.
         self.risk_size = risk_size
-        # Sample name
+        # The sample name.
         self.sample_name = sample_name
-        # Sample scenario
+        # The sample scenario.
         self.sample_scene = sample_scene
-        # Task ID.
+        # The task ID.
         self.task_id = task_id
-        # Task name.
+        # The task name.
         self.task_name = task_name
-        # Task status.
+        # The task status.
         self.task_status = task_status
 
     def validate(self):

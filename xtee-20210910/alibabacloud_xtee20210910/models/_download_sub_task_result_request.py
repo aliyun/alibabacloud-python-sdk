@@ -11,8 +11,11 @@ class DownloadSubTaskResultRequest(DaraModel):
         reg_id: str = None,
         sub_task_id: int = None,
     ):
+        # Language of error messages returned by the API. Valid values: zh: Chinese. en: English. Default value: en.
         self.lang = lang
+        # area encoding.
         self.reg_id = reg_id
+        # Subtask ID.
         self.sub_task_id = sub_task_id
 
     def validate(self):

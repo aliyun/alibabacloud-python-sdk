@@ -13,17 +13,17 @@ class DescribeSceneEventPageListRequest(DaraModel):
         page_size: str = None,
         reg_id: str = None,
     ):
-        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # The language of the request and response. Default value: **zh**. Valid values:
         # - **zh**: Chinese
-        # - **en**: English
+        # - **en**: English.
         self.lang = lang
-        # Current page number.
+        # The current page number.
         self.current_page = current_page
-        # Search name or service code
+        # The name or service code to search for.
         self.name_or_code = name_or_code
-        # Page size.
+        # The number of entries per page.
         self.page_size = page_size
-        # Region code
+        # The region code.
         self.reg_id = reg_id
 
     def validate(self):

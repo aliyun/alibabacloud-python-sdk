@@ -17,14 +17,23 @@ class ListSampleRequest(DaraModel):
         upload_time_end: str = None,
         upload_time_start: str = None,
     ):
+        # Current page number.
         self.current_page = current_page
+        # Language of error messages returned by the API. Valid values: zh: Chinese. en: English. Default value: en.
         self.lang = lang
+        # Page size.
         self.page_size = page_size
+        # Area code.
         self.reg_id = reg_id
+        # Sample name.
         self.sample_name = sample_name
+        # Scenario.
         self.tab = tab
+        # Access type.
         self.type = type
+        # Upload end time.
         self.upload_time_end = upload_time_end
+        # Upload start time.
         self.upload_time_start = upload_time_start
 
     def validate(self):

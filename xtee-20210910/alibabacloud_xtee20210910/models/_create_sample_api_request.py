@@ -14,19 +14,19 @@ class CreateSampleApiRequest(DaraModel):
         sample_batch_type: str = None,
         service_list: str = None,
     ):
-        # Same as input parameter
+        # Same as the request parameter.
         self.data_type = data_type
-        # Specific data value
+        # The specific data value.
         self.data_value = data_value
-        # Sets the language type for requests and received messages, with a default value of **zh**. Values:
-        # - **zh**: Chinese
-        # - **en**: English
+        # The language type for the request and response messages. Default value: **zh**. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.lang = lang
-        # regionId
+        # The region ID.
         self.reg_id = reg_id
-        # Sample batch type
+        # The sample batch type.
         self.sample_batch_type = sample_batch_type
-        # Service list.
+        # The list of services.
         self.service_list = service_list
 
     def validate(self):

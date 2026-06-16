@@ -17,25 +17,25 @@ class DescribeSampleDataListRequest(DaraModel):
         scene: str = None,
         status: str = None,
     ):
-        # Sets the language type for requests and received messages, default value is **zh**. Values: 
-        # - **zh**: Chinese
-        # - **en**: English
+        # The language of the request and response. Default value: **zh**. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.lang = lang
-        # Current page number.
+        # The current page number.
         self.current_page = current_page
-        # Deletion status
+        # The deletion status.
         self.delete_tag = delete_tag
-        # Page size, default value is 10.
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # Query content
+        # The query content.
         self.query_content = query_content
-        # Region code
+        # The region code.
         self.reg_id = reg_id
-        # Sample ID.
+        # The sample ID.
         self.sample_id = sample_id
-        # Scene
+        # The scenario.
         self.scene = scene
-        # Status.
+        # The status.
         self.status = status
 
     def validate(self):

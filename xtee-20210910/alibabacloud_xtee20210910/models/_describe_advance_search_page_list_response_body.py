@@ -13,9 +13,9 @@ class DescribeAdvanceSearchPageListResponseBody(DaraModel):
         request_id: str = None,
         result_object: main_models.DescribeAdvanceSearchPageListResponseBodyResultObject = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Return object
+        # The returned object.
         self.result_object = result_object
 
     def validate(self):
@@ -56,17 +56,17 @@ class DescribeAdvanceSearchPageListResponseBodyResultObject(DaraModel):
         total_item: int = None,
         total_page: int = None,
     ):
-        # Current page number.
+        # The current page number.
         self.current_page = current_page
-        # Returned data object
+        # The returned data object.
         self.data = data
-        # Table header
+        # The table header.
         self.header = header
-        # Number of items per page. Default value: 20, minimum value: 1, maximum value: 50.
+        # The number of entries per page in the response. Default value: 20. Minimum value: 1. Maximum value: 50.
         self.page_size = page_size
-        # Total number of items
+        # The total number of entries.
         self.total_item = total_item
-        # Total number of pages
+        # The total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -134,13 +134,13 @@ class DescribeAdvanceSearchPageListResponseBodyResultObjectHeader(DaraModel):
         field_title: str = None,
         is_default: bool = None,
     ):
-        # Field name
+        # The field name.
         self.field_name = field_name
-        # Field title.
+        # The field name.
         self.field_title = field_title
-        # Whether it is a default display field (displayed in the response, not used as a parameter)
-        # - true: Yes
-        # - false: No
+        # Indicates whether the field is displayed by default. This field is included in the response only and is not used as a request parameter. Valid values:
+        # - true: The field is displayed by default.
+        # - false: The field is not displayed by default.
         self.is_default = is_default
 
     def validate(self):
