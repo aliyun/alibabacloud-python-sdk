@@ -14,6 +14,7 @@ class GetUserResponseBody(DaraModel):
         api_keys: List[main_models.GetUserResponseBodyApiKeys] = None,
         app_id: str = None,
         code: str = None,
+        dashscope_host: str = None,
         host: str = None,
         inner_token: str = None,
         message: str = None,
@@ -24,6 +25,7 @@ class GetUserResponseBody(DaraModel):
         self.api_keys = api_keys
         self.app_id = app_id
         self.code = code
+        self.dashscope_host = dashscope_host
         self.host = host
         self.inner_token = inner_token
         self.message = message
@@ -54,6 +56,9 @@ class GetUserResponseBody(DaraModel):
 
         if self.code is not None:
             result['Code'] = self.code
+
+        if self.dashscope_host is not None:
+            result['DashscopeHost'] = self.dashscope_host
 
         if self.host is not None:
             result['Host'] = self.host
@@ -88,6 +93,9 @@ class GetUserResponseBody(DaraModel):
 
         if m.get('Code') is not None:
             self.code = m.get('Code')
+
+        if m.get('DashscopeHost') is not None:
+            self.dashscope_host = m.get('DashscopeHost')
 
         if m.get('Host') is not None:
             self.host = m.get('Host')
