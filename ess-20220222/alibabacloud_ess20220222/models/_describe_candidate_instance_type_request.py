@@ -26,21 +26,53 @@ class DescribeCandidateInstanceTypeRequest(DaraModel):
         system_disk_categories: List[str] = None,
         zone_ids: List[str] = None,
     ):
+        # Specifies whether to include vSwitches from other availability zones as candidates.
+        # 
+        # > The instance types remain unchanged. Only new availability zones are added as candidates. If a scaling group fails to scale out in all selected availability zones due to issues such as insufficient inventory, Auto Scaling automatically adds a vSwitch in a new availability zone to the scaling group based on this setting.
+        # > For example, if a scaling group is configured for the cn-hangzhou-h and cn-hangzhou-g availability zones and a scale-out fails in both zones, Auto Scaling may create a vSwitch in the cn-hangzhou-k availability zone and add it to the scaling group based on real-time inventory.
         self.allow_cross_az = allow_cross_az
+        # Specifies whether to include instance types from other generations as candidates.
+        # 
+        # - For example, if the current instance type is ecs.c7.large, you can set this parameter to true to include instance types such as ecs.c6.large and ecs.c8.large in the list of candidates.
         self.allow_different_generation = allow_different_generation
+        # The data disk categories, ordered by priority from high to low. If Auto Scaling cannot create a data disk by using a higher-priority category, it tries the next one in the list.
         self.data_disk_categories = data_disk_categories
+        # The name of the image family. When specified, the latest image in this family is used to create instances. This parameter cannot be used with ImageId.
+        # 
+        # > If you do not specify the scaling group ID, you must specify at least one of ImageId, ImageName, and ImageFamily.
         self.image_family = image_family
+        # The ID of the image used to create instances.
+        # 
+        # > If the specified image contains both a system disk and data disks, any existing data disk information in the scaling configuration is cleared.
         self.image_id = image_id
+        # The name of the image. The name must be unique within a region. You cannot use this parameter to specify an image from Alibaba Cloud Marketplace.
+        # 
+        # > This parameter is an alternative to the `ImageId` parameter. If you specify `ImageId`, `ImageName` is ignored.
         self.image_name = image_name
+        # The specified ECS instance types.
         self.instance_types = instance_types
+        # The number of IPv6 addresses.
         self.ipv_6address_count = ipv_6address_count
+        # The maximum price for a candidate instance type.
         self.max_price = max_price
         self.owner_id = owner_id
+        # The ID of the region where the scaling group is located.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The bidding strategy for pay-as-you-go instances. Valid values:
+        # 
+        # - NoSpot: a standard pay-as-you-go instance.
+        # 
+        # - SpotWithPriceLimit: a spot instance with a user-defined maximum price.
+        # 
+        # - SpotAsPriceGo: a spot instance where the system automatically bids at the market price.
+        # 
+        # Default value: NoSpot.
         self.spot_strategy = spot_strategy
+        # The system disk categories, ordered by priority from high to low. If Auto Scaling cannot create a system disk by using a higher-priority category, it tries the next one in the list.
         self.system_disk_categories = system_disk_categories
+        # The specified availability zones.
         self.zone_ids = zone_ids
 
     def validate(self):

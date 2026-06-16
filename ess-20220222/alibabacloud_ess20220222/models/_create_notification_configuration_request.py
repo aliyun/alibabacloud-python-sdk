@@ -18,6 +18,13 @@ class CreateNotificationConfigurationRequest(DaraModel):
         scaling_group_id: str = None,
         time_zone: str = None,
     ):
+        # The codec for the content of message notifications. Valid values:
+        # 
+        # - PlainText: No encoding; messages are transmitted in plaintext.
+        # - Base64: Messages are encoded in Base64.
+        # 
+        # Default value: Base64.
+        # > This parameter applies only to MNS notification objects.
         self.message_encoding = message_encoding
         # The Alibaba Cloud Resource Name (ARN) of the notification recipient. The following list describes the value formats of this parameter:
         # 

@@ -13,9 +13,11 @@ class DescribeCandidateInstanceTypeResponseBody(DaraModel):
         candidate_zone_ids: List[str] = None,
         request_id: str = None,
     ):
+        # A list of candidate ECS instance types.
         self.candidate_instance_types = candidate_instance_types
+        # A list of candidate availability zones.
         self.candidate_zone_ids = candidate_zone_ids
-        # Id of the request
+        # The unique ID of the request.
         self.request_id = request_id
 
     def validate(self):

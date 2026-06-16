@@ -10,7 +10,7 @@ class CreateScalingConfigurationResponseBody(DaraModel):
         request_id: str = None,
         scaling_configuration_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The ID of the scaling configuration.
         self.scaling_configuration_id = scaling_configuration_id

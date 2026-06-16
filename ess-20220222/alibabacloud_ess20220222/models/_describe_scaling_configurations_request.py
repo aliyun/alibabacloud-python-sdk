@@ -22,29 +22,29 @@ class DescribeScalingConfigurationsRequest(DaraModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number. Pages start from page 1.
+        # The page number of the scaling configuration list. Pages start from 1.
         # 
         # Default value: 1.
         self.page_number = page_number
-        # The number of entries per page. Maximum value: 50.
+        # The number of entries per page in paged queries. Maximum value: 50.
         # 
         # Default value: 10.
         self.page_size = page_size
-        # The region ID of the scaling group to which the scaling configuration that you want to query belongs.
+        # The region ID of the scaling group to which the scaling configuration belongs.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The IDs of the scaling configurations that you want to query.
+        # The IDs of the scaling configurations to query.
         # 
-        # The IDs of active and inactive scaling configurations are displayed in the query results. You can differentiate between active and inactive scaling configurations based on the value of the `LifecycleState` parameter.
+        # The query results include both active and inactive scaling configurations, identified by the response parameter `LifecycleState`.
         self.scaling_configuration_ids = scaling_configuration_ids
-        # The names of the scaling configurations that you want to query.
+        # The names of the scaling configurations to query.
         # 
-        # The names of inactive scaling configurations are not displayed in the query results, and no error is reported.
+        # The query ignores invalid scaling configuration names without returning an error.
         self.scaling_configuration_names = scaling_configuration_names
-        # The ID of the scaling group. You can use the ID to query all scaling configurations in the scaling group.
+        # The ID of the scaling group. You can query all scaling configurations under this scaling group.
         self.scaling_group_id = scaling_group_id
 
     def validate(self):
