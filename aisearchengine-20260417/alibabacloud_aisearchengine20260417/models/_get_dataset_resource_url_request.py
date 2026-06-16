@@ -10,7 +10,10 @@ class GetDatasetResourceUrlRequest(DaraModel):
         dataset_id: str = None,
         primary_key: str = None,
     ):
+        # The dataset ID. You can view this in the dataset list on the console.
         self.dataset_id = dataset_id
+        # The primary key value of the data record in the dataset.
+        # 
         # This parameter is required.
         self.primary_key = primary_key
 

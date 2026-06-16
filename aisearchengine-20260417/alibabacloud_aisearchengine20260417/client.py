@@ -56,16 +56,10 @@ class Client(OpenApiClient):
             body['grey'] = request.grey
         if not DaraCore.is_null(request.query):
             body['query'] = request.query
-        if not DaraCore.is_null(request.recall):
-            body['recall'] = request.recall
         if not DaraCore.is_null(request.session_id):
             body['sessionId'] = request.session_id
-        if not DaraCore.is_null(request.strategy_id):
-            body['strategyId'] = request.strategy_id
         if not DaraCore.is_null(request.user):
             body['user'] = request.user
-        if not DaraCore.is_null(request.version):
-            body['version'] = request.version
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             body = Utils.parse_to_map(body)
@@ -100,16 +94,10 @@ class Client(OpenApiClient):
             body['grey'] = request.grey
         if not DaraCore.is_null(request.query):
             body['query'] = request.query
-        if not DaraCore.is_null(request.recall):
-            body['recall'] = request.recall
         if not DaraCore.is_null(request.session_id):
             body['sessionId'] = request.session_id
-        if not DaraCore.is_null(request.strategy_id):
-            body['strategyId'] = request.strategy_id
         if not DaraCore.is_null(request.user):
             body['user'] = request.user
-        if not DaraCore.is_null(request.version):
-            body['version'] = request.version
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             body = Utils.parse_to_map(body)

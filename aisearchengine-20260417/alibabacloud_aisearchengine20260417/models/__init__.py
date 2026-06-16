@@ -15,7 +15,6 @@ from ._qa_chat_request import QaChatRequest
 from ._qa_chat_response_body import QaChatResponseBody
 from ._qa_chat_response import QaChatResponse
 from ._engine_search_request import EngineSearchRequestQuery
-from ._engine_search_request import EngineSearchRequestRecall
 from ._engine_search_request import EngineSearchRequestUser
 from ._engine_search_response_body import EngineSearchResponseBodyDataItems
 from ._engine_search_response_body import EngineSearchResponseBodyData
@@ -38,7 +37,6 @@ __all__ = [
     QaChatResponseBody,
     QaChatResponse,
     EngineSearchRequestQuery,
-    EngineSearchRequestRecall,
     EngineSearchRequestUser,
     EngineSearchResponseBodyDataItems,
     EngineSearchResponseBodyData,

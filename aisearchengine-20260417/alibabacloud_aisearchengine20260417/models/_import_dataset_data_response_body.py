@@ -14,9 +14,13 @@ class ImportDatasetDataResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The business status code. A value of 200 indicates a successful request. Other values indicate exceptions. For more information, see error codes.
         self.code = code
+        # The response data body, which uses an empty placeholder.
         self.data = data
+        # The status description.
         self.message = message
+        # The unique request ID, used for troubleshooting.
         self.request_id = request_id
 
     def validate(self):

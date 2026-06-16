@@ -12,8 +12,45 @@ class QaChatResponseBody(DaraModel):
         event: str = None,
         id: str = None,
     ):
+        # Protocol data
         self.data = data
+        # Event type description:
+        # 
+        # 1. Lifecycle
+        #    - start / finish
+        #    - Marks the beginning and end of a message
+        # 
+        # 2. Text content
+        #    - text-start / text-delta / text-end
+        #    - Markdown text streaming output
+        # 
+        # 3. Inline media
+        #    - data-image-info / data-video-info
+        #    - Media cards in text-image/text-video mixed content
+        # 
+        # 4. Source references
+        #    - data-reference
+        #    - Unified source list (web / document / image / video)
+        # 
+        # 5. Inline references
+        #    - data-document-ref
+        #    - Perplexity-style inline document references
+        # 
+        # 6. Template video
+        #    - data-template-video
+        #    - Video cards output by AV template agent
+        # 
+        # 7. Template analysis
+        #    - data-video-info / data-template-info / data-template-video-content
+        #    - Analysis result data from AV template agent
+        #    - Table-type templates such as "Speech Transcription", "Video Outline", and "Video-to-Script" are delivered at once via data-template-video-content
+        # 
+        # 8. Streaming JSON
+        #    - json-start / json-delta / json-end
+        #    - Incremental delta-only JSON streaming protocol
+        #    - Used for structured JSON template analysis output such as "Action Expression"
         self.event = event
+        # Request ID, same as requestId
         self.id = id
 
     def validate(self):
@@ -63,14 +100,23 @@ class QaChatResponseBodyData(DaraModel):
         retryable: bool = None,
         type: str = None,
     ):
+        # Structured response data
         self.data = data
+        # Incremental text output
         self.delta = delta
+        # See error code list
         self.error_code = error_code
+        # See error code list
         self.error_text = error_text
+        # Completion reason. When the value is stop, it indicates output is complete; on error, the output is the error reason.
         self.finish_reason = finish_reason
+        # Unique identifier. For multi-segment text, different segments use different ids, while the id remains consistent within a text segment
         self.id = id
+        # Request ID
         self.request_id = request_id
+        # Whether the error is retryable, defaults to true
         self.retryable = retryable
+        # Same as event
         self.type = type
 
     def validate(self):

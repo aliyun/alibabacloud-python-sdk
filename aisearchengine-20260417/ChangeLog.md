@@ -1,3 +1,9 @@
+2026-06-16 Version: 3.0.0
+- Update API EngineSearch: delete request parameters body.recall.
+- Update API EngineSearch: delete request parameters body.strategyId.
+- Update API EngineSearch: delete request parameters body.version.
+
+
 2026-05-27 Version: 2.0.0
 - Update API GetDatasetResourceUrl: update request parameters body.datasetId' type has changed.
 - Update API GetDatasetResourceUrl: update request parameters body.datasetId' format has changed.

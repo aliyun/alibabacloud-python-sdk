@@ -14,8 +14,11 @@ class EngineSearchResponseBody(DaraModel):
         data: main_models.EngineSearchResponseBodyData = None,
         message: str = None,
     ):
+        # The status code. A value of 200 indicates success.
         self.code = code
+        # The business data body.
         self.data = data
+        # The response message.
         self.message = message
 
     def validate(self):
@@ -65,14 +68,28 @@ class EngineSearchResponseBodyData(DaraModel):
         total: int = None,
         trace_info: Dict[str, Any] = None,
     ):
+        # The error message.
         self.error_message = error_message
+        # The additional metadata. 
+        # 
+        # > Contains the exclude_ids field, which represents the list of IDs that were actually excluded. The format is `Array[String]`.
+        # > - Example: ["id_1", "id_2"].
         self.extra = extra
+        # 搜索结果列表
         self.items = items
+        # The search page number.
         self.page = page
+        # The response ID of this request.
         self.request_id = request_id
+        # The number of results returned on the current page.
         self.size = size
+        # The execution status.
+        # 200: succeeded.
+        # 500: failed.
         self.status = status
+        # The total number of records.
         self.total = total
+        # The Tracing Analysis information.
         self.trace_info = trace_info
 
     def validate(self):
@@ -160,10 +177,19 @@ class EngineSearchResponseBodyDataItems(DaraModel):
         score: float = None,
         trace_info: Dict[str, Any] = None,
     ):
+        # 算法内容
         self.algorithm = algorithm
+        # 内容详情对象（详细结构见下文）
         self.content = content
+        # 权益绑定 ID
         self.id = id
+        # 相关性得分
         self.score = score
+        # 回传日志时使用。
+        # 
+        # 取值：
+        # 
+        # trace_id=ali。
         self.trace_info = trace_info
 
     def validate(self):

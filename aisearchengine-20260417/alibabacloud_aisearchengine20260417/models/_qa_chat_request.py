@@ -15,11 +15,17 @@ class QaChatRequest(DaraModel):
         options: Dict[str, Any] = None,
         session_id: str = None,
     ):
+        # Application ID
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # User message object containing role and multimodal content.
+        # 
         # This parameter is required.
         self.message = message
+        # No input required
         self.options = options
+        # Q&A session ID, used to track multiple Q&A interactions from the same user.
         self.session_id = session_id
 
     def validate(self):
@@ -68,7 +74,9 @@ class QaChatRequestMessage(DaraModel):
         parts: List[main_models.QaChatRequestMessageParts] = None,
         role: str = None,
     ):
+        # Individual content block, differentiated by `type`
         self.parts = parts
+        # Message role, currently only supports the `"user"` role
         self.role = role
 
     def validate(self):
@@ -114,10 +122,25 @@ class QaChatRequestMessageParts(DaraModel):
         type: str = None,
         url: str = None,
     ):
+        # Required when type = "data". The data object structure is as follows:
+        # 
+        # - type: String type, required, indicates the data subtype. Currently supported value is "template", indicating a video template.
+        # - videoId: String type, conditionally required. Only required when type = "template", indicating the video template ID; can be ignored or set to null for other types.
         self.data = data
+        # Required when `type="file"`.
+        # 
+        # * Media type, currently only supports image formats JPG/PNG/WEBP/JPEG, maximum 5
         self.media_type = media_type
+        # Required when `type="text"`.
+        # 
+        # * Text content, maximum 1024 characters
         self.text = text
+        # Fixed content block type, only supports `"text"` / `"file"` / `"data"`
         self.type = type
+        # Required when `type="file"`. Supports the following two types, with format support for JPG/PNG/WEBP/JPEG:
+        # 
+        # • Media resource CDN URL, currently supports images, maximum 5;
+        # • Image encoding, upload image files using base64 encoded strings (supports bitmap formats), maximum 5
         self.url = url
 
     def validate(self):

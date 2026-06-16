@@ -13,9 +13,13 @@ class GetDatasetResourceUrlResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The business status code. A value of `200` indicates a successful request. Other values indicate an exception. For more information, see error codes.
         self.code = code
+        # The business data body.
         self.data = data
+        # The status description. The value is "success" for successful requests and a specific error message for failed requests.
         self.message = message
+        # The unique request ID, used for troubleshooting.
         self.request_id = request_id
 
     def validate(self):
@@ -63,6 +67,7 @@ class GetDatasetResourceUrlResponseBodyData(DaraModel):
         self,
         url: str = None,
     ):
+        # The temporary OSS access URL with a signature and expiration time (valid for 24 hours). The URL can be used directly for frontend display or download.
         self.url = url
 
     def validate(self):

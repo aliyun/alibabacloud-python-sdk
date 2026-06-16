@@ -13,28 +13,27 @@ class EngineSearchRequest(DaraModel):
         app_id: str = None,
         grey: bool = None,
         query: main_models.EngineSearchRequestQuery = None,
-        recall: main_models.EngineSearchRequestRecall = None,
         session_id: str = None,
-        strategy_id: str = None,
         user: main_models.EngineSearchRequestUser = None,
-        version: str = None,
     ):
+        # The unique ID of the application.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # Specifies whether to access the draft version.
         self.grey = grey
+        # The query condition object.
+        # 
         # This parameter is required.
         self.query = query
-        self.recall = recall
+        # This parameter does not need to be specified.
         self.session_id = session_id
-        self.strategy_id = strategy_id
+        # The user information object, used for subsequent user-perspective analysis.
         self.user = user
-        self.version = version
 
     def validate(self):
         if self.query:
             self.query.validate()
-        if self.recall:
-            self.recall.validate()
         if self.user:
             self.user.validate()
 
@@ -52,20 +51,11 @@ class EngineSearchRequest(DaraModel):
         if self.query is not None:
             result['query'] = self.query.to_map()
 
-        if self.recall is not None:
-            result['recall'] = self.recall.to_map()
-
         if self.session_id is not None:
             result['sessionId'] = self.session_id
 
-        if self.strategy_id is not None:
-            result['strategyId'] = self.strategy_id
-
         if self.user is not None:
             result['user'] = self.user.to_map()
-
-        if self.version is not None:
-            result['version'] = self.version
 
         return result
 
@@ -81,22 +71,12 @@ class EngineSearchRequest(DaraModel):
             temp_model = main_models.EngineSearchRequestQuery()
             self.query = temp_model.from_map(m.get('query'))
 
-        if m.get('recall') is not None:
-            temp_model = main_models.EngineSearchRequestRecall()
-            self.recall = temp_model.from_map(m.get('recall'))
-
         if m.get('sessionId') is not None:
             self.session_id = m.get('sessionId')
-
-        if m.get('strategyId') is not None:
-            self.strategy_id = m.get('strategyId')
 
         if m.get('user') is not None:
             temp_model = main_models.EngineSearchRequestUser()
             self.user = temp_model.from_map(m.get('user'))
-
-        if m.get('version') is not None:
-            self.version = m.get('version')
 
         return self
 
@@ -105,6 +85,7 @@ class EngineSearchRequestUser(DaraModel):
         self,
         user_id: str = None,
     ):
+        # The unique ID of the user.
         self.user_id = user_id
 
     def validate(self):
@@ -127,41 +108,6 @@ class EngineSearchRequestUser(DaraModel):
 
         return self
 
-class EngineSearchRequestRecall(DaraModel):
-    def __init__(
-        self,
-        close_recall_asr: bool = None,
-        need_merge_segments: bool = None,
-    ):
-        self.close_recall_asr = close_recall_asr
-        self.need_merge_segments = need_merge_segments
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        _map = super().to_map()
-        if _map is not None:
-            result = _map
-        if self.close_recall_asr is not None:
-            result['closeRecallAsr'] = self.close_recall_asr
-
-        if self.need_merge_segments is not None:
-            result['needMergeSegments'] = self.need_merge_segments
-
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('closeRecallAsr') is not None:
-            self.close_recall_asr = m.get('closeRecallAsr')
-
-        if m.get('needMergeSegments') is not None:
-            self.need_merge_segments = m.get('needMergeSegments')
-
-        return self
-
 
 
 class EngineSearchRequestQuery(DaraModel):
@@ -173,10 +119,15 @@ class EngineSearchRequestQuery(DaraModel):
         page_size: int = None,
         texts: List[str] = None,
     ):
+        # The list of primary key IDs to exclude.<br>• Purpose: filters out previously viewed history records.
         self.exclude_ids = exclude_ids
+        # The image query list.<br>• Only one image URL is supported. The maximum size of a single image is 10 MB. Supported formats: JPG, PNG, WEBP, and JPEG.
         self.image_urls = image_urls
+        # The page number, starting from 1.<br>• Default value: `1`.
         self.page_no = page_no
+        # The number of results returned per page.
         self.page_size = page_size
+        # The text query list.<br>• Only one text string is supported. The maximum length is 256 characters.
         self.texts = texts
 
     def validate(self):
