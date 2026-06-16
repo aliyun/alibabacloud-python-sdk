@@ -21,16 +21,25 @@ class QueryFaceGroupResponseBody(DaraModel):
         total_count: int = None,
         total_page: int = None,
     ):
+        # The return code.
         self.code = code
+        # The current page number.
         self.current_page = current_page
+        # The list of returned entries.
         self.items = items
+        # The number of entries per page in a paged query.
         self.max_results = max_results
+        # The return message.
         self.message = message
+        # The token for the next query.
         self.next_token = next_token
+        # The number of entries per page.
         self.page_size = page_size
         # Id of the request
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
+        # The total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -123,9 +132,13 @@ class QueryFaceGroupResponseBodyItems(DaraModel):
         id: int = None,
         name: str = None,
     ):
+        # The code of the face library.
         self.code = code
+        # The description.
         self.description = description
+        # The primary key ID.
         self.id = id
+        # The name of the face library.
         self.name = name
 
     def validate(self):

@@ -17,29 +17,29 @@ class CardOcrRequest(DaraModel):
         product_code: str = None,
         spoof: str = None,
     ):
-        # Document type.
+        # The document type.
         self.doc_type = doc_type
-        # Whether to perform face quality detection on the document
-        # - T: Indicates that detection is needed
-        # - F: Indicates that detection is not needed (default F)
+        # Specifies whether to perform face quality detection on the ID document. Valid values:
+        # - T: Perform face quality detection.
+        # - F: Do not perform face quality detection. This is the default value.
         self.id_face_quality = id_face_quality
-        # Base64 on the front of the document image
+        # The Base64-encoded image of the front side of the ID document. The value is a Base64 encoding of the image.
         self.id_ocr_picture_base_64 = id_ocr_picture_base_64
-        # URL of the front side of the document image
+        # The URL of the front-side image of the ID document.
         self.id_ocr_picture_url = id_ocr_picture_url
-        # A unique business identifier defined by the merchant, used for subsequent troubleshooting. It supports a combination of letters and numbers, with a maximum length of 32 characters. Please ensure uniqueness.
+        # The merchant-defined unique business ID used for subsequent troubleshooting. The value can be a combination of letters and digits with a maximum length of 32 characters. Ensure that the value is unique.
         self.merchant_biz_id = merchant_biz_id
-        # Merchant user ID or other identifiers that can be used to identify specific users, such as phone numbers, email addresses, etc. It is strongly recommended to pre-desensitize the value of the userId field, for example, by hashing the value.
+        # The merchant user ID or another identifier that can be used to identify a specific user, such as a phone number or email address. We strongly recommend that you pre-desensitize the value of the userId field, for example, by hashing the value.
         self.merchant_user_id = merchant_user_id
-        # Whether to perform document OCR
-        # - T: Indicates that document OCR is required (default T)
-        # - F: Indicates that it is not required
+        # Specifies whether to perform OCR on the ID document. Valid values:
+        # - T: Perform OCR on the ID document. This is the default value.
+        # - F: Do not perform OCR.
         self.ocr = ocr
-        # Product code
+        # The product code.
         self.product_code = product_code
-        # Whether to enable anti-counterfeiting detection
-        # - T: Indicates to enable anti-counterfeiting
-        # - F: Indicates to disable (default F)
+        # Specifies whether to enable anti-spoofing detection. Valid values:
+        # - T: Enable anti-spoofing detection.
+        # - F: Disable anti-spoofing detection. This is the default value.
         self.spoof = spoof
 
     def validate(self):

@@ -23,20 +23,51 @@ class EkycVerifyV2Request(DaraModel):
         merchant_user_id: str = None,
         product_code: str = None,
     ):
+        # Indicates whether to enable authoritative identity verification. This parameter currently applies only to second-generation ID cards issued in the Chinese mainland.
         self.authorize = authorize
+        # Indicates whether clipping is allowed. Clipping is disabled by default (T/F).
+        # 
+        # - T: Detection is required.
+        # - F: Detection is required (default is F).
         self.crop = crop
+        # The user\\"s real name. When Authorize=\\"T\\" and the certificate type is a Chinese mainland ID card, you must provide at least one of the following: key certificate information (DocName, DocNo) or certificate image (IdOcrPictureBase64/URL). Note: It supports combinations of one or more Chinese characters, excluding special characters except for the interpunct 【·】 used in ethnic minority names.
         self.doc_name = doc_name
+        # The user\\"s certificate number. When Authorize=\\"T\\" and the certificate type is a Chinese mainland ID card, you must provide at least one of the following: key certificate information (DocName, DocNo) or certificate image (IdOcrPictureBase64/URL). Note: It supports a combination of letters and digits with a length of 18 characters.
         self.doc_no = doc_no
+        # Certificate type
         self.doc_type = doc_type
+        # Base64 encoding of the facial image.
+        # 
+        # Notes:
+        # 
+        # - If you choose this method to submit the certificate image, check the image size and avoid uploading excessively large images.
+        # - You must specify exactly one of FacePictureBase64, FacePictureUrl, or FacePictureFile.
         self.face_picture_base_64 = face_picture_base_64
+        # File stream of the facial photo
         self.face_picture_file = face_picture_file
+        # URL of the facial photo
         self.face_picture_url = face_picture_url
+        # Base64-encoded certificate Image. Notes:
+        # 
+        # - If you use this method to submit the certificate image, check the image size and avoid uploading excessively large images.
+        # - You must specify exactly one of IdOcrPictureBase64, IdOcrPictureUrl, or IdOcrPictureFile.
         self.id_ocr_picture_base_64 = id_ocr_picture_base_64
+        # File stream of the front side of the certificate
         self.id_ocr_picture_file = id_ocr_picture_file
+        # URL of the front side of the certificate
         self.id_ocr_picture_url = id_ocr_picture_url
+        # Custom OCR quality detection threshold mode:
+        # 
+        # - 0: System default
+        # - 1: Strict mode
+        # - 2: Loose mode
+        # - 3 (default): Shutdown quality detection
         self.id_threshold = id_threshold
+        # A custom business UUID defined by the merchant, used for subsequent issue tracking and troubleshooting. It supports a combination of letters and digits with a length of 32 characters. Ensure its uniqueness.
         self.merchant_biz_id = merchant_biz_id
+        # Your custom user ID or another identifier that can uniquely identify a specific user, such as a mobile phone number or mailbox address. We strongly recommend pre-masking the value of this field—for example, by applying a hash function.
         self.merchant_user_id = merchant_user_id
+        # Product code
         self.product_code = product_code
 
     def validate(self):

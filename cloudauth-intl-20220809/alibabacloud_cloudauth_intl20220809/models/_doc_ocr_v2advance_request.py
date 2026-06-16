@@ -22,17 +22,49 @@ class DocOcrV2AdvanceRequest(DaraModel):
         product_code: str = None,
         spoof: str = None,
     ):
+        # Specifies the side of the certificate. If this parameter is not specified, the portrait side is used by default.
+        # 
+        # - OCR_ID_FACE (default): the portrait side
+        # 
+        # - OCR_ID_NATIONAL_EMBLEM: the national emblem side.
         self.card_side = card_side
+        # The certificate type.
         self.doc_type = doc_type
+        # Specifies whether to perform face quality detection on the certificate.
+        # 
+        # - T: Detection is required.
+        # - F: Detection is not required. (Default: F).
         self.id_face_quality = id_face_quality
+        # The Base64-encoded card or certificate image.
+        # 
+        # If you use IdOcrPictureBase64 to pass in the certificate image, check the image size and do not pass in an excessively large image.
         self.id_ocr_picture_base_64 = id_ocr_picture_base_64
+        # The file stream of the front side of the certificate image.
         self.id_ocr_picture_file_object = id_ocr_picture_file_object
+        # The URL of the front side of the certificate image.
         self.id_ocr_picture_url = id_ocr_picture_url
+        # The custom OCR quality detection threshold mode. Valid values:
+        # 
+        # - 0: system default
+        # - 1: strict mode
+        # - 2: loose mode
+        # - 3 (default): quality detection is disabled.
         self.id_threshold = id_threshold
+        # The merchant-defined unique business ID used for subsequent troubleshooting. The value can contain letters and digits with a maximum length of 32 characters. Ensure that the value is unique.
         self.merchant_biz_id = merchant_biz_id
+        # The custom user ID defined in your business. Ensure that the value is unique.
         self.merchant_user_id = merchant_user_id
+        # Specifies whether to perform certificate OCR.
+        # 
+        # - T: OCR is required.
+        # - F: OCR is not required.
         self.ocr = ocr
+        # The product code.
         self.product_code = product_code
+        # Specifies whether to enable anti-spoofing detection.
+        # 
+        # - T: Anti-spoofing is enabled.
+        # - F: Anti-spoofing is disabled.
         self.spoof = spoof
 
     def validate(self):

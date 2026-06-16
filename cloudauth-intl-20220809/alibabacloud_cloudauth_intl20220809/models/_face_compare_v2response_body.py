@@ -13,10 +13,15 @@ class FaceCompareV2ResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.FaceCompareV2ResponseBodyResult = None,
     ):
+        # The return code.
+        # 
+        # 200: succeeded. Other values: error codes. For more information, see error codes.
         self.code = code
+        # The return message.
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # The returned result.
         self.result = result
 
     def validate(self):
@@ -67,9 +72,16 @@ class FaceCompareV2ResponseBodyResult(DaraModel):
         passed: str = None,
         transaction_id: str = None,
     ):
+        # The additional result information.
         self.ext_face_info = ext_face_info
+        # The comparison score between the submitted face image and the reference face image during verification. Value range: 0 to 100.
         self.face_comparison_score = face_comparison_score
+        # Indicates whether the verification passed. Valid values:
+        # 
+        # - Y: passed.
+        # - N: not passed.
         self.passed = passed
+        # The unique ID of the verification request.
         self.transaction_id = transaction_id
 
     def validate(self):
@@ -121,10 +133,15 @@ class FaceCompareV2ResponseBodyResultExtFaceInfo(DaraModel):
         occlusion_score: float = None,
         sharpness_score: float = None,
     ):
+        # The overall quality score.
         self.face_quality_score = face_quality_score
+        # The illumination score.
         self.illumination_score = illumination_score
+        # The key area occlusion score.
         self.ka_occlusion_score = ka_occlusion_score
+        # The occlusion score.
         self.occlusion_score = occlusion_score
+        # The sharpness score.
         self.sharpness_score = sharpness_score
 
     def validate(self):

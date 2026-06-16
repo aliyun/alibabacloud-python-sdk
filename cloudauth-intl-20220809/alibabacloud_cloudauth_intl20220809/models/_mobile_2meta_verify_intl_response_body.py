@@ -13,13 +13,13 @@ class Mobile2MetaVerifyIntlResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.Mobile2MetaVerifyIntlResponseBodyResult = None,
     ):
-        # [Status codes](https://www.alibabacloud.com/help/en/ekyc/latest/mobile-2meta?spm=a2c63.p38356.0.i13#cbf2539971xzr).
+        # The return code.
         self.code = code
-        # A detailed description of the response code.
+        # The return message.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Return result
+        # The returned result.
         self.result = result
 
     def validate(self):
@@ -68,21 +68,16 @@ class Mobile2MetaVerifyIntlResponseBodyResult(DaraModel):
         biz_code: str = None,
         isp_name: str = None,
     ):
-        # The verification result:
-        # 
-        # - 1: The information is consistent. (Billed)
-        # 
-        # - 2: The information is inconsistent. (Billed)
-        # 
-        # - 3: No record is found. (Not billed)
+        # The verification result code. Valid values:
+        # - 1: Consistent.
+        # - 2: Inconsistent.
+        # - 3: No record found.
         self.biz_code = biz_code
-        # The carrier name:
+        # The name of the telecommunications service provider. Valid values:
         # 
         # - CMCC: China Mobile
-        # 
         # - CUCC: China Unicom
-        # 
-        # - CTCC: China Telecom
+        # - CTCC: China Telecom.
         self.isp_name = isp_name
 
     def validate(self):

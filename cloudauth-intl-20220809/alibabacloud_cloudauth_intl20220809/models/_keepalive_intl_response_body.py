@@ -13,13 +13,13 @@ class KeepaliveIntlResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.KeepaliveIntlResponseBodyResult = None,
     ):
-        # The [return code.](https://www.alibabacloud.com/help/en/ekyc/latest/client-connection-hold?spm=a3c0i.23458820.2359477120.1.48207d3ftEYld2#74d291dfaaxci)
+        # The return code.
         self.code = code
-        # A detailed description of the Code.
+        # The return message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Return result
+        # The returned result.
         self.result = result
 
     def validate(self):
@@ -67,7 +67,7 @@ class KeepaliveIntlResponseBodyResult(DaraModel):
         self,
         result: str = None,
     ):
-        # The result of the call.
+        # The returned result.
         self.result = result
 
     def validate(self):

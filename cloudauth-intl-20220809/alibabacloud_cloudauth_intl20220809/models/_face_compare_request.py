@@ -15,28 +15,27 @@ class FaceCompareRequest(DaraModel):
         target_face_picture: str = None,
         target_face_picture_url: str = None,
     ):
-        # 是否开启传入人脸图片质量检测
+        # Specifies whether to enable face image quality check.<danger>Deprecated.</danger>.
         self.face_picture_quality_check = face_picture_quality_check
+        # The face quality check.
         self.face_quality_check = face_quality_check
-        # A custom unique business ID used for troubleshooting. It can be a combination of up to 32 letters and digits. Make sure that the ID is unique.
+        # The merchant-defined unique business ID used for subsequent troubleshooting. The value can be a combination of letters and digits with a maximum length of 32 characters. Ensure that the value is unique.
         self.merchant_biz_id = merchant_biz_id
-        # The Base64 encoding of the portrait photo.
+        # The Base64-encoded source face image.
         # 
-        # > If you use this method to pass the image, check the image size. Do not pass an oversized image.
+        # > **Note**
+        # > - If you use this method to pass in the image, check the image size and do not pass in an excessively large image.
+        # > - Specify either SourceFacePicture or SourceFacePictureUrl.
         self.source_face_picture = source_face_picture
-        # The URL of the portrait photo. The URL must be an HTTP or HTTPS link accessible over the Internet.
-        # 
-        # > You must specify either SourceFacePicture or SourceFacePictureUrl.
+        # The HTTPS or HTTP URL of the source face image.
         self.source_face_picture_url = source_face_picture_url
-        # The Base64 encoding of the base photo.
+        # The Base64-encoded reference face image.
         # 
-        # > If you use this method to pass the image, check the image size. Do not pass an oversized image.
+        # > **Note**
+        # > - If you use this method to pass in the image, check the image size and do not pass in an excessively large image.
+        # > - Specify either TargetFacePicture or TargetFacePictureUrl.
         self.target_face_picture = target_face_picture
-        # The URL of the base portrait photo. The URL must be an HTTP or HTTPS link accessible over the Internet.
-        # 
-        # 
-        # 
-        # > You must specify either TargetFacePicture or TargetFacePictureUrl.
+        # The HTTPS or HTTP URL of the reference face image.
         self.target_face_picture_url = target_face_picture_url
 
     def validate(self):

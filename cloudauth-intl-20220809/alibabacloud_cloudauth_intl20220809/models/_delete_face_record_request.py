@@ -9,7 +9,7 @@ class DeleteFaceRecordRequest(DaraModel):
         self,
         id: str = None,
     ):
-        # Primary Key ID
+        # The primary key ID.
         self.id = id
 
     def validate(self):

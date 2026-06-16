@@ -13,13 +13,13 @@ class FaceLivenessResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.FaceLivenessResponseBodyResult = None,
     ):
-        # [The response code.](https://www.alibabacloud.com/help/en/ekyc/latest/cadqvlft48igbpdc?spm=a2c63.p38356.0.i54#3d0ed52f967g6)
+        # The return code.
         self.code = code
-        # A detailed description of the response code.
+        # The message returned with the result.
         self.message = message
-        # The request ID.
+        # The unique ID that Alibaba Cloud generates for the request.
         self.request_id = request_id
-        # Result object
+        # The returned result.
         self.result = result
 
     def validate(self):
@@ -70,17 +70,16 @@ class FaceLivenessResponseBodyResult(DaraModel):
         sub_code: str = None,
         transaction_id: str = None,
     ):
-        # The results of the passive liveness detection. The value is in the JSON format. For more information, see [ExtFaceInfo](https://www.alibabacloud.com/help/en/ekyc/latest/cadqvlft48igbpdc?spm=a2c63.p38356.0.i54#5ff42f7274agz).
+        # The face result information.
         self.ext_face_info = ext_face_info
-        # The authentication result. Valid values:
+        # Indicates whether the authentication passed. Valid values:
         # 
-        # - Y: The authentication is passed.
-        # 
-        # - N: The authentication is not passed.
+        # - Y: passed.
+        # - N: not passed.
         self.passed = passed
-        # The code that corresponds to the verification result. For more information, see [ResultObject.SubCode error codes](https://www.alibabacloud.com/help/en/ekyc/latest/cadqvlft48igbpdc?spm=a2c63.p38356.0.i54#5ff3e16174tl2).
+        # The sub-result code.
         self.sub_code = sub_code
-        # The transaction ID.
+        # The unique ID of the authentication request.
         self.transaction_id = transaction_id
 
     def validate(self):
@@ -136,23 +135,26 @@ class FaceLivenessResponseBodyResultExtFaceInfo(DaraModel):
         occlusion_score: float = None,
         sharpness_score: float = None,
     ):
-        # The predicted age of the person in the image. The prediction may fail, resulting in an empty value.
+        # The predicted reference age based on the face. The prediction may fail and return no value.
         self.face_age = face_age
-        # Indicates whether a presentation attack was detected on the captured face. Y means an attack was detected. N means no attack was detected.
+        # The liveness detection result. Valid values: Y (attack detected) and N (normal).
         self.face_attack = face_attack
-        # The predicted gender of the person in the image. The prediction may fail, resulting in an empty value.
+        # The predicted gender based on the face photo. The prediction may fail and return no value. Valid values:
         # 
-        # - **M**: Male
-        # 
-        # - **F**: Female
+        # - M: male.
+        # - F: female.
         self.face_gender = face_gender
-        # Optional. The quality score of the live face. The value ranges from 0 to 100.
+        # The face quality score (0 to 100). This value is returned only when the face quality score switch is enabled in the request parameters.
         self.face_quality_score = face_quality_score
+        # The illumination score.
         self.illumination_score = illumination_score
+        # The key area occlusion score.
         self.ka_occlusion_score = ka_occlusion_score
-        # Optional. Indicates whether the face is occluded. Y means the face is occluded. N means the face is not occluded.
+        # The occlusion detection result. Valid values: Y (occluded) and N (not occluded). This value is returned only when the occlusion detection switch is enabled.
         self.occlusion_result = occlusion_result
+        # The occlusion score.
         self.occlusion_score = occlusion_score
+        # The sharpness score.
         self.sharpness_score = sharpness_score
 
     def validate(self):

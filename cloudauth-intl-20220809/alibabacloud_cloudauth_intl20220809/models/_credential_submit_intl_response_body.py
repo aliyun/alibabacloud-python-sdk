@@ -13,13 +13,13 @@ class CredentialSubmitIntlResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.CredentialSubmitIntlResponseBodyResult = None,
     ):
-        # Return code
+        # The return code.
         self.code = code
-        # Return message.
+        # The response message.
         self.message = message
-        # ID of the request
+        # Id of the request
         self.request_id = request_id
-        # Return result.
+        # The returned result.
         self.result = result
 
     def validate(self):
@@ -67,7 +67,7 @@ class CredentialSubmitIntlResponseBodyResult(DaraModel):
         self,
         transaction_id: str = None,
     ):
-        # Unique identifier of the authentication request.
+        # The unique identifier of the authentication request.
         self.transaction_id = transaction_id
 
     def validate(self):

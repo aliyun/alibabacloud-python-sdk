@@ -15,34 +15,34 @@ class CredentialVerifyIntlAdvanceRequest(DaraModel):
         image_url: str = None,
         product_code: str = None,
     ):
-        # Credential name (numeric code):
+        # The credential name (specified as a numeric code). Valid values:
         # 
-        # - Starting with 03: Enterprise Qualification
-        #   - 0301: Mainland China Business License
-        # - Starting with 04, Transaction Voucher
-        #   - 0401: Bank Statement
-        #   - 0402: Pay Slip
-        #   - 0403: Utility Bill
-        #   - 0405: Credit Card Statement
-        #   - 0499: Others
+        # - Codes starting with 03: enterprise qualification
+        #   - 0301: business license issued in the Chinese mainland
+        # - Codes starting with 04: transaction voucher
+        #   - 0401: bank statement
+        #   - 0402: payslip
+        #   - 0403: utility bill
+        #   - 0405: credit card statement
+        #   - 0499: other.
         # 
         # This parameter is required.
         self.cred_name = cred_name
-        # Credential type:
+        # The credential type. Valid values:
         # 
-        # - 03: Enterprise Qualification
-        # - 04: Transaction Voucher
+        # - 03: enterprise qualification
+        # - 04: transaction voucher.
         # 
         # This parameter is required.
         self.cred_type = cred_type
-        # Image input stream.
-        # > Choose either ImageUrl or ImageFile.
+        # The image input stream.
+        # > Specify either ImageUrl or ImageFile.
         self.image_file_object = image_file_object
         # The URL of the image.
-        # > Choose either ImageUrl or ImageFile.
+        # > Specify either ImageUrl or ImageFile.
         self.image_url = image_url
-        # Invocation mode:
-        # - ANTI_FAKE_CHECK: Image quality and tampering detection.
+        # The call mode. Valid values:
+        # - ANTI_FAKE_CHECK: image quality and tampering detection.
         # 
         # This parameter is required.
         self.product_code = product_code

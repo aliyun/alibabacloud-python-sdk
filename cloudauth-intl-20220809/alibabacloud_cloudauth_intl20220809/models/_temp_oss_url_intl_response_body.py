@@ -13,13 +13,13 @@ class TempOssUrlIntlResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # Return code.
+        # The return code.
         self.code = code
-        # Result.
+        # The result.
         self.data = data
-        # Return message.
+        # The response message.
         self.message = message
-        # ID of the request
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -67,7 +67,7 @@ class TempOssUrlIntlResponseBodyData(DaraModel):
         self,
         url: str = None,
     ):
-        # File URL
+        # The file URL.
         self.url = url
 
     def validate(self):

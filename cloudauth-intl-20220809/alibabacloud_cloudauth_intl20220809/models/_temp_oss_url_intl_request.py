@@ -9,7 +9,7 @@ class TempOssUrlIntlRequest(DaraModel):
         self,
         object_name: str = None,
     ):
-        # Object name.
+        # The object name.
         # 
         # This parameter is required.
         self.object_name = object_name

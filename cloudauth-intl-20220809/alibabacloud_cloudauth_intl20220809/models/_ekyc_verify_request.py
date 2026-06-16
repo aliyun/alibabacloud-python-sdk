@@ -21,62 +21,48 @@ class EkycVerifyRequest(DaraModel):
         merchant_user_id: str = None,
         product_code: str = None,
     ):
-        # Specifies whether to enable identity verification against the official database:
-        # 
-        # - **T**: Enable.
-        # 
-        # - **F**: Disable. (Default)
-        # 
-        # > This feature is currently available only for second-generation resident ID cards of the Chinese mainland.
+        # Specifies whether to enable authoritative identity verification. This parameter is currently applicable only to second-generation ID cards in the Chinese mainland.
         self.authorize = authorize
-        # Specifies whether to crop the face image:
+        # Specifies whether cropping is allowed. By default, cropping is not allowed. Valid values:
         # 
-        # - **T**: Allows cropping.
-        # 
-        # - **F**: Disallows cropping. (Default)
+        # - T: Detection is required.
+        # - F: Detection is required (default value: F).
         self.crop = crop
-        # The user\\"s real name.
-        # 
-        # > If Authorize is set to T and the certificate type is Chinese mainland resident ID card, you must enter at least one of the following groups of information:
-        # > - DocName and DocNo.
-        # > - IdOcrPictureBase64 or IdOcrPictureUrl.
+        # The real name of the user. If Authorize is set to T and the document type is a Chinese mainland ID card, you must provide at least one of the following: document key information (DocName and DocNo) or document images (IdOcrPictureBase64 or IdOcrPictureUrl).
+        # Note: The value must contain at least one Chinese character and no special characters, except for the middle dot (·) used in ethnic minority names.
         self.doc_name = doc_name
-        # The user\\"s certificate number.
-        # 
-        # 
-        # > If Authorize is set to **T** and the certificate type is Chinese mainland resident ID card, you must enter at least one of the following groups of information:
-        # > - DocName and DocNo.
-        # > - IdOcrPictureBase64 or IdOcrPictureUrl.
+        # The document number of the user. If Authorize is set to T and the document type is a Chinese mainland ID card, you must provide at least one of the following: document key information (DocName and DocNo) or document images (IdOcrPictureBase64 or IdOcrPictureUrl).
+        # Note: The value is a combination of letters and digits up to 18 characters in length.
         self.doc_no = doc_no
-        # The certificate type, which is uniquely identified by an 8-digit number. For more information, see [Certificate types](https://www.alibabacloud.com/help/en/ekyc/latest/im1u641gyesiqmbg?spm=a2c63.p38356.0.i18#Hu5TG).
+        # The document type.
         self.doc_type = doc_type
-        # The Base64 encoding of the portrait image.
+        # The Base64-encoded face image.
         # 
-        # > If you use this method to pass the certificate image, check the image size. Do not pass an oversized image.
+        # Note:
+        # - If you use this method to submit the face image, check the image size and do not submit an excessively large image.
+        # - Specify either FacePictureBase64 or FacePictureUrl.
         self.face_picture_base_64 = face_picture_base_64
-        # The URL of the portrait image. The URL must be an HTTP or HTTPS link accessible over the Internet.
+        # The URL of the face photo.
         self.face_picture_url = face_picture_url
-        # The Base64 encoding of the certificate image.
-        # 
-        # > If you use this method to pass the certificate image, check the image size. Do not pass an oversized image.
+        # The Base64-encoded document image.
+        # Note:
+        # - If you use this method to submit the document image, check the image size and do not submit an excessively large image.
+        # - Specify either IdOcrPictureBase64 or IdOcrPictureUrl.
         self.id_ocr_picture_base_64 = id_ocr_picture_base_64
-        # The URL of the certificate image. The URL must be an HTTP or HTTPS link accessible over the Internet.
+        # The URL of the front side of the document image.
         self.id_ocr_picture_url = id_ocr_picture_url
-        # The custom OCR quality detection threshold mode:
+        # The custom OCR quality detection threshold mode. Valid values:
         # 
-        # - **0**: Standard mode
-        # 
-        # - **1**: Strict mode
-        # 
-        # - **2**: Loose mode
-        # 
-        # - **3** (default): Disables quality detection
+        # - 0: system default
+        # - 1: strict mode
+        # - 2: loose mode
+        # - 3 (default): quality detection disabled.
         self.id_threshold = id_threshold
-        # A unique business identifier that you customize. It is used to locate and troubleshoot issues. The identifier can be up to 32 characters in length and can contain letters and digits. Make sure that the identifier is unique.
+        # The merchant-defined unique business identifier, used for subsequent troubleshooting. The value is a combination of letters and digits up to 32 characters in length. Ensure that the value is unique.
         self.merchant_biz_id = merchant_biz_id
-        # A custom user ID or another identifier that can identify a specific user, such as a mobile number or an email address. Desensitize the value of this field in advance, for example, by hashing the value.
+        # Your custom user ID, or another identifier that can identify a specific user, such as a phone number or email address. We strongly recommend that you mask this field value in advance, for example, by hashing the value.
         self.merchant_user_id = merchant_user_id
-        # The product solution to integrate. Set the value to **eKYC_MIN**.
+        # The product code.
         self.product_code = product_code
 
     def validate(self):

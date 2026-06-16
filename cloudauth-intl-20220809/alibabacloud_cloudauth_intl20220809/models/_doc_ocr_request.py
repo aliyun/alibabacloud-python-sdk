@@ -19,33 +19,44 @@ class DocOcrRequest(DaraModel):
         product_code: str = None,
         spoof: str = None,
     ):
-        # CardSide
+        # Specifies the side of the certificate to distinguish between the national emblem side and the portrait side. If this parameter is not specified, the portrait side is used by default. Valid values:
+        # 
+        # - OCR_ID_FACE (default): portrait side
+        # 
+        # - OCR_ID_NATIONAL_EMBLEM: national emblem side.
         self.card_side = card_side
-        # Document type
+        # The certificate type.
         self.doc_type = doc_type
-        # Whether to perform ID face quality detection
-        # - T: Indicates that detection is required
-        # - F: Indicates that detection is not required (default F)
+        # Specifies whether to perform certificate face quality detection. Valid values:
+        # - T: Detection is required.
+        # - F: Detection is not required. (Default value: F).
         self.id_face_quality = id_face_quality
-        # Base64 of the front side of the document image
+        # The Base64-encoded card or certificate image.
+        # 
+        # If you use IdOcrPictureBase64 (Base64-encoded photo) to submit the certificate photo, check the photo size and do not submit an excessively large photo.
         self.id_ocr_picture_base_64 = id_ocr_picture_base_64
-        # URL of the front side of the document image
+        # The URL of the front side of the certificate image.
         self.id_ocr_picture_url = id_ocr_picture_url
-        # IdThreshold
+        # The custom OCR quality detection threshold mode. Valid values:
+        # 
+        # - 0: system default
+        # - 1: strict mode
+        # - 2: loose mode
+        # - 3 (default): quality detection disabled.
         self.id_threshold = id_threshold
-        # A unique business identifier defined by the merchant, used for subsequent troubleshooting. It supports a combination of letters and numbers, with a maximum length of 32 characters. Please ensure uniqueness.
+        # The custom business unique identifier on the merchant side, used for subsequent issue tracking and troubleshooting. The value can be a combination of letters and digits with a maximum length of 32 characters. Ensure that the value is unique.
         self.merchant_biz_id = merchant_biz_id
-        # A custom user ID in the business, please keep it unique.
+        # The custom user ID in the business. Ensure that the value is unique.
         self.merchant_user_id = merchant_user_id
-        # Whether to perform document OCR
-        # - T: Indicates that document OCR is required
-        # - F: Indicates that document OCR is not required
+        # Specifies whether to perform certificate OCR. Valid values:
+        # - T: OCR is required.
+        # - F: OCR is not required.
         self.ocr = ocr
-        # Product code
+        # The product code.
         self.product_code = product_code
-        # Whether to enable anti-counterfeiting detection
-        # - T: Indicates that anti-counterfeiting is enabled
-        # - F: Indicates that anti-counterfeiting is disabled
+        # Specifies whether to enable anti-spoofing detection. Valid values:
+        # - T: Anti-spoofing is enabled.
+        # - F: Anti-spoofing is disabled.
         self.spoof = spoof
 
     def validate(self):

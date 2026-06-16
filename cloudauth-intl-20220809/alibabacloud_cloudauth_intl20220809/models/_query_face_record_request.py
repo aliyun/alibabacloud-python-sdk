@@ -16,27 +16,27 @@ class QueryFaceRecordRequest(DaraModel):
         page_size: int = None,
         registration_type: str = None,
     ):
-        # Current Page.
+        # The current page number.
         # 
         # This parameter is required.
         self.current_page = current_page
-        # Face Group Code.
+        # The face library code.
         # 
         # This parameter is required.
         self.face_group_code = face_group_code
-        # Face ID.
+        # The face ID.
         self.face_id = face_id
-        # Number of rows per page for paginated queries.
+        # The maximum number of entries per page for a paginated query.
         self.max_results = max_results
-        # Merchant User ID.
+        # The merchant user ID.
         self.merchant_user_id = merchant_user_id
-        # Used to request the next page of search results.
+        # The token used to retrieve the next page of results.
         self.next_token = next_token
-        # Number of items per page.
+        # The number of entries per page.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # Registration Type.
+        # The registration type.
         self.registration_type = registration_type
 
     def validate(self):

@@ -12,13 +12,13 @@ class DeleteFaceRecordResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # Return code.
+        # The return code.
         self.code = code
-        # Return result.
+        # The response data.
         self.data = data
-        # Return message.
+        # The response message.
         self.message = message
-        # ID of the request
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):

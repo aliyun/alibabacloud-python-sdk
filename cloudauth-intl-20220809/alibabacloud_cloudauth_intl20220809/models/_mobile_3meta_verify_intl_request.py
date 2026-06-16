@@ -13,27 +13,27 @@ class Mobile3MetaVerifyIntlRequest(DaraModel):
         product_code: str = None,
         user_name: str = None,
     ):
-        # ID number
+        # The ID card number.
         # 
-        # - When paramType is set to normal, enter the plaintext
-        # - When paramType is set to md5, enter a 32-character lowercase md5 string
+        # - If ParamType is set to normal, enter the plaintext value.
+        # - If ParamType is set to md5, enter a 32-character lowercase MD5 string.
         self.identify_num = identify_num
-        # Mobile phone number.
+        # The phone number.
         # 
-        # - When paramType is set to normal, enter the plaintext
-        # - When paramType is set to md5, enter a 32-character lowercase md5 string
+        # - If ParamType is set to normal, enter the plaintext value.
+        # - If ParamType is set to md5, enter a 32-character lowercase MD5 string.
         self.mobile = mobile
-        # Parameter type:
+        # The parameter type. Valid values:
         # 
-        # - normal: unencrypted
-        # - md5: md5 encrypted
+        # - normal: not encrypted
+        # - md5: MD5-encrypted.
         self.param_type = param_type
-        # The product solution to be integrated, with a fixed value: MOBILE_3META
+        # The product solution code. Fixed value: MOBILE_3META.
         self.product_code = product_code
-        # Name
+        # The name.
         # 
-        # - When paramType is set to normal, enter the plaintext
-        # - When paramType is set to md5, enter a 32-character lowercase md5 string
+        # - If ParamType is set to normal, enter the plaintext value.
+        # - If ParamType is set to md5, enter a 32-character lowercase MD5 string.
         self.user_name = user_name
 
     def validate(self):

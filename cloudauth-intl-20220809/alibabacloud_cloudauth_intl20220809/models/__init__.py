@@ -62,6 +62,10 @@ from ._doc_ocr_response import DocOcrResponse
 from ._doc_ocr_max_request import DocOcrMaxRequest
 from ._doc_ocr_max_response_body import DocOcrMaxResponseBody
 from ._doc_ocr_max_response import DocOcrMaxResponse
+from ._doc_ocr_max_v2request import DocOcrMaxV2Request
+from ._doc_ocr_max_v2advance_request import DocOcrMaxV2AdvanceRequest
+from ._doc_ocr_max_v2response_body import DocOcrMaxV2ResponseBody
+from ._doc_ocr_max_v2response import DocOcrMaxV2Response
 from ._doc_ocr_v2request import DocOcrV2Request
 from ._doc_ocr_v2advance_request import DocOcrV2AdvanceRequest
 from ._doc_ocr_v2response_body import DocOcrV2ResponseBody
@@ -116,6 +120,11 @@ from ._initialize_request import InitializeRequest
 from ._initialize_shrink_request import InitializeShrinkRequest
 from ._initialize_response_body import InitializeResponseBody
 from ._initialize_response import InitializeResponse
+from ._initialize_v2request import InitializeV2Request
+from ._initialize_v2advance_request import InitializeV2AdvanceRequest
+from ._initialize_v2shrink_request import InitializeV2ShrinkRequest
+from ._initialize_v2response_body import InitializeV2ResponseBody
+from ._initialize_v2response import InitializeV2Response
 from ._keepalive_intl_response_body import KeepaliveIntlResponseBody
 from ._keepalive_intl_response import KeepaliveIntlResponse
 from ._mobile_2meta_verify_intl_request import Mobile2MetaVerifyIntlRequest
@@ -159,6 +168,7 @@ from ._deepfake_detect_intl_stream_response_body import DeepfakeDetectIntlStream
 from ._delete_verify_result_response_body import DeleteVerifyResultResponseBodyResult
 from ._doc_ocr_response_body import DocOcrResponseBodyResult
 from ._doc_ocr_max_response_body import DocOcrMaxResponseBodyResult
+from ._doc_ocr_max_v2response_body import DocOcrMaxV2ResponseBodyResult
 from ._doc_ocr_v2response_body import DocOcrV2ResponseBodyResult
 from ._download_verify_record_intl_response_body import DownloadVerifyRecordIntlResponseBodyData
 from ._ekyc_verify_response_body import EkycVerifyResponseBodyResult
@@ -180,6 +190,7 @@ from ._face_verify_intl_response_body import FaceVerifyIntlResponseBodyResult
 from ._id_2meta_period_verify_intl_response_body import Id2MetaPeriodVerifyIntlResponseBodyResult
 from ._id_2meta_verify_intl_response_body import Id2MetaVerifyIntlResponseBodyResult
 from ._initialize_response_body import InitializeResponseBodyResult
+from ._initialize_v2response_body import InitializeV2ResponseBodyResult
 from ._keepalive_intl_response_body import KeepaliveIntlResponseBodyResult
 from ._mobile_2meta_verify_intl_response_body import Mobile2MetaVerifyIntlResponseBodyResult
 from ._mobile_3meta_verify_intl_response_body import Mobile3MetaVerifyIntlResponseBodyResult
@@ -249,6 +260,10 @@ __all__ = [
     DocOcrMaxRequest,
     DocOcrMaxResponseBody,
     DocOcrMaxResponse,
+    DocOcrMaxV2Request,
+    DocOcrMaxV2AdvanceRequest,
+    DocOcrMaxV2ResponseBody,
+    DocOcrMaxV2Response,
     DocOcrV2Request,
     DocOcrV2AdvanceRequest,
     DocOcrV2ResponseBody,
@@ -303,6 +318,11 @@ __all__ = [
     InitializeShrinkRequest,
     InitializeResponseBody,
     InitializeResponse,
+    InitializeV2Request,
+    InitializeV2AdvanceRequest,
+    InitializeV2ShrinkRequest,
+    InitializeV2ResponseBody,
+    InitializeV2Response,
     KeepaliveIntlResponseBody,
     KeepaliveIntlResponse,
     Mobile2MetaVerifyIntlRequest,
@@ -346,6 +366,7 @@ __all__ = [
     DeleteVerifyResultResponseBodyResult,
     DocOcrResponseBodyResult,
     DocOcrMaxResponseBodyResult,
+    DocOcrMaxV2ResponseBodyResult,
     DocOcrV2ResponseBodyResult,
     DownloadVerifyRecordIntlResponseBodyData,
     EkycVerifyResponseBodyResult,
@@ -367,6 +388,7 @@ __all__ = [
     Id2MetaPeriodVerifyIntlResponseBodyResult,
     Id2MetaVerifyIntlResponseBodyResult,
     InitializeResponseBodyResult,
+    InitializeV2ResponseBodyResult,
     KeepaliveIntlResponseBodyResult,
     Mobile2MetaVerifyIntlResponseBodyResult,
     Mobile3MetaVerifyIntlResponseBodyResult,

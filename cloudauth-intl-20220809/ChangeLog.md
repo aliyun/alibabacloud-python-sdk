@@ -1,3 +1,8 @@
+2026-06-16 Version: 3.20.0
+- Support API DocOcrMaxV2.
+- Support API InitializeV2.
+
+
 2026-05-20 Version: 3.19.1
 - Update API Initialize: add request parameters OcrValueStandard.
 

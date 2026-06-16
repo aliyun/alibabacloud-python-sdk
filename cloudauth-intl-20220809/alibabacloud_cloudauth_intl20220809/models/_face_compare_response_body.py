@@ -13,13 +13,16 @@ class FaceCompareResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.FaceCompareResponseBodyResult = None,
     ):
-        # The [response code](https://www.alibabacloud.com/help/en/ekyc/latest/facecompare?spm=a3c0i.23458820.2359477120.28.21167d3fzUmXQC#c43fd16d07mae).
+        # The response code.
+        # 
+        # 200: The request was successful.
+        # Other values: An error occurred. For more information, see error codes.
         self.code = code
-        # The detailed description of the response code.
+        # The response message.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Result object
+        # The returned result.
         self.result = result
 
     def validate(self):
@@ -70,16 +73,16 @@ class FaceCompareResponseBodyResult(DaraModel):
         passed: str = None,
         transaction_id: str = None,
     ):
+        # The additional result information.
         self.ext_face_info = ext_face_info
-        # The face comparison score. The value ranges from 0 to 100.
+        # The comparison score between the submitted face image and the reference face image during verification. Value range: **0** to **100**.
         self.face_comparison_score = face_comparison_score
-        # The final authentication result. Valid values:
+        # Indicates whether the verification passed.
         # 
-        # - **Y**: The authentication is passed.
-        # 
-        # - **N**: The authentication failed.
+        # - Y: Passed.
+        # - N: Not passed.
         self.passed = passed
-        # The transaction ID.
+        # The unique ID of the verification request.
         self.transaction_id = transaction_id
 
     def validate(self):
@@ -131,10 +134,15 @@ class FaceCompareResponseBodyResultExtFaceInfo(DaraModel):
         occlusion_score: float = None,
         sharpness_score: float = None,
     ):
+        # The overall quality score.
         self.face_quality_score = face_quality_score
+        # The illumination score.
         self.illumination_score = illumination_score
+        # The key area occlusion score.
         self.ka_occlusion_score = ka_occlusion_score
+        # The occlusion score.
         self.occlusion_score = occlusion_score
+        # The sharpness score.
         self.sharpness_score = sharpness_score
 
     def validate(self):

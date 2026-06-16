@@ -5,21 +5,17 @@ from __future__ import annotations
 from alibabacloud_cloudauth_intl20220809 import models as main_models
 from darabonba.model import DaraModel
 
-class DocOcrResponseBody(DaraModel):
+class InitializeV2ResponseBody(DaraModel):
     def __init__(
         self,
         code: str = None,
         message: str = None,
         request_id: str = None,
-        result: main_models.DocOcrResponseBodyResult = None,
+        result: main_models.InitializeV2ResponseBodyResult = None,
     ):
-        # The return code.
         self.code = code
-        # The return message.
         self.message = message
-        # Id of the request
         self.request_id = request_id
-        # The returned result.
         self.result = result
 
     def validate(self):
@@ -57,30 +53,23 @@ class DocOcrResponseBody(DaraModel):
             self.request_id = m.get('RequestId')
 
         if m.get('Result') is not None:
-            temp_model = main_models.DocOcrResponseBodyResult()
+            temp_model = main_models.InitializeV2ResponseBodyResult()
             self.result = temp_model.from_map(m.get('Result'))
 
         return self
 
-class DocOcrResponseBodyResult(DaraModel):
+class InitializeV2ResponseBodyResult(DaraModel):
     def __init__(
         self,
-        ext_id_info: str = None,
-        passed: str = None,
-        sub_code: str = None,
+        client_cfg: str = None,
+        protocol: str = None,
         transaction_id: str = None,
+        transaction_url: str = None,
     ):
-        # The card and certificate recognition result. This parameter is returned only when the API response is successful.
-        self.ext_id_info = ext_id_info
-        # Indicates whether the authentication is passed. Valid values:
-        # 
-        # - Y: Passed.
-        # - N: Not passed.
-        self.passed = passed
-        # The sub-result code.
-        self.sub_code = sub_code
-        # The unique identifier of the authentication request.
+        self.client_cfg = client_cfg
+        self.protocol = protocol
         self.transaction_id = transaction_id
+        self.transaction_url = transaction_url
 
     def validate(self):
         pass
@@ -90,33 +79,33 @@ class DocOcrResponseBodyResult(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.ext_id_info is not None:
-            result['ExtIdInfo'] = self.ext_id_info
+        if self.client_cfg is not None:
+            result['ClientCfg'] = self.client_cfg
 
-        if self.passed is not None:
-            result['Passed'] = self.passed
-
-        if self.sub_code is not None:
-            result['SubCode'] = self.sub_code
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
 
         if self.transaction_id is not None:
             result['TransactionId'] = self.transaction_id
+
+        if self.transaction_url is not None:
+            result['TransactionUrl'] = self.transaction_url
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ExtIdInfo') is not None:
-            self.ext_id_info = m.get('ExtIdInfo')
+        if m.get('ClientCfg') is not None:
+            self.client_cfg = m.get('ClientCfg')
 
-        if m.get('Passed') is not None:
-            self.passed = m.get('Passed')
-
-        if m.get('SubCode') is not None:
-            self.sub_code = m.get('SubCode')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
 
         if m.get('TransactionId') is not None:
             self.transaction_id = m.get('TransactionId')
+
+        if m.get('TransactionUrl') is not None:
+            self.transaction_url = m.get('TransactionUrl')
 
         return self
 

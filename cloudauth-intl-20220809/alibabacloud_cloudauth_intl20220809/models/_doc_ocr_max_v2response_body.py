@@ -5,21 +5,17 @@ from __future__ import annotations
 from alibabacloud_cloudauth_intl20220809 import models as main_models
 from darabonba.model import DaraModel
 
-class DocOcrResponseBody(DaraModel):
+class DocOcrMaxV2ResponseBody(DaraModel):
     def __init__(
         self,
         code: str = None,
         message: str = None,
         request_id: str = None,
-        result: main_models.DocOcrResponseBodyResult = None,
+        result: main_models.DocOcrMaxV2ResponseBodyResult = None,
     ):
-        # The return code.
         self.code = code
-        # The return message.
         self.message = message
-        # Id of the request
         self.request_id = request_id
-        # The returned result.
         self.result = result
 
     def validate(self):
@@ -57,12 +53,12 @@ class DocOcrResponseBody(DaraModel):
             self.request_id = m.get('RequestId')
 
         if m.get('Result') is not None:
-            temp_model = main_models.DocOcrResponseBodyResult()
+            temp_model = main_models.DocOcrMaxV2ResponseBodyResult()
             self.result = temp_model.from_map(m.get('Result'))
 
         return self
 
-class DocOcrResponseBodyResult(DaraModel):
+class DocOcrMaxV2ResponseBodyResult(DaraModel):
     def __init__(
         self,
         ext_id_info: str = None,
@@ -70,16 +66,9 @@ class DocOcrResponseBodyResult(DaraModel):
         sub_code: str = None,
         transaction_id: str = None,
     ):
-        # The card and certificate recognition result. This parameter is returned only when the API response is successful.
         self.ext_id_info = ext_id_info
-        # Indicates whether the authentication is passed. Valid values:
-        # 
-        # - Y: Passed.
-        # - N: Not passed.
         self.passed = passed
-        # The sub-result code.
         self.sub_code = sub_code
-        # The unique identifier of the authentication request.
         self.transaction_id = transaction_id
 
     def validate(self):

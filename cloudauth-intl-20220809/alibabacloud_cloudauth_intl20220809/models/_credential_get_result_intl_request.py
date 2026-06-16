@@ -9,7 +9,7 @@ class CredentialGetResultIntlRequest(DaraModel):
         self,
         transaction_id: str = None,
     ):
-        # Unique identifier for the authentication request
+        # The unique identifier of the authentication request.
         # 
         # This parameter is required.
         self.transaction_id = transaction_id

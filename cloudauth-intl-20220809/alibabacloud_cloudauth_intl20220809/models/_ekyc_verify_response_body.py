@@ -13,13 +13,13 @@ class EkycVerifyResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.EkycVerifyResponseBodyResult = None,
     ):
-        # The [response code](https://www.alibabacloud.com/help/en/ekyc/latest/im1u641gyesiqmbg?spm=a2c63.p38356.0.i18#GiGmf).
+        # The response code.
         self.code = code
-        # A detailed description of the response code.
+        # The response message.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Result object
+        # The returned result.
         self.result = result
 
     def validate(self):
@@ -71,21 +71,17 @@ class EkycVerifyResponseBodyResult(DaraModel):
         sub_code: str = None,
         transaction_id: str = None,
     ):
-        # Information about the face liveness verification result. For the JSON format, see the example on the right. For more information, see [ExtFaceInfo](https://www.alibabacloud.com/help/en/ekyc/latest/im1u641gyesiqmbg?spm=a2c63.p38356.0.i18#JJ40j).
+        # The face verification result information.
         self.ext_face_info = ext_face_info
-        # Information about the certificate detection result.
-        # 
-        # For the JSON format, see the example on the right. For more information, see [ExtIdInfo](https://www.alibabacloud.com/help/en/ekyc/latest/im1u641gyesiqmbg?spm=a2c63.p38356.0.i18#iWOBY).
+        # The document recognition result. This parameter is returned only when the API response is successful.
         self.ext_id_info = ext_id_info
-        # The final authentication result. Valid values:
-        # 
-        # - **Y**: The authentication is passed.
-        # 
-        # - **N**: The authentication fails.
+        # Indicates whether the verification is passed. Valid values:
+        # - T: Passed.
+        # - F: Not passed.
         self.passed = passed
-        # A description of the authentication result. For more information, see [Error codes for ResultObject.SubCode](https://www.alibabacloud.com/help/en/ekyc/latest/im1u641gyesiqmbg?spm=a2c63.p38356.0.i18#HCGLb).
+        # The sub-result code.
         self.sub_code = sub_code
-        # The transaction ID.
+        # The unique identifier of the verification request.
         self.transaction_id = transaction_id
 
     def validate(self):

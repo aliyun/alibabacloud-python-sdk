@@ -17,13 +17,26 @@ class AddFaceRecordAdvanceRequest(DaraModel):
         merchant_user_id: str = None,
         product_code: str = None,
     ):
+        # The face library code.
+        # 
         # This parameter is required.
         self.face_group_code = face_group_code
+        # The Base64-encoded face image to register.
         self.face_picture = face_picture
+        # The file stream of the face image to register.
         self.face_picture_file_object = face_picture_file_object
+        # The URL of the face image to register.
         self.face_picture_url = face_picture_url
+        # Specifies whether to check the quality of the face image. Valid values:
+        # - Y: enabled.
+        # - N: disabled (default).
         self.face_quality_check = face_quality_check
+        # The custom unique user ID. The value cannot exceed 32 characters.
+        # - If this parameter is specified, the system registers the user with the specified MerchantUserId.
+        # - If this parameter is not specified, the image name is used by default.
         self.merchant_user_id = merchant_user_id
+        # The product code.
+        # 
         # This parameter is required.
         self.product_code = product_code
 

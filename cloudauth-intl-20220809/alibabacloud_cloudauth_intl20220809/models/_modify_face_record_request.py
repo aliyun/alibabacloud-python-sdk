@@ -10,8 +10,12 @@ class ModifyFaceRecordRequest(DaraModel):
         face_group_code: str = None,
         img_oss_infos: str = None,
     ):
+        # The face library code.
+        # 
         # This parameter is required.
         self.face_group_code = face_group_code
+        # The OSS information of the image.
+        # 
         # This parameter is required.
         self.img_oss_infos = img_oss_infos
 
