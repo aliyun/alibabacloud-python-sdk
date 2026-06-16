@@ -10,7 +10,9 @@ class BrowserViewPort(DaraModel):
         height: float = None,
         width: float = None,
     ):
+        # The height of the browser viewport in pixels.
         self.height = height
+        # The width of the browser viewport in pixels.
         self.width = width
 
     def validate(self):

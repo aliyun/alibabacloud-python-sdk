@@ -23,21 +23,33 @@ class Browser(DaraModel):
         status_reason: str = None,
         tenant_id: str = None,
     ):
+        # The unique identifier of the browser.
         self.browser_id = browser_id
+        # The name of the browser.
         self.browser_name = browser_name
+        # The number of CPU cores allocated to the browser.
         self.cpu = cpu
+        # The time the browser was created, in ISO 8601 format.
         self.created_at = created_at
+        # The unique identifier for the credential associated with the browser.
         self.credential_id = credential_id
+        # A user-defined description for the browser.
         self.description = description
+        # The Alibaba Cloud Resource Name (ARN) of the execution role used by the browser.
         self.execution_role_arn = execution_role_arn
+        # The time the browser was last updated, in ISO 8601 format.
         self.last_updated_at = last_updated_at
-        # 内存资源配置（单位：MB）
+        # The memory allocated to the browser, in megabytes (MB).
         self.memory = memory
+        # The network configuration for the browser.
         self.network_configuration = network_configuration
+        # The recording configuration for the browser.
         self.recording = recording
+        # The current status of the browser.
         self.status = status
-        # 当前状态的原因说明（如适用）
+        # The reason for the current status, if any.
         self.status_reason = status_reason
+        # The unique identifier of the tenant that owns the browser.
         self.tenant_id = tenant_id
 
     def validate(self):

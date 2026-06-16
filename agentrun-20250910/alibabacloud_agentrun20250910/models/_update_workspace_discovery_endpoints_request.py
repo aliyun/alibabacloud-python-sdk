@@ -10,6 +10,7 @@ class UpdateWorkspaceDiscoveryEndpointsRequest(DaraModel):
         self,
         body: main_models.UpdateDiscoveryEndpointsInput = None,
     ):
+        # The discovery endpoint configuration to apply.
         self.body = body
 
     def validate(self):

@@ -15,9 +15,13 @@ class ListBrowsersOutput(DaraModel):
         page_size: int = None,
         total: int = None,
     ):
+        # Browser list
         self.items = items
+        # Page number
         self.page_number = page_number
+        # Page size
         self.page_size = page_size
+        # Total count
         self.total = total
 
     def validate(self):

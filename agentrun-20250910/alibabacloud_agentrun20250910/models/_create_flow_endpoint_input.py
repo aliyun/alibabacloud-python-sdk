@@ -16,17 +16,17 @@ class CreateFlowEndpointInput(DaraModel):
         routing_configuration: List[main_models.FlowEndpointRoutingConfig] = None,
         target_version: str = None,
     ):
-        # 工作流端点的描述信息
+        # The description of the flow endpoint.
         self.description = description
-        # 是否禁用该端点的公网访问。创建时未指定则从父工作流继承
+        # Whether to disable public network access for the endpoint. If unspecified, the endpoint inherits this setting from its parent workflow.
         self.disable_public_network_access = disable_public_network_access
-        # 工作流端点的唯一标识名称
+        # The unique name of the flow endpoint.
         # 
         # This parameter is required.
         self.flow_endpoint_name = flow_endpoint_name
-        # 工作流端点的版本路由配置，用于流量分配
+        # The routing configuration that defines traffic distribution across different flow versions.
         self.routing_configuration = routing_configuration
-        # 工作流端点指向的目标版本号
+        # The target version for the flow endpoint.
         self.target_version = target_version
 
     def validate(self):

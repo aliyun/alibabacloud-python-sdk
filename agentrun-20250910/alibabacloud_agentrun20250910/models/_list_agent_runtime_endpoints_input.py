@@ -14,13 +14,13 @@ class ListAgentRuntimeEndpointsInput(DaraModel):
         page_size: int = None,
         statuses: List[str] = None,
     ):
-        # 按端点名称过滤
+        # Filter by endpoint name
         self.endpoint_name = endpoint_name
-        # 页码
+        # Page number
         self.page_number = page_number
-        # 每页记录数
+        # Number of records per page
         self.page_size = page_size
-        # 按状态过滤
+        # Filter by status
         self.statuses = statuses
 
     def validate(self):

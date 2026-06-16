@@ -10,9 +10,9 @@ class ListAgentRuntimeVersionsInput(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # 页码
+        # The page number to retrieve.
         self.page_number = page_number
-        # 每页记录数
+        # The maximum number of results to return per page.
         self.page_size = page_size
 
     def validate(self):

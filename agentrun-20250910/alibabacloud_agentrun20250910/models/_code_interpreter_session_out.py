@@ -15,23 +15,23 @@ class CodeInterpreterSessionOut(DaraModel):
         session_idle_timeout_seconds: int = None,
         status: str = None,
     ):
-        # 关联的代码解释器的唯一标识符
+        # The Unique Identifier of the associated code interpreter
         # 
         # This parameter is required.
         self.code_interpreter_id = code_interpreter_id
-        # 代码解释器会话的名称
+        # The name of the code interpreter session
         self.code_interpreter_name = code_interpreter_name
-        # 代码解释器会话的创建时间，采用ISO 8601格式
+        # The creation time of the code interpreter session, in ISO 8601 format
         self.created_at = created_at
-        # 代码解释器会话的最后更新时间，采用ISO 8601格式
+        # The last update time of the code interpreter session, in ISO 8601 format
         self.last_updated_at = last_updated_at
-        # 代码解释器会话的唯一标识符
+        # The Unique Identifier of the code interpreter session
         # 
         # This parameter is required.
         self.session_id = session_id
-        # 代码解释器会话的空闲超时时间，单位为秒。实例没有会话请求后处于空闲状态，空闲态为闲置计费模式，超过此超时时间后会话自动过期，不可继续使用
+        # The idle timeout duration of the code interpreter session, in seconds. After the instance receives no session requests, it enters an idle state, which is billed under the idle billing model. If the idle duration exceeds this timeout, the session automatically expires and can no longer be used.
         self.session_idle_timeout_seconds = session_idle_timeout_seconds
-        # 代码解释器会话的当前状态
+        # The current status of the code interpreter session
         # 
         # This parameter is required.
         self.status = status

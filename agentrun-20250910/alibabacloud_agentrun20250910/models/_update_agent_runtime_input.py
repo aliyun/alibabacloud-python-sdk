@@ -18,6 +18,7 @@ class UpdateAgentRuntimeInput(DaraModel):
         cpu: float = None,
         credential_name: str = None,
         description: str = None,
+        disable_ondemand: bool = None,
         disable_session_affinity: bool = None,
         disk_size: int = None,
         edition: str = None,
@@ -25,6 +26,8 @@ class UpdateAgentRuntimeInput(DaraModel):
         environment_variables: Dict[str, str] = None,
         execution_role_arn: str = None,
         external_agent_endpoint_url: str = None,
+        force_evict_instances: bool = None,
+        header_field_name: str = None,
         health_check_configuration: main_models.HealthCheckConfiguration = None,
         log_configuration: main_models.LogConfiguration = None,
         memory: int = None,
@@ -33,56 +36,74 @@ class UpdateAgentRuntimeInput(DaraModel):
         oss_mount_config: main_models.OSSMountConfig = None,
         port: int = None,
         protocol_configuration: main_models.ProtocolConfiguration = None,
+        session_affinity_type: str = None,
         session_concurrency_limit_per_instance: int = None,
         session_idle_timeout_seconds: int = None,
         system_tags: List[str] = None,
         workspace_id: str = None,
     ):
+        # The name of the agent runtime.
         self.agent_runtime_name = agent_runtime_name
         # 应用实时监控服务（ARMS）的配置信息
         self.arms_configuration = arms_configuration
+        # The artifact type.
         self.artifact_type = artifact_type
-        # 当artifactType为Code时的代码配置信息，包括代码源、入口文件等
+        # The code configuration.
         self.code_configuration = code_configuration
-        # 当artifactType为Container时的容器配置信息，包括镜像地址、启动命令等
+        # The container configuration.
         self.container_configuration = container_configuration
+        # The number of CPU cores.
+        # 
         # This parameter is required.
         self.cpu = cpu
-        # 用于访问智能体的凭证名称，访问智能体运行时将使用此凭证进行身份验证
+        # The name of the credential that the agent runtime uses to authenticate requests.
         self.credential_name = credential_name
+        # The description of the agent runtime.
         self.description = description
-        # 是否禁用会话亲和性。默认为 false（即默认启用会话亲和），设置为 true 时关闭会话亲和
+        # Specifies whether to disable on-demand elasticity. Set to true to disable. Default: false.
+        self.disable_ondemand = disable_ondemand
+        # Specifies whether to disable session affinity. Set to true to disable. Default: false.
         self.disable_session_affinity = disable_session_affinity
+        # The disk size in gigabytes (GB).
         self.disk_size = disk_size
         self.edition = edition
-        # 是否启用会话隔离，启用后每个会话将在独立的环境中运行
+        # Specifies whether to enable session isolation. If enabled, each session runs in an isolated environment.
         self.enable_session_isolation = enable_session_isolation
-        # 智能体运行时的环境变量配置，用于在运行时传递配置参数
+        # Environment variables for the agent runtime.
         self.environment_variables = environment_variables
-        # 为智能体运行时提供访问云服务权限的执行角色ARN
+        # The execution role ARN that grants the agent runtime permissions to access cloud services.
         self.execution_role_arn = execution_role_arn
-        # 外部注册类型的智能体访问端点地址，用于连接已部署在外部的智能体服务
+        # The endpoint URL for an externally registered agent. The platform uses this URL to connect to an agent service deployed outside the platform.
         self.external_agent_endpoint_url = external_agent_endpoint_url
-        # 智能体运行时的健康检查配置，用于监控运行时实例的健康状态
+        # Specifies whether to perform a best-effort eviction of active Function Compute (FC) sessions when the configuration is updated. This helps the new settings take effect faster.
+        self.force_evict_instances = force_evict_instances
+        # The name of the request header used for session affinity when sessionAffinityType is set to "HEADER_FIELD".
+        self.header_field_name = header_field_name
+        # The health check configuration for monitoring the health of agent runtime instances.
         self.health_check_configuration = health_check_configuration
-        # SLS（简单日志服务）配置
+        # The configuration for Simple Log Service (SLS).
         self.log_configuration = log_configuration
+        # The amount of memory in megabytes (MB).
         self.memory = memory
-        # 文件存储NAS的配置信息，用于挂载NAS文件系统到智能体运行时
+        # Configuration for mounting a NAS file system to the agent runtime.
         self.nas_config = nas_config
-        # 智能体运行时的网络配置，包括VPC、安全组等网络访问设置
+        # The network configuration.
         self.network_configuration = network_configuration
-        # 对象存储OSS的挂载配置信息，用于挂载OSS存储桶到智能体运行时
+        # Configuration for mounting an OSS bucket to the agent runtime.
         self.oss_mount_config = oss_mount_config
+        # The port on which the agent service listens.
         self.port = port
-        # 智能体运行时的通信协议配置，定义运行时如何与外部系统交互
+        # The protocol configuration.
         self.protocol_configuration = protocol_configuration
-        # 每个运行时实例允许的最大并发会话数
+        # The session affinity mode. Valid values: NONE (disables session affinity), HEADER_FIELD (routes requests based on a request header), and GENERATED_COOKIE (routes requests using a cookie generated by Function Compute (FC)). The value COOKIE is an alias for GENERATED_COOKIE.
+        self.session_affinity_type = session_affinity_type
+        # The maximum number of concurrent sessions allowed per runtime instance.
         self.session_concurrency_limit_per_instance = session_concurrency_limit_per_instance
-        # 会话的空闲超时时间，单位为秒。实例没有会话请求后处于空闲状态，空闲态为闲置计费模式，超过此超时时间后会话自动过期，不可继续使用
+        # The idle timeout for a session, in seconds. If an instance remains idle longer than this timeout after receiving no requests, the session expires.
         self.session_idle_timeout_seconds = session_idle_timeout_seconds
-        # 智能体运行时的系统标签信息，用于系统级别的资源分类和管理
+        # The system tags for the agent runtime, used for resource classification and management.
         self.system_tags = system_tags
+        # The ID of the workspace.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -134,6 +155,9 @@ class UpdateAgentRuntimeInput(DaraModel):
         if self.description is not None:
             result['description'] = self.description
 
+        if self.disable_ondemand is not None:
+            result['disableOndemand'] = self.disable_ondemand
+
         if self.disable_session_affinity is not None:
             result['disableSessionAffinity'] = self.disable_session_affinity
 
@@ -154,6 +178,12 @@ class UpdateAgentRuntimeInput(DaraModel):
 
         if self.external_agent_endpoint_url is not None:
             result['externalAgentEndpointUrl'] = self.external_agent_endpoint_url
+
+        if self.force_evict_instances is not None:
+            result['forceEvictInstances'] = self.force_evict_instances
+
+        if self.header_field_name is not None:
+            result['headerFieldName'] = self.header_field_name
 
         if self.health_check_configuration is not None:
             result['healthCheckConfiguration'] = self.health_check_configuration.to_map()
@@ -178,6 +208,9 @@ class UpdateAgentRuntimeInput(DaraModel):
 
         if self.protocol_configuration is not None:
             result['protocolConfiguration'] = self.protocol_configuration.to_map()
+
+        if self.session_affinity_type is not None:
+            result['sessionAffinityType'] = self.session_affinity_type
 
         if self.session_concurrency_limit_per_instance is not None:
             result['sessionConcurrencyLimitPerInstance'] = self.session_concurrency_limit_per_instance
@@ -222,6 +255,9 @@ class UpdateAgentRuntimeInput(DaraModel):
         if m.get('description') is not None:
             self.description = m.get('description')
 
+        if m.get('disableOndemand') is not None:
+            self.disable_ondemand = m.get('disableOndemand')
+
         if m.get('disableSessionAffinity') is not None:
             self.disable_session_affinity = m.get('disableSessionAffinity')
 
@@ -242,6 +278,12 @@ class UpdateAgentRuntimeInput(DaraModel):
 
         if m.get('externalAgentEndpointUrl') is not None:
             self.external_agent_endpoint_url = m.get('externalAgentEndpointUrl')
+
+        if m.get('forceEvictInstances') is not None:
+            self.force_evict_instances = m.get('forceEvictInstances')
+
+        if m.get('headerFieldName') is not None:
+            self.header_field_name = m.get('headerFieldName')
 
         if m.get('healthCheckConfiguration') is not None:
             temp_model = main_models.HealthCheckConfiguration()
@@ -272,6 +314,9 @@ class UpdateAgentRuntimeInput(DaraModel):
         if m.get('protocolConfiguration') is not None:
             temp_model = main_models.ProtocolConfiguration()
             self.protocol_configuration = temp_model.from_map(m.get('protocolConfiguration'))
+
+        if m.get('sessionAffinityType') is not None:
+            self.session_affinity_type = m.get('sessionAffinityType')
 
         if m.get('sessionConcurrencyLimitPerInstance') is not None:
             self.session_concurrency_limit_per_instance = m.get('sessionConcurrencyLimitPerInstance')

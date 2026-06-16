@@ -9,7 +9,7 @@ class CreateAgentRuntimeVersionInput(DaraModel):
         self,
         description: str = None,
     ):
-        # 版本描述
+        # A description of the agent runtime version.
         self.description = description
 
     def validate(self):

@@ -19,6 +19,7 @@ class CreateAgentRuntimeInput(DaraModel):
         credential_id: str = None,
         credential_name: str = None,
         description: str = None,
+        disable_ondemand: bool = None,
         disable_session_affinity: bool = None,
         disk_size: int = None,
         edition: str = None,
@@ -26,6 +27,7 @@ class CreateAgentRuntimeInput(DaraModel):
         environment_variables: Dict[str, str] = None,
         execution_role_arn: str = None,
         external_agent_endpoint_url: str = None,
+        header_field_name: str = None,
         health_check_configuration: main_models.HealthCheckConfiguration = None,
         log_configuration: main_models.LogConfiguration = None,
         memory: int = None,
@@ -35,76 +37,86 @@ class CreateAgentRuntimeInput(DaraModel):
         port: int = None,
         protocol_configuration: main_models.ProtocolConfiguration = None,
         resource_group_id: str = None,
+        session_affinity_type: str = None,
         session_concurrency_limit_per_instance: int = None,
         session_idle_timeout_seconds: int = None,
         system_tags: List[str] = None,
         workspace_id: str = None,
     ):
-        # 智能体运行时的唯一标识名称，用于区分不同的智能体运行时实例
+        # A unique name for the agent runtime.
         # 
         # This parameter is required.
         self.agent_runtime_name = agent_runtime_name
         self.arms_configuration = arms_configuration
-        # 指定智能体运行时的部署类型，支持Code（代码模式）和Container（容器模式）
+        # The deployment type for the agent runtime. Valid values: Code and Container.
         # 
         # This parameter is required.
         self.artifact_type = artifact_type
-        # 当artifactType为Code时的代码配置信息，包括代码源、入口文件等
+        # The code configuration, including the code source and entrypoint. This parameter is required when artifactType is Code.
         self.code_configuration = code_configuration
-        # 当artifactType为Container时的容器配置信息，包括镜像地址、启动命令等
+        # The container configuration, including the image URL and startup command. This parameter is required when artifactType is Container.
         self.container_configuration = container_configuration
-        # 为智能体运行时分配的CPU资源，单位为核数
+        # The amount of CPU allocated to the agent runtime, in cores.
         # 
         # This parameter is required.
         self.cpu = cpu
-        # 用于访问外部服务的凭证ID，智能体运行时将使用此凭证进行身份验证
+        # The ID of the credential used to authenticate with external services.
         self.credential_id = credential_id
-        # 用于访问智能体的凭证名称，访问智能体运行时将使用此凭证进行身份验证
+        # The name of the credential used to access the agent runtime.
         self.credential_name = credential_name
-        # 智能体运行时的描述信息，用于说明该运行时的用途和功能
+        # A description of the agent runtime.
         self.description = description
-        # 是否禁用会话亲和性。默认为 false（即默认启用会话亲和），设置为 true 时关闭会话亲和
+        # Specifies whether to disable on-demand elasticity. By default, on-demand elasticity is enabled.
+        self.disable_ondemand = disable_ondemand
+        # Specifies whether to disable session affinity. By default, session affinity is enabled.
         self.disable_session_affinity = disable_session_affinity
+        # The disk size allocated to the agent runtime.
         self.disk_size = disk_size
+        # The edition of the agent runtime.
         self.edition = edition
-        # 是否启用会话隔离，启用后每个会话将在独立的环境中运行
+        # Specifies whether to enable session isolation. If enabled, each session runs in an isolated environment.
         self.enable_session_isolation = enable_session_isolation
-        # 智能体运行时的环境变量配置，用于在运行时传递配置参数
+        # A key-value map of environment variables to set for the agent runtime.
         self.environment_variables = environment_variables
-        # 为智能体运行时提供访问云服务权限的执行角色ARN
+        # The ARN of the execution role that the agent runtime uses to access cloud services.
         self.execution_role_arn = execution_role_arn
-        # 外部注册类型的智能体访问端点地址，用于连接已部署在外部的智能体服务
+        # The endpoint URL of an external agent service.
         self.external_agent_endpoint_url = external_agent_endpoint_url
-        # 智能体运行时的健康检查配置，用于监控运行时实例的健康状态
+        # The name of the request header used for session affinity when sessionAffinityType is HEADER_FIELD.
+        self.header_field_name = header_field_name
+        # The health check configuration for the agent runtime, used to monitor the health of its instances.
         self.health_check_configuration = health_check_configuration
-        # SLS（简单日志服务）配置
+        # The Log Service configuration.
         self.log_configuration = log_configuration
-        # 为智能体运行时分配的内存资源，单位为MB
+        # The amount of memory allocated to the agent runtime, in MB.
         # 
         # This parameter is required.
         self.memory = memory
-        # 文件存储NAS的配置信息，用于挂载NAS文件系统到智能体运行时
+        # The configuration for mounting a NAS file system to the agent runtime.
         self.nas_config = nas_config
-        # 智能体运行时的网络配置，包括VPC、安全组等网络访问设置
+        # The network configuration for the agent runtime, including VPC and security group settings.
         # 
         # This parameter is required.
         self.network_configuration = network_configuration
-        # 对象存储OSS的挂载配置信息，用于挂载OSS存储桶到智能体运行时
+        # The configuration for mounting an OSS bucket to the agent runtime.
         self.oss_mount_config = oss_mount_config
-        # 智能体运行时监听的端口号，用于接收外部请求
+        # The port on which the agent runtime listens for external requests.
         # 
         # This parameter is required.
         self.port = port
-        # 智能体运行时的通信协议配置，定义运行时如何与外部系统交互
+        # The communication protocol configuration for the agent runtime.
         self.protocol_configuration = protocol_configuration
+        # The ID of the resource group for the agent runtime.
         self.resource_group_id = resource_group_id
-        # 每个运行时实例允许的最大并发会话数
+        # The session affinity mode. NONE disables session affinity. HEADER_FIELD enables session affinity based on a request header. GENERATED_COOKIE uses a service-generated cookie to maintain session affinity. COOKIE is a compatibility alias that the server normalizes to GENERATED_COOKIE.
+        self.session_affinity_type = session_affinity_type
+        # The maximum number of concurrent sessions allowed per runtime instance.
         self.session_concurrency_limit_per_instance = session_concurrency_limit_per_instance
-        # 会话的空闲超时时间，单位为秒。实例没有会话请求后处于空闲状态，空闲态为闲置计费模式，超过此超时时间后会话自动过期，不可继续使用
+        # The time in seconds that a session can remain idle before it expires and is terminated.
         self.session_idle_timeout_seconds = session_idle_timeout_seconds
-        # 智能体运行时的系统标签信息，用于系统级别的资源分类和管理
+        # The system tags for the agent runtime, used for system-level resource classification and management.
         self.system_tags = system_tags
-        # 智能体运行时所属的工作空间标识符，用于资源隔离和权限管理
+        # The ID of the workspace for the agent runtime, used for resource isolation and access control.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -159,6 +171,9 @@ class CreateAgentRuntimeInput(DaraModel):
         if self.description is not None:
             result['description'] = self.description
 
+        if self.disable_ondemand is not None:
+            result['disableOndemand'] = self.disable_ondemand
+
         if self.disable_session_affinity is not None:
             result['disableSessionAffinity'] = self.disable_session_affinity
 
@@ -179,6 +194,9 @@ class CreateAgentRuntimeInput(DaraModel):
 
         if self.external_agent_endpoint_url is not None:
             result['externalAgentEndpointUrl'] = self.external_agent_endpoint_url
+
+        if self.header_field_name is not None:
+            result['headerFieldName'] = self.header_field_name
 
         if self.health_check_configuration is not None:
             result['healthCheckConfiguration'] = self.health_check_configuration.to_map()
@@ -206,6 +224,9 @@ class CreateAgentRuntimeInput(DaraModel):
 
         if self.resource_group_id is not None:
             result['resourceGroupId'] = self.resource_group_id
+
+        if self.session_affinity_type is not None:
+            result['sessionAffinityType'] = self.session_affinity_type
 
         if self.session_concurrency_limit_per_instance is not None:
             result['sessionConcurrencyLimitPerInstance'] = self.session_concurrency_limit_per_instance
@@ -253,6 +274,9 @@ class CreateAgentRuntimeInput(DaraModel):
         if m.get('description') is not None:
             self.description = m.get('description')
 
+        if m.get('disableOndemand') is not None:
+            self.disable_ondemand = m.get('disableOndemand')
+
         if m.get('disableSessionAffinity') is not None:
             self.disable_session_affinity = m.get('disableSessionAffinity')
 
@@ -273,6 +297,9 @@ class CreateAgentRuntimeInput(DaraModel):
 
         if m.get('externalAgentEndpointUrl') is not None:
             self.external_agent_endpoint_url = m.get('externalAgentEndpointUrl')
+
+        if m.get('headerFieldName') is not None:
+            self.header_field_name = m.get('headerFieldName')
 
         if m.get('healthCheckConfiguration') is not None:
             temp_model = main_models.HealthCheckConfiguration()
@@ -306,6 +333,9 @@ class CreateAgentRuntimeInput(DaraModel):
 
         if m.get('resourceGroupId') is not None:
             self.resource_group_id = m.get('resourceGroupId')
+
+        if m.get('sessionAffinityType') is not None:
+            self.session_affinity_type = m.get('sessionAffinityType')
 
         if m.get('sessionConcurrencyLimitPerInstance') is not None:
             self.session_concurrency_limit_per_instance = m.get('sessionConcurrencyLimitPerInstance')

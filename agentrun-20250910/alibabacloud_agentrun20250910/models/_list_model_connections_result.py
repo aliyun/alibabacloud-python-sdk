@@ -12,11 +12,11 @@ class ListModelConnectionsResult(DaraModel):
         data: main_models.ListModelConnectionsOutput = None,
         request_id: str = None,
     ):
-        # SUCCESS 为成功，失败情况返回对应错误类型
+        # Indicates the request status. A value of SUCCESS means the request was successful. For failed requests, this field contains the corresponding error type.
         self.code = code
-        # 模型连接列表的详细信息
+        # The list of model connections.
         self.data = data
-        # 唯一的请求标识符，用于问题追踪
+        # The unique request ID, used for troubleshooting.
         self.request_id = request_id
 
     def validate(self):

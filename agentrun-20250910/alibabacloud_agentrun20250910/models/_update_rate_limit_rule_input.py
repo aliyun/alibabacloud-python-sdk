@@ -13,9 +13,9 @@ class UpdateRateLimitRuleInput(DaraModel):
         enabled: bool = None,
         windows: List[main_models.WindowLimit] = None,
     ):
-        # 是否启用该限流规则
+        # Specifies whether to enable the rate limit rule.
         self.enabled = enabled
-        # 限流时间窗口配置列表，提供时将整组覆盖
+        # A list of time window configurations. Providing this parameter replaces the entire existing list.
         self.windows = windows
 
     def validate(self):

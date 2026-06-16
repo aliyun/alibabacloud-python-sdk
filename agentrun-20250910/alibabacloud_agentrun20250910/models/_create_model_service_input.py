@@ -20,23 +20,35 @@ class CreateModelServiceInput(DaraModel):
         provider_settings: main_models.ProviderSettings = None,
         workspace_id: str = None,
     ):
+        # The credential name for authenticating with the cloud provider.
         self.credential_name = credential_name
+        # An optional description of the model service.
         self.description = description
-        # modelInfoConfigs
+        # A list of configurations for models in the service.
         self.model_info_configs = model_info_configs
-        # modelServiceName
+        # The name of the model service.
         # 
         # This parameter is required.
         self.model_service_name = model_service_name
+        # The model type. Valid values include:
+        # 
+        # - `system`: A built-in model that the service provides.
+        # 
+        # - `deployment`: A custom model that a user deploys.
+        # 
         # This parameter is required.
         self.model_type = model_type
+        # The network configuration for the model service. See `NetworkConfiguration` for details.
         self.network_configuration = network_configuration
+        # The cloud provider for the model service. Currently, only Alibaba Cloud is supported.
+        # 
         # This parameter is required.
         self.provider = provider
-        # providerSettings
+        # Provider-specific configuration settings. See `ProviderSettings` for details.
         # 
         # This parameter is required.
         self.provider_settings = provider_settings
+        # The ID of the workspace in which to create the model service.
         self.workspace_id = workspace_id
 
     def validate(self):

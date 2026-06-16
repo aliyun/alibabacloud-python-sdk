@@ -14,8 +14,11 @@ class PolarFsConfig(DaraModel):
         mount_points: List[main_models.PolarFsMountConfig] = None,
         user_id: int = None,
     ):
+        # The ID of the group.
         self.group_id = group_id
+        # The mount points for PFS.
         self.mount_points = mount_points
+        # The ID of the user.
         self.user_id = user_id
 
     def validate(self):

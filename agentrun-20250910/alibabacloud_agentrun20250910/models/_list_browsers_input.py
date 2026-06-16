@@ -11,9 +11,11 @@ class ListBrowsersInput(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # 按浏览器名称过滤
+        # Filters the results by browser name.
         self.browser_name = browser_name
+        # The page number of the results to return.
         self.page_number = page_number
+        # The maximum number of results to return per page.
         self.page_size = page_size
 
     def validate(self):

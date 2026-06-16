@@ -15,13 +15,13 @@ class ListAgentRuntimesInput(DaraModel):
         statuses: List[str] = None,
         system_tags: List[str] = None,
     ):
-        # 按名称过滤
+        # Filters the results by agent runtime name.
         self.agent_runtime_name = agent_runtime_name
-        # 页码
+        # The page number for pagination.
         self.page_number = page_number
-        # 每页记录数
+        # The maximum number of results to return per page.
         self.page_size = page_size
-        # 按状态过滤
+        # Filters the results by status.
         self.statuses = statuses
         # 按系统标签过滤
         self.system_tags = system_tags

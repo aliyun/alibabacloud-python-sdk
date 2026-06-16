@@ -10,6 +10,7 @@ class CreateModelServiceRequest(DaraModel):
         self,
         body: main_models.CreateModelServiceInput = None,
     ):
+        # Parameters for creating the model service.
         self.body = body
 
     def validate(self):

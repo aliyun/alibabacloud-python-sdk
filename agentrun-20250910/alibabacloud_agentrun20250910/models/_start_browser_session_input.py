@@ -9,6 +9,7 @@ class StartBrowserSessionInput(DaraModel):
         self,
         name: str = None,
     ):
+        # Browser session name
         self.name = name
 
     def validate(self):

@@ -14,15 +14,17 @@ class ListToolsRequest(DaraModel):
         workspace_id: str = None,
         workspace_ids: str = None,
     ):
-        # 当前页码，从 1 开始
+        # Page number
         self.page_number = page_number
-        # 每页返回的工具数量，用于分页查询
+        # Page size
         self.page_size = page_size
+        # Tool Name, supports fuzzy search
         self.tool_name = tool_name
-        # 按工具类型过滤，可选值：MCP、FUNCTIONCALL、SKILL
+        # Tool type
         self.tool_type = tool_type
-        # 按工作空间ID过滤，查询指定工作空间下的工具
+        # Workspace ID
         self.workspace_id = workspace_id
+        # List of workspace IDs, separated by commas
         self.workspace_ids = workspace_ids
 
     def validate(self):

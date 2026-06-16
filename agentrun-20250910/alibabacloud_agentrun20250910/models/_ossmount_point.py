@@ -13,10 +13,15 @@ class OSSMountPoint(DaraModel):
         mount_dir: str = None,
         read_only: bool = None,
     ):
+        # The OSS bucket to mount.
         self.bucket_name = bucket_name
+        # The directory path within the bucket to mount.
         self.bucket_path = bucket_path
+        # The OSS endpoint.
         self.endpoint = endpoint
+        # The local directory path where the bucket is mounted.
         self.mount_dir = mount_dir
+        # Specifies whether to mount the OSS bucket as read-only.
         self.read_only = read_only
 
     def validate(self):

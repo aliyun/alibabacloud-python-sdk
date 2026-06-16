@@ -11,11 +11,11 @@ class ListCodeInterpretersRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # 根据代码解释器实例名称进行模糊匹配过滤
+        # Filter by code interpreter name
         self.code_interpreter_name = code_interpreter_name
-        # 当前页码，从1开始计数
+        # Page number
         self.page_number = page_number
-        # 每页返回的记录数量
+        # Page size
         self.page_size = page_size
 
     def validate(self):

@@ -21,21 +21,29 @@ class AgentRuntimeEndpoint(DaraModel):
         status_reason: str = None,
         target_version: str = None,
     ):
+        # The Alibaba Cloud Resource Name (ARN) of the agent runtime endpoint.
         self.agent_runtime_endpoint_arn = agent_runtime_endpoint_arn
+        # The unique identifier of the agent runtime endpoint.
         self.agent_runtime_endpoint_id = agent_runtime_endpoint_id
+        # The name of the agent runtime endpoint.
         self.agent_runtime_endpoint_name = agent_runtime_endpoint_name
+        # The unique identifier of the agent runtime.
         self.agent_runtime_id = agent_runtime_id
+        # The description of the agent runtime endpoint.
         self.description = description
-        # 是否禁用该端点的公网访问
+        # If `true`, public access for this endpoint is disabled.
         self.disable_public_network_access = disable_public_network_access
-        # 智能体运行时端点的公网访问地址
+        # The public access address for the agent runtime endpoint.
         self.endpoint_public_url = endpoint_public_url
-        # 智能体运行时端点的路由配置，支持多版本权重分配
+        # The configuration for weight-based routing across multiple agent versions.
         self.routing_configuration = routing_configuration
         # 端点的弹性伸缩状态，包括最小/目标/当前实例数及定时策略（复用 ScalingStatus）
         self.scaling_status = scaling_status
+        # The current status of the agent runtime endpoint.
         self.status = status
+        # The reason for the current status of the endpoint.
         self.status_reason = status_reason
+        # The agent version that the endpoint targets.
         self.target_version = target_version
 
     def validate(self):

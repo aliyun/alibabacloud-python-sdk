@@ -12,9 +12,13 @@ class ListWorkspacesRequest(DaraModel):
         page_size: str = None,
         resource_group_id: str = None,
     ):
+        # The name of the workspace. Used to filter the results.
         self.name = name
+        # The page number to return. Default value: 1.
         self.page_number = page_number
+        # The number of entries to return per page.
         self.page_size = page_size
+        # The ID of the resource group to which the workspace belongs.
         self.resource_group_id = resource_group_id
 
     def validate(self):

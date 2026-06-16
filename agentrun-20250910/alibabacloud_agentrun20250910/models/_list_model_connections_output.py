@@ -15,13 +15,13 @@ class ListModelConnectionsOutput(DaraModel):
         page_size: int = None,
         total: int = None,
     ):
-        # 模型连接列表
+        # A list of ModelConnection objects.
         self.items = items
-        # 当前页码
+        # The current page number.
         self.page_number = page_number
-        # 每页记录数
+        # The number of entries per page.
         self.page_size = page_size
-        # 符合条件的模型连接总数
+        # The total number of matching ModelConnection objects.
         self.total = total
 
     def validate(self):

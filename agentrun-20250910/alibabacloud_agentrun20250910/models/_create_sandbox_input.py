@@ -16,14 +16,19 @@ class CreateSandboxInput(DaraModel):
         sandbox_idle_timeout_seconds: int = None,
         template_name: str = None,
     ):
+        # The NAS configuration.
         self.nas_config = nas_config
+        # The OSS mount configuration.
         self.oss_mount_config = oss_mount_config
+        # The PolarFS configuration.
         self.polar_fs_config = polar_fs_config
+        # The unique identifier of the sandbox instance.
         self.sandbox_id = sandbox_id
+        # The idle timeout for the sandbox, in seconds.
         self.sandbox_idle_timeout_in_seconds = sandbox_idle_timeout_in_seconds
-        # 沙箱空闲超时时间（秒）
+        # The idle timeout for the sandbox, in seconds.
         self.sandbox_idle_timeout_seconds = sandbox_idle_timeout_seconds
-        # 模板名称（系统内部通过 templateName 查询 template_id）
+        # The template name.
         # 
         # This parameter is required.
         self.template_name = template_name

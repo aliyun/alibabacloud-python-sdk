@@ -10,6 +10,7 @@ class CreateCustomDomainRequest(DaraModel):
         self,
         body: main_models.CreateCustomDomainInput = None,
     ):
+        # The request body used to create a custom domain.
         self.body = body
 
     def validate(self):

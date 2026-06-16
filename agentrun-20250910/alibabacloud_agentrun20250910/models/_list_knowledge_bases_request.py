@@ -13,8 +13,11 @@ class ListKnowledgeBasesRequest(DaraModel):
         workspace_id: str = None,
         workspace_ids: str = None,
     ):
+        # The page number to return. The value must be 1 or greater. The default value is 1.
         self.page_number = page_number
+        # The number of results to return per page. The default value is 20.
         self.page_size = page_size
+        # The knowledge base provider.
         self.provider = provider
         self.workspace_id = workspace_id
         self.workspace_ids = workspace_ids

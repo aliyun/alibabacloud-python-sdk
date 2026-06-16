@@ -21,27 +21,29 @@ class CodeInterpreter(DaraModel):
         status_reason: str = None,
         tenant_id: str = None,
     ):
-        # 代码解释器的唯一标识符
+        # The unique identifier for the CodeInterpreter.
         self.code_interpreter_id = code_interpreter_id
-        # 代码解释器的名称，用于标识和区分不同的代码解释器实例
+        # A user-defined name for the CodeInterpreter instance.
         self.code_interpreter_name = code_interpreter_name
+        # The number of CPU cores allocated to the instance.
         self.cpu = cpu
-        # 代码解释器的创建时间，采用ISO 8601格式
+        # The creation timestamp for the CodeInterpreter, in ISO 8601 format.
         self.created_at = created_at
-        # 代码解释器的描述信息，说明该解释器的用途和功能
+        # The description of the CodeInterpreter.
         self.description = description
-        # 此代码解释器的执行角色
+        # The ARN of the execution role for this CodeInterpreter.
         self.execution_role_arn = execution_role_arn
-        # 代码解释器的最后更新时间，采用ISO 8601格式
+        # The last update timestamp for the CodeInterpreter, in ISO 8601 format.
         self.last_updated_at = last_updated_at
-        # 内存资源配置（单位：MB）
+        # The memory allocated to the instance, in MB.
         self.memory = memory
-        # 代码解释器的网络配置信息
+        # The network configuration for the CodeInterpreter.
         self.network_configuration = network_configuration
-        # 代码解释器的当前状态，如READY（就绪）、TERMINATED（已终止）等
+        # The current status of the CodeInterpreter, such as READY or TERMINATED.
         self.status = status
-        # 当前状态的原因说明（如适用）
+        # The reason for the current status, if applicable.
         self.status_reason = status_reason
+        # The unique identifier for the tenant.
         self.tenant_id = tenant_id
 
     def validate(self):

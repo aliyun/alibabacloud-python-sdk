@@ -10,7 +10,7 @@ class CreateSandboxRequest(DaraModel):
         self,
         body: main_models.CreateSandboxInput = None,
     ):
-        # 创建沙箱所需的配置信息，包括模板名称、沙箱名称等
+        # The configuration for the sandbox.
         # 
         # This parameter is required.
         self.body = body

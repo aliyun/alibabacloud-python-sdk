@@ -10,9 +10,9 @@ class LogConfiguration(DaraModel):
         logstore: str = None,
         project: str = None,
     ):
-        # SLS日志库名称
+        # The name of the SLS logstore.
         self.logstore = logstore
-        # SLS项目名称
+        # The name of the SLS project.
         self.project = project
 
     def validate(self):

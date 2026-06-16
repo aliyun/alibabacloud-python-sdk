@@ -10,6 +10,7 @@ class CreateKnowledgeBaseRequest(DaraModel):
         self,
         body: main_models.CreateKnowledgeBaseInput = None,
     ):
+        # The data structure to create a knowledge base.
         self.body = body
 
     def validate(self):

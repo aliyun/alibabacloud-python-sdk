@@ -12,11 +12,11 @@ class RateLimitRuleResult(DaraModel):
         data: main_models.RateLimitRule = None,
         request_id: str = None,
     ):
-        # SUCCESS 为成功，失败情况返回对应错误类型
+        # A value of `SUCCESS` indicates the request succeeded. On failure, this field returns the corresponding error type.
         self.code = code
-        # 限流规则的详细信息
+        # The details of the rate limit rule.
         self.data = data
-        # 唯一的请求标识符，用于问题追踪
+        # A unique request identifier for troubleshooting.
         self.request_id = request_id
 
     def validate(self):

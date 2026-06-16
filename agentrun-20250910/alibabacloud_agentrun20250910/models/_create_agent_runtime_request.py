@@ -10,7 +10,7 @@ class CreateAgentRuntimeRequest(DaraModel):
         self,
         body: main_models.CreateAgentRuntimeInput = None,
     ):
-        # 创建智能体运行时所需的完整配置信息，包括运行时名称、资源规格、网络配置、协议配置等
+        # Request parameters for creating an agent runtime
         # 
         # This parameter is required.
         self.body = body

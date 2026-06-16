@@ -17,28 +17,29 @@ class CreateCodeInterpreterInput(DaraModel):
         network_configuration: main_models.NetworkConfiguration = None,
         session_idle_timeout_seconds: int = None,
     ):
-        # 代码解释器的名称，用于标识和区分不同的代码解释器实例
+        # The name of the code interpreter. Use this to identify and distinguish code interpreter instances.
         # 
         # This parameter is required.
         self.code_interpreter_name = code_interpreter_name
-        # CPU资源配置（单位：核数）
+        # The amount of CPU to allocate, in cores.
         # 
         # This parameter is required.
         self.cpu = cpu
+        # The credential ID used for authentication.
         self.credential_id = credential_id
-        # 代码解释器的描述信息，说明该解释器的用途和功能
+        # A description of the code interpreter.
         self.description = description
-        # 此代码解释器的执行角色
+        # The Alibaba Cloud Resource Name (ARN) of the execution role for the code interpreter.
         self.execution_role_arn = execution_role_arn
-        # 内存资源配置（单位：MB）
+        # The amount of memory to allocate, in megabytes (MB).
         # 
         # This parameter is required.
         self.memory = memory
-        # 代码解释器的网络配置，包括VPC、安全组等网络访问设置
+        # Specifies the network configuration for the code interpreter, including VPC and security group settings.
         # 
         # This parameter is required.
         self.network_configuration = network_configuration
-        # 会话的空闲超时时间，单位为秒。实例没有会话请求后处于空闲状态，空闲态为闲置计费模式，超过此超时时间后会话自动过期，不可继续使用
+        # The idle timeout for a session, in seconds. If an instance has no new requests for this duration, its session expires and cannot be reused.
         self.session_idle_timeout_seconds = session_idle_timeout_seconds
 
     def validate(self):

@@ -11,8 +11,11 @@ class DeleteBrowserOut(DaraModel):
         browser_name: str = None,
         status: str = None,
     ):
+        # The browser ID.
         self.browser_id = browser_id
+        # The browser name.
         self.browser_name = browser_name
+        # The operation status.
         self.status = status
 
     def validate(self):

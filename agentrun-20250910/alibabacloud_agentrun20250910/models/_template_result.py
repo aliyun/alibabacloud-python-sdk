@@ -12,13 +12,13 @@ class TemplateResult(DaraModel):
         data: main_models.Template = None,
         request_id: str = None,
     ):
-        # SUCCESS 为成功，失败情况返回对应错误类型
+        # SUCCESS indicates success. In case of failure, the corresponding Error Type is returned.
         self.code = code
-        # 模板的详细信息
+        # Detailed information about the template
         # 
         # This parameter is required.
         self.data = data
-        # 唯一的请求标识符，用于问题追踪
+        # Unique request ID used for troubleshooting
         self.request_id = request_id
 
     def validate(self):

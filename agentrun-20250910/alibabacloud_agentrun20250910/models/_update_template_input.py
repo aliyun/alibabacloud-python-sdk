@@ -32,32 +32,45 @@ class UpdateTemplateInput(DaraModel):
         template_configuration: Dict[str, Any] = None,
         workspace_id: str = None,
     ):
+        # Specifies whether the data link is allowed to invoke APIs to create, stop, or delete sandboxes
         self.allow_anonymous_manage = allow_anonymous_manage
+        # Configuration information for Application Real-Time Monitoring Service (ARMS)
         self.arms_configuration = arms_configuration
-        # 容器配置（内置的不可改）
+        # Container configuration (built-in and immutable)
         self.container_configuration = container_configuration
-        # CPU资源配置（单位：核心）
+        # CPU resource configuration (unit: core)
         self.cpu = cpu
+        # Credential configuration
         self.credential_configuration = credential_configuration
+        # Template description
         self.description = description
+        # Sandbox Agent toggle
         self.enable_agent = enable_agent
         self.enable_pre_stop = enable_pre_stop
+        # Environment variables
         self.environment_variables = environment_variables
+        # Execution role ARN
         self.execution_role_arn = execution_role_arn
+        # Log configuration
         self.log_configuration = log_configuration
-        # 内存资源配置（单位：MB）
+        # Memory resource configuration (unit: MB)
         self.memory = memory
+        # NAS mount configuration item
         self.nas_config = nas_config
+        # Network configuration
         self.network_configuration = network_configuration
+        # OSS mount configuration
         self.oss_configuration = oss_configuration
         self.pre_stop_timeout_in_seconds = pre_stop_timeout_in_seconds
-        # 沙箱空闲超时时间（秒）
+        # Sandbox idle timeout (seconds)
         self.sandbox_idle_timeout_in_seconds = sandbox_idle_timeout_in_seconds
-        # 沙箱存活时间（秒）
+        # Sandbox time to live (seconds)
         self.sandbox_ttlin_seconds = sandbox_ttlin_seconds
+        # Elasticity configuration
         self.scaling_config = scaling_config
-        # 模板配置（灵活的对象结构，根据 templateType 不同而不同）
+        # Template configuration (a flexible object structure that varies based on templateType)
         self.template_configuration = template_configuration
+        # Associated Space ID
         self.workspace_id = workspace_id
 
     def validate(self):

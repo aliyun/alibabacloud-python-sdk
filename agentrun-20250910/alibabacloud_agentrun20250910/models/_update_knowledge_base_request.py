@@ -10,6 +10,7 @@ class UpdateKnowledgeBaseRequest(DaraModel):
         self,
         body: main_models.UpdateKnowledgeBaseInput = None,
     ):
+        # The request body for updating a knowledge base.
         self.body = body
 
     def validate(self):

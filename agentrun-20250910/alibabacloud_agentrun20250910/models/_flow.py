@@ -24,35 +24,35 @@ class Flow(DaraModel):
         tracing_configuration: main_models.TracingConfiguration = None,
         workspace_id: str = None,
     ):
-        # 工作流的创建时间，采用ISO 8601格式
+        # The time when the workflow was created, in ISO 8601 format.
         self.created_at = created_at
-        # 工作流的定义内容
+        # The definition of the workflow.
         self.definition = definition
-        # 工作流的描述信息，说明该工作流的用途和功能
+        # The description of the workflow, which explains the purpose and functionality of the workflow.
         self.description = description
-        # 是否禁用该工作流的公网访问，作为工作流级别的默认策略
+        # Specifies whether to disable public network access for the workflow. This setting serves as the default policy at the workflow level.
         self.disable_public_network_access = disable_public_network_access
-        # 工作流的环境变量配置，包含一组命名变量列表
+        # The environment variable configuration of the workflow, which contains a list of named variables.
         self.environment_configuration = environment_configuration
-        # 为工作流提供访问云服务权限的执行角色ARN
+        # The ARN of the execution role that grants the workflow permissions to access cloud services.
         self.execution_role_arn = execution_role_arn
-        # 工作流的外部存储位置
+        # The external storage location of the workflow.
         self.external_storage_location = external_storage_location
-        # 工作流的全局唯一资源名称
+        # The globally unique Alibaba Cloud Resource Name (ARN) of the workflow.
         self.flow_arn = flow_arn
-        # 工作流的唯一标识符
+        # The unique identifier of the workflow.
         self.flow_id = flow_id
-        # 工作流的名称，用于标识和区分不同的工作流实例
+        # The name of the workflow, which is used to identify and distinguish different workflow instances.
         self.flow_name = flow_name
-        # 工作流最后一次更新的时间，采用ISO 8601格式
+        # The time when the workflow was last updated, in ISO 8601 format.
         self.last_updated_at = last_updated_at
-        # 工作流的日志配置
+        # The logging configuration of the workflow.
         self.logging_configuration = logging_configuration
-        # 工作流所属的资源组标识符
+        # The ID of the resource group to which the workflow belongs.
         self.resource_group_id = resource_group_id
-        # 工作流的链路追踪配置
+        # The Tracing Analysis configuration of the workflow.
         self.tracing_configuration = tracing_configuration
-        # 工作流所属的工作空间标识符
+        # The ID of the workspace to which the workflow belongs.
         self.workspace_id = workspace_id
 
     def validate(self):

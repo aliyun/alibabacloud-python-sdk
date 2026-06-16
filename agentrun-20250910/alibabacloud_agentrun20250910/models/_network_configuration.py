@@ -14,9 +14,13 @@ class NetworkConfiguration(DaraModel):
         vpc_id: str = None,
         vswitch_ids: List[str] = None,
     ):
+        # The network mode.
         self.network_mode = network_mode
+        # The security group ID.
         self.security_group_id = security_group_id
+        # The VPC ID.
         self.vpc_id = vpc_id
+        # An array of VSwitch IDs.
         self.vswitch_ids = vswitch_ids
 
     def validate(self):

@@ -11,8 +11,11 @@ class NASMountConfig(DaraModel):
         mount_dir: str = None,
         server_addr: str = None,
     ):
+        # Specifies whether to enable encryption in transit. This option is supported only for general-purpose NAS.
         self.enable_tls = enable_tls
+        # Specifies the local mount directory.
         self.mount_dir = mount_dir
+        # Specifies the NAS server address.
         self.server_addr = server_addr
 
     def validate(self):

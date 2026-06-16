@@ -10,6 +10,8 @@ class CreateCodeInterpreterRequest(DaraModel):
         self,
         body: main_models.CreateCodeInterpreterInput = None,
     ):
+        # Request body for creating a code interpreter.
+        # 
         # This parameter is required.
         self.body = body
 

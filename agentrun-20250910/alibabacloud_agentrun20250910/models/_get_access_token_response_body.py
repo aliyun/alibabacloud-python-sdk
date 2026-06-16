@@ -12,8 +12,11 @@ class GetAccessTokenResponseBody(DaraModel):
         data: main_models.GetAccessTokenResponseBodyData = None,
         request_id: str = None,
     ):
+        # The status code of the response. A value of `SUCCESS` indicates that the request was successful. For failures, this parameter returns an error code, such as `ERR_BAD_REQUEST`, `ERR_VALIDATION_FAILED`, or `ERR_INTERNAL_SERVER_ERROR`.
         self.code = code
+        # The response data.
         self.data = data
+        # The unique request ID. This ID is used for troubleshooting purposes.
         self.request_id = request_id
 
     def validate(self):
@@ -55,6 +58,7 @@ class GetAccessTokenResponseBodyData(DaraModel):
         self,
         access_token: str = None,
     ):
+        # The personal access token. You can use this token to authenticate subsequent API calls. This authentication method is an alternative to using an Alibaba Cloud AccessKey pair or temporary credentials provided by the Security Token Service (STS).
         self.access_token = access_token
 
     def validate(self):

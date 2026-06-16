@@ -14,8 +14,11 @@ class ListModelProvidersResponseBody(DaraModel):
         data: main_models.ListModelProvidersResponseBodyData = None,
         request_id: str = None,
     ):
+        # The response code.
         self.code = code
+        # The response data.
         self.data = data
+        # The unique request identifier. Include this ID when reporting issues.
         self.request_id = request_id
 
     def validate(self):
@@ -60,9 +63,13 @@ class ListModelProvidersResponseBodyData(DaraModel):
         page_size: int = None,
         total: int = None,
     ):
+        # An array of model provider objects.
         self.items = items
+        # 页码
         self.page_number = page_number
+        # 页面大小
         self.page_size = page_size
+        # 总数
         self.total = total
 
     def validate(self):
@@ -120,12 +127,23 @@ class ListModelProvidersResponseBodyDataItems(DaraModel):
         models: List[str] = None,
         provider_name: str = None,
     ):
-        # baseUrl
+        # The base URL of the model provider.
         self.base_url = base_url
         # modelInfoConfig
         self.model_info_config = model_info_config
+        # The model type. Valid values:
+        # 
+        # - `text_embedding`: text embedding
+        # 
+        # - `text_sparse_embedding`: text sparse embedding
+        # 
+        # - `image_embedding`: image embedding
+        # 
+        # - `image_analyze`: image analysis
         self.model_type = model_type
+        # An array of model names.
         self.models = models
+        # The name of the model provider.
         self.provider_name = provider_name
 
     def validate(self):

@@ -10,9 +10,9 @@ class ListFlowVersionsRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # 当前页码，从1开始计数
+        # The page number.
         self.page_number = page_number
-        # 每页返回的记录数量
+        # The page size.
         self.page_size = page_size
 
     def validate(self):

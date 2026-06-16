@@ -10,6 +10,7 @@ class UpdateWorkspaceRequest(DaraModel):
         self,
         body: main_models.UpdateWorkspaceInput = None,
     ):
+        # The parameters used to update the workspace.
         self.body = body
 
     def validate(self):

@@ -10,11 +10,11 @@ class WindowLimit(DaraModel):
         duration_secs: int = None,
         limit: int = None,
     ):
-        # 限流时间窗口的持续时间，单位为秒
+        # The duration of the time window in seconds.
         # 
         # This parameter is required.
         self.duration_secs = duration_secs
-        # 在指定时间窗口内允许的最大请求数量
+        # The maximum requests allowed within the time window.
         # 
         # This parameter is required.
         self.limit = limit

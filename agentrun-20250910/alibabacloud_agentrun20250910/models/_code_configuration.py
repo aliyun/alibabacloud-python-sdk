@@ -16,15 +16,17 @@ class CodeConfiguration(DaraModel):
         oss_object_name: str = None,
         zip_file: str = None,
     ):
-        # 代码包的CRC-64校验值。如果提供了checksum，则函数计算会校验代码包的checksum是否和提供的一致
+        # The CRC-64 checksum of the code package. If you provide `checksum`, Function Compute verifies that the code package\\"s computed checksum matches this value.
         self.checksum = checksum
-        # 在运行时中运行的命令（例如：[\"python\"]）
+        # The command and arguments to run in the runtime.
         self.command = command
-        # 代码运行时的编程语言，如 python3、nodejs 等
+        # The programming language for the function\\"s runtime, such as python3 or nodejs.
         self.language = language
+        # The name of the OSS bucket that contains the function\\"s code package.
         self.oss_bucket_name = oss_bucket_name
+        # The name of the OSS object for the function\\"s code package.
         self.oss_object_name = oss_object_name
-        # 智能体代码ZIP包的Base64编码
+        # The base64-encoded content of the agent\\"s code package.
         self.zip_file = zip_file
 
     def validate(self):

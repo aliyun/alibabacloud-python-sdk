@@ -13,11 +13,11 @@ class CodeInterpreterSessionConfig(DaraModel):
         timeout: int = None,
         working_directory: str = None,
     ):
-        # 代码解释器会话的环境变量配置
+        # The environment variables for the session, specified as key-value pairs.
         self.environment = environment
-        # 代码解释器会话的超时时间，单位为秒
+        # The timeout for the session, in seconds.
         self.timeout = timeout
-        # 代码解释器会话的工作目录路径
+        # The working directory path for the session.
         self.working_directory = working_directory
 
     def validate(self):

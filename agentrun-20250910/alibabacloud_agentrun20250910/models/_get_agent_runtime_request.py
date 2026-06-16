@@ -9,7 +9,7 @@ class GetAgentRuntimeRequest(DaraModel):
         self,
         agent_runtime_version: str = None,
     ):
-        # 指定要获取的智能体运行时版本，如果不指定则返回最新版本
+        # Agent Runtime Version
         self.agent_runtime_version = agent_runtime_version
 
     def validate(self):

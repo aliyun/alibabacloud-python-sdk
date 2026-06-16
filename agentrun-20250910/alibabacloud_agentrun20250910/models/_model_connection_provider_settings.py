@@ -12,9 +12,9 @@ class ModelConnectionProviderSettings(DaraModel):
         base_url: str = None,
         model_names: List[str] = None,
     ):
-        # 模型提供商的默认API基础地址
+        # The default API base URL for the model provider.
         self.base_url = base_url
-        # 该连接支持的模型名称列表
+        # The list of model names supported by this connection.
         self.model_names = model_names
 
     def validate(self):

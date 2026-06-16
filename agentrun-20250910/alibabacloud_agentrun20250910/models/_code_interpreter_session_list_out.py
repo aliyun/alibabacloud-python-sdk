@@ -15,9 +15,13 @@ class CodeInterpreterSessionListOut(DaraModel):
         page_size: int = None,
         total: int = None,
     ):
+        # A list of Code Interpreter session objects.
         self.items = items
+        # The page number.
         self.page_number = page_number
+        # The number of sessions per page.
         self.page_size = page_size
+        # The total number of sessions.
         self.total = total
 
     def validate(self):

@@ -10,7 +10,9 @@ class BrowserAutomationStream(DaraModel):
         stream_endpoint: str = None,
         stream_status: str = None,
     ):
+        # The WebSocket URL for the stream endpoint.
         self.stream_endpoint = stream_endpoint
+        # The status of the stream.
         self.stream_status = stream_status
 
     def validate(self):

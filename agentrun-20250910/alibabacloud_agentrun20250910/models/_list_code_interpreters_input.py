@@ -11,9 +11,11 @@ class ListCodeInterpretersInput(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # 按代码解释器名称过滤
+        # Filters results by code interpreter name.
         self.code_interpreter_name = code_interpreter_name
+        # The page number of the results to return. Default: 1.
         self.page_number = page_number
+        # Maximum number of results to return per page. Valid values: 1 to 100. Default: 20.
         self.page_size = page_size
 
     def validate(self):

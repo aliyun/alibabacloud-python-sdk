@@ -35,44 +35,63 @@ class CreateTemplateInput(DaraModel):
         template_type: str = None,
         workspace_id: str = None,
     ):
+        # Controls whether data plane calls can create, stop, or delete the sandbox.
         self.allow_anonymous_manage = allow_anonymous_manage
+        # The Application Real-Time Monitoring Service (ARMS) configuration.
         self.arms_configuration = arms_configuration
-        # 容器配置，只允许基于 Browser/Code Interpreter 基础镜像的 image
+        # The container configuration. You can only use images based on the Browser or Code Interpreter base images.
         self.container_configuration = container_configuration
-        # CPU资源配置（单位：核心）
+        # The number of CPU cores.
         # 
         # This parameter is required.
         self.cpu = cpu
+        # The credential configuration.
         self.credential_configuration = credential_configuration
+        # The template description.
         self.description = description
+        # The disk size in MB.
         self.disk_size = disk_size
+        # Controls whether to enable the Sandbox Agent.
         self.enable_agent = enable_agent
+        # Specifies whether to enable the pre-stop hook.
         self.enable_pre_stop = enable_pre_stop
+        # The environment variables for the sandbox.
         self.environment_variables = environment_variables
+        # The Alibaba Cloud Resource Name (ARN) of the execution role.
         self.execution_role_arn = execution_role_arn
+        # The log configuration.
         self.log_configuration = log_configuration
-        # 内存资源配置（单位：MB）
+        # The memory size in MB.
         # 
         # This parameter is required.
         self.memory = memory
+        # The Network Attached Storage (NAS) mount configuration.
         self.nas_config = nas_config
+        # The network configuration.
+        # 
         # This parameter is required.
         self.network_configuration = network_configuration
+        # A list of Object Storage Service (OSS) configurations.
         self.oss_configuration = oss_configuration
+        # The timeout for the pre-stop hook, in seconds. This parameter applies only when `enablePreStop` is set to `true`.
         self.pre_stop_timeout_in_seconds = pre_stop_timeout_in_seconds
-        # 沙箱空闲超时时间（秒）
+        # The duration in seconds that a sandbox can be idle before it is automatically stopped.
         self.sandbox_idle_timeout_in_seconds = sandbox_idle_timeout_in_seconds
-        # 沙箱存活时间（秒）
+        # The maximum time-to-live (TTL) in seconds for the sandbox. The sandbox is terminated after this duration, regardless of activity.
         self.sandbox_ttlin_seconds = sandbox_ttlin_seconds
+        # The scaling configuration.
         self.scaling_config = scaling_config
-        # 模板配置（灵活的对象结构，根据 templateType 不同而不同）
+        # The template configuration. This is a flexible object whose structure varies depending on the `templateType`.
         self.template_configuration = template_configuration
-        # 模板名称（要求账号唯一的）
+        # A unique name for the template within your account.
         # 
         # This parameter is required.
         self.template_name = template_name
+        # The template type.
+        # 
         # This parameter is required.
         self.template_type = template_type
+        # The ID of the workspace.
         self.workspace_id = workspace_id
 
     def validate(self):

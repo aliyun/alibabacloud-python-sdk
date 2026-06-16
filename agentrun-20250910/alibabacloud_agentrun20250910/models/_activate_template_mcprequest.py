@@ -12,7 +12,9 @@ class ActivateTemplateMCPRequest(DaraModel):
         enabled_tools: List[str] = None,
         transport: str = None,
     ):
+        # A list of tools to enable.
         self.enabled_tools = enabled_tools
+        # The transport protocol.
         self.transport = transport
 
     def validate(self):

@@ -10,9 +10,9 @@ class UpdateConsumerAPIKeyInput(DaraModel):
         active: bool = None,
         description: str = None,
     ):
-        # 是否启用该密钥
+        # Indicates if the key is active.
         self.active = active
-        # 更新后的描述信息
+        # A new description for the key.
         self.description = description
 
     def validate(self):

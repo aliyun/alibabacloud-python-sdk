@@ -10,7 +10,9 @@ class BrowserOssLocation(DaraModel):
         bucket: str = None,
         prefix: str = None,
     ):
+        # The name of the OSS bucket.
         self.bucket = bucket
+        # The storage prefix within the bucket.
         self.prefix = prefix
 
     def validate(self):

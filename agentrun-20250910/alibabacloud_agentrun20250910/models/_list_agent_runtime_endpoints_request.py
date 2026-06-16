@@ -12,13 +12,13 @@ class ListAgentRuntimeEndpointsRequest(DaraModel):
         page_size: int = None,
         search_mode: str = None,
     ):
-        # 根据端点名称进行模糊匹配过滤
+        # Filter by endpoint name.
         self.endpoint_name = endpoint_name
-        # 当前页码，从1开始计数
+        # Page number.
         self.page_number = page_number
-        # 每页返回的记录数量
+        # Page size.
         self.page_size = page_size
-        # 查询模式，支持精确查询和模糊查询
+        # Search mode.
         self.search_mode = search_mode
 
     def validate(self):

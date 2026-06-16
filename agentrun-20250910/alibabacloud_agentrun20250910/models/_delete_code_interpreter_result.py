@@ -12,11 +12,11 @@ class DeleteCodeInterpreterResult(DaraModel):
         data: main_models.CodeInterpreter = None,
         request_id: str = None,
     ):
-        # SUCCESS 为成功，失败情况返回对应错误类型，比如 ERR_BAD_REQUEST ERR_VALIDATION_FAILED ERR_INTERNAL_SERVER_ERROR
+        # Returns `SUCCESS` if the operation is successful. On failure, returns an error code, such as `ERR_BAD_REQUEST`, `ERR_VALIDATION_FAILED`, or `ERR_INTERNAL_SERVER_ERROR`.
         self.code = code
-        # 被删除的代码解释器详细信息
+        # Details of the deleted code interpreter.
         self.data = data
-        # 唯一的请求标识符，用于问题追踪
+        # A unique request ID for troubleshooting.
         self.request_id = request_id
 
     def validate(self):

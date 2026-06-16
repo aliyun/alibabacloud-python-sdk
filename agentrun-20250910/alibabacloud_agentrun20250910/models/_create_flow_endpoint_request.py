@@ -10,7 +10,7 @@ class CreateFlowEndpointRequest(DaraModel):
         self,
         body: main_models.CreateFlowEndpointInput = None,
     ):
-        # 创建工作流端点所需的完整配置信息
+        # Request parameters for creating a flow endpoint
         # 
         # This parameter is required.
         self.body = body

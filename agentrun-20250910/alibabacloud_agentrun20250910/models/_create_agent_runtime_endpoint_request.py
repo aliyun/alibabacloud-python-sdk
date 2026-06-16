@@ -10,7 +10,7 @@ class CreateAgentRuntimeEndpointRequest(DaraModel):
         self,
         body: main_models.CreateAgentRuntimeEndpointInput = None,
     ):
-        # 包含要创建的智能体运行时端点配置信息的请求体
+        # Create agent runtime endpoint input
         # 
         # This parameter is required.
         self.body = body

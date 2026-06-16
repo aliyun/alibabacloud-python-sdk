@@ -10,6 +10,7 @@ class CreateMemoryCollectionRequest(DaraModel):
         self,
         body: main_models.CreateMemoryCollectionInput = None,
     ):
+        # Configuration settings to create a memory collection.
         self.body = body
 
     def validate(self):

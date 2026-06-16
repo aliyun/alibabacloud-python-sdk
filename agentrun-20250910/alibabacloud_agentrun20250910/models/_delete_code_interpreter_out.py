@@ -11,8 +11,11 @@ class DeleteCodeInterpreterOut(DaraModel):
         code_interpreter_name: str = None,
         status: str = None,
     ):
+        # ID of the code interpreter.
         self.code_interpreter_id = code_interpreter_id
+        # Name of the code interpreter.
         self.code_interpreter_name = code_interpreter_name
+        # Status of the code interpreter.
         self.status = status
 
     def validate(self):

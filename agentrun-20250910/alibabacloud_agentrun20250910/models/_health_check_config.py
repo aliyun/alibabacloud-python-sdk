@@ -14,17 +14,17 @@ class HealthCheckConfig(DaraModel):
         success_threshold: int = None,
         timeout_seconds: int = None,
     ):
-        # 在将容器视为不健康之前，连续失败的健康检查次数
+        # The number of consecutive failed health checks before the container is considered unhealthy
         self.failure_threshold = failure_threshold
-        # 用于健康检查的HTTP GET请求的URL地址
+        # The URL address for the HTTP GET request used in health checks
         self.http_get_url = http_get_url
-        # 在容器启动后，首次执行健康检查前的延迟时间（秒）
+        # The delay time (in seconds) after the container starts before the first health check is executed
         self.initial_delay_seconds = initial_delay_seconds
-        # 执行健康检查的时间间隔（秒）
+        # The time interval (in seconds) between health checks
         self.period_seconds = period_seconds
-        # 在将容器视为健康之前，连续成功的健康检查次数
+        # The number of consecutive successful health checks required before the container is considered healthy
         self.success_threshold = success_threshold
-        # 健康检查的超时时间（秒）
+        # The timeout duration (in seconds) for health checks
         self.timeout_seconds = timeout_seconds
 
     def validate(self):

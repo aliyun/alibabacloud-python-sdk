@@ -44,42 +44,77 @@ class Template(DaraModel):
         template_version: str = None,
         workspace_id: str = None,
     ):
+        # Indicates whether the data link can invoke APIs to create, stop, or delete sandbox instances
         self.allow_anonymous_manage = allow_anonymous_manage
+        # Custom image configuration
         self.container_configuration = container_configuration
+        # Number of CPU cores
+        # 
         # This parameter is required.
         self.cpu = cpu
+        # Creation Time
         self.created_at = created_at
+        # Authentication configuration
         self.credential_configuration = credential_configuration
+        # Description
         self.description = description
+        # Disk size
         self.disk_size = disk_size
+        # Sandbox Agent Toggle
         self.enable_agent = enable_agent
         self.enable_pre_stop = enable_pre_stop
+        # Environment variable configuration for the agent runtime
         self.environment_variables = environment_variables
+        # Execution role
         self.execution_role_arn = execution_role_arn
+        # Update Time
         self.last_updated_at = last_updated_at
+        # Log configuration
         self.log_configuration = log_configuration
+        # MCP options
         self.mcp_options = mcp_options
+        # MCP server status
         self.mcp_state = mcp_state
+        # Memory specification
+        # 
         # This parameter is required.
         self.memory = memory
+        # NAS mount configuration item
         self.nas_config = nas_config
+        # Network configuration
         self.network_configuration = network_configuration
+        # OSS configuration
         self.oss_configuration = oss_configuration
         self.pre_stop_timeout_in_seconds = pre_stop_timeout_in_seconds
+        # Resource Name
         self.resource_name = resource_name
+        # Sandbox idle timeout
         self.sandbox_idle_timeout_in_seconds = sandbox_idle_timeout_in_seconds
+        # Sandbox lifecycle time to live (deprecated)
         self.sandbox_ttlin_seconds = sandbox_ttlin_seconds
+        # Elasticity Status
         self.scaling_status = scaling_status
+        # Status
         self.status = status
+        # Status reason
         self.status_reason = status_reason
+        # Template ARN
         self.template_arn = template_arn
+        # Template Configuration (flexible object structure that varies based on templateType)
         self.template_configuration = template_configuration
+        # Template ID
+        # 
         # This parameter is required.
         self.template_id = template_id
+        # Template Name
+        # 
         # This parameter is required.
         self.template_name = template_name
+        # templatetype
         self.template_type = template_type
+        # Template Version
         self.template_version = template_version
+        # Associated Space ID
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -333,8 +368,11 @@ class TemplateMcpState(DaraModel):
         status: str = None,
         status_reason: str = None,
     ):
+        # Access Endpoint
         self.access_endpoint = access_endpoint
+        # MCP Status
         self.status = status
+        # Status reason
         self.status_reason = status_reason
 
     def validate(self):
@@ -375,7 +413,9 @@ class TemplateMcpOptions(DaraModel):
         enabled_tools: List[str] = None,
         transport: str = None,
     ):
+        # List of enabled tools
         self.enabled_tools = enabled_tools
+        # Transport type
         self.transport = transport
 
     def validate(self):

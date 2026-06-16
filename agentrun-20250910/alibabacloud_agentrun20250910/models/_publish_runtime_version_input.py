@@ -10,9 +10,9 @@ class PublishRuntimeVersionInput(DaraModel):
         description: str = None,
         publisher: str = None,
     ):
-        # 此版本的描述
+        # Description of this version
         self.description = description
-        # 发布此版本的用户或系统标识
+        # Identity of the user or system that publishes this version
         self.publisher = publisher
 
     def validate(self):

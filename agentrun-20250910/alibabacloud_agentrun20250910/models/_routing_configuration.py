@@ -12,7 +12,7 @@ class RoutingConfiguration(DaraModel):
         self,
         version_weights: List[main_models.VersionWeight] = None,
     ):
-        # 不同版本的流量权重配置
+        # Traffic weight configuration for different versions
         self.version_weights = version_weights
 
     def validate(self):

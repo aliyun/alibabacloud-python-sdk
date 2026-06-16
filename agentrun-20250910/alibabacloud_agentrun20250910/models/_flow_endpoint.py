@@ -21,25 +21,25 @@ class FlowEndpoint(DaraModel):
         routing_configuration: List[main_models.FlowEndpointRoutingConfig] = None,
         target_version: str = None,
     ):
-        # 工作流端点的创建时间，采用ISO 8601格式
+        # The creation timestamp for the flow endpoint, in ISO 8601 format.
         self.created_at = created_at
-        # 工作流端点的描述信息
+        # The description of the flow endpoint.
         self.description = description
-        # 是否禁用该端点的公网访问
+        # Set to true to disable public network access for this endpoint.
         self.disable_public_network_access = disable_public_network_access
-        # 工作流端点的全局唯一资源名称
+        # The Alibaba Cloud Resource Name (ARN) of the flow endpoint.
         self.flow_endpoint_arn = flow_endpoint_arn
-        # 工作流端点的唯一标识符
+        # The unique identifier of the flow endpoint.
         self.flow_endpoint_id = flow_endpoint_id
-        # 工作流端点的名称
+        # The name of the flow endpoint.
         self.flow_endpoint_name = flow_endpoint_name
-        # 工作流的唯一标识符
+        # The unique identifier of the flow.
         self.flow_id = flow_id
-        # 工作流端点最后一次更新的时间，采用ISO 8601格式
+        # The last update timestamp for the flow endpoint, in ISO 8601 format.
         self.last_updated_at = last_updated_at
-        # 工作流端点的版本路由配置
+        # The routing configuration that distributes traffic to different versions of the flow.
         self.routing_configuration = routing_configuration
-        # 工作流端点指向的目标版本号
+        # The flow version targeted by the endpoint.
         self.target_version = target_version
 
     def validate(self):

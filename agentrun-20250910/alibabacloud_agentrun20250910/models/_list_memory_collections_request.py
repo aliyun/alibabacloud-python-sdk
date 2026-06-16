@@ -15,12 +15,19 @@ class ListMemoryCollectionsRequest(DaraModel):
         workspace_id: str = None,
         workspace_ids: str = None,
     ):
+        # Filters the results by memory collection name.
         self.memory_collection_name = memory_collection_name
+        # The page number. Defaults to 1.
         self.page_number = page_number
+        # The number of entries to return per page. Defaults to 20.
         self.page_size = page_size
+        # Filters the results by memory collection status.
         self.status = status
+        # Filters the results by memory collection type.
         self.type = type
+        # The ID of the workspace to filter by.
         self.workspace_id = workspace_id
+        # The IDs of the workspaces to filter by, provided as a comma-separated string.
         self.workspace_ids = workspace_ids
 
     def validate(self):

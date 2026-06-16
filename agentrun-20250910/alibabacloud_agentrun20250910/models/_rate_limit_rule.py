@@ -18,19 +18,19 @@ class RateLimitRule(DaraModel):
         rate_limit_rule_id: str = None,
         windows: List[main_models.WindowLimit] = None,
     ):
-        # 限流规则的创建时间，采用ISO 8601格式
+        # The creation time of the rate limit rule, in ISO 8601 format.
         self.created_at = created_at
-        # 限流规则的描述符标识，用于关联具体的限流对象
+        # The descriptor ID for the rate limit rule, which associates the rule with a specific throttling target.
         self.descriptor_id = descriptor_id
-        # 限流规则的描述符类型，如model、user等
+        # The descriptor type for the rate limit rule, such as \\"model\\" or \\"user\\".
         self.descriptor_type = descriptor_type
-        # 限流规则是否启用，true表示启用，false表示禁用
+        # Indicates whether the rate limit rule is enabled.
         self.enabled = enabled
-        # 限流规则最后一次更新的时间，采用ISO 8601格式
+        # The last update time of the rate limit rule, in ISO 8601 format.
         self.last_updated_at = last_updated_at
-        # 限流规则的唯一标识符
+        # The unique identifier for the rate limit rule.
         self.rate_limit_rule_id = rate_limit_rule_id
-        # 限流时间窗口配置列表，支持多个窗口叠加限流
+        # A list of time window configurations. Multiple windows can be used to enforce layered rate limiting.
         self.windows = windows
 
     def validate(self):
