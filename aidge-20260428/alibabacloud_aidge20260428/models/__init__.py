@@ -1,0 +1,197 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from ._asset_optimize_lite_request import AssetOptimizeLiteRequest
+from ._asset_optimize_lite_response_body import AssetOptimizeLiteResponseBody
+from ._asset_optimize_lite_response import AssetOptimizeLiteResponse
+from ._asset_optimize_pro_request import AssetOptimizeProRequest
+from ._asset_optimize_pro_shrink_request import AssetOptimizeProShrinkRequest
+from ._asset_optimize_pro_response_body import AssetOptimizeProResponseBody
+from ._asset_optimize_pro_response import AssetOptimizeProResponse
+from ._category_attribute_match_request import CategoryAttributeMatchRequest
+from ._category_attribute_match_shrink_request import CategoryAttributeMatchShrinkRequest
+from ._category_attribute_match_response_body import CategoryAttributeMatchResponseBody
+from ._category_attribute_match_response import CategoryAttributeMatchResponse
+from ._category_match_request import CategoryMatchRequest
+from ._category_match_response_body import CategoryMatchResponseBody
+from ._category_match_response import CategoryMatchResponse
+from ._document_translate_request import DocumentTranslateRequest
+from ._document_translate_response_body import DocumentTranslateResponseBody
+from ._document_translate_response import DocumentTranslateResponse
+from ._image_cropping_request import ImageCroppingRequest
+from ._image_cropping_response_body import ImageCroppingResponseBody
+from ._image_cropping_response import ImageCroppingResponse
+from ._image_matting_request import ImageMattingRequest
+from ._image_matting_response_body import ImageMattingResponseBody
+from ._image_matting_response import ImageMattingResponse
+from ._image_recognition_request import ImageRecognitionRequest
+from ._image_recognition_shrink_request import ImageRecognitionShrinkRequest
+from ._image_recognition_response_body import ImageRecognitionResponseBody
+from ._image_recognition_response import ImageRecognitionResponse
+from ._image_remove_request import ImageRemoveRequest
+from ._image_remove_shrink_request import ImageRemoveShrinkRequest
+from ._image_remove_response_body import ImageRemoveResponseBody
+from ._image_remove_response import ImageRemoveResponse
+from ._image_translation_pro_request import ImageTranslationProRequest
+from ._image_translation_pro_response_body import ImageTranslationProResponseBody
+from ._image_translation_pro_response import ImageTranslationProResponse
+from ._image_translation_standard_request import ImageTranslationStandardRequest
+from ._image_translation_standard_response_body import ImageTranslationStandardResponseBody
+from ._image_translation_standard_response import ImageTranslationStandardResponse
+from ._language_detect_request import LanguageDetectRequest
+from ._language_detect_response_body import LanguageDetectResponseBody
+from ._language_detect_response import LanguageDetectResponse
+from ._package_weight_size_check_request import PackageWeightSizeCheckRequest
+from ._package_weight_size_check_response_body import PackageWeightSizeCheckResponseBody
+from ._package_weight_size_check_response import PackageWeightSizeCheckResponse
+from ._query_async_task_result_request import QueryAsyncTaskResultRequest
+from ._query_async_task_result_response_body import QueryAsyncTaskResultResponseBody
+from ._query_async_task_result_response import QueryAsyncTaskResultResponse
+from ._size_chart_detect_request import SizeChartDetectRequest
+from ._size_chart_detect_response_body import SizeChartDetectResponseBody
+from ._size_chart_detect_response import SizeChartDetectResponse
+from ._size_chart_extract_request import SizeChartExtractRequest
+from ._size_chart_extract_shrink_request import SizeChartExtractShrinkRequest
+from ._size_chart_extract_response_body import SizeChartExtractResponseBody
+from ._size_chart_extract_response import SizeChartExtractResponse
+from ._text_correct_request import TextCorrectRequest
+from ._text_correct_response_body import TextCorrectResponseBody
+from ._text_correct_response import TextCorrectResponse
+from ._text_translate_request import TextTranslateRequest
+from ._text_translate_shrink_request import TextTranslateShrinkRequest
+from ._text_translate_response_body import TextTranslateResponseBody
+from ._text_translate_response import TextTranslateResponse
+from ._vision_flow_request import VisionFlowRequest
+from ._vision_flow_shrink_request import VisionFlowShrinkRequest
+from ._vision_flow_response_body import VisionFlowResponseBody
+from ._vision_flow_response import VisionFlowResponse
+from ._asset_optimize_lite_response_body import AssetOptimizeLiteResponseBodyData
+from ._asset_optimize_pro_response_body import AssetOptimizeProResponseBodyData
+from ._category_attribute_match_response_body import CategoryAttributeMatchResponseBodyDataAttributes
+from ._category_attribute_match_response_body import CategoryAttributeMatchResponseBodyDataUsageMap
+from ._category_attribute_match_response_body import CategoryAttributeMatchResponseBodyData
+from ._category_match_response_body import CategoryMatchResponseBodyData
+from ._document_translate_response_body import DocumentTranslateResponseBodyData
+from ._image_cropping_response_body import ImageCroppingResponseBodyData
+from ._image_matting_response_body import ImageMattingResponseBodyData
+from ._image_recognition_response_body import ImageRecognitionResponseBodyData
+from ._image_remove_response_body import ImageRemoveResponseBodyData
+from ._image_translation_pro_response_body import ImageTranslationProResponseBodyDataGenFilesEditInfoGoodsRects
+from ._image_translation_pro_response_body import ImageTranslationProResponseBodyDataGenFilesEditInfoTextAreasTextsImageRect
+from ._image_translation_pro_response_body import ImageTranslationProResponseBodyDataGenFilesEditInfoTextAreasTextsTextRect
+from ._image_translation_pro_response_body import ImageTranslationProResponseBodyDataGenFilesEditInfoTextAreasTexts
+from ._image_translation_pro_response_body import ImageTranslationProResponseBodyDataGenFilesEditInfoTextAreas
+from ._image_translation_pro_response_body import ImageTranslationProResponseBodyDataGenFilesEditInfo
+from ._image_translation_pro_response_body import ImageTranslationProResponseBodyDataGenFilesResultList
+from ._image_translation_pro_response_body import ImageTranslationProResponseBodyDataGenFiles
+from ._image_translation_pro_response_body import ImageTranslationProResponseBodyDataResultList
+from ._image_translation_pro_response_body import ImageTranslationProResponseBodyData
+from ._image_translation_standard_response_body import ImageTranslationStandardResponseBodyData
+from ._language_detect_response_body import LanguageDetectResponseBodyData
+from ._package_weight_size_check_response_body import PackageWeightSizeCheckResponseBodyData
+from ._query_async_task_result_response_body import QueryAsyncTaskResultResponseBodyData
+from ._size_chart_detect_response_body import SizeChartDetectResponseBodyData
+from ._size_chart_extract_response_body import SizeChartExtractResponseBodyData
+from ._text_correct_response_body import TextCorrectResponseBodyData
+from ._text_translate_response_body import TextTranslateResponseBodyDataTranslations
+from ._text_translate_response_body import TextTranslateResponseBodyData
+from ._vision_flow_response_body import VisionFlowResponseBodyData
+
+__all__ = [
+    AssetOptimizeLiteRequest,
+    AssetOptimizeLiteResponseBody,
+    AssetOptimizeLiteResponse,
+    AssetOptimizeProRequest,
+    AssetOptimizeProShrinkRequest,
+    AssetOptimizeProResponseBody,
+    AssetOptimizeProResponse,
+    CategoryAttributeMatchRequest,
+    CategoryAttributeMatchShrinkRequest,
+    CategoryAttributeMatchResponseBody,
+    CategoryAttributeMatchResponse,
+    CategoryMatchRequest,
+    CategoryMatchResponseBody,
+    CategoryMatchResponse,
+    DocumentTranslateRequest,
+    DocumentTranslateResponseBody,
+    DocumentTranslateResponse,
+    ImageCroppingRequest,
+    ImageCroppingResponseBody,
+    ImageCroppingResponse,
+    ImageMattingRequest,
+    ImageMattingResponseBody,
+    ImageMattingResponse,
+    ImageRecognitionRequest,
+    ImageRecognitionShrinkRequest,
+    ImageRecognitionResponseBody,
+    ImageRecognitionResponse,
+    ImageRemoveRequest,
+    ImageRemoveShrinkRequest,
+    ImageRemoveResponseBody,
+    ImageRemoveResponse,
+    ImageTranslationProRequest,
+    ImageTranslationProResponseBody,
+    ImageTranslationProResponse,
+    ImageTranslationStandardRequest,
+    ImageTranslationStandardResponseBody,
+    ImageTranslationStandardResponse,
+    LanguageDetectRequest,
+    LanguageDetectResponseBody,
+    LanguageDetectResponse,
+    PackageWeightSizeCheckRequest,
+    PackageWeightSizeCheckResponseBody,
+    PackageWeightSizeCheckResponse,
+    QueryAsyncTaskResultRequest,
+    QueryAsyncTaskResultResponseBody,
+    QueryAsyncTaskResultResponse,
+    SizeChartDetectRequest,
+    SizeChartDetectResponseBody,
+    SizeChartDetectResponse,
+    SizeChartExtractRequest,
+    SizeChartExtractShrinkRequest,
+    SizeChartExtractResponseBody,
+    SizeChartExtractResponse,
+    TextCorrectRequest,
+    TextCorrectResponseBody,
+    TextCorrectResponse,
+    TextTranslateRequest,
+    TextTranslateShrinkRequest,
+    TextTranslateResponseBody,
+    TextTranslateResponse,
+    VisionFlowRequest,
+    VisionFlowShrinkRequest,
+    VisionFlowResponseBody,
+    VisionFlowResponse,
+    AssetOptimizeLiteResponseBodyData,
+    AssetOptimizeProResponseBodyData,
+    CategoryAttributeMatchResponseBodyDataAttributes,
+    CategoryAttributeMatchResponseBodyDataUsageMap,
+    CategoryAttributeMatchResponseBodyData,
+    CategoryMatchResponseBodyData,
+    DocumentTranslateResponseBodyData,
+    ImageCroppingResponseBodyData,
+    ImageMattingResponseBodyData,
+    ImageRecognitionResponseBodyData,
+    ImageRemoveResponseBodyData,
+    ImageTranslationProResponseBodyDataGenFilesEditInfoGoodsRects,
+    ImageTranslationProResponseBodyDataGenFilesEditInfoTextAreasTextsImageRect,
+    ImageTranslationProResponseBodyDataGenFilesEditInfoTextAreasTextsTextRect,
+    ImageTranslationProResponseBodyDataGenFilesEditInfoTextAreasTexts,
+    ImageTranslationProResponseBodyDataGenFilesEditInfoTextAreas,
+    ImageTranslationProResponseBodyDataGenFilesEditInfo,
+    ImageTranslationProResponseBodyDataGenFilesResultList,
+    ImageTranslationProResponseBodyDataGenFiles,
+    ImageTranslationProResponseBodyDataResultList,
+    ImageTranslationProResponseBodyData,
+    ImageTranslationStandardResponseBodyData,
+    LanguageDetectResponseBodyData,
+    PackageWeightSizeCheckResponseBodyData,
+    QueryAsyncTaskResultResponseBodyData,
+    SizeChartDetectResponseBodyData,
+    SizeChartExtractResponseBodyData,
+    TextCorrectResponseBodyData,
+    TextTranslateResponseBodyDataTranslations,
+    TextTranslateResponseBodyData,
+    VisionFlowResponseBodyData
+]
