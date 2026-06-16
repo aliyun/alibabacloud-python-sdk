@@ -1,0 +1,111 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from typing import List
+
+from alibabacloud_agentloop20260520 import models as main_models
+from darabonba.model import DaraModel
+
+class ExperimentConfig(DaraModel):
+    def __init__(
+        self,
+        endpoint_connector_id: str = None,
+        label: str = None,
+        model_name: str = None,
+        model_parameters: main_models.ModelParameters = None,
+        model_provider: str = None,
+        name: str = None,
+        prompt_template: List[main_models.PromptTemplateItem] = None,
+        request_body_template: str = None,
+        request_method: str = None,
+    ):
+        self.endpoint_connector_id = endpoint_connector_id
+        self.label = label
+        self.model_name = model_name
+        self.model_parameters = model_parameters
+        self.model_provider = model_provider
+        self.name = name
+        self.prompt_template = prompt_template
+        self.request_body_template = request_body_template
+        self.request_method = request_method
+
+    def validate(self):
+        if self.model_parameters:
+            self.model_parameters.validate()
+        if self.prompt_template:
+            for v1 in self.prompt_template:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.endpoint_connector_id is not None:
+            result['endpointConnectorId'] = self.endpoint_connector_id
+
+        if self.label is not None:
+            result['label'] = self.label
+
+        if self.model_name is not None:
+            result['modelName'] = self.model_name
+
+        if self.model_parameters is not None:
+            result['modelParameters'] = self.model_parameters.to_map()
+
+        if self.model_provider is not None:
+            result['modelProvider'] = self.model_provider
+
+        if self.name is not None:
+            result['name'] = self.name
+
+        result['promptTemplate'] = []
+        if self.prompt_template is not None:
+            for k1 in self.prompt_template:
+                result['promptTemplate'].append(k1.to_map() if k1 else None)
+
+        if self.request_body_template is not None:
+            result['requestBodyTemplate'] = self.request_body_template
+
+        if self.request_method is not None:
+            result['requestMethod'] = self.request_method
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('endpointConnectorId') is not None:
+            self.endpoint_connector_id = m.get('endpointConnectorId')
+
+        if m.get('label') is not None:
+            self.label = m.get('label')
+
+        if m.get('modelName') is not None:
+            self.model_name = m.get('modelName')
+
+        if m.get('modelParameters') is not None:
+            temp_model = main_models.ModelParameters()
+            self.model_parameters = temp_model.from_map(m.get('modelParameters'))
+
+        if m.get('modelProvider') is not None:
+            self.model_provider = m.get('modelProvider')
+
+        if m.get('name') is not None:
+            self.name = m.get('name')
+
+        self.prompt_template = []
+        if m.get('promptTemplate') is not None:
+            for k1 in m.get('promptTemplate'):
+                temp_model = main_models.PromptTemplateItem()
+                self.prompt_template.append(temp_model.from_map(k1))
+
+        if m.get('requestBodyTemplate') is not None:
+            self.request_body_template = m.get('requestBodyTemplate')
+
+        if m.get('requestMethod') is not None:
+            self.request_method = m.get('requestMethod')
+
+        return self
+

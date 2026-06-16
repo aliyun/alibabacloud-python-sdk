@@ -1,0 +1,91 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from typing import Dict, Any
+
+from darabonba.model import DaraModel
+
+class Evaluator(DaraModel):
+    def __init__(
+        self,
+        config: Dict[str, Any] = None,
+        evaluator_ref: str = None,
+        filters: Dict[str, Any] = None,
+        name: str = None,
+        result_name: str = None,
+        result_type: str = None,
+        type: str = None,
+        variable_mapping: Dict[str, str] = None,
+    ):
+        self.config = config
+        self.evaluator_ref = evaluator_ref
+        self.filters = filters
+        self.name = name
+        self.result_name = result_name
+        self.result_type = result_type
+        self.type = type
+        self.variable_mapping = variable_mapping
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.config is not None:
+            result['config'] = self.config
+
+        if self.evaluator_ref is not None:
+            result['evaluatorRef'] = self.evaluator_ref
+
+        if self.filters is not None:
+            result['filters'] = self.filters
+
+        if self.name is not None:
+            result['name'] = self.name
+
+        if self.result_name is not None:
+            result['resultName'] = self.result_name
+
+        if self.result_type is not None:
+            result['resultType'] = self.result_type
+
+        if self.type is not None:
+            result['type'] = self.type
+
+        if self.variable_mapping is not None:
+            result['variableMapping'] = self.variable_mapping
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('config') is not None:
+            self.config = m.get('config')
+
+        if m.get('evaluatorRef') is not None:
+            self.evaluator_ref = m.get('evaluatorRef')
+
+        if m.get('filters') is not None:
+            self.filters = m.get('filters')
+
+        if m.get('name') is not None:
+            self.name = m.get('name')
+
+        if m.get('resultName') is not None:
+            self.result_name = m.get('resultName')
+
+        if m.get('resultType') is not None:
+            self.result_type = m.get('resultType')
+
+        if m.get('type') is not None:
+            self.type = m.get('type')
+
+        if m.get('variableMapping') is not None:
+            self.variable_mapping = m.get('variableMapping')
+
+        return self
+
