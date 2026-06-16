@@ -17,11 +17,17 @@ class DescribePcaAndExternalCACertificateListResponseBody(DaraModel):
         show_size: int = None,
         total_count: int = None,
     ):
+        # The list of certificates.
         self.certificate_list = certificate_list
+        # The current page number.
         self.current_page = current_page
+        # The number of entries on the current page.
         self.page_count = page_count
+        # The request ID.
         self.request_id = request_id
+        # The number of entries to return on each page. Default value: 50.
         self.show_size = show_size
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -108,27 +114,49 @@ class DescribePcaAndExternalCACertificateListResponseBodyCertificateList(DaraMod
         x_509certificate: str = None,
         years: int = None,
     ):
+        # The expiration time of the certificate.
         self.after_date = after_date
+        # The algorithm of the certificate.
         self.algorithm = algorithm
+        # The time at which the certificate is issued.
         self.before_date = before_date
+        # The type of the certificate.
         self.certificate_type = certificate_type
+        # The primary domain name that is bound to the certificate.
         self.common_name = common_name
+        # The country code of the certificate.
         self.country_code = country_code
+        # The ID of the certificate.
         self.identifier = identifier
+        # The key size of the certificate. Unit: bits.
         self.key_size = key_size
+        # The city in which the organization is located.
         self.locality = locality
+        # The MD5 value of the certificate.
         self.md_5 = md_5
+        # The organization to which the certificate belongs.
         self.organization = organization
+        # The certificate authority (CA) that issued the certificate.
         self.organization_unit = organization_unit
+        # The ID of the parent certificate.
         self.parent_identifier = parent_identifier
+        # All domain names that are bound to the certificate.
         self.sans = sans
+        # The serial number of the certificate.
         self.serial_number = serial_number
+        # The primary domain name that is bound to the certificate.
         self.sha_2 = sha_2
+        # The signature algorithm of the certificate. Valid values:
         self.sign_algorithm = sign_algorithm
+        # The status of the certificate. Valid values:
         self.state = state
+        # The status of the certificate. Valid values:
         self.status = status
+        # The subject of the certificate.
         self.subject_dn = subject_dn
+        # The content of the X.509 certificate.
         self.x_509certificate = x_509certificate
+        # The validity period of the certificate, in years.
         self.years = years
 
     def validate(self):

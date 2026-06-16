@@ -13,7 +13,9 @@ class DescribeClientCertificateForSerialNumberResponseBody(DaraModel):
         certificate_list: List[main_models.DescribeClientCertificateForSerialNumberResponseBodyCertificateList] = None,
         request_id: str = None,
     ):
+        # Details of the client or server certificates.
         self.certificate_list = certificate_list
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -76,27 +78,100 @@ class DescribeClientCertificateForSerialNumberResponseBodyCertificateList(DaraMo
         x_509certificate: str = None,
         years: int = None,
     ):
+        # The expiration time of the certificate.
         self.after_date = after_date
+        # The encryption algorithm of the certificate. Valid values:
+        # 
+        # - **RSA**: The RSA algorithm.
+        # 
+        # - **ECC**: The ECC algorithm.
+        # 
+        # - **SM2**: The SM2 algorithm.
         self.algorithm = algorithm
+        # The issuance time of the certificate.
         self.before_date = before_date
+        # The type of the certificate.
         self.certificate_type = certificate_type
+        # The common name of the certificate.
         self.common_name = common_name
+        # The two-letter country code of the issuer.
+        # 
+        # For more information about country codes, see the **Country codes** section in [Manage company profiles](https://help.aliyun.com/document_detail/198289.html).
         self.country_code = country_code
+        # The unique identifier of the certificate.
         self.identifier = identifier
+        # The key length of the certificate.
         self.key_size = key_size
+        # The city of the issuer.
         self.locality = locality
+        # The MD5 fingerprint of the certificate.
         self.md_5 = md_5
+        # The organization of the issuer.
         self.organization = organization
+        # The organizational unit of the issuer.
         self.organization_unit = organization_unit
+        # The identifier of the issuer. This parameter is returned only if the certificate is issued by Alibaba Cloud.
         self.parent_identifier = parent_identifier
+        # The subject alternative name (SAN) extension, which specifies identifiers such as email addresses, domain names, URIs, and IP addresses.
+        # 
+        # A JSON string that represents an array of SAN objects. Each object contains the following parameters:
+        # 
+        # - **Type**: The type of the extension. This parameter is an integer. Valid values:
+        # 
+        #   - **1**: email address.
+        # 
+        #   - **2**: domain name.
+        # 
+        #   - **6**: uniform resource identifier (URI).
+        # 
+        #   - **7**: IP address.
+        # 
+        # - **Value**: The content of the extension. This parameter is a string.
         self.sans = sans
+        # The serial number of the certificate.
         self.serial_number = serial_number
+        # The SHA-256 fingerprint of the certificate.
         self.sha_2 = sha_2
+        # The signature algorithm of the certificate.
         self.sign_algorithm = sign_algorithm
+        # <props="china">The state or province of the issuer.
+        # <props="intl">The state or province of the issuer.
         self.state = state
+        # The status of the certificate. Valid values:
+        # 
+        # - **ISSUE**: The certificate is issued.
+        # 
+        # - **REVOKE**: The certificate is revoked.
         self.status = status
+        # The distinguished name (DN) of the certificate. The DN contains information about the certificate subject, including:
+        # 
+        # - **C**: Country.
+        # 
+        # - **O**: Organization.
+        # 
+        # - **OU**: Organizational unit.
+        # 
+        # - **L**: City.
+        # 
+        # <props="china">
+        # 
+        # - **ST**: State or province.
+        # 
+        # 
+        # 
+        # 
+        # <props="intl">
+        # 
+        # - **ST**: State or province.
+        # 
+        # 
+        # 
+        # 
+        # - **CN**: Common name.
         self.subject_dn = subject_dn
+        # The certificate content.
         self.x_509certificate = x_509certificate
+        # This parameter is deprecated.
         self.years = years
 
     def validate(self):

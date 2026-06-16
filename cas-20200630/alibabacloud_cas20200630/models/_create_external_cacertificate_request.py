@@ -18,12 +18,32 @@ class CreateExternalCACertificateRequest(DaraModel):
         tags: List[main_models.CreateExternalCACertificateRequestTags] = None,
         validity: str = None,
     ):
+        # Specifies API parameters that override content from the CSR or add information to the CA certificate.
         self.api_passthrough = api_passthrough
         self.cert_max_time = cert_max_time
+        # The certificate signing request (CSR). The CSR can contain information such as the SubjectDN and custom extensions for the CA certificate. The CA generates the SubjectKeyIdentifier, AuthorityKeyIdentifier, and CRLDistributionPoints extensions, ignoring any corresponding values in the CSR.
         self.csr = csr
+        # The ID of the external subordinate CA instance.
         self.instance_id = instance_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The tags to add to the certificate.
         self.tags = tags
+        # The certificate validity period. You can specify this using either relative or absolute time.
+        # 
+        # > Relative time: Supported units are year, month, and day.
+        # 
+        # - y - year
+        # 
+        # - m - month
+        # 
+        # - d - day
+        # 
+        # > Absolute time: Use GMT time in the `yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\"` format.
+        # 
+        # - To specify only the expiration time, use `$NotAfter`.
+        # 
+        # - To specify both the start and expiration times, use `$NotBefore/$NotAfter`.
         self.validity = validity
 
     def validate(self):
@@ -99,7 +119,9 @@ class CreateExternalCACertificateRequestTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag\\"s key.
         self.key = key
+        # The tag\\"s value.
         self.value = value
 
     def validate(self):
@@ -134,7 +156,9 @@ class CreateExternalCACertificateRequestApiPassthrough(DaraModel):
         extensions: main_models.CreateExternalCACertificateRequestApiPassthroughExtensions = None,
         subject: main_models.CreateExternalCACertificateRequestApiPassthroughSubject = None,
     ):
+        # Specifies the extensions for the CA certificate. If specified, these values override the corresponding extensions in the CSR or are added to the CA certificate.
         self.extensions = extensions
+        # The subject information for the CA certificate. If specified, this value overwrites the SubjectDN from the CSR.
         self.subject = subject
 
     def validate(self):
@@ -178,11 +202,17 @@ class CreateExternalCACertificateRequestApiPassthroughSubject(DaraModel):
         organization_unit: str = None,
         state: str = None,
     ):
+        # The name of the CA certificate.
         self.common_name = common_name
+        # The two-letter country code (ISO 3166-1).
         self.country = country
+        # The city or region.
         self.locality = locality
+        # The organization or company.
         self.organization = organization
+        # The organizational subdivision, such as a department, team, project group, or branch.
         self.organization_unit = organization_unit
+        # The state or province.
         self.state = state
 
     def validate(self):
@@ -241,7 +271,9 @@ class CreateExternalCACertificateRequestApiPassthroughExtensions(DaraModel):
         extended_key_usages: List[str] = None,
         path_len_constraint: int = None,
     ):
+        # The extended key usages.
         self.extended_key_usages = extended_key_usages
+        # The certificate path length constraint. For an end-entity CA, set this parameter to 0. A value of 0 indicates the CA will issue end-entity certificates.
         self.path_len_constraint = path_len_constraint
 
     def validate(self):

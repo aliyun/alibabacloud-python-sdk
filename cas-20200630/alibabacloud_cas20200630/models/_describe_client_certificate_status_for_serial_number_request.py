@@ -9,7 +9,9 @@ class DescribeClientCertificateStatusForSerialNumberRequest(DaraModel):
         self,
         serial_number: str = None,
     ):
-        # The serial number of the certificate.
+        # The serial number of the client or server certificate to query. To query multiple certificates, separate their serial numbers with a comma.
+        # 
+        # > You can call the [ListClientCertificate](https://help.aliyun.com/document_detail/330884.html) operation to retrieve the serial numbers of all client and server certificates.
         # 
         # This parameter is required.
         self.serial_number = serial_number

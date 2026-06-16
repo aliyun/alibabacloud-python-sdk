@@ -12,13 +12,13 @@ class CreateRootCACertificateResponseBody(DaraModel):
         identifier: str = None,
         request_id: str = None,
     ):
-        # The root CA certificate in the PEM format.
+        # The created root certificate in PEM format.
         self.certificate = certificate
-        # The certificate chain of the root CA certificate.
+        # The CA certificate chain of the created root certificate.
         self.certificate_chain = certificate_chain
-        # The unique identifier of the root CA certificate.
+        # The unique identifier of the created root CA certificate.
         self.identifier = identifier
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The unique ID of the request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):

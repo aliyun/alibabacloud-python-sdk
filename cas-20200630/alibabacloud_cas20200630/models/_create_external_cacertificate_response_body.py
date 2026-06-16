@@ -12,9 +12,13 @@ class CreateExternalCACertificateResponseBody(DaraModel):
         identifier: str = None,
         request_id: str = None,
     ):
+        # The content of the certificate.
         self.certificate = certificate
+        # The CA certificate chain.
         self.certificate_chain = certificate_chain
+        # The unique identifier for the certificate.
         self.identifier = identifier
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

@@ -17,17 +17,17 @@ class DescribeCACertificateListResponseBody(DaraModel):
         show_size: int = None,
         total_count: int = None,
     ):
-        # The details about the CA certificates.
+        # The details of the CA certificates.
         self.certificate_list = certificate_list
-        # The page number of the returned page.
+        # The page number.
         self.current_page = current_page
-        # The number of returned pages.
+        # The number of pages returned.
         self.page_count = page_count
         # The ID of the request.
         self.request_id = request_id
-        # The number of CA certificates returned per page.
+        # The number of CA certificates on each page.
         self.show_size = show_size
-        # The total number of root CA certificates and intermediate CA certificates that are returned.
+        # The total number of root and intermediate CA certificates.
         self.total_count = total_count
 
     def validate(self):
@@ -122,42 +122,51 @@ class DescribeCACertificateListResponseBodyCertificateList(DaraModel):
         self.after_date = after_date
         # The encryption algorithm of the CA certificate. Valid values:
         # 
-        # *   **RSA**: the Rivest-Shamir-Adleman (RSA) algorithm.
-        # *   **ECC**: the elliptic curve cryptography (ECC) algorithm.
-        # *   **SM2**: the SM2 algorithm, which is developed and approved by the State Cryptography Administration of China.
+        # - **RSA**: RSA algorithm.
+        # 
+        # - **ECC**: ECC algorithm.
+        # 
+        # - **SM2**: SM2 algorithm.
         self.algorithm = algorithm
-        # The alias of the CA.
+        # The alias of the instance.
         self.alias = alias
         # The issuance date of the CA certificate. This value is a UNIX timestamp. Unit: milliseconds.
         self.before_date = before_date
         # The type of the CA certificate. Valid values:
         # 
-        # *   **ROOT**: a root CA certificate.
-        # *   **SUB_ROOT**: an intermediate CA certificate.
-        self.certificate_type = certificate_type
-        # The common name or abbreviation of the organization that is associated with the CA certificate.
-        self.common_name = common_name
-        # The code of the country in which the organization is located.
+        # - **ROOT**: root CA certificate.
         # 
-        # For more information about country codes, see the **"Country codes"** section of the [Manage company profiles](https://help.aliyun.com/document_detail/198289.html) topic.
+        # - **SUB_ROOT**: intermediate CA certificate.
+        self.certificate_type = certificate_type
+        # The common name or abbreviation of the organization associated with the CA certificate.
+        self.common_name = common_name
+        # The country code of the country where the organization associated with the CA certificate is located.
+        # 
+        # For more information about country codes, see the **Country codes** section in [Manage company information](https://help.aliyun.com/document_detail/198289.html).
         self.country_code = country_code
+        # Indicates whether the instance is a free instance. Valid values:
+        # 
+        # - 0: no.
+        # 
+        # - 1: yes.
         self.gift = gift
         # The unique identifier of the CA certificate.
         self.identifier = identifier
         # The key length of the CA certificate.
         self.key_size = key_size
-        # The name of the city in which the organization is located.
+        # The name of the city where the organization associated with the CA certificate is located.
         self.locality = locality
         # The MD5 fingerprint of the CA certificate.
         self.md_5 = md_5
-        # The name of the organization that is associated with the CA certificate.
+        # The name of the organization associated with the CA certificate.
         self.organization = organization
-        # The name of the department or branch in the organization that is associated with the CA certificate.
+        # The name of the department of the organization associated with the CA certificate.
         self.organization_unit = organization_unit
-        # The unique identifier of the root CA certificate from which the CA certificate is issued.
+        # The unique identifier of the root CA certificate that issued the CA certificate.
         # 
-        # >  This parameter is returned only if the value of the **CertificateType** parameter is **SUB_ROOT**. The value SUB_ROOT indicates an intermediate CA certificate.
+        # > This parameter is returned only when **CertificateType** is **SUB_ROOT**, which indicates an intermediate CA certificate.
         self.parent_identifier = parent_identifier
+        # The ID of the resource group to which the certificate belongs.
         self.resource_group_id = resource_group_id
         # This parameter is deprecated.
         self.sans = sans
@@ -167,25 +176,35 @@ class DescribeCACertificateListResponseBodyCertificateList(DaraModel):
         self.sha_2 = sha_2
         # The signature algorithm of the CA certificate.
         self.sign_algorithm = sign_algorithm
-        # The name of the province, municipality, or autonomous region in which the organization is located.
+        # The name of the province or state where the organization associated with the CA certificate is located.
         self.state = state
         # The status of the CA certificate. Valid values:
         # 
-        # *   **ISSUE**: The CA certificate is issued.
-        # *   **REVOKE**: The CA certificate is revoked.
-        self.status = status
-        # The Distinguished Name (DN) attribute of the CA certificate, which indicates the user information of the certificate. The DN attribute contains the following information:
+        # - **ISSUE**: The certificate is issued.
         # 
-        # *   **C**: the code of the country in which the organization is located.
-        # *   **O**: the name of the organization.
-        # *   **OU**: the name of the department or branch in the organization.
-        # *   **L**: the name of the city in which the organization is located.
-        # *   **CN**: the common name or abbreviation of the organization.
+        # - **REVOKE**: The certificate is revoked.
+        self.status = status
+        # The distinguished name (DN) of the CA certificate. The DN indicates the user of the certificate and contains the following information:
+        # 
+        # - **C**: The country code where the organization is located.
+        # 
+        # - **O**: The name of the organization.
+        # 
+        # - **OU**: The department of the organization.
+        # 
+        # - **L**: The city where the organization is located.
+        # 
+        # - **CN**: The common name or abbreviation of the organization.
         self.subject_dn = subject_dn
+        # Indicates whether the instance is a trial instance. Valid values:
+        # 
+        # - 0: no.
+        # 
+        # - 1: yes.
         self.trial = trial
         # The content of the CA certificate.
         self.x_509certificate = x_509certificate
-        # The validity period of the CA certificate. Unit: years.
+        # The validity period of the CA certificate in years.
         self.years = years
 
     def validate(self):

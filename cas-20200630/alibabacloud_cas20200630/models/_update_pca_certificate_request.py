@@ -16,10 +16,17 @@ class UpdatePcaCertificateRequest(DaraModel):
         resource_group_id: str = None,
         tags: List[main_models.UpdatePcaCertificateRequestTags] = None,
     ):
+        # The alias of the certificate.
         self.alias_name = alias_name
+        # A client token used to ensure the idempotence of the request. The client generates this value to make sure that it is unique among different requests. The token can be a maximum of 64 ASCII characters and cannot contain non-ASCII characters.
         self.client_token = client_token
+        # The unique identifier of the CA certificate.
+        # 
+        # > Call [DescribeCACertificateList](https://help.aliyun.com/document_detail/328095.html) to query the unique identifiers of all CA certificates.
         self.identifier = identifier
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # A list of tags.
         self.tags = tags
 
     def validate(self):
@@ -80,7 +87,9 @@ class UpdatePcaCertificateRequestTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):

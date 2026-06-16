@@ -17,13 +17,21 @@ class ListTagResourcesRequest(DaraModel):
         resource_type: str = None,
         tag: List[main_models.ListTagResourcesRequestTag] = None,
     ):
+        # The maximum number of entries to return for this call.
         self.max_results = max_results
+        # The token that is used to start the next query. If this parameter is empty, no more results exist.
         self.next_token = next_token
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The resource ID.
         self.resource_id = resource_id
+        # The resource type. Set the value to **instance**.
+        # 
         # This parameter is required.
         self.resource_type = resource_type
+        # The information about the instances and tags that are queried.
         self.tag = tag
 
     def validate(self):
@@ -90,7 +98,9 @@ class ListTagResourcesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag to query. You can specify multiple tag keys. n is a positive integer.
         self.key = key
+        # The tag value. The value of n can be from 1 to 20.
         self.value = value
 
     def validate(self):

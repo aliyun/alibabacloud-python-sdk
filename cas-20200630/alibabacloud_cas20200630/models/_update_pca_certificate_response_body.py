@@ -11,8 +11,9 @@ class UpdatePcaCertificateResponseBody(DaraModel):
         access_denied_detail: main_models.UpdatePcaCertificateResponseBodyAccessDeniedDetail = None,
         request_id: str = None,
     ):
+        # The error details of the authorization.
         self.access_denied_detail = access_denied_detail
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -54,13 +55,25 @@ class UpdatePcaCertificateResponseBodyAccessDeniedDetail(DaraModel):
         no_permission_type: str = None,
         policy_type: str = None,
     ):
+        # The unauthorized operation that you attempted to perform.
         self.auth_action = auth_action
+        # The identity that is used for authorization in the request. Valid values:
+        # 
+        # - RAM user: UID of the RAM user
+        # 
+        # - RAM role: RoleName:RoleSessionName
+        # 
+        # - Federated user: ProviderType/ProviderName
         self.auth_principal_display_name = auth_principal_display_name
-        # AuthPrincipalOwnerId
+        # The ID of the Alibaba Cloud account to which the authorized principal belongs.
         self.auth_principal_owner_id = auth_principal_owner_id
+        # The type of the identity.
         self.auth_principal_type = auth_principal_type
+        # The complete diagnostic information that is encrypted.
         self.encoded_diagnostic_message = encoded_diagnostic_message
+        # The reason why the authorization failed. Valid values: ExplicitDeny: The authorization is explicitly denied. ImplicitDeny: The authorization is implicitly denied.
         self.no_permission_type = no_permission_type
+        # The type of the policy.
         self.policy_type = policy_type
 
     def validate(self):

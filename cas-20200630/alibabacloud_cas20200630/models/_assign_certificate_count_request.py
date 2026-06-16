@@ -10,7 +10,9 @@ class AssignCertificateCountRequest(DaraModel):
         cert_total_count: int = None,
         id: int = None,
     ):
+        # The total number of certificate records.
         self.cert_total_count = cert_total_count
+        # The ID of the data source.
         self.id = id
 
     def validate(self):

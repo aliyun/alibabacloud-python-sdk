@@ -10,9 +10,9 @@ class ListRevokeCertificateRequest(DaraModel):
         current_page: int = None,
         show_size: int = None,
     ):
-        # The number of the page to return. Default value: **1**.
+        # The page number. Default value: 1.
         self.current_page = current_page
-        # The number of revoked certificates to return on each page. Default value: **20**.
+        # The number of entries to return on each page. Default value: 20.
         self.show_size = show_size
 
     def validate(self):

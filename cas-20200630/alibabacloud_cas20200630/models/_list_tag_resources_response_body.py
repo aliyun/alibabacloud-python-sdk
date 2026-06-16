@@ -13,7 +13,9 @@ class ListTagResourcesResponseBody(DaraModel):
         data: main_models.ListTagResourcesResponseBodyData = None,
         request_id: str = None,
     ):
+        # The data returned.
         self.data = data
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -51,8 +53,11 @@ class ListTagResourcesResponseBodyData(DaraModel):
         next_token: str = None,
         tag_resources: main_models.ListTagResourcesResponseBodyDataTagResources = None,
     ):
+        # The maximum number of entries returned for this call.
         self.max_results = max_results
+        # The token that is used to start the next query. If this parameter is empty, no more results exist.
         self.next_token = next_token
+        # The tag resources.
         self.tag_resources = tag_resources
 
     def validate(self):

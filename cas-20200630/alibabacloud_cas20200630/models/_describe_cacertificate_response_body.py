@@ -14,7 +14,7 @@ class DescribeCACertificateResponseBody(DaraModel):
         request_id: str = None,
         years: int = None,
     ):
-        # The details about the CA certificate.
+        # The details of the CA certificate.
         self.certificate = certificate
         # The ID of the request.
         self.request_id = request_id
@@ -63,6 +63,7 @@ class DescribeCACertificateResponseBodyCertificate(DaraModel):
         before_date: int = None,
         ca_cert_chain: str = None,
         cert_issued_count: int = None,
+        cert_max_time: int = None,
         cert_remaining_count: int = None,
         cert_total_count: int = None,
         certificate_type: str = None,
@@ -94,61 +95,76 @@ class DescribeCACertificateResponseBodyCertificate(DaraModel):
         x_509certificate: str = None,
         years: int = None,
     ):
-        # The expiration date of the CA certificate. This value is a UNIX timestamp. Unit: milliseconds.
+        # The date when the CA certificate expires. This is a UNIX timestamp. Unit: milliseconds.
         self.after_date = after_date
-        # The encryption algorithm of the CA certificate. Valid values:
+        # The type of the encryption algorithm of the CA certificate. Valid values:
         # 
-        # *   **RSA**: the Rivest-Shamir-Adleman (RSA) algorithm.
-        # *   **ECC**: the elliptic curve cryptography (ECC) algorithm.
-        # *   **SM2**: the SM2 algorithm, which is developed and approved by the State Cryptography Administration of China.
+        # - **RSA**: The RSA algorithm.
+        # 
+        # - **ECC**: The ECC algorithm.
+        # 
+        # - **SM2**: The SM2 algorithm.
         self.algorithm = algorithm
-        # The issuance date of the CA certificate. This value is a UNIX timestamp. Unit: milliseconds.
+        # The date when the CA certificate was issued. This is a UNIX timestamp. Unit: milliseconds.
         self.before_date = before_date
-        # CA certificate chain.
+        # The complete certificate chain.
         self.ca_cert_chain = ca_cert_chain
-        # The number of certificates issued by private CA instances.
+        # The number of certificates that the private CA instance has issued.
         self.cert_issued_count = cert_issued_count
-        # The remaining number of assignable certificate quotas.
+        self.cert_max_time = cert_max_time
+        # The number of remaining certificates that can be issued.
         self.cert_remaining_count = cert_remaining_count
-        # The total number of purchased certificate quotas.
+        # The total certificate quota you purchased.
         self.cert_total_count = cert_total_count
         # The type of the CA certificate. Valid values:
         # 
-        # *   **ROOT**: root CA certificate
-        # *   **SUB_ROOT**: intermediate CA certificate
+        # - **ROOT**: A root CA certificate.
+        # 
+        # - **SUB_ROOT**: A subordinate CA certificate.
         self.certificate_type = certificate_type
+        # The ID of the hardware security module (HSM) cluster. This parameter is available when the CA is enabled using an HSM.
         self.cluster_id = cluster_id
         # The common name or abbreviation of the organization that is associated with the CA certificate.
         self.common_name = common_name
-        # The code of the country in which the organization is located.
+        # The country code of the organization that is associated with the CA certificate.
         # 
-        # For more information about country codes, see the **"Country codes"** section of the [Manage company profiles](https://help.aliyun.com/document_detail/198289.html) topic.
+        # For more information about country codes, see the **International codes** section in [Manage company information](https://help.aliyun.com/document_detail/198289.html).
         self.country_code = country_code
-        # CRL validity period: 1-365 days.
+        # The validity period of the CRL. Valid values: 1 to 365. Unit: days.
         self.crl_day = crl_day
-        # The status of the certificate revocation list (CRL) feature.
+        # The status of the Certificate Revocation List (CRL).
         self.crl_status = crl_status
-        # The address of the CRL.
+        # The CRL URL.
         self.crl_url = crl_url
+        # The algorithm and its key length.
         self.full_algorithm = full_algorithm
         # The unique identifier of the CA certificate.
         self.identifier = identifier
+        # The issuer of the CA. Valid values:
+        # 
+        # - local: A private certificate.
+        # 
+        # - iTrusChina: A compliance CA.
+        # 
+        # - external: An imported certificate.
         self.issuer_type = issuer_type
+        # The index of the key in the HSM. This parameter is available when the CA is enabled using an HSM.
         self.key_index = key_index
         # The key length of the CA certificate.
         self.key_size = key_size
-        # The name of the city in which the organization is located.
+        # The name of the city where the organization associated with the CA certificate is located.
         self.locality = locality
         # The MD5 fingerprint of the CA certificate.
         self.md_5 = md_5
         # The name of the organization that is associated with the CA certificate.
         self.organization = organization
-        # The name of the department or branch in the organization that is associated with the CA certificate.
+        # The name of the department in the organization that is associated with the CA certificate.
         self.organization_unit = organization_unit
-        # The unique identifier of the root CA certificate from which the CA certificate is issued.
+        # The unique identifier of the root CA certificate that issued the CA certificate.
         # 
-        # >  This parameter is returned only if the value of the **CertificateType** parameter is **SUB_ROOT**. The value SUB_ROOT indicates an intermediate CA certificate.
+        # > This parameter is returned only when **CertificateType** is **SUB_ROOT**, which indicates a subordinate CA certificate.
         self.parent_identifier = parent_identifier
+        # The ID of the resource group to which the certificate belongs.
         self.resource_group_id = resource_group_id
         # This parameter is deprecated.
         self.sans = sans
@@ -158,25 +174,46 @@ class DescribeCACertificateResponseBodyCertificate(DaraModel):
         self.sha_2 = sha_2
         # The signature algorithm of the CA certificate.
         self.sign_algorithm = sign_algorithm
-        # The name of the province, municipality, or autonomous region in which the organization is located.
+        # <props="china">The name of the province, municipality, or autonomous region where the organization associated with the CA certificate is located.
+        # <props="intl">The name of the province or state where the organization associated with the CA certificate is located.
         self.state = state
         # The status of the CA certificate. Valid values:
         # 
-        # *   **ISSUE**: The CA certificate is issued.
-        # *   **REVOKE**: The CA certificate is revoked.
-        self.status = status
-        # The user attribute of the CA certificate, which contains the following information:
+        # - **ISSUE**: The certificate is issued.
         # 
-        # *   **C**: the country code in which the organization is located
-        # *   **O**: the name of the organization
-        # *   **OU**: the name of the department or branch in the organization
-        # *   **L**: the name of the city in which the organization is located
-        # *   **ST**: the name of the province, municipality, or autonomous region in which the organization is located
-        # *   **CN**: the common name or abbreviation of the organization
+        # - **REVOKE**: The certificate is revoked.
+        self.status = status
+        # The subject of the CA certificate. It contains the following information:
+        # 
+        # - **C**: The country code of the organization.
+        # 
+        # - **O**: The name of the organization.
+        # 
+        # - **OU**: The department of the organization.
+        # 
+        # - **L**: The city where the organization is located.
+        # 
+        # <props="china">
+        # 
+        # - **ST**: The province, municipality, or autonomous region where the organization is located.
+        # 
+        # 
+        # 
+        # 
+        # <props="intl">
+        # 
+        # - **ST**: The province or state where the organization is located.
+        # 
+        # 
+        # 
+        # 
+        # - **CN**: The common name or abbreviation of the organization.
         self.subject_dn = subject_dn
+        # The list of tags.
         self.tags = tags
         # The content of the CA certificate.
         self.x_509certificate = x_509certificate
+        # The validity period of the CA certificate. Unit: years.
         self.years = years
 
     def validate(self):
@@ -204,6 +241,9 @@ class DescribeCACertificateResponseBodyCertificate(DaraModel):
 
         if self.cert_issued_count is not None:
             result['CertIssuedCount'] = self.cert_issued_count
+
+        if self.cert_max_time is not None:
+            result['CertMaxTime'] = self.cert_max_time
 
         if self.cert_remaining_count is not None:
             result['CertRemainingCount'] = self.cert_remaining_count
@@ -316,6 +356,9 @@ class DescribeCACertificateResponseBodyCertificate(DaraModel):
         if m.get('CertIssuedCount') is not None:
             self.cert_issued_count = m.get('CertIssuedCount')
 
+        if m.get('CertMaxTime') is not None:
+            self.cert_max_time = m.get('CertMaxTime')
+
         if m.get('CertRemainingCount') is not None:
             self.cert_remaining_count = m.get('CertRemainingCount')
 
@@ -417,7 +460,9 @@ class DescribeCACertificateResponseBodyCertificateTags(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The key of the tag.
         self.tag_key = tag_key
+        # The value of the tag.
         self.tag_value = tag_value
 
     def validate(self):

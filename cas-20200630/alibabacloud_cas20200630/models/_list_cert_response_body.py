@@ -19,13 +19,21 @@ class ListCertResponseBody(DaraModel):
         show_size: int = None,
         total_count: int = None,
     ):
+        # The current page number.
         self.current_page = current_page
+        # The list of certificates.
         self.list = list
+        # The maximum number of entries returned.
         self.max_results = max_results
+        # A token to retrieve the next page of results. If this value is empty, all results have been returned.
         self.next_token = next_token
+        # The number of pages.
         self.page_count = page_count
+        # The ID of the request.
         self.request_id = request_id
+        # The page size.
         self.show_size = show_size
+        # The total number of certificates.
         self.total_count = total_count
 
     def validate(self):
@@ -121,24 +129,61 @@ class ListCertResponseBodyList(DaraModel):
         subject_dn: str = None,
         tags: List[str] = None,
     ):
+        # The expiration time of the certificate.
         self.after_date = after_date
+        # The expiration time of the client certificate. This value is a UNIX timestamp. Unit: milliseconds.
+        # 
+        # > The **BeforeTime** and **AfterTime** parameters must be both left empty or both specified.
         self.after_time = after_time
+        # The public key algorithm.
         self.algorithm = algorithm
+        # The alias of the certificate.
         self.alias_name = alias_name
+        # The issuance time of the certificate.
         self.before_date = before_date
+        # The issuance time of the client certificate. This value is a UNIX timestamp. Unit: milliseconds.
+        # 
+        # > The **BeforeTime** and **AfterTime** parameters must be both left empty or both specified.
         self.before_time = before_time
+        # The type of the certificate. Valid values:
+        # 
+        # - `free`: Free certificate.
+        # 
+        # - `cas`: Alibaba Cloud Security certificate.
+        # 
+        # - `upload`: A user-uploaded certificate.
         self.certificate_type = certificate_type
+        # The primary domain name of the certificate.
         self.common_name = common_name
+        # A unique, user-defined identifier for the certificate.
         self.custom_identifier = custom_identifier
+        # A JSON string containing extended attributes.
         self.extra = extra
+        # The ID of the data source to which the certificate order belongs.
         self.id = id
+        # The unique identifier of the certificate.
         self.identifier = identifier
+        # Specifies if the private key is exportable. Valid values:
+        # 
+        # - `true`: The private key is exportable.
+        # 
+        # - `false`: The private key is not exportable.
         self.key_exportable = key_exportable
+        # The organization specified in the certificate.
         self.organization = organization
+        # The organizational unit (OU) specified in the certificate.
         self.organization_unit = organization_unit
+        # The certificate serial number.
         self.serial_number = serial_number
+        # The status of the certificate. Valid values:
+        # 
+        # - `ISSUE`: Issued.
+        # 
+        # - `REVOKE`: Revoked.
         self.status = status
+        # The distinguished name (DN) of the certificate subject.
         self.subject_dn = subject_dn
+        # The tags of the certificate.
         self.tags = tags
 
     def validate(self):

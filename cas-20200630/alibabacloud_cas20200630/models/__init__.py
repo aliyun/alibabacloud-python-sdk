@@ -65,6 +65,9 @@ from ._describe_pca_and_external_cacertificate_list_response import DescribePcaA
 from ._get_cainstance_status_request import GetCAInstanceStatusRequest
 from ._get_cainstance_status_response_body import GetCAInstanceStatusResponseBody
 from ._get_cainstance_status_response import GetCAInstanceStatusResponse
+from ._get_ca_instance_crl_address_request import GetCaInstanceCrlAddressRequest
+from ._get_ca_instance_crl_address_response_body import GetCaInstanceCrlAddressResponseBody
+from ._get_ca_instance_crl_address_response import GetCaInstanceCrlAddressResponse
 from ._list_all_end_entity_instance_request import ListAllEndEntityInstanceRequest
 from ._list_all_end_entity_instance_response_body import ListAllEndEntityInstanceResponseBody
 from ._list_all_end_entity_instance_response import ListAllEndEntityInstanceResponse
@@ -209,6 +212,9 @@ __all__ = [
     GetCAInstanceStatusRequest,
     GetCAInstanceStatusResponseBody,
     GetCAInstanceStatusResponse,
+    GetCaInstanceCrlAddressRequest,
+    GetCaInstanceCrlAddressResponseBody,
+    GetCaInstanceCrlAddressResponse,
     ListAllEndEntityInstanceRequest,
     ListAllEndEntityInstanceResponseBody,
     ListAllEndEntityInstanceResponse,

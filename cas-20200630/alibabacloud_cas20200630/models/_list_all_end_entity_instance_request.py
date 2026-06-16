@@ -14,11 +14,17 @@ class ListAllEndEntityInstanceRequest(DaraModel):
         recursive_children: int = None,
         show_size: int = None,
     ):
+        # The page number. Default value: 1.
         self.current_page = current_page
+        # The maximum number of entries to return for this call.
         self.max_results = max_results
+        # The token that is used to retrieve the next page of results. You can get this token from the \\`NextToken\\` response parameter of the previous query.
         self.next_token = next_token
+        # The ID of the parent instance.
         self.parent_id = parent_id
+        # Specifies whether to return information about the billing type in the response. Valid values: -**0**: The information is not returned. -**1**: The information is returned.
         self.recursive_children = recursive_children
+        # The number of entries to return on each page. Default value: 20.
         self.show_size = show_size
 
     def validate(self):

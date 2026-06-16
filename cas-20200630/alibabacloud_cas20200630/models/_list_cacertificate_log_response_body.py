@@ -13,7 +13,9 @@ class ListCACertificateLogResponseBody(DaraModel):
         log_list: List[main_models.ListCACertificateLogResponseBodyLogList] = None,
         request_id: str = None,
     ):
+        # A list of operation logs for the CA certificate.
         self.log_list = log_list
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -58,9 +60,17 @@ class ListCACertificateLogResponseBodyLogList(DaraModel):
         identifier: str = None,
         op_type: str = None,
     ):
+        # The description of the operation.
         self.content = content
+        # The time of the operation. This is a UNIX timestamp. Unit: milliseconds.
         self.create_time = create_time
+        # The unique identifier of the CA certificate.
         self.identifier = identifier
+        # The type of the operation. Valid values:
+        # 
+        # - **ADD**: A CA certificate is created.
+        # 
+        # - **UPDATE**: The status of the CA certificate is updated.
         self.op_type = op_type
 
     def validate(self):

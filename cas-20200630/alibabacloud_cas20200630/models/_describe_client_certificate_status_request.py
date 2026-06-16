@@ -9,9 +9,9 @@ class DescribeClientCertificateStatusRequest(DaraModel):
         self,
         identifier: str = None,
     ):
-        # The unique identifiers of the client certificates or server certificates that you want to query. Separate multiple unique identifiers with commas (,).
+        # The unique identifier of the client or server-side certificate that you want to query. Separate multiple identifiers with commas (,).
         # 
-        # >  You can call the [ListClientCertificate](https://help.aliyun.com/document_detail/330884.html) operation to query the unique identifiers of all client certificates and server certificates.
+        # > Call [ListClientCertificate](https://help.aliyun.com/document_detail/465990.html) to query the unique identifiers of all client and server-side certificates.
         # 
         # This parameter is required.
         self.identifier = identifier

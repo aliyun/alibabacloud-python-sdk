@@ -13,7 +13,7 @@ class DescribeClientCertificateResponseBody(DaraModel):
         certificate: main_models.DescribeClientCertificateResponseBodyCertificate = None,
         request_id: str = None,
     ):
-        # The details about the client certificate or the server certificate.
+        # The details of the client certificate or server-side certificate.
         self.certificate = certificate
         # The ID of the request.
         self.request_id = request_id
@@ -82,59 +82,71 @@ class DescribeClientCertificateResponseBodyCertificate(DaraModel):
     ):
         # The expiration date of the certificate. This value is a UNIX timestamp. Unit: milliseconds.
         self.after_date = after_date
-        # The type of the encryption algorithm of the certificate. Valid values:
+        # The type of the encryption algorithm. Valid values:
         # 
-        # *   **RSA**: the Rivest-Shamir-Adleman (RSA) algorithm.
-        # *   **ECC**: the elliptic curve cryptography (ECC) algorithm.
-        # *   **SM2**: the SM2 algorithm, which is developed and approved by the State Cryptography Administration of China.
+        # - **RSA**: the RSA algorithm.
+        # 
+        # - **ECC**: the ECC algorithm.
+        # 
+        # - **SM2**: the SM2 algorithm.
         self.algorithm = algorithm
+        # The alias of the issued certificate.
         self.alias_name = alias_name
         # The issuance date of the certificate. This value is a UNIX timestamp. Unit: milliseconds.
         self.before_date = before_date
+        # The complete certificate chain.
         self.cert_chain = cert_chain
         # The type of the certificate. Valid values:
         # 
-        # *   **CLIENT**: client certificate
-        # *   **SERVER**: server certificate
+        # - **CLIENT**: a client certificate.
+        # 
+        # - **SERVER**: a server-side certificate.
         self.certificate_type = certificate_type
         # The common name of the certificate.
         self.common_name = common_name
-        # The code of the country in which the organization is located. The organization is associated with the intermediate certificate from which the certificate is issued.
+        # The country code of the subject organization.
         # 
-        # For more information about country codes, see the **"Country codes"** section of the [Manage company profiles](https://help.aliyun.com/document_detail/198289.html) topic.
+        # For more information about country codes, see the **International codes** section in [Manage company profiles](https://help.aliyun.com/document_detail/198289.html).
         self.country_code = country_code
+        # The custom identifier, which is a unique key.
         self.custom_identifier = custom_identifier
         # The validity period of the certificate. Unit: days.
         self.days = days
+        # The algorithm and its length.
         self.full_algorithm = full_algorithm
+        # The ID of the data source to which the certificate order belongs.
         self.id = id
         # The unique identifier of the certificate.
         self.identifier = identifier
         # The key length of the certificate.
         self.key_size = key_size
-        # The name of the city in which the organization is located. The organization is associated with the intermediate certificate from which the certificate is issued.
+        # The city where the subject organization is located.
         self.locality = locality
         # The MD5 fingerprint of the certificate.
         self.md_5 = md_5
-        # The name of the organization. The organization is associated with the intermediate certificate from which the certificate is issued.
+        # The organization associated with the certificate of the issuing subordinate CA.
         self.organization = organization
-        # The name of the department in the organization. The organization is associated with the intermediate certificate authority (CA) certificate from which the certificate is issued.
+        # The organizational unit of the certificate subject.
         self.organization_unit = organization_unit
-        # The unique identifier of the intermediate certificate from which the client certificate is issued.
+        # The unique identifier of the subordinate CA certificate that issued the certificate.
         self.parent_identifier = parent_identifier
+        # The ID of the resource group to which the certificate belongs.
         self.resource_group_id = resource_group_id
-        # The subject alternative name (SAN) extension of the certificate. The value indicates additional information, including the additional domain names or IP addresses that are associated with the certificate.
+        # The Subject Alternative Name (SAN) extension of the certificate. The SAN extension indicates other domain names or IP addresses that are associated with the certificate.
         # 
-        # The value is a string that consists of JSON arrays. Each element in a JSON array is a JSON struct that corresponds to a SAN extension. A SAN extension struct contains the following parameters:
+        # This parameter is a string that is converted from a JSON array. Each element in the JSON array is a struct that corresponds to a SAN extension. Each SAN extension struct contains the following parameters:
         # 
-        # *   **Type**: the type of the extension. Data type: integer. Valid values:
+        # - **Type**: The type of the extension. This parameter is of the Integer type. Valid values:
         # 
-        #     *   **1**: an email address
-        #     *   **2**: a domain name
-        #     *   **6**: a Uniform Resource Identifier (URI)
-        #     *   **7**: an IP address
+        #   - **1**: an email address.
         # 
-        # *   **Value**: the value of the extension. Data type: string.
+        #   - **2**: a domain name.
+        # 
+        #   - **6**: a Uniform Resource Identifier (URI).
+        # 
+        #   - **7**: an IP address.
+        # 
+        # - **Value**: The content of the extension. This parameter is of the String type.
         self.sans = sans
         # The serial number of the certificate.
         self.serial_number = serial_number
@@ -142,23 +154,43 @@ class DescribeClientCertificateResponseBodyCertificate(DaraModel):
         self.sha_2 = sha_2
         # The signature algorithm of the certificate.
         self.sign_algorithm = sign_algorithm
-        # The name of the province, municipality, or autonomous region in which the organization is located. The organization is associated with the intermediate certificate from which the certificate is issued.
+        # The state or province where the subject organization is located.
         self.state = state
         # The status of the certificate. Valid values:
         # 
-        # *   **ISSUE**: issued
-        # *   **REVOKE**: revoked
-        self.status = status
-        # The distinguished name (DN) extension of the certificate, which indicates the user of the certificate. The DN extension includes the following information:
+        # - **ISSUE**: The certificate is issued.
         # 
-        # *   **C**: the country
-        # *   **O**: the organization
-        # *   **OU**: the department
-        # *   **L**: the city
-        # *   **ST**: the province, municipality, or autonomous region
-        # *   **CN**: the common name
+        # - **REVOKE**: The certificate is revoked.
+        self.status = status
+        # The subject Distinguished Name (DN) of the certificate. This value is composed of the following fields:
+        # 
+        # - **C**: Country.
+        # 
+        # - **O**: Organization.
+        # 
+        # - **OU**: Organizational unit.
+        # 
+        # - **CN**: Common name.
+        # 
+        # <props="china">
+        # 
+        # - **ST**: The province, municipality, or autonomous region.
+        # 
+        # 
+        # 
+        # 
+        # <props="intl">
+        # 
+        # - **ST**: Province or state.
+        # 
+        # 
+        # 
+        # 
+        # - **CN**: Common name.
         self.subject_dn = subject_dn
+        # The list of tags.
         self.tags = tags
+        # Indicates whether the certificate is synchronized to Digital Certificate Management Service.
         self.upload_flag = upload_flag
         # The content of the certificate.
         self.x_509certificate = x_509certificate
@@ -371,7 +403,9 @@ class DescribeClientCertificateResponseBodyCertificateTags(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The tag key.
         self.tag_key = tag_key
+        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):

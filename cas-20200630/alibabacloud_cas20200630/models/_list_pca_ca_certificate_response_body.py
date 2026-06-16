@@ -16,10 +16,15 @@ class ListPcaCaCertificateResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of CA certificates.
         self.list = list
+        # The maximum number of entries to return on each page.
         self.max_results = max_results
+        # The token for the next page of results. Leave this parameter empty to start the query from the first page. If this parameter is not returned, all results have been returned.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries in the result set.
         self.total_count = total_count
 
     def validate(self):
@@ -85,12 +90,19 @@ class ListPcaCaCertificateResponseBodyList(DaraModel):
         status: str = None,
         user_id: str = None,
     ):
+        # The certificate identifier. Use this identifier to query certificate details.
         self.cert_identifier = cert_identifier
+        # The common name of the certificate. This value matches the CommonName field in the certificate Subject.
         self.common_name = common_name
+        # The identifier of the issuer certificate. Use this identifier to query the issuer certificate.
         self.issuer_identifier = issuer_identifier
+        # The ID of the private CA instance.
         self.private_ca_instance_id = private_ca_instance_id
+        # The region ID of the private CA instance.
         self.private_ca_region_id = private_ca_region_id
+        # The certificate status.
         self.status = status
+        # The Alibaba Cloud account ID.
         self.user_id = user_id
 
     def validate(self):
