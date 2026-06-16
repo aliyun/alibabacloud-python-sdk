@@ -21,18 +21,25 @@ class ListCredentialsRequest(DaraModel):
         statuses: List[str] = None,
     ):
         self.credential_external_ids = credential_external_ids
+        # The credential IDs.
         self.credential_ids = credential_ids
         self.credential_sharing_scopes = credential_sharing_scopes
         self.credential_types = credential_types
+        # The filter conditions.
         self.filter = filter
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # 分页查询时每页行数。默认值为20，最大值为100。
+        # The number of entries per page.
+        # 
+        # - Default value: 20.
+        # 
+        # - Maximum value: 100.
         self.max_results = max_results
-        # 查询凭证（Token），取值为上一次API调用返回的NextToken参数值。
+        # The pagination token that is used in the next request to retrieve a new page of results.
         self.next_token = next_token
+        # The credential statuses.
         self.statuses = statuses
 
     def validate(self):
@@ -117,7 +124,11 @@ class ListCredentialsRequestFilter(DaraModel):
         name: str = None,
         value: List[str] = None,
     ):
+        # The field to filter on. Valid value:
+        # 
+        # - `CredentialIdentifier`: the credential identifier.
         self.name = name
+        # The values for the specified filter field.
         self.value = value
 
     def validate(self):

@@ -29,62 +29,62 @@ class CreateIdentityProviderRequest(DaraModel):
         ud_push_config: main_models.CreateIdentityProviderRequestUdPushConfig = None,
         we_com_config: main_models.CreateIdentityProviderRequestWeComConfig = None,
     ):
-        # Authentication configuration information.
+        # The authentication configurations.
         self.authn_config = authn_config
-        # Auto-create account rule configuration.
+        # The rule configurations for automatic account creation.
         self.auto_create_user_config = auto_create_user_config
-        # Auto-update account rule configuration.
+        # The rule configurations for automatic account updates.
         self.auto_update_user_config = auto_update_user_config
-        # OIDC identity provider account binding rule configuration.
+        # The account binding rule configurations for the OIDC identity provider.
         self.binding_config = binding_config
-        # Idp client token.
+        # A client token used to ensure the idempotence of the request. Generate a unique value from your client for each request. The ClientToken can only contain ASCII characters. Note: If you do not specify this parameter, the system automatically uses the RequestId of the API request as the ClientToken. The RequestId may be different for each API request.
         self.client_token = client_token
-        # DingTalk configuration information.
+        # The DingTalk configurations.
         self.dingtalk_app_config = dingtalk_app_config
-        # Identity provider name.
+        # The name of the identity provider.
         # 
         # This parameter is required.
         self.identity_provider_name = identity_provider_name
-        # Identity provider synchronization type.
+        # The synchronization type of the identity provider.
         # 
-        # - Inbound to DingTalk: urn:alibaba:idaas:idp:alibaba:dingtalk:pull
+        # - Inbound DingTalk: urn:alibaba:idaas:idp:alibaba:dingtalk:pull
         # 
-        # - Outbound to DingTalk: urn:alibaba:idaas:idp:alibaba:dingtalk:push
+        # - Outbound DingTalk: urn:alibaba:idaas:idp:alibaba:dingtalk:push
         # 
-        # - Inbound to WeCom: urn:alibaba:idaas:idp:tencent:wecom:pull
+        # - Inbound WeCom: urn:alibaba:idaas:idp:tencent:wecom:pull
         # 
-        # - Inbound to Lark: urn:alibaba:idaas:idp:bytedance:lark:pull
+        # - Inbound Lark: urn:alibaba:idaas:idp:bytedance:lark:pull
         # 
-        # - Inbound to AD: urn:alibaba:idaas:idp:microsoft:ad:pull
+        # - Inbound AD: urn:alibaba:idaas:idp:microsoft:ad:pull
         # 
-        # - Inbound to LDAP: urn:alibaba:idaas:idp:unknown:ldap:pull
+        # - Inbound LDAP: urn:alibaba:idaas:idp:unknown:ldap:pull
         # 
         # - Standard OIDC: urn:alibaba:idaas:idp:standard:oidc
         # 
-        # - SASE Custom OIDC: urn:alibaba:idaas:idp:alibaba:sase
+        # - SASE-specific OIDC: urn:alibaba:idaas:idp:alibaba:sase
         # 
         # This parameter is required.
         self.identity_provider_type = identity_provider_type
-        # Instance ID.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # Lark (Feishu) configuration information.
+        # The Lark configurations.
         self.lark_config = lark_config
-        # AD/LDAP configuration information.
+        # The AD/LDAP configurations.
         self.ldap_config = ldap_config
-        # IdP logo url.
+        # The URL of the application logo.
         self.logo_url = logo_url
-        # The unique identifier of the network access endpoint.
+        # The network endpoint ID.
         self.network_access_endpoint_id = network_access_endpoint_id
-        # OIDC IdP configuration.
+        # The OIDC IdP configurations.
         self.oidc_config = oidc_config
         self.saml_config = saml_config
-        # Inbound synchronization configuration information.
+        # The inbound synchronization configurations.
         self.ud_pull_config = ud_pull_config
-        # Outbound synchronization configuration information.
+        # The outbound synchronization configurations.
         self.ud_push_config = ud_push_config
-        # WeCom configuration information.
+        # The WeCom configurations.
         self.we_com_config = we_com_config
 
     def validate(self):
@@ -253,15 +253,15 @@ class CreateIdentityProviderRequestWeComConfig(DaraModel):
         corp_secret: str = None,
         trustable_domain: str = None,
     ):
-        # Agent ID of the self-built WeCom application.
+        # The agent ID of the custom WeCom application.
         self.agent_id = agent_id
-        # Authorization callback domain.
+        # The authorized callback domain.
         self.authorize_callback_domain = authorize_callback_domain
-        # Corp ID of the self-built WeCom application.
+        # The CorpId of the custom WeCom application.
         self.corp_id = corp_id
-        # Corp Secret of the self-built WeCom application.
+        # The CorpSecret of the custom WeCom application.
         self.corp_secret = corp_secret
-        # Trusted domain.
+        # The trusted domain name.
         self.trustable_domain = trustable_domain
 
     def validate(self):
@@ -316,12 +316,13 @@ class CreateIdentityProviderRequestUdPushConfig(DaraModel):
         periodic_sync_status: str = None,
         ud_sync_scope_configs: List[main_models.CreateIdentityProviderRequestUdPushConfigUdSyncScopeConfigs] = None,
     ):
-        # Incremental callback status. This field is reserved and currently not in use; please ignore it.
+        # The status of incremental callbacks. This parameter is not in use. Ignore this parameter.
         self.incremental_callback_status = incremental_callback_status
+        # The periodic synchronization configurations.
         self.periodic_sync_config = periodic_sync_config
-        # Periodic check status. This field is currently not in use, please ignore it.
+        # The status of periodic synchronization. This parameter is not in use. Ignore this parameter.
         self.periodic_sync_status = periodic_sync_status
-        # Outbound synchronization configuration information.
+        # The configurations of the outbound synchronization scope.
         self.ud_sync_scope_configs = ud_sync_scope_configs
 
     def validate(self):
@@ -379,9 +380,9 @@ class CreateIdentityProviderRequestUdPushConfigUdSyncScopeConfigs(DaraModel):
         source_scopes: List[str] = None,
         target_scope: str = None,
     ):
-        # List of source nodes for synchronization.
+        # The list of source nodes for synchronization.
         self.source_scopes = source_scopes
-        # Target node for synchronization.
+        # The target node for synchronization.
         self.target_scope = target_scope
 
     def validate(self):
@@ -417,8 +418,11 @@ class CreateIdentityProviderRequestUdPushConfigPeriodicSyncConfig(DaraModel):
         periodic_sync_times: List[int] = None,
         periodic_sync_type: str = None,
     ):
+        # The cron expression.
         self.periodic_sync_cron = periodic_sync_cron
+        # The collection of running time points.
         self.periodic_sync_times = periodic_sync_times
+        # The type.
         self.periodic_sync_type = periodic_sync_type
 
     def validate(self):
@@ -462,26 +466,27 @@ class CreateIdentityProviderRequestUdPullConfig(DaraModel):
         periodic_sync_status: str = None,
         ud_sync_scope_config: main_models.CreateIdentityProviderRequestUdPullConfigUdSyncScopeConfig = None,
     ):
-        # Whether group synchronization is supported. The default value is disabled. Possible values:
+        # Specifies whether to synchronize groups. The default value is disabled. Valid values:
         # 
-        # - Disabled: disabled
+        # - disabled
         # 
-        # - Enabled: enabled
+        # - enabled
         self.group_sync_status = group_sync_status
-        # Incremental callback status, indicating whether to process incremental callback data from the IdP. Possible values:
+        # The status of incremental callbacks. Specifies whether to process incremental callback data from the identity provider (IdP). Valid values:
         # 
-        # - Disabled: disabled
+        # - disabled
         # 
-        # - Enabled: enabled
+        # - enabled
         self.incremental_callback_status = incremental_callback_status
-        # Scheduled configuration verification.
+        # The configuration for periodic synchronization.
         self.periodic_sync_config = periodic_sync_config
-        # Periodic check status, indicating whether to periodically check the data differences between EIAM and the identity provider. Possible values:
-        # - Disabled: disabled
+        # The status of periodic synchronization. Specifies whether to periodically check for data differences between IDaaS and the IdP. Valid values:
         # 
-        # - Enabled: enabled
+        # - disabled
+        # 
+        # - enabled
         self.periodic_sync_status = periodic_sync_status
-        # Synchronization scope configuration information.
+        # The synchronization scope configurations.
         self.ud_sync_scope_config = ud_sync_scope_config
 
     def validate(self):
@@ -539,9 +544,9 @@ class CreateIdentityProviderRequestUdPullConfigUdSyncScopeConfig(DaraModel):
         source_scopes: List[str] = None,
         target_scope: str = None,
     ):
-        # List of source nodes for synchronization.
+        # The list of source nodes for synchronization.
         self.source_scopes = source_scopes
-        # Synchronize target node, and fill in the IDaaS organization ID.
+        # The target node for synchronization. Enter the IDaaS organization ID.
         self.target_scope = target_scope
 
     def validate(self):
@@ -577,11 +582,11 @@ class CreateIdentityProviderRequestUdPullConfigPeriodicSyncConfig(DaraModel):
         periodic_sync_times: List[int] = None,
         periodic_sync_type: str = None,
     ):
-        # cron expression.
+        # The cron expression.
         self.periodic_sync_cron = periodic_sync_cron
-        # Collection of time points.
+        # The collection of running time points.
         self.periodic_sync_times = periodic_sync_times
-        # type.
+        # The type.
         self.periodic_sync_type = periodic_sync_type
 
     def validate(self):
@@ -744,21 +749,21 @@ class CreateIdentityProviderRequestOidcConfig(DaraModel):
         pkce_challenge_method: str = None,
         pkce_required: bool = None,
     ):
-        # OIDC client authentication configuration.
+        # The OIDC client authentication configurations.
         self.authn_param = authn_param
-        # OIDC endpoint configuration.
+        # The OIDC endpoint configurations.
         self.endpoint_config = endpoint_config
-        # OIDC grant scopes collection.
+        # The collection of OIDC authorization scopes.
         self.grant_scopes = grant_scopes
-        # OIDC grant type.
+        # The OIDC grant type.
         self.grant_type = grant_type
-        # PKCE algorithm. Possible values:
+        # The PKCE algorithm. Valid values:
         # 
-        # - SHA256: S256
+        # - S256: SHA256
         # 
-        # - Plain text: plain
+        # - plain: Plaintext
         self.pkce_challenge_method = pkce_challenge_method
-        # Whether to use PKCE in the AuthorizationCode grant mode.
+        # Specifies whether to use PKCE in the Authorization Code grant type.
         self.pkce_required = pkce_required
 
     def validate(self):
@@ -825,15 +830,15 @@ class CreateIdentityProviderRequestOidcConfigEndpointConfig(DaraModel):
         token_endpoint: str = None,
         userinfo_endpoint: str = None,
     ):
-        # OIDC authorization endpoint.
+        # The OIDC authorization endpoint.
         self.authorization_endpoint = authorization_endpoint
-        # OIDC issuer information.
+        # The OIDC issuer.
         self.issuer = issuer
-        # OIDC jwks uri.
+        # The OIDC JWKS URI.
         self.jwks_uri = jwks_uri
-        # OIDC token endpoint.
+        # The OIDC token endpoint.
         self.token_endpoint = token_endpoint
-        # OIDC user info endpoint.
+        # The OIDC user information endpoint.
         self.userinfo_endpoint = userinfo_endpoint
 
     def validate(self):
@@ -887,15 +892,15 @@ class CreateIdentityProviderRequestOidcConfigAuthnParam(DaraModel):
         client_id: str = None,
         client_secret: str = None,
     ):
-        # OIDC authentication method. Value range:
+        # The OIDC authentication method. Valid values:
         # 
         # - client_secret_basic
         # 
         # - client_secret_post
         self.authn_method = authn_method
-        # The ID of the client.
+        # The OIDC client ID.
         self.client_id = client_id
-        # The  secret of the client.
+        # The OpenID Connect (OIDC) client secret.
         self.client_secret = client_secret
 
     def validate(self):
@@ -952,45 +957,49 @@ class CreateIdentityProviderRequestLdapConfig(DaraModel):
         user_object_class_custom_filter: str = None,
         user_rdn: str = None,
     ):
-        # Administrator password.
+        # The administrator password.
         self.administrator_password = administrator_password
-        # Administrator username.
+        # The administrator account.
         self.administrator_username = administrator_username
-        # Whether to verify the certificate fingerprint. Value range:
+        # Specifies whether to verify the certificate fingerprint. Valid values:
         # 
-        # - Disabled: disabled
+        # - disabled
         # 
-        # - Enabled: enabled
+        # - enabled
         self.certificate_fingerprint_status = certificate_fingerprint_status
-        # List of certificate fingerprints.
+        # The list of certificate fingerprints.
         self.certificate_fingerprints = certificate_fingerprints
-        # Group member attribute name.
+        # The group member identifier.
         self.group_member_attribute_name = group_member_attribute_name
-        # Group ObjectClass.
+        # The objectClass for groups.
         self.group_object_class = group_object_class
-        # Custom filter for Group ObjectClass.
+        # The custom filter for groups.
         self.group_object_class_custom_filter = group_object_class_custom_filter
-        # Communication protocol.
+        # The communication protocol.
         self.ldap_protocol = ldap_protocol
-        # AD/LDAP server address.
+        # The address of the AD/LDAP server.
         self.ldap_server_host = ldap_server_host
-        # AD/LDAP port number.
+        # The port number of the AD/LDAP server.
         self.ldap_server_port = ldap_server_port
-        # Organization Unit ObjectClass.
+        # The objectClass for organizational units.
         self.organization_unit_object_class = organization_unit_object_class
+        # The RDN for organizational units.
         self.organizational_unit_rdn = organizational_unit_rdn
+        # The switch for password synchronization.
         self.password_sync_status = password_sync_status
-        # Whether startTLS is enabled. Value range:
-        # - Disabled: disabled
+        # Specifies whether to enable StartTLS. Valid values:
         # 
-        # - Enabled: enabled
+        # - disabled
+        # 
+        # - enabled
         self.start_tls_status = start_tls_status
-        # User login identifier.
+        # The user logon identifier.
         self.user_login_identifier = user_login_identifier
-        # User ObjectClass.
+        # The objectClass for users.
         self.user_object_class = user_object_class
-        # Custom filter for User ObjectClass.
+        # The custom filter for users.
         self.user_object_class_custom_filter = user_object_class_custom_filter
+        # The RDN for users.
         self.user_rdn = user_rdn
 
     def validate(self):
@@ -1124,15 +1133,15 @@ class CreateIdentityProviderRequestLarkConfig(DaraModel):
         enterprise_number: str = None,
         verification_token: str = None,
     ):
-        # Lark (Feishu) app appId.
+        # The AppId of the Lark application.
         self.app_id = app_id
-        # Lark (Feishu) app secret.
+        # The App Secret of the Lark application.
         self.app_secret = app_secret
-        # Lark (Feishu) encrypt key.
+        # The EncryptKey of the custom Lark application.
         self.encrypt_key = encrypt_key
-        # Lark (Feishu) enterprise number.
+        # The enterprise code of Lark.
         self.enterprise_number = enterprise_number
-        # Lark (Feishu)  verification token.
+        # The VerificationToken of the custom Lark application.
         self.verification_token = verification_token
 
     def validate(self):
@@ -1189,21 +1198,21 @@ class CreateIdentityProviderRequestDingtalkAppConfig(DaraModel):
         encrypt_key: str = None,
         verification_token: str = None,
     ):
-        # AppKey of the DingTalk application.
+        # The AppKey of the DingTalk application.
         self.app_key = app_key
-        # AppSecret of the DingTalk application.
+        # The AppSecret of the DingTalk application.
         self.app_secret = app_secret
-        # CorpId of the DingTalk application.
+        # The CorpId of the DingTalk application.
         self.corp_id = corp_id
-        # DingTalk edition. Valid values:
+        # The DingTalk version. Valid values:
         # 
-        # public_dingtalk – Standard DingTalk.
+        # - public_dingtalk: Standard DingTalk
         # 
-        # private_dingtalk – Dedicated DingTalk.
+        # - private_dingtalk: Enterprise DingTalk
         self.dingtalk_version = dingtalk_version
-        # DingTalk encrypt key.
+        # The EncryptKey of the DingTalk application.
         self.encrypt_key = encrypt_key
-        # DingTalk verification token.
+        # The VerificationToken of the DingTalk application.
         self.verification_token = verification_token
 
     def validate(self):
@@ -1263,18 +1272,19 @@ class CreateIdentityProviderRequestBindingConfig(DaraModel):
         auto_match_user_status: str = None,
         mapping_binding_status: str = None,
     ):
-        # List of rules for automatically matching accounts.
+        # The list of rules for automatically matching accounts.
         self.auto_match_user_profile_expressions = auto_match_user_profile_expressions
-        # Whether automatic account matching is enabled. Value range:
+        # Specifies whether to automatically match accounts. Valid values:
         # 
-        # - Disabled: disabled
+        # - disabled
         # 
-        # - Enabled: enabled
+        # - enabled
         self.auto_match_user_status = auto_match_user_status
-        # Whether the user manual account binding function is enabled. Value range:
-        # - Disabled: disabled
+        # Specifies whether to allow users to manually bind accounts. Valid values:
         # 
-        # - Enabled: enabled
+        # - disabled
+        # 
+        # - enabled
         self.mapping_binding_status = mapping_binding_status
 
     def validate(self):
@@ -1325,17 +1335,17 @@ class CreateIdentityProviderRequestBindingConfigAutoMatchUserProfileExpressions(
         target_field: str = None,
         target_field_description: str = None,
     ):
-        # Type of the expression. Value range:
+        # The type of the expression. Valid values:
         # 
-        # - Field: filed
+        # - field
         # 
-        # - Expression: expression
+        # - expression
         self.expression_mapping_type = expression_mapping_type
-        # Expression for the mapped attribute value.
+        # The expression for the value of the mapped attribute.
         self.source_value_expression = source_value_expression
-        # Name of the target attribute.
+        # The name of the target mapped attribute.
         self.target_field = target_field
-        # Description of the target attribute.
+        # The name of the mapping\\"s target property.
         self.target_field_description = target_field_description
 
     def validate(self):
@@ -1381,10 +1391,11 @@ class CreateIdentityProviderRequestAutoUpdateUserConfig(DaraModel):
         self,
         auto_update_user_status: str = None,
     ):
-        # Whether auto-updating of accounts is enabled. Possible values:
-        # - Disabled: disabled
+        # Specifies whether to automatically update accounts. Valid values:
         # 
-        # - Enabled: enabled
+        # - disabled
+        # 
+        # - enabled
         self.auto_update_user_status = auto_update_user_status
 
     def validate(self):
@@ -1413,12 +1424,13 @@ class CreateIdentityProviderRequestAutoCreateUserConfig(DaraModel):
         auto_create_user_status: str = None,
         target_organizational_unit_ids: List[str] = None,
     ):
-        # Whether auto-creation of accounts is enabled. Possible values:
-        # - Disabled: disabled
+        # Specifies whether to automatically create accounts. Valid values:
         # 
-        # - Enabled: enabled
+        # - disabled
+        # 
+        # - enabled
         self.auto_create_user_status = auto_create_user_status
-        # Target organizational unit IDs collection.
+        # The collection of target organizational unit IDs.
         self.target_organizational_unit_ids = target_organizational_unit_ids
 
     def validate(self):
@@ -1453,15 +1465,17 @@ class CreateIdentityProviderRequestAuthnConfig(DaraModel):
         authn_status: str = None,
         auto_update_password_status: str = None,
     ):
-        # Whether the corresponding IdP supports authentication. Value range:
-        # - Disabled: disabled
+        # Specifies whether the IdP supports authentication. Valid values:
         # 
-        # - Enabled: enabled
+        # - disabled
+        # 
+        # - enabled
         self.authn_status = authn_status
-        # Whether automatic password update is supported. Value range:
-        # - Disabled: disabled
+        # Specifies whether to automatically update passwords. Valid values:
         # 
-        # - Enabled: enabled
+        # - disabled
+        # 
+        # - enabled
         self.auto_update_password_status = auto_update_password_status
 
     def validate(self):

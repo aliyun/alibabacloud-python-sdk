@@ -14,12 +14,20 @@ class GenerateOauthTokenRequest(DaraModel):
         instance_id: str = None,
         scope_values: List[str] = None,
     ):
+        # The application ID.
+        # 
         # This parameter is required.
         self.application_id = application_id
+        # The audience identifier of the resource server.
+        # 
         # This parameter is required.
         self.audience = audience
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The scope of permissions.
+        # 
         # This parameter is required.
         self.scope_values = scope_values
 

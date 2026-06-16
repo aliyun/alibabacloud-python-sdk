@@ -11,7 +11,9 @@ class GetCloudAccountResponseBody(DaraModel):
         cloud_account: main_models.GetCloudAccountResponseBodyCloudAccount = None,
         request_id: str = None,
     ):
+        # The details of the Alibaba Cloud account.
         self.cloud_account = cloud_account
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -58,26 +60,37 @@ class GetCloudAccountResponseBodyCloudAccount(DaraModel):
         instance_id: str = None,
         update_time: int = None,
     ):
-        # 云账号外部唯一ID
+        # The unique external ID of the Alibaba Cloud account.
         self.cloud_account_external_id = cloud_account_external_id
-        # 云账号状态
+        # The health status of the Alibaba Cloud account. Valid values:
+        # 
+        # - healthy: Healthy.
+        # 
+        # - unhealthy: Unhealthy.
+        # 
+        # - unknown: Unknown.
         self.cloud_account_health = cloud_account_health
+        # The health check result for the cloud account.
         self.cloud_account_health_check_result = cloud_account_health_check_result
-        # 云账号ID
+        # The ID of the Alibaba Cloud account.
         self.cloud_account_id = cloud_account_id
-        # 云账号名称
+        # The name of the Alibaba Cloud account.
         self.cloud_account_name = cloud_account_name
-        # 云账号提供商配置
+        # The configuration of the identity provider.
         self.cloud_account_provider_config = cloud_account_provider_config
-        # 云账号提供商名称
+        # The name of the identity provider.
         self.cloud_account_provider_name = cloud_account_provider_name
-        # 云账号类别
+        # The type of the Alibaba Cloud account. The valid value is:
+        # 
+        # - alibaba_cloud: Alibaba Cloud
         self.cloud_account_vendor_type = cloud_account_vendor_type
+        # The creation time. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
-        # 云账号描述
+        # The description of the Alibaba Cloud account.
         self.description = description
-        # IDaaS EIAM 实例Id
+        # The instance ID.
         self.instance_id = instance_id
+        # The time of the last update. The value is a UNIX timestamp in milliseconds.
         self.update_time = update_time
 
     def validate(self):
@@ -179,13 +192,13 @@ class GetCloudAccountResponseBodyCloudAccountCloudAccountProviderConfig(DaraMode
         issuer: str = None,
         oidc_jwks_endpoint: str = None,
     ):
-        # 受众标识
+        # The audience identity.
         self.audience = audience
-        # 授权服务ID
+        # The ID of the authorization server.
         self.authorization_server_id = authorization_server_id
-        # Issuer。
+        # The issuer.
         self.issuer = issuer
-        # 验签公钥端点
+        # The public key endpoint for signature verification.
         self.oidc_jwks_endpoint = oidc_jwks_endpoint
 
     def validate(self):
@@ -233,8 +246,15 @@ class GetCloudAccountResponseBodyCloudAccountCloudAccountHealthCheckResult(DaraM
         last_check_time: int = None,
         result: str = None,
     ):
+        # The reason for the fault. This field returns a value when the health check status is unhealthy.
         self.error_reason = error_reason
+        # The time of the last check. The value is a UNIX timestamp in milliseconds.
         self.last_check_time = last_check_time
+        # The result of the health check for the cloud account. Valid values:
+        # 
+        # - success: The health check was successful.
+        # 
+        # - failed: The health check failed.
         self.result = result
 
     def validate(self):
@@ -277,7 +297,9 @@ class GetCloudAccountResponseBodyCloudAccountCloudAccountHealthCheckResultErrorR
         error_code: str = None,
         error_message: str = None,
     ):
+        # The error code.
         self.error_code = error_code
+        # The description of the error.
         self.error_message = error_message
 
     def validate(self):

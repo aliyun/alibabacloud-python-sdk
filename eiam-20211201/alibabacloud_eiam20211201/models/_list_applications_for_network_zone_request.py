@@ -13,19 +13,19 @@ class ListApplicationsForNetworkZoneRequest(DaraModel):
         next_token: str = None,
         previous_token: str = None,
     ):
-        # IDaaS EIAM实例的ID。
+        # The ID of the instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # 分页查询时每页行数。默认值为20，最大值为100。
+        # The number of entries to return on each page.
         self.max_results = max_results
-        # 应用关联的网络范围ID
+        # The ID of the network domain associated with the application.
         # 
         # This parameter is required.
         self.network_zone_id = network_zone_id
-        # 查询凭证（Token），取值为上一次API调用返回的NextToken参数值。
+        # The token used for the next query.
         self.next_token = next_token
-        # 查询上一页凭证（Token），取值为上一次API调用返回的previousToken参数值。
+        # The token used to query the previous page.
         self.previous_token = previous_token
 
     def validate(self):

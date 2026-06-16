@@ -10,7 +10,9 @@ class CreateResourceServerScopeResponseBody(DaraModel):
         request_id: str = None,
         resource_server_scope_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The ID of the scope permission.
         self.resource_server_scope_id = resource_server_scope_id
 
     def validate(self):

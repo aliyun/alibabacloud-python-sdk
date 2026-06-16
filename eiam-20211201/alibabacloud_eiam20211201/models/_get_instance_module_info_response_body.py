@@ -13,7 +13,9 @@ class GetInstanceModuleInfoResponseBody(DaraModel):
         module: main_models.GetInstanceModuleInfoResponseBodyModule = None,
         request_id: str = None,
     ):
+        # The instance information.
         self.module = module
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -51,11 +53,11 @@ class GetInstanceModuleInfoResponseBodyModule(DaraModel):
         module_key: str = None,
         module_status: str = None,
     ):
-        # 二级模块信息
+        # The information about the secondary modules.
         self.features = features
-        # 模块状态
+        # The identifier of the primary module.
         self.module_key = module_key
-        # 一级模块状态
+        # The status of the primary module.
         self.module_status = module_status
 
     def validate(self):
@@ -104,9 +106,9 @@ class GetInstanceModuleInfoResponseBodyModuleFeatures(DaraModel):
         feature_key: str = None,
         feature_status: str = None,
     ):
-        # 二级模块标识
+        # The identifier of the secondary module.
         self.feature_key = feature_key
-        # 二级模块状态
+        # The status of the secondary module.
         self.feature_status = feature_status
 
     def validate(self):

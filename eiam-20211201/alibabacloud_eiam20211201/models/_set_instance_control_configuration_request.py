@@ -13,9 +13,9 @@ class SetInstanceControlConfigurationRequest(DaraModel):
         control_elements: List[main_models.SetInstanceControlConfigurationRequestControlElements] = None,
         instance_id: str = None,
     ):
-        # 实例控制项。
+        # The control items for the instance.
         self.control_elements = control_elements
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -61,10 +61,11 @@ class SetInstanceControlConfigurationRequestControlElements(DaraModel):
         human_verification_config: main_models.SetInstanceControlConfigurationRequestControlElementsHumanVerificationConfig = None,
         status: str = None,
     ):
-        # 实例控制项名称，如human_verification。
+        # The name of the control item.
         self.element_name = element_name
+        # The CAPTCHA configuration.
         self.human_verification_config = human_verification_config
-        # 实例控制项状态。
+        # The status of the control item.
         self.status = status
 
     def validate(self):
@@ -106,6 +107,7 @@ class SetInstanceControlConfigurationRequestControlElementsHumanVerificationConf
         self,
         human_verification_type: str = None,
     ):
+        # The CAPTCHA type.
         self.human_verification_type = human_verification_type
 
     def validate(self):

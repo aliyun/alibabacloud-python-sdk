@@ -18,28 +18,29 @@ class RunSynchronizationJobRequest(DaraModel):
         target_type: str = None,
         user_identity_types: List[str] = None,
     ):
-        # Synchronization task description
+        # The description of the synchronization task.
         self.description = description
         # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # Whether initialize password
+        # Specifies whether to initialize the password.
         self.password_initialization = password_initialization
-        # Synchronization scope
+        # The configuration of the synchronization scope.
         self.synchronization_scope_config = synchronization_scope_config
-        # The ID of the synchronization destination.
+        # The ID of the synchronization target.
         # 
         # This parameter is required.
         self.target_id = target_id
-        # The type of the synchronization destination. Valid values:
+        # The type of the synchronization target. Valid values:
         # 
-        # *   identity_provider
-        # *   application
+        # - identity_provider: The identity provider.
+        # 
+        # - application: The application.
         # 
         # This parameter is required.
         self.target_type = target_type
-        # User identity types
+        # The list of unique user identifiers.
         self.user_identity_types = user_identity_types
 
     def validate(self):
@@ -107,11 +108,11 @@ class RunSynchronizationJobRequestSynchronizationScopeConfig(DaraModel):
         organizational_unit_ids: List[str] = None,
         user_ids: List[str] = None,
     ):
-        # The group IDs.
+        # The list of group IDs.
         self.group_ids = group_ids
-        # The IDs of organizational units.
+        # The list of organizational unit IDs.
         self.organizational_unit_ids = organizational_unit_ids
-        # UserIds
+        # The list of user IDs.
         self.user_ids = user_ids
 
     def validate(self):

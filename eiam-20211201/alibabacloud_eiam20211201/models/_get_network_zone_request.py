@@ -10,11 +10,11 @@ class GetNetworkZoneRequest(DaraModel):
         instance_id: str = None,
         network_zone_id: str = None,
     ):
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # IDaaS的网络区域主键id
+        # The network zone ID.
         # 
         # This parameter is required.
         self.network_zone_id = network_zone_id

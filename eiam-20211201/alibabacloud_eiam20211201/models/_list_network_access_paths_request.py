@@ -14,7 +14,7 @@ class ListNetworkAccessPathsRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # Network access endpoint ID.
+        # The ID of the dedicated network endpoint.
         # 
         # This parameter is required.
         self.network_access_endpoint_id = network_access_endpoint_id

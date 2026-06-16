@@ -16,21 +16,21 @@ class UpdateApplicationFederatedCredentialRequest(DaraModel):
         instance_id: str = None,
         verification_condition: str = None,
     ):
-        # 应用联邦凭证Id
+        # The ID of the application\\"s federated credential.
         # 
         # This parameter is required.
         self.application_federated_credential_id = application_federated_credential_id
-        # IDaaS的应用资源ID。
+        # The application ID.
         # 
         # This parameter is required.
         self.application_id = application_id
-        # 属性映射
+        # The attribute mappings.
         self.attribute_mappings = attribute_mappings
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # 校验条件
+        # The verification condition.
         self.verification_condition = verification_condition
 
     def validate(self):
@@ -91,9 +91,9 @@ class UpdateApplicationFederatedCredentialRequestAttributeMappings(DaraModel):
         source_value_expression: str = None,
         target_field: str = None,
     ):
-        # 源值表达式
+        # The source value expression.
         self.source_value_expression = source_value_expression
-        # 目标字段
+        # The target field.
         self.target_field = target_field
 
     def validate(self):

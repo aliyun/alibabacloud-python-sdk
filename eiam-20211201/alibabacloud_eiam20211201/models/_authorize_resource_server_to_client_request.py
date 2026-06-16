@@ -11,15 +11,15 @@ class AuthorizeResourceServerToClientRequest(DaraModel):
         instance_id: str = None,
         resource_server_application_id: str = None,
     ):
-        # IDaaS的应用资源ID。
+        # The unique ID of the client application.
         # 
         # This parameter is required.
         self.client_application_id = client_application_id
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # IDaaS的应用资源ID。
+        # The ID of the resource server application.
         # 
         # This parameter is required.
         self.resource_server_application_id = resource_server_application_id

@@ -20,7 +20,15 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = ''
+        self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'eu-central-1': 'eiam.eu-central-1.aliyuncs.com',
+            'cn-hongkong': 'eiam.cn-hongkong.aliyuncs.com',
+            'cn-hangzhou': 'eiam.cn-hangzhou.aliyuncs.com',
+            'ap-southeast-5': 'eiam.ap-southeast-5.aliyuncs.com',
+            'ap-southeast-1': 'eiam.ap-southeast-1.aliyuncs.com',
+            'ap-northeast-2': 'eiam.ap-northeast-2.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('eiam', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -18697,6 +18705,8 @@ class Client(OpenApiClient):
     ) -> main_models.ListInstancesResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.cross_region_replication):
+            query['CrossRegionReplication'] = request.cross_region_replication
         if not DaraCore.is_null(request.edition):
             query['Edition'] = request.edition
         if not DaraCore.is_null(request.instance_ids):
@@ -18733,6 +18743,8 @@ class Client(OpenApiClient):
     ) -> main_models.ListInstancesResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.cross_region_replication):
+            query['CrossRegionReplication'] = request.cross_region_replication
         if not DaraCore.is_null(request.edition):
             query['Edition'] = request.edition
         if not DaraCore.is_null(request.instance_ids):

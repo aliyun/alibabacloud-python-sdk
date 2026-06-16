@@ -71,7 +71,7 @@ class GetGroupResponseBodyGroup(DaraModel):
         self.group_source_id = group_source_id
         # The source type of the group. Only build_in may be returned, which indicates that the group was created in IDaaS.
         # 
-        # *build_in:Create By Self.
+        # \\*build_in:Create By Self.
         self.group_source_type = group_source_type
         # The instance ID.
         self.instance_id = instance_id

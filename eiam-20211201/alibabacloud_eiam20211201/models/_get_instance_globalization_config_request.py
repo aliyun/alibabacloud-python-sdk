@@ -9,7 +9,7 @@ class GetInstanceGlobalizationConfigRequest(DaraModel):
         self,
         instance_id: str = None,
     ):
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id

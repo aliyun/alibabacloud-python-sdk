@@ -11,15 +11,15 @@ class ListApplicationAccountsForUserRequest(DaraModel):
         instance_id: str = None,
         user_id: str = None,
     ):
-        # IDaaS的应用主键id
+        # The application ID.
         # 
         # This parameter is required.
         self.application_id = application_id
-        # IDaaS EIAM的实例id
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # 用户Id
+        # The user ID.
         # 
         # This parameter is required.
         self.user_id = user_id

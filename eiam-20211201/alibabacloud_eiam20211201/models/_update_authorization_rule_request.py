@@ -13,17 +13,23 @@ class UpdateAuthorizationRuleRequest(DaraModel):
         client_token: str = None,
         instance_id: str = None,
     ):
-        # 授权资源范围，枚举值：global（Project下的所有资源）、custom（自定义资源范围）。
+        # The scope of the authorized resources. Valid values:
+        # 
+        # - global: global resources within the project.
+        # 
+        # - custom: specified resources within the project.
         self.authorization_resource_scope = authorization_resource_scope
-        # 授权规则标识。
+        # The authorization rule ID.
         # 
         # This parameter is required.
         self.authorization_rule_id = authorization_rule_id
-        # 授权规则名称，长度限制最大64个字符。
+        # The name of the authorization rule. The name can be up to 64 characters long.
         self.authorization_rule_name = authorization_rule_name
+        # A client token that ensures the idempotence of the request. Generate a unique value for this parameter from your client. The token can contain only ASCII characters and must be no more than 64 characters in length. For more information, see [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
+        # 
         # This parameter is required.
         self.client_token = client_token
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id

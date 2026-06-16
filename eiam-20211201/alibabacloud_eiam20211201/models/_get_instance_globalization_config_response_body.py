@@ -11,7 +11,9 @@ class GetInstanceGlobalizationConfigResponseBody(DaraModel):
         globalization_config: main_models.GetInstanceGlobalizationConfigResponseBodyGlobalizationConfig = None,
         request_id: str = None,
     ):
+        # The language and time zone configuration for the instance.
         self.globalization_config = globalization_config
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -48,9 +50,9 @@ class GetInstanceGlobalizationConfigResponseBodyGlobalizationConfig(DaraModel):
         language: str = None,
         time_zone: str = None,
     ):
-        # 语言
+        # The language.
         self.language = language
-        # 时区
+        # The time zone.
         self.time_zone = time_zone
 
     def validate(self):

@@ -12,12 +12,13 @@ class ListIdentityProvidersRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The data synchronization direction of the identity provider.
         self.direction = direction
         # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The number of the page to return.
+        # The page number.
         self.page_number = page_number
         # The number of entries to return on each page.
         self.page_size = page_size

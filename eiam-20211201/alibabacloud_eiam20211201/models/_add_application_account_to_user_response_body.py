@@ -10,7 +10,9 @@ class AddApplicationAccountToUserResponseBody(DaraModel):
         application_account_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the application account.
         self.application_account_id = application_account_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

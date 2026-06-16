@@ -1,3 +1,15 @@
+2026-06-16 Version: 2.16.1
+- Update API GetInstance: add response parameters Body.Instance.CrossRegionReplication.
+- Update API GetInstance: add response parameters Body.Instance.CrossRegionReplicationRole.
+- Update API GetInstance: add response parameters Body.Instance.InstanceFailoverStatus.
+- Update API GetInstance: add response parameters Body.Instance.ReplicationConfiguration.
+- Update API ListInstances: add request parameters CrossRegionReplication.
+- Update API ListInstances: add response parameters Body.Instances.$.CrossRegionReplication.
+- Update API ListInstances: add response parameters Body.Instances.$.CrossRegionReplicationRole.
+- Update API ListInstances: add response parameters Body.Instances.$.InstanceFailoverStatus.
+- Update API ListInstances: add response parameters Body.Instances.$.ReplicationConfiguration.
+
+
 2026-06-08 Version: 2.16.0
 - Support API ListResourceServerScopes.
 

@@ -14,11 +14,11 @@ class ListIdentityProvidersResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # Identity provider information array.
+        # The list of identity providers.
         self.identity_providers = identity_providers
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -85,74 +85,102 @@ class ListIdentityProvidersResponseBodyIdentityProviders(DaraModel):
         ud_push_status: str = None,
         update_time: int = None,
     ):
-        # Advanced configuration capabilities
+        # Indicates whether advanced configuration is enabled. Valid values:
+        # 
+        # - disabled: The feature is disabled.
+        # 
+        # - enabled: The feature is enabled.
         self.advanced_status = advanced_status
-        # Authentication source product.
-        # - urn:alibaba:idaas:idp:okta:okta
-        # - urn:alibaba:idaas:idp:google:account
-        # - urn:alibaba:idaas:idp:microsoft:aad
-        # - urn:alibaba:idaas:idp:microsoft:ad
-        # - urn:alibaba:idaas:idp:bytedance:lark
-        # - urn:alibaba:idaas:idp:unknown:ldap
-        # - urn:alibaba:idaas:idp:alibaba:idaas
-        # - urn:alibaba:idaas:idp:tencent:wecom
-        # - urn:alibaba:idaas:idp:alibaba:aliyunram
+        # The authentication source product, such as Okta, Google, or Azure AD.
+        # Valid values:
+        # 
+        # - DingTalk: urn:alibaba:idaas:idp:alibaba:dingtalk
+        # 
+        # - LDAP: urn:alibaba:idaas:idp:unknown:ldap
+        # 
+        # - Alibaba Cloud IDaaS: urn:alibaba:idaas:idp:alibaba:idaas
+        # 
+        # - WeCom: urn:alibaba:idaas:idp:tencent:wecom
+        # 
+        # - Lark: urn:alibaba:idaas:idp:bytedance:lark
+        # 
+        # - Active Directory: urn:alibaba:idaas:idp:microsoft:ad
+        # 
+        # - Azure Active Directory: urn:alibaba:idaas:idp:microsoft:aad
+        # 
+        # - Alibaba Cloud SASE: urn:alibaba:idaas:idp:alibaba:sase
         self.authn_source_supplier = authn_source_supplier
-        # Authentication method type.
-        # - urn:alibaba:idaas:authntype:oidc
-        # - urn:alibaba:idaas:authntype:saml2
+        # The authentication method type. Valid values:
+        # 
+        # - OIDC: urn:alibaba:idaas:authntype:oidc
+        # 
+        # - SAML: urn:alibaba:idaas:authntype:saml2
         self.authn_source_type = authn_source_type
-        # Does the corresponding IdP support authentication.
+        # Indicates whether the identity provider supports authentication. Valid values:
+        # 
+        # - disabled: Authentication is disabled.
+        # 
+        # - enabled: Authentication is enabled.
         self.authn_status = authn_status
-        # The time when the instance was created.
+        # The time when the identity provider was created. This is a UNIX timestamp. Unit: milliseconds.
         self.create_time = create_time
-        # The description of the Identity provider.
+        # The description of the identity provider.
         self.description = description
-        # Identity provider external ID.
+        # The external ID of the identity provider.
         self.identity_provider_external_id = identity_provider_external_id
-        # Identity provider ID.
+        # The identity provider ID.
         self.identity_provider_id = identity_provider_id
-        # Identity provider name.
+        # The name of the identity provider.
         self.identity_provider_name = identity_provider_name
-        # Identity provider synchronization type.
+        # The synchronization type of the identity provider.
         # 
-        # - Inbound to DingTalk: urn:alibaba:idaas:idp:alibaba:dingtalk:pull
+        # - Inbound DingTalk: urn:alibaba:idaas:idp:alibaba:dingtalk:pull
         # 
-        # - Outbound to DingTalk: urn:alibaba:idaas:idp:alibaba:dingtalk:push
+        # - Outbound DingTalk: urn:alibaba:idaas:idp:alibaba:dingtalk:push
         # 
-        # - Inbound to WeCom: urn:alibaba:idaas:idp:tencent:wecom:pull
+        # - Inbound WeCom: urn:alibaba:idaas:idp:tencent:wecom:pull
         # 
-        # - Inbound to Lark: urn:alibaba:idaas:idp:bytedance:lark:pull
+        # - Inbound Lark: urn:alibaba:idaas:idp:bytedance:lark:pull
         # 
-        # - Inbound to AD: urn:alibaba:idaas:idp:microsoft:ad:pull
+        # - Inbound AD: urn:alibaba:idaas:idp:microsoft:ad:pull
         # 
-        # - Inbound to LDAP: urn:alibaba:idaas:idp:unknown:ldap:pull
+        # - Inbound LDAP: urn:alibaba:idaas:idp:unknown:ldap:pull
         # 
         # - Standard OIDC: urn:alibaba:idaas:idp:standard:oidc
         # 
-        # - SASE Custom OIDC: urn:alibaba:idaas:idp:alibaba:sase
+        # - Custom OIDC for SASE: urn:alibaba:idaas:idp:alibaba:sase
         self.identity_provider_type = identity_provider_type
-        # Incremental callback status, whether to process the incremental callback data from IdP.
+        # The incremental callback status. This indicates whether to process incremental callback data from the identity provider. Valid values:
+        # 
+        # - disabled: The feature is disabled.
+        # 
+        # - enabled: The feature is enabled.
         self.incremental_callback_status = incremental_callback_status
         # The instance ID.
         self.instance_id = instance_id
-        # Last status check result.
+        # The result of the last status check. A sync task can be triggered only when the status check of the identity provider returns \\`success\\`.
         self.last_status_check_job_result = last_status_check_job_result
-        # The reason why write operations are locked.
+        # The reason why the identity provider is locked.
         self.lock_reason = lock_reason
-        # IdP logo url.
+        # The URL of the custom logo for the identity provider.
         self.logo_url = logo_url
-        # Regular verification status.
+        # The periodic check status. This indicates whether to periodically check for data inconsistencies between IDaaS and the identity provider.
         self.periodic_sync_status = periodic_sync_status
-        # Whether support UD synchronization.Values:
-        # - enabled
-        # - disabled
+        # Indicates whether inbound synchronization is enabled. Valid values:
+        # 
+        # - disabled: The feature is disabled.
+        # 
+        # - enabled: The feature is enabled.
         self.ud_pull_status = ud_pull_status
-        # When supporting the range in the UD of ud_pullIDaaS side.
+        # The target node for synchronization.
         self.ud_pull_target_scope = ud_pull_target_scope
-        # Synchronize capabilities
+        # Indicates whether outbound synchronization is enabled. Valid values:
+        # 
+        # - disabled: The feature is disabled.
+        # 
+        # - enabled: The feature is enabled.
         self.ud_push_status = ud_push_status
-        # The time when the service was updated.
+        # The time when the identity provider was last updated. This is a UNIX timestamp. Unit: milliseconds.
         self.update_time = update_time
 
     def validate(self):

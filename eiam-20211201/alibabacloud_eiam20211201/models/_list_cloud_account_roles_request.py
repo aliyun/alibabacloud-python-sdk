@@ -16,14 +16,25 @@ class ListCloudAccountRolesRequest(DaraModel):
         max_results: int = None,
         next_token: str = None,
     ):
+        # The ID of the Alibaba Cloud account.
+        # 
         # This parameter is required.
         self.cloud_account_id = cloud_account_id
+        # The filter conditions.
         self.filter = filter
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
-        # 分页查询时每页行数。默认值为20，最大值为100。
+        # The maximum number of records to return on each page.
+        # 
+        # - The default value is 20.
+        # 
+        # - The maximum value is 100.
         self.max_results = max_results
-        # 查询凭证（Token），取值为上一次API调用返回的NextToken参数值。
+        # The token that specifies the start of the next page of results.
+        # 
+        # - If this parameter is not specified, the query starts from the first page.
         self.next_token = next_token
 
     def validate(self):
@@ -84,7 +95,17 @@ class ListCloudAccountRolesRequestFilter(DaraModel):
         name: str = None,
         value: List[str] = None,
     ):
+        # The name of the filter field. Valid values:
+        # 
+        # - CloudAccountRoleId: The ID of the cloud role.
+        # 
+        # - CloudAccountRoleName: The name of the cloud role.
+        # 
+        # - CloudAccountRoleExternalId: The external ID of the cloud role.
+        # 
+        # - CloudAccountRoleUsageType: The usage type of the cloud role.
         self.name = name
+        # The list of values for the filter field.
         self.value = value
 
     def validate(self):

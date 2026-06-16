@@ -11,13 +11,13 @@ class UpdateUserDescriptionRequest(DaraModel):
         instance_id: str = None,
         user_id: str = None,
     ):
-        # The description of the account. The value can be up to 256 characters in length.
+        # The description. The maximum length is 256 characters.
         self.description = description
         # The ID of the instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the account.
+        # The ID of the user.
         # 
         # This parameter is required.
         self.user_id = user_id

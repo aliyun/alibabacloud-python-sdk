@@ -16,11 +16,15 @@ class ListResourceServersForUserResponseBody(DaraModel):
         resource_servers: List[main_models.ListResourceServersForUserResponseBodyResourceServers] = None,
         total_count: int = None,
     ):
+        # The number of entries returned per page.
         self.max_results = max_results
-        # 本次调用返回的查询凭证（Token）值，用于下一次翻页查询。
+        # The token for the next page of results.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The list of ResourceServer applications.
         self.resource_servers = resource_servers
+        # The total number of entries in the list.
         self.total_count = total_count
 
     def validate(self):
@@ -83,12 +87,13 @@ class ListResourceServersForUserResponseBodyResourceServers(DaraModel):
         resource_server_identifier: str = None,
         resource_server_scopes: List[main_models.ListResourceServersForUserResponseBodyResourceServersResourceServerScopes] = None,
     ):
-        # 资源服务应用的唯一标识
+        # The ID of the ResourceServer application.
         self.application_id = application_id
-        # 实例唯一标识
+        # The instance ID.
         self.instance_id = instance_id
+        # The unique identifier of the ResourceServer.
         self.resource_server_identifier = resource_server_identifier
-        # 资源服务Scope权限集合
+        # The list of granted Scope permissions.
         self.resource_server_scopes = resource_server_scopes
 
     def validate(self):
@@ -145,13 +150,13 @@ class ListResourceServersForUserResponseBodyResourceServersResourceServerScopes(
         resource_server_scope_id: str = None,
         resource_server_scope_name: str = None,
     ):
-        # 直接分配给当前用户的权限，视为直接授权。
+        # Indicates whether a direct authorization exists.
         self.has_direct_authorization = has_direct_authorization
-        # 通过用户隶属的组织、组获取的权限，视为继承权限。
+        # Indicates whether an inherited permission exists.
         self.has_inherit_authorization = has_inherit_authorization
-        # ResourceServerScope唯一标识
+        # The ID of the Scope permission.
         self.resource_server_scope_id = resource_server_scope_id
-        # ResourceServerScope名称
+        # The name of the Scope permission.
         self.resource_server_scope_name = resource_server_scope_name
 
     def validate(self):

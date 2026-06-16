@@ -17,24 +17,25 @@ class UpdateNetworkZoneRequest(DaraModel):
         network_zone_name: str = None,
         vpc_id: str = None,
     ):
+        # The idempotence token.
         self.client_token = client_token
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # 包含的CIDR
+        # The IPv4 CIDR blocks of the network zone.
         self.ipv_4cidrs = ipv_4cidrs
-        # 网络区域ipv6Cidr
+        # The IPv6 CIDR blocks of the network zone.
         self.ipv_6cidrs = ipv_6cidrs
-        # IDaaS的网络区域主键id
+        # The network zone ID.
         # 
         # This parameter is required.
         self.network_zone_id = network_zone_id
-        # 网络区域名称
+        # The name of the network zone.
         # 
         # This parameter is required.
         self.network_zone_name = network_zone_name
-        # 专有网络VpcId
+        # The ID of the virtual private cloud (VPC).
         self.vpc_id = vpc_id
 
     def validate(self):

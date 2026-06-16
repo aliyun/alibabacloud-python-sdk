@@ -9,7 +9,7 @@ class GetInstanceTrialStatusRequest(DaraModel):
         self,
         instance_id: str = None,
     ):
-        # IDaaS EIAM的实例id
+        # The ID of the instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id

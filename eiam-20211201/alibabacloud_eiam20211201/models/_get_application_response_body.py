@@ -13,9 +13,9 @@ class GetApplicationResponseBody(DaraModel):
         application: main_models.GetApplicationResponseBodyApplication = None,
         request_id: str = None,
     ):
-        # The details of the application.
+        # The information about the application.
         self.application = application
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -78,73 +78,94 @@ class GetApplicationResponseBodyApplication(DaraModel):
         status: str = None,
         update_time: int = None,
     ):
-        # The status of the Developer API feature. Valid values:
+        # The status of the Developer API feature for the application. Valid values:
         # 
-        # *   Enabled: The Developer API feature is enabled.
-        # *   Disabled: The Developer API feature is disabled.
+        # - enabled
+        # 
+        # - disabled
         self.api_invoke_status = api_invoke_status
+        # The application creation type.
         self.application_creation_type = application_creation_type
-        # The ID of the application.
+        # The application ID.
         self.application_id = application_id
+        # The identity type of the application. Valid values:
+        # 
+        # - application: application.
+        # 
+        # - agent: agent.
         self.application_identity_type = application_identity_type
-        # The name of the application.
+        # The application name.
         self.application_name = application_name
+        # The application owners.
         self.application_owner = application_owner
-        # The origin of the application. Valid values:
+        # The source from which the application was created. Valid values:
         # 
-        # *   urn:alibaba:idaas:app:source:template: The application is created based on a template.
-        # *   urn:alibaba:idaas: The application is created based on the standard protocol.
+        # - urn:alibaba:idaas:app:source:template: The application was created from a template.
+        # 
+        # - urn:alibaba:idaas:app:source:standard: The application was created based on a standard protocol.
         self.application_source_type = application_source_type
-        # The ID of the template based on which the application is created. This parameter is returned only if the application is created based on a template.
+        # The ID of the application template that is associated with the application. This parameter is returned only if the application was created from a template.
         self.application_template_id = application_template_id
-        # Application visibility
+        # The visibility of the application.
         self.application_visibility = application_visibility
-        # The authorization type of the EIAM application. Valid values:
+        # The authorization type for application access. Valid values:
         # 
-        # *   authorize_required: Only the user with explicit authorization can access the application.
-        # *   default_all: By default, all users can access the application.
+        # - authorize_required: Explicit authorization is required for access.
+        # 
+        # - default_all: All members have access by default.
         self.authorization_type = authorization_type
         # The client ID of the application.
         self.client_id = client_id
-        # The time when the application was created. The value is a UNIX timestamp. Unit: milliseconds.
+        # The time when the application was created. This value is a UNIX timestamp. Unit: milliseconds.
         self.create_time = create_time
+        # The custom fields of the application.
         self.custom_fields = custom_fields
+        # Indicates whether to customize the Subject field in the token. If this feature is enabled, the issued access token changes from \\<clientId> to \\<clientId>:\\<client.activeSubjectUrn>. The client.activeSubjectUrn is set in the attribute mapping of the application\\"s federated identity provider.
         self.custom_subject_status = custom_subject_status
         # The description of the application.
         self.description = description
-        # The features that are supported by the application. The value is a JSON array. Valid values:
+        # The features that the application supports. This parameter is returned as a JSON array string. Valid values:
         # 
-        # *   sso: The application supports SSO.
-        # *   provision: The application supports account synchronization.
-        # *   api_invoke: The application supports custom APIs.
+        # - sso: single sign-on (SSO).
+        # 
+        # - provision: account synchronization.
+        # 
+        # - api_invoke: API calling.
         self.features = features
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
         # The URL of the application icon.
         self.logo_url = logo_url
-        # M2M client status.
+        # The status of the M2M client.
         self.m_2mclient_status = m_2mclient_status
-        # The service code of the cloud service that manages the application template.
+        # The service code of the cloud product that hosts the application template.
         self.managed_service_code = managed_service_code
-        # Unique identifier of the resource server
+        # The unique identifier of the resource server. This corresponds to the audience of the resource server.
         self.resource_server_identifier = resource_server_identifier
+        # The source type of the resource server.
         self.resource_server_source_type = resource_server_source_type
-        # Resource server status.
+        # The status of the resource server.
         self.resource_server_status = resource_server_status
-        # Indicates whether the application template is managed by a cloud service.
+        # Indicates whether the application template is hosted by a cloud service.
         self.service_managed = service_managed
         self.smart_config_capabilities = smart_config_capabilities
-        # The type of the single sign-on (SSO) protocol. Valid values:
+        # The single sign-on (SSO) protocol. Valid values:
         # 
-        # *   saml2: the Security Assertion Markup Language (SAML) 2.0 protocol.
-        # *   oidc: the OpenID Connect (OIDC) protocol.
+        # - saml2: SAML 2.0.
+        # 
+        # - oidc: OpenID Connect.
+        # 
+        # - oauth2/m2m: OAuth 2.0.
+        # 
+        # - oidc+oauth2/m2m: OpenID Connect and OAuth 2.0.
         self.sso_type = sso_type
-        # The status of the application. Valid values:
+        # The application status. Valid values:
         # 
-        # *   Enabled: The application is enabled.
-        # *   Disabled: The application is disabled.
+        # - enabled
+        # 
+        # - disabled
         self.status = status
-        # The time when the application was last updated. The value is a UNIX timestamp. Unit: milliseconds.
+        # The time when the application was last updated. This value is a UNIX timestamp. Unit: milliseconds.
         self.update_time = update_time
 
     def validate(self):
@@ -346,7 +367,9 @@ class GetApplicationResponseBodyApplicationCustomFields(DaraModel):
         field_name: str = None,
         field_value: str = None,
     ):
+        # The custom field name.
         self.field_name = field_name
+        # The custom field value.
         self.field_value = field_value
 
     def validate(self):
@@ -381,7 +404,9 @@ class GetApplicationResponseBodyApplicationApplicationOwner(DaraModel):
         group_ids: List[str] = None,
         user_ids: List[str] = None,
     ):
+        # The group IDs of the application owners.
         self.group_ids = group_ids
+        # The user IDs of the application owners.
         self.user_ids = user_ids
 
     def validate(self):

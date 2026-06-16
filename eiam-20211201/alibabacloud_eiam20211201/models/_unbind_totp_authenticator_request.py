@@ -10,11 +10,11 @@ class UnbindTotpAuthenticatorRequest(DaraModel):
         instance_id: str = None,
         user_id: str = None,
     ):
-        # IDaaS EIAM实例的ID。
+        # Instance ID
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # UserID
+        # User ID
         # 
         # This parameter is required.
         self.user_id = user_id

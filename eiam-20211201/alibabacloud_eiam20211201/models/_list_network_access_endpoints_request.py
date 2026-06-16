@@ -15,21 +15,37 @@ class ListNetworkAccessEndpointsRequest(DaraModel):
         vpc_id: str = None,
         vpc_region_id: str = None,
     ):
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # 分页查询时每页行数。默认值为20，最大值为100。
+        # The number of entries to return on each page. The maximum value is 100.
         self.max_results = max_results
-        # 专属网络端点连接的状态。NetworkAccessEndpointType取值为shared时不生效。
+        # The status of the network endpoint. Valid values:
+        # 
+        # - pending: The endpoint is pending initialization.
+        # 
+        # - creating: The endpoint is being created.
+        # 
+        # - running: The endpoint is running.
+        # 
+        # - deleting: The endpoint is being deleted.
+        # 
+        # This parameter does not take effect when NetworkAccessEndpointType is set to shared.
         self.network_access_endpoint_status = network_access_endpoint_status
-        # 专属网络端点连接的类型。取值可选范围：1. private - 专属网络端点；2. shared - 共享网络端点
+        # The type of the network endpoint. Valid values:
+        # 
+        # - shared: a shared network endpoint.
+        # 
+        # - private: a private network endpoint.
+        # 
+        # The default value is private.
         self.network_access_endpoint_type = network_access_endpoint_type
-        # 查询凭证（Token），取值为上一次API调用返回的NextToken参数值。
+        # The token used for the next query. Set this parameter to the NextToken value returned from the previous API call. Leave this parameter empty for the first query.
         self.next_token = next_token
-        # 专属网络端点连接的Vpc ID。NetworkAccessEndpointType取值为shared时不生效。
+        # The ID of the VPC to which the private network endpoint is connected. This parameter does not take effect when NetworkAccessEndpointType is set to shared.
         self.vpc_id = vpc_id
-        # 专属网络端点连接的Vpc所属地域，该地域取值必须在ListNetworkAccessEndpointAvailableRegions接口中返回。NetworkAccessEndpointType取值为shared时不生效。
+        # The region ID of the VPC to which the private network endpoint is connected. The value of this parameter must be a region returned by the ListNetworkAccessEndpointAvailableRegions operation. This parameter does not take effect when NetworkAccessEndpointType is set to shared.
         self.vpc_region_id = vpc_region_id
 
     def validate(self):

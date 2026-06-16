@@ -9,7 +9,7 @@ class GetServiceQuotaRequest(DaraModel):
         self,
         quota_type: str = None,
     ):
-        # Quota 配额的唯一标识。
+        # The unique identifier of the quota.
         # 
         # This parameter is required.
         self.quota_type = quota_type

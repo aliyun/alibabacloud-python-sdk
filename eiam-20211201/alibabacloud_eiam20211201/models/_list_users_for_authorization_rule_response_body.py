@@ -16,12 +16,15 @@ class ListUsersForAuthorizationRuleResponseBody(DaraModel):
         total_count: int = None,
         users: List[main_models.ListUsersForAuthorizationRuleResponseBodyUsers] = None,
     ):
-        # 分页查询时每页行数。
+        # The number of entries returned per page.
         self.max_results = max_results
-        # 本次调用返回的查询凭证（Token）值，用于下一次翻页查询。
+        # The token returned from the current call. Use this token to start the next paged query.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
+        # The list of accounts.
         self.users = users
 
     def validate(self):
@@ -84,13 +87,17 @@ class ListUsersForAuthorizationRuleResponseBodyUsers(DaraModel):
         validity_period: main_models.ListUsersForAuthorizationRuleResponseBodyUsersValidityPeriod = None,
         validity_type: str = None,
     ):
-        # 实例ID。
+        # The instance ID.
         self.instance_id = instance_id
-        # 账户标识。
+        # The account ID.
         self.user_id = user_id
-        # 有效周期。
+        # The time range of the validity period. This parameter takes effect only when **ValidityType** is set to **time_bound**.
         self.validity_period = validity_period
-        # 有效期类型，枚举值：permanent（永久），time_bound（自定义时间范围）。
+        # The type of the validity period for the relationship. Valid values:
+        # 
+        # - permanent: permanent
+        # 
+        # - time_bound: custom time range
         self.validity_type = validity_type
 
     def validate(self):
@@ -139,9 +146,9 @@ class ListUsersForAuthorizationRuleResponseBodyUsersValidityPeriod(DaraModel):
         end_time: int = None,
         start_time: int = None,
     ):
-        # 授权生效结束时间。
+        # The end time of the validity period. This is a UNIX timestamp in milliseconds.
         self.end_time = end_time
-        # 授权生效开始时间。
+        # The start time of the validity period. This is a UNIX timestamp in milliseconds.
         self.start_time = start_time
 
     def validate(self):

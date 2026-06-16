@@ -80,14 +80,15 @@ class ListEiamInstancesResponseBodyInstances(DaraModel):
         # 
         # Valid values:
         # 
-        # *   EIAM 2.0
-        # *   EIAM 1.0
+        # - EIAM 2.0
+        # 
+        # - EIAM 1.0
         self.instance_version = instance_version
         # The private domain of the instance OpenAPI.
         self.open_apiprivate_domain = open_apiprivate_domain
         # The public domain of the instance OpenAPI.
         self.open_apipublic_domain = open_apipublic_domain
-        # The single sign-on (SSO) domain  of the instance.
+        # The single sign-on (SSO) domain of the instance.
         self.ssodomain = ssodomain
         # The time when the instance was created.
         self.start_time = start_time

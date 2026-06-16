@@ -11,7 +11,9 @@ class GetLoginRedirectApplicationForBrandResponseBody(DaraModel):
         brand_login_redirect_application: main_models.GetLoginRedirectApplicationForBrandResponseBodyBrandLoginRedirectApplication = None,
         request_id: str = None,
     ):
+        # The information about the post-logon redirect application for the brand.
         self.brand_login_redirect_application = brand_login_redirect_application
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -49,11 +51,11 @@ class GetLoginRedirectApplicationForBrandResponseBodyBrandLoginRedirectApplicati
         brand_id: str = None,
         instance_id: str = None,
     ):
-        # 应用ID
+        # The application ID.
         self.application_id = application_id
-        # 品牌ID
+        # The brand ID.
         self.brand_id = brand_id
-        # 实例ID
+        # The instance ID.
         self.instance_id = instance_id
 
     def validate(self):

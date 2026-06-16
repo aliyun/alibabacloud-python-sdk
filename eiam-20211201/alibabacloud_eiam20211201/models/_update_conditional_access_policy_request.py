@@ -19,29 +19,29 @@ class UpdateConditionalAccessPolicyRequest(DaraModel):
         instance_id: str = None,
         priority: int = None,
     ):
-        # The client token that is used to ensure the idempotence of the request.
+        # A client token that is used to ensure the idempotence of the request. The client generates the value of this parameter to ensure that the value is unique among different requests.
         self.client_token = client_token
-        # Conditional Access Policy ID
+        # The ID of the conditional access policy.
         # 
         # This parameter is required.
         self.conditional_access_policy_id = conditional_access_policy_id
-        # Conditional Access Policy Name
+        # The name of the conditional access policy.
         # 
         # This parameter is required.
         self.conditional_access_policy_name = conditional_access_policy_name
-        # Conditional Access Policy Condition Content Configuration
+        # The condition configuration of the conditional access policy.
         self.conditions_config = conditions_config
-        # Conditional Access Policy Action Configuration
+        # The action configuration of the conditional access policy.
         self.decision_config = decision_config
-        # Conditional Access Policy Execution Type
+        # The action that is performed by the conditional access policy.
         # 
         # This parameter is required.
         self.decision_type = decision_type
-        # Instance ID.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # Priority of the conditional access policy
+        # The priority of the conditional access policy.
         self.priority = priority
 
     def validate(self):
@@ -120,15 +120,15 @@ class UpdateConditionalAccessPolicyRequestDecisionConfig(DaraModel):
         mfa_authentication_methods: List[str] = None,
         mfa_type: str = None,
     ):
-        # Whether to enable session reuse
+        # Indicates whether to enable session reuse.
         self.active_session_reuse_status = active_session_reuse_status
-        # Conditional Access Policy Decision Action
+        # The action of the conditional access policy.
         self.effect = effect
-        # Conditional Access Policy Re-authentication Interval (seconds)
+        # The interval at which the conditional access policy is repeatedly authenticated. Unit: seconds.
         self.mfa_authentication_interval_seconds = mfa_authentication_interval_seconds
-        # Allowed MFA types for the Conditional Access Policy
+        # The MFA methods allowed by the conditional access policy.
         self.mfa_authentication_methods = mfa_authentication_methods
-        # Conditional Access Policy MFA Type
+        # The multi-factor authentication (MFA) type of the conditional access policy.
         self.mfa_type = mfa_type
 
     def validate(self):
@@ -182,11 +182,11 @@ class UpdateConditionalAccessPolicyRequestConditionsConfig(DaraModel):
         network_zones: main_models.UpdateConditionalAccessPolicyRequestConditionsConfigNetworkZones = None,
         users: main_models.UpdateConditionalAccessPolicyRequestConditionsConfigUsers = None,
     ):
-        # Target Applications for the Conditional Access Policy
+        # The target applications of the conditional access policy.
         self.applications = applications
-        # Network zones for conditional access policy
+        # The network zones of the conditional access policy.
         self.network_zones = network_zones
-        # Target Users for the Conditional Access Policy
+        # The target users of the conditional access policy.
         self.users = users
 
     def validate(self):
@@ -239,17 +239,17 @@ class UpdateConditionalAccessPolicyRequestConditionsConfigUsers(DaraModel):
         include_organizational_units: List[str] = None,
         include_users: List[str] = None,
     ):
-        # Excluded user groups
+        # The excluded user groups.
         self.exclude_groups = exclude_groups
-        # Excluded organizations
+        # The excluded organizations.
         self.exclude_organizational_units = exclude_organizational_units
-        # Excluded Users
+        # The excluded users.
         self.exclude_users = exclude_users
-        # Included User Groups
+        # The selected user groups.
         self.include_groups = include_groups
-        # Included organizations
+        # The selected organizations.
         self.include_organizational_units = include_organizational_units
-        # Included Users
+        # The selected users.
         self.include_users = include_users
 
     def validate(self):
@@ -308,9 +308,9 @@ class UpdateConditionalAccessPolicyRequestConditionsConfigNetworkZones(DaraModel
         exclude_network_zones: List[str] = None,
         include_network_zones: List[str] = None,
     ):
-        # Excluded network zones
+        # The excluded network zones.
         self.exclude_network_zones = exclude_network_zones
-        # Included network zones
+        # The selected network zones.
         self.include_network_zones = include_network_zones
 
     def validate(self):
@@ -345,9 +345,9 @@ class UpdateConditionalAccessPolicyRequestConditionsConfigApplications(DaraModel
         exclude_applications: List[str] = None,
         include_applications: List[str] = None,
     ):
-        # Excluded Applications
+        # The excluded applications.
         self.exclude_applications = exclude_applications
-        # Included Applications
+        # The selected applications.
         self.include_applications = include_applications
 
     def validate(self):

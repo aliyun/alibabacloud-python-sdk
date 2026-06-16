@@ -10,9 +10,11 @@ class GetCredentialRequest(DaraModel):
         credential_id: str = None,
         instance_id: str = None,
     ):
+        # The ID of the credential.
+        # 
         # This parameter is required.
         self.credential_id = credential_id
-        # IDaaS EIAM实例的ID。
+        # The ID of the instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id

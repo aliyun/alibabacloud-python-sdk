@@ -11,7 +11,9 @@ class CreateApplicationTokenResponseBody(DaraModel):
         application_tokens: main_models.CreateApplicationTokenResponseBodyApplicationTokens = None,
         request_id: str = None,
     ):
+        # The application token.
         self.application_tokens = application_tokens
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -49,11 +51,11 @@ class CreateApplicationTokenResponseBodyApplicationTokens(DaraModel):
         application_token_id: str = None,
         application_token_type: str = None,
     ):
-        # 应用token
+        # The application token.
         self.application_token = application_token
-        # 应用token ID
+        # The application token ID.
         self.application_token_id = application_token_id
-        # 应用token类型
+        # The application token type.
         self.application_token_type = application_token_type
 
     def validate(self):

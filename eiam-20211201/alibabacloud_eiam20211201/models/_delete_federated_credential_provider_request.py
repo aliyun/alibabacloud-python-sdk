@@ -10,11 +10,11 @@ class DeleteFederatedCredentialProviderRequest(DaraModel):
         federated_credential_provider_id: str = None,
         instance_id: str = None,
     ):
-        # 联邦凭证提供方ID
+        # The ID of the federated credential provider.
         # 
         # This parameter is required.
         self.federated_credential_provider_id = federated_credential_provider_id
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id

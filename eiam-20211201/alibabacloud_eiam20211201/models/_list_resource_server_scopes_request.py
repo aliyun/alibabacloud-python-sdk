@@ -20,25 +20,29 @@ class ListResourceServerScopesRequest(DaraModel):
         resource_server_scope_type: str = None,
         resource_server_scope_value: str = None,
     ):
-        # IDaaS的应用资源ID。
+        # Application ID.
         # 
         # This parameter is required.
         self.application_id = application_id
+        # Authorization type.
         self.authorization_type = authorization_type
-        # IDaaS EIAM实例的ID。
+        # Instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # 分页查询时每页行数。默认值为20，最大值为100。
+        # Number of rows per page in paginated queries.
         self.max_results = max_results
-        # 查询凭证（Token），取值为上一次API调用返回的NextToken参数值。
+        # Token for the next page query. Set this to the NextToken value returned by the previous API call. Leave empty for the first query.
         self.next_token = next_token
+        # Token for the previous page query. Set this to the PreviousToken value returned by the previous API call.
         self.previous_token = previous_token
+        # List of Scope permission IDs.
         self.resource_server_scope_ids = resource_server_scope_ids
-        # 权限名称
+        # Scope permission name.
         self.resource_server_scope_name = resource_server_scope_name
+        # Scope permission type.
         self.resource_server_scope_type = resource_server_scope_type
-        # 权限值，大小写不敏感，格式(${ResourceType}:${ResourceOption}:${ResourceRestrict})
+        # Scope permission value.
         self.resource_server_scope_value = resource_server_scope_value
 
     def validate(self):

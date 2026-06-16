@@ -16,12 +16,15 @@ class ListAuthorizationResourcesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # A list of authorized resources.
         self.authorization_resources = authorization_resources
-        # 分页查询时每页行数。
+        # The number of entries per page.
         self.max_results = max_results
-        # 本次调用返回的查询凭证（Token）值，用于下一次翻页查询。
+        # The token to retrieve the next page of results. This parameter is returned when the results are paged.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -86,17 +89,19 @@ class ListAuthorizationResourcesResponseBodyAuthorizationResources(DaraModel):
         cloud_account_id: str = None,
         instance_id: str = None,
     ):
-        # 资源实体标识
+        # The ID of the associated resource entity.
         self.authorization_resource_entity_id = authorization_resource_entity_id
-        # 资源实体类型，枚举类型：asset（资产）、credential（凭据）、cloud_identity_role（云账号角色）
+        # The type of the associated resource entity. Valid values:
+        # 
+        # - cloud_account_role: A cloud role.
         self.authorization_resource_entity_type = authorization_resource_entity_type
-        # 授权资源标识
+        # The authorized resource ID.
         self.authorization_resource_id = authorization_resource_id
-        # 授权规则标识
+        # The authorization rule ID.
         self.authorization_rule_id = authorization_rule_id
-        # 云账号ID。
+        # The ID of the Alibaba Cloud account that owns the associated resource entity.
         self.cloud_account_id = cloud_account_id
-        # 实例ID
+        # The instance ID.
         self.instance_id = instance_id
 
     def validate(self):

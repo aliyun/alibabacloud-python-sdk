@@ -11,7 +11,9 @@ class GetClientPublicKeyResponseBody(DaraModel):
         client_public_key: main_models.GetClientPublicKeyResponseBodyClientPublicKey = None,
         request_id: str = None,
     ):
+        # Information about the application\\"s ClientPublicKey.
         self.client_public_key = client_public_key
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -55,22 +57,23 @@ class GetClientPublicKeyResponseBodyClientPublicKey(DaraModel):
         public_key: str = None,
         status: str = None,
     ):
-        # IDaaS EIAM 应用公私钥对算法类型 rsa2048、ecc256
+        # The algorithm type.
         self.algorithm_type = algorithm_type
-        # IDaaS EIAM 应用Id
+        # The application ID.
         self.application_id = application_id
-        # IDaaS EIAM 应用公私钥对Id
+        # The ID of the application\\"s ClientPublicKey.
         self.client_public_key_id = client_public_key_id
-        # IDaaS EIAM 应用公私钥对创建时间
+        # The time when the public key was created.
         self.create_time = create_time
-        # IDaaS EIAM 实例Id
+        # The instance ID.
         self.instance_id = instance_id
+        # The time when the key was last used.
         self.last_used_time = last_used_time
-        # IDaaS EIAM 应用当前是否为首要使用的公私钥对
+        # Indicates whether this is the primary key.
         self.primary = primary
-        # IDaaS EIAM 应用公钥
+        # The public key.
         self.public_key = public_key
-        # IDaaS EIAM 应用公私钥对状态
+        # The status.
         self.status = status
 
     def validate(self):

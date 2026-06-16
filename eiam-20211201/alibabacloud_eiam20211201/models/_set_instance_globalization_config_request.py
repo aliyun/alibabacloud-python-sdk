@@ -11,15 +11,15 @@ class SetInstanceGlobalizationConfigRequest(DaraModel):
         language: str = None,
         time_zone: str = None,
     ):
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # 语言类型
+        # The language.
         # 
         # This parameter is required.
         self.language = language
-        # 时区
+        # The time zone.
         # 
         # This parameter is required.
         self.time_zone = time_zone

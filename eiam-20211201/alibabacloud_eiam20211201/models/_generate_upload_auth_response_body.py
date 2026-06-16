@@ -19,23 +19,27 @@ class GenerateUploadAuthResponseBody(DaraModel):
         security_token: str = None,
         signature: str = None,
     ):
-        # 认证的AccessId
+        # The AccessKey ID of the credential.
         self.access_id = access_id
-        # 预下载地址
+        # The pre-signed URL for download.
         self.down_load_url = down_load_url
+        # The file encryption configuration key that is encrypted by the instance.
         self.encrypted_key = encrypted_key
-        # 过期时间
+        # The expiration time.
         self.expire = expire
-        # bucket地址host
+        # The host of the bucket address.
         self.host = host
-        # 认证对应的key
+        # The key corresponding to the credential.
         self.key = key
+        # The plaintext key of the encryption configuration.
         self.plaintext_key = plaintext_key
-        # 认证的policy
+        # The policy for the credential.
         self.policy = policy
+        # The request ID.
         self.request_id = request_id
+        # The Security Token Service (STS) access credential.
         self.security_token = security_token
-        # 认证的签名
+        # The signature for the credential.
         self.signature = signature
 
     def validate(self):

@@ -15,19 +15,19 @@ class ListApplicationsForOrganizationalUnitRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The IDs of the applications that the EIAM organization can access. You can query a maximum of 100 application IDs at a time.
+        # A list of application IDs. You can specify up to 100 application IDs in a single operation.
         self.application_ids = application_ids
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the EIAM organization.
+        # The organization ID.
         # 
         # This parameter is required.
         self.organizational_unit_id = organizational_unit_id
-        # The number of the page to return.
+        # The page number.
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # The number of entries per page.
         self.page_size = page_size
 
     def validate(self):

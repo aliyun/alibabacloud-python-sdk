@@ -11,15 +11,15 @@ class GetApplicationRoleRequest(DaraModel):
         application_role_id: str = None,
         instance_id: str = None,
     ):
-        # IDaaS的应用资源ID。
+        # The ID of the application.
         # 
         # This parameter is required.
         self.application_id = application_id
-        # 应用角色ID
+        # The ID of the application role.
         # 
         # This parameter is required.
         self.application_role_id = application_role_id
-        # IDaaS EIAM实例的ID。
+        # The ID of the instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id

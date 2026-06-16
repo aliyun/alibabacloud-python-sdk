@@ -10,7 +10,9 @@ class CreateCredentialResponseBody(DaraModel):
         credential_id: str = None,
         request_id: str = None,
     ):
+        # The credential ID.
         self.credential_id = credential_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

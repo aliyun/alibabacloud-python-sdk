@@ -12,17 +12,17 @@ class ListApplicationAccountsRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # IDaaS的应用主键id
+        # The application ID.
         # 
         # This parameter is required.
         self.application_id = application_id
-        # IDaaS EIAM的实例id
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # 当前查询的列表页码，默认为1
+        # The page number.
         self.page_number = page_number
-        # 当前查询的列表页码，默认为20
+        # The number of entries per page.
         self.page_size = page_size
 
     def validate(self):

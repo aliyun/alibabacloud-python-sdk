@@ -10,7 +10,9 @@ class CreateCloudAccountResponseBody(DaraModel):
         cloud_account_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the cloud account.
         self.cloud_account_id = cloud_account_id
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

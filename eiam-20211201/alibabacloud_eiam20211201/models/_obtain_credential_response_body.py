@@ -11,7 +11,9 @@ class ObtainCredentialResponseBody(DaraModel):
         credential: main_models.ObtainCredentialResponseBodyCredential = None,
         request_id: str = None,
     ):
+        # The credential details.
         self.credential = credential
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -63,36 +65,54 @@ class ObtainCredentialResponseBodyCredential(DaraModel):
         status: str = None,
         update_time: int = None,
     ):
-        # 云角色创建时间
+        # The time when the credential was created. This value is a Unix timestamp in milliseconds.
         self.create_time = create_time
-        # 凭据的内容。
+        # The credential content.
         self.credential_content = credential_content
-        # 凭据的创建类型。
+        # The credential creation type. Valid values:
+        # 
+        # - `system_init`: The system created the credential.
+        # 
+        # - `user_custom`: A user created the credential.
         self.credential_creation_type = credential_creation_type
         self.credential_external_id = credential_external_id
-        # 凭据ID。
+        # The credential ID.
         self.credential_id = credential_id
-        # 凭据标识
+        # The credential identifier.
         self.credential_identifier = credential_identifier
-        # 凭据名称
+        # The credential name.
         self.credential_name = credential_name
-        # 凭据的使用场景标签。
+        # The credential scenario label. Valid values:
+        # 
+        # - `llm`: The credential is used for an LLM.
+        # 
+        # - `saas`: The credential is used for a SaaS application.
         self.credential_scenario_label = credential_scenario_label
         self.credential_sharing_scope = credential_sharing_scope
-        # 凭据所属的主体ID。
+        # The credential subject ID.
         self.credential_subject_id = credential_subject_id
-        # 凭据所属的主体类型。
+        # The credential subject type. Valid value:
+        # 
+        # - `authentication_token_provider`: The credential subject is an authentication token provider.
         self.credential_subject_type = credential_subject_type
-        # 凭据类型。
+        # The credential type. Valid values:
+        # 
+        # - `api_key`: An API key.
+        # 
+        # - `oauth_client`: An OAuth 2.0 client credential.
         self.credential_type = credential_type
-        # 描述
+        # The description.
         self.description = description
         self.exclusive_user_id = exclusive_user_id
-        # EIAM实例ID。
+        # The instance ID.
         self.instance_id = instance_id
-        # 凭据状态
+        # The status. Valid values:
+        # 
+        # - `enabled`: The credential can be used.
+        # 
+        # - `disabled`: The credential cannot be used.
         self.status = status
-        # 云角色更新时间
+        # The time when the credential was last updated. This value is a Unix timestamp in milliseconds.
         self.update_time = update_time
 
     def validate(self):
@@ -219,8 +239,9 @@ class ObtainCredentialResponseBodyCredentialCredentialContent(DaraModel):
         api_key_content: main_models.ObtainCredentialResponseBodyCredentialCredentialContentApiKeyContent = None,
         oauth_client_content: main_models.ObtainCredentialResponseBodyCredentialCredentialContentOAuthClientContent = None,
     ):
+        # The details of the API key credential.
         self.api_key_content = api_key_content
-        # OAuth客户端认证凭证类型的凭据内容。
+        # The details of the OAuth 2.0 client credential.
         self.oauth_client_content = oauth_client_content
 
     def validate(self):
@@ -260,8 +281,9 @@ class ObtainCredentialResponseBodyCredentialCredentialContentOAuthClientContent(
         client_id: str = None,
         client_secret: str = None,
     ):
-        # OAuth协议的client_id
+        # The client ID.
         self.client_id = client_id
+        # The client secret.
         self.client_secret = client_secret
 
     def validate(self):
@@ -295,6 +317,7 @@ class ObtainCredentialResponseBodyCredentialCredentialContentApiKeyContent(DaraM
         self,
         api_key: str = None,
     ):
+        # The API key.
         self.api_key = api_key
 
     def validate(self):

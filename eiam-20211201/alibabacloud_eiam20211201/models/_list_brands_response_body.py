@@ -17,14 +17,17 @@ class ListBrandsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # A list of brands.
         self.brands = brands
-        # 分页查询时每页行数。
+        # The number of entries per page.
         self.max_results = max_results
-        # 本次调用返回的查询凭证（Token）值，用于下一次翻页查询。
+        # The token that is used to retrieve the next page of results.
         self.next_token = next_token
-        # 本次调用返回的查询凭证（Token）值，用于上一次翻页查询。
+        # The token that is used to retrieve the previous page of results.
         self.previous_token = previous_token
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -94,15 +97,15 @@ class ListBrandsResponseBodyBrands(DaraModel):
         instance_id: str = None,
         status: str = None,
     ):
-        # 品牌ID
+        # The brand ID.
         self.brand_id = brand_id
-        # 品牌名称
+        # The brand name.
         self.brand_name = brand_name
-        # 品牌类型
+        # The brand type.
         self.brand_type = brand_type
-        # 实例ID。
+        # The instance ID.
         self.instance_id = instance_id
-        # 品牌状态
+        # The brand status.
         self.status = status
 
     def validate(self):

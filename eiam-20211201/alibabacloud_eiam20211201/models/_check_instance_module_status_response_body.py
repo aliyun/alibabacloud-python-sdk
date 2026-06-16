@@ -11,7 +11,9 @@ class CheckInstanceModuleStatusResponseBody(DaraModel):
         module: main_models.CheckInstanceModuleStatusResponseBodyModule = None,
         request_id: str = None,
     ):
+        # Status update information.
         self.module = module
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -47,7 +49,7 @@ class CheckInstanceModuleStatusResponseBodyModule(DaraModel):
         self,
         module_status: str = None,
     ):
-        # 模块状态
+        # The status of the module.
         self.module_status = module_status
 
     def validate(self):

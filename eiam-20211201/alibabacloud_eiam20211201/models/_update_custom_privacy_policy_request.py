@@ -17,15 +17,21 @@ class UpdateCustomPrivacyPolicyRequest(DaraModel):
         instance_id: str = None,
         user_consent_type: str = None,
     ):
+        # The details of the custom privacy policy content.
         self.custom_privacy_policy_contents = custom_privacy_policy_contents
+        # The ID of the custom privacy policy.
+        # 
         # This parameter is required.
         self.custom_privacy_policy_id = custom_privacy_policy_id
+        # The name of the custom privacy policy.
         self.custom_privacy_policy_name = custom_privacy_policy_name
+        # The default language of the policy. The value is the LanguageCode returned by the ListLanguages operation.
         self.default_language_code = default_language_code
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The consent type for the custom privacy policy.
         self.user_consent_type = user_consent_type
 
     def validate(self):
@@ -93,8 +99,11 @@ class UpdateCustomPrivacyPolicyRequestCustomPrivacyPolicyContents(DaraModel):
         custom_privacy_policy_tip: str = None,
         language_code: str = None,
     ):
+        # The items of the custom privacy policy.
         self.custom_privacy_policy_items = custom_privacy_policy_items
+        # The prompt for the custom privacy policy content.
         self.custom_privacy_policy_tip = custom_privacy_policy_tip
+        # The language of the custom privacy policy. The value is the LanguageCode returned by the ListLanguages operation.
         self.language_code = language_code
 
     def validate(self):
@@ -143,7 +152,9 @@ class UpdateCustomPrivacyPolicyRequestCustomPrivacyPolicyContentsCustomPrivacyPo
         custom_privacy_policy_item_name: str = None,
         custom_privacy_policy_item_url: str = None,
     ):
+        # The name of the custom privacy policy item.
         self.custom_privacy_policy_item_name = custom_privacy_policy_item_name
+        # The endpoint of the custom privacy policy item. The value must start with https\\://.
         self.custom_privacy_policy_item_url = custom_privacy_policy_item_url
 
     def validate(self):

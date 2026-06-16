@@ -18,27 +18,27 @@ class CreateNetworkZoneRequest(DaraModel):
         network_zone_type: str = None,
         vpc_id: str = None,
     ):
-        # 保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。ClientToken只支持ASCII字符，且不能超过64个字符。
+        # The idempotence token.
         self.client_token = client_token
-        # 网络区域描述
+        # The description of the network zone.
         self.description = description
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # 网络区域ipv4Cidr
+        # The IPv4 CIDR blocks of the network zone.
         self.ipv_4cidrs = ipv_4cidrs
-        # 网络区域ipv6Cidr
+        # The IPv6 CIDR blocks of the network zone.
         self.ipv_6cidrs = ipv_6cidrs
-        # 网络区域名称
+        # The name of the network zone.
         # 
         # This parameter is required.
         self.network_zone_name = network_zone_name
-        # 网络区域类型
+        # The type of the network zone.
         # 
         # This parameter is required.
         self.network_zone_type = network_zone_type
-        # 专有网络VpcId
+        # The ID of the VPC.
         self.vpc_id = vpc_id
 
     def validate(self):

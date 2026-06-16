@@ -10,6 +10,7 @@ class ListDomainsRequest(DaraModel):
         brand_id: str = None,
         instance_id: str = None,
     ):
+        # The brand ID.
         self.brand_id = brand_id
         # The instance ID.
         # 

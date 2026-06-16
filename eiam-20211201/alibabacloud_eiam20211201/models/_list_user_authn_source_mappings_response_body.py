@@ -17,14 +17,17 @@ class ListUserAuthnSourceMappingsResponseBody(DaraModel):
         total_count: int = None,
         user_authn_source_mappings: List[main_models.ListUserAuthnSourceMappingsResponseBodyUserAuthnSourceMappings] = None,
     ):
-        # 分页查询时每页行数。
+        # The maximum number of entries returned on each page.
         self.max_results = max_results
-        # 本次调用返回的查询凭证（Token）值，用于下一次翻页查询。
+        # The token to retrieve the next page of results.
         self.next_token = next_token
-        # 本次调用返回的查询凭证（Token）值，用于上一次翻页查询。
+        # The token to retrieve the previous page of results.
         self.previous_token = previous_token
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
+        # A list of bindings for third-party account logons.
         self.user_authn_source_mappings = user_authn_source_mappings
 
     def validate(self):
@@ -97,20 +100,21 @@ class ListUserAuthnSourceMappingsResponseBodyUserAuthnSourceMappings(DaraModel):
         user_external_id: str = None,
         user_id: str = None,
     ):
-        # 来源Idp类型
+        # The authentication source type.
         self.authn_source_type = authn_source_type
-        # 创建时间
+        # The time when the binding was created.
         self.create_time = create_time
+        # Information about the associated third-party account.
         self.external_data = external_data
-        # 来源Idp Id
+        # The source IdP ID.
         self.identity_provider_id = identity_provider_id
-        # 实例Id
+        # The instance ID.
         self.instance_id = instance_id
-        # 最近一次更新时间
+        # The time when the binding was last updated.
         self.update_time = update_time
-        # 外部ID
+        # The external ID.
         self.user_external_id = user_external_id
-        # 用户ID
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):

@@ -16,12 +16,15 @@ class ListCloudAccountRolesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of cloud roles.
         self.cloud_account_roles = cloud_account_roles
-        # 分页查询时每页行数。
+        # The number of entries returned per page.
         self.max_results = max_results
-        # 本次调用返回的查询凭证（Token）值，用于下一次翻页查询。
+        # The query token returned in this call.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -93,28 +96,47 @@ class ListCloudAccountRolesResponseBodyCloudAccountRoles(DaraModel):
         status: str = None,
         update_time: int = None,
     ):
-        # 云账号ID
+        # The ID of the Alibaba Cloud account.
         self.cloud_account_id = cloud_account_id
-        # 云账号角色外部唯一ID
+        # The external ID for the cloud role.
         self.cloud_account_role_external_id = cloud_account_role_external_id
-        # 云账号角色可用性
+        # The health status of the cloud role. Valid values:
+        # 
+        # - healthy: The role is healthy.
+        # 
+        # - unhealthy: The role is unhealthy.
+        # 
+        # - unknown: The health status is unknown.
         self.cloud_account_role_health = cloud_account_role_health
+        # The result of the health check for the cloud role.
         self.cloud_account_role_health_check_result = cloud_account_role_health_check_result
-        # 云账号角色ID
+        # The ID of the cloud role.
         self.cloud_account_role_id = cloud_account_role_id
-        # 云账号名称
+        # The name of the cloud role.
         self.cloud_account_role_name = cloud_account_role_name
-        # 云账号角色用途
+        # The type of the cloud role. The format of the role type varies based on the type of the cloud account. The following value is supported:
+        # 
+        # - role: This value applies to Alibaba Cloud accounts.
         self.cloud_account_role_type = cloud_account_role_type
-        # 云账号角色类别
+        # The usage type of the cloud role. Valid values:
+        # 
+        # - system: The role is used by the system.
+        # 
+        # - user: The role is used by a user.
         self.cloud_account_role_usage_type = cloud_account_role_usage_type
+        # The time when the role was created. This is a UNIX timestamp. Unit: milliseconds.
         self.create_time = create_time
-        # 云账号描述
+        # The description of the cloud role.
         self.description = description
-        # IDaaS EIAM 实例Id
+        # The instance ID.
         self.instance_id = instance_id
-        # 云账号角色状态
+        # The status of the cloud role. Valid values:
+        # 
+        # - enabled: The role is enabled.
+        # 
+        # - disabled: The role is disabled.
         self.status = status
+        # The time when the role was last updated. This is a UNIX timestamp. Unit: milliseconds.
         self.update_time = update_time
 
     def validate(self):
@@ -218,8 +240,15 @@ class ListCloudAccountRolesResponseBodyCloudAccountRolesCloudAccountRoleHealthCh
         last_check_time: int = None,
         result: str = None,
     ):
+        # The reason for the error. This parameter is returned when the health check status is unhealthy.
         self.error_reason = error_reason
+        # The time of the last health check. This is a UNIX timestamp. Unit: milliseconds.
         self.last_check_time = last_check_time
+        # The result of the health check. Valid values:
+        # 
+        # - success: The health check was successful.
+        # 
+        # - failed: The health check failed.
         self.result = result
 
     def validate(self):
@@ -262,7 +291,9 @@ class ListCloudAccountRolesResponseBodyCloudAccountRolesCloudAccountRoleHealthCh
         error_code: str = None,
         error_message: str = None,
     ):
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_message = error_message
 
     def validate(self):

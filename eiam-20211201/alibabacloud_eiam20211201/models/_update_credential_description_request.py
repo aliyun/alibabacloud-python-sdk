@@ -12,17 +12,17 @@ class UpdateCredentialDescriptionRequest(DaraModel):
         description: str = None,
         instance_id: str = None,
     ):
-        # 保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。ClientToken只支持ASCII字符，且不能超过64个字符。
+        # Ensures idempotence. Generate a unique value on your client for each request. The ClientToken value must contain only ASCII characters and cannot exceed 64 characters. For more information, see [How to Ensure Idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
         # 
         # This parameter is required.
         self.client_token = client_token
-        # 凭据ID。
+        # The ID of the credential.
         # 
         # This parameter is required.
         self.credential_id = credential_id
-        # 描述
+        # The description of the credential.
         self.description = description
-        # IDaaS EIAM实例的ID。
+        # The ID of the instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id

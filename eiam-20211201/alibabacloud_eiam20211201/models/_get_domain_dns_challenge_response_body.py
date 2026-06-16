@@ -11,7 +11,7 @@ class GetDomainDnsChallengeResponseBody(DaraModel):
         domain_dns_challenge: main_models.GetDomainDnsChallengeResponseBodyDomainDnsChallenge = None,
         request_id: str = None,
     ):
-        # The DNS challenge records.
+        # The DNS Challenge record.
         self.domain_dns_challenge = domain_dns_challenge
         # The request ID.
         self.request_id = request_id
@@ -51,11 +51,11 @@ class GetDomainDnsChallengeResponseBodyDomainDnsChallenge(DaraModel):
         dns_challenge_value: str = None,
         dns_type: str = None,
     ):
-        # The name of the DNS challenge record.
+        # The name of the DNS Challenge.
         self.dns_challenge_name = dns_challenge_name
-        # The value of the DNS challenge record.
+        # The value of the DNS Challenge.
         self.dns_challenge_value = dns_challenge_value
-        # The type of the DNS challenge record.
+        # The type of the DNS record.
         self.dns_type = dns_type
 
     def validate(self):

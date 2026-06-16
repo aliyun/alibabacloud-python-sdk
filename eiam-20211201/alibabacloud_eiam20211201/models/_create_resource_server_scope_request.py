@@ -14,24 +14,25 @@ class CreateResourceServerScopeRequest(DaraModel):
         resource_server_scope_type: str = None,
         resource_server_scope_value: str = None,
     ):
-        # IDaaS的应用资源ID。
+        # The application ID.
         # 
         # This parameter is required.
         self.application_id = application_id
+        # The authorization type. This parameter is required for user permissions.
         self.authorization_type = authorization_type
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # 权限名称
+        # The name of the scope permission.
         # 
         # This parameter is required.
         self.resource_server_scope_name = resource_server_scope_name
-        # 权限类型
+        # The type of the scope permission.
         # 
         # This parameter is required.
         self.resource_server_scope_type = resource_server_scope_type
-        # 权限值，大小写不敏感，格式(${ResourceType}:${ResourceOption}:${ResourceRestrict})
+        # The value of the scope permission.
         # 
         # This parameter is required.
         self.resource_server_scope_value = resource_server_scope_value

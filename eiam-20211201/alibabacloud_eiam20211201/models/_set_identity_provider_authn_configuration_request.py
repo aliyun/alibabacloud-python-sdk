@@ -17,20 +17,21 @@ class SetIdentityProviderAuthnConfigurationRequest(DaraModel):
         instance_id: str = None,
         ldap_authn_config: main_models.SetIdentityProviderAuthnConfigurationRequestLdapAuthnConfig = None,
     ):
-        # 自动创建账户账户规则配置。
+        # Automatic Account Creation Rule Configuration.
         self.auto_create_user_config = auto_create_user_config
+        # Automatic Account Update Configuration
         self.auto_update_user_config = auto_update_user_config
-        # 账户绑定规则配置
+        # Account Binding Rule Configuration
         self.binding_config = binding_config
-        # IDaaS的身份提供方主键id
+        # Identity Provider ID
         # 
         # This parameter is required.
         self.identity_provider_id = identity_provider_id
-        # IDaaS EIAM实例的ID。
+        # Instance ID
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # AD/LDAP配置
+        # AD/LDAP Authentication Configuration
         self.ldap_authn_config = ldap_authn_config
 
     def validate(self):
@@ -101,11 +102,11 @@ class SetIdentityProviderAuthnConfigurationRequestLdapAuthnConfig(DaraModel):
         user_login_identifier: str = None,
         user_object_class: str = None,
     ):
-        # 是否支持自动更新密码
+        # Specifies whether to automatically update passwords.
         self.auto_update_password_status = auto_update_password_status
-        # 用户登录标识
+        # User Login Identifier
         self.user_login_identifier = user_login_identifier
-        # 用户ObjectClass
+        # User ObjectClass
         self.user_object_class = user_object_class
 
     def validate(self):
@@ -147,11 +148,11 @@ class SetIdentityProviderAuthnConfigurationRequestBindingConfig(DaraModel):
         auto_match_user_status: str = None,
         mapping_binding_status: str = None,
     ):
-        # 自动匹配账户的规则
+        # Rules for automatic account matching.
         self.auto_match_user_profile_expressions = auto_match_user_profile_expressions
-        # 自动匹配账户是否开启
+        # Automatic account matching status.
         self.auto_match_user_status = auto_match_user_status
-        # 用户手动绑定账户功能是否开启
+        # Specifies whether the manual account binding feature is enabled.
         self.mapping_binding_status = mapping_binding_status
 
     def validate(self):
@@ -202,19 +203,19 @@ class SetIdentityProviderAuthnConfigurationRequestBindingConfigAutoMatchUserProf
         target_field: str = None,
         target_field_description: str = None,
     ):
-        # 表达式的类型
+        # Type of expression.
         # 
         # This parameter is required.
         self.expression_mapping_type = expression_mapping_type
-        # 映射属性取值表达式
+        # Expression for mapping attribute value.
         # 
         # This parameter is required.
         self.source_value_expression = source_value_expression
-        # 映射目标属性名称
+        # Target attribute name for mapping.
         # 
         # This parameter is required.
         self.target_field = target_field
-        # 映射目标属性名称
+        # Target attribute name for mapping.
         self.target_field_description = target_field_description
 
     def validate(self):
@@ -260,6 +261,7 @@ class SetIdentityProviderAuthnConfigurationRequestAutoUpdateUserConfig(DaraModel
         self,
         auto_update_user_status: str = None,
     ):
+        # Specifies whether to enable automatic account updates.
         self.auto_update_user_status = auto_update_user_status
 
     def validate(self):
@@ -288,8 +290,9 @@ class SetIdentityProviderAuthnConfigurationRequestAutoCreateUserConfig(DaraModel
         auto_create_user_status: str = None,
         target_organizational_unit_ids: List[str] = None,
     ):
-        # 自动创建账户是否开启
+        # Automatic account creation status.
         self.auto_create_user_status = auto_create_user_status
+        # Organization ID
         self.target_organizational_unit_ids = target_organizational_unit_ids
 
     def validate(self):

@@ -10,11 +10,11 @@ class GenerateDownloadUrlForSynchronizationJobRequest(DaraModel):
         instance_id: str = None,
         synchronization_job_id: str = None,
     ):
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # 同步任务ID
+        # The ID of the sync task.
         # 
         # This parameter is required.
         self.synchronization_job_id = synchronization_job_id

@@ -12,17 +12,17 @@ class CreateApplicationTokenRequest(DaraModel):
         expiration_time: int = None,
         instance_id: str = None,
     ):
-        # IDaaS的应用资源ID。
+        # The application ID.
         # 
         # This parameter is required.
         self.application_id = application_id
-        # 应用token类型
+        # The application token type.
         # 
         # This parameter is required.
         self.application_token_type = application_token_type
-        # 不填，默认1年后到期
+        # The expiration time.
         self.expiration_time = expiration_time
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id

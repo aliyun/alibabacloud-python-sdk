@@ -11,9 +11,9 @@ class CreateApplicationClientSecretResponseBody(DaraModel):
         application_client_secret: main_models.CreateApplicationClientSecretResponseBodyApplicationClientSecret = None,
         request_id: str = None,
     ):
-        # The information about the client key.
+        # The information about the client secret.
         self.application_client_secret = application_client_secret
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -53,9 +53,9 @@ class CreateApplicationClientSecretResponseBodyApplicationClientSecret(DaraModel
     ):
         # The client ID of the application.
         self.client_id = client_id
-        # The client key secret of the application.
+        # The value of the client secret.
         self.client_secret = client_secret
-        # The client key ID of the application.
+        # The ID of the client secret.
         self.secret_id = secret_id
 
     def validate(self):

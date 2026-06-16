@@ -19,21 +19,23 @@ class UpdateApplicationInfoRequest(DaraModel):
         instance_id: str = None,
         logo_url: str = None,
     ):
-        # IDaaS的应用主键id
+        # The application ID.
         # 
         # This parameter is required.
         self.application_id = application_id
-        # 应用的表示名称
+        # The application name.
         self.application_name = application_name
         self.application_owner = application_owner
+        # The collection of application visibility settings.
         self.application_visibility = application_visibility
+        # The idempotent token.
         self.client_token = client_token
         self.custom_fields = custom_fields
-        # IDaaS EIAM的实例id
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # 应用Logo地址
+        # The URL of the application logo.
         self.logo_url = logo_url
 
     def validate(self):

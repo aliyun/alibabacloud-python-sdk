@@ -13,7 +13,9 @@ class ListNetworkAccessEndpointAvailableZonesResponseBody(DaraModel):
         request_id: str = None,
         zones: List[main_models.ListNetworkAccessEndpointAvailableZonesResponseBodyZones] = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The list of zones that support network endpoints in the current region.
         self.zones = zones
 
     def validate(self):
@@ -56,9 +58,9 @@ class ListNetworkAccessEndpointAvailableZonesResponseBodyZones(DaraModel):
         local_name: str = None,
         zone_id: str = None,
     ):
-        # 可用区名称。
+        # The name of the zone.
         self.local_name = local_name
-        # 可用区ID。
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):

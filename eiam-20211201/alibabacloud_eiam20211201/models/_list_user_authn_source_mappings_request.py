@@ -15,21 +15,21 @@ class ListUserAuthnSourceMappingsRequest(DaraModel):
         user_external_id: str = None,
         user_id: str = None,
     ):
-        # 来源Idp Id
+        # The ID of the source identity provider (IdP).
         self.identity_provider_id = identity_provider_id
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # 分页查询时每页行数。默认值为20，最大值为100。
+        # The maximum number of entries to return on each page.
         self.max_results = max_results
-        # 查询凭证（Token），取值为上一次API调用返回的NextToken参数值。
+        # The query token.
         self.next_token = next_token
-        # 查询上一页凭证（Token），取值为上一次API调用返回的previousToken参数值。
+        # The token for the previous page of results.
         self.previous_token = previous_token
-        # 外部关联ID
+        # The external ID.
         self.user_external_id = user_external_id
-        # 用户ID
+        # The user ID.
         # 
         # This parameter is required.
         self.user_id = user_id

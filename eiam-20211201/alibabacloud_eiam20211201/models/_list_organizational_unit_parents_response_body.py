@@ -13,7 +13,7 @@ class ListOrganizationalUnitParentsResponseBody(DaraModel):
         parents: List[main_models.ListOrganizationalUnitParentsResponseBodyParents] = None,
         request_id: str = None,
     ):
-        # The parent organizations.
+        # The list of parent organizational units.
         self.parents = parents
         # The request ID.
         self.request_id = request_id
@@ -58,9 +58,9 @@ class ListOrganizationalUnitParentsResponseBodyParents(DaraModel):
         organizational_unit_id: str = None,
         parent_id: str = None,
     ):
-        # The organization ID.
+        # The organizational unit ID.
         self.organizational_unit_id = organizational_unit_id
-        # The parent organization ID.
+        # The parent organizational unit ID.
         self.parent_id = parent_id
 
     def validate(self):

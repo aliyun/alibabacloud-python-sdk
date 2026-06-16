@@ -11,7 +11,9 @@ class GetCredentialResponseBody(DaraModel):
         credential: main_models.GetCredentialResponseBodyCredential = None,
         request_id: str = None,
     ):
+        # The credential details.
         self.credential = credential
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -63,36 +65,54 @@ class GetCredentialResponseBodyCredential(DaraModel):
         status: str = None,
         update_time: int = None,
     ):
-        # 云角色创建时间
+        # The creation time of the credential, in Unix timestamp format (milliseconds).
         self.create_time = create_time
-        # 凭据的内容。
+        # The content of the credential.
         self.credential_content = credential_content
-        # 凭据的创建类型。
+        # How the credential was created. Valid values:
+        # 
+        # - `system_init`: The credential was created by the system.
+        # 
+        # - `user_custom`: The credential was created by a user.
         self.credential_creation_type = credential_creation_type
         self.credential_external_id = credential_external_id
-        # 凭据ID。
+        # The ID of the credential.
         self.credential_id = credential_id
-        # 凭据标识
+        # The identifier of the credential.
         self.credential_identifier = credential_identifier
-        # 凭据名称
+        # The name of the credential.
         self.credential_name = credential_name
-        # 凭据的使用场景标签。
+        # The use case of the credential. Valid values:
+        # 
+        # - `llm`: a large language model (LLM).
+        # 
+        # - `saas`: a third-party Software as a Service (SaaS) application.
         self.credential_scenario_label = credential_scenario_label
         self.credential_sharing_scope = credential_sharing_scope
-        # 凭据所属的主体ID。
+        # The ID of the subject that owns the credential.
         self.credential_subject_id = credential_subject_id
-        # 凭据所属的主体类型。
+        # The type of the subject that owns the credential. Valid value:
+        # 
+        # - `authentication_token_provider`: The subject is an authentication token provider.
         self.credential_subject_type = credential_subject_type
-        # 凭据类型。
+        # The type of the credential. Valid values:
+        # 
+        # - `api_key`: An API key.
+        # 
+        # - `oauth_client`: An OAuth client.
         self.credential_type = credential_type
-        # 描述
+        # The user-defined description of the credential.
         self.description = description
         self.exclusive_user_id = exclusive_user_id
-        # EIAM实例ID。
+        # The ID of the instance.
         self.instance_id = instance_id
-        # 凭据状态
+        # The status of the credential. Valid values:
+        # 
+        # - `enabled`: The credential is active.
+        # 
+        # - `disabled`: The credential is inactive.
         self.status = status
-        # 云角色更新时间
+        # The time the credential was last updated, in Unix timestamp format (milliseconds).
         self.update_time = update_time
 
     def validate(self):
@@ -218,7 +238,7 @@ class GetCredentialResponseBodyCredentialCredentialContent(DaraModel):
         self,
         oauth_client_content: main_models.GetCredentialResponseBodyCredentialCredentialContentOAuthClientContent = None,
     ):
-        # OAuth客户端认证凭证类型的凭据内容。
+        # The credential content for an OAuth client. This parameter is returned only when `CredentialType` is `oauth_client`.
         self.oauth_client_content = oauth_client_content
 
     def validate(self):
@@ -248,7 +268,7 @@ class GetCredentialResponseBodyCredentialCredentialContentOAuthClientContent(Dar
         self,
         client_id: str = None,
     ):
-        # OAuth协议的client_id
+        # The OAuth client ID.
         self.client_id = client_id
 
     def validate(self):

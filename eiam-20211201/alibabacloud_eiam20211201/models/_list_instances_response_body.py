@@ -14,11 +14,11 @@ class ListInstancesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The information of instances.
+        # The list of instance information.
         self.instances = instances
-        # The request ID.
+        # Request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # Total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -65,32 +65,43 @@ class ListInstancesResponseBodyInstances(DaraModel):
     def __init__(
         self,
         create_time: int = None,
+        cross_region_replication: str = None,
+        cross_region_replication_role: str = None,
         default_endpoint: main_models.ListInstancesResponseBodyInstancesDefaultEndpoint = None,
         description: str = None,
+        instance_failover_status: str = None,
         instance_id: str = None,
         managed_service_code: str = None,
+        replication_configuration: main_models.ListInstancesResponseBodyInstancesReplicationConfiguration = None,
         service_managed: bool = None,
         status: str = None,
     ):
-        # The time when the instance was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The creation time of the instance, in Unix timestamp format, in milliseconds.
         self.create_time = create_time
+        self.cross_region_replication = cross_region_replication
+        self.cross_region_replication_role = cross_region_replication_role
         # The default endpoint of the instance.
         self.default_endpoint = default_endpoint
         # The description of the instance.
         self.description = description
-        # The instance ID.
+        self.instance_failover_status = instance_failover_status
+        # Instance ID.
         self.instance_id = instance_id
+        # The service code of the cloud service that manages the instance.
         self.managed_service_code = managed_service_code
+        self.replication_configuration = replication_configuration
+        # Indicates whether the instance is managed by a cloud service.
         self.service_managed = service_managed
-        # The status of the instance. Valid values:
-        # 
-        # *   creating
-        # *   running
+        # Instance status. Valid values:
+        # - creating: Being created.
+        # - running: Running.
         self.status = status
 
     def validate(self):
         if self.default_endpoint:
             self.default_endpoint.validate()
+        if self.replication_configuration:
+            self.replication_configuration.validate()
 
     def to_map(self):
         result = dict()
@@ -100,17 +111,29 @@ class ListInstancesResponseBodyInstances(DaraModel):
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
 
+        if self.cross_region_replication is not None:
+            result['CrossRegionReplication'] = self.cross_region_replication
+
+        if self.cross_region_replication_role is not None:
+            result['CrossRegionReplicationRole'] = self.cross_region_replication_role
+
         if self.default_endpoint is not None:
             result['DefaultEndpoint'] = self.default_endpoint.to_map()
 
         if self.description is not None:
             result['Description'] = self.description
 
+        if self.instance_failover_status is not None:
+            result['InstanceFailoverStatus'] = self.instance_failover_status
+
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
 
         if self.managed_service_code is not None:
             result['ManagedServiceCode'] = self.managed_service_code
+
+        if self.replication_configuration is not None:
+            result['ReplicationConfiguration'] = self.replication_configuration.to_map()
 
         if self.service_managed is not None:
             result['ServiceManaged'] = self.service_managed
@@ -125,6 +148,12 @@ class ListInstancesResponseBodyInstances(DaraModel):
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
 
+        if m.get('CrossRegionReplication') is not None:
+            self.cross_region_replication = m.get('CrossRegionReplication')
+
+        if m.get('CrossRegionReplicationRole') is not None:
+            self.cross_region_replication_role = m.get('CrossRegionReplicationRole')
+
         if m.get('DefaultEndpoint') is not None:
             temp_model = main_models.ListInstancesResponseBodyInstancesDefaultEndpoint()
             self.default_endpoint = temp_model.from_map(m.get('DefaultEndpoint'))
@@ -132,11 +161,18 @@ class ListInstancesResponseBodyInstances(DaraModel):
         if m.get('Description') is not None:
             self.description = m.get('Description')
 
+        if m.get('InstanceFailoverStatus') is not None:
+            self.instance_failover_status = m.get('InstanceFailoverStatus')
+
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
 
         if m.get('ManagedServiceCode') is not None:
             self.managed_service_code = m.get('ManagedServiceCode')
+
+        if m.get('ReplicationConfiguration') is not None:
+            temp_model = main_models.ListInstancesResponseBodyInstancesReplicationConfiguration()
+            self.replication_configuration = temp_model.from_map(m.get('ReplicationConfiguration'))
 
         if m.get('ServiceManaged') is not None:
             self.service_managed = m.get('ServiceManaged')
@@ -146,18 +182,76 @@ class ListInstancesResponseBodyInstances(DaraModel):
 
         return self
 
+class ListInstancesResponseBodyInstancesReplicationConfiguration(DaraModel):
+    def __init__(
+        self,
+        backup_instance_id: str = None,
+        backup_instance_region_id: str = None,
+        primary_instance_id: str = None,
+        primary_instance_region_id: str = None,
+        replication_create_time: int = None,
+    ):
+        self.backup_instance_id = backup_instance_id
+        self.backup_instance_region_id = backup_instance_region_id
+        self.primary_instance_id = primary_instance_id
+        self.primary_instance_region_id = primary_instance_region_id
+        self.replication_create_time = replication_create_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.backup_instance_id is not None:
+            result['BackupInstanceId'] = self.backup_instance_id
+
+        if self.backup_instance_region_id is not None:
+            result['BackupInstanceRegionId'] = self.backup_instance_region_id
+
+        if self.primary_instance_id is not None:
+            result['PrimaryInstanceId'] = self.primary_instance_id
+
+        if self.primary_instance_region_id is not None:
+            result['PrimaryInstanceRegionId'] = self.primary_instance_region_id
+
+        if self.replication_create_time is not None:
+            result['ReplicationCreateTime'] = self.replication_create_time
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BackupInstanceId') is not None:
+            self.backup_instance_id = m.get('BackupInstanceId')
+
+        if m.get('BackupInstanceRegionId') is not None:
+            self.backup_instance_region_id = m.get('BackupInstanceRegionId')
+
+        if m.get('PrimaryInstanceId') is not None:
+            self.primary_instance_id = m.get('PrimaryInstanceId')
+
+        if m.get('PrimaryInstanceRegionId') is not None:
+            self.primary_instance_region_id = m.get('PrimaryInstanceRegionId')
+
+        if m.get('ReplicationCreateTime') is not None:
+            self.replication_create_time = m.get('ReplicationCreateTime')
+
+        return self
+
 class ListInstancesResponseBodyInstancesDefaultEndpoint(DaraModel):
     def __init__(
         self,
         endpoint: str = None,
         status: str = None,
     ):
-        # The endpoint of the instance.
+        # The endpoint address of the instance.
         self.endpoint = endpoint
-        # The status of the endpoint. Valid values:
-        # 
-        # *   resolved
-        # *   unresolved
+        # The status of the instance endpoint. Valid values:
+        # - resolved: Resolved.
+        # - unresolved: Unresolved.
         self.status = status
 
     def validate(self):

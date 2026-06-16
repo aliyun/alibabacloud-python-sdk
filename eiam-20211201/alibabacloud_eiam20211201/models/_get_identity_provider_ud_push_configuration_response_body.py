@@ -13,7 +13,9 @@ class GetIdentityProviderUdPushConfigurationResponseBody(DaraModel):
         request_id: str = None,
         ud_push_configuration: main_models.GetIdentityProviderUdPushConfigurationResponseBodyUdPushConfiguration = None,
     ):
+        # Request ID
         self.request_id = request_id
+        # Outbound synchronization configuration
         self.ud_push_configuration = ud_push_configuration
 
     def validate(self):
@@ -55,16 +57,19 @@ class GetIdentityProviderUdPushConfigurationResponseBodyUdPushConfiguration(Dara
         periodic_sync_status: str = None,
         ud_sync_scope_configs: List[main_models.GetIdentityProviderUdPushConfigurationResponseBodyUdPushConfigurationUdSyncScopeConfigs] = None,
     ):
-        # IDaaS EIAM 身份提供方ID
+        # Identity provider ID
         self.identity_provider_id = identity_provider_id
-        # 增量回调状态，是否处理来自IdP的增量回调数据
+        # Incremental callback status. Indicates whether incremental callback data from the IdP is processed.
         self.incremental_callback_status = incremental_callback_status
-        # IDaaS EIAM 实例Id
+        # Instance ID
         self.instance_id = instance_id
+        # LDAP synchronization-side configuration
         self.ldap_ud_push_config = ldap_ud_push_config
+        # Periodic verification configuration
         self.periodic_sync_config = periodic_sync_config
+        # Periodic verification status
         self.periodic_sync_status = periodic_sync_status
-        # 同步出配置信息
+        # Outbound synchronization configuration details
         self.ud_sync_scope_configs = ud_sync_scope_configs
 
     def validate(self):
@@ -143,9 +148,9 @@ class GetIdentityProviderUdPushConfigurationResponseBodyUdPushConfigurationUdSyn
         source_scopes: List[str] = None,
         target_scope: str = None,
     ):
-        # 同步来源节点
+        # Source nodes for synchronization
         self.source_scopes = source_scopes
-        # 同步目标节点
+        # Target node for synchronization
         self.target_scope = target_scope
 
     def validate(self):
@@ -181,8 +186,11 @@ class GetIdentityProviderUdPushConfigurationResponseBodyUdPushConfigurationPerio
         periodic_sync_times: List[str] = None,
         periodic_sync_type: str = None,
     ):
+        # Cron expression
         self.periodic_sync_cron = periodic_sync_cron
+        # Collection of time points
         self.periodic_sync_times = periodic_sync_times
+        # Type
         self.periodic_sync_type = periodic_sync_type
 
     def validate(self):
@@ -226,10 +234,15 @@ class GetIdentityProviderUdPushConfigurationResponseBodyUdPushConfigurationLdapU
         user_object_class: str = None,
         user_rdn: str = None,
     ):
+        # Organization ObjectClass
         self.organization_unit_object_class = organization_unit_object_class
+        # Organization RDN
         self.organizational_unit_rdn = organizational_unit_rdn
+        # Password synchronization status
         self.password_sync_status = password_sync_status
+        # User ObjectClass
         self.user_object_class = user_object_class
+        # User RDN
         self.user_rdn = user_rdn
 
     def validate(self):

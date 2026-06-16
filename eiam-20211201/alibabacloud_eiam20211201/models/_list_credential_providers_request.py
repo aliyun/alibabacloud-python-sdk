@@ -18,20 +18,21 @@ class ListCredentialProvidersRequest(DaraModel):
         next_token: str = None,
         statuses: List[str] = None,
     ):
-        # 认证令牌提供商ID列表。
+        # List of credential provider IDs.
         self.credential_provider_ids = credential_provider_ids
-        # 认证令牌提供商类型列表。
+        # List of credential provider types.
         self.credential_provider_types = credential_provider_types
+        # List of filter conditions.
         self.filter = filter
-        # IDaaS EIAM实例的ID。
+        # Instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # 分页查询时每页行数。默认值为20，最大值为100。
+        # Page size for paged queries.
         self.max_results = max_results
-        # 查询凭证（Token），取值为上一次API调用返回的NextToken参数值。
+        # Query token.
         self.next_token = next_token
-        # 认证令牌提供商状态列表。
+        # List of credential provider statuses.
         self.statuses = statuses
 
     def validate(self):
@@ -104,7 +105,13 @@ class ListCredentialProvidersRequestFilter(DaraModel):
         name: str = None,
         value: List[str] = None,
     ):
+        # Filter condition name. Valid values:
+        # 
+        # - CredentialProviderName: Credential provider name.
+        # 
+        # - CredentialProviderIdentifier: Credential provider identifier.
         self.name = name
+        # List of filter condition values.
         self.value = value
 
     def validate(self):

@@ -55,9 +55,7 @@ class CreateConditionalAccessPolicyRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # Priority of the conditional access policy, lower values indicate higher priority
-        # Minimum value: 1
-        # Maximum value: 100
+        # Priority of the conditional access policy, lower values indicate higher priority Minimum value: 1 Maximum value: 100
         self.priority = priority
 
     def validate(self):
@@ -153,22 +151,29 @@ class CreateConditionalAccessPolicyRequestDecisionConfig(DaraModel):
         # Decision action for the conditional access policy, with the following options:
         # 
         # - allow: Allow.
+        # 
         # - deny: Deny.
         self.effect = effect
         # Re-authentication interval (in seconds) for the conditional access policy
         # 
         # - Maximum MFA re-authentication interval: 86400
+        # 
         # - Minimum MFA re-authentication interval: 300
         self.mfa_authentication_interval_seconds = mfa_authentication_interval_seconds
         # Allowed MFA types for the conditional access policy, with the following options:
+        # 
         # - ia_otp_sms: SMS verification code
+        # 
         # - ia_otp_email: Email verification code
+        # 
         # - ia_totp: OTP dynamic password
+        # 
         # - ia_webauthn: WebAuthn
         self.mfa_authentication_methods = mfa_authentication_methods
         # MFA type for the conditional access policy, with the following options:
         # 
         # - directly_access: Direct access
+        # 
         # - mfa_required: MFA required
         self.mfa_type = mfa_type
 

@@ -16,19 +16,23 @@ class UpdateCredentialProviderRequest(DaraModel):
         credential_provider_name: str = None,
         instance_id: str = None,
     ):
-        # 保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。ClientToken只支持ASCII字符，且不能超过64个字符。
+        # An idempotency token that ensures request idempotence.
+        # 
+        # Generate a unique value on your client for each request. ClientToken supports only ASCII characters and must be no longer than 64 characters. For more information, see [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
         # 
         # This parameter is required.
         self.client_token = client_token
-        # 认证令牌提供商的配置。
+        # The configuration of the credential provider.
         self.credential_provider_config = credential_provider_config
-        # 认证令牌提供商ID。
+        # The ID of the credential provider.
         # 
         # This parameter is required.
         self.credential_provider_id = credential_provider_id
-        # 认证令牌提供商名称。
+        # The name of the credential provider.
+        # 
+        # > The name must be no longer than 64 characters.
         self.credential_provider_name = credential_provider_name
-        # IDaaS EIAM实例的ID。
+        # The ID of the instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -85,9 +89,9 @@ class UpdateCredentialProviderRequestCredentialProviderConfig(DaraModel):
         jwt_provider_config: main_models.UpdateCredentialProviderRequestCredentialProviderConfigJwtProviderConfig = None,
         oauth_provider_config: main_models.UpdateCredentialProviderRequestCredentialProviderConfigOAuthProviderConfig = None,
     ):
-        # JWT身份提供商配置。
+        # The configuration for a JWT credential provider.
         self.jwt_provider_config = jwt_provider_config
-        # OAuth 2LO机用类型的提供商的配置。
+        # The configuration for an OAuth credential provider.
         self.oauth_provider_config = oauth_provider_config
 
     def validate(self):
@@ -128,11 +132,33 @@ class UpdateCredentialProviderRequestCredentialProviderConfigOAuthProviderConfig
         scope: str = None,
         token_endpoint: str = None,
     ):
-        # OAuth协议中的client_secret，客户端密钥。
+        # The client secret defined in the OAuth protocol.
+        # 
+        # > The value must be no longer than 1024 characters.
         self.client_secret = client_secret
-        # OAuth协议中的scope，权限范围。
+        # The scope defined in the OAuth protocol.
+        # 
+        # > If you do not specify the scope parameter when calling the DeveloperAPI to get an OAuth access token, the scope configured for the credential provider is used as the default.
+        # 
+        # >Notice: 
+        # 
+        # Separate multiple scope values with spaces. To clear the scope configuration, pass an empty string.
+        # 
+        # 
+        # 
+        # Rules for a single scope value:
+        # 
+        # 1. Allowed characters: lowercase letters, digits, and special characters `|/:_-.`
+        # 
+        # 2. Must contain at least one lowercase letter or digit.
+        # 
+        # 3. Must start with a special character `.`, a lowercase letter, or a digit.
+        # 
+        # 4. Must be no longer than 1024 characters.
         self.scope = scope
-        # OAuth协议的Token端点。
+        # The token endpoint defined in the OAuth protocol.
+        # 
+        # > The value must start with `http://` or `https://`. It must be no longer than 1024 characters.
         self.token_endpoint = token_endpoint
 
     def validate(self):
@@ -175,13 +201,19 @@ class UpdateCredentialProviderRequestCredentialProviderConfigJwtProviderConfig(D
         expiration: int = None,
         expiration_cleanup_enabled: bool = None,
     ):
-        # 签发出的JWT中的issuer字段的允许列表。
+        # A list of allowed JWT issuers.
+        # 
+        # > The list must contain no more than 200 items.
+        # 
+        # >Notice: 
+        # 
+        # To clear the issuer list, pass an empty array or an empty string.
         self.allowed_token_issuers = allowed_token_issuers
-        # 是否开启JWT派生短令牌能力。
+        # Whether to enable derived short tokens for JWTs.
         self.derived_short_token_enabled = derived_short_token_enabled
-        # JWT的有效时长，单位秒。
+        # The validity period of the JWT, in seconds.
         self.expiration = expiration
-        # 是否开启JWT过期清理。
+        # Whether to enable JWT expiration cleanup.
         self.expiration_cleanup_enabled = expiration_cleanup_enabled
 
     def validate(self):

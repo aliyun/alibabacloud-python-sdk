@@ -13,7 +13,9 @@ class GetCustomFieldResponseBody(DaraModel):
         custom_field: main_models.GetCustomFieldResponseBodyCustomField = None,
         request_id: str = None,
     ):
+        # Custom field information.
         self.custom_field = custom_field
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -65,39 +67,39 @@ class GetCustomFieldResponseBodyCustomField(DaraModel):
         update_time: int = None,
         user_permission: str = None,
     ):
-        # 扩展字段创建时间，Unix时间戳格式，单位为毫秒
+        # The creation time of the custom field, in UNIX timestamp format in milliseconds.
         self.create_time = create_time
-        # 字段默认值
+        # The default value of the field.
         self.default_value = default_value
-        # 扩展字段描述
+        # The description of the custom field.
         self.description = description
-        # 是否加密，默认false
+        # Indicates whether the field is encrypted.
         self.encrypted = encrypted
-        # 字段所属实体类型
+        # The entity type to which the field belongs.
         self.entity_type = entity_type
-        # 字段值配置项
+        # Field value configuration items.
         self.field_data_config = field_data_config
-        # 数据类型，枚举值：string、number、boolean
+        # The data type.
         self.field_data_type = field_data_type
-        # 字段展示名
+        # The display name of the field.
         self.field_display_name = field_display_name
-        # 字段展示类型，枚举值，select、checkbox、input、number
+        # The display type of the field.
         self.field_display_type = field_display_type
-        # 字段ID
+        # The field ID.
         self.field_id = field_id
-        # 字段标识
+        # The field identifier.
         self.field_name = field_name
-        # 实例ID
+        # The instance ID.
         self.instance_id = instance_id
-        # 是否必填，默认false
+        # Indicates whether the field is required.
         self.required = required
-        # 扩展字段状态, 枚举类型：enabled，disabled
+        # The status of the custom field.
         self.status = status
-        # 是否唯一，默认false
+        # Indicates whether the field is unique.
         self.unique = unique
-        # 扩展字段最近一次更新时间, Unix时间戳格式，单位为毫秒
+        # The last update time of the custom field, in UNIX timestamp format in milliseconds.
         self.update_time = update_time
-        # 用户端(portal侧)权限，hide、read_only、read_write，默认read_only
+        # User-side (portal) permissions.
         self.user_permission = user_permission
 
     def validate(self):
@@ -223,7 +225,7 @@ class GetCustomFieldResponseBodyCustomFieldFieldDataConfig(DaraModel):
         self,
         items: List[main_models.GetCustomFieldResponseBodyCustomFieldFieldDataConfigItems] = None,
     ):
-        # 字段配置项列表，displayName、value、status
+        # A list of field configuration items.
         self.items = items
 
     def validate(self):
@@ -261,11 +263,11 @@ class GetCustomFieldResponseBodyCustomFieldFieldDataConfigItems(DaraModel):
         status: str = None,
         value: str = None,
     ):
-        # 配置项展示名
+        # The display name of the configuration item.
         self.display_name = display_name
-        # 配置项状态, 枚举值，enabled、disabled
+        # The status of the configuration item.
         self.status = status
-        # 配置项值
+        # The value of the configuration item.
         self.value = value
 
     def validate(self):

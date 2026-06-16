@@ -9,23 +9,30 @@ from darabonba.model import DaraModel
 class ListInstancesRequest(DaraModel):
     def __init__(
         self,
+        cross_region_replication: str = None,
         edition: str = None,
         instance_ids: List[str] = None,
         page_number: int = None,
         page_size: int = None,
         status: str = None,
     ):
+        self.cross_region_replication = cross_region_replication
+        # The edition of the license. Valid values:
+        # - free: Free edition.
+        # - trial: Trial edition.
+        # - scalability: Scalability edition.
+        # - standard: Standard edition.
+        # - enterprise: Enterprise edition.
         self.edition = edition
-        # The list of instance IDs.
+        # Instance ID list.
         self.instance_ids = instance_ids
-        # The number of the page to return.
+        # Page number.
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # Page size.
         self.page_size = page_size
-        # The status of the instance. Valid values:
-        # 
-        # *   creating
-        # *   running
+        # Instance status. Valid values:
+        # - creating: Being created.
+        # - running: Running.
         self.status = status
 
     def validate(self):
@@ -36,6 +43,9 @@ class ListInstancesRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.cross_region_replication is not None:
+            result['CrossRegionReplication'] = self.cross_region_replication
+
         if self.edition is not None:
             result['Edition'] = self.edition
 
@@ -55,6 +65,9 @@ class ListInstancesRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CrossRegionReplication') is not None:
+            self.cross_region_replication = m.get('CrossRegionReplication')
+
         if m.get('Edition') is not None:
             self.edition = m.get('Edition')
 

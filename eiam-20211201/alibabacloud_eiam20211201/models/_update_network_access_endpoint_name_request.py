@@ -11,15 +11,15 @@ class UpdateNetworkAccessEndpointNameRequest(DaraModel):
         network_access_endpoint_id: str = None,
         network_access_endpoint_name: str = None,
     ):
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # 专属网络端点ID。
+        # The ID of the private network access endpoint.
         # 
         # This parameter is required.
         self.network_access_endpoint_id = network_access_endpoint_id
-        # 专属网络端点名称。
+        # The name of the private network access endpoint. The endpoint type must be private.
         # 
         # This parameter is required.
         self.network_access_endpoint_name = network_access_endpoint_name

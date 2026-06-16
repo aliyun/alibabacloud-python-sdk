@@ -16,12 +16,15 @@ class ListCloudAccountsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of Alibaba Cloud accounts.
         self.cloud_accounts = cloud_accounts
-        # 分页查询时每页行数。
+        # The number of entries returned per page.
         self.max_results = max_results
-        # 本次调用返回的查询凭证（Token）值，用于下一次翻页查询。
+        # The token returned from this call.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -91,24 +94,35 @@ class ListCloudAccountsResponseBodyCloudAccounts(DaraModel):
         instance_id: str = None,
         update_time: int = None,
     ):
-        # 云账号外部唯一ID
+        # The external unique ID of the Alibaba Cloud account.
         self.cloud_account_external_id = cloud_account_external_id
-        # 云账号可用性
+        # The health check status of the Alibaba Cloud account. Valid values:
+        # 
+        # - healthy: The account is healthy.
+        # 
+        # - unhealthy: The account is unhealthy.
+        # 
+        # - unknown: The status is unknown.
         self.cloud_account_health = cloud_account_health
+        # The result of the health check for the Alibaba Cloud account.
         self.cloud_account_health_check_result = cloud_account_health_check_result
-        # 云账号ID
+        # The ID of the Alibaba Cloud account.
         self.cloud_account_id = cloud_account_id
-        # 云账号名称
+        # The name of the Alibaba Cloud account.
         self.cloud_account_name = cloud_account_name
-        # 云账号提供商名称
+        # The name of the identity provider.
         self.cloud_account_provider_name = cloud_account_provider_name
-        # 云账号类别
+        # The type of the Alibaba Cloud account. Valid values:
+        # 
+        # - alibaba_cloud: Alibaba Cloud
         self.cloud_account_vendor_type = cloud_account_vendor_type
+        # The time when the account was created. This is a UNIX timestamp in milliseconds.
         self.create_time = create_time
-        # 云账号描述
+        # The description of the Alibaba Cloud account.
         self.description = description
-        # IDaaS EIAM 实例Id
+        # The instance ID.
         self.instance_id = instance_id
+        # The time when the account was last updated. This is a UNIX timestamp in milliseconds.
         self.update_time = update_time
 
     def validate(self):
@@ -200,8 +214,15 @@ class ListCloudAccountsResponseBodyCloudAccountsCloudAccountHealthCheckResult(Da
         last_check_time: int = None,
         result: str = None,
     ):
+        # The reason for the error. This field is returned when the health check status is unhealthy.
         self.error_reason = error_reason
+        # The time of the last health check. This is a UNIX timestamp in milliseconds.
         self.last_check_time = last_check_time
+        # The result of the health check. Valid values:
+        # 
+        # - success: The check was successful.
+        # 
+        # - failed: The check failed.
         self.result = result
 
     def validate(self):
@@ -244,7 +265,9 @@ class ListCloudAccountsResponseBodyCloudAccountsCloudAccountHealthCheckResultErr
         error_code: str = None,
         error_message: str = None,
     ):
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_message = error_message
 
     def validate(self):

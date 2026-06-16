@@ -16,13 +16,15 @@ class ListUsersResponseBody(DaraModel):
         total_count: int = None,
         users: List[main_models.ListUsersResponseBodyUsers] = None,
     ):
+        # The number of entries returned per page.
         self.max_results = max_results
+        # The token used to retrieve the next page of results.
         self.next_token = next_token
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The number of entries in the list.
+        # The total number of entries.
         self.total_count = total_count
-        # The list of data objects of accounts.
+        # The list of users.
         self.users = users
 
     def validate(self):
@@ -102,59 +104,63 @@ class ListUsersResponseBodyUsers(DaraModel):
         user_source_type: str = None,
         username: str = None,
     ):
-        # The time when the account expires. This value is a UNIX timestamp. Unit: milliseconds.
+        # The account expiration time. This is a Unix timestamp in milliseconds.
         self.account_expire_time = account_expire_time
-        # The time when the account was created. This value is a UNIX timestamp. Unit: milliseconds.
+        # The creation time. This is a Unix timestamp in milliseconds.
         self.create_time = create_time
-        # The description of the account.
+        # The user description.
         self.description = description
-        # The display name of the account.
+        # The display name.
         self.display_name = display_name
-        # The email address of the user who owns the account.
+        # The email address.
         self.email = email
-        # Indicates whether the email address has been verified. A value of true indicates that the email address has been verified by the user or has been set to the verified status by the administrator. A value of false indicates that the email address has not been verified.
+        # Indicates whether the email address is verified. `true` means the user has verified the email address or an administrator has marked it as verified. `false` means the email address is not verified.
         self.email_verified = email_verified
-        # The ID of the instance
+        # The instance ID.
         self.instance_id = instance_id
-        # The time when the account lock expires. This value is a UNIX timestamp. Unit: milliseconds.
+        # The account lock expiration time. This is a Unix timestamp in milliseconds.
         self.lock_expire_time = lock_expire_time
-        # Time When Password Expires
+        # The password expiration time. This is a Unix timestamp in milliseconds.
         self.password_expire_time = password_expire_time
         # Indicates whether a password is set.
         self.password_set = password_set
-        # The mobile number of the user who owns the account.
+        # The phone number.
         self.phone_number = phone_number
-        # Indicates whether the mobile number has been verified. A value of true indicates that the mobile number has been verified by the user or has been set to the verified status by the administrator. A value of false indicates that the mobile number has not been verified.
+        # Indicates whether the phone number is verified. `true` means the user has verified the phone number or an administrator has marked it as verified. `false` means the phone number is not verified.
         self.phone_number_verified = phone_number_verified
-        # The country code of the mobile number. For example, the country code of China is 86 without 00 or +.
+        # The country calling code. For example, specify `86` for Chinese mainland. Do not include `00` or a plus sign (+).
         self.phone_region = phone_region
-        # The time when the account was registered. This value is a UNIX timestamp. Unit: milliseconds.
+        # The registration time. This is a Unix timestamp in milliseconds.
         self.register_time = register_time
-        # The status of the account. Valid values:
+        # The status. Valid values:
         # 
-        # *   enabled: The account is enabled.
-        # *   disabled: The account is disabled.
+        # - `enabled`: The user is enabled.
+        # 
+        # - `disabled`: The user is disabled.
         self.status = status
-        # The time when the account was last updated. The value is a UNIX timestamp. Unit: milliseconds.
+        # The last update time. This is a Unix timestamp in milliseconds.
         self.update_time = update_time
-        # The external ID of the account. The external ID can be used by external data to map the data of the account in IDaaS EIAM. By default, the external ID is the account ID.
+        # The external user ID. This ID maps data from an external system to a user in IDaaS. It defaults to the user ID.
         # 
-        # For accounts with the same source type and source ID, each account has a unique external ID.
+        # Note: The external user ID must be unique for the same source type and source ID.
         self.user_external_id = user_external_id
-        # The ID of the account.
+        # The user ID.
         self.user_id = user_id
-        # The source ID of the account.
+        # The user source ID.
         # 
-        # If the account was created in IDaaS, its source ID is the ID of the IDaaS instance. If the account was imported, its source ID is the enterprise ID in the source. For example, if the account was imported from DingTalk, its source ID is the corpId value of the enterprise in DingTalk.
+        # If the user is built-in, this is the instance ID. For users from other sources, this is the enterprise ID from the source, such as the `corpId` for a DingTalk organization.
         self.user_source_id = user_source_id
-        # The source type of the account. Valid values:
+        # The user source type. Valid values:
         # 
-        # *   build_in: The account was created in IDaaS.
-        # *   ding_talk: The account was imported from DingTalk.
-        # *   ad: The account was imported from Microsoft Active Directory (AD).
-        # *   ldap: The account was imported from a Lightweight Directory Access Protocol (LDAP) service.
+        # - `build_in`: The user is a built-in user.
+        # 
+        # - `ding_talk`: The user is imported from DingTalk.
+        # 
+        # - `ad`: The user is imported from AD.
+        # 
+        # - `ldap`: The user is imported from LDAP.
         self.user_source_type = user_source_type
-        # The username of the account.
+        # The user name.
         self.username = username
 
     def validate(self):

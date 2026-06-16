@@ -16,15 +16,17 @@ class ListResourceServersForUserRequest(DaraModel):
         next_token: str = None,
         user_id: str = None,
     ):
+        # The list of filter conditions.
         self.filter = filter
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The number of entries per page.
         self.max_results = max_results
-        # 查询凭证（Token），取值为上一次API调用返回的NextToken参数值。
+        # The token for the next page of results. Set this to the NextToken value from the previous API call.
         self.next_token = next_token
-        # 用户ID。
+        # The account ID.
         # 
         # This parameter is required.
         self.user_id = user_id
@@ -87,7 +89,9 @@ class ListResourceServersForUserRequestFilter(DaraModel):
         name: str = None,
         value: List[str] = None,
     ):
+        # The name of the filter condition.
         self.name = name
+        # The list of filter condition values.
         self.value = value
 
     def validate(self):

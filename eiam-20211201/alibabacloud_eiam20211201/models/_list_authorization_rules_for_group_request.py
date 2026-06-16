@@ -12,17 +12,23 @@ class ListAuthorizationRulesForGroupRequest(DaraModel):
         max_results: int = None,
         next_token: str = None,
     ):
-        # 组标识。
+        # The group ID.
         # 
         # This parameter is required.
         self.group_id = group_id
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # 分页查询时每页行数。默认值为20，最大值为100。
+        # The maximum number of records to return on each page.
+        # 
+        # - If this parameter is not specified, the default value is 20.
+        # 
+        # - The maximum value is 100.
         self.max_results = max_results
-        # 查询凭证（Token），取值为上一次API调用返回的NextToken参数值。
+        # The token that specifies the start of the next page for a paged query.
+        # 
+        # - If this parameter is not specified, the query starts from the first page.
         self.next_token = next_token
 
     def validate(self):

@@ -11,15 +11,15 @@ class UpdateDomainIcpNumberRequest(DaraModel):
         icp_number: str = None,
         instance_id: str = None,
     ):
-        # 域名ID。
+        # The domain name ID.
         # 
         # This parameter is required.
         self.domain_id = domain_id
-        # 域名关联的备案号，长度最大限制64。
+        # The ICP filing number associated with the domain name.
         # 
         # This parameter is required.
         self.icp_number = icp_number
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id

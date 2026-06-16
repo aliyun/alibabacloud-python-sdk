@@ -16,12 +16,15 @@ class ListCredentialProvidersResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # List of credential providers.
         self.credential_providers = credential_providers
-        # 分页查询时每页行数。
+        # Page size for paged queries.
         self.max_results = max_results
-        # 本次调用返回的查询凭证（Token）值，用于下一次翻页查询。
+        # The query token returned by this call.
         self.next_token = next_token
+        # Request ID.
         self.request_id = request_id
+        # Total count.
         self.total_count = total_count
 
     def validate(self):
@@ -91,27 +94,39 @@ class ListCredentialProvidersResponseBodyCredentialProviders(DaraModel):
         status: str = None,
         update_time: int = None,
     ):
-        # 认证令牌提供商的创建时间，Unix时间戳。
+        # Creation time of the credential provider, in Unix timestamp format (milliseconds).
         self.create_time = create_time
-        # 认证令牌提供商的配置。
+        # Credential provider configuration.
         self.credential_provider_config = credential_provider_config
-        # 认证令牌提供商的创建类型。
+        # Credential provider creation type. Valid values:
+        # 
+        # - system_init: System created.
+        # 
+        # - user_custom: User created.
         self.credential_provider_creation_type = credential_provider_creation_type
-        # 认证令牌提供商ID。
+        # Credential provider ID.
         self.credential_provider_id = credential_provider_id
-        # 认证令牌提供商的业务标识。
+        # Credential provider identifier.
         self.credential_provider_identifier = credential_provider_identifier
-        # 认证令牌提供商名称。
+        # Credential provider name.
         self.credential_provider_name = credential_provider_name
-        # 认证令牌提供商的类型。
+        # Credential provider type. Valid values:
+        # 
+        # - oauth: OAuth credential provider
+        # 
+        # - jwt: JWT credential provider
         self.credential_provider_type = credential_provider_type
-        # 描述。
+        # Description.
         self.description = description
-        # EIAM实例ID。
+        # Instance ID.
         self.instance_id = instance_id
-        # 认证令牌提供商的状态。
+        # Credential provider status. Valid values:
+        # 
+        # - enabled: Enabled.
+        # 
+        # - disabled: Disabled.
         self.status = status
-        # 认证令牌提供商的更新时间，Unix时间戳。
+        # Update time of the credential provider, in Unix timestamp format (milliseconds).
         self.update_time = update_time
 
     def validate(self):
@@ -203,11 +218,13 @@ class ListCredentialProvidersResponseBodyCredentialProvidersCredentialProviderCo
         oauth_provider_config: main_models.ListCredentialProvidersResponseBodyCredentialProvidersCredentialProviderConfigOAuthProviderConfig = None,
         provider_credential_ids: List[str] = None,
     ):
-        # JWT身份提供商配置。
+        # Configuration for JWT credential providers.
         self.jwt_provider_config = jwt_provider_config
-        # OAuth 2LO机用类型的提供商的配置。
+        # Configuration for OAuth credential providers.
         self.oauth_provider_config = oauth_provider_config
-        # 认证令牌提供商的敏感配置对应的凭据ID列表。
+        # List of credential IDs for the sensitive configuration of the credential provider.
+        # 
+        # > The system securely stores sensitive credential provider configuration as credentials.
         self.provider_credential_ids = provider_credential_ids
 
     def validate(self):
@@ -254,11 +271,17 @@ class ListCredentialProvidersResponseBodyCredentialProvidersCredentialProviderCo
         scope: str = None,
         token_endpoint: str = None,
     ):
-        # OAuth协议中的client_id，客户端ID。
+        # The client_id in the OAuth protocol, also known as the client ID.
         self.client_id = client_id
-        # OAuth协议中的scope，权限范围。
+        # The scope in the OAuth protocol, which defines permission scope.
+        # 
+        # > The Scope configuration for the OAuth credential provider acts as a fallback. If you do not specify the scope parameter when calling the DeveloperAPI to get an OAuth Access Token, the credential provider\\"s Scope configuration is used for issuance.
+        # 
+        # >Notice: 
+        # 
+        # Multiple Scope values are separated by spaces.
         self.scope = scope
-        # OAuth协议的Token端点。
+        # The Token endpoint of the OAuth protocol.
         self.token_endpoint = token_endpoint
 
     def validate(self):
@@ -303,17 +326,17 @@ class ListCredentialProvidersResponseBodyCredentialProvidersCredentialProviderCo
         issuer: str = None,
         jwks_endpoint: str = None,
     ):
-        # 签发出的JWT中的issuer字段的允许列表。
+        # List of allowed JWT issuers.
         self.allowed_token_issuers = allowed_token_issuers
-        # 是否开启JWT派生短令牌能力。
+        # Enable JWT derived short token capability.
         self.derived_short_token_enabled = derived_short_token_enabled
-        # JWT的有效时长，单位秒。
+        # Validity period of the JWT, in seconds.
         self.expiration = expiration
-        # 是否开启JWT过期清理。
+        # Enable JWT expiration cleanup.
         self.expiration_cleanup_enabled = expiration_cleanup_enabled
-        # JWT issuer。
+        # JWT issuer.
         self.issuer = issuer
-        # JWKs端点地址。
+        # JWKs endpoint address.
         self.jwks_endpoint = jwks_endpoint
 
     def validate(self):

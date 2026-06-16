@@ -15,14 +15,21 @@ class ListCloudAccountsRequest(DaraModel):
         max_results: int = None,
         next_token: str = None,
     ):
+        # The filter conditions.
         self.filter = filter
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # 分页查询时每页行数。默认值为20，最大值为100。
+        # The maximum number of records to return on each page.
+        # 
+        # - The default value is 20.
+        # 
+        # - The maximum value is 100.
         self.max_results = max_results
-        # 查询凭证（Token），取值为上一次API调用返回的NextToken参数值。
+        # The token that specifies the start of the next page.
+        # 
+        # - If you leave this parameter empty, the query starts from the first page.
         self.next_token = next_token
 
     def validate(self):
@@ -77,7 +84,15 @@ class ListCloudAccountsRequestFilter(DaraModel):
         name: str = None,
         value: List[str] = None,
     ):
+        # The name of the filter field. Valid values:
+        # 
+        # - CloudAccountId: The ID of the Alibaba Cloud account.
+        # 
+        # - CloudAccountExternalId: The external unique ID of the Alibaba Cloud account.
+        # 
+        # - CloudAccountVendorType: The type of the Alibaba Cloud account.
         self.name = name
+        # A list of values for the filter field.
         self.value = value
 
     def validate(self):

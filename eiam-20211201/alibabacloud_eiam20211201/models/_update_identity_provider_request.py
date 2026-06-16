@@ -23,30 +23,33 @@ class UpdateIdentityProviderRequest(DaraModel):
         saml_config: main_models.UpdateIdentityProviderRequestSamlConfig = None,
         we_com_config: main_models.UpdateIdentityProviderRequestWeComConfig = None,
     ):
+        # A client-generated token to ensure request idempotence. This value must be unique across requests.
         self.client_token = client_token
-        # 钉钉出基本信息
+        # The configuration for the DingTalk identity provider.
         self.dingtalk_app_config = dingtalk_app_config
-        # IDaaS的身份提供方主键id
+        # The ID of the identity provider.
         # 
         # This parameter is required.
         self.identity_provider_id = identity_provider_id
-        # 身份提供方名称
+        # The name of the identity provider.
         self.identity_provider_name = identity_provider_name
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # 飞书配置
+        # The configuration for the Lark identity provider.
         self.lark_config = lark_config
-        # AD/LDAP基本信息
+        # The configuration for the Active Directory (AD) or Lightweight Directory Access Protocol (LDAP) identity provider.
         self.ldap_config = ldap_config
+        # The URL of the application logo.
         self.logo_url = logo_url
-        # 网络端点ID
+        # The ID of the network access endpoint.
         self.network_access_endpoint_id = network_access_endpoint_id
-        # OIDC IdP配置。
+        # The OpenID Connect (OIDC) configuration.
         self.oidc_config = oidc_config
+        # The configuration for the SAML identity provider.
         self.saml_config = saml_config
-        # 企业微信基本信息
+        # The configuration for the WeCom identity provider.
         self.we_com_config = we_com_config
 
     def validate(self):
@@ -160,13 +163,13 @@ class UpdateIdentityProviderRequestWeComConfig(DaraModel):
         corp_secret: str = None,
         trustable_domain: str = None,
     ):
-        # 企业微信自建应用的Id
+        # The agent ID of the custom application in WeCom.
         self.agent_id = agent_id
-        # 授权回调域
+        # The authorized callback domain.
         self.authorize_callback_domain = authorize_callback_domain
-        # 企业微信自建应用的corpSecret
+        # The CorpSecret of the custom application in WeCom.
         self.corp_secret = corp_secret
-        # 可信域名
+        # The trusted domain.
         self.trustable_domain = trustable_domain
 
     def validate(self):
@@ -219,13 +222,21 @@ class UpdateIdentityProviderRequestSamlConfig(DaraModel):
         want_assertions_signed: bool = None,
         want_response_signed: bool = None,
     ):
+        # The SAML binding method for the SSO request. Valid values are `HTTP-POST` and `HTTP-REDIRECT`.
         self.binding_method = binding_method
+        # The signing certificates from the SAML identity provider.
         self.certificates = certificates
+        # The entity ID of the SAML identity provider.
         self.id_pentity_id = id_pentity_id
+        # The single sign-on (SSO) URL of the SAML identity provider.
         self.id_psso_url = id_psso_url
+        # The maximum allowed clock skew, in seconds.
         self.max_clock_skew = max_clock_skew
+        # Specifies whether the SAML authentication request must be signed.
         self.require_request_signed = require_request_signed
+        # Specifies whether the assertions in the SAML response must be signed.
         self.want_assertions_signed = want_assertions_signed
+        # Specifies whether the SAML response must be signed.
         self.want_response_signed = want_response_signed
 
     def validate(self):
@@ -303,6 +314,7 @@ class UpdateIdentityProviderRequestSamlConfigCertificates(DaraModel):
         self,
         content: str = None,
     ):
+        # The content of the signing certificate.
         self.content = content
 
     def validate(self):
@@ -335,17 +347,21 @@ class UpdateIdentityProviderRequestOidcConfig(DaraModel):
         pkce_challenge_method: str = None,
         pkce_required: bool = None,
     ):
-        # OIDC客户端认证配置。
+        # The OIDC client authentication configuration.
         self.authn_param = authn_param
-        # OIDC 端点配置。
+        # The OIDC endpoint configuration.
         self.endpoint_config = endpoint_config
-        # OIDC标准参数，如profile、email等
+        # The OIDC authorization scopes.
         self.grant_scopes = grant_scopes
-        # OIDC授权类型。
+        # The OIDC grant type.
         self.grant_type = grant_type
-        # 支持的PKCE算法类型。
+        # The Proof Key for Code Exchange (PKCE) method. Valid values:
+        # 
+        # - `S256`: The SHA-256 algorithm.
+        # 
+        # - `plain`: The plaintext format.
         self.pkce_challenge_method = pkce_challenge_method
-        # AuthorizationCode授权模式下是否使用PKCE。
+        # Specifies whether PKCE is required for the authorization code grant type.
         self.pkce_required = pkce_required
 
     def validate(self):
@@ -412,15 +428,15 @@ class UpdateIdentityProviderRequestOidcConfigEndpointConfig(DaraModel):
         token_endpoint: str = None,
         userinfo_endpoint: str = None,
     ):
-        # oAuth2 授权端点。
+        # The OIDC authorization endpoint.
         self.authorization_endpoint = authorization_endpoint
-        # OIDC issuer信息。
+        # The OIDC issuer.
         self.issuer = issuer
-        # OIDC jwks地址。
+        # The JSON Web Key Set (JWKS) URI.
         self.jwks_uri = jwks_uri
-        # oAuth2 Token端点。
+        # The OIDC token endpoint.
         self.token_endpoint = token_endpoint
-        # OIDC 用户信息端点。
+        # The OIDC userinfo endpoint.
         self.userinfo_endpoint = userinfo_endpoint
 
     def validate(self):
@@ -473,9 +489,13 @@ class UpdateIdentityProviderRequestOidcConfigAuthnParam(DaraModel):
         authn_method: str = None,
         client_secret: str = None,
     ):
-        # OIDC/oAuth2 认证方法。
+        # The OIDC client authentication method. Valid values:
+        # 
+        # - `client_secret_basic`
+        # 
+        # - `client_secret_post`
         self.authn_method = authn_method
-        # OIDC/oAuth2 客户端密钥。
+        # The OIDC client secret.
         self.client_secret = client_secret
 
     def validate(self):
@@ -516,21 +536,29 @@ class UpdateIdentityProviderRequestLdapConfig(DaraModel):
         ldap_server_port: int = None,
         start_tls_status: str = None,
     ):
-        # 管理员密码
+        # The password for the administrator account.
         self.administrator_password = administrator_password
-        # 管理员账号
+        # The administrator account.
         self.administrator_username = administrator_username
-        # 是否验证指纹证书
+        # Specifies whether to enable certificate fingerprint verification. Valid values:
+        # 
+        # - `disabled`: Verification is disabled.
+        # 
+        # - `enabled`: Verification is enabled.
         self.certificate_fingerprint_status = certificate_fingerprint_status
-        # 证书指纹列表
+        # The list of certificate fingerprints.
         self.certificate_fingerprints = certificate_fingerprints
-        # 通信协议
+        # The communication protocol.
         self.ldap_protocol = ldap_protocol
-        # ad/ldap 服务器地址
+        # The server address.
         self.ldap_server_host = ldap_server_host
-        # 端口号
+        # The port number.
         self.ldap_server_port = ldap_server_port
-        # startTls是否开启
+        # Specifies whether to enable StartTLS. Valid values:
+        # 
+        # - `disabled`: StartTLS is disabled.
+        # 
+        # - `enabled`: StartTLS is enabled.
         self.start_tls_status = start_tls_status
 
     def validate(self):
@@ -603,9 +631,13 @@ class UpdateIdentityProviderRequestLarkConfig(DaraModel):
         encrypt_key: str = None,
         verification_token: str = None,
     ):
+        # The application ID of the custom application in Lark.
         self.app_id = app_id
+        # The application secret of the custom application in Lark.
         self.app_secret = app_secret
+        # The EncryptKey of the custom application in Lark.
         self.encrypt_key = encrypt_key
+        # The verification token of the custom application in Lark.
         self.verification_token = verification_token
 
     def validate(self):
@@ -655,12 +687,15 @@ class UpdateIdentityProviderRequestDingtalkAppConfig(DaraModel):
         encrypt_key: str = None,
         verification_token: str = None,
     ):
-        # 钉钉一方应用的AppKey
+        # The AppKey of the DingTalk application.
         self.app_key = app_key
-        # 钉钉一方应用的AppSecret
+        # The AppSecret of the DingTalk application.
         self.app_secret = app_secret
+        # The version of the DingTalk QR code login.
         self.dingtalk_login_version = dingtalk_login_version
+        # The EncryptKey of the DingTalk application.
         self.encrypt_key = encrypt_key
+        # The verification token of the DingTalk application.
         self.verification_token = verification_token
 
     def validate(self):

@@ -231,9 +231,7 @@ class ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesDecision
     ):
         # Whether to enable session reuse for secondary authentication
         self.active_session_reuse_status = active_session_reuse_status
-        # Decision action of the conditional access policy:
-        # deny  Deny
-        # allow Allow
+        # Decision action of the conditional access policy: deny Deny allow Allow
         self.effect = effect
         # Re-authentication interval for the conditional access policy (in seconds) 300-86400
         self.mfa_authentication_interval_seconds = mfa_authentication_interval_seconds

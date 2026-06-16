@@ -10,11 +10,11 @@ class DeleteCustomPrivacyPolicyRequest(DaraModel):
         custom_privacy_policy_id: str = None,
         instance_id: str = None,
     ):
-        # 自定义条款ID
+        # The custom privacy policy ID.
         # 
         # This parameter is required.
         self.custom_privacy_policy_id = custom_privacy_policy_id
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id

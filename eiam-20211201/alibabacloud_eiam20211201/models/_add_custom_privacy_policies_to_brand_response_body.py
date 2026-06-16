@@ -9,6 +9,7 @@ class AddCustomPrivacyPoliciesToBrandResponseBody(DaraModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

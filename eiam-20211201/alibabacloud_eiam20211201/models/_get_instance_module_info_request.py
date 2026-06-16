@@ -10,11 +10,11 @@ class GetInstanceModuleInfoRequest(DaraModel):
         instance_id: str = None,
         module_key: str = None,
     ):
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # 一级模块标识，必填
+        # The identifier of the primary module.
         # 
         # This parameter is required.
         self.module_key = module_key

@@ -65,11 +65,9 @@ class GetNetworkAccessEndpointResponseBodyNetworkAccessEndpoint(DaraModel):
     ):
         # The time when the baseline was created.
         self.create_time = create_time
-        # Public egress ip address range of the dedicated network endpoint
-        # This field is returned only when NetworkEndpointType is set to private.
+        # Public egress ip address range of the dedicated network endpoint This field is returned only when NetworkEndpointType is set to private.
         self.egress_private_ip_addresses = egress_private_ip_addresses
-        # Public egress ip address range of the shared network endpoint
-        # This field is returned only when networkEndpointType is set to shared.
+        # Public egress ip address range of the shared network endpoint This field is returned only when networkEndpointType is set to shared.
         self.egress_public_ip_addresses = egress_public_ip_addresses
         # Instance ID.
         self.instance_id = instance_id
@@ -77,8 +75,7 @@ class GetNetworkAccessEndpointResponseBodyNetworkAccessEndpoint(DaraModel):
         self.network_access_endpoint_id = network_access_endpoint_id
         # Private network endpoint name.
         self.network_access_endpoint_name = network_access_endpoint_name
-        # Type of the Network Endpoint
-        # Possible values:
+        # Type of the Network Endpoint Possible values:
         # 
         # shared: Shared network endpoint
         # 
@@ -86,8 +83,7 @@ class GetNetworkAccessEndpointResponseBodyNetworkAccessEndpoint(DaraModel):
         self.network_access_endpoint_type = network_access_endpoint_type
         # The ID of the destination security group.
         self.security_group_id = security_group_id
-        # Status of the Network Endpoint
-        # Possible values:
+        # Status of the Network Endpoint Possible values:
         # 
         # pending: Pending initialization
         # 

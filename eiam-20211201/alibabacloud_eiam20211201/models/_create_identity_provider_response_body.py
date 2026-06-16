@@ -10,7 +10,7 @@ class CreateIdentityProviderResponseBody(DaraModel):
         identity_provider_id: str = None,
         request_id: str = None,
     ):
-        # Identity provider ID.
+        # The ID of the identity provider.
         self.identity_provider_id = identity_provider_id
         # The request ID.
         self.request_id = request_id

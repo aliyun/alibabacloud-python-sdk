@@ -10,11 +10,11 @@ class DisableCustomFieldRequest(DaraModel):
         field_id: str = None,
         instance_id: str = None,
     ):
-        # fieldId
+        # The field ID.
         # 
         # This parameter is required.
         self.field_id = field_id
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id

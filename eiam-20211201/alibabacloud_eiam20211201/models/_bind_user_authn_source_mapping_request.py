@@ -12,19 +12,19 @@ class BindUserAuthnSourceMappingRequest(DaraModel):
         user_external_id: str = None,
         user_id: str = None,
     ):
-        # 来源Idp Id
+        # The source IdP ID.
         # 
         # This parameter is required.
         self.identity_provider_id = identity_provider_id
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # 外部关联ID
+        # The external mapping ID.
         # 
         # This parameter is required.
         self.user_external_id = user_external_id
-        # 用户ID
+        # The user ID.
         # 
         # This parameter is required.
         self.user_id = user_id

@@ -11,7 +11,9 @@ class GetIdentityProviderAdvancedConfigurationResponseBody(DaraModel):
         advanced_configuration: main_models.GetIdentityProviderAdvancedConfigurationResponseBodyAdvancedConfiguration = None,
         request_id: str = None,
     ):
+        # Advanced configuration information
         self.advanced_configuration = advanced_configuration
+        # Request ID
         self.request_id = request_id
 
     def validate(self):
@@ -49,11 +51,11 @@ class GetIdentityProviderAdvancedConfigurationResponseBodyAdvancedConfiguration(
         identity_provider_id: str = None,
         instance_id: str = None,
     ):
-        # 钉钉高阶配置
+        # DingTalk advanced configuration
         self.dingtalk_advanced_config = dingtalk_advanced_config
-        # IDaaS EIAM 身份提供方ID
+        # Identity provider ID
         self.identity_provider_id = identity_provider_id
-        # IDaaS EIAM 实例Id
+        # Instance ID
         self.instance_id = instance_id
 
     def validate(self):
@@ -96,9 +98,9 @@ class GetIdentityProviderAdvancedConfigurationResponseBodyAdvancedConfigurationD
         app_key: str = None,
         app_secret: str = None,
     ):
-        # IDaaS EIAM 钉钉一方应用的AppKey
+        # AppKey of the DingTalk first-party application
         self.app_key = app_key
-        # IDaaS EIAM 钉钉一方应用的AppSecret
+        # App secret of the DingTalk first-party application
         self.app_secret = app_secret
 
     def validate(self):

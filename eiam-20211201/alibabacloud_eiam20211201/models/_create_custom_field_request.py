@@ -24,43 +24,63 @@ class CreateCustomFieldRequest(DaraModel):
         unique: bool = None,
         user_permission: str = None,
     ):
-        # 字段默认值，必须与数据类型一致
+        # The default value of the field. If the field has configuration items, the default value must be one of the enabled configuration items. The default value can be up to 1024 characters in length.
         self.default_value = default_value
-        # 对字段的描述信息
+        # The description of the field. The description can be up to 512 characters in length.
         self.description = description
-        # 是否加密，默认false
+        # Indicates whether to encrypt the field value. If you set this parameter to true, the system encrypts the data value before storing it.
         self.encrypted = encrypted
-        # 字段归属实体。实体包括账户、组、组织
+        # The entity to which the field belongs. Valid value:
+        # 
+        # - user: an account.
         # 
         # This parameter is required.
         self.entity_type = entity_type
-        # 字段值配置项，必须与数据类型一致
+        # The configuration items of the field value.
         self.field_data_config = field_data_config
-        # 数据类型，枚举值：string、number、boolean
+        # The data type of the field. Valid values:
+        # 
+        # - string: a string.
+        # 
+        # - number: a number. The number can be up to 32 digits in length and can be a positive integer or a decimal.
+        # 
+        # - boolean: a Boolean value.
         # 
         # This parameter is required.
         self.field_data_type = field_data_type
-        # 字段展示名，长度不超过128字符
+        # The display name of the field. The display name can be up to 64 characters in length.
         # 
         # This parameter is required.
         self.field_display_name = field_display_name
-        # 字段展示类型，枚举值，select、checkbox、input
+        # The display type of the field. Valid values:
+        # 
+        # - input: a text box. This display type supports the string and number data types.
+        # 
+        # - select: a drop-down list. This display type supports the string and Boolean data types.
+        # 
+        # - checkbox: a check box. This display type supports the string data type.
         # 
         # This parameter is required.
         self.field_display_type = field_display_type
-        # 字段标识，英文字母、下划线
+        # The name of the field. The name can be up to 40 characters in length and can contain lowercase letters and underscores (_). It cannot start with an underscore (_).
         # 
         # This parameter is required.
         self.field_name = field_name
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # 是否必填，默认false
+        # Indicates whether the field is required.
         self.required = required
-        # 是否唯一，默认false
+        # Indicates whether the field value is unique. If you set this parameter to true, the value of this field must be unique for the specified entity type.
         self.unique = unique
-        # 用户端(portal侧)权限，hide、read_only、read_write，默认read_only
+        # The permission on the field in the portal. Valid values:
+        # 
+        # - hide: The field is not visible in the portal.
+        # 
+        # - read_only: The field is visible but cannot be modified in the portal.
+        # 
+        # - read_write: The field is visible and can be modified in the portal.
         self.user_permission = user_permission
 
     def validate(self):
@@ -162,7 +182,7 @@ class CreateCustomFieldRequestFieldDataConfig(DaraModel):
         self,
         items: List[main_models.CreateCustomFieldRequestFieldDataConfigItems] = None,
     ):
-        # 字段值配置项，必须与数据类型一致，只能新增数据项，不可删除，项字段：displayName、value、status
+        # A list of field configuration items. The list can contain up to 100 items.
         self.items = items
 
     def validate(self):
@@ -200,11 +220,17 @@ class CreateCustomFieldRequestFieldDataConfigItems(DaraModel):
         status: str = None,
         value: str = None,
     ):
-        # 配置项展示名
+        # The display name of the configuration item. The display name can be up to 128 characters in length.
         self.display_name = display_name
-        # 配置项状态，枚举值，enabled、disabled
+        # The status of the configuration item. Valid values:
+        # 
+        # - enabled: The configuration item is enabled.
+        # 
+        # - disabled: The configuration item is disabled.
+        # 
+        # If a configuration item is disabled, it is unavailable when you create or update the field value for an entity.
         self.status = status
-        # 配置项展示值
+        # The value of the configuration item. The value can be up to 64 characters in length.
         self.value = value
 
     def validate(self):

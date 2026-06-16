@@ -10,9 +10,9 @@ class EnableInternalAuthenticationSourceRequest(DaraModel):
         authentication_source_id: str = None,
         instance_id: str = None,
     ):
-        # 内部认证源ID，比如 ia_password, ia_otp_sms 等
+        # The ID of the internal authentication source.
         self.authentication_source_id = authentication_source_id
-        # IDaaS EIAM的实例id
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id

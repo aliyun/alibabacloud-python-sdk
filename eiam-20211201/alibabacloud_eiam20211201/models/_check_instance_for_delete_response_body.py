@@ -13,7 +13,9 @@ class CheckInstanceForDeleteResponseBody(DaraModel):
         check_instance_result: main_models.CheckInstanceForDeleteResponseBodyCheckInstanceResult = None,
         request_id: str = None,
     ):
+        # The returned result.
         self.check_instance_result = check_instance_result
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -50,9 +52,9 @@ class CheckInstanceForDeleteResponseBodyCheckInstanceResult(DaraModel):
         deletable: bool = None,
         restrict_scenarios: List[main_models.CheckInstanceForDeleteResponseBodyCheckInstanceResultRestrictScenarios] = None,
     ):
-        # true表示实例可以被删除；false表示实例不可被删除，具体查看RestrictScenarios属性。
+        # Indicates whether the instance can be deleted.
         self.deletable = deletable
-        # true表示实例可以被删除；false表示实例不可被删除，具体查看RestrictScenarios属性。
+        # The restriction information that prevents deletion.
         self.restrict_scenarios = restrict_scenarios
 
     def validate(self):
@@ -96,11 +98,11 @@ class CheckInstanceForDeleteResponseBodyCheckInstanceResultRestrictScenarios(Dar
         resource_id: str = None,
         restrict_reason: str = None,
     ):
-        # 有帮助的控制台地址，可以管理对应的资源，从而解除实例删除限制。可能返回为空，不一定所有的资源ID都有管理地址返回。
+        # The URL of a helpful console page.
         self.helpful_console_url = helpful_console_url
-        # 导致实例删除受限的资源ID。
+        # The resource ID.
         self.resource_id = resource_id
-        # 针对实例删除受限的原因文字描述。
+        # The reason for the restriction.
         self.restrict_reason = restrict_reason
 
     def validate(self):

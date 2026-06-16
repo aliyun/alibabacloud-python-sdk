@@ -26,49 +26,57 @@ class ListUsersRequest(DaraModel):
         user_source_type: str = None,
         username_starts_with: str = None,
     ):
-        # Displayname
+        # The prefix of the display name. The query is performed based on the prefix.
         self.display_name_starts_with = display_name_starts_with
-        # The email address of the user who owns the account.
+        # The email address of the user.
         self.email = email
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The number of entries per page.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results.
         self.next_token = next_token
         # The ID of the organizational unit.
         self.organizational_unit_id = organizational_unit_id
-        # The number of the page to return. Default value: 1.
+        # The page number. The default value is 1.
         self.page_number = page_number
-        # The number of entries to return on each page. Default value: 20.
+        # The number of entries per page. The default value is 20. The maximum value is 100.
         self.page_size = page_size
-        # The mobile number of the user who owns the account.
+        # The mobile number of the user.
         self.phone_number = phone_number
-        # The country code of the mobile number. For example, the country code of China is 86 without 00 or +.
+        # The country calling code. For example, the country calling code of China is `86`. Do not add `00` or `+` to the country calling code.
         self.phone_region = phone_region
-        # The status of the account. Valid values:
+        # The status of the user. Valid values:
         # 
-        # *   enabled: The account is enabled.
-        # *   disabled: The account is disabled.
+        # - `enabled`: The user is enabled.
+        # 
+        # - `disabled`: The user is disabled.
         self.status = status
-        # The external ID of the account. The external ID can be used by external data to map the data of the account in IDaaS EIAM.
+        # The external ID of the user. The external ID can be used to associate the user with a user in an external system.
         # 
-        # For accounts with the same source type and source ID, each account has a unique external ID.
+        # > The external ID must be unique within the same source type and source ID.
         self.user_external_id = user_external_id
-        # User ID set
+        # The list of user IDs.
         self.user_ids = user_ids
-        # The source ID of the account.
+        # The source ID of the user.
         # 
-        # If the account was created in IDaaS, its source ID is the ID of the IDaaS instance. If the account was imported, its source ID is the enterprise ID in the source. For example, if the account was imported from DingTalk, its source ID is the corpId value of the enterprise in DingTalk.
+        # If the user is created in EIAM, the value of this parameter is the ID of the EIAM instance. If the user is imported from an external system, the value of this parameter is the enterprise ID of the user in the external system. For example, if the user is imported from DingTalk, the value of this parameter is the `corpId` of the enterprise in DingTalk.
         self.user_source_id = user_source_id
-        # The source type of the account. Valid values:
+        # The source type of the user. Valid values:
         # 
-        # *   build_in: The account was created in IDaaS.
-        # *   ding_talk: The account was imported from DingTalk.
-        # *   ad: The account was imported from Microsoft Active Directory (AD).
-        # *   ldap: The account was imported from a Lightweight Directory Access Protocol (LDAP) service.
+        # - `build_in`: The user is created in EIAM.
+        # 
+        # - `ding_talk`: The user is imported from DingTalk.
+        # 
+        # - `ad`: The user is imported from Active Directory (AD).
+        # 
+        # - `ldap`: The user is imported from a Lightweight Directory Access Protocol (LDAP) directory.
+        # 
+        # - `we_com`: The user is imported from WeCom.
         self.user_source_type = user_source_type
-        # Username
+        # The prefix of the username. The query is performed based on the prefix.
         self.username_starts_with = username_starts_with
 
     def validate(self):

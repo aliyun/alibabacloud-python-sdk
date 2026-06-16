@@ -11,15 +11,15 @@ class SetLoginRedirectApplicationForBrandRequest(DaraModel):
         brand_id: str = None,
         instance_id: str = None,
     ):
-        # 应用ID
+        # The application ID.
         # 
         # This parameter is required.
         self.application_id = application_id
-        # 品牌化Id
+        # The brand ID.
         # 
         # This parameter is required.
         self.brand_id = brand_id
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id

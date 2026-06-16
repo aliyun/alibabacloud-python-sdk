@@ -14,8 +14,11 @@ class ListApplicationsForGroupResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of applications that are granted access.
         self.applications = applications
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -66,13 +69,17 @@ class ListApplicationsForGroupResponseBodyApplications(DaraModel):
         has_direct_authorization: bool = None,
         has_inherit_authorization: bool = None,
     ):
-        # 应用的唯一标识。
+        # The application ID.
         self.application_id = application_id
-        # 应用角色列表。
+        # The list of application roles.
         self.application_roles = application_roles
-        # 直接分配给当前用户的权限，视为直接授权。
+        # Indicates whether a direct authorization exists. Valid values:
+        # 
+        # - true: A direct authorization record exists between the application and the group.
+        # 
+        # - false: No direct authorization record exists between the application and the group.
         self.has_direct_authorization = has_direct_authorization
-        # 通过用户隶属的组织、组获取的权限，视为继承权限。
+        # Indicates whether an inherited authorization exists.
         self.has_inherit_authorization = has_inherit_authorization
 
     def validate(self):
@@ -126,7 +133,7 @@ class ListApplicationsForGroupResponseBodyApplicationsApplicationRoles(DaraModel
         self,
         application_role_id: str = None,
     ):
-        # 应用角色标识。
+        # The application role ID.
         self.application_role_id = application_role_id
 
     def validate(self):

@@ -24,43 +24,41 @@ class ListApplicationsRequest(DaraModel):
         sso_type: str = None,
         status: str = None,
     ):
+        # The application creation type. If unspecified, only user-created (`user_custom`) applications are returned. To query applications of all types, set this parameter to `all`.
         self.application_creation_type = application_creation_type
+        # The application identity type. If unspecified, only applications of the `application` type are returned. To query all identity types, set this parameter to `all`.
         self.application_identity_type = application_identity_type
-        # The IDs of the applications.
+        # A list of application IDs.
         self.application_ids = application_ids
-        # The name of the application. Only fuzzy match from the leftmost character is supported.
+        # The application name. Only prefix matching is supported.
         self.application_name = application_name
-        # The authorization of the application. Valid values:
+        # The authorization type for application access. Valid values:
         # 
-        # *   authorize_required: Only the user with explicit authorization can access the application.
-        # *   default_all: By default, all users can access the application.
+        # - `authorize_required`: Access requires explicit authorization.
+        # 
+        # - `default_all`: All members have access by default.
         self.authorization_type = authorization_type
+        # A list of custom fields.
         self.custom_fields = custom_fields
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # Used to determine whether M2M client identity is enabled.
-        # - enabled
-        # - disabled
+        # The status of the M2M client identity.
         self.m_2mclient_status = m_2mclient_status
-        # The number of the page to return.
+        # The page number.
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # The page size.
         self.page_size = page_size
-        # Used to determine whether the ResourceServer capability is enabled.
-        # - enabled
-        # - disabled
+        # The status of the resource server capability.
         self.resource_server_status = resource_server_status
-        # SSO type.
-        # - oidc
-        # - saml2
-        # - oauth2/m2m
+        # A filter for the Single Sign-On (SSO) type. You can specify multiple types, separated by a comma. Example: `oauth2/m2m,oidc+oauth2/m2m`.
         self.sso_type = sso_type
-        # The status of the application. Valid values:
+        # The application status. Valid values:
         # 
-        # *   Enabled: The application is enabled.
-        # *   Disabled: The application is disabled.
+        # - `enabled`: Enabled.
+        # 
+        # - `disabled`: Disabled.
         self.status = status
 
     def validate(self):
@@ -169,7 +167,11 @@ class ListApplicationsRequestCustomFields(DaraModel):
         field_name: str = None,
         field_value: str = None,
     ):
+        # The custom field identifier. Valid values:
+        # 
+        # - `agent_type`: The agent type.
         self.field_name = field_name
+        # The custom field value.
         self.field_value = field_value
 
     def validate(self):

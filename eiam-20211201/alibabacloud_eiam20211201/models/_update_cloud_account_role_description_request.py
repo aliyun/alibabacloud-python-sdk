@@ -13,17 +13,21 @@ class UpdateCloudAccountRoleDescriptionRequest(DaraModel):
         description: str = None,
         instance_id: str = None,
     ):
+        # A client token used to ensure the idempotence of the request. Generate a unique value for this parameter from your client. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
+        # 
         # This parameter is required.
         self.client_token = client_token
+        # The cloud account ID.
+        # 
         # This parameter is required.
         self.cloud_account_id = cloud_account_id
-        # 云账号角色ID。
+        # The cloud role ID.
         # 
         # This parameter is required.
         self.cloud_account_role_id = cloud_account_role_id
-        # 描述
+        # The description of the cloud role.
         self.description = description
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id

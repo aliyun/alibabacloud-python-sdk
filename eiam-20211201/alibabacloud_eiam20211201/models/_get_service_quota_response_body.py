@@ -11,7 +11,9 @@ class GetServiceQuotaResponseBody(DaraModel):
         request_id: str = None,
         service_quota: main_models.GetServiceQuotaResponseBodyServiceQuota = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The service quota.
         self.service_quota = service_quota
 
     def validate(self):
@@ -49,11 +51,11 @@ class GetServiceQuotaResponseBodyServiceQuota(DaraModel):
         quota_value: int = None,
         used_quota_value: int = None,
     ):
-        # Quota 配额的唯一标识。
+        # The unique identifier of the quota.
         self.quota_type = quota_type
-        # Quota 配额的值。
+        # The value of the quota.
         self.quota_value = quota_value
-        # Quota 配额的当前用量。
+        # The current usage of the quota.
         self.used_quota_value = used_quota_value
 
     def validate(self):

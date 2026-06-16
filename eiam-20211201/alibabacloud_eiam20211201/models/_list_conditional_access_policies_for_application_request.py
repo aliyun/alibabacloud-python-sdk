@@ -10,11 +10,11 @@ class ListConditionalAccessPoliciesForApplicationRequest(DaraModel):
         application_id: str = None,
         instance_id: str = None,
     ):
-        # 条件访问策略关联的应用ID
+        # The ID of the application that is associated with the conditional access policy.
         # 
         # This parameter is required.
         self.application_id = application_id
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id

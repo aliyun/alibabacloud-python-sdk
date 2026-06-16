@@ -16,11 +16,15 @@ class ListClientPublicKeysResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of client public keys for the application.
         self.client_public_keys = client_public_keys
+        # The number of entries returned on each page.
         self.max_results = max_results
-        # 本次调用返回的查询凭证（Token）值，用于下一次翻页查询。
+        # The token for the next page of results.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -88,22 +92,23 @@ class ListClientPublicKeysResponseBodyClientPublicKeys(DaraModel):
         public_key: str = None,
         status: str = None,
     ):
-        # IDaaS EIAM 应用ClientPublicKey的算法类型 rsa2048、ecc256
+        # The algorithm type.
         self.algorithm_type = algorithm_type
-        # IDaaS EIAM 应用Id
+        # The application ID.
         self.application_id = application_id
-        # IDaaS EIAM 应用ClientPublicKey的Id
+        # The ID of the client public key.
         self.client_public_key_id = client_public_key_id
-        # IDaaS EIAM 应用ClientPublicKey的创建时间
+        # The time when the key was created.
         self.create_time = create_time
-        # IDaaS EIAM 实例Id
+        # The instance ID.
         self.instance_id = instance_id
+        # The time when the key was last used.
         self.last_used_time = last_used_time
-        # IDaaS EIAM 应用当前是否为首要使用的应用ClientPublicKey的
+        # Indicates whether the key is used with priority.
         self.primary = primary
-        # IDaaS EIAM 应用ClientPublicKey的公钥
+        # The public key.
         self.public_key = public_key
-        # IDaaS EIAM 应用ClientPublicKey的状态
+        # The status.
         self.status = status
 
     def validate(self):

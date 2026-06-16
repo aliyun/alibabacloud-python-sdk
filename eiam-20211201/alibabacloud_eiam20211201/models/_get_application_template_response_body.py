@@ -13,7 +13,9 @@ class GetApplicationTemplateResponseBody(DaraModel):
         application_template: main_models.GetApplicationTemplateResponseBodyApplicationTemplate = None,
         request_id: str = None,
     ):
+        # The details of the application template.
         self.application_template = application_template
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -60,29 +62,29 @@ class GetApplicationTemplateResponseBodyApplicationTemplate(DaraModel):
         sso_types: List[str] = None,
         update_time: int = None,
     ):
-        # 应用模板Id
+        # The ID of the application template.
         self.application_template_id = application_template_id
-        # 应用模板名称
+        # The name of the application template.
         self.application_template_name = application_template_name
-        # 应用模板创建时间
+        # The time when the application template was created.
         self.create_time = create_time
-        # 应用模板描述信息
+        # The description of the application template.
         self.description = description
-        # 应用模板对应帮助文档地址
+        # The URL of the help document for the application template.
         self.help_document_url = help_document_url
-        # 应用模板Logo地址
+        # The URL of the logo for the application template.
         self.logo_url = logo_url
-        # 托管应用模板的云产品ServiceCode。当且仅当ServiceManaged为true是返回。
+        # The service code of the Alibaba Cloud service that manages the application template.
         self.managed_service_code = managed_service_code
-        # 应用模板售卖信息
+        # The sales information about the application template.
         self.sale_info = sale_info
-        # 托管应用模板的云产品控制台地址。当且仅当ServiceManaged为true是返回。
+        # The URL of the console for the Alibaba Cloud service that manages the application template.
         self.service_console_url = service_console_url
-        # 应用模板是否被云产品托管。
+        # Indicates whether the application template is managed by an Alibaba Cloud service.
         self.service_managed = service_managed
-        # 支持SSO协议
+        # The supported Single Sign-On (SSO) protocols.
         self.sso_types = sso_types
-        # 应用模板更新时间
+        # The time when the application template was last updated.
         self.update_time = update_time
 
     def validate(self):
@@ -178,7 +180,7 @@ class GetApplicationTemplateResponseBodyApplicationTemplateSaleInfo(DaraModel):
         self,
         always_free: bool = None,
     ):
-        # 是否永久免费
+        # Indicates whether the application template is permanently free.
         self.always_free = always_free
 
     def validate(self):

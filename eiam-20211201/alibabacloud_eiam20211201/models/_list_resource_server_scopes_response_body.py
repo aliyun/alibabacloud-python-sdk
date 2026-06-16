@@ -17,12 +17,17 @@ class ListResourceServerScopesResponseBody(DaraModel):
         resource_server_scopes: List[main_models.ListResourceServerScopesResponseBodyResourceServerScopes] = None,
         total_count: int = None,
     ):
+        # Number of rows per page in paginated queries.
         self.max_results = max_results
-        # 本次调用返回的查询凭证（Token）值，用于下一次翻页查询。
+        # Token for the next page query.
         self.next_token = next_token
+        # Token for the previous page query.
         self.previous_token = previous_token
+        # Request ID.
         self.request_id = request_id
+        # List of Scope permissions under the ResourceServer.
         self.resource_server_scopes = resource_server_scopes
+        # Total number of items in the list.
         self.total_count = total_count
 
     def validate(self):
@@ -94,18 +99,19 @@ class ListResourceServerScopesResponseBodyResourceServerScopes(DaraModel):
         resource_server_scope_type: str = None,
         resource_server_scope_value: str = None,
     ):
-        # IDaaS EIAM 应用Id
+        # Application ID.
         self.application_id = application_id
+        # Authorization type.
         self.authorization_type = authorization_type
-        # IDaaS EIAM 实例Id
+        # Instance ID.
         self.instance_id = instance_id
-        # IDaaS EIAM ResourceServer下权限Id
+        # Scope permission ID.
         self.resource_server_scope_id = resource_server_scope_id
-        # IDaaS EIAM ResourceServer下权限名称
+        # Scope permission name.
         self.resource_server_scope_name = resource_server_scope_name
-        # IDaaS EIAM ResourceServer下权限类型
+        # Scope permission type.
         self.resource_server_scope_type = resource_server_scope_type
-        # IDaaS EIAM ResourceServer下权限值
+        # Scope permission value.
         self.resource_server_scope_value = resource_server_scope_value
 
     def validate(self):

@@ -10,7 +10,9 @@ class CreateIdentityProviderStatusCheckJobResponseBody(DaraModel):
         identity_provider_status_check_job_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the job.
         self.identity_provider_status_check_job_id = identity_provider_status_check_job_id
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

@@ -11,7 +11,9 @@ class ObtainApplicationTokenResponseBody(DaraModel):
         application_token: main_models.ObtainApplicationTokenResponseBodyApplicationToken = None,
         request_id: str = None,
     ):
+        # The application token.
         self.application_token = application_token
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -55,21 +57,23 @@ class ObtainApplicationTokenResponseBodyApplicationToken(DaraModel):
         last_used_time: int = None,
         status: str = None,
     ):
-        # IDaaS EIAM 应用Id
+        # The application ID.
         self.application_id = application_id
-        # 客户端密钥
+        # The application token.
         self.application_token = application_token
-        # IDaaS EIAM 客户端ID
+        # The application token ID.
         self.application_token_id = application_token_id
-        # IDaaS EIAM 客户端密钥Id
+        # The type of the application token.
         self.application_token_type = application_token_type
+        # The time when the application token was created.
         self.create_time = create_time
+        # The expiration time.
         self.expiration_time = expiration_time
-        # IDaaS EIAM 实例Id
+        # The ID of the IDaaS EIAM instance.
         self.instance_id = instance_id
-        # IDaaS EIAM 客户端密钥最近使用时间
+        # The time when the token was last used.
         self.last_used_time = last_used_time
-        # IDaaS EIAM 客户端密钥状态
+        # The status.
         self.status = status
 
     def validate(self):

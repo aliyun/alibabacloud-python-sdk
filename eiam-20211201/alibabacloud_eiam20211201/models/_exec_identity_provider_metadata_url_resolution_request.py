@@ -13,13 +13,15 @@ class ExecIdentityProviderMetadataUrlResolutionRequest(DaraModel):
         oidc_issuer: str = None,
         saml_metadata_url: str = None,
     ):
+        # The ID of the identity provider in IDaaS.
         self.identity_provider_id = identity_provider_id
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The network access endpoint ID.
         self.network_access_endpoint_id = network_access_endpoint_id
-        # OIDC Issuer地址。
+        # The OIDC issuer URL.
         self.oidc_issuer = oidc_issuer
         self.saml_metadata_url = saml_metadata_url
 

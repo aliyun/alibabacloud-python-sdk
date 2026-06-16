@@ -11,15 +11,15 @@ class UpdateBrandRequest(DaraModel):
         brand_name: str = None,
         instance_id: str = None,
     ):
-        # 品牌化Id
+        # The brand ID.
         # 
         # This parameter is required.
         self.brand_id = brand_id
-        # 品牌名称
+        # The brand name.
         # 
         # This parameter is required.
         self.brand_name = brand_name
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id

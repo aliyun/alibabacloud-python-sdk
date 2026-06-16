@@ -15,10 +15,13 @@ class ListApplicationsForNetworkAccessEndpointResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The collection of applications for the network access endpoint.
         self.applications_for_network_access_endpoint = applications_for_network_access_endpoint
-        # 本次调用返回的查询凭证（Token）值，用于下一次翻页查询。
+        # The token for the next page of results.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -74,11 +77,11 @@ class ListApplicationsForNetworkAccessEndpointResponseBodyApplicationsForNetwork
         application_name: str = None,
         instance_id: str = None,
     ):
-        # 应用ID。
+        # The application ID.
         self.application_id = application_id
-        # 应用名称。
+        # The application name.
         self.application_name = application_name
-        # IDaaS EIAM 实例ID
+        # The instance ID.
         self.instance_id = instance_id
 
     def validate(self):

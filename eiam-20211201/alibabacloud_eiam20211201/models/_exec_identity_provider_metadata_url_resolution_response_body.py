@@ -13,7 +13,9 @@ class ExecIdentityProviderMetadataUrlResolutionResponseBody(DaraModel):
         identity_provider_metadata: main_models.ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetadata = None,
         request_id: str = None,
     ):
+        # The identity provider metadata.
         self.identity_provider_metadata = identity_provider_metadata
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -50,8 +52,9 @@ class ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetad
         oidc_open_id_configuration: main_models.ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetadataOidcOpenIdConfiguration = None,
         saml_metadata_configuration: main_models.ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetadataSamlMetadataConfiguration = None,
     ):
-        # OIDC IdP的Meta信息。
+        # The OIDC identity provider metadata.
         self.oidc_open_id_configuration = oidc_open_id_configuration
+        # The SAML identity provider metadata.
         self.saml_metadata_configuration = saml_metadata_configuration
 
     def validate(self):
@@ -92,8 +95,11 @@ class ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetad
         id_pentity_id: str = None,
         id_psso_url: str = None,
     ):
+        # The certificates.
         self.certificates = certificates
+        # The entity ID of the SAML identity provider.
         self.id_pentity_id = id_pentity_id
+        # The SSO URL of the SAML identity provider.
         self.id_psso_url = id_psso_url
 
     def validate(self):
@@ -141,6 +147,7 @@ class ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetad
         self,
         content: str = None,
     ):
+        # The content of the certificate.
         self.content = content
 
     def validate(self):
@@ -172,15 +179,15 @@ class ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetad
         token_endpoint: str = None,
         userinfo_endpoint: str = None,
     ):
-        # oAuth2 授权端点。
+        # The OAuth 2.0 authorization endpoint.
         self.authorization_endpoint = authorization_endpoint
-        # OIDC issuer信息。
+        # The OIDC issuer.
         self.issuer = issuer
-        # OIDC jwks地址。
+        # The OIDC JSON Web Key Set (JWKS) URI.
         self.jwks_uri = jwks_uri
-        # oAuth2 Token端点。
+        # The OAuth 2.0 token endpoint.
         self.token_endpoint = token_endpoint
-        # OIDC 用户信息端点。
+        # The OIDC userinfo endpoint.
         self.userinfo_endpoint = userinfo_endpoint
 
     def validate(self):

@@ -15,21 +15,23 @@ class AuthorizeResourceServerScopesToUserRequest(DaraModel):
         resource_server_scope_ids: List[str] = None,
         user_id: str = None,
     ):
-        # IDaaS的应用资源ID。
+        # The ID of the resource server application.
         # 
         # This parameter is required.
         self.application_id = application_id
+        # Ensures the idempotence of the request. Generate a parameter value from your client to make sure that the value is unique among different requests. ClientToken can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://www.alibabacloud.com/help/en/ecs/developer-reference/how-to-ensure-idempotence).
+        # 
         # This parameter is required.
         self.client_token = client_token
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # ResourceServer权限ID。
+        # A list of scope permission IDs under the resource server.
         # 
         # This parameter is required.
         self.resource_server_scope_ids = resource_server_scope_ids
-        # 用户ID。
+        # The ID of the account.
         # 
         # This parameter is required.
         self.user_id = user_id

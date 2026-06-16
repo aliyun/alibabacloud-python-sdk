@@ -20,7 +20,7 @@ class AuthorizeApplicationToGroupsRequest(DaraModel):
         self.application_id = application_id
         # 应用角色ID。
         self.application_role_id = application_role_id
-        # The group IDs. You can specify up to 100 group IDs at a time.
+        # The list of group IDs. You can specify up to 100 group IDs.
         # 
         # This parameter is required.
         self.group_ids = group_ids

@@ -10,7 +10,9 @@ class CreateApplicationRoleResponseBody(DaraModel):
         application_role_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the application role.
         self.application_role_id = application_role_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

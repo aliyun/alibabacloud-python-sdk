@@ -16,12 +16,15 @@ class ListAuthorizationRulesForUserResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of authorization rules.
         self.authorization_rules = authorization_rules
-        # 分页查询时每页行数。
+        # The number of entries per page.
         self.max_results = max_results
-        # 本次调用返回的查询凭证（Token）值，用于下一次翻页查询。
+        # The token that is returned in this call and is used to retrieve the next page of results.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -84,13 +87,17 @@ class ListAuthorizationRulesForUserResponseBodyAuthorizationRules(DaraModel):
         validity_period: main_models.ListAuthorizationRulesForUserResponseBodyAuthorizationRulesValidityPeriod = None,
         validity_type: str = None,
     ):
-        # 授权规则标识。
+        # The authorization rule ID.
         self.authorization_rule_id = authorization_rule_id
-        # 实例ID。
+        # The instance ID.
         self.instance_id = instance_id
-        # 有效周期。
+        # The time range of the validity period. This parameter takes effect only when **ValidityType** is set to **time_bound**.
         self.validity_period = validity_period
-        # 有效期类型，枚举值：permanent（永久），time_bound（自定义时间范围）。
+        # The type of the validity period of the relationship. Valid values:
+        # 
+        # - permanent: The relationship is permanent.
+        # 
+        # - time_bound: The relationship is valid for a custom time range.
         self.validity_type = validity_type
 
     def validate(self):
@@ -139,9 +146,9 @@ class ListAuthorizationRulesForUserResponseBodyAuthorizationRulesValidityPeriod(
         end_time: int = None,
         start_time: int = None,
     ):
-        # 授权生效结束时间。
+        # The end time of the validity period. The value is a UNIX timestamp. Unit: milliseconds.
         self.end_time = end_time
-        # 授权生效开始时间。
+        # The start time of the validity period. The value is a UNIX timestamp. Unit: milliseconds.
         self.start_time = start_time
 
     def validate(self):

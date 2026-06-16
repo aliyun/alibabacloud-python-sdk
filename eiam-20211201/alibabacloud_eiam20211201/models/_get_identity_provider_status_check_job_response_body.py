@@ -13,7 +13,9 @@ class GetIdentityProviderStatusCheckJobResponseBody(DaraModel):
         identity_provider_status_check_job: main_models.GetIdentityProviderStatusCheckJobResponseBodyIdentityProviderStatusCheckJob = None,
         request_id: str = None,
     ):
+        # The information about the IdP status check job.
         self.identity_provider_status_check_job = identity_provider_status_check_job
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -56,21 +58,21 @@ class GetIdentityProviderStatusCheckJobResponseBodyIdentityProviderStatusCheckJo
         start_time: int = None,
         status: str = None,
     ):
-        # 任务检查结果
+        # The result of the check task.
         self.check_result = check_result
-        # 结束时间
+        # The end time.
         self.end_time = end_time
-        # IdP身份提供方
+        # The ID of the IdP.
         self.identity_provider_id = identity_provider_id
-        # IdP状态检查任务Id
+        # The ID of the IdP status check job.
         self.identity_provider_status_check_job_id = identity_provider_status_check_job_id
-        # IDaaS EIAM 实例Id
+        # The instance ID.
         self.instance_id = instance_id
-        # 状态检查子项任务结果信息
+        # The results of the status check subtasks.
         self.job_check_items = job_check_items
-        # 开始时间
+        # The start time.
         self.start_time = start_time
-        # 任务检查状态
+        # The status of the check task.
         self.status = status
 
     def validate(self):
@@ -151,13 +153,13 @@ class GetIdentityProviderStatusCheckJobResponseBodyIdentityProviderStatusCheckJo
         minor_check_item: str = None,
         result: str = None,
     ):
-        # 错误原因
+        # The reason for the error.
         self.error_reason = error_reason
-        # 主要检查项
+        # The major check item.
         self.major_check_item = major_check_item
-        # 次要检查项
+        # The minor check item.
         self.minor_check_item = minor_check_item
-        # 结果
+        # The result.
         self.result = result
 
     def validate(self):
@@ -207,11 +209,11 @@ class GetIdentityProviderStatusCheckJobResponseBodyIdentityProviderStatusCheckJo
         error_level: str = None,
         error_message: str = None,
     ):
-        # 错误码
+        # The error code.
         self.error_code = error_code
-        # 错误级别
+        # The error level.
         self.error_level = error_level
-        # 错误信息
+        # The error message.
         self.error_message = error_message
 
     def validate(self):

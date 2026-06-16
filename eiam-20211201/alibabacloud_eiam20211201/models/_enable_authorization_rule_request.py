@@ -11,13 +11,15 @@ class EnableAuthorizationRuleRequest(DaraModel):
         client_token: str = None,
         instance_id: str = None,
     ):
-        # 授权规则标识。
+        # The authorization rule ID.
         # 
         # This parameter is required.
         self.authorization_rule_id = authorization_rule_id
+        # A unique, client-generated token to ensure the idempotence of the request. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
+        # 
         # This parameter is required.
         self.client_token = client_token
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id

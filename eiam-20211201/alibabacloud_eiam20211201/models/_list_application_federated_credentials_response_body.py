@@ -17,14 +17,17 @@ class ListApplicationFederatedCredentialsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of application federated credentials.
         self.application_federated_credentials = application_federated_credentials
-        # 分页查询时每页行数。
+        # The number of entries returned per page.
         self.max_results = max_results
-        # 本次调用返回的查询凭证（Token）值，用于下一次翻页查询。
+        # The token that is used to retrieve the next page of results.
         self.next_token = next_token
-        # 本次调用返回的查询凭证（Token）值，用于上一次翻页查询。
+        # The query token returned by this call.
         self.previous_token = previous_token
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -100,27 +103,27 @@ class ListApplicationFederatedCredentialsResponseBodyApplicationFederatedCredent
         status: str = None,
         update_time: int = None,
     ):
-        # 应用联邦凭证ID
+        # The ID of the application federated credential.
         self.application_federated_credential_id = application_federated_credential_id
-        # 应用联邦凭证名称
+        # The name of the application federated credential.
         self.application_federated_credential_name = application_federated_credential_name
-        # 应用联邦凭证类型
+        # The type of the application federated credential.
         self.application_federated_credential_type = application_federated_credential_type
-        # 应用ID
+        # The application ID.
         self.application_id = application_id
-        # 创建时间
+        # The time when the credential was created.
         self.create_time = create_time
-        # 应用联邦凭证描述
+        # The description of the application federated credential.
         self.description = description
-        # 应用联邦凭证提供者ID
+        # The ID of the federated credential provider.
         self.federated_credential_provider_id = federated_credential_provider_id
-        # EAIM 实例ID
+        # The instance ID.
         self.instance_id = instance_id
-        # 最近使用时间
+        # The time when the credential was last used.
         self.last_used_time = last_used_time
-        # 应用联邦凭证状态
+        # The status of the application federated credential.
         self.status = status
-        # 更新时间
+        # The time when the credential was last updated.
         self.update_time = update_time
 
     def validate(self):

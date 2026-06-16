@@ -13,7 +13,9 @@ class GetNetworkZoneResponseBody(DaraModel):
         network_zone: main_models.GetNetworkZoneResponseBodyNetworkZone = None,
         request_id: str = None,
     ):
+        # The network zone object.
         self.network_zone = network_zone
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -56,19 +58,21 @@ class GetNetworkZoneResponseBodyNetworkZone(DaraModel):
         network_zone_type: str = None,
         vpc_id: str = None,
     ):
-        # IDaaS EIAM 网络区域描述
+        # The description of the network zone.
         self.description = description
-        # 实例ID。
+        # The instance ID.
         self.instance_id = instance_id
+        # The IPv4 CIDR blocks.
         self.ipv_4cidrs = ipv_4cidrs
+        # The IPv6 CIDR blocks.
         self.ipv_6cidrs = ipv_6cidrs
-        # IDaaS EIAM 网络区域Id
+        # The network zone ID.
         self.network_zone_id = network_zone_id
-        # IDaaS EIAM 网络区域名称
+        # The name of the network zone.
         self.network_zone_name = network_zone_name
-        # IDaaS EIAM 网络区域类型
+        # The type of the network zone.
         self.network_zone_type = network_zone_type
-        # IDaaS EIAM 专有网络VpcId
+        # The VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):

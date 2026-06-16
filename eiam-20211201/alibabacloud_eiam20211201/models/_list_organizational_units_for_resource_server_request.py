@@ -17,19 +17,21 @@ class ListOrganizationalUnitsForResourceServerRequest(DaraModel):
         next_token: str = None,
         resource_server_scope_id: str = None,
     ):
-        # IDaaS的应用资源ID。
+        # The resource server application ID.
         # 
         # This parameter is required.
         self.application_id = application_id
+        # The list of filter conditions.
         self.filter = filter
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The maximum number of entries to return on each page.
         self.max_results = max_results
-        # 查询凭证（Token），取值为上一次API调用返回的NextToken参数值。
+        # The pagination token. To retrieve the next page of results, set this parameter to the NextToken value from the previous response.
         self.next_token = next_token
-        # 权限唯一标识。
+        # The ID of the resource server scope.
         self.resource_server_scope_id = resource_server_scope_id
 
     def validate(self):
@@ -96,7 +98,9 @@ class ListOrganizationalUnitsForResourceServerRequestFilter(DaraModel):
         name: str = None,
         value: List[str] = None,
     ):
+        # The filter key.
         self.name = name
+        # The list of filter values.
         self.value = value
 
     def validate(self):

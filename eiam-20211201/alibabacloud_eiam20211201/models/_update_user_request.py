@@ -21,29 +21,29 @@ class UpdateUserRequest(DaraModel):
         user_id: str = None,
         username: str = None,
     ):
-        # The custom extended fields.
+        # A list of custom field objects.
         self.custom_fields = custom_fields
-        # The display name of the account. The display name can be up to 64 characters in length.
+        # The display name. It can be a maximum of 256 characters.
         self.display_name = display_name
-        # The email address. The prefix of the email address can contain letters, digits, periods (.), underscores (_), and hyphens (-).
+        # The email address. The local-part can contain uppercase letters, lowercase letters, digits, dots (.), underscores (_), and hyphens (-).
         self.email = email
-        # Specifies whether the email address is verified. This parameter must be specified if you specify Email. You can set this parameter to true if you have no special business requirements.
+        # Indicates whether the email address is verified. This parameter is required when specifying an email address. In most cases, set this to `true`.
         self.email_verified = email_verified
         # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The mobile number. The mobile number must be 6 to 15 digits in length.
+        # The mobile phone number. It must be between 6 and 15 digits long.
         self.phone_number = phone_number
-        # Specifies whether the mobile number is verified. This parameter must be specified if you specify PhoneNumber. You can set this parameter to true if you have no special business requirements.
+        # Indicates whether the mobile phone number is verified. This parameter is required when specifying a mobile phone number. In most cases, set this to `true`.
         self.phone_number_verified = phone_number_verified
-        # The area code of the mobile number. For example, the area code of a mobile number in the Chinese mainland is 86 without 00 or the plus sign (+). This parameter must be specified if you specify PhoneNumber.
+        # The country code for the mobile phone number. Example: 86 for Chinese mainland. Do not include `00` or `+`. This parameter is required if you specify a mobile phone number.
         self.phone_region = phone_region
         # The account ID.
         # 
         # This parameter is required.
         self.user_id = user_id
-        # The name of the account. The name can be up to 64 characters in length. It can contain letters, digits, and the following special characters: _ . @ -
+        # The username. It must be no more than 256 characters and can contain letters, digits, and the special characters: _, ., @, and -.
         self.username = username
 
     def validate(self):
@@ -135,15 +135,17 @@ class UpdateUserRequestCustomFields(DaraModel):
         field_value: str = None,
         operation: str = None,
     ):
-        # The name of the extended field. You must create an extended field before you specify this parameter. To create an extended field, go to the Extended Fields page of the specified EIAM instance in the IDaaS console.
+        # The custom field name. You must create the custom field in the console before using it. For more information, see the custom fields module in the console.
         self.field_name = field_name
-        # The value of the extended field. The value follows the limits on the properties of the extended field.
+        # The custom field value. The value must comply with the constraints of the custom field.
         self.field_value = field_value
-        # The operation type of the extended field. Valid values:
+        # The operation type for the custom field. Valid values:
         # 
-        # *   add: adds a value to the extended field of the account.
-        # *   replace: replaces the existing value of the extended field of the account. If the existing value to be replaced does not exist, this operation changes to the add operation.
-        # *   remove: removes a value from the extended field of the account.
+        # - `add`: Adds a value to the custom field.
+        # 
+        # - `replace`: Replaces the existing value of the custom field. If the field has no existing value, this operation adds the value instead.
+        # 
+        # - `remove`: Removes a value from the custom field.
         self.operation = operation
 
     def validate(self):

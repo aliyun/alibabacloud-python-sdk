@@ -11,7 +11,9 @@ class GetResourceServerScopeResponseBody(DaraModel):
         request_id: str = None,
         resource_server_scope: main_models.GetResourceServerScopeResponseBodyResourceServerScope = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The information about the scope permission of the resource server.
         self.resource_server_scope = resource_server_scope
 
     def validate(self):
@@ -53,18 +55,19 @@ class GetResourceServerScopeResponseBodyResourceServerScope(DaraModel):
         resource_server_scope_type: str = None,
         resource_server_scope_value: str = None,
     ):
-        # IDaaS EIAM 应用Id
+        # The application ID.
         self.application_id = application_id
+        # The authorization type.
         self.authorization_type = authorization_type
-        # IDaaS EIAM 实例Id
+        # The instance ID.
         self.instance_id = instance_id
-        # IDaaS EIAM ResourceServer下权限Id
+        # The ID of the scope permission.
         self.resource_server_scope_id = resource_server_scope_id
-        # IDaaS EIAM ResourceServer下权限名称
+        # The name of the scope permission.
         self.resource_server_scope_name = resource_server_scope_name
-        # IDaaS EIAM ResourceServer下权限类型
+        # The type of the scope permission.
         self.resource_server_scope_type = resource_server_scope_type
-        # IDaaS EIAM ResourceServer下权限值
+        # The value of the scope permission.
         self.resource_server_scope_value = resource_server_scope_value
 
     def validate(self):

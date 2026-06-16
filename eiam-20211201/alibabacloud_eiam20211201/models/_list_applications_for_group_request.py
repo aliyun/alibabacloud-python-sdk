@@ -15,19 +15,19 @@ class ListApplicationsForGroupRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # 非必填，如果填写则可以基于应用ID进行过滤，列表中最多包含100个元素。
+        # The list of application IDs. A maximum of 100 application IDs are supported.
         self.application_ids = application_ids
-        # 组的唯一标识。
+        # The group ID.
         # 
         # This parameter is required.
         self.group_id = group_id
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # 当前查询的列表页码，默认为1。
+        # The page number.
         self.page_number = page_number
-        # 当前查询的列表页码，默认为20。
+        # The number of entries per page.
         self.page_size = page_size
 
     def validate(self):

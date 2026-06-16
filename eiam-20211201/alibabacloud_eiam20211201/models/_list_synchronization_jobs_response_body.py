@@ -15,10 +15,13 @@ class ListSynchronizationJobsResponseBody(DaraModel):
         synchronization_jobs: List[main_models.ListSynchronizationJobsResponseBodySynchronizationJobs] = None,
         total_count: int = None,
     ):
-        # 本次调用返回的查询凭证（Token）值，用于下一次翻页查询。
+        # The token to retrieve the next page of results.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # A list of sync task information.
         self.synchronization_jobs = synchronization_jobs
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -81,24 +84,47 @@ class ListSynchronizationJobsResponseBodySynchronizationJobs(DaraModel):
         target_type: str = None,
         trigger_type: str = None,
     ):
+        # The description of the sync task.
         self.description = description
-        # 同步任务方向
+        # The direction of the sync task. Valid values:
+        # 
+        # - ingress: Inbound.
+        # 
+        # - egress: Outbound.
         self.direction = direction
-        # 同步结束时间
+        # The synchronization end time. The value is a UNIX timestamp. Unit: milliseconds.
         self.end_time = end_time
-        # 同步任务结果
+        # The result of the sync task.
         self.result = result
-        # 同步开始时间
+        # The synchronization start time. The value is a UNIX timestamp. Unit: milliseconds.
         self.start_time = start_time
-        # 同步任务状态
+        # The status of the sync task. Valid values:
+        # 
+        # - pending: The task is pending.
+        # 
+        # - running: The task is running.
+        # 
+        # - failed: The task failed.
+        # 
+        # - partial_success: The task is partially successful.
+        # 
+        # - success: The task is successful.
         self.status = status
-        # 同步任务ID
+        # The sync task ID.
         self.synchronization_job_id = synchronization_job_id
-        # 同步目标ID
+        # The synchronization target ID.
         self.target_id = target_id
-        # 同步目标类型
+        # The type of the synchronization target. Valid values:
+        # 
+        # - identity_provider: Identity provider.
+        # 
+        # - application: Application.
         self.target_type = target_type
-        # 同步触发类型
+        # The trigger type of the synchronization. Valid values:
+        # 
+        # - auto: Automatic.
+        # 
+        # - manual: Manual.
         self.trigger_type = trigger_type
 
     def validate(self):
@@ -187,17 +213,17 @@ class ListSynchronizationJobsResponseBodySynchronizationJobsResult(DaraModel):
         organizational_unit_statistics: main_models.ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatistics = None,
         user_statistics: main_models.ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatistics = None,
     ):
-        # 同步结果错误码
+        # The error code for the synchronization result.
         self.error_code = error_code
-        # 同步结果错误信息描述
+        # The error message for the synchronization result.
         self.error_message = error_message
-        # 组成员同步结果统计
+        # The statistics of group member synchronization results.
         self.group_member_statistics = group_member_statistics
-        # 组同步结果统计
+        # The statistics of group synchronization results.
         self.group_statistics = group_statistics
-        # 组织同步结果统计
+        # The statistics of organization synchronization results.
         self.organizational_unit_statistics = organizational_unit_statistics
-        # 用户同步结果统计
+        # The statistics of user synchronization results.
         self.user_statistics = user_statistics
 
     def validate(self):
@@ -272,18 +298,19 @@ class ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatistics
         same: main_models.ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsSame = None,
         updated: main_models.ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsUpdated = None,
     ):
-        # 绑定结果统计
+        # The statistics of binding results.
         self.binded = binded
-        # 创建结果统计
+        # The statistics of creation results.
         self.created = created
-        # 删除结果统计
+        # The statistics of deletion results.
         self.deleted = deleted
+        # The statistics of export results.
         self.exported = exported
-        # 推送结果统计
+        # The statistics of push results.
         self.pushed = pushed
-        # 相同结果统计
+        # The statistics of identical entries.
         self.same = same
-        # 更新结果统计
+        # The statistics of update results.
         self.updated = updated
 
     def validate(self):
@@ -370,13 +397,13 @@ class ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatistics
         success: int = None,
         total: int = None,
     ):
-        # 失败数目
+        # The number of failed operations.
         self.failed = failed
-        # 跳过数目
+        # The number of skipped operations.
         self.skipped = skipped
-        # 成功数目
+        # The number of successful operations.
         self.success = success
-        # 总共数目
+        # The total number.
         self.total = total
 
     def validate(self):
@@ -425,13 +452,13 @@ class ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatistics
         success: int = None,
         total: int = None,
     ):
-        # 失败数目
+        # The number of failed operations.
         self.failed = failed
-        # 跳过数目
+        # The number of skipped operations.
         self.skipped = skipped
-        # 成功数目
+        # The number of successful operations.
         self.success = success
-        # 总共数目
+        # The total number.
         self.total = total
 
     def validate(self):
@@ -480,13 +507,13 @@ class ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatistics
         success: int = None,
         total: int = None,
     ):
-        # 失败数目
+        # The number of failed operations.
         self.failed = failed
-        # 跳过数目
+        # The number of skipped operations.
         self.skipped = skipped
-        # 成功数目
+        # The number of successful operations.
         self.success = success
-        # 总共数目
+        # The total number.
         self.total = total
 
     def validate(self):
@@ -535,9 +562,13 @@ class ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatistics
         success: int = None,
         total: int = None,
     ):
+        # The number of failed operations.
         self.failed = failed
+        # The number of skipped operations.
         self.skipped = skipped
+        # The number of successful operations.
         self.success = success
+        # The total number.
         self.total = total
 
     def validate(self):
@@ -586,13 +617,13 @@ class ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatistics
         success: int = None,
         total: int = None,
     ):
-        # 失败数目
+        # The number of failed operations.
         self.failed = failed
-        # 跳过数目
+        # The number of skipped operations.
         self.skipped = skipped
-        # 成功数目
+        # The number of successful operations.
         self.success = success
-        # 总共数目
+        # The total number.
         self.total = total
 
     def validate(self):
@@ -641,13 +672,13 @@ class ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatistics
         success: int = None,
         total: int = None,
     ):
-        # 失败数目
+        # The number of failed operations.
         self.failed = failed
-        # 跳过数目
+        # The number of skipped operations.
         self.skipped = skipped
-        # 成功数目
+        # The number of successful operations.
         self.success = success
-        # 总共数目
+        # The total number.
         self.total = total
 
     def validate(self):
@@ -696,13 +727,13 @@ class ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatistics
         success: int = None,
         total: int = None,
     ):
-        # 失败数目
+        # The number of failed operations.
         self.failed = failed
-        # 跳过数目
+        # The number of skipped operations.
         self.skipped = skipped
-        # 成功数目
+        # The number of successful operations.
         self.success = success
-        # 总共数目
+        # The total number.
         self.total = total
 
     def validate(self):
@@ -753,17 +784,17 @@ class ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizational
         same: main_models.ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsSame = None,
         updated: main_models.ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsUpdated = None,
     ):
-        # 绑定结果统计
+        # The statistics of binding results.
         self.binded = binded
-        # 创建结果统计
+        # The statistics of creation results.
         self.created = created
-        # 删除结果统计
+        # The statistics of deletion results.
         self.deleted = deleted
-        # 推送结果统计
+        # The statistics of push results.
         self.pushed = pushed
-        # 相同结果统计
+        # The statistics of identical entries.
         self.same = same
-        # 更新结果统计
+        # The statistics of update results.
         self.updated = updated
 
     def validate(self):
@@ -841,13 +872,13 @@ class ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizational
         success: int = None,
         total: int = None,
     ):
-        # 失败数目
+        # The number of failed operations.
         self.failed = failed
-        # 跳过数目
+        # The number of skipped operations.
         self.skipped = skipped
-        # 成功数目
+        # The number of successful operations.
         self.success = success
-        # 总共数目
+        # The total number.
         self.total = total
 
     def validate(self):
@@ -896,13 +927,13 @@ class ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizational
         success: int = None,
         total: int = None,
     ):
-        # 失败数目
+        # The number of failed operations.
         self.failed = failed
-        # 跳过数目
+        # The number of skipped operations.
         self.skipped = skipped
-        # 成功数目
+        # The number of successful operations.
         self.success = success
-        # 总共数目
+        # The total number.
         self.total = total
 
     def validate(self):
@@ -951,13 +982,13 @@ class ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizational
         success: int = None,
         total: int = None,
     ):
-        # 失败数目
+        # The number of failed operations.
         self.failed = failed
-        # 跳过数目
+        # The number of skipped operations.
         self.skipped = skipped
-        # 成功数目
+        # The number of successful operations.
         self.success = success
-        # 总共数目
+        # The total number.
         self.total = total
 
     def validate(self):
@@ -1006,13 +1037,13 @@ class ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizational
         success: int = None,
         total: int = None,
     ):
-        # 失败数目
+        # The number of failed operations.
         self.failed = failed
-        # 跳过数目
+        # The number of skipped operations.
         self.skipped = skipped
-        # 成功数目
+        # The number of successful operations.
         self.success = success
-        # 总共数目
+        # The total number.
         self.total = total
 
     def validate(self):
@@ -1061,13 +1092,13 @@ class ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizational
         success: int = None,
         total: int = None,
     ):
-        # 失败数目
+        # The number of failed operations.
         self.failed = failed
-        # 跳过数目
+        # The number of skipped operations.
         self.skipped = skipped
-        # 成功数目
+        # The number of successful operations.
         self.success = success
-        # 总共数目
+        # The total number.
         self.total = total
 
     def validate(self):
@@ -1116,13 +1147,13 @@ class ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizational
         success: int = None,
         total: int = None,
     ):
-        # 失败数目
+        # The number of failed operations.
         self.failed = failed
-        # 跳过数目
+        # The number of skipped operations.
         self.skipped = skipped
-        # 成功数目
+        # The number of successful operations.
         self.success = success
-        # 总共数目
+        # The total number.
         self.total = total
 
     def validate(self):
@@ -1173,17 +1204,17 @@ class ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatistic
         same: main_models.ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsSame = None,
         updated: main_models.ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsUpdated = None,
     ):
-        # 绑定结果统计
+        # The statistics of binding results.
         self.binded = binded
-        # 创建结果统计
+        # The statistics of creation results.
         self.created = created
-        # 删除结果统计
+        # The statistics of deletion results.
         self.deleted = deleted
-        # 推送结果统计
+        # The statistics of push results.
         self.pushed = pushed
-        # 相同结果统计
+        # The statistics of identical entries.
         self.same = same
-        # 更新结果统计
+        # The statistics of update results.
         self.updated = updated
 
     def validate(self):
@@ -1261,13 +1292,13 @@ class ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatistic
         success: int = None,
         total: int = None,
     ):
-        # 失败数目
+        # The number of failed operations.
         self.failed = failed
-        # 跳过数目
+        # The number of skipped operations.
         self.skipped = skipped
-        # 成功数目
+        # The number of successful operations.
         self.success = success
-        # 总共数目
+        # The total number.
         self.total = total
 
     def validate(self):
@@ -1316,13 +1347,13 @@ class ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatistic
         success: int = None,
         total: int = None,
     ):
-        # 失败数目
+        # The number of failed operations.
         self.failed = failed
-        # 跳过数目
+        # The number of skipped operations.
         self.skipped = skipped
-        # 成功数目
+        # The number of successful operations.
         self.success = success
-        # 总共数目
+        # The total number.
         self.total = total
 
     def validate(self):
@@ -1371,13 +1402,13 @@ class ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatistic
         success: int = None,
         total: int = None,
     ):
-        # 失败数目
+        # The number of failed operations.
         self.failed = failed
-        # 跳过数目
+        # The number of skipped operations.
         self.skipped = skipped
-        # 成功数目
+        # The number of successful operations.
         self.success = success
-        # 总共数目
+        # The total number.
         self.total = total
 
     def validate(self):
@@ -1426,13 +1457,13 @@ class ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatistic
         success: int = None,
         total: int = None,
     ):
-        # 失败数目
+        # The number of failed operations.
         self.failed = failed
-        # 跳过数目
+        # The number of skipped operations.
         self.skipped = skipped
-        # 成功数目
+        # The number of successful operations.
         self.success = success
-        # 总共数目
+        # The total number.
         self.total = total
 
     def validate(self):
@@ -1481,13 +1512,13 @@ class ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatistic
         success: int = None,
         total: int = None,
     ):
-        # 失败数目
+        # The number of failed operations.
         self.failed = failed
-        # 跳过数目
+        # The number of skipped operations.
         self.skipped = skipped
-        # 成功数目
+        # The number of successful operations.
         self.success = success
-        # 总共数目
+        # The total number.
         self.total = total
 
     def validate(self):
@@ -1536,13 +1567,13 @@ class ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatistic
         success: int = None,
         total: int = None,
     ):
-        # 失败数目
+        # The number of failed operations.
         self.failed = failed
-        # 跳过数目
+        # The number of skipped operations.
         self.skipped = skipped
-        # 成功数目
+        # The number of successful operations.
         self.success = success
-        # 总共数目
+        # The total number.
         self.total = total
 
     def validate(self):
@@ -1593,17 +1624,17 @@ class ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberSta
         same: main_models.ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsSame = None,
         updated: main_models.ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsUpdated = None,
     ):
-        # 绑定结果统计
+        # The statistics of binding results.
         self.binded = binded
-        # 创建结果统计
+        # The statistics of creation results.
         self.created = created
-        # 删除结果统计
+        # The statistics of deletion results.
         self.deleted = deleted
-        # 推送结果统计
+        # The statistics of push results.
         self.pushed = pushed
-        # 相同结果统计
+        # The statistics of identical entries.
         self.same = same
-        # 更新结果统计
+        # The statistics of update results.
         self.updated = updated
 
     def validate(self):
@@ -1681,13 +1712,13 @@ class ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberSta
         success: int = None,
         total: int = None,
     ):
-        # 失败数目
+        # The number of failed operations.
         self.failed = failed
-        # 跳过数目
+        # The number of skipped operations.
         self.skipped = skipped
-        # 成功数目
+        # The number of successful operations.
         self.success = success
-        # 总共数目
+        # The total number.
         self.total = total
 
     def validate(self):
@@ -1736,13 +1767,13 @@ class ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberSta
         success: int = None,
         total: int = None,
     ):
-        # 失败数目
+        # The number of failed operations.
         self.failed = failed
-        # 跳过数目
+        # The number of skipped operations.
         self.skipped = skipped
-        # 成功数目
+        # The number of successful operations.
         self.success = success
-        # 总共数目
+        # The total number.
         self.total = total
 
     def validate(self):
@@ -1791,13 +1822,13 @@ class ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberSta
         success: int = None,
         total: int = None,
     ):
-        # 失败数目
+        # The number of failed operations.
         self.failed = failed
-        # 跳过数目
+        # The number of skipped operations.
         self.skipped = skipped
-        # 成功数目
+        # The number of successful operations.
         self.success = success
-        # 总共数目
+        # The total number.
         self.total = total
 
     def validate(self):
@@ -1846,13 +1877,13 @@ class ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberSta
         success: int = None,
         total: int = None,
     ):
-        # 失败数目
+        # The number of failed operations.
         self.failed = failed
-        # 跳过数目
+        # The number of skipped operations.
         self.skipped = skipped
-        # 成功数目
+        # The number of successful operations.
         self.success = success
-        # 总共数目
+        # The total number.
         self.total = total
 
     def validate(self):
@@ -1901,13 +1932,13 @@ class ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberSta
         success: int = None,
         total: int = None,
     ):
-        # 失败数目
+        # The number of failed operations.
         self.failed = failed
-        # 跳过数目
+        # The number of skipped operations.
         self.skipped = skipped
-        # 成功数目
+        # The number of successful operations.
         self.success = success
-        # 总共数目
+        # The total number.
         self.total = total
 
     def validate(self):
@@ -1956,13 +1987,13 @@ class ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberSta
         success: int = None,
         total: int = None,
     ):
-        # 失败数目
+        # The number of failed operations.
         self.failed = failed
-        # 跳过数目
+        # The number of skipped operations.
         self.skipped = skipped
-        # 成功数目
+        # The number of successful operations.
         self.success = success
-        # 总共数目
+        # The total number.
         self.total = total
 
     def validate(self):

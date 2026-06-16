@@ -10,11 +10,11 @@ class GetInstanceQuotaRequest(DaraModel):
         instance_id: str = None,
         quota_key: str = None,
     ):
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # 配额类型，QuotaEnum
+        # The quota type.
         # 
         # This parameter is required.
         self.quota_key = quota_key

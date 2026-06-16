@@ -10,7 +10,9 @@ class CreateClientPublicKeyResponseBody(DaraModel):
         client_public_key_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the client public key for the application.
         self.client_public_key_id = client_public_key_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

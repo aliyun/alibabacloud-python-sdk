@@ -14,15 +14,15 @@ class UpdateApplicationAdvancedConfigRequest(DaraModel):
         instance_id: str = None,
         scim_server_advanced_config: main_models.UpdateApplicationAdvancedConfigRequestScimServerAdvancedConfig = None,
     ):
-        # IDaaS的应用资源ID。
+        # The application ID.
         # 
         # This parameter is required.
         self.application_id = application_id
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # Scim Server 高阶配置
+        # The advanced configuration of the SCIM server.
         self.scim_server_advanced_config = scim_server_advanced_config
 
     def validate(self):
@@ -65,9 +65,9 @@ class UpdateApplicationAdvancedConfigRequestScimServerAdvancedConfig(DaraModel):
         supported_user_custom_field_ids: List[str] = None,
         user_custom_field_namespace: str = None,
     ):
-        # 支持的用户自定义字段ID列表。
+        # A list of IDs of supported custom user fields.
         self.supported_user_custom_field_ids = supported_user_custom_field_ids
-        # 用户扩展字段的命名空间。
+        # The namespace of the user extension fields.
         self.user_custom_field_namespace = user_custom_field_namespace
 
     def validate(self):

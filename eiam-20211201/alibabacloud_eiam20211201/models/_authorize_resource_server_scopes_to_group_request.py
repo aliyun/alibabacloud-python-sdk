@@ -15,21 +15,23 @@ class AuthorizeResourceServerScopesToGroupRequest(DaraModel):
         instance_id: str = None,
         resource_server_scope_ids: List[str] = None,
     ):
-        # IDaaS的应用资源ID。
+        # The ID of the ResourceServer application.
         # 
         # This parameter is required.
         self.application_id = application_id
+        # A client-generated token that you must make unique among different requests to ensure idempotence. ClientToken can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
+        # 
         # This parameter is required.
         self.client_token = client_token
-        # 组ID。
+        # The group ID.
         # 
         # This parameter is required.
         self.group_id = group_id
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # ResourceServer权限ID。
+        # A list of Scope permission IDs under the ResourceServer.
         # 
         # This parameter is required.
         self.resource_server_scope_ids = resource_server_scope_ids

@@ -14,19 +14,19 @@ class RevokeResourceServerScopesFromUserRequest(DaraModel):
         resource_server_scope_ids: List[str] = None,
         user_id: str = None,
     ):
-        # IDaaS的应用资源ID。
+        # The ID of the ResourceServer application.
         # 
         # This parameter is required.
         self.application_id = application_id
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # ResourceServer权限ID。
+        # A list of scope permission IDs under the ResourceServer.
         # 
         # This parameter is required.
         self.resource_server_scope_ids = resource_server_scope_ids
-        # 用户ID。
+        # The user ID.
         # 
         # This parameter is required.
         self.user_id = user_id

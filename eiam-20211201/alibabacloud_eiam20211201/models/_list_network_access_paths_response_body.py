@@ -13,7 +13,7 @@ class ListNetworkAccessPathsResponseBody(DaraModel):
         network_access_paths: List[main_models.ListNetworkAccessPathsResponseBodyNetworkAccessPaths] = None,
         request_id: str = None,
     ):
-        # Network access paths
+        # The list of network endpoint access paths.
         self.network_access_paths = network_access_paths
         # The request ID.
         self.request_id = request_id
@@ -65,23 +65,31 @@ class ListNetworkAccessPathsResponseBodyNetworkAccessPaths(DaraModel):
         update_time: int = None,
         v_switch_id: str = None,
     ):
-        # The creation time.
+        # The time when the dedicated network endpoint access path was created. This value is a UNIX timestamp. Unit: milliseconds.
         self.create_time = create_time
         # The instance ID.
         self.instance_id = instance_id
-        # Network access endpoint ID.
+        # The ID of the dedicated network endpoint.
         self.network_access_endpoint_id = network_access_endpoint_id
-        # Network access path ID
+        # The ID of the dedicated network endpoint access path.
         self.network_access_path_id = network_access_path_id
-        # Network interface ID
+        # The ID of the ENI that is used by the dedicated network endpoint access path.
         self.network_interface_id = network_interface_id
-        # The private IP address.
+        # The private IP address of the ENI that is used by the dedicated network endpoint access path.
         self.private_ip_address = private_ip_address
-        # Network access path status
+        # The status of the dedicated network endpoint access path. Valid values:
+        # 
+        # - pending: The path is being initialized.
+        # 
+        # - creating: The path is being created.
+        # 
+        # - running: The path is running.
+        # 
+        # - deleting: The path is being deleted.
         self.status = status
-        # The update time.
+        # The time when the dedicated network endpoint access path was last updated. This value is a UNIX timestamp. Unit: milliseconds.
         self.update_time = update_time
-        # The ID of a vSwitch.
+        # The ID of the vSwitch to which the ENI of the dedicated network endpoint access path belongs.
         self.v_switch_id = v_switch_id
 
     def validate(self):

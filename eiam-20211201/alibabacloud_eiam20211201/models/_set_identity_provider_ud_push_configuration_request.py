@@ -18,22 +18,25 @@ class SetIdentityProviderUdPushConfigurationRequest(DaraModel):
         periodic_sync_status: str = None,
         ud_sync_scope_configs: List[main_models.SetIdentityProviderUdPushConfigurationRequestUdSyncScopeConfigs] = None,
     ):
-        # IDaaS的身份提供方主键id
+        # The ID of the identity provider.
         # 
         # This parameter is required.
         self.identity_provider_id = identity_provider_id
-        # 增量回调状态，是否处理来自IdP的增量回调数据
+        # Specifies whether to process incremental callback data from the IdP.
         # 
         # This parameter is required.
         self.incremental_callback_status = incremental_callback_status
-        # IDaaS EIAM的实例id
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The configurations for LDAP push synchronization.
         self.ldap_ud_push_config = ldap_ud_push_config
+        # The configuration for periodic synchronization.
         self.periodic_sync_config = periodic_sync_config
+        # The status of periodic synchronization.
         self.periodic_sync_status = periodic_sync_status
-        # 同步出配置信息
+        # The push synchronization configurations.
         self.ud_sync_scope_configs = ud_sync_scope_configs
 
     def validate(self):
@@ -112,9 +115,9 @@ class SetIdentityProviderUdPushConfigurationRequestUdSyncScopeConfigs(DaraModel)
         source_scopes: List[str] = None,
         target_scope: str = None,
     ):
-        # 同步来源节点
+        # The source nodes for synchronization.
         self.source_scopes = source_scopes
-        # 同步目标节点
+        # The target node for synchronization.
         self.target_scope = target_scope
 
     def validate(self):
@@ -150,8 +153,11 @@ class SetIdentityProviderUdPushConfigurationRequestPeriodicSyncConfig(DaraModel)
         periodic_sync_times: List[int] = None,
         periodic_sync_type: str = None,
     ):
+        # The cron expression.
         self.periodic_sync_cron = periodic_sync_cron
+        # A collection of time points.
         self.periodic_sync_times = periodic_sync_times
+        # The type of periodic synchronization.
         self.periodic_sync_type = periodic_sync_type
 
     def validate(self):
@@ -195,10 +201,15 @@ class SetIdentityProviderUdPushConfigurationRequestLdapUdPushConfig(DaraModel):
         user_object_class: str = None,
         user_rdn: str = None,
     ):
+        # The object class for organizations.
         self.organization_unit_object_class = organization_unit_object_class
+        # The RDN for organizations.
         self.organizational_unit_rdn = organizational_unit_rdn
+        # Specifies whether to synchronize passwords.
         self.password_sync_status = password_sync_status
+        # The object class for users.
         self.user_object_class = user_object_class
+        # The Relative Distinguished Name (RDN) for users.
         self.user_rdn = user_rdn
 
     def validate(self):

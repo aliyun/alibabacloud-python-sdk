@@ -13,7 +13,7 @@ class GetForgetPasswordConfigurationResponseBody(DaraModel):
         open_forget_password_configuration: main_models.GetForgetPasswordConfigurationResponseBodyOpenForgetPasswordConfiguration = None,
         request_id: str = None,
     ):
-        # The forgot password configurations.
+        # The forgot password configuration.
         self.open_forget_password_configuration = open_forget_password_configuration
         # The request ID.
         self.request_id = request_id
@@ -55,19 +55,15 @@ class GetForgetPasswordConfigurationResponseBodyOpenForgetPasswordConfiguration(
         enable_sms: bool = None,
         forget_password_status: str = None,
     ):
-        # The authentication channels. Valid values:  
-        # email  
-        # sms  
-        # totp  
-        # web_authn
+        # The list of authentication channels for the forgot password feature. This parameter is required when ForgetPasswordStatus is set to enabled. Valid values: email, sms, totp (one-time password), and web_authn (WebAuthn).
         self.authentication_channels = authentication_channels
-        # Indicates whether the forgot password feature is enabled.
+        # Indicates whether the forgot password feature is enabled. This parameter is deprecated. Use the ForgetPasswordStatus parameter instead.
         self.enable = enable
-        # Indicates whether email authentication is enabled for the forgot password feature.
+        # Indicates whether email is enabled as an authentication method for the forgot password feature. This parameter is deprecated. Use the AuthenticationChannels parameter instead.
         self.enable_email = enable_email
-        # Indicates whether Short Message Service (SMS) authentication is enabled for the forgot password feature.
+        # Indicates whether SMS is enabled as an authentication method for the forgot password feature. This parameter is deprecated. Use the AuthenticationChannels parameter instead.
         self.enable_sms = enable_sms
-        # The status of the forgot password feature. Valid values: enabled and disabled.
+        # The status of the forgot password configuration. Valid values: enabled and disabled.
         self.forget_password_status = forget_password_status
 
     def validate(self):

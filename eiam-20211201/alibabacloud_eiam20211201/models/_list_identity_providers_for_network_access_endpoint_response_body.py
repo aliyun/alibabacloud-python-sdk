@@ -15,10 +15,13 @@ class ListIdentityProvidersForNetworkAccessEndpointResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The collection of IdPs for the network endpoint.
         self.identity_providers_for_network_access_endpoint = identity_providers_for_network_access_endpoint
-        # 本次调用返回的查询凭证（Token）值，用于下一次翻页查询。
+        # The token that is returned from the call.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -74,11 +77,11 @@ class ListIdentityProvidersForNetworkAccessEndpointResponseBodyIdentityProviders
         identity_provider_name: str = None,
         instance_id: str = None,
     ):
-        # IdP的ID。
+        # The ID of the IdP.
         self.identity_provider_id = identity_provider_id
-        # IdP名称。
+        # The name of the IdP.
         self.identity_provider_name = identity_provider_name
-        # IDaaS EIAM 实例ID
+        # The instance ID.
         self.instance_id = instance_id
 
     def validate(self):

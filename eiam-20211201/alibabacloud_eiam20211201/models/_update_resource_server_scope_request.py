@@ -12,19 +12,19 @@ class UpdateResourceServerScopeRequest(DaraModel):
         resource_server_scope_id: str = None,
         resource_server_scope_name: str = None,
     ):
-        # IDaaS的应用资源ID。
+        # The ID of the ResourceServer application.
         # 
         # This parameter is required.
         self.application_id = application_id
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # ResourceServer下Scope唯一标识。
+        # The ID of the scope permission for the resource server.
         # 
         # This parameter is required.
         self.resource_server_scope_id = resource_server_scope_id
-        # 权限名称
+        # The name of the scope permission.
         # 
         # This parameter is required.
         self.resource_server_scope_name = resource_server_scope_name

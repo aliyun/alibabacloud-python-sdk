@@ -11,7 +11,9 @@ class GetAuthorizationResourceResponseBody(DaraModel):
         authorization_resource: main_models.GetAuthorizationResourceResponseBodyAuthorizationResource = None,
         request_id: str = None,
     ):
+        # The authorized resource.
         self.authorization_resource = authorization_resource
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -52,17 +54,19 @@ class GetAuthorizationResourceResponseBodyAuthorizationResource(DaraModel):
         cloud_account_id: str = None,
         instance_id: str = None,
     ):
-        # 资源实体标识
+        # The ID of the resource entity that is associated with the authorized resource.
         self.authorization_resource_entity_id = authorization_resource_entity_id
-        # 资源实体类型，枚举类型：asset（资产）、credential（凭据）、cloud_identity_role（云账号角色）
+        # The type of the resource entity that is associated with the authorized resource. Valid value:
+        # 
+        # - cloud_account_role: a cloud role
         self.authorization_resource_entity_type = authorization_resource_entity_type
-        # 授权资源标识
+        # The authorization resource ID.
         self.authorization_resource_id = authorization_resource_id
-        # 授权规则标识
+        # The authorization rule ID.
         self.authorization_rule_id = authorization_rule_id
-        # 云账号ID。
+        # The ID of the Alibaba Cloud account to which the resource entity that is associated with the authorized resource belongs.
         self.cloud_account_id = cloud_account_id
-        # 实例ID
+        # The instance ID.
         self.instance_id = instance_id
 
     def validate(self):

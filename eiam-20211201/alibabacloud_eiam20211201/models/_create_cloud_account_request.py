@@ -16,24 +16,33 @@ class CreateCloudAccountRequest(DaraModel):
         description: str = None,
         instance_id: str = None,
     ):
+        # A client token that ensures the idempotence of the request. The client must generate a unique token for each request. The token must consist of only ASCII characters and be no more than 64 characters in length. For more information, see [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
+        # 
         # This parameter is required.
         self.client_token = client_token
-        # 云账号唯一标识
+        # The external unique identifier of the cloud account.
         # 
         # This parameter is required.
         self.cloud_account_external_id = cloud_account_external_id
-        # 云账号名称
+        # The name of the cloud account.
         self.cloud_account_name = cloud_account_name
-        # 云账号提供商名称
+        # The name of the identity provider.
         self.cloud_account_provider_name = cloud_account_provider_name
+        # The site of the cloud account. Valid values:
+        # 
+        # - global: international site
+        # 
+        # - china_mainland: China mainland site
         self.cloud_account_site = cloud_account_site
-        # 云账号类型
+        # The type of the cloud account. Valid value:
+        # 
+        # - alibaba_cloud: Alibaba Cloud
         # 
         # This parameter is required.
         self.cloud_account_vendor_type = cloud_account_vendor_type
-        # 云账号描述
+        # The description of the cloud account.
         self.description = description
-        # IDaaS EIAM实例的ID。
+        # The ID of the instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id

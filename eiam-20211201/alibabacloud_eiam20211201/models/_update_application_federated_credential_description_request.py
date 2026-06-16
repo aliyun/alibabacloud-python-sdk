@@ -12,17 +12,17 @@ class UpdateApplicationFederatedCredentialDescriptionRequest(DaraModel):
         description: str = None,
         instance_id: str = None,
     ):
-        # 应用联邦凭证Id
+        # The ID of the application\\"s federated credential.
         # 
         # This parameter is required.
         self.application_federated_credential_id = application_federated_credential_id
-        # IDaaS的应用资源ID。
+        # The application ID.
         # 
         # This parameter is required.
         self.application_id = application_id
-        # 联邦凭证描述
+        # The description of the federated credential.
         self.description = description
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id

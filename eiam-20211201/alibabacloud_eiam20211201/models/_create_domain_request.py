@@ -12,11 +12,11 @@ class CreateDomainRequest(DaraModel):
         filing: main_models.CreateDomainRequestFiling = None,
         instance_id: str = None,
     ):
-        # The domain name of the website.
+        # The domain name.
         # 
         # This parameter is required.
         self.domain = domain
-        # Registration information parameters.
+        # The parameters for ICP filing information.
         self.filing = filing
         # The instance ID.
         # 
@@ -62,7 +62,7 @@ class CreateDomainRequestFiling(DaraModel):
         self,
         icp_number: str = None,
     ):
-        # Record number associated with the domain name.
+        # The ICP filing number associated with the domain name.
         self.icp_number = icp_number
 
     def validate(self):

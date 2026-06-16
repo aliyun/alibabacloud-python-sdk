@@ -11,7 +11,9 @@ class GetInstanceQuotaResponseBody(DaraModel):
         quota: main_models.GetInstanceQuotaResponseBodyQuota = None,
         request_id: str = None,
     ):
+        # The quota information.
         self.quota = quota
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -48,9 +50,9 @@ class GetInstanceQuotaResponseBodyQuota(DaraModel):
         quota_key: str = None,
         quota_value: int = None,
     ):
-        # Quota 配额的Key，同请求参数
+        # The key of the quota.
         self.quota_key = quota_key
-        # Quota 配额的值。
+        # The value of the quota.
         self.quota_value = quota_value
 
     def validate(self):

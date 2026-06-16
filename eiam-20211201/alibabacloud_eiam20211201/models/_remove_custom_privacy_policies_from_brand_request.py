@@ -13,15 +13,15 @@ class RemoveCustomPrivacyPoliciesFromBrandRequest(DaraModel):
         custom_privacy_policy_ids: List[str] = None,
         instance_id: str = None,
     ):
-        # 品牌化Id
+        # The branding ID.
         # 
         # This parameter is required.
         self.brand_id = brand_id
-        # 条款ID列表
+        # A list of policy IDs.
         # 
         # This parameter is required.
         self.custom_privacy_policy_ids = custom_privacy_policy_ids
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id

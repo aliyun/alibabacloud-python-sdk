@@ -11,7 +11,9 @@ class CheckApplicationProvisioningUserPrimaryOrganizationalUnitResponseBody(Dara
         check_application_provisioning_user_primary_ou_result: main_models.CheckApplicationProvisioningUserPrimaryOrganizationalUnitResponseBodyCheckApplicationProvisioningUserPrimaryOuResult = None,
         request_id: str = None,
     ):
+        # The authorization information.
         self.check_application_provisioning_user_primary_ou_result = check_application_provisioning_user_primary_ou_result
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -49,11 +51,11 @@ class CheckApplicationProvisioningUserPrimaryOrganizationalUnitResponseBodyCheck
         application_id: str = None,
         instance_id: str = None,
     ):
-        # 是否授权
+        # Indicates if the authorization is granted.
         self.allow_authorization = allow_authorization
-        # IDaaS EIAM 实例Id
+        # The application ID.
         self.application_id = application_id
-        # IDaaS EIAM 实例Id
+        # The instance ID.
         self.instance_id = instance_id
 
     def validate(self):

@@ -13,19 +13,23 @@ class UpdateApplicationRoleRequest(DaraModel):
         client_token: str = None,
         instance_id: str = None,
     ):
-        # IDaaS的应用资源ID。
+        # The application ID.
         # 
         # This parameter is required.
         self.application_id = application_id
+        # The ID of the application role.
+        # 
         # This parameter is required.
         self.application_role_id = application_role_id
-        # 应用角色名称
+        # The name of the application role.
         # 
         # This parameter is required.
         self.application_role_name = application_role_name
+        # The client token that is used to ensure the idempotence of the request. You must make sure that the token is unique for each request. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://www.alibabacloud.com/help/en/ecs/developer-reference/how-to-ensure-idempotence).
+        # 
         # This parameter is required.
         self.client_token = client_token
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id

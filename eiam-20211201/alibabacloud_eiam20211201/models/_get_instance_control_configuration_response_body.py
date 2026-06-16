@@ -13,7 +13,9 @@ class GetInstanceControlConfigurationResponseBody(DaraModel):
         instance_control_configuration: main_models.GetInstanceControlConfigurationResponseBodyInstanceControlConfiguration = None,
         request_id: str = None,
     ):
+        # The instance control configuration.
         self.instance_control_configuration = instance_control_configuration
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -49,7 +51,7 @@ class GetInstanceControlConfigurationResponseBodyInstanceControlConfiguration(Da
         self,
         control_elements: List[main_models.GetInstanceControlConfigurationResponseBodyInstanceControlConfigurationControlElements] = None,
     ):
-        # 实例控制配置项
+        # The list of control elements.
         self.control_elements = control_elements
 
     def validate(self):
@@ -87,10 +89,11 @@ class GetInstanceControlConfigurationResponseBodyInstanceControlConfigurationCon
         human_verification_config: main_models.GetInstanceControlConfigurationResponseBodyInstanceControlConfigurationControlElementsHumanVerificationConfig = None,
         status: str = None,
     ):
-        # 实例控制项名称，如human_verification。
+        # The element name.
         self.element_name = element_name
+        # The human verification configuration.
         self.human_verification_config = human_verification_config
-        # 实例控制项状态，enabled或者disabled。
+        # The status of the control element.
         self.status = status
 
     def validate(self):
@@ -132,6 +135,7 @@ class GetInstanceControlConfigurationResponseBodyInstanceControlConfigurationCon
         self,
         human_verification_type: str = None,
     ):
+        # The human verification type.
         self.human_verification_type = human_verification_type
 
     def validate(self):

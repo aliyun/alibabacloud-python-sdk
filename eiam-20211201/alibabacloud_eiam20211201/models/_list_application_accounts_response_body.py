@@ -14,8 +14,11 @@ class ListApplicationAccountsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of account information.
         self.application_accounts = application_accounts
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -68,17 +71,17 @@ class ListApplicationAccountsResponseBodyApplicationAccounts(DaraModel):
         instance_id: str = None,
         user_id: str = None,
     ):
-        # IDaaS EIAM 应用账号Id
+        # The application account ID.
         self.application_account_id = application_account_id
-        # IDaaS EIAM 应用Id
+        # The application ID.
         self.application_id = application_id
-        # IDaaS EIAM 应用账号名称
+        # The name of the application account.
         self.application_username = application_username
-        # 创建时间
+        # The time when the account was created.
         self.create_time = create_time
-        # IDaaS EIAM 实例Id
+        # The ID of the IDaaS EIAM instance.
         self.instance_id = instance_id
-        # IDaaS EIAM 用户Id
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):
