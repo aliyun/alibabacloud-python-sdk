@@ -15,13 +15,13 @@ class ListDomainsResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The status code returned.
+        # The response code.
         self.code = code
-        # Response parameters.
+        # The response data.
         self.data = data
-        # The message returned.
+        # The response description.
         self.message = message
-        # The request ID, which is used to trace the API call link.
+        # The request ID, which is used to trace the API call chain.
         self.request_id = request_id
 
     def validate(self):
@@ -72,13 +72,13 @@ class ListDomainsResponseBodyData(DaraModel):
         page_size: int = None,
         total_size: int = None,
     ):
-        # The list of domain information.
+        # 域名信息列表。
         self.items = items
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_size = total_size
 
     def validate(self):

@@ -9,17 +9,19 @@ class GatewayInfo(DaraModel):
     def __init__(
         self,
         engine_version: str = None,
+        gateway_edition: str = None,
         gateway_id: str = None,
         name: str = None,
         vpc_info: main_models.GatewayInfoVpcInfo = None,
     ):
-        # The instance engine version.
+        # The gateway DPI engine database engine version.
         self.engine_version = engine_version
-        # The instance ID.
+        self.gateway_edition = gateway_edition
+        # The gateway ID.
         self.gateway_id = gateway_id
-        # The instance name.
+        # The gateway name.
         self.name = name
-        # The virtual private cloud (VPC) information.
+        # The VPC information.
         self.vpc_info = vpc_info
 
     def validate(self):
@@ -33,6 +35,9 @@ class GatewayInfo(DaraModel):
             result = _map
         if self.engine_version is not None:
             result['engineVersion'] = self.engine_version
+
+        if self.gateway_edition is not None:
+            result['gatewayEdition'] = self.gateway_edition
 
         if self.gateway_id is not None:
             result['gatewayId'] = self.gateway_id
@@ -49,6 +54,9 @@ class GatewayInfo(DaraModel):
         m = m or dict()
         if m.get('engineVersion') is not None:
             self.engine_version = m.get('engineVersion')
+
+        if m.get('gatewayEdition') is not None:
+            self.gateway_edition = m.get('gatewayEdition')
 
         if m.get('gatewayId') is not None:
             self.gateway_id = m.get('gatewayId')

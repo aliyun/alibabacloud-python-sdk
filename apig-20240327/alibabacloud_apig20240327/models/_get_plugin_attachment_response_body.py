@@ -15,11 +15,11 @@ class GetPluginAttachmentResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The status code.
+        # The response status code.
         self.code = code
-        # The response payload.
+        # The response data.
         self.data = data
-        # The status message.
+        # The response message.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -77,23 +77,23 @@ class GetPluginAttachmentResponseBodyData(DaraModel):
         plugin_id: str = None,
         resource_infos: List[main_models.ResourceInfo] = None,
     ):
-        # Indicates whether the plug-in is enabled.
+        # Indicates whether the plugin attachment is enabled.
         self.enable = enable
-        # The environment information.
+        # The environment context.
         self.environment_info = environment_info
-        # The instance information.
+        # The gateway information.
         self.gateway_info = gateway_info
-        # The information about the parent resource to which the plug-in is attached.
+        # The parent attachment resource information.
         self.parent_resource_info = parent_resource_info
-        # The attachment ID.
+        # The plugin attachment ID.
         self.plugin_attachment_id = plugin_attachment_id
-        # The plug-in type information.
+        # The plugin type information.
         self.plugin_class_info = plugin_class_info
-        # The Base64-encoded configurations of the plug-in.
+        # The Base64-encoded content of the original plugin configuration.
         self.plugin_config = plugin_config
-        # The plug-in ID.
+        # The plugin ID.
         self.plugin_id = plugin_id
-        # The resource information.
+        # The list of attachment resource information.
         self.resource_infos = resource_infos
 
     def validate(self):

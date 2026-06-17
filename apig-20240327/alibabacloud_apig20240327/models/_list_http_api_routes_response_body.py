@@ -72,13 +72,13 @@ class ListHttpApiRoutesResponseBodyData(DaraModel):
         page_size: int = None,
         total_size: int = None,
     ):
-        # An array of route objects.
+        # 路由列表。
         self.items = items
-        # The current page number.
+        # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The total number of available entries.
+        # The total number of entries.
         self.total_size = total_size
 
     def validate(self):

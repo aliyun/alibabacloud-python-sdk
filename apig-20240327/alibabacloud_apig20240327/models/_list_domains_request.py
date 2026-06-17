@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class ListDomainsRequest(DaraModel):
     def __init__(
         self,
+        domain_scope: str = None,
         gateway_id: str = None,
         gateway_type: str = None,
         name_like: str = None,
@@ -14,17 +15,18 @@ class ListDomainsRequest(DaraModel):
         page_size: int = None,
         resource_group_id: str = None,
     ):
-        # The instance ID.
+        self.domain_scope = domain_scope
+        # The gateway ID.
         self.gateway_id = gateway_id
-        # The gateway type to filter. Valid values: **AI** and **API**.
+        # The gateway type used for filtering. Valid values: **AI** and **API**.
         self.gateway_type = gateway_type
-        # The domain name keyword for fuzzy search.
+        # The domain name. Fuzzy match is supported.
         self.name_like = name_like
-        # The page number of the page to return. Default value: 1.
+        # The page number. Default value: 1.
         self.page_number = page_number
         # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -35,6 +37,9 @@ class ListDomainsRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.domain_scope is not None:
+            result['domainScope'] = self.domain_scope
+
         if self.gateway_id is not None:
             result['gatewayId'] = self.gateway_id
 
@@ -57,6 +62,9 @@ class ListDomainsRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('domainScope') is not None:
+            self.domain_scope = m.get('domainScope')
+
         if m.get('gatewayId') is not None:
             self.gateway_id = m.get('gatewayId')
 

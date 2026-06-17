@@ -12,11 +12,11 @@ class ListSslCertsRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The name keyword for matching.
+        # The keyword for fuzzy match of the certificate name.
         self.cert_name_like = cert_name_like
         # The domain name.
         self.domain_name = domain_name
-        # The page number of the page to return. Default value: 1.
+        # The page number. Default value: 1.
         self.page_number = page_number
         # The number of entries per page. Default value: 10.
         self.page_size = page_size

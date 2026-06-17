@@ -11,6 +11,7 @@ class CreateDomainRequest(DaraModel):
         ca_cert_identifier: str = None,
         cert_identifier: str = None,
         client_cacert: str = None,
+        domain_scope: str = None,
         force_https: bool = None,
         gateway_type: str = None,
         http_2option: str = None,
@@ -22,30 +23,20 @@ class CreateDomainRequest(DaraModel):
         tls_max: str = None,
         tls_min: str = None,
     ):
-        # The CA certificate ID.
+        # The CA certificate identifier.
         self.ca_cert_identifier = ca_cert_identifier
         # The certificate identifier.
         self.cert_identifier = cert_identifier
-        # The client CA certificate content.
+        # The client CA certificate.
         self.client_cacert = client_cacert
-        # Specifies whether to enable forced HTTP to HTTPS redirection.
+        self.domain_scope = domain_scope
+        # Specifies whether to enable forced HTTPS redirect when the protocol type is set to HTTPS.
         self.force_https = force_https
         # The gateway type.
-        # 
-        # Valid values:
-        # 
-        # *   AI
-        # *   API
         self.gateway_type = gateway_type
-        # HTTP/2 configuration options.
-        # 
-        # Valid values:
-        # 
-        # *   GlobalConfig
-        # *   Close
-        # *   Open
+        # The HTTP/2 setting.
         self.http_2option = http_2option
-        # Specifies whether to enable mutual Transport Layer Security (mTLS) authentication.
+        # Specifies whether to enable mutual TLS (mTLS) authentication.
         self.m_tlsenabled = m_tlsenabled
         # The domain name.
         # 
@@ -53,18 +44,16 @@ class CreateDomainRequest(DaraModel):
         self.name = name
         # The protocol type supported by the domain name.
         # 
-        # *   HTTP: HTTP only
-        # *   HTTPS: HTTPS only
-        # 
-        # This parameter is required.
+        # - HTTP: supports only HTTP.
+        # - HTTPS: supports only HTTPS.
         self.protocol = protocol
         # The [resource group ID](https://help.aliyun.com/document_detail/151181.html).
         self.resource_group_id = resource_group_id
         # The cipher suite configuration.
         self.tls_cipher_suites_config = tls_cipher_suites_config
-        # The maximum TLS protocol version (up to TLS 1.3).
+        # The maximum TLS version. TLS 1.3 is the maximum supported version.
         self.tls_max = tls_max
-        # The minimum TLS protocol version (minimum TLS 1.0).
+        # The minimum TLS version. TLS 1.0 is the minimum supported version.
         self.tls_min = tls_min
 
     def validate(self):
@@ -84,6 +73,9 @@ class CreateDomainRequest(DaraModel):
 
         if self.client_cacert is not None:
             result['clientCACert'] = self.client_cacert
+
+        if self.domain_scope is not None:
+            result['domainScope'] = self.domain_scope
 
         if self.force_https is not None:
             result['forceHttps'] = self.force_https
@@ -127,6 +119,9 @@ class CreateDomainRequest(DaraModel):
 
         if m.get('clientCACert') is not None:
             self.client_cacert = m.get('clientCACert')
+
+        if m.get('domainScope') is not None:
+            self.domain_scope = m.get('domainScope')
 
         if m.get('forceHttps') is not None:
             self.force_https = m.get('forceHttps')

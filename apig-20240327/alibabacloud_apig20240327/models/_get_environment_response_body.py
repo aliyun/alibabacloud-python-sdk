@@ -15,13 +15,13 @@ class GetEnvironmentResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The response message returned.
+        # The response code.
         self.code = code
-        # The environment ID.
-        self.data = data
         # The response data.
+        self.data = data
+        # The response message.
         self.message = message
-        # The status code returned.
+        # The request ID, which is used to trace the API call chain.
         self.request_id = request_id
 
     def validate(self):
@@ -79,27 +79,27 @@ class GetEnvironmentResponseBodyData(DaraModel):
         sub_domain_infos: List[main_models.SubDomainInfo] = None,
         update_timestamp: int = None,
     ):
-        # Test environment
-        self.alias = alias
-        # The update timestamp.
-        self.create_timestamp = create_timestamp
-        # The creation timestamp.
-        self.default = default
-        # Testing environment for xx project of xxx
-        self.description = description
-        # The environment name.
-        self.environment_id = environment_id
-        # The subdomains.
-        self.gateway_info = gateway_info
         # The environment alias.
+        self.alias = alias
+        # The creation timestamp.
+        self.create_timestamp = create_timestamp
+        # Indicates whether this is the default environment.
+        self.default = default
+        # The environment description.
+        self.description = description
+        # The environment ID.
+        self.environment_id = environment_id
+        # The gateway information.
+        self.gateway_info = gateway_info
+        # The environment name.
         self.name = name
-        # rg-aekzzzntl5njbpi
-        self.resource_group_id = resource_group_id
-        # The information about online resources.
-        self.statistics_info = statistics_info
-        # The subdomain information.
-        self.sub_domain_infos = sub_domain_infos
         # The resource group ID.
+        self.resource_group_id = resource_group_id
+        # The online resource information.
+        self.statistics_info = statistics_info
+        # The list of subdomains.
+        self.sub_domain_infos = sub_domain_infos
+        # The update timestamp.
         self.update_timestamp = update_timestamp
 
     def validate(self):
@@ -202,7 +202,7 @@ class GetEnvironmentResponseBodyDataStatisticsInfo(DaraModel):
         resource_statistics: List[main_models.ResourceStatistic] = None,
         total_count: int = None,
     ):
-        # 4
+        # The online resource count.
         self.resource_statistics = resource_statistics
         # The total number of entries.
         self.total_count = total_count

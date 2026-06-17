@@ -15,13 +15,13 @@ class GetDomainResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The status code returned.
+        # The response code.
         self.code = code
         # The response data.
         self.data = data
-        # The response message returned.
+        # The response message.
         self.message = message
-        # The request ID, which is used to trace the API call link.
+        # The request ID, which is used to trace the API call chain.
         self.request_id = request_id
 
     def validate(self):
@@ -76,6 +76,7 @@ class GetDomainResponseBodyData(DaraModel):
         create_timestamp: int = None,
         default: bool = None,
         domain_id: str = None,
+        domain_scope: str = None,
         force_https: bool = None,
         http_2option: str = None,
         issuer: str = None,
@@ -92,70 +93,55 @@ class GetDomainResponseBodyData(DaraModel):
         tls_min: str = None,
         updatetimestamp: int = None,
     ):
-        # The encryption algorithm.
+        # The encryption algorithm name.
         self.algorithm = algorithm
-        # The CA certificate ID.
+        # The CA certificate identifier.
         self.ca_cert_identifier = ca_cert_identifier
-        # The certificate ID.
+        # The certificate identifier.
         self.cert_identifier = cert_identifier
         # The certificate name.
         self.cert_name = cert_name
         # The client CA certificate.
         self.client_cacert = client_cacert
-        # The creation source.
-        # 
-        # Valid values:
-        # 
-        # *   Console
-        # *   Ingress
+        # The source from which the domain name was created.
         self.create_from = create_from
         # The creation timestamp.
         self.create_timestamp = create_timestamp
-        # Indicates whether the domain name is the default domain name.
+        # Indicates whether this is the default domain name.
         self.default = default
-        # The ID of the domain name.
+        # The domain name ID.
         self.domain_id = domain_id
-        # Indicates whether forcible HTTPS redirection is enabled.
+        self.domain_scope = domain_scope
+        # Specifies whether to enable forced HTTPS redirect when the HTTPS protocol type is configured.
         self.force_https = force_https
-        # The HTTP/2 configuration.
-        # 
-        # Valid values:
-        # 
-        # *   GlobalConfig
-        # *   Close
-        # *   Open
+        # The HTTP/2 setting.
         self.http_2option = http_2option
-        # The certificate issuer.
+        # The certification authority.
         self.issuer = issuer
-        # Indicates whether mutual authentication is enabled.
-        # 
-        # Valid values:
-        # 
-        # *   false
-        # *   true
+        # Indicates whether mutual TLS (mTLS) authentication is enabled.
         self.m_tlsenabled = m_tlsenabled
         # The domain name.
         self.name = name
-        # The expiration time of the certificate.
+        # The certificate expiration time.
         self.not_after_timstamp = not_after_timstamp
-        # The time when the certificate started to take effect.
+        # The certificate effective period.
         self.not_before_timestamp = not_before_timestamp
-        # The supported protocol. Valid values:
+        # The protocol type supported by the domain name. Valid values:
         # 
-        # *   HTTP: Only HTTP is supported.
-        # *   HTTPS: Only HTTPS is supported.
+        # - HTTP: only HTTP is supported.
+        # - HTTPS: only HTTPS is supported.
         self.protocol = protocol
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # All domain names that are bound to the certificate.
+        # All domain names bound to the certificate.
         self.sans = sans
-        # The information about online resources.
+        # The online resource information.
         self.statistics_info = statistics_info
         # The cipher suite configuration.
         self.tls_cipher_suites_config = tls_cipher_suites_config
-        # The maximum version of the TLS protocol. Up to TLS 1.3 is supported.
+        # The maximum TLS protocol version. TLS 1.3 is the maximum supported version.
         self.tls_max = tls_max
-        # The minimum version of the TLS protocol. Down to TLS 1.0 is supported.
+        # The minimum TLS protocol version. TLS 1.0 is the minimum supported version.
         self.tls_min = tls_min
         # The update timestamp.
         self.updatetimestamp = updatetimestamp
@@ -197,6 +183,9 @@ class GetDomainResponseBodyData(DaraModel):
 
         if self.domain_id is not None:
             result['domainId'] = self.domain_id
+
+        if self.domain_scope is not None:
+            result['domainScope'] = self.domain_scope
 
         if self.force_https is not None:
             result['forceHttps'] = self.force_https
@@ -274,6 +263,9 @@ class GetDomainResponseBodyData(DaraModel):
         if m.get('domainId') is not None:
             self.domain_id = m.get('domainId')
 
+        if m.get('domainScope') is not None:
+            self.domain_scope = m.get('domainScope')
+
         if m.get('forceHttps') is not None:
             self.force_https = m.get('forceHttps')
 
@@ -331,7 +323,7 @@ class GetDomainResponseBodyDataStatisticsInfo(DaraModel):
     ):
         # The resource statistics.
         self.resource_statistics = resource_statistics
-        # The total number of resources.
+        # The total count.
         self.total_count = total_count
 
     def validate(self):

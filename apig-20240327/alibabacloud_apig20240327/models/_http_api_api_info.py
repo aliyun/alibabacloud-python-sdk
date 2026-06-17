@@ -669,9 +669,11 @@ class HttpApiApiInfoEnvironmentsServiceConfigs(DaraModel):
 class HttpApiApiInfoEnvironmentsGatewayInfo(DaraModel):
     def __init__(
         self,
+        gateway_edition: str = None,
         gateway_id: str = None,
         name: str = None,
     ):
+        self.gateway_edition = gateway_edition
         # The instance ID.
         self.gateway_id = gateway_id
         # The instance name.
@@ -685,6 +687,9 @@ class HttpApiApiInfoEnvironmentsGatewayInfo(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.gateway_edition is not None:
+            result['gatewayEdition'] = self.gateway_edition
+
         if self.gateway_id is not None:
             result['gatewayId'] = self.gateway_id
 
@@ -695,6 +700,9 @@ class HttpApiApiInfoEnvironmentsGatewayInfo(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('gatewayEdition') is not None:
+            self.gateway_edition = m.get('gatewayEdition')
+
         if m.get('gatewayId') is not None:
             self.gateway_id = m.get('gatewayId')
 

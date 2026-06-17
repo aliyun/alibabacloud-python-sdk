@@ -15,7 +15,7 @@ class ListConsumerAuthorizationRulesResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The status code.
+        # The response status code.
         self.code = code
         # The response data.
         self.data = data
@@ -72,13 +72,13 @@ class ListConsumerAuthorizationRulesResponseBodyData(DaraModel):
         page_size: int = None,
         total_size: str = None,
     ):
-        # The list of consumer authorization information.
+        # 消费者授权信息列表。
         self.items = items
         # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The page size.
         self.page_size = page_size
-        # The total number.
+        # The total number of entries.
         self.total_size = total_size
 
     def validate(self):
@@ -144,31 +144,31 @@ class ListConsumerAuthorizationRulesResponseBodyDataItems(DaraModel):
         resource_type: str = None,
         update_timestamp: int = None,
     ):
-        # The API information.
+        # API信息。
         self.api_info = api_info
-        # The ID of the consumer authorization rule.
+        # 消费者授权规则ID。
         self.consumer_authorization_rule_id = consumer_authorization_rule_id
-        # The consumer ID.
+        # 消费者ID。
         self.consumer_id = consumer_id
-        # The creation timestamp.
+        # 创建时间戳。
         self.create_timestamp = create_timestamp
-        # The deployment status of the API in the current environment.
+        # API在当前环境的发布状态
         self.deploy_status = deploy_status
-        # The environment information.
+        # 环境信息。
         self.environment_info = environment_info
-        # The expiry mode. Valid values: LongTerm and ShortTerm.
+        # 失效模式。LongTerm、ShortTerm，二选一。
         self.expire_mode = expire_mode
-        # The rule status.
+        # 失效状态。
         self.expire_status = expire_status
-        # The time when the rule expires.
+        # 到期时间。
         self.expire_timestamp = expire_timestamp
-        # The gateway information.
+        # 网关信息。
         self.gateway_info = gateway_info
-        # The resource ID.
+        # 资源ID。
         self.resource_id = resource_id
-        # The resource type.
+        # 资源类型。
         self.resource_type = resource_type
-        # The update timestamp. Unit: milliseconds.
+        # 更新时间戳。单位: 毫秒。
         self.update_timestamp = update_timestamp
 
     def validate(self):

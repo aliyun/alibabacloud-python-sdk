@@ -89,6 +89,8 @@ from ._service_linked_role import ServiceLinkedRole
 from ._ssl_cert_meta_info import SslCertMetaInfo
 from ._sub_domain_info import SubDomainInfo
 from ._tls_cipher_suites_config import TlsCipherSuitesConfig
+from ._transport_certificate_info import TransportCertificateInfo
+from ._transport_encryption_info import TransportEncryptionInfo
 from ._validation_options import ValidationOptions
 from ._http_api_api_info_deploy_cnt_map_value import HttpApiApiInfoDeployCntMapValue
 from ._add_gateway_quota_rule_request import AddGatewayQuotaRuleRequest
@@ -786,6 +788,8 @@ __all__ = [
     SslCertMetaInfo,
     SubDomainInfo,
     TlsCipherSuitesConfig,
+    TransportCertificateInfo,
+    TransportEncryptionInfo,
     ValidationOptions,
     HttpApiApiInfoDeployCntMapValue,
     AddGatewayQuotaRuleRequest,

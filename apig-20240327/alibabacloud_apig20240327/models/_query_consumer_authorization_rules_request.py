@@ -27,11 +27,11 @@ class QueryConsumerAuthorizationRulesRequest(DaraModel):
         self.consumer_name_like = consumer_name_like
         # The environment ID.
         self.environment_id = environment_id
-        # Specifies whether to group the results by API.
+        # Specifies whether to group results by API.
         self.group_by_api = group_by_api
-        # The number of the page to return.
+        # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The page size.
         self.page_size = page_size
         # The parent resource ID.
         self.parent_resource_id = parent_resource_id
@@ -39,7 +39,7 @@ class QueryConsumerAuthorizationRulesRequest(DaraModel):
         self.resource_id = resource_id
         # The resource type.
         self.resource_type = resource_type
-        # The resource types.
+        # The service source type.
         self.resource_types = resource_types
 
     def validate(self):

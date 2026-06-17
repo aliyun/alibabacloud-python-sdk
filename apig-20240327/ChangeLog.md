@@ -1,3 +1,12 @@
+2026-06-17 Version: 7.2.2
+- Update API CreateDomain: add request parameters body.domainScope.
+- Update API GetDomain: add response parameters Body.data.domainScope.
+- Update API GetSource: add response parameters Body.data.associationReason.
+- Update API GetSource: add response parameters Body.data.associationStatus.
+- Update API ListDomains: add request parameters domainScope.
+- Update API UpdateDomain: add request parameters body.domainScope.
+
+
 2026-06-15 Version: 7.2.1
 - Update API DescribeRegions: add response parameters Body.data.
 

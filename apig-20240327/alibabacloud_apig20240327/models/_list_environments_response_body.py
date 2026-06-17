@@ -15,13 +15,13 @@ class ListEnvironmentsResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # Response code.
+        # The response code.
         self.code = code
-        # Paged query environment list response.
+        # The paged query response for the environment list.
         self.data = data
-        # Response message.
+        # The response message.
         self.message = message
-        # Request ID, used for tracing the call chain.
+        # The request ID, which is used to trace the call chain.
         self.request_id = request_id
 
     def validate(self):
@@ -72,13 +72,13 @@ class ListEnvironmentsResponseBodyData(DaraModel):
         page_size: int = None,
         total_size: int = None,
     ):
-        # List of environment information.
+        # 环境信息列表。
         self.items = items
-        # Page number.
+        # The page number.
         self.page_number = page_number
-        # Number of items per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # Total number of items.
+        # The total number of entries.
         self.total_size = total_size
 
     def validate(self):

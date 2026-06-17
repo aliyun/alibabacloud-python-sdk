@@ -15,13 +15,13 @@ class QueryConsumerAuthorizationRulesResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The status code.
+        # The response status code.
         self.code = code
-        # The response payload.
+        # The response data.
         self.data = data
-        # The returned message.
+        # The response message.
         self.message = message
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -72,13 +72,13 @@ class QueryConsumerAuthorizationRulesResponseBodyData(DaraModel):
         page_size: int = None,
         total_size: str = None,
     ):
-        # The rules.
+        # 消费者规则列表。
         self.items = items
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The page size.
         self.page_size = page_size
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_size = total_size
 
     def validate(self):
@@ -146,35 +146,35 @@ class QueryConsumerAuthorizationRulesResponseBodyDataItems(DaraModel):
         resource_type: str = None,
         update_timestamp: int = None,
     ):
-        # The API details.
+        # API信息详情。
         self.api_info = api_info
-        # The rule ID.
+        # 消费者授权规则ID。
         self.consumer_authorization_rule_id = consumer_authorization_rule_id
-        # The consumer ID.
+        # 消费者ID。
         self.consumer_id = consumer_id
-        # The consumer information.
+        # 消费者信息详情。
         self.consumer_info = consumer_info
-        # The creation timestamp. Unit: milliseconds.
+        # 创建时间戳。单位: 毫秒。
         self.create_timestamp = create_timestamp
-        # The deployment status of the API in the current environment.
+        # API在当前环境的发布状态
         self.deploy_status = deploy_status
-        # The environment information.
+        # 环境信息。
         self.environment_info = environment_info
-        # The expiry mode. Valid values: LongTerm and ShortTerm.
+        # 失效模式。LongTerm、ShortTerm，二选一。
         self.expire_mode = expire_mode
-        # The rule status.
+        # 失效状态。
         self.expire_status = expire_status
-        # The time when the rule expires.
+        # 到期时间。
         self.expire_timestamp = expire_timestamp
-        # The instance information.
+        # 网关信息。
         self.gateway_info = gateway_info
-        # The resource IDs.
+        # 资源ID。
         self.resource_id = resource_id
-        # The resource information.
+        # 资源信息详情。
         self.resource_info = resource_info
-        # The resource type.
+        # 资源类型。
         self.resource_type = resource_type
-        # The update timestamp. Unit: milliseconds.
+        # 更新时间戳。单位: 毫秒。
         self.update_timestamp = update_timestamp
 
     def validate(self):
@@ -301,9 +301,9 @@ class QueryConsumerAuthorizationRulesResponseBodyDataItemsResourceInfo(DaraModel
         operation_info: main_models.HttpApiOperationInfo = None,
         route: main_models.HttpRoute = None,
     ):
-        # The operation information.
+        # 接口信息。
         self.operation_info = operation_info
-        # The route.
+        # 路由规则。
         self.route = route
 
     def validate(self):

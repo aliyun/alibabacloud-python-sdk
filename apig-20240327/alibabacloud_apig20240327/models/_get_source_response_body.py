@@ -13,13 +13,13 @@ class GetSourceResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The status code.
+        # Response status code.
         self.code = code
-        # The response data.
+        # Response data.
         self.data = data
-        # The response message.
+        # Response message.
         self.message = message
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
 
     def validate(self):
@@ -65,6 +65,8 @@ class GetSourceResponseBody(DaraModel):
 class GetSourceResponseBodyData(DaraModel):
     def __init__(
         self,
+        association_reason: str = None,
+        association_status: str = None,
         create_timestamp: int = None,
         gateway_id: str = None,
         k_8ssource_info: main_models.GetSourceResponseBodyDataK8SSourceInfo = None,
@@ -75,23 +77,25 @@ class GetSourceResponseBodyData(DaraModel):
         type: str = None,
         update_timestamp: int = None,
     ):
-        # The creation timestamp.
+        self.association_reason = association_reason
+        self.association_status = association_status
+        # Creation timestamp.
         self.create_timestamp = create_timestamp
-        # The gateway ID.
+        # Gateway ID.
         self.gateway_id = gateway_id
-        # Kubernetes source information.
+        # K8s source information.
         self.k_8ssource_info = k_8ssource_info
-        # The source information when the source type is MSE_NACOS.
+        # MSE Nacos source information.
         self.nacos_source_info = nacos_source_info
-        # The name.
+        # Name.
         self.name = name
-        # The resource group ID.
+        # Resource group ID.
         self.resource_group_id = resource_group_id
-        # The source ID.
+        # Source ID.
         self.source_id = source_id
-        # The type.
+        # Type.
         self.type = type
-        # The update timestamp.
+        # Update timestamp.
         self.update_timestamp = update_timestamp
 
     def validate(self):
@@ -105,6 +109,12 @@ class GetSourceResponseBodyData(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.association_reason is not None:
+            result['associationReason'] = self.association_reason
+
+        if self.association_status is not None:
+            result['associationStatus'] = self.association_status
+
         if self.create_timestamp is not None:
             result['createTimestamp'] = self.create_timestamp
 
@@ -136,6 +146,12 @@ class GetSourceResponseBodyData(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('associationReason') is not None:
+            self.association_reason = m.get('associationReason')
+
+        if m.get('associationStatus') is not None:
+            self.association_status = m.get('associationStatus')
+
         if m.get('createTimestamp') is not None:
             self.create_timestamp = m.get('createTimestamp')
 
@@ -174,11 +190,11 @@ class GetSourceResponseBodyDataNacosSourceInfo(DaraModel):
         cluster_id: str = None,
         instance_id: str = None,
     ):
-        # The endpoint of the Nacos instance.
+        # Nacos instance access address.
         self.address = address
-        # The cluster ID.
+        # Cluster ID.
         self.cluster_id = cluster_id
-        # The Nacos instance ID.
+        # Nacos instance ID.
         self.instance_id = instance_id
 
     def validate(self):
@@ -218,7 +234,7 @@ class GetSourceResponseBodyDataK8SSourceInfo(DaraModel):
         self,
         cluster_id: str = None,
     ):
-        # The ID of the Container Service for Kubernetes (ACK) cluster.
+        # Container Service cluster ID.
         self.cluster_id = cluster_id
 
     def validate(self):

@@ -13,13 +13,13 @@ class CreateDomainResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The status code returned.
+        # The response code.
         self.code = code
         # The response data.
         self.data = data
-        # The response message returned.
+        # The response message.
         self.message = message
-        # The request ID, which is used to trace the API call link.
+        # The request ID, which is used to trace the API call chain.
         self.request_id = request_id
 
     def validate(self):
@@ -67,7 +67,7 @@ class CreateDomainResponseBodyData(DaraModel):
         self,
         domain_id: str = None,
     ):
-        # The ID of the domain name.
+        # The domain name ID.
         self.domain_id = domain_id
 
     def validate(self):
