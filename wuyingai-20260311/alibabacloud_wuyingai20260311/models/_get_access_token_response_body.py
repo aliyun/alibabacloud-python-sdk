@@ -15,12 +15,19 @@ class GetAccessTokenResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The details of the authentication failure.
         self.access_denied_detail = access_denied_detail
+        # The JWT used as the Authorization query parameter for the Chat operation. The token is valid for a limited period of time.
         self.access_token = access_token
+        # The business status code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error details. This parameter is returned only when the request fails.
         self.message = message
+        # The request ID, in UUID format. The first and last characters are retained for illustration purposes.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

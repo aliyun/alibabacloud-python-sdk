@@ -10,19 +10,31 @@ class ChatShrinkRequest(DaraModel):
         authorization: str = None,
         external_user_id: str = None,
         input_shrink: str = None,
+        model: str = None,
+        resume: bool = None,
         routing_key: str = None,
         session_id: str = None,
         settings_shrink: str = None,
         stream_options_shrink: str = None,
         template_id: str = None,
     ):
+        # Bearer + JWT returned by GetAccessToken. URL-encode the entire string and pass it as a query parameter.
         self.authorization = authorization
+        # The user ID from the external system.
         self.external_user_id = external_user_id
+        # The message list (JSON string), sorted in chronological order.
         self.input_shrink = input_shrink
+        self.model = model
+        self.resume = resume
+        # The routing key that specifies the backend instance to process the request.
         self.routing_key = routing_key
+        # The session ID for multi-turn conversation context persistence.
         self.session_id = session_id
+        # The additional settings. Contains the output file mode control parameter OutputFileMode (string, valid values: url or base64. Defaults to base64 for legacy compatibility. We recommend url).
         self.settings_shrink = settings_shrink
+        # The streaming output control options. Contains IncludeReasoning (boolean, default true, specifies whether to include the model thinking process) and IncludeToolCalls (boolean, default true, specifies whether to include tool invocation details). If not specified or set to a null object, the behavior is consistent with the legacy version.
         self.stream_options_shrink = stream_options_shrink
+        # The agent template ID.
         self.template_id = template_id
 
     def validate(self):
@@ -41,6 +53,12 @@ class ChatShrinkRequest(DaraModel):
 
         if self.input_shrink is not None:
             result['Input'] = self.input_shrink
+
+        if self.model is not None:
+            result['Model'] = self.model
+
+        if self.resume is not None:
+            result['Resume'] = self.resume
 
         if self.routing_key is not None:
             result['RoutingKey'] = self.routing_key
@@ -69,6 +87,12 @@ class ChatShrinkRequest(DaraModel):
 
         if m.get('Input') is not None:
             self.input_shrink = m.get('Input')
+
+        if m.get('Model') is not None:
+            self.model = m.get('Model')
+
+        if m.get('Resume') is not None:
+            self.resume = m.get('Resume')
 
         if m.get('RoutingKey') is not None:
             self.routing_key = m.get('RoutingKey')

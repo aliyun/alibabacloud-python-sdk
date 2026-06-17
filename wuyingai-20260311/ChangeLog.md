@@ -1,3 +1,9 @@
+2026-06-17 Version: 1.1.2
+- Update API Chat: add request parameters Model.
+- Update API Chat: add request parameters Resume.
+- Update API Chat: add response parameters Body.TraceId.
+
+
 2026-06-03 Version: 1.1.1
 - Update API Chat: add request parameters Input.$.Content.$.FileName.
 

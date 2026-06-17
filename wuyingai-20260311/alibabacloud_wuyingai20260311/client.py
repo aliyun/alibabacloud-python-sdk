@@ -22,7 +22,7 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = ''
+        self._endpoint_rule = 'regional'
         self.check_config(config)
         self._endpoint = self.get_endpoint('wuyingai', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -66,6 +66,10 @@ class Client(OpenApiClient):
             body['ExternalUserId'] = request.external_user_id
         if not DaraCore.is_null(request.input_shrink):
             body['Input'] = request.input_shrink
+        if not DaraCore.is_null(request.model):
+            body['Model'] = request.model
+        if not DaraCore.is_null(request.resume):
+            body['Resume'] = request.resume
         if not DaraCore.is_null(request.routing_key):
             body['RoutingKey'] = request.routing_key
         if not DaraCore.is_null(request.session_id):
@@ -127,6 +131,10 @@ class Client(OpenApiClient):
             body['ExternalUserId'] = request.external_user_id
         if not DaraCore.is_null(request.input_shrink):
             body['Input'] = request.input_shrink
+        if not DaraCore.is_null(request.model):
+            body['Model'] = request.model
+        if not DaraCore.is_null(request.resume):
+            body['Resume'] = request.resume
         if not DaraCore.is_null(request.routing_key):
             body['RoutingKey'] = request.routing_key
         if not DaraCore.is_null(request.session_id):
@@ -188,6 +196,10 @@ class Client(OpenApiClient):
             body['ExternalUserId'] = request.external_user_id
         if not DaraCore.is_null(request.input_shrink):
             body['Input'] = request.input_shrink
+        if not DaraCore.is_null(request.model):
+            body['Model'] = request.model
+        if not DaraCore.is_null(request.resume):
+            body['Resume'] = request.resume
         if not DaraCore.is_null(request.routing_key):
             body['RoutingKey'] = request.routing_key
         if not DaraCore.is_null(request.session_id):
@@ -240,6 +252,10 @@ class Client(OpenApiClient):
             body['ExternalUserId'] = request.external_user_id
         if not DaraCore.is_null(request.input_shrink):
             body['Input'] = request.input_shrink
+        if not DaraCore.is_null(request.model):
+            body['Model'] = request.model
+        if not DaraCore.is_null(request.resume):
+            body['Resume'] = request.resume
         if not DaraCore.is_null(request.routing_key):
             body['RoutingKey'] = request.routing_key
         if not DaraCore.is_null(request.session_id):

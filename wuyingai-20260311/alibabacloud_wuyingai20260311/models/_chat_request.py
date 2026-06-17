@@ -13,19 +13,31 @@ class ChatRequest(DaraModel):
         authorization: str = None,
         external_user_id: str = None,
         input: List[main_models.ChatRequestInput] = None,
+        model: str = None,
+        resume: bool = None,
         routing_key: str = None,
         session_id: str = None,
         settings: main_models.ChatRequestSettings = None,
         stream_options: main_models.ChatRequestStreamOptions = None,
         template_id: str = None,
     ):
+        # Bearer + JWT returned by GetAccessToken. URL-encode the entire string and pass it as a query parameter.
         self.authorization = authorization
+        # The user ID from the external system.
         self.external_user_id = external_user_id
+        # The message list (JSON string), sorted in chronological order.
         self.input = input
+        self.model = model
+        self.resume = resume
+        # The routing key that specifies the backend instance to process the request.
         self.routing_key = routing_key
+        # The session ID for multi-turn conversation context persistence.
         self.session_id = session_id
+        # The additional settings. Contains the output file mode control parameter OutputFileMode (string, valid values: url or base64. Defaults to base64 for legacy compatibility. We recommend url).
         self.settings = settings
+        # The streaming output control options. Contains IncludeReasoning (boolean, default true, specifies whether to include the model thinking process) and IncludeToolCalls (boolean, default true, specifies whether to include tool invocation details). If not specified or set to a null object, the behavior is consistent with the legacy version.
         self.stream_options = stream_options
+        # The agent template ID.
         self.template_id = template_id
 
     def validate(self):
@@ -53,6 +65,12 @@ class ChatRequest(DaraModel):
         if self.input is not None:
             for k1 in self.input:
                 result['Input'].append(k1.to_map() if k1 else None)
+
+        if self.model is not None:
+            result['Model'] = self.model
+
+        if self.resume is not None:
+            result['Resume'] = self.resume
 
         if self.routing_key is not None:
             result['RoutingKey'] = self.routing_key
@@ -85,6 +103,12 @@ class ChatRequest(DaraModel):
                 temp_model = main_models.ChatRequestInput()
                 self.input.append(temp_model.from_map(k1))
 
+        if m.get('Model') is not None:
+            self.model = m.get('Model')
+
+        if m.get('Resume') is not None:
+            self.resume = m.get('Resume')
+
         if m.get('RoutingKey') is not None:
             self.routing_key = m.get('RoutingKey')
 
@@ -110,7 +134,9 @@ class ChatRequestStreamOptions(DaraModel):
         include_reasoning: bool = None,
         include_tool_calls: bool = None,
     ):
+        # Specifies whether to include the model thinking process. When set to false, the SSE stream does not include messages with Type="reasoning" or their content events.
         self.include_reasoning = include_reasoning
+        # Specifies whether to include tool invocation details. When set to false, the SSE stream does not include messages of type plugin_call, plugin_call_output, mcp_call, or mcp_call_output, or their content events.
         self.include_tool_calls = include_tool_calls
 
     def validate(self):
@@ -144,6 +170,7 @@ class ChatRequestSettings(DaraModel):
         self,
         output_file_mode: str = None,
     ):
+        # Controls the file output mode. Valid values: url or base64. If this parameter is not specified, base64 is used by default for legacy compatibility.
         self.output_file_mode = output_file_mode
 
     def validate(self):
@@ -172,7 +199,9 @@ class ChatRequestInput(DaraModel):
         content: List[main_models.ChatRequestInputContent] = None,
         role: str = None,
     ):
+        # The content block list.
         self.content = content
+        # The message role.
         self.role = role
 
     def validate(self):
@@ -221,9 +250,13 @@ class ChatRequestInputContent(DaraModel):
         type: str = None,
     ):
         self.file_name = file_name
+        # The file path or URL (Type=file).
         self.file_url = file_url
+        # The image URL or Base64-encoded string (Type=image).
         self.image_url = image_url
+        # The text content (Type=text).
         self.text = text
+        # The content type.
         self.type = type
 
     def validate(self):

@@ -10,7 +10,9 @@ class GetAccessTokenRequest(DaraModel):
         external_user_id: str = None,
         template_id: str = None,
     ):
+        # The unique identifier of the user in the external system.
         self.external_user_id = external_user_id
+        # The ID of the agent template.
         self.template_id = template_id
 
     def validate(self):

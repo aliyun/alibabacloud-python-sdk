@@ -25,23 +25,42 @@ class ChatResponseBody(DaraModel):
         status: str = None,
         success: bool = None,
         text: str = None,
+        trace_id: str = None,
         type: str = None,
     ):
+        # The business status code.
         self.code = code
+        # The content block list (included only when Status is completed).
         self.content = content
+        # （已废弃）创建时间戳
         self.created = created
+        # The creation timestamp (Unix seconds).
         self.created_at = created_at
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The unique message identifier.
         self.id = id
+        # The error details (returned on failure).
         self.message = message
+        # The event object type.
         self.object = object
+        # The request ID.
         self.request_id = request_id
+        # The role (user / assistant / system / tool).
         self.role = role
+        # The event sequence number (an incrementing integer in string format, used to guarantee ordering). Note: When StreamOptions filters out certain event types, the filtered events still consume sequence numbers. Therefore, the sequence numbers received by the client may not be contiguous.
         self.sequence_number = sequence_number
+        # The session ID.
         self.session_id = session_id
+        # The reply status (created / in_progress / completed).
         self.status = status
+        # Indicates whether the request is successful.
         self.success = success
+        # The incremental text content (included in Object=content events).
+        # [_single.resp.200.props.Created.desc](Deprecated) The creation timestamp.
         self.text = text
+        self.trace_id = trace_id
+        # The message type (reasoning (model thinking process) / message (formal reply)).
         self.type = type
 
     def validate(self):
@@ -102,6 +121,9 @@ class ChatResponseBody(DaraModel):
         if self.text is not None:
             result['Text'] = self.text
 
+        if self.trace_id is not None:
+            result['TraceId'] = self.trace_id
+
         if self.type is not None:
             result['Type'] = self.type
 
@@ -157,6 +179,9 @@ class ChatResponseBody(DaraModel):
         if m.get('Text') is not None:
             self.text = m.get('Text')
 
+        if m.get('TraceId') is not None:
+            self.trace_id = m.get('TraceId')
+
         if m.get('Type') is not None:
             self.type = m.get('Type')
 
@@ -170,9 +195,13 @@ class ChatResponseBodyContent(DaraModel):
         text: str = None,
         type: str = None,
     ):
+        # The structured data (such as tool invocation). Example: {"call_id":"call_xxx","name":"get_weather", "output":"Tool output details in text format"}.
         self.data = data
+        # The object type.
         self.object = object
+        # The text content.
         self.text = text
+        # The content type ("text" / "data").
         self.type = type
 
     def validate(self):
