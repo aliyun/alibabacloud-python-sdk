@@ -23,8 +23,9 @@ class DescribeAlertHistoryListRequest(DaraModel):
     ):
         # The order of alerts. Valid values:
         # 
-        # *   true (default value): reverse chronological order
-        # *   false: chronological order
+        # - true (default value): reverse chronological order
+        # 
+        # - false: chronological order
         self.ascending = ascending
         # The end timestamp of the historical alerts that you want to query.
         # 
@@ -65,14 +66,17 @@ class DescribeAlertHistoryListRequest(DaraModel):
         self.start_time = start_time
         # The status of the alert. Valid values:
         # 
-        # *   ALARM (default value): Alerts are triggered.
-        # *   OK: No alerts are triggered.
+        # - ALARM (default value): Alerts are triggered.
+        # 
+        # - OK: No alerts are triggered.
         self.state = state
         # Specifies whether alerts are muted. Valid values:
         # 
-        # *   2 (default value): Alerts are muted and are not triggered within the mute period, even if the condition specified in the alert rule is met.
-        # *   0: Alerts are triggered or cleared.
-        # *   1: The alert rule is ineffective.
+        # - 2 (default value): Alerts are muted and are not triggered within the mute period, even if the condition specified in the alert rule is met.
+        # 
+        # - 0: Alerts are triggered or cleared.
+        # 
+        # - 1: The alert rule is ineffective.
         self.status = status
 
     def validate(self):

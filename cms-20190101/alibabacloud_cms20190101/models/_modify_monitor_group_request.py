@@ -12,7 +12,7 @@ class ModifyMonitorGroupRequest(DaraModel):
         group_name: str = None,
         region_id: str = None,
     ):
-        # The alert groups that can receive alert notifications for the application group.
+        # The alert contact group.
         self.contact_groups = contact_groups
         # The ID of the application group.
         # 

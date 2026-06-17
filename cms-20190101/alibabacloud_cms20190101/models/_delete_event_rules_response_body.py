@@ -12,15 +12,17 @@ class DeleteEventRulesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code.
-        # 
-        # >  The status code 200 indicates that the request was successful.
+        # The status code. A value of 200 indicates that the request was successful.
         self.code = code
         # The returned message.
         self.message = message
-        # The request ID.
+        # The ID of the request. You can use this ID to query logs.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values: true and false.
+        # Indicates whether the operation was successful. Valid values:
+        # 
+        # - true: The operation was successful.
+        # 
+        # - false: The operation failed.
         self.success = success
 
     def validate(self):

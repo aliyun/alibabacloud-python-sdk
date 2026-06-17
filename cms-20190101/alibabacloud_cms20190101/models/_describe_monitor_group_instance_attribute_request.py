@@ -43,8 +43,9 @@ class DescribeMonitorGroupInstanceAttributeRequest(DaraModel):
         self.region_id = region_id
         # Specifies whether to return the total number of resources in the specified application group. Valid values:
         # 
-        # *   true (default)
-        # *   false
+        # - true (default)
+        # 
+        # - false
         self.total = total
 
     def validate(self):

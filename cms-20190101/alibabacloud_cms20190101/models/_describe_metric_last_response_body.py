@@ -17,7 +17,7 @@ class DescribeMetricLastResponseBody(DaraModel):
     ):
         # The HTTP status code.
         # 
-        # >  The status code 200 indicates that the request was successful.
+        # > The status code 200 indicates that the request was successful.
         self.code = code
         # The monitoring data.
         self.datapoints = datapoints
@@ -33,8 +33,9 @@ class DescribeMetricLastResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         self.success = success
 
     def validate(self):

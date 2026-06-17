@@ -15,14 +15,19 @@ class DescribeMetricMetaListRequest(DaraModel):
     ):
         # The tags for filtering metrics. Specify a JSON string.
         # 
-        # Format: ` [{"name":"tag key","value":"tag value"},{"name":"tag key","value":"tag value"}]  `. The following tags are available:
+        # Format: `[{"name":"tag key","value":"tag value"},{"name":"tag key","value":"tag value"}] `. The following tags are available:
         # 
-        # *   metricCategory: the category of the metric.
-        # *   alertEnable: specifies whether to report alerts for the metric.
-        # *   alertUnit: the unit of the metric in the alerts.
-        # *   unitFactor: the factor for metric unit conversion.
-        # *   minAlertPeriod: the minimum interval at which the alert is reported.
-        # *   productCategory: the category of the service.
+        # - metricCategory: the category of the metric.
+        # 
+        # - alertEnable: specifies whether to report alerts for the metric.
+        # 
+        # - alertUnit: the unit of the metric in the alerts.
+        # 
+        # - unitFactor: the factor for metric unit conversion.
+        # 
+        # - minAlertPeriod: the minimum interval at which the alert is reported.
+        # 
+        # - productCategory: the category of the service.
         self.labels = labels
         # The metric name. For more information, see [Appendix 1: Metrics](https://help.aliyun.com/document_detail/163515.html).
         self.metric_name = metric_name

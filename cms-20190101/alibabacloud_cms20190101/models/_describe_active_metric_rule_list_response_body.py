@@ -20,7 +20,7 @@ class DescribeActiveMetricRuleListResponseBody(DaraModel):
         self.alert_list = alert_list
         # The HTTP status code.
         # 
-        # >  The status code 200 indicates that the request was successful.
+        # > The status code 200 indicates that the request was successful.
         self.code = code
         self.datapoints = datapoints
         # The returned message.
@@ -29,8 +29,9 @@ class DescribeActiveMetricRuleListResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         self.success = success
 
     def validate(self):

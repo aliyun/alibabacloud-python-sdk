@@ -11,7 +11,7 @@ class DeleteExporterRuleRequest(DaraModel):
         rule_name: str = None,
     ):
         self.region_id = region_id
-        # The name of the data export rule.
+        # The name of the export rules.
         # 
         # This parameter is required.
         self.rule_name = rule_name

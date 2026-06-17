@@ -12,9 +12,9 @@ class PutCustomEventRuleResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code.
+        # The status code.
         # 
-        # >  The value 200 indicates that the call was successful.
+        # > The value 200 indicates that the call was successful.
         self.code = code
         # The error message.
         self.message = message
@@ -22,8 +22,9 @@ class PutCustomEventRuleResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the call was successful. Valid values:
         # 
-        # *   true: The call was successful.
-        # *   false: The call failed.
+        # - true: The call was successful.
+        # 
+        # - false: The call failed.
         self.success = success
 
     def validate(self):

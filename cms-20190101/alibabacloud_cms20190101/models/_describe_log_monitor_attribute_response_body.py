@@ -18,18 +18,19 @@ class DescribeLogMonitorAttributeResponseBody(DaraModel):
     ):
         # The status code.
         # 
-        # >  The status code 200 indicates that the request was successful.
+        # > A status code of 200 indicates a successful request.
         self.code = code
-        # The details of the log monitoring metric.
+        # The details of the Log Monitoring task.
         self.log_monitor = log_monitor
-        # The returned message. If the request was successful, a success message is returned. If the request failed, an error message is returned.
+        # The returned message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the operation was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: The operation was successful.
+        # 
+        # - false: The operation failed.
         self.success = success
 
     def validate(self):
@@ -95,38 +96,39 @@ class DescribeLogMonitorAttributeResponseBodyLogMonitor(DaraModel):
         value_filter: List[main_models.DescribeLogMonitorAttributeResponseBodyLogMonitorValueFilter] = None,
         value_filter_relation: str = None,
     ):
-        # The aggregation logic.
+        # The definitions of aggregations.
         self.aggregates = aggregates
-        # The time when the metric was created.
+        # The time when the task was created.
         # 
-        # This value is a UNIX timestamp that represents the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # This value is a UNIX timestamp that represents the number of milliseconds that have elapsed since January 1, 1970.
         self.gmt_create = gmt_create
         # The ID of the application group.
         self.group_id = group_id
+        # The dimension based on which log data is aggregated. This parameter is equivalent to the \\`GROUP BY\\` clause in an SQL statement. You can specify a dimension to group monitoring data. If you do not specify this parameter, all monitoring data is aggregated based on the aggregation method.
         self.groupbys = groupbys
-        # The ID of the log.
+        # The ID of the Log Monitoring task.
         self.log_id = log_id
-        # The extended field. The extended field allows you to perform basic operations on the aggregation results.
-        # 
-        # For example, if you have calculated TotalNumber and 5XXNumber by aggregating the data. TotalNumber indicates the total number of HTTP requests, and 5XXNumber indicates the number of HTTP requests whose status code is greater than 499. You can calculate the server error rate by adding the following formula to the extended field: 5XXNumber/TotalNumber\\*100.
+        # The metric expression.
         self.metric_express = metric_express
-        # The metric name. For more information, see [Appendix 1: Metrics](https://help.aliyun.com/document_detail/163515.html).
+        # The name of the metric.
         self.metric_name = metric_name
         # The name of the Simple Log Service Logstore.
         self.sls_logstore = sls_logstore
-        # The name of the SLS project.
+        # The name of the Simple Log Service project.
         self.sls_project = sls_project
-        # The ID of the region where the Simple Log Service (SLS) Logstore resides.
+        # The ID of the region where Simple Log Service resides.
         self.sls_region_id = sls_region_id
+        # The pre-aggregation window. Unit: seconds. Cloud Monitor aggregates data in the specified pre-aggregation window.
         self.tumblingwindows = tumblingwindows
-        # The condition that is used to filter logs. The ValueFilter and ValueFilterRelation parameters are used in pair. The filter condition is equivalent to the WHERE clause in SQL statements.
+        # The filter conditions. This parameter is used with \\`ValueFilterRelation\\`. This parameter is equivalent to the \\`WHERE\\` clause in an SQL statement.
         # 
-        # If no filter condition is specified, all logs are processed. For example, logs contain the Level and Error fields. If you need to calculate the number of times that logs of the Error level appear every minute, you can set the filter condition to Level=Error and count the number of logs that meet this condition.
+        # If you do not specify this parameter, all data is processed. For example, if a log contains a \\`Level\\` field and you want to count the number of logs where the value of \\`Level\\` is \\`Error\\`, you can set the aggregation function to \\`count\\` and specify a filter condition where \\`Level\\` equals \\`Error\\`.
         self.value_filter = value_filter
-        # The logical operator that is used between log filter conditions. The ValueFilter and ValueFilterRelation parameters must be used in pair. Valid values:
+        # The logical operator for the filter conditions. This parameter is used with \\`ValueFilter\\`. Valid values:
         # 
-        # *   and
-        # *   or
+        # - and: The logical AND operator.
+        # 
+        # - or: The logical OR operator.
         self.value_filter_relation = value_filter_relation
 
     def validate(self):
@@ -245,18 +247,23 @@ class DescribeLogMonitorAttributeResponseBodyLogMonitorValueFilter(DaraModel):
         operator: str = None,
         value: str = None,
     ):
-        # The name of the log field used for matching in the filter condition.
+        # The key.
         self.key = key
-        # The method that is used to match the field value. Valid values:
+        # The operator that is used to match the field value. Valid values:
         # 
-        # *   `contain`: contains
-        # *   `notContain`: does not contain
-        # *   `>`: greater than
-        # *   `<`: less than
-        # *   `>=`: greater than or equal to
-        # *   `<=`: less than or equal to
+        # - `contain`: contains.
+        # 
+        # - `notContain`: does not contain.
+        # 
+        # - `>`: greater than.
+        # 
+        # - `<`: less than.
+        # 
+        # - `>=`: greater than or equal to.
+        # 
+        # - `<=`: less than or equal to.
         self.operator = operator
-        # The field value to be matched in the filter condition.
+        # The value.
         self.value = value
 
     def validate(self):
@@ -302,18 +309,25 @@ class DescribeLogMonitorAttributeResponseBodyLogMonitorAggregates(DaraModel):
     ):
         # The alias of the field.
         self.alias = alias
-        # The name of the field in logs.
+        # The original name of the field in the log.
         self.field_name = field_name
-        # The function that is used to aggregate the monitoring data of logs within a statistical period. Valid values:
+        # The function that is used to aggregate log data in a statistical period. Valid values:
         # 
-        # *   count: counts the number
-        # *   sum: calculates the total value
-        # *   avg: calculates the average value
-        # *   max: calculates the maximum value
-        # *   min: calculates the minimum value
-        # *   countps: calculates the number of values of the specified field divided by the total number of seconds within a statistical period
-        # *   sumps: calculates the sum of the values of the specified field divided by the total number of seconds within a statistical period
-        # *   distinct: calculates the number of unique values of the specified field within a statistical period
+        # - count: Counts the number of logs.
+        # 
+        # - sum: Calculates the sum of values in a field.
+        # 
+        # - avg: Calculates the average of values in a field.
+        # 
+        # - max: Selects the maximum value in a field.
+        # 
+        # - min: Selects the minimum value in a field.
+        # 
+        # - countps: Calculates the average number of logs that are generated per second in a statistical period.
+        # 
+        # - sumps: Calculates the average sum of values in a field per second in a statistical period.
+        # 
+        # - distinct: Counts the number of unique values in a field in a statistical period.
         self.function = function
         # The maximum value.
         self.max = max

@@ -16,20 +16,20 @@ class DescribeSystemEventCountResponseBody(DaraModel):
         success: str = None,
         system_event_counts: main_models.DescribeSystemEventCountResponseBodySystemEventCounts = None,
     ):
-        # The HTTP status codes.
-        # 
-        # >  The status code 200 indicates that the request was successful.
+        # The status code.
+        # >A value of 200 indicates success.
         self.code = code
         # The returned message.
         # 
-        # If the request was successful, a success message is returned. If the request failed, an error message is returned.
+        # If the request is successful, a success message is returned. If the request fails, the failure reason is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the operation is successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: The operation is successful.
+        # 
+        # - false: The operation failed.
         self.success = success
         self.system_event_counts = system_event_counts
 

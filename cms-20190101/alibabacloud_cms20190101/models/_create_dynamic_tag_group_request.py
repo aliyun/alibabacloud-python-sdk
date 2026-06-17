@@ -20,36 +20,46 @@ class CreateDynamicTagGroupRequest(DaraModel):
         tag_region_id: str = None,
         template_id_list: List[str] = None,
     ):
+        # The alert contact groups. The value of N can be from 1 to 100. Alert notifications for the application group are sent to the alert contacts in these alert contact groups.
+        # 
+        # An alert contact group can contain one or more alert contacts. For more information about how to create alert contacts and alert contact groups, see [PutContact](https://help.aliyun.com/document_detail/114923.html) and [PutContactGroup](https://help.aliyun.com/document_detail/114929.html). For more information about how to obtain alert contact groups, see [DescribeContactGroupList](https://help.aliyun.com/document_detail/114922.html).
+        # 
         # This parameter is required.
         self.contact_group_list = contact_group_list
-        # Specifies whether the CloudMonitor agent is automatically installed for the application group. CloudMonitor determines whether to automatically install the CloudMonitor agent for the hosts in an application group based on the value of this parameter. Valid values:
+        # Specifies whether to automatically install the CloudMonitor agent for the application group. CloudMonitor automatically installs the agent on the hosts in the application group. Valid values:
         # 
-        # *   true: The CloudMonitor agent is automatically installed.
-        # *   false (default value): The CloudMonitor agent is not automatically installed.
+        # - true: enabled.
+        # 
+        # - false (default): disabled.
         self.enable_install_agent = enable_install_agent
-        # Specifies whether the application group automatically subscribes to event notifications. If events whose severity level is critical or warning occur on resources in an application group, CloudMonitor sends alert notifications. Valid values:
+        # Specifies whether to automatically subscribe to event notifications for the application group. When a critical or warning event occurs on a resource in the application group, CloudMonitor sends an alert notification. Valid values:
         # 
-        # *   true: The application group automatically subscribes to event notifications.
-        # *   false (default value): The application group does not automatically subscribe to event notifications.
+        # - true: enabled.
+        # 
+        # - false (default): disabled.
         self.enable_subscribe_event = enable_subscribe_event
-        # The conditional expressions used to create an application group based on the tag.
+        # The match expressions that are used to create an application group from tags.
         # 
         # This parameter is required.
         self.match_express = match_express
-        # The relationship between the conditional expressions for the tag values of the cloud resources. Valid values:
+        # The relationship between the conditional expressions for the tag values. Valid values:
         # 
-        # *   and (default)
-        # *   or
+        # - and (default)
+        # 
+        # - or
         self.match_express_filter_relation = match_express_filter_relation
         self.region_id = region_id
-        # The tag keys of the cloud resources.
+        # The tag key of the resource.
         # 
-        # For more information about how to obtain tag keys, see [DescribeTagKeyList](https://help.aliyun.com/document_detail/145558.html).
+        # For more information about how to query the tag keys of resources, see [DescribeTagKeyList](https://help.aliyun.com/document_detail/145558.html).
         # 
         # This parameter is required.
         self.tag_key = tag_key
-        # The ID of the region to which the tags belong.
+        # The ID of the region to which the tag belongs.
         self.tag_region_id = tag_region_id
+        # The ID of the alert template.
+        # 
+        # For more information about how to query the IDs of alert templates, see [DescribeMetricRuleTemplateList](https://help.aliyun.com/document_detail/114982.html).
         self.template_id_list = template_id_list
 
     def validate(self):
@@ -135,22 +145,27 @@ class CreateDynamicTagGroupRequestMatchExpress(DaraModel):
         tag_value: str = None,
         tag_value_match_function: str = None,
     ):
-        # The keys of the tags that are used to create the application group. If a specified key is attached to multiple resources, the resources that have the same key-value pair are added to the same group.
+        # The key of the tag that is used to create the group. If multiple resources have this tag key, the resources that meet the filter conditions are added to the same group based on the same key-value pair.
         self.tag_name = tag_name
-        # The tag values of the cloud resources. Set the value of N to 1.
+        # The value of the resource tag. The value of N is 1.
         # 
-        # >  If you set the `MatchExpress.N.TagValueMatchFunction` parameter, you must also set the `MatchExpress.N.TagValue` parameter.
+        # > You must specify both the `MatchExpress.N.TagValueMatchFunction` and `MatchExpress.N.TagValue` parameters.
         self.tag_value = tag_value
-        # The method that is used to match the tag values of the cloud resources. Set the value of N to 1. Valid values:
+        # The method that is used to match the values of resource tags. The value of N is 1. Valid values:
         # 
-        # *   contains: contains
-        # *   startWith: starts with a prefix
-        # *   endWith: ends with a suffix
-        # *   notContains: does not contain
-        # *   equals: equals
-        # *   all: matches all
+        # - contains: includes.
         # 
-        # >  If you set the `MatchExpress.N.TagValueMatchFunction` parameter, you must also set the `MatchExpress.N.TagValue` parameter.
+        # - startWith: prefix.
+        # 
+        # - endWith: suffix.
+        # 
+        # - notContains: does not include.
+        # 
+        # - equals: equals.
+        # 
+        # - all: all.
+        # 
+        # > You must specify both the `MatchExpress.N.TagValueMatchFunction` and `MatchExpress.N.TagValue` parameters.
         self.tag_value_match_function = tag_value_match_function
 
     def validate(self):

@@ -11,14 +11,14 @@ class DescribeMetricRuleTemplateAttributeRequest(DaraModel):
         region_id: str = None,
         template_id: str = None,
     ):
-        # The name of the alert template. You must specify at least one of the `Name` and `TemplateId` parameters.
+        # The name of the alert template. You must set either `Name` or `TemplateId`.
         # 
-        # For information about how to obtain the name of an alert template, see [DescribeMetricRuleTemplateList](https://help.aliyun.com/document_detail/114982.html).
+        # For information about how to obtain the alert template name, see [DescribeMetricRuleTemplateList](https://help.aliyun.com/document_detail/114982.html).
         self.name = name
         self.region_id = region_id
-        # The ID of the alert template. You must specify at least one of the `Name` and `TemplateId` parameters.
+        # The ID of the alert template. You must set either `Name` or `TemplateId`.
         # 
-        # For information about how to obtain the ID of an alert template, see [DescribeMetricRuleTemplateList](https://help.aliyun.com/document_detail/114982.html).
+        # For information about how to obtain the alert template ID, see [DescribeMetricRuleTemplateList](https://help.aliyun.com/document_detail/114982.html).
         self.template_id = template_id
 
     def validate(self):

@@ -20,21 +20,31 @@ class DescribeProductsOfActiveMetricRuleResponseBody(DaraModel):
         self.all_product_init_metric_rule_list = all_product_init_metric_rule_list
         # The HTTP status code.
         # 
-        # >  The status code 200 indicates that the request was successful.
+        # > The status code 200 indicates that the request was successful.
         self.code = code
         # The information about the services for which the initiative alert feature is enabled. Services are separated with commas (,). Valid values:
         # 
-        # *   ECS: Elastic Compute Service (ECS)
-        # *   rds: ApsaraDB RDS
-        # *   slb: Server Load Balancer (SLB)
-        # *   redis_standard: Redis Open-Source Edition (standard architecture)
-        # *   redis_sharding: Redis Open-Source Edition (cluster architecture)
-        # *   redis_splitrw: Redis Open-Source Edition (read/write splitting architecture)
-        # *   mongodb: ApsaraDB for MongoDB of the replica set architecture
-        # *   mongodb_sharding: ApsaraDB for MongoDB of the sharded cluster architecture
-        # *   hbase: ApsaraDB for HBase
-        # *   elasticsearch: Elasticsearch
-        # *   opensearch: OpenSearch
+        # - ECS: Elastic Compute Service (ECS)
+        # 
+        # - rds: ApsaraDB RDS
+        # 
+        # - slb: Server Load Balancer (SLB)
+        # 
+        # - redis_standard: Redis Open-Source Edition (standard architecture)
+        # 
+        # - redis_sharding: Redis Open-Source Edition (cluster architecture)
+        # 
+        # - redis_splitrw: Redis Open-Source Edition (read/write splitting architecture)
+        # 
+        # - mongodb: ApsaraDB for MongoDB of the replica set architecture
+        # 
+        # - mongodb_sharding: ApsaraDB for MongoDB of the sharded cluster architecture
+        # 
+        # - hbase: ApsaraDB for HBase
+        # 
+        # - elasticsearch: Elasticsearch
+        # 
+        # - opensearch: OpenSearch
         self.datapoints = datapoints
         # The error message.
         self.message = message
@@ -42,8 +52,9 @@ class DescribeProductsOfActiveMetricRuleResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   true: The request was successful.
-        # *   false: The request failed.
+        # - true: The request was successful.
+        # 
+        # - false: The request failed.
         self.success = success
 
     def validate(self):

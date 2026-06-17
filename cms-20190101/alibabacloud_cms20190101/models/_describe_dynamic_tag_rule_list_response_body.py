@@ -19,25 +19,26 @@ class DescribeDynamicTagRuleListResponseBody(DaraModel):
         tag_group_list: main_models.DescribeDynamicTagRuleListResponseBodyTagGroupList = None,
         total: int = None,
     ):
-        # The HTTP status code.
+        # The status code.
         # 
-        # >  The status code 200 indicates that the call was successful.
+        # > A status code of 200 indicates that the operation was successful.
         self.code = code
         # The error message.
         self.message = message
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
         # The number of entries returned per page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call was successful. Valid values:
+        # Indicates whether the operation was successful. Valid values:
         # 
-        # *   true: The call was successful.
-        # *   false: The call failed.
+        # - true: The operation was successful.
+        # 
+        # - false: The operation failed.
         self.success = success
         self.tag_group_list = tag_group_list
-        # The total number of returned entries.
+        # The total number of entries in the tag list.
         self.total = total
 
     def validate(self):

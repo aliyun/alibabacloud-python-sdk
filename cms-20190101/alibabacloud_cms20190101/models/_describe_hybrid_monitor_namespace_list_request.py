@@ -14,25 +14,26 @@ class DescribeHybridMonitorNamespaceListRequest(DaraModel):
         region_id: str = None,
         show_task_statistic: bool = None,
     ):
-        # The search keyword.
+        # The keyword for the search.
         self.keyword = keyword
         # The name of the namespace.
         # 
-        # The name can contain letters, digits, and hyphens (-).
+        # The name can contain uppercase letters, lowercase letters, digits, and hyphens (-).
         self.namespace = namespace
         # The page number.
         # 
-        # Page numbers start from 1. Default value: 1.
+        # Minimum value: 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries to return on each page.
         # 
-        # Page numbers start from 1. Default value: 10.
+        # Minimum value: 1. Default value: 10.
         self.page_size = page_size
         self.region_id = region_id
-        # Specifies whether to return the configuration details of metric import tasks for Alibaba Cloud services and the number of metric import tasks for third-party services. Valid values:
+        # Specifies whether to display the configuration details of data import tasks for Alibaba Cloud services and the number of data import tasks for non-Alibaba Cloud services. Valid values:
         # 
-        # *   true
-        # *   false (default)
+        # - true
+        # 
+        # - false (default)
         self.show_task_statistic = show_task_statistic
 
     def validate(self):

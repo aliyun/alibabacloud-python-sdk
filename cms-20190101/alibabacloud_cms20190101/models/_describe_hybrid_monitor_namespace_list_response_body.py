@@ -19,24 +19,25 @@ class DescribeHybridMonitorNamespaceListResponseBody(DaraModel):
         success: str = None,
         total: int = None,
     ):
-        # The response code.
+        # The status code.
         self.code = code
         # The details of the namespaces.
         self.describe_hybrid_monitor_namespace = describe_hybrid_monitor_namespace
-        # The returned message.
+        # The error message.
         self.message = message
         # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries returned per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the operation was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: The operation was successful.
+        # 
+        # - false: The operation failed.
         self.success = success
-        # The total number of entries returned.
+        # The total number of entries.
         self.total = total
 
     def validate(self):
@@ -123,33 +124,37 @@ class DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespa
         namespace_type: str = None,
         not_aliyun_task_number: int = None,
     ):
-        # The configuration details of metric import tasks for Alibaba Cloud services.
+        # The configuration details of data import tasks for Alibaba Cloud services.
         self.aliyun_product_metric_list = aliyun_product_metric_list
-        # The timestamp that was generated when the namespace was created.
+        # The timestamp when the namespace was created.
         # 
         # Unit: milliseconds.
         self.create_time = create_time
         # The description of the namespace.
         self.description = description
-        # The details of the data retention period.
+        # The details of the data storage duration.
         self.detail = detail
-        # The ID of the namespace.
+        # The namespace ID.
         self.id = id
         # Indicates whether the namespace is deleted. Valid values:
         # 
-        # *   0: The namespace is not deleted.
-        # *   1: The namespace is deleted.
+        # - 0: The namespace is not deleted.
+        # 
+        # - 1: The namespace is deleted.
         self.is_delete = is_delete
-        # The timestamp that was generated when the namespace was last modified.
+        # The timestamp when the namespace was last modified. Unit: milliseconds.
         self.modify_time = modify_time
         # The name of the namespace.
         self.namespace = namespace
-        # The storage scheme of metric data. Valid values:
+        # The storage solution for monitoring data. Valid values:
         # 
-        # *   m_prom_user: The metric data is stored in Simple Log Service.
-        # *   m_prom_pool: The metric data is stored in the storage space provided by CloudMonitor.
+        # - m_prom_user: The monitoring data is stored in SLS.
+        # 
+        # - m_prom_pool: The monitoring data is stored in the storage space provided by Cloud Monitor.
+        # 
+        # - aliyun_prometheus: The monitoring data is stored in a Prometheus instance.
         self.namespace_type = namespace_type
-        # The number of metric import tasks for third-party services.
+        # The number of data import tasks for non-Alibaba Cloud services.
         self.not_aliyun_task_number = not_aliyun_task_number
 
     def validate(self):
@@ -245,23 +250,31 @@ class DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespa
         slsproject: str = None,
         spec: str = None,
     ):
-        # The region where the metric data is stored.
+        # The region where the monitoring data is stored.
         # 
-        # >  This parameter is returned if you select `m_prom_user` for `NamespaceType` when you create a namespace.
+        # > This parameter is returned if you set `NamespaceType` to `m_prom_user` when you create the namespace.
         self.namespace_region = namespace_region
+        # The Prometheus instance where the monitoring data is stored.
+        # 
+        # > This parameter is returned if you set `NamespaceType` to `aliyun_prometheus` when you create the namespace.
         self.prometheus_instance_id = prometheus_instance_id
-        # The project where the metric data is located.
+        # The Simple Log Service (SLS) project where the monitoring data is stored.
         # 
-        # >  This parameter is returned if you select `m_prom_user` for `NamespaceType` when you create a namespace.
+        # > This parameter is returned if you set `NamespaceType` to `m_prom_user` when you create the namespace.
         self.slsproject = slsproject
-        # The data retention period. Valid values:
+        # The data storage duration. Valid values:
         # 
-        # *   cms.s1.large (Retention Period 15 Days)
-        # *   cms.s1.xlarge (Retention Period 32 Days)
-        # *   cms.s1.2xlarge (Retention Period 63 Days)
-        # *   cms.s1.3xlarge (Retention Period 93 Days)
-        # *   cms.s1.6xlarge (Retention Period 185 Days)
-        # *   cms.s1.12xlarge (Retention Period 367 Days)
+        # - cms.s1.large: 15 days.
+        # 
+        # - cms.s1.xlarge: 32 days.
+        # 
+        # - cms.s1.2xlarge: 63 days.
+        # 
+        # - cms.s1.3xlarge: 93 days.
+        # 
+        # - cms.s1.6xlarge: 185 days.
+        # 
+        # - cms.s1.12xlarge: 376 days.
         self.spec = spec
 
     def validate(self):
@@ -309,15 +322,17 @@ class DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespa
         user_id: int = None,
         yamlconfig: str = None,
     ):
-        # The namespaces.
+        # The list of namespaces.
         self.namespace_list = namespace_list
         # The account that is used to create the namespace.
         self.user_id = user_id
-        # The configuration file of the Alibaba Cloud service that you want to monitor by using Hybrid Cloud Monitoring.
+        # The configuration file for the Alibaba Cloud service that is connected to Hybrid Cloud Monitoring.
         # 
-        # *   namespace: the namespace of the Alibaba Cloud service.
-        # *   metric_list: the metrics of the Alibaba Cloud service.
-        # *   dimension: the resources of the Alibaba Cloud service that you want to monitor by using Hybrid Cloud Monitoring. If you do not specify a dimension, all resources of the Alibaba Cloud service are monitored.
+        # - namespace: the namespace of the Alibaba Cloud service.
+        # 
+        # - metric_list: the metrics of the Alibaba Cloud service.
+        # 
+        # - dimension: the resources of the Alibaba Cloud service that can be queried in Hybrid Cloud Monitoring. If this parameter is empty, all resources are monitored.
         self.yamlconfig = yamlconfig
 
     def validate(self):
@@ -366,9 +381,9 @@ class DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespa
         metric_list: List[main_models.DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespaceAliyunProductMetricListNamespaceListMetricList] = None,
         namespace: str = None,
     ):
-        # The metrics for the Alibaba Cloud service.
+        # The list of metrics for the Alibaba Cloud service.
         self.metric_list = metric_list
-        # The namespace for the Alibaba Cloud service.
+        # The data namespace of the Alibaba Cloud service.
         self.namespace = namespace
 
     def validate(self):
@@ -411,7 +426,7 @@ class DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespa
         list: List[str] = None,
         period: int = None,
     ):
-        # The metrics.
+        # The list of metrics.
         self.list = list
         # The collection period of the metric.
         # 

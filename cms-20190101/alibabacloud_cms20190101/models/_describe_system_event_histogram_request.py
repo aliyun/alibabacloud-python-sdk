@@ -24,29 +24,32 @@ class DescribeSystemEventHistogramRequest(DaraModel):
         self.end_time = end_time
         # The event type.
         # 
-        # >  You can call the [DescribeSystemEventMetaList](https://help.aliyun.com/document_detail/114972.html) operation to query the types of system events.
+        # > You can call the [DescribeSystemEventMetaList](https://help.aliyun.com/document_detail/114972.html) operation to query the types of system events.
         self.event_type = event_type
         # The ID of the application group.
         self.group_id = group_id
         # The level of the event. Valid values:
         # 
-        # *   CRITICAL
-        # *   WARN
-        # *   INFO
+        # - CRITICAL
+        # 
+        # - WARN
+        # 
+        # - INFO
         self.level = level
         # The event name.
         # 
-        # >  You can call the [DescribeSystemEventMetaList](https://help.aliyun.com/document_detail/114972.html) operation to query the names of system events.
+        # > You can call the [DescribeSystemEventMetaList](https://help.aliyun.com/document_detail/114972.html) operation to query the names of system events.
         self.name = name
         # The abbreviation of the service name.
         # 
-        # >  You can call the [DescribeSystemEventMetaList](https://help.aliyun.com/document_detail/114972.html) operation to query the abbreviations of service names.
+        # > You can call the [DescribeSystemEventMetaList](https://help.aliyun.com/document_detail/114972.html) operation to query the abbreviations of service names.
         self.product = product
         self.region_id = region_id
         # The keywords that are used to search for the system event. Valid values:
         # 
-        # *   If you want to search for the system event whose content contains a and b, set the value to `a and b`.
-        # *   If you want to search for the system event whose content contains a or b, set the value to `a or b`.
+        # - If you want to search for the system event whose content contains a and b, set the value to `a and b`.
+        # 
+        # - If you want to search for the system event whose content contains a or b, set the value to `a or b`.
         self.search_keywords = search_keywords
         # The start time.
         # 
@@ -54,7 +57,7 @@ class DescribeSystemEventHistogramRequest(DaraModel):
         self.start_time = start_time
         # The event status.
         # 
-        # >  You can call the [DescribeSystemEventMetaList](https://help.aliyun.com/document_detail/114972.html) operation to query the status of system events.
+        # > You can call the [DescribeSystemEventMetaList](https://help.aliyun.com/document_detail/114972.html) operation to query the status of system events.
         self.status = status
 
     def validate(self):

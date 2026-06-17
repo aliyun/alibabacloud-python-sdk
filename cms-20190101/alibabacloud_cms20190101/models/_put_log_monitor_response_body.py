@@ -15,21 +15,23 @@ class PutLogMonitorResponseBody(DaraModel):
     ):
         # The HTTP status code.
         # 
-        # >  The status code 200 indicates that the request was successful.
+        # > 200 indicates success.
         self.code = code
         # The ID of the log monitoring metric.
         self.log_id = log_id
-        # The returned message.
+        # The returned message. Results:
         # 
-        # *   If the request was successful, `successful` is returned.
-        # *   If the request failed, an error message is returned. Example: `alias of aggreate must be set value.`
+        # - If the operation is successful, `successful` is returned.
+        # 
+        # - If the operation fails, an error message is returned, such as `alias of aggreate must be set value.`.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the operation is successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: The operation is successful.
+        # 
+        # - false: The operation failed.
         self.success = success
 
     def validate(self):

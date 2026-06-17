@@ -16,35 +16,50 @@ class CreateInstantSiteMonitorRequest(DaraModel):
         task_name: str = None,
         task_type: str = None,
     ):
-        # The URL or IP address that you want to test.
+        # The URL or IP address of the detection task.
         # 
         # This parameter is required.
         self.address = address
+        # The type of the detection points. Valid values: PC and MOBILE. PC indicates detection points on PCs. MOBILE indicates detection points on mobile devices. Default value: PC.
         self.agent_group = agent_group
-        # The detection points. If you leave this parameter empty, the system randomly selects three detection points.
+        # The detection points. If you do not specify this parameter, the system randomly selects three detection points.
         # 
-        # The value is a `JSON array`. Example: {"city":"546","isp":"465"},{"city":"572","isp":"465"},{"city":"738","isp":"465"}. The values of the city field indicate Beijing, Hangzhou, and Qingdao.
+        # The value must be a JSON array. Example: `[{"city":"546","isp":"465", "type":"IDC"},{"city":"572","isp":"465", "type":"LASTMILE"},{"city":"738","isp":"465"}]`. These values correspond to Beijing, Hangzhou, and Qingdao.
         # 
-        # For information about how to obtain detection points, see [DescribeSiteMonitorISPCityList](https://help.aliyun.com/document_detail/115045.html).
+        # The type parameter specifies the type of the detection point. If AgentGroup is set to PC, valid values for type are IDC and LASTMILE. IDC indicates that the detection point is deployed in a data center. LASTMILE indicates that the detection point is deployed on the PC of a netizen that is connected to the last mile of an ISP network. The type parameter is optional. The default value is IDC. You do not need to specify this parameter if AgentGroup is set to MOBILE.
         # 
-        # > You must specify one of the `IspCities` and `RandomIspCity` parameters.
+        # For more information about how to obtain detection points, see [DescribeSiteMonitorISPCityList](https://help.aliyun.com/document_detail/115045.html).
+        # 
+        # > You must specify either `IspCities` or `RandomIspCity`.
         self.isp_cities = isp_cities
-        # The extended options of the protocol that is used by the instant test task. The options vary based on the protocol.
+        # The extended options for the protocol type of the detection task. The extended options vary based on the protocol type.
         self.options_json = options_json
         # The number of detection points.
         # 
-        # > 
-        # 
-        # *   You must specify one of the `IspCities` and `RandomIspCity` parameters. If you specify the `RandomIspCity` parameter, the `IspCities` parameter automatically becomes invalid.
+        # > - You must specify either `IspCities` or `RandomIspCity`. If you specify `RandomIspCity`, `IspCities` is ignored.
         self.random_isp_city = random_isp_city
         self.region_id = region_id
-        # The name of the instant test task.
+        # The name of the detection task.
         # 
-        # The name must be 4 to 100 characters in length, and can contain letters, digits, and underscores (_).
+        # <props="china">
+        # 
+        # The name must be 4 to 100 characters in length and can contain letters, digits, and underscores (_).
+        # 
+        # 
+        # 
+        # <props="intl">
+        # 
+        # The name must be 4 to 100 characters in length and can contain letters, digits, and underscores (_).
+        # 
+        # 
+        # 
+        # <props="partner">
+        # 
+        # The name must be 4 to 100 characters in length and can contain letters, digits, and underscores (_).
         # 
         # This parameter is required.
         self.task_name = task_name
-        # The type of the instant test task. Valid values: HTTP, PING, TCP, UDP, and DNS.
+        # The type of the detection task. Valid values: HTTP, PING, TCP, UDP, and DNS.
         # 
         # This parameter is required.
         self.task_type = task_type

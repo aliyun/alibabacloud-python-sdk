@@ -14,14 +14,14 @@ class CreateHybridMonitorNamespaceResponseBody(DaraModel):
     ):
         # The response code.
         self.code = code
-        # The error message returned.
+        # The error message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the operation was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: Successful.
+        # - false: Failed.
         self.success = success
 
     def validate(self):

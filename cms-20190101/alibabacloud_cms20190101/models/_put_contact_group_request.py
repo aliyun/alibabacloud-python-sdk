@@ -16,20 +16,17 @@ class PutContactGroupRequest(DaraModel):
     ):
         # The name of the alert contact group.
         # 
-        # For information about how to obtain the name of an alert contact group, see [DescribeContactGroupList](https://help.aliyun.com/document_detail/114922.html).
-        # 
         # This parameter is required.
         self.contact_group_name = contact_group_name
-        # The name of the alert contact. Valid values of N: 1 to 100.
+        # The name of the alert contact.
         self.contact_names = contact_names
         # The description of the alert contact group.
         self.describe = describe
-        # Specifies whether to enable the weekly report subscription feature. Valid values:
+        # Specifies whether to enable the subscription feature. Valid values:
         # 
-        # *   true: The weekly report subscription feature is enabled.
-        # *   false: The weekly report subscription feature is disabled.
+        # - true: Enabled.
         # 
-        # >  You can enable the weekly report subscription feature only for an Alibaba Cloud account that has at least five Elastic Compute Service (ECS) instances.
+        # - false: Disabled.
         self.enable_subscribed = enable_subscribed
 
     def validate(self):

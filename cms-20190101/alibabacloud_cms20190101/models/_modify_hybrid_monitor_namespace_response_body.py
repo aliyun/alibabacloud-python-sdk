@@ -12,16 +12,16 @@ class ModifyHybridMonitorNamespaceResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
-        # The returned message.
+        # The response code.
         self.code = code
         # The error message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the operation was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: Successful.
+        # - false: Failed.
         self.success = success
 
     def validate(self):

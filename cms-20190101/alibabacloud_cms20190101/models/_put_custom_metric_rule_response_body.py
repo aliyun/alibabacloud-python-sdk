@@ -12,18 +12,19 @@ class PutCustomMetricRuleResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code.
+        # 状态码。
         # 
-        # >  The status code 200 indicates that the request was successful.
+        # > 200表示成功。
         self.code = code
-        # The returned message. If the request was successful, the return value is null. If the request failed, an error message is returned.
+        # 返回信息。接口调用成功时，返回为空；接口调用失败时，返回失败原因。
         self.message = message
-        # The request ID.
+        # 请求ID。
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # 操作是否成功。取值：
         # 
-        # *   true
-        # *   false
+        # - true：成功。
+        # 
+        # - false：失败。
         self.success = success
 
     def validate(self):

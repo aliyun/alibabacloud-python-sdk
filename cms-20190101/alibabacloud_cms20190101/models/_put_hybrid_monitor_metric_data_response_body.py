@@ -14,13 +14,13 @@ class PutHybridMonitorMetricDataResponseBody(DaraModel):
         error_detail: List[main_models.PutHybridMonitorMetricDataResponseBodyErrorDetail] = None,
         request_id: str = None,
     ):
-        # The HTTP status code.
+        # The status code.
         # 
-        # >  The status code 200 indicates that the request was successful.
+        # > The value 200 indicates that the request was successful.
         self.code = code
-        # The details of invalid parameters.
+        # The details of the invalid parameters.
         # 
-        # If a request parameter is invalid, the details of the invalid parameter are returned.
+        # If the request parameters that you specify do not meet the requirements, the details of the invalid parameters are displayed.
         self.error_detail = error_detail
         # The request ID.
         self.request_id = request_id
@@ -71,9 +71,9 @@ class PutHybridMonitorMetricDataResponseBodyErrorDetail(DaraModel):
         error_message: str = None,
         index: int = None,
     ):
-        # The error message of the invalid parameter.
+        # The error message that is returned for the invalid parameter.
         self.error_message = error_message
-        # The position of the error message in the array.
+        # The position of the error information in the array.
         self.index = index
 
     def validate(self):

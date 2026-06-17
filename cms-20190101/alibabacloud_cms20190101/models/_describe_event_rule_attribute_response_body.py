@@ -16,9 +16,9 @@ class DescribeEventRuleAttributeResponseBody(DaraModel):
         result: main_models.DescribeEventRuleAttributeResponseBodyResult = None,
         success: bool = None,
     ):
-        # The HTTP status code.
+        # The status code.
         # 
-        # >  The status code 200 indicates that the request was successful.
+        # > 200 indicates success.
         self.code = code
         # The error message.
         self.message = message
@@ -26,10 +26,11 @@ class DescribeEventRuleAttributeResponseBody(DaraModel):
         self.request_id = request_id
         # The details of the event-triggered alert rule.
         self.result = result
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the operation was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: The operation was successful.
+        # 
+        # - false: The operation failed.
         self.success = success
 
     def validate(self):
@@ -90,21 +91,23 @@ class DescribeEventRuleAttributeResponseBodyResult(DaraModel):
     ):
         # The description of the event-triggered alert rule.
         self.description = description
-        # The event pattern. This parameter describes the trigger conditions of an event.
+        # The event pattern. Describes the trigger conditions of the event.
         self.event_pattern = event_pattern
         # The event type. Valid values:
         # 
-        # *   SYSTEM: system event
-        # *   CUSTOM: custom event
+        # - SYSTEM: system event.
+        # 
+        # - CUSTOM: custom event.
         self.event_type = event_type
-        # The ID of the application group.
+        # The application group ID.
         self.group_id = group_id
         # The name of the event-triggered alert rule.
         self.name = name
         # The status of the event-triggered alert rule. Valid values:
         # 
-        # *   ENABLED
-        # *   DISABLED
+        # - ENABLED: enabled.
+        # 
+        # - DISABLED: disabled.
         self.state = state
 
     def validate(self):
@@ -171,13 +174,13 @@ class DescribeEventRuleAttributeResponseBodyResultEventPattern(DaraModel):
         status_list: main_models.DescribeEventRuleAttributeResponseBodyResultEventPatternStatusList = None,
     ):
         self.event_type_list = event_type_list
-        # The keyword for filtering.
+        # The filter keyword.
         self.keyword_filter_obj = keyword_filter_obj
         self.level_list = level_list
         self.name_list = name_list
         # The name of the cloud service.
         self.product = product
-        # Indicates that logs are filtered based on the specified SQL statement. If the specified conditions are met, an alert is triggered.
+        # Filters logs by using SQL statements. An alert is triggered if the filter conditions are met.
         self.sqlfilter = sqlfilter
         self.status_list = status_list
 
@@ -339,10 +342,10 @@ class DescribeEventRuleAttributeResponseBodyResultEventPatternKeywordFilterObj(D
         relation: str = None,
     ):
         self.keywords = keywords
-        # The relationship between multiple keywords in a condition. Valid values:
+        # The condition for multiple keywords. Valid values:
         # 
-        # *   OR: The relationship between keywords is OR.
-        # *   NOT: The keyword is excluded. The value NOT indicates that all events that do not contain the keywords are matched.
+        # - OR: The relationship between multiple keywords is OR.
+        # - NOT: Does not contain the keyword. Matches all events that are not in the keyword list.
         self.relation = relation
 
     def validate(self):

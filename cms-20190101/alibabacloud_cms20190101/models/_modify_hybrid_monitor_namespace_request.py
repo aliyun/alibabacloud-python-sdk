@@ -12,27 +12,27 @@ class ModifyHybridMonitorNamespaceRequest(DaraModel):
         region_id: str = None,
         spec: str = None,
     ):
-        # The description of the namespace.
+        # The description of the metric store.
         self.description = description
-        # The name of the namespace.
+        # The name of the metric store.
         # 
-        # The name can contain letters, digits, and hyphens (-).
+        # Format: consists of uppercase letters, lowercase letters, digits, and hyphens (-).
         # 
-        # For information about how to obtain the name of a namespace, see [DescribeHybridMonitorNamespaceList](https://help.aliyun.com/document_detail/428880.html).
+        # For information about how to obtain the name of a metric store, see [DescribeHybridMonitorNamespaceList](https://help.aliyun.com/document_detail/428880.html).
         # 
         # This parameter is required.
         self.namespace = namespace
         self.region_id = region_id
-        # The data retention period. Valid values:
+        # The data storage duration. Valid values:
         # 
-        # *   cms.s1.large: Data is stored for 15 days.
-        # *   cms.s1.xlarge: Data is stored for 32 days.
-        # *   cms.s1.2xlarge: Data is stored for 63 days.
-        # *   cms.s1.3xlarge: Data is stored for 93 days.
-        # *   cms.s1.6xlarge: Data is stored for 185 days.
-        # *   cms.s1.12xlarge: Data is stored for 376 days.
+        # - cms.s1.large: 15 days.
+        # - cms.s1.xlarge: 32 days.
+        # - cms.s1.2xlarge: 63 days.
+        # - cms.s1.3xlarge: 93 days.
+        # - cms.s1.6xlarge: 185 days.
+        # - cms.s1.12xlarge: 376 days.
         # 
-        # For information about the pricing for different retention periods, see the **Pricing** section in [Billing of the dashboard feature](https://help.aliyun.com/document_detail/223532.html).
+        # For the prices of different storage duration specifications, see the **Pricing** section in [Dashboard](https://help.aliyun.com/document_detail/223532.html).
         self.spec = spec
 
     def validate(self):

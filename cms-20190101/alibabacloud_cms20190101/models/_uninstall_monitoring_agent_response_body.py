@@ -14,7 +14,7 @@ class UninstallMonitoringAgentResponseBody(DaraModel):
     ):
         # The status code.
         # 
-        # >  The status code 200 indicates that the request was successful.
+        # > The status code 200 indicates that the request was successful.
         self.code = code
         # The returned message.
         self.message = message
@@ -22,8 +22,9 @@ class UninstallMonitoringAgentResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         self.success = success
 
     def validate(self):

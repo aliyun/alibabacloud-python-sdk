@@ -18,56 +18,64 @@ class DescribeMetricListRequest(DaraModel):
         region_id: str = None,
         start_time: str = None,
     ):
-        # The dimensions that specify the resources whose monitoring data you want to query.
+        # The dimensions that specify the resources to be monitored.
         # 
-        # Set the value to a collection of key-value pairs. A typical key-value pair is `instanceId:i-2ze2d6j5uhg20x47****`.
+        # Format: a collection of key-value pairs, such as `{"userId":"120886317861****"}` and `{"instanceId":"i-2ze2d6j5uhg20x47****"}`.
         # 
-        # >  You can query a maximum of 50 instances in a single request.
+        # > A single request can be used to query a maximum of 50 instances.
         self.dimensions = dimensions
         # The end of the time range to query. The following formats are supported:
         # 
-        # *   UNIX timestamp: the number of milliseconds that have elapsed since 00:00:00 Thursday, January 1, 1970
-        # *   UTC time: the UTC time that follows the YYYY-MM-DDThh:mm:ssZ format
+        # - UNIX timestamp: the number of milliseconds that have elapsed since 00:00:00 UTC on January 1, 1970.
+        # 
+        # - Format: YYYY-MM-DD hh:mm:ss.
+        # 
+        # > The interval between \\`StartTime\\` and \\`EndTime\\` must be less than or equal to 31 days.
         self.end_time = end_time
-        # The expression that is used to compute the query results in real time.
+        # The expression that is used for real-time computing based on the query results.
         # 
-        # >  Only the groupby expression is supported. This expression is similar to the GROUP BY statement that is used in databases.
+        # > Only the groupby expression is supported. This expression is similar to the GROUP BY statement in databases.
         self.express = express
-        # The number of entries to return on each page.
+        # The number of entries to return on each page for a paged query.
         # 
-        # >  The maximum value of the Length parameter in a request is 1440.
+        # > The maximum value of \\`Length\\` in a single request is 1440.
         self.length = length
         # The name of the metric.
         # 
-        # For more information about metric names, see [Appendix 1: Metrics](https://help.aliyun.com/document_detail/163515.html).
+        # For more information, see [Metrics](https://help.aliyun.com/document_detail/163515.html).
         # 
         # This parameter is required.
         self.metric_name = metric_name
-        # The namespace of the cloud service. Format: acs_service name.
+        # The namespace of the cloud service.
         # 
-        # For more information about the namespaces of cloud services, see [Appendix 1: Metrics](https://help.aliyun.com/document_detail/163515.html).
+        # For more information, see [Metrics](https://help.aliyun.com/document_detail/163515.html).
         # 
         # This parameter is required.
         self.namespace = namespace
-        # The paging token.
+        # The pagination cursor.
         # 
-        # >  If this parameter is not specified, the data on the first page is returned. A return value other than Null of this parameter indicates that not all entries have been returned. You can use this value as an input parameter to obtain entries on the next page. The value Null indicates that all query results have been returned.
+        # > If you do not set this parameter, the first page of data is returned. If a value is returned for this parameter, it indicates that more data is available. To retrieve the next page, use the returned value as the \\`NextToken\\` in your next request. A null value indicates that all data has been retrieved.
         self.next_token = next_token
-        # The interval at which the monitoring data is queried.
+        # The statistical period of the monitoring data.
         # 
-        # Valid values: 60, 300, and 900.
+        # Valid values: 15, 60, 900, and 3600.
         # 
         # Unit: seconds.
         # 
-        # >  Configure this parameter based on your business scenario.
+        # > - If you do not set this parameter, the reporting period that was specified when the metric was registered is used.
+        # 
+        # - The statistical period of each metric (`MetricName`) of a cloud service is different. For more information, see [Metrics](https://help.aliyun.com/document_detail/163515.html).
         self.period = period
         self.region_id = region_id
         # The beginning of the time range to query. The following formats are supported:
         # 
-        # *   UNIX timestamp: the number of milliseconds that have elapsed since 00:00:00 Thursday, January 1, 1970
-        # *   UTC time: the UTC time that follows the YYYY-MM-DDThh:mm:ssZ format
+        # - UNIX timestamp: the number of milliseconds that have elapsed since 00:00:00 UTC on January 1, 1970.
         # 
-        # >  The specified period includes the end time and excludes the start time. The start time must be earlier than the end time.
+        # - Format: YYYY-MM-DD hh:mm:ss.
+        # 
+        # > * The time range is a left-open and right-closed interval. The value of \\`StartTime\\` must be earlier than the value of \\`EndTime\\`.
+        # 
+        # - The interval between \\`StartTime\\` and \\`EndTime\\` must be less than or equal to 31 days.
         self.start_time = start_time
 
     def validate(self):

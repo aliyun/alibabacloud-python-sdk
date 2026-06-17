@@ -18,11 +18,11 @@ class DeleteMonitoringAgentProcessRequest(DaraModel):
         self.instance_id = instance_id
         # The process ID.
         # 
-        # > You must configure either `ProcessId` or `ProcessName`.
+        # > You must specify either ProcessId or ProcessName.
         self.process_id = process_id
         # The process name.
         # 
-        # > You must configure either `ProcessId` or `ProcessName`.
+        # > You must specify either ProcessId or ProcessName.
         self.process_name = process_name
         self.region_id = region_id
 

@@ -16,16 +16,21 @@ class DescribeContactListRequest(DaraModel):
     ):
         # The alert notification method. Valid values:
         # 
-        # *   Mail: emails
-        # *   DingWebHook: DingTalk chatbots
-        self.chanel_type = chanel_type
-        # The value specified for the alert notification method.
+        # <props="china">- SMS: text message.
         # 
-        # >  This parameter is required only if you set the `ChanelType` parameter to `Mail`.
+        # <props="china">- AliIM: TradeManager.
+        # 
+        # - Mail: email.
+        # 
+        # - DingWebHook: DingTalk chatbot.
+        self.chanel_type = chanel_type
+        # The value of the alert notification method.
+        # 
+        # > This parameter is required only when `ChanelType` is set to `Mail`.
         self.chanel_value = chanel_value
         # The name of the alert contact.
         self.contact_name = contact_name
-        # The page number.
+        # The current page number.
         # 
         # Default value: 1.
         self.page_number = page_number

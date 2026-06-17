@@ -12,15 +12,15 @@ class PutExporterOutputResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code.
+        # The status code.
         # 
-        # > The status code 200 indicates that the request was successful.
+        # > The value 200 indicates that the call is successful.
         self.code = code
         # The returned message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. true: The request was successful. false: The request failed.
+        # Indicates whether the call was successful. The value true indicates that the call was successful. The value false indicates that the call failed.
         self.success = success
 
     def validate(self):

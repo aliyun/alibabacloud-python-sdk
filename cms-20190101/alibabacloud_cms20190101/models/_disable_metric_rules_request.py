@@ -13,7 +13,7 @@ class DisableMetricRulesRequest(DaraModel):
         rule_id: List[str] = None,
     ):
         self.region_id = region_id
-        # The ID of the alert rule. Valid values of N: 1 to 20.
+        # The IDs of the alert rules.
         # 
         # This parameter is required.
         self.rule_id = rule_id

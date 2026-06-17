@@ -12,18 +12,17 @@ class DeleteMetricRulesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code.
-        # 
-        # >  The status code 200 indicates a success.
+        # The status code. A value of 200 indicates that the request was successful.
         self.code = code
         # The returned message.
         self.message = message
-        # The ID of the request.
+        # The ID of the request. Alibaba Cloud generates a unique ID for each request. Use this ID to troubleshoot issues.
         self.request_id = request_id
         # Indicates whether the operation was successful. Valid values:
         # 
-        # *   true: successful.
-        # *   false: failed.
+        # - true: The operation was successful.
+        # 
+        # - false: The operation failed.
         self.success = success
 
     def validate(self):

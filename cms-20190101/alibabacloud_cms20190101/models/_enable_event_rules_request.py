@@ -13,6 +13,8 @@ class EnableEventRulesRequest(DaraModel):
         rule_names: List[str] = None,
     ):
         self.region_id = region_id
+        # The names of the event rules to enable.
+        # 
         # This parameter is required.
         self.rule_names = rule_names
 

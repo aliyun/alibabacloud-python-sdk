@@ -25,8 +25,9 @@ class PutMonitorGroupDynamicRuleRequest(DaraModel):
         self.group_rules = group_rules
         # The mode for creating the alert rule. Valid values:
         # 
-        # *   true: creates asynchronously
-        # *   false (default): creates synchronously
+        # - true: creates asynchronously
+        # 
+        # - false (default): creates synchronously
         self.is_async = is_async
         self.region_id = region_id
 
@@ -85,16 +86,19 @@ class PutMonitorGroupDynamicRuleRequestGroupRules(DaraModel):
     ):
         # The cloud service to which the alert rule is applied. Valid values of N: 1 to 3. Valid values:
         # 
-        # *   ecs: Elastic Compute Service (ECS)
-        # *   rds: ApsaraDB RDS
-        # *   slb: Server Load Balancer (SLB)
+        # - ecs: Elastic Compute Service (ECS)
+        # 
+        # - rds: ApsaraDB RDS
+        # 
+        # - slb: Server Load Balancer (SLB)
         # 
         # This parameter is required.
         self.category = category
         # The logical operator used between conditional expressions in the alert rule. Valid values of N: 1 to 3. Valid values:
         # 
-        # *   and: The instances that meet all the conditional expressions are automatically added to the application group.
-        # *   or: The instances that meet one of the conditional expressions are automatically added to the application group.
+        # - and: The instances that meet all the conditional expressions are automatically added to the application group.
+        # 
+        # - or: The instances that meet one of the conditional expressions are automatically added to the application group.
         # 
         # This parameter is required.
         self.filter_relation = filter_relation
@@ -152,10 +156,13 @@ class PutMonitorGroupDynamicRuleRequestGroupRulesFilters(DaraModel):
     ):
         # The method that is used to filter instances. Valid values of N: 1 to 3. Valid values:
         # 
-        # *   contains: contains
-        # *   notContains: does not contain
-        # *   startWith: starts with a prefix
-        # *   endWith: ends with a suffix
+        # - contains: contains
+        # 
+        # - notContains: does not contain
+        # 
+        # - startWith: starts with a prefix
+        # 
+        # - endWith: ends with a suffix
         # 
         # This parameter is required.
         self.function = function

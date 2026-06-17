@@ -26,8 +26,9 @@ class CreateGroupMonitoringAgentProcessResponseBody(DaraModel):
         self.resource = resource
         # Indicates whether the call is successful. Valid values:
         # 
-        # *   true: The call is successful.
-        # *   false: The call fails.
+        # - true: The call is successful.
+        # 
+        # - false: The call fails.
         self.success = success
 
     def validate(self):

@@ -12,7 +12,7 @@ class DescribeUnhealthyHostAvailabilityRequest(DaraModel):
         id: List[int] = None,
         region_id: str = None,
     ):
-        # The ID of the availability monitoring task. Valid values of N: 1 to 20.
+        # The task ID.
         # 
         # This parameter is required.
         self.id = id

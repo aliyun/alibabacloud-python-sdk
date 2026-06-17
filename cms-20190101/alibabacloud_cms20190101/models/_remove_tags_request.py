@@ -14,12 +14,12 @@ class RemoveTagsRequest(DaraModel):
         region_id: str = None,
         tag: List[main_models.RemoveTagsRequestTag] = None,
     ):
-        # The IDs of the application groups.
+        # The ID of the application group.
         # 
         # This parameter is required.
         self.group_ids = group_ids
         self.region_id = region_id
-        # The tags.
+        # The list of tags.
         # 
         # This parameter is required.
         self.tag = tag
@@ -72,13 +72,13 @@ class RemoveTagsRequestTag(DaraModel):
     ):
         # The tag key.
         # 
-        # > The tag key (`Tag.N.Key`) and tag value (`Tag.N.Value`) must be specified at the same time.
+        # > You must specify both the tag key (`Tag.N.Key`) and the tag value (`Tag.N.Value`).
         # 
         # This parameter is required.
         self.key = key
         # The tag value.
         # 
-        # > The tag key (`Tag.N.Key`) and tag value (`Tag.N.Value`) must be specified at the same time.
+        # > You must specify both the tag key (`Tag.N.Key`) and the tag value (`Tag.N.Value`).
         # 
         # This parameter is required.
         self.value = value

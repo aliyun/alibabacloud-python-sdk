@@ -13,7 +13,7 @@ class DescribeExporterRuleListRequest(DaraModel):
     ):
         # The page number. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page. Default value: 1000.
+        # The number of entries per page.
         self.page_size = page_size
         self.region_id = region_id
 

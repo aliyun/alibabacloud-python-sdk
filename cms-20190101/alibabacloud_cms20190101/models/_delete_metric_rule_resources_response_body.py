@@ -14,7 +14,7 @@ class DeleteMetricRuleResourcesResponseBody(DaraModel):
     ):
         # The responses code.
         # 
-        # >  The status code 200 indicates that the request was successful.
+        # > The status code 200 indicates that the request was successful.
         self.code = code
         # The error message.
         self.message = message
@@ -22,8 +22,9 @@ class DeleteMetricRuleResourcesResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         self.success = success
 
     def validate(self):

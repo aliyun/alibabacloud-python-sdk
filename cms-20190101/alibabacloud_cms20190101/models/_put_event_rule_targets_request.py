@@ -19,22 +19,22 @@ class PutEventRuleTargetsRequest(DaraModel):
         sls_parameters: List[main_models.PutEventRuleTargetsRequestSlsParameters] = None,
         webhook_parameters: List[main_models.PutEventRuleTargetsRequestWebhookParameters] = None,
     ):
-        # The information about the alert contact groups that receive alert notifications.
+        # The alert contact group notification method.
         self.contact_parameters = contact_parameters
-        # The information about the recipients in Function Compute.
+        # The Function Compute notification method.
         self.fc_parameters = fc_parameters
-        # The notifications of Simple Message Queue (formerly MNS) (SMQ).
+        # The Simple Message Queue (formerly MNS) notification method.
         self.mns_parameters = mns_parameters
-        # The parameters of API callback notification.
+        # The list of API callback notification parameters.
         self.open_api_parameters = open_api_parameters
         self.region_id = region_id
         # The name of the alert rule.
         # 
         # This parameter is required.
         self.rule_name = rule_name
-        # The information about the recipients in Simple Log Service.
+        # The Simple Log Service notification method.
         self.sls_parameters = sls_parameters
-        # The information about the callback URLs that are used to receive alert notifications.
+        # The URL callback notification method.
         self.webhook_parameters = webhook_parameters
 
     def validate(self):
@@ -160,17 +160,17 @@ class PutEventRuleTargetsRequestWebhookParameters(DaraModel):
         protocol: str = None,
         url: str = None,
     ):
-        # The ID of the recipient that receives alert notifications. Valid values of N: 1 to 5.
+        # The unique identifier of the rule target. Valid values of N: 1 to 5.
         self.id = id
-        # The HTTP request method. Valid values of N: 1 to 5.
+        # The request method of the HTTP callback. Valid values of N: 1 to 5.
         # 
-        # Valid values: GET and POST.
+        # Only GET and POST are supported.
         self.method = method
-        # The name of the protocol. Valid values of N: 1 to 5. Valid values:
+        # The protocol name. Valid values of N: 1 to 5. Valid values:
         # 
-        # *   http
-        # *   telnet
-        # *   ping
+        # - http
+        # - telnet
+        # - ping.
         self.protocol = protocol
         # The callback URL. Valid values of N: 1 to 5.
         self.url = url
@@ -221,13 +221,13 @@ class PutEventRuleTargetsRequestSlsParameters(DaraModel):
         project: str = None,
         region: str = None,
     ):
-        # The ID of the recipient that receives alert notifications. Valid values of N: 1 to 5.
+        # The unique identifier of the rule target. Valid values of N: 1 to 5.
         self.id = id
-        # The name of the Simple Log Service Logstore. Valid values of N: 1 to 5.
+        # The Logstore of Simple Log Service. Valid values of N: 1 to 5.
         self.log_store = log_store
-        # The name of the Simple Log Service project. Valid values of N: 1 to 5.
+        # The project of Simple Log Service. Valid values of N: 1 to 5.
         self.project = project
-        # The region where Simple Log Service is deployed. Valid values of N: 1 to 5.
+        # The region where Simple Log Service resides. Valid values of N: 1 to 5.
         self.region = region
 
     def validate(self):
@@ -282,25 +282,25 @@ class PutEventRuleTargetsRequestOpenApiParameters(DaraModel):
     ):
         # The API name.
         self.action = action
-        # The Alibaba Cloud Resource Name (ARN) of the resource. Valid values of N: 1 to 5. Format: `arn:acs:${Service}:${Region}:${Account}:${ResourceType}/${ResourceId}`. Fields:
-        # 
-        # *   Service: the code of a cloud service
-        # *   Region: the region ID
-        # *   Account: the ID of an Alibaba Cloud account
-        # *   ResourceType: the resource type
-        # *   ResourceId: the resource ID
+        # The Alibaba Cloud Resource Name (ARN) of the resource. Valid values of N: 1 to 5.
+        # Format: `arn:acs:${Service}:${Region}:${Account}:${ResourceType}/${ResourceId}`. The fields are described as follows:
+        #   - Service: the Alibaba Cloud service.
+        #   - Region: the region ID.
+        #   - Account: the Alibaba Cloud account ID.
+        #   - ResourceType: the resource type.
+        #   - ResourceId: the resource ID.
         self.arn = arn
-        # The ID of the recipient that receives alert notifications sent by an API callback.
+        # The unique identifier of the API callback notification method.
         self.id = id
-        # The parameters of the alert callback. Specify the parameters in the JSON format.
+        # The JSON-formatted parameters of the alert callback.
         self.json_params = json_params
-        # The ID of the cloud service to which the API operation belongs.
+        # The ID of the Alibaba Cloud service to which the API belongs.
         self.product = product
         # The region where the resource resides.
         self.region = region
-        # The name of the role.
+        # The role name.
         self.role = role
-        # The version of the API.
+        # The API version.
         self.version = version
 
     def validate(self):
@@ -373,13 +373,13 @@ class PutEventRuleTargetsRequestMnsParameters(DaraModel):
         region: str = None,
         topic: str = None,
     ):
-        # The ID of the recipient that receives alert notifications. Valid values of N: 1 to 5.
+        # The unique identifier of the rule target. Valid values of N: 1 to 5.
         self.id = id
-        # The name of the SMQ queue. Valid values of N: 1 to 5.
+        # The name of the queue. Valid values of N: 1 to 5.
         self.queue = queue
-        # The region for SMQ. Valid values of N: 1 to 5.
+        # The region where Simple Message Queue (formerly MNS) resides. Valid values of N: 1 to 5.
         self.region = region
-        # The SMQ topic.
+        # The topic of Simple Message Queue (formerly MNS).
         self.topic = topic
 
     def validate(self):
@@ -430,11 +430,11 @@ class PutEventRuleTargetsRequestFcParameters(DaraModel):
     ):
         # The name of the function. Valid values of N: 1 to 5.
         self.function_name = function_name
-        # The ID of the recipient that receives alert notifications. Valid values of N: 1 to 5.
+        # The unique identifier of the rule target. Valid values of N: 1 to 5.
         self.id = id
-        # The region where Function Compute is deployed. Valid values of N: 1 to 5.
+        # The region where the Function Compute service resides. Valid values of N: 1 to 5.
         self.region = region
-        # The name of the Function Compute service. Valid values of N: 1 to 5.
+        # The service name of the Function Compute service. Valid values of N: 1 to 5.
         self.service_name = service_name
 
     def validate(self):
@@ -484,11 +484,19 @@ class PutEventRuleTargetsRequestContactParameters(DaraModel):
     ):
         # The name of the alert contact group. Valid values of N: 1 to 5.
         self.contact_group_name = contact_group_name
-        # The ID of the recipient that receives alert notifications. Valid values of N: 1 to 5.
+        # The unique identifier of the rule target. Valid values of N: 1 to 5.
         self.id = id
-        # The alert notification methods. Valid values of N: 1 to 5. Valid values:
+        # The alert notification level. Valid values of N: 1 to 5. Valid values:
         # 
-        # 4: Alert notifications are sent by using DingTalk and emails.
+        # <props="china">- 2: phone call, text message, DingTalk, and email
+        # 
+        # <props="china">- 3: text message, DingTalk, and email
+        # 
+        # <props="china">- 4: DingTalk and email
+        # 
+        # <props="intl">4: DingTalk and email
+        # 
+        # <props="partner">4: DingTalk and email.
         self.level = level
 
     def validate(self):

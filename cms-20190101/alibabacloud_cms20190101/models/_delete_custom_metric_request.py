@@ -19,7 +19,7 @@ class DeleteCustomMetricRequest(DaraModel):
         self.group_id = group_id
         # The MD5 value of the HTTP request body. The MD5 value is a 128-bit hash value used to verify the uniqueness of the reported monitoring data.
         # 
-        # >  `Md5` is returned when you query the reported monitoring data of a metric.
+        # > `Md5` is returned when you query the reported monitoring data of a metric.
         self.md_5 = md_5
         # The name of the metric.
         # 
@@ -28,7 +28,7 @@ class DeleteCustomMetricRequest(DaraModel):
         self.region_id = region_id
         # The ID of the request for reporting monitoring data.
         # 
-        # >  `UUID` is returned when you query the reported monitoring data of a metric. We recommend that you specify the `Md5` parameter.
+        # > `UUID` is returned when you query the reported monitoring data of a metric. We recommend that you specify the `Md5` parameter.
         self.uuid = uuid
 
     def validate(self):

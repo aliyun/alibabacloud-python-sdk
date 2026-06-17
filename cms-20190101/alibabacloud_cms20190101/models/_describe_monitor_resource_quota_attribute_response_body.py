@@ -113,9 +113,11 @@ class DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuota(DaraModel):
         self.site_monitor_task = site_monitor_task
         # The current edition of CloudMonitor. Valid values:
         # 
-        # *   free: Free Edition
-        # *   pro: Pro Edition
-        # *   cms_post: pay-as-you-go
+        # - free: Free Edition
+        # 
+        # - pro: Pro Edition
+        # 
+        # - cms_post: pay-as-you-go
         self.suit_info = suit_info
 
     def validate(self):

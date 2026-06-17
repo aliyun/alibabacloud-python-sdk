@@ -21,7 +21,7 @@ class DescribeMonitorGroupInstanceAttributeResponseBody(DaraModel):
     ):
         # The responses code.
         # 
-        # >  The status code 200 indicates that the request was successful.
+        # > The status code 200 indicates that the request was successful.
         self.code = code
         # The returned message.
         self.message = message
@@ -34,8 +34,9 @@ class DescribeMonitorGroupInstanceAttributeResponseBody(DaraModel):
         self.resources = resources
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         self.success = success
         # The total number of entries returned.
         self.total = total

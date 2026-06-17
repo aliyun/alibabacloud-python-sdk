@@ -10,9 +10,7 @@ class DescribeLogMonitorAttributeRequest(DaraModel):
         metric_name: str = None,
         region_id: str = None,
     ):
-        # The metric name. Exact match is supported.
-        # 
-        # For more information, see [Appendix 1: Metrics](https://help.aliyun.com/document_detail/163515.html).
+        # The name of the metric.
         # 
         # This parameter is required.
         self.metric_name = metric_name

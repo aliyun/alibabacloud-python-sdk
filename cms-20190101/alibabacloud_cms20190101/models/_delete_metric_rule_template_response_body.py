@@ -14,9 +14,9 @@ class DeleteMetricRuleTemplateResponseBody(DaraModel):
         resource: main_models.DeleteMetricRuleTemplateResponseBodyResource = None,
         success: bool = None,
     ):
-        # The status code.
+        # The HTTP status code.
         # 
-        # >  The status code 200 indicates that the request was successful.
+        # > The value 200 indicates success.
         self.code = code
         # The returned message.
         self.message = message
@@ -24,7 +24,10 @@ class DeleteMetricRuleTemplateResponseBody(DaraModel):
         self.request_id = request_id
         # The template information.
         self.resource = resource
-        # Indicates whether the request was successful. Valid values: true and false.
+        # Indicates whether the operation was successful. Valid values:
+        # 
+        # - true: The operation was successful.
+        # - false: The operation failed.
         self.success = success
 
     def validate(self):
@@ -78,7 +81,7 @@ class DeleteMetricRuleTemplateResponseBodyResource(DaraModel):
         self,
         template_id: str = None,
     ):
-        # The ID of the template.
+        # The template ID.
         self.template_id = template_id
 
     def validate(self):

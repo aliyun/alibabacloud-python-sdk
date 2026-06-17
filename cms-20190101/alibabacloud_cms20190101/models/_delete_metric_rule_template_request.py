@@ -11,7 +11,7 @@ class DeleteMetricRuleTemplateRequest(DaraModel):
         template_id: str = None,
     ):
         self.region_id = region_id
-        # The ID of the alert template.
+        # The ID of the alert rule template.
         # 
         # This parameter is required.
         self.template_id = template_id

@@ -29,12 +29,13 @@ class ModifyMetricRuleBlackListRequest(DaraModel):
         self.category = category
         # The time range within which the blacklist policy is effective. Take note of the following information:
         # 
-        # *   If you do not configure this parameter, the blacklist policy is permanently effective.
+        # - If you do not configure this parameter, the blacklist policy is permanently effective.
         # 
-        # *   If you configure this parameter, the blacklist policy is effective only within the specified time range. Examples:
+        # - If you configure this parameter, the blacklist policy is effective only within the specified time range. Examples:
         # 
-        #     *   `03:00-04:59`: The blacklist policy is effective from 03:00 to 05:00 local time. 05:00 local time is excluded.
-        #     *   `03:00-04:59 UTC+0700`: The blacklist policy is effective from 03:00 to 05:00 (UTC+7). 05:00 (UTC+7) is excluded.
+        #   - `03:00-04:59`: The blacklist policy is effective from 03:00 to 05:00 local time. 05:00 local time is excluded.
+        # 
+        #   - `03:00-04:59 UTC+0700`: The blacklist policy is effective from 03:00 to 05:00 (UTC+7). 05:00 (UTC+7) is excluded.
         self.effective_time = effective_time
         # The timestamp when the blacklist policy expires.
         # 
@@ -56,8 +57,9 @@ class ModifyMetricRuleBlackListRequest(DaraModel):
         self.instances = instances
         # The metrics of the instance.
         # 
-        # *   If you do not configure this parameter, the blacklist policy applies to all metrics of the specified cloud service.
-        # *   If you configure this parameter, the blacklist policy applies only to the current metric.
+        # - If you do not configure this parameter, the blacklist policy applies to all metrics of the specified cloud service.
+        # 
+        # - If you configure this parameter, the blacklist policy applies only to the current metric.
         self.metrics = metrics
         # The name of the blacklist policy.
         # 
@@ -72,12 +74,13 @@ class ModifyMetricRuleBlackListRequest(DaraModel):
         self.region_id = region_id
         # The effective scope of the blacklist policy. Valid values:
         # 
-        # *   USER: The blacklist policy takes effect only within the current Alibaba Cloud account.
-        # *   GROUP (default): The blacklist policy takes effect only within the specified application group. For information about how to obtain the ID of an application group, see [DescribeMonitorGroups](https://help.aliyun.com/document_detail/115032.html).
+        # - USER: The blacklist policy takes effect only within the current Alibaba Cloud account.
+        # 
+        # - GROUP (default): The blacklist policy takes effect only within the specified application group. For information about how to obtain the ID of an application group, see [DescribeMonitorGroups](https://help.aliyun.com/document_detail/115032.html).
         self.scope_type = scope_type
         # The IDs of the application groups.
         # 
-        # >  This parameter is required only when `ScopeType` is set to `GROUP`.
+        # > This parameter is required only when `ScopeType` is set to `GROUP`.
         self.scope_value = scope_value
 
     def validate(self):

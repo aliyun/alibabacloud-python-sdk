@@ -18,7 +18,7 @@ class DescribeMonitorGroupDynamicRulesResponseBody(DaraModel):
     ):
         # The responses code.
         # 
-        # >  The status code 200 indicates that the request was successful.
+        # > The status code 200 indicates that the request was successful.
         self.code = code
         # The returned message.
         self.message = message
@@ -27,8 +27,9 @@ class DescribeMonitorGroupDynamicRulesResponseBody(DaraModel):
         self.resource = resource
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         self.success = success
 
     def validate(self):

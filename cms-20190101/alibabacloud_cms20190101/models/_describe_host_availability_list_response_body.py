@@ -19,7 +19,7 @@ class DescribeHostAvailabilityListResponseBody(DaraModel):
     ):
         # The HTTP status code.
         # 
-        # >  The status code 200 indicates that the request was successful.
+        # > The status code 200 indicates that the request was successful.
         self.code = code
         # The error message.
         self.message = message
@@ -27,8 +27,9 @@ class DescribeHostAvailabilityListResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         self.success = success
         self.task_list = task_list
         # The total number of returned entries.

@@ -11,13 +11,9 @@ class DescribeTagKeyListRequest(DaraModel):
         page_size: int = None,
         region_id: str = None,
     ):
-        # The page number.
-        # 
-        # Pages start from page 1. Default value: 1.
+        # The page number. Default value: 1.
         self.page_number = page_number
         # The number of entries per page.
-        # 
-        # Maximum value: 100. Default value: 10.
         self.page_size = page_size
         self.region_id = region_id
 

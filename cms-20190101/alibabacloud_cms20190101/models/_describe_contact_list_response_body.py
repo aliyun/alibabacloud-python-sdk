@@ -17,21 +17,22 @@ class DescribeContactListResponseBody(DaraModel):
         success: bool = None,
         total: int = None,
     ):
-        # The HTTP status code.
+        # The status code.
         # 
-        # >  The status code 200 indicates that the request was successful.
+        # > 200 indicates success.
         self.code = code
         self.contacts = contacts
-        # The error message returned.
+        # The error message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the operation was successful. Valid values:
         # 
-        # *   true: The request was successful.
-        # *   false: The request failed.
+        # - true: Successful.
+        # 
+        # - false: Failed.
         self.success = success
-        # The total number of entries returned.
+        # The total number of records.
         self.total = total
 
     def validate(self):

@@ -27,8 +27,9 @@ class DescribeMetricRuleTemplateListResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         self.success = success
         self.templates = templates
         # The total number of entries returned.

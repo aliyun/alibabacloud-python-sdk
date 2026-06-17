@@ -15,7 +15,7 @@ class DeleteGroupMonitoringAgentProcessRequest(DaraModel):
         # 
         # This parameter is required.
         self.group_id = group_id
-        # The ID of the process monitoring task.
+        # The ID of the group process.
         # 
         # This parameter is required.
         self.id = id

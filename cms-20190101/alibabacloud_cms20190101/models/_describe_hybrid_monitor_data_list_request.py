@@ -32,7 +32,7 @@ class DescribeHybridMonitorDataListRequest(DaraModel):
         self.period = period
         # The metric name.
         # 
-        # >  PromQL statements are supported.
+        # > PromQL statements are supported.
         # 
         # This parameter is required.
         self.prom_sql = prom_sql

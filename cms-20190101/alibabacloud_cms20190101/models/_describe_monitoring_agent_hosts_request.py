@@ -19,48 +19,56 @@ class DescribeMonitoringAgentHostsRequest(DaraModel):
         status: str = None,
         sysom_status: str = None,
     ):
-        # Specifies whether to query Elastic Compute Service (ECS) instances that are provided by Alibaba Cloud or to query hosts that are not provided by Alibaba Cloud. Valid values:
+        # Specifies whether to filter for Alibaba Cloud Elastic Compute Service (ECS) instances. Valid values:
         # 
-        # *   true (default value): queries all the ECS instances that are provided by Alibaba Cloud.
-        # *   false: queries all the hosts that are not provided by Alibaba Cloud.
+        # - true (default): Returns only ECS instances.
+        # 
+        # - false: Returns only hosts that are not ECS instances.
         self.aliyun_host = aliyun_host
-        # The name of the host.
+        # The hostname.
         self.host_name = host_name
-        # The ID of the instance.
+        # The instance ID.
         self.instance_ids = instance_ids
-        # The region ID of the instance.
+        # The region where the instance resides.
         self.instance_region_id = instance_region_id
-        # The keyword that is used in fuzzy match.
+        # The keyword for a fuzzy search.
         self.key_word = key_word
-        # The number of the page to return.
+        # The page number.
         self.page_number = page_number
         # The number of entries to return on each page. Valid values:
         # 
-        # *   10
-        # *   20
-        # *   50
-        # *   100
+        # - 10
         # 
-        # > Although Alibaba Cloud does not limit the maximum value of this parameter, we recommend that you do not set it to an excessively large value. If you set it to an excessively large value, a timeout error may occur.
+        # - 20
+        # 
+        # - 50
+        # 
+        # - 100
+        # 
+        # > Alibaba Cloud does not limit the maximum value of this parameter. However, setting this parameter to a large value may cause a timeout.
         self.page_size = page_size
         self.region_id = region_id
         # The serial number of the host.
         # 
-        # After the CloudMonitor agent is installed on a host, a globally unique serial number is generated. A host that is not provided by Alibaba Cloud has a serial number instead of an instance ID.
+        # A globally unique serial number is generated after the CloudMonitor agent is successfully installed on a host. Hosts that are not Alibaba Cloud instances do not have an instance ID, but have a serial number.
         # 
-        # > This parameter can be used to accurately search for a monitored host.
+        # > Use this parameter to find a specific monitored host.
         self.serial_numbers = serial_numbers
-        # The status of the hosts that you want to query. Valid values:
+        # The status of the host. Valid values:
         # 
-        # *   Running: queries the hosts that are running.
-        # *   Stopped: queries the hosts that are stopped, are not installed, or fail to be installed.
+        # - Running: The host is running.
+        # 
+        # - Stopped: The host is stopped, the agent is not installed, or the agent installation failed.
         self.status = status
         # The status of SysOM. Valid values:
         # 
-        # *   installing: SysOM is being installed.
-        # *   running: SysOM is running.
-        # *   stopped: SysOM is stopped.
-        # *   uninstalling: SysOM is being uninstalled.
+        # - installing: SysOM is being enabled.
+        # 
+        # - running: SysOM is running.
+        # 
+        # - stopped: SysOM is stopped.
+        # 
+        # - uninstalling: SysOM is being disabled.
         self.sysom_status = sysom_status
 
     def validate(self):

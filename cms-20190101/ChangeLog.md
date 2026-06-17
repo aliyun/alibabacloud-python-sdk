@@ -1,3 +1,7 @@
+2026-06-17 Version: 4.0.10
+- Update API DescribeMetricRuleList: add response parameters Body.Alarms.$.SendOK.
+
+
 2026-05-18 Version: 4.0.9
 - Update API PutResourceMetricRule: add request parameters SendOK.
 - Update API PutResourceMetricRules: add request parameters Rules.$.SendOK.

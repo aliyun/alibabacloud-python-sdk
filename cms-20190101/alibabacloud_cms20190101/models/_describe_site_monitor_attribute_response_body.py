@@ -17,21 +17,21 @@ class DescribeSiteMonitorAttributeResponseBody(DaraModel):
         site_monitors: main_models.DescribeSiteMonitorAttributeResponseBodySiteMonitors = None,
         success: bool = None,
     ):
-        # The response code.
-        # 
-        # >  The status code 200 indicates that the request was successful.
+        # The status code.
+        # >The value 200 indicates success.
         self.code = code
         # The returned message.
         self.message = message
         self.metric_rules = metric_rules
         # The request ID.
         self.request_id = request_id
-        # The details of the site monitoring task.
+        # The details of the monitoring task.
         self.site_monitors = site_monitors
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the operation was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: Successful.
+        # 
+        # - false: Failed.
         self.success = success
 
     def validate(self):
@@ -104,31 +104,34 @@ class DescribeSiteMonitorAttributeResponseBodySiteMonitors(DaraModel):
         task_type: str = None,
         vpc_config: main_models.DescribeSiteMonitorAttributeResponseBodySiteMonitorsVpcConfig = None,
     ):
-        # The URL that is monitored by the site monitoring task.
+        # The monitored address of the monitoring task.
         self.address = address
-        # The type of the detection point. Default value: PC. Valid values:
-        # - PC
-        # - MOBILE
+        # The type of detection point. Default value: PC.
+        # Valid values:
+        # 
+        # - PC: wired network.
+        # 
+        # - MOBILE: mobile network.
         self.agent_group = agent_group
-        # The custom detection cycle. You can specify only a time range within a week (from Monday to Sunday).
+        # The custom monitoring schedule. You can select a time range from Monday to Sunday for monitoring.
         self.custom_schedule = custom_schedule
-        # The interval at which the site monitoring task is executed. Unit: minutes. Valid values: 1, 5, 15, 30, and 60.
+        # The monitoring interval. Unit: minutes. Valid values: 1, 5, 15, 30, and 60.
         self.interval = interval
         self.isp_cities = isp_cities
-        # The extended options of the site monitoring task. The options vary based on the specified protocol. For more information, see [CreateSiteMonitor](https://help.aliyun.com/document_detail/115048.html).
+        # The extended options. Each monitoring type has different extended options. For more information, see [CreateSiteMonitor](https://help.aliyun.com/document_detail/115048.html).
         self.option_json = option_json
-        # The ID of the site monitoring task.
+        # The ID of the monitoring task.
         self.task_id = task_id
-        # The name of the site monitoring task.
+        # The name of the monitoring task.
         self.task_name = task_name
-        # The status of the site monitoring task. Valid values:
+        # The status of the monitoring task. Valid values:
         # 
-        # *   1: The task is enabled.
-        # *   2: The task is disabled.
+        # - 1: Enabled.
+        # - 2: Disabled.
         self.task_state = task_state
-        # The protocol that is used by the site monitoring task. Valid values: HTTP, HTTPS, PING, TCP, UDP, DNS, SMTP, POP3, and FTP.
+        # The type of the monitoring task. Site monitoring task types include HTTP(S), PING, TCP, UDP, DNS, SMTP, POP3, and FTP.
         self.task_type = task_type
-        # The VPC configurations of the synthetic test task.
+        # The VPC configuration for the internal network monitoring task.
         self.vpc_config = vpc_config
 
     def validate(self):
@@ -230,13 +233,13 @@ class DescribeSiteMonitorAttributeResponseBodySiteMonitorsVpcConfig(DaraModel):
         vpc_id: str = None,
         vswitch_id: str = None,
     ):
-        # The region of the website for synthetic monitoring.
+        # The region where the target site of the internal network monitoring task is located.
         self.region = region
-        # The ID of the security group.
+        # The ID of the security group associated with the internal network monitoring task.
         self.security_group_id = security_group_id
-        # The ID of the VPC used by the synthetic test task.
+        # The ID of the VPC associated with the internal network monitoring task.
         self.vpc_id = vpc_id
-        # The ID of the vSwitch used by the synthetic test task.
+        # The ID of the vSwitch associated with the internal network monitoring task.
         self.vswitch_id = vswitch_id
 
     def validate(self):
@@ -347,153 +350,173 @@ class DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson(DaraModel):
         wait_time_after_completion: int = None,
     ):
         self.assertions = assertions
-        # The number of retries after a DNS failure occurred.
+        # The number of retries after a DNS failure.
         self.attempts = attempts
+        # The authentication information.
         self.auth_info = auth_info
         self.blocked_url_list = blocked_url_list
         self.browser_headers = browser_headers
         self.browser_hosts = browser_hosts
         self.browser_info = browser_info
-        # Indicates whether certificate errors are ignored. Valid values:
-        # - false: Certificate errors are not ignored.
-        # - true: Certificate errors are ignored.
+        # Specifies whether to ignore certificate errors. Valid values:
+        # 
+        # - false: Does not ignore certificate errors.
+        # - true: Ignores certificate errors.
         self.browser_insecure = browser_insecure
-        # The version of the browser test task. Valid values:
-        # - 1: browser test for a single page
-        # - 2: browser test for multiple pages
+        # The browser monitoring version. Valid values:
+        # 
+        # - 1: Single-page monitoring.
+        # - 2: Multi-page monitoring.
         self.browser_task_version = browser_task_version
         self.config_variables = config_variables
-        # The cookie of the HTTP request.
+        # The cookie for the HTTP request.
         self.cookie = cookie
-        # Indicates whether the automatic MTR diagnostics feature is enabled for a failed task. Valid values:
-        # - false: The automatic MTR diagnostics feature is disabled for a failed task.
-        # - true: The automatic MTR diagnostics feature is enabled for a failed task.
+        # Specifies whether to enable automatic MTR network diagnostics after a task failure. Valid values:
+        # - false: Disabled.
+        # - true: Enabled.
         self.diagnosis_mtr = diagnosis_mtr
-        # Indicates whether the automatic ping latency detection feature is enabled for a failed task. Valid values:
-        # - false: The automatic ping latency detection feature is disabled for a failed task.
-        # - true: The automatic ping latency detection feature is enabled for a failed task.
+        # Specifies whether to enable automatic PING network latency detection after a task failure. Valid values:
+        # - false: Disabled.
+        # - true: Enabled.
         self.diagnosis_ping = diagnosis_ping
-        # The DNS hijack whitelist.
+        # The DNS hijacking configuration list.
         self.dns_hijack_whitelist = dns_hijack_whitelist
-        # The relationship between the list of expected aliases or IP addresses and the list of DNS results. Valid values:
+        # The DNS matching rule. Valid values:
         # 
-        # *   IN_DNS: The list of expected values is a subset of the list of DNS results.
-        # *   DNS_IN: The list of DNS results is a subset of the list of expected values.
-        # *   EQUAL: The list of DNS results is the same as the list of expected values.
-        # *   ANY: The list of DNS results intersects with the list of expected values.
+        # - IN_DNS: The expected aliases or IP addresses are all included in the DNS response.
+        # - DNS_IN: All DNS responses are included in the expected aliases or IP addresses.
+        # - EQUAL: The DNS response exactly matches the expected aliases or IP addresses.
+        # - ANY: The DNS response and the expected aliases or IP addresses have an intersection.
         self.dns_match_rule = dns_match_rule
         # The IP address of the DNS server.
         # 
-        # >  This parameter is returned only if the TaskType parameter is set to DNS.
+        # > This parameter applies only to the DNS monitoring type.
         self.dns_server = dns_server
-        # The type of the DNS record. This parameter is returned only if the TaskType parameter is set to DNS. Valid values:
-        # 
-        # *   A (default): a record that specifies an IP address related to the specified host name or domain name.
-        # *   CNAME: a record that maps multiple domain names to a domain name.
-        # *   NS: a record that specifies a DNS server used to parse domain names.
-        # *   MX: a record that links domain names to the address of a mail server.
-        # *   TXT: a record that stores the text information of host name or domain names. The text must be 1 to 512 bytes in length. The TXT record serves as a Sender Policy Framework (SPF) record to fight against spam.
+        # The DNS resolution type. This parameter applies only to the DNS monitoring type. Valid values:
+        # - A: Specifies the IP address corresponding to a hostname or domain name.
+        # - CNAME: Maps multiple domain names to another domain name.
+        # - NS: Specifies the DNS server that resolves a domain name.
+        # - MX: Points a domain name to a mail server address.
+        # - TXT: A description of the hostname or domain name. The text length is limited to 512 bytes and is typically used for SPF (Sender Policy Framework) records for anti-spam purposes.
         self.dns_type = dns_type
-        # Indicates whether the WebSocket task is allowed to return no response or return an empty response. Default value: false. Valid values: false and true.
+        # Specifies whether the WebSocket task is allowed to return no message or an empty message. Valid values:
+        # - false (default): Not allowed.
+        # - true: Allowed.
         self.empty_message = empty_message
+        # Specifies whether to enable packet capture for this task.
         self.enable_packet_capture = enable_packet_capture
         self.expect_exist_string = expect_exist_string
         self.expect_non_exist_string = expect_non_exist_string
-        # The domain name or alias to be parsed.
+        # The alias or address to be resolved.
         # 
-        # >  This parameter is returned only if the TaskType parameter is set to DNS.
+        # > This parameter applies only to the DNS monitoring type.
         self.expect_value = expect_value
         # The packet loss rate.
         # 
-        # >  This parameter is returned only if the TaskType parameter is set to PING.
+        # > This parameter applies only to the PING monitoring type.
         self.failure_rate = failure_rate
-        # The header of the HTTP request.
+        # The HTTP request header.
         self.header = header
-        # The number of hops to perform traceroute diagnostics if the PING task fails.
+        # The number of hops for traceroute diagnostics when a PING task fails.
         self.hops = hops
-        # The custom hosts for the HTTP test task. Format: ip1,ip2:address. You can specify values in multiple lines. Specify the A record or CNAME record that can be resolved by the domain name at the left of the colon. Separate multiple records with commas (,). Specify the domain name at the right of the colon.
+        # The custom host for HTTP tasks. The format is ip1,ip2:address. Multiple mappings can be configured. The left side of the colon contains A records or CNAMEs that the domain name can be resolved to, separated by commas. The right side of the colon is the domain name.
         self.host_binding = host_binding
-        # The host binding type. Valid values: 0 and 1. 0 indicates random. 1 indicates polling.
+        # Specifies how the custom host takes effect. Valid values: 0 (random) and 1 (round-robin).
         self.host_binding_type = host_binding_type
         # The HTTP request method. Valid values:
-        # 
-        # *   get
-        # *   post
-        # *   head
+        # - get 
+        # - post
+        # - head.
         self.http_method = http_method
-        # The timeout period of a PING task that uses ICMP. Unit: milliseconds.
+        # The timeout period for a single PING request using the ICMP protocol. Unit: milliseconds.
         self.icmp_timeout_millis = icmp_timeout_millis
-        # ip_network indicates the network type of the task. Valid values: v4, v6, and auto. Default value: v4.
+        # The network type of the task. Valid values: v4, v6, and auto. Default value: v4.
         self.ip_network = ip_network
-        # Indicates whether to perform Base64 decoding and then store the password. Valid values: true and false.
+        # Specifies whether to decode and store the password using Base64. Valid values:
+        # - true: The password is decoded and stored using Base64.
+        # - false: The password is not decoded and stored using Base64.
         self.is_base_64encode = is_base_64encode
-        # Indicates whether the alert rule is included. Valid values:
-        # 
-        # *   0: The alert rule is included.
-        # *   1: The alert rule is excluded.
+        # Specifies whether alert rules are included. Valid values:
+        # - 0: Yes.
+        # - 1: No.
         self.match_rule = match_rule
+        # The maximum TLS version.
         self.max_tls_version = max_tls_version
-        # The minimum TLS version. By default, TLS 1.2 and later versions are supported. TLS 1.0 and 1.1 are disabled. If you still require TLS 1.0 or 1.1, you can change the configuration.
+        # The minimum TLS version. TLS 1.2 and later are supported by default. TLS 1.0 and 1.1 are disabled. To support these versions, modify the configuration.
         self.min_tls_version = min_tls_version
-        # The password of the SMTP, POP3, or FTP protocol.
+        # The password for SMTP, POP3, or FTP monitoring types.
         self.password = password
-        # The heartbeat of the PING protocol.
+        # The number of PING packets for the PING monitoring type.
         self.ping_num = ping_num
-        # The port number for TCP pings.
+        # The PING port. This parameter applies to TCP PING.
         self.ping_port = ping_port
         # The PING protocol type. Valid values:
         # 
-        # *   icmp
-        # *   tcp
-        # *   udp
+        # - icmp
+        # 
+        # - tcp
+        # 
+        # - udp.
         self.ping_type = ping_type
-        # The port number of the TCP, UDP, SMTP, or POP3 protocol.
+        # The port for TCP, UDP, SMTP, or POP3 monitoring types.
         self.port = port
+        # The certificate file name of the private certificate.
         self.private_crt_file_name = private_crt_file_name
-        # The protocol that is used to send the request.
+        # The monitoring protocol.
         self.protocol = protocol
-        # Indicates whether the Quick UDP Internet Connections (QUIC) protocol is used for browser detection. Valid values: true false Default value: false.
+        # Specifies whether the browser monitoring task uses the QUIC protocol. Valid values:
+        # - true: Uses the QUIC protocol.
+        # - false: Does not use the QUIC protocol.
+        # Default value: false.
         self.quic_enabled = quic_enabled
         self.quic_target = quic_target
-        # The content of the HTTP request.
+        # The request content for the HTTP monitoring type.
         self.request_content = request_content
-        # The format of the HTTP request. Valid values:
-        # 
-        # *   hex: hexadecimal
-        # *   txt: text
+        # The format of the HTTP request content. Valid values:
+        # - hex: hexadecimal.
+        # - txt: text.
         self.request_format = request_format
-        # The response to the HTTP request.
+        # The expected response content to match.
         self.response_content = response_content
-        # The format of the HTTP response. Valid values:
-        # 
-        # *   hex: hexadecimal
-        # *   txt: text
+        # The format of the HTTP response content. Valid values:
+        # - hex: hexadecimal.
+        # - txt: text.
         self.response_format = response_format
-        # The number of retries for failed detections.
+        # The number of retries after a monitoring failure.
         self.retry_delay = retry_delay
+        # This parameter takes effect for SMTP monitoring tasks. Set this parameter to 1 to use a secure connection. Default value: 0.
         self.safe_link = safe_link
-        # Indicates whether page screenshot is enabled.
+        # Specifies whether to enable page screenshots.
         self.screen_shot = screen_shot
-        # Indicates whether to scroll to the bottom of the page after opening the page. This parameter is valid for a browser test task.
+        # For browser monitoring tasks, specifies whether to scroll to the bottom of the page after it is opened.
         self.scroll_end = scroll_end
+        # The Server Name Indication (SNI).
         self.server_name = server_name
         self.steps = steps
-        # Indicates whether to allow the loading failures of some page elements. Valid values: false and true.
         self.strict_mode = strict_mode
+        # The supported cipher suites.
         self.supported_cipher_suits = supported_cipher_suits
         # The timeout period. Unit: milliseconds.
         self.time_out = time_out
+        # The deployment region of the target application when integrating with Managed Service for OpenTelemetry.
         self.trace_region = trace_region
+        # Settings for the Tracing Analysis protocol used when integrating with Managed Service for OpenTelemetry.
+        # Valid values:
+        # - OpenTelemetry
+        # - Zipkin
+        # - Jaeger.
         self.trace_type = trace_type
         self.traffic_hijack_element_blacklist = traffic_hijack_element_blacklist
-        # When redirection occurs, if the browser loads more than the specified number of resources, traffic hijacking is considered to have occurred. If you set the value to 0, no validation is performed. Default value: 0.
+        # When a redirect occurs, if the number of resources loaded by the browser exceeds this value, traffic hijacking is considered to have occurred. When this value is 0, no verification is performed. Default value: 0.
         self.traffic_hijack_element_count = traffic_hijack_element_count
         self.traffic_hijack_element_whitelist = traffic_hijack_element_whitelist
+        # Specifies whether to use a private certificate.
         self.use_private_crt = use_private_crt
+        # Specifies whether to use an SSL connection when performing a TCP task.
         self.use_ssl = use_ssl
-        # The username of the FTP, SMTP, or POP3 protocol.
+        # The username for FTP, SMTP, or POP3.
         self.username = username
-        # The additional waiting time after a page is opened in a browser test task.
+        # The additional wait time after the page is opened in a browser monitoring task.
         self.wait_time_after_completion = wait_time_after_completion
 
     def validate(self):
@@ -1591,23 +1614,40 @@ class DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonAuthInfo(Dar
         username: str = None,
         with_addon_resources: bool = None,
     ):
+        # Supported only in multi-step monitoring. The AccessKey ID used for Alibaba Cloud authentication. We recommend that you use encrypted storage.
         self.access_key_id = access_key_id
+        # Supported only in multi-step monitoring. The AccessKey secret used for Alibaba Cloud authentication. We recommend that you use encrypted storage.
         self.access_key_secret = access_key_secret
+        # Supported only in multi-step monitoring. The API action of the request when using Alibaba Cloud operations.
         self.api_action = api_action
+        # Supported only in multi-step monitoring. The API version of the request when using Alibaba Cloud operations.
         self.api_version = api_version
+        # The OAuth 2.0 authentication style. Valid values: ROA and RPC.
         self.auth_style = auth_style
+        # The client ID used for client authentication in OAuth 2.0.
         self.client_id = client_id
+        # The client secret used for client authentication in OAuth 2.0.
         self.client_secret = client_secret
+        # The grant type used in OAuth 2.0 authentication. Valid values: client_credentials and password.
         self.grant_type = grant_type
+        # The password used for HTTP Basic Authentication.
         self.password = password
+        # Supported only in multi-step monitoring. The region ID of the request when using Alibaba Cloud authentication.
         self.region_id = region_id
         self.scopes = scopes
+        # The service name of the request when using AWS authentication.
         self.service_name = service_name
+        # The session token used for AWS authentication.
         self.session_token = session_token
+        # The authorization server URL in OAuth 2.0.
         self.token_url = token_url
+        # The authentication type. HTTP Basic Authentication is supported. Valid values: basic.
         self.type = type
+        # Specifies whether the key is stored in the client cookie for digest authentication.
         self.use_cookie_session_key = use_cookie_session_key
+        # The username used for HTTP Basic Authentication.
         self.username = username
+        # Supported only in multi-step monitoring. Specifies whether additional resources exist when using Alibaba Cloud authentication for this step.
         self.with_addon_resources = with_addon_resources
 
     def validate(self):
@@ -1950,11 +1990,15 @@ class DescribeSiteMonitorAttributeResponseBodySiteMonitorsCustomSchedule(DaraMod
         time_zone: str = None,
     ):
         self.days = days
-        # The end time of the detection. Unit: hours.
+        # The custom monitoring end time.
+        # 
+        # Unit: hours.
         self.end_hour = end_hour
-        # The start time of the detection. Unit: hours.
+        # The custom monitoring start time.
+        # 
+        # Unit: hours.
         self.start_hour = start_hour
-        # The time zone of the detection.
+        # The time zone for custom monitoring.
         self.time_zone = time_zone
 
     def validate(self):

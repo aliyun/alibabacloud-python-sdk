@@ -20,27 +20,28 @@ class ModifyHybridMonitorTaskRequest(DaraModel):
     ):
         # The tags of the metric.
         self.attach_labels = attach_labels
-        # The collection period of the metric. Valid values:
+        # The collection interval of the metric. Valid values:
         # 
-        # *   15
-        # *   60
+        # - 15
+        # 
+        # - 60
         # 
         # Unit: seconds.
         self.collect_interval = collect_interval
-        # The description of the metric import task.
+        # The description of the monitoring task.
         self.description = description
         self.region_id = region_id
-        # The configurations of the logs that are imported from Simple Log Service.
+        # The SLS log configuration.
         self.slsprocess_config = slsprocess_config
-        # The ID of the metric import task.
+        # The monitoring task ID.
         # 
-        # For information about how to obtain the ID of a metric import task, see [DescribeHybridMonitorTaskList](https://help.aliyun.com/document_detail/428624.html).
+        # For information about how to obtain the monitoring task ID, see [DescribeHybridMonitorTaskList](https://help.aliyun.com/document_detail/428624.html).
         # 
         # This parameter is required.
         self.task_id = task_id
-        # The name of the metric import task.
+        # The monitoring task name.
         # 
-        # For information about how to obtain the ID of a metric import task, see [DescribeHybridMonitorTaskList](https://help.aliyun.com/document_detail/428624.html).
+        # For information about how to obtain the monitoring task ID, see [DescribeHybridMonitorTaskList](https://help.aliyun.com/document_detail/428624.html).
         self.task_name = task_name
 
     def validate(self):
@@ -118,11 +119,11 @@ class ModifyHybridMonitorTaskRequestSLSProcessConfig(DaraModel):
         group_by: List[main_models.ModifyHybridMonitorTaskRequestSLSProcessConfigGroupBy] = None,
         statistics: List[main_models.ModifyHybridMonitorTaskRequestSLSProcessConfigStatistics] = None,
     ):
-        # The extended fields that specify the results of basic operations performed on aggregation results.
+        # The arithmetic operation result of the extended field in the SLS log statistics result.
         self.express = express
-        # The conditions that are used to filter logs imported from Simple Log Service.
+        # The filter conditions for parameters in the SLS log.
         self.filter = filter
-        # The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL.
+        # Aggregates data by spatial dimension, which is equivalent to GROUP BY in SQL.
         self.group_by = group_by
         # None.
         self.statistics = statistics
@@ -203,32 +204,32 @@ class ModifyHybridMonitorTaskRequestSLSProcessConfigStatistics(DaraModel):
         parameter_2: str = None,
         slskey_name: str = None,
     ):
-        # The alias of the aggregation result.
+        # The alias of the SLS log statistics result.
         self.alias = alias
-        # The function that is used to aggregate the log data of a statistical period. Valid values:
-        # 
-        # *   count: counts the number.
-        # *   sum: calculates the total value.
-        # *   avg: calculates the average value.
-        # *   max: calculates the maximum value.
-        # *   min: calculates the minimum value.
-        # *   value: collects samples within the statistical period.
-        # *   countps: calculates the number of values of the specified field divided by the total number of seconds within the statistical period.
-        # *   sumps: calculates the sum of the values of the specified field divided by the total number of seconds within the statistical period.
-        # *   distinct: calculates the number of unique values of the specified field within the statistical period.
-        # *   distribution: calculates the number of logs that meet a specified condition within the statistical period.
-        # *   percentile: sorts the values of the specified field in ascending order, and then returns the value that is at the specified percentile within the statistical period. Example: P50.
+        # The statistical method used to aggregate log data within a statistical period. Valid values:
+        # - count: counts the number of occurrences.
+        # - sum: calculates the sum.
+        # - avg: calculates the average.
+        # - max: returns the maximum value.
+        # - min: returns the minimum value.
+        # - value: samples within the period.
+        # - countps: calculates the per-second average of the count for the specified field within the statistical period.
+        # - sumps: calculates the per-second average of the sum for the specified field within the statistical period.
+        # - distinct: calculates the number of occurrences of the specified field after deduplication within the statistical period.
+        # - distribution: calculates the number of occurrences of field values within a specified range.
+        # - percentile: calculates the distribution value of field values, such as P50.
         self.function = function
-        # The value of the function that is used to aggregate logs imported from Simple Log Service.
+        # The statistical value of the SLS log.
         # 
-        # *   If the `Function` parameter is set to `distribution`, this parameter specifies the lower limit of the statistical interval. For example, if you want to calculate the number of HTTP requests whose status code is 2XX, set this parameter to 200.
-        # *   If the `Function` parameter is set to `percentile`, this parameter specifies the percentile at which the expected value is. For example, 0.5 specifies P50.
+        # - If `Function` is set to `distribution`, this parameter specifies the lower limit of the statistical range. For example, to count the number of 2XX HTTP status codes, set this parameter to 200.
+        # 
+        # - If `Function` is set to `percentile`, this parameter specifies the percentile of the statistical distribution. For example, 0.5 indicates P50.
         self.parameter_1 = parameter_1
-        # The value of the function that is used to aggregate logs imported from Simple Log Service.
+        # The statistical value of the SLS log.
         # 
-        # >  This parameter is required only if the `Function` parameter is set to `distribution`. This parameter specifies the upper limit of the statistical interval. For example, if you want to calculate the number of HTTP requests whose status code is 2XX, set this parameter to 299.
+        # > This parameter is required only when `Function` is set to `distribution`. It specifies the upper limit of the statistical range. For example, to count the number of 2XX HTTP status codes, set this parameter to 299.
         self.parameter_2 = parameter_2
-        # The name of the key that is used to aggregate logs imported from Simple Log Service.
+        # The name of the parameter for SLS log statistics.
         self.slskey_name = slskey_name
 
     def validate(self):
@@ -281,9 +282,9 @@ class ModifyHybridMonitorTaskRequestSLSProcessConfigGroupBy(DaraModel):
         alias: str = None,
         slskey_name: str = None,
     ):
-        # The alias of the aggregation result.
+        # The alias of the SLS log statistics result.
         self.alias = alias
-        # The name of the key that is used to aggregate logs imported from Simple Log Service.
+        # The name of the parameter for SLS log statistics.
         self.slskey_name = slskey_name
 
     def validate(self):
@@ -322,8 +323,8 @@ class ModifyHybridMonitorTaskRequestSLSProcessConfigFilter(DaraModel):
         self.filters = filters
         # The relationship between multiple filter conditions. Valid values:
         # 
-        # *   and (default): Logs are processed only if all filter conditions are met.
-        # *   or: Logs are processed if one of the filter conditions is met.
+        # - and (default): Logs are processed only when all filter conditions are met.
+        # - or: Logs are processed when any filter condition is met.
         self.relation = relation
 
     def validate(self):
@@ -367,20 +368,19 @@ class ModifyHybridMonitorTaskRequestSLSProcessConfigFilterFilters(DaraModel):
         slskey_name: str = None,
         value: str = None,
     ):
-        # The method that is used to filter logs imported from Simple Log Service. Valid values:
-        # 
-        # *   `contain`: contains
-        # *   `notContain`: does not contain
-        # *   `>`: greater than
-        # *   `<`: less than
-        # *   `=`: equal to
-        # *   `! =`: not equal to
-        # *   `>=`: greater than or equal to
-        # *   `<=`: less than or equal to
+        # The method used to filter parameter values in the SLS log. Valid values:
+        # - `contain`: contains.
+        # - `notContain`: does not contain.
+        # - `>`: greater than.
+        # - `<`: less than.
+        # - `=`: equal to.
+        # - `!=`: not equal to.
+        # - `>=`: greater than or equal to.
+        # - `<=`: less than or equal to.
         self.operator = operator
-        # The name of the key that is used to filter logs imported from Simple Log Service.
+        # The name of the parameter to filter in the SLS log.
         self.slskey_name = slskey_name
-        # The value of the key that is used to filter logs imported from Simple Log Service.
+        # The filter value of the parameter in the SLS log.
         self.value = value
 
     def validate(self):
@@ -421,9 +421,9 @@ class ModifyHybridMonitorTaskRequestSLSProcessConfigExpress(DaraModel):
         alias: str = None,
         express: str = None,
     ):
-        # The alias of the extended field that specifies the result of basic operations performed on aggregation results.
+        # The alias of the arithmetic operation result of the extended field in the SLS log statistics result.
         self.alias = alias
-        # The extended field that specifies the result of basic operations performed on aggregation results.
+        # The arithmetic operation result of the extended field in the SLS log statistics result.
         self.express = express
 
     def validate(self):

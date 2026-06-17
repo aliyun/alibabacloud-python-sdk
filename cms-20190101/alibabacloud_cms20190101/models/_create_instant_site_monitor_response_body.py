@@ -16,19 +16,21 @@ class CreateInstantSiteMonitorResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
-        # The error code.
+        # The status code.
         # 
-        # > The status code 200 indicates that the call was successful.
+        # > A value of 200 indicates that the call is successful.
         self.code = code
-        # The results for creating the instant test task.
+        # The results of the one-time detection task.
         self.create_result_list = create_result_list
         # The returned message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # *   true: The request was successful.
-        # *   false: The request failed.
+        # Indicates whether the operation was successful. Valid values:
+        # 
+        # - true: The operation was successful.
+        # 
+        # - false: The operation failed.
         self.success = success
 
     def validate(self):
@@ -89,9 +91,9 @@ class CreateInstantSiteMonitorResponseBodyCreateResultList(DaraModel):
         task_id: str = None,
         task_name: str = None,
     ):
-        # The ID of the instant test task.
+        # The ID of the detection task.
         self.task_id = task_id
-        # The name of the instant test task.
+        # The name of the detection task.
         self.task_name = task_name
 
     def validate(self):

@@ -13,20 +13,20 @@ class DescribeSiteMonitorStatisticsResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
-        # The responses code.
-        # 
-        # >  The status code 200 indicates that the request was successful.
+        # The HTTP status code.
+        # > The value 200 indicates that the call is successful.
         self.code = code
-        # The statistics.
+        # The statistical result.
         self.data = data
         # The returned message.
         self.message = message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the call is successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: The call is successful.
+        # 
+        # - false: The call failed.
         self.success = success
 
     def validate(self):

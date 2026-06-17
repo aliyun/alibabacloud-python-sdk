@@ -18,7 +18,7 @@ class DescribeMonitorGroupCategoriesResponseBody(DaraModel):
     ):
         # The HTTP status code.
         # 
-        # >  The status code 200 indicates that the request was successful.
+        # > The status code 200 indicates that the request was successful.
         self.code = code
         # The error message returned.
         self.message = message
@@ -28,8 +28,9 @@ class DescribeMonitorGroupCategoriesResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   true: The request was successful.
-        # *   false: The request failed.
+        # - true: The request was successful.
+        # 
+        # - false: The request failed.
         self.success = success
 
     def validate(self):

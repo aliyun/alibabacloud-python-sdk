@@ -21,7 +21,7 @@ class DescribeLogMonitorListResponseBody(DaraModel):
     ):
         # The status code.
         # 
-        # >  The status code 200 indicates that the request was successful.
+        # > The status code 200 indicates that the request was successful.
         self.code = code
         # The log monitoring metrics.
         self.log_monitor_list = log_monitor_list
@@ -35,8 +35,9 @@ class DescribeLogMonitorListResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         self.success = success
         # The total number of entries returned.
         self.total = total
@@ -144,8 +145,9 @@ class DescribeLogMonitorListResponseBodyLogMonitorList(DaraModel):
         self.value_filter = value_filter
         # The logical operator that is used between log filter conditions. The ValueFilter and ValueFilterRelation parameters are used in pair. Valid values:
         # 
-        # *   and
-        # *   or
+        # - and
+        # 
+        # - or
         self.value_filter_relation = value_filter_relation
 
     def validate(self):
@@ -235,12 +237,17 @@ class DescribeLogMonitorListResponseBodyLogMonitorListValueFilter(DaraModel):
         self.key = key
         # The method that is used to match the field value. Valid values:
         # 
-        # *   contain: contains
-        # *   notContain: does not contain
-        # *   `>`: greater than
-        # *   `<`: less than
-        # *   `>=`: greater than or equal to
-        # *   `<=`: less than or equal to
+        # - contain: contains
+        # 
+        # - notContain: does not contain
+        # 
+        # - `>`: greater than
+        # 
+        # - `<`: less than
+        # 
+        # - `>=`: greater than or equal to
+        # 
+        # - `<=`: less than or equal to
         self.operator = operator
         # The field value to be matched in the filter condition.
         self.value = value

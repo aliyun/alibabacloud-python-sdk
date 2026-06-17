@@ -22,13 +22,15 @@ class DescribeMetricLastRequest(DaraModel):
         # 
         # Set the value to a collection of `key:value` pairs. Example: `{"userId":"120886317861****"}` or `{"instanceId":"i-2ze2d6j5uhg20x47****"}`.
         # 
-        # >  You can query a maximum of 50 instances in each request.
+        # > You can query a maximum of 50 instances in each request.
         self.dimensions = dimensions
         # The end of the time range to query monitoring data.
         # 
-        # *   For second-level data, the start time is obtained by comparing the time that is specified by the StartTime parameter and 20 minutes earlier of the time that is specified by the EndTime parameter. The earlier one of the compared points in time is used as the start time.
-        # *   For minute-level data, the start time is obtained by comparing the time that is specified by the StartTime parameter and 2 hours earlier of the time that is specified by the EndTime parameter. The earlier one of the compared points in time is used as the start time.
-        # *   For hour-level data, the start time is obtained by comparing the time that is specified by the StartTime parameter and two days earlier of the time that is specified by the EndTime parameter. The earlier one of the compared points in time is used as the start time.
+        # - For second-level data, the start time is obtained by comparing the time that is specified by the StartTime parameter and 20 minutes earlier of the time that is specified by the EndTime parameter. The earlier one of the compared points in time is used as the start time.
+        # 
+        # - For minute-level data, the start time is obtained by comparing the time that is specified by the StartTime parameter and 2 hours earlier of the time that is specified by the EndTime parameter. The earlier one of the compared points in time is used as the start time.
+        # 
+        # - For hour-level data, the start time is obtained by comparing the time that is specified by the StartTime parameter and two days earlier of the time that is specified by the EndTime parameter. The earlier one of the compared points in time is used as the start time.
         self.end_time = end_time
         # The expression that is used to calculate the query results in real time.
         self.express = express
@@ -36,7 +38,7 @@ class DescribeMetricLastRequest(DaraModel):
         # 
         # Default value: 1000. This value indicates that a maximum of 1,000 entries of monitoring data can be returned on each page.
         # 
-        # >  The maximum value of the Length parameter for each request is 1440.
+        # > The maximum value of the Length parameter for each request is 1440.
         self.length = length
         # The metric that is used to monitor the cloud service.
         # 
@@ -52,8 +54,9 @@ class DescribeMetricLastRequest(DaraModel):
         self.namespace = namespace
         # The pagination token.
         # 
-        # *   If the number of results exceeds the maximum number of entries allowed on a single page, a pagination token is returned.
-        # *   This token can be used as an input parameter to obtain the next page of results. If all results are obtained, no token is returned.
+        # - If the number of results exceeds the maximum number of entries allowed on a single page, a pagination token is returned.
+        # 
+        # - This token can be used as an input parameter to obtain the next page of results. If all results are obtained, no token is returned.
         self.next_token = next_token
         # The statistical period of the monitoring data.
         # 
@@ -61,9 +64,9 @@ class DescribeMetricLastRequest(DaraModel):
         # 
         # Unit: seconds.
         # 
-        # > 
+        # >
         # 
-        # *   If this parameter is not specified, monitoring data is queried based on the period in which metric values are reported. The statistical period of metrics (`MetricName`) varies for each cloud service. The statistical period of metrics is displayed in the `MinPeriods` column on the **Metrics** page for each cloud service. For more information, see [Appendix 1: Metrics](https://help.aliyun.com/document_detail/163515.html).
+        # - If this parameter is not specified, monitoring data is queried based on the period in which metric values are reported. The statistical period of metrics (`MetricName`) varies for each cloud service. The statistical period of metrics is displayed in the `MinPeriods` column on the **Metrics** page for each cloud service. For more information, see [Appendix 1: Metrics](https://help.aliyun.com/document_detail/163515.html).
         self.period = period
         self.region_id = region_id
         # The start of the time range to query monitoring data.

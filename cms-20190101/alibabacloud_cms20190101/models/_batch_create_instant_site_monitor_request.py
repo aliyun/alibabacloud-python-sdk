@@ -14,9 +14,9 @@ class BatchCreateInstantSiteMonitorRequest(DaraModel):
         task_list: List[main_models.BatchCreateInstantSiteMonitorRequestTaskList] = None,
     ):
         self.region_id = region_id
-        # The site monitoring tasks.
+        # The list of site monitoring tasks.
         # 
-        # >  You must create at least one site monitoring task. You must specify all of the `Address`, `TaskName`, and `TaskType` parameters in each request.
+        # > You must create at least one site monitoring task. The `Address`, `TaskName`, and `TaskType` parameters are required.
         # 
         # This parameter is required.
         self.task_list = task_list
@@ -64,29 +64,45 @@ class BatchCreateInstantSiteMonitorRequestTaskList(DaraModel):
         task_name: str = None,
         task_type: str = None,
     ):
-        # The URL or IP address that is monitored by the task.
+        # The URL or IP address of the site monitoring task.
         # 
-        # >  You must create at least one site monitoring task. You must specify all of the `Address`, `TaskName`, and `TaskType` parameters in each request.
+        # > You must create at least one site monitoring task. The `Address`, `TaskName`, and `TaskType` parameters are required.
         self.address = address
-        # The detection points. If you leave this parameter empty, the system randomly selects three detection points.
+        # The information about the detection points. If you leave this parameter empty, the system randomly selects three detection points.
         # 
-        # The value is a `JSON array`. Example: `{"city":"546","isp":"465"},{"city":"572","isp":"465"},{"city":"738","isp":"465"}`. The values of the city field indicate Beijing, Hangzhou, and Qingdao.
+        # The value must be a `JSONArray`. For example, `[{"city":"546","isp":"465"},{"city":"572","isp":"465"},{"city":"738","isp":"465"}]` corresponds to Beijing, Hangzhou, and Qingdao.
         # 
-        # For information about how to obtain detection points, see [DescribeSiteMonitorISPCityList](https://help.aliyun.com/document_detail/115045.html).
+        # For more information about how to obtain detection point information, see [DescribeSiteMonitorISPCityList](https://help.aliyun.com/document_detail/115045.html).
         self.isp_cities = isp_cities
-        # The extended options of the protocol that is used by the site monitoring task. The options vary based on the protocol.
+        # The advanced extension options for the protocol type of the site monitoring task. Different protocol types correspond to different extension options.
         self.options_json = options_json
         # The name of the site monitoring task.
         # 
-        # The name must be 4 to 100 characters in length, and can contain letters, digits, and underscores (_).
+        # <props="china">
         # 
-        # >  You must create at least one site monitoring task. You must specify all of the `Address`, `TaskName`, and `TaskType` parameters in each request.
+        # The value must be 4 to 100 characters in length and can contain English letters, numbers, underscores (_), and Chinese characters.
+        # 
+        # 
+        # 
+        # <props="intl">
+        # 
+        # The name of the site monitoring task.
+        # 
+        # 
+        # 
+        # <props="partner">
+        # 
+        # The name must be 4 to 100 characters in length and can contain letters, digits, and underscores (_).
+        # 
+        # 
+        # 
+        # > You must create at least one site monitoring task. The `Address`, `TaskName`, and `TaskType` parameters are required.
         self.task_name = task_name
-        # The type of the site monitoring task.
+        # The protocol type of the monitoring task.
         # 
         # Valid values: HTTP, PING, TCP, UDP, DNS, SMTP, POP3, and FTP.
         # 
-        # >  You must create at least one site monitoring task. You must specify all of the `Address`, `TaskName`, and `TaskType` parameters in each request.
+        # > You must create at least one site monitoring task. The `Address`, `TaskName`, and `TaskType` parameters are required.
         self.task_type = task_type
 
     def validate(self):

@@ -17,7 +17,7 @@ class PutMetricRuleTargetsRequest(DaraModel):
         self.region_id = region_id
         # The ID of the alert rule.
         # 
-        # For information about how to obtain the ID of an alert rule, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
+        # For information about how to obtain the alert rule ID, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
         # 
         # This parameter is required.
         self.rule_id = rule_id
@@ -74,53 +74,51 @@ class PutMetricRuleTargetsRequestTargets(DaraModel):
         json_params: str = None,
         level: str = None,
     ):
-        # The Alibaba Cloud Resource Name (ARN) of the resource. Simple Message Queue (formerly MNS) (SMQ), Auto Scaling, Simple Log Service, and Function Compute are supported.
+        # The Alibaba Cloud Resource Name (ARN) of the resource. Simple Message Queue (formerly MNS), elastic scaling (ESS), Simple Log Service (SLS), and Function Compute (FC) are supported.
         # 
-        # The following part describes the ARN of SMQ and the parameters in the ARN:
+        # The following section describes the ARN parameter metric description for Simple Message Queue (formerly MNS):
         # 
-        # `acs:mns:{regionId}:{userId}:/{Resource type}/{Resource name}/message`.
+        # `acs:mns:{regionId}:{userId}:/{Resource type}/{Resource name}/message`
         # 
-        # *   {regionId}: the region ID of the SMQ queue or topic.
+        # - {regionId}: the region where the MSMQ or topic of Simple Message Queue (formerly MNS) resides.
+        # - {userId}: the Alibaba Cloud account that owns the resource.
+        # - {Resource type}: the type of the resource that accepts alert notifications. Valid values:
         # 
-        # *   {userId}: the ID of the Alibaba Cloud account that owns the resource.
+        #   - **queues**: queue.
+        #   - **topics**: topic.
         # 
-        # *   {Resource type}: the type of the resource for which alerts are triggered. Valid values:
+        # - {Resource name}: the name of the resource.
         # 
-        #     *   **queues**
-        #     *   **topics**
+        #   - If the resource type is **queues**, the resource name is the queue name.
+        #   - If the resource type is **topics**, the resource name is the topic name.
         # 
-        # *   {Resource name}: the resource name.
-        # 
-        #     *   If the resource type is **queues**, the resource name is the queue name.
-        #     *   If the resource type is **topics**, the resource name is the topic name.
-        # 
-        # ARN of Auto Scaling:
+        # ARN for elastic scaling:
         # 
         # acs:ess:{regionId}:{userId}:scalingGroupId/{Scaling group ID}:scalingRuleId/{Scaling rule ID}
         # 
-        # ARN of Simple Log Service:
+        # ARN for Simple Log Service:
         # 
         # acs:log:{regionId}:{userId}:project/{Project name}/logstore/{Logstore name}
         # 
-        # ARN of Function Compute:
+        # ARN for Function Compute:
         # 
-        # acs:fc:{regionId}:{userId}:services/{Service name}/functions/{Function name}
+        # acs:fc:{regionId}:{userId}:services/{Service name}/functions/{Function name}.
         # 
         # This parameter is required.
         self.arn = arn
-        # The ID of the resource for which alerts are triggered.
+        # The ID of the alert trigger target.
         # 
-        # For more information about how to obtain the ID of the resource for which alerts are triggered, see [DescribeMetricRuleTargets](https://help.aliyun.com/document_detail/121592.html).
+        # For information about how to obtain the alert trigger target ID, see [DescribeMetricRuleTargets](https://help.aliyun.com/document_detail/121592.html).
         # 
         # This parameter is required.
         self.id = id
-        # The parameters of the alert callback. The parameters are in the JSON format.
+        # The JSON-formatted parameters of the alert callback.
         self.json_params = json_params
         # The alert level. Valid values:
         # 
-        # *   INFO
-        # *   WARN
-        # *   CRITICAL
+        # - INFO: information.
+        # - WARN: warning.
+        # - CRITICAL: critical.
         self.level = level
 
     def validate(self):

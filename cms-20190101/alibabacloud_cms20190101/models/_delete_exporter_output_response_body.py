@@ -12,18 +12,17 @@ class DeleteExporterOutputResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code.
+        # The status code.
         # 
-        # > The status code 200 indicates that the request was successful. Other status codes indicate that the request failed.
+        # > A status code of 200 indicates success. Other values indicate failure.
         self.code = code
         # The returned message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   `true`
-        # *   `false`
+        # Indicates whether the request was successful. Valid values:  
+        # - `true`: success
+        # - `false`: failure
         self.success = success
 
     def validate(self):

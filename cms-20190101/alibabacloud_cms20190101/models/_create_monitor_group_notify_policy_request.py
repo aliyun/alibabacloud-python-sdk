@@ -13,24 +13,24 @@ class CreateMonitorGroupNotifyPolicyRequest(DaraModel):
         region_id: str = None,
         start_time: int = None,
     ):
-        # The end time of the validity period for the policy.
+        # The end timestamp for pausing notifications.
         # 
-        # This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The value is a UNIX timestamp, which represents the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The ID of the application group.
+        # The application group ID.
         # 
         # This parameter is required.
         self.group_id = group_id
-        # The policy type. Valid value: PauseNotify.
+        # The type of the pause notification. Currently, only PauseNotify is supported.
         # 
         # This parameter is required.
         self.policy_type = policy_type
         self.region_id = region_id
-        # The start time of the validity period for the policy.
+        # The start timestamp for pausing notifications.
         # 
-        # This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The value is a UNIX timestamp, which represents the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         # 
         # This parameter is required.
         self.start_time = start_time

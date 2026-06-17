@@ -13,7 +13,7 @@ class CreateMonitorGroupRequest(DaraModel):
     ):
         # The alert contact group. The alert notifications of the application group are sent to the alert contacts that belong to the alert contact group.
         # 
-        # >  An alert contact group can contain one or more alert contacts. For information about how to create alert contacts and alert contact groups, see [PutContact](~~PutContact~~) and [PutContactGroup](~~PutContactGroup~~).
+        # > An alert contact group can contain one or more alert contacts. For information about how to create alert contacts and alert contact groups, see [PutContact](~~PutContact~~) and [PutContactGroup](~~PutContactGroup~~).
         self.contact_groups = contact_groups
         # The name of the application group.
         # 

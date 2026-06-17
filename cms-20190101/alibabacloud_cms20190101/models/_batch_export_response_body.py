@@ -20,33 +20,34 @@ class BatchExportResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The timestamp of the data requested by the backend. A larger timestamp indicates that the data export time is closer to the current time.
+        # The timestamp when the backend requested the data. A larger timestamp indicates that the exported data is closer to the current time.
         self.anchor = anchor
-        # The HTTP status code.
+        # The status code.
         # 
-        # >  The status code 200 indicates that the request was successful.
+        # > The value 200 indicates success.
         self.code = code
-        # The Cursor information that is used to call this operation again.
+        # The cursor that is used to call this operation again.
         # 
-        # >  If `null` is returned, the monitoring data is exported.
+        # > If the returned result is `null`, the monitoring data has been exported.
         self.cursor = cursor
-        # The data returned in this call.
+        # The data returned by this call.
         self.data_results = data_results
         # Indicates whether the data has been exported. Valid values:
         # 
-        # *   true: Some data is not exported.
-        # *   false: All the data is exported.
+        # - true: Some data has not been exported.
+        # - false: All data has been exported.
         self.has_next = has_next
-        # The number of data entries returned in this call.
+        # The number of data entries returned for this call.
         self.length = length
         # The returned message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the operation was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: successful
+        # 
+        # - false: failed
         self.success = success
 
     def validate(self):

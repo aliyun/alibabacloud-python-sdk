@@ -14,16 +14,16 @@ class DeleteMonitoringAgentProcessResponseBody(DaraModel):
     ):
         # The status code.
         # 
-        # > The status code 200 indicates that the request was successful.
+        # > 200 indicates success.
         self.code = code
         # The error message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the operation was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: Successful.
+        # - false: Failed.
         self.success = success
 
     def validate(self):
