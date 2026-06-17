@@ -1,3 +1,7 @@
+2026-06-17 Version: 1.1.1
+- Update API DeleteComputeInstance: add request parameters ResourceType.
+
+
 2026-06-17 Version: 1.1.0
 - Support API DeleteComputeInstance.
 
