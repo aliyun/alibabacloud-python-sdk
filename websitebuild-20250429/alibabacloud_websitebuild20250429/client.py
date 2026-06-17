@@ -21,7 +21,11 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = ''
+        self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'public': 'websitebuild.aliyuncs.com',
+            'cn-zhangjiakou': 'websitebuild.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('websitebuild', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -7554,6 +7558,8 @@ class Client(OpenApiClient):
             query['BizId'] = request.biz_id
         if not DaraCore.is_null(request.env):
             query['Env'] = request.env
+        if not DaraCore.is_null(request.payload):
+            query['Payload'] = request.payload
         if not DaraCore.is_null(request.scene_id):
             query['SceneId'] = request.scene_id
         req = open_api_util_models.OpenApiRequest(
@@ -7586,6 +7592,8 @@ class Client(OpenApiClient):
             query['BizId'] = request.biz_id
         if not DaraCore.is_null(request.env):
             query['Env'] = request.env
+        if not DaraCore.is_null(request.payload):
+            query['Payload'] = request.payload
         if not DaraCore.is_null(request.scene_id):
             query['SceneId'] = request.scene_id
         req = open_api_util_models.OpenApiRequest(

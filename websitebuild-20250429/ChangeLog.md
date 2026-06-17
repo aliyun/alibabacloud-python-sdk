@@ -1,3 +1,7 @@
+2026-06-17 Version: 2.28.1
+- Update API NotifyAppNotificationForAdmin: add request parameters Payload.
+
+
 2026-06-16 Version: 2.28.0
 - Support API CheckAppVerifyCode.
 - Support API CreateAppNotificationScene.

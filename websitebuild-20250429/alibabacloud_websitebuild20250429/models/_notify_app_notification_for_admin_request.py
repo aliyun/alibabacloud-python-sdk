@@ -9,10 +9,15 @@ class NotifyAppNotificationForAdminRequest(DaraModel):
         self,
         biz_id: str = None,
         env: str = None,
+        payload: str = None,
         scene_id: str = None,
     ):
+        # The business ID.
         self.biz_id = biz_id
+        # The environment identifier.
         self.env = env
+        self.payload = payload
+        # The scene ID.
         self.scene_id = scene_id
 
     def validate(self):
@@ -29,6 +34,9 @@ class NotifyAppNotificationForAdminRequest(DaraModel):
         if self.env is not None:
             result['Env'] = self.env
 
+        if self.payload is not None:
+            result['Payload'] = self.payload
+
         if self.scene_id is not None:
             result['SceneId'] = self.scene_id
 
@@ -41,6 +49,9 @@ class NotifyAppNotificationForAdminRequest(DaraModel):
 
         if m.get('Env') is not None:
             self.env = m.get('Env')
+
+        if m.get('Payload') is not None:
+            self.payload = m.get('Payload')
 
         if m.get('SceneId') is not None:
             self.scene_id = m.get('SceneId')

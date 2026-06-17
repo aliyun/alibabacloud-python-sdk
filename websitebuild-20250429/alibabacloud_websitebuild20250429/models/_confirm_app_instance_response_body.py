@@ -22,16 +22,27 @@ class ConfirmAppInstanceResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
+        # Indicates whether retry is allowed.
         self.allow_retry = allow_retry
+        # The application name. The application with this name is queried.
         self.app_name = app_name
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
+        # The dynamic message.
         self.dynamic_message = dynamic_message
+        # The error parameters.
         self.error_args = error_args
+        # The response data.
         self.module = module
+        # Id of the request
         self.request_id = request_id
+        # The error code.
         self.root_error_code = root_error_code
+        # The error message.
         self.root_error_msg = root_error_msg
+        # The reserved parameter.
         self.synchro = synchro
 
     def validate(self):
@@ -124,9 +135,13 @@ class ConfirmAppInstanceResponseBodyModule(DaraModel):
         order_id: str = None,
         site_host: str = None,
     ):
+        # The business ID.
         self.biz_id = biz_id
+        # The instance ID.
         self.instance_id = instance_id
+        # The order ID.
         self.order_id = order_id
+        # The second-level domain name of the website.
         self.site_host = site_host
 
     def validate(self):

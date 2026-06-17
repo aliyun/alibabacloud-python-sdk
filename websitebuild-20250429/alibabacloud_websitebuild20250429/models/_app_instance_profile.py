@@ -10,10 +10,13 @@ class AppInstanceProfile(DaraModel):
         application_type: str = None,
         application_type_text: str = None,
         biz_id: str = None,
+        chatbi_task_id: str = None,
+        chatbi_task_status: str = None,
         commodity_code: str = None,
         customer_service: str = None,
         deploy_area: str = None,
         instance_id: str = None,
+        open_chat_bi: bool = None,
         ord_time: str = None,
         order_id: str = None,
         pay_time: str = None,
@@ -24,16 +27,17 @@ class AppInstanceProfile(DaraModel):
         source: str = None,
         template_etag: str = None,
         template_id: str = None,
-        chatbi_task_id: str = None,
-        chatbi_task_status: str = None,
     ):
         self.application_type = application_type
         self.application_type_text = application_type_text
         self.biz_id = biz_id
+        self.chatbi_task_id = chatbi_task_id
+        self.chatbi_task_status = chatbi_task_status
         self.commodity_code = commodity_code
         self.customer_service = customer_service
         self.deploy_area = deploy_area
         self.instance_id = instance_id
+        self.open_chat_bi = open_chat_bi
         self.ord_time = ord_time
         self.order_id = order_id
         self.pay_time = pay_time
@@ -44,8 +48,6 @@ class AppInstanceProfile(DaraModel):
         self.source = source
         self.template_etag = template_etag
         self.template_id = template_id
-        self.chatbi_task_id = chatbi_task_id
-        self.chatbi_task_status = chatbi_task_status
 
     def validate(self):
         pass
@@ -64,6 +66,12 @@ class AppInstanceProfile(DaraModel):
         if self.biz_id is not None:
             result['BizId'] = self.biz_id
 
+        if self.chatbi_task_id is not None:
+            result['ChatbiTaskId'] = self.chatbi_task_id
+
+        if self.chatbi_task_status is not None:
+            result['ChatbiTaskStatus'] = self.chatbi_task_status
+
         if self.commodity_code is not None:
             result['CommodityCode'] = self.commodity_code
 
@@ -75,6 +83,9 @@ class AppInstanceProfile(DaraModel):
 
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+
+        if self.open_chat_bi is not None:
+            result['OpenChatBi'] = self.open_chat_bi
 
         if self.ord_time is not None:
             result['OrdTime'] = self.ord_time
@@ -106,12 +117,6 @@ class AppInstanceProfile(DaraModel):
         if self.template_id is not None:
             result['TemplateId'] = self.template_id
 
-        if self.chatbi_task_id is not None:
-            result['chatbiTaskId'] = self.chatbi_task_id
-
-        if self.chatbi_task_status is not None:
-            result['chatbiTaskStatus'] = self.chatbi_task_status
-
         return result
 
     def from_map(self, m: dict = None):
@@ -125,6 +130,12 @@ class AppInstanceProfile(DaraModel):
         if m.get('BizId') is not None:
             self.biz_id = m.get('BizId')
 
+        if m.get('ChatbiTaskId') is not None:
+            self.chatbi_task_id = m.get('ChatbiTaskId')
+
+        if m.get('ChatbiTaskStatus') is not None:
+            self.chatbi_task_status = m.get('ChatbiTaskStatus')
+
         if m.get('CommodityCode') is not None:
             self.commodity_code = m.get('CommodityCode')
 
@@ -136,6 +147,9 @@ class AppInstanceProfile(DaraModel):
 
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+
+        if m.get('OpenChatBi') is not None:
+            self.open_chat_bi = m.get('OpenChatBi')
 
         if m.get('OrdTime') is not None:
             self.ord_time = m.get('OrdTime')
@@ -166,12 +180,6 @@ class AppInstanceProfile(DaraModel):
 
         if m.get('TemplateId') is not None:
             self.template_id = m.get('TemplateId')
-
-        if m.get('chatbiTaskId') is not None:
-            self.chatbi_task_id = m.get('chatbiTaskId')
-
-        if m.get('chatbiTaskStatus') is not None:
-            self.chatbi_task_status = m.get('chatbiTaskStatus')
 
         return self
 

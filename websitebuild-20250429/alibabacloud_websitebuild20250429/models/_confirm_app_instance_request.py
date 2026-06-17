@@ -20,16 +20,31 @@ class ConfirmAppInstanceRequest(DaraModel):
         trial_biz_id: str = None,
         version: str = None,
     ):
+        # The application type.
         self.application_type = application_type
+        # Specifies whether to enable auto-renewal upon expiration.
         self.auto_renew = auto_renew
+        # The client token that is used to ensure the idempotence of the request. Generate a unique value from your client. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The deployment region.
         self.deploy_area = deploy_area
+        # Required. The number of subscription periods.
         self.duration = duration
+        # The extended information.
         self.extend = extend
+        # The payment type.
         self.payment_type = payment_type
+        # Required. The unit of the subscription period. Valid values:
+        # - Year: year
+        # - Month: month
+        # - Day: day
+        # - Hour: hour.
         self.pricing_cycle = pricing_cycle
+        # Required. The number of instances to purchase.
         self.quantity = quantity
+        # The website version.
         self.site_version = site_version
+        # The business ID of the trial instance.
         self.trial_biz_id = trial_biz_id
         self.version = version
 

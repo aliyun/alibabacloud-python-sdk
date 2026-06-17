@@ -21,16 +21,27 @@ class NotifyAppNotificationForAdminResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
+        # The detailed reason why access was denied.
         self.access_denied_detail = access_denied_detail
+        # Indicates whether retry is allowed.
         self.allow_retry = allow_retry
+        # The application name. The name must start with a letter and can contain letters, digits, underscores (_), and hyphens (-). The name can be up to 36 characters in length.
         self.app_name = app_name
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
+        # The dynamic error message, which is used to replace the %s variable in the ErrMessage response parameter.
         self.dynamic_message = dynamic_message
+        # The error parameters.
         self.error_args = error_args
+        # The response data.
         self.module = module
+        # Id of the request
         self.request_id = request_id
+        # The error code.
         self.root_error_code = root_error_code
+        # The exception message.
         self.root_error_msg = root_error_msg
+        # A reserved parameter.
         self.synchro = synchro
 
     def validate(self):
