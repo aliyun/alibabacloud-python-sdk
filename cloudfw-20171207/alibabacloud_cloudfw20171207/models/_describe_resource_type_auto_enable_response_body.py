@@ -12,7 +12,9 @@ class DescribeResourceTypeAutoEnableResponseBody(DaraModel):
         request_id: str = None,
         resource_type_auto_enable: Dict[str, bool] = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether traffic redirection is enabled by default.
         self.resource_type_auto_enable = resource_type_auto_enable
 
     def validate(self):

@@ -33,28 +33,73 @@ class DescribePrivateDnsEndpointDetailResponseBody(DaraModel):
         task_id: str = None,
         vpc_id: str = None,
     ):
+        # The instance ID.
         self.access_instance_id = access_instance_id
+        # The name of the access instance.
         self.access_instance_name = access_instance_name
+        # The UID of the Alibaba Cloud account.
         self.ali_uid = ali_uid
+        # The endpoint ID.
         self.endpoint_id = endpoint_id
+        # The type of the Cloud Firewall. Valid values:
+        # 
+        # - **internet**
+        # 
+        # - **vpc**
+        # 
+        # - **nat**
         self.firewall_type = firewall_type
+        # The time when the endpoint was created. This is a UNIX timestamp in seconds.
         self.gmt_create = gmt_create
+        # The IP protocol. Valid values:
+        # 
+        # - **TCP**
+        # 
+        # - **UDP**
         self.ip_protocol = ip_protocol
+        # The UID of the member account.
         self.member_uid = member_uid
+        # The port number.
         self.port = port
+        # The primary DNS server.
         self.primary_dns = primary_dns
+        # The ID of the primary vSwitch.
         self.primary_vswitch_id = primary_vswitch_id
+        # The IP address of the primary vSwitch.
         self.primary_vswitch_ip = primary_vswitch_ip
+        # The zone of the primary vSwitch.
         self.primary_zone_id = primary_zone_id
+        # The type of the private DNS. Valid values:
+        # 
+        # - **PrivateZone**
+        # 
+        # - **Custom** (Default)
         self.private_dns_type = private_dns_type
+        # The ID of the region where the instance is located.
         self.region_no = region_no
+        # The ID of the request.
         self.request_id = request_id
+        # The standby DNS server.
         self.standby_dns = standby_dns
+        # The ID of the standby vSwitch.
         self.standby_vswitch_id = standby_vswitch_id
+        # The IP address of the standby vSwitch.
         self.standby_vswitch_ip = standby_vswitch_ip
+        # The zone of the standby vSwitch.
         self.standby_zone_id = standby_zone_id
+        # The instance status. Valid values:
+        # 
+        # - **creating**: Creating.
+        # 
+        # - **deleting**: Deleting.
+        # 
+        # - **normal**: Normal.
+        # 
+        # - **updating**: Updating.
         self.status = status
+        # The ID of the task.
         self.task_id = task_id
+        # The ID of the VPC.
         self.vpc_id = vpc_id
 
     def validate(self):

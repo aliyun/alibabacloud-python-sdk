@@ -19,18 +19,51 @@ class DescribeDnsFirewallPolicyRequest(DaraModel):
         source: str = None,
         source_ip: str = None,
     ):
+        # The action that is performed on traffic that hits the DNS firewall policy. Valid values:
+        # 
+        # - **accept**: allows the traffic.
+        # 
+        # - **drop**: denies the traffic.
+        # 
+        # - **log**: monitors the traffic.
+        # 
+        # > If you do not specify this parameter, policies of all action types are queried.
         self.acl_action = acl_action
+        # The unique ID of the firewall rule.
         self.acl_uuid = acl_uuid
+        # The page number to return. Default value: 1.
+        # 
         # This parameter is required.
         self.current_page = current_page
+        # The description of the DNS firewall policy.
         self.description = description
+        # The destination address in the DNS firewall policy. Fuzzy match is supported.
+        # 
+        # > The value of Destination can be a CIDR block, a domain name, or an address book.
         self.destination = destination
+        # The IP version that is supported. Valid values:
+        # 
+        # - **4**: IPv4
+        # 
+        # - **6**: IPv6
         self.ip_version = ip_version
+        # The language of the response messages. Valid values: **zh** (Chinese) and **en** (English).
         self.lang = lang
+        # The number of entries to return on each page.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # The status of the access control policy. The policy is enabled by default after it is created. Valid values:
+        # 
+        # - **true**: enables the access control policy.
+        # 
+        # - **false**: disables the access control policy.
         self.release = release
+        # The source address in the DNS firewall policy. Fuzzy match is supported.
+        # 
+        # > The value of Source can be a CIDR block or an address book.
         self.source = source
+        # The source IP address of the request.
         self.source_ip = source_ip
 
     def validate(self):

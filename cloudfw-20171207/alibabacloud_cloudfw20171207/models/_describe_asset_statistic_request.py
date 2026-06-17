@@ -10,12 +10,9 @@ class DescribeAssetStatisticRequest(DaraModel):
         lang: str = None,
         source_ip: str = None,
     ):
-        # The language of the content within the request. Valid values:
-        # 
-        # *   **zh** (default): Chinese
-        # *   **en**: English
+        # Language for the request and response messages. Valid values:- **zh**: Chinese- **en**: English
         self.lang = lang
-        # The source IP address of the request.
+        # Source IP address of the requester.
         self.source_ip = source_ip
 
     def validate(self):

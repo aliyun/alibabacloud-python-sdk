@@ -33,82 +33,101 @@ class DescribeUserBuyVersionResponseBody(DaraModel):
         vpc_bandwidth: int = None,
         vpc_number: int = None,
     ):
+        # The quota for ACK cluster connectors.
         self.ack_cluster_connector_quota = ack_cluster_connector_quota
-        # The ID of the Alibaba Cloud account that is used to purchase Cloud Firewall.
+        # The ID of the Alibaba Cloud account.
         self.ali_uid = ali_uid
+        # The default bandwidth of the edition.
         self.default_bandwidth = default_bandwidth
-        # The time when Cloud Firewall expires.
+        # The expiration time of the Cloud Firewall instance.
         # 
-        # >  The value is a timestamp in milliseconds.
+        # > The value is a UNIX timestamp in milliseconds.
         # 
-        # >  If you use Cloud Firewall that uses the pay-as-you-go billing method, ignore this parameter.
+        # > This parameter does not apply to pay-as-you-go editions.
         self.expire = expire
+        # The extended bandwidth.
         self.extension_bandwidth = extension_bandwidth
+        # The number of general-purpose instances.
         self.general_instance = general_instance
-        # The instance ID of Cloud Firewall.
+        # The ID of the Cloud Firewall instance.
         # 
-        # >  If you use a trial of Cloud Firewall, ignore this parameter.
+        # > This parameter does not apply to trial editions.
         self.instance_id = instance_id
-        # The status of Cloud Firewall. Valid values:
+        # The operational status of the Cloud Firewall instance. Valid values:
         # 
-        # *   **normal**: Cloud Firewall is running as expected.
-        # *   **init**: Cloud Firewall is being initialized.
-        # *   **deleting**: Cloud Firewall is being deleted.
-        # *   **abnormal**: An exception occurs in Cloud Firewall.
-        # *   **free**: Cloud Firewall is invalid.
+        # - **normal**: The instance is running as expected.
+        # 
+        # - **init**: The instance is being initialized.
+        # 
+        # - **deleting**: The instance is being deleted.
+        # 
+        # - **abnormal**: The instance is in an abnormal state.
+        # 
+        # - **free**: No valid instance is available.
         self.instance_status = instance_status
-        # The peak Internet traffic that can be protected.
+        # The purchased traffic processing capability for the Internet firewall.
         self.internet_bandwidth = internet_bandwidth
         # The number of public IP addresses that can be protected.
         # 
-        # >  This parameter takes effect only for Cloud Firewall that uses the subscription billing method.
+        # > This parameter applies only to subscription instances.
         self.ip_number = ip_number
         # Indicates whether log delivery is enabled. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Enabled
+        # 
+        # - **false**: Disabled
         self.log_status = log_status
-        # The log storage capacity.
+        # The purchased log storage capacity.
         # 
-        # >  This parameter takes effect only for Cloud Firewall that uses the subscription billing method.
+        # > This parameter applies only to subscription instances.
         self.log_storage = log_storage
+        # The major version.
         self.major_version = major_version
-        # The status of the burstable protected traffic feature. Valid values:
+        # Indicates whether elastic billing for excess traffic is enabled. Valid values:
         # 
-        # *   **1000000**: enabled.
-        # *   **0**: disabled.
+        # - **1000000**: Enabled
         # 
-        # >  This parameter takes effect only for Cloud Firewall that uses the subscription billing method.
+        # - **0**: Disabled
+        # 
+        # > This parameter applies only to subscription instances.
         self.max_overflow = max_overflow
-        # The peak traffic of NAT private network that can be protected.
+        # The purchased traffic processing capability for the NAT firewall.
         self.nat_bandwidth = nat_bandwidth
+        # The quota for private DNS connectors.
         self.private_dns_connector_quota = private_dns_connector_quota
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether data leakage prevention is enabled.
         self.sdl = sdl
-        # The time when Cloud Firewall was activated.
+        # The time when the Cloud Firewall instance was enabled.
         # 
-        # >  The value is a timestamp in milliseconds.
+        # > The value is a UNIX timestamp in milliseconds.
         self.start_time = start_time
+        # The temporary bandwidth.
         self.temporary_bandwidth = temporary_bandwidth
+        # Indicates whether threat intelligence is enabled.
         self.threat_intelligence = threat_intelligence
-        # Indicates whether Cloud Firewall is valid. Valid values:
+        # The status of the Cloud Firewall instance. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The instance is valid.
+        # 
+        # - **false**: The instance is invalid.
         self.user_status = user_status
-        # The edition of Cloud Firewall. Valid values:
+        # The edition of the Cloud Firewall instance. Valid values:
         # 
-        # *   **2**: Premium Edition.
-        # *   **3**: Enterprise Edition.
-        # *   **4**: Ultimate Edition.
-        # *   **10**: Cloud Firewall that uses the pay-as-you-go billing method.
+        # - **2**: Premium Edition
+        # 
+        # - **3**: Enterprise Edition
+        # 
+        # - **4**: Ultimate Edition
+        # 
+        # - **10**: Pay-as-you-go
         self.version = version
-        # The peak cross-VPC traffic that can be protected.
+        # The purchased traffic processing capability for the VPC firewall.
         self.vpc_bandwidth = vpc_bandwidth
-        # The number of virtual private clouds (VPCs) that can be protected.
+        # The number of purchased VPC firewalls.
         # 
-        # >  This parameter takes effect only for Cloud Firewall that uses the subscription billing method.
+        # > This parameter applies only to subscription instances.
         self.vpc_number = vpc_number
 
     def validate(self):

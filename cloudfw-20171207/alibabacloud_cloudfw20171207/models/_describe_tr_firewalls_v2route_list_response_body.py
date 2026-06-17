@@ -13,7 +13,7 @@ class DescribeTrFirewallsV2RouteListResponseBody(DaraModel):
         firewall_route_detail_list: List[main_models.DescribeTrFirewallsV2RouteListResponseBodyFirewallRouteDetailList] = None,
         request_id: str = None,
     ):
-        # The route tables of Cloud Firewall.
+        # The list of route tables for the VPC firewall.
         self.firewall_route_detail_list = firewall_route_detail_list
         # The ID of the request.
         self.request_id = request_id
@@ -60,13 +60,13 @@ class DescribeTrFirewallsV2RouteListResponseBodyFirewallRouteDetailList(DaraMode
         tr_firewall_route_policy_id: str = None,
         tr_firewall_route_table_id: str = None,
     ):
-        # The destination address of the route.
+        # The destination CIDR block of the route.
         self.tr_firewall_route_destination = tr_firewall_route_destination
         # The ID of the next hop for the route.
         self.tr_firewall_route_nexthop = tr_firewall_route_nexthop
-        # The ID of the routing policy.
+        # The ID of the firewall routing policy.
         self.tr_firewall_route_policy_id = tr_firewall_route_policy_id
-        # The ID of the route table to which the route entry belongs.
+        # The ID of the route table to which the route belongs.
         self.tr_firewall_route_table_id = tr_firewall_route_table_id
 
     def validate(self):

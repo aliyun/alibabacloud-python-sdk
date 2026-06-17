@@ -10,7 +10,9 @@ class DescribeUserIPSWhitelistRequest(DaraModel):
         lang: str = None,
         source_ip: str = None,
     ):
+        # The language.
         self.lang = lang
+        # The source IP address of the visitor.
         self.source_ip = source_ip
 
     def validate(self):

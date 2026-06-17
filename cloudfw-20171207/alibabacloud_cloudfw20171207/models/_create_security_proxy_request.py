@@ -22,51 +22,55 @@ class CreateSecurityProxyRequest(DaraModel):
         vswitch_cidr: str = None,
         vswitch_id: str = None,
     ):
-        # The status of the NAT firewall. Valid values:
+        # The security protection switch. Valid values:
         # 
-        # *   **open**: enabled
-        # *   **close**: disabled
+        # - **open**: on
+        # 
+        # - **close**: off
         self.firewall_switch = firewall_switch
-        # The language of the content within the response. Valid values:
+        # The language of the response. Valid values:
         # 
-        # *   **zh** (default): Chinese
-        # *   **en**: English
+        # - **zh** (default): Chinese
+        # 
+        # - **en**: English
         self.lang = lang
-        # The ID of the NAT gateway.
+        # The ID of the NAT Gateway.
         # 
         # This parameter is required.
         self.nat_gateway_id = nat_gateway_id
-        # The routes to be switched to the NAT gateway.
+        # The list of routes of the NAT Gateway that you want to switch.
         # 
         # This parameter is required.
         self.nat_route_entry_list = nat_route_entry_list
-        # The name of the NAT firewall. The name must be 4 to 50 characters in length, and can contain letters, digits, and underscores (_). However, it cannot start with an underscore.
+        # The name of the NAT firewall. The name must be 4 to 50 characters in length. It can contain letters, digits, Chinese characters, and underscores (_). The name cannot start with an underscore (_).
         # 
         # This parameter is required.
         self.proxy_name = proxy_name
-        # The region ID of the virtual private cloud (VPC).
+        # The region ID of the VPC.
         # 
-        # >  For more information about Cloud Firewall supported regions, see [Supported regions](https://help.aliyun.com/document_detail/195657.html).
+        # > For more information about the regions where Cloud Firewall is available, see [Supported regions](https://help.aliyun.com/document_detail/195657.html).
         # 
         # This parameter is required.
         self.region_no = region_no
-        # Specifies whether to enable the strict mode. Valid values:
+        # Specifies whether to enable strict mode.
         # 
-        # *   1: yes
-        # *   0: no
+        # - 1: enables strict mode
+        # 
+        # - 0: disables strict mode
         self.strict_mode = strict_mode
-        # The ID of the VPC.
+        # The ID of the VPC instance.
         # 
         # This parameter is required.
         self.vpc_id = vpc_id
-        # The mode of the vSwitch that you want to use. Valid values:
+        # Specifies whether to use the automatic vSwitch selection feature. Valid values:
         # 
-        # *   **true**: automatic
-        # *   **false**: manual
+        # - **true**: automatic mode
+        # 
+        # - **false**: manual mode
         self.vswitch_auto = vswitch_auto
-        # The CIDR block of the vSwitch.
+        # The CIDR block of the vSwitch. This parameter is required if you use the automatic vSwitch selection feature.
         self.vswitch_cidr = vswitch_cidr
-        # The ID of the vSwitch. This parameter is required if you set the VswitchAuto parameter to true.
+        # The ID of the vSwitch. This parameter is required if you use the manual vSwitch selection feature.
         self.vswitch_id = vswitch_id
 
     def validate(self):
@@ -169,7 +173,7 @@ class CreateSecurityProxyRequestNatRouteEntryList(DaraModel):
         # 
         # This parameter is required.
         self.destination_cidr = destination_cidr
-        # The next hop of the original NAT gateway.
+        # The next hop of the original NAT Gateway.
         # 
         # This parameter is required.
         self.next_hop_id = next_hop_id
@@ -177,7 +181,7 @@ class CreateSecurityProxyRequestNatRouteEntryList(DaraModel):
         # 
         # This parameter is required.
         self.next_hop_type = next_hop_type
-        # The route table to which the default route of the NAT gateway belongs.
+        # The route table that contains the default route of the NAT Gateway.
         # 
         # This parameter is required.
         self.route_table_id = route_table_id

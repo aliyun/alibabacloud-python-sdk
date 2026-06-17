@@ -9,6 +9,11 @@ class UpdateAITrafficAnalysisStatusRequest(DaraModel):
         self,
         status: str = None,
     ):
+        # The enabling status. Valid values:
+        # 
+        # - **open**: Enables the feature.
+        # 
+        # - **close**: Disables the feature.
         self.status = status
 
     def validate(self):

@@ -16,13 +16,21 @@ class DescribeSensitiveSwitchRequest(DaraModel):
         sensitive_level: str = None,
         switch_status: str = None,
     ):
+        # The name of the category.
         self.category_name = category_name
+        # The number of the page to return.
         self.current_page = current_page
+        # The language of the request and response.
         self.lang = lang
+        # The number of the page to return.
         self.page_size = page_size
+        # The parent class.
         self.parent_category = parent_category
+        # The type of the sensitive credential.
         self.sensitive_category = sensitive_category
+        # The sensitivity level.
         self.sensitive_level = sensitive_level
+        # The status of the sensitive data detection switch.
         self.switch_status = switch_status
 
     def validate(self):

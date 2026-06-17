@@ -14,8 +14,11 @@ class DescribeVpcFirewallManualVSwitchListResponseBody(DaraModel):
         total_count: int = None,
         v_switch_list: List[main_models.DescribeVpcFirewallManualVSwitchListResponseBodyVSwitchList] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
+        # The list of vSwitches.
         self.v_switch_list = v_switch_list
 
     def validate(self):
@@ -73,16 +76,29 @@ class DescribeVpcFirewallManualVSwitchListResponseBodyVSwitchList(DaraModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
+        # The UID of the Alibaba Cloud account.
+        # 
+        # > The root account of the Cloud Firewall member account.
         self.ali_uid = ali_uid
+        # The number of available IP addresses in the vSwitch.
         self.available_ip_address_count = available_ip_address_count
+        # The IPv4 CIDR block.
         self.cidr_block = cidr_block
+        # The ID of the owner.
         self.owner_id = owner_id
+        # The region ID of the instance.
         self.region_no = region_no
+        # The ID of the associated route table.
         self.route_table_id = route_table_id
+        # The status.
         self.status = status
+        # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
+        # The name of the vSwitch.
         self.v_switch_name = v_switch_name
+        # The ID of the VPC instance.
         self.vpc_id = vpc_id
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):

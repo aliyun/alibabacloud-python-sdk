@@ -14,7 +14,7 @@ class DescribeSignatureLibVersionResponseBody(DaraModel):
         total_count: int = None,
         version: List[main_models.DescribeSignatureLibVersionResponseBodyVersion] = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The total number of entries returned.
         self.total_count = total_count
@@ -68,39 +68,11 @@ class DescribeSignatureLibVersionResponseBodyVersion(DaraModel):
         update_time: int = None,
         version: str = None,
     ):
-        # The type.
-        # 
-        # Valid values:
-        # 
-        # *   ips
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     Basic Rules and Virtual Patching
-        # 
-        #     <!-- -->
-        # 
-        #     .
-        # 
-        # *   intelligence
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     Threat Intelligence
-        # 
-        #     <!-- -->
+        # The type of the signature library.
         self.type = type
-        # Update time.
+        # The time when the signature library was updated. This value is a Unix timestamp in seconds.
         self.update_time = update_time
-        # The version number.
+        # The version number of the signature library.
         self.version = version
 
     def validate(self):

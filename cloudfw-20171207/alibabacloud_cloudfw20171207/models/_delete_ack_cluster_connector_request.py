@@ -9,6 +9,8 @@ class DeleteAckClusterConnectorRequest(DaraModel):
         self,
         connector_id: str = None,
     ):
+        # The ID of the ACK cluster connector.
+        # 
         # This parameter is required.
         self.connector_id = connector_id
 

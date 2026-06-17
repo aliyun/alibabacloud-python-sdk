@@ -15,26 +15,31 @@ class DescribeVpcFirewallDefaultIPSConfigResponseBody(DaraModel):
     ):
         # Indicates whether basic policies are enabled. Valid values:
         # 
-        # *   **1**: yes
-        # *   **0**: no
+        # - **1**: On.
+        # 
+        # - **0**: Off.
         self.basic_rules = basic_rules
         # Indicates whether virtual patching is enabled. Valid values:
         # 
-        # *   **1**: yes
-        # *   **0**: no
+        # - **1**: On.
+        # 
+        # - **0**: Off.
         self.enable_all_patch = enable_all_patch
         # The ID of the request.
         self.request_id = request_id
-        # The level of the rule group for the IPS. Valid values:
+        # The IPS rule group. Valid values:
         # 
-        # *   **1**: loose.
-        # *   **2**: medium.
-        # *   **3**: strict.
+        # - **1**: Loose rule group.
+        # 
+        # - **2**: Medium rule group.
+        # 
+        # - **3**: Strict rule group.
         self.rule_class = rule_class
         # The mode of the intrusion prevention system (IPS). Valid values:
         # 
-        # *   **1**: block mode
-        # *   **0**: monitor mode
+        # - **1**: Block Mode.
+        # 
+        # - **0**: Monitor Mode.
         self.run_mode = run_mode
 
     def validate(self):

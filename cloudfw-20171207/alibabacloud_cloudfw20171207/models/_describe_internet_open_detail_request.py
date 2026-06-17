@@ -28,22 +28,39 @@ class DescribeInternetOpenDetailRequest(DaraModel):
         start_time: str = None,
         suggest_level: str = None,
     ):
+        # The ID of the asset. Fuzzy search is supported.
         self.assets_instance_id = assets_instance_id
+        # The name of the asset. Fuzzy search is supported.
         self.assets_instance_name = assets_instance_name
+        # The type of the asset for an exact match. If you leave this parameter empty, all asset types are queried.
         self.assets_type = assets_type
+        # The page number of the returned page.
         self.current_page = current_page
+        # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
         self.end_time = end_time
+        # The language of the content.
         self.lang = lang
+        # The number of the page to return.
         self.page_size = page_size
+        # The port for an exact match. The value must be an integer from 1 to 65535. If you leave this parameter empty, all ports are queried.
         self.port = port
+        # The public IP address for an exact match. If you leave this parameter empty, all public IP addresses are queried.
         self.public_ip = public_ip
+        # The region ID.
         self.region_no = region_no
+        # The risk level. If you leave this parameter empty, all risk levels are queried.
         self.risk_level = risk_level
+        # The name of the application for an exact match. If you leave this parameter empty, all applications are queried.
         self.service_name = service_name
+        # The name of the application for a fuzzy match. If you leave this parameter empty, all applications are queried.
         self.service_name_fuzzy = service_name_fuzzy
+        # The sorting conditions.
         self.sort_list = sort_list
+        # The source IP address of the access request.
         self.source_ip = source_ip
+        # The start of the time range to query. The value is a UNIX timestamp. Unit: seconds.
         self.start_time = start_time
+        # The recommended policy level.
         self.suggest_level = suggest_level
 
     def validate(self):
@@ -176,7 +193,9 @@ class DescribeInternetOpenDetailRequestSortList(DaraModel):
         dir: str = None,
         sort_key: str = None,
     ):
+        # The sort order.
         self.dir = dir
+        # The sorting key.
         self.sort_key = sort_key
 
     def validate(self):

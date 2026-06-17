@@ -23,25 +23,29 @@ class DescribeVpcFirewallCenListRequest(DaraModel):
     ):
         # The ID of the CEN instance.
         self.cen_id = cen_id
-        # The number of the page to return.
+        # The page number to return.
         # 
-        # Pages start from page 1. Default value: 1.
+        # Default value: 1.
         self.current_page = current_page
         # The status of the VPC firewall. Valid values:
         # 
-        # *   **opened**: The VPC firewall is enabled.
-        # *   **closed**: The VPC firewall is disabled.
-        # *   **notconfigured**: The VPC firewall is not configured.
-        # *   **configured**: The VPC firewall is configured but is not enabled.
+        # - **opened**: The firewall is enabled.
         # 
-        # > If you do not specify this parameter, VPC firewalls in all states are queried.
+        # - **closed**: The firewall is disabled.
+        # 
+        # - **notconfigured**: The firewall is not configured.
+        # 
+        # - **configured**: The firewall is configured but is disabled.
+        # 
+        # > If you leave this parameter empty, VPC firewalls in all states are queried.
         self.firewall_switch_status = firewall_switch_status
-        # The language of the content within the response. Valid values:
+        # The language of the response. Valid values:
         # 
-        # *   **zh**: Chinese (default)
-        # *   **en**: English
+        # - **zh** (default): Chinese.
+        # 
+        # - **en**: English.
         self.lang = lang
-        # The UID of the member that is managed by your Alibaba Cloud account. The member is also an Alibaba Cloud account.
+        # The UID of a member account that is managed by your Alibaba Cloud account.
         self.member_uid = member_uid
         # The ID of the network instance.
         self.network_instance_id = network_instance_id
@@ -52,19 +56,21 @@ class DescribeVpcFirewallCenListRequest(DaraModel):
         self.page_size = page_size
         # The region ID of the VPC.
         # 
-        # > For more information about the regions, see [Supported regions](https://help.aliyun.com/document_detail/195657.html).
+        # > For more information about the regions that Cloud Firewall supports, see [Supported regions](https://help.aliyun.com/document_detail/195657.html).
         self.region_no = region_no
-        # The routing mode of the VPC firewall. Valid values:
+        # The routing mode. Valid values:
         # 
-        # *   **auto**: automatic mode
-        # *   **manual**: manual mode
+        # - **auto**: automatic mode.
         # 
-        # > If you do not specify this parameter, VPC firewalls in all routing modes are queried.
+        # - **manual**: manual mode.
+        # 
+        # > If you leave this parameter empty, VPC firewalls that use all routing modes are queried.
         self.route_mode = route_mode
         # The type of the transit router. Valid values:
         # 
-        # *   **Basic**: Basic Edition transit router
-        # *   **Enterprise**: Enterprise Edition transit router
+        # - **Basic**: Basic Edition transit router.
+        # 
+        # - **Enterprise**: Enterprise Edition transit router.
         self.transit_router_type = transit_router_type
         # The instance ID of the VPC firewall.
         self.vpc_firewall_id = vpc_firewall_id

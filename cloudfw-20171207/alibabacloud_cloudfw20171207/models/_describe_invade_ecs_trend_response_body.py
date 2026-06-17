@@ -17,11 +17,17 @@ class DescribeInvadeEcsTrendResponseBody(DaraModel):
         request_id: str = None,
         start_time: int = None,
     ):
+        # The data list.
         self.data_list = data_list
+        # The end of the time range. This is a UNIX timestamp. Unit: seconds.
         self.end_time = end_time
+        # The time interval.
         self.interval = interval
+        # The total number of compromised hosts.
         self.invade_ecs_count = invade_ecs_count
+        # The ID of the request.
         self.request_id = request_id
+        # The start of the time range. This is a UNIX timestamp. Unit: seconds.
         self.start_time = start_time
 
     def validate(self):
@@ -88,7 +94,9 @@ class DescribeInvadeEcsTrendResponseBodyDataList(DaraModel):
         ecs_count: int = None,
         time: int = None,
     ):
+        # The number of ECS instances.
         self.ecs_count = ecs_count
+        # The timestamp.
         self.time = time
 
     def validate(self):

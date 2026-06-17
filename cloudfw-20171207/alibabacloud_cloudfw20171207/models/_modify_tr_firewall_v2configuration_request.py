@@ -11,14 +11,15 @@ class ModifyTrFirewallV2ConfigurationRequest(DaraModel):
         firewall_name: str = None,
         lang: str = None,
     ):
-        # The instance ID of the VPC firewall.
+        # The ID of the VPC firewall instance.
         self.firewall_id = firewall_id
-        # The instance name of the VPC firewall.
+        # The name of the VPC firewall instance.
         self.firewall_name = firewall_name
-        # The language of the content within the response. Valid values:
+        # The language of the response. Valid values:
         # 
-        # *   **zh** (default): Chinese
-        # *   **en**: English
+        # - **zh** (default): Chinese
+        # 
+        # - **en**: English
         self.lang = lang
 
     def validate(self):

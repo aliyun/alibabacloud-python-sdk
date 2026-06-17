@@ -23,22 +23,39 @@ class DescribeInternetTimeTopRequest(DaraModel):
         traffic_time: str = None,
         traffic_type: str = None,
     ):
+        # The direction of the traffic.
+        # 
         # This parameter is required.
         self.direction = direction
+        # The end of the query time range, specified as a Unix timestamp in seconds.
         self.end_time = end_time
+        # The network type of the IP address.
         self.iptype = iptype
+        # The time interval in seconds.
         self.interval = interval
+        # The language of the response.
         self.lang = lang
+        # The maximum number of entries to return. The value must be between 1 and 50. Default value: 50.
         self.limit = limit
+        # The NAT public IP address. If omitted, traffic data for all assets is returned.
         self.nat_ip = nat_ip
+        # The sort order.
         self.order = order
+        # The metric by which to sort the results.
         self.sort = sort
+        # The identifier for the trace source.
+        # 
         # This parameter is required.
         self.source_code = source_code
+        # The source IP address.
         self.source_ip = source_ip
+        # The source IP address.
         self.src_ip = src_ip
+        # The start of the query time range, specified as a Unix timestamp in seconds.
         self.start_time = start_time
+        # The traffic timestamp to query, specified as a Unix timestamp in seconds.
         self.traffic_time = traffic_time
+        # The traffic type.
         self.traffic_type = traffic_type
 
     def validate(self):

@@ -14,34 +14,37 @@ class ModifyVpcFirewallConfigureRequest(DaraModel):
         vpc_firewall_id: str = None,
         vpc_firewall_name: str = None,
     ):
-        # The language of the content within the request and response. Valid values:
+        # The language of the request and response. Valid values:
         # 
-        # *   **zh**: Chinese (default)
-        # *   **en**: English
+        # - **zh** (default): Chinese.
+        # 
+        # - **en**: English.
         self.lang = lang
-        # The CIDR blocks of the local VPC. The value is a JSON string that contains the following parameters:
+        # The CIDR block information of the local VPC. The value is a JSON string and contains the following parameters:
         # 
-        # *   **RouteTableId**: the ID of the route table for the local VPC.
-        # *   **RouteEntryList**: The value is a JSON string that contains the DestinationCidr and NextHopInstanceId parameters. The DestinationCidr parameter indicates the destination CIDR block of the local VPC. The NextHopInstanceId parameter indicates the instance ID of the next hop for the local VPC.
+        # - **RouteTableId**: The ID of the route table for the local VPC.
         # 
-        # > You can call the [DescribeVpcFirewallDetail](https://help.aliyun.com/document_detail/342892.html) operation to query the CIDR blocks of local VPCs for VPC firewalls.
+        # - **RouteEntryList**: The route entries for the local VPC. This parameter is a JSON string that contains DestinationCidr (the destination CIDR block of the local VPC) and NextHopInstanceId (the ID of the next hop instance for the local VPC).
+        # 
+        # > Call the [DescribeVpcFirewallDetail](https://help.aliyun.com/document_detail/342892.html) operation to query the CIDR block information of the local VPC for the VPC firewall.
         # 
         # This parameter is required.
         self.local_vpc_cidr_table_list = local_vpc_cidr_table_list
-        # The UID of the member that is managed by your Alibaba Cloud account.
+        # The UID of the member account.
         self.member_uid = member_uid
-        # The CIDR blocks of the peer VPC. The value is a JSON string that contains the following parameters:
+        # The CIDR block information of the peer VPC. The value is a JSON string and contains the following parameters:
         # 
-        # *   **RouteTableId**: the ID of the route table for the peer VPC.
-        # *   **RouteEntryList**: The value is a JSON string that contains the DestinationCidr and NextHopInstanceId parameters. The DestinationCidr parameter indicates the destination CIDR block of the peer VPC. The NextHopInstanceId parameter indicates the instance ID of the next hop for the peer VPC.
+        # - **RouteTableId**: The ID of the route table for the peer VPC.
         # 
-        # > You can call the [DescribeVpcFirewallDetail](https://help.aliyun.com/document_detail/342892.html) operation to query the CIDR blocks of peer VPCs for VPC firewalls.
+        # - **RouteEntryList**: The route entries for the peer VPC. This parameter is a JSON string that contains DestinationCidr (the destination CIDR block of the peer VPC) and NextHopInstanceId (the ID of the next hop instance for the peer VPC).
+        # 
+        # > Call the [DescribeVpcFirewallDetail](https://help.aliyun.com/document_detail/342892.html) operation to query the CIDR block information of the peer VPC for the VPC firewall.
         # 
         # This parameter is required.
         self.peer_vpc_cidr_table_list = peer_vpc_cidr_table_list
         # The instance ID of the VPC firewall.
         # 
-        # > You can call the [DescribeVpcFirewallList](https://help.aliyun.com/document_detail/342932.html) operation to query the instance IDs of VPC firewalls.
+        # > Call the [DescribeVpcFirewallList](https://help.aliyun.com/document_detail/342932.html) operation to query the instance IDs of VPC firewalls.
         # 
         # This parameter is required.
         self.vpc_firewall_id = vpc_firewall_id

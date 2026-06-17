@@ -11,8 +11,11 @@ class GetTlsInspectCertificateDownloadUrlResponseBody(DaraModel):
         download_url: str = None,
         request_id: str = None,
     ):
+        # The ID of the CA certificate.
         self.ca_cert_id = ca_cert_id
+        # The download path of the certificate.
         self.download_url = download_url
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

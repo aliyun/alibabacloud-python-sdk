@@ -14,11 +14,11 @@ class DescribeVpcFirewallListResponseBody(DaraModel):
         total_count: int = None,
         vpc_firewalls: List[main_models.DescribeVpcFirewallListResponseBodyVpcFirewalls] = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The total number of VPC firewalls.
         self.total_count = total_count
-        # The information about the VPC firewalls.
+        # The details of the VPC firewalls.
         self.vpc_firewalls = vpc_firewalls
 
     def validate(self):
@@ -78,41 +78,47 @@ class DescribeVpcFirewallListResponseBodyVpcFirewalls(DaraModel):
         vpc_firewall_id: str = None,
         vpc_firewall_name: str = None,
     ):
-        # ACL engine mode.
+        # The mode of the access control list (ACL) engine.
         self.acl_config = acl_config
-        # The bandwidth of the Express Connect circuit. Unit: Mbit/s.
+        # The bandwidth of the Express Connect circuit. Unit: Mbps.
         self.bandwidth = bandwidth
-        # The sub-type of the connection. Valid values:
+        # The subtype of the connection. Valid values:
         # 
-        # *   **vpc2vpc**: Express Connect connection
-        # *   **vpcpeer**: peer connection
+        # - **vpc2vpc**: Express Connect.
+        # 
+        # - **vpcpeer**: peering connection.
         self.connect_sub_type = connect_sub_type
-        # The connection type of the VPC firewall. The value is fixed as **expressconnect**, which indicates an Express Connect connection.
+        # The type of connection for the VPC firewall. The value is fixed as **expressconnect**, which indicates an Express Connect circuit.
         self.connect_type = connect_type
         # The status of the VPC firewall. Valid values:
         # 
-        # *   **opened**: The VPC firewall is enabled.
-        # *   **closed**: The VPC firewall is disabled.
-        # *   **notconfigured**: The VPC firewall is not configured.
+        # - **opened**: The firewall is enabled.
+        # 
+        # - **closed**: The firewall is disabled.
+        # 
+        # - **notconfigured**: The firewall is not configured.
         self.firewall_switch_status = firewall_switch_status
-        # The intrusion prevention system (IPS) configurations.
+        # The configuration of the intrusion prevention system (IPS).
         self.ips_config = ips_config
-        # The details about the local VPC.
+        # The details of the local VPC.
         self.local_vpc = local_vpc
-        # The UID of the member that is managed by your Alibaba Cloud account.
+        # The UID of the member account.
         self.member_uid = member_uid
-        # The details about the peer VPC.
+        # The details of the peer VPC.
         self.peer_vpc = peer_vpc
-        # Indicates whether you can create a VPC firewall in a specified region. Valid values:
+        # The status of the region. Valid values:
         # 
-        # *   **enable**: yes
-        # *   **disable**: no
+        # - **enable**: The region is available. You can create a VPC firewall in this region.
+        # 
+        # - **disable**: The region is unavailable. You cannot create a VPC firewall in this region.
         self.region_status = region_status
-        # The result code of the operation that creates the VPC firewall. Valid values:
+        # The result code of the VPC firewall creation. Valid values:
         # 
-        # *   **Unauthorized**: Cloud Firewall is not authorized to access a VPC for which the VPC firewall is created, and the VPC firewall cannot be created.
-        # *   **RegionDisable**: VPC Firewall is not supported in the region of a VPC for which the VPC firewall is created, and the VPC firewall cannot be created.
-        # *   **Empty string**: You can create a VPC firewall for the network instance.
+        # - **Unauthorized**: An unauthorized VPC exists. You cannot create a VPC firewall.
+        # 
+        # - **RegionDisable**: The VPC is in a region where VPC firewalls are not supported. You cannot create a VPC firewall.
+        # 
+        # - **An empty string**: You can create a VPC firewall for the network instance.
         self.result_code = result_code
         # The instance ID of the VPC firewall.
         self.vpc_firewall_id = vpc_firewall_id
@@ -232,17 +238,17 @@ class DescribeVpcFirewallListResponseBodyVpcFirewallsPeerVpc(DaraModel):
         vpc_id: str = None,
         vpc_name: str = None,
     ):
-        # Indicates whether Cloud Firewall is authorized to access the peer VPC. The value is fixed as **authorized**, which indicates that Cloud Firewall is authorized to access the peer VPC.
+        # The authorization status of the peer VPC. The value is fixed as **authorized**.
         self.authorization_status = authorization_status
         # The UID of the Alibaba Cloud account to which the peer VPC belongs.
         self.owner_id = owner_id
         # The region ID of the peer VPC.
         self.region_no = region_no
-        # An array that consists of the CIDR blocks of the peer VPC.
+        # The CIDR blocks of the peer VPC.
         self.vpc_cidr_table_list = vpc_cidr_table_list
-        # The ID of the peer VPC.
+        # The instance ID of the peer VPC.
         self.vpc_id = vpc_id
-        # The name of the peer VPC.
+        # The instance name of the peer VPC.
         self.vpc_name = vpc_name
 
     def validate(self):
@@ -309,7 +315,7 @@ class DescribeVpcFirewallListResponseBodyVpcFirewallsPeerVpcVpcCidrTableList(Dar
         route_entry_list: List[main_models.DescribeVpcFirewallListResponseBodyVpcFirewallsPeerVpcVpcCidrTableListRouteEntryList] = None,
         route_table_id: str = None,
     ):
-        # An array that consists of the route entries of the peer VPC.
+        # The route entries of the peer VPC.
         self.route_entry_list = route_entry_list
         # The ID of the route table for the peer VPC.
         self.route_table_id = route_table_id
@@ -356,7 +362,7 @@ class DescribeVpcFirewallListResponseBodyVpcFirewallsPeerVpcVpcCidrTableListRout
     ):
         # The destination CIDR block of the peer VPC.
         self.destination_cidr = destination_cidr
-        # The instance ID of the next hop for the peer VPC.
+        # The ID of the next hop instance for the peer VPC.
         self.next_hop_instance_id = next_hop_instance_id
 
     def validate(self):
@@ -395,17 +401,17 @@ class DescribeVpcFirewallListResponseBodyVpcFirewallsLocalVpc(DaraModel):
         vpc_id: str = None,
         vpc_name: str = None,
     ):
-        # Indicates whether Cloud Firewall is authorized to access the local VPC. The value is fixed as authorized, which indicates that Cloud Firewall is authorized to access the local VPC.
+        # The authorization status of the local VPC. The value is fixed as authorized.
         self.authorization_status = authorization_status
         # The UID of the Alibaba Cloud account to which the local VPC belongs.
         self.owner_id = owner_id
         # The region ID of the local VPC.
         self.region_no = region_no
-        # An array that consists of the CIDR blocks of the local VPC.
+        # The CIDR blocks of the local VPC.
         self.vpc_cidr_table_list = vpc_cidr_table_list
-        # The ID of the local VPC.
+        # The instance ID of the local VPC.
         self.vpc_id = vpc_id
-        # The name of the local VPC.
+        # The instance name of the local VPC.
         self.vpc_name = vpc_name
 
     def validate(self):
@@ -472,7 +478,7 @@ class DescribeVpcFirewallListResponseBodyVpcFirewallsLocalVpcVpcCidrTableList(Da
         route_entry_list: List[main_models.DescribeVpcFirewallListResponseBodyVpcFirewallsLocalVpcVpcCidrTableListRouteEntryList] = None,
         route_table_id: str = None,
     ):
-        # An array that consists of the route entries of the local VPC.
+        # The route entries of the local VPC.
         self.route_entry_list = route_entry_list
         # The ID of the route table for the local VPC.
         self.route_table_id = route_table_id
@@ -519,7 +525,7 @@ class DescribeVpcFirewallListResponseBodyVpcFirewallsLocalVpcVpcCidrTableListRou
     ):
         # The destination CIDR block of the local VPC.
         self.destination_cidr = destination_cidr
-        # The instance ID of the next hop for the local VPC.
+        # The ID of the next hop instance for the local VPC.
         self.next_hop_instance_id = next_hop_instance_id
 
     def validate(self):
@@ -556,26 +562,31 @@ class DescribeVpcFirewallListResponseBodyVpcFirewallsIpsConfig(DaraModel):
         rule_class: int = None,
         run_mode: int = None,
     ):
-        # Indicates whether basic protection is enabled. Valid values:
+        # The status of the basic policies. Valid values:
         # 
-        # *   **1**: yes
-        # *   **0**: no
+        # - **1**: enabled.
+        # 
+        # - **0**: disabled.
         self.basic_rules = basic_rules
-        # Indicates whether virtual patching is enabled. Valid values:
+        # The status of virtual patching. Valid values:
         # 
-        # *   **1**: yes
-        # *   **0**: no
+        # - **1**: enabled.
+        # 
+        # - **0**: disabled.
         self.enable_all_patch = enable_all_patch
-        # The level of the rule group for the IPS. Valid values:
+        # The IPS rule group. Valid values:
         # 
-        # *   **1**: loose
-        # *   **2**: medium
-        # *   **3**: strict
+        # - **1**: Loose.
+        # 
+        # - **2**: Medium.
+        # 
+        # - **3**: Strict.
         self.rule_class = rule_class
-        # The mode of the IPS. Valid values:
+        # The IPS mode. Valid values:
         # 
-        # *   **1**: block mode
-        # *   **0**: monitor mode
+        # - **1**: Block Mode.
+        # 
+        # - **0**: Monitor mode.
         self.run_mode = run_mode
 
     def validate(self):
@@ -621,10 +632,11 @@ class DescribeVpcFirewallListResponseBodyVpcFirewallsAclConfig(DaraModel):
         self,
         strict_mode: int = None,
     ):
-        # Specifies whether to enable the strict mode. Valid values:
+        # Indicates whether to enable strict mode. Valid values:
         # 
-        # *   1: yes
-        # *   0: no
+        # - 1: enabled
+        # 
+        # - 0: disabled
         # 
         # This parameter is required.
         self.strict_mode = strict_mode

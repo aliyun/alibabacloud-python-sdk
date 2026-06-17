@@ -13,7 +13,9 @@ class DescribeRiskEventTopAttackAssetResponseBody(DaraModel):
         assets: List[main_models.DescribeRiskEventTopAttackAssetResponseBodyAssets] = None,
         request_id: str = None,
     ):
+        # The statistics of the assets.
         self.assets = assets
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -61,12 +63,19 @@ class DescribeRiskEventTopAttackAssetResponseBodyAssets(DaraModel):
         resource_instance_name: str = None,
         resource_type: str = None,
     ):
+        # The number of attacks.
         self.attack_cnt = attack_cnt
+        # The number of dropped attempts.
         self.drop_cnt = drop_cnt
+        # The IP address.
         self.ip = ip
+        # The region ID.
         self.region_no = region_no
+        # The ID of the asset instance.
         self.resource_instance_id = resource_instance_id
+        # The name of the resource instance.
         self.resource_instance_name = resource_instance_name
+        # The type of the resource instance.
         self.resource_type = resource_type
 
     def validate(self):

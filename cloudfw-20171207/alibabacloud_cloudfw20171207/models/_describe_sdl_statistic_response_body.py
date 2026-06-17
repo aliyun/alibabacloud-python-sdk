@@ -13,7 +13,9 @@ class DescribeSdlStatisticResponseBody(DaraModel):
         request_id: str = None,
         sdl_statistic_resp: main_models.DescribeSdlStatisticResponseBodySdlStatisticResp = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The details of the sensitive data.
         self.sdl_statistic_resp = sdl_statistic_resp
 
     def validate(self):
@@ -51,8 +53,11 @@ class DescribeSdlStatisticResponseBodySdlStatisticResp(DaraModel):
         sdl_dst_top_list: List[main_models.DescribeSdlStatisticResponseBodySdlStatisticRespSdlDstTopList] = None,
         sdl_event_type_count_list: List[main_models.DescribeSdlStatisticResponseBodySdlStatisticRespSdlEventTypeCountList] = None,
     ):
+        # A ranked list of sensitive data assets.
         self.sdl_asset_top_list = sdl_asset_top_list
+        # A ranked list of sensitive data destinations.
         self.sdl_dst_top_list = sdl_dst_top_list
+        # A list of counts for each sensitive data event type.
         self.sdl_event_type_count_list = sdl_event_type_count_list
 
     def validate(self):
@@ -119,7 +124,9 @@ class DescribeSdlStatisticResponseBodySdlStatisticRespSdlEventTypeCountList(Dara
         count: str = None,
         event_type: str = None,
     ):
+        # The total number of entries.
         self.count = count
+        # The event type.
         self.event_type = event_type
 
     def validate(self):
@@ -154,7 +161,9 @@ class DescribeSdlStatisticResponseBodySdlStatisticRespSdlDstTopList(DaraModel):
         public_ip: str = None,
         traffic_bytes: int = None,
     ):
+        # The public IP address.
         self.public_ip = public_ip
+        # The amount of traffic in bytes.
         self.traffic_bytes = traffic_bytes
 
     def validate(self):
@@ -190,8 +199,11 @@ class DescribeSdlStatisticResponseBodySdlStatisticRespSdlAssetTopList(DaraModel)
         public_ip: str = None,
         traffic_bytes: int = None,
     ):
+        # The asset type.
         self.asset_type = asset_type
+        # The public IP address.
         self.public_ip = public_ip
+        # The amount of traffic in bytes.
         self.traffic_bytes = traffic_bytes
 
     def validate(self):

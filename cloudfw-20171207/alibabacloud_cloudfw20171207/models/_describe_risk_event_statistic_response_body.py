@@ -13,10 +13,15 @@ class DescribeRiskEventStatisticResponseBody(DaraModel):
         drop_cnt: int = None,
         request_id: str = None,
     ):
+        # The number of attacked applications.
         self.attack_app_cnt = attack_app_cnt
+        # The attack count.
         self.attack_cnt = attack_cnt
+        # The number of attacked assets.
         self.attack_ip_cnt = attack_ip_cnt
+        # The drop count.
         self.drop_cnt = drop_cnt
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

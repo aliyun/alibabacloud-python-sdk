@@ -10,8 +10,11 @@ class DescribeAclChecksRequest(DaraModel):
         acl_type: str = None,
         lang: str = None,
     ):
+        # The type of ACL check.
+        # 
         # This parameter is required.
         self.acl_type = acl_type
+        # The language.
         self.lang = lang
 
     def validate(self):

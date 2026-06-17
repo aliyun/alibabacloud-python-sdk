@@ -10,7 +10,7 @@ class ModifyControlPolicyPriorityRequest(DaraModel):
         acl_uuid: str = None,
         order: str = None,
     ):
-        # The UUID of the access control policy.
+        # The unique ID of the access control policy.
         # 
         # This parameter is required.
         self.acl_uuid = acl_uuid

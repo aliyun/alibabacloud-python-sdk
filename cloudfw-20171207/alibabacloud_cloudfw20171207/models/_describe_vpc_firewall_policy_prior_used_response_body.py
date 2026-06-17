@@ -11,11 +11,11 @@ class DescribeVpcFirewallPolicyPriorUsedResponseBody(DaraModel):
         request_id: str = None,
         start: int = None,
     ):
-        # The lowest priority for the access control policies.
+        # The lowest priority of the policies.
         self.end = end
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The highest priority for the access control policies.
+        # The highest priority of the policies.
         self.start = start
 
     def validate(self):

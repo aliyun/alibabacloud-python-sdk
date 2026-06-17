@@ -12,6 +12,7 @@ class ModifyThreatIntelligenceSwitchRequest(DaraModel):
         self,
         category_list: List[main_models.ModifyThreatIntelligenceSwitchRequestCategoryList] = None,
     ):
+        # The list of threat intelligence categories.
         self.category_list = category_list
 
     def validate(self):
@@ -49,8 +50,19 @@ class ModifyThreatIntelligenceSwitchRequestCategoryList(DaraModel):
         category_id: str = None,
         enable_status: str = None,
     ):
+        # The action of the rule. Valid values:
+        # 
+        # - **alert**: observation
+        # 
+        # - **drop**: block
         self.action = action
+        # The ID of the threat intelligence category.
         self.category_id = category_id
+        # The status of the switch. Valid values:
+        # 
+        # - **1**: enabled
+        # 
+        # - **0**: disabled
         self.enable_status = enable_status
 
     def validate(self):

@@ -28,45 +28,47 @@ class DescribeInvadeEventListRequest(DaraModel):
     ):
         # The IP address of the affected asset.
         self.assets_ip = assets_ip
-        # The ID of the instance.
+        # The ID of the affected instance.
         self.assets_instance_id = assets_instance_id
-        # The name of the instance.
+        # The name of the affected instance.
         self.assets_instance_name = assets_instance_name
         # The number of the page to return.
         # 
-        # Default value: 1.
+        # Default: 1.
         self.current_page = current_page
-        # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds. If you do not specify this parameter, the query ends at the current time.
+        # The end of the time range to query. This must be a UNIX timestamp in seconds. If you omit this parameter, the query defaults to the current time.
         self.end_time = end_time
-        # The ID of the breach awareness event.
+        # A unique identifier for the breach awareness event.
         self.event_key = event_key
         # The name of the breach awareness event.
         self.event_name = event_name
-        # The UUID of the breach awareness event.
+        # The universally unique identifier (UUID) of the breach awareness event.
         self.event_uuid = event_uuid
-        # Specifies whether the breach awareness event is ignored. Valid values:
+        # Specifies whether to query for ignored breach awareness events. Valid values:
         # 
-        # *   **true**: The breach awareness event is ignored.
-        # *   **false**: The breach awareness event is not ignored.
+        # - **true**: Ignored.
+        # 
+        # - **false**: Not ignored.
         self.is_ignore = is_ignore
-        # The language of the content within the response. Valid values:
+        # The language of the response. Valid values:
         # 
-        # *   **zh**: Chinese (default)
-        # *   **en**: English
+        # - **zh** (default): Chinese.
+        # 
+        # - **en**: English.
         self.lang = lang
-        # The ID of the member.
+        # The UID of the member account.
         self.member_uid = member_uid
-        # The number of entries to return on each page.
+        # The number of entries to return per page.
         # 
-        # Default value: 6. Maximum value: 10.
+        # Default: 6. Maximum: 10.
         self.page_size = page_size
-        # The handling status of breach awareness events.
+        # An array of processing statuses to filter events by. Only events with a status specified in this array are returned.
         self.process_status_list = process_status_list
-        # The risk levels.
+        # An array of risk levels to filter events by. Only events with a risk level specified in this array are returned.
         self.risk_level = risk_level
-        # The source IP address of the request.
+        # The source IP address that initiated the event.
         self.source_ip = source_ip
-        # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds. If you do not specify this parameter, the query starts from 30 days before the current time.
+        # The start of the time range to query. This must be a UNIX timestamp in seconds. If you omit this parameter, the query defaults to the last 30 days.
         self.start_time = start_time
 
     def validate(self):

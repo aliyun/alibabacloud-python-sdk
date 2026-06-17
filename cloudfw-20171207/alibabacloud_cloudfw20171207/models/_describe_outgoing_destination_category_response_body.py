@@ -14,8 +14,11 @@ class DescribeOutgoingDestinationCategoryResponseBody(DaraModel):
         total_count: int = None,
         type_list: List[main_models.DescribeOutgoingDestinationCategoryResponseBodyTypeList] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
+        # The list of outbound connection categories.
         self.type_list = type_list
 
     def validate(self):
@@ -66,9 +69,13 @@ class DescribeOutgoingDestinationCategoryResponseBodyTypeList(DaraModel):
         type_id: str = None,
         type_name: str = None,
     ):
+        # The list of outbound connection categories.
         self.category_list = category_list
+        # The description of the fixed category.
         self.type_describe = type_describe
+        # The fixed category ID.
         self.type_id = type_id
+        # The name of the fixed category.
         self.type_name = type_name
 
     def validate(self):
@@ -125,9 +132,13 @@ class DescribeOutgoingDestinationCategoryResponseBodyTypeListCategoryList(DaraMo
         category_name: str = None,
         class_id: str = None,
     ):
+        # The description of the outbound connection category.
         self.category_describe = category_describe
+        # The ID of the outbound connection category.
         self.category_id = category_id
+        # The name of the outbound connection category.
         self.category_name = category_name
+        # The classification ID of the outbound connection category.
         self.class_id = class_id
 
     def validate(self):

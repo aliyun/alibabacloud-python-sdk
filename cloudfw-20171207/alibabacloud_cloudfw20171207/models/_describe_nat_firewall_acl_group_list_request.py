@@ -9,6 +9,7 @@ class DescribeNatFirewallAclGroupListRequest(DaraModel):
         self,
         lang: str = None,
     ):
+        # The language of the request and response.
         self.lang = lang
 
     def validate(self):

@@ -15,35 +15,41 @@ class DescribeDefaultIPSConfigResponseBody(DaraModel):
         rule_class: int = None,
         run_mode: int = None,
     ):
-        # Indicates whether basic protection is enabled. Valid values:
+        # The status of the basic policies feature. Valid values:
         # 
-        # *   **1**: yes
-        # *   **0**: no
+        # - **1**: enabled
+        # 
+        # - **0**: disabled
         self.basic_rules = basic_rules
-        # Indicates whether threat intelligence is enabled. Valid values:
+        # The status of the threat intelligence feature. Valid values:
         # 
-        # *   **1**: yes
-        # *   **0**: no
+        # - **1**: enabled
+        # 
+        # - **0**: disabled
         self.cti_rules = cti_rules
-        # The maximum amount of traffic that can be processed by the sensitive data leak detection feature each day.
+        # The maximum daily traffic that can be scanned for sensitive data.
         self.max_sdl = max_sdl
-        # Indicates whether virtual patching is enabled. Valid values:
+        # The status of the virtual patching feature. Valid values:
         # 
-        # *   **1**: yes
-        # *   **0**: no
+        # - **1**: enabled
+        # 
+        # - **0**: disabled
         self.patch_rules = patch_rules
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The level of the rule group for the IPS. Valid values:
+        # The strictness level of the intrusion prevention system (IPS) rules. Valid values:
         # 
-        # *   **1**: loose
-        # *   **2**: medium
-        # *   **3**: strict
+        # - **1**: Loose
+        # 
+        # - **2**: Medium
+        # 
+        # - **3**: Strict
         self.rule_class = rule_class
         # The mode of the IPS. Valid values:
         # 
-        # *   **1**: block mode
-        # *   **0**: monitor mode
+        # - **1**: Block Mode
+        # 
+        # - **0**: Monitor Mode
         self.run_mode = run_mode
 
     def validate(self):

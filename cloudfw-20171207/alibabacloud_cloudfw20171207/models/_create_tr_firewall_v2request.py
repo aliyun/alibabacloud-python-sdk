@@ -29,35 +29,37 @@ class CreateTrFirewallV2Request(DaraModel):
         self.firewall_description = firewall_description
         # The name of the firewall.
         self.firewall_name = firewall_name
-        # The subnet CIDR block of the VPC in which the ENI of the firewall is stored in automatic mode.
+        # The CIDR block of the vSwitch in the firewall VPC that hosts the firewall\\"s elastic network interface (ENI). This parameter applies only in automatic mode.
         self.firewall_subnet_cidr = firewall_subnet_cidr
-        # The CIDR block that is allocated to the VPC created for the VPC firewall in automatic mode.
+        # The CIDR block of the firewall VPC in automatic mode.
         self.firewall_vpc_cidr = firewall_vpc_cidr
-        # The ID of the VPC in which the ENI associated with the VPC firewall is created in manual mode.
+        # The ID of the VPC where the firewall ENI is created. This parameter applies only in manual mode.
         self.firewall_vpc_id = firewall_vpc_id
-        # The ID of the vSwitch that is used to create the ENI in manual mode.
+        # The ID of the vSwitch where the firewall ENI is created. This parameter applies only in manual mode.
         self.firewall_vswitch_id = firewall_vswitch_id
-        # The language of the content within the response. Valid values:
+        # The language of the response message. Valid values:
         # 
-        # *   **zh**: Chinese (default)
-        # *   **en**: English
+        # - **zh** (default): Chinese
+        # 
+        # - **en**: English
         self.lang = lang
-        # The region ID of the route router.
+        # The region ID of the transit router instance.
         self.region_no = region_no
-        # The routing mode of the VPC firewall. Valid values:
+        # The routing mode. Valid values:
         # 
-        # *   **managed**: automatic mode
-        # *   **manual**: manual mode
+        # - **managed**: automatic mode
+        # 
+        # - **manual**: manual mode
         self.route_mode = route_mode
-        # The primary subnet CIDR block that the VPC uses to connect to the transit router in automatic mode.
+        # The CIDR block of the primary vSwitch used to connect to the transit router. This parameter applies only in automatic mode.
         self.tr_attachment_master_cidr = tr_attachment_master_cidr
         # The primary zone for the vSwitch.
         self.tr_attachment_master_zone = tr_attachment_master_zone
-        # The secondary subnet CIDR block that the VPC uses to connect to the transit router in automatic mode.
+        # The CIDR block of the secondary vSwitch used to connect to the transit router. This parameter applies only in automatic mode.
         self.tr_attachment_slave_cidr = tr_attachment_slave_cidr
         # The secondary zone for the vSwitch.
         self.tr_attachment_slave_zone = tr_attachment_slave_zone
-        # The ID of the transit router.
+        # The ID of the transit router instance.
         self.transit_router_id = transit_router_id
 
     def validate(self):

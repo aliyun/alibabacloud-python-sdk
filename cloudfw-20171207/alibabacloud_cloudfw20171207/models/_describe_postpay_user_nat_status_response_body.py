@@ -13,13 +13,15 @@ class DescribePostpayUserNatStatusResponseBody(DaraModel):
     ):
         # Id of the request
         self.request_id = request_id
-        # The status of the NAT Firewall feature. Valid values:
+        # The status of the NAT border firewall. Valid values:
         # 
-        # *   **open**: enabled
-        # *   **init**: being enabled
-        # *   **closed**: disabled
+        # - **open**: The feature is enabled.
+        # 
+        # - **init**: The feature is being enabled.
+        # 
+        # - **closed**: The feature is disabled.
         self.status = status
-        # The number of days during which no asset is added to the NAT Firewall feature for protection. This parameter is valid only when the value of Status is open.
+        # The number of days that protection was disabled. This parameter is returned only when the NAT border firewall is enabled.
         self.unprotected_date = unprotected_date
 
     def validate(self):

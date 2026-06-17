@@ -15,12 +15,29 @@ class CreateVpcFirewallPrecheckRequest(DaraModel):
         transit_router_id: str = None,
         vpc_id: str = None,
     ):
+        # The ID of the Cloud Enterprise Network (CEN) instance.
         self.cen_id = cen_id
+        # The language of the request and response. Valid values:
+        # 
+        # - **zh** (default): Chinese.
+        # 
+        # - **en**: English.
         self.lang = lang
+        # The UID of the member account of Cloud Firewall.
         self.member_uid = member_uid
+        # The type of the network instance. Valid values:
+        # 
+        # - **cen_firewall**
+        # 
+        # - **cen_tr_firewall**
+        # 
+        # - **ec_firewall**
         self.network_instance_type = network_instance_type
+        # The region.
         self.region = region
+        # The ID of the transit router instance.
         self.transit_router_id = transit_router_id
+        # The ID of the VPC instance.
         self.vpc_id = vpc_id
 
     def validate(self):

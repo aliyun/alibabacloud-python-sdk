@@ -1,3 +1,19 @@
+2026-06-17 Version: 9.0.0
+- Support API DescribeIPSRules.
+- Update API DescribeACLProtectTrend: add request parameters FirewallType.
+- Update API DescribeACLProtectTrend: add request parameters Interval.
+- Update API DescribeACLProtectTrend: add response parameters Body.TotalAlertCnt.
+- Update API DescribeACLProtectTrend: add response parameters Body.TotalPassCnt.
+- Update API DescribeACLProtectTrend: add response parameters Body.TrendList.$.AlertCnt.
+- Update API DescribeACLProtectTrend: add response parameters Body.TrendList.$.PassCnt.
+- Update API DescribeTrafficLog: add request parameters RuleSourceFinal.
+- Update API DescribeTrafficLog: add response parameters Body.DataList.$.Rules.$.RuleSource.
+- Update API DescribeUserAlarmConfig: delete response parameters Body.NotifyConfig.
+- Update API ModifyUserAlarmConfig: update request parameters ContactConfig.$.Status' type has changed.
+- Update API ModifyUserAlarmConfig: update request parameters ContactConfig.$.Status' format has changed.
+- Update API ModifyUserAlarmConfig: delete request parameters NotifyConfig.
+
+
 2026-03-25 Version: 8.0.4
 - Update API DescribeAddressBook: add request parameters GroupUuid.
 

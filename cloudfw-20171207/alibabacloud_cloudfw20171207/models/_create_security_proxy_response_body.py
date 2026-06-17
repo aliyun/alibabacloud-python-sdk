@@ -12,7 +12,7 @@ class CreateSecurityProxyResponseBody(DaraModel):
     ):
         # The ID of the NAT firewall.
         self.proxy_id = proxy_id
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

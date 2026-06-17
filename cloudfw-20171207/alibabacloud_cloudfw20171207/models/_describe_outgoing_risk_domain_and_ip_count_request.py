@@ -10,7 +10,9 @@ class DescribeOutgoingRiskDomainAndIpCountRequest(DaraModel):
         end_time: int = None,
         start_time: int = None,
     ):
+        # The end of the time range to query. The value is a UNIX timestamp that is accurate to the second.
         self.end_time = end_time
+        # The beginning of the time range to query. The value is a UNIX timestamp that is accurate to the second.
         self.start_time = start_time
 
     def validate(self):

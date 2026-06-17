@@ -9,7 +9,7 @@ class DescribeUserBuyVersionRequest(DaraModel):
         self,
         instance_id: str = None,
     ):
-        # Instance ID. If the Instance ID is provided, the query will be based on this ID. If not provided, the latest instance will be queried by default.
+        # The ID of the instance. If you specify this parameter, the query is performed based on the instance ID. If you leave this parameter empty, the latest instance is queried by default.
         self.instance_id = instance_id
 
     def validate(self):

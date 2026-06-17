@@ -23,21 +23,29 @@ class AddAddressBookRequest(DaraModel):
         tag_list: List[main_models.AddAddressBookRequestTagList] = None,
         tag_relation: str = None,
     ):
+        # The ID of the ACK cluster connector. You can obtain this value from the following operation:
+        # 
+        # - [DescribeAckClusterConnectors](~~DescribeAckClusterConnectors~~): Queries a list of ACK cluster connectors.
         self.ack_cluster_connector_id = ack_cluster_connector_id
+        # The list of ACK cluster pod labels.
+        # 
+        # > You can specify a maximum of 10 labels.
         self.ack_labels = ack_labels
+        # The list of ACK cluster pod namespaces.
+        # 
+        # > You can specify a maximum of 10 namespaces.
         self.ack_namespaces = ack_namespaces
-        # The addresses that you want to add to the address book. Separate multiple addresses with commas (,).
+        # The list of addresses in the address book. Separate multiple addresses with commas (,). For each address, separate the address and its description with a space.
         # 
-        # >  If you set GroupType to `ip`, `port` or `domain`, you must specify AddressList.
+        # > This parameter is required when GroupType is set to `ip`, `port`, or `domain`.
         # 
-        # *   If you set GroupType to `ip`, you must add IP addresses to the address book. Example: 192.0.XX.XX/32,192.0.XX.XX/24.
-        # *   If you set GroupType to `port`, you must add port numbers or port ranges to the address book. Example: 80,100/200.
-        # *   If you set GroupType to `domain`, you must add domain names to the address book. Example: example.com,aliyundoc.com.
+        # - If you set GroupType to `ip`, enter IP addresses in the list. Example: 192.0.XX.XX/32 development segment,10.0.0.X/24,192.0.XX.XX/24 test segment.
+        # 
+        # - If you set GroupType to `port`, enter ports or port ranges in the list. Example: 80 HTTP port,100/200,3306 database port.
+        # 
+        # - If you set GroupType to `domain`, enter domain names in the list. Example: example.com test domain name,aliyundoc.com,www\\.aliyun.com Alibaba Cloud official website.
         self.address_list = address_list
-        # Specifies whether to automatically add public IP addresses of ECS instances to the address book if the instances match the specified tags. Valid values:
-        # 
-        # *   **1**: yes
-        # *   **0** (default): no
+        # Specifies whether to automatically add the public IP addresses of ECS instances that match the specified tags to the address book.
         self.auto_add_tag_ecs = auto_add_tag_ecs
         # The description of the address book.
         # 
@@ -47,28 +55,17 @@ class AddAddressBookRequest(DaraModel):
         # 
         # This parameter is required.
         self.group_name = group_name
-        # The type of the address book. Valid values:
-        # 
-        # *   **ip**: IP address book
-        # *   **domain**: domain address book
-        # *   **port**: port address book
-        # *   **tag**: ECS tag-based address book
+        # The type of the address book.
         # 
         # This parameter is required.
         self.group_type = group_type
-        # The language of the content within the response. Valid values:
-        # 
-        # *   **zh** (default): Chinese
-        # *   **en**: English
+        # The language of the address book description.
         self.lang = lang
-        # The source IP address of the request.
+        # The source IP address of the visitor.
         self.source_ip = source_ip
-        # The ECS tags that you want to match.
+        # The list of ECS tags.
         self.tag_list = tag_list
-        # The logical relation among the ECS tags that you want to match. Valid values:
-        # 
-        # *   **and** (default): Only the public IP addresses of ECS instances that match all the specified tags can be added to the address book.
-        # *   **or**: The public IP addresses of ECS instances that match one of the specified tags can be added to the address book.
+        # The logical relationship between multiple ECS tags.
         self.tag_relation = tag_relation
 
     def validate(self):
@@ -219,7 +216,9 @@ class AddAddressBookRequestAckLabels(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the ACK cluster pod label.
         self.key = key
+        # The value of the ACK cluster pod label.
         self.value = value
 
     def validate(self):

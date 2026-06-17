@@ -13,11 +13,18 @@ class DescribePrivateDnsDomainNameListRequest(DaraModel):
         page_size: int = None,
         region_no: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.access_instance_id = access_instance_id
+        # The domain name.
         self.domain_name = domain_name
+        # The page number.
         self.page_no = page_no
+        # The number of the page to return.
         self.page_size = page_size
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_no = region_no
 

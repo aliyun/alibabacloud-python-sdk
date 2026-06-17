@@ -13,7 +13,9 @@ class DescribeRiskEventTopAttackAppResponseBody(DaraModel):
         attack_apps: List[main_models.DescribeRiskEventTopAttackAppResponseBodyAttackApps] = None,
         request_id: str = None,
     ):
+        # The list of attacked applications.
         self.attack_apps = attack_apps
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -57,8 +59,11 @@ class DescribeRiskEventTopAttackAppResponseBodyAttackApps(DaraModel):
         attack_cnt: int = None,
         drop_cnt: int = None,
     ):
+        # The name of the application.
         self.app = app
+        # The number of attacks.
         self.attack_cnt = attack_cnt
+        # The number of intercepted attacks.
         self.drop_cnt = drop_cnt
 
     def validate(self):

@@ -12,11 +12,25 @@ class UpdateSecurityProxyRequest(DaraModel):
         proxy_name: str = None,
         strict_mode: int = None,
     ):
+        # The language of the response. Valid values:
+        # 
+        # - **zh** (default): Chinese.
+        # 
+        # - **en**: English.
         self.lang = lang
+        # The ID of the NAT firewall.
+        # 
         # This parameter is required.
         self.proxy_id = proxy_id
+        # The name of the NAT firewall. The name must be 4 to 50 characters long. It can contain letters, digits, Chinese characters, and underscores (_). The name cannot start with an underscore (_).
+        # 
         # This parameter is required.
         self.proxy_name = proxy_name
+        # Specifies whether to enable strict mode. Valid values:
+        # 
+        # - 1: strict mode
+        # 
+        # - 0: loose mode
         self.strict_mode = strict_mode
 
     def validate(self):

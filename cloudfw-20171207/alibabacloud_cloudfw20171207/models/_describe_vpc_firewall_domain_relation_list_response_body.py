@@ -15,9 +15,13 @@ class DescribeVpcFirewallDomainRelationListResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of data entries.
         self.data_list = data_list
+        # A list of destination VPCs.
         self.dst_vpc_list = dst_vpc_list
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -81,7 +85,9 @@ class DescribeVpcFirewallDomainRelationListResponseBodyDstVpcList(DaraModel):
         vpc_id: str = None,
         vpc_name: str = None,
     ):
+        # The ID of the destination VPC.
         self.vpc_id = vpc_id
+        # The name of the destination VPC.
         self.vpc_name = vpc_name
 
     def validate(self):
@@ -132,23 +138,41 @@ class DescribeVpcFirewallDomainRelationListResponseBodyDataList(DaraModel):
         src_vpc_name: str = None,
         total_bytes: int = None,
     ):
+        # The business category of the website.
         self.business = business
+        # The domain name.
         self.domain = domain
+        # The destination IP address.
         self.dst_ip = dst_ip
+        # The ID of the destination region.
         self.dst_region_id = dst_region_id
+        # The ID of the destination VPC.
         self.dst_vpc_id = dst_vpc_id
+        # The name of the destination VPC.
         self.dst_vpc_name = dst_vpc_name
+        # The Unix timestamp for the first access, in seconds.
         self.first_time = first_time
+        # The name of the organization.
         self.group_name = group_name
+        # The IPS hit count.
         self.ips_hit_cnt = ips_hit_cnt
+        # The Unix timestamp for the last access, in seconds.
         self.last_time = last_time
+        # The request traffic, in bytes.
         self.request_bytes = request_bytes
+        # The response traffic, in bytes.
         self.response_bytes = response_bytes
+        # The total number of sessions.
         self.session_count = session_count
+        # The source IP address.
         self.src_ip = src_ip
+        # The ID of the source region.
         self.src_region_id = src_region_id
+        # The ID of the source VPC.
         self.src_vpc_id = src_vpc_id
+        # The name of the source VPC.
         self.src_vpc_name = src_vpc_name
+        # The total traffic, in bytes.
         self.total_bytes = total_bytes
 
     def validate(self):

@@ -14,8 +14,11 @@ class DescribeSdlEventListResponseBody(DaraModel):
         sdl_event_detail_list: List[main_models.DescribeSdlEventListResponseBodySdlEventDetailList] = None,
         total_count: int = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # An array of data leakage events.
         self.sdl_event_detail_list = sdl_event_detail_list
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -90,33 +93,67 @@ class DescribeSdlEventListResponseBodySdlEventDetailList(DaraModel):
         traffic_bytes: int = None,
         uuid: str = None,
     ):
+        # The asset name.
         self.asset_name = asset_name
+        # The private IP address of the asset.
         self.asset_private_ip = asset_private_ip
+        # The asset type.
         self.asset_type = asset_type
+        # The intelligence tag category. Valid values:
+        # 
+        # - **Suspicious**: suspicious
+        # 
+        # - **Malicious**: malicious
+        # 
+        # - **Trusted**: trusted
         self.category_class_id = category_class_id
+        # The category name.
         self.category_name = category_name
+        # The city ID.
         self.city_id = city_id
+        # The country ID.
         self.country_id = country_id
+        # The destination IP address.
         self.dst_ip = dst_ip
+        # The destination port.
         self.dst_port_list = dst_port_list
+        # The number of events.
         self.event_cnt = event_cnt
+        # The event\\"s risk level.
         self.event_level = event_level
+        # The event name.
         self.event_name = event_name
+        # The first time the event occurred, as a Unix timestamp in seconds.
         self.first_time = first_time
+        # The last time the event occurred, as a Unix timestamp in seconds.
         self.last_time = last_time
+        # The location of the destination IP address.
         self.location_name = location_name
+        # The payload of the intrusion prevention event.
         self.payload = payload
+        # The protocol.
         self.proto_list = proto_list
+        # The region ID.
         self.region_id = region_id
+        # The resource ID.
         self.resource_id = resource_id
+        # The resource type.
         self.resource_id_type = resource_id_type
+        # The number of sensitive data items.
         self.sensitive_data_cnt = sensitive_data_cnt
+        # An array of sensitive data.
         self.sensitive_data_list = sensitive_data_list
+        # The sensitive data level.
         self.sensitive_level = sensitive_level
+        # The sensitive data type.
         self.sensitive_type = sensitive_type
+        # The source IP address.
         self.src_ip = src_ip
+        # The source port.
         self.src_port_list = src_port_list
+        # The traffic volume in bytes.
         self.traffic_bytes = traffic_bytes
+        # The unique identifier for the event.
         self.uuid = uuid
 
     def validate(self):

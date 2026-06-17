@@ -11,8 +11,11 @@ class ModifyResourceTypeAutoEnableRequest(DaraModel):
         region_no: str = None,
         resource_type_auto_enable: str = None,
     ):
+        # The language of the response message.
         self.lang = lang
+        # The ID of the region.
         self.region_no = region_no
+        # Specifies whether to enable automatic protection for the resource type.
         self.resource_type_auto_enable = resource_type_auto_enable
 
     def validate(self):

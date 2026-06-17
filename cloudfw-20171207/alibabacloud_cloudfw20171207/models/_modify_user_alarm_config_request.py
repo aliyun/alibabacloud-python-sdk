@@ -14,17 +14,22 @@ class ModifyUserAlarmConfigRequest(DaraModel):
         alarm_lang: str = None,
         contact_config: List[main_models.ModifyUserAlarmConfigRequestContactConfig] = None,
         lang: str = None,
-        notify_config: List[main_models.ModifyUserAlarmConfigRequestNotifyConfig] = None,
         source_ip: str = None,
         use_default_contact: int = None,
     ):
+        # Alert configuration.
+        # 
         # This parameter is required.
         self.alarm_config = alarm_config
+        # Language for message notifications.
         self.alarm_lang = alarm_lang
+        # Contact configuration.
         self.contact_config = contact_config
+        # Language used for requests and responses.
         self.lang = lang
-        self.notify_config = notify_config
+        # Source IP address of the requester.
         self.source_ip = source_ip
+        # Use default contact method.
         self.use_default_contact = use_default_contact
 
     def validate(self):
@@ -34,10 +39,6 @@ class ModifyUserAlarmConfigRequest(DaraModel):
                     v1.validate()
         if self.contact_config:
             for v1 in self.contact_config:
-                 if v1:
-                    v1.validate()
-        if self.notify_config:
-            for v1 in self.notify_config:
                  if v1:
                     v1.validate()
 
@@ -61,11 +62,6 @@ class ModifyUserAlarmConfigRequest(DaraModel):
 
         if self.lang is not None:
             result['Lang'] = self.lang
-
-        result['NotifyConfig'] = []
-        if self.notify_config is not None:
-            for k1 in self.notify_config:
-                result['NotifyConfig'].append(k1.to_map() if k1 else None)
 
         if self.source_ip is not None:
             result['SourceIp'] = self.source_ip
@@ -95,52 +91,11 @@ class ModifyUserAlarmConfigRequest(DaraModel):
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
 
-        self.notify_config = []
-        if m.get('NotifyConfig') is not None:
-            for k1 in m.get('NotifyConfig'):
-                temp_model = main_models.ModifyUserAlarmConfigRequestNotifyConfig()
-                self.notify_config.append(temp_model.from_map(k1))
-
         if m.get('SourceIp') is not None:
             self.source_ip = m.get('SourceIp')
 
         if m.get('UseDefaultContact') is not None:
             self.use_default_contact = m.get('UseDefaultContact')
-
-        return self
-
-class ModifyUserAlarmConfigRequestNotifyConfig(DaraModel):
-    def __init__(
-        self,
-        notify_type: str = None,
-        notify_value: str = None,
-    ):
-        self.notify_type = notify_type
-        self.notify_value = notify_value
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        _map = super().to_map()
-        if _map is not None:
-            result = _map
-        if self.notify_type is not None:
-            result['NotifyType'] = self.notify_type
-
-        if self.notify_value is not None:
-            result['NotifyValue'] = self.notify_value
-
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('NotifyType') is not None:
-            self.notify_type = m.get('NotifyType')
-
-        if m.get('NotifyValue') is not None:
-            self.notify_value = m.get('NotifyValue')
 
         return self
 
@@ -150,11 +105,15 @@ class ModifyUserAlarmConfigRequestContactConfig(DaraModel):
         email: str = None,
         mobile_phone: str = None,
         name: str = None,
-        status: str = None,
+        status: int = None,
     ):
+        # Mailbox.
         self.email = email
+        # Mobile number.
         self.mobile_phone = mobile_phone
+        # Alert notification recipient.
         self.name = name
+        # Alert status.
         self.status = status
 
     def validate(self):
@@ -205,11 +164,17 @@ class ModifyUserAlarmConfigRequestAlarmConfig(DaraModel):
         alarm_value: str = None,
         alarm_week_day: str = None,
     ):
+        # Hour for alert notifications.
         self.alarm_hour = alarm_hour
+        # Notification method.
         self.alarm_notify = alarm_notify
+        # Alert period.
         self.alarm_period = alarm_period
+        # Alarm metric.
         self.alarm_type = alarm_type
+        # Alert notification message.
         self.alarm_value = alarm_value
+        # Day of the week for alert notifications.
         self.alarm_week_day = alarm_week_day
 
     def validate(self):

@@ -12,7 +12,7 @@ class ModifyInstanceMemberAttributesRequest(DaraModel):
         self,
         members: List[main_models.ModifyInstanceMemberAttributesRequestMembers] = None,
     ):
-        # The members that to be modified.
+        # The member accounts in Cloud Firewall.
         # 
         # This parameter is required.
         self.members = members
@@ -51,11 +51,11 @@ class ModifyInstanceMemberAttributesRequestMembers(DaraModel):
         member_desc: str = None,
         member_uid: int = None,
     ):
-        # The remarks of the member in Cloud Firewall.
+        # The description of the member account.
         # 
         # This parameter is required.
         self.member_desc = member_desc
-        # The UID of the member in Cloud Firewall.
+        # The UID of the member account.
         # 
         # This parameter is required.
         self.member_uid = member_uid

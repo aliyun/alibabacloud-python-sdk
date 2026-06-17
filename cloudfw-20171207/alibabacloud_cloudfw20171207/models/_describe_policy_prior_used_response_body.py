@@ -11,15 +11,15 @@ class DescribePolicyPriorUsedResponseBody(DaraModel):
         request_id: str = None,
         start: int = None,
     ):
-        # The lowest priority of existing access control policies.
+        # The lowest priority of your access control policies.
         # 
-        # >  The value -1 indicates the lowest priority.
+        # > A larger value indicates a lower priority.
         self.end = end
         # The request ID.
         self.request_id = request_id
-        # The highest priority of existing access control policies.
+        # The highest priority of your access control policies.
         # 
-        # >  The value 0 indicates the highest priority.
+        # > A smaller value indicates a higher priority.
         self.start = start
 
     def validate(self):

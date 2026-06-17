@@ -16,13 +16,21 @@ class DescribeSdlEventSdListRequest(DaraModel):
         start_time: int = None,
         uuid: str = None,
     ):
+        # The number of the page to return.
         self.current_page = current_page
+        # The destination IP address.
         self.dst_ip = dst_ip
+        # The end time. The value is a UNIX timestamp in seconds.
         self.end_time = end_time
+        # The language of the response.
         self.lang = lang
+        # The number of the page to return.
         self.page_size = page_size
+        # The source IP address.
         self.src_ip = src_ip
+        # The start time. The value is a UNIX timestamp in seconds.
         self.start_time = start_time
+        # The unique ID.
         self.uuid = uuid
 
     def validate(self):

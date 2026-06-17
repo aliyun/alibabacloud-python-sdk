@@ -13,10 +13,15 @@ class DescribeNetworkInstanceRelationListRequest(DaraModel):
         network_instance_id: str = None,
         peer_network_instance_id: str = None,
     ):
+        # The connection type.
         self.connect_type = connect_type
+        # The configuration status of Cloud Firewall.
         self.firewall_configure_status = firewall_configure_status
+        # The language of the response.
         self.lang = lang
+        # The ID of the local network instance.
         self.network_instance_id = network_instance_id
+        # The ID of the peer network instance.
         self.peer_network_instance_id = peer_network_instance_id
 
     def validate(self):

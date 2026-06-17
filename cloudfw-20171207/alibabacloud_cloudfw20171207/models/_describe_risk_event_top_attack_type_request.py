@@ -14,13 +14,22 @@ class DescribeRiskEventTopAttackTypeRequest(DaraModel):
         source_ip: str = None,
         start_time: str = None,
     ):
+        # The edition of Cloud Firewall.
         self.buy_version = buy_version
+        # The traffic direction.
+        # 
         # This parameter is required.
         self.direction = direction
+        # The end of the time range for the query. The value must be a Unix timestamp in seconds.
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # The language of the request and response.
         self.lang = lang
+        # The source IP address.
         self.source_ip = source_ip
+        # The start of the time range for the query. The value must be a Unix timestamp in seconds.
+        # 
         # This parameter is required.
         self.start_time = start_time
 

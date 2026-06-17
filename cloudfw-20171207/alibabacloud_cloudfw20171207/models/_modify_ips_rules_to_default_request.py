@@ -14,12 +14,31 @@ class ModifyIpsRulesToDefaultRequest(DaraModel):
         rules: str = None,
         source_ip: str = None,
     ):
+        # The application that is affected by the attack.
         self.attack_app = attack_app
+        # The type of the Cloud Firewall. Valid values:
+        # 
+        # - **VpcFirewall**: VPC firewall.
+        # 
+        # - **InternetFirewall** (default): Internet firewall.
         self.firewall_type = firewall_type
+        # The language of the content. Valid values:
+        # 
+        # - **zh** (default): Chinese.
+        # 
+        # - **en**: English.
         self.lang = lang
+        # The type of the rule. Valid values:
+        # 
+        # - **basicRule**
+        # 
+        # - **customize**
+        # 
         # This parameter is required.
         self.rule_type = rule_type
+        # The list of rules.
         self.rules = rules
+        # The source IP address of the visitor.
         self.source_ip = source_ip
 
     def validate(self):

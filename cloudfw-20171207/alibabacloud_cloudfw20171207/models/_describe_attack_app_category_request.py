@@ -9,6 +9,11 @@ class DescribeAttackAppCategoryRequest(DaraModel):
         self,
         lang: str = None,
     ):
+        # The language of the request and response messages. Valid values:
+        # 
+        # - **zh** (default): Chinese.
+        # 
+        # - **en**: English.
         self.lang = lang
 
     def validate(self):

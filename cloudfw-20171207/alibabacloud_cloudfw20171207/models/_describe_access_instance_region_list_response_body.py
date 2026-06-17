@@ -12,7 +12,9 @@ class DescribeAccessInstanceRegionListResponseBody(DaraModel):
         region_no_list: List[str] = None,
         request_id: str = None,
     ):
+        # The list of regions that support the specified type of synchronization node.
         self.region_no_list = region_no_list
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

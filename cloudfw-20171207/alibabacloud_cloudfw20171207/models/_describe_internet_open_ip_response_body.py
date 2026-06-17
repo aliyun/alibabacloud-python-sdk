@@ -14,11 +14,11 @@ class DescribeInternetOpenIpResponseBody(DaraModel):
         page_info: main_models.DescribeInternetOpenIpResponseBodyPageInfo = None,
         request_id: str = None,
     ):
-        # The data returned.
+        # The list of returned data.
         self.data_list = data_list
         # The pagination information.
         self.page_info = page_info
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -71,9 +71,9 @@ class DescribeInternetOpenIpResponseBodyPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The page number.
+        # The page number of the returned page.
         self.current_page = current_page
-        # The number of entries per page.
+        # The number of entries returned per page.
         self.page_size = page_size
         # The total number of entries returned.
         self.total_count = total_count
@@ -136,12 +136,15 @@ class DescribeInternetOpenIpResponseBodyDataList(DaraModel):
         traffic_percent_7day: str = None,
         unknown_reason: List[str] = None,
     ):
-        # The reason why recommended intelligent policies are unavailable. Valid values:
+        # The reason why no intelligent policy is recommended. Valid values:
         # 
-        # *   No recommended intelligent policies are available.
-        # *   This feature is available only to some users.
-        # *   The policy configuration has been modified. No recommended intelligent policies are available.
-        # *   The recommended intelligent policies have been configured. No new recommended intelligent policies are available.
+        # - No intelligent policy is recommended.
+        # 
+        # - This feature is available only to specific users.
+        # 
+        # - The policy configuration has been modified. No intelligent policy is recommended.
+        # 
+        # - An intelligent policy has been configured. No new intelligent policy is recommended.
         self.acl_recommend_detail = acl_recommend_detail
         # The instance ID.
         self.assets_instance_id = assets_instance_id
@@ -149,18 +152,19 @@ class DescribeInternetOpenIpResponseBodyDataList(DaraModel):
         self.assets_name = assets_name
         # The asset type of the instance.
         self.assets_type = assets_type
-        # The total number of ports.
+        # The total number of port details.
         self.detail_num = detail_num
-        # Specifies whether an access control policy is recommended. Valid values:
+        # Indicates whether an access control list (ACL) is recommended. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: yes
+        # 
+        # - **false**: no
         self.has_acl_recommend = has_acl_recommend
-        # The inbound network throughput, which indicates the total number of bytes that are sent inbound. Unit: bytes.
+        # The inbound network throughput, which indicates the total number of bytes received. Unit: bytes.
         self.in_bytes = in_bytes
-        # The UID of the member that is managed by your Alibaba Cloud account.
+        # The UID of the Cloud Firewall member account.
         self.member_uid = member_uid
-        # The outbound network throughput, which indicates the total number of bytes that are sent outbound. Unit: bytes.
+        # The outbound network throughput, which indicates the total number of bytes sent. Unit: bytes.
         self.out_bytes = out_bytes
         # The list of ports.
         self.port_list = port_list
@@ -170,28 +174,31 @@ class DescribeInternetOpenIpResponseBodyDataList(DaraModel):
         self.region_no = region_no
         # The risk level. Valid values:
         # 
-        # *   **3**: high risk
-        # *   **2**: medium risk
-        # *   **1**: low risk
-        # *   **0**: no risk
+        # - **3**: high
+        # 
+        # - **2**: medium
+        # 
+        # - **1**: low
+        # 
+        # - **0**: none
         self.risk_level = risk_level
         # The reason for the risk.
         self.risk_reason = risk_reason
         # The list of applications.
         self.service_name_list = service_name_list
-        # Number of source IPs.
+        # The number of source IP addresses.
         self.src_ip_cnt = src_ip_cnt
-        # The total inbound and outbound network throughput, which indicates the total number of bytes that are sent inbound and outbound. Unit: bytes.
+        # The total traffic. Unit: bytes.
         self.total_bytes = total_bytes
-        # Outbound traffic in the last 7 days.
+        # The total response traffic in the last 7 days.
         self.total_reply_bytes = total_reply_bytes
-        # For detailed traffic information, see the TotalBytes field.
+        # For details about the traffic, see the TotalBytes field.
         self.traffic_percent_1day = traffic_percent_1day
-        # For detailed traffic information, see the TotalBytes field.
+        # For details about the traffic, see the TotalBytes field.
         self.traffic_percent_30day = traffic_percent_30day
-        # For detailed traffic information, see the TotalBytes field.
+        # For details about the traffic, see the TotalBytes field.
         self.traffic_percent_7day = traffic_percent_7day
-        # Reasons for not analyzing the protocol when the protocol is identified as Unknown.
+        # The reason why the protocol is not identified when the protocol is Unknown.
         self.unknown_reason = unknown_reason
 
     def validate(self):

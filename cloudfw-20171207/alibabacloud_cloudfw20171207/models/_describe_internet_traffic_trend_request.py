@@ -17,40 +17,41 @@ class DescribeInternetTrafficTrendRequest(DaraModel):
         start_time: str = None,
         traffic_type: str = None,
     ):
-        # The direction of the internet traffic.
+        # The direction of the Internet traffic. Valid values:
         # 
-        # Valid values:
+        # - **in**: inbound
         # 
-        # *   **in**: inbound traffic
-        # *   **out**: outbound traffic
+        # - **out**: outbound
         self.direction = direction
-        # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # The end of the time range to query. This value is a UNIX timestamp in seconds.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The language of the content in the request and response. Valid values:
+        # The language of the request and response. Valid values:
         # 
-        # *   **zh** (default): Chinese
-        # *   **en**: English
+        # - **zh** (default): Chinese
+        # 
+        # - **en**: English
         self.lang = lang
-        # The source code.
+        # The source tracking code.
         # 
         # This parameter is required.
         self.source_code = source_code
-        # The IP address of the access source.
+        # The source IP address of the visitor.
         self.source_ip = source_ip
-        # The private IP address of the source.
+        # The source private IP address.
         self.src_private_ip = src_private_ip
-        # The public IP address of the source.
+        # The source public IP address.
         self.src_public_ip = src_public_ip
-        # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # The start of the time range to query. This value is a UNIX timestamp in seconds.
         # 
         # This parameter is required.
         self.start_time = start_time
-        # The type of the traffic that is captured. Valid values:
+        # The type of traffic to query. Valid values:
         # 
-        # *   **max** (default): peak traffic
-        # *   **avg**: average traffic
+        # - **max** (default): peak traffic
+        # 
+        # - **avg**: average traffic
         self.traffic_type = traffic_type
 
     def validate(self):

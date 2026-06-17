@@ -15,9 +15,13 @@ class DescribeOutgoingDomainDetailResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of application names.
         self.application_name_list = application_name_list
+        # The list of assets.
         self.asset_list = asset_list
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -91,26 +95,47 @@ class DescribeOutgoingDomainDetailResponseBodyAssetList(DaraModel):
         total_bytes: str = None,
         vpc_id: str = None,
     ):
+        # The policy coverage status.
         self.acl_coverage = acl_coverage
+        # The domain name.
         self.domain = domain
+        # The first access time, as a Unix timestamp in seconds.
         self.first_time = first_time
+        # The inbound traffic (response traffic), in bytes.
         self.in_bytes = in_bytes
+        # The IPS hit count.
         self.ips_hit_cnt = ips_hit_cnt
+        # The last access time, as a Unix timestamp in seconds.
         self.last_time = last_time
+        # The NAT Gateway ID.
         self.nat_gateway_id = nat_gateway_id
+        # The NAT Gateway name.
         self.nat_gateway_name = nat_gateway_name
+        # The outbound traffic (request traffic), in bytes.
         self.out_bytes = out_bytes
+        # The private IP address.
         self.private_ip = private_ip
+        # The public IP address.
         self.public_ip = public_ip
+        # The region ID.
         self.region_no = region_no
+        # The asset instance ID.
         self.resource_instance_id = resource_instance_id
+        # The asset instance name.
         self.resource_instance_name = resource_instance_name
+        # The type of the asset\\"s public IP address.
         self.resource_type = resource_type
+        # The ACL rule ID.
         self.rule_id = rule_id
+        # The rule name.
         self.rule_name = rule_name
+        # The session count.
         self.session_count = session_count
+        # The list of tags.
         self.tag_list = tag_list
+        # The total traffic, in bytes.
         self.total_bytes = total_bytes
+        # The VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -270,10 +295,15 @@ class DescribeOutgoingDomainDetailResponseBodyAssetListTagList(DaraModel):
         tag_id: str = None,
         tag_name: str = None,
     ):
+        # The risk classification ID.
         self.class_id = class_id
+        # The risk level.
         self.risk_level = risk_level
+        # The tag description.
         self.tag_describe = tag_describe
+        # The tag ID.
         self.tag_id = tag_id
+        # The tag name.
         self.tag_name = tag_name
 
     def validate(self):

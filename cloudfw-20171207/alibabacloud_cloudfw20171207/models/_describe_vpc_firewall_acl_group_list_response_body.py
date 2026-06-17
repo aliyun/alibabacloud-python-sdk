@@ -14,11 +14,11 @@ class DescribeVpcFirewallAclGroupListResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The information about the access control policy groups.
+        # The access control policy groups.
         self.acl_group_list = acl_group_list
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of the policy groups that are returned.
+        # The total number of access control policy groups.
         self.total_count = total_count
 
     def validate(self):
@@ -71,33 +71,35 @@ class DescribeVpcFirewallAclGroupListResponseBodyAclGroupList(DaraModel):
         is_default: bool = None,
         member_uid: str = None,
     ):
-        # ACL engine mode.
+        # The ACL engine mode.
         self.acl_config = acl_config
-        # The ID of the policy group.
+        # The ID of the access control policy group for the VPC boundary firewall.
         # 
         # Valid values:
         # 
-        # *   If the VPC firewall is used to protect a Cloud Enterprise Network (CEN) instance, the value of this parameter is the ID of the CEN instance.
+        # - If the VPC boundary firewall protects a Cloud Enterprise Network (CEN) instance, the policy group ID is the ID of the CEN instance.
         # 
-        #     Example: cen-ervw0g12b5jbw\\*\\*\\*\\*
+        #   Example: cen-ervw0g12b5jbw\\*\\*\\*\\*
         # 
-        # *   If the VPC firewall is used to protect an Express Connect circuit, the value of this parameter is the instance ID of the VPC firewall.
+        # - If the VPC boundary firewall protects an Express Connect circuit, the policy group ID is the ID of the VPC boundary firewall instance.
         # 
-        #     Example: vfw-a42bbb7b887148c9\\*\\*\\*\\*
+        #   Example: vfw-a42bbb7b887148c9\\*\\*\\*\\*
         self.acl_group_id = acl_group_id
-        # The name of the policy group. Valid values:
+        # The name of the access control policy group for the VPC boundary firewall.
         # 
-        # *   If the VPC firewall is used to protect a CEN instance, the value of this parameter is the name of the CEN instance.
-        # *   If the VPC firewall is used to protect an Express Connect circuit, the value of this parameter is the instance name of the VPC firewall.
+        # - If the VPC boundary firewall protects a Cloud Enterprise Network instance, the group name is the name of the CEN instance.
+        # 
+        # - If the VPC boundary firewall protects an Express Connect circuit, the group name is the name of the VPC boundary firewall instance.
         self.acl_group_name = acl_group_name
-        # The number of access control policies in the policy group.
+        # The number of policies in the access control policy group.
         self.acl_rule_count = acl_rule_count
-        # Whether it is the default firewall. Values:
+        # Indicates whether the policy group is a default group. Valid values:
         # 
-        # *   **true**: It is the default firewall.
-        # *   **false**: It is not the default firewall.
+        # - **true**: The policy group is a default group.
+        # 
+        # - **false**: The policy group is not a default group.
         self.is_default = is_default
-        # The UID of the member that is managed by your Alibaba Cloud account.
+        # The ID of the member account.
         self.member_uid = member_uid
 
     def validate(self):
@@ -157,9 +159,11 @@ class DescribeVpcFirewallAclGroupListResponseBodyAclGroupListAclConfig(DaraModel
         self,
         strict_mode: int = None,
     ):
-        # Specifies Whether strict mode is enabled. Valid values:
-        # *   1: yes
-        # *   0: no
+        # Indicates whether strict mode is enabled. Valid values:
+        # 
+        # - 1: Strict mode is enabled.
+        # 
+        # - 0: Strict mode is disabled.
         self.strict_mode = strict_mode
 
     def validate(self):

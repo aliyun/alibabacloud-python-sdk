@@ -10,7 +10,13 @@ class DescribeAccessInstanceRegionListRequest(DaraModel):
         access_instance_status: str = None,
         access_instance_type: str = None,
     ):
+        # The status of the synchronization node.
         self.access_instance_status = access_instance_status
+        # The type of the synchronization node. Valid values:
+        # 
+        # - **PrivateDns**: private DNS.
+        # 
+        # - **AckClusterConnector**: ACK cluster connector.
         self.access_instance_type = access_instance_type
 
     def validate(self):

@@ -14,8 +14,11 @@ class ListTlsInspectCACertificatesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of certificates.
         self.certificates = certificates
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -71,14 +74,37 @@ class ListTlsInspectCACertificatesResponseBodyCertificates(DaraModel):
         sign_algorithm: str = None,
         status: str = None,
     ):
+        # The encryption algorithm of the CA certificate. Valid values:
+        # 
+        # - **RSA**: the RSA algorithm.
+        # 
+        # - **ECC**: the ECC algorithm.
+        # 
+        # - **SM2**: the SM2 algorithm.
         self.algorithm = algorithm
+        # The alias of the certificate.
         self.alias_name = alias_name
+        # The ID of the CA certificate.
         self.ca_cert_id = ca_cert_id
+        # The type of the CA certificate. Valid values:
+        # 
+        # - **ROOT**: a root CA certificate.
+        # 
+        # - **SUB_ROOT**: a subordinate CA certificate.
         self.ca_cert_type = ca_cert_type
+        # The expiration timestamp.
         self.expiration_time = expiration_time
+        # The key length of the CA certificate.
         self.key_size = key_size
+        # The ID of the parent CA certificate.
         self.parent_ca_cert_id = parent_ca_cert_id
+        # The signature algorithm of the CA certificate.
         self.sign_algorithm = sign_algorithm
+        # The status of the certificate. Valid values:
+        # 
+        # - **ISSUE**: enabled.
+        # 
+        # - **REVOKE**: revoked.
         self.status = status
 
     def validate(self):

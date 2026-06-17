@@ -15,12 +15,19 @@ class DescribeTransitRouterResourcesListRequest(DaraModel):
         transit_router_id: str = None,
         vpc_id: str = None,
     ):
+        # The ID of the Cloud Enterprise Network (CEN) instance.
         self.cen_id = cen_id
+        # The instance ID of the border firewall.
         self.firewall_id = firewall_id
+        # The language of the request and response.
         self.lang = lang
+        # The region ID.
         self.region_no = region_no
+        # The asset type.
         self.resource_type = resource_type
+        # The ID of the TransitRouter.
         self.transit_router_id = transit_router_id
+        # The ID of the VPC instance.
         self.vpc_id = vpc_id
 
     def validate(self):

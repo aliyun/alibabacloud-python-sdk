@@ -17,18 +17,42 @@ class CreateAckClusterConnectorRequest(DaraModel):
         standby_vswitch_ip: str = None,
         ttl: str = None,
     ):
+        # The ID of the ACK cluster.
+        # 
+        # - Call the [DescribeAckClusters](~~DescribeAckClusters~~) operation to query the list of ACK clusters.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # The name of the ACK cluster connector. The name must be 1 to 64 characters in length and can contain Chinese characters, letters, digits, periods (.), underscores (_), and hyphens (-).
+        # 
         # This parameter is required.
         self.connector_name = connector_name
+        # The Alibaba Cloud UID of the account to which the ACK cluster belongs.
         self.member_uid = member_uid
+        # The ID of the primary vSwitch for the ACK cluster connector.
+        # 
+        # - Call the [DescribeAccessInstanceVSwitchList](~~DescribeAccessInstanceVSwitchList~~) operation to query the list of vSwitches for synchronization nodes.
+        # 
         # This parameter is required.
         self.primary_vswitch_id = primary_vswitch_id
+        # The IP address of the primary vSwitch for the ACK cluster connector.
         self.primary_vswitch_ip = primary_vswitch_ip
+        # The region ID of the ACK cluster connector.
+        # 
+        # - Call the [DescribeAccessInstanceRegionList](~~DescribeAccessInstanceRegionList~~) operation to query the list of regions for synchronization nodes.
+        # 
+        # > For more information about the regions that Cloud Firewall supports for ACK cluster connectors, see [ACK cluster synchronization nodes](https://help.aliyun.com/document_detail/2865120.html).
+        # 
         # This parameter is required.
         self.region_no = region_no
+        # The ID of the standby vSwitch for the ACK cluster connector.
+        # 
+        # - Call the [DescribeAccessInstanceVSwitchList](~~DescribeAccessInstanceVSwitchList~~) operation to query the list of vSwitches for synchronization nodes.
         self.standby_vswitch_id = standby_vswitch_id
+        # The IP address of the standby vSwitch for the ACK cluster connector.
         self.standby_vswitch_ip = standby_vswitch_ip
+        # The synchronization interval for the ACK cluster connector. Valid values: 2 to 60. Unit: seconds.
+        # 
         # This parameter is required.
         self.ttl = ttl
 

@@ -10,7 +10,7 @@ class AddControlPolicyResponseBody(DaraModel):
         acl_uuid: str = None,
         request_id: str = None,
     ):
-        # The ID of the access control policy that is created on the Internet firewall.
+        # The unique ID of the access control policy for the Internet firewall.
         self.acl_uuid = acl_uuid
         # The ID of the request.
         self.request_id = request_id

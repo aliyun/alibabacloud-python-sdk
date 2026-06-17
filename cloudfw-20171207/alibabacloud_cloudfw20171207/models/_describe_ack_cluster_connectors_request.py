@@ -16,15 +16,29 @@ class DescribeAckClusterConnectorsRequest(DaraModel):
         region_no: str = None,
         vpc_id: str = None,
     ):
+        # The ID of the ACK cluster.
         self.cluster_id = cluster_id
+        # The name of the ACK cluster connector.
         self.connector_name = connector_name
+        # The language type for displaying the error reason for the ACK cluster connector\\"s health status.
         self.lang = lang
+        # The Alibaba Cloud UID to which the ACK cluster resource belongs.
         self.member_uid = member_uid
+        # The page number.
+        # 
         # This parameter is required.
         self.page_no = page_no
+        # The number of entries per page.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # The region ID of the ACK cluster connector. Source of values:
+        # 
+        # - [DescribeAccessInstanceRegionList](~~DescribeAccessInstanceRegionList~~): Query the list of synchronization node regions.
+        # 
+        # > For more information about the regions supported by Cloud Firewall for ACK cluster connectors, see [ACK Cluster Synchronization Nodes](https://help.aliyun.com/document_detail/2865120.html).
         self.region_no = region_no
+        # The VPC instance ID to which the ACK cluster belongs.
         self.vpc_id = vpc_id
 
     def validate(self):

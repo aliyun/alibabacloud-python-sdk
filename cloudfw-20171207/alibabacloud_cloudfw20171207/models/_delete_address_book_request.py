@@ -11,16 +11,13 @@ class DeleteAddressBookRequest(DaraModel):
         lang: str = None,
         source_ip: str = None,
     ):
-        # The ID of the address book.
+        # The unique ID of the address book.
         # 
-        # To delete the address book, you must provide the ID of the address book. You can call the DescribeAddressBook operation to query the ID.
+        # > To obtain this ID, call the [DescribeAddressBook](~~DescribeAddressBook~~) operation.
         # 
         # This parameter is required.
         self.group_uuid = group_uuid
-        # The natural language of the request and response. Valid values:
-        # 
-        # *   **zh**: Chinese (default)
-        # *   **en**: English
+        # The language of the content within the request and response.
         self.lang = lang
         # The source IP address of the request.
         self.source_ip = source_ip

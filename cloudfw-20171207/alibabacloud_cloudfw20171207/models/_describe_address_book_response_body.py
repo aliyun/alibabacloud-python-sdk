@@ -16,15 +16,15 @@ class DescribeAddressBookResponseBody(DaraModel):
         request_id: str = None,
         total_count: str = None,
     ):
-        # The information about the address book.
+        # A list of address books.
         self.acls = acls
-        # The page number.
+        # The current page number.
         self.page_no = page_no
-        # The number of entries per page.
+        # The number of address books returned per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of the returned address books.
+        # The total number of address books.
         self.total_count = total_count
 
     def validate(self):
@@ -99,45 +99,37 @@ class DescribeAddressBookResponseBodyAcls(DaraModel):
         tag_list: List[main_models.DescribeAddressBookResponseBodyAclsTagList] = None,
         tag_relation: str = None,
     ):
+        # The ID of the ACK cluster connector.
         self.ack_cluster_connector_id = ack_cluster_connector_id
+        # The name of the ACK cluster connector.
         self.ack_cluster_connector_name = ack_cluster_connector_name
+        # A list of ACK pod labels.
         self.ack_labels = ack_labels
+        # A list of ACK namespaces.
         self.ack_namespaces = ack_namespaces
-        # The addresses in the address book.
+        # A list of CIDR blocks in the address book.
         self.address_list = address_list
         # The number of addresses in the address book.
         self.address_list_count = address_list_count
-        # A list of addresses in the address book, each with a single address description.
+        # A list of addresses, each with a description.
         self.addresses = addresses
-        # Indicates whether the public IP addresses of ECS instances are automatically added to the address book if the instances match the specified tags. The setting takes effect on both newly purchased ECS instances whose tag settings are complete and ECS instances whose tag settings are modified. Valid values:
-        # 
-        # *   **1**: yes
-        # *   **0**: no
+        # Indicates whether to automatically add the public IPs of tagged ECS instances to the address book. This applies to newly purchased instances and existing instances whose tags are modified to match.
         self.auto_add_tag_ecs = auto_add_tag_ecs
         # The description of the address book.
         self.description = description
         # The name of the address book.
         self.group_name = group_name
         # The type of the address book. Valid values:
-        # 
-        # *   **ip**: IP address book
-        # *   **domain**: domain address book
-        # *   **port**: port address book
-        # *   **tag**: ECS tag-based address book
-        # *   **allCloud**: cloud service address book
-        # *   **threat**: threat intelligence address book
         self.group_type = group_type
         # The UUID of the address book.
         self.group_uuid = group_uuid
-        # The number of times that the address book is referenced.
+        # The number of times the address book is referenced.
         self.reference_count = reference_count
+        # The region where the ACK cluster connector is deployed. This parameter is returned only when the GroupType parameter is "ack".
         self.region_no = region_no
-        # The details about the ECS tags that can be automatically added to the address book.
+        # A list of ECS tags.
         self.tag_list = tag_list
-        # The logical relationship among ECS tags. Valid values:
-        # 
-        # *   **and**: Only the public IP addresses of ECS instances that match all the specified tags can be added to the address book.
-        # *   **or**: The public IP addresses of ECS instances that match any of the specified tags can be added to the address book.
+        # The logical relationship among multiple ECS tags. Valid values:
         self.tag_relation = tag_relation
 
     def validate(self):
@@ -282,9 +274,9 @@ class DescribeAddressBookResponseBodyAclsTagList(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The key of the ECS tag.
+        # The key of the tag.
         self.tag_key = tag_key
-        # The value of the ECS tag.
+        # The value of the tag.
         self.tag_value = tag_value
 
     def validate(self):
@@ -319,9 +311,9 @@ class DescribeAddressBookResponseBodyAclsAddresses(DaraModel):
         address: str = None,
         note: str = None,
     ):
-        # Address information in the address book.
+        # The IP address or CIDR block.
         self.address = address
-        # Single address description.
+        # The note for the address.
         self.note = note
 
     def validate(self):
@@ -356,7 +348,9 @@ class DescribeAddressBookResponseBodyAclsAckLabels(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the ACK pod label.
         self.key = key
+        # The value of the ACK pod label.
         self.value = value
 
     def validate(self):

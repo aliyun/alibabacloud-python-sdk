@@ -12,11 +12,18 @@ class DescribeAclCheckRequest(DaraModel):
         page_size: int = None,
         task_id: str = None,
     ):
+        # The language of the response.
         self.lang = lang
+        # The page number.
+        # 
         # This parameter is required.
         self.page_no = page_no
+        # The number of entries per page.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # The task ID.
+        # 
         # This parameter is required.
         self.task_id = task_id
 

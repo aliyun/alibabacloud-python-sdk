@@ -13,7 +13,9 @@ class DescribeVpcFirewallZoneResponseBody(DaraModel):
         request_id: str = None,
         zone_list: List[List[main_models.DescribeVpcFirewallZoneResponseBodyZoneList]] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The list of zones.
         self.zone_list = zone_list
 
     def validate(self):
@@ -63,7 +65,9 @@ class DescribeVpcFirewallZoneResponseBodyZoneList(DaraModel):
         zone_id: str = None,
         local_name: str = None,
     ):
+        # The zone ID.
         self.zone_id = zone_id
+        # The name of the zone.
         self.local_name = local_name
 
     def validate(self):

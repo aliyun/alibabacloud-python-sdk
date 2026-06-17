@@ -27,18 +27,19 @@ class DescribeInternetOpenIpRequest(DaraModel):
         self.assets_instance_name = assets_instance_name
         # The asset type of the instance.
         self.assets_type = assets_type
-        # The page number.
+        # The page number for a paged query.
         # 
         # This parameter is required.
         self.current_page = current_page
-        # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # The end time when the public IP address was exposed. The value is a UNIX timestamp. Unit: seconds.
         self.end_time = end_time
-        # The language of the content within the response. Valid values:
+        # The language of the response message.
         # 
-        # *   **zh**: Chinese (default)
-        # *   **en**: English
+        # - **zh** (default): Chinese
+        # 
+        # - **en**: English
         self.lang = lang
-        # The number of entries per page.
+        # The number of entries to return on each page for a paged query.
         # 
         # This parameter is required.
         self.page_size = page_size
@@ -50,14 +51,17 @@ class DescribeInternetOpenIpRequest(DaraModel):
         self.region_no = region_no
         # The risk level. If you leave this parameter empty, all risk levels are queried. Valid values:
         # 
-        # *   **3**: high risk
-        # *   **2**: medium risk
-        # *   **1**: low risk
-        # *   **0**: no risk
+        # - **3**: high
+        # 
+        # - **2**: medium
+        # 
+        # - **1**: low
+        # 
+        # - **0**: none
         self.risk_level = risk_level
-        # The application.
+        # The name of the application to query.
         self.service_name = service_name
-        # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # The start time when the public IP address was exposed. The value is a UNIX timestamp. Unit: seconds.
         self.start_time = start_time
 
     def validate(self):

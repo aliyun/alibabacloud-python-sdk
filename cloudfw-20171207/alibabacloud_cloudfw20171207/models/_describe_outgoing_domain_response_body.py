@@ -14,11 +14,11 @@ class DescribeOutgoingDomainResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The domain names in outbound connections.
+        # An array of outbound domains.
         self.domain_list = domain_list
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of the domain names in outbound connections.
+        # The total number of outbound domains found.
         self.total_count = total_count
 
     def validate(self):
@@ -92,88 +92,99 @@ class DescribeOutgoingDomainResponseBodyDomainList(DaraModel):
         tag_list: List[main_models.DescribeOutgoingDomainResponseBodyDomainListTagList] = None,
         total_bytes: str = None,
     ):
-        # Indicates whether an access control policy is configured. Valid values:
+        # Indicates whether an access control policy is configured for the domain. Valid values:
         # 
-        # *   **Uncovered**: no
-        # *   **FullCoverage**: yes
+        # - **Uncovered**: no
+        # 
+        # - **FullCoverage**: yes
         self.acl_coverage = acl_coverage
-        # The suggestion in an access control policy.
+        # The recommended action for the access control policy.
         self.acl_recommend_detail = acl_recommend_detail
-        # The state of the access control policy. Valid values:
+        # The health status of the access control policy. Valid values:
         # 
-        # *   **normal**: healthy
-        # *   **abnormal**: unhealthy
+        # - **Normal**: healthy
+        # 
+        # - **Abnormal**: unhealthy
         self.acl_status = acl_status
         # The name of the address book.
         self.address_group_name = address_group_name
         # The UUID of the address book.
         self.address_group_uuid = address_group_uuid
-        # The application names.
+        # An array of application names.
         self.application_name_list = application_name_list
-        # The outbound asset count.
+        # The total number of assets that initiate outbound connections to the domain.
         self.asset_count = asset_count
-        # The website service.
+        # The business to which the website belongs.
         self.business = business
-        # The type of the tag. Valid values:
+        # The category of the intelligence tag. Valid values:
         # 
-        # *   **Suspicious**
-        # *   **Malicious**
-        # *   **Trusted**
+        # - **Suspicious**: suspicious
+        # 
+        # - **Malicious**: malicious
+        # 
+        # - **Trusted**: trusted
         self.category_class_id = category_class_id
-        # The type ID of the service to which the domain name belongs. Valid values:
+        # The ID of the asset category. Valid values:
         # 
-        # *   **Aliyun**: Alibaba Cloud services
-        # *   **NotAliyun**: third-party services
+        # - **Aliyun**: Alibaba Cloud service
+        # 
+        # - **NotAliyun**: third-party service
         self.category_id = category_id
-        # The type of the service to which the domain name belongs. Valid values:
+        # The name of the asset category. Valid values:
         # 
-        # *   **Alibaba Cloud services**
-        # *   **Third-party services**
+        # - Alibaba Cloud product
+        # 
+        # - Non-Alibaba Cloud product
         self.category_name = category_name
-        # The domain name in outbound connections.
+        # The outbound domain name.
         self.domain = domain
-        # The name of the group to which the access control policy belongs.
+        # The name of the policy group.
         self.group_name = group_name
-        # Indicates whether an `access control policy` is configured for the domain name. Valid values:
+        # Indicates whether an access control policy is configured for the domain name. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # - **true**: yes
+        # 
+        # - **false**: no
         self.has_acl = has_acl
-        # Indicates whether an access control policy is recommended. Valid values:
+        # Indicates whether a recommended access control policy exists. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # - **true**: yes
+        # 
+        # - **false**: no
         self.has_acl_recommend = has_acl_recommend
-        # The volume of inbound traffic.
+        # The volume of inbound traffic, in bytes.
         self.in_bytes = in_bytes
-        # Indicates whether the domain name is marked as normal. Valid values:
+        # Indicates whether the outbound domain name is marked as normal. Valid values:
         # 
-        # *   **true**: normal
-        # *   **false**: abnormal
+        # - **true**: normal
+        # 
+        # - **false**: not normal
         self.is_mark_normal = is_mark_normal
         # The name of the organization.
         self.organization = organization
-        # The volume of outbound traffic.
+        # The volume of outbound traffic, in bytes.
         self.out_bytes = out_bytes
-        # The outbound private asset count.
+        # The total number of assets in a private network that initiate outbound connections to the domain.
         self.private_asset_count = private_asset_count
         # The ID of the access control policy.
         self.rule_id = rule_id
         # The name of the access control policy.
         self.rule_name = rule_name
-        # The reason why the domain name is secure.
+        # The reason for the security recommendation.
         self.security_reason = security_reason
-        # The suggestion to handle the traffic of the domain name in outbound connections. Valid values:
+        # The recommended security action for the outbound domain name. Valid values:
         # 
-        # *   **pass**: allow
-        # *   **alert**: monitor
-        # *   **drop**: deny
+        # - **pass**: allow
+        # 
+        # - **alert**: monitor
+        # 
+        # - **drop**: deny
         self.security_suggest = security_suggest
         # The number of requests.
         self.session_count = session_count
-        # An array that consists of tags.
+        # An array of tags.
         self.tag_list = tag_list
-        # The total volume of traffic. Unit: bytes.
+        # The total traffic volume, in bytes.
         self.total_bytes = total_bytes
 
     def validate(self):
@@ -369,21 +380,25 @@ class DescribeOutgoingDomainResponseBodyDomainListTagList(DaraModel):
         tag_id: str = None,
         tag_name: str = None,
     ):
-        # The type of the tag. Valid values:
+        # The category of the intelligence tag. Valid values:
         # 
-        # *   **Suspicious**
-        # *   **Malicious**
-        # *   **Trusted**
+        # - **Suspicious**: suspicious
+        # 
+        # - **Malicious**: malicious
+        # 
+        # - **Trusted**: trusted
         self.class_id = class_id
         # The risk level. Valid values:
         # 
-        # *   **1**: low
-        # *   **2**: medium
-        # *   **3**: high
+        # - **1**: low
+        # 
+        # - **2**: medium
+        # 
+        # - **3**: high
         self.risk_level = risk_level
         # The description of the tag.
         self.tag_describe = tag_describe
-        # The ID of the tag.
+        # The ID of the intelligence tag.
         self.tag_id = tag_id
         # The name of the tag.
         self.tag_name = tag_name

@@ -16,10 +16,15 @@ class DescribeDnsFirewallPolicyResponseBody(DaraModel):
         request_id: str = None,
         total_count: str = None,
     ):
+        # The page number.
         self.page_no = page_no
+        # The number of entries per page.
         self.page_size = page_size
+        # The DNS firewall access control policies.
         self.policys = policys
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -95,22 +100,95 @@ class DescribeDnsFirewallPolicyResponseBodyPolicys(DaraModel):
         source_group_type: str = None,
         source_type: str = None,
     ):
+        # The action that is performed on traffic that matches the access control policy. Valid values:
+        # 
+        # - **accept**: allows the traffic.
+        # 
+        # - **drop**: denies the traffic.
+        # 
+        # - **log**: monitors the traffic.
         self.acl_action = acl_action
+        # The unique ID of the access control policy.
         self.acl_uuid = acl_uuid
+        # The description of the access control policy.
         self.description = description
+        # The destination address in the access control policy. Valid values:
+        # 
+        # - If **DestinationType** is `net`, the value of this parameter is a destination CIDR block.
+        # 
+        # - If **DestinationType** is `domain`, the value of this parameter is a destination domain.
+        # 
+        # - If **DestinationType** is `group`, the value of this parameter is the name of a destination address book.
         self.destination = destination
+        # The destination addresses in the address book.
         self.destination_addrs = destination_addrs
+        # The type of the destination address book in the access control policy. Valid values:
+        # 
+        # - **ip**: an IP address book
+        # 
+        # - **domain**: a domain address book
         self.destination_group_type = destination_group_type
+        # The type of the destination address in the access control policy. Valid values:
+        # 
+        # - **net**: destination CIDR block
+        # 
+        # - **group**: destination address book
+        # 
+        # - **domain**: destination domain
+        # 
+        # - **location**: destination location
         self.destination_type = destination_type
+        # The direction of the traffic to which the access control policy applies. Valid values:
+        # 
+        # - **in**: inbound traffic
+        # 
+        # - **out**: outbound traffic
         self.direction = direction
+        # The last time the policy was hit. The value is a UNIX timestamp. Unit: seconds.
         self.hit_last_time = hit_last_time
+        # The number of hits for the access control policy.
         self.hit_times = hit_times
+        # The IP version supported by the access control policy. Valid values:
+        # 
+        # - **4**: IPv4
+        # 
+        # - **6**: IPv6
         self.ip_version = ip_version
+        # The priority of the access control policy. A smaller value indicates a higher priority.
         self.priority = priority
+        # Indicates whether the access control policy is enabled. After a policy is created, it is enabled by default. Valid values:
+        # 
+        # - **true**: enabled
+        # 
+        # - **false**: disabled
         self.release = release
+        # The source address in the access control policy. Valid values:
+        # 
+        # - If **SourceType** is `net`, the value of this parameter is a source CIDR block. Example: 192.0.XX.XX/24.
+        # 
+        # - If **SourceType** is `group`, the value of this parameter is the name of a source address book. Example: db_group.
+        # 
+        # - If **SourceType** is `location`, the value of this parameter is a location. For more information about the valid values of this parameter, see [AddControlPolicy](https://help.aliyun.com/document_detail/138867.html). Example: ["BJ11", "ZB"].
         self.source = source
+        # The source addresses.
         self.source_addrs = source_addrs
+        # The type of the source address book in the access control policy. Valid values:
+        # 
+        # - **ip**: an IP address book
+        # 
+        # - **tag**: a tag address book
+        # 
+        # - **domain**: a domain address book
+        # 
+        # - **threat**: a threat intelligence address book
+        # 
+        # - **backsrc**: a back-to-origin address book
         self.source_group_type = source_group_type
+        # The type of the source address in the access control policy. Valid values:
+        # 
+        # - **net**: a source CIDR block
+        # 
+        # - **group**: a source address book
         self.source_type = source_type
 
     def validate(self):

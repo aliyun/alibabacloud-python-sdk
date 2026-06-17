@@ -10,7 +10,9 @@ class CreateVpcFirewallPrecheckResponseBody(DaraModel):
         precheck_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the precheck task.
         self.precheck_id = precheck_id
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

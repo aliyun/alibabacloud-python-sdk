@@ -15,12 +15,19 @@ class DescribeAclRuleCountResponseBody(DaraModel):
         total_acl_count: int = None,
         vpc_acl_count: int = None,
     ):
+        # The number of inbound access control policies on the Internet border.
         self.internet_in_acl_count = internet_in_acl_count
+        # The number of outbound access control policies that are created for the Internet firewall.
         self.internet_out_acl_count = internet_out_acl_count
+        # The number of inbound access control policies on the NAT boundary.>Notice:  This field is deprecated.
         self.nat_in_acl_count = nat_in_acl_count
+        # The number of outbound access control policies on the NAT boundary.
         self.nat_out_acl_count = nat_out_acl_count
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of policies.
         self.total_acl_count = total_acl_count
+        # The number of access control policies on the VPC border.
         self.vpc_acl_count = vpc_acl_count
 
     def validate(self):

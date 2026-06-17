@@ -14,14 +14,17 @@ class DescribeUserAlarmConfigResponseBody(DaraModel):
         alarm_lang: str = None,
         contact_config: List[main_models.DescribeUserAlarmConfigResponseBodyContactConfig] = None,
         default_contact: main_models.DescribeUserAlarmConfigResponseBodyDefaultContact = None,
-        notify_config: List[main_models.DescribeUserAlarmConfigResponseBodyNotifyConfig] = None,
         request_id: str = None,
     ):
+        # The alarm configuration.
         self.alarm_config = alarm_config
+        # The language of the alarm notifications.
         self.alarm_lang = alarm_lang
+        # The contact information.
         self.contact_config = contact_config
+        # Information about the default alarm contact.
         self.default_contact = default_contact
-        self.notify_config = notify_config
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -35,10 +38,6 @@ class DescribeUserAlarmConfigResponseBody(DaraModel):
                     v1.validate()
         if self.default_contact:
             self.default_contact.validate()
-        if self.notify_config:
-            for v1 in self.notify_config:
-                 if v1:
-                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -60,11 +59,6 @@ class DescribeUserAlarmConfigResponseBody(DaraModel):
 
         if self.default_contact is not None:
             result['DefaultContact'] = self.default_contact.to_map()
-
-        result['NotifyConfig'] = []
-        if self.notify_config is not None:
-            for k1 in self.notify_config:
-                result['NotifyConfig'].append(k1.to_map() if k1 else None)
 
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -92,49 +86,8 @@ class DescribeUserAlarmConfigResponseBody(DaraModel):
             temp_model = main_models.DescribeUserAlarmConfigResponseBodyDefaultContact()
             self.default_contact = temp_model.from_map(m.get('DefaultContact'))
 
-        self.notify_config = []
-        if m.get('NotifyConfig') is not None:
-            for k1 in m.get('NotifyConfig'):
-                temp_model = main_models.DescribeUserAlarmConfigResponseBodyNotifyConfig()
-                self.notify_config.append(temp_model.from_map(k1))
-
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-
-        return self
-
-class DescribeUserAlarmConfigResponseBodyNotifyConfig(DaraModel):
-    def __init__(
-        self,
-        notify_type: str = None,
-        notify_value: str = None,
-    ):
-        self.notify_type = notify_type
-        self.notify_value = notify_value
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        _map = super().to_map()
-        if _map is not None:
-            result = _map
-        if self.notify_type is not None:
-            result['NotifyType'] = self.notify_type
-
-        if self.notify_value is not None:
-            result['NotifyValue'] = self.notify_value
-
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('NotifyType') is not None:
-            self.notify_type = m.get('NotifyType')
-
-        if m.get('NotifyValue') is not None:
-            self.notify_value = m.get('NotifyValue')
 
         return self
 
@@ -146,9 +99,13 @@ class DescribeUserAlarmConfigResponseBodyDefaultContact(DaraModel):
         name: str = None,
         status: str = None,
     ):
+        # The email address of the default contact.
         self.email = email
+        # The mobile number of the default contact.
         self.mobile_phone = mobile_phone
+        # The name of the default contact.
         self.name = name
+        # The status. Valid values: **normal** (Normal) and **disable** (Disabled).
         self.status = status
 
     def validate(self):
@@ -197,9 +154,13 @@ class DescribeUserAlarmConfigResponseBodyContactConfig(DaraModel):
         name: str = None,
         status: int = None,
     ):
+        # The email address.
         self.email = email
+        # The mobile number.
         self.mobile_phone = mobile_phone
+        # The contact name.
         self.name = name
+        # The status of the contact. Valid values: **0** (Disabled) and **1** (Enabled).
         self.status = status
 
     def validate(self):
@@ -250,11 +211,17 @@ class DescribeUserAlarmConfigResponseBodyAlarmConfig(DaraModel):
         alarm_value: str = None,
         alarm_week_day: int = None,
     ):
+        # The alarm threshold.
         self.alarm_hour = alarm_hour
+        # The notification method.
         self.alarm_notify = alarm_notify
+        # The alarm period.
         self.alarm_period = alarm_period
+        # The alarm type.
         self.alarm_type = alarm_type
+        # The value that triggers the alarm.
         self.alarm_value = alarm_value
+        # The alarm retry count.
         self.alarm_week_day = alarm_week_day
 
     def validate(self):

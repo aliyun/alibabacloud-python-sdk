@@ -16,10 +16,15 @@ class DescribeAckClustersResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # A list of ACK clusters.
         self.clusters = clusters
+        # The page number.
         self.page_no = page_no
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -88,15 +93,33 @@ class DescribeAckClustersResponseBodyClusters(DaraModel):
         state: str = None,
         vpc_id: str = None,
     ):
+        # The ID of the ACK cluster.
         self.cluster_id = cluster_id
+        # The name of the ACK cluster.
         self.cluster_name = cluster_name
+        # The specification of the ACK cluster.
         self.cluster_spec = cluster_spec
+        # The type of the ACK cluster. For more information about the valid values, see [DescribeClustersV1](~~DescribeClustersV1~~).
+        # 
+        # - [DescribeClustersV1](~~DescribeClustersV1~~): Returns a list of ACK clusters in your account that meet specific criteria, such as the cluster type and specifications.
         self.cluster_type = cluster_type
+        # The Alibaba Cloud UID of the account to which the ACK cluster resources belong.
         self.member_uid = member_uid
+        # The network plugin of the ACK cluster. For more information about the valid values, see [DescribeClustersV1](~~DescribeClustersV1~~).
+        # 
+        # - [DescribeClustersV1](~~DescribeClustersV1~~): Lists the ACK clusters in your account that meet specified conditions, such as cluster type and specifications.
         self.network = network
+        # The subtype of the cluster. This parameter is available only when `ClusterType` is set to `ManagedKubernetes`. For more information about the valid values, see [DescribeClustersV1](~~DescribeClustersV1~~).
+        # 
+        # - [DescribeClustersV1](~~DescribeClustersV1~~): Lists ACK clusters in your account that meet specified conditions, such as cluster type and specifications.
         self.profile = profile
+        # The region ID of the ACK cluster.
         self.region_id = region_id
+        # The running status of the ACK cluster. For more information about the valid values, see [DescribeClustersV1](~~DescribeClustersV1~~).
+        # 
+        # - [DescribeClustersV1](~~DescribeClustersV1~~): Retrieves a list of ACK clusters in your account that meet specified conditions, such as cluster type and specifications.
         self.state = state
+        # The ID of the VPC where the ACK cluster is deployed.
         self.vpc_id = vpc_id
 
     def validate(self):

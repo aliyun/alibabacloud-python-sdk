@@ -11,9 +11,17 @@ class DeleteAclBackupDataRequest(DaraModel):
         lang: str = None,
         source_ip: str = None,
     ):
+        # The time of the backup, specified as a UNIX timestamp (the number of seconds that have elapsed since 00:00:00 UTC on January 1, 1970).
+        # 
         # This parameter is required.
         self.back_up_time = back_up_time
+        # The language of the request and response. Valid values:
+        # 
+        # - **zh** (default): Chinese.
+        # 
+        # - **en**: English.
         self.lang = lang
+        # The source IP address.
         self.source_ip = source_ip
 
     def validate(self):

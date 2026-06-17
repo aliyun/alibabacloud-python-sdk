@@ -16,9 +16,9 @@ class DescribeTrFirewallV2RoutePolicyListResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
-        # The routing policies.
+        # The list of firewall routing policies.
         self.tr_firewall_route_policies = tr_firewall_route_policies
 
     def validate(self):
@@ -72,30 +72,37 @@ class DescribeTrFirewallV2RoutePolicyListResponseBodyTrFirewallRoutePolicies(Dar
         src_candidate_list: List[main_models.DescribeTrFirewallV2RoutePolicyListResponseBodyTrFirewallRoutePoliciesSrcCandidateList] = None,
         tr_firewall_route_policy_id: str = None,
     ):
-        # The secondary traffic redirection instances.
+        # The list of destination traffic redirection instances.
         self.dest_candidate_list = dest_candidate_list
-        # The description of the routing policy.
+        # The description of the policy.
         self.policy_description = policy_description
-        # The name of the routing policy.
+        # The name of the policy.
         self.policy_name = policy_name
-        # The status of the routing policy. Valid values:
+        # The status of the policy. Valid values:
         # 
-        # *   creating: The policy is being created.
-        # *   deleting: The policy is being deleted.
-        # *   opening: The policy is being enabled.
-        # *   opened: The policy is enabled.
-        # *   closing: The policy is being disabled.
-        # *   closed: The policy is disabled.
+        # - creating: The policy is being created.
+        # 
+        # - deleting: The policy is being deleted.
+        # 
+        # - opening: The policy is being enabled.
+        # 
+        # - opened: The policy is enabled.
+        # 
+        # - closing: The policy is being disabled.
+        # 
+        # - closed: The policy is disabled.
         self.policy_status = policy_status
-        # The type of the traffic redirection scenario of the VPC firewall. Valid values:
+        # The type of traffic redirection scenario for the VPC firewall. The firewall is created for a transit router that belongs to an Enterprise Edition Cloud Enterprise Network (CEN) instance. Valid values:
         # 
-        # *   **fullmesh**: interconnected instances
-        # *   **one_to_one**: instance to instance
-        # *   **end_to_end**: instance to instances
+        # - **fullmesh**: full-mesh
+        # 
+        # - **one_to_one**: point-to-point
+        # 
+        # - **end_to_end**: point-to-multipoint
         self.policy_type = policy_type
-        # The primary traffic redirection instances.
+        # The list of source traffic redirection instances.
         self.src_candidate_list = src_candidate_list
-        # The ID of the routing policy.
+        # The ID of the firewall routing policy.
         self.tr_firewall_route_policy_id = tr_firewall_route_policy_id
 
     def validate(self):
@@ -177,9 +184,9 @@ class DescribeTrFirewallV2RoutePolicyListResponseBodyTrFirewallRoutePoliciesSrcC
         candidate_id: str = None,
         candidate_type: str = None,
     ):
-        # The ID of the primary traffic redirection instance.
+        # The ID of the traffic redirection instance.
         self.candidate_id = candidate_id
-        # The type of the primary traffic redirection instance.
+        # The type of the traffic redirection instance.
         self.candidate_type = candidate_type
 
     def validate(self):
@@ -214,9 +221,9 @@ class DescribeTrFirewallV2RoutePolicyListResponseBodyTrFirewallRoutePoliciesDest
         candidate_id: str = None,
         candidate_type: str = None,
     ):
-        # The ID of the secondary traffic redirection instance.
+        # The ID of the traffic redirection instance.
         self.candidate_id = candidate_id
-        # The type of the secondary traffic redirection instance.
+        # The type of the traffic redirection instance.
         self.candidate_type = candidate_type
 
     def validate(self):

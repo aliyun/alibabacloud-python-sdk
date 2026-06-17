@@ -17,13 +17,22 @@ class DescribeRiskEventTopAttackAssetRequest(DaraModel):
         source_ip: str = None,
         start_time: str = None,
     ):
+        # The list of attack applications.
         self.attack_app = attack_app
+        # The type of the attack application.
         self.attack_type = attack_type
+        # The edition of Cloud Firewall.
         self.buy_version = buy_version
+        # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # The language of the content that is returned.
         self.lang = lang
+        # The source IP address of the visitor.
         self.source_ip = source_ip
+        # The start of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # 
         # This parameter is required.
         self.start_time = start_time
 

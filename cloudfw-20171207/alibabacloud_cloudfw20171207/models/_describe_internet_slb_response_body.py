@@ -14,8 +14,11 @@ class DescribeInternetSlbResponseBody(DaraModel):
         page_info: main_models.DescribeInternetSlbResponseBodyPageInfo = None,
         request_id: str = None,
     ):
+        # The list of data.
         self.data_list = data_list
+        # The pagination information.
         self.page_info = page_info
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -68,8 +71,11 @@ class DescribeInternetSlbResponseBodyPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The page number of the returned page.
         self.current_page = current_page
+        # The number of entries returned on the current page.
         self.page_size = page_size
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -119,16 +125,27 @@ class DescribeInternetSlbResponseBodyDataList(DaraModel):
         region_no: str = None,
         tags: List[str] = None,
     ):
+        # The access control ID.
         self.acl_id = acl_id
+        # The status of access control.
         self.acl_status = acl_status
+        # The access control type.
         self.acl_type = acl_type
+        # The health check status.
         self.health_status = health_status
+        # The ID of the SLB instance.
         self.instance_id = instance_id
+        # The name of the SLB instance.
         self.instance_name = instance_name
+        # The protocol type.
         self.ip_protocol = ip_protocol
+        # The port number.
         self.port = port
+        # The public IP address.
         self.public_ip = public_ip
+        # The region.
         self.region_no = region_no
+        # The list of tags.
         self.tags = tags
 
     def validate(self):

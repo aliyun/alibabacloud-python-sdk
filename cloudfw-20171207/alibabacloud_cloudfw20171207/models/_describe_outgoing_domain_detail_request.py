@@ -26,23 +26,41 @@ class DescribeOutgoingDomainDetailRequest(DaraModel):
         start_time: str = None,
         tag_id: str = None,
     ):
+        # The policy coverage status to filter by.
         self.acl_coverage = acl_coverage
+        # The page number to return.
         self.current_page = current_page
+        # The domain name to query.
         self.domain = domain
+        # A list of domain names to query.
         self.domain_list = domain_list
+        # The end of the time range to query. The value is a UNIX timestamp in seconds.
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # The IP address type. Set to `NatPrivate` to query details for outbound connections that originate from a private IP address via a NAT Gateway.
         self.iptype = iptype
+        # The language of the response.
         self.lang = lang
+        # The ID of the NAT Gateway.
         self.nat_gateway_id = nat_gateway_id
+        # The sort order.
         self.order = order
+        # The number of entries to return per page.
         self.page_size = page_size
+        # The private IP address to query.
         self.private_ip = private_ip
+        # The public IP address to query.
         self.public_ip = public_ip
+        # The field to sort the results by.
         self.sort = sort
+        # The source IP address.
         self.source_ip = source_ip
+        # The start of the time range to query. The value is a UNIX timestamp in seconds.
+        # 
         # This parameter is required.
         self.start_time = start_time
+        # The tag ID to filter by.
         self.tag_id = tag_id
 
     def validate(self):

@@ -15,12 +15,13 @@ class DescribeUserAssetIPTrafficInfoRequest(DaraModel):
         # 
         # This parameter is required.
         self.asset_ip = asset_ip
-        # The language of the content within the response. Valid values:
+        # The language of the response. Valid values:
         # 
-        # *   **zh** (default): Chinese
-        # *   **en**: English
+        # - **zh**: Chinese (default).
+        # 
+        # - **en**: English.
         self.lang = lang
-        # The time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # The time of the traffic query, specified as a UNIX timestamp in seconds.
         # 
         # This parameter is required.
         self.traffic_time = traffic_time

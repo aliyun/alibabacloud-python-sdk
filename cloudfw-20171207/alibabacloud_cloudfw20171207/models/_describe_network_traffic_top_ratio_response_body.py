@@ -15,9 +15,13 @@ class DescribeNetworkTrafficTopRatioResponseBody(DaraModel):
         data_type: str = None,
         request_id: str = None,
     ):
+        # The number of results returned.
         self.data_count = data_count
+        # The list of data values.
         self.data_list = data_list
+        # The data type.
         self.data_type = data_type
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -72,7 +76,9 @@ class DescribeNetworkTrafficTopRatioResponseBodyDataList(DaraModel):
         data_name: str = None,
         data_value: str = None,
     ):
+        # The data name.
         self.data_name = data_name
+        # The ratio.
         self.data_value = data_value
 
     def validate(self):

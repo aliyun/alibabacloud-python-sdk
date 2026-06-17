@@ -16,15 +16,15 @@ class DescribeNatFirewallTrafficTrendResponseBody(DaraModel):
         max_total_bps: int = None,
         request_id: str = None,
     ):
-        # The statistics on traffic.
+        # A list of traffic statistics.
         self.data_list = data_list
-        # The maximum inbound network throughput, which indicates the maximum number of bits that are sent inbound per second. Unit: bit/s.
+        # The peak inbound network throughput. Unit: bps.
         self.max_in_bps = max_in_bps
-        # The maximum outbound network throughput, which indicates the maximum number of bits that are sent outbound per second. Unit: bit/s.
+        # The peak outbound network throughput. Unit: bps.
         self.max_out_bps = max_out_bps
-        # The total maximum inbound and outbound network throughput, which indicates the maximum number of bits that are sent inbound and outbound per second. Unit: bit/s.
+        # The peak total network throughput for inbound and outbound traffic. Unit: bps.
         self.max_total_bps = max_total_bps
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -87,13 +87,13 @@ class DescribeNatFirewallTrafficTrendResponseBodyDataList(DaraModel):
         max_total_bps: int = None,
         traffic_time: int = None,
     ):
-        # The maximum inbound network throughput, which indicates the maximum number of bits that are sent inbound per second. Unit: bit/s.
+        # The peak inbound network throughput. Unit: bps.
         self.max_in_bps = max_in_bps
-        # The maximum outbound network throughput, which indicates the maximum number of bits that are sent outbound per second. Unit: bit/s.
+        # The peak outbound network throughput. Unit: bps.
         self.max_out_bps = max_out_bps
-        # The total maximum inbound and outbound network throughput, which indicates the maximum number of bits that are sent inbound and outbound per second. Unit: bit/s.
+        # The peak total network throughput for inbound and outbound traffic. Unit: bps.
         self.max_total_bps = max_total_bps
-        # The time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # The time of the query. This value is a UNIX timestamp. Unit: seconds.
         self.traffic_time = traffic_time
 
     def validate(self):

@@ -13,10 +13,31 @@ class DescribeAclWhitelistResponseBody(DaraModel):
         support_message_type: bool = None,
         vpc_domain_group_use_dns: bool = None,
     ):
+        # Indicates whether the whitelist is enabled. Valid values:
+        # 
+        # - **true**: enabled
+        # 
+        # - **false**: disabled
         self.domain_group_use_dns = domain_group_use_dns
+        # Indicates whether DNS is supported for domain names in NAT scenarios. Valid values:
+        # 
+        # - **true**: supported
+        # 
+        # - **false**: not supported
         self.nat_domain_group_use_dns = nat_domain_group_use_dns
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the message type is supported. Valid values:
+        # 
+        # - **true**: supported
+        # 
+        # - **false**: not supported
         self.support_message_type = support_message_type
+        # Indicates whether DNS is supported for domain names in VPC scenarios. Valid values:
+        # 
+        # - **true**: supported
+        # 
+        # - **false**: not supported
         self.vpc_domain_group_use_dns = vpc_domain_group_use_dns
 
     def validate(self):

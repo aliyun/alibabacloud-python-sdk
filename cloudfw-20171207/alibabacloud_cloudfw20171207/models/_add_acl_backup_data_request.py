@@ -12,10 +12,15 @@ class AddAclBackupDataRequest(DaraModel):
         lang: str = None,
         source_ip: str = None,
     ):
+        # The backup time, specified as a Unix timestamp (the number of seconds that have elapsed since 00:00:00 UTC on January 1, 1970).
+        # 
         # This parameter is required.
         self.back_up_time = back_up_time
+        # The description of the backup data.
         self.description = description
+        # The language of the request and response.
         self.lang = lang
+        # The source IP address of the request.
         self.source_ip = source_ip
 
     def validate(self):

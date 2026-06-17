@@ -15,9 +15,13 @@ class DescribeNatFirewallTimeTopResponseBody(DaraModel):
         request_id: str = None,
         traffic_time: str = None,
     ):
+        # The number of results.
         self.data_count = data_count
+        # The list of data.
         self.data_list = data_list
+        # The ID of the request.
         self.request_id = request_id
+        # The point in time when the traffic data was collected. This is a UNIX timestamp. Unit: seconds.
         self.traffic_time = traffic_time
 
     def validate(self):
@@ -83,18 +87,31 @@ class DescribeNatFirewallTimeTopResponseBodyDataList(DaraModel):
         session_count: str = None,
         total_bps: int = None,
     ):
+        # The inbound bandwidth. Unit: bps.
         self.in_bps = in_bps
+        # The IP address.
         self.ip = ip
+        # The ID of the NAT firewall.
         self.nat_firewall_id = nat_firewall_id
+        # The name of the NAT firewall.
         self.nat_firewall_name = nat_firewall_name
+        # The ID of the NAT Gateway.
         self.nat_gateway_id = nat_gateway_id
+        # The name of the NAT Gateway.
         self.nat_gateway_name = nat_gateway_name
+        # The number of new connections.
         self.new_conn = new_conn
+        # The outbound bandwidth. Unit: bps.
         self.out_bps = out_bps
+        # The region.
         self.region_no = region_no
+        # The ID of the asset instance.
         self.resource_instance_id = resource_instance_id
+        # The name of the asset instance.
         self.resource_instance_name = resource_instance_name
+        # The total number of sessions.
         self.session_count = session_count
+        # The total bandwidth. Unit: bps.
         self.total_bps = total_bps
 
     def validate(self):

@@ -15,10 +15,15 @@ class DescribePrivateDnsDomainNameListResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of domain names.
         self.domain_name_list = domain_name_list
+        # The page number.
         self.page_no = page_no
+        # The number of entries on the current page.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of private DNS domain names.
         self.total_count = total_count
 
     def validate(self):

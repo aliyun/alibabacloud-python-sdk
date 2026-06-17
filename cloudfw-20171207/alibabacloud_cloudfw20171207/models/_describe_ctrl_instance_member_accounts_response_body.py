@@ -11,8 +11,11 @@ class DescribeCtrlInstanceMemberAccountsResponseBody(DaraModel):
         max_instance_member_num: int = None,
         request_id: str = None,
     ):
+        # The number of Cloud Firewall member accounts.
         self.instance_member_count = instance_member_count
+        # The maximum number of member accounts supported by Cloud Firewall.
         self.max_instance_member_num = max_instance_member_num
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

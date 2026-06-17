@@ -12,9 +12,13 @@ class DescribeInvadeEventStatisticRequest(DaraModel):
         source_ip: str = None,
         start_time: str = None,
     ):
+        # The end time. This is a UNIX timestamp that is accurate to the second.
         self.end_time = end_time
+        # The language of the response.
         self.lang = lang
+        # The source IP address of the visitor.
         self.source_ip = source_ip
+        # The start time. This is a UNIX timestamp that is accurate to the second.
         self.start_time = start_time
 
     def validate(self):

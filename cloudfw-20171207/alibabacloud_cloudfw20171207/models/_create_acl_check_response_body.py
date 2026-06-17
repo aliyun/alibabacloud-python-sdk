@@ -12,7 +12,9 @@ class CreateAclCheckResponseBody(DaraModel):
         request_id: str = None,
         task_ids: List[str] = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The list of task IDs.
         self.task_ids = task_ids
 
     def validate(self):

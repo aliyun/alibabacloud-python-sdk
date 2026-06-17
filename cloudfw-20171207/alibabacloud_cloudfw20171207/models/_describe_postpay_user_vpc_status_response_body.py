@@ -13,13 +13,15 @@ class DescribePostpayUserVpcStatusResponseBody(DaraModel):
     ):
         # Id of the request
         self.request_id = request_id
-        # The status of the VPC Firewall feature. Valid values:
+        # The status of the VPC border firewall for Cloud Firewall. Valid values:
         # 
-        # *   **open**: enabled
-        # *   **init**: being enabled
-        # *   **closed**: disabled
+        # - **open**: The firewall is enabled.
+        # 
+        # - **init**: The firewall is being enabled.
+        # 
+        # - **closed**: The firewall is disabled.
         self.status = status
-        # The number of days during which no asset is added to the VPC Firewall feature for protection. This parameter is valid only when the value of Status is open.
+        # The number of days that protection was disabled. This parameter is valid only when the firewall is enabled.
         self.unprotected_date = unprotected_date
 
     def validate(self):

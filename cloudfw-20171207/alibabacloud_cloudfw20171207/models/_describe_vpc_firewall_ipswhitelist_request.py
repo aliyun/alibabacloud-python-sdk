@@ -11,16 +11,21 @@ class DescribeVpcFirewallIPSWhitelistRequest(DaraModel):
         member_uid: int = None,
         vpc_firewall_id: str = None,
     ):
-        # The language of the content within the request and response.
+        # The language of the request and response messages.
         # 
         # Valid values:
         # 
-        # *   **zh** (default): Chinese
-        # *   **en**: English
+        # - **zh** (default): Chinese
+        # 
+        # - **en**: English
         self.lang = lang
-        # The UID of the member in Cloud Firewall.
+        # The UID of the Cloud Firewall member account.
         self.member_uid = member_uid
-        # The instance ID of the VPC firewall.
+        # The instance ID of the VPC firewall. Valid values:
+        # 
+        # - If the VPC firewall protects a network instance in a Cloud Enterprise Network (CEN) instance, set the value to the ID of the CEN instance. For a CEN instance of Basic Edition, you can call the [DescribeVpcFirewallCenList](https://help.aliyun.com/document_detail/345777.html) operation to query the instance ID. For a CEN instance of Enterprise Edition, you can call the [DescribeTrFirewallsV2List](https://help.aliyun.com/document_detail/2384695.html) operation to query the instance ID.
+        # 
+        # - If the VPC firewall protects traffic between two VPCs that are connected by an Express Connect circuit, set the value to the instance ID of the VPC firewall. You can call the [DescribeVpcFirewallList](https://help.aliyun.com/document_detail/342932.html) operation to query the instance ID of the VPC firewall.
         # 
         # This parameter is required.
         self.vpc_firewall_id = vpc_firewall_id

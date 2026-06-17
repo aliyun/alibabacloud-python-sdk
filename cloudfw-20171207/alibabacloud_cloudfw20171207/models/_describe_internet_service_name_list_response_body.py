@@ -12,7 +12,9 @@ class DescribeInternetServiceNameListResponseBody(DaraModel):
         request_id: str = None,
         service_name_list: List[str] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # A list of application names.
         self.service_name_list = service_name_list
 
     def validate(self):

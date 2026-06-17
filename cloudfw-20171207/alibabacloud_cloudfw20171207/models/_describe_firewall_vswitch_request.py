@@ -16,13 +16,21 @@ class DescribeFirewallVSwitchRequest(DaraModel):
         vpc_id: str = None,
         vswitch_id: str = None,
     ):
+        # The instance ID of the VPC border firewall.
         self.firewall_id = firewall_id
+        # The language of the response. Valid values:
         self.lang = lang
+        # The UID of the member account.
         self.member_uid = member_uid
+        # The page number.
         self.page_no = page_no
+        # The number of the page to return.
         self.page_size = page_size
+        # The region ID.
         self.region_no = region_no
+        # The ID of the VPC instance.
         self.vpc_id = vpc_id
+        # The ID of the vSwitch.
         self.vswitch_id = vswitch_id
 
     def validate(self):

@@ -9,6 +9,7 @@ class ModifyUserAlarmConfigResponseBody(DaraModel):
         self,
         request_id: str = None,
     ):
+        # Request ID of the response.
         self.request_id = request_id
 
     def validate(self):

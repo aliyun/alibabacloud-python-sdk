@@ -14,8 +14,11 @@ class DescribeIspInfoResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of ISPs.
         self.data_list = data_list
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -64,7 +67,9 @@ class DescribeIspInfoResponseBodyDataList(DaraModel):
         isp_id: int = None,
         isp_name: str = None,
     ):
+        # The ID of the ISP.
         self.isp_id = isp_id
+        # The name of the ISP.
         self.isp_name = isp_name
 
     def validate(self):

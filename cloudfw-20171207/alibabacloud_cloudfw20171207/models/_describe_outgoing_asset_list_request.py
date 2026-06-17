@@ -24,22 +24,40 @@ class DescribeOutgoingAssetListRequest(DaraModel):
         sort: str = None,
         start_time: str = None,
     ):
+        # The region ID of the asset.
         self.assets_region = assets_region
+        # The page number.
         self.current_page = current_page
+        # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # The follow status.
         self.group_name = group_name
+        # Queries outbound connections routed from a private network through a NAT gateway.
         self.iptype = iptype
+        # The language of the content.
         self.lang = lang
+        # The ID of the NAT Gateway.
         self.nat_gateway_id = nat_gateway_id
+        # The name of the NAT Gateway.
         self.nat_gateway_name = nat_gateway_name
+        # The sorting order.
         self.order = order
+        # The number of entries to return on each page.
         self.page_size = page_size
+        # The private IP address.
         self.private_ip = private_ip
+        # The public IP address.
         self.public_ip = public_ip
+        # The type of the public IP address of the asset.
         self.resource_type = resource_type
+        # The security risk.
         self.security_risk = security_risk
+        # The sorting basis.
         self.sort = sort
+        # The start of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # 
         # This parameter is required.
         self.start_time = start_time
 

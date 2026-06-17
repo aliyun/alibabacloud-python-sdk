@@ -12,14 +12,15 @@ class DescribeDownloadTaskTypeRequest(DaraModel):
         page_size: str = None,
         task_type: str = None,
     ):
-        # The page number. Pages start from page 1. Default value: **1**.
+        # The page number. The default value is **1**.
         self.current_page = current_page
-        # The language of the content within the response. Valid values:
+        # The language of the response. Valid values:
         # 
-        # *   **zh** (default): Chinese
-        # *   **en**: English
+        # - **zh** (default): Chinese
+        # 
+        # - **en**: English
         self.lang = lang
-        # The number of entries per page. Default value: 10. Maximum value: 50.
+        # The number of entries to return on each page. Default value: 10. Maximum value: 50.
         self.page_size = page_size
         # The type of the task.
         self.task_type = task_type

@@ -17,38 +17,67 @@ class PutEnableFwSwitchRequest(DaraModel):
         resource_type_list: List[str] = None,
         source_ip: str = None,
     ):
+        # The IP version.
         self.ip_version = ip_version
-        # The IP addresses.
+        # The list of IP addresses.
         # 
-        # > You must specify at least one of the IpaddrList, RegionList, and ResourceTypeList parameters.
+        # > You must specify at least one of the `IpaddrList`, `RegionList`, and `ResourceTypeList` parameters.
         self.ipaddr_list = ipaddr_list
-        # The language of the content within the response.
+        # The language of the response. Valid values:
         # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # - **zh**: Chinese
+        # 
+        # - **en**: English
         self.lang = lang
+        # The UID of the member.
         self.member_uid = member_uid
-        # The regions.
+        # The list of regions.
         # 
-        # > You must specify at least one of the IpaddrList, RegionList, and ResourceTypeList parameters.
+        # > You must specify at least one of the `IpaddrList`, `RegionList`, and `ResourceTypeList` parameters.
         self.region_list = region_list
-        # The types of the assets.
+        # The list of asset types.
         # 
         # Valid values:
         # 
-        # *   BastionHostIP: the egress IP address of a bastion host
-        # *   BastionHostIngressIP: the ingress IP address of a bastion host
-        # *   EcsEIP: the elastic IP address (EIP) of an Elastic Compute Service (ECS) instance
-        # *   EcsPublicIP: the public IP address of an ECS instance
-        # *   EIP: the EIP
-        # *   EniEIP: the EIP of an elastic network interface (ENI)
-        # *   NatEIP: the EIP of a NAT gateway
-        # *   SlbEIP: the EIP of a Server Load Balancer (SLB) instance
-        # *   SlbPublicIP: the public IP address of an SLB instance
-        # *   NatPublicIP: the public IP address of a NAT gateway
-        # *   HAVIP: the high-availability virtual IP address (HAVIP)
+        # - **BastionHostEgressIP**: the egress IP address of a bastion host.
         # 
-        # > You must specify at least one of the IpaddrList, RegionList, and ResourceTypeList parameters.
+        # - **BastionHostIngressIP**: the ingress IP address of a bastion host.
+        # 
+        # - **EcsEIP**: the EIP of an ECS instance.
+        # 
+        # - **EcsPublicIP**: the public IP address of an ECS instance.
+        # 
+        # - **EIP**: an EIP.
+        # 
+        # - **EniEIP**: the EIP of an ENI.
+        # 
+        # - **NatEIP**: the EIP of a NAT gateway.
+        # 
+        # - **SlbEIP**: the EIP of an SLB instance or a CLB instance.
+        # 
+        # - **SlbPublicIP**: the public IP address of an SLB instance or a CLB instance.
+        # 
+        # - **NatPublicIP**: the public IP address of a NAT gateway.
+        # 
+        # - **HAVIP**: an HAVIP.
+        # 
+        # - **NlbEIP**: the EIP of an NLB instance.
+        # 
+        # - **ApiGatewayEIP**: the public IP address of an API gateway.
+        # 
+        # - **AlbEIP**: the EIP of an ALB instance.
+        # 
+        # - **AiGatewayEIP**: the public IP address of an AI gateway.
+        # 
+        # - **GaEIP**: the EIP of a GA instance.
+        # 
+        # - **SwasEIP**: the public IP address of a Simple Application Server instance.
+        # 
+        # - **EcdEIP**: the public IP address of an Elastic Desktop Service instance.
+        # 
+        # - **BastionHostIP**: the IP address of a bastion host.
+        # 
+        # > You must specify at least one of the `IpaddrList`, `RegionList`, and `ResourceTypeList` parameters.
         self.resource_type_list = resource_type_list
         # The source IP address of the request.
         self.source_ip = source_ip

@@ -11,8 +11,11 @@ class AddDomainResolveRealtimeTaskRequest(DaraModel):
         firewall_type: str = None,
         region_no: str = None,
     ):
+        # The domain name.
         self.domain_name = domain_name
+        # The type of the Cloud Firewall.
         self.firewall_type = firewall_type
+        # The region ID.
         self.region_no = region_no
 
     def validate(self):

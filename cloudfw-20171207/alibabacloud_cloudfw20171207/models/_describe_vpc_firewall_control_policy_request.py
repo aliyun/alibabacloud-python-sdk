@@ -21,69 +21,81 @@ class DescribeVpcFirewallControlPolicyRequest(DaraModel):
         source: str = None,
         vpc_firewall_id: str = None,
     ):
-        # The action that Cloud Firewall performs on the traffic. Valid values:
+        # The action that is performed on traffic. Valid values:
         # 
-        # *   **accept**: allows the traffic.
-        # *   **drop**: blocks the traffic.
-        # *   **log**: monitors the traffic.
+        # - **accept**: allows the traffic.
         # 
-        # > If you do not specify this parameter, access control policies are queried based on all actions.
+        # - **drop**: denies the traffic.
+        # 
+        # - **log**: monitors the traffic.
+        # 
+        # > If you do not set this parameter, policies of all actions are queried.
         self.acl_action = acl_action
         # The unique ID of the access control policy.
         self.acl_uuid = acl_uuid
-        # The number of the page to return.
+        # The page number.
         self.current_page = current_page
         # The description of the access control policy. Fuzzy match is supported.
         self.description = description
         # The destination address in the access control policy. Fuzzy match is supported.
         # 
-        # > The value of this parameter can be a CIDR block or an address book name.
+        # > The value can be a CIDR block, a domain name, or an address book.
         self.destination = destination
-        # The language of the content within the request and response.
+        # The language of the request and response.
         # 
         # Valid values:
         # 
-        # *   **zh**: Chinese (default)
-        # *   **en**: English
+        # - **zh** (default): Chinese
+        # 
+        # - **en**: English
         self.lang = lang
         # The UID of the member that is managed by your Alibaba Cloud account.
         self.member_uid = member_uid
-        # The number of entries to return on each page.
+        # The number of entries per page.
         # 
         # Maximum value: 50.
         self.page_size = page_size
         # The protocol type in the access control policy. Valid values:
         # 
-        # *   **TCP**
-        # *   **UDP**
-        # *   **ICMP**
-        # *   **ANY**: all protocol types
+        # - **TCP**
         # 
-        # > If you do not specify this parameter, access control policies of all protocol types are queried.
+        # - **UDP**
+        # 
+        # - **ICMP**
+        # 
+        # - **ANY**: all protocols
+        # 
+        # > If you do not set this parameter, policies of all protocols are queried.
         self.proto = proto
         # The status of the access control policy. Valid values:
         # 
-        # *   **true**: enabled
-        # *   **false**: disabled
-        self.release = release
-        # The recurrence type for the access control policy to take effect. Valid values:
+        # - **true**: enabled
         # 
-        # *   **Permanent** (default): The policy always takes effect.
-        # *   **None**: The policy takes effect for only once.
-        # *   **Daily**: The policy takes effect on a daily basis.
-        # *   **Weekly**: The policy takes effect on a weekly basis.
-        # *   **Monthly**: The policy takes effect on a monthly basis.
+        # - **false**: disabled
+        self.release = release
+        # The recurrence type of the access control policy. Valid values:
+        # 
+        # - **Permanent** (default): The policy is always in effect.
+        # 
+        # - **None**: The policy is a one-time policy.
+        # 
+        # - **Daily**: The policy recurs daily.
+        # 
+        # - **Weekly**: The policy recurs weekly.
+        # 
+        # - **Monthly**: The policy recurs monthly.
         self.repeat_type = repeat_type
         # The source address in the access control policy. Fuzzy match is supported.
         # 
-        # > The value of this parameter can be a CIDR block or an address book name.
+        # > The value can be a CIDR block or an address book.
         self.source = source
-        # The instance ID of the VPC firewall. Valid values:
+        # The instance ID of the VPC boundary firewall. You can specify one of the following IDs:
         # 
-        # *   If the VPC firewall protects the traffic between two VPCs that are connected by using a CEN instance, the value of this parameter must be the ID of the CEN instance.
-        # *   If the VPC firewall protects the traffic between two VPCs that are connected by using an Express Connect circuit, the value of this parameter must be the instance ID of the VPC firewall.
+        # - The ID of a Cloud Enterprise Network (CEN) instance if the firewall protects traffic between two VPCs connected via the CEN instance.
         # 
-        # > You can call the [DescribeVpcFirewallAclGroupList](https://help.aliyun.com/document_detail/159760.html) operation to query the ID.
+        # - The instance ID of the VPC boundary firewall if the firewall protects traffic between two VPCs connected via an Express Connect circuit.
+        # 
+        # > You can call the [DescribeVpcFirewallList](https://help.aliyun.com/document_detail/159760.html) operation to obtain the ID.
         # 
         # This parameter is required.
         self.vpc_firewall_id = vpc_firewall_id

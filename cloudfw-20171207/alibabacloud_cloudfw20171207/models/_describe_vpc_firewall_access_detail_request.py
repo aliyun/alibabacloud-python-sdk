@@ -25,24 +25,74 @@ class DescribeVpcFirewallAccessDetailRequest(DaraModel):
         start_time: str = None,
         vpc_id: str = None,
     ):
+        # The IP address of the local asset.
         self.asset_ip = asset_ip
+        # The page number.
         self.current_page = current_page
+        # The traffic direction. Valid values:
+        # 
+        # - **in**: inbound
+        # 
+        # - **out**: outbound
+        # 
+        # > If you do not specify this parameter, traffic in all directions is queried.
         self.direction = direction
+        # The end of the time range to query. This value is a UNIX timestamp that is accurate to the second.
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # The protocol type. Valid values:
+        # 
+        # - **tcp**: TCP
+        # 
+        # - **udp**: UDP
         self.ipprotocol = ipprotocol
+        # The language of the response. Valid values:
+        # 
+        # - **zh** (default): Chinese
+        # 
+        # - **en**: English
         self.lang = lang
+        # The sort order. Valid values:
+        # 
+        # - **asc**: ascending
+        # 
+        # - **desc** (default): descending
         self.order = order
+        # The number of entries per page.
         self.page_size = page_size
+        # The IP address of the peer asset.
         self.peer_asset_ip = peer_asset_ip
+        # The instance ID of the peer asset.
         self.peer_asset_instance_id = peer_asset_instance_id
+        # The instance name of the peer asset.
         self.peer_asset_instance_name = peer_asset_instance_name
+        # The ID of the peer VPC.
         self.peer_vpc_id = peer_vpc_id
+        # The port number.
         self.port = port
+        # The risk level.
         self.risk_level = risk_level
+        # The sorting criterion. Valid values are:
+        # 
+        # - **InBytes**
+        # 
+        # - **OutBytes**
+        # 
+        # - **TotalBytes**
+        # 
+        # - **InPackets**
+        # 
+        # - **OutPackets**
+        # 
+        # - **SessionCount**
         self.sort = sort
+        # The start of the time range to query. This value is a UNIX timestamp that is accurate to the second.
+        # 
         # This parameter is required.
         self.start_time = start_time
+        # The ID of the VPC.
+        # 
         # This parameter is required.
         self.vpc_id = vpc_id
 

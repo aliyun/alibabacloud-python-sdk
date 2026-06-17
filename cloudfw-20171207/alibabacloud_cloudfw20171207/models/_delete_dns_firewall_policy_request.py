@@ -11,9 +11,13 @@ class DeleteDnsFirewallPolicyRequest(DaraModel):
         lang: str = None,
         source_ip: str = None,
     ):
+        # The unique ID of the access control policy.
+        # 
         # This parameter is required.
         self.acl_uuid = acl_uuid
+        # The language of the request and response. Valid values: **zh** for Chinese and **en** for English.
         self.lang = lang
+        # The source IP address of the request.
         self.source_ip = source_ip
 
     def validate(self):

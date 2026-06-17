@@ -21,42 +21,50 @@ class DescribeTrFirewallsV2ListRequest(DaraModel):
     ):
         # The ID of the Cloud Enterprise Network (CEN) instance.
         self.cen_id = cen_id
-        # The page number. Default value: **1**.
+        # The page number for a paged query. Default value: **1**.
         self.current_page = current_page
         # The instance ID of the VPC firewall.
         self.firewall_id = firewall_id
-        # The name of the VPC firewall.
+        # The instance name of the VPC firewall.
         self.firewall_name = firewall_name
         # The status of the VPC firewall. Valid values:
         # 
-        # *   **opened**: The VPC firewall is enabled.
-        # *   **closed**: The VPC firewall is disabled.
-        # *   **notconfigured**: The VPC firewall is not created.
-        # *   **configured**: The VPC firewall is created but is not enabled.
-        # *   **creating**: The VPC firewall is being created.
-        # *   **opening**: The VPC firewall is being enabled.
-        # *   **deleting**: The VPC firewall is being deleted.
+        # - **opened**: Enabled
         # 
-        # >  If you do not specify this parameter, VPC firewalls in all states are queried.
+        # - **closed**: Disabled
+        # 
+        # - **notconfigured**: The VPC firewall is not configured.
+        # 
+        # - **configured**: The VPC firewall is configured.
+        # 
+        # - **creating**: The VPC firewall is being created.
+        # 
+        # - **opening**: The VPC firewall is being enabled.
+        # 
+        # - **deleting**: The VPC firewall is being deleted.
+        # 
+        # > If you do not specify this parameter, VPC firewalls in all states are queried.
         self.firewall_switch_status = firewall_switch_status
-        # The language of the content within the response. Valid values:
+        # The language of the response message. Valid values:
         # 
-        # *   **zh**: Chinese (default)
-        # *   **en**: English
+        # - **zh** (default): Chinese
+        # 
+        # - **en**: English
         self.lang = lang
         self.owner_id = owner_id
-        # The number of entries per page. Default value: 10.
+        # The maximum number of entries to return on each page in a paged query. Default value: 10.
         self.page_size = page_size
-        # The region ID of the transit router.
+        # The region ID of the transit router instance.
         self.region_no = region_no
-        # The routing mode of the VPC firewall. Valid values:
+        # The routing mode. Valid values:
         # 
-        # *   **managed**: automatic mode
-        # *   **manual**: manual mode
+        # - **managed**: automatic mode.
         # 
-        # >  If you do not specify this parameter, VPC firewalls in all routing modes are queried.
+        # - **manual**: manual mode.
+        # 
+        # > If you do not specify this parameter, VPC firewalls in all routing modes are queried.
         self.route_mode = route_mode
-        # The ID of the transit router.
+        # The instance ID of the transit router.
         self.transit_router_id = transit_router_id
 
     def validate(self):

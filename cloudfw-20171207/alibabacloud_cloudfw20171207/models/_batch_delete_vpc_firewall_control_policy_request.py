@@ -12,7 +12,7 @@ class BatchDeleteVpcFirewallControlPolicyRequest(DaraModel):
         acl_uuid_list: List[str] = None,
         vpc_firewall_id: str = None,
     ):
-        # The UUIDs of access control policies.
+        # The list of UUIDs of the access control policies.
         # 
         # This parameter is required.
         self.acl_uuid_list = acl_uuid_list

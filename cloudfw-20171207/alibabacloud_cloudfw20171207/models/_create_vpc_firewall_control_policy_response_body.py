@@ -10,7 +10,7 @@ class CreateVpcFirewallControlPolicyResponseBody(DaraModel):
         acl_uuid: str = None,
         request_id: str = None,
     ):
-        # The ID of the access control policy.
+        # The unique ID of the access control policy.
         self.acl_uuid = acl_uuid
         # The ID of the request.
         self.request_id = request_id

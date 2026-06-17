@@ -11,16 +11,17 @@ class UpdatePostpayUserInternetStatusRequest(DaraModel):
         lang: str = None,
         operate: str = None,
     ):
-        # The instance ID of Cloud Firewall.
+        # The ID of the Cloud Firewall instance.
         self.instance_id = instance_id
-        # The language of the content within the response. Valid values:
+        # The language of the response messages. Valid values:
         # 
-        # *   **zh** (default)
-        # *   **en**
+        # - **zh** (default): Chinese
+        # 
+        # - **en**: English
         self.lang = lang
-        # The operation type.
+        # The type of operation. Currently, only the \\`open\\` operation is supported.
         # 
-        # *   Set the value to open.
+        # - open: enables the firewall.
         self.operate = operate
 
     def validate(self):

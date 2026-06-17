@@ -13,10 +13,15 @@ class DescribeInvadeEventStatisticResponseBody(DaraModel):
         request_id: str = None,
         total_open_event_cnt: int = None,
     ):
+        # The number of open high-risk vulnerabilities.
         self.high_open_event_cnt = high_open_event_cnt
+        # The number of open low-risk vulnerabilities.
         self.low_open_event_cnt = low_open_event_cnt
+        # The number of open medium-risk vulnerabilities.
         self.middle_open_event_cnt = middle_open_event_cnt
+        # The request ID.
         self.request_id = request_id
+        # The total number of open vulnerabilities.
         self.total_open_event_cnt = total_open_event_cnt
 
     def validate(self):

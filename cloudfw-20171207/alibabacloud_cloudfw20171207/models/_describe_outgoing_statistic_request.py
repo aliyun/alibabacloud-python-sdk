@@ -12,10 +12,20 @@ class DescribeOutgoingStatisticRequest(DaraModel):
         source_ip: str = None,
         start_time: str = None,
     ):
+        # The end time. Use a UNIX timestamp in seconds.
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # The language of the response. Valid values:
+        # 
+        # - **zh** (default): Chinese
+        # 
+        # - **en**: English
         self.lang = lang
+        # The source IP address of the visitor.
         self.source_ip = source_ip
+        # The start time. Use a UNIX timestamp in seconds.
+        # 
         # This parameter is required.
         self.start_time = start_time
 

@@ -17,7 +17,7 @@ class DescribeInvadeEventListResponseBody(DaraModel):
         page_info: main_models.DescribeInvadeEventListResponseBodyPageInfo = None,
         request_id: str = None,
     ):
-        # An array that consists of breach awareness events.
+        # The list of breach detection events.
         self.event_list = event_list
         # The percentage of high-risk events.
         self.high_level_percent = high_level_percent
@@ -27,7 +27,7 @@ class DescribeInvadeEventListResponseBody(DaraModel):
         self.middle_level_percent = middle_level_percent
         # The pagination information.
         self.page_info = page_info
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -102,7 +102,7 @@ class DescribeInvadeEventListResponseBodyPageInfo(DaraModel):
         self.current_page = current_page
         # The number of entries returned per page.
         self.page_size = page_size
-        # The total number of breach awareness events.
+        # The total number of breach detection events.
         self.total_count = total_count
 
     def validate(self):
@@ -157,74 +157,99 @@ class DescribeInvadeEventListResponseBodyEventList(DaraModel):
         public_ip_type: str = None,
         risk_level: int = None,
     ):
-        # The ID of the affected asset.
+        # The instance ID of the affected asset.
         self.assets_instance_id = assets_instance_id
         # The name of the affected asset.
         self.assets_instance_name = assets_instance_name
         # The type of the affected asset. Valid values:
         # 
-        # *   **BastionHostIP**: the egress IP address of a bastion host
-        # *   **BastionHostIngressIP**: the ingress IP address of a bastion host
-        # *   **EcsEIP**: the elastic IP address (EIP) of an Elastic Compute Service (ECS) instance
-        # *   **EcsPublicIP**: the public IP address of an ECS instance
-        # *   **EIP**: the EIP
-        # *   **EniEIP**: the EIP of an elastic network interface (ENI)
-        # *   **NatEIP**: the EIP of a NAT gateway
-        # *   **SlbEIP**: the EIP of a Server Load Balancer (SLB) instance
-        # *   **SlbPublicIP**: the public IP address of an SLB instance
-        # *   **NatPublicIP**: the public IP address of a NAT gateway
-        # *   **HAVIP**: the high-availability virtual IP address (HAVIP)
+        # - **BastionHostIP**: the egress IP address of a bastion host.
+        # 
+        # - **BastionHostIngressIP**: the ingress IP address of a bastion host.
+        # 
+        # - **EcsEIP**: the EIP of an ECS instance.
+        # 
+        # - **EcsPublicIP**: the public IP address of an ECS instance.
+        # 
+        # - **EIP**: an EIP.
+        # 
+        # - **EniEIP**: the EIP of an ENI.
+        # 
+        # - **NatEIP**: the EIP of a NAT gateway.
+        # 
+        # - **SlbEIP**: the EIP of a CLB instance.
+        # 
+        # - **SlbPublicIP**: the public IP address of a CLB instance.
+        # 
+        # - **NatPublicIP**: the public IP address of a NAT gateway.
+        # 
+        # - **HAVIP**: an HAVIP.
         self.assets_type = assets_type
-        # The ID of the breach awareness event.
+        # The ID of the breach detection event.
         self.event_key = event_key
-        # The name of the breach awareness event.
+        # The name of the breach detection event.
         self.event_name = event_name
-        # The type of the breach awareness event. Valid values:
+        # The source of the breach detection event. Valid values:
         # 
-        # *   **IPS**: intrusion prevention event
-        # *   **offline**: disconnection event
+        # - **IPS**: an intrusion prevention system event.
+        # 
+        # - **offline**: an offline event.
         self.event_src = event_src
-        # The UUID of the breach awareness event.
+        # The UUID of the breach detection event.
         self.event_uuid = event_uuid
-        # The time when the breach awareness event first occurred. The value is a UNIX timestamp. Unit: seconds.
+        # The time when the breach detection event first occurred. This value is a UNIX timestamp. Unit: seconds.
         self.first_time = first_time
-        # Indicates whether the breach awareness event is ignored. Valid values:
+        # Indicates whether the breach detection event is ignored. Valid values:
         # 
-        # *   **true**: The breach awareness event is ignored.
-        # *   **false**: The breach awareness event is not ignored.
+        # - **true**: The event is ignored.
+        # 
+        # - **false**: The event is not ignored.
         self.is_ignore = is_ignore
-        # The time when the breach awareness event last occurred. The value is a UNIX timestamp. Unit: seconds.
+        # The time when the breach detection event last occurred. This value is a UNIX timestamp. Unit: seconds.
         self.last_time = last_time
-        # The ID of the member.
+        # The UID of the member.
         self.member_uid = member_uid
         # The private IP address of the affected asset.
         self.private_ip = private_ip
-        # The handling status of the breach awareness event. Valid values:
+        # The handling status of the breach detection event. Valid values:
         # 
-        # *   **0**: unhandled
-        # *   **20**: handled
+        # - **0**: pending
+        # 
+        # - **20**: handled
         self.process_status = process_status
         # The public IP address of the affected asset.
         self.public_ip = public_ip
         # The type of the affected asset. Valid values:
         # 
-        # *   **BastionHostIP**: the egress IP address of a bastion host
-        # *   **BastionHostIngressIP**: the ingress IP address of a bastion host
-        # *   **EcsEIP**: the EIP of an ECS instance
-        # *   **EcsPublicIP**: the public IP address of an ECS instance
-        # *   **EIP**: the EIP
-        # *   **EniEIP**: the EIP of an ENI
-        # *   **NatEIP**: the EIP of a NAT gateway
-        # *   **SlbEIP**: the EIP of an SLB instance
-        # *   **SlbPublicIP**: the public IP address of an SLB instance
-        # *   **NatPublicIP**: the public IP address of a NAT gateway
-        # *   **HAVIP**: the HAVIP
+        # - **BastionHostIP**: the egress IP address of a bastion host.
+        # 
+        # - **BastionHostIngressIP**: the ingress IP address of a bastion host.
+        # 
+        # - **EcsEIP**: the EIP of an ECS instance.
+        # 
+        # - **EcsPublicIP**: the public IP address of an ECS instance.
+        # 
+        # - **EIP**: an EIP.
+        # 
+        # - **EniEIP**: the EIP of an ENI.
+        # 
+        # - **NatEIP**: the EIP of a NAT gateway.
+        # 
+        # - **SlbEIP**: the EIP of a CLB instance.
+        # 
+        # - **SlbPublicIP**: the public IP address of a CLB instance.
+        # 
+        # - **NatPublicIP**: the public IP address of a NAT gateway.
+        # 
+        # - **HAVIP**: an HAVIP.
         self.public_ip_type = public_ip_type
         # The risk level. Valid values:
         # 
-        # *   **1**: low
-        # *   **2**: medium
-        # *   **3**: high
+        # - **1**: low
+        # 
+        # - **2**: medium
+        # 
+        # - **3**: high
         self.risk_level = risk_level
 
     def validate(self):

@@ -18,18 +18,31 @@ class DescribeConfiguredDestinationIPRequest(DaraModel):
         source_code: str = None,
         source_ip: str = None,
     ):
+        # The page number of the returned page.
         self.current_page = current_page
+        # The destination IP address.
         self.destination_ip = destination_ip
+        # The destination ISP.
         self.destination_isp = destination_isp
+        # The destination region.
         self.destination_region = destination_region
+        # The traffic direction.
+        # 
         # This parameter is required.
         self.direction = direction
+        # The group name.
+        # 
         # This parameter is required.
         self.group_name = group_name
+        # The language of the response.
         self.lang = lang
+        # The number of entries to return on each page.
         self.page_size = page_size
+        # The trace code.
+        # 
         # This parameter is required.
         self.source_code = source_code
+        # The source IP address of the visitor.
         self.source_ip = source_ip
 
     def validate(self):

@@ -12,24 +12,25 @@ class DescribeNatFirewallPolicyPriorUsedRequest(DaraModel):
         lang: str = None,
         nat_gateway_id: str = None,
     ):
-        # The direction of the traffic to which the access control policy applies.
+        # The traffic direction of the access control policy.
         # 
-        # Valid values:
+        # Valid value:
         # 
-        # *   **out**: outbound traffic
+        # - **out**: outbound traffic.
         # 
         # This parameter is required.
         self.direction = direction
-        # The IP version supported by the access control policy. Valid values:
+        # The IP version. Valid value:
         # 
-        # *   **4**: IPv4 (default)
+        # - **4** (default): IPv4
         self.ip_version = ip_version
-        # The language of the content within the request and the response. Valid values:
+        # The language of the request and response. Valid values:
         # 
-        # *   **zh**: Chinese (default)
-        # *   **en**: English
+        # - **zh** (default): Chinese.
+        # 
+        # - **en**: English.
         self.lang = lang
-        # The ID of the NAT gateway.
+        # The ID of the NAT Gateway.
         # 
         # This parameter is required.
         self.nat_gateway_id = nat_gateway_id

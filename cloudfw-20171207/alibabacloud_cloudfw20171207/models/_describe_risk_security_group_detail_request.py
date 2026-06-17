@@ -16,15 +16,29 @@ class DescribeRiskSecurityGroupDetailRequest(DaraModel):
         rule_uuid: str = None,
         source_ip: str = None,
     ):
+        # The ID of the security group instance.
         self.instance_id = instance_id
+        # The name of the instance.
         self.instance_name = instance_name
+        # The language of the response. Valid values:
+        # 
+        # - **zh** (default): Chinese
+        # 
+        # - **en**: English
         self.lang = lang
+        # The page number.
+        # 
         # This parameter is required.
         self.page_no = page_no
+        # The number of the page to return.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # The region ID.
         self.region_id = region_id
+        # The UUID of the rule.
         self.rule_uuid = rule_uuid
+        # The source IP address of the visitor.
         self.source_ip = source_ip
 
     def validate(self):

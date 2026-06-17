@@ -272,6 +272,9 @@ from ._describe_firewall_vswitch_response import DescribeFirewallVSwitchResponse
 from ._describe_firewall_vswitch_resources_request import DescribeFirewallVswitchResourcesRequest
 from ._describe_firewall_vswitch_resources_response_body import DescribeFirewallVswitchResourcesResponseBody
 from ._describe_firewall_vswitch_resources_response import DescribeFirewallVswitchResourcesResponse
+from ._describe_ipsrules_request import DescribeIPSRulesRequest
+from ._describe_ipsrules_response_body import DescribeIPSRulesResponseBody
+from ._describe_ipsrules_response import DescribeIPSRulesResponse
 from ._describe_instance_members_request import DescribeInstanceMembersRequest
 from ._describe_instance_members_response_body import DescribeInstanceMembersResponseBody
 from ._describe_instance_members_response import DescribeInstanceMembersResponse
@@ -722,6 +725,7 @@ from ._modify_tr_firewall_v2route_policy_scope_shrink_request import ModifyTrFir
 from ._modify_tr_firewall_v2route_policy_scope_response_body import ModifyTrFirewallV2RoutePolicyScopeResponseBody
 from ._modify_tr_firewall_v2route_policy_scope_response import ModifyTrFirewallV2RoutePolicyScopeResponse
 from ._modify_user_alarm_config_request import ModifyUserAlarmConfigRequest
+from ._modify_user_alarm_config_shrink_request import ModifyUserAlarmConfigShrinkRequest
 from ._modify_user_alarm_config_response_body import ModifyUserAlarmConfigResponseBody
 from ._modify_user_alarm_config_response import ModifyUserAlarmConfigResponse
 from ._modify_user_ipswhitelist_request import ModifyUserIPSWhitelistRequest
@@ -870,6 +874,7 @@ from ._describe_firewall_vswitch_response_body import DescribeFirewallVSwitchRes
 from ._describe_firewall_vswitch_response_body import DescribeFirewallVSwitchResponseBodyVswitchList
 from ._describe_firewall_vswitch_resources_response_body import DescribeFirewallVswitchResourcesResponseBodyVswitchListFirewallList
 from ._describe_firewall_vswitch_resources_response_body import DescribeFirewallVswitchResourcesResponseBodyVswitchList
+from ._describe_ipsrules_response_body import DescribeIPSRulesResponseBodyRules
 from ._describe_instance_members_response_body import DescribeInstanceMembersResponseBodyMembers
 from ._describe_instance_members_response_body import DescribeInstanceMembersResponseBodyPageInfo
 from ._describe_instance_rd_accounts_response_body import DescribeInstanceRdAccountsResponseBodyAccounts
@@ -993,7 +998,6 @@ from ._describe_unprotected_vuln_trend_response_body import DescribeUnprotectedV
 from ._describe_user_alarm_config_response_body import DescribeUserAlarmConfigResponseBodyAlarmConfig
 from ._describe_user_alarm_config_response_body import DescribeUserAlarmConfigResponseBodyContactConfig
 from ._describe_user_alarm_config_response_body import DescribeUserAlarmConfigResponseBodyDefaultContact
-from ._describe_user_alarm_config_response_body import DescribeUserAlarmConfigResponseBodyNotifyConfig
 from ._describe_user_ipswhitelist_response_body import DescribeUserIPSWhitelistResponseBodyIpv6Whitelists
 from ._describe_user_ipswhitelist_response_body import DescribeUserIPSWhitelistResponseBodyWhitelists
 from ._describe_vfw_ipsconfig_list_response_body import DescribeVfwIPSConfigListResponseBodyVfwIpsSwitchConfigList
@@ -1054,7 +1058,7 @@ from ._modify_tr_firewall_v2route_policy_scope_request import ModifyTrFirewallV2
 from ._modify_tr_firewall_v2route_policy_scope_request import ModifyTrFirewallV2RoutePolicyScopeRequestSrcCandidateList
 from ._modify_user_alarm_config_request import ModifyUserAlarmConfigRequestAlarmConfig
 from ._modify_user_alarm_config_request import ModifyUserAlarmConfigRequestContactConfig
-from ._modify_user_alarm_config_request import ModifyUserAlarmConfigRequestNotifyConfig
+from ._modify_user_alarm_config_shrink_request import ModifyUserAlarmConfigShrinkRequestAlarmConfig
 from ._put_enable_fw_switch_response_body import PutEnableFwSwitchResponseBodyAbnormalResourceStatusList
 from ._update_ack_cluster_connector_response_body import UpdateAckClusterConnectorResponseBodyAckClusterConnector
 from ._update_acl_check_detail_status_response_body import UpdateAclCheckDetailStatusResponseBodyCheckRecordAclsAclTagList
@@ -1333,6 +1337,9 @@ __all__ = [
     DescribeFirewallVswitchResourcesRequest,
     DescribeFirewallVswitchResourcesResponseBody,
     DescribeFirewallVswitchResourcesResponse,
+    DescribeIPSRulesRequest,
+    DescribeIPSRulesResponseBody,
+    DescribeIPSRulesResponse,
     DescribeInstanceMembersRequest,
     DescribeInstanceMembersResponseBody,
     DescribeInstanceMembersResponse,
@@ -1783,6 +1790,7 @@ __all__ = [
     ModifyTrFirewallV2RoutePolicyScopeResponseBody,
     ModifyTrFirewallV2RoutePolicyScopeResponse,
     ModifyUserAlarmConfigRequest,
+    ModifyUserAlarmConfigShrinkRequest,
     ModifyUserAlarmConfigResponseBody,
     ModifyUserAlarmConfigResponse,
     ModifyUserIPSWhitelistRequest,
@@ -1931,6 +1939,7 @@ __all__ = [
     DescribeFirewallVSwitchResponseBodyVswitchList,
     DescribeFirewallVswitchResourcesResponseBodyVswitchListFirewallList,
     DescribeFirewallVswitchResourcesResponseBodyVswitchList,
+    DescribeIPSRulesResponseBodyRules,
     DescribeInstanceMembersResponseBodyMembers,
     DescribeInstanceMembersResponseBodyPageInfo,
     DescribeInstanceRdAccountsResponseBodyAccounts,
@@ -2054,7 +2063,6 @@ __all__ = [
     DescribeUserAlarmConfigResponseBodyAlarmConfig,
     DescribeUserAlarmConfigResponseBodyContactConfig,
     DescribeUserAlarmConfigResponseBodyDefaultContact,
-    DescribeUserAlarmConfigResponseBodyNotifyConfig,
     DescribeUserIPSWhitelistResponseBodyIpv6Whitelists,
     DescribeUserIPSWhitelistResponseBodyWhitelists,
     DescribeVfwIPSConfigListResponseBodyVfwIpsSwitchConfigList,
@@ -2115,7 +2123,7 @@ __all__ = [
     ModifyTrFirewallV2RoutePolicyScopeRequestSrcCandidateList,
     ModifyUserAlarmConfigRequestAlarmConfig,
     ModifyUserAlarmConfigRequestContactConfig,
-    ModifyUserAlarmConfigRequestNotifyConfig,
+    ModifyUserAlarmConfigShrinkRequestAlarmConfig,
     PutEnableFwSwitchResponseBodyAbnormalResourceStatusList,
     UpdateAckClusterConnectorResponseBodyAckClusterConnector,
     UpdateAclCheckDetailStatusResponseBodyCheckRecordAclsAclTagList,

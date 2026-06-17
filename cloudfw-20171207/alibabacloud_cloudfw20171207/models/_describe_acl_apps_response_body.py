@@ -14,8 +14,11 @@ class DescribeAclAppsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of ACL applications.
         self.acl_apps = acl_apps
+        # The request ID.
         self.request_id = request_id
+        # The total count.
         self.total_count = total_count
 
     def validate(self):
@@ -68,11 +71,33 @@ class DescribeAclAppsResponseBodyAclApps(DaraModel):
         risk_level: int = None,
         support_fqdn: int = None,
     ):
+        # The application ID.
         self.app_id = app_id
+        # The application name.
         self.app_name = app_name
+        # Indicates whether the application is common. Valid values:
+        # 
+        # - **1**: common
+        # 
+        # - **0**: not common
+        # 
+        # -
         self.popular = popular
+        # The protocols supported by the application.
         self.protocols = protocols
+        # The risk level. Valid values:
+        # 
+        # - **1**: Low
+        # 
+        # - **2**: Medium
+        # 
+        # - **3**: High
         self.risk_level = risk_level
+        # Indicates whether the application supports `FQDN`. Valid values:
+        # 
+        # - **0**: No
+        # 
+        # - **1**: Yes
         self.support_fqdn = support_fqdn
 
     def validate(self):

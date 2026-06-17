@@ -11,8 +11,11 @@ class DescribeNetworkInstanceListRequest(DaraModel):
         connect_type: str = None,
         lang: str = None,
     ):
+        # The ID of the CEN instance.
         self.cen_id = cen_id
+        # The type of connection.
         self.connect_type = connect_type
+        # The language of the response.
         self.lang = lang
 
     def validate(self):

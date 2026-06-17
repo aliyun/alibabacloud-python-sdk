@@ -15,14 +15,23 @@ class DescribeOutgoingDestinationCategoryRequest(DaraModel):
         start_time: str = None,
         type_id: str = None,
     ):
+        # The category ID.
         self.category_id = category_id
+        # The destination type.
         self.dst_type = dst_type
+        # The end time of the query. This is a UNIX timestamp. Unit: seconds.
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # The language of the response message.
         self.lang = lang
+        # The source IP address of the visitor.
         self.source_ip = source_ip
+        # The start time of the query. This is a UNIX timestamp. Unit: seconds.
+        # 
         # This parameter is required.
         self.start_time = start_time
+        # The fixed category ID.
         self.type_id = type_id
 
     def validate(self):

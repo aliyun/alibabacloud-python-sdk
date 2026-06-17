@@ -11,12 +11,13 @@ class DescribeVpcFirewallCenDetailRequest(DaraModel):
         network_instance_id: str = None,
         vpc_firewall_id: str = None,
     ):
-        # The language of the content within the request and response. Valid values:
+        # The language of the request and response. Valid values:
         # 
-        # *   **zh**: Chinese (default)
-        # *   **en**: English
+        # - **zh** (default): Chinese.
+        # 
+        # - **en**: English.
         self.lang = lang
-        # The ID of the VPC for which the VPC firewall is created.
+        # The ID of the VPC instance for which the VPC firewall is created.
         self.network_instance_id = network_instance_id
         # The instance ID of the VPC firewall.
         # 

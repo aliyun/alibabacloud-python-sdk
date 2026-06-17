@@ -12,11 +12,24 @@ class CreateNatFirewallPreCheckRequest(DaraModel):
         region_no: str = None,
         vpc_id: str = None,
     ):
+        # The language of the response message. Valid values:
+        # 
+        # - **zh** (default): Chinese
+        # 
+        # - **en**: English
         self.lang = lang
+        # The ID of the NAT Gateway.
+        # 
         # This parameter is required.
         self.nat_gateway_id = nat_gateway_id
+        # The region ID of the NAT Gateway.
+        # 
+        # > For more information about the regions where Cloud Firewall is available, see [Supported regions](https://help.aliyun.com/document_detail/195657.html).
+        # 
         # This parameter is required.
         self.region_no = region_no
+        # The ID of the VPC instance.
+        # 
         # This parameter is required.
         self.vpc_id = vpc_id
 

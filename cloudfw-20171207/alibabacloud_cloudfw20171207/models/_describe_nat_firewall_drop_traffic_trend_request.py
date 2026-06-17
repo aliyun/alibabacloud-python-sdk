@@ -11,8 +11,11 @@ class DescribeNatFirewallDropTrafficTrendRequest(DaraModel):
         source_ip: str = None,
         start_time: int = None,
     ):
+        # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
         self.end_time = end_time
+        # The source IP address.
         self.source_ip = source_ip
+        # The start of the time range to query. The value is a UNIX timestamp. Unit: seconds.
         self.start_time = start_time
 
     def validate(self):

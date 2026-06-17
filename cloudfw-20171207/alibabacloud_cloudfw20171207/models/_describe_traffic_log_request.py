@@ -36,6 +36,7 @@ class DescribeTrafficLogRequest(DaraModel):
         rule_id: str = None,
         rule_result: str = None,
         rule_source: str = None,
+        rule_source_final: str = None,
         source_code: str = None,
         source_ip: str = None,
         src_ip: str = None,
@@ -48,48 +49,97 @@ class DescribeTrafficLogRequest(DaraModel):
         vpc_firewall_id: str = None,
         vul_level: str = None,
     ):
+        # The ID of the pre-matched ACL rule.
         self.acl_pre_rule_id = acl_pre_rule_id
+        # The pre-matching status of the ACL.
         self.acl_pre_state = acl_pre_state
+        # The status of deep packet inspection.
         self.app_dpi_state = app_dpi_state
+        # The application ID.
         self.app_id = app_id
+        # The region ID.
         self.asset_region = asset_region
+        # The attack type.
         self.attack_type = attack_type
+        # The page number of the query.
         self.current_page = current_page
+        # The direction.
         self.direction = direction
+        # The domain name.
         self.domain_name = domain_name
+        # The URL in the flow log.
         self.domain_url = domain_url
+        # The destination IP address.
         self.dst_ip = dst_ip
+        # The destination port.
         self.dst_port = dst_port
+        # The destination VPC ID.
         self.dst_vpc_id = dst_vpc_id
+        # The region of the destination VPC asset.
         self.dst_vpc_region_no = dst_vpc_region_no
+        # The end time. This value is a UNIX timestamp. Unit: seconds.
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # The firewall type.
         self.firewall_type = firewall_type
+        # The flow log type.
         self.flow_type = flow_type
+        # The protocol type.
         self.ip_protocol = ip_protocol
+        # The IP version.
         self.ip_version = ip_version
+        # The Internet Service Provider (ISP).
         self.isp = isp
+        # The language of the response. Valid values:
+        # 
+        # - **zh** (default): Chinese
+        # 
+        # - **en**: English
         self.lang = lang
+        # The region of the source or destination IP address.
         self.location = location
+        # The UID of the member account.
         self.member_uid = member_uid
+        # The ID of the NAT firewall.
         self.nat_firewall_id = nat_firewall_id
+        # The ID of the NAT Gateway.
         self.nat_gateway_id = nat_gateway_id
+        # The page number to query. The maximum value is 20.
         self.page_size = page_size
+        # The rule ID.
         self.rule_id = rule_id
+        # The action of the rule.
         self.rule_result = rule_result
+        # The source of the rule.
         self.rule_source = rule_source
+        # The module that takes effect in the end.
+        self.rule_source_final = rule_source_final
+        # The traceability code.
+        # 
         # This parameter is required.
         self.source_code = source_code
+        # The source IP address.
         self.source_ip = source_ip
+        # The source IP address.
         self.src_ip = src_ip
+        # The source port.
         self.src_port = src_port
+        # The private source IP address.
         self.src_private_ip = src_private_ip
+        # The source VPC ID.
         self.src_vpc_id = src_vpc_id
+        # The region of the source VPC asset.
         self.src_vpc_region_no = src_vpc_region_no
+        # The start time. This value is a UNIX timestamp. Unit: seconds. You can query data within the last 7 days. The time range for a single query cannot exceed one day.
+        # 
         # This parameter is required.
         self.start_time = start_time
+        # The ID of the TLS inspection scope.
         self.tls_scope_id = tls_scope_id
+        # The instance ID of the VPC border firewall.
         self.vpc_firewall_id = vpc_firewall_id
+        # The vulnerability level.
         self.vul_level = vul_level
 
     def validate(self):
@@ -186,6 +236,9 @@ class DescribeTrafficLogRequest(DaraModel):
 
         if self.rule_source is not None:
             result['RuleSource'] = self.rule_source
+
+        if self.rule_source_final is not None:
+            result['RuleSourceFinal'] = self.rule_source_final
 
         if self.source_code is not None:
             result['SourceCode'] = self.source_code
@@ -310,6 +363,9 @@ class DescribeTrafficLogRequest(DaraModel):
 
         if m.get('RuleSource') is not None:
             self.rule_source = m.get('RuleSource')
+
+        if m.get('RuleSourceFinal') is not None:
+            self.rule_source_final = m.get('RuleSourceFinal')
 
         if m.get('SourceCode') is not None:
             self.source_code = m.get('SourceCode')

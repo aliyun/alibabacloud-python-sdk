@@ -14,13 +14,22 @@ class DescribeInternetDropTrafficTrendRequest(DaraModel):
         source_ip: str = None,
         start_time: str = None,
     ):
+        # The traffic direction.
         self.direction = direction
+        # The end time of the query, specified as a timestamp in seconds.
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # The language of the response.
         self.lang = lang
+        # The traceability code.
+        # 
         # This parameter is required.
         self.source_code = source_code
+        # The source IP address.
         self.source_ip = source_ip
+        # The start time, specified as a timestamp in seconds.
+        # 
         # This parameter is required.
         self.start_time = start_time
 

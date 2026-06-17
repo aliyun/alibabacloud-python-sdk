@@ -14,11 +14,11 @@ class DescribeInstanceMembersResponseBody(DaraModel):
         page_info: main_models.DescribeInstanceMembersResponseBodyPageInfo = None,
         request_id: str = None,
     ):
-        # The information about the member.
+        # The information about the Cloud Firewall member accounts.
         self.members = members
         # The pagination information.
         self.page_info = page_info
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -71,11 +71,11 @@ class DescribeInstanceMembersResponseBodyPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The page number.
+        # The page number of the returned page.
         self.current_page = current_page
-        # The number of entries per page.
+        # The number of entries returned per page.
         self.page_size = page_size
-        # The total number of the members.
+        # The total number of Cloud Firewall member accounts.
         self.total_count = total_count
 
     def validate(self):
@@ -120,20 +120,21 @@ class DescribeInstanceMembersResponseBodyMembers(DaraModel):
         member_uid: int = None,
         modify_time: int = None,
     ):
-        # The time when the member was added to Cloud Firewall. The value is a timestamp. Unit: seconds.
+        # The time when the member account was added to Cloud Firewall. This value is a UNIX timestamp. Unit: seconds.
         self.create_time = create_time
-        # The remarks of the member.
+        # The description of the Cloud Firewall member account.
         self.member_desc = member_desc
-        # The name of the member.
+        # The name of the Cloud Firewall member account.
         self.member_display_name = member_display_name
-        # The status of the member. Valid values:
+        # The status of the Cloud Firewall member account. Valid values:
         # 
-        # *   **normal**
-        # *   **deleting**
+        # - **normal**: Normal
+        # 
+        # - **deleting**: Deleting
         self.member_status = member_status
-        # The UID of the member.
+        # The UID of the Cloud Firewall member account.
         self.member_uid = member_uid
-        # The time when the member was last modified. The value is a timestamp. Unit: seconds.
+        # The time when the member account was last modified. This value is a UNIX timestamp. Unit: seconds.
         self.modify_time = modify_time
 
     def validate(self):

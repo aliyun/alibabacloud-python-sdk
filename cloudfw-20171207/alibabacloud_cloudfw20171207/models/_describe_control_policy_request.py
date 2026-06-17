@@ -23,11 +23,13 @@ class DescribeControlPolicyRequest(DaraModel):
     ):
         # The action that Cloud Firewall performs on the traffic. Valid values:
         # 
-        # *   **accept**: allows the traffic.
-        # *   **drop**: denies the traffic.
-        # *   **log**: monitors the traffic.
+        # - **accept**: Allow
         # 
-        # >  If you do not specify this parameter, access control policies of all action types are queried.
+        # - **drop**: Deny
+        # 
+        # - **log**: Monitor
+        # 
+        # > If you do not set this parameter, all action types are queried.
         self.acl_action = acl_action
         # The unique ID of the access control policy.
         self.acl_uuid = acl_uuid
@@ -37,67 +39,83 @@ class DescribeControlPolicyRequest(DaraModel):
         # 
         # This parameter is required.
         self.current_page = current_page
-        # The description of the access control policy. Fuzzy match is supported.
+        # The description of the access control policy. Fuzzy queries are supported.
         # 
-        # >  If you do not specify this parameter, access control policies that have descriptions are queried.
+        # > If you do not set this parameter, the descriptions of all policies are queried.
         self.description = description
-        # The destination address in the access control policy. Fuzzy match is supported. The value of this parameter varies based on the value of the DestinationType parameter.
+        # The destination address in the access control policy. Fuzzy queries are supported. The value of this parameter varies based on the value of the \\`DestinationType\\` parameter.
         # 
-        # *   If you set DestinationType to `net`, the value of Destination is a CIDR block. Example: 10.0.3.0/24.
-        # *   If you set DestinationType to `domain`, the value of Destination is a domain name. Example: aliyun.
-        # *   If you set DestinationType to `group`, the value of Destination is the name of an address book. Example: db_group.
-        # *   If you set DestinationType to `location`, the value of Destination is the name of a location. For more information about location codes, see AddControlPolicy. Example: ["BJ11", "ZB"].
+        # - If \\`DestinationType\\` is \\`net\\`, the value of this parameter is a CIDR block. Example: 10.0.3.0/24.
         # 
-        # >  If you do not specify this parameter, access control policies of all destination address types are queried.
+        # - If \\`DestinationType\\` is \\`domain\\`, the value of this parameter is a domain name. Example: aliyun.
+        # 
+        # - If \\`DestinationType\\` is \\`group\\`, the value of this parameter is the name of an address book. Example: db_group.
+        # 
+        # - If \\`DestinationType\\` is \\`location\\`, the value of this parameter is a region name. For more information about region codes, see AddControlPolicy. Example: \\`["BJ11", "ZB"]\\`.
+        # 
+        # > If you do not set this parameter, all types of destination addresses are queried.
         self.destination = destination
-        # The direction of the traffic to which the access control policies apply. Valid values:
+        # The traffic direction that the access control policy controls. Valid values:
         # 
-        # *   **in**: inbound.
-        # *   **out**: outbound.
+        # - **in**: Inbound traffic from an external source to an internal destination.
+        # 
+        # - **out**: Outbound traffic from an internal source to an external destination.
         self.direction = direction
-        # The IP version of the address in the access control policy. Valid values:
+        # The IP version supported. Valid values:
         # 
-        # *   **4**: IPv4 (default)
-        # *   **6**: IPv6
+        # - **4** (default): IPv4 address
+        # 
+        # - **6**: IPv6 address
         self.ip_version = ip_version
-        # The language of the content within the response. Valid values:
+        # The language of the response message. Valid values:
         # 
-        # *   **zh**: Chinese (default)
-        # *   **en**: English
+        # - **zh** (default): Chinese
+        # 
+        # - **en**: English
         self.lang = lang
         # The number of entries to return on each page.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The type of the protocol in the access control policy. Valid values:
+        # The protocol type of the traffic in the access control policy. Valid values:
         # 
-        # * **TCP**
-        # * **UDP**
-        # * **ICMP**
-        # * **ANY**: all types of protocols
+        # - **TCP**
         # 
-        # >  If you do not specify this parameter, access control policies of all protocol types are queried.
+        # - **UDP**
+        # 
+        # - **ICMP**
+        # 
+        # - **ANY** (all protocol types)
+        # 
+        # > If you do not set this parameter, all protocol types are queried.
         self.proto = proto
-        # Specifies whether the access control policy is enabled. By default, an access control policy is enabled after it is created. Valid values:
+        # The status of the access control policy. Valid values:
         # 
-        # *   **true**: The access control policy is enabled.
-        # *   **false**: The access control policy is disabled.
+        # - **true**: The access control policy is enabled.
+        # 
+        # - **false**: The access control policy is disabled.
         self.release = release
-        # The recurrence type for the access control policy to take effect. Valid values:
+        # The recurrence type for the policy validity period of the access control policy. Valid values:
         # 
-        # *   **Permanent** (default): The policy always takes effect.
-        # *   **None**: The policy takes effect for only once.
-        # *   **Daily**: The policy takes effect on a daily basis.
-        # *   **Weekly**: The policy takes effect on a weekly basis.
-        # *   **Monthly**: The policy takes effect on a monthly basis.
+        # - **Permanent** (default): Always
+        # 
+        # - **None**: One-time
+        # 
+        # - **Daily**: Daily
+        # 
+        # - **Weekly**: Weekly
+        # 
+        # - **Monthly**: Monthly
         self.repeat_type = repeat_type
-        # The source address in the access control policy. Fuzzy match is supported. The value of this parameter depends on the value of the SourceType parameter.
+        # The source address in the access control policy. Fuzzy queries are supported. The value of this parameter varies based on the value of the \\`SourceType\\` parameter.
         # 
-        # *   If SourceType is set to `net`, the value of Source must be a CIDR block. Example: 192.0.XX.XX/24.
-        # *   If SourceType is set to `group`, the value of Source must be the name of an address book. Example: db_group. If the db_group address book does not contain addresses, all source addresses are queried.
-        # *   If SourceType is set to `location`, the value of Source must be a location. Example: beijing.
+        # - If \\`SourceType\\` is \\`net\\`, the value of this parameter is a CIDR block. Example: 192.0.XX.XX/24.
         # 
-        # >  If you do not specify this parameter, access control policies of all source address types are queried.
+        # - If \\`SourceType\\` is \\`group\\`, the value of this parameter is the name of a source address book. Example: \\`db_group\\`. If you leave this parameter empty, all source addresses are queried.
+        # 
+        # - If \\`SourceType\\` is \\`location\\`, the value of this parameter is a source region. Example: \\`Beijing\\` or \\`beijing\\`. You can use either the Chinese name or the English name for the query.
+        # 
+        # > If you do not set this parameter, all types of source addresses are queried.
         self.source = source
 
     def validate(self):

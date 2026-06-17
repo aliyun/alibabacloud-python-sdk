@@ -17,13 +17,22 @@ class DescribeRiskEventTopAttackAppRequest(DaraModel):
         source_ip: str = None,
         start_time: str = None,
     ):
+        # The list of attacked applications.
         self.attack_app = attack_app
+        # The type of attack.
         self.attack_type = attack_type
+        # The purchased edition.
         self.buy_version = buy_version
+        # The end time of the query. The value is a UNIX timestamp in seconds.
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # The language of the response.
         self.lang = lang
+        # The source IP address of the visitor.
         self.source_ip = source_ip
+        # The start time of the query. The value is a UNIX timestamp in seconds.
+        # 
         # This parameter is required.
         self.start_time = start_time
 

@@ -11,16 +11,17 @@ class ResetNatFirewallRuleHitCountRequest(DaraModel):
         lang: str = None,
         nat_gateway_id: str = None,
     ):
-        # The UUID of the access control policy.
+        # The unique ID of the access control policy.
         # 
         # This parameter is required.
         self.acl_uuid = acl_uuid
-        # The language of the content within the request and response. Valid values:
+        # The language of the request and response. Valid values:
         # 
-        # *   **zh** (default): Chinese
-        # *   **en**: English
+        # - **zh** (default): Chinese
+        # 
+        # - **en**: English
         self.lang = lang
-        # The ID of the NAT gateway.
+        # The ID of the NAT Gateway.
         self.nat_gateway_id = nat_gateway_id
 
     def validate(self):

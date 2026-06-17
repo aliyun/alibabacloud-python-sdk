@@ -9,6 +9,7 @@ class DescribeAclCheckQuotaRequest(DaraModel):
         self,
         lang: str = None,
     ):
+        # The language of the response.
         self.lang = lang
 
     def validate(self):

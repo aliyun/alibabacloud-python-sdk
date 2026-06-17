@@ -13,20 +13,21 @@ class DescribeVpcListLiteRequest(DaraModel):
         vpc_id: str = None,
         vpc_name: str = None,
     ):
-        # The language of the content within the request and response. Valid values:
+        # The language of the request and response. Valid values:
         # 
-        # *   **zh** (default): Chinese
-        # *   **en**: English
+        # - **zh** (default): Chinese.
+        # 
+        # - **en**: English.
         self.lang = lang
-        # The region ID of the VPC.
+        # The ID of the region where the VPC resides.
         # 
-        # >  For more information about Cloud Firewall supported regions, see [Supported regions](https://help.aliyun.com/document_detail/195657.html).
+        # > For more information about the regions that Cloud Firewall supports, see [Supported regions](https://help.aliyun.com/document_detail/195657.html).
         self.region_no = region_no
-        # The source IP address of the request.
+        # The source IP address of the requester.
         self.source_ip = source_ip
-        # The ID of the VPC.
+        # The instance ID of the VPC.
         self.vpc_id = vpc_id
-        # The name of the VPC.
+        # The instance name of the VPC.
         self.vpc_name = vpc_name
 
     def validate(self):

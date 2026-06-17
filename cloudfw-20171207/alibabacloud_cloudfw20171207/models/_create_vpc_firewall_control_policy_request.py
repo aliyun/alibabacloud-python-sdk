@@ -36,153 +36,189 @@ class CreateVpcFirewallControlPolicyRequest(DaraModel):
     ):
         # The action that Cloud Firewall performs on the traffic. Valid values:
         # 
-        # - **accept**: allows the traffic.
-        # - **drop**: blocks the traffic.
-        # - **log**: monitors the traffic.
+        # - **accept**: Allows the traffic.
+        # 
+        # - **drop**: Denies the traffic.
+        # 
+        # - **log**: Monitors the traffic.
         # 
         # This parameter is required.
         self.acl_action = acl_action
-        # The type of the applications that the access control policy supports. Valid values:
+        # The application type that the access control policy supports. Valid values:
         # 
         # - **FTP**
+        # 
         # - **HTTP**
+        # 
         # - **HTTPS**
+        # 
         # - **MySQL**
+        # 
         # - **SMTP**
+        # 
         # - **SMTPS**
+        # 
         # - **RDP**
+        # 
         # - **VNC**
+        # 
         # - **SSH**
+        # 
         # - **Redis**
+        # 
         # - **MQTT**
+        # 
         # - **MongoDB**
+        # 
         # - **Memcache**
+        # 
         # - **SSL**
-        # - **ANY**: all types of applications
+        # 
+        # - **ANY** (all application types)
         self.application_name = application_name
-        # The application types supported by the access control policy.
+        # The list of application types that the access control policy supports.
         self.application_name_list = application_name_list
         # The description of the access control policy.
         # 
         # This parameter is required.
         self.description = description
-        # The destination port in the access control policy. 
+        # The destination port in the access control policy.
         # 
-        # >  If **DestPortType** is set to `port`, you must specify this parameter.
+        # > Set this parameter when **DestPortType** is set to `port`.
         self.dest_port = dest_port
-        # The name of the destination port address book in the access control policy. 
+        # The name of the destination port address book in the access control policy.
         # 
-        # >  If **DestPortType** is set to `group`, you must specify this parameter.
+        # > Set this parameter when **DestPortType** is set to `group`.
         self.dest_port_group = dest_port_group
         # The type of the destination port in the access control policy. Valid values:
         # 
         # - **port**: port
+        # 
         # - **group**: port address book
         self.dest_port_type = dest_port_type
         # The destination address in the access control policy. Valid values:
         # 
-        # - If **DestinationType** is set to `net`, the value of **Destination** must be a CIDR block.
-        # - If **DestinationType** is set to `group`, the value of **Destination** must be an address book.
-        # - If **DestinationType** is set to `domain`, the value of **Destination** must be a domain name.
+        # - If **DestinationType** is `net`, set this parameter to a destination CIDR block.
+        # 
+        # - If **DestinationType** is `group`, set this parameter to the name of a destination address book.
+        # 
+        # - If **DestinationType** is `domain`, set this parameter to a destination domain name.
         # 
         # This parameter is required.
         self.destination = destination
         # The type of the destination address in the access control policy. Valid values:
         # 
         # - **net**: CIDR block
+        # 
         # - **group**: address book
+        # 
         # - **domain**: domain name
         # 
         # This parameter is required.
         self.destination_type = destination_type
-        # The domain name resolution method of the access control policy. Valid values:
+        # The domain name resolution method for the access control policy. Valid values:
         # 
-        # * **FQDN**: fully qualified domain name (FQDN)-based resolution
-        # * **DNS**: DNS-based dynamic resolution
-        # * **FQDN_AND_DNS**: FQDN and DNS-based dynamic resolution
+        # - **FQDN**: FQDN-based
+        # 
+        # - **DNS**: DNS-based dynamic resolution
+        # 
+        # - **FQDN_AND_DNS**: FQDN-based and DNS-based dynamic resolution
         self.domain_resolve_type = domain_resolve_type
-        # The time when the access control policy stops taking effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes later than the start time.
+        # The end time of the policy validity period. This value is a UNIX timestamp. The time must be on the hour or half-hour and must be at least 30 minutes later than the start time.
         # 
-        # >  If you set RepeatType to Permanent, leave this parameter empty. If you set RepeatType to None, Daily, Weekly, or Monthly, you must specify this parameter.
+        # > If RepeatType is \\`Permanent\\`, leave this parameter empty. If RepeatType is \\`None\\`, \\`Daily\\`, \\`Weekly\\`, or \\`Monthly\\`, set this parameter.
         self.end_time = end_time
-        # The language of the content within the request and response. Valid values:
+        # The language of the request and response. Valid values:
         # 
-        # - **zh**: Chinese (default)
+        # - **zh** (default): Chinese
+        # 
         # - **en**: English
         self.lang = lang
-        # The UID of the member that is managed by your Alibaba Cloud account.
+        # The UID of the member account.
         self.member_uid = member_uid
-        # The priority of the access control policy. 
+        # The priority of the access control policy.
         # 
-        # The priority value starts from 1. A smaller priority value indicates a higher priority.
+        # The priority starts from 1. A smaller value indicates a higher priority.
         # 
         # This parameter is required.
         self.new_order = new_order
-        # The type of the protocol in the access control policy. Valid values:
+        # The protocol type in the access control policy. Valid values:
         # 
-        # - **ANY** (If you are not sure about the protocol type, you can set this parameter to ANY.)
+        # - **ANY** (Set this value if you are unsure of the protocol type.)
+        # 
         # - **TCP**
+        # 
         # - **UDP**
+        # 
         # - **ICMP**
         # 
         # This parameter is required.
         self.proto = proto
-        # Specifies whether to enable the access control policy. By default, an access control policy is enabled after the policy is created. Valid values: 
+        # The status of the access control policy. The policy is enabled by default after it is created. Valid values:
         # 
-        # - **true**: enables the access control policy.
-        # - **false**: disables the access control policy.
+        # - **true**: Enables the access control policy.
+        # 
+        # - **false**: Disables the access control policy.
         self.release = release
-        # The days of a week or of a month on which the access control policy takes effect.
+        # The days of the week or month on which the policy is recurrently active.
         # 
-        # *   If you set RepeatType to `Permanent`, `None`, or `Daily`, leave this parameter empty. Example: [].
-        # *   If you set RepeatType to Weekly, you must specify this parameter. Example: [0, 6].
+        # - If RepeatType is `Permanent`, `None`, or `Daily`, leave this parameter empty. Example: \\`[]\\`
         # 
-        # >  If you set RepeatType to Weekly, the fields in the value of this parameter cannot be repeated.
+        # - If RepeatType is \\`Weekly\\`, set this parameter. Example: \\`[0, 6]\\`
         # 
-        # *   If you set RepeatType to `Monthly`, you must specify this parameter. Example: [1, 31].
+        # > If RepeatType is set to \\`Weekly\\`, the values in RepeatDays cannot be duplicates.
         # 
-        # >  If you set RepeatType to Monthly, the fields in the value of this parameter cannot be repeated.
+        # - If **RepeatType** is \\`Monthly\\`, set this parameter. Example: \\`[1, 31]\\`
+        # 
+        # > If RepeatType is set to \\`Monthly\\`, the values in RepeatDays cannot be duplicates.
         self.repeat_days = repeat_days
-        # The point in time when the recurrence ends. Example: 23:30. The value must be on the hour or on the half hour, and at least 30 minutes later than the start time.
+        # The recurring end time of the policy validity period. For example: \\`23:30\\`. The time must be on the hour or half-hour and must be at least 30 minutes later than the recurring start time.
         # 
-        # >  If you set RepeatType to Permanent or None, leave this parameter empty. If you set RepeatType to Daily, Weekly, or Monthly, you must specify this parameter.
+        # > If RepeatType is \\`Permanent\\` or \\`None\\`, leave this parameter empty. If RepeatType is \\`Daily\\`, \\`Weekly\\`, or \\`Monthly\\`, set this parameter.
         self.repeat_end_time = repeat_end_time
-        # The point in time when the recurrence starts. Example: 08:00. The value must be on the hour or on the half hour, and at least 30 minutes earlier than the end time.
+        # The recurring start time of the policy validity period. For example: \\`08:00\\`. The time must be on the hour or half-hour and must be at least 30 minutes earlier than the recurring end time.
         # 
-        # >  If you set RepeatType to Permanent or None, leave this parameter empty. If you set RepeatType to Daily, Weekly, or Monthly, you must specify this parameter.
+        # > If RepeatType is \\`Permanent\\` or \\`None\\`, leave this parameter empty. If RepeatType is \\`Daily\\`, \\`Weekly\\`, or \\`Monthly\\`, set this parameter.
         self.repeat_start_time = repeat_start_time
-        # The recurrence type for the access control policy to take effect. Valid values:
+        # The recurrence type for the policy validity period. Valid values:
         # 
-        # *   **Permanent** (default): The policy always takes effect.
-        # *   **None**: The policy takes effect for only once.
-        # *   **Daily**: The policy takes effect on a daily basis.
-        # *   **Weekly**: The policy takes effect on a weekly basis.
-        # *   **Monthly**: The policy takes effect on a monthly basis.
+        # - **Permanent** (default): always
+        # 
+        # - **None**: one-time
+        # 
+        # - **Daily**: daily
+        # 
+        # - **Weekly**: weekly
+        # 
+        # - **Monthly**: monthly
         self.repeat_type = repeat_type
-        # The source address in the access control policy. 
+        # The source address in the access control policy.
         # 
-        # - If SourceType is set to `net`, the value of Source must be a CIDR block.
-        # - If SourceType is set to `group`, the value of Source must be an address book.
+        # - If SourceType is `net`, set this parameter to a source CIDR block.
+        # 
+        # - If SourceType is `group`, set this parameter to the name of a source address book.
         # 
         # This parameter is required.
         self.source = source
         # The type of the source address in the access control policy. Valid values:
         # 
         # - **net**: CIDR block
+        # 
         # - **group**: address book
         # 
         # This parameter is required.
         self.source_type = source_type
-        # The time when the access control policy starts to take effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes earlier than the end time.
+        # The start time of the policy validity period. This value is a UNIX timestamp. The time must be on the hour or half-hour and must be at least 30 minutes earlier than the end time.
         # 
-        # >  If you set RepeatType to Permanent, leave this parameter empty. If you set RepeatType to None, Daily, Weekly, or Monthly, you must specify this parameter.
+        # > If RepeatType is \\`Permanent\\`, leave this parameter empty. If RepeatType is \\`None\\`, \\`Daily\\`, \\`Weekly\\`, or \\`Monthly\\`, set this parameter.
         self.start_time = start_time
-        # The ID of the policy group in which you want to create the access control policy. 
+        # The ID of the policy group for the VPC border firewall.
         # 
-        # - If a VPC firewall protects the traffic between two VPCs that are connected by using a CEN instance, the value of this parameter must be the ID of the CEN instance.
-        # - If a VPC firewall protects the traffic between two VPCs that are connected by using an Express Connect circuit, the value of this parameter must be the instance ID of the VPC firewall.
+        # - If the VPC border firewall protects traffic between two VPCs that are connected using a CEN instance, set this parameter to the ID of the CEN instance.
         # 
-        # >  You can call the [DescribeVpcFirewallAclGroupList](https://www.alibabacloud.com/help/en/cloud-firewall/latest/describevpcfirewallaclgrouplist) operation to query the IDs.
+        # - If the VPC border firewall protects traffic between two VPCs that are connected using an Express Connect circuit, set this parameter to the ID of the VPC border firewall instance.
+        # 
+        # > Call the [DescribeVpcFirewallAclGroupList](https://help.aliyun.com/document_detail/159760.html) operation to get this ID.
         # 
         # This parameter is required.
         self.vpc_firewall_id = vpc_firewall_id

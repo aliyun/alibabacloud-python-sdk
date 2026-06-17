@@ -15,26 +15,29 @@ class CreateTrFirewallV2RoutePolicyShrinkRequest(DaraModel):
         policy_type: str = None,
         src_candidate_list_shrink: str = None,
     ):
-        # The secondary traffic redirection instances.
+        # The list of destination network instances.
         self.dest_candidate_list_shrink = dest_candidate_list_shrink
-        # The instance ID of the VPC firewall.
+        # The ID of the VPC firewall instance.
         self.firewall_id = firewall_id
-        # The language of the content within the response. Valid values:
+        # The language of the response. Valid values:
         # 
-        # *   **zh** (default): Chinese
-        # *   **en**: English
+        # - **zh** (default): Chinese
+        # 
+        # - **en**: English
         self.lang = lang
-        # The description of the traffic redirection instance.
+        # The description of the routing policy.
         self.policy_description = policy_description
-        # The name of the traffic redirection instance.
+        # The name of the routing policy.
         self.policy_name = policy_name
-        # The type of the traffic redirection scenario of the VPC firewall. Valid values:
+        # The traffic redirection scenario of the Enterprise Edition transit router. Valid values:
         # 
-        # *   **fullmesh**: interconnected instances
-        # *   **one_to_one**: instance to instance
-        # *   **end_to_end**: instance to instances
+        # - **fullmesh**: full-mesh
+        # 
+        # - **one_to_one**: point-to-point
+        # 
+        # - **end_to_end**: point-to-multipoint
         self.policy_type = policy_type
-        # The primary traffic redirection instances.
+        # The list of source network instances.
         self.src_candidate_list_shrink = src_candidate_list_shrink
 
     def validate(self):

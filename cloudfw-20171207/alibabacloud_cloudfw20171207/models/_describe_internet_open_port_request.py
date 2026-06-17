@@ -19,16 +19,27 @@ class DescribeInternetOpenPortRequest(DaraModel):
         start_time: str = None,
         suggest_level: str = None,
     ):
+        # The page number for a paged query.
         self.current_page = current_page
+        # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
         self.end_time = end_time
+        # The language of the content.
         self.lang = lang
+        # The number of entries per page for a paged query.
         self.page_size = page_size
+        # The port number.
         self.port = port
+        # The risk level.
         self.risk_level = risk_level
+        # The name of the application. This is an exact match. If you do not specify this parameter, all applications are queried.
         self.service_name = service_name
+        # The name of the application. This is a fuzzy match. If you do not specify this parameter, all applications are queried.
         self.service_name_fuzzy = service_name_fuzzy
+        # The source IP address.
         self.source_ip = source_ip
+        # The start of the time range to query. The value is a UNIX timestamp. Unit: seconds.
         self.start_time = start_time
+        # The recommended policy level.
         self.suggest_level = suggest_level
 
     def validate(self):

@@ -10,7 +10,9 @@ class SetAutoProtectNewAssetsResponseBody(DaraModel):
         module: str = None,
         request_id: str = None,
     ):
+        # The firewall module.
         self.module = module
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

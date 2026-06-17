@@ -14,11 +14,11 @@ class DescribeAssetListResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The assets that are protected by Cloud Firewall.
+        # The details of the assets protected by Cloud Firewall.
         self.assets = assets
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of the assets that are protected by Cloud Firewall.
+        # The total number of assets protected by Cloud Firewall.
         self.total_count = total_count
 
     def validate(self):
@@ -90,94 +90,133 @@ class DescribeAssetListResponseBodyAssets(DaraModel):
     ):
         # The UID of the Alibaba Cloud account.
         # 
-        # >  The value of this parameter indicates the management account to which the member is added.
+        # > The UID of the management account to which the member account belongs.
         self.ali_uid = ali_uid
-        # The ID of the cloud resource with which the asset is associated.
+        # The ID of the instance that is associated with the asset.
         self.bind_instance_id = bind_instance_id
-        # The instance name of the asset.
+        # The name of the instance that is associated with the asset.
         self.bind_instance_name = bind_instance_name
-        # The timestamp when the asset is added to Cloud Firewall.
+        # The time when the asset was discovered by Cloud Firewall, in YYYY-MM-DD HH:mm:ss format.
         self.create_time_stamp = create_time_stamp
-        # The public IP address of the server.
+        # The public IP address of the asset.
         self.internet_address = internet_address
-        # The internal IP address of the server.
+        # The private IP address of the asset.
         self.intranet_address = intranet_address
-        # The IP version of the asset that is protected by Cloud Firewall.
+        # The IP version of the asset. Valid values:
         # 
-        # Valid values:
+        # Values:
         # 
-        # *   **4**: IPv4
-        # *   **6**: IPv6
+        # - **4**: An IPv4 address.
+        # 
+        # - **6**: An IPv6 address.
         self.ip_version = ip_version
-        # Outbound traffic in the last 7 days.
+        # The amount of outbound traffic from the asset in the last 7 days, in bytes.
         self.last_7day_out_traffic_bytes = last_7day_out_traffic_bytes
-        # The UID of the member.
+        # The UID of the Cloud Firewall member account.
         self.member_uid = member_uid
-        # The instance name of the asset that is protected by Cloud Firewall.
+        # The name of the asset instance.
         self.name = name
-        # The time when the asset was added. Valid values:
+        # A tag that indicates how recently the asset was discovered. Valid values:
         # 
-        # *   **discovered in 1 hour**: within one hour.
-        # *   **discovered in 1 day**: within one day.
-        # *   **discovered in 7 days**: within seven days.
+        # - **discovered in 1 hour**: The asset was discovered within the last hour.
+        # 
+        # - **discovered in 1 day**: The asset was discovered within the last 24 hours.
+        # 
+        # - **discovered in 7 days**: The asset was discovered within the last 7 days.
         self.new_resource_tag = new_resource_tag
-        # The remarks of the asset. Valid values:
+        # Additional information about the asset. Valid values:
         # 
-        # *   **REGION_NOT_SUPPORT**: The region is not supported.
-        # *   **NETWORK_NOT_SUPPORT**: The network is not supported.
+        # - **REGION_NOT_SUPPORT**: The region is not supported.
+        # 
+        # - **NETWORK_NOT_SUPPORT**: The network type is not supported.
         self.note = note
-        # The status of the firewall. Valid values:
+        # The protection status of the asset. Valid values:
         # 
-        # *   **open**: enabled.
-        # *   **opening**: being enabled.
-        # *   **closed**: disabled.
-        # *   **closing**: being disabled.
+        # - **open**: Protected.
+        # 
+        # - **opening**: Enabling protection.
+        # 
+        # - **closed**: Not protected.
+        # 
+        # - **closing**: Disabling protection.
         self.protect_status = protect_status
-        # The ID of the region in which the asset resides.
+        # The region ID of the asset.
         self.region_id = region_id
-        # Indicates whether the firewall is supported in the region in which the asset resides. Valid values:
+        # Indicates whether the asset\\"s region supports Cloud Firewall protection. Valid values:
         # 
-        # *   **enable**: yes
-        # *   **disable**: no
+        # - **enable**: Supported.
+        # 
+        # - **disable**: Not supported.
         self.region_status = region_status
-        # The instance ID of the asset.
+        # The ID of the asset instance.
         self.resource_instance_id = resource_instance_id
         # The type of the asset. Valid values:
         # 
-        # *   **BastionHostEgressIP**: the egress IP address of a bastion host
-        # *   **BastionHostIngressIP**: the ingress IP address of a bastion host
-        # *   **EcsEIP**: the elastic IP address (EIP) of an Elastic Compute Service (ECS) instance
-        # *   **EcsPublicIP**: the public IP address of an ECS instance
-        # *   **EIP**: the EIP
-        # *   **EniEIP**: the EIP of an elastic network interface (ENI)
-        # *   **NatEIP**: the EIP of a NAT gateway
-        # *   **SlbEIP**: the EIP of a Server Load Balancer (SLB) instance
-        # *   **SlbPublicIP**: the public IP address of an SLB instance
-        # *   **NatPublicIP**: the public IP address of a NAT gateway
-        # *   **HAVIP**: the high-availability virtual IP address (HAVIP)
+        # - **BastionHostEgressIP**: The egress IP address of a bastion host.
+        # 
+        # - **BastionHostIngressIP**: The ingress IP address of a bastion host.
+        # 
+        # - **EcsEIP**: The EIP of an ECS instance.
+        # 
+        # - **EcsPublicIP**: The public IP address of an ECS instance.
+        # 
+        # - **EIP**: A standalone EIP.
+        # 
+        # - **EniEIP**: The EIP of an elastic network interface (ENI).
+        # 
+        # - **NatEIP**: The EIP of a NAT gateway.
+        # 
+        # - **SlbEIP**: The EIP of a Classic Load Balancer (CLB) instance.
+        # 
+        # - **SlbPublicIP**: The public IP address of a Classic Load Balancer (CLB) instance.
+        # 
+        # - **NatPublicIP**: The public IP address of a NAT gateway.
+        # 
+        # - **HAVIP**: A high-availability virtual IP (HAVIP).
+        # 
+        # - **NlbEIP**: The EIP of a Network Load Balancer (NLB) instance.
+        # 
+        # - **ApiGatewayEIP**: The EIP of an API Gateway instance.
+        # 
+        # - **AlbEIP**: The EIP of an Application Load Balancer (ALB) instance.
+        # 
+        # - **AiGatewayEIP**: The EIP of an AI Gateway instance.
+        # 
+        # - **GaEIP**: The EIP of a Global Accelerator (GA) instance.
+        # 
+        # - **SwasEIP**: The public IP address of a Simple Application Server instance.
+        # 
+        # - **EcdEIP**: The public IP address of an Elastic Desktop Service (EDS) instance.
+        # 
+        # - **BastionHostIP**: The IP address of a bastion host.
         self.resource_type = resource_type
         # The risk level of the asset. Valid values:
         # 
-        # *   **low**: low
-        # *   **middle**: medium
-        # *   **hight**: high
+        # - **low**: Low risk.
         # 
-        # >  The value of this parameter is returned only when the UserType parameter is set to free.
+        # - **middle**: Medium risk.
+        # 
+        # - **high**: High risk.
+        # 
+        # > This parameter is returned only if the `UserType` parameter is set to `free`.
         self.risk_level = risk_level
-        # Data leakage detection enabled status.
+        # Indicates whether data leak prevention is enabled.
         self.sensitive_data_status = sensitive_data_status
         # The status of the security group policy. Valid values:
         # 
-        # *   **pass**: applied
-        # *   **block**: not applied
-        # *   **unsupport**: unsupported
-        self.sg_status = sg_status
-        # The time when the status of the security group was last checked. The value is a UNIX timestamp. Unit: seconds.
-        self.sg_status_time = sg_status_time
-        # Indicates whether traffic redirection is supported for the asset. Valid values:
+        # - **pass**: The policy is applied.
         # 
-        # *   **enable**: yes
-        # *   **disable**: no
+        # - **block**: The policy is not applied.
+        # 
+        # - **unsupport**: Not supported.
+        self.sg_status = sg_status
+        # The timestamp of the last security group status check. Unit: seconds.
+        self.sg_status_time = sg_status_time
+        # Indicates whether the asset supports traffic redirection. Valid values:
+        # 
+        # - **enable**: Traffic redirection is supported.
+        # 
+        # - **disable**: Traffic redirection is not supported.
         self.sync_status = sync_status
         # This parameter is deprecated.
         self.type = type

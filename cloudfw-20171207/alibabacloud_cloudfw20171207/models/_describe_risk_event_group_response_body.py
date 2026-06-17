@@ -14,7 +14,7 @@ class DescribeRiskEventGroupResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # An array that consists of the details of the intrusion events.
+        # The list of returned data.
         self.data_list = data_list
         # The ID of the request.
         self.request_id = request_id
@@ -91,88 +91,113 @@ class DescribeRiskEventGroupResponseBodyDataList(DaraModel):
     ):
         # The name of the attacked application.
         self.attack_app = attack_app
-        # The attack type of the intrusion event. Valid values:
+        # The type of the attack. Valid values:
         # 
-        # *   **1**: suspicious connection
-        # *   **2**: command execution
-        # *   **3**: brute-force attack
-        # *   **4**: scanning
-        # *   **5**: others
-        # *   **6**: information leak
-        # *   **7**: DoS attack
-        # *   **8**: buffer overflow attack
-        # *   **9**: web attack
-        # *   **10**: trojan backdoor
-        # *   **11**: computer worm
-        # *   **12**: mining
-        # *   **13**: reverse shell
+        # - **1**: abnormal connection
+        # 
+        # - **2**: command execution
+        # 
+        # - **3**: brute-force attack
+        # 
+        # - **4**: scan
+        # 
+        # - **5**: other
+        # 
+        # - **6**: information leakage
+        # 
+        # - **7**: DoS attack
+        # 
+        # - **8**: overflow attack
+        # 
+        # - **9**: web attack
+        # 
+        # - **10**: backdoor trojan
+        # 
+        # - **11**: virus or worm
+        # 
+        # - **12**: mining behavior
+        # 
+        # - **13**: reverse shell
         self.attack_type = attack_type
-        # The description of the intrusion event.
+        # The description of the intrusion prevention event.
         self.description = description
-        # The direction of the traffic for the intrusion event. Valid values:
+        # The traffic direction of the intrusion prevention event. Valid values:
         # 
-        # *   **in**: inbound
-        # *   **out**: outbound
+        # - **in**: inbound
+        # 
+        # - **out**: outbound
         self.direction = direction
-        # The destination IP address that is included in the intrusion event.
+        # The destination IP address. The intrusion prevention event contains this destination IP address.
         self.dst_ip = dst_ip
-        # The number of intrusion events.
+        # The number of intrusion prevention events.
         self.event_count = event_count
-        # The ID of the intrusion event.
+        # The ID of the intrusion prevention event.
         self.event_id = event_id
-        # The name of the intrusion event.
+        # The name of the intrusion prevention event.
         self.event_name = event_name
-        # The time when the intrusion event was first detected. The value is a UNIX timestamp. Unit: seconds.
+        # The time when the intrusion event first occurred. The value is a UNIX timestamp. Unit: seconds.
         self.first_event_time = first_event_time
-        # The geographical information about the IP address. The value is a struct that contains the following parameters: **CityId**, **CityName**, **CountryId**, and **CountryName**.\\
-        # ****************
+        # The geolocation information of the IP address. This struct contains the **CityId**, **CityName**, **CountryId**, and **CountryName** parameters.<br>
+        # **CityId** indicates the city ID of the IP address. **CityName** indicates the city name of the IP address. **CountryId** indicates the country ID of the IP address. **CountryName** indicates the country name of the IP address.<br>
         self.iplocation_info = iplocation_info
-        # The time when the intrusion event was last detected. The value is a UNIX timestamp. Unit: seconds.
+        # The time when the intrusion prevention event last occurred. The value is a UNIX timestamp. Unit: seconds.
         self.last_event_time = last_event_time
-        # The information about the private IP address in the intrusion event. The value is an array that contains the following parameters: **RegionNo**, **ResourceInstanceId**, **ResourceInstanceName**, and **ResourcePrivateIP**.\\
-        # ****************
+        # The information about the private IP address in the intrusion prevention event. The value is an array that consists of the **RegionNo**, **ResourceInstanceId**, **ResourceInstanceName**, and **ResourcePrivateIP** parameters.<br>
+        # **RegionNo** indicates the region ID of the IP address. **ResourceInstanceId** indicates the ID of the instance to which the IP address belongs. **ResourceInstanceName** indicates the name of the instance to which the IP address belongs. **ResourcePrivateIP** indicates the IP address.<br>
         self.resource_private_iplist = resource_private_iplist
-        # The type of the public IP address in the intrusion event. Valid values:
+        # The type of the public IP address. Valid values:
         # 
-        # *   **EIP**: the elastic IP address (EIP)
-        # *   **EcsPublicIP**: the public IP address of an Elastic Compute Service (ECS) instance
-        # *   **EcsEIP**: the EIP of an ECS instance
-        # *   **NatPublicIP**: the public IP address of a NAT gateway
-        # *   **NatEIP**: the EIP of a NAT gateway
+        # - **EIP**: an elastic IP address (EIP)
+        # 
+        # - **EcsPublicIP**: an ECS public IP address
+        # 
+        # - **EcsEIP**: an ECS EIP
+        # 
+        # - **NatPublicIP**: a NAT public IP address
+        # 
+        # - **NatEIP**: a NAT EIP
+        # 
+        # - **SlbPublicIp**: an SLB public IP address
         self.resource_type = resource_type
-        # The ID of the rule that is used to detect the intrusion event.
+        # The ID of the rule that is used to defend against the intrusion prevention event.
         self.rule_id = rule_id
-        # The status of the firewall. Valid values:
+        # The handling status. Valid values:
         # 
-        # *   **1**: alerting
-        # *   **2**: blocking
+        # - **1**: Alert
+        # 
+        # - **2**: Block
         self.rule_result = rule_result
-        # The module of the rule that is used to detect the intrusion event. Valid values:
+        # The source of the rule that is used to detect the intrusion prevention event. Valid values:
         # 
-        # *   **1**: basic protection
-        # *   **2**: virtual patching
-        # *   **4**: threat intelligence
+        # - **1**: basic protection
+        # 
+        # - **2**: virtual patching
+        # 
+        # - **4**: threat intelligence
         self.rule_source = rule_source
-        # The source IP address that is included in the intrusion event.
+        # The source IP address. The intrusion prevention event contains this source IP address.
         self.src_ip = src_ip
-        # The tag added to the source IP address. The tag helps identify whether the source IP address is a back-to-origin IP address for a cloud service.
+        # The tag of the source IP address. This tag is used to identify whether the IP address is a back-to-origin IP address of an Alibaba Cloud service.
         self.src_iptag = src_iptag
+        # The list of IP address tags.
         self.src_iptags = src_iptags
-        # An array that consists of the source private IP addresses in the intrusion event.
+        # The list of source private IP addresses in the intrusion prevention event.
         self.src_private_iplist = src_private_iplist
-        # The tag added to the threat intelligence that is provided for major events.
+        # The tag for major event support.
         self.tag = tag
-        # The information about the destination VPC of the intrusion event. The value is a struct that contains the following parameters: **EcsInstanceId**, **EcsInstanceName**, **NetworkInstanceId**, **NetworkInstanceName**, and **RegionNo**.\\
-        # ********************
+        # The information about the destination VPC of the intrusion prevention event. This struct contains the **EcsInstanceId**, **EcsInstanceName**, **NetworkInstanceId**, **NetworkInstanceName**, and **RegionNo** parameters.<br>
+        # **EcsInstanceId** indicates the ID of the ECS instance in the VPC. **EcsInstanceName** indicates the name of the ECS instance in the VPC. **NetworkInstanceId** indicates the ID of the VPC. **NetworkInstanceName** indicates the name of the VPC. **RegionNo** indicates the region ID of the VPC.<br>
         self.vpc_dst_info = vpc_dst_info
-        # The information about the source VPC of the intrusion event. The value is a struct that contains the following parameters: **EcsInstanceId**, **EcsInstanceName**, **NetworkInstanceId**, **NetworkInstanceName**, and **RegionNo**.\\
-        # ********************
+        # The information about the source VPC of the intrusion prevention event. This struct contains the **EcsInstanceId**, **EcsInstanceName**, **NetworkInstanceId**, **NetworkInstanceName**, and **RegionNo** parameters.<br>
+        # **EcsInstanceId** indicates the ID of the ECS instance in the VPC. **EcsInstanceName** indicates the name of the ECS instance in the VPC. **NetworkInstanceId** indicates the ID of the VPC. **NetworkInstanceName** indicates the name of the VPC. **RegionNo** indicates the region ID of the VPC.<br>
         self.vpc_src_info = vpc_src_info
-        # The risk level of the intrusion event. Valid values:
+        # The risk level of the intrusion prevention event. Valid values:
         # 
-        # *   **1**: low
-        # *   **2**: medium
-        # *   **3**: high
+        # - **1**: low
+        # 
+        # - **2**: medium
+        # 
+        # - **3**: high
         self.vul_level = vul_level
 
     def validate(self):
@@ -367,7 +392,7 @@ class DescribeRiskEventGroupResponseBodyDataListVpcSrcInfo(DaraModel):
         self.network_instance_id = network_instance_id
         # The name of the VPC.
         self.network_instance_name = network_instance_name
-        # The ID of the region in which the source VPC resides.
+        # The region ID. This parameter indicates the region ID of the source VPC.
         self.region_no = region_no
 
     def validate(self):
@@ -431,7 +456,7 @@ class DescribeRiskEventGroupResponseBodyDataListVpcDstInfo(DaraModel):
         self.network_instance_id = network_instance_id
         # The name of the VPC.
         self.network_instance_name = network_instance_name
-        # The ID of the region in which the destination VPC resides.
+        # The region ID. This parameter indicates the region ID of the destination VPC.
         self.region_no = region_no
 
     def validate(self):
@@ -486,11 +511,11 @@ class DescribeRiskEventGroupResponseBodyDataListResourcePrivateIPList(DaraModel)
         resource_instance_name: str = None,
         resource_private_ip: str = None,
     ):
-        # The ID of the region to which the private IP address belongs.
+        # The region ID. This parameter indicates the region ID of the private IP address.
         self.region_no = region_no
-        # The ID of the instance that uses the private IP address.
+        # The ID of the instance.
         self.resource_instance_id = resource_instance_id
-        # The name of the instance that uses the private IP address.
+        # The name of the instance.
         self.resource_instance_name = resource_instance_name
         # The private IP address.
         self.resource_private_ip = resource_private_ip
@@ -541,13 +566,13 @@ class DescribeRiskEventGroupResponseBodyDataListIPLocationInfo(DaraModel):
         country_id: str = None,
         country_name: str = None,
     ):
-        # The ID of the city to which the IP address belongs.
+        # The city ID.
         self.city_id = city_id
-        # The name of the city to which the IP address belongs.
+        # The city name.
         self.city_name = city_name
-        # The ID of the country to which the IP address belongs.
+        # The country ID.
         self.country_id = country_id
-        # The name of the country to which the IP address belongs.
+        # The country name.
         self.country_name = country_name
 
     def validate(self):

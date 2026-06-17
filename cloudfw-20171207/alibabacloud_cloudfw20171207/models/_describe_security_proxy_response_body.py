@@ -14,8 +14,11 @@ class DescribeSecurityProxyResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of NAT firewalls.
         self.proxy_list = proxy_list
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -76,19 +79,47 @@ class DescribeSecurityProxyResponseBodyProxyList(DaraModel):
         vpc_id: str = None,
         vpc_name: str = None,
     ):
+        # The IPv4 CIDR block of the VPC.
         self.cidr_block = cidr_block
+        # The details of the exception.
         self.detail = detail
+        # The UID of the Cloud Firewall member account.
         self.member_uid = member_uid
+        # The ID of the NAT Gateway.
         self.nat_gateway_id = nat_gateway_id
+        # The name of the NAT Gateway.
         self.nat_gateway_name = nat_gateway_name
+        # The ID of the NAT firewall.
         self.proxy_id = proxy_id
+        # The name of the NAT firewall.
         self.proxy_name = proxy_name
+        # The region ID of the VPC.
         self.region_no = region_no
+        # The list of SNAT IP addresses.
         self.snat_ip_list = snat_ip_list
+        # The status of the Cloud Firewall. Valid values:
+        # 
+        # - **configuring**: The firewall is being created.
+        # 
+        # - **deleting**: The firewall is being deleted.
+        # 
+        # - **normal**: The firewall is running.
+        # 
+        # - **abnormal**: The firewall is not running as expected.
+        # 
+        # - **opening**: The firewall is being enabled.
+        # 
+        # - **closing**: The firewall is being disabled.
+        # 
+        # - **closed**: The firewall is disabled.
         self.status = status
+        # Indicates whether the strict mode is enabled. 1: The strict mode is enabled. 0: The strict mode is disabled.
         self.strict_mode = strict_mode
+        # The ID of the vSwitch to which the Cloud Firewall instance belongs.
         self.v_switch_id = v_switch_id
+        # The ID of the VPC instance.
         self.vpc_id = vpc_id
+        # The instance name of the VPC.
         self.vpc_name = vpc_name
 
     def validate(self):

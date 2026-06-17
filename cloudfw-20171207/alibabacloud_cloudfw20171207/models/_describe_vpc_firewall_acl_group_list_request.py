@@ -15,20 +15,21 @@ class DescribeVpcFirewallAclGroupListRequest(DaraModel):
     ):
         # The number of the page to return. Default value: 1.
         self.current_page = current_page
-        # Specifies whether VPC firewalls are configured. Valid values:
+        # The configuration status of the VPC boundary firewall. Valid values:
         # 
-        # *   **notconfigured**: VPC firewalls are not configured.
-        # *   **configured**: VPC firewalls are configured.
-        # *   If you do not specify this parameter, the access control policies of all VPC firewalls are queried.
+        # - **configured**: The VPC boundary firewall is configured.
+        # 
+        # - If you omit this parameter, the operation queries the access control policies for all VPC boundary firewalls.
         self.firewall_configure_status = firewall_configure_status
-        # The instance ID of the VPC firewall.
+        # The instance ID of the VPC boundary firewall.
         self.firewall_id = firewall_id
-        # The language of the content within the response. Valid values:
+        # The language of the response. Valid values:
         # 
-        # *   **zh**: Chinese (default)
-        # *   **en**: English
+        # - **zh** (default): Chinese
+        # 
+        # - **en**: English
         self.lang = lang
-        # The number of entries to return on each page. Maximum value: 50.
+        # The number of entries to return on each page. The maximum value is 50.
         self.page_size = page_size
 
     def validate(self):

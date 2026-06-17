@@ -10,12 +10,13 @@ class DescribeVpcFirewallDefaultIPSConfigRequest(DaraModel):
         member_uid: str = None,
         vpc_firewall_id: str = None,
     ):
-        # The UID of the member that is managed by your Alibaba Cloud account.
+        # The UID of the member account.
         self.member_uid = member_uid
         # The instance ID of the VPC firewall. Valid values:
         # 
-        # *   If the VPC firewall protects mutual access traffic between a VPC and a specified network instance that is attached to a Cloud Enterprise Network (CEN) instance, the value of this parameter is the ID of the CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance. You can call the [DescribeVpcFirewallCenList](https://help.aliyun.com/document_detail/345777.html) operation to query the IDs of CEN instances.
-        # *   If the VPC firewall protects traffic between two VPCs that are connected by using an Express Connect circuit, the value of this parameter is the instance ID of the VPC firewall. You can call the [DescribeVpcFirewallList](https://help.aliyun.com/document_detail/342932.html) operation to query the instance IDs of VPC firewalls.
+        # - If the VPC firewall protects a network instance in a Cloud Enterprise Network (CEN) instance, set this parameter to the ID of the CEN instance. To query the ID of a CEN instance of Basic Edition, call the [DescribeVpcFirewallCenList](https://help.aliyun.com/document_detail/345777.html) operation. To query the ID of a CEN instance of Enterprise Edition, call the [DescribeTrFirewallsV2List](https://help.aliyun.com/document_detail/2384695.html) operation.
+        # 
+        # - If the VPC firewall protects traffic between two VPCs connected by an Express Connect circuit, set this parameter to the ID of the VPC firewall instance. To query the ID of the VPC firewall instance, call the [DescribeVpcFirewallList](https://help.aliyun.com/document_detail/342932.html) operation.
         # 
         # This parameter is required.
         self.vpc_firewall_id = vpc_firewall_id

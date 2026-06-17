@@ -13,7 +13,9 @@ class DescribeAclChecksResponseBody(DaraModel):
         check_records: main_models.DescribeAclChecksResponseBodyCheckRecords = None,
         request_id: str = None,
     ):
+        # The list of ACL check records.
         self.check_records = check_records
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -50,7 +52,9 @@ class DescribeAclChecksResponseBodyCheckRecords(DaraModel):
         acl_type: str = None,
         records: List[main_models.DescribeAclChecksResponseBodyCheckRecordsRecords] = None,
     ):
+        # The type of ACL check.
         self.acl_type = acl_type
+        # The list of ACL check records.
         self.records = records
 
     def validate(self):
@@ -99,13 +103,21 @@ class DescribeAclChecksResponseBodyCheckRecordsRecords(DaraModel):
         level: str = None,
         task_id: str = None,
     ):
+        # The number of pending ACL check tasks.
         self.acl_pending_count = acl_pending_count
+        # The total number of ACL checks.
         self.acl_total_count = acl_total_count
+        # The name of the ACL check.
         self.check_name = check_name
+        # The status of the ACL check item.
         self.check_status = check_status
+        # The type of ACL check.
         self.check_type = check_type
+        # The UNIX timestamp of the last check, in seconds.
         self.last_check_time = last_check_time
+        # The risk level.
         self.level = level
+        # The ID of the ACL check task.
         self.task_id = task_id
 
     def validate(self):

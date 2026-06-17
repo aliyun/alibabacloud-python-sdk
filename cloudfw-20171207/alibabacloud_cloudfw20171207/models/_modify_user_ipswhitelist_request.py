@@ -15,12 +15,23 @@ class ModifyUserIPSWhitelistRequest(DaraModel):
         source_ip: str = None,
         white_type: int = None,
     ):
+        # The traffic direction for the Internet Border.
         self.direction = direction
+        # The IP version.
         self.ip_version = ip_version
+        # The language.
         self.lang = lang
+        # The type of address in the Internet Border whitelist.
         self.list_type = list_type
+        # The value of the Internet Border whitelist.
+        # 
+        # - If ListType is set to `Custom`: the name of the address book.
+        # 
+        # - If ListType is set to `Address book`: the IPv4 address.
         self.list_value = list_value
+        # The source IP address of the visitor.
         self.source_ip = source_ip
+        # The type of source or destination for which the Internet Border whitelist takes effect.
         self.white_type = white_type
 
     def validate(self):

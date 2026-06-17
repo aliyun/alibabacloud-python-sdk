@@ -10,7 +10,9 @@ class DescribeUserAlarmConfigRequest(DaraModel):
         lang: str = None,
         source_ip: str = None,
     ):
+        # The language of the response. Valid values: zh and en. Default value: zh.
         self.lang = lang
+        # The source IP address of the request.
         self.source_ip = source_ip
 
     def validate(self):

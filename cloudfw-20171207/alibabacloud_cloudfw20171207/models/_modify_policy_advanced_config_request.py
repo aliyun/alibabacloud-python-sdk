@@ -14,21 +14,23 @@ class ModifyPolicyAdvancedConfigRequest(DaraModel):
         lang: str = None,
         source_ip: str = None,
     ):
-        # The IP addresses. The versions of the IP addresses must be the same. You can specify a maximum of 100 IP addresses.
+        # A list of IP addresses. The IP addresses must use the same protocol version. You can specify up to 100 IP addresses.
         self.eips = eips
-        # Specifies whether to enable the strict mode for the access control policy. Valid values:
+        # Specifies whether to enable or disable the strict mode for access control policies. Valid values:
         # 
-        # *   **on**: enables the strict mode.
-        # *   **off**: disables the strict mode.
+        # - **on**: Enables strict mode.
+        # 
+        # - **off**: Disables strict mode.
         # 
         # This parameter is required.
         self.internet_switch = internet_switch
-        # The natural language of the request and response. Valid values:
+        # The language of the request and response. Valid values:
         # 
-        # *   **zh**: Chinese (default)
-        # *   **en**: English
+        # - **zh** (default): Chinese
+        # 
+        # - **en**: English
         self.lang = lang
-        # The source IP address of the request.
+        # The source IP address of the visitor.
         self.source_ip = source_ip
 
     def validate(self):

@@ -14,8 +14,11 @@ class DescribeNetworkInstanceListResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The details of the network instances.
         self.network_instance_list = network_instance_list
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -66,9 +69,13 @@ class DescribeNetworkInstanceListResponseBodyNetworkInstanceList(DaraModel):
         network_instance_type: str = None,
         region_no: str = None,
     ):
+        # The ID of the network instance.
         self.network_instance_id = network_instance_id
+        # The name of the network instance.
         self.network_instance_name = network_instance_name
+        # The type of the network instance.
         self.network_instance_type = network_instance_type
+        # The region ID.
         self.region_no = region_no
 
     def validate(self):

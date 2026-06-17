@@ -10,10 +10,11 @@ class DeleteDownloadTaskRequest(DaraModel):
         lang: str = None,
         task_id: str = None,
     ):
-        # The language of the content within the request and response. Valid values:
+        # The language of the request and response. Valid values:
         # 
-        # *   **zh** (default): Chinese
-        # *   **en**: English
+        # - **zh** (default): Chinese.
+        # 
+        # - **en**: English.
         self.lang = lang
         # The ID of the file download task.
         self.task_id = task_id

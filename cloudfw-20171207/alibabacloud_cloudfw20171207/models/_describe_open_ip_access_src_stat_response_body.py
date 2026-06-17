@@ -14,8 +14,11 @@ class DescribeOpenIpAccessSrcStatResponseBody(DaraModel):
         stat_list: List[main_models.DescribeOpenIpAccessSrcStatResponseBodyStatList] = None,
         total_count: int = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The list of statistics.
         self.stat_list = stat_list
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -66,9 +69,13 @@ class DescribeOpenIpAccessSrcStatResponseBodyStatList(DaraModel):
         normal_src_ip: int = None,
         port: str = None,
     ):
+        # The number of abnormal source IP addresses.
         self.abnormal_src_ip = abnormal_src_ip
+        # The application type.
         self.app = app
+        # The number of normal source IP addresses.
         self.normal_src_ip = normal_src_ip
+        # The port number.
         self.port = port
 
     def validate(self):

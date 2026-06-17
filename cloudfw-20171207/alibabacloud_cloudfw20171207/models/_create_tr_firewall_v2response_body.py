@@ -10,9 +10,9 @@ class CreateTrFirewallV2ResponseBody(DaraModel):
         firewall_id: str = None,
         request_id: str = None,
     ):
-        # The instance ID of the VPC firewall.
+        # The ID of the VPC firewall instance.
         self.firewall_id = firewall_id
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

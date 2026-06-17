@@ -13,17 +13,17 @@ class DescribeInstanceMembersRequest(DaraModel):
         member_uid: str = None,
         page_size: str = None,
     ):
-        # The page number. Default value: **1**.
+        # The page number. The default value is **1**.
         self.current_page = current_page
-        # The remarks of the member. The remarks must be 1 to 256 characters in length.
+        # The description of the Cloud Firewall member account. The description must be 1 to 256 characters in length.
         self.member_desc = member_desc
-        # The name of the member.
+        # The name of the Cloud Firewall member account.
         self.member_display_name = member_display_name
-        # The UID of the member.
+        # The UID of the Cloud Firewall member account.
         self.member_uid = member_uid
         # The number of entries per page.
         # 
-        # Default value: **20**.
+        # The default value is **20**.
         self.page_size = page_size
 
     def validate(self):

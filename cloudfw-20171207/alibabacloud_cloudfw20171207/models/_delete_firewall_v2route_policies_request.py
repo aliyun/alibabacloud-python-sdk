@@ -11,14 +11,15 @@ class DeleteFirewallV2RoutePoliciesRequest(DaraModel):
         lang: str = None,
         tr_firewall_route_policy_id: str = None,
     ):
-        # The instance ID of the VPC firewall.
+        # The ID of the VPC firewall instance.
         self.firewall_id = firewall_id
-        # The language of the content within the response. Valid values:
+        # The language of the response message. Valid values:
         # 
-        # *   **zh** (default): Chinese
-        # *   **en**: English
+        # - **zh** (default): Chinese
+        # 
+        # - **en**: English
         self.lang = lang
-        # The ID of the routing policy.
+        # The ID of the firewall routing policy.
         self.tr_firewall_route_policy_id = tr_firewall_route_policy_id
 
     def validate(self):

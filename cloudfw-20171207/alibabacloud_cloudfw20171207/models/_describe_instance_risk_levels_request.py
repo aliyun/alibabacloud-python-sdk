@@ -13,12 +13,13 @@ class DescribeInstanceRiskLevelsRequest(DaraModel):
         instances: List[main_models.DescribeInstanceRiskLevelsRequestInstances] = None,
         lang: str = None,
     ):
-        # The information about the instances.
+        # The list of instances.
         self.instances = instances
-        # The language of the content within the response. Valid values:
+        # The language of the response. Valid values:
         # 
-        # *   **zh** (default): Chinese
-        # *   **en**: English
+        # - **zh** (default): Chinese
+        # 
+        # - **en**: English
         self.lang = lang
 
     def validate(self):
@@ -63,9 +64,9 @@ class DescribeInstanceRiskLevelsRequestInstances(DaraModel):
         intranet_ip: str = None,
         uuid: str = None,
     ):
-        # The instance ID of your Cloud Firewall.
+        # The ID of the Cloud Firewall instance.
         self.instance_id = instance_id
-        # The public IP addresses of instances.
+        # The public IP address of the instance.
         self.internet_ip = internet_ip
         # The private IP address of the instance.
         self.intranet_ip = intranet_ip

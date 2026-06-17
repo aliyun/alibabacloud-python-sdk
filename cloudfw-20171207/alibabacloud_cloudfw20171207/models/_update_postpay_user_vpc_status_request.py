@@ -11,18 +11,19 @@ class UpdatePostpayUserVpcStatusRequest(DaraModel):
         lang: str = None,
         operate: str = None,
     ):
-        # The instance ID of Cloud Firewall.
+        # The ID of the Cloud Firewall instance.
         self.instance_id = instance_id
-        # The language of the content within the request and response.
+        # The language of the request and response.
         # 
         # Valid values:
         # 
-        # *   **zh** (default)
-        # *   **en**
-        self.lang = lang
-        # The operation type.
+        # - **zh** (default): Chinese
         # 
-        # *   Set the value to open.
+        # - en: English
+        self.lang = lang
+        # The operation to perform. Currently, only the open operation is supported.
+        # 
+        # - open: Enables the VPC border firewall.
         self.operate = operate
 
     def validate(self):

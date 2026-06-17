@@ -12,18 +12,19 @@ class CreateDownloadTaskRequest(DaraModel):
         task_type: str = None,
         time_zone: str = None,
     ):
-        # The language of the content within the response.
+        # The language of the response message.
         # 
         # Valid values:
         # 
-        # *   **zh**: Chinese (default)
-        # *   **en**: English
+        # - **zh**: Chinese (default)
+        # 
+        # - **en**: English
         self.lang = lang
-        # The query condition of the download task.
+        # The query conditions for the download task.
         self.task_data = task_data
-        # The type of the task. For more information about task types, see the descriptions in the "DescribeDownloadTaskType" topic.
+        # The type of the task. For a list of valid values, see the API for querying file download task types.
         self.task_type = task_type
-        # The time zone of the time information in the downloaded file. The value must be an identifier of a time zone in the Internet Assigned Numbers Authority (IANA) database. The default value is Asia/Shanghai, which indicates UTC+8.
+        # The time zone of the time information in the downloaded file. The value is an IANA time zone identifier. The default value is Asia/Shanghai, which corresponds to UTC+8.
         self.time_zone = time_zone
 
     def validate(self):

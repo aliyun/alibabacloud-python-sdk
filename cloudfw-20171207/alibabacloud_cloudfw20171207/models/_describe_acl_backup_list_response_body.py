@@ -14,8 +14,11 @@ class DescribeAclBackupListResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The backup records.
         self.backups = backups
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -65,8 +68,11 @@ class DescribeAclBackupListResponseBodyBackups(DaraModel):
         back_up_time: int = None,
         description: str = None,
     ):
+        # The number of access control policies in the backup.
         self.acl_count = acl_count
+        # The time when the backup was created. This value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.back_up_time = back_up_time
+        # The description of the backup.
         self.description = description
 
     def validate(self):

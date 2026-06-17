@@ -13,10 +13,16 @@ class DeletePrivateDnsDomainNameRequest(DaraModel):
         domain_name_list: List[str] = None,
         region_no: str = None,
     ):
+        # The ID of the instance.
+        # 
         # This parameter is required.
         self.access_instance_id = access_instance_id
+        # The list of domain names.
+        # 
         # This parameter is required.
         self.domain_name_list = domain_name_list
+        # The region ID of the instance.
+        # 
         # This parameter is required.
         self.region_no = region_no
 

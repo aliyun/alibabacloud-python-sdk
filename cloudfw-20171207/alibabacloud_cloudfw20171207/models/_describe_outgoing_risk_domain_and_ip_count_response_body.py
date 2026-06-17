@@ -12,9 +12,13 @@ class DescribeOutgoingRiskDomainAndIpCountResponseBody(DaraModel):
         risk_ip_count: int = None,
         total_count: int = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The number of risk domain names.
         self.risk_domain_count = risk_domain_count
+        # The number of risk IP addresses.
         self.risk_ip_count = risk_ip_count
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):

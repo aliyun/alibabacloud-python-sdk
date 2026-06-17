@@ -11,9 +11,15 @@ class SetAutoProtectNewAssetsRequest(DaraModel):
         lang: str = None,
         source_ip: str = None,
     ):
+        # Specifies whether to enable automatic traffic redirection. Valid values:
+        # 
+        # **true****false**
+        # 
         # This parameter is required.
         self.auto_protect = auto_protect
+        # The language. Valid values are zh (Chinese) and **en** (English). The default value is **zh**.
         self.lang = lang
+        # The source IP address of the visitor.
         self.source_ip = source_ip
 
     def validate(self):

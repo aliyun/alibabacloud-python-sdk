@@ -14,8 +14,11 @@ class DescribeSdlEventDetailResponseBody(DaraModel):
         sdl_event_detail_list: List[main_models.DescribeSdlEventDetailResponseBodySdlEventDetailList] = None,
         total_count: int = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The list of events.
         self.sdl_event_detail_list = sdl_event_detail_list
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -67,10 +70,15 @@ class DescribeSdlEventDetailResponseBodySdlEventDetailList(DaraModel):
         sensitive_type: str = None,
         start_time: int = None,
     ):
+        # The name of the event.
         self.event_name = event_name
+        # The amount of sensitive data.
         self.sensitive_data_cnt = sensitive_data_cnt
+        # The sensitivity level.
         self.sensitive_level = sensitive_level
+        # The type of sensitive data.
         self.sensitive_type = sensitive_type
+        # The time when the event occurred.
         self.start_time = start_time
 
     def validate(self):

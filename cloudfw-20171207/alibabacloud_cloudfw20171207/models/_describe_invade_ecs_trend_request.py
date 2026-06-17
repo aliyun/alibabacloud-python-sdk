@@ -12,9 +12,13 @@ class DescribeInvadeEcsTrendRequest(DaraModel):
         source_ip: str = None,
         start_time: str = None,
     ):
+        # The end of the time range to query. This is a UNIX timestamp. Unit: seconds.
         self.end_time = end_time
+        # The language of the response.
         self.lang = lang
+        # The source IP address of the visitor.
         self.source_ip = source_ip
+        # The start of the time range to query. This is a UNIX timestamp. Unit: seconds.
         self.start_time = start_time
 
     def validate(self):

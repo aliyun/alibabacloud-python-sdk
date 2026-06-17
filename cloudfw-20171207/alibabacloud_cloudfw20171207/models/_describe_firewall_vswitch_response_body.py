@@ -14,8 +14,11 @@ class DescribeFirewallVSwitchResponseBody(DaraModel):
         total_count: int = None,
         vswitch_list: List[main_models.DescribeFirewallVSwitchResponseBodyVswitchList] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
+        # The list of vSwitches.
         self.vswitch_list = vswitch_list
 
     def validate(self):
@@ -72,15 +75,25 @@ class DescribeFirewallVSwitchResponseBodyVswitchList(DaraModel):
         vswitch_name: str = None,
         zone_id: str = None,
     ):
+        # The number of available IP addresses.
         self.available_ip_count = available_ip_count
+        # The IPv4 CIDR block.
         self.cidr_block = cidr_block
+        # The number of intrusion prevention events.
         self.firewall_count = firewall_count
+        # The list of firewalls.
         self.firewall_list = firewall_list
+        # The UID of the member account.
         self.member_uid = member_uid
+        # The region ID.
         self.region_no = region_no
+        # The ID of the VPC instance.
         self.vpc_id = vpc_id
+        # The ID of the vSwitch.
         self.vswitch_id = vswitch_id
+        # The name of the vSwitch.
         self.vswitch_name = vswitch_name
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -171,7 +184,9 @@ class DescribeFirewallVSwitchResponseBodyVswitchListFirewallList(DaraModel):
         firewall_id: str = None,
         firewall_name: str = None,
     ):
+        # The instance ID of the firewall.
         self.firewall_id = firewall_id
+        # The name of the Cloud Firewall.
         self.firewall_name = firewall_name
 
     def validate(self):

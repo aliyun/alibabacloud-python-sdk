@@ -11,8 +11,11 @@ class DescribeSlrGrantResponseBody(DaraModel):
         request_id: str = None,
         user_type: str = None,
     ):
+        # Indicates whether the authorization is successful.
         self.is_granted = is_granted
+        # The ID of the request.
         self.request_id = request_id
+        # The type of the account.
         self.user_type = user_type
 
     def validate(self):

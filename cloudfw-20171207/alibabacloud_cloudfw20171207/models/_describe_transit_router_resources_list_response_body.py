@@ -13,7 +13,9 @@ class DescribeTransitRouterResourcesListResponseBody(DaraModel):
         request_id: str = None,
         transit_router_attached_resources: List[main_models.DescribeTransitRouterResourcesListResponseBodyTransitRouterAttachedResources] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The list of Transit Router resources.
         self.transit_router_attached_resources = transit_router_attached_resources
 
     def validate(self):
@@ -57,8 +59,11 @@ class DescribeTransitRouterResourcesListResponseBodyTransitRouterAttachedResourc
         resource_name: str = None,
         resource_type: str = None,
     ):
+        # The instance ID.
         self.resource_id = resource_id
+        # The instance name.
         self.resource_name = resource_name
+        # The asset type.
         self.resource_type = resource_type
 
     def validate(self):

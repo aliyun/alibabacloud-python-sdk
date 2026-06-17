@@ -10,12 +10,13 @@ class DescribePostpayUserVpcStatusRequest(DaraModel):
         instance_id: str = None,
         lang: str = None,
     ):
-        # The instance ID of Cloud Firewall.
+        # The ID of the Cloud Firewall instance.
         self.instance_id = instance_id
-        # The language of the content within the response. Valid values:
+        # The language of the response. Valid values:
         # 
-        # *   **zh** (default)
-        # *   **en**
+        # - **zh** (default): Chinese.
+        # 
+        # - **en**: English.
         self.lang = lang
 
     def validate(self):

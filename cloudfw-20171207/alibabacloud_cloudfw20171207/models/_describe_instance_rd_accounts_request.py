@@ -15,12 +15,19 @@ class DescribeInstanceRdAccountsRequest(DaraModel):
         page_size: str = None,
         source_ip: str = None,
     ):
+        # The number of the page to return.
         self.current_page = current_page
+        # The language of the request and response.
         self.lang = lang
+        # The description of the member account.
         self.member_desc = member_desc
+        # The display name of the member account.
         self.member_display_name = member_display_name
+        # The UID of the member account.
         self.member_uid = member_uid
+        # The number of the page to return.
         self.page_size = page_size
+        # The source IP address of the request.
         self.source_ip = source_ip
 
     def validate(self):

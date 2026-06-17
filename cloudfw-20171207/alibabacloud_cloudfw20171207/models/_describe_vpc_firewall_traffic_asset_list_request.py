@@ -19,18 +19,43 @@ class DescribeVpcFirewallTrafficAssetListRequest(DaraModel):
         start_time: str = None,
         vpc_id: str = None,
     ):
+        # The current page number.
         self.current_page = current_page
+        # The domain name.
         self.domain = domain
+        # The end time. The value is a Unix timestamp that is accurate to the second.
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # The IP address of the asset.
         self.ip = ip
+        # Specifies whether to count only the traffic that is used to access AI services.
         self.is_aitraffic = is_aitraffic
+        # The language of the content within the request and response. Valid values:
+        # 
+        # - **zh** (default): Chinese
+        # 
+        # - **en**: English
         self.lang = lang
+        # The field to sort by.
+        # 
+        # Default value: TotalBytes.
+        # 
+        # Valid values:
+        # 
+        # TotalBytes: Sorts by total traffic.
+        # 
+        # SessionCount: Sorts by the number of sessions.
         self.order = order
+        # The number of entries to return on each page.
         self.page_size = page_size
+        # The sort order. Valid values: \\`asc\\`, \\`desc\\`.
         self.sort = sort
+        # The start time. The value is a Unix timestamp that is accurate to the second.
+        # 
         # This parameter is required.
         self.start_time = start_time
+        # The VPC where the asset resides.
         self.vpc_id = vpc_id
 
     def validate(self):

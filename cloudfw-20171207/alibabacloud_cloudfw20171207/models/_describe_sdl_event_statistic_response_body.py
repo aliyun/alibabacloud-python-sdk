@@ -14,11 +14,17 @@ class DescribeSdlEventStatisticResponseBody(DaraModel):
         total_count: int = None,
         total_traffic: int = None,
     ):
+        # The number of AI-related leak threats.
         self.ai_sensitive_data_count = ai_sensitive_data_count
+        # The total number of assets.
         self.asset_count = asset_count
+        # The ID of the request.
         self.request_id = request_id
+        # The number of sensitive data leak events.
         self.sensitive_data_count = sensitive_data_count
+        # The total number of entries.
         self.total_count = total_count
+        # The total traffic. Unit: bytes.
         self.total_traffic = total_traffic
 
     def validate(self):

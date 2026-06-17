@@ -14,8 +14,11 @@ class DescribeInvadeEventNameListResponseBody(DaraModel):
         name_list: List[str] = None,
         request_id: str = None,
     ):
+        # A list of anomalous activity names.
         self.event_name_list = event_name_list
+        # A list of vulnerability names.
         self.name_list = name_list
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -64,7 +67,9 @@ class DescribeInvadeEventNameListResponseBodyEventNameList(DaraModel):
         event_key: str = None,
         event_name: str = None,
     ):
+        # The unique identifier of the vulnerability event.
         self.event_key = event_key
+        # The name of the vulnerability event.
         self.event_name = event_name
 
     def validate(self):

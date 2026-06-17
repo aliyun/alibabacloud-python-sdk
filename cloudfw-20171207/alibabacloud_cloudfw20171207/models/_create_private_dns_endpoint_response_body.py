@@ -11,9 +11,11 @@ class CreatePrivateDnsEndpointResponseBody(DaraModel):
         request_id: str = None,
         task_id: str = None,
     ):
+        # The ID of the instance.
         self.access_instance_id = access_instance_id
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
+        # The unique ID of the task.
         self.task_id = task_id
 
     def validate(self):

@@ -10,10 +10,11 @@ class DeleteSecurityProxyRequest(DaraModel):
         lang: str = None,
         proxy_id: str = None,
     ):
-        # The language of the content within the response. Valid values:
+        # The language of the request and response. Valid values:
         # 
-        # *   **zh** (default): Chinese
-        # *   **en**: English
+        # - **zh** (default): Chinese
+        # 
+        # - **en**: English
         self.lang = lang
         # The ID of the NAT firewall.
         # 

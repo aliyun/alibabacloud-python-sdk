@@ -13,9 +13,13 @@ class CreateAclCheckRequest(DaraModel):
         check_names: List[str] = None,
         lang: str = None,
     ):
+        # The type of the ACL check.
+        # 
         # This parameter is required.
         self.acl_type = acl_type
+        # The list of ACL check names.
         self.check_names = check_names
+        # The language of the request and response.
         self.lang = lang
 
     def validate(self):

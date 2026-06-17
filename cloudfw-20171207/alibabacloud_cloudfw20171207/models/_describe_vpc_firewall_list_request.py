@@ -19,32 +19,37 @@ class DescribeVpcFirewallListRequest(DaraModel):
         vpc_firewall_name: str = None,
         vpc_id: str = None,
     ):
-        # The sub-type of the connection. Valid values:
+        # The subtype of the connection. Valid values:
         # 
-        # *   **vpc2vpc**: Express Connect connection
-        # *   **vpcpeer**: peer connection
+        # - **vpc2vpc**: Express Connect.
+        # 
+        # - **vpcpeer**: peering connection.
         self.connect_sub_type = connect_sub_type
-        # The number of the page to return.
+        # The page number.
         # 
-        # Pages start from page **1**. Default value: **1**.
+        # Default value: **1**.
         self.current_page = current_page
         # The status of the VPC firewall. Valid values:
         # 
-        # *   **opened**: The VPC firewall is enabled.
-        # *   **closed**: The VPC firewall is disabled.
-        # *   **notconfigured**: The VPC firewall is not configured.
-        # *   **configured**: The VPC firewall is configured.
+        # - **opened**: The firewall is enabled.
+        # 
+        # - **closed**: The firewall is disabled.
+        # 
+        # - **notconfigured**: The firewall is not configured.
+        # 
+        # - **configured**: The firewall is configured.
         # 
         # > If you do not specify this parameter, VPC firewalls in all states are queried.
         self.firewall_switch_status = firewall_switch_status
-        # The language of the content within the request and response. Valid values:
+        # The language of the request and response. Valid values:
         # 
-        # *   **zh**: Chinese (default)
-        # *   **en**: English
+        # - **zh** (default): Chinese.
+        # 
+        # - **en**: English.
         self.lang = lang
-        # The UID of the member that is managed by your Alibaba Cloud account.
+        # The UID of the member account.
         self.member_uid = member_uid
-        # The number of entries to return on each page.
+        # The number of entries per page.
         # 
         # Default value: **10**. Maximum value: **50**.
         self.page_size = page_size
@@ -52,13 +57,13 @@ class DescribeVpcFirewallListRequest(DaraModel):
         self.peer_uid = peer_uid
         # The region ID of the VPC.
         # 
-        # > For more information about the regions, see [Supported regions](https://help.aliyun.com/document_detail/195657.html).
+        # > For more information about the regions where Cloud Firewall is supported, see [Supported regions](https://help.aliyun.com/document_detail/195657.html).
         self.region_no = region_no
         # The instance ID of the VPC firewall.
         self.vpc_firewall_id = vpc_firewall_id
         # The instance name of the VPC firewall.
         self.vpc_firewall_name = vpc_firewall_name
-        # The ID of the VPC.
+        # The instance ID of the VPC.
         self.vpc_id = vpc_id
 
     def validate(self):

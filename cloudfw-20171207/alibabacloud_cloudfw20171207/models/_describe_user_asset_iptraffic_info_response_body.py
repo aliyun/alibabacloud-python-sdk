@@ -17,23 +17,23 @@ class DescribeUserAssetIPTrafficInfoResponseBody(DaraModel):
         session_count: int = None,
         start_time: int = None,
     ):
-        # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # The end time of the query, as a UNIX timestamp in seconds.
         self.end_time = end_time
-        # The network throughput, which indicates the inbound traffic rate. Unit: bit/s.
+        # The inbound network throughput, in bits per second (bps).
         self.in_bps = in_bps
-        # The inbound network throughput, which indicates the number of packets that are sent inbound per second. Unit: packets per second (pps).
+        # The inbound packet rate, in packets per second (pps).
         self.in_pps = in_pps
-        # The new connection creation rate.
+        # The number of new connections.
         self.new_conn = new_conn
-        # The network throughput, which indicates the outbound traffic rate. Unit: bit/s.
+        # The outbound network throughput, in bits per second (bps).
         self.out_bps = out_bps
-        # The outbound network throughput, which indicates the number of packets that are sent outbound per second. Unit: pps.
+        # The outbound packet rate, in packets per second (pps).
         self.out_pps = out_pps
         # The request ID.
         self.request_id = request_id
-        # The number of requests.
+        # The number of sessions.
         self.session_count = session_count
-        # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # The start time of the query, as a UNIX timestamp in seconds.
         self.start_time = start_time
 
     def validate(self):

@@ -19,16 +19,27 @@ class DescribeInternetSlbRequest(DaraModel):
         source_ip: str = None,
         tag: str = None,
     ):
+        # The number of the page to return.
         self.current_page = current_page
+        # The ID of the SLB instance. Fuzzy search is supported.
         self.instance_id = instance_id
+        # The name of the SLB instance. Fuzzy search is supported.
         self.instance_name = instance_name
+        # The protocol type.
         self.ip_protocol = ip_protocol
+        # The language of the response message.
         self.lang = lang
+        # The number of the page to return.
         self.page_size = page_size
+        # The port.
         self.port = port
+        # The public IP address. Fuzzy search is supported. If you do not specify this parameter, all public IP addresses are queried.
         self.public_ip = public_ip
+        # The region. If you do not specify this parameter, all regions are queried.
         self.region_no = region_no
+        # The source IP address of the visitor.
         self.source_ip = source_ip
+        # The tag. If you do not specify this parameter, all tags are searched.
         self.tag = tag
 
     def validate(self):
