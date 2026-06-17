@@ -121,3 +121,77 @@ class Client(OpenApiClient):
     ) -> main_models.CreateComputeInstanceResponse:
         runtime = RuntimeOptions()
         return await self.create_compute_instance_with_options_async(request, runtime)
+
+    def delete_compute_instance_with_options(
+        self,
+        request: main_models.DeleteComputeInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteComputeInstanceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteComputeInstance',
+            version = '2026-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteComputeInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_compute_instance_with_options_async(
+        self,
+        request: main_models.DeleteComputeInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteComputeInstanceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteComputeInstance',
+            version = '2026-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteComputeInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_compute_instance(
+        self,
+        request: main_models.DeleteComputeInstanceRequest,
+    ) -> main_models.DeleteComputeInstanceResponse:
+        runtime = RuntimeOptions()
+        return self.delete_compute_instance_with_options(request, runtime)
+
+    async def delete_compute_instance_async(
+        self,
+        request: main_models.DeleteComputeInstanceRequest,
+    ) -> main_models.DeleteComputeInstanceResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_compute_instance_with_options_async(request, runtime)
