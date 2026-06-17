@@ -19,45 +19,49 @@ class ModifyAutoRenewAttributeRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The cloud provider of the cluster.
         self.cloud_provider = cloud_provider
-        # The cluster ID. If you need to specify multiple cluster IDs, separate the cluster IDs with commas (,).
+        # The ID of the database cluster.
         # 
         # This parameter is required.
         self.dbcluster_ids = dbcluster_ids
-        # The automatic renewal period.
+        # The auto-renewal period. Valid values:
         # 
-        # *   Valid values when you set the **PeriodUnit** parameter to **Month**: `1, 2, 3, 6, and 12`.
-        # *   Valid values when you set the **PeriodUnit** parameter to **Year**: `1, 2, and 3`.
+        # - When **PeriodUnit** is **Month**, the valid values are `[1,2,3,6,12]`.
+        # 
+        # - When **PeriodUnit** is **Year**, the valid values are `[1-3]`.
         # 
         # Default value: **1**.
         self.duration = duration
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The unit of the renewal period. Valid values:
+        # The unit of the auto-renewal period. Valid values:
         # 
-        # *   **Year**
-        # *   **Month**
+        # - **Year**
+        # 
+        # - **Month**
         # 
         # Default value: **Month**.
         self.period_unit = period_unit
-        # The ID of the region. The region ID can be up to 50 characters in length.
-        # cn-hangzhou
-        #  
-        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query the available regions.
+        # The region ID. The ID can be up to 50 characters in length.
+        # 
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/2319134.html) operation to query available regions.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The auto-renewal status of the cluster. Valid values:
+        # The auto-renewal status. Valid values:
         # 
-        # *   **AutoRenewal:** The cluster is automatically renewed.
-        # *   **Normal**: The cluster is manually renewed.
-        # *   **NotRenewal:** The cluster is not renewed after expiration.
+        # - **AutoRenewal**: Enables auto-renewal.
+        # 
+        # - **Normal**: Enables manual renewal.
+        # 
+        # - **NotRenewal**: Disables renewal.
         # 
         # Default value: **AutoRenewal**.
         # 
-        # >  If you set this parameter to **NotRenewal**, the system sends a notification that indicates the cluster is not renewed three days before the cluster expires. After the cluster expires, the system no longer sends a notification.
+        # > When you set this parameter to **NotRenewal**, the system stops sending expiration reminders and sends only a non-renewal notification three days before the expiration date.
         self.renewal_status = renewal_status
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

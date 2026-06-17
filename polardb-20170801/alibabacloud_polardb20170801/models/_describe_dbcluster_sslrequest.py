@@ -13,9 +13,9 @@ class DescribeDBClusterSSLRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the cluster.
+        # The cluster ID.
         # 
-        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of the clusters that belong to your Alibaba Cloud account, such as cluster IDs.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to view detailed information about all clusters under your account, including cluster IDs.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id

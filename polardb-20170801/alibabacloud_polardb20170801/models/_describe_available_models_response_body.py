@@ -15,10 +15,13 @@ class DescribeAvailableModelsResponseBody(DaraModel):
         items: List[main_models.DescribeAvailableModelsResponseBodyItems] = None,
         request_id: str = None,
     ):
+        # The database engine.
         self.engine = engine
+        # The engine version.
         self.engine_version = engine_version
+        # The list of models.
         self.items = items
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -77,11 +80,17 @@ class DescribeAvailableModelsResponseBodyItems(DaraModel):
         model_series: str = None,
         supported_gpu_models: List[str] = None,
     ):
+        # The required GPU configurations.
         self.gpu_required = gpu_required
+        # The minimum number of CPU cores required.
         self.minimum_cpu = minimum_cpu
+        # The minimum memory required, in MiB.
         self.minimum_memory = minimum_memory
+        # The model name.
         self.model_name = model_name
+        # The model series.
         self.model_series = model_series
+        # The supported GPU models.
         self.supported_gpu_models = supported_gpu_models
 
     def validate(self):
@@ -148,7 +157,9 @@ class DescribeAvailableModelsResponseBodyItemsGpuRequired(DaraModel):
         gpu_min_count: str = None,
         gpu_model: str = None,
     ):
+        # The minimum number of GPUs required.
         self.gpu_min_count = gpu_min_count
+        # The GPU model.
         self.gpu_model = gpu_model
 
     def validate(self):

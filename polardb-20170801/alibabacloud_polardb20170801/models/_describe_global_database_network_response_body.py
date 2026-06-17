@@ -24,41 +24,49 @@ class DescribeGlobalDatabaseNetworkResponseBody(DaraModel):
         request_id: str = None,
         resource_group_id: str = None,
     ):
-        # The information about the connection to the cluster.
+        # The connection details.
         self.connections = connections
-        # The time at which the GDN was created.
+        # The time when the GDN was created.
         self.create_time = create_time
-        # The ID of the cluster.
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
         # The clusters in the GDN.
         self.dbclusters = dbclusters
-        # The type of the database engine. Only MySQL is supported.
+        # The database engine type. Only MySQL is supported.
         self.dbtype = dbtype
-        # The version of the database engine. Only version 8.0 is supported.
+        # The database engine version. Only version 8.0 is supported.
         self.dbversion = dbversion
-        # The description of the GDN. The description must meet the following requirements:
+        # The description of the GDN. It must meet the following requirements:
         # 
-        # *   It cannot start with `http://` or `https://`.
-        # *   It must start with a letter.
-        # *   It can contain letters, digits, underscores (_), and hyphens (-).
-        # *   It must be 2 to 126 characters in length.
+        # - It cannot start with `http://` or `https://`.
+        # 
+        # - It must start with a letter or a Chinese character.
+        # 
+        # - It can contain only letters, Chinese characters, digits, underscores (_), and hyphens (-).
+        # 
+        # - It must be 2 to 126 characters in length.
         self.gdndescription = gdndescription
-        # The ID of the GDN.
+        # The GDN ID.
         self.gdnid = gdnid
-        # The status of the GDN. Valid values:
+        # The status of the Global Database Network (GDN). Valid values:
         # 
-        # *   **Creating**: The GDN is being created.
-        # *   **active**: The GDN is running.
-        # *   **deleting**: The GDN is being deleted.
-        # *   **locked**: The GDN is locked. If the GDN is locked, you cannot perform operations on clusters in the GDN.
-        # *   **removing_member**: The secondary cluster is being removed from the GDN.
+        # - **creating**: The GDN is being created.
+        # 
+        # - **active**: The GDN is running.
+        # 
+        # - **deleting**: The GDN is being deleted.
+        # 
+        # - **locked**: The GDN is locked. In this state, you cannot perform any operations on any cluster in the GDN.
+        # 
+        # - **removing_member**: A cluster is being removed from the GDN.
         self.gdnstatus = gdnstatus
         # The global domain name.
         self.global_domain_name = global_domain_name
+        # The labels of the GDN.
         self.labels = labels
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -178,6 +186,7 @@ class DescribeGlobalDatabaseNetworkResponseBodyLabels(DaraModel):
         self,
         gdnversion: str = None,
     ):
+        # The version of the GDN.
         self.gdnversion = gdnversion
 
     def validate(self):
@@ -222,62 +231,63 @@ class DescribeGlobalDatabaseNetworkResponseBodyDBClusters(DaraModel):
     ):
         # The edition of the cluster. Valid values:
         # 
-        # Normal: Cluster Edition Basic: Single Node Edition Archive: X-Engine Edition NormalMultimaster: Multi-master Cluster Edition SENormal: Standard Edition
+        # `Normal`: Cluster Edition `Basic`: Single-node Edition `Archive`: X-Engine Edition `NormalMultimaster`: Multi-master Cluster Edition `SENormal`: Standard Edition
         # 
-        # > 
-        # 
-        # *   PolarDB for PostgreSQL clusters that run the PostgreSQL 11 database engine do not support Single Node Edition.
-        # 
-        # *   PolarDB for MySQL 8.0 and 5.7 clusters, and PolarDB for PostgreSQL clusters that run the PostgreSQL 14 database engine support Standard Edition.
-        # 
-        # *   PolarDB for MySQL 8.0 clusters support X-Engine Edition and Multi-master Cluster Edition.
+        # > - Single-node Edition is not supported for PolarDB for PostgreSQL clusters that run PostgreSQL 11.
+        # >
+        # > - Standard Edition is supported for PolarDB for MySQL clusters that run MySQL 8.0 or 5.7 and for PolarDB for PostgreSQL clusters that run PostgreSQL 14.
+        # >
+        # > - X-Engine Edition and Multi-master Cluster Edition are supported only for PolarDB for MySQL clusters that run MySQL 8.0.
         self.category = category
         # The description of the cluster.
         self.dbcluster_description = dbcluster_description
-        # The ID of the cluster.
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
-        # The status of the cluster. For more information, see [Cluster status table](https://help.aliyun.com/document_detail/99286.html).
+        # The status of the cluster. For more information, see [Cluster statuses](https://help.aliyun.com/document_detail/99286.html).
         self.dbcluster_status = dbcluster_status
-        # The node specifications of the cluster.
+        # The node type.
         self.dbnode_class = dbnode_class
-        # The nodes of the cluster.
+        # The details of the nodes in the cluster.
         self.dbnodes = dbnodes
-        # The database engine type of the cluster. Only MySQL is supported.
+        # The database engine. Only MySQL is supported.
         self.dbtype = dbtype
-        # The version of the database engine. Only version 8.0 is supported.
+        # The database engine version. Only version 8.0 is supported.
         self.dbversion = dbversion
         # The expiration time of the cluster.
         # 
-        # >  A specific value is returned only for subscription (**Prepaid**) clusters. No value is returned for pay-as-you-go (**Postpaid**) clusters.
+        # > This parameter is returned only for subscription clusters. An empty string is returned for pay-as-you-go clusters.
         self.expire_time = expire_time
         # Indicates whether the cluster has expired. Valid values:
         # 
-        # *   **true** (default)
-        # *   **false**
+        # - **true**: The cluster has expired.
         # 
-        # >  This parameter is returned only for subscription (**Prepaid**) clusters.
+        # - **false**: The cluster has not expired.
+        # 
+        # > This parameter is returned only for subscription clusters.
         self.expired = expired
         # The billing method of the cluster. Valid values:
         # 
-        # *   **Postpaid**: pay-as-you-go
-        # *   **Prepaid**: subscription
+        # - **Postpaid**: pay-as-you-go.
+        # 
+        # - **Prepaid**: subscription.
         self.pay_type = pay_type
         # The region ID of the cluster.
         self.region_id = region_id
-        # The cross-region data replication latency between the primary cluster and secondary clusters. Unit: seconds.
+        # The replication lag for cross-region replication between the primary and standby clusters. Unit: seconds.
         self.replica_lag = replica_lag
-        # The role of the cluster. Valid values:
+        # The role of the cluster in the GDN. Valid values:
         # 
-        # *   **Primary**: the primary cluster
-        # *   **standby**: a secondary cluster
+        # - **primary**: the primary cluster
         # 
-        # >  A GDN consists of one primary cluster and up to four secondary clusters.
+        # - **standby**: a standby cluster
+        # 
+        # > A GDN consists of one primary cluster and up to four standby clusters.
         self.role = role
-        # Indicates whether the cluster is a serverless cluster. The value is fixed at AgileServerless.
+        # The type of the Serverless cluster. The value is fixed as `AgileServerless`.
         # 
-        # >  This parameter is returned only for serverless clusters.
+        # > This parameter is returned only for Serverless clusters.
         self.serverless_type = serverless_type
-        # The storage usage of the cluster. Unit: bytes.
+        # The amount of storage space used. Unit: bytes.
         self.storage_used = storage_used
 
     def validate(self):
@@ -413,36 +423,47 @@ class DescribeGlobalDatabaseNetworkResponseBodyDBClustersDBNodes(DaraModel):
     ):
         # The time when the node was created.
         self.creation_time = creation_time
-        # The specifications of the node.
+        # The node type.
         self.dbnode_class = dbnode_class
         # The node ID.
         self.dbnode_id = dbnode_id
         # The role of the node. Valid values:
         # 
-        # *   **Writer**: the primary node
-        # *   **Reader**: a read-only node
+        # - **Writer**: the primary node
+        # 
+        # - **Reader**: a read-only node
         self.dbnode_role = dbnode_role
         # The status of the node. Valid values:
         # 
-        # *   **Creating**: The node is being created.
-        # *   **Running**: The node is running.
-        # *   **Deleting**: The node is being deleted.
-        # *   **Rebooting**: The node is restarting.
-        # *   **ClassChanging**: The specifications of the node are being changed.
-        # *   **NetAddressCreating**: The network connection is being created.
-        # *   **NetAddressDeleting**: The network connection is being deleted.
-        # *   **NetAddressModifying**: The network connection is being modified.
-        # *   **MinorVersionUpgrading**: The minor version of the node is being updated.
-        # *   **Maintaining**: The node is being maintained.
-        # *   **Switching**: A failover is being performed.
+        # - **Creating**: The node is being created.
+        # 
+        # - **Running**: The node is running.
+        # 
+        # - **Deleting**: The node is being deleted.
+        # 
+        # - **Rebooting**: The node is being restarted.
+        # 
+        # - **ClassChanging**: The node type is being changed.
+        # 
+        # - **NetAddressCreating**: A network connection is being created.
+        # 
+        # - **NetAddressDeleting**: A network connection is being deleted.
+        # 
+        # - **NetAddressModifying**: A network connection is being modified.
+        # 
+        # - **MinorVersionUpgrading**: The minor version is being upgraded.
+        # 
+        # - **Maintaining**: The cluster is being maintained.
+        # 
+        # - **Switching**: A failover is in progress.
         self.dbnode_status = dbnode_status
-        # The failover priority. Each node is assigned a failover priority. The failover priority determines which node is selected as the primary node when a failover occurs. A larger value indicates a higher priority. Valid values: 1 to 15.
+        # The failover priority. In the event of a failover, the system promotes a read-only node to the primary node. A larger value indicates a higher priority. Each read-only node is assigned a failover priority. Valid values: 1 to 15.
         self.failover_priority = failover_priority
         # The maximum number of concurrent connections.
         self.max_connections = max_connections
-        # The maximum input/output operations per second (IOPS).
+        # The maximum I/O operations per second (IOPS).
         self.max_iops = max_iops
-        # The zone ID of the node.
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -520,11 +541,11 @@ class DescribeGlobalDatabaseNetworkResponseBodyConnections(DaraModel):
         net_type: str = None,
         port: str = None,
     ):
-        # The endpoint URL of the database service.
+        # The connection string.
         self.connection_string = connection_string
-        # The network type for the database connection.
+        # The network type.
         self.net_type = net_type
-        # The port number for the database connection.
+        # The port number of the connection string.
         self.port = port
 
     def validate(self):

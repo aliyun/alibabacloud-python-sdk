@@ -16,11 +16,22 @@ class ModifyDBDescriptionZonalRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # A client token to ensure the idempotence of the request. The client generates this token. It must be unique across requests, case-sensitive, and up to 64 ASCII characters in length.
         self.client_token = client_token
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The description of the database. The description must meet the following requirements:
+        # 
+        # - It cannot start with `http://` or `https://`.
+        # 
+        # - It must be 2 to 256 characters in length.
+        # 
         # This parameter is required.
         self.dbdescription = dbdescription
+        # The database name.
+        # 
         # This parameter is required.
         self.dbname = dbname
         self.owner_account = owner_account

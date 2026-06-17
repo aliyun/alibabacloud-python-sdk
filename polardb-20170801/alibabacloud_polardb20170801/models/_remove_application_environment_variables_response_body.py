@@ -16,14 +16,21 @@ class RemoveApplicationEnvironmentVariablesResponseBody(DaraModel):
         restarted: bool = None,
         total_variables: int = None,
     ):
+        # The application ID.
         self.application_id = application_id
+        # The response status code.
         self.code = code
+        # The response message.
         self.message = message
+        # Indicates whether the operation was successful.
         self.ok = ok
+        # The number of variables removed.
         self.removed_count = removed_count
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the gateway was restarted.
         self.restarted = restarted
+        # The total number of application environment variables remaining.
         self.total_variables = total_variables
 
     def validate(self):

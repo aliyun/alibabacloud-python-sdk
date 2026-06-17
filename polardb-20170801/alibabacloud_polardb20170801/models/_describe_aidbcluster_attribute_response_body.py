@@ -41,36 +41,123 @@ class DescribeAIDBClusterAttributeResponseBody(DaraModel):
         zone_id: str = None,
         zone_ids: str = None,
     ):
+        # The node type. Valid values:
+        # 
+        # - **vnode**: The node is managed by ACK.
+        # 
+        # - **container**: A container that you can log on to.
+        # 
+        # - **maas**: Model-as-a-Service (MaaS).
         self.ai_node_type = ai_node_type
+        # The API key.
         self.api_key = api_key
+        # The time when the cluster was created.
         self.creation_time = creation_time
+        # The description of the cluster. Fuzzy search is supported.
         self.dbcluster_description = dbcluster_description
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
+        # The status of the cluster. Valid values:
+        # 
+        # - **Creating**: The cluster is being created.
+        # 
+        # - **Running**: The cluster is running.
+        # 
+        # - **Deleting**: The cluster is being deleted.
+        # 
+        # - **DBNodeCreating**: Nodes are being added.
+        # 
+        # - **DBNodeDeleting**: Nodes are being deleted.
+        # 
+        # - **ClassChanging**: The node specifications are being changed.
+        # 
+        # - **Deleted**: The cluster is deleted.
         self.dbcluster_status = dbcluster_status
+        # The details of the nodes.
         self.dbnodes = dbnodes
+        # The cluster version. Valid values:
+        # 
+        # **1.0**
+        # 
+        # **2.0**
+        # 
+        # **3.0**
         self.dbversion = dbversion
+        # The security group ID.
         self.ecs_security_group_id = ecs_security_group_id
+        # A list of endpoints for the instance.
         self.endpoint_list = endpoint_list
+        # The expiration time of the cluster.
+        # 
+        # > This parameter is returned only for **subscription** clusters. For **pay-as-you-go** clusters, an empty string is returned.
         self.expire_time = expire_time
+        # Indicates whether the cluster has expired. Valid values:
+        # 
+        # - **true**
+        # 
+        # - **false**
         self.expired = expired
+        # The private IP address.
         self.internal_ip = internal_ip
+        # The KVCache instance ID.
         self.kvcache_instance_id = kvcache_instance_id
+        # The ACK cluster ID.
         self.kube_cluster_id = kube_cluster_id
+        # The lock mode of the instance. A value of **lock** indicates that the instance is locked due to expiration or an overdue payment.
         self.lock_mode = lock_mode
+        # The maximum number of queries per minute.
         self.max_qpm = max_qpm
+        # The model name.
         self.model_name = model_name
+        # The model type.
         self.model_type = model_type
+        # The billing method. Valid values:
+        # 
+        # - **Postpaid**: pay-as-you-go.
+        # 
+        # - **Prepaid**: subscription.
         self.pay_type = pay_type
+        # The public IP address.
         self.public_ip = public_ip
+        # The region ID.
         self.region_id = region_id
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The architecture type. Valid values:
+        # 
+        # - **container**: AI container.
+        # 
+        # - **ainode**: AI node.
         self.run_type = run_type
+        # The storage type for Enterprise Edition. Valid values:
+        # 
+        # - **PSL5**
+        # 
+        # - **PSL4**
+        # 
+        # The storage type for Standard Edition. Valid values:
+        # 
+        # - **ESSDPL0**
+        # 
+        # - **ESSDPL1**
+        # 
+        # - **ESSDPL2**
+        # 
+        # - **ESSDPL3**
+        # 
+        # - **ESSDAUTOPL**
         self.storage_type = storage_type
+        # The VPC ID.
         self.vpcid = vpcid
+        # The vSwitch ID.
+        # 
+        # >
         self.v_switch_id = v_switch_id
+        # A list of data disks.
         self.volumes = volumes
+        # The ID of the zone in which the PolarDB cluster nodes are deployed.
         self.zone_id = zone_id
+        # The zone IDs.
         self.zone_ids = zone_ids
 
     def validate(self):
@@ -302,10 +389,15 @@ class DescribeAIDBClusterAttributeResponseBodyVolumes(DaraModel):
         storage_category: str = None,
         storage_type: str = None,
     ):
+        # The mount path in the container.
         self.mount_path = mount_path
+        # The disk name.
         self.name = name
+        # The storage size in GB.
         self.size_gb = size_gb
+        # The storage category.
         self.storage_category = storage_category
+        # The storage type.
         self.storage_type = storage_type
 
     def validate(self):
@@ -357,6 +449,7 @@ class DescribeAIDBClusterAttributeResponseBodyEndpointList(DaraModel):
         self,
         net_info_items: List[main_models.DescribeAIDBClusterAttributeResponseBodyEndpointListNetInfoItems] = None,
     ):
+        # A list of network information for the instance.
         self.net_info_items = net_info_items
 
     def validate(self):
@@ -394,8 +487,17 @@ class DescribeAIDBClusterAttributeResponseBodyEndpointListNetInfoItems(DaraModel
         net_type: str = None,
         port: str = None,
     ):
+        # The database endpoint.
         self.connection_string = connection_string
+        # The network type of the endpoint. Valid values:
+        # 
+        # - **Public**: A public endpoint.
+        # 
+        # - **Private**: A private endpoint.
+        # 
+        # - **Inner**: A private endpoint in a classic network.
         self.net_type = net_type
+        # The port number.
         self.port = port
 
     def validate(self):
@@ -449,20 +551,55 @@ class DescribeAIDBClusterAttributeResponseBodyDBNodes(DaraModel):
         v_switch_id: str = None,
         zone_id: str = None,
     ):
+        # A list of data disks.
         self.child_volumes = child_volumes
+        # The number of CPU cores.
         self.cpu_cores = cpu_cores
+        # The time when the node was created.
         self.creation_time = creation_time
+        # The node specification.
         self.dbnode_class = dbnode_class
+        # The node description.
         self.dbnode_description = dbnode_description
+        # The node ID.
         self.dbnode_id = dbnode_id
+        # The status of the node. Valid values:
+        # 
+        # - **Creating**: The node is being created.
+        # 
+        # - **Running**: The node is running.
+        # 
+        # - **Deleting**: The node is being deleted.
+        # 
+        # - **Rebooting**: The node is being rebooted.
+        # 
+        # - **DBNodeCreating**: A node is being added to the cluster.
+        # 
+        # - **DBNodeDeleting**: A node is being deleted from the cluster.
+        # 
+        # - **ClassChanging**: The node specifications are being changed.
+        # 
+        # - **MinorVersionUpgrading**: The minor version is being updated.
+        # 
+        # - **Maintaining**: The node is being maintained.
+        # 
+        # - **Switching**: A failover is in progress.
         self.dbnode_status = dbnode_status
+        # The number of GPUs.
         self.gpu = gpu
+        # The private IP address.
         self.link_ip = link_ip
+        # The memory size in MB.
         self.memory_size = memory_size
+        # The public IP address.
         self.public_ip = public_ip
+        # The Kubernetes virtual node ID.
         self.vnode_id = vnode_id
+        # The VPC ID.
         self.vpcid = vpcid
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -586,10 +723,15 @@ class DescribeAIDBClusterAttributeResponseBodyDBNodesChildVolumes(DaraModel):
         storage_category: str = None,
         storage_type: str = None,
     ):
+        # The mount path.
         self.mount_path = mount_path
+        # The disk name.
         self.name = name
+        # The size of the data disk in GB.
         self.size_gb = size_gb
+        # The storage category.
         self.storage_category = storage_category
+        # The storage type.
         self.storage_type = storage_type
 
     def validate(self):

@@ -20,12 +20,19 @@ class DescribeBackupsResponseBody(DaraModel):
         self.items = items
         # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of records on the current page.
         self.page_record_count = page_record_count
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
+        # The total size of level-2 backups in the specified region, in bytes.
+        # 
+        # > - Supported only for storage classes PSL4 and PSL5.
+        # >
+        # > - Supported only for clusters with the level-2 backup feature enabled.
+        # >
+        # > - If this field is not returned, the level-2 backup size is 0.
         self.total_level_2backup_size = total_level_2backup_size
-        # The total number of returned entries.
+        # The total number of records.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -132,6 +139,7 @@ class DescribeBackupsResponseBodyItemsBackup(DaraModel):
         expect_expire_time: str = None,
         expect_expire_type: str = None,
         is_avail: str = None,
+        table_restore_meta_status: str = None,
     ):
         self.backup_end_time = backup_end_time
         self.backup_id = backup_id
@@ -147,6 +155,7 @@ class DescribeBackupsResponseBodyItemsBackup(DaraModel):
         self.expect_expire_time = expect_expire_time
         self.expect_expire_type = expect_expire_type
         self.is_avail = is_avail
+        self.table_restore_meta_status = table_restore_meta_status
 
     def validate(self):
         pass
@@ -198,6 +207,9 @@ class DescribeBackupsResponseBodyItemsBackup(DaraModel):
         if self.is_avail is not None:
             result['IsAvail'] = self.is_avail
 
+        if self.table_restore_meta_status is not None:
+            result['TableRestoreMetaStatus'] = self.table_restore_meta_status
+
         return result
 
     def from_map(self, m: dict = None):
@@ -243,6 +255,9 @@ class DescribeBackupsResponseBodyItemsBackup(DaraModel):
 
         if m.get('IsAvail') is not None:
             self.is_avail = m.get('IsAvail')
+
+        if m.get('TableRestoreMetaStatus') is not None:
+            self.table_restore_meta_status = m.get('TableRestoreMetaStatus')
 
         return self
 

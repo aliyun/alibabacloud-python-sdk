@@ -18,15 +18,25 @@ class CreatePolarClawChannelResponseBody(DaraModel):
         request_id: str = None,
         restarted: bool = None,
     ):
+        # **The application ID.**
         self.application_id = application_id
+        # The ID of the channel that was created.
         self.channel_id = channel_id
+        # The response status code.
         self.code = code
+        # The response message.
         self.message = message
+        # The name of the installed npm package.
         self.npm_package = npm_package
+        # Indicates whether the operation was successful.
         self.ok = ok
+        # **The plugin ID.**
         self.plugin_id = plugin_id
+        # Indicates whether a new plugin was installed.
         self.plugin_installed = plugin_installed
+        # **The request ID.**
         self.request_id = request_id
+        # Indicates whether the gateway was restarted.
         self.restarted = restarted
 
     def validate(self):

@@ -9,6 +9,7 @@ class DescribePolarAgentUserSessionsRequest(DaraModel):
         self,
         source: str = None,
     ):
+        # The source of the product. The value is \\`polardb-console\\`.
         self.source = source
 
     def validate(self):

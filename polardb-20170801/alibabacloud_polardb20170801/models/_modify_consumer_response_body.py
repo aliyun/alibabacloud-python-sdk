@@ -10,8 +10,9 @@ class ModifyConsumerResponseBody(DaraModel):
         consumer_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the consumer.
         self.consumer_id = consumer_id
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

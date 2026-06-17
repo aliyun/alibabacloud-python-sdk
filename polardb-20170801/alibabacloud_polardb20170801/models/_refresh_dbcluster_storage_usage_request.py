@@ -17,10 +17,11 @@ class RefreshDBClusterStorageUsageRequest(DaraModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # Specifies whether to enable real-time synchronization. Valid values:
+        # Specifies the synchronization mode. Valid values:
         # 
-        # *   **true**
-        # *   **false**: T + 1
+        # - **true**: Real-time synchronization.
+        # 
+        # - **false**: T+1 synchronization.
         self.sync_real_time = sync_real_time
 
     def validate(self):

@@ -16,15 +16,15 @@ class DescribeGlobalDatabaseNetworksResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
-        # Details about the GDNs.
+        # A list of GDNs.
         self.items = items
         # The page number.
         self.page_number = page_number
         # The number of records on the current page.
         self.page_record_count = page_record_count
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of returned entries.
+        # The total number of records.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -91,31 +91,39 @@ class DescribeGlobalDatabaseNetworksResponseBodyItems(DaraModel):
         gdnstatus: str = None,
         labels: main_models.DescribeGlobalDatabaseNetworksResponseBodyItemsLabels = None,
     ):
-        # The time when the GDN was created. The time is in the `YYYY-MM-DDThh:mm:ssZ` format. The time is displayed in UTC.
+        # The time at which the GDN was created, in UTC. The format is `YYYY-MM-DDTHH:mm:ssZ`.
         self.create_time = create_time
-        # Details about clusters in the GDN.
+        # A list of clusters in the GDN.
         self.dbclusters = dbclusters
-        # The type of the database engine. Only **MySQL** is supported.
+        # The database engine type. Only **MySQL** is supported.
         self.dbtype = dbtype
-        # The version of the database engine. Only the **8.0** version is supported.
+        # The database engine version. Only version **8.0** is supported.
         self.dbversion = dbversion
-        # The description of the GDN. The description must meet the following requirements:
+        # The GDN description. Requirements:
         # 
-        # *   It cannot start with `http://` or `https://`.
-        # *   It must start with a letter.
-        # *   It can contain letters, digits, underscores (_), and hyphens (-).
-        # *   It must be 2 to 126 characters in length.
+        # - Cannot start with http\\:// or https\\://.
+        # 
+        # - Must start with a letter or a Chinese character.
+        # 
+        # - Can contain letters, Chinese characters, digits, underscores (_), or hyphens (-).
+        # 
+        # - Must be 2 to 126 characters long.
         self.gdndescription = gdndescription
-        # The ID of the GDN.
+        # The GDN ID.
         self.gdnid = gdnid
         # The status of the GDN. Valid values:
         # 
-        # *   **Creating**: The GDN is being created.
-        # *   **active**: The GDN is running.
-        # *   **deleting**: The GDN is being deleted.
-        # *   **locked**: The GDN is locked. If the GDN is locked, you cannot perform operations on clusters in the GDN.
-        # *   **removing_member**: The secondary cluster is being removed from the GDN.
+        # - **creating**: The GDN is being created.
+        # 
+        # - **active**: The GDN is running.
+        # 
+        # - **deleting**: The GDN is being deleted.
+        # 
+        # - **locked**: The GDN is locked. This status prevents any operations on clusters in the GDN.
+        # 
+        # - **removing_member**: A standby cluster is being removed from the GDN.
         self.gdnstatus = gdnstatus
+        # The tags applied to the GDN.
         self.labels = labels
 
     def validate(self):
@@ -196,6 +204,7 @@ class DescribeGlobalDatabaseNetworksResponseBodyItemsLabels(DaraModel):
         self,
         gdnversion: str = None,
     ):
+        # The GDN version.
         self.gdnversion = gdnversion
 
     def validate(self):
@@ -225,16 +234,17 @@ class DescribeGlobalDatabaseNetworksResponseBodyItemsDBClusters(DaraModel):
         region_id: str = None,
         role: str = None,
     ):
-        # The ID of the cluster.
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
-        # The region ID of the cluster.
+        # The region ID.
         self.region_id = region_id
         # The role of the cluster. Valid values:
         # 
-        # *   **Primary**: the primary cluster
-        # *   **standby**: the secondary cluster
+        # - **primary**: The primary cluster.
         # 
-        # > A GDN consists of one primary cluster and up to four secondary clusters. For more information, see [GDN](https://help.aliyun.com/document_detail/160381.html).
+        # - **standby**: The standby cluster.
+        # 
+        # > A GDN consists of one primary cluster and up to four standby clusters. For more information, see [Global Database Network](https://help.aliyun.com/document_detail/160381.html).
         self.role = role
 
     def validate(self):

@@ -17,15 +17,29 @@ class ModifyAccountPasswordZonalRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The account name.
+        # 
         # This parameter is required.
         self.account_name = account_name
+        # A client-generated, case-sensitive token that you can use to ensure the idempotence of the request. The token must be unique among different requests and can be up to 64 ASCII characters in length.
         self.client_token = client_token
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The new password for the account. The password must meet the following requirements:
+        # 
+        # - Contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+        # 
+        # - Be 8 to 32 characters in length.
+        # 
+        # - The special characters are `!@#$%^&*()_+-=`.
+        # 
         # This parameter is required.
         self.new_account_password = new_account_password
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The password type.
         self.password_type = password_type
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

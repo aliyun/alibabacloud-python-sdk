@@ -19,47 +19,63 @@ class ModifyDBEndpointAddressRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The prefix of the new endpoint. The prefix must meet the following requirements:
+        # The new connection string prefix. The prefix must meet the following requirements:
         # 
-        # *   It can contain lowercase letters, digits, and hyphens (-).
-        # *   It must start with a letter and end with a digit or a letter.
-        # *   It must be 6 to 30 characters in length.
+        # - It can contain only lowercase letters, digits, and hyphens (-).
+        # 
+        # - It must start with a letter and end with a letter or a digit.
+        # 
+        # - It must be 6 to 30 characters in length.
         self.connection_string_prefix = connection_string_prefix
-        # The ID of cluster.
+        # The cluster ID.
         # 
-        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of the clusters that belong to your Alibaba Cloud account, such as cluster IDs.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of all clusters in your account, including cluster IDs.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The ID of the endpoint.
+        # The ID of the connection address.
         # 
-        # > You can call the [DescribeDBClusterEndpoints](https://help.aliyun.com/document_detail/98205.html) operation to query endpoint IDs.
+        # > You can call the [DescribeDBClusterEndpoints](https://help.aliyun.com/document_detail/98205.html) operation to query the ID of a connection address.
         self.dbendpoint_id = dbendpoint_id
-        # The network type of the endpoint. Valid values:
+        # The network type of the connection address. Valid values:
         # 
-        # *   **Public**
-        # *   **Private**
+        # - **Public**: public network
+        # 
+        # - **Private**: private network
+        # 
+        # <props="china">
+        # 
+        # - **Inner**: classic network
+        # 
+        # 
+        # 
+        # <props="china">
+        # 
+        # Only PolarDB for MySQL clusters support the classic network type.
         # 
         # This parameter is required.
         self.net_type = net_type
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The port number. Valid values: 3000 to 5999.
+        # The port number. The valid range is 3000 to 5999.
         # 
-        # > This parameter is valid only for PolarDB for MySQL clusters. If you leave this parameter empty, the default port 3306 is used.
+        # > - This parameter is supported only for PolarDB for MySQL clusters. If you do not specify this parameter, the port defaults to 3306.
         self.port = port
         # The prefix of the private domain name. The prefix must meet the following requirements:
         # 
-        # *   The prefix can contain lowercase letters, digits, and hyphens (-).
-        # *   The prefix must start with a letter and end with a digit or a letter.
-        # *   The prefix must be 6 to 30 characters in length.
+        # - It can contain only lowercase letters, digits, and hyphens (-).
         # 
-        # >- You can bind each internal endpoint of PolarDB to a private domain name. The private domain name takes effect only in the specified virtual private clouds (VPCs) in the current region. Private domain names are managed by using PrivateZone. You can use the CNAME record of PrivateZone to map domain names to PolarDB. You are charged a small fee for this feature. For more information, see [Pricing](https://help.aliyun.com/document_detail/71338.html).
-        # >- This parameter takes effect only if you set **NetType** to Private.
+        # - It must start with a letter and end with a letter or a digit.
+        # 
+        # - It must be 6 to 30 characters in length.
+        # 
+        # > * You can bind a private domain name to each private endpoint of a PolarDB cluster. This domain name is effective only in the specified VPC within the current region. The private domain name is managed by PrivateZone and is mapped to the built-in private endpoint of the cluster through a CNAME record. This feature incurs a small fee. For more information, see [Pricing](https://help.aliyun.com/document_detail/71338.html).
+        # >
+        # > * This parameter is valid only when **NetType is set to Private**.
         self.private_zone_address_prefix = private_zone_address_prefix
-        # The name of the private zone.
+        # The private zone name.
         # 
-        # > This parameter takes effect only when **NetType** is set to Private.
+        # > This parameter is valid only when **NetType is set to Private**.
         self.private_zone_name = private_zone_name
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

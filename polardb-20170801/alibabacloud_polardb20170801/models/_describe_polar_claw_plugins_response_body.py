@@ -17,11 +17,17 @@ class DescribePolarClawPluginsResponseBody(DaraModel):
         plugins: List[main_models.DescribePolarClawPluginsResponseBodyPlugins] = None,
         request_id: str = None,
     ):
+        # The application ID.
         self.application_id = application_id
+        # The response status code.
         self.code = code
+        # An array of diagnostic objects.
         self.diagnostics = diagnostics
+        # The response message.
         self.message = message
+        # An array of plugin objects.
         self.plugins = plugins
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -106,16 +112,27 @@ class DescribePolarClawPluginsResponseBodyPlugins(DaraModel):
         status: str = None,
         version: str = None,
     ):
+        # A list of channel IDs, which can be empty.
         self.channel_ids = channel_ids
+        # The description of the plugin.
         self.description = description
+        # The error message, or `null` if no error occurred.
         self.error = error
+        # The format of the plugin, which can be an empty string.
         self.format = format
+        # The plugin ID.
         self.id = id
+        # The display name of the plugin.
         self.name = name
+        # The origin of the plugin. Valid values: `bundled`, `global`, and `user-install`.
         self.origin = origin
+        # A list of provider IDs, which can be empty.
         self.provider_ids = provider_ids
+        # The file path to the plugin\\"s entry point.
         self.source = source
+        # The status of the plugin. Valid values: `loaded`, `disabled`, and `error`.
         self.status = status
+        # The version number of the plugin.
         self.version = version
 
     def validate(self):
@@ -206,9 +223,13 @@ class DescribePolarClawPluginsResponseBodyDiagnostics(DaraModel):
         plugin_id: str = None,
         source: str = None,
     ):
+        # The severity level. Valid values: `error` and `warn`.
         self.level = level
+        # The detailed diagnostic message.
         self.message = message
+        # The ID of the associated plugin.
         self.plugin_id = plugin_id
+        # The source file path associated with the diagnostic.
         self.source = source
 
     def validate(self):

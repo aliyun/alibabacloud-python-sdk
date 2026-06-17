@@ -16,10 +16,15 @@ class DescribeSharedBackupsResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: str = None,
     ):
+        # A list of shared backup sets.
         self.items = items
+        # The page number.
         self.page_number = page_number
+        # The number of entries on the current page.
         self.page_record_count = page_record_count
+        # The request ID.
         self.request_id = request_id
+        # The total record count.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -96,23 +101,57 @@ class DescribeSharedBackupsResponseBodyItems(DaraModel):
         share_type: str = None,
         sharer_uid: str = None,
     ):
+        # The end time of the backup, in UTC.
         self.backup_end_time = backup_end_time
+        # The backup set ID.
         self.backup_id = backup_id
+        # The backup method. Only snapshot backup is supported. The value is fixed to **Snapshot**.
         self.backup_method = backup_method
+        # The backup mode. Valid values:
+        # 
+        # - **Automated**: automated backup
+        # 
+        # - **Manual**: manual backup
         self.backup_mode = backup_mode
+        # The size of the backup set, in bytes.
         self.backup_set_size = backup_set_size
+        # The start time of the backup, in UTC.
         self.backup_start_time = backup_start_time
+        # The backup status. Valid values:
+        # 
+        # - **Success**: The backup is complete.
+        # 
+        # - **Failed**: The backup failed.
         self.backup_status = backup_status
+        # The backup type. Only full backups are supported. The value is fixed to **FullBackup**.
         self.backup_type = backup_type
+        # The backup level. Valid values:
+        # 
+        # - **Level-1**: Level-1 backup.
+        # 
+        # - **Level-2**: Level-2 backup.
         self.backups_level = backups_level
+        # The UNIX timestamp of the consistent snapshot, in seconds.
         self.consistent_time = consistent_time
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
+        # The database engine type.
         self.dbtype = dbtype
+        # The database engine version.
         self.dbversion = dbversion
+        # The billing method. Valid values:
+        # 
+        # - **Postpaid**: pay-as-you-go.
+        # 
+        # - **Prepaid**: prepaid (subscription)
         self.pay_type = pay_type
+        # The region ID.
         self.region_id = region_id
+        # The Serverless type. A value of **AgileServerless** indicates a Serverless cluster, while an empty value indicates a standard cluster.
         self.serverless_type = serverless_type
+        # The share type.
         self.share_type = share_type
+        # The UID of the account that shared the backup set.
         self.sharer_uid = sharer_uid
 
     def validate(self):

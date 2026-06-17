@@ -11,8 +11,11 @@ class ModifyApplicationWhitelistResponseBody(DaraModel):
         component_id: str = None,
         request_id: str = None,
     ):
+        # The application ID.
         self.application_id = application_id
+        # The ID of the application subcomponent.
         self.component_id = component_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

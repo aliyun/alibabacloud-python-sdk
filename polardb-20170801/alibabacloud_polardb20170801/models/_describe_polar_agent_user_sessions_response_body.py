@@ -13,7 +13,9 @@ class DescribePolarAgentUserSessionsResponseBody(DaraModel):
         data: List[main_models.DescribePolarAgentUserSessionsResponseBodyData] = None,
         request_id: str = None,
     ):
+        # The result set.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -57,8 +59,15 @@ class DescribePolarAgentUserSessionsResponseBodyData(DaraModel):
         session_status: int = None,
         title: str = None,
     ):
+        # The session ID.
         self.session_id = session_id
+        # The status of the session. Valid values:
+        # 
+        # - **1**: Active
+        # 
+        # - **0**: Closed
         self.session_status = session_status
+        # The content.
         self.title = title
 
     def validate(self):

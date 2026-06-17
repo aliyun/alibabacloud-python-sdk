@@ -13,9 +13,9 @@ class DescribeDBClusterEndpointsResponseBody(DaraModel):
         items: List[main_models.DescribeDBClusterEndpointsResponseBodyItems] = None,
         request_id: str = None,
     ):
-        # The information about the endpoints.
+        # A list of cluster endpoints.
         self.items = items
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -75,73 +75,93 @@ class DescribeDBClusterEndpointsResponseBodyItems(DaraModel):
         service_name: str = None,
         vpcid: str = None,
     ):
-        # The details of the endpoint.
+        # The connection addresses for the endpoint.
         self.address_items = address_items
-        # Indicates whether new nodes are automatically associated with the default cluster endpoint. Valid values:
+        # Indicates whether new nodes are automatically added to the default cluster endpoint. Valid values:
         # 
-        # *   **Enable**
-        # *   **Disable**
+        # - **Enable**
+        # 
+        # - **Disable**
         self.auto_add_new_nodes = auto_add_new_nodes
+        # The connection string.
         self.connection_string = connection_string
-        # The ID of the cluster.
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
-        # The name of the endpoint.
+        # The endpoint name.
         self.dbendpoint_description = dbendpoint_description
-        # The ID of the endpoint.
+        # The endpoint ID.
         self.dbendpoint_id = dbendpoint_id
-        # The advanced configurations of the endpoint.
+        # The advanced settings for the cluster endpoint.
         # 
-        # *   **DistributedTransaction**: indicates whether transaction splitting is enabled. Valid values:
+        # - **DistributedTransaction**: The transaction splitting status. Valid values:
         # 
-        #     *   **on**
-        #     *   **off**
+        #   - **on**: enabled
         # 
-        # *   **ConsistLevel**: the consistency level of sessions. Valid values:
+        #   - **off**: disabled
         # 
-        #     *   **0**: eventual consistency.
-        #     *   **1**: session consistency.
-        #     *   **2**: global consistency.
+        # - **ConsistLevel**: The consistency level. Valid values:
         # 
-        # *   **LoadBalanceStrategy**: the load balancing policy that automatically schedules loads. Only **load** may be returned.
+        #   - **0**: eventual consistency
         # 
-        # *   **MasterAcceptReads**: indicates whether the primary node processes read requests. Valid values:
+        #   - **1**: session consistency
         # 
-        #     *   **on**
-        #     *   **off**
+        #   - **2**: global consistency
+        # 
+        # - **LoadBalanceStrategy**: The load balancing policy. The value is fixed to **load**, which indicates load-based scheduling.
+        # 
+        # - **MasterAcceptReads**: Indicates whether the primary node accepts read requests. Valid values:
+        # 
+        #   - **on**: The primary node accepts read requests.
+        # 
+        #   - **off**: The primary node does not accept read requests.
         self.endpoint_config = endpoint_config
-        # The type of the endpoint. Valid values:
+        # The type of the cluster endpoint. Valid values:
         # 
-        # *   **Cluster**: the default endpoint.
-        # *   **Primary**: the primary endpoint.
-        # *   **Custom**: a custom cluster endpoint.
+        # - **Cluster**: the default cluster endpoint.
+        # 
+        # - **Primary**: the primary endpoint.
+        # 
+        # - **Custom**: a custom cluster endpoint.
         self.endpoint_type = endpoint_type
+        # The network type. Valid values:
+        # 
+        # - **Public**: public network
+        # 
+        # - **Private**: private network
         self.net_type = net_type
-        # The role name of each node in the endpoint. The role name of the primary node is **Writer**. Multiple read-only nodes can be associated with an endpoint. Therefore, the role name of each read-only node is suffixed with a number. For example, you can use **Reader1** and **Reader2** as the role names.
+        # The role of each node in the endpoint. The primary node has the **Writer** role. Read-only nodes have numbered roles, such as **Reader1**, **Reader2**, and so on.
         # 
-        # >  This parameter is valid only for PolarDB for PostgreSQL clusters and PolarDB for PostgreSQL (Compatible with Oracle)) clusters.
+        # > This parameter is supported only by PolarDB for PostgreSQL clusters and PolarDB for PostgreSQL (compatible with Oracle) clusters.
         self.node_with_roles = node_with_roles
-        # The nodes in the endpoint.
+        # The list of nodes configured for the endpoint.
         self.nodes = nodes
-        # The global consistency timeout policy. Valid values:
+        # The policy for handling global consistency read timeouts. Valid values:
         # 
-        # *   **0**: sends the request to the primary node.
-        # *   **2**: downgrades the consistency level of a query to inconsistent read when a global consistent read in the query times out. No error message is returned to the client.
+        # - **0**: Redirects the request to the primary node.
+        # 
+        # - **2**: Downgrades the request. If a global consistency read times out, the system automatically downgrades the query to a non-consistent read, and the client does not receive an error.
         self.polar_scc_timeout_action = polar_scc_timeout_action
-        # Global consistency timeout.
+        # The timeout period for global consistency reads.
         self.polar_scc_wait_timeout = polar_scc_wait_timeout
+        # The port.
         self.port = port
+        # The protocol type.
         self.protocol = protocol
         # The read/write mode. Valid values:
         # 
-        # *   **ReadWrite**: handles read and write requests. Automatic read/write splitting is enabled.
-        # *   **ReadOnly**: handles read-only requests.
-        self.read_write_mode = read_write_mode
-        # Indicates whether the global consistency (high-performance mode) feature is enabled for the node. Valid values:
+        # - **ReadWrite**: read and write (automatic read/write splitting).
         # 
-        # *   **on**: enabled.
-        # *   **off**: disabled
+        # - **ReadOnly**: read-only.
+        self.read_write_mode = read_write_mode
+        # Indicates whether global consistency (high-performance mode) is enabled for the node. Valid values:
+        # 
+        # - **on**: enabled
+        # 
+        # - **off**: disabled
         self.scc_mode = scc_mode
+        # The service name.
         self.service_name = service_name
+        # The VPC ID.
         self.vpcid = vpcid
 
     def validate(self):
@@ -293,31 +313,43 @@ class DescribeDBClusterEndpointsResponseBodyItemsAddressItems(DaraModel):
         v_switch_id: str = None,
         vpc_instance_id: str = None,
     ):
-        # The endpoint.
+        # The connection string.
         self.connection_string = connection_string
-        # Whether it is the dashboard endpoint of the PolarDB search node.
+        # Indicates whether the endpoint is a dashboard endpoint for a PolarDB Search node.
         # 
-        # *   Ture
-        # *   False
+        # - **True**: Yes
+        # 
+        # - **False**: No
         self.dashboard_used = dashboard_used
         # The IP address.
         self.ipaddress = ipaddress
-        # The network type of the endpoint. Valid values:
+        # The network type. Valid values:
         # 
-        # *   **Public**
-        # *   **Private**
+        # - **Public**: public network
+        # 
+        # - **Private**: private network
+        # 
+        # <props="china">
+        # 
+        # - **Inner**: classic network
+        # 
+        # 
+        # 
+        # <props="china">
+        # 
+        # Only PolarDB for MySQL clusters support the classic network type.
         self.net_type = net_type
         # The port.
         self.port = port
-        # The private domain name that is bound to the endpoint.
+        # The connection string for the private domain name.
         self.private_zone_connection_string = private_zone_connection_string
-        # The ID of the VPC.
+        # The VPC ID.
         self.vpcid = vpcid
-        # The ID of the vSwitch.
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
-        # The ID of the virtual private cloud (VPC) instance.
+        # The VPC instance ID.
         # 
-        # > This parameter is returned for only PolarDB for MySQL clusters.
+        # > This parameter is returned only for PolarDB for MySQL clusters.
         self.vpc_instance_id = vpc_instance_id
 
     def validate(self):

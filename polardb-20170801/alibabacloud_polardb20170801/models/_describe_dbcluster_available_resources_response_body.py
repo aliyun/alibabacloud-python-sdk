@@ -13,9 +13,9 @@ class DescribeDBClusterAvailableResourcesResponseBody(DaraModel):
         available_zones: List[main_models.DescribeDBClusterAvailableResourcesResponseBodyAvailableZones] = None,
         request_id: str = None,
     ):
-        # The available zones of the cluster.
+        # The list of available resources.
         self.available_zones = available_zones
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -59,11 +59,11 @@ class DescribeDBClusterAvailableResourcesResponseBodyAvailableZones(DaraModel):
         supported_engines: List[main_models.DescribeDBClusterAvailableResourcesResponseBodyAvailableZonesSupportedEngines] = None,
         zone_id: str = None,
     ):
-        # The region ID of the cluster.
+        # The region ID.
         self.region_id = region_id
-        # The database engines that the available resources support.
+        # The list of available engines.
         self.supported_engines = supported_engines
-        # The zone ID of the cluster.
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -159,14 +159,19 @@ class DescribeDBClusterAvailableResourcesResponseBodyAvailableZonesSupportedEngi
     ):
         # The edition of the cluster. Valid values:
         # 
-        # *   **Normal**: Cluster Edition.
-        # *   **Basic**: Single Node Edition.
-        # *   **ArchiveNormal**: X-Engine.
-        # *   **NormalMultimaster**: Multi-master Cluster (Database/Table) Edition.
-        # *   **SENormal**: Standard Edition.
+        # - **Normal**: Cluster Edition.
         # 
-        # >- Only PolarDB for MySQL supports Single Node Edition.
-        # >- Only PolarDB for MySQL 8.0 supports X-Engine Edition and Multi-master Cluster (Database/Table) Edition.
+        # - **Basic**: Single Node Edition.
+        # 
+        # - **ArchiveNormal**: X-Engine.
+        # 
+        # - **NormalMultimaster**: Multi-master Cluster (Database/Table) Edition.
+        # 
+        # - **SENormal**: Standard Edition.
+        # 
+        # > * Only PolarDB for MySQL supports Single Node Edition.
+        # >
+        # > * Only PolarDB for MySQL 8.0 supports X-Engine Edition and Multi-master Cluster (Database/Table) Edition.
         self.category = category
         # The specifications of the node.
         self.dbnode_class = dbnode_class

@@ -11,9 +11,14 @@ class DeletePolarFsObjectsShrinkRequest(DaraModel):
         objects_to_delete_shrink: str = None,
         polar_fs_instance_id: str = None,
     ):
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
+        # The list of objects to delete.
+        # 
         # This parameter is required.
         self.objects_to_delete_shrink = objects_to_delete_shrink
+        # The PolarLakebase instance ID.
+        # 
         # This parameter is required.
         self.polar_fs_instance_id = polar_fs_instance_id
 

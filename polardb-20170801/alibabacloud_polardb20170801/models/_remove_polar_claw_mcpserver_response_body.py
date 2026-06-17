@@ -14,12 +14,17 @@ class RemovePolarClawMCPServerResponseBody(DaraModel):
         request_id: str = None,
         server_name: str = None,
     ):
+        # The application ID.
         self.application_id = application_id
+        # The status code.
         self.code = code
+        # The response message.
         self.message = message
+        # Indicates whether the request was successful. A value of `true` indicates success.
         self.ok = ok
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The ID of the deleted MCP server.
         self.server_name = server_name
 
     def validate(self):

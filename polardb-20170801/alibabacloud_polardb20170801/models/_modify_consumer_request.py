@@ -14,14 +14,23 @@ class ModifyConsumerRequest(DaraModel):
         name: str = None,
         region_id: str = None,
     ):
+        # The name of the consumer group.
         self.consumer_group_name = consumer_group_name
+        # The ID of the consumer.
+        # 
         # This parameter is required.
         self.consumer_id = consumer_id
+        # The ID of the gateway instance.
+        # 
         # This parameter is required.
         self.gw_cluster_id = gw_cluster_id
+        # Indicates if the consumer is in the default group. Valid values: 0 (No) and 1 (Yes).
         self.is_default = is_default
+        # The new name for the consumer.
+        # 
         # This parameter is required.
         self.name = name
+        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):

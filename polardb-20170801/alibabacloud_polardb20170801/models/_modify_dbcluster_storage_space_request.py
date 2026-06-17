@@ -21,9 +21,15 @@ class ModifyDBClusterStorageSpaceRequest(DaraModel):
         storage_space: int = None,
         sub_category: str = None,
     ):
+        # Specifies whether to automatically use a coupon. Valid values:
+        # 
+        # - `true` (default): A coupon is automatically used.
+        # 
+        # - `false`: A coupon is not used.
         self.auto_use_coupon = auto_use_coupon
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. The token is case-sensitive.
+        # A client-generated token that ensures the idempotence of the request. The token must be unique for each request, case-sensitive, and a maximum of 64 ASCII characters in length.
         self.client_token = client_token
+        # Specifies the cloud provider of the instance.
         self.cloud_provider = cloud_provider
         # The cluster ID.
         # 
@@ -31,28 +37,35 @@ class ModifyDBClusterStorageSpaceRequest(DaraModel):
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The latest time to upgrade the specifications within the scheduled time period. Specify the time in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
-        # >- The value of this parameter must be at least 30 minutes later than PlannedStartTime.
-        # >- By default, if you specify `PlannedStartTime` but do not specify PlannedEndTime, the latest start time of the task is set to `PlannedEndTime + 30 minutes`. For example, if you set `PlannedStartTime` to `2021-01-14T09:00:00Z` and you do not specify PlannedEndTime, the latest start time of the task is `2021-01-14T09:30:00Z`.
+        # Specifies the latest time to start the scheduled task. Specify the time in UTC in the `YYYY-MM-DDThh:mm:ssZ` format.
+        # 
+        # > - The latest start time must be at least 30 minutes later than the earliest start time.
+        # >
+        # > - If you specify `PlannedStartTime` but not this parameter, the latest start time is `PlannedStartTime + 30 minutes` by default. For example, if you set `PlannedStartTime` to `2021-01-14T09:00:00Z` and leave this parameter empty, the task starts no later than `2021-01-14T09:30:00Z`.
         self.planned_end_time = planned_end_time
-        # The earliest time to upgrade the specifications within the scheduled time period. Specify the time in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
-        # >- This parameter takes effect only when `ModifyType` is set to `Upgrade`.
-        # >- The earliest start time of the task can be a point in time within the next 24 hours. For example, if the current time is `2021-01-14T09:00:00Z`, you can specify a point in the time that ranges from `2021-01-14T09:00:00Z` to `2021-01-15T09:00:00Z`.
-        # >- If this parameter is left empty, the upgrade task is immediately performed.
+        # Specifies the earliest time to start the scheduled task. Specify the time in UTC in the `YYYY-MM-DDThh:mm:ssZ` format.
+        # 
+        # > - This parameter takes effect only when `ModifyType` is set to `Upgrade`.
+        # >
+        # > - The start time can be a point in time within the next 24 hours. For example, if the current time is `2021-01-14T09:00:00Z`, you can set the start time to a value that is between `2021-01-14T09:00:00Z` and `2021-01-15T09:00:00Z`.
+        # >
+        # > - If you leave this parameter empty, the task runs immediately.
         self.planned_start_time = planned_start_time
+        # Specifies the promotion code. If you do not specify this parameter, the system uses the default coupon.
         self.promotion_code = promotion_code
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The storage capacity that you can select when you change the cluster. Unit: GB.
+        # Specifies the new storage space. Unit: GB.
         # 
-        # >  You can set this parameter for PolarDB for MySQL clusters of Standard Edition to a value that ranges from 20 to 32000.
+        # > For PolarDB for MySQL Standard Edition clusters, the storage space must be between 20 GB and 32,000 GB.
         # 
         # This parameter is required.
         self.storage_space = storage_space
-        # The category of the cluster. Default value: ON. Valid values:
+        # Specifies the subcategory of the cluster. Valid values:
         # 
-        # *   **normal_exclusive**: dedicated
-        # *   **normal_general**: general-purpose
+        # - **normal_exclusive**: dedicated
+        # 
+        # - **normal_general**: general-purpose
         self.sub_category = sub_category
 
     def validate(self):

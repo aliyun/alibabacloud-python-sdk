@@ -14,8 +14,11 @@ class DescribeApplicationServerlessConfResponseBody(DaraModel):
         request_id: str = None,
         serverless_conf_items: List[main_models.DescribeApplicationServerlessConfResponseBodyServerlessConfItems] = None,
     ):
+        # The application ID.
         self.application_id = application_id
+        # The request ID.
         self.request_id = request_id
+        # The list of serverless configurations.
         self.serverless_conf_items = serverless_conf_items
 
     def validate(self):
@@ -65,8 +68,17 @@ class DescribeApplicationServerlessConfResponseBodyServerlessConfItems(DaraModel
         scale_max: str = None,
         scale_min: str = None,
     ):
+        # The type of the application sub-component.
+        # 
+        # For Supabase, valid values are:
+        # 
+        # - gateway
+        # 
+        # - backend
         self.component_type = component_type
+        # The maximum scaling capacity for a single node. Valid values: 0 PCU to 16 PCU.
         self.scale_max = scale_max
+        # The minimum scaling capacity for a single node, measured in PolarDB Capacity Units (PCU). Valid values: 0 PCU to 16 PCU.
         self.scale_min = scale_min
 
     def validate(self):

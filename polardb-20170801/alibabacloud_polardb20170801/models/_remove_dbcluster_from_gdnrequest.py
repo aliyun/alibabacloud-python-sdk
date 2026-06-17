@@ -17,12 +17,13 @@ class RemoveDBClusterFromGDNRequest(DaraModel):
         security_token: str = None,
         target_dbcluster_id: str = None,
     ):
-        # The ID of the cluster in the GDN.
+        # The ID of the secondary cluster that you want to remove from the GDN.
         # 
-        # >  You can call the [DescribeGlobalDatabaseNetwork](https://help.aliyun.com/document_detail/264580.html) operation to view the ID of the cluster in the GDN.
+        # > You can call the [DescribeGlobalDatabaseNetwork](https://help.aliyun.com/document_detail/264580.html) operation to query the IDs of clusters in the GDN.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # Specifies whether to forcibly remove the cluster.
         self.force = force
         # The ID of the GDN.
         # 
@@ -33,6 +34,7 @@ class RemoveDBClusterFromGDNRequest(DaraModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
+        # The ID of the target cluster.
         self.target_dbcluster_id = target_dbcluster_id
 
     def validate(self):

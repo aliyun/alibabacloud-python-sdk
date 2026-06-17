@@ -10,8 +10,12 @@ class ModifyApplicationDescriptionRequest(DaraModel):
         application_id: str = None,
         description: str = None,
     ):
+        # The ID of the application.
+        # 
         # This parameter is required.
         self.application_id = application_id
+        # The description of the application.
+        # 
         # This parameter is required.
         self.description = description
 

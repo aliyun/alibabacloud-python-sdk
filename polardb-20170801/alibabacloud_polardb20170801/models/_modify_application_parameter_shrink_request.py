@@ -12,10 +12,15 @@ class ModifyApplicationParameterShrinkRequest(DaraModel):
         parameter_value: str = None,
         parameters_shrink: str = None,
     ):
+        # The application ID.
+        # 
         # This parameter is required.
         self.application_id = application_id
+        # The parameter name.
         self.parameter_name = parameter_name
+        # The parameter value.
         self.parameter_value = parameter_value
+        # The list of parameter names and values for modifying multiple parameters.
         self.parameters_shrink = parameters_shrink
 
     def validate(self):

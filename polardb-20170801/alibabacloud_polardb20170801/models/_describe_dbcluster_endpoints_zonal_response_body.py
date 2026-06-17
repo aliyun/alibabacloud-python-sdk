@@ -13,7 +13,9 @@ class DescribeDBClusterEndpointsZonalResponseBody(DaraModel):
         items: List[main_models.DescribeDBClusterEndpointsZonalResponseBodyItems] = None,
         request_id: str = None,
     ):
+        # The details of the cluster endpoints.
         self.items = items
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -67,18 +69,75 @@ class DescribeDBClusterEndpointsZonalResponseBodyItems(DaraModel):
         read_write_mode: str = None,
         scc_mode: str = None,
     ):
+        # The connection string information.
         self.address_items = address_items
+        # Specifies whether new nodes are automatically added to the default cluster endpoint. Valid values:
+        # 
+        # - Enable.
+        # 
+        # - Disable.
         self.auto_add_new_nodes = auto_add_new_nodes
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
+        # The name of the endpoint.
         self.dbendpoint_description = dbendpoint_description
+        # The endpoint ID.
         self.dbendpoint_id = dbendpoint_id
+        # The advanced configurations of the cluster endpoint.
+        # 
+        # - **DistributedTransaction**: The status of transaction splitting. Valid values:
+        # 
+        #   - **on**: Transaction splitting is enabled.
+        # 
+        #   - **off**: Transaction splitting is disabled.
+        # 
+        # - **ConsistLevel**: The consistency level. Valid values:
+        # 
+        #   - **0**: Eventual consistency.
+        # 
+        #   - **1**: Session consistency.
+        # 
+        #   - **2**: Global consistency.
+        # 
+        # - **LoadBalanceStrategy**: The load balancing policy for automatic scheduling based on loads. The value is fixed as **load**.
+        # 
+        # - **MasterAcceptReads**: Specifies whether the primary node accepts read requests. Valid values:
+        # 
+        #   - **on**: The primary node accepts read requests.
+        # 
+        #   - **off**: The primary node does not accept read requests.
         self.endpoint_config = endpoint_config
+        # The type of the cluster endpoint. Valid values:
+        # 
+        # - Cluster: the default cluster endpoint.
+        # 
+        # - Primary: the primary endpoint.
+        # 
+        # - Custom: a custom cluster endpoint.
         self.endpoint_type = endpoint_type
+        # The role of each node in the endpoint. The primary node has the Writer role. Because multiple read-only nodes can be added to an endpoint, each read-only node is assigned a role name suffixed with a number, such as Reader1 and Reader2.
         self.node_with_roles = node_with_roles
+        # The list of nodes that are configured for the endpoint.
         self.nodes = nodes
+        # The policy for global consistency timeout. Valid values:
+        # 
+        # - 0: Sends the request to the primary node.
+        # 
+        # - 2: Degrades the request. If a global consistency read times out, the query is automatically degraded to a regular request. The client does not receive an error message.
         self.polar_scc_timeout_action = polar_scc_timeout_action
+        # The timeout period for global consistency.
         self.polar_scc_wait_timeout = polar_scc_wait_timeout
+        # The read/write mode. Valid values:
+        # 
+        # - ReadWrite: read and write (automatic read/write splitting).
+        # 
+        # - ReadOnly: read-only.
         self.read_write_mode = read_write_mode
+        # Specifies whether global consistency (high-performance mode) is enabled for the node. Valid values:
+        # 
+        # - on: enabled.
+        # 
+        # - off: disabled.
         self.scc_mode = scc_mode
 
     def validate(self):
@@ -194,14 +253,31 @@ class DescribeDBClusterEndpointsZonalResponseBodyItemsAddressItems(DaraModel):
         v_switch_id: str = None,
         vpc_instance_id: str = None,
     ):
+        # The connection string.
         self.connection_string = connection_string
+        # Specifies whether the endpoint is the dashboard endpoint of a PolarDB search node. Valid values:
+        # 
+        # - True: Yes.
+        # 
+        # - False: No.
         self.dashboard_used = dashboard_used
+        # The IP address.
         self.ipaddress = ipaddress
+        # The network type. Valid values:
+        # 
+        # - Public: Internet.
+        # 
+        # - Private: internal network.
         self.net_type = net_type
+        # The port number.
         self.port = port
+        # The private domain name that is bound to the endpoint.
         self.private_zone_connection_string = private_zone_connection_string
+        # The ID of the virtual private cloud (VPC).
         self.vpcid = vpcid
+        # The virtual switch ID.
         self.v_switch_id = v_switch_id
+        # The VPC instance ID.
         self.vpc_instance_id = vpc_instance_id
 
     def validate(self):

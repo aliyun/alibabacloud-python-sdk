@@ -15,10 +15,13 @@ class CancelCronJobPolicyServerlessRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
+        # The scheduled task ID.
         self.job_id = job_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

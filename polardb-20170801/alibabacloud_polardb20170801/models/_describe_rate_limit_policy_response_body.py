@@ -17,12 +17,17 @@ class DescribeRateLimitPolicyResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: str = None,
     ):
+        # An array of rate limit policy objects.
         self.items = items
+        # The returned page number.
         self.page_number = page_number
+        # The number of entries returned on the current page.
         self.page_record_count = page_record_count
+        # The number of entries returned per page.
         self.page_size = page_size
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The total number of matching entries.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -97,15 +102,33 @@ class DescribeRateLimitPolicyResponseBodyItems(DaraModel):
         scope_type: str = None,
         status: str = None,
     ):
+        # The creation time.
         self.gmt_created = gmt_created
+        # The modification time.
         self.gmt_modified = gmt_modified
+        # The ID of the gateway instance.
         self.gw_cluster_id = gw_cluster_id
+        # The ID of the rate limit policy.
         self.policy_id = policy_id
+        # The policy type.
         self.policy_type = policy_type
+        # The maximum requests per minute (RPM).
         self.rate_limit_rpm = rate_limit_rpm
+        # The maximum tokens per minute (TPM).
         self.rate_limit_tpm = rate_limit_tpm
+        # The ID of the object within the policy\\"s scope, such as a consumer group or a consumer.
         self.scope_ref_id = scope_ref_id
+        # The scope of the policy. Valid values:
+        # 
+        # - **ConsumerGroup**: The policy applies to a consumer group.
+        # 
+        # - **Consumer**: The policy applies to a specific consumer.
         self.scope_type = scope_type
+        # The status of the policy. Valid values:
+        # 
+        # - **Enabled**: The policy is enabled.
+        # 
+        # - **Disabled**: The policy is disabled.
         self.status = status
 
     def validate(self):

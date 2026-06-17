@@ -16,15 +16,42 @@ class DescribeAIDBClusterTaskMetricsRequest(DaraModel):
         reverse: bool = None,
         start_time: str = None,
     ):
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The end time of the query. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format in UTC.
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # The metric type. Valid values:
+        # 
+        # - `all`
+        # 
+        # - `train`
+        # 
+        # - `eval`
+        # 
+        # > The default value is *all*.
         self.metric_type = metric_type
+        # The page number of the query result.
         self.page_number = page_number
+        # The number of records to return on each page. Valid values:
+        # 
+        # - **30**
+        # 
+        # - **50**
+        # 
+        # - **100**
+        # 
+        # The default value is 100.
         self.page_size = page_size
+        # The ID of the associated PolarDB instance.
         self.relative_dbcluster_id = relative_dbcluster_id
+        # Specifies whether to sort the results in reverse order. The default value is *false*.
         self.reverse = reverse
+        # The start time of the query. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format in UTC.
+        # 
         # This parameter is required.
         self.start_time = start_time
 

@@ -13,9 +13,9 @@ class DescribeParameterGroupResponseBody(DaraModel):
         parameter_group: List[main_models.DescribeParameterGroupResponseBodyParameterGroup] = None,
         request_id: str = None,
     ):
-        # Details about the parameter templates.
+        # A list of parameter templates.
         self.parameter_group = parameter_group
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -66,20 +66,21 @@ class DescribeParameterGroupResponseBodyParameterGroup(DaraModel):
         parameter_group_name: str = None,
         parameter_group_type: str = None,
     ):
-        # The time when the parameter template was created. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
+        # The creation time of the parameter template, in `yyyy-MM-ddTHH:mm:ssZ` format (UTC).
         self.create_time = create_time
-        # The type of the database engine.
+        # The database engine type.
         self.dbtype = dbtype
-        # The version of the database engine.
+        # The database engine version.
         self.dbversion = dbversion
-        # Indicates whether to restart the cluster when this parameter template is applied. Valid values:
+        # Specifies whether a cluster restart is required for the parameter template to take effect. Valid values:
         # 
-        # *   **0**: A restart is not required.
-        # *   **1**: A restart is required.
+        # - **0**: No restart is required.
+        # 
+        # - **1**: A restart is required.
         self.force_restart = force_restart
         # The number of parameters in the parameter template.
         self.parameter_counts = parameter_counts
-        # Details about the parameters.
+        # A list of parameters.
         self.parameter_detail = parameter_detail
         # The description of the parameter template.
         self.parameter_group_desc = parameter_group_desc
@@ -89,9 +90,11 @@ class DescribeParameterGroupResponseBodyParameterGroup(DaraModel):
         self.parameter_group_name = parameter_group_name
         # The type of the parameter template. Valid values:
         # 
-        # *   **0**: the default parameter template.
-        # *   **1**: a custom parameter template.
-        # *   **2**: an automatic backup parameter template. After you apply this type of template, the system automatically backs up the original parameter settings and saves the backup as a template.
+        # - **0**: default template
+        # 
+        # - **1**: custom template
+        # 
+        # - **2**: automatic backup template. This type of template is an automatic backup of the previous settings, created when you apply a new template.
         self.parameter_group_type = parameter_group_type
 
     def validate(self):
@@ -182,9 +185,9 @@ class DescribeParameterGroupResponseBodyParameterGroupParameterDetail(DaraModel)
         param_name: str = None,
         param_value: str = None,
     ):
-        # The name of the parameter.
+        # The parameter name.
         self.param_name = param_name
-        # The value of the parameter.
+        # The parameter value.
         self.param_value = param_value
 
     def validate(self):

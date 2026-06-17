@@ -15,13 +15,19 @@ class RunPolarClawCronJobResponseBody(DaraModel):
         ran: bool = None,
         request_id: str = None,
     ):
+        # The application ID.
         self.application_id = application_id
+        # The status code.
         self.code = code
+        # The unique ID for this job execution.
         self.job_id = job_id
+        # The response message.
         self.message = message
+        # Indicates whether the operation was successful.
         self.ok = ok
+        # Indicates whether the job actually ran.
         self.ran = ran
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

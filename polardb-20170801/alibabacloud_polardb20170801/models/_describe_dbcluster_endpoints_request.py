@@ -18,15 +18,17 @@ class DescribeDBClusterEndpointsRequest(DaraModel):
     ):
         # The ID of the cluster.
         # 
-        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of the clusters that belong to your Alibaba Cloud account, such as cluster IDs.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to find the IDs of all clusters in your account.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The ID of the endpoint.
+        # The ID of the cluster endpoint.
         self.dbendpoint_id = dbendpoint_id
+        # Specifies whether to return information about AI nodes.
         self.describe_type = describe_type
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the PolarFS instance.
         self.polar_fs_instance_id = polar_fs_instance_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

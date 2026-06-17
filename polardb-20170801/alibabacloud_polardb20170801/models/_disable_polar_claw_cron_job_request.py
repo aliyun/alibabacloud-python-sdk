@@ -11,10 +11,15 @@ class DisablePolarClawCronJobRequest(DaraModel):
         job_id: str = None,
         restart: bool = None,
     ):
+        # The ID of the application.
+        # 
         # This parameter is required.
         self.application_id = application_id
+        # The ID of the cron job to disable.
+        # 
         # This parameter is required.
         self.job_id = job_id
+        # Specifies whether to restart the gateway after the job is disabled. The default value is `true`.
         self.restart = restart
 
     def validate(self):

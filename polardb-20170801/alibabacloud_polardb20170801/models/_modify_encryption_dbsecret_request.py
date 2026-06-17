@@ -16,14 +16,23 @@ class ModifyEncryptionDBSecretRequest(DaraModel):
         resource_owner_id: int = None,
         role_arn: str = None,
     ):
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The status of the key. Valid values:
+        # 
+        # - **Enabled**
+        # 
+        # - **Disabled**
         self.encryption_dbstatus = encryption_dbstatus
+        # The key ID.
         self.encryption_key = encryption_key
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The Global Resource Descriptor (GRD) of the role. For more information, see [Overview of RAM roles](https://help.aliyun.com/document_detail/93689.html).
         self.role_arn = role_arn
 
     def validate(self):

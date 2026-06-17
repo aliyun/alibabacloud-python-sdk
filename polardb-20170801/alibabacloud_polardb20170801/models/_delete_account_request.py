@@ -14,7 +14,7 @@ class DeleteAccountRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The username of the account.
+        # The account name.
         # 
         # This parameter is required.
         self.account_name = account_name

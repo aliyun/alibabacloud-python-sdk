@@ -18,23 +18,27 @@ class DescribeLicenseOrdersRequest(DaraModel):
         resource_owner_id: int = None,
         virtual_order: bool = None,
     ):
-        # The ID of the Alibaba Cloud order. The value can be the ID of a virtual order.
+        # The Alibaba Cloud order ID. This can be a virtual order ID.
         self.aliyun_order_id = aliyun_order_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The plan type. Valid values:
+        # The package type. Valid values:
         # 
-        # *   single_node_subscribe: Single-node Edition (Subscription).
-        # *   single_node_long_term: Single-node Edition (Long-term).
-        # *   primary_backup_subscribe: HA Edition (Subscription).
-        # *   primary_backup_long_term: HA Edition (Long-term).
-        # *   pre_generation_long_term: Pre-generated (Long-term).
+        # - single_node_subscribe: single node (subscription)
+        # 
+        # - single_node_long_term: single node (long-term)
+        # 
+        # - primary_backup_subscribe: primary/standby (subscription)
+        # 
+        # - primary_backup_long_term: primary/standby (long-term)
+        # 
+        # - pre_generation_long_term: pre-generated (long-term)
         self.package_type = package_type
-        # The page number.
+        # The page number to query.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of records to return on each page.
         self.page_size = page_size
-        # The purchase channel. Valid values: aliyun_market and aliyun_public. aliyun_market specifies Alibaba Cloud Marketplace. aliyun_public specifies the PolarDB buy page.
+        # The purchase channel. Valid values: \\`aliyun_market\\` (Alibaba Cloud Marketplace) and \\`aliyun_public\\` (standard purchase page).
         self.purchase_channel = purchase_channel
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

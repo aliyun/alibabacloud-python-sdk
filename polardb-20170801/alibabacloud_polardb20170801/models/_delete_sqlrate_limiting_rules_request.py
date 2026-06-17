@@ -14,12 +14,18 @@ class DeleteSQLRateLimitingRulesRequest(DaraModel):
         resource_owner_id: int = None,
         rule_name_list: str = None,
     ):
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The names of the SQL throttling rules to delete. To delete multiple rules in a batch, separate the rule names with commas (,).
+        # 
+        # > Call the [DescribeSQLRateLimitingRules](https://help.aliyun.com/document_detail/212573.html) operation to view the details of all SQL throttling rules for the target cluster, including their names.
+        # 
         # This parameter is required.
         self.rule_name_list = rule_name_list
 

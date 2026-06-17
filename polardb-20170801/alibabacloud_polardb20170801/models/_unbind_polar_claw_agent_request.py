@@ -12,12 +12,19 @@ class UnbindPolarClawAgentRequest(DaraModel):
         channel: str = None,
         channel_account_id: str = None,
     ):
+        # The agent ID to unbind.
+        # 
         # This parameter is required.
         self.agent_id = agent_id
+        # The application ID.
+        # 
         # This parameter is required.
         self.application_id = application_id
+        # The channel plugin ID.
+        # 
         # This parameter is required.
         self.channel = channel
+        # The channel account ID. Omit this parameter to remove all bindings for the specified agent ID and channel plugin ID.
         self.channel_account_id = channel_account_id
 
     def validate(self):

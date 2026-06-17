@@ -14,9 +14,14 @@ class SetPolarFsFileQuotaRequest(DaraModel):
         file_path_quotas: List[main_models.SetPolarFsFileQuotaRequestFilePathQuotas] = None,
         polar_fs_instance_id: str = None,
     ):
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
+        # An array of objects defining the file quota rules for specific directories.
+        # 
         # This parameter is required.
         self.file_path_quotas = file_path_quotas
+        # The ID of the PolarFS instance.
+        # 
         # This parameter is required.
         self.polar_fs_instance_id = polar_fs_instance_id
 
@@ -70,11 +75,21 @@ class SetPolarFsFileQuotaRequestFilePathQuotas(DaraModel):
         quota_ids: str = None,
         strategy: str = None,
     ):
+        # The capacity quota in GB.
         self.capacity = capacity
+        # The absolute path of the directory.
         self.file_path_id = file_path_id
+        # The inode quota.
         self.inodes = inodes
+        # The maximum depth of subdirectories to traverse under the path specified by `FilePathId`. A value of 1 traverses only the first level of subdirectories. A value of 0 traverses to the deepest level.
         self.max_depth = max_depth
+        # A list of file quota rule IDs, separated by a comma (`,`).
         self.quota_ids = quota_ids
+        # Specifies how to apply the rule to existing files. Valid values:
+        # 
+        # - **missing**: Applies the rule only if one does not already exist. (Default)
+        # 
+        # - **all**: Applies the rule to all files.
         self.strategy = strategy
 
     def validate(self):

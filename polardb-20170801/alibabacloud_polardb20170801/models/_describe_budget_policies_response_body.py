@@ -17,12 +17,19 @@ class DescribeBudgetPoliciesResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
+        # A list of budget policies.
         self.items = items
+        # The page number.
         self.page_number = page_number
+        # The number of records on the current page.
         self.page_record_count = page_record_count
+        # The number of records to return on each page. Valid values: **30**, **50**, and **100**.
+        # 
+        # Default value: **30**.
         self.page_size = page_size
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The total number of records.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -101,19 +108,47 @@ class DescribeBudgetPoliciesResponseBodyItems(DaraModel):
         status: str = None,
         used_points: int = None,
     ):
+        # The alert threshold, as a percentage (0 to 100).
         self.alert_threshold_pct = alert_threshold_pct
+        # Indicates whether the alert threshold was triggered.
         self.alert_triggered = alert_triggered
+        # The ID of the dimension object. This parameter is required when `BudgetDimensionType` is set to `ConsumerGroup` or `Consumer`.
         self.budget_dimension_ref_id = budget_dimension_ref_id
+        # The dimension of the budget policy. Valid values:
+        # 
+        # - **ConsumerGroup**: consumer group
+        # 
+        # - **Consumer**: consumer
         self.budget_dimension_type = budget_dimension_type
+        # The number of budget points.
         self.budget_points = budget_points
+        # The budget policy ID.
         self.budget_policy_id = budget_policy_id
+        # The budget type. Valid values:
+        # 
+        # - **GlobalTotal**: Global budget
+        # 
+        # - **ConsumerTotal**: Consumer budget
+        # 
+        # - **ConsumerGroupTotal**: Consumer group budget
         self.budget_type = budget_type
+        # Indicates whether the budget was exceeded.
         self.exceeded = exceeded
+        # The time when the policy was created.
         self.gmt_created = gmt_created
+        # The time when the policy was last modified.
         self.gmt_modified = gmt_modified
+        # The gateway cluster ID.
         self.gw_cluster_id = gw_cluster_id
+        # The day of the month (1 to 28) on which the budget is reset.
         self.reset_day_of_month = reset_day_of_month
+        # The status of the policy. Valid values:
+        # 
+        # - **Enabled**: enabled
+        # 
+        # - **Disabled**: disabled
         self.status = status
+        # The number of used points.
         self.used_points = used_points
 
     def validate(self):

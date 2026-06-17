@@ -11,16 +11,16 @@ class EnableFirewallRulesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The message that is returned for the request.
+        # The message returned.
         # 
-        # > If the request was successful, Successful is returned. If the request failed, an error message that contains information such as an error code is returned.
+        # > Typically returns `Successful` on success. When the request fails, this parameter returns exception information such as error codes.
         self.message = message
-        # Id of the request
+        # The unique ID of the request.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The request was successful.
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):

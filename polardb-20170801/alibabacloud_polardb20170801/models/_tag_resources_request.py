@@ -21,21 +21,21 @@ class TagResourcesRequest(DaraModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the cluster.
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The cluster ID.
+        # The ID of the target cluster.
         # 
         # This parameter is required.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The type of the resource. Set the value to **cluster**.
+        # The resource type. Set the value to **cluster**.
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The tags.
+        # The list of tags.
         # 
         # This parameter is required.
         self.tag = tag
@@ -116,13 +116,13 @@ class TagResourcesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag that you want to create for the cluster. To create multiple tags for a cluster at a time, click **Add** to add tag keys.
+        # The tag key. To add multiple tags to the cluster at once, click **Add** to specify multiple tag keys.
         # 
-        # >  You can create up to 20 tags for a cluster at a time. The value of `Tag.N.Key` is paired with the value of `Tag.N.Value`.
+        # > You can add a maximum of 20 tag pairs at a time. `Tag.n.Key` corresponds to `Tag.n.Value`.
         self.key = key
-        # The value of the tag that you want to create for the cluster. To create multiple tags for a cluster at a time, click **Add** to add tag values.
+        # The tag value. To add multiple tags to the cluster at once, click **Add** to specify multiple tag values.
         # 
-        # >  You can create up to 20 tags for a cluster at a time. The value of `Tag.N.Key` is paired with the value of `Tag.N.Value`.
+        # > You can add a maximum of 20 tag pairs at a time. `Tag.n.Value` corresponds to `Tag.n.Key`.
         self.value = value
 
     def validate(self):

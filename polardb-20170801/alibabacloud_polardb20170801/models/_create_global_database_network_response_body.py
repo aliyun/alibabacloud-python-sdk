@@ -12,7 +12,7 @@ class CreateGlobalDatabaseNetworkResponseBody(DaraModel):
     ):
         # The ID of the GDN.
         self.gdnid = gdnid
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

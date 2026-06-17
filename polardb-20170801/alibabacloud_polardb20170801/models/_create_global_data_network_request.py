@@ -18,15 +18,39 @@ class CreateGlobalDataNetworkRequest(DaraModel):
         source_region: str = None,
         source_type: str = None,
     ):
+        # The description or remarks for the GDN.
         self.description = description
+        # Destination path
         self.destination_file_system_path = destination_file_system_path
+        # Target PolarFileSystem (PolarFS) instance
         self.destination_id = destination_id
+        # The region of the destination PolarFS instance.
         self.destination_region = destination_region
+        # The type of the destination instance. Valid values:
+        # 
+        # - **pfs**: PolarFS High-Performance Edition.
+        # 
+        # - **pcs**: PolarFS Cold Storage Edition.
         self.destination_type = destination_type
+        # Whether to freeze the source path during transmission. Valid values:
+        # 
+        # - **true**: Freeze.
+        # 
+        # - **false**: Do not freeze.
+        # 
+        # > Currently only supports oss source.
         self.freeze_source_during_sync = freeze_source_during_sync
+        # The source path.
         self.source_file_system_path = source_file_system_path
+        # Source PolarFileSystem (PolarFS) instance.
         self.source_id = source_id
+        # The region of the source PolarFS instance.
         self.source_region = source_region
+        # The type of the source instance. Valid values:
+        # 
+        # - **pfs**: PolarFS High-Performance Edition.
+        # 
+        # - **pcs**: PolarFS Cold Storage Edition.
         self.source_type = source_type
 
     def validate(self):

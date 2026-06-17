@@ -9,6 +9,7 @@ class DescribeEncryptionDBSecretRequest(DaraModel):
         self,
         dbcluster_id: str = None,
     ):
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
 
     def validate(self):

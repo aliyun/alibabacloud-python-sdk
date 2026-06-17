@@ -10,8 +10,12 @@ class DeleteApplicationPromptRequest(DaraModel):
         application_id: str = None,
         prompt_id: str = None,
     ):
+        # The Application ID.
+        # 
         # This parameter is required.
         self.application_id = application_id
+        # The Prompt ID.
+        # 
         # This parameter is required.
         self.prompt_id = prompt_id
 

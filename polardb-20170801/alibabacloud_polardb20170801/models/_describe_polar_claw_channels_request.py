@@ -12,8 +12,11 @@ class DescribePolarClawChannelsRequest(DaraModel):
         application_id: str = None,
         channel_list: List[str] = None,
     ):
+        # The application ID.
+        # 
         # This parameter is required.
         self.application_id = application_id
+        # The channel IDs to query. Leave this parameter empty to return all channels.
         self.channel_list = channel_list
 
     def validate(self):

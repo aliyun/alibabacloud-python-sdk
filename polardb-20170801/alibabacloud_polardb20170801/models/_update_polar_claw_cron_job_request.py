@@ -26,22 +26,39 @@ class UpdatePolarClawCronJobRequest(DaraModel):
         session_target: str = None,
         wake_mode: str = None,
     ):
+        # The ID of the Agent that runs the task.
         self.agent_id = agent_id
+        # The application ID.
+        # 
         # This parameter is required.
         self.application_id = application_id
+        # Specifies whether to delete the task after its first execution.
         self.delete_after_run = delete_after_run
+        # The result delivery configuration.
         self.delivery = delivery
+        # The new description for the task.
         self.description = description
+        # Specifies whether the task is enabled.
         self.enabled = enabled
+        # The configuration for failure alerts. Set this to `false` to disable alerts.
         self.failure_alert = failure_alert
+        # The ID of the scheduled task to update.
+        # 
         # This parameter is required.
         self.job_id = job_id
+        # The new name for the task.
         self.name = name
+        # The new payload configuration.
         self.payload = payload
+        # Specifies whether to restart the gateway after the update. Default value: `true`.
         self.restart = restart
+        # The scheduling configuration.
         self.schedule = schedule
+        # The session routing key.
         self.session_key = session_key
+        # The new session target.
         self.session_target = session_target
+        # The new wake mode.
         self.wake_mode = wake_mode
 
     def validate(self):
@@ -170,12 +187,19 @@ class UpdatePolarClawCronJobRequestSchedule(DaraModel):
         stagger_ms: int = None,
         tz: str = None,
     ):
+        # The anchor timestamp for interval alignment, in milliseconds.
         self.anchor_ms = anchor_ms
+        # An ISO 8601 timestamp. This parameter is required if `Schedule.Kind` is `at`. For example: `2026-04-10T09:00:00+08:00`.
         self.at = at
+        # The interval in milliseconds. This parameter is required if `Schedule.Kind` is `every`.
         self.every_ms = every_ms
+        # The cron expression.
         self.expr = expr
+        # The schedule type.
         self.kind = kind
+        # The deterministic jitter window, in milliseconds.
         self.stagger_ms = stagger_ms
+        # The time zone.
         self.tz = tz
 
     def validate(self):
@@ -250,17 +274,29 @@ class UpdatePolarClawCronJobRequestPayload(DaraModel):
         timeout_seconds: int = None,
         to: str = None,
     ):
+        # Specifies whether to ignore delivery failures.
         self.best_effort_deliver = best_effort_deliver
+        # The ID of the delivery channel.
         self.channel = channel
+        # Specifies whether to deliver the output to a channel.
         self.deliver = deliver
+        # A list of fallback models.
         self.fallbacks = fallbacks
+        # The payload type. Valid values are `agentTurn` (for an Agent conversation) or `systemEvent` (for a system event).
         self.kind = kind
+        # Specifies whether to use a lightweight context.
         self.light_context = light_context
+        # The prompt for the Agent conversation. This parameter is required if `Payload.Kind` is `agentTurn`.
         self.message = message
+        # The model override.
         self.model = model
+        # The text for the system event. This parameter is required if `Payload.Kind` is `systemEvent`.
         self.text = text
+        # The thinking level. Valid values: `off`, `minimal`, `low`, `medium`, `high`, and `xhigh`.
         self.thinking = thinking
+        # The execution timeout in seconds.
         self.timeout_seconds = timeout_seconds
+        # The delivery target.
         self.to = to
 
     def validate(self):
@@ -359,11 +395,17 @@ class UpdatePolarClawCronJobRequestFailureAlert(DaraModel):
         mode: str = None,
         to: str = None,
     ):
+        # The account ID for the channel.
         self.account_id = account_id
+        # The number of consecutive failures after which to send an alert.
         self.after = after
+        # The alert channel.
         self.channel = channel
+        # The minimum interval between two alerts, in milliseconds.
         self.cooldown_ms = cooldown_ms
+        # The alert mode. Valid values: `announce` and `webhook`.
         self.mode = mode
+        # The alert target.
         self.to = to
 
     def validate(self):
@@ -425,10 +467,15 @@ class UpdatePolarClawCronJobRequestDelivery(DaraModel):
         mode: str = None,
         to: str = None,
     ):
+        # The account ID for the channel.
         self.account_id = account_id
+        # Specifies whether to ignore delivery failures.
         self.best_effort = best_effort
+        # The delivery channel.
         self.channel = channel
+        # The delivery mode. Valid values: `none`, `announce`, and `webhook`.
         self.mode = mode
+        # The delivery target. This parameter is required and must be a URL if `Delivery.Mode` is `webhook`.
         self.to = to
 
     def validate(self):

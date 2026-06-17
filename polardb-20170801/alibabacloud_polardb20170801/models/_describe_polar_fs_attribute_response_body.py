@@ -47,42 +47,117 @@ class DescribePolarFsAttributeResponseBody(DaraModel):
         v_switch_id: str = None,
         zone_id: str = None,
     ):
+        # The acceleration type.
         self.accelerate_type = accelerate_type
+        # The capacity of the acceleration cache in GB.
         self.accelerated_storage_space = accelerated_storage_space
+        # Indicates whether the acceleration cache is enabled. Valid values:
+        # 
+        # - **ON**: Enabled
+        # 
+        # - **OFF**: Disabled
         self.accelerating_enable = accelerating_enable
+        # The bandwidth in MB/s.
         self.bandwidth = bandwidth
+        # The baseline bandwidth in MB/s per TiB.
         self.bandwidth_base_line = bandwidth_base_line
+        # The bucket ID.
         self.bucket_id = bucket_id
+        # The edition of the PolarFS instance. Valid values:
+        # 
+        # - **high_performance**: High-performance Edition
+        # 
+        # - **basic**: Basic Edition
+        # 
+        # - **cold**: Cold Storage Edition
         self.category = category
+        # The download path for the client.
         self.client_download_path = client_download_path
+        # The creation time.
         self.create_time = create_time
+        # The custom bucket path.
         self.custom_bucket_path = custom_bucket_path
+        # A list of custom storage paths.
         self.custom_bucket_path_list = custom_bucket_path_list
+        # The database engine type. Valid values:
+        # 
+        # - **MySQL**
+        # 
+        # - **PostgreSQL**
         self.dbtype = dbtype
+        # The expiration time of the cluster.
+        # 
+        # > This parameter is returned only for **Prepaid** (subscription) clusters. It is empty for **Postpaid** (pay-as-you-go) clusters.
         self.expire_time = expire_time
+        # Indicates whether the cluster has expired.
+        # 
+        # > This parameter is returned only for **Prepaid** (subscription) clusters.
         self.expired = expired
+        # The file system ID.
         self.file_system_id = file_system_id
+        # The lock mode. Valid values:
+        # 
+        # - **Unlock**: The cluster is not locked.
+        # 
+        # - **ManualLock**: The cluster is manually locked.
+        # 
+        # - **LockByExpiration**: The cluster is automatically locked after it expires.
         self.lock_mode = lock_mode
+        # The encrypted metadata address for the FUSE mount.
         self.meta_url = meta_url
+        # The minor version of the instance.
         self.minor_version = minor_version
+        # The mount configuration.
         self.mount_info = mount_info
+        # The billing method. Valid values:
+        # 
+        # - **Postpaid**: pay-as-you-go.
+        # 
+        # - **Prepaid**: subscription.
         self.pay_type = pay_type
+        # The description of the PolarFS instance.
         self.polar_fs_instance_description = polar_fs_instance_description
+        # The ID of the PolarFS instance.
         self.polar_fs_instance_id = polar_fs_instance_id
+        # The status of the PolarFS instance.
         self.polar_fs_status = polar_fs_status
+        # The version of PolarFS. Valid values:
+        # 
+        # - **PolarFS 2.0**
+        # 
+        # - **PolarFS 1.0**
         self.polar_fs_type = polar_fs_type
+        # The version of the PolarFS instance.
         self.polar_fs_version = polar_fs_version
+        # The region ID.
         self.region_id = region_id
+        # The ID of the associated PolarDB cluster.
         self.relative_db_cluster_id = relative_db_cluster_id
+        # The ID of the associated PolarFS instance.
         self.relative_pfs_cluster_id = relative_pfs_cluster_id
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The ID of the managed security group.
         self.security_group_id = security_group_id
+        # The storage capacity in GB.
         self.storage_space = storage_space
+        # The storage class for the High-performance Edition. Valid values:
+        # 
+        # - **ESSDPL1**
+        # 
+        # - **ESSDPL0**
+        # 
+        # The storage class for the Basic Edition. Valid values:
+        # 
+        # - **city_redundancy**: zone-redundant storage
         self.storage_type = storage_type
+        # The amount of used storage in bytes.
         self.storage_used = storage_used
+        # The ID of the VPC.
         self.vpcid = vpcid
+        # The VSwitch ID.
         self.v_switch_id = v_switch_id
+        # The ID of the zone where the vSwitch is located.
         self.zone_id = zone_id
 
     def validate(self):
@@ -333,8 +408,11 @@ class DescribePolarFsAttributeResponseBodyMountInfo(DaraModel):
         polar_fs_cluster: str = None,
         token: str = None,
     ):
+        # The cluster management address.
         self.polar_db_proxy = polar_db_proxy
+        # The file system name.
         self.polar_fs_cluster = polar_fs_cluster
+        # The token value.
         self.token = token
 
     def validate(self):
@@ -375,7 +453,9 @@ class DescribePolarFsAttributeResponseBodyCustomBucketPathList(DaraModel):
         bucket: str = None,
         path: str = None,
     ):
+        # The endpoint of the custom storage bucket.
         self.bucket = bucket
+        # The path in the custom storage bucket.
         self.path = path
 
     def validate(self):

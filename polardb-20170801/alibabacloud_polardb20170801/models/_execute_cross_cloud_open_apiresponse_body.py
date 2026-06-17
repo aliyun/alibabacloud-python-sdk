@@ -10,7 +10,9 @@ class ExecuteCrossCloudOpenAPIResponseBody(DaraModel):
         proxy_data: str = None,
         request_id: str = None,
     ):
+        # The result of the request.
         self.proxy_data = proxy_data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

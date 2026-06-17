@@ -16,15 +16,17 @@ class DescribeParameterTemplatesRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The type of the database engine. Only **MySQL** is supported.
+        # The database engine type. Only **MySQL** is supported.
         # 
         # This parameter is required.
         self.dbtype = dbtype
-        # The version of the database. Valid values:
+        # The database version. Valid values:
         # 
-        # *   **5.6**
-        # *   **5.7**
-        # *   **8.0**
+        # - **5.6**
+        # 
+        # - **5.7**
+        # 
+        # - **8.0**
         # 
         # This parameter is required.
         self.dbversion = dbversion
@@ -32,11 +34,11 @@ class DescribeParameterTemplatesRequest(DaraModel):
         self.owner_id = owner_id
         # The region ID.
         # 
-        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query all regions that are available within your account, such as the region IDs.
+        # > Call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query the IDs of available regions.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

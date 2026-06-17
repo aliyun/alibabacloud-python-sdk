@@ -9,6 +9,8 @@ class DeleteAIDBClusterRequest(DaraModel):
         self,
         dbcluster_id: str = None,
     ):
+        # The ID of the AI cluster.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
 

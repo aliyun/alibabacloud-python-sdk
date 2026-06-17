@@ -18,18 +18,19 @@ class DescribeAutoRenewAttributeRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The cloud provider of the instance.
         self.cloud_provider = cloud_provider
-        # The ID of the cluster. If you need to specify multiple cluster IDs, separate the cluster IDs with commas (,).
+        # The ID of the cluster. You can specify multiple cluster IDs, separated by commas (,).
         self.dbcluster_ids = dbcluster_ids
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number. The value must be an integer that is greater than 0. Default value: 1.
+        # The page number. The value must be an integer that is greater than 0 and does not exceed the maximum value of the integer data type. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page. Valid values: 30, 50, and 100. Default value: 30.
+        # The number of entries to return on each page. Valid values: 30, 50, and 100. Default value: 30.
         self.page_size = page_size
-        # The ID of the region.
+        # The region ID.
         # 
-        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query the region ID details.
+        # > For more information, see [DescribeRegions](https://help.aliyun.com/document_detail/98041.html).
         # 
         # This parameter is required.
         self.region_id = region_id

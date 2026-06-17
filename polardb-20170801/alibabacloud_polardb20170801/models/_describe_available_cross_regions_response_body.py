@@ -12,7 +12,9 @@ class DescribeAvailableCrossRegionsResponseBody(DaraModel):
         regions: List[str] = None,
         request_id: str = None,
     ):
+        # The list of regions available for cross-region backup.
         self.regions = regions
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

@@ -27,29 +27,59 @@ class CreateAIDBClusterTaskRequest(DaraModel):
         v_switch_id: str = None,
         zone_id: str = None,
     ):
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The instance type.
         self.dbinstance_class = dbinstance_class
+        # The ID of the training dataset. This parameter is required for fine-tuning.
         self.dataset_path = dataset_path
+        # The ID of the validation dataset. This parameter is required for evaluation.
         self.eval_dataset_path = eval_dataset_path
+        # The type of model service. Valid values:
+        # 
+        # - **aitrain**: For model operator tuning.
+        # 
         # This parameter is required.
         self.kube_type = kube_type
+        # The model name.
+        # 
+        # - For a **preset model**, specify the model name.
+        # 
+        # - For a **custom model**, specify the path to the model. This option is for models trained in a cold storage edition instance.
+        # 
         # This parameter is required.
         self.model_name = model_name
+        # The model source. Valid values:
+        # 
+        # - **public**: A preset model.
+        # 
+        # - **custom**: A custom model.
+        # 
         # This parameter is required.
         self.model_source = model_source
+        # The type of the custom model.
         self.model_type = model_type
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The runtime parameters, specified as a JSON string.
+        # 
         # This parameter is required.
         self.running_parameter = running_parameter
+        # The security group ID.
         self.security_group_id = security_group_id
+        # The name of the task.
         self.task_name = task_name
+        # The VPC ID.
         self.vpcid = vpcid
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):

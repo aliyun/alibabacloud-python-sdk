@@ -13,7 +13,9 @@ class DescribeCrossCloudLevelsResponseBody(DaraModel):
         cross_cloud_level_list: List[main_models.DescribeCrossCloudLevelsResponseBodyCrossCloudLevelList] = None,
         request_id: str = None,
     ):
+        # The list of supported cross-cloud specifications.
         self.cross_cloud_level_list = cross_cloud_level_list
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -57,8 +59,11 @@ class DescribeCrossCloudLevelsResponseBodyCrossCloudLevelList(DaraModel):
         level_code: str = None,
         level_name: str = None,
     ):
+        # The database engine type.
         self.dbtype = dbtype
+        # The specification code.
         self.level_code = level_code
+        # The CPU and memory.
         self.level_name = level_name
 
     def validate(self):

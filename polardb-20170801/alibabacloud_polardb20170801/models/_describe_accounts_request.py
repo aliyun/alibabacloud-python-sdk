@@ -17,27 +17,29 @@ class DescribeAccountsRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The name of the account.
+        # The account name.
         self.account_name = account_name
         # The cluster ID.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The node type. This parameter is required when you query the PolarDB search node account.
+        # The node type. Required when you query the PolarDB search node account
         # 
-        # *   Search
+        # - Search
         self.node_type = node_type
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number of the page to return. Set this parameter to an integer that is larger than 0. Default value: **1**.
+        # The page number of the returned page. The value must be an integer that is larger than 0. The default value is **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Valid values:
+        # The number of entries returned per page. Valid values:
         # 
-        # *   **30**
-        # *   **50**
-        # *   **100**
+        # - **30**
         # 
-        # Default value: **30**.
+        # - **50**
+        # 
+        # - **100**
+        # 
+        # The default value is **30**.
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

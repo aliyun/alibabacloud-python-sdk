@@ -13,7 +13,9 @@ class DescribeCrossCloudRegionResponseBody(DaraModel):
         cross_cloud_region_list: List[main_models.DescribeCrossCloudRegionResponseBodyCrossCloudRegionList] = None,
         request_id: str = None,
     ):
+        # The information about the cross-cloud regions.
         self.cross_cloud_region_list = cross_cloud_region_list
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -58,9 +60,13 @@ class DescribeCrossCloudRegionResponseBodyCrossCloudRegionList(DaraModel):
         cross_cloud_zone_list: List[main_models.DescribeCrossCloudRegionResponseBodyCrossCloudRegionListCrossCloudZoneList] = None,
         project_id: str = None,
     ):
+        # The ID of the third-party cloud region.
         self.cross_cloud_region_id = cross_cloud_region_id
+        # The name of the third-party cloud region.
         self.cross_cloud_region_name = cross_cloud_region_name
+        # A list of third-party cloud zones.
         self.cross_cloud_zone_list = cross_cloud_zone_list
+        # The resource pool ID.
         self.project_id = project_id
 
     def validate(self):
@@ -115,7 +121,9 @@ class DescribeCrossCloudRegionResponseBodyCrossCloudRegionListCrossCloudZoneList
         cross_cloud_zone_id: str = None,
         cross_cloud_zone_name: str = None,
     ):
+        # The ID of the third-party cloud zone.
         self.cross_cloud_zone_id = cross_cloud_zone_id
+        # The name of the third-party cloud zone.
         self.cross_cloud_zone_name = cross_cloud_zone_name
 
     def validate(self):

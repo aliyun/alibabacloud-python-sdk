@@ -11,10 +11,15 @@ class DisablePolarClawChannelRequest(DaraModel):
         channel_id: str = None,
         restart: bool = None,
     ):
+        # The application ID.
+        # 
         # This parameter is required.
         self.application_id = application_id
+        # The unique ID of the channel.
+        # 
         # This parameter is required.
         self.channel_id = channel_id
+        # Specifies whether to restart the gateway after the channel is disabled. Defaults to true.
         self.restart = restart
 
     def validate(self):

@@ -15,13 +15,19 @@ class EnablePolarClawChannelResponseBody(DaraModel):
         request_id: str = None,
         restarted: bool = None,
     ):
+        # The ID of the application.
         self.application_id = application_id
+        # The ID of the enabled channel.
         self.channel_id = channel_id
+        # The response status code.
         self.code = code
+        # The message returned in the response.
         self.message = message
+        # Indicates whether the operation was successful.
         self.ok = ok
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the gateway was restarted.
         self.restarted = restarted
 
     def validate(self):

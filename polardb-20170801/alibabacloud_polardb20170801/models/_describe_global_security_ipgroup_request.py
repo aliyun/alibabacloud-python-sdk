@@ -16,11 +16,11 @@ class DescribeGlobalSecurityIPGroupRequest(DaraModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
-        # The ID of the IP whitelist template.
+        # The ID of the IP allowlist template.
         self.global_security_group_id = global_security_group_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the IP whitelist template.
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id

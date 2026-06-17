@@ -14,12 +14,23 @@ class DescribeEncryptionDBSecretResponseBody(DaraModel):
         encryption_key_status: str = None,
         request_id: str = None,
     ):
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
+        # The region where the encryption key is located.
         self.encryption_dbregion = encryption_dbregion
+        # Indicates whether encryption is enabled. Valid values:
+        # 
+        # Enabled: Encryption is enabled. Disabled: Encryption is disabled.
         self.encryption_dbstatus = encryption_dbstatus
+        # The custom key ID.
         self.encryption_key = encryption_key
+        # The status of the key. Valid values:
+        # 
+        # - **Enabled**
+        # 
+        # - **Disabled**
         self.encryption_key_status = encryption_key_status
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

@@ -16,9 +16,9 @@ class TempModifyDBNodeResponseBody(DaraModel):
     ):
         # The cluster ID.
         self.dbcluster_id = dbcluster_id
-        # The details of the nodes.
+        # The list of nodes.
         self.dbnode_ids = dbnode_ids
-        # The ID of the order.
+        # The order ID.
         self.order_id = order_id
         # The request ID.
         self.request_id = request_id

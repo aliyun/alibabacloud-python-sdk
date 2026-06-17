@@ -15,15 +15,53 @@ class DescribeDBMiniEngineVersionsRequest(DaraModel):
         region_id: str = None,
         zone_id: str = None,
     ):
+        # The CPU architecture. Valid values:
+        # 
+        # - **X86**
+        # 
+        # - **ARM**
         self.architecture = architecture
+        # The product series. Valid values:
+        # 
+        # - **Normal**: Cluster Edition (default)
+        # 
+        # - **SENormal**: Standard Edition
+        # 
+        # For more information about product series, see [Product series](https://help.aliyun.com/document_detail/183258.html).
         self.creation_category = creation_category
+        # The minor version of the database engine.
+        # 
+        # - If `DBVersion` is set to **8.0**, valid values are:
+        # 
+        #   - **8.0.2**
+        # 
+        #   - **8.0.1**
+        # 
+        # - If `DBVersion` is set to **5.7**, the valid value is **5.7.28**.
+        # 
+        # - If `DBVersion` is set to **5.6**, the valid value is **5.6.16**.
         self.dbminor_version = dbminor_version
+        # The database type. The only valid value is **MySQL**.
+        # 
+        # - **MySQL**.
+        # 
         # This parameter is required.
         self.dbtype = dbtype
+        # The major version of the database engine. Valid values:
+        # 
+        # - **8.0**
+        # 
+        # - **5.7**
+        # 
+        # - **5.6**
+        # 
         # This parameter is required.
         self.dbversion = dbversion
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The zone.
         self.zone_id = zone_id
 
     def validate(self):

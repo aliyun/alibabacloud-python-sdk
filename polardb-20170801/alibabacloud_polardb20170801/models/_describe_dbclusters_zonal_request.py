@@ -35,30 +35,67 @@ class DescribeDBClustersZonalRequest(DaraModel):
         resource_owner_id: int = None,
         tag: List[main_models.DescribeDBClustersZonalRequestTag] = None,
     ):
+        # The cloud service provider.
         self.cloud_provider = cloud_provider
+        # The database endpoint.
         self.connection_string = connection_string
+        # The description of the cluster. Fuzzy search is supported.
         self.dbcluster_description = dbcluster_description
+        # The cluster ID. To specify multiple cluster IDs, separate them with commas (,).
         self.dbcluster_ids = dbcluster_ids
+        # The status of the cluster.
         self.dbcluster_status = dbcluster_status
+        # The node ID. You can specify multiple node IDs. Separate them with commas (,).
         self.dbnode_ids = dbnode_ids
+        # The database type. Valid values:
+        # 
+        # - MySQL
+        # 
+        # - PostgreSQL
+        # 
+        # - Oracle
         self.dbtype = dbtype
+        # The database version.
         self.dbversion = dbversion
+        # The query mode. Set the value to \\`Simple\\`. In this mode, only the basic metadata of the clusters is returned.
         self.describe_type = describe_type
+        # Specifies whether the cluster has expired. Valid values:
+        # 
+        # - true
+        # 
+        # - false
         self.expired = expired
+        # The maximum number of entries to return for the current request. Default value: 10.
         self.max_results = max_results
+        # A token used to retrieve the next page of results. Set this parameter to the \\`NextToken\\` value returned from the previous API call. You do not need to specify this parameter for the first call.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The page number. The value must be an integer that is greater than 0 and does not exceed the maximum value of the Integer data type. Default value: 1.
         self.page_number = page_number
+        # The number of entries to return on each page. Valid values: 30, 50, and 100.
+        # 
+        # Default value: 30.
         self.page_size = page_size
+        # The billing method. Valid values:
+        # 
+        # - Postpaid: pay-as-you-go
+        # 
+        # - Prepaid: subscription
         self.pay_type = pay_type
+        # Filters for clusters created in the last N days. Valid values: 0 to 15.
         self.recent_creation_interval = recent_creation_interval
+        # Filters for clusters that expire in N days. Valid values: 0 to 15.
         self.recent_expiration_interval = recent_expiration_interval
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The list of tags.
         self.tag = tag
 
     def validate(self):
@@ -233,7 +270,9 @@ class DescribeDBClustersZonalRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of tag \\`n\\`. You can filter clusters by specifying up to 20 tags. The \\`n\\` must be a unique and consecutive integer that starts from 1. \\`Tag.n.Key\\` corresponds to \\`Tag.n.Value\\`.
         self.key = key
+        # The value of the tag key.
         self.value = value
 
     def validate(self):

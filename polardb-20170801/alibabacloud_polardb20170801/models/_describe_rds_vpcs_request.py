@@ -18,12 +18,16 @@ class DescribeRdsVpcsRequest(DaraModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The region ID. > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query the available regions.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
+        # The ID of the zone.
         self.zone_id = zone_id
 
     def validate(self):

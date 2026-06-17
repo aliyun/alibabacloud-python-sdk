@@ -12,12 +12,20 @@ class CreateApplicationPromptRequest(DaraModel):
         prompt_type: str = None,
         prompt_value: str = None,
     ):
+        # The ID of the Application.
+        # 
         # This parameter is required.
         self.application_id = application_id
+        # The name of the Prompt.
+        # 
         # This parameter is required.
         self.prompt_name = prompt_name
+        # The type of the Prompt.
+        # 
         # This parameter is required.
         self.prompt_type = prompt_type
+        # The content of the Prompt.
+        # 
         # This parameter is required.
         self.prompt_value = prompt_value
 

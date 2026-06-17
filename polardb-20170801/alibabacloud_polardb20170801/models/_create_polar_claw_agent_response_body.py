@@ -17,14 +17,21 @@ class CreatePolarClawAgentResponseBody(DaraModel):
         request_id: str = None,
         workspace: str = None,
     ):
+        # Details of the new agent.
         self.agent = agent
-        # Agent ID
+        # The agent ID.
         self.agent_id = agent_id
+        # The application ID.
         self.application_id = application_id
+        # The status code.
         self.code = code
+        # The response message.
         self.message = message
+        # The display name of the agent.
         self.name = name
+        # The request ID.
         self.request_id = request_id
+        # The workspace path.
         self.workspace = workspace
 
     def validate(self):
@@ -99,10 +106,13 @@ class CreatePolarClawAgentResponseBodyAgent(DaraModel):
         name: str = None,
         workspace: str = None,
     ):
-        # Agent ID
+        # The agent ID.
         self.id = id
+        # The agent\\"s identity.
         self.identity = identity
+        # The display name of the agent.
         self.name = name
+        # The workspace path.
         self.workspace = workspace
 
     def validate(self):
@@ -154,10 +164,15 @@ class CreatePolarClawAgentResponseBodyAgentIdentity(DaraModel):
         name: str = None,
         theme: str = None,
     ):
+        # The avatar\\"s path or content.
         self.avatar = avatar
+        # The avatar URL.
         self.avatar_url = avatar_url
+        # The emoji identifier.
         self.emoji = emoji
+        # The identity name.
         self.name = name
+        # The theme.
         self.theme = theme
 
     def validate(self):

@@ -12,8 +12,9 @@ class DescribeDBClusterAuditLogCollectorResponseBody(DaraModel):
     ):
         # The status of SQL collector. Valid values:
         # 
-        # *   Enable
-        # *   Disabled
+        # - Enable
+        # 
+        # - Disabled
         self.collector_status = collector_status
         # The request ID.
         self.request_id = request_id

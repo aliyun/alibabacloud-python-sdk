@@ -18,16 +18,48 @@ class DescribeModelApisRequest(DaraModel):
         region_id: str = None,
         status: str = None,
     ):
+        # The ID of the gateway instance.
+        # 
         # This parameter is required.
         self.gw_cluster_id = gw_cluster_id
+        # The IDs of the model APIs. Separate multiple IDs with a comma.
         self.model_api_ids = model_api_ids
+        # The model category. Valid values:
+        # 
+        # - **text**
+        # 
+        # - **embedding**
+        # 
+        # - **rerank**
         self.model_category = model_category
+        # The name of the model API.
         self.name = name
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page. Valid values:
+        # 
+        # - **30**
+        # 
+        # - **50**
+        # 
+        # - **100**
+        #   The default value is **30**.
         self.page_size = page_size
+        # The API path prefix.
         self.path_prefix = path_prefix
+        # The protocol. Valid values:
+        # 
+        # - **openai**
+        # 
+        # - **anthropic**
+        # 
+        # - **bailian**
+        # 
+        # - **vllm**
         self.protocol = protocol
+        # The ID of the region.
         self.region_id = region_id
+        # The model API status.
         self.status = status
 
     def validate(self):

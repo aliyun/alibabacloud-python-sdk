@@ -25,23 +25,58 @@ class DescribeHistoryTasksRequest(DaraModel):
         to_exec_time: int = None,
         to_start_time: str = None,
     ):
+        # The minimum task execution time in seconds. Filters for tasks that took longer than this value. Default value: 0.
         self.from_exec_time = from_exec_time
+        # The start of the time range to query, based on task start time. The time follows the ISO8601 standard and must be in `UTC+0` time. Format: `yyyy-MM-ddTHH:mm:ssZ`.
+        # 
+        # The earliest supported time is 30 days ago. If the specified time is more than 30 days ago, it will be automatically converted to 30 days ago.
+        # 
         # This parameter is required.
         self.from_start_time = from_start_time
+        # The resource ID to filter by. You can provide a comma-separated list of up to 30 IDs. Default value: empty, indicating no restriction.
+        # 
+        # > Currently, only PolarDB cluster IDs are supported.
         self.instance_id = instance_id
+        # Currently, only Instance is supported.
         self.instance_type = instance_type
         self.owner_id = owner_id
+        # The page number. Valid values: positive integers. Default value: 1.
         self.page_number = page_number
+        # The number of records per page. Valid values: 10 to 100. Default value: 10.
         self.page_size = page_size
+        # The region ID.
+        # 
+        # > For more information, see [DescribeRegions](https://help.aliyun.com/document_detail/98041.html).
         self.region_id = region_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
+        # The task status. Valid values:
+        # 
+        # - **Scheduled**: waiting for execution
+        # 
+        # - **Running**: executing
+        # 
+        # - **Succeed**: executed successfully
+        # 
+        # - **Cancelling**: stopping
+        # 
+        # - **Canceled**: stopped
+        # 
+        # - **Waiting**: waiting for preset time
+        # 
+        # You can provide a comma-separated list. Default value: empty, which indicates all statuses.
         self.status = status
+        # The task ID. You can provide a comma-separated list of up to 30 IDs. Default value: empty, indicating no restriction.
         self.task_id = task_id
+        # The task type. You can provide a comma-separated list of up to 30 task types. Default value: empty, indicating no restriction.
         self.task_type = task_type
+        # The maximum task execution time in seconds. Filters for tasks that took less than this value. Default value: 0.
         self.to_exec_time = to_exec_time
+        # The end of the time range to query, based on task start time. The time follows the ISO8601 standard and must be in `UTC+0` time. Format: `yyyy-MM-ddTHH:mm:ssZ`.
+        # 
         # This parameter is required.
         self.to_start_time = to_start_time
 

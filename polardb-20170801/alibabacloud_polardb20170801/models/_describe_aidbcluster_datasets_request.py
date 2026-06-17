@@ -20,17 +20,37 @@ class DescribeAIDBClusterDatasetsRequest(DaraModel):
         resource_owner_id: int = None,
         train_mode: str = None,
     ):
+        # The token used to retrieve the next page of results. This value is obtained from the response of a previous request. For the first request, leave this parameter empty.
         self.continuation_token = continuation_token
+        # The ID of the PolarDB cluster for AI model services.
         self.dbcluster_id = dbcluster_id
+        # The dataset ID.
         self.dataset_id = dataset_id
+        # The type of the dataset. Valid values:
+        # 
+        # - **train**: The training set.
+        # 
+        # - **eval**: The evaluation set.
         self.dataset_type = dataset_type
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The page number to return. Default value: 1.
         self.page_number = page_number
+        # The number of entries to return on each page. Valid values: **30**, **50**, and **100**.
+        # 
+        # Default value: **30**.
         self.page_size = page_size
+        # The region ID.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The training mode. Valid values:
+        # 
+        # - **sft**: supervised fine-tuning.
+        # 
+        # - **grpo**: reinforcement learning.
+        # 
+        # - **text**: text generation.
         self.train_mode = train_mode
 
     def validate(self):

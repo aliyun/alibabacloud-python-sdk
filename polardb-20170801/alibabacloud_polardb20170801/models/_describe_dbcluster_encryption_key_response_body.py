@@ -13,7 +13,9 @@ class DescribeDBClusterEncryptionKeyResponseBody(DaraModel):
         encryption_key_list: List[main_models.DescribeDBClusterEncryptionKeyResponseBodyEncryptionKeyList] = None,
         request_id: str = None,
     ):
+        # The list of keys.
         self.encryption_key_list = encryption_key_list
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -65,16 +67,41 @@ class DescribeDBClusterEncryptionKeyResponseBodyEncryptionKeyList(DaraModel):
         origin: str = None,
         used_by: str = None,
     ):
+        # The alias of the key.
         self.alias_name = alias_name
+        # The UID of the Alibaba Cloud account that created the key.
         self.creator = creator
+        # The scheduled time to delete the key. The format is yyyy-MM-ddTHH:mm:ssZ (UTC).
+        # 
+        # - This field is empty if the key is not scheduled for deletion.
         self.delete_date = delete_date
+        # The description of the key.
         self.description = description
+        # The key ID.
         self.encryption_key = encryption_key
+        # The status of the key. Valid values:
+        # 
+        # - Enabled: The key is enabled.
+        # 
+        # - Disabled: The key is not enabled.
         self.encryption_key_status = encryption_key_status
+        # The type of the key. Valid values:
+        # 
+        # - CMK: customer master key
+        # 
+        # - ServiceKey: service key
         self.key_type = key_type
+        # The purpose of the key.
         self.key_usage = key_usage
+        # The expiration time of the key. The format is yyyy-MM-ddTHH:mm:ssZ (UTC).
         self.material_expire_time = material_expire_time
+        # The source of the key.
         self.origin = origin
+        # The service that uses the key. Valid values:
+        # 
+        # - TDE: transparent data encryption (TDE).
+        # 
+        # - DiskEncryption: disk encryption.
         self.used_by = used_by
 
     def validate(self):

@@ -10,6 +10,7 @@ from darabonba.model import DaraModel
 class DescribeBatchTaskResponseBody(DaraModel):
     def __init__(
         self,
+        application_type: str = None,
         batch_id: str = None,
         request_id: str = None,
         status: str = None,
@@ -21,16 +22,26 @@ class DescribeBatchTaskResponseBody(DaraModel):
         task_type: str = None,
         total_count: int = None,
     ):
+        self.application_type = application_type
+        # The ID of the batch task.
         self.batch_id = batch_id
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The task status.
         self.status = status
+        # A list of subtasks.
         self.sub_tasks = sub_tasks
+        # The number of successful subtasks.
         self.success_count = success_count
+        # The time when the task started.
         self.task_begin = task_begin
+        # The time when the task ended.
         self.task_end = task_end
+        # The name of the task.
         self.task_name = task_name
+        # The type of the task.
         self.task_type = task_type
+        # The total number of subtasks.
         self.total_count = total_count
 
     def validate(self):
@@ -44,6 +55,9 @@ class DescribeBatchTaskResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.application_type is not None:
+            result['ApplicationType'] = self.application_type
+
         if self.batch_id is not None:
             result['BatchId'] = self.batch_id
 
@@ -80,6 +94,9 @@ class DescribeBatchTaskResponseBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ApplicationType') is not None:
+            self.application_type = m.get('ApplicationType')
+
         if m.get('BatchId') is not None:
             self.batch_id = m.get('BatchId')
 
@@ -125,11 +142,17 @@ class DescribeBatchTaskResponseBodySubTasks(DaraModel):
         task_end: str = None,
         task_id: str = None,
     ):
+        # The error message.
         self.error_msg = error_msg
+        # The instance ID.
         self.instance_id = instance_id
+        # The status of the subtask.
         self.status = status
+        # The time when the subtask started.
         self.task_begin = task_begin
+        # The time when the subtask ended.
         self.task_end = task_end
+        # The ID of the subtask.
         self.task_id = task_id
 
     def validate(self):

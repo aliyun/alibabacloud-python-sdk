@@ -24,22 +24,23 @@ class OpenAITaskRequest(DaraModel):
         self.dbcluster_id = dbcluster_id
         # The node type. Valid values:
         # 
-        # *   **DLNode**: This node is an AI node.
-        # *   **SearchNode**: This node is a node for which the PolarDB for AI feature is enabled.
+        # - **DLNode**: AI node.
+        # 
+        # - **SearchNode**: search AI node.
         self.node_type = node_type
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The password used to access the database for which you want to enable the PolarDB for AI feature.
+        # The password of the database account.
         self.password = password
-        # The ID of the region.
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The username used to access the database for which you want to enable the PolarDB for AI feature.
+        # The database account on which to enable the PolarDB for AI feature.
         self.username = username
 
     def validate(self):

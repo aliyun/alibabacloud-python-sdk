@@ -16,11 +16,15 @@ class DescribePolarClawTaskResponseBody(DaraModel):
         request_id: str = None,
         task: main_models.DescribePolarClawTaskResponseBodyTask = None,
     ):
+        # The application ID.
         self.application_id = application_id
+        # The status code.
         self.code = code
+        # The response message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The task object.
         self.task = task
 
     def validate(self):
@@ -80,12 +84,19 @@ class DescribePolarClawTaskResponseBodyTask(DaraModel):
         task_id: str = None,
         updated_at_ms: int = None,
     ):
+        # The timestamp when the task was created, in milliseconds.
         self.created_at_ms = created_at_ms
+        # The error object. This parameter is returned only if the task fails.
         self.error = error
+        # The operation name.
         self.operation = operation
+        # The task result object. This parameter is returned only if the task succeeds. The content of this object varies by operation.
         self.result = result
+        # The task state. Valid values: pending, running, succeeded, and failed.
         self.state = state
+        # The task ID, which is a universally unique identifier (UUID).
         self.task_id = task_id
+        # The timestamp when the task was last updated, in milliseconds.
         self.updated_at_ms = updated_at_ms
 
     def validate(self):
@@ -152,7 +163,9 @@ class DescribePolarClawTaskResponseBodyTaskError(DaraModel):
         code: str = None,
         message: str = None,
     ):
+        # The error code.
         self.code = code
+        # The error message.
         self.message = message
 
     def validate(self):

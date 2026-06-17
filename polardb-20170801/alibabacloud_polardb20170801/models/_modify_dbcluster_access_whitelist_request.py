@@ -19,57 +19,63 @@ class ModifyDBClusterAccessWhitelistRequest(DaraModel):
         security_ips: str = None,
         white_list_type: str = None,
     ):
-        # The attributes of the IP whitelist group. Set this parameter to **hidden** to hide the IP whitelist group in the console.
+        # The attribute of the IP address whitelist group. If you set this parameter to \\`hidden\\`, the whitelist group is not visible in the console.
         # 
-        # > *   The IP whitelist group that has appeared in the console cannot be hidden.
-        # > *   This parameter can be specified only when the **WhiteListType** parameter is set to **IP**.
+        # > - You cannot hide an IP address whitelist group that is already visible in the console.
+        # >
+        # > - This parameter is available only when **WhiteListType** is set to **IP**.
         self.dbcluster_iparray_attribute = dbcluster_iparray_attribute
-        # The name of the IP whitelist group. The group name must be 2 to 120 characters in length and consists of lowercase letters and digits. It must start with a letter, and end with a letter or a digit.
+        # The name of the IP address whitelist group. The name must be 2 to 120 characters in length. It must consist of lowercase letters and digits. The name must start with a letter and end with a letter or a digit.
         # 
-        # *   If the specified whitelist group name does not exist, the whitelist group is created.
-        # *   If the specified whitelist group name exists, the whitelist group is modified.
-        # *   If you do not specify this parameter, the default group is modified.
+        # - If the specified whitelist group name does not exist, a new whitelist group is created.
         # 
-        # > 
+        # - If the specified whitelist group name already exists, the whitelist group is modified.
         # 
-        # *   You can create a maximum of 50 IP whitelist groups for a cluster.
+        # - If you do not specify this parameter, the \\`default\\` group is modified.
         # 
-        # *   This parameter can be specified only when the **WhiteListType** parameter is set to **IP**.
+        # > * A cluster can have up to 50 IP address whitelist groups.
+        # >
+        # > * This parameter is available only when **WhiteListType** is set to **IP**.
         self.dbcluster_iparray_name = dbcluster_iparray_name
         # The cluster ID.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The method used to modify the IP whitelist. Valid values:
+        # The method used to modify the IP address whitelist. Valid values:
         # 
-        # *   **Cover** (default): overwrites the original IP whitelist.
-        # *   **Append**: appends IP addresses to the original whitelist.
-        # *   **Delete**: deletes IP addresses.
+        # - **Cover**: Overwrites the original IP address whitelist. This is the default value.
         # 
-        # >  This parameter can be specified only when the **WhiteListType** parameter is set to **IP**.
+        # - **Append**: Appends IP addresses to the whitelist.
+        # 
+        # - **Delete**: Deletes IP addresses from the whitelist.
+        # 
+        # > This parameter is available only when **WhiteListType** is set to **IP**.
         self.modify_mode = modify_mode
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the security group. Separate multiple security groups with commas (,).
+        # The security group ID. Separate multiple security group IDs with commas (,).
         # 
-        # > *   You can add a maximum of three security groups to a cluster.
-        # > *   This parameter can be specified only when the **WhiteListType** parameter is set to **SecurityGroup**.
+        # > - A cluster can be associated with up to three security groups.
+        # >
+        # > - This parameter is available only when **WhiteListType** is set to **SecurityGroup**.
         self.security_group_ids = security_group_ids
-        # The IP addresses or Classless Inter-Domain Routing (CIDR) blocks in the IP whitelist group. You can add 1,000 IP addresses or CIDR blocks to all the IP whitelist groups. Separate multiple IP addresses with commas (,). The following two formats are supported:
+        # The IP addresses or CIDR blocks in the IP address whitelist group. All IP address whitelist groups can contain a total of 1,000 IP addresses or CIDR blocks. Separate multiple IP addresses with commas (,). The following formats are supported:
         # 
-        # *   IP addresses. Example: 10.23.12.24.
-        # *   CIDR blocks. Example: 10.23.12.24/24. 24 indicates the length of the prefix of the CIDR block. The length is the range of 1 to 32.
+        # - IP address format. For example: 10.23.12.24.
         # 
-        # >  This parameter can be specified only when the **WhiteListType** parameter is set to **IP**.
+        # - CIDR format. For example: 10.23.12.24/24. The number 24 indicates the prefix length of the IP address. The prefix length can range from 1 to 32.
+        # 
+        # > This parameter is available only when **WhiteListType** is set to **IP**.
         self.security_ips = security_ips
         # The type of the whitelist. Valid values:
         # 
-        # *   **IP**: IP whitelist group.
-        # *   **SecurityGroup**: security group.
+        # - **IP**: IP address whitelist group.
         # 
-        # Default value: **IP**.
+        # - **SecurityGroup**: Security group.
+        # 
+        # The default value is **IP**.
         self.white_list_type = white_list_type
 
     def validate(self):

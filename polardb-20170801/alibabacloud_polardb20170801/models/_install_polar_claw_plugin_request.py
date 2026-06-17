@@ -12,12 +12,19 @@ class InstallPolarClawPluginRequest(DaraModel):
         plugin_id: str = None,
         restart: bool = None,
     ):
+        # The application ID.
+        # 
         # This parameter is required.
         self.application_id = application_id
+        # The npm package name, including the version number.
+        # 
         # This parameter is required.
         self.npm_package = npm_package
+        # The plugin ID.
+        # 
         # This parameter is required.
         self.plugin_id = plugin_id
+        # Specifies whether to restart the gateway after installation. Defaults to true.
         self.restart = restart
 
     def validate(self):

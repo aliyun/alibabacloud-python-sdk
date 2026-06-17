@@ -9,6 +9,7 @@ class ExecuteCrossCloudOpenAPIRequest(DaraModel):
         self,
         proxy_info: str = None,
     ):
+        # The information required to call the cross-cloud OpenAPI.
         self.proxy_info = proxy_info
 
     def validate(self):

@@ -10,8 +10,11 @@ class GetPolarClawConfigRequest(DaraModel):
         application_id: str = None,
         config_path: str = None,
     ):
+        # The application ID.
+        # 
         # This parameter is required.
         self.application_id = application_id
+        # The path to the configuration section to retrieve, specified in JSONPath dot notation. If this parameter is empty, the entire configuration is returned.
         self.config_path = config_path
 
     def validate(self):

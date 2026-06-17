@@ -14,12 +14,17 @@ class DescribePolarFsQuotaListRequest(DaraModel):
         quota_mode: str = None,
         region_id: str = None,
     ):
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
         self.page_number = page_number
         self.page_size = page_size
+        # The PolarFS instance ID.
+        # 
         # This parameter is required.
         self.polar_fs_instance_id = polar_fs_instance_id
+        # The quota mode.
         self.quota_mode = quota_mode
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

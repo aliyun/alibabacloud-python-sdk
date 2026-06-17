@@ -22,16 +22,37 @@ class DescribeDBLogFilesResponseBody(DaraModel):
         switch_log_items: List[main_models.DescribeDBLogFilesResponseBodySwitchLogItems] = None,
         total_records: int = None,
     ):
+        # The cluster ID.
         self.dbinstance_name = dbinstance_name
+        # The instance type. Valid values:
+        # 
+        # - **polardb_mysql_rw**: read-write instance.
+        # 
+        # - **polardb_mysql_ro**: read-only instance.
+        # 
+        # - **polardb_mysql_standby**: standby instance.
         self.dbinstance_type = dbinstance_type
+        # A list of failover logs.
         self.ha_log_items = ha_log_items
+        # Indicates whether a failover record exists. Valid values:
+        # 
+        # - **1**: No
+        # 
+        # - **0**: Yes
         self.ha_status = ha_status
+        # The number of log items on the current page.
         self.items_numbers = items_numbers
+        # The page number. It must be a positive integer that does not exceed the maximum value of the Integer data type. Default value: 1.
         self.page_number = page_number
+        # The number of entries to return on each page. Valid values: 5 to 50. Default value: 10.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # A list of fault simulation records.
         self.switch_list_items = switch_list_items
+        # A list of fault simulation logs.
         self.switch_log_items = switch_log_items
+        # The total number of records.
         self.total_records = total_records
 
     def validate(self):
@@ -153,14 +174,45 @@ class DescribeDBLogFilesResponseBodySwitchLogItems(DaraModel):
         src_db_type: str = None,
         switch_step_items: List[main_models.DescribeDBLogFilesResponseBodySwitchLogItemsSwitchStepItems] = None,
     ):
+        # The cluster ID.
+        # 
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of your clusters, including the cluster IDs.
         self.dbinstance_id = dbinstance_id
+        # The destination database type. Valid values:
+        # 
+        # - **PolarDBMySQL**: A major version upgrade of PolarDB for MySQL.
+        # 
+        # - **RDS**: A migration from RDS to PolarDB for MySQL.
         self.dst_db_type = dst_db_type
+        # The time when the system event was complete. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format and is displayed in UTC.
         self.event_finish_time = event_finish_time
+        # The time when the system event started. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format and is displayed in UTC.
         self.event_start_time = event_start_time
+        # The simulation list ID.
         self.simulate_list_id = simulate_list_id
+        # The fault simulation status. Valid values:
+        # 
+        # - **0**: Pending
+        # 
+        # - **1**: Success
+        # 
+        # - **2**: Running
+        # 
+        # - **3**: Failed
+        # 
+        # - **4**: Aborted
+        # 
+        # - **5**: Awaiting rollback
         self.simulate_status = simulate_status
+        # The status code of the fault simulation.
         self.simulatecode = simulatecode
+        # The source database type. Valid values:
+        # 
+        # - **PolarDBMySQL**: A major version upgrade of PolarDB for MySQL.
+        # 
+        # - **RDS**: A migration from RDS to PolarDB for MySQL.
         self.src_db_type = src_db_type
+        # A list of failover steps.
         self.switch_step_items = switch_step_items
 
     def validate(self):
@@ -251,13 +303,33 @@ class DescribeDBLogFilesResponseBodySwitchLogItemsSwitchStepItems(DaraModel):
         step_name: str = None,
         time_cost: str = None,
     ):
+        # The node ID.
+        # 
+        # > You must specify either the `DBNodeId` or `DBClusterId` parameter. You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of your clusters, including the node IDs.
         self.dbnode_id = dbnode_id
+        # The time when the step was complete. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format and is displayed in UTC.
         self.end_time = end_time
+        # Indicates whether the step was successful. Valid values:
+        # 
+        # - `true`: The step was successful.
+        # 
+        # - `false`: The step failed.
         self.is_success = is_success
+        # The fault simulation phase. Valid values:
+        # 
+        # - **PolarDB.MySQL.FaultSimulate.Phase.FAULT_INJECTION**: The fault injection phase.
+        # 
+        # - **PolarDB.MySQL.FaultSimulate.Phase.RECOVERY**: The recovery phase.
+        # 
+        # - **PolarDB.MySQL.FaultSimulate.Phase.POST_PROCESS**: The post-processing phase.
         self.simulate_phase = simulate_phase
+        # The time when the step started. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format and is displayed in UTC.
         self.start_time = start_time
+        # A message about the execution status of the step.
         self.step_msg = step_msg
+        # The name of the step.
         self.step_name = step_name
+        # The duration of the step in milliseconds.
         self.time_cost = time_cost
 
     def validate(self):
@@ -338,17 +410,45 @@ class DescribeDBLogFilesResponseBodySwitchListItems(DaraModel):
         switch_log_items: List[main_models.DescribeDBLogFilesResponseBodySwitchListItemsSwitchLogItems] = None,
         switch_step_items: List[main_models.DescribeDBLogFilesResponseBodySwitchListItemsSwitchStepItems] = None,
     ):
+        # The IDs of nodes on which to simulate a fault.
+        # 
+        # > For a node-level fault simulation, specify the ID of a single node. For an availability zone-level fault simulation, you can either omit this parameter or specify the IDs of all nodes in the zone.
         self.dbnode_crash_list = dbnode_crash_list
+        # The time when the fault simulation was complete. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format and is displayed in UTC.
         self.end_time = end_time
+        # The time when the system event was complete. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format and is displayed in UTC.
         self.event_finish_time = event_finish_time
+        # The time when the system event started. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format and is displayed in UTC.
         self.event_start_time = event_start_time
+        # The fault injection method. Valid values:
+        # 
+        # - CrashSQLInjection: Injects a fault into the instance by using `Crash SQL`.
         self.fault_injection_type = fault_injection_type
+        # The fault simulation record ID.
         self.simulate_list_id = simulate_list_id
+        # The fault simulation mode.
         self.simulate_mode = simulate_mode
+        # The fault simulation status. Valid values:
+        # 
+        # - **0**: Pending
+        # 
+        # - **1**: Success
+        # 
+        # - **2**: Running
+        # 
+        # - **3**: Failed
+        # 
+        # - **4**: Aborted
+        # 
+        # - **5**: Awaiting rollback
         self.simulate_status = simulate_status
+        # The fault simulation task ID.
         self.simulate_task_id = simulate_task_id
+        # The time when the fault simulation started. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format and is displayed in UTC.
         self.start_time = start_time
+        # A list of fault simulation logs.
         self.switch_log_items = switch_log_items
+        # A list of failover steps.
         self.switch_step_items = switch_step_items
 
     def validate(self):
@@ -465,12 +565,31 @@ class DescribeDBLogFilesResponseBodySwitchListItemsSwitchStepItems(DaraModel):
         step_name: str = None,
         time_cost: str = None,
     ):
+        # The cluster node ID.
+        # 
+        # > This parameter is returned only when the `Key` parameter in the request is not set to `PolarDBDiskUsage`.
         self.dbnode_id = dbnode_id
+        # The time when the step was complete. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format and is displayed in UTC.
         self.end_time = end_time
+        # Indicates whether the step was successful. Valid values:
+        # 
+        # - `true`: The step was successful.
+        # 
+        # - `false`: The step failed.
         self.is_success = is_success
+        # The fault simulation phase. Valid values:
+        # 
+        # - **PolarDB.MySQL.FaultSimulate.Phase.FAULT_INJECTION**: The fault injection phase.
+        # 
+        # - **PolarDB.MySQL.FaultSimulate.Phase.RECOVERY**: The recovery phase.
+        # 
+        # - **PolarDB.MySQL.FaultSimulate.Phase.POST_PROCESS**: The post-processing phase.
         self.simulate_phase = simulate_phase
+        # The time when the step started. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format and is displayed in UTC.
         self.start_time = start_time
+        # The name of the current step. You can call the [DescribeHistoryTasks](https://help.aliyun.com/document_detail/2400077.html) operation to query the current step of a specified task. A common value is **do_pause**, which indicates that the system waits for a specified period of time.
         self.step_name = step_name
+        # The duration of the step in milliseconds.
         self.time_cost = time_cost
 
     def validate(self):
@@ -542,14 +661,45 @@ class DescribeDBLogFilesResponseBodySwitchListItemsSwitchLogItems(DaraModel):
         src_db_type: str = None,
         switch_step_items: List[main_models.DescribeDBLogFilesResponseBodySwitchListItemsSwitchLogItemsSwitchStepItems] = None,
     ):
+        # The cluster ID.
+        # 
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of your clusters, including the cluster IDs.
         self.dbinstance_id = dbinstance_id
+        # The destination database type. Valid values:
+        # 
+        # - **PolarDBMySQL**: A major version upgrade of PolarDB for MySQL.
+        # 
+        # - **RDS**: A migration from RDS to PolarDB for MySQL.
         self.dst_db_type = dst_db_type
+        # The time when the system event was complete. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format and is displayed in UTC.
         self.event_finish_time = event_finish_time
+        # The time when the system event started. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format and is displayed in UTC.
         self.event_start_time = event_start_time
+        # The simulation list ID.
         self.simulate_list_id = simulate_list_id
+        # The simulation log ID.
         self.simulate_log_id = simulate_log_id
+        # The fault simulation status. Valid values:
+        # 
+        # - **0**: Pending
+        # 
+        # - **1**: Success
+        # 
+        # - **2**: Running
+        # 
+        # - **3**: Failed
+        # 
+        # - **4**: Aborted
+        # 
+        # - **5**: Awaiting rollback
         self.simulate_status = simulate_status
+        # The source database type. Valid values:
+        # 
+        # - **PolarDBMySQL**: A major version upgrade of PolarDB for MySQL.
+        # 
+        # - **RDS**: A migration from RDS to PolarDB for MySQL.
         self.src_db_type = src_db_type
+        # A list of fault simulation steps.
         self.switch_step_items = switch_step_items
 
     def validate(self):
@@ -638,11 +788,27 @@ class DescribeDBLogFilesResponseBodySwitchListItemsSwitchLogItemsSwitchStepItems
         step_name: str = None,
         time_cost: str = None,
     ):
+        # The time when the step was complete. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format and is displayed in UTC.
         self.end_time = end_time
+        # Indicates whether the step was successful. Valid values:
+        # 
+        # - `true`: The step was successful.
+        # 
+        # - `false`: The step failed.
         self.is_success = is_success
+        # The fault simulation phase. Valid values:
+        # 
+        # - **PolarDB.MySQL.FaultSimulate.Phase.FAULT_INJECTION**: The fault injection phase.
+        # 
+        # - **PolarDB.MySQL.FaultSimulate.Phase.RECOVERY**: The recovery phase.
+        # 
+        # - **PolarDB.MySQL.FaultSimulate.Phase.POST_PROCESS**: The post-processing phase.
         self.simulate_phase = simulate_phase
+        # The time when the step started. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format and is displayed in UTC.
         self.start_time = start_time
+        # The name of the current step. You can call the [DescribeHistoryTasks](https://help.aliyun.com/document_detail/2400077.html) operation to query the current step of a specified task. A common value is **do_pause**, which indicates that the system waits for a specified period of time.
         self.step_name = step_name
+        # The duration of the step in milliseconds.
         self.time_cost = time_cost
 
     def validate(self):
@@ -708,14 +874,29 @@ class DescribeDBLogFilesResponseBodyHaLogItems(DaraModel):
         switch_type: int = None,
         total_sessions: int = None,
     ):
+        # The number of affected sessions during the failover.
         self.affected_sessions = affected_sessions
+        # The instance type before the failover. Valid values:
+        # 
+        # - **polardb_mysql_rw**: read-write instance.
+        # 
+        # - **polardb_mysql_ro**: read-only instance.
+        # 
+        # - **polardb_mysql_standby**: standby instance.
         self.from_dbtype = from_dbtype
+        # The error code for the failover cause.
         self.switch_cause_code = switch_cause_code
+        # Details about the failover cause.
         self.switch_cause_detail = switch_cause_detail
+        # The time when the failover was complete. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format and is displayed in UTC.
         self.switch_finish_time = switch_finish_time
+        # The failover log ID.
         self.switch_id = switch_id
+        # The time when the failover started. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format and is displayed in UTC.
         self.switch_start_time = switch_start_time
+        # The failover type.
         self.switch_type = switch_type
+        # The total number of sessions during the failover.
         self.total_sessions = total_sessions
 
     def validate(self):

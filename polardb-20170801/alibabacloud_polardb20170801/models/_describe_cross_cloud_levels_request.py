@@ -12,11 +12,40 @@ class DescribeCrossCloudLevelsRequest(DaraModel):
         project_id: str = None,
         storage_type: str = None,
     ):
+        # The database engine type. Valid values:
+        # 
+        # - MySQL
+        # 
+        # - PostgreSQL
+        # 
+        # - Oracle
+        # 
         # This parameter is required.
         self.dbtype = dbtype
+        # The version number of the database engine.
+        # 
+        # Valid values for MySQL:
+        # 
+        # - 5.6
+        # 
+        # - 5.7
+        # 
+        # - 8.0
+        # 
+        # Valid values for PostgreSQL:
+        # 
+        # - 11
+        # 
+        # - 14
+        # 
+        # - 15
         self.dbversion = dbversion
+        # The resource pool ID.
+        # 
         # This parameter is required.
         self.project_id = project_id
+        # The storage class.
+        # 
         # This parameter is required.
         self.storage_type = storage_type
 

@@ -12,13 +12,13 @@ class CreateDBClusterResponseBody(DaraModel):
         request_id: str = None,
         resource_group_id: str = None,
     ):
-        # Cluster ID.
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
-        # Order ID.
+        # The order ID.
         self.order_id = order_id
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Resource group ID.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
 
     def validate(self):

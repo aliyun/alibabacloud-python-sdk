@@ -13,7 +13,9 @@ class MovePolarFsObjectsRequest(DaraModel):
         objects_to_move: List[main_models.MovePolarFsObjectsRequestObjectsToMove] = None,
         polar_fs_instance_id: str = None,
     ):
+        # A list of files to move or rename.
         self.objects_to_move = objects_to_move
+        # The PolarFs instance ID.
         self.polar_fs_instance_id = polar_fs_instance_id
 
     def validate(self):
@@ -56,7 +58,9 @@ class MovePolarFsObjectsRequestObjectsToMove(DaraModel):
         destination_path: str = None,
         source_path: str = None,
     ):
+        # The destination path.
         self.destination_path = destination_path
+        # The source path.
         self.source_path = source_path
 
     def validate(self):

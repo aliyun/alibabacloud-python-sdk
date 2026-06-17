@@ -23,66 +23,69 @@ class DescribeScheduleTasksRequest(DaraModel):
         status: str = None,
         task_action: str = None,
     ):
-        # The description of the cluster.
+        # The cluster description.
         self.dbcluster_description = dbcluster_description
         # The cluster ID.
         # 
-        # > 
-        # 
-        # *   You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the information of all PolarDB clusters that are deployed in a specific region, such as the cluster IDs.
-        # 
-        # *   If you do not specify this parameter, all scheduled tasks on your clusters are queried.
+        # > - You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of all clusters in a specific region, including cluster IDs.
+        # >
+        # > - If this parameter is omitted, scheduled tasks for all clusters in your account are queried.
         self.dbcluster_id = dbcluster_id
-        # The ID of the order.
+        # The order ID.
         # 
-        # >  The order ID can contain only digits.
+        # > The order ID can contain only digits.
         self.order_id = order_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number of the page to return. Set this parameter to an integer that is greater than 0. Default value: **1**.
+        # The number of the page to return. The value must be an integer that is greater than 0. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Valid values: **30**, **50**, and **100**. Default value: 30.
+        # The number of entries to return on each page. Valid values: **30** (default), **50**, and **100**.
         self.page_size = page_size
-        # The latest start time of the task that you specified when you created the scheduled task. The time is displayed in UTC.
+        # The latest start time of the task. The time is in UTC. If the task does not start by this time, it expires.
         self.planned_end_time = planned_end_time
-        # The earliest start time of the task that you specified when you created the scheduled task. The time is displayed in UTC.
+        # The earliest start time of the task. The time is in UTC.
         self.planned_start_time = planned_start_time
-        # The ID of the region.
+        # The region ID.
         # 
-        # > 
-        # 
-        # *   You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query the region information of all clusters in a specific account.
-        # 
-        # *   If you do not specify this parameter, scheduled tasks on your clusters that are deployed in all regions are queried.
+        # > - You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query the available regions.
+        # >
+        # > - If this parameter is omitted, scheduled tasks in all regions in your account are queried.
         self.region_id = region_id
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The state of the tasks that you want to query. Valid values:
+        # The task status. Valid values:
         # 
-        # *   **pending**: The tasks are pending execution.
-        # *   **executing**: The tasks are being executed.
-        # *   **failure**: The tasks failed and need to be run again.
-        # *   **finish**: The tasks are complete.
-        # *   **cancel**: The tasks are canceled.
-        # *   **expired**: The tasks are expired. The tasks are not started within the time periods that are specified to start the tasks.
-        # *   **rollback**: The tasks are being rolled back.
+        # - **pending**: The task is waiting to be executed.
         # 
-        # >  If you do not specify this parameter, all scheduled tasks in all states are queried.
+        # - **executing**: The task is being executed.
+        # 
+        # - **failure**: The task failed and is waiting for a retry.
+        # 
+        # - **finish**: The task is complete.
+        # 
+        # - **cancel**: The task is canceled.
+        # 
+        # - **expired**: The task has expired because it did not start within the scheduled time window.
+        # 
+        # - **rollback**: The task is being rolled back.
+        # 
+        # > If this parameter is omitted, scheduled tasks in all states are queried.
         self.status = status
-        # The type of scheduled tasks that you want to query. Valid values:
+        # The action of the scheduled task. Valid values:
         # 
-        # *   **CreateDBNodes**
-        # *   **ModifyDBNodeClass**
-        # *   **UpgradeDBClusterVersion**
-        # *   **ModifyDBClusterPrimaryZone**
+        # - **CreateDBNodes**
         # 
-        # > 
+        # - **ModifyDBNodeClass**
         # 
-        # *   If you specify the `PlannedStartTime` parameter when you call the four preceding operations, the details of each task are returned. Otherwise, an empty string is returned for the `TimerInfos` parameter.
+        # - **UpgradeDBClusterVersion**
         # 
-        # *   If you do not specify this parameter, all types of scheduled tasks on you clusters are queried.
+        # - **ModifyDBClusterPrimaryZone**
+        # 
+        # > * Task details are returned only if you specify the `PlannedStartTime` parameter when you call one of the preceding API operations. Otherwise, the `TimerInfos` field in the response is empty.
+        # >
+        # > * If this parameter is omitted, scheduled tasks of all types are queried.
         self.task_action = task_action
 
     def validate(self):

@@ -19,15 +19,25 @@ class UpdatePolarClawAgentRequest(DaraModel):
         restart: bool = None,
         workspace: str = None,
     ):
+        # The ID of the agent to update.
+        # 
         # This parameter is required.
         self.agent_id = agent_id
+        # The application ID.
+        # 
         # This parameter is required.
         self.application_id = application_id
+        # The new avatar for the agent.
         self.avatar = avatar
+        # The file list to update.
         self.files = files
+        # The model to override the agent\\"s default setting.
         self.model = model
+        # The new display name for the agent.
         self.name = name
+        # Specifies whether to restart the gateway after the update. The default value is true.
         self.restart = restart
+        # The new path for the agent\\"s workspace.
         self.workspace = workspace
 
     def validate(self):
@@ -106,7 +116,9 @@ class UpdatePolarClawAgentRequestFiles(DaraModel):
         file_content: str = None,
         file_name: str = None,
     ):
+        # The file content.
         self.file_content = file_content
+        # The file name. This must be one of the allowed file names: AGENTS.md, SOUL.md, TOOLS.md, IDENTITY.md, USER.md, HEARTBEAT.md, BOOTSTRAP.md, MEMORY.md, or MEMORY.alt.md.
         self.file_name = file_name
 
     def validate(self):

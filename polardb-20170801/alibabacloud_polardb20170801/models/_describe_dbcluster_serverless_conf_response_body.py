@@ -24,47 +24,49 @@ class DescribeDBClusterServerlessConfResponseBody(DaraModel):
         switchs: str = None,
         traditional_scale_max_threshold: str = None,
     ):
+        # The maximum capacity, in PCUs, for a cluster in agile mode. In agile mode, the cluster consists of only serverless nodes.
         self.agile_scale_max = agile_scale_max
-        # Whether to enable idle shutdown. Values:
+        # Indicates whether the no-activity suspension feature is enabled. Valid values:
         # 
-        # - **true**: Enable
+        # - **true**: Enabled
         # 
-        # - **false**: Disable (default)
+        # - **false**: Disabled (Default)
         self.allow_shut_down = allow_shut_down
-        # Serverless cluster ID.
+        # The ID of the serverless cluster.
         self.dbcluster_id = dbcluster_id
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
         # The maximum number of read-only column store nodes. Valid values: 0 to 15.
         self.scale_ap_ro_num_max = scale_ap_ro_num_max
         # The minimum number of read-only column store nodes. Valid values: 0 to 15.
         self.scale_ap_ro_num_min = scale_ap_ro_num_min
-        # Maximum scaling limit for a single node. Range: 1 PCU~32 PCU.
+        # The maximum compute capacity of a single node in PCUs. Valid values: 1 to 32.
         self.scale_max = scale_max
-        # Minimum scaling limit for a single node. Range: 1 PCU~31 PCU.
+        # The minimum compute capacity of a single node in PolarDB Capacity Units (PCUs). Valid values: 1 to 31.
         self.scale_min = scale_min
-        # Maximum scaling limit for the number of read-only nodes. Range: 0~15.
+        # The maximum number of read-only nodes for scaling. Valid values: 0 to 15.
         self.scale_ro_num_max = scale_ro_num_max
-        # Minimum scaling limit for the number of read-only nodes. Range: 0~15.
+        # The minimum number of read-only nodes for scaling. Valid values: 0 to 15.
         self.scale_ro_num_min = scale_ro_num_min
-        # Detection duration for idle shutdown. Range: 300~86,400. Unit: seconds. The detection duration must be a multiple of 300 seconds.
+        # The detection period for no-activity suspension, in seconds. The value must be an integer from 300 to 86,400 and must be a multiple of 300.
         self.seconds_until_auto_pause = seconds_until_auto_pause
-        # CPU upscale threshold.
+        # The CPU scale-up threshold.
         self.serverless_rule_cpu_enlarge_threshold = serverless_rule_cpu_enlarge_threshold
-        # CPU downscale threshold.
+        # The CPU scale-down threshold.
         self.serverless_rule_cpu_shrink_threshold = serverless_rule_cpu_shrink_threshold
-        # Elasticity sensitivity. Values:
+        # The elasticity sensitivity. Valid values:
         # 
         # - normal: Standard
         # 
-        # - flexible: Sensitive
+        # - flexible: Flexible
         self.serverless_rule_mode = serverless_rule_mode
-        # Whether steady state is enabled. Values:
+        # Indicates whether the steady-state mode is enabled. Valid values:
         # 
         # 1: Enabled
         # 
         # 0: Disabled
         self.switchs = switchs
+        # The maximum capacity, in PCUs, for a cluster in steady-state mode. Steady-state mode adds serverless capabilities to nodes that have fixed specifications.
         self.traditional_scale_max_threshold = traditional_scale_max_threshold
 
     def validate(self):

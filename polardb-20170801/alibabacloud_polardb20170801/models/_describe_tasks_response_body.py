@@ -19,17 +19,17 @@ class DescribeTasksResponseBody(DaraModel):
         tasks: main_models.DescribeTasksResponseBodyTasks = None,
         total_record_count: int = None,
     ):
-        # The ID of the cluster for which the task was created.
+        # The ID of the cluster to which the task belongs.
         self.dbcluster_id = dbcluster_id
-        # The end time of the query.
+        # The end of the time range to query.
         self.end_time = end_time
-        # The page number of the page returned.
+        # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries returned on the current page.
         self.page_record_count = page_record_count
         # The request ID.
         self.request_id = request_id
-        # The start time of the query.
+        # The beginning of the time range to query.
         self.start_time = start_time
         self.tasks = tasks
         # The total number of entries returned.

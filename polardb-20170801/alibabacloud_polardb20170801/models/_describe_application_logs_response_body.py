@@ -17,11 +17,17 @@ class DescribeApplicationLogsResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
+        # The application ID.
         self.application_id = application_id
+        # A container for the log data.
         self.items = items
+        # The page number.
         self.page_number = page_number
+        # The number of records on the current page.
         self.page_record_count = page_record_count
+        # The request ID.
         self.request_id = request_id
+        # The total number of records.
         self.total_record_count = total_record_count
 
     def validate(self):

@@ -10,8 +10,9 @@ class DeleteAIDBClusterResponseBody(DaraModel):
         dbcluster_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the AI cluster.
         self.dbcluster_id = dbcluster_id
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

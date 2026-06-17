@@ -10,8 +10,12 @@ class LoginPolarClawChannelRequest(DaraModel):
         application_id: str = None,
         channel_id: str = None,
     ):
+        # The application ID.
+        # 
         # This parameter is required.
         self.application_id = application_id
+        # The ID of the PolarClaw channel to log into.
+        # 
         # This parameter is required.
         self.channel_id = channel_id
 

@@ -17,13 +17,19 @@ class GetPolarClawConfigResponseBody(DaraModel):
         openclaw_version: str = None,
         request_id: str = None,
     ):
+        # The application ID.
         self.application_id = application_id
+        # The response status code.
         self.code = code
+        # The configuration object.
         self.config = config
+        # The configuration hash.
         self.hash = hash
+        # The response message.
         self.message = message
+        # The version of OpenClaw.
         self.openclaw_version = openclaw_version
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

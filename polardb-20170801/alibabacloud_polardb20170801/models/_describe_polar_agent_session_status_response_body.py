@@ -10,7 +10,13 @@ class DescribePolarAgentSessionStatusResponseBody(DaraModel):
         request_id: str = None,
         status: int = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The status of the session. Valid values:
+        # 
+        # - **1**: Enabled
+        # 
+        # - **0**: Disabled
         self.status = status
 
     def validate(self):

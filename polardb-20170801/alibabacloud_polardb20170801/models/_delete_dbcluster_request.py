@@ -15,12 +15,15 @@ class DeleteDBClusterRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The retention policy applied to the backup sets when the cluster is released. Valid values:
+        # The retention policy for backup sets when the cluster is deleted. Valid values:
         # 
-        # *   **ALL**: permanently retains all backup sets.
-        # *   **LATEST**: permanently retains the most recent backup set that is automatically created before the cluster is released.
-        # *   **NONE**: does not retain backup sets.
+        # - **ALL**: permanently retains all backup sets.
+        # 
+        # - **LATEST**: permanently retains the last backup set. The system automatically creates a new backup before the cluster is deleted.
+        # 
+        # - **NONE**: does not retain any backup sets after the cluster is deleted.
         self.backup_retention_policy_on_cluster_deletion = backup_retention_policy_on_cluster_deletion
+        # The cloud service provider of the instance.
         self.cloud_provider = cloud_provider
         # The cluster ID.
         # 

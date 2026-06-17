@@ -26,25 +26,46 @@ class CreatePolarClawCronJobRequest(DaraModel):
         session_target: str = None,
         wake_mode: str = None,
     ):
+        # The ID of the agent that executes the task.
         self.agent_id = agent_id
+        # The application ID.
+        # 
         # This parameter is required.
         self.application_id = application_id
+        # Specifies whether to automatically delete the job after its first execution. This is useful for one-time tasks. Default: `false`.
         self.delete_after_run = delete_after_run
+        # The configuration for delivering task execution results.
         self.delivery = delivery
+        # A description of the task.
         self.description = description
+        # Specifies whether the cron job is enabled. Default: `true`.
         self.enabled = enabled
+        # The failure alert configuration.
         self.failure_alert = failure_alert
+        # The unique name of the task.
+        # 
         # This parameter is required.
         self.name = name
+        # The execution payload configuration.
+        # 
         # This parameter is required.
         self.payload = payload
+        # Specifies whether to restart the gateway upon job creation. Default: `true`.
         self.restart = restart
+        # Specifies whether to run the job once immediately upon creation. Default: `false`.
         self.run_immediately = run_immediately
+        # The schedule configuration.
+        # 
         # This parameter is required.
         self.schedule = schedule
+        # The session routing key, which determines the conversation session for the task.
         self.session_key = session_key
+        # The session target. Valid values are `main`, `isolated`, and `current`.
+        # 
         # This parameter is required.
         self.session_target = session_target
+        # The wake mode for the agent. Valid values are `now` and `next-heartbeat`.
+        # 
         # This parameter is required.
         self.wake_mode = wake_mode
 
@@ -174,12 +195,19 @@ class CreatePolarClawCronJobRequestSchedule(DaraModel):
         stagger_ms: int = None,
         tz: str = None,
     ):
+        # The anchor timestamp for aligning interval-based schedules, in milliseconds.
         self.anchor_ms = anchor_ms
+        # The specific time for a one-time execution, specified as an ISO 8601 timestamp.
         self.at = at
+        # The task execution interval, in milliseconds.
         self.every_ms = every_ms
+        # The cron expression that specifies when the task runs.
         self.expr = expr
+        # The type of schedule.
         self.kind = kind
+        # The deterministic jitter window, in milliseconds.
         self.stagger_ms = stagger_ms
+        # The time zone for the schedule.
         self.tz = tz
 
     def validate(self):
@@ -254,17 +282,29 @@ class CreatePolarClawCronJobRequestPayload(DaraModel):
         timeout_seconds: int = None,
         to: str = None,
     ):
+        # Specifies whether to use best-effort delivery. If `true`, delivery failures are ignored.
         self.best_effort_deliver = best_effort_deliver
+        # The ID of the delivery channel.
         self.channel = channel
+        # Specifies whether to deliver the agent\\"s output to a channel.
         self.deliver = deliver
+        # A list of fallback models to use if the primary model fails.
         self.fallbacks = fallbacks
+        # The payload type. Valid values are `agentTurn` and `systemEvent`.
         self.kind = kind
+        # Specifies whether to use a light context for the agent conversation.
         self.light_context = light_context
+        # The prompt for an agent conversation, used when `Kind` is `agentTurn`.
         self.message = message
+        # Specifies a model that overrides the agent\\"s default model.
         self.model = model
+        # The text for the system event, used when `Kind` is `systemEvent`.
         self.text = text
+        # The thinking level for the agent\\"s response generation. Valid values are `off`, `minimal`, `low`, `medium`, `high`, and `xhigh`.
         self.thinking = thinking
+        # The execution timeout, in seconds.
         self.timeout_seconds = timeout_seconds
+        # The specific target or recipient within the channel.
         self.to = to
 
     def validate(self):
@@ -363,11 +403,17 @@ class CreatePolarClawCronJobRequestFailureAlert(DaraModel):
         mode: str = None,
         to: str = None,
     ):
+        # The account ID for the alert channel.
         self.account_id = account_id
+        # The number of consecutive failures required to trigger an alert.
         self.after = after
+        # The channel for sending failure alerts.
         self.channel = channel
+        # The cooldown period, in milliseconds, between alerts for the same job.
         self.cooldown_ms = cooldown_ms
+        # The mode for sending alerts. Valid values are `announce` and `webhook`.
         self.mode = mode
+        # The recipient for the failure alert.
         self.to = to
 
     def validate(self):
@@ -429,10 +475,15 @@ class CreatePolarClawCronJobRequestDelivery(DaraModel):
         mode: str = None,
         to: str = None,
     ):
+        # The account ID for the delivery channel.
         self.account_id = account_id
+        # Specifies whether to use best-effort delivery. If `true`, delivery failures are ignored.
         self.best_effort = best_effort
+        # The delivery channel.
         self.channel = channel
+        # The delivery mode. Valid values are `none`, `announce`, and `webhook`.
         self.mode = mode
+        # The recipient for the delivery.
         self.to = to
 
     def validate(self):

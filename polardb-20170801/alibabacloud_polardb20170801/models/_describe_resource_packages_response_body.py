@@ -13,7 +13,9 @@ class DescribeResourcePackagesResponseBody(DaraModel):
         request_id: str = None,
         resource_package_list: List[main_models.DescribeResourcePackagesResponseBodyResourcePackageList] = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # A list of cross-cloud resource plans.
         self.resource_package_list = resource_package_list
 
     def validate(self):
@@ -64,15 +66,29 @@ class DescribeResourcePackagesResponseBodyResourcePackageList(DaraModel):
         total_capacity: int = None,
         used_capacity: int = None,
     ):
+        # Indicates whether automatic quota allocation is enabled.
         self.auto_quota = auto_quota
+        # The time when the resource plan was created.
         self.create_time = create_time
+        # The time when the resource plan expires.
         self.expire_time = expire_time
+        # The ID of the cross-cloud resource plan.
         self.resource_package_id = resource_package_id
+        # The quota allocation details.
         self.resource_package_quota_list = resource_package_quota_list
+        # The type of the cross-cloud resource plan.
         self.resource_package_type = resource_package_type
+        # The status of the cross-cloud resource plan. Valid values:
+        # 
+        # - Normal: Normal.
+        # 
+        # - Maintaining: Under maintenance.
         self.status = status
+        # The list of tags.
         self.tags = tags
+        # The total capacity.
         self.total_capacity = total_capacity
+        # The used capacity.
         self.used_capacity = used_capacity
 
     def validate(self):
@@ -172,7 +188,9 @@ class DescribeResourcePackagesResponseBodyResourcePackageListTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -208,8 +226,11 @@ class DescribeResourcePackagesResponseBodyResourcePackageListResourcePackageQuot
         project_id: str = None,
         used_capacity: int = None,
     ):
+        # The capacity allocated to the resource pool.
         self.allocated_capacity = allocated_capacity
+        # The ID of the resource pool.
         self.project_id = project_id
+        # The used capacity of the resource pool.
         self.used_capacity = used_capacity
 
     def validate(self):

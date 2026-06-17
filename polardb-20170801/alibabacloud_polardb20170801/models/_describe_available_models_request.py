@@ -10,8 +10,9 @@ class DescribeAvailableModelsRequest(DaraModel):
         kube_type: str = None,
         region_id: str = None,
     ):
-        # aideploy
+        # The service type. The value must be set to `aideploy`.
         self.kube_type = kube_type
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

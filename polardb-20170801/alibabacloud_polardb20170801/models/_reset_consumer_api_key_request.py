@@ -11,10 +11,15 @@ class ResetConsumerApiKeyRequest(DaraModel):
         gw_cluster_id: str = None,
         region_id: str = None,
     ):
+        # The user ID.
+        # 
         # This parameter is required.
         self.consumer_id = consumer_id
+        # The ID of the gateway instance.
+        # 
         # This parameter is required.
         self.gw_cluster_id = gw_cluster_id
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

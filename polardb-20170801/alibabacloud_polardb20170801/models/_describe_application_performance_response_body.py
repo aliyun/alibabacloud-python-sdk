@@ -17,11 +17,17 @@ class DescribeApplicationPerformanceResponseBody(DaraModel):
         request_id: str = None,
         start_time: str = None,
     ):
+        # The application cluster ID.
         self.application_id = application_id
+        # The application type.
         self.application_type = application_type
+        # The end time of the query. The time is in UTC and follows the `yyyy-MM-ddTHH:mm:ssZ` format.
         self.end_time = end_time
+        # The performance metrics.
         self.performance_keys = performance_keys
+        # The request ID.
         self.request_id = request_id
+        # The start time of the query. The time is in UTC and follows the `yyyy-MM-ddTHH:mm:ssZ` format.
         self.start_time = start_time
 
     def validate(self):

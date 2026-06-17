@@ -1076,6 +1076,9 @@ from ._move_polar_fs_objects_response import MovePolarFsObjectsResponse
 from ._open_aitask_request import OpenAITaskRequest
 from ._open_aitask_response_body import OpenAITaskResponseBody
 from ._open_aitask_response import OpenAITaskResponse
+from ._operate_application_request import OperateApplicationRequest
+from ._operate_application_response_body import OperateApplicationResponseBody
+from ._operate_application_response import OperateApplicationResponse
 from ._patch_polar_claw_config_request import PatchPolarClawConfigRequest
 from ._patch_polar_claw_config_shrink_request import PatchPolarClawConfigShrinkRequest
 from ._patch_polar_claw_config_response_body import PatchPolarClawConfigResponseBody
@@ -2616,6 +2619,9 @@ __all__ = [
     OpenAITaskRequest,
     OpenAITaskResponseBody,
     OpenAITaskResponse,
+    OperateApplicationRequest,
+    OperateApplicationResponseBody,
+    OperateApplicationResponse,
     PatchPolarClawConfigRequest,
     PatchPolarClawConfigShrinkRequest,
     PatchPolarClawConfigResponseBody,

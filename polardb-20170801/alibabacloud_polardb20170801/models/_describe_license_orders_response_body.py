@@ -16,15 +16,15 @@ class DescribeLicenseOrdersResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
-        # The queried orders.
+        # The list of orders.
         self.items = items
-        # The page number.
+        # The current page number.
         self.page_number = page_number
-        # The number of entries returned on the current page.
+        # The number of records on the current page.
         self.page_record_count = page_record_count
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of records.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -96,37 +96,41 @@ class DescribeLicenseOrdersResponseBodyItems(DaraModel):
         purchase_channel: str = None,
         virtual_aliyun_order_id: str = None,
     ):
-        # The number of generated activation codes.
+        # The number of activation codes that have been generated.
         self.activated_code_count = activated_code_count
-        # The maximum number of activation codes that you can apply for.
+        # The quota for requesting activation codes.
         self.activation_code_quota = activation_code_quota
-        # The ID of the Alibaba Cloud order. The ID of a virtual order may be returned.
+        # The Alibaba Cloud order ID or virtual order ID.
         self.aliyun_order_id = aliyun_order_id
-        # Indicates whether the SystemIdentifier parameter can be left empty when the system generates an activation code.
+        # Specifies whether the System Identifier can be left empty when an activation code is generated.
         self.allow_empty_system_identifier = allow_empty_system_identifier
-        # The engine of the PolarDB cluster. Valid values: PG, Oracle, and MySQL.
+        # The database type, such as PG, Oracle, or MySQL.
         self.engine = engine
-        # The time when the order was created.
+        # The creation time.
         self.gmt_created = gmt_created
-        # The time when the order was updated.
+        # The update time.
         self.gmt_modified = gmt_modified
-        # Indicates whether the order is a virtual order. Pre-generation of activation codes is allowed for virtual orders.
+        # Indicates whether the order is a virtual order. Virtual orders allow for pre-generating activation codes.
         self.is_virtual_order = is_virtual_order
-        # Indicates whether the virtual order is frozen. Generation of activation codes is not allowed for frozen virtual orders.
+        # Indicates whether the virtual order is frozen. No more activation codes can be generated from a frozen order.
         self.is_virtual_order_frozen = is_virtual_order_frozen
-        # The type of the package. Valid values:
+        # The package type. Valid values:
         # 
-        # *   single_node_subscribe: Single-node Edition (Subscription).
-        # *   single_node_long_term: Single-node Edition (Long-term).
-        # *   primary_backup_subscribe: HA Edition (Subscription).
-        # *   primary_backup_long_term: HA Edition (Long-term).
-        # *   pre_generation_long_term: Pre-generated (Long-term).
+        # - single_node_subscribe: single node (subscription)
+        # 
+        # - single_node_long_term: single node (long-term)
+        # 
+        # - primary_backup_subscribe: primary/standby (subscription)
+        # 
+        # - primary_backup_long_term: primary/standby (long-term)
+        # 
+        # - pre_generation_long_term: pre-generated (long-term)
         self.package_type = package_type
-        # The validity period of the package. Valid values: 1 year and 30 years.
+        # The validity period of the package. Common options are one year or long-term (30 years).
         self.package_validity = package_validity
-        # The purchase channel. Valid values: aliyun_market and aliyun_public. aliyun_market indicates Alibaba Cloud Marketplace. aliyun_public indicates the PolarDB buy page.
+        # The purchase channel. Valid values: \\`aliyun_market\\` (Alibaba Cloud Marketplace) and \\`aliyun_public\\` (standard purchase page).
         self.purchase_channel = purchase_channel
-        # The ID of the virtual order.
+        # The virtual order ID.
         self.virtual_aliyun_order_id = virtual_aliyun_order_id
 
     def validate(self):

@@ -11,9 +11,14 @@ class CancelPolarFsFileQuotaRequest(DaraModel):
         file_path_ids: str = None,
         polar_fs_instance_id: str = None,
     ):
+        # The ID of the PolarDB cluster that the application depends on.
         self.dbcluster_id = dbcluster_id
+        # The file paths. Separate multiple paths with a comma (`,`).
+        # 
         # This parameter is required.
         self.file_path_ids = file_path_ids
+        # The ID of the Polarlakebase instance.
+        # 
         # This parameter is required.
         self.polar_fs_instance_id = polar_fs_instance_id
 

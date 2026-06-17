@@ -16,15 +16,22 @@ class DescribeDBInstancePerformanceRequest(DaraModel):
         resource_owner_id: int = None,
         start_time: str = None,
     ):
+        # The node ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The end time of the query. The time is in the yyyy-MM-ddTHH:mmZ format in UTC.
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # The performance metrics. Separate multiple metrics with commas (,). For more information, see [Performance parameters](https://help.aliyun.com/document_detail/141787.html).
         self.key = key
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The start time of the query. The time is in the yyyy-MM-ddTHH:mmZ format in UTC.
+        # 
         # This parameter is required.
         self.start_time = start_time
 

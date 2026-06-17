@@ -15,10 +15,13 @@ class DescribeAIDBClusterTasksRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The model operator type.
         self.kube_type = kube_type
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
+        # The ID of the PolarDB instance.
         self.relative_dbcluster_id = relative_dbcluster_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

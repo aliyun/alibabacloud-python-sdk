@@ -15,15 +15,15 @@ class DescribeScheduleTasksResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The result data.
+        # The result set.
         self.data = data
-        # The message that is returned for the request.
+        # The response message.
         # 
-        # >  If the request is successful, **Successful** is returned. If the request fails, an error message such as an error code is returned.
+        # > If the request is successful, **Successful** is returned. Otherwise, an error message is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -74,13 +74,13 @@ class DescribeScheduleTasksResponseBodyData(DaraModel):
         timer_infos: List[main_models.DescribeScheduleTasksResponseBodyDataTimerInfos] = None,
         total_record_count: int = None,
     ):
-        # The page number of the page returned.
+        # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The details of the scheduled tasks.
+        # Details of scheduled tasks.
         self.timer_infos = timer_infos
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -147,37 +147,39 @@ class DescribeScheduleTasksResponseBodyDataTimerInfos(DaraModel):
         task_cancel: bool = None,
         task_id: str = None,
     ):
-        # The type of the scheduled tasks.
+        # The task type.
         self.action = action
-        # The ID of the scheduled task.
+        # The ID of the scheduled O\\&M task.
         self.crontab_job_id = crontab_job_id
         # The cluster ID.
         self.dbcluster_id = dbcluster_id
-        # The description of the cluster.
+        # The cluster description.
         self.db_cluster_description = db_cluster_description
-        # The state of the cluster.
+        # The cluster status.
         self.db_cluster_status = db_cluster_status
-        # The ID of the order.
+        # The order ID.
         # 
-        # >  This parameter is returned only when you set the `Action` parameter to **CreateDBNodes** or **ModifyDBNodeClass**.
+        # > This parameter is returned only if `Action` is **CreateDBNodes** or **ModifyDBNodeClass**.
         self.order_id = order_id
-        # The latest start time of the task that you specified when you created the scheduled task. The time is displayed in UTC.
+        # The latest start time of the task. The time is in UTC.
         self.planned_end_time = planned_end_time
+        # The scheduled time for the transient switchover.
         self.planned_flashing_off_time = planned_flashing_off_time
-        # The earliest start time of the task that you specified when you created the scheduled task. The time is displayed in UTC.
+        # The scheduled start time of the task. The time is in UTC.
         self.planned_start_time = planned_start_time
-        # The expected start time of the task. The time is displayed in UTC.
+        # The estimated start time of the task. The time is in UTC.
         self.planned_time = planned_time
-        # The ID of the region in which the scheduled task runs.
+        # The region ID of the task.
         self.region = region
-        # The state of the scheduled task.
+        # The status of the task.
         self.status = status
         # Indicates whether the scheduled task can be canceled. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.task_cancel = task_cancel
-        # The ID of the task.
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):

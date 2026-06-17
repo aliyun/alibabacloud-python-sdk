@@ -14,12 +14,18 @@ class DeleteFirewallRulesRequest(DaraModel):
         resource_owner_id: int = None,
         rule_name_list: str = None,
     ):
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The names of the firewall rules to delete. You can specify multiple rule names. Separate the names with commas (,).
+        # 
+        # > Call the [DescribeFirewallRules](https://help.aliyun.com/document_detail/212573.html) operation to query the details of all firewall rules for the cluster, including the rule names.
+        # 
         # This parameter is required.
         self.rule_name_list = rule_name_list
 

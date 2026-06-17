@@ -20,15 +20,23 @@ class DescribePolarFsQuotaResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: str = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries returned on the current page.
         self.page_record_count = page_record_count
+        # The number of entries per page. Valid values: 5 to 50. Default value: 10.
         self.page_size = page_size
+        # The path of the directory.
         self.path = path
+        # The PolarFS instance ID.
         self.polar_fs_instance_id = polar_fs_instance_id
+        # The details of the rules.
         self.policy_items = policy_items
+        # The quota information.
         self.quota_items = quota_items
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -125,10 +133,15 @@ class DescribePolarFsQuotaResponseBodyQuotaItems(DaraModel):
         used_capacity: int = None,
         used_inodes: int = None,
     ):
+        # The capacity. Unit: bytes.
         self.capacity = capacity
+        # The total number of inodes.
         self.inodes = inodes
+        # The directory path.
         self.path = path
+        # The used capacity. Unit: bytes.
         self.used_capacity = used_capacity
+        # The number of used inodes.
         self.used_inodes = used_inodes
 
     def validate(self):
@@ -190,16 +203,37 @@ class DescribePolarFsQuotaResponseBodyPolicyItems(DaraModel):
         priority: int = None,
         size_limit: int = None,
     ):
+        # The TTL of the access time. Unit: seconds.
         self.access_ttl = access_ttl
+        # The TTL of the change time. Unit: seconds.
         self.change_ttl = change_ttl
+        # The rule description.
         self.description = description
+        # Indicates whether the rule is enabled. Valid values:
+        # 
+        # - **true**: The rule takes effect immediately for new events. This is the default value.
+        # 
+        # - **false**: The rule does not take effect for new events.
         self.enabled = enabled
+        # The glob pattern of paths to exclude.
+        # 
+        # - The pattern must start with `/` and supports glob syntax, including `*`, `?`, and `**`.
         self.exclude = exclude
+        # The maximum number of files in the directory.
         self.file_count_limit = file_count_limit
+        # The rule ID.
         self.id = id
+        # The glob pattern for paths to include.
+        # 
+        # - The pattern must start with `/` and supports glob syntax, including `*`, `?`, and `**`.
         self.include = include
+        # The rule name.
         self.name = name
+        # The priority of the quota rule.
         self.priority = priority
+        # The maximum total size of files in the directory. Unit: GB.
+        # 
+        # - The value must be greater than or equal to 1.
         self.size_limit = size_limit
 
     def validate(self):

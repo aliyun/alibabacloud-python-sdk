@@ -17,15 +17,27 @@ class CreateCronJobPolicyServerlessResponseBody(DaraModel):
         start_time: str = None,
         status: str = None,
     ):
+        # The action of the scheduled task. The value is fixed as `ModifyDBClusterServerlessConf`.
         self.action = action
+        # The Cron expression.
         self.cron_expression = cron_expression
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
+        # The end time of the task. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format and in UTC.
         self.end_time = end_time
+        # The ID of the scheduled task.
         self.job_id = job_id
+        # The region ID.
         self.region_id = region_id
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The start time of the task. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format and in UTC.
         self.start_time = start_time
+        # The status of the task. Valid values:
+        # 
+        # - `working`: The scheduled task is running.
+        # 
+        # - `finish`: The scheduled task is complete.
         self.status = status
 
     def validate(self):

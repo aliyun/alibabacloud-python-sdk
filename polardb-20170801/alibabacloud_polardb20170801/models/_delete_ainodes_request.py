@@ -12,7 +12,11 @@ class DeleteAINodesRequest(DaraModel):
         dbcluster_id: str = None,
         dbnode_id: List[str] = None,
     ):
+        # The cluster ID.
+        # 
+        # > Call the [DescribeAIDBClusters](https://api.aliyun.com/api/polardb/2017-08-01/DescribeAIDBClusters) operation to view the cluster ID.
         self.dbcluster_id = dbcluster_id
+        # The IDs of the nodes to delete.
         self.dbnode_id = dbnode_id
 
     def validate(self):

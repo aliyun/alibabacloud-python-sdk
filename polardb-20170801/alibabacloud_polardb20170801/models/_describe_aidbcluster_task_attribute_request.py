@@ -15,10 +15,15 @@ class DescribeAIDBClusterTaskAttributeRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The ID of the cluster.
         self.dbcluster_id = dbcluster_id
+        # The query mode. Valid value:
+        # 
+        # - **RelatedAITask**: Returns the task details.
         self.describe_type = describe_type
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

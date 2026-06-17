@@ -16,14 +16,25 @@ class DescribeSQLRateLimitingRulesRequest(DaraModel):
         resource_owner_id: int = None,
         rule_name_list: str = None,
     ):
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The number of entries per page.
+        # 
+        # Maximum value: 100.
+        # 
+        # Default value: 10.
         self.max_results = max_results
+        # The token for the next page of results.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The name of the SQL throttling rule that you want to query. You can specify multiple rule names for a batch query. Separate the rule names with commas (,).
+        # 
+        # > Call the [DescribeSQLRateLimitingRules](https://help.aliyun.com/document_detail/212573.html) operation to query the details of all SQL throttling rules for the cluster, including the rule names.
         self.rule_name_list = rule_name_list
 
     def validate(self):

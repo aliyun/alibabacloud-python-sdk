@@ -15,11 +15,17 @@ class DescribePolarClawCronJobsRequest(DaraModel):
         job_id_list: List[str] = None,
         run_limit: int = None,
     ):
+        # Application ID
+        # 
         # This parameter is required.
         self.application_id = application_id
+        # Include disabled tasks. Default is true.
         self.include_disabled = include_disabled
+        # Include run history. Default is false.
         self.include_runs = include_runs
+        # Filter by Job ID list
         self.job_id_list = job_id_list
+        # Maximum number of run history entries per task. Default is 10.
         self.run_limit = run_limit
 
     def validate(self):

@@ -24,23 +24,25 @@ class TempModifyDBNodeRequest(DaraModel):
         restore_time: str = None,
     ):
         self.auto_use_coupon = auto_use_coupon
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value. Make sure that the value is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length.
+        # A client token to ensure the idempotence of the request. Generate a unique token for each request. The token is case-sensitive and can be up to 64 ASCII characters in length.
         self.client_token = client_token
         # The cluster ID.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The information about the scaled/added node.
+        # The information about the nodes to upgrade or add.
         # 
         # This parameter is required.
         self.dbnode = dbnode
-        # The type of configuration change. Set the value to **TempUpgrade**.
+        # The modification type. The value is fixed to **TempUpgrade**.
         # 
         # This parameter is required.
         self.modify_type = modify_type
         # The operation type. Valid values:
         # 
-        # *   **Modify**: temporarily upgrades the configuration of the cluster.
+        # - **Modify**: temporary upgrade
+        # 
+        # - **Add**: temporarily add a node
         # 
         # This parameter is required.
         self.operation_type = operation_type
@@ -49,9 +51,9 @@ class TempModifyDBNodeRequest(DaraModel):
         self.promotion_code = promotion_code
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The rollback time of the configuration for the temporary upgrade. Specify the time in the ISO 8601 standard in the YYYY-MM-DD hh:mm:ss format.
+        # The time to revert the temporary upgrade. The format is YYYY-MM-DD hh:mm:ss.
         # 
-        # >  The rollback time cannot be 1 hour earlier than the current time and cannot be later than one day before the time when the cluster expires.
+        # > The revert time must be at least 1 hour later than the current time. It must also be at least 1 day before the cluster expires.
         # 
         # This parameter is required.
         self.restore_time = restore_time
@@ -156,15 +158,13 @@ class TempModifyDBNodeRequestDBNode(DaraModel):
         target_class: str = None,
         zone_id: str = None,
     ):
-        # The specifications of the scaled/added node.
+        # The specifications of the node to upgrade or add.
         # 
-        # > 
-        # 
-        # *   The specification of the new node must be consistent with the specifications of the original nodes.
-        # 
-        # *   You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to view the specifications of the original nodes.
+        # > - When you add a node, the node specifications must be the same as the specifications of the existing nodes.
+        # >
+        # > - For more information about the specifications of existing cluster nodes, see [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html).
         self.target_class = target_class
-        # The ID of the zone in which the added node is deployed. It must be the same zone as the original nodes.
+        # The zone for the new node. The zone must be the same as the zone of the existing nodes.
         self.zone_id = zone_id
 
     def validate(self):

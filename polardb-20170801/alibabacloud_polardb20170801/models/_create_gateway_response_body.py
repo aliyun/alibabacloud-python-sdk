@@ -11,9 +11,11 @@ class CreateGatewayResponseBody(DaraModel):
         order_id: str = None,
         request_id: str = None,
     ):
+        # The gateway instance ID.
         self.gw_cluster_id = gw_cluster_id
+        # The order ID.
         self.order_id = order_id
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

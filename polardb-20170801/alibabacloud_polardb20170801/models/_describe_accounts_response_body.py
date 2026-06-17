@@ -17,7 +17,7 @@ class DescribeAccountsResponseBody(DaraModel):
     ):
         # The details of the account.
         self.accounts = accounts
-        # The page number of the page returned.
+        # The page number. Pages start from page 1.
         self.page_number = page_number
         # The number of entries returned per page.
         self.page_record_count = page_record_count
@@ -81,28 +81,33 @@ class DescribeAccountsResponseBodyAccounts(DaraModel):
         account_type: str = None,
         database_privileges: List[main_models.DescribeAccountsResponseBodyAccountsDatabasePrivileges] = None,
     ):
-        # The description of the account.
+        # The description of the database account.
         self.account_description = account_description
-        # The locking state of the account. Valid values:
+        # The lock status of the account. Valid values:
         # 
-        # *   **UnLock**
-        # *   **Lock**
+        # - **UnLock**: The account is not locked.
+        # 
+        # - **Lock**: The account is locked.
         self.account_lock_state = account_lock_state
-        # The name of the account.
+        # The name of the database account.
         self.account_name = account_name
         # The validity period of the password.
         self.account_password_valid_time = account_password_valid_time
-        # The state of the account. Valid values:
+        # The status of the database account. Valid values:
         # 
-        # *   **Creating**: The account is being created.
-        # *   **Available**: The account is available.
-        # *   **Deleting**: The account is being deleted
+        # - **Creating**: The account is being created.
+        # 
+        # - **Available**: The account is available.
+        # 
+        # - **Deleting**: The account is being deleted.
         self.account_status = account_status
         # The type of the account. Valid values:
         # 
-        # *   **Normal**: standard account.
-        # *   **Super**: privileged account.
-        # *   **ReadOnly**: global read-only account.
+        # - **Normal**: standard account.
+        # 
+        # - **Super**: privileged account.
+        # 
+        # - **ReadOnly**: global read-only account.
         self.account_type = account_type
         # The list of database permissions that are granted to the account.
         self.database_privileges = database_privileges
@@ -177,9 +182,9 @@ class DescribeAccountsResponseBodyAccountsDatabasePrivileges(DaraModel):
         account_privilege: str = None,
         dbname: str = None,
     ):
-        # The permissions that the account is granted on the database. Valid values:
+        # The permissions of the account.
         self.account_privilege = account_privilege
-        # The name of the database.
+        # The database name.
         self.dbname = dbname
 
     def validate(self):

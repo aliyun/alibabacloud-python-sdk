@@ -14,12 +14,17 @@ class DeleteEncryptionDBRolePrivilegeRequest(DaraModel):
         resource_owner_id: int = None,
         role_privilege_name_list: str = None,
     ):
+        # The cluster ID.
+        # 
+        # > Call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of all clusters in your account, such as the cluster ID.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The name of the role permission.
         self.role_privilege_name_list = role_privilege_name_list
 
     def validate(self):

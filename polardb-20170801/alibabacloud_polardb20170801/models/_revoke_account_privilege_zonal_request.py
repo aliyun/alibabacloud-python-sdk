@@ -16,11 +16,18 @@ class RevokeAccountPrivilegeZonalRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The account name.
+        # 
         # This parameter is required.
         self.account_name = account_name
+        # A client-generated token that ensures the idempotence of the request. The token must be unique for each request. It is case-sensitive and cannot exceed 64 ASCII characters.
         self.client_token = client_token
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The name of the database. To specify multiple databases, separate the names with a comma (,).
+        # 
         # This parameter is required.
         self.dbname = dbname
         self.owner_account = owner_account

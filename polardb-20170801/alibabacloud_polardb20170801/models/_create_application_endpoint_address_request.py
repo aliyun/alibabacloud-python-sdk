@@ -11,10 +11,16 @@ class CreateApplicationEndpointAddressRequest(DaraModel):
         endpoint_id: str = None,
         net_type: str = None,
     ):
+        # The application ID.
+        # 
         # This parameter is required.
         self.application_id = application_id
+        # The service endpoint ID.
+        # 
         # This parameter is required.
         self.endpoint_id = endpoint_id
+        # The network type of the new connection address. The value must be `Public`, which indicates an Internet address.
+        # 
         # This parameter is required.
         self.net_type = net_type
 

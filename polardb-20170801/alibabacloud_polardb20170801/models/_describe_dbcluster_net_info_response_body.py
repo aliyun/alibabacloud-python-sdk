@@ -15,9 +15,11 @@ class DescribeDBClusterNetInfoResponseBody(DaraModel):
         dbnode_net_infos: main_models.DescribeDBClusterNetInfoResponseBodyDBNodeNetInfos = None,
         request_id: str = None,
     ):
+        # The network type of the cluster. The value is fixed as **VPC**.
         self.cluster_network_type = cluster_network_type
         self.dbcluster_net_infos = dbcluster_net_infos
         self.dbnode_net_infos = dbnode_net_infos
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

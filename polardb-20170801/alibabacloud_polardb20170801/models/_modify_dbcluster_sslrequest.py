@@ -17,31 +17,29 @@ class ModifyDBClusterSSLRequest(DaraModel):
         sslauto_rotate: str = None,
         sslenabled: str = None,
     ):
-        # The ID of the cluster.
+        # The cluster ID.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The ID of the endpoint.
         # 
-        # > 
-        # 
-        # *   This parameter is required for PolarDB for MySQL clusters.
-        # 
-        # *   This parameter is not required for PolarDB for PostgreSQL or PolarDB for PostgreSQL (Compatible with Oracle) clusters. By default, SSL encryption is enabled for all endpoints of the clusters.
-        # 
-        # *   You can call the [DescribeDBClusterSSL](https://help.aliyun.com/document_detail/2319159.html) operation to view the details of the endpoint.
+        # > - This parameter is required for PolarDB for MySQL clusters.
+        # >
+        # > - This parameter is not required for PolarDB for PostgreSQL or PolarDB for PostgreSQL (Compatible with Oracle) clusters. By default, SSL encryption is enabled for all endpoints of the clusters.
+        # >
+        # > - You can call the [DescribeDBClusterSSL](https://help.aliyun.com/document_detail/2319159.html) operation to view the details of the endpoint.
         self.dbendpoint_id = dbendpoint_id
-        # The network type supported by the endpoint that is specified by **DBEndpointId**. Valid values:
+        # The network type of the endpoint. The value must be the same as the network type of the endpoint specified by the **DBEndpointId** parameter. Valid values:
         # 
-        # *   **Public**
-        # *   **Private**
-        # *   **Inner**
+        # - **Public**
         # 
-        # > 
+        # - **Private**
         # 
-        # *   This parameter is required for a PolarDB for MySQL cluster.
+        # - **Inner**
         # 
-        # *   This parameter is not required for a PolarDB for Oracle or PolarDB for PostgreSQL cluster. By default, SSL encryption is enabled for all endpoints.
+        # > * This parameter is required for PolarDB for MySQL clusters.
+        # >
+        # > * This parameter is not required for PolarDB for PostgreSQL or PolarDB for PostgreSQL (Compatible with Oracle) clusters. By default, SSL encryption is enabled for all endpoints of the clusters.
         self.net_type = net_type
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -49,16 +47,19 @@ class ModifyDBClusterSSLRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # Specifies whether automatic rotation of SSL certificates is enabled.
         # 
-        # *   **Enable**: The feature is enabled.
-        # *   **Disable**: The feature is disabled.
+        # - **Enable**
+        # 
+        # - **Disable**
         self.sslauto_rotate = sslauto_rotate
         # The SSL encryption status. Valid values:
         # 
-        # *   **Disable**: SSL encryption is disabled.
-        # *   **Enable**: SSL encryption is enabled.
-        # *   **Update**: The SSL certificate is updated.
+        # - **Disabled**
         # 
-        # > After you enable SSL encryption or update the SSL certificate, you must download and configure the certificate. For more information, see [Configure SSL encryption](https://help.aliyun.com/document_detail/153182.html).
+        # - **Enabled**
+        # 
+        # - **Update**: The SSL certificate is updated.
+        # 
+        # > After you enable SSL encryption or update the SSL certificate, you must download and configure the certificate. See [Configure SSL encryption](https://help.aliyun.com/document_detail/153182.html).
         self.sslenabled = sslenabled
 
     def validate(self):

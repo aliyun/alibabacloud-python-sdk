@@ -17,12 +17,25 @@ class ContinueDBClusterMigrationRequest(DaraModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
+        # The ID of the cluster.
+        # 
+        # > Call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query information about all clusters in the destination region, including cluster IDs.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # Specifies whether to skip the current error. Valid values:
+        # 
+        # **true**: Skips the error.
+        # 
+        # **false**: Does not skip the error.
         self.force_switch = force_switch
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the region.
+        # 
+        # > For more information, see [DescribeRegions](https://help.aliyun.com/document_detail/98041.html).
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

@@ -22,30 +22,32 @@ class TransformDBClusterPayTypeRequest(DaraModel):
         used_time: str = None,
     ):
         self.auto_use_coupon = auto_use_coupon
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value. Make sure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # A client token to ensure the idempotence of the request. The client generates the token, but you must make sure that the token is unique among different requests. The token is case-sensitive and can be up to 64 ASCII characters in length.
         self.client_token = client_token
-        # The cluster ID.
+        # The ID of the PolarDB cluster.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The billing method of the cluster. Valid values:
+        # The billing method of the instance. Valid values:
         # 
-        # *   **Postpaid**: pay-as-you-go.
-        # *   **Prepaid**: subscription.
+        # - **Postpaid**: pay-as-you-go
+        # 
+        # - **Prepaid**: subscription
         # 
         # This parameter is required.
         self.pay_type = pay_type
-        # The renewal cycle of the cluster. Valid values:
+        # The unit of the subscription duration. Valid values:
         # 
-        # *   **Year**
-        # *   **Month**
+        # - **Year**
         # 
-        # >  This parameter is required if you set the **PayType** parameter to **Prepaid**.
+        # - **Month**
+        # 
+        # > This parameter is required when you set **PayType** to **Prepaid**.
         self.period = period
         self.promotion_code = promotion_code
-        # The ID of the region.
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -53,12 +55,13 @@ class TransformDBClusterPayTypeRequest(DaraModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The subscription duration of the cluster. Valid values:
+        # The subscription duration. Valid values:
         # 
-        # *   If the **Period** parameter is set to **Year**, the **UsedTime** parameter can be set to 1, 2, or 3.
-        # *   If the **Period** parameter is set to **Month**, the **UsedTime** parameter can be set to 1, 2, 3, 4, 5, 6, 7, 8, or 9.
+        # - If you set **Period** to **Year**, the value of **UsedTime** can be 1, 2, or 3.
         # 
-        # >  This parameter is required if you set the **PayType** parameter to **Prepaid**.
+        # - If you set **Period** to **Month**, the value of **UsedTime** can be an integer from 1 to 9.
+        # 
+        # > This parameter is required when you set **PayType** to **Prepaid**.
         self.used_time = used_time
 
     def validate(self):

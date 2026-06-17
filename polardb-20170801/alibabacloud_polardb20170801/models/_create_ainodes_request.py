@@ -13,7 +13,11 @@ class CreateAINodesRequest(DaraModel):
         dbcluster_id: str = None,
         dbnodes: List[main_models.CreateAINodesRequestDBNodes] = None,
     ):
+        # The cluster ID.
+        # 
+        # > Call the [DescribeAIDBClusters](https://api.aliyun.com/api/polardb/2017-08-01/DescribeAIDBClusters) operation to query information about all clusters in your account, including cluster IDs.
         self.dbcluster_id = dbcluster_id
+        # The information about the nodes to add.
         self.dbnodes = dbnodes
 
     def validate(self):
@@ -55,6 +59,7 @@ class CreateAINodesRequestDBNodes(DaraModel):
         self,
         dbnode_class: str = None,
     ):
+        # The node specifications.
         self.dbnode_class = dbnode_class
 
     def validate(self):

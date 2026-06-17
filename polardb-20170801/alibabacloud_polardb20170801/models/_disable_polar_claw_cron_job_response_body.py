@@ -14,11 +14,17 @@ class DisablePolarClawCronJobResponseBody(DaraModel):
         ok: bool = None,
         request_id: str = None,
     ):
+        # The ID of the application.
         self.application_id = application_id
+        # The response status code.
         self.code = code
+        # The ID of the disabled job.
         self.job_id = job_id
+        # The response message.
         self.message = message
+        # Indicates whether the operation was successful. A value of `true` indicates success.
         self.ok = ok
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

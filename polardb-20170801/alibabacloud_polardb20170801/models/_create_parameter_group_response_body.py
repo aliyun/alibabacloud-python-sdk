@@ -12,9 +12,9 @@ class CreateParameterGroupResponseBody(DaraModel):
     ):
         # The ID of the parameter template.
         # 
-        # > You can call the [DescribeParameterGroups](https://help.aliyun.com/document_detail/207178.html) operation to query the details of all parameter templates of a specified region, such as the ID of a parameter template.
+        # > You can call the [DescribeParameterGroups](https://help.aliyun.com/document_detail/207178.html) operation to query the list of parameter templates in a region, including their IDs.
         self.parameter_group_id = parameter_group_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

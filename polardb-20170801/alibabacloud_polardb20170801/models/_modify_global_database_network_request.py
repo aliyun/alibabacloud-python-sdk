@@ -17,22 +17,25 @@ class ModifyGlobalDatabaseNetworkRequest(DaraModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
-        # Create a global domain
+        # Specifies whether to create a global domain name.
         self.enable_global_domain_name = enable_global_domain_name
-        # The description of the GDN. The description must meet the following requirements:
+        # The description of the GDN. It must meet the following requirements:
         # 
-        # *   The description cannot start with http:// or https://.
-        # *   The description must start with a letter.
-        # *   The description can contain letters, digits, underscores (_), and hyphens (-).
-        # *   The description must be 2 to 126 characters in length.
+        # - Cannot start with http\\:// or https\\://.
+        # 
+        # - Must start with a letter or a Chinese character.
+        # 
+        # - Can contain letters, Chinese characters, digits, underscores (_), and hyphens (-).
+        # 
+        # - Must be 2 to 126 characters in length.
         self.gdndescription = gdndescription
-        # The GDN ID.
+        # The ID of the GDN.
         # 
         # This parameter is required.
         self.gdnid = gdnid
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

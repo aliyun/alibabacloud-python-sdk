@@ -23,25 +23,46 @@ class CreatePolarClawCronJobShrinkRequest(DaraModel):
         session_target: str = None,
         wake_mode: str = None,
     ):
+        # The ID of the agent that executes the task.
         self.agent_id = agent_id
+        # The application ID.
+        # 
         # This parameter is required.
         self.application_id = application_id
+        # Specifies whether to automatically delete the job after its first execution. This is useful for one-time tasks. Default: `false`.
         self.delete_after_run = delete_after_run
+        # The configuration for delivering task execution results.
         self.delivery_shrink = delivery_shrink
+        # A description of the task.
         self.description = description
+        # Specifies whether the cron job is enabled. Default: `true`.
         self.enabled = enabled
+        # The failure alert configuration.
         self.failure_alert_shrink = failure_alert_shrink
+        # The unique name of the task.
+        # 
         # This parameter is required.
         self.name = name
+        # The execution payload configuration.
+        # 
         # This parameter is required.
         self.payload_shrink = payload_shrink
+        # Specifies whether to restart the gateway upon job creation. Default: `true`.
         self.restart = restart
+        # Specifies whether to run the job once immediately upon creation. Default: `false`.
         self.run_immediately = run_immediately
+        # The schedule configuration.
+        # 
         # This parameter is required.
         self.schedule_shrink = schedule_shrink
+        # The session routing key, which determines the conversation session for the task.
         self.session_key = session_key
+        # The session target. Valid values are `main`, `isolated`, and `current`.
+        # 
         # This parameter is required.
         self.session_target = session_target
+        # The wake mode for the agent. Valid values are `now` and `next-heartbeat`.
+        # 
         # This parameter is required.
         self.wake_mode = wake_mode
 

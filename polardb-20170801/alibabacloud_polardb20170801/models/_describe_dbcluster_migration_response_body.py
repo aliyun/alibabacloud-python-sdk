@@ -25,54 +25,63 @@ class DescribeDBClusterMigrationResponseBody(DaraModel):
         src_db_type: str = None,
         topologies: str = None,
     ):
-        # The mode of the source ApsaraDB RDS instance. Valid values:
-        # 
-        # *   **rw**: read and write mode
-        # *   **ro**: read-only mode
+        # The comments on the migration exception. If no exception occurs during the migration, an empty value is returned.
         self.comment = comment
-        # The port number.
+        # The details of the PolarDB endpoints.
         self.dbcluster_endpoint_list = dbcluster_endpoint_list
-        # The replication latency between the ApsaraDB RDS instance and the PolarDB cluster. Unit: seconds.
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
-        # Details about the endpoints.
+        # The read/write mode of the cluster. Valid values:
+        # 
+        # - **rw**: Read and write.
+        # 
+        # - **ro**: Read-only.
         self.dbcluster_read_write_mode = dbcluster_read_write_mode
-        # The vSwitch ID.
+        # The replication delay between the ApsaraDB RDS instance and the PolarDB cluster, in seconds.
         self.delayed_seconds = delayed_seconds
-        # The network type of the endpoint. Valid values:
-        # 
-        # *   **Public**: the public endpoint
-        # *   **Private**: the internal endpoint (VPC)
-        # *   **Inner**: the internal endpoint (classic network)
+        # The ID of the sync task.
         self.dts_instance_id = dts_instance_id
-        # The mode of the PolarDB cluster. Valid values:
-        # 
-        # *   **rw**: read and write mode
-        # *   **ro**: read-only mode
+        # The time when the replication relationship between the ApsaraDB RDS instance and the PolarDB cluster expires. The time is in the `YYYY-MM-DDThh:mm:ssZ` format and is displayed in UTC.
         self.expired_time = expired_time
-        # The endpoint.
+        # The migration status of the PolarDB cluster. Valid values:
+        # 
+        # - **NO_MIGRATION**: No migration task is created.
+        # 
+        # - **RDS2POLARDB_CLONING**: Data is being cloned.
+        # 
+        # - **RDS2POLARDB_SYNCING**: Data is being synchronized. In this state, the PolarDB cluster is read-only, and the ApsaraDB RDS instance is read-write.
+        # 
+        # - **SWITCHING**: The database is being switched.
+        # 
+        # - **POLARDB2RDS_SYNCING**: The database switch is complete. In this state, the PolarDB cluster is read-write, and the ApsaraDB RDS instance is read-only. Change the endpoints in your application.
+        # 
+        # - **ROLLBACK**: The migration is being rolled back. After the rollback is complete, the migration status changes to **RDS2POLARDB_SYNCING**.
+        # 
+        # - **CLOSING_MIGRATION**: The migration task is being shut down.
         self.migration_status = migration_status
-        # The endpoints of the ApsaraDB RDS instance.
+        # The details of the ApsaraDB RDS endpoints.
         self.rds_endpoint_list = rds_endpoint_list
-        # The ID of the synchronous task.
+        # The read/write mode of the source ApsaraDB RDS instance. Valid values:
+        # 
+        # - **rw**: Read and write.
+        # 
+        # - **ro**: Read-only.
         self.rds_read_write_mode = rds_read_write_mode
-        # The ID of the source ApsaraDB RDS instance.
+        # The request ID.
         self.request_id = request_id
-        # The endpoints of the ApsaraDB RDS instance.
+        # The ID of the source ApsaraDB RDS instance.
         self.source_rdsdbinstance_id = source_rdsdbinstance_id
         # The type of the source database. Valid values:
         # 
-        # - **PolarDBMySQL**: The source database is a PolarDB for MySQL database when the major version of your PolarDB cluster is upgraded.
-        # - **RDS**: The source database is an ApsaraDB RDS database when data is migrated from ApsaraDB RDS to PolarDB for MySQL.
-        self.src_db_type = src_db_type
-        # The migration state of the PolarDB cluster. Valid values:
+        # - **PolarDBMySQL**: The source database for a major version upgrade of a PolarDB cluster.
         # 
-        # *   **NO_MIGRATION**: No migration task is running.
-        # *   **RDS2POLARDB_CLONING**: Data is being replicated.
-        # *   **RDS2POLARDB_SYNCING**: Data is being replicated. During the replication, the PolarDB cluster is running in read-only mode and the source ApsaraDB RDS instance is running in read and write mode.
-        # *   **SWITCHING**: Databases are being switched.
-        # *   **POLARDB2RDS_SYNCING**: Databases are switched. The PolarDB cluster is running in read and write mode and the source ApsaraDB RDS instance is running in read-only mode. In this state, you can modify the endpoints for your applications.
-        # *   **ROLLBACK**: The migration is being rolled back. After the rollback is complete, the value **RDS2POLARDB_SYNCING** is returned.
-        # *   **CLOSING_MIGRATION**: The migration task is being terminated.
+        # - **RDS**: The source database for migrating data from an ApsaraDB RDS instance to a PolarDB for MySQL cluster.
+        self.src_db_type = src_db_type
+        # The data synchronization relationship. Valid values:
+        # 
+        # - **RDS2POLARDB**: Data is synchronized from the ApsaraDB RDS instance to the PolarDB cluster.
+        # 
+        # - **POLARDB2RDS**: Data is synchronized from the PolarDB cluster to the ApsaraDB RDS instance.
         self.topologies = topologies
 
     def validate(self):
@@ -198,16 +207,17 @@ class DescribeDBClusterMigrationResponseBodyRdsEndpointList(DaraModel):
         dbendpoint_id: str = None,
         endpoint_type: str = None,
     ):
-        # The VPC ID.
+        # The details of the connection strings.
         self.address_items = address_items
         # The instance type.
         self.custins_type = custins_type
-        # The ID of the endpoint.
+        # The endpoint ID.
         self.dbendpoint_id = dbendpoint_id
         # The type of the endpoint. Valid values:
         # 
-        # - **Normal**: the standard endpoint
-        # - **ReadWriteSplitting**: the read/write splitting endpoint
+        # - **Normal**: A regular endpoint.
+        # 
+        # - **ReadWriteSplitting**: A read/write splitting endpoint.
         self.endpoint_type = endpoint_type
 
     def validate(self):
@@ -267,31 +277,29 @@ class DescribeDBClusterMigrationResponseBodyRdsEndpointListAddressItems(DaraMode
         vpcid: str = None,
         v_switch_id: str = None,
     ):
-        # Indicates whether SSL encryption is enabled. Valid values:
-        # 
-        # *   **Enabled**
-        # *   **Disabled**
+        # The connection string.
         self.connection_string = connection_string
-        # The type of the source database. Valid values:
-        # 
-        # *   **PolarDBMySQL**: The source database is a PolarDB for MySQL database when the major version of your PolarDB cluster is upgraded.
-        # *   **RDS**: The source database is an ApsaraDB RDS database when data is migrated from ApsaraDB RDS to PolarDB for MySQL.
+        # The IP address.
         self.ipaddress = ipaddress
-        # The ID of the endpoint.
-        self.net_type = net_type
-        # The type of the endpoint. Valid values:
+        # The network type of the endpoint. Valid values:
         # 
-        # *   **Normal**: the standard endpoint
-        # *   **ReadWriteSplitting**: the read/write splitting endpoint
+        # - **Public**: An endpoint for the Internet.
+        # 
+        # - **Private**: A private endpoint.
+        # 
+        # - **Inner**: A private endpoint in a classic network.
+        self.net_type = net_type
+        # The port.
         self.port = port
         # Indicates whether SSL encryption is enabled. Valid values:
         # 
-        # - **Enabled**
-        # - **Disabled**
+        # - **Enabled**: SSL encryption is enabled.
+        # 
+        # - **Disabled**: SSL encryption is disabled.
         self.sslenabled = sslenabled
-        # The instance type.
+        # The ID of the VPC.
         self.vpcid = vpcid
-        # The IP address of the endpoint.
+        # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -358,16 +366,23 @@ class DescribeDBClusterMigrationResponseBodyDBClusterEndpointList(DaraModel):
         endpoint_type: str = None,
         read_write_mode: str = None,
     ):
-        # The VPC ID.
+        # The details of the connection strings.
         self.address_items = address_items
-        # The expiration time of the replication between ApsaraDB RDS and PolarDB. The time is in the `YYYY-MM-DDThh:mm:ssZ` format. The time is displayed in UTC.
+        # The endpoint ID.
         self.dbendpoint_id = dbendpoint_id
-        # The ID of the cluster.
-        self.endpoint_type = endpoint_type
-        # The synchronization direction. Valid values:
+        # The type of the endpoint. Valid values:
         # 
-        # *   **RDS2POLARDB**: Data is replicated from an ApsaraDB RDS instance to a PolarDB cluster.
-        # *   **POLARDB2RDS**: Data is replicated from a PolarDB cluster to an ApsaraDB RDS instance.
+        # - **Cluster**: The default cluster endpoint.
+        # 
+        # - **Primary**: The primary endpoint.
+        # 
+        # - **Custom**: A custom cluster endpoint.
+        self.endpoint_type = endpoint_type
+        # The read/write mode. Valid values:
+        # 
+        # - ReadWrite: Read and write (automatic read/write splitting).
+        # 
+        # - ReadOnly (Default): Read-only.
         self.read_write_mode = read_write_mode
 
     def validate(self):
@@ -427,29 +442,29 @@ class DescribeDBClusterMigrationResponseBodyDBClusterEndpointListAddressItems(Da
         vpcid: str = None,
         v_switch_id: str = None,
     ):
-        # Indicates whether SSL encryption is enabled. Valid values:
-        # 
-        # *   **Enabled**
-        # *   **Disabled**
+        # The connection string.
         self.connection_string = connection_string
-        # The description of a migration exception. If no exception occurs during the migration, an empty string is returned.
+        # The IP address.
         self.ipaddress = ipaddress
-        # The ID of the endpoint.
+        # The network type of the endpoint. Valid values:
+        # 
+        # - **Public**: An endpoint for the Internet.
+        # 
+        # - **Private**: A private endpoint.
+        # 
+        # - **Inner**: A private endpoint in a classic network.
         self.net_type = net_type
-        # The type of the endpoint. Valid values:
-        # 
-        # *   **Cluster**: the default cluster endpoint
-        # *   **Primary**: the primary endpoint
-        # *   **Custom**: the custom endpoint
+        # The port.
         self.port = port
-        # The ID of the request.
-        self.sslenabled = sslenabled
-        # The read/write mode. Valid values:
+        # Indicates whether Secure Sockets Layer (SSL) encryption is enabled. Valid values:
         # 
-        # *   ReadWrite: receives and forwards read and write requests (automatic read-write splitting).
-        # *   ReadOnly (default): receives and forwards read requests only.
+        # - **Enabled**: SSL encryption is enabled.
+        # 
+        # - **Disabled**: SSL encryption is disabled.
+        self.sslenabled = sslenabled
+        # The ID of the virtual private cloud (VPC).
         self.vpcid = vpcid
-        # The IP address of the endpoint.
+        # The ID of the virtual switch.
         self.v_switch_id = v_switch_id
 
     def validate(self):

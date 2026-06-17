@@ -19,37 +19,45 @@ class DescribeDBClusterTDEResponseBody(DaraModel):
     ):
         # Indicates whether automatic key rotation is allowed. Valid values:
         # 
-        # *   **Enabled**: Automatic key rotation is allowed.
-        # *   **Disabled**: Automatic key rotation is not allowed.
+        # - **Enabled**: Automatic key rotation is allowed.
         # 
-        # >  This parameter is returned only for a PolarDB for PostgreSQL or PolarDB for PostgreSQL (Compatible with Oracle) cluster.
+        # - **Disabled**: Automatic key rotation is not allowed.
+        # 
+        # > This parameter is returned only when the database engine is compatible with PostgreSQL or Oracle syntax.
         self.automatic_rotation = automatic_rotation
-        # The ID of the cluster.
+        # The unique ID of the cluster.
         self.dbcluster_id = dbcluster_id
-        # Indicates whether automatic encryption is enabled for new tables. Valid values:
+        # Indicates whether automatic encryption is enabled for all newly created tables. Valid values:
         # 
-        # *   **ON**
-        # *   **OFF**
+        # - **ON**: Automatic encryption is enabled.
         # 
-        # >  This parameter is returned only for a PolarDB for MySQL cluster.
+        # - **OFF**: Automatic encryption is disabled.
+        # 
+        # > This parameter is returned only when the database engine is compatible with MySQL.
         self.encrypt_new_tables = encrypt_new_tables
         # The ID of the custom key.
         self.encryption_key = encryption_key
+        # The status of the key. Valid values:
+        # 
+        # - **Enabled**: The key is enabled.
+        # 
+        # - **Disabled**: The key is disabled.
         self.encryption_key_status = encryption_key_status
-        # The ID of the request.
+        # The unique ID of the request.
         self.request_id = request_id
-        # The automatic key rotation period configured in Key Management Service (KMS). If no automatic key rotation period is configured, 0s is returned. Unit: seconds.
+        # The automatic key rotation interval configured in KMS. If no automatic key rotation interval is set, 0 s is returned. Unit: s.
         # 
-        # For example, if the rotation period is set to 7 days, 604800s is returned.
+        # For example, if the rotation interval is 7 days, 604800 s is returned.
         # 
-        # >  This parameter is returned only for a PolarDB for PostgreSQL or PolarDB for PostgreSQL (Compatible with Oracle) cluster whose AutomaticRotation parameter is set to Enabled.
+        # > This parameter is returned only when the database engine is compatible with PostgreSQL or Oracle syntax, and the value of `AutomaticRotation` is `Enabled`.
         self.rotation_interval = rotation_interval
-        # The region where the TDE key resides.
+        # The region where the TDE key is located.
         self.tderegion = tderegion
         # Indicates whether TDE encryption is enabled. Valid values:
         # 
-        # *   **Enabled**
-        # *   **Disabled**
+        # - **Enabled**: TDE encryption is enabled.
+        # 
+        # - **Disabled**: TDE encryption is disabled.
         self.tdestatus = tdestatus
 
     def validate(self):

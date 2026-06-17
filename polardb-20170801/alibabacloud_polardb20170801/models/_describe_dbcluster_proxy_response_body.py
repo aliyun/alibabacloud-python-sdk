@@ -16,10 +16,15 @@ class DescribeDBClusterProxyResponseBody(DaraModel):
         dbproxy_cluster_status: str = None,
         request_id: str = None,
     ):
+        # A list of network instances loaded by the Cloud Enterprise Network (CEN) instance.
         self.child_instances = child_instances
+        # The proxy cluster ID.
         self.dbproxy_cluster_id = dbproxy_cluster_id
+        # The number of proxy nodes.
         self.dbproxy_cluster_num = dbproxy_cluster_num
+        # The status of the proxy cluster.
         self.dbproxy_cluster_status = dbproxy_cluster_status
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -84,11 +89,49 @@ class DescribeDBClusterProxyResponseBodyChildInstances(DaraModel):
         dbnode_status: str = None,
         host_name: str = None,
     ):
+        # The node specifications. For more information, see the following documents:
+        # 
+        # - PolarDB for MySQL: [Compute node specifications](https://help.aliyun.com/document_detail/102542.html).
+        # 
+        # - PolarDB for Oracle: [Compute node specifications](https://help.aliyun.com/document_detail/207921.html).
+        # 
+        # - PolarDB for PostgreSQL: [Compute node specifications](https://help.aliyun.com/document_detail/209380.html).
         self.dbnode_class = dbnode_class
+        # The private IP address of the database cluster node.
         self.dbnode_ip = dbnode_ip
+        # The ID of the database cluster node.
         self.dbnode_id = dbnode_id
+        # The port of the database cluster node.
         self.dbnode_port = dbnode_port
+        # The status of the node. Valid values:
+        # 
+        # - **Creating**: The node is being created.
+        # 
+        # - **Running**: The node is running.
+        # 
+        # - **Deleting**: The node is being deleted.
+        # 
+        # - **Rebooting**: The node is being restarted.
+        # 
+        # - **DBNodeCreating**: A node is being added.
+        # 
+        # - **DBNodeDeleting**: A node is being deleted.
+        # 
+        # - **ClassChanging**: The node specifications are being changed.
+        # 
+        # - **NetAddressCreating**: A network connection is being created.
+        # 
+        # - **NetAddressDeleting**: A network connection is being deleted.
+        # 
+        # - **NetAddressModifying**: A network connection is being modified.
+        # 
+        # - **MinorVersionUpgrading**: The minor version is being upgraded.
+        # 
+        # - **Maintaining**: The instance is being maintained.
+        # 
+        # - **Switching**: A switchover is in progress.
         self.dbnode_status = dbnode_status
+        # The hostname.
         self.host_name = host_name
 
     def validate(self):

@@ -14,9 +14,14 @@ class AddPolarFsQuotaRequest(DaraModel):
         polar_fs_instance_id: str = None,
         quotas: List[main_models.AddPolarFsQuotaRequestQuotas] = None,
     ):
+        # The ID of the PolarDB instance on which the application depends.
         self.dbcluster_id = dbcluster_id
+        # The ID of the Polarlakebase instance.
+        # 
         # This parameter is required.
         self.polar_fs_instance_id = polar_fs_instance_id
+        # The details of the quota rules.
+        # 
         # This parameter is required.
         self.quotas = quotas
 
@@ -74,17 +79,39 @@ class AddPolarFsQuotaRequestQuotas(DaraModel):
         priority: int = None,
         size_limit: int = None,
     ):
+        # The time to live (TTL) for the access time. Unit: seconds.
         self.access_ttl = access_ttl
+        # The TTL for the change time. Unit: seconds.
         self.change_ttl = change_ttl
+        # The description of the resource quota.
         self.description = description
+        # Specifies whether to enable the rule. Valid values:
+        # 
+        # - **True**: The rule immediately applies to new items. This is the default value.
+        # 
+        # - **False**: The rule does not apply to new items.
         self.enabled = enabled
+        # The rule to exclude specific paths from matching.
+        # 
+        # - A path pattern that starts with a forward slash (/). Supports glob syntax, including `*`, `?`, and `**`.
         self.exclude = exclude
+        # The limit on the number of files for a user in the directory.
         self.file_count_limit = file_count_limit
+        # The wildcard pattern to match paths.
+        # 
+        # - A path pattern that starts with a forward slash (/). Supports glob syntax, including `*`, `?`, and `**`.
+        # 
         # This parameter is required.
         self.include = include
+        # The name of the rule.
+        # 
         # This parameter is required.
         self.name = name
+        # The priority of the quota rule.
         self.priority = priority
+        # The total size limit for files in the directory. Unit: GB.
+        # 
+        # - Note: The value must be at least 1 GB.
         self.size_limit = size_limit
 
     def validate(self):

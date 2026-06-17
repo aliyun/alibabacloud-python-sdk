@@ -15,10 +15,15 @@ class ModifyApplicationParameterRequest(DaraModel):
         parameter_value: str = None,
         parameters: List[main_models.ModifyApplicationParameterRequestParameters] = None,
     ):
+        # The application ID.
+        # 
         # This parameter is required.
         self.application_id = application_id
+        # The parameter name.
         self.parameter_name = parameter_name
+        # The parameter value.
         self.parameter_value = parameter_value
+        # The list of parameter names and values for modifying multiple parameters.
         self.parameters = parameters
 
     def validate(self):
@@ -73,7 +78,9 @@ class ModifyApplicationParameterRequestParameters(DaraModel):
         parameter_name: str = None,
         parameter_value: str = None,
     ):
+        # The parameter name.
         self.parameter_name = parameter_name
+        # The parameter value.
         self.parameter_value = parameter_value
 
     def validate(self):

@@ -14,8 +14,20 @@ class ModifyDBClusterMigrationEndpointRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The ID of the cluster.
+        # 
+        # > Call the [DescribeDBClusters](https://help.aliyun.com/document_detail/173433.html) operation to view information about all clusters in the destination region, including the cluster ID.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The parameters for modifying the DTS task.
+        # 
+        # **dtsJobId**: The ID of the DTS task.
+        # 
+        # endpoint: The endpoint to switch. Set the value to src for the source endpoint or **dst** for the destination endpoint.
+        # 
+        # **endpointInstanceId**: The ID of the cloud instance.
+        # 
         # This parameter is required.
         self.migration_config = migration_config
         self.owner_account = owner_account

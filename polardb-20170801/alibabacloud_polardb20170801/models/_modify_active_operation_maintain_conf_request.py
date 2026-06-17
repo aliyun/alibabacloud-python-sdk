@@ -21,23 +21,45 @@ class ModifyActiveOperationMaintainConfRequest(DaraModel):
         security_token: str = None,
         status: int = None,
     ):
+        # The remarks for the operation.
         self.comment = comment
+        # The time of the cycle.
+        # 
+        # - If CycleType is set to Month, specify the day of the month. Valid values: 1 to 28. Use commas (,) to separate multiple days.
+        # 
+        # - If CycleType is set to Week, specify the day of the week. Valid values: 1 to 7. Use commas (,) to separate multiple days.
+        # 
         # This parameter is required.
         self.cycle_time = cycle_time
+        # The cycle type. Valid values:
+        # 
+        # - Month
+        # 
+        # - Week
+        # 
         # This parameter is required.
         self.cycle_type = cycle_type
+        # The end time of the maintenance window. Use the HH:mmZ format. The time is in UTC.
+        # 
         # This parameter is required.
         self.maintain_end_time = maintain_end_time
+        # The start time of the task. The time must be in UTC and in the yyyy-mm-ddThh:mm:ssZ format.
+        # 
         # This parameter is required.
         self.maintain_start_time = maintain_start_time
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the region.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
+        # Specifies whether to enable the configuration. Valid values: 1 (Enable) and 2 (Disable).
+        # 
         # This parameter is required.
         self.status = status
 

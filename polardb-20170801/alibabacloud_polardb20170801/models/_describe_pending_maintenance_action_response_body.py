@@ -103,24 +103,29 @@ class DescribePendingMaintenanceActionResponseBodyItems(DaraModel):
         self.dbcluster_id = dbcluster_id
         # The type of the database engine. Valid values:
         # 
-        # *   **MySQL**
-        # *   **PostgreSQL**
-        # *   **Oracle**
+        # - **MySQL**
+        # 
+        # - **PostgreSQL**
+        # 
+        # - **Oracle**
         self.dbtype = dbtype
         # The version of the database engine.
         # 
-        # *   Valid values for the MySQL database engine:
+        # - Valid values for the MySQL database engine:
         # 
-        #     *   **5.6**
-        #     *   **5.7**
-        #     *   **8.0**
+        #   - **5.6**
         # 
-        # *   Valid values for the PostgreSQL database engine:
+        #   - **5.7**
         # 
-        #     *   **11**
-        #     *   **14**
+        #   - **8.0**
         # 
-        # *   Valid value for the Oracle database engine: **11**
+        # - Valid values for the PostgreSQL database engine:
+        # 
+        #   - **11**
+        # 
+        #   - **14**
+        # 
+        # - Valid value for the Oracle database engine: **11**
         self.dbversion = dbversion
         # The deadline before which the task can be executed. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
         self.deadline = deadline
@@ -134,8 +139,9 @@ class DescribePendingMaintenanceActionResponseBodyItems(DaraModel):
         self.region = region
         # The execution result of the task. Valid values:
         # 
-        # *   **manualCancel**: The task is manually canceled.
-        # *   **paramCheckNotPass**: The task fails to pass the parameter check.
+        # - **manualCancel**: The task is manually canceled.
+        # 
+        # - **paramCheckNotPass**: The task fails to pass the parameter check.
         # 
         # > This parameter is returned only when the value of the `Status` parameter is **6** or **7**. The value 6 indicates that the task is completed but fails to be executed. The value 7 indicates that the task is canceled.
         self.result_info = result_info
@@ -143,17 +149,21 @@ class DescribePendingMaintenanceActionResponseBodyItems(DaraModel):
         self.start_time = start_time
         # The status of the pending task.
         # 
-        # *   If you set the `IsHistory` parameter to **0**, the status of the pending task is returned. Valid values:
+        # - If you set the `IsHistory` parameter to **0**, the status of the pending task is returned. Valid values:
         # 
-        #     *   **2**: The start time of the task is to be specified.
-        #     *   **3**: The task is pending.
-        #     *   **4**: The task is running. In this case, you cannot modify the execution time.
+        #   - **2**: The start time of the task is to be specified.
         # 
-        # *   If you set the `IsHistory` parameter to **1**, the details of the historical tasks are returned. Valid values:
+        #   - **3**: The task is pending.
         # 
-        #     *   **5**: The task is completed and executed.
-        #     *   **6**: The task is completed but fails to be executed.
-        #     *   **7**: The task is canceled.
+        #   - **4**: The task is running. In this case, you cannot modify the execution time.
+        # 
+        # - If you set the `IsHistory` parameter to **1**, the details of the historical tasks are returned. Valid values:
+        # 
+        #   - **5**: The task is completed and executed.
+        # 
+        #   - **6**: The task is completed but fails to be executed.
+        # 
+        #   - **7**: The task is canceled.
         self.status = status
         # The time when the pending event was switched. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
         self.switch_time = switch_time

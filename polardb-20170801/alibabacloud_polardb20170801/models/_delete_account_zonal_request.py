@@ -14,8 +14,12 @@ class DeleteAccountZonalRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The account name.
+        # 
         # This parameter is required.
         self.account_name = account_name
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account

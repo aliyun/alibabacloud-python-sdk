@@ -26,21 +26,49 @@ class DescribeAIDBClusterDatasetsResponseBody(DaraModel):
         total_count: str = None,
         total_records: str = None,
     ):
+        # The continuation token from the request.
         self.continuation_token = continuation_token
+        # The data service ID.
         self.data_service_id = data_service_id
+        # The dataset ID.
         self.dataset_id = dataset_id
+        # The training mode. Valid values:
+        # 
+        # - **sft**: Supervised Fine-Tuning (SFT).
+        # 
+        # - **grpo**: Reinforcement Learning (RL).
+        # 
+        # - **text**: Text generation.
         self.dataset_mode = dataset_mode
+        # The dataset type. Valid values:
+        # 
+        # - **train**: The training set.
+        # 
+        # - **eval**: The evaluation set.
         self.dataset_type = dataset_type
+        # An array of dataset objects.
         self.datasets = datasets
+        # The total number of files in the dataset.
         self.file_count = file_count
+        # Indicates if more datasets are available. Valid values:
+        # 
+        # - **true**: More datasets are available.
+        # 
+        # - **false**: All datasets have been listed.
         self.is_truncated = is_truncated
+        # The token for retrieving the next page of results. This parameter is returned only if `IsTruncated` is `true`.
         self.next_continuation_token = next_continuation_token
+        # The page number.
         self.page_number = page_number
+        # The page size.
         self.page_size = page_size
+        # The relative DB cluster ID.
         self.relative_dbcluster_id = relative_dbcluster_id
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The total count of datasets.
         self.total_count = total_count
+        # The total number of records.
         self.total_records = total_records
 
     def validate(self):
@@ -169,15 +197,37 @@ class DescribeAIDBClusterDatasetsResponseBodyDatasets(DaraModel):
         storage_type: str = None,
         train_mode: str = None,
     ):
+        # The bucket name.
         self.bucket_name = bucket_name
+        # The file size in bytes.
         self.capacity = capacity
+        # The time the file was created, in UTC and formatted as ISO 8601.
         self.creation_time = creation_time
+        # The dataset ID.
         self.dataset_id = dataset_id
+        # The dataset type. Valid values:
+        # 
+        # - **train**: The training set.
+        # 
+        # - **eval**: The evaluation set.
         self.dataset_type = dataset_type
+        # The file name.
         self.file_name = file_name
+        # The time the file was last modified, in UTC and formatted as ISO 8601.
         self.last_modified = last_modified
+        # The file path.
         self.path = path
+        # The storage type. The only valid value is:
+        # 
+        # - **Standard**.
         self.storage_type = storage_type
+        # The training mode. Valid values:
+        # 
+        # - **sft**: Supervised Fine-Tuning (SFT).
+        # 
+        # - **grpo**: Reinforcement Learning (RL).
+        # 
+        # - **text**: Text generation.
         self.train_mode = train_mode
 
     def validate(self):

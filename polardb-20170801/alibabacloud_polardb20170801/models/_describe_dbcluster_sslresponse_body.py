@@ -14,16 +14,17 @@ class DescribeDBClusterSSLResponseBody(DaraModel):
         request_id: str = None,
         sslauto_rotate: str = None,
     ):
-        # The list of SSL connections.
+        # A list of SSL connection information.
         self.items = items
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether automatic rotation of SSL certificates is enabled. Valid values:
         # 
-        # *   **Enable**: The feature is enabled.
-        # *   **Disable**: The feature is disabled.
+        # - **Enable**: enabled
         # 
-        # > This parameter is valid only for a PolarDB for MySQL cluster.
+        # - **Disable**: disabled
+        # 
+        # > This parameter is supported only for PolarDB for MySQL.
         self.sslauto_rotate = sslauto_rotate
 
     def validate(self):
@@ -75,17 +76,25 @@ class DescribeDBClusterSSLResponseBodyItems(DaraModel):
         sslenabled: str = None,
         sslexpire_time: str = None,
     ):
-        # The ID of the endpoint.
+        # The cluster endpoint ID.
         self.dbendpoint_id = dbendpoint_id
+        # Indicates whether automatic rotation of SSL certificates is enabled. Valid values:
+        # 
+        # - **Enable**: enabled
+        # 
+        # - **Disable**: disabled
+        # 
+        # > This parameter is supported only when the database engine is compatible with PostgreSQL or Oracle syntax.
         self.sslauto_rotate = sslauto_rotate
-        # The SSL connection string.
+        # The SSL connection endpoint.
         self.sslconnection_string = sslconnection_string
         # Indicates whether SSL encryption is enabled. Valid values:
         # 
-        # *   **Enabled**: SSL is enabled.
-        # *   **Disable**: SSL is disabled.
+        # - **Enabled**: enabled.
+        # 
+        # - **Disabled**: disabled.
         self.sslenabled = sslenabled
-        # The time when the server certificate expires. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
+        # The certificate validity period. Format: `yyyy-MM-ddTHH:mm:ssZ` (UTC time).
         self.sslexpire_time = sslexpire_time
 
     def validate(self):

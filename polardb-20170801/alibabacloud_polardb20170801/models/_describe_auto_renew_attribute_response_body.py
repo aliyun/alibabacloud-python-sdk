@@ -17,11 +17,11 @@ class DescribeAutoRenewAttributeResponseBody(DaraModel):
         total_record_count: int = None,
     ):
         self.items = items
-        # The page number of the page returned.
+        # The page number.
         self.page_number = page_number
-        # The total number of pages returned.
+        # The total page count.
         self.page_record_count = page_record_count
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The total number of entries.
         self.total_record_count = total_record_count

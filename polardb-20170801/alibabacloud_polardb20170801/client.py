@@ -62,7 +62,30 @@ class Client(OpenApiClient):
             'cn-zhangjiakou-na62-a01': 'polardb.aliyuncs.com',
             'cn-zhengzhou-nebula-1': 'polardb.aliyuncs.com',
             'eu-west-1-oxs': 'polardb.aliyuncs.com',
-            'rus-west-1-pop': 'polardb.aliyuncs.com'
+            'rus-west-1-pop': 'polardb.aliyuncs.com',
+            'us-west-1': 'polardb.us-west-1.aliyuncs.com',
+            'us-east-1': 'polardb.us-east-1.aliyuncs.com',
+            'na-south-1': 'polardb.na-south-1.aliyuncs.com',
+            'me-east-1': 'polardb.me-east-1.aliyuncs.com',
+            'eu-west-1': 'polardb.eu-west-1.aliyuncs.com',
+            'eu-central-1': 'polardb.eu-central-1.aliyuncs.com',
+            'cn-zhangjiakou': 'polardb.cn-zhangjiakou.aliyuncs.com',
+            'cn-shenzhen-finance-1': 'polardb.cn-shenzhen-finance-1.aliyuncs.com',
+            'cn-shenzhen': 'polardb.cn-shenzhen.aliyuncs.com',
+            'cn-shanghai-finance-1': 'polardb.cn-shanghai-finance-1.aliyuncs.com',
+            'cn-huhehaote': 'polardb.cn-huhehaote.aliyuncs.com',
+            'cn-hongkong': 'polardb.cn-hongkong.aliyuncs.com',
+            'cn-guangzhou': 'polardb.cn-guangzhou.aliyuncs.com',
+            'cn-chengdu': 'polardb.cn-chengdu.aliyuncs.com',
+            'ap-southeast-7': 'polardb.ap-southeast-7.aliyuncs.com',
+            'ap-southeast-6': 'polardb.ap-southeast-6.aliyuncs.com',
+            'ap-southeast-5': 'polardb.ap-southeast-5.aliyuncs.com',
+            'ap-southeast-3': 'polardb.ap-southeast-3.aliyuncs.com',
+            'ap-southeast-2': 'polardb.ap-southeast-2.aliyuncs.com',
+            'ap-southeast-1': 'polardb.ap-southeast-1.aliyuncs.com',
+            'ap-south-1': 'polardb.ap-south-1.aliyuncs.com',
+            'ap-northeast-2': 'polardb.ap-northeast-2.aliyuncs.com',
+            'ap-northeast-1': 'polardb.ap-northeast-1.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('polardb', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -2502,8 +2525,8 @@ class Client(OpenApiClient):
             query['KubernetesConfig'] = request.kubernetes_config
         if not DaraCore.is_null(request.management_mode):
             query['ManagementMode'] = request.management_mode
-        if not DaraCore.is_null(request.mode_name):
-            query['ModeName'] = request.mode_name
+        if not DaraCore.is_null(request.model_name):
+            query['ModelName'] = request.model_name
         if not DaraCore.is_null(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not DaraCore.is_null(request.owner_id):
@@ -2594,8 +2617,8 @@ class Client(OpenApiClient):
             query['KubernetesConfig'] = request.kubernetes_config
         if not DaraCore.is_null(request.management_mode):
             query['ManagementMode'] = request.management_mode
-        if not DaraCore.is_null(request.mode_name):
-            query['ModeName'] = request.mode_name
+        if not DaraCore.is_null(request.model_name):
+            query['ModelName'] = request.model_name
         if not DaraCore.is_null(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not DaraCore.is_null(request.owner_id):
@@ -3838,6 +3861,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.instance_ids):
             request.instance_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.instance_ids, 'InstanceIds', 'json')
         query = {}
+        if not DaraCore.is_null(request.application_type):
+            query['ApplicationType'] = request.application_type
         if not DaraCore.is_null(request.instance_ids_shrink):
             query['InstanceIds'] = request.instance_ids_shrink
         if not DaraCore.is_null(request.param):
@@ -3878,6 +3903,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.instance_ids):
             request.instance_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.instance_ids, 'InstanceIds', 'json')
         query = {}
+        if not DaraCore.is_null(request.application_type):
+            query['ApplicationType'] = request.application_type
         if not DaraCore.is_null(request.instance_ids_shrink):
             query['InstanceIds'] = request.instance_ids_shrink
         if not DaraCore.is_null(request.param):
@@ -24462,10 +24489,16 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.from_time_service):
+            query['FromTimeService'] = request.from_time_service
         if not DaraCore.is_null(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not DaraCore.is_null(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.planned_end_time):
+            query['PlannedEndTime'] = request.planned_end_time
+        if not DaraCore.is_null(request.planned_start_time):
+            query['PlannedStartTime'] = request.planned_start_time
         if not DaraCore.is_null(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not DaraCore.is_null(request.resource_owner_id):
@@ -24498,10 +24531,16 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.from_time_service):
+            query['FromTimeService'] = request.from_time_service
         if not DaraCore.is_null(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not DaraCore.is_null(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.planned_end_time):
+            query['PlannedEndTime'] = request.planned_end_time
+        if not DaraCore.is_null(request.planned_start_time):
+            query['PlannedStartTime'] = request.planned_start_time
         if not DaraCore.is_null(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not DaraCore.is_null(request.resource_owner_id):
@@ -24938,10 +24977,16 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.from_time_service):
+            query['FromTimeService'] = request.from_time_service
         if not DaraCore.is_null(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not DaraCore.is_null(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.planned_end_time):
+            query['PlannedEndTime'] = request.planned_end_time
+        if not DaraCore.is_null(request.planned_start_time):
+            query['PlannedStartTime'] = request.planned_start_time
         if not DaraCore.is_null(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not DaraCore.is_null(request.resource_owner_id):
@@ -24986,10 +25031,16 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.from_time_service):
+            query['FromTimeService'] = request.from_time_service
         if not DaraCore.is_null(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not DaraCore.is_null(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.planned_end_time):
+            query['PlannedEndTime'] = request.planned_end_time
+        if not DaraCore.is_null(request.planned_start_time):
+            query['PlannedStartTime'] = request.planned_start_time
         if not DaraCore.is_null(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not DaraCore.is_null(request.resource_owner_id):
@@ -34342,6 +34393,80 @@ class Client(OpenApiClient):
     ) -> main_models.OpenAITaskResponse:
         runtime = RuntimeOptions()
         return await self.open_aitask_with_options_async(request, runtime)
+
+    def operate_application_with_options(
+        self,
+        request: main_models.OperateApplicationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.OperateApplicationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.operation):
+            query['Operation'] = request.operation
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'OperateApplication',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.OperateApplicationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def operate_application_with_options_async(
+        self,
+        request: main_models.OperateApplicationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.OperateApplicationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.operation):
+            query['Operation'] = request.operation
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'OperateApplication',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.OperateApplicationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def operate_application(
+        self,
+        request: main_models.OperateApplicationRequest,
+    ) -> main_models.OperateApplicationResponse:
+        runtime = RuntimeOptions()
+        return self.operate_application_with_options(request, runtime)
+
+    async def operate_application_async(
+        self,
+        request: main_models.OperateApplicationRequest,
+    ) -> main_models.OperateApplicationResponse:
+        runtime = RuntimeOptions()
+        return await self.operate_application_with_options_async(request, runtime)
 
     def patch_polar_claw_config_with_options(
         self,

@@ -15,12 +15,19 @@ class DeletePolarClawCronJobResponseBody(DaraModel):
         removed: bool = None,
         request_id: str = None,
     ):
+        # The application ID.
         self.application_id = application_id
+        # The status code.
         self.code = code
+        # The ID of the deleted cron job.
         self.job_id = job_id
+        # The response message.
         self.message = message
+        # Indicates whether the operation was successful.
         self.ok = ok
+        # Indicates whether a matching cron job was found and deleted.
         self.removed = removed
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

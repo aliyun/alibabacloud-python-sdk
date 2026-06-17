@@ -15,10 +15,13 @@ class DescribeModifyParameterLogResponseBody(DaraModel):
         items: List[main_models.DescribeModifyParameterLogResponseBodyItems] = None,
         request_id: str = None,
     ):
+        # The cluster engine.
         self.engine = engine
+        # The engine version.
         self.engine_version = engine_version
+        # The list of parameter modification history.
         self.items = items
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -76,10 +79,15 @@ class DescribeModifyParameterLogResponseBodyItems(DaraModel):
         parameter_name: str = None,
         status: str = None,
     ):
+        # The time when the parameter was last modified.
         self.modify_time = modify_time
+        # The parameter value after the modification.
         self.new_parameter_value = new_parameter_value
+        # The parameter value before the modification.
         self.old_parameter_value = old_parameter_value
+        # The parameter name.
         self.parameter_name = parameter_name
+        # Indicates whether the modification was applied successfully.
         self.status = status
 
     def validate(self):

@@ -14,13 +14,21 @@ class UpgradePolarClawChannelShrinkRequest(DaraModel):
         plugin_id: str = None,
         restart: bool = None,
     ):
+        # The application ID.
+        # 
         # This parameter is required.
         self.application_id = application_id
+        # The channel configuration object.
         self.channel_config_shrink = channel_config_shrink
+        # The channel ID.
+        # 
         # This parameter is required.
         self.channel_id = channel_id
+        # The npm package name of the channel plugin, including the version number.
         self.npm_package = npm_package
+        # The ID of the channel plugin.
         self.plugin_id = plugin_id
+        # Specifies whether to restart the gateway after the upgrade. The default value is `true`.
         self.restart = restart
 
     def validate(self):

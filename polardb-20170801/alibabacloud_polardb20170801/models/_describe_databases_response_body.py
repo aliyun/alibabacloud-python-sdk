@@ -18,7 +18,7 @@ class DescribeDatabasesResponseBody(DaraModel):
         self.databases = databases
         # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries returned on the current page.
         self.page_record_count = page_record_count
         # The ID of the request.
         self.request_id = request_id

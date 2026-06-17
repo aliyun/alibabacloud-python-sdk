@@ -15,10 +15,24 @@ class ResetAccountPasswordRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The account name.
+        # 
         # This parameter is required.
         self.account_name = account_name
+        # The new password for the database account. The password must meet the following requirements:
+        # 
+        # - Contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+        # 
+        # - Be 8 to 32 characters in length.
+        # 
+        # - The special characters are `!@#$%^&*()_+-=`.
+        # 
         # This parameter is required.
         self.account_password = account_password
+        # The cluster ID.
+        # 
+        # > Call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to view information about all clusters in the destination region, including cluster IDs.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account

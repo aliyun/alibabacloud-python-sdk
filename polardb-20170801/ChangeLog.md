@@ -1,3 +1,21 @@
+2026-06-17 Version: 7.0.0
+- Support API OperateApplication.
+- Update API CreateAIDBCluster: add request parameters ModelName.
+- Update API CreateAIDBCluster: delete request parameters ModeName.
+- Update API CreateBatchTask: add request parameters ApplicationType.
+- Update API DescribeApplicationAttribute: add response parameters Body.MemApplicationAttribute.GraphLlmModelName.
+- Update API DescribeBackups: add response parameters Body.Items.$.TableRestoreMetaStatus.
+- Update API DescribeBatchTask: add response parameters Body.ApplicationType.
+- Update API DescribeDBClusterVersion: add response parameters Body.DBLatestStableVersion.
+- Update API DescribeDBClusterVersion: add response parameters Body.IsLatestStableVersion.
+- Update API DisableDBClusterServerless: add request parameters FromTimeService.
+- Update API DisableDBClusterServerless: add request parameters PlannedEndTime.
+- Update API DisableDBClusterServerless: add request parameters PlannedStartTime.
+- Update API EnableDBClusterServerless: add request parameters FromTimeService.
+- Update API EnableDBClusterServerless: add request parameters PlannedEndTime.
+- Update API EnableDBClusterServerless: add request parameters PlannedStartTime.
+
+
 2026-05-20 Version: 6.20.0
 - Support API DescribeSharedBackups.
 

@@ -22,19 +22,41 @@ class DescribeUpgradeReportRequest(DaraModel):
         task_id: str = None,
         type: str = None,
     ):
+        # The product series. Valid values:
+        # 
+        # - **Normal**: Cluster Edition (default)
+        # 
+        # - **SENormal**: Standard Edition
+        # 
+        # For more information, see [Product series](https://help.aliyun.com/document_detail/183258.html).
         self.creation_category = creation_category
+        # The database type. Valid values:
+        # 
+        # - **MySQL**
+        # 
+        # - **Oracle**
         self.dbtype = dbtype
+        # The compatible database version.
         self.dbversion = dbversion
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The ID of the region.
+        # 
+        # > For more information, see [DescribeRegions](https://help.aliyun.com/document_detail/98041.html).
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The ID of the source instance.
         self.source_dbcluster_id = source_dbcluster_id
+        # The task status.
         self.status = status
+        # The task ID.
         self.task_id = task_id
+        # A special metric. This parameter is supported only for instances that use the Tair architecture.
         self.type = type
 
     def validate(self):

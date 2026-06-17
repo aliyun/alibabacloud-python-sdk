@@ -19,31 +19,43 @@ class DescribeDBClusterParametersResponseBody(DaraModel):
         request_id: str = None,
         running_parameters: main_models.DescribeDBClusterParametersResponseBodyRunningParameters = None,
     ):
-        # The ID of the cluster.
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
-        # The database engine that the clusters runs. Valid values:
+        # The database type. Valid values:
         # 
-        # *   **MySQL**
-        # *   **PostgreSQL**
-        # *   **Oracle**
+        # - **MySQL**
+        # 
+        # - **PostgreSQL**
+        # 
+        # - **Oracle**
         self.dbtype = dbtype
-        # The version of the database engine. 
+        # The database engine version.
+        # Valid values for MySQL:
         # 
-        # - Valid values for the MySQL database engine:   
-        #   - **5.6**
-        #   - **5.7**
-        #   - **8.0**
-        # - Valid value for the PostgreSQL database engine:    
-        #   - **11**
-        #   - **14**
-        # - Valid value for the Oracle database engine:  **11**
+        # - **5.6**
+        # 
+        # - **5.7**
+        # 
+        # - **8.0**
+        # 
+        # Valid values for PostgreSQL:
+        # 
+        # - **11**
+        # 
+        # - **14**
+        # 
+        # Valid values for Oracle:
+        # 
+        # - **11**
+        # 
+        # - **14**
         self.dbversion = dbversion
-        # The cluster engine.
+        # The engine.
         self.engine = engine
         # The number of parameters.
         self.parameter_numbers = parameter_numbers
         self.parameters = parameters
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         self.running_parameters = running_parameters
 

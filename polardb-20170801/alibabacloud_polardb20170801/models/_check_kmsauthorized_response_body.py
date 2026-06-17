@@ -12,16 +12,17 @@ class CheckKMSAuthorizedResponseBody(DaraModel):
         request_id: str = None,
         role_arn: str = None,
     ):
-        # Indicates whether the cluster is authorized to use KMS. Valid values:
+        # The authorization status. Valid values:
         # 
-        # *   **0**: no.
-        # *   **1**: yes.
+        # - **0**: Unauthorized.
+        # 
+        # - **1**: Authorized.
         self.authorization_state = authorization_state
         # The cluster ID.
         self.dbcluster_id = dbcluster_id
         # The request ID.
         self.request_id = request_id
-        # The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information, see [RAM role overview](https://help.aliyun.com/document_detail/93689.html).
+        # The Global Resource Descriptor of the role. It specifies the role. For more information, see [RAM role overview](https://help.aliyun.com/document_detail/93689.html).
         self.role_arn = role_arn
 
     def validate(self):

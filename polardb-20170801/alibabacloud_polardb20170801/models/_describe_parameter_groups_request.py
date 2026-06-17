@@ -16,23 +16,25 @@ class DescribeParameterGroupsRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The type of the database engine. Only **MySQL** is supported.
+        # The database engine type. Only **MySQL** is supported.
         self.dbtype = dbtype
         # The version of the database engine. Valid values:
         # 
-        # *   **5.6**
-        # *   **5.7**
-        # *   **8.0**
+        # - **5.6**
+        # 
+        # - **5.7**
+        # 
+        # - **8.0**
         self.dbversion = dbversion
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the cluster.
+        # The ID of the region.
         # 
-        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query all regions that are available for your account, such as the region ID.
+        # > Call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query the information about all available regions of your account, including the region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group to which the virtual node belongs.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

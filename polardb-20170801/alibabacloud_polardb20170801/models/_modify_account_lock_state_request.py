@@ -16,11 +16,24 @@ class ModifyAccountLockStateRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The lock status of the account. Valid values:
+        # 
+        # - **UnLock**: The account is not locked.
+        # 
+        # - **Lock**: The account is locked.
+        # 
         # This parameter is required.
         self.account_lock_state = account_lock_state
+        # The name of the database account.
+        # 
         # This parameter is required.
         self.account_name = account_name
+        # The expiration time of the account. The time must be in the \\`YYYY-MM-DDThh:mm:ssZ\\` format.
         self.account_password_valid_time = account_password_valid_time
+        # The ID of the cluster.
+        # 
+        # > Call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to view the details of all clusters in a region, including cluster IDs.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account

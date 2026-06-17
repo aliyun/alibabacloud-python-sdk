@@ -19,14 +19,21 @@ class DescribePolarClawAgentsResponseBody(DaraModel):
         request_id: str = None,
         scope: str = None,
     ):
+        # The list of agents.
         self.agents = agents
+        # The application ID.
         self.application_id = application_id
+        # The status code.
         self.code = code
+        # The default agent ID.
         self.default_id = default_id
+        # The main agent key name.
         self.main_key = main_key
+        # The message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The routing scope.
         self.scope = scope
 
     def validate(self):
@@ -106,9 +113,11 @@ class DescribePolarClawAgentsResponseBodyAgents(DaraModel):
         identity: main_models.DescribePolarClawAgentsResponseBodyAgentsIdentity = None,
         name: str = None,
     ):
-        # Agent ID
+        # The agent ID.
         self.id = id
+        # The agent\\"s identity.
         self.identity = identity
+        # The agent display name.
         self.name = name
 
     def validate(self):
@@ -154,10 +163,15 @@ class DescribePolarClawAgentsResponseBodyAgentsIdentity(DaraModel):
         name: str = None,
         theme: str = None,
     ):
+        # The path or content of the avatar.
         self.avatar = avatar
+        # The avatar URL.
         self.avatar_url = avatar_url
+        # The emoji for the identity. This can be a Unicode code point (e.g., `U+1F99E`) or an emoji character.
         self.emoji = emoji
+        # The identity name.
         self.name = name
+        # The identity theme.
         self.theme = theme
 
     def validate(self):

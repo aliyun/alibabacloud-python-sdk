@@ -10,7 +10,11 @@ class DescribeDBClusterEncryptionKeyRequest(DaraModel):
         client_token: str = None,
         dbcluster_id: str = None,
     ):
+        # A client token to ensure the idempotence of the request.
         self.client_token = client_token
+        # The cluster ID.
+        # 
+        # > Call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html)Operation to query the details of all clusters in your account, including cluster IDs.
         self.dbcluster_id = dbcluster_id
 
     def validate(self):

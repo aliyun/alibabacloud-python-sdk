@@ -17,35 +17,43 @@ class DescribeDBNodePerformanceRequest(DaraModel):
     ):
         # The cluster ID.
         self.dbcluster_id = dbcluster_id
-        # The ID of the cluster node.
+        # The ID of the node in the PolarDB cluster.
         # 
         # This parameter is required.
         self.dbnode_id = dbnode_id
-        # The end of the time range to query. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
+        # The end of the time range to query. Specify the time in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The interval at which performance data is collected. Valid values:
+        # The granularity of the performance data. Valid values:
         # 
-        # *   5
-        # *   30
-        # *   60
-        # *   600
-        # *   1800
-        # *   3600
-        # *   86400
+        # - 5
+        # 
+        # - 30
+        # 
+        # - 60
+        # 
+        # - 600
+        # 
+        # - 1800
+        # 
+        # - 3600
+        # 
+        # - 86400
         self.interval = interval
-        # The performance metrics that you want to query. Separate multiple metrics with commas (,). For more information, see [Performance parameters](https://help.aliyun.com/document_detail/141787.html).
+        # The performance metrics to query. Separate multiple metrics with commas (,). For more information, see [Performance metrics](https://help.aliyun.com/document_detail/141787.html).
         # 
-        # >  You can specify a maximum of five performance metrics.
+        # > - You can query a maximum of five performance metrics.
+        # >
+        # > - If your cluster has Serverless enabled for fixed specifications, querying PolarDBCPU or PolarDBMemory alone ignores the Interval parameter and returns performance metrics per second. To get data at your specified Interval, query multiple metrics.
         # 
         # This parameter is required.
         self.key = key
-        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
+        # The beginning of the time range to query. Specify the time in the `yyyy-MM-ddTHH:mmZ` format. The time must be in Coordinated Universal Time (UTC).
         # 
         # This parameter is required.
         self.start_time = start_time
-        # The special metric. Set the value to tair, which indicates the PolarTair architecture.
+        # A special metric. Currently, only orca is supported.
         self.type = type
 
     def validate(self):

@@ -17,11 +17,17 @@ class DescribeDatabasesZonalResponseBody(DaraModel):
         page_record_count: int = None,
         request_id: str = None,
     ):
+        # The details of the databases.
         self.databases = databases
+        # The maximum number of entries returned for the current request.
         self.max_results = max_results
+        # The query token. This is the NextToken value from the previous API call. If there are no more results, do not specify this parameter.
         self.next_token = next_token
+        # The page number.
         self.page_number = page_number
+        # The number of entries returned on the current page.
         self.page_record_count = page_record_count
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -93,12 +99,33 @@ class DescribeDatabasesZonalResponseBodyDatabases(DaraModel):
         engine: str = None,
         master_id: str = None,
     ):
+        # The details of the database accounts.
+        # 
+        # > If the cluster is a PolarDB for MySQL cluster, privileged accounts are not included.
         self.accounts = accounts
+        # The character set.
         self.character_set_name = character_set_name
+        # The description of the database.
         self.dbdescription = dbdescription
+        # The name of the database.
         self.dbname = dbname
+        # The status of the database. Valid values:
+        # 
+        # - **Creating**
+        # 
+        # - **Running**
+        # 
+        # - **Deleting**
         self.dbstatus = dbstatus
+        # The database engine type. Valid values:
+        # 
+        # - **MySQL**
+        # 
+        # - **Oracle**
+        # 
+        # - **PostgreSQL**
         self.engine = engine
+        # The ID of the primary node that corresponds to the database in a Multi-master Cluster (Database/Table) edition cluster.
         self.master_id = master_id
 
     def validate(self):
@@ -173,9 +200,37 @@ class DescribeDatabasesZonalResponseBodyDatabasesAccounts(DaraModel):
         account_status: str = None,
         privilege_status: str = None,
     ):
+        # The account name.
+        # 
+        # > If the cluster is a PolarDB for MySQL cluster, privileged accounts are not included.
         self.account_name = account_name
+        # The permissions of the account. Valid values:
+        # 
+        # - **ReadWrite**
+        # 
+        # - **ReadOnly**
+        # 
+        # - **DMLOnly**
+        # 
+        # - **DDLOnly**
+        # 
+        # - **ReadIndex**
         self.account_privilege = account_privilege
+        # The status of the account. Valid values:
+        # 
+        # - **Creating**
+        # 
+        # - **Available**
+        # 
+        # - **Deleting**
         self.account_status = account_status
+        # The authorization status. Valid values:
+        # 
+        # - **Empowering**: Permissions are being granted.
+        # 
+        # - **Empowered**: Permissions are granted.
+        # 
+        # - **Removing**: Permissions are being revoked.
         self.privilege_status = privilege_status
 
     def validate(self):

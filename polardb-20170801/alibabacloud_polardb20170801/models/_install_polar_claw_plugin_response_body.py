@@ -16,14 +16,21 @@ class InstallPolarClawPluginResponseBody(DaraModel):
         request_id: str = None,
         restarted: bool = None,
     ):
+        # The application ID.
         self.application_id = application_id
+        # The status code.
         self.code = code
+        # The response message.
         self.message = message
+        # The name of the installed npm package.
         self.npm_package = npm_package
+        # Indicates whether the request was successful.
         self.ok = ok
+        # The ID of the installed plugin.
         self.plugin_id = plugin_id
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the gateway restarted.
         self.restarted = restarted
 
     def validate(self):

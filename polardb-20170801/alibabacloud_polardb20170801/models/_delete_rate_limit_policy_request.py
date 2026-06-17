@@ -11,10 +11,15 @@ class DeleteRateLimitPolicyRequest(DaraModel):
         policy_id: str = None,
         region_id: str = None,
     ):
+        # The gateway instance ID.
+        # 
         # This parameter is required.
         self.gw_cluster_id = gw_cluster_id
+        # The policy ID.
+        # 
         # This parameter is required.
         self.policy_id = policy_id
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

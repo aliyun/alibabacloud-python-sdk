@@ -12,10 +12,15 @@ class GetPolarAgentRequest(DaraModel):
         session_id: str = None,
         source: str = None,
     ):
+        # Additional information, as a JSON string.
         self.extra_info = extra_info
+        # The session query. Get this value from the return value of the "Start a digital human" API.
+        # 
         # This parameter is required.
         self.query = query
+        # The session ID. Get this value from the return value of the "Start a digital human" API.
         self.session_id = session_id
+        # The product type source. Valid value: polardb-console.
         self.source = source
 
     def validate(self):

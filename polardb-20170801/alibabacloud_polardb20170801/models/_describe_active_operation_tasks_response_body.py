@@ -16,10 +16,23 @@ class DescribeActiveOperationTasksResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
+        # The list of O\\&M tasks.
         self.items = items
+        # The page number. The value must be greater than 0 and cannot exceed the maximum value of the Integer data type. Default value: 1.
         self.page_number = page_number
+        # The number of entries returned per page. Valid values:
+        # 
+        # - **30**
+        # 
+        # - **50**
+        # 
+        # - **100**
+        # 
+        # Default value: **30**.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The number of task records returned.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -106,33 +119,105 @@ class DescribeActiveOperationTasksResponseBodyItems(DaraModel):
         task_type_en: str = None,
         task_type_zh: str = None,
     ):
+        # Indicates whether cancellation is allowed. Valid values:
+        # 
+        # - 1: indicates that users are allowed to cancel the task.
+        # 
+        # - 0: indicates that cancellation is not allowed.
         self.allow_cancel = allow_cancel
+        # Indicates whether time modification is allowed. Valid values:
+        # 
+        # - 1: indicates that users are allowed to modify the time.
+        # 
+        # - 0: indicates that users are not allowed to modify the time.
         self.allow_change = allow_change
+        # The event level code. Valid values:
+        # 
+        # - S1: system maintenance.
+        # 
+        # - S0: threat fix.
         self.change_level = change_level
+        # The event level (English).
         self.change_level_en = change_level_en
+        # The event level (Chinese).
         self.change_level_zh = change_level_zh
+        # The creation time. Format: YYYY-MM-DDTHH:mm:ssZ.
         self.created_time = created_time
+        # The current zone.
         self.current_avz = current_avz
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
+        # The list of node IDs.
         self.dbnode_ids = dbnode_ids
+        # The database engine type. Valid values:
+        # 
+        # - **MySQL**
+        # 
+        # - **PostgreSQL**
+        # 
+        # - **Oracle**
         self.dbtype = dbtype
+        # The kernel version number.
         self.dbversion = dbversion
+        # The latest deadline for the adjustable range of task execution time. Format: YYYY-MM-DDTHH:mm:ssZ.
         self.deadline = deadline
+        # The event impact.
         self.impact = impact
+        # The event impact (English).
         self.impact_en = impact_en
+        # The event impact (Chinese).
         self.impact_zh = impact_zh
+        # The cluster alias or cluster comment.
         self.ins_comment = ins_comment
+        # The modification time. Format: YYYY-MM-DDTHH:mm:ssZ.
         self.modified_time = modified_time
+        # The preparation time required between the start time and the switch time. Format: HH:mm:ss.
         self.prepare_interval = prepare_interval
+        # The region code.
         self.region = region
+        # The execution result information.
         self.result_info = result_info
+        # The time when the background task is executed. Format: YYYY-MM-DDTHH:mm:ssZ.
         self.start_time = start_time
+        # The task status. Valid values:
+        # 
+        # - 0: indicates waiting for notification.
+        # 
+        # - 1: indicates retry notification.
+        # 
+        # - 2: indicates waiting for user-specified time.
+        # 
+        # - 3: indicates waiting for processing.
+        # 
+        # - 4: indicates in progress.
+        # 
+        # - 5: indicates successfully completed.
+        # 
+        # - 6: indicates failed.
+        # 
+        # - 7: indicates canceled.
         self.status = status
+        # The time when the background initiates the switch operation. Format: YYYY-MM-DDTHH:mm:ssZ.
         self.switch_time = switch_time
+        # The task ID.
         self.task_id = task_id
+        # The task parameters.
         self.task_params = task_params
+        # The type of the pending event task. Valid values:
+        # 
+        # - **DatabaseSoftwareUpgrading**: database software upgrade.
+        # 
+        # - **DatabaseHardwareMaintenance**: hardware maintenance and upgrade.
+        # 
+        # - **DatabaseStorageUpgrading**: database storage upgrade.
+        # 
+        # - **DatabaseProxyUpgrading**: proxy minor version upgrade.
+        # 
+        # - **all**: returns all types of pending events.
         self.task_type = task_type
+        # The task reason in English.
         self.task_type_en = task_type_en
+        # The task reason in Chinese.
         self.task_type_zh = task_type_zh
 
     def validate(self):

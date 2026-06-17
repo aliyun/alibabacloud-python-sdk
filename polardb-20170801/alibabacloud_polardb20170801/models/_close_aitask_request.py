@@ -20,7 +20,7 @@ class CloseAITaskRequest(DaraModel):
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the cluster.
+        # The ID of the region.
         # 
         # This parameter is required.
         self.region_id = region_id

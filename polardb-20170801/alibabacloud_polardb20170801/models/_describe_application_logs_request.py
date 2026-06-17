@@ -22,23 +22,38 @@ class DescribeApplicationLogsRequest(DaraModel):
         start_time: str = None,
         type: str = None,
     ):
+        # The application ID.
+        # 
         # This parameter is required.
         self.application_id = application_id
+        # The component instance ID.
         self.component_name = component_name
+        # The container name.
         self.container_name = container_name
+        # The end time for the query. Specify the time in `YYYY-MM-DDTHH:mmZ` format (UTC).
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # The keyword to search for. This parameter applies only to polarclaw instances.
         self.keyword = keyword
+        # The log level. This parameter applies only to polarclaw instances.
         self.level = level
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The page number to return. The default value is 1.
         self.page_number = page_number
+        # The number of entries to return on each page. Default value: **30**. Valid values: 30 to 100.
         self.page_size = page_size
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
+        # The start time for the query. Specify the time in `YYYY-MM-DDTHH:mmZ` format (UTC).
+        # 
         # This parameter is required.
         self.start_time = start_time
+        # The log type. This parameter applies only to polarclaw instances. Currently, only `gateway` is supported.
         self.type = type
 
     def validate(self):

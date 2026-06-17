@@ -10,8 +10,11 @@ class DescribeApplicationParametersShrinkRequest(DaraModel):
         application_id: str = None,
         component_id_list_shrink: str = None,
     ):
+        # The application ID.
+        # 
         # This parameter is required.
         self.application_id = application_id
+        # A list of subcomponent IDs. If you specify this parameter, the operation returns the parameters and parameter templates for only these components.
         self.component_id_list_shrink = component_id_list_shrink
 
     def validate(self):

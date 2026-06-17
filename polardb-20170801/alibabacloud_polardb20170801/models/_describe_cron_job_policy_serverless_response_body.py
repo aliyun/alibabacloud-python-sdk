@@ -16,11 +16,23 @@ class DescribeCronJobPolicyServerlessResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
+        # The list of tasks.
         self.items = items
+        # The page number.
         self.page_number = page_number
+        # The number of records on each page. Valid values:
+        # 
+        # - **30**
+        # 
+        # - **50**
+        # 
+        # - **100**
+        # 
+        # Default value: **30**.
         self.page_size = page_size
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of records.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -99,25 +111,57 @@ class DescribeCronJobPolicyServerlessResponseBodyItems(DaraModel):
         start_time: str = None,
         status: str = None,
     ):
+        # A system parameter. Set the value to **ModifyDBClusterServerlessConf**.
         self.action = action
+        # Specifies whether to enable No-activity Suspension. Valid values:
+        # 
+        # - **true**: enabled
+        # 
+        # - **false**: disabled (default)
         self.allow_shut_down = allow_shut_down
+        # The Cron expression for the scheduled task.
         self.cron_expression = cron_expression
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
+        # The end time of the task. The time is in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
         self.end_time = end_time
+        # The ID of the scheduled task.
         self.job_id = job_id
+        # The order ID.
         self.order_id = order_id
+        # The region ID.
         self.region_id = region_id
+        # The maximum number of read-only IMCI nodes. Valid values: 1 to 15.
         self.scale_ap_ro_num_max = scale_ap_ro_num_max
+        # The minimum number of read-only IMCI nodes. Valid values: 0 to 15.
         self.scale_ap_ro_num_min = scale_ap_ro_num_min
+        # The maximum capacity. The value must be from 1 to 32. Unit: PCU.
         self.scale_max = scale_max
+        # The minimum capacity. The value must be from 0.25 to 32 and less than or equal to the maximum capacity. Unit: PolarDB Capacity Unit (PCU).
         self.scale_min = scale_min
+        # The maximum number of read-only nodes. The value must be greater than or equal to the minimum value. Valid values: 0 to 15.
         self.scale_ro_num_max = scale_ro_num_max
+        # The minimum number of read-only nodes. Valid values: 0 to 15.
         self.scale_ro_num_min = scale_ro_num_min
+        # The detection period for No-activity Suspension. The value must be a multiple of 5. Valid values: 5 to 1440. Unit: minutes.
         self.seconds_until_auto_pause = seconds_until_auto_pause
+        # The CPU utilization threshold for scaling up. Valid values: 40 to 100. Unit: %.
         self.serverless_rule_cpu_enlarge_threshold = serverless_rule_cpu_enlarge_threshold
+        # The CPU utilization threshold for scaling down. Valid values: 10 to 100. Unit: %. The difference between the scale-up threshold and the scale-down threshold must be 30 or greater.
         self.serverless_rule_cpu_shrink_threshold = serverless_rule_cpu_shrink_threshold
+        # The elasticity sensitivity. Valid values:
+        # 
+        # - normal: standard
+        # 
+        # - flexible: sensitive
         self.serverless_rule_mode = serverless_rule_mode
+        # The start time of the task. The time is in the `yyyy-MM-ddTHH:mmZ` format and in UTC.
         self.start_time = start_time
+        # The status of the task. Valid values:
+        # 
+        # - **working**: The scheduled task is running.
+        # 
+        # - **finish**: The scheduled task is complete.
         self.status = status
 
     def validate(self):

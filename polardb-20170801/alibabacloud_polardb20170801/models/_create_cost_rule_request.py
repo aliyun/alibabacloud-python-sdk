@@ -15,15 +15,25 @@ class CreateCostRuleRequest(DaraModel):
         output_cost_points_per_million: str = None,
         region_id: str = None,
     ):
+        # The number of cost points per million cache tokens. The default value is 0.
         self.cache_cost_points_per_million = cache_cost_points_per_million
+        # The gateway instance ID.
+        # 
         # This parameter is required.
         self.gw_cluster_id = gw_cluster_id
+        # The number of cost points per million input tokens. The default value is 0.
         self.input_cost_points_per_million = input_cost_points_per_million
+        # The name of the model, such as `gpt-4` or `qwen-turbo`.
+        # 
         # This parameter is required.
         self.model_name = model_name
+        # The model service ID.
+        # 
         # This parameter is required.
         self.model_service_id = model_service_id
+        # The number of cost points per million output tokens. The default value is 0.
         self.output_cost_points_per_million = output_cost_points_per_million
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

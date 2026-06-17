@@ -17,15 +17,19 @@ class DescribeUserEncryptionKeyListResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
-        # The ID of the cluster.
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
-        # Cluster key list.
+        # The list of cluster keys.
         self.key_list = key_list
+        # The page number.
         self.page_number = page_number
+        # The number of entries on the current page.
         self.page_record_count = page_record_count
+        # The number of entries per page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries.
         self.total_record_count = total_record_count
 
     def validate(self):

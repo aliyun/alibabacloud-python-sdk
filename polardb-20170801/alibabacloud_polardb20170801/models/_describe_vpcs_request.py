@@ -21,14 +21,32 @@ class DescribeVpcsRequest(DaraModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The page number. The value must be an integer that is greater than 0 and does not exceed the maximum value of the integer data type. Default value: **1**.
         self.page_number = page_number
+        # The number of entries per page. Valid values:
+        # 
+        # - **30**
+        # 
+        # - **50**
+        # 
+        # - **100**
+        # 
+        # Default value: **30**.
         self.page_size = page_size
+        # The name of the cloud product.
         self.product = product
+        # The ID of the resource group to which the VPC belongs.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
+        # The ID of the VPC.
+        # 
+        # > You can call the [DescribeVpcs](https://help.aliyun.com/document_detail/35739.html) operation to query the details of VPCs.
         self.vpc_id = vpc_id
+        # The ID of the zone.
+        # 
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query zones.
         self.zone_id = zone_id
 
     def validate(self):

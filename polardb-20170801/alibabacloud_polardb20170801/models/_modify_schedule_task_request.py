@@ -17,17 +17,36 @@ class ModifyScheduleTaskRequest(DaraModel):
         resource_owner_id: int = None,
         task_id: str = None,
     ):
+        # The cluster ID.
+        # 
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of all clusters in your account, including cluster IDs.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The latest time to start the scheduled task. The time is in the `YYYY-MM-DDThh:mm:ssZ` format. The time is displayed in UTC.
+        # 
+        # > - The latest start time must be at least 30 minutes later than the earliest start time.
+        # 
+        # - If you specify `PlannedStartTime` but not this parameter, the latest start time of the task is `PlannedStartTime + 30 minutes` by default. For example, if you set `PlannedStartTime` to `2021-01-14T09:00:00Z` and leave this parameter empty, the task will be executed no later than `2021-01-14T09:30:00Z`.
+        # 
         # This parameter is required.
         self.planned_end_time = planned_end_time
+        # The earliest time to start the scheduled task. The time is in the `YYYY-MM-DDThh:mm:ssZ` format. The time is displayed in UTC.
+        # 
+        # > - The start time can be any point in time within the next 24 hours. For example, if the current time is `2021-01-14T09:00:00Z`, you can set the start time to a value in the range of `2021-01-14T09:00:00Z` to `2021-01-15T09:00:00Z`.
+        # 
+        # - If you leave this parameter empty, the task is executed immediately.
+        # 
         # This parameter is required.
         self.planned_start_time = planned_start_time
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The task ID.
+        # 
         # This parameter is required.
         self.task_id = task_id
 

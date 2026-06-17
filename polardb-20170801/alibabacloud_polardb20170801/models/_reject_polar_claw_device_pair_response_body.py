@@ -14,12 +14,17 @@ class RejectPolarClawDevicePairResponseBody(DaraModel):
         pair_request_id: str = None,
         request_id: str = None,
     ):
+        # The application ID.
         self.application_id = application_id
+        # The response status code.
         self.code = code
+        # The unique device ID.
         self.device_id = device_id
+        # The returned message.
         self.message = message
+        # The pairing request ID.
         self.pair_request_id = pair_request_id
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

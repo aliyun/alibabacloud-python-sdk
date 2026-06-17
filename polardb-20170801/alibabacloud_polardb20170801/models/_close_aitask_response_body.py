@@ -12,7 +12,7 @@ class CloseAITaskResponseBody(DaraModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # The ID of the task for disabling the PolarDB for AI feature.
+        # The ID of the task.
         self.task_id = task_id
 
     def validate(self):

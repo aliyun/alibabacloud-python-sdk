@@ -11,11 +11,11 @@ class ModifyDBClusterResponseBody(DaraModel):
         order_id: str = None,
         request_id: str = None,
     ):
-        # The cluster ID.
+        # The ID of the cluster.
         self.dbcluster_id = dbcluster_id
-        # The order ID.
+        # The generated order ID.
         self.order_id = order_id
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

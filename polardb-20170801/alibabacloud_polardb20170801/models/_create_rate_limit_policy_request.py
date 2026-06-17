@@ -14,15 +14,30 @@ class CreateRateLimitPolicyRequest(DaraModel):
         scope_ref_id: str = None,
         scope_type: str = None,
     ):
+        # The gateway instance ID.
+        # 
         # This parameter is required.
         self.gw_cluster_id = gw_cluster_id
+        # The maximum number of requests per minute.
+        # 
         # This parameter is required.
         self.rate_limit_rpm = rate_limit_rpm
+        # The maximum number of tokens per minute.
+        # 
         # This parameter is required.
         self.rate_limit_tpm = rate_limit_tpm
+        # The ID of the region.
         self.region_id = region_id
+        # The ID of the consumer group or consumer.
+        # 
         # This parameter is required.
         self.scope_ref_id = scope_ref_id
+        # The rate limiting dimension. Valid values:
+        # 
+        # - **ConsumerGroup**: Consumer group
+        # 
+        # - **Consumer**: Consumer
+        # 
         # This parameter is required.
         self.scope_type = scope_type
 

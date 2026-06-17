@@ -16,10 +16,15 @@ class DescribeApplicationPromptsResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: str = None,
     ):
+        # A list of Application Prompts.
         self.items = items
+        # The page number.
         self.page_number = page_number
+        # The number of entries on the current page.
         self.page_record_count = page_record_count
+        # The Request ID.
         self.request_id = request_id
+        # The total number of matching entries.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -83,10 +88,15 @@ class DescribeApplicationPromptsResponseBodyItems(DaraModel):
         prompt_type: str = None,
         prompt_value: str = None,
     ):
+        # Specifies whether the Prompt is enabled. A value of 1 indicates enabled, and 0 indicates disabled.
         self.prompt_enabled = prompt_enabled
+        # The Prompt ID.
         self.prompt_id = prompt_id
+        # The Prompt Name.
         self.prompt_name = prompt_name
+        # The Prompt Type.
         self.prompt_type = prompt_type
+        # The Prompt Value.
         self.prompt_value = prompt_value
 
     def validate(self):

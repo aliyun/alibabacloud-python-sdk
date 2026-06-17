@@ -12,10 +12,19 @@ class DeleteEncryptionDBRolePrivilegeResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
+        # The message returned for the request.
+        # 
+        # > If the request is successful, `Successful` is returned. If the request fails, an error message is returned, such as an error code.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # - **true**: The request was successful.
+        # 
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):

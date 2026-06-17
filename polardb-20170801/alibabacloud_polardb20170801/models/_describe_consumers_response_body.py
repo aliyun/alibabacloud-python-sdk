@@ -17,12 +17,17 @@ class DescribeConsumersResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
+        # A list of consumers.
         self.items = items
+        # The page number.
         self.page_number = page_number
+        # The number of entries returned on the current page.
         self.page_record_count = page_record_count
+        # The page size. Valid values: 30, 50, and 100. The default value is 30.
         self.page_size = page_size
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of records.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -100,18 +105,31 @@ class DescribeConsumersResponseBodyItems(DaraModel):
         name: str = None,
         nick_name: str = None,
     ):
+        # The models that the consumer is allowed to access, specified as a JSON array in string format.
         self.allowed_models = allowed_models
+        # The full API key. This value is returned only by this operation.
         self.api_key = api_key
+        # The consumer group ID.
         self.consumer_group_id = consumer_group_id
+        # The consumer group name.
         self.consumer_group_name = consumer_group_name
+        # The consumer ID.
         self.consumer_id = consumer_id
+        # The time when the consumer was created.
         self.gmt_created = gmt_created
+        # The time when the consumer was last modified.
         self.gmt_modified = gmt_modified
+        # The total usage.
         self.lifetime_cost_count = lifetime_cost_count
+        # The total number of tokens consumed.
         self.lifetime_token_count = lifetime_token_count
+        # The month-to-date usage.
         self.mtd_cost_count = mtd_cost_count
+        # The number of tokens consumed month-to-date.
         self.mtd_token_count = mtd_token_count
+        # The consumer name.
         self.name = name
+        # The consumer nickname.
         self.nick_name = nick_name
 
     def validate(self):

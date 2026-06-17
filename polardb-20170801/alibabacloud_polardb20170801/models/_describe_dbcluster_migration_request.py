@@ -13,11 +13,7 @@ class DescribeDBClusterMigrationRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The network type of the endpoint. Valid values:
-        # 
-        # *   **Public**: the public endpoint
-        # *   **Private**: the internal endpoint (VPC)
-        # *   **Inner**: the internal endpoint (classic network)
+        # The cluster ID.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id

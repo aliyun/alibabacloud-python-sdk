@@ -17,40 +17,57 @@ class DescribeClassListRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The code of the commodity. Valid values:
+        # The commodity code. Valid values:
         # 
-        # *   polardb_sub: the subscription cluster in regions in the Chinese mainland
-        # *   polardb_sub _intl: the subscription cluster in regions outside the Chinese mainland
-        # *   polardb_payg: the pay-as-you-go cluster in regions in the Chinese mainland
-        # *   polardb_payg_intl: the pay-as-you-go cluster in regions outside the Chinese mainland
-        # *   polardb_sub_jushita: the subscription cluster for CloudTmall
-        # *   polardb_payg_jushita: the pay-as-you-go cluster for CloudTmall
-        # *   polardb_sub_cainiao: the subscription cluster for Cainiao
-        # *   polardb_payg_cainiao: the pay-as-you-go cluster for Cainiao
+        # - polardb_sub: subscription for the Chinese mainland.
         # 
-        # > *   If you use an Alibaba Cloud account on the China site, you can view only the codes of the commodities that are available in the Chinese mainland.
-        # >*   If you are using an Alibaba Cloud international account, you can view only the codes of the commodities that are available outside the Chinese mainland.
-        # >*   If you use a CloudTmall account, you can view only the codes of the commodities that are available in CloudTmall.
-        # >*   If you use a Cainiao account, you can view only the codes of the commodities that are available in Cainiao.
+        # - polardb_sub_intl: subscription for regions in Hong Kong (China) and outside the Chinese mainland.
+        # 
+        # - polardb_payg: pay-as-you-go for the Chinese mainland.
+        # 
+        # - polardb_payg_intl: pay-as-you-go for regions in Hong Kong (China) and outside the Chinese mainland.
+        # 
+        # - polardb_sub_jushita: Jushita subscription.
+        # 
+        # - polardb_payg_jushita: Jushita pay-as-you-go.
+        # 
+        # - polardb_sub_cainiao: Cainiao subscription.
+        # 
+        # - polardb_payg_cainiao: Cainiao pay-as-you-go.
+        # 
+        # > * If you use an Alibaba Cloud China site account, you can view only the commodity codes for the Chinese mainland.
+        # >
+        # > * If you use an Alibaba Cloud international site account, you can view only the commodity codes for regions outside the Chinese mainland.
+        # >
+        # > * If you use a Jushita account, you can view only the commodity codes for Jushita.
+        # >
+        # > * If you use a Cainiao account, you can view only the commodity codes for Cainiao.
         # 
         # This parameter is required.
         self.commodity_code = commodity_code
         # The number of nodes. Valid values:
         # 
-        # *   single: Standalone Edition.
-        # *   cluster: Cluster Edition.
-        # *   all: both Standalone Edition and Cluster Edition.
-        self.master_ha = master_ha
-        # The type of the order. Valid values:
+        # - single: single node.
         # 
-        # *   BUY: The order is used to purchase a cluster.
-        # *   UPGRADE: The order is used to change the specifications of a cluster.
-        # *   RENEW: The order is used to renew a cluster.
-        # *   CONVERT: The order is used to change the billing method of a cluster.
+        # - cluster: cluster.
+        # 
+        # - all: single node and cluster.
+        self.master_ha = master_ha
+        # The order type. Valid values:
+        # 
+        # - BUY: new purchase.
+        # 
+        # - UPGRADE: changes the configuration.
+        # 
+        # - RENEW: renews the instance.
+        # 
+        # - CONVERT: changes the billing method.
         self.order_type = order_type
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the cluster.
+        # The region ID.
+        # 
+        # > This parameter is required if you use an Alibaba Cloud international site account.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id

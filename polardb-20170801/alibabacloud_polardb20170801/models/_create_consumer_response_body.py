@@ -12,10 +12,13 @@ class CreateConsumerResponseBody(DaraModel):
         key_type: str = None,
         request_id: str = None,
     ):
+        # The full APIKey, returned only in this response.
         self.api_key = api_key
+        # The consumer ID.
         self.consumer_id = consumer_id
+        # The key type. The value is always ApiKey.
         self.key_type = key_type
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

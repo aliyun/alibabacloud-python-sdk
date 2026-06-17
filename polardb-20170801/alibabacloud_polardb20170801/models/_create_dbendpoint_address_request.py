@@ -22,21 +22,23 @@ class CreateDBEndpointAddressRequest(DaraModel):
         vpcid: str = None,
         zone_info: List[main_models.CreateDBEndpointAddressRequestZoneInfo] = None,
     ):
-        # The prefix of the new endpoint. The prefix of the endpoint must meet the following requirements:
+        # The prefix of the new endpoint. The prefix must meet the following requirements:
         # 
-        # *   The prefix can contain lowercase letters, digits, and hyphens (-).
-        # *   The prefix must start with a letter and end with a digit or a letter.
-        # *   The prefix must be 6 to 40 characters in length.
+        # - Consist of lowercase letters, digits, and hyphens (-).
+        # 
+        # - Start with a letter and end with a digit or a letter.
+        # 
+        # - Be 6 to 40 characters in length.
         self.connection_string_prefix = connection_string_prefix
-        # The ID of the cluster.
+        # The cluster ID.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The ID of the endpoint.
+        # The endpoint ID.
         # 
-        # >  You can call the [DescribeDBClusterEndpoints](https://help.aliyun.com/document_detail/98205.html) operation to query endpoint details.
+        # > For more information, see [DescribeDBClusterEndpoints](https://help.aliyun.com/document_detail/98205.html).
         self.dbendpoint_id = dbendpoint_id
-        # The network type of the endpoint. Set the value to **Public**.
+        # The network type of the new endpoint. Set the value to **Public**.
         # 
         # This parameter is required.
         self.net_type = net_type
@@ -48,7 +50,7 @@ class CreateDBEndpointAddressRequest(DaraModel):
         self.security_group_id = security_group_id
         # The ID of the virtual private cloud (VPC).
         self.vpcid = vpcid
-        # The details of the zones.
+        # The zone information.
         self.zone_info = zone_info
 
     def validate(self):
@@ -145,9 +147,9 @@ class CreateDBEndpointAddressRequestZoneInfo(DaraModel):
         v_switch_id: str = None,
         zone_id: str = None,
     ):
-        # The ID of the vSwitch.
+        # The virtual switch ID.
         self.v_switch_id = v_switch_id
-        # The ID of the zone.
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):

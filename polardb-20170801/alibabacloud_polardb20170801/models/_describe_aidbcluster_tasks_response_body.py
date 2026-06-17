@@ -17,12 +17,17 @@ class DescribeAIDBClusterTasksResponseBody(DaraModel):
         request_id: str = None,
         task_type: str = None,
     ):
+        # The engine.
         self.engine = engine
+        # The engine version.
         self.engine_version = engine_version
+        # A list of model operators.
         self.items = items
+        # The PolarDB cluster ID.
         self.relative_dbcluster_id = relative_dbcluster_id
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The task type.
         self.task_type = task_type
 
     def validate(self):
@@ -103,21 +108,37 @@ class DescribeAIDBClusterTasksResponseBodyItems(DaraModel):
         train_mode: str = None,
         train_type: str = None,
     ):
+        # The completion time.
         self.completed_time = completed_time
+        # The creation time.
         self.creation_time = creation_time
+        # The node description.
         self.dbnode_description = dbnode_description
+        # The model operator instance ID.
         self.dbnode_id = dbnode_id
+        # The instance status. This parameter is not always returned.
         self.dbnode_status = dbnode_status
+        # The description of the instance status.
         self.dbnode_status_desc = dbnode_status_desc
+        # The availability zone.
         self.data_zone_id = data_zone_id
+        # The engine.
         self.engine = engine
+        # The engine version.
         self.engine_version = engine_version
+        # The model name.
         self.model_name = model_name
+        # The model path.
         self.model_path = model_path
+        # The model source.
         self.model_source = model_source
+        # The runtime parameters.
         self.running_times = running_times
+        # The start time.
         self.start_time = start_time
+        # The training mode.
         self.train_mode = train_mode
+        # The training type.
         self.train_type = train_type
 
     def validate(self):

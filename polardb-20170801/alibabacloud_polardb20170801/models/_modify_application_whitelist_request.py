@@ -14,12 +14,25 @@ class ModifyApplicationWhitelistRequest(DaraModel):
         security_iparray_name: str = None,
         security_iplist: str = None,
     ):
+        # The application ID.
+        # 
         # This parameter is required.
         self.application_id = application_id
+        # The ID of the application subcomponent. If you specify this parameter, the whitelist modification takes effect only for this subcomponent.
         self.component_id = component_id
+        # The method to modify the whitelist. Valid values:
+        # 
+        # - **Cover**: Overwrites the original IP address whitelist. This is the default value.
+        # 
+        # - **Append**: Appends IP addresses.
+        # 
+        # - **Delete**: Deletes IP addresses.
         self.modify_mode = modify_mode
+        # The list of security group IDs. Separate multiple IDs with commas.
         self.security_groups = security_groups
+        # The name of the IP address group. The default value is `default`.
         self.security_iparray_name = security_iparray_name
+        # The IP addresses for the whitelist. Separate multiple IP addresses with commas.
         self.security_iplist = security_iplist
 
     def validate(self):

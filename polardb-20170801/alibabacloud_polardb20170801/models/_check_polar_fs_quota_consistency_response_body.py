@@ -12,8 +12,11 @@ class CheckPolarFsQuotaConsistencyResponseBody(DaraModel):
         quota_item: main_models.CheckPolarFsQuotaConsistencyResponseBodyQuotaItem = None,
         request_id: str = None,
     ):
+        # The ID of the PolarFS instance.
         self.polar_fs_instance_id = polar_fs_instance_id
+        # An object that contains details about the quota.
         self.quota_item = quota_item
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -59,11 +62,15 @@ class CheckPolarFsQuotaConsistencyResponseBodyQuotaItem(DaraModel):
         used_capacity: int = None,
         used_inodes: int = None,
     ):
+        # The storage capacity quota.
         self.capacity = capacity
-        # Inodes
+        # The inode quota.
         self.inodes = inodes
+        # The directory path.
         self.path = path
+        # The used capacity, in bytes.
         self.used_capacity = used_capacity
+        # The number of used inodes.
         self.used_inodes = used_inodes
 
     def validate(self):

@@ -12,9 +12,22 @@ class CheckPolarFsQuotaConsistencyRequest(DaraModel):
         path: str = None,
         polar_fs_instance_id: str = None,
     ):
+        # Specifies whether to repair an inconsistent quota. Valid values:
+        # 
+        # - false
+        # 
+        # - true
         self.enable_repair = enable_repair
+        # Specifies whether to calculate the total usage of the directory in strict mode. Valid values:
+        # 
+        # - false
+        # 
+        # - true
         self.enable_strict_calculate = enable_strict_calculate
+        # The directory path.
         self.path = path
+        # The ID of the PolarFS instance.
+        # 
         # This parameter is required.
         self.polar_fs_instance_id = polar_fs_instance_id
 

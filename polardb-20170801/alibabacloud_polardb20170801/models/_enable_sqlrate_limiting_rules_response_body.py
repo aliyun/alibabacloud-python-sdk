@@ -11,9 +11,17 @@ class EnableSQLRateLimitingRulesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response message.
+        # 
+        # > If the request is successful, `Successful` is returned. If the request fails, an error message is returned.
         self.message = message
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # - **true**: The request was successful.
+        # 
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):

@@ -17,20 +17,21 @@ class CancelScheduleTasksRequest(DaraModel):
     ):
         # The cluster ID.
         # 
-        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the information of all clusters that are deployed in a specified region, such as the cluster IDs.
+        # > Call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to view information about all clusters in the destination region, including cluster IDs.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the scheduled task that you want to cancel.
+        # The ID of the scheduled task to cancel.
         # 
-        # > *   You can call the [DescribeScheduleTasks](https://help.aliyun.com/document_detail/199648.html) operation to query the details of all scheduled tasks that belong to the current account, such as the task IDs.
-        # >*   You can cancel only the tasks whose status is `pending`.``
+        # > - Call the [DescribeScheduleTasks](https://help.aliyun.com/document_detail/199648.html) operation to view information about all scheduled tasks for your account, including task IDs.
+        # >
+        # > - You can cancel only tasks that are in the pending state. The `Status` parameter for these tasks returns `pending`.
         # 
         # This parameter is required.
         self.task_id = task_id

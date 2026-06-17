@@ -8,8 +8,11 @@ class EnableDBClusterServerlessRequest(DaraModel):
     def __init__(
         self,
         dbcluster_id: str = None,
+        from_time_service: bool = None,
         owner_account: str = None,
         owner_id: int = None,
+        planned_end_time: str = None,
+        planned_start_time: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         scale_ap_ro_num_max: str = None,
@@ -23,21 +26,24 @@ class EnableDBClusterServerlessRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        self.from_time_service = from_time_service
         self.owner_account = owner_account
         self.owner_id = owner_id
+        self.planned_end_time = planned_end_time
+        self.planned_start_time = planned_start_time
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The maximum number of stable AP read-only nodes. Valid values: 0 to 7.
+        # The maximum number of steady-state AP read-only nodes. Valid values: 0 to 7.
         self.scale_ap_ro_num_max = scale_ap_ro_num_max
-        # The minimum number of stable AP read-only nodes. Valid values: 0 to 7.
+        # The minimum number of steady-state AP read-only nodes. Valid values: 0 to 7.
         self.scale_ap_ro_num_min = scale_ap_ro_num_min
-        # The maximum number of PCUs per node for scaling. Valid values: 1 to 8 PCUs.
+        # The maximum scaling limit per node. Valid values: 0 PCU to 16 PCU.
         self.scale_max = scale_max
-        # The minimum number of PolarDB capacity units (PCUs) per node for scaling. Valid values: 1 to 8 PCUs.
+        # The minimum scaling limit per node. Valid values: 0 PCU to 16 PCU.
         self.scale_min = scale_min
-        # The maximum number of read-only nodes for scaling. Valid values: 0 to 7.
+        # The maximum number of read-only nodes for scaling. Valid values: 0 to 15.
         self.scale_ro_num_max = scale_ro_num_max
-        # The minimum number of read-only nodes for scaling. Valid values: 0 to 7.
+        # The minimum number of read-only nodes for scaling. Valid values: 0 to 15.
         self.scale_ro_num_min = scale_ro_num_min
 
     def validate(self):
@@ -51,11 +57,20 @@ class EnableDBClusterServerlessRequest(DaraModel):
         if self.dbcluster_id is not None:
             result['DBClusterId'] = self.dbcluster_id
 
+        if self.from_time_service is not None:
+            result['FromTimeService'] = self.from_time_service
+
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
 
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
+
+        if self.planned_end_time is not None:
+            result['PlannedEndTime'] = self.planned_end_time
+
+        if self.planned_start_time is not None:
+            result['PlannedStartTime'] = self.planned_start_time
 
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
@@ -88,11 +103,20 @@ class EnableDBClusterServerlessRequest(DaraModel):
         if m.get('DBClusterId') is not None:
             self.dbcluster_id = m.get('DBClusterId')
 
+        if m.get('FromTimeService') is not None:
+            self.from_time_service = m.get('FromTimeService')
+
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
 
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+
+        if m.get('PlannedEndTime') is not None:
+            self.planned_end_time = m.get('PlannedEndTime')
+
+        if m.get('PlannedStartTime') is not None:
+            self.planned_start_time = m.get('PlannedStartTime')
 
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')

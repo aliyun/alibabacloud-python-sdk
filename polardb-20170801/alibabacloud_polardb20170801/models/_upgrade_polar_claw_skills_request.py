@@ -12,10 +12,19 @@ class UpgradePolarClawSkillsRequest(DaraModel):
         region_id: str = None,
         upgrade_method: str = None,
     ):
+        # The application ID.
+        # 
         # This parameter is required.
         self.application_id = application_id
+        # The application type.
+        # 
+        # > You can omit this parameter when you first call this operation.
         self.application_type = application_type
+        # The region ID.
+        # 
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query the regions of all clusters in your account.
         self.region_id = region_id
+        # The upgrade method.
         self.upgrade_method = upgrade_method
 
     def validate(self):

@@ -15,13 +15,13 @@ class DescribeGlobalDatabaseNetworkRequest(DaraModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
-        # The ID of the GDN.
+        # The ID of the Global Database Network (GDN).
         # 
         # This parameter is required.
         self.gdnid = gdnid
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

@@ -11,10 +11,15 @@ class UninstallPolarClawPluginRequest(DaraModel):
         plugin_id: str = None,
         restart: bool = None,
     ):
+        # The application ID.
+        # 
         # This parameter is required.
         self.application_id = application_id
+        # The plugin ID.
+        # 
         # This parameter is required.
         self.plugin_id = plugin_id
+        # Indicates whether to restart the gateway after the plugin is uninstalled. The default is true.
         self.restart = restart
 
     def validate(self):

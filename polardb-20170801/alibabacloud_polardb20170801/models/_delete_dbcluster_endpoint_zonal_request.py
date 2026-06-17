@@ -14,8 +14,12 @@ class DeleteDBClusterEndpointZonalRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The custom cluster endpoint ID.
+        # 
         # This parameter is required.
         self.dbendpoint_id = dbendpoint_id
         self.owner_account = owner_account

@@ -23,20 +23,47 @@ class DescribeColdStorageInstanceRequest(DaraModel):
         resource_owner_id: int = None,
         table_name: str = None,
     ):
+        # The ID of the PolarDB cluster.
         self.dbcluster_id = dbcluster_id
+        # The name of the database.
         self.dbname = dbname
+        # The type of the supported engine. The return value is the sum of the values of the supported engine types.
+        # 
+        # - 1: Search engine
+        # 
+        # - 2: LindormTSDB
+        # 
+        # - 4: LindormTable
+        # 
+        # - 8: File engine
+        # 
+        # > For example, if \\`EngineType\\` is 15 (8 + 4 + 2 + 1), the instance supports the search engine, LindormTSDB, LindormTable, and file engine. If \\`EngineType\\` is 6 (4 + 2), the instance supports LindormTSDB and LindormTable.
         self.engine_type = engine_type
+        # The expiration time of the cluster. Note: This parameter is returned only for subscription clusters. An empty value is returned for pay-as-you-go clusters.
         self.expire_time = expire_time
+        # - If you do not specify the **MaxResults** parameter, the query is not paged. The value of the **MaxResults** parameter in the response indicates the total number of entries.
+        # 
+        # - If you specify the **MaxResults** parameter, the query is paged. **MaxResults** specifies the number of entries to return on each page. Valid values: **1** to **100**. The value of the **MaxResults** parameter in the response indicates the number of entries on the current page. The recommended value is **20**.
         self.max_results = max_results
+        # A token to retrieve the next page of results. Set this parameter to the \\`NextToken\\` value from a previous call. You do not need to specify this parameter for the first call.
         self.next_token = next_token
+        # The object type. Valid values: \\`TABLE\\`, \\`PARTITION_TABLE\\`, and \\`LOB\\`.
         self.object_type = object_type
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The region ID.
+        # 
+        # > - For more information, see [DescribeRegions](https://help.aliyun.com/document_detail/98041.html).
+        # 
+        # - If you do not specify this parameter, the operation queries scheduled tasks in all regions within your account.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The name of the data table.
         self.table_name = table_name
 
     def validate(self):

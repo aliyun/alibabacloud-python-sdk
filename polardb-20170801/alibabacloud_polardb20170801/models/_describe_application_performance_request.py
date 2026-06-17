@@ -16,16 +16,42 @@ class DescribeApplicationPerformanceRequest(DaraModel):
         model_service: str = None,
         start_time: str = None,
     ):
+        # The ID of the application cluster.
+        # 
         # This parameter is required.
         self.application_id = application_id
+        # The ID of the consumer.
         self.consumer = consumer
+        # The ID of the consumer group.
         self.consumer_group = consumer_group
+        # The end time for the query. Specify the time in UTC in the `yyyy-MM-ddTHH:mmZ` format.
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # The granularity of the performance data, in seconds. Valid values:
+        # 
+        # - 5
+        # 
+        # - 30
+        # 
+        # - 60
+        # 
+        # - 600
+        # 
+        # - 1800
+        # 
+        # - 3600
+        # 
+        # - 86400
         self.interval = interval
+        # The performance metrics to query. Separate multiple metrics with commas (,).<br>You can specify up to five performance metrics.<br>
+        # 
         # This parameter is required.
         self.key = key
+        # The ID of the model service.
         self.model_service = model_service
+        # The start time for the query. Specify the time in UTC in the `yyyy-MM-ddTHH:mmZ` format.
+        # 
         # This parameter is required.
         self.start_time = start_time
 

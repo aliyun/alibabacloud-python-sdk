@@ -18,13 +18,19 @@ class DescribeAIDBClusterTaskLogFilesResponseBody(DaraModel):
         request_id: str = None,
         start_time: str = None,
     ):
+        # The end of the time range to query.
         self.end_time = end_time
+        # The list of logs.
         self.items = items
+        # The page number of the returned page. The default value is 1.
         self.page_number = page_number
+        # The total number of entries that meet the query conditions. This parameter is optional and may not be returned.
         self.page_record_count = page_record_count
+        # The maximum number of records returned for the current request.
         self.page_size = page_size
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
+        # The start of the time range to query. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format and is displayed in UTC.
         self.start_time = start_time
 
     def validate(self):
@@ -90,6 +96,7 @@ class DescribeAIDBClusterTaskLogFilesResponseBodyItems(DaraModel):
         self,
         sls_log_items: List[main_models.DescribeAIDBClusterTaskLogFilesResponseBodyItemsSlsLogItems] = None,
     ):
+        # The SLS log information.
         self.sls_log_items = sls_log_items
 
     def validate(self):
@@ -127,8 +134,11 @@ class DescribeAIDBClusterTaskLogFilesResponseBodyItemsSlsLogItems(DaraModel):
         message: str = None,
         timestamp: str = None,
     ):
+        # The time when the log was recorded.
         self.log_time = log_time
+        # The log message.
         self.message = message
+        # The specific point in time when the metric was recorded. The value is a UNIX timestamp. Unit: seconds.
         self.timestamp = timestamp
 
     def validate(self):

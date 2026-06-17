@@ -15,8 +15,12 @@ class DescribeExtensionsRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The database name.
+        # 
         # This parameter is required.
         self.dbname = dbname
         self.extension_name = extension_name

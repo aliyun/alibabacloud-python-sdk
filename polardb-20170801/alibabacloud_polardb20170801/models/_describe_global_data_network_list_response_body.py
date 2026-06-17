@@ -16,10 +16,15 @@ class DescribeGlobalDataNetworkListResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: str = None,
     ):
+        # The details of the Global Data Networks (GDNs).
         self.items = items
+        # The page number.
         self.page_number = page_number
+        # The number of records on the current page.
         self.page_record_count = page_record_count
+        # The request ID.
         self.request_id = request_id
+        # The total number of records.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -73,6 +78,7 @@ class DescribeGlobalDataNetworkListResponseBodyItems(DaraModel):
         self,
         networks: List[main_models.DescribeGlobalDataNetworkListResponseBodyItemsNetworks] = None,
     ):
+        # The list of GDN networks.
         self.networks = networks
 
     def validate(self):
@@ -113,12 +119,45 @@ class DescribeGlobalDataNetworkListResponseBodyItemsNetworks(DaraModel):
         network_status: str = None,
         network_topology: main_models.DescribeGlobalDataNetworkListResponseBodyItemsNetworksNetworkTopology = None,
     ):
+        # The synchronization channels.
         self.channels = channels
+        # The time when the GDN was created.
         self.create_time = create_time
+        # The description of the GDN.
         self.network_description = network_description
-        # GDN ID
+        # The ID of the GDN.
         self.network_id = network_id
+        # The status of the GDN. Valid values:
+        # 
+        # - **Creating**: The GDN is being created.
+        # 
+        # - **Running**: The GDN is running.
+        # 
+        # - **Syncing**: The GDN is synchronizing data.
+        # 
+        # - **SyncFinished**: Data synchronization is complete.
+        # 
+        # - **SyncFailed**: Data synchronization failed.
+        # 
+        # - **SyncPartialFailed**: Data synchronization partially failed.
+        # 
+        # - **Stopped**: The GDN is stopped.
+        # 
+        # - **Maintaining**: The GDN is under maintenance.
+        # 
+        # - **Restarting**: The GDN is restarting.
+        # 
+        # - **Locking**: The GDN is being locked.
+        # 
+        # - **Locked**: The GDN is locked.
+        # 
+        # - **Unlocking**: The GDN is being unlocked.
+        # 
+        # - **Deleting**: The GDN is being deleted.
+        # 
+        # - **Deleted**: The GDN is deleted.
         self.network_status = network_status
+        # The network topology of the GDN.
         self.network_topology = network_topology
 
     def validate(self):
@@ -188,7 +227,9 @@ class DescribeGlobalDataNetworkListResponseBodyItemsNetworksNetworkTopology(Dara
         destinations: List[main_models.DescribeGlobalDataNetworkListResponseBodyItemsNetworksNetworkTopologyDestinations] = None,
         sources: List[main_models.DescribeGlobalDataNetworkListResponseBodyItemsNetworksNetworkTopologySources] = None,
     ):
+        # The synchronization destinations.
         self.destinations = destinations
+        # The synchronization sources.
         self.sources = sources
 
     def validate(self):
@@ -242,9 +283,17 @@ class DescribeGlobalDataNetworkListResponseBodyItemsNetworksNetworkTopologySourc
         source_region: str = None,
         source_type: str = None,
     ):
+        # The source path.
         self.source_file_system_path = source_file_system_path
+        # The ID of the source Polarlakebase instance.
         self.source_id = source_id
+        # The region of the source.
         self.source_region = source_region
+        # The type of the source. Valid values:
+        # 
+        # - **pfs**: Polarlakebase High-performance Edition.
+        # 
+        # - **pcs**: Polarlakebase Cold Storage Edition.
         self.source_type = source_type
 
     def validate(self):
@@ -293,9 +342,17 @@ class DescribeGlobalDataNetworkListResponseBodyItemsNetworksNetworkTopologyDesti
         destination_region: str = None,
         destination_type: str = None,
     ):
+        # The destination path.
         self.destination_file_system_path = destination_file_system_path
+        # Destination PolarDB instance
         self.destination_id = destination_id
+        # The region of the destination.
         self.destination_region = destination_region
+        # The type of the destination. Valid values:
+        # 
+        # - **pfs**: Polarlakebase High-performance Edition.
+        # 
+        # - **pcs**: Polarlakebase Cold Storage Edition.
         self.destination_type = destination_type
 
     def validate(self):
@@ -344,9 +401,43 @@ class DescribeGlobalDataNetworkListResponseBodyItemsNetworksChannels(DaraModel):
         freeze_source_during_sync: bool = None,
         progress: str = None,
     ):
+        # The ID of the synchronization channel.
         self.channel_id = channel_id
+        # The status of the synchronization channel. Valid values:
+        # 
+        # - **Creating**: The channel is being created.
+        # 
+        # - **Running**: The channel is running.
+        # 
+        # - **Syncing**: The channel is synchronizing data.
+        # 
+        # - **SyncFinished**: Data synchronization is complete.
+        # 
+        # - **SyncFailed**: Data synchronization failed.
+        # 
+        # - **SyncPartialFailed**: Data synchronization partially failed.
+        # 
+        # - **Stopped**: The channel is stopped.
+        # 
+        # - **Maintaining**: The channel is under maintenance.
+        # 
+        # - **Restarting**: The channel is restarting.
+        # 
+        # - **Locking**: The channel is being locked.
+        # 
+        # - **Locked**: The channel is locked.
+        # 
+        # - **Unlocking**: The channel is being unlocked.
+        # 
+        # - **Deleting**: The channel is being deleted.
+        # 
+        # - **Deleted**: The channel is deleted.
         self.channel_status = channel_status
+        # Indicates whether the source path is frozen during data transmission.
         self.freeze_source_during_sync = freeze_source_during_sync
+        # The synchronization progress.
+        # 
+        # > The value is a percentage that is accurate to two decimal places.
         self.progress = progress
 
     def validate(self):

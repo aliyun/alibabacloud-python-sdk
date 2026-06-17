@@ -10,8 +10,11 @@ class DescribePolarAgentChatRecordsRequest(DaraModel):
         session_id: str = None,
         source: str = None,
     ):
+        # The session ID.
+        # 
         # This parameter is required.
         self.session_id = session_id
+        # The product source. Valid value: polardb-console.
         self.source = source
 
     def validate(self):

@@ -16,14 +16,39 @@ class DescribeBudgetPoliciesRequest(DaraModel):
         region_id: str = None,
         status: str = None,
     ):
+        # The ID of the consumer group or user. This parameter is required if BudgetDimensionType is set to ConsumerGroup or Consumer.
         self.budget_dimension_ref_id = budget_dimension_ref_id
+        # The policy type. Valid values:
+        # 
+        # - **ConsumerGroup**: The policy applies to a consumer group.
+        # 
+        # - **Consumer**: The policy applies to a user.
         self.budget_dimension_type = budget_dimension_type
+        # The budget policy ID.
         self.budget_policy_id = budget_policy_id
+        # The gateway instance ID.
+        # 
         # This parameter is required.
         self.gw_cluster_id = gw_cluster_id
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page. Valid values:
+        # 
+        # - **30**
+        # 
+        # - **50**
+        # 
+        # - **100**
+        # 
+        # The default value is **30**.
         self.page_size = page_size
+        # The region ID.
         self.region_id = region_id
+        # The policy status. Valid values:
+        # 
+        # - **Enabled**
+        # 
+        # - **Disabled**
         self.status = status
 
     def validate(self):

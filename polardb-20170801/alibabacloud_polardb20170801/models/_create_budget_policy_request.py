@@ -15,15 +15,32 @@ class CreateBudgetPolicyRequest(DaraModel):
         region_id: str = None,
         reset_day_of_month: str = None,
     ):
+        # The alert threshold, as a percentage. Valid values: 0 to 100.
         self.alert_threshold_pct = alert_threshold_pct
+        # The ID of the dimension object. This parameter is required if `BudgetType` is set to `ConsumerTotal` or `ConsumerGroupTotal`.
         self.budget_dimension_ref_id = budget_dimension_ref_id
+        # The number of budget points.
+        # 
         # This parameter is required.
         self.budget_points = budget_points
+        # The budget type. Valid values:
+        # 
+        # - `GlobalTotal`: global total budget
+        # 
+        # - `ConsumerTotal`: consumer total budget
+        # 
+        # - `ConsumerGroupTotal`: consumer group total budget
+        # 
         # This parameter is required.
         self.budget_type = budget_type
+        # The gateway cluster ID.
+        # 
         # This parameter is required.
         self.gw_cluster_id = gw_cluster_id
+        # The region ID.
         self.region_id = region_id
+        # The day of the month on which the budget resets. Valid values: 1 to 28.
+        # 
         # This parameter is required.
         self.reset_day_of_month = reset_day_of_month
 

@@ -13,9 +13,13 @@ class ApplyApplicationPromptsRequest(DaraModel):
         disabled_prompt_ids: List[str] = None,
         enabled_prompt_ids: List[str] = None,
     ):
+        # The ID of the application.
+        # 
         # This parameter is required.
         self.application_id = application_id
+        # An array of prompt IDs to disable.
         self.disabled_prompt_ids = disabled_prompt_ids
+        # An array of prompt IDs to enable.
         self.enabled_prompt_ids = enabled_prompt_ids
 
     def validate(self):
