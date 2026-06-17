@@ -34,6 +34,8 @@ class ExecuteStatementRequest(DaraModel):
         self.owner_id = owner_id
         # The configuration parameters.
         self.parameters = parameters
+        # Parameters for the vector dataset.  
+        # > When WorkspaceId is not empty, you must also pass this parameter.
         self.rag_workspace_collection = rag_workspace_collection
         # The region ID of the instance.
         # 
@@ -56,6 +58,7 @@ class ExecuteStatementRequest(DaraModel):
         self.sqls = sqls
         # The name of the set of SQL statements that you want to execute. This parameter takes effect when the RunType parameter is set to asynchronous.
         self.statement_name = statement_name
+        # The ID of a workspace composed of multiple database instances. This parameter and DBInstanceId cannot both be empty. If both are specified, this parameter takes precedence.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -152,7 +155,13 @@ class ExecuteStatementRequestRagWorkspaceCollection(DaraModel):
         collection: str = None,
         namespace: str = None,
     ):
+        # Collection name.  
+        # 
+        # > You can view the list by using the [ListCollections](https://help.aliyun.com/document_detail/2401503.html) API.
         self.collection = collection
+        # Namespace.  
+        # 
+        # > You can view the list by using the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) API.
         self.namespace = namespace
 
     def validate(self):

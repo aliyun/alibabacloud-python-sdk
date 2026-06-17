@@ -13,22 +13,25 @@ class ModifySupabaseProjectSecurityIpsRequest(DaraModel):
         update_db: bool = None,
         update_web: bool = None,
     ):
-        # The Supabase project ID.
+        # The Supabase instance ID.
         # 
         # This parameter is required.
         self.project_id = project_id
-        # The region ID of the cluster.
+        # The region ID.
         # 
-        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+        # > For more information, see [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) to view available region IDs.
         self.region_id = region_id
-        # A comma-separated list of IP addresses and CIDR blocks to set as the whitelist. You can specify up to 1,000 entries. Supported formats:
+        # The list of IP addresses for the whitelist. Up to 1,000 IP addresses are supported. Separate multiple IP addresses with commas. The following formats are supported:
         # 
-        # *   Single IP: 10.23.12.24
-        # *   CIDR Block: 10.23.12.0/24 (the prefix`/24` indicates the length must be between 1 and 32)``
+        # - 10.23.12.24 (IP address)
+        # 
+        # - 10.23.12.24/24 (A CIDR block, where `/24` indicates the prefix length. The prefix length must be an integer in the range `[1,32]`.)
         # 
         # This parameter is required.
         self.security_iplist = security_iplist
+        # Specifies whether to modify the whitelist for database port 5432. The default value is true.
         self.update_db = update_db
+        # Specifies whether to modify the whitelist for HTTP port 80 and HTTPS port 443. The default value is true.
         self.update_web = update_web
 
     def validate(self):

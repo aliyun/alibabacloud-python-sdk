@@ -11,8 +11,11 @@ class ModifySupabaseProjectResourceResponseBody(DaraModel):
         project_id: str = None,
         request_id: str = None,
     ):
+        # The order ID.
         self.order_id = order_id
+        # The Supabase project ID.
         self.project_id = project_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

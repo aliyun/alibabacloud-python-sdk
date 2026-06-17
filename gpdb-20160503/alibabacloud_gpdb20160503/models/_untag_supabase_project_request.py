@@ -15,10 +15,25 @@ class UntagSupabaseProjectRequest(DaraModel):
         resource_type: str = None,
         tag_key: List[str] = None,
     ):
+        # Specifies whether to remove all tags from the instance. This parameter takes effect only when `TagKey.N` is not specified. Valid values:
+        # 
+        # - true
+        # 
+        # - false
+        # 
+        # Default value: false
         self.all = all
+        # The region ID of the instance.
         self.region_id = region_id
+        # The instance IDs. You can specify up to 50 instance IDs.
         self.resource_id = resource_id
+        # The resource type. Valid values:
+        # 
+        # - `instance`: a reserved mode instance.
+        # 
+        # - `ALIYUN::GPDB::INSTANCE`: an elastic mode instance.
         self.resource_type = resource_type
+        # The keys of the tags that you want to remove. You can specify up to 20 tag keys.
         self.tag_key = tag_key
 
     def validate(self):

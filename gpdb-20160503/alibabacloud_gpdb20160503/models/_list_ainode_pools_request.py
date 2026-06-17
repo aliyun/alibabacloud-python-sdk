@@ -10,11 +10,11 @@ class ListAINodePoolsRequest(DaraModel):
         dbinstance_id: str = None,
         region_id: str = None,
     ):
-        # The cluster ID.
+        # The instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # Region ID
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

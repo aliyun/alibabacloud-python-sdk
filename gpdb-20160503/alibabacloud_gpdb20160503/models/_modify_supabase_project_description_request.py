@@ -11,8 +11,11 @@ class ModifySupabaseProjectDescriptionRequest(DaraModel):
         project_id: str = None,
         region_id: str = None,
     ):
+        # The detailed description of the Supabase project.
         self.project_description = project_description
+        # The Supabase instance ID.
         self.project_id = project_id
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

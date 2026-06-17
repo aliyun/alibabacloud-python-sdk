@@ -10,7 +10,9 @@ class CreateAIServiceResponseBody(DaraModel):
         request_id: str = None,
         service_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The service ID.
         self.service_id = service_id
 
     def validate(self):

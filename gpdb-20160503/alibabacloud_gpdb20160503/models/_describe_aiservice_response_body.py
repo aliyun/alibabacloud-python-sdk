@@ -19,16 +19,31 @@ class DescribeAIServiceResponseBody(DaraModel):
         service_id: str = None,
         status: str = None,
     ):
+        # The time when the service was created.
         self.create_time = create_time
+        # The description of the service.
         self.description = description
+        # The internal endpoint for API debugging.
         self.private_api_dev_url = private_api_dev_url
+        # The internal endpoint of the Workbench.
         self.private_workbench_url = private_workbench_url
+        # The public endpoint for API debugging.
         self.public_api_dev_url = public_api_dev_url
+        # The public endpoint of the Workbench.
         self.public_workbench_url = public_workbench_url
+        # The ID of the request.
         self.request_id = request_id
+        # A comma-separated list of IP addresses in the IP address whitelist group.
         self.security_ip_list = security_ip_list
+        # The service account.
         self.service_account = service_account
+        # The ID of the service.
         self.service_id = service_id
+        # The status of the service. Valid values:
+        # 
+        # - deploying: The service is being deployed.
+        # 
+        # - active: The service is running.
         self.status = status
 
     def validate(self):

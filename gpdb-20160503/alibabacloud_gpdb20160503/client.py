@@ -45,7 +45,22 @@ class Client(OpenApiClient):
             'cn-shanghai-finance-1': 'gpdb.aliyuncs.com',
             'cn-shenzhen-finance-1': 'gpdb.aliyuncs.com',
             'cn-qingdao': 'gpdb.aliyuncs.com',
-            'cn-north-2-gov-1': 'gpdb.aliyuncs.com'
+            'cn-north-2-gov-1': 'gpdb.aliyuncs.com',
+            'me-east-1': 'gpdb.me-east-1.aliyuncs.com',
+            'me-central-1': 'gpdb.me-central-1.aliyuncs.com',
+            'eu-west-1': 'gpdb.eu-west-1.aliyuncs.com',
+            'eu-central-1': 'gpdb.eu-central-1.aliyuncs.com',
+            'cn-zhangjiakou': 'gpdb.cn-zhangjiakou.aliyuncs.com',
+            'cn-huhehaote': 'gpdb.cn-huhehaote.aliyuncs.com',
+            'cn-chengdu': 'gpdb.cn-chengdu.aliyuncs.com',
+            'cn-beijing-finance-1': 'gpdb.aliyuncs.com',
+            'ap-southeast-7': 'gpdb.ap-southeast-7.aliyuncs.com',
+            'ap-southeast-5': 'gpdb.ap-southeast-5.aliyuncs.com',
+            'ap-southeast-3': 'gpdb.ap-southeast-3.aliyuncs.com',
+            'ap-southeast-2': 'gpdb.ap-southeast-2.aliyuncs.com',
+            'ap-south-1': 'gpdb.ap-south-1.aliyuncs.com',
+            'ap-northeast-2': 'gpdb.ap-northeast-2.aliyuncs.com',
+            'ap-northeast-1': 'gpdb.ap-northeast-1.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('gpdb', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -3554,6 +3569,104 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_remote_adbdata_source_with_options_async(request, runtime)
 
+    def create_saas_service_with_options(
+        self,
+        request: main_models.CreateSaasServiceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateSaasServiceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cu):
+            query['Cu'] = request.cu
+        if not DaraCore.is_null(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not DaraCore.is_null(request.period):
+            query['Period'] = request.period
+        if not DaraCore.is_null(request.plan):
+            query['Plan'] = request.plan
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.service_type):
+            query['ServiceType'] = request.service_type
+        if not DaraCore.is_null(request.used_time):
+            query['UsedTime'] = request.used_time
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateSaasService',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateSaasServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_saas_service_with_options_async(
+        self,
+        request: main_models.CreateSaasServiceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateSaasServiceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cu):
+            query['Cu'] = request.cu
+        if not DaraCore.is_null(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not DaraCore.is_null(request.period):
+            query['Period'] = request.period
+        if not DaraCore.is_null(request.plan):
+            query['Plan'] = request.plan
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.service_type):
+            query['ServiceType'] = request.service_type
+        if not DaraCore.is_null(request.used_time):
+            query['UsedTime'] = request.used_time
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateSaasService',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateSaasServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_saas_service(
+        self,
+        request: main_models.CreateSaasServiceRequest,
+    ) -> main_models.CreateSaasServiceResponse:
+        runtime = RuntimeOptions()
+        return self.create_saas_service_with_options(request, runtime)
+
+    async def create_saas_service_async(
+        self,
+        request: main_models.CreateSaasServiceRequest,
+    ) -> main_models.CreateSaasServiceResponse:
+        runtime = RuntimeOptions()
+        return await self.create_saas_service_with_options_async(request, runtime)
+
     def create_sample_data_with_options(
         self,
         request: main_models.CreateSampleDataRequest,
@@ -4173,6 +4286,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.disk_performance_level):
             query['DiskPerformanceLevel'] = request.disk_performance_level
+        if not DaraCore.is_null(request.engine_version):
+            query['EngineVersion'] = request.engine_version
         if not DaraCore.is_null(request.pay_type):
             query['PayType'] = request.pay_type
         if not DaraCore.is_null(request.period):
@@ -4229,6 +4344,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.disk_performance_level):
             query['DiskPerformanceLevel'] = request.disk_performance_level
+        if not DaraCore.is_null(request.engine_version):
+            query['EngineVersion'] = request.engine_version
         if not DaraCore.is_null(request.pay_type):
             query['PayType'] = request.pay_type
         if not DaraCore.is_null(request.period):
@@ -4417,6 +4534,80 @@ class Client(OpenApiClient):
     ) -> main_models.CreateVectorIndexResponse:
         runtime = RuntimeOptions()
         return await self.create_vector_index_with_options_async(request, runtime)
+
+    def create_workspace_with_options(
+        self,
+        request: main_models.CreateWorkspaceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateWorkspaceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.workspace_name):
+            query['WorkspaceName'] = request.workspace_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateWorkspace',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateWorkspaceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_workspace_with_options_async(
+        self,
+        request: main_models.CreateWorkspaceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateWorkspaceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.workspace_name):
+            query['WorkspaceName'] = request.workspace_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateWorkspace',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateWorkspaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_workspace(
+        self,
+        request: main_models.CreateWorkspaceRequest,
+    ) -> main_models.CreateWorkspaceResponse:
+        runtime = RuntimeOptions()
+        return self.create_workspace_with_options(request, runtime)
+
+    async def create_workspace_async(
+        self,
+        request: main_models.CreateWorkspaceRequest,
+    ) -> main_models.CreateWorkspaceResponse:
+        runtime = RuntimeOptions()
+        return await self.create_workspace_with_options_async(request, runtime)
 
     def delete_ainode_with_options(
         self,
@@ -6320,6 +6511,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.delete_remote_adbdata_source_with_options_async(request, runtime)
 
+    def delete_saas_service_with_options(
+        self,
+        request: main_models.DeleteSaasServiceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteSaasServiceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.service_id):
+            query['ServiceId'] = request.service_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteSaasService',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteSaasServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_saas_service_with_options_async(
+        self,
+        request: main_models.DeleteSaasServiceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteSaasServiceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.service_id):
+            query['ServiceId'] = request.service_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteSaasService',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteSaasServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_saas_service(
+        self,
+        request: main_models.DeleteSaasServiceRequest,
+    ) -> main_models.DeleteSaasServiceResponse:
+        runtime = RuntimeOptions()
+        return self.delete_saas_service_with_options(request, runtime)
+
+    async def delete_saas_service_async(
+        self,
+        request: main_models.DeleteSaasServiceRequest,
+    ) -> main_models.DeleteSaasServiceResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_saas_service_with_options_async(request, runtime)
+
     def delete_secret_with_options(
         self,
         request: main_models.DeleteSecretRequest,
@@ -6815,6 +7080,80 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteVectorIndexResponse:
         runtime = RuntimeOptions()
         return await self.delete_vector_index_with_options_async(request, runtime)
+
+    def delete_workspace_with_options(
+        self,
+        request: main_models.DeleteWorkspaceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteWorkspaceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteWorkspace',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteWorkspaceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_workspace_with_options_async(
+        self,
+        request: main_models.DeleteWorkspaceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteWorkspaceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteWorkspace',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteWorkspaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_workspace(
+        self,
+        request: main_models.DeleteWorkspaceRequest,
+    ) -> main_models.DeleteWorkspaceResponse:
+        runtime = RuntimeOptions()
+        return self.delete_workspace_with_options(request, runtime)
+
+    async def delete_workspace_async(
+        self,
+        request: main_models.DeleteWorkspaceRequest,
+    ) -> main_models.DeleteWorkspaceResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_workspace_with_options_async(request, runtime)
 
     def deploy_private_ragservice_with_options(
         self,
@@ -13928,6 +14267,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_graph_ragjob_with_options_async(request, runtime)
 
+    def get_saas_service_with_options(
+        self,
+        request: main_models.GetSaasServiceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetSaasServiceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.service_id):
+            query['ServiceId'] = request.service_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetSaasService',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetSaasServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_saas_service_with_options_async(
+        self,
+        request: main_models.GetSaasServiceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetSaasServiceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.service_id):
+            query['ServiceId'] = request.service_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetSaasService',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetSaasServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_saas_service(
+        self,
+        request: main_models.GetSaasServiceRequest,
+    ) -> main_models.GetSaasServiceResponse:
+        runtime = RuntimeOptions()
+        return self.get_saas_service_with_options(request, runtime)
+
+    async def get_saas_service_async(
+        self,
+        request: main_models.GetSaasServiceRequest,
+    ) -> main_models.GetSaasServiceResponse:
+        runtime = RuntimeOptions()
+        return await self.get_saas_service_with_options_async(request, runtime)
+
     def get_secret_value_with_options(
         self,
         request: main_models.GetSecretValueRequest,
@@ -14017,6 +14430,80 @@ class Client(OpenApiClient):
     ) -> main_models.GetSecretValueResponse:
         runtime = RuntimeOptions()
         return await self.get_secret_value_with_options_async(request, runtime)
+
+    def get_service_access_info_with_options(
+        self,
+        request: main_models.GetServiceAccessInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetServiceAccessInfoResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.service_id):
+            query['ServiceId'] = request.service_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetServiceAccessInfo',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetServiceAccessInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_service_access_info_with_options_async(
+        self,
+        request: main_models.GetServiceAccessInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetServiceAccessInfoResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.service_id):
+            query['ServiceId'] = request.service_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetServiceAccessInfo',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetServiceAccessInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_service_access_info(
+        self,
+        request: main_models.GetServiceAccessInfoRequest,
+    ) -> main_models.GetServiceAccessInfoResponse:
+        runtime = RuntimeOptions()
+        return self.get_service_access_info_with_options(request, runtime)
+
+    async def get_service_access_info_async(
+        self,
+        request: main_models.GetServiceAccessInfoRequest,
+    ) -> main_models.GetServiceAccessInfoResponse:
+        runtime = RuntimeOptions()
+        return await self.get_service_access_info_with_options_async(request, runtime)
 
     def get_statement_result_with_options(
         self,
@@ -16254,6 +16741,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_remote_adbdata_sources_with_options_async(request, runtime)
 
+    def list_saas_service_with_options(
+        self,
+        request: main_models.ListSaasServiceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListSaasServiceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.service_type):
+            query['ServiceType'] = request.service_type
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListSaasService',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListSaasServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_saas_service_with_options_async(
+        self,
+        request: main_models.ListSaasServiceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListSaasServiceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.service_type):
+            query['ServiceType'] = request.service_type
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListSaasService',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListSaasServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_saas_service(
+        self,
+        request: main_models.ListSaasServiceRequest,
+    ) -> main_models.ListSaasServiceResponse:
+        runtime = RuntimeOptions()
+        return self.list_saas_service_with_options(request, runtime)
+
+    async def list_saas_service_async(
+        self,
+        request: main_models.ListSaasServiceRequest,
+    ) -> main_models.ListSaasServiceResponse:
+        runtime = RuntimeOptions()
+        return await self.list_saas_service_with_options_async(request, runtime)
+
     def list_schemas_with_options(
         self,
         request: main_models.ListSchemasRequest,
@@ -17255,6 +17828,92 @@ class Client(OpenApiClient):
     ) -> main_models.ListTagResourcesResponse:
         runtime = RuntimeOptions()
         return await self.list_tag_resources_with_options_async(request, runtime)
+
+    def list_workspaces_with_options(
+        self,
+        request: main_models.ListWorkspacesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListWorkspacesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListWorkspaces',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListWorkspacesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_workspaces_with_options_async(
+        self,
+        request: main_models.ListWorkspacesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListWorkspacesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListWorkspaces',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListWorkspacesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_workspaces(
+        self,
+        request: main_models.ListWorkspacesRequest,
+    ) -> main_models.ListWorkspacesResponse:
+        runtime = RuntimeOptions()
+        return self.list_workspaces_with_options(request, runtime)
+
+    async def list_workspaces_async(
+        self,
+        request: main_models.ListWorkspacesRequest,
+    ) -> main_models.ListWorkspacesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_workspaces_with_options_async(request, runtime)
 
     def modify_aiservice_security_ips_with_options(
         self,

@@ -11,10 +11,19 @@ class ModifySupabaseAutoScalePolicyRequest(DaraModel):
         project_id: str = None,
         region_id: str = None,
     ):
+        # Specifies whether to enable auto-scaling. Valid values:
+        # 
+        # - `true`: Enables auto-scaling. The Supabase instance automatically pauses and resumes based on traffic.
+        # 
+        # - `false`: Disables auto-scaling.
+        # 
         # This parameter is required.
         self.auto_scale = auto_scale
+        # The ID of the Supabase project. To obtain the workspace ID, log in to the console and go to the Supabase page.
+        # 
         # This parameter is required.
         self.project_id = project_id
+        # The region ID of the instance.
         self.region_id = region_id
 
     def validate(self):

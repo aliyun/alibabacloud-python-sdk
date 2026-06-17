@@ -31,6 +31,8 @@ class ExecuteStatementShrinkRequest(DaraModel):
         self.owner_id = owner_id
         # The configuration parameters.
         self.parameters_shrink = parameters_shrink
+        # Parameters for the vector dataset.  
+        # > When WorkspaceId is not empty, you must also pass this parameter.
         self.rag_workspace_collection_shrink = rag_workspace_collection_shrink
         # The region ID of the instance.
         # 
@@ -53,6 +55,7 @@ class ExecuteStatementShrinkRequest(DaraModel):
         self.sqls_shrink = sqls_shrink
         # The name of the set of SQL statements that you want to execute. This parameter takes effect when the RunType parameter is set to asynchronous.
         self.statement_name = statement_name
+        # The ID of a workspace composed of multiple database instances. This parameter and DBInstanceId cannot both be empty. If both are specified, this parameter takes precedence.
         self.workspace_id = workspace_id
 
     def validate(self):

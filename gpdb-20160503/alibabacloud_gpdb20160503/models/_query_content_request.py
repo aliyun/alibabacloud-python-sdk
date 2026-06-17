@@ -37,127 +37,158 @@ class QueryContentRequest(DaraModel):
         url_expiration: str = None,
         use_full_text_retrieval: bool = None,
     ):
-        # Document collection name.
+        # The name of the document collection.
         # 
-        # > Created by the [CreateDocumentCollection](https://help.aliyun.com/document_detail/2618448.html) API. You can use the [ListDocumentCollections](https://help.aliyun.com/document_detail/2618452.html) API to view the list of created document collections.
+        # > A document collection is created by calling the [CreateDocumentCollection](https://help.aliyun.com/document_detail/2618448.html) operation. Call the [ListDocumentCollections](https://help.aliyun.com/document_detail/2618452.html) operation to list your document collections.
         # 
         # This parameter is required.
         self.collection = collection
-        # Text content for retrieval.
+        # The text to use for retrieval.
         self.content = content
-        # Instance ID.
+        # The instance ID.
         # 
-        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) API to view details of all AnalyticDB for PostgreSQL instances in the target region, including the instance ID.
+        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to find the IDs of all AnalyticDB for PostgreSQL instances in a region.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # In image search scenarios, the source file name of the image to be searched.
+        # The filename of the source image for a search-by-image query.
         # 
-        # > The image file must have a file extension. Currently supported image extensions: bmp, jpg, jpeg, png, tiff.
+        # > The image file must have a file extension. The supported extensions are bmp, jpg, jpeg, png, and tiff.
         self.file_name = file_name
-        # In image search scenarios, the publicly accessible URL of the image file.
+        # The publicly accessible URL of the image file for a search-by-image query.
         # 
-        # > The image file must have a file extension. Currently supported image extensions: bmp, jpg, jpeg, png, tiff.
+        # > The image file must have a file extension. The supported extensions are bmp, jpg, jpeg, png, and tiff.
         self.file_url = file_url
-        # Filter condition for the data to be queried, in SQL WHERE format. It is an expression that returns a boolean value (true or false). The conditions can be simple comparison operators such as equal (=), not equal (<> or !=), greater than (>), less than (<), greater than or equal to (>=), less than or equal to (<=), or more complex expressions combined with logical operators (AND, OR, NOT), and conditions using keywords like IN, BETWEEN, LIKE, etc.
+        # A filter condition for the query, specified as a SQL `WHERE` clause that returns a boolean value. The clause can use comparison operators (such as `=`, `<>`, `!=`, `>`, `<`, `>=`, and `<=`), logical operators (`AND`, `OR`, and `NOT`), and keywords such as `IN`, `BETWEEN`, and `LIKE`.
         # 
-        # > 
-        # > - For detailed syntax, refer to: https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-where/
+        # > - For details about the syntax, see https\\://www\\.postgresqltutorial.com/postgresql-tutorial/postgresql-where/.
         self.filter = filter
-        # Whether to enable knowledge graph enhancement. Default value: false.
+        # Specifies whether to enable knowledge graph enhancement. The default value is `false`.
         self.graph_enhance = graph_enhance
-        # The search parameters of the knowledge graph.
+        # The parameters for knowledge graph retrieval.
         self.graph_search_args = graph_search_args
-        # Dual recall algorithm, default is empty (i.e., directly compare and sort the scores of vectors and full text).
+        # Specifies the hybrid search algorithm. If this parameter is not specified, the system directly compares and sorts the scores from dense vector retrieval and full-text search.
         # 
-        # Available values:
+        # Valid values:
         # 
-        # - RRF: Reciprocal rank fusion, with a parameter k controlling the fusion effect. See HybridSearchArgs configuration for details;
-        # - Weight: Weighted ranking, using a parameter alpha to control the weight of vector and full-text scores, then sorting. See HybridSearchArgs configuration for details;
-        # - Cascaded: Perform full-text retrieval first, then vector retrieval on top of it;
+        # - RRF: reciprocal rank fusion. This method uses a `k` parameter to control the fusion effect. For more information, see the `HybridSearchArgs` parameter.
+        # 
+        # - Weight: A weighted sorting method. This method uses parameters to control the score weights of vector retrieval and full-text search before sorting. For more information, see the `HybridSearchArgs` parameter.
+        # 
+        # - Cascaded: Performs full-text search first, and then performs vector retrieval on the results.
         self.hybrid_search = hybrid_search
-        # The parameters of the two-way retrieval algorithm. The following parameters are supported:
+        # Parameters for the multi-channel recall algorithm. Currently, `RRF` and `Weight` are supported. `HybridPathsSetting` can be used to specify the recall paths, including dense vector search (`dense`), sparse vector search (`sparse`), and full-text search (`fulltext`). If this parameter is not specified, the system recalls dense vectors and full-text search results by default.
         # 
-        # *   When HybridSearch is set to RRF, the scores are calculated by using the `1/(k+rank_i)` formula. The constant k is a positive integer that is greater than 1.
+        # - RRF: Specifies the constant `k` in the scoring formula `1/(k+rank_i)`. The value must be an integer greater than 1. Example:
         # 
-        # <!---->
+        # ```
+        # {
+        #   "HybridPathsSetting": {
+        #     "paths": "dense,fulltext"
+        #   },
+        #   "RRF": {
+        #     "k": 60
+        #   }
+        # }
+        # ```
         # 
-        #     { 
-        #        "RRF": {
-        #         "k": 60
-        #        }
-        #     }
+        # - Weight:
         # 
-        # *   When HybridSearch is set to Weight, the scores are calculated by using the `alpha * vector_score + (1-alpha) * text_score` formula. The alpha parameter specifies the proportion of the vector search score and the full-text search score and ranges from 0 to 1. A value of 0 specifies full-text search and a value of 1 specifies vector search.
+        #   - For dual-channel recall (if `HybridPathsSetting` is not specified, only `alpha` is configured):
         # 
-        # <!---->
+        #     - The score is calculated using the formula: `alpha * dense_score + (1-alpha) * fulltext_score`. The `alpha` parameter represents the score weight of dense vector retrieval relative to full-text search. The value must be in the range of 0 to 1. A value of 0 indicates that only full-text search is used, and a value of 1 indicates that only dense vector retrieval is used.
         # 
-        #     { 
-        #        "Weight": {
-        #         "alpha": 0.5
-        #        }
-        #     }
+        # ```
+        # { 
+        #    "Weight": {
+        #     "alpha": 0.5
+        #    }
+        # }
+        # ```
+        # 
+        # - For three-channel recall:
+        # 
+        #   - The score is calculated using the formula: `normalized_dense * dense_score + normalized_sparse * sparse_score + normalized_fulltext * fulltext_score`. The `dense`, `sparse`, and `fulltext` parameters represent the weights for the dense vector, sparse vector, and full-text search results, respectively. Their values must be greater than or equal to 0. The system automatically normalizes the weights to a sum of 1 (for example, `normalized_x = x / (dense + sparse + fulltext)`).
+        # 
+        # ```
+        # {
+        #   "HybridPathsSetting": {
+        #      "paths": "dense,sparse,fulltext"
+        #    },
+        #   "Weight": {
+        #     "dense": 0.5,
+        #     "sparse": 0.3,
+        #     "fulltext": 0.2
+        #   }
+        # }
+        # ```
         self.hybrid_search_args = hybrid_search_args
-        # Specifies whether to return the URL of the document. Default value: false.
+        # Specifies whether to return the URL of the document. The default value is `false`.
         self.include_file_url = include_file_url
-        # The metadata fields to be returned. Separate multiple fields with commas (,). This parameter is empty by default.
+        # The metadata fields to include in the response. If left empty, no metadata is returned. To specify multiple fields, use a comma-separated list.
         self.include_metadata_fields = include_metadata_fields
-        # Whether to return vectors. Default is false.
-        # > - **false**: Do not return vectors.
-        # > - **true**: Return vectors.
+        # Specifies whether to include the vector in the results. The default value is `false`.
+        # 
+        # > - **false**: The vector is not returned.
+        # >
+        # > - **true**: The vector is returned.
         self.include_vector = include_vector
-        # Similarity algorithm used during retrieval. If this value is empty, the algorithm specified at the time of knowledge base creation is used. It is recommended not to set this unless there is a specific need.
+        # The similarity algorithm used for retrieval. If this parameter is not specified, the algorithm that was specified when the document collection was created is used. We recommend that you do not set this parameter unless you have specific requirements.
         # 
-        # > Value description:
+        # > Valid values:
+        # >
         # > - **l2**: Euclidean distance.
-        # > - **ip**: Inner product (dot product) distance.
-        # > - **cosine**: Cosine similarity.
+        # >
+        # > - **ip**: dot product (inner product) distance.
+        # >
+        # > - **cosine**: cosine similarity.
         self.metrics = metrics
-        # Namespace, default is public.
+        # The namespace. The default value is `public`.
         # 
-        # > You can create a namespace using the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) API and view the list of namespaces using the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) API.
+        # > You can call the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) operation to create a namespace and the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) operation to list existing namespaces.
         self.namespace = namespace
-        # Password for the namespace.
+        # The password for the namespace.
         # 
-        # > This value is specified in the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) API.
+        # > This password is set when you call the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) operation.
         # 
         # This parameter is required.
         self.namespace_password = namespace_password
-        # Offset, used for paginated queries.
+        # The offset for paginated queries.
         self.offset = offset
-        # The fields by which to sort the results. This parameter is empty by default.
+        # The field to sort the results by. By default, this parameter is empty.
         # 
-        # The field must be either a metadata field or a default field in the table (e.g., id). Supported formats include:
-        # 
-        # Single field, such as chunk_id. Multiple fields that are separated by commas (,), such as block_id,chunk_id. Descending order is supported, e.g., block_id DESC, chunk_id DESC.
+        # The field must be a metadata field or a default field from the table, such as `id`. Supported formats include single fields (e.g., `chunk_id`), multiple comma-separated fields (e.g., `block_id, chunk_id`), and fields with a sort direction (e.g., `block_id DESC, chunk_id DESC`).
         self.order_by = order_by
         self.owner_id = owner_id
-        # Recall window. When this value is not empty, it adds context to the returned search results. The format is an array of 2 elements: List<A, B>, where -10 <= A <= 0 and 0 <= B <= 10.
-        # > - Recommended when documents are fragmented and retrieval may lose contextual information.
-        # > - Re-ranking takes precedence over windowing, i.e., re-rank first, then apply windowing.
+        # The recall window. If this parameter is specified, additional context is returned with the retrieval results. The value must be a two-element array, `[A, B]`, where `-10 <= A <= 0` and `0 <= B <= 10`.
+        # 
+        # > - Use this parameter when documents are finely chunked and retrieval might otherwise lose contextual information.
+        # >
+        # > - Reranking is prioritized over windowing. The system first applies reranking and then processes the window.
         self.recall_window = recall_window
-        # The region ID where the instance is located.
+        # The region ID of the instance.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # Re-ranking factor. When this value is not empty, it will re-rank the vector search results. The value range is 1 < RerankFactor <= 5.
-        # > - Re-ranking is slower when documents are sparsely split.
-        # > - It is recommended that the re-ranked count (TopK * Factor, rounded up) does not exceed 50.
+        # The factor for reranking vector retrieval results. The value must be greater than 1 and less than or equal to 5.
+        # 
+        # > - Reranking may be slower if document chunks are sparse.
+        # >
+        # > - For best performance, the number of items to be reranked (`TopK` \\* `RerankFactor`, rounded up) should not exceed 50.
         self.rerank_factor = rerank_factor
+        # The parameters for the reranking model.
         self.rerank_model = rerank_model
-        # The number of the returned top results.
+        # The number of top results to return.
         self.top_k = top_k
         # The validity period of the returned image URL.
         # 
-        # >  Value Description
-        # 
-        # *   Supported units are seconds (s) and days (d). For example, 300s specifies that the URL is valid for 300 seconds, and 60d specifies that the URL is valid for 60 days.
-        # 
-        # *   Valid values: 60s to 365d.
-        # 
-        # *   Default value: 7200s, that is, 2 hours.
+        # > - The value can be specified in seconds (s) or days (d). For example, `300s` indicates that the link is valid for 300 seconds, and `60d` indicates that the link is valid for 60 days.
+        # >
+        # > - The value must be in the range of `60s` to `365d`.
+        # >
+        # > - Default value: `7200s` (2 hours).
         self.url_expiration = url_expiration
-        # Whether to use full-text retrieval (dual recall). Default is false, which means only vector retrieval is used.
+        # (Deprecated) Specifies whether to use full-text search (dual-channel recall). The default value is `false`, which means only vector retrieval is used.
         self.use_full_text_retrieval = use_full_text_retrieval
 
     def validate(self):
@@ -341,7 +372,10 @@ class QueryContentRequestRerankModel(DaraModel):
         instruct: str = None,
         name: str = None,
     ):
+        # This parameter is available only when `RerankModel.Name` is set to `qwen3-rerank`.
+        # You can add a custom task description to guide the model\\"s sorting strategy.
         self.instruct = instruct
+        # The name of the reranking model. Valid values: `qwen3-rerank`, `gte-rerank-v2`.
         self.name = name
 
     def validate(self):
@@ -375,7 +409,7 @@ class QueryContentRequestGraphSearchArgs(DaraModel):
         self,
         graph_top_k: int = None,
     ):
-        # The number of top entities and relationship edges. Default value: 60.
+        # The number of top entities and relationship edges to return. The default value is `60`.
         self.graph_top_k = graph_top_k
 
     def validate(self):

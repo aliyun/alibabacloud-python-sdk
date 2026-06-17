@@ -43,6 +43,7 @@ class DescribeTableRequest(DaraModel):
         # 
         # This parameter is required.
         self.table = table
+        # The ID of the workspace composed of multiple database instances. This parameter and the DBInstanceId parameter cannot both be empty. If both parameters are specified, this parameter takes precedence.
         self.workspace_id = workspace_id
 
     def validate(self):

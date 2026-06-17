@@ -19,6 +19,9 @@ class ModifyStreamingDataServiceRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The region ID.  
+        # 
+        # > You can invoke the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) API to view available region IDs.
         self.region_id = region_id
         # The description of the service.
         self.service_description = service_description

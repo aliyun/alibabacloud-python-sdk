@@ -13,7 +13,7 @@ class DescribeDownloadRecordsResponseBody(DaraModel):
         records: List[main_models.DescribeDownloadRecordsResponseBodyRecords] = None,
         request_id: str = None,
     ):
-        # The URL that is used to download the file.
+        # An array of download records.
         self.records = records
         # The request ID.
         self.request_id = request_id
@@ -63,17 +63,19 @@ class DescribeDownloadRecordsResponseBodyRecords(DaraModel):
     ):
         # The ID of the download record.
         self.download_id = download_id
-        # The URL that can be used to download the file.
+        # The download URL.
         self.download_url = download_url
-        # The error message returned.
+        # The error message.
         self.exception_msg = exception_msg
-        # The name of the file.
+        # The file name.
         self.file_name = file_name
-        # The state of the upload task. After you call the DownloadDiagnosisRecords operation, query diagnostic information is first uploaded to Object Storage Service (OSS). After the upload task is complete, the query diagnostic information can be downloaded. Valid values:
+        # The status of the task that uploads the query diagnostic information file to Object Storage Service (OSS). You can download the file after the upload is complete. Valid values:
         # 
-        # *   **running**: uploading
-        # *   **finished**: uploaded
-        # *   **failed**: failed
+        # - **running**: The file is being uploaded.
+        # 
+        # - **finished**: The file upload is complete.
+        # 
+        # - **failed**: The file upload failed.
         self.status = status
 
     def validate(self):

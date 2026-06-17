@@ -34,63 +34,86 @@ class GetSupabaseProjectResponseBody(DaraModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
-        self.auto_scale = auto_scale
-        # The creation time.
-        self.create_time = create_time
-        self.dbsecurity_ip_list = dbsecurity_ip_list
-        # The Supabase Dashboard password (Not Used)
-        self.dashboard_password = dashboard_password
-        # The Supabase Dashboard user name (Not Used)
-        self.dashboard_user_name = dashboard_user_name
-        # The Enterprise SSD (ESSD) performance level of the cluster. Valid values:
+        # Indicates whether the **auto pause and resume** feature is enabled.
+        # Valid values:
         # 
-        # *   PL0
-        # *   PL1
+        # - `true`: The feature is enabled. The project automatically pauses and resumes based on traffic.
+        # 
+        # - `false`: The feature is disabled.
+        self.auto_scale = auto_scale
+        # The creation time of the project.
+        self.create_time = create_time
+        # The database IP address whitelist, specified as a comma-separated string.
+        self.dbsecurity_ip_list = dbsecurity_ip_list
+        # The password for the Supabase Dashboard. This parameter is not used.
+        self.dashboard_password = dashboard_password
+        # The username for the Supabase Dashboard. This parameter is not used.
+        self.dashboard_user_name = dashboard_user_name
+        # The performance level (PL) of the cloud disk. Valid values:
+        # 
+        # - PL0
+        # 
+        # - PL1
         self.disk_performance_level = disk_performance_level
-        # The type of the database engine.
+        # The database engine.
         self.engine = engine
-        # The version of the database engine.
+        # The engine version.
         self.engine_version = engine_version
+        # The elastic network interface (ENI) ID.
         self.eni = eni
+        # The current instance version.
         self.instance_version = instance_version
+        # The billing method. Valid values:
+        # 
+        # - `POSTPAY`: pay-as-you-go
+        # 
+        # - `PREPAY`: subscription
         self.pay_type = pay_type
-        # The private (VPC) connection URL for the Supabase Dashboard.
+        # The private connection URL for the Supabase Dashboard.
         self.private_connect_url = private_connect_url
+        # The description of the Supabase project.
         self.project_description = project_description
-        # The Supabase instance ID.
+        # The Supabase project ID.
         self.project_id = project_id
-        # The name of the Supabase project.
+        # The Supabase project name.
         self.project_name = project_name
-        # The performance level of the Supabase instance.
+        # The Supabase instance specification.
         self.project_spec = project_spec
         # The public connection URL for the Supabase Dashboard.
         self.public_connect_url = public_connect_url
-        # The region ID of the cluster.
+        # The region ID.
         # 
-        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the available regions.
         self.region_id = region_id
-        # The unique ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # A comma-separated list of IP addresses and CIDR blocks allowed to connect.
+        # The IP address whitelist, specified as a comma-separated string.
         self.security_ip_list = security_ip_list
-        # The status of the Supabase instance.
+        # The Supabase instance status.
         self.status = status
-        # The storage capacity of the instance. Unit: GB.
+        # The storage space, in GB.
         self.storage_size = storage_size
+        # The storage type. Valid values:
+        # 
+        # - **cloud_essd_pl0**
+        # 
+        # - **cloud_essd_pl1**
+        # 
+        # - **cloud_essd_pl2**
+        # 
+        # - **cloud_essd_pl3**
         self.storage_type = storage_type
-        # The vSwitch ID of the instance. This parameter must be specified when VPCId is specified.
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
         # The VPC ID.
         # 
-        # > 
-        # 
-        # *   You can call the [DescribeRdsVpcs](https://help.aliyun.com/document_detail/208327.html) operation to query the available VPC IDs.
-        # 
-        # *   This parameter is required.
+        # > - You can call the [DescribeRdsVpcs](https://help.aliyun.com/document_detail/208327.html) operation to query the available VPCs.
+        # >
+        # > - This parameter is required.
         self.vpc_id = vpc_id
         # The zone ID.
         # 
-        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list and zone list.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the available zones.
         self.zone_id = zone_id
 
     def validate(self):

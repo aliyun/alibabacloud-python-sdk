@@ -1,3 +1,15 @@
+2026-06-17 Version: 5.4.0
+- Support API CreateSaasService.
+- Support API CreateWorkspace.
+- Support API DeleteSaasService.
+- Support API DeleteWorkspace.
+- Support API GetSaasService.
+- Support API GetServiceAccessInfo.
+- Support API ListSaasService.
+- Support API ListWorkspaces.
+- Update API CreateSupabaseProject: add request parameters EngineVersion.
+
+
 2026-05-27 Version: 5.3.0
 - Support API ListSupabaseProjectTags.
 - Support API ModifySupabaseProjectDescription.

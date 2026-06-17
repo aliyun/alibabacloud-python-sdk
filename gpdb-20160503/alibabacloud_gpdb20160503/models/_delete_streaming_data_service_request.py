@@ -15,6 +15,7 @@ class DeleteStreamingDataServiceRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The region ID of the instance.
         self.region_id = region_id
         # The service ID.
         # 

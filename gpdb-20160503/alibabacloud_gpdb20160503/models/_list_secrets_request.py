@@ -21,6 +21,7 @@ class ListSecretsRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        # The ID of the workspace composed of multiple database instances. This parameter and the DBInstanceId parameter cannot both be empty. If both are specified, this parameter takes precedence.
         self.workspace_id = workspace_id
 
     def validate(self):

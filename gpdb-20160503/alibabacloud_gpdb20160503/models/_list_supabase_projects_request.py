@@ -17,15 +17,17 @@ class ListSupabaseProjectsRequest(DaraModel):
         sort_field: str = None,
         sort_order: str = None,
     ):
-        # The maximum number of instances to return per page. Default value: 10.
+        # The maximum number of entries to return. The default value is 10.
         self.max_results = max_results
-        # A pagination token returned from a previous call. Use it to retrieve the next page of results.
+        # The pagination token to retrieve the next page of results.
         self.next_token = next_token
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
-        # The region ID of the cluster.
+        # The ID of the region.
         # 
-        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation get a list of available region IDs.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the available regions.
         self.region_id = region_id
         self.search_field = search_field
         self.search_value = search_value

@@ -18,19 +18,19 @@ class ListSupabaseProjectsResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
-        # A list of objects, where each object represents a Supabase instance.
+        # A list of instance details.
         self.items = items
-        # The maximum amount of data to read this time. Default value: 10.
+        # The maximum number of entries returned per page.
         self.max_results = max_results
-        # The pagination token to use in the next request to get the next page. If this field is empty, there are no more results.
+        # A pagination token for retrieving the next page of results. If this parameter is not returned, it indicates that all results have been displayed.
         self.next_token = next_token
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries on the current page.
         self.page_record_count = page_record_count
-        # The unique ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of log entries returned.
+        # The total number of entries.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -123,50 +123,62 @@ class ListSupabaseProjectsResponseBodyItems(DaraModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
-        self.auto_scale = auto_scale
-        # The creation time.
-        self.create_time = create_time
-        # Supabase Dashboard password (not used).
-        self.dashboard_password = dashboard_password
-        # Supabase Dashboard user name (not used).
-        self.dashboard_user_name = dashboard_user_name
-        # The ESSD performance level.
-        self.disk_performance_level = disk_performance_level
-        # The database engine type.
-        self.engine = engine
-        # The database engine version.
-        self.engine_version = engine_version
-        self.expire_time = expire_time
-        # The billing method of the instance. Valid values:
+        # Indicates if the **auto start and stop** feature is enabled.
+        # Valid values:
         # 
-        # *   **Postpaid**: pay-as-you-go
-        # *   **Prepaid**: subscription.
-        # *   **Free**: Free.
+        # - `true`: The feature is enabled. The Supabase instance automatically pauses and resumes based on traffic.
+        # 
+        # - `false`: The auto start and stop feature is disabled.
+        self.auto_scale = auto_scale
+        # The time when the resource was created.
+        self.create_time = create_time
+        # The password for the Supabase dashboard. This parameter is reserved.
+        self.dashboard_password = dashboard_password
+        # The username for the Supabase dashboard. This parameter is reserved.
+        self.dashboard_user_name = dashboard_user_name
+        # The disk performance level.
+        self.disk_performance_level = disk_performance_level
+        # The database engine.
+        self.engine = engine
+        # The engine version.
+        self.engine_version = engine_version
+        # The expiration time.
+        self.expire_time = expire_time
+        # The billing method. Valid values:
+        # 
+        # - **Postpaid**: pay-as-you-go.
+        # 
+        # - **Prepaid**: subscription.
+        # 
+        # - **Free**: The instance is free of charge.
         self.pay_type = pay_type
-        # The private (VPC) connection URL for the Supabase Dashboard.
+        # The private endpoint for the Supabase dashboard.
         self.private_connect_url = private_connect_url
+        # The detailed description of the Supabase project.
         self.project_description = project_description
-        # The Supabase project ID.
+        # The ID of the Supabase instance.
         self.project_id = project_id
         # The name of the Supabase project.
         self.project_name = project_name
-        # The type of the Supabase instance.
+        # The Supabase instance specification.
         self.project_spec = project_spec
-        # The public connection URL for the Supabase Dashboard.
+        # The public endpoint for the Supabase dashboard.
         self.public_connect_url = public_connect_url
         # The region ID.
         self.region_id = region_id
-        # A comma-separated list of IP addresses and CIDR blocks allowed to connect. Valid values:
+        # The IP whitelist. IP addresses are separated by commas. The following formats are supported:
         # 
-        # *   0.0.0.0/0
-        # *   10.23.12.24(IP)
-        # *   10.23.12.24/24. This is a CIDR block. The value`/24`indicates that the prefix of the CIDR block is 24-bit long. You can replace 24 with a value in the range of`[1,32]`.
+        # - 0.0.0.0/0
+        # 
+        # - 10.23.12.24 (IP)
+        # 
+        # - 10.23.12.24/24 (a Classless Inter-Domain Routing (CIDR) block; the prefix length, which is the number after the `/`, must be an integer from 1 to 32.)
         self.security_iplist = security_iplist
-        # The status of the Supabase instance.
+        # The status of the instance.
         self.status = status
-        # The storage capacity of the instance. Unit: GB.
+        # The storage size in GB.
         self.storage_size = storage_size
-        # The vSwitch ID of the instance.
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
         # The VPC ID.
         self.vpc_id = vpc_id

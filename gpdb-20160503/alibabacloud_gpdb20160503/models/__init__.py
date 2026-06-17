@@ -105,6 +105,9 @@ from ._create_namespace_response import CreateNamespaceResponse
 from ._create_remote_adbdata_source_request import CreateRemoteADBDataSourceRequest
 from ._create_remote_adbdata_source_response_body import CreateRemoteADBDataSourceResponseBody
 from ._create_remote_adbdata_source_response import CreateRemoteADBDataSourceResponse
+from ._create_saas_service_request import CreateSaasServiceRequest
+from ._create_saas_service_response_body import CreateSaasServiceResponseBody
+from ._create_saas_service_response import CreateSaasServiceResponse
 from ._create_sample_data_request import CreateSampleDataRequest
 from ._create_sample_data_response_body import CreateSampleDataResponseBody
 from ._create_sample_data_response import CreateSampleDataResponse
@@ -130,6 +133,9 @@ from ._create_supabase_project_response import CreateSupabaseProjectResponse
 from ._create_vector_index_request import CreateVectorIndexRequest
 from ._create_vector_index_response_body import CreateVectorIndexResponseBody
 from ._create_vector_index_response import CreateVectorIndexResponse
+from ._create_workspace_request import CreateWorkspaceRequest
+from ._create_workspace_response_body import CreateWorkspaceResponseBody
+from ._create_workspace_response import CreateWorkspaceResponse
 from ._delete_ainode_request import DeleteAINodeRequest
 from ._delete_ainode_response_body import DeleteAINodeResponseBody
 from ._delete_ainode_response import DeleteAINodeResponse
@@ -200,6 +206,9 @@ from ._delete_private_ragservice_response import DeletePrivateRAGServiceResponse
 from ._delete_remote_adbdata_source_request import DeleteRemoteADBDataSourceRequest
 from ._delete_remote_adbdata_source_response_body import DeleteRemoteADBDataSourceResponseBody
 from ._delete_remote_adbdata_source_response import DeleteRemoteADBDataSourceResponse
+from ._delete_saas_service_request import DeleteSaasServiceRequest
+from ._delete_saas_service_response_body import DeleteSaasServiceResponseBody
+from ._delete_saas_service_response import DeleteSaasServiceResponse
 from ._delete_secret_request import DeleteSecretRequest
 from ._delete_secret_response_body import DeleteSecretResponseBody
 from ._delete_secret_response import DeleteSecretResponse
@@ -218,6 +227,9 @@ from ._delete_supabase_project_response import DeleteSupabaseProjectResponse
 from ._delete_vector_index_request import DeleteVectorIndexRequest
 from ._delete_vector_index_response_body import DeleteVectorIndexResponseBody
 from ._delete_vector_index_response import DeleteVectorIndexResponse
+from ._delete_workspace_request import DeleteWorkspaceRequest
+from ._delete_workspace_response_body import DeleteWorkspaceResponseBody
+from ._delete_workspace_response import DeleteWorkspaceResponse
 from ._deploy_private_ragservice_request import DeployPrivateRAGServiceRequest
 from ._deploy_private_ragservice_response_body import DeployPrivateRAGServiceResponseBody
 from ._deploy_private_ragservice_response import DeployPrivateRAGServiceResponse
@@ -467,9 +479,15 @@ from ._get_account_response import GetAccountResponse
 from ._get_graph_ragjob_request import GetGraphRAGJobRequest
 from ._get_graph_ragjob_response_body import GetGraphRAGJobResponseBody
 from ._get_graph_ragjob_response import GetGraphRAGJobResponse
+from ._get_saas_service_request import GetSaasServiceRequest
+from ._get_saas_service_response_body import GetSaasServiceResponseBody
+from ._get_saas_service_response import GetSaasServiceResponse
 from ._get_secret_value_request import GetSecretValueRequest
 from ._get_secret_value_response_body import GetSecretValueResponseBody
 from ._get_secret_value_response import GetSecretValueResponse
+from ._get_service_access_info_request import GetServiceAccessInfoRequest
+from ._get_service_access_info_response_body import GetServiceAccessInfoResponseBody
+from ._get_service_access_info_response import GetServiceAccessInfoResponse
 from ._get_statement_result_request import GetStatementResultRequest
 from ._get_statement_result_response_body import GetStatementResultResponseBody
 from ._get_statement_result_response import GetStatementResultResponse
@@ -548,6 +566,9 @@ from ._list_namespaces_response import ListNamespacesResponse
 from ._list_remote_adbdata_sources_request import ListRemoteADBDataSourcesRequest
 from ._list_remote_adbdata_sources_response_body import ListRemoteADBDataSourcesResponseBody
 from ._list_remote_adbdata_sources_response import ListRemoteADBDataSourcesResponse
+from ._list_saas_service_request import ListSaasServiceRequest
+from ._list_saas_service_response_body import ListSaasServiceResponseBody
+from ._list_saas_service_response import ListSaasServiceResponse
 from ._list_schemas_request import ListSchemasRequest
 from ._list_schemas_response_body import ListSchemasResponseBody
 from ._list_schemas_response import ListSchemasResponse
@@ -581,6 +602,9 @@ from ._list_tables_response import ListTablesResponse
 from ._list_tag_resources_request import ListTagResourcesRequest
 from ._list_tag_resources_response_body import ListTagResourcesResponseBody
 from ._list_tag_resources_response import ListTagResourcesResponse
+from ._list_workspaces_request import ListWorkspacesRequest
+from ._list_workspaces_response_body import ListWorkspacesResponseBody
+from ._list_workspaces_response import ListWorkspacesResponse
 from ._modify_aiservice_security_ips_request import ModifyAIServiceSecurityIpsRequest
 from ._modify_aiservice_security_ips_response_body import ModifyAIServiceSecurityIpsResponseBody
 from ._modify_aiservice_security_ips_response import ModifyAIServiceSecurityIpsResponse
@@ -981,6 +1005,7 @@ from ._list_model_services_response_body import ListModelServicesResponseBodyMod
 from ._list_namespaces_response_body import ListNamespacesResponseBodyNamespaces
 from ._list_remote_adbdata_sources_response_body import ListRemoteADBDataSourcesResponseBodyDataSourceItemsRemoteDataSources
 from ._list_remote_adbdata_sources_response_body import ListRemoteADBDataSourcesResponseBodyDataSourceItems
+from ._list_saas_service_response_body import ListSaasServiceResponseBodyItems
 from ._list_schemas_response_body import ListSchemasResponseBodySchemas
 from ._list_secrets_response_body import ListSecretsResponseBodySecretsSecrets
 from ._list_secrets_response_body import ListSecretsResponseBodySecrets
@@ -996,6 +1021,10 @@ from ._list_tables_response_body import ListTablesResponseBodyTables
 from ._list_tag_resources_request import ListTagResourcesRequestTag
 from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResourcesTagResource
 from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResources
+from ._list_workspaces_response_body import ListWorkspacesResponseBodyItemsApikeysAuthServices
+from ._list_workspaces_response_body import ListWorkspacesResponseBodyItemsApikeys
+from ._list_workspaces_response_body import ListWorkspacesResponseBodyItemsServices
+from ._list_workspaces_response_body import ListWorkspacesResponseBodyItems
 from ._modify_dbresource_group_request import ModifyDBResourceGroupRequestResourceGroupItems
 from ._modify_remote_adbdata_source_response_body import ModifyRemoteADBDataSourceResponseBodyDataSourceItem
 from ._query_collection_data_request import QueryCollectionDataRequestRelationalTableFilter
@@ -1152,6 +1181,9 @@ __all__ = [
     CreateRemoteADBDataSourceRequest,
     CreateRemoteADBDataSourceResponseBody,
     CreateRemoteADBDataSourceResponse,
+    CreateSaasServiceRequest,
+    CreateSaasServiceResponseBody,
+    CreateSaasServiceResponse,
     CreateSampleDataRequest,
     CreateSampleDataResponseBody,
     CreateSampleDataResponse,
@@ -1177,6 +1209,9 @@ __all__ = [
     CreateVectorIndexRequest,
     CreateVectorIndexResponseBody,
     CreateVectorIndexResponse,
+    CreateWorkspaceRequest,
+    CreateWorkspaceResponseBody,
+    CreateWorkspaceResponse,
     DeleteAINodeRequest,
     DeleteAINodeResponseBody,
     DeleteAINodeResponse,
@@ -1247,6 +1282,9 @@ __all__ = [
     DeleteRemoteADBDataSourceRequest,
     DeleteRemoteADBDataSourceResponseBody,
     DeleteRemoteADBDataSourceResponse,
+    DeleteSaasServiceRequest,
+    DeleteSaasServiceResponseBody,
+    DeleteSaasServiceResponse,
     DeleteSecretRequest,
     DeleteSecretResponseBody,
     DeleteSecretResponse,
@@ -1265,6 +1303,9 @@ __all__ = [
     DeleteVectorIndexRequest,
     DeleteVectorIndexResponseBody,
     DeleteVectorIndexResponse,
+    DeleteWorkspaceRequest,
+    DeleteWorkspaceResponseBody,
+    DeleteWorkspaceResponse,
     DeployPrivateRAGServiceRequest,
     DeployPrivateRAGServiceResponseBody,
     DeployPrivateRAGServiceResponse,
@@ -1514,9 +1555,15 @@ __all__ = [
     GetGraphRAGJobRequest,
     GetGraphRAGJobResponseBody,
     GetGraphRAGJobResponse,
+    GetSaasServiceRequest,
+    GetSaasServiceResponseBody,
+    GetSaasServiceResponse,
     GetSecretValueRequest,
     GetSecretValueResponseBody,
     GetSecretValueResponse,
+    GetServiceAccessInfoRequest,
+    GetServiceAccessInfoResponseBody,
+    GetServiceAccessInfoResponse,
     GetStatementResultRequest,
     GetStatementResultResponseBody,
     GetStatementResultResponse,
@@ -1595,6 +1642,9 @@ __all__ = [
     ListRemoteADBDataSourcesRequest,
     ListRemoteADBDataSourcesResponseBody,
     ListRemoteADBDataSourcesResponse,
+    ListSaasServiceRequest,
+    ListSaasServiceResponseBody,
+    ListSaasServiceResponse,
     ListSchemasRequest,
     ListSchemasResponseBody,
     ListSchemasResponse,
@@ -1628,6 +1678,9 @@ __all__ = [
     ListTagResourcesRequest,
     ListTagResourcesResponseBody,
     ListTagResourcesResponse,
+    ListWorkspacesRequest,
+    ListWorkspacesResponseBody,
+    ListWorkspacesResponse,
     ModifyAIServiceSecurityIpsRequest,
     ModifyAIServiceSecurityIpsResponseBody,
     ModifyAIServiceSecurityIpsResponse,
@@ -2028,6 +2081,7 @@ __all__ = [
     ListNamespacesResponseBodyNamespaces,
     ListRemoteADBDataSourcesResponseBodyDataSourceItemsRemoteDataSources,
     ListRemoteADBDataSourcesResponseBodyDataSourceItems,
+    ListSaasServiceResponseBodyItems,
     ListSchemasResponseBodySchemas,
     ListSecretsResponseBodySecretsSecrets,
     ListSecretsResponseBodySecrets,
@@ -2043,6 +2097,10 @@ __all__ = [
     ListTagResourcesRequestTag,
     ListTagResourcesResponseBodyTagResourcesTagResource,
     ListTagResourcesResponseBodyTagResources,
+    ListWorkspacesResponseBodyItemsApikeysAuthServices,
+    ListWorkspacesResponseBodyItemsApikeys,
+    ListWorkspacesResponseBodyItemsServices,
+    ListWorkspacesResponseBodyItems,
     ModifyDBResourceGroupRequestResourceGroupItems,
     ModifyRemoteADBDataSourceResponseBodyDataSourceItem,
     QueryCollectionDataRequestRelationalTableFilter,
