@@ -17,11 +17,17 @@ class ListHotlineRecordDetailResponseBody(DaraModel):
         result_data: main_models.ListHotlineRecordDetailResponseBodyResultData = None,
         success: bool = None,
     ):
+        # Status code. A return value of 200 indicates that the request succeeded.
         self.code = code
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Description of the status code.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Returned data.
         self.result_data = result_data
+        # Indicates whether the API call succeeded.
         self.success = success
 
     def validate(self):
@@ -85,10 +91,15 @@ class ListHotlineRecordDetailResponseBodyResultData(DaraModel):
         total_page: int = None,
         total_results: int = None,
     ):
+        # Current page.
         self.current_page = current_page
+        # Query result data.
         self.data = data
+        # Page size.
         self.one_page_size = one_page_size
+        # Total number of pages.
         self.total_page = total_page
+        # Total number of records.
         self.total_results = total_results
 
     def validate(self):
@@ -151,9 +162,13 @@ class ListHotlineRecordDetailResponseBodyResultDataData(DaraModel):
         servicer_name: str = None,
         start_time: int = None,
     ):
+        # Hotline End Time.
         self.end_time = end_time
+        # OSS URL of the hotline call recording.
         self.oss_url = oss_url
+        # Servicer Account.
         self.servicer_name = servicer_name
+        # Start Time of the hotline call.
         self.start_time = start_time
 
     def validate(self):

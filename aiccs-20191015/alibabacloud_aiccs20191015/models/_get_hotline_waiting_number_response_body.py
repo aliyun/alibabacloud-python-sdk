@@ -13,10 +13,15 @@ class GetHotlineWaitingNumberResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
+        # Error encoding
         self.code = code
+        # Queue length of hotline members
         self.data = data
+        # Fault description
         self.message = message
+        # Request ID, used to trail the cause of an error
         self.request_id = request_id
+        # Whether the API call succeeded
         self.success = success
 
     def validate(self):

@@ -14,10 +14,17 @@ class RemoveAgentFromSkillGroupResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code. A value of "Success" indicates that the request succeeded.
         self.code = code
+        # Returned data.
         self.data = data
+        # Description of the status code.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the API invocation succeeded. Valid values:
+        # - **true**: Succeeded.
+        # - **false**: Failed.
         self.success = success
 
     def validate(self):
@@ -71,6 +78,7 @@ class RemoveAgentFromSkillGroupResponseBodyData(DaraModel):
         self,
         success_count: int = None,
     ):
+        # The number of agents successfully removed.
         self.success_count = success_count
 
     def validate(self):

@@ -12,9 +12,13 @@ class RobotCallResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Request status code. A return value of "OK" indicates that the request succeeded.
         self.code = code
+        # The unique receipt ID of this call, which is also the unique call ID.
         self.data = data
+        # Description of the status code.
         self.message = message
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):

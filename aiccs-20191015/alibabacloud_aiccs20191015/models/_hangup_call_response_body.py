@@ -12,9 +12,13 @@ class HangupCallResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code. A return value of Success indicates that the request succeeded.
         self.code = code
+        # Status code description.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the API call succeeded.
         self.success = success
 
     def validate(self):

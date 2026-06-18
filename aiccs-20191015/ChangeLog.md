@@ -1,3 +1,12 @@
+2026-06-18 Version: 5.4.0
+- Support API GetAudioNoteUploadUrl.
+- Support API SubmitAudioNote.
+- Update API UpdateModelApplication: add request parameters DtmfSendMaxCount.
+- Update API UpdateModelApplication: add request parameters DtmfSendWaitTimeout.
+- Update API UpdateModelApplication: add request parameters EnableDtmfSend.
+- Update API UpdateModelApplication: add request parameters MutePushMode.
+
+
 2026-05-29 Version: 5.3.1
 - Update API ListAvailableTts: add request parameters VoiceType.
 - Update API ListAvailableTts: add response parameters Body.Data.$.VoiceType.

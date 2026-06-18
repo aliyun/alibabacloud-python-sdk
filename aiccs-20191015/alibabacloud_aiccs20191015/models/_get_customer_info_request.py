@@ -10,8 +10,12 @@ class GetCustomerInfoRequest(DaraModel):
         instance_id: str = None,
         member_id: int = None,
     ):
+        # AICCS instance ID. You can obtain it from the Artificial Intelligence Cloud Call Service console.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Membership ID.
+        # 
         # This parameter is required.
         self.member_id = member_id
 

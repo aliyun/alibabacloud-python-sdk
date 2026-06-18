@@ -14,12 +14,17 @@ class CreateThirdSsoAgentResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code.
         self.code = code
+        # The ID of the created agent.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Description of the status code.
         self.message = message
         # requestId
         self.request_id = request_id
+        # Indicates whether the API call succeeded.
         self.success = success
 
     def validate(self):

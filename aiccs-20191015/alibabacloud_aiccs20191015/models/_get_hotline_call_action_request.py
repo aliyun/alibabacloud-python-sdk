@@ -15,12 +15,28 @@ class GetHotlineCallActionRequest(DaraModel):
         from_source: str = None,
         instance_id: str = None,
     ):
+        # Hotline Custom Parameter in JSON format.
         self.acc = acc
+        # Agent account name, which is the phone number or mailbox specified during account registration. It is unique within the instance.
         self.account_name = account_name
+        # Operation Type. Valid values:
+        # - **1**: Hotline.
+        # - **2**: Online.
+        # - **3**: Ticket.
         self.act = act
+        # Business Custom Parameter in JSON format.
         self.biz = biz
+        # Unique ID of the customer request. Used for idempotency validation. You can generate it by using a UUID.
         self.client_token = client_token
+        # Source type. Valid values:
+        # 
+        # - **hotlinebs_out**: Hotline.
+        # - **ticket_out**: Ticket.
+        # - **other_system_out**: Other system.
         self.from_source = from_source
+        # Artificial Intelligence Cloud Call Service (AICCS) instance ID.
+        # You can obtain it from **Instance Management** in the left-side navigation pane of the [Artificial Intelligence Cloud Call Service console](https://aiccs.console.aliyun.com/overview).
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 

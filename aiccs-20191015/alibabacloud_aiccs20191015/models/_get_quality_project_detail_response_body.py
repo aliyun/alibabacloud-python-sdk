@@ -16,10 +16,15 @@ class GetQualityProjectDetailResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The status code. A return value of 200 indicates that the request succeeded.
         self.code = code
+        # Quality inspection job information.
         self.data = data
+        # Status code description.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the API call succeeded.
         self.success = success
 
     def validate(self):
@@ -84,17 +89,35 @@ class GetQualityProjectDetailResponseBodyData(DaraModel):
         status: int = None,
         version: int = None,
     ):
+        # Inspection frequency type. Valid values:
+        # 
+        # - **1**: Periodic quality inspection
+        # - **4**: Ad hoc quality inspection
         self.check_freq_type = check_freq_type
+        # Creation Time.
         self.create_time = create_time
+        # Quality inspection sampling scope.
         self.dep_list = dep_list
+        # Quality inspection sampling scope.
         self.group_list = group_list
+        # Quality inspection job ID.
         self.id = id
+        # Updated At.
         self.modify_time = modify_time
+        # Quality inspection job name
         self.project_name = project_name
+        # Quality inspection rule IDs.
         self.quality_rule_ids = quality_rule_ids
+        # Quality inspection type. Fixed value: **1** (Consultation).
         self.quality_type = quality_type
+        # Quality inspection sampling scope.
         self.servicer_list = servicer_list
+        # Quality inspection job status. Valid values:  
+        # 
+        # - **0**: Start  
+        # - **1**: Shutdown
         self.status = status
+        # Quality inspection job version number.
         self.version = version
 
     def validate(self):

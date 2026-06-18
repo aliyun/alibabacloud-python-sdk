@@ -16,10 +16,17 @@ class ListAgentBySkillGroupIdResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code. A return value of "Success" indicates that the request succeeded.
         self.code = code
+        # Agent information.
         self.data = data
+        # Description of the status code.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the API invocation succeeded. Valid values:
+        # - **true**: Succeeded.
+        # - **false**: Failed.
         self.success = success
 
     def validate(self):
@@ -83,10 +90,18 @@ class ListAgentBySkillGroupIdResponseBodyData(DaraModel):
         status: int = None,
         tenant_id: int = None,
     ):
+        # Account name of the agent, which is the phone number or mailbox entered during account registration. It is unique within the instance.
         self.account_name = account_name
+        # Agent ID.
         self.agent_id = agent_id
+        # Display name of the agent.
         self.display_name = display_name
+        # Agent status. Only agents with a Normal status can perform Business Activities. Valid values:
+        # - **0**: Normal
+        # - **1**: Frozen
+        # - **2**: Deleted
         self.status = status
+        # Tenant ID to which the agent belongs. This corresponds to the instance ID provided in the input parameter.
         self.tenant_id = tenant_id
 
     def validate(self):

@@ -9,6 +9,8 @@ class GetMcuLvsIpRequest(DaraModel):
         self,
         instance_id: str = None,
     ):
+        # The Artificial Intelligence Cloud Call Service (AICCS) instance ID. You can obtain it from the Intelligent Cloud Call console.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 

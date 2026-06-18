@@ -16,10 +16,17 @@ class GetAgentResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code. A return value of Success indicates that the request succeeded.
         self.code = code
+        # Agent data.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the API invocation succeeded. Valid values:
+        # - **true**: Succeeded.
+        # - **false**: Failed.
         self.success = success
 
     def validate(self):
@@ -78,11 +85,23 @@ class GetAgentResponseBodyData(DaraModel):
         status: int = None,
         tenant_id: int = None,
     ):
+        # Agent account name, which is the phone number or mailbox entered during account registration. Unique within the instance.
         self.account_name = account_name
+        # Agent ID.
         self.agent_id = agent_id
+        # Agent display name shown externally.
         self.display_name = display_name
+        # Skill group information to which the agent belongs.
         self.group_list = group_list
+        # Agent status. Valid values:
+        # 
+        # - **0**: Normal
+        # - **1**: Freeze
+        # - **2**: Delete
+        # 
+        # > Only agents with a Normal status can perform Business Activities.
         self.status = status
+        # Tenant ID to which the agent belongs, corresponding to the instance ID in the request parameters.
         self.tenant_id = tenant_id
 
     def validate(self):
@@ -152,10 +171,15 @@ class GetAgentResponseBodyDataGroupList(DaraModel):
         name: str = None,
         skill_group_id: int = None,
     ):
+        # Skill group channel type.
         self.channel_type = channel_type
+        # Skill group description.
         self.description = description
+        # Display name of the skill group.
         self.display_name = display_name
+        # Skill group name.
         self.name = name
+        # Skill group ID.
         self.skill_group_id = skill_group_id
 
     def validate(self):

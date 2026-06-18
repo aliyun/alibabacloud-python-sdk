@@ -14,15 +14,29 @@ class StartCallV2Request(DaraModel):
         client_token: str = None,
         instance_id: str = None,
     ):
+        # Agent account name (agent logon name).
+        # 
         # This parameter is required.
         self.account_name = account_name
+        # Callee number for hotline outbound calls.
+        # 
         # This parameter is required.
         self.callee = callee
+        # Caller number for hotline outbound calls.
+        # 
         # This parameter is required.
         self.caller = caller
+        # Call type. Valid values:
+        # 
+        # - **1**: Inbound
+        # - **2**: Outbound
+        # 
         # This parameter is required.
         self.caller_type = caller_type
+        # Unique customer request ID. Used for idempotency validation. You can generate it using UUID.
         self.client_token = client_token
+        # AICCS instance ID. You can obtain it from the Artificial Intelligence Cloud Call Service console.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 

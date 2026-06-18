@@ -37,33 +37,75 @@ class HotlineSessionQueryRequest(DaraModel):
         servicer_id_list: List[str] = None,
         servicer_name: str = None,
     ):
+        # Session ID. The acid received via WebSocket after an inbound call.
         self.acid = acid
+        # Session ID List.
         self.acid_list = acid_list
+        # Call result. Valid values:  
+        # 
+        # - **normal**: Normal hang-up.  
+        # - **touchRouteError**: Queue hang-up.  
+        # - **touchInQueue**: Queue hang-up.  
+        # - **touchInLoss**: Queue hang-up.  
+        # - **userHangup**: User hang-up or IVR hang-up.  
+        # - **sysHangup**: System hang-up or IVR hang-up.  
+        # - **transferAgent**: User hang-up or IVR hang-up.  
+        # - **dailing**: Agent hang-up during ringing.  
+        # - **TouchRingCallLoss**: Queue hang-up during ringing.
         self.call_result = call_result
+        # List of call results.
         self.call_result_list = call_result_list
+        # Call Type. Valid values:
+        # - **1**: Outbound call.
+        # - **2**: Inbound call.
+        # - **3**: Change owner.
         self.call_type = call_type
+        # Call Type List.
         self.call_type_list = call_type_list
+        # Calling party number, such as a user\\"s phone number, agent number, or machine number.
         self.called_number = called_number
+        # List of called numbers.
         self.called_number_list = called_number_list
+        # Calling party number, such as a user\\"s phone number, customer service agent number, or machine number.
         self.calling_number = calling_number
+        # List of calling numbers.
         self.calling_number_list = calling_number_list
+        # Skill group ID.
         self.group_id = group_id
+        # List of skill group IDs.
         self.group_id_list = group_id_list
+        # Skill group name.
         self.group_name = group_name
+        # Global unique ID (GUID) of the call detail.
         self.id = id
+        # AICCS instance ID.  
+        # You can obtain it in the **Instance Management** section of the left-side navigation pane in the [Artificial Intelligence Cloud Call Service console](https://aiccs.console.aliyun.com/overview).
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Membership ID.
         self.member_id = member_id
+        # Membership List.
         self.member_id_list = member_id_list
+        # Membership name.
         self.member_name = member_name
+        # Current page number. The value must be greater than **0**. Default Value: **1**.
         self.page_no = page_no
+        # Page size. The value must be greater than **0**. Default value: **20**.
         self.page_size = page_size
+        # Extension parameters.
         self.params = params
+        # End UNIX timestamp. Unit: milliseconds.
         self.query_end_time = query_end_time
+        # Start UNIX timestamp. Unit: ms.
         self.query_start_time = query_start_time
+        # Request ID.
         self.request_id = request_id
+        # Agent ID.
         self.servicer_id = servicer_id
+        # List of agent IDs.
         self.servicer_id_list = servicer_id_list
+        # Agent Name.
         self.servicer_name = servicer_name
 
     def validate(self):

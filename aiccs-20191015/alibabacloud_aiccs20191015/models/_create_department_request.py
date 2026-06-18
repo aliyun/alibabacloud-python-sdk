@@ -10,8 +10,13 @@ class CreateDepartmentRequest(DaraModel):
         department_name: str = None,
         instance_id: str = None,
     ):
+        # Department name.
+        # 
         # This parameter is required.
         self.department_name = department_name
+        # Artificial Intelligence Cloud Call Service (AICCS) instance ID.  
+        # You can obtain it from **Instance Management** in the left-side navigation pane of the [Artificial Intelligence Cloud Call Service console](https://aiccs.console.aliyun.com/overview).
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 

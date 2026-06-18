@@ -14,15 +14,26 @@ class MakeDoubleCallRequest(DaraModel):
         outbound_call_number: str = None,
         servicer_phone: str = None,
     ):
+        # Account name.
+        # 
         # This parameter is required.
         self.account_name = account_name
+        # Business data carried in the request. The value must be in JSON format.
         self.biz_data = biz_data
+        # Artificial Intelligence Cloud Call Service (AICCS) instance ID. You can obtain it from the Artificial Intelligence Cloud Call Service console.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # User\\"s phone number.
+        # 
         # This parameter is required.
         self.member_phone = member_phone
+        # Outbound caller number.
+        # 
         # This parameter is required.
         self.outbound_call_number = outbound_call_number
+        # Agent\\"s phone number.  
+        # > This parameter is required only if the call needs to be placed through the agent\\"s phone.
         self.servicer_phone = servicer_phone
 
     def validate(self):

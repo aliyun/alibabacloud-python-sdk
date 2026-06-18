@@ -17,14 +17,26 @@ class GetHotlineAgentDetailReportRequest(DaraModel):
         page_size: int = None,
         start_date: int = None,
     ):
+        # The current page number. The value must be greater than **0**. Default value: **1**.
         self.current_page = current_page
+        # The list of department IDs.
         self.dep_ids = dep_ids
+        # The UNIX timestamp of the end date. Unit: milliseconds.
+        # 
         # This parameter is required.
         self.end_date = end_date
+        # The list of skill group IDs.
         self.group_ids = group_ids
+        # The Artificial Intelligence Cloud Call Service (AICCS) instance ID.
+        # 
+        # You can obtain it from **Instance Management** in the left-side navigation pane of the [Artificial Intelligence Cloud Call Service console](https://aiccs.console.aliyun.com/overview).
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The number of entries per page. The value must be greater than **0**. Default value: **20**.
         self.page_size = page_size
+        # The UNIX timestamp of the start date. Unit: milliseconds.
+        # 
         # This parameter is required.
         self.start_date = start_date
 

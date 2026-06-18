@@ -16,10 +16,15 @@ class GetHotlineMessageLogResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code. A return value of "Success" indicates that the request succeeded.
         self.code = code
+        # Voice messages.
         self.data = data
+        # Description of the status code.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the API call succeeded.
         self.success = success
 
     def validate(self):
@@ -84,11 +89,19 @@ class GetHotlineMessageLogResponseBodyData(DaraModel):
         sender_type: int = None,
         start_time: int = None,
     ):
+        # The session ID.
         self.acid = acid
+        # The session content.
         self.content = content
+        # The end time.
         self.end_time = end_time
+        # The record ID.
         self.mid = mid
+        # The sender type. Valid values:  
+        # - **1**: Membership  
+        # - **2**: Agent
         self.sender_type = sender_type
+        # The start time.
         self.start_time = start_time
 
     def validate(self):

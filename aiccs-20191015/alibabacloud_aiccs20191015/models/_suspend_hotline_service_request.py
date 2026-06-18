@@ -12,11 +12,23 @@ class SuspendHotlineServiceRequest(DaraModel):
         instance_id: str = None,
         type: int = None,
     ):
+        # Agent account name, which is the phone number or mailbox entered during account registration. It is unique within the instance.
+        # 
         # This parameter is required.
         self.account_name = account_name
+        # Unique ID of the customer request. Used for idempotency validation. You can generate it using UUID.
         self.client_token = client_token
+        # Artificial Intelligence Cloud Call Service (AICCS) instance ID.  
+        # You can obtain it from **Instance Management** in the left-side navigation pane of the [Artificial Intelligence Cloud Call Service console](https://aiccs.console.aliyun.com/overview).
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Reason for the short break. Valid values:
+        # - **1**: Short break (default value).
+        # - **2**: Meal break.
+        # - **3**: Meeting.
+        # - **4**: Coaching.
+        # - **5**: Training.
         self.type = type
 
     def validate(self):

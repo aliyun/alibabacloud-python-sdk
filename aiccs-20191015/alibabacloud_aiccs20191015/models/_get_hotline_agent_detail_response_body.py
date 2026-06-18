@@ -15,11 +15,19 @@ class GetHotlineAgentDetailResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code.
         self.code = code
+        # Agent service data.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Description of the status code.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the API call succeeded. Valid values:
+        # - **true**: Succeeded.
+        # - **false**: Failed.
         self.success = success
 
     def validate(self):
@@ -85,12 +93,31 @@ class GetHotlineAgentDetailResponseBodyData(DaraModel):
         tenant_id: int = None,
         token: str = None,
     ):
+        # Agent ID.
         self.agent_id = agent_id
+        # Agent status. Valid values: **1~6**.
         self.agent_status = agent_status
+        # Agent status code. Valid values:  
+        # - **AgentCheckout**: Agent logged off.  
+        # - **AgentReady**: Agent idle.  
+        # - **AgentBreak**: Agent on break.  
+        # - **AgentAcw**: Post-processing after a call.  
+        # - **AgentBusyForCall**: In a call.
         self.agent_status_code = agent_status_code
+        # Indicates whether the agent is assigned. Valid values:  
+        # **false**: Not assigned (no call).  
+        # **true**: Assigned (in a call).
         self.assigned = assigned
+        # Break type. Valid values:  
+        # - **1**: Short break.  
+        # - **2**: Meal break.  
+        # - **3**: Meeting.  
+        # - **4**: Coaching.  
+        # - **5**: Training.
         self.rest_type = rest_type
+        # Tenant ID to which the agent belongs, corresponding to the instance ID in the input parameter.
         self.tenant_id = tenant_id
+        # Heartbeat signature.
         self.token = token
 
     def validate(self):

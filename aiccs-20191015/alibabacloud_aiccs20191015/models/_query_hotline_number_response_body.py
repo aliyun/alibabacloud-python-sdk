@@ -16,10 +16,17 @@ class QueryHotlineNumberResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code. A value of Success indicates that the request succeeded.
         self.code = code
+        # Hotline number configuration information.
         self.data = data
+        # Status code description.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the API call succeeded.
+        # - **true**: Succeeded.
+        # - **false**: Failed.
         self.success = success
 
     def validate(self):
@@ -76,9 +83,13 @@ class QueryHotlineNumberResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # Current page.
         self.current_page = current_page
+        # Number list.
         self.hotline_num_list = hotline_num_list
+        # Page size.
         self.page_size = page_size
+        # Total amount of data.
         self.total_count = total_count
 
     def validate(self):
@@ -142,16 +153,31 @@ class QueryHotlineNumberResponseBodyDataHotlineNumList(DaraModel):
         outbound_enabled: bool = None,
         sp: str = None,
     ):
+        # Outbound calls apply to all departments.
         self.callout_all_department = callout_all_department
+        # List of departments for which outbound calls are effective.
         self.callout_range_list = callout_range_list
+        # Number description.
         self.description = description
+        # Satisfaction status. Valid values:  
+        # - **0**: Neither inbound nor outbound calls are enabled.  
+        # - **1**: Inbound calls are enabled.  
+        # - **2**: Outbound calls are enabled.  
+        # - **3**: Both inbound and outbound calls are enabled.
         self.evaluation_status = evaluation_status
+        # Incoming call flow ID.
         self.flow_id = flow_id
+        # Inbound flow name.
         self.flow_name = flow_name
+        # Hotline number.
         self.hotline_number = hotline_number
+        # Indicates whether the number is used for inbound calls.
         self.in_bound_enabled = in_bound_enabled
+        # Number location.
         self.location = location
+        # Indicates whether the number is used for outbound calls.
         self.outbound_enabled = outbound_enabled
+        # Carrier.
         self.sp = sp
 
     def validate(self):
@@ -249,8 +275,11 @@ class QueryHotlineNumberResponseBodyDataHotlineNumListCalloutRangeList(DaraModel
         department_name: str = None,
         group_dolist: List[main_models.QueryHotlineNumberResponseBodyDataHotlineNumListCalloutRangeListGroupDOList] = None,
     ):
+        # Department ID.
         self.department_id = department_id
+        # The department name.
         self.department_name = department_name
+        # The skill group list.
         self.group_dolist = group_dolist
 
     def validate(self):
@@ -299,7 +328,9 @@ class QueryHotlineNumberResponseBodyDataHotlineNumListCalloutRangeListGroupDOLis
         group_id: int = None,
         group_name: str = None,
     ):
+        # The skill group ID.
         self.group_id = group_id
+        # The skill group name.
         self.group_name = group_name
 
     def validate(self):

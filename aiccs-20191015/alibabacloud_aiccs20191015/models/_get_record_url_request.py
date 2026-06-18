@@ -11,10 +11,20 @@ class GetRecordUrlRequest(DaraModel):
         instance_id: str = None,
         record_type: str = None,
     ):
+        # The session ID.
+        # 
         # This parameter is required.
         self.acid = acid
+        # The Artificial Intelligence Cloud Call Service (AICCS) instance ID. You can obtain it in the [Artificial Intelligence Cloud Call Service console](https://aiccs.console.aliyun.com/overview) > Instance Management.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The call type. Valid values:
+        # 
+        # - **DUP_CALL**: Incoming and outgoing calls.
+        # - **IVR_CALL**: IVR outbound call.
+        # - **SMART_CALL**: Intelligent outbound call.
+        # 
         # This parameter is required.
         self.record_type = record_type
 

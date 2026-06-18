@@ -14,13 +14,21 @@ class HangupCallRequest(DaraModel):
         instance_id: str = None,
         job_id: str = None,
     ):
+        # Agent account name (agent logon name).
+        # 
         # This parameter is required.
         self.account_name = account_name
+        # Hotline session ID.
         self.call_id = call_id
+        # Unique customer request ID. Used for idempotency validation and can be generated using UUID.
         self.client_token = client_token
+        # The connId from the WebSocket after an inbound call.
         self.connection_id = connection_id
+        # AICCS instance ID. You can obtain it from the Artificial Intelligence Cloud Call Service console.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The jobId from the WebSocket after an inbound call.
         self.job_id = job_id
 
     def validate(self):

@@ -15,6 +15,9 @@ class ListRobotNodeRequest(DaraModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The robot ID, which is the script ID.  
+        # You can obtain it in the <b>outbound robot</b> > <b>Script Management</b> section of the left-side navigation pane in the [Artificial Intelligence Cloud Call Service console](https://aiccs.console.aliyun.com/overview).
+        # 
         # This parameter is required.
         self.robot_id = robot_id
 

@@ -17,11 +17,17 @@ class QuerySkillGroupsResponseBody(DaraModel):
         total_page: int = None,
         total_results: int = None,
     ):
+        # Current page.
         self.current_page = current_page
+        # Data.
         self.data = data
+        # Number of items per page.
         self.one_page_size = one_page_size
+        # Request ID.
         self.request_id = request_id
+        # Total number of pages.
         self.total_page = total_page
+        # Total number of records.
         self.total_results = total_results
 
     def validate(self):
@@ -91,10 +97,15 @@ class QuerySkillGroupsResponseBodyData(DaraModel):
         skill_group_id: int = None,
         skill_group_name: str = None,
     ):
+        # Skill group channel type.
         self.channel_type = channel_type
+        # Skill group description.
         self.description = description
+        # Skill group display name.
         self.display_name = display_name
+        # Skill group ID.
         self.skill_group_id = skill_group_id
+        # Skill group name.
         self.skill_group_name = skill_group_name
 
     def validate(self):

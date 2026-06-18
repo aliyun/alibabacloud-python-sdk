@@ -17,11 +17,21 @@ class PageQueryAgentListResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The detailed reason for the access denial.
         self.access_denied_detail = access_denied_detail
+        # The status code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The description of the status code.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # - **true**: The request was successful.
+        # 
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -84,9 +94,13 @@ class PageQueryAgentListResponseBodyData(DaraModel):
         page_size: int = None,
         total: int = None,
     ):
+        # A list of agents.
         self.list = list
+        # The page number.
         self.page_no = page_no
+        # The number of entries per page.
         self.page_size = page_size
+        # The total count of entries.
         self.total = total
 
     def validate(self):
@@ -152,18 +166,30 @@ class PageQueryAgentListResponseBodyDataList(DaraModel):
         with_active_prompt: bool = None,
         with_config: bool = None,
     ):
+        # The agent ID.
         self.agent_id = agent_id
+        # The agent name.
         self.agent_name = agent_name
+        # The application code.
         self.application_code = application_code
+        # The reason for the review failure.
         self.audit_reason = audit_reason
+        # The reason for the build failure.
         self.build_fail_reason = build_fail_reason
+        # The business scenario name.
         self.business_type_name = business_type_name
+        # The time the agent was created.
         self.create_time = create_time
+        # The agent description.
         self.description = description
+        # The time the agent was last online.
         self.last_online_time = last_online_time
+        # The time the agent was last modified.
         self.modify_time = modify_time
+        # The agent status.
         self.status = status
         self.with_active_prompt = with_active_prompt
+        # Indicates whether the agent has been configured.
         self.with_config = with_config
 
     def validate(self):

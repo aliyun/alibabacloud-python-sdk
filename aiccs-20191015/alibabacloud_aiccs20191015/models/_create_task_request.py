@@ -24,27 +24,78 @@ class CreateTaskRequest(DaraModel):
         work_day: str = None,
         work_time_list: str = None,
     ):
+        # Call string (callee information and parameter list). Valid values:
+        # 
+        # - **LIST**: `05715678****,05715679****`
+        # - **JSON**: `{"ParamNames":["name","age"],"CalleeList":[{"Callee":"1810000****","Params":["Zhang San","20"]},{"Callee":"1810001****","Params":["Li Si","21"]}]}`. In this example, ParamNames represents the List of Parameter Names; Params represents the List of parameter values.
+        # 
+        # > - The order of the Parameter Name List and the parameter value List must correspond.  
+        # - A maximum of 1 000 callee numbers is allowed.
         self.call_string = call_string
+        # Call string type. Valid values:  
+        # - **LIST**  
+        # - **JSON**
+        # 
         # This parameter is required.
         self.call_string_type = call_string_type
+        # Outbound caller number.
+        # 
+        # > The number must be a purchased number. Separate multiple numbers with commas (,).
+        # 
         # This parameter is required.
         self.caller = caller
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # Retry Count.
         self.retry_count = retry_count
+        # Whether to enable automatic retry. Valid values:
+        # 
+        # - **1**: Retry.
+        # - **0**: No retry.
         self.retry_flag = retry_flag
+        # Retry interval. Unit: minute. Must be greater than 1.
         self.retry_interval = retry_interval
+        # Call statuses that require redialing. Separate multiple statuses with commas (,). Valid values:  
+        # - **200010**: Power off  
+        # - **200011**: Service suspended  
+        # - **200002**: Busy  
+        # - **200012**: Call failed  
+        # - **200005**: Unable to connect  
+        # - **200003**: No acknowledgement
         self.retry_status_code = retry_status_code
+        # ID of the specified robot (script ID), indicating which robot script to use for initiating calls.  
+        # 
+        # You can obtain the script ID on the [Script Management](https://aiccs.console.aliyun.com/patter/list) page in the console.
+        # 
         # This parameter is required.
         self.robot_id = robot_id
+        # Concurrency (number of agents).
+        # 
         # This parameter is required.
         self.seat_count = seat_count
+        # Indicates whether to start immediately.  
+        # - **true**: Yes.  
+        # - **false**: No.
         self.start_now = start_now
+        # Task Name. Supports Chinese and English characters. Length: 0 to 30 characters.
+        # 
         # This parameter is required.
         self.task_name = task_name
+        # Work day. Valid values:
+        # 
+        # - **1**: Monday.
+        # - **2**: Tuesday.
+        # - **3**: Wednesday.
+        # - **4**: Thursday.
+        # - **5**: Friday.
+        # - **6**: Saturday.
+        # - **7**: Sunday.
+        # 
         # This parameter is required.
         self.work_day = work_day
+        # List of working hours (accurate to the minute).
+        # 
         # This parameter is required.
         self.work_time_list = work_time_list
 

@@ -27,30 +27,56 @@ class UpdateAiCallTaskShrinkRequest(DaraModel):
         task_start_time: int = None,
         virtual_number: str = None,
     ):
+        # The days of the week when calls can be made.
+        # 
         # This parameter is required.
         self.call_day_shrink = call_day_shrink
+        # The retry interval in minutes. The maximum value is 120.
         self.call_retry_interval = call_retry_interval
+        # The call failure statuses that trigger a retry.
         self.call_retry_reason_shrink = call_retry_reason_shrink
+        # The number of retries. The maximum value is 3.
         self.call_retry_times = call_retry_times
+        # The callable time windows.
+        # 
         # This parameter is required.
         self.call_time_shrink = call_time_shrink
         self.line_encoding = line_encoding
         self.line_phone_num = line_phone_num
+        # Specifies whether to enable retry. Valid values:
+        # 
+        # - `true`: Yes.
+        # 
+        # - `false` (default): No.
         self.miss_call_retry = miss_call_retry
         self.owner_id = owner_id
         self.phone_type = phone_type
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.source = source
+        # The startup method. Valid values:
+        # 
+        # - `IMMEDIATE`: Start immediately.
+        # 
+        # - `SCHEDULE`: Start at a specified time.
+        # 
         # This parameter is required.
         self.start_type = start_type
+        # The number of concurrent calls per second (CPS) for the task. The maximum value is 500.
+        # 
         # This parameter is required.
         self.task_cps = task_cps
+        # The ID of the task to update.
+        # 
         # This parameter is required.
         self.task_id = task_id
+        # The task name. The name must be unique within an Alibaba Cloud account.
+        # 
         # This parameter is required.
         self.task_name = task_name
+        # The scheduled start time for the task, specified as a Unix timestamp in milliseconds. This parameter is required when `StartType` is set to `SCHEDULE`.
         self.task_start_time = task_start_time
+        # The service instance used for outbound calls.
         self.virtual_number = virtual_number
 
     def validate(self):

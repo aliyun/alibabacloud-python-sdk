@@ -11,9 +11,14 @@ class GetHotlineWaitingNumberRequest(DaraModel):
         client_token: str = None,
         instance_id: str = None,
     ):
+        # Agent account name (agent logon name)
+        # 
         # This parameter is required.
         self.account_name = account_name
+        # Unique customer request ID, used for idempotency validation; can be generated using UUID
         self.client_token = client_token
+        # AICCS instance ID, visible in the Artificial Intelligence Cloud Call Service console
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 

@@ -12,6 +12,7 @@ class QueryAiVoiceAgentDetailRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The agent ID.
         self.agent_id = agent_id
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account

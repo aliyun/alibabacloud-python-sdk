@@ -17,11 +17,21 @@ class PageQueryAgentListNewResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The access denied detail.
         self.access_denied_detail = access_denied_detail
+        # The status code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The message that describes the status code.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Specifies whether the request succeeded.
+        # 
+        # - **`true`**: The request succeeded.
+        # 
+        # - **`false`**: The request failed.
         self.success = success
 
     def validate(self):
@@ -84,9 +94,13 @@ class PageQueryAgentListNewResponseBodyData(DaraModel):
         page_size: int = None,
         total: int = None,
     ):
+        # The data list.
         self.list = list
+        # The current page number.
         self.page_no = page_no
+        # The page size.
         self.page_size = page_size
+        # The total count.
         self.total = total
 
     def validate(self):
@@ -153,19 +167,34 @@ class PageQueryAgentListNewResponseBodyDataList(DaraModel):
         modify_time: str = None,
         scene: str = None,
     ):
+        # The agent ID.
         self.agent_id = agent_id
+        # The agent creation mode. Valid values:<br>
+        # `0`: Prompt mode (`PROMPT`). `1`: Conversation flow mode (`CONVERSATION`).<br>
         self.agent_mode = agent_mode
+        # The agent name.
         self.agent_name = agent_name
+        # The application code.
         self.application_code = application_code
+        # The creation time.
         self.create_time = create_time
+        # The deployment branch ID.
         self.deploy_branch_id = deploy_branch_id
+        # The effective branch name.
         self.deploy_branch_name = deploy_branch_name
+        # The agent description.
         self.description = description
+        # The effective version ID.
         self.effective_version_id = effective_version_id
+        # The effective version name.
         self.effective_version_name = effective_version_name
+        # Specifies whether the agent can be used for outbound calls. A value of `true` means the agent\\"s current deployment branch has a published version.
         self.is_available = is_available
+        # The most recent publish time.
         self.latest_publish_time = latest_publish_time
+        # The last modified time.
         self.modify_time = modify_time
+        # The scene.
         self.scene = scene
 
     def validate(self):

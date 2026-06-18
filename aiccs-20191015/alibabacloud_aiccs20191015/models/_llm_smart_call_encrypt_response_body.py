@@ -15,11 +15,21 @@ class LlmSmartCallEncryptResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Details about the access denied error.
         self.access_denied_detail = access_denied_detail
+        # The request status code. A value of \\"ok\\" indicates that the request succeeded.
         self.code = code
+        # The response data.
         self.data = data
+        # A description of the status code.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the API call was successful. Valid values:
+        # 
+        # - **true**: The API call was successful.
+        # 
+        # - **false**: The API call failed.
         self.success = success
 
     def validate(self):
@@ -79,6 +89,7 @@ class LlmSmartCallEncryptResponseBodyData(DaraModel):
         self,
         call_id: str = None,
     ):
+        # The call ID.
         self.call_id = call_id
 
     def validate(self):

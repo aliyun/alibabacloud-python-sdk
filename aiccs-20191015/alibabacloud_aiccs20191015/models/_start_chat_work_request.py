@@ -10,8 +10,12 @@ class StartChatWorkRequest(DaraModel):
         account_name: str = None,
         instance_id: str = None,
     ):
+        # Agent logon name.
+        # 
         # This parameter is required.
         self.account_name = account_name
+        # Artificial Intelligence Cloud Call Service (AICCS) instance ID. You can obtain it from the Artificial Intelligence Cloud Call Service console.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 

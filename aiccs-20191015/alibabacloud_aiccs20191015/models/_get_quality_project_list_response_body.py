@@ -16,10 +16,15 @@ class GetQualityProjectListResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code. A return value of 200 indicates that the request succeeded.
         self.code = code
+        # Quality inspection job information.
         self.data = data
+        # Description of the status code.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the API call succeeded.
         self.success = success
 
     def validate(self):
@@ -76,9 +81,13 @@ class GetQualityProjectListResponseBodyData(DaraModel):
         quality_project_list: List[main_models.GetQualityProjectListResponseBodyDataQualityProjectList] = None,
         total: int = None,
     ):
+        # Current page number.
         self.page_no = page_no
+        # Page size.
         self.page_size = page_size
+        # List of quality inspection jobs.
         self.quality_project_list = quality_project_list
+        # Total number of records.
         self.total = total
 
     def validate(self):
@@ -143,17 +152,29 @@ class GetQualityProjectListResponseBodyDataQualityProjectList(DaraModel):
         status: int = None,
         version: int = None,
     ):
+        # Quality inspection job frequency.
         self.check_freq_type = check_freq_type
+        # Creation Time.
         self.create_time = create_time
+        # Quality inspection sampling scope.
         self.dep_list = dep_list
+        # Quality inspection sampling scope.
         self.group_list = group_list
+        # Quality inspection job ID.
         self.id = id
+        # Updated At.
         self.modify_time = modify_time
+        # Quality inspection job name.
         self.project_name = project_name
+        # Quality inspection rule IDs.
         self.quality_rule_ids = quality_rule_ids
+        # Quality inspection type. Fixed value is **1** (Consultation).
         self.quality_type = quality_type
+        # Scope of quality inspection sampling.
         self.servicer_list = servicer_list
+        # Status of the quality inspection job.
         self.status = status
+        # Quality inspection job version number.
         self.version = version
 
     def validate(self):

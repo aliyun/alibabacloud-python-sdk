@@ -12,9 +12,13 @@ class AiccsSmartCallResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Unique receipt ID for this call.
         self.code = code
+        # Request status code. A return value of "OK" indicates that the request succeeded.
         self.data = data
+        # Description of the status code.
         self.message = message
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):

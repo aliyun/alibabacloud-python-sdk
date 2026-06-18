@@ -14,10 +14,17 @@ class GetRtcTokenResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code.
         self.code = code
+        # Returned data.
         self.data = data
+        # Description of the status code.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the API call succeeded.
+        # - **true**: Succeeded.
+        # - **false**: Failed.
         self.success = success
 
     def validate(self):
@@ -73,8 +80,11 @@ class GetRtcTokenResponseBodyData(DaraModel):
         rtc_id: str = None,
         token: str = None,
     ):
+        # Account name.
         self.account_name = account_name
+        # The identity of the endpoint that accesses through the Internet domain.
         self.rtc_id = rtc_id
+        # Token information.
         self.token = token
 
     def validate(self):

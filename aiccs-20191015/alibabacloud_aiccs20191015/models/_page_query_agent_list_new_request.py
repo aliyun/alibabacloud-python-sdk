@@ -14,12 +14,17 @@ class PageQueryAgentListNewRequest(DaraModel):
         page_no: int = None,
         page_size: int = None,
     ):
-        # Agent ID
+        # The agent ID.
         self.agent_id = agent_id
+        # The agent name.
         self.agent_name = agent_name
+        # Indicates whether the agent is available for outbound calls. The value is `true` if the agent\\"s current deployment branch has a published version.
         self.is_available = is_available
+        # The page index. This parameter is deprecated. Use `PageNo` instead.
         self.page_index = page_index
+        # The page number.
         self.page_no = page_no
+        # The page size.
         self.page_size = page_size
 
     def validate(self):

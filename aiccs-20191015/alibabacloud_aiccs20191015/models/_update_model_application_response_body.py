@@ -14,11 +14,21 @@ class UpdateModelApplicationResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The detailed reason for the access denial.
         self.access_denied_detail = access_denied_detail
+        # The status code. A value of OK indicates that the request was successful.
         self.code = code
+        # The data returned by the request.
         self.data = data
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # - **true**: The request was successful.
+        # 
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):

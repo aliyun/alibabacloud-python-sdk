@@ -14,11 +14,17 @@ class AddModelApplicationResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The detailed reason for the access denied error.
         self.access_denied_detail = access_denied_detail
+        # The status code. A value of OK indicates a successful request.
         self.code = code
+        # The returned application code.
         self.data = data
+        # The message that explains the status code.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the API call was successful.
         self.success = success
 
     def validate(self):

@@ -17,13 +17,22 @@ class GetOnlineSeatInformationRequest(DaraModel):
         page_size: int = None,
         start_date: int = None,
     ):
+        # List of agent IDs.
         self.agent_ids = agent_ids
+        # Current page number. The value must be greater than **0**. Default value: **1**.
         self.current_page = current_page
+        # List of department IDs.
         self.dep_ids = dep_ids
+        # End date UNIX timestamp. Unit: milliseconds.
         self.end_date = end_date
+        # AICCS instance ID.  
+        # You can obtain it from **Instance Management** in the left-side navigation pane of the [Artificial Intelligence Cloud Call Service console](https://aiccs.console.aliyun.com/overview).
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Page size. The value must be greater than **0**. Default value: **20**.
         self.page_size = page_size
+        # Start date UNIX timestamp. Unit: milliseconds.
         self.start_date = start_date
 
     def validate(self):

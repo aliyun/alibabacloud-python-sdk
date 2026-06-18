@@ -15,6 +15,8 @@ class CancelTaskRequest(DaraModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The unique job ID of the robot calling task. You can view it in the [Task Management](https://aiccs.console.aliyun.com/job/list) interface or obtain it by using the [CreateTask](https://help.aliyun.com/document_detail/223556.html) API.
+        # 
         # This parameter is required.
         self.task_id = task_id
 

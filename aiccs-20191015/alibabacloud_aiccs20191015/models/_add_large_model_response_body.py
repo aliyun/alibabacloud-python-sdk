@@ -14,11 +14,21 @@ class AddLargeModelResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The reason for the authentication failure.
         self.access_denied_detail = access_denied_detail
+        # The status code. A value of `OK` indicates that the request was successful.
         self.code = code
+        # The result of the operation.
         self.data = data
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # - **true**: The request succeeded.
+        # 
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):

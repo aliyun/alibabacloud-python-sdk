@@ -15,11 +15,21 @@ class ImportOneTaskPhoneNumberResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The detailed reason why the access is denied.
         self.access_denied_detail = access_denied_detail
+        # The status code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The description of the status code.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the API call was successful. Valid values:
+        # 
+        # - **true**: The API call was successful.
+        # 
+        # - **false**: The API call failed.
         self.success = success
 
     def validate(self):
@@ -79,6 +89,7 @@ class ImportOneTaskPhoneNumberResponseBodyData(DaraModel):
         self,
         detail_id: int = None,
     ):
+        # The task detail ID.
         self.detail_id = detail_id
 
     def validate(self):

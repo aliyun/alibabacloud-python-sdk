@@ -18,18 +18,42 @@ class GetAiOutboundTaskExecDetailRequest(DaraModel):
         phone_num: str = None,
         task_id: int = None,
     ):
+        # The job batch version.
         self.batch_version = batch_version
+        # Activity ID associated with this outbound call.
         self.case_id = case_id
+        # Job execution status for a single phone number. Valid values:
+        # 
+        # - **1**: Pending call.
+        # - **2**: Calling.
+        # - **3**: Completed.
+        # - **4**: Stopped.
+        # - **5**: Pending retry.
         self.case_status = case_status
+        # End time of phone number import. Format: UNIX timestamp in milliseconds.
         self.create_time_end = create_time_end
+        # Start time of phone number import. Format: UNIX timestamp in milliseconds.
         self.create_time_start = create_time_start
+        # Page size. The value must be greater than **0**. Default Value: **20**.
+        # 
         # This parameter is required.
         self.current_page = current_page
+        # The Artificial Intelligence Cloud Call Service (AICCS) instance ID.
+        # 
+        # You can obtain it from **Instance Management** in the left-side navigation pane of the [Artificial Intelligence Cloud Call Service console](https://aiccs.console.aliyun.com/overview).
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The number of entries per page. The value must be greater than **0**. Default value: **20**.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # The outbound phone number.
         self.phone_num = phone_num
+        # The job ID.
+        # 
+        # You can invoke the [CreateAiOutboundTask](https://help.aliyun.com/document_detail/312260.html) API and check the **Data** field in the response, or invoke the [GetAiOutboundTaskList](https://help.aliyun.com/document_detail/2718026.html) API and check the **TaskId** field in the response.
+        # 
         # This parameter is required.
         self.task_id = task_id
 

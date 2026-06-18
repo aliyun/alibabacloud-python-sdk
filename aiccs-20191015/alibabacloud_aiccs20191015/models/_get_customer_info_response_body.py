@@ -16,10 +16,15 @@ class GetCustomerInfoResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code.
         self.code = code
+        # Membership information.
         self.data = data
+        # Description of the status code.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the API call succeeded.
         self.success = success
 
     def validate(self):
@@ -78,11 +83,17 @@ class GetCustomerInfoResponseBodyData(DaraModel):
         real_name: str = None,
         user_id: int = None,
     ):
+        # Custom fields.
         self.customize_fields = customize_fields
+        # Nickname.
         self.nick = nick
+        # External ID.
         self.outer_id = outer_id
+        # Profile picture.
         self.photo = photo
+        # Real name.
         self.real_name = real_name
+        # Membership ID.
         self.user_id = user_id
 
     def validate(self):

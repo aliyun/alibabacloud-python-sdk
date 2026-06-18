@@ -21,19 +21,38 @@ class QueryTicketsShrinkRequest(DaraModel):
         task_status: int = None,
         touch_id: int = None,
     ):
+        # Ticket ID.
         self.case_id = case_id
+        # Ticket status code.
         self.case_status = case_status
+        # Ticket type code (assigned by the system).
         self.case_type = case_type
+        # Channel ID.
         self.channel_id = channel_id
+        # Channel Type. Valid values:
+        # - **0**: Not filled in
+        # - **1**: Hotline
+        # - **2**: Online
         self.channel_type = channel_type
+        # Current page. Default Value: **1**.
         self.current_page = current_page
+        # Assignee ID.
         self.deal_id = deal_id
+        # Additional information.
         self.extra_shrink = extra_shrink
+        # Instance ID.
+        # 
+        # Log on to the [Artificial Intelligence Cloud Call Service console](https://aiccs.console.aliyun.com/overview) and view the instance ID in **Instance Management**.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Page size. Default Value: **10**.
         self.page_size = page_size
+        # Template ID.
         self.sr_type = sr_type
+        # Job status.
         self.task_status = task_status
+        # Touch ID.
         self.touch_id = touch_id
 
     def validate(self):

@@ -14,14 +14,14 @@ class TestLargeModelShrinkRequest(DaraModel):
         resource_owner_id: int = None,
         user_dialog_content: str = None,
     ):
-        # 基础模型
+        # The base models.
         self.base_model_shrink = base_model_shrink
-        # 场景ID
+        # The ID of the test scenario.
         self.model_code = model_code
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # 用户对话内容
+        # The user dialog content.
         self.user_dialog_content = user_dialog_content
 
     def validate(self):

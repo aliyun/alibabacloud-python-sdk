@@ -14,12 +14,19 @@ class ListChatRecordDetailRequest(DaraModel):
         instance_id: str = None,
         page_size: int = None,
     ):
+        # Unique ID for the customer request. Used for idempotency validation. You can generate it using UUID.
         self.client_token = client_token
+        # Right boundary of the time range for session end time. Format: UNIX timestamp in milliseconds.
         self.close_time_end = close_time_end
+        # Left boundary of the time range for session end time. Format: UNIX timestamp in milliseconds.
         self.close_time_start = close_time_start
+        # Current page number. Default value: 1.
         self.current_page = current_page
+        # Artificial Intelligence Cloud Call Service (AICCS) instance ID. You can obtain it from the Artificial Intelligence Cloud Call Service console.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Page size. Default value: **500**.
         self.page_size = page_size
 
     def validate(self):

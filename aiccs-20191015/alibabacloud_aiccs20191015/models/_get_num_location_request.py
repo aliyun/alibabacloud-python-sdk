@@ -11,9 +11,15 @@ class GetNumLocationRequest(DaraModel):
         instance_id: str = None,
         phone_num: str = None,
     ):
+        # Unique ID for the customer request. Used for idempotency validation and can be generated using a UUID.
         self.client_token = client_token
+        # Artificial Intelligence Cloud Call Service (AICCS) instance ID.  
+        # You can obtain it in the <b>Instance Management</b> section of the left-side navigation pane in the [Artificial Intelligence Cloud Call Service console](https://aiccs.console.aliyun.com/overview).
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Phone number to query.
+        # 
         # This parameter is required.
         self.phone_num = phone_num
 

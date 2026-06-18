@@ -21,20 +21,54 @@ class LlmSmartCallShrinkRequest(DaraModel):
         tts_voice_code: str = None,
         tts_volume: int = None,
     ):
+        # LLM application code. View it in the [Application Management](https://aiccs.console.aliyun.com/engine/llmApp) interface.
+        # 
         # This parameter is required.
         self.application_code = application_code
+        # Business parameters. These parameters are passed to the customer model when invoking the customer model.
         self.biz_param_shrink = biz_param_shrink
+        # Called number that receives the intelligent outbound call.
+        # 
         # This parameter is required.
         self.called_number = called_number
+        # Caller number. This parameter is required and supports only numbers from the Chinese mainland. View available numbers in the Voice Service [Number Management](https://dyvmsnext.console.aliyun.com/number/list/normal) interface.
         self.caller_number = caller_number
+        # Customer-provided ingest endpoint encoding.
+        # 
+        # > 
+        # > - If you use your own line, contact Alibaba Cloud support to enable this feature.
+        # > - The line encoding is provided by Alibaba Cloud support. Do not set this parameter if you do not have one.
         self.customer_line_code = customer_line_code
+        # The extension number of the X number, up to 5 digits.
+        # 
+        # >Notice: Fill this field only in AXN extension mode. If no extension number exists, do not fill it.
         self.extension = extension
+        # An ID reserved for the caller. This ID will be returned to the caller through a receipt message. Length: 1–15 bytes.
         self.out_id = out_id
+        # Prompt variable. Go to the [Application Management](https://aiccs.console.aliyun.com/engine/llmApp) interface and click Details to view the prompt variables you created.
         self.prompt_param_shrink = prompt_param_shrink
+        # Maximum call duration. The call is automatically disconnected after timeout. Unit: seconds.
+        # >
+        # >- Maximum value: 3600 s.
+        # >- Minimum value: 600 s.
         self.session_timeout = session_timeout
+        # Start-word variables. Go to the [LLM Application Management](https://aiccs.console.aliyun.com/engine/llmApp) interface and click Details to view the start-word variables of your created LLM application.
         self.start_word_param_shrink = start_word_param_shrink
+        # Voice speed during TTS playback.
+        # 
+        # > 
+        # > - Value range: -200 to 200. Default value is 0.
+        # > - If this parameter is not set, the voice speed configured in the LLM application is used by default.
         self.tts_speed = tts_speed
+        # The voice code used for TTS playback.
+        # > 
+        # > - If no value is set, the voice code configured in the LLM application is used by default.
+        # > - You can use the [ListAvailableTts](https://help.aliyun.com/document_detail/2926668.html) API to view all available voice codes.
         self.tts_voice_code = tts_voice_code
+        # The volume for TTS playback.
+        # > 
+        # > - Value range: 0–100. Default value is 0.
+        # > - If no value is set, the volume configured in the LLM application is used by default.
         self.tts_volume = tts_volume
 
     def validate(self):

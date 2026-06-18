@@ -21,7 +21,33 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = 'central'
+        self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'us-west-1': 'aiccs.aliyuncs.com',
+            'us-east-1': 'aiccs.aliyuncs.com',
+            'me-east-1': 'aiccs.aliyuncs.com',
+            'eu-west-1': 'aiccs.aliyuncs.com',
+            'eu-central-1': 'aiccs.aliyuncs.com',
+            'cn-zhangjiakou': 'aiccs.aliyuncs.com',
+            'cn-wulanchabu': 'aiccs.aliyuncs.com',
+            'cn-shenzhen-finance-1': 'aiccs.aliyuncs.com',
+            'cn-shenzhen': 'aiccs.aliyuncs.com',
+            'cn-shanghai-finance-1': 'aiccs.aliyuncs.com',
+            'cn-shanghai': 'aiccs.aliyuncs.com',
+            'cn-qingdao': 'aiccs.aliyuncs.com',
+            'cn-north-2-gov-1': 'aiccs.aliyuncs.com',
+            'cn-huhehaote': 'aiccs.aliyuncs.com',
+            'cn-hongkong': 'aiccs.aliyuncs.com',
+            'cn-hangzhou-finance': 'aiccs.aliyuncs.com',
+            'cn-hangzhou': 'aiccs.aliyuncs.com',
+            'cn-chengdu': 'aiccs.aliyuncs.com',
+            'cn-beijing-finance-1': 'aiccs.aliyuncs.com',
+            'cn-beijing': 'aiccs.aliyuncs.com',
+            'ap-southeast-5': 'aiccs.aliyuncs.com',
+            'ap-southeast-3': 'aiccs.aliyuncs.com',
+            'ap-southeast-1': 'aiccs.aliyuncs.com',
+            'ap-northeast-1': 'aiccs.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('aiccs', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -5052,6 +5078,80 @@ class Client(OpenApiClient):
     ) -> main_models.GetAllDepartmentResponse:
         runtime = RuntimeOptions()
         return await self.get_all_department_with_options_async(request, runtime)
+
+    def get_audio_note_upload_url_with_options(
+        self,
+        request: main_models.GetAudioNoteUploadUrlRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAudioNoteUploadUrlResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.file_name):
+            query['FileName'] = request.file_name
+        if not DaraCore.is_null(request.file_type):
+            query['FileType'] = request.file_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAudioNoteUploadUrl',
+            version = '2019-10-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAudioNoteUploadUrlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_audio_note_upload_url_with_options_async(
+        self,
+        request: main_models.GetAudioNoteUploadUrlRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAudioNoteUploadUrlResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.file_name):
+            query['FileName'] = request.file_name
+        if not DaraCore.is_null(request.file_type):
+            query['FileType'] = request.file_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAudioNoteUploadUrl',
+            version = '2019-10-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAudioNoteUploadUrlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_audio_note_upload_url(
+        self,
+        request: main_models.GetAudioNoteUploadUrlRequest,
+    ) -> main_models.GetAudioNoteUploadUrlResponse:
+        runtime = RuntimeOptions()
+        return self.get_audio_note_upload_url_with_options(request, runtime)
+
+    async def get_audio_note_upload_url_async(
+        self,
+        request: main_models.GetAudioNoteUploadUrlRequest,
+    ) -> main_models.GetAudioNoteUploadUrlResponse:
+        runtime = RuntimeOptions()
+        return await self.get_audio_note_upload_url_with_options_async(request, runtime)
 
     def get_call_dialog_content_with_options(
         self,
@@ -14453,6 +14553,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.stop_task_with_options_async(request, runtime)
 
+    def submit_audio_note_with_options(
+        self,
+        request: main_models.SubmitAudioNoteRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitAudioNoteResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_id):
+            query['AgentId'] = request.agent_id
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.file_path):
+            query['FilePath'] = request.file_path
+        if not DaraCore.is_null(request.llm_model_id):
+            query['LlmModelId'] = request.llm_model_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitAudioNote',
+            version = '2019-10-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitAudioNoteResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_audio_note_with_options_async(
+        self,
+        request: main_models.SubmitAudioNoteRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitAudioNoteResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_id):
+            query['AgentId'] = request.agent_id
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.file_path):
+            query['FilePath'] = request.file_path
+        if not DaraCore.is_null(request.llm_model_id):
+            query['LlmModelId'] = request.llm_model_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitAudioNote',
+            version = '2019-10-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitAudioNoteResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_audio_note(
+        self,
+        request: main_models.SubmitAudioNoteRequest,
+    ) -> main_models.SubmitAudioNoteResponse:
+        runtime = RuntimeOptions()
+        return self.submit_audio_note_with_options(request, runtime)
+
+    async def submit_audio_note_async(
+        self,
+        request: main_models.SubmitAudioNoteRequest,
+    ) -> main_models.SubmitAudioNoteResponse:
+        runtime = RuntimeOptions()
+        return await self.submit_audio_note_with_options_async(request, runtime)
+
     def suspend_hotline_service_with_options(
         self,
         request: main_models.SuspendHotlineServiceRequest,
@@ -15492,10 +15674,16 @@ class Client(OpenApiClient):
             query['DtmfRetryPlayTimes'] = request.dtmf_retry_play_times
         if not DaraCore.is_null(request.dtmf_retry_prompt_text):
             query['DtmfRetryPromptText'] = request.dtmf_retry_prompt_text
+        if not DaraCore.is_null(request.dtmf_send_max_count):
+            query['DtmfSendMaxCount'] = request.dtmf_send_max_count
+        if not DaraCore.is_null(request.dtmf_send_wait_timeout):
+            query['DtmfSendWaitTimeout'] = request.dtmf_send_wait_timeout
         if not DaraCore.is_null(request.dyvms_scene_name):
             query['DyvmsSceneName'] = request.dyvms_scene_name
         if not DaraCore.is_null(request.enable_dtmf_receive):
             query['EnableDtmfReceive'] = request.enable_dtmf_receive
+        if not DaraCore.is_null(request.enable_dtmf_send):
+            query['EnableDtmfSend'] = request.enable_dtmf_send
         if not DaraCore.is_null(request.enable_morse):
             query['EnableMorse'] = request.enable_morse
         if not DaraCore.is_null(request.interrupt_config_shrink):
@@ -15510,6 +15698,8 @@ class Client(OpenApiClient):
             query['MuteDuration'] = request.mute_duration
         if not DaraCore.is_null(request.mute_hangup_num):
             query['MuteHangupNum'] = request.mute_hangup_num
+        if not DaraCore.is_null(request.mute_push_mode):
+            query['MutePushMode'] = request.mute_push_mode
         if not DaraCore.is_null(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not DaraCore.is_null(request.prompt):
@@ -15598,10 +15788,16 @@ class Client(OpenApiClient):
             query['DtmfRetryPlayTimes'] = request.dtmf_retry_play_times
         if not DaraCore.is_null(request.dtmf_retry_prompt_text):
             query['DtmfRetryPromptText'] = request.dtmf_retry_prompt_text
+        if not DaraCore.is_null(request.dtmf_send_max_count):
+            query['DtmfSendMaxCount'] = request.dtmf_send_max_count
+        if not DaraCore.is_null(request.dtmf_send_wait_timeout):
+            query['DtmfSendWaitTimeout'] = request.dtmf_send_wait_timeout
         if not DaraCore.is_null(request.dyvms_scene_name):
             query['DyvmsSceneName'] = request.dyvms_scene_name
         if not DaraCore.is_null(request.enable_dtmf_receive):
             query['EnableDtmfReceive'] = request.enable_dtmf_receive
+        if not DaraCore.is_null(request.enable_dtmf_send):
+            query['EnableDtmfSend'] = request.enable_dtmf_send
         if not DaraCore.is_null(request.enable_morse):
             query['EnableMorse'] = request.enable_morse
         if not DaraCore.is_null(request.interrupt_config_shrink):
@@ -15616,6 +15812,8 @@ class Client(OpenApiClient):
             query['MuteDuration'] = request.mute_duration
         if not DaraCore.is_null(request.mute_hangup_num):
             query['MuteHangupNum'] = request.mute_hangup_num
+        if not DaraCore.is_null(request.mute_push_mode):
+            query['MutePushMode'] = request.mute_push_mode
         if not DaraCore.is_null(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not DaraCore.is_null(request.prompt):

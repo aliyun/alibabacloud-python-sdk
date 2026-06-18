@@ -16,8 +16,15 @@ class ListAvailableTtsRequest(DaraModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # 复刻音色编码
+        # The voice code for a custom voice. You can find it on the [Custom Voice](https://aiccs.console.aliyun.com/engine/voiceprint) page.
         self.tts_voice_code = tts_voice_code
+        # The type of the TTS voice. Valid values:
+        # 
+        # `SYSTEM`: system voice.
+        # 
+        # `COSYCLONE`: cloned voice.
+        # 
+        # `BL-CUSTOM`: premium custom voice.
         self.voice_type = voice_type
 
     def validate(self):

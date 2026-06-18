@@ -14,10 +14,17 @@ class GetDepartmentalLatitudeAgentStatusResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code. A return value of 200 indicates that the request succeeded.
         self.code = code
+        # Data list.
         self.data = data
+        # Status code description.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the API call succeeded. Valid values:
+        # - **true**: Succeeded.
+        # - **false**: Failed.
         self.success = success
 
     def validate(self):
@@ -74,9 +81,13 @@ class GetDepartmentalLatitudeAgentStatusResponseBodyData(DaraModel):
         rows: str = None,
         total_num: int = None,
     ):
+        # Current page number.
         self.page_num = page_num
+        # Page size.
         self.page_size = page_size
+        # The information is a JSON string of type List<Map>.
         self.rows = rows
+        # Total number of pages.
         self.total_num = total_num
 
     def validate(self):

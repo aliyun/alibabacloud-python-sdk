@@ -16,10 +16,17 @@ class QueryTouchListResponseBody(DaraModel):
         result_data: main_models.QueryTouchListResponseBodyResultData = None,
         success: bool = None,
     ):
+        # Status code.
         self.code = code
+        # Description of the status code.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Data result.
         self.result_data = result_data
+        # Indicates whether the API call succeeded. Valid values:  
+        # - **true**: Succeeded.  
+        # - **false**: Failed.
         self.success = success
 
     def validate(self):
@@ -80,13 +87,21 @@ class QueryTouchListResponseBodyResultData(DaraModel):
         total_page: int = None,
         total_results: int = None,
     ):
+        # Current page number.
         self.current_page = current_page
+        # Data.
         self.data = data
+        # Indicates whether the result is empty.
         self.empty = empty
+        # The page number of the next page.
         self.next_page = next_page
+        # Page size.
         self.one_page_size = one_page_size
+        # Previous page number.
         self.previous_page = previous_page
+        # Total number of pages.
         self.total_page = total_page
+        # Total number of query results.
         self.total_results = total_results
 
     def validate(self):
@@ -191,33 +206,74 @@ class QueryTouchListResponseBodyResultDataData(DaraModel):
         touch_type: int = None,
         user_touch_id: int = None,
     ):
+        # Tenant ID.
         self.bu_id = bu_id
+        # Session ID.
         self.channel_id = channel_id
+        # Contact channel.
         self.channel_type = channel_type
+        # Session end time. UNIX timestamp format (unit: milliseconds).
         self.close_time = close_time
+        # Skill group name.
         self.common_queue_name = common_queue_name
+        # Department ID.
         self.dep_id = dep_id
+        # Extension fields.
         self.ext_attrs = ext_attrs
+        # Large object.
         self.ext_attrs_string = ext_attrs_string
+        # Feedback.
         self.feedback = feedback
+        # Conversation pickup time, in UNIX timestamp format (unit: milliseconds).
         self.first_time = first_time
+        # Conversation initiator.
         self.from_id = from_id
+        # Creation Time, in UNIX timestamp format (unit: milliseconds).
         self.gmt_create = gmt_create
+        # Update Time. UNIX timestamp format (unit: milliseconds).
         self.gmt_modified = gmt_modified
+        # Membership ID.
         self.member_id = member_id
+        # Membership name.
         self.member_name = member_name
+        # Parent contact ID.
         self.parent_touch_id = parent_touch_id
+        # Skill group ID.
         self.queue_id = queue_id
+        # Service agent ID.
         self.servicer_id = servicer_id
+        # Service agent name.
         self.servicer_name = servicer_name
+        # Contact status. Valid values:  
+        # - **1**: Incoming call received.  
+        # - **2**: Agent has joined.  
+        # - **3**: In conversation.  
+        # - **4**: Ended.
         self.status = status
+        # Change owner list.
         self.switch_user = switch_user
+        # Conversation recipient.
         self.to_id = to_id
+        # The reason why the session ended. Valid values:  
+        # - **0**: Unknown.  
+        # - **1**: Contact failed.  
+        # - **2**: Terminated by customer.  
+        # - **3**: Terminated by agent.  
+        # - **4**: Call abnormally interrupted.  
+        # - **5**: Terminated due to change owner.  
+        # - **6**: Terminated by system.
         self.touch_content = touch_content
+        # End reason.
         self.touch_end_reason = touch_end_reason
+        # Touch ID.
         self.touch_id = touch_id
+        # Conversation duration (unit: seconds).
         self.touch_time = touch_time
+        # Touch type. Valid values:
+        # - **1**: Active touch.
+        # - **2**: Passive touch.
         self.touch_type = touch_type
+        # User touch ID.
         self.user_touch_id = user_touch_id
 
     def validate(self):
@@ -417,14 +473,35 @@ class QueryTouchListResponseBodyResultDataDataExtAttrs(DaraModel):
         online_session_source: int = None,
         out_call_route_number: str = None,
     ):
+        # Inbound call caller number.
         self.ani = ani
+        # For outbound calls, this is the called number. For inbound calls, this is also the called number.
         self.dnis = dnis
+        # Satisfaction Level. Valid values:  
+        # - **2**: Level 2 satisfaction.  
+        # - **3**: Level 3 satisfaction.  
+        # - **4**: Level 4 satisfaction.  
+        # - **5**: Level 5 satisfaction.
         self.evaluation_level = evaluation_level
+        # Satisfaction rating. Valid values:
+        # - **1**: Very dissatisfied.
+        # - **2**: Dissatisfied.
+        # - **3**: Neutral.
+        # - **4**: Satisfied.
+        # - **5**: Very satisfied.
         self.evaluation_score = evaluation_score
+        # Evaluation solution.
         self.evaluation_solution = evaluation_solution
+        # Evaluation status. Valid values:
+        # - **-1**: Evaluation not initiated.
+        # - **0**: Not evaluated.
+        # - **1**: Evaluated.
         self.evaluation_status = evaluation_status
+        # Duration until first response (unit: seconds).
         self.online_join_resp_interval = online_join_resp_interval
+        # Online session source.
         self.online_session_source = online_session_source
+        # Outbound call caller number.
         self.out_call_route_number = out_call_route_number
 
     def validate(self):

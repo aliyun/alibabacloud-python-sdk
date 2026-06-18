@@ -32,55 +32,58 @@ class AddModelApplicationRequest(DaraModel):
         tts_config: main_models.AddModelApplicationRequestTtsConfig = None,
         usage_desc: str = None,
     ):
-        # 应用并发请求数
+        # The number of concurrent requests per second (CPS).
         # 
         # This parameter is required.
         self.application_cps = application_cps
-        # 模型应用名称
+        # The name of the model application.
         # 
         # This parameter is required.
         self.application_name = application_name
+        # Specifies whether to push an event notification when a call is connected. The default value is false.
         self.call_connected_trigger_model = call_connected_trigger_model
-        # 场景名称
+        # The scene name.
         self.dyvms_scene_name = dyvms_scene_name
-        # 模型编码
+        # The model code.
         # 
         # This parameter is required.
         self.model_code = model_code
-        # 模型版本
+        # The model version.
         self.model_version = model_version
-        # 第一个静音是否唤起模型
+        # Specifies whether the first mute event triggers the model.
         self.mute_active = mute_active
-        # 静音时长
+        # The mute duration.
         self.mute_duration = mute_duration
-        # 连续多少个静音事件主动挂机
+        # The number of consecutive mute events that trigger an automatic hang-up.
         self.mute_hangup_num = mute_hangup_num
         self.owner_id = owner_id
-        # 提示词
+        # The prompt.
         self.prompt = prompt
-        # 资质ID
+        # The qualification ID.
         self.qualification_id = qualification_id
-        # 资质名称
+        # The name of the qualification.
         self.qualification_name = qualification_name
+        # The URL of the audio file for the opening line. This parameter is required if `StartWordType` is set to `1`.
         self.recording_file = recording_file
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # 来源
+        # The source. The value must be `USER`.
         self.source = source
-        # 话术内容
+        # The speech script content.
         self.speech_content = speech_content
-        # 话束id
+        # The speech script ID.
         self.speech_id = speech_id
-        # 开场白
+        # The opening line.
         # 
         # This parameter is required.
         self.start_word = start_word
+        # The type of the opening line.
         self.start_word_type = start_word_type
-        # tts配置，包括音色、音量、音速等。
+        # The TTS configuration, including voice, volume, speech speed, and more.
         # 
         # This parameter is required.
         self.tts_config = tts_config
-        # 用途
+        # The purpose of the application.
         self.usage_desc = usage_desc
 
     def validate(self):
@@ -253,22 +256,35 @@ class AddModelApplicationRequestTtsConfig(DaraModel):
         voice_code: str = None,
         voice_type: str = None,
     ):
+        # Specifies whether to enable background sound.
         self.background_enabled = background_enabled
+        # The background sound ID.
         self.background_sound = background_sound
+        # The background sound volume.
         self.background_volume = background_volume
+        # The account ID.
         self.customer_account_id = customer_account_id
+        # Specifies whether to enable mixing.
         self.mixing_enabled = mixing_enabled
+        # The mixing template ID.
         self.mixing_template = mixing_template
+        # The resource ID.
         self.resource_id = resource_id
-        # TTS 变量播放时的声音速度。取值范围：-200~200，默认值为 0。
+        # The speech speed for TTS playback. Valid values: -200–200. The default value is 0.
         self.tts_speed = tts_speed
-        # 声音风格
+        # The voice style.
         self.tts_style = tts_style
-        # TTS 变量播放的音量。取值范围：0~100，默认值为 0。
+        # The volume for TTS playback. Valid values: 0–100. The default value is 0.
         self.tts_volume = tts_volume
-        # 音色code
+        # The voice code.
         self.voice_code = voice_code
-        # 声音类型
+        # The voice type.
+        # 
+        # ```
+        # SYSTEM: System voice
+        # COSYCLONE: Cloned voice
+        # BL-CUSTOM: Premium custom cloned voice
+        # ```
         self.voice_type = voice_type
 
     def validate(self):

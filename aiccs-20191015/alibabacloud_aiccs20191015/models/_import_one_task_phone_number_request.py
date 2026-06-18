@@ -19,14 +19,24 @@ class ImportOneTaskPhoneNumberRequest(DaraModel):
         variables: Dict[str, Any] = None,
     ):
         self.encryption_type = encryption_type
+        # The external ID. We recommend that you use a unique ID to ensure idempotency. The value cannot exceed 128 characters.
         self.out_id = out_id
         self.owner_id = owner_id
+        # The phone number of the callee.
+        # 
         # This parameter is required.
         self.phone_number = phone_number
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The task ID.
+        # 
         # This parameter is required.
         self.task_id = task_id
+        # A list of variables in a map.
+        # 
+        # > The format of variables for an engine-based call task is as follows:
+        # >
+        # > - {"startWordParam.variable_key1":"variable_value1","promptParam.variable_key2":"variable_value2","bizParam.variable_key3":"variable_value3"}
         self.variables = variables
 
     def validate(self):

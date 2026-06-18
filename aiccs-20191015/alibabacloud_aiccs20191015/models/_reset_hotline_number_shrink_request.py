@@ -19,24 +19,48 @@ class ResetHotlineNumberShrinkRequest(DaraModel):
         outbound_all_depart: bool = None,
         outbound_range_list_shrink: str = None,
     ):
+        # Number description.
+        # 
         # This parameter is required.
         self.description = description
+        # Indicates whether the number is used for inbound calls.
+        # 
         # This parameter is required.
         self.enable_inbound = enable_inbound
+        # Whether inbound call satisfaction evaluation is enabled.
+        # 
         # This parameter is required.
         self.enable_inbound_evaluation = enable_inbound_evaluation
+        # Whether used for outbound calls.
+        # 
         # This parameter is required.
         self.enable_outbound = enable_outbound
+        # Indicates whether outbound satisfaction evaluation is enabled.
+        # 
         # This parameter is required.
         self.enable_outbound_evaluation = enable_outbound_evaluation
+        # Satisfaction level. Valid values:
+        # 
+        # - **2**: Two-level (Satisfied, Not Satisfied)
+        # - **3**: Three-level (Satisfied, Neutral, Not Satisfied)
+        # - **4**: Four-level (Very Satisfied, Satisfied, Neutral, Not Satisfied)
+        # - **5**: Five-level (Very Satisfied, Satisfied, Neutral, Not Satisfied, Very Poor)
         self.evaluation_level = evaluation_level
+        # Hotline number.
+        # 
         # This parameter is required.
         self.hotline_number = hotline_number
+        # The IVR flow ID for inbound calls.
         self.inbound_flow_id = inbound_flow_id
+        # The Artificial Intelligence Cloud Call Service (AICCS) instance ID. You can obtain it from the console.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Indicates whether outbound calls apply to all departments.
+        # 
         # This parameter is required.
         self.outbound_all_depart = outbound_all_depart
+        # Outbound call effective scope.
         self.outbound_range_list_shrink = outbound_range_list_shrink
 
     def validate(self):

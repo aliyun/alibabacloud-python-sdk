@@ -20,16 +20,37 @@ class GetAgentStatisticsRequest(DaraModel):
         start_date: int = None,
         time_latitude_type: str = None,
     ):
+        # List of agent IDs.
         self.agent_ids = agent_ids
+        # Current page number. The value must be greater than **0**. Default value: **1**.
         self.current_page = current_page
+        # List of department IDs.
         self.dep_ids = dep_ids
+        # End Datetime Variable as a UNIX timestamp. Unit: milliseconds.
         self.end_date = end_date
+        # Whether to query by agent group. Valid values:
+        # 
+        # - **true**: Yes.
+        # - **false**: No.
         self.exist_agent_grouping = exist_agent_grouping
+        # Indicates whether to query by department grouping. Valid values:  
+        # 
+        # - **true**: Yes  
+        # - **false**: No
         self.exist_department_grouping = exist_department_grouping
+        # AICCS instance ID.  
+        # You can obtain it from **Instance Management** in the left-side navigation pane of the [Artificial Intelligence Cloud Call Service console](https://aiccs.console.aliyun.com/overview).
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Page size. The value must be greater than **0**. Default value: **20**.
         self.page_size = page_size
+        # Start UNIX timestamp, in milliseconds.
         self.start_date = start_date
+        # Time latitude type. Valid values:  
+        # 
+        # - **minute**: minute  
+        # - **hour**: hour
         self.time_latitude_type = time_latitude_type
 
     def validate(self):

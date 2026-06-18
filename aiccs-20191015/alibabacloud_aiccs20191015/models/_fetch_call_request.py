@@ -15,14 +15,23 @@ class FetchCallRequest(DaraModel):
         instance_id: str = None,
         job_id: str = None,
     ):
+        # Agent account name (agent logon name)
+        # 
         # This parameter is required.
         self.account_name = account_name
+        # The acid from WebSocket after an inbound call
         self.call_id = call_id
+        # Unique ID of the customer request, used for idempotency validation; can be generated using UUID
         self.client_token = client_token
+        # The connId from WebSocket after an inbound call
         self.connection_id = connection_id
+        # The holdConnId from WebSocket after an inbound call (only provided during two-step transfer)
         self.hold_connection_id = hold_connection_id
+        # AICCS instance ID, visible in the Artificial Intelligence Cloud Call Service console
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The jobId from WebSocket after an inbound call
         self.job_id = job_id
 
     def validate(self):

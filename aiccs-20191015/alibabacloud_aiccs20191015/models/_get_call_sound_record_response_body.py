@@ -13,10 +13,17 @@ class GetCallSoundRecordResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Request status code. A return value of OK indicates that the request succeeded.
         self.code = code
+        # URL of the call recording file.
         self.data = data
+        # Description of the status code.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the API invocation succeeded. Valid values:
+        # - **true**: Succeeded.
+        # - **false**: Failed.
         self.success = success
 
     def validate(self):

@@ -17,11 +17,21 @@ class AddInboundNumberResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Details about why access was denied.
         self.access_denied_detail = access_denied_detail
+        # The status code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The status code description.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the API call succeeded.
+        # 
+        # - **true**: The call succeeded.
+        # 
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):
@@ -89,8 +99,11 @@ class AddInboundNumberResponseBodyData(DaraModel):
         message: str = None,
         result: bool = None,
     ):
+        # The inbound number.
         self.inbound_number = inbound_number
+        # The error description.
         self.message = message
+        # Indicates whether the number was added successfully. `true` indicates success, and `false` indicates failure.
         self.result = result
 
     def validate(self):

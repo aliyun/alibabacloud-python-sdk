@@ -14,11 +14,19 @@ class ChangeChatAgentStatusResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code.
         self.code = code
+        # Current agent status. Valid values:
+        # - **0**: Offline
+        # - **3**: On break
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Description of the status code.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Whether the API call succeeded.
         self.success = success
 
     def validate(self):

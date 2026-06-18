@@ -10,8 +10,12 @@ class GetHotlineMessageLogRequest(DaraModel):
         acid: str = None,
         instance_id: str = None,
     ):
+        # Session ID.
+        # 
         # This parameter is required.
         self.acid = acid
+        # Artificial Intelligence Cloud Call Service (AICCS) instance ID. You can obtain it from the Artificial Intelligence Cloud Call Service console.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 

@@ -12,9 +12,13 @@ class JoinThirdCallResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Fault encoding
         self.code = code
+        # Fault description
         self.message = message
+        # Request ID, used to trail the cause of a fault
         self.request_id = request_id
+        # Whether the API call succeeded
         self.success = success
 
     def validate(self):

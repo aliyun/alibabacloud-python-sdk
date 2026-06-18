@@ -14,11 +14,17 @@ class DescribeRecordDataResponseBody(DaraModel):
         oss_link: str = None,
         request_id: str = None,
     ):
+        # Session ID.
         self.acid = acid
+        # Agent ID.
         self.agent_id = agent_id
+        # Status code. A return value of 200 indicates that the request succeeded.
         self.code = code
+        # Status code description.
         self.message = message
+        # Recording file link.
         self.oss_link = oss_link
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):

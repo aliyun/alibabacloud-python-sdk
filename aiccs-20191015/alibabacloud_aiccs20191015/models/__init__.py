@@ -181,6 +181,9 @@ from ._get_ai_outbound_task_progress_response import GetAiOutboundTaskProgressRe
 from ._get_all_department_request import GetAllDepartmentRequest
 from ._get_all_department_response_body import GetAllDepartmentResponseBody
 from ._get_all_department_response import GetAllDepartmentResponse
+from ._get_audio_note_upload_url_request import GetAudioNoteUploadUrlRequest
+from ._get_audio_note_upload_url_response_body import GetAudioNoteUploadUrlResponseBody
+from ._get_audio_note_upload_url_response import GetAudioNoteUploadUrlResponse
 from ._get_call_dialog_content_request import GetCallDialogContentRequest
 from ._get_call_dialog_content_response_body import GetCallDialogContentResponseBody
 from ._get_call_dialog_content_response import GetCallDialogContentResponse
@@ -528,6 +531,9 @@ from ._stop_ai_outbound_task_response import StopAiOutboundTaskResponse
 from ._stop_task_request import StopTaskRequest
 from ._stop_task_response_body import StopTaskResponseBody
 from ._stop_task_response import StopTaskResponse
+from ._submit_audio_note_request import SubmitAudioNoteRequest
+from ._submit_audio_note_response_body import SubmitAudioNoteResponseBody
+from ._submit_audio_note_response import SubmitAudioNoteResponse
 from ._suspend_hotline_service_request import SuspendHotlineServiceRequest
 from ._suspend_hotline_service_response_body import SuspendHotlineServiceResponseBody
 from ._suspend_hotline_service_response import SuspendHotlineServiceResponse
@@ -601,6 +607,7 @@ from ._get_ai_outbound_task_progress_response_body import GetAiOutboundTaskProgr
 from ._get_ai_outbound_task_progress_response_body import GetAiOutboundTaskProgressResponseBodyDataTaskProgress
 from ._get_ai_outbound_task_progress_response_body import GetAiOutboundTaskProgressResponseBodyData
 from ._get_all_department_response_body import GetAllDepartmentResponseBodyData
+from ._get_audio_note_upload_url_response_body import GetAudioNoteUploadUrlResponseBodyData
 from ._get_call_dialog_content_response_body import GetCallDialogContentResponseBodyData
 from ._get_customer_info_response_body import GetCustomerInfoResponseBodyData
 from ._get_dep_group_tree_data_response_body import GetDepGroupTreeDataResponseBodyDataGroupDTOS
@@ -915,6 +922,9 @@ __all__ = [
     GetAllDepartmentRequest,
     GetAllDepartmentResponseBody,
     GetAllDepartmentResponse,
+    GetAudioNoteUploadUrlRequest,
+    GetAudioNoteUploadUrlResponseBody,
+    GetAudioNoteUploadUrlResponse,
     GetCallDialogContentRequest,
     GetCallDialogContentResponseBody,
     GetCallDialogContentResponse,
@@ -1262,6 +1272,9 @@ __all__ = [
     StopTaskRequest,
     StopTaskResponseBody,
     StopTaskResponse,
+    SubmitAudioNoteRequest,
+    SubmitAudioNoteResponseBody,
+    SubmitAudioNoteResponse,
     SuspendHotlineServiceRequest,
     SuspendHotlineServiceResponseBody,
     SuspendHotlineServiceResponse,
@@ -1335,6 +1348,7 @@ __all__ = [
     GetAiOutboundTaskProgressResponseBodyDataTaskProgress,
     GetAiOutboundTaskProgressResponseBodyData,
     GetAllDepartmentResponseBodyData,
+    GetAudioNoteUploadUrlResponseBodyData,
     GetCallDialogContentResponseBodyData,
     GetCustomerInfoResponseBodyData,
     GetDepGroupTreeDataResponseBodyDataGroupDTOS,

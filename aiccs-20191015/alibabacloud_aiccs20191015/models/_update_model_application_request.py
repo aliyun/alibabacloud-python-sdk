@@ -21,8 +21,11 @@ class UpdateModelApplicationRequest(DaraModel):
         dtmf_out_of_range_action: str = None,
         dtmf_retry_play_times: int = None,
         dtmf_retry_prompt_text: str = None,
+        dtmf_send_max_count: int = None,
+        dtmf_send_wait_timeout: int = None,
         dyvms_scene_name: str = None,
         enable_dtmf_receive: bool = None,
+        enable_dtmf_send: bool = None,
         enable_morse: bool = None,
         interrupt_config: main_models.UpdateModelApplicationRequestInterruptConfig = None,
         model_code: str = None,
@@ -30,6 +33,7 @@ class UpdateModelApplicationRequest(DaraModel):
         mute_active: bool = None,
         mute_duration: int = None,
         mute_hangup_num: int = None,
+        mute_push_mode: str = None,
         owner_id: int = None,
         prompt: str = None,
         qualification_id: int = None,
@@ -46,65 +50,83 @@ class UpdateModelApplicationRequest(DaraModel):
         tts_config: main_models.UpdateModelApplicationRequestTtsConfig = None,
         usage_desc: str = None,
     ):
-        # 应用编码
+        # The application code.
         # 
         # This parameter is required.
         self.application_code = application_code
-        # 应用并发请求数
+        # The number of concurrent requests for the application.
         self.application_cps = application_cps
-        # 模型应用名称
+        # The name of the model application.
         self.application_name = application_name
+        # Specifies whether to hang up the call when a call assistant is detected.
         self.call_assistant_hangup = call_assistant_hangup
-        # 通话助手识别
+        # Specifies whether to enable call assistant recognition.
         self.call_assistant_recognize = call_assistant_recognize
+        # Specifies whether to trigger the model immediately after the call is connected.
         self.call_connected_trigger_model = call_connected_trigger_model
+        # The allowed DTMF digits, specified as a comma-separated string such as `1,2,3`. You can specify a maximum of 20 digits.
         self.dtmf_allowed_digits = dtmf_allowed_digits
+        # Specifies whether to automatically validate the DTMF digits.
         self.dtmf_auto_validate_enable = dtmf_auto_validate_enable
+        # The number of DTMF digits to collect. The value must be between 1 and 12.
         self.dtmf_digit_count = dtmf_digit_count
+        # The timeout for DTMF input, in seconds. The value must be between 1 and 10.
         self.dtmf_input_timeout = dtmf_input_timeout
+        # The action to take when the input is outside the allowed range. Valid values: `RETURN_MODEL` and `AUTO_RETRY`.
         self.dtmf_out_of_range_action = dtmf_out_of_range_action
+        # The number of retry attempts. The value must be between 1 and 3. This parameter is effective only when `DtmfOutOfRangeAction` is set to `AUTO_RETRY`.
         self.dtmf_retry_play_times = dtmf_retry_play_times
+        # The custom text for the retry prompt. The text can contain a maximum of 50 characters. If this parameter is empty, the system uses the default prompt: "Invalid input. Please try again."
         self.dtmf_retry_prompt_text = dtmf_retry_prompt_text
-        # 场景名称
+        self.dtmf_send_max_count = dtmf_send_max_count
+        self.dtmf_send_wait_timeout = dtmf_send_wait_timeout
+        # The scene name.
         self.dyvms_scene_name = dyvms_scene_name
+        # Specifies whether to enable the collection of DTMF signals. The default value is `false`.
         self.enable_dtmf_receive = enable_dtmf_receive
+        self.enable_dtmf_send = enable_dtmf_send
+        # Specifies whether to enable the Morse code configuration. The default value is `false`.
         self.enable_morse = enable_morse
-        # 打断配置
+        # The interruption configuration.
         self.interrupt_config = interrupt_config
-        # 模型编码
+        # The model code.
         self.model_code = model_code
-        # 模型版本
+        # The model version.
         self.model_version = model_version
-        # 第一个静音是否唤起模型
+        # Specifies whether the first mute event triggers the model.
         self.mute_active = mute_active
-        # 静音时长
+        # The mute duration.
         self.mute_duration = mute_duration
-        # 连续多少个静音事件主动挂机
+        # The number of consecutive mute events that trigger an automatic hang-up.
         self.mute_hangup_num = mute_hangup_num
+        # 静音事件推送模式
+        self.mute_push_mode = mute_push_mode
         self.owner_id = owner_id
-        # 提示词
+        # The prompt.
         self.prompt = prompt
-        # 资质ID
+        # The qualification ID.
         self.qualification_id = qualification_id
-        # 资质名称
+        # The name of the qualification.
         self.qualification_name = qualification_name
+        # The URL of the recording file.
         self.recording_file = recording_file
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # 最大通话时长
+        # The session timeout, which is the maximum duration of a call.
         self.session_timeout = session_timeout
-        # 来源
+        # The value must be `USER`.
         self.source = source
-        # 话术内容
+        # The content of the speech.
         self.speech_content = speech_content
-        # 话束id
+        # The speech ID.
         self.speech_id = speech_id
-        # 开场白
+        # The opening statement.
         self.start_word = start_word
+        # The type of the opening statement. Valid values:
         self.start_word_type = start_word_type
-        # tts配置，包括音色、音量、音速等。
+        # The TTS configuration, such as voice, volume, and speech rate.
         self.tts_config = tts_config
-        # 用途
+        # The purpose of the application.
         self.usage_desc = usage_desc
 
     def validate(self):
@@ -157,11 +179,20 @@ class UpdateModelApplicationRequest(DaraModel):
         if self.dtmf_retry_prompt_text is not None:
             result['DtmfRetryPromptText'] = self.dtmf_retry_prompt_text
 
+        if self.dtmf_send_max_count is not None:
+            result['DtmfSendMaxCount'] = self.dtmf_send_max_count
+
+        if self.dtmf_send_wait_timeout is not None:
+            result['DtmfSendWaitTimeout'] = self.dtmf_send_wait_timeout
+
         if self.dyvms_scene_name is not None:
             result['DyvmsSceneName'] = self.dyvms_scene_name
 
         if self.enable_dtmf_receive is not None:
             result['EnableDtmfReceive'] = self.enable_dtmf_receive
+
+        if self.enable_dtmf_send is not None:
+            result['EnableDtmfSend'] = self.enable_dtmf_send
 
         if self.enable_morse is not None:
             result['EnableMorse'] = self.enable_morse
@@ -183,6 +214,9 @@ class UpdateModelApplicationRequest(DaraModel):
 
         if self.mute_hangup_num is not None:
             result['MuteHangupNum'] = self.mute_hangup_num
+
+        if self.mute_push_mode is not None:
+            result['MutePushMode'] = self.mute_push_mode
 
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -272,11 +306,20 @@ class UpdateModelApplicationRequest(DaraModel):
         if m.get('DtmfRetryPromptText') is not None:
             self.dtmf_retry_prompt_text = m.get('DtmfRetryPromptText')
 
+        if m.get('DtmfSendMaxCount') is not None:
+            self.dtmf_send_max_count = m.get('DtmfSendMaxCount')
+
+        if m.get('DtmfSendWaitTimeout') is not None:
+            self.dtmf_send_wait_timeout = m.get('DtmfSendWaitTimeout')
+
         if m.get('DyvmsSceneName') is not None:
             self.dyvms_scene_name = m.get('DyvmsSceneName')
 
         if m.get('EnableDtmfReceive') is not None:
             self.enable_dtmf_receive = m.get('EnableDtmfReceive')
+
+        if m.get('EnableDtmfSend') is not None:
+            self.enable_dtmf_send = m.get('EnableDtmfSend')
 
         if m.get('EnableMorse') is not None:
             self.enable_morse = m.get('EnableMorse')
@@ -299,6 +342,9 @@ class UpdateModelApplicationRequest(DaraModel):
 
         if m.get('MuteHangupNum') is not None:
             self.mute_hangup_num = m.get('MuteHangupNum')
+
+        if m.get('MutePushMode') is not None:
+            self.mute_push_mode = m.get('MutePushMode')
 
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
@@ -364,25 +410,35 @@ class UpdateModelApplicationRequestTtsConfig(DaraModel):
         voice_code: str = None,
         voice_type: str = None,
     ):
+        # Specifies whether to enable background sound.
         self.background_enabled = background_enabled
-        # 背景音id
+        # The background sound ID.
         self.background_sound = background_sound
-        # 背景音音量(id)
+        # The volume of the background sound. Valid values: `0` (low), `1` (medium), and `2` (high).
         self.background_volume = background_volume
+        # The account ID.
         self.customer_account_id = customer_account_id
+        # Specifies whether to enable audio mixing.
         self.mixing_enabled = mixing_enabled
-        # 混音模版id
+        # The mixing template ID.
         self.mixing_template = mixing_template
+        # The resource ID.
         self.resource_id = resource_id
-        # TTS 变量播放时的声音速度。取值范围：-200~200，默认值为 0。
+        # The TTS playback speech rate. Valid values range from -200 to 200. The default value is 0.
         self.tts_speed = tts_speed
-        # 声音风格
+        # The voice style.
         self.tts_style = tts_style
-        # TTS 变量播放的音量。取值范围：0~100，默认值为 0。
+        # The TTS playback volume. Valid values range from 0 to 100. The default value is 0.
         self.tts_volume = tts_volume
-        # 声音编码
+        # The voice code.
         self.voice_code = voice_code
-        # 声音类型
+        # The voice type. Valid values:
+        # 
+        # ```
+        # SYSTEM: System voice.
+        # COSYCLONE: Cloned voice.
+        # BL-CUSTOM: Premium custom-cloned voice.
+        # ```
         self.voice_type = voice_type
 
     def validate(self):
@@ -481,16 +537,17 @@ class UpdateModelApplicationRequestInterruptConfig(DaraModel):
         enable_startword_not_interrupt: bool = None,
         startword_protect_duration: float = None,
     ):
-        # 防止连续抢话功能配置
+        # The configuration to prevent consecutive barge-ins.
         self.avoid_interrupt_dto = avoid_interrupt_dto
-        # 防止连续抢话功能是否开启
+        # Specifies whether to prevent consecutive barge-ins.
         self.enable_avoid_interrupt = enable_avoid_interrupt
+        # Specifies whether to enable the backchannel configuration for interruptions.
         self.enable_interrupt_backchannel = enable_interrupt_backchannel
-        # 开场白全程不打断
+        # Specifies whether to make the entire opening statement non-interruptible.
         self.enable_startword_entire_not_interrupt = enable_startword_entire_not_interrupt
-        # 开场白不打断配置是否开启
+        # Specifies whether to make the opening statement non-interruptible.
         self.enable_startword_not_interrupt = enable_startword_not_interrupt
-        # 开场白保护时长
+        # The protection duration for the opening statement, in seconds.
         self.startword_protect_duration = startword_protect_duration
 
     def validate(self):
@@ -551,7 +608,9 @@ class UpdateModelApplicationRequestInterruptConfigAvoidInterruptDTO(DaraModel):
         interrupt_num: int = None,
         interrupt_protect_duration: float = None,
     ):
+        # The number of consecutive interruptions.
         self.interrupt_num = interrupt_num
+        # The interruption protection duration, in seconds.
         self.interrupt_protect_duration = interrupt_protect_duration
 
     def validate(self):

@@ -17,11 +17,19 @@ class GetAllDepartmentResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code. A return value of 200 indicates that the request succeeded.
         self.code = code
+        # Department information.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Description of the status code.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the API invocation succeeded. Valid values:  
+        # - **true**: Succeeded.  
+        # - **false**: Failed.
         self.success = success
 
     def validate(self):
@@ -88,7 +96,9 @@ class GetAllDepartmentResponseBodyData(DaraModel):
         department_id: int = None,
         department_name: str = None,
     ):
+        # Department ID.
         self.department_id = department_id
+        # Department name.
         self.department_name = department_name
 
     def validate(self):

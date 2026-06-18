@@ -10,7 +10,10 @@ class ListRolesRequest(DaraModel):
         client_token: str = None,
         instance_id: str = None,
     ):
+        # Unique ID for the customer request. Used for idempotency validation and can be generated using UUID.
         self.client_token = client_token
+        # AICCS instance ID. You can obtain it from the Artificial Intelligence Cloud Call Service console.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 

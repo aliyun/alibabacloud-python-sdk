@@ -15,12 +15,17 @@ class QueryConversationDetailInfoNewRequest(DaraModel):
         resource_owner_id: int = None,
         task_id: str = None,
     ):
+        # The unique ID of the call.
         self.call_id = call_id
+        # The task detail ID. View the task detail ID in the upper-left corner of the **Call Task Management** > **Details** > **Execution Records** > **Completed** > **Call Details** console, or call the [QueryAiCallDetailPage](https://help.aliyun.com/document_detail/2926853.html) operation to obtain the task detail ID.
         self.detail_id = detail_id
+        # The external business serial number reserved for external input. You can use a unique ID for business association.
         self.out_id = out_id
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The task ID. View the task ID in the **Call Task Management** console or call the [QueryAiCallTaskPage](https://help.aliyun.com/document_detail/2926799.html) operation to obtain the task ID.
+        # 
         # This parameter is required.
         self.task_id = task_id
 

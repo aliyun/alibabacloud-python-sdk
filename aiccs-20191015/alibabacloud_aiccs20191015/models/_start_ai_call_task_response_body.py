@@ -14,11 +14,25 @@ class StartAiCallTaskResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The detailed reason why access is denied.
         self.access_denied_detail = access_denied_detail
+        # The status code. OK indicates that the request was successful.
         self.code = code
+        # Indicates whether the task was successfully started. Valid values:
+        # 
+        # - **true**: Success.
+        # 
+        # - **false**: Failure.
         self.data = data
+        # The status message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the API call was successful. Valid values:
+        # 
+        # - **true**: Success.
+        # 
+        # - **false**: Failure.
         self.success = success
 
     def validate(self):

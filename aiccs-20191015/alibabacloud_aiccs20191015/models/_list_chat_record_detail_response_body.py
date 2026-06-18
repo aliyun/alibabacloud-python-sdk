@@ -17,11 +17,17 @@ class ListChatRecordDetailResponseBody(DaraModel):
         result_data: main_models.ListChatRecordDetailResponseBodyResultData = None,
         success: bool = None,
     ):
+        # Status code. A return value of 200 indicates that the request succeeded.
         self.code = code
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Description of the status code.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Returned data.
         self.result_data = result_data
+        # Indicates whether the API call succeeded.
         self.success = success
 
     def validate(self):
@@ -85,10 +91,15 @@ class ListChatRecordDetailResponseBodyResultData(DaraModel):
         total_page: int = None,
         total_results: int = None,
     ):
+        # Current page number.
         self.current_page = current_page
+        # Query result data.
         self.data = data
+        # Page size
         self.one_page_size = one_page_size
+        # Total number of pages.
         self.total_page = total_page
+        # Total number of records.
         self.total_results = total_results
 
     def validate(self):
@@ -151,9 +162,13 @@ class ListChatRecordDetailResponseBodyResultDataData(DaraModel):
         servicer_name: str = None,
         start_time: int = None,
     ):
+        # Online End Time.
         self.end_time = end_time
+        # A list of detailed online session information.
         self.message_list = message_list
+        # Servicer Account
         self.servicer_name = servicer_name
+        # The start time of the online session.
         self.start_time = start_time
 
     def validate(self):
@@ -211,10 +226,17 @@ class ListChatRecordDetailResponseBodyResultDataDataMessageList(DaraModel):
         sender_name: str = None,
         sender_type: int = None,
     ):
+        # The content of the sent message.
         self.content = content
+        # The time when the message was sent.
         self.create_time = create_time
+        # Message type.
         self.msg_type = msg_type
+        # The account that sent the message.
         self.sender_name = sender_name
+        # The type of sender. Valid values:
+        # - **1**: Membership
+        # - **2**: Customer service
         self.sender_type = sender_type
 
     def validate(self):

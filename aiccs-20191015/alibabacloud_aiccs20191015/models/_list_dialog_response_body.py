@@ -16,10 +16,17 @@ class ListDialogResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Request status code. A return value of OK indicates that the request succeeded.
         self.code = code
+        # Call interaction content.
         self.data = data
+        # Status code description.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the API invocation succeeded. Valid values:  
+        # - **true**: Succeeded.  
+        # - **false**: Failed.
         self.success = success
 
     def validate(self):
@@ -83,10 +90,19 @@ class ListDialogResponseBodyData(DaraModel):
         tag: str = None,
         time: str = None,
     ):
+        # Dialogue content.
         self.content = content
+        # File Type.
         self.node_type = node_type
+        # Speaking role. Valid values:
+        # 
+        # - robot: Bot.
+        # 
+        # - user: User.
         self.role = role
+        # Intent label.
         self.tag = tag
+        # Start Time. UNIX timestamp format, in milliseconds.
         self.time = time
 
     def validate(self):

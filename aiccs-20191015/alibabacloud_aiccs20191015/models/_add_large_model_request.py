@@ -20,22 +20,22 @@ class AddLargeModelRequest(DaraModel):
         top_k: int = None,
         top_p: float = None,
     ):
-        # 授权码
+        # The authorization code.
         self.auth_code = auth_code
-        # 基础模型
+        # The base model.
         self.base_model = base_model
-        # 模型名称
+        # The model name.
         self.model_name = model_name
-        # 模型地址
+        # The model URL.
         self.model_url = model_url
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # 温度
+        # The temperature.
         self.temperature = temperature
-        # topK
+        # The `top-k` value.
         self.top_k = top_k
-        # topP
+        # The `top-p` value.
         self.top_p = top_p
 
     def validate(self):

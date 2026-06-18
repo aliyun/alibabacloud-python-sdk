@@ -10,8 +10,12 @@ class DeleteOuterAccountRequest(DaraModel):
         outer_account_id: str = None,
         outer_account_type: str = None,
     ):
+        # External Account ID.
+        # 
         # This parameter is required.
         self.outer_account_id = outer_account_id
+        # Type of the external account.
+        # 
         # This parameter is required.
         self.outer_account_type = outer_account_type
 

@@ -22,24 +22,48 @@ class AddHotlineNumberRequest(DaraModel):
         outbound_all_depart: bool = None,
         outbound_range_list: List[main_models.AddHotlineNumberRequestOutboundRangeList] = None,
     ):
+        # Description of the number.
+        # 
         # This parameter is required.
         self.description = description
+        # Indicates whether the number is used for inbound calls.
+        # 
         # This parameter is required.
         self.enable_inbound = enable_inbound
+        # Whether inbound satisfaction evaluation is enabled.
+        # 
         # This parameter is required.
         self.enable_inbound_evaluation = enable_inbound_evaluation
+        # Whether it is used for outbound calls.
+        # 
         # This parameter is required.
         self.enable_outbound = enable_outbound
+        # Indicates whether outbound call satisfaction evaluation is enabled.
+        # 
         # This parameter is required.
         self.enable_outbound_evaluation = enable_outbound_evaluation
+        # Satisfaction Level. Valid values:  
+        # 
+        # - **2**: Two-level (Satisfied, Not satisfied)  
+        # - **3**: Three-level (Satisfied, Neutral, Not satisfied)  
+        # - **4**: Four-level (Very satisfied, Satisfied, Neutral, Not satisfied)  
+        # - **5**: Five-level (Very satisfied, Satisfied, Neutral, Not satisfied, Very poor)
         self.evaluation_level = evaluation_level
+        # Hotline number.
+        # 
         # This parameter is required.
         self.hotline_number = hotline_number
+        # The IVR flow ID for inbound calls. You can obtain it on the SaaS Workbench > Channel Integration > IVR Flow Management page.
         self.inbound_flow_id = inbound_flow_id
+        # The Artificial Intelligence Cloud Call Service (AICCS) instance ID. You can obtain it in the Intelligent Contact Center console.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Whether outbound calls apply to all departments under the instance.
+        # 
         # This parameter is required.
         self.outbound_all_depart = outbound_all_depart
+        # Outbound call effective scope.
         self.outbound_range_list = outbound_range_list
 
     def validate(self):
@@ -138,7 +162,10 @@ class AddHotlineNumberRequestOutboundRangeList(DaraModel):
         department_id: int = None,
         group_id_list: List[int] = None,
     ):
+        # Effective department ID.
         self.department_id = department_id
+        # List of effective skill groups.  
+        # > If the skill group list is empty, the setting applies to the entire department. Otherwise, it applies only to the specified skill groups under the department.
         self.group_id_list = group_id_list
 
     def validate(self):

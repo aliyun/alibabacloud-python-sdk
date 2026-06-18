@@ -11,8 +11,12 @@ class GetConfigNumListRequest(DaraModel):
         department_id: int = None,
         instance_id: str = None,
     ):
+        # The agent account name. It is unique within the instance (logon name).
         self.account_name = account_name
+        # The department ID.
         self.department_id = department_id
+        # The Artificial Intelligence Cloud Call Service (AICCS) instance ID. You can obtain it from the Artificial Intelligence Cloud Call Service console.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 

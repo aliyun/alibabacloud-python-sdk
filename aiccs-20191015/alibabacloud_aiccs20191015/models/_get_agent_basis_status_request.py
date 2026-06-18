@@ -17,13 +17,22 @@ class GetAgentBasisStatusRequest(DaraModel):
         page_size: int = None,
         start_date: int = None,
     ):
+        # A list of agent IDs.
         self.agent_ids = agent_ids
+        # The current page number. The value must be greater than **0**. Default value: **1**.
         self.current_page = current_page
+        # A list of department IDs.
         self.dep_ids = dep_ids
+        # End Datetime UNIX timestamp. Unit: milliseconds.
         self.end_date = end_date
+        # The Artificial Intelligence Cloud Call Service (AICCS) instance ID.  
+        # You can obtain it in the **Instance Management** section of the left-side navigation pane in the [Artificial Intelligence Cloud Call Service console](https://aiccs.console.aliyun.com/overview).
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The number of entries per page. The value must be greater than **0**. Default value: **20**.
         self.page_size = page_size
+        # The UNIX timestamp of the start date. Unit: milliseconds.
         self.start_date = start_date
 
     def validate(self):

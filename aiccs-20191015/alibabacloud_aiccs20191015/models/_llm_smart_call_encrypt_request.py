@@ -19,17 +19,26 @@ class LlmSmartCallEncryptRequest(DaraModel):
         resource_owner_id: int = None,
         start_word_param: Dict[str, Any] = None,
     ):
+        # The application code for the large language model.
+        # 
         # This parameter is required.
         self.application_code = application_code
+        # The caller number.
+        # 
         # This parameter is required.
         self.caller_number = caller_number
+        # The encrypted called number.
+        # 
         # This parameter is required.
         self.encrypt_called_number = encrypt_called_number
+        # A user-defined ID for the outbound call.
         self.out_id = out_id
         self.owner_id = owner_id
+        # Parameters for the large language model\\"s prompt.
         self.prompt_param = prompt_param
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # Parameters for the large language model\\"s opening statement.
         self.start_word_param = start_word_param
 
     def validate(self):

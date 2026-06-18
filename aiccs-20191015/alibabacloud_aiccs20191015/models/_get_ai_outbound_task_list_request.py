@@ -16,16 +16,41 @@ class GetAiOutboundTaskListRequest(DaraModel):
         status: int = None,
         type: int = None,
     ):
+        # The end time for job creation. The value is a UNIX timestamp in milliseconds.
         self.create_time_end = create_time_end
+        # The start time for job creation. The value is a UNIX timestamp in milliseconds.
         self.create_time_start = create_time_start
+        # The page number to query.
+        # 
         # This parameter is required.
         self.current_page = current_page
+        # Artificial Intelligence Cloud Call Service (AICCS) instance ID.  
+        # You can obtain it from **Instance Management** in the left-side navigation pane of the [Artificial Intelligence Cloud Call Service console](https://aiccs.console.aliyun.com/overview).
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Page size. The value must be greater than **0**. Default value: **20**.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # Filter condition.
+        # 
+        # > Matches job ID or performs fuzzy matching on job name.
         self.search_key = search_key
+        # Job status. Valid values:
+        # 
+        # - **0**: Not started.
+        # - **1**: In progress.
+        # - **2**: Paused by the system.
+        # - **3**: Manually paused.
+        # - **4**: Completed.
+        # - **5**: Stopped.
         self.status = status
+        # Task Type. Valid values:
+        # 
+        # - **2**: Predictive outbound call.
+        # - **3**: Automated outbound call.
+        # 
         # This parameter is required.
         self.type = type
 

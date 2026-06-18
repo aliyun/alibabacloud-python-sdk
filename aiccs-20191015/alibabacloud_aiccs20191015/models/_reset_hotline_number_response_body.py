@@ -13,10 +13,15 @@ class ResetHotlineNumberResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code. A return value of "Success" indicates that the request succeeded.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # Description of the status code.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the API call succeeded.
         self.success = success
 
     def validate(self):

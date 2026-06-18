@@ -15,11 +15,21 @@ class GetCallDialogContentResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Details about the access denial. Returned only when RAM authentication fails.
         self.access_denied_detail = access_denied_detail
+        # The response code.
         self.code = code
+        # The response data.
         self.data = data
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request succeeded.
+        # 
+        # - **true**: The request was successful.
+        # 
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -81,8 +91,19 @@ class GetCallDialogContentResponseBodyData(DaraModel):
         call_status: int = None,
         dialog_content: str = None,
     ):
+        # The call ID.
         self.call_id = call_id
+        # The call status.
+        # 
+        # > Valid values:
+        # >
+        # > - `0`: Not connected
+        # >
+        # > - `1`: Connected
+        # >
+        # > - `2`: Disconnected
         self.call_status = call_status
+        # The dialog content.
         self.dialog_content = dialog_content
 
     def validate(self):

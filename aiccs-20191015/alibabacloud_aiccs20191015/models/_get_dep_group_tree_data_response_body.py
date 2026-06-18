@@ -16,10 +16,17 @@ class GetDepGroupTreeDataResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The status code. A value of Success indicates that the request succeeded.
         self.code = code
+        # Department information.
         self.data = data
+        # Description of the status code.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the API call succeeded. Valid values:
+        # - **true**: Succeeded.
+        # - **false**: Failed.
         self.success = success
 
     def validate(self):
@@ -81,8 +88,11 @@ class GetDepGroupTreeDataResponseBodyData(DaraModel):
         dep_group_name: str = None,
         group_dtos: List[main_models.GetDepGroupTreeDataResponseBodyDataGroupDTOS] = None,
     ):
+        # The department ID.
         self.dep_group_id = dep_group_id
+        # The department name.
         self.dep_group_name = dep_group_name
+        # Skill group data.
         self.group_dtos = group_dtos
 
     def validate(self):
@@ -131,7 +141,9 @@ class GetDepGroupTreeDataResponseBodyDataGroupDTOS(DaraModel):
         name: str = None,
         skill_group_id: int = None,
     ):
+        # The name of the skill group.
         self.name = name
+        # The skill group ID.
         self.skill_group_id = skill_group_id
 
     def validate(self):

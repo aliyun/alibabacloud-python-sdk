@@ -16,10 +16,17 @@ class ListTaskResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Request status code. A return value of OK indicates that the request succeeded.
         self.code = code
+        # List of job data.
         self.data = data
+        # Description of the status code.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the API was invoked successfully. Valid values:
+        # - **true**: Succeeded.
+        # - **false**: Failed.
         self.success = success
 
     def validate(self):
@@ -76,9 +83,13 @@ class ListTaskResponseBodyData(DaraModel):
         record: List[main_models.ListTaskResponseBodyDataRecord] = None,
         total: int = None,
     ):
+        # Current page number.
         self.page_no = page_no
+        # Number of entries per page.
         self.page_size = page_size
+        # List of job information.
         self.record = record
+        # Total number of jobs.
         self.total = total
 
     def validate(self):
@@ -140,14 +151,23 @@ class ListTaskResponseBodyDataRecord(DaraModel):
         task_name: str = None,
         total_count: int = None,
     ):
+        # Number of completed calls.
         self.complete_count = complete_count
+        # Job start time. The value is a UNIX timestamp in milliseconds.
         self.fire_time = fire_time
+        # Creation Time of the job. Format: UNIX timestamp in milliseconds.
         self.gmt_create = gmt_create
+        # The unique job ID for the robot calling task.
         self.id = id
+        # The ID of the specified robot, which is the script ID.
         self.robot_id = robot_id
+        # Robot Name.
         self.robot_name = robot_name
+        # Task Status.
         self.status = status
+        # Task Name.
         self.task_name = task_name
+        # Total number of processed calls.
         self.total_count = total_count
 
     def validate(self):

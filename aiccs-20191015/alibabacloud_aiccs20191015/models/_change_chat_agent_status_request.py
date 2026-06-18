@@ -12,11 +12,18 @@ class ChangeChatAgentStatusRequest(DaraModel):
         instance_id: str = None,
         method: str = None,
     ):
+        # Agent account.
+        # 
         # This parameter is required.
         self.account_name = account_name
+        # Unique ID for the customer request. Used for idempotency validation. You can generate it using UUID.
         self.client_token = client_token
+        # Artificial Intelligence Cloud Call Service (AICCS) instance ID. You can obtain it from the Artificial Intelligence Cloud Call Service console.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The target online status to switch to. Currently, only **requestLogout** (request offline) is supported.
+        # 
         # This parameter is required.
         self.method = method
 

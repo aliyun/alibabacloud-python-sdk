@@ -16,14 +16,24 @@ class CreateAgentRequest(DaraModel):
         skill_group_id: List[int] = None,
         skill_group_id_list: List[int] = None,
     ):
+        # Agent account name, which is the phone number or mailbox entered during account registration. It is unique within the instance.
+        # 
         # This parameter is required.
         self.account_name = account_name
+        # Unique ID of the customer request. Used for idempotency validation. It can be generated using UUID.
         self.client_token = client_token
+        # Display name of the agent.
+        # 
         # This parameter is required.
         self.display_name = display_name
+        # AICCS instance ID.  
+        # You can obtain it from **Instance Management** in the left-side navigation pane of the [Artificial Intelligence Cloud Call Service console](https://aiccs.console.aliyun.com/overview).
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # ID of the skill group to which the agent belongs.
         self.skill_group_id = skill_group_id
+        # List of skill group IDs to which the agent belongs.
         self.skill_group_id_list = skill_group_id_list
 
     def validate(self):

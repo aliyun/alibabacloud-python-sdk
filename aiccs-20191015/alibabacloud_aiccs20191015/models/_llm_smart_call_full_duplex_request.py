@@ -19,17 +19,35 @@ class LlmSmartCallFullDuplexRequest(DaraModel):
         tts_voice_code: str = None,
         tts_volume: int = None,
     ):
+        # **ApplicationCode**  
+        # The application code.
+        # 
         # This parameter is required.
         self.application_code = application_code
+        # **CalledNumber**  
+        # The phone number that receives the intelligent outbound call.
+        # 
         # This parameter is required.
         self.called_number = called_number
+        # **CallerNumber**  
+        # The calling number.
+        # 
         # This parameter is required.
         self.caller_number = caller_number
+        # **OutId**  
+        # The external ID. The value must be 1 to 15 bytes in length.
         self.out_id = out_id
+        # **SessionTimeout**  
+        # The maximum call duration. The call is automatically ended when the specified duration is exceeded. Unit: seconds. Maximum value: 3600.
         self.session_timeout = session_timeout
+        # **StartWordParam**  
+        # The opening greeting variable. Format: JSON. Specify the variable name and parameter, for example, `{"custom":"XXX"}`.
         self.start_word_param = start_word_param
+        # The voice speed. Valid values: 0 to 100. If this parameter is not specified, the value configured in the application is used.
         self.tts_speed = tts_speed
+        # The voice code from the personalized voice interface. If this parameter is not specified, the value configured in the application is used.
         self.tts_voice_code = tts_voice_code
+        # The volume. Valid values: -200 to 200. If this parameter is not specified, the value configured in the application is used.
         self.tts_volume = tts_volume
 
     def validate(self):

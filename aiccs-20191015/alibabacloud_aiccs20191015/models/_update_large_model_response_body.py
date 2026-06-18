@@ -14,11 +14,17 @@ class UpdateLargeModelResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Details about an authentication error.
         self.access_denied_detail = access_denied_detail
+        # The status code returned for the request.
         self.code = code
+        # The result of the update operation.
         self.data = data
+        # The description of the status code.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the API call was successful.
         self.success = success
 
     def validate(self):

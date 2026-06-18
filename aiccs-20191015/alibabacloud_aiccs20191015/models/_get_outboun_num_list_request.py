@@ -11,9 +11,16 @@ class GetOutbounNumListRequest(DaraModel):
         client_token: str = None,
         instance_id: str = None,
     ):
+        # Agent account name (agent logon name).
+        # 
         # This parameter is required.
         self.account_name = account_name
+        # Unique ID of the customer request. Used for idempotency validation. You can generate it by using UUID.
         self.client_token = client_token
+        # Instance ID.
+        # 
+        # You can log on to the [Artificial Intelligence Cloud Call Service console](https://aiccs.console.aliyun.com/overview) and view the instance ID in **Instance Management**.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 

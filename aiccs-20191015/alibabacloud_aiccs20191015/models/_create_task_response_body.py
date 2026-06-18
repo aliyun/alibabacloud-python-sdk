@@ -13,10 +13,17 @@ class CreateTaskResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Request status code. A return value of "OK" indicates that the request succeeded.
         self.code = code
+        # Unique job ID of the robot outbound calling task.
         self.data = data
+        # Description of the status code.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the API call succeeded.  
+        # - **true**: Succeeded.  
+        # - **false**: Failed.
         self.success = success
 
     def validate(self):

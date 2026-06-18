@@ -15,13 +15,27 @@ class GetQualityProjectListRequest(DaraModel):
         status: int = None,
         check_freq_type: int = None,
     ):
+        # Artificial Intelligence Cloud Call Service (AICCS) instance ID. You can obtain it from the Artificial Intelligence Cloud Call Service console.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The current page. Default value: **1**.
         self.page_no = page_no
+        # Page size. Default value: **10**.
         self.page_size = page_size
+        # Quality inspection job ID (supports fuzzy search).
         self.project_id = project_id
+        # Quality inspection job name (supports fuzzy search).
         self.project_name = project_name
+        # Quality inspection job status. Valid values:  
+        # 
+        # - **0**: Start  
+        # - **1**: Shutdown
         self.status = status
+        # The check frequency type. Valid values:
+        # 
+        # - **1**: Periodic quality inspection
+        # - **4**: Temporary quality inspection
         self.check_freq_type = check_freq_type
 
     def validate(self):

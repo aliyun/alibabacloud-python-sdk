@@ -19,14 +19,22 @@ class StartMicroOutboundRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # Account ID.
         self.account_id = account_id
+        # Account type.
         self.account_type = account_type
+        # Custom AppName for the business.
         self.app_name = app_name
+        # Called number.
         self.called_number = called_number
+        # Calling number.
         self.calling_number = calling_number
+        # Instruction code.
         self.command_code = command_code
+        # Business information.
         self.ext_info = ext_info
         self.owner_id = owner_id
+        # Product name. Default value: **aiccs**.
         self.prod_code = prod_code
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

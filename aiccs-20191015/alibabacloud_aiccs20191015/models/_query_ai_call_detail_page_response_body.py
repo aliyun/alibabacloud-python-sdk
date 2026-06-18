@@ -17,11 +17,21 @@ class QueryAiCallDetailPageResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The reason why the access request was denied.
         self.access_denied_detail = access_denied_detail
+        # The status code.
         self.code = code
+        # The returned data.
         self.data = data
+        # A description of the status code.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values are:
+        # 
+        # - **true**: The request was successful.
+        # 
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -84,9 +94,13 @@ class QueryAiCallDetailPageResponseBodyData(DaraModel):
         page_size: int = None,
         total: int = None,
     ):
+        # A list of task details.
         self.list = list
+        # The page number.
         self.page_no = page_no
+        # The page size.
         self.page_size = page_size
+        # The total number of records.
         self.total = total
 
     def validate(self):
@@ -161,25 +175,64 @@ class QueryAiCallDetailPageResponseBodyDataList(DaraModel):
         version_name: str = None,
         version_no: int = None,
     ):
+        # The batch ID.
         self.batch_id = batch_id
         self.branch_id = branch_id
         self.branch_name = branch_name
         self.branch_version_id = branch_version_id
+        # The call result.
         self.call_result = call_result
+        # The called number.
         self.called_number = called_number
+        # The call time, formatted as a timestamp in milliseconds.
         self.calling_time = calling_time
+        # The conversation duration, in seconds.
         self.conversation_duration = conversation_duration
+        # The conversation record, formatted as a chronologically sorted JSON array. Each object has the following structure:
+        # 
+        # ```json
+        # [
+        #     {
+        #         "content":"The content of the message.",
+        #         "role":"The role of the speaker.", // Valid values: user, assistant
+        #     }
+        # ]
+        # ```
         self.conversation_record = conversation_record
+        # The conversation turn count.
         self.conversation_turn_count = conversation_turn_count
+        # The task detail ID.
         self.detail_id = detail_id
+        # The encryption type. Valid values are: 0 (no encryption), 1 (MD5), 2 (SHA256), and 3 (SM3).
         self.encryption_type = encryption_type
+        # The failure reason. Provided only if the call fails.
         self.failed_reason = failed_reason
+        # The import time, formatted as a timestamp in milliseconds.
         self.imported_time = imported_time
+        # The major intent.
         self.major_intent = major_intent
+        # A JSON object of key-value pairs for runtime variables.
         self.options = options
         self.out_id = out_id
+        # The recording file path. Provided only after the recording file is generated.
         self.recording_file_path = recording_file_path
+        # The task detail status.
+        # 
+        # - 0: Initializing
+        # 
+        # - 1: Waiting to call
+        # 
+        # - 2: Waiting to retry
+        # 
+        # - 3: Calling
+        # 
+        # - 4: Call ended
+        # 
+        # - 5: Call failed
+        # 
+        # Only statuses 4 and 5 are terminal states.
         self.status = status
+        # The task ID.
         self.task_id = task_id
         self.version_name = version_name
         self.version_no = version_no

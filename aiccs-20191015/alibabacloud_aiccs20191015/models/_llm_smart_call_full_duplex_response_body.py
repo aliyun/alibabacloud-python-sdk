@@ -12,8 +12,13 @@ class LlmSmartCallFullDuplexResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The call record ID that identifies a call record.
+        # 
+        # > When you call the LlmSmartCall operation to initiate an LLM-based outbound call, this call record ID (CallId) is returned.
         self.call_id = call_id
+        # The error code.
         self.code = code
+        # The error message.
         self.message = message
         # Id of the request
         self.request_id = request_id

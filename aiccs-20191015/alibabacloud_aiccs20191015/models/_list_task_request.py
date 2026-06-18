@@ -18,13 +18,29 @@ class ListTaskRequest(DaraModel):
         task_name: str = None,
     ):
         self.owner_id = owner_id
+        # The current page number. The value must be greater than **0**. Default value: **1**.
         self.page_no = page_no
+        # The number of items per page. The value must be greater than **0**. Default value: **20**.
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The robot name, which is the script name. You can view the names of scripts that have passed Review in the [Script Management](https://aiccs.console.aliyun.com/patter/list) interface.
         self.robot_name = robot_name
+        # Job Status. Valid values:
+        # 
+        # - **INIT**: Not started.
+        # - **RELEASE**: Parsing.
+        # - **RUNNING**: Executing.
+        # - **STOP**: Paused manually.
+        # - **SYSTEM_STOP**: Paused by the system.
+        # - **READY**: Pending execution.
+        # - **CANCEL**: Stopped manually.
+        # - **SYSTEM_CANCEL**: Stopped by the system.
+        # - **DONE**: Completed.
         self.status = status
+        # The unique job ID of the robot calling job. You can view it in the [Task Management](https://aiccs.console.aliyun.com/job/list) interface or obtain it by using the [CreateTask](https://help.aliyun.com/document_detail/223556.html) API.
         self.task_id = task_id
+        # The job name. You can view the names of created jobs in the [Task Management](https://aiccs.console.aliyun.com/job/list) interface.
         self.task_name = task_name
 
     def validate(self):

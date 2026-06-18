@@ -17,11 +17,21 @@ class QueryAiVoiceAgentDetailNewResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The reason for the access denial.
         self.access_denied_detail = access_denied_detail
+        # Status code.
         self.code = code
+        # The detailed data of the agent.
         self.data = data
+        # The message that is associated with the status code.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the API call was successful. Possible values:
+        # 
+        # - **true**: The operation was successful.
+        # 
+        # - **false**: Failure.
         self.success = success
 
     def validate(self):
@@ -99,24 +109,51 @@ class QueryAiVoiceAgentDetailNewResponseBodyData(DaraModel):
         version_publish_status: int = None,
         version_publish_time: str = None,
     ):
+        # The voice configuration for intelligent outbound calls.
         self.agent_call_config = agent_call_config
+        # The business requirement configuration for the agent.
         self.agent_demand_config = agent_demand_config
+        # The agent description.
         self.agent_desc = agent_desc
+        # The agent ID.
         self.agent_id = agent_id
+        # The build mode. Valid values:
+        # 
+        # - `0`: prompt-based mode.
+        # 
+        # - `1`: dialog flow mode.
         self.agent_mode = agent_mode
+        # The agent name.
         self.agent_name = agent_name
+        # The deployment status. Valid values:
+        # 
+        # - `0`: Inactive (NOT_EFFECT).
+        # 
+        # - `1`: Active (EFFECT).
         self.branch_deploy_status = branch_deploy_status
+        # The branch description.
         self.branch_desc = branch_desc
+        # The branch ID.
         self.branch_id = branch_id
+        # The branch name.
         self.branch_name = branch_name
+        # The knowledge base configuration.
         self.knowledge_config = knowledge_config
+        # The call variable configuration.
         self.phone_tag_config = phone_tag_config
+        # The scenario.
         self.scene = scene
+        # The call summary configuration.
         self.summary_config = summary_config
+        # Version Description
         self.version_desc = version_desc
+        # Version ID.
         self.version_id = version_id
+        # Version name.
         self.version_name = version_name
+        # The release status of the version. 0 indicates Unreleased, 1 indicates Released, and 2 indicates Draft.
         self.version_publish_status = version_publish_status
+        # The most recent release time of the version.
         self.version_publish_time = version_publish_time
 
     def validate(self):
@@ -274,8 +311,11 @@ class QueryAiVoiceAgentDetailNewResponseBodyDataSummaryConfig(DaraModel):
         main_purpose: main_models.QueryAiVoiceAgentDetailNewResponseBodyDataSummaryConfigMainPurpose = None,
         output_tag_config: List[main_models.QueryAiVoiceAgentDetailNewResponseBodyDataSummaryConfigOutputTagConfig] = None,
     ):
+        # The configuration for mapping call results to tags.
         self.call_result_tag_config = call_result_tag_config
+        # The main intent.
         self.main_purpose = main_purpose
+        # The output tag configuration.
         self.output_tag_config = output_tag_config
 
     def validate(self):
@@ -333,10 +373,15 @@ class QueryAiVoiceAgentDetailNewResponseBodyDataSummaryConfigOutputTagConfig(Dar
         output_tag_name: str = None,
         output_tag_type: str = None,
     ):
+        # The ID of the output tag.
         self.id = id
+        # The description of the output tag.
         self.output_tag_description = output_tag_description
+        # The enumerated values for the output tag.
         self.output_tag_enum = output_tag_enum
+        # The name of the output tag.
         self.output_tag_name = output_tag_name
+        # The value type of the output tag. Valid values: `TEXT` and `ENUM`.
         self.output_tag_type = output_tag_type
 
     def validate(self):
@@ -398,8 +443,11 @@ class QueryAiVoiceAgentDetailNewResponseBodyDataSummaryConfigOutputTagConfigOutp
         id: str = None,
         value: str = None,
     ):
+        # The tag description.
         self.description = description
+        # The tag ID.
         self.id = id
+        # The enumerated value of the tag.
         self.value = value
 
     def validate(self):
@@ -443,10 +491,15 @@ class QueryAiVoiceAgentDetailNewResponseBodyDataSummaryConfigMainPurpose(DaraMod
         main_purpose_name: str = None,
         main_purpose_type: str = None,
     ):
+        # The ID of the main intent.
         self.id = id
+        # The description of the main intent.
         self.main_purpose_description = main_purpose_description
+        # The enumerated values for the main intent.
         self.main_purpose_enum = main_purpose_enum
+        # The name of the main intent.
         self.main_purpose_name = main_purpose_name
+        # The value type of the main intent. Valid values: `TEXT` and `ENUM`.
         self.main_purpose_type = main_purpose_type
 
     def validate(self):
@@ -508,8 +561,11 @@ class QueryAiVoiceAgentDetailNewResponseBodyDataSummaryConfigMainPurposeMainPurp
         id: str = None,
         value: str = None,
     ):
+        # The description of the value.
         self.description = description
+        # The unique ID of the tag.
         self.id = id
+        # The value.
         self.value = value
 
     def validate(self):
@@ -550,7 +606,9 @@ class QueryAiVoiceAgentDetailNewResponseBodyDataSummaryConfigCallResultTagConfig
         default_tag: main_models.QueryAiVoiceAgentDetailNewResponseBodyDataSummaryConfigCallResultTagConfigDefaultTag = None,
         mapping_tag: Dict[str, str] = None,
     ):
+        # The default fallback tag information.
         self.default_tag = default_tag
+        # The mapping of call results to tags.
         self.mapping_tag = mapping_tag
 
     def validate(self):
@@ -587,7 +645,9 @@ class QueryAiVoiceAgentDetailNewResponseBodyDataSummaryConfigCallResultTagConfig
         desc: str = None,
         tag: str = None,
     ):
+        # The description.
         self.desc = desc
+        # The tag.
         self.tag = tag
 
     def validate(self):
@@ -627,12 +687,19 @@ class QueryAiVoiceAgentDetailNewResponseBodyDataPhoneTagConfig(DaraModel):
         phone_tag_source: str = None,
         phone_tag_type: str = None,
     ):
+        # The ID of the call variable.
         self.id = id
+        # The enumerated values for the call variable.
         self.phone_tag_enum = phone_tag_enum
+        # The key of the call variable.
         self.phone_tag_key = phone_tag_key
+        # The description of the call variable.
         self.phone_tag_name = phone_tag_name
+        # Specifies whether the call variable is required.
         self.phone_tag_required = phone_tag_required
+        # The source of the call variable.
         self.phone_tag_source = phone_tag_source
+        # The type of the call variable. Valid values: `TEXT` and `ENUM`.
         self.phone_tag_type = phone_tag_type
 
     def validate(self):
@@ -706,8 +773,11 @@ class QueryAiVoiceAgentDetailNewResponseBodyDataPhoneTagConfigPhoneTagEnum(DaraM
         id: str = None,
         value: str = None,
     ):
+        # The description.
         self.description = description
+        # The tag ID.
         self.id = id
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -748,7 +818,9 @@ class QueryAiVoiceAgentDetailNewResponseBodyDataKnowledgeConfig(DaraModel):
         knowledge_ids: List[main_models.QueryAiVoiceAgentDetailNewResponseBodyDataKnowledgeConfigKnowledgeIds] = None,
         rag_config: main_models.QueryAiVoiceAgentDetailNewResponseBodyDataKnowledgeConfigRagConfig = None,
     ):
+        # The collection of knowledge bases.
         self.knowledge_ids = knowledge_ids
+        # The Retrieval-Augmented Generation (RAG) configuration.
         self.rag_config = rag_config
 
     def validate(self):
@@ -794,7 +866,9 @@ class QueryAiVoiceAgentDetailNewResponseBodyDataKnowledgeConfigRagConfig(DaraMod
         description: str = None,
         enabled: bool = None,
     ):
+        # RAG retrieval description
         self.description = description
+        # Enable RAG retrieval
         self.enabled = enabled
 
     def validate(self):
@@ -829,7 +903,9 @@ class QueryAiVoiceAgentDetailNewResponseBodyDataKnowledgeConfigKnowledgeIds(Dara
         knowledge_id: int = None,
         knowledge_name: str = None,
     ):
+        # The ID of the knowledge base.
         self.knowledge_id = knowledge_id
+        # The name of the knowledge base.
         self.knowledge_name = knowledge_name
 
     def validate(self):
@@ -868,11 +944,17 @@ class QueryAiVoiceAgentDetailNewResponseBodyDataAgentDemandConfig(DaraModel):
         sys_role: str = None,
         user_role: str = None,
     ):
+        # Specifies whether the agent was built with AI assistance.
         self.ai_generate = ai_generate
+        # The basic task configuration.
         self.basic_task_description = basic_task_description
+        # The business scenario.
         self.business_type = business_type
+        # The core objective.
         self.core_target = core_target
+        # The system role.
         self.sys_role = sys_role
+        # The user role.
         self.user_role = user_role
 
     def validate(self):
@@ -936,12 +1018,19 @@ class QueryAiVoiceAgentDetailNewResponseBodyDataAgentCallConfig(DaraModel):
         tts_config: main_models.QueryAiVoiceAgentDetailNewResponseBodyDataAgentCallConfigTtsConfig = None,
         vocab_id: str = None,
     ):
+        # The event configuration.
         self.event_config = event_config
+        # The prologue.
         self.prologue = prologue
+        # The URL of the audio file for the prologue. This parameter is returned only when `StartWordType` is set to `1`.
         self.recording_file = recording_file
+        # The type of the prologue. Valid values: `0` (text) and `1` (recording).
         self.start_word_type = start_word_type
+        # The configuration for transferring the call to a manual agent.
         self.transfer_config = transfer_config
+        # The Text-to-Speech (TTS) configuration.
         self.tts_config = tts_config
+        # The ID of the hotword vocabulary.
         self.vocab_id = vocab_id
 
     def validate(self):
@@ -1024,17 +1113,41 @@ class QueryAiVoiceAgentDetailNewResponseBodyDataAgentCallConfigTtsConfig(DaraMod
         voice_code: str = None,
         voice_type: bool = None,
     ):
+        # Specifies whether to enable background sound.
         self.background_enabled = background_enabled
+        # The ID of the background sound.
         self.background_sound = background_sound
+        # The volume of the background sound. Valid values: `0` (low), `1` (medium), and `2` (high).
         self.background_volume = background_volume
+        # The account of the third-party voice platform.
         self.customer_account_id = customer_account_id
+        # Specifies whether to enable audio mixing.
         self.mixing_enabled = mixing_enabled
+        # The ID of the audio mixing template.
         self.mixing_template = mixing_template
+        # The resource ID. This parameter is required only for third-party voices.
         self.resource_id = resource_id
+        # The speech rate for TTS playback. Valid values: -200 to 200. Default value: 0.
         self.tts_speed = tts_speed
+        # The voice style.
         self.tts_style = tts_style
+        # The volume of TTS playback. Valid values: 0 to 100.
         self.tts_volume = tts_volume
+        # The voice code.
         self.voice_code = voice_code
+        # The type of the TTS voice. Valid values:
+        # 
+        # `VOICE_TYPE_SYSTEM`: a system voice.
+        # 
+        # `VOICE_TYPE_CLONE`: a cloned voice.
+        # 
+        # `VOICE_TYPE_DOUBAO`: a Doubao voice.
+        # 
+        # `VOICE_TYPE_MINIMAX`: a Minimax voice.
+        # 
+        # `VOICE_TYPE_OPENTTS`: an open voice.
+        # 
+        # `VOICE_TYPE_BL_CUSTOM`: a high-quality custom cloned voice.
         self.voice_type = voice_type
 
     def validate(self):
@@ -1141,19 +1254,33 @@ class QueryAiVoiceAgentDetailNewResponseBodyDataAgentCallConfigTransferConfig(Da
         transfer_content: str = None,
         transfer_type: int = None,
     ):
+        # The called number.
         self.called_number = called_number
+        # The caller number.
         self.caller_number = caller_number
+        # The type of the caller number.
         self.caller_number_type = caller_number_type
+        # The destination number for the transfer, such as the phone number of a customer service agent.
         self.calling_number = calling_number
+        # The type of the called number.
         self.calling_number_type = calling_number_type
+        # The customer route code.
         self.customer_route_code = customer_route_code
+        # Specifies whether to enable call transfer.
         self.enabled = enabled
+        # The supplementary information.
         self.extra_info = extra_info
+        # The prompt that is played when the transfer to a manual agent fails.
         self.failure_content = failure_content
+        # The agent route code.
         self.seat_route_code = seat_route_code
+        # The name of the agent route.
         self.seat_route_name = seat_route_name
+        # The business ID.
         self.transfer_biz_id = transfer_biz_id
+        # The prompt that is played when the call is transferred to a manual agent.
         self.transfer_content = transfer_content
+        # The agent transfer type.
         self.transfer_type = transfer_type
 
     def validate(self):
@@ -1264,11 +1391,17 @@ class QueryAiVoiceAgentDetailNewResponseBodyDataAgentCallConfigEventConfig(DaraM
         mute_hangup_num: int = None,
         session_timeout: int = None,
     ):
+        # Specifies whether to disconnect the call when an answering machine is detected.
         self.call_assistant_hangup = call_assistant_hangup
+        # Specifies whether to enable answering machine detection.
         self.call_assistant_recognize = call_assistant_recognize
+        # Specifies whether to wake up the model upon the first mute event.
         self.mute_active = mute_active
+        # The mute duration. Unit: seconds. Valid values: 3 to 15.
         self.mute_duration = mute_duration
+        # The number of consecutive mute events that trigger an automatic disconnection. Valid values: 1 to 5.
         self.mute_hangup_num = mute_hangup_num
+        # The maximum call duration. Unit: seconds. Valid values: 600 to 3600. The call is automatically disconnected if this duration is exceeded.
         self.session_timeout = session_timeout
 
     def validate(self):

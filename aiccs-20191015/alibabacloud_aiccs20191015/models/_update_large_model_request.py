@@ -21,24 +21,24 @@ class UpdateLargeModelRequest(DaraModel):
         top_k: int = None,
         top_p: float = None,
     ):
-        # 授权码
+        # The authorization code.
         self.auth_code = auth_code
-        # 基础模型
+        # A list of base models.
         self.base_model = base_model
-        # 模型编码
+        # The model code.
         self.model_code = model_code
-        # 模型名称
+        # The model name.
         self.model_name = model_name
-        # 模型地址
+        # The model URL.
         self.model_url = model_url
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # 温度
+        # Controls the randomness of the model\\"s output. A higher value increases randomness, and a lower value makes the output more deterministic.
         self.temperature = temperature
-        # topK
+        # Restricts token selection to the top k most probable tokens.
         self.top_k = top_k
-        # topP
+        # Controls output diversity by using nucleus sampling. It defines a cumulative probability threshold for token selection, considering only the most likely tokens.
         self.top_p = top_p
 
     def validate(self):

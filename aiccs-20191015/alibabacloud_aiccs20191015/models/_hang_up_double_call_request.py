@@ -10,7 +10,9 @@ class HangUpDoubleCallRequest(DaraModel):
         acid: str = None,
         instance_id: str = None,
     ):
+        # Session ID.
         self.acid = acid
+        # Artificial Intelligence Cloud Call Service instance ID. You can obtain it from the Artificial Intelligence Cloud Call Service console.
         self.instance_id = instance_id
 
     def validate(self):

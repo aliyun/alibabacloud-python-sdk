@@ -14,13 +14,23 @@ class QueryHotlineNumberShrinkRequest(DaraModel):
         instance_id: str = None,
         page_size: int = None,
     ):
+        # The current page number. The value must be greater than **0**. Default value: **1**.
+        # 
         # This parameter is required.
         self.current_page = current_page
+        # The department ID.
         self.department_id = department_id
+        # The list of skill groups.
         self.group_ids_shrink = group_ids_shrink
+        # The hotline number. Fuzzy query is supported.
         self.hotline_number = hotline_number
+        # The Artificial Intelligence Cloud Call Service (AICCS) instance ID.
+        # You can obtain it from **Instance Management** in the left-side navigation pane of the [Artificial Intelligence Cloud Call Service console](https://aiccs.console.aliyun.com/overview).
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The number of entries per page. The value must be greater than **0**. Default value: **20**.
+        # 
         # This parameter is required.
         self.page_size = page_size
 

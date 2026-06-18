@@ -10,8 +10,14 @@ class GetHotlineRuntimeInfoRequest(DaraModel):
         account_name: str = None,
         instance_id: str = None,
     ):
+        # The agent account name. It is unique within the instance (logon name).
+        # 
         # This parameter is required.
         self.account_name = account_name
+        # The instance ID.  
+        # 
+        # You can log on to the [Artificial Intelligence Cloud Call Service console](https://aiccs.console.aliyun.com/overview) and view the instance ID in **Instance Management**.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 

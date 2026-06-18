@@ -17,12 +17,19 @@ class AddInboundNumberRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The code of the large model application.
+        # 
         # This parameter is required.
         self.application_code = application_code
+        # A list of inbound numbers.
+        # 
         # This parameter is required.
         self.inbound_numbers = inbound_numbers
+        # The line type. Valid values: `1` (cloud communication resource) and `2` (customer-owned line).
+        # 
         # This parameter is required.
         self.inbound_type = inbound_type
+        # The code for the custom line.
         self.line_code = line_code
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
