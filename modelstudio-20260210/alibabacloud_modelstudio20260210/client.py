@@ -21,7 +21,13 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = ''
+        self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'eu-central-1': 'modelstudio.eu-central-1.aliyuncs.com',
+            'cn-hongkong': 'modelstudio.cn-hongkong.aliyuncs.com',
+            'cn-beijing': 'modelstudio.cn-beijing.aliyuncs.com',
+            'ap-southeast-1': 'modelstudio.ap-southeast-1.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('modelstudio', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -40,6 +46,202 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(endpoint_map) and not DaraCore.is_null(endpoint_map.get(region_id)):
             return endpoint_map.get(region_id)
         return Utils.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
+
+    def add_organization_member_with_options(
+        self,
+        request: main_models.AddOrganizationMemberRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.AddOrganizationMemberResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.account_name):
+            query['AccountName'] = request.account_name
+        if not DaraCore.is_null(request.caller_uac_account_id):
+            query['CallerUacAccountId'] = request.caller_uac_account_id
+        if not DaraCore.is_null(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        if not DaraCore.is_null(request.org_id):
+            query['OrgId'] = request.org_id
+        if not DaraCore.is_null(request.org_role_code):
+            query['OrgRoleCode'] = request.org_role_code
+        if not DaraCore.is_null(request.spec_type):
+            query['SpecType'] = request.spec_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddOrganizationMember',
+            version = '2026-02-10',
+            protocol = 'HTTPS',
+            pathname = f'/tokenplan/organization/member-additions',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddOrganizationMemberResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_organization_member_with_options_async(
+        self,
+        request: main_models.AddOrganizationMemberRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.AddOrganizationMemberResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.account_name):
+            query['AccountName'] = request.account_name
+        if not DaraCore.is_null(request.caller_uac_account_id):
+            query['CallerUacAccountId'] = request.caller_uac_account_id
+        if not DaraCore.is_null(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        if not DaraCore.is_null(request.org_id):
+            query['OrgId'] = request.org_id
+        if not DaraCore.is_null(request.org_role_code):
+            query['OrgRoleCode'] = request.org_role_code
+        if not DaraCore.is_null(request.spec_type):
+            query['SpecType'] = request.spec_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddOrganizationMember',
+            version = '2026-02-10',
+            protocol = 'HTTPS',
+            pathname = f'/tokenplan/organization/member-additions',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddOrganizationMemberResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_organization_member(
+        self,
+        request: main_models.AddOrganizationMemberRequest,
+    ) -> main_models.AddOrganizationMemberResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.add_organization_member_with_options(request, headers, runtime)
+
+    async def add_organization_member_async(
+        self,
+        request: main_models.AddOrganizationMemberRequest,
+    ) -> main_models.AddOrganizationMemberResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.add_organization_member_with_options_async(request, headers, runtime)
+
+    def batch_assign_seats_with_options(
+        self,
+        request: main_models.BatchAssignSeatsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchAssignSeatsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.account_ids):
+            query['AccountIds'] = request.account_ids
+        if not DaraCore.is_null(request.account_ids_str):
+            query['AccountIdsStr'] = request.account_ids_str
+        if not DaraCore.is_null(request.caller_uac_account_id):
+            query['CallerUacAccountId'] = request.caller_uac_account_id
+        if not DaraCore.is_null(request.locale):
+            query['Locale'] = request.locale
+        if not DaraCore.is_null(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        if not DaraCore.is_null(request.seat_type):
+            query['SeatType'] = request.seat_type
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'BatchAssignSeats',
+            version = '2026-02-10',
+            protocol = 'HTTPS',
+            pathname = f'/tokenplan/subscription/seat-assignments',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchAssignSeatsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_assign_seats_with_options_async(
+        self,
+        request: main_models.BatchAssignSeatsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchAssignSeatsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.account_ids):
+            query['AccountIds'] = request.account_ids
+        if not DaraCore.is_null(request.account_ids_str):
+            query['AccountIdsStr'] = request.account_ids_str
+        if not DaraCore.is_null(request.caller_uac_account_id):
+            query['CallerUacAccountId'] = request.caller_uac_account_id
+        if not DaraCore.is_null(request.locale):
+            query['Locale'] = request.locale
+        if not DaraCore.is_null(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        if not DaraCore.is_null(request.seat_type):
+            query['SeatType'] = request.seat_type
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'BatchAssignSeats',
+            version = '2026-02-10',
+            protocol = 'HTTPS',
+            pathname = f'/tokenplan/subscription/seat-assignments',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchAssignSeatsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_assign_seats(
+        self,
+        request: main_models.BatchAssignSeatsRequest,
+    ) -> main_models.BatchAssignSeatsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.batch_assign_seats_with_options(request, headers, runtime)
+
+    async def batch_assign_seats_async(
+        self,
+        request: main_models.BatchAssignSeatsRequest,
+    ) -> main_models.BatchAssignSeatsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.batch_assign_seats_with_options_async(request, headers, runtime)
 
     def create_api_key_with_options(
         self,
@@ -128,6 +330,98 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.create_api_key_with_options_async(request, headers, runtime)
+
+    def create_token_plan_key_with_options(
+        self,
+        request: main_models.CreateTokenPlanKeyRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateTokenPlanKeyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.account_id):
+            query['AccountId'] = request.account_id
+        if not DaraCore.is_null(request.caller_uac_account_id):
+            query['CallerUacAccountId'] = request.caller_uac_account_id
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateTokenPlanKey',
+            version = '2026-02-10',
+            protocol = 'HTTPS',
+            pathname = f'/tokenplan/api-keys',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateTokenPlanKeyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_token_plan_key_with_options_async(
+        self,
+        request: main_models.CreateTokenPlanKeyRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateTokenPlanKeyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.account_id):
+            query['AccountId'] = request.account_id
+        if not DaraCore.is_null(request.caller_uac_account_id):
+            query['CallerUacAccountId'] = request.caller_uac_account_id
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateTokenPlanKey',
+            version = '2026-02-10',
+            protocol = 'HTTPS',
+            pathname = f'/tokenplan/api-keys',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateTokenPlanKeyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_token_plan_key(
+        self,
+        request: main_models.CreateTokenPlanKeyRequest,
+    ) -> main_models.CreateTokenPlanKeyResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_token_plan_key_with_options(request, headers, runtime)
+
+    async def create_token_plan_key_async(
+        self,
+        request: main_models.CreateTokenPlanKeyRequest,
+    ) -> main_models.CreateTokenPlanKeyResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_token_plan_key_with_options_async(request, headers, runtime)
 
     def create_workspace_with_options(
         self,
@@ -556,6 +850,114 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.get_api_key_with_options_async(api_key_id, headers, runtime)
+
+    def get_subscription_seat_details_with_options(
+        self,
+        request: main_models.GetSubscriptionSeatDetailsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetSubscriptionSeatDetailsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.caller_uac_account_id):
+            query['CallerUacAccountId'] = request.caller_uac_account_id
+        if not DaraCore.is_null(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        if not DaraCore.is_null(request.page_no):
+            query['PageNo'] = request.page_no
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.query_assigned):
+            query['QueryAssigned'] = request.query_assigned
+        if not DaraCore.is_null(request.seat_id):
+            query['SeatId'] = request.seat_id
+        if not DaraCore.is_null(request.seat_type):
+            query['SeatType'] = request.seat_type
+        if not DaraCore.is_null(request.status_list):
+            query['StatusList'] = request.status_list
+        if not DaraCore.is_null(request.status_list_str):
+            query['StatusListStr'] = request.status_list_str
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetSubscriptionSeatDetails',
+            version = '2026-02-10',
+            protocol = 'HTTPS',
+            pathname = f'/tokenplan/subscription/seat-detail',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetSubscriptionSeatDetailsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_subscription_seat_details_with_options_async(
+        self,
+        request: main_models.GetSubscriptionSeatDetailsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetSubscriptionSeatDetailsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.caller_uac_account_id):
+            query['CallerUacAccountId'] = request.caller_uac_account_id
+        if not DaraCore.is_null(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        if not DaraCore.is_null(request.page_no):
+            query['PageNo'] = request.page_no
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.query_assigned):
+            query['QueryAssigned'] = request.query_assigned
+        if not DaraCore.is_null(request.seat_id):
+            query['SeatId'] = request.seat_id
+        if not DaraCore.is_null(request.seat_type):
+            query['SeatType'] = request.seat_type
+        if not DaraCore.is_null(request.status_list):
+            query['StatusList'] = request.status_list
+        if not DaraCore.is_null(request.status_list_str):
+            query['StatusListStr'] = request.status_list_str
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetSubscriptionSeatDetails',
+            version = '2026-02-10',
+            protocol = 'HTTPS',
+            pathname = f'/tokenplan/subscription/seat-detail',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetSubscriptionSeatDetailsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_subscription_seat_details(
+        self,
+        request: main_models.GetSubscriptionSeatDetailsRequest,
+    ) -> main_models.GetSubscriptionSeatDetailsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_subscription_seat_details_with_options(request, headers, runtime)
+
+    async def get_subscription_seat_details_async(
+        self,
+        request: main_models.GetSubscriptionSeatDetailsRequest,
+    ) -> main_models.GetSubscriptionSeatDetailsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_subscription_seat_details_with_options_async(request, headers, runtime)
 
     def list_api_keys_with_options(
         self,

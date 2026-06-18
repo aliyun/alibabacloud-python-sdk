@@ -15,12 +15,19 @@ class CreateApiKeyResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The API key information.
         self.api_key = api_key
+        # The response code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # - true: Successful.
+        # - false: Failed.
         self.success = success
 
     def validate(self):
@@ -87,10 +94,16 @@ class CreateApiKeyResponseBodyApiKey(DaraModel):
     ):
         # API Key ID。
         self.api_key_id = api_key_id
+        # The value of the API key.
+        # >Notice: Copy your API key immediately. Keep it secure. Anyone who obtains this key can initiate service requests on your behalf and incur charges. If you lose the key, you can reset it or create a new one..
         self.api_key_value = api_key_value
+        # The creator.
         self.created_by = created_by
+        # The description.
         self.description = description
+        # The creation time.
         self.gmt_create = gmt_create
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):

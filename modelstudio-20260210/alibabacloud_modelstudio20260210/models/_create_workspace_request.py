@@ -11,6 +11,8 @@ class CreateWorkspaceRequest(DaraModel):
         workspace_name: str = None,
     ):
         self.service_site = service_site
+        # The name of the business workspace.
+        # 
         # This parameter is required.
         self.workspace_name = workspace_name
 

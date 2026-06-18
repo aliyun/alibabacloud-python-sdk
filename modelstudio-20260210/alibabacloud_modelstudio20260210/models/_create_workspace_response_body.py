@@ -15,12 +15,19 @@ class CreateWorkspaceResponseBody(DaraModel):
         success: bool = None,
         workspace: main_models.CreateWorkspaceResponseBodyWorkspace = None,
     ):
+        # The response status code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # - true: Successful.
+        # - false: Failed.
         self.success = success
+        # The business workspace information.
         self.workspace = workspace
 
     def validate(self):
@@ -87,10 +94,15 @@ class CreateWorkspaceResponseBodyWorkspace(DaraModel):
     ):
         # API Host。
         self.api_host = api_host
+        # The creation time.
         self.gmt_create = gmt_create
+        # The region ID.
         self.region = region
+        # The service deployment scope. For more information, see [documentation](https://www.alibabacloud.com/help/zh/model-studio/regions/).
         self.service_site = service_site
+        # The business workspace ID.
         self.workspace_id = workspace_id
+        # The name of the business workspace.
         self.workspace_name = workspace_name
 
     def validate(self):

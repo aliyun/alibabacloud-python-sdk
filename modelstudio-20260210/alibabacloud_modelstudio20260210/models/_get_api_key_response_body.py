@@ -17,12 +17,19 @@ class GetApiKeyResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The API key information.
         self.api_key = api_key
+        # The response status code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # - true: The request was successful.
+        # - false: The request failed.
         self.success = success
 
     def validate(self):
@@ -91,12 +98,22 @@ class GetApiKeyResponseBodyApiKey(DaraModel):
     ):
         # API Key ID。
         self.api_key_id = api_key_id
+        # The value of the API key.
         self.api_key_value = api_key_value
+        # The permission settings.
         self.auth = auth
+        # The creator.
         self.created_by = created_by
+        # The description.
         self.description = description
+        # Indicates whether the API key is disabled. Valid values:
+        # 
+        # - **0**: Active.
+        # - **1**: Disabled.
         self.disabled = disabled
+        # The creation time.
         self.gmt_create = gmt_create
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -169,7 +186,9 @@ class GetApiKeyResponseBodyApiKeyAuth(DaraModel):
         access_ips: List[str] = None,
         type: str = None,
     ):
+        # The IP address whitelist.
         self.access_ips = access_ips
+        # The permission type. Valid values: All: all permissions. Custom: custom permissions.
         self.type = type
 
     def validate(self):

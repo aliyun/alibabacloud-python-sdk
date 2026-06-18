@@ -13,11 +13,18 @@ class UpdateApiKeyResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response status code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the API call is successful. Valid values:
+        # 
+        # - true: The call succeeded.
+        # - false: The call failed.
         self.success = success
 
     def validate(self):

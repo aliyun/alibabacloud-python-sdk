@@ -20,15 +20,26 @@ class ListApiKeysResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # List of API Keys.
         self.api_keys = api_keys
+        # Response status code.
         self.code = code
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Page size.
         self.max_results = max_results
+        # Response message.
         self.message = message
+        # Used to return more results. This parameter is not required for the first query. The token required for subsequent queries can be obtained from the returned results.
         self.next_token = next_token
         # Id of the request
         self.request_id = request_id
+        # Whether the API call is successful:
+        # 
+        # - true: Successful.
+        # - false: Failed.
         self.success = success
+        # Total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -119,14 +130,24 @@ class ListApiKeysResponseBodyApiKeys(DaraModel):
         gmt_create: int = None,
         workspace_id: str = None,
     ):
-        # API Key ID。
+        # API Key ID.
         self.api_key_id = api_key_id
+        # Value of the API Key.
         self.api_key_value = api_key_value
+        # Permission settings.
         self.auth = auth
+        # Creator.
         self.created_by = created_by
+        # Description.
         self.description = description
+        # Whether the API Key is disabled.
+        # 
+        # - **0**: Active.
+        # - **1**: Disabled.
         self.disabled = disabled
+        # Creation time.
         self.gmt_create = gmt_create
+        # Workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -199,7 +220,9 @@ class ListApiKeysResponseBodyApiKeysAuth(DaraModel):
         access_ips: List[str] = None,
         type: str = None,
     ):
+        # IP access whitelist.
         self.access_ips = access_ips
+        # All: All permissions; Custom: Custom permissions.
         self.type = type
 
     def validate(self):

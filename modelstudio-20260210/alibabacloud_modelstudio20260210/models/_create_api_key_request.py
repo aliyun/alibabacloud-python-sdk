@@ -14,8 +14,13 @@ class CreateApiKeyRequest(DaraModel):
         description: str = None,
         workspace_id: str = None,
     ):
+        # The API key permission settings.
         self.auth = auth
+        # The description.
         self.description = description
+        # The workspace ID.
+        # > 
+        # > - If you leave this parameter empty, the created API key is automatically assigned to the default workspace.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -52,15 +57,20 @@ class CreateApiKeyRequest(DaraModel):
 
         return self
 
-
-
 class CreateApiKeyRequestAuth(DaraModel):
     def __init__(
         self,
         access_ips: List[str] = None,
         type: str = None,
     ):
+        # The IP address whitelist.
+        # 
+        # > 
+        # > - When you use custom permissions, if you do not specify the IP address whitelist, the server sets it to IPv4 (0.0.0.0/0) and IPv6 (::/0) by default, which allows all traffic.
         self.access_ips = access_ips
+        # Valid values:
+        # - All: all permissions.
+        # - Custom: custom permissions.
         self.type = type
 
     def validate(self):

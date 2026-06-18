@@ -13,10 +13,15 @@ class ListApiKeysRequest(DaraModel):
         next_token: str = None,
         workspace_id: str = None,
     ):
+        # Exact search by API Key ID.
         self.api_key_id = api_key_id
+        # Fuzzy search by description keyword.
         self.description = description
+        # Page size.
         self.max_results = max_results
+        # Used to return more results. This parameter is not required for the first query. The token required for subsequent queries can be obtained from the returned results.
         self.next_token = next_token
+        # Exact search by workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):

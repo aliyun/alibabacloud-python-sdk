@@ -1,3 +1,10 @@
+2026-06-18 Version: 1.3.0
+- Support API AddOrganizationMember.
+- Support API BatchAssignSeats.
+- Support API CreateTokenPlanKey.
+- Support API GetSubscriptionSeatDetails.
+
+
 2026-06-05 Version: 1.2.0
 - Support API DeleteWorkspace.
 

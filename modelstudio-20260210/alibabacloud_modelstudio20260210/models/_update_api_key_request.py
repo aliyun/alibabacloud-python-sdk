@@ -13,7 +13,9 @@ class UpdateApiKeyRequest(DaraModel):
         auth: main_models.UpdateApiKeyRequestAuth = None,
         description: str = None,
     ):
+        # The API key permission settings.
         self.auth = auth
+        # The description.
         self.description = description
 
     def validate(self):
@@ -50,7 +52,15 @@ class UpdateApiKeyRequestAuth(DaraModel):
         access_ips: List[str] = None,
         type: str = None,
     ):
+        # The IP access whitelist.
+        # 
+        # > 
+        # > - When you set custom permissions and do not specify the IP access whitelist, the server sets the whitelist to IPv4 (0.0.0.0/0) and IPv6 (::/0) by default, which allows all traffic.
         self.access_ips = access_ips
+        # Valid values:
+        # 
+        # - All: all permissions.
+        # - Custom: custom permissions.
         self.type = type
 
     def validate(self):
