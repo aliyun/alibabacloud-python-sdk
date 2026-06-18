@@ -17,20 +17,19 @@ class ListChunksResponseBody(DaraModel):
         status: str = None,
         success: bool = None,
     ):
-        # The error code.
+        # The error status code.
         self.code = code
-        # The data returned.
+        # The business data returned by the operation.
         self.data = data
         # The error message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The HTTP status code returned.
+        # The status code returned by the operation.
         self.status = status
-        # Indications whether the API call is successful. Valid values:
-        # 
-        # *   true
-        # *   false
+        # Indicates whether the operation was successful. Valid values:
+        # - true: Successful.
+        # - false: Failed.
         self.success = success
 
     def validate(self):
@@ -91,9 +90,9 @@ class ListChunksResponseBodyData(DaraModel):
         nodes: List[main_models.ListChunksResponseBodyDataNodes] = None,
         total: int = None,
     ):
-        # The list of chunks.
+        # The list of text chunks.
         self.nodes = nodes
-        # The total number of chunks returned.
+        # The total number of returned results.
         self.total = total
 
     def validate(self):
@@ -137,11 +136,32 @@ class ListChunksResponseBodyDataNodes(DaraModel):
         score: float = None,
         text: str = None,
     ):
-        # The metadata map of the chunk.
+        # <props="china">
+        # 
+        # The metadata map of the text chunk.
+        # 
+        # > The `file_path` field in the metadata map of document search knowledge bases is meaningless. Do not use it in your business code.
+        # 
+        # > When retrieving a document search knowledge base, if a chunk contains an image, the image is returned through the `image_url` field in the metadata map, along with an expiration time.
+        # 
+        # > When retrieving an audio/video search knowledge base, if a chunk contains audio, the audio is returned through the `audio_url` field in the metadata map, along with an expiration time.
+        # 
+        # > When retrieving an audio/video search knowledge base, if a chunk contains video, the video is returned through the `video_url` field in the metadata map, along with an expiration time.
+        # 
+        # 
+        # <props="intl">
+        # 
+        # The metadata map of the text chunk.
+        # 
+        # > The `file_path` field in the metadata map of document search knowledge bases is meaningless. Do not use it in your business code.
+        # 
+        # > When retrieving a document search knowledge base, if a chunk contains an image, the image is returned through the `image_url` field in the metadata map, along with an expiration time.
+        # 
+        # .
         self.metadata = metadata
-        # The similarity score of the chunk.
+        # The similarity score of the text chunk.
         self.score = score
-        # The text of the chunk.
+        # The content of the text chunk.
         self.text = text
 
     def validate(self):

@@ -11,7 +11,9 @@ class GetAlipayTransferStatusResponseBody(DaraModel):
         data: main_models.GetAlipayTransferStatusResponseBodyData = None,
         request_id: str = None,
     ):
+        # The tipping result data.
         self.data = data
+        # The unique ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -59,18 +61,39 @@ class GetAlipayTransferStatusResponseBodyData(DaraModel):
         trans_amount: str = None,
         wallet_item_code: str = None,
     ):
+        # The sub-account ID (ignored by the API).
         self.account_id = account_id
+        # The payment details (ignored by the API).
         self.alipay_order_detail = alipay_order_detail
+        # The Alipay order ID.
         self.alipay_order_id = alipay_order_id
+        # The code associated with the tipping.
         self.code = code
+        # The creator (ignored by the API).
         self.creator = creator
+        # The primary account ID (ignored by the API).
         self.main_account_id = main_account_id
+        # The modifier (ignored by the API).
         self.modifier = modifier
+        # The tipping link (ignored by the API).
         self.qr_url = qr_url
+        # The ownership status of the tipping application.
         self.scope = scope
+        # The tipping status. Valid values:
+        # - 1: Succeeded.
+        # - 0: Deleted.
+        # - 2: Pending tipping.
+        # - 3: Canceled.
+        # - 4: Refunded.
+        # - 5: Closed.
+        # - 6: Failed.
+        # - 7: Disputed or abnormal.
         self.status = status
+        # The transfer title.
         self.title = title
+        # The total order amount. Unit: CNY.
         self.trans_amount = trans_amount
+        # The Alipay product wallet code.
         self.wallet_item_code = wallet_item_code
 
     def validate(self):

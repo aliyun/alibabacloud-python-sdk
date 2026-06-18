@@ -9,6 +9,8 @@ class UpdateMemoryNodeRequest(DaraModel):
         self,
         content: str = None,
     ):
+        # The memory fragment content.
+        # 
         # This parameter is required.
         self.content = content
 

@@ -13,12 +13,19 @@ class AddConnectorRequest(DaraModel):
         description: str = None,
         file_connector_config: main_models.AddConnectorRequestFileConnectorConfig = None,
     ):
+        # The name of the connector.
+        # 
         # This parameter is required.
         self.connector_name = connector_name
+        # The type of the connector.
+        # 
         # This parameter is required.
         self.connector_type = connector_type
+        # The description for the connector.
+        # 
         # This parameter is required.
         self.description = description
+        # The parameters for the file connector.
         self.file_connector_config = file_connector_config
 
     def validate(self):
@@ -68,8 +75,11 @@ class AddConnectorRequestFileConnectorConfig(DaraModel):
         region_id: str = None,
         storage_type: str = None,
     ):
+        # The name of the bucket.
         self.bucket_name = bucket_name
+        # The region of the bucket.
         self.region_id = region_id
+        # The file storage location. Valid values:<br>`OSS_CUSTOM`: Use your own Object Storage Service (OSS) bucket.<br>`OSS_PLATFORM`: Use the platform-provided OSS bucket.<br><br>
         self.storage_type = storage_type
 
     def validate(self):

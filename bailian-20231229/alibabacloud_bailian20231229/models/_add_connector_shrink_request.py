@@ -12,12 +12,19 @@ class AddConnectorShrinkRequest(DaraModel):
         description: str = None,
         file_connector_config_shrink: str = None,
     ):
+        # The name of the connector.
+        # 
         # This parameter is required.
         self.connector_name = connector_name
+        # The type of the connector.
+        # 
         # This parameter is required.
         self.connector_type = connector_type
+        # The description for the connector.
+        # 
         # This parameter is required.
         self.description = description
+        # The parameters for the file connector.
         self.file_connector_config_shrink = file_connector_config_shrink
 
     def validate(self):

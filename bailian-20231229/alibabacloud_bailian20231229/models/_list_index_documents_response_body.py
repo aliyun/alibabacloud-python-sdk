@@ -17,20 +17,19 @@ class ListIndexDocumentsResponseBody(DaraModel):
         status: str = None,
         success: bool = None,
     ):
-        # HTTP status code
+        # The error status code.
         self.code = code
-        # The returned data.
+        # The data field returned by the operation.
         self.data = data
         # The error message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The status code.
+        # The status code returned by the operation.
         self.status = status
-        # Indications whether the API call is successful. Valid values:
-        # 
-        # *   true
-        # *   false
+        # Indicates whether the operation was successful. Valid values:
+        # - true: The operation was successful.
+        # - false: The operation failed.
         self.success = success
 
     def validate(self):
@@ -94,15 +93,15 @@ class ListIndexDocumentsResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The list of documents in the knowledge base.
+        # The list of files in the knowledge base, sorted by file import time in descending order (consistent with the console).
         self.documents = documents
-        # The primary key ID of the knowledge base.
+        # The knowledge base ID.
         self.index_id = index_id
-        # The specified page number.
+        # The returned page number.
         self.page_number = page_number
-        # The specified number of documents on each page.
+        # The returned number of entries per page.
         self.page_size = page_size
-        # The total number of documents returned.
+        # The total number of returned results.
         self.total_count = total_count
 
     def validate(self):
@@ -170,29 +169,44 @@ class ListIndexDocumentsResponseBodyDataDocuments(DaraModel):
         source_id: str = None,
         status: str = None,
     ):
-        # The error status code of document import.
+        # The error status code for the file import.
         self.code = code
-        # The format of the document. Valid values: pdf, docx, doc, txt, md, pptx, ppt, and EXCEL.
+        # The file format type. Valid values: pdf, docx, doc, txt, md, pptx, ppt, png, jpg, jpeg, bmp, gif, and EXCEL.
         self.document_type = document_type
+        # The time when the file was imported to the knowledge base, in UNIX timestamp format.
         self.gmt_modified = gmt_modified
-        # The primary key ID of the document.
+        # The file ID.
         self.id = id
-        # The error message of document import.
+        # The error message for the file import.
         self.message = message
-        # The name of the document.
+        # The file name.
         self.name = name
-        # The size of the document. Unit: bytes.
+        # The file size, in bytes.
         self.size = size
-        # For unstructured knowledge base, this parameter is the category ID. To view the category ID, you can click the ID icon next to the category name on the Unstructured Data tab of the [Data Management](https://bailian.console.aliyun.com/#/data-center) page.
+        # <props="china">
         # 
-        # For structured knowledge base, this parameter is the data table ID. To view the table ID, you can click the ID icon next to the table name on the Structured Data tab of the [Data Management](https://bailian.console.aliyun.com/#/data-center) page.
+        # For document search or audio/video search knowledge bases, this parameter specifies the category ID, which is the `CategoryId` returned by the **AddCategory** operation. You can also obtain the category ID by clicking the ID icon next to the category name on the Files tab of the [Application Data](https://bailian.console.aliyun.com/?tab=app#/data-center) page.
+        # 
+        # 
+        # For data query or image Q&A knowledge bases, this parameter specifies the data table ID. You can obtain the data table ID by clicking the ID icon next to the data table name on the Tables tab of the [Application Data](https://bailian.console.aliyun.com/?tab=app#/data-center) page.
+        # 
+        # 
+        # 
+        # 
+        # <props="intl">
+        # 
+        # For document search knowledge bases, this parameter specifies the category ID, which is the `CategoryId` returned by the **AddCategory** operation. You can also obtain the category ID by clicking the ID icon next to the category name on the Files tab of the [Application Data](https://bailian.console.aliyun.com/?tab=app#/data-center) page.
+        # 
+        # 
+        # For data query or image Q&A knowledge bases, this parameter specifies the data table ID. You can obtain the data table ID by clicking the ID icon next to the data table name on the Tables tab of the [Application Data](https://modelstudio.console.alibabacloud.com/?tab=app#/data-center) page.
+        # 
+        # .
         self.source_id = source_id
-        # The import status of the document. Valid values:
-        # 
-        # *   INSERT_ERROR
-        # *   RUNNING
-        # *   DELETED
-        # *   FINISH
+        # The file import status. Valid values:
+        # - INSERT_ERROR: The file failed to be imported.
+        # - RUNNING: The file is being imported.
+        # - DELETED: The file has been deleted.
+        # - FINISH: The file was imported.
         self.status = status
 
     def validate(self):

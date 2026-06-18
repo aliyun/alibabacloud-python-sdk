@@ -12,12 +12,20 @@ class AddTableRequest(DaraModel):
         self,
         connector_id: str = None,
         table_columns: List[main_models.AddTableRequestTableColumns] = None,
+        table_desc: str = None,
         table_name: str = None,
     ):
+        # The connector ID.
+        # 
         # This parameter is required.
         self.connector_id = connector_id
+        # The column information of the table.
+        # 
         # This parameter is required.
         self.table_columns = table_columns
+        self.table_desc = table_desc
+        # The table name.
+        # 
         # This parameter is required.
         self.table_name = table_name
 
@@ -40,6 +48,9 @@ class AddTableRequest(DaraModel):
             for k1 in self.table_columns:
                 result['TableColumns'].append(k1.to_map() if k1 else None)
 
+        if self.table_desc is not None:
+            result['TableDesc'] = self.table_desc
+
         if self.table_name is not None:
             result['TableName'] = self.table_name
 
@@ -56,6 +67,9 @@ class AddTableRequest(DaraModel):
                 temp_model = main_models.AddTableRequestTableColumns()
                 self.table_columns.append(temp_model.from_map(k1))
 
+        if m.get('TableDesc') is not None:
+            self.table_desc = m.get('TableDesc')
+
         if m.get('TableName') is not None:
             self.table_name = m.get('TableName')
 
@@ -68,9 +82,14 @@ class AddTableRequestTableColumns(DaraModel):
         column_name: str = None,
         data_type: str = None,
     ):
+        # The column description.
         self.column_desc = column_desc
+        # The column name.
+        # 
         # This parameter is required.
         self.column_name = column_name
+        # The data type.
+        # 
         # This parameter is required.
         self.data_type = data_type
 

@@ -10,8 +10,12 @@ class CreatePromptTemplateRequest(DaraModel):
         content: str = None,
         name: str = None,
     ):
+        # Prompt template content.
+        # 
         # This parameter is required.
         self.content = content
+        # Template name.
+        # 
         # This parameter is required.
         self.name = name
 

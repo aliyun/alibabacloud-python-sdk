@@ -10,7 +10,9 @@ class GetConnectorRequest(DaraModel):
         connector_id: str = None,
         connector_name: str = None,
     ):
+        # The ID of the connector. You can find this ID in the [Model Studio console](https://bailian.console.aliyun.com/cn-beijing/?tab=app#/connector/list).
         self.connector_id = connector_id
+        # The name of the connector to query. An exact match is required.
         self.connector_name = connector_name
 
     def validate(self):

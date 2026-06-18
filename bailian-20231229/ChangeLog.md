@@ -1,3 +1,9 @@
+2026-06-18 Version: 2.13.1
+- Update API AddTable: add request parameters TableDesc.
+- Update API DescribeFile: add response parameters Body.Data.ParseErrorMessage.
+- Update API ListFile: add response parameters Body.Data.FileList.$.ParseErrorMessage.
+
+
 2026-06-10 Version: 2.13.0
 - Support API DeleteFiles.
 

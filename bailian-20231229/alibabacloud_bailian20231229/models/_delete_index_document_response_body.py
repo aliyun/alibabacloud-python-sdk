@@ -17,20 +17,19 @@ class DeleteIndexDocumentResponseBody(DaraModel):
         status: str = None,
         success: bool = None,
     ):
-        # HTTP status code
+        # The error code.
         self.code = code
-        # The parameters returned by the operation.
+        # The business data field returned by the operation.
         self.data = data
         # The error message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The status code.
+        # The status code returned by the operation.
         self.status = status
-        # Indications whether the API call is successful. Valid values:
-        # 
-        # *   true
-        # *   false
+        # Indicates whether the operation was successful. Valid values:
+        # - true: The operation was successful.
+        # - false: The operation failed.
         self.success = success
 
     def validate(self):
@@ -90,7 +89,7 @@ class DeleteIndexDocumentResponseBodyData(DaraModel):
         self,
         deleted_document: List[str] = None,
     ):
-        # The list of primary key IDs of documents that are deleted.
+        # The list of successfully deleted file IDs.
         self.deleted_document = deleted_document
 
     def validate(self):

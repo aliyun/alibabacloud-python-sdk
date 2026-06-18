@@ -17,20 +17,19 @@ class GetIndexJobStatusResponseBody(DaraModel):
         status: str = None,
         success: bool = None,
     ):
-        # HTTP status code
+        # The error code.
         self.code = code
-        # The returned data.
+        # The data field returned by the operation.
         self.data = data
         # The error message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The HTTP status code returned.
+        # The HTTP status code returned by the operation.
         self.status = status
-        # Indications whether the API call is successful. Valid values:
-        # 
-        # *   true
-        # *   false
+        # Indicates whether the operation was successful. Valid values:
+        # - true: The operation was successful.
+        # - false: The operation failed.
         self.success = success
 
     def validate(self):
@@ -92,16 +91,15 @@ class GetIndexJobStatusResponseBodyData(DaraModel):
         job_id: str = None,
         status: str = None,
     ):
-        # The list of imported documents.
+        # The list of files imported in this job.
         self.documents = documents
-        # The ID of the job.
+        # The job ID.
         self.job_id = job_id
-        # The status of the knowledge base job. Valid values:
-        # 
-        # *   COMPLETED
-        # *   FAILED
-        # *   RUNNING
-        # *   PENDING
+        # The current status of the knowledge base job. Valid values:
+        # - COMPLETED: The job succeeded.
+        # - FAILED: The job failed.
+        # - RUNNING: The job is running.
+        # - PENDING: The job is pending execution.
         self.status = status
 
     def validate(self):
@@ -154,21 +152,20 @@ class GetIndexJobStatusResponseBodyDataDocuments(DaraModel):
         message: str = None,
         status: str = None,
     ):
-        # HTTP status code
+        # The error code.
         self.code = code
-        # The primary key ID of the document.
+        # The file ID.
         self.doc_id = doc_id
-        # The name of the document.
+        # The file name.
         self.doc_name = doc_name
         self.gmt_modified = gmt_modified
         # The error message.
         self.message = message
-        # The import status of the document. Valid values:
-        # 
-        # *   INSERT_ERROR
-        # *   RUNNING
-        # *   DELETED
-        # *   FINISH
+        # The file import status. Valid values:
+        # - INSERT_ERROR: The file import failed.
+        # - RUNNING: The file is being imported.
+        # - DELETED: The file has been deleted.
+        # - FINISH: The file was imported.
         self.status = status
 
     def validate(self):

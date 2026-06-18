@@ -15,20 +15,19 @@ class SubmitIndexJobResponseBody(DaraModel):
         status: str = None,
         success: bool = None,
     ):
-        # HTTP status code
+        # The error code.
         self.code = code
-        # The data returned.
+        # The business data returned by the operation.
         self.data = data
         # The error message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The status code.
+        # The status code returned by the operation.
         self.status = status
-        # Indications whether the API call is successful. Valid values:
-        # 
-        # *   true
-        # *   false
+        # Indicates whether the operation was successful. Valid values:
+        # - true: Successful.
+        # - false: Failed.
         self.success = success
 
     def validate(self):
@@ -89,9 +88,9 @@ class SubmitIndexJobResponseBodyData(DaraModel):
         id: str = None,
         index_id: str = None,
     ):
-        # The primary key ID of the job, which is the `JobId` parameter of the [GetIndexJobStatus](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-getindexjobstatus) operation.
+        # The task ID, which is the `JobId` required when calling the **GetIndexJobStatus** operation.
         self.id = id
-        # The primary key ID of the knowledge base.
+        # The knowledge base ID.
         self.index_id = index_id
 
     def validate(self):

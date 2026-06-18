@@ -18,7 +18,6 @@ class DeleteConnectorResponseBody(DaraModel):
         self.code = code
         self.data = data
         self.message = message
-        # Id of the request
         self.request_id = request_id
         self.status = status
         self.success = success

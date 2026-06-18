@@ -13,13 +13,30 @@ class ListFileShrinkRequest(DaraModel):
         max_results: int = None,
         next_token: str = None,
     ):
-        # The category ID, which is the `CategoryId` returned by the [AddCategory](~~AddCategory~~) operation. To view the category ID, click the ID icon next to the category name on the Unstructured Data tab of the [Data Management](https://bailian.console.alibabacloud.com/#/data-center) page.
+        # <props="china">
+        # 
+        # The category ID, which is the `CategoryId` returned by the **AddCategory** operation. You can also obtain it on the [Application Data](https://bailian.console.aliyun.com/?tab=app#/data-center) - Files tab by clicking the ID icon next to the category name.
+        # 
+        # 
+        # 
+        # <props="intl">
+        # 
+        # The category ID, which is the `CategoryId` returned by the **AddCategory** operation. You can also obtain it on the [Application Data](https://modelstudio.console.alibabacloud.com/?tab=app#/data-center) - Files tab by clicking the ID icon next to the category name.
+        # 
+        # .
         # 
         # This parameter is required.
         self.category_id = category_id
+        # The list of file IDs to query. A maximum of 20 files can be queried per request.
         self.file_ids_shrink = file_ids_shrink
+        # The file name (without extension). Only exact match is supported. Fuzzy search is not supported.
         self.file_name = file_name
+        # The number of entries per page for paging. Valid values: 1 to 200.
+        # 
+        # Default value:
+        # If the value is not set or is less than 1, the default value is 20. If the value is greater than 200, the default value is 200.
         self.max_results = max_results
+        # The pagination token. Set this to the NextToken value returned by the previous API call.
         self.next_token = next_token
 
     def validate(self):

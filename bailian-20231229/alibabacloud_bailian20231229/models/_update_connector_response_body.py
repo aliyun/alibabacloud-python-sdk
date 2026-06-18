@@ -15,12 +15,17 @@ class UpdateConnectorResponseBody(DaraModel):
         status: str = None,
         success: bool = None,
     ):
+        # The error code.
         self.code = code
+        # The data returned by the operation.
         self.data = data
+        # The error message.
         self.message = message
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
+        # The status code of the response.
         self.status = status
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -80,6 +85,7 @@ class UpdateConnectorResponseBodyData(DaraModel):
         self,
         connector_id: str = None,
     ):
+        # The ID of the connector.
         self.connector_id = connector_id
 
     def validate(self):

@@ -12,17 +12,17 @@ class GetIndexJobStatusRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The primary key ID of the knowledge base, which is the `Data.Id` parameter returned by the [CreateIndex](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation.
+        # The knowledge base ID, which is the `Data.Id` returned by the **CreateIndex** operation.
         # 
         # This parameter is required.
         self.index_id = index_id
-        # The knowledge base job ID, which is the `Data.Id` parameter returned by the [SubmitIndexJob](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-submitindexjob) or [SubmitIndexAddDocumentsJob](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-submitindexadddocumentsjob) operations.
+        # The knowledge base job ID, which is the `Data.Id` returned by the **SubmitIndexJob** or **SubmitIndexAddDocumentsJob** operation.
         # 
         # This parameter is required.
         self.job_id = job_id
-        # Both the [SubmitIndexJob](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-submitindexjob) and [SubmitIndexAddDocumentsJob](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-submitindexadddocumentsjob) operations support batch import of documents. This operation returns both the overall `Status` of the job and the `Document.Status` of each document. If there are a large number of documents, you can use the `PageNumber` parameter to perform a paged query. Pages start from page 1. Default value: 1.
+        # The **SubmitIndexJob** and **SubmitIndexAddDocumentsJob** operations support batch file import. This operation returns the overall knowledge base job status `Status` and the import status of each file `Document.Status`. If there are many files, use the `PageNumber` parameter for paging. Minimum value: 1. Default value: 1.
         self.page_number = page_number
-        # The number of document import jobs that are displayed on each page. No maximum value. Default value: 10.
+        # The number of file import tasks to display per page in a paged query. No maximum limit. Default value: 10.
         self.page_size = page_size
 
     def validate(self):

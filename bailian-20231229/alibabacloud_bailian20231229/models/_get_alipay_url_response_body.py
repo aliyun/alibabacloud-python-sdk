@@ -11,7 +11,9 @@ class GetAlipayUrlResponseBody(DaraModel):
         data: main_models.GetAlipayUrlResponseBodyData = None,
         request_id: str = None,
     ):
+        # The response data.
         self.data = data
+        # The unique ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -48,7 +50,9 @@ class GetAlipayUrlResponseBodyData(DaraModel):
         code: str = None,
         qr_url: str = None,
     ):
+        # The tipping code used to query the tipping status.
         self.code = code
+        # The generated tipping URL.
         self.qr_url = qr_url
 
     def validate(self):

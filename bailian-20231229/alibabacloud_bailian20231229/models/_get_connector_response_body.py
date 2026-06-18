@@ -15,12 +15,21 @@ class GetConnectorResponseBody(DaraModel):
         status: str = None,
         success: bool = None,
     ):
+        # The result code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The error message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The status code of the response.
         self.status = status
+        # Indicates whether the request was successful. The valid values are:
+        # 
+        # - `true`: The call was successful.
+        # 
+        # - `false`: The call failed.
         self.success = success
 
     def validate(self):
@@ -83,9 +92,13 @@ class GetConnectorResponseBodyData(DaraModel):
         connector_type: str = None,
         description: str = None,
     ):
+        # The ID of the connector.
         self.connector_id = connector_id
+        # The name of the connector.
         self.connector_name = connector_name
+        # The type of the connector.
         self.connector_type = connector_type
+        # The description of the connector.
         self.description = description
 
     def validate(self):

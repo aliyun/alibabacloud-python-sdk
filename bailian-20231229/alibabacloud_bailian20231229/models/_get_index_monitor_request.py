@@ -11,10 +11,16 @@ class GetIndexMonitorRequest(DaraModel):
         index_id: str = None,
         start_timestamp: int = None,
     ):
+        # The end of the time range to query. The end time can be a maximum of 30 days after the start time. This is a UNIX timestamp in seconds.
+        # 
         # This parameter is required.
         self.end_timestamp = end_timestamp
+        # The unique ID of the target knowledge base.
+        # 
         # This parameter is required.
         self.index_id = index_id
+        # The start of the time range to query. This is a UNIX timestamp in seconds.
+        # 
         # This parameter is required.
         self.start_timestamp = start_timestamp
 

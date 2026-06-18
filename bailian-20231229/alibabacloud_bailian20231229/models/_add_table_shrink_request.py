@@ -9,12 +9,20 @@ class AddTableShrinkRequest(DaraModel):
         self,
         connector_id: str = None,
         table_columns_shrink: str = None,
+        table_desc: str = None,
         table_name: str = None,
     ):
+        # The connector ID.
+        # 
         # This parameter is required.
         self.connector_id = connector_id
+        # The column information of the table.
+        # 
         # This parameter is required.
         self.table_columns_shrink = table_columns_shrink
+        self.table_desc = table_desc
+        # The table name.
+        # 
         # This parameter is required.
         self.table_name = table_name
 
@@ -32,6 +40,9 @@ class AddTableShrinkRequest(DaraModel):
         if self.table_columns_shrink is not None:
             result['TableColumns'] = self.table_columns_shrink
 
+        if self.table_desc is not None:
+            result['TableDesc'] = self.table_desc
+
         if self.table_name is not None:
             result['TableName'] = self.table_name
 
@@ -44,6 +55,9 @@ class AddTableShrinkRequest(DaraModel):
 
         if m.get('TableColumns') is not None:
             self.table_columns_shrink = m.get('TableColumns')
+
+        if m.get('TableDesc') is not None:
+            self.table_desc = m.get('TableDesc')
 
         if m.get('TableName') is not None:
             self.table_name = m.get('TableName')

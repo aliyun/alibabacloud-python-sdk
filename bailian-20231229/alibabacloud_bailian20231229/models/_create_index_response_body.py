@@ -15,20 +15,21 @@ class CreateIndexResponseBody(DaraModel):
         status: str = None,
         success: bool = None,
     ):
-        # The error code.
+        # Error status code
         self.code = code
-        # The data returned if the request is successful.
+        # The business data returned when the request is successful.
         self.data = data
-        # The error message.
+        # Error message
         self.message = message
-        # The request ID.
+        # Request ID
         self.request_id = request_id
-        # The status code.
+        # The status code returned by the interface.
         self.status = status
-        # Indications whether the request is successful. Valid values:
+        # Indicates whether the request was successful. Possible values:
         # 
-        # *   true
-        # *   false
+        # - true: Successful
+        # 
+        # - false: Failed
         self.success = success
 
     def validate(self):
@@ -88,9 +89,9 @@ class CreateIndexResponseBodyData(DaraModel):
         self,
         id: str = None,
     ):
-        # The knowledge base ID, or `IndexId`, is a unique identifier for the knowledge base created.
+        # The ID of the knowledge base, also known as \\`IndexId\\`. This is the unique identifier of the created knowledge base.
         # 
-        # > Keep this ID. It is required for all subsequent API operations related to this knowledge base.
+        # > Keep this value safe. It will be used for all subsequent API operations related to this knowledge base.
         self.id = id
 
     def validate(self):

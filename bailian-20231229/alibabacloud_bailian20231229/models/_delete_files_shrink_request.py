@@ -9,6 +9,8 @@ class DeleteFilesShrinkRequest(DaraModel):
         self,
         file_ids_shrink: str = None,
     ):
+        # The list of IDs of the files to be deleted. A maximum of 20 files can be deleted in a single request.
+        # 
         # This parameter is required.
         self.file_ids_shrink = file_ids_shrink
 

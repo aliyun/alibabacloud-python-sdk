@@ -13,24 +13,57 @@ class ChangeParseSettingRequest(DaraModel):
         parser: str = None,
         parser_config: main_models.ChangeParseSettingRequestParserConfig = None,
     ):
-        # The category ID, which is the `CategoryId` returned by **AddCategory**. To view the category ID, click the ID icon next to the category name on the Unstructured Data tab of the [Application Data](https://bailian.console.alibabacloud.com/?tab=app#/data-center) page.
+        # The category ID. This is the `CategoryId` returned by the **AddCategory** operation. You can also obtain the ID from the <props="china">[Application Data](https://bailian.console.aliyun.com/?tab=app#/data-center) - File tab<props="intl">[Application Data](https://bailian.console.alibabacloud.com/?tab=app#/data-center) - Unstructured Data tab by clicking the ID icon next to the category name.
         # 
         # This parameter is required.
         self.category_id = category_id
-        # The file type. Valid values: pdf, docx, and doc.
+        # The file type, specified by its extension. Valid values:
+        # 
+        # - doc
+        # 
+        # - docx
+        # 
+        # - ppt
+        # 
+        # - pptx
+        # 
+        # - xls
+        # 
+        # - xlsx
+        # 
+        # - md
+        # 
+        # - txt
+        # 
+        # - pdf
+        # 
+        # - png
+        # 
+        # - jpg
+        # 
+        # - jpeg
+        # 
+        # - bmp
+        # 
+        # - gif
+        # 
+        # - html
         # 
         # This parameter is required.
         self.file_type = file_type
-        # The parser code. Valid values:
+        # The identifier for the parser. Different parsers are suitable for different scenarios. For more information, refer to the knowledge base. Valid values:
         # 
-        # *   DOCMIND (Intelligent parsing)
-        # *   DOCMIND_DIGITAL (Digital parsing)
-        # *   DOCMIND_LLM_VERSION (LLM parsing)
-        # *   DASH_QWEN_VL_PARSER (Qwen VL parsing)
+        # - DOCMIND (intelligent document parsing)
+        # 
+        # - DOCMIND_DIGITAL (digital document parsing)
+        # 
+        # - DOCMIND_LLM_VERSION (LLM-based document parsing)
+        # 
+        # - DASH_QWEN_VL_PARSER (Qwen VL Parser)
         # 
         # This parameter is required.
         self.parser = parser
-        # The parser configuration. Currently, this is available only for Qwen VL parsing.
+        # The parser configuration. This parameter is required only when the `Parser` parameter is set to `DASH_QWEN_VL_PARSER`.
         self.parser_config = parser_config
 
     def validate(self):
@@ -80,13 +113,8 @@ class ChangeParseSettingRequestParserConfig(DaraModel):
         model_prompt: str = None,
     ):
         # The model name.
-        # 
-        # Valid values:
-        # 
-        # *   qwen-vl-max
-        # *   qwen-vl-plus
         self.model_name = model_name
-        # The prompt used for parsing.
+        # The prompt to use when calling the Qwen VL Parser.
         self.model_prompt = model_prompt
 
     def validate(self):

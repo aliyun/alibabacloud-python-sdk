@@ -16,14 +16,36 @@ class UpdateIndexRequest(DaraModel):
         rerank_min_score: str = None,
         sparse_similarity_top_k: int = None,
     ):
+        # The number of most similar text segments to retrieve using vector search. A vector is generated for the input text, and the K most similar text segments are retrieved from the knowledge base. The value of K must be in the range of 0 to 100.
+        # The sum of `DenseSimilarityTopK` and `SparseSimilarityTopK` cannot exceed 200.
+        # 
+        # Default value: 100.
         self.dense_similarity_top_k = dense_similarity_top_k
+        # The description of the knowledge base.
         self.description = description
+        # The knowledge base ID.
+        # 
         # This parameter is required.
         self.id = id
+        # The name of the knowledge base.
         self.name = name
+        # The number of Retrieval Compute Units (RCUs) for the Ultimate Edition knowledge base. This parameter is required only when PipelineCommercialType is set to enterprise.
+        # 
+        # The value must be in the range of 1 to 200.
         self.pipeline_commercial_cu = pipeline_commercial_cu
+        # The edition of the knowledge base. Valid values:
+        # 
+        # - standard: Standard Edition
+        # 
+        # - enterprise: Ultimate Edition
         self.pipeline_commercial_type = pipeline_commercial_type
+        # The minimum score for sorting. The value must be between 0 and 1.
         self.rerank_min_score = rerank_min_score
+        # The number of text segments to retrieve using an exact keyword match. This helps filter out irrelevant text segments and provides more accurate results.
+        # The value must be in the range of 0 to 100.
+        # The sum of `DenseSimilarityTopK` and `SparseSimilarityTopK` cannot exceed 200.
+        # 
+        # Default value: 100.
         self.sparse_similarity_top_k = sparse_similarity_top_k
 
     def validate(self):

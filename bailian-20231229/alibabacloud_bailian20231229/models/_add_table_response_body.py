@@ -15,12 +15,20 @@ class AddTableResponseBody(DaraModel):
         status: str = None,
         success: bool = None,
     ):
+        # The error code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The error message.
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # The status code returned by the operation.
         self.status = status
+        # Indicates whether the call was successful. Valid values:
+        # 
+        # - true: Succeeded.
+        # - false: Failed.
         self.success = success
 
     def validate(self):
@@ -80,6 +88,7 @@ class AddTableResponseBodyData(DaraModel):
         self,
         table_id: str = None,
     ):
+        # The table ID.
         self.table_id = table_id
 
     def validate(self):

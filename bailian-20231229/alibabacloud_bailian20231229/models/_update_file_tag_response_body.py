@@ -15,12 +15,21 @@ class UpdateFileTagResponseBody(DaraModel):
         status: str = None,
         success: bool = None,
     ):
+        # The result code. A value of `Success` indicates that the request was successful.
         self.code = code
+        # The data returned.
         self.data = data
+        # The response message.
         self.message = message
-        # RequestId
+        # The request ID.
         self.request_id = request_id
+        # The status code.
         self.status = status
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # - `true`: The request was successful.
+        # 
+        # - `false`: The request failed.
         self.success = success
 
     def validate(self):
@@ -80,6 +89,7 @@ class UpdateFileTagResponseBodyData(DaraModel):
         self,
         file_id: str = None,
     ):
+        # The ID of the file.
         self.file_id = file_id
 
     def validate(self):

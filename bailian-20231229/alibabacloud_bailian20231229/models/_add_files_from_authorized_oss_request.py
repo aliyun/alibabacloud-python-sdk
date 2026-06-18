@@ -18,17 +18,36 @@ class AddFilesFromAuthorizedOssRequest(DaraModel):
         over_write_file_by_oss_key: bool = None,
         tags: List[str] = None,
     ):
+        # Specifies the target category for file import. This is the `CategoryId` returned by the AddCategory operation. You can also obtain the category ID from the <props="china">[Application Data](https://bailian.console.aliyun.com/?tab=app#/data-center) - Files tab<props="intl">[Application Data](https://modelstudio.console.alibabacloud.com/?tab=app#/data-center) - Files tab by clicking the ID icon next to the category name. You can also pass in default, which uses the system-created "Default Category".
+        # 
         # This parameter is required.
         self.category_id = category_id
+        # Category type. Optional. The default value is UNSTRUCTURED. Valid values:
+        # - UNSTRUCTURED: Category used for building knowledge base scenarios.
+        # 
+        # <props="china">
+        # 
+        # > This operation does not support importing SESSION_FILE used for agent application [session interaction](https://help.aliyun.com/zh/model-studio/user-guide/file-interaction). Please use the **AddFile** operation to upload SESSION_FILE from local.
+        # 
         # This parameter is required.
         self.category_type = category_type
+        # The list of files to import. Up to 10 files can be uploaded at a time.
+        # > Up to 10 files can be uploaded at a time.
+        # >
+        # 
         # This parameter is required.
         self.file_details = file_details
+        # The OSS Bucket name. For details, see [Buckets](https://help.aliyun.com/document_detail/177682.html).
+        # 
         # This parameter is required.
         self.oss_bucket_name = oss_bucket_name
+        # The region ID of the OSS Bucket. For how to obtain it, see [OSS regions and endpoints](https://help.aliyun.com/document_detail/31837.html).
+        # 
         # This parameter is required.
         self.oss_region_id = oss_region_id
+        # Whether to overwrite the same file in the category by OssKey. The default value is false, meaning no overwrite.
         self.over_write_file_by_oss_key = over_write_file_by_oss_key
+        # The list of tags associated with the file. The default is empty, meaning the file is not associated with any tags. Up to 10 tags can be passed in.
         self.tags = tags
 
     def validate(self):
@@ -103,11 +122,38 @@ class AddFilesFromAuthorizedOssRequestFileDetails(DaraModel):
         parser: str = None,
         parser_config: main_models.AddFilesFromAuthorizedOssRequestFileDetailsParserConfig = None,
     ):
+        # The name of the file to import. Note that the suffix must include the file format type.
+        # - Supported formats: pdf, docx, doc, txt, md, pptx, ppt, xlsx, xls, html, png, jpg, jpeg, bmp, gif.
+        # - The file name length is limited to 4-128 characters.
+        # - For file upload requirements and limits, see [Knowledge base quotas and limits](https://help.aliyun.com/document_detail/2880605.html).
+        # 
+        # >Notice: When the imported file name duplicates an existing file name in the knowledge base, the operation still returns `Status` as `SUCCESS`, but the file will not actually be imported into the knowledge base, and the existing file with the same name remains unchanged. Please ensure that each imported file name is unique.
+        # > To add a new data table and upload data, please use the Alibaba Cloud Model Studio console; the API does not support this.
+        # 
         # This parameter is required.
         self.file_name = file_name
+        # The key name (Key) of the imported file in the OSS Bucket. For details, see [Object naming](https://help.aliyun.com/document_detail/273129.html).
+        # 
         # This parameter is required.
         self.oss_key = oss_key
+        # Parser type. Possible values include:
+        # 
+        # - DOCMIND (Intelligent document parsing)
+        # - DOCMIND_DIGITAL (Digital document parsing)
+        # - DOCMIND_LLM_VERSION (LLM-based document parsing)
+        # - DASH_QWEN_VL_PARSER (Qwen VL parsing)
+        # - DOCMIND_LLM_VERSION_MEDIA (Audio/video parsing)
+        # - AUTO_SELECT (Automatically select parser)
+        # 
+        # <props="intl">
+        # <note>The currently configured parser will be used to parse your uploaded files. If AUTO_SELECT is entered, the parser configured for the corresponding category will be used.</note>
+        # 
+        # 
+        # <props="china">
+        # <note>When CategoryType is UNSTRUCTURED, the parser parses your uploaded files according to the data parsing settings of the current category.</note>
+        # <note>When CategoryType is SESSION_FILE, the system uses the default method (not changeable) to parse file content.</note>
         self.parser = parser
+        # Parser configuration. Required only when the parser type is set to Qwen VL parsing.
         self.parser_config = parser_config
 
     def validate(self):
@@ -156,7 +202,9 @@ class AddFilesFromAuthorizedOssRequestFileDetailsParserConfig(DaraModel):
         model_name: str = None,
         model_prompt: str = None,
     ):
+        # Model name.
         self.model_name = model_name
+        # The prompt used when invoking Qwen VL parsing.
         self.model_prompt = model_prompt
 
     def validate(self):

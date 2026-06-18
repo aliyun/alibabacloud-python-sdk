@@ -17,12 +17,21 @@ class ListCategoryResponseBody(DaraModel):
         status: str = None,
         success: bool = None,
     ):
+        # The error code.
         self.code = code
+        # The response payload.
         self.data = data
+        # The error message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The status code for the request.
         self.status = status
+        # Indicates whether the request succeeded. Valid values:
+        # 
+        # - `true`: The request succeeded.
+        # 
+        # - `false`: The request failed.
         self.success = success
 
     def validate(self):
@@ -86,10 +95,19 @@ class ListCategoryResponseBodyData(DaraModel):
         next_token: str = None,
         total_count: int = None,
     ):
+        # The list of categories.
         self.category_list = category_list
+        # Indicates whether more results are available for retrieval. Valid values:
+        # 
+        # - `true`: More results are available.
+        # 
+        # - `false`: This is the last page of results.
         self.has_next = has_next
+        # The maximum number of results to return per page.
         self.max_results = max_results
+        # The token used to retrieve the next page of results. This parameter is omitted when no more results are available.
         self.next_token = next_token
+        # The total number of matching categories.
         self.total_count = total_count
 
     def validate(self):
@@ -153,10 +171,23 @@ class ListCategoryResponseBodyDataCategoryList(DaraModel):
         is_default: bool = None,
         parent_category_id: str = None,
     ):
+        # The category ID.
         self.category_id = category_id
+        # The category name.
         self.category_name = category_name
+        # The category type. The only valid value is:
+        # 
+        # - `UNSTRUCTURED`: A standard category.
         self.category_type = category_type
+        # Indicates whether the category is the default. Valid values:
+        # 
+        # - `true`: The category is the default.
+        # 
+        # - `false`: The category is not the default.
+        # 
+        # You cannot delete the default category.
         self.is_default = is_default
+        # The parent category ID.
         self.parent_category_id = parent_category_id
 
     def validate(self):

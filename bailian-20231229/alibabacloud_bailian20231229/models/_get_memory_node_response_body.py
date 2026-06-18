@@ -13,10 +13,15 @@ class GetMemoryNodeResponseBody(DaraModel):
         request_id: str = None,
         workspace_id: str = None,
     ):
+        # The content of the memory fragment.
         self.content = content
+        # The long-term memory ID.
         self.memory_id = memory_id
+        # The memory fragment ID.
         self.memory_node_id = memory_node_id
+        # The request ID.
         self.request_id = request_id
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):

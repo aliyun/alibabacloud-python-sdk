@@ -12,12 +12,20 @@ class UpdateTableFromAuthorizedOssRequest(DaraModel):
         oss_region_id: str = None,
         update_mode: str = None,
     ):
+        # Name of the OSS bucket. For details, see [bucket](https://help.aliyun.com/document_detail/177682.html).
+        # 
         # This parameter is required.
         self.oss_bucket = oss_bucket
+        # Object key of the file in the OSS bucket. For details, see [object naming](https://help.aliyun.com/document_detail/273129.html).
+        # 
         # This parameter is required.
         self.oss_key = oss_key
+        # Region ID of the OSS bucket. For details, see [OSS regions and endpoints](https://help.aliyun.com/document_detail/31837.html).
+        # 
         # This parameter is required.
         self.oss_region_id = oss_region_id
+        # Update mode. Valid values: APPEND and OVERWRITE.
+        # 
         # This parameter is required.
         self.update_mode = update_mode
 

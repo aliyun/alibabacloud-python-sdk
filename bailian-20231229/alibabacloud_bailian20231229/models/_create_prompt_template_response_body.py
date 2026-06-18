@@ -10,7 +10,9 @@ class CreatePromptTemplateResponseBody(DaraModel):
         prompt_template_id: str = None,
         request_id: str = None,
     ):
+        # Prompt template ID.
         self.prompt_template_id = prompt_template_id
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):

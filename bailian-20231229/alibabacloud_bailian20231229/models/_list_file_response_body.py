@@ -17,13 +17,19 @@ class ListFileResponseBody(DaraModel):
         status: str = None,
         success: bool = None,
     ):
+        # The error code.
         self.code = code
-        # The returned data.
+        # The data field returned by the operation.
         self.data = data
+        # The error message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The status code returned by the operation.
         self.status = status
+        # Indicates whether the operation was successful. Valid values:
+        # - true: Successful. 
+        # - false: Failed.
         self.success = success
 
     def validate(self):
@@ -87,11 +93,17 @@ class ListFileResponseBodyData(DaraModel):
         next_token: str = None,
         total_count: int = None,
     ):
-        # The list of documents in the category.
+        # The list of files in the category.
         self.file_list = file_list
+        # Indicates whether there is a next page of category data that matches the query conditions. Valid values:
+        # - true: Yes.
+        # - false: No.
         self.has_next = has_next
+        # The number of entries per page for paging.
         self.max_results = max_results
+        # The pagination token returned by this call.
         self.next_token = next_token
+        # The total number of entries in the returned results.
         self.total_count = total_count
 
     def validate(self):
@@ -154,20 +166,35 @@ class ListFileResponseBodyDataFileList(DaraModel):
         file_id: str = None,
         file_name: str = None,
         file_type: str = None,
+        parse_error_message: str = None,
         parser: str = None,
         size_in_bytes: int = None,
         status: str = None,
         tags: List[str] = None,
     ):
+        # The ID of the category to which the file belongs.
         self.category_id = category_id
+        # The timestamp when the file was added to Alibaba Cloud Model Studio. Format: yyyy-MM-dd HH:mm:ss. Time zone: UTC+8.
         self.create_time = create_time
-        # The document ID, which is the `FileId` parameter returned by the [AddFile](~~AddFile~~) operation. To view the ID, click the icon next to the file name on the [Data Management](https://bailian.console.alibabacloud.com/#/data-center) page.
+        # The file ID, which is the `FileId` returned by the **AddFile** operation. You can also obtain it on the <props="china">[Application Data](https://bailian.console.aliyun.com/?tab=app#/data-center)<props="intl">[Application Data](https://modelstudio.console.alibabacloud.com/?tab=app#/data-center) page by clicking the icon next to the file name.
         self.file_id = file_id
+        # The file name.
         self.file_name = file_name
+        # The file format type. Valid values: pdf, docx, doc, txt, md, pptx, ppt, xlsx, xls, html, png, jpg, jpeg, bmp, and gif.
         self.file_type = file_type
+        self.parse_error_message = parse_error_message
+        # The document parser. Valid values:
+        # - DASHSCOPE_DOCMIND: Alibaba Cloud intelligent document parsing.
         self.parser = parser
+        # The file size in bytes.
         self.size_in_bytes = size_in_bytes
+        # The file parsing status. Valid values:
+        # - INIT: Initialization state, waiting to be scheduled.
+        # - PARSING: Parsing in progress.
+        # - PARSE_SUCCESS: Parsing completed.
+        # - PARSE_FAILED: Parsing failed.
         self.status = status
+        # The list of tags associated with the file. A document can be associated with multiple tags.
         self.tags = tags
 
     def validate(self):
@@ -192,6 +219,9 @@ class ListFileResponseBodyDataFileList(DaraModel):
 
         if self.file_type is not None:
             result['FileType'] = self.file_type
+
+        if self.parse_error_message is not None:
+            result['ParseErrorMessage'] = self.parse_error_message
 
         if self.parser is not None:
             result['Parser'] = self.parser
@@ -223,6 +253,9 @@ class ListFileResponseBodyDataFileList(DaraModel):
 
         if m.get('FileType') is not None:
             self.file_type = m.get('FileType')
+
+        if m.get('ParseErrorMessage') is not None:
+            self.parse_error_message = m.get('ParseErrorMessage')
 
         if m.get('Parser') is not None:
             self.parser = m.get('Parser')

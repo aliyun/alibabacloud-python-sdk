@@ -14,20 +14,20 @@ class UpdateChunkResponseBody(DaraModel):
         status: str = None,
         success: bool = None,
     ):
-        # The status code.
+        # The error status code.
         self.code = code
-        # The data returned if the request is successful.
+        # The business data returned upon a successful request.
         self.data = data
         # The error message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The HTTP status code returned.
+        # The status code returned by the operation.
         self.status = status
-        # Indications whether the API call is successful. Valid values:
+        # Indicates whether the operation was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: Succeeded.
+        # - false: Failed.
         self.success = success
 
     def validate(self):

@@ -10,8 +10,12 @@ class UpdateConnectorRequest(DaraModel):
         connector_name: str = None,
         description: str = None,
     ):
+        # The name of the connector.
+        # 
         # This parameter is required.
         self.connector_name = connector_name
+        # A description of the connector.
+        # 
         # This parameter is required.
         self.description = description
 

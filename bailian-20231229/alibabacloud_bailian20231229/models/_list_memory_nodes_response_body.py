@@ -16,10 +16,15 @@ class ListMemoryNodesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The maximum number of results returned.
         self.max_results = max_results
+        # The array of memory nodes.
         self.memory_nodes = memory_nodes
+        # The token used for token-based pagination.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The total number of memory nodes.
         self.total_count = total_count
 
     def validate(self):
@@ -80,7 +85,9 @@ class ListMemoryNodesResponseBodyMemoryNodes(DaraModel):
         content: str = None,
         memory_node_id: str = None,
     ):
+        # The content of the memory node.
         self.content = content
+        # The memory node ID.
         self.memory_node_id = memory_node_id
 
     def validate(self):

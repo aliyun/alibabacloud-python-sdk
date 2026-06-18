@@ -21,7 +21,11 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = ''
+        self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'cn-beijing': 'bailian.cn-beijing.aliyuncs.com',
+            'ap-southeast-1': 'bailian.ap-southeast-1.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('bailian', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -482,6 +486,8 @@ class Client(OpenApiClient):
             body['ConnectorId'] = request.connector_id
         if not DaraCore.is_null(request.table_columns_shrink):
             body['TableColumns'] = request.table_columns_shrink
+        if not DaraCore.is_null(request.table_desc):
+            body['TableDesc'] = request.table_desc
         if not DaraCore.is_null(request.table_name):
             body['TableName'] = request.table_name
         req = open_api_util_models.OpenApiRequest(
@@ -521,6 +527,8 @@ class Client(OpenApiClient):
             body['ConnectorId'] = request.connector_id
         if not DaraCore.is_null(request.table_columns_shrink):
             body['TableColumns'] = request.table_columns_shrink
+        if not DaraCore.is_null(request.table_desc):
+            body['TableDesc'] = request.table_desc
         if not DaraCore.is_null(request.table_name):
             body['TableName'] = request.table_name
         req = open_api_util_models.OpenApiRequest(

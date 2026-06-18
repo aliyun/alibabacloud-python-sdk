@@ -17,12 +17,21 @@ class ListIndexFileDetailsResponseBody(DaraModel):
         status: str = None,
         success: bool = None,
     ):
+        # The error code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The error message.
         self.message = message
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
+        # The HTTP status code.
         self.status = status
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # - true: The request was successful.
+        # 
+        # - false: The request failed.
         self.success = success
 
     def validate(self):
@@ -86,10 +95,15 @@ class ListIndexFileDetailsResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # A list of documents in the knowledge base. The documents are sorted by import time in descending order. This order is the same as the order in the console.
         self.documents = documents
+        # The knowledge base ID.
         self.index_id = index_id
+        # The returned page number.
         self.page_number = page_number
+        # The number of entries returned on each page.
         self.page_size = page_size
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -162,19 +176,41 @@ class ListIndexFileDetailsResponseBodyDataDocuments(DaraModel):
         status: str = None,
         separator: str = None,
     ):
+        # The custom chunking method.
         self.chunk_mode = chunk_mode
+        # The length of a chunk, in characters.
         self.chunk_size = chunk_size
+        # The error code that is returned if the document fails to be imported.
         self.code = code
+        # The format of the document. Valid values: pdf, docx, doc, txt, md, pptx, ppt, png, jpg, jpeg, bmp, gif, and EXCEL.
         self.document_type = document_type
+        # Indicates whether the table headers of Excel files in an unstructured knowledge base are concatenated.
         self.enable_headers = enable_headers
+        # The time when the document was imported. This value is a Unix timestamp.
         self.gmt_modified = gmt_modified
+        # The document ID.
         self.id = id
+        # The error message that is returned if the document fails to be imported.
         self.message = message
+        # The name of the document.
         self.name = name
+        # The overlap length of chunks.
         self.overlap_size = overlap_size
+        # The size of the document, in bytes.
         self.size = size
+        # The category ID.
         self.source_id = source_id
+        # The import status of the document. Valid values:
+        # 
+        # - INSERT_ERROR: The document failed to be imported.
+        # 
+        # - RUNNING: The document is being imported.
+        # 
+        # - DELETED: The document has been deleted.
+        # 
+        # - FINISH: The document was imported successfully.
         self.status = status
+        # The sentence separator.
         self.separator = separator
 
     def validate(self):

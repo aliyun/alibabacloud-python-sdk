@@ -14,12 +14,33 @@ class ListCategoryRequest(DaraModel):
         next_token: str = None,
         parent_category_id: str = None,
     ):
+        # Filters the results to include only the category with this exact name. If this parameter is omitted, no filtering is applied.
         self.category_name = category_name
+        # The type of category to query. Valid value:
+        # 
+        # - `UNSTRUCTURED`: A category for unstructured data.
+        # 
+        # <props="china">
+        # 
+        # > This API does not support querying structured data tables.
+        # 
+        # 
+        # 
+        # <props="intl">
+        # 
+        # > This API does not support querying structured data tables.
+        # 
         # This parameter is required.
         self.category_type = category_type
+        # The ID of the connector.
         self.connector_id = connector_id
+        # The maximum number of categories to return per page. The valid range is 1 to 200.
+        # 
+        # Default value: 20. If this parameter is not specified or is set to a value less than 1, the default value is used. If a value greater than 200 is specified, the maximum value of 200 is used.
         self.max_results = max_results
+        # The pagination token. To retrieve the next page of results, pass the `NextToken` value from the previous response.
         self.next_token = next_token
+        # The ID of the parent category.
         self.parent_category_id = parent_category_id
 
     def validate(self):

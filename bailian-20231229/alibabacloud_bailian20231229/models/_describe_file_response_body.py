@@ -17,20 +17,19 @@ class DescribeFileResponseBody(DaraModel):
         status: str = None,
         success: bool = None,
     ):
-        # The status code.
+        # The error status code.
         self.code = code
-        # The returned data fields.
+        # The data field of the operation.
         self.data = data
         # The error message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The HTTP status code.
+        # The status code returned by the operation.
         self.status = status
-        # Indications whether the API call is successful. Valid values:
-        # 
-        # *   true
-        # *   false
+        # Indicates whether the call was successful. Valid values:
+        # - true: Successful.
+        # - false: Failed.
         self.success = success
 
     def validate(self):
@@ -93,37 +92,71 @@ class DescribeFileResponseBodyData(DaraModel):
         file_id: str = None,
         file_name: str = None,
         file_type: str = None,
+        parse_error_message: str = None,
         parse_result_download_url: str = None,
         parser: str = None,
         size_in_bytes: int = None,
         status: str = None,
         tags: List[str] = None,
     ):
-        # The ID of the category to which the document belongs.
+        # The ID of the category to which the file belongs.
         self.category_id = category_id
-        # The timestamp when the document was uploaded to Model Studio. Format: yyyy-MM-dd HH:mm:ss. Time zone: UTC + 8.
+        # The timestamp when the file was added to Model Studio. Format: yyyy-MM-dd HH:mm:ss. Time zone: UTC+8.
         self.create_time = create_time
-        # The primary key ID of the document.
+        # The file ID.
         self.file_id = file_id
-        # The name of the document.
+        # The file name.
         self.file_name = file_name
-        # The file type of the document. The value is an extension. Valid values: pdf, docx, doc, txt, md, pptx, and ppt.
+        # The file type (extension). Valid values: pdf, docx, doc, txt, md, pptx, ppt, xlsx, xls, html, png, jpg, jpeg, bmp, and gif.
         self.file_type = file_type
+        self.parse_error_message = parse_error_message
         self.parse_result_download_url = parse_result_download_url
-        # The parser that is used to parse the document. Valid value:
-        # 
-        # *   DASHSCOPE_DOCMIND: The default document parser.
+        # The parser type used to parse the file. Valid values:
+        # - DASHSCOPE_DOCMIND: the default document parser.
         self.parser = parser
-        # The size of the document. Unit: bytes.
+        # The file size, in bytes.
         self.size_in_bytes = size_in_bytes
-        # The status of the document. Valid values:
+        # <props="china">
         # 
-        # *   INIT: pending parsing.
-        # *   PARSING
-        # *   PARSE_SUCCESS
-        # *   PARSE_FAILED
+        # For files used in document-based knowledge bases (type: UNSTRUCTURED), valid values:
+        # 
+        # 
+        # 
+        # <props="intl">
+        # 
+        # For files used in unstructured knowledge bases (type: UNSTRUCTURED), valid values:
+        # 
+        # 
+        # 
+        # 
+        # - INIT: pending parsing.
+        # - IN_PARSE_QUEUE: queued for parsing.
+        # - PARSING: being parsed.
+        # - PARSE_SUCCESS: parsing completed.
+        # <note>The document can be imported into a knowledge base only after the status changes to PARSE_SUCCESS.</note>
+        # - PARSE_FAILED: parsing failed.
+        # 
+        # <props="china">
+        # For files used in agent application [session interaction](https://www.alibabacloud.com/help/en/model-studio/user-guide/file-interaction) (type: SESSION_FILE), valid values:
+        # 
+        # - INIT: pending parsing.
+        # - IN_PARSE_QUEUE: queued for parsing.
+        # - PARSING: being parsed.
+        # - PARSE_SUCCESS: parsing completed.
+        # - PARSE_FAILED: parsing failed.
+        # - SAFE_CHECKING: security check in progress.
+        # - SAFE_CHECK_FAILED: security check failed.
+        # - INDEX_BUILDING: index being built.
+        # - INDEX_BUILD_SUCCESS: index built.
+        # - INDEX_BUILDING_FAILED: index building failed.
+        # - INDEX_DELETED: file index deleted.
+        # - FILE_IS_READY: file is ready.
+        # <note>Q&A can proceed only after the status changes to FILE_IS_READY.</note>
+        # - FILE_EXPIRED: file expired.
+        # <note>The file is valid only for the current user session. After the user closes the session, the file expires (maximum validity period: 7 days). Long-term retention is not supported.</note>
+        # .
         self.status = status
-        # The tags that are associated with the document. A document can be associated with multiple tags.
+        # The list of tags associated with the file. A file can be associated with multiple tags.
         self.tags = tags
 
     def validate(self):
@@ -148,6 +181,9 @@ class DescribeFileResponseBodyData(DaraModel):
 
         if self.file_type is not None:
             result['FileType'] = self.file_type
+
+        if self.parse_error_message is not None:
+            result['ParseErrorMessage'] = self.parse_error_message
 
         if self.parse_result_download_url is not None:
             result['ParseResultDownloadUrl'] = self.parse_result_download_url
@@ -182,6 +218,9 @@ class DescribeFileResponseBodyData(DaraModel):
 
         if m.get('FileType') is not None:
             self.file_type = m.get('FileType')
+
+        if m.get('ParseErrorMessage') is not None:
+            self.parse_error_message = m.get('ParseErrorMessage')
 
         if m.get('ParseResultDownloadUrl') is not None:
             self.parse_result_download_url = m.get('ParseResultDownloadUrl')
