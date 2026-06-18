@@ -66,7 +66,19 @@ class Client(OpenApiClient):
             'eu-west-1': 'polardbx.aliyuncs.com',
             'eu-west-1-oxs': 'polardbx.aliyuncs.com',
             'me-east-1': 'polardbx.aliyuncs.com',
-            'rus-west-1-pop': 'polardbx.aliyuncs.com'
+            'rus-west-1-pop': 'polardbx.aliyuncs.com',
+            'us-west-1': 'polardbx.us-west-1.aliyuncs.com',
+            'us-east-1': 'polardbx.us-east-1.aliyuncs.com',
+            'cn-zhangjiakou': 'polardbx.cn-zhangjiakou.aliyuncs.com',
+            'cn-shenzhen': 'polardbx.cn-shenzhen.aliyuncs.com',
+            'cn-shanghai': 'polardbx.cn-shanghai.aliyuncs.com',
+            'cn-qingdao': 'polardbx.cn-qingdao.aliyuncs.com',
+            'cn-huhehaote': 'polardbx.cn-huhehaote.aliyuncs.com',
+            'cn-hongkong': 'polardbx.cn-hongkong.aliyuncs.com',
+            'cn-hangzhou': 'polardbx.cn-hangzhou.aliyuncs.com',
+            'cn-chengdu': 'polardbx.cn-chengdu.aliyuncs.com',
+            'cn-beijing': 'polardbx.cn-beijing.aliyuncs.com',
+            'ap-southeast-1': 'polardbx.ap-southeast-1.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('polardbx', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -6205,6 +6217,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_mem_0info_with_options_async(request, runtime)
 
+    def describe_mem_0security_ips_with_options(
+        self,
+        request: main_models.DescribeMem0SecurityIpsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeMem0SecurityIpsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeMem0SecurityIps',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeMem0SecurityIpsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_mem_0security_ips_with_options_async(
+        self,
+        request: main_models.DescribeMem0SecurityIpsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeMem0SecurityIpsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeMem0SecurityIps',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeMem0SecurityIpsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_mem_0security_ips(
+        self,
+        request: main_models.DescribeMem0SecurityIpsRequest,
+    ) -> main_models.DescribeMem0SecurityIpsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_mem_0security_ips_with_options(request, runtime)
+
+    async def describe_mem_0security_ips_async(
+        self,
+        request: main_models.DescribeMem0SecurityIpsRequest,
+    ) -> main_models.DescribeMem0SecurityIpsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_mem_0security_ips_with_options_async(request, runtime)
+
     def describe_open_backup_set_with_options(
         self,
         request: main_models.DescribeOpenBackupSetRequest,
@@ -9791,6 +9877,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.modify_engine_migration_with_options_async(request, runtime)
 
+    def modify_mem_0security_ips_with_options(
+        self,
+        request: main_models.ModifyMem0SecurityIpsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyMem0SecurityIpsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.group_name):
+            query['GroupName'] = request.group_name
+        if not DaraCore.is_null(request.modify_mode):
+            query['ModifyMode'] = request.modify_mode
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.security_iplist):
+            query['SecurityIPList'] = request.security_iplist
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyMem0SecurityIps',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyMem0SecurityIpsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_mem_0security_ips_with_options_async(
+        self,
+        request: main_models.ModifyMem0SecurityIpsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyMem0SecurityIpsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.group_name):
+            query['GroupName'] = request.group_name
+        if not DaraCore.is_null(request.modify_mode):
+            query['ModifyMode'] = request.modify_mode
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.security_iplist):
+            query['SecurityIPList'] = request.security_iplist
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyMem0SecurityIps',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyMem0SecurityIpsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_mem_0security_ips(
+        self,
+        request: main_models.ModifyMem0SecurityIpsRequest,
+    ) -> main_models.ModifyMem0SecurityIpsResponse:
+        runtime = RuntimeOptions()
+        return self.modify_mem_0security_ips_with_options(request, runtime)
+
+    async def modify_mem_0security_ips_async(
+        self,
+        request: main_models.ModifyMem0SecurityIpsRequest,
+    ) -> main_models.ModifyMem0SecurityIpsResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_mem_0security_ips_with_options_async(request, runtime)
+
     def modify_parameter_with_options(
         self,
         request: main_models.ModifyParameterRequest,
@@ -10462,6 +10634,84 @@ class Client(OpenApiClient):
     ) -> main_models.ResetAccountPasswordRestrictResponse:
         runtime = RuntimeOptions()
         return await self.reset_account_password_restrict_with_options_async(request, runtime)
+
+    def reset_mem_0account_password_with_options(
+        self,
+        request: main_models.ResetMem0AccountPasswordRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ResetMem0AccountPasswordResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.mem_0api_key):
+            query['Mem0ApiKey'] = request.mem_0api_key
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ResetMem0AccountPassword',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ResetMem0AccountPasswordResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def reset_mem_0account_password_with_options_async(
+        self,
+        request: main_models.ResetMem0AccountPasswordRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ResetMem0AccountPasswordResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.mem_0api_key):
+            query['Mem0ApiKey'] = request.mem_0api_key
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ResetMem0AccountPassword',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ResetMem0AccountPasswordResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def reset_mem_0account_password(
+        self,
+        request: main_models.ResetMem0AccountPasswordRequest,
+    ) -> main_models.ResetMem0AccountPasswordResponse:
+        runtime = RuntimeOptions()
+        return self.reset_mem_0account_password_with_options(request, runtime)
+
+    async def reset_mem_0account_password_async(
+        self,
+        request: main_models.ResetMem0AccountPasswordRequest,
+    ) -> main_models.ResetMem0AccountPasswordResponse:
+        runtime = RuntimeOptions()
+        return await self.reset_mem_0account_password_with_options_async(request, runtime)
 
     def restart_dbinstance_with_options(
         self,

@@ -60,7 +60,6 @@ class CreateGdnStandbyMemberRequest(DaraModel):
         # This parameter is required.
         self.topology_type = topology_type
         self.used_time = used_time
-        # VPC ID。
         self.vpcid = vpcid
         self.v_switch_id = v_switch_id
 

@@ -13,7 +13,9 @@ class DescribeDBInstanceTopologyResponseBody(DaraModel):
         data: main_models.DescribeDBInstanceTopologyResponseBodyData = None,
         request_id: str = None,
     ):
+        # The data struct.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -49,6 +51,7 @@ class DescribeDBInstanceTopologyResponseBodyData(DaraModel):
         self,
         logic_instance_topology: main_models.DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopology = None,
     ):
+        # The topology information.
         self.logic_instance_topology = logic_instance_topology
 
     def validate(self):
@@ -93,21 +96,40 @@ class DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopology(DaraModel)
         maintain_end_time: str = None,
         maintain_start_time: str = None,
     ):
+        # Indicates that LVS is used for load balancing.
         self.dbinstance_conn_type = dbinstance_conn_type
+        # The time when the instance was created. Format: yyyy-MM-dd HH:mm:ss.
         self.dbinstance_create_time = dbinstance_create_time
+        # The instance description.
         self.dbinstance_description = dbinstance_description
+        # The instance ID.
         self.dbinstance_id = dbinstance_id
+        # The instance name.
         self.dbinstance_name = dbinstance_name
+        # The instance status.
         self.dbinstance_status = dbinstance_status
+        # The description of the instance status.
         self.dbinstance_status_description = dbinstance_status_description
+        # The number of storage nodes.
         self.dbinstance_storage = dbinstance_storage
+        # The engine type. Default value: polarx.
         self.engine = engine
+        # The engine version. Default value: 2.0.
         self.engine_version = engine_version
+        # The list of historical nodes.
         self.history_items = history_items
+        # The list of nodes.
         self.items = items
+        # The lock status. Valid values:
+        # 
+        # - **0**: Not locked.
+        # - **1**: Locked.
         self.lock_mode = lock_mode
+        # The reason why the instance is locked.
         self.lock_reason = lock_reason
+        # The end time of the O&M window. Format: HH:mm:ss.
         self.maintain_end_time = maintain_end_time
+        # The start time of the O&M window. Format: HH:mm:ss.
         self.maintain_start_time = maintain_start_time
 
     def validate(self):
@@ -271,35 +293,97 @@ class DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems(DaraM
         storage_used: str = None,
         version: str = None,
     ):
+        # Indicates whether the node is activated. For the compute layer, only the node in the primary zone is activated. After a primary/secondary switchover is performed on the instance, the standby compute node becomes the primary node. All storage layer nodes are activated.
         self.activated = activated
+        # The zone of the node. If the node is an RDS node, the zones of multiple child nodes are separated with a delimiter (,).
         self.azone = azone
+        # The data information list of the RDS three-node cluster.
         self.azone_role_list = azone_role_list
+        # The node type. Valid values:
+        # 
+        # - **polarx_cn**: compute node.
+        # - **polarx_store**: data node.
+        # - **polarx_gms**: GMS node.
         self.character_type = character_type
+        # The data struct.
         self.connection_ip = connection_ip
+        # The connection type.
         self.dbinstance_conn_type = dbinstance_conn_type
+        # The time when the instance was created.
         self.dbinstance_create_time = dbinstance_create_time
+        # The instance description.
         self.dbinstance_description = dbinstance_description
+        # The instance ID.
         self.dbinstance_id = dbinstance_id
+        # The instance name.
         self.dbinstance_name = dbinstance_name
+        # The instance status.
         self.dbinstance_status = dbinstance_status
+        # The description of the instance status.
         self.dbinstance_status_description = dbinstance_status_description
+        # The disk size.
         self.disk_size = disk_size
+        # The engine type. Valid values:
+        # 
+        # - **mysql**
+        # - **polarx_cdc**
+        # - **polarx_dn**
         self.engine = engine
+        # The engine version. Default value: 2.0.
         self.engine_version = engine_version
         self.instance_cluster_name = instance_cluster_name
+        # Indicates whether the node is locked. Valid values:
+        # 
+        # - **0**: Not locked.
+        # - **1**: Locked.
         self.lock_mode = lock_mode
+        # The reason why the instance is locked.
         self.lock_reason = lock_reason
+        # The end time of the O&M window.
         self.maintain_end_time = maintain_end_time
+        # The start time of the O&M window.
         self.maintain_start_time = maintain_start_time
+        # The maximum number of connections.
         self.max_connections = max_connections
+        # The maximum IOPS.
         self.max_iops = max_iops
+        # The node specifications. Valid values:
+        # 
+        # - **polarx.x4.medium.2e**: 2 cores, 8 GB
+        # - **polarx.x4.large.2e**: 4 cores, 16 GB
+        # - **polarx.x8.large.2e**: 4 cores, 32 GB
+        # - **polarx.x4.xlarge.2e**: 8 cores, 32 GB
+        # - **polarx.x8.xlarge.2e**: 8 cores, 64 GB
+        # - **polarx.x4.2xlarge.2e**: 16 cores, 64 GB
+        # - **polarx.x8.2xlarge.2e**: 16 cores, 128 GB
+        # - **polarx.x4.4xlarge.2e**: 32 cores, 128 GB
+        # - **polarx.x8.4xlarge.2e**: 32 cores, 256 GB
+        # - **polarx.st.8xlarge.2e**: 60 cores, 470 GB
+        # - **polarx.st.12xlarge.2e**: 90 cores, 720 GB.
         self.node_class = node_class
+        # The physical instance name.
         self.phy_instance_name = phy_instance_name
         self.read_type = read_type
+        # The region of the node. If the node is an RDS node, the regions of multiple child nodes are separated with a delimiter (,).
         self.region = region
+        # The role of the node. Valid values:
+        # 
+        # - **master**: primary node
+        # - **standby**: secondary node.
         self.role = role
+        # The node status. Valid values:
+        # 
+        # - **0**: Running.
+        # - **1**: Creating.
+        # - **2**: Abnormal.
+        # - **3**: Expired.
+        # - **4**: Releasing.
+        # - **5**: Released.
+        # - **6**: Locked.
         self.status = status
+        # The storage usage, in MB.
         self.storage_used = storage_used
+        # The logger node version.
         self.version = version
 
     def validate(self):
@@ -520,8 +604,11 @@ class DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItemsConnec
         dbinstance_net_type: int = None,
         port: str = None,
     ):
+        # The connection information.
         self.connection_string = connection_string
+        # The internal connection type. The value is fixed to 1, which indicates the classic network.
         self.dbinstance_net_type = dbinstance_net_type
+        # The port.
         self.port = port
 
     def validate(self):
@@ -562,7 +649,13 @@ class DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItemsAzoneR
         azone: str = None,
         role: str = None,
     ):
+        # The zone of a node in the RDS three-node cluster.
         self.azone = azone
+        # The role of a node in the RDS three-node cluster. Valid values:
+        # 
+        # - **leader**: primary node
+        # - **follower**: secondary node
+        # - **logger**: logger node.
         self.role = role
 
     def validate(self):
@@ -603,13 +696,28 @@ class DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyHistoryItem
         region: str = None,
         role: str = None,
     ):
+        # Indicates whether the node is activated. For the compute layer, only the node in the primary zone is activated. After a primary/secondary switchover is performed on the instance, the standby compute node becomes the primary node. All storage layer nodes are activated.
         self.activated = activated
+        # The zone of the node. If the node is an RDS node, the zones of multiple child nodes are separated with a delimiter (,).
         self.azone = azone
+        # The node type. Valid values:
+        # 
+        # - **polarx_cn**: compute node.
+        # - **polarx_store**: data node.
+        # - **polarx_gms**: GMS node.
         self.character_type = character_type
+        # The instance ID.
         self.dbinstance_id = dbinstance_id
+        # The instance name.
         self.dbinstance_name = dbinstance_name
+        # The physical instance name.
         self.phy_instance_name = phy_instance_name
+        # The region of the node. If the node is an RDS node, the regions of multiple child nodes are separated with a delimiter (,).
         self.region = region
+        # The role of the node. Valid values:
+        # 
+        # - **master**: primary node
+        # - **standby**: secondary node.
         self.role = role
 
     def validate(self):

@@ -15,14 +15,23 @@ class CreateGdnInstanceRequest(DaraModel):
         rpl_dml_strategy: str = None,
         rpl_sync_ddl: bool = None,
     ):
+        # The name of the primary instance.
+        # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
+        # The description of the instance.
         self.description = description
+        # The GDN mode.
         self.gdn_mode = gdn_mode
+        # The region in which the instance resides.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The conflict strategy.
         self.rpl_conflict_strategy = rpl_conflict_strategy
+        # The DML replication policy.
         self.rpl_dml_strategy = rpl_dml_strategy
+        # Specifies whether to synchronize DDL statements.
         self.rpl_sync_ddl = rpl_sync_ddl
 
     def validate(self):

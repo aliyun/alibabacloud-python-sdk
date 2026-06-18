@@ -14,7 +14,9 @@ class DescribeShowStorageInfoResponseBody(DaraModel):
         data: main_models.DescribeShowStorageInfoResponseBodyData = None,
         request_id: str = None,
     ):
+        # The return code of the request. This parameter is empty when the request is successful. When the request fails, exception information such as an error code is returned.
         self.code = code
+        # The data.
         self.data = data
         # Id of the request
         self.request_id = request_id
@@ -58,6 +60,7 @@ class DescribeShowStorageInfoResponseBodyData(DaraModel):
         self,
         storage_infos: List[main_models.DescribeShowStorageInfoResponseBodyDataStorageInfos] = None,
     ):
+        # The list of storage information.
         self.storage_infos = storage_infos
 
     def validate(self):
@@ -101,14 +104,26 @@ class DescribeShowStorageInfoResponseBodyDataStorageInfos(DaraModel):
         status: int = None,
         storage_inst_name: str = None,
     ):
+        # The specification type (specification code) of the instance.
         self.class_ = class_
+        # The number of databases.
         self.db_count = db_count
+        # Indicates whether the instance can be deleted.
         self.deletable = deletable
+        # The number of node groups.
         self.group_count = group_count
+        # The role type of the instance. Valid values:
+        # MASTER: primary instance.
+        # READONLY: read-only instance.
+        # STANDBY: standby instance (high-availability scenario).
         self.inst_kind = inst_kind
+        # Indicates whether the instance or cluster is currently in a healthy state.
         self.is_healthy = is_healthy
+        # The identifier of the leader node.
         self.leader_node = leader_node
+        # The instance status.
         self.status = status
+        # The instance name.
         self.storage_inst_name = storage_inst_name
 
     def validate(self):

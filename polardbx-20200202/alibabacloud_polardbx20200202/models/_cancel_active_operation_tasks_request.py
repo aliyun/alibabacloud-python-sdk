@@ -10,8 +10,12 @@ class CancelActiveOperationTasksRequest(DaraModel):
         ids: str = None,
         region_id: str = None,
     ):
+        # The event IDs, separated by commas.
+        # 
         # This parameter is required.
         self.ids = ids
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
 

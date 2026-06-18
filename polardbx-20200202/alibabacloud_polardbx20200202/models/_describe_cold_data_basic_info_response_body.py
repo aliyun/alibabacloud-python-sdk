@@ -11,7 +11,9 @@ class DescribeColdDataBasicInfoResponseBody(DaraModel):
         data: main_models.DescribeColdDataBasicInfoResponseBodyData = None,
         request_id: str = None,
     ):
+        # The details.
         self.data = data
+        # requestId
         self.request_id = request_id
 
     def validate(self):
@@ -56,14 +58,20 @@ class DescribeColdDataBasicInfoResponseBodyData(DaraModel):
         volume_name: str = None,
         write_access_num: float = None,
     ):
+        # The number of backup sets.
         self.backup_set_count = backup_set_count
+        # The data size of valid backup sets.
         self.backup_set_space_size = backup_set_space_size
+        # The underlying storage cloud service.
         self.cloud_product = cloud_product
+        # The data size of cold storage.
         self.current_space_size = current_space_size
         self.data_redundancy_type = data_redundancy_type
+        # Indicates whether cold storage is enabled.
         self.enable_status = enable_status
         self.read_access_num = read_access_num
         self.region_id = region_id
+        # The storage volume name.
         self.volume_name = volume_name
         self.write_access_num = write_access_num
 

@@ -11,9 +11,14 @@ class DescribeDbListRequest(DaraModel):
         dbname: str = None,
         region_id: str = None,
     ):
+        # The instance name.
+        # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
+        # The database name.
         self.dbname = dbname
+        # The region ID of the instance.
+        # 
         # This parameter is required.
         self.region_id = region_id
 

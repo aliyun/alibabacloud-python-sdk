@@ -15,9 +15,13 @@ class DescribeDistributeTableListResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The data struct.
         self.data = data
+        # The response message. "success" is returned if the request is successful. Otherwise, an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -65,6 +69,7 @@ class DescribeDistributeTableListResponseBodyData(DaraModel):
         self,
         tables: List[main_models.DescribeDistributeTableListResponseBodyDataTables] = None,
     ):
+        # The list of tables.
         self.tables = tables
 
     def validate(self):
@@ -103,9 +108,13 @@ class DescribeDistributeTableListResponseBodyDataTables(DaraModel):
         table_type: str = None,
         tb_key: str = None,
     ):
+        # The data key.
         self.db_key = db_key
+        # The table name.
         self.table_name = table_name
+        # The table type.
         self.table_type = table_type
+        # The table key.
         self.tb_key = tb_key
 
     def validate(self):

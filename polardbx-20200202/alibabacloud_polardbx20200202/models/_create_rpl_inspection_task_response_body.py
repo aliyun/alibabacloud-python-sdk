@@ -13,9 +13,13 @@ class CreateRplInspectionTaskResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The task details.
         self.data = data
+        # The error message of the task. > This parameter is returned only when the task status is **stop**.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -63,6 +67,7 @@ class CreateRplInspectionTaskResponseBodyData(DaraModel):
         self,
         slink_task_id: str = None,
     ):
+        # The slink task ID.
         self.slink_task_id = slink_task_id
 
     def validate(self):

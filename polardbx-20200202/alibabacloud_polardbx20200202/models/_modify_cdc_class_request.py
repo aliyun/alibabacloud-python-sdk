@@ -13,13 +13,21 @@ class ModifyCdcClassRequest(DaraModel):
         region_id: str = None,
         switch_mode: str = None,
     ):
+        # The number of CDC nodes.
         self.cdcnode_count = cdcnode_count
+        # The instance type.
+        # 
         # This parameter is required.
         self.cdc_class = cdc_class
+        # The instance name.
+        # 
         # This parameter is required.
         self.instance_name = instance_name
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The switch mode.
         self.switch_mode = switch_mode
 
     def validate(self):

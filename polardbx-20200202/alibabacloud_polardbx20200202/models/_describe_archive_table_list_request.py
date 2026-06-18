@@ -17,6 +17,8 @@ class DescribeArchiveTableListRequest(DaraModel):
     ):
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
+        # The page number. Pages start from 1.
+        # 
         # This parameter is required.
         self.page_index = page_index
         # This parameter is required.

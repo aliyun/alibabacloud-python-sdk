@@ -11,10 +11,15 @@ class ReleaseInstancePublicConnectionRequest(DaraModel):
         dbinstance_name: str = None,
         region_id: str = None,
     ):
+        # The connection string of the instance.
+        # 
         # This parameter is required.
         self.current_connection_string = current_connection_string
+        # The instance name.
+        # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

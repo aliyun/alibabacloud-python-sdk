@@ -12,12 +12,20 @@ class ModifyDBInstanceConfigRequest(DaraModel):
         dbinstance_name: str = None,
         region_id: str = None,
     ):
+        # The configuration item to modify. For more information, see [Compute layer variables](https://help.aliyun.com/document_detail/316576.html).
+        # 
         # This parameter is required.
         self.config_name = config_name
+        # If configName is set to ENABLE_CONSISTENT_REPLICA_READ, the valid values are "true" and "false".
+        # 
         # This parameter is required.
         self.config_value = config_value
+        # The instance ID.
+        # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
 

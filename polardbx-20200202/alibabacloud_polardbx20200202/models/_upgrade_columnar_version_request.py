@@ -13,10 +13,15 @@ class UpgradeColumnarVersionRequest(DaraModel):
         region_id: str = None,
         switch_mode: str = None,
     ):
+        # The column store version.
         self.columnar_version = columnar_version
+        # The instance name.
         self.dbinstance_name = dbinstance_name
+        # The instance name.
         self.instance_name = instance_name
+        # The region in which the instance resides.
         self.region_id = region_id
+        # The switch mode.
         self.switch_mode = switch_mode
 
     def validate(self):

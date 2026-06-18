@@ -222,6 +222,9 @@ from ._describe_gdn_instances_response import DescribeGdnInstancesResponse
 from ._describe_mem_0info_request import DescribeMem0InfoRequest
 from ._describe_mem_0info_response_body import DescribeMem0InfoResponseBody
 from ._describe_mem_0info_response import DescribeMem0InfoResponse
+from ._describe_mem_0security_ips_request import DescribeMem0SecurityIpsRequest
+from ._describe_mem_0security_ips_response_body import DescribeMem0SecurityIpsResponseBody
+from ._describe_mem_0security_ips_response import DescribeMem0SecurityIpsResponse
 from ._describe_open_backup_set_request import DescribeOpenBackupSetRequest
 from ._describe_open_backup_set_response_body import DescribeOpenBackupSetResponseBody
 from ._describe_open_backup_set_response import DescribeOpenBackupSetResponse
@@ -350,6 +353,9 @@ from ._modify_database_description_response import ModifyDatabaseDescriptionResp
 from ._modify_engine_migration_request import ModifyEngineMigrationRequest
 from ._modify_engine_migration_response_body import ModifyEngineMigrationResponseBody
 from ._modify_engine_migration_response import ModifyEngineMigrationResponse
+from ._modify_mem_0security_ips_request import ModifyMem0SecurityIpsRequest
+from ._modify_mem_0security_ips_response_body import ModifyMem0SecurityIpsResponseBody
+from ._modify_mem_0security_ips_response import ModifyMem0SecurityIpsResponse
 from ._modify_parameter_request import ModifyParameterRequest
 from ._modify_parameter_response_body import ModifyParameterResponseBody
 from ._modify_parameter_response import ModifyParameterResponse
@@ -374,6 +380,9 @@ from ._reset_account_password_response import ResetAccountPasswordResponse
 from ._reset_account_password_restrict_request import ResetAccountPasswordRestrictRequest
 from ._reset_account_password_restrict_response_body import ResetAccountPasswordRestrictResponseBody
 from ._reset_account_password_restrict_response import ResetAccountPasswordRestrictResponse
+from ._reset_mem_0account_password_request import ResetMem0AccountPasswordRequest
+from ._reset_mem_0account_password_response_body import ResetMem0AccountPasswordResponseBody
+from ._reset_mem_0account_password_response import ResetMem0AccountPasswordResponse
 from ._restart_dbinstance_request import RestartDBInstanceRequest
 from ._restart_dbinstance_response_body import RestartDBInstanceResponseBody
 from ._restart_dbinstance_response import RestartDBInstanceResponse
@@ -438,12 +447,14 @@ from ._create_backup_response_body import CreateBackupResponseBodyData
 from ._create_custom_endpoint_response_body import CreateCustomEndpointResponseBodyData
 from ._create_data_import_task_response_body import CreateDataImportTaskResponseBodyData
 from ._create_gdn_instance_response_body import CreateGdnInstanceResponseBodyData
+from ._create_mem_0response_body import CreateMem0ResponseBodyAccessDeniedDetail
 from ._create_mem_0response_body import CreateMem0ResponseBodyData
 from ._create_rpl_inspection_task_response_body import CreateRplInspectionTaskResponseBodyData
 from ._create_sqlevaluate_task_response_body import CreateSQLEvaluateTaskResponseBodyData
 from ._create_structure_import_task_response_body import CreateStructureImportTaskResponseBodyData
 from ._create_sub_cninstance_response_body import CreateSubCNInstanceResponseBodyData
 from ._delete_gdn_instance_response_body import DeleteGdnInstanceResponseBodyData
+from ._delete_mem_0response_body import DeleteMem0ResponseBodyAccessDeniedDetail
 from ._delete_mem_0response_body import DeleteMem0ResponseBodyData
 from ._delete_sub_cninstance_response_body import DeleteSubCNInstanceResponseBodyData
 from ._describe_account_list_response_body import DescribeAccountListResponseBodyData
@@ -519,9 +530,13 @@ from ._describe_events_response_body import DescribeEventsResponseBodyEventItems
 from ._describe_gdn_instances_response_body import DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList
 from ._describe_gdn_instances_response_body import DescribeGdnInstancesResponseBodyDataGdnInstanceList
 from ._describe_gdn_instances_response_body import DescribeGdnInstancesResponseBodyData
+from ._describe_mem_0info_response_body import DescribeMem0InfoResponseBodyAccessDeniedDetail
 from ._describe_mem_0info_response_body import DescribeMem0InfoResponseBodyDataInstanceConnAddrs
 from ._describe_mem_0info_response_body import DescribeMem0InfoResponseBodyDataInstance
 from ._describe_mem_0info_response_body import DescribeMem0InfoResponseBodyData
+from ._describe_mem_0security_ips_response_body import DescribeMem0SecurityIpsResponseBodyAccessDeniedDetail
+from ._describe_mem_0security_ips_response_body import DescribeMem0SecurityIpsResponseBodyDataGroups
+from ._describe_mem_0security_ips_response_body import DescribeMem0SecurityIpsResponseBodyData
 from ._describe_parameter_groups_response_body import DescribeParameterGroupsResponseBodyDataParameterGroups
 from ._describe_parameter_groups_response_body import DescribeParameterGroupsResponseBodyData
 from ._describe_parameter_templates_response_body import DescribeParameterTemplatesResponseBodyDataParameters
@@ -564,9 +579,13 @@ from ._modify_cdc_class_response_body import ModifyCdcClassResponseBodyData
 from ._modify_columnar_class_response_body import ModifyColumnarClassResponseBodyData
 from ._modify_dbinstance_connection_string_response_body import ModifyDBInstanceConnectionStringResponseBodyData
 from ._modify_engine_migration_response_body import ModifyEngineMigrationResponseBodyData
+from ._modify_mem_0security_ips_response_body import ModifyMem0SecurityIpsResponseBodyAccessDeniedDetail
+from ._modify_mem_0security_ips_response_body import ModifyMem0SecurityIpsResponseBodyData
 from ._pre_check_sql_flashback_task_response_body import PreCheckSqlFlashbackTaskResponseBodyDataCheckResult
 from ._pre_check_sql_flashback_task_response_body import PreCheckSqlFlashbackTaskResponseBodyData
 from ._refresh_import_meta_response_body import RefreshImportMetaResponseBodyData
+from ._reset_mem_0account_password_response_body import ResetMem0AccountPasswordResponseBodyAccessDeniedDetail
+from ._reset_mem_0account_password_response_body import ResetMem0AccountPasswordResponseBodyData
 from ._skip_current_step_response_body import SkipCurrentStepResponseBodyData
 from ._start_switch_database_response_body import StartSwitchDatabaseResponseBodyData
 from ._submit_sql_flashback_task_response_body import SubmitSqlFlashbackTaskResponseBodyData
@@ -802,6 +821,9 @@ __all__ = [
     DescribeMem0InfoRequest,
     DescribeMem0InfoResponseBody,
     DescribeMem0InfoResponse,
+    DescribeMem0SecurityIpsRequest,
+    DescribeMem0SecurityIpsResponseBody,
+    DescribeMem0SecurityIpsResponse,
     DescribeOpenBackupSetRequest,
     DescribeOpenBackupSetResponseBody,
     DescribeOpenBackupSetResponse,
@@ -930,6 +952,9 @@ __all__ = [
     ModifyEngineMigrationRequest,
     ModifyEngineMigrationResponseBody,
     ModifyEngineMigrationResponse,
+    ModifyMem0SecurityIpsRequest,
+    ModifyMem0SecurityIpsResponseBody,
+    ModifyMem0SecurityIpsResponse,
     ModifyParameterRequest,
     ModifyParameterResponseBody,
     ModifyParameterResponse,
@@ -954,6 +979,9 @@ __all__ = [
     ResetAccountPasswordRestrictRequest,
     ResetAccountPasswordRestrictResponseBody,
     ResetAccountPasswordRestrictResponse,
+    ResetMem0AccountPasswordRequest,
+    ResetMem0AccountPasswordResponseBody,
+    ResetMem0AccountPasswordResponse,
     RestartDBInstanceRequest,
     RestartDBInstanceResponseBody,
     RestartDBInstanceResponse,
@@ -1018,12 +1046,14 @@ __all__ = [
     CreateCustomEndpointResponseBodyData,
     CreateDataImportTaskResponseBodyData,
     CreateGdnInstanceResponseBodyData,
+    CreateMem0ResponseBodyAccessDeniedDetail,
     CreateMem0ResponseBodyData,
     CreateRplInspectionTaskResponseBodyData,
     CreateSQLEvaluateTaskResponseBodyData,
     CreateStructureImportTaskResponseBodyData,
     CreateSubCNInstanceResponseBodyData,
     DeleteGdnInstanceResponseBodyData,
+    DeleteMem0ResponseBodyAccessDeniedDetail,
     DeleteMem0ResponseBodyData,
     DeleteSubCNInstanceResponseBodyData,
     DescribeAccountListResponseBodyData,
@@ -1099,9 +1129,13 @@ __all__ = [
     DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList,
     DescribeGdnInstancesResponseBodyDataGdnInstanceList,
     DescribeGdnInstancesResponseBodyData,
+    DescribeMem0InfoResponseBodyAccessDeniedDetail,
     DescribeMem0InfoResponseBodyDataInstanceConnAddrs,
     DescribeMem0InfoResponseBodyDataInstance,
     DescribeMem0InfoResponseBodyData,
+    DescribeMem0SecurityIpsResponseBodyAccessDeniedDetail,
+    DescribeMem0SecurityIpsResponseBodyDataGroups,
+    DescribeMem0SecurityIpsResponseBodyData,
     DescribeParameterGroupsResponseBodyDataParameterGroups,
     DescribeParameterGroupsResponseBodyData,
     DescribeParameterTemplatesResponseBodyDataParameters,
@@ -1144,9 +1178,13 @@ __all__ = [
     ModifyColumnarClassResponseBodyData,
     ModifyDBInstanceConnectionStringResponseBodyData,
     ModifyEngineMigrationResponseBodyData,
+    ModifyMem0SecurityIpsResponseBodyAccessDeniedDetail,
+    ModifyMem0SecurityIpsResponseBodyData,
     PreCheckSqlFlashbackTaskResponseBodyDataCheckResult,
     PreCheckSqlFlashbackTaskResponseBodyData,
     RefreshImportMetaResponseBodyData,
+    ResetMem0AccountPasswordResponseBodyAccessDeniedDetail,
+    ResetMem0AccountPasswordResponseBodyData,
     SkipCurrentStepResponseBodyData,
     StartSwitchDatabaseResponseBodyData,
     SubmitSqlFlashbackTaskResponseBodyData,

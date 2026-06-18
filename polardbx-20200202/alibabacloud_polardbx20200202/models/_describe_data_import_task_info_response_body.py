@@ -16,10 +16,15 @@ class DescribeDataImportTaskInfoResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The return code. This parameter is empty when the request succeeds. When the request fails, an exception message such as an error code is returned.
         self.code = code
+        # The returned result set.
         self.data = data
+        # The returned message. This parameter has a value only when the task status is success. Otherwise, an empty value is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -73,6 +78,7 @@ class DescribeDataImportTaskInfoResponseBodyData(DaraModel):
         self,
         data_import_task_detail_info: main_models.DescribeDataImportTaskInfoResponseBodyDataDataImportTaskDetailInfo = None,
     ):
+        # The task details.
         self.data_import_task_detail_info = data_import_task_detail_info
 
     def validate(self):
@@ -105,9 +111,13 @@ class DescribeDataImportTaskInfoResponseBodyDataDataImportTaskDetailInfo(DaraMod
         fsm_status: str = None,
         service_detail_list: List[main_models.DescribeDataImportTaskInfoResponseBodyDataDataImportTaskDetailInfoServiceDetailList] = None,
     ):
+        # The progress ID.
         self.fsm_id = fsm_id
+        # The state identifier in a data migration or synchronization task.
         self.fsm_state = fsm_state
+        # The status in a data migration, import, or synchronization system.
         self.fsm_status = fsm_status
+        # The data import task details.
         self.service_detail_list = service_detail_list
 
     def validate(self):
@@ -164,9 +174,15 @@ class DescribeDataImportTaskInfoResponseBodyDataDataImportTaskDetailInfoServiceD
         task_detail_list: List[main_models.DescribeDataImportTaskInfoResponseBodyDataDataImportTaskDetailInfoServiceDetailListTaskDetailList] = None,
         type: str = None,
     ):
+        # The service detail ID.
         self.id = id
+        # The task execution status.
         self.status = status
+        # The task details.
         self.task_detail_list = task_detail_list
+        # Valid values:
+        # - FULL_COPY: full replication.
+        # - INC_COPY: incremental replication.
         self.type = type
 
     def validate(self):
@@ -227,13 +243,21 @@ class DescribeDataImportTaskInfoResponseBodyDataDataImportTaskDetailInfoServiceD
         task_id: int = None,
         type: str = None,
     ):
+        # The delay time.
         self.delay = delay
+        # The most recent error message.
         self.last_error = last_error
+        # The physical database name.
         self.physical_db_name = physical_db_name
+        # The data import progress.
         self.progress = progress
+        # The performance and runtime metrics collected during the execution of the data migration or import task.
         self.statistics = statistics
+        # The task status.
         self.status = status
+        # The task ID.
         self.task_id = task_id
+        # The task type.
         self.type = type
 
     def validate(self):

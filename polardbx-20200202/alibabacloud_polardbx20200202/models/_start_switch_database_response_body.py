@@ -13,10 +13,13 @@ class StartSwitchDatabaseResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The monitoring data.
         self.data = data
+        # The response message.
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -64,6 +67,7 @@ class StartSwitchDatabaseResponseBodyData(DaraModel):
         self,
         slink_task_id: str = None,
     ):
+        # The ID of the slink task.
         self.slink_task_id = slink_task_id
 
     def validate(self):

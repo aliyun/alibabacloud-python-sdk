@@ -13,10 +13,14 @@ class DeleteGdnInstanceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The data struct.
         self.data = data
+        # The response message.
+        # > This parameter is empty when the request succeeds. If the request fails, an exception message is returned, such as an error code.
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -64,6 +68,7 @@ class DeleteGdnInstanceResponseBodyData(DaraModel):
         self,
         task_id: int = None,
     ):
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):

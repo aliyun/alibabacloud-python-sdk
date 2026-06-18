@@ -11,7 +11,9 @@ class UpdateDBInstanceTDEResponseBody(DaraModel):
         data: main_models.UpdateDBInstanceTDEResponseBodyData = None,
         request_id: str = None,
     ):
+        # The response information.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -47,6 +49,7 @@ class UpdateDBInstanceTDEResponseBodyData(DaraModel):
         self,
         task_id: str = None,
     ):
+        # The backend task ID.
         self.task_id = task_id
 
     def validate(self):

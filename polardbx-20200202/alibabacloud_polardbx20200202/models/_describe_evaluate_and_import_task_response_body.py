@@ -13,9 +13,13 @@ class DescribeEvaluateAndImportTaskResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The returned result.
         self.data = data
+        # The response message. This parameter is empty when the request succeeds. If the request fails, an exception message is returned, such as an error code.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -82,25 +86,45 @@ class DescribeEvaluateAndImportTaskResponseBodyData(DaraModel):
         slink_task_id: str = None,
         slink_type: str = None,
     ):
+        # The business ID of the import task.
         self.bid = bid
+        # The summary information.
         self.context = context
+        # The creator of the import task.
         self.creator = creator
+        # Indicates whether the import task is successful.
         self.deleted = deleted
+        # The timestamp when the task was created.
         self.gmt_created = gmt_created
+        # The modification time in timestamp format.
         self.gmt_modified = gmt_modified
+        # The task ID.
         self.id = id
+        # The region ID.
         self.region_id = region_id
+        # The name of the slink destination database.
         self.slink_dst_db = slink_dst_db
+        # The instance ID of the destination.
         self.slink_dst_res_id = slink_dst_res_id
+        # The username for the data connection of the destination.
         self.slink_dst_user_name = slink_dst_user_name
+        # The name of the slink source database.
         self.slink_src_db = slink_src_db
+        # The instance ID of the source.
         self.slink_src_res_id = slink_src_res_id
+        # The resource type of the source.
         self.slink_src_res_type = slink_src_res_type
+        # The username for the data connection of the source.
         self.slink_src_user_name = slink_src_user_name
+        # The stage of the synchronization.
         self.slink_stage = slink_stage
+        # The running status of the synchronization.
         self.slink_status = slink_status
+        # The description of the slink task.
         self.slink_task_desc = slink_task_desc
+        # The slink task ID.
         self.slink_task_id = slink_task_id
+        # The synchronization type.
         self.slink_type = slink_type
 
     def validate(self):

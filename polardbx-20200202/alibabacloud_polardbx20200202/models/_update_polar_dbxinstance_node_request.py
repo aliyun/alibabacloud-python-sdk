@@ -18,13 +18,21 @@ class UpdatePolarDBXInstanceNodeRequest(DaraModel):
         storage_pool_name: str = None,
     ):
         self.add_dnspec = add_dnspec
+        # The number of compute nodes.
         self.cnnode_count = cnnode_count
+        # The client token. You can set this parameter to any random string.
         self.client_token = client_token
+        # The instance name ID.
+        # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
+        # The number of storage nodes.
         self.dnnode_count = dnnode_count
+        # The target number of nodes for the instance. Valid values: 0 to 99.
         self.db_instance_node_count = db_instance_node_count
         self.delete_dnids = delete_dnids
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.storage_pool_name = storage_pool_name

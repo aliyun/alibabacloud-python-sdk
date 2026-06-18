@@ -15,9 +15,13 @@ class DescribeBackupSetResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The data list.
         self.data = data
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -78,13 +82,31 @@ class DescribeBackupSetResponseBodyData(DaraModel):
         osslist: List[main_models.DescribeBackupSetResponseBodyDataOSSList] = None,
         status: int = None,
     ):
+        # The backup mode. Valid values:
+        # 
+        # - **0**: Automatic backup.
+        # - **1**: Manual backup.
         self.backup_model = backup_model
+        # The backup set ID.
         self.backup_set_id = backup_set_id
+        # The size of the backup set, in bytes.
         self.backup_set_size = backup_set_size
+        # The backup type. Valid values:
+        # 
+        # - **0**: Fast backup.
+        # - **1**: Consistent backup.
         self.backup_type = backup_type
+        # The time when the backup started.
         self.begin_time = begin_time
+        # The time when the backup ended.
         self.end_time = end_time
+        # The list of OSS information for the backup set.
         self.osslist = osslist
+        # The status of the backup set. Valid values:
+        # 
+        # - **0**: Backing up.
+        # - **1**: Backup succeeded.
+        # - **2**: Backup failed.
         self.status = status
 
     def validate(self):
@@ -165,9 +187,13 @@ class DescribeBackupSetResponseBodyDataOSSList(DaraModel):
         intranet_download_link: str = None,
         link_expired_time: str = None,
     ):
+        # The OSS file name.
         self.backup_set_file = backup_set_file
+        # The public download URL.
         self.download_link = download_link
+        # The internal network download URL for the OSS file.
         self.intranet_download_link = intranet_download_link
+        # The expiration time of the OSS file link.
         self.link_expired_time = link_expired_time
 
     def validate(self):

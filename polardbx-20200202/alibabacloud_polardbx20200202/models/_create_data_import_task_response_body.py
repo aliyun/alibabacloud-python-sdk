@@ -13,9 +13,13 @@ class CreateDataImportTaskResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The returned result.
         self.data = data
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -63,6 +67,7 @@ class CreateDataImportTaskResponseBodyData(DaraModel):
         self,
         slink_task_id: str = None,
     ):
+        # The import task ID.
         self.slink_task_id = slink_task_id
 
     def validate(self):

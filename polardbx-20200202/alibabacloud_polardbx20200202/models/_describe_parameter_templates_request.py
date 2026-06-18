@@ -12,9 +12,16 @@ class DescribeParameterTemplatesRequest(DaraModel):
         param_level: str = None,
         region_id: str = None,
     ):
+        # The instance ID.
         self.dbinstance_id = dbinstance_id
         self.engine_version = engine_version
+        # The parameter level. Valid values:
+        # 
+        # - **compute**: compute layer.
+        # - **storage**: storage layer.
         self.param_level = param_level
+        # The region ID of the instance.
+        # 
         # This parameter is required.
         self.region_id = region_id
 

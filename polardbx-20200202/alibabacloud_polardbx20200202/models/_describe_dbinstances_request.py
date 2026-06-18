@@ -19,15 +19,32 @@ class DescribeDBInstancesRequest(DaraModel):
         tags: str = None,
     ):
         self.db_version = db_version
+        # The description or remarks of the database.
         self.description = description
+        # The instance ID.
         self.instance_id = instance_id
+        # Specifies whether the instance must have a log engine.
         self.must_has_cdc = must_has_cdc
+        # The page number. Starts from 1.
         self.page_number = page_number
+        # The number of entries per page. Valid values:
+        # 
+        # - 30
+        # - 50
+        # - 100.
         self.page_size = page_size
+        # The region ID of the instance.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The instance edition. Valid values:
+        # 
+        # - **enterprise**: Enterprise Edition.
+        # - **standard**: Standard Edition.
         self.series = series
+        # The list of tags.
         self.tags = tags
 
     def validate(self):

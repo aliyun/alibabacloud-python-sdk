@@ -13,6 +13,7 @@ class DescribeComponentPropetiesResponseBody(DaraModel):
         properties: List[main_models.DescribeComponentPropetiesResponseBodyProperties] = None,
         request_id: str = None,
     ):
+        # The export parameters of the exception event.
         self.properties = properties
         # Id of the request
         self.request_id = request_id
@@ -59,9 +60,15 @@ class DescribeComponentPropetiesResponseBodyProperties(DaraModel):
         property_code: str = None,
         value: str = None,
     ):
+        # The name.
         self.name = name
+        # The display order of the commodity module property.
+        # 
+        # The returned content varies depending on the commodity module.
         self.order_index = order_index
+        # The commodity module.
         self.property_code = property_code
+        # The label value.
         self.value = value
 
     def validate(self):

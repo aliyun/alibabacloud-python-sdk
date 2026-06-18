@@ -12,11 +12,17 @@ class UpdateDBInstanceSSLRequest(DaraModel):
         enable_ssl: bool = None,
         region_id: str = None,
     ):
+        # The domain name bound to the certificate.
         self.cert_common_name = cert_common_name
+        # The instance ID.
+        # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
+        # Specifies whether to enable SSL.
+        # 
         # This parameter is required.
         self.enable_ssl = enable_ssl
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

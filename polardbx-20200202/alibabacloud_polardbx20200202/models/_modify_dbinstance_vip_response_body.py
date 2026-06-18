@@ -11,8 +11,12 @@ class ModifyDBInstanceVipResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response message.
+        # > This parameter is empty when the request succeeds. When the request fails, an exception message is returned, such as an error code.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

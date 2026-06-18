@@ -12,11 +12,17 @@ class DescribeBackupSetRequest(DaraModel):
         dest_cross_region: str = None,
         region_id: str = None,
     ):
+        # The backup set ID.
+        # 
         # This parameter is required.
         self.backup_set_id = backup_set_id
+        # The name of the PolarDB-X instance.
+        # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
+        # The destination region for cross-region backup.
         self.dest_cross_region = dest_cross_region
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

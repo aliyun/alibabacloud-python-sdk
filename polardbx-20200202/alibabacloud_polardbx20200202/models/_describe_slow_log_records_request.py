@@ -17,18 +17,34 @@ class DescribeSlowLogRecordsRequest(DaraModel):
         region_id: str = None,
         start_time: str = None,
     ):
+        # The node type.
+        # 
         # This parameter is required.
         self.character_type = character_type
+        # The instance name.
+        # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
+        # The database name.
         self.dbname = dbname
+        # The node ID. You can specify multiple node IDs separated by commas (`,`). This parameter is required when you query storage nodes.
         self.dbnode_ids = dbnode_ids
+        # The start time of the query. Specify the time in the YYYY-MM-ddTHH:mmZ format (UTC).
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # The page number. Default value: 1.
         self.page = page
+        # The number of entries per page. Default value: 100.
+        # 
+        # Limit: A maximum of 100 entries can be returned at a time.
         self.page_size = page_size
+        # The region ID of the instance.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The start time of the query. Specify the time in the YYYY-MM-ddTHH:mmZ format (UTC).
+        # 
         # This parameter is required.
         self.start_time = start_time
 

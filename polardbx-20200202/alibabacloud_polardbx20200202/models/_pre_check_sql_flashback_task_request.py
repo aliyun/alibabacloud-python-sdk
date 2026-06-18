@@ -13,14 +13,24 @@ class PreCheckSqlFlashbackTaskRequest(DaraModel):
         region_id: str = None,
         start_time: str = None,
     ):
+        # The database name.
+        # 
         # This parameter is required.
         self.db_name = db_name
+        # The end time of the flashback SQL execution.
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.polardbx_instance_id = polardbx_instance_id
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The start time of the flashback SQL execution.
+        # 
         # This parameter is required.
         self.start_time = start_time
 

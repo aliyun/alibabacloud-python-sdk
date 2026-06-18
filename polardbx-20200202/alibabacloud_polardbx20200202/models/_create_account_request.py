@@ -17,18 +17,40 @@ class CreateAccountRequest(DaraModel):
         security_account_name: str = None,
         security_account_password: str = None,
     ):
+        # The description of the account.
         self.account_description = account_description
+        # The name of the account to be created.
+        # 
         # This parameter is required.
         self.account_name = account_name
+        # The password of the account to be created.
+        # 
         # This parameter is required.
         self.account_password = account_password
+        # The permissions to be granted to the new account on the specified database. Valid values:
+        # 
+        # - ReadWrite
+        # - ReadOnly
+        # - DMLOnly
+        # - DDLOnly.
         self.account_privilege = account_privilege
+        # The name of the instance.
+        # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
+        # The name of the database to be authorized.
         self.dbname = dbname
+        # The region in which the instance resides.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The name of the security administrator account.
+        # 
+        # > If three-role mode is enabled, this parameter is required. If three-role mode is not enabled, this parameter is not required.
         self.security_account_name = security_account_name
+        # The password of the security administrator account.
+        # 
+        # > If three-role mode is enabled, this parameter is required. If three-role mode is not enabled, this parameter is not required.
         self.security_account_password = security_account_password
 
     def validate(self):

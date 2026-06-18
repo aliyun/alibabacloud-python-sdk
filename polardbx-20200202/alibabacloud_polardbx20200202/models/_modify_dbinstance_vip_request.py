@@ -13,13 +13,21 @@ class ModifyDBInstanceVipRequest(DaraModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
         self.instance_cluster_name = instance_cluster_name
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The vSwitch ID.
+        # 
         # This parameter is required.
         self.v_switch_id = v_switch_id
+        # The ID of the virtual private cloud (VPC) where the access endpoint resides.
+        # 
         # This parameter is required.
         self.vpc_id = vpc_id
 

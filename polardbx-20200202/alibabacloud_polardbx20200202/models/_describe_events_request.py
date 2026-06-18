@@ -13,11 +13,17 @@ class DescribeEventsRequest(DaraModel):
         region_id: str = None,
         start_time: str = None,
     ):
+        # The end time.
         self.end_time = end_time
+        # The page number.
         self.page_number = page_number
+        # The page size.
         self.page_size = page_size
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The start time.
         self.start_time = start_time
 
     def validate(self):

@@ -17,11 +17,16 @@ class DescribeRegionsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code.
         self.code = code
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.message = message
         self.regions = regions
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

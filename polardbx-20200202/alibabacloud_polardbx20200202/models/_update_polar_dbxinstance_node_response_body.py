@@ -10,7 +10,9 @@ class UpdatePolarDBXInstanceNodeResponseBody(DaraModel):
         order_id: str = None,
         request_id: str = None,
     ):
+        # The order ID generated when the number of instance nodes is changed.
         self.order_id = order_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

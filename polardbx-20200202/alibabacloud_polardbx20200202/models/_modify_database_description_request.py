@@ -12,12 +12,20 @@ class ModifyDatabaseDescriptionRequest(DaraModel):
         db_name: str = None,
         region_id: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
+        # The description of the database.
+        # 
         # This parameter is required.
         self.db_description = db_description
+        # The database name.
+        # 
         # This parameter is required.
         self.db_name = db_name
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
 

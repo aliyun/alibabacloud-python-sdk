@@ -11,8 +11,11 @@ class MigrateDBInstanceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Returns success if the request was successful, or an error code if the request failed.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

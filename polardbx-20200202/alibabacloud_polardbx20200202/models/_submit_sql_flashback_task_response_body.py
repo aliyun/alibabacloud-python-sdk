@@ -13,9 +13,13 @@ class SubmitSqlFlashbackTaskResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The data returned by the request.
         self.data = data
+        # The description of the request result.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the API request was successful.
         self.success = success
 
     def validate(self):
@@ -63,6 +67,7 @@ class SubmitSqlFlashbackTaskResponseBodyData(DaraModel):
         self,
         task_id: str = None,
     ):
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):

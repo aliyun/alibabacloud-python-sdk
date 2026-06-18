@@ -11,8 +11,11 @@ class DescribeTransformStatusRequest(DaraModel):
         query_report: bool = None,
         region_id: str = None,
     ):
+        # The instance name.
         self.dbinstance_name = dbinstance_name
+        # The verification report.
         self.query_report = query_report
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

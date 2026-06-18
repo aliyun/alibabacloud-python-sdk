@@ -13,9 +13,13 @@ class ConfirmNoConnectionResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The returned data.
         self.data = data
+        # The additional information returned. The value success is returned if the request is successful. Otherwise, an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -63,6 +67,7 @@ class ConfirmNoConnectionResponseBodyData(DaraModel):
         self,
         slink_task_id: str = None,
     ):
+        # The original task ID, used to match the response with the request.
         self.slink_task_id = slink_task_id
 
     def validate(self):

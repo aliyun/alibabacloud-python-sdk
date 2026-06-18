@@ -10,7 +10,9 @@ class DescribeColumnarVersionListRequest(DaraModel):
         dbinstance_name: str = None,
         region_id: str = None,
     ):
+        # The name of the instance.
         self.dbinstance_name = dbinstance_name
+        # The region in which the instance resides.
         self.region_id = region_id
 
     def validate(self):

@@ -10,8 +10,12 @@ class DescribeDBInstanceViaEndpointRequest(DaraModel):
         endpoint: str = None,
         region_id: str = None,
     ):
+        # The endpoint of the instance.
+        # 
         # This parameter is required.
         self.endpoint = endpoint
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
 

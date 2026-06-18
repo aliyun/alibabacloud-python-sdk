@@ -41,41 +41,228 @@ class CreateDBInstanceRequest(DaraModel):
         v_switch_id: str = None,
         zone_id: str = None,
     ):
+        # Specifies whether to enable auto-renewal. Default value: true.
+        # 
+        # - **true**: Enable
+        # - **false**: Disable
         self.auto_renew = auto_renew
+        # The number of compute nodes.
         self.cnnode_count = cnnode_count
+        # The idempotency token. Ensure that a unique value is used for each creation request.
         self.client_token = client_token
+        # The compute node specification. Required for creating Enterprise Edition instances. Not required for Standard Edition.
+        # 
+        # Enterprise Edition local disk:
+        # 
+        # - **polarx.x4.medium.2e**:	2 Cores 8 GB (General Purpose)
+        # - **polarx.x4.large.2e**:	4 Cores 16 GB (General Purpose)
+        # - **polarx.x4.xlarge.2e**:	8 Cores 32 GB (General Purpose)
+        # - **polarx.x4.2xlarge.2e**:	16 Cores 64 GB (General Purpose)
+        # - **polarx.x8.large.2e**:	4 Cores 32 GB (Dedicated)
+        # - **polarx.x2.large.2x**:	8 Cores 16 GB (Dedicated)
+        # - **polarx.x4.xlarge.2x**:	8 Cores 32 GB (Dedicated)
+        # - **polarx.x8.xlarge.2e**:	8 Cores 64 GB (Dedicated)
+        # - **polarx.x8.2xlarge.2e**:	16 Cores 128 GB (Dedicated)
+        # - **polarx.x4.4xlarge.2e**:	32 Cores 128 GB (Dedicated)
+        # - **polarx.x8.4xlarge.2e**:	32 Cores 256 GB (Dedicated)
+        # - **polarx.st.8xlarge.2e**:	60 Cores 470 GB (Dedicated)
+        # - **polarx.st.12xlarge.2e**:	90 Cores 720 GB (Dedicated)
+        # 
+        # 
+        # Enterprise Edition cloud disk:
+        # - **polarx.x4.medium.c2e**:	2 Cores 8 GB (General Purpose)
+        # - **polarx.x4.large.c2e**:	4 Cores 16 GB (General Purpose)
+        # - **polarx.x4.xlarge.c2e**:	8 Cores 32 GB (General Purpose)
+        # - **polarx.x4.2xlarge.c2e**:	16 Cores 64 GB (General Purpose)
+        # - **polarx.x8.large.c2e**:	4 Cores 32 GB (Dedicated)
+        # - **polarx.x2.large.c2x**:	8 Cores 16 GB (Dedicated)
+        # - **polarx.x4.xlarge.c2x**:	8 Cores 32 GB (Dedicated)
+        # - **polarx.x8.xlarge.c2e**:	8 Cores 64 GB (Dedicated)
+        # - **polarx.x8.2xlarge.c2e**:	16 Cores 128 GB (Dedicated)
+        # - **polarx.x4.4xlarge.c2e**:	32 Cores 128 GB (Dedicated)
+        # - **polarx.x8.4xlarge.c2e**:	32 Cores 256 GB (Dedicated)
+        # - **polarx.st.8xlarge.c2e**:	60 Cores 470 GB (Dedicated)
+        # - **polarx.st.12xlarge.c2e**:	90 Cores 720 GB (Dedicated)
         self.cn_class = cn_class
+        # Required for creating Standard Edition instances. Not required for Enterprise Edition.
+        # 
+        # Standard Edition local disk specifications:
+        # - **mysql.n8.small.25**:	1 Core 8 GB (General Purpose)
+        # - **mysql.n2.medium.25**:	2 Cores 4 GB (General Purpose)
+        # - **mysql.n4.medium.25**:	2 Cores 8 GB (General Purpose)
+        # - **mysql.n8.medium.25**:	2 Cores 16 GB (General Purpose)
+        # - **mysql.n2.large.25**:	4 Cores 8 GB (General Purpose)
+        # - **mysql.n4.large.25**:	4 Cores 16 GB (General Purpose)
+        # - **mysql.n8.large.25**:	4 Cores 32 GB (General Purpose)
+        # - **mysql.n2.xlarge.25**:	8 Cores 16 GB (General Purpose)
+        # - **mysql.n4.xlarge.25**:	8 Cores 32 GB (General Purpose)
+        # - **mysql.n8.xlarge.25**:	8 Cores 64 GB (General Purpose)
+        # - **mysql.n2.2xlarge.25**:	16 Cores 32 GB (General Purpose)
+        # - **mysql.n4.2xlarge.25**:	16 Cores 64 GB (General Purpose)
+        # - **mysql.n8.2xlarge.25**:	16 Cores 128 GB (General Purpose)
+        # - **mysql.x2.medium.25**:	2 Cores 4 GB (Dedicated)
+        # - **mysql.x4.medium.25**:	2 Cores 8 GB (Dedicated)
+        # - **mysql.x8.medium.25**:	2 Cores 16 GB (Dedicated)
+        # - **mysql.x2.large.25**:	4 Cores 8 GB (Dedicated)
+        # - **mysql.x4.large.25**:	4 Cores 16 GB (Dedicated)
+        # - **mysql.x8.large.25**:	4 Cores 32 GB (Dedicated)
+        # - **mysql.x2.xlarge.25**:	8 Cores 16 GB (Dedicated)
+        # - **mysql.x4.xlarge.25**:	8 Cores 32 GB (Dedicated)
+        # - **mysql.x8.xlarge.25**:	8 Cores 64 GB (Dedicated)
+        # - **mysql.x2.2xlarge.25**:	16 Cores 32 GB (Dedicated)
+        # - **mysql.x4.2xlarge.25**:	16 Cores 64 GB (Dedicated)
+        # - **mysql.x8.2xlarge.25**:	16 Cores 128 GB (Dedicated)
+        # - **mysql.x4.4xlarge.25**:	32 Cores 128 GB (Dedicated)
+        # - **mysql.x8.4xlarge.25**:	32 Cores 256 GB (Dedicated)
+        # - **mysql.x4.8xlarge.25**:	64 Cores 256 GB (Dedicated)
+        # - **mysql.x8.8xlarge.25**:	64 Cores 512 GB (Dedicated)
+        # - **mysql.st.12xlarge.25**:	90 Cores 720 GB (Dedicated)
+        # 
+        # Standard Edition cloud disk specifications:
+        # - **polarx.mysql.n2.medium.c25**:	2 Cores 4 GB (General Purpose)
+        # - **polarx.mysql.n4.medium.c25**:	2 Cores 8 GB (General Purpose)
+        # - **polarx.mysql.n8.medium.c25**:	2 Cores 16 GB (General Purpose)
+        # - **polarx.mysql.n2.large.c25**:	4 Cores 8 GB (General Purpose)
+        # - **polarx.mysql.n4.large.c25**:	4 Cores 16 GB (General Purpose)
+        # - **polarx.mysql.n8.large.c25**:	4 Cores 32 GB (General Purpose)
+        # - **polarx.mysql.n2.xlarge.c25**:	8 Cores 16 GB (General Purpose)
+        # - **polarx.mysql.n4.xlarge.c25**:	8 Cores 32 GB (General Purpose)
+        # - **polarx.mysql.n8.xlarge.c25**:	8 Cores 64 GB (General Purpose)
+        # - **polarx.mysql.x2.medium.c25**:	2 Cores 4 GB (Dedicated)
+        # - **polarx.mysql.x4.medium.c25**:	2 Cores 8 GB (Dedicated)
+        # - **polarx.mysql.x8.medium.c25**:	2 Cores 16 GB (Dedicated)
+        # - **polarx.mysql.x2.large.c25**:	4 Cores 8 GB (Dedicated)
+        # - **polarx.mysql.x4.large.c25**:	4 Cores 16 GB (Dedicated)
+        # - **polarx.mysql.x8.large.c25**:	4 Cores 32 GB (Dedicated)
+        # - **polarx.mysql.x2.xlarge.c25**:	8 Cores 16 GB (Dedicated)
+        # - **polarx.mysql.x4.xlarge.c25**:	8 Cores 32 GB (Dedicated)
+        # - **polarx.mysql.x8.xlarge.c25**:	8 Cores 64 GB (Dedicated)
+        # - **polarx.mysql.x2.2xlarge.c25**:	16 Cores 32 GB (Dedicated)
+        # - **polarx.mysql.x4.2xlarge.c25**:	16 Cores 64 GB (Dedicated)
+        # - **polarx.mysql.x8.2xlarge.c25**:	16 Cores 128 GB (Dedicated)
+        # - **polarx.mysql.x2.4xlarge.c25**:	32 Cores 64 GB (Dedicated)
+        # - **polarx.mysql.x4.4xlarge.c25**:	32 Cores 128 GB (Dedicated)
+        # - **polarx.mysql.x8.4xlarge.c25**:	32 Cores 256 GB (Dedicated)
+        # - **polarx.mysql.x2.8xlarge.c25**:	64 Cores 128 GB (Dedicated)
+        # - **polarx.mysql.x4.8xlarge.c25**:	64 Cores 256 GB (Dedicated)
+        # - **polarx.mysql.x8.8xlarge.c25**:	64 Cores 512 GB (Dedicated)
         self.dbnode_class = dbnode_class
+        # The number of instance nodes:
+        # * Standard Edition: 1
+        # * Enterprise Edition: >=2
         self.dbnode_count = dbnode_count
+        # The number of storage nodes.
         self.dnnode_count = dnnode_count
+        # The description of the database.
         self.description = description
+        # The storage node specification. Required for creating Enterprise Edition instances. Not required for Standard Edition.
+        # 
+        # Enterprise Edition local disk:
+        # 
+        # - **mysql.n2.medium.25**:	2 Cores 4 GB (General Purpose)
+        # - **mysql.n4.medium.25**:	2 Cores 8 GB (General Purpose)
+        # - **mysql.n2.large.25**:	4 Cores 8 GB (General Purpose)
+        # - **mysql.n4.large.25**:	4 Cores 16 GB (General Purpose)
+        # - **mysql.n4.xlarge.25**:	8 Cores 32 GB (General Purpose)
+        # - **mysql.n4.2xlarge.25**:	16 Cores 64 GB (General Purpose)
+        # - **mysql.x4.large.25**:	4 Cores 16 GB (Dedicated)
+        # - **mysql.x8.large.25**:	4 Cores 32 GB (Dedicated)
+        # - **mysql.x2.xlarge.25**:	8 Cores 16 GB (Dedicated)
+        # - **mysql.x8.xlarge.25**:	8 Cores 64 GB (Dedicated)
+        # - **mysql.x8.2xlarge.25**:	16 Cores 128 GB (Dedicated)
+        # - **mysql.x4.4xlarge.25**:	32 Cores 128 GB (Dedicated)
+        # - **mysql.x8.4xlarge.25**:	32 Cores 256 GB (Dedicated)
+        # - **mysql.st.8xlarge.25**:	60 Cores 470 GB (Dedicated)
+        # - **mysql.st.12xlarge.25**:	90 Cores 720 GB (Dedicated)
+        # - **mysql.x8.45xlarge.25**:	180 Cores 1440 GB (Dedicated)
+        # - **mysql.x8.60xlarge.25**:	240 Cores 1920 GB (Dedicated)
+        # 
+        # 
+        # Enterprise Edition cloud disk:
+        # 
+        # - **polarx.mysql.n2.medium.c25**:	2 Cores 4 GB (General Purpose)
+        # - **polarx.mysql.n4.medium.c25**:	2 Cores 8 GB (General Purpose)
+        # - **polarx.mysql.n2.large.c25**:	4 Cores 8 GB (General Purpose)
+        # - **polarx.mysql.n4.large.c25**:	4 Cores 16 GB (General Purpose)
+        # - **polarx.mysql.n4.xlarge.c25**:	8 Cores 32 GB (General Purpose)
+        # - **polarx.mysql.n4.2xlarge.c25**:	16 Cores 64 GB (General Purpose)
+        # - **polarx.mysql.x4.large.c25**:	4 Cores 16 GB (Dedicated)
+        # - **polarx.mysql.x8.large.c25**:	4 Cores 32 GB (Dedicated)
+        # - **polarx.mysql.x2.xlarge.c25**:	8 Cores 16 GB (Dedicated)
+        # - **polarx.mysql.x8.xlarge.c25**:	8 Cores 64 GB (Dedicated)
+        # - **polarx.mysql.x8.2xlarge.c25**:	16 Cores 128 GB (Dedicated)
+        # - **polarx.mysql.x4.4xlarge.c25**:	32 Cores 128 GB (Dedicated)
+        # - **polarx.mysql.x8.4xlarge.c25**:	32 Cores 256 GB (Dedicated)
+        # - **polarx.mysql.st.8xlarge.c25**:	60 Cores 470 GB (Dedicated)
+        # - **polarx.mysql.st.12xlarge.c25**: 90 Cores 720 GB (Dedicated)
+        # - **polarx.mysql.x8.45xlarge.c25**: 180 Cores 1440 GB (Dedicated)
+        # - **polarx.mysql.x8.60xlarge.c25**: 240 Cores 1920 GB (Dedicated)
         self.dn_class = dn_class
+        # The disk space size of the storage node.
         self.dn_storage_space = dn_storage_space
+        # The MySQL engine version. Valid values: 5.7 and 8.0.
+        # 
         # This parameter is required.
         self.engine_version = engine_version
+        # Additional parameters.
         self.extra_params = extra_params
+        # Specifies whether the instance to be created is a columnar read-only instance.
         self.is_columnar_read_dbinstance = is_columnar_read_dbinstance
+        # Specifies whether the instance is a read-only instance.
+        # 
+        # - **true**: Yes
+        # - **false**: No
         self.is_read_dbinstance = is_read_dbinstance
+        # The network type. Only VPC is supported.
         self.network_type = network_type
+        # The minor version number. This parameter is generally not required.
         self.origin_minor_version = origin_minor_version
+        # The billing method of the instance.
+        # 
+        # - **PREPAY**: Subscription
+        # - **POSTPAY**: Pay-as-you-go
+        # 
         # This parameter is required.
         self.pay_type = pay_type
+        # The billing cycle. For subscription instances, valid values are Year and Month. For pay-as-you-go instances, the default value is Hour.
         self.period = period
+        # The primary instance must be specified if the instance is a read-only instance.
         self.primary_dbinstance_name = primary_dbinstance_name
+        # The primary availability zone.
         self.primary_zone = primary_zone
+        # The region where the instance resides.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The resource group ID. This parameter can be left empty. This feature is currently not supported.
         self.resource_group_id = resource_group_id
+        # The secondary availability zone.
         self.secondary_zone = secondary_zone
+        # Enterprise Edition: enterprise
+        # Standard Edition: standard
         self.series = series
+        # The storage type.
+        # * Local disk: custom_local_ssd
+        # * Cloud disk: cloud_auto
         self.storage_type = storage_type
+        # The tertiary availability zone.
         self.tertiary_zone = tertiary_zone
+        # The topology type:
+        # 
+        # - **3azones**: Three availability zones
+        # - **1azone**: Single availability zone
+        # 
         # This parameter is required.
         self.topology_type = topology_type
+        # The subscription duration. You can specify the number of months or years for prepaid instances.
+        # 
+        # > When Period is set to Year, valid values for this parameter are 1, 2, and 3.
         self.used_time = used_time
-        # VPC ID。
+        # The VPC ID.
         self.vpcid = vpcid
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
+        # The availability zone of the instance.
         self.zone_id = zone_id
 
     def validate(self):

@@ -12,11 +12,20 @@ class UpgradeDBInstanceKernelVersionRequest(DaraModel):
         region_id: str = None,
         switch_mode: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
+        # The kernel version.
         self.minor_version = minor_version
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The switch mode. Valid values:
+        # 
+        # - 0: immediately.
+        # - 1: during the O&M window.
         self.switch_mode = switch_mode
 
     def validate(self):

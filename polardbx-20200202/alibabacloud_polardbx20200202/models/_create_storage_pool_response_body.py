@@ -10,6 +10,7 @@ class CreateStoragePoolResponseBody(DaraModel):
         code: str = None,
         request_id: str = None,
     ):
+        # The response code.
         self.code = code
         # Id of the request
         self.request_id = request_id

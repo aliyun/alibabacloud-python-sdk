@@ -17,17 +17,24 @@ class SwitchGdnMemberRoleRequest(DaraModel):
         switch_mode: str = None,
         task_timeout: int = None,
     ):
+        # The instance ID of the primary instance.
+        # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
         self.dst_main_connect_string = dst_main_connect_string
         self.dst_main_port = dst_main_port
         self.is_modify_endpoint = is_modify_endpoint
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.src_main_connect_string = src_main_connect_string
         self.src_main_port = src_main_port
+        # The switchover mode.
+        # 
         # This parameter is required.
         self.switch_mode = switch_mode
+        # The timeout period of the switchover task. Unit: seconds.
         self.task_timeout = task_timeout
 
     def validate(self):

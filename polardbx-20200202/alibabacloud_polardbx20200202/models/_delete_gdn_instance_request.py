@@ -10,8 +10,11 @@ class DeleteGdnInstanceRequest(DaraModel):
         gdn_instance_name: str = None,
         region_id: str = None,
     ):
+        # The name of the GDN instance.
+        # 
         # This parameter is required.
         self.gdn_instance_name = gdn_instance_name
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

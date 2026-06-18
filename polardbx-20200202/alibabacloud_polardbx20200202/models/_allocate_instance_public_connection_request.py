@@ -17,15 +17,22 @@ class AllocateInstancePublicConnectionRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The prefix of the public endpoint.
+        # 
         # This parameter is required.
         self.connection_string_prefix = connection_string_prefix
+        # The instance name.
+        # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
         self.instance_cluster_name = instance_cluster_name
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The port of the public endpoint.
+        # 
         # This parameter is required.
         self.port = port
+        # The region in which the instance resides.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

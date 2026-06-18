@@ -13,6 +13,7 @@ class DescribeColumnarVersionListResponseBody(DaraModel):
         data: main_models.DescribeColumnarVersionListResponseBodyData = None,
         request_id: str = None,
     ):
+        # The parameter details.
         self.data = data
         # Id of the request
         self.request_id = request_id
@@ -50,6 +51,7 @@ class DescribeColumnarVersionListResponseBodyData(DaraModel):
         self,
         version_list: List[str] = None,
     ):
+        # The version list.
         self.version_list = version_list
 
     def validate(self):

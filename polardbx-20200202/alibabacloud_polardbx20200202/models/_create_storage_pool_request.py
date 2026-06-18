@@ -13,12 +13,19 @@ class CreateStoragePoolRequest(DaraModel):
         storage_pool_dnlist: str = None,
         storage_pool_name: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
+        # The region ID of the instance.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The list of storage pool DNs.
         self.storage_pool_dnlist = storage_pool_dnlist
+        # The name of the storage pool.
         self.storage_pool_name = storage_pool_name
 
     def validate(self):

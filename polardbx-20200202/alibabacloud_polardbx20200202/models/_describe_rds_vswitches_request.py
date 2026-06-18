@@ -11,8 +11,11 @@ class DescribeRdsVswitchesRequest(DaraModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
+        # The region in which the instance resides.
         self.region_id = region_id
+        # The ID of the VPC in which the endpoint resides.
         self.vpc_id = vpc_id
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):

@@ -1,3 +1,13 @@
+2026-06-18 Version: 3.5.0
+- Support API DescribeMem0SecurityIps.
+- Support API ModifyMem0SecurityIps.
+- Support API ResetMem0AccountPassword.
+- Update API CreateMem0: add response parameters Body.AccessDeniedDetail.
+- Update API DeleteMem0: add response parameters Body.AccessDeniedDetail.
+- Update API DescribeDBInstanceAttribute: add response parameters Body.DBInstance.DnStorageSpace.
+- Update API DescribeMem0Info: add response parameters Body.AccessDeniedDetail.
+
+
 2026-06-09 Version: 3.4.2
 - Update API DescribeCdcVersionList: add request parameters InstanceName.
 

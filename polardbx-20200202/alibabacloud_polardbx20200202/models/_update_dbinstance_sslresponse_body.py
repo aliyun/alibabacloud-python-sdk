@@ -11,7 +11,9 @@ class UpdateDBInstanceSSLResponseBody(DaraModel):
         data: main_models.UpdateDBInstanceSSLResponseBodyData = None,
         request_id: str = None,
     ):
+        # The data returned by the request.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -47,6 +49,7 @@ class UpdateDBInstanceSSLResponseBodyData(DaraModel):
         self,
         task_id: int = None,
     ):
+        # The backend task ID.
         self.task_id = task_id
 
     def validate(self):

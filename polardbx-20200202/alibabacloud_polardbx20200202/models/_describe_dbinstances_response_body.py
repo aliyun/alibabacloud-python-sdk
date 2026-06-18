@@ -16,10 +16,15 @@ class DescribeDBInstancesResponseBody(DaraModel):
         request_id: str = None,
         total_number: int = None,
     ):
+        # The list of instances.
         self.dbinstances = dbinstances
+        # The page number.
         self.page_number = page_number
+        # The page size.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries.
         self.total_number = total_number
 
     def validate(self):
@@ -125,62 +130,140 @@ class DescribeDBInstancesResponseBodyDBInstances(DaraModel):
         gdn_role: str = None,
         is_in_gdn: bool = None,
     ):
+        # The name of the log node.
         self.cdc_instance_name = cdc_instance_name
+        # The CN node specifications. Valid values:
+        # 
+        # - **polarx.x4.medium.2e**: 2 cores, 8 GB memory
+        # - **polarx.x4.large.2e**: 4 cores, 16 GB memory
+        # - **polarx.x8.large.2e**: 4 cores, 32 GB memory
+        # - **polarx.x4.xlarge.2e**: 8 cores, 32 GB memory
+        # - **polarx.x8.xlarge.2e**: 8 cores, 64 GB memory
+        # - **polarx.x4.2xlarge.2e**: 16 cores, 64 GB memory
+        # - **polarx.x8.2xlarge.2e**: 16 cores, 128 GB memory
+        # - **polarx.x4.4xlarge.2e**: 32 cores, 128 GB memory
+        # - **polarx.x8.4xlarge.2e**: 32 cores, 256 GB memory
+        # - **polarx.st.8xlarge.2e**: 60 cores, 470 GB memory
+        # - **polarx.st.12xlarge.2e**: 90 cores, 720 GB memory.
         self.cn_node_class_code = cn_node_class_code
+        # The number of CN nodes.
         self.cn_node_count = cn_node_count
+        # The name of the column store engine instance.
         self.columnar_instance_name = columnar_instance_name
+        # The column store read-only instance information.
         self.columnar_read_dbinstances = columnar_read_dbinstances
+        # The commodity code.
         self.commodity_code = commodity_code
+        # Indicates whether the instance contains the multi-stream log service. Valid values:
+        # 
+        # - **true**: The instance contains the multi-stream log service.
+        # - **false**: The instance does not contain the multi-stream log service.
         self.contain_binlog_x = contain_binlog_x
         self.cpu_type = cpu_type
+        # The creation time.
         self.create_time = create_time
+        # The name of the database instance.
         self.dbinstance_name = dbinstance_name
+        # The database type.
         self.dbtype = dbtype
+        # The database version.
         self.dbversion = dbversion
+        # The database description.
         self.description = description
+        # The DN node specifications. Valid values:
+        # - **mysql.n2.medium.25**: 2 cores, 4 GB memory
+        # - **mysql.n4.medium.25**: 2 cores, 8 GB memory
+        # - **mysql.x8.medium.25**: 2 cores, 16 GB memory
+        # - **mysql.n2.large.25**: 4 cores, 8 GB memory
+        # - **mysql.n4.large.25**: 4 cores, 16 GB memory
+        # - **mysql.x8.large.25**: 4 cores, 32 GB memory
+        # - **mysql.n2.xlarge.25**: 8 cores, 16 GB memory
+        # - **mysql.n4.xlarge.25**: 8 cores, 32 GB memory
+        # - **mysql.x8.xlarge.25**: 8 cores, 64 GB memory
+        # - **mysql.n4.2xlarge.25**: 16 cores, 64 GB memory
+        # - **mysql.x8.2xlarge.25**: 16 cores, 128 GB memory
+        # - **mysql.x4.4xlarge.25**: 32 cores, 128 GB memory
+        # - **mysql.x8.4xlarge.25**: 32 cores, 256 GB memory
+        # - **mysql.st.8xlarge.25**: 60 cores, 470 GB memory
+        # - **mysql.st.12xlarge.25**: 90 cores, 720 GB memory.
         self.dn_node_class_code = dn_node_class_code
+        # The number of DN nodes.
         self.dn_node_count = dn_node_count
+        # The engine type.
         self.engine = engine
         self.engine_version = engine_version
+        # The expiration time.
         self.expire_time = expire_time
+        # Indicates whether the instance has expired.
         self.expired = expired
+        # The instance ID.
         self.id = id
+        # Indicates whether the instance is locked.
         self.lock_mode = lock_mode
+        # The reason why the instance is locked.
         self.lock_reason = lock_reason
+        # The current Milvus version.
         self.minor_version = minor_version
+        # The network type.
         self.network = network
+        # The node specifications.
         self.node_class = node_class
+        # The number of nodes.
         self.node_count = node_count
+        # The list of nodes.
         self.nodes = nodes
+        # The billing method of the instance. Valid values:
+        # 
+        # - **Postpaid**: pay-as-you-go.
+        # - **Prepaid**: subscription.
         self.pay_type = pay_type
         self.primary_instance_id = primary_instance_id
-        # 主可用区。
+        # The primary zone.
         # 
         # This parameter is required.
         self.primary_zone = primary_zone
+        # The list of read-only instances.
         self.read_dbinstances = read_dbinstances
+        # The region ID.
         self.region_id = region_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # 次可用区。
+        # The secondary zone.
         self.secondary_zone = secondary_zone
+        # The instance edition. Valid values:
+        # 
+        # - **enterprise**: Enterprise Edition.
+        # - **standard**: Standard Edition.
         self.series = series
+        # The instance status. For more information, see [Instance status table](https://help.aliyun.com/document_detail/339826.html).
         self.status = status
         self.storage_type = storage_type
+        # The storage usage.
         self.storage_used = storage_used
-        self.support_binlog_x = support_binlog_x
-        self.tag_set = tag_set
-        # 第三可用区。
-        self.tertiary_zone = tertiary_zone
-        # 拓扑类型：
+        # Indicates whether the instance supports multi-stream. Valid values:
         # 
-        # - **3azones**：三可用区；
-        # - **1azone**：单可用区。
+        # - **true**: Yes.
+        # - **false**: No.
+        self.support_binlog_x = support_binlog_x
+        # The set of tags.
+        self.tag_set = tag_set
+        # The third zone in the three-zone deployment.
+        self.tertiary_zone = tertiary_zone
+        # The topology type. Valid values:
+        # 
+        # - **3azones**: three-zone deployment.
+        # - **1azone**: single-zone deployment.
         # 
         # This parameter is required.
         self.topology_type = topology_type
+        # The instance type. Valid values:
+        # 
+        # - **ReadWrite**: primary instance.
+        # - **ReadOnly**: read-only instance.
         self.type = type
         # VPC ID。
         self.vpcid = vpcid
+        # The zone ID.
         self.zone_id = zone_id
         self.gdn_role = gdn_role
         self.is_in_gdn = is_in_gdn
@@ -504,7 +587,9 @@ class DescribeDBInstancesResponseBodyDBInstancesTagSet(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -542,10 +627,14 @@ class DescribeDBInstancesResponseBodyDBInstancesNodes(DaraModel):
         region_id: str = None,
         zone_id: str = None,
     ):
+        # The instance specifications.
         self.class_code = class_code
+        # The node ID.
         self.id = id
         self.name = name
+        # The region ID.
         self.region_id = region_id
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):

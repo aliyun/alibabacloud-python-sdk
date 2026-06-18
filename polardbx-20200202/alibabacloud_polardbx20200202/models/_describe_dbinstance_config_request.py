@@ -11,10 +11,16 @@ class DescribeDBInstanceConfigRequest(DaraModel):
         dbinstance_name: str = None,
         region_id: str = None,
     ):
+        # The configuration identifier. Default value: htap.
+        # 
         # This parameter is required.
         self.config_name = config_name
+        # The instance ID.
+        # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
+        # The ID of the region in which the instance resides.
+        # 
         # This parameter is required.
         self.region_id = region_id
 

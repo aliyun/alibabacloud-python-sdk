@@ -15,15 +15,25 @@ class DescribeBinaryLogListRequest(DaraModel):
         region_id: str = None,
         start_time: str = None,
     ):
+        # The name of the instance.
+        # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
+        # The end time for querying the binlog list.
+        # 
         # This parameter is required.
         self.end_time = end_time
         self.instance_name = instance_name
+        # The page number when paginating through the current binlog list. Default value: 1.
         self.page_number = page_number
+        # The number of binlog entries to return per page. Default value: 30.
         self.page_size = page_size
+        # The ID of the region where the instance resides.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The start time for querying the binlog list.
+        # 
         # This parameter is required.
         self.start_time = start_time
 

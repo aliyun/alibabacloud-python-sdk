@@ -11,8 +11,14 @@ class DescribeActiveOperationTaskCountResponseBody(DaraModel):
         request_id: str = None,
         task_count: int = None,
     ):
+        # Indicates whether a pop-up notification is required. Valid values:
+        # 
+        # - 1: Required.
+        # - 0: Not required.
         self.need_pop = need_pop
+        # The request ID.
         self.request_id = request_id
+        # The total number.
         self.task_count = task_count
 
     def validate(self):

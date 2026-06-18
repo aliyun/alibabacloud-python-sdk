@@ -11,7 +11,9 @@ class DescribeDBInstanceTDEResponseBody(DaraModel):
         data: main_models.DescribeDBInstanceTDEResponseBodyData = None,
         request_id: str = None,
     ):
+        # The data struct.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -47,6 +49,10 @@ class DescribeDBInstanceTDEResponseBodyData(DaraModel):
         self,
         tdestatus: str = None,
     ):
+        # Indicates whether TDE is enabled. Valid values:
+        # 
+        # - 0: TDE is disabled.
+        # - 1: TDE is enabled.
         self.tdestatus = tdestatus
 
     def validate(self):

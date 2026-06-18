@@ -10,7 +10,9 @@ class DescribeEnabledCrossRegionsRequest(DaraModel):
         dbinstance_name: str = None,
         region_id: str = None,
     ):
+        # The instance name.
         self.dbinstance_name = dbinstance_name
+        # The region ID of the instance.
         self.region_id = region_id
 
     def validate(self):

@@ -11,10 +11,18 @@ class CheckCloudResourceAuthorizedRequest(DaraModel):
         region_id: str = None,
         role_arn: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
+        # The ID of the region in which the instance resides.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The global resource descriptor ARN (Alibaba Cloud Resource Name) of the authorized role. After the authorization of this role is complete, the related KMS can be used. Format: acs:ram::$accountID:role/$roleName.
+        # 
+        # - $accountID: the Alibaba Cloud account ID. To view the ID, logon to the Alibaba Cloud Management Console, move the mouse over the profile picture in the upper-right corner, and then click Security Settings.
+        # - $roleName: the RAM role name. The value is fixed as AliyunRdsInstanceEncryptionDefaultRole.
         self.role_arn = role_arn
 
     def validate(self):

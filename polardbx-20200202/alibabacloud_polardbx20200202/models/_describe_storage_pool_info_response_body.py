@@ -14,7 +14,9 @@ class DescribeStoragePoolInfoResponseBody(DaraModel):
         data: main_models.DescribeStoragePoolInfoResponseBodyData = None,
         request_id: str = None,
     ):
+        # The response code.
         self.code = code
+        # The list of instance details.
         self.data = data
         # Id of the request
         self.request_id = request_id
@@ -58,6 +60,7 @@ class DescribeStoragePoolInfoResponseBodyData(DaraModel):
         self,
         storage_pools: List[main_models.DescribeStoragePoolInfoResponseBodyDataStoragePools] = None,
     ):
+        # The storage pools.
         self.storage_pools = storage_pools
 
     def validate(self):
@@ -101,15 +104,23 @@ class DescribeStoragePoolInfoResponseBodyDataStoragePools(DaraModel):
         name: str = None,
         un_deletable_dnid: str = None,
     ):
+        # The specification type of the instance (the specification code).
         self.class_ = class_
+        # The list of DN IDs.
         self.dn_id_list = dn_id_list
         # DN id
         self.dn_id_string = dn_id_string
+        # The reserved field.
         self.extra = extra
+        # The time when the account was created.
         self.gmt_created = gmt_created
+        # The time when the storage pool was last modified, in timestamp format.
         self.gmt_modified = gmt_modified
+        # The list of idle DN IDs.
         self.idle_dnid_list = idle_dnid_list
+        # The name.
         self.name = name
+        # The DN that cannot be deleted.
         self.un_deletable_dnid = un_deletable_dnid
 
     def validate(self):

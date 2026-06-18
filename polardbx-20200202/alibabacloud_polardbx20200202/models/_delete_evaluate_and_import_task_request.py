@@ -10,8 +10,11 @@ class DeleteEvaluateAndImportTaskRequest(DaraModel):
         region_id: str = None,
         slink_task_id: str = None,
     ):
+        # The ID of the region where the instance resides. > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196841.html) operation to query the regions supported by PolarDB-X, including region IDs.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The ID of the switch task.
         self.slink_task_id = slink_task_id
 
     def validate(self):

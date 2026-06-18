@@ -10,7 +10,9 @@ class ModifyDBInstanceClassResponseBody(DaraModel):
         order_id: str = None,
         request_id: str = None,
     ):
+        # The order ID. An order is generated when you upgrade, downgrade, or change the specifications of an instance.
         self.order_id = order_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
