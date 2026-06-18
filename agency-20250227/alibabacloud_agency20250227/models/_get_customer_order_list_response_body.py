@@ -21,25 +21,25 @@ class GetCustomerOrderListResponseBody(DaraModel):
         success: bool = None,
         total: int = None,
     ):
-        # Access denied details
+        # The details of the access denial.
         self.access_denied_detail = access_denied_detail
-        # Status Code
+        # The status code.
         self.code = code
-        # Returned data
+        # The returned data.
         self.data = data
-        # HTTP status code
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Message
+        # The message.
         self.message = message
-        # Page number
+        # The page number.
         self.page_no = page_no
-        # Page size
+        # The number of entries per page.
         self.page_size = page_size
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the operation succeeded
+        # Indicates whether the request was successful.
         self.success = success
-        # Total number of entries
+        # The total number of entries.
         self.total = total
 
     def validate(self):
@@ -146,46 +146,46 @@ class GetCustomerOrderListResponseBodyData(DaraModel):
         project_id: int = None,
         ram_account_for_customer_managers: List[str] = None,
     ):
-        # Order discount
+        # The order discount.
         self.amount_discount = amount_discount
-        # Actual payment amount
+        # The actual payment amount.
         self.amount_due = amount_due
-        # Creation Time
+        # The creation time.
         self.created_at = created_at
-        # Customer Account
+        # The customer account.
         self.customer_account = customer_account
-        # Customer categorization
+        # The customer classification.
         self.customer_classification = customer_classification
-        # Customer UID
+        # The customer UID.
         self.customer_uid = customer_uid
-        # Coupon amount
+        # The coupon amount.
         self.deducted_amount_by_coupons = deducted_amount_by_coupons
-        # Discounted price
+        # The discounted price.
         self.discounted_price = discounted_price
-        # Order ID
+        # The order ID.
         self.order_id = order_id
-        # Order status. Values include:  
-        # 1: Unpaid  
-        # 2: Paid  
-        # 3: Voided
+        # The order status. Valid values:
+        # - 1: unpaid
+        # - 2: paid
+        # - 3: canceled.
         self.order_status = order_status
-        # Order type. Values include: BUY, UPGRADE, DOWNGRADE, RENEW, REFUND, OTHERS
+        # The order type. Valid values: BUY, UPGRADE, DOWNGRADE, RENEW, REFUND, OTHERS.
         self.order_type = order_type
-        # Payment Time
+        # The payment time.
         self.paid_at = paid_at
-        # Payment type:  
-        # 1: Non-agent payment  
-        # 2: Agent payment
+        # The payment type. Valid values:
+        # - 1: non-delegated payment
+        # - 2: delegated payment.
         self.pay_type = pay_type
-        # Original Price/List Price
+        # The original price or list price.
         self.price = price
-        # Product code
+        # The product code.
         self.product_code = product_code
-        # Product name
+        # The product name.
         self.product_name = product_name
-        # Opportunity ID
+        # The opportunity ID.
         self.project_id = project_id
-        # Customer-facing staff
+        # The employee who follows up with the customer.
         self.ram_account_for_customer_managers = ram_account_for_customer_managers
 
     def validate(self):

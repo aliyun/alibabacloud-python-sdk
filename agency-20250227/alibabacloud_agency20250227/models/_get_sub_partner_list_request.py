@@ -12,17 +12,17 @@ class GetSubPartnerListRequest(DaraModel):
         sub_partner_company_name: str = None,
         sub_partner_pid: str = None,
     ):
-        # Page index, starting from the first page.
+        # The page number, starting from 1.
         # 
         # This parameter is required.
         self.page_no = page_no
-        # Number of entries returned per page. Maximum value supported is 100.
+        # The number of entries per page. Maximum value: 100.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # Tier-2 partner company name
+        # The company name of the secondary partner.
         self.sub_partner_company_name = sub_partner_company_name
-        # Tier-2 partner PID
+        # The PID of the secondary partner.
         self.sub_partner_pid = sub_partner_pid
 
     def validate(self):

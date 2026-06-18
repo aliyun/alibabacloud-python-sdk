@@ -19,21 +19,21 @@ class GetSubPartnerOrderListResponseBody(DaraModel):
         success: bool = None,
         total: int = None,
     ):
-        # Status code
+        # The status code.
         self.code = code
-        # Returned data
+        # The returned data.
         self.data = data
-        # Message
+        # The message returned.
         self.message = message
-        # Page number
+        # The page number.
         self.page_no = page_no
-        # Paging size
+        # The number of entries per page.
         self.page_size = page_size
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the operation succeeded
+        # Indicates whether the call was successful.
         self.success = success
-        # TotalCount indicates the total amount of data under the current request conditions. This parameter is optional and is not returned by default.
+        # The total number of entries that meet the query conditions. This is an optional parameter and is not returned by default.
         self.total = total
 
     def validate(self):
@@ -127,50 +127,50 @@ class GetSubPartnerOrderListResponseBodyData(DaraModel):
         sub_partner_name: str = None,
         sub_partner_uid: int = None,
     ):
-        # Order discount
+        # The order discount.
         self.amount_discount = amount_discount
-        # Actual payment amount
+        # The actual payment amount.
         self.amount_due = amount_due
-        # Creation Time
+        # The creation time.
         self.created_at = created_at
-        # Customer classification
+        # The customer classification.
         self.customer_classification = customer_classification
-        # Coupon amount
+        # The coupon amount.
         self.deducted_amount_by_coupons = deducted_amount_by_coupons
-        # Discounted price
+        # The discounted price.
         self.discounted_price = discounted_price
-        # Order ID
+        # The order ID.
         self.order_id = order_id
-        # Order status:  
-        # - 1 Unpaid  
-        # - 2 Abandoned  
-        # - 3 Paid
+        # The order status. Valid values:
+        # - 1: unpaid
+        # - 2: deprecated
+        # - 3: paid.
         self.order_status = order_status
-        # Order type:  
-        # - BUY: New purchase  
-        # - UPGRADE: Upgrade  
-        # - DOWNGRADE: Downgrade  
-        # - RENEW: Renewal  
-        # - REFUND: Refund  
-        # - OTHERS: Others
+        # The order type. Valid values:
+        # - BUY: new purchase
+        # - UPGRADE: upgrade
+        # - DOWNGRADE: downgrade
+        # - RENEW: renewal
+        # - REFUND: refund
+        # - OTHERS: other.
         self.order_type = order_type
-        # Payment Time
+        # The payment time.
         self.paid_at = paid_at
-        # Payment type:  
-        # 1: Non-agent payment  
-        # 2: Agent payment
+        # The payment type. Valid values:
+        # - 1: non-delegated payment
+        # - 2: delegated payment.
         self.pay_type = pay_type
-        # Original price/List price
+        # The original price or list price.
         self.price = price
-        # Product code
+        # The product code.
         self.product_code = product_code
-        # Product name.
+        # The product name.
         self.product_name = product_name
-        # Opportunity ID
+        # The opportunity ID.
         self.project_id = project_id
-        # Sub-partner Name
+        # The name of the secondary partner.
         self.sub_partner_name = sub_partner_name
-        # Secondary partner UID
+        # The UID of the secondary partner.
         self.sub_partner_uid = sub_partner_uid
 
     def validate(self):

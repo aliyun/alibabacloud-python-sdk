@@ -7,22 +7,22 @@ from typing import List
 from alibabacloud_agency20250227 import models as main_models
 from darabonba.model import DaraModel
 
-class GetCommissionDetailFileListResponseBody(DaraModel):
+class GetIntlCommissionDetailFileListResponseBody(DaraModel):
     def __init__(
         self,
         code: str = None,
-        data: main_models.GetCommissionDetailFileListResponseBodyData = None,
+        data: main_models.GetIntlCommissionDetailFileListResponseBodyData = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
     ):
-        # code
+        # The status code.
         self.code = code
-        # The returned data.
+        # The data.
         self.data = data
-        # The message returned.
+        # The message information.
         self.message = message
-        # Id of the request
+        # RequestId
         self.request_id = request_id
         # Indicates whether the call was successful.
         self.success = success
@@ -59,7 +59,7 @@ class GetCommissionDetailFileListResponseBody(DaraModel):
             self.code = m.get('Code')
 
         if m.get('Data') is not None:
-            temp_model = main_models.GetCommissionDetailFileListResponseBodyData()
+            temp_model = main_models.GetIntlCommissionDetailFileListResponseBodyData()
             self.data = temp_model.from_map(m.get('Data'))
 
         if m.get('Message') is not None:
@@ -73,16 +73,16 @@ class GetCommissionDetailFileListResponseBody(DaraModel):
 
         return self
 
-class GetCommissionDetailFileListResponseBodyData(DaraModel):
+class GetIntlCommissionDetailFileListResponseBodyData(DaraModel):
     def __init__(
         self,
         bill_month: str = None,
-        file_list: List[main_models.GetCommissionDetailFileListResponseBodyDataFileList] = None,
+        file_list: List[main_models.GetIntlCommissionDetailFileListResponseBodyDataFileList] = None,
         partner_uid: str = None,
     ):
         # The billing month.
         self.bill_month = bill_month
-        # The file list.
+        # The file list object.
         self.file_list = file_list
         # The UID of the partner.
         self.partner_uid = partner_uid
@@ -119,7 +119,7 @@ class GetCommissionDetailFileListResponseBodyData(DaraModel):
         self.file_list = []
         if m.get('FileList') is not None:
             for k1 in m.get('FileList'):
-                temp_model = main_models.GetCommissionDetailFileListResponseBodyDataFileList()
+                temp_model = main_models.GetIntlCommissionDetailFileListResponseBodyDataFileList()
                 self.file_list.append(temp_model.from_map(k1))
 
         if m.get('PartnerUid') is not None:
@@ -127,25 +127,23 @@ class GetCommissionDetailFileListResponseBodyData(DaraModel):
 
         return self
 
-class GetCommissionDetailFileListResponseBodyDataFileList(DaraModel):
+class GetIntlCommissionDetailFileListResponseBodyDataFileList(DaraModel):
     def __init__(
         self,
         bucket_sync_status: str = None,
         commission_policy_name: str = None,
         file_name: str = None,
-        file_type: str = None,
-        file_url: str = None,
     ):
-        # The push status of the OSS file. Valid values: Processing, Succeeded, or Failed.
+        # The push status of the OSS file. Valid values:
+        # - 初始化状态: initialization status
+        # - 处理中: processing
+        # - 处理成功: processing succeeded
+        # - 处理失败: processing failed.
         self.bucket_sync_status = bucket_sync_status
-        # The policy name.
+        # The commission policy name.
         self.commission_policy_name = commission_policy_name
         # The file name.
         self.file_name = file_name
-        # The file type.
-        self.file_type = file_type
-        # The file URL.
-        self.file_url = file_url
 
     def validate(self):
         pass
@@ -164,12 +162,6 @@ class GetCommissionDetailFileListResponseBodyDataFileList(DaraModel):
         if self.file_name is not None:
             result['FileName'] = self.file_name
 
-        if self.file_type is not None:
-            result['FileType'] = self.file_type
-
-        if self.file_url is not None:
-            result['FileUrl'] = self.file_url
-
         return result
 
     def from_map(self, m: dict = None):
@@ -182,12 +174,6 @@ class GetCommissionDetailFileListResponseBodyDataFileList(DaraModel):
 
         if m.get('FileName') is not None:
             self.file_name = m.get('FileName')
-
-        if m.get('FileType') is not None:
-            self.file_type = m.get('FileType')
-
-        if m.get('FileUrl') is not None:
-            self.file_url = m.get('FileUrl')
 
         return self
 

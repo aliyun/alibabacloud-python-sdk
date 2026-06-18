@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class GetBillDetailFileListRequest(DaraModel):
+class GetIntlCommissionDetailFileListRequest(DaraModel):
     def __init__(
         self,
         bill_month: str = None,
@@ -20,16 +20,28 @@ class GetBillDetailFileListRequest(DaraModel):
         # This parameter is required.
         self.bill_month = bill_month
         # The AccessKey ID used to upload files to OSS.
+        # 
+        # This parameter is required.
         self.oss_access_key_id = oss_access_key_id
         # The AccessKey secret used to upload files to OSS.
+        # 
+        # This parameter is required.
         self.oss_access_key_secret = oss_access_key_secret
-        # The OSS bucket.
+        # The name of the OSS bucket.
+        # 
+        # This parameter is required.
         self.oss_bucket_name = oss_bucket_name
-        # The endpoint of the region where the OSS bucket for file sharing is located.
+        # The endpoint of the region where the Object Storage Service (OSS) bucket for the file sharing resides.
+        # 
+        # This parameter is required.
         self.oss_endpoint = oss_endpoint
-        # The region where the OSS bucket is located.
+        # The region where the current OSS bucket resides.
+        # 
+        # This parameter is required.
         self.oss_region = oss_region
         # The STS token used to upload files to OSS.
+        # 
+        # This parameter is required.
         self.oss_security_token = oss_security_token
 
     def validate(self):

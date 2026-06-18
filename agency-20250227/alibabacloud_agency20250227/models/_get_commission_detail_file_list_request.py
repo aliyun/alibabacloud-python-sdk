@@ -15,19 +15,19 @@ class GetCommissionDetailFileListRequest(DaraModel):
         oss_region: str = None,
         oss_security_token: str = None,
     ):
-        # Billing month
+        # The billing month.
         self.bill_month = bill_month
-        # AccessKeyID used to upload files to OSS
+        # The AccessKey ID used to upload files to OSS.
         self.oss_access_key_id = oss_access_key_id
-        # AccessKeySecret used to upload files to OSS
+        # The AccessKey secret used to upload files to OSS.
         self.oss_access_key_secret = oss_access_key_secret
-        # OSS bucket
+        # The OSS bucket name.
         self.oss_bucket_name = oss_bucket_name
-        # Edge zone of the Region where the OSS bucket for file sharing is located
+        # The endpoint of the region where the Object Storage Service (OSS) bucket corresponding to the file sharing resides.
         self.oss_endpoint = oss_endpoint
-        # Region to which the current OSS bucket belongs
+        # The region where the OSS bucket resides.
         self.oss_region = oss_region
-        # STS token used to upload files to OSS
+        # The STS token used to upload files to OSS.
         self.oss_security_token = oss_security_token
 
     def validate(self):

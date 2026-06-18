@@ -18,21 +18,21 @@ class GetSubPartnerListResponseBody(DaraModel):
         success: bool = None,
         total: int = None,
     ):
-        # Message
+        # The message returned.
         self.message = message
-        # Current page number
+        # The current page number.
         self.page_no = page_no
-        # Number of second-tier distributors returned per page, up to 100
+        # The number of secondary distributors returned per page. Maximum value: 100.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # List of second-tier distributors
+        # The list of secondary distributors.
         self.sub_partner_list = sub_partner_list
-        # Indicates whether the invocation succeeded.
+        # Indicates whether the call was successful.
         self.success = success
-        # Total amount of data under the current request conditions
+        # The total number of entries that match the query conditions.
         self.total = total
 
     def validate(self):
@@ -115,29 +115,29 @@ class GetSubPartnerListResponseBodySubPartnerList(DaraModel):
         pid: str = None,
         province: str = None,
     ):
-        # Detailed address of registration
+        # The detailed registered address.
         self.address = address
-        # Contract status encoding
+        # The agreement status code.
         self.agreement_status = agreement_status
-        # Agreement status description
+        # The description of the agreement status.
         self.agreement_status_desc = agreement_status_desc
-        # City of registration
+        # The city of the registered address.
         self.city = city
-        # Name of the second-tier distributor
+        # The name of the secondary distributor.
         self.company_name = company_name
-        # Contact name
+        # The name of the contact.
         self.contact = contact
-        # District or county of registration
+        # The district or county of the registered address.
         self.district = district
-        # Initial onboarding time
+        # The time when the secondary distributor first joined.
         self.join_time = join_time
-        # Master account name of the secondary distributor
+        # The name of the primary account of the secondary distributor.
         self.master_account = master_account
-        # UID of the Master account of the second-tier distributor
+        # The UID of the primary account of the secondary distributor.
         self.master_uid = master_uid
-        # PID of the secondary distributor
+        # The PID of the secondary distributor.
         self.pid = pid
-        # Province of registration
+        # The province of the registered address.
         self.province = province
 
     def validate(self):

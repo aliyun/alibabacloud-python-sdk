@@ -77,7 +77,8 @@ class Client(OpenApiClient):
             'me-east-1': 'agency.aliyuncs.com',
             'rus-west-1-pop': 'agency.aliyuncs.com',
             'us-east-1': 'agency.aliyuncs.com',
-            'us-west-1': 'agency.aliyuncs.com'
+            'us-west-1': 'agency.aliyuncs.com',
+            'ap-southeast-1': 'agency.ap-southeast-1.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('agency', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -431,6 +432,100 @@ class Client(OpenApiClient):
     ) -> main_models.GetCustomerOrderListResponse:
         runtime = RuntimeOptions()
         return await self.get_customer_order_list_with_options_async(request, runtime)
+
+    def get_intl_commission_detail_file_list_with_options(
+        self,
+        request: main_models.GetIntlCommissionDetailFileListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetIntlCommissionDetailFileListResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.bill_month):
+            query['BillMonth'] = request.bill_month
+        if not DaraCore.is_null(request.oss_access_key_id):
+            query['OssAccessKeyId'] = request.oss_access_key_id
+        if not DaraCore.is_null(request.oss_access_key_secret):
+            query['OssAccessKeySecret'] = request.oss_access_key_secret
+        if not DaraCore.is_null(request.oss_bucket_name):
+            query['OssBucketName'] = request.oss_bucket_name
+        if not DaraCore.is_null(request.oss_endpoint):
+            query['OssEndpoint'] = request.oss_endpoint
+        if not DaraCore.is_null(request.oss_region):
+            query['OssRegion'] = request.oss_region
+        if not DaraCore.is_null(request.oss_security_token):
+            query['OssSecurityToken'] = request.oss_security_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetIntlCommissionDetailFileList',
+            version = '2025-02-27',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetIntlCommissionDetailFileListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_intl_commission_detail_file_list_with_options_async(
+        self,
+        request: main_models.GetIntlCommissionDetailFileListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetIntlCommissionDetailFileListResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.bill_month):
+            query['BillMonth'] = request.bill_month
+        if not DaraCore.is_null(request.oss_access_key_id):
+            query['OssAccessKeyId'] = request.oss_access_key_id
+        if not DaraCore.is_null(request.oss_access_key_secret):
+            query['OssAccessKeySecret'] = request.oss_access_key_secret
+        if not DaraCore.is_null(request.oss_bucket_name):
+            query['OssBucketName'] = request.oss_bucket_name
+        if not DaraCore.is_null(request.oss_endpoint):
+            query['OssEndpoint'] = request.oss_endpoint
+        if not DaraCore.is_null(request.oss_region):
+            query['OssRegion'] = request.oss_region
+        if not DaraCore.is_null(request.oss_security_token):
+            query['OssSecurityToken'] = request.oss_security_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetIntlCommissionDetailFileList',
+            version = '2025-02-27',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetIntlCommissionDetailFileListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_intl_commission_detail_file_list(
+        self,
+        request: main_models.GetIntlCommissionDetailFileListRequest,
+    ) -> main_models.GetIntlCommissionDetailFileListResponse:
+        runtime = RuntimeOptions()
+        return self.get_intl_commission_detail_file_list_with_options(request, runtime)
+
+    async def get_intl_commission_detail_file_list_async(
+        self,
+        request: main_models.GetIntlCommissionDetailFileListRequest,
+    ) -> main_models.GetIntlCommissionDetailFileListResponse:
+        runtime = RuntimeOptions()
+        return await self.get_intl_commission_detail_file_list_with_options_async(request, runtime)
 
     def get_renewal_rate_list_with_options(
         self,

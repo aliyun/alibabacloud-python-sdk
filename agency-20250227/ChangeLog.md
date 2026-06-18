@@ -1,3 +1,7 @@
+2026-06-18 Version: 1.1.0
+- Support API GetIntlCommissionDetailFileList.
+
+
 2026-06-11 Version: 1.0.6
 - Generated python 2025-02-27 for Agency.
 

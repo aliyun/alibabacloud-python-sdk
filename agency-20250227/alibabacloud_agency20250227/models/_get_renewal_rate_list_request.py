@@ -9,7 +9,7 @@ class GetRenewalRateListRequest(DaraModel):
         self,
         fiscal_year_and_quarter: str = None,
     ):
-        # Fiscal year and quarter
+        # The fiscal year and quarter.
         # 
         # This parameter is required.
         self.fiscal_year_and_quarter = fiscal_year_and_quarter

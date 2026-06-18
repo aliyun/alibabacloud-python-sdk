@@ -17,17 +17,17 @@ class GetBillDetailFileListResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Status code
+        # The status code.
         self.code = code
-        # Returned data
+        # The returned data.
         self.data = data
-        # Prompt message
+        # The message.
         self.message = message
-        # Same as message
+        # Same as Message.
         self.msg = msg
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the operation succeeded.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -99,15 +99,18 @@ class GetBillDetailFileListResponseBodyData(DaraModel):
         status: str = None,
         type: str = None,
     ):
-        # Month
+        # The billing month.
         self.bill_month = bill_month
-        # File Name
+        # The file name.
         self.file_name = file_name
-        # File URL
+        # The file URL.
         self.file_url = file_url
-        # OSS file push status. 1: Pending, 2: Processing, 3: Succeeded
+        # The OSS file push status. Valid values:
+        # - 1: pending
+        # - 2: processing
+        # - 3: completed.
         self.status = status
-        # Type: customer acquisition, channel expansion
+        # The type. Valid values: customer acquisition or channel expansion.
         self.type = type
 
     def validate(self):

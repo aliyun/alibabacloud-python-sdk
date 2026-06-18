@@ -27,53 +27,49 @@ class GetSubPartnerOrderListRequest(DaraModel):
         sub_partner_name: str = None,
         sub_partner_uid: int = None,
     ):
-        # The UNIX timestamp of the start time for order creation. The time range must not exceed six months.  
-        # The time range for order creation and the time range for order payment cannot both be empty.
+        # The start timestamp of the order creation time range. The time range cannot exceed 6 months. The order creation time range and the order payment time range cannot both be empty.
         self.order_create_after = order_create_after
-        # The UNIX timestamp of the end time for order creation. The time range must not exceed six months.  
-        # The time range for order creation and the time range for order payment cannot both be empty.
+        # The end timestamp of the order creation time range. The time range cannot exceed 6 months. The order creation time range and the order payment time range cannot both be empty.
         self.order_create_before = order_create_before
-        # Order ID
+        # The order ID.
         self.order_id = order_id
-        # The UNIX timestamp of the start time for order payment. The time range must not exceed six months.  
-        # The time range for order creation and the time range for order payment cannot both be empty.
+        # The start timestamp of the order payment time range. The time range cannot exceed 6 months. The order creation time range and the order payment time range cannot both be empty.
         self.order_pay_after = order_pay_after
-        # UNIX timestamp of the order payment deadline. The time range cannot exceed six months.
-        # The time range for order creation and the time range for order payment cannot both be empty.
+        # The end timestamp of the order payment time range. The time range cannot exceed 6 months. The order creation time range and the order payment time range cannot both be empty.
         self.order_pay_before = order_pay_before
-        # Order status. Valid values:
-        # 1: Unpaid
-        # 2: Paid
-        # 3: Canceled
+        # The order status. Valid values:
+        # - 1: unpaid
+        # - 2: paid
+        # - 3: voided.
         self.order_status = order_status
-        # List of order types.
-        # Valid order types include: BUY, UPGRADE, DOWNGRADE, RENEW, REFUND, OTHERS
+        # The list of order types.
+        # Valid values: BUY, UPGRADE, DOWNGRADE, RENEW, REFUND, and OTHERS.
         self.order_type_list = order_type_list
-        # Page number
+        # The page number.
         # 
         # This parameter is required.
         self.page_no = page_no
-        # Page size
+        # The number of entries per page.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # Minimum paid amount
+        # The minimum actual payment amount.
         self.pay_amount_after = pay_amount_after
-        # Maximum paid amount
+        # The maximum actual payment amount.
         self.pay_amount_before = pay_amount_before
-        # Payment Type:  
-        # 1: Non-agent payment  
-        # 2: Agent payment
+        # The payment type. Valid values:
+        # - 1: non-delegated payment
+        # - 2: delegated payment.
         self.pay_type = pay_type
-        # Product code
+        # The product code.
         self.product_code = product_code
-        # Product Name
+        # The product name.
         self.product_name = product_name
-        # Opportunity ID
+        # The opportunity ID.
         self.project_id = project_id
-        # Sub-partner name
+        # The name of the secondary partner.
         self.sub_partner_name = sub_partner_name
-        # Sub-partner UID
+        # The UID of the secondary partner.
         self.sub_partner_uid = sub_partner_uid
 
     def validate(self):

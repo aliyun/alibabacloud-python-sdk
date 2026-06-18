@@ -28,54 +28,50 @@ class GetCustomerOrderListRequest(DaraModel):
         project_id: int = None,
         ram_account_for_customer_manager: str = None,
     ):
-        # Customer Account
+        # The customer account.
         self.customer_account = customer_account
-        # Customer UID
+        # The customer UID.
         self.customer_uid = customer_uid
-        # The UNIX timestamp indicating the start time of order creation. The time range must not exceed six months.  
-        # The time range for order creation and the time range for order payment cannot both be empty.
+        # The start timestamp for order creation. The time range cannot exceed 6 months. The order creation time range and the order payment time range cannot both be empty.
         self.order_create_after = order_create_after
-        # The UNIX timestamp indicating the end time of order creation. The time range must not exceed six months.  
-        # The time range for order creation and the time range for order payment cannot both be empty.
+        # The end timestamp for order creation. The time range cannot exceed 6 months. The order creation time range and the order payment time range cannot both be empty.
         self.order_create_before = order_create_before
-        # Order ID
+        # The order ID.
         self.order_id = order_id
-        # Order payment start UNIX timestamp. The time range must not exceed six months.
-        # The order creation time range and the order payment time range cannot both be empty.
+        # The start timestamp for order payment. The time range cannot exceed 6 months. The order creation time range and the order payment time range cannot both be empty.
         self.order_pay_after = order_pay_after
-        # Order payment end UNIX timestamp. The time range must not exceed six months.
-        # The order creation time range and the order payment time range cannot both be empty.
+        # The end timestamp for order payment. The time range cannot exceed 6 months. The order creation time range and the order payment time range cannot both be empty.
         self.order_pay_before = order_pay_before
-        # Order status:
-        # - 1 Unpaid
-        # - 2 Discarded
-        # - 3 Paid
+        # The order status. Valid values:
+        # - 1: unpaid
+        # - 2: canceled
+        # - 3: paid.
         self.order_status = order_status
-        # Order type List
+        # The list of order types.
         self.order_type_list = order_type_list
-        # Page number
+        # The page number.
         # 
         # This parameter is required.
         self.page_no = page_no
-        # Page size
+        # The number of entries per page.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # Minimum paid amount
+        # The minimum actual payment amount.
         self.pay_amount_after = pay_amount_after
-        # Actual payment amount up to this point
+        # The maximum actual payment amount.
         self.pay_amount_before = pay_amount_before
-        # Payment Type:
-        # 1: Non-agent payment;
-        # 2: Agent payment
+        # The payment type. Valid values:
+        # - 1: non-delegated payment
+        # - 2: delegated payment.
         self.pay_type = pay_type
-        # Product code
+        # The product code.
         self.product_code = product_code
-        # Product Name
+        # The product name.
         self.product_name = product_name
-        # Opportunity ID
+        # The opportunity ID.
         self.project_id = project_id
-        # Customer follow-up staff
+        # The employee who follows up with the customer.
         self.ram_account_for_customer_manager = ram_account_for_customer_manager
 
     def validate(self):

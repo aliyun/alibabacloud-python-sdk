@@ -16,15 +16,15 @@ class GetRenewalRateListResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Status code
+        # The status code.
         self.code = code
-        # Returned data
+        # The returned data.
         self.data = data
-        # Message
+        # The prompt message.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the invocation succeeded.
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -109,57 +109,57 @@ class GetRenewalRateListResponseBodyData(DaraModel):
         sub_partner_adjusted_renewal_amount_due: float = None,
         sub_partner_other_bill_amount: float = None,
     ):
-        # Adjusted amount due for Gold customer renewal
+        # The adjusted customer acquisition amount due for renewal.
         self.customer_adjusted_renewal_amount_due = customer_adjusted_renewal_amount_due
-        # Rewind amount for new customer acquisition upgrade
+        # The customer acquisition amount for new purchases, upgrades, and refunds.
         self.customer_other_bill_amount = customer_other_bill_amount
-        # Amount due for Gold customer renewal
+        # The customer acquisition amount due for renewal.
         self.final_customer_renewal_amount_due = final_customer_renewal_amount_due
-        # Gold customer commission renewal rate
+        # The customer acquisition commission renewal rate.
         self.final_customer_renewal_rate = final_customer_renewal_rate
-        # Renewed amount from customer acquisition
+        # The customer acquisition renewed amount.
         self.final_customer_renewed_amount = final_customer_renewed_amount
-        # Total rewind amount for new upgrades
+        # The total amount for new purchases, upgrades, and refunds.
         self.final_other_bill_amount = final_other_bill_amount
-        # Final amount due for renewal
+        # The final amount due for renewal.
         self.final_renewal_amount_due = final_renewal_amount_due
-        # Final commission renewal rate
+        # The final commission renewal rate.
         self.final_renewal_rate = final_renewal_rate
-        # Final renewed amount
+        # The final renewed amount.
         self.final_renewed_amount = final_renewed_amount
-        # Renewal amount due from channel partner acquisition
+        # The sub-partner acquisition amount due for renewal.
         self.final_sub_partner_renewal_amount_due = final_sub_partner_renewal_amount_due
-        # Channel expansion commission renewal rate
+        # The sub-partner acquisition commission renewal rate.
         self.final_sub_partner_renewal_rate = final_sub_partner_renewal_rate
-        # Renewed amount from channel partner acquisition
+        # The sub-partner acquisition renewed amount.
         self.final_sub_partner_renewed_amount = final_sub_partner_renewed_amount
-        # Fiscal year and quarter
+        # The fiscal year and quarter.
         self.fiscal_year_and_quarter = fiscal_year_and_quarter
-        # Partner PID
+        # The partner PID.
         self.master_pid = master_pid
-        # Partner PID name
+        # The partner PID name.
         self.master_pid_name = master_pid_name
-        # Gold customer commission renewal rate including special approval
+        # The customer acquisition commission renewal rate including special approvals.
         self.special_customer_renew_ratio = special_customer_renew_ratio
-        # Renewal amount due including specially approved customer acquisition
+        # The customer acquisition amount due for renewal including special approvals.
         self.special_customer_renewal_amount_due = special_customer_renewal_amount_due
-        # Renewed amount including specially approved customer acquisition
+        # The customer acquisition renewed amount including special approvals.
         self.special_customer_renewed_amount = special_customer_renewed_amount
-        # Renewal rate including specially approved final quarter commission
+        # The final quarterly commission renewal rate including special approvals.
         self.special_final_renew_ratio = special_final_renew_ratio
-        # Renewal amount due for final quarterly commission including special approvals
+        # The final quarterly commission amount due for renewal including special approvals.
         self.special_final_renewal_amount_due = special_final_renewal_amount_due
-        # Renewed amount including specially approved final quarter commission
+        # The final quarterly commission renewed amount including special approvals.
         self.special_final_renewed_amount = special_final_renewed_amount
-        # Channel expansion commission renewal rate including special approval
+        # The sub-partner acquisition commission renewal rate including special approvals.
         self.special_sub_partner_renew_ratio = special_sub_partner_renew_ratio
-        # Amount due for renewal including specially approved channel partner
+        # The sub-partner acquisition amount due for renewal including special approvals.
         self.special_sub_partner_renewal_amount_due = special_sub_partner_renewal_amount_due
-        # Renewed amount including specially approved channel partner renewals
+        # The sub-partner acquisition renewed amount including special approvals.
         self.special_sub_partner_renewed_amount = special_sub_partner_renewed_amount
-        # Adjusted amount due for channel partner renewal
+        # The adjusted sub-partner acquisition amount due for renewal.
         self.sub_partner_adjusted_renewal_amount_due = sub_partner_adjusted_renewal_amount_due
-        # Channel partner new upgrade rewind amount
+        # The sub-partner acquisition amount for new purchases, upgrades, and refunds.
         self.sub_partner_other_bill_amount = sub_partner_other_bill_amount
 
     def validate(self):
