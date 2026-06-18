@@ -18,7 +18,7 @@ class DescribeSiteTopDataShrinkRequest(DaraModel):
         # 
         # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         # 
-        # >  The end time must be later than the start time.
+        # > The end time must be later than the start time.
         self.end_time = end_time
         # The metrics to query.
         # 

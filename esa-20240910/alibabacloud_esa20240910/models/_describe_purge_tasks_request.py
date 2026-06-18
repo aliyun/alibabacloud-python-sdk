@@ -20,7 +20,7 @@ class DescribePurgeTasksRequest(DaraModel):
         self.content = content
         # The end time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         # 
-        # >  The end time must be later than the start time.
+        # > The end time must be later than the start time.
         self.end_time = end_time
         # The page number. Valid values: 1 to 100000.
         self.page_number = page_number
@@ -32,18 +32,25 @@ class DescribePurgeTasksRequest(DaraModel):
         self.start_time = start_time
         # The task status. Valid values:
         # 
-        # *   **Complete**: The task is complete.
-        # *   **Refreshing**: The task is in progress.
-        # *   **Failed**: The task failed.
+        # - **Complete**: The task is complete.
+        # 
+        # - **Refreshing**: The task is in progress.
+        # 
+        # - **Failed**: The task failed.
         self.status = status
         # The task type. Valid values:
         # 
-        # *   **file** (default): purges the cache by file.
-        # *   **cachetag**: purges the cache by cache tag.
-        # *   **directory**: purges the cache by directory.
-        # *   **ignoreParams**: purges the cache by URL with specified parameters ignored.
-        # *   **hostname**: purges the cache by hostname.
-        # *   **purgeall**: purges all cache.
+        # - **file** (default): purges the cache by file.
+        # 
+        # - **cachetag**: purges the cache by cache tag.
+        # 
+        # - **directory**: purges the cache by directory.
+        # 
+        # - **ignoreParams**: purges the cache by URL with specified parameters ignored.
+        # 
+        # - **hostname**: purges the cache by hostname.
+        # 
+        # - **purgeall**: purges all cache.
         self.type = type
 
     def validate(self):

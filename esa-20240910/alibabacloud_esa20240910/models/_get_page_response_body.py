@@ -19,17 +19,17 @@ class GetPageResponseBody(DaraModel):
         site_ids: List[int] = None,
         update_time: str = None,
     ):
-        # The Base64-encoded content of the error page. The content type is specified by the Content-Type field.
+        # The Base64-encoded content of the custom response page.
         # 
         # This parameter is required.
         self.content = content
-        # The Content-Type field in the HTTP header.
+        # The value for the page\\"s Content-Type HTTP header.
         # 
         # This parameter is required.
         self.content_type = content_type
-        # The description of the custom error page.
+        # The description of the custom response page.
         self.description = description
-        # The ID of the custom error page.[](~~2850223~~)
+        # The ID of the custom response page.
         self.id = id
         # The type of the custom response page.
         self.kind = kind
@@ -39,8 +39,9 @@ class GetPageResponseBody(DaraModel):
         self.name = name
         # The request ID.
         self.request_id = request_id
+        # The sites to which the page is applied.
         self.site_ids = site_ids
-        # The time when the custom error page was last modified.
+        # The time the custom response page was last modified.
         self.update_time = update_time
 
     def validate(self):

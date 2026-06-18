@@ -15,13 +15,13 @@ class ListTagResourcesResponseBody(DaraModel):
         tag_resources: List[main_models.ListTagResourcesResponseBodyTagResources] = None,
         total_count: int = None,
     ):
-        # The pagination token that is used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+        # The token for the next query. If NextToken is empty, all information has been displayed on the current page.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The tags of the resource.
+        # The resource tags.
         self.tag_resources = tag_resources
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -78,9 +78,12 @@ class ListTagResourcesResponseBodyTagResources(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The resource ID.
+        # The resource ID. Enter a site ID or a DNS record ID.
         self.resource_id = resource_id
-        # The resource type.
+        # The resource type. Valid values:
+        # 
+        # - site: site
+        # - record: DNS record.
         self.resource_type = resource_type
         # The tag key.
         self.tag_key = tag_key

@@ -13,7 +13,6 @@ class CheckAssumeSlrRoleResponseBody(DaraModel):
     ):
         self.error_msg = error_msg
         self.is_exist = is_exist
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):

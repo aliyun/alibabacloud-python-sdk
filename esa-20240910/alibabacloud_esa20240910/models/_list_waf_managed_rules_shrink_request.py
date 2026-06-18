@@ -18,37 +18,48 @@ class ListWafManagedRulesShrinkRequest(DaraModel):
         query_args_shrink: str = None,
         site_id: int = None,
     ):
-        # Attack type of the vulnerability protection event. Values:
+        # The attack type to filter the results by. Valid values:
+        # 
         # - SQL injection
-        # - Cross-site scripting
-        # - Code execution
+        # 
+        # - cross-site scripting
+        # 
+        # - code execution
+        # 
         # - CRLF
-        # - Local file inclusion
-        # - Remote file inclusion
-        # - Webshell
-        # - Cross-site request forgery
+        # 
+        # - local file inclusion
+        # 
+        # - remote file inclusion
+        # 
+        # - webshell
+        # 
+        # - cross-site request forgery
+        # 
         # - Other
+        # 
         # - SEMA
         # 
         # This parameter is required.
         self.attack_type = attack_type
-        # ID of the WAF rule.
+        # The ID of the WAF rule.
         self.id = id
         self.instance_id = instance_id
-        # Language type, which will be used to return the response. Value range:
+        # The response language. Valid values:
         # 
         # - **en**: English.
+        # 
         # - **zh**: Chinese.
         self.language = language
         self.managed_ruleset_shrink = managed_ruleset_shrink
-        # Query page number.
+        # The number of the page to return.
         self.page_number = page_number
-        # Query page size.
+        # The number of entries to return on each page.
         self.page_size = page_size
         self.protection_level = protection_level
-        # Query conditions.
+        # The query conditions.
         self.query_args_shrink = query_args_shrink
-        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+        # The ID of the site. Call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain this ID.
         self.site_id = site_id
 
     def validate(self):

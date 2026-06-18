@@ -18,24 +18,28 @@ class ListTagResourcesRequest(DaraModel):
         security_token: str = None,
         tag: List[main_models.ListTagResourcesRequestTag] = None,
     ):
-        # The maximum number of tags to return.
+        # The maximum number of entries to return.
         self.max_item = max_item
-        # The pagination token that is used in the next request to retrieve a new page of results.
-        # 
-        # >  This parameter is not required for the first request. If not all results are returned in one query, you can specify the token that is obtained from the previous query as the value of **NextToken**.
+        # The token for the next query to return more results.
+        # > You do not need to specify this parameter for the first query. If a query does not return all results, pass the **NextToken** value returned from the previous query to continue the query.
         self.next_token = next_token
-        # The ID of the region where the resources reside.
+        # The region ID. Valid values:
+        # - Alibaba Cloud China Website (www.aliyun.com): cn-hangzhou
+        # - Alibaba Cloud International Website (www.alibabacloud.com): ap-southeast-1.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The website ID.
+        # The resource ID. Enter a site ID or a DNS record ID. You must specify at least one of ResourceId and Tag.
         self.resource_id = resource_id
-        # The resource type.
+        # The resource type. Valid values:
+        # 
+        # - site: site
+        # - record: DNS record.
         # 
         # This parameter is required.
         self.resource_type = resource_type
         self.security_token = security_token
-        # A list of tags. You can enter up to 20 tags.
+        # The list of tags. You can specify up to 20 tags. You must specify at least one of ResourceId and Tag.
         self.tag = tag
 
     def validate(self):

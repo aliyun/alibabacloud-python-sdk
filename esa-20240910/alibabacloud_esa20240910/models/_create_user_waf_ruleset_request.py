@@ -19,17 +19,46 @@ class CreateUserWafRulesetRequest(DaraModel):
         shared: main_models.WafBatchRuleShared = None,
         status: str = None,
     ):
+        # The description of the WAF ruleset.
         self.description = description
+        # The expression for the WAF ruleset.
+        # 
         # This parameter is required.
         self.expression = expression
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The name of the WAF ruleset.
+        # 
         # This parameter is required.
         self.name = name
+        # The execution phase of the WAF ruleset.
+        # 
+        # - `http_whitelist`: whitelist rule
+        # 
+        # - `http_custom`: custom rule
+        # 
+        # - `http_managed`: managed rule
+        # 
+        # - `http_anti_scan`: scan protection rule
+        # 
+        # - `http_ratelimit`: rate limiting rule
+        # 
+        # - `ip_access_rule`: IP access rule
+        # 
+        # - `http_bot`: advanced bot
+        # 
+        # - `http_security_level_rule`: security rule
+        # 
         # This parameter is required.
         self.phase = phase
+        # A list of rule configurations within the WAF ruleset.
         self.rules = rules
+        # The shared configuration for WAF batch rules.
         self.shared = shared
+        # The status of the WAF ruleset.
+        # 
         # This parameter is required.
         self.status = status
 

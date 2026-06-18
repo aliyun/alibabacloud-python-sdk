@@ -18,12 +18,19 @@ class ListKeylessServersResponseBody(DaraModel):
         site_name: str = None,
         total_count: int = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The page size.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # A list of keyless server configurations.
         self.result = result
+        # The site ID.
         self.site_id = site_id
+        # The site name.
         self.site_name = site_name
+        # The total count.
         self.total_count = total_count
 
     def validate(self):
@@ -104,16 +111,25 @@ class ListKeylessServersResponseBodyResult(DaraModel):
         update_time: str = None,
         verify: bool = None,
     ):
+        # The CA certificate used to verify the server certificate of the keyless server. This parameter applies only when `Verify` is set to `true`.
         self.ca_certificate = ca_certificate
+        # The client certificate. This parameter must be provided with `ClientPrivateKey`.
         self.client_certificate = client_certificate
+        # The client private key. This parameter must be provided with `ClientCertificate`.
         self.client_private_key = client_private_key
+        # The creation time.
         self.create_time = create_time
+        # The keyless server host name.
         self.host = host
-        # Keyless server ID。
+        # The keyless server ID.
         self.id = id
+        # The keyless server name.
         self.name = name
+        # The keyless server port. Valid values: 1 to 65535.
         self.port = port
+        # The update time.
         self.update_time = update_time
+        # Specifies whether to verify the server certificate of the keyless server. Defaults to false.
         self.verify = verify
 
     def validate(self):

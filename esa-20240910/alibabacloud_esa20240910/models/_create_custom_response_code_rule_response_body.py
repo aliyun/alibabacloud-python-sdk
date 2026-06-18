@@ -10,9 +10,9 @@ class CreateCustomResponseCodeRuleResponseBody(DaraModel):
         config_id: int = None,
         request_id: str = None,
     ):
-        # The configuration ID.
+        # Configuration ID.
         self.config_id = config_id
-        # The request ID.
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):

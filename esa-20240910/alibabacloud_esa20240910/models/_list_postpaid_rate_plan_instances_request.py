@@ -16,13 +16,37 @@ class ListPostpaidRatePlanInstancesRequest(DaraModel):
         status: str = None,
         unrelated_type: str = None,
     ):
+        # Specifies whether to return only instances that have remaining site quota. Valid values:
+        # 
+        # - `true`: Returns only instances with remaining site quota.
+        # 
+        # - `false`: Returns all instances, regardless of site quota.
         self.check_remaining_site_quota = check_remaining_site_quota
+        # The ID of the instance to query.
         self.instance_id = instance_id
+        # The page number. The value must be greater than or equal to 1.
         self.page_number = page_number
+        # The number of entries to return on each page. The maximum value is 500.
         self.page_size = page_size
+        # The field to sort the results by. Valid value:
+        # 
+        # - `CreateTime`: Sorts by creation time.
         self.sort_by = sort_by
+        # The sort order. Valid values:
+        # 
+        # - `asc`: ascending
+        # 
+        # - `desc`: descending
         self.sort_order = sort_order
+        # The instance status. Valid values:
+        # 
+        # - `online`: The instance is running.
+        # 
+        # - `overdue`: The payment for the instance is overdue.
+        # 
+        # - `disable`: The instance is released.
         self.status = status
+        # The type of add-on service to filter by, such as `bot` or `ddos`.
         self.unrelated_type = unrelated_type
 
     def validate(self):

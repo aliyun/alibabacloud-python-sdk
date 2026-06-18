@@ -17,28 +17,35 @@ class CreateImageTransformRequest(DaraModel):
         site_id: int = None,
         site_version: int = None,
     ):
+        # Specifies whether to enable adaptive AVIF. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.auto_avif = auto_avif
+        # Specifies whether to enable adaptive WebP. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.auto_webp = auto_webp
-        # Indicates whether image transformation is enabled. Possible values:
+        # Specifies whether to enable image transformation. Valid values:
         # - on: Enabled.
         # - off: Disabled.
         self.enable = enable
-        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
-        # - To match all incoming requests: Set the value to true
-        # - To match specific requests: Set the value to a custom expression, for example: (http.host eq "video.example.com")
+        # The rule content, which uses a conditional expression to match user requests. This parameter is not required when you add a global configuration. Two scenarios are supported:
+        # - Match all incoming requests: Set the value to true.
+        # - Match specified requests: Set the value to a custom expression, such as (http.host eq \\"video.example.com\\").
         self.rule = rule
-        # Rule switch. This parameter is not required when adding a global configuration. Possible values:
+        # Specifies whether to enable the rule. This parameter is not required when you add a global configuration. Valid values:
         # - on: Enabled.
         # - off: Disabled.
         self.rule_enable = rule_enable
-        # Rule name. This parameter is not required when adding a global configuration.
+        # The rule name. This parameter is not required when you add a global configuration.
         self.rule_name = rule_name
+        # The execution order of the rule. A smaller value indicates a higher priority.
         self.sequence = sequence
-        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+        # The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # The version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the effective version of the site configuration, defaulting to version 0.
+        # The version number of the site configuration. For sites with configuration version management enabled, you can use this parameter to specify the site version on which the configuration takes effect. The default value is 0.
         self.site_version = site_version
 
     def validate(self):

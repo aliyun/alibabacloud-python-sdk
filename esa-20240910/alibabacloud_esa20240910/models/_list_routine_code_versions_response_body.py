@@ -16,15 +16,15 @@ class ListRoutineCodeVersionsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The code versions of the routine.
+        # The list of Edge Routine code versions.
         self.code_versions = code_versions
-        # The page number. Pages start from page 1. Default value: 1.
+        # The current page number.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of code versions returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -87,21 +87,29 @@ class ListRoutineCodeVersionsResponseBodyCodeVersions(DaraModel):
         code_version: str = None,
         conf_options: main_models.ListRoutineCodeVersionsResponseBodyCodeVersionsConfOptions = None,
         create_time: str = None,
+        deploy_env: str = None,
         extra_info: str = None,
+        has_env_vars: bool = None,
         status: str = None,
     ):
-        # The ID of the code version build.
+        # The build ID of the code version.
         self.build_id = build_id
         # The description of the code version.
         self.code_description = code_description
-        # The version of the code.
+        # The code version number.
         self.code_version = code_version
-        # Code version configuration items.
+        # The configuration items of the code version.
         self.conf_options = conf_options
         # The time when the code version was created.
         self.create_time = create_time
-        # Additional information about the code version.
+        # The deployment environment. Valid values:
+        # - **staging**: staging environment.
+        # - **production**: production environment.
+        self.deploy_env = deploy_env
+        # The additional information about the code version.
         self.extra_info = extra_info
+        # Indicates whether environment variables exist.
+        self.has_env_vars = has_env_vars
         # The status of the code version.
         self.status = status
 
@@ -129,8 +137,14 @@ class ListRoutineCodeVersionsResponseBodyCodeVersions(DaraModel):
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
 
+        if self.deploy_env is not None:
+            result['DeployEnv'] = self.deploy_env
+
         if self.extra_info is not None:
             result['ExtraInfo'] = self.extra_info
+
+        if self.has_env_vars is not None:
+            result['HasEnvVars'] = self.has_env_vars
 
         if self.status is not None:
             result['Status'] = self.status
@@ -155,8 +169,14 @@ class ListRoutineCodeVersionsResponseBodyCodeVersions(DaraModel):
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
 
+        if m.get('DeployEnv') is not None:
+            self.deploy_env = m.get('DeployEnv')
+
         if m.get('ExtraInfo') is not None:
             self.extra_info = m.get('ExtraInfo')
+
+        if m.get('HasEnvVars') is not None:
+            self.has_env_vars = m.get('HasEnvVars')
 
         if m.get('Status') is not None:
             self.status = m.get('Status')
@@ -168,7 +188,7 @@ class ListRoutineCodeVersionsResponseBodyCodeVersionsConfOptions(DaraModel):
         self,
         not_found_strategy: str = None,
     ):
-        # Code version configuration items NotFoundStrategy.
+        # The NotFoundStrategy configuration item of the code version.
         self.not_found_strategy = not_found_strategy
 
     def validate(self):

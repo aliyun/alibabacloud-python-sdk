@@ -27,24 +27,50 @@ class DescribeTraceDiagnoseReportResponseBody(DaraModel):
         trace_display_link: str = None,
         trace_id: str = None,
     ):
+        # IP address of the local DNS server.
         self.client_addr = client_addr
+        # Client information.
         self.client_info = client_info
+        # Client IP.
         self.client_ip = client_ip
+        # Creation time. Format: yyyy-MM-dd HH:mm:ss, timezone: +08:00.
         self.create_time = create_time
+        # Diagnostic ID.
         self.diagnose_id = diagnose_id
+        # Diagnostic report link.
         self.diagnose_report_link = diagnose_report_link
+        # Diagnostic link.
         self.diagnose_url = diagnose_url
+        # The diagnosed domain name.
         self.domain = domain
+        # Expiration time. Timestamp in seconds.
         self.expire_time = expire_time
+        # Remaining available diagnosis count.
         self.remain_diagnose_times = remain_diagnose_times
+        # Diagnostic report details.
         self.report = report
         # Id of the request
         self.request_id = request_id
+        # Report generation status.
+        # 
+        # 0: Success.
+        # 1: Failure.
+        # 2: Timeout.
+        # 3: Running.
+        # 4: Waiting.
         self.state = state
+        # Status of the diagnostic link.
+        # 
+        # 1: Active.
+        # 0: Expired.
         self.status = status
+        # Task ID.
         self.task_id = task_id
+        # Time consumed for report generation, in seconds.
         self.time_consuming = time_consuming
+        # Trace display link.
         self.trace_display_link = trace_display_link
+        # Diagnostic trace ID.
         self.trace_id = trace_id
 
     def validate(self):
@@ -182,9 +208,13 @@ class DescribeTraceDiagnoseReportResponseBodyReport(DaraModel):
         response_header: str = None,
         static_html: str = None,
     ):
+        # Client information.
         self.client_info = client_info
+        # Diagnostic result.
         self.diagnose_result = diagnose_result
+        # Client request response header.
         self.response_header = response_header
+        # Static snapshot page.
         self.static_html = static_html
 
     def validate(self):
@@ -232,8 +262,11 @@ class DescribeTraceDiagnoseReportResponseBodyClientInfo(DaraModel):
         os: str = None,
         ua_string: str = None,
     ):
+        # Browser.
         self.browser_info = browser_info
+        # Operating system name.
         self.os = os
+        # Version.
         self.ua_string = ua_string
 
     def validate(self):

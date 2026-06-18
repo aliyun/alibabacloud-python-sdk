@@ -13,23 +13,25 @@ class CreateWaitingRoomRuleRequest(DaraModel):
         site_id: int = None,
         waiting_room_id: str = None,
     ):
-        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
-        # - Match all incoming requests: Set the value to true
-        # - Match specific requests: Set the value to a custom expression, for example: (http.host eq "video.example.com")
+        # The rule content, which uses a conditional expression to match user requests. This parameter is not required when you add a global configuration. Two scenarios are supported:
+        # - Match all incoming requests: Set the value to true.
+        # - Match specified requests: Set the value to a custom expression, for example, (http.host eq \\"video.example.com\\").
+        # 
+        # For the complete syntax of rule expressions, see <props="china">https://www.alibabacloud.com/help/en/edge-security-acceleration/esa/user-guide/work-with-rules-engine/<props="intl">https://www.alibabacloud.com/help/edge-security-acceleration/esa/user-guide/work-with-rules-engine/.
         # 
         # This parameter is required.
         self.rule = rule
-        # Rule switch. This parameter is not required when adding a global configuration. Value range:
-        # - on: Enable.
-        # - off: Disable.
+        # Specifies whether to enable the rule. This parameter is not required when you add a global configuration. Valid values:
+        # - on: enabled.
+        # - off: disabled.
         # 
         # This parameter is required.
         self.rule_enable = rule_enable
-        # Rule name. This parameter is not required when adding a global configuration.
+        # The rule name. This parameter is not required when you add a global configuration.
         # 
         # This parameter is required.
         self.rule_name = rule_name
-        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
+        # The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         # 
         # This parameter is required.
         self.site_id = site_id

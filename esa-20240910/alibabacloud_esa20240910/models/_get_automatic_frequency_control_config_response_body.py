@@ -16,13 +16,37 @@ class GetAutomaticFrequencyControlConfigResponseBody(DaraModel):
         rule_id: int = None,
         threshold: int = None,
     ):
+        # The action to perform. Valid values:
+        # 
+        # - **observe**: Monitors requests.
+        # 
+        # - **deny**: Denies requests.
+        # 
+        # - **js**: Issues a JavaScript challenge.
         self.action_type = action_type
+        # Indicates whether automatic frequency control is enabled. Valid values:
+        # 
+        # - **on**: Enabled.
+        # 
+        # - **off**: Disabled.
         self.enable = enable
+        # The statistics collection interval.
         self.interval = interval
+        # The protection level. Valid values:
+        # 
+        # - **loose**: Loose.
+        # 
+        # - **normal**: Normal.
+        # 
+        # - **strict**: Strict.
         self.level = level
+        # The duration of the penalty, in seconds.
         self.punish_time = punish_time
+        # The request ID.
         self.request_id = request_id
+        # The rule ID.
         self.rule_id = rule_id
+        # The threshold that triggers the action.
         self.threshold = threshold
 
     def validate(self):

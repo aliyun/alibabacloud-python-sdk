@@ -82,26 +82,31 @@ class ListWaitingRoomEventsResponseBodyWaitingRoomEvents(DaraModel):
         self.description = description
         # Indicates whether session renewal is disabled. Valid values:
         # 
-        # *   on
-        # *   off
+        # - on
+        # 
+        # - off
         self.disable_session_renewal_enable = disable_session_renewal_enable
         # The event status. Valid values:
         # 
-        # *   on
-        # *   off
+        # - on
+        # 
+        # - off
         self.enable = enable
         # The end time of the event. This value is a UNIX timestamp.
         self.end_time = end_time
         # Indicates whether JOSN response is enabled. If JSON response is enabled, a JSON body is returned for requests to the waiting room with the header Accept: application/json. Valid values:
         # 
-        # *   on
-        # *   off
+        # - on
+        # 
+        # - off
         self.json_response_enable = json_response_enable
         # The language of the waiting room page. This parameter is returned when the waiting room type is set to default. Valid values:
         # 
-        # *   enus: English.
-        # *   zhcn: Simplified Chinese.
-        # *   zhhk: Traditional Chinese.
+        # - enus: English.
+        # 
+        # - zhcn: Simplified Chinese.
+        # 
+        # - zhhk: Traditional Chinese.
         self.language = language
         # The custom event name.
         self.name = name
@@ -109,28 +114,35 @@ class ListWaitingRoomEventsResponseBodyWaitingRoomEvents(DaraModel):
         self.new_users_per_minute = new_users_per_minute
         # Indicates whether pre-queuing is enabled. Valid values:
         # 
-        # *   on
-        # *   off
+        # - on
+        # 
+        # - off
         self.pre_queue_enable = pre_queue_enable
         # The start time for pre-queuing. This value is a UNIX timestamp. This parameter is valid only when pre-queuing is enabled.
         self.pre_queue_start_time = pre_queue_start_time
         # The queuing method. Valid values:
         # 
-        # *   random: Users gain access to the origin randomly, regardless of the arrival time.
-        # *   fifo: Users gain access to the origin in order of arrival.
-        # *   passthrough: Users pass through the waiting room and go straight to the origin.
-        # *   reject-all: Users are blocked from reaching the origin.
+        # - random: Users gain access to the origin randomly, regardless of the arrival time.
+        # 
+        # - fifo: Users gain access to the origin in order of arrival.
+        # 
+        # - passthrough: Users pass through the waiting room and go straight to the origin.
+        # 
+        # - reject-all: Users are blocked from reaching the origin.
         self.queuing_method = queuing_method
         # The HTTP status code to return while a user is in the queue. Valid values:
         # 
-        # *   200
-        # *   202
-        # *   429
+        # - 200
+        # 
+        # - 202
+        # 
+        # - 429
         self.queuing_status_code = queuing_status_code
         # Indicates whether random queuing is enabled. Valid values:
         # 
-        # *   on
-        # *   off
+        # - on
+        # 
+        # - off
         self.random_pre_queue_enable = random_pre_queue_enable
         # The maximum duration for which a session remains valid after a user leaves the origin. Unit: minutes.
         self.session_duration = session_duration
@@ -144,8 +156,9 @@ class ListWaitingRoomEventsResponseBodyWaitingRoomEvents(DaraModel):
         self.waiting_room_id = waiting_room_id
         # The type of the waiting room. Valid values:
         # 
-        # *   default
-        # *   custom
+        # - default
+        # 
+        # - custom
         self.waiting_room_type = waiting_room_type
 
     def validate(self):

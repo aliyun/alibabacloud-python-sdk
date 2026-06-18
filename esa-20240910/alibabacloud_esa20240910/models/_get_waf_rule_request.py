@@ -10,11 +10,11 @@ class GetWafRuleRequest(DaraModel):
         id: int = None,
         site_id: int = None,
     ):
-        # The ID of the WAF rule, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2878257.html) interface.
+        # The ID of the WAF rule. You can get this ID by calling the [ListWafRules](https://help.aliyun.com/document_detail/2878257.html) operation.
         # 
         # This parameter is required.
         self.id = id
-        # The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+        # The ID of the site. You can get this ID by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         # 
         # This parameter is required.
         self.site_id = site_id

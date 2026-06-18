@@ -10,7 +10,7 @@ class GetKvResponseBody(DaraModel):
         request_id: str = None,
         value: str = None,
     ):
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The value of the key.
         self.value = value

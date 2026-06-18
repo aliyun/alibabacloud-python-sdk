@@ -16,15 +16,15 @@ class ListKvsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The key-value pairs.
+        # The list of key-value pairs returned by this traversal.
         self.keys = keys
-        # The total number of pages returned.
+        # The total number of pages.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of records on each page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -85,7 +85,7 @@ class ListKvsResponseBodyKeys(DaraModel):
         name: str = None,
         update_time: str = None,
     ):
-        # The key name.
+        # The name of the key.
         self.name = name
         # The time when the key was last updated.
         self.update_time = update_time

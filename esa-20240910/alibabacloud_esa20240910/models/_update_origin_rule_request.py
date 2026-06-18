@@ -30,57 +30,99 @@ class UpdateOriginRuleRequest(DaraModel):
         sequence: int = None,
         site_id: int = None,
     ):
-        # Configuration ID.
+        # The configuration ID.
         # 
         # This parameter is required.
         self.config_id = config_id
-        # Rewrite the DNS resolution record of the origin request.
+        # Overrides the DNS record for the origin request.
         self.dns_record = dns_record
+        # Indicates whether to follow 302 redirects for origin requests. Valid values:
+        # 
+        # - `on`: Follows 302 redirects.
+        # 
+        # - `off`: Does not follow 302 redirects.
         self.follow_302enable = follow_302enable
+        # The maximum number of 302 redirects to follow. The value must be an integer from 1 to 5.
         self.follow_302max_tries = follow_302max_tries
+        # Indicates whether to retain the original request parameters when following a 302 redirect. Valid values:
+        # 
+        # - `on`: Retains the parameters.
+        # 
+        # - `off`: Does not retain the parameters.
         self.follow_302retain_args = follow_302retain_args
+        # Indicates whether to retain the original request headers when following a 302 redirect. Valid values:
+        # 
+        # - `on`: Retains the headers.
+        # 
+        # - `off`: Does not retain the headers.
         self.follow_302retain_header = follow_302retain_header
+        # The `Host` header for the redirected origin request.
         self.follow_302target_host = follow_302target_host
-        # The HOST carried in the origin request.
+        # The `Host` header for the origin request.
         self.origin_host = origin_host
-        # Port of the origin server when using HTTP protocol for origin pull.
+        # The origin server port for HTTP requests.
         self.origin_http_port = origin_http_port
-        # Port of the origin server when using HTTPS protocol for origin pull.
+        # The origin server port for HTTPS requests.
         self.origin_https_port = origin_https_port
-        # mTLS switch. Valid values:
-        # - on: Enable.
-        # - off: Disable.
+        # Indicates whether to enable mutual TLS (mTLS) for origin requests. Valid values:
+        # 
+        # - `on`: Enables mTLS.
+        # 
+        # - `off`: Disables mTLS.
         self.origin_mtls = origin_mtls
+        # The read timeout period for the origin server, in seconds.
         self.origin_read_timeout = origin_read_timeout
-        # Protocol used for the origin request. Valid values:
-        # - http: Use HTTP protocol for origin pull.
-        # - https: Use HTTPS protocol for origin pull.
-        # - follow: Follow the client\\"s protocol for origin pull.
+        # The protocol for origin requests. Valid values:
+        # 
+        # - `http`: The origin request uses HTTP.
+        # 
+        # - `https`: The origin request uses HTTPS.
+        # 
+        # - `follow`: The origin request uses the same protocol as the client request.
         self.origin_scheme = origin_scheme
-        # SNI carried in the origin request.
+        # The Server Name Indication (SNI) for the origin request.
         self.origin_sni = origin_sni
-        # Origin certificate verification switch. Valid values:
-        # - on: Enable.
-        # - off: Disable.
+        # Indicates whether to enable origin certificate verification. Valid values:
+        # 
+        # - `on`: Enables verification.
+        # 
+        # - `off`: Disables verification.
         self.origin_verify = origin_verify
-        # Use range chunking for origin pull file download. Valid values:
-        # - on: Enable.
-        # - off: Disable.
-        # - force: Force.
+        # Indicates whether to use range requests when fetching files from the origin server. Valid values:
+        # 
+        # - `on`: Enables range requests.
+        # 
+        # - `off`: Disables range requests.
+        # 
+        # - `force`: Enforces range requests.
         self.range = range
+        # The size of each chunk for range requests. Valid values:
+        # 
+        # - 512KB
+        # 
+        # - 1MB
+        # 
+        # - 2MB
+        # 
+        # - 4MB
         self.range_chunk_size = range_chunk_size
-        # Rule content, used to match user requests with conditional expressions. This parameter is not required when adding a global configuration. There are two usage scenarios:
-        # - Match all incoming requests: Set the value to true
-        # - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
+        # The rule content, which is a conditional expression that matches user requests. This parameter is not required when you add a global configuration.
+        # 
+        # - To match all incoming requests, set the value to `true`.
+        # 
+        # - To match specific requests, set the value to a custom expression, such as `(http.host eq "video.example.com")`.
         self.rule = rule
-        # Rule switch. This parameter is not required when adding a global configuration. Valid values:
-        # - on: Enable.
-        # - off: Disable.
+        # Indicates whether the rule is enabled. This parameter is not required when you add a global configuration. Valid values:
+        # 
+        # - `on`: Enables the rule.
+        # 
+        # - `off`: Disables the rule.
         self.rule_enable = rule_enable
-        # Rule name. This parameter is not required when adding a global configuration.
+        # The rule name. This parameter is not required when you add a global configuration.
         self.rule_name = rule_name
+        # The execution priority of the rule. A smaller value indicates a higher priority.
         self.sequence = sequence
-        # Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+        # The site ID. You can get this ID by calling the [ListSites](~~ListSites~~) operation.
         # 
         # This parameter is required.
         self.site_id = site_id

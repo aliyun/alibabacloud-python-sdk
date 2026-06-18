@@ -14,11 +14,11 @@ class ListScheduledPreloadExecutionsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The information about prefetch plans returned.
+        # A list of execution plans.
         self.executions = executions
-        # The request ID.
+        # The unique ID of the request.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of execution plans.
         self.total_count = total_count
 
     def validate(self):
@@ -75,25 +75,29 @@ class ListScheduledPreloadExecutionsResponseBodyExecutions(DaraModel):
     ):
         # The ID of the Alibaba Cloud account.
         self.ali_uid = ali_uid
-        # The end time of the prefetch plan.
+        # The end time of the execution plan.
         self.end_time = end_time
-        # The ID of the prefetch plan.
+        # The ID of the execution plan.
         self.id = id
-        # The time interval between each batch execution in the plan. Unit: seconds.
+        # The execution interval between batches, in seconds.
         self.interval = interval
-        # The ID of the prefetch task.
+        # The ID of the scheduled preload task.
         self.job_id = job_id
-        # The number of URLs prefetched in each batch.
+        # The number of URLs to preload in each batch.
         self.slice_len = slice_len
-        # The start time of the prefetch plan.
+        # The start time of the execution plan.
         self.start_time = start_time
-        # The status of the prefetch plan. Valid values:
+        # The status of the execution plan. Valid values:
         # 
-        # *   **waiting**
-        # *   **running**
-        # *   **finished**
-        # *   **failed**
-        # *   **stopped**
+        # - **waiting**: Pending execution.
+        # 
+        # - **running**: Executing.
+        # 
+        # - **finished**: Completed.
+        # 
+        # - **failed**: Failed.
+        # 
+        # - **stopped**: Paused.
         self.status = status
 
     def validate(self):

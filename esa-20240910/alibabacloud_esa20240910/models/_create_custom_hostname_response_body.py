@@ -11,8 +11,11 @@ class CreateCustomHostnameResponseBody(DaraModel):
         hostname_id: int = None,
         request_id: str = None,
     ):
+        # The custom hostname.
         self.hostname = hostname
+        # The ID of the custom hostname.
         self.hostname_id = hostname_id
+        # The unique identifier for the request.
         self.request_id = request_id
 
     def validate(self):

@@ -18,36 +18,45 @@ class UpdateRewriteUrlRuleRequest(DaraModel):
         site_id: int = None,
         uri: str = None,
     ):
-        # Configuration ID. It can be obtained by calling the [ListRewriteUrlRules](https://help.aliyun.com/document_detail/2867480.html) interface.
+        # The configuration ID. You can get this ID by calling the [ListRewriteUrlRules](https://help.aliyun.com/document_detail/2867480.html) API.
         # 
         # This parameter is required.
         self.config_id = config_id
-        # The query string after rewriting.
+        # The query string after the rewrite.
         self.query_string = query_string
-        # Query string rewrite type. Value range:
-        # - static: Static mode.
-        # - dynamic: Dynamic mode.
+        # The query string rewrite type. Valid values:
+        # 
+        # - static: Static Mode.
+        # 
+        # - dynamic: Dynamic Mode.
         self.rewrite_query_string_type = rewrite_query_string_type
-        # URI rewrite type. Value range:
-        # - static: Static mode.
-        # - dynamic: Dynamic mode.
+        # The URI rewrite type. Valid values:
+        # 
+        # - static: Static Mode.
+        # 
+        # - dynamic: Dynamic Mode.
         self.rewrite_uri_type = rewrite_uri_type
-        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
-        # - Match all incoming requests: Set the value to true
-        # - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
+        # The content of the rule, a conditional expression that matches user requests. This parameter is not required for a Global Configuration. Two use cases are supported:
+        # 
+        # - To match all incoming requests, set the value to true.
+        # 
+        # - To match specific requests, set the value to a custom expression, for example, (http.host eq "video.example.com").
         self.rule = rule
-        # Rule switch. This parameter is not required when adding a global configuration. Value range:
-        # - on: Enable.
-        # - off: Disable.
+        # Specifies whether the rule is enabled. This parameter is not required for a Global Configuration. Valid values:
+        # 
+        # - on: The rule is enabled.
+        # 
+        # - off: The rule is disabled.
         self.rule_enable = rule_enable
-        # Rule name. This parameter is not required when adding a global configuration.
+        # The rule name. This parameter is not required for a Global Configuration.
         self.rule_name = rule_name
+        # The execution priority of the rule. A smaller value indicates a higher priority.
         self.sequence = sequence
-        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+        # The site ID. You can get this ID by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # The target URI after rewriting.
+        # The destination URI after the rewrite.
         self.uri = uri
 
     def validate(self):

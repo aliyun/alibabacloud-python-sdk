@@ -10,7 +10,7 @@ class CreatePageResponseBody(DaraModel):
         id: int = None,
         request_id: str = None,
     ):
-        # The ID of the custom error page.[](~~2850223~~)
+        # The ID of the custom error page. Obtain this ID by calling the [ListPages](https://help.aliyun.com/document_detail/2850223.html) API.
         self.id = id
         # The request ID.
         self.request_id = request_id

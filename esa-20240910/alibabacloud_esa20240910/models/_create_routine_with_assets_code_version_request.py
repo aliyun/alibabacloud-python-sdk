@@ -11,12 +11,14 @@ class CreateRoutineWithAssetsCodeVersionRequest(DaraModel):
         build_id: int = None,
         code_description: str = None,
         conf_options: main_models.CreateRoutineWithAssetsCodeVersionRequestConfOptions = None,
+        deploy_env: str = None,
         extra_info: str = None,
         name: str = None,
     ):
         self.build_id = build_id
         self.code_description = code_description
         self.conf_options = conf_options
+        self.deploy_env = deploy_env
         self.extra_info = extra_info
         # This parameter is required.
         self.name = name
@@ -39,6 +41,9 @@ class CreateRoutineWithAssetsCodeVersionRequest(DaraModel):
         if self.conf_options is not None:
             result['ConfOptions'] = self.conf_options.to_map()
 
+        if self.deploy_env is not None:
+            result['DeployEnv'] = self.deploy_env
+
         if self.extra_info is not None:
             result['ExtraInfo'] = self.extra_info
 
@@ -58,6 +63,9 @@ class CreateRoutineWithAssetsCodeVersionRequest(DaraModel):
         if m.get('ConfOptions') is not None:
             temp_model = main_models.CreateRoutineWithAssetsCodeVersionRequestConfOptions()
             self.conf_options = temp_model.from_map(m.get('ConfOptions'))
+
+        if m.get('DeployEnv') is not None:
+            self.deploy_env = m.get('DeployEnv')
 
         if m.get('ExtraInfo') is not None:
             self.extra_info = m.get('ExtraInfo')

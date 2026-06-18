@@ -100,20 +100,27 @@ class DescribePurgeTasksResponseBodyTasks(DaraModel):
         self.process = process
         # The task status.
         # 
-        # *   **Complete**: The task is complete.
-        # *   **Refreshing**: The task is in progress.
-        # *   **Failed**: The task failed.
+        # - **Complete**: The task is complete.
+        # 
+        # - **Refreshing**: The task is in progress.
+        # 
+        # - **Failed**: The task failed.
         self.status = status
         # The task ID.
         self.task_id = task_id
         # The type of the purge task. Valid values:
         # 
-        # *   **file** (default): purges the cache by file.
-        # *   **cachetag**: purges the cache by cache tag.
-        # *   **directory**: purges the cache by directory.
-        # *   **ignoreParams**: purges the cache by URL with specified parameters ignored.
-        # *   **hostname**: purges the cache by hostname.
-        # *   **purgeall**: purges all cache.
+        # - **file** (default): purges the cache by file.
+        # 
+        # - **cachetag**: purges the cache by cache tag.
+        # 
+        # - **directory**: purges the cache by directory.
+        # 
+        # - **ignoreParams**: purges the cache by URL with specified parameters ignored.
+        # 
+        # - **hostname**: purges the cache by hostname.
+        # 
+        # - **purgeall**: purges all cache.
         self.type = type
 
     def validate(self):

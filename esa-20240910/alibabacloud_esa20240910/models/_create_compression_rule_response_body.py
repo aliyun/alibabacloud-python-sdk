@@ -10,9 +10,9 @@ class CreateCompressionRuleResponseBody(DaraModel):
         config_id: int = None,
         request_id: str = None,
     ):
-        # Configuration ID.
+        # The unique ID of the configuration.
         self.config_id = config_id
-        # Request ID.
+        # The unique ID of the request.
         self.request_id = request_id
 
     def validate(self):

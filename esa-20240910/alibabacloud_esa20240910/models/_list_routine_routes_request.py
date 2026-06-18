@@ -11,11 +11,11 @@ class ListRoutineRoutesRequest(DaraModel):
         page_size: int = None,
         routine_name: str = None,
     ):
-        # The page number. Default value: 1.
+        # The page number. The default value is 1.
         self.page_number = page_number
-        # The number of entries per page. Maximum value: 500. Default value: 500.
+        # The number of entries per page. The maximum value is 500. The default value is 500.
         self.page_size = page_size
-        # The function name.
+        # The name of the Edge Function routine.
         # 
         # This parameter is required.
         self.routine_name = routine_name

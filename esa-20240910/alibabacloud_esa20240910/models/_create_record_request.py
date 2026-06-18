@@ -13,6 +13,8 @@ class CreateRecordRequest(DaraModel):
         comment: str = None,
         data: main_models.CreateRecordRequestData = None,
         host_policy: str = None,
+        http_ports: str = None,
+        https_ports: str = None,
         proxied: bool = None,
         record_name: str = None,
         site_id: int = None,
@@ -39,6 +41,8 @@ class CreateRecordRequest(DaraModel):
         # *   follow_hostname: Follow the host record.
         # *   follow_origin_domain: match the origin\\"s domain name.
         self.host_policy = host_policy
+        self.http_ports = http_ports
+        self.https_ports = https_ports
         # Specifies whether to proxy the record. Only CNAME and A/AAAA records can be proxied. Valid values:
         # 
         # *   **true**
@@ -97,6 +101,12 @@ class CreateRecordRequest(DaraModel):
         if self.host_policy is not None:
             result['HostPolicy'] = self.host_policy
 
+        if self.http_ports is not None:
+            result['HttpPorts'] = self.http_ports
+
+        if self.https_ports is not None:
+            result['HttpsPorts'] = self.https_ports
+
         if self.proxied is not None:
             result['Proxied'] = self.proxied
 
@@ -135,6 +145,12 @@ class CreateRecordRequest(DaraModel):
 
         if m.get('HostPolicy') is not None:
             self.host_policy = m.get('HostPolicy')
+
+        if m.get('HttpPorts') is not None:
+            self.http_ports = m.get('HttpPorts')
+
+        if m.get('HttpsPorts') is not None:
+            self.https_ports = m.get('HttpsPorts')
 
         if m.get('Proxied') is not None:
             self.proxied = m.get('Proxied')

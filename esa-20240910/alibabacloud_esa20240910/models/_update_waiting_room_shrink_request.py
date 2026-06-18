@@ -34,26 +34,31 @@ class UpdateWaitingRoomShrinkRequest(DaraModel):
         self.description = description
         # Specifies whether to disable session renewal. Valid values:
         # 
-        # *   on
-        # *   off
+        # - on
+        # 
+        # - off
         self.disable_session_renewal_enable = disable_session_renewal_enable
         # Specifies whether to enable the waiting room. Valid values:
         # 
-        # *   on
-        # *   off
+        # - on
+        # 
+        # - off
         self.enable = enable
         # The hostname and path.
         self.host_name_and_path_shrink = host_name_and_path_shrink
         # Specifies whether to enable JSON response. If JSON response is enabled, a JSON body is returned for requests to the waiting room with the header Accept: application/json. Valid values:
         # 
-        # *   on
-        # *   off
+        # - on
+        # 
+        # - off
         self.json_response_enable = json_response_enable
         # The language of the waiting room page. You must specify this parameter if you set WaitingRoomType to default. Valid values:
         # 
-        # *   enus: English.
-        # *   zhcn: Simplified Chinese.
-        # *   zhhk: Traditional Chinese.
+        # - enus: English.
+        # 
+        # - zhcn: Simplified Chinese.
+        # 
+        # - zhhk: Traditional Chinese.
         self.language = language
         # The name of the waiting room.
         self.name = name
@@ -61,21 +66,27 @@ class UpdateWaitingRoomShrinkRequest(DaraModel):
         self.new_users_per_minute = new_users_per_minute
         # Specifies whether to queue all requests. Valid values:
         # 
-        # *   on
-        # *   off
+        # - on
+        # 
+        # - off
         self.queue_all_enable = queue_all_enable
         # The queuing method. Valid values:
         # 
-        # *   random: Users gain access to the origin randomly, regardless of the arrival time.
-        # *   fifo: Users gain access to the origin in order of arrival.
-        # *   passthrough: Users pass through the waiting room and go straight to the origin.
-        # *   reject-all: Users are blocked from reaching the origin.
+        # - random: Users gain access to the origin randomly, regardless of the arrival time.
+        # 
+        # - fifo: Users gain access to the origin in order of arrival.
+        # 
+        # - passthrough: Users pass through the waiting room and go straight to the origin.
+        # 
+        # - reject-all: Users are blocked from reaching the origin.
         self.queuing_method = queuing_method
         # The HTTP status code to return while a user is in the queue. Valid values:
         # 
-        # *   200
-        # *   202
-        # *   429
+        # - 200
+        # 
+        # - 202
+        # 
+        # - 429
         self.queuing_status_code = queuing_status_code
         # The maximum duration for which a session remains valid after a user leaves the origin. Unit: minutes.
         self.session_duration = session_duration
@@ -91,8 +102,9 @@ class UpdateWaitingRoomShrinkRequest(DaraModel):
         self.waiting_room_id = waiting_room_id
         # The type of the waiting room. Valid values:
         # 
-        # *   default
-        # *   custom
+        # - default
+        # 
+        # - custom
         self.waiting_room_type = waiting_room_type
 
     def validate(self):

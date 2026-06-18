@@ -19,37 +19,67 @@ class PurchaseRatePlanRequest(DaraModel):
         site_name: str = None,
         type: str = None,
     ):
+        # The number of plans to purchase.
         self.amount = amount
-        # Specifies whether to enable auto payment.
+        # Specifies whether to enable automatic payment.
+        # Set this parameter to true when you directly call this operation.
         self.auto_pay = auto_pay
-        # Auto-renewal:
-        # - true: Enable auto-renewal.
-        # - false: Disable auto-renewal.
+        # Specifies whether to enable auto-renewal. Valid values:
+        # - true: Auto-renewal is enabled.
+        # - false: Auto-renewal is disabled.
         self.auto_renew = auto_renew
+        # The channel field.
         self.channel = channel
         # The billing method. Valid values:
-        # 
-        # *   PREPAY: subscription.
-        # *   POSTPAY: pay-as-you-go.
+        # - PREPAY: subscription.
+        # - POSTPAY: pay-as-you-go.
+        # Set this parameter to PREPAY when you directly call this operation.
         self.charge_type = charge_type
-        # The service location. Valid values:
-        # 
-        # *   domestic: the Chinese mainland.
-        # *   global: global.
-        # *   overseas: outside the Chinese mainland.
+        # The acceleration region. Valid values:
+        # - domestic: the Chinese mainland only.
+        # - global: global.
+        # - overseas: global (excluding the Chinese mainland).
         self.coverage = coverage
-        # Subscription period (in months).
+        # The purchase period, in months.
+        # This parameter is required when you directly call this operation.
         self.period = period
-        # Package code.
-        self.plan_code = plan_code
-        # Package name.
-        self.plan_name = plan_name
-        # Site name.
-        self.site_name = site_name
-        # The DNS setup option for the website. Valid values:
+        # The plan code.
         # 
-        # *   NS
-        # *   CNAME
+        # China site
+        # 
+        # - Free Edition: entranceplan
+        # - Basic: basicplan
+        # - Standard: standardplan
+        # - Premium: advancedplan
+        # 
+        # International site
+        # 
+        # - Entrance: entranceplan
+        # - Pro: standardplan
+        # - Premium: advancedpla.
+        self.plan_code = plan_code
+        # The plan name.
+        # 
+        # China site
+        # 
+        # - Free Edition: entranceplan
+        # - Basic: basic
+        # - Standard: medium
+        # - Premium: high
+        # 
+        # International site
+        # 
+        # - Entrance: entranceplan_intl
+        # - Pro: basicplan_intl
+        # - Premium: vipplan_intl
+        # 
+        # > Note: For Enterprise Edition plans, the plan name is provided after backend configuration.
+        self.plan_name = plan_name
+        # The site name.
+        self.site_name = site_name
+        # The site access type. Valid values:
+        # - NS: NS access.
+        # - CNAME: CNAME access.
         self.type = type
 
     def validate(self):

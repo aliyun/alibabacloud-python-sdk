@@ -13,11 +13,33 @@ class ListUserWafRulesetsShrinkRequest(DaraModel):
         phase: str = None,
         query_args_shrink: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The page number to return.
         self.page_number = page_number
+        # The number of entries to return on each page.
         self.page_size = page_size
+        # Specifies the execution phase of the WAF rule.
+        # 
+        # - `http_whitelist`: whitelist rule
+        # 
+        # - `http_custom`: custom rule
+        # 
+        # - `http_managed`: managed rule
+        # 
+        # - `http_anti_scan`: anti-scan rule
+        # 
+        # - `http_ratelimit`: rate limit rule
+        # 
+        # - `ip_access_rule`: IP access rule
+        # 
+        # - `http_bot`: advanced mode bot
+        # 
+        # - `http_security_level_rule`: security rule
         self.phase = phase
+        # Parameters for filtering and sorting the results.
         self.query_args_shrink = query_args_shrink
 
     def validate(self):

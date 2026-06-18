@@ -14,21 +14,21 @@ class UpdateWafRuleShrinkRequest(DaraModel):
         site_version: int = None,
         status: str = None,
     ):
-        # Rule configuration.
+        # The configuration of the rule.
         self.config_shrink = config_shrink
-        # WAF rule ID, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2878257.html) interface.
+        # The ID of the WAF rule. To obtain the rule ID, call the [ListWafRules](https://help.aliyun.com/document_detail/2878257.html) operation.
         # 
         # This parameter is required.
         self.id = id
-        # The position of the rule in the rule set.
+        # The position of the rule within the rule set.
         self.position = position
-        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+        # The ID of the site. To obtain the site ID, call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # Site version.
+        # The version number of the site configuration. For sites with configuration version management enabled, use this parameter to specify the effective configuration version. The default is version 0.
         self.site_version = site_version
-        # Rule status.
+        # The status of the rule.
         self.status = status
 
     def validate(self):

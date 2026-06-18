@@ -10,11 +10,11 @@ class GetOriginClientCertificateHostnamesRequest(DaraModel):
         id: str = None,
         site_id: int = None,
     ):
-        # The ID of the certificate.
+        # The certificate ID.
         # 
         # This parameter is required.
         self.id = id
-        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # The site ID.
         # 
         # This parameter is required.
         self.site_id = site_id

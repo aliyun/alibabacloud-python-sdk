@@ -9,7 +9,7 @@ class StartScheduledPreloadExecutionRequest(DaraModel):
         self,
         id: str = None,
     ):
-        # The ID of the prefetch plan.
+        # Prefetch plan ID.
         # 
         # This parameter is required.
         self.id = id

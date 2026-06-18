@@ -13,26 +13,21 @@ class CreateScheduledPreloadJobRequest(DaraModel):
         site_id: int = None,
         url_list: str = None,
     ):
-        # The method to submit URLs to be prefetched.
-        # 
-        # Valid values:
-        # 
-        # *   **textBox**
-        # *   **oss**
+        # The method for uploading the preload file. Valid values are `Textbox` and `OSS`.
         # 
         # This parameter is required.
         self.insert_way = insert_way
-        # The name of the scheduled prefetch task.
+        # The name of the scheduled preload job.
         # 
         # This parameter is required.
         self.name = name
-        # The URL of the OSS object that stores the URLs to be prefetched.
+        # The URL of the OSS file that contains the URLs to preload.
         self.oss_url = oss_url
-        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # The ID of the site. You can get this ID by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # The URLs to be prefetched. This parameter is required if you set InsertWay to textBox.
+        # The list of URLs to preload. This parameter is used when `InsertWay` is set to `Textbox`.
         self.url_list = url_list
 
     def validate(self):

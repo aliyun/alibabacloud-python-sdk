@@ -15,18 +15,19 @@ class UpdateOriginPoolRequest(DaraModel):
         origins: List[main_models.UpdateOriginPoolRequestOrigins] = None,
         site_id: int = None,
     ):
-        # Whether the origin pool is enabled:
+        # Specifies whether to enable the origin pool:
         # 
-        # - true: Enabled;
-        # - false: Disabled.
+        # - true: Enables the origin pool.
+        # 
+        # - false: Disables the origin pool.
         self.enabled = enabled
-        # The ID of the origin pool, which can be obtained by calling the [ListOriginPools](https://help.aliyun.com/document_detail/2863947.html) interface.
+        # The origin pool ID. Get this ID by calling the [ListOriginPools](~~ListOriginPools~~) operation.
         # 
         # This parameter is required.
         self.id = id
-        # Information about the origins added to the origin pool. Multiple origins are passed as an array.
+        # An array of origin configurations.
         self.origins = origins
-        # The site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+        # The site ID. Get this ID by calling the [ListSites](~~ListSites~~) operation.
         # 
         # This parameter is required.
         self.site_id = site_id
@@ -89,27 +90,39 @@ class UpdateOriginPoolRequestOrigins(DaraModel):
         type: str = None,
         weight: int = None,
     ):
-        # The address of the origin, e.g., www.example.com.
+        # The origin\\"s domain name or IP address.
         self.address = address
-        # Authentication information. When the origin is OSS or S3 and requires authentication, you need to pass the related configuration information for authentication.
+        # The authentication configuration. Required for private OSS or S3 origins.
         self.auth_conf = auth_conf
-        # Whether the origin is enabled:
+        # Specifies whether to enable the origin:
         # 
-        # - true: Enabled;
-        # - false: Disabled.
+        # - true: Enables the origin.
+        # 
+        # - false: Disables the origin.
         self.enabled = enabled
-        # The request header to be included when fetching from the origin, supporting only Host.
+        # The request header to add to back-to-origin requests. Only the Host header is supported.
         self.header = header
-        self.ip_version_policy = ip_version_policy
-        # The name of the origin, which must be unique under one origin pool.
-        self.name = name
-        # The type of the origin:
+        # The IP version policy for back-to-origin requests. Valid values:
         # 
-        # - ip_domain: IP or domain type origin;
-        # - OSS: OSS address origin;
-        # - S3: AWS S3 origin.
+        # - round_robin: (Default) Randomly selects an IPv4 or IPv6 origin.
+        # 
+        # - ipv4_first: Prioritizes IPv4 origins.
+        # 
+        # - ipv6_first: Prioritizes IPv6 origins.
+        # 
+        # - follow: Uses the same IP version as the client request.
+        self.ip_version_policy = ip_version_policy
+        # The name of the origin. The name must be unique within the origin pool.
+        self.name = name
+        # The origin type. Valid values:
+        # 
+        # - ip_domain: An IP address or a domain name.
+        # 
+        # - OSS: An OSS origin.
+        # 
+        # - S3: An AWS S3 origin.
         self.type = type
-        # The weight, an integer between 0 and 100.
+        # The weight of the origin. The value must be an integer from 0 to 100.
         self.weight = weight
 
     def validate(self):
@@ -185,20 +198,23 @@ class UpdateOriginPoolRequestOriginsAuthConf(DaraModel):
         secret_key: str = None,
         version: str = None,
     ):
-        # The AccessKey required for private authentication.
+        # The access key for private authentication. Required for private origins.
         self.access_key = access_key
-        # The type of authentication.
+        # The authentication type. Valid values:
         # 
-        # - public: Public read/write, used when the origin is OSS or S3 and is set to public read/write;
-        # - private_same_account: Private same account, used when the origin is OSS and the authentication type is private within the same account;
-        # - private_cross_account: Private cross-account, used when the origin is OSS and the authentication type is private across accounts;
-        # - private: Used when the origin is S3 and the authentication type is private.
+        # - public: For public OSS or S3 origins.
+        # 
+        # - private_same_account: For private OSS origins in the same account.
+        # 
+        # - private_cross_account: For private OSS origins that use cross-account authentication.
+        # 
+        # - private: For private S3 origins.
         self.auth_type = auth_type
-        # The region of the origin required when the origin is AWS S3.
+        # The region of the origin. This parameter is required if the origin type is S3.
         self.region = region
-        # The SecretKey required for private authentication.
+        # The secret key for private authentication. Required for private origins.
         self.secret_key = secret_key
-        # The signature version required when the origin is AWS S3.
+        # The signature version. This parameter is required if the origin type is S3.
         self.version = version
 
     def validate(self):

@@ -19,17 +19,17 @@ class UploadOriginClientCertificateResponseBody(DaraModel):
         status: str = None,
         validity_days: str = None,
     ):
-        # The Common Name of the certificate.
+        # The common name of the certificate.
         self.common_name = common_name
         # The SHA-256 fingerprint of the certificate.
         self.fingerprint_sha_256 = fingerprint_sha_256
-        # The certificate ID.
+        # The ID of the certificate.
         self.id = id
-        # The CA that issued the certificate.
+        # The issuer of the certificate.
         self.issuer = issuer
-        # The time when the certificate expires.
+        # The end of the certificate\\"s validity period (`not after`). The timestamp is in UTC and formatted in ISO 8601.
         self.not_after = not_after
-        # The time when the certificate takes effect.
+        # The start of the certificate\\"s validity period (`not before`). The timestamp is in UTC and formatted in ISO 8601.
         self.not_before = not_before
         # The request ID.
         self.request_id = request_id
@@ -39,7 +39,7 @@ class UploadOriginClientCertificateResponseBody(DaraModel):
         self.signature_algorithm = signature_algorithm
         # The status of the certificate.
         self.status = status
-        # The validity period of the certificate. Unit: day.
+        # The validity period of the certificate in days.
         self.validity_days = validity_days
 
     def validate(self):

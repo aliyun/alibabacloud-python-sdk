@@ -15,15 +15,25 @@ class DescribeEdgeContainerAppStatsRequest(DaraModel):
         start_time: str = None,
         tenant: str = None,
     ):
+        # Basic information about the application.
+        # 
         # This parameter is required.
         self.app = app
+        # The end time to retrieve data. The date must be in ISO 8601 format and use UTC. The format is yyyy-MM-ddTHH:mm:ssZ.
+        # 
+        # > The end time must be later than the start time.
         self.end_time = end_time
+        # The metric fields.
+        # 
         # This parameter is required.
         self.fields = fields
+        # The Internet Service Provider (ISP).
         self.isp = isp
+        # The region.
         self.locate = locate
+        # The start time. The date must be in ISO 8601 format and use UTC. The format is yyyy-MM-ddTHH:mm:ssZ.
         self.start_time = start_time
-        # The tenant ID.
+        # The tenant.
         self.tenant = tenant
 
     def validate(self):

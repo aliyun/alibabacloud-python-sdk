@@ -15,17 +15,33 @@ class ListWafRulesetsRequest(DaraModel):
         site_id: int = None,
         site_version: int = None,
     ):
-        # Page number, specifying the current page number for paginated queries.
+        # The page number for pagination.
         self.page_number = page_number
-        # Page size, specifying the number of records per page for paginated queries.
+        # The number of entries per page.
         self.page_size = page_size
-        # WAF operation phase, specifying the rule set phase to query.
+        # The execution phase for WAF rules.
+        # 
+        # - `http_whitelist`: whitelist rule
+        # 
+        # - `http_custom`: custom rule
+        # 
+        # - `http_managed`: managed rule
+        # 
+        # - `http_anti_scan`: scan protection rule
+        # 
+        # - `http_ratelimit`: rate-limiting rule
+        # 
+        # - `ip_access_rule`: IP access rule
+        # 
+        # - `http_bot`: bot rule
+        # 
+        # - `http_security_level_rule`: security rule
         self.phase = phase
-        # Query parameters, passed in JSON format, containing various filtering conditions.
+        # A JSON object containing query parameters for filtering.
         self.query_args = query_args
-        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+        # The ID of the site. Get this ID by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
         self.site_id = site_id
-        # Site version.
+        # The site\\"s configuration version. For sites with configuration version management enabled, use this parameter to specify the version. The default is 0.
         self.site_version = site_version
 
     def validate(self):
@@ -88,13 +104,13 @@ class ListWafRulesetsRequestQueryArgs(DaraModel):
         name_like: str = None,
         order_by: str = None,
     ):
-        # Fuzzy search for rule set ID, rule set name, rule ID, and rule name.
+        # A keyword for a fuzzy search on the ID or name of a ruleset or rule.
         self.any_like = any_like
-        # Whether to sort in descending order.
+        # Specifies whether to sort in descending order.
         self.desc = desc
-        # Fuzzy search for rule set name.
+        # A keyword for a fuzzy search on ruleset names.
         self.name_like = name_like
-        # Specify the column to sort by.
+        # Specifies the field for sorting the results.
         self.order_by = order_by
 
     def validate(self):

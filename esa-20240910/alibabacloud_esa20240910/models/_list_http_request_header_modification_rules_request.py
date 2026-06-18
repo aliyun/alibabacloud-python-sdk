@@ -15,23 +15,25 @@ class ListHttpRequestHeaderModificationRulesRequest(DaraModel):
         site_id: int = None,
         site_version: int = None,
     ):
-        # Configuration ID, which can be obtained by calling the [ListHttpRequestHeaderModificationRules](https://help.aliyun.com/document_detail/2867483.html) API.
+        # The configuration ID. You can get this ID by calling the [ListHttpRequestHeaderModificationRules](https://help.aliyun.com/document_detail/2867483.html) operation.
         self.config_id = config_id
-        # Configuration type, which can be used to query global or rule configurations. Possible values:
-        # - global: Query global configuration;
-        # - rule: Query rule configuration;
+        # The type of configuration to query. Valid values:
+        # 
+        # - `global`: The global configuration.
+        # 
+        # - `rule`: A rule configuration.
         self.config_type = config_type
-        # Page number, defaulting to 1 if not provided.
+        # The page number. If you do not set this parameter, 1 is used.
         self.page_number = page_number
-        # Number of items per page, with a maximum of 500. Defaults to 500 if not provided.
+        # The number of entries per page. Maximum value: 500. If you do not set this parameter, 500 is used.
         self.page_size = page_size
-        # Rule name. This parameter is not required when adding a global configuration.
+        # The rule name. You do not need to set this parameter when you add a global configuration.
         self.rule_name = rule_name
-        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
+        # The site ID. You can get this value by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # Version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the effective version of the configuration, defaulting to version 0.
+        # The version number of the site configuration. For sites that have configuration version management enabled, you can use this parameter to specify the site version for which the configuration takes effect. The default value is 0.
         self.site_version = site_version
 
     def validate(self):

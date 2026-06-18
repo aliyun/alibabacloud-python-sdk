@@ -12,7 +12,7 @@ class DeleteEdgeContainerAppResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # Specifies whether the deletion is successful.
+        # The deletion status.
         self.state = state
 
     def validate(self):

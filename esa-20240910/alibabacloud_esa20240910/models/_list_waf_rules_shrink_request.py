@@ -15,25 +15,39 @@ class ListWafRulesShrinkRequest(DaraModel):
         site_id: int = None,
         site_version: int = None,
     ):
-        # Query page number, used for pagination.
+        # The number of the page to return.
         self.page_number = page_number
-        # Query page size, used for pagination.
+        # The number of items to return per page.
         self.page_size = page_size
-        # WAF rule type. Values:
+        # The WAF rule execution phase. Valid values are:
         # 
-        # - http_anti_scan: Scan protection
-        # - http_bot: Bots
+        # - `http_whitelist`: whitelist rule
+        # 
+        # - `http_custom`: custom rule
+        # 
+        # - `http_managed`: managed rule
+        # 
+        # - `http_anti_scan`: scan protection rule
+        # 
+        # - `http_ratelimit`: rate limiting rule
+        # 
+        # - `ip_access_rule`: IP access rule
+        # 
+        # - `http_bot`: Advanced bots
+        # 
+        # - `http_security_level_rule`: security rule
         # 
         # This parameter is required.
         self.phase = phase
-        # Query filter conditions.
+        # Query filters.
         self.query_args_shrink = query_args_shrink
+        # The ID of the WAF ruleset. You can obtain this ID by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2878359.html) operation.
         self.ruleset_id = ruleset_id
-        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+        # The site ID. You can obtain this ID by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # Site version.
+        # The site configuration version. For sites with configuration version management enabled, this parameter specifies the version to use. Defaults to 0.
         self.site_version = site_version
 
     def validate(self):

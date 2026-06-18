@@ -17,7 +17,7 @@ class DescribeSiteLogsRequest(DaraModel):
         # 
         # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         # 
-        # >  The end time must be later than the start time.
+        # > The end time must be later than the start time.
         self.end_time = end_time
         # The page number. Pages start from page 1.
         self.page_number = page_number

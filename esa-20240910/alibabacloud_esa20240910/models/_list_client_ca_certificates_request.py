@@ -13,9 +13,9 @@ class ListClientCaCertificatesRequest(DaraModel):
     ):
         # The page number. Valid values: 1 to 500.
         self.page_number = page_number
-        # The number of entries per page. Default value: 20. Valid values: 1 to 100.
+        # The number of entries to return per page. Valid values: 1 to 100. The default value is 20.
         self.page_size = page_size
-        # The website ID, which can be obtained by calling the [ListSites](~~ListSites~~) operation.
+        # The site ID. Call the [ListSites](~~ListSites~~) operation to obtain this ID.
         # 
         # This parameter is required.
         self.site_id = site_id

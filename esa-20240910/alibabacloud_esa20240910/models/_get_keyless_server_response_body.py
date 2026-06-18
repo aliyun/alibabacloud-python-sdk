@@ -21,19 +21,31 @@ class GetKeylessServerResponseBody(DaraModel):
         update_time: str = None,
         verify: bool = None,
     ):
+        # The CA certificate used to verify the server certificate of the keyless server. This parameter applies only when Verify is set to true.
         self.ca_certificate = ca_certificate
+        # The client certificate. Must be provided as a pair with the client private key.
         self.client_certificate = client_certificate
+        # The client private key. Must be provided as a pair with the client certificate.
         self.client_private_key = client_private_key
+        # The creation time.
         self.create_time = create_time
+        # The hostname of the keyless server.
         self.host = host
-        # Keyless server ID。
+        # The keyless server ID.
         self.id = id
+        # The keyless server name.
         self.name = name
+        # The port of the keyless server. Valid values: **1** to **65535**.
         self.port = port
+        # The request ID.
         self.request_id = request_id
+        # The site ID.
         self.site_id = site_id
+        # The site name.
         self.site_name = site_name
+        # The update time.
         self.update_time = update_time
+        # Indicates whether to verify the server certificate of the keyless server. The default value is false.
         self.verify = verify
 
     def validate(self):

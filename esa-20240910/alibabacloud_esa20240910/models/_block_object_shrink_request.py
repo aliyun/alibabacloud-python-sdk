@@ -16,16 +16,17 @@ class BlockObjectShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.content_shrink = content_shrink
-        # The period of time during which the URL is blocked. Unit: seconds. Specify this parameter if Type is set to block.
+        # The effective period of the block, in seconds. Specify this parameter when Type is set to block.
         self.maxage = maxage
-        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # The ID of the site. Call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID.
         # 
         # This parameter is required.
         self.site_id = site_id
         # The type. Valid values:
         # 
-        # *   **block**
-        # *   **unblock**
+        # - **block**: Blocks access.
+        # 
+        # - **unblock**: Unblocks access.
         # 
         # This parameter is required.
         self.type = type

@@ -16,21 +16,37 @@ class UpdateCustomHostnameRequest(DaraModel):
         record_id: int = None,
         ssl_flag: str = None,
     ):
-        # 云盾证书ID，使用云盾证书时必填
+        # The ID of the Alibaba Cloud Security certificate. This parameter is required when CertType is set to cas.
         self.cas_id = cas_id
-        # 云盾证书所在地域，使用云盾证书时必填
+        # The region of the Alibaba Cloud Security certificate. This parameter is required when CertType is set to cas.
+        # 
+        # - cn-hangzhou: The value for accounts on the Alibaba Cloud China Website (www\\.aliyun.com).
+        # 
+        # - ap-southeast-1: The value for accounts on the Alibaba Cloud International Website (www\\.alibabacloud.com).
         self.cas_region = cas_region
-        # 证书类型，SSL 开启时必填
+        # The certificate type. This parameter is required when SslFlag is set to on.
+        # 
+        # - **free**: Free certificate.
+        # 
+        # - **upload**: Uploaded certificate.
+        # 
+        # - **cas**: Alibaba Cloud Security certificate.
         self.cert_type = cert_type
-        # 证书公钥，使用上传证书时必填
+        # The content of the certificate. This parameter is required when CertType is set to upload.
         self.certificate = certificate
+        # The ID of the SaaS domain name. You can obtain the ID by calling the [ListCustomHostnames](https://help.aliyun.com/document_detail/3018667.html) operation.
+        # 
         # This parameter is required.
         self.hostname_id = hostname_id
-        # 证书私钥，使用上传证书时必填
+        # The private key of the certificate. This parameter is required when CertType is set to upload.
         self.private_key = private_key
-        # 绑定的源站记录ID
+        # The ID of the record to attach. You can obtain the ID by calling the [ListRecords](https://help.aliyun.com/document_detail/2850265.html) operation.
         self.record_id = record_id
-        # SSL开关
+        # The SSL switch.
+        # 
+        # - **on**: Enables SSL.
+        # 
+        # - **off**: Disables SSL.
         self.ssl_flag = ssl_flag
 
     def validate(self):

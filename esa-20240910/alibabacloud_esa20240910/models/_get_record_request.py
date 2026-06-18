@@ -9,7 +9,7 @@ class GetRecordRequest(DaraModel):
         self,
         record_id: int = None,
     ):
-        # The record ID, which can be obtained by calling [ListRecords](https://help.aliyun.com/document_detail/2850265.html).
+        # The record ID. Obtain it by calling [ListRecords](https://help.aliyun.com/document_detail/2850265.html).
         # 
         # This parameter is required.
         self.record_id = record_id

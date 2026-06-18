@@ -9,6 +9,7 @@ class ApplyCustomHostnameCertificateResponseBody(DaraModel):
         self,
         request_id: str = None,
     ):
+        # The unique ID of the request. Alibaba Cloud generates this ID for each request.
         self.request_id = request_id
 
     def validate(self):

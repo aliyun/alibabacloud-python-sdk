@@ -13,13 +13,13 @@ class ListCertificatesRequest(DaraModel):
         site_id: int = None,
         valid_only: bool = None,
     ):
-        # The keyword that is used for the search.
+        # The search keyword.
         self.keyword = keyword
-        # The page number.
+        # The page number to return.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries to return on each page.
         self.page_size = page_size
-        # The website ID, which can be obtained by calling the [ListSites](~~ListSites~~) operation.
+        # The site ID. To get this ID, call the [ListSites](~~ListSites~~) API.
         # 
         # This parameter is required.
         self.site_id = site_id

@@ -20,29 +20,35 @@ class GetHttpRequestHeaderModificationRuleResponseBody(DaraModel):
         sequence: int = None,
         site_version: int = None,
     ):
-        # Configuration ID.
+        # The configuration ID.
         self.config_id = config_id
-        # Configuration type. Possible values:
-        # - global: Global configuration.
-        # - rule: Rule-based configuration.
+        # The configuration type. Valid values:
+        # 
+        # - global: A global configuration.
+        # 
+        # - rule: A rule-based configuration.
         self.config_type = config_type
-        # Modify request headers, supporting add, delete, and modify operations.
+        # The request header modifications. The add, delete, and modify operations are supported.
         self.request_header_modification = request_header_modification
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
-        # - Match all incoming requests: Set the value to true
-        # - Match specific requests: Set the value to a custom expression, for example: (http.host eq "video.example.com")
+        # The content of the rule, which uses a conditional expression to match user requests. This parameter is not required for global configurations. There are two scenarios:
+        # 
+        # - To match all incoming requests, set the value to true.
+        # 
+        # - To match specific requests, set the value to a custom expression, such as (http.host eq "video.example.com").
         self.rule = rule
-        # Rule switch. This parameter is not required when adding a global configuration. Possible values:
-        # - on: Enabled.
-        # - off: Disabled.
+        # Specifies whether the rule is enabled. This parameter is not required for global configurations. Valid values:
+        # 
+        # - on: The rule is enabled.
+        # 
+        # - off: The rule is disabled.
         self.rule_enable = rule_enable
-        # Rule name. This parameter is not required when adding a global configuration.
+        # The name of the rule. This parameter is not required for global configurations.
         self.rule_name = rule_name
-        # Rule execution order. The smaller the value, the higher the priority.
+        # The execution order of the rule. Rules with smaller values are executed first.
         self.sequence = sequence
-        # The version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the effective version of the site, defaulting to version 0.
+        # The version number of the site configuration. For sites with version management enabled, this parameter specifies the site version to which the configuration applies. The default value is 0.
         self.site_version = site_version
 
     def validate(self):
@@ -129,16 +135,23 @@ class GetHttpRequestHeaderModificationRuleResponseBodyRequestHeaderModification(
         type: str = None,
         value: str = None,
     ):
-        # Request header name.
+        # The name of the request header.
         self.name = name
-        # Operation method. Possible values:
+        # The operation to perform. Valid values:
         # 
-        # - add: Add.
-        # - del: Delete
-        # - modify: Modify.
+        # - add: Adds a header.
+        # 
+        # - del: Deletes a header.
+        # 
+        # - modify: Modifies a header.
         self.operation = operation
+        # The type of the value. Valid values:
+        # 
+        # - static: A static value.
+        # 
+        # - dynamic: A dynamic value.
         self.type = type
-        # Request header value.
+        # The value of the request header.
         self.value = value
 
     def validate(self):

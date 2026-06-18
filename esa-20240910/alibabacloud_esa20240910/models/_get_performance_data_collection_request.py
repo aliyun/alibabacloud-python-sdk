@@ -9,6 +9,8 @@ class GetPerformanceDataCollectionRequest(DaraModel):
         self,
         site_id: int = None,
     ):
+        # The Site ID.
+        # 
         # This parameter is required.
         self.site_id = site_id
 

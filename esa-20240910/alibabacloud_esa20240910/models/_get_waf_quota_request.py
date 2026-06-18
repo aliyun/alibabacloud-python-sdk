@@ -9,11 +9,15 @@ class GetWafQuotaRequest(DaraModel):
         self,
         paths: str = None,
     ):
-        # The path of the WAF quota, for example:
-        # * managed_rules_group: represents the quota for the WAF managed rules group
-        # * list: represents the quota for custom lists
-        # * page: represents the quota for custom response pages
-        # * scene_policy: represents the quota for scenario protection
+        # The path of the WAF quota. Valid values:
+        # 
+        # - managed_rules_group: The quota for managed rule groups.
+        # 
+        # - list: The quota for custom lists.
+        # 
+        # - page: The quota for custom response pages.
+        # 
+        # - scene_policy: The quota for scene-based protection.
         self.paths = paths
 
     def validate(self):

@@ -13,8 +13,9 @@ class DescribeRatePlanPriceResponseBody(DaraModel):
         price_model: main_models.DescribeRatePlanPriceResponseBodyPriceModel = None,
         request_id: str = None,
     ):
+        # The pricing information.
         self.price_model = price_model
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

@@ -13,14 +13,39 @@ class SetAutomaticFrequencyControlConfigRequest(DaraModel):
         site_id: int = None,
         site_version: int = None,
     ):
+        # The action to take on requests that trigger the control. Valid values:
+        # 
+        # - **observe**: Monitors the requests.
+        # 
+        # - **deny**: Blocks the requests.
+        # 
+        # - **js**: Issues a JS challenge.
+        # 
         # This parameter is required.
         self.action_type = action_type
+        # Specifies whether to enable automatic frequency control. Valid values:
+        # 
+        # - **on**: Enables automatic frequency control.
+        # 
+        # - **off**: Disables automatic frequency control.
+        # 
         # This parameter is required.
         self.enable = enable
+        # The protection level. Valid values:
+        # 
+        # - **loose**: Loose protection.
+        # 
+        # - **normal**: Normal protection.
+        # 
+        # - **strict**: Strict protection.
+        # 
         # This parameter is required.
         self.level = level
+        # The ID of the site. Call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain this ID.
+        # 
         # This parameter is required.
         self.site_id = site_id
+        # The version of the site. For a site with version management enabled, this parameter specifies the version to which the configuration applies. The default value is 0.
         self.site_version = site_version
 
     def validate(self):

@@ -9,7 +9,7 @@ class GetSitePauseRequest(DaraModel):
         self,
         site_id: int = None,
     ):
-        # The website ID, which can be obtained by calling the [ListSites](~~ListSites~~) operation.
+        # The site ID. Call the [ListSites](~~ListSites~~) operation to obtain this ID.
         # 
         # This parameter is required.
         self.site_id = site_id

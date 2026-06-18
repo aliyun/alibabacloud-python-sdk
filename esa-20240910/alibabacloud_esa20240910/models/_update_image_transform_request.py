@@ -19,27 +19,33 @@ class UpdateImageTransformRequest(DaraModel):
     ):
         self.auto_avif = auto_avif
         self.auto_webp = auto_webp
-        # Configuration ID. It can be obtained by calling the [ListImageTransforms](https://help.aliyun.com/document_detail/2869056.html) interface.
+        # The configuration ID. You can obtain this ID by calling the [ListImageTransforms](https://help.aliyun.com/document_detail/2869056.html) operation.
         # 
         # This parameter is required.
         self.config_id = config_id
-        # Indicates whether to enable image transformation. Possible values:
+        # Specifies whether to enable image transform. Valid values:
         # 
-        # - on: Enable.
-        # - off: Disable.
+        # - `on`: Enables image transform.
+        # 
+        # - `off`: Disables image transform.
         self.enable = enable
-        # Rule content, used to match user requests with conditional expressions. This parameter is not required when adding a global configuration. There are two usage scenarios:
-        # - To match all incoming requests: Set the value to true.
-        # - To match specific requests: Set the value to a custom expression, for example: (http.host eq "video.example.com")
+        # The rule content, which is a conditional expression for matching user requests. This parameter is not required when you configure a global rule. The expression can be used in the following ways:
+        # 
+        # - To match all incoming requests, set the value to `true`.
+        # 
+        # - To match specific requests, set the value to a custom expression, for example, `(http.host eq "video.example.com")`.
         self.rule = rule
-        # Rule switch. This parameter is not required when adding a global configuration. Possible values:
-        # - on: Enable.
-        # - off: Disable.
+        # Specifies whether to enable the rule. This parameter is not required when you configure a global rule. Valid values:
+        # 
+        # - `on`: Enables the rule.
+        # 
+        # - `off`: Disables the rule.
         self.rule_enable = rule_enable
-        # Rule name. This parameter is not required when adding a global configuration.
+        # The rule name. This parameter is not required when you configure a global rule.
         self.rule_name = rule_name
+        # The execution priority of the rule. A smaller value indicates a higher priority.
         self.sequence = sequence
-        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+        # The site ID. You can obtain this ID by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         # 
         # This parameter is required.
         self.site_id = site_id

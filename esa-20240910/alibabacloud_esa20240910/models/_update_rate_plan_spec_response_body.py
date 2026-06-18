@@ -11,9 +11,11 @@ class UpdateRatePlanSpecResponseBody(DaraModel):
         order_id: str = None,
         request_id: str = None,
     ):
+        # The instance ID.
         self.instance_id = instance_id
+        # The order ID.
         self.order_id = order_id
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

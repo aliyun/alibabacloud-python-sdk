@@ -15,26 +15,31 @@ class CreateHttpRequestHeaderModificationRuleShrinkRequest(DaraModel):
         site_id: int = None,
         site_version: int = None,
     ):
-        # Modify request headers, supporting add, delete, and modify operations.
+        # An array of objects that define Request Header modifications. Supported operations include add, del, and modify.
         # 
         # This parameter is required.
         self.request_header_modification_shrink = request_header_modification_shrink
-        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
-        # - To match all incoming requests: Set the value to true
-        # - To match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
+        # The content of the Rule, which uses a Conditional Expression to match user requests. This parameter is not required when you add a global configuration. Supports two Use Cases:
+        # 
+        # - To match all incoming requests, set the value to true.
+        # 
+        # - To match specific requests, set the value to a custom expression, for example, (http.host eq "video.example.com").
         self.rule = rule
-        # Rule switch. This parameter is not required when adding a global configuration. Possible values:
-        # - on: Enable.
-        # - off: Disable.
+        # Specifies whether to enable the Rule. This parameter is not required when you add a global configuration. Valid values are:
+        # 
+        # - on: Enables the Rule.
+        # 
+        # - off: Disables the Rule.
         self.rule_enable = rule_enable
-        # Rule name. This parameter is not required when adding a global configuration.
+        # The name of the Rule. This parameter is not required when you add a global configuration.
         self.rule_name = rule_name
+        # The execution order of the Rule. A smaller value indicates a higher priority.
         self.sequence = sequence
-        # Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+        # The ID of the Site. You can get this ID by calling the [ListSites](~~ListSites~~) operation.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # Version number of the site configuration. For sites with version management enabled, this parameter can specify the version to which the configuration applies, defaulting to version 0.
+        # The Version of the Site configuration. For a Site with configuration versioning enabled, this parameter specifies the configuration\\"s target Version. The default value is 0.
         self.site_version = site_version
 
     def validate(self):

@@ -26,57 +26,63 @@ class CreateLoadBalancerRequest(DaraModel):
         sub_region_pools: Any = None,
         ttl: int = None,
     ):
-        # Configuration for failover across pools.
+        # The configuration for failover across address pools.
         self.adaptive_routing = adaptive_routing
-        # List of default pools.
+        # A list of default address pool IDs.
         # 
         # This parameter is required.
         self.default_pools = default_pools
-        # Detailed description of the load balancer, for easier management and identification.
+        # A description of the Server Load Balancer.
         self.description = description
-        # Whether the load balancer is enabled.
+        # Specifies whether to enable the Server Load Balancer.
         # 
-        # - true: Enabled.
-        # - false: Not enabled.
+        # - `true`: Enabled.
+        # 
+        # - `false`: Disabled.
         self.enabled = enabled
-        # Fallback pool ID, where traffic will be directed when all other pools are unavailable.
+        # The ID of the fallback pool. The system directs traffic to this pool when all other pools are unavailable.
         # 
         # This parameter is required.
         self.fallback_pool = fallback_pool
-        # Monitor configuration, used for health checks.
+        # The monitor configuration for health checks.
         # 
         # This parameter is required.
         self.monitor = monitor
-        # The name of the load balancer, which must meet the domain name format validation and be a subdomain under the site.
+        # The name of the Server Load Balancer. It must be a valid domain name and a subdomain of the site.
         # 
         # This parameter is required.
         self.name = name
-        # Weighted round-robin configuration, used to control the traffic distribution weights among different pools.
+        # The configuration for weighted round-robin steering. This setting controls how the system distributes traffic across different address pools based on their weights.
         self.random_steering = random_steering
-        # Address pools corresponding to primary regions.
+        # The mapping of primary regions to address pools.
         self.region_pools = region_pools
-        # Rule information.
+        # A list of rules to override the default traffic steering policy for specific requests.
         self.rules = rules
-        # Session persistence, with possible values:
-        # - off: Not enabled.
-        # - ip: Session persistence by IP.
-        # - cookie: Session persistence by cookie.
+        # Specifies the session affinity policy, which consistently routes requests from the same client to the same origin server. Valid values:
+        # 
+        # - `off`: Disables session affinity.
+        # 
+        # - `ip`: Routes requests based on the client\\"s IP address.
+        # 
+        # - `cookie`: Uses a cookie to maintain session affinity.
         self.session_affinity = session_affinity
-        # Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+        # The site ID. Call the [ListSites](~~ListSites~~) operation to obtain this ID.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # Load balancing strategy.
+        # The traffic steering policy, which determines how the system distributes traffic among the address pools. Valid values:
         # 
-        # - geo: Geographical strategy.
-        # - random: Weighted round-robin.
-        # - order: Primary and backup method.
+        # - `geo`: Geographic routing.
+        # 
+        # - `random`: Weighted round-robin.
+        # 
+        # - `order`: Primary/standby.
         # 
         # This parameter is required.
         self.steering_policy = steering_policy
-        # Address pools corresponding to secondary regions. When multiple secondary regions share the same set of address pools, the keys can be concatenated with commas.
+        # The mapping of secondary regions to address pools. To map multiple secondary regions to the same address pools, combine their region codes with commas to form the key.
         self.sub_region_pools = sub_region_pools
-        # TTL value, the time-to-live for DNS records, with a default of 30 seconds. The value range is 10-600.
+        # The time to live (TTL) for the DNS record, in seconds. The default value is 30. The value must be between 10 and 600.
         self.ttl = ttl
 
     def validate(self):
@@ -211,26 +217,31 @@ class CreateLoadBalancerRequestRules(DaraModel):
         sequence: int = None,
         terminates: bool = None,
     ):
-        # Execute a specified response after matching the rule.
+        # Specifies a fixed response to return when a request matches the rule.
         self.fixed_response = fixed_response
-        # Modify the corresponding load balancing configuration after matching the rule. The fields in the configuration will override the corresponding fields in the load balancer configuration.
+        # The Server Load Balancer settings to override when a request matches the rule. The fields specified here replace the corresponding fields in the main Server Load Balancer configuration.
         self.overrides = overrides
-        # Rule content, using conditional expressions to match user requests. This parameter does not need to be set when adding global configurations. There are two usage scenarios:
-        # - Match all incoming requests: Set the value to true
-        # - Match specific requests: Set the value to a custom expression, e.g., (http.host eq \\"video.example.com\\")
-        self.rule = rule
-        # Rule switch. This parameter does not need to be set when adding global configurations. Value range:
-        # - on: Enable.
-        # - off: Disable.
-        self.rule_enable = rule_enable
-        # The name of the rule. This parameter does not need to be set when adding global configurations.
-        self.rule_name = rule_name
-        # The execution order of the rule. It can be left blank, in which case the rules will be executed in the order they appear in the list. If specified, it must be a positive integer, with higher values indicating higher priority.
-        self.sequence = sequence
-        # Whether to terminate the execution of subsequent rules.
+        # A conditional expression that matches incoming requests.
         # 
-        # - true: Yes.
-        # - false: No, default value.
+        # - To match all incoming requests, set the value to `true`.
+        # 
+        # - To match specific requests, provide a custom expression, such as `(http.host eq "video.example.com")`.
+        self.rule = rule
+        # Specifies whether the rule is enabled. This parameter is not required when adding a global configuration. Valid values:
+        # 
+        # - `on`: The rule is enabled.
+        # 
+        # - `off`: The rule is disabled.
+        self.rule_enable = rule_enable
+        # The name of the rule. This parameter is not required when adding a global configuration.
+        self.rule_name = rule_name
+        # The execution order of the rule. If you do not specify a value, the system executes rules in the order they appear in the list. If specified, the value must be an integer greater than 0. The system executes rules with a higher value first.
+        self.sequence = sequence
+        # Specifies whether to stop processing subsequent rules after a match.
+        # 
+        # - `true`: Yes.
+        # 
+        # - `false`: No. (Default)
         self.terminates = terminates
 
     def validate(self):
@@ -299,13 +310,13 @@ class CreateLoadBalancerRequestRulesFixedResponse(DaraModel):
         message_body: str = None,
         status_code: int = None,
     ):
-        # Content-Type field in the HTTP Header.
+        # The value of the `Content-Type` field in the HTTP response header.
         self.content_type = content_type
-        # Location field in the HTTP response.
+        # The value of the `Location` field in the HTTP response header, typically used for redirects.
         self.location = location
-        # Response body value.
+        # The content of the response body.
         self.message_body = message_body
-        # Response status code.
+        # The HTTP status code of the response.
         self.status_code = status_code
 
     def validate(self):
@@ -352,9 +363,9 @@ class CreateLoadBalancerRequestRandomSteering(DaraModel):
         default_weight: int = None,
         pool_weights: Dict[str, int] = None,
     ):
-        # Default weight for all pools that do not have individual weights specified. The value range is an integer between 0 and 100.
+        # The default weight for the weighted round-robin policy. This weight applies to all address pools without a specifically assigned weight. Valid values: 0–100.
         self.default_weight = default_weight
-        # Weight configuration for each backend server pool, with the key being the pool ID and the value being the weight coefficient. The weight coefficient represents the proportion of relative traffic distribution.
+        # A map of weights for each address pool, where the key is the pool ID and the value is its weight. The weight determines the proportion of traffic that the pool receives.
         self.pool_weights = pool_weights
 
     def validate(self):
@@ -399,38 +410,52 @@ class CreateLoadBalancerRequestMonitor(DaraModel):
         timeout: int = None,
         type: str = None,
     ):
-        # Number of consecutive failed probes required to consider the target unhealthy, such as `5`.
+        # The number of consecutive failed health checks required to mark an origin server as unhealthy. For example, `5`.
         self.consecutive_down = consecutive_down
-        # Number of consecutive successful probes required to consider the target healthy, such as `3`.
+        # The number of consecutive successful health checks required to mark an origin server as healthy. For example, `3`.
         self.consecutive_up = consecutive_up
-        # Expected status codes, such as `200,202`, which are successful HTTP responses.
+        # The expected HTTP status codes that indicate a successful health check. Separate multiple codes with commas. For example, `200,202`.
         self.expected_codes = expected_codes
-        # Whether to follow redirects.
+        # Specifies whether the health check monitor follows HTTP redirects.
         # 
-        # - true: Yes.
-        # - false: No.
+        # - `true`: Yes.
+        # 
+        # - `false`: No.
         self.follow_redirects = follow_redirects
-        # Header information included in the probe, which is an HTTP header.
+        # The HTTP headers to include in the health check request.
         self.header = header
-        # Monitoring interval, such as `60` seconds, which is the frequency of checks.
+        # The interval in seconds between consecutive health checks. For example, `60`.
         self.interval = interval
-        # Monitor request method, such as `GET`, which is a method in the HTTP protocol.
+        # The HTTP method for the health check. For example, `GET`.
         self.method = method
+        # The regions from which the monitor initiates health check probes. Default: `Global`. Valid values:
+        # 
+        # - `Global`: Worldwide.
+        # 
+        # - `ChineseMainland`: Chinese mainland.
+        # 
+        # - `OutsideChineseMainland`: Regions outside the Chinese mainland.
         self.monitoring_region = monitoring_region
-        # Monitor check path, such as `/healthcheck`, which is an HTTP request path.
+        # The request path for the HTTP health check. For example, `/healthcheck`.
         self.path = path
-        # Origin server port.
+        # The port on the origin server to check.
         self.port = port
-        # Application health check timeout, in seconds, with a value range of 1-10.
+        # The timeout for the health check, in seconds. The value must be between 1 and 10.
         self.timeout = timeout
-        # Monitor protocol type, such as HTTP, used for health checks. When set to `off`, no check is performed.
+        # The protocol for the health check. Setting this to `off` disables health checks. Valid values:
         # 
         # - TCP
+        # 
         # - UDP
+        # 
         # - SMTP
+        # 
         # - HTTPS
+        # 
         # - HTTP
+        # 
         # - ICMP Ping
+        # 
         # - off
         self.type = type
 
@@ -526,10 +551,11 @@ class CreateLoadBalancerRequestAdaptiveRouting(DaraModel):
         failover_across_pools: bool = None,
         origin_level_retry: bool = None,
     ):
-        # Whether to failover across pools.
+        # Indicates whether to fail over across address pools.
         # 
-        # - true: Yes.
-        # - false: No.
+        # - `true`: Yes.
+        # 
+        # - `false`: No.
         self.failover_across_pools = failover_across_pools
         self.origin_level_retry = origin_level_retry
 

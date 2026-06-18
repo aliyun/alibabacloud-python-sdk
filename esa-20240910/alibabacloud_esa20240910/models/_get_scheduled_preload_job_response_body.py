@@ -23,33 +23,33 @@ class GetScheduledPreloadJobResponseBody(DaraModel):
         url_count: int = None,
         url_submitted: int = None,
     ):
-        # The ID of the Alibaba Cloud account.
+        # The Alibaba Cloud account ID.
         self.ali_uid = ali_uid
-        # The time when the task was created.
+        # The creation time of the task.
         self.created_at = created_at
-        # The domain names to be prefetched.
+        # The list of domain names to preload.
         self.domains = domains
-        # The error message that is returned.
+        # The error message.
         self.error_info = error_info
-        # The URL of the OSS object that stores a list of URLs that failed the conditional check for prefetching.
+        # The URL of the OSS file that contains the URLs that failed to preload.
         self.failed_file_oss = failed_file_oss
-        # The ID of the URL list file, which can be used during downloads.
+        # The ID of the file that contains the list of URLs. You can use this ID to download the file.
         self.file_id = file_id
-        # The ID of the prefetch task.
+        # The task ID.
         self.id = id
-        # The method to submit the URLs to be prefetched.
+        # The method used to submit the URLs.
         self.insert_way = insert_way
         # The task name.
         self.name = name
         # The request ID.
         self.request_id = request_id
-        # The website ID.
+        # The site ID.
         self.site_id = site_id
-        # The number of submitted prefetch tasks.
+        # The number of URLs submitted for the preload task.
         self.task_submitted = task_submitted
-        # The task type. Valid values: refresh and preload.
+        # The task type. Valid values are `preload` and `refresh`.
         self.task_type = task_type
-        # The total number of URLs.
+        # The total number of URLs in the task.
         self.url_count = url_count
         # The number of submitted URLs.
         self.url_submitted = url_submitted

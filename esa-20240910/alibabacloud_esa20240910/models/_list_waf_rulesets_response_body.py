@@ -18,19 +18,19 @@ class ListWafRulesetsResponseBody(DaraModel):
         site_usage: int = None,
         total_count: int = None,
     ):
-        # Number of WAF rule sets used by the instance in this WAF operation phase.
+        # The number of WAF rulesets used by the instance in this WAF phase.
         self.instance_usage = instance_usage
-        # Current page number.
+        # The current page number.
         self.page_number = page_number
-        # Page size.
+        # The page size.
         self.page_size = page_size
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # List of rule set information, containing detailed information about the rule sets.
+        # A list of rulesets.
         self.rulesets = rulesets
-        # Number of WAF rule sets used by the site in this WAF operation phase.
+        # The number of WAF rulesets used by the site in this WAF phase.
         self.site_usage = site_usage
-        # Total number of filtered records.
+        # The total number of entries returned after filtering.
         self.total_count = total_count
 
     def validate(self):
@@ -109,21 +109,37 @@ class ListWafRulesetsResponseBodyRulesets(DaraModel):
         types: List[str] = None,
         update_time: str = None,
     ):
-        # List of match objects.
+        # A list of match fields.
         self.fields = fields
-        # ID of the WAF rule set.
+        # The ID of the WAF ruleset. This value is returned by the [ListWafRulesets](https://help.aliyun.com/document_detail/2878359.html) operation.
         self.id = id
-        # Name of the rule set.
+        # The ruleset name.
         self.name = name
-        # WAF operation phase.
+        # The execution phase of the ruleset. Valid values are:
+        # 
+        # - `http_whitelist`: whitelist rule
+        # 
+        # - `http_custom`: custom rule
+        # 
+        # - `http_managed`: managed rule
+        # 
+        # - `http_anti_scan`: scan protection rule
+        # 
+        # - `http_ratelimit`: rate limiting rule
+        # 
+        # - `ip_access_rule`: IP access rule
+        # 
+        # - `http_bot`: advanced bot protection
+        # 
+        # - `http_security_level_rule`: security rule
         self.phase = phase
-        # Status of the rule set.
+        # The ruleset status.
         self.status = status
-        # Protection target type in http_bot.
+        # The protection target for the \\"http_bot\\" phase.
         self.target = target
-        # List of rule types.
+        # A list of rule types.
         self.types = types
-        # Last modification time of the rule set.
+        # The time the ruleset was last modified.
         self.update_time = update_time
 
     def validate(self):

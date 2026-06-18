@@ -15,24 +15,29 @@ class UpdateHttpResponseHeaderModificationRuleShrinkRequest(DaraModel):
         sequence: int = None,
         site_id: int = None,
     ):
-        # Configuration ID. It can be obtained by calling the [ListHttpResponseHeaderModificationRules](https://help.aliyun.com/document_detail/2867483.html) interface.
+        # The ID of the Configuration. You can get this value by calling the [ListHttpResponseHeaderModificationRules](https://help.aliyun.com/document_detail/2867483.html) API.
         # 
         # This parameter is required.
         self.config_id = config_id
-        # Modify response headers, supporting three operation methods: add, delete, and modify.
+        # A list of objects, each defining a modification to a Response Header. Supported operations are `add`, `del`, and `modify`.
         self.response_header_modification_shrink = response_header_modification_shrink
-        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
-        # - Match all incoming requests: Set the value to true
-        # - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
+        # The matching condition for the Rule, written as a Conditional Expression. This parameter is optional for global Configurations. Use cases:
+        # 
+        # - To match all incoming requests, set the value to `true`.
+        # 
+        # - To match specific requests, set the value to a custom expression, such as `(http.host eq "video.example.com")`.
         self.rule = rule
-        # Rule switch. This parameter is not required when adding a global configuration. Value range:
-        # - on: Enable.
-        # - off: Disable.
+        # Specifies whether the rule is enabled. This parameter is optional for a global Configuration. Valid values:
+        # 
+        # - `on`: Enables the Rule.
+        # 
+        # - `off`: Disables the Rule.
         self.rule_enable = rule_enable
-        # Rule name. This parameter is not required when adding a global configuration.
+        # The name of the Rule. This parameter is optional for a global Configuration.
         self.rule_name = rule_name
+        # The execution order for the Rule. A lower value indicates a higher priority.
         self.sequence = sequence
-        # Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+        # The ID of the Site. You can get this value by calling the [ListSites](~~ListSites~~) API.
         # 
         # This parameter is required.
         self.site_id = site_id

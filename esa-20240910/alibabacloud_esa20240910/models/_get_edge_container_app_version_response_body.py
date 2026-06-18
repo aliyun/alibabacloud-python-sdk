@@ -76,9 +76,11 @@ class GetEdgeContainerAppVersionResponseBodyVersion(DaraModel):
         self.remarks = remarks
         # The status of the current version. Valid values:
         # 
-        # *   created: The version is created.
-        # *   failed: The version failed to be created.
-        # *   creating: The version is being created.
+        # - created: The version is created.
+        # 
+        # - failed: The version failed to be created.
+        # 
+        # - creating: The version is being created.
         self.status = status
         # The time when the version was last modified. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
         self.update_time = update_time

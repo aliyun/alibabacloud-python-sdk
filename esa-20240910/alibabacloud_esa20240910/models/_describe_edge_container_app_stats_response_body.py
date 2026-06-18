@@ -20,20 +20,21 @@ class DescribeEdgeContainerAppStatsResponseBody(DaraModel):
         points: List[main_models.DescribeEdgeContainerAppStatsResponseBodyPoints] = None,
         request_id: str = None,
     ):
-        # Average CPU limit ratio
+        # The average CPU usage as a percentage of the limit.
         self.cpu_usage_seconds_quota_rate_avg = cpu_usage_seconds_quota_rate_avg
-        # Average number of CPU cores
+        # Average CPU core usage, in seconds.
         self.cpu_usage_seconds_total_avg = cpu_usage_seconds_total_avg
-        # Average read IO
+        # The average read IO.
         self.fs_reads_bytes_avg_avg = fs_reads_bytes_avg_avg
-        # Average write IO
+        # The average write IO.
         self.fs_writes_bytes_avg_avg = fs_writes_bytes_avg_avg
-        # Average memory usage
+        # The average memory usage.
         self.memory_rss_avg = memory_rss_avg
-        # Average memory limit proportion
+        # The average memory usage as a percentage of the limit.
         self.memory_rss_quota_rate_avg = memory_rss_quota_rate_avg
-        # Average PodReady rate
+        # The average pod ready rate.
         self.pod_ready_rate_avg = pod_ready_rate_avg
+        # The time and value of each data point for the chart.
         self.points = points
         # Id of the request
         self.request_id = request_id
@@ -126,13 +127,21 @@ class DescribeEdgeContainerAppStatsResponseBodyPoints(DaraModel):
         pod_ready_rate: float = None,
         time: str = None,
     ):
+        # The CPU usage as a percentage of the limit.
         self.container_cpu_usage_seconds_quota_rate = container_cpu_usage_seconds_quota_rate
+        # The number of CPU cores.
         self.container_cpu_usage_seconds_total = container_cpu_usage_seconds_total
+        # The read IO.
         self.container_fs_reads_bytes_avg = container_fs_reads_bytes_avg
+        # The write IO.
         self.container_fs_writes_bytes_avg = container_fs_writes_bytes_avg
+        # The memory usage.
         self.container_memory_rss = container_memory_rss
+        # The memory usage as a percentage of the limit.
         self.container_memory_rss_quota_rate = container_memory_rss_quota_rate
+        # The pod ready rate.
         self.pod_ready_rate = pod_ready_rate
+        # The time of the data point. The format is yyyy-MM-ddTHH:mm:ssZ in UTC.
         self.time = time
 
     def validate(self):

@@ -8,11 +8,13 @@ class CommitRoutineStagingCodeRequest(DaraModel):
     def __init__(
         self,
         code_description: str = None,
+        deploy_env: str = None,
         name: str = None,
     ):
         # The description of the code version.
         self.code_description = code_description
-        # The routine name.
+        self.deploy_env = deploy_env
+        # The name of the edge function (Routine).
         # 
         # This parameter is required.
         self.name = name
@@ -28,6 +30,9 @@ class CommitRoutineStagingCodeRequest(DaraModel):
         if self.code_description is not None:
             result['CodeDescription'] = self.code_description
 
+        if self.deploy_env is not None:
+            result['DeployEnv'] = self.deploy_env
+
         if self.name is not None:
             result['Name'] = self.name
 
@@ -37,6 +42,9 @@ class CommitRoutineStagingCodeRequest(DaraModel):
         m = m or dict()
         if m.get('CodeDescription') is not None:
             self.code_description = m.get('CodeDescription')
+
+        if m.get('DeployEnv') is not None:
+            self.deploy_env = m.get('DeployEnv')
 
         if m.get('Name') is not None:
             self.name = m.get('Name')

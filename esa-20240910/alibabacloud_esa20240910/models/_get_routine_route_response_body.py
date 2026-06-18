@@ -21,44 +21,49 @@ class GetRoutineRouteResponseBody(DaraModel):
         site_version: int = None,
         timeout: str = None,
     ):
-        # Bypass mode. Valid values:
+        # The bypass mode. Valid values:
         # 
-        # *   on
-        # *   off
+        # - `on`: Enabled.
+        # 
+        # - `off`: Disabled.
         self.bypass = bypass
         # The configuration ID.
         self.config_id = config_id
-        # The configuration type to query. Valid values:
+        # The configuration type. Valid values:
         # 
-        # *   global: global configurations.
-        # *   rule: queries rule configurations.
+        # - `global`: Queries the global configuration.
+        # 
+        # - `rule`: Queries the rule configuration.
         self.config_type = config_type
-        # The exception origin fetch switch. After you turn on this switch, if a function exception occurs, such as CPU usage exceeding the upper limit, requests are sent back to the origin. Valid values:
+        # Specifies whether to enable fallback to origin. If this feature is enabled, requests are sent to the origin server when the function encounters an exception, such as exceeding its CPU limit. Valid values:
         # 
-        # *   on
-        # *   off
+        # - `on`: Enabled.
+        # 
+        # - `off`: Disabled.
         self.fallback = fallback
-        # The configuration mode. Valid values: Valid values:
+        # The configuration mode. Valid values:
         # 
-        # *   simple
-        # *   custom
+        # - `simple`: simple mode.
+        # 
+        # - `custom`: custom mode.
         self.mode = mode
         # The request ID.
         self.request_id = request_id
-        # The routing switch. Valid values:
+        # The route status. Valid values:
         # 
-        # *   on
-        # *   off
+        # - `on`: Enabled.
+        # 
+        # - `off`: Disabled.
         self.route_enable = route_enable
         # The route name.
         self.route_name = route_name
-        # The function name.
+        # The name of the edge function routine.
         self.routine_name = routine_name
-        # The rule content.
+        # The rule expression.
         self.rule = rule
-        # The order in which the rule is executed.
+        # The rule execution order.
         self.sequence = sequence
-        # The version number of the website.
+        # The version number of the site.
         self.site_version = site_version
         self.timeout = timeout
 

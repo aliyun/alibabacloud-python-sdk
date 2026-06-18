@@ -11,15 +11,15 @@ class DeleteHttpDDoSIntelligentRuleRequest(DaraModel):
         rule_id: int = None,
         site_id: int = None,
     ):
-        # Record name.
+        # The name of the record.
         # 
         # This parameter is required.
         self.record_name = record_name
-        # Rule ID.
+        # The ID of the rule.
         # 
         # This parameter is required.
         self.rule_id = rule_id
-        # Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+        # The ID of the site. Call the [ListSites](~~ListSites~~) operation to obtain the site ID.
         # 
         # This parameter is required.
         self.site_id = site_id

@@ -9,7 +9,7 @@ class UpdateIPv6ResponseBody(DaraModel):
         self,
         request_id: str = None,
     ):
-        # The request ID.
+        # A unique ID for the request.
         self.request_id = request_id
 
     def validate(self):

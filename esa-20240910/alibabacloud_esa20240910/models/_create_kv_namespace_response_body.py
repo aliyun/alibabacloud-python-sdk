@@ -13,20 +13,23 @@ class CreateKvNamespaceResponseBody(DaraModel):
         request_id: str = None,
         status: str = None,
     ):
-        # The description of the namespace.
+        # The description of the KV namespace.
         self.description = description
-        # The name of the namespace.
+        # The name of the KV namespace.
         self.namespace = namespace
-        # The ID of the namespace.
+        # The ID of the KV namespace.
         self.namespace_id = namespace_id
         # The request ID.
         self.request_id = request_id
-        # The status of the namespace. Valid values:
+        # The status of the KV namespace. Valid values:
         # 
-        # *   **online**: working as expected.
-        # *   **delete**: pending deletion.
-        # *   **deleting**: being deleted.
-        # *   **deleted**: deleted.
+        # - **online**: The namespace is available.
+        # 
+        # - **delete**: The namespace is pending deletion.
+        # 
+        # - **deleting**: The namespace is being deleted.
+        # 
+        # - **deleted**: The namespace is deleted.
         self.status = status
 
     def validate(self):

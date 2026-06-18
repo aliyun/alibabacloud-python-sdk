@@ -24,53 +24,62 @@ class CreateSiteDeliveryTaskRequest(DaraModel):
         sls_delivery: main_models.CreateSiteDeliveryTaskRequestSlsDelivery = None,
         task_name: str = None,
     ):
-        # The log category. Valid values:
+        # The business type. Valid values:
         # 
-        # *   **dcdn_log_access_l1** (default): access logs.
-        # *   **dcdn_log_er**: Edge Routine logs.
-        # *   **dcdn_log_waf**: firewall logs.
-        # *   **dcdn_log_ipa**: TCP/UDP proxy logs.
+        # - **dcdn_log_access_l1** (default): access log.
+        # 
+        # - **dcdn_log_er**: edge function log.
+        # 
+        # - **dcdn_log_waf**: WAF protection log.
+        # 
+        # - **dcdn_log_ipa**: Layer-4 acceleration log.
         # 
         # This parameter is required.
         self.business_type = business_type
         # The data center. Valid values:
         # 
-        # *   cn: the Chinese mainland.
-        # *   oversea: outside the Chinese mainland.
-        self.data_center = data_center
-        # The destination of the delivery. Valid values:
+        # - **cn**: Chinese mainland.
         # 
-        # *   sls: Alibaba Cloud Simple Log Service (SLS).
-        # *   http: HTTP server.
-        # *   aws3: Amazon Simple Storage Service (S3).
-        # *   oss: Alibaba Cloud Object Storage Service (OSS).
-        # *   kafka: Kafka.
-        # *   aws3cmpt: S3-compatible storage service.
+        # - **oversea**: regions outside the Chinese mainland.
+        self.data_center = data_center
+        # The type of the delivery destination. Valid values:
+        # 
+        # - **sls**: Log Service.
+        # 
+        # - **http**: an HTTP service.
+        # 
+        # - **aws3**: Amazon S3.
+        # 
+        # - **oss**: Object Storage Service.
+        # 
+        # - **kafka**: a Kafka service.
+        # 
+        # - **aws3cmpt**: an Amazon S3-compatible service.
         # 
         # This parameter is required.
         self.delivery_type = delivery_type
-        # The discard rate. Default value: 0.
+        # The discard rate. If you do not specify this parameter, the default value 0 is used.
         self.discard_rate = discard_rate
-        # The log fields, which are separated by commas (,).
+        # The log fields for delivery. Separate multiple fields with a comma (,).
         # 
         # This parameter is required.
         self.field_name = field_name
         self.filter_ver = filter_ver
-        # The configurations for delivery to an HTTP server.
+        # The parameters for delivering logs to an HTTP server.
         self.http_delivery = http_delivery
-        # The configurations for delivery to Kafka.
+        # The parameters for delivering logs to a Kafka cluster.
         self.kafka_delivery = kafka_delivery
-        # The configurations for delivery to OSS.
+        # The parameters for delivering logs to Object Storage Service (OSS).
         self.oss_delivery = oss_delivery
-        # The configurations for delivery to Amazon S3 or an S3-compatible service.
+        # The parameters for delivering logs to an Amazon S3 bucket or an S3-compatible service.
         self.s_3delivery = s_3delivery
-        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # The ID of the site. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the ID.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # The configurations for delivery to SLS.
+        # The parameters for delivering logs to Log Service.
         self.sls_delivery = sls_delivery
-        # The name of the delivery task.
+        # The task name.
         # 
         # This parameter is required.
         self.task_name = task_name
@@ -188,11 +197,11 @@ class CreateSiteDeliveryTaskRequestSlsDelivery(DaraModel):
         slsproject: str = None,
         slsregion: str = None,
     ):
-        # The name of the Logstore.
+        # The name of the Logstore in Log Service.
         self.slslog_store = slslog_store
-        # The name of the SLS project.
+        # The name of the Log Service project.
         self.slsproject = slsproject
-        # The region in which the SLS project resides.
+        # The region of the Log Service project.
         self.slsregion = slsregion
 
     def validate(self):
@@ -240,19 +249,21 @@ class CreateSiteDeliveryTaskRequestS3Delivery(DaraModel):
         server_side_encryption: bool = None,
         vertify_type: str = None,
     ):
-        # The access key ID of your Amazon S3 account.
+        # The AccessKey ID of the Alibaba Cloud account or RAM user.
         self.access_key = access_key
-        # The directory in the bucket.
+        # The bucket path.
         self.bucket_path = bucket_path
-        # The endpoint. This parameter is required when the S3Cmpt parameter is set to true.
+        # The endpoint of the server. This parameter is required when S3Cmpt is set to true.
+        # 
+        # > For S3-compatible services, you must configure DNS resolution for a domain name that is spliced by the bucket and endpoint. For example, if Endpoint is set to example.com and Bucket is set to demo, the actual delivery address is demo.example.com.
         self.endpoint = endpoint
-        # The prefix of the path in which you want to store logs.
+        # The storage path prefix.
         self.prefix_path = prefix_path
-        # The region ID of the service.
+        # The region where the service is located.
         self.region = region
-        # Specifies whether the service is compatible with Amazon S3.
+        # Specifies whether the service is S3-compatible.
         self.s_3cmpt = s_3cmpt
-        # The secret access key of your Amazon S3 account.
+        # The AccessKey secret of the S3 account.
         self.secret_key = secret_key
         self.server_side_encryption = server_side_encryption
         self.vertify_type = vertify_type
@@ -333,13 +344,13 @@ class CreateSiteDeliveryTaskRequestOssDelivery(DaraModel):
         prefix_path: str = None,
         region: str = None,
     ):
-        # The ID of your Alibaba Cloud account.
+        # The Alibaba Cloud account ID.
         self.aliuid = aliuid
-        # The name of the OSS bucket.
+        # The bucket name.
         self.bucket_name = bucket_name
-        # The prefix of the path in which you want to store logs.
+        # The prefix of the object key when logs are stored in the OSS bucket.
         self.prefix_path = prefix_path
-        # The region in which the bucket is located.
+        # The region of the OSS bucket.
         self.region = region
 
     def validate(self):
@@ -394,17 +405,17 @@ class CreateSiteDeliveryTaskRequestKafkaDelivery(DaraModel):
     ):
         # The load balancing method.
         self.balancer = balancer
-        # The brokers.
+        # The array of servers.
         self.brokers = brokers
         # The compression method.
         self.compress = compress
         # The encryption method.
         self.machanism_type = machanism_type
-        # The password.
+        # The password for encryption.
         self.password = password
-        # The topic.
+        # The Kafka topic.
         self.topic = topic
-        # Specifies whether to enable authentication.
+        # Specifies whether to enable user authentication.
         self.user_auth = user_auth
         # The username.
         self.user_name = user_name
@@ -490,32 +501,32 @@ class CreateSiteDeliveryTaskRequestHttpDelivery(DaraModel):
         standard_auth_param: main_models.CreateSiteDeliveryTaskRequestHttpDeliveryStandardAuthParam = None,
         transform_timeout: int = None,
     ):
-        # The compression method. By default, data is not compressed.
+        # The compression method. By default, logs are delivered uncompressed.
         self.compress = compress
-        # The address of the HTTP server.
+        # The URL of the destination HTTP server.
         self.dest_url = dest_url
-        # The custom headers.
+        # The custom HTTP request headers.
         self.header_param = header_param
         self.last_log_split = last_log_split
-        # The prefix of the log delivery package.
+        # The prefix of the delivered log package.
         self.log_body_prefix = log_body_prefix
-        # The suffix of the log delivery package.
+        # The suffix of the delivered log package.
         self.log_body_suffix = log_body_suffix
         self.log_split = log_split
         self.log_split_words = log_split_words
-        # The maximum size of data for each delivery. Unit: MB.
+        # The maximum size of a delivery, in MB.
         self.max_batch_mb = max_batch_mb
-        # The maximum number of entries for each delivery.
+        # The maximum number of log entries per delivery.
         self.max_batch_size = max_batch_size
         # The maximum number of retries.
         self.max_retry = max_retry
         # The custom query parameters.
         self.query_param = query_param
-        # Specifies whether to use server authentication.
+        # Specifies whether to use standard authentication.
         self.standard_auth_on = standard_auth_on
-        # The authentication configurations.
+        # The standard authentication parameters.
         self.standard_auth_param = standard_auth_param
-        # The timeout period. Unit: seconds.
+        # The timeout period, in seconds.
         self.transform_timeout = transform_timeout
 
     def validate(self):
@@ -649,13 +660,13 @@ class CreateSiteDeliveryTaskRequestHttpDeliveryStandardAuthParam(DaraModel):
         private_key: str = None,
         url_path: str = None,
     ):
-        # The validity period of the signature.
+        # The encryption timeout period.
         # 
-        # >  The value must be greater than 0. We recommend that you specify a value that is greater than 300.
+        # > The value must be greater than 0. We recommend that you set the value to 300 or greater.
         self.expired_time = expired_time
         # The private key.
         self.private_key = private_key
-        # The URI path for server authentication.
+        # The URI path for standard authentication.
         self.url_path = url_path
 
     def validate(self):

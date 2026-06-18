@@ -17,17 +17,17 @@ class ListUserRatePlanInstancesResponseBody(DaraModel):
         total_count: int = None,
         total_page: int = None,
     ):
-        # The queried plans.
+        # An array of plan instances that meet the specified criteria.
         self.instance_info = instance_info
         # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The page size.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total count of entries.
         self.total_count = total_count
-        # The total number of pages returned.
+        # The total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -110,6 +110,8 @@ class ListUserRatePlanInstancesResponseBodyInstanceInfo(DaraModel):
         plan_name: str = None,
         plan_traffic: str = None,
         plan_type: str = None,
+        renewal_duration: int = None,
+        renewal_status: str = None,
         site_quota: str = None,
         sites: List[main_models.ListUserRatePlanInstancesResponseBodyInstanceInfoSites] = None,
         smart_routing_request: str = None,
@@ -119,30 +121,33 @@ class ListUserRatePlanInstancesResponseBodyInstanceInfo(DaraModel):
     ):
         # The billing method. Valid values:
         # 
-        # *   PREPAY: subscription.
-        # *   POSTPAY: pay-as-you-go.
+        # - **PREPAY**: subscription.
+        # 
+        # - **POSTPAY**: pay-as-you-go.
         self.billing_mode = billing_mode
         self.bot_instance_level = bot_instance_level
         self.bot_request = bot_request
-        # The service locations for the websites that can be associated with the plan. Multiple values are separated by commas (,). Valid values:
+        # The acceleration regions covered by the plan instance. Multiple values are separated by commas (,). Valid values:
         # 
-        # *   domestic: the Chinese mainland.
-        # *   overseas: outside the Chinese mainland.
-        # *   global: global.
+        # - **domestic**: The Chinese mainland.
+        # 
+        # - **overseas**: Regions outside the Chinese mainland.
+        # 
+        # - **global**: Global (including the Chinese mainland).
         self.coverages = coverages
-        # The time when the plan was purchased.
+        # The creation time.
         self.create_time = create_time
         self.crossborder_traffic = crossborder_traffic
         self.ddos_burstable_domestic_protection = ddos_burstable_domestic_protection
         self.ddos_burstable_overseas_protection = ddos_burstable_overseas_protection
         self.ddos_instance_level = ddos_instance_level
-        # The subscription duration of the plan. Unit: month.
+        # The duration in months.
         self.duration = duration
         self.edge_routine_rquest = edge_routine_rquest
         self.edge_waf_request = edge_waf_request
-        # The time when the plan expires.
+        # The expiration time.
         self.expire_time = expire_time
-        # The plan ID.
+        # The plan instance ID.
         self.instance_id = instance_id
         self.layer_4traffic = layer_4traffic
         self.layer_4traffic_intl = layer_4traffic_intl
@@ -151,20 +156,25 @@ class ListUserRatePlanInstancesResponseBodyInstanceInfo(DaraModel):
         self.plan_traffic = plan_traffic
         # The plan type. Valid values:
         # 
-        # *   normal
-        # *   enterprise
+        # - **normal**: The normal plan.
+        # 
+        # - **enterprise**: The enterprise plan.
         self.plan_type = plan_type
-        # The maximum number of websites that can be associated with the plan.
+        self.renewal_duration = renewal_duration
+        self.renewal_status = renewal_status
+        # The site quota.
         self.site_quota = site_quota
-        # The websites that have been associated with the plan.
+        # The sites associated with this plan instance.
         self.sites = sites
         self.smart_routing_request = smart_routing_request
         self.static_request = static_request
-        # The plan status. Valid values:
+        # The instance status. Valid values:
         # 
-        # *   online: The plan is in service.
-        # *   offline: The plan has expired within an allowable period. In this state, the plan is unavailable.
-        # *   disable: The plan is released.
+        # - **online**: The plan instance is active.
+        # 
+        # - **offline**: The plan instance is unavailable because it has expired but is still within the grace period.
+        # 
+        # - **disable**: The plan instance is released.
         self.status = status
         self.subscribe_type = subscribe_type
 
@@ -235,6 +245,12 @@ class ListUserRatePlanInstancesResponseBodyInstanceInfo(DaraModel):
 
         if self.plan_type is not None:
             result['PlanType'] = self.plan_type
+
+        if self.renewal_duration is not None:
+            result['RenewalDuration'] = self.renewal_duration
+
+        if self.renewal_status is not None:
+            result['RenewalStatus'] = self.renewal_status
 
         if self.site_quota is not None:
             result['SiteQuota'] = self.site_quota
@@ -317,6 +333,12 @@ class ListUserRatePlanInstancesResponseBodyInstanceInfo(DaraModel):
         if m.get('PlanType') is not None:
             self.plan_type = m.get('PlanType')
 
+        if m.get('RenewalDuration') is not None:
+            self.renewal_duration = m.get('RenewalDuration')
+
+        if m.get('RenewalStatus') is not None:
+            self.renewal_status = m.get('RenewalStatus')
+
         if m.get('SiteQuota') is not None:
             self.site_quota = m.get('SiteQuota')
 
@@ -347,16 +369,19 @@ class ListUserRatePlanInstancesResponseBodyInstanceInfoSites(DaraModel):
         site_name: str = None,
         site_status: str = None,
     ):
-        # The website ID.
+        # The site ID.
         self.site_id = site_id
-        # The website name.
+        # The site name.
         self.site_name = site_name
-        # The website status. Valid values:
+        # The site status. Valid values:
         # 
-        # *   pending: The website is to be configured.
-        # *   active: The website is active.
-        # *   offline: The website is suspended.
-        # *   moved: The website has been added and verified by another Alibaba Cloud account.
+        # - **pending**: The site is pending configuration.
+        # 
+        # - **active**: The site is active.
+        # 
+        # - **offline**: The site is offline.
+        # 
+        # - **moved**: The site has been replaced.
         self.site_status = site_status
 
     def validate(self):

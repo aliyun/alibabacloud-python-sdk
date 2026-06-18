@@ -12,9 +12,9 @@ class ListWafUsageOfRulesRequest(DaraModel):
         site_id: int = None,
     ):
         self.instance_id = instance_id
-        # Name of the WAF operation phase.
+        # The name of the WAF execution phase.
         self.phase = phase
-        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+        # The site ID. To get this ID, call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         self.site_id = site_id
 
     def validate(self):

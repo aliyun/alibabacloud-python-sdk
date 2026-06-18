@@ -14,22 +14,35 @@ class BatchCreateWafRulesShrinkRequest(DaraModel):
         site_id: int = None,
         site_version: int = None,
     ):
-        # A list of configurations for each rule, specifying detailed configurations for each rule.
+        # An array of rule configurations. Each object defines the settings for a single rule.
         self.configs_shrink = configs_shrink
-        # WAF rule type, with values:
+        # The WAF phase in which the rules are executed.
         # 
-        # - **http_anti_scan**: Scan protection.
-        # - **http_bot**: Bots.
+        # - `http_whitelist`: whitelist rule
+        # 
+        # - `http_custom`: custom rule
+        # 
+        # - `http_managed`: managed rule
+        # 
+        # - `http_anti_scan`: scan protection rule
+        # 
+        # - `http_ratelimit`: rate limit rule
+        # 
+        # - `ip_access_rule`: IP access rule
+        # 
+        # - `http_bot`: bot control rule
+        # 
+        # - `http_security_level_rule`: security rule
         self.phase = phase
-        # Ruleset ID.
+        # The ID of the WAF ruleset. You can call the [ListWafRulesets](https://help.aliyun.com/document_detail/2878359.html) operation to obtain this ID.
         self.ruleset_id = ruleset_id
-        # Shared configuration for multiple rules, specifying common attributes of multiple rules.
+        # The shared configuration object that specifies common properties for all rules created in the batch.
         self.shared_shrink = shared_shrink
-        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+        # The ID of the site. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain this ID.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # Site version.
+        # For sites with version management enabled, use this parameter to specify which site version the configuration applies to. The default value is 0.
         self.site_version = site_version
 
     def validate(self):

@@ -18,13 +18,13 @@ class ListCertificatesByRecordResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The queried certificates.
+        # An array of record details.
         self.result = result
-        # The website ID,
+        # The site ID.
         self.site_id = site_id
-        # The website name.
+        # The site name.
         self.site_name = site_name
-        # The total number of records that you specified.
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -88,15 +88,15 @@ class ListCertificatesByRecordResponseBodyResult(DaraModel):
         record_name: str = None,
         status: str = None,
     ):
-        # The number of certificates that are being requested.
+        # The number of certificate requests in progress.
         self.applyling_count = applyling_count
-        # The certificates that match the specified records.
+        # A list of certificates matching the record.
         self.certificates = certificates
-        # The number of certificates that match the specified records.
+        # The number of certificates matching the record.
         self.count = count
-        # The name of the record.
+        # The record name.
         self.record_name = record_name
-        # Certificate configuration status. Possible values: none; configured; applying; failed.
+        # The certificate configuration status for the record. Valid values:
         self.status = status
 
     def validate(self):
@@ -174,32 +174,33 @@ class ListCertificatesByRecordResponseBodyResultCertificates(DaraModel):
         type: str = None,
         update_time: str = None,
     ):
-        # The certificate ID on Certificate Management Service.
+        # The ID of the Alibaba Cloud certificate.
         self.cas_id = cas_id
-        # The Common Name of the certificate.
+        # The common name of the certificate.
         self.common_name = common_name
-        # The creation time.
+        # The time when the certificate was created.
         self.create_time = create_time
         # The SHA-256 fingerprint of the certificate.
         self.fingerprint_sha_256 = fingerprint_sha_256
         # The ID of the certificate.
         self.id = id
-        # The certificate authority (CA) that issued the certificate.
+        # The issuer of the certificate.
         self.issuer = issuer
-        # The Common Name of the certificate issuer.
+        # The common name of the certificate issuer.
         self.issuer_cn = issuer_cn
+        # The Keyless server ID. This parameter is valid only when `Type` is set to `keyless`.
         self.key_server_id = key_server_id
-        # The certificate name.
+        # The name of the certificate.
         self.name = name
-        # The time when the certificate expires.
+        # The date and time when the certificate expires.
         self.not_after = not_after
-        # The time when the certificate takes effect.
+        # The date and time when the certificate becomes valid.
         self.not_before = not_before
         # The public key algorithm of the certificate.
         self.pub_alg = pub_alg
         # The region where the certificate is stored.
         self.region = region
-        # The Subject Alternative Name (SAN) of the certificate.
+        # The Subject Alternative Names (SANs) of the certificate.
         self.san = san
         # The serial number of the certificate.
         self.serial_number = serial_number
@@ -207,9 +208,9 @@ class ListCertificatesByRecordResponseBodyResultCertificates(DaraModel):
         self.sig_alg = sig_alg
         # The status of the certificate.
         self.status = status
-        # The type of the SSL certificate. Valid values:
+        # The type of the certificate. Valid values:
         self.type = type
-        # The update time.
+        # The time when the certificate was last updated.
         self.update_time = update_time
 
     def validate(self):

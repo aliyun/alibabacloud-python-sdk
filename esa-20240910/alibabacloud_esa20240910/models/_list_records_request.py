@@ -8,6 +8,7 @@ class ListRecordsRequest(DaraModel):
     def __init__(
         self,
         biz_name: str = None,
+        custom_port: str = None,
         page_number: int = None,
         page_size: int = None,
         proxied: bool = None,
@@ -17,43 +18,54 @@ class ListRecordsRequest(DaraModel):
         source_type: str = None,
         type: str = None,
     ):
-        # The business scenario of the record for acceleration. Valid values:
+        # The business scenario for acceleration. Use this parameter to filter results. Valid values:
         # 
-        # *   **image_video**: video and image.
-        # *   **api**: API.
-        # *   **web**: web page.
+        # - **image_video**: Images and videos.
+        # 
+        # - **api**: API.
+        # 
+        # - **web**: Web page.
         self.biz_name = biz_name
-        # The page number. Default value: **1**.
+        self.custom_port = custom_port
+        # The page number. Defaults to **1**.
         self.page_number = page_number
-        # The number of entries per page. Default value: **500**.
+        # The page size. Defaults to **500**.
         self.page_size = page_size
-        # Filters by whether the record is proxied. Valid values:
+        # Filters the results based on whether the record is proxied. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The record is proxied.
+        # 
+        # - **false**: The record is not proxied.
         self.proxied = proxied
-        # The match mode to search for the record name. Default value: exact. Valid values:
+        # The match type for the record name search. Defaults to **exact**. Valid values:
         # 
-        # *   **prefix**: match by prefix.
-        # *   **suffix**: match by suffix.
-        # *   **exact**: exact match.
-        # *   **fuzzy**: fuzzy match.
+        # - **prefix**: Prefix match.
+        # 
+        # - **suffix**: Suffix match.
+        # 
+        # - **exact**: Exact match.
+        # 
+        # - **fuzzy**: Fuzzy match.
         self.record_match_type = record_match_type
-        # The record name. This parameter specifies a filter condition for the query.
+        # The record name. Use this parameter to filter query results.
         self.record_name = record_name
-        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # The site ID. You can get this ID by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # The origin type of the record. Only CNAME records can be filtered by using this field. Valid values:
+        # Filters the results by the record\\"s origin type. This filter applies only to CNAME records. Valid values:
         # 
-        # *   **OSS**: OSS bucket.
-        # *   **S3**: S3 bucket.
-        # *   **LB**: load balancer.
-        # *   **OP**: origin pool.
-        # *   **Domain**: domain name.
+        # - **OSS**: OSS origin.
+        # 
+        # - **S3**: S3 origin.
+        # 
+        # - **LB**: Load balancer origin.
+        # 
+        # - **OP**: Origin pool.
+        # 
+        # - **Domain**: Domain origin.
         self.source_type = source_type
-        # The DNS record type.
+        # The DNS record type. Use this parameter to filter results.
         self.type = type
 
     def validate(self):
@@ -66,6 +78,9 @@ class ListRecordsRequest(DaraModel):
             result = _map
         if self.biz_name is not None:
             result['BizName'] = self.biz_name
+
+        if self.custom_port is not None:
+            result['CustomPort'] = self.custom_port
 
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
@@ -97,6 +112,9 @@ class ListRecordsRequest(DaraModel):
         m = m or dict()
         if m.get('BizName') is not None:
             self.biz_name = m.get('BizName')
+
+        if m.get('CustomPort') is not None:
+            self.custom_port = m.get('CustomPort')
 
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')

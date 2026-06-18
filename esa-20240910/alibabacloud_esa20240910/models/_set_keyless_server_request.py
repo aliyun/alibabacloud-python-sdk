@@ -17,19 +17,31 @@ class SetKeylessServerRequest(DaraModel):
         site_id: int = None,
         verify: bool = None,
     ):
+        # The CA certificate used to verify the server certificate of the keyless server. This parameter applies only when `Verify` is set to `true`.
         self.ca_certificate = ca_certificate
+        # The client certificate. This parameter must be used with the `ClientPrivateKey` parameter.
         self.client_certificate = client_certificate
+        # The client private key. This parameter must be used with the `ClientCertificate` parameter.
         self.client_private_key = client_private_key
+        # The hostname of the keyless server. The value can be a domain name or an IP address.
+        # 
         # This parameter is required.
         self.host = host
-        # Keyless server ID。
+        # The keyless server ID.
         self.id = id
+        # The keyless server name.
+        # 
         # This parameter is required.
         self.name = name
+        # The keyless server port.
+        # 
         # This parameter is required.
         self.port = port
+        # The site ID. You can obtain this ID by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # 
         # This parameter is required.
         self.site_id = site_id
+        # Specifies whether to verify the server certificate of the keyless server. Default: false.
         self.verify = verify
 
     def validate(self):

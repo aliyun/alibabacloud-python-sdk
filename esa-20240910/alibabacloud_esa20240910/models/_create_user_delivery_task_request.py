@@ -24,48 +24,57 @@ class CreateUserDeliveryTaskRequest(DaraModel):
         sls_delivery: main_models.CreateUserDeliveryTaskRequestSlsDelivery = None,
         task_name: str = None,
     ):
-        # The log category. Valid values:
+        # The real-time log type. Valid values:
         # 
-        # *   dcdn_log_access_l1 (default): access logs.
-        # *   dcdn_log_er: Edge Routine logs.
-        # *   dcdn_log_waf: firewall logs.
-        # *   dcdn_log_ipa: TCP/UDP proxy logs.
+        # - **dcdn_log_access_l1** (default): access log.
+        # 
+        # - **dcdn_log_er**: edge function log.
+        # 
+        # - **dcdn_log_waf**: WAF log.
+        # 
+        # - **dcdn_log_ipa**: Layer-4 acceleration log.
         # 
         # This parameter is required.
         self.business_type = business_type
         # The data center. Valid values:
         # 
-        # *   cn: the Chinese mainland.
-        # *   sg: outside the Chinese mainland.
-        self.data_center = data_center
-        # The destination of the delivery. Valid values:
+        # - **cn**: Chinese mainland.
         # 
-        # 1.  sls: Alibaba Cloud SLS.
-        # 2.  http: HTTP server.
-        # 3.  aws3: Amazon S3.
-        # 4.  oss: Alibaba Cloud OSS.
-        # 5.  kafka: Kafka.
-        # 6.  aws3cmpt: S3-compatible storage service.
+        # - **sg**: global (excluding the Chinese mainland).
+        self.data_center = data_center
+        # The log delivery destination. Valid values:
+        # 
+        # - **sls**: Log Service (SLS).
+        # 
+        # - **http**: an HTTP service.
+        # 
+        # - **aws3**: Amazon S3.
+        # 
+        # - **oss**: Object Storage Service (OSS).
+        # 
+        # - **kafka**: Kafka.
+        # 
+        # - **aws3cmpt**: an S3-compatible service.
         # 
         # This parameter is required.
         self.delivery_type = delivery_type
         self.details = details
-        # The discard rate. Default value: 0.
+        # The log discard rate. Defaults to 0.
         self.discard_rate = discard_rate
-        # The log field. If you specify multiple fields, separate them with commas (,).
+        # The fields to be delivered. Separate multiple fields with a comma.
         # 
         # This parameter is required.
         self.field_name = field_name
         self.filter_ver = filter_ver
-        # The configurations for delivery to an HTTP server.
+        # Configuration for delivering logs to an HTTP or HTTPS endpoint.
         self.http_delivery = http_delivery
-        # The configurations for delivery to Kafka.
+        # Configuration for delivering logs to Kafka.
         self.kafka_delivery = kafka_delivery
-        # The configurations for delivery to OSS.
+        # Configuration for delivering logs to Object Storage Service (OSS).
         self.oss_delivery = oss_delivery
-        # The configurations for delivery to Amazon S3 or an S3-compatible service.
+        # Configuration for delivering logs to Amazon S3 or an S3-compatible service.
         self.s_3delivery = s_3delivery
-        # The configurations for delivery to SLS.
+        # Configuration for delivering logs to Log Service (SLS).
         self.sls_delivery = sls_delivery
         # The task name.
         # 
@@ -185,11 +194,11 @@ class CreateUserDeliveryTaskRequestSlsDelivery(DaraModel):
         slsproject: str = None,
         slsregion: str = None,
     ):
-        # The name of the SLS Logstore.
+        # The name of the destination logstore.
         self.slslog_store = slslog_store
-        # The name of the SLS project.
+        # The name of the destination project.
         self.slsproject = slsproject
-        # The region in which the SLS project resides.
+        # The region of the destination project.
         self.slsregion = slsregion
 
     def validate(self):
@@ -237,19 +246,19 @@ class CreateUserDeliveryTaskRequestS3Delivery(DaraModel):
         server_side_encryption: bool = None,
         vertify_type: str = None,
     ):
-        # The access key ID of your Amazon S3 account.
+        # The access key ID for the S3 account.
         self.access_key = access_key
-        # The directory in the bucket.
+        # The bucket path.
         self.bucket_path = bucket_path
-        # The endpoint.
+        # The S3 endpoint.
         self.endpoint = endpoint
-        # The prefix of the path in which you want to store logs.
+        # The object key prefix.
         self.prefix_path = prefix_path
-        # The region ID of the service.
+        # The destination region.
         self.region = region
-        # Specifies whether the service is compatible with Amazon S3.
+        # Specifies whether the destination is an S3-compatible service.
         self.s_3cmpt = s_3cmpt
-        # The secret access key of your Amazon S3 account.
+        # The secret access key for the S3 account.
         self.secret_key = secret_key
         self.server_side_encryption = server_side_encryption
         self.vertify_type = vertify_type
@@ -330,13 +339,13 @@ class CreateUserDeliveryTaskRequestOssDelivery(DaraModel):
         prefix_path: str = None,
         region: str = None,
     ):
-        # The ID of your Alibaba Cloud account.
+        # The Alibaba Cloud account ID.
         self.aliuid = aliuid
-        # The name of the OSS bucket.
+        # The bucket name.
         self.bucket_name = bucket_name
-        # The prefix of the path in which you want to store logs.
+        # The object key prefix.
         self.prefix_path = prefix_path
-        # The region in which the bucket is located.
+        # The region of the destination OSS bucket.
         self.region = region
 
     def validate(self):
@@ -391,19 +400,19 @@ class CreateUserDeliveryTaskRequestKafkaDelivery(DaraModel):
     ):
         # The load balancing method.
         self.balancer = balancer
-        # The brokers.
+        # A list of Kafka brokers.
         self.brokers = brokers
-        # The compression method. By default, data is not compressed.
+        # The compression method. Disabled by default.
         self.compress = compress
-        # The encryption method.
+        # The authentication mechanism.
         self.machanism_type = machanism_type
-        # The password.
+        # The password for authentication.
         self.password = password
-        # The topic.
+        # The Kafka topic.
         self.topic = topic
-        # Specifies whether to enable authentication.
+        # Specifies whether to enable user authentication.
         self.user_auth = user_auth
-        # The username.
+        # The username for authentication.
         self.user_name = user_name
 
     def validate(self):
@@ -489,33 +498,33 @@ class CreateUserDeliveryTaskRequestHttpDelivery(DaraModel):
     ):
         # The compression method.
         self.compress = compress
-        # The address of the HTTP server.
+        # The URL of the destination endpoint.
         self.dest_url = dest_url
-        # The custom headers.
+        # Custom HTTP headers.
         self.header_param = header_param
-        # The ending separator.
+        # The trailing delimiter.
         self.last_log_split = last_log_split
-        # The prefix of the log delivery package.
+        # The prefix to add to the log delivery payload.
         self.log_body_prefix = log_body_prefix
-        # The suffix of the log delivery package.
+        # The suffix to add to the log delivery payload.
         self.log_body_suffix = log_body_suffix
-        # Specifies whether to enable log splitting. Default value: true.
+        # Specifies whether to split log entries. Defaults to true.
         self.log_split = log_split
-        # The log separator.
+        # The delimiter for log entries.
         self.log_split_words = log_split_words
-        # The maximum size of data for each delivery. Unit: MB.
+        # The maximum size of a delivery batch, in MB.
         self.max_batch_mb = max_batch_mb
-        # The maximum number of entries for each delivery.
+        # The maximum number of log entries per delivery request.
         self.max_batch_size = max_batch_size
-        # The maximum number of retries.
+        # The maximum number of retries if a delivery fails.
         self.max_retry = max_retry
-        # The custom query parameters.
+        # Custom query parameters.
         self.query_param = query_param
-        # Specifies whether to use server authentication.
+        # Specifies whether to enable standard authentication.
         self.standard_auth_on = standard_auth_on
-        # The authentication configurations.
+        # Configuration for standard authentication.
         self.standard_auth_param = standard_auth_param
-        # The timeout period. Unit: seconds.
+        # The delivery timeout, in seconds.
         self.transform_timeout = transform_timeout
 
     def validate(self):
@@ -649,7 +658,7 @@ class CreateUserDeliveryTaskRequestHttpDeliveryStandardAuthParam(DaraModel):
         private_key: str = None,
         url_path: str = None,
     ):
-        # The validity period of the signature.
+        # The expiration time, in seconds.
         self.expired_time = expired_time
         # The private key.
         self.private_key = private_key

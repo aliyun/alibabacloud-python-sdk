@@ -15,29 +15,31 @@ class CreateHttpIncomingRequestHeaderModificationRuleShrinkRequest(DaraModel):
         site_id: int = None,
         site_version: int = None,
     ):
-        # The configurations of modifying request headers. You can add, delete, or modify a request header.
+        # An array of objects, where each object defines a modification to a request header.
         # 
         # This parameter is required.
         self.request_header_modification_shrink = request_header_modification_shrink
-        # The content of the rule. A conditional expression is used to match a user request. You do not need to set this parameter when you add global configuration. Use cases:
+        # The conditional expression that the Rule uses to match incoming requests. This parameter is not required for a Global configuration. There are two use cases:
         # 
-        # *   true: Match all incoming requests.
-        # *   Set the value to a custom expression, for example: (http.host eq "video.example.com"): Match the specified request
+        # - To match all incoming requests, set the value to `true`.
+        # 
+        # - To match specific requests, use a custom expression. For example: `(http.host eq "video.example.com")`
         self.rule = rule
-        # Specifies whether to enable the rule. Valid values: You do not need to set this parameter when you add global configuration. Valid values:
+        # Specifies whether the Rule is enabled. This parameter is not required for a Global configuration. Valid values:
         # 
-        # *   on
-        # *   off
+        # - `on`: The Rule is enabled.
+        # 
+        # - `off`: The Rule is disabled.
         self.rule_enable = rule_enable
-        # The rule name. You do not need to set this parameter when you add global configuration.
+        # The name of the Rule. This parameter is not required for a Global configuration.
         self.rule_name = rule_name
-        # The order in which the rule is executed. A smaller value gives priority to the rule.
+        # The execution order of the Rule. A lower value indicates a higher priority.
         self.sequence = sequence
-        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # The ID of the Site. You can obtain this value by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # The version number of the website configurations. You can use this parameter to specify a version of your website to apply the feature settings. By default, version 0 is used.
+        # The Version of the Site configuration. For Sites with configuration versioning enabled, this parameter specifies the Version to which the Rule applies. The default value is 0.
         self.site_version = site_version
 
     def validate(self):

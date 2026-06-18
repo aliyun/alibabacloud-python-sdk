@@ -29,7 +29,11 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = ''
+        self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'cn-hangzhou': 'esa.cn-hangzhou.aliyuncs.com',
+            'ap-southeast-1': 'esa.ap-southeast-1.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('esa', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -1880,6 +1884,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.code_description):
             body['CodeDescription'] = request.code_description
+        if not DaraCore.is_null(request.deploy_env):
+            body['DeployEnv'] = request.deploy_env
         if not DaraCore.is_null(request.name):
             body['Name'] = request.name
         req = open_api_util_models.OpenApiRequest(
@@ -1910,6 +1916,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.code_description):
             body['CodeDescription'] = request.code_description
+        if not DaraCore.is_null(request.deploy_env):
+            body['DeployEnv'] = request.deploy_env
         if not DaraCore.is_null(request.name):
             body['Name'] = request.name
         req = open_api_util_models.OpenApiRequest(
@@ -4614,6 +4622,10 @@ class Client(OpenApiClient):
             query['Data'] = request.data_shrink
         if not DaraCore.is_null(request.host_policy):
             query['HostPolicy'] = request.host_policy
+        if not DaraCore.is_null(request.http_ports):
+            query['HttpPorts'] = request.http_ports
+        if not DaraCore.is_null(request.https_ports):
+            query['HttpsPorts'] = request.https_ports
         if not DaraCore.is_null(request.proxied):
             query['Proxied'] = request.proxied
         if not DaraCore.is_null(request.record_name):
@@ -4668,6 +4680,10 @@ class Client(OpenApiClient):
             query['Data'] = request.data_shrink
         if not DaraCore.is_null(request.host_policy):
             query['HostPolicy'] = request.host_policy
+        if not DaraCore.is_null(request.http_ports):
+            query['HttpPorts'] = request.http_ports
+        if not DaraCore.is_null(request.https_ports):
+            query['HttpsPorts'] = request.https_ports
         if not DaraCore.is_null(request.proxied):
             query['Proxied'] = request.proxied
         if not DaraCore.is_null(request.record_name):
@@ -5290,6 +5306,8 @@ class Client(OpenApiClient):
             body['CodeDescription'] = request.code_description
         if not DaraCore.is_null(request.conf_options_shrink):
             body['ConfOptions'] = request.conf_options_shrink
+        if not DaraCore.is_null(request.deploy_env):
+            body['DeployEnv'] = request.deploy_env
         if not DaraCore.is_null(request.extra_info):
             body['ExtraInfo'] = request.extra_info
         if not DaraCore.is_null(request.name):
@@ -5330,6 +5348,8 @@ class Client(OpenApiClient):
             body['CodeDescription'] = request.code_description
         if not DaraCore.is_null(request.conf_options_shrink):
             body['ConfOptions'] = request.conf_options_shrink
+        if not DaraCore.is_null(request.deploy_env):
+            body['DeployEnv'] = request.deploy_env
         if not DaraCore.is_null(request.extra_info):
             body['ExtraInfo'] = request.extra_info
         if not DaraCore.is_null(request.name):
@@ -11033,6 +11053,228 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.delete_waiting_room_rule_with_options_async(request, runtime)
 
+    def describe_bot_price_with_options(
+        self,
+        request: main_models.DescribeBotPriceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeBotPriceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.bot_instance_level):
+            query['BotInstanceLevel'] = request.bot_instance_level
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeBotPrice',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeBotPriceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_bot_price_with_options_async(
+        self,
+        request: main_models.DescribeBotPriceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeBotPriceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.bot_instance_level):
+            query['BotInstanceLevel'] = request.bot_instance_level
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeBotPrice',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeBotPriceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_bot_price(
+        self,
+        request: main_models.DescribeBotPriceRequest,
+    ) -> main_models.DescribeBotPriceResponse:
+        runtime = RuntimeOptions()
+        return self.describe_bot_price_with_options(request, runtime)
+
+    async def describe_bot_price_async(
+        self,
+        request: main_models.DescribeBotPriceRequest,
+    ) -> main_models.DescribeBotPriceResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_bot_price_with_options_async(request, runtime)
+
+    def describe_cache_reserve_price_with_options(
+        self,
+        request: main_models.DescribeCacheReservePriceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeCacheReservePriceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cr_region):
+            query['CrRegion'] = request.cr_region
+        if not DaraCore.is_null(request.period):
+            query['Period'] = request.period
+        if not DaraCore.is_null(request.quota_gb):
+            query['QuotaGb'] = request.quota_gb
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeCacheReservePrice',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeCacheReservePriceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_cache_reserve_price_with_options_async(
+        self,
+        request: main_models.DescribeCacheReservePriceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeCacheReservePriceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cr_region):
+            query['CrRegion'] = request.cr_region
+        if not DaraCore.is_null(request.period):
+            query['Period'] = request.period
+        if not DaraCore.is_null(request.quota_gb):
+            query['QuotaGb'] = request.quota_gb
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeCacheReservePrice',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeCacheReservePriceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_cache_reserve_price(
+        self,
+        request: main_models.DescribeCacheReservePriceRequest,
+    ) -> main_models.DescribeCacheReservePriceResponse:
+        runtime = RuntimeOptions()
+        return self.describe_cache_reserve_price_with_options(request, runtime)
+
+    async def describe_cache_reserve_price_async(
+        self,
+        request: main_models.DescribeCacheReservePriceRequest,
+    ) -> main_models.DescribeCacheReservePriceResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_cache_reserve_price_with_options_async(request, runtime)
+
+    def describe_cache_reserve_price_gap_with_options(
+        self,
+        request: main_models.DescribeCacheReservePriceGapRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeCacheReservePriceGapResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.target_quota_gb):
+            query['TargetQuotaGb'] = request.target_quota_gb
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeCacheReservePriceGap',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeCacheReservePriceGapResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_cache_reserve_price_gap_with_options_async(
+        self,
+        request: main_models.DescribeCacheReservePriceGapRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeCacheReservePriceGapResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.target_quota_gb):
+            query['TargetQuotaGb'] = request.target_quota_gb
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeCacheReservePriceGap',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeCacheReservePriceGapResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_cache_reserve_price_gap(
+        self,
+        request: main_models.DescribeCacheReservePriceGapRequest,
+    ) -> main_models.DescribeCacheReservePriceGapResponse:
+        runtime = RuntimeOptions()
+        return self.describe_cache_reserve_price_gap_with_options(request, runtime)
+
+    async def describe_cache_reserve_price_gap_async(
+        self,
+        request: main_models.DescribeCacheReservePriceGapRequest,
+    ) -> main_models.DescribeCacheReservePriceGapResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_cache_reserve_price_gap_with_options_async(request, runtime)
+
     def describe_custom_scene_policies_with_options(
         self,
         request: main_models.DescribeCustomScenePoliciesRequest,
@@ -12197,6 +12439,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_rate_plan_price_with_options_async(request, runtime)
 
+    def describe_rate_plan_price_gap_with_options(
+        self,
+        request: main_models.DescribeRatePlanPriceGapRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeRatePlanPriceGapResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.order_type):
+            query['OrderType'] = request.order_type
+        if not DaraCore.is_null(request.target_plan_code):
+            query['TargetPlanCode'] = request.target_plan_code
+        if not DaraCore.is_null(request.target_plan_name):
+            query['TargetPlanName'] = request.target_plan_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeRatePlanPriceGap',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeRatePlanPriceGapResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_rate_plan_price_gap_with_options_async(
+        self,
+        request: main_models.DescribeRatePlanPriceGapRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeRatePlanPriceGapResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.order_type):
+            query['OrderType'] = request.order_type
+        if not DaraCore.is_null(request.target_plan_code):
+            query['TargetPlanCode'] = request.target_plan_code
+        if not DaraCore.is_null(request.target_plan_name):
+            query['TargetPlanName'] = request.target_plan_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeRatePlanPriceGap',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeRatePlanPriceGapResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_rate_plan_price_gap(
+        self,
+        request: main_models.DescribeRatePlanPriceGapRequest,
+    ) -> main_models.DescribeRatePlanPriceGapResponse:
+        runtime = RuntimeOptions()
+        return self.describe_rate_plan_price_gap_with_options(request, runtime)
+
+    async def describe_rate_plan_price_gap_async(
+        self,
+        request: main_models.DescribeRatePlanPriceGapRequest,
+    ) -> main_models.DescribeRatePlanPriceGapResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_rate_plan_price_gap_with_options_async(request, runtime)
+
     def describe_site_logs_with_options(
         self,
         request: main_models.DescribeSiteLogsRequest,
@@ -12942,6 +13266,8 @@ class Client(OpenApiClient):
     ) -> main_models.GenerateTraceDiagnoseResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.source):
+            query['Source'] = request.source
         if not DaraCore.is_null(request.url):
             query['Url'] = request.url
         req = open_api_util_models.OpenApiRequest(
@@ -12970,6 +13296,8 @@ class Client(OpenApiClient):
     ) -> main_models.GenerateTraceDiagnoseResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.source):
+            query['Source'] = request.source
         if not DaraCore.is_null(request.url):
             query['Url'] = request.url
         req = open_api_util_models.OpenApiRequest(
@@ -14155,6 +14483,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_development_mode_with_options_async(request, runtime)
 
+    def get_edge_container_with_options(
+        self,
+        request: main_models.GetEdgeContainerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetEdgeContainerResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetEdgeContainer',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetEdgeContainerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_edge_container_with_options_async(
+        self,
+        request: main_models.GetEdgeContainerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetEdgeContainerResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetEdgeContainer',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetEdgeContainerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_edge_container(
+        self,
+        request: main_models.GetEdgeContainerRequest,
+    ) -> main_models.GetEdgeContainerResponse:
+        runtime = RuntimeOptions()
+        return self.get_edge_container_with_options(request, runtime)
+
+    async def get_edge_container_async(
+        self,
+        request: main_models.GetEdgeContainerRequest,
+    ) -> main_models.GetEdgeContainerResponse:
+        runtime = RuntimeOptions()
+        return await self.get_edge_container_with_options_async(request, runtime)
+
     def get_edge_container_app_with_options(
         self,
         request: main_models.GetEdgeContainerAppRequest,
@@ -14974,6 +15372,72 @@ class Client(OpenApiClient):
     ) -> main_models.GetErServiceResponse:
         runtime = RuntimeOptions()
         return await self.get_er_service_with_options_async(request, runtime)
+
+    def get_fail_file_with_options(
+        self,
+        request: main_models.GetFailFileRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetFailFileResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetFailFile',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetFailFileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_fail_file_with_options_async(
+        self,
+        request: main_models.GetFailFileRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetFailFileResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetFailFile',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetFailFileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_fail_file(
+        self,
+        request: main_models.GetFailFileRequest,
+    ) -> main_models.GetFailFileResponse:
+        runtime = RuntimeOptions()
+        return self.get_fail_file_with_options(request, runtime)
+
+    async def get_fail_file_async(
+        self,
+        request: main_models.GetFailFileRequest,
+    ) -> main_models.GetFailFileResponse:
+        runtime = RuntimeOptions()
+        return await self.get_fail_file_with_options_async(request, runtime)
 
     def get_http_incoming_request_header_modification_rule_with_options(
         self,
@@ -19138,6 +19602,88 @@ class Client(OpenApiClient):
     ) -> main_models.ListCacheRulesResponse:
         runtime = RuntimeOptions()
         return await self.list_cache_rules_with_options_async(request, runtime)
+
+    def list_cas_certificates_with_options(
+        self,
+        request: main_models.ListCasCertificatesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListCasCertificatesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.search_keyword):
+            query['SearchKeyword'] = request.search_keyword
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListCasCertificates',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListCasCertificatesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_cas_certificates_with_options_async(
+        self,
+        request: main_models.ListCasCertificatesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListCasCertificatesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.search_keyword):
+            query['SearchKeyword'] = request.search_keyword
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListCasCertificates',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListCasCertificatesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_cas_certificates(
+        self,
+        request: main_models.ListCasCertificatesRequest,
+    ) -> main_models.ListCasCertificatesResponse:
+        runtime = RuntimeOptions()
+        return self.list_cas_certificates_with_options(request, runtime)
+
+    async def list_cas_certificates_async(
+        self,
+        request: main_models.ListCasCertificatesRequest,
+    ) -> main_models.ListCasCertificatesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_cas_certificates_with_options_async(request, runtime)
 
     def list_certificates_with_options(
         self,
@@ -26891,6 +27437,72 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.stop_scheduled_preload_execution_with_options_async(request, runtime)
 
+    def submit_upload_task_with_options(
+        self,
+        request: main_models.SubmitUploadTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitUploadTaskResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitUploadTask',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitUploadTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_upload_task_with_options_async(
+        self,
+        request: main_models.SubmitUploadTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitUploadTaskResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitUploadTask',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitUploadTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_upload_task(
+        self,
+        request: main_models.SubmitUploadTaskRequest,
+    ) -> main_models.SubmitUploadTaskResponse:
+        runtime = RuntimeOptions()
+        return self.submit_upload_task_with_options(request, runtime)
+
+    async def submit_upload_task_async(
+        self,
+        request: main_models.SubmitUploadTaskRequest,
+    ) -> main_models.SubmitUploadTaskResponse:
+        runtime = RuntimeOptions()
+        return await self.submit_upload_task_with_options_async(request, runtime)
+
     def tag_resources_with_options(
         self,
         request: main_models.TagResourcesRequest,
@@ -30176,6 +30788,10 @@ class Client(OpenApiClient):
             query['Data'] = request.data_shrink
         if not DaraCore.is_null(request.host_policy):
             query['HostPolicy'] = request.host_policy
+        if not DaraCore.is_null(request.http_ports):
+            query['HttpPorts'] = request.http_ports
+        if not DaraCore.is_null(request.https_ports):
+            query['HttpsPorts'] = request.https_ports
         if not DaraCore.is_null(request.proxied):
             query['Proxied'] = request.proxied
         if not DaraCore.is_null(request.record_id):
@@ -30228,6 +30844,10 @@ class Client(OpenApiClient):
             query['Data'] = request.data_shrink
         if not DaraCore.is_null(request.host_policy):
             query['HostPolicy'] = request.host_policy
+        if not DaraCore.is_null(request.http_ports):
+            query['HttpPorts'] = request.http_ports
+        if not DaraCore.is_null(request.https_ports):
+            query['HttpsPorts'] = request.https_ports
         if not DaraCore.is_null(request.proxied):
             query['Proxied'] = request.proxied
         if not DaraCore.is_null(request.record_id):

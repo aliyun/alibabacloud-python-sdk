@@ -11,9 +11,9 @@ class QuotaListItemsValue(DaraModel):
         enable: bool = None,
         value: main_models.WafQuotaString = None,
     ):
-        # The switch for the type of item in the custom list.
+        # Whether the item type is enabled.
         self.enable = enable
-        # Format restrictions for the type of item in the custom list.
+        # The format constraints for the item type.
         self.value = value
 
     def validate(self):

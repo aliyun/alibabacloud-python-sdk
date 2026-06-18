@@ -17,14 +17,15 @@ class GetRoutineResponseBody(DaraModel):
         has_assets: bool = None,
         request_id: str = None,
     ):
-        # The time when the routine was created.
+        # The creation time of the edge function Routine.
         self.create_time = create_time
-        # The default record name to access.
+        # The default domain name for accessing the Routine.
         self.default_related_record = default_related_record
-        # The description of the routine.
+        # The description of the edge function Routine.
         self.description = description
-        # The information about the environments.
+        # A list of environments.
         self.envs = envs
+        # Indicates whether the Routine includes Assets.
         self.has_assets = has_assets
         # The request ID.
         self.request_id = request_id
@@ -93,8 +94,9 @@ class GetRoutineResponseBodyEnvs(DaraModel):
         code_deploy: main_models.GetRoutineResponseBodyEnvsCodeDeploy = None,
         env: str = None,
     ):
+        # Details of the canary release for a code version.
         self.code_deploy = code_deploy
-        # The environment type.
+        # The environment name.
         self.env = env
 
     def validate(self):
@@ -133,9 +135,13 @@ class GetRoutineResponseBodyEnvsCodeDeploy(DaraModel):
         deploy_id: str = None,
         strategy: str = None,
     ):
+        # A list of deployed code versions.
         self.code_versions = code_versions
+        # The time the deployment was created.
         self.creation_time = creation_time
+        # The deployment ID.
         self.deploy_id = deploy_id
+        # The deployment strategy. The default value is `percentage`.
         self.strategy = strategy
 
     def validate(self):
@@ -192,9 +198,13 @@ class GetRoutineResponseBodyEnvsCodeDeployCodeVersions(DaraModel):
         description: str = None,
         percentage: int = None,
     ):
+        # The code version ID.
         self.code_version = code_version
+        # The creation time of the code version.
         self.create_time = create_time
+        # The description of the code version.
         self.description = description
+        # The percentage of traffic routed to this code version.
         self.percentage = percentage
 
     def validate(self):

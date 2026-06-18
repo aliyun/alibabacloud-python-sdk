@@ -25,57 +25,63 @@ class CreateLoadBalancerShrinkRequest(DaraModel):
         sub_region_pools: Any = None,
         ttl: int = None,
     ):
-        # Configuration for failover across pools.
+        # The configuration for failover across address pools.
         self.adaptive_routing_shrink = adaptive_routing_shrink
-        # List of default pools.
+        # A list of default address pool IDs.
         # 
         # This parameter is required.
         self.default_pools_shrink = default_pools_shrink
-        # Detailed description of the load balancer, for easier management and identification.
+        # A description of the Server Load Balancer.
         self.description = description
-        # Whether the load balancer is enabled.
+        # Specifies whether to enable the Server Load Balancer.
         # 
-        # - true: Enabled.
-        # - false: Not enabled.
+        # - `true`: Enabled.
+        # 
+        # - `false`: Disabled.
         self.enabled = enabled
-        # Fallback pool ID, where traffic will be directed when all other pools are unavailable.
+        # The ID of the fallback pool. The system directs traffic to this pool when all other pools are unavailable.
         # 
         # This parameter is required.
         self.fallback_pool = fallback_pool
-        # Monitor configuration, used for health checks.
+        # The monitor configuration for health checks.
         # 
         # This parameter is required.
         self.monitor_shrink = monitor_shrink
-        # The name of the load balancer, which must meet the domain name format validation and be a subdomain under the site.
+        # The name of the Server Load Balancer. It must be a valid domain name and a subdomain of the site.
         # 
         # This parameter is required.
         self.name = name
-        # Weighted round-robin configuration, used to control the traffic distribution weights among different pools.
+        # The configuration for weighted round-robin steering. This setting controls how the system distributes traffic across different address pools based on their weights.
         self.random_steering_shrink = random_steering_shrink
-        # Address pools corresponding to primary regions.
+        # The mapping of primary regions to address pools.
         self.region_pools = region_pools
-        # Rule information.
+        # A list of rules to override the default traffic steering policy for specific requests.
         self.rules_shrink = rules_shrink
-        # Session persistence, with possible values:
-        # - off: Not enabled.
-        # - ip: Session persistence by IP.
-        # - cookie: Session persistence by cookie.
+        # Specifies the session affinity policy, which consistently routes requests from the same client to the same origin server. Valid values:
+        # 
+        # - `off`: Disables session affinity.
+        # 
+        # - `ip`: Routes requests based on the client\\"s IP address.
+        # 
+        # - `cookie`: Uses a cookie to maintain session affinity.
         self.session_affinity = session_affinity
-        # Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+        # The site ID. Call the [ListSites](~~ListSites~~) operation to obtain this ID.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # Load balancing strategy.
+        # The traffic steering policy, which determines how the system distributes traffic among the address pools. Valid values:
         # 
-        # - geo: Geographical strategy.
-        # - random: Weighted round-robin.
-        # - order: Primary and backup method.
+        # - `geo`: Geographic routing.
+        # 
+        # - `random`: Weighted round-robin.
+        # 
+        # - `order`: Primary/standby.
         # 
         # This parameter is required.
         self.steering_policy = steering_policy
-        # Address pools corresponding to secondary regions. When multiple secondary regions share the same set of address pools, the keys can be concatenated with commas.
+        # The mapping of secondary regions to address pools. To map multiple secondary regions to the same address pools, combine their region codes with commas to form the key.
         self.sub_region_pools = sub_region_pools
-        # TTL value, the time-to-live for DNS records, with a default of 30 seconds. The value range is 10-600.
+        # The time to live (TTL) for the DNS record, in seconds. The default value is 30. The value must be between 10 and 600.
         self.ttl = ttl
 
     def validate(self):

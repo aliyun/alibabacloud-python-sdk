@@ -18,28 +18,36 @@ class SetCertificateRequest(DaraModel):
         site_id: int = None,
         type: str = None,
     ):
-        # The certificate ID on Certificate Management Service.
+        # The cloud certificate ID. This parameter is required when Type is set to cas.
         self.cas_id = cas_id
-        # The certificate content.
+        # The certificate content. This parameter is required when Type is set to upload.
         self.certificate = certificate
-        # The certificate ID on ESA.
+        # The certificate ID. Certificates of the free type (created by calling the ApplyCertificate operation) are not supported. Certificates of the cas and upload types are supported.
         self.id = id
+        # The keyless server ID. This parameter takes effect only when Type is set to keyless.
         self.key_server_id = key_server_id
-        # The certificate name.
+        # The certificate name. This parameter is required when Type is set to upload.
         self.name = name
-        # The private key of the certificate.
+        # The certificate private key. This parameter is required when Type is set to upload.
         self.private_key = private_key
-        # The region.
+        # The region. This parameter is required when Type is set to cas. Valid values:
+        # 
+        # - China site accounts: cn-hangzhou.
+        # 
+        # - International site accounts: ap-southeast-1.
         self.region = region
         self.security_token = security_token
-        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # The site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID.
         # 
         # This parameter is required.
         self.site_id = site_id
         # The certificate type. Valid values:
         # 
-        # *   cas: a certificate purchased by using Certificate Management Service.
-        # *   upload: a custom certificate that you upload.
+        # - **cas**: certificate from SSL Certificates Service.
+        # 
+        # - **upload**: custom uploaded certificate.
+        # 
+        # - **keyless**: keyless certificate.
         # 
         # This parameter is required.
         self.type = type

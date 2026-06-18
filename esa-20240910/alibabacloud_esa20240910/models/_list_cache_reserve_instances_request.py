@@ -14,28 +14,33 @@ class ListCacheReserveInstancesRequest(DaraModel):
         sort_order: str = None,
         status: str = None,
     ):
-        # Instance ID.
+        # The instance ID.
         self.instance_id = instance_id
-        # Page number.
+        # The page number.
         self.page_number = page_number
-        # Page size. Range: **1~500**, default is **500**.
+        # The number of entries per page. Valid values: **1 to 500**. The default value is **500**.
         self.page_size = page_size
-        # The criterion by which you want to sort the queried instances. Valid values:
+        # The field to sort the results by. Valid values:
         # 
-        # *   **ExpireTime**
-        # *   **CreateTime**
+        # - **ExpireTime**: Expiration time.
+        # 
+        # - **CreateTime**: Creation time.
         self.sort_by = sort_by
-        # The order by which you want to sort the queried instances. Valid values:
+        # The sort order. Valid values:
         # 
-        # *   **asc**
-        # *   **desc**
+        # - **asc**: Ascending order.
+        # 
+        # - **desc**: Descending order.
         self.sort_order = sort_order
         # The status of the cache reserve instance. Valid values:
         # 
-        # *   **online**: The instance is in service.
-        # *   **offline**: The instance has expired within an allowable period. In this state, it is unavailable.
-        # *   **disable**: The instance has been released.
-        # *   **overdue**: The instance has been stopped due to overdue payments.
+        # - **online**: The instance is running normally.
+        # 
+        # - **offline**: The instance has expired and is unavailable but remains within the grace period.
+        # 
+        # - **disable**: The instance is disabled.
+        # 
+        # - **overdue**: The instance is suspended due to an overdue payment.
         self.status = status
 
     def validate(self):

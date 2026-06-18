@@ -20,26 +20,27 @@ class GetKvAccountResponseBody(DaraModel):
         request_id: str = None,
         status: str = None,
     ):
-        # The available capacity of all namespaces in the account. Unit: bytes.
+        # The total available capacity of all namespaces for the account, in bytes.
         self.capacity = capacity
-        # The available capacity of all namespaces in the account.
+        # The total available capacity of all namespaces for the account.
         self.capacity_string = capacity_string
-        # The used capacity of all namespaces in the account. Unit: bytes.
+        # The total used capacity of all namespaces for the account, in bytes.
         self.capacity_used = capacity_used
-        # The used capacity of all namespaces in the account.
+        # The total used capacity of all namespaces for the account.
         self.capacity_used_string = capacity_used_string
-        # The namespaces in the account.
+        # The list of namespaces for the account.
         self.namespace_list = namespace_list
-        # The maximum number of namespaces that can be created in the account.
+        # The quota on the number of KV storage spaces that you can request for the account.
         self.namespace_quota = namespace_quota
-        # The number of created namespaces that store key-value data in the account.
+        # The number of namespaces created for the account.
         self.namespace_used = namespace_used
         # The request ID.
         self.request_id = request_id
-        # Indicates whether Edge KV is activated for the Alibaba Cloud account.
+        # The status of the account.
         # 
-        # *   **online**
-        # *   **offline**
+        # - **online**: The account is active.
+        # 
+        # - **offline**: The account is shut down.
         self.status = status
 
     def validate(self):
@@ -130,11 +131,11 @@ class GetKvAccountResponseBodyNamespaceList(DaraModel):
         namespace_id: str = None,
         status: str = None,
     ):
-        # The available capacity of the namespace. Unit: bytes.
+        # The available capacity of the namespace, in bytes.
         self.capacity = capacity
         # The available capacity of the namespace.
         self.capacity_string = capacity_string
-        # The used capacity of the namespace. Unit: bytes.
+        # The used capacity of the namespace, in bytes.
         self.capacity_used = capacity_used
         # The used capacity of the namespace.
         self.capacity_used_string = capacity_used_string
@@ -146,10 +147,13 @@ class GetKvAccountResponseBodyNamespaceList(DaraModel):
         self.namespace_id = namespace_id
         # The status of the namespace. Valid values:
         # 
-        # *   **online**: normal.
-        # *   **delete**: pending deletion.
-        # *   **deleting**: being deleted.
-        # *   **deleted**: deleted.
+        # - **online**: Normal.
+        # 
+        # - **delete**: Pending deletion.
+        # 
+        # - **deleting**: Being deleted.
+        # 
+        # - **deleted**: Deleted.
         self.status = status
 
     def validate(self):

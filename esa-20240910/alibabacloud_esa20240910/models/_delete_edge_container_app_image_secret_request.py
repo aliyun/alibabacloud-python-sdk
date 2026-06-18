@@ -10,11 +10,11 @@ class DeleteEdgeContainerAppImageSecretRequest(DaraModel):
         app_id: str = None,
         name: str = None,
     ):
-        # Application ID, which can be obtained using the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) API.
+        # The application ID. Call the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) operation to obtain the application ID.
         # 
         # This parameter is required.
         self.app_id = app_id
-        # Name of the image secret.
+        # The name of the image secret.
         # 
         # This parameter is required.
         self.name = name

@@ -11,11 +11,11 @@ class PurchaseRatePlanResponseBody(DaraModel):
         order_id: str = None,
         request_id: str = None,
     ):
-        # Instance ID.
+        # The instance ID.
         self.instance_id = instance_id
-        # Order ID.
+        # The order ID.
         self.order_id = order_id
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

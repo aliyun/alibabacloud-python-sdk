@@ -10,11 +10,11 @@ class GetClientCaCertificateRequest(DaraModel):
         id: str = None,
         site_id: int = None,
     ):
-        # The certificate ID, which can be obtained by calling the [ListClientCaCertificates](https://help.aliyun.com/document_detail/2860651.html) operation.
+        # The ID of the certificate. You can get this ID by calling the [ListClientCaCertificates](https://help.aliyun.com/document_detail/2860651.html) API.
         # 
         # This parameter is required.
         self.id = id
-        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # The ID of the site. You can get this ID by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
         # 
         # This parameter is required.
         self.site_id = site_id

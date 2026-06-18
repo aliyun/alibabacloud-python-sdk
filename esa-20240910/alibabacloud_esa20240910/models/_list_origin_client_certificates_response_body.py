@@ -18,17 +18,17 @@ class ListOriginClientCertificatesResponseBody(DaraModel):
         site_name: str = None,
         total_count: int = None,
     ):
-        # The page number. Default value: **1**.
+        # The page number. The default value is **1**.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The certificate information.
+        # The list of certificate information.
         self.result = result
-        # The website ID.
+        # The ID of the site.
         self.site_id = site_id
-        # The website name.
+        # The name of the site.
         self.site_name = site_name
         # The total number of entries.
         self.total_count = total_count
@@ -117,25 +117,25 @@ class ListOriginClientCertificatesResponseBodyResult(DaraModel):
         type: str = None,
         update_time: str = None,
     ):
-        # The Common Name of the certificate.
+        # The common name of the certificate.
         self.common_name = common_name
         # The time when the certificate was created.
         self.create_time = create_time
         # The SHA-256 fingerprint of the certificate.
         self.fingerprint_sha_256 = fingerprint_sha_256
-        # The domain names to associate.
+        # The hostnames bound to the certificate.
         self.hostnames = hostnames
-        # The certificate ID.
+        # The ID of the certificate.
         self.id = id
-        # The certificate authority (CA) that issued the certificate.
+        # The issuer of the certificate.
         self.issuer = issuer
-        # The certificate name.
+        # The name of the certificate.
         self.name = name
-        # The time when the certificate expires.
+        # The expiration date and time of the certificate.
         self.not_after = not_after
-        # The time when the certificate takes effect.
+        # The beginning of the certificate\\"s validity period.
         self.not_before = not_before
-        # The public-key algorithm of the certificate.
+        # The public key algorithm of the certificate.
         self.pubkey_algorithm = pubkey_algorithm
         # The Subject Alternative Name (SAN) of the certificate.
         self.san = san
@@ -143,12 +143,11 @@ class ListOriginClientCertificatesResponseBodyResult(DaraModel):
         self.serial_number = serial_number
         # The signature algorithm of the certificate.
         self.signature_algorithm = signature_algorithm
-        # The certificate status.
+        # The status of the certificate.
         self.status = status
-        # The certificate type.
-        # *   upload: custom certificate that you upload
+        # The type of the certificate.
         self.type = type
-        # The time when the certificate was updated.
+        # The time when the certificate was last updated.
         self.update_time = update_time
 
     def validate(self):

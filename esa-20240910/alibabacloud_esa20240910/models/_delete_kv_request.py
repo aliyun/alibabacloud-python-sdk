@@ -10,11 +10,11 @@ class DeleteKvRequest(DaraModel):
         key: str = None,
         namespace: str = None,
     ):
-        # The name of the key that you want to delete.
+        # The name of the key to delete.
         # 
         # This parameter is required.
         self.key = key
-        # The name of the namespace that you specify when you call the [CreateKvNamespace](https://help.aliyun.com/document_detail/2850317.html) operation.
+        # The name you specified when you called [CreateKvNamespace](https://help.aliyun.com/document_detail/2850317.html).
         # 
         # This parameter is required.
         self.namespace = namespace

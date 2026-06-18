@@ -27,63 +27,97 @@ class CreateHttpsApplicationConfigurationRequest(DaraModel):
         site_id: int = None,
         site_version: int = None,
     ):
-        # Alt-Svc feature switch, default is disabled. Possible values:
-        # - on: Enabled.
-        # - off: Disabled.
+        # Specifies whether to enable the Alt-Svc header. Disabled by default. Valid values:
+        # 
+        # - `on`: Enabled.
+        # 
+        # - `off`: Disabled.
         self.alt_svc = alt_svc
-        # Whether the Alt-Svc header includes the clear parameter, default is disabled. Possible values:
-        # - on: Enabled.
-        # - off: Disabled.
+        # Specifies whether to include the `clear` parameter in the Alt-Svc header. Disabled by default. Valid values:
+        # 
+        # - `on`: The parameter is included.
+        # 
+        # - `off`: The parameter is not included.
         self.alt_svc_clear = alt_svc_clear
-        # Alt-Svc validity period in seconds, default is 86400 seconds.
+        # The Max Age for the Alt-Svc header, in seconds. The default is 86400.
         self.alt_svc_ma = alt_svc_ma
-        # Whether the Alt-Svc header includes the persist parameter, default is disabled. Possible values:
-        # - on: Enabled.
-        # - off: Disabled.
+        # Specifies whether to include the `persist` parameter in the Alt-Svc header. Disabled by default. Valid values:
+        # 
+        # - `on`: The parameter is included.
+        # 
+        # - `off`: The parameter is not included.
         self.alt_svc_persist = alt_svc_persist
-        # Whether to enable HSTS, default is disabled. Possible values:
-        # - on: Enabled.
-        # - off: Disabled.
+        # Specifies whether to enable HTTP Strict Transport Security (HSTS). Disabled by default. Valid values:
+        # 
+        # - `on`: Enabled.
+        # 
+        # - `off`: Disabled.
         self.hsts = hsts
-        # Whether to include subdomains in HSTS, default is disabled. Possible values:
-        # - on: Enabled.
-        # - off: Disabled.
+        # Specifies whether to include the `includeSubDomains` directive in the HSTS header. Disabled by default. Valid values:
+        # 
+        # - `on`: The directive is included.
+        # 
+        # - `off`: The directive is not included.
         self.hsts_include_subdomains = hsts_include_subdomains
-        # HSTS expiration time in seconds.
+        # The value of the `max-age` directive for the HSTS header, in seconds.
         self.hsts_max_age = hsts_max_age
-        # Whether to enable HSTS preload, default is disabled. Possible values:
-        # - on: Enabled.
-        # - off: Disabled.
+        # Specifies whether to enable HSTS Preload by including the `preload` directive in the HSTS header. Disabled by default. Valid values:
+        # 
+        # - `on`: The directive is included.
+        # 
+        # - `off`: The directive is not included.
         self.hsts_preload = hsts_preload
-        # Whether to enable forced HTTPS, default is disabled. Possible values:
-        # - on: Enabled.
-        # - off: Disabled.
+        # Specifies whether to enable Force HTTPS. Disabled by default. Valid values:
+        # 
+        # - `on`: Enabled.
+        # 
+        # - `off`: Disabled.
         self.https_force = https_force
-        # Forced HTTPS redirect status code. Possible values:
-        # - 301
-        # - 302
-        # - 307
-        # - 308
+        # The Redirection Status Code to use when Force HTTPS is enabled. Valid values:
+        # 
+        # - `301`
+        # 
+        # - `302`
+        # 
+        # - `307`
+        # 
+        # - `308`
         self.https_force_code = https_force_code
+        # Specifies whether to reject TLS Handshake Requests that do not include an SNI. Disabled by default. Valid values:
+        # 
+        # - `on`: Rejects requests without an SNI.
+        # 
+        # - `off`: Allows requests without an SNI.
         self.https_no_sni_deny = https_no_sni_deny
+        # Specifies whether to enable Server Name Indication (SNI) verification. Disabled by default. Valid values:
+        # 
+        # - `on`: Enabled.
+        # 
+        # - `off`: Disabled.
         self.https_sni_verify = https_sni_verify
+        # Specifies the allowlist of SNI values. Separate multiple values with a space.
         self.https_sni_whitelist = https_sni_whitelist
-        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
-        # - Match all incoming requests: Set the value to true
-        # - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
+        # The content of the Rule, which is a Conditional Expression that matches user Requests. This parameter is optional when adding a Global Configuration. Supported use cases include:
+        # 
+        # - To match all incoming requests, set the value to `true`.
+        # 
+        # - To match specific requests, use a custom expression. For example: `(http.host eq "video.example.com")`.
         self.rule = rule
-        # Rule switch. This parameter is not required when adding a global configuration. Possible values:
-        # - on: Enabled.
-        # - off: Disabled.
+        # Specifies whether to enable the rule. This parameter is optional when adding a Global Configuration. Valid values:
+        # 
+        # - `on`: The rule is enabled.
+        # 
+        # - `off`: The rule is disabled.
         self.rule_enable = rule_enable
-        # Rule name. This parameter is not required when adding a global configuration.
+        # The name of the Rule. This parameter is optional when adding a Global Configuration.
         self.rule_name = rule_name
+        # The execution order of the rule. A lower value indicates a higher priority.
         self.sequence = sequence
-        # Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+        # The ID of the Site. You can get this ID by calling the [ListSites](~~ListSites~~) API.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # Version number of the site configuration. For sites with version management enabled, this parameter can specify the version to which the configuration applies, defaulting to version 0.
+        # The Site\\"s configuration Version. For Sites with version management enabled, this parameter specifies the Version to which the configuration applies. The default is 0.
         self.site_version = site_version
 
     def validate(self):

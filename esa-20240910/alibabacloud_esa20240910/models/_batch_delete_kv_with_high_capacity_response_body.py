@@ -13,11 +13,11 @@ class BatchDeleteKvWithHighCapacityResponseBody(DaraModel):
         request_id: str = None,
         success_keys: List[str] = None,
     ):
-        # The keys that failed to be deleted.
+        # The list of keys that failed to be deleted.
         self.fail_keys = fail_keys
         # The request ID.
         self.request_id = request_id
-        # The keys that are deleted.
+        # The list of keys that were successfully deleted.
         self.success_keys = success_keys
 
     def validate(self):

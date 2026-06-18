@@ -14,19 +14,35 @@ class BatchUpdateWafRulesShrinkRequest(DaraModel):
         site_id: int = None,
         site_version: int = None,
     ):
-        # The configurations of rules.
+        # A list of configurations for individual rules.
         self.configs_shrink = configs_shrink
-        # The WAF rule category.
+        # The WAF rule runtime phase.
+        # 
+        # - `http_whitelist`: whitelist rule
+        # 
+        # - `http_custom`: custom rule
+        # 
+        # - `http_managed`: managed rule
+        # 
+        # - `http_anti_scan`: scan protection rule
+        # 
+        # - `http_ratelimit`: rate limiting rule
+        # 
+        # - `ip_access_rule`: IP access rule
+        # 
+        # - `http_bot`: advanced bot rule
+        # 
+        # - `http_security_level_rule`: security rule
         self.phase = phase
-        # The ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2878359.html) operation.
+        # The ID of the WAF ruleset. You can call the [ListWafRulesets](https://help.aliyun.com/document_detail/2878359.html) operation to obtain this ID.
         self.ruleset_id = ruleset_id
-        # The configurations shared by multiple rules.
+        # The configuration properties that are shared by all rules in this batch update.
         self.shared_shrink = shared_shrink
-        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # The ID of the site. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain this ID.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # The version of the website.
+        # The version of the site configuration. For sites that have configuration version management enabled, this parameter specifies the version to which the configuration applies. The default value is 0.
         self.site_version = site_version
 
     def validate(self):

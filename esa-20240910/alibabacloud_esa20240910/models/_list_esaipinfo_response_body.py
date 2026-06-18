@@ -62,8 +62,9 @@ class ListESAIPInfoResponseBodyContent(DaraModel):
     ):
         # Whether the IP address in the parameter belongs to ESA POPs.
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.cdn_ip = cdn_ip
         # The IP addresses.
         self.ip = ip

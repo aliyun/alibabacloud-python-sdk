@@ -16,10 +16,15 @@ class ListTraceTasksResponseBody(DaraModel):
         page_size: int = None,
         request_id: str = None,
     ):
+        # The number of pages.
         self.count = count
+        # The returned list information.
         self.list = list
+        # The page number, starting from 1.
         self.page_number = page_number
+        # The page size. Valid values: any integer from 1 to 1000.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -92,19 +97,42 @@ class ListTraceTasksResponseBodyList(DaraModel):
         time_consuming: int = None,
         trace_id: str = None,
     ):
+        # The Alibaba Cloud account ID.
         self.aliuid = aliuid
+        # The IP address of the local DNS server.
         self.client_addr = client_addr
+        # The client IP address.
         self.client_ip = client_ip
+        # The time when the report was created. Format: yyyy-MM-dd HH:mm:ss. Time zone: UTC+8.
         self.create_time = create_time
+        # The diagnose ID.
         self.diagnose_id = diagnose_id
+        # The diagnostic URL.
         self.diagnose_url = diagnose_url
+        # The domain name to diagnose.
         self.domain = domain
+        # The expiration time. The value is a UNIX timestamp. Unit: seconds.
         self.expire_time = expire_time
+        # The remaining number of available diagnostic attempts.
         self.remain_diagnose_times = remain_diagnose_times
+        # The report generation status. Valid values:
+        # 
+        # - 0: Succeeded.
+        # - 1: Failed.
+        # - 2: Timed out.
+        # - 3: Running.
+        # - 4: Waiting.
         self.state = state
+        # The status of the diagnostic URL. Valid values:
+        # 
+        # - 1: active
+        # - 0: expired.
         self.status = status
+        # The task ID.
         self.task_id = task_id
+        # The time consumed to generate the report.
         self.time_consuming = time_consuming
+        # The diagnostic trace ID.
         self.trace_id = trace_id
 
     def validate(self):

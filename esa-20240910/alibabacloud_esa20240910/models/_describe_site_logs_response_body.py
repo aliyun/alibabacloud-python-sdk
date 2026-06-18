@@ -188,7 +188,7 @@ class DescribeSiteLogsResponseBodySiteLogDetailsLogInfos(DaraModel):
         self.log_name = log_name
         # The log path.
         # 
-        # >  Take note of the Expires field (expiration timestamp) in this parameter. If the log download URL expires, you must reobtain the URL.
+        # > Take note of the Expires field (expiration timestamp) in this parameter. If the log download URL expires, you must reobtain the URL.
         self.log_path = log_path
         # The size of the log file. Unit: bytes.
         self.log_size = log_size

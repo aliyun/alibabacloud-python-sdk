@@ -17,29 +17,43 @@ class CreateCustomHostnameRequest(DaraModel):
         site_id: int = None,
         ssl_flag: str = None,
     ):
-        # 云盾证书ID，使用云盾证书时必填
+        # The ID of the CAS certificate. This parameter is required if `CertType` is set to `cas`.
         self.cas_id = cas_id
-        # 云盾证书所在地域，使用云盾证书时必填
+        # The region of the CAS certificate. This parameter is required if `CertType` is set to `cas`.
+        # 
+        # - For accounts on the China site, set this parameter to `cn-hangzhou`.
+        # 
+        # - For accounts on the International site, set this parameter to `ap-southeast-1`.
         self.cas_region = cas_region
-        # 证书类型，SSL 开启时必填
+        # The certificate type. This parameter is required if `SslFlag` is set to `on`. Valid values:
+        # 
+        # - **free**: A free certificate.
+        # 
+        # - **upload**: A user-uploaded certificate.
+        # 
+        # - **cas**: A CAS certificate.
         self.cert_type = cert_type
-        # 证书公钥，使用上传证书时必填
+        # The content of the certificate. This parameter is required if `CertType` is set to `upload`.
         self.certificate = certificate
-        # 自定义主机名
+        # The custom hostname.
         # 
         # This parameter is required.
         self.hostname = hostname
-        # 证书私钥，使用上传证书时必填
+        # The private key of the certificate. This parameter is required if `CertType` is set to `upload`.
         self.private_key = private_key
-        # 绑定的源站记录ID
+        # The ID of the record to bind. Call the [ListRecords](https://help.aliyun.com/document_detail/2850265.html) operation to get this ID.
         # 
         # This parameter is required.
         self.record_id = record_id
-        # 关联站点ID
+        # The site ID. Call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to get this ID.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # SSL开关
+        # Specifies whether to enable SSL. Valid values:
+        # 
+        # - **on**: Enable SSL.
+        # 
+        # - **off**: Disable SSL.
         # 
         # This parameter is required.
         self.ssl_flag = ssl_flag

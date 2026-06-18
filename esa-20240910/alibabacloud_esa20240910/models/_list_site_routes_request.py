@@ -16,20 +16,15 @@ class ListSiteRoutesRequest(DaraModel):
     ):
         # The configuration ID.
         self.config_id = config_id
-        # The configuration type. You can use this parameter to query global configurations or feature configurations. This parameter takes effect only if the functionName parameter is passed.
-        # 
-        # Valid values:
-        # 
-        # *   global
-        # *   rule
+        # The configuration type. Use this parameter to query global or feature-specific configurations. This parameter takes effect only if the `functionName` parameter is also specified.
         self.config_type = config_type
-        # The page number. Default value: 1.
+        # The page number. The default is 1.
         self.page_number = page_number
-        # The number of entries per page. Maximum value: 500. Default value: 500.
+        # The number of entries per page, with a maximum of 500. The default is 500.
         self.page_size = page_size
-        # The rule name. This parameter takes effect only when parameter functionName is specified.
+        # The route name. Use this parameter to find a route by its name. This parameter takes effect only if the `functionName` parameter is also specified.
         self.route_name = route_name
-        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # The site ID. Call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain this ID.
         # 
         # This parameter is required.
         self.site_id = site_id

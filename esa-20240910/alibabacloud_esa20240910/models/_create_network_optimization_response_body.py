@@ -10,9 +10,9 @@ class CreateNetworkOptimizationResponseBody(DaraModel):
         config_id: int = None,
         request_id: str = None,
     ):
-        # Configuration ID.
+        # The configuration ID.
         self.config_id = config_id
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

@@ -12,6 +12,7 @@ class CreateWaitingRoomResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
+        # The waiting room ID.
         self.waiting_room_id = waiting_room_id
 
     def validate(self):

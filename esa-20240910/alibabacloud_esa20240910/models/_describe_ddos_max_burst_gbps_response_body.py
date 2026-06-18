@@ -11,9 +11,11 @@ class DescribeDdosMaxBurstGbpsResponseBody(DaraModel):
         max_burst_gbps: str = None,
         request_id: str = None,
     ):
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The maximum protection bandwidth of the DDoS instance within mainland China, in Gbps.
         self.max_burst_gbps = max_burst_gbps
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

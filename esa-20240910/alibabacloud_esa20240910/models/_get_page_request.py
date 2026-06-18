@@ -9,7 +9,7 @@ class GetPageRequest(DaraModel):
         self,
         id: int = None,
     ):
-        # The ID of the custom error page, which can be obtained by calling the [ListPages](https://help.aliyun.com/document_detail/2850223.html) operation.
+        # The ID of the custom response page. To obtain this ID, call the [ListPages](https://help.aliyun.com/document_detail/2850223.html) API.
         self.id = id
 
     def validate(self):

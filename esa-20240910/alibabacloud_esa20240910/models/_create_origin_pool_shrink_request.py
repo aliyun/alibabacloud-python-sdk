@@ -12,18 +12,19 @@ class CreateOriginPoolShrinkRequest(DaraModel):
         origins_shrink: str = None,
         site_id: int = None,
     ):
-        # Whether the origin address pool is enabled:
+        # Specifies whether the origin pool is enabled.
         # 
-        # - true: Enabled;
-        # - false: Disabled.
+        # - `true`: enabled
+        # 
+        # - `false`: disabled
         self.enabled = enabled
-        # The name of the origin address pool, which must be unique within a site.
+        # The name of the origin pool. The name must be unique within a site.
         # 
         # This parameter is required.
         self.name = name
-        # Information about the origins added to the origin address pool, with multiple origins passed as an array.
+        # The list of origins to add to the origin pool. Use an array to specify multiple origins.
         self.origins_shrink = origins_shrink
-        # The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
+        # The site ID. To obtain this ID, call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         # 
         # This parameter is required.
         self.site_id = site_id

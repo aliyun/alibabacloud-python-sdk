@@ -24,63 +24,87 @@ class UpdateHttpsBasicConfigurationRequest(DaraModel):
         tls_12: str = None,
         tls_13: str = None,
     ):
-        # Custom cipher suite, indicating the specific encryption algorithm selected when CiphersuiteGroup is set to custom.
+        # The custom cipher suite to use when `CiphersuiteGroup` is set to `custom`.
         self.ciphersuite = ciphersuite
-        # Cipher suite group. Default is all cipher suites. Value range:
-        # - all: All cipher suites.
-        # - strict: Strong cipher suites.
-        # - custom: Custom cipher suites.
+        # The cipher suite group. Default value: `all`. Valid values:
+        # 
+        # - `all`: All cipher suites.
+        # 
+        # - `strict`: strong cipher suites.
+        # 
+        # - `custom`: custom cipher suites.
         self.ciphersuite_group = ciphersuite_group
-        # Configuration ID.
+        # The configuration ID.
         # 
         # This parameter is required.
         self.config_id = config_id
-        # Whether to enable HTTP2. Default is enabled. Value range:
-        # - on: Enable.
-        # - off: Disable.
+        # Indicates whether HTTP/2 is enabled. Default value: `on`. Valid values:
+        # 
+        # - `on`: Enabled.
+        # 
+        # - `off`: Disabled.
         self.http_2 = http_2
-        # Whether to enable HTTP3. Default is enabled. Value range:
-        # - on: Enable.
-        # - off: Disable.
+        # Indicates whether HTTP/3 is enabled. Default value: `on`. Valid values:
+        # 
+        # - `on`: Enabled.
+        # 
+        # - `off`: Disabled.
         self.http_3 = http_3
-        # Whether to enable HTTPS. Default is enabled. Value range:
-        # - on: Enable.
-        # - off: Disable.
+        # Indicates whether HTTPS is enabled. Default value: `on`. Valid values:
+        # 
+        # - `on`: Enabled.
+        # 
+        # - `off`: Disabled.
         self.https = https
-        # Whether to enable OCSP. Default is disabled. Value range:
-        # - on: Enable.
-        # - off: Disable.
+        # Indicates whether OCSP stapling is enabled. Default value: `off`. Valid values:
+        # 
+        # - `on`: Enabled.
+        # 
+        # - `off`: Disabled.
         self.ocsp_stapling = ocsp_stapling
-        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
-        # - Match all incoming requests: Set the value to true
-        # - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
+        # The conditional expression used to match incoming requests. This parameter is not required when you add a global configuration. Use cases:
+        # 
+        # - To match all incoming requests, set the value to `true`.
+        # 
+        # - To match specific requests, set the value to a custom expression, for example, `(http.host eq "video.example.com")`.
         self.rule = rule
-        # Rule switch. This parameter is not required when adding a global configuration. Value range:
-        # - on: Enable.
-        # - off: Disable.
+        # Indicates whether the rule is enabled. This parameter is not required when you add a global configuration. Valid values:
+        # 
+        # - `on`: Enabled.
+        # 
+        # - `off`: Disabled.
         self.rule_enable = rule_enable
-        # Rule name. This parameter is not required when adding a global configuration.
+        # The rule name. This parameter is not required when you add a global configuration.
         self.rule_name = rule_name
+        # The rule execution order. A smaller value indicates a higher priority.
         self.sequence = sequence
-        # Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+        # The site ID. You can call the [ListSites](~~ListSites~~) operation to obtain the site ID.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # Whether to enable TLS1.0. Default is disabled. Value range:
-        # - on: Enable.
-        # - off: Disable.
+        # Indicates whether TLS 1.0 is enabled. Default value: `off`. Valid values:
+        # 
+        # - `on`: Enabled.
+        # 
+        # - `off`: Disabled.
         self.tls_10 = tls_10
-        # Whether to enable TLS1.1. Default is disabled. Value range:
-        # - on: Enable.
-        # - off: Disable.
+        # Indicates whether TLS 1.1 is enabled. Default value: `off`. Valid values:
+        # 
+        # - `on`: Enabled.
+        # 
+        # - `off`: Disabled.
         self.tls_11 = tls_11
-        # Whether to enable TLS1.2. Default is disabled. Value range:
-        # - on: Enable.
-        # - off: Disable.
+        # Indicates whether TLS 1.2 is enabled. Default value: `off`. Valid values:
+        # 
+        # - `on`: Enabled.
+        # 
+        # - `off`: Disabled.
         self.tls_12 = tls_12
-        # Whether to enable TLS1.3. Default is disabled. Value range:
-        # - on: Enable.
-        # - off: Disable.
+        # Indicates whether TLS 1.3 is enabled. Default value: `off`. Valid values:
+        # 
+        # - `on`: Enabled.
+        # 
+        # - `off`: Disabled.
         self.tls_13 = tls_13
 
     def validate(self):

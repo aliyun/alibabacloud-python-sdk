@@ -10,10 +10,11 @@ class GetSitePauseResponseBody(DaraModel):
         paused: bool = None,
         request_id: str = None,
     ):
-        # Indicates whether ESA is paused on the website. Valid values:
+        # Indicates whether site acceleration is paused. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: The site\\"s acceleration is paused.
+        # 
+        # - false: The site is accelerating normally.
         self.paused = paused
         # The request ID.
         self.request_id = request_id

@@ -10,8 +10,16 @@ class UpdatePerformanceDataCollectionRequest(DaraModel):
         enable: str = None,
         site_id: int = None,
     ):
+        # Enables or disables Performance Data Collection. Valid values:
+        # 
+        # - `on`: Enables the Feature.
+        # 
+        # - `off`: Disables the Feature.
+        # 
         # This parameter is required.
         self.enable = enable
+        # The ID of the Site. You can get this ID by calling the [ListSites](~~ListSites~~) API.
+        # 
         # This parameter is required.
         self.site_id = site_id
 

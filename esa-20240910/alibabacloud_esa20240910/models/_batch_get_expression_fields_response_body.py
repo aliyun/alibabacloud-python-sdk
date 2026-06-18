@@ -13,9 +13,9 @@ class BatchGetExpressionFieldsResponseBody(DaraModel):
         fields: List[main_models.BatchGetExpressionFieldsResponseBodyFields] = None,
         request_id: str = None,
     ):
-        # List of match fields.
+        # A list of objects, each containing the match fields for a corresponding expression.
         self.fields = fields
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -58,9 +58,9 @@ class BatchGetExpressionFieldsResponseBodyFields(DaraModel):
         fields: List[str] = None,
         id: str = None,
     ):
-        # List of match fields for a single expression.
+        # A list of match fields for the expression.
         self.fields = fields
-        # ID of the expression, corresponding to the ID in the input parameters.
+        # The ID of the expression. This value corresponds to the `Id` of an expression in the request.
         self.id = id
 
     def validate(self):

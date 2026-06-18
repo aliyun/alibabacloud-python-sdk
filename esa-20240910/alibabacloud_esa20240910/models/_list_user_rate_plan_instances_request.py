@@ -19,36 +19,42 @@ class ListUserRatePlanInstancesRequest(DaraModel):
         status: str = None,
         subscribe_type: str = None,
     ):
-        # Specifies whether to query only the plans that have remaining quota for associating websites. Valid values:
+        # Specifies whether to filter for rate plan instances that have a remaining site quota. Valid values:
         # 
-        # *   true: queries only the plans that have remaining quota for associating websites.
-        # *   false: queries all plans in your account.
+        # - **true**: Returns only rate plan instances that have a remaining site quota.
+        # 
+        # - **false**: Returns all rate plan instances for the user.
         self.check_remaining_site_quota = check_remaining_site_quota
-        # The plan ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # The ID of the rate plan instance to query.
         self.instance_id = instance_id
-        # The page number. Valid values: **1** to **100000**. Default value: **1**.
+        # The page number. The default value is **1**. The value must be in the range of **1 to 100,000**.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries to return on each page.
         self.page_size = page_size
         self.plan_name_en = plan_name_en
         self.plan_type = plan_type
         self.remaining_expire_days = remaining_expire_days
-        # The sorting field. By default, the queried plans are sorted by purchase time. Valid values:
+        # The sort field. By default, results are sorted by creation time. Valid values:
         # 
-        # *   CreateTime: the time when the plans were purchased.
-        # *   ExpireTime: the time when the plans expire.
+        # - **CreateTime**: Sorts by creation time.
+        # 
+        # - **ExpireTime**: Sorts by expiration time.
         self.sort_by = sort_by
-        # The order in which you want to sort the query results. Default value: desc. Valid values:
+        # The sort order. The default is descending. Valid values:
         # 
-        # *   asc: in ascending order.
-        # *   desc: in descending order.
+        # - **asc**: Sorts in ascending order.
+        # 
+        # - **desc**: Sorts in descending order.
         self.sort_order = sort_order
-        # The plan status. Valid values:
+        # The status of the rate plan instance. Valid values:
         # 
-        # *   online: The plan is in service.
-        # *   offline: The plan has expired within an allowable period. In this state, the plan is unavailable.
-        # *   disable: The plan is released.
-        # *   overdue: The plan is stopped due to overdue payments.
+        # - **online**: The instance is in service.
+        # 
+        # - **offline**: The instance has expired and is unavailable.
+        # 
+        # - **disable**: The instance is released.
+        # 
+        # - **overdue**: The instance is overdue.
         self.status = status
         self.subscribe_type = subscribe_type
 

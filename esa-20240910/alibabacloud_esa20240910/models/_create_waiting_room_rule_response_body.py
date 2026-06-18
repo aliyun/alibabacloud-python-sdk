@@ -10,9 +10,9 @@ class CreateWaitingRoomRuleResponseBody(DaraModel):
         request_id: str = None,
         waiting_room_rule_id: int = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Waiting room bypass rule ID.
+        # The waiting room bypass rule ID.
         self.waiting_room_rule_id = waiting_room_rule_id
 
     def validate(self):

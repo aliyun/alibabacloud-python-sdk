@@ -15,25 +15,27 @@ class ListImageTransformsRequest(DaraModel):
         site_id: int = None,
         site_version: int = None,
     ):
-        # Configuration ID. Can be obtained by calling the [ListImageTransforms](https://help.aliyun.com/document_detail/2869056.html) interface.
+        # The configuration ID. Obtain this ID when you create an image transform or from a previous call to this operation.
         self.config_id = config_id
-        # Configuration type, which can be used to query global or rule configurations. Possible values:
-        # - global: Query global configuration;
-        # - rule: Query rule configuration;
+        # The configuration type. You can use this parameter to query for a global configuration or rule configurations. Valid values:
         # 
-        # This parameter is optional. If not provided, it will not distinguish between global and rule configurations.
+        # - `global`: Retrieves the global configuration.
+        # 
+        # - `rule`: Retrieves rule configurations.
+        # 
+        # This parameter is optional. If not specified, both global and rule configurations are returned.
         self.config_type = config_type
-        # Page number. The default value is 1 if not provided.
+        # The page number to return. Default: 1.
         self.page_number = page_number
-        # Number of items per page. The maximum value is 500, and the default value is 500 if not provided.
+        # The number of entries to return per page. Maximum: 500. Default: 500.
         self.page_size = page_size
-        # Rule name. This parameter is not required when adding a global configuration.
+        # The rule name. This parameter is not required for a global configuration.
         self.rule_name = rule_name
-        # Site ID. Can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+        # The site ID. Call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain this ID.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # Site version number. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration takes effect. The default value is version 0.
+        # The site version. If version management is enabled for the site, use this parameter to specify the version to which the configuration applies. Default: 0.
         self.site_version = site_version
 
     def validate(self):

@@ -10,11 +10,11 @@ class DeleteUserWafRulesetRequest(DaraModel):
         id: int = None,
         instance_id: str = None,
     ):
-        # WAF ruleset ID.
+        # The ID of the WAF ruleset.
         # 
         # This parameter is required.
         self.id = id
-        # Instance ID.
+        # The ID of the instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id

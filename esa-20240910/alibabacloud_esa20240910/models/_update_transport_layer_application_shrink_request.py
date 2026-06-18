@@ -16,26 +16,28 @@ class UpdateTransportLayerApplicationShrinkRequest(DaraModel):
         site_id: int = None,
         static_ip: str = None,
     ):
-        # Transport layer application ID, which can be obtained by calling the [ListTransportLayerApplications](~~ListTransportLayerApplications~~) interface.
+        # The transport layer application ID. You can obtain this ID by calling the [ListTransportLayerApplications](~~ListTransportLayerApplications~~) operation.
         # 
         # This parameter is required.
         self.application_id = application_id
-        # Whether to enable China mainland network access optimization, default is disabled. Value range:
+        # Specifies whether to enable cross-border optimization for network access from the Chinese mainland. This feature is disabled by default. Valid values:
         # 
-        # - on: Enabled.
-        # - off: Disabled.
+        # - on: Enables the feature.
+        # 
+        # - off: Disables the feature.
         self.cross_border_optimization = cross_border_optimization
-        # IP access rule switch. When enabled, the IP access rules in WAF will take effect on the transport layer application.
+        # Specifies whether to enable IP access rules. If enabled, the IP access rules in WAF apply to the transport layer application. Valid values:
         # 
-        # - on: Enabled.
-        # - off: Disabled.
+        # - on: Enables the feature.
+        # 
+        # - off: Disables the feature.
         self.ip_access_rule = ip_access_rule
-        # IPv6 switch.
+        # Specifies whether to enable IPv6. Valid values: `on` and `off`.
         self.ipv_6 = ipv_6
         self.keep_alive_protection = keep_alive_protection
-        # Forwarding rule list. Details of each rule. Except for the comment, all other parameters are required.
+        # A list of forwarding rules. For each rule, all parameters are required except for `Comment`.
         self.rules_shrink = rules_shrink
-        # Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+        # The site ID. You can obtain this ID by calling the [ListSites](~~ListSites~~) operation.
         # 
         # This parameter is required.
         self.site_id = site_id

@@ -21,48 +21,57 @@ class CreateUserDeliveryTaskShrinkRequest(DaraModel):
         sls_delivery_shrink: str = None,
         task_name: str = None,
     ):
-        # The log category. Valid values:
+        # The real-time log type. Valid values:
         # 
-        # *   dcdn_log_access_l1 (default): access logs.
-        # *   dcdn_log_er: Edge Routine logs.
-        # *   dcdn_log_waf: firewall logs.
-        # *   dcdn_log_ipa: TCP/UDP proxy logs.
+        # - **dcdn_log_access_l1** (default): access log.
+        # 
+        # - **dcdn_log_er**: edge function log.
+        # 
+        # - **dcdn_log_waf**: WAF log.
+        # 
+        # - **dcdn_log_ipa**: Layer-4 acceleration log.
         # 
         # This parameter is required.
         self.business_type = business_type
         # The data center. Valid values:
         # 
-        # *   cn: the Chinese mainland.
-        # *   sg: outside the Chinese mainland.
-        self.data_center = data_center
-        # The destination of the delivery. Valid values:
+        # - **cn**: Chinese mainland.
         # 
-        # 1.  sls: Alibaba Cloud SLS.
-        # 2.  http: HTTP server.
-        # 3.  aws3: Amazon S3.
-        # 4.  oss: Alibaba Cloud OSS.
-        # 5.  kafka: Kafka.
-        # 6.  aws3cmpt: S3-compatible storage service.
+        # - **sg**: global (excluding the Chinese mainland).
+        self.data_center = data_center
+        # The log delivery destination. Valid values:
+        # 
+        # - **sls**: Log Service (SLS).
+        # 
+        # - **http**: an HTTP service.
+        # 
+        # - **aws3**: Amazon S3.
+        # 
+        # - **oss**: Object Storage Service (OSS).
+        # 
+        # - **kafka**: Kafka.
+        # 
+        # - **aws3cmpt**: an S3-compatible service.
         # 
         # This parameter is required.
         self.delivery_type = delivery_type
         self.details = details
-        # The discard rate. Default value: 0.
+        # The log discard rate. Defaults to 0.
         self.discard_rate = discard_rate
-        # The log field. If you specify multiple fields, separate them with commas (,).
+        # The fields to be delivered. Separate multiple fields with a comma.
         # 
         # This parameter is required.
         self.field_name = field_name
         self.filter_ver = filter_ver
-        # The configurations for delivery to an HTTP server.
+        # Configuration for delivering logs to an HTTP or HTTPS endpoint.
         self.http_delivery_shrink = http_delivery_shrink
-        # The configurations for delivery to Kafka.
+        # Configuration for delivering logs to Kafka.
         self.kafka_delivery_shrink = kafka_delivery_shrink
-        # The configurations for delivery to OSS.
+        # Configuration for delivering logs to Object Storage Service (OSS).
         self.oss_delivery_shrink = oss_delivery_shrink
-        # The configurations for delivery to Amazon S3 or an S3-compatible service.
+        # Configuration for delivering logs to Amazon S3 or an S3-compatible service.
         self.s_3delivery_shrink = s_3delivery_shrink
-        # The configurations for delivery to SLS.
+        # Configuration for delivering logs to Log Service (SLS).
         self.sls_delivery_shrink = sls_delivery_shrink
         # The task name.
         # 

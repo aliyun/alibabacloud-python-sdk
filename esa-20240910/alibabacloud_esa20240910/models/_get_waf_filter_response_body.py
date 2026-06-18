@@ -13,7 +13,7 @@ class GetWafFilterResponseBody(DaraModel):
         filter: main_models.GetWafFilterResponseBodyFilter = None,
         request_id: str = None,
     ):
-        # The returned match conditions.
+        # The returned matching engine configuration.
         self.filter = filter
         # The request ID.
         self.request_id = request_id
@@ -54,11 +54,11 @@ class GetWafFilterResponseBodyFilter(DaraModel):
         target: str = None,
         type: str = None,
     ):
-        # The matched objects and related properties.
+        # A list of match objects and their properties.
         self.fields = fields
-        # The WAF rule category.
+        # The phase at which the WAF processes requests.
         self.phase = phase
-        # The condition for matching incoming requests.
+        # The target of the matching engine.
         self.target = target
         # The rule type.
         self.type = type
@@ -121,19 +121,21 @@ class GetWafFilterResponseBodyFilterFields(DaraModel):
         sub: bool = None,
         sub_tip: str = None,
     ):
+        # Indicates whether the current plan supports this match object.
         self.enable = enable
-        # The field for matched objects in the system.
+        # The internal key for the match object.
         self.key = key
-        # The label of the matched object.
+        # The label for the match object.
         self.label = label
-        # The logical conditions.
+        # A list of logical operators that define the matching conditions.
         self.logics = logics
+        # The minimum plan that supports this match object, provided the current plan does not.
         self.min_plan = min_plan
-        # The selector, which defines how to select a matched object.
+        # The selector, which defines how to select the match object.
         self.selector = selector
-        # Indicates whether the matched object contains a subfield.
+        # Indicates whether the match object includes subfields.
         self.sub = sub
-        # The tip on how to enter a subfield.
+        # A hint for entering the subfield value.
         self.sub_tip = sub_tip
 
     def validate(self):
@@ -215,9 +217,9 @@ class GetWafFilterResponseBodyFilterFieldsSelector(DaraModel):
         data: List[main_models.GetWafFilterResponseBodyFilterFieldsSelectorData] = None,
         kind: str = None,
     ):
-        # The data. This parameter is available only when the value of the Kind parameter is data.
+        # A list of data options available when the selector `Kind` is `data`.
         self.data = data
-        # The type of selector. Valid values: data and others.
+        # The selector type, which indicates whether it targets data items or other entities.
         self.kind = kind
 
     def validate(self):
@@ -260,9 +262,9 @@ class GetWafFilterResponseBodyFilterFieldsSelectorData(DaraModel):
         label: str = None,
         value: str = None,
     ):
-        # The label of the data.
+        # The label for the data option.
         self.label = label
-        # The value of the data.
+        # The value of the data option.
         self.value = value
 
     def validate(self):
@@ -305,33 +307,41 @@ class GetWafFilterResponseBodyFilterFieldsLogics(DaraModel):
         type: str = None,
         validator: main_models.GetWafFilterResponseBodyFilterFieldsLogicsValidator = None,
     ):
-        # A custom attribute. For example, this parameter can specify whether the value is case-sensitive.
+        # Configurable attributes, such as case sensitivity.
         self.attributes = attributes
+        # Indicates whether the current plan supports this operator.
         self.enable = enable
-        # The type of the value input box. Valid values:
+        # The input type for the value. Valid values:
         # 
-        # *   select:single
-        # *   select:multi
-        # *   input:single
-        # *   input:multi
+        # - `select:single`: A single-select input.
+        # 
+        # - `select:multi`: A multi-select input.
+        # 
+        # - `input:single`: A single-value text input.
+        # 
+        # - `input:multi`: A multi-value text input.
         self.kind = kind
+        # The minimum plan that supports this operator, provided the current plan does not.
         self.min_plan = min_plan
-        # Indicates whether the match result is inverted.
+        # Indicates whether to negate the match result.
         self.negative = negative
-        # The displayed matching characters.
+        # The label for the operator.
         self.operator = operator
-        # The matching characters in the system.
+        # The internal identifier for the operator.
         self.symbol = symbol
-        # The tip on how to enter a valid value that is required by the rules.
+        # A hint for entering a valid value.
         self.tip = tip
         # The type of the value. Valid values:
         # 
-        # *   integer
-        # *   integer_slice
-        # *   string
-        # *   string_slice
+        # - `integer`: An integer.
+        # 
+        # - `integer_slice`: An integer array.
+        # 
+        # - `string`: A string.
+        # 
+        # - `string_slice`: A string array.
         self.type = type
-        # The validator, which defines the validation rules for a value.
+        # The validator, which defines validation rules for the value.
         self.validator = validator
 
     def validate(self):
@@ -418,13 +428,13 @@ class GetWafFilterResponseBodyFilterFieldsLogicsValidator(DaraModel):
         pattern: str = None,
         range: main_models.WafQuotaInteger = None,
     ):
-        # The error message when the validation fails.
+        # The error message returned when validation fails.
         self.err_msg = err_msg
-        # The length of the value.
+        # The length limit for the value.
         self.length = length
-        # The regular expression pattern of the value, which is used to validate strings.
+        # The regular expression pattern for the value.
         self.pattern = pattern
-        # The range of the value, which is used to validate numbers.
+        # The value range for numeric validation.
         self.range = range
 
     def validate(self):

@@ -19,10 +19,13 @@ class ListEdgeRoutineRecordsRequest(DaraModel):
         self.page_size = page_size
         # The match mode to filter the record names.
         # 
-        # *   **fuzzy**: fuzzy match.
-        # *   **prefix**: match by prefix.
-        # *   **suffix**: match by suffix.
-        # *   **exact** (default): exact match .
+        # - **fuzzy**: fuzzy match.
+        # 
+        # - **prefix**: match by prefix.
+        # 
+        # - **suffix**: match by suffix.
+        # 
+        # - **exact** (default): exact match .
         self.record_match_type = record_match_type
         # The record name.
         self.record_name = record_name

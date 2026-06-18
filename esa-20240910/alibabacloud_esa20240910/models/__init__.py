@@ -409,6 +409,15 @@ from ._delete_waiting_room_event_response import DeleteWaitingRoomEventResponse
 from ._delete_waiting_room_rule_request import DeleteWaitingRoomRuleRequest
 from ._delete_waiting_room_rule_response_body import DeleteWaitingRoomRuleResponseBody
 from ._delete_waiting_room_rule_response import DeleteWaitingRoomRuleResponse
+from ._describe_bot_price_request import DescribeBotPriceRequest
+from ._describe_bot_price_response_body import DescribeBotPriceResponseBody
+from ._describe_bot_price_response import DescribeBotPriceResponse
+from ._describe_cache_reserve_price_request import DescribeCacheReservePriceRequest
+from ._describe_cache_reserve_price_response_body import DescribeCacheReservePriceResponseBody
+from ._describe_cache_reserve_price_response import DescribeCacheReservePriceResponse
+from ._describe_cache_reserve_price_gap_request import DescribeCacheReservePriceGapRequest
+from ._describe_cache_reserve_price_gap_response_body import DescribeCacheReservePriceGapResponseBody
+from ._describe_cache_reserve_price_gap_response import DescribeCacheReservePriceGapResponse
 from ._describe_custom_scene_policies_request import DescribeCustomScenePoliciesRequest
 from ._describe_custom_scene_policies_response_body import DescribeCustomScenePoliciesResponseBody
 from ._describe_custom_scene_policies_response import DescribeCustomScenePoliciesResponse
@@ -456,6 +465,9 @@ from ._describe_rate_plan_instance_status_response import DescribeRatePlanInstan
 from ._describe_rate_plan_price_request import DescribeRatePlanPriceRequest
 from ._describe_rate_plan_price_response_body import DescribeRatePlanPriceResponseBody
 from ._describe_rate_plan_price_response import DescribeRatePlanPriceResponse
+from ._describe_rate_plan_price_gap_request import DescribeRatePlanPriceGapRequest
+from ._describe_rate_plan_price_gap_response_body import DescribeRatePlanPriceGapResponseBody
+from ._describe_rate_plan_price_gap_response import DescribeRatePlanPriceGapResponse
 from ._describe_site_logs_request import DescribeSiteLogsRequest
 from ._describe_site_logs_response_body import DescribeSiteLogsResponseBody
 from ._describe_site_logs_response import DescribeSiteLogsResponse
@@ -539,6 +551,9 @@ from ._get_custom_response_code_rule_response import GetCustomResponseCodeRuleRe
 from ._get_development_mode_request import GetDevelopmentModeRequest
 from ._get_development_mode_response_body import GetDevelopmentModeResponseBody
 from ._get_development_mode_response import GetDevelopmentModeResponse
+from ._get_edge_container_request import GetEdgeContainerRequest
+from ._get_edge_container_response_body import GetEdgeContainerResponseBody
+from ._get_edge_container_response import GetEdgeContainerResponse
 from ._get_edge_container_app_request import GetEdgeContainerAppRequest
 from ._get_edge_container_app_response_body import GetEdgeContainerAppResponseBody
 from ._get_edge_container_app_response import GetEdgeContainerAppResponse
@@ -575,6 +590,9 @@ from ._get_edge_container_terminal_response import GetEdgeContainerTerminalRespo
 from ._get_er_service_request import GetErServiceRequest
 from ._get_er_service_response_body import GetErServiceResponseBody
 from ._get_er_service_response import GetErServiceResponse
+from ._get_fail_file_request import GetFailFileRequest
+from ._get_fail_file_response_body import GetFailFileResponseBody
+from ._get_fail_file_response import GetFailFileResponse
 from ._get_http_incoming_request_header_modification_rule_request import GetHttpIncomingRequestHeaderModificationRuleRequest
 from ._get_http_incoming_request_header_modification_rule_response_body import GetHttpIncomingRequestHeaderModificationRuleResponseBody
 from ._get_http_incoming_request_header_modification_rule_response import GetHttpIncomingRequestHeaderModificationRuleResponse
@@ -757,6 +775,9 @@ from ._list_cache_reserve_instances_response import ListCacheReserveInstancesRes
 from ._list_cache_rules_request import ListCacheRulesRequest
 from ._list_cache_rules_response_body import ListCacheRulesResponseBody
 from ._list_cache_rules_response import ListCacheRulesResponse
+from ._list_cas_certificates_request import ListCasCertificatesRequest
+from ._list_cas_certificates_response_body import ListCasCertificatesResponseBody
+from ._list_cas_certificates_response import ListCasCertificatesResponse
 from ._list_certificates_request import ListCertificatesRequest
 from ._list_certificates_response_body import ListCertificatesResponseBody
 from ._list_certificates_response import ListCertificatesResponse
@@ -1067,6 +1088,9 @@ from ._start_scheduled_preload_execution_response import StartScheduledPreloadEx
 from ._stop_scheduled_preload_execution_request import StopScheduledPreloadExecutionRequest
 from ._stop_scheduled_preload_execution_response_body import StopScheduledPreloadExecutionResponseBody
 from ._stop_scheduled_preload_execution_response import StopScheduledPreloadExecutionResponse
+from ._submit_upload_task_request import SubmitUploadTaskRequest
+from ._submit_upload_task_response_body import SubmitUploadTaskResponseBody
+from ._submit_upload_task_response import SubmitUploadTaskResponse
 from ._tag_resources_request import TagResourcesRequest
 from ._tag_resources_response_body import TagResourcesResponseBody
 from ._tag_resources_response import TagResourcesResponse
@@ -1371,6 +1395,15 @@ from ._create_user_delivery_task_request import CreateUserDeliveryTaskRequestOss
 from ._create_user_delivery_task_request import CreateUserDeliveryTaskRequestS3Delivery
 from ._create_user_delivery_task_request import CreateUserDeliveryTaskRequestSlsDelivery
 from ._create_waiting_room_request import CreateWaitingRoomRequestHostNameAndPath
+from ._describe_bot_price_response_body import DescribeBotPriceResponseBodyPriceModelRuleRuleList
+from ._describe_bot_price_response_body import DescribeBotPriceResponseBodyPriceModelRule
+from ._describe_bot_price_response_body import DescribeBotPriceResponseBodyPriceModel
+from ._describe_cache_reserve_price_response_body import DescribeCacheReservePriceResponseBodyPriceModelRuleRuleList
+from ._describe_cache_reserve_price_response_body import DescribeCacheReservePriceResponseBodyPriceModelRule
+from ._describe_cache_reserve_price_response_body import DescribeCacheReservePriceResponseBodyPriceModel
+from ._describe_cache_reserve_price_gap_response_body import DescribeCacheReservePriceGapResponseBodyPriceModelRuleRuleList
+from ._describe_cache_reserve_price_gap_response_body import DescribeCacheReservePriceGapResponseBodyPriceModelRule
+from ._describe_cache_reserve_price_gap_response_body import DescribeCacheReservePriceGapResponseBodyPriceModel
 from ._describe_custom_scene_policies_response_body import DescribeCustomScenePoliciesResponseBodyDataModule
 from ._describe_ddo_sall_event_list_response_body import DescribeDDoSAllEventListResponseBodyDataList
 from ._describe_ddo_sbps_list_response_body import DescribeDDoSBpsListResponseBodyDataModule
@@ -1386,6 +1419,9 @@ from ._describe_rate_plan_price_response_body import DescribeRatePlanPriceRespon
 from ._describe_rate_plan_price_response_body import DescribeRatePlanPriceResponseBodyPriceModelRuleRuleList
 from ._describe_rate_plan_price_response_body import DescribeRatePlanPriceResponseBodyPriceModelRule
 from ._describe_rate_plan_price_response_body import DescribeRatePlanPriceResponseBodyPriceModel
+from ._describe_rate_plan_price_gap_response_body import DescribeRatePlanPriceGapResponseBodyPriceModelRuleRuleList
+from ._describe_rate_plan_price_gap_response_body import DescribeRatePlanPriceGapResponseBodyPriceModelRule
+from ._describe_rate_plan_price_gap_response_body import DescribeRatePlanPriceGapResponseBodyPriceModel
 from ._describe_site_logs_response_body import DescribeSiteLogsResponseBodySiteLogDetailsLogInfos
 from ._describe_site_logs_response_body import DescribeSiteLogsResponseBodySiteLogDetailsPageInfos
 from ._describe_site_logs_response_body import DescribeSiteLogsResponseBodySiteLogDetails
@@ -1487,6 +1523,7 @@ from ._get_waf_quota_response_body import GetWafQuotaResponseBodyQuotaSliderCapt
 from ._get_waf_quota_response_body import GetWafQuotaResponseBodyQuota
 from ._list_cache_reserve_instances_response_body import ListCacheReserveInstancesResponseBodyInstanceInfo
 from ._list_cache_rules_response_body import ListCacheRulesResponseBodyConfigs
+from ._list_cas_certificates_response_body import ListCasCertificatesResponseBodyCertificates
 from ._list_certificates_response_body import ListCertificatesResponseBodyResultDCV
 from ._list_certificates_response_body import ListCertificatesResponseBodyResult
 from ._list_certificates_by_record_response_body import ListCertificatesByRecordResponseBodyResultCertificates
@@ -2028,6 +2065,15 @@ __all__ = [
     DeleteWaitingRoomRuleRequest,
     DeleteWaitingRoomRuleResponseBody,
     DeleteWaitingRoomRuleResponse,
+    DescribeBotPriceRequest,
+    DescribeBotPriceResponseBody,
+    DescribeBotPriceResponse,
+    DescribeCacheReservePriceRequest,
+    DescribeCacheReservePriceResponseBody,
+    DescribeCacheReservePriceResponse,
+    DescribeCacheReservePriceGapRequest,
+    DescribeCacheReservePriceGapResponseBody,
+    DescribeCacheReservePriceGapResponse,
     DescribeCustomScenePoliciesRequest,
     DescribeCustomScenePoliciesResponseBody,
     DescribeCustomScenePoliciesResponse,
@@ -2075,6 +2121,9 @@ __all__ = [
     DescribeRatePlanPriceRequest,
     DescribeRatePlanPriceResponseBody,
     DescribeRatePlanPriceResponse,
+    DescribeRatePlanPriceGapRequest,
+    DescribeRatePlanPriceGapResponseBody,
+    DescribeRatePlanPriceGapResponse,
     DescribeSiteLogsRequest,
     DescribeSiteLogsResponseBody,
     DescribeSiteLogsResponse,
@@ -2158,6 +2207,9 @@ __all__ = [
     GetDevelopmentModeRequest,
     GetDevelopmentModeResponseBody,
     GetDevelopmentModeResponse,
+    GetEdgeContainerRequest,
+    GetEdgeContainerResponseBody,
+    GetEdgeContainerResponse,
     GetEdgeContainerAppRequest,
     GetEdgeContainerAppResponseBody,
     GetEdgeContainerAppResponse,
@@ -2194,6 +2246,9 @@ __all__ = [
     GetErServiceRequest,
     GetErServiceResponseBody,
     GetErServiceResponse,
+    GetFailFileRequest,
+    GetFailFileResponseBody,
+    GetFailFileResponse,
     GetHttpIncomingRequestHeaderModificationRuleRequest,
     GetHttpIncomingRequestHeaderModificationRuleResponseBody,
     GetHttpIncomingRequestHeaderModificationRuleResponse,
@@ -2376,6 +2431,9 @@ __all__ = [
     ListCacheRulesRequest,
     ListCacheRulesResponseBody,
     ListCacheRulesResponse,
+    ListCasCertificatesRequest,
+    ListCasCertificatesResponseBody,
+    ListCasCertificatesResponse,
     ListCertificatesRequest,
     ListCertificatesResponseBody,
     ListCertificatesResponse,
@@ -2686,6 +2744,9 @@ __all__ = [
     StopScheduledPreloadExecutionRequest,
     StopScheduledPreloadExecutionResponseBody,
     StopScheduledPreloadExecutionResponse,
+    SubmitUploadTaskRequest,
+    SubmitUploadTaskResponseBody,
+    SubmitUploadTaskResponse,
     TagResourcesRequest,
     TagResourcesResponseBody,
     TagResourcesResponse,
@@ -2990,6 +3051,15 @@ __all__ = [
     CreateUserDeliveryTaskRequestS3Delivery,
     CreateUserDeliveryTaskRequestSlsDelivery,
     CreateWaitingRoomRequestHostNameAndPath,
+    DescribeBotPriceResponseBodyPriceModelRuleRuleList,
+    DescribeBotPriceResponseBodyPriceModelRule,
+    DescribeBotPriceResponseBodyPriceModel,
+    DescribeCacheReservePriceResponseBodyPriceModelRuleRuleList,
+    DescribeCacheReservePriceResponseBodyPriceModelRule,
+    DescribeCacheReservePriceResponseBodyPriceModel,
+    DescribeCacheReservePriceGapResponseBodyPriceModelRuleRuleList,
+    DescribeCacheReservePriceGapResponseBodyPriceModelRule,
+    DescribeCacheReservePriceGapResponseBodyPriceModel,
     DescribeCustomScenePoliciesResponseBodyDataModule,
     DescribeDDoSAllEventListResponseBodyDataList,
     DescribeDDoSBpsListResponseBodyDataModule,
@@ -3005,6 +3075,9 @@ __all__ = [
     DescribeRatePlanPriceResponseBodyPriceModelRuleRuleList,
     DescribeRatePlanPriceResponseBodyPriceModelRule,
     DescribeRatePlanPriceResponseBodyPriceModel,
+    DescribeRatePlanPriceGapResponseBodyPriceModelRuleRuleList,
+    DescribeRatePlanPriceGapResponseBodyPriceModelRule,
+    DescribeRatePlanPriceGapResponseBodyPriceModel,
     DescribeSiteLogsResponseBodySiteLogDetailsLogInfos,
     DescribeSiteLogsResponseBodySiteLogDetailsPageInfos,
     DescribeSiteLogsResponseBodySiteLogDetails,
@@ -3106,6 +3179,7 @@ __all__ = [
     GetWafQuotaResponseBodyQuota,
     ListCacheReserveInstancesResponseBodyInstanceInfo,
     ListCacheRulesResponseBodyConfigs,
+    ListCasCertificatesResponseBodyCertificates,
     ListCertificatesResponseBodyResultDCV,
     ListCertificatesResponseBodyResult,
     ListCertificatesByRecordResponseBodyResultCertificates,

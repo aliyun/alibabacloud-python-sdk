@@ -17,15 +17,15 @@ class GetSiteOriginClientCertificateResponseBody(DaraModel):
     ):
         # The certificate content.
         self.certificate = certificate
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # The certificate information.
+        # The certificate details.
         self.result = result
-        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # The site ID.
         self.site_id = site_id
-        # The website name.
+        # The site name.
         self.site_name = site_name
-        # The status of the certificate.
+        # The certificate status.
         self.status = status
 
     def validate(self):
@@ -99,35 +99,35 @@ class GetSiteOriginClientCertificateResponseBodyResult(DaraModel):
         type: str = None,
         update_time: str = None,
     ):
-        # The Common Name of the certificate.
+        # The common name of the certificate.
         self.common_name = common_name
-        # The time when the certificate was created.
+        # The time when the certificate record was created.
         self.create_time = create_time
         # The SHA-256 fingerprint of the certificate.
         self.fingerprint_sha_256 = fingerprint_sha_256
         # The certificate ID.
         self.id = id
-        # The certificate authority (CA) that issued the certificate.
+        # The issuer of the certificate.
         self.issuer = issuer
         # The certificate name.
         self.name = name
-        # The time when the certificate expires.
+        # The time after which the certificate is not valid.
         self.not_after = not_after
-        # The time when the certificate takes effect.
+        # The time before which the certificate is not valid.
         self.not_before = not_before
-        # The public-key algorithm of the certificate.
+        # The public key algorithm of the certificate.
         self.pubkey_algorithm = pubkey_algorithm
-        # The Subject Alternative Name (SAN) of the certificate.
+        # The subject alternative name (SAN) of the certificate.
         self.san = san
         # The serial number of the certificate.
         self.serial_number = serial_number
         # The signature algorithm of the certificate.
         self.signature_algorithm = signature_algorithm
-        # The status of the certificate.
+        # The certificate status.
         self.status = status
         # The certificate type.
         self.type = type
-        # The time when the certificate was updated.
+        # The time when the certificate record was last updated.
         self.update_time = update_time
 
     def validate(self):

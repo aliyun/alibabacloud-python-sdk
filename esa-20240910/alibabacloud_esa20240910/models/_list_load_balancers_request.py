@@ -14,20 +14,21 @@ class ListLoadBalancersRequest(DaraModel):
         page_size: int = None,
         site_id: int = None,
     ):
-        # The name matching strategy when querying by name:
+        # The matching strategy to use when querying by name. Valid values:
         # 
-        # - fuzzy: Fuzzy match;
-        # - exact: Exact match, equivalent to an equality query.
+        # - `fuzzy`: Performs a fuzzy match.
+        # 
+        # - `exact`: Performs an exact match.
         self.match_type = match_type
-        # The name of the load balancer, which can be used to query by name.
+        # The name of the load balancer.
         self.name = name
-        # The sorting field. Currently, only sorting by id is supported. \\"id\\" indicates ascending order by id, and \\"-id\\" indicates descending order by id. The id size is positively correlated with the creation time. If not provided, it defaults to descending order by id.
+        # The sort field. Only sorting by ID is supported. IDs are assigned chronologically. Specify `id` for ascending order or `-id` for descending order. If this parameter is omitted, the results are sorted by ID in descending order.
         self.order_by = order_by
-        # The page number for paginated queries.
+        # The page number for pagination.
         self.page_number = page_number
-        # The page size for paginated queries, with a value range of 1-500.
+        # The number of entries to return on each page. Valid values: 1 to 500.
         self.page_size = page_size
-        # The site ID, which can be obtained by calling the [ListSites](~~ListSites~~) API.
+        # The site ID. You can obtain this ID by calling the [ListSites](~~ListSites~~) operation.
         # 
         # This parameter is required.
         self.site_id = site_id

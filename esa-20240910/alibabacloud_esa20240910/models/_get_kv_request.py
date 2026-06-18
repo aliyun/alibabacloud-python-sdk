@@ -11,13 +11,13 @@ class GetKvRequest(DaraModel):
         key: str = None,
         namespace: str = None,
     ):
-        # Specifies whether to decode the value by using Base 64. If you call the [PutKv](https://help.aliyun.com/document_detail/2850482.html) operation and set the Base64 parameter to true, set this parameter to true to read the original content.
+        # Specifies whether to Base64-decode the value. If you set the base64 parameter to true when you called the [PutKv](https://help.aliyun.com/document_detail/2850482.html) operation, set this parameter to true to read the original content.
         self.base_64 = base_64
-        # The key name for the query.
+        # The name of the key to query.
         # 
         # This parameter is required.
         self.key = key
-        # The name of the namespace that you specify when you call the [CreateKvNamespace](https://help.aliyun.com/document_detail/2850317.html) operation.
+        # The name specified when you call the [CreateKvNamespace](https://help.aliyun.com/document_detail/2850317.html) operation.
         # 
         # This parameter is required.
         self.namespace = namespace

@@ -16,11 +16,15 @@ class DescribeHttpDDoSAttackRulesResponseBody(DaraModel):
         rule_infos: List[main_models.DescribeHttpDDoSAttackRulesResponseBodyRuleInfos] = None,
         total_count: int = None,
     ):
+        # The current page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
+        # A list of rule details.
         self.rule_infos = rule_infos
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -87,13 +91,25 @@ class DescribeHttpDDoSAttackRulesResponseBodyRuleInfos(DaraModel):
         rule_name: str = None,
         status: str = None,
     ):
+        # The action to perform.
         self.action = action
+        # The default action.
         self.default_action = default_action
+        # The ID of the protection rule used for log records.
         self.log_rule_id = log_rule_id
+        # The description of the rule.
         self.rule_desc = rule_desc
+        # The ID of the HTTP DDoS protection rule.
         self.rule_id = rule_id
+        # The short name of the rule.
         self.rule_id_info = rule_id_info
+        # The name of the rule.
         self.rule_name = rule_name
+        # The status of the rule. Valid values:
+        # 
+        # - **on**: The rule is enabled.
+        # 
+        # - **off**: The rule is disabled.
         self.status = status
 
     def validate(self):

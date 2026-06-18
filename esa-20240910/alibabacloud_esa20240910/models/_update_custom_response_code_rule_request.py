@@ -16,29 +16,31 @@ class UpdateCustomResponseCodeRuleRequest(DaraModel):
         sequence: int = None,
         site_id: int = None,
     ):
-        # The ID of the configuration.
+        # The configuration ID.
         # 
         # This parameter is required.
         self.config_id = config_id
-        # Response page.
+        # The response page.
         self.page_id = page_id
         # The response code.
         self.return_code = return_code
-        # The content of the rule. A conditional expression is used to match a user request. You do not need to set this parameter when you add global configurations. Use cases:
+        # The rule content. Use a conditional expression to match user requests. Do not set this parameter when adding a global configuration. There are two scenarios:
         # 
-        # *   true: Match all incoming requests.
-        # *   Set the value to a custom expression, for example, (http.host eq "video.example.com"): Match the specified request.
+        # - Match all incoming requests: Set the value to \\`true\\`.
+        # 
+        # - Match specific requests: Set the value to a custom expression, such as: \\`(http.host eq "video.example.com")\\`.
         self.rule = rule
-        # Specifies whether to enable the rule. Valid values: You do not need to set this parameter when you add global configurations. Valid values:
+        # The rule switch. Do not set this parameter when adding a global configuration. Valid values:
         # 
-        # *   on
-        # *   off
+        # - on: Enable the rule.
+        # 
+        # - off: Disable the rule.
         self.rule_enable = rule_enable
-        # The rule name. You do not need to set this parameter when you add global configurations.
+        # The rule name. Do not set this parameter when adding a global configuration.
         self.rule_name = rule_name
-        # The order in which the rule is executed. A smaller value gives priority to the rule.
+        # The rule execution order. A smaller value indicates higher priority.
         self.sequence = sequence
-        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # The site ID. Get it by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
         # 
         # This parameter is required.
         self.site_id = site_id

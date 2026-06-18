@@ -11,13 +11,13 @@ class DeleteWafRulesetRequest(DaraModel):
         site_id: int = None,
         site_version: int = None,
     ):
-        # ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2878359.html) interface.
+        # The ID of the WAF ruleset. Call the [ListWafRulesets](https://help.aliyun.com/document_detail/2878359.html) API to obtain this ID.
         # 
         # This parameter is required.
         self.id = id
-        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+        # The site ID. Call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API to obtain this ID.
         self.site_id = site_id
-        # Site version.
+        # If version management is enabled for the site, use this parameter to specify the version to modify. The default value is 0.
         self.site_version = site_version
 
     def validate(self):

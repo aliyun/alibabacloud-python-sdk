@@ -19,27 +19,31 @@ class CreateTransportLayerApplicationRequest(DaraModel):
         site_id: int = None,
         static_ip: str = None,
     ):
-        # Whether to enable China mainland network access optimization, default is disabled. Value range:
-        # - on: Enabled.
-        # - off: Disabled.
-        self.cross_border_optimization = cross_border_optimization
-        # IP access rule switch. When enabled, the WAF\\"s IP access rules apply to the transport layer application.
+        # Enables or disables network optimization for access from the Chinese mainland. This feature is disabled by default. Valid values:
         # 
-        # - on: Enabled.
-        # - off: Disabled.
+        # - `on`: Enables the optimization.
+        # 
+        # - `off`: Disables the optimization.
+        self.cross_border_optimization = cross_border_optimization
+        # Applies IP access rules from Web Application Firewall (WAF) to this Transport Layer Application. Valid values:
+        # 
+        # - `on`: Enables the feature.
+        # 
+        # - `off`: Disables the feature.
         self.ip_access_rule = ip_access_rule
-        # IPv6 switch.
+        # Enables or disables IPv6 support.
         self.ipv_6 = ipv_6
+        # Enables or disables keep-alive protection.
         self.keep_alive_protection = keep_alive_protection
-        # Domain name of the transport layer application.
+        # The domain name of the Transport Layer Application.
         # 
         # This parameter is required.
         self.record_name = record_name
-        # List of forwarding rules.
+        # The list of forwarding rules.
         # 
         # This parameter is required.
         self.rules = rules
-        # Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+        # The site ID. You can call the [ListSites](~~ListSites~~) operation to obtain the site ID.
         # 
         # This parameter is required.
         self.site_id = site_id
@@ -126,49 +130,61 @@ class CreateTransportLayerApplicationRequestRules(DaraModel):
         source_port: str = None,
         source_type: str = None,
     ):
-        # Client IP pass-through protocol, supporting:
-        # - **off**: No pass-through.
-        # - **PPv1**: PROXY Protocol v1, supports client IP pass-through for TCP protocol.
-        # - **PPv2**: PROXY Protocol v2, supports client IP pass-through for TCP and UDP protocols.
-        # - **SPP**: Simple Proxy Protocol, supports client IP pass-through for UDP protocol.
+        # The client IP passthrough protocol. Valid values:
+        # 
+        # - **off**: Disables client IP passthrough.
+        # 
+        # - **PPv1**: PROXY Protocol v1. Preserves the client IP address for TCP connections.
+        # 
+        # - **PPv2**: PROXY Protocol v2. Preserves the client IP address for TCP and UDP connections.
+        # 
+        # - **SPP**: Simple Proxy Protocol. Preserves the client IP address for UDP connections.
         # 
         # This parameter is required.
         self.client_ippass_through_mode = client_ippass_through_mode
-        # Comment information for the rule (optional).
+        # An optional comment for the rule.
         self.comment = comment
-        # Edge port. Supports:
+        # The edge port. Supported formats:
         # 
-        # - A single port, such as 80.
-        # - Port range, such as 81-85, representing ports 81, 82, 83, 84, and 85.
-        # - Combination of ports and port ranges, separated by commas, such as 80,81-85,90, representing ports 80, 81, 82, 83, 84, 85, and 90.
+        # - A single port, for example, `80`.
         # 
-        # Edge ports within a single rule and between multiple rules must not overlap.
+        # - A port range, for example, `81-85`, which includes ports 81, 82, 83, 84, and 85.
+        # 
+        # - A combination of ports and port ranges separated by commas, for example, `80,81-85,90`, which includes ports 80, 81, 82, 83, 84, 85, and 90.
+        # 
+        # Edge ports cannot overlap within a single rule or across multiple rules.
         # 
         # This parameter is required.
         self.edge_port = edge_port
-        # Forwarding rule protocol, with values:
+        # The forwarding protocol. Valid values:
         # 
-        # - TCP: TCP protocol.
-        # - UDP: UDP protocol.
+        # - `TCP`: The TCP protocol.
+        # 
+        # - `UDP`: The UDP protocol.
         # 
         # This parameter is required.
         self.protocol = protocol
-        # Specific value of the origin, which needs to match the origin type.
+        # The origin address. The value must match the specified `SourceType`.
         # 
         # This parameter is required.
         self.source = source
-        # Origin port. Supports:
+        # The origin port. Supported formats:
         # 
-        # - A single port, when the origin port is a single port, any valid combination of edge ports is supported.
-        # - Port range, only when the edge port is a port range, the origin port can be set to a port range, and the size of the range must match that of the edge port. For example, if the edge port is 90-93, the origin port cannot be set to 81-85 because the origin port range is 5 and the edge port range is 3, which do not match.
+        # - A single port, which supports any valid combination of edge ports.
+        # 
+        # - A port range. You can specify a port range only if the edge port is also a port range. The origin and edge port ranges must be the same size. For example, if the edge port range is `90-93` (4 ports), the origin port range cannot be `81-85` (5 ports).
         # 
         # This parameter is required.
         self.source_port = source_port
-        # Origin type, supporting:
-        # - **ip**: IP address.
-        # - **domain**: Domain name.
-        # - **OP**: Origin pool.
-        # - **LB**: Load balancer.
+        # The origin type. Valid values:
+        # 
+        # - **ip**: An IP address.
+        # 
+        # - **domain**: A domain name.
+        # 
+        # - **OP**: An origin pool.
+        # 
+        # - **LB**: A load balancer.
         # 
         # This parameter is required.
         self.source_type = source_type

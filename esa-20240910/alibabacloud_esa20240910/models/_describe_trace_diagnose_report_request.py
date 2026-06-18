@@ -10,7 +10,9 @@ class DescribeTraceDiagnoseReportRequest(DaraModel):
         task_id: str = None,
         trace_id: str = None,
     ):
+        # Diagnostic task ID.
         self.task_id = task_id
+        # Diagnostic trace ID.
         self.trace_id = trace_id
 
     def validate(self):

@@ -15,25 +15,27 @@ class ListOriginRulesRequest(DaraModel):
         site_id: int = None,
         site_version: int = None,
     ):
-        # Configuration ID.
+        # The configuration ID.
         self.config_id = config_id
-        # Configuration type, which can be used to query global or rule configurations. Value range:
-        # - global: Query global configuration.
-        # - rule: Query rule configuration.
+        # Filters the results by configuration type. Valid values:
         # 
-        # This parameter is optional; if not provided, it does not distinguish between global and rule configurations.
+        # - `global`: Queries the global configuration.
+        # 
+        # - `rule`: Queries rule configurations.
+        # 
+        # If you do not specify this parameter, the operation returns both global and rule configurations.
         self.config_type = config_type
-        # Page number, defaulting to 1 if not provided.
+        # The page number. The default value is 1.
         self.page_number = page_number
-        # Number of items per page, with a maximum of 500. Defaults to 500 if not provided.
+        # The number of entries to return on each page. The maximum value is 500, and the default value is 20.
         self.page_size = page_size
-        # Rule name. This parameter is not required when adding a global configuration.
+        # The rule name. This parameter is not required when querying the global configuration.
         self.rule_name = rule_name
-        # Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+        # The site ID. You can obtain this ID by calling the [ListSites](~~ListSites~~) operation.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # Version number of the site. For sites with version management enabled, this parameter can specify the version of the site for which the configuration is effective, defaulting to version 0.
+        # Specifies the site version to query. This parameter applies only to sites that have version management enabled. The default value is 0.
         self.site_version = site_version
 
     def validate(self):

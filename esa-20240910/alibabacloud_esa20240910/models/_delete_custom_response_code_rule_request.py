@@ -14,7 +14,7 @@ class DeleteCustomResponseCodeRuleRequest(DaraModel):
         # 
         # This parameter is required.
         self.config_id = config_id
-        # The website ID, which can be obtained by calling the [ListSites](~~ListSites~~) operation.
+        # The site ID. Obtain this by calling ListSites.
         # 
         # This parameter is required.
         self.site_id = site_id

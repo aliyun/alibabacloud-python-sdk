@@ -17,11 +17,13 @@ class RollbackEdgeContainerAppVersionRequest(DaraModel):
         # 
         # This parameter is required.
         self.app_id = app_id
+        # The deployment percentage for the target version after the rollback. Valid values: **1 to 100**. Default value: **0**.
         self.percentage = percentage
-        # The remarks.
+        # Additional information about the rollback.
         self.remarks = remarks
+        # Specifies whether to use percentage rollback.
         self.used_percent = used_percent
-        # The ID of version that you want to roll back.
+        # The ID of the version to roll back to.
         # 
         # This parameter is required.
         self.version_id = version_id

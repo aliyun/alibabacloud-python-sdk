@@ -17,12 +17,17 @@ class ListPostpaidRatePlanInstancesResponseBody(DaraModel):
         total_count: int = None,
         total_page: int = None,
     ):
+        # A list of instances.
         self.instance_info = instance_info
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
-        # Id of the request
+        # The request ID, used for troubleshooting.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
+        # The total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -99,17 +104,43 @@ class ListPostpaidRatePlanInstancesResponseBodyInstanceInfo(DaraModel):
         sites: List[main_models.ListPostpaidRatePlanInstancesResponseBodyInstanceInfoSites] = None,
         status: str = None,
     ):
+        # The billing method. Valid value:
+        # 
+        # - `dps_month95`: Monthly 95th percentile.
         self.billing_method = billing_method
+        # The billing mode. Valid value:
+        # 
+        # - `POSTPAY`: pay-as-you-go.
         self.billing_mode = billing_mode
+        # The coverage area of the instance. Only sites within this area can be bound to the instance. If multiple areas are supported, they are separated by a comma (`,`). Valid values:
+        # 
+        # - `domestic`: Chinese mainland.
+        # 
+        # - `overseas`: Regions outside the Chinese mainland.
+        # 
+        # - `global`: Global (including the Chinese mainland).
         self.coverages = coverages
+        # The time when the instance was created.
         self.create_time = create_time
+        # The time of a scheduled configuration change.
         self.expected_update_time = expected_update_time
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The plan name in English.
         self.plan_name = plan_name
+        # The plan name in Chinese.
         self.plan_name_cn = plan_name_cn
+        # The type of the plan. Valid values:
+        # 
+        # - `normal`: Normal plan.
+        # 
+        # - `enterprise`: Enterprise plan.
         self.plan_type = plan_type
+        # The maximum number of sites that can be bound to the instance.
         self.site_quota = site_quota
+        # A list of sites bound to the instance.
         self.sites = sites
+        # The status of the instance.
         self.status = status
 
     def validate(self):
@@ -213,8 +244,19 @@ class ListPostpaidRatePlanInstancesResponseBodyInstanceInfoSites(DaraModel):
         site_name: str = None,
         site_status: str = None,
     ):
+        # The ID of the site.
         self.site_id = site_id
+        # The name of the site.
         self.site_name = site_name
+        # The status of the site. Valid values:
+        # 
+        # - `pending`: The site is awaiting configuration.
+        # 
+        # - `active`: The site is active.
+        # 
+        # - `offline`: The site is offline.
+        # 
+        # - `moved`: The site has been replaced.
         self.site_status = site_status
 
     def validate(self):

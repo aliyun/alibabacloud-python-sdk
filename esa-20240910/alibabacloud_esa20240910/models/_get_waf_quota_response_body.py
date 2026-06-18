@@ -13,9 +13,9 @@ class GetWafQuotaResponseBody(DaraModel):
         quota: main_models.GetWafQuotaResponseBodyQuota = None,
         request_id: str = None,
     ):
-        # Returned quota information.
+        # The quota details.
         self.quota = quota
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -56,15 +56,17 @@ class GetWafQuotaResponseBodyQuota(DaraModel):
         scene_policy: main_models.GetWafQuotaResponseBodyQuotaScenePolicy = None,
         slider_captcha_page: main_models.GetWafQuotaResponseBodyQuotaSliderCaptchaPage = None,
     ):
+        # The quota for captcha rules.
         self.captcha = captcha
-        # Quota information related to custom lists.
+        # The quota for custom lists.
         self.list = list
-        # Quota information related to the WAF managed rules group.
+        # The quota for WAF managed rule groups.
         self.managed_rules_group = managed_rules_group
-        # Quota information related to custom response pages.
+        # The quota for custom response pages.
         self.page = page
-        # Quota information related to scene protection.
+        # The quota for scenario protection.
         self.scene_policy = scene_policy
+        # The quota for slider captcha pages.
         self.slider_captcha_page = slider_captcha_page
 
     def validate(self):
@@ -140,6 +142,7 @@ class GetWafQuotaResponseBodyQuotaSliderCaptchaPage(DaraModel):
         enable: bool = None,
         number_total: main_models.WafQuotaInteger = None,
     ):
+        # Whether slider captcha pages are enabled.
         self.enable = enable
         self.number_total = number_total
 
@@ -177,9 +180,9 @@ class GetWafQuotaResponseBodyQuotaScenePolicy(DaraModel):
         enable: bool = None,
         number_total: main_models.WafQuotaInteger = None,
     ):
-        # Indicates whether the scene protection feature is enabled.
+        # Whether the scenario protection feature is enabled.
         self.enable = enable
-        # The total number quota for scene protection rules.
+        # The maximum number of scenario protection rules allowed.
         self.number_total = number_total
 
     def validate(self):
@@ -217,11 +220,11 @@ class GetWafQuotaResponseBodyQuotaPage(DaraModel):
         enable: bool = None,
         number_total: main_models.WafQuotaInteger = None,
     ):
-        # An object containing quota information for each Content-Type in custom response pages.
+        # The quota for each Content-Type in a custom response page.
         self.content_types = content_types
-        # Indicates whether the custom response page is enabled.
+        # Whether the custom response page feature is enabled.
         self.enable = enable
-        # The total number quota allowed for custom response pages.
+        # The maximum number of custom response pages allowed.
         self.number_total = number_total
 
     def validate(self):
@@ -273,9 +276,9 @@ class GetWafQuotaResponseBodyQuotaManagedRulesGroup(DaraModel):
         enable: bool = None,
         number_total: main_models.WafQuotaInteger = None,
     ):
-        # Indicates whether the WAF managed rules group is enabled.
+        # Whether the WAF managed rule group feature is enabled.
         self.enable = enable
-        # The total number quota allowed for the WAF managed rules group.
+        # The maximum number of WAF managed rule groups allowed.
         self.number_total = number_total
 
     def validate(self):
@@ -315,15 +318,15 @@ class GetWafQuotaResponseBodyQuotaList(DaraModel):
         number_items_total: main_models.WafQuotaInteger = None,
         number_total: main_models.WafQuotaInteger = None,
     ):
-        # Indicates whether the custom list is enabled.
+        # Whether the custom list feature is enabled.
         self.enable = enable
-        # An object containing quota information for each type of item in the custom list.
+        # The quota for each item type in a custom list.
         self.items = items
-        # The number quota allowed per custom list.
+        # The maximum number of items allowed per custom list.
         self.number_items_per_list = number_items_per_list
-        # The total number quota allowed for items in all custom lists.
+        # The maximum number of items allowed across all custom lists.
         self.number_items_total = number_items_total
-        # The total number quota allowed for custom lists.
+        # The maximum number of custom lists allowed.
         self.number_total = number_total
 
     def validate(self):
@@ -393,7 +396,9 @@ class GetWafQuotaResponseBodyQuotaCaptcha(DaraModel):
         enable: bool = None,
         number_total: main_models.WafQuotaInteger = None,
     ):
+        # Whether captcha rules are enabled.
         self.enable = enable
+        # The maximum number of captcha rules allowed.
         self.number_total = number_total
 
     def validate(self):

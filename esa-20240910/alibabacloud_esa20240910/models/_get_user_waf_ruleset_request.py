@@ -10,8 +10,12 @@ class GetUserWafRulesetRequest(DaraModel):
         id: int = None,
         instance_id: str = None,
     ):
+        # The ID of the WAF ruleset.
+        # 
         # This parameter is required.
         self.id = id
+        # The ID of the WAF instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 

@@ -20,17 +20,17 @@ class ListCertificatesResponseBody(DaraModel):
     ):
         # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries to return on each page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The queried certificates.
+        # A list of certificate details.
         self.result = result
-        # The website ID.
+        # The ID of the site.
         self.site_id = site_id
-        # The website name.
+        # The name of the site.
         self.site_name = site_name
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -123,60 +123,71 @@ class ListCertificatesResponseBodyResult(DaraModel):
         type: str = None,
         update_time: str = None,
     ):
-        # The error code returned for certificate application.
+        # The error code returned when a certificate application fails.
         self.apply_code = apply_code
-        # The error message returned for certificate application.
+        # The error message returned when a certificate application fails.
         self.apply_message = apply_message
-        # The certificate ID on Certificate Management Service.
+        # The ID of the cloud certificate.
         self.cas_id = cas_id
-        # The Common Name of the certificate.
+        # The common name of the certificate.
         self.common_name = common_name
         # The time when the certificate was created.
         self.create_time = create_time
-        # The Domain Control Validation (DCV) information.
+        # The domain control validation (DCV) information.
         self.dcv = dcv
         # The SHA-256 fingerprint of the certificate.
         self.fingerprint_sha_256 = fingerprint_sha_256
-        # The certificate ID on ESA.
+        # The ID of the certificate.
         self.id = id
-        # The certificate authority (CA) that issued the certificate.
+        # The issuer of the certificate.
         self.issuer = issuer
-        # The Common Name of the certificate issuer.
+        # The common name of the certificate issuer.
         self.issuer_cn = issuer_cn
+        # The ID of the keyless server. This parameter is valid only when `Type` is set to `keyless`.
         self.key_server_id = key_server_id
-        # The certificate name.
+        # The name of the certificate.
         self.name = name
         # The time when the certificate expires.
         self.not_after = not_after
-        # The time when the certificate takes effect.
+        # The time when the certificate becomes valid.
         self.not_before = not_before
         # The public key algorithm of the certificate.
         self.pub_alg = pub_alg
-        # The region where the certificate is stored.
+        # The region.
         self.region = region
-        # The Subject Alternative Name (SAN) of the certificate.
+        # The subject alternative name (SAN) of the certificate.
         self.san = san
         # The serial number of the certificate.
         self.serial_number = serial_number
         # The signature algorithm of the certificate.
         self.sig_alg = sig_alg
-        # The certificate status.
+        # The status of the certificate. Valid values:
         # 
-        # *   OK
-        # *   Expired
-        # *   Expiring
-        # *   Issued
-        # *   Applying
-        # *   ApplyFailed
-        # *   Canceled
+        # - `OK`: The certificate is valid.
+        # 
+        # - `Expired`: The certificate has expired.
+        # 
+        # - `Expiring`: The certificate is due to expire within 30 days.
+        # 
+        # - `Issued`: The free certificate has been issued.
+        # 
+        # - `Applying`: The free certificate application is in progress.
+        # 
+        # - `ApplyFailed`: The free certificate application has failed.
+        # 
+        # - `Canceled`: The free certificate application has been canceled.
         self.status = status
-        # The certificate type.
+        # The type of the certificate. Valid values:
         # 
-        # *   cas: certificate that is purchased by using Certificate Management Service
-        # *   upload: custom certificate that you upload
-        # *   free: free certificate
+        # - `cas`: An Alibaba Cloud certificate.
+        # 
+        # - `upload`: A user-uploaded certificate.
+        # 
+        # - `free`: A free certificate.
+        # 
+        # - `keyless`: A keyless certificate.
         self.type = type
-        # The time when the certificate was updated.
+        # The time when the certificate was last updated.
         self.update_time = update_time
 
     def validate(self):
@@ -342,15 +353,15 @@ class ListCertificatesResponseBodyResultDCV(DaraModel):
         type: str = None,
         value: str = None,
     ):
-        # The DCV ID.
+        # The ID of the DCV record.
         self.id = id
-        # The DCV name. It is a TXT record name if Type is DNS or URL if Type is HTTP.
+        # The DCV key. For the `DNS` method, this is the name of the TXT record. For the `HTTP` method, this is the URL.
         self.key = key
-        # The verification status.
+        # The validation status.
         self.status = status
-        # The DCV type. Valid values: DNS and HTTP.
+        # The DCV method. Valid values: `DNS` and `HTTP`.
         self.type = type
-        # The DCV content.
+        # The DCV value.
         self.value = value
 
     def validate(self):
