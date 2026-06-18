@@ -13,6 +13,7 @@ class BatchSetDesktopManagerRequest(DaraModel):
         is_desktop_manager: str = None,
         users: List[str] = None,
     ):
+        # Channel
         self.business_channel = business_channel
         # Whether the convenience account has the local administrator permissions on cloud computers.
         # 

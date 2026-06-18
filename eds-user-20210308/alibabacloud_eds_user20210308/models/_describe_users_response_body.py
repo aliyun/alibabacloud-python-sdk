@@ -14,11 +14,11 @@ class DescribeUsersResponseBody(DaraModel):
         request_id: str = None,
         users: List[main_models.DescribeUsersResponseBodyUsers] = None,
     ):
-        # The token that determines the start point of the next query. If this parameter is left empty, all results are returned.
+        # The token to start the next query. If this parameter is empty, all results have been returned.
         self.next_token = next_token
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The information about the convenience accounts.
+        # The details of the convenience accounts.
         self.users = users
 
     def validate(self):
@@ -88,94 +88,64 @@ class DescribeUsersResponseBodyUsers(DaraModel):
         status: int = None,
         wy_id: str = None,
     ):
-        # The work address of the convenience user.
+        # The work address of the user.
         self.address = address
-        # The profile picture of the convenience user.
+        # The URL of the user\\"s avatar.
         self.avatar = avatar
-        # The email address of the convenience user.
+        # The email address.
         self.email = email
-        # Enables the administrator permissions.
+        # Indicates whether administrator access is enabled.
         self.enable_admin_access = enable_admin_access
-        # The username of the convenience user.
+        # The end user ID.
         self.end_user_id = end_user_id
+        # The name of the user imported from an external system.
+        # 
+        # > This parameter is for internal use only.
         self.external_name = external_name
+        # The extended properties of the user.
         self.extras = extras
-        # The user groups to which the convenience user belongs.
+        # The user groups to which the convenience account belongs.
         self.groups = groups
-        # The ID of the convenience user.
+        # The ID of the convenience account.
         self.id = id
-        # Indicates whether the convenience user is an administrator. If the convenience user is of the administrator-activated type, you must specify a user administrator. Notifications such as password reset on a client are sent to the email address or mobile number of the user administrator. For more information, see [Create a convenience user](https://help.aliyun.com/document_detail/214472.html).
+        # Indicates whether the user is a tenant manager. When you create a convenience account of the `CreateFromManager` type, you must specify a tenant manager. Notifications, such as password resets initiated by an end user from a client, are sent to the tenant manager\\"s email or mobile phone. For more information, see [Create a convenience account](https://help.aliyun.com/document_detail/214472.html).
         self.is_tenant_manager = is_tenant_manager
-        # The employee number of the convenience user.
+        # The employee ID.
         self.job_number = job_number
-        # The nickname of the convenience user.
+        # The nickname of the user.<br>
+        # The value is determined from the following parameters, in order of priority:<br>
+        # 
+        # - `RealNickName`
+        # 
+        # - `Remark`
+        # 
+        # - `EndUserId`
         self.nick_name = nick_name
-        # The ID of the organization to which the convenience user belongs.
+        # The ID of the organization to which the convenience account belongs.
         # 
-        # >  This parameter will be deprecated in the future.
+        # > This parameter is deprecated and may be removed in a future release.
         self.org_id = org_id
-        # The organizations to which the convenience user belongs.
+        # The organizations to which the convenience account belongs.
         self.orgs = orgs
-        # The type of the convenience account.
+        # The type of the convenience account. The account can be activated in one of the following ways:
         # 
-        # *   Administrator-activated type: The administrator specifies the username and password of the convenience account. User notifications such as password reset notifications are sent to the email address or mobile number of the administrator.
-        # *   User-activated type: The administrator specifies the username and the email address or mobile number of a convenience user. Notifications such as activation notifications that contain the default password are sent to the email address or mobile number of the convenience user.
+        # - Tenant manager-activated: The tenant manager sets the username and password. Notifications such as password resets are sent to the tenant manager\\"s email address or mobile phone.
         # 
-        # Valid values:
-        # 
-        # *   CreateFromManager
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     administrator-activated
-        # 
-        #     <!-- -->
-        # 
-        # *   Normal
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     user-activated
-        # 
-        #     <!-- -->
+        # - End user-activated: The tenant manager sets the username and the end user\\"s email address or mobile phone. Notifications for the end user, such as the initial password for the cloud desktop, are sent to the end user\\"s email address or mobile phone.
         self.owner_type = owner_type
         self.password_expire_days = password_expire_days
         self.password_expire_rest_days = password_expire_rest_days
-        # The mobile number of the convenience user. If you leave this parameter empty, the value of this parameter is not returned.
+        # The phone number. This parameter is returned only if a phone number is set.
         self.phone = phone
+        # A list of custom properties for the user.
         self.properties = properties
+        # The display name of the user.
         self.real_nick_name = real_nick_name
-        # The remarks on the convenience user.
+        # The note about the convenience account.
         self.remark = remark
-        # The status of the convenience user.
-        # 
-        # Valid values:
-        # 
-        # *   0: The convenience user is normal.
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   9: The convenience user is locked.
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
+        # The status of the convenience account.
         self.status = status
-        # The globally unique ID of the convenience user.
+        # The globally unique ID of the convenience account.
         self.wy_id = wy_id
 
     def validate(self):
@@ -365,7 +335,9 @@ class DescribeUsersResponseBodyUsersProperties(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The property key.
         self.key = key
+        # The property value.
         self.value = value
 
     def validate(self):
@@ -401,9 +373,9 @@ class DescribeUsersResponseBodyUsersOrgs(DaraModel):
         org_name: str = None,
         org_name_path: str = None,
     ):
-        # The organization ID.
+        # The ID of the organization.
         self.org_id = org_id
-        # The organization name.
+        # The name of the organization.
         self.org_name = org_name
         self.org_name_path = org_name_path
 
@@ -482,6 +454,7 @@ class DescribeUsersResponseBodyUsersExtras(DaraModel):
         assigned_resource_count: Dict[str, Any] = None,
         resource_policy_list: List[main_models.DescribeUsersResponseBodyUsersExtrasResourcePolicyList] = None,
     ):
+        # The number of assigned cloud resources.
         self.assigned_resource_count = assigned_resource_count
         self.resource_policy_list = resource_policy_list
 

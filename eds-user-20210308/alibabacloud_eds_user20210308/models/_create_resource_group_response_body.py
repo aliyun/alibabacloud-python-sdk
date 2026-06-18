@@ -12,7 +12,7 @@ class CreateResourceGroupResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The resource group ID.
+        # The ID of the newly created resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):

@@ -14,11 +14,11 @@ class FilterUsersResponseBody(DaraModel):
         request_id: str = None,
         users: List[main_models.FilterUsersResponseBodyUsers] = None,
     ):
-        # The pagination token that is used in the next request to retrieve a new page of results. If not all results are returned in a query, a value is returned for the NextToken parameter. In this case, you can use the returned NextToken value to start the next query.
+        # The token for paginated results. If the response is truncated, this parameter is returned. To retrieve the next page of results, include this value in a subsequent request.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The information about the convenience accounts.
+        # A list of convenience accounts.
         self.users = users
 
     def validate(self):
@@ -86,93 +86,47 @@ class FilterUsersResponseBodyUsers(DaraModel):
         support_login_idps: List[main_models.FilterUsersResponseBodyUsersSupportLoginIdps] = None,
         user_set_properties_models: List[main_models.FilterUsersResponseBodyUsersUserSetPropertiesModels] = None,
     ):
-        # The date when a convenience account is automatically locked.
+        # The date the account will be automatically locked.
         self.auto_lock_time = auto_lock_time
-        # The number of cloud desktops that are assigned to the convenience user.
+        # The number of cloud desktops assigned to the user.
         self.desktop_count = desktop_count
-        # The number of cloud desktop pools that are assigned to the convenience user. This value is returned if you set `IncludeDesktopGroupCount` to `true`.
+        # The number of desktop groups the user can access. This parameter is returned only when `IncludeDesktopGroupCount` is set to `true`.
         self.desktop_group_count = desktop_group_count
-        # The email address of the convenience user.
+        # The email address.
         self.email = email
-        # Indicates whether the convenience user is a local administrator.
-        # 
-        # Valid values:
-        # 
-        # *   true
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   false
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
+        # Indicates whether the user has local administrator permissions.
         self.enable_admin_access = enable_admin_access
-        # The username of the convenience user.
+        # The user name.
         self.end_user_id = end_user_id
-        # The additional information about the convenience user.
+        # External user information.
         self.external_info = external_info
         self.groups = groups
-        # The ID of the convenience user.
+        # The user ID.
         self.id = id
-        # Indicates whether the convenience user is a tenant administrator.
-        # 
-        # Valid values:
-        # 
-        # *   true
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   false
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
+        # Indicates whether the user is a tenant administrator.
         self.is_tenant_manager = is_tenant_manager
-        # The organizations to which the user belongs.
+        # A list of organizations the user belongs to.
         self.org_list = org_list
-        # The type of the account ownership.
-        # 
-        # Valid values:
-        # 
-        # *   CreateFromManager: administrator-activated
-        # *   Normal: user-activated
+        # The account ownership type.
         self.owner_type = owner_type
-        # By default, user account passwords do not expire. However, you can set a validity period between 30 and 365 days. Once the period expires, end users must change their password before they can log on to terminals.
+        # The password validity period in days. By default, passwords do not expire. Set this to a value from 30 to 365 to enforce an expiration policy. When a password expires, the user must change it before logging on again.
         # 
-        # >  The feature is in invitational preview. If you want to use this feature, submit a ticket.
+        # > This feature is in preview and available by invitation only. To use this feature, submit a ticket.
         self.password_expire_days = password_expire_days
-        # The number of days remaining until the account password expires.
+        # The number of days until the password expires.
         self.password_expire_rest_days = password_expire_rest_days
-        # The mobile number of the convenience user.
+        # The phone number.
         self.phone = phone
-        # The nickname of the convenience user.
+        # The user\\"s nickname.
         self.real_nick_name = real_nick_name
-        # The remarks on the convenience user.
+        # The remark about the user.
         self.remark = remark
         self.resource_policy_list = resource_policy_list
-        # The remarks on the convenience account.
-        # 
-        # Valid values:
-        # 
-        # *   0: The convenience account is normal.
-        # *   9: The convenience account is locked.
+        # The status of the convenience account.
         self.status = status
-        # The supported identity provider logon methods.
+        # A list of identity providers (IdPs) that the user can use to log on.
         self.support_login_idps = support_login_idps
-        # The information about the properties.
+        # A list of user properties.
         self.user_set_properties_models = user_set_properties_models
 
     def validate(self):
@@ -372,17 +326,17 @@ class FilterUsersResponseBodyUsersUserSetPropertiesModels(DaraModel):
         user_id: int = None,
         user_name: str = None,
     ):
-        # The property ID.
+        # The ID of the user property.
         self.property_id = property_id
-        # The property name.
+        # The name of the user property.
         self.property_key = property_key
-        # The property type.
+        # The type of the user property.
         self.property_type = property_type
         # The property values.
         self.property_values = property_values
-        # The ID of the convenience user that is bound to the property.
+        # The ID of the user associated with the property.
         self.user_id = user_id
-        # The username of the convenience user that is bound to the property.
+        # The user name associated with the property.
         self.user_name = user_name
 
     def validate(self):
@@ -486,9 +440,9 @@ class FilterUsersResponseBodyUsersSupportLoginIdps(DaraModel):
         idp_id: str = None,
         idp_name: str = None,
     ):
-        # The enterprise identity provider ID.
+        # The ID of the identity provider (IdP).
         self.idp_id = idp_id
-        # The enterprise identity provider name.
+        # The name of the identity provider (IdP).
         self.idp_name = idp_name
 
     def validate(self):
@@ -639,9 +593,9 @@ class FilterUsersResponseBodyUsersExternalInfo(DaraModel):
         external_name: str = None,
         job_number: str = None,
     ):
-        # The account that is associated with the convenience user.
+        # The name of the mapped external account.
         self.external_name = external_name
-        # The account, student ID, or employee ID that is associated with the convenience user.
+        # The ID of the external account, such as a student ID or an employee ID.
         self.job_number = job_number
 
     def validate(self):

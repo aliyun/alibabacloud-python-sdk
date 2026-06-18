@@ -14,13 +14,12 @@ class CreateResourceGroupRequest(DaraModel):
         resource_classification: str = None,
         resource_group_name: str = None,
     ):
+        # The business channel.
         self.business_channel = business_channel
         self.enable_aliyun_resource_group = enable_aliyun_resource_group
-        # >  This parameter is not publicly available.
+        # > This parameter is for internal use only.
         self.is_resource_group_with_office_site = is_resource_group_with_office_site
-        # >  Set the value to AliyunConsole.
-        # 
-        # *   This parameter is not publicly available in other platforms.
+        # Set this parameter to `AliyunConsole` for Wuying Workspace Enterprise Edition.
         self.platform = platform
         self.resource_classification = resource_classification
         # The name of the resource group.

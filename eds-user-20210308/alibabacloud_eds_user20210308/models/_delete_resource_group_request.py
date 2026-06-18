@@ -13,6 +13,7 @@ class DeleteResourceGroupRequest(DaraModel):
         resource_group_id: str = None,
         resource_group_ids: List[str] = None,
     ):
+        # Channel
         self.business_channel = business_channel
         # >  The ID of the resource group that you want to delete.
         # 

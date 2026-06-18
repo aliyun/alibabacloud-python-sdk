@@ -21,6 +21,10 @@ class Client(OpenApiClient):
     ):
         super().__init__(config)
         self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'cn-shanghai': 'eds-user.cn-shanghai.aliyuncs.com',
+            'ap-southeast-1': 'eds-user.ap-southeast-1.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('eds-user', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -3415,6 +3419,174 @@ class Client(OpenApiClient):
     async def sync_all_edu_info_async(self) -> main_models.SyncAllEduInfoResponse:
         runtime = RuntimeOptions()
         return await self.sync_all_edu_info_with_options_async(runtime)
+
+    def transfer_resources_into_group_with_options(
+        self,
+        request: main_models.TransferResourcesIntoGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.TransferResourcesIntoGroupResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.business_channel):
+            query['BusinessChannel'] = request.business_channel
+        if not DaraCore.is_null(request.platform):
+            query['Platform'] = request.platform
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.resources):
+            query['Resources'] = request.resources
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'TransferResourcesIntoGroup',
+            version = '2021-03-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.TransferResourcesIntoGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def transfer_resources_into_group_with_options_async(
+        self,
+        request: main_models.TransferResourcesIntoGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.TransferResourcesIntoGroupResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.business_channel):
+            query['BusinessChannel'] = request.business_channel
+        if not DaraCore.is_null(request.platform):
+            query['Platform'] = request.platform
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.resources):
+            query['Resources'] = request.resources
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'TransferResourcesIntoGroup',
+            version = '2021-03-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.TransferResourcesIntoGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def transfer_resources_into_group(
+        self,
+        request: main_models.TransferResourcesIntoGroupRequest,
+    ) -> main_models.TransferResourcesIntoGroupResponse:
+        runtime = RuntimeOptions()
+        return self.transfer_resources_into_group_with_options(request, runtime)
+
+    async def transfer_resources_into_group_async(
+        self,
+        request: main_models.TransferResourcesIntoGroupRequest,
+    ) -> main_models.TransferResourcesIntoGroupResponse:
+        runtime = RuntimeOptions()
+        return await self.transfer_resources_into_group_with_options_async(request, runtime)
+
+    def transfer_resources_outof_group_with_options(
+        self,
+        request: main_models.TransferResourcesOutofGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.TransferResourcesOutofGroupResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.business_channel):
+            query['BusinessChannel'] = request.business_channel
+        if not DaraCore.is_null(request.platform):
+            query['Platform'] = request.platform
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.resources):
+            query['Resources'] = request.resources
+        if not DaraCore.is_null(request.target_resource_group_id):
+            query['TargetResourceGroupId'] = request.target_resource_group_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'TransferResourcesOutofGroup',
+            version = '2021-03-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.TransferResourcesOutofGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def transfer_resources_outof_group_with_options_async(
+        self,
+        request: main_models.TransferResourcesOutofGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.TransferResourcesOutofGroupResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.business_channel):
+            query['BusinessChannel'] = request.business_channel
+        if not DaraCore.is_null(request.platform):
+            query['Platform'] = request.platform
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.resources):
+            query['Resources'] = request.resources
+        if not DaraCore.is_null(request.target_resource_group_id):
+            query['TargetResourceGroupId'] = request.target_resource_group_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'TransferResourcesOutofGroup',
+            version = '2021-03-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.TransferResourcesOutofGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def transfer_resources_outof_group(
+        self,
+        request: main_models.TransferResourcesOutofGroupRequest,
+    ) -> main_models.TransferResourcesOutofGroupResponse:
+        runtime = RuntimeOptions()
+        return self.transfer_resources_outof_group_with_options(request, runtime)
+
+    async def transfer_resources_outof_group_async(
+        self,
+        request: main_models.TransferResourcesOutofGroupRequest,
+    ) -> main_models.TransferResourcesOutofGroupResponse:
+        runtime = RuntimeOptions()
+        return await self.transfer_resources_outof_group_with_options_async(request, runtime)
 
     def unlock_mfa_device_with_options(
         self,

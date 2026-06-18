@@ -13,6 +13,7 @@ class ResetUserPasswordRequest(DaraModel):
         notify_type: int = None,
         users: List[str] = None,
     ):
+        # Channel
         self.business_channel = business_channel
         # The method to notify the user after the password is reset.
         # 

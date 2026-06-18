@@ -9,6 +9,7 @@ class ListPropertyRequest(DaraModel):
         self,
         business_channel: str = None,
     ):
+        # Channel
         self.business_channel = business_channel
 
     def validate(self):

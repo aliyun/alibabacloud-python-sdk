@@ -11,6 +11,7 @@ class CreateOrgRequest(DaraModel):
         org_name: str = None,
         parent_org_id: str = None,
     ):
+        # Channel
         self.business_channel = business_channel
         # The name of the organization.
         # 

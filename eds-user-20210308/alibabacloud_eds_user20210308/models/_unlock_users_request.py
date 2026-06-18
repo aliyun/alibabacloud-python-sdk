@@ -15,6 +15,7 @@ class UnlockUsersRequest(DaraModel):
     ):
         # The date on which the convenience users are automatically locked.
         self.auto_lock_time = auto_lock_time
+        # Channel
         self.business_channel = business_channel
         # The usernames of the convenience users that you want to unlock.
         # 

@@ -28,33 +28,39 @@ class DescribeUsersRequest(DaraModel):
         status: int = None,
     ):
         self.biz_type = biz_type
+        # Status
         self.business_channel = business_channel
-        # The usernames that must be exactly matched.
+        # The list of usernames (EndUserId) that you want to exactly match.
         self.end_user_ids = end_user_ids
-        # The usernames that must be exactly excluded.
+        # The list of usernames (EndUserId) that you want to exactly exclude.
         self.exclude_end_user_ids = exclude_end_user_ids
+        # The ID of the user group to exclude. If specified, the query returns users who are not in this user group.
         self.exclude_group_id = exclude_group_id
-        # The string that is used for fuzzy search. You perform fuzzy search by username (EndUserId) and email address (Email). Wildcard characters (\\*) are supported. For example, if you set this parameter to `a*m`, usernames or email addresses that start with `a` and end with `m` are returned.
+        # The filter for a fuzzy search. The filter matches usernames (EndUserId) and email addresses (Email). This parameter supports the wildcard character (\\*). For example, if you set this parameter to `a*m`, all results whose usernames or email addresses start with `a` and end with `m` are returned.
         self.filter = filter
         self.filter_map = filter_map
+        # Filters users by whether a cloud resource is assigned.
         self.filter_with_assigned_resource = filter_with_assigned_resource
+        # > This parameter is not available to the public.
         self.filter_with_assigned_resources = filter_with_assigned_resources
-        # The ID of the organization in which you want to query convenience users.
+        # Performs an exact match by user group ID to query the list of accounts that belong to the user group.
         self.group_id = group_id
+        # Queries extended information about the user.
         self.is_query_all_sub_orgs = is_query_all_sub_orgs
-        # The maximum number of entries per page.
+        # The number of entries to return on each page.
         # 
-        # *   Valid values: 1 to 500.
-        # *   Default value: 500.
+        # - Valid values: 1 to 500.
+        # 
+        # - Default value: 200.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request.\\
-        # If not all results are returned in a query, a value is returned for the NextToken parameter. In this case, you can use the return value of NextToken to perform the next query.
+        # The token that is used to start the next query. If the number of entries returned exceeds the value of MaxResults, a token is returned. You can use this token in the next query to continue the query.
         self.next_token = next_token
-        # The ID of the organization in which you want to query users.
+        # Performs an exact match by organization ID to query the list of accounts that belong to the organization.
         self.org_id = org_id
+        # > This parameter is not available to the public.
         self.show_extras = show_extras
         self.solution_id = solution_id
-        # The status.
+        # Specifies whether to query users in suborganizations.
         self.status = status
 
     def validate(self):

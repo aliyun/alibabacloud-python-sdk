@@ -16,7 +16,7 @@ class DescribeResourceGroupsResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The resource groups.
+        # A list of resource groups.
         self.resource_group = resource_group
         # The total number of resource groups.
         self.total_count = total_count
@@ -74,27 +74,28 @@ class DescribeResourceGroupsResponseBodyResourceGroup(DaraModel):
         resource_group_name: str = None,
         timers: List[main_models.DescribeResourceGroupsResponseBodyResourceGroupTimers] = None,
     ):
+        # The Alibaba Cloud resource group ID.
         self.aliyun_resource_group_id = aliyun_resource_group_id
         self.app_rules = app_rules
-        # The number of administrators that are authorized to access the resource group.
+        # The number of administrators authorized for the resource group.
         self.auth_count = auth_count
-        # The time when the resource group was created.
+        # The time the resource group was created.
         self.create_time = create_time
-        # >  The policy that is associated with the resource group.
-        # 
-        # *   The policy applies to cloud computers in the resource group. If multiple policies exist, they are enforced in order of priority.
-        # 
-        # *   If any of these cloud computers are already associated with other policies, the resource group\\"s policy takes precedence.
+        # > The policies associated with the resource group.
+        # >
+        # > - These policies apply to the cloud computers in the resource group. If multiple policies are associated, they are applied in order of priority.
+        # >
+        # > - Policies associated with the resource group take precedence over policies assigned to individual cloud computers.
         self.policies = policies
         # The number of resources in the resource group.
         self.resource_count = resource_count
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         # The name of the resource group.
         self.resource_group_name = resource_group_name
-        # >  The associated scheduled task.
-        # 
-        # *   The scheduled task applies to all cloud computers in the resource group. If any of these cloud computers are already associated with other scheduled tasks, the resource group\\"s scheduled task takes precedence.
+        # > The scheduled tasks associated with the resource group.
+        # >
+        # > - These scheduled tasks apply to cloud computers in the resource group and take precedence over any tasks associated with individual cloud computers.
         self.timers = timers
 
     def validate(self):
@@ -200,9 +201,9 @@ class DescribeResourceGroupsResponseBodyResourceGroupTimers(DaraModel):
         timer_status: str = None,
     ):
         self.bind_status = bind_status
-        # The ID of the scheduled task.
+        # The scheduled task ID.
         self.id = id
-        # The name of the scheduled task.
+        # The scheduled task name.
         self.name = name
         self.timer_status = timer_status
 
@@ -253,7 +254,7 @@ class DescribeResourceGroupsResponseBodyResourceGroupPolicies(DaraModel):
     ):
         # The policy ID.
         self.id = id
-        # Specifies whether to use the default policy.
+        # Specifies whether this is the default policy.
         self.is_default = is_default
         # The policy name.
         self.name = name

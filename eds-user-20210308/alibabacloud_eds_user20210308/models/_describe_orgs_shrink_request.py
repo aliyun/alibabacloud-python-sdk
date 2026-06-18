@@ -17,14 +17,15 @@ class DescribeOrgsShrinkRequest(DaraModel):
         parent_org_id: str = None,
         show_extras_shrink: str = None,
     ):
+        # The channel.
         self.business_channel = business_channel
         self.include_org_ids = include_org_ids
-        # The maximum number of entries to return. Valid values: 1 to 100.\\
-        # Default value: 100.
+        # The maximum number of entries to return. Valid values: 1 to 100.<br>
+        # Default value: 100.<br>
         self.max_results = max_results
-        # The token that determines the start point of the query. The return value is the value of the NextToken response parameter that was returned last time the DescribeOrgs operation was called.
+        # The pagination token. To retrieve the next page of results, set this parameter to the `NextToken` value that was returned from a previous request.
         self.next_token = next_token
-        # The name of the organization.
+        # The organization name.
         self.org_name = org_name
         # The parent organization ID.
         self.parent_org_id = parent_org_id

@@ -15,6 +15,7 @@ class UpdatePropertyRequest(DaraModel):
         property_key: str = None,
         property_values: List[main_models.UpdatePropertyRequestPropertyValues] = None,
     ):
+        # Channel
         self.business_channel = business_channel
         # The ID of the property that you want to modify. You can call the [ListProperty](https://help.aliyun.com/document_detail/410890.html) operation to query the property ID.
         # 

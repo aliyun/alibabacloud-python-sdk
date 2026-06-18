@@ -19,20 +19,22 @@ class DescribeResourceGroupsRequest(DaraModel):
         resource_group_ids: List[str] = None,
         resource_group_name: str = None,
     ):
+        # A list of Aliyun resource group IDs.
         self.aliyun_resource_group_ids = aliyun_resource_group_ids
+        # The business channel.
         self.business_channel = business_channel
-        # >  This parameter is not publicly available.
+        # > This parameter is not publicly available.
         self.need_contain_resource_group_with_office_site = need_contain_resource_group_with_office_site
-        # The page number. Pages start from page 1.
+        # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries to return per page.
         self.page_size = page_size
-        # >  Set the value to AliyunConsole.
-        # 
-        # *   This parameter is not publicly available on other platforms.
+        # > The cloud platform.
+        # >
+        # > - For Elastic Desktop Service (EDS) Enterprise Edition, this parameter must be set to AliyunConsole.
         self.platform = platform
         self.resource_classification = resource_classification
-        # The IDs of the resource groups that you want to query.
+        # A list of resource group IDs.
         self.resource_group_ids = resource_group_ids
         # The name of the resource group.
         self.resource_group_name = resource_group_name

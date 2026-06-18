@@ -14,9 +14,9 @@ class DescribeOrgsResponseBody(DaraModel):
         orgs: List[main_models.DescribeOrgsResponseBodyOrgs] = None,
         request_id: str = None,
     ):
-        # The token that determines the start point of the query. The return value is the value of the NextToken response parameter that was returned last time the DescribeOrgs operation was called.
+        # The token used to retrieve the next page of results. If this parameter is not empty, more results are available. To retrieve the next page, pass this value in the `NextToken` parameter of a subsequent request.
         self.next_token = next_token
-        # The organizations.
+        # The organization list.
         self.orgs = orgs
         # The request ID.
         self.request_id = request_id
@@ -72,7 +72,7 @@ class DescribeOrgsResponseBodyOrgs(DaraModel):
     ):
         # The organization ID.
         self.org_id = org_id
-        # The name of the organizational unit.
+        # The organization name.
         self.org_name = org_name
         self.org_name_path = org_name_path
         # The parent organization ID.

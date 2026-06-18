@@ -13,6 +13,7 @@ class RemoveMfaDeviceRequest(DaraModel):
     ):
         # The address of the AD office network.
         self.ad_domain = ad_domain
+        # Channel
         self.business_channel = business_channel
         # The serial number of the virtual MFA device. You can call the [DescribeMfaDevices](~~DescribeMfaDevices~~) operation to get this information.
         # 

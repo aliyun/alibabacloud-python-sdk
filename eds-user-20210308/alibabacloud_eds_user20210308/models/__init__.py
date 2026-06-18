@@ -127,6 +127,12 @@ from ._set_user_property_value_response_body import SetUserPropertyValueResponse
 from ._set_user_property_value_response import SetUserPropertyValueResponse
 from ._sync_all_edu_info_response_body import SyncAllEduInfoResponseBody
 from ._sync_all_edu_info_response import SyncAllEduInfoResponse
+from ._transfer_resources_into_group_request import TransferResourcesIntoGroupRequest
+from ._transfer_resources_into_group_response_body import TransferResourcesIntoGroupResponseBody
+from ._transfer_resources_into_group_response import TransferResourcesIntoGroupResponse
+from ._transfer_resources_outof_group_request import TransferResourcesOutofGroupRequest
+from ._transfer_resources_outof_group_response_body import TransferResourcesOutofGroupResponseBody
+from ._transfer_resources_outof_group_response import TransferResourcesOutofGroupResponse
 from ._unlock_mfa_device_request import UnlockMfaDeviceRequest
 from ._unlock_mfa_device_response_body import UnlockMfaDeviceResponseBody
 from ._unlock_mfa_device_response import UnlockMfaDeviceResponse
@@ -199,6 +205,8 @@ from ._remove_users_response_body import RemoveUsersResponseBodyRemoveUsersResul
 from ._remove_users_response_body import RemoveUsersResponseBodyRemoveUsersResult
 from ._reset_user_password_response_body import ResetUserPasswordResponseBodyResetUsersResultFailedUsers
 from ._reset_user_password_response_body import ResetUserPasswordResponseBodyResetUsersResult
+from ._transfer_resources_into_group_request import TransferResourcesIntoGroupRequestResources
+from ._transfer_resources_outof_group_request import TransferResourcesOutofGroupRequestResources
 from ._unlock_users_response_body import UnlockUsersResponseBodyUnlockUsersResultFailedUsers
 from ._unlock_users_response_body import UnlockUsersResponseBodyUnlockUsersResult
 from ._update_property_request import UpdatePropertyRequestPropertyValues
@@ -333,6 +341,12 @@ __all__ = [
     SetUserPropertyValueResponse,
     SyncAllEduInfoResponseBody,
     SyncAllEduInfoResponse,
+    TransferResourcesIntoGroupRequest,
+    TransferResourcesIntoGroupResponseBody,
+    TransferResourcesIntoGroupResponse,
+    TransferResourcesOutofGroupRequest,
+    TransferResourcesOutofGroupResponseBody,
+    TransferResourcesOutofGroupResponse,
     UnlockMfaDeviceRequest,
     UnlockMfaDeviceResponseBody,
     UnlockMfaDeviceResponse,
@@ -405,6 +419,8 @@ __all__ = [
     RemoveUsersResponseBodyRemoveUsersResult,
     ResetUserPasswordResponseBodyResetUsersResultFailedUsers,
     ResetUserPasswordResponseBodyResetUsersResult,
+    TransferResourcesIntoGroupRequestResources,
+    TransferResourcesOutofGroupRequestResources,
     UnlockUsersResponseBodyUnlockUsersResultFailedUsers,
     UnlockUsersResponseBodyUnlockUsersResult,
     UpdatePropertyRequestPropertyValues,

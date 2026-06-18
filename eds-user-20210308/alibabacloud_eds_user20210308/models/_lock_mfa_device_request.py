@@ -13,6 +13,7 @@ class LockMfaDeviceRequest(DaraModel):
     ):
         # The domain of the Active Directory (AD) workspace.
         self.ad_domain = ad_domain
+        # Channel
         self.business_channel = business_channel
         # The serial number of the virtual MFA device. The serial number is unique for each device.
         self.serial_number = serial_number
