@@ -4,19 +4,16 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class CreateSupabaseProjectResponseBody(DaraModel):
+class GetBranchSchemaResponseBody(DaraModel):
     def __init__(
         self,
-        order_id: str = None,
-        project_id: str = None,
         request_id: str = None,
+        sql: str = None,
     ):
-        # The ID of the associated order.
-        self.order_id = order_id
-        # The instance ID of the Supabase project.
-        self.project_id = project_id
         # The request ID.
         self.request_id = request_id
+        # The schema SQL content.
+        self.sql = sql
 
     def validate(self):
         pass
@@ -26,27 +23,21 @@ class CreateSupabaseProjectResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.order_id is not None:
-            result['OrderId'] = self.order_id
-
-        if self.project_id is not None:
-            result['ProjectId'] = self.project_id
-
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+
+        if self.sql is not None:
+            result['Sql'] = self.sql
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('OrderId') is not None:
-            self.order_id = m.get('OrderId')
-
-        if m.get('ProjectId') is not None:
-            self.project_id = m.get('ProjectId')
-
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+
+        if m.get('Sql') is not None:
+            self.sql = m.get('Sql')
 
         return self
 

@@ -56,6 +56,9 @@ from ._create_account_response import CreateAccountResponse
 from ._create_backup_request import CreateBackupRequest
 from ._create_backup_response_body import CreateBackupResponseBody
 from ._create_backup_response import CreateBackupResponse
+from ._create_branch_request import CreateBranchRequest
+from ._create_branch_response_body import CreateBranchResponseBody
+from ._create_branch_response import CreateBranchResponse
 from ._create_collection_request import CreateCollectionRequest
 from ._create_collection_shrink_request import CreateCollectionShrinkRequest
 from ._create_collection_response_body import CreateCollectionResponseBody
@@ -117,6 +120,9 @@ from ._create_secret_response import CreateSecretResponse
 from ._create_service_linked_role_request import CreateServiceLinkedRoleRequest
 from ._create_service_linked_role_response_body import CreateServiceLinkedRoleResponseBody
 from ._create_service_linked_role_response import CreateServiceLinkedRoleResponse
+from ._create_snapshot_request import CreateSnapshotRequest
+from ._create_snapshot_response_body import CreateSnapshotResponseBody
+from ._create_snapshot_response import CreateSnapshotResponse
 from ._create_streaming_data_service_request import CreateStreamingDataServiceRequest
 from ._create_streaming_data_service_response_body import CreateStreamingDataServiceResponseBody
 from ._create_streaming_data_service_response import CreateStreamingDataServiceResponse
@@ -148,6 +154,9 @@ from ._delete_account_response import DeleteAccountResponse
 from ._delete_backup_request import DeleteBackupRequest
 from ._delete_backup_response_body import DeleteBackupResponseBody
 from ._delete_backup_response import DeleteBackupResponse
+from ._delete_branch_request import DeleteBranchRequest
+from ._delete_branch_response_body import DeleteBranchResponseBody
+from ._delete_branch_response import DeleteBranchResponse
 from ._delete_chunks_request import DeleteChunksRequest
 from ._delete_chunks_shrink_request import DeleteChunksShrinkRequest
 from ._delete_chunks_response_body import DeleteChunksResponseBody
@@ -212,6 +221,9 @@ from ._delete_saas_service_response import DeleteSaasServiceResponse
 from ._delete_secret_request import DeleteSecretRequest
 from ._delete_secret_response_body import DeleteSecretResponseBody
 from ._delete_secret_response import DeleteSecretResponse
+from ._delete_snapshot_request import DeleteSnapshotRequest
+from ._delete_snapshot_response_body import DeleteSnapshotResponseBody
+from ._delete_snapshot_response import DeleteSnapshotResponse
 from ._delete_streaming_data_service_request import DeleteStreamingDataServiceRequest
 from ._delete_streaming_data_service_response_body import DeleteStreamingDataServiceResponseBody
 from ._delete_streaming_data_service_response import DeleteStreamingDataServiceResponse
@@ -251,6 +263,9 @@ from ._describe_backup_job_response import DescribeBackupJobResponse
 from ._describe_backup_policy_request import DescribeBackupPolicyRequest
 from ._describe_backup_policy_response_body import DescribeBackupPolicyResponseBody
 from ._describe_backup_policy_response import DescribeBackupPolicyResponse
+from ._describe_branch_request import DescribeBranchRequest
+from ._describe_branch_response_body import DescribeBranchResponseBody
+from ._describe_branch_response import DescribeBranchResponse
 from ._describe_collection_request import DescribeCollectionRequest
 from ._describe_collection_response_body import DescribeCollectionResponseBody
 from ._describe_collection_response import DescribeCollectionResponse
@@ -476,6 +491,9 @@ from ._execute_statement_response import ExecuteStatementResponse
 from ._get_account_request import GetAccountRequest
 from ._get_account_response_body import GetAccountResponseBody
 from ._get_account_response import GetAccountResponse
+from ._get_branch_schema_request import GetBranchSchemaRequest
+from ._get_branch_schema_response_body import GetBranchSchemaResponseBody
+from ._get_branch_schema_response import GetBranchSchemaResponse
 from ._get_graph_ragjob_request import GetGraphRAGJobRequest
 from ._get_graph_ragjob_response_body import GetGraphRAGJobResponseBody
 from ._get_graph_ragjob_response import GetGraphRAGJobResponse
@@ -524,6 +542,9 @@ from ._list_aiservices_response import ListAIServicesResponse
 from ._list_backup_jobs_request import ListBackupJobsRequest
 from ._list_backup_jobs_response_body import ListBackupJobsResponseBody
 from ._list_backup_jobs_response import ListBackupJobsResponse
+from ._list_branches_request import ListBranchesRequest
+from ._list_branches_response_body import ListBranchesResponseBody
+from ._list_branches_response import ListBranchesResponse
 from ._list_chunks_request import ListChunksRequest
 from ._list_chunks_response_body import ListChunksResponseBody
 from ._list_chunks_response import ListChunksResponse
@@ -741,6 +762,12 @@ from ._reset_supabase_project_password_response import ResetSupabaseProjectPassw
 from ._restart_dbinstance_request import RestartDBInstanceRequest
 from ._restart_dbinstance_response_body import RestartDBInstanceResponseBody
 from ._restart_dbinstance_response import RestartDBInstanceResponse
+from ._restart_supabase_project_request import RestartSupabaseProjectRequest
+from ._restart_supabase_project_response_body import RestartSupabaseProjectResponseBody
+from ._restart_supabase_project_response import RestartSupabaseProjectResponse
+from ._restore_snapshot_request import RestoreSnapshotRequest
+from ._restore_snapshot_response_body import RestoreSnapshotResponseBody
+from ._restore_snapshot_response import RestoreSnapshotResponse
 from ._resume_data_redistribute_request import ResumeDataRedistributeRequest
 from ._resume_data_redistribute_response_body import ResumeDataRedistributeResponseBody
 from ._resume_data_redistribute_response import ResumeDataRedistributeResponse
@@ -863,6 +890,7 @@ from ._chat_with_knowledge_base_stream_response_body import ChatWithKnowledgeBas
 from ._chat_with_knowledge_base_stream_response_body import ChatWithKnowledgeBaseStreamResponseBodyMultiCollectionRecallResultMatches
 from ._chat_with_knowledge_base_stream_response_body import ChatWithKnowledgeBaseStreamResponseBodyMultiCollectionRecallResultUsage
 from ._chat_with_knowledge_base_stream_response_body import ChatWithKnowledgeBaseStreamResponseBodyMultiCollectionRecallResult
+from ._create_branch_request import CreateBranchRequestTag
 from ._create_collection_request import CreateCollectionRequestSparseVectorIndexConfig
 from ._create_collection_request import CreateCollectionRequestVectorIndexConfig
 from ._create_dbinstance_request import CreateDBInstanceRequestAINodeSpecInfos
@@ -878,6 +906,8 @@ from ._describe_available_resources_response_body import DescribeAvailableResour
 from ._describe_available_resources_response_body import DescribeAvailableResourcesResponseBodyResourcesSupportedEnginesSupportedInstanceClasses
 from ._describe_available_resources_response_body import DescribeAvailableResourcesResponseBodyResourcesSupportedEngines
 from ._describe_available_resources_response_body import DescribeAvailableResourcesResponseBodyResources
+from ._describe_branch_response_body import DescribeBranchResponseBodyBranchTags
+from ._describe_branch_response_body import DescribeBranchResponseBodyBranch
 from ._describe_create_index_job_response_body import DescribeCreateIndexJobResponseBodyJob
 from ._describe_dbcluster_node_response_body import DescribeDBClusterNodeResponseBodyNodes
 from ._describe_dbcluster_performance_response_body import DescribeDBClusterPerformanceResponseBodyPerformanceKeysSeriesValues
@@ -985,6 +1015,10 @@ from ._list_ainode_pools_response_body import ListAINodePoolsResponseBodyAINodeP
 from ._list_aiservices_response_body import ListAIServicesResponseBodyServices
 from ._list_backup_jobs_response_body import ListBackupJobsResponseBodyItemsBackupJob
 from ._list_backup_jobs_response_body import ListBackupJobsResponseBodyItems
+from ._list_branches_response_body import ListBranchesResponseBodyBranchesBranchTagsTag
+from ._list_branches_response_body import ListBranchesResponseBodyBranchesBranchTags
+from ._list_branches_response_body import ListBranchesResponseBodyBranchesBranch
+from ._list_branches_response_body import ListBranchesResponseBodyBranches
 from ._list_chunks_response_body import ListChunksResponseBodyChunksChunksVector
 from ._list_chunks_response_body import ListChunksResponseBodyChunksChunks
 from ._list_chunks_response_body import ListChunksResponseBodyChunks
@@ -1132,6 +1166,9 @@ __all__ = [
     CreateBackupRequest,
     CreateBackupResponseBody,
     CreateBackupResponse,
+    CreateBranchRequest,
+    CreateBranchResponseBody,
+    CreateBranchResponse,
     CreateCollectionRequest,
     CreateCollectionShrinkRequest,
     CreateCollectionResponseBody,
@@ -1193,6 +1230,9 @@ __all__ = [
     CreateServiceLinkedRoleRequest,
     CreateServiceLinkedRoleResponseBody,
     CreateServiceLinkedRoleResponse,
+    CreateSnapshotRequest,
+    CreateSnapshotResponseBody,
+    CreateSnapshotResponse,
     CreateStreamingDataServiceRequest,
     CreateStreamingDataServiceResponseBody,
     CreateStreamingDataServiceResponse,
@@ -1224,6 +1264,9 @@ __all__ = [
     DeleteBackupRequest,
     DeleteBackupResponseBody,
     DeleteBackupResponse,
+    DeleteBranchRequest,
+    DeleteBranchResponseBody,
+    DeleteBranchResponse,
     DeleteChunksRequest,
     DeleteChunksShrinkRequest,
     DeleteChunksResponseBody,
@@ -1288,6 +1331,9 @@ __all__ = [
     DeleteSecretRequest,
     DeleteSecretResponseBody,
     DeleteSecretResponse,
+    DeleteSnapshotRequest,
+    DeleteSnapshotResponseBody,
+    DeleteSnapshotResponse,
     DeleteStreamingDataServiceRequest,
     DeleteStreamingDataServiceResponseBody,
     DeleteStreamingDataServiceResponse,
@@ -1327,6 +1373,9 @@ __all__ = [
     DescribeBackupPolicyRequest,
     DescribeBackupPolicyResponseBody,
     DescribeBackupPolicyResponse,
+    DescribeBranchRequest,
+    DescribeBranchResponseBody,
+    DescribeBranchResponse,
     DescribeCollectionRequest,
     DescribeCollectionResponseBody,
     DescribeCollectionResponse,
@@ -1552,6 +1601,9 @@ __all__ = [
     GetAccountRequest,
     GetAccountResponseBody,
     GetAccountResponse,
+    GetBranchSchemaRequest,
+    GetBranchSchemaResponseBody,
+    GetBranchSchemaResponse,
     GetGraphRAGJobRequest,
     GetGraphRAGJobResponseBody,
     GetGraphRAGJobResponse,
@@ -1600,6 +1652,9 @@ __all__ = [
     ListBackupJobsRequest,
     ListBackupJobsResponseBody,
     ListBackupJobsResponse,
+    ListBranchesRequest,
+    ListBranchesResponseBody,
+    ListBranchesResponse,
     ListChunksRequest,
     ListChunksResponseBody,
     ListChunksResponse,
@@ -1817,6 +1872,12 @@ __all__ = [
     RestartDBInstanceRequest,
     RestartDBInstanceResponseBody,
     RestartDBInstanceResponse,
+    RestartSupabaseProjectRequest,
+    RestartSupabaseProjectResponseBody,
+    RestartSupabaseProjectResponse,
+    RestoreSnapshotRequest,
+    RestoreSnapshotResponseBody,
+    RestoreSnapshotResponse,
     ResumeDataRedistributeRequest,
     ResumeDataRedistributeResponseBody,
     ResumeDataRedistributeResponse,
@@ -1939,6 +2000,7 @@ __all__ = [
     ChatWithKnowledgeBaseStreamResponseBodyMultiCollectionRecallResultMatches,
     ChatWithKnowledgeBaseStreamResponseBodyMultiCollectionRecallResultUsage,
     ChatWithKnowledgeBaseStreamResponseBodyMultiCollectionRecallResult,
+    CreateBranchRequestTag,
     CreateCollectionRequestSparseVectorIndexConfig,
     CreateCollectionRequestVectorIndexConfig,
     CreateDBInstanceRequestAINodeSpecInfos,
@@ -1954,6 +2016,8 @@ __all__ = [
     DescribeAvailableResourcesResponseBodyResourcesSupportedEnginesSupportedInstanceClasses,
     DescribeAvailableResourcesResponseBodyResourcesSupportedEngines,
     DescribeAvailableResourcesResponseBodyResources,
+    DescribeBranchResponseBodyBranchTags,
+    DescribeBranchResponseBodyBranch,
     DescribeCreateIndexJobResponseBodyJob,
     DescribeDBClusterNodeResponseBodyNodes,
     DescribeDBClusterPerformanceResponseBodyPerformanceKeysSeriesValues,
@@ -2061,6 +2125,10 @@ __all__ = [
     ListAIServicesResponseBodyServices,
     ListBackupJobsResponseBodyItemsBackupJob,
     ListBackupJobsResponseBodyItems,
+    ListBranchesResponseBodyBranchesBranchTagsTag,
+    ListBranchesResponseBodyBranchesBranchTags,
+    ListBranchesResponseBodyBranchesBranch,
+    ListBranchesResponseBodyBranches,
     ListChunksResponseBodyChunksChunksVector,
     ListChunksResponseBodyChunksChunks,
     ListChunksResponseBodyChunks,

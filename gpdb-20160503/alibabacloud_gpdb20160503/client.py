@@ -1767,6 +1767,120 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_backup_with_options_async(request, runtime)
 
+    def create_branch_with_options(
+        self,
+        request: main_models.CreateBranchRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateBranchResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.branch_name):
+            query['BranchName'] = request.branch_name
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.expires_at):
+            query['ExpiresAt'] = request.expires_at
+        if not DaraCore.is_null(request.init_source):
+            query['InitSource'] = request.init_source
+        if not DaraCore.is_null(request.parent_branch_id):
+            query['ParentBranchId'] = request.parent_branch_id
+        if not DaraCore.is_null(request.parent_lsn):
+            query['ParentLsn'] = request.parent_lsn
+        if not DaraCore.is_null(request.parent_timestamp):
+            query['ParentTimestamp'] = request.parent_timestamp
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.protected):
+            query['Protected'] = request.protected
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateBranch',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateBranchResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_branch_with_options_async(
+        self,
+        request: main_models.CreateBranchRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateBranchResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.branch_name):
+            query['BranchName'] = request.branch_name
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.expires_at):
+            query['ExpiresAt'] = request.expires_at
+        if not DaraCore.is_null(request.init_source):
+            query['InitSource'] = request.init_source
+        if not DaraCore.is_null(request.parent_branch_id):
+            query['ParentBranchId'] = request.parent_branch_id
+        if not DaraCore.is_null(request.parent_lsn):
+            query['ParentLsn'] = request.parent_lsn
+        if not DaraCore.is_null(request.parent_timestamp):
+            query['ParentTimestamp'] = request.parent_timestamp
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.protected):
+            query['Protected'] = request.protected
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateBranch',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateBranchResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_branch(
+        self,
+        request: main_models.CreateBranchRequest,
+    ) -> main_models.CreateBranchResponse:
+        runtime = RuntimeOptions()
+        return self.create_branch_with_options(request, runtime)
+
+    async def create_branch_async(
+        self,
+        request: main_models.CreateBranchRequest,
+    ) -> main_models.CreateBranchResponse:
+        runtime = RuntimeOptions()
+        return await self.create_branch_with_options_async(request, runtime)
+
     def create_collection_with_options(
         self,
         tmp_req: main_models.CreateCollectionRequest,
@@ -3917,6 +4031,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_service_linked_role_with_options_async(request, runtime)
 
+    def create_snapshot_with_options(
+        self,
+        request: main_models.CreateSnapshotRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateSnapshotResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.lsn):
+            query['Lsn'] = request.lsn
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.snapshot_timestamp):
+            query['SnapshotTimestamp'] = request.snapshot_timestamp
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateSnapshot',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateSnapshotResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_snapshot_with_options_async(
+        self,
+        request: main_models.CreateSnapshotRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateSnapshotResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.lsn):
+            query['Lsn'] = request.lsn
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.snapshot_timestamp):
+            query['SnapshotTimestamp'] = request.snapshot_timestamp
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateSnapshot',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateSnapshotResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_snapshot(
+        self,
+        request: main_models.CreateSnapshotRequest,
+    ) -> main_models.CreateSnapshotResponse:
+        runtime = RuntimeOptions()
+        return self.create_snapshot_with_options(request, runtime)
+
+    async def create_snapshot_async(
+        self,
+        request: main_models.CreateSnapshotRequest,
+    ) -> main_models.CreateSnapshotResponse:
+        runtime = RuntimeOptions()
+        return await self.create_snapshot_with_options_async(request, runtime)
+
     def create_streaming_data_service_with_options(
         self,
         request: main_models.CreateStreamingDataServiceRequest,
@@ -4916,6 +5116,80 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteBackupResponse:
         runtime = RuntimeOptions()
         return await self.delete_backup_with_options_async(request, runtime)
+
+    def delete_branch_with_options(
+        self,
+        request: main_models.DeleteBranchRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteBranchResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.branch_id):
+            query['BranchId'] = request.branch_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteBranch',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteBranchResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_branch_with_options_async(
+        self,
+        request: main_models.DeleteBranchRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteBranchResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.branch_id):
+            query['BranchId'] = request.branch_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteBranch',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteBranchResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_branch(
+        self,
+        request: main_models.DeleteBranchRequest,
+    ) -> main_models.DeleteBranchResponse:
+        runtime = RuntimeOptions()
+        return self.delete_branch_with_options(request, runtime)
+
+    async def delete_branch_async(
+        self,
+        request: main_models.DeleteBranchRequest,
+    ) -> main_models.DeleteBranchResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_branch_with_options_async(request, runtime)
 
     def delete_chunks_with_options(
         self,
@@ -6675,6 +6949,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.delete_secret_with_options_async(request, runtime)
 
+    def delete_snapshot_with_options(
+        self,
+        request: main_models.DeleteSnapshotRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteSnapshotResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.lsn):
+            query['Lsn'] = request.lsn
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteSnapshot',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteSnapshotResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_snapshot_with_options_async(
+        self,
+        request: main_models.DeleteSnapshotRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteSnapshotResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.lsn):
+            query['Lsn'] = request.lsn
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteSnapshot',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteSnapshotResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_snapshot(
+        self,
+        request: main_models.DeleteSnapshotRequest,
+    ) -> main_models.DeleteSnapshotResponse:
+        runtime = RuntimeOptions()
+        return self.delete_snapshot_with_options(request, runtime)
+
+    async def delete_snapshot_async(
+        self,
+        request: main_models.DeleteSnapshotRequest,
+    ) -> main_models.DeleteSnapshotResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_snapshot_with_options_async(request, runtime)
+
     def delete_streaming_data_service_with_options(
         self,
         request: main_models.DeleteStreamingDataServiceRequest,
@@ -7712,6 +8064,80 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeBackupPolicyResponse:
         runtime = RuntimeOptions()
         return await self.describe_backup_policy_with_options_async(request, runtime)
+
+    def describe_branch_with_options(
+        self,
+        request: main_models.DescribeBranchRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeBranchResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.branch_id):
+            query['BranchId'] = request.branch_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeBranch',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeBranchResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_branch_with_options_async(
+        self,
+        request: main_models.DescribeBranchRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeBranchResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.branch_id):
+            query['BranchId'] = request.branch_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeBranch',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeBranchResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_branch(
+        self,
+        request: main_models.DescribeBranchRequest,
+    ) -> main_models.DescribeBranchResponse:
+        runtime = RuntimeOptions()
+        return self.describe_branch_with_options(request, runtime)
+
+    async def describe_branch_async(
+        self,
+        request: main_models.DescribeBranchRequest,
+    ) -> main_models.DescribeBranchResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_branch_with_options_async(request, runtime)
 
     def describe_collection_with_options(
         self,
@@ -14173,6 +14599,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_account_with_options_async(request, runtime)
 
+    def get_branch_schema_with_options(
+        self,
+        request: main_models.GetBranchSchemaRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetBranchSchemaResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.branch_id):
+            query['BranchId'] = request.branch_id
+        if not DaraCore.is_null(request.dbname):
+            query['DBName'] = request.dbname
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetBranchSchema',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetBranchSchemaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_branch_schema_with_options_async(
+        self,
+        request: main_models.GetBranchSchemaRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetBranchSchemaResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.branch_id):
+            query['BranchId'] = request.branch_id
+        if not DaraCore.is_null(request.dbname):
+            query['DBName'] = request.dbname
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetBranchSchema',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetBranchSchemaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_branch_schema(
+        self,
+        request: main_models.GetBranchSchemaRequest,
+    ) -> main_models.GetBranchSchemaResponse:
+        runtime = RuntimeOptions()
+        return self.get_branch_schema_with_options(request, runtime)
+
+    async def get_branch_schema_async(
+        self,
+        request: main_models.GetBranchSchemaRequest,
+    ) -> main_models.GetBranchSchemaResponse:
+        runtime = RuntimeOptions()
+        return await self.get_branch_schema_with_options_async(request, runtime)
+
     def get_graph_ragjob_with_options(
         self,
         request: main_models.GetGraphRAGJobRequest,
@@ -15516,6 +16024,108 @@ class Client(OpenApiClient):
     ) -> main_models.ListBackupJobsResponse:
         runtime = RuntimeOptions()
         return await self.list_backup_jobs_with_options_async(request, runtime)
+
+    def list_branches_with_options(
+        self,
+        request: main_models.ListBranchesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListBranchesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.parent_branch_id):
+            query['ParentBranchId'] = request.parent_branch_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.search):
+            query['Search'] = request.search
+        if not DaraCore.is_null(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not DaraCore.is_null(request.sort_order):
+            query['SortOrder'] = request.sort_order
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListBranches',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListBranchesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_branches_with_options_async(
+        self,
+        request: main_models.ListBranchesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListBranchesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.parent_branch_id):
+            query['ParentBranchId'] = request.parent_branch_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.search):
+            query['Search'] = request.search
+        if not DaraCore.is_null(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not DaraCore.is_null(request.sort_order):
+            query['SortOrder'] = request.sort_order
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListBranches',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListBranchesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_branches(
+        self,
+        request: main_models.ListBranchesRequest,
+    ) -> main_models.ListBranchesResponse:
+        runtime = RuntimeOptions()
+        return self.list_branches_with_options(request, runtime)
+
+    async def list_branches_async(
+        self,
+        request: main_models.ListBranchesRequest,
+    ) -> main_models.ListBranchesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_branches_with_options_async(request, runtime)
 
     def list_chunks_with_options(
         self,
@@ -22018,6 +22628,174 @@ class Client(OpenApiClient):
     ) -> main_models.RestartDBInstanceResponse:
         runtime = RuntimeOptions()
         return await self.restart_dbinstance_with_options_async(request, runtime)
+
+    def restart_supabase_project_with_options(
+        self,
+        request: main_models.RestartSupabaseProjectRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RestartSupabaseProjectResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RestartSupabaseProject',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RestartSupabaseProjectResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def restart_supabase_project_with_options_async(
+        self,
+        request: main_models.RestartSupabaseProjectRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RestartSupabaseProjectResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RestartSupabaseProject',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RestartSupabaseProjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def restart_supabase_project(
+        self,
+        request: main_models.RestartSupabaseProjectRequest,
+    ) -> main_models.RestartSupabaseProjectResponse:
+        runtime = RuntimeOptions()
+        return self.restart_supabase_project_with_options(request, runtime)
+
+    async def restart_supabase_project_async(
+        self,
+        request: main_models.RestartSupabaseProjectRequest,
+    ) -> main_models.RestartSupabaseProjectResponse:
+        runtime = RuntimeOptions()
+        return await self.restart_supabase_project_with_options_async(request, runtime)
+
+    def restore_snapshot_with_options(
+        self,
+        request: main_models.RestoreSnapshotRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RestoreSnapshotResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.finalize_restore):
+            query['FinalizeRestore'] = request.finalize_restore
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.restored_branch_name):
+            query['RestoredBranchName'] = request.restored_branch_name
+        if not DaraCore.is_null(request.restored_lsn):
+            query['RestoredLsn'] = request.restored_lsn
+        if not DaraCore.is_null(request.target_branch_id):
+            query['TargetBranchId'] = request.target_branch_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RestoreSnapshot',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RestoreSnapshotResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def restore_snapshot_with_options_async(
+        self,
+        request: main_models.RestoreSnapshotRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RestoreSnapshotResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.finalize_restore):
+            query['FinalizeRestore'] = request.finalize_restore
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.restored_branch_name):
+            query['RestoredBranchName'] = request.restored_branch_name
+        if not DaraCore.is_null(request.restored_lsn):
+            query['RestoredLsn'] = request.restored_lsn
+        if not DaraCore.is_null(request.target_branch_id):
+            query['TargetBranchId'] = request.target_branch_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RestoreSnapshot',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RestoreSnapshotResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def restore_snapshot(
+        self,
+        request: main_models.RestoreSnapshotRequest,
+    ) -> main_models.RestoreSnapshotResponse:
+        runtime = RuntimeOptions()
+        return self.restore_snapshot_with_options(request, runtime)
+
+    async def restore_snapshot_async(
+        self,
+        request: main_models.RestoreSnapshotRequest,
+    ) -> main_models.RestoreSnapshotResponse:
+        runtime = RuntimeOptions()
+        return await self.restore_snapshot_with_options_async(request, runtime)
 
     def resume_data_redistribute_with_options(
         self,

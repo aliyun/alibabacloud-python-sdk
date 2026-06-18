@@ -4,16 +4,16 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class CreateSupabaseProjectResponseBody(DaraModel):
+class CreateBranchResponseBody(DaraModel):
     def __init__(
         self,
-        order_id: str = None,
+        branch_id: str = None,
         project_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the associated order.
-        self.order_id = order_id
-        # The instance ID of the Supabase project.
+        # The branch ID. This ID uniquely identifies a Supabase branch.
+        self.branch_id = branch_id
+        # The Supabase project ID that corresponds to the primary branch.
         self.project_id = project_id
         # The request ID.
         self.request_id = request_id
@@ -26,8 +26,8 @@ class CreateSupabaseProjectResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.order_id is not None:
-            result['OrderId'] = self.order_id
+        if self.branch_id is not None:
+            result['BranchId'] = self.branch_id
 
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
@@ -39,8 +39,8 @@ class CreateSupabaseProjectResponseBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('OrderId') is not None:
-            self.order_id = m.get('OrderId')
+        if m.get('BranchId') is not None:
+            self.branch_id = m.get('BranchId')
 
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')
