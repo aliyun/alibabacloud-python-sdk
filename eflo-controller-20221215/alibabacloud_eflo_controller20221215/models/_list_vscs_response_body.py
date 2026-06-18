@@ -16,17 +16,17 @@ class ListVscsResponseBody(DaraModel):
         total_count: int = None,
         vscs: List[main_models.ListVscsResponseBodyVscs] = None,
     ):
-        # No response is returned. The TotalCount parameter is used.
+        # This parameter is not returned. Use the \\`TotalCount\\` parameter instead.
         self.max_results = max_results
-        # The token. It can be used in the next request to retrieve a new page of results. If this parameter is empty, no next page exists.
+        # The token to retrieve the next page of results. If this parameter is empty, all results have been returned.
         # 
         # This parameter is required.
         self.next_token = next_token
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The total number of VSCs.
+        # The total number of entries that match the query conditions.
         self.total_count = total_count
-        # The VSCs.
+        # A list of VSCs.
         self.vscs = vscs
 
     def validate(self):
@@ -94,23 +94,17 @@ class ListVscsResponseBodyVscs(DaraModel):
     ):
         # The ID of the Lingjun node.
         self.node_id = node_id
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The VSC status.
-        # 
-        # Valid values:
-        # 
-        # *   Creating
-        # *   Normal
-        # *   Deleting
+        # The status of the VSC.
         self.status = status
         # The tags.
         self.tags = tags
-        # The VSC ID.
+        # The ID of the VSC.
         self.vsc_id = vsc_id
         # The custom name of the VSC.
         self.vsc_name = vsc_name
-        # The VSC type. Valid values: primary and standard.
+        # The type of the VSC. Valid values: \\`primary\\` and \\`standard\\`.
         self.vsc_type = vsc_type
 
     def validate(self):

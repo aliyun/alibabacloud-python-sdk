@@ -11,8 +11,11 @@ class ChangeNodeGroupShrinkRequest(DaraModel):
         nodes_shrink: str = None,
         target_node_group_id: str = None,
     ):
+        # Specifies whether to skip failed nodes. The default value is False.
         self.ignore_failed_node_tasks = ignore_failed_node_tasks
+        # The node information.
         self.nodes_shrink = nodes_shrink
+        # The ID of the target node group.
         self.target_node_group_id = target_node_group_id
 
     def validate(self):

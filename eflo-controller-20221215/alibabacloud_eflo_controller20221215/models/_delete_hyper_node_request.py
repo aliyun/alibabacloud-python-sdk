@@ -9,6 +9,8 @@ class DeleteHyperNodeRequest(DaraModel):
         self,
         hyper_node_id: str = None,
     ):
+        # The hyper node ID.
+        # 
         # This parameter is required.
         self.hyper_node_id = hyper_node_id
 

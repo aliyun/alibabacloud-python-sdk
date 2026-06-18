@@ -10,8 +10,9 @@ class ReportNodesStatusResponseBody(DaraModel):
         error_message: str = None,
         request_id: str = None,
     ):
-        # Error Message
+        # The error message.
         self.error_message = error_message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

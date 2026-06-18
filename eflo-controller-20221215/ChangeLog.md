@@ -1,3 +1,8 @@
+2026-06-18 Version: 3.0.7
+- Update API DescribeNode: add response parameters Body.SavingsPlanId.
+- Update API ExtendCluster: add request parameters NodeGroups.$.SavingsPlanId.
+
+
 2026-03-31 Version: 3.0.6
 - Update API CreateCluster: add request parameters NodeGroups.$.RamRoleName.
 - Update API CreateNodeGroup: add request parameters NodeGroup.RamRoleName.

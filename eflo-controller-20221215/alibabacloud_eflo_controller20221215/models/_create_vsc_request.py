@@ -17,19 +17,19 @@ class CreateVscRequest(DaraModel):
         vsc_name: str = None,
         vsc_type: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request.
+        # A client token to ensure the idempotency of the request.
         self.client_token = client_token
-        # The node ID.
+        # The ID of the node.
         # 
         # This parameter is required.
         self.node_id = node_id
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The resource tags.
+        # The tags of the resource.
         self.tag = tag
-        # The custom name of the VSC, which is unique on a compute node.
+        # The custom name of the VSC. The name must be unique on a single compute node.
         self.vsc_name = vsc_name
-        # The VSC type. Valid values: primary and standard. Default value: primary.
+        # The type of the VSC. Valid values: primary and standard. The default value is primary.
         self.vsc_type = vsc_type
 
     def validate(self):
@@ -96,9 +96,9 @@ class CreateVscRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The resource tag key.
+        # The tag key.
         self.key = key
-        # The resource tag value.
+        # The tag value.
         self.value = value
 
     def validate(self):

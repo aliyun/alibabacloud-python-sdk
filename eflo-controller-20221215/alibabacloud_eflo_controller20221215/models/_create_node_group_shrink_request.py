@@ -11,15 +11,15 @@ class CreateNodeGroupShrinkRequest(DaraModel):
         node_group_shrink: str = None,
         node_unit_shrink: str = None,
     ):
-        # Cluster ID
+        # The ID of the cluster to which the node group belongs.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # Node ID.
+        # The configurations of the node group.
         # 
         # This parameter is required.
         self.node_group_shrink = node_group_shrink
-        # Node information
+        # The configuration of the node unit.
         self.node_unit_shrink = node_unit_shrink
 
     def validate(self):

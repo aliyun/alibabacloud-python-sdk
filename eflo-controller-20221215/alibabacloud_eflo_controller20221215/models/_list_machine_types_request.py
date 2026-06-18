@@ -9,7 +9,7 @@ class ListMachineTypesRequest(DaraModel):
         self,
         name: str = None,
     ):
-        # The name of the instance type.
+        # The name of the machine type.
         self.name = name
 
     def validate(self):

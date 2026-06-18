@@ -18,12 +18,25 @@ class ListFreeHyperNodesRequest(DaraModel):
         status: List[str] = None,
         tags: List[main_models.ListFreeHyperNodesRequestTags] = None,
     ):
+        # The cluster ID.
         self.hpn_zone = hpn_zone
+        # The machine type.
         self.machine_type = machine_type
+        # The number of entries to return on each page. The maximum value is 100.
+        # 
+        # Default value:
+        # 
+        # • If you do not set this parameter or you set a value less than 20, the default value is 20.
+        # 
+        # • If you set a value greater than 100, the default value is 100.
         self.max_results = max_results
+        # The token to retrieve the next page of results. Set this parameter to the NextToken value from the previous response.
         self.next_token = next_token
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # A list of statuses of unused nodes to return.
         self.status = status
+        # The list of tags.
         self.tags = tags
 
     def validate(self):
@@ -96,7 +109,9 @@ class ListFreeHyperNodesRequestTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):

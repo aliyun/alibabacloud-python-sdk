@@ -13,9 +13,9 @@ class DescribeInvocationsResponseBody(DaraModel):
         invocations: main_models.DescribeInvocationsResponseBodyInvocations = None,
         request_id: str = None,
     ):
-        # The command execution record.
+        # The object that contains the script execution records.
         self.invocations = invocations
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -51,7 +51,7 @@ class DescribeInvocationsResponseBodyInvocations(DaraModel):
         self,
         invocation: List[main_models.DescribeInvocationsResponseBodyInvocationsInvocation] = None,
     ):
-        # The file sending records.
+        # The command execution records.
         self.invocation = invocation
 
     def validate(self):
@@ -100,92 +100,105 @@ class DescribeInvocationsResponseBodyInvocationsInvocation(DaraModel):
         username: str = None,
         working_dir: str = None,
     ):
-        # The executed command.
+        # The content of the command.
         # 
-        # *   If ContentEncoding is set to PlainText in the request, the original command content is returned.
-        # *   If ContentEncoding is set to Base64 in the request, the Base64-encoded command content is returned.
+        # - If \\`ContentEncoding\\` is set to \\`PlainText\\`, the original script content is returned.
+        # 
+        # - If \\`ContentEncoding\\` is set to \\`Base64\\`, the Base64-encoded script content is returned.
         self.command_content = command_content
-        # The command description.
+        # The description of the command.
         self.command_description = command_description
-        # The command name.
+        # The name of the command.
         self.command_name = command_name
-        # The time when the command task was created.
+        # The time when the task was created.
         self.creation_time = creation_time
-        # The schedule on which the command was run.
+        # The cron expression for the scheduled command.
         self.frequency = frequency
-        # The overall execution state of the command task. The value of this parameter depends on the execution states of the command task on all the involved instances. Valid values:
+        # The overall execution status of the command. This status is determined by the execution status on all involved instances. Valid values:
         # 
-        # *   Pending: The command was being verified or sent. If the execution state on at least one instance is Pending, the overall execution state is Pending.
+        # - Pending: The system is verifying or sending the command. If the command is in the Pending state on at least one instance, the overall status is Pending.
         # 
-        # *   Scheduled: The command that is set to run on a schedule is sent and waiting to be run. If the execution state on at least one instance is Scheduled, the overall execution state is Scheduled.
+        # - Scheduled: The scheduled command is sent and is waiting to run. If the command is in the Scheduled state on at least one instance, the overall status is Scheduled.
         # 
-        # *   Running: The command is being run on the instance. When the execution state on at least one instance is Running, the overall execution state is Running.
+        # - Running: The command is running on the instances. If the command is in the Running state on at least one instance, the overall status is Running.
         # 
-        # *   Success: When the execution state on at least one instance is Success and the execution state on the other instances is Stopped or Success, the overall execution state is Success.
+        # - Success: The command was successfully executed. The command status on each instance is Stopped or Success, and the status on at least one instance is Success.
         # 
-        #     *   One-time task: The execution is complete, and the exit code is 0.
-        #     *   Scheduled task: The last execution was complete, the exit code was 0, and the specified period ended.
+        #   - For one-time tasks: The command execution is complete and the exit code is 0.
         # 
-        # *   Failed: When the execution state on all instances is Stopped or Failed, the overall execution state is Failed. When the execution state on an instance is one of the following values, Failed is returned as the overall execution state:
+        #   - For scheduled tasks: The last execution was successful with an exit code of 0, and all scheduled executions are complete.
         # 
-        #     *   Invalid: The command is invalid.
-        #     *   Aborted: The command failed to be sent.
-        #     *   Failed: The execution was complete, but the exit code was not 0.
-        #     *   Timeout: The execution timed out.
-        #     *   Error: An error occurred while the command was being run.
+        # - Failed: The command execution failed. The command status on each instance is Stopped or Failed. The overall status is Failed if the command status on one or more instances is one of the following:
         # 
-        # *   Stopping: The command task is being stopped. When the execution state on at least one instance is Stopping, the overall execution state is Stopping.
+        #   - The command failed to be verified (Invalid).
         # 
-        # *   Stopped: The task was stopped. When the execution state on all instances is Stopped, the overall execution state is Stopped. When the execution state on an instance is one of the following values, Stopped is returned as the overall execution state:
+        #   - The command failed to be sent (Aborted).
         # 
-        #     *   Cancelled: The task was canceled.
-        #     *   Terminated: The task was terminated.
+        #   - The command execution is complete, but the exit code is not 0 (Failed).
         # 
-        # *   PartialFailed: The execution was complete on some instances and failed on other instances. When the execution state is Success on some instances and is Failed or Stopped on the other instances, the overall execution state is PartialFailed.
+        #   - The command timed out (Timeout).
         # 
-        # >  The value of the `InvokeStatus` response parameter is similar to the value of InvocationStatus. We recommend that you ignore InvokeStatus and check the value of InvocationStatus.
+        #   - An error occurred during the command execution (Error).
+        # 
+        # - Stopping: The task is being stopped. If the command is in the Stopping state on at least one instance, the overall status is Stopping.
+        # 
+        # - Stopped: The task was stopped. The overall status is Stopped if the command is in the Stopped state on all instances. The overall status is Stopped if the command status on the instances is one of the following:
+        # 
+        #   - The task was canceled (Cancelled).
+        # 
+        #   - The task was terminated (Terminated).
+        # 
+        # - PartialFailed: The command was successfully executed on some instances but failed on others. The overall status is PartialFailed if the command status on the instances is Success, Failed, or Stopped.
+        # 
+        # > The `InvokeStatus` parameter has a similar meaning. However, check the value of this parameter.
         self.invocation_status = invocation_status
-        # The execution ID.
+        # The ID of the command execution.
         self.invoke_id = invoke_id
         # The command execution records.
         self.invoke_nodes = invoke_nodes
-        # The overall execution status of the command task. The value of this parameter depends on the execution states of the command task on all involved instances. Valid values:
+        # The overall execution status of the command. This status is determined by the execution status on one or more instances. Valid values:
         # 
-        # *   Running:
+        # - Running:
         # 
-        #     *   Scheduled task: Before you stop the scheduled execution of the command, the overall execution state is always Running.
-        #     *   One-time task: If the command is being run on instances, the overall execution state is Running.
+        #   - Scheduled execution: The status is always Running before you manually stop the scheduled command.
         # 
-        # *   Finished:
+        #   - One-time execution: The overall status is Running if a command process is in progress.
         # 
-        #     *   Scheduled task: The overall execution state can never be Finished.
-        #     *   One-time task: The execution is complete on all instances, or the execution is stopped on some instances and is complete on the other instances.
+        # - Finished:
         # 
-        # *   Failed:
+        #   - Scheduled execution: A command process cannot be in the Finished state.
         # 
-        #     *   Scheduled task: The overall execution state can never be Failed.
-        #     *   One-time task: The execution failed on all instances.
+        #   - One-time execution: The execution is complete on all instances. Alternatively, the command process is manually stopped on some instances and the execution is complete on the other instances.
         # 
-        # *   Stopped: The task is stopped.
+        # - Failed:
         # 
-        # *   Stopping: The task is being stopped.
+        #   - Scheduled execution: A command process cannot be in the Failed state.
         # 
-        # *   PartialFailed: The task fails on some instances. If you specify both this parameter and `InstanceId`, this parameter does not take effect.
+        #   - One-time execution: The execution failed on all instances.
+        # 
+        # - Stopped: The command is stopped.
+        # 
+        # - Stopping: The command is being stopped.
+        # 
+        # - PartialFailed: The execution failed on some instances. This value is not returned if you specify the `NodeId` parameter.
         self.invoke_status = invoke_status
         # The custom parameters in the command.
         self.parameters = parameters
         # The execution mode of the command. Valid values:
         # 
-        # *   Once: The command is run immediately.
-        # *   Period: The command is run on a schedule.
-        # *   NextRebootOnly: The command is run the next time the instances start.
-        # *   EveryReboot: runs the command every time the instances start.
+        # - Once: The command is immediately executed.
+        # 
+        # - Period: The command is executed on a schedule.
+        # 
+        # - NextRebootOnly: The command is automatically executed the next time the instance starts.
+        # 
+        # - EveryReboot: The command is automatically executed every time the instance starts.
         self.repeat_mode = repeat_mode
         # The timeout period for the command execution. Unit: seconds.
         self.timeout = timeout
-        # The username that is used to run the command.
+        # The name of the user who runs the command.
         self.username = username
-        # The working directory of the command on the instance.
+        # The directory where the command is run on the instance.
         self.working_dir = working_dir
 
     def validate(self):
@@ -293,7 +306,7 @@ class DescribeInvocationsResponseBodyInvocationsInvocationInvokeNodes(DaraModel)
         self,
         invoke_node: List[main_models.DescribeInvocationsResponseBodyInvocationsInvocationInvokeNodesInvokeNode] = None,
     ):
-        # The command execution records of the node.
+        # The command execution records on the nodes.
         self.invoke_node = invoke_node
 
     def validate(self):
@@ -343,121 +356,161 @@ class DescribeInvocationsResponseBodyInvocationsInvocationInvokeNodesInvokeNode(
         timed: str = None,
         update_time: str = None,
     ):
-        # The start time of the execution.
+        # The start time of the command execution.
         self.creation_time = creation_time
-        # The size of the Output text that was truncated and discarded because the Output value exceeded 24 KB in size.
+        # The number of characters that are truncated and discarded because the \\`Output\\` value exceeds 24 KB in size.
         self.dropped = dropped
-        # The error code returned when the file failed to be sent to the instance. Valid values:
+        # The error code for a file sending failure. Valid values:
         # 
-        # *   Null: The file is sent to the instance.
-        # *   NodeNotExists: The specified instance does not exist or has been released.
-        # *   NodeReleased: The instance was released while the file was being sent.
-        # *   NodeNotRunning: The instance was not running while the file sending task was being created.
-        # *   AccountNotExists: The specified account does not exist.
-        # *   ClientNotRunning: Cloud Assistant Agent is not running.
-        # *   ClientNotResponse: Cloud Assistant Agent does not respond.
-        # *   ClientIsUpgrading: Cloud Assistant Agent is being upgraded.
-        # *   ClientNeedUpgrade: Cloud Assistant Agent needs to be upgraded.
-        # *   DeliveryTimeout: The file sending task timed out.
-        # *   FileCreateFail: The file failed to be created.
-        # *   FileAlreadyExists: A file with the same name exists in the specified directory.
-        # *   FileContentInvalid: The file content is invalid.
-        # *   FileNameInvalid: The file name is invalid.
-        # *   FilePathInvalid: The specified directory is invalid.
-        # *   FileAuthorityInvalid: The specified permissions on the file are invalid.
-        # *   UserGroupNotExists: The specified user group does not exist.
+        # - Empty: The file was sent as expected.
+        # 
+        # - NodeNotExists: The specified instance does not exist or has been released.
+        # 
+        # - NodeReleased: The instance was released while the file was being sent.
+        # 
+        # - NodeNotRunning: The instance was not in the Running state when the file sending task was created.
+        # 
+        # - AccountNotExists: The specified account does not exist.
+        # 
+        # - ClientNotRunning: Cloud Assistant Agent is not running.
+        # 
+        # - ClientNotResponse: Cloud Assistant Agent is not responding.
+        # 
+        # - ClientIsUpgrading: Cloud Assistant Agent is being upgraded.
+        # 
+        # - ClientNeedUpgrade: Cloud Assistant Agent needs to be upgraded.
+        # 
+        # - DeliveryTimeout: The file failed to be sent due to a timeout.
+        # 
+        # - FileCreateFail: The file failed to be created.
+        # 
+        # - FileAlreadyExists: A file with the same name exists in the same path.
+        # 
+        # - FileContentInvalid: The file content is invalid.
+        # 
+        # - FileNameInvalid: The file name is invalid.
+        # 
+        # - FilePathInvalid: The file path is invalid.
+        # 
+        # - FileAuthorityInvalid: The file permissions are invalid.
+        # 
+        # - UserGroupNotExists: The user group specified for sending the file does not exist.
         self.error_code = error_code
-        # The error message returned when the command cannot be sent or run.
+        # The details about the cause of a command sending or execution failure. Valid values:
         # 
-        # *   If this parameter is empty, the command was run as expected.
-        # *   the specified node does not exists: The specified instance does not exist or is released.
-        # *   the node has node when create task: The instance is released when the command is being run.
-        # *   the node is not running when create task: The instance is not in the Running state while the command is being run.
-        # *   the command is not applicable: The command is not applicable to the specified instance.
-        # *   the specified account does not exists: The specified account does not exist.
-        # *   the specified directory does not exists: The specified directory does not exist.
-        # *   the cron job expression is invalid: The cron expression that specifies the execution time is invalid.
-        # *   the aliyun service is not running on the instance: Cloud Assistant Agent is not running.
-        # *   the aliyun service in the instance does not response: Cloud Assistant Agent does not respond.
-        # *   the aliyun service in the node is upgrading now: Cloud Assistant Agent is being upgraded.
-        # *   the aliyun service in the node need upgrade: Cloud Assistant Agent needs to be upgraded.
-        # *   the command delivery has been timeout: The request to send the command timed out.
-        # *   the command execution has been timeout: The command execution timed out.
-        # *   the command execution got an exception: An exception occurred when the command is being run.
-        # *   the command execution has been interrupted: The command execution is interrupted.
-        # *   the command execution exit code is not zero: The command execution completes, but the exit code is not 0.
-        # *   the specified node has been released: The instance is released while the file is being sent.
+        # - Empty: The command was executed as expected.
+        # 
+        # - the specified node does not exist: The specified instance does not exist or has been released.
+        # 
+        # - the instance was released during the command execution: The instance was released during the command execution.
+        # 
+        # - the instance is not running when create task: The instance was not in the Running state during the command execution.
+        # 
+        # - the command is not applicable: The command is not applicable to the specified instance.
+        # 
+        # - the specified account does not exist: The specified account does not exist.
+        # 
+        # - the specified directory does not exist: The specified directory does not exist.
+        # 
+        # - the cron job expression is invalid: The specified cron expression is invalid.
+        # 
+        # - Cloud Assistant Agent is not running: Cloud Assistant Agent is not running.
+        # 
+        # - Cloud Assistant Agent is not responding: Cloud Assistant Agent is not responding.
+        # 
+        # - Cloud Assistant Agent is being upgraded: Cloud Assistant Agent is being upgraded.
+        # 
+        # - Cloud Assistant Agent needs to be upgraded: Cloud Assistant Agent needs to be upgraded.
+        # 
+        # - The command failed to be sent due to a timeout: The command failed to be sent due to a timeout.
+        # 
+        # - The command execution timed out: The command execution timed out.
+        # 
+        # - An exception occurred during the command execution: An exception occurred during the command execution.
+        # 
+        # - The command execution was interrupted: The command execution was interrupted.
+        # 
+        # - The command execution is complete, but the exit code is not 0: The command execution is complete, but the exit code is not 0.
+        # 
+        # - The instance was released while the file was being sent: The instance was released while the file was being sent.
         self.error_info = error_info
-        # The exit code of the execution. Valid values:
+        # The exit code of the command process. Valid values:
         # 
-        # *   For Linux instances, the value is the exit code of the shell process.
-        # *   For Windows instances, the value is the exit code of the batch or PowerShell process.
+        # - On a Linux instance, this is the exit code of the Shell process.
+        # 
+        # - On a Windows instance, this is the exit code of the Batch or PowerShell process.
         self.exit_code = exit_code
-        # The end time of the execution.
+        # The time when the execution was complete.
         self.finish_time = finish_time
         # The execution status of the command on a single instance. Valid values:
         # 
-        # *   Pending: The command was being verified or sent.
+        # - Pending: The system is verifying or sending the command.
         # 
-        # *   Invalid: The specified command type or parameter is invalid.
+        # - Invalid: The specified command type or parameter is incorrect.
         # 
-        # *   Aborted: The command failed to be sent to the instance. To send a command to an instance, make sure that the instance is in the Running state and the command can be sent to the instance within 1 minute.
+        # - Aborted: Failed to send the command to the instance. The instance must be in the Running state and the command must be sent within 1 minute.
         # 
-        # *   Running: The command is being run on the instance.
+        # - Running: The command is running on the instance.
         # 
-        # *   Success:
+        # - Success:
         # 
-        #     *   One-time task: The execution was complete, and the exit code was 0.
-        #     *   Recurring execution: The previous occurrence of the execution is complete, and the exit code is 0. The specified recurring period during which the command is run ends.
+        #   - For a one-time command: The execution is complete and the exit code is 0.
         # 
-        # *   Failed:
+        #   - For a scheduled command: The last execution was successful with an exit code of 0, and the specified period is over.
         # 
-        #     *   One-time task: The execution was complete, but the exit code was not 0.
-        #     *   Recurring execution: The previous occurrence of the execution is complete, but the exit code is not 0. The specified recurring period during which the command is run is about to end.
+        # - Failed:
         # 
-        # *   Error: The execution cannot proceed due to an exception.
+        #   - For a one-time command: The execution is complete, but the exit code is not 0.
         # 
-        # *   Timeout: The execution timed out.
+        #   - For a scheduled command: The last execution was successful, but the exit code was not 0. The scheduled execution will be aborted.
         # 
-        # *   Cancelled: The execution was canceled before it started.
+        # - Error: An exception occurred during the command execution and the execution cannot continue.
         # 
-        # *   Stopping: The command task is being stopped.
+        # - Timeout: The command execution timed out.
         # 
-        # *   Terminated: The execution was terminated before completion.
+        # - Cancelled: The command execution was canceled. The command was not started.
         # 
-        # *   Scheduled:
+        # - Stopping: The task is being stopped.
         # 
-        #     *   One-time task: The execution state can never be Scheduled.
-        #     *   Recurring execution: The command is waiting to be run.
+        # - Terminated: The command was terminated during execution.
+        # 
+        # - Scheduled:
+        # 
+        #   - For a one-time command: This status is not applicable and will not occur.
+        # 
+        #   - For a scheduled command: The command is waiting to run.
         self.invocation_status = invocation_status
-        # The node ID.
+        # The ID of the node.
         self.node_id = node_id
         # The execution status of the command on a single instance.
         self.node_invoke_status = node_invoke_status
-        # The command output.
+        # The output of the command.
         # 
-        # *   If ContentEncoding is set to PlainText in the request, the original command output is returned.
-        # *   If ContentEncoding is set to Base64 in the request, the Base64-encoded command output is returned.
+        # - If \\`ContentEncoding\\` is set to \\`PlainText\\`, the original output is returned.
+        # 
+        # - If \\`ContentEncoding\\` is set to \\`Base64\\`, the Base64-encoded output is returned.
         self.output = output
-        # The number of times that the command was run on the instance.
+        # The number of times the command has been executed on the instance.
         # 
-        # *   If the command is set to run only once, the value is 0 or 1.
-        # *   If the command is set to run on a schedule, the value is the number of times that the command has been run on the instance.
+        # - If the command is a one-time execution, the value is 0 or 1.
+        # 
+        # - If the command is a scheduled execution, the value is the number of times the command has been executed.
         self.repeats = repeats
         # The start time.
         self.start_time = start_time
-        # The time when the command task was stopped. If you call the StopInvocation operation to stop the command task, the value of this parameter is the time when the operation is called.
+        # The time when \\`StopInvocation\\` was called to stop the command execution.
         self.stop_time = stop_time
-        # Indicates whether the command is to be automatically run. Valid values:
+        # Indicates whether the command will be automatically run in the future. Valid values:
         # 
-        # *   true: The command is run by calling the `RunCommand` or `InvokeCommand` operation with `RepeatMode` set to `Period`, `NextRebootOnly`, or `EveryReboot`.
+        # - true: The command is a scheduled command. The `RepeatMode` parameter was set to `Period`, `NextRebootOnly`, or `EveryReboot` when `RunCommand` or `InvokeCommand` was called.
         # 
-        # *   false (default): The command meets the following requirements.
+        # - false (default): The command is a one-time command or has finished.
         # 
-        #     *   The command is run by calling the `RunCommand` or `InvokeCommand` operation with `RepeatMode` set to `Once`.
-        #     *   The command task is canceled, stopped, or completed.
+        #   - The `RepeatMode` parameter was set to `Once` when `RunCommand` or `InvokeCommand` was called.
+        # 
+        #   - The command was canceled, stopped, or has finished running.
         self.timed = timed
-        # The update time of the execution.
+        # The time when the record was updated.
         self.update_time = update_time
 
     def validate(self):

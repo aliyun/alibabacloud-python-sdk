@@ -28,22 +28,39 @@ class DescribeHyperNodeResponseBody(DaraModel):
         status: str = None,
         zone_id: str = None,
     ):
+        # The cluster ID.
         self.cluster_id = cluster_id
+        # The cluster name.
         self.cluster_name = cluster_name
+        # The time when the hyper node was created.
         self.create_time = create_time
+        # The expiration time.
         self.expire_time = expire_time
+        # Indicates whether file storage mounting is supported.
         self.file_system_mount_enabled = file_system_mount_enabled
+        # The hostname.
         self.hostname = hostname
+        # The cluster number.
         self.hpn_zone = hpn_zone
+        # The ID of the hyper node.
         self.hyper_node_id = hyper_node_id
+        # The machine type.
         self.machine_type = machine_type
+        # The node group ID.
         self.node_group_id = node_group_id
+        # The name of the node group.
         self.node_group_name = node_group_name
+        # The list of nodes.
         self.nodes = nodes
+        # The state of the hyper node.
         self.operating_state = operating_state
+        # The request ID.
         self.request_id = request_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The state of the node.
         self.status = status
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -183,14 +200,23 @@ class DescribeHyperNodeResponseBodyNodes(DaraModel):
         status: str = None,
         user_data: str = None,
     ):
+        # The disk information.
         self.disks = disks
+        # The hostname.
         self.hostname = hostname
+        # The image ID.
         self.image_id = image_id
+        # The image name.
         self.image_name = image_name
+        # The network information.
         self.networks = networks
+        # The node ID.
         self.node_id = node_id
+        # The state of the node.
         self.operating_state = operating_state
+        # The state.
         self.status = status
+        # The user-defined script.
         self.user_data = user_data
 
     def validate(self):
@@ -278,7 +304,9 @@ class DescribeHyperNodeResponseBodyNodesNetworks(DaraModel):
         bond_name: str = None,
         ip: str = None,
     ):
+        # The name of the network interface on the machine.
         self.bond_name = bond_name
+        # The IP address of the machine in the virtual private cloud (VPC).
         self.ip = ip
 
     def validate(self):
@@ -316,10 +344,27 @@ class DescribeHyperNodeResponseBodyNodesDisks(DaraModel):
         size: int = None,
         type: str = None,
     ):
+        # The packet classification. Valid values:
+        # 
+        # - **DOWNLINK_PACKET**: downlink packet
+        # 
+        # - **UPLINK_PACKET**: uplink packet
         self.category = category
+        # The disk ID.
         self.disk_id = disk_id
+        # When you create an enhanced SSD (ESSD) to use as a system disk, set the performance level of the disk. Valid values:
+        # 
+        # - PL0: A maximum of 10,000 random read/write input/output operations per second (IOPS) per disk.
+        # 
+        # - PL1: A maximum of 50,000 random read/write IOPS per disk.
         self.performance_level = performance_level
+        # The disk size. Unit: GiB.
         self.size = size
+        # The disk type. Valid values:
+        # 
+        # - system: system disk.
+        # 
+        # - data: data disk.
         self.type = type
 
     def validate(self):

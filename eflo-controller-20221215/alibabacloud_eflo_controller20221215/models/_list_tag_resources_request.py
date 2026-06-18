@@ -16,27 +16,19 @@ class ListTagResourcesRequest(DaraModel):
         resource_type: str = None,
         tag: List[main_models.ListTagResourcesRequestTag] = None,
     ):
-        # The token that determines the start position of the query. Set this parameter to the value of the NextToken parameter that is returned from the last call.
+        # The token used to retrieve the next page of results. Set this parameter to the NextToken value returned in the previous response.
         self.next_token = next_token
         # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The IDs of the resources.
+        # The list of resource IDs.
         self.resource_id = resource_id
         # The resource type.
         # 
-        # Valid values:
-        # 
-        # *   Node
-        # *   Vcc
-        # *   Cluster
-        # *   Subnet
-        # *   Vpd
-        # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The tags.
+        # The list of tags.
         self.tag = tag
 
     def validate(self):

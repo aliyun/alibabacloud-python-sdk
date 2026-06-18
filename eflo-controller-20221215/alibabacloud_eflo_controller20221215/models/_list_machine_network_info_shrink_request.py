@@ -9,7 +9,7 @@ class ListMachineNetworkInfoShrinkRequest(DaraModel):
         self,
         machine_hpn_info_shrink: str = None,
     ):
-        # hpn information of machine
+        # The information about the machine types.
         self.machine_hpn_info_shrink = machine_hpn_info_shrink
 
     def validate(self):

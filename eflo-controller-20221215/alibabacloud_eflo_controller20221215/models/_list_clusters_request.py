@@ -15,13 +15,13 @@ class ListClustersRequest(DaraModel):
         resource_group_id: str = None,
         tags: List[main_models.ListClustersRequestTags] = None,
     ):
-        # The number of entries per page. Default value: 20.
+        # Number of entries per page. Default: 20.
         self.max_results = max_results
-        # The token that determines the start position of the query. Set this parameter to the value of the NextToken parameter that is returned from the last call.
+        # Token for retrieving the next page of results. Use the NextToken value returned in the previous response.
         self.next_token = next_token
-        # The resource group ID.
+        # Resource group ID.
         self.resource_group_id = resource_group_id
-        # The tags.
+        # List of tags.
         self.tags = tags
 
     def validate(self):
@@ -76,9 +76,9 @@ class ListClustersRequestTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
+        # Tag key.
         self.key = key
-        # The tag value.
+        # Tag value.
         self.value = value
 
     def validate(self):

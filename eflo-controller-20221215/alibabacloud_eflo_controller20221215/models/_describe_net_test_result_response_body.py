@@ -28,27 +28,33 @@ class DescribeNetTestResultResponseBody(DaraModel):
         self.cluster_id = cluster_id
         # The cluster name.
         self.cluster_name = cluster_name
-        # Specify when NetTestType is CommTest.
+        # The configuration for the communication library test. This parameter is returned when the network test type is a communication library test.
         self.comm_test = comm_test
-        # create time
+        # The time when the diagnostic task was created.
         self.creation_time = creation_time
-        # Fill in when the network test type is a delay test.
+        # The configuration for the delay test. This parameter is returned when the network test type is a delay test.
         self.delay_test = delay_test
-        # finish time
+        # The time when the diagnostic task was completed.
         self.finished_time = finished_time
         # The type of the network test.
         self.net_test_type = net_test_type
-        # Test port number.
+        # The test port number.
         self.port = port
         # The request ID.
         self.request_id = request_id
-        # result detail
+        # The details of the diagnostic result. The value is a JSON string.
         self.result_detial = result_detial
-        # status of session
+        # The status of the diagnostic task. Valid values:
+        # 
+        # - InProgress: The task is in progress.
+        # 
+        # - Finished: The task is complete.
+        # 
+        # - Failed: The task failed.
         self.status = status
-        # The ID of the test task. The unique identifier of a network test task.
+        # The ID of the test task. This ID uniquely identifies the network test task.
         self.test_id = test_id
-        # Fill in when the network test type is a traffic test.
+        # The configuration for the traffic test. This parameter is returned when the network test type is a traffic test.
         self.traffic_test = traffic_test
 
     def validate(self):
@@ -162,20 +168,19 @@ class DescribeNetTestResultResponseBodyTrafficTest(DaraModel):
         servers: List[main_models.DescribeNetTestResultResponseBodyTrafficTestServers] = None,
         traffic_model: str = None,
     ):
-        # All clients information
+        # The client nodes.
         self.clients = clients
-        # Call duration, in seconds.
+        # The runtime of the flow task in seconds.
         self.duration = duration
-        # When the protocol is RDMA, fill in True/False,
-        # when the protocol is TCP, this field is empty.
+        # Indicates whether GPUDirect RDMA (GDR) is enabled. This parameter is returned only if the protocol is RDMA. Valid values: True and False. If the protocol is TCP, this field is empty.
         self.gdr = gdr
-        # Network protocol, either RDMA or TCP.
+        # The network protocol. Valid values: Remote Direct Memory Access (RDMA) and Transmission Control Protocol (TCP).
         self.protocol = protocol
-        # When the protocol is TCP, fill in the number of concurrent connections; when the protocol is RDMA, fill in the configured QP value.
+        # If the protocol is TCP, this is the number of concurrent connections for the test. If the protocol is RDMA, this is the Queue Pair (QP) value.
         self.qp = qp
-        # Servers infomation.
+        # The list of servers.
         self.servers = servers
-        # Traffic model, either MTON or Fullmesh.
+        # The traffic model. Valid values: MTON and Fullmesh.
         self.traffic_model = traffic_model
 
     def validate(self):
@@ -259,13 +264,13 @@ class DescribeNetTestResultResponseBodyTrafficTestServers(DaraModel):
         resource_id: str = None,
         server_name: str = None,
     ):
-        # Network interface bond port
+        # The bonded port of the NIC.
         self.bond = bond
-        # The IP address.
+        # The IP address of the node.
         self.ip = ip
         # The resource ID.
         self.resource_id = resource_id
-        # Service name.
+        # The service name.
         self.server_name = server_name
 
     def validate(self):
@@ -314,13 +319,13 @@ class DescribeNetTestResultResponseBodyTrafficTestClients(DaraModel):
         resource_id: str = None,
         server_name: str = None,
     ):
-        # Network interface bond port
+        # The bonded port of the network interface card (NIC).
         self.bond = bond
-        # IP address.
+        # The IP address of the node.
         self.ip = ip
         # The resource ID.
         self.resource_id = resource_id
-        # The name of the service.
+        # The service name.
         self.server_name = server_name
 
     def validate(self):
@@ -366,7 +371,7 @@ class DescribeNetTestResultResponseBodyDelayTest(DaraModel):
         self,
         hosts: List[main_models.DescribeNetTestResultResponseBodyDelayTestHosts] = None,
     ):
-        # All hosts infomation
+        # The hosts of the test nodes.
         self.hosts = hosts
 
     def validate(self):
@@ -405,13 +410,13 @@ class DescribeNetTestResultResponseBodyDelayTestHosts(DaraModel):
         resource_id: str = None,
         server_name: str = None,
     ):
-        # The bonding of network interface card.
+        # The bonded port of the NIC.
         self.bond = bond
-        # The IP address.
+        # The IP address of the node.
         self.ip = ip
         # The resource ID.
         self.resource_id = resource_id
-        # Service name.
+        # The service name.
         self.server_name = server_name
 
     def validate(self):
@@ -460,13 +465,13 @@ class DescribeNetTestResultResponseBodyCommTest(DaraModel):
         model: str = None,
         type: str = None,
     ):
-        # Number of GPUs
+        # The number of GPUs.
         self.gpunum = gpunum
-        # All hosts infomation
+        # The hosts for the test.
         self.hosts = hosts
         # The communication library model.
         self.model = model
-        # The CommTest type, which can be ACCL or NCCL.
+        # The type of the communication library test. Valid values: Alibaba Cloud Collective Communication Library (ACCL) and NVIDIA Collective Communication Library (NCCL).
         self.type = type
 
     def validate(self):
@@ -526,7 +531,7 @@ class DescribeNetTestResultResponseBodyCommTestHosts(DaraModel):
         self.ip = ip
         # The resource ID.
         self.resource_id = resource_id
-        # Service name.
+        # The service name.
         self.server_name = server_name
 
     def validate(self):

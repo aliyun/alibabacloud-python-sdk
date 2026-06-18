@@ -10,9 +10,9 @@ class ExtendClusterResponseBody(DaraModel):
         request_id: str = None,
         task_id: str = None,
     ):
-        # Request ID
+        # Request ID.
         self.request_id = request_id
-        # Task ID
+        # Task ID.
         self.task_id = task_id
 
     def validate(self):

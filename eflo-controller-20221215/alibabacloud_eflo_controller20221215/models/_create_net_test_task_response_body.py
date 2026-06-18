@@ -10,9 +10,9 @@ class CreateNetTestTaskResponseBody(DaraModel):
         request_id: str = None,
         test_id: str = None,
     ):
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
-        # The ID of the test task. The unique identifier of a network test task.
+        # The ID of the network test task. This ID is the unique identifier for the task.
         self.test_id = test_id
 
     def validate(self):

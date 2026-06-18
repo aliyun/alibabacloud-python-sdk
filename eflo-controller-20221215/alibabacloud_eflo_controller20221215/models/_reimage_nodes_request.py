@@ -17,11 +17,11 @@ class ReimageNodesRequest(DaraModel):
     ):
         # The cluster ID.
         self.cluster_id = cluster_id
-        # Specifies whether to allow skipping failed nodes. Default value: False.
+        # Specifies whether to skip failed nodes. The default value is False.
         self.ignore_failed_node_tasks = ignore_failed_node_tasks
-        # The nodes.
+        # The list of nodes.
         self.nodes = nodes
-        # The user data.
+        # The custom data.
         self.user_data = user_data
 
     def validate(self):
@@ -80,7 +80,7 @@ class ReimageNodesRequestNodes(DaraModel):
     ):
         # The hostname.
         self.hostname = hostname
-        # The system image ID.
+        # The OS image ID.
         self.image_id = image_id
         # The logon password.
         self.login_password = login_password

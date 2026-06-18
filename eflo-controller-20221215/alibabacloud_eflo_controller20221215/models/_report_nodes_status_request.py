@@ -16,11 +16,32 @@ class ReportNodesStatusRequest(DaraModel):
         reason: str = None,
         start_time: str = None,
     ):
+        # The description.
         self.description = description
+        # The end time of the node issue. The time is in the ISO 8601 format \\`yyyy-MM-ddTHH:mm:ss+0800\\` and includes the time zone.
         self.end_time = end_time
+        # The category of the issue. This parameter is required when \\`Reason\\` is set to \\`HardwareError\\`. Valid values:<br>
+        # ● hardware-cpu-error: CPU failure<br>
+        # ● hardware-gpu-error: GPU failure<br>
+        # ● hardware-motherboard-error: Motherboard failure<br>
+        # ● hardware-mem-error: Memory failure<br>
+        # ● hardware-power-error: Power supply failure<br>
+        # ● hardware-disk-error: Disk failure
+        # ● hardware-networkcard-error: Network interface card failure<br>
+        # ● hardware-fan-error: Fan failure<br>
+        # ● hardware-cable-error: Network cable failure<br>
+        # ● others: Other<br><br><br><br><br><br><br><br><br>
         self.issue_category = issue_category
+        # The list of nodes.
         self.nodes = nodes
+        # The impact of the issue on the Lingjun node.
+        # Valid values:
+        # ● HardwareError: A hardware error occurred.
+        # ● SoftwareError: A software error occurred.
+        # ● NetworkError: A network error occurred.
+        # ● Others: Other issues. If none of the preceding values apply, set this parameter to \\`Others\\` and provide details in the \\`Description\\` parameter.
         self.reason = reason
+        # The start time of the node issue. The time is in the ISO 8601 format \\`yyyy-MM-ddTHH:mm:ss+0800\\` and includes the time zone.
         self.start_time = start_time
 
     def validate(self):

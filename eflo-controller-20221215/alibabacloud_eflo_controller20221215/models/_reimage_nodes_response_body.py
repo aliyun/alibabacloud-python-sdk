@@ -12,7 +12,7 @@ class ReimageNodesResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The job ID.
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):

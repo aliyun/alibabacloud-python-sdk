@@ -14,9 +14,9 @@ class ListFreeNodesResponseBody(DaraModel):
         nodes: List[main_models.ListFreeNodesResponseBodyNodes] = None,
         request_id: str = None,
     ):
-        # The returned pagination token which can be used in the next request to retrieve a new page of results.
+        # The token returned for the next query.
         self.next_token = next_token
-        # The nodes.
+        # The list of nodes.
         self.nodes = nodes
         # The request ID.
         self.request_id = request_id
@@ -81,12 +81,13 @@ class ListFreeNodesResponseBodyNodes(DaraModel):
         self.commodity_code = commodity_code
         # The creation time.
         self.create_time = create_time
-        # The time when the node expires.
+        # The expiration time of the machine.
         self.expired_time = expired_time
-        # The cluster number.
+        # The cluster ID.
         self.hpn_zone = hpn_zone
+        # The hyper node ID.
         self.hyper_node_id = hyper_node_id
-        # The instance type.
+        # The machine type.
         self.machine_type = machine_type
         # The node ID.
         self.node_id = node_id
@@ -94,9 +95,9 @@ class ListFreeNodesResponseBodyNodes(DaraModel):
         self.operating_state = operating_state
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The serial number of the node.
+        # The serial number (SN) of the machine.
         self.sn = sn
-        # The tags.
+        # The list of tags.
         self.tags = tags
         # The zone ID.
         self.zone_id = zone_id

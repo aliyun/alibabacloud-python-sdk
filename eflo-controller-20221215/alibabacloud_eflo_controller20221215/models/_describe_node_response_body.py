@@ -30,6 +30,7 @@ class DescribeNodeResponseBody(DaraModel):
         operating_state: str = None,
         request_id: str = None,
         resource_group_id: str = None,
+        savings_plan_id: str = None,
         sn: str = None,
         user_data: str = None,
         zone_id: str = None,
@@ -40,22 +41,23 @@ class DescribeNodeResponseBody(DaraModel):
         self.cluster_name = cluster_name
         # The creation time.
         self.create_time = create_time
-        # The disks.
+        # The list of disk information.
         self.disks = disks
         # The expiration time.
         self.expired_time = expired_time
-        # Indicates whether file storage mounting is supported.
+        # Indicates whether file system mounting is supported.
         self.file_system_mount_enabled = file_system_mount_enabled
         # The hostname.
         self.hostname = hostname
         # The cluster number.
         self.hpn_zone = hpn_zone
+        # The hyper node ID.
         self.hyper_node_id = hyper_node_id
         # The image ID.
         self.image_id = image_id
         # The image name.
         self.image_name = image_name
-        # The instance type.
+        # The machine type.
         self.machine_type = machine_type
         # The network information.
         self.networks = networks
@@ -65,32 +67,25 @@ class DescribeNodeResponseBody(DaraModel):
         self.node_group_name = node_group_name
         # The node ID.
         self.node_id = node_id
+        # The type of the current node. Valid values:
+        # ● cpfs-enhanced
+        # ● ebs-enhanced
+        # ● standard
+        # ● standby
+        # ● standard-v2
+        # ● standby-v2
         self.node_type = node_type
         # The node status.
-        # 
-        # Valid values:
-        # 
-        # *   Extending
-        # *   UnusedNodeStopped
-        # *   UnusedNodeStopping
-        # *   Unused
-        # *   Using
-        # *   ReleaseLocking
-        # *   Operating
-        # *   Cutting
-        # *   ClusterNodeStopped
-        # *   UnusedNodeRecovering
-        # *   ClusterNodeStopping
-        # *   ClusterNodeRecovering
-        # *   Replacing
         self.operating_state = operating_state
         # The request ID.
         self.request_id = request_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The serial number of the node.
+        # The savings plan ID.
+        self.savings_plan_id = savings_plan_id
+        # The unique machine identifier.
         self.sn = sn
-        # The custom script.
+        # The user-defined script.
         self.user_data = user_data
         # The zone ID.
         self.zone_id = zone_id
@@ -174,6 +169,9 @@ class DescribeNodeResponseBody(DaraModel):
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
 
+        if self.savings_plan_id is not None:
+            result['SavingsPlanId'] = self.savings_plan_id
+
         if self.sn is not None:
             result['Sn'] = self.sn
 
@@ -253,6 +251,9 @@ class DescribeNodeResponseBody(DaraModel):
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
 
+        if m.get('SavingsPlanId') is not None:
+            self.savings_plan_id = m.get('SavingsPlanId')
+
         if m.get('Sn') is not None:
             self.sn = m.get('Sn')
 
@@ -274,15 +275,17 @@ class DescribeNodeResponseBodyNetworks(DaraModel):
         v_switch_id: str = None,
         vpd_id: str = None,
     ):
-        # The port information of the elastic network interface (ENI).
+        # The NIC port information.
         self.bond_name = bond_name
-        # The IP address of the node.
+        # The machine IP address.
         self.ip = ip
+        # The security group ID.
         self.security_group_id = security_group_id
-        # The subnet ID.
+        # The cluster subnet ID.
         self.subnet_id = subnet_id
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
-        # The ID of the cluster network.
+        # The cluster network ID.
         self.vpd_id = vpd_id
 
     def validate(self):
@@ -346,21 +349,20 @@ class DescribeNodeResponseBodyDisks(DaraModel):
     ):
         # The disk type. Valid values:
         # 
-        # *   cloud_essd
+        #  - cloud_essd: ESSD cloud disk.
         self.category = category
         # The disk ID.
         self.disk_id = disk_id
-        # The performance level of the ESSD that is used as the system disk. Valid values:
-        # 
-        # *   PL0: A single ESSD can deliver up to 10,000 random read/write IOPS.
-        # *   PL1: A single ESSD can deliver up to 50,000 random read/write IOPS.
+        # The performance level of the cloud disk when an ESSD cloud disk is created as a system disk. Valid values:
+        # - PL0: A single disk can deliver up to 10,000 random read/write IOPS.
+        # - PL1: A single disk can deliver up to 50,000 random read/write IOPS.
         self.performance_level = performance_level
         # The disk size. Unit: GiB.
         self.size = size
         # The disk type. Valid values:
         # 
-        # *   system: system disk
-        # *   data: data disk
+        # - system: system disk.
+        # - data: data disk.
         self.type = type
 
     def validate(self):

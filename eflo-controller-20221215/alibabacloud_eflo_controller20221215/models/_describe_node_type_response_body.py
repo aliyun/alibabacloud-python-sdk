@@ -14,11 +14,17 @@ class DescribeNodeTypeResponseBody(DaraModel):
         eni_quantity: int = None,
         request_id: str = None,
     ):
+        # The maximum number of disks that can be attached.
         self.disk_quantity = disk_quantity
+        # The maximum number of network interfaces for high-density mode.
         self.eni_high_dense_quantity = eni_high_dense_quantity
+        # The maximum number of IPv6 addresses that an ENI can have.
         self.eni_ipv_6address_quantity = eni_ipv_6address_quantity
+        # The maximum number of IPv4 addresses that an ENI can have.
         self.eni_private_ip_address_quantity = eni_private_ip_address_quantity
+        # The maximum number of supported elastic network interfaces (ENIs), including primary and secondary ENIs.
         self.eni_quantity = eni_quantity
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

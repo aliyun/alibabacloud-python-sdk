@@ -15,10 +15,19 @@ class ListHyperNodesResponseBody(DaraModel):
         next_token: str = None,
         request_id: str = None,
     ):
+        # The list of nodes.
         self.hyper_nodes = hyper_nodes
+        # The number of entries to return on each page. The maximum value is 100.
+        # 
+        # Default values:
+        # 
+        # • If you do not specify this parameter or you specify a value that is less than 20, the default value is 20.
+        # 
+        # • If you specify a value that is greater than 100, the default value is 100.
         self.max_results = max_results
+        # The token to retrieve the next page of results. If this parameter is not returned, no more results are available.
         self.next_token = next_token
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -88,22 +97,39 @@ class ListHyperNodesResponseBodyHyperNodes(DaraModel):
         task_id: str = None,
         zone_id: str = None,
     ):
+        # The ID of the cluster.
         self.cluster_id = cluster_id
+        # The name of the cluster.
         self.cluster_name = cluster_name
+        # The product code.
         self.commodity_code = commodity_code
+        # The time when the node was created.
         self.create_time = create_time
+        # The expiration time.
         self.expire_time = expire_time
+        # The hostname.
         self.hostname = hostname
+        # The cluster number.
         self.hpn_zone = hpn_zone
+        # The ID of the node.
         self.hyper_node_id = hyper_node_id
+        # The machine type.
         self.machine_type = machine_type
+        # The ID of the node group.
         self.node_group_id = node_group_id
+        # The name of the node group.
         self.node_group_name = node_group_name
+        # The status of the hypernode.
         self.operating_state = operating_state
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The status of the node.
         self.status = status
+        # The list of tags.
         self.tags = tags
+        # The ID of the task.
         self.task_id = task_id
+        # The ID of the zone.
         self.zone_id = zone_id
 
     def validate(self):
@@ -236,7 +262,9 @@ class ListHyperNodesResponseBodyHyperNodesTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the node tag.
         self.key = key
+        # The value of the node tag.
         self.value = value
 
     def validate(self):

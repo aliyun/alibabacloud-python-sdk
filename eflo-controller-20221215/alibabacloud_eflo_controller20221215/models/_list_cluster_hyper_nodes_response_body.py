@@ -14,9 +14,11 @@ class ListClusterHyperNodesResponseBody(DaraModel):
         next_token: str = None,
         request_id: str = None,
     ):
+        # The list of nodes.
         self.hyper_nodes = hyper_nodes
+        # The query token returned from this call.
         self.next_token = next_token
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -80,22 +82,39 @@ class ListClusterHyperNodesResponseBodyHyperNodes(DaraModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
+        # The commodity code.
         self.commodity_code = commodity_code
+        # The time when the node was created.
         self.create_time = create_time
+        # The expiration time of the machine.
         self.expire_time = expire_time
+        # Indicates whether file storage mounting is supported.
         self.file_system_mount_enabled = file_system_mount_enabled
+        # The hostname.
         self.hostname = hostname
+        # The cluster ID.
         self.hpn_zone = hpn_zone
+        # The node ID.
         self.hyper_node_id = hyper_node_id
+        # The machine type.
         self.machine_type = machine_type
+        # The node group ID.
         self.node_group_id = node_group_id
+        # The name of the node group.
         self.node_group_name = node_group_name
+        # The status of the hyper node.
         self.operating_state = operating_state
+        # The status of the node.
         self.status = status
+        # The tag information.
         self.tags = tags
+        # The task ID.
         self.task_id = task_id
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
+        # The virtual private cloud (VPC) ID.
         self.vpc_id = vpc_id
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -228,7 +247,9 @@ class ListClusterHyperNodesResponseBodyHyperNodesTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):

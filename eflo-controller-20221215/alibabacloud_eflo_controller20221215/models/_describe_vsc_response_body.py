@@ -15,25 +15,19 @@ class DescribeVscResponseBody(DaraModel):
         vsc_name: str = None,
         vsc_type: str = None,
     ):
-        # The ID of the compute node in which the VSC resides.
+        # The ID of the compute node where the Vsc is located.
         self.node_id = node_id
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The VSC status.
-        # 
-        # Valid values:
-        # 
-        # *   Creating
-        # *   Normal
-        # *   Deleting
+        # The status of the Vsc.
         self.status = status
-        # The VSC ID.
+        # VscId
         self.vsc_id = vsc_id
-        # The custom name of the VSC.
+        # The custom name of the Vsc.
         self.vsc_name = vsc_name
-        # The VSC type.
+        # The type of the Vsc.
         self.vsc_type = vsc_type
 
     def validate(self):

@@ -15,16 +15,16 @@ class ListNetTestResultsResponseBody(DaraModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # The number of entries to return on each page. Maximum value: 100.
+        # The number of entries returned on each page. Maximum value: 100.
         # 
         # Default value:
         # 
-        # *   If you do not configure this parameter or if you set this parameter to a value less than 20, the default value is 20.
-        # *   If you set this parameter to a value that is greater than 100, the default value is 100.
+        # - If you do not set this parameter or you set it to a value less than 20, the default value is 20.
+        # - If you set the value to greater than 100, the default value is 100.
         self.max_results = max_results
-        # The results.
+        # The list of nodes.
         self.net_test_results = net_test_results
-        # The token that is used in the next request to retrieve a new page of results.
+        # The token that is used to retrieve the next page of results. If this parameter is not returned, it indicates that all results have been returned.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -95,28 +95,25 @@ class ListNetTestResultsResponseBodyNetTestResults(DaraModel):
         self.cluster_id = cluster_id
         # The cluster name.
         self.cluster_name = cluster_name
-        # Returned when NetTestType is CommTest.
+        # The details of the communication library test. This object is returned if the value of \\`NetTestType\\` is \\`CommTest\\`.
         self.comm_test = comm_test
-        # The creation time.
+        # The time when the task was created.
         self.creation_time = creation_time
-        # Returned when NetTestType is DelayTest.
+        # The details of the delay test. This object is returned if the value of \\`NetTestType\\` is \\`DelayTest\\`.
         self.delay_test = delay_test
-        # The finish time.
+        # The time when the task was completed.
         self.finished_time = finished_time
         # The type of the network test.
         self.net_test_type = net_test_type
         # The network mode.
         self.network_mode = network_mode
-        # The port number.
+        # The test port.
         self.port = port
-        # The status of the network test task. Valid values:\\
-        # ● InProgress\\
-        # ● Finished\\
-        # ● Failed
+        # The status of the network test task. Valid values: ● InProgress: The test is in progress. ● Finished: The test is complete. ● Failed: The test failed.
         self.status = status
-        # The test ID. The unique identifier of the resource test task.
+        # The test ID. It is the unique identifier of the resource test task.
         self.test_id = test_id
-        # Returned when NetTestType is TrafficTest.
+        # The details of the traffic test. This object is returned if the value of \\`NetTestType\\` is \\`TrafficTest\\`.
         self.traffic_test = traffic_test
 
     def validate(self):
@@ -224,19 +221,19 @@ class ListNetTestResultsResponseBodyNetTestResultsTrafficTest(DaraModel):
         servers: List[main_models.ListNetTestResultsResponseBodyNetTestResultsTrafficTestServers] = None,
         traffic_model: str = None,
     ):
-        # The clients.
+        # The client.
         self.clients = clients
-        # The running duration of the pipeline job. Unit: seconds.
+        # The runtime of the flow task, in seconds.
         self.duration = duration
-        # If the protocol is RDMA, can be True or False. If the protocol is TCP, this field is empty.
+        # If the protocol is RDMA, specify True or False. If the protocol is TCP, this field is empty.
         self.gdr = gdr
-        # The network protocol, which can be RDMA or TCP.
+        # The network protocol. Valid values are RDMA and TCP.
         self.protocol = protocol
-        # If the protocol is TCP, the number of concurrent connections. If the protocol is RDMA, the configured QP value.
+        # If the protocol is TCP, this parameter specifies the number of concurrent connections for the test. If the protocol is RDMA, this parameter specifies the QP value.
         self.qp = qp
-        # If the TrafficModel is Fullmesh, this parameter is empty.
+        # This field is empty if \\`TrafficModel\\` is set to \\`Fullmesh\\`.
         self.servers = servers
-        # The traffic model, which can be MTON or Fullmesh.
+        # The traffic model. Valid values are MTON and Fullmesh.
         self.traffic_model = traffic_model
 
     def validate(self):
@@ -320,13 +317,13 @@ class ListNetTestResultsResponseBodyNetTestResultsTrafficTestServers(DaraModel):
         resource_id: str = None,
         server_name: str = None,
     ):
-        # The bonding of network interface card.
+        # The bonded port of the network interface card.
         self.bond = bond
         # The IP address of the node.
         self.ip = ip
         # The resource ID.
         self.resource_id = resource_id
-        # The name of the service.
+        # The service name.
         self.server_name = server_name
 
     def validate(self):
@@ -375,13 +372,13 @@ class ListNetTestResultsResponseBodyNetTestResultsTrafficTestClients(DaraModel):
         resource_id: str = None,
         server_name: str = None,
     ):
-        # The bonding of network interface card.
+        # The bonded port of the network interface card.
         self.bond = bond
         # The IP address.
         self.ip = ip
         # The resource ID.
         self.resource_id = resource_id
-        # The name of the service.
+        # The service name.
         self.server_name = server_name
 
     def validate(self):
@@ -427,7 +424,7 @@ class ListNetTestResultsResponseBodyNetTestResultsDelayTest(DaraModel):
         self,
         hosts: List[main_models.ListNetTestResultsResponseBodyNetTestResultsDelayTestHosts] = None,
     ):
-        # The hosts.
+        # The list of resources.
         self.hosts = hosts
 
     def validate(self):
@@ -466,13 +463,13 @@ class ListNetTestResultsResponseBodyNetTestResultsDelayTestHosts(DaraModel):
         resource_id: str = None,
         server_name: str = None,
     ):
-        # The bonding of network interface card.
+        # The bonded port of the network interface card.
         self.bond = bond
         # The IP address of the node.
         self.ip = ip
         # The resource ID.
         self.resource_id = resource_id
-        # The name of the service.
+        # The service name.
         self.server_name = server_name
 
     def validate(self):
@@ -523,11 +520,11 @@ class ListNetTestResultsResponseBodyNetTestResultsCommTest(DaraModel):
     ):
         # The number of GPUs.
         self.gpunum = gpunum
-        # The hosts of the test node.
+        # The hosts of the test nodes.
         self.hosts = hosts
         # The communication library model.
         self.model = model
-        # The CommTest type, which can be ACCL or NCCL.
+        # The type of the communication library test. Valid values: ACCL or NCCL.
         self.type = type
 
     def validate(self):
@@ -587,7 +584,7 @@ class ListNetTestResultsResponseBodyNetTestResultsCommTestHosts(DaraModel):
         self.ip = ip
         # The resource ID.
         self.resource_id = resource_id
-        # The name of the service.
+        # The service name.
         self.server_name = server_name
 
     def validate(self):

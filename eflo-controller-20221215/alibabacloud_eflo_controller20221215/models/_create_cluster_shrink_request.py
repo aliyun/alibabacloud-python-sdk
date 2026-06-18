@@ -23,29 +23,29 @@ class CreateClusterShrinkRequest(DaraModel):
         resource_group_id: str = None,
         tag: List[main_models.CreateClusterShrinkRequestTag] = None,
     ):
-        # Cluster description
+        # The description of the cluster.
         self.cluster_description = cluster_description
-        # Cluster name
+        # The name of the cluster.
         self.cluster_name = cluster_name
-        # Cluster type
+        # The type of the cluster.
         self.cluster_type = cluster_type
-        # Components (software instances)
+        # The components (software instances).
         self.components_shrink = components_shrink
-        # Cluster number
+        # The cluster number.
         self.hpn_zone = hpn_zone
-        # Whether to allow skipping failed nodes, the default value is False
+        # Specifies whether to skip failed nodes. The default value is False.
         self.ignore_failed_node_tasks = ignore_failed_node_tasks
-        # Network information
+        # The network information.
         self.networks_shrink = networks_shrink
-        # Node VSwitches
+        # The vSwitches for the node.
         self.nimiz_vswitches_shrink = nimiz_vswitches_shrink
-        # Node group list
+        # The list of node groups.
         self.node_groups_shrink = node_groups_shrink
-        # Whether the network interface supports jumbo frames
+        # Specifies whether the network interface supports jumbo frames.
         self.open_eni_jumbo_frame = open_eni_jumbo_frame
-        # Resource group ID
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # Resource tags
+        # The resource tags.
         self.tag = tag
 
     def validate(self):
@@ -148,9 +148,9 @@ class CreateClusterShrinkRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # Key
+        # The key.
         self.key = key
-        # Value
+        # The value.
         self.value = value
 
     def validate(self):

@@ -10,7 +10,9 @@ class ChangeNodeTypesShrinkRequest(DaraModel):
         node_ids_shrink: str = None,
         node_type: str = None,
     ):
+        # A list of node IDs. You can specify a maximum of 10 nodes in a single request.
         self.node_ids_shrink = node_ids_shrink
+        # The node specifications.
         self.node_type = node_type
 
     def validate(self):

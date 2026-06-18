@@ -14,11 +14,11 @@ class ListClustersResponseBody(DaraModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # The clusters.
+        # Cluster information.
         self.clusters = clusters
-        # The returned pagination token which can be used in the next request to retrieve a new page of results.
+        # Token returned by this call for retrieving next page.
         self.next_token = next_token
-        # The request ID.
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -81,50 +81,37 @@ class ListClustersResponseBodyClusters(DaraModel):
         update_time: str = None,
         vpc_id: str = None,
     ):
-        # The cluster description.
+        # Cluster description.
         self.cluster_description = cluster_description
-        # The cluster ID.
+        # Cluster ID.
         self.cluster_id = cluster_id
-        # The cluster name.
+        # Cluster name.
         self.cluster_name = cluster_name
-        # The cluster type.
-        # 
-        # Valid values:
-        # 
-        # *   AckEdgePro
-        # *   ExclusiveBareCluster
-        # *   Lite
+        # Cluster type.
         self.cluster_type = cluster_type
-        # The component information.
+        # Component information.
         self.components = components
-        # The IP type of the computing network.
+        # IP version of computing network.
         self.computing_ip_version = computing_ip_version
-        # The creation time.
+        # Cluster creation time.
         self.create_time = create_time
-        # The cluster number.
+        # Cluster zone identifier.
         self.hpn_zone = hpn_zone
-        # The number of nodes.
+        # Number of nodes.
         self.node_count = node_count
-        # The number of node groups.
+        # Number of node groups.
         self.node_group_count = node_group_count
-        # The cluster status.
-        # 
-        # Valid values:
-        # 
-        # *   running
-        # *   expanding
-        # *   shrinking
-        # *   initializing
+        # Cluster status.
         self.operating_state = operating_state
-        # The resource group ID.
+        # Resource group ID.
         self.resource_group_id = resource_group_id
-        # The tags.
+        # Tag information.
         self.tags = tags
-        # The job ID.
+        # Task ID.
         self.task_id = task_id
-        # The update time.
+        # Last update time.
         self.update_time = update_time
-        # The virtual private cloud (VPC) ID.
+        # VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -251,9 +238,9 @@ class ListClustersResponseBodyClustersTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
+        # Tag key.
         self.key = key
-        # The tag value.
+        # Tag value.
         self.value = value
 
     def validate(self):

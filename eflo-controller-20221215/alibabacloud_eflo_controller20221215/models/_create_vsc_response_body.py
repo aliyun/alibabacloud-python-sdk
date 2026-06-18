@@ -10,9 +10,9 @@ class CreateVscResponseBody(DaraModel):
         request_id: str = None,
         vsc_id: str = None,
     ):
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The VSC ID.
+        # The ID of the VSC that is created.
         self.vsc_id = vsc_id
 
     def validate(self):

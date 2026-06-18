@@ -29,26 +29,50 @@ class DescribeNodeGroupResponseBody(DaraModel):
         user_data: str = None,
         virtual_gpu_enabled: bool = None,
     ):
+        # The zone ID.
         self.az = az
+        # The ID of the cluster.
         self.cluster_id = cluster_id
+        # The cluster name.
         self.cluster_name = cluster_name
+        # The creation time.
         self.create_time = create_time
+        # Indicates whether file storage can be mounted.
         self.file_system_mount_enabled = file_system_mount_enabled
+        # The image ID.
         self.image_id = image_id
+        # The name of the image.
         self.image_name = image_name
+        # The name of the key pair.
         self.key_pair_name = key_pair_name
+        # Valid values:
+        # • password: The node group supports only password-based logon.
+        # • keypair: The node group supports only key pair-based logon.
+        # • both: The node group supports password-based and key pair-based logon.
+        # 
+        # If this parameter is not returned, no logon method is configured for the node group.
         self.login_type = login_type
+        # The instance type.
         self.machine_type = machine_type
+        # The number of nodes.
         self.node_count = node_count
+        # The description of the node group.
         self.node_group_description = node_group_description
+        # The ID of the node group.
         self.node_group_id = node_group_id
+        # The name of the node group.
         self.node_group_name = node_group_name
+        # The name of the RAM role. You can call the ListRoles operation of the RAM API to query the RAM roles that you created.
         self.ram_role_name = ram_role_name
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The system disk information.
         self.system_disk = system_disk
+        # The time when the node group was last updated.
         self.update_time = update_time
+        # The user data.
         self.user_data = user_data
+        # Indicates whether the node group supports GPU virtualization.
         self.virtual_gpu_enabled = virtual_gpu_enabled
 
     def validate(self):
@@ -194,8 +218,33 @@ class DescribeNodeGroupResponseBodySystemDisk(DaraModel):
         performance_level: str = None,
         size: int = None,
     ):
+        # The category of the disk.
         self.category = category
+        # The performance level of the ESSD. Valid values:
+        # 
+        # - PL0: A single ESSD can deliver up to 10,000 random read/write IOPS.
+        # 
+        # - PL1: A single ESSD can deliver up to 50,000 random read/write IOPS.
         self.performance_level = performance_level
+        # The size of the system disk. Unit: GiB. Valid values:
+        # 
+        # - Basic disk: 20–500.
+        # 
+        # - ESSD:
+        # 
+        #   - PL0: 1–2,048.
+        # 
+        #   - PL1: 20–2,048.
+        # 
+        #   - PL2: 461–2,048.
+        # 
+        #   - PL3: 1,261–2,048.
+        # 
+        # - ESSD AutoPL disk: 1–2,048.
+        # 
+        # - Other disk categories: 20–2,048.
+        # 
+        # Default value: the larger value between 20 and the size of the image that is specified by `ImageId`.
         self.size = size
 
     def validate(self):
